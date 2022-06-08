@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c7fe2ad_11aaac57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-08T17:38:45Z",
+      "side": 1,
+      "message": "nit: How about UsbEthernetBehaviourColdReboot (capitalizing the word reboot) instead of UsbEthernetBehaviourColdreboot",
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83e34ae4_71fbc37c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/ethernet_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-08T17:38:45Z",
+      "side": 1,
+      "message": "Get rid of `defer` and just call `conn.Close()` here, and check the returned error. The `defer` keyword defers the call until the end of the function...which is right here anyway.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 6
+      },
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a488e44_75296b56",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_ethernet_behaviour_coldreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-08T17:38:45Z",
+      "side": 1,
+      "message": "Instead of creating an extra variable `i`, I suggest this:\n\t\tvar err error\n\t\titeration, err \u003d strconv.Atoi(val)",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835b642d_ff283c0a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_ethernet_behaviour_coldreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-08T17:38:45Z",
+      "side": 1,
+      "message": "`// checkUSBType verifies the expected USB version, and returns an error if it does not match.`",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 49
+      },
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929c75bc_49867efd",
+        "filename": "src/chromiumos/tast/services/cros/power/ethernet_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-08T17:38:45Z",
+      "side": 1,
+      "message": "Why is `bool enabled \u003d 1;` indented twice as much as `string url \u003d 1;`?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
