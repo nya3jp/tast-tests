@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c98b9ad_2cbf3fb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-08T01:57:06Z",
+      "side": 1,
+      "message": "Thanks! CR+2\u0027s lost after rebasing, so a new review iteration is required.",
+      "revId": "dac6dcb1d3fc4f8a9a89a13e817fd77804dcb5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

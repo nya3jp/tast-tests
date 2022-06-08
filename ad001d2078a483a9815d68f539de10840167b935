@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1809f5b8_0ea617b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-08T01:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b51d4b08_b66dd249",
+      "revId": "ad001d2078a483a9815d68f539de10840167b935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76ed788e_03c8b43d",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-08T00:48:34Z",
       "side": 1,
       "message": "Nit: cleanupCtx is the standard name",
+      "revId": "ad001d2078a483a9815d68f539de10840167b935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "171706b6_96b9581b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-08T01:57:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76ed788e_03c8b43d",
       "revId": "ad001d2078a483a9815d68f539de10840167b935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54c601a1_0902295d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-08T01:57:06Z",
+      "side": 1,
+      "message": "Done - I\u0027ve changed the comment to precede the value. However, for some reason gofmt enforces a weird formatting in that case, putting the comment before the previous comma:\n\n  /* keyLabel\u003d */, \"label not needed\"\n\n(That was the reason I used the \"comment after the value\" style in the CL. But I don\u0027t have a strong opinion on what\u0027s more readable.)",
+      "parentUuid": "a7f74ed8_97cf57b4",
+      "revId": "ad001d2078a483a9815d68f539de10840167b935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2742dea_02a2750d",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
         "patchSetId": 5
@@ -82,6 +136,24 @@
       "writtenOn": "2022-06-08T00:48:34Z",
       "side": 1,
       "message": "This looks like cleanup code to me? should it be deferred when you mount it?",
+      "revId": "ad001d2078a483a9815d68f539de10840167b935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cccdbc2_27bee359",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-08T01:57:06Z",
+      "side": 1,
+      "message": "Done (I left the call in the same place, because we\u0027re cleaning up what\u0027s done in the previous line by PreparePersistentVault())",
+      "parentUuid": "f2742dea_02a2750d",
       "revId": "ad001d2078a483a9815d68f539de10840167b935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
