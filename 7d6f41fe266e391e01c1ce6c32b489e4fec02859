@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd749b43_e37c6c8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-08T19:47:02Z",
+      "side": 1,
+      "message": "What is the case that remount shouldn\u0027t succeed?",
+      "range": {
+        "startLine": 44,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "7d6f41fe266e391e01c1ce6c32b489e4fec02859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1552fc7a_f814a486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/lock_screen_challenge_response_auth_session.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-08T19:47:02Z",
+      "side": 1,
+      "message": "Can you submit the lock screen test as another CL? This CL is already very big",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "7d6f41fe266e391e01c1ce6c32b489e4fec02859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35e7ac3_bc04edd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/lock_screen_challenge_response_auth_session.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-08T19:47:02Z",
+      "side": 1,
+      "message": "what is utility?",
+      "range": {
+        "startLine": 139,
+        "startChar": 10,
+        "endLine": 139,
+        "endChar": 17
+      },
+      "revId": "7d6f41fe266e391e01c1ce6c32b489e4fec02859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b503b8da_738345a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/lock_screen_challenge_response_auth_session.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-08T19:47:02Z",
+      "side": 1,
+      "message": "InvalidateAuthSession first, then CheckKey. Because in normal use scenario screen unlock is generally long after the AuthSession is times out.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 143
+      },
+      "revId": "7d6f41fe266e391e01c1ce6c32b489e4fec02859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdaa0f09_83a20649",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-08T19:47:02Z",
+      "side": 1,
+      "message": "is smartcard used with kiosk sessions?",
+      "range": {
+        "startLine": 444,
+        "startChar": 87,
+        "endLine": 444,
+        "endChar": 105
+      },
+      "revId": "7d6f41fe266e391e01c1ce6c32b489e4fec02859",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
