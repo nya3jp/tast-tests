@@ -65,25 +65,31 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 
 	bt := s.Param().(browser.Type)
 
-	var cs ash.ConnSource
-	var cr *chrome.Chrome
-
-	if bt == browser.TypeAsh {
-		cr = s.FixtValue().(chrome.HasChrome).Chrome()
-		cs = cr
-	} else {
-		var err error
-		var l *lacros.Lacros
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), bt)
-		if err != nil {
-			s.Fatal("Failed to initialize test: ", err)
-		}
-		defer lacros.CloseLacros(closeCtx, l)
-	}
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	var cs ash.ConnSource
+	var bTconn *chrome.TestConn
+	switch bt {
+	case browser.TypeLacros:
+		// Launch lacros.
+		l, err := lacros.Launch(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to launch lacros: ", err)
+		}
+		defer l.Close(ctx)
+		cs = l
+
+		if bTconn, err = l.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get lacros TestAPIConn: ", err)
+		}
+	case browser.TypeAsh:
+		cs = cr
+		bTconn = tconn
 	}
 
 	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
@@ -96,16 +102,8 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(closeCtx)
 
-	configs := []cujrecorder.MetricConfig{
-		cujrecorder.NewCustomMetricConfig(
-			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter),
-		cujrecorder.NewCustomMetricConfig(
-			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter),
-	}
-	if err := recorder.AddCollectedMetrics(tconn, configs...); err != nil {
-		s.Fatal("Failed to add recorded metrics: ", err)
+	if err := recorder.AddCommonMetrics(tconn, bTconn); err != nil {
+		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
 
 	kb, err := input.Keyboard(ctx)
