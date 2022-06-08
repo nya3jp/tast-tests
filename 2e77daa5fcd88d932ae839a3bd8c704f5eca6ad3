@@ -202,6 +202,24 @@
       "parentUuid": "c0aa9690_4fd2396f",
       "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77986911_efde2de6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-06-08T01:52:28Z",
+      "side": 1,
+      "message": "Thank you Arowa for the clarification.",
+      "parentUuid": "2fb7ace6_c28d100c",
+      "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
