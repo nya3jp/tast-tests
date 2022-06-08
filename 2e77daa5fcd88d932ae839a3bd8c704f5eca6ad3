@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3e259c3_c1634be3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-08T19:54:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee3940e3_e7bfac86",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54378076_1f7c1fc6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-07T22:57:11Z",
       "side": 1,
       "message": "This line is too long.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 73
+      },
+      "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22fd6ec1_3cc4a188",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-08T19:54:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54378076_1f7c1fc6",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -218,6 +266,24 @@
       "side": 1,
       "message": "Thank you Arowa for the clarification.",
       "parentUuid": "2fb7ace6_c28d100c",
+      "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb0408a_489d2ecf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-08T19:54:42Z",
+      "side": 1,
+      "message": "OK, I have in mind some test improvements, where I may actually need these as test param, but for now I can move it inside the function.",
+      "parentUuid": "77986911_efde2de6",
       "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
