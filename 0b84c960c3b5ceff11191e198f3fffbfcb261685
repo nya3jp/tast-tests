@@ -16,6 +16,24 @@
       "message": "This can just be\ns.Logf(\"%s %s\", command, output)\nas the [:] isn\u0027t necessary, because output is a slice (not an array), and the \"string\" isn\u0027t necessary, because its matched with %s (not %v).",
       "revId": "0b84c960c3b5ceff11191e198f3fffbfcb261685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14439c20_35a06161",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-08T23:35:08Z",
+      "side": 1,
+      "message": "Thank you. Done.",
+      "parentUuid": "50f52a5b_ca69b233",
+      "revId": "0b84c960c3b5ceff11191e198f3fffbfcb261685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
