@@ -89,6 +89,12 @@ func checkVPDState(ctx context.Context, d *dut.DUT) error {
 }
 
 func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	if out, err := s.DUT().Conn().CommandContext(ctx, "echo", "1").Output(ssh.DumpLogOnError); err != nil {
+		s.Fatal("Failed to run command over SSH: ", err)
+	} else if string(out) != "1\n" {
+		s.Fatalf("Invalid output when running command over SSH: got %q; want %q", string(out), "1")
+	}
+
 	if err := checkVPDState(ctx, s.DUT()); err != nil {
 		s.Fatal("VPD broken, skipping enrollment: ", err)
 	}
