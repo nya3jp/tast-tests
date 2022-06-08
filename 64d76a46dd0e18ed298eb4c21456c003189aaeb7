@@ -156,6 +156,24 @@
       "parentUuid": "3bd9670c_647a7641",
       "revId": "64d76a46dd0e18ed298eb4c21456c003189aaeb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "923be6c3_8ae24aad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-08T20:13:59Z",
+      "side": 1,
+      "message": "Thanks for the explanation about the usages in test!\n\nSorry if I\u0027m misunderstanding, I was just wondering if the \"And\" in CreateRouterAndServerEnv makes more sense since we are creating two envs, whereas CreateRouterServerEnv kind of sounds like it\u0027s creating a single \"router-server\" env.",
+      "parentUuid": "798f490c_82ffe851",
+      "revId": "64d76a46dd0e18ed298eb4c21456c003189aaeb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
