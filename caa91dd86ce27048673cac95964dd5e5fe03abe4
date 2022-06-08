@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84ab60f6_60431a48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-08T23:14:28Z",
+      "side": 1,
+      "message": "I read that comment differently, I think he suggested using Browser type defined here: \nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/browser/browser.go?q\u003dbrowser.go\n\nHidehiko-san, could you help us understand what your idea was?",
+      "parentUuid": "28f700c5_8de9c9c2",
+      "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "472ed552_2eedea86",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
         "patchSetId": 2
