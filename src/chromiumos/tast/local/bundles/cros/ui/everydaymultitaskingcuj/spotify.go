@@ -137,7 +137,7 @@ func (s *Spotify) Play(ctx context.Context) error {
 		testing.ContextLog(ctx, "Play Spotify directly")
 	} else {
 		searchTab := s.d.Object(ui.ID(searchTabID))
-		if err := searchTab.Exists(ctx); err != nil {
+		if err := searchTab.WaitForExists(ctx, defaultUITimeout); err != nil {
 			if err := s.loginIfRequired(ctx); err != nil {
 				return errors.Wrap(err, "failed to login into Spotify")
 			}
