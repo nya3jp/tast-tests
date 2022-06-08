@@ -22,6 +22,30 @@
       },
       "revId": "84e2ab3ca6a95b2fb43790cf387a479db7604bca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c864924_f7c314fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-08T18:45:01Z",
+      "side": 1,
+      "message": "Sorry I misinterpreted, this should be fine.",
+      "parentUuid": "721bfa92_ad381701",
+      "range": {
+        "startLine": 257,
+        "startChar": 74,
+        "endLine": 257,
+        "endChar": 104
+      },
+      "revId": "84e2ab3ca6a95b2fb43790cf387a479db7604bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
