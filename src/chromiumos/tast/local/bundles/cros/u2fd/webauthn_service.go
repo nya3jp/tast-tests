@@ -167,7 +167,7 @@ func (c *WebauthnService) StartMakeCredential(ctx context.Context, req *hwsec.St
 		if err := ui.WithTimeout(2 * time.Second).WaitUntilExists(platformAuthenticatorButton)(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to select platform authenticator from transport selection sheet")
 		}
-		if err := ui.LeftClick(platformAuthenticatorButton)(ctx); err != nil {
+		if err := ui.DoDefault(platformAuthenticatorButton)(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to click button for platform authenticator")
 		}
 	}
