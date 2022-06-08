@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43d89233_c536d4b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-08T21:30:53Z",
+      "side": 1,
+      "message": "This is in the specs, a single interface will have at least a link local address. Then the interface can have as many global addresses as necessary. Typically we have 2 + the link local.",
+      "parentUuid": "2ae26c52_d4dd8ff2",
+      "revId": "4d98e2e50fca1a3289b8a3596a850e593b0d3365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "349638b6_0080c2af",
@@ -112,6 +130,30 @@
       "side": 1,
       "message": "\u003e Here we would always want to any other cleanup in this defer block regardless of the outcome of cleanup() right ?\nYes, this defer func does not block other defer funcs, and this one will be executed at last since it\u0027s the first defer.\n\nBut there is another problem with this code, if we failed to return to the original netns, the following execution may fail and thus we should treat this as an error.",
       "parentUuid": "c64a84a6_fc7fd302",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 3
+      },
+      "revId": "4d98e2e50fca1a3289b8a3596a850e593b0d3365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e10654b_7603e201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-08T21:30:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "567a078e_5e33d557",
       "range": {
         "startLine": 209,
         "startChar": 1,
