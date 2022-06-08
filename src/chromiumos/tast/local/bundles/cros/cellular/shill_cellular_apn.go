@@ -28,7 +28,7 @@ func init() {
 			"andrewlassalle@google.com",
 			"chromeos-cellular-team@google.com",
 		},
-		Attr: []string{"group:cellular", "cellular_unstable", "cellular_amari_callbox"},
+		Attr: []string{"group:cellular", "cellular_sim_active", "cellular_unstable", "cellular_amari_callbox"},
 		Params: []testing.Param{{
 			Name:      "round_robin_attach_apn",
 			Val:       apnTestParam{"callbox_round_robin_attach.pbf", "callbox-ipv4", "callbox-ipv4"},

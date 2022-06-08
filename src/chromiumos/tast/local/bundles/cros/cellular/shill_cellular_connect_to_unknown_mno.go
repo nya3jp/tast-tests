@@ -32,7 +32,7 @@ func init() {
 			"andrewlassalle@google.com",
 			"chromeos-cellular-team@google.com",
 		},
-		Attr: []string{"group:cellular", "cellular_unstable", "cellular_amari_callbox"},
+		Attr: []string{"group:cellular", "cellular_sim_active", "cellular_unstable", "cellular_amari_callbox"},
 		Params: []testing.Param{{
 			Name:      "unknown_carrier",
 			Val:       unknownMNOTestParam{"callbox_unknown_carrier.pbf", "callbox-default-attach", "callbox-ipv4", map[string]interface{}{"apn": "wrong_attach"}, map[string]interface{}{"apn": "callbox-ipv4"}},
