@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f664b075_563cc7e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-06-08T11:06:38Z",
+      "side": 1,
+      "message": "Hi Renuga, PTAL!",
+      "revId": "d0abca55ca9f33d9fc0678781466ff73461533e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
