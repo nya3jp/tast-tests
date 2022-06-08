@@ -21,7 +21,7 @@ func init() {
 			"latware@google.com",
 			"chromeos-cellular-team@google.com",
 		},
-		Attr:         []string{},
+		Attr:         []string{"group:cellular", "cellular_callbox"},
 		ServiceDeps:  []string{"tast.cros.example.ChromeService"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "callboxManagedFixture",
