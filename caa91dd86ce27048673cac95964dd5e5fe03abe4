@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f700c5_8de9c9c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-08T22:36:22Z",
+      "side": 1,
+      "message": "Hi Alexander, thanks for the review. This CL is to address the comment from Hidehiko on https://crrev.com/c/3656132 that we should use browser.Browser to track the metrics collection, in stead of using chrome.TestConn. (see [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3656132/comments/3754f6f5_a1622418)).\n\nThis CL is not intended to split each CUJ\u0027s UMA collection. It just changes the recorder.AddCollectedMetrics() func signature.",
+      "parentUuid": "d0795f1d_0c64c5d3",
+      "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "472ed552_2eedea86",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-08T22:18:34Z",
       "side": 1,
       "message": "I don\u0027t think this is correct change.\n\nI think that \"Ash.Smoothness.PercentDroppedFrames_1sWindow\" should be collected from Ash.",
+      "range": {
+        "startLine": 107,
+        "startChar": 40,
+        "endLine": 107,
+        "endChar": 53
+      },
+      "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00e4cb16_bb477e9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-08T22:36:22Z",
+      "side": 1,
+      "message": "This CL doesn\u0027t change the way of each test\u0027s UMA collection. It just changes the recorder.AddCollectedMetrics() API to use *Browser instead of *TestConn. The test originally collects metrics from Ash, so it keeps the Ash browser here.",
+      "parentUuid": "472ed552_2eedea86",
       "range": {
         "startLine": 107,
         "startChar": 40,
