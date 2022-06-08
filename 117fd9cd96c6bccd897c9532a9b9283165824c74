@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ea7c4d1_576361e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-06-08T04:00:14Z",
+      "side": 1,
+      "message": "Hiroki: do you mind taking a quick look at the method to wait for TTS engine initialization to see if they look correct to you? Thanks again for the suggestion.",
+      "revId": "117fd9cd96c6bccd897c9532a9b9283165824c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
