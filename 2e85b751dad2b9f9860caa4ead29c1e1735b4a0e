@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a485f9f_80901e43",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/connected_andreiboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-08T12:05:32Z",
+      "side": 1,
+      "message": "I have created a new CL for that: crrev.com/c/3694449",
+      "parentUuid": "fc4d7fea_5096eaf4",
+      "revId": "2e85b751dad2b9f9860caa4ead29c1e1735b4a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1563880_5e4f391d",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-07T17:37:58Z",
       "side": 1,
       "message": "For naming, I think I like \"OpenTitanToolCommand\" better than \"PlainCommand\".",
+      "revId": "2e85b751dad2b9f9860caa4ead29c1e1735b4a0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb5236b_f0ab79f8",
+        "filename": "src/chromiumos/tast/common/firmware/ti50/dev_board.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-08T12:05:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1563880_5e4f391d",
       "revId": "2e85b751dad2b9f9860caa4ead29c1e1735b4a0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
