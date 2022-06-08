@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27954d58_3a987351",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-08T10:39:37Z",
+      "side": 1,
+      "message": "Could you please have a look at this test for the GUI.\nFor now it just tests the presence of the Privacy Hub section based on the flag value. It will be extended in the future when more testable behavior is present.",
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
