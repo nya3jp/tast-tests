@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03db3dbc_3a64776f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-08T15:07:09Z",
+      "side": 1,
+      "message": "There is an error in compiling crosint (tast-test-private).\n\n```\ntast-local-tests-crosint-0.0.1-r10973: src/chromiumos/tast/local/bundles/crosint/graphics/gfxbench.go:397:38: not enough arguments in call to setup.PowerTest\ntast-local-tests-crosint-0.0.1-r10973: \thave (context.Context, *driver.TestConn, setup.PowerTestOptions)\ntast-local-tests-crosint-0.0.1-r10973: \twant (context.Context, *driver.TestConn, setup.PowerTestOptions, *setup.BatteryDischarge)\ntast-local-tests-crosint-0.0.1-r10973: chromiumos/tast/local/multivmint\ntast-local-tests-crosint-0.0.1-r10973: chromiumos/tast/local/bundles/crosint/multivm\ntast-local-tests-crosint-0.0.1-r10973:  * ERROR: chromeos-base/tast-local-tests-crosint-0.0.1-r10973::chromeos-partner failed (compile phase):\ntast-local-tests-crosint-0.0.1-r10973:  *   (no error message)\n```\n\nYou need to make corresponding change in tast-test-private and link these two CLs together.",
+      "revId": "8ff4f9bdc7c6c3d48f6615acbcd39dd7974fbfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
