@@ -109,6 +109,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0847aa26_71fbc9bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-06-08T10:33:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acecf210_aff7844b",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 74
+      },
+      "revId": "84b8171e9c72ba193fa0ee533c22420c81cdbf17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "749dc3c8_093046c6",
@@ -146,6 +170,30 @@
       "side": 1,
       "message": "I could just pass url instead of s.\n\nBut I\u0027m not sure why use \"testing.RegisterVarString\" func.\n\nIn my imagine:\n\nmethod1 -\nAt the beginning, get url from s.Var(WWCBServerURL)\nthen pass url to the other functions.\n\nmethod2 - \nAnd use testing.RegisterVargString would be like below:\n### in Dock1PersistentSettings.go\n\turl, ok :\u003d s.Var(utils.WWCBServerURL)\n\tif !ok {\n\t\ts.Fatal(\"wwcb url is missing\")\n\t}\n\tvar exampleStrVar \u003d testing.RegisterVarString(\n\t\t\"wwcb.AccessVars.globalString\",\n\t\turl,\n\t\t\"An example variable of string type\",\n\t)\n###\nand pass exampleStrVar or exampleStrVar.Value() to other functions\n\nCould you explain about this more? \nThank you.",
       "parentUuid": "749dc3c8_093046c6",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "84b8171e9c72ba193fa0ee533c22420c81cdbf17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "885ea817_ae291169",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-06-08T10:33:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa02be7d_a268d489",
       "range": {
         "startLine": 30,
         "startChar": 0,
