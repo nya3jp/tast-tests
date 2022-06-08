@@ -16,6 +16,24 @@
       "message": "This can happen at any point in the test execution so adding a call here might not help at all other times when this happens.\n\nI see we\u0027re using DisableSyncFlags so technically that should prevent GMS Core from updating. Let me update if the functionality is broken.",
       "revId": "566c6cdb45dbcb820ff4619038ca6d6e4ce95f67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36db4a63_f6989059",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/verify_settings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-06-08T18:11:35Z",
+      "side": 1,
+      "message": "Yes, I agree that it can happen any time. If there is a way to stop GMSCore thats ideal solution. I see that DisableSyncFlags has arc-play-store-auto-update set to off, but nothing related to GMSCore.",
+      "parentUuid": "a218513d_59720b7d",
+      "revId": "566c6cdb45dbcb820ff4619038ca6d6e4ce95f67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
