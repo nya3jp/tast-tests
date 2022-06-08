@@ -46,6 +46,30 @@
       },
       "revId": "f63b6f830f02222b0c2560921e29e58f3de8c780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "763f8c03_27cbf838",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_apps_playing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-08T11:16:16Z",
+      "side": 1,
+      "message": "You are calling `app.Launch` again at Line 103.",
+      "parentUuid": "d3466052_4308d5fc",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 0
+      },
+      "revId": "f63b6f830f02222b0c2560921e29e58f3de8c780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
