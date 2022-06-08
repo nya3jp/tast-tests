@@ -278,3 +278,113 @@ func (r *Runner) WaitForConnected(ctx context.Context, ssid, iface string) error
 
 	return nil
 }
+
+// P2PGroupAdd add a new P2P group (local end as GO).
+func (r *Runner) P2PGroupAdd(ctx context.Context) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("p2p_group_add")...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli p2p_group_add")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli p2p_group_add output: %s", string(cmdOut))
+	}
+	return nil
+}
+
+// P2PGroupAddPersistent connect to a P2P GO device.
+func (r *Runner) P2PGroupAddPersistent(ctx context.Context) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("p2p_group_add", "persistent=0")...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli p2p_group_add persistent=0")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli p2p_group_add persistent=0 output: %s", string(cmdOut))
+	}
+	return nil
+}
+
+// P2PGroupRemove removes P2P group interface (local end as GO).
+func (r *Runner) P2PGroupRemove(ctx context.Context, iface string) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("p2p_group_remove", iface)...)
+	if err != nil {
+		return errors.Wrapf(err, "failed running wpa_cli p2p_group_remove %s", iface)
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli p2p_group_remove %s output: %s", iface, string(cmdOut))
+	}
+	return nil
+}
+
+// P2PFlush flush P2P state.
+func (r *Runner) P2PFlush(ctx context.Context) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("p2p_flush")...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli p2p_flush")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli p2p_flush output: %s", string(cmdOut))
+	}
+	return nil
+}
+
+// P2PGetGOPassphrase get the passphrase for a group (GO only).
+func (r *Runner) P2PGetGOPassphrase(ctx context.Context, iface string) (string, error) {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("p2p_get_passphrase", iface)...)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed running wpa_cli p2p_get_passphrase %s", iface)
+	}
+	lines := strings.Split(string(cmdOut), "\n")
+	return strings.TrimSuffix(lines[1], "\n"), nil
+}
+
+// P2PAddGONetwork adds the GO network in the client device.
+func (r *Runner) P2PAddGONetwork(ctx context.Context, ssid, passphrase string) error {
+	networkID, err := r.addNetwork(ctx)
+	if err != nil {
+		return err
+	}
+	if err := r.setNetwork(ctx, networkID, "ssid", strconv.Quote(ssid)); err != nil {
+		return err
+	}
+	if err := r.setNetwork(ctx, networkID, "psk", strconv.Quote(passphrase)); err != nil {
+		return err
+	}
+	if err := r.setNetwork(ctx, networkID, "disabled", "2"); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// P2PScanNetwork scans for the p2p network.
+func (r *Runner) P2PScanNetwork(ctx context.Context, ssid string) error {
+	discoveryTimeout := 120 * time.Second
+	pollingIntervalSeconds := time.Second
+	if err := r.scan(ctx); err != nil {
+		return err
+	}
+	foundSSID := false
+	err := testing.Poll(ctx, func(ctx context.Context) error {
+		results, err := r.scanResults(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the scan results")
+		}
+		for _, network := range results {
+			if network["SSID"] == ssid {
+				foundSSID = true
+			}
+		}
+		if foundSSID {
+			return nil
+		}
+		if err := r.scan(ctx); err != nil {
+			return errors.Wrap(err, "failed to run scan")
+		}
+		return errors.Errorf("failed the SSID=%s not found in the latest scan results", ssid)
+	}, &testing.PollOptions{Timeout: discoveryTimeout, Interval: pollingIntervalSeconds})
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
