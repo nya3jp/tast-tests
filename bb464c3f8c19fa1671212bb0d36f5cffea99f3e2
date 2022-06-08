@@ -279,6 +279,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9cd2946_b0e53c6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-08T13:32:23Z",
+      "side": 1,
+      "message": "\u003e you changed the code :-). \n\nYeah and my apols, I changed all the code again :) by incorporating everyone\u0027s feedback and advice.  Hope I got everything, and PTAL again.",
+      "parentUuid": "b3ecdd60_d478582f",
+      "range": {
+        "startLine": 34,
+        "startChar": 70,
+        "endLine": 34,
+        "endChar": 76
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b9ba403_b202ed85",
