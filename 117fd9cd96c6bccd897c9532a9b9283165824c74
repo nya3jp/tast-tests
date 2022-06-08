@@ -57,6 +57,30 @@
       },
       "revId": "117fd9cd96c6bccd897c9532a9b9283165824c74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdd63d19_0a1337b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/tts_cache_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-06-08T18:12:45Z",
+      "side": 1,
+      "message": "I think so. This is after Android finishes booting from cache.OpenSession above. We can always adjust the timeout if the test is flaky once checked in. Let me know if you think otherwise though.",
+      "parentUuid": "4dfb1430_e20c7686",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 28
+      },
+      "revId": "117fd9cd96c6bccd897c9532a9b9283165824c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
