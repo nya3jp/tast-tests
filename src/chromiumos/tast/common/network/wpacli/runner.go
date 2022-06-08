@@ -14,7 +14,7 @@ import (
 
 	"chromiumos/tast/common/network/cmd"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/testing"
+	"chromiumos/tast/ssh"
 )
 
 // Runner contains methods involving wpa_cli command.
@@ -164,6 +164,28 @@ func (r *Runner) statusMap(ctx context.Context, iface string) (map[string]string
 	return statusMap, nil
 }
 
+// Interfaces returns a list of the available interfaces:.
+func (r *Runner) Interfaces(ctx context.Context) ([]string, error) {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("interface")...)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed running wpa_cli interface")
+	}
+	var interfaces []string
+	startParsing := false
+	for _, line := range strings.Split(string(cmdOut), "\n") {
+		// Start parsing after the line "Available interfaces:".
+		if strings.Contains(line, "Available interfaces:") {
+			startParsing = true
+			continue
+		}
+		if startParsing {
+			interfaces = append(interfaces, line)
+		}
+	}
+
+	return interfaces, nil
+}
+
 // isAssociated checks that the network is associated to a given SSID.
 func (r *Runner) isAssociated(ctx context.Context, ssid, iface string) (bool, error) {
 	statusMap, err := r.statusMap(ctx, iface)
@@ -179,6 +201,23 @@ func (r *Runner) isAssociated(ctx context.Context, ssid, iface string) (bool, er
 		return false, errors.Errorf("the wpa_state key was not found in the status map %t", statusMap)
 	}
 	if (statusSSID == ssid) && (statusWPAState == "COMPLETED") {
+		return true, nil
+	}
+
+	return false, nil
+}
+
+// IsConnected checks that the network is connetced.
+func (r *Runner) IsConnected(ctx context.Context, iface string) (bool, error) {
+	statusMap, err := r.statusMap(ctx, iface)
+	if err != nil {
+		return false, err
+	}
+	statusWPAState, ok := statusMap["wpa_state"]
+	if !ok {
+		return false, errors.Errorf("the wpa_state key was not found in the status map %t", statusMap)
+	}
+	if statusWPAState == "CONNECTED" {
 		return true, nil
 	}
 
@@ -224,23 +263,125 @@ func (r *Runner) scanResults(ctx context.Context) ([]map[string]string, error) {
 	return networks, nil
 }
 
-// WaitForConnected waits for the network association.
-func (r *Runner) WaitForConnected(ctx context.Context, ssid, iface string) error {
-	associationTimeout := 30 * time.Second
-	pollingIntervalSeconds := time.Second
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		isAssoc, err := r.isAssociated(ctx, ssid, iface)
-		if err != nil {
-			return errors.Wrap(err, "failed to check the associated status")
-		}
-		if !isAssoc {
-			return errors.New("failed status is not assciated")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: associationTimeout, Interval: pollingIntervalSeconds}); err != nil {
+// P2PGroupAdd add a new P2P group (local end as GO).
+func (r *Runner) P2PGroupAdd(ctx context.Context) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("p2p_group_add")...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli p2p_group_add")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli p2p_group_add output: %s", string(cmdOut))
+	}
+	return nil
+}
+
+// P2PGroupAddPersistent connect to a P2P GO device.
+func (r *Runner) P2PGroupAddPersistent(ctx context.Context) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("p2p_group_add", "persistent=0")...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli p2p_group_add persistent=0")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli p2p_group_add persistent=0 output: %s", string(cmdOut))
+	}
+	return nil
+}
+
+// P2PGroupRemove removes P2P group interface (local end as GO).
+func (r *Runner) P2PGroupRemove(ctx context.Context, iface string) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("p2p_group_remove", iface)...)
+	if err != nil {
+		return errors.Wrapf(err, "failed running wpa_cli p2p_group_remove %s", iface)
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli p2p_group_remove %s output: %s", iface, string(cmdOut))
+	}
+	return nil
+}
+
+// P2PFlush flush P2P state.
+func (r *Runner) P2PFlush(ctx context.Context) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("p2p_flush")...)
+	if err != nil {
+		return errors.Wrap(err, "failed running wpa_cli p2p_flush")
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to expect 'OK' in wpa_cli p2p_flush output: %s", string(cmdOut))
+	}
+	return nil
+}
+
+// P2PGetGOPassphrase get the passphrase for a group (GO only).
+func (r *Runner) P2PGetGOPassphrase(ctx context.Context, iface string) (string, error) {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("p2p_get_passphrase", iface)...)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed running wpa_cli p2p_get_passphrase %s", iface)
+	}
+	lines := strings.Split(string(cmdOut), "\n")
+	if len(lines) < 2 {
+		return "", errors.Errorf("invalid output of wpa_cli p2p_get_passphrase %s: %s", iface, string(cmdOut))
+	}
+	return strings.TrimSpace(lines[1]), nil
+}
+
+// P2PAddGONetwork adds the GO network in the client device.
+func (r *Runner) P2PAddGONetwork(ctx context.Context, ssid, passphrase string) error {
+	networkID, err := r.addNetwork(ctx)
+	if err != nil {
+		return err
+	}
+	if err := r.setNetwork(ctx, networkID, "ssid", strconv.Quote(ssid)); err != nil {
+		return err
+	}
+	if err := r.setNetwork(ctx, networkID, "psk", strconv.Quote(passphrase)); err != nil {
+		return err
+	}
+	if err := r.setNetwork(ctx, networkID, "disabled", "2"); err != nil {
 		return err
 	}
 
 	return nil
+}
+
+// ScanNetwork scans for specific network with SSID and returns nil if the network id found
+// in the scan results.
+func (r *Runner) ScanNetwork(ctx context.Context, dutConn *ssh.Conn, ssid string) error {
+	timeoutCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+	const wpaMonitorStopTimeout = 2 * time.Second
+	wpaMonitor := new(WPAMonitor)
+	stop, ctx, err := wpaMonitor.StartWPAMonitor(timeoutCtx, dutConn, wpaMonitorStopTimeout)
+	if err != nil {
+		return errors.Wrap(err, "faled to start wpa monitor")
+	}
+	defer stop()
+
+	if err := r.scan(ctx); err != nil {
+		return errors.Wrap(err, "failed to trigger scan")
+	}
+
+	for {
+		event, err := wpaMonitor.WaitForEvent(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to wait for ScanResultsEvent event")
+		}
+		if event == nil { // timeout
+			return errors.Wrap(err, "timeout waiting for the ScanResultsEvent")
+		}
+		if _, scanSuccess := event.(*ScanResultsEvent); scanSuccess {
+			return nil
+		}
+	}
+
+	results, err := r.scanResults(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the scan results")
+	}
+	for _, network := range results {
+		if network["SSID"] == ssid {
+			return nil
+		}
+	}
+
+	return errors.Errorf("failed the SSID=%s not found in the scan results", ssid)
 }
