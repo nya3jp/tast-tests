@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc58112_52d10796",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/persistent_create_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-06-08T07:05:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbe2a0ba_9afe63cc",
+      "revId": "0bece704399fa6c9995ee4c93ed150e2fbd3e68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60ad0691_aebd42c5",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-06-07T18:10:44Z",
       "side": 1,
       "message": "nit. end with a period",
+      "revId": "0bece704399fa6c9995ee4c93ed150e2fbd3e68b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3199a687_3c84d002",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/persistent_create_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-06-08T07:05:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60ad0691_aebd42c5",
       "revId": "0bece704399fa6c9995ee4c93ed150e2fbd3e68b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
