@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9eaca6_e9a0cf86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-08T00:18:04Z",
+      "side": 1,
+      "message": "actually, can you remove this while you\u0027re at it",
+      "revId": "e896b8cdb8fb4c2d1c23f388c20fc37626fe97a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4298822b_7083c946",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-08T00:18:04Z",
+      "side": 1,
+      "message": "bug number",
+      "range": {
+        "startLine": 140,
+        "startChar": 10,
+        "endLine": 140,
+        "endChar": 15
+      },
+      "revId": "e896b8cdb8fb4c2d1c23f388c20fc37626fe97a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc189ecc_999938d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-08T00:18:04Z",
+      "side": 1,
+      "message": "rm",
+      "range": {
+        "startLine": 142,
+        "startChar": 54,
+        "endLine": 142,
+        "endChar": 60
+      },
+      "revId": "e896b8cdb8fb4c2d1c23f388c20fc37626fe97a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06e2ef7e_c3db410d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-08T00:18:04Z",
+      "side": 1,
+      "message": "check",
+      "range": {
+        "startLine": 261,
+        "startChar": 35,
+        "endLine": 261,
+        "endChar": 40
+      },
+      "revId": "e896b8cdb8fb4c2d1c23f388c20fc37626fe97a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7d9c3c5_8a46fc50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-08T00:18:04Z",
+      "side": 1,
+      "message": "it\u0027s only in 5.10",
+      "range": {
+        "startLine": 262,
+        "startChar": 38,
+        "endLine": 262,
+        "endChar": 41
+      },
+      "revId": "e896b8cdb8fb4c2d1c23f388c20fc37626fe97a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fc4836d_edd8cb98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/driver.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-08T00:18:04Z",
+      "side": 1,
+      "message": "How about just explicitly special casing it here instead of using the map. For example, if the card is Realtek8852APCIE and the kernel is 5.10 and got !\u003d want, check if rtw89_8852ae.ko works",
+      "revId": "e896b8cdb8fb4c2d1c23f388c20fc37626fe97a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
