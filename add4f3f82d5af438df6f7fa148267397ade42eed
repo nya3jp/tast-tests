@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8bd7c12_9262f34e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-06-08T10:37:52Z",
+      "side": 1,
+      "message": "Q: Isn\u0027t this done automatically for all tests?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 90
+      },
+      "revId": "add4f3f82d5af438df6f7fa148267397ade42eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8ce59f5_c9758156",
+        "filename": "src/chromiumos/tast/local/bundles/cros/familylink/policy_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-06-08T10:37:52Z",
+      "side": 1,
+      "message": "Where are those policies set?\nWe do not use this policy for FL users in general and I think it would be better to configure FakeDMS with the poicies that we use.",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "add4f3f82d5af438df6f7fa148267397ade42eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c043ca9c_c411af8c",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-06-08T10:37:52Z",
+      "side": 1,
+      "message": "Out of the scope of this cl - would be nice to test the policies without fake DMS is possible (it seems possible).",
+      "range": {
+        "startLine": 178,
+        "startChar": 17,
+        "endLine": 178,
+        "endChar": 47
+      },
+      "revId": "add4f3f82d5af438df6f7fa148267397ade42eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
