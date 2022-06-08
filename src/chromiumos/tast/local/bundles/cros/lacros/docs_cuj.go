@@ -6,6 +6,7 @@ package lacros
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -28,21 +29,35 @@ func init() {
 		Desc:         "Runs Google Docs CUJ against both ash-chrome and lacros-chrome",
 		Contacts:     []string{"hidehiko@chromium.org", "tvignatti@igalia.com", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-		SoftwareDeps: []string{"chrome", "lacros"},
-		Timeout:      chrome.GAIALoginTimeout + 6*time.Minute,
-		VarDeps:      []string{"ui.gaiaPoolDefault"},
+		SoftwareDeps: []string{"chrome"},
+		Timeout:      chrome.GAIALoginTimeout + 10*time.Minute,
+		Params: []testing.Param{{
+			Name:              "",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}, {
+			Name: "chrome",
+			Val:  browser.TypeAsh,
+		}},
+		Vars:    []string{"lacros.DocsCUJ.iterations"},
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
 
-const (
-	// Google Docs with 20+ pages of random text with 50 comments. The URL points to a comment and
-	// will skip down to the comment once the page is fully loaded.
-	// The access to this document is restricted to the default pool of GAIA accounts only in order
-	// to avoid the "Some tools might be unavailable due to heavy traffic in this file" flakiness.
-	docsURLToComment = "https://docs.google.com/document/d/1U6pghj7AaMLnhS7rqQHeecZ7f7fF6bLGaPVxP5xEPuQ/edit?disco=AAAAP6EbSF8"
-)
-
 func DocsCUJ(ctx context.Context, s *testing.State) {
+	const (
+		// The number of iterations. In order to collect meaningful average and data variability,
+		// the default value is defined large enough as "10". Can be overridden by var
+		// "lacros.DocsCUJ.iterations".
+		defaultIterations = 10
+
+		// Google Docs with 20+ pages of random text with 50 comments. The URL points to a comment and
+		// will skip down to the comment once the page is fully loaded.
+		// The access to this document is restricted to the default pool of GAIA accounts only in order
+		// to avoid the "Some tools might be unavailable due to heavy traffic in this file" flakiness.
+		docsURLToComment = "https://docs.google.com/document/d/1U6pghj7AaMLnhS7rqQHeecZ7f7fF6bLGaPVxP5xEPuQ/edit?disco=AAAAP6EbSF8"
+	)
+
 	cleanupCtx := ctx
 	opts := []chrome.Option{
 		chrome.DisableFeatures("FirmwareUpdaterApp"),
@@ -74,24 +89,50 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	// Run against ash-chrome.
-	if ashPerfValues, err := runDocsPageLoad(ctx, docsURLToComment, func(ctx context.Context, url string) (*chrome.Chrome, *chrome.Conn, lacrosperf.CleanupCallback, error) {
-		conn, cleanup, err := lacrosperf.SetupCrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
-		return cr, conn, cleanup, err
-	}); err != nil {
-		s.Error("Failed to run ash-chrome benchmark: ", err)
-	} else {
-		pv.MergeWithSuffix(".ash", ashPerfValues)
+	// Collect single metric values from the same metric to be aggregated into the final result.
+	singleMetrics := make(map[perf.Metric][]float64)
+
+	iterationCount := defaultIterations
+	if iter, ok := s.Var("lacros.DocsCUJ.iterations"); ok {
+		i, err := strconv.Atoi(iter)
+		if err != nil {
+			// User might want to override the default value of iterations but passed a malformed
+			// value. Fail the test to inform the user.
+			s.Fatalf("Invalid lacros.DocsCUJ.iterations value %v: %v", iter, err)
+		}
+		iterationCount = i
 	}
 
-	// Run against lacros.
-	if lacrosPerfValues, err := runDocsPageLoad(ctx, docsURLToComment, func(ctx context.Context, url string) (*chrome.Chrome, *chrome.Conn, lacrosperf.CleanupCallback, error) {
-		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
-		return cr, conn, cleanup, err
-	}); err != nil {
-		s.Error("Failed to run lacros-chrome benchmark: ", err)
-	} else {
-		pv.MergeWithSuffix(".lacros", lacrosPerfValues)
+	var variantPv *perf.Values
+	bt := s.Param()
+	for i := 0; i < iterationCount; i++ {
+		testing.ContextLogf(ctx, "Running: iteration %d/%d", i+1, iterationCount)
+		switch bt {
+		case browser.TypeAsh:
+			if variantPv, err = runDocsPageLoad(ctx, docsURLToComment, func(ctx context.Context, url string) (*chrome.Chrome, *chrome.Conn, lacrosperf.CleanupCallback, error) {
+				conn, cleanup, err := lacrosperf.SetupCrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
+				return cr, conn, cleanup, err
+			}); err != nil {
+				s.Error("Failed to run ash-chrome benchmark: ", err)
+			}
+			appendPerfValues(ctx, variantPv, "ash", pv, singleMetrics)
+		case browser.TypeLacros:
+			if variantPv, err = runDocsPageLoad(ctx, docsURLToComment, func(ctx context.Context, url string) (*chrome.Chrome, *chrome.Conn, lacrosperf.CleanupCallback, error) {
+				conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
+				return cr, conn, cleanup, err
+			}); err != nil {
+				s.Error("Failed to run lacros-chrome benchmark: ", err)
+			}
+			appendPerfValues(ctx, variantPv, "lacros", pv, singleMetrics)
+		}
+	}
+
+	for k, values := range singleMetrics {
+		sum := 0.0
+		for _, v := range values {
+			sum += v
+		}
+		pv.Set(k, sum/float64(len(values)))
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
@@ -182,12 +223,14 @@ func runDocsPageLoad(
 		Name:      "docs.load",
 		Unit:      "seconds",
 		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
 	}, time.Duration(loadTime).Seconds())
 
 	pv.Set(perf.Metric{
 		Name:      "docs.load_and_visible",
 		Unit:      "seconds",
 		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
 	}, time.Duration(visibleLoadTime).Seconds())
 
 	if err := cujRecorder.Record(testCtx, pv); err != nil {
@@ -195,4 +238,23 @@ func runDocsPageLoad(
 	}
 
 	return pv, nil
+}
+
+// appendPerfValues appends performance metric values depending the variant (ash or lacros).
+func appendPerfValues(ctx context.Context, variantPv *perf.Values, suffix string, pv *perf.Values, singleMetrics map[perf.Metric][]float64) {
+	for _, m := range variantPv.Proto().GetValues() {
+		metric := perf.Metric{
+			Name:      m.Name + "." + suffix,
+			Unit:      m.Unit,
+			Direction: perf.Direction(m.Direction),
+			Multiple:  m.Multiple,
+		}
+		if m.Multiple {
+			testing.ContextLogf(ctx, "Multiple: tag=%s unit=%s values=%v", m.Name, m.Unit, m.Value)
+			pv.Append(metric, m.Value...)
+		} else {
+			testing.ContextLogf(ctx, "Non-multiple: tag=%s unit=%s value=%f", m.Name, m.Unit, m.Value[0])
+			singleMetrics[metric] = append(singleMetrics[metric], m.Value...)
+		}
+	}
 }
