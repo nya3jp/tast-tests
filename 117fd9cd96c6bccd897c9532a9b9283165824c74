@@ -16,6 +16,47 @@
       "message": "Hiroki: do you mind taking a quick look at the method to wait for TTS engine initialization to see if they look correct to you? Thanks again for the suggestion.",
       "revId": "117fd9cd96c6bccd897c9532a9b9283165824c74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "497a1fce_1517d12e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-08T05:50:30Z",
+      "side": 1,
+      "message": "lgtm!",
+      "parentUuid": "0ea7c4d1_576361e5",
+      "revId": "117fd9cd96c6bccd897c9532a9b9283165824c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dfb1430_e20c7686",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/tts_cache_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-08T05:50:30Z",
+      "side": 1,
+      "message": "question: I\u0027m not familiar with how services are started here. Is 15 seconds long enough?",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 28
+      },
+      "revId": "117fd9cd96c6bccd897c9532a9b9283165824c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
