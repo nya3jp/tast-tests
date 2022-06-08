@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf8fb86_6b2e93ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-08T00:33:53Z",
+      "side": 1,
+      "message": "nit: can we just turn this into a bool? We\u0027re only using it for one thing.",
+      "range": {
+        "startLine": 149,
+        "startChar": 74,
+        "endLine": 149,
+        "endChar": 79
+      },
+      "revId": "78960ae0f33763362d678de7cabcc7cfb98de394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
