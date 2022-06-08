@@ -22,6 +22,30 @@
       },
       "revId": "a3564ebd96ce9f5641b48982c583f4bfb6325a21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42f1e9c3_f95baceb",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-08T20:49:51Z",
+      "side": 1,
+      "message": "This is how cryptohome understands that it is LE credential. If we remove the flag it doesn\u0027t do LE authentication with PinWeaver. Same as AddCredentials. \nWe can modify the AuthenticateAuthSession to understand the LE credential from VauktKeyset file but for AddCredential it has to be a flag.\nAlso it\u0027d be better if Chrome sends a flag during AuthenteAuthSession too.",
+      "parentUuid": "e6b33cad_d06fc02f",
+      "range": {
+        "startLine": 289,
+        "startChar": 44,
+        "endLine": 289,
+        "endChar": 59
+      },
+      "revId": "a3564ebd96ce9f5641b48982c583f4bfb6325a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
