@@ -16,6 +16,23 @@
       "message": "Hi reviewers, please help me review this change, thanks.",
       "revId": "f8981e40e791c23700701711ce76756a297762ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97136bd3_dac9bb1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-08T15:09:20Z",
+      "side": 1,
+      "message": "Please also run tast unit test: fast_build.sh -T\nThen add this line to the commit log\nTEST\u003dtast unit test passed.\n\nAlso, please have a domain expert to give you a +2. Thanks.\n",
+      "revId": "f8981e40e791c23700701711ce76756a297762ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
