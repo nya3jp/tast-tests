@@ -52,10 +52,12 @@ const (
 	// Links to the test server.
 	fetchEpochURL = "https://staging-chromeoslogin-pa.sandbox.googleapis.com/v1/epoch/1"
 	mediateURL    = "https://staging-chromeoslogin-pa.sandbox.googleapis.com/v1/cryptorecovery"
+	// Public key of the HSM.
+	hsmPubKey = "3059301306072a8648ce3d020106082a8648ce3d03010703420004240237734dac9e9736533633dc0de71f926d919927e9190aa409a89ffc8fa8b6072516ddc88785ae78de0411357d270b1793859f1d8725911005b4384edcda7f"
 )
 
 func RecoveryCryptoWithServer(ctx context.Context, s *testing.State) {
-	testTool, newErr := cryptohome.NewRecoveryTestTool()
+	testTool, newErr := cryptohome.NewRecoveryTestTool(hsmPubKey)
 	if newErr != nil {
 		s.Fatal("Failed to initialize RecoveryTestTool", newErr)
 	}
