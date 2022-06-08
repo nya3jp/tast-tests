@@ -47,6 +47,7 @@ func Drivefs(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
 		chrome.ARCEnabled(),
+		chrome.UnRestrictARCCPU(),
 		chrome.GAIALogin(chrome.Creds{
 			User: s.RequiredVar("arc.Drivefs.user1"),
 			Pass: s.RequiredVar("arc.Drivefs.password1"),

@@ -67,6 +67,7 @@ func Fsp(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(
 		ctx,
 		chrome.ARCEnabled(),
+		chrome.UnRestrictARCCPU(),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 	)
 	if err != nil {

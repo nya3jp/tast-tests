@@ -86,6 +86,7 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 		ctx,
 		chrome.GAIALogin(chrome.Creds{User: user, Pass: password}),
 		chrome.ARCSupported(),
+		chrome.UnRestrictARCCPU(),
 		chrome.ProdPolicy(),
 		chrome.ExtraArgs(args...))
 	if err != nil {

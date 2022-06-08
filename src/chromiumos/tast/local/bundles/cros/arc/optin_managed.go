@@ -94,6 +94,7 @@ func setupManagedChrome(ctx context.Context, gaiaLogin chrome.Option, fdms *fake
 		gaiaLogin,
 		chrome.DMSPolicy(fdms.URL),
 		chrome.ARCSupported(),
+		chrome.UnRestrictARCCPU(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		err = errors.Wrap(err, "failed to create Chrome")

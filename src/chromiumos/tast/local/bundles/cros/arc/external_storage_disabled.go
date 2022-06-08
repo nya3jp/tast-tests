@@ -63,6 +63,7 @@ func ExternalStorageDisabled(ctx context.Context, s *testing.State) {
 		chrome.GAIALogin(creds),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.ARCSupported(),
+		chrome.UnRestrictARCCPU(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)

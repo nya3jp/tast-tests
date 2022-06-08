@@ -115,6 +115,7 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			ctx,
 			login,
 			chrome.ARCSupported(),
+			chrome.UnRestrictARCCPU(),
 			chrome.ProdPolicy(),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...))
 		if err != nil {

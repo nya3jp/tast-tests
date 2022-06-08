@@ -42,7 +42,7 @@ func init() {
 func KernelCrash(ctx context.Context, s *testing.State) {
 	s.Log("Connecting to Chrome")
 	// We cannot use the precondition arc.Booted(). We need to close and re-assign the ARC struct, but calling arc.New() is forbidden while using the precondition.
-	cr, err := chrome.New(ctx, chrome.ARCEnabled())
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.UnRestrictARCCPU())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}

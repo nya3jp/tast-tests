@@ -137,7 +137,7 @@ func runBoot(ctx context.Context, s *testing.State) {
 	defer reader.Close()
 
 	args := s.Param().(bootConfig).chromeArgs
-	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.ExtraArgs(args...))
+	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.UnRestrictARCCPU(), chrome.ExtraArgs(args...))
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
