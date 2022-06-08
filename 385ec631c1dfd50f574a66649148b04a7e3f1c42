@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b1da7e1_000c3611",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-08T00:54:21Z",
+      "side": 1,
+      "message": "Still LGTM.\n\nDamien there is nothing else blocking these patches right ? The series can be submitted now.",
+      "revId": "385ec631c1dfd50f574a66649148b04a7e3f1c42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
