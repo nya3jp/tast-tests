@@ -16,6 +16,115 @@
       "message": "PTAL, thank you!",
       "revId": "90a8714293cfb3d278e5a7f295f8a5d9871d7838",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66eade2b_ee93c477",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-08T07:38:53Z",
+      "side": 1,
+      "message": "lgtm % nits",
+      "revId": "90a8714293cfb3d278e5a7f295f8a5d9871d7838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d22eb2_380a8e7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_auto_dark_light_wallpaper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-08T07:38:53Z",
+      "side": 1,
+      "message": "It is better to move it after Line 82. Otherwise you may not get the correct screenshot on error.",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 75
+      },
+      "revId": "90a8714293cfb3d278e5a7f295f8a5d9871d7838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be7a929_b2b959c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_auto_dark_light_wallpaper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-08T07:38:53Z",
+      "side": 1,
+      "message": "I am confused about this action, are you trying to set to dark mode or auto mode?",
+      "range": {
+        "startLine": 88,
+        "startChar": 27,
+        "endLine": 88,
+        "endChar": 43
+      },
+      "revId": "90a8714293cfb3d278e5a7f295f8a5d9871d7838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c43b3dfd_8e51d775",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_auto_dark_light_wallpaper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-08T07:38:53Z",
+      "side": 1,
+      "message": "why not just use `image :\u003d images[2]`?",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 13
+      },
+      "revId": "90a8714293cfb3d278e5a7f295f8a5d9871d7838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6531c6a_d0e2148d",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-08T07:38:53Z",
+      "side": 1,
+      "message": "Better to just use `CurrentWallpaper`.",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 178,
+        "endChar": 26
+      },
+      "revId": "90a8714293cfb3d278e5a7f295f8a5d9871d7838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
