@@ -188,6 +188,29 @@ func (r *Recorder) AddCollectedMetrics(tconn *chrome.TestConn, configs ...Metric
 	return nil
 }
 
+// AddCommonMetrics adds MetricConfigs defined by CommonMetrics to the collected metrics.
+// tconn will be used as the test connection for Ash and AnyChrome common metrics. bTconn
+// will be used for the Browser common metrics. If bTconn is different than tconn, then
+// another set of AnyChrome common metrics will be collected with bTconn used as the test
+// connection.
+func (r *Recorder) AddCommonMetrics(tconn, bTconn *chrome.TestConn) error {
+	if err := r.AddCollectedMetrics(tconn, AshCommonMetricConfigs()...); err != nil {
+		return errors.Wrap(err, "failed to add Ash common metrics")
+	}
+	if err := r.AddCollectedMetrics(bTconn, BrowserCommonMetricConfigs()...); err != nil {
+		return errors.Wrap(err, "failed to add Browser common metrics")
+	}
+	if err := r.AddCollectedMetrics(tconn, AnyChromeCommonMetricConfigs()...); err != nil {
+		return errors.Wrap(err, "failed to add Ash AnyChrome common metrics")
+	}
+	if tconn != bTconn {
+		if err := r.AddCollectedMetrics(bTconn, AnyChromeCommonMetricConfigs()...); err != nil {
+			return errors.Wrap(err, "failed to add Lacros AnyChrome common metrics")
+		}
+	}
+	return nil
+}
+
 // NewRecorder creates a Recorder. It also aggregates the metrics of each
 // category (animation smoothness and input latency) and creates the aggregated
 // reports.
