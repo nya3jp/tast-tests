@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa06f251_d8042a10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-06-08T23:17:25Z",
+      "side": 1,
+      "message": "got %d profiles, want %d profiles, pendingProfiles, numProfiles",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 75
+      },
+      "revId": "4743b732c1601965bfe573b382324b693fb63dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0bba119_15350570",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-06-08T23:17:25Z",
+      "side": 1,
+      "message": "s/dbus/profile",
+      "range": {
+        "startLine": 114,
+        "startChar": 28,
+        "endLine": 114,
+        "endChar": 32
+      },
+      "revId": "4743b732c1601965bfe573b382324b693fb63dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb128b1b_1b96431d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_ci.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-06-08T23:17:25Z",
+      "side": 1,
+      "message": "Not sure if it is a recommended go construct, but I would introduce a constant in hermes.go called kNullEID \u003d \"\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 67,
+        "endLine": 73,
+        "endChar": 69
+      },
+      "revId": "4743b732c1601965bfe573b382324b693fb63dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
