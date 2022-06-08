@@ -40,14 +40,17 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Fixture:           "loggedInToChromeAndArcWithLacros",
 		}},
-		VarDeps: []string{"accountmanager.username2", "accountmanager.password2"},
+		VarDeps: []string{
+			"accountmanager.ARCAccountPicker.username",
+			"accountmanager.ARCAccountPicker.password",
+		},
 		Timeout: 6 * time.Minute,
 	})
 }
 
 func ARCAccountPicker(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("accountmanager.username2")
-	password := s.RequiredVar("accountmanager.password2")
+	username := s.RequiredVar("accountmanager.ARCAccountPicker.username")
+	password := s.RequiredVar("accountmanager.ARCAccountPicker.password")
 
 	// Reserve one minute for various cleanup.
 	cleanupCtx := ctx
