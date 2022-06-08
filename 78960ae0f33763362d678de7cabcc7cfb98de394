@@ -22,6 +22,30 @@
       },
       "revId": "78960ae0f33763362d678de7cabcc7cfb98de394",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6b00ea8_ef3afb70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-06-08T00:49:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2bf8fb86_6b2e93ae",
+      "range": {
+        "startLine": 149,
+        "startChar": 74,
+        "endLine": 149,
+        "endChar": 79
+      },
+      "revId": "78960ae0f33763362d678de7cabcc7cfb98de394",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
