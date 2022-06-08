@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cc94a1e_eef7d3bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-06-08T00:48:48Z",
+      "side": 1,
+      "message": "I refactored the common helper functions into a new projector.go in the downstream CL crrev.com/c/3688132 once more than one test starts calling these functions.",
+      "parentUuid": "c0c884d4_c7f254fe",
+      "revId": "46151546b99689949413326c04a51b74ebf36427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9485beb_d8d84a4d",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-07T20:50:52Z",
       "side": 1,
       "message": "Are there any implications here if this fails? Might be worth having a cleanup that runs prior to tests running ensuring there are no files in the users drive.",
+      "range": {
+        "startLine": 161,
+        "startChar": 27,
+        "endLine": 161,
+        "endChar": 73
+      },
+      "revId": "46151546b99689949413326c04a51b74ebf36427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0deca8f8_df0e2342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-06-08T00:48:48Z",
+      "side": 1,
+      "message": "Done. We could run cleanups before and after, but that seems a little excessive. Also, if the cleanup code is failing, then it will fail both times. Instead, I added an assertion that there are no pre-existing screencast items before the test runs. If there are pre-existing screencast items, then the test should fail because this is unexpected behavior, we exit early and avoid creating more screencast items, and the deferred deleteScreencastItems() function will clean things up.",
+      "parentUuid": "a9485beb_d8d84a4d",
       "range": {
         "startLine": 161,
         "startChar": 27,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d59282c_300ac6c9",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-06-08T00:48:48Z",
+      "side": 1,
+      "message": "Done. Thanks for the tip!",
+      "parentUuid": "a7186751_549ca872",
+      "range": {
+        "startLine": 34,
+        "startChar": 32,
+        "endLine": 34,
+        "endChar": 208
+      },
+      "revId": "46151546b99689949413326c04a51b74ebf36427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d7760ca_d18f8a30",
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8fe8f4d_62eda12e",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-06-08T00:48:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d7760ca_d18f8a30",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "46151546b99689949413326c04a51b74ebf36427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b5f4038_5f9d2a8a",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-06-07T20:50:52Z",
       "side": 1,
       "message": "The timeout for the `SetUp` section is 120s but this wait itself is 120s, might want to reserve a little more time in `SetUp` to ensure everything is given adequate time to finish.",
+      "range": {
+        "startLine": 77,
+        "startChar": 72,
+        "endLine": 77,
+        "endChar": 85
+      },
+      "revId": "46151546b99689949413326c04a51b74ebf36427",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dd10c0a_21872cca",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-06-08T00:48:48Z",
+      "side": 1,
+      "message": "Done. I added an additional minute to the fixture\u0027s SetUpTimeout.",
+      "parentUuid": "5b5f4038_5f9d2a8a",
       "range": {
         "startLine": 77,
         "startChar": 72,

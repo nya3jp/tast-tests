@@ -39,6 +39,30 @@
       },
       "revId": "80be53ee8a508d8a1ea4184e212a1490769fecb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "109f511f_ae60b7d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-06-08T00:48:48Z",
+      "side": 1,
+      "message": "Done. Good idea putting the deleteScreencastItems() into a deferred function so it will always run regardless if the main test fails.",
+      "parentUuid": "686b6a60_1a6e7ca8",
+      "range": {
+        "startLine": 124,
+        "startChar": 11,
+        "endLine": 124,
+        "endChar": 44
+      },
+      "revId": "80be53ee8a508d8a1ea4184e212a1490769fecb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
