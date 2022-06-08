@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67654ff2_ad171280",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-08T21:09:09Z",
+      "side": 1,
+      "message": "Thanks Jie!",
+      "revId": "89863b7b96dfb6ef89c6f89a5d9d1f8b8e0f7bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c46f1eb8_61a8f9d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-08T21:09:09Z",
+      "side": 1,
+      "message": "Just for a bit of added clarity, I might suggest a slight modification to the first part:\n\n\"EnterNetNS executes the current OS thread in the netns associated with this Env. It returns the cleanup function, which switches the thread execution back to the root netns. Note that ...\"\n\nAlso should root netns be original netns?\n\nPlease correct me if I\u0027m missing anything!",
+      "revId": "89863b7b96dfb6ef89c6f89a5d9d1f8b8e0f7bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eefe8b3c_e6ce339c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-08T21:09:09Z",
+      "side": 1,
+      "message": "\"as the one that enters the netns %s\"",
+      "revId": "89863b7b96dfb6ef89c6f89a5d9d1f8b8e0f7bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

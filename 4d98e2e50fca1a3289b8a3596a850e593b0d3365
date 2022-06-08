@@ -37,6 +37,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ae26c52_d4dd8ff2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-08T21:09:09Z",
+      "side": 1,
+      "message": "For my understanding, why don\u0027t we have a single IPv6Addr like we do for IPv4Addr?",
+      "revId": "4d98e2e50fca1a3289b8a3596a850e593b0d3365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "349638b6_0080c2af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-08T21:09:09Z",
+      "side": 1,
+      "message": "For my understanding, is it better if the caller caches the results because changing the netns (and changing it back) is a slow operation?",
+      "range": {
+        "startLine": 198,
+        "startChar": 24,
+        "endLine": 199,
+        "endChar": 67
+      },
+      "revId": "4d98e2e50fca1a3289b8a3596a850e593b0d3365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c64a84a6_fc7fd302",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
         "patchSetId": 3
@@ -78,6 +118,40 @@
         "endLine": 211,
         "endChar": 3
       },
+      "revId": "4d98e2e50fca1a3289b8a3596a850e593b0d3365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e40c40_cfcfe158",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-08T21:09:09Z",
+      "side": 1,
+      "message": "s/convert/converts",
+      "revId": "4d98e2e50fca1a3289b8a3596a850e593b0d3365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb871959_c0fbd8e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1301140
+      },
+      "writtenOn": "2022-06-08T21:09:09Z",
+      "side": 1,
+      "message": "Do we need to add an error check to ensure that ret.IPv4Addr is only written to once in the for loop?",
       "revId": "4d98e2e50fca1a3289b8a3596a850e593b0d3365",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
