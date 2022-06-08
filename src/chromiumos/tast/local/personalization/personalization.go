@@ -17,15 +17,11 @@ import (
 	"chromiumos/tast/local/input"
 )
 
-// PersonalizationHubWindow is the finder to find the Personalization Hub window in the UI.
-var PersonalizationHubWindow = nodewith.NameContaining("Wallpaper & style").Role(role.Window).First()
-
 // OpenPersonalizationHub returns an action to open the personalization app.
 func OpenPersonalizationHub(ui *uiauto.Context) uiauto.Action {
-	setPersonalizationMenu := nodewith.NameContaining("Set wallpaper").Role(role.MenuItem)
 	return ui.RetryUntil(uiauto.Combine("open personalization hub",
 		ui.MouseClickAtLocation(1, coords.Point{X: rand.Intn(200), Y: rand.Intn(200)}), // right click a random pixel
-		ui.WithInterval(300*time.Millisecond).LeftClickUntil(setPersonalizationMenu, ui.Gone(setPersonalizationMenu))),
+		ui.WithInterval(300*time.Millisecond).LeftClickUntil(SetPersonalizationMenu, ui.Gone(SetPersonalizationMenu))),
 		ui.Exists(PersonalizationHubWindow))
 }
 
@@ -33,21 +29,21 @@ func OpenPersonalizationHub(ui *uiauto.Context) uiauto.Action {
 // Reference: aria-label="$i18n{ariaLabelChangeWallpaper}"
 // ash/webui/personalization_app/resources/trusted/wallpaper/wallpaper_preview_element.html
 func OpenWallpaperSubpage(ui *uiauto.Context) uiauto.Action {
-	return openSubpage("Change wallpaper", ui)
+	return openSubpage(ChangeWallpaper, ui)
 }
 
 // OpenScreensaverSubpage returns an action to open the screensaver subpage.
 // Reference: aria-label="$i18n{ariaLabelChangeScreensaver}"
 // ash/webui/personalization_app/resources/trusted/personalization_main_element.html
 func OpenScreensaverSubpage(ui *uiauto.Context) uiauto.Action {
-	return openSubpage("Change screen saver", ui)
+	return openSubpage(ChangeScreensaver, ui)
 }
 
 // OpenAvatarSubpage returns an action to open the avatar subpage.
 // Reference: aria-label="$i18n{ariaLabelChangeAvatar}"
 // ash/webui/personalization_app/resources/trusted/user/user_preview_element.html
 func OpenAvatarSubpage(ui *uiauto.Context) uiauto.Action {
-	return openSubpage("Change avatar", ui)
+	return openSubpage(ChangeAvatar, ui)
 }
 
 // openSubpage returns an action to open a subpage from personalization hub main page.
@@ -67,17 +63,15 @@ func ClosePersonalizationHub(ui *uiauto.Context) uiauto.Action {
 }
 
 // ToggleLightMode returns an action to enable light color mode.
-// Reference: aria-label="$i18n{ariaLabelEnableLightColorMode}"
-// ash/webui/personalization_app/resources/trusted/personalization_theme_element.html
+// Reference: ash/webui/personalization_app/resources/trusted/personalization_theme_element.html
 func ToggleLightMode(ui *uiauto.Context) uiauto.Action {
-	return toggleThemeButton("Enable light color mode", ui)
+	return toggleThemeButton(LightModeName, ui)
 }
 
 // ToggleDarkMode returns an action to enable dark color mode.
-// Reference: aria-label="$i18n{ariaLabelEnableDarkColorMode}"
-// ash/webui/personalization_app/resources/trusted/personalization_theme_element.html
+// Reference: ash/webui/personalization_app/resources/trusted/personalization_theme_element.html
 func ToggleDarkMode(ui *uiauto.Context) uiauto.Action {
-	return toggleThemeButton("Enable dark color mode", ui)
+	return toggleThemeButton(DarkModeName, ui)
 }
 
 // toggleThemeButton returns an action to toggle a theme button.
@@ -90,7 +84,7 @@ func toggleThemeButton(themeButton string, ui *uiauto.Context) uiauto.Action {
 
 // NavigateHome returns an action to navigate Personalization Hub Main page.
 func NavigateHome(ui *uiauto.Context) uiauto.Action {
-	homeButton := nodewith.Role(role.Button).Name("Home")
+	homeButton := nodewith.Role(role.Link).Name("Home")
 	return uiauto.Combine("click home button",
 		ui.WaitUntilExists(homeButton),
 		ui.LeftClick(homeButton),
@@ -99,9 +93,13 @@ func NavigateHome(ui *uiauto.Context) uiauto.Action {
 
 // NavigateBreadcrumb returns an action to navigate to a desired page using breadcrumb.
 func NavigateBreadcrumb(breadcrumb string, ui *uiauto.Context) uiauto.Action {
-	breadcrumbButton := nodewith.Role(role.Button).Name(breadcrumb).HasClass("breadcrumb")
 	return uiauto.Combine(fmt.Sprintf("click breadcrumb button - %s", breadcrumb),
-		ui.LeftClick(breadcrumbButton))
+		ui.LeftClick(BreadcrumbNodeFinder(breadcrumb)))
+}
+
+// BreadcrumbNodeFinder finds a specific breadcrumb link node.
+func BreadcrumbNodeFinder(breadcrumb string) *nodewith.Finder {
+	return nodewith.Role(role.Link).Name(breadcrumb).HasClass("breadcrumb")
 }
 
 // SearchForAppInLauncher returns an action to search and select result in launcher.

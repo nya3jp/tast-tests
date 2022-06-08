@@ -9,12 +9,11 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/media/imgcmp"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/wallpaper"
@@ -35,7 +34,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Fixture:      "personalizationDefault",
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
@@ -43,11 +42,14 @@ func init() {
 func DailyRefresh(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Force Chrome to be in clamshell mode to make sure wallpaper view is clearly
 	// visible for us to compare it with the given rgba color.
@@ -55,7 +57,9 @@ func DailyRefresh(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure DUT is not in tablet mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// The test has a dependency of network speed, so we give uiauto.Context ample time to wait for nodes to load.
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
@@ -69,8 +73,8 @@ func DailyRefresh(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("Enable daily refresh",
 		wallpaper.OpenWallpaperPicker(ui),
 		wallpaper.SelectCollection(ui, constants.ElementCollection),
-		ui.LeftClick(nodewith.Name("Change wallpaper image daily").Role(role.ToggleButton)),
-		ui.WaitUntilExists(nodewith.Name("Refresh the current wallpaper image").Role(role.Button)),
+		ui.LeftClick(constants.ChangeDailyButton),
+		ui.WaitUntilExists(constants.RefreshButton),
 		wallpaper.MinimizeWallpaperPicker(ui),
 	)(ctx); err != nil {
 		s.Fatal("Failed to enable daily refresh: ", err)

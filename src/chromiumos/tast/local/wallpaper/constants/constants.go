@@ -12,6 +12,9 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 )
 
+// FillButton is a finder for the "Fill" toggle button node.
+var FillButton = nodewith.Name("Fill").Role(role.ToggleButton)
+
 // CenterButton is a finder for the "Center" toggle button node.
 var CenterButton = nodewith.Name("Center").Role(role.ToggleButton)
 
@@ -39,8 +42,14 @@ var RefreshButton = nodewith.Name("Refresh the current wallpaper image").Role(ro
 // SolidColorsCollection is the name of a wallpaper collection of solid colors.
 const SolidColorsCollection = "Solid colors"
 
-// ElementCollection is the name of a wallpaper collection of solid colors.
+// ElementCollection is the name of a wallpaper collection of elements.
 const ElementCollection = "Element"
+
+// DarkElementImage and LightElementImage are two images in Element collection.
+const (
+	DarkElementImage  = "Wind Dark Digital Art by Rutger Paulusse"
+	LightElementImage = "Wind Light Digital Art by Rutger Paulusse"
+)
 
 // YellowWallpaperName is the name of a solid yellow wallpaper in the solid colors collection.
 const YellowWallpaperName = "Yellow"

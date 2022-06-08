@@ -9,14 +9,14 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/personalization"
 	"chromiumos/tast/local/wallpaper"
+	"chromiumos/tast/local/wallpaper/constants"
 	"chromiumos/tast/testing"
 )
 
@@ -32,27 +32,22 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      3 * time.Minute,
+		Fixture:      "personalizationWithDarkLightMode",
 	})
 }
 
 func SetDarkLightWallpaper(ctx context.Context, s *testing.State) {
-	const (
-		dlCollection = "Element"
-		dImage       = "Wind Dark Digital Art by Rutger Paulusse"
-		lImage       = "Wind Light Digital Art by Rutger Paulusse"
-	)
+	cr := s.FixtValue().(*chrome.Chrome)
 
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("PersonalizationHub", "DarkLightMode"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(ctx)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Force Chrome to be in clamshell mode to make sure wallpaper preview is not
 	// enabled.
@@ -60,7 +55,9 @@ func SetDarkLightWallpaper(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure DUT is not in tablet mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// The test has a dependency of network speed, so we give uiauto.Context ample
 	// time to wait for nodes to load.
@@ -68,16 +65,18 @@ func SetDarkLightWallpaper(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("Enable dark mode",
 		personalization.OpenPersonalizationHub(ui),
-		personalization.ToggleDarkMode(ui))(ctx); err != nil {
+		personalization.ToggleDarkMode(ui),
+	)(ctx); err != nil {
 		s.Fatal("Failed to enable dark mode: ", err)
 	}
 
-	if err := uiauto.Combine(fmt.Sprintf("Change the wallpaper to %s %s", dlCollection, dImage),
+	if err := uiauto.Combine(fmt.Sprintf("Change the wallpaper to %s %s", constants.ElementCollection, constants.DarkElementImage),
 		personalization.OpenWallpaperSubpage(ui),
-		wallpaper.SelectCollection(ui, dlCollection),
-		wallpaper.SelectImage(ui, dImage),
-		ui.WaitUntilExists(nodewith.Name(fmt.Sprintf("Currently set %v", dImage)).Role(role.Heading)))(ctx); err != nil {
-		s.Fatalf("Failed to validate selected wallpaper %s %s: %v", dlCollection, dImage, err)
+		wallpaper.SelectCollection(ui, constants.ElementCollection),
+		wallpaper.SelectImage(ui, constants.DarkElementImage),
+		ui.WaitUntilExists(wallpaper.CurrentWallpaperWithSpecificNameFinder(constants.DarkElementImage)),
+	)(ctx); err != nil {
+		s.Fatalf("Failed to validate selected wallpaper %s %s: %v", constants.ElementCollection, constants.DarkElementImage, err)
 	}
 
 	if err := uiauto.Combine("Enable light mode",
@@ -86,9 +85,10 @@ func SetDarkLightWallpaper(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enable light mode: ", err)
 	}
 
-	if err := uiauto.Combine(fmt.Sprintf("Validate currently set wallpaper changed to %s %s", dlCollection, lImage),
+	if err := uiauto.Combine(fmt.Sprintf("Validate currently set wallpaper changed to %s %s", constants.ElementCollection, constants.LightElementImage),
 		personalization.OpenWallpaperSubpage(ui),
-		ui.WaitUntilExists(nodewith.Name(fmt.Sprintf("Currently set %v", lImage)).Role(role.Heading)))(ctx); err != nil {
-		s.Fatalf("Failed to validate selected wallpaper %s %s: %v", dlCollection, lImage, err)
+		ui.WaitUntilExists(wallpaper.CurrentWallpaperWithSpecificNameFinder(constants.LightElementImage)),
+	)(ctx); err != nil {
+		s.Fatalf("Failed to validate selected wallpaper %s %s: %v", constants.ElementCollection, constants.LightElementImage, err)
 	}
 }
