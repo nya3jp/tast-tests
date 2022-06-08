@@ -49,6 +49,32 @@ func init() {
 	})
 }
 
+/*
+Definitions from 802.11 standards:
+ProbeDelay: Delay to be used prior to transmitting a Probe frame during active
+scanning.
+MinChannelTime: The minimum time to spend on each channel when scanning.
+MaxChannelTime: The maximum time to spend on each channel when scanning.
+These values are integers, and MinChannelTime<=MaxChannelTime. They are set in
+the driver, and different chips may have different values.
+
+In an active scan, the station waits for either an indication of an incoming
+frame or for the ProbeDelay timer to expire. Then it sends a probe request and
+waits for MinChannelTime to elapse.
+    a. If the medium is never busy, move to the next channel;
+    b. If the medium is busy during the MinChannelTime interval, wait until
+    MaxChannelTime and process any probe response.
+
+In this test, the DUT performs an active scan on each channel. dwellTime is
+the time the DUT spends on each channel collecting beacon frames. The AP sends
+beacon frames every |delayInterval|, |numBSS| beacon frames in total. Since the
+medium is busy, the DUT will stay on each channel until MaxChannelTime has
+elapsed. dwellTime is calculated based on the timestamps of the first test
+beacon frame after the probe request, and the last test beacon frame received
+during the active scan. The purpose of this test is to verify that
+|minDwellTime| <= dwellTime (MaxChannelTime) <= |maxDwellTime|.
+*/
+
 func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 	const (
 		knownTestPrefix        = "wifi_CSDT"
@@ -120,7 +146,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get MAC of WiFi interface: ", err)
 	}
 
-	testOnce := func(ctx context.Context, s *testing.State, tc csdtTestcase) {
+	testOnce := func(ctx context.Context, s *testing.State, tc csdtTestcase) bool {
 		ssidPrefix := knownTestPrefix + "_" + uniqueString(5, suffixLetters) + "_"
 
 		bssList, capturer, err := func(ctx context.Context) ([]*iw.BSSData, *pcap.Capturer, error) {
@@ -223,7 +249,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 		}
 		s.Logf("Received %d probe requests", len(probeReqPackets))
 		if len(probeReqPackets) == 0 {
-			s.Fatal("No probe requests in packet capture")
+			return false
 		}
 		probeReqTimestamp := probeReqPackets[0].Metadata().Timestamp
 		s.Log("Probe Request Time: ", probeReqTimestamp)
@@ -324,11 +350,25 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			Unit:      "seconds",
 			Direction: perf.SmallerIsBetter,
 		}, dwellTime.Seconds())
+		return true
 	}
 
 	for i, tc := range testcases {
 		subtest := func(ctx context.Context, s *testing.State) {
-			testOnce(ctx, s, tc)
+			if testOnce(ctx, s, tc) {
+				return
+			}
+			// |beaconFirst| is defined as the first test beacon frame after
+			// the probe request, but the captures occasionally miss the probe
+			// requests either due to collision with the test beacon frames or
+			// the DUT failing to send the probe request, and this causes the
+			// test to fail. b/225073589 shows that the loss rate of the probe
+			// request is about 3%, rerunning the test gives << 1% failure
+			// rate, which is acceptable.
+			s.Log("No probe requests in packet capture, run the test again")
+			if !testOnce(ctx, s, tc) {
+				s.Fatal("No probe requests in packet capture in two channel scans")
+			}
 		}
 		if !s.Run(ctx, fmt.Sprintf("Testcase #%d (ch%d)", i, tc.apChannel), subtest) {
 			// Stop if one of the subtest's parameter set fails the test.
