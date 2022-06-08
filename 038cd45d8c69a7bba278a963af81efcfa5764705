@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "607e4108_8a6f310c",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-08T23:52:48Z",
+      "side": 1,
+      "message": "We can just make it extra permissive, e.g. use 0-9",
+      "range": {
+        "startLine": 876,
+        "startChar": 45,
+        "endLine": 876,
+        "endChar": 49
+      },
+      "revId": "038cd45d8c69a7bba278a963af81efcfa5764705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
