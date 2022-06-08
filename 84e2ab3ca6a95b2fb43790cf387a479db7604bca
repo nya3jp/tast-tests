@@ -1,6 +1,54 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d29f523e_4005a203",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-08T20:11:22Z",
+      "side": 1,
+      "message": "\u003e \"addtional\" is a possible misspelling of \"additional\".\n\nPlease fix.",
+      "parentUuid": "0e9df7df_126e2d1f",
+      "range": {
+        "startLine": 12,
+        "startChar": 59,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "84e2ab3ca6a95b2fb43790cf387a479db7604bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b66d911_6dc8c460",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-08T20:11:22Z",
+      "side": 1,
+      "message": "\u003e \"entery\" is a possible misspelling of \"entry\".\n\nPlease fix.",
+      "parentUuid": "7c37bb69_30521934",
+      "range": {
+        "startLine": 16,
+        "startChar": 37,
+        "endLine": 16,
+        "endChar": 43
+      },
+      "revId": "84e2ab3ca6a95b2fb43790cf387a479db7604bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "721bfa92_ad381701",
