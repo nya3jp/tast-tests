@@ -70,6 +70,30 @@
       },
       "revId": "0b95bc1a3fcd821d8ab03b7faad8e0466d95e4dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9388a1_e2b74891",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-06-08T00:12:49Z",
+      "side": 1,
+      "message": "Got it, fixed.",
+      "parentUuid": "b9492e11_f5609b76",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 4
+      },
+      "revId": "0b95bc1a3fcd821d8ab03b7faad8e0466d95e4dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
