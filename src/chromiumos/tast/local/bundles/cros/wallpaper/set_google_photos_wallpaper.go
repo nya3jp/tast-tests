@@ -9,11 +9,13 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/media/imgcmp"
+	"chromiumos/tast/local/personalization"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/wallpaper"
 	"chromiumos/tast/local/wallpaper/constants"
@@ -36,10 +38,8 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		VarDeps: []string{
-			"wallpaper.googlePhotosAccountPool",
-		},
-		Timeout: 5 * time.Minute,
+		Timeout:      5 * time.Minute,
+		Fixture:      "personalizationWithGooglePhotosWallpaper",
 		Params: []testing.Param{{
 			Name: "from_album",
 			Val: setGooglePhotosWallpaperParams{
@@ -55,23 +55,16 @@ func init() {
 }
 
 func SetGooglePhotosWallpaper(ctx context.Context, s *testing.State) {
-	// Setting Google Photos wallpapers requires that Chrome be logged in with
-	// a user from an account pool which has been preconditioned to have a
-	// Google Photos library with specific photos/albums present. Note that sync
-	// is disabled to prevent flakiness caused by wallpaper cross device sync.
-	cr, err := chrome.New(ctx,
-		chrome.GAIALoginPool(s.RequiredVar("wallpaper.googlePhotosAccountPool")),
-		chrome.EnableFeatures("WallpaperGooglePhotosIntegration", "PersonalizationHub"),
-		chrome.ExtraArgs("--disable-sync"))
-	if err != nil {
-		s.Fatal("Failed to log in to Chrome: ", err)
-	}
+	cr := s.FixtValue().(*chrome.Chrome)
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	// Force Chrome to be in clamshell mode to make sure the wallpaper view is
 	// clearly visible for us to compare it with an expected RGBA color.
@@ -79,7 +72,9 @@ func SetGooglePhotosWallpaper(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure DUT is not in tablet mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// The test has a dependency on network speed, so we give `uiauto.Context`
 	// ample time to wait for nodes to load.
@@ -100,6 +95,10 @@ func SetGooglePhotosWallpaper(ctx context.Context, s *testing.State) {
 			)(ctx)
 		},
 		wallpaper.SelectGooglePhotosPhoto(ui, constants.GooglePhotosWallpaperPhoto),
+		// Navigate to Google Photos subpage and select "Fill" mode for the selected wallpaper.
+		personalization.NavigateBreadcrumb(constants.GooglePhotosWallpaperCollection, ui),
+		ui.WaitUntilExists(constants.FillButton),
+		ui.LeftClick(constants.FillButton),
 		wallpaper.MinimizeWallpaperPicker(ui),
 	)(ctx); err != nil {
 		s.Fatal("Failed to set new wallpaper: ", err)

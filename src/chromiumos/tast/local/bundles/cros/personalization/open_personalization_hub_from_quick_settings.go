@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/personalization"
 	"chromiumos/tast/testing"
 )
 
@@ -57,7 +58,7 @@ func OpenPersonalizationHubFromQuickSettings(ctx context.Context, s *testing.Sta
 		s.Fatal("Failed to open Personalization Hub from Quick Settings: ", err)
 	}
 
-	if err := ui.WaitUntilExists(nodewith.NameContaining("Wallpaper & style").Role(role.Window).First())(ctx); err != nil {
+	if err := ui.WaitUntilExists(personalization.PersonalizationHubWindow)(ctx); err != nil {
 		s.Fatal("Failed to validate Personalization Hub open: ", err)
 	}
 }

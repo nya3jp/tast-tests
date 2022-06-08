@@ -27,7 +27,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Fixture:      "personalizationDefault",
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
@@ -42,7 +42,7 @@ func Change(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 	personalizeMenu := nodewith.Name("Set wallpaper  style").Role(role.MenuItem)
 	changeWallpaperButton := nodewith.Name("Change wallpaper").Role(role.Button)
-	solidColorsMenu := nodewith.NameContaining("Element").Role(role.Button).HasClass("photo-inner-container")
+	solidColorsMenu := nodewith.NameContaining("Element").Role(role.ListBoxOption).HasClass("photo-inner-container")
 	if err := uiauto.Combine("change the wallpaper",
 		ui.RightClick(nodewith.HasClass("WallpaperView")),
 		// This button takes a bit before it is clickable.

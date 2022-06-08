@@ -12,8 +12,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/personalization"
 	"chromiumos/tast/testing"
@@ -30,9 +28,8 @@ func init() {
 			"assistive-eng@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		VarDeps:      []string{"ambient.username", "ambient.password"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "personalizationDefault",
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
@@ -59,15 +56,15 @@ func OpenPersonalizationHubFromLauncher(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	if err := uiauto.Combine("open wallpaper app by searching in launcher",
-		personalization.SearchForAppInLauncher("change wallpaper", "Change wallpaper", kb, ui),
-		ui.WaitUntilExists(nodewith.Role(role.Button).NameContaining("Wallpaper").HasClass("breadcrumb")),
+		personalization.SearchForAppInLauncher(personalization.WallpaperSearchTerm, personalization.ChangeWallpaper, kb, ui),
+		ui.WaitUntilExists(personalization.BreadcrumbNodeFinder(personalization.WallpaperSubpageName)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open wallpaper app from launcher: ", err)
 	}
 
 	if err := uiauto.Combine("open personalization hub by searching in launcher",
-		personalization.SearchForAppInLauncher("personalization hub", "Personalization", kb, ui),
-		ui.Exists(nodewith.Role(role.Window).NameContaining("Wallpaper & style").First()),
+		personalization.SearchForAppInLauncher(personalization.PersonalizationSearchTerm, personalization.Personalization, kb, ui),
+		ui.Exists(personalization.PersonalizationHubWindow),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open personalization hub from launcher: ", err)
 	}

@@ -32,7 +32,8 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      chrome.LoginTimeout + time.Minute,
+		Timeout:      3 * time.Minute,
+		Fixture:      "chromeLoggedIn",
 	})
 }
 
@@ -44,21 +45,17 @@ func SetDefaultUserAvatar(ctx context.Context, s *testing.State) {
 		secondImageID   = "53"
 	)
 
-	clearUpCtx := ctx
+	cr := s.FixtValue().(*chrome.Chrome)
+
+	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("PersonalizationHub"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
-	}
-	defer cr.Close(clearUpCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(clearUpCtx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	ui := uiauto.New(tconn)
 
