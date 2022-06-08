@@ -76,24 +76,73 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 
-	// Run against ash-chrome.
-	if ashPerfValues, err := runDocsPageLoad(ctx, docsURLToComment, func(ctx context.Context, url string) (*chrome.Chrome, *chrome.Conn, lacrosperf.CleanupCallback, error) {
-		conn, cleanup, err := lacrosperf.SetupCrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
-		return cr, conn, cleanup, err
-	}); err != nil {
-		s.Error("Failed to run ash-chrome benchmark: ", err)
-	} else {
-		pv.MergeWithSuffix(".ash", ashPerfValues)
+	// Collect single metric values from the same metric to be aggregated into the final result.
+	singleMetrics := make(map[perf.Metric][]float64)
+
+	const iterationCount = 7
+	for i := 0; i < iterationCount; i++ {
+		testing.ContextLogf(ctx, "Running: iteration %d/%d", i+1, iterationCount)
+		// Run against ash-chrome.
+		if ashPerfValues, err := runDocsPageLoad(ctx, docsURLToComment, func(ctx context.Context, url string) (*chrome.Chrome, *chrome.Conn, lacrosperf.CleanupCallback, error) {
+			conn, cleanup, err := lacrosperf.SetupCrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
+			return cr, conn, cleanup, err
+		}); err != nil {
+			s.Error("Failed to run ash-chrome benchmark: ", err)
+		} else {
+			suffix := ".ash"
+			for _, m := range ashPerfValues.Proto().GetValues() {
+				m.Name += suffix
+				metric := perf.Metric{
+					Name:      m.Name,
+					Unit:      m.Unit,
+					Direction: perf.Direction(m.Direction),
+					Multiple:  m.Multiple,
+				}
+				if m.Multiple {
+					testing.ContextLogf(ctx, "Multiple: tag=%s unit=%s values=%v", m.Name, m.Unit, m.Value)
+					pv.Append(metric, m.Value...)
+				} else {
+					metric.Variant = "average"
+					testing.ContextLogf(ctx, "Non-multiple: tag=%s unit=%s value=%f", m.Name, m.Unit, m.Value[0])
+					singleMetrics[metric] = append(singleMetrics[metric], m.Value...)
+				}
+			}
+		}
+
+		// Run against lacros.
+		if lacrosPerfValues, err := runDocsPageLoad(ctx, docsURLToComment, func(ctx context.Context, url string) (*chrome.Chrome, *chrome.Conn, lacrosperf.CleanupCallback, error) {
+			conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
+			return cr, conn, cleanup, err
+		}); err != nil {
+			s.Error("Failed to run lacros-chrome benchmark: ", err)
+		} else {
+			suffix := ".lacros"
+			for _, m := range lacrosPerfValues.Proto().GetValues() {
+				m.Name += suffix
+				metric := perf.Metric{
+					Name:      m.Name,
+					Unit:      m.Unit,
+					Direction: perf.Direction(m.Direction),
+					Multiple:  m.Multiple,
+				}
+				if m.Multiple {
+					testing.ContextLogf(ctx, "Multiple: tag=%s unit=%s values=%v", m.Name, m.Unit, m.Value)
+					pv.Append(metric, m.Value...)
+				} else {
+					metric.Variant = "average"
+					testing.ContextLogf(ctx, "Non-multiple: tag=%s unit=%s value=%f", m.Name, m.Unit, m.Value[0])
+					singleMetrics[metric] = append(singleMetrics[metric], m.Value...)
+				}
+			}
+		}
 	}
 
-	// Run against lacros.
-	if lacrosPerfValues, err := runDocsPageLoad(ctx, docsURLToComment, func(ctx context.Context, url string) (*chrome.Chrome, *chrome.Conn, lacrosperf.CleanupCallback, error) {
-		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
-		return cr, conn, cleanup, err
-	}); err != nil {
-		s.Error("Failed to run lacros-chrome benchmark: ", err)
-	} else {
-		pv.MergeWithSuffix(".lacros", lacrosPerfValues)
+	for k, values := range singleMetrics {
+		sum := 0.0
+		for _, v := range values {
+			sum += v
+		}
+		pv.Set(k, sum/float64(len(values)))
 	}
 
 	if err := pv.Save(s.OutDir()); err != nil {
@@ -185,12 +234,14 @@ func runDocsPageLoad(
 		Name:      "docs.load",
 		Unit:      "seconds",
 		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
 	}, time.Duration(loadTime).Seconds())
 
 	pv.Set(perf.Metric{
 		Name:      "docs.load_and_visible",
 		Unit:      "seconds",
 		Direction: perf.SmallerIsBetter,
+		Multiple:  true,
 	}, time.Duration(visibleLoadTime).Seconds())
 
 	if err := cujRecorder.Record(testCtx, pv); err != nil {
