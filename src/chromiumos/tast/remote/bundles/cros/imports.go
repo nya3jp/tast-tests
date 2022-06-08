@@ -13,6 +13,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/bluetooth"
 	_ "chromiumos/tast/remote/bundles/cros/camera"
 	_ "chromiumos/tast/remote/bundles/cros/cellular"
+	_ "chromiumos/tast/remote/bundles/cros/chameleond"
 	_ "chromiumos/tast/remote/bundles/cros/crash"
 	_ "chromiumos/tast/remote/bundles/cros/enterprise"
 	_ "chromiumos/tast/remote/bundles/cros/example"
