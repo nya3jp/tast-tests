@@ -16,6 +16,23 @@
       "message": "PTAL when you get a chance. Thanks!",
       "revId": "bdb8b2a55297e1edb88fd77e3907b77382a8ba0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a59db8f_a535a5b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2022-06-08T18:36:26Z",
+      "side": 1,
+      "message": "Why don\u0027t you just disable the capability on the device? I\u0027m about to add a bunch of HEVC tests for ARCVM as well and then those would also need to have this dependence too.",
+      "revId": "bdb8b2a55297e1edb88fd77e3907b77382a8ba0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
