@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fc0bd43_a180386c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-08T23:28:06Z",
+      "side": 1,
+      "message": "Thanks Alexander! Actually after reading your comment, I realized I need to update https://crrev.com/c/3656132 to use browser Type as the map key, instead of *browser.Browser. I\u0027ll change that!",
+      "parentUuid": "afc495ff_871d0513",
+      "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "472ed552_2eedea86",
