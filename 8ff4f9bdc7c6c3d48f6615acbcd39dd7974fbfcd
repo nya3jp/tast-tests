@@ -34,6 +34,24 @@
       "parentUuid": "03db3dbc_3a64776f",
       "revId": "8ff4f9bdc7c6c3d48f6615acbcd39dd7974fbfcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0c4e9ad_a22b58ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-08T22:53:28Z",
+      "side": 1,
+      "message": "In this case, you should have a Cq-Depend on https://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/4810540.\n\nOtherwise, shreiffs may enounter issues if they revert https://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/4810540",
+      "parentUuid": "3ad9ee2a_f179751c",
+      "revId": "8ff4f9bdc7c6c3d48f6615acbcd39dd7974fbfcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
