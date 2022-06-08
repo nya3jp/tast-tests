@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b97ed2_67cd75c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-08T14:02:22Z",
+      "side": 1,
+      "message": "nit: Start the CL message with either \nvideo:\nor\ntast-tests:\n\nI guess the first one applies here well as the changes were done under video package.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "e686944ea0fedda106d6819f2e4a5b1879a1bb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "52cc34c7_a80e8dcb",
@@ -31,6 +54,23 @@
       "writtenOn": "2022-06-07T19:09:12Z",
       "side": 1,
       "message": "vLGTM!",
+      "revId": "e686944ea0fedda106d6819f2e4a5b1879a1bb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a04191ee_09189f14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-08T14:02:22Z",
+      "side": 1,
+      "message": "LGTM % nit.",
       "revId": "e686944ea0fedda106d6819f2e4a5b1879a1bb7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
