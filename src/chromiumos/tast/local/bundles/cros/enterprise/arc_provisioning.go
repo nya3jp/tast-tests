@@ -151,6 +151,10 @@ func ARCProvisioning(ctx context.Context, s *testing.State) {
 			return exit("increase logcat buffer size", err)
 		}
 
+		if err := a.SetPlayOTAUpdateSetting(ctx, false); err != nil {
+			return exit("set Play OTA update setting", err)
+		}
+
 		sysLogReader, err := openSysLog(ctx)
 		if err != nil {
 			return exit("initialize syslog reader", err)

@@ -84,6 +84,10 @@ func VerifySettings(ctx context.Context, s *testing.State) {
 	defer a.Close(ctx)
 	defer a.DumpUIHierarchyOnError(ctx, s.OutDir(), s.HasError)
 
+	if err := a.SetPlayOTAUpdateSetting(ctx, false); err != nil {
+		s.Fatal("Failed to set Play OTA update setting: ", err)
+	}
+
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)

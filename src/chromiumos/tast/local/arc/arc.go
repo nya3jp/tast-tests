@@ -167,6 +167,18 @@ func (a *ARC) WaitForProvisioning(ctx context.Context, timeout time.Duration) er
 	}, &testing.PollOptions{Interval: time.Second, Timeout: timeout})
 }
 
+// SetPlayOTAUpdateSetting disables or enables OTA update of Play Store and GMS Core.
+func (a *ARC) SetPlayOTAUpdateSetting(ctx context.Context, enabled bool) error {
+	// These settings are same as code here go/playstore-auto-update-settings-code.
+	if err := a.Command(ctx, "settings", "put", "global", "google_play_store_system_component_update", "0").Run(testexec.DumpLogOnError); err != nil {
+		return err
+	}
+	if err := a.Command(ctx, "settings", "put", "global", "google_ota_automatic_download", "0").Run(testexec.DumpLogOnError); err != nil {
+		return err
+	}
+	return nil
+}
+
 // IsProvisioned returns true if the provisioning is complete.
 func (a *ARC) IsProvisioned(ctx context.Context) (bool, error) {
 	res, err := a.Command(ctx, "settings", "get", "global", "device_provisioned").Output(testexec.DumpLogOnError)
