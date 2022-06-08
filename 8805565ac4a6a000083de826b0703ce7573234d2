@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7815538_679bfb77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-08T08:20:45Z",
+      "side": 1,
+      "message": "nit: This link is not useful in the repository, only in the review. In my opinion it is better to add it as a comment in Gerrit, and not as a part of the commit message.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "8805565ac4a6a000083de826b0703ce7573234d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c811748_66c9ee1d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -14,6 +37,23 @@
       "writtenOn": "2022-06-06T21:51:46Z",
       "side": 1,
       "message": "Hi yuhsuan@, do you think it is worth promoting this stable test to CQ?",
+      "revId": "8805565ac4a6a000083de826b0703ce7573234d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75147975_4f2a207e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-08T08:20:45Z",
+      "side": 1,
+      "message": "LGTM % nit\nThe test is all green is Tastboard.",
       "revId": "8805565ac4a6a000083de826b0703ce7573234d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
