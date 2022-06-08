@@ -52,6 +52,24 @@
       "parentUuid": "9ddd1534_81b6b5c6",
       "revId": "e77022c597c642d601e67b5d123faa7d910df37a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ed94eed_11a06eb2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/channel_scan_dwell_time.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-06-08T00:27:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9afa3e1c_6130f471",
+      "revId": "e77022c597c642d601e67b5d123faa7d910df37a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
