@@ -1,8 +1,8 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package wificell
+package wpacli
 
 import (
 	"bufio"
@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
@@ -137,6 +138,24 @@ func (e *ScanResultsEvent) ToLogString() string {
 func (e *DisconnectedEvent) ToLogString() string {
 	const timeLayout = "2006-01-02 15:04:05.000000"
 	return fmt.Sprintf("%s %+v\n", e.RcvTime.Format(timeLayout), e)
+}
+
+// StartWPAMonitor configures and starts wpa_supplicant events monitor
+// newCtx is ctx shortened for the stop function, which should be deferred by the caller.
+func (w *WPAMonitor) StartWPAMonitor(ctx context.Context, dutConn *ssh.Conn, timeout time.Duration) (stop func(), newCtx context.Context, retErr error) {
+	if err := w.Start(ctx, dutConn); err != nil {
+		return nil, ctx, err
+	}
+	sCtx, sCancel := ctxutil.Shorten(ctx, timeout)
+	return func() {
+		sCancel()
+		timeoutCtx, cancel := context.WithTimeout(ctx, timeout)
+		defer cancel()
+		if err := w.Stop(timeoutCtx); err != nil {
+			testing.ContextLog(ctx, "Failed to wait for wpa monitor stop: ", err)
+		}
+		testing.ContextLog(ctx, "Wpa monitor stopped")
+	}, sCtx, nil
 }
 
 // Start initializes the wpa_supplicant monitor.
