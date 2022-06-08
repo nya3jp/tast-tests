@@ -112,8 +112,6 @@ var perfTestsExtraData = map[string][]string{
 }
 
 var mainlineExpensiveTests = map[string]time.Duration{
-	"backup_restore.go":              10 * time.Minute,
-	"resize_backup_restore.go":       15 * time.Minute,
 	"fs_corruption.go":               10 * time.Minute,
 	"oom_event.go":                   10 * time.Minute,
 	"app_gedit_install_uninstall.go": 12 * time.Minute,
@@ -135,6 +133,23 @@ func TestExpensiveParams(t *testing.T) {
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
 			Timeout:    duration,
 			MinimalSet: true,
+			UseFixture: true,
+		}})
+		genparams.Ensure(t, filename, params)
+	}
+}
+
+var restartTests = map[string]time.Duration{
+	"backup_restore.go":        10 * time.Minute,
+	"resize_backup_restore.go": 15 * time.Minute,
+}
+
+func TestRestartParams(t *testing.T) {
+	for filename, duration := range restartTests {
+		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
+			Timeout:    duration,
+			MinimalSet: true,
+			Restart:    true,
 			UseFixture: true,
 		}})
 		genparams.Ensure(t, filename, params)
