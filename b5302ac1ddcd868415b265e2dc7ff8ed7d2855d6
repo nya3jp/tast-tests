@@ -16,6 +16,57 @@
       "message": "Thanks for reviewing!",
       "revId": "b5302ac1ddcd868415b265e2dc7ff8ed7d2855d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac7a522f_b44c0aa5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-06-08T14:55:27Z",
+      "side": 1,
+      "message": "LGTM % minor nits",
+      "revId": "b5302ac1ddcd868415b265e2dc7ff8ed7d2855d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7508563c_3a85fb17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-06-08T14:55:27Z",
+      "side": 1,
+      "message": "nit: comments should end with (.) at the end.",
+      "revId": "b5302ac1ddcd868415b265e2dc7ff8ed7d2855d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f8b78f6_222b1a41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-06-08T14:55:27Z",
+      "side": 1,
+      "message": "nit: comments should end with (.) at the end.",
+      "revId": "b5302ac1ddcd868415b265e2dc7ff8ed7d2855d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
