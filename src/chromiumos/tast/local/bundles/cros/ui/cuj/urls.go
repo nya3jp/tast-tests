@@ -115,6 +115,11 @@ const (
 
 	// URLs used by ProductivityCUJ.
 
+	// NewGoogleDocsURL specifies the URL to create new Google Docs.
+	NewGoogleDocsURL = "https://docs.new"
+	// NewGoogleSlidesURL specifies the URL to create new Google Slide.
+	NewGoogleSlidesURL = "https://slide.new"
+
 	// GoogleDocsURL specifies the URL for Google Docs.
 	GoogleDocsURL = "https://docs.google.com/document"
 	// GoogleSlidesURL specifies the URL for Google Slides.
