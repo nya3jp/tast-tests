@@ -184,6 +184,24 @@
       "parentUuid": "b646cda5_7adfc4c3",
       "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fb7ace6_c28d100c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-08T01:50:05Z",
+      "side": 1,
+      "message": "Sorry for not providing the purpose of moving this to variable. The reason is to make the code easier to read.\n\nI agree with @jintao that it needs to be inside, because the global variable could cause conflicts with other wifi tests.",
+      "parentUuid": "c0aa9690_4fd2396f",
+      "revId": "2e77daa5fcd88d932ae839a3bd8c704f5eca6ad3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
