@@ -16,6 +16,29 @@
       "message": "nhebert@ PTAL\n",
       "revId": "3e12591fd30b87b8c2da8ecc83106cf7b5193741",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08d5f33_73337c31",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-08T16:35:15Z",
+      "side": 1,
+      "message": "I wonder if this can be better represented using `s.Error` instead? `s.Error` will continue execution but fail overall. Can you have the unexpected branches do an `s.Error` and the expected ones simply log?",
+      "range": {
+        "startLine": 207,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 3
+      },
+      "revId": "3e12591fd30b87b8c2da8ecc83106cf7b5193741",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
