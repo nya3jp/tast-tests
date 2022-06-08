@@ -194,32 +194,18 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 
 	ac := uiauto.New(tconn)
 
-	configs := []cujrecorder.MetricConfig{
-		cujrecorder.NewCustomMetricConfig(
-			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter),
-		cujrecorder.NewCustomMetricConfig(
-			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter),
-	}
-	if tabletMode {
-		configs = append(configs,
-			cujrecorder.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
-			cujrecorder.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter.TabletMode"),
-			cujrecorder.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Exit.TabletMode"),
-		)
-	} else {
-		configs = append(configs,
-			cujrecorder.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
-		)
-	}
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
 
-	if err := recorder.AddCollectedMetrics(tconn, configs...); err != nil {
-		s.Fatal("Failed to add recorded metrics: ", err)
+	for _, metricConfigs := range [][]cujrecorder.MetricConfig{
+		cujrecorder.AshCommonMetricConfigs(),
+		cujrecorder.BrowserCommonMetricConfigs(),
+		cujrecorder.AnyChromeCommonMetricConfigs()} {
+		if err := recorder.AddCollectedMetrics(tconn, metricConfigs...); err != nil {
+			s.Fatal("Failed to add recorded metrics: ", err)
+		}
 	}
 	if testParam.tracing {
 		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))

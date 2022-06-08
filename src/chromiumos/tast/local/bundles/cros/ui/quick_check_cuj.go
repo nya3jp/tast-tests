@@ -96,16 +96,13 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(closeCtx)
 
-	configs := []cujrecorder.MetricConfig{
-		cujrecorder.NewCustomMetricConfig(
-			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter),
-		cujrecorder.NewCustomMetricConfig(
-			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter),
-	}
-	if err := recorder.AddCollectedMetrics(tconn, configs...); err != nil {
-		s.Fatal("Failed to add recorded metrics: ", err)
+	for _, metricConfigs := range [][]cujrecorder.MetricConfig{
+		cujrecorder.AshCommonMetricConfigs(),
+		cujrecorder.BrowserCommonMetricConfigs(),
+		cujrecorder.AnyChromeCommonMetricConfigs()} {
+		if err := recorder.AddCollectedMetrics(tconn, metricConfigs...); err != nil {
+			s.Fatal("Failed to add recorded metrics: ", err)
+		}
 	}
 
 	kb, err := input.Keyboard(ctx)

@@ -61,43 +61,6 @@ func init() {
 	})
 }
 
-// ashMetricConfigs returns metrics to be always collected from ash-chrome.
-func ashMetricConfigs() []cujrecorder.MetricConfig {
-	return []cujrecorder.MetricConfig{
-		cujrecorder.NewCustomMetricConfig(
-			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter),
-		cujrecorder.NewCustomMetricConfig(
-			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter),
-	}
-}
-
-// browserMetricConfigs returns browser metrics config, collected from
-// ash-chrome or lacros-chrome depending on the browser being used.
-func browserMetricConfigs() []cujrecorder.MetricConfig {
-	configs := []cujrecorder.MetricConfig{
-		cujrecorder.NewCustomMetricConfig(
-			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
-			perf.SmallerIsBetter),
-		cujrecorder.NewCustomMetricConfig(
-			"Event.Latency.EndToEnd.KeyPress", "microsecond", perf.SmallerIsBetter),
-		cujrecorder.NewCustomMetricConfig(
-			"Event.Latency.EndToEnd.Mouse", "microsecond", perf.SmallerIsBetter),
-		cujrecorder.NewCustomMetricConfig(
-			"PageLoad.PaintTiming.NavigationToFirstContentfulPaint", "ms",
-			perf.SmallerIsBetter),
-		cujrecorder.NewCustomMetricConfig(
-			"PageLoad.PaintTiming.NavigationToLargestContentfulPaint2", "ms",
-			perf.SmallerIsBetter),
-	}
-	for _, suffix := range []string{"Capturer", "Encoder", "EncoderQueue", "RateLimiter"} {
-		configs = append(configs, cujrecorder.NewCustomMetricConfig(
-			"WebRTC.Video.DroppedFrames."+suffix, "percent", perf.SmallerIsBetter))
-	}
-	return configs
-}
-
 // MeetMultiTaskingCUJ measures the performance of critical user journeys for multi-tasking with video conference.
 //
 // Pre-preparation:
@@ -355,13 +318,18 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := recorder.AddCollectedMetrics(tconn, ashMetricConfigs()...); err != nil {
-		s.Fatal("Failed to add Ash recorded metrics: ", err)
+	if err := recorder.AddCollectedMetrics(tconn, cujrecorder.AshCommonMetricConfigs()...); err != nil {
+		s.Fatal("Failed to add Ash common metrics: ", err)
 	}
 
-	if err := recorder.AddCollectedMetrics(bTconn, browserMetricConfigs()...); err != nil {
-		s.Fatal("Failed to add Browser recorded metrics: ", err)
+	if err := recorder.AddCollectedMetrics(bTconn, cujrecorder.BrowserCommonMetricConfigs()...); err != nil {
+		s.Fatal("Failed to add Browser common metrics: ", err)
 	}
+
+	if err := recorder.AddCollectedMetrics(bTconn, cujrecorder.AnyChromeCommonMetricConfigs()...); err != nil {
+		s.Fatal("Failed to add Chrome common metrics: ", err)
+	}
+
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Hide notifications so that they won't overlap with other UI components.
 		if err := ash.CloseNotifications(ctx, tconn); err != nil {
