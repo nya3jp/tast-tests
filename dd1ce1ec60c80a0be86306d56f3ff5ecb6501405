@@ -16,6 +16,24 @@
       "message": "very minor nit: keep the function and move the new poll inside it.",
       "revId": "dd1ce1ec60c80a0be86306d56f3ff5ecb6501405",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21c78782_21db97fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-06-08T14:07:03Z",
+      "side": 0,
+      "message": "Actually what the poll() above does is not only waiting for menu but also clicks on it. So for now let me leave it as is.",
+      "parentUuid": "655806c4_4f40add4",
+      "revId": "dd1ce1ec60c80a0be86306d56f3ff5ecb6501405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
