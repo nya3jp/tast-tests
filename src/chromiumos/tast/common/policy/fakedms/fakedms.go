@@ -60,6 +60,7 @@ var selectorSanitizeRE = regexp.MustCompile("[^A-Za-z0-9.@-]")
 
 // A FakeDMS struct contains information about a running policy_testserver instance.
 type FakeDMS struct {
+	ctx                context.Context
 	cmd                *testexec.Cmd // fakedms process
 	URL                string        // fakedms url; needs to be passed to Chrome; set in start()
 	done               chan struct{} // channel that is closed when Wait() completes
@@ -129,6 +130,7 @@ func New(ctx context.Context, outDir string) (*FakeDMS, error) {
 	cmd.ExtraFiles = []*os.File{fw}
 
 	fdms := &FakeDMS{
+		ctx:                ctx,
 		cmd:                cmd,
 		done:               make(chan struct{}, 1),
 		policyPath:         policyPath,
@@ -246,6 +248,7 @@ func (fdms *FakeDMS) WriteExtensionPolicies(pb *policy.Blob) error {
 	if err := os.MkdirAll(fdms.extensionPolicyDir, 0755); err != nil {
 		return errors.Wrap(err, "failed to create data dir")
 	}
+	testing.ContextLog(fdms.ctx, "Test")
 
 	for id, pJSON := range pb.ExtensionPM {
 		selector := fmt.Sprintf("google/chrome/extension/%s", id)
