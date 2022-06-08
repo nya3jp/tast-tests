@@ -231,6 +231,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1b1346f_e7730fd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-08T13:29:10Z",
+      "side": 1,
+      "message": "Removed the testing.State* from the sub function, by removing this sub function.",
+      "parentUuid": "cfc65516_fc72fdb9",
+      "range": {
+        "startLine": 34,
+        "startChar": 32,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0dab1d3_ca30037b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-08T13:29:10Z",
+      "side": 1,
+      "message": "Yes, was learning go here.  Thanks for the package tips, might be a bit more than needed for this particular test.\n\nI removed all sub helper functions and simplified the code (was from 200 lines, now 88 lines, which seems like a win in every way).",
+      "parentUuid": "82ff42df_62964a1d",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b9ba403_b202ed85",
@@ -302,6 +350,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89e09cf_95bbeced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-08T13:29:10Z",
+      "side": 1,
+      "message": "The file system hello file contains \"hello world\", offset 6 read 5 \u003d\u003e \"world\" and a bit magic, yes.  I removed the seek reader :)",
+      "parentUuid": "28d8eb55_a6a637e0",
+      "range": {
+        "startLine": 75,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "556b2437_1fb897f8",
@@ -363,6 +435,30 @@
       "side": 1,
       "message": "Sorry for miscommunication. I\u0027m asking likely a background why 5 is hard coded here?\nI know this code makes 5-bytes buffer, and tries to read byte bytes. My question is, why it is \"5 bytes\"?\n\nAlso, why you read 5 bytes here? As you did seeking at 6, so it reads the file [6:11] data. Though it\u0027s confusing to me why it is a part of \"seeking\" operation?",
       "parentUuid": "0fe1405b_9ff377e4",
+      "range": {
+        "startLine": 79,
+        "startChar": 22,
+        "endLine": 79,
+        "endChar": 23
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd5715bd_56347ac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-08T13:29:10Z",
+      "side": 1,
+      "message": "The file system hello file contains \"hello world\", offset 6 read 5 \u003d\u003e \"world\" and a bit magic yes.  I removed the seek reader.",
+      "parentUuid": "e29e8099_7f0a512f",
       "range": {
         "startLine": 79,
         "startChar": 22,
@@ -516,6 +612,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36f07601_a54a8c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-08T13:29:10Z",
+      "side": 1,
+      "message": "The ideas in https://go.dev/play/p/HnvosBBTKiX were interesting and new to me: use a go closure.  Exploring that idea lead to even more code simplification:\n\n  case \"$mvENOTSUP\":\n    removed: implemented Rename in the fake file system to rid us of ENOTSUP\n    \n  case \"$write\":\n    if we use go\u0027s os package, we\u0027d need one case statement for each RemoveAll\n    etc op needed from the os package provides, versus, no need for such case\n    statements if we can find a simpler way to a write (I found one).\n\n  split function\n    found a helper in the go strings package for this: strings.Fields, and it\n    works well for this case: wrote a test https://go.dev/play/p/mANh9j5CUTR\n    \nWe these, the runner closure became very simple, and while autotest might be hard to maintain (due to a different problem being solved, perhaps), here the commands are contained together in 10 adjacent lines of code.\n\nI don\u0027t foresee a maintenance issue in this part of the code. The entire code is now 88 lines, and less code is better for maintenance, too. The closure idea provided a nice balance b/w the various concerns, I think.\n\nI also added a test debug Var you asked for.  It would be awesome if I could access the tast `-verbose` command line Var from the TestState, but found no way to do that.",
+      "parentUuid": "3b17d80e_98b71e1b",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73078415_332808e2",
@@ -577,6 +697,30 @@
       "side": 1,
       "message": "Another sorry for miscommunication.\nWe cannot make sure failing mv command means caused by ENOTSUP. (This is another reason I recommend not to depend on command execution).\nYou can make sure errno by os.* function, I think.",
       "parentUuid": "b06cfea3_c7f6e447",
+      "range": {
+        "startLine": 140,
+        "startChar": 29,
+        "endLine": 140,
+        "endChar": 36
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2dbed9c_7a6a8f6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-08T13:29:10Z",
+      "side": 1,
+      "message": "Rename was not supported by the fake file system at the time.  I sent a separate CL to add Rename support.",
+      "parentUuid": "1c3449be_bc618dd7",
       "range": {
         "startLine": 140,
         "startChar": 29,
@@ -672,6 +816,30 @@
       "side": 1,
       "message": "pls find a guideline at: Indent error flow section of go/go-style/decisions.\nNote that s.Fatal() effectively returns from the function.",
       "parentUuid": "e42e9ca2_57706f33",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79f356bf_213a2570",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-08T13:29:10Z",
+      "side": 1,
+      "message": "I think automatic style based on presumbit best solves cases like this and saves our collective time. I leave this one for you two decide.",
+      "parentUuid": "274d7ffc_471089ff",
       "range": {
         "startLine": 181,
         "startChar": 1,
