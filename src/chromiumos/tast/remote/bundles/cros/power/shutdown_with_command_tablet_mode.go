@@ -6,17 +6,15 @@ package power
 
 import (
 	"context"
-	"fmt"
 	"regexp"
-	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/powercontrol"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/security"
 	"chromiumos/tast/testing"
@@ -29,8 +27,7 @@ const (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ShutdownWithCommandTabletMode,
-		Desc:         "Verifies that system comes back after executing shutdown command in tabletmode",
+		Func: ShutdownWithCommandTabletMode, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies that system comes back after executing shutdown command in tabletmode",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
 		SoftwareDeps: []string{"chrome", "reboot"},
@@ -87,7 +84,7 @@ func ShutdownWithCommandTabletMode(ctx context.Context, s *testing.State) {
 	defer func(ctx context.Context) {
 		testing.ContextLog(ctx, "Performing cleanup")
 		if !dut.Connected(ctx) {
-			if err := powerOnToDUT(ctx, pxy, dut); err != nil {
+			if err := powercontrol.PowerOntoDUT(ctx, pxy, dut); err != nil {
 				s.Fatal("Failed to wake up DUT at cleanup: ", err)
 			}
 		}
@@ -108,62 +105,15 @@ func ShutdownWithCommandTabletMode(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to shutdown DUT: ", err)
 	}
 
-	if err := validateG3PowerState(ctx, pxy); err != nil {
+	if err := powercontrol.ValidateG3PowerState(ctx, pxy); err != nil {
 		s.Fatal("Failed to enter G3 after shutdown: ", err)
 	}
 
-	if err := powerOnToDUT(ctx, pxy, dut); err != nil {
+	if err := powercontrol.PowerOntoDUT(ctx, pxy, dut); err != nil {
 		s.Fatal("Failed to wake up DUT: ", err)
 	}
 
-	if err := validateCbmemPrevSleepState(ctx, dut, cbmemSleepStateValue); err != nil {
+	if err := powercontrol.ValidatePrevSleepState(ctx, dut, cbmemSleepStateValue); err != nil {
 		s.Fatalf("Failed Previous Sleep state is not %v: %v", cbmemSleepStateValue, err)
 	}
-}
-
-// validateCbmemPrevSleepState sleep state from cbmem command output.
-func validateCbmemPrevSleepState(ctx context.Context, dut *dut.DUT, sleepStateValue int) error {
-	const (
-		// Command to check previous sleep state.
-		prevSleepStateCmd = "cbmem -c | grep 'prev_sleep_state' | tail -1"
-	)
-	out, err := dut.Conn().CommandContext(ctx, "sh", "-c", prevSleepStateCmd).Output()
-	if err != nil {
-		return errors.Wrapf(err, "failed to execute %s command", prevSleepStateCmd)
-	}
-
-	actualOut := strings.TrimSpace(string(out))
-	expectedOut := fmt.Sprintf("prev_sleep_state %d", sleepStateValue)
-
-	if !strings.Contains(actualOut, expectedOut) {
-		return errors.Errorf("expected %q, but got %q", expectedOut, actualOut)
-	}
-	return nil
-}
-
-// validateG3PowerState verify power state G3 after shutdown.
-func validateG3PowerState(ctx context.Context, pxy *servo.Proxy) error {
-	return testing.Poll(ctx, func(ctx context.Context) error {
-		pwrState, err := pxy.Servo().GetECSystemPowerState(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to get ec power state")
-		}
-		if pwrState != "G3" {
-			return errors.New("DUT not in G3 state")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 30 * time.Second})
-}
-
-// powerOnToDUT performs power normal press to wake DUT.
-func powerOnToDUT(ctx context.Context, pxy *servo.Proxy, dut *dut.DUT) error {
-	waitCtx, cancel := context.WithTimeout(ctx, 1*time.Minute)
-	defer cancel()
-	if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
-		return errors.Wrap(err, "failed to power button press")
-	}
-	if err := dut.WaitConnect(waitCtx); err != nil {
-		return errors.Wrap(err, "failed to wait connect DUT")
-	}
-	return nil
 }
