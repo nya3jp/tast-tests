@@ -12,8 +12,8 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/servo"
-	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/powercontrol"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/security"
 	"chromiumos/tast/testing"
@@ -21,8 +21,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         SystemWakeOnPowerbtnPress,
-		Desc:         "Test waking DUT from S0ix using power button stress",
+		Func: SystemWakeOnPowerbtnPress, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Test waking DUT from S0ix using power button stress",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
@@ -58,7 +57,7 @@ func SystemWakeOnPowerbtnPress(ctx context.Context, s *testing.State) {
 	defer client.CloseChrome(ctx, &empty.Empty{})
 	defer func() {
 		if !dut.Connected(ctx) {
-			if err := powerOnDut(ctx, pxy, dut); err != nil {
+			if err := powercontrol.PowerOnDutWithRetry(ctx, pxy, dut); err != nil {
 				s.Fatal("Failed to power on DUT at cleanup: ", err)
 			}
 		}
@@ -90,7 +89,7 @@ func SystemWakeOnPowerbtnPress(ctx context.Context, s *testing.State) {
 		if err := dut.WaitUnreachable(sdCtx); err != nil {
 			s.Fatal("Failed to wait for unreachable: ", err)
 		}
-		if err := powerOnDut(ctx, pxy, dut); err != nil {
+		if err := powercontrol.PowerOnDutWithRetry(ctx, pxy, dut); err != nil {
 			s.Fatal("Failed to power on DUT after suspend: ", err)
 		}
 		slpOpSetPost := cmdOutput(slpS0Cmd)
@@ -113,22 +112,4 @@ func SystemWakeOnPowerbtnPress(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed Package C10 should be non-zero")
 		}
 	}
-}
-
-func powerOnDut(ctx context.Context, pxy *servo.Proxy, dut *dut.DUT) error {
-	waitCtx, cancel := context.WithTimeout(ctx, 2*time.Minute)
-	defer cancel()
-	if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
-		return errors.Wrap(err, "failed to power normal press")
-	}
-	if err := dut.WaitConnect(waitCtx); err != nil {
-		testing.ContextLog(ctx, "Unable to wake up DUT. Retrying")
-		if err := pxy.Servo().KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
-			return errors.Wrap(err, "failed to power normal press")
-		}
-		if err := dut.WaitConnect(waitCtx); err != nil {
-			return errors.Wrap(err, "failed to wait connect DUT")
-		}
-	}
-	return nil
 }
