@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d9aa09c_3eb1fe8c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_power_g3.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-09T17:48:59Z",
+      "side": 1,
+      "message": "Leave firmware_bringup in here also. I just added that recently, since this test is really simple.",
+      "range": {
+        "startLine": 22,
+        "startChar": 44,
+        "endLine": 22,
+        "endChar": 55
+      },
+      "revId": "31fd8b94ab22fc0211543637982ee4cd6a7faad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
