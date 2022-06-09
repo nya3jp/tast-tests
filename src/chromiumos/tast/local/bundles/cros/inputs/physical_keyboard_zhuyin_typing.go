@@ -32,6 +32,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      5 * time.Minute,
+		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.ChineseZhuyin}),
 		Params: []testing.Param{
 			{
 				Fixture: fixture.ClamshellNonVK,

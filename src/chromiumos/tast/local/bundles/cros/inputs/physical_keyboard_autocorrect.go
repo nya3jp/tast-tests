@@ -34,6 +34,7 @@ func init() {
 		Contacts:     []string{"tranbaoduy@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
+		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 		Timeout:      5 * time.Minute,
 		HardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...)),
 		Params: []testing.Param{

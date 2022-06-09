@@ -36,16 +36,18 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:      "simplified",
-				Fixture:   fixture.ClamshellNonVK,
-				Val:       ime.ChinesePinyin,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Name:             "simplified",
+				Fixture:          fixture.ClamshellNonVK,
+				Val:              ime.ChinesePinyin,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.ChinesePinyin}),
 			},
 			{
-				Name:      "traditional",
-				Fixture:   fixture.ClamshellNonVK,
-				Val:       ime.ChineseTraditionalPinyin,
-				ExtraAttr: []string{"informational", "group:input-tools-upstream"},
+				Name:             "traditional",
+				Fixture:          fixture.ClamshellNonVK,
+				Val:              ime.ChineseTraditionalPinyin,
+				ExtraAttr:        []string{"informational", "group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.ChineseTraditionalPinyin}),
 			},
 			{
 				Name:              "simplified_lacros",
@@ -53,6 +55,7 @@ func init() {
 				Val:               ime.ChinesePinyin,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.ChinesePinyin}),
 			},
 			{
 				Name:              "traditional_lacros",
@@ -60,6 +63,7 @@ func init() {
 				Val:               ime.ChineseTraditionalPinyin,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.ChineseTraditionalPinyin}),
 			},
 		},
 	})

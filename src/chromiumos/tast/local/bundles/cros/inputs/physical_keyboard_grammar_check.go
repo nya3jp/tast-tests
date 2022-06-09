@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -33,6 +34,7 @@ func init() {
 		Contacts:     []string{"jiwan@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		HardwareDeps: hwdep.D(hwdep.Model(pre.GrammarEnabledModels...)),
+		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{
 			{

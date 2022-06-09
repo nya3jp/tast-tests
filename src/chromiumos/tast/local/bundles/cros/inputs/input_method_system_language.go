@@ -10,6 +10,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/inputactions"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -45,6 +46,7 @@ func init() {
 					regionCode:           "es",
 					defaultInputMethodID: ime.SpanishSpain.ID,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.SpanishSpain}),
 			}, {
 				Name:              "es_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
@@ -53,6 +55,7 @@ func init() {
 					regionCode:           "es",
 					defaultInputMethodID: ime.SpanishSpain.ID,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.SpanishSpain}),
 			}, {
 				Name:              "fr",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
@@ -61,6 +64,7 @@ func init() {
 					regionCode:           "fr",
 					defaultInputMethodID: ime.FrenchFrance.ID,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.FrenchFrance}),
 			}, {
 				Name:              "fr_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
@@ -69,6 +73,7 @@ func init() {
 					regionCode:           "fr",
 					defaultInputMethodID: ime.FrenchFrance.ID,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.FrenchFrance}),
 			}, {
 				Name:              "jp",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
@@ -77,6 +82,7 @@ func init() {
 					regionCode:           "jp",
 					defaultInputMethodID: ime.AlphanumericWithJapaneseKeyboard.ID,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.AlphanumericWithJapaneseKeyboard}),
 			}, {
 				Name:              "jp_informational",
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
@@ -85,6 +91,7 @@ func init() {
 					regionCode:           "jp",
 					defaultInputMethodID: ime.AlphanumericWithJapaneseKeyboard.ID,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.AlphanumericWithJapaneseKeyboard}),
 			},
 		},
 	})

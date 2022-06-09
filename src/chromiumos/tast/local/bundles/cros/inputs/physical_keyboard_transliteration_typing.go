@@ -49,8 +49,9 @@ func init() {
 					typingKeys:          "ellinika",
 					expectedComposition: "Ελληνικά",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.GreekTransliteration}),
 			},
 			{
 				Name: "gu",
@@ -59,8 +60,9 @@ func init() {
 					typingKeys:          "gujarati",
 					expectedComposition: "ગુજરાતી",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Gujarati}),
 			},
 			{
 				Name: "hi",
@@ -69,8 +71,9 @@ func init() {
 					typingKeys:          "hindee",
 					expectedComposition: "हिंदी",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Hindi}),
 			},
 			{
 				Name: "kn",
@@ -79,8 +82,9 @@ func init() {
 					typingKeys:          "kannada",
 					expectedComposition: "ಕನ್ನಡ",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Kannada}),
 			},
 			{
 				Name: "ml",
@@ -89,8 +93,9 @@ func init() {
 					typingKeys:          "malayalam",
 					expectedComposition: "മലയാളം",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Malayalam}),
 			},
 			{
 				Name: "mr",
@@ -99,8 +104,9 @@ func init() {
 					typingKeys:          "marathi",
 					expectedComposition: "मराठी",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Marathi}),
 			},
 			{
 				Name: "ne",
@@ -109,8 +115,9 @@ func init() {
 					typingKeys:          "nepali",
 					expectedComposition: "नेपाली",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.NepaliTransliteration}),
 			},
 			{
 				Name: "or",
@@ -119,8 +126,9 @@ func init() {
 					typingKeys:          "odia",
 					expectedComposition: "ଓଡ଼ିଆ",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Odia}),
 			},
 			{
 				Name: "fa",
@@ -129,8 +137,9 @@ func init() {
 					typingKeys:          "farsi",
 					expectedComposition: "فارسی",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.PersianTransliteration}),
 			},
 			{
 				Name: "pa",
@@ -139,8 +148,9 @@ func init() {
 					typingKeys:          "pajabi",
 					expectedComposition: "ਪੰਜਾਬੀ",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Punjabi}),
 			},
 			{
 				Name: "sa",
@@ -149,8 +159,9 @@ func init() {
 					typingKeys:          "samskrtam",
 					expectedComposition: "संस्कृतम्",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Sanskrit}),
 			},
 			{
 				Name: "ta",
@@ -159,8 +170,9 @@ func init() {
 					typingKeys:          "tamil",
 					expectedComposition: "தமிழ்",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Tamil}),
 			},
 			{
 				Name: "te",
@@ -169,8 +181,9 @@ func init() {
 					typingKeys:          "telugu",
 					expectedComposition: "తెలుగు",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Telugu}),
 			},
 			{
 				Name: "ur",
@@ -179,8 +192,9 @@ func init() {
 					typingKeys:          "urdu",
 					expectedComposition: "اردو",
 				},
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:          fixture.ClamshellNonVK,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Urdu}),
 			},
 			// ------lacros variants below---------------
 			{
@@ -193,6 +207,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.GreekTransliteration}),
 			},
 			{
 				Name: "gu_lacros",
@@ -204,6 +219,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Gujarati}),
 			},
 			{
 				Name: "hi_lacros",
@@ -215,6 +231,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Hindi}),
 			},
 			{
 				Name: "kn_lacros",
@@ -226,6 +243,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Kannada}),
 			},
 			{
 				Name: "ml_lacros",
@@ -237,6 +255,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Malayalam}),
 			},
 			{
 				Name: "mr_lacros",
@@ -248,6 +267,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Marathi}),
 			},
 			{
 				Name: "ne_lacros",
@@ -259,6 +279,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.NepaliTransliteration}),
 			},
 			{
 				Name: "or_lacros",
@@ -270,6 +291,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Odia}),
 			},
 			{
 				Name: "fa_lacros",
@@ -281,6 +303,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.PersianTransliteration}),
 			},
 			{
 				Name: "pa_lacros",
@@ -292,6 +315,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Punjabi}),
 			},
 			{
 				Name: "sa_lacros",
@@ -303,6 +327,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Sanskrit}),
 			},
 			{
 				Name: "ta_lacros",
@@ -314,6 +339,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Tamil}),
 			},
 			{
 				Name: "te_lacros",
@@ -325,6 +351,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Telugu}),
 			},
 			{
 				Name: "ur_lacros",
@@ -336,6 +363,7 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Urdu}),
 			},
 		},
 	})
