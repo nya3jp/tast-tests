@@ -119,6 +119,30 @@
       },
       "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfde9c4f_13701cc0",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-06-09T19:14:46Z",
+      "side": 1,
+      "message": "good catch, this function is deprecated now. We will be removing it after the hermes autotest suite stops running.",
+      "parentUuid": "d168b81f_e3994377",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
