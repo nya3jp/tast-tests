@@ -61,7 +61,7 @@ func RunFormatTests(ctx context.Context, s *testing.State) {
 
 	for _, fsType := range []string{"vfat", "exfat", "ntfs"} {
 		s.Run(ctx, fsType, func(ctx context.Context, s *testing.State) {
-			err = withLoopbackDeviceDo(ctx, cd, loopbackSizeBytes, "", func(ctx context.Context, ld *crosdisks.LoopbackDevice) error {
+			err = WithLoopbackDeviceDo(ctx, cd, loopbackSizeBytes, "", func(ctx context.Context, ld *crosdisks.LoopbackDevice) error {
 				if err := testVolumeFormat(ctx, cd, ld, fsType); err != nil {
 					s.Error("Test case failed: ", err)
 				}

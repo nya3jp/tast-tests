@@ -19,7 +19,7 @@ import (
 
 func testVolumeRename(ctx context.Context, cd *crosdisks.CrosDisks, ld *crosdisks.LoopbackDevice) error {
 	// Mount and then unmount through the CrosDisks API to ensure correct permissions on the device, which depend on the filesystem type.
-	if err := withMountDo(ctx, cd, ld.DevicePath(), "", nil, func(ctx context.Context, mountPath string) error {
+	if err := WithMountDo(ctx, cd, ld.DevicePath(), "", nil, func(ctx context.Context, mountPath string) error {
 		return nil
 	}); err != nil {
 		return err
@@ -76,7 +76,7 @@ func RunRenameTests(ctx context.Context, s *testing.State) {
 	}
 	defer cd.Close()
 
-	err = withLoopbackDeviceDo(ctx, cd, loopbackSizeBytes, "", func(ctx context.Context, ld *crosdisks.LoopbackDevice) error {
+	err = WithLoopbackDeviceDo(ctx, cd, loopbackSizeBytes, "", func(ctx context.Context, ld *crosdisks.LoopbackDevice) error {
 		// Check that we can rename volumes.
 		s.Run(ctx, "vfat", func(ctx context.Context, state *testing.State) {
 			if err := formatDevice(ctx, "mkfs.vfat -n EMPTY1", ld.DevicePath()); err != nil {
