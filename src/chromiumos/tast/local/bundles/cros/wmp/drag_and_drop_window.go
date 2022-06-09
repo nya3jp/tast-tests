@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -50,24 +51,38 @@ func DragAndDropWindow(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := apps.Launch(ctx, tconn, apps.Files.ID); err != nil {
-		s.Fatal("Failed to open Files: ", err)
+	// Launch Settings.
+	if err := apps.Launch(ctx, tconn, apps.Settings.ID); err != nil {
+		s.Fatal("Failed to open Settings: ", err)
 	}
 
 	ac := uiauto.New(tconn)
 
-	oldInfo, err := ac.Info(ctx, nodewith.ClassName("HeaderView"))
+	frameToolbarViewFinder := nodewith.HasClass("WebAppFrameToolbarView")
+	searchBoxFinder := nodewith.Role(role.SearchBox)
+	// Wait until the search box shows up.
+	if err := ac.WaitForLocation(searchBoxFinder)(ctx); err != nil {
+		s.Fatal("Failed to wait for the search box: ", err)
+	}
+
+	oldInfo, err := ac.Info(ctx, frameToolbarViewFinder)
+	if err != nil {
+		s.Fatal("Failed to find frame toolbar view: ", err)
+	}
 	oldBounds := oldInfo.Location
+
 	start := oldBounds.CenterPoint()
 	end := start.Add(coords.NewPoint(100, 100))
-
 	if err := mouse.Drag(tconn, start, end, time.Second)(ctx); err != nil {
 		s.Fatal("Failed to drag window: ", err)
 	}
 
-	newInfo, err := ac.Info(ctx, nodewith.ClassName("HeaderView"))
+	newInfo, err := ac.Info(ctx, frameToolbarViewFinder)
+	if err != nil {
+		s.Fatal("Failed to find frame toolbar view: ", err)
+	}
 	newBounds := newInfo.Location
-	// Window bounds should change after the drap and drop.
+	// Frame toolbar view bounds as well as the window bounds should change after the drag and drop.
 	if oldBounds == newBounds {
 		s.Fatal("Drag failed: window bounds didn't change")
 	}
