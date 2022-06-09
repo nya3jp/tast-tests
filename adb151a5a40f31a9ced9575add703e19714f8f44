@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f535c63a_a5a4942d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-06-09T02:11:14Z",
+      "side": 1,
+      "message": "Yes, it use acutiti to check the page is ready for screenshot. If without it, most of the time the test will fail because it needs time to render the page, most of the time it will screenshot a blank page if I don\u0027t add the uidetection.",
+      "parentUuid": "1b039571_0e3ddfd7",
+      "range": {
+        "startLine": 205,
+        "startChar": 6,
+        "endLine": 205,
+        "endChar": 52
+      },
+      "revId": "adb151a5a40f31a9ced9575add703e19714f8f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb15897a_7a09065b",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-08T18:46:00Z",
       "side": 1,
       "message": "s.Error may be better here to get more info from the test run (s.Error will let the test continue execution, but still fail the test later)",
+      "range": {
+        "startLine": 207,
+        "startChar": 6,
+        "endLine": 207,
+        "endChar": 49
+      },
+      "revId": "adb151a5a40f31a9ced9575add703e19714f8f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d37b363_3a5bf342",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-06-09T02:11:14Z",
+      "side": 1,
+      "message": "Thanks I changed it.",
+      "parentUuid": "bb15897a_7a09065b",
       "range": {
         "startLine": 207,
         "startChar": 6,
