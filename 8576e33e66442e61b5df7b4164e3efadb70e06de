@@ -22,6 +22,30 @@
       },
       "revId": "8576e33e66442e61b5df7b4164e3efadb70e06de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "024777e2_1a63d4a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-06-09T18:50:27Z",
+      "side": 1,
+      "message": "CQ dependency added.",
+      "parentUuid": "f8f293ea_944487e8",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 63
+      },
+      "revId": "8576e33e66442e61b5df7b4164e3efadb70e06de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
