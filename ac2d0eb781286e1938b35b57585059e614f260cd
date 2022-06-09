@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4e3e57_80c22f83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-09T06:31:27Z",
+      "side": 1,
+      "message": "Hey Alvin,\n\nI wanted to get your thoughts on this method I\u0027ve implemented for our ARC++ Games testing. ARC++ has had issues with the uiauto.mouse in the past and we noticed that in our game testing suite, it\u0027s extremely apparent and causes a lot of flakiness. I\u0027m not sure of the best function name but the concept of using the virtual mouse, which sends raw events, and slowing down the move-\u003eclick cycle to give the app time to register the events increases the reliability of our tests considerably. The follow up CL which uses this new method is here:\n\nhttps://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/4815557/4\n\nand the devices I tested on (a variety of touchscreen, no touchscreen, chromebox, etc) which all demonstrated flakiness with all the existing interaction methods were validated with multiple runs and documented here:\n\nhttps://docs.google.com/spreadsheets/d/1j82AYjLZuapSpqbMwiCpM5oCLod1rzKavGODzHY-Eko/edit#gid\u003d514004734\n\nLMK your thoughts",
+      "revId": "ac2d0eb781286e1938b35b57585059e614f260cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
