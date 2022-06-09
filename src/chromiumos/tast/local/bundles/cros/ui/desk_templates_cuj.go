@@ -47,7 +47,7 @@ func init() {
 }
 
 func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
-	// TODO(zhumatthew): Remove `no_kernel_upstream` from SoftwareDeps once kernel_uprev boards are more stable.
+	// TODO(b/238645466): Remove `no_kernel_upstream` from SoftwareDeps once kernel_uprev boards are more stable.
 	// Reserve five seconds for various cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -56,6 +56,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.EnableFeatures("DesksTemplates"),
+		chrome.DisableFeatures("DeskTemplateSync"),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
@@ -94,25 +95,6 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}
 
-	// Enters overview mode and check if we need to clean up save desk templates.
-	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-		s.Fatal("Error in setting overview mode: ", err)
-	}
-	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
-
-	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Error in waiting for overview animation to be completed: ", err)
-	}
-
-	// Find the "Library" button.
-	libraryButton := nodewith.Name("Library")
-	if err := ac.WithTimeout(30 * time.Second).WaitUntilExists(libraryButton)(ctx); err == nil {
-		// Check to see if chrome sync is done fetching for desk templates. If so, delete all the desk templates.
-		removeDeskTemplatesError := ash.DeleteAllDeskTemplates(ctx, ac, tconn)
-		if removeDeskTemplatesError != nil {
-			s.Fatal("Fail to clean up desk templates: ", err)
-		}
-	}
 	// Set up metrics recorder for TPS calculation
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
@@ -131,7 +113,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 
 	pv := perf.NewValues()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
-		// Opens PlayStore, Chrome and Files.
+		// Open PlayStore, Chrome and Files.
 		appsList := []apps.App{apps.PlayStore, apps.Chrome, apps.Files}
 		for _, app := range appsList {
 			if err := apps.Launch(ctx, tconn, app.ID); err != nil {
@@ -148,14 +130,14 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		// Enters overview mode.
+		// Enter overview mode.
 		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 			return errors.Wrap(err, "error in setting overview mode")
 		}
-
 		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-			s.Fatal("Failed to wait for overview animation to be completed: ", err)
+			return errors.Wrap(err, "failed to wait for overview animation to be completed")
 		}
+		defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
 		// Find the "save desk as a template" button.
 		saveDeskButton := nodewith.ClassName("SaveDeskTemplateButton")
@@ -170,9 +152,12 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "error in saving a desk template")
 		}
 
-		// Exits overview mode.
+		// Exit overview mode.
 		if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
 			return errors.Wrap(err, "unable to exit overview mode")
+		}
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for overview animation to be completed")
 		}
 
 		// Close all existing windows.
@@ -186,12 +171,16 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		// Enters overview mode, and launch the saved desk template.
+		// Enter overview mode, and launch the saved desk template.
 		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 			return errors.Wrap(err, "unable to set overview mode")
 		}
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for overview animation to be completed")
+		}
 
 		// Show saved desk template.
+		libraryButton := nodewith.Name("Library")
 		if err := uiauto.Combine(
 			"show the saved desks template",
 			ac.LeftClick(libraryButton),
@@ -202,7 +191,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		// Confirm there is one desk template.
-		deskTemplatesInfo, err := ash.FindDeskTemplates(ctx, ac)
+		deskTemplatesInfo, err := ash.FindSavedDesks(ctx, ac)
 		if err != nil {
 			return errors.Wrap(err, "unable to find desk templates")
 		}
@@ -225,12 +214,15 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "unable to launch a desk template")
 		}
 
-		// Exits overview mode.
+		// Exit overview mode.
 		if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
 			return errors.Wrap(err, "unable to exit overview mode")
 		}
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for overview animation to be completed")
+		}
 
-		// Verifies that there are the app windows.
+		// Verify that there are the app windows.
 		ws, err = ash.GetAllWindows(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "unable to get all open windows")
