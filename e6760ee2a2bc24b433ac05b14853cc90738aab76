@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b87f4a_bcbb23e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-09T17:19:19Z",
+      "side": 1,
+      "message": "LGTM but can you file a bug (even if it\u0027s just quick and with minimal details), and assign it to this CL so future readers have additional context?",
+      "revId": "e6760ee2a2bc24b433ac05b14853cc90738aab76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
