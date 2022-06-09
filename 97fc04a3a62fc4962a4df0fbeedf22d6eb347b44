@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92206f0b_0b8873b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/overflow_shelf_alignment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-09T22:17:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4e577fc_49d67866",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 11
+      },
+      "revId": "97fc04a3a62fc4962a4df0fbeedf22d6eb347b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7d2eb2f_aab227bb",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-09T20:07:33Z",
       "side": 1,
       "message": "tabletMode",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 9
+      },
+      "revId": "97fc04a3a62fc4962a4df0fbeedf22d6eb347b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd85c1cd_7094e956",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/overflow_shelf_alignment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-09T22:17:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7d2eb2f_aab227bb",
       "range": {
         "startLine": 24,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5de5b1_3acbf63d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/overflow_shelf_alignment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-09T22:17:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd468d5a_133965b7",
+      "range": {
+        "startLine": 76,
+        "startChar": 77,
+        "endLine": 77,
+        "endChar": 110
+      },
+      "revId": "97fc04a3a62fc4962a4df0fbeedf22d6eb347b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcce24f4_e17cbb19",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73561bfc_20d57056",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/overflow_shelf_alignment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-09T22:17:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcce24f4_e17cbb19",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 2
+      },
+      "revId": "97fc04a3a62fc4962a4df0fbeedf22d6eb347b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28a49030_250f20e0",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-06-09T20:07:33Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 0
+      },
+      "revId": "97fc04a3a62fc4962a4df0fbeedf22d6eb347b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0441ba1c_434abf4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/overflow_shelf_alignment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-09T22:17:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28a49030_250f20e0",
       "range": {
         "startLine": 200,
         "startChar": 0,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75038b47_707484df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/overflow_shelf_alignment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-09T22:17:52Z",
+      "side": 1,
+      "message": "I think so. Otherwise, the strings are so long that they cannot fit in my display.",
+      "parentUuid": "64a87df4_c5d41284",
+      "range": {
+        "startLine": 208,
+        "startChar": 12,
+        "endLine": 209,
+        "endChar": 75
+      },
+      "revId": "97fc04a3a62fc4962a4df0fbeedf22d6eb347b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbbd8c86_8b8d87f1",
         "filename": "src/chromiumos/tast/local/bundles/cros/shelf/overflow_shelf_alignment.go",
         "patchSetId": 4
@@ -152,6 +296,30 @@
       "writtenOn": "2022-06-09T20:07:33Z",
       "side": 1,
       "message": "ditto here and elsewhere",
+      "range": {
+        "startLine": 213,
+        "startChar": 124,
+        "endLine": 213,
+        "endChar": 125
+      },
+      "revId": "97fc04a3a62fc4962a4df0fbeedf22d6eb347b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c7685c7_2cb4cf41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/overflow_shelf_alignment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-09T22:17:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbbd8c86_8b8d87f1",
       "range": {
         "startLine": 213,
         "startChar": 124,
@@ -187,6 +355,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a2bac8b_d9916426",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-09T22:17:52Z",
+      "side": 1,
+      "message": "I may think using a boolean value as a parameter to specify which button to be clicked could be a better way?",
+      "parentUuid": "0f9ed023_53ca450d",
+      "range": {
+        "startLine": 770,
+        "startChar": 5,
+        "endLine": 770,
+        "endChar": 29
+      },
+      "revId": "97fc04a3a62fc4962a4df0fbeedf22d6eb347b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a586d23_c29e2804",
         "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
         "patchSetId": 4
@@ -198,6 +390,30 @@
       "writtenOn": "2022-06-09T20:07:33Z",
       "side": 1,
       "message": "We check arrow button bounds here and a couple more times in the test: maybe add a function in shelf.go to check bounds?",
+      "range": {
+        "startLine": 791,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 0
+      },
+      "revId": "97fc04a3a62fc4962a4df0fbeedf22d6eb347b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35876f28_5061bd17",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-09T22:17:52Z",
+      "side": 1,
+      "message": "Done. Now checking arrow buttons\u0027 visibility and bounds is encapsulated in a helper function located in shelf.go",
+      "parentUuid": "6a586d23_c29e2804",
       "range": {
         "startLine": 791,
         "startChar": 0,
