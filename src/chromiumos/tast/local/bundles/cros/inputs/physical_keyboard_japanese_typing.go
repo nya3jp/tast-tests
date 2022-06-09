@@ -35,16 +35,18 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:      "us",
-				Fixture:   fixture.ClamshellNonVK,
-				Val:       ime.JapaneseWithUSKeyboard,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Name:             "us",
+				Fixture:          fixture.ClamshellNonVK,
+				Val:              ime.JapaneseWithUSKeyboard,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.JapaneseWithUSKeyboard}),
 			},
 			{
-				Name:      "jp",
-				Fixture:   fixture.ClamshellNonVK,
-				Val:       ime.Japanese,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Name:             "jp",
+				Fixture:          fixture.ClamshellNonVK,
+				Val:              ime.Japanese,
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Japanese}),
 			},
 			{
 				Name:              "us_lacros",
@@ -52,6 +54,7 @@ func init() {
 				Val:               ime.JapaneseWithUSKeyboard,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.JapaneseWithUSKeyboard}),
 			},
 			{
 				Name:              "jp_lacros",
@@ -59,6 +62,7 @@ func init() {
 				Val:               ime.Japanese,
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Japanese}),
 			},
 		},
 	})
