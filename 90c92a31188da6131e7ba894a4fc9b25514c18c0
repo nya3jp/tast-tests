@@ -51,6 +51,92 @@
       "parentUuid": "457f4abd_9d8ddd18",
       "revId": "90c92a31188da6131e7ba894a4fc9b25514c18c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9427655c_9561e14c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T14:56:58Z",
+      "side": 1,
+      "message": "LGTM with style-ish comments.",
+      "revId": "90c92a31188da6131e7ba894a4fc9b25514c18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca20b7b1_4a86f481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T14:56:58Z",
+      "side": 1,
+      "message": "nit/style: I think we often use \"kb\" or something for keybaord?",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 3
+      },
+      "revId": "90c92a31188da6131e7ba894a4fc9b25514c18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3500fef0_c03b8d3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T14:56:58Z",
+      "side": 1,
+      "message": "nit/style: we often forms the message like\n\n\"Found inconsistent number of desks(s): got %v, want 2.\"",
+      "range": {
+        "startLine": 174,
+        "startChar": 12,
+        "endLine": 174,
+        "endChar": 54
+      },
+      "revId": "90c92a31188da6131e7ba894a4fc9b25514c18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1556fb3b_bea62b55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_basic.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T14:56:58Z",
+      "side": 1,
+      "message": "huge nit: \":\u003d\"",
+      "range": {
+        "startLine": 178,
+        "startChar": 8,
+        "endLine": 178,
+        "endChar": 9
+      },
+      "revId": "90c92a31188da6131e7ba894a4fc9b25514c18c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
