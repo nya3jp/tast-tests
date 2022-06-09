@@ -25,6 +25,9 @@ import (
 
 // PreparedArchives is a list of data files used in the test.
 var PreparedArchives = []string{
+	"100,000 Files.rar",
+	"100,000 Files.tar.xz",
+	"100,000 Files.zip",
 	"Big One.rar",
 	"Big One.tar.xz",
 	"Big One.zip",
@@ -152,6 +155,29 @@ func testBig(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dat
 			s.Errorf("Test failed for %q: %v", archive, err)
 		}
 	}
+}
+
+func testMany(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, archiveDir string) error {
+	want := DirectoryContents{}
+
+	for i := 0; i < 100; i++ {
+		for j := 0; j < 1000; j++ {
+			want[fmt.Sprintf("Folder %02d/File %02d-%03d.txt", i, i, j)] = FileItem{Data: []byte(fmt.Sprintf("Message %02d-%03d\n", i, j))}
+		}
+	}
+
+	for _, archive := range []string{
+		"100,000 Files.zip",
+		"100,000 Files.rar",
+		// "100,000 Files.tar.xz",
+	} {
+		archivePath := filepath.Join(archiveDir, archive)
+		if err := verifyArchiveContent(ctx, cd, archivePath, nil, want); err != nil {
+			return errors.Wrapf(err, "test failed for %q", archive)
+		}
+	}
+
+	return nil
 }
 
 func testInvalidArchives(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
@@ -544,7 +570,7 @@ func RunArchiveTests(ctx context.Context, s *testing.State) {
 		return withMountDo(ctx, cd, ld.DevicePath(), "", []string{"rw"}, func(ctx context.Context, mountPath string) error {
 			s.Logf("Copying all archives to the loopback device mount %q", mountPath)
 			for _, name := range PreparedArchives {
-				s.Logf("Copy %q", name)
+				s.Logf("Copying %q to %q", name, mountPath)
 				if err := copyFile(s.DataPath(name), filepath.Join(mountPath, filepath.Base(name))); err != nil {
 					return errors.Wrapf(err, "failed to copy data file %q into %q", name, mountPath)
 				}
@@ -588,6 +614,9 @@ func RunArchiveTests(ctx context.Context, s *testing.State) {
 			})
 			s.Run(ctx, "Big", func(ctx context.Context, state *testing.State) {
 				testBig(ctx, state, cd, mountPath)
+			})
+			s.Run(ctx, "Many", func(ctx context.Context, state *testing.State) {
+				testMany(ctx, state, cd, mountPath)
 			})
 			return nil
 		})
