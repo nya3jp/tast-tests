@@ -19,7 +19,7 @@ func init() {
 		Func:         ECPowerG3,
 		Desc:         "Test that DUT goes to G3 powerstate on shutdown",
 		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
+		Attr:         []string{"group:firmware", "firmware_ec"},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 	})
