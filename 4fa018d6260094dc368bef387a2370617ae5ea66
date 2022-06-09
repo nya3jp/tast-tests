@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5827d650_1455c67f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-09T19:01:14Z",
+      "side": 1,
+      "message": "looks pretty good, thanks!",
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93d60983_543cbd33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-09T19:01:14Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a1aefa_f51e1617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-09T19:01:14Z",
+      "side": 1,
+      "message": "any reason this isn\u0027t in hermesconst?",
+      "range": {
+        "startLine": 40,
+        "startChar": 27,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eed5d272_20a4c043",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-09T19:01:14Z",
+      "side": 1,
+      "message": "ditto re: hermesconst",
+      "range": {
+        "startLine": 51,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "803cc1a0_25ff27bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-09T19:01:14Z",
+      "side": 1,
+      "message": "nit: remove this as the test framework will print a success message shortly afterwards anyway",
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d168b81f_e3994377",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-09T19:01:14Z",
+      "side": 1,
+      "message": "what do we need this call for?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
