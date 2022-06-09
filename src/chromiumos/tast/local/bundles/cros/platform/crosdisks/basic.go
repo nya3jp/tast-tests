@@ -177,14 +177,9 @@ func testUnmountNonExistentDevice(ctx context.Context, s *testing.State, cd *cro
 	s.Log("Running testUnmountNonExistentDevice")
 
 	const path = "/dev/nonexistent"
-	status, err := cd.Unmount(ctx, path, nil /* options */)
-	if err != nil {
-		s.Errorf("Failed to call Unmount for %s: %v", path, err)
-		return
-	}
-
-	if status != crosdisks.MountErrorPathNotMounted {
-		s.Errorf("Unexpected Unmount status code: got %d; want %d", status, crosdisks.MountErrorPathNotMounted)
+	err := cd.Unmount(ctx, path, nil /* options */)
+	if !errors.Is(err, crosdisks.MountErrorPathNotMounted) {
+		s.Errorf("Unexpected Unmount status: got %v; want %v", err, crosdisks.MountErrorPathNotMounted)
 	}
 }
 
