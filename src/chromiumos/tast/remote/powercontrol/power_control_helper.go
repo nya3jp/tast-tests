@@ -94,6 +94,15 @@ func PowerOntoDUT(ctx context.Context, pxy *servo.Proxy, dut *dut.DUT) error {
 	}, &testing.PollOptions{Timeout: 2 * time.Minute})
 }
 
+// PowerOnDutWithRetry performs power normal press to wake DUT. Retries if it fails.
+func PowerOnDutWithRetry(ctx context.Context, pxy *servo.Proxy, dut *dut.DUT) error {
+	if err := PowerOntoDUT(ctx, pxy, dut); err != nil {
+		testing.ContextLog(ctx, "Unable to wake up DUT. Retrying.")
+		return PowerOntoDUT(ctx, pxy, dut)
+	}
+	return nil
+}
+
 // PerformSuspendStressTest performs suspend stress test for suspendStressTestCounter cycles.
 func PerformSuspendStressTest(ctx context.Context, dut *dut.DUT, suspendStressTestCounter int) error {
 	const (
@@ -166,4 +175,18 @@ func SlpAndC10PackageValues(ctx context.Context, dut *dut.DUT) (int, string, err
 	pkgOpSetValue := matchSetValue[1]
 
 	return slpOpSetValue, pkgOpSetValue, nil
+}
+
+// ValidateG3PowerState verify power state G3 after shutdown.
+func ValidateG3PowerState(ctx context.Context, pxy *servo.Proxy) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		pwrState, err := pxy.Servo().GetECSystemPowerState(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get ec power state")
+		}
+		if pwrState != "G3" {
+			return errors.New("DUT not in G3 state")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 30 * time.Second})
 }
