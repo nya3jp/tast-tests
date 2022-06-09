@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd444ffd_cdd5d065",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-06-09T07:17:10Z",
+      "side": 1,
+      "message": "Adding previous reviewers as FYI. Today I learned that one should add --text to grep, otherwise it may just decide to parse the file as binary.",
+      "revId": "59af3a7b526390a49c2d72875842dddd0ac503ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
