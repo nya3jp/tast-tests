@@ -132,6 +132,17 @@ func (uda *Context) click(s *Finder, button mouse.Button) uiauto.Action {
 			if err != nil {
 				return errors.Wrapf(err, "failed to find the location of %q", s.desc)
 			}
+
+			// Move the mouse over a short duration of time. This fixes the issue where
+			// the implementation of `mouse.Click` moves the mouse to the desired location immediately,
+			// which prevents applications from registering the move properly. This is especially
+			// important in ARC++ applications, which exhibited behavior where two
+			// simultaneous clicks needed to be sent since the first would not be
+			// registered correctly.
+			if err := mouse.Move(uda.tconn, loc.CenterPoint(), 250*time.Millisecond)(ctx); err != nil {
+				return errors.Wrap(err, "failed to move the mouse into position")
+			}
+
 			return mouse.Click(uda.tconn, loc.CenterPoint(), button)(ctx)
 		}, &uda.pollOpts)
 	}, uda.options.RetryInterval)
