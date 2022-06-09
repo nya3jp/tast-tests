@@ -16,6 +16,23 @@
       "message": "See:\n\nhttps://tastboard.corp.google.com/test/arc.StandardizedMouseHover\nhttps://tastboard.corp.google.com/test/arc.StandardizedMouseLeftClick\nhttps://tastboard.corp.google.com/test/arc.StandardizedMouseRightClick\nhttps://tastboard.corp.google.com/test/arc.StandardizedMouseRightClick.vm\n\nfor additional details. The stats are as follows:\n\nStandardizedMouseHover \u003d 4159/4193 \u003d 99% success\nStandardizedMouseLeftClick \u003d 4159/4193 \u003d 99% success\nStandardizedMouseRightClick \u003d 4159 / 4193 \u003d 99% success\nStandardizedMouseRightClick.vm \u003d 4015/4038 \u003d 99% success\n\nwhich comes from here: \n\nhttps://dashboards.corp.google.com/_6e189d5f_0ae1_4d9d_aac2_7ad6579a7fc6?fh\u003deJzFjk0KwjAQhe8y66wEa-0NXHdZugjpVIOTH9JJJYh3bwaFrtwJLr8Zvvfe8AQ7QQeMC4MCEyg7vzOXiJUWJDTCk2bdRzQXceixXv1drJtOLKcB7Nk3bYFRgcvEtn-LHaeMNc0ySRy81Kd2DseDa78XWx_zD3sVJHRhxarIZ58xn6g0f5sxbkMkfu8.\u0026fb\u003dtest:in:tast.arc.StandardizedMouseHover,tast.arc.StandardizedMouseScroll,tast.arc.StandardizedMouseHover.vm,tast.arc.StandardizedMouseLeftClick,tast.arc.StandardizedMouseScroll.vm,tast.arc.StandardizedMouseRightClick,tast.arc.StandardizedMouseLeftClick.vm,tast.arc.StandardizedMouseRightClick.vm,tast.arc.StandardizedMouseScroll.resize_lock_smooth_scroll_vm\n\nNote that StandardizedMouseRightClick.vm had one failure related to the tablet switch but this impacted all tests for that given release, as seen when querying:\n\n`board \u003d \"octopus\" AND model \u003d \"ampton\" AND reason like \"%failed to switch the tablet mode state%\"` on tastboard.\n\n",
       "revId": "3e22a7a9cfcff3d227ecad2bddb0c48e38e3f743",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87943da9_8b546c2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-09T07:47:58Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "3e22a7a9cfcff3d227ecad2bddb0c48e38e3f743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
