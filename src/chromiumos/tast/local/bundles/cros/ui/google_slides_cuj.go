@@ -8,15 +8,14 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
-	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui/cujrecorder"
@@ -117,14 +116,8 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 
 		// Go through the Slides deck.
 		s.Logf("Going through the Google Slides file for %s", slidesScrollTimeout)
-		for end := time.Now().Add(slidesScrollTimeout); time.Now().Before(end); {
-			if err := uiauto.Combine(
-				"sleep and press down",
-				action.Sleep(time.Second),
-				kw.AccelAction("Down"),
-			)(ctx); err != nil {
-				return err
-			}
+		if err := cuj.RepeatKeyPressFor(ctx, kw, "Down", time.Second, slidesScrollTimeout); err != nil {
+			return errors.Wrap(err, "failed to scroll down with down arrow key")
 		}
 
 		// Ensure the slides deck gets scrolled.
