@@ -16,6 +16,24 @@
       "message": "If http://ag/18806691 gets merged, this CL will become unnecessary. Any test using DisableSyncFlags Chrome option should not see GMS Core or Play Store updates during test execution.",
       "revId": "2bea871cddc4640ec2f2766b2dfc73d1b7a38dc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4163d0c_a1ea957d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-06-09T17:13:00Z",
+      "side": 1,
+      "message": "Thanks for sharing.This will help and other tests doesn\u0027t need a similar change.",
+      "parentUuid": "0aa17c1a_271a4ba1",
+      "revId": "2bea871cddc4640ec2f2766b2dfc73d1b7a38dc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
