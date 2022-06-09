@@ -16,6 +16,24 @@
       "message": "Hey Alvin,\n\nI wanted to get your thoughts on this method I\u0027ve implemented for our ARC++ Games testing. ARC++ has had issues with the uiauto.mouse in the past and we noticed that in our game testing suite, it\u0027s extremely apparent and causes a lot of flakiness. I\u0027m not sure of the best function name but the concept of using the virtual mouse, which sends raw events, and slowing down the move-\u003eclick cycle to give the app time to register the events increases the reliability of our tests considerably. The follow up CL which uses this new method is here:\n\nhttps://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/4815557/4\n\nand the devices I tested on (a variety of touchscreen, no touchscreen, chromebox, etc) which all demonstrated flakiness with all the existing interaction methods were validated with multiple runs and documented here:\n\nhttps://docs.google.com/spreadsheets/d/1j82AYjLZuapSpqbMwiCpM5oCLod1rzKavGODzHY-Eko/edit#gid\u003d514004734\n\nLMK your thoughts",
       "revId": "ac2d0eb781286e1938b35b57585059e614f260cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "765afcd1_d6e075c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-09T11:28:21Z",
+      "side": 1,
+      "message": "Hi David,\n\nThanks for bring this up, I love the analysis!\n\nCould you help me better understand the underlying issue here? Is the reason why the new solution works: 1) the use of virtual mouse, or 2) the introduction of mouse movement and delays (i.e., would it work if we use `Move` and `Click` of uiauto.mouse with `Sleep` in this CL)?\n\nAnother concern I have is about the settings of `moveTime` and `pauseBeforeClickTime`, which can be another source of flakiness if not properly chosen.\n\nWe had the issues with uiauto.LeftClick in other tests (crostini, inputs, etc) too, and the reason was that the mouse clicks were sent before the UI objects being ready to receive clicks. To address that, we normally changed to use `LeftClickUntil` (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d651?q\u003d%22LeftClickUntil(%22) to stabilize the tests.",
+      "parentUuid": "aa4e3e57_80c22f83",
+      "revId": "ac2d0eb781286e1938b35b57585059e614f260cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
