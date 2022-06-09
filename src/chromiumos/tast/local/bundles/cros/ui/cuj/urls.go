@@ -67,8 +67,8 @@ const (
 	WikipediaMainURL = "https://en.wikipedia.org/wiki/Main_Page"
 	// WikipediaHelpURL specifies the URL for Wikipedia's help page.
 	WikipediaHelpURL = "https://en.wikipedia.org/wiki/Help:Contents"
-	// WikipediaPandemicURL specifies the URL for Wikipedia's pandemic page.
-	WikipediaPandemicURL = "https://en.wikipedia.org/wiki/COVID-19_pandemic"
+	// WikipediaContributionURL specifies the URL for Wikipedia's user contributions page.
+	WikipediaContributionURL = "https://en.wikipedia.org/wiki/Help:User_contributions"
 	// YahooScienceURL specifies the URL for Yahoo's science page.
 	YahooScienceURL = "https://news.yahoo.com/science/"
 	// YahooFinanaceWatchlistURL specifies the URL for Yahoo's finance page.
