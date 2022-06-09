@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abc83eac_b4e7bef6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-09T20:39:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af963a0b_18bafba7",
+      "range": {
+        "startLine": 335,
+        "startChar": 28,
+        "endLine": 335,
+        "endChar": 81
+      },
+      "revId": "bb991347accbf14d21f855ab29d9fe679e08b8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67fa1cc6_4551515a",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-06-09T18:58:12Z",
       "side": 1,
       "message": "`errors.Wrap` returns nil if err is nil - i.e. in the case where `shouldAuthenticate` is false, but the authentication succeeds anyway, this error will be dropped.\n\nBut we should also maybe log the `shouldAuthenticate` and presence of the error in here using a \"got %v, want %v\" message",
+      "revId": "bb991347accbf14d21f855ab29d9fe679e08b8a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc5ab8f_01750acf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-09T20:39:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67fa1cc6_4551515a",
       "revId": "bb991347accbf14d21f855ab29d9fe679e08b8a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
