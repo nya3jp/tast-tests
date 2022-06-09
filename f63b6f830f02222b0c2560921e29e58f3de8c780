@@ -70,6 +70,30 @@
       },
       "revId": "f63b6f830f02222b0c2560921e29e58f3de8c780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "262cebef_0d00eecd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_apps_playing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-09T03:23:25Z",
+      "side": 1,
+      "message": "Sorry we don\u0027t understand, both `app.Install` and `app.Launch` were called only once and the [Launch](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3676408/7/src/chromiumos/tast/local/arc/apputil/apputil.go#82) method doesn\u0027t involve installation (it requires the app to be installed first, but doesn\u0027t do installation).\n\nOr should we combine `Install` and `Launch` as a single method?",
+      "parentUuid": "763f8c03_27cbf838",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 0
+      },
+      "revId": "f63b6f830f02222b0c2560921e29e58f3de8c780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
