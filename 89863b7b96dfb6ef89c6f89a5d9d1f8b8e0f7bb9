@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c581b24_7abaf452",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-09T02:42:02Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion for the writing!\nYes, it should be original netns, I forgot to update the comment after changing the code.",
+      "parentUuid": "c46f1eb8_61a8f9d9",
+      "revId": "89863b7b96dfb6ef89c6f89a5d9d1f8b8e0f7bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eefe8b3c_e6ce339c",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-08T21:09:09Z",
       "side": 1,
       "message": "\"as the one that enters the netns %s\"",
+      "revId": "89863b7b96dfb6ef89c6f89a5d9d1f8b8e0f7bb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c513691a_e6c02772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-09T02:42:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eefe8b3c_e6ce339c",
       "revId": "89863b7b96dfb6ef89c6f89a5d9d1f8b8e0f7bb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
