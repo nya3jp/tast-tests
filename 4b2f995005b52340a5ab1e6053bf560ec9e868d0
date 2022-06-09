@@ -16,6 +16,23 @@
       "message": "Hi Keigo,\n\nI already done all comments.\n\nPlease check.\n\nAnd I also remove more empty lines and remove the \"s *testing.state\" in functions as I could. \n\nPlease also check about these.\n\nBtw, code might look different, \nbecause we have new design about removing another system web UI,\nand there are different changes about sending API to WWCB service,\nso I update new code for this issue.",
       "revId": "4b2f995005b52340a5ab1e6053bf560ec9e868d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d15afb_c62ef0a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-09T01:14:23Z",
+      "side": 1,
+      "message": "Is this possible to split this CL? 1664 lines of change are quite hard to review. ",
+      "revId": "4b2f995005b52340a5ab1e6053bf560ec9e868d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
