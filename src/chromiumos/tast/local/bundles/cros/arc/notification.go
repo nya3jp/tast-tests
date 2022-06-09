@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/testing"
 )
 
@@ -75,6 +76,9 @@ func Notification(ctx context.Context, s *testing.State) {
 		sendID   = idPrefix + "send_button"
 		removeID = idPrefix + "remove_button"
 
+		// Button idea of GrantPermissionsActivity's "ALLOW" button
+		permissionAllowBtnID = "com.android.permissioncontroller:id/permission_allow_button"
+
 		// Testing data.
 		title  = "title!"
 		title2 = "new title!"
@@ -93,17 +97,16 @@ func Notification(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to install %s: %v", apk, err)
 	}
 
-	s.Log("Launching app")
-	act, err := arc.NewActivity(a, pkg, cls)
-	if err != nil {
-		s.Fatal("Failed to create a new activity: ", err)
+	// Launch the app from launcher, so that the Notification Permission window
+	// can show up and the permission can be granted. Otherwise, Notification
+	// will not be updated without granting notification permission.
+	if err := launcher.LaunchApp(tconn, "ARC Notification Test")(ctx); err != nil {
+		s.Fatal("Failed to launch app")
 	}
-	defer act.Close()
 
-	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
-		s.Fatal("Failed to start the activity: ", err)
+	if err := d.Object(ui.ID(permissionAllowBtnID)).Click(ctx); err != nil {
+		s.Log("Failed to find allow button, it can cause \"notification not found\"")
 	}
-	defer act.Stop(ctx, tconn)
 
 	s.Log("Setup is done, and running the test scenario")
 
