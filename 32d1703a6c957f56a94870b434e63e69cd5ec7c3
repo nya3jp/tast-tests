@@ -122,6 +122,30 @@
       },
       "revId": "32d1703a6c957f56a94870b434e63e69cd5ec7c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ca35a6_effefe66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/drag_and_drop_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-06-09T10:21:19Z",
+      "side": 1,
+      "message": "Got it, changing it another app",
+      "parentUuid": "303d7f6d_6cc977fc",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "32d1703a6c957f56a94870b434e63e69cd5ec7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
