@@ -100,6 +100,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f0a7e20_16df160a",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-06-09T20:52:23Z",
+      "side": 1,
+      "message": "We probably don\u0027t need this call either",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 74
+      },
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d168b81f_e3994377",
         "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
         "patchSetId": 4
