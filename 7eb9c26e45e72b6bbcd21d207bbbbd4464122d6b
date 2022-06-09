@@ -22,6 +22,30 @@
       },
       "revId": "7eb9c26e45e72b6bbcd21d207bbbbd4464122d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4b10625_6f5df56e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1529254
+      },
+      "writtenOn": "2022-06-09T04:32:19Z",
+      "side": 1,
+      "message": "I\u0027ve modified the fixtures used across tests. I\u0027m not necessarily modifying specific tests. As to how I chose fixtures - the ones that didn\u0027t specify `RestrictARCVMCPU` I modified to set `UnrestrictARCVMCPU` the ones that did specify `RestrictARCVMCPU` I just set to use default throttling setting (which is to throttle).",
+      "parentUuid": "5b6d6e2e_3d7a5896",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "7eb9c26e45e72b6bbcd21d207bbbbd4464122d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
