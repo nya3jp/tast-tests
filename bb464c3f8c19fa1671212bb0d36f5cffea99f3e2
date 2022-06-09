@@ -662,6 +662,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc0058c8_43574b6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T14:35:18Z",
+      "side": 1,
+      "message": "Hmm... I have not yet fully agreed here.\n\ncommand execution does more than calling syscalls.\nSo, question.\n\nDo you want to exercise the \"command line execution behavior\"?\nOr, the behavior on syscalls on the file system?\n\nIf the former, yes we need commandline execution, because that is what we would like to check.\nIf the latter, no, still better not to use commandline execution, even if it looks \"shorter\".\n\nIn terms of maintainability, my recommendation is \"not to have unneeded layers\". Even if the code looks shorter, that is the complexity concerned.\nIn general, integration tests are affected by so many things, and, in many cases, we have seen a lot of \"mysterious\" situations, which we often do not imagine on writing the code at the beginning.\nMinimizing the layers is one of the best practices I learnt, and would like to encourage to you to avoid future accidents/flakiness, and to help investigation then.\nAlso, you\u0027ll be the primary to investigate the issue if happens, but many others, such as sheriffs, gardeners, infra team etc. may need to go deeper in various situations. I\u0027m still thinking it\u0027ll be better to minimize the complexity for them, too. Thoughts?",
+      "parentUuid": "36f07601_a54a8c52",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73078415_332808e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
