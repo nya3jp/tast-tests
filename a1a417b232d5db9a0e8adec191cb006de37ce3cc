@@ -16,6 +16,167 @@
       "message": "Could you please get the CL reviewed by a teammate for domain verifications before sending out for Tast review? Thanks! This is the standard process of Tast reviews for non-trivial changes.\n\nFeel free to add me back after you got a +1/+2 from the team.",
       "revId": "a1a417b232d5db9a0e8adec191cb006de37ce3cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9b6576c_10913d96",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-09T19:59:50Z",
+      "side": 1,
+      "message": "Can we elaborate a bit more in this comment header? I think wpa_cli remove_network all removes all saved network profiles?",
+      "range": {
+        "startLine": 100,
+        "startChar": 21,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "a1a417b232d5db9a0e8adec191cb006de37ce3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "231a02c3_f8b53415",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-09T19:59:50Z",
+      "side": 1,
+      "message": "\"failed to expect\" would imply a tast failure where we weren\u0027t able to execute logic that lets us \"expect\" an \"OK\". I think this would be better reworded as \"\u0027OK\u0027 not detected in the output of wpa_cli remove_network all\".\n\nWDYT? (same comment applies below in setNetwork).",
+      "range": {
+        "startLine": 107,
+        "startChar": 24,
+        "endLine": 107,
+        "endChar": 45
+      },
+      "revId": "a1a417b232d5db9a0e8adec191cb006de37ce3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2743377c_9523f46d",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-09T19:59:50Z",
+      "side": 1,
+      "message": "add \"s\" to \"add\"",
+      "range": {
+        "startLine": 112,
+        "startChar": 17,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "a1a417b232d5db9a0e8adec191cb006de37ce3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17805bb2_f30ff699",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-09T19:59:50Z",
+      "side": 1,
+      "message": "We should length check the size of the lines slice before the raw access to an index.",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 119,
+        "endChar": 37
+      },
+      "revId": "a1a417b232d5db9a0e8adec191cb006de37ce3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6848c455_8925f04c",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-09T19:59:50Z",
+      "side": 1,
+      "message": "add \"s\" to \"set\"",
+      "range": {
+        "startLine": 126,
+        "startChar": 14,
+        "endLine": 126,
+        "endChar": 17
+      },
+      "revId": "a1a417b232d5db9a0e8adec191cb006de37ce3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0d3d0ec_eac332ae",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-09T19:59:50Z",
+      "side": 1,
+      "message": "I would reword this to generates a status key/value map from the output of the WiFi interface.",
+      "range": {
+        "startLine": 148,
+        "startChar": 32,
+        "endLine": 148,
+        "endChar": 39
+      },
+      "revId": "a1a417b232d5db9a0e8adec191cb006de37ce3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596c7f74_6f4e889d",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-09T19:59:50Z",
+      "side": 1,
+      "message": "Is the subtest test time max 5 minutes? I\u0027m wondering if 120 seconds of potential polling is excessive in case something went wrong.",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 41
+      },
+      "revId": "a1a417b232d5db9a0e8adec191cb006de37ce3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
