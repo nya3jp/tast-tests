@@ -9,7 +9,6 @@ import (
 	"context"
 	"path/filepath"
 	"regexp"
-	"strings"
 
 	"github.com/shirou/gopsutil/v3/process"
 
@@ -43,6 +42,20 @@ func Processes(execPath string) ([]*process.Process, error) {
 	})
 }
 
+var (
+	nonRootRE = regexp.MustCompile(
+		// Browser process must not have --type= arguments.
+		// Also, if it's running with --help, --h, --product-version, --version, --credits
+		// the process outputs some info, and terminates soon. It is not the browser process.
+		// One of the actual use case is that crash_reporter executes chrome with
+		// --product-version to obtain its version info.
+		` --?(type=\S+|help|h|product-version|version|credits)( |$)`)
+	pluginRE   = regexp.MustCompile(` --?type=plugin(?: |$)`)
+	rendererRE = regexp.MustCompile(` --?type=renderer(?: |$)`)
+	gpuRE      = regexp.MustCompile(` --?type=gpu-process(?: |$)`)
+	brokerRE   = regexp.MustCompile(` --?type=broker(?: |$)`)
+)
+
 // Root returns Process instance for Chrome's root process (i.e. Browser process).
 func Root(execPath string) (*process.Process, error) {
 	return RootWithContext(nil, execPath)
@@ -54,11 +67,11 @@ func RootWithContext(ctx context.Context, execPath string) (*process.Process, er
 		return nil, errors.Errorf("execPath %q must be abs path", execPath)
 	}
 	return procutil.FindUnique(procutil.And(procutil.ByExe(execPath), func(p *process.Process) bool {
-		// A browser process should not have --type= flag.
+		// Check if the process is running in the browser process mode.
 		// This check alone is not enough to determine that proc is a browser process;
 		// it might be a brand-new process that just forked from the browser process.
 		cmdline, err := p.Cmdline()
-		if err != nil || strings.Contains(cmdline, " --type=") {
+		if err != nil || nonRootRE.MatchString(cmdline) {
 			return false
 		}
 
@@ -118,13 +131,6 @@ func processesByArgs(execPath string, re *regexp.Regexp) ([]*process.Process, er
 		return re.MatchString(cmd)
 	})
 }
-
-var (
-	pluginRE   = regexp.MustCompile(` --type=plugin(?: |$)`)
-	rendererRE = regexp.MustCompile(` --type=renderer(?: |$)`)
-	gpuRE      = regexp.MustCompile(` --type=gpu-process(?: |$)`)
-	brokerRE   = regexp.MustCompile(` --type=broker(?: |$)`)
-)
 
 // PluginProcesses returns Chrome plugin processes.
 func PluginProcesses(execPath string) ([]*process.Process, error) {
