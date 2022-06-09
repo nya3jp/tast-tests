@@ -6,14 +6,13 @@ package wmp
 
 import (
 	"context"
-	"fmt"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
+	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -50,7 +49,8 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
-		chrome.EnableFeatures("DesksTemplates"),
+		chrome.EnableFeatures("DesksTemplates", "EnableSavedDesks"),
+		chrome.DisableFeatures("DeskTemplateSync"),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
@@ -84,150 +84,196 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start ARC: ", err)
 	}
 	defer a.Close(cleanupCtx)
-
 	if err := a.WaitIntentHelper(ctx); err != nil {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}
 
-	// Enters overview mode and check if we need to clean up save desk templates.
+	// Open PlayStore, Chrome and Files.
+	appsList := []apps.App{apps.PlayStore, apps.Chrome, apps.Files}
+	if err := wmputils.OpenApps(ctx, tconn, ac, appsList); err != nil {
+		s.Fatal("Failed to open apps: ", err)
+	}
+
+	// Enter overview mode.
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set overview mode: ", err)
+	}
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		s.Fatal("Failed to wait for the animation to be completed: ", err)
 	}
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
-	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait for overview animation to be completed: ", err)
+	// Save current desk as `Template 1` of type `Template`.
+	if err := ash.SaveCurrentDesk(ctx, ac, ash.Template, "Template 1"); err != nil {
+		s.Fatal("Failed to save current desk as 'Template 1' of type 'Template': ", err)
 	}
 
-	// Find the "Library" button.
-	libraryButton := nodewith.Name("Library")
-	if err := ac.WithTimeout(30 * time.Second).WaitUntilExists(libraryButton)(ctx); err == nil {
-		// Check to see if chrome sync is done fetching for desk templates. If so, delete all the desk templates.
-		removeDeskTemplatesError := ash.DeleteAllDeskTemplates(ctx, ac, tconn)
-		if removeDeskTemplatesError != nil {
-			s.Fatal("Fail to clean up desk templates: ", err)
-		}
+	// Verify saved desk.
+	if err := ash.VerifySavedDesk(ctx, ac, []string{"Template 1"}); err != nil {
+		s.Fatal("Failed to verify saved desk: ", err)
 	}
 
-	// Exit overview mode
+	// Exit overview mode.
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-		s.Fatal("Failed to exit overview mode: ", err)
+		s.Fatal("Failed to set overview mode: ", err)
 	}
-
 	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait for overview animation to be completed: ", err)
+		s.Fatal("Failed to wait for the animation to be completed: ", err)
 	}
 
-	// Opens PlayStore, Chrome and Files.
-	appsList := []apps.App{apps.Chrome, apps.Files, apps.PlayStore}
-	for _, app := range appsList {
-		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
-			s.Fatalf("Failed to open %s: %v", app.Name, err)
-		}
-		if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
-			s.Fatalf("%s did not appear in shelf after launch: %s", app.Name, err)
-		}
-		// Wait for the launched app window to become visible.
-		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-			return w.IsVisible && strings.Contains(w.Title, app.Name)
-		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-			s.Fatalf("%v app window not visible after launching: %v", app.Name, err)
-		}
+	// Verify window count.
+	if err := wmputils.VerifyWindowCount(ctx, tconn, len(appsList)); err != nil {
+		s.Fatal("Failed to verify window count: ", err)
 	}
 
-	// Enters overview mode.
+	// Enter overview mode.
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
-
 	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait for overview animation to be completed: ", err)
+		s.Fatal("Failed to wait for the animation to be completed: ", err)
 	}
 
-	// Find the "save desk as a template" button.
-	saveDeskButton := nodewith.ClassName("SaveDeskTemplateButton")
-	savedDeskGridView := nodewith.ClassName("SavedDeskLibraryView")
-
-	if err := uiauto.Combine(
-		"save a desk template",
-		ac.LeftClick(saveDeskButton),
-		// Wait for the saved desk grid shows up.
-		ac.WaitUntilExists(savedDeskGridView),
-	)(ctx); err != nil {
-		s.Fatal("Failed to save a desk template: ", err)
+	// Save current desk as `Saved Desk 1` of type `SaveAndRecall`.
+	if err := ash.SaveCurrentDesk(ctx, ac, ash.SaveAndRecall, "Saved Desk 1"); err != nil {
+		s.Fatal("Failed to save current desk as 'Saved Desk 1' of type 'SaveAndRecall': ", err)
 	}
 
-	// Exits overview mode.
-	if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-		s.Fatal("Failed to exit overview mode: ", err)
+	// Verify saved desk.
+	if err := ash.VerifySavedDesk(ctx, ac, []string{"Template 1", "Saved Desk 1"}); err != nil {
+		s.Fatal("Failed to verify saved desk: ", err)
+	}
+
+	// Exit overview mode.
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to set overview mode: ", err)
+	}
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		s.Fatal("Failed to wait for the animation to be completed: ", err)
+	}
+
+	// Verify window count.
+	if err := wmputils.VerifyWindowCount(ctx, tconn, 0); err != nil {
+		s.Fatal("Failed to verify window count: ", err)
+	}
+
+	// Enter overview mode.
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+		s.Fatal("Failed to set overview mode: ", err)
+	}
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		s.Fatal("Failed to wait for the animation to be completed: ", err)
+	}
+
+	// Enter library page.
+	if err := ash.EnterLibraryPage(ctx, ac); err != nil {
+		s.Fatal("Failed to enter library page: ", err)
+	}
+
+	// Launch saved desk `Template 1` of type `Template`.
+	if err := ash.LaunchSavedDesk(ctx, ac, "Template 1", 0); err != nil {
+		s.Fatal("Failed to launch saved desk 'Template 1' of type 'Template': ", err)
+	}
+
+	// Wait for apps to launch.
+	if err := wmputils.WaitforAppsToLaunch(ctx, tconn, ac, appsList); err != nil {
+		s.Fatal("Failed to wait for apps to launch: ", err)
+	}
+
+	// Wait for apps to be visible.
+	if err := wmputils.WaitforAppsToBeVisible(ctx, tconn, ac, appsList); err != nil {
+		s.Fatal("Failed to wait for apps to be visible: ", err)
+	}
+
+	// Exit overview mode.
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to set overview mode: ", err)
+	}
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		s.Fatal("Failed to wait for the animation to be completed: ", err)
+	}
+
+	// Close Play Store.
+	if err := optin.ClosePlayStore(ctx, tconn); err != nil {
+		s.Fatal("Failed to close Play Store: ", err)
 	}
 
 	// Close all existing windows.
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get all open windows: ", err)
-	}
-	for _, w := range ws {
-		if err := w.CloseWindow(ctx, tconn); err != nil {
-			s.Fatalf("Failed to close window (%+v): %v", w, err)
-		}
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to close all windows: ", err)
 	}
 
-	// Enters overview mode, and launch the saved desk template.
+	// Remove the active desk.
+	if err := ash.RemoveActiveDesk(ctx, tconn); err != nil {
+		s.Fatal("Failed to remove the active desk: ", err)
+	}
+
+	// Enter overview mode.
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
-
 	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait for overview animation to be completed: ", err)
+		s.Fatal("Failed to wait for the animation to be completed: ", err)
 	}
 
-	// Show saved desk template.
-	if err := uiauto.Combine(
-		"show the saved desks template",
-		ac.LeftClick(libraryButton),
-		// Wait for the saved desks grid shows up.
-		ac.WaitUntilExists(savedDeskGridView),
-	)(ctx); err != nil {
-		s.Fatal("Failed to show saved desks templates: ", err)
+	// Enter library page.
+	if err := ash.EnterLibraryPage(ctx, ac); err != nil {
+		s.Fatal("Failed to enter library page: ", err)
 	}
 
-	// Confirm there is one desk template.
-	deskTemplatesInfo, err := ash.FindDeskTemplates(ctx, ac)
-	if err != nil {
-		s.Fatal("Failed to find desk templates: ", err)
-	}
-	if len(deskTemplatesInfo) != 1 {
-		s.Fatalf("Got %v desk template(s), there should be one desk template", len(deskTemplatesInfo))
+	// Verify saved desk.
+	if err := ash.VerifySavedDesk(ctx, ac, []string{"Template 1", "Saved Desk 1"}); err != nil {
+		s.Fatal("Failed to verify saved desk: ", err)
 	}
 
-	// Find the the first desk template.
-	firstDeskTemplate := nodewith.ClassName("SavedDeskItemView")
-	newDeskMiniView :=
-		nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", "Desk 1 (1)"))
-
-	// Launch the desk template.
-	if err := uiauto.Combine(
-		"launch the saved desk template",
-		ac.LeftClick(firstDeskTemplate),
-		// Wait for the new desk to appear.
-		ac.WaitUntilExists(newDeskMiniView),
-	)(ctx); err != nil {
-		s.Fatal("Failed to launch a desk template: ", err)
+	// Launch saved desk `Saved Desk 1` of type `SaveAndRecall`.
+	if err := ash.LaunchSavedDesk(ctx, ac, "Saved Desk 1", 1); err != nil {
+		s.Fatal("Failed to launch saved desk 'Saved Desk 1' of type 'SaveAndRecall': ", err)
 	}
 
-	// Exits overview mode.
-	if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-		s.Fatal("Failed to exit overview mode: ", err)
+	// Wait for apps to launch.
+	if err := wmputils.WaitforAppsToLaunch(ctx, tconn, ac, appsList); err != nil {
+		s.Fatal("Failed to wait for app to launch: ", err)
 	}
 
-	// Verifies that there are the app windows.
-	ws, err = ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get all open windows: ", err)
+	// Exit overview mode.
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to set overview mode: ", err)
+	}
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		s.Fatal("Failed to wait for the animation to be completed: ", err)
 	}
 
-	if len(ws) != len(appsList) {
-		s.Fatalf("Got %v window(s), should have %v windows", len(ws), len(appsList))
+	// Close Play Store.
+	if err := optin.ClosePlayStore(ctx, tconn); err != nil {
+		s.Fatal("Failed to close Play Store: ", err)
+	}
+
+	// Close all existing windows.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to close all windows: ", err)
+	}
+
+	// Remove the active desk.
+	if err := ash.RemoveActiveDesk(ctx, tconn); err != nil {
+		s.Fatal("Failed to remove the active desk: ", err)
+	}
+
+	// Enter overview mode.
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+		s.Fatal("Failed to set overview mode: ", err)
+	}
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		s.Fatal("Failed to wait for the animation to be completed: ", err)
+	}
+
+	// Enter library page.
+	if err := ash.EnterLibraryPage(ctx, ac); err != nil {
+		s.Fatal("Failed to enter library page: ", err)
+	}
+
+	// Verify saved desk.
+	if err := ash.VerifySavedDesk(ctx, ac, []string{"Template 1"}); err != nil {
+		s.Fatal("Failed to verify saved desk: ", err)
 	}
 }

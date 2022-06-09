@@ -51,6 +51,7 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.EnableFeatures("DesksTemplates", "EnableSavedDesks"),
+		chrome.DisableFeatures("DeskTemplateSync"),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
@@ -89,35 +90,6 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}
 
-	// Enters overview mode and check if we need to clean up save desk templates.
-	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-		s.Fatal("Failed to set overview mode: ", err)
-	}
-	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
-
-	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait for overview animation to be completed: ", err)
-	}
-
-	// Find the "Library" button.
-	libraryButton := nodewith.Name("Library")
-	if err := ac.WithTimeout(30 * time.Second).WaitUntilExists(libraryButton)(ctx); err == nil {
-		// Check to see if chrome sync is done fetching for desk templates. If so, delete all the desk templates.
-		removeDeskTemplatesError := ash.DeleteAllDeskTemplates(ctx, ac, tconn)
-		if removeDeskTemplatesError != nil {
-			s.Fatal("Fail to clean up desk templates: ", err)
-		}
-	}
-
-	// Exit overview mode
-	if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-		s.Fatal("Failed to exit overview mode: ", err)
-	}
-
-	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait for overview animation to be completed: ", err)
-	}
-
 	// Opens PlayStore, Chrome and Files.
 	appsList := []apps.App{apps.Chrome, apps.Files, apps.PlayStore}
 	for _, app := range appsList {
@@ -146,10 +118,10 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
-
 	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		s.Fatal("Failed to wait for overview animation to be completed: ", err)
 	}
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
 	// Find the save desk buttons and the grid views.
 	saveDeskAsTemplateButton := nodewith.ClassName("SaveDeskTemplateButton").Nth(0)
@@ -182,7 +154,7 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for overview animation to be completed: ", err)
 	}
 
-	// Re-enter overview mode, so we can save a desk for later.
+	// Enter overview mode.
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
@@ -209,7 +181,7 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify that there are two saved desks.
-	savedDeskViewInfo, err := ash.FindDeskTemplates(ctx, ac)
+	savedDeskViewInfo, err := ash.FindSavedDesks(ctx, ac)
 	if err != nil {
 		s.Fatal("Failed to find saved desks: ", err)
 	}
