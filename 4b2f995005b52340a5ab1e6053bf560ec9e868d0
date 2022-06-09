@@ -33,6 +33,69 @@
       "message": "Is this possible to split this CL? 1664 lines of change are quite hard to review. ",
       "revId": "4b2f995005b52340a5ab1e6053bf560ec9e868d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f423f57_fa72ddec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-06-09T08:50:58Z",
+      "side": 1,
+      "message": "I have the same feeling that this patch is too big to review and I already told it in the first iteration, but someone told me that they can\u0027t split the patch. As I expected, a big change takes long time to review. I think it\u0027s not too late to split the patch as Seewai suggested. Let me hand over this to Seewai.\n",
+      "revId": "4b2f995005b52340a5ab1e6053bf560ec9e868d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0351ff06_363a3066",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-06-09T08:50:58Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 5
+      },
+      "revId": "4b2f995005b52340a5ab1e6053bf560ec9e868d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c7ee0a1_0d85168c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_fixture.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-06-09T08:50:58Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "4b2f995005b52340a5ab1e6053bf560ec9e868d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
