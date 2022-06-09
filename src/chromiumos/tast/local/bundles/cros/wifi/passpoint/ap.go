@@ -5,6 +5,7 @@
 package passpoint
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io/ioutil"
@@ -16,7 +17,6 @@ import (
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/hostapd"
-	"chromiumos/tast/testing"
 )
 
 // Auth is the authentication method the access point will expose.
@@ -199,29 +199,34 @@ func (c APConf) prepareRealms() string {
 	}
 }
 
+// STAAssociationTimeout is the reasonable delay to wait for station
+// association before making a decision.
+const STAAssociationTimeout = time.Minute
+
 // WaitForSTAAssociated polls an access point until a specific station is
 // associated or timeout is fired.
-func WaitForSTAAssociated(ctx context.Context, client string, ap *hostapd.Server, timeout time.Duration) error {
+func WaitForSTAAssociated(ctx context.Context, m *hostapd.Monitor, client string, timeout time.Duration) error {
+	timeoutContext, cancel := context.WithTimeout(ctx, timeout)
+	defer cancel()
+
 	iface, err := net.InterfaceByName(client)
 	if err != nil {
 		return errors.Wrapf(err, "failed to obtain %s interface information: ", client)
 	}
-	addr := iface.HardwareAddr.String()
 
-	// TODO(b/234628848): use hostapd_cli to obtain the STA-CONNECTED event and avoid polling.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		stations, err := ap.ListStations(ctx)
+	for {
+		event, err := m.WaitForEvent(timeoutContext)
 		if err != nil {
-			return errors.Wrap(err, "failed to list connected stations")
+			return errors.Wrap(err, "failed to wait for AP event")
 		}
-		for _, sta := range stations {
-			if sta == addr {
-				return nil
+		if event == nil { // timeout
+			return errors.New("association event timeout")
+		}
+		if e, ok := event.(*hostapd.ApStaConnectedEvent); ok {
+			if bytes.Compare(iface.HardwareAddr, e.Addr) != 0 {
+				return errors.Errorf("unexpected station association: got %v want %v", e.Addr, iface.HardwareAddr)
 			}
+			return nil
 		}
-		return errors.Errorf("Station %s not connected", addr)
-	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return err
 	}
-	return nil
 }

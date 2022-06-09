@@ -344,13 +344,24 @@ func PasspointSelection(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Create a monitor to collect access point events.
+	m := hostapd.NewMonitor()
+	if err := m.Start(ctx, tc.expectedAP); err != nil {
+		s.Fatal("Failed to start hostapd monitor: ", err)
+	}
+	defer func(ctx context.Context) {
+		if err := m.Stop(ctx); err != nil {
+			s.Fatal("Failed to stop hostapd monitor: ", err)
+		}
+	}(cleanupCtx)
+
 	// Trigger a scan
 	if err := tc.manager.RequestScan(ctx, shill.TechnologyWifi); err != nil {
 		s.Fatal("Failed to request an active scan: ", err)
 	}
 
 	// Check the device connects to the access point.
-	if err := passpoint.WaitForSTAAssociated(ctx, tc.clientIface, tc.expectedAP, 30*time.Second); err != nil {
+	if err := passpoint.WaitForSTAAssociated(ctx, m, tc.clientIface, passpoint.STAAssociationTimeout); err != nil {
 		s.Fatal("Passpoint client not connected to access point: ", err)
 	}
 }
