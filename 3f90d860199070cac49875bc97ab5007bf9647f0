@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75b01e07_60f9bf60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T15:15:37Z",
+      "side": 1,
+      "message": "CommandContext(ctx, \"modetest\", \"-c\")",
+      "range": {
+        "startLine": 335,
+        "startChar": 40,
+        "endLine": 335,
+        "endChar": 63
+      },
+      "revId": "3f90d860199070cac49875bc97ab5007bf9647f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa230af0_a7a0664d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T15:15:37Z",
+      "side": 1,
+      "message": "cmd :\u003d ...CommandContext(ctx, \"edid-decode\", \"-s\")\n\nthen you can write |edid| to cmd.StdinPipe()",
+      "range": {
+        "startLine": 343,
+        "startChar": 3,
+        "endLine": 346,
+        "endChar": 4
+      },
+      "revId": "3f90d860199070cac49875bc97ab5007bf9647f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcbe111b_5f16e9b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T15:15:37Z",
+      "side": 1,
+      "message": "nit: \"there is\" (starting with a small letter in the error message).\n\ncf) go/tast-writing",
+      "range": {
+        "startLine": 350,
+        "startChar": 24,
+        "endLine": 350,
+        "endChar": 32
+      },
+      "revId": "3f90d860199070cac49875bc97ab5007bf9647f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03b135f0_4a85648b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T15:15:37Z",
+      "side": 1,
+      "message": "nice to move this out from the function, i.e.\n\nvar manufacturerRegexp :\u003d regexp.MustCompile(...)\n\nat file level, not to run this multiple times if called so.\nDitto for below.",
+      "revId": "3f90d860199070cac49875bc97ab5007bf9647f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca7dd624_80aa2087",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T15:15:37Z",
+      "side": 1,
+      "message": "manufacturerRegexp.FindStringSubmatch(edidInfo) is what you would like to have?\n\nDitto for below.",
+      "range": {
+        "startLine": 479,
+        "startChar": 17,
+        "endLine": 479,
+        "endChar": 99
+      },
+      "revId": "3f90d860199070cac49875bc97ab5007bf9647f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
