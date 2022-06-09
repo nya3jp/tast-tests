@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47bbb75b_870b35d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/consecutive_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-06-09T11:50:03Z",
+      "side": 1,
+      "message": "Added a var to set the number, defaults to 10.",
+      "parentUuid": "414ee072_d03f7487",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 81,
+        "endChar": 43
+      },
+      "revId": "388f461190cc6078c2c6c434f741629fe69decf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0584c478_58c55377",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-07T19:27:46Z",
       "side": 1,
       "message": "Move the boot mode check and bootid before the loop, since you also do them at the bottom of the loop.",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "388f461190cc6078c2c6c434f741629fe69decf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "955f9aa7_f3ba9751",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/consecutive_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-06-09T11:50:03Z",
+      "side": 1,
+      "message": "I moved the first boot mode check outside the loop. I kept the bootid check inside since it\u0027s supposed to check over each iteration of the for loop.",
+      "parentUuid": "0584c478_58c55377",
       "range": {
         "startLine": 166,
         "startChar": 2,
