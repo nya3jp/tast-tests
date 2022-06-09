@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a6a350b_aaa25840",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T14:38:08Z",
+      "side": 1,
+      "message": "I think it\u0027d be better to avoid having type here, because that is what Browser tries to abstract so hide.\n\nCan just Type be passed to AddPerformanceCUJMetrics, instead?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "308655b6c32e4c88ea946f6d80a6bf71e9fbcb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
