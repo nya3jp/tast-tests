@@ -45,7 +45,7 @@ func UnicornPaidAppParentPermission(ctx context.Context, s *testing.State) {
 		askinMessageButtonText = "Ask in a message"
 		askinPersonButtonText  = "Ask in person"
 		playStoreSearchText    = "Search for apps & games"
-		gamesAppName           = "the wonder weeks"
+		gamesAppName           = "leo s fortune"
 	)
 	parentUser := s.RequiredVar("arc.parentUser")
 	cr := s.FixtValue().(*familylink.FixtData).Chrome
