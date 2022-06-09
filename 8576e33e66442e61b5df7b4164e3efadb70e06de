@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8f293ea_944487e8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2022-06-09T16:35:35Z",
+      "side": 1,
+      "message": "from CQ\n\n```\ntast-remote-tests-cros-0.0.2-r11069: error(s) in registered tests: /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r11069/work/tast-remote-tests-cros-0.0.2/src/chromiumos/tast/remote/bundles/cros/cellular/assert_cellular_data.go:16: attribute \"cellular_callbox\" is invalid in current groups; see chromiumos/tast/internal/testing/attr.go for the full list of valid attributes\n\n```",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 63
+      },
+      "revId": "8576e33e66442e61b5df7b4164e3efadb70e06de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
