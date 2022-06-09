@@ -102,7 +102,7 @@ func RunSSHFSTests(ctx context.Context, s *testing.State) {
 		const src = "sshfs://chronos@localhost:"
 		const mnt = "/media/fuse/chronos@localhost:"
 		opts := []string{fmt.Sprintf("IdentityBase64=%s", identity), fmt.Sprintf("UserKnownHostsBase64=%s", knownHosts)}
-		if err := withMountDo(ctx, cd, src, "sshfs", opts, func(ctx context.Context, mountPath string) error {
+		if err := WithMountDo(ctx, cd, src, "sshfs", opts, func(ctx context.Context, mountPath string) error {
 			if mountPath != mnt {
 				return errors.Errorf("mounth path mismatch: got %q; expected %q", mountPath, mnt)
 			}

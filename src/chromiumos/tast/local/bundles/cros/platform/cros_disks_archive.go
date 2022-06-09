@@ -13,13 +13,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: CrosDisksArchive,
-		Desc: "Verifies CrosDisks mounts various archive types",
-		Contacts: []string{
-			"chromeos-files-syd@google.com",
-		},
-		Attr: []string{"group:mainline"},
-		Data: crosdisks.PreparedArchives,
+		Func:     CrosDisksArchive,
+		Desc:     "Checks that cros-disks can mount various archive types",
+		Contacts: []string{"chromeos-files-syd@google.com"},
+		Attr:     []string{"group:mainline"},
+		Data:     crosdisks.PreparedArchives,
 	})
 }
 
