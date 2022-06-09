@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75f53e03_e5b1afd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_auto_dark_light_wallpaper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-09T00:18:40Z",
+      "side": 1,
+      "message": "Ideally you want the screenshot immediately after the error happens. Deferred functions in Go are executed in stack order (first-in-last-out).\n\nIn the previous patchset, the cleanups run in the order:\n```\ncleanup(cleanupCtx)\nfaillog.DumpUITreeOnError\n```\n\nTherefore, the screenshot you get is after `cleanup`, which may reset the tablet mode before taking the screenshots.",
+      "parentUuid": "83c5c652_70017e0f",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 75
+      },
+      "revId": "90a8714293cfb3d278e5a7f295f8a5d9871d7838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8be7a929_b2b959c8",
         "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_auto_dark_light_wallpaper.go",
         "patchSetId": 5
