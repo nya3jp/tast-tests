@@ -6,11 +6,13 @@ package ash
 
 import (
 	"context"
+	"fmt"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/input"
 )
 
 // CreateNewDesk requests Ash to create a new Virtual Desk which would fail if
@@ -108,4 +110,134 @@ func FindDeskTemplates(ctx context.Context, ac *uiauto.Context) ([]uiauto.NodeIn
 		return nil, errors.Wrap(err, "failed to find SavedDeskItemView")
 	}
 	return desksTemplatesItemViewInfo, nil
+}
+
+// SaveCurrentDesk saves the current desk as `kTemplate` or `kSaveAndRecall`.
+// This assumes overview grid is live now.
+func SaveCurrentDesk(ctx context.Context, ac *uiauto.Context, savedDeskType, savedDeskName string) error {
+	var saveDeskButton *nodewith.Finder
+	var savedDeskGridView *nodewith.Finder
+	if savedDeskType == "kTemplate" {
+		saveDeskButton = nodewith.ClassName("SaveDeskTemplateButton").Nth(0)
+		savedDeskGridView = nodewith.ClassName("SavedDeskGridView").Nth(0)
+	} else if savedDeskType == "kSaveAndRecall" {
+		saveDeskButton = nodewith.ClassName("SaveDeskTemplateButton").Nth(1)
+		savedDeskGridView = nodewith.ClassName("SavedDeskGridView").Nth(1)
+	} else {
+		return errors.New("unknown savedDeskType, must be 'kTemplate' or 'kSaveAndRecall'")
+	}
+
+	// Save a desk.
+	if err := uiauto.Combine(
+		"save a desk",
+		ac.LeftClick(saveDeskButton),
+		// Wait for the saved desk grid to show up.
+		ac.WaitUntilExists(savedDeskGridView),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to save a desk")
+	}
+
+	// Type savedDeskName and press "Enter".
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "cannot create keyboard")
+	}
+	defer kb.Close()
+	if err := kb.Type(ctx, savedDeskName); err != nil {
+		return errors.Wrapf(err, "cannot type %q: ", savedDeskName)
+	}
+	if err := kb.Accel(ctx, "Enter"); err != nil {
+		return errors.Wrap(err, "cannot press 'Enter'")
+	}
+
+	return nil
+}
+
+// EnterLibraryPage enters the library page from desk bar.
+// This assumes overview grid is live now.
+func EnterLibraryPage(ctx context.Context, ac *uiauto.Context) error {
+	libraryButton := nodewith.ClassName("ZeroStateIconButton").Name("Library")
+	savedDeskGridView := nodewith.ClassName("SavedDeskGridView").Nth(0)
+
+	// Verify existence of the library button.
+	libraryButtonInfo, err := ac.NodesInfo(ctx, libraryButton)
+	if err != nil {
+		return errors.Wrap(err, "failed to find the library button")
+	}
+	if len(libraryButtonInfo) != 1 {
+		return errors.Errorf("found inconsistent number of library button(s): got %v, want 1", len(libraryButtonInfo))
+	}
+
+	// Show the saved desk grid.
+	if err := uiauto.Combine(
+		"show the saved desk grid",
+		ac.LeftClick(libraryButton),
+		// Wait for the saved desk grid to show up.
+		ac.WaitUntilExists(savedDeskGridView),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to show the saved desk grid")
+	}
+
+	return nil
+}
+
+// LaunchSavedDesk verifies the existence of a saved desk then launchs the saved desk of index.
+// This assumes library page is live now.
+func LaunchSavedDesk(ctx context.Context, ac *uiauto.Context, savedDeskName string, index int) error {
+	savedDesk := nodewith.ClassName("SavedDeskItemView").Nth(index)
+	savedDeskNameView := nodewith.ClassName("SavedDeskNameView").Name(savedDeskName)
+	savedDeskMiniView :=
+		nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", savedDeskName))
+
+	// Launch the saved desk.
+	if err := uiauto.Combine(
+		"launch the saved desk",
+		// Verify the existence of the saved desk.
+		ac.WaitUntilExists(savedDeskNameView),
+		ac.LeftClick(savedDesk),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to launch a saved desk")
+	}
+
+	// Press enter.
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "cannot create keyboard")
+	}
+	defer kb.Close()
+	if err := kb.Accel(ctx, "Enter"); err != nil {
+		return errors.Wrap(err, "cannot press 'Enter'")
+	}
+
+	// Wait for the new desk to appear.
+	if err := uiauto.Combine(
+		"wait for the saved desk",
+		ac.WaitUntilExists(savedDeskMiniView),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to launch a saved desk")
+	}
+
+	return nil
+}
+
+// VerifySavedDesk verifies that the saved desks are expected as the given savedDeskNames.
+// This assumes library page is live now.
+func VerifySavedDesk(ctx context.Context, ac *uiauto.Context, savedDeskNames []string) error {
+	savedDeskNameView := nodewith.ClassName("SavedDeskNameView")
+
+	// Verify the saved desk count and name.
+	savedDeskNameViewInfo, err := ac.NodesInfo(ctx, savedDeskNameView)
+	if err != nil {
+		return errors.Wrap(err, "failed to find SavedDeskNameView")
+	}
+	if len(savedDeskNameViewInfo) != len(savedDeskNames) {
+		return errors.Wrapf(err, "found inconsistent number of saved desk(s): got %v, want %v", len(savedDeskNameViewInfo), len(savedDeskNames))
+	}
+	for i, info := range savedDeskNameViewInfo {
+		if info.Name != savedDeskNames[i] {
+			return errors.Wrapf(err, "found inconsistent saved desk name: got %s, want %s", info.Name, savedDeskNames[i])
+		}
+	}
+
+	return nil
 }
