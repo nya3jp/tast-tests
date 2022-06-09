@@ -249,6 +249,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eacc5ba6_d3acce5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-09T14:26:49Z",
+      "side": 1,
+      "message": "This is coming from the login test that is used in the tast tutorial: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/quickstart.md\n\nFrankly, I have no idea what the session state even is.\nWhat I need is for the test to log me in basically, if some parts of this are not necessary, I\u0027ll be happy if you tell me how to change it.",
+      "parentUuid": "87875fad_62e82c7c",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0270fa2e_016244b5",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
         "patchSetId": 4
@@ -272,6 +296,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3562a7c9_8f847639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-09T14:26:49Z",
+      "side": 1,
+      "message": "OK. By the way, do you know if this is needed: login_display_host*\u003d4,oobe_ui\u003d4 ?\nAgain, it is an artifact of the login test.",
+      "parentUuid": "0270fa2e_016244b5",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 44
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56f98d78_a63430e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
         "patchSetId": 4
@@ -283,6 +331,30 @@
       "writtenOn": "2022-06-09T00:26:29Z",
       "side": 1,
       "message": "not sure why tconn is not initiated and used in this test. Have I missed anything?",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 10
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed930929_c014b464",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-09T14:26:49Z",
+      "side": 1,
+      "message": "This is a first tast test I have ever written. I\u0027m doing it based on the login test. I don\u0027t know what a tconn is or what is the usual pattern to use it. Maybe  you can point me to another example?",
+      "parentUuid": "56f98d78_a63430e2",
       "range": {
         "startLine": 77,
         "startChar": 8,
@@ -364,6 +436,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "271dd01c_f777355f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-09T14:26:49Z",
+      "side": 1,
+      "message": "I\u0027ll try if that works.",
+      "parentUuid": "aa474bf0_6d4ea2b7",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 20
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "93febb44_c7676670",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
         "patchSetId": 4
@@ -375,6 +471,30 @@
       "writtenOn": "2022-06-09T00:26:29Z",
       "side": 1,
       "message": "Pls use a11y tree instead of js to check the element existence.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051e0aae_3635666a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-09T14:26:49Z",
+      "side": 1,
+      "message": "Can you tell me how to do it or provide examples?",
+      "parentUuid": "93febb44_c7676670",
       "range": {
         "startLine": 106,
         "startChar": 1,
@@ -427,6 +547,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a570dbc_68daf88e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-09T14:26:49Z",
+      "side": 1,
+      "message": "Yeah, I wan\u0027t to test that the element is there if and only if the feature flag is set. Isn\u0027t it an overkill to make 2 separate tests for this?",
+      "parentUuid": "062be0b6_68924258",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 30
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e70234e2_8d345a16",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
         "patchSetId": 4
@@ -455,6 +599,30 @@
       "writtenOn": "2022-06-09T00:26:29Z",
       "side": 1,
       "message": "I do not see a reason to have another function here, there is nothing else. Unnecessary wrap is bad for code readability.",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 14
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e7f4c4b_4278cf00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-09T14:26:49Z",
+      "side": 1,
+      "message": "I wanted to isolate the login-in code so that it can be potentially reused in other tests.",
+      "parentUuid": "ae511577_19a1f8f2",
       "range": {
         "startLine": 160,
         "startChar": 1,
