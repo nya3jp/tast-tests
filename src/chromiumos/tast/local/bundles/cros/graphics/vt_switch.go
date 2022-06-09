@@ -248,7 +248,7 @@ func VTSwitch(ctx context.Context, s *testing.State) {
 				s.Errorf("Error deleting file %s", currtVTScreenshot)
 			}
 		} else {
-			s.Errorf("Initial and current VT %d are different in iteration %d by %f ratio, whereas the ratio must be less than %f", vt, id, diffPixelsRatio, samenessThreshold)
+			s.Errorf("Failed to switch from VT %d terminals in iteration %d", vt, id)
 			maxDifferenceRatio[vt] = max(maxDifferenceRatio[vt], diffPixelsRatio)
 		}
 		return
