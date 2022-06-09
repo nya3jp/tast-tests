@@ -10,9 +10,11 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/testing"
 )
 
@@ -51,4 +53,46 @@ func EnsureOnlyBrowserWindowOpen(ctx context.Context, tconn *chrome.TestConn, bt
 func IsBrowserWindow(w *ash.Window, bt browser.Type) bool {
 	return (bt == browser.TypeAsh && w.WindowType == ash.WindowTypeBrowser) ||
 		(bt == browser.TypeLacros && w.WindowType == ash.WindowTypeLacros)
+}
+
+// WaitforAppLaunch waits for the app to launch.
+func WaitforAppLaunch(ctx context.Context, tconn *chrome.TestConn, ac *uiauto.Context, appsList []apps.App) error {
+	for _, app := range appsList {
+		if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
+			return errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
+		}
+	}
+
+	if err := VerifyWindowCount(ctx, tconn, len(appsList)); err != nil {
+		return errors.Wrap(err, "failed to verify window count")
+	}
+
+	return nil
+}
+
+// VerifyWindowCount verifies that there are `windowCount` the app windows.
+func VerifyWindowCount(ctx context.Context, tconn *chrome.TestConn, windowCount int) error {
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get all open windows")
+	}
+	if len(ws) != windowCount {
+		return errors.Wrapf(err, "found inconsistent number of window(s): got %v, want %v", len(ws), windowCount)
+	}
+
+	return nil
+}
+
+// OpenApps opens a list of apps.
+func OpenApps(ctx context.Context, tconn *chrome.TestConn, appsList []apps.App) error {
+	for _, app := range appsList {
+		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
+			return errors.Wrapf(err, "failed to open %s", app.Name)
+		}
+		if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
+			return errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
+		}
+	}
+
+	return nil
 }
