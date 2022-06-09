@@ -1,6 +1,69 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "558c82f3_2229ce70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-09T18:17:40Z",
+      "side": 1,
+      "message": "LGTM after nits are comments are resolved.",
+      "revId": "9b58b39d1b7ca20343606d1b9c4bf7c82bbfb45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7465a558_73f3100b",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-09T18:17:40Z",
+      "side": 1,
+      "message": "Can we rename to DeleteIP? We use the full \"Delete\" word in DeleteLink()",
+      "range": {
+        "startLine": 185,
+        "startChar": 3,
+        "endLine": 185,
+        "endChar": 8
+      },
+      "revId": "9b58b39d1b7ca20343606d1b9c4bf7c82bbfb45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac4aadee_488eed83",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-09T18:17:40Z",
+      "side": 1,
+      "message": "add \" IP \"",
+      "range": {
+        "startLine": 189,
+        "startChar": 44,
+        "endLine": 189,
+        "endChar": 45
+      },
+      "revId": "9b58b39d1b7ca20343606d1b9c4bf7c82bbfb45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1929d340_fc5ad5f9",
@@ -19,6 +82,29 @@
         "startChar": 54,
         "endLine": 196,
         "endChar": 84
+      },
+      "revId": "9b58b39d1b7ca20343606d1b9c4bf7c82bbfb45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e93b1af_d70141b7",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-09T18:17:40Z",
+      "side": 1,
+      "message": "Would it make more sense to rename the method to DeleteIPRoute? We use the full \"Delete\" word earlier in DeleteLink.",
+      "range": {
+        "startLine": 203,
+        "startChar": 3,
+        "endLine": 203,
+        "endChar": 13
       },
       "revId": "9b58b39d1b7ca20343606d1b9c4bf7c82bbfb45b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
