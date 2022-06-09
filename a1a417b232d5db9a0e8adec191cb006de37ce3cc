@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06039bb4_6b670eda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-09T04:37:48Z",
+      "side": 1,
+      "message": "Could you please get the CL reviewed by a teammate for domain verifications before sending out for Tast review? Thanks! This is the standard process of Tast reviews for non-trivial changes.\n\nFeel free to add me back after you got a +1/+2 from the team.",
+      "revId": "a1a417b232d5db9a0e8adec191cb006de37ce3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
