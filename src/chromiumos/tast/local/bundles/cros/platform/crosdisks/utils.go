@@ -29,13 +29,19 @@ const chronosGID = 1000
 
 // mount is a convenience wrapper for mounting with CrosDisks.
 func mount(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType string, options []string) (m crosdisks.MountCompleted, err error) {
-	testing.ContextLogf(ctx, "Mounting %q as %q with options %q", source, fsType, options)
+	testing.ContextLogf(ctx, "Mounting %q of type %q with options %q", source, fsType, options)
 	m, err = cd.MountAndWaitForCompletion(ctx, source, fsType, options)
 	if err != nil {
-		err = errors.Wrap(err, "failed to invoke mount")
+		err = errors.Wrapf(err, "cannot mount %q", source)
 		return
 	}
-	testing.ContextLogf(ctx, "Mount completed with status %d", m.Status)
+
+	if m.Status == crosdisks.MountErrorNone {
+		testing.ContextLogf(ctx, "Mounted %q as %q", m.SourcePath, m.MountPath)
+	} else {
+		testing.ContextLogf(ctx, "Cannot mount %q: %v", m.SourcePath, m.Status)
+	}
+
 	if m.SourcePath != source {
 		err = errors.Errorf("unexpected source_path: got %q; want %q", m.SourcePath, source)
 	}
@@ -53,29 +59,20 @@ func withMountDo(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType st
 		return err
 	}
 
-	if m.Status != 0 {
-		return errors.Errorf("unexpected mount status: got %d; want %d", m.Status, 0)
+	if m.Status != crosdisks.MountErrorNone {
+		return errors.Wrapf(m.Status, "cannot mount %q", source)
 	}
+
 	defer func() {
-		status, e := cd.Unmount(ctxForUnmount, m.MountPath, []string{})
-		if e != nil {
-			testing.ContextLogf(ctxForUnmount, "Could not invoke unmount %q: %v", m.MountPath, e)
+		if e := cd.Unmount(ctxForUnmount, m.MountPath, []string{}); e != nil {
+			testing.ContextLogf(ctxForUnmount, "Cannot unmount %q: %v", m.MountPath, e)
 			if err == nil {
-				err = errors.Wrapf(e, "could not invoke unmount %q", m.MountPath)
+				err = errors.Wrapf(e, "cannot unmount %q", m.MountPath)
 			}
-			return
-		}
-		if status != 0 {
-			testing.ContextLogf(ctxForUnmount, "Failed to unmount %q: status %d", m.MountPath, status)
+		} else if _, e := os.Stat(m.MountPath); e == nil {
+			testing.ContextLogf(ctxForUnmount, "Mount point %q still present", m.MountPath)
 			if err == nil {
-				err = errors.Wrapf(e, "failed to unmount %q: status %d", m.MountPath, status)
-			}
-		} else {
-			if _, e := os.Stat(m.MountPath); e == nil {
-				testing.ContextLogf(ctxForUnmount, "Mount point directory %q still present", m.MountPath)
-				if err == nil {
-					err = errors.Errorf("mount point directory %q still present", m.MountPath)
-				}
+				err = errors.Errorf("mount point %q still present", m.MountPath)
 			}
 		}
 	}()
@@ -84,17 +81,20 @@ func withMountDo(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType st
 }
 
 // verifyMountStatus checks that mounting yields the expected status.
-func verifyMountStatus(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType string, options []string, expectedStatus uint32) error {
+func verifyMountStatus(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType string, options []string, wantStatus crosdisks.MountError) error {
 	m, err := mount(ctx, cd, source, fsType, options)
 	if err != nil {
-		return errors.Wrapf(err, "failed to invoke mount for %q", source)
+		return err
 	}
-	if m.Status == 0 {
+
+	if m.Status == crosdisks.MountErrorNone {
 		defer cd.Unmount(ctx, m.MountPath, nil)
 	}
-	if m.Status != expectedStatus {
-		return errors.Errorf("unexpected mount status for %q; got %d want %d", source, m.Status, expectedStatus)
+
+	if m.Status != wantStatus {
+		return errors.Errorf("unexpected mount status for %q; got %v want %v", source, m.Status, wantStatus)
 	}
+
 	return nil
 }
 
@@ -169,27 +169,39 @@ func verifyThatKeysMatch(ctx context.Context, actual, expected DirectoryContents
 		testing.ContextLogf(ctx, "Missing item %q", v)
 	}
 	if len(extra) > 0 || len(missing) > 0 {
-		return errors.Errorf("condition failed: %d extra and %d missing elements in map", len(extra), len(missing))
+		return errors.Errorf("%d extra and %d missing items", len(extra), len(missing))
 	}
 	return nil
 }
 
 // verifyDirectoryContents recursively compares directory with the expectation and fails if there is a mismatch.
 func verifyDirectoryContents(ctx context.Context, dir string, expectedContent DirectoryContents) error {
+	testing.ContextLogf(ctx, "Listing items in %q", dir)
 	files, err := listDirectoryRecursively(dir)
 	if err != nil {
-		return errors.Wrapf(err, "could not list dir %q", dir)
+		return errors.Wrapf(err, "cannot list items in %q", dir)
 	}
 	if err := verifyThatKeysMatch(ctx, files, expectedContent); err != nil {
-		return err
+		return errors.Wrapf(err, "contents mismatch in %q", dir)
 	}
+
+	i := 0
+	next := time.Now().Add(time.Second)
+
 	for k, v := range expectedContent {
 		if v.Mtime != 0 {
 			f := files[k]
 			if f.Mtime != v.Mtime {
-				return errors.Errorf("mtime of file %q does not match: got %d, expected %d", k, f.Mtime, v.Mtime)
+				return errors.Errorf("mtime of file %q does not match: got %d, want %d", k, f.Mtime, v.Mtime)
 			}
 		}
+
+		i++
+		if !time.Now().Before(next) {
+			testing.ContextLogf(ctx, "Reading %q... %d%%", dir, i*100/len(expectedContent))
+			next = time.Now().Add(time.Second)
+		}
+
 		if v.Data != nil {
 			data, err := ioutil.ReadFile(filepath.Join(dir, k))
 			if err != nil {
@@ -200,6 +212,7 @@ func verifyDirectoryContents(ctx context.Context, dir string, expectedContent Di
 			}
 		}
 	}
+
 	return nil
 }
 

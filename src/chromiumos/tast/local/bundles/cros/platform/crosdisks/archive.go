@@ -456,12 +456,9 @@ func testCancellation(ctx context.Context, s *testing.State, cd *crosdisks.CrosD
 
 	// Unmounting by passing the original archive path should cancel the mount
 	// operation in progress.
-	status, err := cd.Unmount(ctx, archivePath, []string{})
-	if err != nil {
+
+	if err := cd.Unmount(ctx, archivePath, []string{}); err != nil {
 		s.Fatalf("Cannot unmount %q: %v", archivePath, err)
-	}
-	if status != crosdisks.MountErrorNone {
-		s.Fatalf("Cannot unmount %q: error %v", archivePath, status)
 	}
 
 	// Wait for MountCompleted event.
@@ -473,8 +470,8 @@ func testCancellation(ctx context.Context, s *testing.State, cd *crosdisks.CrosD
 	// The MountCompleted event should indicate a cancellation.
 	if event.Status != crosdisks.MountErrorCancelled {
 		s.Errorf(
-			"Unexpected mount completion status: got %v want MountErrorCancelled (%v)",
-			event.Status, crosdisks.MountErrorCancelled)
+			"Unexpected mount status for %q: got %v, want %v",
+			archivePath, event.Status, crosdisks.MountErrorCancelled)
 	}
 }
 
