@@ -98,6 +98,30 @@
       },
       "revId": "32d1703a6c957f56a94870b434e63e69cd5ec7c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "303d7f6d_6cc977fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/drag_and_drop_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T10:00:27Z",
+      "side": 1,
+      "message": "If you\u0027re using a \"browser window\" yes. Note that ash web browser will be gone. If what you\u0027d like is just \"some\" window, better not to depend on browser window, but something else.",
+      "parentUuid": "83aea57e_f67415f9",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "32d1703a6c957f56a94870b434e63e69cd5ec7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
