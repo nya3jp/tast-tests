@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa680fc_ad4a29f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-09T23:09:28Z",
+      "side": 1,
+      "message": "Please run tast unit tests: fast_build.sh -T\nThen update the commit log with\nTEST\u003dtast unit test passed\n\nI also have one nit comment. Thanks.\n",
+      "revId": "b49dbe08cf232380968bb28f00058a8c8e89a616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d75f7842_322bda24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-09T23:09:28Z",
+      "side": 1,
+      "message": "nit: ret \u003d fmt.Sprintf(\"%s%d: %s\\n\", ret, i, pkt.Dump())",
+      "revId": "b49dbe08cf232380968bb28f00058a8c8e89a616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
