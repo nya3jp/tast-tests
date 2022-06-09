@@ -17,15 +17,10 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-type writeProtectDisableOption string
-
-const (
-	manual writeProtectDisableOption = "MANUAL"
-	rsu    writeProtectDisableOption = "RSU"
-)
-
 type param struct {
-	wp writeProtectDisableOption
+	wp          rmaweb.WriteProtectDisableOption
+	enroll      bool
+	destination rmaweb.DestinationOption
 }
 
 func init() {
@@ -47,14 +42,25 @@ func init() {
 		Fixture:      fixture.NormalMode,
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			Name: "battery_disconnection",
+			Name: "unenroll_sameuser_manual",
 			Val: param{
-				wp: manual,
+				wp:          rmaweb.Manual,
+				enroll:      false,
+				destination: rmaweb.SameUser,
 			},
 		}, {
-			Name: "rsu",
+			Name: "unenroll_sameuser_rsu",
 			Val: param{
-				wp: rsu,
+				wp:          rmaweb.Rsu,
+				enroll:      false,
+				destination: rmaweb.DifferentUser,
+			},
+		}, {
+			Name: "enroll_diffuser_rsu",
+			Val: param{
+				wp:          rmaweb.Rsu,
+				enroll:      true,
+				destination: rmaweb.DifferentUser,
 			},
 		}},
 	})
@@ -70,6 +76,8 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	key := s.RequiredVar("ui.signinProfileTestExtensionManifestKey")
 	p := s.Param().(param)
 	wpOption := p.wp
+	enroll := p.enroll
+	destination := p.destination
 
 	if err := firmwareHelper.RequireServo(ctx); err != nil {
 		s.Fatal("Fail to init servo: ", err)
@@ -81,11 +89,11 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	}
 	// Restart will dispose resources, so don't dispose resources explicitly.
 
-	if err := uiHelper.SetupInitStatus(ctx); err != nil {
+	if err := uiHelper.SetupInitStatus(ctx, enroll); err != nil {
 		s.Fatal("Fail to setup init status: ", err)
 	}
 
-	if err := generateActionCombinedToDisableWP(wpOption, uiHelper)(ctx); err != nil {
+	if err := generateActionCombinedToDisableWP(wpOption, enroll, destination, uiHelper)(ctx); err != nil {
 		s.Fatal("Fail to navigate to Disable Write Protect page and turn off write protect: ", err)
 	}
 
@@ -158,12 +166,21 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 	}
 }
 
-func generateActionCombinedToDisableWP(option writeProtectDisableOption, uiHelper *rmaweb.UIHelper) action.Action {
-	if option == manual {
+func generateActionCombinedToDisableWP(option rmaweb.WriteProtectDisableOption, enroll bool, destination rmaweb.DestinationOption, uiHelper *rmaweb.UIHelper) action.Action {
+	if enroll {
+		return action.Combine("Navigate to RSU page and turn off write protect",
+			uiHelper.WelcomePageOperation,
+			uiHelper.ComponentsPageOperation,
+			uiHelper.OwnerPageOperation(destination),
+			uiHelper.RSUPageOperation,
+		)
+	}
+
+	if option == rmaweb.Manual {
 		return action.Combine("Navigate to Manual Disable Write Protect page and turn off write protect",
 			uiHelper.WelcomePageOperation,
 			uiHelper.ComponentsPageOperation,
-			uiHelper.OwnerPageOperation,
+			uiHelper.OwnerPageOperation(destination),
 			uiHelper.WipeDevicePageOperation,
 			uiHelper.WriteProtectPageChooseManual,
 		)
@@ -172,8 +189,8 @@ func generateActionCombinedToDisableWP(option writeProtectDisableOption, uiHelpe
 	return action.Combine("Navigate to RSU page and turn off write protect",
 		uiHelper.WelcomePageOperation,
 		uiHelper.ComponentsPageOperation,
-		uiHelper.OwnerPageOperation,
-		uiHelper.WipeDevicePageOperation,
+		uiHelper.OwnerPageOperation(destination),
+		// uiHelper.WipeDevicePageOperation,
 		uiHelper.WriteProtectPageChooseRSU,
 		uiHelper.RSUPageOperation,
 	)

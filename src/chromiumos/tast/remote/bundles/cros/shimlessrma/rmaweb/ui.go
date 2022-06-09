@@ -23,6 +23,24 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// DestinationOption indicates destination.
+type DestinationOption string
+
+// WriteProtectDisableOption indicates write protection disabling approach.
+type WriteProtectDisableOption string
+
+// SameUser indicates devices goes to same user.
+const SameUser DestinationOption = "SAME_USER"
+
+// DifferentUser indicates devices goes to different user.
+const DifferentUser DestinationOption = "DIFFERENT_USER"
+
+// Manual indicates using battery disconnection to disable write protect.
+const Manual WriteProtectDisableOption = "MANUAL"
+
+// Rsu indicates using rsu to disable write protect.
+const Rsu WriteProtectDisableOption = "RSU"
+
 const timeInSecondToLoadPage = 30
 const timeInSecondToEnableButton = 5
 const longTimeInSecondToEnableButton = 60
@@ -78,12 +96,21 @@ func (uiHelper *UIHelper) ComponentsPageOperation(ctx context.Context) error {
 }
 
 // OwnerPageOperation handles all operations on Owner Selection Page.
-func (uiHelper *UIHelper) OwnerPageOperation(ctx context.Context) error {
-	return action.Combine("Owner page operation",
-		uiHelper.waitForPageToLoad("After repair, who will be using the device?", timeInSecondToLoadPage),
-		uiHelper.clickRadioButton("Device will go to the same user"),
-		uiHelper.waitAndClickButton("Next", timeInSecondToEnableButton),
-	)(ctx)
+func (uiHelper *UIHelper) OwnerPageOperation(destination DestinationOption) action.Action {
+	return func(ctx context.Context) error {
+		var buttonLabel string
+		if destination == SameUser {
+			buttonLabel = "Device will go to the same user"
+		} else {
+			buttonLabel = "Device will go to a different user or organization"
+		}
+
+		return action.Combine("Owner page operation",
+			uiHelper.waitForPageToLoad("After repair, who will be using the device?", timeInSecondToLoadPage),
+			uiHelper.clickRadioButton(buttonLabel),
+			uiHelper.waitAndClickButton("Next", timeInSecondToEnableButton),
+		)(ctx)
+	}
 }
 
 // WriteProtectPageChooseRSU handles all operations on WP Page and select RSU.
@@ -112,6 +139,15 @@ func (uiHelper *UIHelper) WipeDevicePageOperation(ctx context.Context) error {
 
 // WriteProtectDisabledPageOperation handles all operations on Write Protect Disabled Page.
 func (uiHelper *UIHelper) WriteProtectDisabledPageOperation(ctx context.Context) error {
+	result, _ := uiHelper.FirmwareHelper.Servo.GetString(ctx, "fw_wp_state")
+	testing.ContextLog(ctx, "In WriteProtectDisabledPageOperation")
+	testing.ContextLog(ctx, result)
+	output, err := uiHelper.Dut.Conn().CommandContext(ctx, "crossystem", "wpsw_cur").Output()
+	if err != nil {
+		return err
+	}
+	testing.ContextLog(ctx, string(output))
+
 	return action.Combine("Write Protect Disabled page operation",
 		uiHelper.waitForPageToLoad("Write Protect is turned off", timeInSecondToLoadPage),
 		uiHelper.clickButton("Next"),
@@ -148,6 +184,14 @@ func (uiHelper *UIHelper) DeviceInformationPageOperation(ctx context.Context) er
 
 // DeviceProvisionPageOperation handles all operations on device provisioning Page.
 func (uiHelper *UIHelper) DeviceProvisionPageOperation(ctx context.Context) error {
+	result, _ := uiHelper.FirmwareHelper.Servo.GetString(ctx, "fw_wp_state")
+	testing.ContextLog(ctx, "In DeviceProvisionPageOperation")
+	testing.ContextLog(ctx, result)
+	output, err := uiHelper.Dut.Conn().CommandContext(ctx, "crossystem", "wpsw_cur").Output()
+	if err != nil {
+		return err
+	}
+	testing.ContextLog(ctx, string(output))
 	return uiHelper.waitForPageToLoad("Provisioning the device…", timeInSecondToLoadPage)(ctx)
 }
 
@@ -242,7 +286,7 @@ func (uiHelper *UIHelper) WaitForFirmwareInstallation(ctx context.Context) error
 }
 
 // SetupInitStatus setup initial status for shimless testing.
-func (uiHelper *UIHelper) SetupInitStatus(ctx context.Context) error {
+func (uiHelper *UIHelper) SetupInitStatus(ctx context.Context, enroll bool) error {
 	// If error is raised, then Factory is already disabled.
 	// Therefore, ignore any error.
 	uiHelper.changeFactoryMode("disable")(ctx)
@@ -252,7 +296,26 @@ func (uiHelper *UIHelper) SetupInitStatus(ctx context.Context) error {
 		// It is because disable Factory mode will also lock CCD.
 		uiHelper.openCCDIfNotOpen(),
 		uiHelper.changeWriteProtectStatus(servo.FWWPStateOn),
+		uiHelper.changeEnrollment(enroll),
 	)(ctx)
+}
+
+func (uiHelper *UIHelper) changeEnrollment(toEnroll bool) action.Action {
+	return func(ctx context.Context) error {
+		if _, err := uiHelper.Dut.Conn().CommandContext(ctx, "tpm_manager_client", "take_ownership").Output(); err != nil {
+			return err
+		}
+
+		var flags string
+		if toEnroll {
+			flags = "--flags=0x40"
+		} else {
+			flags = "--flags=0"
+		}
+
+		_, err := uiHelper.Dut.Conn().CommandContext(ctx, "cryptohome", "--action=set_firmware_management_parameters", flags).Output()
+		return err
+	}
 }
 
 func (uiHelper *UIHelper) openCCDIfNotOpen() action.Action {
