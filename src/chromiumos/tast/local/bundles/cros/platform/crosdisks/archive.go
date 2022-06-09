@@ -7,11 +7,11 @@
 package crosdisks
 
 import (
-	"bytes"
 	"context"
+	"crypto/md5"
+	"encoding/hex"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -25,6 +25,9 @@ import (
 
 // PreparedArchives is a list of data files used in the test.
 var PreparedArchives = []string{
+	"Big One.rar",
+	"Big One.tar.xz",
+	"Big One.zip",
 	"Duplicate Filenames.zip",
 	"Encrypted Full V4.rar",
 	"Encrypted Full V5.rar",
@@ -82,10 +85,6 @@ var PreparedArchives = []string{
 	"Unicode.zip",
 	"MacOS UTF-8 Bug 903664.zip",
 	"SJIS Bug 846195.zip",
-	"archive.rar",
-	"archive.tar",
-	"archive.tar.gz",
-	"archive.zip",
 	"b1238564.gz",
 }
 
@@ -116,26 +115,41 @@ func verifyEncryptedArchiveContent(ctx context.Context, cd *crosdisks.CrosDisks,
 	return verifyArchiveContent(ctx, cd, archivePath, []string{"password=" + password}, expectedContent)
 }
 
-func testValidArchives(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
-	// Each archive.* file has a different file format but they all contain a
-	// 942 byte "romeo.txt" file that starts with the line "Romeo and Juliet".
-	romeoAndJuliet := []byte("Romeo and Juliet")
-	for _, f := range []string{
-		"archive.rar",
-		"archive.tar",
-		"archive.tar.gz",
-		"archive.zip",
+func testBig(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
+	for _, archive := range []string{
+		"Big One.zip",
+		"Big One.rar",
+		"Big One.tar.xz",
 	} {
-		if err := withMountedArchiveDo(ctx, cd, filepath.Join(dataDir, f), nil, func(ctx context.Context, mountPath string) error {
-			data, err := ioutil.ReadFile(filepath.Join(mountPath, "romeo.txt"))
+		if err := withMountedArchiveDo(ctx, cd, filepath.Join(dataDir, archive), nil, func(ctx context.Context, mountPath string) error {
+			// Open file from mounted archive.
+			p := filepath.Join(mountPath, "Big One.txt")
+			f, err := os.Open(p)
 			if err != nil {
-				return errors.Wrap(err, `could not read "romeo.txt" within archive`)
-			} else if (len(data) != 942) || !bytes.HasPrefix(data, romeoAndJuliet) {
-				return errors.New(`unexpected contents for "romeo.txt" within archive`)
+				return err
 			}
+
+			// Read and hash file from mounted archive using MD5.
+			s.Logf("Hashing %q", p)
+			h := md5.New()
+			n, err := io.Copy(h, f)
+			if err != nil {
+				return err
+			}
+
+			// Check file size.
+			if want := int64(6777995272); n != want {
+				return errors.Errorf("unexpected file size: got %d bytes, want %d bytes", n, want)
+			}
+
+			// Check MD5 hash value.
+			if got, want := hex.EncodeToString(h.Sum(nil)), "2095613d0172b743430ffca9401c39b6"; got != want {
+				return errors.Errorf("unexpected MD5 hash: got %q, want %q", got, want)
+			}
+
 			return nil
 		}); err != nil {
-			s.Errorf("Test failed for %q: %v", f, err)
+			s.Errorf("Test failed for %q: %v", archive, err)
 		}
 	}
 }
@@ -536,9 +550,6 @@ func RunArchiveTests(ctx context.Context, s *testing.State) {
 				}
 			}
 
-			s.Run(ctx, "ValidArchives", func(ctx context.Context, state *testing.State) {
-				testValidArchives(ctx, state, cd, mountPath)
-			})
 			s.Run(ctx, "InvalidArchives", func(ctx context.Context, state *testing.State) {
 				testInvalidArchives(ctx, state, cd, mountPath)
 			})
@@ -574,6 +585,9 @@ func RunArchiveTests(ctx context.Context, s *testing.State) {
 			})
 			s.Run(ctx, "CancelMounting", func(ctx context.Context, state *testing.State) {
 				testCancellation(ctx, state, cd, mountPath)
+			})
+			s.Run(ctx, "Big", func(ctx context.Context, state *testing.State) {
+				testBig(ctx, state, cd, mountPath)
 			})
 			return nil
 		})
