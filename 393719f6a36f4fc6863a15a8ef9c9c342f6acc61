@@ -50,6 +50,419 @@
       "message": "Hello, could you please review this new tast test? ",
       "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d87d977_311e7e1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "Hi Jan, I think a bit rework needs to be done on this cl. I will review it again once you solve most comments.",
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d2cd65e_db28f3c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 52
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0589d9a5_12e7ab78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "Please add the an individual PoC as primary contact.",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 49
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b3c583_248e99ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "Please avoid passing through testing state or fail a test inside a function. Instead:\n\ngetSessionManager() (*session.SessionManager, error){\n    if err :\u003d upstart.RestartJob(setupCtx, \"ui\"); err !\u003d nil{\n        return nil, errors.Wrap(err,\"failed to restart Chrome UI\")\n    }\n}",
+      "range": {
+        "startLine": 33,
+        "startChar": 44,
+        "endLine": 33,
+        "endChar": 60
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1bca945_da623fd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "nit: In golang, comment is above the declaration.\nhttps://go.dev/doc/effective_go#commentary",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 56
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64cf8a99_297af3ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "not required.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 85
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c40ffa44_4ecc7606",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "This can also be part of the main test function.",
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa16d125_a769a60f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 90
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87875fad_62e82c7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "Can you explain why listening to these events such as `started`, `stopped`? Is it special for privacyhub testing?",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0270fa2e_016244b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "It is unusual to use cap in Tast. Maybe just let golang to handle the resizing.\n\ncrExtraArgs :\u003d []string{\"--vmodule\u003dlogin_display_host*\u003d4,oobe_ui\u003d4\"}\ncrExtraArgs \u003d append(crExtraArgs, extra...)",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 44
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f98d78_a63430e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "not sure why tconn is not initiated and used in this test. Have I missed anything?",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 10
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4921ff6_17679143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "osSetting, err :\u003d ossettings.Launch(ctx, tconn)",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e52052a_3034b355",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa474bf0_6d4ea2b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "I am very confused of startChrome function. Can you just use\n\ncr, err :\u003d chrome.New(ctx, chrome.EnableFeatures(\"CrosPrivacyHub\"), chrome.ExtraArgs(\"--vmodule\u003dlogin_display_host*\u003d4,oobe_ui\u003d4\"))",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 20
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93febb44_c7676670",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "Pls use a11y tree instead of js to check the element existence.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "815c00cd_283f9d02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062be0b6_68924258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "IIUC, it has 2 tests here, one with flag, and the other without. You should split the test to two, using parameterised tests or subtests.\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 30
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e70234e2_8d345a16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae511577_19a1f8f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T00:26:29Z",
+      "side": 1,
+      "message": "I do not see a reason to have another function here, there is nothing else. Unnecessary wrap is bad for code readability.",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 14
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
