@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "366512fc_880dac86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-09T21:37:34Z",
+      "side": 1,
+      "message": "Updated for hermes constants and for other review comments.",
+      "revId": "ee400cda54bd5fbe4eeb8aea0f4ec93a7a29bd99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

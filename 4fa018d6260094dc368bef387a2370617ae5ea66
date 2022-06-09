@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5860a8_5929d192",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-09T21:37:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93d60983_543cbd33",
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56a1aefa_f51e1617",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-09T19:01:14Z",
       "side": 1,
       "message": "any reason this isn\u0027t in hermesconst?",
+      "range": {
+        "startLine": 40,
+        "startChar": 27,
+        "endLine": 40,
+        "endChar": 41
+      },
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b38cf1_0a254c39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-09T21:37:34Z",
+      "side": 1,
+      "message": "Added to hermesconst and replaced in multiple files.",
+      "parentUuid": "56a1aefa_f51e1617",
       "range": {
         "startLine": 40,
         "startChar": 27,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a325b4d6_d8bccd1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-09T21:37:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eed5d272_20a4c043",
+      "range": {
+        "startLine": 51,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "803cc1a0_25ff27bb",
@@ -98,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a9ca7c7_dfd53944",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-09T21:37:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "803cc1a0_25ff27bb",
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f0a7e20_16df160a",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-06-09T20:52:23Z",
       "side": 1,
       "message": "We probably don\u0027t need this call either",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 74
+      },
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6b2b19_48d5aa0a",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-09T21:37:34Z",
+      "side": 1,
+      "message": "Will remove once test validated, I see same in autotest.",
+      "parentUuid": "5f0a7e20_16df160a",
       "range": {
         "startLine": 73,
         "startChar": 0,
@@ -158,6 +266,30 @@
       "side": 1,
       "message": "good catch, this function is deprecated now. We will be removing it after the hermes autotest suite stops running.",
       "parentUuid": "d168b81f_e3994377",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "4fa018d6260094dc368bef387a2370617ae5ea66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f745c01a_fcb86faf",
+        "filename": "src/chromiumos/tast/local/hermes/euicc_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-09T21:37:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bfde9c4f_13701cc0",
       "range": {
         "startLine": 76,
         "startChar": 0,
