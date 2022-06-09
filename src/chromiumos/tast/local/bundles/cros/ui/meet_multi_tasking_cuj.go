@@ -10,11 +10,11 @@ import (
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/bond"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -316,23 +316,6 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	twoFingerScrollDown := func(duration time.Duration) error {
-		fingerSpacing := tpw.Width() / 4
-		// Swipe and scroll down the spreadsheet.
-		testing.ContextLogf(ctx, "Scrolling down the Google Sheets file for %s", duration)
-		for end := time.Now().Add(duration); time.Now().Before(end); {
-			// Double swipe from the middle bottom to the middle top of the touchpad.
-			var startX, startY, endX, endY input.TouchCoord
-			startX, startY, endX, endY = tpw.Width()/2, 1, tpw.Width()/2, tpw.Height()-1
-			fingerNum := 2
-			if err := tw.Swipe(ctx, startX, startY, endX, endY, fingerSpacing,
-				fingerNum, 500*time.Millisecond); err != nil {
-				return errors.Wrap(err, "failed to swipe")
-			}
-		}
-		return nil
-	}
-
 	ensureElementGetsScrolled := func(conn *chrome.Conn, element string) error {
 		var scrollTop int
 		if err := conn.Eval(ctx, fmt.Sprintf("parseInt(%s.scrollTop)", element), &scrollTop); err != nil {
@@ -442,7 +425,7 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 
 		// Scroll down the Docs file.
 		s.Logf("Scrolling down the Google Docs file for %s", docsScrollTimeout)
-		if err := twoFingerScrollDown(docsScrollTimeout); err != nil {
+		if err := cuj.ScrollDownFor(ctx, tpw, tw, 500*time.Millisecond, docsScrollTimeout); err != nil {
 			return err
 		}
 
@@ -473,14 +456,8 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 
 		// Go through the Slides deck.
 		s.Logf("Going through the Google Slides file for %s", slidesScrollTimeout)
-		for end := time.Now().Add(slidesScrollTimeout); time.Now().Before(end); {
-			if err := uiauto.Combine(
-				"sleep and press down",
-				action.Sleep(time.Second),
-				kw.AccelAction("Down"),
-			)(ctx); err != nil {
-				return err
-			}
+		if err := cuj.RepeatKeyPressFor(ctx, kw, "Down", time.Second, slidesScrollTimeout); err != nil {
+			return err
 		}
 
 		// Ensure the slides deck gets scrolled.
@@ -510,7 +487,7 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 
 		// Scroll down the Gmail inbox.
 		s.Logf("Scrolling down the Gmail inbox for %s", gmailScrollTimeout)
-		if err := twoFingerScrollDown(gmailScrollTimeout); err != nil {
+		if err := cuj.ScrollDownFor(ctx, tpw, tw, 500*time.Millisecond, gmailScrollTimeout); err != nil {
 			return err
 		}
 
