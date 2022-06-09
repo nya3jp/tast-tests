@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b92c6f4_ee2603ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-09T15:57:10Z",
+      "side": 1,
+      "message": "`TEST\u003d../tast/fast_build.sh -T`\nThe `TEST` line is for documenting what testing you perform before you put Verified +1 on the CL. Although this CL is pretty simple and straightforward, it is so quick and easy to run `../tast/fast_build.sh -T` that you might as well at least do that.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "3e22a7a9cfcff3d227ecad2bddb0c48e38e3f743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "87e55002_4e0c7d10",
@@ -31,6 +54,23 @@
       "writtenOn": "2022-06-09T07:47:58Z",
       "side": 1,
       "message": "LGTM",
+      "revId": "3e22a7a9cfcff3d227ecad2bddb0c48e38e3f743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "625eb86e_f94fd455",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-09T15:57:10Z",
+      "side": 1,
+      "message": "lgtm with `TEST\u003d../tast/fast_build.sh -T` instead of `TEST\u003dNone`",
       "revId": "3e22a7a9cfcff3d227ecad2bddb0c48e38e3f743",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
