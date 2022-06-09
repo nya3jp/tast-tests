@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f99072_46ef1ae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-09T00:55:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa06f251_d8042a10",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 75
+      },
+      "revId": "4743b732c1601965bfe573b382324b693fb63dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0bba119_15350570",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-08T23:17:25Z",
       "side": 1,
       "message": "s/dbus/profile",
+      "range": {
+        "startLine": 114,
+        "startChar": 28,
+        "endLine": 114,
+        "endChar": 32
+      },
+      "revId": "4743b732c1601965bfe573b382324b693fb63dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "556cbc54_eadc8875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-09T00:55:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0bba119_15350570",
       "range": {
         "startLine": 114,
         "startChar": 28,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83d80210_6631ac1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_test_ci.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-09T00:55:02Z",
+      "side": 1,
+      "message": "That can push to import hermes package in network package for stork_profile and in other files. \n\nWhat if to create in hermesconst file and import? if really required.",
+      "parentUuid": "eb128b1b_1b96431d",
+      "range": {
+        "startLine": 73,
+        "startChar": 67,
+        "endLine": 73,
+        "endChar": 69
+      },
+      "revId": "4743b732c1601965bfe573b382324b693fb63dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d34e6fa2_01146ec0",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-08T23:18:36Z",
       "side": 1,
       "message": "Please remove",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 73
+      },
+      "revId": "4743b732c1601965bfe573b382324b693fb63dd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b836d14c_feee68f5",
+        "filename": "src/chromiumos/tast/local/stork/stork.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-09T00:55:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d34e6fa2_01146ec0",
       "range": {
         "startLine": 159,
         "startChar": 0,
