@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/filemanager/100,000 Files 20220609.tar.xz",
+  "size": 621848,
+  "sha256sum": "b3da0e5cdad23ec891b7ab5cd548302be30b3e4b4dadfefec4eb9bebce359ec3"
+}
