@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -145,6 +146,65 @@ func (uda *Context) LeftClick(s *Finder) uiauto.Action {
 // RightClick returns an action that right-clicks a finder.
 func (uda *Context) RightClick(s *Finder) uiauto.Action {
 	return uda.click(s, mouse.RightButton)
+}
+
+// LeftClickVirtualMouse Performs a left click using a virtual mouse.
+// The difference between this method and `LeftClick` is that this method
+// will generate a virtual hardware element that simulates the events a real
+// mouse would send, and behaves like a user when performing the click, i.e.
+// taking time to move the mouse into position, and then a temporary pause
+// before the click is performed. This level of emulation is required for certain
+// applications (especially in ARC++), and better emulates a user click,
+// without relying on internal methods in the private chrome extension which
+// may bypass events that an application is looking for (i.e. a hover before
+// a click).
+func (uda *Context) LeftClickVirtualMouse(s *Finder) uiauto.Action {
+	const (
+		moveTime             = 250 * time.Millisecond
+		pauseBeforeClickTime = time.Second
+	)
+
+	return func(ctx context.Context) error {
+		// Find the location of the element
+		var loc *Location
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			// Get the location of the element.
+			var err error
+			loc, err = uda.Location(ctx, s)
+			if err != nil {
+				return errors.Wrapf(err, "failed to find the location of %q", s.desc)
+			}
+
+			return nil
+		}, &uda.pollOpts); err != nil {
+			return errors.Wrap(err, "failed to poll for the element location")
+		}
+
+		// Create a virtual mouse.
+		mew, err := input.Mouse(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to create the mouse")
+		}
+		defer mew.Close()
+
+		// Move the mouse into position over a period of time to simulate real movement.
+		if err := mouse.Move(uda.tconn, loc.CenterPoint(), moveTime)(ctx); err != nil {
+			return errors.Wrap(err, "failed to move the mouse")
+		}
+
+		// Pause temporarily before performing a click so that the application can register
+		// the position of the mouse.
+		if err := testing.Sleep(ctx, pauseBeforeClickTime); err != nil {
+			return errors.Wrap(err, "failed to sleep before the mouse click")
+		}
+
+		// Send the click event.
+		if err := mew.Click(); err != nil {
+			return errors.Wrap(err, "failed to perform the click")
+		}
+
+		return nil
+	}
 }
 
 // Tap performs a single touchscreen tap.
