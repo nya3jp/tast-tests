@@ -14,6 +14,7 @@ import (
 
 	common "chromiumos/tast/common/firmware"
 	"chromiumos/tast/common/servo"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
@@ -55,21 +56,31 @@ func ECUpdateID(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 
+	initActiveCopy, err := h.Servo.GetString(ctx, servo.ECActiveCopy)
+	if err != nil {
+		s.Fatal("Failed to get ec active copy: ", err)
+	} else if initActiveCopy != "RW" {
+		s.Logf("Expected initial active copy to be 'RW', got %q instead. Attempting to sysjump to RW A", initActiveCopy)
+		if err := h.Servo.RunECCommand(ctx, "sysjump A"); err != nil {
+			s.Log("Failed to perform sysjump: ", err)
+		}
+		// Expect EC to be in RW_A now.
+		if initActiveCopy, err := h.Servo.GetString(ctx, servo.ECActiveCopy); err != nil {
+			s.Fatal("Failed to get ec active copy: ", err)
+		} else if initActiveCopy != "RW" {
+			s.Fatalf("Expected initial active copy to be 'RW', got %q instead", initActiveCopy)
+		}
+	}
+
+	cleanupContext := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Minute)
+	defer cancel()
+
 	s.Log("Get initial write protect state")
 	initialState, err := h.Servo.GetString(ctx, servo.FWWPState)
 	if err != nil {
 		s.Fatal("Failed to get initial write protect state: ", err)
 	}
-	defer func() {
-		s.Log("Reset write protect to initial state: ", initialState)
-		setInitWP := false
-		if servo.FWWPStateValue(initialState) == servo.FWWPStateOn {
-			setInitWP = true
-		}
-		if err := setFWWriteProtect(ctx, h, setInitWP); err != nil {
-			s.Fatal("Failed to set FW write protect state: ", err)
-		}
-	}()
 
 	// Back up AP fw, EC_RW, and EC_RW_B.
 	if err := h.RequireBiosServiceClient(ctx); err != nil {
@@ -81,6 +92,12 @@ func ECUpdateID(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to backup current EC_RW region: ", err)
 	}
 	s.Log("EC_RW backup is stored at: ", ecrwPath.Path)
+	defer func(ctx context.Context) {
+		s.Log("Delete EC_RW fw backup")
+		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", ecrwPath.Path).Output(ssh.DumpLogOnError); err != nil {
+			s.Fatal("Failed to delete EC_RW backup: ", err)
+		}
+	}(cleanupContext)
 
 	s.Log("Back up EC_RW_B firmware")
 	ecrwbPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_ECRWBImageSection, Programmer: pb.Programmer_ECProgrammer})
@@ -88,14 +105,41 @@ func ECUpdateID(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to backup current EC_RW_B region: ", err)
 	}
 	s.Log("EC_RW_B backup is stored at: ", ecrwbPath.Path)
+	defer func(ctx context.Context) {
+		s.Log("Delete EC_RW_B fw backup")
+		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", ecrwbPath.Path).Output(ssh.DumpLogOnError); err != nil {
+			s.Fatal("Failed to delete EC_RW_B backup: ", err)
+		}
+	}(cleanupContext)
 
-	// Restore EC_RW and EC_RW_B.
-	defer func() {
+	workPath := filepath.Join(tmpUpdateIDDir, "work")
+	s.Log("Create temp dir in DUT")
+	if _, err = h.DUT.Conn().CommandContext(ctx, "mkdir", "-p", workPath).Output(ssh.DumpLogOnError); err != nil {
+		s.Fatal("Failed to create temp dirs: ", err)
+	}
+	s.Log("Created temp directory at: ", tmpUpdateIDDir)
+	defer func(ctx context.Context) {
+		s.Log("Delete temp dir and contained files from DUT")
+		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", "-r", tmpUpdateIDDir).Output(ssh.DumpLogOnError); err != nil {
+			s.Fatal("Failed to delete temp dir: ", err)
+		}
+	}(cleanupContext)
+
+	defer func(ctx context.Context) {
+		s.Log("Reset write protect to initial state: ", initialState)
+		setInitWP := false
+		if servo.FWWPStateValue(initialState) == servo.FWWPStateOn {
+			setInitWP = true
+		}
+		if err := setFWWriteProtect(ctx, h, setInitWP); err != nil {
+			s.Fatal("Failed to set FW write protect state: ", err)
+		}
 		// Disable wp so backup can be restored.
 		if err := setFWWriteProtect(ctx, h, false); err != nil {
 			s.Fatal("Failed to set FW write protect state: ", err)
 		}
 
+		// Restore EC_RW and EC_RW_B.
 		// Require again here since reboots in test cause nil pointer errors otherwise.
 		if err := h.RequireBiosServiceClient(ctx); err != nil {
 			s.Fatal("Requiring BiosServiceClient: ", err)
@@ -110,30 +154,7 @@ func ECUpdateID(ctx context.Context, s *testing.State) {
 		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, ecrwbPath); err != nil {
 			s.Fatal("Failed to restore EC_RW_B firmware: ", err)
 		}
-
-		s.Log("Delete EC_RW fw backup")
-		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", ecrwPath.Path).Output(ssh.DumpLogOnError); err != nil {
-			s.Fatal("Failed to delete EC_RW backup: ", err)
-		}
-
-		s.Log("Delete EC_RW_B fw backup")
-		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", ecrwbPath.Path).Output(ssh.DumpLogOnError); err != nil {
-			s.Fatal("Failed to delete EC_RW_B backup: ", err)
-		}
-	}()
-
-	workPath := filepath.Join(tmpUpdateIDDir, "work")
-	s.Log("Create temp dir in DUT")
-	if _, err = h.DUT.Conn().CommandContext(ctx, "mkdir", "-p", workPath).Output(ssh.DumpLogOnError); err != nil {
-		s.Fatal("Failed to create temp dirs: ", err)
-	}
-	// Clean up temp directory.
-	defer func() {
-		s.Log("Delete temp dir and contained files from DUT")
-		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", "-r", tmpUpdateIDDir).Output(ssh.DumpLogOnError); err != nil {
-			s.Fatal("Failed to delete temp dir: ", err)
-		}
-	}()
+	}(cleanupContext)
 
 	flags := pb.GBBFlagsState{Clear: []pb.GBBFlag{pb.GBBFlag_DISABLE_EC_SOFTWARE_SYNC}, Set: []pb.GBBFlag{pb.GBBFlag_DEV_SCREEN_SHORT_DELAY}}
 	if err := common.ClearAndSetGBBFlags(ctx, s.DUT(), &flags); err != nil {
@@ -289,7 +310,6 @@ func setFWWriteProtect(ctx context.Context, h *firmware.Helper, enable bool) err
 	}
 
 	return nil
-	// return coldModeAwareReboot(ctx, h)
 }
 
 func coldModeAwareReboot(ctx context.Context, h *firmware.Helper) error {
