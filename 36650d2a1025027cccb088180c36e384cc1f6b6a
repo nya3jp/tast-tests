@@ -175,6 +175,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e1165ac_9f92c7bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-09T00:28:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2179c6d5_273d3dec",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb6e6c18_fb23dc29",
@@ -235,6 +253,24 @@
         "endLine": 19,
         "endChar": 50
       },
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04271826_3bec70c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-09T00:28:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bb6e6c18_fb23dc29",
       "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -583,6 +619,24 @@
       "side": 1,
       "message": "Got it, I added in sleep for throttling mouse event generation. I\u0027m not sure what is a good value for sleep -- right now I have 1 second sleep, between mouse movements, but I am open to increasing that value to what you think is best.",
       "parentUuid": "d7cf4f51_b7a33e7b",
+      "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "053472fc_37b9150f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/mouse_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-09T00:28:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72612ad2_14590783",
       "revId": "36650d2a1025027cccb088180c36e384cc1f6b6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
