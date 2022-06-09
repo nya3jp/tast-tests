@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce037967_50eebbd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535192
+      },
+      "writtenOn": "2022-06-09T14:11:51Z",
+      "side": 1,
+      "message": "An updated version of XML file has been pushed",
+      "revId": "aefffa3a8cf461f5a45e2a20895faf5f33c7d3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a101b85_aead1ec3",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-05-31T16:38:56Z",
       "side": 1,
       "message": "I guess we just took this verbatim? Would it be an issue to remove the trailing whitespace?",
+      "range": {
+        "startLine": 3,
+        "startChar": 14,
+        "endLine": 3,
+        "endChar": 15
+      },
+      "revId": "aefffa3a8cf461f5a45e2a20895faf5f33c7d3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1310f753_f32fe691",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/data/third_party/Test_multiscript_chrome_v1.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1535192
+      },
+      "writtenOn": "2022-06-09T14:11:51Z",
+      "side": 1,
+      "message": "An updated version of XML file has been pushed",
+      "parentUuid": "0a101b85_aead1ec3",
       "range": {
         "startLine": 3,
         "startChar": 14,
