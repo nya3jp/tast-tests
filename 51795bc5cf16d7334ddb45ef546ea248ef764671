@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e0eae9c_9f2a64b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-06-09T07:50:16Z",
+      "side": 1,
+      "message": "Hanada-san please take a look. Thanks!",
+      "revId": "51795bc5cf16d7334ddb45ef546ea248ef764671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
