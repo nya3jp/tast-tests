@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff14400f_6c1b2d2a",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-06-09T07:54:01Z",
+      "side": 1,
+      "message": "nit: move to a variable for readability",
+      "range": {
+        "startLine": 146,
+        "startChar": 45,
+        "endLine": 146,
+        "endChar": 82
+      },
+      "revId": "14c926955eebf4fc68e797cab586389ad65df9b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e365cd_d62edc33",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/fakedms.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-06-09T07:54:01Z",
+      "side": 1,
+      "message": "Check for errors and error case first and log an error if unexpected.",
+      "revId": "14c926955eebf4fc68e797cab586389ad65df9b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
