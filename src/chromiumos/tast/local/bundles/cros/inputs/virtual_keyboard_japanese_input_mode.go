@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -34,6 +35,7 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Fixture:      fixture.TabletVK,
+		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{
 			{

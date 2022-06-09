@@ -43,6 +43,7 @@ func init() {
 				Val:               []ime.InputMethod{ime.EnglishUS, ime.Japanese, ime.ChinesePinyin},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS, ime.Japanese, ime.ChinesePinyin}),
 			},
 			{
 				Name:              "guest",
@@ -50,6 +51,7 @@ func init() {
 				Val:               []ime.InputMethod{ime.EnglishUSWithInternationalKeyboard, ime.JapaneseWithUSKeyboard, ime.Korean},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUSWithInternationalKeyboard, ime.JapaneseWithUSKeyboard, ime.Korean}),
 			},
 			{
 				Name:              "a11y",
@@ -57,6 +59,7 @@ func init() {
 				Val:               []ime.InputMethod{ime.EnglishUK, ime.AlphanumericWithJapaneseKeyboard, ime.Arabic},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream", "informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUK, ime.AlphanumericWithJapaneseKeyboard, ime.Arabic}),
 			},
 			{
 				Name:              "informational",
@@ -64,6 +67,7 @@ func init() {
 				Val:               []ime.InputMethod{ime.EnglishUS, ime.Japanese, ime.Arabic},
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS, ime.Japanese, ime.Arabic}),
 			},
 			{
 				Name:              "lacros",
@@ -72,6 +76,7 @@ func init() {
 				Val:               []ime.InputMethod{ime.EnglishUS, ime.Japanese, ime.ChinesePinyin},
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS, ime.Japanese, ime.ChinesePinyin}),
 			},
 			{
 				Name:              "guest_lacros",
@@ -80,6 +85,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUSWithInternationalKeyboard, ime.JapaneseWithUSKeyboard, ime.Korean}),
 			},
 			{
 				Name:              "a11y_lacros",
@@ -88,6 +94,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUK, ime.AlphanumericWithJapaneseKeyboard, ime.Arabic}),
 			},
 		},
 	})

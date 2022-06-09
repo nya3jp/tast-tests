@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/touch"
@@ -32,6 +33,7 @@ func init() {
 		Contacts:     []string{"jiwan@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
+		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 		Params: []testing.Param{
 			{
 				Fixture:           fixture.TabletVK,

@@ -53,6 +53,7 @@ func init() {
 		Desc:         "Checks that virtual keyboard works in different input methods",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
+		SearchFlags:  util.IMESearchFlags(typingTestIMEs),
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Timeout:      time.Duration(len(typingTestIMEs)+len(typingTestIMEsUpstream)) * time.Duration(len(typingTestMessages)) * time.Minute,
 		Params: []testing.Param{
@@ -68,6 +69,7 @@ func init() {
 				Val:               typingTestIMEsUpstream,
 				Fixture:           fixture.TabletVK,
 				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
+				ExtraSearchFlags:  util.IMESearchFlags(typingTestIMEsUpstream),
 			},
 			{
 				Name:              "informational",
@@ -75,6 +77,7 @@ func init() {
 				Val:               append(typingTestIMEs, typingTestIMEsUpstream...),
 				Fixture:           fixture.TabletVK,
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags(typingTestIMEsUpstream),
 			},
 			{
 				Name:              "lacros",

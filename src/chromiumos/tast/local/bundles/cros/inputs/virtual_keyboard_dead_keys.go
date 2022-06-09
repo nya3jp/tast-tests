@@ -64,6 +64,7 @@ func init() {
 					typingKeys:           []string{circumflex, "a"},
 					expectedTypingResult: "â",
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.FrenchFrance}),
 			},
 			{
 				Name:              "french_informational",
@@ -75,6 +76,7 @@ func init() {
 					typingKeys:           []string{circumflex, "a"},
 					expectedTypingResult: "â",
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.FrenchFrance}),
 			},
 			{
 				Name:              "catalan",
@@ -93,6 +95,7 @@ func init() {
 					typingKeys:           []string{acuteAccent, "a"},
 					expectedTypingResult: "á",
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Catalan}),
 			},
 			{
 				Name:              "catalan_informational",
@@ -104,6 +107,7 @@ func init() {
 					typingKeys:           []string{acuteAccent, "a"},
 					expectedTypingResult: "á",
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Catalan}),
 			},
 			{
 				Name:              "french_lacros",
@@ -116,6 +120,7 @@ func init() {
 					typingKeys:           []string{circumflex, "a"},
 					expectedTypingResult: "â",
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.FrenchFrance}),
 			},
 			{
 				Name:              "catalan_lacros",
@@ -128,6 +133,7 @@ func init() {
 					typingKeys:           []string{acuteAccent, "a"},
 					expectedTypingResult: "á",
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.Catalan}),
 			},
 		},
 	})
