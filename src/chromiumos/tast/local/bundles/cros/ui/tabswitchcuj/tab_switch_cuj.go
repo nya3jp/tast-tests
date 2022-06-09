@@ -104,6 +104,7 @@ func Run(ctx context.Context, s *testing.State) {
 	var cr *chrome.Chrome
 	var cs ash.ConnSource
 	var bTconn *chrome.TestConn
+	var l *lacros.Lacros
 
 	param := s.Param().(TabSwitchParam)
 	if param.BrowserType == browser.TypeAsh {
@@ -115,7 +116,6 @@ func Run(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get TestAPIConn: ", err)
 		}
 	} else {
-		var l *lacros.Lacros
 		var err error
 		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), param.BrowserType)
 		if err != nil {
@@ -216,6 +216,13 @@ func Run(ctx context.Context, s *testing.State) {
 				s.Fatalf("Failed to open %s: %v", data.startURL, err)
 			}
 			conns = append(conns, firstPage)
+
+			// This must be done after opening a new window to avoid terminating lacros-chrome.
+			if param.BrowserType == browser.TypeLacros {
+				if err := l.Browser().CloseWithURL(ctx, chrome.NewTabURL); err != nil {
+					s.Fatal("Failed to close blank tab: ", err)
+				}
+			}
 
 			urls, err := findAnchorURLs(ctx, firstPage, data.urlPattern, numPages)
 			if err != nil {
