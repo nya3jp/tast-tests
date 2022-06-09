@@ -22,6 +22,30 @@
       },
       "revId": "308655b6c32e4c88ea946f6d80a6bf71e9fbcb35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1fbcb9_6ce746ca",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-09T18:57:50Z",
+      "side": 1,
+      "message": "Thanks for the review. If we we don\u0027t keep track of the Type in Browser, then we need to pass both Type and Browser (or TestConn) into AddPerformanceCUJMetrics, and maybe other functions in the future, because chrome or lacros instance is initialized outside of recorder. This will make the API redundant. \n\nWhile Browser abstract all the common functions, I think it is natural to let it know its own browser type.",
+      "parentUuid": "0a6a350b_aaa25840",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "308655b6c32e4c88ea946f6d80a6bf71e9fbcb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
