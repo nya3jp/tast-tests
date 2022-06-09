@@ -36,6 +36,7 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
+		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 		Fixture:      fixture.ClamshellNonVK,
 		Params: []testing.Param{
 			{

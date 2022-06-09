@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/inputs/inputactions"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -32,6 +33,7 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
+		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.DefaultInputMethod, ime.JapaneseWithUSKeyboard}),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),

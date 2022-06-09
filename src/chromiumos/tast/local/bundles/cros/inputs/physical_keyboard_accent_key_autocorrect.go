@@ -36,6 +36,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.FrenchFrance}),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{

@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -49,6 +50,7 @@ func init() {
 					typingKeys:     "aaa lbj mc gds exxw pf alpe ajr .aad ame ",
 					expectedResult: "三節外也關由面再行列",
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.ChineseArray}),
 			},
 			{
 				Name:    "cangjie",
@@ -58,6 +60,7 @@ func init() {
 					typingKeys:     "a jwj yrhhi hui hxyc oiar grmbc ",
 					expectedResult: "日車謝鬼與倉頡",
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.ChineseCangjie}),
 			},
 			{
 				Name:    "dayi",
@@ -67,6 +70,7 @@ func init() {
 					typingKeys:     "1 j 123 asox db/ ",
 					expectedResult: "言月詐做易",
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.ChineseDayi}),
 			},
 			{
 				Name:    "quick",
@@ -76,6 +80,7 @@ func init() {
 					typingKeys:     "a jw yr an is ",
 					expectedResult: "日富這門成",
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.ChineseQuick}),
 			},
 			{
 				Name:    "wubi",
@@ -85,6 +90,7 @@ func init() {
 					typingKeys:     "yge yygy ggll yygt gg tt ",
 					expectedResult: "请文一方五笔",
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.ChineseWubi}),
 			},
 			{
 				Name:    "array_lacros",
@@ -95,6 +101,7 @@ func init() {
 					expectedResult: "三節外也關由面再行列",
 				},
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.ChineseArray}),
 			},
 			{
 				Name:    "cangjie_lacros",
@@ -105,6 +112,7 @@ func init() {
 					expectedResult: "日車謝鬼與倉頡",
 				},
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.ChineseCangjie}),
 			},
 			{
 				Name:    "dayi_lacros",
@@ -115,6 +123,7 @@ func init() {
 					expectedResult: "言月詐做易",
 				},
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.ChineseDayi}),
 			},
 			{
 				Name:    "quick_lacros",
@@ -125,6 +134,7 @@ func init() {
 					expectedResult: "日富這門成",
 				},
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.ChineseQuick}),
 			},
 			{
 				Name:    "wubi_lacros",
@@ -135,6 +145,7 @@ func init() {
 					expectedResult: "请文一方五笔",
 				},
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.ChineseWubi}),
 			},
 		},
 	})

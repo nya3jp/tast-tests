@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -28,6 +30,7 @@ func init() {
 		Attr:         []string{"group:input-tools", "group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.Model(pre.StableModels...), hwdep.SkipOnModel("kodama", "kefka")),
+		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.DefaultInputMethod}),
 		Params: []testing.Param{
 			{
 				Fixture:   fixture.ClamshellNonVK,
