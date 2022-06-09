@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d214352_49e87a02",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T15:18:31Z",
+      "side": 1,
+      "message": "Could you elaborate what part is against the router\u0027s design?\nIndex looks a new concept introduced by this CL to me.",
+      "parentUuid": "3de84b9c_831b1372",
+      "revId": "6a89726d0639b9016125dec3f75ede731d2705e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e7c8ef1_bad22c17",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 9
