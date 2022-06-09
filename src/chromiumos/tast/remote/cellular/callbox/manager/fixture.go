@@ -62,16 +62,19 @@ func (tf *TestFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		testing.ContextLog(ctx, "callbox: ", callbox)
 		tf.Vars.Callbox = callbox
 	} else {
-		s.Fatal("Fixture variable 'callbox' is required")
+		tf.Vars.Callbox = "chromeos1-donutlab-callbox1.cros"
 	}
-	if callboxManager, ok := s.Var("callboxManager"); ok && callboxManager != "" {
+	callboxManager, ok := s.Var("callboxManager")
+	if !ok {
+		callboxManager = ""
+		tf.Vars.CallboxManager = callboxManager
+	}
+	if callboxManager != "" {
 		testing.ContextLogf(ctx, "callboxManager: %s", callboxManager)
 		tf.Vars.CallboxManager = callboxManager
 	} else if callboxManager := callboxManagerByCallbox(tf.Vars.Callbox); callboxManager != "" {
 		testing.ContextLogf(ctx, "callboxManager: %s (deduced from callbox)", callboxManager)
 		tf.Vars.CallboxManager = callboxManager
-	} else {
-		s.Fatalf("Fixture variable 'callboxManager' is required with callbox %q", tf.Vars.Callbox)
 	}
 
 	// Initialize CallboxManagerClient
