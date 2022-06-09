@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86db110f_561f0b18",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-06-09T08:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f68a8085_11fc88f4",
+      "range": {
+        "startLine": 226,
+        "startChar": 27,
+        "endLine": 226,
+        "endChar": 54
+      },
+      "revId": "58bf91f55c48391fc23c836d12dbfab8a745248e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db27aca8_8e29efcf",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-06T23:22:59Z",
       "side": 1,
       "message": "delete `a`",
+      "range": {
+        "startLine": 244,
+        "startChar": 40,
+        "endLine": 244,
+        "endChar": 41
+      },
+      "revId": "58bf91f55c48391fc23c836d12dbfab8a745248e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a118e2c5_b4b0369f",
+        "filename": "src/chromiumos/tast/local/playbilling/dgapi2/testapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-06-09T08:12:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db27aca8_8e29efcf",
       "range": {
         "startLine": 244,
         "startChar": 40,
