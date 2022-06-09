@@ -11,22 +11,18 @@ import (
 	"strings"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/rpc"
-	"chromiumos/tast/services/cros/security"
+	"chromiumos/tast/remote/powercontrol"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ShutdownPwrbuttonStress,
-		Desc:         "Verifies stress test shutdown using power button",
+		Func: ShutdownPwrbuttonStress, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Verifies stress test shutdown using power button",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com", "cros-fw-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
@@ -97,7 +93,7 @@ func ShutdownPwrbuttonStress(ctx context.Context, s *testing.State) {
 		}
 	}(ctxForCleanUp)
 
-	if _, err := chromeLogin(ctx, dut, s.RPCHint()); err != nil {
+	if _, err := powercontrol.ChromeLogin(ctx, dut, s.RPCHint()); err != nil {
 		s.Fatal("Failed to login to chrome: ", err)
 	}
 
@@ -130,7 +126,7 @@ func ShutdownPwrbuttonStress(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to login to power on DUT: ", err)
 		}
 
-		if _, err := chromeLogin(ctx, dut, s.RPCHint()); err != nil {
+		if _, err := powercontrol.ChromeLogin(ctx, dut, s.RPCHint()); err != nil {
 			s.Fatal("Failed to login to chrome: ", err)
 		}
 
@@ -151,20 +147,6 @@ func ShutdownPwrbuttonStress(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to check the sleept state, got %q, want 5", count)
 		}
 	}
-}
-
-// chromeLogin performs login to DUT.
-func chromeLogin(ctx context.Context, d *dut.DUT, rpcHint *testing.RPCHint) (*empty.Empty, error) {
-	cl, err := rpc.Dial(ctx, d, rpcHint)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
-	}
-	defer cl.Close(ctx)
-	client := security.NewBootLockboxServiceClient(cl.Conn)
-	if _, err := client.NewChromeLogin(ctx, &empty.Empty{}); err != nil {
-		return nil, errors.Wrap(err, "failed to start Chrome")
-	}
-	return client.CloseChrome(ctx, &empty.Empty{})
 }
 
 // pwrOnDut power on DUT after pwr button long press.
