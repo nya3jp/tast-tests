@@ -33,6 +33,80 @@
       "message": "SGTM. Thanks Tiago.",
       "revId": "1a77caa502d55f49c24f55e541c5a9b6d7426da6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63766190_e6a15783",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T14:17:57Z",
+      "side": 1,
+      "message": "Sorry, I thought I replied...",
+      "revId": "1a77caa502d55f49c24f55e541c5a9b6d7426da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7ff3bd9_c9191143",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T14:17:57Z",
+      "side": 1,
+      "message": "I guess it is intended to leave lacros windows, but compared to other use cases, this is exceptional. Could you add comment?",
+      "revId": "1a77caa502d55f49c24f55e541c5a9b6d7426da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dbec291_4ae6c839",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T14:17:57Z",
+      "side": 1,
+      "message": "could you use lacrosfixt.ChromeOptions()?",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 33
+      },
+      "revId": "1a77caa502d55f49c24f55e541c5a9b6d7426da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5933f98_8e0d171f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T14:17:57Z",
+      "side": 1,
+      "message": "could you use ash.BrowserTitleMatch ?",
+      "revId": "1a77caa502d55f49c24f55e541c5a9b6d7426da6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
