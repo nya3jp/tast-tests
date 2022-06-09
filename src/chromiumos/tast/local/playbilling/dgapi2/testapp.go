@@ -48,6 +48,7 @@ type skuDetails struct {
 	Price             price  `json:"price"`
 	IntroductoryPrice price  `json:"introductoryPrice"`
 	PurchaseType      string `json:"purchaseType"`
+	Status            string `json:"status"`
 }
 
 // NewTestAppDgapi2 returns a reference to a new DGAPI2 Test App.
@@ -208,7 +209,7 @@ func (ta *TestAppDgapi2) verifyLogs(ctx context.Context, verifyFn func(logs []st
 }
 
 func isItemValid(r skuDetails) bool {
-	return r.ItemID != "" && r.Title != "" && r.Price.Currency != "" && r.Price.Value != ""
+	return r.Status != "" || (r.ItemID != "" && r.Title != "" && r.Price.Currency != "" && r.Price.Value != "")
 }
 
 func all(vs []skuDetails, f func(skuDetails) bool) bool {
@@ -220,35 +221,45 @@ func all(vs []skuDetails, f func(skuDetails) bool) bool {
 	return true
 }
 
+// verifyGetDetailsLogs verifies logs for getDetails response.
+func verifyGetDetailsLogs(logs []string) error {
+	foundStart := false
+	var skuEntries []string
+	getDetailsPrefix := "getDetails returned:"
+	for _, v := range logs {
+		if !foundStart && strings.HasPrefix(v, getDetailsPrefix) {
+			foundStart = true
+			continue
+		}
+		if foundStart && !strings.HasPrefix(v, "{") {
+			break
+		}
+		if foundStart {
+			skuEntries = append(skuEntries, v)
+		}
+	}
+
+	if len(skuEntries) == 0 {
+		return errors.Errorf(`failed to find log entries starting with %q, received: %q`, getDetailsPrefix, logs)
+	}
+
+	var detailsResult []skuDetails
+	if err := json.Unmarshal([]byte(fmt.Sprintf("[%s]", strings.Join(skuEntries, ","))), &detailsResult); err != nil {
+		return errors.Wrap(err, "unable to parse json")
+	}
+
+	areItemsValid := all(detailsResult, isItemValid)
+
+	if !areItemsValid {
+		return errors.Errorf("returned json items aren't valid: %v", detailsResult)
+	}
+
+	return nil
+}
+
 // VerifyDetailsLogs verifies logs contain expected getDetails response.
 func (ta *TestAppDgapi2) VerifyDetailsLogs(ctx context.Context) error {
-	return ta.verifyLogs(ctx, func(logs []string) error {
-		foundEntry := ""
-		getDetailsPrefix := "getDetails returned "
-		for _, v := range logs {
-			if strings.HasPrefix(v, getDetailsPrefix) {
-				foundEntry = v
-				break
-			}
-		}
-
-		if foundEntry == "" {
-			return errors.Errorf(`failed to find a log entry starting with %q, received: %q`, getDetailsPrefix, logs)
-		}
-
-		var detailsResult []skuDetails
-		if err := json.Unmarshal([]byte(strings.Trim(foundEntry, getDetailsPrefix)), &detailsResult); err != nil {
-			return errors.Wrap(err, "unable to parse json")
-		}
-
-		areItemsValid := all(detailsResult, isItemValid)
-
-		if !areItemsValid {
-			return errors.Errorf("returned json items aren't valid: %v", detailsResult)
-		}
-
-		return nil
-	})
+	return ta.verifyLogs(ctx, verifyGetDetailsLogs)
 }
 
 // VerifyLogsMatch verifies logs contain an entry that matches the passed regex.
