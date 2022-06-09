@@ -22,6 +22,30 @@
       },
       "revId": "038cd45d8c69a7bba278a963af81efcfa5764705",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b58aef5d_da629c7f",
+        "filename": "src/chromiumos/tast/common/network/iw/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-09T21:33:43Z",
+      "side": 1,
+      "message": "I used 0-9 and I had to keep the - after for the - in `type P2P-GO`",
+      "parentUuid": "607e4108_8a6f310c",
+      "range": {
+        "startLine": 876,
+        "startChar": 45,
+        "endLine": 876,
+        "endChar": 49
+      },
+      "revId": "038cd45d8c69a7bba278a963af81efcfa5764705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
