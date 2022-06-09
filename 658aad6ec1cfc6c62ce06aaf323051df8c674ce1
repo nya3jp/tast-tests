@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfbaa2bc_3ba8e76d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T06:08:10Z",
+      "side": 1,
+      "message": "Is NamedCombine similar to NamedAction? This can be simplified if so.",
+      "range": {
+        "startLine": 252,
+        "startChar": 9,
+        "endLine": 252,
+        "endChar": 16
+      },
+      "revId": "658aad6ec1cfc6c62ce06aaf323051df8c674ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
