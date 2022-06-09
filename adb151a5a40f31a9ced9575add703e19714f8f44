@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a288093a_d01f6819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/variation_smoke.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-06-09T21:42:45Z",
+      "side": 1,
+      "message": "ah okay, good to know! let\u0027s see if this runs fine on the chrome-side builders, hopefully everything is set up right so we have access to any necessary dependencies (for both acuiti and gold) when running in that environment.\n\nif you want, you could also try uiauto\u0027s `WaitUntilExists`[1] function to see if the a simpler UI automation approach works (accessibility-tree based instead of image recognition).\n\n[1]https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d462?q\u003dwaituntilexists",
+      "parentUuid": "f535c63a_a5a4942d",
+      "range": {
+        "startLine": 205,
+        "startChar": 6,
+        "endLine": 205,
+        "endChar": 52
+      },
+      "revId": "adb151a5a40f31a9ced9575add703e19714f8f44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb15897a_7a09065b",
