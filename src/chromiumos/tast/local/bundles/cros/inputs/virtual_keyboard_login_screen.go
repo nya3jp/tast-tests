@@ -11,7 +11,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/inputactions"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -36,7 +38,8 @@ func init() {
 			"ui.gaiaPoolDefault",
 			"ui.signinProfileTestExtensionManifestKey",
 		},
-		Timeout: 3 * time.Minute,
+		SearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
+		Timeout:     3 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "tablet",

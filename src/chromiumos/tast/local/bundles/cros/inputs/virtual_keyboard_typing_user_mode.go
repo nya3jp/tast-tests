@@ -38,6 +38,7 @@ func init() {
 		Desc:         "Checks that virtual keyboard works in different user modes",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools-upstream", "group:input-tools", "group:input-tools-upstream"},
+		SearchFlags:  util.IMESearchFlags(typingModeTestIMEs),
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      time.Duration(len(typingModeTestIMEs)) * time.Duration(len(typingModeTestMessages)) * time.Minute,

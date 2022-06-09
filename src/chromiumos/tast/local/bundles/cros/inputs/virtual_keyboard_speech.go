@@ -48,6 +48,7 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
+		SearchFlags:  util.IMESearchFlags(voiceTestIMEs),
 		Data:         data.ExtractExternalFiles(voiceTestMessages, append(voiceTestIMEs, voiceTestIMEsNewData...)),
 		Timeout:      time.Duration(len(voiceTestIMEs)+len(voiceTestIMEsNewData)) * time.Duration(len(voiceTestMessages)) * time.Minute,
 		Params: []testing.Param{
@@ -63,6 +64,7 @@ func init() {
 				Val:               voiceTestIMEsNewData,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
+				ExtraSearchFlags:  util.IMESearchFlags(voiceTestIMEsNewData),
 			},
 			{
 				Name:              "informational",
@@ -70,6 +72,7 @@ func init() {
 				Val:               append(voiceTestIMEs, voiceTestIMEsNewData...),
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
+				ExtraSearchFlags:  util.IMESearchFlags(voiceTestIMEsNewData),
 			},
 			{
 				Name:              "lacros",
@@ -78,6 +81,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
+				ExtraSearchFlags:  util.IMESearchFlags(voiceTestIMEsNewData),
 			},
 		},
 	})
