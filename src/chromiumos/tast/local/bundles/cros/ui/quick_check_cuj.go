@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -215,6 +216,11 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		s.Log("Waiting to simulate a user passively reading the email thread (bottom scroll position)")
 		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
 			return errors.Wrap(err, "failed to sleep (bottom scroll position)")
+		}
+
+		s.Log("Scroll up using the keyboard")
+		if err := cuj.SimulateKeyPress(ctx, kb, "Up", 500*time.Millisecond, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to simulate scrolling up with keyboard")
 		}
 
 		return nil
