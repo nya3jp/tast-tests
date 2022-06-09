@@ -82,23 +82,16 @@ func init() {
 	})
 }
 
-func waitForStableWindowBounds(ctx context.Context, tconn *chrome.TestConn, packageName string) error {
-	window, err := ash.GetARCAppWindowInfo(ctx, tconn, packageName)
-	if err != nil {
-		return errors.Wrap(err, "failed to get window info")
-	}
-	previousBounds := window.BoundsInRoot
-	checkIfChanging := func(ctx context.Context) error {
-		if window, err := ash.GetARCAppWindowInfo(ctx, tconn, packageName); err != nil {
+func waitForWindowBoundsCondition(ctx context.Context, tconn *chrome.TestConn, packageName string, cond func(coords.Rect) error) error {
+	checkIfSatisfied := func(ctx context.Context) error {
+		window, err := ash.GetARCAppWindowInfo(ctx, tconn, packageName)
+		if err != nil {
 			return testing.PollBreak(err)
-		} else if !window.BoundsInRoot.Equals(previousBounds) {
-			previousBounds = window.BoundsInRoot
-			return errors.New("the window bounds is still changing")
 		}
-		return nil
+		return cond(window.BoundsInRoot)
 	}
-	if err := testing.Poll(ctx, checkIfChanging, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 10 * time.Second}); err != nil {
-		return errors.Wrap(err, "the window bounds did not stop changing")
+	if err := testing.Poll(ctx, checkIfSatisfied, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 10 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to wait for the bounds condition to be satisfied")
 	}
 
 	return nil
@@ -248,30 +241,24 @@ func testResize(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, ui *u
 	}
 
 	// On low-end devices, the window bounds change isn't always smooth so here
-	// we wait for the stable bounds.
-	if err := waitForStableWindowBounds(ctx, tconn, leftActPackageName); err != nil {
-		return errors.Wrap(err, "failed to wait until the left window bounds gets stable")
-	}
-	if err := waitForStableWindowBounds(ctx, tconn, rightActPackageName); err != nil {
-		return errors.Wrap(err, "failed to wait until the right window bounds gets stable")
-	}
-
+	// we keep polling the bounds until the condition gets satisfied.
 	widthMargin := 50
 
-	leftWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, leftActPackageName)
-	if err != nil {
-		return errors.Wrap(err, "failed to get left window info")
+	if err := waitForWindowBoundsCondition(ctx, tconn, leftActPackageName, func(bounds coords.Rect) error {
+		if bounds.Top != 0 || bounds.Width >= info.Bounds.Width/2-widthMargin {
+			return errors.Errorf("failed to verify the resized left snapped window bounds (got %v)", bounds)
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
-	if leftWindow.BoundsInRoot.Top != 0 || leftWindow.BoundsInRoot.Width >= info.Bounds.Width/2-widthMargin {
-		return errors.Wrapf(err, "failed to verify the resized left snapped window bounds (got %v)", leftWindow.BoundsInRoot)
-	}
-
-	rightWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, rightActPackageName)
-	if err != nil {
-		return errors.Wrap(err, "failed to get right window info")
-	}
-	if rightWindow.BoundsInRoot.Top != 0 || rightWindow.BoundsInRoot.Right() != info.Bounds.Right() || rightWindow.BoundsInRoot.Width <= info.Bounds.Width/2+widthMargin {
-		return errors.Wrapf(err, "failed to verify the resized right snapped window bounds (got %v)", rightWindow.BoundsInRoot)
+	if err := waitForWindowBoundsCondition(ctx, tconn, rightActPackageName, func(bounds coords.Rect) error {
+		if bounds.Top != 0 || bounds.Right() != info.Bounds.Right() || bounds.Width <= info.Bounds.Width/2+widthMargin {
+			return errors.Errorf("failed to verify the resized right snapped window bounds (got %v)", bounds)
+		}
+		return nil
+	}); err != nil {
+		return err
 	}
 
 	return nil
