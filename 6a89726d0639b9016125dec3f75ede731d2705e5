@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e4bc4dd_ed3b1a20",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-09T15:34:46Z",
+      "side": 1,
+      "message": "Yes, I designed this feature basing on how the routers are already handled in tf, that\u0027s why I\u0027m reluctant to change (as then I would need to change both, which is way out of scope of this CL):\n\nThere are multiple router objects (type routerData, line 166) as a part of this fixture (line 187) and they are accessed through API by index (e.g. line 607, 903, etc.) as well as internally (e.g. line 360, 444, etc.).",
+      "parentUuid": "7d214352_49e87a02",
+      "revId": "6a89726d0639b9016125dec3f75ede731d2705e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e7c8ef1_bad22c17",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 9
