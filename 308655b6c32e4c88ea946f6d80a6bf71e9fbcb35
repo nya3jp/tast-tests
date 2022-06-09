@@ -46,6 +46,30 @@
       },
       "revId": "308655b6c32e4c88ea946f6d80a6bf71e9fbcb35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1974c302_5ef20377",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-09T22:57:50Z",
+      "side": 1,
+      "message": "I agree with Xibin, if we try to measure \"lacros\" vs \"ash\" we need to know what browser we get the metrics from.",
+      "parentUuid": "db1fbcb9_6ce746ca",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "308655b6c32e4c88ea946f6d80a6bf71e9fbcb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
