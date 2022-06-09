@@ -293,7 +293,7 @@ var allTargets = []struct {
 	{cuj.WikipediaAboutURL, newPageInfo(Basic, wikipedia, `/Wikipedia:About`, `/Wikipedia:Contact_us`)},
 	{cuj.WikipediaHelpURL, newPageInfo(Plus, wikipedia, `/Help:Contents`, `/Help:Introduction`)},
 	{cuj.WikipediaCommunityURL, newPageInfo(Plus, wikipedia, `/Wikipedia:Community_portal`, `/Special:RecentChanges`)},
-	{cuj.WikipediaPandemicURL, newPageInfo(Premium, wikipedia, `/COVID-19`, `/Coronavirus_diseases`)},
+	{cuj.WikipediaContributionURL, newPageInfo(Premium, wikipedia, `/Help:User_contributions`, `/Wikipedia`)},
 
 	{cuj.RedditWallstreetURL, newPageInfo(Basic, reddit, `/r/wallstreetbets/hot/`, `/r/wallstreetbets/new/`)},
 	{cuj.RedditTechNewsURL, newPageInfo(Basic, reddit, `/r/technews/hot/`, `/r/technews/new/`)},
