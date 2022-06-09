@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d603f7e_81c7cea1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/disable_hwwp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-06-09T07:07:55Z",
+      "side": 1,
+      "message": "Note: need to change to SameUser in next update.",
+      "revId": "ab3cffb2bf25241567717e3f916d0f5e87826a69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
