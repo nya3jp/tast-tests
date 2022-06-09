@@ -23,13 +23,33 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const timeInSecondToLoadPage = 30
-const timeInSecondToEnableButton = 5
-const longTimeInSecondToEnableButton = 60
-const firmwareInstallationTime = 120 * time.Second
+// DestinationOption indicates destination.
+type DestinationOption string
 
-// WaitForRebootStart indicates the time to wait before reboot starting.
-const WaitForRebootStart = 10 * time.Second
+// WriteProtectDisableOption indicates write protection disabling approach.
+type WriteProtectDisableOption string
+
+const (
+	// SameUser indicates devices goes to same user.
+	SameUser DestinationOption = "SAME_USER"
+
+	// DifferentUser indicates devices goes to different user.
+	DifferentUser DestinationOption = "DIFFERENT_USER"
+
+	// Manual indicates using battery disconnection to disable write protect.
+	Manual WriteProtectDisableOption = "MANUAL"
+
+	// Rsu indicates using rsu to disable write protect.
+	Rsu WriteProtectDisableOption = "RSU"
+
+	// WaitForRebootStart indicates the time to wait before reboot starting.
+	WaitForRebootStart = 10 * time.Second
+
+	timeInSecondToLoadPage         = 30
+	timeInSecondToEnableButton     = 5
+	longTimeInSecondToEnableButton = 60
+	firmwareInstallationTime       = 120 * time.Second
+)
 
 // UIHelper holds the resources required to communicate with Shimless RMA App.
 type UIHelper struct {
@@ -78,12 +98,23 @@ func (uiHelper *UIHelper) ComponentsPageOperation(ctx context.Context) error {
 }
 
 // OwnerPageOperation handles all operations on Owner Selection Page.
-func (uiHelper *UIHelper) OwnerPageOperation(ctx context.Context) error {
-	return action.Combine("Owner page operation",
-		uiHelper.waitForPageToLoad("After repair, who will be using the device?", timeInSecondToLoadPage),
-		uiHelper.clickRadioButton("Device will go to the same user"),
-		uiHelper.waitAndClickButton("Next", timeInSecondToEnableButton),
-	)(ctx)
+func (uiHelper *UIHelper) OwnerPageOperation(destination DestinationOption) action.Action {
+	return func(ctx context.Context) error {
+		var buttonLabel string
+		if destination == SameUser {
+			buttonLabel = "Device will go to the same user"
+		} else if destination == DifferentUser {
+			buttonLabel = "Device will go to a different user or organization"
+		} else {
+			return errors.Errorf("%s is invalid destination", destination)
+		}
+
+		return action.Combine("Owner page operation",
+			uiHelper.waitForPageToLoad("After repair, who will be using the device?", timeInSecondToLoadPage),
+			uiHelper.clickRadioButton(buttonLabel),
+			uiHelper.waitAndClickButton("Next", timeInSecondToEnableButton),
+		)(ctx)
+	}
 }
 
 // WriteProtectPageChooseRSU handles all operations on WP Page and select RSU.
@@ -148,7 +179,11 @@ func (uiHelper *UIHelper) DeviceInformationPageOperation(ctx context.Context) er
 
 // DeviceProvisionPageOperation handles all operations on device provisioning Page.
 func (uiHelper *UIHelper) DeviceProvisionPageOperation(ctx context.Context) error {
-	return uiHelper.waitForPageToLoad("Provisioning the device…", timeInSecondToLoadPage)(ctx)
+	return action.Combine("Device Provision page operation",
+		uiHelper.waitForPageToLoad("Provisioning the device…", timeInSecondToLoadPage),
+		uiHelper.connectBatteryByCr50(),
+		uiHelper.changeWriteProtectStatus(servo.FWWPStateOn),
+	)(ctx)
 }
 
 // CalibratePageOperation handles all operations on calibrate Page.
@@ -162,9 +197,6 @@ func (uiHelper *UIHelper) CalibratePageOperation(ctx context.Context) error {
 // FinalizingRepairPageOperation handles all operations on finalizing repair Page.
 func (uiHelper *UIHelper) FinalizingRepairPageOperation(ctx context.Context) error {
 	return action.Combine("Finalizing Repair page operation",
-		// Firstly, reset battery signal & turn on WP.
-		uiHelper.connectBatteryByCr50(),
-		uiHelper.changeWriteProtectStatus(servo.FWWPStateOn),
 		uiHelper.waitForPageToLoad("Finalizing repair", timeInSecondToLoadPage),
 	)(ctx)
 }
@@ -242,7 +274,7 @@ func (uiHelper *UIHelper) WaitForFirmwareInstallation(ctx context.Context) error
 }
 
 // SetupInitStatus setup initial status for shimless testing.
-func (uiHelper *UIHelper) SetupInitStatus(ctx context.Context) error {
+func (uiHelper *UIHelper) SetupInitStatus(ctx context.Context, enroll bool) error {
 	// If error is raised, then Factory is already disabled.
 	// Therefore, ignore any error.
 	uiHelper.changeFactoryMode("disable")(ctx)
@@ -252,7 +284,26 @@ func (uiHelper *UIHelper) SetupInitStatus(ctx context.Context) error {
 		// It is because disable Factory mode will also lock CCD.
 		uiHelper.openCCDIfNotOpen(),
 		uiHelper.changeWriteProtectStatus(servo.FWWPStateOn),
+		uiHelper.changeEnrollment(enroll),
 	)(ctx)
+}
+
+func (uiHelper *UIHelper) changeEnrollment(toEnroll bool) action.Action {
+	return func(ctx context.Context) error {
+		if _, err := uiHelper.Dut.Conn().CommandContext(ctx, "tpm_manager_client", "take_ownership").Output(); err != nil {
+			return err
+		}
+
+		var flags string
+		if toEnroll {
+			flags = "--flags=0x40"
+		} else {
+			flags = "--flags=0"
+		}
+
+		_, err := uiHelper.Dut.Conn().CommandContext(ctx, "cryptohome", "--action=set_firmware_management_parameters", flags).Output()
+		return err
+	}
 }
 
 func (uiHelper *UIHelper) openCCDIfNotOpen() action.Action {
