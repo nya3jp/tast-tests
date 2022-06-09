@@ -169,27 +169,29 @@ func verifyThatKeysMatch(ctx context.Context, actual, expected DirectoryContents
 		testing.ContextLogf(ctx, "Missing item %q", v)
 	}
 	if len(extra) > 0 || len(missing) > 0 {
-		return errors.Errorf("condition failed: %d extra and %d missing elements in map", len(extra), len(missing))
+		return errors.Errorf("%d extra and %d missing items", len(extra), len(missing))
 	}
 	return nil
 }
 
 // verifyDirectoryContents recursively compares directory with the expectation and fails if there is a mismatch.
 func verifyDirectoryContents(ctx context.Context, dir string, expectedContent DirectoryContents) error {
+	testing.ContextLogf(ctx, "Listing items in %q", dir)
 	files, err := listDirectoryRecursively(dir)
 	if err != nil {
-		return errors.Wrapf(err, "could not list dir %q", dir)
+		return errors.Wrapf(err, "cannot list items in %q", dir)
 	}
 	if err := verifyThatKeysMatch(ctx, files, expectedContent); err != nil {
-		return err
+		return errors.Wrapf(err, "contents mismatch in %q", dir)
 	}
 	for k, v := range expectedContent {
 		if v.Mtime != 0 {
 			f := files[k]
 			if f.Mtime != v.Mtime {
-				return errors.Errorf("mtime of file %q does not match: got %d, expected %d", k, f.Mtime, v.Mtime)
+				return errors.Errorf("mtime of file %q does not match: got %d, want %d", k, f.Mtime, v.Mtime)
 			}
 		}
+
 		if v.Data != nil {
 			data, err := ioutil.ReadFile(filepath.Join(dir, k))
 			if err != nil {
@@ -200,6 +202,7 @@ func verifyDirectoryContents(ctx context.Context, dir string, expectedContent Di
 			}
 		}
 	}
+
 	return nil
 }
 
