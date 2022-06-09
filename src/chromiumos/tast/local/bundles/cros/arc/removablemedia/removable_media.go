@@ -99,7 +99,7 @@ func mount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop, name string) (
 		if m.SourcePath == devLoop && m.MountPath == path {
 			// Target mount point is found.
 			if m.Status != crosdisks.MountErrorNone {
-				return "", errors.Errorf("failed to mount with status %d", m.Status)
+				return "", errors.Wrap(m.Status, "failed to mount")
 			}
 			return path, nil
 		}
@@ -108,10 +108,8 @@ func mount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop, name string) (
 
 // unmount unmounts the disk.
 func unmount(ctx context.Context, cd *crosdisks.CrosDisks, devLoop string) error {
-	if status, err := cd.Unmount(ctx, devLoop, []string{"lazy"}); err != nil {
+	if err := cd.Unmount(ctx, devLoop, []string{"lazy"}); err != nil {
 		return errors.Wrap(err, "failed to unmount")
-	} else if status != crosdisks.MountErrorNone {
-		return errors.Errorf("failed to unmount with status %d", status)
 	}
 	return nil
 }
