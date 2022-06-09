@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "645149c0_f2e263d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-06-09T16:29:49Z",
+      "side": 1,
+      "message": "LGTM % below",
+      "revId": "8ca83c877d4358aa07f96b30420df843fdbc0845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b49d62cf_3ce3cd4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/drag_and_drop_window.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1125479
+      },
+      "writtenOn": "2022-06-09T16:29:49Z",
+      "side": 1,
+      "message": "Nit: drag",
+      "range": {
+        "startLine": 85,
+        "startChar": 83,
+        "endLine": 85,
+        "endChar": 87
+      },
+      "revId": "8ca83c877d4358aa07f96b30420df843fdbc0845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
