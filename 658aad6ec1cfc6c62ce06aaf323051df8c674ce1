@@ -22,6 +22,30 @@
       },
       "revId": "658aad6ec1cfc6c62ce06aaf323051df8c674ce1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81ef3e08_7b530340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/microsoft_web.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-06-09T06:41:30Z",
+      "side": 1,
+      "message": "Yes, NamedCombine combines NamedAction and Combine.",
+      "parentUuid": "cfbaa2bc_3ba8e76d",
+      "range": {
+        "startLine": 252,
+        "startChar": 9,
+        "endLine": 252,
+        "endChar": 16
+      },
+      "revId": "658aad6ec1cfc6c62ce06aaf323051df8c674ce1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
