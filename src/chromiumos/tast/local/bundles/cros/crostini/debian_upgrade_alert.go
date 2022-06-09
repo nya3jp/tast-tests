@@ -150,7 +150,7 @@ func DebianUpgradeAlert(ctx context.Context, s *testing.State) {
 		s.Log("Error resetting automation for the UI tree - next step may timeout and cause test to fail: ", err)
 	}
 	// Container startup can take time hence the long timeout.
-	if err := ui.WithTimeout(30 * time.Second).WaitUntilExists(continueButton)(ctx); err != nil {
+	if err := ui.WithTimeout(60 * time.Second).WaitUntilExists(continueButton)(ctx); err != nil {
 		s.Fatal("Failed to find the upgrade alert before timeout: ", err)
 	}
 
