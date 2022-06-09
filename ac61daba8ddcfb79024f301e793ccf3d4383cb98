@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de2cf9a_1428280e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/consecutive_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-09T17:44:40Z",
+      "side": 1,
+      "message": "After this line add\n\n```\nbootID \u003d newBootID\n```\n\nand then you don\u0027t need to check it at the top of the loop again, and you can move the initial check outside the loop as I asked for in the last comment.",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 3
+      },
+      "revId": "ac61daba8ddcfb79024f301e793ccf3d4383cb98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
