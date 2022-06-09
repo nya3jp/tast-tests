@@ -50,24 +50,42 @@ func DragAndDropWindow(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := apps.Launch(ctx, tconn, apps.Files.ID); err != nil {
-		s.Fatal("Failed to open Files: ", err)
+	// Launch Chrome window.
+	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
+		s.Fatal("Failed to open Chrome: ", err)
+	}
+
+	windows, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get all windows: ", err)
+	}
+	if len(windows) != 1 {
+		s.Fatalf("Expected 1 window; got %d", len(windows))
+	}
+	if err := ash.SetWindowStateAndWait(ctx, tconn, windows[0].ID, ash.WindowStateNormal); err != nil {
+		s.Fatal("Failed to set chrome window state to normal: ", err)
 	}
 
 	ac := uiauto.New(tconn)
 
-	oldInfo, err := ac.Info(ctx, nodewith.ClassName("HeaderView"))
+	oldInfo, err := ac.Info(ctx, nodewith.HasClass("TabStripRegionView"))
+	if err != nil {
+		s.Fatal("Failed to find TabStripRegionView: ", err)
+	}
 	oldBounds := oldInfo.Location
+
 	start := oldBounds.CenterPoint()
 	end := start.Add(coords.NewPoint(100, 100))
-
 	if err := mouse.Drag(tconn, start, end, time.Second)(ctx); err != nil {
 		s.Fatal("Failed to drag window: ", err)
 	}
 
-	newInfo, err := ac.Info(ctx, nodewith.ClassName("HeaderView"))
+	newInfo, err := ac.Info(ctx, nodewith.HasClass("TabStripRegionView"))
+	if err != nil {
+		s.Fatal("Failed to find TabStripRegionView: ", err)
+	}
 	newBounds := newInfo.Location
-	// Window bounds should change after the drap and drop.
+	// TabStripRegionView bounds as well as window bounds should change after the drap and drop.
 	if oldBounds == newBounds {
 		s.Fatal("Drag failed: window bounds didn't change")
 	}
