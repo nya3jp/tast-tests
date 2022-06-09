@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3de84b9c_831b1372",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-09T13:48:16Z",
+      "side": 1,
+      "message": "That goes against design already present in this test fixture (router). I would prefer not to mix two approaches in the same object - if you want, I can add fixture redesign to the list in the test cleanup bug (b/234845693).",
+      "parentUuid": "ea159092_ef2495f8",
+      "revId": "6a89726d0639b9016125dec3f75ede731d2705e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e7c8ef1_bad22c17",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 9
@@ -65,6 +83,24 @@
       "writtenOn": "2022-06-09T06:45:43Z",
       "side": 1,
       "message": "nit: move this to L325 (inside for-loop) to reduce the scope of this var?",
+      "revId": "6a89726d0639b9016125dec3f75ede731d2705e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7358387_fcbd0cec",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-09T13:48:16Z",
+      "side": 1,
+      "message": "I\u0027m not sure, I\u0027d need to move it to line 325, 395, 421 and 451.\n\nThat was here before and I think it was on purpose.",
+      "parentUuid": "5e7c8ef1_bad22c17",
       "revId": "6a89726d0639b9016125dec3f75ede731d2705e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
