@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa2f22f7_5b876698",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-06-09T10:42:58Z",
+      "side": 1,
+      "message": "Returning \"nil\" at here would break the error code parser of FirmwareManagementParameters.\n\nAnd that will break the FirmwareManagementParameters related tests.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/hwsec/cryptohome_client.go;drc\u003d1a625e90fdccf6261d2bb7b296d1cf52c4211710;l\u003d636",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "e997be794f2983e25ff4b41aacfa5637ad469a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
