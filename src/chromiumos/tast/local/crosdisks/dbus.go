@@ -8,6 +8,7 @@ package crosdisks
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/godbus/dbus/v5"
 
@@ -20,6 +21,46 @@ const (
 	dbusPath      = "/org/chromium/CrosDisks"
 	dbusInterface = "org.chromium.CrosDisks"
 )
+
+// MountError matches MountErrorType defined in
+// system_api/dbus/cros-disks/dbus-constants.h
+type MountError uint32
+
+// MountError matches MountErrorType defined in
+// system_api/dbus/cros-disks/dbus-constants.h
+const (
+	MountErrorNone               MountError = 0
+	MountErrorInvalidPath        MountError = 4
+	MountErrorPathNotMounted     MountError = 6
+	MountErrorMountProgramFailed MountError = 12
+	MountErrorNeedPassword       MountError = 13
+	MountErrorInProgress         MountError = 14
+	MountErrorCancelled          MountError = 15
+	MountErrorInvalidDevicePath  MountError = 100
+)
+
+func (e MountError) Error() string {
+	switch e {
+	case MountErrorNone:
+		return "MountErrorNone"
+	case MountErrorInvalidPath:
+		return "MountErrorInvalidPath"
+	case MountErrorPathNotMounted:
+		return "MountErrorPathNotMounted"
+	case MountErrorMountProgramFailed:
+		return "MountErrorMountProgramFailed"
+	case MountErrorNeedPassword:
+		return "MountErrorNeedPassword"
+	case MountErrorInProgress:
+		return "MountErrorInProgress"
+	case MountErrorCancelled:
+		return "MountErrorCancelled"
+	case MountErrorInvalidDevicePath:
+		return "MountErrorInvalidDevicePath"
+	}
+
+	return fmt.Sprintf("MountError(%d)", uint32(e))
+}
 
 // CrosDisks is used to interact with the CrosDisks process over D-Bus.
 // For detailed spec of each D-Bus method, please find
@@ -73,12 +114,17 @@ func (c *CrosDisks) Mount(ctx context.Context, devicePath, fsType string, option
 }
 
 // Unmount calls CrosDisks.Unmount D-Bus method.
-func (c *CrosDisks) Unmount(ctx context.Context, devicePath string, options []string) (uint32, error) {
-	var status uint32
+func (c *CrosDisks) Unmount(ctx context.Context, devicePath string, options []string) error {
+	var status MountError
 	if err := c.call(ctx, "Unmount", devicePath, options).Store(&status); err != nil {
-		return 0, err
+		return err
 	}
-	return status, nil
+
+	if status != MountErrorNone {
+		return status
+	}
+
+	return nil
 }
 
 // Rename calls CrosDisks.Rename D-Bus method.
@@ -113,21 +159,9 @@ type DeviceOperationCompletionWatcher struct {
 	dbusutil.SignalWatcher
 }
 
-// See MountErrorType defined in system_api/dbus/cros-disks/dbus-constants.h
-const (
-	MountErrorNone               uint32 = 0
-	MountErrorInvalidPath        uint32 = 4
-	MountErrorPathNotMounted     uint32 = 6
-	MountErrorMountProgramFailed uint32 = 12
-	MountErrorNeedPassword       uint32 = 13
-	MountErrorInProgress         uint32 = 14
-	MountErrorCancelled          uint32 = 15
-	MountErrorInvalidDevicePath  uint32 = 100
-)
-
 // MountCompleted holds the body data of MountCompleted signal.
 type MountCompleted struct {
-	Status     uint32
+	Status     MountError
 	SourcePath string
 	SourceType uint32
 	MountPath  string
