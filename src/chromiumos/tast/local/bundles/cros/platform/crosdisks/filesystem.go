@@ -34,9 +34,9 @@ func formatDevice(ctx context.Context, formatCmd, device string) error {
 	return nil
 }
 
-// withLoopbackDeviceDo initializes a loopback device (optionally formatting it) and calls
+// WithLoopbackDeviceDo initializes a loopback device (optionally formatting it) and calls
 // the provided function enclosed within the scope of validity of the loopback device.
-func withLoopbackDeviceDo(ctx context.Context, cd *crosdisks.CrosDisks, sizeBytes int64, formatCmd string, f func(ctx context.Context, ld *crosdisks.LoopbackDevice) error) (err error) {
+func WithLoopbackDeviceDo(ctx context.Context, cd *crosdisks.CrosDisks, sizeBytes int64, formatCmd string, f func(ctx context.Context, ld *crosdisks.LoopbackDevice) error) (err error) {
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second*10)
 	defer cancel()
@@ -62,7 +62,7 @@ func withLoopbackDeviceDo(ctx context.Context, cd *crosdisks.CrosDisks, sizeByte
 	if formatCmd != "" {
 		testing.ContextLogf(ctx, "Formatting %q with %q", ld.DevicePath(), formatCmd)
 		if err := formatDevice(ctx, formatCmd, ld.DevicePath()); err != nil {
-			return errors.Wrapf(err, "failed to format the loopback device %q with %q: %v", ld.DevicePath(), formatCmd, err)
+			return errors.Wrapf(err, "failed to format the loopback device %q with %q", ld.DevicePath(), formatCmd)
 		}
 	}
 
@@ -72,7 +72,7 @@ func withLoopbackDeviceDo(ctx context.Context, cd *crosdisks.CrosDisks, sizeByte
 // testMountFilesystem mounts the loopback device, attempts a write and returns an error if unsuccessful.
 func testMountFilesystem(ctx context.Context, cd *crosdisks.CrosDisks, ld *crosdisks.LoopbackDevice, label string) error {
 	expectedMountPath := filepath.Join("/media/removable", label)
-	return withMountDo(ctx, cd, ld.DevicePath(), "", []string{"rw"}, func(ctx context.Context, mountPath string) error {
+	return WithMountDo(ctx, cd, ld.DevicePath(), "", []string{"rw"}, func(ctx context.Context, mountPath string) error {
 		if expectedMountPath != mountPath {
 			return errors.Errorf("unexpected mount_path: got %q; want %q", mountPath, expectedMountPath)
 		}
@@ -108,7 +108,7 @@ func RunFilesystemTests(ctx context.Context, s *testing.State) {
 	}
 	defer cd.Close()
 
-	err = withLoopbackDeviceDo(ctx, cd, loopbackSizeBytes, "", func(ctx context.Context, ld *crosdisks.LoopbackDevice) error {
+	err = WithLoopbackDeviceDo(ctx, cd, loopbackSizeBytes, "", func(ctx context.Context, ld *crosdisks.LoopbackDevice) error {
 		// Ideally we should run also some failure tests, e.g. unknown/no filesystem, etc, but cros-disks
 		// is too fragile and remains in a half-broken state after that, so we only check known good scenarios.
 		s.Run(ctx, "vfat", func(ctx context.Context, state *testing.State) {

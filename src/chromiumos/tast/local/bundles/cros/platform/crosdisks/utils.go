@@ -48,8 +48,9 @@ func mount(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType string, 
 	return
 }
 
-// withMountDo mounts the specified source and if it succeeds calls the provided function, cleaning up the mount afterwards.
-func withMountDo(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType string, options []string, f func(ctx context.Context, mountPath string) error) (err error) {
+// WithMountDo mounts the specified source and if it succeeds calls the provided
+// function, cleaning up the mount afterwards.
+func WithMountDo(ctx context.Context, cd *crosdisks.CrosDisks, source, fsType string, options []string, f func(ctx context.Context, mountPath string) error) (err error) {
 	ctxForUnmount := ctx
 	ctx, unmount := ctxutil.Shorten(ctx, time.Second*5)
 	defer unmount()
@@ -107,7 +108,8 @@ type FileItem struct {
 // DirectoryContents maps from relative file names to properties of the file.
 type DirectoryContents map[string]FileItem
 
-// listDirectoryRecursively lists all files in a directory and its subdirectories.
+// listDirectoryRecursively lists all files in a directory and its
+// subdirectories.
 func listDirectoryRecursively(rootDir string) (items DirectoryContents, err error) {
 	dirs := []string{""}
 	items = make(DirectoryContents)
@@ -139,8 +141,8 @@ func listDirectoryRecursively(rootDir string) (items DirectoryContents, err erro
 	return
 }
 
-// diffKeys calculates set(m1)-set(m2) and set(m2)-set(m1).
-// If someone knows more idiomatic/shorter way of doing this in go - suggestions are welcome.
+// diffKeys calculates set(m1)-set(m2) and set(m2)-set(m1). If someone knows a
+// more idiomatic or shorter way of doing this in Go, suggestions are welcome.
 func diffKeys(m1, m2 DirectoryContents) (extra, missing []string) {
 	extra = make([]string, 0)
 	missing = make([]string, 0)
@@ -174,7 +176,8 @@ func verifyThatKeysMatch(ctx context.Context, actual, expected DirectoryContents
 	return nil
 }
 
-// verifyDirectoryContents recursively compares directory with the expectation and fails if there is a mismatch.
+// verifyDirectoryContents recursively compares directory with the expectation
+// and fails if there is a mismatch.
 func verifyDirectoryContents(ctx context.Context, dir string, expectedContent DirectoryContents) error {
 	testing.ContextLogf(ctx, "Listing items in %q", dir)
 	files, err := listDirectoryRecursively(dir)

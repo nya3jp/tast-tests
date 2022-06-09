@@ -7,11 +7,9 @@
 package crosdisks
 
 import (
-	"bytes"
 	"context"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -82,19 +80,15 @@ var PreparedArchives = []string{
 	"Unicode.zip",
 	"MacOS UTF-8 Bug 903664.zip",
 	"SJIS Bug 846195.zip",
-	"archive.rar",
-	"archive.tar",
-	"archive.tar.gz",
-	"archive.zip",
 	"b1238564.gz",
 }
 
-func withMountedArchiveDo(ctx context.Context, cd *crosdisks.CrosDisks, archivePath string, options []string, f func(ctx context.Context, mountPath string) error) error {
-	return withMountDo(ctx, cd, archivePath, filepath.Ext(archivePath), options, f)
+func WithMountedArchiveDo(ctx context.Context, cd *crosdisks.CrosDisks, archivePath string, options []string, f func(ctx context.Context, mountPath string) error) error {
+	return WithMountDo(ctx, cd, archivePath, filepath.Ext(archivePath), options, f)
 }
 
-func verifyArchiveContent(ctx context.Context, cd *crosdisks.CrosDisks, archivePath string, options []string, expectedContent DirectoryContents) error {
-	return withMountedArchiveDo(ctx, cd, archivePath, options, func(ctx context.Context, mountPath string) error {
+func VerifyArchiveContent(ctx context.Context, cd *crosdisks.CrosDisks, archivePath string, options []string, expectedContent DirectoryContents) error {
+	return WithMountedArchiveDo(ctx, cd, archivePath, options, func(ctx context.Context, mountPath string) error {
 		return verifyDirectoryContents(ctx, mountPath, expectedContent)
 	})
 }
@@ -113,31 +107,7 @@ func verifyEncryptedArchiveContent(ctx context.Context, cd *crosdisks.CrosDisks,
 	}
 
 	// Check that it works with the right password.
-	return verifyArchiveContent(ctx, cd, archivePath, []string{"password=" + password}, expectedContent)
-}
-
-func testValidArchives(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
-	// Each archive.* file has a different file format but they all contain a
-	// 942 byte "romeo.txt" file that starts with the line "Romeo and Juliet".
-	romeoAndJuliet := []byte("Romeo and Juliet")
-	for _, f := range []string{
-		"archive.rar",
-		"archive.tar",
-		"archive.tar.gz",
-		"archive.zip",
-	} {
-		if err := withMountedArchiveDo(ctx, cd, filepath.Join(dataDir, f), nil, func(ctx context.Context, mountPath string) error {
-			data, err := ioutil.ReadFile(filepath.Join(mountPath, "romeo.txt"))
-			if err != nil {
-				return errors.Wrap(err, `could not read "romeo.txt" within archive`)
-			} else if (len(data) != 942) || !bytes.HasPrefix(data, romeoAndJuliet) {
-				return errors.New(`unexpected contents for "romeo.txt" within archive`)
-			}
-			return nil
-		}); err != nil {
-			s.Errorf("Test failed for %q: %v", f, err)
-		}
-	}
+	return VerifyArchiveContent(ctx, cd, archivePath, []string{"password=" + password}, expectedContent)
 }
 
 func testInvalidArchives(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
@@ -174,7 +144,7 @@ func testMultipartArchives(ctx context.Context, s *testing.State, cd *crosdisks.
 		"Multipart New Style 02.rar",
 		"Multipart New Style 03.rar",
 	} {
-		if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, archive), nil, expectedContent); err != nil {
+		if err := VerifyArchiveContent(ctx, cd, filepath.Join(dataDir, archive), nil, expectedContent); err != nil {
 			s.Errorf("Test failed for %q: %v", archive, err)
 		}
 	}
@@ -183,7 +153,7 @@ func testMultipartArchives(ctx context.Context, s *testing.State, cd *crosdisks.
 func testNestedArchives(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
 	for _, archive := range []string{"Nested.rar", "Nested.zip", "Nested.tar.gz"} {
 		expectedMountPath := filepath.Join("/media/archive", archive)
-		if err := withMountedArchiveDo(ctx, cd, filepath.Join(dataDir, archive), nil, func(ctx context.Context, mountPath string) error {
+		if err := WithMountedArchiveDo(ctx, cd, filepath.Join(dataDir, archive), nil, func(ctx context.Context, mountPath string) error {
 			if mountPath != expectedMountPath {
 				return errors.Errorf("mount path is different from expected one: got %q, want %q", mountPath, expectedMountPath)
 			}
@@ -209,12 +179,13 @@ func verifyUnicodeArchives(ctx context.Context, cd *crosdisks.CrosDisks, archive
 	{
 		archive := "Format V4.rar"
 		archivePath := filepath.Join(archiveDir, archive)
-		if err := verifyArchiveContent(ctx, cd, archivePath, nil, want); err != nil {
+		if err := VerifyArchiveContent(ctx, cd, archivePath, nil, want); err != nil {
 			return errors.Wrapf(err, "test failed for %q", archive)
 		}
 	}
 
-	// Test RAR v5 and other archive formats with both Unicode BMP and non-BMP characters in file and directory names.
+	// Test RAR v5 and other archive formats with both Unicode BMP and non-BMP
+	// characters in file and directory names.
 	want["Dir 1F601 😁/File 1F602 😂.txt"] = FileItem{Data: []byte("Char U+1F602 is 😂 FACE WITH TEARS OF JOY\n")}
 	want["File 1F600 😀.txt"] = FileItem{Data: []byte("Char U+1F600 is 😀 GRINNING FACE\n")}
 
@@ -246,7 +217,7 @@ func verifyUnicodeArchives(ctx context.Context, cd *crosdisks.CrosDisks, archive
 		"Unicode.zip",
 	} {
 		archivePath := filepath.Join(archiveDir, archive)
-		if err := verifyArchiveContent(ctx, cd, archivePath, nil, want); err != nil {
+		if err := VerifyArchiveContent(ctx, cd, archivePath, nil, want); err != nil {
 			return errors.Wrapf(err, "test failed for %q", archive)
 		}
 	}
@@ -265,7 +236,7 @@ func verifyUnicodeArchives(ctx context.Context, cd *crosdisks.CrosDisks, archive
 		"Smile 😀.txt.Z",
 	} {
 		archivePath := filepath.Join(archiveDir, archive)
-		if err := verifyArchiveContent(ctx, cd, archivePath, nil, want); err != nil {
+		if err := VerifyArchiveContent(ctx, cd, archivePath, nil, want); err != nil {
 			return errors.Wrapf(err, "test failed for %q", archive)
 		}
 	}
@@ -284,12 +255,13 @@ func testMacOSUTF8InArchives(ctx context.Context, s *testing.State, cd *crosdisk
 		"ファイル.dat": {1541735375, []byte("This is a file.\n")},
 		"日本語フォルダ/新しいテキストドキュメント.txt": {1541735341, []byte("新しいテキストドキュメントです。\n")},
 	}
-	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "MacOS UTF-8 Bug 903664.zip"), nil, expectedContent); err != nil {
+	if err := VerifyArchiveContent(ctx, cd, filepath.Join(dataDir, "MacOS UTF-8 Bug 903664.zip"), nil, expectedContent); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }
 
-// testSJISInArchives tests that filenames encoded in Shift JIS are correctly detected and converted to UTF-8.
+// testSJISInArchives tests that filenames encoded in Shift JIS are correctly
+// detected and converted to UTF-8.
 // https://crbug.com/846195
 // https://crbug.com/834544
 // https://crbug.com/1287893
@@ -298,12 +270,12 @@ func testSJISInArchives(ctx context.Context, s *testing.State, cd *crosdisks.Cro
 		"新しいフォルダ/SJIS_835C_ソ.txt":    {Mtime: 347068800},
 		"新しいフォルダ/新しいテキスト ドキュメント.txt": {Mtime: 1002026088},
 	}
-	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), nil, expectedContent); err != nil {
+	if err := VerifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), nil, expectedContent); err != nil {
 		s.Error("Test failed without encoding: ", err)
 	}
 
 	// Check that passed encoding is taken in account.
-	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), []string{"encoding=Shift_JIS"}, expectedContent); err != nil {
+	if err := VerifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), []string{"encoding=Shift_JIS"}, expectedContent); err != nil {
 		s.Error("Test failed with encoding=Shift_JIS: ", err)
 	}
 
@@ -313,21 +285,21 @@ func testSJISInArchives(ctx context.Context, s *testing.State, cd *crosdisks.Cro
 		"РVВ╡ВвГtГHГЛГ_/SJIS_835C_Г\\.txt":               {Mtime: 347068800},
 		"РVВ╡ВвГtГHГЛГ_/РVВ╡ВвГeГLГXГg ГhГLГЕГБГУГg.txt": {Mtime: 1002026088},
 	}
-	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), []string{"encoding=cp866"}, expectedContent); err != nil {
+	if err := VerifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), []string{"encoding=cp866"}, expectedContent); err != nil {
 		s.Error("Test failed with encoding=cp866: ", err)
 	}
-	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), []string{"encoding=IBM866"}, expectedContent); err != nil {
+	if err := VerifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), []string{"encoding=IBM866"}, expectedContent); err != nil {
 		s.Error("Test failed with encoding=IBM866: ", err)
 	}
 
-	// Using the special "libzip" encoding instructs mount-zip to use
-	// libzip's encoding detection and conversion. In this case, it
-	// considers that the filenames are in Code Page 437.
+	// Using the special "libzip" encoding instructs mount-zip to use libzip's
+	// encoding detection and conversion. In this case, it considers that the
+	// filenames are in Code Page 437.
 	expectedContent = DirectoryContents{
 		"ÉVé╡éóâtâHâïâ_/SJIS_835C_â\\.txt":               {Mtime: 347068800},
 		"ÉVé╡éóâtâHâïâ_/ÉVé╡éóâeâLâXâg âhâLâàâüâôâg.txt": {Mtime: 1002026088},
 	}
-	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), []string{"encoding=libzip"}, expectedContent); err != nil {
+	if err := VerifyArchiveContent(ctx, cd, filepath.Join(dataDir, "SJIS Bug 846195.zip"), []string{"encoding=libzip"}, expectedContent); err != nil {
 		s.Error("Test failed with encoding=libzip: ", err)
 	}
 }
@@ -336,7 +308,7 @@ func testSymlinksDisabledInArchives(ctx context.Context, s *testing.State, cd *c
 	expectedContent := DirectoryContents{
 		"textfile": {1357584423, []byte("sample text\n")},
 	}
-	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "Symlinks.zip"), nil, expectedContent); err != nil {
+	if err := VerifyArchiveContent(ctx, cd, filepath.Join(dataDir, "Symlinks.zip"), nil, expectedContent); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }
@@ -376,7 +348,8 @@ func testMixedEncryptioninArchives(ctx context.Context, s *testing.State, cd *cr
 	}
 }
 
-// testStrictPasswordInArchives checks that invalid password is not accidentally accepted. https://crbug.com/1127752
+// testStrictPasswordInArchives checks that invalid password is not accidentally
+// accepted (https://crbug.com/1127752).
 func testStrictPasswordInArchives(ctx context.Context, s *testing.State, cd *crosdisks.CrosDisks, dataDir string) {
 	archivePath := filepath.Join(dataDir, "Strict Password.zip")
 	if err := verifyMountStatus(ctx, cd, archivePath, filepath.Ext(archivePath), []string{"password=sample"}, crosdisks.MountErrorNeedPassword); err != nil {
@@ -424,7 +397,7 @@ func testDuplicateFilenamesInArchives(ctx context.Context, s *testing.State, cd 
 		"With.Dot/.Hidden (1)":     {mtime, []byte("Hidden 2 \n")},
 		"With.Dot/.Hidden (2)":     {mtime, []byte("Hidden 3  \n")},
 	}
-	if err := verifyArchiveContent(ctx, cd, filepath.Join(dataDir, "Duplicate Filenames.zip"), nil, expectedContent); err != nil {
+	if err := VerifyArchiveContent(ctx, cd, filepath.Join(dataDir, "Duplicate Filenames.zip"), nil, expectedContent); err != nil {
 		s.Error("Test failed: ", err)
 	}
 }
@@ -475,8 +448,9 @@ func testCancellation(ctx context.Context, s *testing.State, cd *crosdisks.CrosD
 	}
 }
 
-// copyFile copies a file. Sadly fsutil.CopyFile is unsuitable for copying into FAT filesystem. This is an adaptation of it.
-func copyFile(src, dst string) error {
+// CopyFile copies a file. Sadly fsutil.CopyFile is unsuitable for copying into
+// FAT filesystem. This is an adaptation of it.
+func CopyFile(src, dst string) error {
 	sf, err := os.Open(src)
 	if err != nil {
 		return err
@@ -504,7 +478,8 @@ func copyFile(src, dst string) error {
 		return err
 	}
 
-	// Try to set mode and owner, but ignore failures, as on some filesystems it always fails.
+	// Try to set mode and owner, but ignore failures, as on some filesystems it
+	// always fails.
 	os.Chmod(df.Name(), fi.Mode())
 	if os.Geteuid() == 0 {
 		st := fi.Sys().(*syscall.Stat_t)
@@ -513,29 +488,28 @@ func copyFile(src, dst string) error {
 	return nil
 }
 
-// RunArchiveTests executes a set of tests which mount different archives using CrosDisks.
+// RunArchiveTests executes a set of tests which mount different archives using
+// CrosDisks.
 func RunArchiveTests(ctx context.Context, s *testing.State) {
 	cd, err := crosdisks.New(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect CrosDisks D-Bus service: ", err)
+		s.Fatal("Cannot connect CrosDisks D-Bus service: ", err)
 	}
 	defer cd.Close()
 
 	// Create a FAT filesystem containing all our test archive files.
-	err = withLoopbackDeviceDo(ctx, cd, 64*1024*1024, "mkfs.vfat -n ARCHIVES", func(ctx context.Context, ld *crosdisks.LoopbackDevice) (err error) {
-		// Mounting it through CrosDisks will put the archives where we expect users to have them, so they are already in a permitted location.
-		return withMountDo(ctx, cd, ld.DevicePath(), "", []string{"rw"}, func(ctx context.Context, mountPath string) error {
-			s.Logf("Copying all archives to the loopback device mount %q", mountPath)
+	err = WithLoopbackDeviceDo(ctx, cd, 512*1024*1024, "mkfs.vfat -n ARCHIVES", func(ctx context.Context, ld *crosdisks.LoopbackDevice) (err error) {
+		// Mounting it through CrosDisks will put the archives where we expect users
+		// to have them, so they are already in a permitted location.
+		return WithMountDo(ctx, cd, ld.DevicePath(), "", []string{"rw"}, func(ctx context.Context, mountPath string) error {
+			s.Logf("Copying archives to loopback device mounted at %q", mountPath)
 			for _, name := range PreparedArchives {
-				s.Logf("Copy %q", name)
-				if err := copyFile(s.DataPath(name), filepath.Join(mountPath, filepath.Base(name))); err != nil {
-					return errors.Wrapf(err, "failed to copy data file %q into %q", name, mountPath)
+				s.Logf("Copying %q to %q", name, mountPath)
+				if err := CopyFile(s.DataPath(name), filepath.Join(mountPath, filepath.Base(name))); err != nil {
+					return errors.Wrapf(err, "cannot copy file %q into %q", name, mountPath)
 				}
 			}
 
-			s.Run(ctx, "ValidArchives", func(ctx context.Context, state *testing.State) {
-				testValidArchives(ctx, state, cd, mountPath)
-			})
 			s.Run(ctx, "InvalidArchives", func(ctx context.Context, state *testing.State) {
 				testInvalidArchives(ctx, state, cd, mountPath)
 			})
@@ -576,6 +550,6 @@ func RunArchiveTests(ctx context.Context, s *testing.State) {
 		})
 	})
 	if err != nil {
-		s.Fatal("Failed to initialize test suite: ", err)
+		s.Fatal("Cannot initialize test suite: ", err)
 	}
 }
