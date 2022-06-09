@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a10dc7cb_c6f80a35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-09T02:47:31Z",
+      "side": 1,
+      "message": "Is `power` the best package for all of these things? `network` seems like it may be more relevant?",
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83e34ae4_71fbc37c",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/ethernet_service.go",
         "patchSetId": 1
@@ -43,6 +60,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1dc80059_07725dc8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_ethernet_behaviour_coldreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-09T02:47:31Z",
+      "side": 1,
+      "message": "nit: any reason this file isn\u0027t named `cold_reboot` and the Func: `ColdReboot`? cold and reboot are separate words.",
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc44b691_2c3fafde",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_ethernet_behaviour_coldreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-09T02:47:31Z",
+      "side": 1,
+      "message": "nit: `expectedUsbType` or even `usbType` would better describe what this value represents.",
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a488e44_75296b56",
         "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_ethernet_behaviour_coldreboot.go",
         "patchSetId": 1
@@ -60,6 +111,47 @@
         "endLine": 62,
         "endChar": 29
       },
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45445d73_8c73529f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_ethernet_behaviour_coldreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-09T02:47:31Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "5a488e44_75296b56",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbdfebf0_a01b16a5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_ethernet_behaviour_coldreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-09T02:47:31Z",
+      "side": 1,
+      "message": "nit: \"Failed to convert provided iteration to an integer: \" may be more helpful",
       "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
