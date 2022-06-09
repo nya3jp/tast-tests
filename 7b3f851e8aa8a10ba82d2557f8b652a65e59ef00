@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b8631f8_c96f4497",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-09T21:59:30Z",
+      "side": 1,
+      "message": "super nit: Insert a space after `-` and make 2nd line align with the first line. The current feels too cramped for me.\n\ne.g.\n\n```\n- Changed core functionality of the test to switch through tabs\n  in a skip order fashion (1,2,3,4,5 then 1,3,5,2,4 ... ) instead\n  of switching through tabs linearly.\n...\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 1
+      },
+      "revId": "7b3f851e8aa8a10ba82d2557f8b652a65e59ef00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "468fcd36_38b1bb58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-09T21:59:30Z",
+      "side": 1,
+      "message": "nit: End comment with a `.`.",
+      "revId": "7b3f851e8aa8a10ba82d2557f8b652a65e59ef00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15c47662_dd286cac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-09T21:59:30Z",
+      "side": 1,
+      "message": "nit: If `TabSwitchVariables` is not used outside this package, use lower case `t` as first letter to make it private, i.e. `tabSwitchVariables`.",
+      "range": {
+        "startLine": 55,
+        "startChar": 5,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "7b3f851e8aa8a10ba82d2557f8b652a65e59ef00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc22c5ae_1a24d2e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-09T21:59:30Z",
+      "side": 1,
+      "message": "nit: `Fixture` is misleading. Think `chrome.Chrome` is a struct representing ash-chrome instance.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;rcl\u003d16f6517b6c2a8166669238743f3ede5d732dad96;l\u003d139\n\nMaybe comment like\n\n  // Ash-chrome.",
+      "range": {
+        "startLine": 59,
+        "startChar": 46,
+        "endLine": 59,
+        "endChar": 53
+      },
+      "revId": "7b3f851e8aa8a10ba82d2557f8b652a65e59ef00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe5162c2_62a3bcb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-09T21:59:30Z",
+      "side": 1,
+      "message": "nit: ditto, `lacros.Lacros` is not fixture. It is a struct represents lacros-chrome instance.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/lacros/lacros.go;rcl\u003db1352baa034ae7910ca0351070b63277c71f313d;l\u003d24\n\nSo maybe\n\n  // Lacros-chrome.",
+      "range": {
+        "startLine": 60,
+        "startChar": 49,
+        "endLine": 60,
+        "endChar": 56
+      },
+      "revId": "7b3f851e8aa8a10ba82d2557f8b652a65e59ef00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49e42c06_70a1659c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-09T21:59:30Z",
+      "side": 1,
+      "message": "nit: Comment is misleading. Maybe just get rid of it. `ConnSource` is an interface to new chrome.Conn.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go;rcl\u003d8d55a6f669cfa17ae3c63a8dd981171651191feb;l\u003d601",
+      "range": {
+        "startLine": 61,
+        "startChar": 39,
+        "endLine": 61,
+        "endChar": 70
+      },
+      "revId": "7b3f851e8aa8a10ba82d2557f8b652a65e59ef00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a5322df_a30700f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-09T21:59:30Z",
+      "side": 1,
+      "message": "nit: Comment is not useful. Suggest to drop.",
+      "range": {
+        "startLine": 63,
+        "startChar": 39,
+        "endLine": 63,
+        "endChar": 69
+      },
+      "revId": "7b3f851e8aa8a10ba82d2557f8b652a65e59ef00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73151866_d634b562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-09T21:59:30Z",
+      "side": 1,
+      "message": "Let\u0027s pass these as args instead of using globals.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "7b3f851e8aa8a10ba82d2557f8b652a65e59ef00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b9d6d07_eb3c87ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-09T21:59:30Z",
+      "side": 1,
+      "message": "`DeprecatedMetricConfigs()` should not be used in new code. We should use the new `AshCommonMetricConfigs()`, `BrowserCommonMetricConfigs()`, and `AnyChromeCommonMetricConfigs()`, combined with the correct browser tconn.",
+      "range": {
+        "startLine": 119,
+        "startChar": 69,
+        "endLine": 119,
+        "endChar": 92
+      },
+      "revId": "7b3f851e8aa8a10ba82d2557f8b652a65e59ef00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c0905d_00185ee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-09T21:59:30Z",
+      "side": 1,
+      "message": "nit: We probably no longer need to wrap it as sub-test since we run everything as one test now.",
+      "range": {
+        "startLine": 398,
+        "startChar": 1,
+        "endLine": 398,
+        "endChar": 7
+      },
+      "revId": "7b3f851e8aa8a10ba82d2557f8b652a65e59ef00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
