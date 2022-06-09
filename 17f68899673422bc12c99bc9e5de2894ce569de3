@@ -39,6 +39,30 @@
       },
       "revId": "17f68899673422bc12c99bc9e5de2894ce569de3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710a3705_2c9621de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-09T15:23:51Z",
+      "side": 1,
+      "message": "That\u0027s a consequence of [this comment](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3560573/comments/e9e94e94_1e40fa22). Reserving time upfront at the beginning of the test make sense iff you want to get some time for hidden things done automagically _under the hood_, when tearing down fixture (tf.Close()).\n\nIf I dug it out correctly, the call sequence is `planner.runTestWithConfig()`-\u003e`TDLS()`, then -\u003e `tcfg.test.Pre.Close()` -\u003e `wificell.\u003ctastFixtureImpl\u003e.TearDown()` -\u003e `wificell.tf.Close()`\n\nI can add comment to clarify it.",
+      "parentUuid": "4227cccf_0e782d23",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 39
+      },
+      "revId": "17f68899673422bc12c99bc9e5de2894ce569de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
