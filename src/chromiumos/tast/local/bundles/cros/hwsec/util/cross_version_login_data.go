@@ -9,13 +9,20 @@ import (
 	"compress/gzip"
 	"context"
 	"crypto/rsa"
+	"crypto/x509"
+	"encoding/json"
 	"io"
+	"io/ioutil"
+	"math/rand"
 	"os"
 	"path/filepath"
 
+	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/testing"
 )
 
@@ -217,4 +224,117 @@ func ensureHwsecDaemons(ctx context.Context, daemonController *hwsec.DaemonContr
 	if err := daemonController.Ensure(ctx, hwsec.UIDaemon); err != nil {
 		testing.ContextLog(ctx, "Failed to ensure UI: ", err)
 	}
+}
+
+func createChallengeResponseData(ctx context.Context, lf LogFunc, cryptohome *hwsec.CryptohomeClient) (*CrossVersionLoginConfig, error) {
+	const (
+		dbusName    = "org.chromium.TestingCryptohomeKeyDelegate"
+		testUser    = "challenge_response_test@chromium.org"
+		keyLabel    = "challenge_response_key_label"
+		keySizeBits = 2048
+		keyAlg      = cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1
+	)
+	randReader := rand.New(rand.NewSource(0 /* seed */))
+	rsaKey, err := rsa.GenerateKey(randReader, keySizeBits)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate RSA key")
+	}
+	pubKeySPKIDER, err := x509.MarshalPKIXPublicKey(&rsaKey.PublicKey)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to generate SubjectPublicKeyInfo")
+	}
+
+	dbusConn, err := dbusutil.SystemBus()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to connect to system D-Bus bus")
+	}
+	if _, err := dbusConn.RequestName(dbusName, 0 /* flags */); err != nil {
+		return nil, errors.Wrap(err, "failed to request the well-known D-Bus name")
+	}
+	defer dbusConn.ReleaseName(dbusName)
+
+	keyDelegate, err := NewCryptohomeKeyDelegate(
+		lf, dbusConn, testUser, keyAlg, rsaKey, pubKeySPKIDER)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to export D-Bus key delegate")
+	}
+	defer keyDelegate.Close()
+
+	authConfig := hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg)
+	// Create the challenge-response protected cryptohome.
+	if err := cryptohome.MountVault(ctx, keyLabel, authConfig, true, hwsec.NewVaultConfig()); err != nil {
+		return nil, errors.Wrap(err, "failed to create cryptohome")
+	}
+	if keyDelegate.ChallengeCallCnt == 0 {
+		return nil, errors.New("no key challenges made during mount")
+	}
+	if _, err := cryptohome.CheckVault(ctx, keyLabel, authConfig); err != nil {
+		return nil, errors.Wrap(err, "failed to check the key for the mounted cryptohome")
+	}
+	return NewChallengeAuthCrossVersionLoginConfig(authConfig, keyLabel, rsaKey), nil
+}
+
+func createPasswordData(ctx context.Context) (*CrossVersionLoginConfig, error) {
+	// Add the new password login data
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to log in by Chrome")
+	}
+	cr.Close(ctx)
+	authConfig := hwsec.NewPassAuthConfig(cr.Creds().User, cr.Creds().Pass)
+	return NewPassAuthCrossVersionLoginConfig(authConfig, "legacy-0"), nil
+}
+
+// PrepareCrossVersionLoginData prepares the login data and config for CrossVersionLogin and saves them to dataPath and configPath respectively
+func PrepareCrossVersionLoginData(ctx context.Context, lf LogFunc, cryptohome *hwsec.CryptohomeClient, daemonController *hwsec.DaemonController, dataPath, configPath string) (retErr error) {
+	var configList []CrossVersionLoginConfig
+
+	defer func() {
+		for _, config := range configList {
+			username := config.AuthConfig.Username
+			if err := cryptohome.UnmountAndRemoveVault(ctx, username); err != nil {
+				if retErr == nil {
+					retErr = errors.Wrapf(err, "failed to remove user vault for %q", username)
+				} else {
+					testing.ContextLogf(ctx, "Failed to remove user vaultf for %q: %v", username, err)
+				}
+			}
+		}
+	}()
+
+	if err := daemonController.Restart(ctx, hwsec.UIDaemon); err != nil {
+		return errors.Wrap(err, "failed to restart UI")
+	}
+	config, err := createPasswordData(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create password data")
+	}
+	configList = append(configList, *config)
+
+	if err := daemonController.Restart(ctx, hwsec.UIDaemon); err != nil {
+		return errors.Wrap(err, "failed to restart UI")
+	}
+	config, err = createChallengeResponseData(ctx, lf, cryptohome)
+	if err != nil {
+		// We could not use latest tast to create challenge-response data before R96, so here we only log the error.
+		return errors.Wrap(err, "failed to create challenge-response data")
+	}
+	configList = append(configList, *config)
+
+	// Note that if the format of either CrossVersionLoginConfigData or CrossVersionLoginConfig is changed,
+	// the hwsec.CrossVersionLogin should be modified and the generated data should be regenerated.
+	// Create compressed data for mocking the login data in this version, which will be used in hwsec.CrossVersionLogin.
+	if err := CreateCrossVersionLoginData(ctx, daemonController, dataPath); err != nil {
+		return errors.Wrap(err, "failed to create cross-version-login data")
+	}
+	// Create JSON file of CrossVersionLoginConfig object in order to record which login method we needed to test in hwsec.CrossVersionLogin.
+	configJSON, err := json.MarshalIndent(configList, "", "  ")
+	testing.ContextLog(ctx, "Generated config: ", string(configJSON))
+	if err != nil {
+		return errors.Wrap(err, "failed to encode the cross-version-login config to json")
+	}
+	if err := ioutil.WriteFile(configPath, configJSON, 0644); err != nil {
+		return errors.Wrapf(err, "failed to write file to %q", configPath)
+	}
+	return nil
 }
