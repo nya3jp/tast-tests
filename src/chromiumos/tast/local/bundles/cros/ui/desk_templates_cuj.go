@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
@@ -53,7 +54,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
-		chrome.EnableFeatures("DesksTemplates"),
+		chrome.EnableFeatures("DesksTemplates", "EnableSavedDesks"),
 		chrome.ARCSupported(),
 		chrome.ExtraArgs(arc.DisableSyncFlags()...))
 	if err != nil {
@@ -111,114 +112,290 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 	pv := perf.NewValues()
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
-		// Opens PlayStore, Chrome and Files.
+		// Define the UI elements.
+		saveDeskAsTemplateButton := nodewith.ClassName("SaveDeskTemplateButton").Nth(0)
+		savedTemplateGridView := nodewith.ClassName("SavedDeskGridView").Nth(0)
+		saveDeskForLaterButton := nodewith.ClassName("SaveDeskTemplateButton").Nth(1)
+		savedForLaterDeskGridView := nodewith.ClassName("SavedDeskGridView").Nth(1)
+		savedTemplate := nodewith.ClassName("SavedDeskItemView").Nth(0)
+		savedTemplateNameView := nodewith.ClassName("SavedDeskNameView").Name("Template 1")
+		savedDesk := nodewith.ClassName("SavedDeskItemView").Nth(1)
+		savedDeskNameView := nodewith.ClassName("SavedDeskNameView").Name("Saved Desk 1")
+		savedTemplateMiniView :=
+			nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", "Template 1"))
+		savedDeskMiniView :=
+			nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", "Saved Desk 1"))
+		libraryButton := nodewith.ClassName("ZeroStateIconButton").Name("Library")
+
+		// Open PlayStore, Chrome and Files.
 		appsList := []apps.App{apps.PlayStore, apps.Chrome, apps.Files}
 		for _, app := range appsList {
 			if err := apps.Launch(ctx, tconn, app.ID); err != nil {
-				return errors.Wrapf(err, "%s can't be opened", app.Name)
+				return errors.Wrapf(err, "failed to open %s", app.Name)
 			}
 			if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 				return errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
 			}
 		}
-
 		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-			return errors.Wrap(err, "error in waiting for app launch events to be completed")
+			return errors.Wrap(err, "failed to wait for app launch events to be completed")
 		}
 
-		// Enters overview mode.
+		// Define keyboard to perform keyboard shortcuts.
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "cannot create keyboard")
+		}
+		defer kb.Close()
+
+		// Enter overview mode.
 		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-			return errors.Wrap(err, "error in setting overview mode")
+			return errors.Wrap(err, "failed to set overview mode")
 		}
-
 		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-			return errors.Wrap(err, "error in waiting for overview animation to be completed")
+			return errors.Wrap(err, "failed to wait for overview animation to be completed")
 		}
+		defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
-		// Find the "save desk as a template" button.
-		saveDeskButton := nodewith.ClassName("SaveDeskTemplateButton")
-		desksTemplatesGridView := nodewith.ClassName("SavedDeskLibraryView")
-
+		// Save a desk template.
 		if err := uiauto.Combine(
 			"save a desk template",
-			ac.LeftClick(saveDeskButton),
-			// Wait for the desk templates grid shows up.
-			ac.WaitUntilExists(desksTemplatesGridView),
+			ac.LeftClick(saveDeskAsTemplateButton),
+			// Wait for the template grid to show up.
+			ac.WaitUntilExists(savedTemplateGridView),
 		)(ctx); err != nil {
-			return errors.Wrap(err, "error in saving a desk template")
+			return errors.Wrap(err, "failed to save a desk template")
 		}
 
-		// Exits overview mode.
-		if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-			return errors.Wrap(err, "unable to exit overview mode")
+		// Type "Template 1" and press "Enter".
+		if err := kb.Type(ctx, "Template 1"); err != nil {
+			return errors.Wrap(err, "cannot type 'Template 1'")
+		}
+		if err := kb.Accel(ctx, "Enter"); err != nil {
+			return errors.Wrap(err, "cannot press 'Enter'")
+		}
+
+		// Exit overview mode.
+		if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+			return errors.Wrap(err, "failed to exit overview mode")
+		}
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for overview animation to be completed")
 		}
 
 		// Close all existing windows.
-		ws, err := ash.GetAllWindows(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "unable to get all open windows")
+		if ws, err := ash.GetAllWindows(ctx, tconn); err == nil {
+			for _, w := range ws {
+				if err := w.CloseWindow(ctx, tconn); err != nil {
+					return errors.Wrapf(err, "failed to close window (%+v)", w)
+				}
+			}
+		} else {
+			return errors.Wrap(err, "failed to get all open windows")
 		}
-		for _, w := range ws {
-			if err := w.CloseWindow(ctx, tconn); err != nil {
-				return errors.Wrapf(err, "unable to close window (%+v)", w)
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for app close events to be completed")
+		}
+
+		// Enter overview mode.
+		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+			return errors.Wrap(err, "failed to set overview mode")
+		}
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for overview animation to be completed")
+		}
+
+		// Show the saved template grid.
+		if err := uiauto.Combine(
+			"show the saved template grid",
+			ac.LeftClick(libraryButton),
+			// Wait for the saved grid to show up.
+			ac.WaitUntilExists(savedTemplateGridView),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to show the saved template grid")
+		}
+
+		// Launch the saved template of kTemplate type.
+		if err := uiauto.Combine(
+			"launch the saved desk template of kTemplate type",
+			// Verify the existence of the saved template.
+			ac.WaitUntilExists(savedTemplateNameView),
+			ac.LeftClick(savedTemplate),
+			// Wait for the new desk to appear.
+			ac.WaitUntilExists(savedTemplateMiniView),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to launch a saved template of kTemplate type")
+		}
+
+		// Press enter.
+		if err := kb.Accel(ctx, "Enter"); err != nil {
+			return errors.Wrap(err, "cannot press 'Enter'")
+		}
+
+		// Exit overview mode.
+		if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+			return errors.Wrap(err, "failed to exit overview mode")
+		}
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for overview animation to be completed")
+		}
+
+		// Wait for the app to launch.
+		for _, app := range appsList {
+			if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
+				return errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
 			}
 		}
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for app launch events to be completed")
+		}
 
-		// Enters overview mode, and launch the saved desk template.
+		// Verify that there are the app windows.
+		if ws, err := ash.GetAllWindows(ctx, tconn); err == nil {
+			if len(ws) != len(appsList) {
+				return errors.Wrapf(err, "found inconsistent number of window(s): got %v, want %v", len(ws), len(appsList))
+			}
+		} else {
+			return errors.Wrap(err, "failed to get all open windows")
+		}
+
+		// Re-enter overview mode, so we can save a desk for later.
 		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
-			return errors.Wrap(err, "unable to set overview mode")
+			return errors.Wrap(err, "failed to set overview mode")
+		}
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for overview animation to be completed")
 		}
 
-		// Find the "Library" button.
-		libraryButton := nodewith.Name("Library")
-
-		// Show saved desk template.
+		// Save a desk for later.
 		if err := uiauto.Combine(
-			"show the saved desks template",
+			"save a desk for later",
+			ac.LeftClick(saveDeskForLaterButton),
+			// Wait for the saved for later grid to show up.
+			ac.WaitUntilExists(savedForLaterDeskGridView),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to save a desk for later")
+		}
+
+		// Type "Saved Desk 1" and press "Enter".
+		if err := kb.Type(ctx, "Saved Desk 1"); err != nil {
+			return errors.Wrap(err, "cannot type 'Saved Desk 1'")
+		}
+		if err := kb.Accel(ctx, "Enter"); err != nil {
+			return errors.Wrap(err, "cannot press 'Enter'")
+		}
+
+		// Exit overview mode.
+		if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+			return errors.Wrap(err, "failed to exit overview mode")
+		}
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for overview animation to be completed")
+		}
+
+		// Enter overview mode, and launch the saved desk.
+		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+			return errors.Wrap(err, "failed to set overview mode")
+		}
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for overview animation to be completed")
+		}
+
+		// Show the saved desk template grid.
+		if err := uiauto.Combine(
+			"show the saved desk template grid",
 			ac.LeftClick(libraryButton),
-			// Wait for the desks templates grid shows up.
-			ac.WaitUntilExists(desksTemplatesGridView),
+			// Wait for the saved for later grid to show up.
+			ac.WaitUntilExists(savedForLaterDeskGridView),
 		)(ctx); err != nil {
-			return errors.Wrap(err, "unable to show saved desks templates")
+			return errors.Wrap(err, "failed to show the saved for later grid")
 		}
 
-		// Confirm there is one desk template.
-		deskTemplatesInfo, err := ash.FindDeskTemplates(ctx, ac)
-		if err != nil {
-			return errors.Wrap(err, "unable to find desk templates")
-		}
-		if len(deskTemplatesInfo) != 1 {
-			return errors.Errorf("got %v desk template(s), there should be one desk template", len(deskTemplatesInfo))
-		}
-
-		// Find the the first desk template.
-		firstDeskTemplate := nodewith.ClassName("SavedDeskItemView")
-		newDeskMiniView :=
-			nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", "Desk 1 (1)"))
-
-		// Launch the saved desk template.
+		// Launch the saved desk of kSaveAndRecall type.
 		if err := uiauto.Combine(
-			"launch the saved desk template",
-			ac.LeftClick(firstDeskTemplate),
+			"launch the saved desk of kSaveAndRecall type",
+			// Verify the existence of the saved desk.
+			ac.WaitUntilExists(savedDeskNameView),
+			ac.LeftClick(savedDesk),
 			// Wait for the new desk to appear.
-			ac.WaitUntilExists(newDeskMiniView),
+			ac.WaitUntilExists(savedDeskMiniView),
 		)(ctx); err != nil {
-			return errors.Wrap(err, "unable to launch a desk template")
+			return errors.Wrap(err, "failed to launch a saved desk of kSaveAndRecall type")
 		}
 
-		// Exits overview mode.
-		if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-			return errors.Wrap(err, "unable to exit overview mode")
+		// Press enter.
+		if err := kb.Accel(ctx, "Enter"); err != nil {
+			return errors.Wrap(err, "cannot press 'Enter'")
 		}
 
-		// Verifies that there are the app windows.
-		ws, err = ash.GetAllWindows(ctx, tconn)
-		if err != nil {
-			return errors.Wrap(err, "unable to get all open windows")
+		// Exit overview mode.
+		if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+			return errors.Wrap(err, "failed to exit overview mode")
+		}
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for overview animation to be completed")
 		}
 
-		if len(ws) != len(appsList) {
-			return errors.Errorf("got %v window(s), should have %v windows", len(ws), len(appsList))
+		// Wait for the app to launch.
+		for _, app := range appsList {
+			if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
+				return errors.Wrapf(err, "%s did not appear in shelf after launch", app.Name)
+			}
+		}
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for app launch events to be completed")
+		}
+
+		// Verify that there are the app windows.
+		if ws, err := ash.GetAllWindows(ctx, tconn); err == nil {
+			if len(ws) != len(appsList) {
+				return errors.Wrapf(err, "found inconsistent number of window(s): got %v, want %v", len(ws), len(appsList))
+			}
+		} else {
+			return errors.Wrap(err, "failed to get all open windows")
+		}
+
+		// Close all existing windows.
+		if ws, err := ash.GetAllWindows(ctx, tconn); err == nil {
+			for _, w := range ws {
+				if err := w.CloseWindow(ctx, tconn); err != nil {
+					return errors.Wrapf(err, "failed to close window (%+v)", w)
+				}
+			}
+		} else {
+			return errors.Wrap(err, "failed to get all open windows")
+		}
+
+		// Remove the active desk.
+		if err := ash.RemoveActiveDesk(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to remove the active desk")
+		}
+
+		// Enter overview mode.
+		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+			return errors.Wrap(err, "failed to set overview mode")
+		}
+		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for overview animation to be completed")
+		}
+
+		// Show the saved desk template grid.
+		if err := uiauto.Combine(
+			"show the saved desk template grid",
+			ac.LeftClick(libraryButton),
+			// Wait for the saved for later grid to show up.
+			ac.WaitUntilExists(savedForLaterDeskGridView),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to show the saved for later grid")
+		}
+
+		// Verify that there is one saved desk.
+		if savedDeskViewInfo, err := ash.FindDeskTemplates(ctx, ac); err == nil {
+			if len(savedDeskViewInfo) != 1 {
+				return errors.Wrapf(err, "found inconsistent number of saved desk(s): got %v, want 1", len(savedDeskViewInfo))
+			}
+		} else {
+			return errors.Wrap(err, "failed to find saved desks")
 		}
 
 		return nil
