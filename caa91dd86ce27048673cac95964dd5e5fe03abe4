@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c45a4fa1_4878ea16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-09T01:20:03Z",
+      "side": 1,
+      "message": "Done!",
+      "parentUuid": "42a6094c_4c5935c8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d0795f1d_0c64c5d3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -126,6 +150,30 @@
       "writtenOn": "2022-06-08T23:36:09Z",
       "side": 1,
       "message": "I feel that bBrowser is confusing.\nCould we maybe call it \"br\" as I see in some tests below?",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a53a358b_ba8de883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-09T01:20:03Z",
+      "side": 1,
+      "message": "Thanks! Changed it to \"br\".",
+      "parentUuid": "ce3d3060_db794d7a",
       "range": {
         "startLine": 71,
         "startChar": 5,
@@ -244,6 +292,30 @@
       "writtenOn": "2022-06-08T23:36:09Z",
       "side": 1,
       "message": "nit: recording",
+      "range": {
+        "startLine": 461,
+        "startChar": 19,
+        "endLine": 461,
+        "endChar": 25
+      },
+      "revId": "caa91dd86ce27048673cac95964dd5e5fe03abe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a5f9bc4_01c8d71e",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-09T01:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddc7bece_8d30ca7a",
       "range": {
         "startLine": 461,
         "startChar": 19,
