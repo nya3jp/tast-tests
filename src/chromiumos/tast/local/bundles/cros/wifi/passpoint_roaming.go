@@ -197,30 +197,46 @@ func PasspointRoaming(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set Passpoint credentials: ", err)
 	}
 
-	for _, ap := range tc.aps {
-		// Create the test access point.
-		if err = ap.Start(ctx); err != nil {
-			s.Fatal("Failed to start access point: ", err)
-		}
-
-		// Trigger a scan
-		if err := tc.manager.RequestScan(ctx, shill.TechnologyWifi); err != nil {
-			s.Fatal("Failed to request an active scan: ", err)
-		}
-
-		// Check the device connects to the access point.
-		err = passpoint.WaitForSTAAssociated(ctx, tc.clientIface, ap, time.Minute)
-		if err != nil {
-			if err := ap.Stop(); err != nil {
-				s.Error("Failed to stop access point: ", err)
-			}
-			s.Fatal("Passpoint client not connected to access point: ", err)
-		}
-
-		if err = ap.Stop(); err != nil {
-			s.Fatal("Failed to stop access point: ", err)
+	for i, ap := range tc.aps {
+		if err := runApTestCase(ctx, s, tc, ap); err != nil {
+			s.Fatalf("Failed to connect to access point %d: %v", i, err)
 		}
 	}
+}
+
+func runApTestCase(ctx context.Context, s *testing.State, tc *roamingTestContext, ap *hostapd.Server) error {
+	// Create the test access point.
+	if err := ap.Start(ctx); err != nil {
+		return errors.Wrap(err, "failed to start access point")
+	}
+	defer func() {
+		if err := ap.Stop(); err != nil {
+			s.Fatal("Failed to stop access point: ", err)
+		}
+	}()
+
+	// Create a monitor to collect access point events.
+	m := hostapd.NewMonitor()
+	if err := m.Start(ctx, ap); err != nil {
+		return errors.Wrap(err, "failed to start hostapd monitor")
+	}
+	defer func(ctx context.Context) {
+		if err := m.Stop(ctx); err != nil {
+			s.Fatal("Failed to stop hostapd monitor: ", err)
+		}
+	}(ctx)
+
+	// Trigger a scan.
+	if err := tc.manager.RequestScan(ctx, shill.TechnologyWifi); err != nil {
+		return errors.Wrap(err, "failed to request an active scan")
+	}
+
+	// Wait for the station to associate with the access point.
+	if err := passpoint.WaitForSTAAssociated(ctx, m, tc.clientIface, time.Minute); err != nil {
+		return errors.Wrap(err, "failed to check station association")
+	}
+
+	return nil
 }
 
 // prepareRoamingTest creates a test profile, reads the test parameters and delivers a test context.
