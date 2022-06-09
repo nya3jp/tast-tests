@@ -22,6 +22,30 @@
       },
       "revId": "e997be794f2983e25ff4b41aacfa5637ad469a29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1400cc71_1abc952f",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-09T10:46:47Z",
+      "side": 1,
+      "message": "Hmm, thanks for pointing this out!\n\nI suppose it\u0027ll be weird to return the same |out| in both the result and the error. Maybe we need to revert my change in the call() implementation, and instead have a separate helper like checkedCall() that automatically wraps stdout into errors. This helper would be called in the callsites that don\u0027t expect the error (the majority of them).\n\nLet me prepare a new change.",
+      "parentUuid": "aa2f22f7_5b876698",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 14
+      },
+      "revId": "e997be794f2983e25ff4b41aacfa5637ad469a29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
