@@ -191,3 +191,18 @@ func GetNthCandidateTextAndThen(tconn *chrome.TestConn, n int, fn func(text stri
 		return nil
 	}
 }
+
+// IMESearchFlags generates searchFlags based on the list of input methods.
+func IMESearchFlags(imes []ime.InputMethod) []*testing.StringPair {
+	var searchFlags = []*testing.StringPair{}
+	for _, ime := range imes {
+		searchFlags = append(
+			searchFlags,
+			&testing.StringPair{
+				Key:   "ime",
+				Value: ime.Name,
+			},
+		)
+	}
+	return searchFlags
+}

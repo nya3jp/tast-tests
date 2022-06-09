@@ -49,6 +49,7 @@ func init() {
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
+		SearchFlags:  util.IMESearchFlags(hwTestIMEs),
 		Data:         data.ExtractExternalFiles(hwTestMessages, append(hwTestIMEs, hwTestIMEsUpstream...)),
 		Timeout:      2 * time.Duration(len(hwTestIMEs)+len(hwTestIMEsUpstream)) * time.Duration(len(hwTestMessages)) * time.Minute,
 		Params: []testing.Param{
@@ -65,6 +66,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"group:input-tools-upstream", "informational"},
 				Val:               hwTestIMEsUpstream,
+				ExtraSearchFlags:  util.IMESearchFlags(hwTestIMEsUpstream),
 			},
 			{
 				Name:              "docked_informational",
@@ -72,6 +74,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 				Val:               append(hwTestIMEs, hwTestIMEsUpstream...),
+				ExtraSearchFlags:  util.IMESearchFlags(hwTestIMEsUpstream),
 			},
 			{
 				Name:              "floating",
@@ -86,6 +89,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 				Val:               hwTestIMEsUpstream,
+				ExtraSearchFlags:  util.IMESearchFlags(hwTestIMEsUpstream),
 			},
 			{
 				Name:              "floating_informational",
@@ -93,6 +97,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 				ExtraAttr:         []string{"informational"},
 				Val:               append(hwTestIMEs, hwTestIMEsUpstream...),
+				ExtraSearchFlags:  util.IMESearchFlags(hwTestIMEsUpstream),
 			},
 			{
 				Name:              "docked_lacros",
@@ -101,6 +106,7 @@ func init() {
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
 				Val:               append(hwTestIMEs, hwTestIMEsUpstream...),
+				ExtraSearchFlags:  util.IMESearchFlags(hwTestIMEsUpstream),
 			},
 			{
 				Name:              "floating_lacros",
@@ -109,6 +115,7 @@ func init() {
 				ExtraSoftwareDeps: []string{"lacros"},
 				ExtraAttr:         []string{"informational"},
 				Val:               append(hwTestIMEs, hwTestIMEsUpstream...),
+				ExtraSearchFlags:  util.IMESearchFlags(hwTestIMEsUpstream),
 			},
 		},
 	})

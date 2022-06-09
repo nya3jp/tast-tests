@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -34,6 +35,7 @@ func init() {
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		VarDeps:      []string{"inputs.signinProfileTestExtensionManifestKey"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
+		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 	})
 }
 

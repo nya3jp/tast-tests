@@ -48,6 +48,7 @@ func init() {
 					floatLayout: false,
 					inputMethod: ime.EnglishUS,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 			{
 				Name:      "tablet_floating",
@@ -57,6 +58,7 @@ func init() {
 					floatLayout: true,
 					inputMethod: ime.EnglishUSWithInternationalKeyboard,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUSWithInternationalKeyboard}),
 			},
 			{
 				Name:      "clamshell_a11y_docked",
@@ -66,6 +68,7 @@ func init() {
 					floatLayout: false,
 					inputMethod: ime.EnglishUS,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 			{
 				Name:      "clamshell_a11y_floating",
@@ -75,6 +78,7 @@ func init() {
 					floatLayout: true,
 					inputMethod: ime.EnglishUS,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 			{
 				Name:    "tablet_docked_lacros",
@@ -85,6 +89,7 @@ func init() {
 				},
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 			{
 				Name:    "tablet_floating_lacros",
@@ -95,6 +100,7 @@ func init() {
 				},
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUSWithInternationalKeyboard}),
 			},
 			{
 				Name:    "clamshell_a11y_docked_lacros",
@@ -105,6 +111,7 @@ func init() {
 				},
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 			{
 				Name:    "clamshell_a11y_floating_lacros",
@@ -115,6 +122,7 @@ func init() {
 				},
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 		},
 	})

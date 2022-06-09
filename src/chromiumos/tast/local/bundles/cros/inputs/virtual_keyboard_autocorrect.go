@@ -50,7 +50,8 @@ func init() {
 					CorrectWord:  "hello",
 					UndoMethod:   autocorrect.ViaPopupUsingMouse,
 				},
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 			{
 				Name:    "en_us_a11y",
@@ -61,7 +62,8 @@ func init() {
 					CorrectWord:  "hello",
 					UndoMethod:   autocorrect.ViaPopupUsingMouse,
 				},
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 			{
 				Name:    "es_es_tablet",
@@ -72,7 +74,8 @@ func init() {
 					CorrectWord:  "español",
 					UndoMethod:   autocorrect.NotApplicable,
 				},
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.SpanishSpain}),
 			},
 			{
 				Name:    "es_es_a11y",
@@ -83,7 +86,8 @@ func init() {
 					CorrectWord:  "español",
 					UndoMethod:   autocorrect.NotApplicable,
 				},
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.SpanishSpain}),
 			},
 			{
 				Name:    "fr_fr_tablet",
@@ -94,7 +98,8 @@ func init() {
 					CorrectWord:  "français",
 					UndoMethod:   autocorrect.NotApplicable,
 				},
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.FrenchFrance}),
 			},
 			{
 				Name:    "fr_fr_a11y",
@@ -105,7 +110,8 @@ func init() {
 					CorrectWord:  "français",
 					UndoMethod:   autocorrect.NotApplicable,
 				},
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				ExtraAttr:        []string{"group:input-tools-upstream"},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.FrenchFrance}),
 			},
 			{
 				Name:              "en_us_tablet_lacros",
@@ -118,6 +124,7 @@ func init() {
 					CorrectWord:  "hello",
 					UndoMethod:   autocorrect.ViaPopupUsingMouse,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 			{
 				Name:              "en_us_a11y_lacros",
@@ -130,6 +137,7 @@ func init() {
 					CorrectWord:  "hello",
 					UndoMethod:   autocorrect.ViaPopupUsingMouse,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 			},
 			{
 				Name:              "es_es_tablet_lacros",
@@ -142,6 +150,7 @@ func init() {
 					CorrectWord:  "español",
 					UndoMethod:   autocorrect.NotApplicable,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.SpanishSpain}),
 			},
 			{
 				Name:              "es_es_a11y_lacros",
@@ -154,6 +163,7 @@ func init() {
 					CorrectWord:  "español",
 					UndoMethod:   autocorrect.NotApplicable,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.SpanishSpain}),
 			},
 			{
 				Name:              "fr_fr_tablet_lacros",
@@ -166,6 +176,7 @@ func init() {
 					CorrectWord:  "français",
 					UndoMethod:   autocorrect.NotApplicable,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.FrenchFrance}),
 			},
 			{
 				Name:              "fr_fr_a11y_lacros",
@@ -178,6 +189,7 @@ func init() {
 					CorrectWord:  "français",
 					UndoMethod:   autocorrect.NotApplicable,
 				},
+				ExtraSearchFlags: util.IMESearchFlags([]ime.InputMethod{ime.FrenchFrance}),
 			},
 		},
 	})
