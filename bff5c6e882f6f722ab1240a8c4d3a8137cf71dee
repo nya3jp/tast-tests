@@ -16,6 +16,23 @@
       "message": "Ok, found the cause of flakiness. PTAL.",
       "revId": "bff5c6e882f6f722ab1240a8c4d3a8137cf71dee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60717099_38677c32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-09T01:15:53Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "bff5c6e882f6f722ab1240a8c4d3a8137cf71dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
