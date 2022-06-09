@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5d05528_05bc1b5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/battery_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T03:34:03Z",
+      "side": 1,
+      "message": "Not sure you want to throw error if cr is nil in cleanup.\n\nProbably:\n\nerr :\u003d nil\nif b.cr !\u003d nil{\n    err \u003d b.cr.Close(ctx)\n}\nreturn \u0026empty.Empty{}, err",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cd0bf91_6ed56a6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/battery_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T03:34:03Z",
+      "side": 1,
+      "message": "nit: remove empty line to keep the defer function in same block.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07037bc4_4c4ecbf5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_status_on_ac_removal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T03:34:03Z",
+      "side": 1,
+      "message": "nit: attach err in the fail message.",
+      "range": {
+        "startLine": 121,
+        "startChar": 49,
+        "endLine": 121,
+        "endChar": 66
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e0f178_fc072c63",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_status_on_ac_removal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T03:34:03Z",
+      "side": 1,
+      "message": "ditto: add err.",
+      "range": {
+        "startLine": 175,
+        "startChar": 49,
+        "endLine": 175,
+        "endChar": 66
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aba33cd_3716ec6b",
+        "filename": "src/chromiumos/tast/services/cros/power/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T03:34:03Z",
+      "side": 1,
+      "message": "nit: Add a new line above.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 84
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c179e7b_b86303b3",
+        "filename": "src/chromiumos/tast/services/cros/power/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-09T03:34:03Z",
+      "side": 1,
+      "message": "nit: remove the empty comment line.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
