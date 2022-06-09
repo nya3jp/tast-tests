@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "107cf26a_481035d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-06-09T09:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad5878ac_3e0232d5",
+      "revId": "32d1703a6c957f56a94870b434e63e69cd5ec7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6ebf9d92_940537be",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-09T09:35:02Z",
       "side": 1,
       "message": "If you start to use Chrome browser, Lacros variation will be needed.",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "32d1703a6c957f56a94870b434e63e69cd5ec7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83aea57e_f67415f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/drag_and_drop_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-06-09T09:42:05Z",
+      "side": 1,
+      "message": "we just want to use a app window, is lacros still needed in this situation?\nIf so we probably want to use another app.",
+      "parentUuid": "762509b9_950e2f98",
       "range": {
         "startLine": 25,
         "startChar": 24,
