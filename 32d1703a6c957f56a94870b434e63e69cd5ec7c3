@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad5878ac_3e0232d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T09:35:02Z",
+      "side": 1,
+      "message": "better to document _why_ this is needed, rather than just what it does.",
+      "revId": "32d1703a6c957f56a94870b434e63e69cd5ec7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ebf9d92_940537be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T09:35:02Z",
+      "side": 1,
+      "message": "drive by",
+      "revId": "32d1703a6c957f56a94870b434e63e69cd5ec7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "762509b9_950e2f98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/drag_and_drop_window.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-09T09:35:02Z",
+      "side": 1,
+      "message": "If you start to use Chrome browser, Lacros variation will be needed.",
+      "range": {
+        "startLine": 25,
+        "startChar": 24,
+        "endLine": 25,
+        "endChar": 45
+      },
+      "revId": "32d1703a6c957f56a94870b434e63e69cd5ec7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
