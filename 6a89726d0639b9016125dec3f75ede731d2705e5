@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1412f595_b4f29054",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-06-09T06:33:38Z",
+      "side": 1,
+      "message": "Soft ping for Tast owner review.\n\nHi hidehiko@, would you please help review this change? Thank you!",
+      "revId": "6a89726d0639b9016125dec3f75ede731d2705e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
