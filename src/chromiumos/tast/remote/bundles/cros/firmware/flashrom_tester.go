@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -30,7 +30,7 @@ func init() {
 		Func:         FlashromTester,
 		Desc:         "Tast wrapper that runs flashrom_tester",
 		Contacts:     []string{"nartemiev@google.com", "cros-flashrom-team@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Timeout:      30 * time.Minute,
