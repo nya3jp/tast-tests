@@ -104,6 +104,7 @@ func init() {
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeAsh,
+				botsOptions: []bond.AddBotsOption{bond.WithLayout("SPOTLIGHT")},
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -115,6 +116,7 @@ func init() {
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeLacros,
+				botsOptions: []bond.AddBotsOption{bond.WithLayout("SPOTLIGHT")},
 			},
 			Fixture:           "loggedInToCUJUserLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
@@ -127,6 +129,7 @@ func init() {
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeAsh,
+				botsOptions: []bond.AddBotsOption{bond.WithLayout("BRADY_BUNCH")},
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -142,6 +145,7 @@ func init() {
 				split:       true,
 				cam:         true,
 				browserType: browser.TypeAsh,
+				botsOptions: []bond.AddBotsOption{bond.WithLayout("BRADY_BUNCH")},
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
@@ -229,6 +233,7 @@ func init() {
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeLacros,
+				botsOptions: []bond.AddBotsOption{bond.WithLayout("BRADY_BUNCH")},
 			},
 			Fixture:           "loggedInToCUJUserLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
@@ -280,6 +285,7 @@ func init() {
 				cam:         true,
 				duration:    30 * time.Minute,
 				browserType: browser.TypeAsh,
+				botsOptions: []bond.AddBotsOption{bond.WithLayout("SPOTLIGHT")},
 			},
 			Fixture: "loggedInToCUJUser",
 		}},
