@@ -62,7 +62,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that ARC applications correctly change the window state",
 		Contacts:     []string{"phshah@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
@@ -90,7 +90,6 @@ func init() {
 				20,    // Num test iterations.
 				clamshellWindowStateTests,
 			},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Timeout:           10 * time.Minute,
 		}, {
@@ -100,7 +99,6 @@ func init() {
 				20,    // Num test iterations.
 				clamshellWindowStateTests,
 			},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Timeout:           10 * time.Minute,
 		}, {
@@ -110,7 +108,6 @@ func init() {
 				1,    // Num test iterations.
 				tabletWindowStateTests,
 			},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Timeout:           4 * time.Minute,
 		}, {
@@ -120,7 +117,6 @@ func init() {
 				1,    // Num test iterations.
 				tabletWindowStateTests,
 			},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Timeout:           4 * time.Minute,
 		}, {
@@ -130,7 +126,6 @@ func init() {
 				20,   // Num test iterations.
 				tabletWindowStateTests,
 			},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Timeout:           10 * time.Minute,
 		}, {
@@ -140,7 +135,6 @@ func init() {
 				20,   // Num test iterations.
 				tabletWindowStateTests,
 			},
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Timeout:           10 * time.Minute,
 		}},
