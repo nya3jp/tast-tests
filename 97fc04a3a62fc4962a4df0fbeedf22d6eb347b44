@@ -283,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f081c477_bf1d834b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/overflow_shelf_alignment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-06-10T17:46:11Z",
+      "side": 1,
+      "message": "SG2M",
+      "parentUuid": "75038b47_707484df",
+      "range": {
+        "startLine": 208,
+        "startChar": 12,
+        "endLine": 209,
+        "endChar": 75
+      },
+      "revId": "97fc04a3a62fc4962a4df0fbeedf22d6eb347b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbbd8c86_8b8d87f1",
@@ -367,6 +391,30 @@
       "side": 1,
       "message": "I may think using a boolean value as a parameter to specify which button to be clicked could be a better way?",
       "parentUuid": "0f9ed023_53ca450d",
+      "range": {
+        "startLine": 770,
+        "startChar": 5,
+        "endLine": 770,
+        "endChar": 29
+      },
+      "revId": "97fc04a3a62fc4962a4df0fbeedf22d6eb347b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "235b7bd3_20d4e915",
+        "filename": "src/chromiumos/tast/local/chrome/ash/shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-06-10T17:46:11Z",
+      "side": 1,
+      "message": "SG2M",
+      "parentUuid": "4a2bac8b_d9916426",
       "range": {
         "startLine": 770,
         "startChar": 5,
