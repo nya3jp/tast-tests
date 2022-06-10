@@ -38,6 +38,7 @@ const (
 	DevicePropertyDBusObject      = "DBus.Object"
 	DevicePropertyInhibited       = "Inhibited"
 	DevicePropertyInterface       = "Interface"
+	DevicePropertyIPConfigs       = "IPConfigs"
 	DevicePropertyPowered         = "Powered"
 	DevicePropertyType            = "Type"
 	DevicePropertySelectedService = "SelectedService"
@@ -286,8 +287,9 @@ const (
 // Device background scan methods.
 // The values are from wpa_supplicant + "none" for no background scan.
 // See:
-//   https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
-//   platform2/shill/supplicant/wpa_supplicant.cc
+//
+//	https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+//	platform2/shill/supplicant/wpa_supplicant.cc
 const (
 	DeviceBgscanMethodSimple = "simple"
 	DeviceBgscanMethodLearn  = "learn"
