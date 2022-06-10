@@ -86,6 +86,24 @@
       "parentUuid": "7a16806e_91bd5571",
       "revId": "fafb1ff5f7bd353dcc4e3c7b5e4a6ed0bf633525",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da73f7e8_260f0d3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/html_reload.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-10T06:03:32Z",
+      "side": 1,
+      "message": "Done, lacros variant added in this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3695795/1",
+      "parentUuid": "ffb44f54_97504272",
+      "revId": "fafb1ff5f7bd353dcc4e3c7b5e4a6ed0bf633525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
