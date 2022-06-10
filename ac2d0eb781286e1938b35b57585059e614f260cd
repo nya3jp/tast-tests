@@ -34,6 +34,24 @@
       "parentUuid": "aa4e3e57_80c22f83",
       "revId": "ac2d0eb781286e1938b35b57585059e614f260cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b0ce740_4ed8c01e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-10T00:33:00Z",
+      "side": 1,
+      "message": "Hey Alvin,\n\nThanks for the great feedback. I went back and ran a few tests using this CL as a base:\n\n1. This CL - 100% success rate\n2. Removing the `pauseBeforeClickTime` Sleep - 100% success rate\n3. Changing the `moveTime` to 0 seconds - 0% success rate\n4. Using the existing \u0027LeftClick\u0027 method but changing the `move` duration in the `click` event to 250ms (rather than 0) - 100% success rate.\n5. Using the  existing `LeftClick` method but calling `mouse.Move(...250*time.Milisecond)` before the call to `mouse.Click` - 100% success rate.\n\nThose experiments seem to point to the `0` move duration in the `mouse.Click` as being the problem. (Possibly because the generated event doesn\u0027t have time to register in the app?). There are ~29 usages of the `LeftClick` / `RightClick` methods so I can think of a few options:\n\n1. Update the `click` implementation in automation.go to call `mouse.Move(...250*time.Milisecond)` before `mouse.Click`. This will impact all existing tests.\n2. Add a new `moveDelay` parameter to the `LeftClick`/`RightClick` methods in automation.go. Set to 0 for existing tests, and 250 milliseconds for our tests. This introduces a new parameter that test writers need to think about, which may or may not be applicable for everyone (and may create confusion). \n3. Introduce a new `LeftClickWithOptions`/`RightClickWithOptions` which takes an object where we can pass in different configuration settings. moveDelay could be one. Again, this may create an issue where users aren\u0027t sure which one to call but would allow most people to default to `LeftClick`\n\nThere are probably other permutations of the above but at this point, with the limited number of tests using the `Click` methods, I think (1) might be the most applicable. Best case is that it helps address flakiness of other tests and is just an implementation detail of the click that others don\u0027t have to worry about. It also may indicate that there could be a bug in the underlying `.Click` implementation that should be accounted for, and it helps centralize the impact of that. WDYT?\n\nAs an aside, I don\u0027t think `LeftClickUntil` helps us. First, in another review (documented in b/235239165) it was mentioned that our tests should not be retrying interactions since that could potentially hide errors. However, even if that wasn\u0027t the case, many of our events don\u0027t have a great `condition` flag to be met. I.e. In roblox, clicking the username input box doesn\u0027t have a great confirmation condition. The only obvious thing that indicates the interaction worked would be the cursor blinking. Capturing this with ACUITI would be extremely flakey. There may be some cases where there is a clean post-condition, but in most cases, we\u0027d like to rely on the `click` method properly being registered in chromeos/arc++, and only need to be fired once.",
+      "parentUuid": "765afcd1_d6e075c6",
+      "revId": "ac2d0eb781286e1938b35b57585059e614f260cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
