@@ -22,6 +22,30 @@
       },
       "revId": "e13b69c20016b4e877d2964606298590082aaf30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08cb9f29_ed5a09ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_status_on_ac_removal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T07:41:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09467304_3747b37d",
+      "range": {
+        "startLine": 175,
+        "startChar": 68,
+        "endLine": 175,
+        "endChar": 71
+      },
+      "revId": "e13b69c20016b4e877d2964606298590082aaf30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "110bf829_4bce0c31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/battery_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T07:41:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcc18033_5357f981",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cd0bf91_6ed56a6a",
