@@ -16,6 +16,23 @@
       "message": "Thanks for reviewing! :)",
       "revId": "eea14e585c2d6bfc21cf5940b765f9cc773b93ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd6d618_5a4827e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-06-10T01:49:34Z",
+      "side": 1,
+      "message": "Thank you for fixing.\nRetrying CQ as some ARC tast tests (and maybe all other tests using wallpaper API) needs this fix ASAP.",
+      "revId": "eea14e585c2d6bfc21cf5940b765f9cc773b93ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
