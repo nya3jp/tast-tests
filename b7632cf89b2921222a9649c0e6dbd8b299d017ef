@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc18033_5357f981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/battery_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T06:54:48Z",
+      "side": 1,
+      "message": "My mistake. It should be `var err error`.\nAnyway, not a big deal. It is up to you.",
+      "parentUuid": "5625c55a_8bd85b31",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cd0bf91_6ed56a6a",

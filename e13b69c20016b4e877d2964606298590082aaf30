@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09467304_3747b37d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_status_on_ac_removal.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T06:54:48Z",
+      "side": 1,
+      "message": "super nit.",
+      "range": {
+        "startLine": 175,
+        "startChar": 68,
+        "endLine": 175,
+        "endChar": 71
+      },
+      "revId": "e13b69c20016b4e877d2964606298590082aaf30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
