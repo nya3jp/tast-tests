@@ -33,6 +33,24 @@
       "message": "optional: This seems important. Perhaps this comment should be promoted to be above testing.AddTest ?\n\nA documentation of the test Vars with example values is probably also useful.",
       "revId": "3ed5f8adcb7fedb6b7f2707370cf5f6e5abfc85d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbcfcd9b_cd49ff56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/audio_switch_onboard_speaker_to_hdmi_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T06:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1b4dc14_a547a13b",
+      "revId": "3ed5f8adcb7fedb6b7f2707370cf5f6e5abfc85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
