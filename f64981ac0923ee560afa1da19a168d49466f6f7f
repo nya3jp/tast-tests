@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec1b1ea_4f4c479f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-06-10T20:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d631b61e_fb92ce3a",
+      "range": {
+        "startLine": 115,
+        "startChar": 43,
+        "endLine": 115,
+        "endChar": 69
+      },
+      "revId": "f64981ac0923ee560afa1da19a168d49466f6f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0d1ea58_b8f8acd4",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-06-10T14:40:20Z",
       "side": 1,
       "message": "nit/style/optional: I think we often inline this.",
+      "revId": "f64981ac0923ee560afa1da19a168d49466f6f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8334bced_d50fa3f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-06-10T20:12:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0d1ea58_b8f8acd4",
       "revId": "f64981ac0923ee560afa1da19a168d49466f6f7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
