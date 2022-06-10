@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f75326b7_3a99d20a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-10T02:47:25Z",
+      "side": 1,
+      "message": "Approving to avoid round trip, but please resolve my comment",
+      "revId": "a594220017d02f4b95bd7ce9a00d3c84ced832f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d3f57c4_bcb87f5a",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-10T02:47:25Z",
+      "side": 1,
+      "message": "Is useFakeMediator true if and only if mediatorPubKeyHex is set? If so, can we merge them and e.g. use an empty string for mediatorPubKeyHex\n\nIf not, do we need to check if mediatorPubKeyHex is empty before writing it into customMediatorPubKeyFile?",
+      "revId": "a594220017d02f4b95bd7ce9a00d3c84ced832f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
