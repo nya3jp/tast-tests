@@ -78,9 +78,10 @@ func AutomaticTicketAccessWebsite(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_automatic_ticket")
 
-	kerberosAcc := policy.KerberosAccountsValueOmitKrb5conf{
+	kerberosAcc := policy.KerberosAccountsValue{
 		Principal: config.KerberosAccount,
 		Password:  password,
+		Krb5conf:  []string{config.RealmsConfig},
 	}
 
 	// Update policies.
