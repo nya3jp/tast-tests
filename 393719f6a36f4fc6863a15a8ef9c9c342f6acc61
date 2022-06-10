@@ -271,6 +271,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "159993fb_0e389433",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:44:54Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "eacc5ba6_d3acce5f",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0270fa2e_016244b5",
@@ -318,6 +342,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01898671_41ebab6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:44:54Z",
+      "side": 1,
+      "message": "This is not required. obsolete",
+      "parentUuid": "3562a7c9_8f847639",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 44
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56f98d78_a63430e2",
@@ -355,6 +403,30 @@
       "side": 1,
       "message": "This is a first tast test I have ever written. I\u0027m doing it based on the login test. I don\u0027t know what a tconn is or what is the usual pattern to use it. Maybe  you can point me to another example?",
       "parentUuid": "56f98d78_a63430e2",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 10
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2789db23_ab14d57b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:44:54Z",
+      "side": 1,
+      "message": "No worries. obsolete",
+      "parentUuid": "ed930929_c014b464",
       "range": {
         "startLine": 77,
         "startChar": 8,
@@ -458,6 +530,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ea2943_1c66a69e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:44:54Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "271dd01c_f777355f",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 20
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93febb44_c7676670",
@@ -495,6 +591,30 @@
       "side": 1,
       "message": "Can you tell me how to do it or provide examples?",
       "parentUuid": "93febb44_c7676670",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48cc9f8a_7ae40f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:44:54Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "051e0aae_3635666a",
       "range": {
         "startLine": 106,
         "startChar": 1,
@@ -569,6 +689,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa06b4f5_42f7b36b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:44:54Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "5a570dbc_68daf88e",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 30
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e70234e2_8d345a16",
@@ -623,6 +767,30 @@
       "side": 1,
       "message": "I wanted to isolate the login-in code so that it can be potentially reused in other tests.",
       "parentUuid": "ae511577_19a1f8f2",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 14
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f0d9125_e13b86e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:44:54Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "9e7f4c4b_4278cf00",
       "range": {
         "startLine": 160,
         "startChar": 1,
