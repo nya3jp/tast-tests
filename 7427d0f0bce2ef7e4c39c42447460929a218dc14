@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a23c7973_abc2c8fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-06-10T03:22:23Z",
+      "side": 1,
+      "message": "CC from crrev.com/c/3662282:\n\nIt\u0027s using crosbolt so that we can change it to crosbolt_weekly since there isn\u0027t a weekly equivalent for mainline.\n\nIt\u0027s better to use mainline for daily runs but I want to change as little possible when changing to weekly.",
+      "revId": "7427d0f0bce2ef7e4c39c42447460929a218dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
