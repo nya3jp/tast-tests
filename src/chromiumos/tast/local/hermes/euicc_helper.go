@@ -93,16 +93,7 @@ func (e *EUICC) EnabledProfile(ctx context.Context) (*Profile, error) {
 
 // GetEUICC will return a EUICC dbus object and its slot number. If findTestEuicc is set, a test eUICC will be returned, else a prod eUICC will be returned.
 func GetEUICC(ctx context.Context, findTestEuicc bool) (*EUICC, int, error) {
-	h, err := GetHermesManager(ctx)
-	if err != nil {
-		return nil, -1, errors.Wrap(err, "could not get Hermes Manager DBus object")
-	}
-
-	props, err := dbusutil.NewDBusProperties(ctx, h.DBusObject)
-	if err != nil {
-		return nil, -1, errors.Wrap(err, "unable to get Hermes manager properties")
-	}
-	euiccPaths, err := props.GetObjectPaths(hermesconst.ManagerPropertyAvailableEuiccs)
+	euiccPaths, err := GetEUICCPaths(ctx)
 	if err != nil {
 		return nil, -1, errors.Wrap(err, "unable to get available euiccs")
 	}

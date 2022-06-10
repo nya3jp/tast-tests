@@ -7,6 +7,8 @@ package hermes
 import (
 	"context"
 
+	"github.com/godbus/dbus/v5"
+
 	"chromiumos/tast/common/hermesconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/dbusutil"
@@ -26,19 +28,19 @@ func GetHermesManager(ctx context.Context) (*Manager, error) {
 	return &Manager{obj}, nil
 }
 
-// GetNumEUICC returns the number of eUICC's on the device.
-func GetNumEUICC(ctx context.Context) (int, error) {
+// GetEUICCPaths returns the number of eUICC's on the device.
+func GetEUICCPaths(ctx context.Context) ([]dbus.ObjectPath, error) {
 	h, err := GetHermesManager(ctx)
 	if err != nil {
-		return -1, errors.Wrap(err, "could not get Hermes Manager DBus object")
+		return nil, errors.Wrap(err, "could not get Hermes Manager DBus object")
 	}
 	props, err := dbusutil.NewDBusProperties(ctx, h.DBusObject)
 	if err != nil {
-		return -1, errors.Wrap(err, "unable to get Hermes manager properties")
+		return nil, errors.Wrap(err, "unable to get Hermes manager properties")
 	}
 	euiccPaths, err := props.GetObjectPaths(hermesconst.ManagerPropertyAvailableEuiccs)
 	if err != nil {
-		return -1, errors.Wrap(err, "unable to get available euiccs")
+		return nil, errors.Wrap(err, "unable to get available euiccs")
 	}
-	return len(euiccPaths), nil
+	return euiccPaths, nil
 }
