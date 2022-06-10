@@ -106,6 +106,24 @@
       "parentUuid": "7a847407_b9c12866",
       "revId": "eeb3d109b679aad153c397524596e645d80fd38c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e846f1_1c2505d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1474527
+      },
+      "writtenOn": "2022-06-10T07:53:35Z",
+      "side": 1,
+      "message": "Had a call where we agreed the Tast team will do a gradual transition and the Toolchain team will do a support role.",
+      "parentUuid": "6ad75fbc_2a51ae2c",
+      "revId": "eeb3d109b679aad153c397524596e645d80fd38c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
