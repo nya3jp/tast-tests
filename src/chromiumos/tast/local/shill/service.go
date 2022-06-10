@@ -50,6 +50,29 @@ func (s *Service) GetDevice(ctx context.Context) (*Device, error) {
 	return device, nil
 }
 
+// GetIPConfigs returns the IPConfig objects list of the associated Device. Note
+// that this is not the IPConfig object of the Service.
+func (s *Service) GetIPConfigs(ctx context.Context) ([]*IPConfig, error) {
+	device, err := s.GetDevice(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get associated Device")
+	}
+	props, err := device.GetProperties(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get device properties")
+	}
+	paths, err := props.GetObjectPaths(shillconst.DevicePropertyIPConfigs)
+	var ret []*IPConfig
+	for _, path := range paths {
+		ipconfig, err := NewIPConfig(ctx, path)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to create IPConfig from path %s", path)
+		}
+		ret = append(ret, ipconfig)
+	}
+	return ret, nil
+}
+
 // GetSignalStrength return the current signal strength
 func (s *Service) GetSignalStrength(ctx context.Context) (uint8, error) {
 	props, err := s.GetProperties(ctx)
@@ -61,6 +84,19 @@ func (s *Service) GetSignalStrength(ctx context.Context) (uint8, error) {
 		return 0, errors.Wrap(err, "unable to get strength from properties")
 	}
 	return strength, nil
+}
+
+// GetState returns the current service state.
+func (s *Service) GetState(ctx context.Context) (string, error) {
+	props, err := s.GetProperties(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "unable to get properties")
+	}
+	state, err := props.GetString(shillconst.ServicePropertyState)
+	if err != nil {
+		return "", errors.Wrap(err, "unable to get service state from properties")
+	}
+	return state, nil
 }
 
 // IsConnected returns true if the the service is connected.
