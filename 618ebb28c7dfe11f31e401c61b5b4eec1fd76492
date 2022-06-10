@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ee0282f_752c9451",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T21:58:37Z",
+      "side": 1,
+      "message": "How about:\n func RepeatKeyPressFor(ctx context.Context, kw *input.KeyboardEventWriter, key string, delay, duration time.Duration) error {\n \tdone :\u003d targetTime(time.Now().Add(duration))\n \treturn uiauto.New(nil).WithInterval(delay).RetryUntil(kw.AccelAction(key), done)(ctx)\n }\n \n func targetTime(t time.Time) action.Action {\n \treturn func(ctx context.Context) error {\n \t\tif time.Now().Before(t) {\n \t\t\treturn errors.New(\"target time not reached yet\")\n \t\t}\n \t\treturn nil\n \t}\n }",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "618ebb28c7dfe11f31e401c61b5b4eec1fd76492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
