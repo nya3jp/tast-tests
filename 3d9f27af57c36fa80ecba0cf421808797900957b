@@ -70,6 +70,30 @@
       },
       "revId": "3d9f27af57c36fa80ecba0cf421808797900957b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf85b7c_c437b87f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-06-10T08:16:08Z",
+      "side": 1,
+      "message": "Updated the commit message.\nThis test has been passing successfully on stainless https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-06-08\u0026last_date\u003d2022-06-10\u0026test\u003d%5Etast%5C.wmp%5C.DragAndDropWindow%24\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse and bisector can not reproduce the failure. I changed the app used in this test based on the discussion in b:235279574.",
+      "parentUuid": "cfa5a757_229cfa50",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "3d9f27af57c36fa80ecba0cf421808797900957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
