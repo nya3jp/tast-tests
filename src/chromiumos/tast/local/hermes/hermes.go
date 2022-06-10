@@ -19,21 +19,20 @@ import (
 
 // WaitForHermesIdle waits for Chrome to refresh installed profiles before returning.
 func WaitForHermesIdle(ctx context.Context, timeout time.Duration) error {
-	numEUICC, err := GetNumEUICC(ctx)
+	euiccPaths, err := GetEUICCPaths(ctx)
 	if err != nil {
-		return errors.Wrap(err, "Unable to get number of euiccs")
+		errors.Wrap(err, "unable to get available euiccs")
 	}
-	if numEUICC == 0 {
-		return nil
-	}
-	euicc, _, err := GetEUICC(ctx, false)
-	if err != nil {
-		return errors.Wrap(err, "Unable to get Hermes euicc")
-	}
-	if err := testing.Poll(ctx, func(ctx context.Context) (e error) {
-		return CheckProperty(ctx, euicc.DBusObject, hermesconst.EuiccPropertyProfileRefreshedAtLeastOnce, true)
-	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return errors.Wrap(err, "Timed out waiting for ProfilesRefreshedAtleastOnce==true")
+	for _, euiccPath := range euiccPaths {
+		obj, err := dbusutil.NewDBusObject(ctx, hermesconst.DBusHermesService, hermesconst.DBusHermesEuiccInterface, euiccPath)
+		if err != nil {
+			return errors.Wrap(err, "unable to get EUICC object")
+		}
+		if err := testing.Poll(ctx, func(ctx context.Context) (e error) {
+			return CheckProperty(ctx, obj, hermesconst.EuiccPropertyProfileRefreshedAtLeastOnce, true)
+		}, &testing.PollOptions{Timeout: timeout}); err != nil {
+			return errors.Wrap(err, "Timed out waiting for ProfilesRefreshedAtleastOnce==true")
+		}
 	}
 	return nil
 }
