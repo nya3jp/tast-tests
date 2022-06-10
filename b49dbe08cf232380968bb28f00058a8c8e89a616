@@ -33,6 +33,24 @@
       "message": "nit: ret \u003d fmt.Sprintf(\"%s%d: %s\\n\", ret, i, pkt.Dump())",
       "revId": "b49dbe08cf232380968bb28f00058a8c8e89a616",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9245db8f_f34564e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-10T11:27:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d75f7842_322bda24",
+      "revId": "b49dbe08cf232380968bb28f00058a8c8e89a616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
