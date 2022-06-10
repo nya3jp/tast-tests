@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5625c55a_8bd85b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/battery_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T06:48:04Z",
+      "side": 1,
+      "message": "if we are setting `err :\u003d nil`, we are getting ` use of untyped nil` compile error.\n\nWe are following the default close functions in other services.\n[screenlock_service.go](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/screenlock_service.go;l\u003d60)\n[utils_service.go](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/firmware/utils_service.go;l\u003d184)",
+      "parentUuid": "b5d05528_05bc1b5b",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9cd0bf91_6ed56a6a",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/battery_service.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-09T03:34:03Z",
       "side": 1,
       "message": "nit: remove empty line to keep the defer function in same block.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7a8b3dc_81aea066",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/battery_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T06:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cd0bf91_6ed56a6a",
       "range": {
         "startLine": 80,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39464184_454c67b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_status_on_ac_removal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T06:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07037bc4_4c4ecbf5",
+      "range": {
+        "startLine": 121,
+        "startChar": 49,
+        "endLine": 121,
+        "endChar": 66
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50e0f178_fc072c63",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-09T03:34:03Z",
       "side": 1,
       "message": "ditto: add err.",
+      "range": {
+        "startLine": 175,
+        "startChar": 49,
+        "endLine": 175,
+        "endChar": 66
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d874264_2bef34a6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/battery_status_on_ac_removal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T06:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e0f178_fc072c63",
       "range": {
         "startLine": 175,
         "startChar": 49,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8845f9f9_7c13fe4e",
+        "filename": "src/chromiumos/tast/services/cros/power/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T06:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aba33cd_3716ec6b",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 84
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c179e7b_b86303b3",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-06-09T03:34:03Z",
       "side": 1,
       "message": "nit: remove the empty comment line.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "b7632cf89b2921222a9649c0e6dbd8b299d017ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e878f8_d3ab3f20",
+        "filename": "src/chromiumos/tast/services/cros/power/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T06:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c179e7b_b86303b3",
       "range": {
         "startLine": 10,
         "startChar": 0,
