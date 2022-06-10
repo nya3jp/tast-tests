@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/hwsec/cross_version_login/R101-14588.0.0_reven-vmtest_20220610_data.tar.gz",
+  "size": 11601,
+  "sha256sum": "bb98242e672b286610d3acc36c74104bee61de47e6be19863ec150ec6a55b4e1"
+}
