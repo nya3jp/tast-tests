@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39f89fab_56a632b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-10T18:01:54Z",
+      "side": 1,
+      "message": "Sure.\nWhere do you expect this test to run? Is it intended to be part of a specialized Type C lab with USB4 peripherals connected to it?\n\n\u003cor\u003e\n\nIs it expected to run in the \"general\" Chrome OS hardware lab (i.e runs as a part of CQ, release builders etc.) ?",
+      "parentUuid": "bf6cacad_63df8940",
+      "range": {
+        "startLine": 55,
+        "startChar": 61,
+        "endLine": 55,
+        "endChar": 88
+      },
+      "revId": "caf9271f59ea8621b9099d07323b6c6fc79e84a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b6d0fad_14f4a97c",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
         "patchSetId": 13
