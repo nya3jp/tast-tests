@@ -52,6 +52,24 @@
       "parentUuid": "765afcd1_d6e075c6",
       "revId": "ac2d0eb781286e1938b35b57585059e614f260cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4b68d5_6f772396",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-10T00:58:50Z",
+      "side": 1,
+      "message": "As discussed offline, option(1) SGTM.",
+      "parentUuid": "0b0ce740_4ed8c01e",
+      "revId": "ac2d0eb781286e1938b35b57585059e614f260cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
