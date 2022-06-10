@@ -34,6 +34,24 @@
       "parentUuid": "d35c2570_eb2e7260",
       "revId": "3780b9627295c8eec3d4297174efb66965108ab7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e5b34f_d55a755c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-06-10T02:43:21Z",
+      "side": 1,
+      "message": "Does the same reasoning apply to https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crostini/check_users.go ?\nI.e. does it make sense to remove it as well?",
+      "parentUuid": "18c35bda_084512fc",
+      "revId": "3780b9627295c8eec3d4297174efb66965108ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
