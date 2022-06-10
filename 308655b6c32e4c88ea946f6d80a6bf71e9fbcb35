@@ -118,6 +118,30 @@
       },
       "revId": "308655b6c32e4c88ea946f6d80a6bf71e9fbcb35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60188e15_6b5872b3",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-10T20:25:39Z",
+      "side": 1,
+      "message": "\u003e From my point of view, this is conflicting with the layer of abstraction, and we don\u0027t want clients to figure out what browser is this, and change its behavior in general.\n\nAFAIK the whole point of this CL was to replace pairs (tconn, browser type) with just one object. And we thought that it could be Browser based on your comment cited above.\n\n\u003e \u003e we need to pass both Type and Browser (or TestConn)\n\u003e sounds indeed what you need?\n\nCould we add the `Type()` method to the TestConn instead and continue using it?\nI.e. if we need to always supply both parameters, could we just merge them for consistency?",
+      "parentUuid": "105cd48e_12cc02c9",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "308655b6c32e4c88ea946f6d80a6bf71e9fbcb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
