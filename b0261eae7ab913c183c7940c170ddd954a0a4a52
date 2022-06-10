@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b537ec5b_c8e0be55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-10T15:40:25Z",
+      "side": 1,
+      "message": "Thanks for the updates. LGTM from tast-owners@ side.",
+      "revId": "b0261eae7ab913c183c7940c170ddd954a0a4a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
