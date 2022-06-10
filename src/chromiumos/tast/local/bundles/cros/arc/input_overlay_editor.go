@@ -58,19 +58,19 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 			// Close educational dialog.
 			ui.LeftClick(nodewith.Name("Got it").HasClass("LabelButtonLabel")),
 			// Open game controls.
-			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
+			ui.LeftClick(nodewith.Name("Game controls").HasClass("ImageButton")),
 			uda.Tap(uidetection.Word("Customize")),
 			// Change mapping of "w" to "ESC" (NOTE: "w" key is used because, unlike the
 			// "n" key, the associated on-screen error messages have no overlapping text,
 			// and thus it has the highest chance of success with text detection).
-			ui.LeftClick(nodewith.Name("w")),
+			ui.LeftClick(nodewith.Name("w").HasClass("LabelButtonLabel")),
 			kb.TypeKeyAction(input.KEY_ESC),
 			// Verify illegal mapping.
 			waitForMultiple(uda, "Unsupported", "ported", "pported"),
 			// Change mapping of "w" to "w".
 			kb.TypeAction("w"),
 			// Verify illegal mapping.
-			waitForMultiple(uda, "same", "action", "the", "in"),
+			waitForMultiple(uda, "Same", "ame"),
 			// Change mapping of "w" to "CTRL"
 			kb.TypeKeyAction(input.KEY_LEFTCTRL),
 			// Verify illegal mapping.
@@ -89,14 +89,14 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 		s.Log("Editor CUJ #2: key mappings changes canceled")
 		if err := uiauto.Combine("cancel changed mapping",
 			// Open game controls.
-			ui.LeftClick(nodewith.ClassName("ImageButton")),
+			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
 			uda.Tap(uidetection.Word("Customize")),
 			// Change mapping of "n" to "l".
-			ui.LeftClick(nodewith.Name("n")),
+			ui.LeftClick(nodewith.Name("n").HasClass("LabelButtonLabel")),
 			kb.TypeAction("l"),
 			uda.Tap(uidetection.Word("Cancel")),
 			// Verify old mapping still exists.
-			ui.WaitUntilExists(nodewith.Name("n")),
+			ui.WaitUntilExists(nodewith.Name("n").HasClass("LabelButtonLabel")),
 		)(ctx); err != nil {
 			s.Error("Failed to verify canceled mapping: ", err)
 			// Reset activity.
@@ -109,10 +109,10 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 		s.Log("Editor CUJ #3: key mapping changed to a non-existing key bind")
 		if err := uiauto.Combine("mapping unbound",
 			// Open game controls.
-			ui.LeftClick(nodewith.ClassName("ImageButton")),
+			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
 			uda.Tap(uidetection.Word("Customize")),
 			// Change mapping of "n" to "m"
-			ui.LeftClick(nodewith.Name("w")),
+			ui.LeftClick(nodewith.Name("w").HasClass("LabelButtonLabel")),
 			kb.TypeAction("g"),
 			// Save binding.
 			uda.Tap(uidetection.Word("Save")),
@@ -127,10 +127,10 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 		s.Log("Editor CUJ #4: key mapping changed to another existing key bind")
 		if err := uiauto.Combine("mapping unbound",
 			// Open game controls.
-			ui.LeftClick(nodewith.ClassName("ImageButton")),
+			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
 			uda.Tap(uidetection.Word("Customize")),
 			// Change mapping of "n" to "m"
-			ui.LeftClick(nodewith.Name("n")),
+			ui.LeftClick(nodewith.Name("n").HasClass("LabelButtonLabel")),
 			kb.TypeAction("m"),
 			// Save binding.
 			uda.Tap(uidetection.Word("Save")),
