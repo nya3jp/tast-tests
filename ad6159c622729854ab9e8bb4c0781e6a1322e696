@@ -39,6 +39,30 @@
       },
       "revId": "ad6159c622729854ab9e8bb4c0781e6a1322e696",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42a93eb6_a8eb835b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-10T12:31:00Z",
+      "side": 1,
+      "message": "This timeout is too long. Successful test completes within 1 minute, failing up to 70s. Subtest takes ~5-10s. Fixed.",
+      "parentUuid": "1eeb7c3d_4fd3a1c2",
+      "range": {
+        "startLine": 221,
+        "startChar": 3,
+        "endLine": 221,
+        "endChar": 63
+      },
+      "revId": "ad6159c622729854ab9e8bb4c0781e6a1322e696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
