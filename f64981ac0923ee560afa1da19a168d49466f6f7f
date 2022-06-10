@@ -16,6 +16,46 @@
       "message": "Thanks for the review. Could you PTAL?",
       "revId": "f64981ac0923ee560afa1da19a168d49466f6f7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d631b61e_fb92ce3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-10T14:40:20Z",
+      "side": 1,
+      "message": "miscommunication:\n\nvar err error\nopts, err \u003d lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()",
+      "range": {
+        "startLine": 115,
+        "startChar": 43,
+        "endLine": 115,
+        "endChar": 69
+      },
+      "revId": "f64981ac0923ee560afa1da19a168d49466f6f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d1ea58_b8f8acd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-10T14:40:20Z",
+      "side": 1,
+      "message": "nit/style/optional: I think we often inline this.",
+      "revId": "f64981ac0923ee560afa1da19a168d49466f6f7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
