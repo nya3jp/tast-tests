@@ -33,6 +33,91 @@
       "message": "I think, as for deflaking the metrics, Eliot has more expert knowledge. Eliot, WDYT?",
       "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45a6a4f7_802ec862",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-10T02:24:22Z",
+      "side": 1,
+      "message": "A couple of general requests:\n\n1. Could you check if this CL produces a similar distribution of results to running the current test multiple times (and e.g. rebooting in between)? Repeatedly running the same thing could change the results, and we are likely interested in the time of the first docs opening, not multiple times, from a practical perspective, IMO.\n\n2. Could you check if reversing the order of lacros/ash tests changes the distribution? We\u0027ve had this issue in the past.\n\n3. Could you check if running all the lacros tests and then all the ash tests changes the distribution? Currently it interleaves ash then lacros, but it\u0027s not a very realistic scenario.",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e53e0ce_6dac09a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-10T02:24:22Z",
+      "side": 1,
+      "message": "How was this value chosen? Can you add a comment?",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a574c440_d5361172",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-10T02:24:22Z",
+      "side": 1,
+      "message": "Any reason to permanently modify the value of m.Name?",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "197440de_3e3fee7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-10T02:24:22Z",
+      "side": 1,
+      "message": "Does setting this variant work properly with crosbolt etc?\n\nThe only documented value is \"summary\". Are there any other tests that do this?",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33dcc830_2bc49411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-10T02:24:22Z",
+      "side": 1,
+      "message": "It\u0027s often useful to record the Bessel corrected standard deviation, and also the first run value, e.g.\n\nash.*.first, ash.*.stddev",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
