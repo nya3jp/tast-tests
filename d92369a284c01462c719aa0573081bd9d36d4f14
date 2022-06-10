@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3d2ee60_3627ccff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-10T11:08:25Z",
+      "side": 1,
+      "message": "\u003e Would  LoginPerf  know which TestConn to use?\n\nYou are ringt about the code above, but the issue is that test creates recorder before the login. At this point only `SigninTestAPI` is available. But during the test user session is started. SigninTestAPI should be destroyed and new API (regular test API) should be started.\n\nBoth are Web APIs, and in general we do not allow WebUI to survive the login (because of the profile that is used to run the webUI). So we still need to be able to reconnect / replace the connection during the Run().",
+      "parentUuid": "df35c6e4_d4b008f3",
+      "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1887e1f1_16784574",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 1
@@ -244,6 +262,24 @@
       "writtenOn": "2022-03-30T16:40:35Z",
       "side": 1,
       "message": "Why having this `if` to only do `cujRecorder.Record` and `cujRunPerfValues.MergeWithSuffix` once? Should we do that for every `cujRecorder.Run` ?",
+      "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cd7ab47_4380164a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-10T11:08:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcef6e01_038da8db",
       "revId": "d92369a284c01462c719aa0573081bd9d36d4f14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
