@@ -33,6 +33,23 @@
       "message": "LGTM",
       "revId": "bff5c6e882f6f722ab1240a8c4d3a8137cf71dee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fce0c7a_e34a32fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2022-06-10T17:17:38Z",
+      "side": 1,
+      "message": "BTW swarming is having bigtime issues this week, so might have to wait a day or two to get this in",
+      "revId": "bff5c6e882f6f722ab1240a8c4d3a8137cf71dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
