@@ -188,8 +188,8 @@ func (p *Values) MergeWithSuffix(suffix string, vs ...*Values) {
 			if k.Multiple {
 				p.Append(suffixedK, v...)
 			} else {
-				if _, c := p.values[suffixedK]; c {
-					panic("Single-valued metric already present. Cannot merge with another value.")
+				if vv, c := p.values[suffixedK]; c {
+					panic(fmt.Sprint("MergeWithSuffix(suffix='", suffix, "'): Single-valued metric {", suffixedK, "} already present as {", vv, "}. Cannot merge with another value."))
 				}
 				p.Set(suffixedK, v...)
 			}
