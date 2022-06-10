@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bd9201a_8cb71e8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T18:16:16Z",
+      "side": 1,
+      "message": "Any reason to keep this uppercase?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 9
+      },
+      "revId": "b3a624032dcf9852c94412d3b0d1d40ef9fa49ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e569e101_d17c2863",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T18:16:16Z",
+      "side": 1,
+      "message": "Maybe here or in some followup cl we should separate this call to another file? That way we aren\u0027t making this api calls directly within the cuj test.",
+      "revId": "b3a624032dcf9852c94412d3b0d1d40ef9fa49ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09fc8489_e0eeb8d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T18:16:16Z",
+      "side": 1,
+      "message": "TabSwitchCUJ",
+      "range": {
+        "startLine": 367,
+        "startChar": 40,
+        "endLine": 367,
+        "endChar": 53
+      },
+      "revId": "b3a624032dcf9852c94412d3b0d1d40ef9fa49ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d85315d2_937ad66e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T18:16:16Z",
+      "side": 1,
+      "message": "How does this work... should we be worried about trying to close lacros if the test never actually uses lacros? Maybe only defer it based on the browserType?",
+      "revId": "b3a624032dcf9852c94412d3b0d1d40ef9fa49ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
