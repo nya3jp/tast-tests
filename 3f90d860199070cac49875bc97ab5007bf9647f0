@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdc716f9_06909d4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-06-10T06:01:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75b01e07_60f9bf60",
+      "range": {
+        "startLine": 335,
+        "startChar": 40,
+        "endLine": 335,
+        "endChar": 63
+      },
+      "revId": "3f90d860199070cac49875bc97ab5007bf9647f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa230af0_a7a0664d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-09T15:15:37Z",
       "side": 1,
       "message": "cmd :\u003d ...CommandContext(ctx, \"edid-decode\", \"-s\")\n\nthen you can write |edid| to cmd.StdinPipe()",
+      "range": {
+        "startLine": 343,
+        "startChar": 3,
+        "endLine": 346,
+        "endChar": 4
+      },
+      "revId": "3f90d860199070cac49875bc97ab5007bf9647f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e910afb8_6566d4b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-06-10T06:01:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa230af0_a7a0664d",
       "range": {
         "startLine": 343,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8d81d9_55b386f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-06-10T06:01:45Z",
+      "side": 1,
+      "message": "Done. and update other error messages in this file.",
+      "parentUuid": "fcbe111b_5f16e9b6",
+      "range": {
+        "startLine": 350,
+        "startChar": 24,
+        "endLine": 350,
+        "endChar": 32
+      },
+      "revId": "3f90d860199070cac49875bc97ab5007bf9647f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03b135f0_4a85648b",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "140526fe_8cbcc7f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-06-10T06:01:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03b135f0_4a85648b",
+      "revId": "3f90d860199070cac49875bc97ab5007bf9647f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca7dd624_80aa2087",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-06-09T15:15:37Z",
       "side": 1,
       "message": "manufacturerRegexp.FindStringSubmatch(edidInfo) is what you would like to have?\n\nDitto for below.",
+      "range": {
+        "startLine": 479,
+        "startChar": 17,
+        "endLine": 479,
+        "endChar": 99
+      },
+      "revId": "3f90d860199070cac49875bc97ab5007bf9647f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "817d71d6_4e687ada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-06-10T06:01:45Z",
+      "side": 1,
+      "message": "Yes, very thanks for your help. Done.",
+      "parentUuid": "ca7dd624_80aa2087",
       "range": {
         "startLine": 479,
         "startChar": 17,
