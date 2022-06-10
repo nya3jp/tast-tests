@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c78d7fa_1c9ca850",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:03:17Z",
+      "side": 1,
+      "message": "`tast-tests:`\nSee https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "2172f08b59cc36f94b1c60a93daded3763a133c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "650fff19_2a48a9a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:03:17Z",
+      "side": 1,
+      "message": "nit: `TEST\u003dtast run \u003cDUT\u003e calendar.ShowEvents`",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "2172f08b59cc36f94b1c60a93daded3763a133c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48086bfb_344ad282",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:03:17Z",
+      "side": 1,
+      "message": "Code comments on the `ClassName` functions say that those functions are deprecated and you should use `HasClass` instead. Please take this opportunity to update code from `ClassName` to `HasClass`.",
+      "revId": "2172f08b59cc36f94b1c60a93daded3763a133c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
