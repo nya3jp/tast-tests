@@ -208,6 +208,24 @@
       "parentUuid": "17918608_efce9d67",
       "revId": "7eb9c26e45e72b6bbcd21d207bbbbd4464122d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75c13c1b_9375185d",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-06-10T19:24:36Z",
+      "side": 1,
+      "message": "It seems crositini tests share a fixture, so we can update their fixture to throttle ARC. \n\nOR\n\nWe can have ARC be throttled by default unless a test uses ARCEnabled or ARCSupported option. If a test needs to enforce throttling while still using ARCEnabled and ARCSupported then they should be able to do so (we can give RestrictARCCPU option higher precedence).\n\n\nThis will ensure all ARC tests whether they use fixture or not will opt out of throttling and any non-ARC tests do get ARC throttled by default and any tests wanting ARC with throttling can opt into throttling still.",
+      "parentUuid": "466017bb_573574a8",
+      "revId": "7eb9c26e45e72b6bbcd21d207bbbbd4464122d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
