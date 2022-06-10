@@ -26,11 +26,29 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// VaultKeyInfo contains the information of a vault key
+type VaultKeyInfo struct {
+	Password   string
+	KeyLabel   string
+	LowEntropy bool
+}
+
+// NewVaultKeyInfo creates VaultKeyInfo from password, label and lowEntropy
+func NewVaultKeyInfo(password, label string, lowEntropy bool) *VaultKeyInfo {
+	info := &VaultKeyInfo{
+		Password:   password,
+		KeyLabel:   label,
+		LowEntropy: lowEntropy,
+	}
+	return info
+}
+
 // CrossVersionLoginConfig contains the information for cross-version login
 type CrossVersionLoginConfig struct {
-	AuthConfig hwsec.AuthConfig
-	RsaKey     *rsa.PrivateKey
-	KeyLabel   string
+	AuthConfig     hwsec.AuthConfig
+	RsaKey         *rsa.PrivateKey
+	KeyLabel       string
+	ExtraVaultKeys []VaultKeyInfo
 }
 
 // NewPassAuthCrossVersionLoginConfig creates cross version-login config from password auth config
@@ -40,6 +58,22 @@ func NewPassAuthCrossVersionLoginConfig(authConfig *hwsec.AuthConfig, keyLabel s
 		KeyLabel:   keyLabel,
 	}
 	return config
+}
+
+// AddVaultKeyData adds a vault key to cryptohome and store the VaultKeyInfo to the config
+func (config *CrossVersionLoginConfig) AddVaultKeyData(ctx context.Context, cryptohome *hwsec.CryptohomeClient, info *VaultKeyInfo) error {
+	authConfig := config.AuthConfig
+	username := authConfig.Username
+	password := authConfig.Password
+	keyLabel := config.KeyLabel
+	if err := cryptohome.AddVaultKey(ctx, username, password, keyLabel, info.Password, info.KeyLabel, info.LowEntropy); err != nil {
+		return errors.Wrap(err, "failed to add key")
+	}
+	if _, err := cryptohome.CheckVault(ctx, info.KeyLabel, hwsec.NewPassAuthConfig(username, info.Password)); err != nil {
+		return errors.Wrap(err, "failed to check vault with new key")
+	}
+	config.ExtraVaultKeys = append(config.ExtraVaultKeys, *info)
+	return nil
 }
 
 func decompressData(src string) error {
@@ -274,15 +308,33 @@ func createChallengeResponseData(ctx context.Context, lf LogFunc, cryptohome *hw
 	return NewChallengeAuthCrossVersionLoginConfig(authConfig, keyLabel, rsaKey), nil
 }
 
-func createPasswordData(ctx context.Context) (*CrossVersionLoginConfig, error) {
+func createPasswordData(ctx context.Context, cryptohome *hwsec.CryptohomeClient, supportsLE bool) (*CrossVersionLoginConfig, error) {
+	const (
+		keyLabel   = "legacy-0"
+		extraPass  = "extraPass"
+		extraLabel = "extraLabel"
+		pin        = "123456"
+		pinLabel   = "pinLabel"
+	)
 	// Add the new password login data
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to log in by Chrome")
 	}
 	cr.Close(ctx)
-	authConfig := hwsec.NewPassAuthConfig(cr.Creds().User, cr.Creds().Pass)
-	return NewPassAuthCrossVersionLoginConfig(authConfig, "legacy-0"), nil
+	username := cr.Creds().User
+	password := cr.Creds().Pass
+	authConfig := hwsec.NewPassAuthConfig(username, password)
+	config := NewPassAuthCrossVersionLoginConfig(authConfig, keyLabel)
+	if err := config.AddVaultKeyData(ctx, cryptohome, NewVaultKeyInfo(extraPass, extraLabel, false)); err != nil {
+		return nil, errors.Wrap(err, "failed to add vault key data of password")
+	}
+	if supportsLE {
+		if err := config.AddVaultKeyData(ctx, cryptohome, NewVaultKeyInfo(pin, pinLabel, true)); err != nil {
+			return nil, errors.Wrap(err, "failed to add vault key data of pin")
+		}
+	}
+	return config, nil
 }
 
 // PrepareCrossVersionLoginData prepares the login data and config for CrossVersionLogin and saves them to dataPath and configPath respectively
@@ -302,10 +354,17 @@ func PrepareCrossVersionLoginData(ctx context.Context, lf LogFunc, cryptohome *h
 		}
 	}()
 
+	supportsLE, err := cryptohome.SupportsLECredentials(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get supported policies")
+	} else if !supportsLE {
+		testing.ContextLog(ctx, "Device does not support PinWeaver")
+	}
+
 	if err := daemonController.Restart(ctx, hwsec.UIDaemon); err != nil {
 		return errors.Wrap(err, "failed to restart UI")
 	}
-	config, err := createPasswordData(ctx)
+	config, err := createPasswordData(ctx, cryptohome, supportsLE)
 	if err != nil {
 		return errors.Wrap(err, "failed to create password data")
 	}
@@ -318,8 +377,9 @@ func PrepareCrossVersionLoginData(ctx context.Context, lf LogFunc, cryptohome *h
 	if err != nil {
 		// We could not use latest tast to create challenge-response data before R96, so here we only log the error.
 		testing.ContextLog(ctx, "Failed to create challenge-response data: ", err)
+	} else {
+		configList = append(configList, *config)
 	}
-	configList = append(configList, *config)
 
 	// Note that if the format of either CrossVersionLoginConfigData or CrossVersionLoginConfig is changed,
 	// the hwsec.CrossVersionLogin should be modified and the generated data should be regenerated.
