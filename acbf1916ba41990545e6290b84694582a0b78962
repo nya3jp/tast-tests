@@ -46,6 +46,30 @@
       },
       "revId": "acbf1916ba41990545e6290b84694582a0b78962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5997931_298b675c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-10T22:29:39Z",
+      "side": 1,
+      "message": "I don\u0027t think there is anything wrong with 4 calls.\nYou can move this block to a function (like `AddChromeLacrosCollectedMetrics(tconn,bTconn)`) and even make it shared. It will probably work for most tests.",
+      "parentUuid": "5ccb5a04_3d9124c1",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 2
+      },
+      "revId": "acbf1916ba41990545e6290b84694582a0b78962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
