@@ -16,6 +16,24 @@
       "message": "I assume no one has fully reviewed this patch (but let me know if you are doing that), so I\u0027m going to refactor a little bit on the ping expectation on this patch instead of reworking this in the following patches. It\u0027s expected to be finished today. Thanks!",
       "revId": "6f6875d089cd49a07e7ddb0037d147d83186bef8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4938bded_56a2b18e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-10T07:09:51Z",
+      "side": 1,
+      "message": "No I haven\u0027t really had time to look in details yet. Let me know when I should take another look.",
+      "parentUuid": "39398765_83954d54",
+      "revId": "6f6875d089cd49a07e7ddb0037d147d83186bef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
