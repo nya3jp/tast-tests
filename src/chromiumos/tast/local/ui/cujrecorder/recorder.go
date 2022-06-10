@@ -188,17 +188,14 @@ func (r *Recorder) AddCollectedMetrics(tconn *chrome.TestConn, configs ...Metric
 	return nil
 }
 
-// NewRecorder creates a Recorder. It also aggregates the metrics of each
+// NewRecorderWithTestConn creates a Recorder. It also aggregates the metrics of each
 // category (animation smoothness and input latency) and creates the aggregated
 // reports.
-func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options RecorderOptions) (*Recorder, error) {
-	r := &Recorder{cr: cr}
-
-	var err error
-	r.tconn, err = cr.TestAPIConn(ctx)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to test API")
+func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, a *arc.ARC, options RecorderOptions) (*Recorder, error) {
+	if tconn == nil {
+		return nil, errors.New("tconn must never be nil")
 	}
+	r := &Recorder{cr: cr, tconn: tconn}
 
 	powerTestOptions := setup.PowerTestOptions{
 		// The default for the following options is to disable these setting.
@@ -232,6 +229,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 	// Create batteryDischarge with both discharge and ignoreErr set to true.
 	batteryDischarge := setup.NewBatteryDischarge(true, true, dischargeThreshold)
 
+	var err error
 	r.powerSetupCleanup, err = setup.PowerTest(ctx, r.tconn, powerTestOptions, batteryDischarge)
 	batteryDischargeErr := batteryDischarge.Err()
 	if batteryDischargeErr != nil {
@@ -345,6 +343,17 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 	success = true
 
 	return r, nil
+}
+
+// NewRecorder creates a Recorder based on the configs. It also aggregates the
+// metrics of each category (animation smoothness and input latency) and creates
+// the aggregated reports.
+func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options RecorderOptions) (*Recorder, error) {
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "creating test API connection failed")
+	}
+	return NewRecorderWithTestConn(ctx, tconn, cr, a, options)
 }
 
 // EnableTracing enables system tracing when the recorder is running a test scenario.
