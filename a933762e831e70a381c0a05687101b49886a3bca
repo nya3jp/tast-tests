@@ -33,6 +33,24 @@
       "message": "Nice, I didn\u0027t know about this disabled thing.\n\nMaybe you can use this function:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;drc\u003dde423c165200c3c00b42c02e412bde045aad5f2d;l\u003d865",
       "revId": "a933762e831e70a381c0a05687101b49886a3bca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a60ddc0d_758fe9a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-10T06:47:35Z",
+      "side": 1,
+      "message": "Can\u0027t really find a concise way to incorporate `CheckRestriction()` with testing.Poll to have the same effect as the two lines. Basically waiting for the restriction to be true.\n\nI can add `ui.CheckRestiction(saveButton, restriction.enabled)` after the new two lines.\n\nOr I can create a new function which actually polls until the restriction.Enabled is true.\n\nWhich do you think is better?",
+      "parentUuid": "5faa8c7e_5ca95b77",
+      "revId": "a933762e831e70a381c0a05687101b49886a3bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
