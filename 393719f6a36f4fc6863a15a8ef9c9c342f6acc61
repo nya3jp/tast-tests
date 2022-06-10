@@ -92,6 +92,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60afc64d_21474b47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:47:33Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "3d2cd65e_db28f3c6",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 52
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0589d9a5_12e7ab78",
@@ -105,6 +129,30 @@
       "writtenOn": "2022-06-09T00:26:29Z",
       "side": 1,
       "message": "Please add the an individual PoC as primary contact.",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 49
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd51f4ba_210022a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:47:33Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "0589d9a5_12e7ab78",
       "range": {
         "startLine": 26,
         "startChar": 25,
@@ -138,6 +186,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79443957_e562712d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:47:33Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "46b3c583_248e99ed",
+      "range": {
+        "startLine": 33,
+        "startChar": 44,
+        "endLine": 33,
+        "endChar": 60
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1bca945_da623fd8",
@@ -151,6 +223,30 @@
       "writtenOn": "2022-06-09T00:26:29Z",
       "side": 1,
       "message": "nit: In golang, comment is above the declaration.\nhttps://go.dev/doc/effective_go#commentary",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 56
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33f01cce_02004f5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:47:33Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "d1bca945_da623fd8",
       "range": {
         "startLine": 34,
         "startChar": 1,
@@ -184,6 +280,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a702d6e5_c247db08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:47:33Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "64cf8a99_297af3ca",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 85
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c40ffa44_4ecc7606",
@@ -201,6 +321,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b27ec622_bfa9b619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:47:33Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "c40ffa44_4ecc7606",
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa16d125_a769a60f",
@@ -214,6 +352,30 @@
       "writtenOn": "2022-06-09T00:26:29Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 90
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b30cc8b_248dbc1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:47:33Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "aa16d125_a769a60f",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -460,6 +622,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca5e83f7_950c4bc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:47:33Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "c4921ff6_17679143",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e52052a_3034b355",
@@ -473,6 +659,30 @@
       "writtenOn": "2022-06-09T00:26:29Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 34
+      },
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "787ca272_ad1c0aa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:47:33Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "8e52052a_3034b355",
       "range": {
         "startLine": 96,
         "startChar": 1,
@@ -642,6 +852,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b00dfa44_305bc9ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:47:33Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "815c00cd_283f9d02",
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "062be0b6_68924258",
@@ -726,6 +954,24 @@
       "writtenOn": "2022-06-09T00:26:29Z",
       "side": 1,
       "message": "nit: remove empty line.",
+      "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d1e4f29_5482897a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:47:33Z",
+      "side": 1,
+      "message": "obsolete",
+      "parentUuid": "e70234e2_8d345a16",
       "revId": "393719f6a36f4fc6863a15a8ef9c9c342f6acc61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

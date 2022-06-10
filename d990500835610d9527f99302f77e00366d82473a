@@ -16,6 +16,52 @@
       "message": "Hi Jan, I think the best way is directly contributing to this cl, and you can use it as an example in future. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md can be a good doc for you to start writing Tast tests.\n\nAs a contributor, I could not approve this cl anymore. Invited Alvin to review it from Tast owner perspective.",
       "revId": "d990500835610d9527f99302f77e00366d82473a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "197fcb91_e61a74c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:47:33Z",
+      "side": 1,
+      "message": "I do not think it is necessary to test without feature flag. It would be soon deprecated once your feature formally launched.",
+      "range": {
+        "startLine": 38,
+        "startChar": 35,
+        "endLine": 38,
+        "endChar": 49
+      },
+      "revId": "d990500835610d9527f99302f77e00366d82473a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5437ea45_236a490c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-10T02:47:33Z",
+      "side": 1,
+      "message": "This fails. I could not find anything on the UI related to Privacy Hub. If you can provide a screenshot or something, it helps. Anyway, I also make a comment in the code, so that you can continue to work on it.",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 44
+      },
+      "revId": "d990500835610d9527f99302f77e00366d82473a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
