@@ -1052,7 +1052,12 @@ func (h *Helper) GetHostInfoLabels(ctx context.Context, labels []string) error {
 	dims := make(LabelMap)
 	for _, label := range labels {
 		val := strings.SplitN(label, ":", 2)
-		dims[val[0]] = append(dims[val[0]], val[1])
+		switch len(val) {
+		case 1:
+			dims[val[0]] = append(dims[val[0]], "")
+		case 2:
+			dims[val[0]] = append(dims[val[0]], val[1])
+		}
 	}
 	h.Labels = labels
 	h.modemInfo = GetModemInfoFromHostInfoLabels(ctx, dims)
