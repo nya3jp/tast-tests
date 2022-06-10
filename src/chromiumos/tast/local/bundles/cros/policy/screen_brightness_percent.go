@@ -92,13 +92,13 @@ func ScreenBrightnessPercent(ctx context.Context, s *testing.State) {
 
 			ui := uiauto.New(tconn)
 
-			// Find the Status tray node and click to open it.
-			statusTray := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
-			if err := uiauto.Combine("find and click the status tray",
+			// Find the Status unifided system tray node and click to open it.
+			statusTray := nodewith.ClassName("UnifiedSystemTray")
+			if err := uiauto.Combine("find and click the status area unified system tray",
 				ui.WaitUntilExists(statusTray),
 				ui.LeftClick(statusTray),
 			)(ctx); err != nil {
-				s.Fatal("Failed to find and click the status try: ", err)
+				s.Fatal("Failed to find and click the status area unified system tray: ", err)
 			}
 
 			defer func() {
