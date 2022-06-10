@@ -94,6 +94,30 @@
       },
       "revId": "3d9f27af57c36fa80ecba0cf421808797900957b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b270c69d_3208debf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-10T10:01:11Z",
+      "side": 1,
+      "message": "yichenz@ thank you.  Stainless results for this test have been all green and never flakey for a long time, when I investigated.  Running the existing test locally on my DUT has never failed for me.\n\nI think we somehow ran into a very rare race-condition at shutdown, due to the test failing prior to shut down, maybe when files app was still exchanging messages (postMessage) with the browser process.\n\nThis made it look like there was there was some files app issue, but the Stainless results (never flakey) and bisection results (no reproduction) suggest otherwise.\n\n\u003e I changed the app used in this test based on the discussion in b:235279574.\n\nUnderstood, and that seems good to me as well. So a LGTM while I\u0027m here :)",
+      "parentUuid": "abf85b7c_c437b87f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "3d9f27af57c36fa80ecba0cf421808797900957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
