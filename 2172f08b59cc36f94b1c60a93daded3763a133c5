@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c75f2b9_7bd29de9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-06-10T22:16:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c78d7fa_1c9ca850",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "2172f08b59cc36f94b1c60a93daded3763a133c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "650fff19_2a48a9a9",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f20dd7b_f79082d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-06-10T22:16:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650fff19_2a48a9a9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 24
+      },
+      "revId": "2172f08b59cc36f94b1c60a93daded3763a133c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48086bfb_344ad282",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-06-10T22:03:17Z",
       "side": 1,
       "message": "Code comments on the `ClassName` functions say that those functions are deprecated and you should use `HasClass` instead. Please take this opportunity to update code from `ClassName` to `HasClass`.",
+      "revId": "2172f08b59cc36f94b1c60a93daded3763a133c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12271e4c_b609bce8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1490902
+      },
+      "writtenOn": "2022-06-10T22:16:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48086bfb_344ad282",
       "revId": "2172f08b59cc36f94b1c60a93daded3763a133c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
