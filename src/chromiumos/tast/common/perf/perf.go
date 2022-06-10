@@ -178,6 +178,11 @@ func NewValues() *Values {
 	return &Values{values: make(map[Metric][]float64)}
 }
 
+// GetValues returns stored metrics values.
+func (p *Values) GetValues() map[Metric][]float64 {
+	return p.values
+}
+
 // MergeWithSuffix merges all data points of vs into this Values structure
 // optionally adding suffix to the value name.
 func (p *Values) MergeWithSuffix(suffix string, vs ...*Values) {
@@ -188,8 +193,8 @@ func (p *Values) MergeWithSuffix(suffix string, vs ...*Values) {
 			if k.Multiple {
 				p.Append(suffixedK, v...)
 			} else {
-				if _, c := p.values[suffixedK]; c {
-					panic("Single-valued metric already present. Cannot merge with another value.")
+				if vv, c := p.values[suffixedK]; c {
+					panic(fmt.Sprint("MergeWithSuffix(suffix='", suffix, "'): Single-valued metric {", suffixedK, "} already present as {", vv, "}. Cannot merge with another value."))
 				}
 				p.Set(suffixedK, v...)
 			}
