@@ -34,6 +34,24 @@
       "parentUuid": "39398765_83954d54",
       "revId": "6f6875d089cd49a07e7ddb0037d147d83186bef8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e66596_3e732837",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-10T08:04:50Z",
+      "side": 1,
+      "message": "It\u0027s ready now, thanks!\n(PS10..12 for the changed code)",
+      "parentUuid": "4938bded_56a2b18e",
+      "revId": "6f6875d089cd49a07e7ddb0037d147d83186bef8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
