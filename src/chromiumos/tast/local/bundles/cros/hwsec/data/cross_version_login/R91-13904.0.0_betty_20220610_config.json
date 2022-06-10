@@ -1,0 +1,22 @@
+[
+  {
+    "AuthConfig": {
+      "AuthType": 0,
+      "Username": "testuser@gmail.com",
+      "Password": "testpass",
+      "KeyDelegateName": "",
+      "KeyDelegatePath": "",
+      "ChallengeSPKI": null,
+      "ChallengeAlg": 0
+    },
+    "RsaKey": null,
+    "KeyLabel": "legacy-0",
+    "ExtraVaultKeys": [
+      {
+        "Password": "extraPass",
+        "KeyLabel": "extraLabel",
+        "LowEntropy": false
+      }
+    ]
+  }
+]
