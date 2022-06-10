@@ -35,6 +35,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b56615_8abb9e1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T07:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a10dc7cb_c6f80a35",
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9cb770cc_f00d3372",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T07:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c7fe2ad_11aaac57",
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83e34ae4_71fbc37c",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-06-08T17:38:45Z",
       "side": 1,
       "message": "Get rid of `defer` and just call `conn.Close()` here, and check the returned error. The `defer` keyword defers the call until the end of the function...which is right here anyway.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 6
+      },
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7362614_2657e599",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/ethernet_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T07:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83e34ae4_71fbc37c",
       "range": {
         "startLine": 70,
         "startChar": 1,
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31bd156b_27478f8d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_ethernet_behaviour_coldreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T07:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dc80059_07725dc8",
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc44b691_2c3fafde",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-06-09T02:47:31Z",
       "side": 1,
       "message": "nit: `expectedUsbType` or even `usbType` would better describe what this value represents.",
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16182c3c_fcd2b960",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_ethernet_behaviour_coldreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T07:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc44b691_2c3fafde",
       "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -139,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c75109d_1b800fd6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_ethernet_behaviour_coldreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T07:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45445d73_8c73529f",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 29
+      },
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbdfebf0_a01b16a5",
@@ -152,6 +272,24 @@
       "writtenOn": "2022-06-09T02:47:31Z",
       "side": 1,
       "message": "nit: \"Failed to convert provided iteration to an integer: \" may be more helpful",
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7515f61c_7cd6a979",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_ethernet_behaviour_coldreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T07:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbdfebf0_a01b16a5",
       "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -179,6 +317,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bede47e_e9a2e97c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/usb_ethernet_behaviour_coldreboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T07:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "835b642d_ff283c0a",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 49
+      },
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "929c75bc_49867efd",
@@ -192,6 +354,30 @@
       "writtenOn": "2022-06-08T17:38:45Z",
       "side": 1,
       "message": "Why is `bool enabled \u003d 1;` indented twice as much as `string url \u003d 1;`?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "376cc44324d5dfd9b0b9ee8578da3636b7e092c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "849cda94_5e692611",
+        "filename": "src/chromiumos/tast/services/cros/power/ethernet_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-10T07:31:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "929c75bc_49867efd",
       "range": {
         "startLine": 29,
         "startChar": 0,
