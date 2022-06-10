@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e09e5a_bec6a776",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146659
+      },
+      "writtenOn": "2022-06-10T15:51:14Z",
+      "side": 1,
+      "message": "Please submit. This affects a variety of unrelated CLs.\n",
+      "revId": "72e39d349441639e327a2722f2c5a6e6eb94b419",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
