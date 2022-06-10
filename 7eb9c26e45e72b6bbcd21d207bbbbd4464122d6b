@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b553ddc_93ae164a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-10T08:19:01Z",
+      "side": 1,
+      "message": "nit: There is no need for a dot at the end of the subject line.",
+      "range": {
+        "startLine": 7,
+        "startChar": 41,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "7eb9c26e45e72b6bbcd21d207bbbbd4464122d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b6d6e2e_3d7a5896",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -61,6 +84,23 @@
       "writtenOn": "2022-06-10T03:03:44Z",
       "side": 1,
       "message": "(I\u0027ll defer to Yury. I think he\u0027s reviewing the CL. I\u0027ll go on vacation until June 24.)",
+      "revId": "7eb9c26e45e72b6bbcd21d207bbbbd4464122d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4534ba2_3944a51d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-10T08:19:01Z",
+      "side": 1,
+      "message": "LGTM % nit\nPlease wait for a +1 from a domain expert as well before submitting the CL.",
       "revId": "7eb9c26e45e72b6bbcd21d207bbbbd4464122d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
