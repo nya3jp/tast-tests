@@ -33,6 +33,24 @@
       "message": "LGTM from my side, I defer to others.\n",
       "revId": "c132cf1e0f473f57d82e692d87b10d710674858d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b025280_3571c369",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2022-06-10T08:12:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7263720_2afa984d",
+      "revId": "c132cf1e0f473f57d82e692d87b10d710674858d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

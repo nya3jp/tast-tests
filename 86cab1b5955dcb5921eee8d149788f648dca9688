@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c732af39_7e09ec64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2022-06-10T08:12:20Z",
+      "side": 1,
+      "message": "Added support of both `-c` and `-F` options. PTAL",
+      "revId": "86cab1b5955dcb5921eee8d149788f648dca9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
