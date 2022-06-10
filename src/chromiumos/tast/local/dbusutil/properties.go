@@ -101,6 +101,19 @@ func (p *Properties) GetUint8(prop string) (uint8, error) {
 	return ret, nil
 }
 
+// GetUint8s returns the property value as uint8 array.
+func (p *Properties) GetUint8s(prop string) ([]uint8, error) {
+	value, err := p.Get(prop)
+	if err != nil {
+		return nil, err
+	}
+	ret, ok := value.([]uint8)
+	if !ok {
+		return nil, errors.Errorf("property %s is not a uint8 array: %q", prop, value)
+	}
+	return ret, nil
+}
+
 // GetUint16 returns the property value as uint16.
 func (p *Properties) GetUint16(prop string) (uint16, error) {
 	value, err := p.Get(prop)
