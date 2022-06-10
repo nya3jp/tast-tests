@@ -16,6 +16,23 @@
       "message": "Thanks for the updates. LGTM from tast-owners@ side.",
       "revId": "b0261eae7ab913c183c7940c170ddd954a0a4a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae9382d3_ccd7932f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T18:53:22Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm",
+      "revId": "b0261eae7ab913c183c7940c170ddd954a0a4a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
