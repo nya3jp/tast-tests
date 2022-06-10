@@ -1,0 +1,281 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+package video
+
+import (
+	"fmt"
+	"testing"
+
+	"chromiumos/tast/common/genparams"
+	"chromiumos/tast/local/bundles/cros/video/playback"
+)
+
+// codec
+var playbackPerfLongFile = map[string]string{
+	"h264": "crosvideo/1080.mp4",
+	"vp8":  "crosvideo/1080_vp8.webm",
+	"vp9":  "crosvideo/1080.webm",
+	"av1":  "crosvideo/av1_1080p_30fps.mp4",
+}
+
+// TODO(hiroh): genPlaybackPerfDataPath() and genPlaybackPerfSwDeps() can be
+// reused by other parameter generator code. Put the functions in common places.
+
+func genPlaybackPerfDataPath(codec string, resolution, fps int) string {
+	if fps != 30 && fps != 60 {
+		panic("Unexpected fps")
+	}
+	numFrames := fps * 10
+
+	extension := ""
+	switch codec {
+	case "h264", "hevc", "hevc10", "av1":
+		extension = codec + ".mp4"
+	case "vp8", "vp9":
+		extension = codec + ".webm"
+	default:
+		panic("Unexpected codec")
+	}
+
+	return fmt.Sprintf("perf/%s/%dp_%dfps_%dframes.%s",
+		codec, resolution, fps, numFrames, extension)
+}
+
+func genPlaybackPerfSwDeps(codec string, resolution, fps int, dec string) []string {
+	var swDeps []string
+
+	if codec == "h264" || codec == "hevc" || codec == "hevc10" {
+		swDeps = append(swDeps, "proprietary_codecs")
+	}
+	// TODO(b/221247444, b/232255167): Remove this provision when ChromeOS
+	// supports HEVC clear video playback.
+	if codec == "hevc" || codec == "hevc10" {
+		swDeps = append(swDeps, "protected_content")
+	}
+
+	if dec != "hw" {
+		return swDeps
+	}
+
+	if resolution < 1080 {
+		resolution = 1080
+	}
+	if codec == "hevc10" {
+		swDeps = append(swDeps, fmt.Sprintf("autotest-capability:hw_dec_hevc_%d_%d_10bpp", resolution, fps))
+	} else {
+		swDeps = append(swDeps, fmt.Sprintf("autotest-capability:hw_dec_%s_%d_%d", codec, resolution, fps))
+	}
+	return swDeps
+}
+
+type playbackParamData struct {
+	Name string
+
+	// playbackPerfParams
+	File             string
+	DecoderType      playback.DecoderType
+	BrowserType      string
+	GridSize         int
+	MeasureRoughness bool
+
+	SoftwareDeps []string
+	HardwareDeps string
+	Data         []string
+	Attr         []string
+	Fixture      string
+}
+
+func genPlaybackParam(codec, file string, resolution, fps int, dec, nameSuffix, fixture string, extendDeps []string) playbackParamData {
+	if file == "" {
+		fmt.Println(codec, resolution, fps, dec, nameSuffix)
+		panic("file is empty")
+	}
+	testName := fmt.Sprintf("%s_%dp_%dfps_%s", codec, resolution, fps, dec)
+	if nameSuffix != "" {
+		testName += "_" + nameSuffix
+	}
+	decType := playback.Hardware
+	if dec == "sw" {
+		decType = playback.Software
+	} else if dec == "sw_gav1" {
+		decType = playback.LibGAV1
+	}
+	if fixture == "" {
+		if dec == "hw" {
+			if codec == "av1" {
+				// TODO(hiroh): Remove this as av1 hw decoder has been enabled
+				// for a long time.
+				fixture = "chromeVideoWithHWAV1Decoding"
+			} else {
+				fixture = "chromeVideo"
+			}
+		} else {
+			fixture = "chromeVideoWithSWDecoding"
+		}
+	}
+
+	brwType := "browser.TypeAsh"
+	if nameSuffix == "lacros" {
+		brwType = "browser.TypeLacros"
+	}
+	deps := genPlaybackPerfSwDeps(codec, resolution, fps, dec)
+	if len(extendDeps) > 0 {
+		deps = append(deps, extendDeps...)
+	}
+
+	var attr []string
+	// Run nightly for av1 playback perf tests for consistency.
+	if codec != "av1" && resolution < 1080 {
+		attr = []string{"group:graphics", "graphics_video", "graphics_nightly"}
+	}
+	return playbackParamData{
+		Name:         testName,
+		File:         file,
+		DecoderType:  decType,
+		BrowserType:  brwType,
+		SoftwareDeps: deps,
+		Data:         []string{file},
+		Attr:         attr,
+		Fixture:      fixture,
+	}
+}
+
+func TestPlaybackPerfParams(t *testing.T) {
+	var params []playbackParamData
+
+	codecs := []string{"h264", "vp8", "vp9", "hevc"}
+	for _, codec := range codecs {
+		for _, resolution := range []int{144, 240, 360, 480, 720, 1080, 2160} {
+			fpss := []int{30}
+			if resolution >= 1080 {
+				fpss = append(fpss, 60)
+			}
+			decs := []string{"hw"}
+			if codec != "hevc" && resolution >= 480 {
+				decs = append(decs, "sw")
+			}
+			for _, fps := range fpss {
+				for _, dec := range decs {
+					params = append(params,
+						genPlaybackParam(codec, genPlaybackPerfDataPath(codec, resolution, fps),
+							resolution, fps, dec, "", "", []string{}))
+				}
+			}
+		}
+	}
+	// AV1
+	for _, resolution := range []int{480, 720, 1080, 2160} {
+		codec := "av1"
+		fpss := []int{30}
+		if resolution >= 720 {
+			fpss = append(fpss, 60)
+		}
+		for _, fps := range fpss {
+			for _, dec := range []string{"hw", "sw"} {
+				params = append(params,
+					genPlaybackParam(codec, genPlaybackPerfDataPath(codec, resolution, fps),
+						resolution, fps, dec, "", "", []string{}))
+			}
+		}
+	}
+	// HEVC10
+	for _, fps := range []int{30, 60} {
+		codec, resolution, dec := "hevc10", 2160, "hw"
+		params = append(params,
+			genPlaybackParam(codec, genPlaybackPerfDataPath(codec, resolution, fps),
+				resolution, fps, dec,
+				"", "", []string{}))
+	}
+	// Alt
+	for _, codec := range []string{"h264", "vp8", "vp9"} {
+		resolutions := []int{1080}
+		if codec == "vp9" {
+			resolutions = append(resolutions, 2160)
+		}
+		for _, resolution := range resolutions {
+			fps, dec := 60, "hw"
+			params = append(params,
+				genPlaybackParam(codec, genPlaybackPerfDataPath(codec, resolution, fps),
+					resolution, fps, dec, "alt", "chromeAlternateVideoDecoder",
+					[]string{"video_decoder_legacy_supported"}))
+		}
+	}
+	// long
+	for _, codec := range []string{"h264", "vp8", "vp9", "av1"} {
+		for _, dec := range []string{"hw", "sw"} {
+			resolution, fps := 1080, 30
+			file := playbackPerfLongFile[codec]
+			param := genPlaybackParam(codec, file, resolution, fps, dec,
+				"long", "", []string{"drm_atomic"})
+
+			param.HardwareDeps = "hwdep.SkipOnModel(\"hana\", \"elm\"), hwdep.InternalDisplay()"
+			param.MeasureRoughness = true
+			params = append(params, param)
+		}
+	}
+
+	// grid
+	// TODO(b/234643665): Reduce these to 2x2 720p (as many pixels as 4K).
+	for _, codec := range []string{"h264", "vp8", "vp9", "av1"} {
+		resolution, fps, dec := 720, 30, "hw"
+		param := genPlaybackParam(codec, genPlaybackPerfDataPath(codec, resolution, fps),
+			resolution, fps, dec, "3x3", "", []string{})
+		param.GridSize = 3
+		params = append(params, param)
+	}
+
+	// lacros
+	for _, codec := range []string{"h264", "vp9"} {
+		resolution, fps, dec := 720, 30, "hw"
+		params = append(params,
+			genPlaybackParam(codec, genPlaybackPerfDataPath(codec, resolution, fps),
+				resolution, fps, dec, "lacros", "chromeVideoLacros",
+				[]string{"lacros"}))
+	}
+	// libgav1
+	for _, resolution := range []int{480, 720, 1080} {
+		codec := "av1"
+		fpss := []int{30}
+		if resolution >= 720 {
+			fpss = append(fpss, 60)
+		}
+		for _, fps := range fpss {
+			dec := "sw_gav1"
+			params = append(params,
+				genPlaybackParam(codec, genPlaybackPerfDataPath(codec, resolution, fps),
+					resolution, fps, dec, "",
+					"chromeVideoWithSWDecodingAndLibGAV1", []string{"arm"}))
+		}
+	}
+
+	code := genparams.Template(t, `{{ range . }}{
+		Name: {{ .Name | fmt }},
+		Val:  playbackPerfParams{
+			fileName: {{ .File | fmt }},
+			decoderType: {{ .DecoderType }},
+			browserType: {{ .BrowserType }},
+			{{ if .GridSize }}
+			gridSize: {{ .GridSize | fmt }},
+			{{ end }}
+			{{ if .MeasureRoughness }}
+			measureRoughness: {{ .MeasureRoughness | fmt }},
+			{{ end }}
+		},
+		{{ if .HardwareDeps }}
+		ExtraHardwareDeps: hwdep.D({{ .HardwareDeps }}),
+		{{ end }}
+		{{ if .SoftwareDeps }}
+		ExtraSoftwareDeps: {{ .SoftwareDeps | fmt }},
+		{{ end }}
+		ExtraData: {{ .Data | fmt }},
+		{{ if .Attr }}
+		ExtraAttr: {{ .Attr | fmt }},
+		{{ end }}
+		Fixture: {{ .Fixture | fmt }},
+	},
+	{{ end }}`, params)
+
+	genparams.Ensure(t, "playback_perf.go", code)
+}
