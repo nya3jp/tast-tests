@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90c9cdcc_a2b974be",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-10T15:34:16Z",
+      "side": 1,
+      "message": "nit: we probably don\u0027t need this now",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 31
+      },
+      "revId": "902682077ea92997950cdc59baae71b3b5bfb6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a79b57a8_eb2f4498",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-10T15:34:16Z",
+      "side": 1,
+      "message": "err, this is now going to return an error saying \"got true, want true\" when we successfully authenticate and that was also the intent.\n\nIt should presumably be `if (err \u003d\u003d nil) !\u003d shouldAuthenticate {`",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 133
+      },
+      "revId": "902682077ea92997950cdc59baae71b3b5bfb6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
