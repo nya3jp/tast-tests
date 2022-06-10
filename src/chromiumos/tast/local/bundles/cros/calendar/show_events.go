@@ -178,8 +178,8 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 
 	// Calendar list view should show "Open in Google calendar" if there's no events.
 	openButtonContentView := nodewith.ClassName("View").Ancestor(eventContentView).Nth(0)
-	openButtonView := nodewith.ClassName("LabelButton").Ancestor(openButtonContentView)
-	openButtonLabelView := nodewith.Name("Open in Google calendar").ClassName("LabelButtonLabel").Ancestor(openButtonView)
+	openButtonView := nodewith.ClassName("PillButton").Ancestor(openButtonContentView)
+	openButtonLabelView := nodewith.Name("Open in Google Calendar").ClassName("LabelButtonLabel").Ancestor(openButtonView)
 	if err := ui.WaitUntilExists(openButtonLabelView)(ctx); err != nil {
 		s.Fatal("Failed to find the Open in Google calendar label after clicking on the first Tuesday date cell: ", err)
 	}
