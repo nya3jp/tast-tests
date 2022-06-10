@@ -286,12 +286,12 @@ func BootMode(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Checking that DUT has booted from main")
-		bootedDeviceType, err := h.Reporter.BootedDevice(ctx)
+		BootedFromRemovableDevice, err := h.Reporter.BootedFromRemovableDevice(ctx)
 		if err != nil {
 			s.Fatal("Could not determine boot device type: ", err)
 		}
-		if bootedDeviceType != reporters.BootedDeviceDeveloperInternalSig {
-			s.Fatalf("DUT did not boot from the internal device, and got bootedDeviceType:%v", bootedDeviceType)
+		if BootedFromRemovableDevice {
+			s.Fatalf("DUT did not boot from the internal device, and got BootedFromRemovableDevice:%v", BootedFromRemovableDevice)
 		}
 
 		s.Log("Checking the value of mainfw_act after reboot")
