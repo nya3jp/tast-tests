@@ -13,66 +13,23 @@ import (
 	"chromiumos/tast/errors"
 )
 
-// BootedDeviceType is the set of mode,device,kernel verifier for the DUT.
-type BootedDeviceType string
-
-// The set of all possible BootedDeviceTypes, add more as needed.
-const (
-	BootedDeviceNormalInternalSig      BootedDeviceType = "normal mode booted from internal device, signature verified kernel key"
-	BootedDeviceDeveloperInternalSig   BootedDeviceType = "developer mode booted from internal device, signature verified kernel key"
-	BootedDeviceDeveloperRemovableSig  BootedDeviceType = "developer mode booted from removable device, signature verified kernel key"
-	BootedDeviceDeveloperRemovableHash BootedDeviceType = "developer mode booted from removable device, hash verified kernel key"
-	BootedDeviceRecoveryRemovableSig   BootedDeviceType = "recovery mode booted from removable device, signature verified kernel key"
-	BootedDeviceRecoveryRemovableHash  BootedDeviceType = "recovery mode booted from removable device, hash verified kernel key"
-)
-
-// BootedDeviceInfo groups all the info required to determine the correct BootedDeviceType
-type BootedDeviceInfo struct {
-	MainfwType string
-	Removable  bool
-	KernvfyKey string
-}
-
-// knownBootedDeviceInfos contains all the valid BootedDeviceInfos, if a tuple is not here, then it is not recognized
-var knownBootedDeviceInfos = map[BootedDeviceInfo]BootedDeviceType{
-	{"normal", false, "sig"}:    BootedDeviceNormalInternalSig,
-	{"developer", false, "sig"}: BootedDeviceDeveloperInternalSig,
-	{"developer", true, "sig"}:  BootedDeviceDeveloperRemovableSig,
-	{"developer", true, "hash"}: BootedDeviceDeveloperRemovableHash,
-	{"recovery", true, "sig"}:   BootedDeviceRecoveryRemovableSig,
-	{"recovery", true, "hash"}:  BootedDeviceRecoveryRemovableHash,
-}
-
 var (
 	rTargetHosted    = regexp.MustCompile(`(?i)chrom(ium|e)os`)
 	rDevNameStripper = regexp.MustCompile(`p?[0-9]+$`)
 )
 
-// BootedDevice reports the current BootedDeviceType of the DUT.
-func (r *Reporter) BootedDevice(ctx context.Context) (BootedDeviceType, error) {
-	cs, err := r.Crossystem(ctx, CrossystemParamMainfwType, CrossystemParamKernkeyVfy)
-	if err != nil {
-		return "", err
-	}
-
+// BootedFromRemovableDevice returns true if the root partition is on a removable device.
+func (r *Reporter) BootedFromRemovableDevice(ctx context.Context) (bool, error) {
 	rootPart, err := RootPartition(ctx, r)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to get root partition")
+		return false, errors.Wrap(err, "failed to get root partition")
 	}
 
 	removable, err := IsRemovableDevice(ctx, r, rootPart)
 	if err != nil {
-		return "", errors.Wrapf(err, "failed to determine if %q is removable", rootPart)
+		return false, errors.Wrapf(err, "failed to determine if %q is removable", rootPart)
 	}
-
-	cand := BootedDeviceInfo{cs[CrossystemParamMainfwType], removable, cs[CrossystemParamKernkeyVfy]}
-
-	bootedDevice, ok := knownBootedDeviceInfos[cand]
-	if !ok {
-		return "", errors.Errorf("unrecognized BootedDeviceInfo: %v", cand)
-	}
-
-	return bootedDevice, nil
+	return removable, nil
 }
 
 // RootPartition gets the root partition as reported by the 'rootdev -s' command.
