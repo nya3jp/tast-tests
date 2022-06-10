@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b55faf99_281b1eed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_simulation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T17:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8c3d9c1_0eb137f6",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "4f06d7c17274f3e23e10c5b57a9a386b7f5ab762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6fe2b3f_af848c84",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-10T01:42:53Z",
       "side": 1,
       "message": "sheetsTestParams seems a better name, wdyt?",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 15
+      },
+      "revId": "4f06d7c17274f3e23e10c5b57a9a386b7f5ab762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60b1599e_c82d40b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T17:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6fe2b3f_af848c84",
       "range": {
         "startLine": 37,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9328187_cf412d30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T17:33:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71d71b1b_9d68f6eb",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 7
+      },
+      "revId": "4f06d7c17274f3e23e10c5b57a9a386b7f5ab762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03192c78_4c866bfe",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-06-10T01:42:53Z",
       "side": 1,
       "message": "since you create keyboard_simulation, i think it makes sense to make a keypad_simulation.go and move this to that file?\n\nAlso, i think keyboard_event_simulation seems more reasonable to me because we are simulating events not keyboards, wdyt?",
+      "range": {
+        "startLine": 236,
+        "startChar": 5,
+        "endLine": 236,
+        "endChar": 20
+      },
+      "revId": "4f06d7c17274f3e23e10c5b57a9a386b7f5ab762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "549cd999_77d7da9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T17:33:23Z",
+      "side": 1,
+      "message": "I agree it\u0027s more accurate, but then, if we went for consistency, would you want our 3 simulator files to look like:\n```\nkeyboard_event_simulation.go\nmouse_event_simulation.go\ntrackpad_event_simulation.go\n```\nThat might be more verbose than we want? \n\nWhat if we made a folder called \"input_simulations/\" or \"input_event_simulations\"(I\u0027m really open to suggestions for the name, not really fond of those options), and added keyboard.go, mouse.go, and trackpad.go inside?",
+      "parentUuid": "03192c78_4c866bfe",
       "range": {
         "startLine": 236,
         "startChar": 5,
