@@ -219,7 +219,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	ts := NewExtensionTokenSourceForAccount(
 		s.FixtContext(),
 		f.cr, tconn, driveAPIScopes, f.cr.Creds().User)
-	rts := RetryTokenSource(ts, WithContext(ctx), WithDelay(time.Second*5))
+	rts := RetryTokenSource(ts, WithContext(s.FixtContext()), WithDelay(time.Second*5))
 	apiClient, err := CreateAPIClient(ctx, rts)
 	if err != nil {
 		s.Fatal("Failed to create Drive API client: ", err)
