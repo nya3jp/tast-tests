@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure this test is very useful for the runtime cost, it\u0027s actually installing Crostini for each username?\n\nUsername validation is in JS and we have browsertests for it, so checking for invalid users shouldn\u0027t need to be end-to-end.\n\nThere\u0027s some value in checking that valid usernames install correctly, but given how expensive installing is, and how large the set of possible usernames is, it feels like we should either only check a couple, or figure out some way of fuzzing (rename users in an existing container + reboot?).\nRealistically, the failure mode here is a new system user is added in an update with a name collision and I don\u0027t think any of the test names here are going to uncover that.",
       "revId": "3780b9627295c8eec3d4297174efb66965108ab7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18c35bda_084512fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-06-10T02:35:27Z",
+      "side": 1,
+      "message": "Which is a long way of saying...should we delete this test instead?",
+      "parentUuid": "d35c2570_eb2e7260",
+      "revId": "3780b9627295c8eec3d4297174efb66965108ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
