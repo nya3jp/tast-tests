@@ -106,6 +106,24 @@
       "parentUuid": "c600f3b3_adec9f65",
       "revId": "3780b9627295c8eec3d4297174efb66965108ab7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "048ee9ae_ad0cd215",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526108
+      },
+      "writtenOn": "2022-06-10T07:38:32Z",
+      "side": 1,
+      "message": "Sorry, I was under an assumption, there already were existing browser tests.\nWe should introduce browser tests first, before removing these tests. As inefficient as they are, they still provide us with test coverage.\nAdded b/235559892 .",
+      "parentUuid": "42e42726_939f9142",
+      "revId": "3780b9627295c8eec3d4297174efb66965108ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
