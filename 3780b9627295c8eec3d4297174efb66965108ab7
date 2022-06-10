@@ -88,6 +88,24 @@
       "parentUuid": "c600f3b3_adec9f65",
       "revId": "3780b9627295c8eec3d4297174efb66965108ab7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e42726_939f9142",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-06-10T07:23:00Z",
+      "side": 1,
+      "message": "I think check_users.go can definitely be removed and the missing cases go into the browsertest. check_valid_users can probably be removed but I\u0027d ask around first in case anyone has objections.",
+      "parentUuid": "c600f3b3_adec9f65",
+      "revId": "3780b9627295c8eec3d4297174efb66965108ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
