@@ -188,8 +188,8 @@ func (p *Values) MergeWithSuffix(suffix string, vs ...*Values) {
 			if k.Multiple {
 				p.Append(suffixedK, v...)
 			} else {
-				if _, c := p.values[suffixedK]; c {
-					panic("Single-valued metric already present. Cannot merge with another value.")
+				if vv, c := p.values[suffixedK]; c {
+					panic(fmt.Sprint("MergeWithSuffix(suffix='", suffix, "'): Single-valued metric {", suffixedK, "} already present as {", vv, "}. Cannot merge with another value."))
 				}
 				p.Set(suffixedK, v...)
 			}
@@ -482,4 +482,40 @@ func validate(s Metric, vs []float64) {
 	if !s.Multiple && len(vs) != 1 {
 		panic(fmt.Sprintf("Metric requires single-valued: %v", s))
 	}
+}
+
+// ValuesList holds list of Values, which could be results of different test runs
+// with the same set of metrics.
+type ValuesList struct {
+	values []Values
+}
+
+// NewValuesList returns a new empty ValuesList.
+func NewValuesList() *ValuesList {
+	return &ValuesList{values: make([]Values, 0)}
+}
+
+// AppendWithSuffix appends new Values to the list. When |suffix| is not empty,
+// it will be appended to all of the metric names in the appended set.
+func (vl *ValuesList) AppendWithSuffix(suffix string, vs *Values) {
+	p := NewValues()
+	p.MergeWithSuffix(suffix, vs)
+	vl.values = append(vl.values, *p)
+}
+
+// AppendValuesList appends all values from the given ValuesList to the current
+// list.
+func (vl *ValuesList) AppendValuesList(addon *ValuesList) {
+	vl.values = append(vl.values, addon.values...)
+}
+
+// Save saves performance metric values by running Save for every Values object
+// in the list with the |outDir|. Returns first encountered error or nil.
+func (vl *ValuesList) Save(outDir string) error {
+	for i, v := range vl.values {
+		if err := v.Save(outDir); err != nil {
+			return errors.Wrapf(err, "failed to save values list at index %d", i)
+		}
+	}
+	return nil
 }
