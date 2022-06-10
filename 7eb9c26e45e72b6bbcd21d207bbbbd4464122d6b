@@ -173,6 +173,24 @@
       "parentUuid": "482318b8_b4ae3739",
       "revId": "7eb9c26e45e72b6bbcd21d207bbbbd4464122d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "466017bb_573574a8",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1529254
+      },
+      "writtenOn": "2022-06-10T18:53:58Z",
+      "side": 1,
+      "message": "Disabling throttling by default completely broke `crostini.*` tests on slower devices as crostini crosvm was completely starved out by arcvm. \nThis behaviour should be opt-in. If there are arc tests that would benefit from disabled throttling lets opt them into unthrottled arcvm",
+      "parentUuid": "17918608_efce9d67",
+      "revId": "7eb9c26e45e72b6bbcd21d207bbbbd4464122d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
