@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93086c00_62846a30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-10T18:15:19Z",
+      "side": 1,
+      "message": "Why is a regex required here? It seems like you\u0027re just searching for a word.\n\nWhat can `d` contain besides a word that it needs to be subjected to a regex?",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 48
+      },
+      "revId": "be4de504217565f787bfa922c66e32feccca4be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5938b5d2_c58f3ffe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-10T18:15:19Z",
+      "side": 1,
+      "message": "I\u0027m curious, why is this specific check being introduced? Do you see it on a specific board? Isn\u0027t it better to fix it on the board(s) in question, rather than adding an exception to the test?\n\nThere are multiple other location properties that can be incorrectly programmed; why aren\u0027t those being checked too then?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 3
+      },
+      "revId": "be4de504217565f787bfa922c66e32feccca4be8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
