@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5156d31_cf61b7ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-06-10T03:14:02Z",
+      "side": 1,
+      "message": "It\u0027s using crosbolt so that we can change it to crosbolt_weekly since there isn\u0027t a weekly equivalent for mainline.\n\nIt\u0027s better to use mainline for daily runs but I want to change as little possible when changing to weekly.",
+      "parentUuid": "d1b463c4_2ac7c4a6",
+      "range": {
+        "startLine": 33,
+        "startChar": 25,
+        "endLine": 33,
+        "endChar": 61
+      },
+      "revId": "3f88e228c12972855db1563ac92644f30364174a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "727d3756_38aa98cb",
