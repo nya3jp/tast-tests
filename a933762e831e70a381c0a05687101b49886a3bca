@@ -51,6 +51,24 @@
       "parentUuid": "5faa8c7e_5ca95b77",
       "revId": "a933762e831e70a381c0a05687101b49886a3bca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21610979_bd2a0aff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-10T06:54:11Z",
+      "side": 1,
+      "message": "Essentially like this function I\u0027ve found in session_log.go\n\n```\nfunc saveButtonDisabled(ctx context.Context, tconn *chrome.TestConn) error {\n\tsaveButton :\u003d nodewith.Name(\"Save\").Role(role.Button)\n\tui :\u003d uiauto.New(tconn)\n\tif err :\u003d ui.WithTimeout(10 * time.Second).WaitUntilExists(saveButton)(ctx); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"Unable to get save button\")\n\t}\n\tif err :\u003d testing.Poll(ctx, func(ctx context.Context) error {\n\t\tif err :\u003d ui.CheckRestriction(saveButton, restriction.Disabled)(ctx); err \u003d\u003d nil {\n\t\t\treturn errors.Errorf(\"Save button state %s\", restriction.Disabled)\n\t\t}\n\n\t\treturn nil\n\t}, \u0026testing.PollOptions{Timeout: 15 * time.Second, Interval: 2 * time.Second}); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"Save button failed to change state\")\n\t}\n\treturn nil\n}\n```",
+      "parentUuid": "a60ddc0d_758fe9a0",
+      "revId": "a933762e831e70a381c0a05687101b49886a3bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
