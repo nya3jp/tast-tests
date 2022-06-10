@@ -16,6 +16,40 @@
       "message": "Looks good from a tast perspective, please get +1 from a team member before submitting.",
       "revId": "b4abf9d3534d7a94535feff7a2cbc09dbc399c39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c280780_d76ce3f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-10T10:16:06Z",
+      "side": 1,
+      "message": "my comment can be a separate CL",
+      "revId": "b4abf9d3534d7a94535feff7a2cbc09dbc399c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a5a303_f3cbc4ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/persistent_create_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-10T10:16:06Z",
+      "side": 1,
+      "message": "I think this is a great function to move in cryptohome_client.go",
+      "revId": "b4abf9d3534d7a94535feff7a2cbc09dbc399c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
