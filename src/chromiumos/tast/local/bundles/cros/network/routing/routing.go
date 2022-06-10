@@ -356,3 +356,22 @@ func verifyNetworkConnectivity(ctx context.Context, router, server *env.Env, opt
 
 	return errs
 }
+
+// VerifyIPConfig verifies if all the keys and values appear in the given
+// |actual| IPConfig object.
+func VerifyIPConfig(ctx context.Context, actual *shill.IPConfig, expected map[string]interface{}) error {
+	actualProps, err := actual.GetProperties(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get properties on the IPConfig object")
+	}
+	for k, expectedVal := range expected {
+		actualVal, err := actualProps.Get(k)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get %s property on the IPConfig object", k)
+		}
+		if actualVal != expectedVal {
+			return errors.Wrapf(err, "expect %v for property %s, but got %v", expectedVal, k, actualVal)
+		}
+	}
+	return nil
+}
