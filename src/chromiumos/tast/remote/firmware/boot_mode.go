@@ -374,6 +374,9 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	if curr, err := h.Reporter.CurrentBootMode(ctx); err != nil {
 		return errors.Wrapf(err, "checking boot mode after reboot to %s", toMode)
 	} else if curr != toMode {
+		if curr == fwCommon.BootModeNormal && toMode == fwCommon.BootModeRecovery {
+			return errors.New("recovery boot ended up in normal, you may have a bad USB key or a truncated image")
+		}
 		return errors.Errorf("incorrect boot mode after RebootToMode: got %s; want %s", curr, toMode)
 	}
 	testing.ContextLogf(ctx, "DUT is now in %s mode", toMode)
