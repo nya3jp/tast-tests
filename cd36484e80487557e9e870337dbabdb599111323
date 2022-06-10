@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6fc1c05_530a3ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T21:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdfd235d_d8f3fae4",
+      "range": {
+        "startLine": 16,
+        "startChar": 79,
+        "endLine": 16,
+        "endChar": 93
+      },
+      "revId": "cd36484e80487557e9e870337dbabdb599111323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ecdf109_d5cf3283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T21:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b58250cb_8d2f086a",
+      "range": {
+        "startLine": 16,
+        "startChar": 57,
+        "endLine": 16,
+        "endChar": 58
+      },
+      "revId": "cd36484e80487557e9e870337dbabdb599111323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2135ff4_b4b84441",
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4556b365_3b84267b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T21:46:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c2135ff4_b4b84441",
+      "range": {
+        "startLine": 17,
+        "startChar": 37,
+        "endLine": 17,
+        "endChar": 87
+      },
+      "revId": "cd36484e80487557e9e870337dbabdb599111323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4813b7ac_6d19880d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T21:46:11Z",
+      "side": 1,
+      "message": "Good point, sorry I didn\u0027t realize the second line now is redundant. I removed it.",
+      "parentUuid": "ab92fa80_5d8f1c69",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "cd36484e80487557e9e870337dbabdb599111323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddc243e0_173139d7",
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9021985d_d08488e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T21:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddc243e0_173139d7",
+      "range": {
+        "startLine": 19,
+        "startChar": 36,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "cd36484e80487557e9e870337dbabdb599111323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5019000_44ed0ce6",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-06-10T21:34:58Z",
       "side": 1,
       "message": "`action.Action`",
+      "range": {
+        "startLine": 25,
+        "startChar": 73,
+        "endLine": 25,
+        "endChar": 104
+      },
+      "revId": "cd36484e80487557e9e870337dbabdb599111323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c18a710_7495760d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-10T21:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5019000_44ed0ce6",
       "range": {
         "startLine": 25,
         "startChar": 73,
