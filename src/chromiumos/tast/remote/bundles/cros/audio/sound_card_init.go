@@ -6,10 +6,14 @@ package audio
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 	"regexp"
+	"strconv"
 	"time"
+
+	"gopkg.in/yaml.v2"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -18,6 +22,20 @@ import (
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
+
+// testParameters holds the test parameters.
+type subTestParameters struct {
+	SoundCardID string
+	AmpCount    uint
+	Config      string
+	Amp         string
+	RdcRange    []rdcRange
+}
+
+// testParameters holds the test parameters.
+type testParameters struct {
+	Func func(context.Context, *rpcdut.RPCDUT, subTestParameters) error
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -30,17 +48,26 @@ func init() {
 		Contacts:     []string{"judyhsiao@chromium.org", "yuhsuan@chromium.org"},
 		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
+		Params: []testing.Param{
+			{
+				Name: "exit_success",
+				Val: testParameters{
+					Func: exitSuccess,
+				},
+			},
+			{
+				Name:      "validate_rdc_range",
+				ExtraAttr: []string{"informational"},
+				Val: testParameters{
+					Func: validateRdcRange,
+				},
+			},
+		},
 	})
 }
 
 const (
 	soundCardInitTimeout = time.Minute
-
-	// TODO(b/171217019): parse sound_card_init yaml or vpd to get the real ampCount.
-	// maxSupportedAmpCount specifies the maximum amps this test case can support.
-	// NumberOf(maxSupportedAmpCount) calibrationFiles will be created and cleaned up during
-	// the testing.
-	maxSupportedAmpCount = 4
 
 	// soundCardInitRunTimeFile is the file stores previous sound_card_init run time.
 	soundCardInitRunTimeFile = "/var/lib/sound_card_init/%s/run"
@@ -57,6 +84,28 @@ const (
 UseVPD
 `
 )
+
+// deviceSettings is the sound_card_init config.
+type deviceSettings struct {
+	AmpCalibrations ampCalibSettings `yaml:"amp_calibrations"`
+}
+
+// ampCalibSettings is the amp config section for deviceSettings.
+type ampCalibSettings struct {
+	RdcRange []rdcRange `yaml:"rdc_ranges"`
+}
+
+// rdcRange specified the valid range of rdc in ohm.
+type rdcRange struct {
+	LowerBound float32 `yaml:"lower"`
+	UpperBound float32 `yaml:"upper"`
+}
+
+// appliedRDC is the RDC applied to the amp.
+type appliedRDC struct {
+	Channel  int32   `json:"channel"`
+	RdcInOhm float32 `json:"rdc_in_ohm"`
+}
 
 func parseSoundCardID(dump string) (string, error) {
 	re := regexp.MustCompile(`card 0: ([a-z0-9]+) `)
@@ -128,6 +177,42 @@ func verifySoundCardInitFinished(ctx context.Context, d *rpcdut.RPCDUT, soundCar
 	return err
 }
 
+func getRdcRange(ctx context.Context, d *rpcdut.RPCDUT, config string) ([]rdcRange, error) {
+	fs := dutfs.NewClient(d.RPC().Conn)
+	yamlPath := fmt.Sprintf("/etc/sound_card_init/%s", config)
+	yamlFile, err := fs.ReadFile(ctx, yamlPath)
+	if err != nil {
+		return nil, err
+	}
+	conf := &deviceSettings{}
+	err = yaml.Unmarshal(yamlFile, conf)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to parse %s", yamlPath)
+	}
+	return conf.AmpCalibrations.RdcRange, nil
+}
+
+func getAppliedRdc(ctx context.Context, d *rpcdut.RPCDUT, soundCardID, config, amp string, ch int) (*appliedRDC, error) {
+	// Run sound_card_init.
+	dump, err := d.Conn().CommandContext(
+		ctx,
+		"/usr/bin/sound_card_init",
+		"--id="+soundCardID,
+		"--conf="+config,
+		"--amp="+amp,
+		"--read_applied_rdc="+strconv.Itoa(ch),
+	).Output()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get applied rdc")
+	}
+
+	var rdc appliedRDC
+	if err := json.Unmarshal(dump, &rdc); err != nil {
+		return nil, errors.New("failed to parse applied rdc: " + string(dump))
+	}
+	return &rdc, nil
+}
+
 // SoundCardInit verifies sound_card_init finishes successfully at boot time.
 func SoundCardInit(ctx context.Context, s *testing.State) {
 	// Shorten deadline to leave time for cleanup.
@@ -155,17 +240,39 @@ func SoundCardInit(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to parse sound card name: ", err)
 	}
 
+	configInByte, err := d.Conn().CommandContext(ctx, "cros_config", "/audio/main", "sound-card-init-conf").Output()
+	if err != nil {
+		s.Fatal("cros_config /audio/main sound-card-init-conf failed: ", err)
+	}
+	config := string(configInByte)
+	s.Log("sound_card_init config: ", config)
+
+	ampInByte, err := d.Conn().CommandContext(ctx, "cros_config", "/audio/main", "speaker-amp").Output()
+	if err != nil {
+		s.Fatal("cros_config /audio/main speaker-amp failed: ", err)
+	}
+	amp := string(ampInByte)
+	s.Log("Amp: ", amp)
+
+	rdcRange, err := getRdcRange(ctx, d, config)
+	if err != nil {
+		s.Fatal("Failed to get rdc range: ", err)
+	}
+	if len(rdcRange) == 0 {
+		s.Fatal("rdcRange is empty")
+	}
+	numCh := uint(len(rdcRange))
+
 	if err := removeSoundCardInitFiles(ctx, d, soundCardID); err != nil {
 		s.Fatal("Failed to remove previous files: ", err)
 	}
-
-	if err := createCalibrationFiles(ctx, d, soundCardID, maxSupportedAmpCount); err != nil {
+	if err := createCalibrationFiles(ctx, d, soundCardID, numCh); err != nil {
 		s.Fatal("Failed to create calibration files: ", err)
 	}
 
 	defer func() {
 		// Clean up calibration files.
-		if err := removeCalibrationFiles(ctx, d, soundCardID, maxSupportedAmpCount); err != nil {
+		if err := removeCalibrationFiles(ctx, d, soundCardID, numCh); err != nil {
 			s.Fatal("Failed to clean up calibration files: ", err)
 		}
 	}()
@@ -176,8 +283,53 @@ func SoundCardInit(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reboot the DUT: ", err)
 	}
 
-	// Poll for sound_card_init run time file being updated, which means sound_card_init completes running.
-	if err := verifySoundCardInitFinished(ctx, d, soundCardID); err != nil {
-		s.Fatal("Failed to wait for sound_card_init completion: ", err)
+	param := subTestParameters{
+		Amp:         amp,
+		SoundCardID: soundCardID,
+		Config:      config,
+		AmpCount:    numCh,
+		RdcRange:    rdcRange,
 	}
+
+	// Run test cases.
+	testFunc := s.Param().(testParameters).Func
+	s.Logf("Running test %q", s.TestName())
+	if err := testFunc(ctx, d, param); err != nil {
+		s.Fatalf("%s test failed: %v", s.TestName(), err)
+	}
+}
+
+// exitSuccess verifies sound_card_init completes running without any error.
+func exitSuccess(ctx context.Context, d *rpcdut.RPCDUT, param subTestParameters) error {
+	// Poll for sound_card_init run time file being updated, which means sound_card_init completes running.
+	if err := verifySoundCardInitFinished(ctx, d, param.SoundCardID); err != nil {
+		return errors.Wrap(err, "failed to wait for sound_card_init completion")
+	}
+	return nil
+}
+
+// validateRdcRange verifies the applied rdc is withing a valid range.
+func validateRdcRange(ctx context.Context, d *rpcdut.RPCDUT, param subTestParameters) error {
+	numCh := param.AmpCount
+	config := param.Config
+	soundCardID := param.SoundCardID
+	amp := param.Amp
+	rdcRange := param.RdcRange
+
+	// Poll for sound_card_init run time file being updated, which means sound_card_init completes running.
+	if err := verifySoundCardInitFinished(ctx, d, param.SoundCardID); err != nil {
+		return errors.Wrap(err, "failed to wait for sound_card_init completion")
+	}
+
+	for i := 0; i < int(numCh); i++ {
+		rdc, err := getAppliedRdc(ctx, d, soundCardID, config, amp, i)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get applied rdc%d", i)
+		}
+		if rdc.RdcInOhm < rdcRange[i].LowerBound || rdc.RdcInOhm > rdcRange[i].UpperBound {
+			return errors.Errorf("invalid rdc_%d: %f, expect:[%f, %f]", rdc.Channel, rdc.RdcInOhm, rdcRange[i].LowerBound, rdcRange[i].UpperBound)
+		}
+	}
+
+	return nil
 }
