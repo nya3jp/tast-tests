@@ -180,6 +180,27 @@ func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.Cryptoho
 	return nil
 }
 
+func testVersion(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.CryptohomeClient, daemonController *hwsec.DaemonController, dataPath, configPath string) error {
+	configJSON, err := ioutil.ReadFile(configPath)
+	if err != nil {
+		return errors.Wrapf(err, "failed to read open %q", configPath)
+	}
+	var configList []util.CrossVersionLoginConfig
+	if err := json.Unmarshal(configJSON, &configList); err != nil {
+		return errors.Wrap(err, "failed tp read json")
+	}
+
+	if err := util.LoadCrossVersionLoginData(ctx, daemonController, dataPath); err != nil {
+		return errors.Wrap(err, "failed to load login data")
+	}
+	for _, config := range configList {
+		if err := testConfig(ctx, lf, cryptohome, &config); err != nil {
+			return errors.Wrapf(err, "failed to test auth type %d", config.AuthConfig.AuthType)
+		}
+	}
+	return nil
+}
+
 func CrossVersionLogin(ctx context.Context, s *testing.State) {
 	cmdRunner := hwseclocal.NewCmdRunner()
 	helper, err := hwseclocal.NewHelper(cmdRunner)
@@ -233,25 +254,8 @@ func CrossVersionLogin(ctx context.Context, s *testing.State) {
 		dataPath := s.DataPath(dataName)
 		configPath := s.DataPath(configName)
 
-		configJSON, err := ioutil.ReadFile(configPath)
-		if err != nil {
-			s.Errorf("Failed to read open %q: %v", configJSON, err)
-			continue
-		}
-		var configList []util.CrossVersionLoginConfig
-		if err := json.Unmarshal(configJSON, &configList); err != nil {
-			s.Error("Failed tp read json: ", err)
-			continue
-		}
-
-		if err := util.LoadCrossVersionLoginData(ctx, daemonController, dataPath); err != nil {
-			s.Error("Failed to load login data: ", err)
-			continue
-		}
-		for _, config := range configList {
-			if err := testConfig(ctx, s.Logf, cryptohome, &config); err != nil {
-				s.Errorf("Failed to test version %q with auth type %d: %v", prefix, config.AuthConfig.AuthType, err)
-			}
+		if err := testVersion(ctx, s.Logf, cryptohome, daemonController, dataPath, configPath); err != nil {
+			s.Errorf("Failed to test version %q: %v", prefix, err)
 		}
 	}
 }
