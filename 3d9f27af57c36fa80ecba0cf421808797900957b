@@ -46,6 +46,30 @@
       },
       "revId": "3d9f27af57c36fa80ecba0cf421808797900957b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfa5a757_229cfa50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-10T04:37:17Z",
+      "side": 1,
+      "message": "\"Files app happened to fail to start\"?  Looking at the LOGs on b:235279574, there was \"Extension context invalidated\" error message from files app.\n\nThat LOG message happens when the extension renderer (containing files app) is being shutdown, https://chromium-review.googlesource.com/c/chromium/src/+/933105.",
+      "parentUuid": "bdff1109_15a9a4e2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "3d9f27af57c36fa80ecba0cf421808797900957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
