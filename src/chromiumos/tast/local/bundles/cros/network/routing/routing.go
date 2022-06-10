@@ -356,3 +356,114 @@ func verifyNetworkConnectivity(ctx context.Context, router, server *env.Env, opt
 
 	return errs
 }
+
+// VerifyOptions wraps the options used in VerifyNetworkConnectivity.
+type VerifyOptions struct {
+	// IPv4 indicates whether the network under test has IPv4.
+	IPv4 bool
+	// IPv6 indicates whether the network under test has IPv6.
+	IPv6 bool
+	// isPrimary indicates whether the network under test is a primary network in
+	// shill or not.
+	IsPrimary bool
+	// Timeout means the network under test may be not fully connected now, but
+	// that should happen in the given timeout. 0 means the network is already
+	// connected.
+	Timeout time.Duration
+}
+
+// VerifyBaseNetwork verifies the routing setup for the base network.
+func (e *testEnv) VerifyBaseNetwork(ctx context.Context, opts VerifyOptions) []error {
+	return verifyNetworkConnectivity(ctx, e.BaseRouter, e.BaseServer, opts)
+}
+
+// VerifyTestNetwork verifies the routing setup for the test network.
+func (e *testEnv) VerifyTestNetwork(ctx context.Context, opts VerifyOptions) []error {
+	return verifyNetworkConnectivity(ctx, e.TestRouter, e.TestServer, opts)
+}
+
+func verifyNetworkConnectivity(ctx context.Context, router, server *env.Env, opts VerifyOptions) []error {
+	if !opts.IPv4 && !opts.IPv6 {
+		return []error{errors.New("neither IPv4 nor IPv6 is set")}
+	}
+
+	routerAddrs, err := router.WaitForVethInAddrs(ctx, opts.IPv4, opts.IPv6)
+	if err != nil {
+		return []error{errors.Wrapf(err, "failed to get inner addrs from router env %s", router.NetNSName)}
+	}
+	serverAddrs, err := server.WaitForVethInAddrs(ctx, opts.IPv4, opts.IPv6)
+	if err != nil {
+		return []error{errors.Wrapf(err, "failed to get inner addrs from server env %s", server.NetNSName)}
+	}
+
+	var errs []error
+
+	// TODO(b/192436642): Add more verification items, e.g.:
+	// - IP socket with bind interface;
+	// - IP socket with bind src IP;
+	// - Guest traffics;
+	// - Other kinds of traffic which might be treated differently in routing
+	// (tcp, udp, etc.).
+
+	// Ping the router at first. This should work no matter whether the network is
+	// primary or not. Also use the timeout in options to ping the router to
+	// gurantee that the network is fully connected.
+	var pingAddrs []net.IP
+	if opts.IPv4 {
+		pingAddrs = append(pingAddrs, routerAddrs.IPv4Addr)
+	}
+	// TODO(b/235050937): In the current implementation, IPv6 peer on local subnet
+	// of the secondary network is not reachable. Change the expectation here when
+	// this bug is fixed.
+	if opts.IPv6 && opts.IsPrimary {
+		pingAddrs = append(pingAddrs, routerAddrs.IPv6Addrs...)
+	}
+	for _, user := range []string{"root", "chronos"} {
+		for _, ip := range pingAddrs {
+			if err := ExpectPingSuccessWithTimeout(ctx, ip.String(), user, opts.Timeout); err != nil {
+				errs = append(errs, errors.Wrapf(err, "local address %v is not reachable as user %s", ip, user))
+			}
+		}
+	}
+
+	// Check the remote server if this network is the primary network.
+	if !opts.IsPrimary {
+		return errs
+	}
+	pingAddrs = []net.IP{}
+	if opts.IPv4 {
+		pingAddrs = append(pingAddrs, serverAddrs.IPv4Addr)
+	}
+	if opts.IPv6 {
+		pingAddrs = append(pingAddrs, serverAddrs.IPv6Addrs...)
+	}
+
+	for _, user := range []string{"root", "chronos"} {
+		for _, ip := range pingAddrs {
+			if err := ExpectPingSuccessWithTimeout(ctx, ip.String(), user, opts.Timeout); err != nil {
+				errs = append(errs, errors.Wrapf(err, "non-local address %v is not reachable as user %s", ip, user))
+			}
+		}
+	}
+
+	return errs
+}
+
+// VerifyIPConfig verifies if all the keys and values appear in the given
+// |actual| IPConfig object.
+func VerifyIPConfig(ctx context.Context, actual *shill.IPConfig, expected map[string]interface{}) error {
+	actualProps, err := actual.GetProperties(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get properties on the IPConfig object")
+	}
+	for k, expectedVal := range expected {
+		actualVal, err := actualProps.Get(k)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get %s property on the IPConfig object", k)
+		}
+		if actualVal != expectedVal {
+			return errors.Wrapf(err, "expect %v for property %s, but got %v", expectedVal, k, actualVal)
+		}
+	}
+	return nil
+}
