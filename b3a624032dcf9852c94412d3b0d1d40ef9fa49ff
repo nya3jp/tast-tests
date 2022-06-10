@@ -67,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df6e2228_9cd54bbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-10T18:36:09Z",
+      "side": 1,
+      "message": "@achuith or @xiyuan on this, guidance would be helpful.",
+      "parentUuid": "e569e101_d17c2863",
+      "revId": "b3a624032dcf9852c94412d3b0d1d40ef9fa49ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09fc8489_e0eeb8d6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
         "patchSetId": 4
@@ -78,6 +96,30 @@
       "writtenOn": "2022-06-10T18:16:16Z",
       "side": 1,
       "message": "TabSwitchCUJ",
+      "range": {
+        "startLine": 367,
+        "startChar": 40,
+        "endLine": 367,
+        "endChar": 53
+      },
+      "revId": "b3a624032dcf9852c94412d3b0d1d40ef9fa49ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2997fde_af86f507",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-10T18:36:09Z",
+      "side": 1,
+      "message": "Done in the next patchset.",
+      "parentUuid": "09fc8489_e0eeb8d6",
       "range": {
         "startLine": 367,
         "startChar": 40,
