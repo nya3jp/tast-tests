@@ -34,6 +34,24 @@
       "parentUuid": "4c7ba9d9_7077ab06",
       "revId": "38b28b71318f0d6bdc5b5f81db5729fdfb50a35b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4660f5ca_9282aeb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-06-10T01:40:09Z",
+      "side": 1,
+      "message": "I agree. What I considered for this was creating a set of \"performance tests\" that didn\u0027t run together with regular tast tests but, say, every 1-2 weeks - as opposed to running as part of the CQ since they would potentially take hours to complete. I have no idea if scheduling these standalone, non-blocking, performance tast tests is is even feasible with out current testing infrastructure though.",
+      "parentUuid": "7be78b6d_399a8b25",
+      "revId": "38b28b71318f0d6bdc5b5f81db5729fdfb50a35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
