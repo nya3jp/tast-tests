@@ -47,9 +47,10 @@ func AutomaticTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 	domain := s.RequiredVar("kerberos.domain")
 	config := kerberos.ConstructConfig(domain, username)
 
-	kerberosAcc := policy.KerberosAccountsValueOmitKrb5conf{
+	kerberosAcc := policy.KerberosAccountsValue{
 		Principal: config.KerberosAccount,
 		Password:  password,
+		Krb5conf:  []string{config.RealmsConfig},
 	}
 
 	pb := policy.NewBlob()
