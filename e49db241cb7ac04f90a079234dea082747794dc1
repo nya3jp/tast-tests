@@ -198,6 +198,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11ca748f_7997fdf3",
+        "filename": "src/chromiumos/tast/local/hostapd/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-10T00:49:13Z",
+      "side": 1,
+      "message": "Preferably we would like to use https://pkg.go.dev/net#HardwareAddr",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 12
+      },
+      "revId": "e49db241cb7ac04f90a079234dea082747794dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e294cb2_b7bcc31c",
         "filename": "src/chromiumos/tast/local/hostapd/monitor.go",
         "patchSetId": 1
@@ -329,6 +352,52 @@
         "startChar": 12,
         "endLine": 67,
         "endChar": 14
+      },
+      "revId": "e49db241cb7ac04f90a079234dea082747794dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016a7f8b_e377581f",
+        "filename": "src/chromiumos/tast/local/hostapd/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-10T00:49:13Z",
+      "side": 1,
+      "message": "why so high ?",
+      "range": {
+        "startLine": 87,
+        "startChar": 29,
+        "endLine": 87,
+        "endChar": 32
+      },
+      "revId": "e49db241cb7ac04f90a079234dea082747794dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4257d9e0_e7bd2dd9",
+        "filename": "src/chromiumos/tast/local/hostapd/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-10T00:49:13Z",
+      "side": 1,
+      "message": "Do we really need a defer here ? Because of a risk of exception in stdoutScanner.Text() or stdoutScanner.Scan() ?",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 7
       },
       "revId": "e49db241cb7ac04f90a079234dea082747794dc1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
