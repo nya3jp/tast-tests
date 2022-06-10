@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75d47a40_f608a730",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/set_auto_dark_light_wallpaper.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-10T17:40:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "75f53e03_e5b1afd2",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 75
+      },
+      "revId": "90a8714293cfb3d278e5a7f295f8a5d9871d7838",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8be7a929_b2b959c8",
