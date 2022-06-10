@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c7ba9d9_7077ab06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-06-10T00:59:58Z",
+      "side": 1,
+      "message": "Interesting, do you think it\u0027s enough to test with a big file compressed down to a small archive as opposed to a big archive regardless of what its contents are?\n\nI remember we had problems with mounting large files in the past (\u003e2GB and \u003e4GB) but I wonder if those were the archive sizes or the sizes of the archives\u0027 contents.",
+      "revId": "38b28b71318f0d6bdc5b5f81db5729fdfb50a35b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
