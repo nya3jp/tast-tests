@@ -16,6 +16,23 @@
       "message": "@alvinjia, @pjlee: This is ready for review. I implemented the move before the click, and tested the arcappgameperf*, uidetection.BasicDetect*, and crostini.AppAndroid* tests as suggested by Alvin.",
       "revId": "112606b390ee7740af393acb805a6799e1752b84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a4593b_4f20e2dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-10T03:55:54Z",
+      "side": 1,
+      "message": "Good work! Thanks David.",
+      "revId": "112606b390ee7740af393acb805a6799e1752b84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
