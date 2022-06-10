@@ -96,7 +96,7 @@ func (rts *retryTokenSource) Token() (tok *oauth2.Token, err error) {
 			case <-time.After(rts.Delay):
 			case <-rts.Ctx.Done():
 				// Cancelled early, return the errors.
-				return nil, rts.Ctx.Err()
+				return nil, err
 			}
 		}
 	}
