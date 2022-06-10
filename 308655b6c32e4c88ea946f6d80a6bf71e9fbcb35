@@ -94,6 +94,30 @@
       },
       "revId": "308655b6c32e4c88ea946f6d80a6bf71e9fbcb35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "105cd48e_12cc02c9",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1424719
+      },
+      "writtenOn": "2022-06-10T15:45:43Z",
+      "side": 1,
+      "message": "\u003e we don\u0027t want clients to figure out what browser is this\n\nThanks for sharing your thought. IMHO, the \"Browser\" does abstract all the connection interfaces and the clients cannot change the underlying behaviors. I think the purpose for abstractions has been satisfied.\n\nFrom a client\u0027s point of view, the \"Browser\" is always created from different chrome instances (cr, or lacros) so it knows it is different. It\u0027s just that the \"Browser\" currently doesn\u0027t record the Type information that the clients already know.\n\nThe test can add another layer of abstraction like this but I feel this lay added no value:\n\ntype MyBrowser struct {\n    Browser *browser.Browser\n    Type *browser.Type\n}",
+      "parentUuid": "51718b63_881f2040",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "308655b6c32e4c88ea946f6d80a6bf71e9fbcb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
