@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b58250cb_8d2f086a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T21:34:58Z",
+      "side": 1,
+      "message": "comma",
+      "range": {
+        "startLine": 16,
+        "startChar": 57,
+        "endLine": 16,
+        "endChar": 58
+      },
+      "revId": "cd36484e80487557e9e870337dbabdb599111323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdfd235d_d8f3fae4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T21:34:58Z",
+      "side": 1,
+      "message": "`key presses` because the word `between` should always be used in connection with two things.",
+      "range": {
+        "startLine": 16,
+        "startChar": 79,
+        "endLine": 16,
+        "endChar": 93
+      },
+      "revId": "cd36484e80487557e9e870337dbabdb599111323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2135ff4_b4b84441",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T21:34:58Z",
+      "side": 1,
+      "message": "`specified duration`",
+      "range": {
+        "startLine": 17,
+        "startChar": 37,
+        "endLine": 17,
+        "endChar": 87
+      },
+      "revId": "cd36484e80487557e9e870337dbabdb599111323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab92fa80_5d8f1c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T21:34:58Z",
+      "side": 1,
+      "message": "You have already talked about doing something \"repeatedly,\" and so if you proceed to say `This action is repeated`, it suggests the equivalent of nested `for` loops (although the whole comment provides no specific way to make sense out of that idea). That is why I suggested \"...presses the specified key repeatedly for the specified duration, with the specified delay between key presses.\"",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "cd36484e80487557e9e870337dbabdb599111323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddc243e0_173139d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T21:34:58Z",
+      "side": 1,
+      "message": "Use `action.Combine` directly. The `action` package is more basic than the `uiauto` package, and `uiauto.Combine` is just a pointless wrapper around `action.Combine` (see [1]). If anything, `uiauto.Combine` makes sense for some kind of consistency in code that also uses other `uiauto` functions.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;drc\u003dde423c165200c3c00b42c02e412bde045aad5f2d;l\u003d118",
+      "range": {
+        "startLine": 19,
+        "startChar": 36,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "cd36484e80487557e9e870337dbabdb599111323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5019000_44ed0ce6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T21:34:58Z",
+      "side": 1,
+      "message": "`action.Action`",
+      "range": {
+        "startLine": 25,
+        "startChar": 73,
+        "endLine": 25,
+        "endChar": 104
+      },
+      "revId": "cd36484e80487557e9e870337dbabdb599111323",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

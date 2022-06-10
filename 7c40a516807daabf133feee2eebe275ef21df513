@@ -236,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd44bf01_3911c74a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T21:34:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "88e6ba93_74ea4412",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "7c40a516807daabf133feee2eebe275ef21df513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f1d01ef_d1c1b261",
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "I\u0027m not 100% sure I want to do something as complex as that for the purpose of this change. The goal is to really simply create a way of pressing a key and sleeping, which I think the current code does well, in a readable and repeatable way. Actually, the code using uiauto.Combine is what MeetMultiTaskingCUJ and GoogleSlidesCUJ already used in these tests currently. \n\nThe issue of consistent timing regardless of processing delay is true, but I don\u0027t think such exact timing is the point of the test? Users aren\u0027t going to press a button exactly `x` milliseconds apart every time. This function is just to get some inputs for a test in as simple a way as possible. Also, our latency metrics are averages anyway.\n\nThe reason I wanted to keep `runActionFor` was for a future change, which could open up the ability to make more complex key press repetitions in the future. We could have the user pass in an action (which could be something like \n```\nuiauto.Combine(\"..\",\nkw.AccelAction(\"Right\")\naction.Sleep(15 * time.Second)\nkw.AccelAction(\"Left\")\naction.Sleep(\"time.Minute))\n```\nTo maybe fast forward a video and rewind it while watching a video.",
       "parentUuid": "5f1d01ef_d1c1b261",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "7c40a516807daabf133feee2eebe275ef21df513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cbd39df_294cc2ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T21:34:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "256fdb27_f861d37a",
       "range": {
         "startLine": 19,
         "startChar": 0,
