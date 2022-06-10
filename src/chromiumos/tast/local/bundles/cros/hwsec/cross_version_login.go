@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -31,7 +32,6 @@ func init() {
 			"cros-hwsec@chromium.org",
 		},
 		SoftwareDeps: []string{"chrome", "tpm2_simulator"},
-		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			Name: "",
@@ -41,6 +41,7 @@ func init() {
 			// Note that if the data could not used on other boards in the future,
 			// we would need to split them to different test sets.
 			ExtraSoftwareDeps: []string{"no_tpm_dynamic"},
+			ExtraAttr:         []string{"group:mainline"},
 			Val: []string{
 				"R91-13904.0.0_betty_20211216",
 				"R92-13982.0.0_betty_20211216",
@@ -81,6 +82,7 @@ func init() {
 		}, {
 			Name:              "tpm_dynamic",
 			ExtraSoftwareDeps: []string{"tpm_dynamic"},
+			ExtraAttr:         []string{"group:mainline"},
 			Val: []string{
 				"R96-14268.0.0_reven-vmtest_20220103",
 				"R97-14324.0.0_reven-vmtest_20220103",
@@ -106,6 +108,12 @@ func init() {
 				"cross_version_login/R102-14695.0.0_reven-vmtest_20220510_config.json",
 				"cross_version_login/R102-14695.0.0_reven-vmtest_20220510_data.tar.gz",
 			},
+		}, {
+			// To test data migration from the current device to itself. This is for verifying the functionality of hwsec.CrossVersionLogin and hwsec.PrepareCrossVersionLoginData.
+			Name:      "current",
+			ExtraAttr: []string{"group:mainline", "informational"},
+			Val:       []string{},
+			ExtraData: []string{},
 		}},
 	})
 }
@@ -223,8 +231,13 @@ func CrossVersionLogin(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sscanf the version string: ", err)
 	}
 
+	const tmpDir = "/tmp/cross_version_login"
+	if err := os.MkdirAll(tmpDir, 0700); err != nil {
+		s.Fatalf("Failed to create directory %q: %v", tmpDir, err)
+	}
+	defer os.RemoveAll(tmpDir)
 	// Creates backup data to recover state later.
-	const backupPath = "/tmp/cross_version_login_backup_data.tar.xz"
+	backupPath := filepath.Join(tmpDir, "backup_data.tar.xz")
 	if err := util.CreateCrossVersionLoginData(ctx, daemonController, backupPath); err != nil {
 		s.Fatal("Failed to backup login data: ", err)
 	}
@@ -232,30 +245,41 @@ func CrossVersionLogin(ctx context.Context, s *testing.State) {
 		if err := util.LoadCrossVersionLoginData(ctx, daemonController, backupPath); err != nil {
 			s.Fatal("Failed to load login data: ", err)
 		}
-		if err := os.Remove(backupPath); err != nil {
-			s.Fatal("Failed to remove backup data: ", err)
-		}
 	}()
 
-	// Run test with prefix, Rxx-x.x.x_<board>_<date>, e.g. R91-13904.0.0_betty_20211206.
 	prefixs := s.Param().([]string)
-	for _, prefix := range prefixs {
-		prefixVersion, err := prefixToVersion(prefix)
-		if err != nil {
-			s.Fatal("Failed to convert prefix to version: ", err)
+	if len(prefixs) == 0 {
+		// The prefixs is empty, so the local data migration would be tested instead.
+		dataPath := filepath.Join(tmpDir, "data.tar.gz")
+		configPath := filepath.Join(tmpDir, "config.json")
+		s.Log("Preparing login data of current version")
+		if err := util.PrepareCrossVersionLoginData(ctx, s.Logf, cryptohome, daemonController, dataPath, configPath); err != nil {
+			s.Fatal("Failed to prepare login data for current version: ", err)
 		}
-		if !isNewer(version, prefixVersion) {
-			s.Logf("Skip testing login with %s because it is newer than current image", prefix)
-			continue
-		}
-		s.Log("Test login with ", prefix)
-		dataName := fmt.Sprintf("cross_version_login/%s_data.tar.gz", prefix)
-		configName := fmt.Sprintf("cross_version_login/%s_config.json", prefix)
-		dataPath := s.DataPath(dataName)
-		configPath := s.DataPath(configName)
-
+		s.Log("Testing login with current version")
 		if err := testVersion(ctx, s.Logf, cryptohome, daemonController, dataPath, configPath); err != nil {
-			s.Errorf("Failed to test version %q: %v", prefix, err)
+			s.Fatal("Failed to test current version: ", err)
+		}
+	} else {
+		// Run test with prefix, Rxx-x.x.x_<board>_<date>, e.g. R91-13904.0.0_betty_20211206.
+		for _, prefix := range prefixs {
+			prefixVersion, err := prefixToVersion(prefix)
+			if err != nil {
+				s.Fatal("Failed to convert prefix to version: ", err)
+			}
+			if !isNewer(version, prefixVersion) {
+				s.Logf("Skipping testing login with %s because it is newer than current image", prefix)
+				continue
+			}
+			s.Log("Testing login with ", prefix)
+			dataName := fmt.Sprintf("cross_version_login/%s_data.tar.gz", prefix)
+			configName := fmt.Sprintf("cross_version_login/%s_config.json", prefix)
+			dataPath := s.DataPath(dataName)
+			configPath := s.DataPath(configName)
+
+			if err := testVersion(ctx, s.Logf, cryptohome, daemonController, dataPath, configPath); err != nil {
+				s.Errorf("Failed to test version %q: %v", prefix, err)
+			}
 		}
 	}
 }
