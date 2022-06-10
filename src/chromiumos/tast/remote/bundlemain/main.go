@@ -103,51 +103,57 @@ func hwsecCheckTPMState(ctx context.Context, s *testing.TestHookState, origStatu
 // testHookRemote returns a function that performs post-run activity after a test run is done.
 func testHookRemote(ctx context.Context, s *testing.TestHookState) func(ctx context.Context,
 	s *testing.TestHookState) {
-
-	// Store current DA value before running the tast.
-	hwsecDACounter, err := hwsecGetDACounter(ctx, s)
-	if err != nil {
-		s.Log("Failed to get TPM DA counter: ", err)
-		// Assume the counter value is zero when we failed to get the DA counter.
-		hwsecDACounter = 0
-	}
-
-	// Store current TPM status before running the tast.
-	hwsecTpmStatus, err := hwsecGetTPMStatus(ctx, s)
-	if err != nil {
-		s.Log("Failed to get TPM status: ", err)
-		hwsecTpmStatus = nil
+	var err error
+	var hwsecTpmStatus *hwsec.NonsensitiveStatusInfo
+	hwsecDACounter := 0
+	if s.DUT() != nil {
+		// Store current DA value before running the tast.
+		hwsecDACounter, err = hwsecGetDACounter(ctx, s)
+		if err != nil {
+			s.Log("Failed to get TPM DA counter: ", err)
+			// Assume the counter value is zero when we failed to get the DA counter.
+			hwsecDACounter = 0
+		}
+		// Store current TPM status before running the tast.
+		hwsecTpmStatus, err = hwsecGetTPMStatus(ctx, s)
+		if err != nil {
+			s.Log("Failed to get TPM status: ", err)
+			hwsecTpmStatus = nil
+		}
 	}
 
 	return func(ctx context.Context, s *testing.TestHookState) {
 		// Ensure that the DUT is connected.
-		dut := s.DUT()
-		if !dut.Connected(ctx) {
-			if err := dut.WaitConnect(ctx); err != nil {
-				s.Log("Failed to connect to the DUT: ", err)
-				return
-			}
-		}
-
-		// Ensure the TPM is in the expect state after tast finish.
-		if err := hwsecCheckTPMState(ctx, s, hwsecTpmStatus, hwsecDACounter); err != nil {
-			s.Error("Failed to check TPM state: ", err)
-		}
-
 		// Get output directory.
 		dir, ok := testing.ContextOutDir(ctx)
 		if !ok {
 			s.Log("Failed to get name of output directory")
 			return
 		}
+		dut := s.DUT()
+		if dut != nil {
+			if !dut.Connected(ctx) {
+				if err := dut.WaitConnect(ctx); err != nil {
+					s.Log("Failed to connect to the DUT: ", err)
+					return
+				}
+			}
 
-		// Get /var/log/messages from all DUTs.
-		if err := downloadVarLogMessages(ctx, dir, dut); err != nil {
-			s.Log("Download /var/log/messages failed from DUT (primary): ", err)
+			// Ensure the TPM is in the expect state after tast finish.
+			if err := hwsecCheckTPMState(ctx, s, hwsecTpmStatus, hwsecDACounter); err != nil {
+				s.Error("Failed to check TPM state: ", err)
+			}
+
+			// Get /var/log/messages from all DUTs.
+			if err := downloadVarLogMessages(ctx, dir, dut); err != nil {
+				s.Log("Download /var/log/messages failed from DUT (primary): ", err)
+			}
 		}
-
 		for _, role := range s.CompanionDUTRoles() {
 			cdut := s.CompanionDUT(role)
+			if cdut != nil {
+				continue
+			}
 			dirName := fmt.Sprintf("%v_%v", role, cdut.HostName())
 			outputDir := filepath.Join(dir, dirName)
 			if err := downloadVarLogMessages(ctx, outputDir, cdut); err != nil {
