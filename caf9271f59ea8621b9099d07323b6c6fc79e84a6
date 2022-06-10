@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc75a966_ceb43ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-10T20:21:46Z",
+      "side": 1,
+      "message": "It is expected to run in a general Chromebook since symlinks should exist in any device with kernel 5.10 or later. Symlink to USB4 port would be present only if the port supports USB4.",
+      "parentUuid": "39f89fab_56a632b0",
+      "range": {
+        "startLine": 55,
+        "startChar": 61,
+        "endLine": 55,
+        "endChar": 88
+      },
+      "revId": "caf9271f59ea8621b9099d07323b6c6fc79e84a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b6d0fad_14f4a97c",
