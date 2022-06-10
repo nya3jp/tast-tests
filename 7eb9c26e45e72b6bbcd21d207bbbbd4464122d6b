@@ -120,6 +120,23 @@
       "message": "some more devs for visibility\n",
       "revId": "7eb9c26e45e72b6bbcd21d207bbbbd4464122d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cedfb66_34f19dbf",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-06-10T17:55:44Z",
+      "side": 1,
+      "message": "Instead of flipping this option, can we update ARCSupported and ARCEnabled to add the unrestrict option automatically instead of every test having to opt out?\n\nPerf tests are already enabling throttling to simulate prod environment. We have a problem already where tests are not promoted to critical due to flakiness and it is going to make it worse for ARC tests (leaving an open door for bugs to be missed due to tests being flaky).",
+      "revId": "7eb9c26e45e72b6bbcd21d207bbbbd4464122d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
