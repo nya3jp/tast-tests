@@ -9,6 +9,8 @@ import (
 	"time"
 
 	"golang.org/x/oauth2"
+
+	"chromiumos/tast/errors"
 )
 
 const (
@@ -89,14 +91,13 @@ func (rts *retryTokenSource) Token() (tok *oauth2.Token, err error) {
 			return tok, err
 		}
 		if rts.Ctx.Err() != nil {
-			return tok, err
+			return tok, errors.Wrap(err, "context cancelled")
 		}
 		if rts.Delay > 0 {
 			select {
 			case <-time.After(rts.Delay):
 			case <-rts.Ctx.Done():
-				// Cancelled early, return the errors.
-				return nil, rts.Ctx.Err()
+				return nil, errors.Wrap(err, "context cancelled")
 			}
 		}
 	}
