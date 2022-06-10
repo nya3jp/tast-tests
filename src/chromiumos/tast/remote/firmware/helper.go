@@ -503,6 +503,10 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxOff); err != nil {
 		return errors.Wrap(err, "failed to power off usbkey")
 	}
+	// After setting the usb to off, you can't touch it for 2s.
+	if err := testing.Sleep(ctx, 2*time.Second); err != nil {
+		return errors.Wrap(err, "sleep 2s")
+	}
 	// This call is super slow.
 	usbdev, err := h.Servo.GetStringTimeout(ctx, servo.ImageUSBKeyDev, time.Second*90)
 	if err != nil {
