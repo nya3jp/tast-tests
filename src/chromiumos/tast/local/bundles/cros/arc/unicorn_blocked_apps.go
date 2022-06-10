@@ -131,8 +131,8 @@ func UnicornBlockedApps(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify that install button is disabled for the blocked app.
-	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText), ui.Enabled(true))
-	if err := installButton.Exists(ctx); err == nil {
+	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextMatches("(?i)"+installButtonText), ui.Enabled(false))
+	if err := installButton.WaitForExists(ctx, DefaultUITimeout); err != nil {
 		s.Fatal("Install Button Exisits for Blocked App: ", err)
 	}
 
