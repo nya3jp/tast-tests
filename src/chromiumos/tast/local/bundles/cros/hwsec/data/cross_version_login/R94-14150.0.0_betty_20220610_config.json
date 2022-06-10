@@ -10,6 +10,13 @@
       "ChallengeAlg": 0
     },
     "RsaKey": null,
-    "KeyLabel": "legacy-0"
+    "KeyLabel": "legacy-0",
+    "ExtraVaultKeys": [
+      {
+        "Password": "extraPass",
+        "KeyLabel": "extraLabel",
+        "LowEntropy": false
+      }
+    ]
   }
 ]

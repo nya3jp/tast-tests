@@ -10,7 +10,19 @@
       "ChallengeAlg": 0
     },
     "RsaKey": null,
-    "KeyLabel": "legacy-0"
+    "KeyLabel": "legacy-0",
+    "ExtraVaultKeys": [
+      {
+        "Password": "extraPass",
+        "KeyLabel": "extraLabel",
+        "LowEntropy": false
+      },
+      {
+        "Password": "123456",
+        "KeyLabel": "pinLabel",
+        "LowEntropy": true
+      }
+    ]
   },
   {
     "AuthConfig": {
@@ -37,6 +49,7 @@
         "CRTValues": []
       }
     },
-    "KeyLabel": "challenge_response_key_label"
+    "KeyLabel": "challenge_response_key_label",
+    "ExtraVaultKeys": null
   }
 ]
