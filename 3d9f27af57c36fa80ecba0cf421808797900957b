@@ -118,6 +118,30 @@
       },
       "revId": "3d9f27af57c36fa80ecba0cf421808797900957b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b531279f_2bb58d70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-10T10:15:52Z",
+      "side": 1,
+      "message": "Also, another CL was landed to disable the wmp.DragAndDropWindow test:\n\nhttps://chromium-review.googlesource.com/c/chromium/src/+/3696458\n\nso just an FYI if case you didn\u0027t see that CL.",
+      "parentUuid": "b270c69d_3208debf",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "3d9f27af57c36fa80ecba0cf421808797900957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
