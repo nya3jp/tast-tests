@@ -16,6 +16,24 @@
       "message": "Nit: Just call PowerOntoDUT here?",
       "revId": "012d4ab159bc9e12462e0a4054e429624f46a1d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5485a11f_66f6b4f2",
+        "filename": "src/chromiumos/tast/remote/powercontrol/power_control_helper.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-06-10T15:54:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c21aeefb_1001ed3f",
+      "revId": "012d4ab159bc9e12462e0a4054e429624f46a1d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
