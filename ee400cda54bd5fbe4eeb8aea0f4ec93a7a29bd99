@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d06810cb_ffc7002d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-06-10T18:54:12Z",
+      "side": 1,
+      "message": "Actually, we should probably abandon this CL. The stork SMDS server isn\u0027t well supported, and this test will probably fail until someone from the stork team signs up for a fix. The stork fix is complex, so we may need to write an alternate test.",
+      "revId": "ee400cda54bd5fbe4eeb8aea0f4ec93a7a29bd99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3083553_5c711cfe",
