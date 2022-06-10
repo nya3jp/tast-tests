@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3338d036_ec263c92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-10T18:20:42Z",
+      "side": 1,
+      "message": "It\u0027s local so it doesn\u0027t really matter in the context of package encapsulation, but I will change it to lowercase to keep it consistent with the rest of the file.",
+      "parentUuid": "9bd9201a_8cb71e8f",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 9
+      },
+      "revId": "b3a624032dcf9852c94412d3b0d1d40ef9fa49ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e569e101_d17c2863",
@@ -77,6 +101,24 @@
       "writtenOn": "2022-06-10T18:16:16Z",
       "side": 1,
       "message": "How does this work... should we be worried about trying to close lacros if the test never actually uses lacros? Maybe only defer it based on the browserType?",
+      "revId": "b3a624032dcf9852c94412d3b0d1d40ef9fa49ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9316a1d5_be3e8cb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-10T18:20:42Z",
+      "side": 1,
+      "message": "This is a good point, I will wrap this in an if statement just in case.",
+      "parentUuid": "d85315d2_937ad66e",
       "revId": "b3a624032dcf9852c94412d3b0d1d40ef9fa49ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
