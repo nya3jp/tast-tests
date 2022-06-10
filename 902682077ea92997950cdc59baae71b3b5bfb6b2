@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae837fcf_e0c5f34d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-10T15:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90c9cdcc_a2b974be",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 31
+      },
+      "revId": "902682077ea92997950cdc59baae71b3b5bfb6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a79b57a8_eb2f4498",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-10T15:34:16Z",
       "side": 1,
       "message": "err, this is now going to return an error saying \"got true, want true\" when we successfully authenticate and that was also the intent.\n\nIt should presumably be `if (err \u003d\u003d nil) !\u003d shouldAuthenticate {`",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 133
+      },
+      "revId": "902682077ea92997950cdc59baae71b3b5bfb6b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83d4cb99_761b33fc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-10T15:38:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a79b57a8_eb2f4498",
       "range": {
         "startLine": 363,
         "startChar": 0,
