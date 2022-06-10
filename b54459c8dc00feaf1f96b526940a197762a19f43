@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9f5c62f_3b36ac45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "This comment seems a little wordy and has a lot of small problems. How about:\n // coreTestDuration is a minimum duration for the core part of the test.\n // The actual test duration could be longer because of various setup.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 30
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b08840c5_7d166fcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "nit: `*tabSwitchVariables`",
+      "range": {
+        "startLine": 80,
+        "startChar": 54,
+        "endLine": 80,
+        "endChar": 72
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f20aa6aa_5e01c889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "nit: This can be avoided by returning a pointer so that you can just use nil.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c17f0e_c774fcdf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "`\t\treturn errors.Errorf(\"unsupported browser type: %v\", vars.param.BrowserType)`",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 63
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e8cf5c1_2b0ea26b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "Do something similar with `CloseLacros`.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 7
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec538807_31831ef2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "Put this before `input.Keyboard(ctx)`.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93249cbe_64216712",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "How about:\n\terr :\u003d tconn.Call(ctx, \u0026tabs, `tast.promisify(chrome.tabs.query)`, emptyQuery)\n\treturn tabs, err",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 17
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea3b3896_3e285e38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "`nil`\nSee where this says \"nil (if output should be ignored)\":\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/conn.go;drc\u003d7112d64805488408431fe1315548a178ac31ea85;l\u003d127",
+      "range": {
+        "startLine": 255,
+        "startChar": 24,
+        "endLine": 255,
+        "endChar": 28
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c577a577_2b471cfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "No need to set `tabOffset` if you are just going to bail out immediately.",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 15
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83e1cf29_2ecf2693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "`\t\treturn errors.Errorf(\"unsupported browser type: %v\", test.param.BrowserType)`",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 63
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ddd1dcf_067dbbc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "I know this comes from my own code review comment, but I think it should be:\n\t\t\treturn errors.New(\"test scenario does not specify any web pages\")",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 58
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0af66062_c2d3c385",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "The call to `ctxutil.Shorten` does not belong between the `defer` statements that use `closeCtx`. You could write this:\n\t// Shorten context a bit to allow for cleanup.\n\tcloseCtx :\u003d ctx\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, 2*time.Second)\n\tdefer cancel()\n\n\tif setupVars.param.BrowserType \u003d\u003d browser.TypeLacros {\n\t\tdefer lacros.CloseLacros(closeCtx, setupVars.l)\n\t}\n\tdefer setupVars.recorder.Close(closeCtx)\n...or this:\n\tcloseCtx :\u003d ctx\n\tif setupVars.param.BrowserType \u003d\u003d browser.TypeLacros {\n\t\tdefer lacros.CloseLacros(closeCtx, setupVars.l)\n\t}\n\tdefer setupVars.recorder.Close(closeCtx)\n\n\t// Shorten context a bit to allow for cleanup.\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, 2*time.Second)\n\tdefer cancel()\n...or perhaps you should put the whole `closeCtx`/`ctxutil.Shorten` thing before `runSetup(ctx, s)`.",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 41
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91fb320c_41ff8abf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "`non-error`\nThe term `non-fatal` suggests that the test may be marked as failing, but it just does not terminate immediately, because that is the behavior of `s.Error`.",
+      "range": {
+        "startLine": 380,
+        "startChar": 10,
+        "endLine": 380,
+        "endChar": 19
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1109b709_cfe4f507",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "Just call it `err`. It has such a small scope, there is no need to be more specific.",
+      "range": {
+        "startLine": 397,
+        "startChar": 4,
+        "endLine": 397,
+        "endChar": 15
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

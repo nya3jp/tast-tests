@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5cccac64_dcdd926b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "At the link that I provided, there is a link to here:\nhttps://chris.beams.io/posts/git-commit/\n\nThen look at the whole detailed discussion under \"5. Use the imperative mood in the subject line.\" According to that, it clearly should be `Rewrite` rather than `Rewrote`.",
+      "parentUuid": "672110e8_ca7ea3ab",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "b1a38e3d2a008eed31fbef0778cc2e27913fc0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8a962f38_87f62702",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "8aed2703_07e4b67d",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "b1a38e3d2a008eed31fbef0778cc2e27913fc0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c62f4ca_ba34d0a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T22:53:31Z",
+      "side": 1,
+      "message": "You changed it to only 1 minute. Was that your intention?",
+      "parentUuid": "d7004103_2eddd911",
       "range": {
         "startLine": 78,
         "startChar": 0,
