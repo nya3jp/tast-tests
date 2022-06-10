@@ -44,7 +44,7 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 
 	s.Log("Start testing calendar view from date tray")
-	dateTray := nodewith.ClassName("DateTray")
+	dateTray := nodewith.HasClass("DateTray")
 
 	// Comparing the time before and after opening the calendar view just in case this test is run at the very end of a year, e.g. Dec 31 23:59:59.
 	beforeOpeningCalendarYear := time.Now().Year()
@@ -54,10 +54,10 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click the date tray: ", err)
 	}
 
-	calendarView := nodewith.ClassName("CalendarView")
-	mainHeaderTriView := nodewith.ClassName("TriView").Ancestor(calendarView).Nth(0)
-	mainHeaderContainer := nodewith.ClassName("View").Ancestor(mainHeaderTriView).Nth(1)
-	mainHeader := nodewith.Name("Calendar").ClassName("Label").Ancestor(mainHeaderContainer)
+	calendarView := nodewith.HasClass("CalendarView")
+	mainHeaderTriView := nodewith.HasClass("TriView").Ancestor(calendarView).Nth(0)
+	mainHeaderContainer := nodewith.HasClass("View").Ancestor(mainHeaderTriView).Nth(1)
+	mainHeader := nodewith.Name("Calendar").HasClass("Label").Ancestor(mainHeaderContainer)
 
 	if err := ui.WaitUntilExists(mainHeader)(ctx); err != nil {
 		s.Fatal("Failed to find calendar main label after opening calendar view: ", err)
@@ -66,7 +66,7 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 	// For some corner cases, if it cannot find the year label with the time before clicking on the date tray, it should find the year label with the time after the calendar view is open.
 	// E.g. before opening it's Dec 31 23:59:59 2022, and after openting it's Jan 1 00:00 2023.
 	yearInt := beforeOpeningCalendarYear
-	beforeOpeningCalendarYearLabel := nodewith.Name(strconv.Itoa(beforeOpeningCalendarYear)).ClassName("Label").Onscreen()
+	beforeOpeningCalendarYearLabel := nodewith.Name(strconv.Itoa(beforeOpeningCalendarYear)).HasClass("Label").Onscreen()
 	if found, err := ui.IsNodeFound(ctx, beforeOpeningCalendarYearLabel); err != nil {
 		s.Fatal("Failed to check beforeOpeningCalendarYearLabel after clicking on the date tray: ", err)
 	} else if found != true {
@@ -75,18 +75,18 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 
 	// Opening the calendar view should show today's year label.
 	year := strconv.Itoa(yearInt)
-	todayYearLabel := nodewith.Name(year).ClassName("Label").Onscreen()
+	todayYearLabel := nodewith.Name(year).HasClass("Label").Onscreen()
 	if err := ui.WaitUntilExists(todayYearLabel)(ctx); err != nil {
 		s.Fatal("Failed to find year label after opening calendar view: ", err)
 	}
 
 	// Click on a Monday's cell to show the event list view.
-	scrollView := nodewith.ClassName("ScrollView").Ancestor(calendarView).Nth(0)
-	scrollViewport := nodewith.ClassName("ScrollView::Viewport").Ancestor(scrollView).Nth(0)
-	contentView := nodewith.ClassName("View").Ancestor(scrollViewport).Nth(0)
-	currentMonthView := nodewith.ClassName("View").Ancestor(contentView).Nth(3)
-	firstMondayDateCell := nodewith.ClassName("CalendarDateCellView").Ancestor(currentMonthView).Nth(1)
-	firstTuesdayDateCell := nodewith.ClassName("CalendarDateCellView").Ancestor(currentMonthView).Nth(2)
+	scrollView := nodewith.HasClass("ScrollView").Ancestor(calendarView).Nth(0)
+	scrollViewport := nodewith.HasClass("ScrollView::Viewport").Ancestor(scrollView).Nth(0)
+	contentView := nodewith.HasClass("View").Ancestor(scrollViewport).Nth(0)
+	currentMonthView := nodewith.HasClass("View").Ancestor(contentView).Nth(3)
+	firstMondayDateCell := nodewith.HasClass("CalendarDateCellView").Ancestor(currentMonthView).Nth(1)
+	firstTuesdayDateCell := nodewith.HasClass("CalendarDateCellView").Ancestor(currentMonthView).Nth(2)
 	scrollViewBounds, err := ui.Location(ctx, scrollView)
 	if err != nil {
 		s.Fatal("Failed to find calendar scroll view bounds: ", err)
@@ -103,8 +103,8 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 	// Here a small amount (5) of pixel is added to the top of the scroll view each time in the loop to find the first available Monday cell with events.
 	const findCellTimes = 20
 	cellPositionY := 0
-	eventListView := nodewith.ClassName("CalendarEventListView").Ancestor(calendarView)
-	eventCloseButtonView := nodewith.ClassName("View").Ancestor(eventListView).Nth(0)
+	eventListView := nodewith.HasClass("CalendarEventListView").Ancestor(calendarView)
+	eventCloseButtonView := nodewith.HasClass("View").Ancestor(eventListView).Nth(0)
 	for i := 0; i < findCellTimes; i++ {
 		s.Logf("Moving towards the first Monday cell (iteration %d of %d)", i+1, findCellTimes)
 		cellPositionY += 5
@@ -120,12 +120,12 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 	}
 
 	// Show the 3 events on Monday's event list view.
-	eventScrollView := nodewith.ClassName("ScrollView").Ancestor(eventListView).Nth(0)
-	eventScrollViewport := nodewith.ClassName("ScrollView::Viewport").Ancestor(eventScrollView).Nth(0)
-	eventContentView := nodewith.ClassName("View").Ancestor(eventScrollViewport).Nth(0)
-	firstEventView := nodewith.ClassName("CalendarEventListItemView").Ancestor(eventContentView).Nth(0)
-	secondEventView := nodewith.ClassName("CalendarEventListItemView").Ancestor(eventContentView).Nth(1)
-	thirdEventView := nodewith.ClassName("CalendarEventListItemView").Ancestor(eventContentView).Nth(2)
+	eventScrollView := nodewith.HasClass("ScrollView").Ancestor(eventListView).Nth(0)
+	eventScrollViewport := nodewith.HasClass("ScrollView::Viewport").Ancestor(eventScrollView).Nth(0)
+	eventContentView := nodewith.HasClass("View").Ancestor(eventScrollViewport).Nth(0)
+	firstEventView := nodewith.HasClass("CalendarEventListItemView").Ancestor(eventContentView).Nth(0)
+	secondEventView := nodewith.HasClass("CalendarEventListItemView").Ancestor(eventContentView).Nth(1)
+	thirdEventView := nodewith.HasClass("CalendarEventListItemView").Ancestor(eventContentView).Nth(2)
 	if err := ui.WaitUntilExists(eventCloseButtonView)(ctx); err != nil {
 		s.Fatal("Failed to find close button after clicking on the first Monday date cell: ", err)
 	}
@@ -138,15 +138,15 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 	if err := ui.WaitUntilExists(thirdEventView)(ctx); err != nil {
 		s.Fatal("Failed to find the third evnet entry after clicking on the first Monday date cell: ", err)
 	}
-	firstEventLabel := nodewith.NameContaining("Monday morning").ClassName("Label")
+	firstEventLabel := nodewith.NameContaining("Monday morning").HasClass("Label")
 	if err := ui.WaitUntilExists(firstEventLabel)(ctx); err != nil {
 		s.Fatal("Failed to find the first event label after clicking on the first Monday date cell: ", err)
 	}
-	secondEventLabel := nodewith.NameContaining("Monday second").ClassName("Label")
+	secondEventLabel := nodewith.NameContaining("Monday second").HasClass("Label")
 	if err := ui.WaitUntilExists(secondEventLabel)(ctx); err != nil {
 		s.Fatal("Failed to find the second event label after clicking on the first Monday date cell: ", err)
 	}
-	thirdEventLabel := nodewith.NameContaining("Monday third").ClassName("Label")
+	thirdEventLabel := nodewith.NameContaining("Monday third").HasClass("Label")
 	if err := ui.WaitUntilExists(thirdEventLabel)(ctx); err != nil {
 		s.Fatal("Failed to find the third event label after clicking on the first Monday date cell: ", err)
 	}
@@ -177,9 +177,9 @@ func ShowEvents(ctx context.Context, s *testing.State) {
 	}
 
 	// Calendar list view should show "Open in Google calendar" if there's no events.
-	openButtonContentView := nodewith.ClassName("View").Ancestor(eventContentView).Nth(0)
-	openButtonView := nodewith.ClassName("LabelButton").Ancestor(openButtonContentView)
-	openButtonLabelView := nodewith.Name("Open in Google calendar").ClassName("LabelButtonLabel").Ancestor(openButtonView)
+	openButtonContentView := nodewith.HasClass("View").Ancestor(eventContentView).Nth(0)
+	openButtonView := nodewith.HasClass("PillButton").Ancestor(openButtonContentView)
+	openButtonLabelView := nodewith.Name("Open in Google Calendar").HasClass("LabelButtonLabel").Ancestor(openButtonView)
 	if err := ui.WaitUntilExists(openButtonLabelView)(ctx); err != nil {
 		s.Fatal("Failed to find the Open in Google calendar label after clicking on the first Tuesday date cell: ", err)
 	}
