@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c74fd6_651629e7",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-10T17:33:09Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "1825c0e3_c4b44a83",
+      "range": {
+        "startLine": 100,
+        "startChar": 21,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "a1a417b232d5db9a0e8adec191cb006de37ce3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "231a02c3_f8b53415",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "That make sense I changed all the function to have the new format:\n\"failed \u0027OK\u0027 not detected in the output of \u0027wpa_cli set %s %s\u0027, output:%s\"",
       "parentUuid": "231a02c3_f8b53415",
+      "range": {
+        "startLine": 107,
+        "startChar": 24,
+        "endLine": 107,
+        "endChar": 45
+      },
+      "revId": "a1a417b232d5db9a0e8adec191cb006de37ce3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04768c3a_4b2820a2",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-10T17:33:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4ae8f65_6da33486",
       "range": {
         "startLine": 107,
         "startChar": 24,
@@ -300,6 +348,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "205fbfe3_8efaf037",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-10T17:33:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c86178b7_1ed8587f",
+      "range": {
+        "startLine": 148,
+        "startChar": 32,
+        "endLine": 148,
+        "endChar": 39
+      },
+      "revId": "a1a417b232d5db9a0e8adec191cb006de37ce3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "596c7f74_6f4e889d",
@@ -337,6 +409,30 @@
       "side": 1,
       "message": "I am not sure what is the max time for a remote Tast test, I need to check that. I dropped the waiting to 30sec for both.",
       "parentUuid": "596c7f74_6f4e889d",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 41
+      },
+      "revId": "a1a417b232d5db9a0e8adec191cb006de37ce3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ceb0840_55c0af1b",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-10T17:33:09Z",
+      "side": 1,
+      "message": "I think this seems reasonable. Thanks Arowa!",
+      "parentUuid": "1b997a5f_cb93b6f8",
       "range": {
         "startLine": 246,
         "startChar": 0,
