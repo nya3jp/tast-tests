@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db29c76f_bad201e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T18:26:28Z",
+      "side": 1,
+      "message": "Also talk about what you are doing with trackpad_event_simulation.go.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 56
+      },
+      "revId": "7c40a516807daabf133feee2eebe275ef21df513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4426dd39_f5c5b9fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T18:26:28Z",
+      "side": 1,
+      "message": "nit: The test is actually called `MeetMultiTaskingCUJ` even though multitasking is one word. While `MeetMultitaskingCUJ` would be a better name, I would refer to the test by how it is actually named.",
+      "range": {
+        "startLine": 12,
+        "startChar": 36,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "7c40a516807daabf133feee2eebe275ef21df513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f37491_0583cb0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T18:26:28Z",
+      "side": 1,
+      "message": "The word `down` here suggests holding down a key, never letting up.",
+      "range": {
+        "startLine": 16,
+        "startChar": 23,
+        "endLine": 16,
+        "endChar": 27
+      },
+      "revId": "7c40a516807daabf133feee2eebe275ef21df513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "739f1a2d_f8416dc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T18:26:28Z",
+      "side": 1,
+      "message": "How about:\n // RepeatKeyFor presses the specified key repeatedly for the\n // specified duration, with the specified delay between key presses.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 99
+      },
+      "revId": "7c40a516807daabf133feee2eebe275ef21df513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5af97628_2d34d9f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T18:26:28Z",
+      "side": 1,
+      "message": "This name may suggest that the function holds down the key, never letting up until the entire duration has passed. How about `RepeatKeyFor`?",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "7c40a516807daabf133feee2eebe275ef21df513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f1d01ef_d1c1b261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T18:26:28Z",
+      "side": 1,
+      "message": "To maintain consistent timing regardless of processing delay, I suggest this way (and get rid of `runActionFor`):\n\tif err :\u003d testing.Poll(ctx, func (ctx context.Context) {\n\t\tif err :\u003d kw.AccelAction(key); err !\u003d nil {\n\t\t\treturn testing.PollBreak(errors.Wrapf(err, \"failed to press [%s]\", key))\n\t\t}\n\t\t// Return a non-nil error to continue polling until duration has\n\t\t// been reached. When duration has been reached successfully,\n\t\t// kw.AccelAction(key) may or may not return an error with\n\t\t// context.DeadlineExceeded, and so we will consider such an error\n\t\t// as a success indicator, and also return it here.\n\t\treturn context.DeadlineExceeded\n\t}, \u0026testing.PollOptions{Timeout: duration, Interval: delay});\n\t!errors.Is(err, context.DeadlineExceeded) {\n\t\treturn err\n\t}\n\n\t// testing.Poll creates a new context with deadline based on duration,\n\t// and we want to exceed that deadline but not the original ctx deadline.\n\treturn ctx.Err()",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "7c40a516807daabf133feee2eebe275ef21df513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3f36f9_f56baae1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T18:26:28Z",
+      "side": 1,
+      "message": "`browser.TypeLacros`",
+      "range": {
+        "startLine": 107,
+        "startChar": 52,
+        "endLine": 107,
+        "endChar": 70
+      },
+      "revId": "7c40a516807daabf133feee2eebe275ef21df513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1e982b_707f8f85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T18:26:28Z",
+      "side": 1,
+      "message": "Use a `switch` statement.\n\t\tswitch params.scroll {\n\t\tcase scrollTypeSwipe:",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 39
+      },
+      "revId": "7c40a516807daabf133feee2eebe275ef21df513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2848142f_460c82b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T18:26:28Z",
+      "side": 1,
+      "message": "Continuing with the `switch` statement suggested in another code review comment...\n\t\tcase scrollTypeDownKey:",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 48
+      },
+      "revId": "7c40a516807daabf133feee2eebe275ef21df513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a57fbb9e_1d773d08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-10T18:26:28Z",
+      "side": 1,
+      "message": "`\"failed to scroll with down arrow key\"`",
+      "range": {
+        "startLine": 120,
+        "startChar": 27,
+        "endLine": 120,
+        "endChar": 49
+      },
+      "revId": "7c40a516807daabf133feee2eebe275ef21df513",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
