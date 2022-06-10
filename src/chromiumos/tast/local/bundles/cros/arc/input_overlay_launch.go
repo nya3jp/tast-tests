@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/local/bundles/cros/arc/gio"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 )
 
@@ -24,11 +23,7 @@ func init() {
 		Contacts:     []string{"pjlee@google.com", "cuicuiruan@google.com", "arc-app-dev@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data: []string{"input-overlay-top-button.png",
-			"input-overlay-bottom-button.png",
-			"input-overlay-menu.png",
-			"input-overlay-joystick.png"},
-		Fixture: "arcBootedWithInputOverlay",
+		Fixture:      "arcBootedWithInputOverlay",
 		Params: []testing.Param{
 			{
 				ExtraSoftwareDeps: []string{"android_p"},
@@ -44,19 +39,20 @@ func InputOverlayLaunch(ctx context.Context, s *testing.State) {
 	gio.SetupTestApp(ctx, s, func(params gio.TestParams) error {
 		// Start up UIAutomator.
 		ui := uiauto.New(params.TestConn).WithTimeout(time.Minute)
-		// Start up ACUITI.
-		uda := uidetection.NewDefault(params.TestConn).WithOptions(uidetection.Retries(3)).WithTimeout(time.Minute)
 
 		if err := uiauto.Combine("Find gaming input overlay UI elements",
 			// Tap educational dialog.
 			ui.LeftClick(nodewith.Name("Got it").HasClass("LabelButtonLabel")),
 			// Find input overlay game control.
-			uda.WaitUntilExists(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
+			ui.WaitUntilExists(nodewith.Name("Game controls").HasClass("ImageButton")),
 			// Find input overlay tap buttons.
-			uda.WaitUntilExists(uidetection.CustomIcon(s.DataPath("input-overlay-top-button.png"))),
-			uda.WaitUntilExists(uidetection.CustomIcon(s.DataPath("input-overlay-bottom-button.png"))),
+			ui.WaitUntilExists(nodewith.Name("m").HasClass("LabelButtonLabel")),
+			ui.WaitUntilExists(nodewith.Name("n").HasClass("LabelButtonLabel")),
 			// Find input overlay joystick buttons.
-			uda.WaitUntilExists(uidetection.CustomIcon(s.DataPath("input-overlay-joystick.png"))),
+			ui.WaitUntilExists(nodewith.Name("w").HasClass("LabelButtonLabel")),
+			ui.WaitUntilExists(nodewith.Name("d").HasClass("LabelButtonLabel")),
+			ui.WaitUntilExists(nodewith.Name("s").HasClass("LabelButtonLabel")),
+			ui.WaitUntilExists(nodewith.Name("a").HasClass("LabelButtonLabel")),
 		)(ctx); err != nil {
 			return errors.Wrap(err, "one or more items not loaded")
 		}
