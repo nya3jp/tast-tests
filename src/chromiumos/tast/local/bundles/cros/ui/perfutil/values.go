@@ -37,6 +37,21 @@ func (v *Values) Append(metric perf.Metric, value float64) {
 	v.values[name] = append(v.values[name], value)
 }
 
+// MergeWithSuffix merges all data points of vs into this Values structure
+// optionally adding suffix to the value name.
+func (v *Values) MergeWithSuffix(suffix string, newValues map[perf.Metric][]float64) {
+	for metric, vs := range newValues {
+		if len(vs) == 0 {
+			continue
+		}
+		suffixedK := metric
+		suffixedK.Name += suffix
+		for _, val := range vs {
+			v.Append(suffixedK, val)
+		}
+	}
+}
+
 func minMaxIndices(vs []float64) (minIndex, maxIndex int) {
 	max := vs[0]
 	min := vs[0]
