@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55b286fe_cacaaae1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-06-10T02:27:37Z",
+      "side": 1,
+      "message": "Is this for supporting the new permission added in T? If so, could you update the SDK to 33 and update AndroidManifest.xml instead?",
+      "revId": "7386003281ec6c2d19d07bc9078d3e2b2765fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd1c2308_465cdf56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-06-10T02:27:37Z",
+      "side": 1,
+      "message": "This will run on P and R as well. The test code should pass on all versions.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 13
+      },
+      "revId": "7386003281ec6c2d19d07bc9078d3e2b2765fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
