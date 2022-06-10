@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd20a78e_0288aae0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-10T12:12:11Z",
+      "side": 1,
+      "message": "LGTM - please the comment about timeouts/context.",
+      "revId": "ad6159c622729854ab9e8bb4c0781e6a1322e696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eeb7c3d_4fd3a1c2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-10T12:12:11Z",
+      "side": 1,
+      "message": "IIRC the default test timeout is 120 seconds. \nConsidering that within the setup you use various contexts (lines: 119, 131, 178, 211) and you shorten context at some point the routine here may hit the default timeout while executed. \nI suggest you increase the timeout of the test case.",
+      "range": {
+        "startLine": 221,
+        "startChar": 3,
+        "endLine": 221,
+        "endChar": 63
+      },
+      "revId": "ad6159c622729854ab9e8bb4c0781e6a1322e696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
