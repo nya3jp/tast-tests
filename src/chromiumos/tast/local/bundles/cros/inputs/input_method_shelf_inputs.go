@@ -122,7 +122,7 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 			its.ClickFieldAndWaitForActive(inputField),
 			ui.LeftClick(imeMenuTrayButtonFinder),
 			ui.LeftClick(voiceInputItem),
-			ui.LeftClick(voicePrivacyConfirmButton),
+			ui.DoDefaultUntil(voicePrivacyConfirmButton, ui.WithTimeout(2*time.Second).WaitUntilGone(voicePrivacyConfirmButton)),
 			uiauto.Sleep(time.Second),
 			func(ctx context.Context) error {
 				return voice.AudioFromFile(ctx, s.DataPath(voiceInputData.VoiceFile))
@@ -161,7 +161,7 @@ func InputMethodShelfInputs(ctx context.Context, s *testing.State) {
 			// The privacy dialog does not appear on all devices.
 			uiauto.IfSuccessThen(
 				ui.WithTimeout(2*time.Second).WaitUntilExists(handwritingPrivacyConfirmButton),
-				ui.LeftClick(handwritingPrivacyConfirmButton),
+				ui.DoDefaultUntil(handwritingPrivacyConfirmButton, ui.WithTimeout(2*time.Second).WaitUntilGone(handwritingPrivacyConfirmButton)),
 			),
 			func(ctx context.Context) error {
 				hwCtx, err := vkb.NewContext(cr, tconn).NewHandwritingContext(ctx)
