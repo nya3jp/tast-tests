@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/local/bundles/cros/network/routing"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet"
-	"chromiumos/tast/local/bundles/cros/network/virtualnet/env"
 	"chromiumos/tast/testing"
 )
 
@@ -38,27 +37,19 @@ func RoutingHighPriority(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	// All the Envs in this test should have both IPv4 and IPv6 addresses.
-	getEnvAddrs := func(e *env.Env) *env.IfaceAddrs {
-		addrs, err := routing.WaitDualStackIPsInEnv(ctx, e)
-		if err != nil {
-			s.Fatalf("Failed to get addrs of inside env %s: %v", e.NetNSName, err)
+	if errs := testEnv.VerifyBaseNetwork(ctx, routing.VerifyOptions{
+		IPv4:      true,
+		IPv6:      true,
+		IsPrimary: true,
+		Timeout:   30 * time.Second,
+	}); len(errs) != 0 {
+		for _, err := range errs {
+			s.Error("Failed to verify base network before creating test network: ", err)
 		}
-		return addrs
+		return
 	}
 
-	// Check that the base network is reachable via both IPv4 and IPv6. Note that
-	// when the service becomes Online, it may not be available in both families
-	// and thus the initial ping may fail.
-	baseServerAddrs := getEnvAddrs(testEnv.BaseServer)
-	for _, user := range []string{"root", "chronos"} {
-		for _, ip := range baseServerAddrs.All() {
-			if err := routing.ExpectPingSuccessWithTimeout(ctx, ip.String(), user, 10*time.Second); err != nil {
-				s.Fatalf("Non-local address %v on the primary network is not reachable as user %s: %v", ip, user, err)
-			}
-		}
-	}
-
+	// Create a test network
 	testNetworkOpts := virtualnet.EnvOptions{
 		Priority:   routing.HighPriority,
 		NameSuffix: routing.TestSuffix,
@@ -68,35 +59,30 @@ func RoutingHighPriority(ctx context.Context, s *testing.State) {
 	if err := testEnv.CreateNetworkEnvForTest(ctx, testNetworkOpts); err != nil {
 		s.Fatal("Failed to create network for test: ", err)
 	}
-
 	if err := testEnv.WaitForServiceOnline(ctx, testEnv.TestService); err != nil {
 		s.Fatal("Failed to wait for service in test online: ", err)
 	}
 
-	testServerAddrs := getEnvAddrs(testEnv.TestServer)
-	baseRouterAddrs := getEnvAddrs(testEnv.BaseRouter)
-	for _, user := range []string{"root", "chronos"} {
-		// The secondary network should not be used (as default route) as long as the
-		// primary network is Online.
-		for _, ip := range baseServerAddrs.All() {
-			if err := routing.ExpectPingFailure(ctx, ip.String(), user); err != nil {
-				s.Errorf("Non-local address %v on the secondary network should not be reachable as user %s: %v", ip, user, err)
-			}
-		}
-
-		// Verify that default routes work for the primary network.
-		for _, ip := range testServerAddrs.All() {
-			if err := routing.ExpectPingSuccessWithTimeout(ctx, ip.String(), user, 10*time.Second); err != nil {
-				s.Errorf("Non-local address %v on the primary network is not reachable as user %s: %v", ip, user, err)
-			}
-		}
-
-		// Local addresses on the secondary network should still be reachable.
-		// TODO(b/235050937): IPv6 peer on local subnet of the secondary network is
-		// not reachable. Only check IPv4 now.
-		ip := baseRouterAddrs.IPv4Addr
-		if err := routing.ExpectPingSuccess(ctx, ip.String(), user); err != nil {
-			s.Errorf("Local address %v on the secondary network is not reachable as user %s: %v", ip, user, err)
+	if errs := testEnv.VerifyTestNetwork(ctx, routing.VerifyOptions{
+		IPv4:      true,
+		IPv6:      true,
+		IsPrimary: true,
+		Timeout:   30 * time.Second,
+	}); len(errs) != 0 {
+		for _, err := range errs {
+			s.Error("Failed to verify test network after creating test network: ", err)
 		}
 	}
+
+	if errs := testEnv.VerifyBaseNetwork(ctx, routing.VerifyOptions{
+		IPv4:      true,
+		IPv6:      true,
+		IsPrimary: false,
+		Timeout:   0,
+	}); len(errs) != 0 {
+		for _, err := range errs {
+			s.Error("Failed to verify base network after creating test network: ", err)
+		}
+	}
+
 }
