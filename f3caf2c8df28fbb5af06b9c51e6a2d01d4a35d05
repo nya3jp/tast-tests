@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebfb1ad8_cb518126",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/browser_shell_audio_tone_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-10T14:31:28Z",
+      "side": 1,
+      "message": "I think if this is exercising browser stuff, lacros variation is needed?",
+      "range": {
+        "startLine": 28,
+        "startChar": 37,
+        "endLine": 28,
+        "endChar": 45
+      },
+      "revId": "f3caf2c8df28fbb5af06b9c51e6a2d01d4a35d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dde30cb_e3775b71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/browser_shell_audio_tone_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-10T14:31:28Z",
+      "side": 1,
+      "message": "huge nit: maybe vk is more common for virtual keyboard?",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 3
+      },
+      "revId": "f3caf2c8df28fbb5af06b9c51e6a2d01d4a35d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cf7d4d6_124dabdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/browser_shell_audio_tone_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-10T14:31:28Z",
+      "side": 1,
+      "message": "nit: const",
+      "revId": "f3caf2c8df28fbb5af06b9c51e6a2d01d4a35d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed315fe_b6e305e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/browser_shell_audio_tone_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-10T14:31:28Z",
+      "side": 1,
+      "message": "could you check err?",
+      "revId": "f3caf2c8df28fbb5af06b9c51e6a2d01d4a35d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f813736_516bc4d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/browser_shell_audio_tone_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-10T14:31:28Z",
+      "side": 1,
+      "message": "const here, too.",
+      "revId": "f3caf2c8df28fbb5af06b9c51e6a2d01d4a35d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
