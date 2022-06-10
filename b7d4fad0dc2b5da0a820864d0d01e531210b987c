@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e634b4d5_34f712ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/usb_hotplug_unplug_suspend_resume.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-10T19:32:06Z",
+      "side": 1,
+      "message": "Timeout deadline extended due to multiple SSH disconnect/connect.",
+      "revId": "b7d4fad0dc2b5da0a820864d0d01e531210b987c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "194b8104_2f576dba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/usb_hotplug_unplug_suspend_resume.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-10T19:32:06Z",
+      "side": 1,
+      "message": "When the test ends, restore USB mux state so that the tests afterwards do not get affected.",
+      "revId": "b7d4fad0dc2b5da0a820864d0d01e531210b987c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

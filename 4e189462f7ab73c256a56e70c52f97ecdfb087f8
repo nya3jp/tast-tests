@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27e5f07b_b90b624a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/usb_hotplug_unplug_suspend_resume.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-10T19:32:06Z",
+      "side": 1,
+      "message": "Renamed to describe the test more accurately. For the stress test, added a new param \"stress\".",
+      "revId": "4e189462f7ab73c256a56e70c52f97ecdfb087f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
