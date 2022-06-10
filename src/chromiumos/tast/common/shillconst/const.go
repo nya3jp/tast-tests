@@ -38,6 +38,7 @@ const (
 	DevicePropertyDBusObject      = "DBus.Object"
 	DevicePropertyInhibited       = "Inhibited"
 	DevicePropertyInterface       = "Interface"
+	DevicePropertyIPConfigs       = "IPConfigs"
 	DevicePropertyPowered         = "Powered"
 	DevicePropertyType            = "Type"
 	DevicePropertySelectedService = "SelectedService"
