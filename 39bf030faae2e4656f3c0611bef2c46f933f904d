@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7dc01211_72682c24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-10T11:09:01Z",
+      "side": 1,
+      "message": "I added common metrics collection here.",
+      "range": {
+        "startLine": 401,
+        "startChar": 6,
+        "endLine": 401,
+        "endChar": 189
+      },
+      "revId": "39bf030faae2e4656f3c0611bef2c46f933f904d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9421ea81_6f3753d9",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 3
