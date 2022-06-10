@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d641cdec_6bfb344b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-06-10T03:19:22Z",
+      "side": 1,
+      "message": "+2 for Tast Review",
+      "revId": "3ed5f8adcb7fedb6b7f2707370cf5f6e5abfc85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1b4dc14_a547a13b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/audio_switch_onboard_speaker_to_hdmi_hotplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-06-10T03:19:22Z",
+      "side": 1,
+      "message": "optional: This seems important. Perhaps this comment should be promoted to be above testing.AddTest ?\n\nA documentation of the test Vars with example values is probably also useful.",
+      "revId": "3ed5f8adcb7fedb6b7f2707370cf5f6e5abfc85d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
