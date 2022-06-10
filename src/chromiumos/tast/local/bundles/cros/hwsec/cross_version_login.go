@@ -175,6 +175,14 @@ func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.Cryptoho
 		return errors.Wrap(err, "failed to list vault keys")
 	}
 	if authConfig.AuthType == hwsec.PassAuth {
+		for _, vaultKey := range config.ExtraVaultKeys {
+			if _, err := cryptohome.CheckVault(ctx, vaultKey.KeyLabel, hwsec.NewPassAuthConfig(username, vaultKey.Password)); err != nil {
+				return errors.Wrap(err, "failed to check vault with extra vault key")
+			}
+			if err := cryptohome.RemoveVaultKey(ctx, username, password, vaultKey.KeyLabel); err != nil {
+				return errors.Wrap(err, "failed to remove extra vault key")
+			}
+		}
 		if err := cryptohome.AddVaultKey(ctx, username, password, config.KeyLabel, newPassword, newLabel, false); err != nil {
 			return errors.Wrap(err, "failed to add key")
 		}
