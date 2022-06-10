@@ -39,6 +39,29 @@
       },
       "revId": "7386003281ec6c2d19d07bc9078d3e2b2765fe90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de8935c9_7747a948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-10T14:38:22Z",
+      "side": 1,
+      "message": "s.Fatal() on failure, maybe?",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 8
+      },
+      "revId": "7386003281ec6c2d19d07bc9078d3e2b2765fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
