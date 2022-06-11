@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ada8db51_b45569ef",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-11T03:40:01Z",
+      "side": 1,
+      "message": "can we return -1 or something?",
+      "range": {
+        "startLine": 116,
+        "startChar": 9,
+        "endLine": 116,
+        "endChar": 10
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b6d8bde9_64badf1f",
         "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
         "patchSetId": 3
@@ -135,6 +158,23 @@
         "endLine": 152,
         "endChar": 29
       },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02531058_1c01c411",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-11T03:40:01Z",
+      "side": 1,
+      "message": "I don\u0027t think you actually need to do this. This is only done in a normal connection flow because shill requests a DHCP lease, but in this case, you\u0027re directly using `ip` to set up the routes.",
       "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
