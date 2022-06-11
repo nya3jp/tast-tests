@@ -181,6 +181,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40c6447c_d4f9b84a",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-06-11T06:41:05Z",
+      "side": 1,
+      "message": "why not return err when err!\u003dnil ? If isAssociated returned error then what is the point of checking isAssoc? And, return nil here.",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 12
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9bea2c04_3efc63e0",
         "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
         "patchSetId": 3
@@ -197,6 +220,52 @@
         "startChar": 1,
         "endLine": 265,
         "endChar": 2
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e695ba2c_706e35dc",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-06-11T06:41:05Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 271,
+        "startChar": 49,
+        "endLine": 271,
+        "endChar": 58
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cda77062_4715ddb4",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1426782
+      },
+      "writtenOn": "2022-06-11T06:41:05Z",
+      "side": 1,
+      "message": "same as above, why not return err inside if err !\u003d nil {} block and return nil here ?",
+      "range": {
+        "startLine": 276,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 12
       },
       "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
