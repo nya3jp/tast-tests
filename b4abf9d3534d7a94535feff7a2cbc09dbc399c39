@@ -50,6 +50,24 @@
       "message": "I think this is a great function to move in cryptohome_client.go",
       "revId": "b4abf9d3534d7a94535feff7a2cbc09dbc399c39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4606649d_b0bafd2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/persistent_create_auth_session.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-11T17:00:52Z",
+      "side": 1,
+      "message": "Thanks for the idea, let\u0027s consider it for a follow-up CL indeed.",
+      "parentUuid": "29a5a303_f3cbc4ab",
+      "revId": "b4abf9d3534d7a94535feff7a2cbc09dbc399c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
