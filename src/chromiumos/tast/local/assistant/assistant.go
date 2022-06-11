@@ -13,6 +13,9 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -79,6 +82,36 @@ func SendTextQuery(ctx context.Context, tconn *chrome.TestConn, query string) (Q
 	var status QueryStatus
 	err := tconn.Call(ctx, &status, `tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)`, query, 10*1000 /* timeout_ms */)
 	return status, err
+}
+
+// SendTextQueryViaUI sends a text query via launcher.
+// Comparing with SendTextQuery, this one does not wait an Assistant response.
+func SendTextQueryViaUI(ctx context.Context, tconn *chrome.TestConn, query string, accel Accelerator) error {
+	// Open Assistant UI
+	if err := ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
+		return errors.Wrap(err, "failed to toggle Assistant UI with hotkey")
+	}
+
+	assistantUI := nodewith.HasClass("AssistantPageView")
+	if err := uiauto.New(tconn).WaitUntilExists(assistantUI)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait AssistantPageView")
+	}
+
+	// Type query
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a KeyboardEventWriter")
+	}
+	defer kb.Close()
+
+	if err := kb.Type(ctx, query); err != nil {
+		return errors.Wrapf(err, "failed to type query: %s", query)
+	}
+	if err := kb.TypeKey(ctx, input.KEY_ENTER); err != nil {
+		return errors.Wrap(err, "failed to type Enter key to submit a query")
+	}
+
+	return nil
 }
 
 // SetHotwordEnabled turns on/off "OK Google" hotword detection for Assistant.
