@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a83d497d_762a92a3",
+        "filename": "src/chromiumos/tast/common/usbutils/display_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-11T10:11:46Z",
+      "side": 1,
+      "message": "Using `dut` to indicate whether it is remote or local doesn\u0027t sound like a good solution and can be confusing.\n\nSuggest to refactor the method to:\n```\nfunc externalDisplayDetection(ctx context.Context, dut *dut.DUT, numberOfDisplays int, regexpPatterns []*regexp.Regexp, remoteTest bool) error {\n...\n}\n```\n\nand create two wrappers `ExternalDisplayDetectionForLocal` and `ExternalDisplayDetectionForRemote`.",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 44
+      },
+      "revId": "aabda3bce4c38d922bf11f976f1de0188c4d0c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71200af0_175df07c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/system_peripherals_functionality_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-11T10:11:46Z",
+      "side": 1,
+      "message": "Please also specific the `Timeout` field.",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "aabda3bce4c38d922bf11f976f1de0188c4d0c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
