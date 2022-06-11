@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "75560143c8fcebc2e0ffb3d1c977e0ebda1b4f1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfe8c665_e7a1f2b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1284845
+      },
+      "writtenOn": "2022-06-11T00:14:32Z",
+      "side": 1,
+      "message": "Why do we change to use ACUITI here and below?",
+      "range": {
+        "startLine": 92,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 70
+      },
+      "revId": "75560143c8fcebc2e0ffb3d1c977e0ebda1b4f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
