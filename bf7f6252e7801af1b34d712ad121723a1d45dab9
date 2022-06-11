@@ -34,6 +34,24 @@
       "parentUuid": "c639baea_9d743b55",
       "revId": "bf7f6252e7801af1b34d712ad121723a1d45dab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ae5cc1d_c9b5e77e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-06-11T01:57:47Z",
+      "side": 1,
+      "message": "Sorry for the slow response, this fell off my radar as I wasn\u0027t in the attention set :) I think it\u0027s fine to disable for VMs and move in. Any CQ coverage is better than no CQ coverage :)",
+      "parentUuid": "7af63072_62688f83",
+      "revId": "bf7f6252e7801af1b34d712ad121723a1d45dab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
