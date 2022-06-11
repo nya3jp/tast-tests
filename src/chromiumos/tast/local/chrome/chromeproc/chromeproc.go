@@ -61,3 +61,8 @@ func GetGPUProcesses() ([]*process.Process, error) {
 func GetBrokerProcesses() ([]*process.Process, error) {
 	return chromeproc.BrokerProcesses(ashproc.ExecPath)
 }
+
+// GetUtilityProcesses returns Chrome utility processes.
+func GetUtilityProcesses() ([]*process.Process, error) {
+	return chromeproc.UtilityProcesses(ashproc.ExecPath)
+}
