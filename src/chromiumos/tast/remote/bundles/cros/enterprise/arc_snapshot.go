@@ -6,6 +6,7 @@ package enterprise
 
 import (
 	"context"
+	"net/http"
 	"strings"
 	"time"
 
@@ -32,8 +33,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", "reboot", "arc", "tpm2", "amd64"},
 		Timeout:      40 * time.Minute,
 		VarDeps: []string{
-			"enterprise.ArcSnapshot.user",
-			"enterprise.ArcSnapshot.pass",
 			"enterprise.ArcSnapshot.packages",
 			"tape.service_account_key",
 			"tape.managedchrome_id",
@@ -42,8 +41,6 @@ func init() {
 }
 
 func ArcSnapshot(ctx context.Context, s *testing.State) {
-	enrollUser := s.RequiredVar("enterprise.ArcSnapshot.user")
-	enrollPass := s.RequiredVar("enterprise.ArcSnapshot.pass")
 	packages := strings.Split(s.RequiredVar("enterprise.ArcSnapshot.packages"), ",")
 
 	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
@@ -56,6 +53,29 @@ func ArcSnapshot(ctx context.Context, s *testing.State) {
 		}
 	}(ctx)
 
+	tapeClient, err := tape.NewTapeClient(ctx, tape.WithCredsJSON([]byte(s.RequiredVar("tape.service_account_key"))))
+	if err != nil {
+		s.Fatal("Failed to create tape client: ", err)
+	}
+
+	poolID := "arc_snapshot"
+	reqOTAparams := tape.RequestOTAParams{
+		TimeoutInSeconds: 40 * 60,
+		PoolID:           &poolID,
+		Lock:             false,
+	}
+	acc, err := tape.RequestAccount(ctx, reqOTAparams, tapeClient)
+	if err != nil {
+		s.Fatal("RequestAccount failed: ", err)
+	}
+
+	defer func(ctx context.Context, tapeClient *http.Client) {
+		err = acc.ReleaseAccount(ctx, tapeClient)
+		if err != nil {
+			s.Fatal("ReleaseAccount failed: ", err)
+		}
+	}(ctx, tapeClient)
+
 	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
@@ -65,7 +85,7 @@ func ArcSnapshot(ctx context.Context, s *testing.State) {
 	service := enterprise.NewArcSnapshotServiceClient(cl.Conn)
 
 	s.Log("Enrolling device")
-	if _, err = service.Enroll(ctx, &enterprise.EnrollRequest{User: enrollUser, Pass: enrollPass}); err != nil {
+	if _, err = service.Enroll(ctx, &enterprise.EnrollRequest{User: acc.UserName, Pass: acc.Password}); err != nil {
 		s.Fatal("Remote call Enroll() failed: ", err)
 	}
 
@@ -82,10 +102,7 @@ func ArcSnapshot(ctx context.Context, s *testing.State) {
 		var request tape.DeprovisionRequest
 		request.DeviceID = res.DeviceID
 		request.CustomerID = customerID
-		tapeClient, err := tape.NewTapeClient(ctx, tape.WithCredsJSON([]byte(s.RequiredVar("tape.service_account_key"))))
-		if err != nil {
-			s.Fatal("Failed to create tape client: ", err)
-		}
+
 		if err = tape.Deprovision(ctx, request, tapeClient); err != nil {
 			s.Fatalf("Failed to deprovision device %s: %v", request.DeviceID, err)
 		}
