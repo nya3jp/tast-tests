@@ -132,33 +132,11 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 		return errors.Wrap(err, "failed to drag browser window back from the middle")
 	}
 
-	// Maximize window.
-	maximizeButton := nodewith.Name("Maximize").ClassName("FrameCaptionButton").Role(role.Button)
-	if err := ui.LeftClick(maximizeButton)(ctx); err != nil {
-		return errors.Wrap(err, "failed to maximize the browser window")
-	}
-	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-		return w.ID == browserWinID && w.State == ash.WindowStateMaximized && !w.IsAnimating
-	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return errors.Wrap(err, "failed to wait for browser window to become maximized")
-	}
-
-	// Minimize window in a way that does not trigger https://crbug.com/1324662.
-	// TODO(https://crbug.com/1324662): When the bug is fixed, minimize window
-	// in a way similar to the above code that maximizes the window. It better
-	// represents a real user workflow.
-	if err := ash.SetWindowStateAndWait(ctx, tconn, browserWinID, ash.WindowStateMinimized); err != nil {
-		return errors.Wrap(err, "failed to minimize the browser window")
-	}
-
-	// Restore window.
-	if _, err := ash.SetWindowState(ctx, tconn, browserWinID, ash.WMEventNormal, true /* waitForStateChange */); err != nil {
-		return errors.Wrap(err, "failed to set the browser window state to normal")
-	}
-	if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-		return w.ID == browserWinID && w.State == ash.WindowStateNormal && !w.IsAnimating
-	}, &testing.PollOptions{Timeout: timeout}); err != nil {
-		return errors.Wrap(err, "failed to wait for browser window to become normal")
+	// Maximize window and then minimize and restore it.
+	for _, windowState := range []ash.WindowStateType{ash.WindowStateMaximized, ash.WindowStateMinimized, ash.WindowStateNormal} {
+		if err := ash.SetWindowStateAndWait(ctx, tconn, browserWinID, windowState); err != nil {
+			return errors.Wrapf(err, "failed to set browser window state to %v", windowState)
+		}
 	}
 
 	// Lacros browser sometime restores to a different bounds so calculate
