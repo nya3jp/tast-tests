@@ -1,0 +1,198 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d474bf3b_bb56dd45",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-11T03:57:33Z",
+      "side": 1,
+      "message": "please explain what this means.",
+      "range": {
+        "startLine": 299,
+        "startChar": 71,
+        "endLine": 299,
+        "endChar": 81
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4031893_246149b2",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-11T03:57:33Z",
+      "side": 1,
+      "message": "TrimSpace?",
+      "range": {
+        "startLine": 340,
+        "startChar": 16,
+        "endLine": 340,
+        "endChar": 26
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5907af9f_77a28182",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-11T03:57:33Z",
+      "side": 1,
+      "message": "you should probably do a bounds check",
+      "range": {
+        "startLine": 340,
+        "startChar": 27,
+        "endLine": 340,
+        "endChar": 32
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab778129_1a50037b",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-11T03:57:33Z",
+      "side": 1,
+      "message": "leave a comment here explaining what this means",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92020e42_4fe53d10",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-11T03:57:33Z",
+      "side": 1,
+      "message": "This isn\u0027t a P2P specific function.",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe17084b_9049861a",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-11T03:57:33Z",
+      "side": 1,
+      "message": "this should be done using wpa_monitor for the ScanDone event",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92545436_1554cd1c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-11T03:57:33Z",
+      "side": 1,
+      "message": "what\u0027s this for?",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e4958ee_5d6584e1",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-11T03:57:33Z",
+      "side": 1,
+      "message": "Can we call this p2pGroupSSID? Same with passphrase",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 10
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5be6753_02190bf3",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-11T03:57:33Z",
+      "side": 1,
+      "message": "Is this necessary? Isn\u0027t p2p_group_add a blocking call?",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f76f838_d2e1e4f5",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1467,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-11T03:57:33Z",
+      "side": 1,
+      "message": "It doesn\u0027t really make sense to me that you check for the interface using iw and remove it using wpa_cli. Can you do both using wpa_cli?",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
