@@ -42,6 +42,25 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
+		Name: "assistantBaseWithStartAudioDecoderOnDemand",
+		Desc: "Chrome session for assistant testing with StartAssistantAudioDecoderOnDemand flag",
+		Contacts: []string{
+			"yawano@google.com",
+			"assitive-eng@google.com",
+		},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				VerboseLogging(),
+				chrome.EnableFeatures("StartAssistantAudioDecoderOnDemand"),
+				chrome.ExtraArgs(arc.DisableSyncFlags()...),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
 		Name: "assistantBaseWithLegacyLauncher",
 		Desc: "Chrome session for assistant testing and productivity launcher disabled",
 		Contacts: []string{
@@ -98,6 +117,23 @@ func init() {
 			"assistive-eng@google.com",
 		},
 		Parent: "assistantBase",
+		Impl: NewAssistantFixture(func(s *testing.FixtState) FixtData {
+			return FixtData{
+				Chrome: s.ParentValue().(*chrome.Chrome),
+			}
+		}),
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "assistantWithStartAudioDecoderOnDemand",
+		Desc: "Assistant is enabled",
+		Contacts: []string{
+			"yawano@google.com",
+			"assistive-eng@google.com",
+		},
+		Parent: "assistantBaseWithStartAudioDecoderOnDemand",
 		Impl: NewAssistantFixture(func(s *testing.FixtState) FixtData {
 			return FixtData{
 				Chrome: s.ParentValue().(*chrome.Chrome),

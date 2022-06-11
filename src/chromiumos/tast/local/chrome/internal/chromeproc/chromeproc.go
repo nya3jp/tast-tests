@@ -124,6 +124,7 @@ var (
 	rendererRE = regexp.MustCompile(` --type=renderer(?: |$)`)
 	gpuRE      = regexp.MustCompile(` --type=gpu-process(?: |$)`)
 	brokerRE   = regexp.MustCompile(` --type=broker(?: |$)`)
+	utilityRE  = regexp.MustCompile(` --type=utility(?: |$)`)
 )
 
 // PluginProcesses returns Chrome plugin processes.
@@ -144,4 +145,9 @@ func GPUProcesses(execPath string) ([]*process.Process, error) {
 // BrokerProcesses returns Chrome broker processes.
 func BrokerProcesses(execPath string) ([]*process.Process, error) {
 	return processesByArgs(execPath, brokerRE)
+}
+
+// UtilityProcesses returns Chrome utility processes.
+func UtilityProcesses(execPath string) ([]*process.Process, error) {
+	return processesByArgs(execPath, utilityRE)
 }
