@@ -33,6 +33,24 @@
       "message": "test build failure:\n\ntast-local-tests-cros-0.0.2-r10942: --- FAIL: TestEntityLabelInheritance (0.07s)\ntast-local-tests-cros-0.0.2-r10942:     fixture_tree_test.go:27: fixture chromeLoggedInWithGaiaProductivityLauncher, referenced by test launcher.SearchInstalledApps.productivity_launcher_clamshell_mode, not found\ntast-local-tests-cros-0.0.2-r10942:     fixture_tree_test.go:27: fixture chromeLoggedInWithGaiaProductivityLauncher, referenced by test launcher.RecentApps.cws_clamshell, not found\ntast-local-tests-cros-0.0.2-r10942:     fixture_tree_test.go:27: fixture chromeLoggedInWithGaiaProductivityLauncher, referenced by test launcher.RecentApps.cws_tablet, not found\ntast-local-tests-cros-0.0.2-r10942:     fixture_tree_test.go:27: fixture chromeLoggedInWithGaiaProductivityLauncher, referenced by test launcher.SearchInstalledApps.productivity_launcher_tablet_mode, not found\ntast-local-tests-cros-0.0.2-r10942: FAIL",
       "revId": "ff6a7e81cfbc187fc34779d48e8258344c684443",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aaf65d8_9796312b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-12T09:22:02Z",
+      "side": 1,
+      "message": "Thanks for sharing the logs.\n\nBut I guess, these failures are not related to our CL. We have rebased the CL, can you please give CR+2, so that we can do dry run?",
+      "parentUuid": "d507accd_709d51c5",
+      "revId": "ff6a7e81cfbc187fc34779d48e8258344c684443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
