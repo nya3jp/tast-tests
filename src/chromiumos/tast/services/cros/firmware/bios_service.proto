@@ -85,6 +85,8 @@ enum ImageSection {
   RWVPDImageSection = 7;
   RECOVERYMRCCACHEImageSection = 8;
   APROImageSection = 9;
+  FWSignAImageSection = 10;
+  FWSignBImageSection = 11;
 }
 
 enum UpdateMode {
