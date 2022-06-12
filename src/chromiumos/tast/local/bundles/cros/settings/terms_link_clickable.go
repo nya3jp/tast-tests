@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -23,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TermsLinkClickable,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks the terms of service link is clickable within help page",
 		Contacts: []string{
 			"cienet-development@googlegroups.com",
@@ -32,33 +34,47 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 // TermsLinkClickable checks the chrome://terms link is clickable within 'About ChromeOS' and chrome://help.
 func TermsLinkClickable(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create test API connection: ", err)
-	}
-
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create test API connection: ", err)
+	}
+	// Setup a browser.
+	bt := s.Param().(browser.Type)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, bt)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+
 	webPageTest := func(ctx context.Context, s *testing.State) {
-		conn, err := cr.NewConn(ctx, "chrome://help")
+		conn, err := br.NewConn(ctx, "chrome://help")
 		if err != nil {
 			s.Fatal("Failed to connect to chrome: ", err)
 		}
 		defer conn.Close()
 		defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "web_page_dump")
 
-		if err := checkTermsOfService(ctx, cr, tconn, s.OutDir()); err != nil {
-			s.Fatal("Failed to click from web page: ", err)
+		if err := checkTermsOfService(ctx, cr, br, tconn, s.OutDir()); err != nil {
+			s.Fatalf("Failed to open terms in %v browser from web page: %v", bt, err)
 		}
 	}
 
@@ -70,8 +86,8 @@ func TermsLinkClickable(ctx context.Context, s *testing.State) {
 		defer settings.Close(cleanupCtx)
 		defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ossettings_dump")
 
-		if err := checkTermsOfService(ctx, cr, tconn, s.OutDir()); err != nil {
-			s.Fatal("Failed to click from settings page: ", err)
+		if err := checkTermsOfService(ctx, cr, br, tconn, s.OutDir()); err != nil {
+			s.Fatalf("Failed to open terms in %v browser from settings page: %v", bt, err)
 		}
 	}
 
@@ -88,7 +104,7 @@ func TermsLinkClickable(ctx context.Context, s *testing.State) {
 	}
 }
 
-func checkTermsOfService(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, outDir string) error {
+func checkTermsOfService(ctx context.Context, cr *chrome.Chrome, br *browser.Browser, tconn *chrome.TestConn, outDir string) error {
 	ui := uiauto.New(tconn)
 
 	termsOfServiceLink := nodewith.Name("Terms of Service").Role(role.Link)
@@ -100,16 +116,16 @@ func checkTermsOfService(ctx context.Context, cr *chrome.Chrome, tconn *chrome.T
 		return err
 	}
 
-	return verifyContent(ctx, cr, outDir)
+	return verifyContent(ctx, cr, br, outDir)
 }
 
-func verifyContent(ctx context.Context, cr *chrome.Chrome, outDir string) (err error) {
+func verifyContent(ctx context.Context, cr *chrome.Chrome, br *browser.Browser, outDir string) (err error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
 	url := "chrome://terms/"
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
+	conn, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
 	if err != nil {
 		return errors.Wrapf(err, "failed to connect to window %s", url)
 	}
@@ -123,6 +139,5 @@ func verifyContent(ctx context.Context, cr *chrome.Chrome, outDir string) (err e
 	if err := conn.WaitForExprWithTimeout(ctx, expr, 10*time.Second); err != nil {
 		return errors.Wrap(err, "unexpected page content")
 	}
-
 	return nil
 }

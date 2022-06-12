@@ -13,6 +13,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -24,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeOSPageInfo,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check the ChromeOS page shows enough information to user",
 		Contacts: []string{
 			"cienet-development@googlegroups.com",
@@ -35,23 +37,37 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 // ChromeOSPageInfo checks chromeOS version info and online help available to user.
 func ChromeOSPageInfo(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
-
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	ui := uiauto.New(tconn)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+	// Setup a browser.
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+
+	ui := uiauto.New(tconn).WithInterval(time.Second)
 
 	s.Log("Open setting page and starting test")
 	settings, err := ossettings.LaunchAtPage(ctx, tconn, ossettings.AboutChromeOS)
@@ -83,12 +99,12 @@ func ChromeOSPageInfo(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Check detailed build informations")
-	if err := checkDetail(ui, settings)(ctx); err != nil {
+	if err := checkDetail(ui, br, settings)(ctx); err != nil {
 		s.Fatal("Failed to check detailed build informations: ", err)
 	}
 
 	s.Log("Check open source links")
-	if err := checkOpenSources(ui, cr, settings)(ctx); err != nil {
+	if err := checkOpenSources(ui, br, settings)(ctx); err != nil {
 		s.Fatal("Failed to check open source links: ", err)
 	}
 
@@ -129,13 +145,14 @@ func checkReportIssue(ui *uiauto.Context, settings *ossettings.OSSettings) uiaut
 	)
 }
 
-func checkDetail(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Action {
+func checkDetail(ui *uiauto.Context, br *browser.Browser, settings *ossettings.OSSettings) uiauto.Action {
 	detailRoot := nodewith.Name("Chrome - About Version").HasClass("BrowserFrame").Role(role.Window)
 
 	// The "Additional Details" can be off-screen when the screen size is small.
 	// Focus before clicking to ensure it is on-screen.
 	return uiauto.Combine("click details",
 		settings.FocusAndWait(ossettings.AdditionalDetails),
+		// Check channel
 		settings.LeftClick(ossettings.AdditionalDetails),
 		func(ctx context.Context) error {
 			arr, err := ui.Info(ctx, ossettings.ChangeChannelBtn)
@@ -147,7 +164,18 @@ func checkDetail(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Act
 			}
 			return nil
 		},
+		// Check build details on version page in primary browser
 		settings.LeftClick(ossettings.BuildDetailsBtn),
+		ui.RetrySilently(5, func(ctx context.Context) error {
+			ok, err := br.IsTargetAvailable(ctx, chrome.MatchTargetURL("chrome://version/"))
+			if err != nil {
+				return err
+			}
+			if !ok {
+				return errors.New("failed to find version page on primary browser")
+			}
+			return nil
+		}),
 		ui.WaitUntilExists(nodewith.Name("Platform").Role(role.StaticText).Ancestor(detailRoot)),
 		ui.LeftClick(nodewith.Name("Close").HasClass("FrameCaptionButton").Ancestor(detailRoot)),
 		ui.WaitUntilGone(detailRoot),
@@ -156,7 +184,7 @@ func checkDetail(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Act
 	)
 }
 
-func checkOpenSources(ui *uiauto.Context, cr *chrome.Chrome, settings *ossettings.OSSettings) uiauto.Action {
+func checkOpenSources(ui *uiauto.Context, br *browser.Browser, settings *ossettings.OSSettings) uiauto.Action {
 	return func(ctx context.Context) error {
 		// Focus on the second link to ensure both links are on-screen.
 		if err := settings.FocusAndWait(ossettings.OpenSourceSoftwares.Nth(1))(ctx); err != nil {
@@ -186,7 +214,7 @@ func checkOpenSources(ui *uiauto.Context, cr *chrome.Chrome, settings *ossetting
 				return errors.Wrap(err, "failed to click on opensource link")
 			}
 
-			conn, err := cr.NewConnForTarget(matchTargetCtx, chrome.MatchTargetURL(opensource.url))
+			conn, err := br.NewConnForTarget(matchTargetCtx, chrome.MatchTargetURL(opensource.url))
 			if err != nil {
 				return errors.Wrap(err, "failed to find expected page")
 			}
