@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a2a1a09_d4416293",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-12T03:59:55Z",
+      "side": 1,
+      "message": "Let\u0027s explain more how this CL fixes these failures",
+      "revId": "c2247684bf19144f280897ab50cb7298d668aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212ac33f_243e29bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-12T03:59:55Z",
+      "side": 1,
+      "message": "Should we keep the comment about https://crbug.com/1324662? I think we prefer to send mouse events rather than calling an api",
+      "revId": "c2247684bf19144f280897ab50cb7298d668aeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
