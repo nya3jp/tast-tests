@@ -85,6 +85,14 @@ const (
 
 	// WaitSoftwareSync causes the mode switcher to sleep the `SoftwareSyncUpdate` time before finishing the boot.
 	WaitSoftwareSync ModeSwitchOption = iota
+
+	// SkipWaitConnect can be passed in as an option to ModeAwareReboot, skipping
+	// waiting for establish connection after resetting DUT. It is useful when
+	// systen cannot boot due to a corrupted firmware.
+	SkipWaitConnect ModeSwitchOption = iota
+
+	// AssumeRecoveryMode cause skip checking current boot mode and assume that recovery is current boot mode
+	AssumeRecoveryMode ModeSwitchOption = iota
 )
 
 // msOptsContain determines whether a slice of ModeSwitchOptions contains a specific Option.
@@ -199,7 +207,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 	case fwCommon.BootModeRecovery:
 		// Recovery mode requires the DUT to boot the image on the USB.
 		// Thus, the servo must show the USB to the DUT.
-		if err := ms.enableRecMode(ctx, servo.USBMuxDUT); err != nil {
+		if err := ms.EnableRecMode(ctx, servo.USBMuxDUT); err != nil {
 			return err
 		}
 		// Reconnect to the DUT.
@@ -245,7 +253,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			// 1. Set power_state to 'rec', but don't show the DUT a USB image to boot from.
 			// 2. From the firmware screen that appears, press keys to transition to dev mode.
 			//    The specific keypresses will depend on the DUT's ModeSwitcherType.
-			if err := ms.enableRecMode(ctx, servo.USBMuxOff); err != nil {
+			if err := ms.EnableRecMode(ctx, servo.USBMuxOff); err != nil {
 				return err
 			}
 			if err := ms.fwScreenToDevMode(ctx); err != nil {
@@ -295,7 +303,7 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			// 2. From the firmware screen that appears, press keys to transition to dev mode.
 			//    The specific keypresses will depend on the DUT's ModeSwitcherType.
 			testing.ContextLog(ctx, "Rebooting to enter dev mode first")
-			if err := ms.enableRecMode(ctx, servo.USBMuxOff); err != nil {
+			if err := ms.EnableRecMode(ctx, servo.USBMuxOff); err != nil {
 				return err
 			}
 			if err := ms.fwScreenToDevMode(ctx); err != nil {
@@ -412,9 +420,15 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 		return errors.Wrap(err, "requiring servo")
 	}
 
-	fromMode, err := h.Reporter.CurrentBootMode(ctx)
-	if err != nil {
-		return errors.Wrap(err, "determining boot mode at the start of ModeAwareReboot")
+	var fromMode fwCommon.BootMode
+	if msOptsContain(opts, AssumeRecoveryMode) {
+		fromMode = fwCommon.BootModeRecovery
+	} else {
+		var err error
+		fromMode, err = h.Reporter.CurrentBootMode(ctx)
+		if err != nil {
+			return errors.Wrap(err, "determining boot mode at the start of ModeAwareReboot")
+		}
 	}
 
 	// Memorize the boot ID, so that we can compare later.
@@ -427,6 +441,7 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 	if err := h.DUT.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
 		testing.ContextLogf(ctx, "Failed to sync DUT: %s", err)
 	}
+
 	h.CloseRPCConnection(ctx)
 
 	if fromMode == fwCommon.BootModeUSBDev {
@@ -484,6 +499,11 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 		if err := testing.Sleep(ctx, h.Config.SoftwareSyncUpdate); err != nil {
 			return errors.Wrapf(err, "sleeping for %s (SoftwareSyncUpdate)", h.Config.SoftwareSyncUpdate)
 		}
+	}
+
+	if msOptsContain(opts, SkipWaitConnect) {
+		testing.ContextLog(ctx, "Skip waiting to establish connection to DUT")
+		return nil
 	}
 
 	// If in dev mode, bypass the TO_DEV screen.
@@ -754,10 +774,10 @@ func (ms *ModeSwitcher) fwScreenToUSBDevMode(ctx context.Context) error {
 	return nil
 }
 
-// enableRecMode powers the DUT into the "rec" state, but does not wait to reconnect to the DUT.
+// EnableRecMode powers the DUT into the "rec" state, but does not wait to reconnect to the DUT.
 // If booting into rec mode, usbMux should point to the DUT, so that the DUT can finish booting into recovery mode.
 // Otherwise, usbMux should be off. This will prevent the DUT from transitioning to rec mode, so other operations can be performed (such as bypassing to dev mode).
-func (ms *ModeSwitcher) enableRecMode(ctx context.Context, usbMux servo.USBMuxState) error {
+func (ms *ModeSwitcher) EnableRecMode(ctx context.Context, usbMux servo.USBMuxState) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")

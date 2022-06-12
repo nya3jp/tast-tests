@@ -69,6 +69,12 @@ const (
 
 	// RecoveryMode is the named chromeOS Firmware Updater to perform firmware recovery mode.
 	RecoveryMode FirmwareUpdateMode = "--mode=recovery"
+	
+	// FWSignAImageSection is the named section for Firmware A Sign as output from dump_fmap.
+	FWSignAImageSection ImageSection = "VBLOCK_A"
+
+	// FWSignBImageSection is the named section for Firmware B Sign as output from dump_fmap.
+	FWSignBImageSection ImageSection = "VBLOCK_B"
 
 	// gbbHeaderOffset is the location of the GBB header in GBBImageSection.
 	gbbHeaderOffset uint = 12
@@ -77,6 +83,8 @@ const (
 // defaultChromeosFmapConversion converts dump_fmap names to those recognized by flashrom
 var defaultChromeosFmapConversion = map[ImageSection]string{
 	GBBImageSection: "FV_GBB",
+	FWSignAImageSection: "VBOOTA",
+	FWSignBImageSection: "VBOOTB",
 }
 
 // SectionInfo represents the location and size of a firmware image section.

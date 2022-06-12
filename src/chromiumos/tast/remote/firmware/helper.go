@@ -536,20 +536,33 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	}
 	var lsb map[string]string
 	// Failures here are a bad USB image, so don't fail, just write the new image.
-	func() {
+	err = func() error {
 		if err = h.ServoProxy.RunCommand(ctx, true, "mount", "-o", "ro", mountSrc, mountPath); err != nil {
+			if cloudStorage == nil {
+				return errors.Errorf("Mount of %q failed at %q", mountSrc, mountPath)
+			}
 			testing.ContextLogf(ctx, "Mount of %q failed at %q", mountSrc, mountPath)
 		}
 		defer h.ServoProxy.RunCommand(ctx, true, "umount", mountPath)
 		output, err := h.ServoProxy.OutputCommand(ctx, true, "cat", fmt.Sprintf("%s/etc/lsb-release", mountPath))
 		if err != nil {
+			if cloudStorage == nil {
+				return errors.Errorf("Failed to read lsb-release")
+			}
 			testing.ContextLog(ctx, "Failed to read lsb-release")
 		}
 		lsb, err = lsbrelease.Parse(bytes.NewReader(output))
 		if err != nil {
+			if cloudStorage == nil {
+				return errors.Errorf("Failed to parse lsb-release")
+			}
 			testing.ContextLog(ctx, "Failed to parse lsb-release")
 		}
+		return nil
 	}()
+	if err != nil {
+		return errors.Wrap(err, "bad USB image, and requested no USB image download")
+	}
 	releaseBuilderPath := lsb[lsbrelease.BuilderPath]
 	dutBuilderPath, err := h.Reporter.BuilderPath(ctx)
 	if err != nil {
@@ -561,6 +574,9 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 	}
 
 	if !strings.Contains(lsb[lsbrelease.ReleaseTrack], "test") {
+		if cloudStorage == nil {
+			return errors.Errorf("The image on usbkey is not a test image")
+		}
 		testing.ContextLog(ctx, "The image on usbkey is not a test image")
 		releaseBuilderPath = ""
 	}

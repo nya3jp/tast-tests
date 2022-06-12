@@ -32,6 +32,7 @@ const (
 	CrossystemParamMainfwAct          CrossystemParam = "mainfw_act"
 	CrossystemParamMainfwType         CrossystemParam = "mainfw_type"
 	CrossystemParamWpswCur            CrossystemParam = "wpsw_cur"
+	CrossystemParamRecoveryReason     CrossystemParam = "recovery_reason"
 )
 
 var (
@@ -45,6 +46,7 @@ var (
 		CrossystemParamMainfwAct,
 		CrossystemParamMainfwType,
 		CrossystemParamWpswCur,
+		CrossystemParamRecoveryReason,
 	}
 	rCrossystemLine = regexp.MustCompile(`^([^ =]*) *= *(.*[^ ]) *# [^#]*$`)
 )
@@ -106,4 +108,13 @@ func filterCrossystemParams(m map[string]string) map[CrossystemParam]string {
 		}
 	}
 	return filtered
+}
+
+// CheckFWVermodesion verifies that the DUT's active firmware version (A, B) matches an expected firmware version.
+func (r *Reporter) CheckFWVersion(ctx context.Context, expected string) (bool, error) {
+	curr, err := r.CrossystemParam(ctx, CrossystemParamMainfwAct)
+	if err != nil {
+		return false, errors.Wrap(err, "determining DUT firmware version")
+	}
+	return curr == expected, nil
 }
