@@ -38,6 +38,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "graphicsNoChrome",
 		Params: []testing.Param{{
 			Name:              "h264",
 			Val:               chromeStackDecoderLegacyTestParam{dataPath: "test-25fps.h264"},
