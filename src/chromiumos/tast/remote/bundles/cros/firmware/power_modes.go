@@ -6,8 +6,8 @@ package firmware
 
 import (
 	"context"
+	"fmt"
 	"regexp"
-	"strconv"
 	"strings"
 	"time"
 
@@ -31,11 +31,13 @@ type powerModeTestParams struct {
 const (
 	coldReset firmware.ResetType = "coldreset"
 	shutDown  firmware.ResetType = "shutdown"
+	warmReset firmware.ResetType = "warmreset"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PowerModes,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that system comes back after shutdown and coldreset",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com", "cros-fw-engprod@google.com"},
 		ServiceDeps:  []string{"tast.cros.ui.ScreenLockService"},
@@ -51,6 +53,9 @@ func init() {
 		}, {
 			Name: "shutdown",
 			Val:  powerModeTestParams{powermode: shutDown},
+		}, {
+			Name: "warmreset",
+			Val:  powerModeTestParams{powermode: warmReset},
 		},
 		},
 	})
@@ -162,22 +167,33 @@ func PowerModes(ctx context.Context, s *testing.State) {
 			s.Fatal("Previous Sleep state is not 5: ", err)
 		}
 	}
+
+	if testOpt.powermode == "warmreset" {
+		s.Log("Performing warm reset")
+		if err := h.DUT.Reboot(ctx); err != nil {
+			s.Fatal("Failed to reboot DUT: ", err)
+		}
+
+		if err := validatePrevSleepState(ctx, dut, 0); err != nil {
+			s.Fatal("Previous Sleep state is not 0: ", err)
+		}
+	}
 }
 
 // validatePrevSleepState sleep state from cbmem command output.
 func validatePrevSleepState(ctx context.Context, dut *dut.DUT, sleepStateValue int) error {
-	const (
-		// Command to check previous sleep state.
-		prevSleepStateCmd = "cbmem -c | grep 'prev_sleep_state' | tail -1"
-	)
-	out, err := dut.Conn().CommandContext(ctx, "sh", "-c", prevSleepStateCmd).Output()
+	// Command to check previous sleep state.
+	const cmd = "cbmem -c | grep 'prev_sleep_state' | tail -1"
+	out, err := dut.Conn().CommandContext(ctx, "sh", "-c", cmd).Output()
 	if err != nil {
-		return err
+		return errors.Wrapf(err, "failed to execute %q command", cmd)
 	}
-	if count, err := strconv.Atoi(strings.Split(strings.Replace(string(out), "\n", "", -1), " ")[1]); err != nil {
-		return err
-	} else if count != sleepStateValue {
-		return errors.Errorf("previous sleep state must be %d", sleepStateValue)
+
+	got := strings.TrimSpace(string(out))
+	want := fmt.Sprintf("prev_sleep_state %d", sleepStateValue)
+
+	if !strings.Contains(got, want) {
+		return errors.Errorf("unexpected sleep state = got %q, want %q", got, want)
 	}
 	return nil
 }
