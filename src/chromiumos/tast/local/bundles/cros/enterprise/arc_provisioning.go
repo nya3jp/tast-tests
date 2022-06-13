@@ -41,7 +41,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that ARC is launched when policy is set",
 		Contacts:     []string{"mhasank@chromium.org", "arc-commercial@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps: []string{
 			loginPoolVar,
@@ -58,18 +58,21 @@ func init() {
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Val:               withRetries,
 				Timeout:           15 * time.Minute,
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "unstable",
 				ExtraSoftwareDeps: []string{"android_p"},
 				Val:               withoutRetries,
 				Timeout:           10 * time.Minute,
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "vm_unstable",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Val:               withoutRetries,
 				Timeout:           10 * time.Minute,
+				ExtraAttr:         []string{"informational"},
 			}},
 	})
 }
