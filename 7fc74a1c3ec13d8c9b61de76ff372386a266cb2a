@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "229f9883_4644f62f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-06-13T12:21:47Z",
+      "side": 1,
+      "message": "This doesn\u0027t work yet because of some issue during fixture cleanup. I banged my head against the wall today trying to figure out when and how to restart what. Will take another look when I find the time.\n\nIn the meantime, if you have a moment, maybe you\u0027ll know why fixture cleanup fails?",
+      "revId": "7fc74a1c3ec13d8c9b61de76ff372386a266cb2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
