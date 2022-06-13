@@ -193,6 +193,7 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, cr *chrome
 		app.uiHdl.SwitchToChromeTabByName("Book"),
 		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(canvas),
 		app.selectBox("A1"),
+		uiauto.Sleep(dataWaitTime), // Given time to select box.
 		app.kb.AccelAction("Ctrl+V"),
 		uiauto.Sleep(dataWaitTime), // Given time to paste data.
 		app.selectBox("H1"),
@@ -216,31 +217,6 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, cr *chrome
 // OpenSpreadsheet opens an existing spreadsheet from microsoft web app.
 func (app *MicrosoftWebOffice) OpenSpreadsheet(ctx context.Context, fileName string) (err error) {
 	testing.ContextLog(ctx, "Opening an existing spreadsheet: ", fileName)
-
-	// checkNumberOfTabs checks if the number of tabs meets our expectations.
-	// Two tabs will be created in function "OpenSpreadsheet".
-	// The first is "My files - OneDrive", and the second is "sample.xlsx - Microsoft Excel Online" created by clicking the search result or clicking the file in "Recent".
-	checkNumberOfTabs := func(ctx context.Context) error {
-		return testing.Poll(ctx, func(ctx context.Context) error {
-			tabs, err := cuj.GetBrowserTabs(ctx, app.tconn)
-			if err != nil {
-				return err
-			}
-			numberOfTabs := len(tabs)
-			if numberOfTabs > 3 {
-				return errors.Errorf("the number of tabs is incorrect: got: %d; want: %d", numberOfTabs, 3)
-			}
-			return nil
-		}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: 500 * time.Millisecond})
-	}
-
-	defer func() {
-		// For the first tab created in function "OpenSpreadsheet", it will automatically close when leaving the function, but sometimes it will not be completely closed soon.
-		// Wait for it to finish shutting down and continue testing. Otherwise, the number of tabs will be incorrect.
-		err = uiauto.NamedAction("check if it has been cleaned up properly", checkNumberOfTabs)(ctx)
-		testing.ContextLog(ctx, "Expecting the correct number of tabs: ", err)
-	}()
-
 	conn, err := app.openOneDrive(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to open OneDrive")
@@ -501,7 +477,7 @@ func (app *MicrosoftWebOffice) checkSignIn(ctx context.Context) error {
 		if err := uiauto.NamedCombine("click the sign in link",
 			uiauto.IfSuccessThen(
 				app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(signInLink),
-				app.uiHdl.Click(signInLink),
+				app.ui.DoDefault(signInLink),
 			),
 			uiauto.IfSuccessThen(
 				app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(securityHeading),
@@ -532,7 +508,7 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 		accountField := nodewith.NameContaining("Enter your email").Role(role.TextField)
 		nextButton := nodewith.Name("Next").Role(role.Button)
 		return uiauto.NamedCombine("enter the account",
-			app.ui.RetryUntil(app.ui.DoDefault(accountField), app.ui.Exists(accountField.Focused())),
+			app.ui.DoDefaultUntil(accountField, app.ui.Exists(accountField.Focused())),
 			app.kb.AccelAction("Ctrl+A"),
 			app.kb.TypeAction(app.username),
 			app.ui.DoDefault(nextButton),
@@ -547,7 +523,7 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 
 	enterPassword := func(ctx context.Context) error {
 		return uiauto.NamedCombine("enter the password",
-			app.ui.RetryUntil(app.ui.DoDefault(passwordField), app.ui.Exists(passwordField.Focused())),
+			app.ui.DoDefaultUntil(passwordField, app.ui.Exists(passwordField.Focused())),
 			app.kb.AccelAction("Ctrl+A"), // Prevent the field from already being populated.
 			app.kb.TypeAction(app.password),
 			app.uiHdl.Click(signInButton),
@@ -577,7 +553,7 @@ func (app *MicrosoftWebOffice) signIn(ctx context.Context) error {
 
 	// Sometimes it will login directly without entering password.
 	return uiauto.IfSuccessThen(
-		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(passwordField),
+		app.ui.WaitUntilExists(passwordField),
 		enterPassword,
 	)(ctx)
 }
@@ -666,7 +642,9 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 	if err := webutil.WaitForQuiescence(ctx, conn, longerUIWaitTime); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for microsoft page to finish loading")
 	}
-
+	if err := cuj.MaximizeBrowserWindow(ctx, app.tconn, app.tabletMode, "Microsoft"); err != nil {
+		return nil, errors.Wrap(err, "failed to maximize the microsoft page")
+	}
 	appLauncher := nodewith.Name("App launcher").Role(role.PopUpButton).Collapsed()
 	appLauncherOpened := nodewith.Name("App launcher opened").Role(role.GenericContainer)
 	closeAppLauncher := nodewith.Name("Close the app launcher").Role(role.Button).Ancestor(appLauncherOpened)
@@ -677,10 +655,10 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 	navigateToOneDrive := uiauto.Retry(retryTimes, func(ctx context.Context) error {
 		if err := uiauto.NamedCombine("navigate to OneDrive",
 			uiauto.IfSuccessThen(app.ui.Exists(closeSavePasswordWindow), app.uiHdl.Click(closeSavePasswordWindow)),
-			app.uiHdl.Click(appLauncher),
+			app.ui.DoDefault(appLauncher),
 			app.ui.WaitUntilExists(closeAppLauncher),
 			app.ui.FocusAndWait(oneDriveLink),
-			app.uiHdl.Click(oneDriveLink),
+			app.ui.DoDefault(oneDriveLink),
 		)(ctx); err == nil {
 			return nil
 		}
@@ -789,7 +767,7 @@ func (app *MicrosoftWebOffice) clickNavigationItem(itemName string) action.Actio
 		itemLink = nodewith.NameContaining(itemName).Role(role.MenuItem).Ancestor(navigationMenu).Visited()
 
 		return uiauto.NamedCombine(fmt.Sprintf("click on the %q item in the navigation bar", itemName),
-			app.uiHdl.ClickUntil(appMenu, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(navigationMenu)),
+			app.ui.DoDefaultUntil(appMenu, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(navigationMenu)),
 			app.uiHdl.Click(itemLink),
 		)(ctx)
 	}
@@ -908,7 +886,7 @@ func (app *MicrosoftWebOffice) selectRange(ctx context.Context) error {
 	if !app.tabletMode {
 		testing.ContextLog(ctx, `Selecting range by focus on "Name Box"`)
 		nameBox := nodewith.NameContaining("Name Box").Role(role.TextFieldWithComboBox).Editable()
-		return app.uiHdl.ClickUntil(nameBox, app.ui.Exists(nameBox.Focused()))(ctx)
+		return app.ui.DoDefaultUntil(nameBox, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nameBox.Focused()))(ctx)
 	}
 
 	rangeText := nodewith.Name("Range:").Role(role.TextField).Editable()
@@ -938,7 +916,7 @@ func (app *MicrosoftWebOffice) selectRange(ctx context.Context) error {
 
 // selectBox selects the specified cell using the name box.
 func (app *MicrosoftWebOffice) selectBox(box string) action.Action {
-	return uiauto.NamedCombine(fmt.Sprintf("to select box %q", box),
+	return uiauto.NamedCombine(fmt.Sprintf("select box %q", box),
 		app.selectRange,
 		app.kb.AccelAction("Ctrl+A"), // Make sure to clear the content and re-input.
 		app.kb.TypeAction(box),
@@ -1169,7 +1147,8 @@ func (app *MicrosoftWebOffice) renameDocument(fileName string) uiauto.Action {
 			return nil
 		}
 		return app.ui.Retry(retryTimes, uiauto.Combine("rename the document: "+fileName,
-			app.uiHdl.ClickUntil(renameButton, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileNameTextField)),
+			uiauto.IfSuccessThen(app.ui.Gone(fileNameTextField),
+				app.uiHdl.ClickUntil(renameButton, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileNameTextField))),
 			app.uiHdl.ClickUntil(fileNameTextField, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(fileNameTextField.Focused())),
 			app.kb.AccelAction("Ctrl+A"),
 			uiauto.Sleep(dataWaitTime), // Given time to select all data.
@@ -1189,7 +1168,7 @@ func (app *MicrosoftWebOffice) removeDocument(fileName string) uiauto.Action {
 	remove := nodewith.Name("Remove").Role(role.MenuItem).Ancestor(commandBar)
 	return uiauto.NamedCombine("remove the document: "+fileName,
 		app.switchToListView,
-		app.uiHdl.ClickUntil(checkBox, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(commandBar)),
+		app.ui.DoDefaultUntil(checkBox, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(commandBar)),
 		app.uiHdl.Click(remove),
 	)
 }
