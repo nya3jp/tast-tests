@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d95df3c2_8cb40e3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2022-06-13T12:36:36Z",
+      "side": 1,
+      "message": "hwsec-wise LGTM.",
+      "revId": "a26c2bdc87fa3ccd61f77d54ed2358e2f2ac8389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
