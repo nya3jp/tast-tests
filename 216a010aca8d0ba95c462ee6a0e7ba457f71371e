@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01d5a813_09ccb8e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T17:35:31Z",
+      "side": 1,
+      "message": "instead of inserting a boolean can you modify the function to check the return value fail/success and check the expectation.\nThis would be better fit the tast style, and more readable.\nFunction can first check the success case and then the fail case",
+      "range": {
+        "startLine": 50,
+        "startChar": 73,
+        "endLine": 50,
+        "endChar": 98
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d7c61d_b33bc6ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T17:35:31Z",
+      "side": 1,
+      "message": "Authentication with wrong credentials is expected to fail but succeed.",
+      "range": {
+        "startLine": 157,
+        "startChar": 12,
+        "endLine": 157,
+        "endChar": 64
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "541e35d0_acf970ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T17:35:31Z",
+      "side": 1,
+      "message": "File is readable after unsuccessful authentication, but it expected to be unreadable.",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 162,
+        "endChar": 74
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24785ce5_3176284d",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T17:35:31Z",
+      "side": 1,
+      "message": "nit: isEphemeral",
+      "range": {
+        "startLine": 444,
+        "startChar": 88,
+        "endLine": 444,
+        "endChar": 99
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90132fb7_a29219d0",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T17:35:31Z",
+      "side": 1,
+      "message": "nit: if (isKioskUser) { // ephemeral session\n} else { // persistant session\n}\nwould be more readable",
+      "range": {
+        "startLine": 455,
+        "startChar": 1,
+        "endLine": 455,
+        "endChar": 19
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b5b8575_fc9848ab",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T17:35:31Z",
+      "side": 1,
+      "message": "defer Unmount",
+      "range": {
+        "startLine": 463,
+        "startChar": 2,
+        "endLine": 463,
+        "endChar": 3
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f88b7348_3d99db7e",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T17:35:31Z",
+      "side": 1,
+      "message": "defer invalidateAuthSession",
+      "range": {
+        "startLine": 540,
+        "startChar": 1,
+        "endLine": 540,
+        "endChar": 2
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
