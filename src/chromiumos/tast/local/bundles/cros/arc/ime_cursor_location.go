@@ -245,13 +245,17 @@ func getBoundsInDP(ctx context.Context, o *ui.Object, tconn *chrome.TestConn, ac
 
 	boundsInDP := coords.ConvertBoundsFromPXToDP(boundsInPx, dsf)
 
-	// Adjust Android bounds by the caption height when the window is in maximized.
-	AppWinInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+	// Adjust Android bounds by the caption height when the window is in maximized in clamshell mode.
+	appWinInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
 	if err != nil {
 		return coords.Rect{}, errors.Wrap(err, "failed to get window info")
 	}
-	if AppWinInfo.State == ash.WindowStateMaximized {
-		boundsInDP = boundsInDP.WithOffset(0, AppWinInfo.CaptionHeight)
+	inTablet, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return coords.Rect{}, errors.Wrap(err, "failed to get if tablet mode enabled")
+	}
+	if appWinInfo.State == ash.WindowStateMaximized && !inTablet {
+		boundsInDP = boundsInDP.WithOffset(0, appWinInfo.CaptionHeight)
 	}
 
 	return boundsInDP, nil
