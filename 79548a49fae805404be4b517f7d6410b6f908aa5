@@ -46,6 +46,30 @@
       },
       "revId": "79548a49fae805404be4b517f7d6410b6f908aa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f72c9e65_becc3eaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-06-13T21:43:46Z",
+      "side": 1,
+      "message": "It would also be my expectation that this will live in Ash-Chrome.",
+      "parentUuid": "6a1be7d3_a02ad76e",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "79548a49fae805404be4b517f7d6410b6f908aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
