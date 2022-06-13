@@ -34,6 +34,24 @@
       "parentUuid": "a23c7973_abc2c8fc",
       "revId": "7427d0f0bce2ef7e4c39c42447460929a218dc14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48da0eaa_1439b666",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-13T07:04:59Z",
+      "side": 1,
+      "message": "I wasn\u0027t aware when I reviewerd the original CL, but if the intention of crosbolt_* is to control the frequency to run the test, it\u0027s not the design of crosbolt.\n\nCould you start talking to the infra team how to realize what you\u0027d like to do?",
+      "parentUuid": "dc327e40_ff303a21",
+      "revId": "7427d0f0bce2ef7e4c39c42447460929a218dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
