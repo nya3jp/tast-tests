@@ -273,6 +273,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "924a21c8_7bc41fef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-13T21:59:01Z",
+      "side": 1,
+      "message": "Ash metrics include OS metrics. It is still worth collecting with lacros-chrome variations. E.g. if we do TaskSwitchCUJ using lacros-chrome via overview, we might still want to collect overview metrics. And over metrics is only available in ash-chrome.\n\n`vars.cr` is always ash-chrome in all variations. We could get a TestConn out of it and use it for ash metrics collection.",
+      "parentUuid": "344d57bb_38eaab8a",
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec538807_31831ef2",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
         "patchSetId": 6
