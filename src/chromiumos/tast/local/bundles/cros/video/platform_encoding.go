@@ -869,7 +869,7 @@ func init() {
 			// TODO(b/174103282): Enable on Rockchip RK3288 devices (veyron_*).
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("fievel", "tiger")),
 		}},
-		Timeout: 20 * time.Minute,
+		Timeout: 30 * time.Minute,
 	})
 }
 
