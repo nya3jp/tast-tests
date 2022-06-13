@@ -75,6 +75,8 @@ type Router interface {
 	RouterName() string
 	// RouterType returns the router type.
 	RouterType() RouterType
+	// ReinitTestState returns the router to a clean test state.
+	ReinitTestState(ctx context.Context) error
 }
 
 // Logs shall be implemented if the router supports log collection.

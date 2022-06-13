@@ -47,6 +47,12 @@ func (r *Router) RouterType() support.RouterType {
 	return r.routerType
 }
 
+// ReinitTestState returns the router to a clean test state.
+func (r *Router) ReinitTestState(ctx context.Context) error {
+	testing.ContextLogf(ctx, "ReinitTestState ignored for router %q as it not necessary for %s routers", r.RouterName(), r.RouterType().String())
+	return nil
+}
+
 // stageRouterParam changes the router configuration in memory. The actual router configuration does not take effect until restartWirelessService is invoked which pulls the configuration from memory.
 func (r *Router) stageRouterParam(ctx context.Context, band RadioEnum, key NVRAMKeyEnum, value string) error {
 	return r.host.CommandContext(ctx, "/bin/nvram", "set", fmt.Sprintf("%s_%s=%s", band, key, value)).Run()
