@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "1814701c41adcb78ccd4cb9fab74ec59c6174efa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01204b6c_e449f63d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-13T22:43:23Z",
+      "side": 1,
+      "message": "Put a cq-depend on https://chrome-internal-review.googlesource.com/c/chromeos/platform/tast-tests-private/+/4799336/ just to be safe",
+      "revId": "1814701c41adcb78ccd4cb9fab74ec59c6174efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
