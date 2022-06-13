@@ -132,7 +132,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 
 		// Find the "save desk as a template" button.
 		saveDeskButton := nodewith.ClassName("SaveDeskTemplateButton")
-		desksTemplatesGridView := nodewith.ClassName("DesksTemplatesGridView")
+		desksTemplatesGridView := nodewith.ClassName("SavedDeskLibraryView")
 
 		if err := uiauto.Combine(
 			"save a desk template",
@@ -164,13 +164,13 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "unable to set overview mode")
 		}
 
-		// Find the "Templates" button.
-		templatesButton := nodewith.Name("Templates")
+		// Find the "Library" button.
+		libraryButton := nodewith.Name("Library")
 
 		// Show saved desk template.
 		if err := uiauto.Combine(
 			"show the saved desks template",
-			ac.LeftClick(templatesButton),
+			ac.LeftClick(libraryButton),
 			// Wait for the desks templates grid shows up.
 			ac.WaitUntilExists(desksTemplatesGridView),
 		)(ctx); err != nil {
@@ -187,7 +187,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		// Find the the first desk template.
-		firstDeskTemplate := nodewith.ClassName("DesksTemplatesItemView")
+		firstDeskTemplate := nodewith.ClassName("SavedDeskItemView")
 		newDeskMiniView :=
 			nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", "Desk 1 (1)"))
 

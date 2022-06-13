@@ -33,7 +33,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "android_vm"},
+		SoftwareDeps: []string{"chrome", "arc"},
 		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 	})
@@ -106,9 +106,12 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 	}
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		s.Fatal("Failed to wait for overview animation to be completed: ", err)
+	}
 	// Find the "save desk as a template" button.
 	saveDeskButton := nodewith.ClassName("SaveDeskTemplateButton")
-	desksTemplatesGridView := nodewith.ClassName("DesksTemplatesGridView")
+	desksTemplatesGridView := nodewith.ClassName("SavedDeskLibraryView")
 
 	if err := uiauto.Combine(
 		"save a desk template",
@@ -129,6 +132,9 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
 
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		s.Fatal("Failed to wait for overview animation to be completed: ", err)
+	}
 	// Save another desk template.
 	if err := uiauto.Combine(
 		"save another desk template",
