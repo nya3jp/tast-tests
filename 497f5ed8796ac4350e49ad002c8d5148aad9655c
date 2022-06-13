@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f15102b9_69ac8479",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T07:33:40Z",
+      "side": 1,
+      "message": "LGTM, sorry for the review delay.",
+      "revId": "497f5ed8796ac4350e49ad002c8d5148aad9655c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea1c3b3_8a73ec1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T07:33:40Z",
+      "side": 1,
+      "message": "\"isolating the test from\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 20,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "497f5ed8796ac4350e49ad002c8d5148aad9655c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d92d1465_9e7f29b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T07:33:40Z",
+      "side": 1,
+      "message": "any (since physical Ethernet is not necessarily present).",
+      "range": {
+        "startLine": 30,
+        "startChar": 17,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "497f5ed8796ac4350e49ad002c8d5148aad9655c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de0b7ce5_babbf22a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_high_priority.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T07:33:40Z",
+      "side": 1,
+      "message": "So this is the parameter that forces the test network to rank higher ? I would explicitly specify this in a comment here: \"Make test network with higher priority than base network present by default with the routing test environment\".",
+      "range": {
+        "startLine": 40,
+        "startChar": 14,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "497f5ed8796ac4350e49ad002c8d5148aad9655c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b48f558c_c9f83437",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T07:33:40Z",
+      "side": 1,
+      "message": "IP addresses.",
+      "range": {
+        "startLine": 254,
+        "startChar": 35,
+        "endLine": 254,
+        "endChar": 54
+      },
+      "revId": "497f5ed8796ac4350e49ad002c8d5148aad9655c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b7b2cf4_63e1d06b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T07:33:40Z",
+      "side": 1,
+      "message": "missing interface name ?",
+      "range": {
+        "startLine": 263,
+        "startChar": 51,
+        "endLine": 263,
+        "endChar": 52
+      },
+      "revId": "497f5ed8796ac4350e49ad002c8d5148aad9655c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "397401e9_5ce674fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T07:33:40Z",
+      "side": 1,
+      "message": "\"was not found\"",
+      "range": {
+        "startLine": 266,
+        "startChar": 52,
+        "endLine": 266,
+        "endChar": 54
+      },
+      "revId": "497f5ed8796ac4350e49ad002c8d5148aad9655c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7a39f9_ebcba79d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T07:33:40Z",
+      "side": 1,
+      "message": "I would add a one line comment here saying GetVethInAddrs() never returns the link local address. Otherwise one could think this would still need to fail if len(v6_addrs) \u003d\u003d 1, because we always except at least the link local address.",
+      "range": {
+        "startLine": 268,
+        "startChar": 2,
+        "endLine": 268,
+        "endChar": 38
+      },
+      "revId": "497f5ed8796ac4350e49ad002c8d5148aad9655c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -194,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d9d0a60_aec50c8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T07:33:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "48f38421_c02efdf6",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 17
+      },
+      "revId": "2ddb0b5af8fc88ee7462da1651628e29a2990fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0467f18_7b09f202",
