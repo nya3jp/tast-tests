@@ -94,6 +94,30 @@
       },
       "revId": "a3564ebd96ce9f5641b48982c583f4bfb6325a21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc79ba55_87c94c28",
+        "filename": "src/chromiumos/tast/common/hwsec/cryptohome_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "I checked the code and don\u0027t see Authenticate depending on any low_entropy_credential, but I remember having this conversation and adding the code that depends on the LE policy. Please make sure from the logs that an pinweaver authblock runs when this test run",
+      "parentUuid": "a72dcd57_dcc3d537",
+      "range": {
+        "startLine": 289,
+        "startChar": 44,
+        "endLine": 289,
+        "endChar": 59
+      },
+      "revId": "a3564ebd96ce9f5641b48982c583f4bfb6325a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

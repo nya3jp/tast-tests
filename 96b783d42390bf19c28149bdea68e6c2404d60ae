@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3f5d407_6d3f2f05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "Either have a test that includes the AuthFactor withj and without USS and a separate test for non-AuthFactor AuthSession APIs. Or if you combine AuthSession interfaces with AuthFactor, then the test should also include th enon-USS AuthFactor API.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 70
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6a97191c_350e1f5a",
@@ -14,6 +37,52 @@
       "writtenOn": "2022-06-13T18:19:12Z",
       "side": 1,
       "message": "Thanks for writing a generic test!\nLooks good, but there a few nits:",
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a58bf6_b59b79e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "Please return this value and check from the caller.",
+      "range": {
+        "startLine": 136,
+        "startChar": 98,
+        "endLine": 136,
+        "endChar": 125
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48821450_49e0e05b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "is this comment correct?",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 82
+      },
       "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -43,6 +112,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0847b37_87389e1e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "double comment",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 6
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24a52cb2_39cc6805",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "is the comment correct?",
+      "range": {
+        "startLine": 151,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 85
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e68b984_6a297906",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "same nit",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 7
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c73a072c_f673d157",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
         "patchSetId": 10
@@ -59,6 +197,52 @@
         "startChar": 4,
         "endLine": 175,
         "endChar": 82
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3bbb20_63d586bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "Please update the comment",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 82
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a4f90c_5686373a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "did you want to repeat this with the test user2?\nI don\u0027t understand this, first 4 wrong attempts and clear the counter with correct pin, and then do the same thing again.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 2
       },
       "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -100,6 +284,144 @@
       "writtenOn": "2022-06-13T18:19:12Z",
       "side": 1,
       "message": "nit: Ditto contradicting comment here and in lines ##223, 228, 239.",
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da094037_e418ce3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "please update the comment",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 82
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "937d2360_68e7dd93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "please update the comment",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 82
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b242f3a_d1538ea1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 239,
+        "endChar": 82
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "150afa4f_92092449",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "defer removeVault",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 2
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f0523f0_215610d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "This should also include a case where user secret stash is not enabled and the AuthFactor interface is used.",
+      "range": {
+        "startLine": 277,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 0
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d8150e1_5818609c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-13T18:20:54Z",
+      "side": 1,
+      "message": "same here. This should also include the case where user secret stash is not enabled but the AuthFactor APi is used.",
+      "range": {
+        "startLine": 295,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 3
+      },
       "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
