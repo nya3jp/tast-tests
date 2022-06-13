@@ -819,6 +819,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c469932e_a9abac48",
+        "filename": "src/chromiumos/tast/local/hostapd/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T04:51:14Z",
+      "side": 1,
+      "message": "SGTM module Eliot\u0027s comment.",
+      "parentUuid": "574e7326_eac00fcf",
+      "range": {
+        "startLine": 87,
+        "startChar": 29,
+        "endLine": 87,
+        "endChar": 32
+      },
+      "revId": "e49db241cb7ac04f90a079234dea082747794dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4257d9e0_e7bd2dd9",
         "filename": "src/chromiumos/tast/local/hostapd/monitor.go",
         "patchSetId": 1

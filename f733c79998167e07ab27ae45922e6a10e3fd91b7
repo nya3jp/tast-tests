@@ -35,6 +35,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76f4b851_ed40a2fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T04:51:14Z",
+      "side": 1,
+      "message": "LGTM, deferring approval to Matthew for WiFi",
+      "revId": "f733c79998167e07ab27ae45922e6a10e3fd91b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15a70e8b_08ee59d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T04:51:14Z",
+      "side": 1,
+      "message": "This too should maybe be a package constant.",
+      "range": {
+        "startLine": 364,
+        "startChar": 66,
+        "endLine": 364,
+        "endChar": 77
+      },
+      "revId": "f733c79998167e07ab27ae45922e6a10e3fd91b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acff811a_dd423814",
