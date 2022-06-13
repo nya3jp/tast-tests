@@ -172,7 +172,7 @@ type TestFixture struct {
 	wifiClient *WifiClient
 
 	peer           *dut.DUT
-	peerRpc        *rpc.Client
+	peerRPC        *rpc.Client
 	peerWifiClient *WifiClient
 
 	hostUsers  map[string]string
@@ -331,12 +331,12 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 	}
 
 	if tf.peer != nil {
-		tf.peerRpc, err = rpc.Dial(daemonCtx, tf.peer, rpcHint)
+		tf.peerRPC, err = rpc.Dial(daemonCtx, tf.peer, rpcHint)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to connect companion DUT's rpc")
 		}
 		tf.peerWifiClient = &WifiClient{
-			ShillServiceClient: wifi.NewShillServiceClient(tf.peerRpc.Conn),
+			ShillServiceClient: wifi.NewShillServiceClient(tf.peerRPC.Conn),
 		}
 		if _, err := tf.peerWifiClient.InitDUT(ctx, &wifi.InitDUTRequest{WithUi: tf.option.withUI}); err != nil {
 			return nil, errors.Wrap(err, "failed to init companion DUT")
@@ -572,10 +572,10 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 		tf.rpc.Close(ctx)
 		tf.rpc = nil
 	}
-	if tf.peerRpc != nil {
+	if tf.peerRPC != nil {
 		// Ignore the error of rpc.Close as aborting rpc daemon will always have error.
-		tf.peerRpc.Close(ctx)
-		tf.peerRpc = nil
+		tf.peerRPC.Close(ctx)
+		tf.peerRPC = nil
 	}
 
 	// Do not close DUT, it'll be closed by the framework.
