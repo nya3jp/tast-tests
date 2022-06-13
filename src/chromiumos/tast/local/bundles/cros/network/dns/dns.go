@@ -7,6 +7,7 @@ package dns
 import (
 	"context"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
@@ -63,8 +64,16 @@ type ProxyTestCase struct {
 // GoogleDoHProvider is the Google DNS-over-HTTPS provider.
 const GoogleDoHProvider = "https://dns.google/dns-query"
 
-// DigProxyIPRE is the regular expressions for DNS proxy IP inside dig output.
+// DigIPRETemplate is used to build a regular expression for matching any nameserver.
+const DigIPRETemplate = "SERVER: {ns}+#53"
+
+// DigProxyIPRE is the regular expression for DNS proxy IP inside dig output.
 var DigProxyIPRE = regexp.MustCompile(`SERVER: 100.115.92.\d+#53`)
+
+// DigIPRE returns a regular expression for matching |ns| in dig output.
+func DigIPRE(ns string) (*regexp.Regexp, error) {
+	return regexp.Compile(strings.Replace(DigIPRETemplate, "{ns}", ns, 1))
+}
 
 // GetClientString get the string representation of a DNS client.
 func GetClientString(c Client) string {
@@ -312,9 +321,13 @@ func getDoHMode(ctx context.Context) (DoHMode, error) {
 	return DoHAlwaysOn, nil
 }
 
-// DigMatch runs dig to check name resolution works and verifies the expected server was used.
-func DigMatch(ctx context.Context, re *regexp.Regexp, match bool) error {
-	out, err := testexec.CommandContext(ctx, "dig", "google.com").Output()
+// DigCmd is a function type for running |dig|.
+type DigCmd func(context.Context, string, ...string) ([]byte, error)
+
+func digMatch(ctx context.Context, cmd DigCmd, re *regexp.Regexp, match bool, args ...string) error {
+	a := []string{"google.com"}
+	a = append(a, args...)
+	out, err := cmd(ctx, "dig", a...)
 	if err != nil {
 		return errors.Wrap(err, "dig failed")
 	}
@@ -322,4 +335,36 @@ func DigMatch(ctx context.Context, re *regexp.Regexp, match bool) error {
 		return errors.New("dig used unexpected nameserver")
 	}
 	return nil
+}
+
+var testexecCmd = func(ctx context.Context, n string, a ...string) ([]byte, error) {
+	return testexec.CommandContext(ctx, n, a...).Output()
+}
+
+// DigMatch runs dig to check name resolution works and verifies the expected server was used.
+func DigMatch(ctx context.Context, re *regexp.Regexp, match bool) error {
+	return digMatch(ctx, testexecCmd, re, match)
+}
+
+// DigMatchCmd runs dig to check name resolution works and verifies the expected server was used.
+func DigMatchCmd(ctx context.Context, cmd DigCmd, re *regexp.Regexp, match bool) error {
+	return digMatch(ctx, cmd, re, match)
+}
+
+// DigToMatch runs dig to a specific nameserver, checks name resolution works and verifies that server was used.
+func DigToMatch(ctx context.Context, ns string, match bool) error {
+	re, err := DigIPRE(ns)
+	if err != nil {
+		return err
+	}
+	return digMatch(ctx, testexecCmd, re, match, []string{"@" + ns}...)
+}
+
+// DigToMatchCmd runs dig to a specific nameserver, checks name resolution works and verifies that server was used.
+func DigToMatchCmd(ctx context.Context, cmd DigCmd, ns string, match bool) error {
+	re, err := DigIPRE(ns)
+	if err != nil {
+		return err
+	}
+	return digMatch(ctx, cmd, re, match, []string{"@" + ns}...)
 }
