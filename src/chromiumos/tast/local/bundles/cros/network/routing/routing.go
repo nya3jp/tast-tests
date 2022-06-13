@@ -67,8 +67,13 @@ const (
 	TestSuffix = "t"
 )
 
-// DHCPTimeout is the timeout value used in shill for DHCP lease acquisition.
-const DHCPTimeout = 30 * time.Second
+const (
+	// DHCPTimeout is the timeout value used in shill for DHCP lease acquisition.
+	DHCPTimeout = 30 * time.Second
+	// DHCPExtraTimeout is the DHCP timeout plus a small extra waiting time. This
+	// can be used in the tests to guarantee that the timeout event has happened.
+	DHCPExtraTimeout = DHCPTimeout + time.Second
+)
 
 // NewTestEnv creates a new testEnv object for routing tests.
 func NewTestEnv() *testEnv {
