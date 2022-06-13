@@ -109,9 +109,9 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 			if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 				s.Fatal("Failed to wait for overview animation to be completed: ", err)
 			}
-			// Find the "Templates" button.
-			templatesButton := nodewith.Name("Templates")
-			desksTemplatesGridView := nodewith.ClassName("DesksTemplatesGridView")
+			// Find the "Library" button.
+			templatesButton := nodewith.Name("Library")
+			desksTemplatesGridView := nodewith.ClassName("SavedDeskLibraryView")
 			// Show admin desk template.
 			if err := uiauto.Combine(
 				"show the admin desk template",
@@ -123,7 +123,7 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 			}
 
 			// Find the the admin template.
-			adminTemplate := nodewith.ClassName("DesksTemplatesItemView")
+			adminTemplate := nodewith.ClassName("SavedDeskItemView")
 			newDeskMiniView :=
 				nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", adminDeskTemplateName))
 
@@ -131,7 +131,7 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 
 			if err := uiauto.Combine(
 				"check that it is an admin template",
-				ac.Exists(nodewith.ClassName("DesksTemplatesNameView").Name(adminDeskTemplateName)),
+				ac.Exists(nodewith.ClassName("SavedDeskNameView").Name(adminDeskTemplateName)),
 				ac.Exists(nodewith.Name("Shared by your administrator")),
 			)(ctx); err != nil {
 				s.Fatal("Failed to find an admin desk template")
