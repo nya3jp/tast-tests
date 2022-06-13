@@ -25,6 +25,8 @@ func init() {
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"arc", "chrome", "video_decoder_direct"},
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Fixture:      "graphicsNoChrome",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "h264_1080p_30fps",

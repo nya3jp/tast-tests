@@ -366,6 +366,7 @@ func init() {
 			"hiroh@chromium.org", // Underlying binary author.
 			"chromeos-gfx-video@google.com",
 		},
+		Fixture:      "graphicsNoChrome",
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Name:              "av1_files_from_bugs",
