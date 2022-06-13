@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "826c2d6f_1d5a8694",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-13T18:31:30Z",
+      "side": 1,
+      "message": "I was considering a separate type for the DUT index anyway. I was asked to do this iteratively, so I do. There\u0027s going to be a more comprehensive refactoring of this fixture so it will suit these changes as well.\n\nI consider it Done.",
+      "parentUuid": "edaa306a_e08481bc",
+      "revId": "6a89726d0639b9016125dec3f75ede731d2705e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e7c8ef1_bad22c17",
