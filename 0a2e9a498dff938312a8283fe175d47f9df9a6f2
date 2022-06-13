@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc322bf3_e966c3c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-06-13T21:39:05Z",
+      "side": 1,
+      "message": "Change this to present-tense and remove the period to adhere to the guidelines: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages\n\nAlso, make it more specific please. Something like:\n\n```\nMake callboxManager an optional fixture parameter\n```",
+      "revId": "0a2e9a498dff938312a8283fe175d47f9df9a6f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83e76cc1_8207c2f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-06-13T21:39:05Z",
+      "side": 1,
+      "message": "Please add a sentence or two to the message describing the context of this change as it is not clear as to why this is needed.",
+      "revId": "0a2e9a498dff938312a8283fe175d47f9df9a6f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03911182_eef5b9f5",
         "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
         "patchSetId": 2
@@ -44,6 +78,23 @@
         "endLine": 65,
         "endChar": 53
       },
+      "revId": "0a2e9a498dff938312a8283fe175d47f9df9a6f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121b1be9_96e836d6",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-06-13T21:39:05Z",
+      "side": 1,
+      "message": "If `callboxManager` (and `tf.Vars.CallboxManager`) is empty when the variable is not passed, this will try to create a client with baseURL `http://`, which is not valid. Please add handling to cover this case. I\u0027m guessing you want it to just default to `labProxyHostname` when not set based off your other comment.",
       "revId": "0a2e9a498dff938312a8283fe175d47f9df9a6f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
