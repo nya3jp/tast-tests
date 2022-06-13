@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e4636c_c7387c75",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-13T15:17:07Z",
+      "side": 1,
+      "message": "I like that change 👍",
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3392c180_9a241d13",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-13T15:17:07Z",
+      "side": 1,
+      "message": "Please add the doc for the fields.",
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07bcf666_1bfe9c54",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-13T15:17:07Z",
+      "side": 1,
+      "message": "IMHO the order of the parameters should be:\n(ctx context.Context, client *http.Client, params RequestOTAParams)\nand I guess the same applies to other API. Not sure if we can change it now without breaking something.",
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67b33aad_2f3376bd",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-13T15:17:07Z",
+      "side": 1,
+      "message": "What if params.PoolID is nil?",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 17
+      },
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e18303b_78b084f0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-13T15:17:07Z",
+      "side": 1,
+      "message": "Should be constant.",
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06d891b2_0bc6a3e1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-13T15:17:07Z",
+      "side": 1,
+      "message": "Just a note: this reads weird. I understand why, as the RequestAccount() is in the tape package.\nMaybe we could use httpClient instead of tapeClient as it is not really a type client (it cannot invoke any call on Tape on its own. It is an http client with pre configured values for authentication) ?",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 63
+      },
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb289504_c5c91045",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-13T15:17:07Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we shorten the context to make sure that will take place?",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 6
+      },
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d62ce9_ea53895a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-13T15:17:07Z",
+      "side": 1,
+      "message": "For consistency - do you want to pass here the client? In line 72 defer accepts context and client.",
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

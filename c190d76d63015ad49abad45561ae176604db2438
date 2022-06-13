@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a89c9f_60c7d7c4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-13T15:17:07Z",
+      "side": 0,
+      "message": "Are those credentials used by any other test? \nI assume that those are exactly the ones that Tape will provide, right? Otherwise we should clean the private repo too.",
+      "revId": "c190d76d63015ad49abad45561ae176604db2438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
