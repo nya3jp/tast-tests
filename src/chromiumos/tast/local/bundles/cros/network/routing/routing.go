@@ -275,6 +275,12 @@ type VerifyOptions struct {
 	// isPrimary indicates whether the network under test is a primary network in
 	// shill or not.
 	IsPrimary bool
+	// IsHighestIPv6 indicates whether this network is the IPv6 network with the
+	// highest priority, i.e., no network with higher priority than this one has
+	// IPv6 connectivity. This field will be ignored when |IsPrimary| is set.
+	// There is no |HighestIPv4| at the moment since the fallthrough behavior is
+	// dfifferent currently.
+	IsHighestIPv6 bool
 	// Timeout means the network under test may be not fully connected now, but
 	// that should happen in the given timeout. 0 means the network is already
 	// connected.
@@ -294,6 +300,9 @@ func (e *testEnv) VerifyTestNetwork(ctx context.Context, opts VerifyOptions) []e
 func verifyNetworkConnectivity(ctx context.Context, router, server *env.Env, opts VerifyOptions) []error {
 	if !opts.IPv4 && !opts.IPv6 {
 		return []error{errors.New("neither IPv4 nor IPv6 is set")}
+	}
+	if opts.IsPrimary {
+		opts.IsHighestIPv6 = opts.IPv6
 	}
 
 	routerAddrs, err := router.WaitForVethInAddrs(ctx, opts.IPv4, opts.IPv6)
@@ -335,31 +344,37 @@ func verifyNetworkConnectivity(ctx context.Context, router, server *env.Env, opt
 		}
 	}
 
-	// Check the remote server 1) is accessible if this is the primary network or
-	// 2) is not accessible if this a non-primary network.
-	pingAddrs = []net.IP{}
+	// Check the connectivity to the remote server.
+	var pingableAddrs, notPingableAddrs []net.IP
 	if opts.IPv4 {
-		pingAddrs = append(pingAddrs, serverAddrs.IPv4Addr)
+		if opts.IsPrimary {
+			pingableAddrs = append(pingableAddrs, serverAddrs.IPv4Addr)
+		} else {
+			// Currently we don't have the fall-through case for IPv4 by default: the
+			// connectivity to a remote server on a non-primary network does not rely
+			// on the properties of the primary network (i.e., whether the primary
+			// network provide connectivity only for IPv6 or not).
+			notPingableAddrs = append(notPingableAddrs, serverAddrs.IPv4Addr)
+		}
 	}
 	if opts.IPv6 {
-		pingAddrs = append(pingAddrs, serverAddrs.IPv6Addrs...)
+		if opts.IsPrimary || opts.IsHighestIPv6 {
+			pingableAddrs = append(pingableAddrs, serverAddrs.IPv6Addrs...)
+		} else {
+			notPingableAddrs = append(notPingableAddrs, serverAddrs.IPv6Addrs...)
+		}
 	}
 
 	for _, user := range []string{"root", "chronos"} {
-		for _, ip := range pingAddrs {
-			if opts.IsPrimary {
-				if err := ExpectPingSuccessWithTimeout(ctx, ip.String(), user, 0); err != nil {
-					errs = append(errs, errors.Wrapf(err, "non-local address %v is not reachable as user %s", ip, user))
-				}
-			} else {
-				// Currently we don't have the fall-through case by default: the
-				// connectivity to a remote server on a non-primary network does not
-				// rely on the properties of the primary network (i.e., whether the
-				// primary network provide connectivity only for a single IP family or
-				// not).
-				if err := ExpectPingFailure(ctx, ip.String(), user); err != nil {
-					errs = append(errs, errors.Wrapf(err, "non-local address %v on non-primary network is reachable as user %s", ip, user))
-				}
+		for _, ip := range pingableAddrs {
+			if err := ExpectPingSuccessWithTimeout(ctx, ip.String(), user, 0); err != nil {
+				errs = append(errs, errors.Wrapf(err, "non-local address %v is not reachable as user %s", ip, user))
+			}
+		}
+		for _, ip := range notPingableAddrs {
+
+			if err := ExpectPingFailure(ctx, ip.String(), user); err != nil {
+				errs = append(errs, errors.Wrapf(err, "non-local address %v on non-primary network is reachable as user %s", ip, user))
 			}
 		}
 	}
