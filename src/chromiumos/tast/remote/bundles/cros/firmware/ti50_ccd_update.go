@@ -80,10 +80,21 @@ func Ti50CCDUpdate(ctx context.Context, s *testing.State) {
 		s.Fatal("Not running RW_A")
 	}
 
+	// Wait one more second to ensure that USB is connected before running lsusb on host
+	testing.Sleep(ctx, 1*time.Second)
+
 	cmd := s.DUT().Conn().CommandContext(ctx, "lsusb", "-d", ti50USBID, "-v")
 	out, err := cmd.CombinedOutput()
 	outStr = string(out)
 	if err != nil {
+		// Report the current usb connection state since lsusb just failed
+		outStr, err := i.Command(ctx, "usb")
+		if err != nil {
+			s.Fatal("Getting ti50 usb state: ", err)
+		}
+		testing.ContextLog(ctx, "USB state on ti50:")
+		testing.ContextLog(ctx, outStr)
+
 		s.Fatal("Failed lsusb: ", err, outStr)
 	}
 	if !lsusbSerialRegexp.MatchString(outStr) {
