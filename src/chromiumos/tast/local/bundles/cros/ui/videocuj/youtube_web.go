@@ -73,7 +73,6 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	if err := webutil.WaitForYoutubeVideo(ctx, y.ytConn, 0); err != nil {
 		return errors.Wrap(err, "failed to wait for video element")
 	}
-
 	// If prompted to open in YouTube app, instruct device to stay in Chrome.
 	stayInChrome := nodewith.Name("Stay in Chrome").Role(role.Button)
 	if err := uiauto.IfSuccessThen(
@@ -128,7 +127,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		// Dut to the different response time of different DUTs, we need to combine these actions in Poll() to
 		// make quality switch works reliably.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if err := y.uiHdl.Click(videoPlayer)(ctx); err != nil {
+			if err := y.ui.DoDefault(videoPlayer)(ctx); err != nil {
 				return errors.Wrap(err, "failed to click YouTube Video Player to bring up settings panel")
 			}
 			// If an ad is playing, skip it before proceeding.
@@ -320,11 +319,10 @@ func (y *YtWeb) PauseAndPlayVideo(ctx context.Context) error {
 func (y *YtWeb) Play() uiauto.Action {
 	return func(ctx context.Context) error {
 		if err := y.IsPlaying()(ctx); err != nil {
-			actionName := "play video"
-			return uiauto.NamedAction(actionName, uiauto.Combine(actionName,
+			return uiauto.NamedCombine("play video",
 				y.ui.MouseMoveTo(video, mouseMoveDuration),
-				y.ui.LeftClick(video),
-			))(ctx)
+				y.ui.DoDefault(video),
+			)(ctx)
 		}
 		return nil
 	}
@@ -334,11 +332,10 @@ func (y *YtWeb) Play() uiauto.Action {
 func (y *YtWeb) Pause() uiauto.Action {
 	return func(ctx context.Context) error {
 		if err := y.IsPaused()(ctx); err != nil {
-			actionName := "pause video"
-			return uiauto.NamedAction(actionName, uiauto.Combine(actionName,
+			return uiauto.NamedCombine("pause video",
 				y.ui.MouseMoveTo(video, mouseMoveDuration),
-				y.ui.LeftClick(video),
-			))(ctx)
+				y.ui.DoDefault(video),
+			)(ctx)
 		}
 		return nil
 	}
@@ -423,7 +420,7 @@ func clearNotificationPrompts(ctx context.Context, ui *uiauto.Context, uiHdl cuj
 		tartgetPrompt := nodewith.Name(name).Role(role.Button)
 		if err := uiauto.IfSuccessThen(
 			ui.WaitUntilExists(tartgetPrompt),
-			uiHdl.ClickUntil(tartgetPrompt, ui.WithTimeout(shortUITimeout).WaitUntilGone(tartgetPrompt)),
+			ui.DoDefaultUntil(tartgetPrompt, ui.WithTimeout(shortUITimeout).WaitUntilGone(tartgetPrompt)),
 		)(ctx); err != nil {
 			testing.ContextLogf(ctx, "Failed to clear prompt %q", name)
 			return err
