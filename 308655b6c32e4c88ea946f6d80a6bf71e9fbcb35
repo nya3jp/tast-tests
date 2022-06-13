@@ -142,6 +142,30 @@
       },
       "revId": "308655b6c32e4c88ea946f6d80a6bf71e9fbcb35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ede92a_d0519e7e",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-13T07:15:42Z",
+      "side": 1,
+      "message": "Actually, what we\u0027d like to have is, \"tests works regardless of ash browser or lacros browser\" for most of the cases. That\u0027s why I do not want to introduce it into Browser. That should help us to integrate/switch the tests easily.\n\nYour cases look very special, on the other hand. You run both ash and lacros and take the result from both.\nThat\u0027s why I recommend you to take an browser.Type as an argument.\nOr, if you\u0027d like, you can wrap it, too. My key here is to make it as special as possible for your purposes only. I\u0027m hesitate to make it as generic API unlike common situations, because I\u0027m concerned then more test authors starts to check its type easily :-).\n\n\u003e Adding Type() to TestConn.\n\nBecause of the same reason above, I\u0027d like to avoid it. Or rather, I\u0027d like to have two different type for Ash\u0027s TestConn and Lacros\u0027s TestConn. They have different responsibility. And, often there are cases \"This TestConn should be ash\u0027s one always\", so great to have a type check.",
+      "parentUuid": "60188e15_6b5872b3",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "308655b6c32e4c88ea946f6d80a6bf71e9fbcb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
