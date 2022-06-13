@@ -16,6 +16,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// checkKeyPerfParam contains the test parameters which are different
+// between the types of mounts.
+type checkKeyPerfParam struct {
+	// Specifies which mount flow to use - AuthSession+Split Call or legacy MountEx.
+	legacyMountFlow bool
+	// Specifies the name of metric to log checkKey duration with.
+	checkKeyDurationMetric string
+	// Specifies the name of metric to log checkKey with WebAuthn duration with.
+	checkKeyDurationWithWebAuthnMetric string
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: CheckKeyPerf,
@@ -27,6 +38,21 @@ func init() {
 		Attr:         []string{"hwsec_destructive_crosbolt_perbuild", "group:hwsec_destructive_crosbolt"},
 		SoftwareDeps: []string{"tpm", "reboot"},
 		Vars:         []string{"hwsec.CheckKeyPerf.iterations"},
+		Params: []testing.Param{{
+			Name: "legacy_mountEx",
+			Val: checkKeyPerfParam{
+				legacyMountFlow:                    true,
+				checkKeyDurationMetric:             "check_key_ex_duration",
+				checkKeyDurationWithWebAuthnMetric: "check_key_ex_unlock_webauthn_secret_duration",
+			},
+		}, {
+			Name: "auth_session_split_mount",
+			Val: checkKeyPerfParam{
+				legacyMountFlow:                    false,
+				checkKeyDurationMetric:             "auth_session_setup_check_key_ex_duration",
+				checkKeyDurationWithWebAuthnMetric: "auth_session_setup_check_key_ex_unlock_webauthn_secret_duration",
+			},
+		}},
 	})
 }
 
@@ -38,6 +64,7 @@ func CheckKeyPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Helper creation error: ", err)
 	}
 	utility := helper.CryptohomeClient()
+	userParam := s.Param().(checkKeyPerfParam)
 
 	// Reset TPM
 	s.Log("Start resetting TPM if needed")
@@ -46,9 +73,32 @@ func CheckKeyPerf(ctx context.Context, s *testing.State) {
 	}
 	s.Log("TPM is confirmed to be reset")
 
-	// Create and Mount vault.
-	if err := utility.MountVault(ctx, util.Password1Label, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword1), true, hwsec.NewVaultConfig()); err != nil {
-		s.Fatal("Failed to create user: ", err)
+	if userParam.legacyMountFlow {
+		// Create and Mount vault
+		if err := utility.MountVault(ctx, util.Password1Label, hwsec.NewPassAuthConfig(util.FirstUsername, util.FirstPassword1) /*create*/, true, hwsec.NewVaultConfig()); err != nil {
+			s.Fatal("Failed to create user: ", err)
+		}
+	} else {
+		// Start an Auth session and get an authSessionID.
+		authSessionID, err := utility.StartAuthSession(ctx, util.FirstUsername /*ephemeral=*/, false)
+		if err != nil {
+			s.Fatal("Failed to start Auth session: ", err)
+		}
+		defer utility.InvalidateAuthSession(ctx, authSessionID)
+
+		// This is a no-op for now since AddCredentials.. above will already create
+		// the user.
+		if err := utility.CreatePersistentUser(ctx, authSessionID); err != nil {
+			s.Fatal("Failed to create persistent user")
+		}
+
+		if err := utility.PreparePersistentVault(ctx, authSessionID, false); err != nil {
+			s.Fatal("Failed to prepare persistent vault")
+		}
+
+		if err := utility.AddCredentialsWithAuthSession(ctx, util.FirstUsername, util.FirstPassword1, util.Password1Label, authSessionID /*is_kiosk_user*/, false); err != nil {
+			s.Fatal("Failed to add credentials with AuthSession")
+		}
 	}
 
 	// Cleanup upon finishing
@@ -85,7 +135,7 @@ func CheckKeyPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to CheckKeyEx() with the correct username and password: ", err)
 		}
 		value.Append(perf.Metric{
-			Name:      "check_key_ex_duration",
+			Name:      userParam.checkKeyDurationMetric,
 			Unit:      "us",
 			Direction: perf.SmallerIsBetter,
 			Multiple:  true,
@@ -104,7 +154,7 @@ func CheckKeyPerf(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to CheckKeyEx() (with unlocking webauthn secret) with the correct username and password: ", err)
 		}
 		value.Append(perf.Metric{
-			Name:      "check_key_ex_unlock_webauthn_secret_duration",
+			Name:      userParam.checkKeyDurationWithWebAuthnMetric,
 			Unit:      "us",
 			Direction: perf.SmallerIsBetter,
 			Multiple:  true,
