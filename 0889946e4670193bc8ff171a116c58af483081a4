@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e86481b_822e3fd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-06-13T18:19:35Z",
+      "side": 1,
+      "message": "Trivial change that won\u0027t affect graphics tests on the CQ.",
+      "revId": "0889946e4670193bc8ff171a116c58af483081a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
