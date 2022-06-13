@@ -66,6 +66,11 @@ const GoogleDoHProvider = "https://dns.google/dns-query"
 // DigProxyIPRE is the regular expressions for DNS proxy IP inside dig output.
 var DigProxyIPRE = regexp.MustCompile(`SERVER: 100.115.92.\d+#53`)
 
+// DigIPRE returns a regular expression for matching |ns| in dig output.
+func DigIPRE(ns string) (*regexp.Regexp, error) {
+	return regexp.Compile("SERVER: " + ns + "#53")
+}
+
 // GetClientString get the string representation of a DNS client.
 func GetClientString(c Client) string {
 	switch c {
@@ -315,6 +320,22 @@ func getDoHMode(ctx context.Context) (DoHMode, error) {
 // DigMatch runs dig to check name resolution works and verifies the expected server was used.
 func DigMatch(ctx context.Context, re *regexp.Regexp, match bool) error {
 	out, err := testexec.CommandContext(ctx, "dig", "google.com").Output()
+	if err != nil {
+		return errors.Wrap(err, "dig failed")
+	}
+	if re.MatchString(string(out)) != match {
+		return errors.New("dig used unexpected nameserver")
+	}
+	return nil
+}
+
+// DigToMatch runs dig to a specific nameserver, checks name resolution works and verifies that server was used.
+func DigToMatch(ctx context.Context, ns string, match bool) error {
+	re, err := DigIPRE(ns)
+	if err != nil {
+		return err
+	}
+	out, err := testexec.CommandContext(ctx, "dig", "google.com", "@"+ns).Output()
 	if err != nil {
 		return errors.Wrap(err, "dig failed")
 	}
