@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc10148e_d9b574cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_selection.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-13T09:25:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15a70e8b_08ee59d8",
+      "range": {
+        "startLine": 364,
+        "startChar": 66,
+        "endLine": 364,
+        "endChar": 77
+      },
+      "revId": "f733c79998167e07ab27ae45922e6a10e3fd91b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acff811a_dd423814",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-06-13T02:58:43Z",
       "side": 1,
       "message": "Can we extract this to a constant?",
+      "range": {
+        "startLine": 162,
+        "startChar": 26,
+        "endLine": 162,
+        "endChar": 42
+      },
+      "revId": "f733c79998167e07ab27ae45922e6a10e3fd91b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c94b8a71_d2228e11",
+        "filename": "src/chromiumos/tast/local/hostapd/monitor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-13T09:25:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acff811a_dd423814",
       "range": {
         "startLine": 162,
         "startChar": 26,
