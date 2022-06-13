@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5e94d5c_1c93071c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-13T09:28:51Z",
+      "side": 1,
+      "message": "I wait for Miguel\u0027s +1.",
+      "revId": "1223c8982c6a2c5c71804ab3dd3af90e80419d42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
