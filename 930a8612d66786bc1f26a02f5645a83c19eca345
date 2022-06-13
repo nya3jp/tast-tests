@@ -123,6 +123,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53ea2c63_7e4a1c6c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-06-13T22:44:04Z",
+      "side": 1,
+      "message": "Haven\u0027t we decided that we want to add the test author to the \"Contacts\" section as well?",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "92545436_1554cd1c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
         "patchSetId": 11
@@ -134,6 +157,29 @@
       "writtenOn": "2022-06-11T03:57:33Z",
       "side": 1,
       "message": "what\u0027s this for?",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5790762c_ba180351",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-06-13T22:44:04Z",
+      "side": 1,
+      "message": "*Deconfigure",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 16
+      },
       "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -191,6 +237,52 @@
       "writtenOn": "2022-06-11T03:57:33Z",
       "side": 1,
       "message": "It doesn\u0027t really make sense to me that you check for the interface using iw and remove it using wpa_cli. Can you do both using wpa_cli?",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af2dfe2_ec0bee86",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-06-13T22:44:04Z",
+      "side": 1,
+      "message": "I\u0027m not sure if I agree with hard-coding this to always use the DUT as the GO. Would it be reasonable to split this out to allow different devices to act in different roles?",
+      "range": {
+        "startLine": 1485,
+        "startChar": 23,
+        "endLine": 1485,
+        "endChar": 37
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd4f4895_4adca2f3",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-06-13T22:44:04Z",
+      "side": 1,
+      "message": "Ditto my comment above about hard-coding the roles.",
+      "range": {
+        "startLine": 1529,
+        "startChar": 23,
+        "endLine": 1529,
+        "endChar": 41
+      },
       "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
