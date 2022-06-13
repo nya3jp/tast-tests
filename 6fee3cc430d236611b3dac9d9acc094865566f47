@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "469abbdb_2307c215",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-13T20:23:47Z",
+      "side": 1,
+      "message": "Don\u0027t prefix functions with get:\n\ngo/go-style/decisions#getters",
+      "revId": "6fee3cc430d236611b3dac9d9acc094865566f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c497d73f_aa68c32d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-13T20:23:47Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "6fee3cc430d236611b3dac9d9acc094865566f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba867beb_3ca7e1fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-13T20:23:47Z",
+      "side": 1,
+      "message": "Is this meant to be lowercase (i.e. `unrestrictedPath`)?",
+      "revId": "6fee3cc430d236611b3dac9d9acc094865566f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
