@@ -226,6 +226,24 @@
       "parentUuid": "466017bb_573574a8",
       "revId": "7eb9c26e45e72b6bbcd21d207bbbbd4464122d6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68e5f104_6635817a",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2022-06-13T16:24:33Z",
+      "side": 1,
+      "message": "You should not make other test be aware of the existence and particularities of arcvm tests. arcvm tests need to be self-sufficient and adjust the environment to their needs, not require other tests to accommodate/recover.",
+      "parentUuid": "75c13c1b_9375185d",
+      "revId": "7eb9c26e45e72b6bbcd21d207bbbbd4464122d6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
