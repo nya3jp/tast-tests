@@ -9,7 +9,7 @@ import (
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy/fakedms"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -39,73 +39,55 @@ const accessibilityOptions = "Always show accessibility options in the system me
 func SessionEphemeral(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
-	if err := launchMGSAndToggleAccessibilityOptions(ctx, fdms); err != nil {
-		s.Fatal("Failed to modify options in a first MGS session: ", err)
-	}
-
-	// First MGS is closed, now start a new one and verify the setting is back to default.
-
-	if err := launchMGSAndCheckAccessibilityOptions(ctx, fdms); err != nil {
-		s.Fatal("Failed to verify options go back to default on second MGS session: ", err)
-	}
-}
-
-func launchMGSAndToggleAccessibilityOptions(ctx context.Context, fdms *fakedms.FakeDMS) error {
 	mgs, cr, err := mgs.New(
 		ctx,
 		fdms,
 		mgs.DefaultAccount(),
 		mgs.AutoLaunch(mgs.MgsAccountID),
 	)
-	if err != nil {
-		return errors.Wrap(err, "failed to start MGS")
-	}
 	defer mgs.Close(ctx)
+	if err != nil {
+		s.Fatal("Failed to start MGS: ", err)
+	}
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		return errors.Wrap(err, "getting test API connection failed")
+		s.Fatal("Getting test API connection failed: ", err)
 	}
 
 	ui := uiauto.New(tconn)
-	settings, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, accessibilityPage, ui.WaitUntilExists(nodewith.Name(accessibilityOptions).Role(role.ToggleButton)))
+	button := nodewith.Name(accessibilityOptions).Role(role.ToggleButton)
+	settings, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, accessibilityPage, ui.WaitUntilExists(button))
 	if err != nil {
-		return errors.Wrap(err, "failed to open setting page")
+		s.Fatal("Failed to open settings page: ", err)
 	}
 
 	if err := settings.SetToggleOption(cr, accessibilityOptions, true)(ctx); err != nil {
-		return errors.Wrap(err, "failed to toggle accessibility settings")
+		s.Fatal("Failed to toggle accessibility settings: ", err)
 	}
 
-	return nil
-}
-
-func launchMGSAndCheckAccessibilityOptions(ctx context.Context, fdms *fakedms.FakeDMS) error {
-	mgs, cr, err := mgs.New(
-		ctx,
-		fdms,
-		mgs.DefaultAccount(),
-		mgs.AutoLaunch(mgs.MgsAccountID),
-	)
-	if err != nil {
-		return errors.Wrap(err, "failed to start MGS")
+	opts := []chrome.Option{
+		chrome.DMSPolicy(fdms.URL),
+		chrome.KeepEnrollment(),
+		chrome.NoLogin(),
 	}
-	defer mgs.Close(ctx)
-
-	tconn, err := cr.TestAPIConn(ctx)
+	cr, err = chrome.New(ctx, opts...)
 	if err != nil {
-		return errors.Wrap(err, "getting test API connection failed")
+		s.Fatal("Failed to restart Chrome to simulate ending session: ", err)
+	}
+	defer cr.Close(ctx)
+
+	tconn, err = cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Getting test API connection failed: ", err)
 	}
 
-	ui := uiauto.New(tconn)
-	settings, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, accessibilityPage, ui.WaitUntilExists(nodewith.Name(accessibilityOptions).Role(role.ToggleButton)))
+	settings, err = ossettings.LaunchAtPageURL(ctx, tconn, cr, accessibilityPage, ui.WaitUntilExists(button))
 	if err != nil {
-		return errors.Wrap(err, "failed to open setting page")
+		s.Fatal("Failed to open settings page in the new session: ", err)
 	}
 
 	if err := settings.WaitUntilToggleOption(cr, accessibilityOptions, false)(ctx); err != nil {
-		return errors.Wrap(err, "managed guest session was not ephermeral")
+		s.Fatal("Failed to wait for setting to be false: ", err)
 	}
-
-	return nil
 }
