@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40317d41_f5c9901f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_sig_ab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-13T22:27:29Z",
+      "side": 1,
+      "message": "firmware_bringup is for tests that don\u0027t require SSH at all, i.e. Linux isn\u0027t even installed on the DUT. So remove that attr.",
+      "range": {
+        "startLine": 31,
+        "startChar": 85,
+        "endLine": 31,
+        "endChar": 101
+      },
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ad384d_3a9d31ad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_sig_ab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-13T22:27:29Z",
+      "side": 1,
+      "message": "You should add a defer call here to remove the backup from the dut.",
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75166c0d_bcf0a580",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_sig_ab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-13T22:27:29Z",
+      "side": 1,
+      "message": "Why is this in a child func?",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c41eaa_95b520a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_fw_sig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-13T22:27:29Z",
+      "side": 1,
+      "message": "Remove firmware_bringup",
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f413cab0_8544de89",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_fw_sig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-13T22:27:29Z",
+      "side": 1,
+      "message": "You said Host in the log, but used USBMuxDUT in the call. Please update log to match",
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7848a19a_2d8fb5f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_fw_sig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-13T22:27:29Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this use the corrupted fw, not B? Alternatively, if you are trying to make sure fw tries works with both a and b, shouldn\u0027t you explicitly set it to A after corrupting?",
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed5740e2_e64ef158",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-13T22:27:29Z",
+      "side": 1,
+      "message": "Instead of this, just always return the error, and change the `if err !\u003d nil` below to be `if err !\u003d nil \u0026\u0026 cloudStorage !\u003d nil`",
+      "range": {
+        "startLine": 541,
+        "startChar": 3,
+        "endLine": 541,
+        "endChar": 27
+      },
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cab67ca_5b36f33e",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-13T22:27:29Z",
+      "side": 1,
+      "message": "Misspelling.  Did tast lint pass when up did repo upload?",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
