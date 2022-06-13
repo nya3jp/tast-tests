@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f64f60b4_a8103aaa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_custom_nameserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-06-13T01:23:15Z",
+      "side": 1,
+      "message": "Ah sorry for not being clear, unfortunately we currently still have the issue for Crostini.",
+      "range": {
+        "startLine": 60,
+        "startChar": 11,
+        "endLine": 60,
+        "endChar": 25
+      },
+      "revId": "952eaef9fce8fe4cf194e2d68a54ade744997fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59943a62_342d7166",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_custom_nameserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-06-13T01:23:15Z",
+      "side": 1,
+      "message": "This does not work because we \"hacked\" the destination through iptables. Dig might see the wrong destination here (e.g. on the Crostini\u0027s test).\n\nI would say a possible solution would be to fully block the namespaces network and check if DNS is resolved.",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 23
+      },
+      "revId": "952eaef9fce8fe4cf194e2d68a54ade744997fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
