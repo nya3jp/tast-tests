@@ -24,23 +24,23 @@ func RegexpPred(exp *regexp.Regexp) func(string) bool {
 	}
 }
 
-// WaitForLogcat keeps scanning logcat. The function pred is called on the logcat contents line by line. This function returns successfully if pred returns true. If pred never returns true, this function returns an error as soon as the context is done.
+// WaitForLogcat keeps scanning logcat. The function pred is called on the logcat contents line by line. This function returns the candidate line successfully if pred returns true. If pred never returns true, this function returns an error as soon as the context is done.
 // An optional quitFunc will be polled at regular interval, which can be used to break early if for example the activity which is supposed to print the exp has crashed
-func (d *Device) WaitForLogcat(ctx context.Context, pred func(string) bool, quitFunc ...func() bool) error {
+func (d *Device) WaitForLogcat(ctx context.Context, pred func(string) bool, quitFunc ...func() bool) (string, error) {
 	if len(quitFunc) > 1 {
-		return errors.New("only 1 quitFunc is supported")
+		return "", errors.New("only 1 quitFunc is supported")
 	}
 
 	cmd := d.ShellCommand(ctx, "logcat")
 
 	pipe, err := cmd.StdoutPipe()
 	if err != nil {
-		return errors.Wrap(err, "failed to open StdoutPipe")
+		return "", errors.Wrap(err, "failed to open StdoutPipe")
 	}
 	defer pipe.Close()
 
 	if err := cmd.Start(); err != nil {
-		return errors.Wrapf(err, "failed to start %s", shutil.EscapeSlice(cmd.Args))
+		return "", errors.Wrapf(err, "failed to start %s", shutil.EscapeSlice(cmd.Args))
 	}
 	defer func() {
 		cmd.Kill()
@@ -49,6 +49,7 @@ func (d *Device) WaitForLogcat(ctx context.Context, pred func(string) bool, quit
 
 	status := make(chan error)
 	breakChan := make(chan struct{})
+	ret := ""
 
 	go func() {
 		// pred might panic, so always write something to the channel.
@@ -64,6 +65,7 @@ func (d *Device) WaitForLogcat(ctx context.Context, pred func(string) bool, quit
 			default:
 				if pred(scanner.Text()) {
 					status <- nil
+					ret = scanner.Text()
 					return
 				}
 			}
@@ -93,13 +95,13 @@ func (d *Device) WaitForLogcat(ctx context.Context, pred func(string) bool, quit
 	case err := <-status:
 		close(breakChan)
 		if err != nil {
-			return errors.Wrap(err, "error while scanning logcat")
+			return "", errors.Wrap(err, "error while scanning logcat")
 		}
-		return nil
+		return ret, nil
 	case <-ctx.Done():
 		// This is usually a timeout.
 		close(breakChan)
-		return errors.Wrap(ctx.Err(), "context was done while waiting match of pred in logcat")
+		return "", errors.Wrap(ctx.Err(), "context was done while waiting match of pred in logcat")
 	}
 }
 
