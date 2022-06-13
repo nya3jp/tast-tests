@@ -560,22 +560,20 @@ func takePhotoAndVideo(ctx context.Context, cr *chrome.Chrome, scriptPaths []str
 }
 
 func playYoutubeMusic(ctx context.Context, resources *runResources) error {
-	const actionName = "play youtube music"
 	ui := resources.ui
 	uiHdl := resources.uiHandler
 	shuffleButton := nodewith.Name("Shuffle").Role(role.Button)
-	pauseButton := nodewith.Name("Pause").Role(role.Button)
+	pauseButton := nodewith.Name("Pause").Role(role.Button).First()
 	reviewIconUpdateWindow := nodewith.Name("Review icon update").Role(role.Window)
 	okButton := nodewith.Name("OK").Role(role.Button).Ancestor(reviewIconUpdateWindow)
 	dismissReviewIconUpdateIfPresent := uiauto.IfSuccessThen(
 		ui.WithTimeout(3*time.Second).WaitUntilExists(reviewIconUpdateWindow),
 		uiauto.NamedAction("close 'Review icon update' dialog", uiHdl.Click(okButton)))
-
-	return uiauto.NamedAction(actionName,
-		// Sometimes closing the dialog doesn't work, so add retry here.
-		ui.Retry(3, uiauto.Combine(actionName,
-			uiHdl.Click(shuffleButton),
-			dismissReviewIconUpdateIfPresent,
-			ui.WaitUntilExists(pauseButton),
-		)))(ctx)
+	waitPauseButton := uiauto.NamedCombine("wait pause button",
+		dismissReviewIconUpdateIfPresent,
+		ui.WaitUntilExists(pauseButton),
+	)
+	// Sometimes closing the dialog doesn't work, so add retry here.
+	return uiauto.NamedAction("play youtube music",
+		ui.WithTimeout(mediumUITimeout).DoDefaultUntil(shuffleButton, waitPauseButton))(ctx)
 }
