@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da11bdaf_1e3aa8f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-13T06:33:36Z",
+      "side": 1,
+      "message": "It is up to you then. Feel free to add a parameterised test https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests\n\nYou can look at other tests for more information.",
+      "parentUuid": "1037bb7f_029289a9",
+      "range": {
+        "startLine": 38,
+        "startChar": 35,
+        "endLine": 38,
+        "endChar": 49
+      },
+      "revId": "d990500835610d9527f99302f77e00366d82473a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5437ea45_236a490c",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
         "patchSetId": 5
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I think the CL that introduces it landed after your last pull:\nhttps://chromium-review.googlesource.com/c/chromium/src/+/3669894\n\nBy the way there is now an extra button in the menu, that I\u0027d like to test too:\nhttps://chromium-review.googlesource.com/c/chromium/src/+/3669895\n\nBoth CLs should be merged now",
       "parentUuid": "5437ea45_236a490c",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 44
+      },
+      "revId": "d990500835610d9527f99302f77e00366d82473a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b741b5ce_16c3b736",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-13T06:33:36Z",
+      "side": 1,
+      "message": "In that case, you should wait for these cls to merge first before sending this cl for review. Can you try to finish the cl by yourself based on the instruction?",
+      "parentUuid": "618dd13e_786896ec",
       "range": {
         "startLine": 57,
         "startChar": 16,
