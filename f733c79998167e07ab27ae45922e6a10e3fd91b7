@@ -16,6 +16,46 @@
       "message": "shadow reviewer lgtm",
       "revId": "f733c79998167e07ab27ae45922e6a10e3fd91b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "988ec987_101fe553",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-13T02:58:43Z",
+      "side": 1,
+      "message": "giving owners to avoid any more round trips, but please resolve comments",
+      "revId": "f733c79998167e07ab27ae45922e6a10e3fd91b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acff811a_dd423814",
+        "filename": "src/chromiumos/tast/local/hostapd/monitor.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-13T02:58:43Z",
+      "side": 1,
+      "message": "Can we extract this to a constant?",
+      "range": {
+        "startLine": 162,
+        "startChar": 26,
+        "endLine": 162,
+        "endChar": 42
+      },
+      "revId": "f733c79998167e07ab27ae45922e6a10e3fd91b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

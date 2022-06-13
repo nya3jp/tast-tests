@@ -795,6 +795,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "574e7326_eac00fcf",
+        "filename": "src/chromiumos/tast/local/hostapd/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-13T02:58:43Z",
+      "side": 1,
+      "message": "Can we make a constant for this, and attach a comment to the constant with the info about how this number was chosen? Sounds like it\u0027s manual check + safety factor.",
+      "parentUuid": "8ed473f5_f53730bf",
+      "range": {
+        "startLine": 87,
+        "startChar": 29,
+        "endLine": 87,
+        "endChar": 32
+      },
+      "revId": "e49db241cb7ac04f90a079234dea082747794dc1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4257d9e0_e7bd2dd9",
         "filename": "src/chromiumos/tast/local/hostapd/monitor.go",
         "patchSetId": 1
