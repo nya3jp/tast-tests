@@ -54,6 +54,7 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 		apk          = "ArcKeyCharacterMapTest.apk"
 		pkg          = "org.chromium.arc.testapp.kcm"
 		activityName = ".MainActivity"
+		fieldID      = pkg + ":id/typed_character"
 	)
 
 	s.Log("Installing app")
@@ -78,57 +79,72 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	checkMapping := func(ctx context.Context, input, output string) {
-		fieldID := pkg + ":id/typed_character"
-
-		if err := kb.Type(ctx, input); err != nil {
-			s.Fatal("Failed to type: ", err)
-		}
-
-		if err := d.Object(ui.ID(fieldID), ui.Text(output)).WaitForExists(ctx, 30*time.Second); err != nil {
-			s.Fatal("Failed to find field: ", err)
-		}
+	imeID, err := ime.CurrentInputMethod(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get current ime: ", err)
 	}
-
-	var imePrefix string
-	if imePrefix, err = ime.Prefix(ctx, tconn); err != nil {
+	imePrefix, err := ime.Prefix(ctx, tconn)
+	if err != nil {
 		s.Fatal("Failed to get ime prefix: ", err)
 	}
+	defer func(ctx context.Context) {
+		if err := ime.SetCurrentInputMethod(ctx, tconn, imeID); err != nil {
+			s.Error("Failed to set the default input method: ", err)
+		}
+	}(cleanupCtx)
 
-	switchInputMethod := func(ctx context.Context, language, layout string) {
-		if err := ime.EnableLanguage(ctx, tconn, language); err != nil {
-			s.Fatalf("Failed to enable the language %q: %v", language, err)
-		}
-		if err := ime.AddInputMethod(ctx, tconn, imePrefix+layout); err != nil {
-			s.Fatalf("Failed to enable the IME %q: %v", layout, err)
-		}
-		if err := ime.SetCurrentInputMethod(ctx, tconn, imePrefix+layout); err != nil {
-			s.Fatalf("Failed to activate the IME %q: %v", layout, err)
-		}
+	for _, tc := range []struct {
+		name     string
+		im       *ime.InputMethod
+		mappings []struct{ in, out string }
+	}{
+		{
+			name: "QWERTY keyboard",
+			im:   nil,
+			mappings: []struct{ in, out string }{
+				{"q", "q"},
+				{"shift+q", "Q"},
+			},
+		},
+		{
+			name: "AZERTY keyboard",
+			im:   &ime.FrenchFrance,
+			mappings: []struct{ in, out string }{
+				{"q", "a"},
+				{"shift+q", "A"},
+			},
+		},
+		{
+			name: "JCUKEN keyboard",
+			im:   &ime.Russian,
+			mappings: []struct{ in, out string }{
+				{"q", "й"},
+				{"shift+q", "Й"},
+			},
+		},
+	} {
+		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
+			if tc.im != nil {
+				if err := ime.AddAndSetInputMethod(ctx, tconn, imePrefix+tc.im.ID); err != nil {
+					s.Fatalf("Failed to switch the IME %q: %v", tc.im.Name, err)
+				}
+
+				defer func(ctx context.Context) {
+					if err := ime.RemoveInputMethod(ctx, tconn, imePrefix+tc.im.ID); err != nil {
+						s.Errorf("Failed to remove the IME %q: %v", tc.im.Name, err)
+					}
+				}(ctx)
+			}
+
+			for _, v := range tc.mappings {
+				if err := kb.Accel(ctx, v.in); err != nil {
+					s.Fatal("Failed to type: ", err)
+				}
+
+				if err := d.Object(ui.ID(fieldID), ui.Text(v.out)).WaitForExists(ctx, 10*time.Second); err != nil {
+					s.Errorf("Failed to find field %q after typing %q: %v", v.in, v.out, err)
+				}
+			}
+		})
 	}
-
-	removeInputMethod := func(ctx context.Context, language, layout string) {
-		if err := ime.RemoveInputMethod(ctx, tconn, imePrefix+layout); err != nil {
-			s.Errorf("Failed to enable the IME %q: %v", layout, err)
-		}
-		if err := ime.DisableLanguage(ctx, tconn, language); err != nil {
-			s.Errorf("Failed to enable the language %q: %v", language, err)
-		}
-	}
-
-	// Check mapping in QWERTY keyboard
-	checkMapping(ctx, "q", "q")
-	checkMapping(ctx, "Q", "Q")
-
-	// Check mapping in AZERTY keyboard
-	defer removeInputMethod(cleanupCtx, "fr-FR", "xkb:fr::fra")
-	switchInputMethod(ctx, "fr-FR", "xkb:fr::fra")
-	checkMapping(ctx, "q", "a")
-	checkMapping(ctx, "Q", "A")
-
-	// Check mapping in the JCUKEN keyboard
-	defer removeInputMethod(cleanupCtx, "ru", "xkb:ru::rus")
-	switchInputMethod(ctx, "ru", "xkb:ru::rus")
-	checkMapping(ctx, "q", "й")
-	checkMapping(ctx, "Q", "Й")
 }
