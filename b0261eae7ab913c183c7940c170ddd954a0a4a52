@@ -33,6 +33,23 @@
       "message": "shadow reviewer lgtm",
       "revId": "b0261eae7ab913c183c7940c170ddd954a0a4a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94ffff53_34778670",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-13T05:02:09Z",
+      "side": 1,
+      "message": "Hi David/Avery, Can you please provide CR+2?",
+      "revId": "b0261eae7ab913c183c7940c170ddd954a0a4a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
