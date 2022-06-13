@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e05a065d_a302529b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_ipv4_static.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T08:40:22Z",
+      "side": 1,
+      "message": "If we plan more tests with static IPv4 configurations, it might be useful to have these two blocks available as a convenience helper method, like SetStaticIPv4ConfigurationForTestService().",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "f915afc010b31f1157cc6fb93e90ca2ad3c92a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "970f0729_a5453861",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_ipv4_static.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T08:40:22Z",
+      "side": 1,
+      "message": "If this has a dependency on your recent shill fix, don\u0027t forget to add the Cq-Depend if the shill fix does not land immediately.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 36
+      },
+      "revId": "f915afc010b31f1157cc6fb93e90ca2ad3c92a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "429815a9_cce49540",
+        "filename": "src/chromiumos/tast/local/shill/ipconfig.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T08:40:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this field is used directly in either platform2 or in Chrome. This is only used internally to shill to derive meteredness for Android hotspots afaik.\n\nIf we remove this from the future IP properties API, we should maybe skip testing it in the current implementation.",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "f915afc010b31f1157cc6fb93e90ca2ad3c92a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f24daea6_3f77979d",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T08:40:22Z",
+      "side": 1,
+      "message": "Could we print the current service path/name/type ? (same comment below)",
+      "range": {
+        "startLine": 58,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 64
+      },
+      "revId": "f915afc010b31f1157cc6fb93e90ca2ad3c92a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ace99bb1_5e5556d7",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T08:40:22Z",
+      "side": 1,
+      "message": "nit: D",
+      "range": {
+        "startLine": 62,
+        "startChar": 46,
+        "endLine": 62,
+        "endChar": 47
+      },
+      "revId": "f915afc010b31f1157cc6fb93e90ca2ad3c92a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
