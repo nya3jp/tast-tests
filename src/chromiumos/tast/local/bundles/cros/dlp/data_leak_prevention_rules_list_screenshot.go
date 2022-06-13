@@ -6,6 +6,8 @@ package dlp
 
 import (
 	"context"
+	"net/http"
+	"net/http/httptest"
 	"time"
 
 	"chromiumos/tast/common/fixture"
@@ -35,56 +37,65 @@ const (
 // A struct containing parameters for different screenshot tests.
 type screenshotTestParams struct {
 	name                  string
-	url                   string
+	path                  string
 	restriction           restrictionlevel.RestrictionLevel
 	wantNotificationTitle string
 	wantNotificationID    string
-	policyDLP             []policy.Policy
 	browserType           browser.Type
 }
 
-// DLP policy that blocks taking a screenshot.
-var screenshotBlockPolicy = []policy.Policy{&policy.DataLeakPreventionRulesList{
-	Val: []*policy.DataLeakPreventionRulesListValue{
-		{
-			Name:        "Disable taking screenshots of confidential content",
-			Description: "User should not be able to take screenshots of confidential content",
-			Sources: &policy.DataLeakPreventionRulesListValueSources{
-				Urls: []string{
-					"example.com",
+// Different paths used for testing.
+const (
+	unrestrictedPath = "/text_1.html"
+	restrictedPath   = "/text_2.html"
+)
+
+// getScreenshotBlockPolicy returns a DLP policy that blocks screen sharing.
+func getScreenshotBlockPolicy(serverURL string) []policy.Policy {
+	return []policy.Policy{&policy.DataLeakPreventionRulesList{
+		Val: []*policy.DataLeakPreventionRulesListValue{
+			{
+				Name:        "Disable taking screenshots of confidential content",
+				Description: "User should not be able to take screenshots of confidential content",
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
+					Urls: []string{
+						serverURL + restrictedPath,
+					},
 				},
-			},
-			Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
-				{
-					Class: "SCREENSHOT",
-					Level: "BLOCK",
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
+					{
+						Class: "SCREENSHOT",
+						Level: "BLOCK",
+					},
 				},
 			},
 		},
 	},
-},
+	}
 }
 
-// DLP policy that warns when taking a screenshot.
-var screenshotWarnPolicy = []policy.Policy{&policy.DataLeakPreventionRulesList{
-	Val: []*policy.DataLeakPreventionRulesListValue{
-		{
-			Name:        "Warn before taking a screenshot confidential content",
-			Description: "User should be warned before taking a screenshot of confidential content",
-			Sources: &policy.DataLeakPreventionRulesListValueSources{
-				Urls: []string{
-					"example.com",
+// getScreenshotWarnPolicy returns a DLP policy that warns before taking a screenshot.
+func getScreenshotWarnPolicy(serverURL string) []policy.Policy {
+	return []policy.Policy{&policy.DataLeakPreventionRulesList{
+		Val: []*policy.DataLeakPreventionRulesListValue{
+			{
+				Name:        "Warn before taking a screenshot confidential content",
+				Description: "User should be warned before taking a screenshot of confidential content",
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
+					Urls: []string{
+						serverURL + restrictedPath,
+					},
 				},
-			},
-			Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
-				{
-					Class: "SCREENSHOT",
-					Level: "WARN",
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
+					{
+						Class: "SCREENSHOT",
+						Level: "WARN",
+					},
 				},
 			},
 		},
 	},
-},
+	}
 }
 
 func init() {
@@ -98,16 +109,16 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
+		Data:         []string{"text_1.html", "text_2.html"},
 		Params: []testing.Param{{
 			Name:    "ash_blocked",
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val: screenshotTestParams{
 				name:                  "blocked",
-				url:                   "https://www.example.com/",
+				path:                  restrictedPath,
 				restriction:           restrictionlevel.Blocked,
 				wantNotificationTitle: captureNotAllowedTitle,
 				wantNotificationID:    captureNotAllowedID,
-				policyDLP:             screenshotBlockPolicy,
 				browserType:           browser.TypeAsh,
 			},
 		}, {
@@ -115,11 +126,10 @@ func init() {
 			Fixture: fixture.ChromePolicyLoggedIn,
 			Val: screenshotTestParams{
 				name:                  "allowed",
-				url:                   "https://www.chromium.com/",
+				path:                  unrestrictedPath,
 				restriction:           restrictionlevel.Allowed,
 				wantNotificationTitle: captureTakenTitle,
 				wantNotificationID:    captureTakenID,
-				policyDLP:             screenshotBlockPolicy,
 				browserType:           browser.TypeAsh,
 			},
 		}, {
@@ -128,11 +138,10 @@ func init() {
 			Fixture:   fixture.ChromePolicyLoggedIn,
 			Val: screenshotTestParams{
 				name:                  "warn_proceded",
-				url:                   "https://www.example.com/",
+				path:                  restrictedPath,
 				restriction:           restrictionlevel.WarnProceeded,
 				wantNotificationTitle: captureTakenTitle,
 				wantNotificationID:    captureTakenID,
-				policyDLP:             screenshotWarnPolicy,
 				browserType:           browser.TypeAsh,
 			},
 		}, {
@@ -141,9 +150,8 @@ func init() {
 			Fixture:   fixture.ChromePolicyLoggedIn,
 			Val: screenshotTestParams{
 				name:        "warn_cancelled",
-				url:         "https://www.example.com/",
+				path:        restrictedPath,
 				restriction: restrictionlevel.WarnCancelled,
-				policyDLP:   screenshotWarnPolicy,
 				browserType: browser.TypeAsh,
 			},
 		}, {
@@ -153,11 +161,10 @@ func init() {
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshotTestParams{
 				name:                  "blocked",
-				url:                   "https://www.example.com/",
+				path:                  restrictedPath,
 				restriction:           restrictionlevel.Blocked,
 				wantNotificationTitle: captureNotAllowedTitle,
 				wantNotificationID:    captureNotAllowedID,
-				policyDLP:             screenshotBlockPolicy,
 				browserType:           browser.TypeLacros,
 			},
 		}, {
@@ -167,11 +174,10 @@ func init() {
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshotTestParams{
 				name:                  "allowed",
-				url:                   "https://www.chromium.com/",
+				path:                  UnrestrictedPath,
 				restriction:           restrictionlevel.Allowed,
 				wantNotificationTitle: captureTakenTitle,
 				wantNotificationID:    captureTakenID,
-				policyDLP:             screenshotBlockPolicy,
 				browserType:           browser.TypeLacros,
 			},
 		}, {
@@ -181,11 +187,10 @@ func init() {
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshotTestParams{
 				name:                  "warn_proceeded",
-				url:                   "https://www.example.com/",
+				path:                  restrictedPath,
 				restriction:           restrictionlevel.WarnProceeded,
 				wantNotificationTitle: captureTakenTitle,
 				wantNotificationID:    captureTakenID,
-				policyDLP:             screenshotWarnPolicy,
 				browserType:           browser.TypeLacros,
 			},
 		}, {
@@ -195,9 +200,8 @@ func init() {
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val: screenshotTestParams{
 				name:        "warn_cancelled",
-				url:         "https://www.example.com/",
+				path:        restrictedPath,
 				restriction: restrictionlevel.WarnCancelled,
-				policyDLP:   screenshotWarnPolicy,
 				browserType: browser.TypeLacros,
 			},
 		}},
@@ -226,9 +230,16 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+s.Param().(screenshotTestParams).name)
 
+	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer server.Close()
+
 	// Update the policy blob.
 	pb := policy.NewBlob()
-	pb.AddPolicies(s.Param().(screenshotTestParams).policyDLP)
+	if s.Param().(screenshotTestParams).restriction == restrictionlevel.Allowed || s.Param().(screenshotTestParams).restriction == restrictionlevel.Blocked {
+		pb.AddPolicies(getScreenshotBlockPolicy(server.URL))
+	} else {
+		pb.AddPolicies(getScreenshotWarnPolicy(server.URL))
+	}
 
 	// Update policy.
 	if err := policyutil.ServeBlobAndRefresh(ctx, fakeDMS, cr, pb); err != nil {
@@ -251,7 +262,8 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 	}
 	defer closeBrowser(cleanupCtx)
 
-	conn, err := br.NewConn(ctx, s.Param().(screenshotTestParams).url)
+	url := server.URL + s.Param().(screenshotTestParams).path
+	conn, err := br.NewConn(ctx, url)
 	if err != nil {
 		s.Fatal("Failed to open page: ", err)
 	}
