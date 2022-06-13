@@ -102,9 +102,9 @@ func RoutingIPv4Static(ctx context.Context, s *testing.State) {
 
 	// Verify that the DHCP timeout event does not turn the service down. We
 	// cannot trigger this event manually so nothing can be done except for
-	// sleeping here. Additional 1 second to make sure the event is triggered.
-	testing.ContextLog(ctx, "Waiting for DHCP timeout event for ", routing.DHCPTimeout)
-	testing.Sleep(ctx, routing.DHCPTimeout+time.Second)
+	// sleeping here.
+	testing.ContextLog(ctx, "Waiting for DHCP timeout event for ", routing.DHCPExtraTimeout)
+	testing.Sleep(ctx, routing.DHCPExtraTimeout)
 	testing.ContextLog(ctx, "DHCP timeout was triggered")
 
 	// Verify the service state is not changed.

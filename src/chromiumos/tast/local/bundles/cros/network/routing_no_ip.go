@@ -102,8 +102,8 @@ func RoutingNoIP(ctx context.Context, s *testing.State) {
 	// Ethernet service in shill will be reconnected immediately after a failure,
 	// so we use the property watch to check the D-Bus signal instead of polling
 	// its property value.
-	testing.ContextLog(ctx, "Waiting for DHCP timeout")
-	dhcpTimeoutCtx, cancel := context.WithTimeout(ctx, routing.DHCPTimeout+1*time.Second)
+	testing.ContextLog(ctx, "Waiting for DHCP timeout for ", routing.DHCPExtraTimeout)
+	dhcpTimeoutCtx, cancel := context.WithTimeout(ctx, routing.DHCPExtraTimeout)
 	defer cancel()
 	interestStates := []interface{}{
 		shillconst.ServiceStateReady,
@@ -122,6 +122,6 @@ func RoutingNoIP(ctx context.Context, s *testing.State) {
 	// the DHCP timeout.
 	diff := time.Since(timeBeforeConnect)
 	if diff < routing.DHCPTimeout {
-		s.Fatal(ctx, "The service state changed to failure in %s which is less than %s", diff, routing.DHCPTimeout)
+		s.Fatalf("The service state changed to failure in %s which is less than %s", diff, routing.DHCPTimeout)
 	}
 }
