@@ -16,6 +16,29 @@
       "message": "LGTM",
       "revId": "a47cb9ae31cd77e941039cb7fa983c7c5e7575f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a870d7d3_c0d2abf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/legacy_label_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-13T06:00:38Z",
+      "side": 1,
+      "message": "nit: do you mean\n\n(ctx, /*keyLabel\u003d*/\"\", ...)",
+      "range": {
+        "startLine": 117,
+        "startChar": 39,
+        "endLine": 117,
+        "endChar": 56
+      },
+      "revId": "a47cb9ae31cd77e941039cb7fa983c7c5e7575f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
