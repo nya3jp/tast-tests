@@ -141,10 +141,14 @@ var CrostiniUnstableCond = hwdep.Model(UnstableModels...)
 // models that are known to be flaky when running Crostini tests.
 var CrostiniUnstable = hwdep.D(CrostiniUnstableCond, CrostiniMinDiskSizeCond)
 
-// CrostiniAppTest is a hardware dependency limiting the boards on which app testing is run.
+// CrostiniAppStable is a hardware dependency limiting the boards on which app testing is run.
 // App testing uses a large container which needs large space. Many DUTs in the lab do not have enough space.
 // The boards listed have enough space.
-var CrostiniAppTest = hwdep.D(hwdep.Model("hatch", "eve", "atlas", "nami"), CrostiniMinDiskSizeCond)
+var CrostiniAppStable = hwdep.D(hwdep.Model("hatch", "eve", "atlas", "nami"), CrostiniMinDiskSizeCond)
+
+// CrostiniAppUnstable is a hardware dependency in addition to CrostiniAppStable.
+// These models are expected to merge with CrostiniAppStable once approved stable.
+var CrostiniAppUnstable = hwdep.D(hwdep.Model("akemi", "dragonair", "dratini", "helios", "jinlon", "kindred", "kled", "kohaku", "nightfury"), CrostiniMinDiskSizeCond)
 
 // interface defined for GetInstallerOptions to allow both
 // testing.State and testing.PreState to be passed in as the first
