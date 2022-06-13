@@ -39,6 +39,30 @@
       },
       "revId": "75560143c8fcebc2e0ffb3d1c977e0ebda1b4f1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3278c45d_a6b88689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-13T20:19:45Z",
+      "side": 1,
+      "message": "For some reason, using UIAuto to click the menu the first time (i.e. after launching the app and clicking the educational diaolog) works, while subsequent clicks may or may not work\n\nIf changing all of them to ACUITI instead makes more sense, I can do that instead",
+      "parentUuid": "bfe8c665_e7a1f2b9",
+      "range": {
+        "startLine": 92,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 70
+      },
+      "revId": "75560143c8fcebc2e0ffb3d1c977e0ebda1b4f1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
