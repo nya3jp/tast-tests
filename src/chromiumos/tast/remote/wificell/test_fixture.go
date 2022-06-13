@@ -585,13 +585,39 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 // Reinit reinitialize the TestFixture. This can be used in precondition or between
 // testcases to guarantee a cleaner state.
 func (tf *TestFixture) Reinit(ctx context.Context) error {
-	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	ctx, cancel := context.WithTimeout(ctx, 5*time.Minute)
 	defer cancel()
 
 	if _, err := tf.WifiClient().ReinitTestState(ctx, &empty.Empty{}); err != nil {
 		return errors.Wrap(err, "failed to reinit DUT")
 	}
+
+	for _, rc := range tf.collectAllRouterControllers() {
+		if err := rc.ReinitTestState(ctx); err != nil {
+			return errors.Wrapf(err, "failed to reinit %s router %q", rc.RouterType().String(), rc.RouterName())
+		}
+	}
 	return nil
+}
+
+// collectAllRouterControllers collects all router controllers in use by this
+// fixture, including the pcap. Each router controller in the returned list is
+// guaranteed to be unique.
+func (tf *TestFixture) collectAllRouterControllers() []router.Base {
+	routerControllersMapSet := make(map[router.Base]bool)
+	for _, rt := range tf.routers {
+		routerControllersMapSet[rt.object] = true
+	}
+	if tf.pcap != nil {
+		routerControllersMapSet[tf.pcap] = true
+	}
+	routerControllers := make([]router.Base, len(routerControllersMapSet))
+	i := 0
+	for rc := range routerControllersMapSet {
+		routerControllers[i] = rc
+		i++
+	}
+	return routerControllers
 }
 
 // getUniqueAPName returns an unique ID string for each AP as their name, so that related

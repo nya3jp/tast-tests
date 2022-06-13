@@ -180,6 +180,12 @@ func (r *Router) RouterName() string {
 	return r.name
 }
 
+// ReinitTestState returns the router to a clean test state.
+func (r *Router) ReinitTestState(ctx context.Context) error {
+	testing.ContextLogf(ctx, "ReinitTestState ignored for router %q as it not necessary for %s routers", r.RouterName(), r.RouterType().String())
+	return nil
+}
+
 // setupWifiPhys fills r.phys and enables their antennas.
 func (r *Router) setupWifiPhys(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "setupWifiPhys")

@@ -1417,8 +1417,16 @@ func SimpleConnect(ctx context.Context, s *testing.State) {
 		subtest := func(ctx context.Context, s *testing.State) {
 			testOnce(ctx, s, tc.apOpts, tc.secConfFac, tc.pingOps, tc.expectedFailure)
 		}
-		if !s.Run(ctx, fmt.Sprintf("Testcase #%d", i), subtest) {
-			// Stop if any sub-test failed.
+		tcName := fmt.Sprintf("Testcase #%d", i)
+		if i > 0 {
+			// Reinitialize fixture before each additional test case. This is not
+			// necessary to do before the first case as that is done during PreTest.
+			if err := tf.Reinit(ctx); err != nil {
+				s.Fatalf("Failed to reinit test fixture before %s, err: %v", tcName, err)
+			}
+		}
+		if !s.Run(ctx, tcName, subtest) {
+			// Stop if any subtest failed.
 			return
 		}
 	}

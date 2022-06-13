@@ -257,6 +257,12 @@ func (r *Router) RouterName() string {
 	return r.name
 }
 
+// ReinitTestState returns the router to a clean test state.
+func (r *Router) ReinitTestState(ctx context.Context) error {
+	testing.ContextLogf(ctx, "ReinitTestState ignored for router %q as it yet implemented for %s routers", r.RouterName(), r.RouterType().String())
+	return nil
+}
+
 // workDir returns the directory to place temporary files on router.
 func (r *Router) workDir() string {
 	return common.WorkingDir
