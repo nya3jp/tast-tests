@@ -235,6 +235,9 @@ func RebootingTest() Option {
 
 // FilterCrashes puts s into the filter-in file, so that the crash reporter only
 // processes matching crashes.
+// If this option is used, then only invocation of crash_reporter with arguments
+// that contains s will be processed. See platform2/crash-reporter/README.md and
+// search for "filter-in" for more info.
 func FilterCrashes(s string) Option {
 	return func(p *setUpParams) {
 		p.filterIn = s
