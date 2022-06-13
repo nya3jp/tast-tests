@@ -185,10 +185,10 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	}
 
 	// Lacros features and additional args used to launch lacros-chrome should be delimited by
-	// '####' and passed in from ash-chrome as a single argument with --lacros-chrome-additional-args.
+	// '####' and passed in from ash-chrome as a single argument with --lacros-chrome-additional-test-args.
 	// See browser_manager.cc in Chrome source.
 	// Example:
-	//   --lacros-chrome-additional-args="--enable-features=Feature1,Feature2####--disable-features=Feature3####--foo=bar"
+	//   --lacros-chrome-additional-test-args="--enable-features=Feature1,Feature2####--disable-features=Feature3####--foo=bar"
 	// will result in multiple arguments passed to lacros-chrome:
 	//   --enable-features=Feature1,Feature2
 	//   --disable-features=Feature3
@@ -204,7 +204,7 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		largs = append(largs, as...)
 	}
 	if len(largs) != 0 {
-		args = append(args, "--lacros-chrome-additional-args="+strings.Join(largs, "####"))
+		args = append(args, "--lacros-chrome-additional-test-args="+strings.Join(largs, "####"))
 	}
 
 	// TODO(b/207576612): Remove this explicit override once all tests have migrated
