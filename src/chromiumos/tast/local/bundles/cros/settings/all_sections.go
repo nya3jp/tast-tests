@@ -122,7 +122,8 @@ func checkSection(ctx context.Context, cr *chrome.Chrome, osSettings *ossettings
 
 func expandSubSection(osSettings *ossettings.OSSettings, node *nodewith.Finder, expected bool) uiauto.Action {
 	return uiauto.Combine(fmt.Sprintf("expand sub section: %s", node.Pretty()),
-		ensureFocused(osSettings, node),
+		osSettings.WaitForLocation(node),
+		osSettings.EnsureFocused(node),
 		osSettings.LeftClick(node.State(state.Expanded, !expected)),
 		osSettings.WaitUntilExists(node.State(state.Expanded, expected)),
 	)
@@ -154,18 +155,5 @@ func ensureVisible(osSettings *ossettings.OSSettings, node *nodewith.Finder) uia
 			return nil
 		}
 		return osSettings.MakeVisible(node)(ctx)
-	}
-}
-
-func ensureFocused(osSettings *ossettings.OSSettings, node *nodewith.Finder) uiauto.Action {
-	return func(ctx context.Context) error {
-		info, err := osSettings.Info(ctx, node)
-		if err != nil {
-			return err
-		}
-		if info.State[state.Focused] {
-			return nil
-		}
-		return osSettings.FocusAndWait(node)(ctx)
 	}
 }

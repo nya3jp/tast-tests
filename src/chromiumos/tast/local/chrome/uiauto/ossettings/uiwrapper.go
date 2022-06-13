@@ -98,6 +98,11 @@ func (s *OSSettings) FocusAndWait(finder *nodewith.Finder) uiauto.Action {
 	return s.ui.FocusAndWait(finder.FinalAncestor(WindowFinder))
 }
 
+// EnsureFocused calls ui.EnsureFocused scoping the finder to the Settings app.
+func (s *OSSettings) EnsureFocused(finder *nodewith.Finder) uiauto.Action {
+	return s.ui.EnsureFocused(finder.FinalAncestor(WindowFinder))
+}
+
 // MakeVisible calls ui.MakeVisible scoping the finder to the Settings app.
 func (s *OSSettings) MakeVisible(finder *nodewith.Finder) uiauto.Action {
 	return s.ui.MakeVisible(finder.FinalAncestor(WindowFinder))
