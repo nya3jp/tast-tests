@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92efbd34_9c402cb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-13T03:10:36Z",
+      "side": 1,
+      "message": "Hi,\n\nAdding this note because tast-owners was added a second time: You already have owners approved from my +1, so the next step is for the other reviewers to approve.",
+      "revId": "7f04976bbb018b7e1ad51243140b17c234296e1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
