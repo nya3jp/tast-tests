@@ -287,29 +287,6 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
-	// TODO(b/215063759): Remove this after the feature is launched.
-	// arcBootedInClamshellModeWithCompatSnap is a fixture similar to arcBootedInClamshellMode but with compat-snap feature enabled.
-	testing.AddFixture(&testing.Fixture{
-		Name: "arcBootedInClamshellModeWithCompatSnap",
-		Desc: "ARC is booted in clamshell mode with the compat snap feature enabled",
-		Contacts: []string{
-			"toshikikikuchi@chromium.org",
-			"niwa@chromium.org",
-			"arcvm-eng-team@google.com",
-		},
-		Impl: NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return []chrome.Option{
-				chrome.ARCEnabled(),
-				chrome.EnableFeatures("ArcCompatSnapFeature"),
-				chrome.ExtraArgs("--force-tablet-mode=clamshell"),
-			}, nil
-		}),
-		SetUpTimeout:    chrome.LoginTimeout + BootTimeout + ui.StartTimeout,
-		ResetTimeout:    ResetTimeout,
-		PostTestTimeout: ResetTimeout,
-		TearDownTimeout: ResetTimeout,
-	})
-
 	// TODO(b/216709995): Remove this after the feature is launched.
 	// arcBootedWithNotificationRefresh is a fixture similar to arcBooted but with notification-refresh flag enabled.
 	testing.AddFixture(&testing.Fixture{
