@@ -81,7 +81,7 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 	checkMapping := func(ctx context.Context, input, output string) {
 		fieldID := pkg + ":id/typed_character"
 
-		if err := kb.Type(ctx, input); err != nil {
+		if err := kb.Accel(ctx, input); err != nil {
 			s.Fatal("Failed to type: ", err)
 		}
 
@@ -90,45 +90,45 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	var imePrefix string
-	if imePrefix, err = ime.Prefix(ctx, tconn); err != nil {
+	imeID, err := ime.CurrentInputMethod(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get current ime: ", err)
+	}
+	imePrefix, err := ime.Prefix(ctx, tconn)
+	if err != nil {
 		s.Fatal("Failed to get ime prefix: ", err)
 	}
+	defer func(ctx context.Context) {
+		if err := ime.SetCurrentInputMethod(ctx, tconn, imeID); err != nil {
+			s.Error("Failed to activate US keyboard: ", err)
+		}
+	}(cleanupCtx)
 
-	switchInputMethod := func(ctx context.Context, language, layout string) {
-		if err := ime.EnableLanguage(ctx, tconn, language); err != nil {
-			s.Fatalf("Failed to enable the language %q: %v", language, err)
-		}
-		if err := ime.AddInputMethod(ctx, tconn, imePrefix+layout); err != nil {
-			s.Fatalf("Failed to enable the IME %q: %v", layout, err)
-		}
-		if err := ime.SetCurrentInputMethod(ctx, tconn, imePrefix+layout); err != nil {
-			s.Fatalf("Failed to activate the IME %q: %v", layout, err)
+	switchInputMethod := func(ctx context.Context, im ime.InputMethod) {
+		if err := ime.AddAndSetInputMethod(ctx, tconn, imePrefix+im.ID); err != nil {
+			s.Fatalf("Failed to switch the IME %q: %v", im.Name, err)
 		}
 	}
 
-	removeInputMethod := func(ctx context.Context, language, layout string) {
-		if err := ime.RemoveInputMethod(ctx, tconn, imePrefix+layout); err != nil {
-			s.Errorf("Failed to enable the IME %q: %v", layout, err)
-		}
-		if err := ime.DisableLanguage(ctx, tconn, language); err != nil {
-			s.Errorf("Failed to enable the language %q: %v", language, err)
+	removeInputMethod := func(ctx context.Context, im ime.InputMethod) {
+		if err := ime.RemoveInputMethod(ctx, tconn, imePrefix+im.ID); err != nil {
+			s.Errorf("Failed to enable the IME %q: %v", im.Name, err)
 		}
 	}
 
 	// Check mapping in QWERTY keyboard
 	checkMapping(ctx, "q", "q")
-	checkMapping(ctx, "Q", "Q")
+	checkMapping(ctx, "shift+q", "Q")
 
 	// Check mapping in AZERTY keyboard
-	defer removeInputMethod(cleanupCtx, "fr-FR", "xkb:fr::fra")
-	switchInputMethod(ctx, "fr-FR", "xkb:fr::fra")
+	defer removeInputMethod(cleanupCtx, ime.FrenchFrance)
+	switchInputMethod(ctx, ime.FrenchFrance)
 	checkMapping(ctx, "q", "a")
-	checkMapping(ctx, "Q", "A")
+	checkMapping(ctx, "shift+q", "A")
 
 	// Check mapping in the JCUKEN keyboard
-	defer removeInputMethod(cleanupCtx, "ru", "xkb:ru::rus")
-	switchInputMethod(ctx, "ru", "xkb:ru::rus")
+	defer removeInputMethod(cleanupCtx, ime.Russian)
+	switchInputMethod(ctx, ime.Russian)
 	checkMapping(ctx, "q", "й")
-	checkMapping(ctx, "Q", "Й")
+	checkMapping(ctx, "shift+q", "Й")
 }
