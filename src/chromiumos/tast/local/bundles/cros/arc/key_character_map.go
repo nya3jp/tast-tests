@@ -125,6 +125,14 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 	switchInputMethod(ctx, ime.FrenchFrance)
 	checkMapping(ctx, "q", "a")
 	checkMapping(ctx, "shift+q", "A")
+	checkMapping(ctx, "5", "(")
+	checkMapping(ctx, "shift+5", "5")
+	checkMapping(ctx, "altgr+5", "[")
+	checkMapping(ctx, "-", ")")
+	checkMapping(ctx, "altgr+-", "]")
+	// Display values for dead keys are defined in android.view.KeyCharacterMap
+	checkMapping(ctx, "[", "\u02c6")       //  ACCENT_CIRCUMFLEX
+	checkMapping(ctx, "shift+[", "\u00a8") //  ACCENT_UMLAUT
 
 	// Check mapping in the JCUKEN keyboard
 	defer removeInputMethod(cleanupCtx, ime.Russian)
