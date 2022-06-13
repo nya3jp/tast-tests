@@ -16,6 +16,23 @@
       "message": "Hoping for fewer CQ timeouts this time.",
       "revId": "58223555c6284dfa915b9616ca5eef6ed6e67dd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "905ff6a9_f2aeb8dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-13T09:38:04Z",
+      "side": 1,
+      "message": "On second try, it seems that the CQ system failed to find an available DUT for the exact same five board names.  This suggest to me that it is not an intermittent problem, but rather a configuration error, or an actual problem with some devices in the lab.  I do not know how to investigate either, but hope that someone else has, and that this third attempt will succeed.",
+      "revId": "58223555c6284dfa915b9616ca5eef6ed6e67dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
