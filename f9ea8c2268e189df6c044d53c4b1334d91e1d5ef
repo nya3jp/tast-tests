@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c817d74_94c0464c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-13T08:17:29Z",
+      "side": 1,
+      "message": "As Hyung added this flag, I think it is better for him the review this change.\nI don\u0027t know if the flag name should be edited at other places as well.",
+      "revId": "f9ea8c2268e189df6c044d53c4b1334d91e1d5ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
