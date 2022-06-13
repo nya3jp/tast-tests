@@ -125,6 +125,8 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 	switchInputMethod(ctx, ime.FrenchFrance)
 	checkMapping(ctx, "q", "a")
 	checkMapping(ctx, "shift+q", "A")
+	checkMapping(ctx, "-", ")")
+	checkMapping(ctx, "altgr+-", "]")
 
 	// Check mapping in the JCUKEN keyboard
 	defer removeInputMethod(cleanupCtx, ime.Russian)
