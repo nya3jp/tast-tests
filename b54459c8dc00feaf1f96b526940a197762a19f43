@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d01de69_a10b2b99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9f5c62f_3b36ac45",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 30
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b08840c5_7d166fcc",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-10T22:53:31Z",
       "side": 1,
       "message": "nit: `*tabSwitchVariables`",
+      "range": {
+        "startLine": 80,
+        "startChar": 54,
+        "endLine": 80,
+        "endChar": 72
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4df69bd_375f7b11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b08840c5_7d166fcc",
       "range": {
         "startLine": 80,
         "startChar": 54,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24bf8007_eb5e9189",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f20aa6aa_5e01c889",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02c17f0e_c774fcdf",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-10T22:53:31Z",
       "side": 1,
       "message": "`\t\treturn errors.Errorf(\"unsupported browser type: %v\", vars.param.BrowserType)`",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 63
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "571300b5_87c972f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02c17f0e_c774fcdf",
       "range": {
         "startLine": 107,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b5b8ff_a18089c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e8cf5c1_2b0ea26b",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 7
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f558739e_79244145",
@@ -133,6 +253,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "344d57bb_38eaab8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Since browserTestConn can be either lacros-chrome or ash-chrome, I will add a check to only add these metrics if we are in ash-chrome.",
+      "parentUuid": "f558739e_79244145",
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec538807_31831ef2",
@@ -146,6 +284,30 @@
       "writtenOn": "2022-06-10T22:53:31Z",
       "side": 1,
       "message": "Put this before `input.Keyboard(ctx)`.",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbf6ea31_58dfbfe7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec538807_31831ef2",
       "range": {
         "startLine": 165,
         "startChar": 0,
@@ -179,6 +341,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d06f76e_b009d870",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93249cbe_64216712",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 17
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea3b3896_3e285e38",
@@ -192,6 +378,30 @@
       "writtenOn": "2022-06-10T22:53:31Z",
       "side": 1,
       "message": "`nil`\nSee where this says \"nil (if output should be ignored)\":\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/driver/conn.go;drc\u003d7112d64805488408431fe1315548a178ac31ea85;l\u003d127",
+      "range": {
+        "startLine": 255,
+        "startChar": 24,
+        "endLine": 255,
+        "endChar": 28
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0558929b_6c5d60ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea3b3896_3e285e38",
       "range": {
         "startLine": 255,
         "startChar": 24,
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a03eebd2_b50476f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c577a577_2b471cfc",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 15
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83e1cf29_2ecf2693",
@@ -248,6 +482,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59935061_51ad6950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83e1cf29_2ecf2693",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 63
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ddd1dcf_067dbbc1",
@@ -261,6 +519,30 @@
       "writtenOn": "2022-06-10T22:53:31Z",
       "side": 1,
       "message": "I know this comes from my own code review comment, but I think it should be:\n\t\t\treturn errors.New(\"test scenario does not specify any web pages\")",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 58
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4ee3d33_5c7db64f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ddd1dcf_067dbbc1",
       "range": {
         "startLine": 323,
         "startChar": 0,
@@ -296,6 +578,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8bdadf1e_ce874069",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "If we look at the code in the original TabSwitchCUJ, `defer lacros.CloseLacros(ctx, l)` was executed before `cancel()` and `recorder.Close()`. All of those suggestions would change the order of the cleanup since defer is LIFO.\n\nTo me, logically it would make sense that we want to cleanup the context last (i.e. after the browser), but this is not how the code was originally written.\n\nThat being said, is shortening the context even necessary? Xiyuan, is this a micro-optimization to speed up the overall test time? Maybe we can just get rid of this all together to simplify the code, since the deadline is only shortened by 2 seconds anyway.",
+      "parentUuid": "0af66062_c2d3c385",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 41
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91fb320c_41ff8abf",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
         "patchSetId": 6
@@ -307,6 +613,30 @@
       "writtenOn": "2022-06-10T22:53:31Z",
       "side": 1,
       "message": "`non-error`\nThe term `non-fatal` suggests that the test may be marked as failing, but it just does not terminate immediately, because that is the behavior of `s.Error`.",
+      "range": {
+        "startLine": 380,
+        "startChar": 10,
+        "endLine": 380,
+        "endChar": 19
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a24aaf7b_fc4cfde9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91fb320c_41ff8abf",
       "range": {
         "startLine": 380,
         "startChar": 10,
@@ -330,6 +660,30 @@
       "writtenOn": "2022-06-10T22:53:31Z",
       "side": 1,
       "message": "Just call it `err`. It has such a small scope, there is no need to be more specific.",
+      "range": {
+        "startLine": 397,
+        "startChar": 4,
+        "endLine": 397,
+        "endChar": 15
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2beae9ef_ca6d15d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1109b709_cfe4f507",
       "range": {
         "startLine": 397,
         "startChar": 4,

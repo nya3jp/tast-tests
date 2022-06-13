@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1ff1f9d_94308246",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "Thank you for the clarification. This is what helped me understand it: \"A properly formed Git commit subject line should always be able to complete the following sentence:\n\nIf applied, this commit will your-subject-line-here\"\n\nTherefore, Rewrite makes sense instead of Rewrote.",
+      "parentUuid": "5cccac64_dcdd926b",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "b1a38e3d2a008eed31fbef0778cc2e27913fc0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a962f38_87f62702",
@@ -368,6 +392,30 @@
       "side": 1,
       "message": "You changed it to only 1 minute. Was that your intention?",
       "parentUuid": "d7004103_2eddd911",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "b1a38e3d2a008eed31fbef0778cc2e27913fc0bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e4de8e_48b1b9da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-13T18:04:44Z",
+      "side": 1,
+      "message": "No, changing it to 1 minute was done for local testing, and I forgot to change it back. Good catch, I will be more cognizant in the future.",
+      "parentUuid": "7c62f4ca_ba34d0a6",
       "range": {
         "startLine": 78,
         "startChar": 0,
