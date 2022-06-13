@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae1193f_c534b5be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-13T02:51:02Z",
+      "side": 1,
+      "message": "still lgtm % one comment",
+      "revId": "117fd9cd96c6bccd897c9532a9b9283165824c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dfb1430_e20c7686",
@@ -73,6 +90,30 @@
       "side": 1,
       "message": "I think so. This is after Android finishes booting from cache.OpenSession above. We can always adjust the timeout if the test is flaky once checked in. Let me know if you think otherwise though.",
       "parentUuid": "4dfb1430_e20c7686",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 28
+      },
+      "revId": "117fd9cd96c6bccd897c9532a9b9283165824c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cde043e_8cdcd9f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/tts_cache_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-13T02:51:02Z",
+      "side": 1,
+      "message": "Thanks for the explanation!\n\nIt seems that cache.OpenSession just calls \"arc.New\". arc.New only waits for \"sys.boot_completed\" and \"ro.arc.boot_completed\".\nArcTtsInstance is a part of ArcIntentHelper, so I\u0027d explicitly wait for it before polling tts voices.\ne.g. http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/arc/arc.go;l\u003d420;rcl\u003d0dc8775ae60f897e92b2d705e524a46e24f13eb8\n\nI have some experience that intent helper won\u0027t come up soon after Android fiishes booting in slow devices. I made a workaround ag/16573986 previously, but it\u0027d be still nice if we can explicitly wait for the dependency.",
+      "parentUuid": "fdd63d19_0a1337b2",
       "range": {
         "startLine": 99,
         "startChar": 2,
