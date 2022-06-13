@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "84509ab0_89eb7cef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-13T04:40:18Z",
+      "side": 1,
+      "message": "How did the old test cope with this issue? \"servo on/off\" is a different mechanism than Servo mux state changing, so you are likely not testing the same thing anymore...",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "b7d4fad0dc2b5da0a820864d0d01e531210b987c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9fb94d94_8777ed29",
