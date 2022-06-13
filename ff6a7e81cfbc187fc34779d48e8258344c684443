@@ -51,6 +51,24 @@
       "parentUuid": "d507accd_709d51c5",
       "revId": "ff6a7e81cfbc187fc34779d48e8258344c684443",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "355b1191_b8d5256d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-13T07:19:08Z",
+      "side": 1,
+      "message": "\u003e Thanks for sharing the logs.\n\u003e \n\u003e But I guess, these failures are not related to our CL. We have rebased the CL, can you please give CR+2, so that we can do dry run?\n\nHmmm... I think this is the breakage by this CL.\nYou changed the fixture, but didn\u0027t update the users.",
+      "parentUuid": "0aaf65d8_9796312b",
+      "revId": "ff6a7e81cfbc187fc34779d48e8258344c684443",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
