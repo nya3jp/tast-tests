@@ -60,19 +60,19 @@ func InputOverlayDisplay(ctx context.Context, s *testing.State) {
 			// Open game controls.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
 			// Tap bottom menu switch.
-			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-switch.png")).Below(uidetection.Word("Customize"))),
+			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-switch.png")).Below(uidetection.Word("Edit"))),
 			// Exit out of menu.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-close.png")).Below(uidetection.Word("BUTTON"))),
 			// Poll UI elements no longer exist, but overlay is still responsive.
-			ui.Gone(nodewith.Name("m")),
+			ui.Gone(nodewith.Name("m").HasClass("LabelButtonLabel")),
 			gio.TapOverlayButton(kb, "m", &params, gio.TopTap),
-			ui.Gone(nodewith.Name("w")),
+			ui.Gone(nodewith.Name("w").HasClass("LabelButtonLabel")),
 			gio.MoveOverlayButton(kb, "w", &params),
 			// Poll edits can still be done.
-			ui.LeftClick(nodewith.Name("Game Control").HasClass("ImageButton")),
-			uda.Tap(uidetection.Word("Customize")),
-			ui.WaitUntilExists(nodewith.Name("m")),
-			ui.WaitUntilExists(nodewith.Name("w")),
+			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
+			uda.Tap(uidetection.Word("Edit")),
+			ui.WaitUntilExists(nodewith.Name("m").HasClass("LabelButtonLabel")),
+			ui.WaitUntilExists(nodewith.Name("w").HasClass("LabelButtonLabel")),
 			// Exit out.
 			uda.Tap(uidetection.Word("Cancel")),
 		)(ctx); err != nil {
@@ -89,18 +89,18 @@ func InputOverlayDisplay(ctx context.Context, s *testing.State) {
 			// Open game controls.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
 			// Tap top menu switch.
-			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-switch.png")).Above(uidetection.Word("Customize"))),
+			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-switch.png")).Above(uidetection.Word("Edit"))),
 			// Exit out of menu.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-close.png")).Below(uidetection.Word("BUTTON"))),
 			// Poll UI elements no longer exist, and overlay is unresponsive.
-			ui.Gone(nodewith.Name("m")),
+			ui.Gone(nodewith.Name("m").HasClass("LabelButtonLabel")),
 			not(gio.TapOverlayButton(kb, "m", &params, gio.TopTap)),
-			ui.Gone(nodewith.Name("w")),
+			ui.Gone(nodewith.Name("w").HasClass("LabelButtonLabel")),
 			not(gio.MoveOverlayButton(kb, "w", &params)),
 			// Check "Customize" button disabled.
-			ui.LeftClick(nodewith.Name("Game Control").HasClass("ImageButton")),
-			uda.Tap(uidetection.Word("Customize")),
-			not(uda.Gone(uidetection.Word("Customize"))),
+			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
+			uda.Tap(uidetection.Word("Edit")),
+			not(uda.Gone(uidetection.Word("Edit"))),
 		)(ctx); err != nil {
 			s.Error("Failed to verify game overlay disabled: ", err)
 		}
