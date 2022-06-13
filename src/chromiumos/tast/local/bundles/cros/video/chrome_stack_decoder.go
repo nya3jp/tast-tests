@@ -28,6 +28,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "graphicsNoChrome",
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_decodeaccel"},
 		Params: []testing.Param{{
 			Name:              "av1",
