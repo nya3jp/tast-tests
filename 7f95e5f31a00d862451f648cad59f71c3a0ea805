@@ -16,6 +16,23 @@
       "message": "Hi chinglinyu@, do you think it is worth promoting this stable test to CQ?\n",
       "revId": "7f95e5f31a00d862451f648cad59f71c3a0ea805",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e8263a_3e3f7d1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-06-13T18:54:44Z",
+      "side": 1,
+      "message": "Hi chinglinyu@, do you have a chance to look at this promoting your test to CQ?",
+      "revId": "7f95e5f31a00d862451f648cad59f71c3a0ea805",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
