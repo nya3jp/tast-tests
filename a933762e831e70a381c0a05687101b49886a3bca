@@ -69,6 +69,24 @@
       "parentUuid": "a60ddc0d_758fe9a0",
       "revId": "a933762e831e70a381c0a05687101b49886a3bca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26da1b94_2232c264",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-06-13T00:23:49Z",
+      "side": 1,
+      "message": "Ah too bad the existing restriction.Disabled can\u0027t be reused. Then I prefer you keep it as is.\n\nI\u0027m wondering if this is actually checking the same thing.",
+      "parentUuid": "21610979_bd2a0aff",
+      "revId": "a933762e831e70a381c0a05687101b49886a3bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
