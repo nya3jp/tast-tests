@@ -53,7 +53,6 @@ func init() {
 				Name:              "real",
 				Val:               manateeTestCase{useSystemServices: true},
 				ExtraSoftwareDeps: []string{"manatee"},
-				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "fake",
