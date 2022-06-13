@@ -20,7 +20,6 @@ import (
 	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/sysutil"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -133,8 +132,6 @@ func RunAccelVideoTest(ctx context.Context, outDir, filename string, parameters 
 	// chrome process and allow us to claim ownership of the GPU.
 	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-	upstart.StopJob(shortCtx, "ui")
-	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	args := generateCmdArgs(outDir, filename, parameters)
 	args = append(args, logging.ChromeVmoduleFlag())
@@ -171,8 +168,7 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 	// chrome process and allow us to claim ownership of the GPU.
 	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-	upstart.StopJob(shortCtx, "ui")
-	defer upstart.EnsureJobRunning(ctx, "ui")
+
 	const exec = "video_decode_accelerator_tests"
 	var filenamesToReport []string
 	for _, file := range testVectors {
@@ -234,14 +230,6 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, paramet
 		// Time reserved for cleanup.
 		cleanupTime = 10 * time.Second
 	)
-
-	// Only a single process can have access to the GPU, so we are required to
-	// call "stop ui" at the start of the test. This will shut down the chrome
-	// process and allow us to claim ownership of the GPU.
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		return errors.Wrap(err, "failed to stop ui")
-	}
-	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	// Setup benchmark mode.
 	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
