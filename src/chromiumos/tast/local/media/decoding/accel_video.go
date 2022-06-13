@@ -171,8 +171,7 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 	// chrome process and allow us to claim ownership of the GPU.
 	shortCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-	upstart.StopJob(shortCtx, "ui")
-	defer upstart.EnsureJobRunning(ctx, "ui")
+
 	const exec = "video_decode_accelerator_tests"
 	var filenamesToReport []string
 	for _, file := range testVectors {
