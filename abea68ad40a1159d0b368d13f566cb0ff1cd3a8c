@@ -16,6 +16,109 @@
       "message": "I think it is practically impossible to compare playback_perf.go change. :-)\nI ran a checker snippet. https://paste.googleplex.com/4712378085146624\nThe newly generated param fixes some missing dependencies/fixtures. https://paste.googleplex.com/6044356696866816\n\nI add h264/vp8/vp9 2160p sw tests by this CL.\nDoes it make sense?",
       "revId": "abea68ad40a1159d0b368d13f566cb0ff1cd3a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e710dda3_9b8e68cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-13T22:24:50Z",
+      "side": 1,
+      "message": "Love the idea, just nits and thoughts on map vs function.",
+      "revId": "abea68ad40a1159d0b368d13f566cb0ff1cd3a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a59a7508_64035f90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-13T22:24:50Z",
+      "side": 1,
+      "message": "big nit: I was just thinking that PlaybackPerf has a massive\namount of cases, and the results for these small resolutions\nmight add a small amount of information. Maybe we could \nconsider changing them to weekly, or removing them altogether?\nThis might be beyond the scope of this CL where Tast \nreviewers would probably want to keep functionality equal\nbefore-after. But just a thought.",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "abea68ad40a1159d0b368d13f566cb0ff1cd3a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f3353e_7601c6e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-13T22:24:50Z",
+      "side": 1,
+      "message": "nit: Other test-case generator use a more direct-enumeration\napproach [1], but this is fine as well. \n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_perf_test.go;l\u003d61-63",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "abea68ad40a1159d0b368d13f566cb0ff1cd3a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5815c9f_dd51036c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-13T22:24:50Z",
+      "side": 1,
+      "message": "These are a lot of map entries, would it be better to \nautogenerate them from the input |codec|, |fps| and\n|resolution|? (I think chrome_stack_decoder_perf does\nit as well, maybe reuse?). Maybe in l.224 and then\nthere\u0027s no need to test |file| there.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "abea68ad40a1159d0b368d13f566cb0ff1cd3a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cc86c16_64e561f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-13T22:24:50Z",
+      "side": 1,
+      "message": "Identifiers like caps.HWDecodeH264_4K60 will get transformed\ninto strings like \"autotest-capability:hw_dec_blablabla\" and\nthat is done in [1]\n\n  func fillSwDeps(codec, resolution, frameRate string) []string {...}\n\nI wonder if you could substitute l.120-201 with a fillSwDeps()\ncall? Might need to move to a common location first :/\n\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_perf_test.go;l\u003d34;drc\u003d544052fd86325d7d15a364b1d36fa16254c69bef",
+      "revId": "abea68ad40a1159d0b368d13f566cb0ff1cd3a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
