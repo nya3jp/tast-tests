@@ -46,10 +46,8 @@ func (c *PerfBootService) WaitUntilCPUCoolDown(ctx context.Context, req *empty.E
 
 func (c *PerfBootService) GetPerfValues(ctx context.Context, req *empty.Empty) (*perfpb.Values, error) {
 	// TODO(niwa): Check if we should use GAIA login instead of fake login.
-	// (Currently KeepState option only works for fake login.)
-	// TODO(niwa): Check if we should really use KeepState.
 	cr, err := chrome.New(ctx, chrome.ARCEnabled(), chrome.RestrictARCCPU(),
-		chrome.KeepState(), chrome.ExtraArgs("--disable-arc-data-wipe", "--ignore-arcvm-dev-conf"))
+		chrome.ExtraArgs("--disable-arc-data-wipe", "--ignore-arcvm-dev-conf"))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to connect to Chrome")
 	}
