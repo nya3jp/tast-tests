@@ -46,6 +46,30 @@
       },
       "revId": "618ebb28c7dfe11f31e401c61b5b4eec1fd76492",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df211f67_42ce4231",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/keyboard_event_simulation.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-13T22:12:03Z",
+      "side": 1,
+      "message": "Ok, changed it to above.",
+      "parentUuid": "0a055d01_4c9c4861",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "618ebb28c7dfe11f31e401c61b5b4eec1fd76492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
