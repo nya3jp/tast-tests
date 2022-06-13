@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a53bed7_ac208a14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-06-13T05:55:52Z",
+      "side": 1,
+      "message": "PTAL. Thanks!\nTast board links are https://tastboard.corp.google.com/test/arc.LaunchIntent.vm and https://tastboard.corp.google.com/test/arc.LaunchIntent",
+      "revId": "9b14c42b56524cc9e0076d63a4b8c7e846dbf1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
