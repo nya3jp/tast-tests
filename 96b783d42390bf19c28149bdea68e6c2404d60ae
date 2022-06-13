@@ -1,0 +1,308 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a97191c_350e1f5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "Thanks for writing a generic test!\nLooks good, but there a few nits:",
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33ff9d82_404a231a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "nit: Extra pair of slashes here and in line 151.",
+      "range": {
+        "startLine": 145,
+        "startChar": 4,
+        "endLine": 145,
+        "endChar": 7
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c73a072c_f673d157",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "nit: The comment is confusing here - we haven\u0027t locked out yet, and we\u0027re actually entering the correct PIN below. A copy-paste error?",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 82
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75a10810_68c0c25a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "nit: Add a TODO to point to b/234715681 - after that gets fixed, only 1 additional attempt should be sufficient here.",
+      "range": {
+        "startLine": 203,
+        "startChar": 87,
+        "endLine": 203,
+        "endChar": 88
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b806ac0f_370fb105",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "nit: Ditto contradicting comment here and in lines ##223, 228, 239.",
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd897b4_08fc678a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "nit: The error is copy-pasted here too - we should instead say the le creds file didn\u0027t change after adding the PIN.",
+      "range": {
+        "startLine": 311,
+        "startChar": 27,
+        "endLine": 311,
+        "endChar": 69
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7388dd01_662114dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "nit: We don\u0027t do mount here, and also we don\u0027t supply the PIN we added previously.",
+      "range": {
+        "startLine": 320,
+        "startChar": 36,
+        "endLine": 320,
+        "endChar": 88
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7a6ada5_db64ef55",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "nit: We don\u0027t mount the user here.",
+      "range": {
+        "startLine": 345,
+        "startChar": 70,
+        "endLine": 345,
+        "endChar": 88
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c00f95c3_b7305154",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "nit: \"password\"",
+      "range": {
+        "startLine": 363,
+        "startChar": 79,
+        "endLine": 363,
+        "endChar": 82
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b458aa05_54575a62",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "nit: \"via the password\"; also we don\u0027t mount the user.",
+      "range": {
+        "startLine": 367,
+        "startChar": 40,
+        "endLine": 367,
+        "endChar": 57
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3672b053_1917b284",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "nit: \"for password authentication\"",
+      "range": {
+        "startLine": 370,
+        "startChar": 56,
+        "endLine": 370,
+        "endChar": 78
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00b945d4_d2659ac8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "nit: We already have InvalidateAuthSession() scheduled via defer above, so I don\u0027t think we need it here again.",
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02fc2da5_7c4e9b19",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "nit: It seems it\u0027s useless to print the diff here, since the \"if\" checks it to be empty.",
+      "range": {
+        "startLine": 409,
+        "startChar": 80,
+        "endLine": 409,
+        "endChar": 85
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89c9f6b6_7fe5fe32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-13T18:19:12Z",
+      "side": 1,
+      "message": "nit: Unnecessary space after \"%s\".",
+      "range": {
+        "startLine": 422,
+        "startChar": 73,
+        "endLine": 422,
+        "endChar": 74
+      },
+      "revId": "96b783d42390bf19c28149bdea68e6c2404d60ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
