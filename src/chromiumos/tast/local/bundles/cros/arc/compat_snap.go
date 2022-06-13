@@ -32,8 +32,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Timeout:      4 * time.Minute,
-		// TODO(b/215063759): Replace this with arcBootedInClamshellMode after the feature is launched.
-		Fixture: "arcBootedInClamshellModeWithCompatSnap",
+		Fixture:      "arcBootedInClamshellMode",
 	})
 }
 
