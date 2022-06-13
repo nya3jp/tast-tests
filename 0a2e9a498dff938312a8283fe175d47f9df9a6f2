@@ -82,6 +82,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ba0e0b_e139df5d",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-06-13T21:55:06Z",
+      "side": 1,
+      "message": "Which information do you want to add to DUT metadata? Is it documented anywhere? Is there an ongoing effort to get this done? \n\nIf not, please start the process as we need to enable this for more testbeds as we have discussed before.",
+      "parentUuid": "88667977_1627577f",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 53
+      },
+      "revId": "0a2e9a498dff938312a8283fe175d47f9df9a6f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "121b1be9_96e836d6",
