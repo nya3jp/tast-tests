@@ -16,6 +16,115 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fd517d4_991f5839",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-13T18:57:37Z",
+      "side": 1,
+      "message": "Thanks, John!",
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3addbb67_9481117d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-13T18:57:37Z",
+      "side": 1,
+      "message": "Do we expect that this test will do anything related to devcoredumps (which are not the same thing as core dumps)? If not I think this is unnecessary.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 36
+      },
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb8105a_0c4c8f1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-13T18:57:37Z",
+      "side": 1,
+      "message": "A look at the anomaly_detector\u0027s CryptohomeParser[0] shows that it doesn\u0027t randomly sample. If that\u0027s correct, then the `--testonly-send-all` flag is unnecessary, and we can *just* run `crash.RestartAnomalyDetector(ctx)` without any params.\n\n[0] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/crash-reporter/anomaly_detector.cc;l\u003d539?q\u003dmount_failure%20f:crash-reporter\u0026ss\u003dchromiumos",
+      "range": {
+        "startLine": 58,
+        "startChar": 56,
+        "endLine": 58,
+        "endChar": 60
+      },
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61e9d41c_94f5a2e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-13T18:57:37Z",
+      "side": 1,
+      "message": "Will this crash ever happen when we\u0027re logged in? It\u0027s testing login failure, right? If we\u0027ll always be logged out when the crash happens, i think we can just use crash.SystemCrashDir as the only directory to examine.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "116d2729_130e37aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-13T18:57:37Z",
+      "side": 1,
+      "message": "This seems like it\u0027s testing 4 different scenarios:\n\n* No report when non-existent user\n* No report when normal user\n* No report when incorrect password\n* Report when mount fails due to invalid directory\n\nCan you please split this into four sub-tests using parameterized tests[0] so that flakiness in one of these four will not prevent one of the others from going to critical?\n\n[0] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 0
+      },
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
