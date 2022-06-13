@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "145ff745_25673f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_no_ip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-13T07:39:45Z",
+      "side": 1,
+      "message": "Would it make sense to do a \"negative\" VerifyTestNetwork() check here with IPv4 \u003d\u003d false and IPv6 \u003d\u003d false (i.e no address provisioned on the interface) ?",
+      "revId": "32aa13b5bc6b6c7bd89616a63b27362a845efceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
