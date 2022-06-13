@@ -34,7 +34,7 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "android_vm"},
+		SoftwareDeps: []string{"chrome", "arc"},
 		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 	})
@@ -114,12 +114,12 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 
 	// Find the "save desk as a template" button.
 	saveDeskButton := nodewith.ClassName("SaveDeskTemplateButton")
-	desksTemplatesGridView := nodewith.ClassName("DesksTemplatesGridView")
+	desksTemplatesGridView := nodewith.ClassName("SavedDeskLibraryView")
 
 	if err := uiauto.Combine(
 		"save a desk template",
 		ac.LeftClick(saveDeskButton),
-		// Wait for the desk templates grid shows up.
+		// Wait for the saved desk grid shows up.
 		ac.WaitUntilExists(desksTemplatesGridView),
 	)(ctx); err != nil {
 		s.Fatal("Failed to save a desk template: ", err)
@@ -146,14 +146,14 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
 
-	// Find the "Templates" button.
-	templatesButton := nodewith.Name("Templates")
-
+	// Find the "Library" button.
+	templatesButton := nodewith.Name("Library")
+	testing.Sleep(ctx, 5*time.Second)
 	// Show saved desk template.
 	if err := uiauto.Combine(
 		"show the saved desks template",
 		ac.LeftClick(templatesButton),
-		// Wait for the desks templates grid shows up.
+		// Wait for the saved desks grid shows up.
 		ac.WaitUntilExists(desksTemplatesGridView),
 	)(ctx); err != nil {
 		s.Fatal("Failed to show saved desks templates: ", err)
@@ -169,7 +169,7 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 	}
 
 	// Find the the first desk template.
-	firstDeskTemplate := nodewith.ClassName("DesksTemplatesItemView")
+	firstDeskTemplate := nodewith.ClassName("SavedDeskItemView")
 	newDeskMiniView :=
 		nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", "Desk 1 (1)"))
 
