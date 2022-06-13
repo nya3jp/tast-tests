@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edaa306a_e08481bc",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-13T06:00:10Z",
+      "side": 1,
+      "message": "What you pointed looks like Router, rather than DUT, so conceptally different?\nIf we land this then refactor, I guess we\u0027ll have two CLs, router and DUT, so anyways we\u0027ll see some intermediate state at some point.\n\nAlso, thank you for pointing out that index is used for router. That increases my concerning actually, because it has risk to mix router\u0027s index and dut\u0027s index.\n\nI still recommend you to use object/struct and reorganize API, which I believe is reasonable amount of work fit in this CL\u0027s scope, and there\u0027s no blocker to do so.\nIf you strongly would like to keep the index-ish approach and postpone the fix, could you introduce a new type as an \"ID\" to represent DUT instance, in order not to mix index for the routers etc, for short term, at least?",
+      "parentUuid": "9e4bc4dd_ed3b1a20",
+      "revId": "6a89726d0639b9016125dec3f75ede731d2705e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e7c8ef1_bad22c17",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 9
