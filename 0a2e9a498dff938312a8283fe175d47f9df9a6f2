@@ -22,6 +22,30 @@
       },
       "revId": "0a2e9a498dff938312a8283fe175d47f9df9a6f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88667977_1627577f",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-06-13T21:17:59Z",
+      "side": 1,
+      "message": "We discussed this in multiple meetings.  This is a temporary measure until the information is added to the DUT metadata.  As only one DUT is set up for data tests at this time, this is an adequate temporary measure that allows tests to be run as part of the CQ.",
+      "parentUuid": "03911182_eef5b9f5",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 53
+      },
+      "revId": "0a2e9a498dff938312a8283fe175d47f9df9a6f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
