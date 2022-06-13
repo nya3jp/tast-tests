@@ -322,6 +322,14 @@ var Punjabi = InputMethod{
 	VoiceLanguage:       LanguagePa,
 }
 
+// Russian represents the input method of Russian.
+var Russian = InputMethod{
+	Name:                "Russian",
+	ID:                  "xkb:ru::rus",
+	HandwritingLanguage: LanguageRu,
+	VoiceLanguage:       LanguageRu,
+}
+
 // Sanskrit represents the input method of Sanskrit.
 var Sanskrit = InputMethod{
 	Name:                "Sanskrit",
@@ -389,6 +397,7 @@ var inputMethods = []InputMethod{
 	Odia,
 	PersianTransliteration,
 	Punjabi,
+	Russian,
 	Sanskrit,
 	Tamil,
 	Telugu,
