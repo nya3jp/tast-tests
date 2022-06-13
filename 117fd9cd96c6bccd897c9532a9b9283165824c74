@@ -122,6 +122,30 @@
       },
       "revId": "117fd9cd96c6bccd897c9532a9b9283165824c74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f67b4f19_42a58bd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/tts_cache_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-06-13T19:46:20Z",
+      "side": 1,
+      "message": "Sounds good. Added the wait for intent helper before polling for Android voices.",
+      "parentUuid": "7cde043e_8cdcd9f8",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 28
+      },
+      "revId": "117fd9cd96c6bccd897c9532a9b9283165824c74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
