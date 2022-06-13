@@ -32,6 +32,7 @@ const (
 	LanguageNe      Language = "Nepali"
 	LanguageOr      Language = "Odia"
 	LanguagePa      Language = "Punjabi"
+	LanguageRu      Language = "Russian"
 	LanguageSa      Language = "Sanskrit"
 	LanguageSv      Language = "Swedish"
 	LanguageTa      Language = "Tamil"
