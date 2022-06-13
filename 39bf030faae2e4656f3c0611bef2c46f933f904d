@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23f310e9_c27141bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-13T17:26:14Z",
+      "side": 1,
+      "message": "What the difference between `tconn` here and `tLoginConn` at L382 ? Should we just keep one?",
+      "revId": "39bf030faae2e4656f3c0611bef2c46f933f904d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dc01211_72682c24",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
         "patchSetId": 3
@@ -37,6 +54,30 @@
       "writtenOn": "2022-06-10T11:08:25Z",
       "side": 1,
       "message": "I tried to add \"wait\" flag to the MetricsConfig and the missing part seem to be this list of histograms that is not returned by the cujrecorder.Run().\n\nAnother issue here would be the one discussed in https://crrev.com/c/3692360. I.e. cujrecorder.Run() will collect metrics from the multiple sources and even if we make it return metrics, it will either require separate data structure to keep the source reference, or will modify the metrics in a way that test may not expect.\n\nThis test, for example, does custom metrics handling and requires full histograms.\n\n\nDo you have more ideas on how to simplify this? Or maybe we should just use it as it is now ;)",
+      "range": {
+        "startLine": 457,
+        "startChar": 13,
+        "endLine": 457,
+        "endChar": 23
+      },
+      "revId": "39bf030faae2e4656f3c0611bef2c46f933f904d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fbca50c_baf253cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-13T17:26:14Z",
+      "side": 1,
+      "message": "I am fine that we add wait to `MetricsConfig` in later CLs when needed for more use cases.",
+      "parentUuid": "9421ea81_6f3753d9",
       "range": {
         "startLine": 457,
         "startChar": 13,
