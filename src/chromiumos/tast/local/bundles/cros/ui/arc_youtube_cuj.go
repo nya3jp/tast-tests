@@ -10,13 +10,11 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
@@ -41,18 +39,12 @@ func init() {
 }
 
 func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
-	// Reserve ten seconds for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
+	test := cuj.Setup(ctx, s, nil)
+	recorder := test.SetupRecorder(s)
+	cleanupCtx, tconn := test.CloseCtx, test.Tconn
+	defer test.Cleanup()
 
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	a := s.FixtValue().(cuj.FixtureData).ARC
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
-	}
 
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
@@ -74,12 +66,6 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create ARC++ YouTube app activity: ", err)
 	}
 	defer act.Close()
-
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, a, cujrecorder.RecorderOptions{})
-	if err != nil {
-		s.Fatal("Failed to create the recorder: ", err)
-	}
-	defer recorder.Close(cleanupCtx)
 
 	if err := recorder.AddCollectedMetrics(tconn, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
 		s.Fatal("Failed to add recorded metrics: ", err)
@@ -103,7 +89,7 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		// Sleep to simulate a user passively watching.
-		if err := testing.Sleep(ctx, 10*time.Minute); err != nil {
+		if err := testing.Sleep(ctx, 1*time.Minute); err != nil {
 			return errors.Wrap(err, "failed to sleep")
 		}
 

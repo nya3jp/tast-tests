@@ -13,13 +13,12 @@ import (
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/bond"
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -124,39 +123,12 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		meetLayout          = "Auto"
 	)
 
-	// Shorten context a bit to allow for cleanup.
-	closeCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
 	bt := s.Param().(browser.Type)
-
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to the test API connection: ", err)
-	}
-
-	var l *lacros.Lacros
-	var cs ash.ConnSource
-	var bTconn *chrome.TestConn
-	switch bt {
-	case browser.TypeLacros:
-		var err error
-		if cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros); err != nil {
-			s.Fatal("Failed to initialize test: ", err)
-		}
-		if bTconn, err = l.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get lacros TestAPIConn: ", err)
-		}
-		defer lacros.CloseLacros(closeCtx, l)
-	case browser.TypeAsh:
-		cs = cr
-		bTconn = tconn
-	default:
-		s.Fatal("Unrecognized browser type: ", bt)
-	}
+	test := cuj.Setup(ctx, s, &bt)
+	tpw := test.SetupTrackpadEventWriter(s)
+	tw := test.SetupMultiTouchWriter(s, 2)
+	kw := test.SetupKeyboardEventWriter(s)
+	closeCtx, cr, tconn, l, cs, bTconn := test.CloseCtx, test.Cr, test.Tconn, test.Lacros, test.Cs, test.Btconn
 
 	if _, ok := s.Var("record"); ok {
 		screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
@@ -182,7 +154,7 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get display orientation: ", err)
 		}
 		if orientation.Type == display.OrientationPortraitPrimary {
-			info, err := display.GetPrimaryInfo(ctx, tconn)
+			info := test.SetupDisplayInfo(s)
 			if err != nil {
 				s.Fatal("Failed to get the primary display info: ", err)
 			}
@@ -253,25 +225,6 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to close blank tab: ", err)
 		}
 	}
-
-	// Create a virtual trackpad.
-	tpw, err := input.Trackpad(ctx)
-	if err != nil {
-		s.Fatal("Failed to create a trackpad device: ", err)
-	}
-	defer tpw.Close()
-	tw, err := tpw.NewMultiTouchWriter(2)
-	if err != nil {
-		s.Fatal("Failed to create a multi touch writer: ", err)
-	}
-	defer tw.Close()
-
-	// Create a virtual keyboard.
-	kw, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to create a keyboard: ", err)
-	}
-	defer kw.Close()
 
 	ui := uiauto.New(tconn)
 
