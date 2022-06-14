@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d1b67f1_ee3b259a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-14T22:53:39Z",
+      "side": 1,
+      "message": "FYI, `initctl2dot` can make it easier to debug upstart dependencies since it will generate a graph: http://shortn/_thQrjcEyUa",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 21,
+        "endChar": 51
+      },
+      "revId": "f55d9a8cd2786531a74ef1da064f4875a7a297bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d790e0c_d6fb4af0",
@@ -14,6 +37,30 @@
       "writtenOn": "2022-06-14T21:24:24Z",
       "side": 1,
       "message": "Are we interested in changing this code with something similar to [FlashProtect](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_flash_protect.go;l\u003d22-150;drc\u003d09377f9660609f60fae20928eef1c59889eb7f6a)?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "f55d9a8cd2786531a74ef1da064f4875a7a297bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fb31aa1_0dfb5dc1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_tpm_seed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-14T22:53:39Z",
+      "side": 1,
+      "message": "Yes, that would be nice.",
+      "parentUuid": "1d790e0c_d6fb4af0",
       "range": {
         "startLine": 79,
         "startChar": 0,
