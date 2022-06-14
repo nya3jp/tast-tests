@@ -52,6 +52,24 @@
       "parentUuid": "dc327e40_ff303a21",
       "revId": "7427d0f0bce2ef7e4c39c42447460929a218dc14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21166627_3c1509c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-06-14T00:11:18Z",
+      "side": 1,
+      "message": "I\u0027ll reach out to the infra team about this.\n\nFor now we want to run it daily anyway so we should change it to mainline.",
+      "parentUuid": "48da0eaa_1439b666",
+      "revId": "7427d0f0bce2ef7e4c39c42447460929a218dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
