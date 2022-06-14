@@ -16,6 +16,24 @@
       "message": "Has this been uprevved yet? crrev.com/c/3666736 seems to suggest 104.0.5109.0 is the first version it was introduced at but it seems the latest updated version is 104.0.5107.2, might want to wait until the next uprev.",
       "revId": "df80d49b9209178681ccf2200c7fda45c93ea3a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae7ad3b_2bf0225d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-06-14T01:16:12Z",
+      "side": 1,
+      "message": "Right. I was checking M-104, and it already features Chrome 104.0.5112.x. For M-105, we\u0027ll have to wait for a Chrome uprev.",
+      "parentUuid": "b475fd28_d94b1af8",
+      "revId": "df80d49b9209178681ccf2200c7fda45c93ea3a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
