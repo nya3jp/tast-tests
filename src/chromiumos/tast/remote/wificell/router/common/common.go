@@ -84,3 +84,20 @@ func RemoveDevicesWithPrefix(ctx context.Context, ipr *ip.Runner, prefix string)
 	}
 	return nil
 }
+
+// BringDownRedundantInterfaces brings down the devices except eth0 and lo.
+func BringDownRedundantInterfaces(ctx context.Context, ipr *ip.Runner) error {
+	devs, err := ipr.LinksUp(ctx)
+	if err != nil {
+		return err
+	}
+	for _, dev := range devs {
+		if dev == "eth0" || dev == "lo" {
+			continue
+		}
+		if err := ipr.SetLinkDown(ctx, dev); err != nil {
+			return err
+		}
+	}
+	return nil
+}
