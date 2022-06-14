@@ -33,6 +33,23 @@
       "message": "I\u0027m afraid I\u0027m not the owner of tast-tests anymore, so I defer the review to Seewai.",
       "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ac26f7_10ab95b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-14T15:40:50Z",
+      "side": 1,
+      "message": "I really don\u0027t see why this CL cannot split into a chain of CLs. For example, I am pretty sure you can seperate out src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_const.go \n \nHere is what I suggest\n\n1. Split util related all the utils a few CLS. The first one can include the imports.go\n2. Have the test be another CL.\n3. Please make sure to run Tast unit tests for all CLs.\n4. Run the test manually in the test CL.\n\nThanks.\n\n ",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
