@@ -139,7 +139,7 @@ func UIOtaBasicSms(ctx context.Context, s *testing.State) {
 	alertDialog := nodewith.Role(role.AlertDialog).ClassName("MessagePopupView").Onscreen()
 	// Click on alert dialog to close.
 	if err := uiauto.Combine("Click on alert dialog",
-		uiHelper.UI.WaitUntilExists(alertDialog),
+		uiHelper.UI.WithTimeout(5*time.Second).WaitUntilExists(alertDialog),
 		uiHelper.UIHandler.Click(alertDialog),
 		kb.AccelAction("Ctrl+X"),
 		uiHelper.UI.WaitUntilGone(alertDialog),
