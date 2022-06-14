@@ -72,6 +72,8 @@ const (
 	titleOfDownloadsPage = "Downloads"                        // chrome://downloads page title.
 	titleOfNewTabPage    = "New Tab"                          // chrome://newtab page title.
 	cookie               = "MyCookie1234=abcd"                // Arbitrary cookie.
+	localStorageKey      = "myCat"                            // Arbitrary localStorage key.
+	localStorageValue    = "Meow"                             // Arbitrary localStorage value.
 )
 
 func waitForHistoryEntry(ctx context.Context, ui *uiauto.Context, br *browser.Browser, allowReload bool) error {
@@ -96,8 +98,8 @@ func waitForHistoryEntry(ctx context.Context, ui *uiauto.Context, br *browser.Br
 }
 
 // prepareAshProfile resets profile migration, installs an extension, and
-// creates two tabs, browsing history, a bookmark, a download, a shortcut and a
-// cookie.
+// creates two tabs, browsing history, a bookmark, a download, a shortcut, a
+// cookie and a localStorage value.
 func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.KeyboardEventWriter) {
 	// First restart Chrome with Lacros disabled in order to reset profile migration.
 	cr, err := chrome.New(ctx, chrome.DisableFeatures("LacrosSupport"))
@@ -155,6 +157,10 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 	// Set a cookie on that page.
 	if err := conn.Call(ctx, nil, `(cookie) => document.cookie = cookie`, cookie); err != nil {
 		s.Fatal("Failed to set cookie: ", err)
+	}
+	// Set localStorage on Alphabet page.
+	if err := conn.Call(ctx, nil, `(key, value) => localStorage.setItem(key, value)`, localStorageKey, localStorageValue); err != nil {
+		s.Fatal("Failed to set localStorage value: ", err)
 	}
 
 	// Bookmark the chrome://downloads page.
@@ -270,7 +276,7 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 		s.Fatal("Failed to find appropriate window: ", err)
 	}
 
-	// Check if the cookie set in Ash is carried over to Lacros.
+	// Check if the cookie and localStorage values set in Ash are carried over to Lacros.
 	func() {
 		conn, err := l.NewConn(ctx, "https://abc.xyz")
 		if err != nil {
@@ -286,6 +292,15 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 		}
 		if !contained {
 			s.Fatal("Cookie set in Ash could not be found in Lacros")
+		}
+
+		contained = false
+		if err := conn.Call(ctx, &contained,
+			`(key, value) => { return localStorage.getItem(key) == value; }`, localStorageKey, localStorageValue); err != nil {
+			s.Fatal("Failed to get localStorage value: ", err)
+		}
+		if !contained {
+			s.Fatal("localStorage value set in Ash could not be found in Lacros")
 		}
 	}()
 
