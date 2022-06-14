@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a28f0ecf_fed7d804",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-14T16:00:45Z",
+      "side": 1,
+      "message": "Changed to specified rounds then shuffle.",
+      "parentUuid": "456943df_a6800c07",
+      "range": {
+        "startLine": 46,
+        "startChar": 22,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "57ca179306cbac9e61026952082e948d8323e0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7ea8a265_9c4ee645",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
         "patchSetId": 1
@@ -105,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b522d4a_df2d8314",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-14T16:00:45Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "ad86b8aa_8f793081",
+      "range": {
+        "startLine": 173,
+        "startChar": 4,
+        "endLine": 173,
+        "endChar": 12
+      },
+      "revId": "57ca179306cbac9e61026952082e948d8323e0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbd60aa1_fce687b7",
@@ -130,6 +178,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b2c1462_a7ff1efa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-14T16:00:45Z",
+      "side": 1,
+      "message": "Generalized to a function.",
+      "parentUuid": "dbd60aa1_fce687b7",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 103
+      },
+      "revId": "57ca179306cbac9e61026952082e948d8323e0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6de80a41_49cfcea7",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
         "patchSetId": 1
@@ -141,6 +213,30 @@
       "writtenOn": "2021-07-16T00:39:26Z",
       "side": 1,
       "message": "Avoid having the same error in 2 places. Should this be \"failed to create software-backed key via TPM in key turn\" or something similar? Alternatively if you follow the above comment, you should be able to rely on the wrapped error log to identify what type of key is being generated.",
+      "range": {
+        "startLine": 195,
+        "startChar": 28,
+        "endLine": 195,
+        "endChar": 83
+      },
+      "revId": "57ca179306cbac9e61026952082e948d8323e0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17ff40a4_068177f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-14T16:00:45Z",
+      "side": 1,
+      "message": "Removed after the refactor.",
+      "parentUuid": "6de80a41_49cfcea7",
       "range": {
         "startLine": 195,
         "startChar": 28,
