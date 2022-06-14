@@ -16,6 +16,23 @@
       "message": "Hi Keigo,\nPlease check.",
       "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ad48039_0cae01b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1150179
+      },
+      "writtenOn": "2022-06-14T06:13:44Z",
+      "side": 1,
+      "message": "I\u0027m afraid I\u0027m not the owner of tast-tests anymore, so I defer the review to Seewai.",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
