@@ -7,6 +7,7 @@ package cuj
 import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/ui/cujrecorder"
 )
 
@@ -19,11 +20,11 @@ func AddPerformanceCUJMetrics(tconn, bTconn *chrome.TestConn, recorder *cujrecor
 	// Collect all metrics from all browsers to make it compatible with the CUJ scores generated
 	// from previouse releases, which collects all metrics for all system activities.
 	allMetrics := append(commonMetrics, append(lacroshMetrics, ashMetrics...)...)
-	if err := recorder.AddCollectedMetrics(tconn, allMetrics...); err != nil {
+	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, allMetrics...); err != nil {
 		errors.Wrap(err, "failed to add metrics for tconn")
 	}
 	if bTconn != nil {
-		if err := recorder.AddCollectedMetrics(bTconn, allMetrics...); err != nil {
+		if err := recorder.AddCollectedMetrics(bTconn, browser.TypeLacros, allMetrics...); err != nil {
 			errors.Wrap(err, "failed to add metrics for bTconn")
 		}
 	}

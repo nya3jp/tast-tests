@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -103,7 +104,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	if err := recorder.AddCollectedMetrics(tconn, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
+	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
 		s.Fatal("Failed to add recorded metrics: ", err)
 	}
 

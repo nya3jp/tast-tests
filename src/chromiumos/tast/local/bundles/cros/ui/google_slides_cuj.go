@@ -92,7 +92,7 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(closeCtx)
 
-	if err := recorder.AddCollectedMetrics(bTconn, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
+	if err := recorder.AddCollectedMetrics(bTconn, bt, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
 

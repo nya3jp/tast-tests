@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
@@ -81,7 +82,7 @@ func ArcYoutubeCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(cleanupCtx)
 
-	if err := recorder.AddCollectedMetrics(tconn, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
+	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
 		s.Fatal("Failed to add recorded metrics: ", err)
 	}
 
