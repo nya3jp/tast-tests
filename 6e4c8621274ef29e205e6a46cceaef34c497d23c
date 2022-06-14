@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "812e0401_251aa3dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-14T02:42:10Z",
+      "side": 1,
+      "message": "The latter. On every key down event, we set the value of the text field.\nhttp://cs/chromeos_public/src/platform/tast-tests/android/ArcKeyCharacterMapTest/src/org/chromium/arc/testapp/kcm/MainActivity.java;l\u003d29;rcl\u003d2a59bb66e5cae9bf9a86f3ca17badf8fbc573f00\n\nThus, we don\u0027t need to clear the field.",
+      "parentUuid": "4a0646a0_4083f6ec",
+      "range": {
+        "startLine": 89,
+        "startChar": 3,
+        "endLine": 89,
+        "endChar": 11
+      },
+      "revId": "6e4c8621274ef29e205e6a46cceaef34c497d23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed883187_629f0704",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-14T01:15:17Z",
       "side": 1,
       "message": "It would be nice to use subtest in this case.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 28
+      },
+      "revId": "6e4c8621274ef29e205e6a46cceaef34c497d23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06ec4a0e_44926644",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-14T02:42:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed883187_629f0704",
       "range": {
         "startLine": 120,
         "startChar": 1,
