@@ -39,6 +39,30 @@
       },
       "revId": "c80773f81aab296774f2b1fea653d4a9cc78300a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf90c20_7a3be16e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-14T05:47:01Z",
+      "side": 1,
+      "message": "Doing s.Log() is fine to me, but it can hide the error when there\u0027s actually something wrong in this test, and the issue won\u0027t be triaged until someone manually checks the output.\n\nEven if removing an input method is not the main topic of this test, IMO, this should be reported because it means that something is broken.",
+      "parentUuid": "0427530f_d04c852a",
+      "range": {
+        "startLine": 134,
+        "startChar": 6,
+        "endLine": 134,
+        "endChar": 66
+      },
+      "revId": "c80773f81aab296774f2b1fea653d4a9cc78300a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
