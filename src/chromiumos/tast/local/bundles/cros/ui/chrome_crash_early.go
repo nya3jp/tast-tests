@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -92,11 +93,14 @@ func ChromeCrashEarly(ctx context.Context, s *testing.State) {
 	// And should be product name Chrome_ChromeOS, NOT the ChromeOS product name
 	// normally used by UserCollector.
 	const expectedProductName = "upload_var_prod=Chrome_ChromeOS"
+	// And we should have a Chrome-like version number (four numbers separated
+	// by dots) not a ChromeOS-like version number.
+	expectedVersion := regexp.MustCompile(`upload_var_ver=\d+\.\d+\.\d+\.\d+\n`)
 	// Since we're not logged in, the crashes will be written to
 	// /home/chronos/crash/.
 	if files, err := crash.WaitForCrashFiles(ctx, []string{crash.LocalCrashDir}, regexes,
 		crash.MetaString(earlyCrashSignature), crash.MetaString(earlyCrashSignature2),
-		crash.MetaString(expectedProductName)); err != nil {
+		crash.MetaString(expectedProductName), crash.MetaRegExp(expectedVersion)); err != nil {
 		s.Fatal("Couldn't find early crash files: ", err)
 	} else if err := crash.RemoveAllFiles(ctx, files); err != nil {
 		s.Log("Couldn't clean up files: ", err)
