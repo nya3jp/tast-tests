@@ -145,6 +145,11 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		return nil, err
 	}
 
+	if err := common.BringDownRedundantDevices(shortCtx, r.ipr); err != nil {
+		r.Close(shortCtx)
+		return nil, err
+	}
+
 	// Save logs collected from setup actions.
 	if err := common.CollectSyslogdLogs(daemonCtx, r, r.syslogdCollector, "post_setup"); err != nil {
 		err = errors.Wrap(err, "failed to collect syslogd logs after setup actions")
