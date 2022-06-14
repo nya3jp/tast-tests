@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a6a524_7d67e5ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/testsetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-14T17:19:10Z",
+      "side": 1,
+      "message": "Some tests might not have (or need) a browser. It might be worth trying to extend this implementation to support this case. One way of approaching this implementation is to have a flag in TastTest with a \"usesBrowser\" boolean. Then, you could change `browserType` to be a pointer, then use `browserType \u003d\u003d nil` as the \"no browser needed\" case.",
+      "revId": "d34555d15d6eaa05cc70fe01802817490107c097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e46c7b_ded130e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/testsetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-14T17:19:10Z",
+      "side": 1,
+      "message": "I would add a check to see if `cr` is nil before using it.",
+      "revId": "d34555d15d6eaa05cc70fe01802817490107c097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cacffea8_790e7f20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/testsetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-14T17:19:10Z",
+      "side": 1,
+      "message": "I would add a check here to see if `Tconn` is nil before using it.",
+      "revId": "d34555d15d6eaa05cc70fe01802817490107c097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f9682c_bad88c04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-14T17:19:10Z",
+      "side": 1,
+      "message": "Will this fail or return a nil value if `orientation.Type \u003d\u003d display.OrientationPortraitPrimary` isn\u0027t true?",
+      "revId": "d34555d15d6eaa05cc70fe01802817490107c097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddd1d836_02017f7f",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1540277
+      },
+      "writtenOn": "2022-06-14T17:19:10Z",
+      "side": 1,
+      "message": "Unintentionally commented out.",
+      "revId": "d34555d15d6eaa05cc70fe01802817490107c097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
