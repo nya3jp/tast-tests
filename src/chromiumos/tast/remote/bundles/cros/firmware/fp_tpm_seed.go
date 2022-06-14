@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/remote/firmware/fingerprint/rpcdut"
-	"chromiumos/tast/services/cros/platform"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -71,17 +70,11 @@ func FpTpmSeed(ctx context.Context, s *testing.State) {
 		s.Fatal("Initialization failed: ", err)
 	}
 
-	// The seed is only set after bio_crypto_init runs. biod will only start after
-	// bio_crypto_init runs, so waiting for biod to be running is sufficient.
-	err = testing.Poll(ctx, func(ctx context.Context) error {
-		upstartService := platform.NewUpstartServiceClient(d.RPC().Conn)
-		_, err := upstartService.CheckJob(ctx, &platform.CheckJobRequest{JobName: "biod"})
-		return err
-	}, &testing.PollOptions{Timeout: fingerprint.WaitForBiodToStartTimeout})
-
-	if err != nil {
-		s.Fatal("Timed out waiting for biod to start: ", err)
-	}
+	// The seed is only set after bio_crypto_init runs. The boot-services
+	// service is blocked until bio_crypto_init finishes.
+	// The system-services starts after boot-services, then failsafe and
+	// finally openssh-server. As a result if SSH server is running, then
+	// we are sure that bio_crypto_init initialized TPM seed.
 
 	out, err := fingerprint.EctoolCommand(ctx, d.DUT(), "fpencstatus").Output(ssh.DumpLogOnError)
 	if err != nil {
