@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a5c94f_b16a4782",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2022-06-14T19:29:34Z",
+      "side": 1,
+      "message": "Otherwise lgtm",
+      "revId": "529420c05e8a291438ab43f2a31d40a95d93f9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27084f2f_f1241430",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_system_locked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2022-06-14T19:29:34Z",
+      "side": 1,
+      "message": "Optional nit: as per http://go/tott/600 prefer to convert primitives into more specific types, rather than going the opposite direction. So here I\u0027d suggest making this a map[servo.FWWPStateValue]bool and converting the string-\u003eFWWPStateValue below, rather than doing the opposite.",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "529420c05e8a291438ab43f2a31d40a95d93f9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3884fe7_8d992db2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_system_locked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1151324
+      },
+      "writtenOn": "2022-06-14T19:29:34Z",
+      "side": 1,
+      "message": "Prefer not to commit commented-out code.",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "529420c05e8a291438ab43f2a31d40a95d93f9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
