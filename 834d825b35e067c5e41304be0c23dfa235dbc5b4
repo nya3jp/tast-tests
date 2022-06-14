@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "010180be_a53a6afe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-06-14T00:33:58Z",
+      "side": 1,
+      "message": "Looks like you have Tast owners and local approval (Vin). So go ahead and submit ",
+      "revId": "834d825b35e067c5e41304be0c23dfa235dbc5b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
