@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6054fd73_64295764",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-14T17:05:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "24e4636c_c7387c75",
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3392c180_9a241d13",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5be32b6_b2b91302",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-14T17:05:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3392c180_9a241d13",
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07bcf666_1bfe9c54",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-06-13T15:17:07Z",
       "side": 1,
       "message": "IMHO the order of the parameters should be:\n(ctx context.Context, client *http.Client, params RequestOTAParams)\nand I guess the same applies to other API. Not sure if we can change it now without breaking something.",
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bea9da4_4e52bf64",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-14T17:05:38Z",
+      "side": 1,
+      "message": "Any specific reason for that ordering? I\u0027d leave the GenericAccount API as is to not mess anything up, the others I can change.",
+      "parentUuid": "07bcf666_1bfe9c54",
       "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b33a996_f3404c1c",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-14T17:05:38Z",
+      "side": 1,
+      "message": "That\u0027s a valid request, if you don\u0027t set the poolId you get an account from the default pool.",
+      "parentUuid": "67b33aad_2f3376bd",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 17
+      },
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e18303b_78b084f0",
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71bc5595_d5552e96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-14T17:05:38Z",
+      "side": 1,
+      "message": "As I\u0027m passing it as a pointer to the RequestOTAParams it cannot be a constant in this case.",
+      "parentUuid": "4e18303b_78b084f0",
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06d891b2_0bc6a3e1",
@@ -105,6 +201,30 @@
       "writtenOn": "2022-06-13T15:17:07Z",
       "side": 1,
       "message": "Just a note: this reads weird. I understand why, as the RequestAccount() is in the tape package.\nMaybe we could use httpClient instead of tapeClient as it is not really a type client (it cannot invoke any call on Tape on its own. It is an http client with pre configured values for authentication) ?",
+      "range": {
+        "startLine": 67,
+        "startChar": 12,
+        "endLine": 67,
+        "endChar": 63
+      },
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1202398_7554792a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-14T17:05:38Z",
+      "side": 1,
+      "message": "That makes sense, I changed it to httpClient.",
+      "parentUuid": "06d891b2_0bc6a3e1",
       "range": {
         "startLine": 67,
         "startChar": 12,
@@ -138,6 +258,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58aeec36_3184a08e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-14T17:05:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb289504_c5c91045",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 77,
+        "endChar": 6
+      },
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13d62ce9_ea53895a",
@@ -151,6 +295,24 @@
       "writtenOn": "2022-06-13T15:17:07Z",
       "side": 1,
       "message": "For consistency - do you want to pass here the client? In line 72 defer accepts context and client.",
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dc039f2_149b632b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-14T17:05:38Z",
+      "side": 1,
+      "message": "Actually the other way round seems more consistent with how we use defer functions in tast and I guess it makes sense not to pass variables around that are accessible anyway.",
+      "parentUuid": "13d62ce9_ea53895a",
       "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

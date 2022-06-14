@@ -16,6 +16,24 @@
       "message": "Are those credentials used by any other test? \nI assume that those are exactly the ones that Tape will provide, right? Otherwise we should clean the private repo too.",
       "revId": "c190d76d63015ad49abad45561ae176604db2438",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78a70df4_31596a43",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/enterprise/arc_snapshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-14T17:05:38Z",
+      "side": 0,
+      "message": "Yes these are the credentials that TAPE will provide for now. They are only used by this test. I\u0027d clean up the private repo once I see that this works stable enough.",
+      "parentUuid": "53a89c9f_60c7d7c4",
+      "revId": "c190d76d63015ad49abad45561ae176604db2438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
