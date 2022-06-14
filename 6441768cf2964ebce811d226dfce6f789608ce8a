@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69e3cbff_0732f062",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182404
+      },
+      "writtenOn": "2022-06-14T17:59:42Z",
+      "side": 1,
+      "message": "Latest failures seem to be related to cq issues. Note that there were some earlier failed runs because it took a very long time for bots to pick up the Chromium side change that added these new test functions.\n\nFeel free to redirect if you\u0027re not the right owner for this; using Gerrit\u0027s \"suggest owners\" as I\u0027m not familiar with this repo\u0027s policies in general. Thanks!",
+      "revId": "6441768cf2964ebce811d226dfce6f789608ce8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
