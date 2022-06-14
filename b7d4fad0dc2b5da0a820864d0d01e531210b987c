@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3c4e2892_a1583f1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-14T00:06:11Z",
+      "side": 1,
+      "message": "I am not sure how old autotest managed to run commands on DUT even with servo off. My guess is that the lab DUTs had been connected to the network directly, rather than through servo?\n\nSince the old autotest turned servo on/off to connect/disconnect USB devices, I think we can also use mux state change as long as a new USB device connection can be detected. In line 78, we detect a USB stick on a lab servo connected/disconnected to DUT depending on mux state. I think it is similar in the old autotest: https://chromium.googlesource.com/chromiumos/third_party/autotest/+/master/server/site_tests/platform_ExternalUSBStress/platform_ExternalUSBStress.py#183\n\nWould there be a discrepancy between the two methods that I am missing? What do you think?",
+      "parentUuid": "84509ab0_89eb7cef",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "b7d4fad0dc2b5da0a820864d0d01e531210b987c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9fb94d94_8777ed29",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 25
@@ -78,6 +102,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "add6eab0_b77c6c73",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/usb_hotplug_unplug_suspend_resume.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-14T00:06:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25cb5223_60608086",
+      "revId": "b7d4fad0dc2b5da0a820864d0d01e531210b987c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "194b8104_2f576dba",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/usb_hotplug_unplug_suspend_resume.go",
         "patchSetId": 25
@@ -110,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41f00c48_b45f888c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/usb_hotplug_unplug_suspend_resume.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-14T00:06:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db285a2b_8026a849",
+      "revId": "b7d4fad0dc2b5da0a820864d0d01e531210b987c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06ae4184_73e0dad7",
@@ -127,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc7b3c44_1d75b0c7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/usb_hotplug_unplug_suspend_resume.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-14T00:06:11Z",
+      "side": 1,
+      "message": "Removed sleep",
+      "parentUuid": "06ae4184_73e0dad7",
+      "revId": "b7d4fad0dc2b5da0a820864d0d01e531210b987c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0edf68b8_a56e8449",
@@ -140,6 +218,24 @@
       "writtenOn": "2022-06-12T15:00:07Z",
       "side": 1,
       "message": "Is this sleep necessary? According to https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/servo/methods.go;rcl\u003d2fd9cfd7616b06ddc581c4a89b7ef72b3c195d79;l\u003d701, servod ensure the port ends up in a powered state after this call.",
+      "revId": "b7d4fad0dc2b5da0a820864d0d01e531210b987c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c013b6c3_2bb5deeb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/usb_hotplug_unplug_suspend_resume.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-14T00:06:11Z",
+      "side": 1,
+      "message": "Removed sleep",
+      "parentUuid": "0edf68b8_a56e8449",
       "revId": "b7d4fad0dc2b5da0a820864d0d01e531210b987c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
