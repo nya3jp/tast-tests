@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20fb665_f1787135",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-14T08:14:45Z",
+      "side": 1,
+      "message": "nit: Start the CL message with \ntast:\nso the message goes:\ntast: Rename...",
+      "revId": "2eddfd340748366dbd9d8c5bf68ad22dc01872af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c567c9ee_aeda71ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-14T08:14:45Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "2eddfd340748366dbd9d8c5bf68ad22dc01872af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
