@@ -118,6 +118,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a185af9b_1dac4439",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/usb_hotplug_unplug_suspend_resume.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-14T00:32:29Z",
+      "side": 1,
+      "message": "Sorry, I was not clear. I meant you should show the calculation that how you come to a conclusion that the test may needs 1 hours. Something like\n\n```\n// Timeout deadline extended based on data of multiple SSH disconnect/connect. \n// Timeout \u003d iteration * ( disconnect time + connect time) \u003d 10 * (3m + 3m) \u003d 60m.\n\n```",
+      "parentUuid": "add6eab0_b77c6c73",
+      "revId": "b7d4fad0dc2b5da0a820864d0d01e531210b987c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "194b8104_2f576dba",

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0788eec_71e9ea76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-14T00:32:29Z",
+      "side": 1,
+      "message": "It is generally ok with me. I will give +1 on this.\nHowever, please run Tast unit test: fast_build.sh -T\nThen, add \nTEST\u003dtast unit tests passed.\n\nAlso, please take a look on my latest feedback. Thanks.\n",
+      "revId": "bb577959f2726000c1022507774195b2ad3524bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
