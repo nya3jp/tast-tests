@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3635fc16_d685662e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-14T01:03:47Z",
+      "side": 1,
+      "message": "Have you read go/tast-add-test ? There has to be 20+ consecutive green builds before you can promote to critical.",
+      "revId": "5c0704d38097861322485a95806c6e882736d011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
