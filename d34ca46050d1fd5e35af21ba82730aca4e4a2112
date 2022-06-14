@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bfa6c3b_9bba9f4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-06-14T21:01:18Z",
+      "side": 1,
+      "message": "I left some comments for David on his fix related to how we decide when ManaTEE is present or not.",
+      "tag": "mailMessageId\u003d\u003cCAJzde061CF6e7Ohz\u003dZhfChk6dFoSO8Zk26C_cNTpEgooKWdfYg@mail.gmail.com\u003e",
+      "revId": "d34ca46050d1fd5e35af21ba82730aca4e4a2112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0259be9a_81318477",
