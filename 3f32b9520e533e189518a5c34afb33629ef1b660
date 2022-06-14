@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f0206f_325c6212",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-14T17:15:28Z",
+      "side": 1,
+      "message": "LGTM, thanks heaps!",
+      "revId": "3f32b9520e533e189518a5c34afb33629ef1b660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "631e2705_c02c05bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-14T17:15:28Z",
+      "side": 1,
+      "message": "nit: s/Puts/Put/.",
+      "range": {
+        "startLine": 24,
+        "startChar": 45,
+        "endLine": 24,
+        "endChar": 49
+      },
+      "revId": "3f32b9520e533e189518a5c34afb33629ef1b660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664bd47b_52190a4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-14T17:15:28Z",
+      "side": 1,
+      "message": "Add a \"panic\" here? This is supposed to be run before actual\nTast test runs, and if we return an empty Data path, it would\nmake the test misbehave in, perhaps, unclear ways.",
+      "revId": "3f32b9520e533e189518a5c34afb33629ef1b660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a32a094d_f20f229e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-14T17:15:28Z",
+      "side": 1,
+      "message": "nit: Same here, default: panic ?",
+      "revId": "3f32b9520e533e189518a5c34afb33629ef1b660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db9d3ec4_00eecb0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-14T17:15:28Z",
+      "side": 1,
+      "message": "(Not sure if I mentioned this before). I think we should\nadd a temporary statement like [1]\n\n  // TODO(b/221247444, b/232255167): Remove this provision when ChromeOS\n  // supports HEVC clear video playback.\n  if codec \u003d\u003d \"hevc\" {\n    swDeps \u003d append(swDeps, \"protected_content\")\n  }\n\nwhile Jeffrey removes the protected_content flag.\n\t\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_perf_test.go;l\u003d40-44;drc\u003d544052fd86325d7d15a364b1d36fa16254c69bef",
+      "revId": "3f32b9520e533e189518a5c34afb33629ef1b660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "197d0723_eeade36a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-14T17:15:28Z",
+      "side": 1,
+      "message": "Could you add here a TODO for me? E.g.\n\n  // TODO(b/234643665): Reduce these to 2x2 720p (as many pixels as 4K).\n  \nThanks!",
+      "revId": "3f32b9520e533e189518a5c34afb33629ef1b660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
