@@ -33,6 +33,24 @@
       "message": "Any way to eliminate this sleep since it is discouraged (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#contexts-and-timeouts). In other places you were able to poll on an animation, or expected state. Is that possible here?",
       "revId": "b86bf71adba0346b8afb9450adcc313bc0203b8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e791b13_ec2c262c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-06-14T18:44:11Z",
+      "side": 1,
+      "message": "This sleep actually isn\u0027t needed. This was in so I can see the changes on the DUT a bit better instead of it zooming by. Oops. Thanks for the catch.",
+      "parentUuid": "7ad3a34d_485c3115",
+      "revId": "b86bf71adba0346b8afb9450adcc313bc0203b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
