@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f49df16e_38b47445",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-06-14T08:25:42Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be localStorageValue? Does this compile?",
+      "range": {
+        "startLine": 141,
+        "startChar": 100,
+        "endLine": 141,
+        "endChar": 112
+      },
+      "revId": "7e07f609681495d4439e9409e952e2d3d9eaed9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89d71301_67a83534",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-06-14T08:25:42Z",
+      "side": 1,
+      "message": "value",
+      "range": {
+        "startLine": 142,
+        "startChar": 38,
+        "endLine": 142,
+        "endChar": 48
+      },
+      "revId": "7e07f609681495d4439e9409e952e2d3d9eaed9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
