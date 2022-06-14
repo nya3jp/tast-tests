@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36d68c03_09748427",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-14T16:08:26Z",
+      "side": 1,
+      "message": "Hi Tast Owners,\n\nPTAL! Thank you.",
+      "revId": "b2fdcb23b1570fd447f4b2859a2bef8ea77813da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a560e6e_8cbeec4e",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-06-13T20:21:24Z",
       "side": 1,
       "message": "Do we need to manually add more models in the future?",
+      "revId": "b2fdcb23b1570fd447f4b2859a2bef8ea77813da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a758680e_c51870e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/personalization/select_keyboard_backlight.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-14T16:08:26Z",
+      "side": 1,
+      "message": "yes, we will need to add more boards with rgb keyboard.",
+      "parentUuid": "7a560e6e_8cbeec4e",
       "revId": "b2fdcb23b1570fd447f4b2859a2bef8ea77813da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
