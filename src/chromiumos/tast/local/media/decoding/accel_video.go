@@ -167,6 +167,11 @@ func RunAccelVideoTestWithTestVectors(ctx context.Context, outDir string, testVe
 		}
 		filename := filepath.Base(file)
 
+		args = append(args, "--output_frames=corrupt")
+		args = append(args, "--output_format=png")
+		args = append(args, "--output_limit=5")
+		args = append(args, "--output_folder="+filepath.Join(outDir, filename))
+
 		hasFailed := false
 		if _, err = runAccelVideoTestCmd(ctx,
 			exec, "VideoDecoderTest.FlushAtEndOfStream",
