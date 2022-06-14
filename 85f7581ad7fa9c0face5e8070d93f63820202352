@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99262494_c7a5d394",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-06-14T02:01:03Z",
+      "side": 1,
+      "message": "I can only see 11 passes since the widespread failures on this test.\n\nPlease wait for 20 consecutive passes as per go/tast-add-test.\n\n(Feel free to ping this CL again when that is achieved)",
+      "revId": "85f7581ad7fa9c0face5e8070d93f63820202352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
