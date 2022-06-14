@@ -93,6 +93,30 @@
       },
       "revId": "388f461190cc6078c2c6c434f741629fe69decf4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2f2268a_a3819f2b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/consecutive_boot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-06-14T11:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "955f9aa7_f3ba9751",
+      "range": {
+        "startLine": 166,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "388f461190cc6078c2c6c434f741629fe69decf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
