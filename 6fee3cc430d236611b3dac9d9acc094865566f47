@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "870b076a_85d6e96a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-06-14T11:36:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "469abbdb_2307c215",
+      "revId": "6fee3cc430d236611b3dac9d9acc094865566f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c497d73f_aa68c32d",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b87a858_8388fa61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-06-14T11:36:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c497d73f_aa68c32d",
+      "revId": "6fee3cc430d236611b3dac9d9acc094865566f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba867beb_3ca7e1fa",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-06-13T20:23:47Z",
       "side": 1,
       "message": "Is this meant to be lowercase (i.e. `unrestrictedPath`)?",
+      "revId": "6fee3cc430d236611b3dac9d9acc094865566f47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a9de68_0919c29c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-06-14T11:36:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba867beb_3ca7e1fa",
       "revId": "6fee3cc430d236611b3dac9d9acc094865566f47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
