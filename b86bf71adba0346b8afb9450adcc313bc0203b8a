@@ -51,6 +51,23 @@
       "parentUuid": "7ad3a34d_485c3115",
       "revId": "b86bf71adba0346b8afb9450adcc313bc0203b8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "444da9e2_b76a485c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1531947
+      },
+      "writtenOn": "2022-06-14T19:57:27Z",
+      "side": 1,
+      "message": "Should we use waitUtilExists to use shared timeout and retry internal instead of sleep?",
+      "revId": "b86bf71adba0346b8afb9450adcc313bc0203b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
