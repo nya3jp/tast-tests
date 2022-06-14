@@ -140,26 +140,22 @@ func PrintExtension(ctx context.Context, s *testing.State) {
 	if err := tconn.Call(ctx, &printers, "tast.promisify(chrome.printing.getPrinters)"); err != nil {
 		s.Fatal("Failed to call getPrinters: ", err)
 	}
-	if len(printers) != 1 {
-		s.Fatalf("Found %d printers", len(printers))
+
+	// Look through our printers and make sure we have one (and exactly one) that
+	// matches what we expect.
+	count := 0
+	for _, printer := range printers {
+		if printer.Description == printerDesc &&
+			printer.ID == printerID &&
+			printer.IsDefault == false &&
+			printer.Name == printerName &&
+			printer.Source == "USER" &&
+			printer.URI == "socket://localhost:9100" {
+			count++
+		}
 	}
-	if printers[0].Description != printerDesc {
-		s.Error("Unexpected description: ", printers[0].Description)
-	}
-	if printers[0].ID != printerID {
-		s.Error("Unexpected id: ", printers[0].ID)
-	}
-	if printers[0].IsDefault != false {
-		s.Error("Unexpected isDefault value: ", printers[0].IsDefault)
-	}
-	if printers[0].Name != printerName {
-		s.Error("Unexpected name: ", printers[0].Name)
-	}
-	if printers[0].Source != "USER" {
-		s.Error("Unexpected source: ", printers[0].Source)
-	}
-	if printers[0].URI != "socket://localhost:9100" {
-		s.Error("Unexpected uri: ", printers[0].URI)
+	if count != 1 {
+		s.Fatalf("Found %d out of %d printers (expected 1)", count, len(printers))
 	}
 
 	s.Log("Calling chrome.printing.getPrinterInfo")
