@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e05aa7ac_ef06ff4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-06-14T15:09:21Z",
+      "side": 1,
+      "message": "Since this covers all the fields in the printers struct, you could also consider making a constant \"expected\" struct and just compare with \u003d\u003d.",
+      "revId": "a9f045fb76d4a6e2003bcb6c2d5f055db85ed4a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
