@@ -52,6 +52,24 @@
       "parentUuid": "a171f913_a141796d",
       "revId": "32aa13b5bc6b6c7bd89616a63b27362a845efceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2947335_52845989",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_no_ip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-14T14:00:09Z",
+      "side": 1,
+      "message": "(sorry I missclicked and thought this was another CL, please ignore my previous answer)\n\nI was thinking of checking that pinging on that network interface would fail.",
+      "parentUuid": "d00ea0d7_ab3a6f89",
+      "revId": "32aa13b5bc6b6c7bd89616a63b27362a845efceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
