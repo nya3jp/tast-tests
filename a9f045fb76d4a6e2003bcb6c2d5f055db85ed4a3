@@ -34,6 +34,24 @@
       "parentUuid": "e05aa7ac_ef06ff4d",
       "revId": "a9f045fb76d4a6e2003bcb6c2d5f055db85ed4a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40c38386_e333f285",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_extension.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-06-14T16:14:47Z",
+      "side": 1,
+      "message": "Ah, I hadn\u0027t noticed that one.  The rank isn\u0027t guaranteed to be 0, depending on what activity is happening with other printers.  In that case, just comparing the fields of interest is probably fine.",
+      "parentUuid": "3e7c3eb7_d136133c",
+      "revId": "a9f045fb76d4a6e2003bcb6c2d5f055db85ed4a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
