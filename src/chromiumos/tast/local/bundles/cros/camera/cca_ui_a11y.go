@@ -14,8 +14,6 @@ import (
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 )
 
@@ -27,11 +25,12 @@ func init() {
 		Contacts:     []string{"dorahkim@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
-		Fixture:      "ccaTestBridgeReady",
+		Fixture:      "ccaLaunched",
 	})
 }
 
 func CCAUIA11y(ctx context.Context, s *testing.State) {
+	app := s.FixtValue().(cca.FixtureData).App()
 	cr := s.FixtValue().(cca.FixtureData).Chrome
 
 	// Shorten deadline to leave time for cleanup.
@@ -77,36 +76,47 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 	}
 	defer cvconn.Close()
 
-	// Wait for ChromeVox to focus the root web area.
-	rootWebArea := nodewith.Role(role.RootWebArea).First()
-	if err = cvconn.WaitForFocusedNode(ctx, tconn, rootWebArea); err != nil {
-		s.Error("Failed to wait for initial ChromeVox focus: ", err)
+	expectedSpeeches1 := []a11y.SpeechExpectation{
+		a11y.NewRegexExpectation("ChromeVox spoken feedback is ready"),
+		a11y.NewRegexExpectation("Mirror preview"),
+		a11y.NewRegexExpectation("Grid"),
+		a11y.NewRegexExpectation("Timer duration"),
+		a11y.NewRegexExpectation("Take photo"),
 	}
 
-	startApp := s.FixtValue().(cca.FixtureData).StartApp
-	stopApp := s.FixtValue().(cca.FixtureData).StopApp
-	app, err := startApp(ctx)
-	if err != nil {
-		s.Fatal("Failed to open CCA: ", err)
-	}
-	defer func(cleanupCtx context.Context) {
-		if err := stopApp(cleanupCtx, s.HasError()); err != nil {
-			s.Fatal("Failed to close CCA: ", err)
+	for i := 0; i < len(expectedSpeeches1); i++ {
+		if err := moveAroundByKeyboard(ctx, sm, []a11y.SpeechExpectation{expectedSpeeches1[i]}); err != nil {
+			s.Fatal("Failed to check all functions: ", err)
 		}
-	}(ctxCleanup)
-
-	tab := []string{"Tab"}
-	expectedSpeech := []a11y.SpeechExpectation{a11y.NewRegexExpectation("Take photo")}
-	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, tab, expectedSpeech); err != nil {
-		s.Fatal("Failed to focus on the shutter button")
 	}
 
-	if err := takePictureByKeyboard(ctx, sm, s, app); err != nil {
-		s.Fatal("Failed to take a Picture: ", err)
+	if err := takePictureByKeyboard(ctx, sm, app); err != nil {
+		s.Fatal("Failed to take a picture: ", err)
+	}
+
+	expectedSpeeches2 := []a11y.SpeechExpectation{
+		a11y.NewRegexExpectation("Switch to next camera"),
+		a11y.NewRegexExpectation("Switch to take photo"),
+		a11y.NewRegexExpectation("Go to Gallery"),
+		a11y.NewRegexExpectation("Settings"),
+	}
+
+	for i := 0; i < len(expectedSpeeches2); i++ {
+		if err := moveAroundByKeyboard(ctx, sm, []a11y.SpeechExpectation{expectedSpeeches2[i]}); err != nil {
+			s.Fatal("Failed to check all functions: ", err)
+		}
 	}
 }
 
-func takePictureByKeyboard(ctx context.Context, sm *a11y.SpeechMonitor, s *testing.State, app *cca.App) error {
+func moveAroundByKeyboard(ctx context.Context, sm *a11y.SpeechMonitor, expectedSpeech []a11y.SpeechExpectation) error {
+	tab := []string{"Tab"}
+	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, tab, expectedSpeech); err != nil {
+		return errors.Wrap(err, "failed to speak expected speech")
+	}
+	return nil
+}
+
+func takePictureByKeyboard(ctx context.Context, sm *a11y.SpeechMonitor, app *cca.App) error {
 	dir, err := app.SavedDir(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get result saved directory")
@@ -119,12 +129,12 @@ func takePictureByKeyboard(ctx context.Context, sm *a11y.SpeechMonitor, s *testi
 		return errors.Wrap(err, "failed to press the shutter button")
 	}
 
-	if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, start); err != nil {
-		return errors.Wrap(err, "cannot find captured result file")
-	}
-
 	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return errors.Wrap(err, "shutter is not ended")
+	}
+
+	if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, start); err != nil {
+		return errors.Wrap(err, "cannot find captured result file")
 	}
 
 	return nil
