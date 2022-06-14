@@ -1,0 +1,67 @@
+ui.cuj_username: "crosuicujtest1@gmail.com"
+ui.cuj_password: "mHeVMTbvs4U*.Wa"
+ui.meet_account: "cros.da.internal1@gmail.com"
+ui.meet_password: "dvnouavix8"
+ui.meet_url_two: "https://meet.google.com/xui-hivo-msk"
+ui.meet_url_small: "https://meet.google.com/srs-qcmy-tqf"
+ui.meet_url_large: "https://meet.google.com/cxt-nihe-bsk"
+ui.meet_url_class: "https://meet.google.com/zpi-hmxo-cjp"
+ui.meet_url_two_secondary: "https://meet.google.com/ywo-zfgx-rtd"
+ui.meet_url_small_secondary: "https://meet.google.com/doh-qysh-btp"
+ui.meet_url_large_secondary: "https://meet.google.com/yyv-kgqd-nhy"
+ui.meet_url_class_secondary: "https://meet.google.com/kzp-iatx-pcv"
+
+# Account pool for ui CUJ tests.
+# Needed to avoid being kicked out during tests. See b/197018400.
+ui.cujAccountPool: |-
+  crosuicujtest1@gmail.com:mHeVMTbvs4U*.Wa
+  crosuicujtest.00@gmail.com:mzKoUT9RN
+  crosuicujtest.01@gmail.com:mzKoUT9RN
+  crosuicujtest.02@gmail.com:mzKoUT9RN
+  crosuicujtest.03@gmail.com:mzKoUT9RN
+  crosuicujtest.04@gmail.com:mzKoUT9RN
+  crosuicujtest.05@gmail.com:mzKoUT9RN
+  crosuicujtest.06@gmail.com:mzKoUT9RN
+  crosuicujtest.07@gmail.com:mzKoUT9RN
+  crosuicujtest.08@gmail.com:mzKoUT9RN
+  crosuicujtest.09@gmail.com:mzKoUT9RN
+  crosuicujtest.10@gmail.com:mzKoUT9RN
+  crosuicujtest.11@gmail.com:mzKoUT9RN
+  crosuicujtest.12@gmail.com:mzKoUT9RN
+  crosuicujtest.13@gmail.com:mzKoUT9RN
+  crosuicujtest.14@gmail.com:mzKoUT9RN
+  crosuicujtest.15@gmail.com:mzKoUT9RN
+  crosuicujtest.16@gmail.com:mzKoUT9RN
+  crosuicujtest.17@gmail.com:mzKoUT9RN
+  crosuicujtest.18@gmail.com:mzKoUT9RN
+  crosuicujtest.19@gmail.com:mzKoUT9RN
+
+# keep the key in the private repo
+ui.signinProfileTestExtensionManifestKey: "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7WLaonDp17jg8OiUXYhjhDK/ehXfFEQ5/e8A/rzJTgeEtavDa/jQzdvMJTDo/tjV2dqefQT+/vqf8tj+tx2IjuvTrjmyVCfgvPqJcp90zlq7yKqGRyksHs2WqAuniTLhwNbXqftQ3zX2xNlqNi8IggLK0EtCJz1Dlat1ZirtPXbQseGlTAOlJ1G9Xirl9BECqdSMhUIMQsxQrhpo64HTMP6WJYJVLfMukac0zDgYi0ajLGAVTr710BkbrQ30CgYHZvEIE7Sf8fhA9k2kA5WxHplcXeWkjmYtY9WyeoZGh/B0JdX4eAjMZJrTpOmzu1m4U4VFfWJR8anXzQ8/gS4KIwIDAQAB"
+
+# Credentials for onboarding & access control tests that require real GAIA logins
+ui.oac_username: "autotest.catapult"
+ui.oac_password: "autotest"
+
+# The default pool of GAIA credentials.
+ui.gaiaPoolDefault: |-
+  cros.gaia.testing.00@gmail.com:lWP7RR.IxYZtK7A.
+  cros.gaia.testing.01@gmail.com:8j5Dt=N4wiqcwQ0i
+  cros.gaia.testing.02@gmail.com:E7SY-xQe.vbrDGZ.
+  cros.gaia.testing.03@gmail.com:URpXdbx+8qtnHGiY
+  cros.gaia.testing.04@gmail.com:k=KwJwZv4WGoWBIL
+  cros.gaia.testing.05@gmail.com:1LvGmVQ8UAWbXZsP
+  cros.gaia.testing.06@gmail.com:l25_w.yTr2lDA+zk
+  cros.gaia.testing.07@gmail.com:vvD=6mxafIyYWt5s
+  cros.gaia.testing.08@gmail.com:RT6qYW=5D7Oq3nfl
+  cros.gaia.testing.09@gmail.com:TyCdh5Xj8O+LGq=X
+  cros.gaia.testing.10@gmail.com:M5JLTFeRPMBfr1qk
+  cros.gaia.testing.11@gmail.com:8.nFqIuY6jvnrSup
+  cros.gaia.testing.12@gmail.com:_LE7nyfFZj3lK1O6
+  cros.gaia.testing.13@gmail.com:s85ixyT7HZIBF.cj
+  cros.gaia.testing.14@gmail.com:9ylQp82oBsA6z1bO
+  cros.gaia.testing.15@gmail.com:LAbFlFy42HQFp2H8
+  cros.gaia.testing.16@gmail.com:mg9Liq5AW.9p3llh
+  cros.gaia.testing.17@gmail.com:ePTpFu15ZH28sFxI
+  cros.gaia.testing.18@gmail.com:.ggR8YU9j6w5j7vD
+  cros.gaia.testing.19@gmail.com:=yPl3j_dk.ZyviaU
