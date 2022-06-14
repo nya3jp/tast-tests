@@ -289,6 +289,7 @@ type waitForCrashFilesOptions struct {
 	timeout         time.Duration
 	optionalRegexes []string
 	metaStrings     []string
+	metaREs         []*regexp.Regexp
 }
 
 // WaitForCrashFilesOpt is a self-referential function can be used to configure WaitForCrashFiles.
@@ -314,7 +315,7 @@ func OptionalRegexes(optionalRegexes []string) WaitForCrashFilesOpt {
 	}
 }
 
-// MetaString instructs WaitForCrashFiles to only metch .meta files that contain
+// MetaString instructs WaitForCrashFiles to only match .meta files that contain
 // the given string. The string is an exact match and not a regex. This only
 // applies to .meta files; if a regex matches a file which does not end in .meta,
 // it will be regarded as a match regardless of whether or not it matches the
@@ -322,6 +323,16 @@ func OptionalRegexes(optionalRegexes []string) WaitForCrashFilesOpt {
 func MetaString(metaString string) WaitForCrashFilesOpt {
 	return func(w *waitForCrashFilesOptions) {
 		w.metaStrings = append(w.metaStrings, metaString)
+	}
+}
+
+// MetaRegExp instructs WaitForCrashFiles to only match .meta files that contain
+// the given regular expression. This only applies to .meta files; if a file
+// regex matches a file which does not end in .meta, it will be regarded as a
+// match regardless of whether or not it contains the metaRE.
+func MetaRegExp(metaRE *regexp.Regexp) WaitForCrashFilesOpt {
+	return func(w *waitForCrashFilesOptions) {
+		w.metaREs = append(w.metaREs, metaRE)
 	}
 }
 
@@ -336,8 +347,9 @@ func MetaString(metaString string) WaitForCrashFilesOpt {
 // If any regex was not matched, instead returns an error of type RegexesNotFound.
 //
 // When it comes to deleting files, tests should:
-//   * Remove matching files that they expect to generate
-//   * Leave matching files they do not expect to generate
+//   - Remove matching files that they expect to generate
+//   - Leave matching files they do not expect to generate
+//
 // If there are more matches than expected and the test can't tell which are expected, it shouldn't delete any.
 func WaitForCrashFiles(ctx context.Context, dirs, regexes []string, opts ...WaitForCrashFilesOpt) (map[string][]string, error) {
 	// Always insist that meta files have "done=1", otherwise we may return
@@ -397,6 +409,14 @@ func WaitForCrashFiles(ctx context.Context, dirs, regexes []string, opts ...Wait
 								if !strings.Contains(string(contents), metaString) {
 									// Not there yet.
 									matchThisFile = false
+									break
+								}
+							}
+							for _, metaRE := range w.metaREs {
+								if !metaRE.Match(contents) {
+									// Not there yet.
+									matchThisFile = false
+									break
 								}
 							}
 						}
