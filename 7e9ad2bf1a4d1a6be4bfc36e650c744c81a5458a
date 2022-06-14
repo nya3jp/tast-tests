@@ -123,6 +123,30 @@
       },
       "revId": "7e9ad2bf1a4d1a6be4bfc36e650c744c81a5458a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30418609_73634750",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/external_usb_stress.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-14T19:33:45Z",
+      "side": 1,
+      "message": "Tested on servo v4 and confirmed that no USB device connect/disconnect is detected at line 78. (as expected) This would result in ending the test early since the servo cannot simulate USB connect/disconnect.",
+      "parentUuid": "a36e8dad_9c210dd2",
+      "range": {
+        "startLine": 141,
+        "startChar": 32,
+        "endLine": 141,
+        "endChar": 41
+      },
+      "revId": "7e9ad2bf1a4d1a6be4bfc36e650c744c81a5458a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

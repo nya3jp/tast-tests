@@ -138,6 +138,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5c9ddb41_e3c61582",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/usb_hotplug_unplug_suspend_resume.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-14T19:33:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a185af9b_1dac4439",
+      "revId": "b7d4fad0dc2b5da0a820864d0d01e531210b987c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "194b8104_2f576dba",
         "filename": "src/chromiumos/tast/remote/bundles/cros/typec/usb_hotplug_unplug_suspend_resume.go",
         "patchSetId": 25
