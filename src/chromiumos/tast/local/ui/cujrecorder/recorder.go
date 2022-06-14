@@ -202,7 +202,7 @@ func NewRecorder(ctx context.Context, cr *chrome.Chrome, a *arc.ARC, options Rec
 
 	powerTestOptions := setup.PowerTestOptions{
 		// The default for the following options is to disable these setting.
-		Wifi:       setup.DisableWifiInterfaces,
+		//Wifi:       setup.DisableWifiInterfaces,
 		NightLight: setup.DisableNightLight,
 		Powerd:     setup.DisablePowerd,
 		DPTF:       setup.DisableDPTF,

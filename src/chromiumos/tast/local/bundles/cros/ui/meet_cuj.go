@@ -17,14 +17,12 @@ import (
 	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/bond"
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -35,7 +33,6 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/graphics"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/local/webrtcinternals"
 	"chromiumos/tast/testing"
@@ -158,8 +155,8 @@ func init() {
 			Fixture: "loggedInToCUJUser",
 		}, {
 			// Even bigger meeting.
-			Name:    "49p",
-			Timeout: defaultTestTimeout,
+			Name:      "49p",
+			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:         48,
@@ -317,6 +314,15 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	pollOpts := testing.PollOptions{Interval: time.Second, Timeout: timeout}
 
 	meet := s.Param().(meetTest)
+
+	test := cuj.Setup(ctx, s, meet.browserType)
+	closeCtx, cr, cs, tconn, bTconn := test.CloseCtx, test.Cr, test.Cs, test.Tconn, test.Btconn
+
+	recorder := test.SetupRecorder(s)
+	info := test.SetupDisplayInfo(s)
+	kw := test.SetupKeyboardEventWriter(s)
+	defer test.Cleanup()
+
 	if meet.docs && meet.jamboard {
 		s.Fatal("Tried to open both Google Docs and Jamboard at the same time")
 	}
@@ -329,25 +335,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Run meeting for ", meetTimeout)
 
-	// Shorten context to allow for cleanup. Reserve one minute in case of power
-	// test.
-	closeCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, time.Minute)
-	defer cancel()
-
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to the test API connection: ", err)
-	}
-
 	// Sets the display zoom factor to minimum, to ensure that all
 	// meeting participants' video can be shown simultaneously.
-	info, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the primary display info: ", err)
-	}
 	zoomInitial := info.DisplayZoomFactor
 	zoomMin := info.AvailableDisplayZoomFactors[0]
 	if err := display.SetDisplayProperties(ctx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomMin}); err != nil {
@@ -355,26 +344,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	defer display.SetDisplayProperties(closeCtx, tconn, info.ID, display.DisplayProperties{DisplayZoomFactor: &zoomInitial})
-
-	var cs ash.ConnSource
-	var bTconn *chrome.TestConn
-	switch meet.browserType {
-	case browser.TypeLacros:
-		// Launch lacros.
-		l, err := lacros.Launch(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to launch lacros: ", err)
-		}
-		defer l.Close(ctx)
-		cs = l
-
-		if bTconn, err = l.TestAPIConn(ctx); err != nil {
-			s.Fatal("Failed to get lacros TestAPIConn: ", err)
-		}
-	case browser.TypeAsh:
-		cs = cr
-		bTconn = tconn
-	}
 
 	creds := s.RequiredVar("ui.MeetCUJ.bond_credentials")
 	bc, err := bond.NewClient(ctx, bond.WithCredsJSON([]byte(creds)))
@@ -462,11 +431,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		cujrecorder.NewCustomMetricConfig(
 			"Cras.MissedCallbackFrequencyOutput", "millisecond", perf.SmallerIsBetter))
 
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
-	if err != nil {
-		s.Fatal("Failed to create the recorder: ", err)
-	}
-
 	if err := recorder.AddCollectedMetrics(bTconn, configs...); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
@@ -474,11 +438,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	if meet.tracing {
 		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	}
-	defer func() {
-		if err := recorder.Close(closeCtx); err != nil {
-			s.Error("Failed to stop recorder: ", err)
-		}
-	}()
 
 	if meet.validation {
 		validationHelper := cuj.NewTPSValidationHelper(closeCtx)
@@ -558,10 +517,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to get display orientation: ", err)
 		}
 		if orientation.Type == display.OrientationPortraitPrimary {
-			info, err := display.GetPrimaryInfo(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to get the primary display info: ", err)
-			}
 			s.Log("Rotating display 90 degrees")
 			if err := display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
 				s.Fatal("Failed to rotate display: ", err)
@@ -582,12 +537,6 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		pc = pointer.NewMouse(tconn)
 	}
 	defer pc.Close()
-
-	kw, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to create a keyboard: ", err)
-	}
-	defer kw.Close()
 
 	// Find the web view of Meet window.
 	webview := nodewith.ClassName("ContentsWebView").Role(role.WebView)

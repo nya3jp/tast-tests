@@ -9,12 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
@@ -23,7 +21,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -58,43 +55,15 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 		gmailTimeout    = 30 * time.Second
 	)
 
-	// Shorten context a bit to allow for cleanup.
-	closeCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
-	bt := s.Param().(browser.Type)
-
-	var cs ash.ConnSource
-	var cr *chrome.Chrome
-
-	if bt == browser.TypeAsh {
-		cr = s.FixtValue().(chrome.HasChrome).Chrome()
-		cs = cr
-	} else {
-		var err error
-		var l *lacros.Lacros
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), bt)
-		if err != nil {
-			s.Fatal("Failed to initialize test: ", err)
-		}
-		defer lacros.CloseLacros(closeCtx, l)
-	}
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
-	}
+	test := cuj.Setup(ctx, s, s.Param().(browser.Type))
+	recorder := test.SetupRecorder(s)
+	kb := test.SetupKeyboardEventWriter(s)
+	closeCtx, tconn, cr, cs := test.CloseCtx, test.Tconn, test.Cr, test.Cs
+	defer test.Cleanup()
 
 	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
 
 	password := cr.Creds().Pass
-
-	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
-	if err != nil {
-		s.Fatal("Failed to create a CUJ recorder: ", err)
-	}
-	defer recorder.Close(closeCtx)
 
 	configs := []cujrecorder.MetricConfig{
 		cujrecorder.NewCustomMetricConfig(
@@ -107,12 +76,6 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 	if err := recorder.AddCollectedMetrics(tconn, configs...); err != nil {
 		s.Fatal("Failed to add recorded metrics: ", err)
 	}
-
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
-	}
-	defer kb.Close()
 
 	const accel = "Search+L"
 	s.Log("Locking screen via ", accel)
