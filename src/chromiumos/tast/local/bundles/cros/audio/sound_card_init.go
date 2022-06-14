@@ -25,7 +25,8 @@ func init() {
 		Desc: "Verifies sound_card_init boot time calibration logic",
 		// b/178479311: Skip lindar and lillipup as they have un-calibrated smart amp so that we cannot run sound_card_init.
 		// b/221241958: Skip helios as it is an old project before sound_card_init.
-		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel("atlas", "nocturne", "volteer2", "lindar", "lillipup", "helios")),
+		// TODO(b/221702936) : remove "kano" when b/221702936 is fixed.
+		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel("atlas", "nocturne", "volteer2", "lindar", "lillipup", "helios", "kano")),
 		Contacts:     []string{"judyhsiao@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"group:mainline"},
 		Timeout:      1 * time.Minute,
