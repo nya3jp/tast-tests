@@ -16,6 +16,52 @@
       "message": "yhanada@: ptal for the test change.\nshengjung@: I\u0027m adding you because you\u0027re the author of chrome/ime/input_method.go. Is it okay to add Russian to the list?\n\nThanks!",
       "revId": "6e4c8621274ef29e205e6a46cceaef34c497d23c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a0646a0_4083f6ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-14T01:15:17Z",
+      "side": 1,
+      "message": "I understand that you want to continue rest tests on failure.\n\nHave I missed anything here? I do not see any field clear function between each test. Is it automatically managed by the element itself?",
+      "range": {
+        "startLine": 89,
+        "startChar": 3,
+        "endLine": 89,
+        "endChar": 11
+      },
+      "revId": "6e4c8621274ef29e205e6a46cceaef34c497d23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed883187_629f0704",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-14T01:15:17Z",
+      "side": 1,
+      "message": "It would be nice to use subtest in this case.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 28
+      },
+      "revId": "6e4c8621274ef29e205e6a46cceaef34c497d23c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
