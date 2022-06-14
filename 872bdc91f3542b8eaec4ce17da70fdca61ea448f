@@ -16,6 +16,24 @@
       "message": "Something like this?",
       "revId": "872bdc91f3542b8eaec4ce17da70fdca61ea448f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6fe3040_915e5c80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-06-14T09:10:05Z",
+      "side": 1,
+      "message": "Yes, you can use `tast run $DUT \u0027(\"group:camera-usb-qual\")\u0027` to verify. Currently it contains V4L2 and FirmwareUpdate tests.",
+      "parentUuid": "5cace1dc_0e20bd34",
+      "revId": "872bdc91f3542b8eaec4ce17da70fdca61ea448f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
