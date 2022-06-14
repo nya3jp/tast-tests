@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2def1bb1_3f6b8ef4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-06-14T01:32:05Z",
+      "side": 1,
+      "message": "If we called it \"Login\" failure, I think we should use the \"chrome\" package to login.\nOtherwise we should just call MountFailure.",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3addbb67_9481117d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
         "patchSetId": 1
@@ -99,6 +122,29 @@
         "startChar": 0,
         "endLine": 67,
         "endChar": 2
+      },
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ac6714_84382df6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-06-14T01:32:05Z",
+      "side": 1,
+      "message": "nit: don\u0027t call it \u0027utility\u0027, how about using something like \u0027cryptohome\u0027?",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 8
       },
       "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
