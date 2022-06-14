@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/security"
 	"chromiumos/tast/ssh/linuxssh"
@@ -77,6 +78,21 @@ func ShutdownAndWaitForPowerState(ctx context.Context, pxy *servo.Proxy, dut *du
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 20 * time.Second})
+}
+
+// WaitForSuspendState verifies powerState(S0ix or S3).
+func WaitForSuspendState(ctx context.Context, h *firmware.Helper) error {
+	testing.ContextLog(ctx, "Wait for power state to become S0ix or S3")
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		state, err := h.Servo.GetECSystemPowerState(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get power state"))
+		}
+		if state != "S0ix" && state != "S3" {
+			return errors.New("power state is " + state)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 30 * time.Second})
 }
 
 // PowerOntoDUT performs power normal press to wake DUT.
