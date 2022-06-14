@@ -16,6 +16,69 @@
       "message": "+tast-owners@ for tast review, thanks!",
       "revId": "468d390e57f3804a4898e3543ac10bc87d840f2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e646d7d6_c06f2334",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-14T20:49:01Z",
+      "side": 1,
+      "message": "is there a case where we expect to have a zero timeout?",
+      "range": {
+        "startLine": 196,
+        "startChar": 36,
+        "endLine": 197,
+        "endChar": 10
+      },
+      "revId": "468d390e57f3804a4898e3543ac10bc87d840f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5b8e475_bbf5ddfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-14T20:49:01Z",
+      "side": 1,
+      "message": "why not just call `ExpectPingSuccess` directly here?",
+      "revId": "468d390e57f3804a4898e3543ac10bc87d840f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0cfbe88_1ce2554a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_high_priority.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-14T20:49:01Z",
+      "side": 1,
+      "message": "nit: network environment?",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "468d390e57f3804a4898e3543ac10bc87d840f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
