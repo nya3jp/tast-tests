@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a78fad00_e1f3eb8c",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-14T01:55:37Z",
+      "side": 1,
+      "message": "Ah yes, done.",
+      "parentUuid": "7d92b48d_e95ba7c7",
+      "range": {
+        "startLine": 129,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 62
+      },
+      "revId": "995880eaf8e4236a8bb5b3f4bd4618396ff25695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f80e6bec_c654482b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-14T00:50:57Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 49
+      },
+      "revId": "995880eaf8e4236a8bb5b3f4bd4618396ff25695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba49e587_0ca837e8",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-14T01:55:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80e6bec_c654482b",
       "range": {
         "startLine": 162,
         "startChar": 1,
