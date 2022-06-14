@@ -11,6 +11,7 @@ import (
 	"io/ioutil"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/google/go-cmp/cmp"
@@ -215,5 +216,22 @@ func EnablePeripheralDataAccess(ctx context.Context, keyPath string) error {
 		return errors.Errorf("settings mismatch (-want +got): %s", diff)
 	}
 
+	return nil
+}
+
+// CheckUSBPdMuxinfo verifies whether USB4=1 or not.
+func CheckUSBPdMuxinfo(ctx context.Context, deviceStr string) error {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err := testexec.CommandContext(ctx, "ectool", "usbpdmuxinfo").Output()
+		if err != nil {
+			return errors.Wrap(err, "failed to run usbpdmuxinfo command")
+		}
+		if !strings.Contains(string(out), deviceStr) {
+			return errors.Wrapf(err, "failed to find %s in usbpdmuxinfo", deviceStr)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: 1 * time.Second}); err != nil {
+		return errors.Wrap(err, "failed to check usb4=1")
+	}
 	return nil
 }
