@@ -54,12 +54,6 @@ const (
 	ARC
 )
 
-// ProxyTestCase contains test case for DNS proxy tests.
-type ProxyTestCase struct {
-	Client    Client
-	ExpectErr bool
-}
-
 // GoogleDoHProvider is the Google DNS-over-HTTPS provider.
 const GoogleDoHProvider = "https://dns.google/dns-query"
 
@@ -221,36 +215,39 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 	return nil
 }
 
-// QueryDNS resolves a domain through DNS with a specific client.
-func QueryDNS(ctx context.Context, c Client, a *arc.ARC, cont *vm.Container, domain string) error {
-	switch c {
-	case System:
-		return testexec.CommandContext(ctx, "dig", domain).Run()
-	case User:
-		return testexec.CommandContext(ctx, "sudo", "-u", "cups", "dig", domain).Run()
-	case Chrome:
-		return testexec.CommandContext(ctx, "sudo", "-u", "chronos", "dig", domain).Run()
-	case Crostini:
-		return cont.Command(ctx, "dig", domain).Run()
-	case ARC:
-		return a.Command(ctx, "dumpsys", "wifi", "tools", "dns", domain).Run()
-	}
-	return errors.New("unknown client")
+// QueryOptions are provided to QueryDNS to configure the lookup query.
+type QueryOptions struct {
+	Domain     string
+	Nameserver string
 }
 
-// TestQueryDNSProxy runs a set of test cases for DNS proxy.
-func TestQueryDNSProxy(ctx context.Context, tcs []ProxyTestCase, a *arc.ARC, cont *vm.Container, domain string) []error {
-	var errs []error
-	for _, tc := range tcs {
-		err := QueryDNS(ctx, tc.Client, a, cont, domain)
-		if err != nil && !tc.ExpectErr {
-			errs = append(errs, errors.Wrapf(err, "DNS query failed for %s", GetClientString(tc.Client)))
-		}
-		if err == nil && tc.ExpectErr {
-			errs = append(errs, errors.Errorf("successful DNS query for %s, but expected failure", GetClientString(tc.Client)))
-		}
+func (o QueryOptions) digArgs() []string {
+	args := []string{o.Domain}
+	if o.Nameserver != "" {
+		args = append(args, "@"+o.Nameserver)
 	}
-	return errs
+	return args
+}
+
+// QueryDNS resolves a domain through DNS with a specific client.
+func QueryDNS(ctx context.Context, c Client, a *arc.ARC, cont *vm.Container, opts *QueryOptions) error {
+	args := opts.digArgs()
+	var u string
+	switch c {
+	case System:
+		return testexec.CommandContext(ctx, "dig", args...).Run()
+	case User:
+		u = "cups"
+	case Chrome:
+		u = "chronos"
+	case Crostini:
+		return cont.Command(ctx, append([]string{"dig"}, args...)...).Run()
+	case ARC:
+		return a.Command(ctx, "dumpsys", "wifi", "tools", "dns", opts.Domain).Run()
+	default:
+		return errors.New("unknown client")
+	}
+	return testexec.CommandContext(ctx, "sudo", append([]string{"-u", u, "dig"}, args...)...).Run()
 }
 
 // InstallDigInContainer installs dig in container.

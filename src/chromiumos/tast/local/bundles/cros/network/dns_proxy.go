@@ -126,43 +126,40 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 		{Client: dns.Crostini},
 		{Client: dns.ARC},
 	}
-	if errs := dns.TestQueryDNSProxy(ctx, defaultTC, a, cont, domainDefault); len(errs) != 0 {
+	if errs := dns.TestQueryDNSProxy(ctx, defaultTC, a, cont, &dns.QueryOptions{Domain: domainDefault}); len(errs) != 0 {
 		for _, err := range errs {
 			s.Error("Failed DNS query check: ", err)
 		}
 	}
 
-	nss, err := dnsProxyNamespaces(ctx)
+	nss, err := dns.ProxyNamespaces(ctx)
 	if err != nil {
 		s.Fatal("Failed to get DNS proxy's network namespaces: ", err)
 	}
 
 	physIfs, err := physicalInterfaces(ctx)
 	if err != nil {
-		s.Fatal("Failed to get phyiscal interfaces: ", err)
+		s.Fatal("Failed to get physical interfaces: ", err)
 	}
 
 	// Block plain-text or secure DNS through iptables.
-	var dnsBlockedTC []dns.ProxyTestCase
+	var (
+		block        *dns.Block
+		dnsBlockedTC []dns.ProxyTestCase
+	)
 	switch params.mode {
+	case dns.DoHAutomatic:
+		return
 	case dns.DoHOff:
-		defer modifyPlaintextDNSDropRule(ctx, "-D" /*op*/, nss, physIfs)
-		if errs := modifyPlaintextDNSDropRule(ctx, "-I" /*op*/, nss, physIfs); len(errs) != 0 {
-			s.Fatal("Failed to block DNS: ", errs)
-		}
+		block = dns.NewPlaintextBlock(nss, physIfs)
 		dnsBlockedTC = []dns.ProxyTestCase{
 			{Client: dns.System, ExpectErr: true},
 			{Client: dns.User, ExpectErr: true},
 			{Client: dns.Chrome, ExpectErr: true},
 			{Client: dns.Crostini, ExpectErr: true},
 			{Client: dns.ARC}}
-	case dns.DoHAutomatic:
-		return
 	case dns.DoHAlwaysOn:
-		defer modifyDoHDropRule(ctx, "-D" /*op*/, nss, physIfs)
-		if errs := modifyDoHDropRule(ctx, "-I" /*op*/, nss, physIfs); len(errs) != 0 {
-			s.Fatal("Failed to block DNS: ", errs)
-		}
+		block = dns.NewDoHBlock(nss, physIfs)
 		dnsBlockedTC = []dns.ProxyTestCase{
 			{Client: dns.System, ExpectErr: true},
 			{Client: dns.User, ExpectErr: true},
@@ -171,33 +168,15 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	}
 
 	// DNS queries should fail if corresponding DNS packets (plain-text or secure) are dropped.
-	if errs := dns.TestQueryDNSProxy(ctx, dnsBlockedTC, a, cont, domainDNSBlocked); len(errs) != 0 {
-		for _, err := range errs {
-			s.Error("Failed DNS query check: ", err)
+	dns.DoWithBlock(ctx, block, func(ctx context.Context) {
+		if errs := dns.TestQueryDNSProxy(ctx, dnsBlockedTC, a, cont, &dns.QueryOptions{Domain: domainDNSBlocked}); len(errs) != 0 {
+			for _, err := range errs {
+				s.Error("Failed DNS query check: ", err)
+			}
 		}
-	}
-}
-
-// dnsProxyNamespaces iterates through available network namespaces and return the namespaces with DNS proxy.
-// DNS proxy namespaces are identified by checking if the namespace contain a listening process named dnsproxyd.
-func dnsProxyNamespaces(ctx context.Context) ([]string, error) {
-	out, err := testexec.CommandContext(ctx, "ip", "netns", "list").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return nil, err
-	}
-
-	var nss []string
-	for _, o := range strings.Split(strings.TrimSpace(string(out)), "\n") {
-		ns := strings.Fields(o)[0]
-		ss, err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, "ss", "-lptun").Output(testexec.DumpLogOnError)
-		if err != nil {
-			return nil, err
-		}
-		if strings.Contains(string(ss), "dnsproxyd") {
-			nss = append(nss, ns)
-		}
-	}
-	return nss, nil
+	}, func(errs []error) {
+		s.Fatal("Failed to block DNS: ", errs)
+	})
 }
 
 func physicalInterfaces(ctx context.Context) ([]string, error) {
@@ -206,59 +185,4 @@ func physicalInterfaces(ctx context.Context) ([]string, error) {
 		return nil, errors.Wrap(err, "failed to get physical interfaces")
 	}
 	return strings.Split(strings.TrimSpace(string(out)), "\n"), nil
-}
-
-// modifyPlaintextDNSDropRule blocks plaintext DNS outbound packets that go through the physical interfaces or DNS proxy namespace.
-// Blocking is done by dropping outbound UDP and TCP packets with port 53.
-// The caller of this function is required to tear down the updated state.
-func modifyPlaintextDNSDropRule(ctx context.Context, op string, nss, physIfs []string) []error {
-	var errs []error
-	for _, cmd := range []string{"iptables", "ip6tables"} {
-		for _, ns := range nss {
-			if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "OUTPUT", "-p", "udp", "--dport", "53", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-				errs = append(errs, errors.Wrapf(err, "failed to modify UDP plaintext DNS block rule on %s", ns))
-			}
-			if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "OUTPUT", "-p", "tcp", "--dport", "53", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-				errs = append(errs, errors.Wrapf(err, "failed to modify TCP plaintext DNS block rule on %s", ns))
-			}
-		}
-		for _, ifname := range physIfs {
-			if err := testexec.CommandContext(ctx, cmd, op, "OUTPUT", "-p", "udp", "--dport", "53", "-o", ifname, "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-				errs = append(errs, errors.Wrapf(err, "failed to modify UDP plaintext DNS block rule for %s", ifname))
-			}
-			if err := testexec.CommandContext(ctx, cmd, op, "OUTPUT", "-p", "tcp", "--dport", "53", "-o", ifname, "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-				errs = append(errs, errors.Wrapf(err, "failed to modify TCP plaintext DNS block rule for %s", ifname))
-			}
-		}
-		if err := testexec.CommandContext(ctx, cmd, op, "OUTPUT", "-p", "udp", "--dport", "53", "-m", "owner", "--uid-owner", "chronos", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			errs = append(errs, errors.Wrap(err, "failed to modify UDP plaintext DNS block rule for Chrome"))
-		}
-		if err := testexec.CommandContext(ctx, cmd, op, "OUTPUT", "-p", "tcp", "--dport", "53", "-m", "owner", "--uid-owner", "chronos", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			errs = append(errs, errors.Wrap(err, "failed to modify TCP plaintext DNS block rule for Chrome"))
-		}
-	}
-	return errs
-}
-
-// modifyDoHDropRule blocks secure DNS outbound packets that go through the physical interfaces or DNS proxy namespace.
-// Blocking is done by dropping outbound TCP packets with port 443 (HTTPS packets).
-// The caller of this function is required to tear down the updated state.
-func modifyDoHDropRule(ctx context.Context, op string, nss, physIfs []string) []error {
-	var errs []error
-	for _, cmd := range []string{"iptables", "ip6tables"} {
-		for _, ns := range nss {
-			if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "OUTPUT", "-p", "tcp", "--dport", "443", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-				errs = append(errs, errors.Wrapf(err, "failed to modify secure DNS block rule on %s", ns))
-			}
-		}
-		for _, ifname := range physIfs {
-			if err := testexec.CommandContext(ctx, cmd, op, "OUTPUT", "-p", "tcp", "--dport", "443", "-o", ifname, "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-				errs = append(errs, errors.Wrapf(err, "failed to modify secure DNS block rule for %s", ifname))
-			}
-		}
-		if err := testexec.CommandContext(ctx, cmd, op, "OUTPUT", "-p", "tcp", "--dport", "443", "-m", "owner", "--uid-owner", "chronos", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			errs = append(errs, errors.Wrap(err, "failed to modify secure DNS block rule for Chrome"))
-		}
-	}
-	return errs
 }
