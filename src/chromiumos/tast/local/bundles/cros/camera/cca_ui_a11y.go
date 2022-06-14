@@ -95,15 +95,34 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 		}
 	}(ctxCleanup)
 
-	tab := []string{"Tab"}
-	expectedSpeech := []a11y.SpeechExpectation{a11y.NewRegexExpectation("Take photo")}
-	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, tab, expectedSpeech); err != nil {
-		s.Fatal("Failed to focus on the shutter button")
+	expectedSpeeches := []a11y.SpeechExpectation{
+		a11y.NewRegexExpectation("ChromeVox spoken feedback is ready"),
+		a11y.NewRegexExpectation("Switch to take photo, radio button selected"),
+		a11y.NewRegexExpectation("Switch to next camera"),
+		a11y.NewRegexExpectation("3 seconds timer"),
+		a11y.NewRegexExpectation("Grid"),
+		a11y.NewRegexExpectation("Mirroring"),
+		a11y.NewRegexExpectation("Settings"),
+		a11y.NewRegexExpectation("."),
+		a11y.NewRegexExpectation("Take photo")}
+
+	for i := 0; i < len(expectedSpeeches); i++ {
+		if err := turnAroundByKeyboard(ctx, sm, s, app, []a11y.SpeechExpectation{expectedSpeeches[i]}); err != nil {
+			s.Fatal("Failed to check all functions: ", err)
+		}
 	}
 
 	if err := takePictureByKeyboard(ctx, sm, s, app); err != nil {
-		s.Fatal("Failed to take a Picture: ", err)
+		s.Fatal("Failed to check all functions: ", err)
 	}
+}
+
+func turnAroundByKeyboard(ctx context.Context, sm *a11y.SpeechMonitor, s *testing.State, app *cca.App, expectedSpeech []a11y.SpeechExpectation) error {
+	tab := []string{"Tab"}
+	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, tab, expectedSpeech); err != nil {
+		return errors.Wrap(err, "failed to speak expected speech")
+	}
+	return nil
 }
 
 func takePictureByKeyboard(ctx context.Context, sm *a11y.SpeechMonitor, s *testing.State, app *cca.App) error {
@@ -119,12 +138,12 @@ func takePictureByKeyboard(ctx context.Context, sm *a11y.SpeechMonitor, s *testi
 		return errors.Wrap(err, "failed to press the shutter button")
 	}
 
-	if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, start); err != nil {
-		return errors.Wrap(err, "cannot find captured result file")
-	}
-
 	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return errors.Wrap(err, "shutter is not ended")
+	}
+
+	if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, start); err != nil {
+		return errors.Wrap(err, "cannot find captured result file")
 	}
 
 	return nil
