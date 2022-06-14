@@ -161,7 +161,7 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 		{Client: dns.Chrome},
 		{Client: dns.ARC},
 	}
-	if errs := dns.TestQueryDNSProxy(ctx, defaultTC, a, cont, domainDefault); len(errs) != 0 {
+	if errs := dns.TestQueryDNSProxy(ctx, defaultTC, a, cont, &dns.QueryOptions{Domain: domainDefault}); len(errs) != 0 {
 		for _, err := range errs {
 			s.Error("Failed DNS query check: ", err)
 		}
@@ -170,11 +170,6 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 	ns, err := vpnNamespace(ctx)
 	if err != nil {
 		s.Fatal("Failed to get VPN's network namespaces")
-	}
-
-	// Block DNS queries over VPN through iptables. The blocked state will be torn down when the test end alongside the VPN connection.
-	if errs := modifyDNSOverVPNBlockRule(ctx, "-I" /*op*/, ns); len(errs) != 0 {
-		s.Fatal("Failed to block DNS over VPN: ", errs)
 	}
 
 	// DNS queries that should be routed through VPN should fail if DNS queries on the VPN server are blocked.
@@ -186,36 +181,38 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 		{Client: dns.Chrome, ExpectErr: true},
 		{Client: dns.Crostini, ExpectErr: true},
 		{Client: dns.ARC}}
-	if errs := dns.TestQueryDNSProxy(ctx, vpnBlockedTC, a, cont, domainVPNBlocked); len(errs) != 0 {
-		for _, err := range errs {
-			s.Error("Failed DNS query check: ", err)
+	// Block DNS queries over VPN through iptables.
+	dns.DoWithBlock(ctx, dns.NewVPNBlock(ns), func(ctx context.Context) {
+		if errs := dns.TestQueryDNSProxy(ctx, vpnBlockedTC, a, cont, &dns.QueryOptions{Domain: domainVPNBlocked}); len(errs) != 0 {
+			for _, err := range errs {
+				s.Error("Failed DNS query check: ", err)
+			}
 		}
-	}
-	if errs := modifyDNSOverVPNBlockRule(ctx, "-D" /*op*/, ns); len(errs) != 0 {
-		s.Fatal("Failed to unblock DNS over VPN: ", errs)
-	}
+	}, func(errs []error) {
+		s.Fatal("Failed to block DNS over VPN: ", errs)
+	})
 
 	if params.mode == dns.DoHOff || params.mode == dns.DoHAutomatic {
 		return
 	}
 
-	// Block DoH queries over VPN to verify that when a VPN is on, DoH is disabled and DNS will work.
-	// When a VPN is active, the default proxy and ARC proxy will disable secure DNS in order to have consistent behavior on different VPN types.
-	// The blocked state will be torn down when the test end alongside the VPN connection.
-	if errs := modifyDoHOverVPNBlockRule(ctx, "-I" /*op*/, ns); len(errs) != 0 {
-		s.Fatal("Failed to block secure DNS over VPN: ", errs)
-	}
 	secureDNSBlockedTC := []dns.ProxyTestCase{
 		{Client: dns.System},
 		{Client: dns.User},
 		{Client: dns.Chrome},
 		{Client: dns.Crostini},
 		{Client: dns.ARC}}
-	if errs := dns.TestQueryDNSProxy(ctx, secureDNSBlockedTC, a, cont, domainSecureDNSBlocked); len(errs) != 0 {
-		for _, err := range errs {
-			s.Error("Failed DNS query check: ", err)
+	// Block DoH queries over VPN to verify that when a VPN is on, DoH is disabled and DNS will work.
+	// When a VPN is active, the default proxy and ARC proxy will disable secure DNS in order to have consistent behavior on different VPN types.
+	dns.DoWithBlock(ctx, dns.NewDoHVPNBlock(ns), func(ctx context.Context) {
+		if errs := dns.TestQueryDNSProxy(ctx, secureDNSBlockedTC, a, cont, &dns.QueryOptions{Domain: domainSecureDNSBlocked}); len(errs) != 0 {
+			for _, err := range errs {
+				s.Error("Failed DNS query check: ", err)
+			}
 		}
-	}
+	}, func(errs []error) {
+		s.Fatal("Failed to block secure DNS over VPN: ", errs)
+	})
 }
 
 // vpnNamespace iterates through available network namespaces and return the namespace with the VPN server.
@@ -239,38 +236,6 @@ func vpnNamespace(ctx context.Context) (string, error) {
 		}
 	}
 	return "", nil
-}
-
-// modifyDNSOverVPNBlockRule blocks DNS outbound packets that go through VPN.
-// Blocking is done by dropping outbound TCP packets with port 443 (HTTPS packets) and TCP and UDP packets with port 53 (plaintext DNS packets).
-// The caller of this function is required to tear down the updated state. The rules created is torn down alongside VPN connection.
-func modifyDNSOverVPNBlockRule(ctx context.Context, op, ns string) []error {
-	var e []error
-	for _, cmd := range []string{"iptables", "ip6tables"} {
-		if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "FORWARD", "-p", "udp", "--dport", "53", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			e = append(e, err)
-		}
-		if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "FORWARD", "-p", "tcp", "--dport", "53", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			e = append(e, err)
-		}
-		if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "FORWARD", "-p", "tcp", "--dport", "443", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			e = append(e, err)
-		}
-	}
-	return e
-}
-
-// modifyDoHOverVPNBlockRule blocks secure DNS outbound packets that go through packets that go through VPN.
-// Blocking is done by dropping outbound TCP packets with port 443 (HTTPS packets).
-// The caller of this function is required to tear down the updated state. The rules created is torn down alongside VPN connection.
-func modifyDoHOverVPNBlockRule(ctx context.Context, op, ns string) []error {
-	var e []error
-	for _, cmd := range []string{"iptables", "ip6tables"} {
-		if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "FORWARD", "-p", "tcp", "--dport", "443", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			e = append(e, err)
-		}
-	}
-	return e
 }
 
 // waitUntilNATIptablesConfigured waits until the NAT rule output of iptables is fully configured.
