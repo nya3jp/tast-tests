@@ -686,6 +686,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78460f48_bd72ba82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-14T11:10:18Z",
+      "side": 1,
+      "message": "\u003e Hmm... I have not yet fully agreed here.\n\u003e \n\u003e command execution does more than calling syscalls.\n\u003e So, question.\n\u003e \n\u003e Do you want to exercise the \"command line execution behavior\"?\n\u003e Or, the behavior on syscalls on the file system?\n  \nI\u0027d like to exercise both.",
+      "parentUuid": "cc0058c8_43574b6f",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73078415_332808e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
