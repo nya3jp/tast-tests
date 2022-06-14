@@ -9,10 +9,12 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/crossdevice/crossdevicesettings"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/input"
@@ -20,20 +22,15 @@ import (
 )
 
 const (
-	connectedDevicesSettingsURL = "multidevice/features/"
-	smartLockSettingsURL        = "smartLock"
-	multidevicePage             = `document.querySelector("os-settings-ui").shadowRoot` +
-		`.querySelector("os-settings-main").shadowRoot` +
-		`.querySelector("os-settings-page").shadowRoot` +
-		`.querySelector("settings-multidevice-page")`
-	multidevicePasswordPrompt = multidevicePage + `.shadowRoot.querySelector("settings-password-prompt-dialog")`
-	smartLockSubpage          = multidevicePage + `.shadowRoot.querySelector("settings-multidevice-smartlock-subpage")`
+	smartLockSettingsURL      = "smartLock"
+	multidevicePasswordPrompt = crossdevicesettings.MultidevicePageJS + `.shadowRoot.querySelector("settings-password-prompt-dialog")`
+	smartLockSubpage          = crossdevicesettings.MultidevicePageJS + `.shadowRoot.querySelector("settings-multidevice-smartlock-subpage")`
 	smartLockToggle           = smartLockSubpage + `.shadowRoot.querySelector("settings-multidevice-feature-toggle")`
 )
 
 // OpenSmartLockSubpage opens the Smart Lock sub page in OS Settings
 func OpenSmartLockSubpage(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome) (*ossettings.OSSettings, error) {
-	settings, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, connectedDevicesSettingsURL+smartLockSettingsURL, func(context.Context) error { return nil })
+	settings, err := ossettings.LaunchAtPageURL(ctx, tconn, cr, filepath.Join(crossdevicesettings.ConnectedDevicesSettingsURL, smartLockSettingsURL), func(context.Context) error { return nil })
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to launch OS Settings to the Smart Lock page")
 	}
@@ -72,7 +69,7 @@ func ToggleSmartLockEnabled(ctx context.Context, enable bool, tconn *chrome.Test
 		if err != nil {
 			return errors.Wrap(err, "failed to marshal auth token to JSON")
 		}
-		expr := fmt.Sprintf(`%s.authToken_ = %s`, multidevicePage, data)
+		expr := fmt.Sprintf(`%s.authToken_ = %s`, crossdevicesettings.MultidevicePageJS, data)
 		if err := settingsConn.Eval(ctx, expr, nil); err != nil {
 			return errors.Wrap(err, "failed to set authToken_ property")
 		}
