@@ -166,6 +166,30 @@
       },
       "revId": "308655b6c32e4c88ea946f6d80a6bf71e9fbcb35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d41f4719_289d7528",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-06-14T01:12:06Z",
+      "side": 1,
+      "message": "Thanks for the detailed response. I\u0027ve changed the AddCollectedMetrics() to accept both tconn and browser.Type as parameters.",
+      "parentUuid": "a5ede92a_d0519e7e",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "308655b6c32e4c88ea946f6d80a6bf71e9fbcb35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
