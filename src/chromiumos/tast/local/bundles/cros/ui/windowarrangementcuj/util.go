@@ -63,6 +63,9 @@ type Connections struct {
 	// depending on the browser in use.
 	BrowserTestConn *chrome.TestConn
 
+	// BrowserType is the browser type.
+	BrowserType browser.Type
+
 	// PipVideoTestURL is the URL of the PIP video test page.
 	PipVideoTestURL string
 
@@ -113,6 +116,7 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		}
 	}()
 
+	connection.BrowserType = testParam.BrowserType
 	if testParam.BrowserType == browser.TypeAsh {
 		if testParam.Tablet {
 			var err error

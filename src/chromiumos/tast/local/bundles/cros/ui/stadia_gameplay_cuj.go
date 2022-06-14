@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/stadiacuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -39,11 +40,11 @@ func init() {
 		Vars:         []string{"record"},
 		Timeout:      10 * time.Minute,
 		Params: []testing.Param{{
-			Val:     false,
+			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
 		}, {
 			Name:              "lacros",
-			Val:               true,
+			Val:               browser.TypeLacros,
 			Fixture:           "loggedInToCUJUserLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
@@ -71,7 +72,8 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 
 	var cs ash.ConnSource
 	var bTconn *chrome.TestConn
-	if s.Param().(bool) { // Lacros Chrome
+	bt := s.Param().(browser.Type)
+	if bt == browser.TypeLacros { // Lacros Chrome
 		// Launch lacros.
 		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
@@ -133,7 +135,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
 			perf.SmallerIsBetter),
 	}
-	if err := recorder.AddCollectedMetrics(tconn, ashConfigs...); err != nil {
+	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, ashConfigs...); err != nil {
 		s.Fatal("Failed to add Ash recorded metrics: ", err)
 	}
 
@@ -144,7 +146,7 @@ func StadiaGameplayCUJ(ctx context.Context, s *testing.State) {
 			"Graphics.Smoothness.PercentDroppedFrames.CompositorThread.Video", "percent",
 			perf.SmallerIsBetter),
 	}
-	if err := recorder.AddCollectedMetrics(bTconn, browserConfigs...); err != nil {
+	if err := recorder.AddCollectedMetrics(bTconn, bt, browserConfigs...); err != nil {
 		s.Fatal("Failed to add Browser recorded metrics: ", err)
 	}
 

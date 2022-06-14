@@ -161,7 +161,7 @@ func Run(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
 
-	if err := recorder.AddCollectedMetrics(bTconn, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
+	if err := recorder.AddCollectedMetrics(bTconn, param.BrowserType, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
 
