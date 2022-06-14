@@ -34,7 +34,7 @@ func init() {
 			"chromeos-commercial-identity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		VarDeps:      []string{"kerberos.username", "kerberos.password", "kerberos.domain"},
 		Fixture:      fixture.FakeDMS,
 	})
@@ -47,9 +47,10 @@ func AutomaticTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 	domain := s.RequiredVar("kerberos.domain")
 	config := kerberos.ConstructConfig(domain, username)
 
-	kerberosAcc := policy.KerberosAccountsValueOmitKrb5conf{
+	kerberosAcc := policy.KerberosAccountsValue{
 		Principal: config.KerberosAccount,
 		Password:  password,
+		Krb5conf:  []string{config.RealmsConfig},
 	}
 
 	pb := policy.NewBlob()
@@ -126,7 +127,6 @@ func AutomaticTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("Add SMB file share",
 		files.ClickMoreMenuItem("Services", "SMB file share"),
 		ui.WaitForLocation(fileShareURLTextBox),
-		ui.LeftClick(fileShareURLTextBox),
 		keyboard.TypeAction(config.RemoteFileSystemURI),
 		ui.LeftClick(nodewith.Name("Add").HasClass("action-button")),
 		ui.WaitUntilGone(fileShareURLTextBox),
@@ -138,12 +138,7 @@ func AutomaticTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 		files.OpenPath("Files - "+config.Folder, config.Folder),
 		files.WaitForFile(config.File),
 		files.SelectFile(config.File),
-		files.LeftClick(nodewith.Name("Open").Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to interact with SMB mount: ", err)
-	}
-
-	if err := ui.WaitUntilExists(nodewith.Name("Chrome - " + config.File).Role(role.Window))(ctx); err != nil {
-		s.Fatal("File didn't open in time: ", err)
 	}
 }
