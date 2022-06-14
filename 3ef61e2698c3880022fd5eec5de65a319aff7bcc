@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "905cfdd0_97cdf3d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-14T16:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7e138ab_f6eef07b",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 5
+      },
+      "revId": "3ef61e2698c3880022fd5eec5de65a319aff7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b66c881_8c6f365e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-14T03:38:41Z",
       "side": 1,
       "message": "Suggest to log the username",
+      "range": {
+        "startLine": 100,
+        "startChar": 16,
+        "endLine": 100,
+        "endChar": 20
+      },
+      "revId": "3ef61e2698c3880022fd5eec5de65a319aff7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55068074_ab060702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-14T16:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b66c881_8c6f365e",
       "range": {
         "startLine": 100,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da67d48f_59939d08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-14T16:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70bea0e2_ec291811",
+      "range": {
+        "startLine": 105,
+        "startChar": 16,
+        "endLine": 105,
+        "endChar": 20
+      },
+      "revId": "3ef61e2698c3880022fd5eec5de65a319aff7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b54a8671_bb4c5ba4",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-14T03:38:41Z",
       "side": 1,
       "message": "Suggest to rename it to unmountAll",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 22
+      },
+      "revId": "3ef61e2698c3880022fd5eec5de65a319aff7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12efdc54_2d81e35f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-14T16:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b54a8671_bb4c5ba4",
       "range": {
         "startLine": 116,
         "startChar": 5,
@@ -139,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af6497e0_46122bd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-14T16:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397f8370_85edd712",
+      "range": {
+        "startLine": 153,
+        "startChar": 5,
+        "endLine": 153,
+        "endChar": 16
+      },
+      "revId": "3ef61e2698c3880022fd5eec5de65a319aff7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb8a20fe_8d61698a",
@@ -152,6 +272,30 @@
       "writtenOn": "2021-07-14T03:38:41Z",
       "side": 1,
       "message": "I found this a bit vague since CleanupScratchpad, UnmountAll, and RemoveVault are called with the original ctx.\n\nI\u0027d suggest to move Shorten to the beginning of the func and assign the original ctx to a cleanupCtx and use it in defer.",
+      "range": {
+        "startLine": 211,
+        "startChar": 1,
+        "endLine": 211,
+        "endChar": 13
+      },
+      "revId": "3ef61e2698c3880022fd5eec5de65a319aff7bcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e52f99a_41bf8027",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-14T16:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb8a20fe_8d61698a",
       "range": {
         "startLine": 211,
         "startChar": 1,
