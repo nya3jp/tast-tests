@@ -1,0 +1,42 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.power;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/power";
+
+// USBService provide operations for usb related service.
+service USBService {
+  // NewChrome logs into a Chrome session as a fake user. Close must be called later
+  // to clean up the associated resources.
+  rpc NewChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // CloseChrome releases the resources obtained by New.
+  rpc CloseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // ReuseChrome passes an Option to New to make Chrome reuse the existing login session.
+  rpc ReuseChrome (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // USBMountPaths returns the mount paths for USB.
+  rpc USBMountPaths (google.protobuf.Empty) returns (MountPathResponse) {}
+
+  // GenerateTestFile generates a new temporary test file for testing.
+  rpc GenerateTestFile (TestFileRequest) returns (TestFileResponse) {}
+}
+
+message MountPathResponse {
+  repeated string MountPaths = 1;
+}
+
+message TestFileRequest{
+  string FileName = 1;
+}
+
+message TestFileResponse{
+  string Path = 1;
+}
