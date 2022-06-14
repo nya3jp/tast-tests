@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e1f32c6_26cacc70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-06-14T20:05:11Z",
+      "side": 1,
+      "message": "Adding folks from platform cellular eng team to help review the test case.",
+      "revId": "117d2ee85f95a8de93e843e1c1024df4f646d8d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
