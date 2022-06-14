@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e47cfcf_374cf1ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1216364
+      },
+      "writtenOn": "2022-06-14T15:16:40Z",
+      "side": 1,
+      "message": "would it make sense to compute the layout value (if not provided in the constructor, we can still leave it as optinal/overridable) from the bot count requested?\n\nFrom my understanding, all these tests are a single DUT + N bots. If that holds true (and we don\u0027t do multi-device tests), should we infeer the bot_layout from the number of bots requested?\n\nI.e:\n- 1 bot -\u003e Spolight (2p call)\n- 2-5 bots -\u003e BRADY_BUNCH (max 6p call)\n- 6-15 bots -\u003e BRADY_BUNCH_4_4 (max 16p call)\n- 16 and more -\u003e BRADY_BUNCH_7_7 (max 49p call)\n\nThis might avoid some maintanace cost and typo risks\n\nlgtm otherwise for the 2p/4p updates",
+      "range": {
+        "startLine": 258,
+        "startChar": 16,
+        "endLine": 258,
+        "endChar": 20
+      },
+      "revId": "918544fb2955f3b8fdcbef2174b48f9755e557aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
