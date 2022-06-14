@@ -135,6 +135,7 @@ func (f *gpuWatchHangsFixture) SetUp(ctx context.Context, s *testing.FixtState) 
 		`mtk-mdp.*: cmdq timeout`, // Mediatek
 		`amdgpu: GPU reset begin!`,
 		`scp ipi .* ack time out !`, // Mediatek
+		`mtk-iommu .*: fault`,       // Mediatek (at least MT8183)
 	}
 	// TODO(pwang): add regex for memory faults.
 	f.regexp = regexp.MustCompile(strings.Join(hangRegexStrs, "|"))
