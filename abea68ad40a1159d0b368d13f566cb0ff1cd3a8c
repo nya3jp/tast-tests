@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be2825c_a66aa0a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-14T06:14:18Z",
+      "side": 1,
+      "message": "Yeah, I considered that. \nmsta@m shall I do this before this CL or after this CL?",
+      "parentUuid": "a59a7508_64035f90",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "abea68ad40a1159d0b368d13f566cb0ff1cd3a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "85f3353e_7601c6e1",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-06-13T22:24:50Z",
       "side": 1,
       "message": "nit: Other test-case generator use a more direct-enumeration\napproach [1], but this is fine as well. \n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_perf_test.go;l\u003d61-63",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "abea68ad40a1159d0b368d13f566cb0ff1cd3a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f8c187_320186fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-14T06:14:18Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "85f3353e_7601c6e1",
       "range": {
         "startLine": 32,
         "startChar": 3,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b84dea0_71928891",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-14T06:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5815c9f_dd51036c",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 1
+      },
+      "revId": "abea68ad40a1159d0b368d13f566cb0ff1cd3a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cc86c16_64e561f6",
@@ -117,6 +189,24 @@
       "writtenOn": "2022-06-13T22:24:50Z",
       "side": 1,
       "message": "Identifiers like caps.HWDecodeH264_4K60 will get transformed\ninto strings like \"autotest-capability:hw_dec_blablabla\" and\nthat is done in [1]\n\n  func fillSwDeps(codec, resolution, frameRate string) []string {...}\n\nI wonder if you could substitute l.120-201 with a fillSwDeps()\ncall? Might need to move to a common location first :/\n\n\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_perf_test.go;l\u003d34;drc\u003d544052fd86325d7d15a364b1d36fa16254c69bef",
+      "revId": "abea68ad40a1159d0b368d13f566cb0ff1cd3a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e1fec3c_5a9a16dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-14T06:14:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cc86c16_64e561f6",
       "revId": "abea68ad40a1159d0b368d13f566cb0ff1cd3a8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
