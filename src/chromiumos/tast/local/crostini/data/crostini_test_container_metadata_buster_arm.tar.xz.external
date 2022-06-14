@@ -1,5 +1,5 @@
 {
-    "sha256sum": "025f7f0ae451ac4c6535f570001baf75cce5728731dd6bb211cb60df6f2fdd98",
+    "sha256sum": "7f49d2e2c1b8c2dfc856a78452d375e76c2fed06273e547f4b19086956c74c3d",
     "size": 680,
-    "url": "gs://cros-containers-staging/104/images/debian/buster/arm64/test/20220518_03:13/lxd.tar.xz"
+    "url": "gs://cros-containers-staging/105/images/debian/buster/arm64/test/20220610_08:28/lxd.tar.xz"
 }
