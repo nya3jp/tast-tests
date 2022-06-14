@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/crossdevice/crossdevicesettings"
 	"chromiumos/tast/local/chrome/crossdevice/phonehub"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
@@ -285,6 +286,9 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		if err := androidDevice.Pair(ctx); err != nil {
 			s.Fatal("Failed to connect the Android device to CrOS: ", err)
 		}
+	}
+	if err := crossdevicesettings.WaitForConnectedDevice(ctx, tconn, cr); err != nil {
+		s.Fatal("Failed waiting for the connected device to appear in OS settings: ", err)
 	}
 	if f.allFeatures {
 		// Wait for the "Smart Lock is turned on" notification to appear,
