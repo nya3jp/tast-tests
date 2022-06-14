@@ -16,6 +16,24 @@
       "message": "Have you read go/tast-add-test ? There has to be 20+ consecutive green builds before you can promote to critical.",
       "revId": "5c0704d38097861322485a95806c6e882736d011",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1094b4a7_316427c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-06-14T01:24:02Z",
+      "side": 1,
+      "message": "The new `ZipMount` test is an aggregate of a bunch of subtests that were already stable for a long time.\n\nhttps://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dfilemanager.ZipMount\n\nNote that the previously flaky subtests `.cancel_multiple` and `.mount_multiple` are not part of this new `ZipMount` test. The subtest `.mount_single_tar_lz` now passes since Chrome has been uprevved and support LZIP archives.",
+      "parentUuid": "3635fc16_d685662e",
+      "revId": "5c0704d38097861322485a95806c6e882736d011",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
