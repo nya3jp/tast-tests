@@ -290,3 +290,27 @@ func (r *Runner) IfaceAlias(ctx context.Context, iface string) (string, error) {
 	}
 	return ifaceLink.alias, nil
 }
+
+// LinksUp shows the names of all running interfaces.
+func (r *Runner) LinksUp(ctx context.Context) ([]string, error) {
+	output, err := r.cmd.Output(ctx, "ip", "link", "show", "up")
+	if err != nil {
+		return nil, errors.Wrap(err, `failed to run "ip link show up"`)
+	}
+	content := strings.TrimSpace(string(output))
+	var ifaceNames []string
+	// Collect the "iface" from lines that start like "2: iface:" or "2: iface@alias:".
+	ifaceNameMatcher := regexp.MustCompile("^\\d+:\\s+[^@:]+@?[^:]*:")
+	for _, line := range strings.Split(content, "\n") {
+		ifaceNameMatch := ifaceNameMatcher.FindString(line)
+		if ifaceNameMatch == "" {
+			// This line does not have an iface name, so move on.
+			continue
+		}
+		fields := strings.Fields(ifaceNameMatch)
+		outputIfaceWithPossibleAlias := strings.TrimSuffix(fields[1], ":")
+		ifNames := strings.Split(outputIfaceWithPossibleAlias, "@")
+		ifaceNames = append(ifaceNames, ifNames[0])
+	}
+	return ifaceNames, nil
+}
