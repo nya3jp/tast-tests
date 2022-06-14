@@ -21,7 +21,7 @@ func init() {
 			"ribalda@chromium.org",
 			"chromeos-camera-eng@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline", "group:camera-usb-qual", "informational"},
 	})
 }
 
