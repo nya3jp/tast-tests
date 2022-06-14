@@ -7,6 +7,7 @@ package cellular
 
 import (
 	"context"
+	"regexp"
 	"strings"
 	"time"
 
@@ -87,7 +88,7 @@ func (h *UIHelper) GoogleVoiceLogin(ctx context.Context) (*chrome.Conn, error) {
 	allowPrompt := nodewith.Name("Allow").Role(role.Button).Onscreen()
 
 	if err := uiauto.Combine("Click on allow button",
-		h.UI.WaitUntilExists(allowPrompt),
+		h.UI.WithTimeout(10*time.Second).WaitUntilExists(allowPrompt),
 		h.UI.FocusAndWait(allowPrompt),
 		h.UI.LeftClick(allowPrompt),
 	)(ctx); err != nil {
@@ -110,7 +111,7 @@ func (h *UIHelper) SendMessage(ctx context.Context, number, message string) erro
 	// Click on + Send new message.
 	sendButton := nodewith.NameContaining("Send new message").Role(role.Button)
 	if err := uiauto.Combine("Click on send new message button",
-		h.UI.WaitUntilExists(sendButton),
+		h.UI.WithTimeout(10*time.Second).WaitUntilExists(sendButton),
 		h.UI.LeftClick(sendButton),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click on + button")
@@ -122,7 +123,7 @@ func (h *UIHelper) SendMessage(ctx context.Context, number, message string) erro
 	textAreaFocused := textArea.Focused()
 	h.UIHandler.ClickUntil(textArea, h.UI.Exists(textAreaFocused))
 	if err := uiauto.Combine("Focus number text field",
-		h.UI.WaitUntilExists(textArea),
+		h.UI.WithTimeout(10*time.Second).WaitUntilExists(textArea),
 		kb.AccelAction("Ctrl+A"),
 		kb.AccelAction("Backspace"),
 		kb.TypeAction(number),
@@ -148,7 +149,7 @@ func (h *UIHelper) SendMessage(ctx context.Context, number, message string) erro
 	// Get text box and enter mobile number.
 	h.UIHandler.ClickUntil(smsTextField, h.UI.Exists(smsTextFieldFocused))
 	if err := uiauto.Combine("Focus message text field",
-		h.UI.WaitUntilExists(smsTextField.Visible()),
+		h.UI.WithTimeout(10*time.Second).WaitUntilExists(smsTextField.Visible()),
 		h.UI.LeftClick(smsTextField),
 		kb.TypeAction(message),
 		kb.AccelAction("Enter"),
@@ -160,7 +161,7 @@ func (h *UIHelper) SendMessage(ctx context.Context, number, message string) erro
 	// Do click enter or send 'Enter' key.
 	sendButton = nodewith.Name("Send message").Role(role.Button)
 	if err := uiauto.Combine("Click on send button",
-		h.UI.WaitUntilExists(sendButton),
+		h.UI.WithTimeout(10*time.Second).WaitUntilExists(sendButton),
 		h.UI.LeftClick(sendButton),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click on send button")
@@ -176,7 +177,7 @@ func (h *UIHelper) ValidateMessage(ctx context.Context, messageSent string) erro
 	notification := nodewith.Role(role.Window).ClassName("ash/message_center/MessagePopup")
 
 	// check notification window.
-	if err := h.UI.WaitUntilExists(notification)(ctx); err != nil {
+	if err := h.UI.WithTimeout(1 * time.Minute).WaitUntilExists(notification)(ctx); err != nil {
 		return errors.Wrap(err, "failed to see sms notification dialog")
 	}
 
@@ -190,8 +191,10 @@ func (h *UIHelper) ValidateMessage(ctx context.Context, messageSent string) erro
 	}
 
 	testing.ContextLog(ctx, "alert dialog data: ", smsDetails)
+	strPattern := regexp.MustCompile(`\\s+`)
+	smsReceived := strPattern.ReplaceAllString(smsDetails.Name, " ")
 
-	if strings.Contains(smsDetails.Name, messageSent) {
+	if strings.Contains(smsReceived, messageSent) {
 		testing.ContextLog(ctx, "success message received")
 		return nil
 	}
