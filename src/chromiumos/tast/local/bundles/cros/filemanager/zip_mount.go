@@ -42,7 +42,7 @@ func init() {
 			"fdegros@chromium.org",
 			"chromeos-files-syd@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Data: []string{
 			"Encrypted_AES-256.zip",
