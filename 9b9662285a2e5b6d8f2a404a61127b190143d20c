@@ -16,6 +16,24 @@
       "message": "Please send this review to a test owner as well (as mentioned in https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md) since tast-owners@ serves as a readability review",
       "revId": "9b9662285a2e5b6d8f2a404a61127b190143d20c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c6287f_5d01fd8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-06-14T18:25:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "334a4906_f295ece4",
+      "revId": "9b9662285a2e5b6d8f2a404a61127b190143d20c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
