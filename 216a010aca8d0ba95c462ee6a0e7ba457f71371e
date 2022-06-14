@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ac6766e_13249d42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-14T21:04:13Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure what you mean here, but I\u0027ve removed the boolean and inlined the success and failure case within the main function.",
+      "parentUuid": "01d5a813_09ccb8e2",
+      "range": {
+        "startLine": 50,
+        "startChar": 73,
+        "endLine": 50,
+        "endChar": 98
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37d7c61d_b33bc6ab",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
         "patchSetId": 10
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-13T17:35:31Z",
       "side": 1,
       "message": "Authentication with wrong credentials is expected to fail but succeed.",
+      "range": {
+        "startLine": 157,
+        "startChar": 12,
+        "endLine": 157,
+        "endChar": 64
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c7760e_67fbd5c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-14T21:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37d7c61d_b33bc6ab",
       "range": {
         "startLine": 157,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3f287d_4668bea8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-14T21:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "541e35d0_acf970ff",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 162,
+        "endChar": 74
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24785ce5_3176284d",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-13T17:35:31Z",
       "side": 1,
       "message": "nit: isEphemeral",
+      "range": {
+        "startLine": 444,
+        "startChar": 88,
+        "endLine": 444,
+        "endChar": 99
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5414eff6_ab282666",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-14T21:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24785ce5_3176284d",
       "range": {
         "startLine": 444,
         "startChar": 88,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c78d5d8_23071215",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-14T21:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90132fb7_a29219d0",
+      "range": {
+        "startLine": 455,
+        "startChar": 1,
+        "endLine": 455,
+        "endChar": 19
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b5b8575_fc9848ab",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc01b6f4_d9484d00",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-14T21:04:13Z",
+      "side": 1,
+      "message": "In order to test for file persistence outside this function the vault needs to stay mounted. The cleanup for Unmount already happens in ChallengeResponseAuthSession on line 128 after the file test.",
+      "parentUuid": "5b5b8575_fc9848ab",
+      "range": {
+        "startLine": 463,
+        "startChar": 2,
+        "endLine": 463,
+        "endChar": 3
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f88b7348_3d99db7e",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-06-13T17:35:31Z",
       "side": 1,
       "message": "defer invalidateAuthSession",
+      "range": {
+        "startLine": 540,
+        "startChar": 1,
+        "endLine": 540,
+        "endChar": 2
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad33611f_960dc65b",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-14T21:04:13Z",
+      "side": 1,
+      "message": "For simliar reasons above - in order to mount a persistent vault outside this function the AuthSession needs to stay validated - and its already invalidated properly in ChallengeResponseAuthSession line 138.",
+      "parentUuid": "f88b7348_3d99db7e",
       "range": {
         "startLine": 540,
         "startChar": 1,
