@@ -16,6 +16,29 @@
       "message": "hwsec-wise LGTM.",
       "revId": "4a166f3599f890ebce13aa4c056568bd94727c31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a08ff2c7_a06b33ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-14T09:07:30Z",
+      "side": 1,
+      "message": "This can stay in Attr: and just add \n`ExtraAttr: []string{\"informational\"},` for subtest \"current\".",
+      "range": {
+        "startLine": 44,
+        "startChar": 32,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "4a166f3599f890ebce13aa4c056568bd94727c31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
