@@ -74,8 +74,7 @@ func init() {
 }
 
 func ZipMount(ctx context.Context, s *testing.State) {
-	// TODO(crbug.com/1326797) Remove once it is enabled by default.
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("FilesArchivemount2"))
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Cannot start Chrome: ", err)
 	}
