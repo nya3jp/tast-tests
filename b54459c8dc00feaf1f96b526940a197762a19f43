@@ -307,6 +307,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5189dbea_7b11a8c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-14T19:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7b70b0b_50a784c0",
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec538807_31831ef2",
