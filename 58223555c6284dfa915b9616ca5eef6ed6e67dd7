@@ -33,6 +33,23 @@
       "message": "On second try, it seems that the CQ system failed to find an available DUT for the exact same five board names.  This suggest to me that it is not an intermittent problem, but rather a configuration error, or an actual problem with some devices in the lab.  I do not know how to investigate either, but hope that someone else has, and that this third attempt will succeed.",
       "revId": "58223555c6284dfa915b9616ca5eef6ed6e67dd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bab1e3fd_10e00095",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2022-06-14T07:41:49Z",
+      "side": 1,
+      "message": "Third try was down to two DUTs instead of five.  I am hoping that somehow the remaining two have become solved by now.",
+      "revId": "58223555c6284dfa915b9616ca5eef6ed6e67dd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
