@@ -312,6 +312,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c5a864f_0dc69ac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-14T01:30:35Z",
+      "side": 1,
+      "message": "Another convenient option is to use the CheckPortal Service property [1] to disable portal detection on a per Service basis. This can more easily controlled in the testEnv struct.\n\nSGTM to leave it like this for now.\n\n[1] https://source.corp.google.com/chromeos_public/src/platform2/system_api/dbus/shill/dbus-constants.h;l\u003d119?q\u003ddbus-constants%20shill%20package:%5Echromeos_public\u0026type\u003dcs",
+      "parentUuid": "a05f8a28_4ff6f444",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 111
+      },
+      "revId": "2ddb0b5af8fc88ee7462da1651628e29a2990fc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7ed97dd_af0b532d",
