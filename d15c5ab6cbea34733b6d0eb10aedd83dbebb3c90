@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b8dca0_513f3da5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-14T15:25:37Z",
+      "side": 1,
+      "message": "LGTM to avoid further cross timezone iterations.\nCould you address my comments below before submitting?",
+      "revId": "d15c5ab6cbea34733b6d0eb10aedd83dbebb3c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a94b7a31_ff2be697",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/stadia_gameplay_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-14T15:25:37Z",
+      "side": 1,
+      "message": "could you replace param\u0027s Val by these values?",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "d15c5ab6cbea34733b6d0eb10aedd83dbebb3c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bcb2600_be1aa78a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-14T15:25:37Z",
+      "side": 1,
+      "message": "huge nit: let\u0027s add an empty line here for consistency.",
+      "revId": "d15c5ab6cbea34733b6d0eb10aedd83dbebb3c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4509a83_0e4c17a5",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-14T15:25:37Z",
+      "side": 1,
+      "message": "nit: ditto for empty line for consistency.",
+      "revId": "d15c5ab6cbea34733b6d0eb10aedd83dbebb3c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346da839_30909b9c",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-14T15:25:37Z",
+      "side": 1,
+      "message": "nit: tconns as this is no longer Browser.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 9
+      },
+      "revId": "d15c5ab6cbea34733b6d0eb10aedd83dbebb3c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab3159f0_a68de9b9",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-14T15:25:37Z",
+      "side": 1,
+      "message": "could you describe the background more? Why this is needed?",
+      "range": {
+        "startLine": 184,
+        "startChar": 23,
+        "endLine": 184,
+        "endChar": 85
+      },
+      "revId": "d15c5ab6cbea34733b6d0eb10aedd83dbebb3c90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
