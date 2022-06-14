@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "055eecdc_f22fac06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-06-14T17:18:51Z",
+      "side": 1,
+      "message": "Hi Matt,\nSorry that this fell through the crack. \nIt is smart that you moved the function to chrome package so we can leverage `cfg, err :\u003d config.NewConfig(opts)` to make ToOptions more testable.\nThanks,\nJonathan",
+      "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
