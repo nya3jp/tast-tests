@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ba82121_391bbd6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-14T08:58:58Z",
+      "side": 1,
+      "message": "Please elaborate the motivation of the refactoring, i.e. what can be improved / solved by this CL?",
+      "revId": "82df7cc98569cfc21443ff99dc94fc0053c68271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7ec842ff_aef2a6b5",
@@ -14,6 +31,46 @@
       "writtenOn": "2022-06-13T12:35:39Z",
       "side": 1,
       "message": "hwsec-wise LGTM.",
+      "revId": "82df7cc98569cfc21443ff99dc94fc0053c68271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8293ffa_1b772657",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-14T08:58:58Z",
+      "side": 1,
+      "message": "Who is responsible to clean up the tmpDir? Would it need be kept between tests? If so, would it bring dependencies among tests?  If not, we shall make sure it is removed once the test ends regardless successful or failed.",
+      "revId": "82df7cc98569cfc21443ff99dc94fc0053c68271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3cd460_7f31a9df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-14T08:58:58Z",
+      "side": 1,
+      "message": "Consider using ioutil.TempDir() to create a temp directory with a unique name.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 0
+      },
       "revId": "82df7cc98569cfc21443ff99dc94fc0053c68271",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
