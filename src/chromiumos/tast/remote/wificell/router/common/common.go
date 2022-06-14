@@ -84,3 +84,24 @@ func RemoveDevicesWithPrefix(ctx context.Context, ipr *ip.Runner, prefix string)
 	}
 	return nil
 }
+
+// BringDownRedundantInterfaces brings down all the redundant interfaces.
+func BringDownRedundantInterfaces(ctx context.Context, ipr *ip.Runner) error {
+	devs, err := ipr.LinksUp(ctx)
+	if err != nil {
+		return err
+	}
+	// If an interface is brought up in a test, please add it into the list, as
+	// the interface may not be cleaned up correctly if the test exits unexpectedly.
+	redundantInterfaces := []string{"eth1", "managed0", "managed1"}
+	for _, dev := range devs {
+		for _, redundantInterface := range redundantInterfaces {
+			if dev == redundantInterface {
+				if err := ipr.SetLinkDown(ctx, dev); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
