@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf4feaf8_4002c279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-14T23:45:17Z",
+      "side": 1,
+      "message": "Do we still want to continue if we\u0027ve encountered an error?",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "24a901aad391f0e52ddd9d3ffa72070aaa8ef0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4558f76d_b296086c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-14T23:45:17Z",
+      "side": 1,
+      "message": "I couldn\u0027t parse this completely. Does this mean if there is a failure encountered in the USB4 check, it *won\u0027t* lead to a test failure?\n\nIf so, how will we know there is an issue with the USB4 linking?",
+      "range": {
+        "startLine": 60,
+        "startChar": 68,
+        "endLine": 60,
+        "endChar": 88
+      },
+      "revId": "24a901aad391f0e52ddd9d3ffa72070aaa8ef0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b7e39d4_9abff985",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-14T23:45:17Z",
+      "side": 1,
+      "message": "This regex seems to be repeated. Is there some way we can run it just once, and still run the two checks (1 for USB4 and the other for \"regular\" USB).\n\nIt seems counterproductive and a little difficult to follow the same regex being executed twice.",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 100
+      },
+      "revId": "24a901aad391f0e52ddd9d3ffa72070aaa8ef0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

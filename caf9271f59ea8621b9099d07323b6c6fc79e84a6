@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a583f8a7_42a8f083",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-14T23:45:17Z",
+      "side": 1,
+      "message": "OK. Thanks for clarifying that.",
+      "parentUuid": "bc75a966_ceb43ab2",
+      "range": {
+        "startLine": 55,
+        "startChar": 61,
+        "endLine": 55,
+        "endChar": 88
+      },
+      "revId": "caf9271f59ea8621b9099d07323b6c6fc79e84a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b6d0fad_14f4a97c",
