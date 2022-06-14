@@ -355,11 +355,11 @@ func MeetMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if err := recorder.AddCollectedMetrics(tconn, ashMetricConfigs()...); err != nil {
+	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, ashMetricConfigs()...); err != nil {
 		s.Fatal("Failed to add Ash recorded metrics: ", err)
 	}
 
-	if err := recorder.AddCollectedMetrics(bTconn, browserMetricConfigs()...); err != nil {
+	if err := recorder.AddCollectedMetrics(bTconn, bt, browserMetricConfigs()...); err != nil {
 		s.Fatal("Failed to add Browser recorded metrics: ", err)
 	}
 	if err := recorder.Run(ctx, func(ctx context.Context) error {

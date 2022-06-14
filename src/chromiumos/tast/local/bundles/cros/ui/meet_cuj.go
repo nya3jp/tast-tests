@@ -467,7 +467,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
 
-	if err := recorder.AddCollectedMetrics(bTconn, configs...); err != nil {
+	if err := recorder.AddCollectedMetrics(bTconn, meet.browserType, configs...); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
 	}
 

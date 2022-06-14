@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -106,7 +107,7 @@ func BasicYoutubeCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(cleanupCtx)
 
-	if err := recorder.AddCollectedMetrics(tconn, cujrecorder.NewSmoothnessMetricConfig(
+	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, cujrecorder.NewSmoothnessMetricConfig(
 		"Ash.WindowCycleView.AnimationSmoothness.Container")); err != nil {
 		s.Fatal("Failed to add recorded metrics: ", err)
 	}
