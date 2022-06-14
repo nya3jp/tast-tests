@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "305617e6_012fa3fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-06-14T00:41:01Z",
+      "side": 1,
+      "message": "Disabling bgscanning tests on cherry per Michael\u0027s request",
+      "revId": "77a6f49d2452576504072f0752f8631cebbbbba9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
