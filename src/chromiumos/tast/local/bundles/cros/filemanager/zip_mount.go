@@ -33,7 +33,7 @@ func init() {
 			"msalomao@chromium.org",
 			"chromeos-files-syd@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      8 * time.Minute,
 		Data: []string{
