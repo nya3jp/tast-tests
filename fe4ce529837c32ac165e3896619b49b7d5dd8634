@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66e57161_62fe835b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/lock_screen_challenge_response_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-14T21:18:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6cef85a_3367250b",
+      "range": {
+        "startLine": 51,
+        "startChar": 59,
+        "endLine": 51,
+        "endChar": 77
+      },
+      "revId": "fe4ce529837c32ac165e3896619b49b7d5dd8634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01790572_06445d73",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d516487d_17b7e054",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/lock_screen_challenge_response_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-14T21:18:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01790572_06445d73",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 143
+      },
+      "revId": "fe4ce529837c32ac165e3896619b49b7d5dd8634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d82cc50_1a9b363a",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-13T17:42:36Z",
       "side": 1,
       "message": "Error message should clarify that the failure was expected but it succeeds.",
+      "range": {
+        "startLine": 146,
+        "startChar": 11,
+        "endLine": 146,
+        "endChar": 53
+      },
+      "revId": "fe4ce529837c32ac165e3896619b49b7d5dd8634",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "804607a8_fe671fd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/lock_screen_challenge_response_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-14T21:18:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d82cc50_1a9b363a",
       "range": {
         "startLine": 146,
         "startChar": 11,
