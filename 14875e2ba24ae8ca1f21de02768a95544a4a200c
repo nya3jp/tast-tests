@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42296312_1b581ad4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-15T08:15:53Z",
+      "side": 1,
+      "message": "Hi reviewers, sorry for the delay.\n\nAll comments are addressed, please review, thanks.",
+      "revId": "14875e2ba24ae8ca1f21de02768a95544a4a200c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

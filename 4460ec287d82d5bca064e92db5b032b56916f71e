@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97a3f8e_1a2b09e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-15T08:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67729062_ccdc0f92",
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50914c5d_28b29b38",
@@ -82,6 +100,30 @@
       "writtenOn": "2022-05-12T17:23:37Z",
       "side": 1,
       "message": "probably would be nice to defer the uninstall of the app through ossettings.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/search_installed_apps.go;l\u003d177-193?q\u003dinstalled_apps.go#:~:text\u003d176-,177,-178",
+      "range": {
+        "startLine": 112,
+        "startChar": 17,
+        "endLine": 112,
+        "endChar": 27
+      },
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87122e79_a164fd16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-15T08:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50914c5d_28b29b38",
       "range": {
         "startLine": 112,
         "startChar": 17,
@@ -115,6 +157,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9472fb_b7824494",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-15T08:15:53Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "bc08dfde_e05f21c9",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 63
+      },
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38fbe99d_3e73cab6",
@@ -128,6 +194,30 @@
       "writtenOn": "2022-05-12T17:23:37Z",
       "side": 1,
       "message": "nit: still remains.",
+      "range": {
+        "startLine": 147,
+        "startChar": 23,
+        "endLine": 147,
+        "endChar": 38
+      },
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a910ad45_48a6ba51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-15T08:15:53Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "38fbe99d_3e73cab6",
       "range": {
         "startLine": 147,
         "startChar": 23,
@@ -161,6 +251,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4209d8b2_789045b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-15T08:15:53Z",
+      "side": 1,
+      "message": "Fixed, method removed and replaced by `launcher.UninstallsAppUsingContextMenu`.",
+      "parentUuid": "9f2ad990_95825a1c",
+      "range": {
+        "startLine": 187,
+        "startChar": 5,
+        "endLine": 187,
+        "endChar": 27
+      },
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17b80382_a1b08440",
@@ -184,6 +298,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e84cd1d5_3721ecdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-15T08:15:53Z",
+      "side": 1,
+      "message": "Fixed, method removed.",
+      "parentUuid": "17b80382_a1b08440",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 79
+      },
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25abd21f_547d21aa",
@@ -197,6 +335,24 @@
       "writtenOn": "2022-05-12T16:45:50Z",
       "side": 1,
       "message": "I think we have utility methods in launcher.go for opening closing launcher",
+      "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbfa034d_8d2b8b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-15T08:15:53Z",
+      "side": 1,
+      "message": "Fixed, methods removed",
+      "parentUuid": "25abd21f_547d21aa",
       "revId": "4460ec287d82d5bca064e92db5b032b56916f71e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
