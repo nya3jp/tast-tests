@@ -6,6 +6,7 @@ package video
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/local/media/decoding"
@@ -28,6 +29,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      4 * time.Minute,
 		Fixture:      "graphicsNoChrome",
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_decodeaccel"},
 		Params: []testing.Param{{
