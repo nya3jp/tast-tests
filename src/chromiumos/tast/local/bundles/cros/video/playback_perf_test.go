@@ -6,10 +6,12 @@ package video
 
 import (
 	"fmt"
+	"sort"
 	"testing"
 
 	"chromiumos/tast/common/genparams"
 	"chromiumos/tast/local/bundles/cros/video/playback"
+	"chromiumos/tast/local/media/pre"
 )
 
 // codec
@@ -77,7 +79,9 @@ type playbackParamData struct {
 	File             string
 	DecoderType      playback.DecoderType
 	BrowserType      string
-	GridSize         int
+	GridWidth        int
+	GridHeight       int
+	PerfTracing      bool
 	MeasureRoughness bool
 
 	SoftwareDeps []string
@@ -196,12 +200,13 @@ func TestPlaybackPerfParams(t *testing.T) {
 	}
 
 	// grid
-	// TODO(b/234643665): Reduce these to 2x2 720p (as many pixels as 4K).
+	// TODO(b/234643665): Reduce these to 2x2 1080p (as many pixels as 4K).
 	for _, codec := range []string{"h264", "vp8", "vp9", "av1"} {
 		resolution, fps, dec := 720, 30, "hw"
 		param := genPlaybackParam(codec, genPlaybackPerfDataPath(codec, resolution, fps),
 			resolution, fps, dec, "3x3", "", []string{})
-		param.GridSize = 3
+		param.GridWidth = 3
+		param.GridHeight = 3
 		params = append(params, param)
 	}
 
@@ -226,14 +231,55 @@ func TestPlaybackPerfParams(t *testing.T) {
 		}
 	}
 
+	// multi-playback
+	// Get threads and fixture for them. Sort the threads as the order of Golang map iteration is not deterministic.
+	fixtureMap := pre.VideoDecoderThreadsFixtureNames()
+	var threadsCands []int
+	for numThreads := range fixtureMap {
+		threadsCands = append(threadsCands, numThreads)
+	}
+	sort.Ints(threadsCands)
+
+	for _, codec := range []string{"h264", "vp9"} {
+		// 1080p x 2 ~= 2K, 480p x 9  ~= 2K, 360p x 16 ~= 2K, 180p x 49 ~= 1260p
+		for _, resGrid := range [][3]int{{1080, 2, 1}, {480, 3, 3}, {360, 4, 4}, {180, 7, 7}} {
+			resolution, gridW, gridH := resGrid[0], resGrid[1], resGrid[2]
+			for _, numThreads := range threadsCands {
+				numVideos := gridW * gridH
+				// The used decoder threads is smaller of |numThreads| and |numVideos|.
+				// So skip the redundant case that |numVideos| is less than |numThreads|.
+				if numVideos < numThreads {
+					continue
+				}
+				fps, dec := 30, "hw"
+				testNameSuffix := fmt.Sprintf("x%d_%dthreads", numVideos, numThreads)
+				fixtureName := fixtureMap[numThreads]
+				param := genPlaybackParam(codec,
+					genPlaybackPerfDataPath(codec, resolution, fps),
+					resolution, fps, dec, testNameSuffix, fixtureName, []string{"thread_safe_libva_backend"})
+				param.GridWidth = gridW
+				param.GridHeight = gridH
+				param.PerfTracing = true
+				param.Attr = []string{"group:graphics", "graphics_video", "graphics_nightly"}
+				params = append(params, param)
+			}
+		}
+	}
+
 	code := genparams.Template(t, `{{ range . }}{
 		Name: {{ .Name | fmt }},
 		Val:  playbackPerfParams{
 			fileName: {{ .File | fmt }},
 			decoderType: {{ .DecoderType }},
 			browserType: {{ .BrowserType }},
-			{{ if .GridSize }}
-			gridSize: {{ .GridSize | fmt }},
+			{{ if .GridWidth }}
+			gridWidth: {{ .GridWidth | fmt }},
+			{{ end }}
+			{{ if .GridHeight }}
+			gridHeight: {{ .GridHeight | fmt }},
+			{{ end }}
+			{{ if .PerfTracing }}
+			perfTracing: {{ .PerfTracing | fmt }},
 			{{ end }}
 			{{ if .MeasureRoughness }}
 			measureRoughness: {{ .MeasureRoughness | fmt }},

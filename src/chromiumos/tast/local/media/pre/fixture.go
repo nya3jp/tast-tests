@@ -6,6 +6,7 @@ package pre
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 
@@ -501,6 +502,47 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	for _, fixture := range videoDecoderThreadsFixtures() {
+		testing.AddFixture(&fixture)
+	}
+}
+
+// VideoDecoderThreadsFixtureNames returns the map of the number of decoder threads
+// and the fixture name for it.
+func VideoDecoderThreadsFixtureNames() map[int]string {
+	var videoThreads = []int{1, 4, 9, 16, 49}
+	fixtureNames := map[int]string{}
+	for _, numThreads := range videoThreads {
+		fixtureNames[numThreads] =
+			fmt.Sprintf("chromeVideoWith%dDecoderThreadsAndGlobalVaapiLockDisabled", numThreads)
+	}
+	return fixtureNames
+}
+
+// videoDecoderThreadsFixtures returns the fixture to limit the usable number of video decoder threads.
+func videoDecoderThreadsFixtures() []testing.Fixture {
+	var fixtures []testing.Fixture
+	for numThreads, fixtureName := range VideoDecoderThreadsFixtureNames() {
+		fixture := testing.Fixture{
+			Name: fixtureName,
+			Desc: "Similar to chromeVideo fixture but max decoder threads is set and disable global VA-API lock",
+			Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return []chrome.Option{
+					chrome.ExtraArgs(chromeVideoArgs...),
+					chrome.ExtraArgs("--disable-features=GlobalVaapiLock"),
+					chrome.ExtraArgs("--disable-features=LimitConcurrentDecoderInstances"),
+					chrome.ExtraArgs(fmt.Sprintf("--max-chromeos-decoder-threads=%d", numThreads)),
+				}, nil
+			}),
+			Parent:          "gpuWatchDog",
+			SetUpTimeout:    chrome.LoginTimeout,
+			ResetTimeout:    chrome.ResetTimeout,
+			TearDownTimeout: chrome.ResetTimeout,
+		}
+		fixtures = append(fixtures, fixture)
+	}
+	return fixtures
 }
 
 var chromeVideoArgs = []string{
