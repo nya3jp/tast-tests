@@ -20,6 +20,12 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type keyboardTest int
+const (
+    servoUSBKeyboard keyboardTest = iota
+    servoECKeyboard
+)
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ECKeyboard,
@@ -30,6 +36,12 @@ func init() {
 		Fixture:      fixture.NormalMode,
 		Timeout:      2 * time.Minute,
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
+	        Params: []testing.Param{{
+		    Val: servoECKeyboard,
+                }, {
+                    Name: "usb_keyboard",
+                    Val: servoUSBKeyboard,
+                }},
 	})
 }
 
@@ -58,12 +70,19 @@ func ECKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Requiring RPC utils: ", err)
 	}
 
-	if hasKb, err := h.Servo.HasControl(ctx, string(servo.USBKeyboard)); err != nil {
-		s.Fatal("Failed to check for usb keyboard: ", err)
-	} else if hasKb {
-		if err := h.Servo.SetOnOff(ctx, servo.USBKeyboard, servo.Off); err != nil {
-			s.Fatal("Failed to disable usb keyboard: ", err)
-		}
+	switch s.Param().(keyboardTest) {
+    		case servoECKeyboard:
+                	if hasKb, err := h.Servo.HasControl(ctx, string(servo.USBKeyboard)); err != nil {
+                		s.Fatal("Failed to check for usb keyboard: ", err)
+                	} else if hasKb {
+                		if err := h.Servo.SetOnOff(ctx, servo.USBKeyboard, servo.Off); err != nil {
+                			s.Fatal("Failed to disable usb keyboard: ", err)
+                		}
+                	}
+                case servoUSBKeyboard:
+			if err := h.Servo.SetOnOff(ctx, servo.USBKeyboard, servo.On); err != nil {
+    				s.Fatal("Failed to enable usb keyboard: ", err)
+			}
 	}
 
 	res, err := h.RPCUtils.FindPhysicalKeyboard(ctx, &empty.Empty{})
