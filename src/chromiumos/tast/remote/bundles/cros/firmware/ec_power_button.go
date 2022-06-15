@@ -34,7 +34,7 @@ func init() {
 		Func:         ECPowerButton,
 		Desc:         "Verify using servo power key results in expected shutdown behaviour",
 		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Attr:         []string{"group:firmware"},
 		SoftwareDeps: []string{"crossystem"},
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
@@ -44,16 +44,20 @@ func init() {
 			{
 				Name: "toggle_powerd",
 				Val:  powerOffWithAndWithoutPowerd,
+				// TODO(b/235742217): This test might be leaving broken DUTS that can't be auto-repaired. Add attr firmware_unstable when fixed.
+				ExtraAttr: []string{},
 			},
 			{
 				Name:              "ignore_short_power_key",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				Val:               ignoresShortPowerKey,
+				ExtraAttr:         []string{"firmware_unstable"},
 			},
 			{
 				Name:              "short_power_key",
 				ExtraHardwareDeps: hwdep.D(hwdep.NoInternalDisplay()),
 				Val:               powerOffWithShortPowerKey,
+				ExtraAttr:         []string{"firmware_unstable"},
 			},
 		},
 	})
