@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a896d842_fc51e175",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-15T00:45:55Z",
+      "side": 1,
+      "message": "Would this have broken the test before? Wouldn\u0027t you have needed to set a route? It\u0027s not clear to me that you repro-ed the failure, applied this patch, took the same repro steps and the failure no longer happens.",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9454628d_5664448a",
         "filename": "src/chromiumos/tast/common/network/ip/runner.go",
         "patchSetId": 7
