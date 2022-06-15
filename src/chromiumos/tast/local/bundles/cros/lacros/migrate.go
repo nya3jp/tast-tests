@@ -72,11 +72,59 @@ const (
 	titleOfDownloadsPage = "Downloads"                        // chrome://downloads page title.
 	titleOfNewTabPage    = "New Tab"                          // chrome://newtab page title.
 	cookie               = "MyCookie1234=abcd"                // Arbitrary cookie.
+	// Create an arbitrary indexedDB store and add a value.
+	insertIndexedDBDataJS = `async () => {
+        async function insertIndexedDBData() {
+            return new Promise((resolve) => {
+                const req =
+                    window.indexedDB.open("someDataBase", 1);
+                req.onupgradeneeded = e => {
+                    const db = e.target.result;
+                    const objectStore =
+                        db.createObjectStore("users", { keyPath: "id" });
+                    objectStore.transaction.oncomplete = e => {
+                        const userObjectStore =
+                            db.transaction("users", 'readwrite')
+                                .objectStore("users");
+                        userObjectStore
+                            .add({ id: 1, email: "test@gmail.com" });
+                        resolve(true);
+                    }
+                    objectStore.transaction.onerror = () => {
+                        resolve(false);
+                    }
+                }
+                req.onerror = () => {
+                    resolve(false);
+                }
+            })
+        }
+        const success = await insertIndexedDBData()
+        return success;
+    }`
+	// Check that the value stored with insertIndexedDBDataJS is present.
+	getIndexedDBDataJS = `async () => {
+        async function getIndexedDBData() {
+            return new Promise(resolve => {
+                const req = window.indexedDB.open("someDataBase");
+                req.onerror = () => resolve();
+                req.onsuccess = e => {
+                    const db = e.target.result;
+                    const req =
+                        db.transaction("users").objectStore("users").get(1);
+                    req.onsuccess = () => resolve(req.result)
+                    req.onerror = resolve
+                }
+            })
+        }
+        const user = await getIndexedDBData();
+        return user.email == 'test@gmail.com';
+    }`
 )
 
 // prepareAshProfile resets profile migration, installs an extension, and
-// creates two tabs, browsing history, a bookmark, a download, a shortcut and a
-// cookie.
+// creates two tabs, browsing history, a bookmark, a download, a shortcut, a
+// cookie and an indexedDB entry.
 func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.KeyboardEventWriter) {
 	// First restart Chrome with Lacros disabled in order to reset profile migration.
 	cr, err := chrome.New(ctx, chrome.DisableFeatures("LacrosSupport"))
@@ -134,6 +182,14 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 	// Set cookie on Alphabet page.
 	if err := conn.Call(ctx, nil, `(cookie) => document.cookie = cookie`, cookie); err != nil {
 		s.Fatal("Failed to set cookie: ", err)
+	}
+	// Create an indexedDB store and add a user in.
+	var success bool
+	if err := conn.Call(ctx, &success, insertIndexedDBDataJS); err != nil {
+		s.Fatal("Failed to call insertIndexedDBDataJS: ", err)
+	}
+	if !success {
+		s.Fatal("Failed to add indexedDB data: ")
 	}
 
 	// Bookmark the chrome://downloads page.
@@ -274,6 +330,14 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 		}
 		if !contained {
 			s.Fatal("Cookie set in Ash could not be found in Lacros")
+		}
+
+		var success bool
+		if err := conn.Call(ctx, &success, getIndexedDBDataJS); err != nil {
+			s.Fatal("Failed to call getIndexedDBDataJS: ", err)
+		}
+		if !success {
+			s.Fatal("The value stored in indexedDB could not be found: ")
 		}
 	}()
 
