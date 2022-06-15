@@ -16,6 +16,24 @@
       "message": "We should still log something at least describing how the callboxManager has been resolved due the variable not being present to avoid confusion.",
       "revId": "b7e9bfd809ef8aa03c29fb0f44cf3a38f37c28d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b35d379_d5c6aeea",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1487134
+      },
+      "writtenOn": "2022-06-15T18:22:00Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "fe079000_fadcce31",
+      "revId": "b7e9bfd809ef8aa03c29fb0f44cf3a38f37c28d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
