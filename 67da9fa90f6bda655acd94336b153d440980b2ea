@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0390065f_27765138",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_tpm_seed.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-06-15T18:25:43Z",
+      "side": 1,
+      "message": "Should we make this an explicit runtime test as well or are we confident that if this test passes then the build will never leave the file in place?",
+      "range": {
+        "startLine": 84,
+        "startChar": 39,
+        "endLine": 85,
+        "endChar": 20
+      },
+      "revId": "67da9fa90f6bda655acd94336b153d440980b2ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
