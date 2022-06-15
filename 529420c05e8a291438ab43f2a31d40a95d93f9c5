@@ -62,6 +62,30 @@
       },
       "revId": "529420c05e8a291438ab43f2a31d40a95d93f9c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ef1af0b_5f242d73",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_system_locked.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-06-15T10:24:02Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b3884fe7_8d992db2",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "529420c05e8a291438ab43f2a31d40a95d93f9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
