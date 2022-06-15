@@ -6,6 +6,7 @@ package meta
 
 import (
 	"context"
+	"io/fs"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -164,9 +165,39 @@ func RunTests(ctx context.Context, s *testing.State) {
 			} else if !os.IsNotExist(err) {
 				s.Errorf("Failed to read output file %v: %v", p, err)
 			}
+			p = filepath.Dir(p)
+			_, err := ioutil.ReadDir(p)
+			if err == nil {
+				_ = filepath.Walk(p, func(path string, info fs.FileInfo, err error) error {
+					if err != nil {
+						s.Errorf("Failed to read output file %v: %v", path, err)
+						return err
+					}
+					if !info.IsDir() && info.Name() == "ps.txt" {
+						s.Errorf("Output file %v exists unexpectedly", p)
+					}
+					return nil
+				})
+			}
 			continue
 		}
 		if err != nil {
+			if v == exists {
+				p = filepath.Dir(p)
+				fileFound := false
+				_ = filepath.Walk(p, func(path string, info fs.FileInfo, err error) error {
+					if err != nil {
+						return err
+					}
+					if !info.IsDir() && info.Name() == "ps.txt" {
+						fileFound = true
+					}
+					return nil
+				})
+				if fileFound {
+					continue
+				}
+			}
 			s.Errorf("Failed to read output file %v: %v", p, err)
 			continue
 		}
