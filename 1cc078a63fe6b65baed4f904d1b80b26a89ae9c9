@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15be5e39_8755695c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-15T05:59:01Z",
+      "side": 1,
+      "message": "Done. I didn\u0027t do the same for database name or storage name because I think that will be too extra.",
+      "parentUuid": "2b6a59b4_49af3010",
+      "range": {
+        "startLine": 90,
+        "startChar": 50,
+        "endLine": 90,
+        "endChar": 64
+      },
+      "revId": "1cc078a63fe6b65baed4f904d1b80b26a89ae9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "034f8a7a_53951292",
@@ -88,6 +112,24 @@
       "writtenOn": "2022-06-15T04:55:30Z",
       "side": 1,
       "message": "All the outer function does is call the inner function, I think you can remove the outer.\n\nCould you also format this to be easier to read? E.g. fewer line breaks.",
+      "revId": "1cc078a63fe6b65baed4f904d1b80b26a89ae9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee6991c_461b2aed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-15T05:59:01Z",
+      "side": 1,
+      "message": "Good point. Done",
+      "parentUuid": "034f8a7a_53951292",
       "revId": "1cc078a63fe6b65baed4f904d1b80b26a89ae9c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
