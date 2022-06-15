@@ -16,6 +16,138 @@
       "message": "Hello, please help me review this change again. Thank you.",
       "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ea8275b_3eb4b9b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-15T06:49:09Z",
+      "side": 1,
+      "message": "Curious: how does this get ran then? Is it expected to be a manual test?",
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fb4a50d_bee4cebf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-15T06:49:09Z",
+      "side": 1,
+      "message": "nit: not really needed, the comments in the remaining describe it pretty well 👍",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 62
+      },
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b045ff81_0b64b1cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-15T06:49:09Z",
+      "side": 1,
+      "message": "nit: there\u0027s 5s given, but 30s in comment? not sure which one but best align them.",
+      "range": {
+        "startLine": 77,
+        "startChar": 21,
+        "endLine": 77,
+        "endChar": 23
+      },
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a2ff8fc_0995b58e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-15T06:49:09Z",
+      "side": 1,
+      "message": "nit: this could just be a named inline function that you call once then defer. Something like:\n```\ncleanupCryptohome \u003d func(ctx context.Context) {\n...\n}\ncleanupCrypthome(ctx)\ndefer cleanupCryptohome(ctxForCleanup)\n```",
+      "range": {
+        "startLine": 95,
+        "startChar": 7,
+        "endLine": 105,
+        "endChar": 2
+      },
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7add38b_5ec0e49e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-15T06:49:09Z",
+      "side": 1,
+      "message": "nit: don\u0027t need named errors in this case, just `error` is sufficient.",
+      "range": {
+        "startLine": 236,
+        "startChar": 116,
+        "endLine": 236,
+        "endChar": 122
+      },
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cffbfc0f_c28b9ab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-15T06:49:09Z",
+      "side": 1,
+      "message": "Generally best to avoid `panic`\u0027s in a test. Prefer to return an error instead.",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 37
+      },
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
