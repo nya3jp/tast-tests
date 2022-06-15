@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3746bf88_2837b2f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-15T19:03:54Z",
+      "side": 1,
+      "message": "Just s.Fatalf(..) is sufficient.",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "5afe9e20207de3f5e81db2f3994d4faf7477d014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12045ca9_44c5ca35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-15T19:03:54Z",
+      "side": 1,
+      "message": "Do you still need this?",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "5afe9e20207de3f5e81db2f3994d4faf7477d014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dca495d4_fff887e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-15T19:03:54Z",
+      "side": 1,
+      "message": "Where is this coming from?\n\nCan you add a comment explaining how this would work.\n\nRegexs are hard to translate/parse to a new reader, so example(s) would help.",
+      "range": {
+        "startLine": 89,
+        "startChar": 35,
+        "endLine": 89,
+        "endChar": 41
+      },
+      "revId": "5afe9e20207de3f5e81db2f3994d4faf7477d014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
