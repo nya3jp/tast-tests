@@ -17,6 +17,8 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+const fingerprintTPMSeedFile = "/run/bio_crypto_init/seed"
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func: FpTpmSeed,
@@ -75,6 +77,19 @@ func FpTpmSeed(ctx context.Context, s *testing.State) {
 	// The system-services starts after boot-services, then failsafe and
 	// finally openssh-server. As a result if SSH server is running, then
 	// we are sure that bio_crypto_init initialized TPM seed.
+
+	// Check if /run/bio_crypto_init/seed does not exist. It is created by
+	// cryptohome and supposed to be removed by bio_fw_updater. The file
+	// contains TPM seed passed to FPMCU. If the file exists, it will be
+	// a security issue.
+	fs := dutfs.NewClient(d.RPC().Conn)
+	exists, err := fs.Exists(ctx, fingerprintTPMSeedFile)
+	if err != nil {
+		s.Fatal(err, "Error checking that TPM seed file exists: ", err)
+	}
+	if exists {
+		s.Errorf("File with TPM seed (%q) exists", fingerprintTPMSeedFile)
+	}
 
 	out, err := fingerprint.EctoolCommand(ctx, d.DUT(), "fpencstatus").Output(ssh.DumpLogOnError)
 	if err != nil {
