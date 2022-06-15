@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0834710_49705f8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-15T16:53:25Z",
+      "side": 1,
+      "message": "LGTM % nits from tast-owners@",
+      "revId": "24138259671d7c1079ead18044777a4cd4613b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c28fc114_cd280bfa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_tpm_seed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-15T16:53:25Z",
+      "side": 1,
+      "message": "nit: comment about what this is and what it refers to?",
+      "revId": "24138259671d7c1079ead18044777a4cd4613b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76efa326_2808023f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_tpm_seed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-15T16:53:25Z",
+      "side": 1,
+      "message": "nit: don\u0027t reference the variable by value in the comment. `Check if the TPM seed file does not exist..`",
+      "revId": "24138259671d7c1079ead18044777a4cd4613b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceebfafc_567a2127",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_tpm_seed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-15T16:53:25Z",
+      "side": 1,
+      "message": "nit: Feel free to ignore this one but as a reader, calling this `fs` made it difficult to follow in subsequent lines since `fs` can also be a golang import. How about dutfsClient?",
+      "revId": "24138259671d7c1079ead18044777a4cd4613b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
