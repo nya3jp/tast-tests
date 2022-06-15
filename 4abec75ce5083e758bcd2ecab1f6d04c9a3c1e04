@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43ce3e92_41905522",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-15T21:46:36Z",
+      "side": 1,
+      "message": "nit: Mention that it\u0027s measuring the time of the CheckKey D-Bus call.",
+      "revId": "4abec75ce5083e758bcd2ecab1f6d04c9a3c1e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c56625c_cabefb3c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/check_key_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-15T21:46:36Z",
+      "side": 1,
+      "message": "nit: Docs say it \"should be in lower_snake_case style\".\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/main/docs/writing_tests.md#parameterized-tests",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "4abec75ce5083e758bcd2ecab1f6d04c9a3c1e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f2447a_d529837f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/check_key_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-15T21:46:36Z",
+      "side": 1,
+      "message": "nit: Maybe extract this whole mount block into a separate function? To keep the main test body more readable.",
+      "revId": "4abec75ce5083e758bcd2ecab1f6d04c9a3c1e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e9191c2_6621c1ff",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/check_key_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-15T21:46:36Z",
+      "side": 1,
+      "message": "nit: Log |err|.\n\nDitto below.",
+      "revId": "4abec75ce5083e758bcd2ecab1f6d04c9a3c1e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
