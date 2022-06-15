@@ -168,15 +168,13 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	}
 
 	// DNS queries should fail if corresponding DNS packets (plain-text or secure) are dropped.
-	dns.DoWithBlock(ctx, block, func(ctx context.Context) {
+	if errs := block.Run(ctx, func(ctx context.Context) {
 		if errs := dns.TestQueryDNSProxy(ctx, dnsBlockedTC, a, cont, &dns.QueryOptions{Domain: domainDNSBlocked}); len(errs) != 0 {
-			for _, err := range errs {
-				s.Error("Failed DNS query check: ", err)
-			}
+			s.Error("Failed DNS query check: ", errs)
 		}
-	}, func(errs []error) {
+	}); len(errs) > 0 {
 		s.Fatal("Failed to block DNS: ", errs)
-	})
+	}
 }
 
 func physicalInterfaces(ctx context.Context) ([]string, error) {
