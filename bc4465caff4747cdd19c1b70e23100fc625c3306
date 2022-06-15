@@ -16,6 +16,29 @@
       "message": "Thanks for the review! PTAL",
       "revId": "bc4465caff4747cdd19c1b70e23100fc625c3306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a099d7d_248b0a02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-06-15T09:30:08Z",
+      "side": 1,
+      "message": "I feel we should add some comment explaining what exactly does \"has IPv4\" and \"has IPv6\" mean without need to read the verifyNetworkConnectivity() implementation.\n\nIf I understand correctly, currently \"has IPv4\" mean \n- Has an IPv4 address (not verified)\n- Has local (router) reachability \n- Has global (server) reachability if IsPrimary\n\nand \"has IPv6\" mean \n- Has an non-link-local IPv6 address (not verified)\n- Has local (router) reachability if IsPrimary (this is because of pending b/235050937, should become same with IPv4 after fixed)\n- Has global (server) reachability if IsPrimary\n\nIs that correct?",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 10
+      },
+      "revId": "bc4465caff4747cdd19c1b70e23100fc625c3306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
