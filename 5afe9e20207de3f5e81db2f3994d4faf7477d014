@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a5cd046_8cb74632",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-15T21:42:11Z",
+      "side": 1,
+      "message": "If we return immediately when checkUsbPortDir() returns nil, that would check just one usb port out of 3 (usb2, usb3.x, usb4). I think we can check all usb ports, would that sound unnecessary?",
+      "parentUuid": "a505e2a7_3e76a4f2",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "5afe9e20207de3f5e81db2f3994d4faf7477d014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dca495d4_fff887e7",
