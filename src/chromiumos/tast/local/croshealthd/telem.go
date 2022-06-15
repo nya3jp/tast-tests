@@ -44,6 +44,7 @@ const (
 	TelemCategoryDisplay           TelemCategory = "display"
 	TelemCategoryFan               TelemCategory = "fan"
 	TelemCategoryGraphics          TelemCategory = "graphics"
+	TelemCategoryInput             TelemCategory = "input"
 	TelemCategoryMemory            TelemCategory = "memory"
 	TelemCategoryNetwork           TelemCategory = "network"
 	TelemCategoryStatefulPartition TelemCategory = "stateful_partition"
