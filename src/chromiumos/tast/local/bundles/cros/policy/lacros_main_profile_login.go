@@ -90,8 +90,8 @@ func LacrosMainProfileLogin(ctx context.Context, s *testing.State) {
 			welcomeButton := nodewith.Name("Let's go").Role(role.Button)
 			if err := uiauto.Combine("accept or decline sync",
 				ui.WaitUntilExists(welcomeButton),
-				ui.LeftClickUntil(welcomeButton, ui.Exists(param.syncButton)),
-				ui.LeftClick(param.syncButton),
+				ui.DoDefaultUntil(welcomeButton, ui.Exists(param.syncButton)),
+				ui.DoDefault(param.syncButton),
 			)(ctx); err != nil {
 				s.Fatal("Failed to accept or decline sync: ", err)
 			}
@@ -102,7 +102,7 @@ func LacrosMainProfileLogin(ctx context.Context, s *testing.State) {
 			if err := uiauto.Combine("open the toolbar and check that the sync is on",
 				ui.WaitUntilExists(profileToolbarButton),
 				// Sync message may show an error in the beginning, but should change to 'sync is on/off'.
-				ui.WithTimeout(time.Minute).LeftClickUntil(profileToolbarButton,
+				ui.WithTimeout(time.Minute).DoDefaultUntil(profileToolbarButton,
 					uiauto.Combine("check that the user is logged in",
 						ui.Exists(loggedInUserEmail),
 						ui.Exists(param.syncMessage),
