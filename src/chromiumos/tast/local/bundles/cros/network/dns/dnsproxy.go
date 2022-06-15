@@ -6,9 +6,12 @@ package dns
 
 import (
 	"context"
+	"strconv"
 	"strings"
+	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 )
 
@@ -46,157 +49,232 @@ func (o blockOp) String() string {
 
 // Block is a mechanism for using ip rules-based blocking in a scoped/safe way.
 type Block struct {
-	f func(context.Context, blockOp) []error
+	rules []rule
 }
 
-func modifyPlaintextDropRules(ctx context.Context, op string, nss, ifs []string) []error {
+// do installs or deletes the blocking rules.
+func (b Block) do(ctx context.Context, op blockOp) []error {
 	var errs []error
-	for _, cmd := range []string{"iptables", "ip6tables"} {
-		for _, ns := range nss {
-			if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "OUTPUT", "-p", "udp", "--dport", "53", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-				errs = append(errs, errors.Wrapf(err, "failed to modify UDP plaintext DNS block rule on %s", ns))
-			}
-			if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "OUTPUT", "-p", "tcp", "--dport", "53", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-				errs = append(errs, errors.Wrapf(err, "failed to modify TCP plaintext DNS block rule on %s", ns))
+	for _, r := range b.rules {
+		r.op = op.String()
+		if err := testexec.CommandContext(ctx, r.cmd(), r.args()...).Run(testexec.DumpLogOnError); err != nil {
+			errs = append(errs, errors.Wrapf(err, "failed to modify block rule: %+v", r))
+			if op == opInsert {
+				break
 			}
 		}
+	}
+	return errs
+}
+
+// Run runs |f| after inserting blocking rules which will always be automatically reverted.
+// The functions returns any errors that occur during blocking (only).
+func (b Block) Run(ctx context.Context, f func(context.Context)) (errs []error) {
+	// Defer deleting the block first to try to cleanup any leftovers in the event insert fails.
+	ctxCleanup := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+	defer func() {
+		errs = append(errs, b.do(ctxCleanup, opDelete)...)
+	}()
+	// Insert the blocking rules.
+	if errs := b.do(ctx, opInsert); len(errs) > 0 {
+		return errs
+	}
+	f(ctx)
+	return nil
+}
+
+type ipCmd struct {
+	v6 bool
+	ns string
+}
+
+func (c ipCmd) cmd() string {
+	if c.ns != "" {
+		return "ip"
+	}
+	return c.iptables()
+}
+
+func (c ipCmd) iptables() string {
+	if c.v6 {
+		return "ip6tables"
+	}
+	return "iptables"
+}
+
+func (c ipCmd) args() []string {
+	if c.ns == "" {
+		return []string{}
+	}
+	return []string{"netns", "exec", c.ns, c.iptables()}
+}
+
+type rule struct {
+	ipc    ipCmd
+	op     string
+	chain  string
+	dest   string
+	dport  int
+	proto  string
+	oif    string
+	owner  string
+	target string
+}
+
+func (r rule) cmd() string {
+	return r.ipc.cmd()
+}
+
+func (r rule) args() []string {
+	args := append(r.ipc.args(), []string{r.op, r.chain}...)
+	if r.proto != "" {
+		args = append(args, []string{"-p", r.proto}...)
+	}
+	if r.dest != "" {
+		args = append(args, []string{"-d", r.dest}...)
+	}
+	if r.dport > 0 {
+		args = append(args, []string{"--dport", strconv.Itoa(r.dport)}...)
+	}
+	if r.oif != "" {
+		args = append(args, []string{"-o", r.oif}...)
+	}
+	if r.owner != "" {
+		args = append(args, []string{"-m", "owner", "--uid-owner", r.owner}...)
+	}
+	return append(args, []string{"-j", r.target, "-w"}...)
+}
+
+func newPlaintextDropRules(nss, ifs []string) []rule {
+	var rules []rule
+	r := rule{
+		chain:  "OUTPUT",
+		dport:  53,
+		target: "DROP",
+	}
+	for _, v6 := range []bool{false, true} {
+		r.ipc.v6 = v6
+		for _, p := range []string{"udp", "tcp"} {
+			r.proto = p
+			// Block dnsproxy namespaces.
+			for _, ns := range nss {
+				r.ipc.ns = ns
+				rules = append(rules, r)
+				r.ipc.ns = ""
+			}
+			// Block host.
+			for _, i := range ifs {
+				r.oif = i
+				rules = append(rules, r)
+				r.oif = ""
+			}
+			// Block Chrome.
+			r.owner = "chronos"
+			rules = append(rules, r)
+			r.owner = ""
+		}
+	}
+	return rules
+}
+
+func newDoHDropRules(nss, ifs []string) []rule {
+	var rules []rule
+	r := rule{
+		chain:  "OUTPUT",
+		proto:  "tcp",
+		dport:  443,
+		target: "DROP",
+	}
+	for _, v6 := range []bool{false, true} {
+		r.ipc.v6 = v6
+		// Block dnsproxy namespaces.
+		for _, ns := range nss {
+			r.ipc.ns = ns
+			rules = append(rules, r)
+			r.ipc.ns = ""
+		}
+		// Block host.
 		for _, i := range ifs {
-			if err := testexec.CommandContext(ctx, cmd, op, "OUTPUT", "-p", "udp", "--dport", "53", "-o", i, "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-				errs = append(errs, errors.Wrapf(err, "failed to modify UDP plaintext DNS block rule for %s", i))
-			}
-			if err := testexec.CommandContext(ctx, cmd, op, "OUTPUT", "-p", "tcp", "--dport", "53", "-o", i, "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-				errs = append(errs, errors.Wrapf(err, "failed to modify TCP plaintext DNS block rule for %s", i))
-			}
+			r.oif = i
+			rules = append(rules, r)
+			r.oif = ""
 		}
-		if err := testexec.CommandContext(ctx, cmd, op, "OUTPUT", "-p", "udp", "--dport", "53", "-m", "owner", "--uid-owner", "chronos", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			errs = append(errs, errors.Wrap(err, "failed to modify UDP plaintext DNS block rule for Chrome"))
-		}
-		if err := testexec.CommandContext(ctx, cmd, op, "OUTPUT", "-p", "tcp", "--dport", "53", "-m", "owner", "--uid-owner", "chronos", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			errs = append(errs, errors.Wrap(err, "failed to modify TCP plaintext DNS block rule for Chrome"))
-		}
+		// Block Chrome.
+		r.owner = "chronos"
+		rules = append(rules, r)
+		r.owner = ""
 	}
-	return errs
+
+	return rules
 }
 
-func modifyDoHDropRules(ctx context.Context, op string, nss, physIfs []string) []error {
-	var errs []error
-	for _, cmd := range []string{"iptables", "ip6tables"} {
-		for _, ns := range nss {
-			if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "OUTPUT", "-p", "tcp", "--dport", "443", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-				errs = append(errs, errors.Wrapf(err, "failed to modify secure DNS block rule on %s", ns))
-			}
-		}
-		for _, ifname := range physIfs {
-			if err := testexec.CommandContext(ctx, cmd, op, "OUTPUT", "-p", "tcp", "--dport", "443", "-o", ifname, "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-				errs = append(errs, errors.Wrapf(err, "failed to modify secure DNS block rule for %s", ifname))
-			}
-		}
-		if err := testexec.CommandContext(ctx, cmd, op, "OUTPUT", "-p", "tcp", "--dport", "443", "-m", "owner", "--uid-owner", "chronos", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			errs = append(errs, errors.Wrap(err, "failed to modify secure DNS block rule for Chrome"))
-		}
+func newVPNDropRules(ns string) []rule {
+	var rules []rule
+	r := rule{
+		chain:  "FORWARD",
+		target: "DROP",
 	}
-	return errs
+	r.ipc.ns = ns
+	for _, v6 := range []bool{false, true} {
+		r.ipc.v6 = v6
+		r.dport = 53
+		for _, p := range []string{"udp", "tcp"} {
+			r.proto = p
+			rules = append(rules, r)
+		}
+		r.proto = "tcp"
+		r.dport = 443
+		rules = append(rules, r)
+	}
+	return rules
 }
 
-func modifyVPNDropRules(ctx context.Context, op, ns string) []error {
-	var errs []error
-	for _, cmd := range []string{"iptables", "ip6tables"} {
-		if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "FORWARD", "-p", "udp", "--dport", "53", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			errs = append(errs, err)
-		}
-		if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "FORWARD", "-p", "tcp", "--dport", "53", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			errs = append(errs, err)
-		}
-		if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "FORWARD", "-p", "tcp", "--dport", "443", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			errs = append(errs, err)
-		}
+func newDoHVPNDropRules(ns string) []rule {
+	var rules []rule
+	r := rule{
+		chain:  "FORWARD",
+		proto:  "tcp",
+		dport:  443,
+		target: "DROP",
 	}
-	return errs
-}
-
-func modifyDoHVPNDropRules(ctx context.Context, op, ns string) []error {
-	var errs []error
-	for _, cmd := range []string{"iptables", "ip6tables"} {
-		if err := testexec.CommandContext(ctx, "ip", "netns", "exec", ns, cmd, op, "FORWARD", "-p", "tcp", "--dport", "443", "-j", "DROP", "-w").Run(testexec.DumpLogOnError); err != nil {
-			errs = append(errs, err)
-		}
+	r.ipc.ns = ns
+	for _, v6 := range []bool{false, true} {
+		r.ipc.v6 = v6
+		rules = append(rules, r)
 	}
-	return errs
+	return rules
 }
 
 // NewPlaintextBlock creates a Block that will block any UDP or TCP packets egressing from
-// the namespaces in |nss| or interface in |ifs| on port 53, when provided to a function that accepts it.
+// the namespaces in |nss| or interface in |ifs| on port 53.
 func NewPlaintextBlock(nss, ifs []string) *Block {
 	return &Block{
-		f: func(ctx context.Context, op blockOp) []error {
-			return modifyPlaintextDropRules(ctx, op.String(), nss, ifs)
-		},
+		rules: newPlaintextDropRules(nss, ifs),
 	}
 }
 
 // NewDoHBlock creates a Block that will block any TCP packets egressing from
-// the namespaces in |nss| or interface in |ifs| on port 443, when provided to a function that accepts it.
+// the namespaces in |nss| or interface in |ifs| on port 443.
 func NewDoHBlock(nss, ifs []string) *Block {
 	return &Block{
-		f: func(ctx context.Context, op blockOp) []error {
-			return modifyDoHDropRules(ctx, op.String(), nss, ifs)
-		},
+		rules: newDoHDropRules(nss, ifs),
 	}
 }
 
 // NewVPNBlock creates a Block that will block any UDP and TCP packets egressing from
-// the namespaces |ns| on ports 53 and 443, when provided to a function that accepts it.
+// the namespaces |ns| on ports 53 and 443.
 func NewVPNBlock(ns string) *Block {
 	return &Block{
-		f: func(ctx context.Context, op blockOp) []error {
-			return modifyVPNDropRules(ctx, op.String(), ns)
-		},
+		rules: newVPNDropRules(ns),
 	}
 }
 
 // NewDoHVPNBlock creates a Block that will block any TCP packets egressing from
-// the namespaces |ns| on port 443, when provided to a function that accepts it.
+// the namespaces |ns| on port 443.
 func NewDoHVPNBlock(ns string) *Block {
 	return &Block{
-		f: func(ctx context.Context, op blockOp) []error {
-			return modifyDoHVPNDropRules(ctx, op.String(), ns)
-		},
+		rules: newDoHVPNDropRules(ns),
 	}
-}
-
-// DoWithBlock runs |f| after inserting block |b|. |b| will always be automatically reverted.
-// Any errors returned during blocking are passed to |e| for evaluation.
-func DoWithBlock(ctx context.Context, b *Block, f func(context.Context), e func([]error)) {
-	// Defer deleting the block first to try to cleanup any leftovers in the event insert fails.
-	defer func() {
-		if errs := b.f(ctx, opDelete); len(errs) > 0 {
-			e(errs)
-		}
-	}()
-	// Insert the block
-	if errs := b.f(ctx, opInsert); len(errs) > 0 {
-		e(errs)
-	}
-	f(ctx)
-}
-
-// ProxyTestCase contains test case for DNS proxy tests.
-type ProxyTestCase struct {
-	Client    Client
-	ExpectErr bool
-}
-
-// TestQueryDNSProxy runs a set of test cases for DNS proxy.
-func TestQueryDNSProxy(ctx context.Context, tcs []ProxyTestCase, a *arc.ARC, cont *vm.Container, opts *QueryOptions) []error {
-	var errs []error
-	for _, tc := range tcs {
-		err := QueryDNS(ctx, tc.Client, a, cont, opts)
-		if err != nil && !tc.ExpectErr {
-			errs = append(errs, errors.Wrapf(err, "DNS query failed for %s", GetClientString(tc.Client)))
-		}
-		if err == nil && tc.ExpectErr {
-			errs = append(errs, errors.Errorf("successful DNS query for %s, but expected failure", GetClientString(tc.Client)))
-		}
-	}
-	return errs
 }

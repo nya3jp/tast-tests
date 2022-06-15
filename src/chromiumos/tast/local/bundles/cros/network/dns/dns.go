@@ -250,6 +250,27 @@ func QueryDNS(ctx context.Context, c Client, a *arc.ARC, cont *vm.Container, opt
 	return testexec.CommandContext(ctx, "sudo", append([]string{"-u", u, "dig"}, args...)...).Run()
 }
 
+// ProxyTestCase contains test case for DNS proxy tests.
+type ProxyTestCase struct {
+	Client    Client
+	ExpectErr bool
+}
+
+// TestQueryDNSProxy runs a set of test cases for DNS proxy.
+func TestQueryDNSProxy(ctx context.Context, tcs []ProxyTestCase, a *arc.ARC, cont *vm.Container, opts *QueryOptions) []error {
+	var errs []error
+	for _, tc := range tcs {
+		err := QueryDNS(ctx, tc.Client, a, cont, opts)
+		if err != nil && !tc.ExpectErr {
+			errs = append(errs, errors.Wrapf(err, "DNS query failed for %s", GetClientString(tc.Client)))
+		}
+		if err == nil && tc.ExpectErr {
+			errs = append(errs, errors.Errorf("successful DNS query for %s, but expected failure", GetClientString(tc.Client)))
+		}
+	}
+	return errs
+}
+
 // InstallDigInContainer installs dig in container.
 func InstallDigInContainer(ctx context.Context, cont *vm.Container) error {
 	// Check whether dig is preinstalled or not.

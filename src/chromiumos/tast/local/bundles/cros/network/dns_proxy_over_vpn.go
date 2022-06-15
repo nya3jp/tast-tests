@@ -182,15 +182,13 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 		{Client: dns.Crostini, ExpectErr: true},
 		{Client: dns.ARC}}
 	// Block DNS queries over VPN through iptables.
-	dns.DoWithBlock(ctx, dns.NewVPNBlock(ns), func(ctx context.Context) {
+	if errs := dns.NewVPNBlock(ns).Run(ctx, func(ctx context.Context) {
 		if errs := dns.TestQueryDNSProxy(ctx, vpnBlockedTC, a, cont, &dns.QueryOptions{Domain: domainVPNBlocked}); len(errs) != 0 {
-			for _, err := range errs {
-				s.Error("Failed DNS query check: ", err)
-			}
+			s.Error("Failed DNS query check: ", errs)
 		}
-	}, func(errs []error) {
+	}); len(errs) > 0 {
 		s.Fatal("Failed to block DNS over VPN: ", errs)
-	})
+	}
 
 	if params.mode == dns.DoHOff || params.mode == dns.DoHAutomatic {
 		return
@@ -204,15 +202,13 @@ func DNSProxyOverVPN(ctx context.Context, s *testing.State) {
 		{Client: dns.ARC}}
 	// Block DoH queries over VPN to verify that when a VPN is on, DoH is disabled and DNS will work.
 	// When a VPN is active, the default proxy and ARC proxy will disable secure DNS in order to have consistent behavior on different VPN types.
-	dns.DoWithBlock(ctx, dns.NewDoHVPNBlock(ns), func(ctx context.Context) {
+	if errs := dns.NewDoHVPNBlock(ns).Run(ctx, func(ctx context.Context) {
 		if errs := dns.TestQueryDNSProxy(ctx, secureDNSBlockedTC, a, cont, &dns.QueryOptions{Domain: domainSecureDNSBlocked}); len(errs) != 0 {
-			for _, err := range errs {
-				s.Error("Failed DNS query check: ", err)
-			}
+			s.Error("Failed DNS query check: ", errs)
 		}
-	}, func(errs []error) {
+	}); len(errs) > 0 {
 		s.Fatal("Failed to block secure DNS over VPN: ", errs)
-	})
+	}
 }
 
 // vpnNamespace iterates through available network namespaces and return the namespace with the VPN server.
