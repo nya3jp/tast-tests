@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f6affe3_6cc91c43",
+        "filename": "src/chromiumos/tast/common/android/adb/logcat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-15T16:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a425d953_5b3e0d4c",
+      "revId": "8e712bdf2743ea7372bc844c9fca5fe0fb419b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f04584e_825bc1b4",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eea02a6_6c6b1580",
+        "filename": "src/chromiumos/tast/common/android/adb/logcat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-15T16:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f04584e_825bc1b4",
+      "revId": "8e712bdf2743ea7372bc844c9fca5fe0fb419b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b98c66f_7f8c18c7",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-06-14T16:36:14Z",
       "side": 1,
       "message": "nit: Maybe a better name would be one of: `WaitForLogcatLine`, `WaitForLogcatAndReturnLine`, `WaitAndReadMatchingLine`? Just adding `String` doesn\u0027t help a reader know what the method does differently.",
+      "revId": "8e712bdf2743ea7372bc844c9fca5fe0fb419b25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d23d780_38aa3ac1",
+        "filename": "src/chromiumos/tast/local/arc/logcat.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-15T16:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b98c66f_7f8c18c7",
       "revId": "8e712bdf2743ea7372bc844c9fca5fe0fb419b25",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
