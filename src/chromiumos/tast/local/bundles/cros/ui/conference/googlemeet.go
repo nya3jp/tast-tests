@@ -490,7 +490,7 @@ func (conf *GoogleMeetConference) SetLayoutMin(ctx context.Context) error {
 // getGrids returns the current tiled grids.
 func (conf *GoogleMeetConference) getGrids(ctx context.Context) (grids []uiauto.NodeInfo, err error) {
 	webArea := nodewith.NameContaining("Meet").Role(role.RootWebArea)
-	grid := nodewith.HasClass("xsj2Ff").Role(role.GenericContainer).Ancestor(webArea)
+	grid := nodewith.Role(role.Video).Ancestor(webArea)
 	grids, err = conf.ui.NodesInfo(ctx, grid)
 	if err != nil {
 		return grids, errors.Wrap(err, "failed to find grids")
