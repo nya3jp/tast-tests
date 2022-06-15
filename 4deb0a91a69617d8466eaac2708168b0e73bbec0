@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e97a624_dfd96019",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-06-15T23:07:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "83a48594_71d720ef",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9454628d_5664448a",
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "you can parse the output the same way though, right?",
       "parentUuid": "7c21af3c_2c85c084",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15b7b024_7107fda5",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-06-15T23:07:32Z",
+      "side": 1,
+      "message": "showLink() only parse the output of a single interface, while LinksUp need to parse the output including all interfaces. It is hard to separate interfaces using showLink() code. As we only care about the interface name, we can use regexp to capture the interface name, like in LinkWithPrefix().",
+      "parentUuid": "4f257044_2050638e",
       "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -191,6 +227,24 @@
       "side": 1,
       "message": "Which interface caused the break? I\u0027m thinking it might be better to have a set of interfaces we expect to see for each router variant.\n\nAlso please update the TEST\u003d section with this.",
       "parentUuid": "c94498c8_4fc5678a",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68bb4ec1_3c036c57",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-06-15T23:07:32Z",
+      "side": 1,
+      "message": "On the openwrt router, it is this interface \n```\nbr-lan    Link encap:Ethernet  HWaddr 78:45:58:4D:0D:E4  \ninet addr:100.90.103.3  Bcast:100.90.103.255  Mask:255.255.252.0\n```\nThe configuration of openwrt route is different from legacy ones in terms of interfaces. We only need to clean up the interfaces initialized in the tests.",
+      "parentUuid": "8f52281a_9ca61169",
       "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
