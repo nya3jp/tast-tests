@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b62aeb_77fb98a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-15T21:55:26Z",
+      "side": 1,
+      "message": "LGTM % nits!",
+      "revId": "b6a5592fae4ddc0c98670e7f5413d6c59dc37dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f946b5c0_83059cc3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-15T21:55:26Z",
+      "side": 1,
+      "message": "nit: extra \"the\"",
+      "range": {
+        "startLine": 191,
+        "startChar": 34,
+        "endLine": 191,
+        "endChar": 37
+      },
+      "revId": "b6a5592fae4ddc0c98670e7f5413d6c59dc37dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7848d7_4e45c616",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-15T21:55:26Z",
+      "side": 1,
+      "message": "nit: is the button name \"More Settings\" or \"More settings\"? Let\u0027s either change this or line 194 to match whatever the print settings window says.",
+      "range": {
+        "startLine": 191,
+        "startChar": 44,
+        "endLine": 191,
+        "endChar": 45
+      },
+      "revId": "b6a5592fae4ddc0c98670e7f5413d6c59dc37dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
