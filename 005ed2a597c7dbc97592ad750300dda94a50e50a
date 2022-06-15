@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb902b6d_9afed739",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-15T16:32:53Z",
+      "side": 1,
+      "message": "Looks like the build failure is due to this CL. I will take a look tomorrow.",
+      "revId": "005ed2a597c7dbc97592ad750300dda94a50e50a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
