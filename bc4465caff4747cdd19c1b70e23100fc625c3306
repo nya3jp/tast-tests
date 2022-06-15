@@ -63,6 +63,30 @@
       },
       "revId": "bc4465caff4747cdd19c1b70e23100fc625c3306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2240030_5a09335b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-06-15T10:55:57Z",
+      "side": 1,
+      "message": "I see. So the intent is this struct captures the high-level intent, while detailed behavior is self-documented in verifyNetworkConnectivity(). That sounds good to me.\n\n\u003e verify address\nI was thinking that it might be easier to narrow down the problem on failure case. Or is it easy enough to tell from ping failure message?",
+      "parentUuid": "34328476_01a33137",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 10
+      },
+      "revId": "bc4465caff4747cdd19c1b70e23100fc625c3306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
