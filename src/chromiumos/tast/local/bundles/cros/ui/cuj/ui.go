@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -431,4 +432,22 @@ func ExpandMenu(tconn *chrome.TestConn, button, menu *nodewith.Finder, height in
 			return nil
 		}, &testing.PollOptions{Timeout: time.Minute, Interval: time.Second})
 	}
+}
+
+// MaximizeBrowserWindow maximizes a specific browser window to show all the browser UI elements for precise clicking.
+func MaximizeBrowserWindow(ctx context.Context, tconn *chrome.TestConn, tabletMode bool, title string) error {
+	if !tabletMode {
+		// Find the specific browser window.
+		window, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+			return (w.WindowType == ash.WindowTypeBrowser || w.WindowType == ash.WindowTypeLacros) && strings.Contains(w.Title, title)
+		})
+		if err != nil {
+			return errors.Wrapf(err, "failed to find the %q window", title)
+		}
+		if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateMaximized); err != nil {
+			// Just log the error and try to continue.
+			testing.ContextLogf(ctx, "Try to continue the test even though maximizing the %q window failed: %v", title, err)
+		}
+	}
+	return nil
 }
