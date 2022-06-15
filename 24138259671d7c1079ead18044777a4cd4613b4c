@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2a11642_7364a38e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_tpm_seed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-15T17:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c28fc114_cd280bfa",
+      "revId": "24138259671d7c1079ead18044777a4cd4613b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76efa326_2808023f",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae2bdb0_2427c665",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_tpm_seed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-15T17:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76efa326_2808023f",
+      "revId": "24138259671d7c1079ead18044777a4cd4613b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ceebfafc_567a2127",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-06-15T16:53:25Z",
       "side": 1,
       "message": "nit: Feel free to ignore this one but as a reader, calling this `fs` made it difficult to follow in subsequent lines since `fs` can also be a golang import. How about dutfsClient?",
+      "revId": "24138259671d7c1079ead18044777a4cd4613b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eead7fd_d2d1efa3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_tpm_seed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-15T17:13:31Z",
+      "side": 1,
+      "message": "I think it\u0027s fine. Fixed.",
+      "parentUuid": "ceebfafc_567a2127",
       "revId": "24138259671d7c1079ead18044777a4cd4613b4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
