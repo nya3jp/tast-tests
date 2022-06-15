@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "197f53bd_525c92fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-15T18:58:32Z",
+      "side": 1,
+      "message": "Let\u0027s discuss this after I come back from my vacation. Thanks.",
+      "revId": "4d2ebc2d2ca620507ac83617f9524bca924f86b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e76a6492_2ee9d3d6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-15T18:58:32Z",
+      "side": 1,
+      "message": "You still output an error here. Also, I don\u0027t want it to be generalized in all cases. I only want it walk it with a path with wildcard (*).",
+      "revId": "4d2ebc2d2ca620507ac83617f9524bca924f86b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
