@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83a48594_71d720ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-15T21:58:12Z",
+      "side": 1,
+      "message": "Can you make this clearer in the TEST\u003dsection?",
+      "parentUuid": "66cd2e34_e1764dd0",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9454628d_5664448a",
         "filename": "src/chromiumos/tast/common/network/ip/runner.go",
         "patchSetId": 7
@@ -73,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f257044_2050638e",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-15T21:58:12Z",
+      "side": 1,
+      "message": "you can parse the output the same way though, right?",
+      "parentUuid": "7c21af3c_2c85c084",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eed86775_84682ae4",
         "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
         "patchSetId": 7
@@ -84,6 +120,24 @@
       "writtenOn": "2022-06-15T00:43:16Z",
       "side": 1,
       "message": "I\u0027m assuming this is specific to Gale (legacy) atm.",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df438e68_3e77b04b",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-15T21:58:12Z",
+      "side": 1,
+      "message": "resolving",
+      "parentUuid": "eed86775_84682ae4",
       "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -119,6 +173,24 @@
       "side": 1,
       "message": "I tested on openwrt router, the connection to the router is lost after bringing down all interfaces except eth0 and lo. Instead, now we only clean interfaces in redundantInterfaces.\nAfter this change, it works on both legacy and openwrt routers.",
       "parentUuid": "a6b50b73_aa95fa44",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f52281a_9ca61169",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-15T21:58:12Z",
+      "side": 1,
+      "message": "Which interface caused the break? I\u0027m thinking it might be better to have a set of interfaces we expect to see for each router variant.\n\nAlso please update the TEST\u003d section with this.",
+      "parentUuid": "c94498c8_4fc5678a",
       "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
