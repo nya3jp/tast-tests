@@ -16,6 +16,23 @@
       "message": "Added support of both `-c` and `-F` options. PTAL",
       "revId": "86cab1b5955dcb5921eee8d149788f648dca9688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeb8ed18_01963a3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-06-15T00:46:18Z",
+      "side": 1,
+      "message": "I\u0027m no longer a Tast reviewer, removing myself. Kyle can approve I believe.",
+      "revId": "86cab1b5955dcb5921eee8d149788f648dca9688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
