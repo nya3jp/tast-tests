@@ -1,3 +1,7 @@
+// Copyright 2022 The ChromiumOS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
 package firmware
 
 import (
@@ -28,6 +32,7 @@ func init() {
 		Attr:         []string{},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		Fixture:      fixture.NormalMode,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 	})
 }
 
@@ -46,6 +51,9 @@ func HibernateFunctionality(ctx context.Context, s *testing.State) {
 		Interval: 250 * time.Millisecond,
 	}
 	s.Log("Stopping power supply")
+	if err := h.RequireServo(ctx); err != nil {
+		s.Fatal("Failed to connect to servo: ", err)
+	}
 	if err := h.SetDUTPower(ctx, false); err != nil {
 		s.Fatal("Failed to remove charger: ", err)
 	}
@@ -60,6 +68,9 @@ func HibernateFunctionality(ctx context.Context, s *testing.State) {
 		s.Fatal("Check for charger failed: ", err)
 	}
 	defer func(ctx context.Context) {
+		if err := h.RequireServo(ctx); err != nil {
+			s.Fatal("Failed to connect to servo: ", err)
+		}
 		if err := h.SetDUTPower(ctx, true); err != nil {
 			s.Fatal("Failed to attach charger: ", err)
 		}
