@@ -33,6 +33,24 @@
       "message": "arc.LaunchIntent should not be promoted. It is failing in zork-nextkernel\n\nhttps://tastboard.corp.google.com/test/arc.LaunchIntent\n",
       "revId": "9b14c42b56524cc9e0076d63a4b8c7e846dbf1d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cb956e9_cad54470",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163499
+      },
+      "writtenOn": "2022-06-15T00:36:24Z",
+      "side": 1,
+      "message": "All arc tast tests is failing on zork-kernelnext (for example, https://tastboard.corp.google.com/test/arc.Boot).\nShould we wait for the board gets fixed?",
+      "parentUuid": "bd858ec7_cd035eec",
+      "revId": "9b14c42b56524cc9e0076d63a4b8c7e846dbf1d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
