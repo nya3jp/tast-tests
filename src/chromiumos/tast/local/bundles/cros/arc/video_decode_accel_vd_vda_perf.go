@@ -21,6 +21,7 @@ type videoDecodeAccelVDVDAPerfTestParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VideoDecodeAccelVDVDAPerf,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Measures performance of hardware decode acceleration performance using media::VideoDecoder through the VDA interface, by running the video_decode_accelerator_perf_tests binary (see go/vd-migration)",
 		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
