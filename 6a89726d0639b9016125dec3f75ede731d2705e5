@@ -160,6 +160,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b465ef_de92efaf",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-15T17:10:35Z",
+      "side": 1,
+      "message": "The bug is already opened. I added more TODOs for it.",
+      "parentUuid": "ff0853d9_688db5fe",
+      "revId": "6a89726d0639b9016125dec3f75ede731d2705e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e7c8ef1_bad22c17",
@@ -209,6 +227,24 @@
       "side": 1,
       "message": "Distribution is actually my recommendation. It will help us reduce the risk of misuse.",
       "parentUuid": "f7358387_fcbd0cec",
+      "revId": "6a89726d0639b9016125dec3f75ede731d2705e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df48fb25_b49573dd",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-15T17:10:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "607e0919_6f654ce5",
       "revId": "6a89726d0639b9016125dec3f75ede731d2705e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
