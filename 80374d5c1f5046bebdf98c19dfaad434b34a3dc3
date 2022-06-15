@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "533ab333_d440da10",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/invalid_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-15T19:32:47Z",
+      "side": 1,
+      "message": "Add firmware_usb also.",
+      "range": {
+        "startLine": 30,
+        "startChar": 44,
+        "endLine": 30,
+        "endChar": 61
+      },
+      "revId": "80374d5c1f5046bebdf98c19dfaad434b34a3dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1922c763_57959462",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/invalid_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-15T19:32:47Z",
+      "side": 1,
+      "message": "This is the 4th time this code has been added, maybe we should add these 2 var checks into h.SetupUSBKey().",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 4
+      },
+      "revId": "80374d5c1f5046bebdf98c19dfaad434b34a3dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "374ffd59_7c152c17",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/invalid_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-15T19:32:47Z",
+      "side": 1,
+      "message": "This is not necessary, ImageUSBKeyDev switches it to host automatically.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "80374d5c1f5046bebdf98c19dfaad434b34a3dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02aa3fbd_0799ea0a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/invalid_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-15T19:32:47Z",
+      "side": 1,
+      "message": "Use ImageUSBKeyDev instead, as the device might change every time the usbkey is switched.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 0
+      },
+      "revId": "80374d5c1f5046bebdf98c19dfaad434b34a3dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a36c61_3a40f5b3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/invalid_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-15T19:32:47Z",
+      "side": 1,
+      "message": "fixture.NormalMode already checks these 2 things",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 2
+      },
+      "revId": "80374d5c1f5046bebdf98c19dfaad434b34a3dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d19d24b_2730a5bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/invalid_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-15T19:32:47Z",
+      "side": 1,
+      "message": "This only works for servo 4.x, so you have to check if the servo has this control first. Also, you should add a comment that you are adding this to force the data role to DFP.\n\nAlso, it really shouldn\u0027t be necessary.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 64
+      },
+      "revId": "80374d5c1f5046bebdf98c19dfaad434b34a3dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80f8e6d7_55fcf8f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/invalid_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-15T19:32:47Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this fail? Does this test actually work?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "80374d5c1f5046bebdf98c19dfaad434b34a3dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b46dae6d_53fa5dbb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/invalid_usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-15T19:32:47Z",
+      "side": 1,
+      "message": "Seems like you could use the defer call above.  Put it in an anonymous func and call it here, then the defer call will be done at this point.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 0
+      },
+      "revId": "80374d5c1f5046bebdf98c19dfaad434b34a3dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
