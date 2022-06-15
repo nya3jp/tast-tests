@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fd2aec0_e910d77c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-15T22:48:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ce3e92_41905522",
+      "revId": "4abec75ce5083e758bcd2ecab1f6d04c9a3c1e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c56625c_cabefb3c",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-15T21:46:36Z",
       "side": 1,
       "message": "nit: Docs say it \"should be in lower_snake_case style\".\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/main/docs/writing_tests.md#parameterized-tests",
+      "range": {
+        "startLine": 42,
+        "startChar": 10,
+        "endLine": 42,
+        "endChar": 24
+      },
+      "revId": "4abec75ce5083e758bcd2ecab1f6d04c9a3c1e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b83623c_f73fe405",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/check_key_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-15T22:48:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c56625c_cabefb3c",
       "range": {
         "startLine": 42,
         "startChar": 10,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3816b77f_dcc225ca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/check_key_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-15T22:48:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64f2447a_d529837f",
+      "revId": "4abec75ce5083e758bcd2ecab1f6d04c9a3c1e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e9191c2_6621c1ff",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-06-15T21:46:36Z",
       "side": 1,
       "message": "nit: Log |err|.\n\nDitto below.",
+      "revId": "4abec75ce5083e758bcd2ecab1f6d04c9a3c1e04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb1a985_a1587f0e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/check_key_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-15T22:48:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e9191c2_6621c1ff",
       "revId": "4abec75ce5083e758bcd2ecab1f6d04c9a3c1e04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
