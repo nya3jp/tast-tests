@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f03257_4a123173",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_update_id.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-15T19:53:36Z",
+      "side": 1,
+      "message": "err will always be nil here",
+      "range": {
+        "startLine": 71,
+        "startChar": 91,
+        "endLine": 71,
+        "endChar": 94
+      },
+      "revId": "5342bfde3cb6a2aa0a4104317e2692c79f961a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
