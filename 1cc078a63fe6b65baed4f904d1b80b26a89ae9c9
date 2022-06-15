@@ -16,6 +16,80 @@
       "message": "Hi,\n\nPlease take a look at this patch.\n\nThanks,\nYuta",
       "revId": "1cc078a63fe6b65baed4f904d1b80b26a89ae9c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c797214_5a85742b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-06-15T04:55:30Z",
+      "side": 1,
+      "message": "`",
+      "revId": "1cc078a63fe6b65baed4f904d1b80b26a89ae9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b31402_48a0958b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-06-15T04:55:30Z",
+      "side": 1,
+      "message": "Looks like this needs a rebase on top of your previous CL.",
+      "revId": "1cc078a63fe6b65baed4f904d1b80b26a89ae9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b6a59b4_49af3010",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-06-15T04:55:30Z",
+      "side": 1,
+      "message": "This must match the value used in the other function, how about having a named constant for that?",
+      "range": {
+        "startLine": 90,
+        "startChar": 50,
+        "endLine": 90,
+        "endChar": 64
+      },
+      "revId": "1cc078a63fe6b65baed4f904d1b80b26a89ae9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034f8a7a_53951292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-06-15T04:55:30Z",
+      "side": 1,
+      "message": "All the outer function does is call the inner function, I think you can remove the outer.\n\nCould you also format this to be easier to read? E.g. fewer line breaks.",
+      "revId": "1cc078a63fe6b65baed4f904d1b80b26a89ae9c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
