@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12007c09_2ebf4cc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/canvas.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-15T12:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "378ed0b1_e1154edb",
+      "revId": "2edf9c65c8be3764ec03691ac5a2c69c2e5f0d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20141434_ad2071db",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-31T08:06:20Z",
       "side": 1,
       "message": "Optional: You can just move the \u003cscript\u003e tag to the end of \u003cbody\u003e, then you don\u0027t need to wait for the load event.",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "2edf9c65c8be3764ec03691ac5a2c69c2e5f0d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6909affb_3162536b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/canvas.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-15T12:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20141434_ad2071db",
       "range": {
         "startLine": 7,
         "startChar": 8,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "292ca6c4_d423ba82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/canvas.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-15T12:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67164e1a_d65f1547",
+      "range": {
+        "startLine": 8,
+        "startChar": 12,
+        "endLine": 8,
+        "endChar": 15
+      },
+      "revId": "2edf9c65c8be3764ec03691ac5a2c69c2e5f0d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1be7ab5d_34b4692a",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f0a72f_ec90eed8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/data/canvas.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-15T12:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1be7ab5d_34b4692a",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "2edf9c65c8be3764ec03691ac5a2c69c2e5f0d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3bd5b59_42a1f23c",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-05-31T08:06:20Z",
       "side": 1,
       "message": "cmd needs to be Wait\u0027ed to release resources associated to the child process when it\u0027s done.\nhttps://pkg.go.dev/os/exec#Cmd.Wait",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 4
+      },
+      "revId": "2edf9c65c8be3764ec03691ac5a2c69c2e5f0d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "099e362f_d3171439",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-15T12:01:46Z",
+      "side": 1,
+      "message": "We cannot call Wait() inside this function as we are using the scanner object to monitor the touch inputs.",
+      "parentUuid": "e3bd5b59_42a1f23c",
       "range": {
         "startLine": 193,
         "startChar": 1,
