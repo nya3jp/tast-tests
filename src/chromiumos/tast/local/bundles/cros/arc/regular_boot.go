@@ -33,7 +33,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Timeout:      15 * time.Minute,
+		Timeout:      25 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val:               []string{},
@@ -61,7 +61,7 @@ func RegularBoot(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to do initial optin: ", err)
 	}
 
-	const iterationCount = 7
+	const iterationCount = 5
 	perfValues := perf.NewValues()
 	for i := 0; i < iterationCount; i++ {
 		appLaunchDuration, appShownDuration, enabledScreenDuration, err := performArcRegularBoot(ctx, s.OutDir(), creds, s.Param().([]string))
