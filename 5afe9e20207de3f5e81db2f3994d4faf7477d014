@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edb51a22_01dd1e13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-15T22:02:46Z",
+      "side": 1,
+      "message": "Sorry I am not fully understanding.\n\nSo for example, lets say there are 2 usb ports in typec connector: usb2-port0 and usb3-port0. In the first iteration, if usb2-port0 is a valid symlink to a usb port and has a symlink back to typec conn, `checkUsbPortDir` would return nil and `foundUsbPortDir` would set true. In the second iteration, if `usb3-port0` is not a valid symlink to a usb port, I think `checkUsbPortDir` would return an error and the whole function `checkTypecPortDir` would return an error regardless of `foundUsbPortDir` value.\n\nSo, `foundUsbPortDir` would only be used for checking that there is at least one usb port linked to a typec conn.\n\nWould there be something I am missing? Sorry but can you clarify one more time?",
+      "parentUuid": "ac65e946_aec27952",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "5afe9e20207de3f5e81db2f3994d4faf7477d014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dca495d4_fff887e7",
