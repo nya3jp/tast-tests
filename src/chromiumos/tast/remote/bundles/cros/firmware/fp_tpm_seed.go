@@ -6,13 +6,11 @@ package firmware
 
 import (
 	"context"
-	"regexp"
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
 	"chromiumos/tast/remote/firmware/fingerprint/rpcdut"
-	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -92,13 +90,16 @@ func FpTpmSeed(ctx context.Context, s *testing.State) {
 		s.Errorf("File with TPM seed (%q) exists", fingerprintTPMSeedFile)
 	}
 
-	out, err := fingerprint.EctoolCommand(ctx, d.DUT(), "fpencstatus").Output(ssh.DumpLogOnError)
+	// Check if FPMCU was initialized with TPM seed.
+	testing.ContextLog(ctx, "Validating that FPMCU was initialized with TPM seed")
+	e, err := fingerprint.GetEncryptionStatus(ctx, d.DUT())
 	if err != nil {
 		s.Fatal("Failed to get encryption status: ", err)
 	}
-
-	re := regexp.MustCompile("FPMCU encryption status: 0x[a-f0-9]{7}1(.+)FPTPM_seed_set")
-	if !re.MatchString(string(out)) {
-		s.Errorf("FPTPM seed is not set; output %q doesn't match regex %q", string(out), re)
+	testing.ContextLogf(ctx, "FPMCU encryption engine status: %#08x", e.Current)
+	if e.TPMSeedSet() {
+		testing.ContextLog(ctx, "TPM seed is set")
+	} else {
+		s.Error("TPM seed is not set")
 	}
 }
