@@ -87,6 +87,30 @@
       },
       "revId": "bc4465caff4747cdd19c1b70e23100fc625c3306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a92e377b_08cdb714",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-15T11:02:14Z",
+      "side": 1,
+      "message": "\u003e I was thinking that it might be easier to narrow down the problem on failure case. Or is it easy enough to tell from ping failure message?\n\nIf you mean the test failures, we can use the DumpNetworkInfo() function here [1] when a failure happens, which will include a lot of info for debugging (currently `ip addr` is not there though...)\n\nI plan to have a separate patch for that.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/dumputil/dumputil.go;l\u003d1",
+      "parentUuid": "d2240030_5a09335b",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 10
+      },
+      "revId": "bc4465caff4747cdd19c1b70e23100fc625c3306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
