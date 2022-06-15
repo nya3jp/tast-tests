@@ -39,6 +39,30 @@
       },
       "revId": "bc4465caff4747cdd19c1b70e23100fc625c3306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34328476_01a33137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-15T10:45:11Z",
+      "side": 1,
+      "message": "Thanks for the suggestion!\n\nI would like to keep it simple -- these different fields in this struct just describe different properties (orthogonal currently, but it\u0027s hard to keep this property in the future) of a network, e.g., \"has IPv4\" just means that there is IPv4 configuration on this network (configured either automatically or manually). The routing semantic is only meaningful only when we combine all the properties.\n\nAs a result, the following two processes can be separated:\n- In each test, we just need to map the current state of a network to this struct, and do not really care about the routing semantics behind this struct;\n- In verifyNetworkConnectivity(), we just need to map this struct to the routing semantics, but do not care about how the state represented by this struct was constructed.\n\nIf we document the routing semantics here, it will become very complicated later once we have more properties in the future. Instead, I think it\u0027s better to document it inside verifyNetworkConnectivity() (if the code itself is not clear enough), it will be clearer and easier to maintain.\n\nWDYT?\n\n\n--------\n\n\u003e Has an IPv4 address (not verified)\nDo you think we need to verify this (there is an IPv4/6 addr on the interface)? I suppose it can be verified indirectly by pinging the gateway?",
+      "parentUuid": "4a099d7d_248b0a02",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 10
+      },
+      "revId": "bc4465caff4747cdd19c1b70e23100fc625c3306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
