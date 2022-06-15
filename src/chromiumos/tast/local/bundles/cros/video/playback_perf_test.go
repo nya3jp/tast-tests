@@ -125,11 +125,6 @@ func genPlaybackParam(codec, file string, resolution, fps int, dec, nameSuffix, 
 		deps = append(deps, extendDeps...)
 	}
 
-	var attr []string
-	// Run nightly for av1 playback perf tests for consistency.
-	if codec != "av1" && resolution < 1080 {
-		attr = []string{"group:graphics", "graphics_video", "graphics_nightly"}
-	}
 	return playbackParamData{
 		Name:         testName,
 		File:         file,
@@ -137,7 +132,6 @@ func genPlaybackParam(codec, file string, resolution, fps int, dec, nameSuffix, 
 		BrowserType:  brwType,
 		SoftwareDeps: deps,
 		Data:         []string{file},
-		Attr:         attr,
 		Fixture:      fixture,
 	}
 }
@@ -145,15 +139,15 @@ func genPlaybackParam(codec, file string, resolution, fps int, dec, nameSuffix, 
 func TestPlaybackPerfParams(t *testing.T) {
 	var params []playbackParamData
 
-	codecs := []string{"h264", "vp8", "vp9", "hevc"}
+	codecs := []string{"h264", "vp8", "vp9", "av1", "hevc"}
 	for _, codec := range codecs {
-		for _, resolution := range []int{144, 240, 360, 480, 720, 1080, 2160} {
+		for _, resolution := range []int{720, 1080, 2160} {
 			fpss := []int{30}
 			if resolution >= 1080 {
 				fpss = append(fpss, 60)
 			}
 			decs := []string{"hw"}
-			if codec != "hevc" && resolution >= 480 {
+			if codec != "hevc" {
 				decs = append(decs, "sw")
 			}
 			for _, fps := range fpss {
@@ -162,21 +156,6 @@ func TestPlaybackPerfParams(t *testing.T) {
 						genPlaybackParam(codec, genPlaybackPerfDataPath(codec, resolution, fps),
 							resolution, fps, dec, "", "", []string{}))
 				}
-			}
-		}
-	}
-	// AV1
-	for _, resolution := range []int{480, 720, 1080, 2160} {
-		codec := "av1"
-		fpss := []int{30}
-		if resolution >= 720 {
-			fpss = append(fpss, 60)
-		}
-		for _, fps := range fpss {
-			for _, dec := range []string{"hw", "sw"} {
-				params = append(params,
-					genPlaybackParam(codec, genPlaybackPerfDataPath(codec, resolution, fps),
-						resolution, fps, dec, "", "", []string{}))
 			}
 		}
 	}
@@ -235,12 +214,9 @@ func TestPlaybackPerfParams(t *testing.T) {
 				[]string{"lacros"}))
 	}
 	// libgav1
-	for _, resolution := range []int{480, 720, 1080} {
+	for _, resolution := range []int{720, 1080} {
 		codec := "av1"
-		fpss := []int{30}
-		if resolution >= 720 {
-			fpss = append(fpss, 60)
-		}
+		fpss := []int{30, 60}
 		for _, fps := range fpss {
 			dec := "sw_gav1"
 			params = append(params,
