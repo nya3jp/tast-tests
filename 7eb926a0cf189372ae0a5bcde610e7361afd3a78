@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34c5f92f_7eb5f43c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-15T22:05:25Z",
+      "side": 1,
+      "message": "Do we want to export this function? If we want users to use the helper methods defined after this then maybe this shouldn\u0027t be exported.",
+      "range": {
+        "startLine": 207,
+        "startChar": 5,
+        "endLine": 207,
+        "endChar": 16
+      },
+      "revId": "7eb926a0cf189372ae0a5bcde610e7361afd3a78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ca9d7bb_a81421f4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-15T22:05:25Z",
+      "side": 1,
+      "message": "What about changing this to `fmt.Sprintf(\"find and click dropdown (%s)\", name)`? That would give us more information if this were to fail. Similarly, we could add `value` to the uiauto.Combine statement on line 220.\n\nAlternatively, you could combine both of these uiauto.Combine blocks into one and just do it all with one combination like `fmt.Sprintf(\"Select %s from dropdown %s\", value, name)`. That would cut down on some lines of code.",
+      "range": {
+        "startLine": 212,
+        "startChar": 26,
+        "endLine": 212,
+        "endChar": 51
+      },
+      "revId": "7eb926a0cf189372ae0a5bcde610e7361afd3a78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
