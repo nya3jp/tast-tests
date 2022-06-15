@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79919742_bfe680b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-15T21:42:44Z",
+      "side": 1,
+      "message": "Changed from a sleep to a poll. Thanks for that suggestion as that was something I was unfamiliar with.\n\n| What is the exact failure message / failure code ?\nIt was failing with an exit status code 7 (Failed to connect to host or proxy). My assumption is still that this was a race condition.",
+      "parentUuid": "098186aa_116735a5",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a96b524b_3a2974fa",
@@ -160,6 +184,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f1ad8dc_1055f0c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-15T21:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9edc8c9d_a9985a4b",
+      "range": {
+        "startLine": 72,
+        "startChar": 13,
+        "endLine": 72,
+        "endChar": 128
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04517db7_f42b045d",
@@ -209,6 +257,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35cce377_048aebb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-15T21:42:44Z",
+      "side": 1,
+      "message": "The most recent patch did not touch this, but it is in the works in the background.",
+      "parentUuid": "4844be7d_6b8d2dae",
+      "range": {
+        "startLine": 21,
+        "startChar": 30,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d31182a_8de19d1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
         "patchSetId": 3
@@ -220,6 +292,30 @@
       "writtenOn": "2022-06-05T16:22:21Z",
       "side": 1,
       "message": "Need to be updated ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 50
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25806518_f7dd0011",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-15T21:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d31182a_8de19d1c",
       "range": {
         "startLine": 34,
         "startChar": 0,
@@ -267,6 +363,30 @@
       "side": 1,
       "message": "Thank you for pointing this out. Originally, I used this to show that the http package was up and running in the netns. Once I set up the http package to be listening to the veth interface, I can remove this line.",
       "parentUuid": "3dc6c827_85a0e032",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 75
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "317a7b56_a33f5716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-15T21:42:44Z",
+      "side": 1,
+      "message": "I wanted to add here that I intend to remove this on final submission, just wanted it here so the curl works for test. I will remove both this and the curl before final submission. I will leave this as unresolved until done so as a reminder.",
+      "parentUuid": "8191a030_d04acb91",
       "range": {
         "startLine": 55,
         "startChar": 1,
@@ -338,6 +458,30 @@
       "side": 1,
       "message": "Thank you Jie, that appears to be exactly what I am looking for. I can look at implementing that next here.",
       "parentUuid": "64cf2891_5fa0bc45",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 91,
+        "endChar": 41
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41b0852a_8238c683",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-15T21:42:44Z",
+      "side": 1,
+      "message": "Hugo, the patch I sent up forces an address to an ip through dns when it tries to hit the gstatic site. I know you mentioned here that it should listen directly on veth interface. Is that more in line with the behavior of a real captive portal? If so, do you have recommendations on what we could do instead.",
+      "parentUuid": "60750405_bf43f462",
       "range": {
         "startLine": 91,
         "startChar": 32,
