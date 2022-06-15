@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73b734fc_3d176e6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-15T03:04:01Z",
+      "side": 1,
+      "message": "|Timeout| in VerifyOptions can be zero when verifyNetworkConnectivity() is called (when we don\u0027t expect any routing changes on DUT, note that |timeout|\u003e0 is always correct in those cases, but |timeout|\u003d0 is much stricter). I think it\u0027s easier to do the `timeout\u003d\u003d0` check here than do that before every call to ExpectPingSuccess() to decide which function should be used.",
+      "parentUuid": "e646d7d6_c06f2334",
+      "range": {
+        "startLine": 196,
+        "startChar": 36,
+        "endLine": 197,
+        "endChar": 10
+      },
+      "revId": "468d390e57f3804a4898e3543ac10bc87d840f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5b8e475_bbf5ddfb",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
         "patchSetId": 14
@@ -54,6 +78,24 @@
       "writtenOn": "2022-06-14T20:49:01Z",
       "side": 1,
       "message": "why not just call `ExpectPingSuccess` directly here?",
+      "revId": "468d390e57f3804a4898e3543ac10bc87d840f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a9eb60_abb5c0bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-15T03:04:01Z",
+      "side": 1,
+      "message": "Done. They should be the same. Thanks for catching this!",
+      "parentUuid": "a5b8e475_bbf5ddfb",
       "revId": "468d390e57f3804a4898e3543ac10bc87d840f2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +113,30 @@
       "writtenOn": "2022-06-14T20:49:01Z",
       "side": 1,
       "message": "nit: network environment?",
+      "range": {
+        "startLine": 44,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 35
+      },
+      "revId": "468d390e57f3804a4898e3543ac10bc87d840f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a41e6cae_74e05630",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_high_priority.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-15T03:04:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0cfbe88_1ce2554a",
       "range": {
         "startLine": 44,
         "startChar": 28,
