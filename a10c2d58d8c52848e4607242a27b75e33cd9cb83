@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4a4f534_112f4013",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-15T03:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d1a0a6c_5eaa335e",
+      "range": {
+        "startLine": 58,
+        "startChar": 24,
+        "endLine": 58,
+        "endChar": 48
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50a6058c_047eda6d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-11T02:40:58Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 95,
+        "startChar": 24,
+        "endLine": 95,
+        "endChar": 30
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d01e2417_d4fbd475",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-15T03:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50a6058c_047eda6d",
       "range": {
         "startLine": 95,
         "startChar": 24,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "232711d2_d968eb35",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-15T03:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bfb6355_4f25dec7",
+      "range": {
+        "startLine": 107,
+        "startChar": 24,
+        "endLine": 107,
+        "endChar": 30
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ada8db51_b45569ef",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-11T03:40:01Z",
       "side": 1,
       "message": "can we return -1 or something?",
+      "range": {
+        "startLine": 116,
+        "startChar": 9,
+        "endLine": 116,
+        "endChar": 10
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1422f8a_6ee330f8",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-15T03:57:23Z",
+      "side": 1,
+      "message": "I changed it to -1.",
+      "parentUuid": "ada8db51_b45569ef",
       "range": {
         "startLine": 116,
         "startChar": 9,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffeb5d63_7cc2afd3",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-15T03:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6d8bde9_64badf1f",
+      "range": {
+        "startLine": 120,
+        "startChar": 30,
+        "endLine": 120,
+        "endChar": 37
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30b57443_49046d21",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-06-11T02:40:58Z",
       "side": 1,
       "message": "`Get` should not be used a method prefix in Go. see http://go/go-style/decisions#getters",
+      "range": {
+        "startLine": 142,
+        "startChar": 17,
+        "endLine": 142,
+        "endChar": 31
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea45100d_02bb20b2",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-15T03:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30b57443_49046d21",
       "range": {
         "startLine": 142,
         "startChar": 17,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bc281dc_1253aa93",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-15T03:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc044182_92f96b1c",
+      "range": {
+        "startLine": 152,
+        "startChar": 17,
+        "endLine": 152,
+        "endChar": 29
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02531058_1c01c411",
@@ -179,6 +347,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcff2fe5_a719936e",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-15T03:57:23Z",
+      "side": 1,
+      "message": "That make sense, I removed this function and the polling below in `WaitForConnected()`",
+      "parentUuid": "02531058_1c01c411",
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40c6447c_d4f9b84a",
@@ -192,6 +378,30 @@
       "writtenOn": "2022-06-11T06:41:05Z",
       "side": 1,
       "message": "why not return err when err!\u003dnil ? If isAssociated returned error then what is the point of checking isAssoc? And, return nil here.",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 12
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4134a320_205e5782",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-15T03:57:23Z",
+      "side": 1,
+      "message": "That make sense, I chenged the code to fail if err !\u003d nil and return nil here.",
+      "parentUuid": "40c6447c_d4f9b84a",
       "range": {
         "startLine": 261,
         "startChar": 2,
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b55f3b08_e7798a5e",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-15T03:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bea2c04_3efc63e0",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 2
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e695ba2c_706e35dc",
@@ -238,6 +472,30 @@
       "writtenOn": "2022-06-11T06:41:05Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 271,
+        "startChar": 49,
+        "endLine": 271,
+        "endChar": 58
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f53ec8_f455872d",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-15T03:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e695ba2c_706e35dc",
       "range": {
         "startLine": 271,
         "startChar": 49,
@@ -271,6 +529,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd7c05da_bb24ffd9",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-15T03:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cda77062_4715ddb4",
+      "range": {
+        "startLine": 276,
+        "startChar": 2,
+        "endLine": 276,
+        "endChar": 12
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d9ca254_9d831957",
@@ -284,6 +566,30 @@
       "writtenOn": "2022-06-11T02:40:58Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 12
+      },
+      "revId": "a10c2d58d8c52848e4607242a27b75e33cd9cb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55a680e1_40333c69",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-15T03:57:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d9ca254_9d831957",
       "range": {
         "startLine": 266,
         "startChar": 0,
