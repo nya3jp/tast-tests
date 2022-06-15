@@ -46,6 +46,30 @@
       },
       "revId": "d9a148b2b1214d6d007166aed8e156184974c667",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b412afc_4a1fdd62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-06-15T11:51:33Z",
+      "side": 1,
+      "message": "I remember the expected behavior (of primary:physical secondary:physical case) is that system traffic should be allowed to fall through but user traffic not?",
+      "parentUuid": "971a447a_e0db229f",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 51
+      },
+      "revId": "d9a148b2b1214d6d007166aed8e156184974c667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
