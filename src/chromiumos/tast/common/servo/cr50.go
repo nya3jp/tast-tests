@@ -6,8 +6,12 @@ package servo
 
 import (
 	"context"
+	"strconv"
+	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // These are the Cr50 Servo controls which can be get/set with a string value.
@@ -29,6 +33,15 @@ const (
 	Open   string = "open"
 	Lock   string = "lock"
 	Unlock string = "unlock"
+)
+
+// TestlabState contains possible ccd testlab states.
+type TestlabState string
+
+// Possible testlab states.
+const (
+	Enable  TestlabState = "on"
+	Disable TestlabState = "off"
 )
 
 // RunCR50Command runs the given command on the Cr50 on the device.
@@ -67,4 +80,77 @@ func (s *Servo) CheckGSCBootMode(ctx context.Context, expectedMode string) error
 		return errors.Wrapf(err, "incorrect boot mode, got %q want %q", output[0][1], expectedMode)
 	}
 	return nil
+}
+
+// SetTestlab will perform the required power button presses to disable or enable CCD testlab mode.
+func (s *Servo) SetTestlab(ctx context.Context, option TestlabState, ccdLevel string, hasMicroOrC2D2 bool) error {
+	// CCD needs to be open and a servo-micro available in order to set up testlab.
+	if ccdLevel != Open || !hasMicroOrC2D2 {
+		return errors.Errorf("testlab can not be modified, got openCCD: %s hasMicroOrC2D2: %v", ccdLevel, hasMicroOrC2D2)
+	}
+
+	testing.ContextLogf(ctx, "Setting testlab to %q", option)
+	err := s.RunCR50Command(ctx, "ccd testlab "+string(option))
+	if err != nil {
+		return errors.Wrapf(err, "failed setting testlab to %q", option)
+	}
+
+	// Waiting 1 second before starting the power pressing sequence.
+	if err := testing.Sleep(ctx, 1*time.Second); err != nil {
+		return errors.Wrap(err, "failed to wait 1 second before the power pressing sequence")
+	}
+
+	// Press the power button for up to 20 seconds, and space a 1 second
+	// interval between these presses. The Cr50 console doesn't care about
+	// extra presses in between. As long as all the required presses are hit,
+	// testlab state would change.
+	testing.ContextLog(ctx, "Starting power button presses")
+	ppTimeout := 20 * time.Second
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		testlab, err := s.GetString(ctx, CR50Testlab)
+		if err != nil {
+			return errors.Wrap(err, "failed to get cr50_testlab")
+		}
+		if testlab == string(option) {
+			return nil
+		}
+
+		if err := s.KeypressWithDuration(ctx, PowerKey, DurPress); err != nil {
+			return errors.Wrap(err, "failed to press power button")
+		}
+		return errors.Errorf("testlab has not been set to %q", option)
+	}, &testing.PollOptions{Timeout: ppTimeout, Interval: 1 * time.Second}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+/*
+GetCCDCapability will return the current state of a specific CCD capability.
+Possible states are:
+	0 = Default
+	1 = Always
+	2 = UnlessLocked
+	3 = IfOpened
+*/
+func (s *Servo) GetCCDCapability(ctx context.Context, capability string) (int, error) {
+	re := `(` + capability + `)\s*(\w|\W)\s*\d`
+	var out [][]string
+	var err error
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		out, err = s.RunCR50CommandGetOutput(ctx, "ccd", []string{re})
+		if err != nil {
+			return errors.Wrap(err, "failed to get capability state")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 1 * time.Second}); err != nil {
+		return 0, err
+	}
+	splitout := strings.Split(out[0][0], " ")
+	state, err := strconv.Atoi(splitout[len(splitout)-1])
+	if err != nil {
+		return 0, errors.Wrapf(err, "unable to tell %s state", capability)
+	}
+	return state, nil
 }
