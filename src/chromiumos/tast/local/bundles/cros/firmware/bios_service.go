@@ -37,13 +37,16 @@ var programmerEnumToProgrammer = map[pb.Programmer]bios.FlashromProgrammer{
 
 // sectionEnumToSection maps the enum from FWBackUpSection to a bios ImageSection.
 var sectionEnumToSection = map[pb.ImageSection]bios.ImageSection{
-	pb.ImageSection_BOOTSTUBImageSection: bios.BOOTSTUBImageSection,
-	pb.ImageSection_COREBOOTImageSection: bios.COREBOOTImageSection,
-	pb.ImageSection_GBBImageSection:      bios.GBBImageSection,
-	pb.ImageSection_ECRWImageSection:     bios.ECRWImageSection,
-	pb.ImageSection_ECRWBImageSection:    bios.ECRWBImageSection,
-	pb.ImageSection_EmptyImageSection:    bios.EmptyImageSection,
-	pb.ImageSection_APROImageSection:     bios.APROImageSection,
+	pb.ImageSection_BOOTSTUBImageSection:         bios.BOOTSTUBImageSection,
+	pb.ImageSection_COREBOOTImageSection:         bios.COREBOOTImageSection,
+	pb.ImageSection_GBBImageSection:              bios.GBBImageSection,
+	pb.ImageSection_ECRWImageSection:             bios.ECRWImageSection,
+	pb.ImageSection_ECRWBImageSection:            bios.ECRWBImageSection,
+	pb.ImageSection_EmptyImageSection:            bios.EmptyImageSection,
+	pb.ImageSection_APROImageSection:             bios.APROImageSection,
+	pb.ImageSection_RECOVERYMRCCACHEImageSection: bios.RECOVERYMRCCACHEImageSection,
+	pb.ImageSection_ROVPDImageSection:            bios.ROVPDImageSection,
+	pb.ImageSection_RWVPDImageSection:            bios.RWVPDImageSection,
 }
 
 // updateModeEnumtoMode maps the enum from FirmwareUpdateModeRequest to a bios FirmwareUpdateMode.
