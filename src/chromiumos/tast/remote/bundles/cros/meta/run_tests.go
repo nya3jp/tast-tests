@@ -57,10 +57,10 @@ func init() {
 					{Name: "meta.RemotePass"},
 				},
 				wantFiles: map[string]string{
-					"tests/meta.LocalFail/faillog/ps.txt":  exists,
-					"tests/meta.LocalPass/faillog/ps.txt":  notExists,
-					"tests/meta.RemoteFail/faillog/ps.txt": exists,
-					"tests/meta.RemotePass/faillog/ps.txt": notExists,
+					"tests/meta.LocalFail/faillog/ps.txt":    exists,
+					"tests/meta.LocalPass/faillog/ps.txt":    notExists,
+					"tests/meta.RemoteFail/faillog/*/ps.txt": exists,
+					"tests/meta.RemotePass/faillog/*/ps.txt": notExists,
 				},
 			},
 			ExtraAttr: []string{"group:mainline", "informational"},
@@ -157,7 +157,7 @@ func RunTests(ctx context.Context, s *testing.State) {
 	// These filenames and corresponding contents are hardcoded in the tests.
 	for p, v := range param.wantFiles {
 		p = filepath.Join(resultsDir, p)
-		b, err := ioutil.ReadFile(p)
+		b, err := readFileWithWildcard(p)
 		if v == notExists {
 			if err == nil {
 				s.Errorf("Output file %v exists unexpectedly", p)
@@ -177,4 +177,18 @@ func RunTests(ctx context.Context, s *testing.State) {
 			s.Errorf("Output file %v contains %q instead of %q", p, string(b), v)
 		}
 	}
+}
+
+func readFileWithWildcard(p string) ([]byte, error) {
+	matches, err := filepath.Glob(p)
+	if err != nil {
+		return nil, err
+	}
+	// Return nil and error of not found if no matched file exist.
+	if len(matches) <= 0 {
+		return nil, os.ErrNotExist
+	}
+
+	// Return the file byte of the first existing file found.
+	return ioutil.ReadFile(matches[0])
 }
