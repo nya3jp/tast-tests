@@ -4,19 +4,19 @@
 
 const videoClass = 'videoTile';
 
-function setGridSize(dimension) {
-  if (dimension <= 0) return;
+function setGridSize(width, height) {
+  if (width <= 0 || height <= 0) return;
 
-  // Find the |container| and make it a |dimension| x |dimension| grid; repeat()
-  // allows for automatically ordering sub-grids into |dimension| columns, see
+  // Find the |container| and make it a |width| x |height| grid; repeat()
+  // allows for automatically ordering sub-grids into |width| columns, see
   // https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
   const container = document.getElementById('container');
   container.style.display = 'grid';
-  container.style.gridTemplateColumns = 'repeat(' + dimension + ', 1fr)';
+  container.style.gridTemplateColumns = 'repeat(' + width + ', 1fr)';
 
-  // Adjust until we get |dimension| x |dimension| videos.
+  // Adjust until we get |width| x |height| videos.
   const numVideos = document.getElementsByClassName(videoClass).length;
-  const numExtraVideosInGrid = dimension * dimension - numVideos;
+  const numExtraVideosInGrid = width * height - numVideos;
   if (numExtraVideosInGrid > 0) {
     for (let i = 0; i < numExtraVideosInGrid; i++) {
       const video = document.createElement('video');
