@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/servo"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
@@ -28,6 +29,7 @@ func init() {
 		Fixture:      fixture.DevModeGBB,
 		SoftwareDeps: []string{"crossystem"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
+		Timeout:      20 * time.Minute,
 	})
 }
 
@@ -78,12 +80,17 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read initial crossystem values: ", err)
 	}
 	originalCrossystemMap := createCsMap(csOriginal)
-	defer func() {
+
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 2*time.Minute)
+	defer cancel()
+
+	defer func(ctx context.Context) {
 		s.Log("Restoring crossystem values to the original settings")
 		if err := setTargetCsVals(ctx, s, h, originalCrossystemMap); err != nil {
 			s.Fatal("Failed to restore crossystem values to the original settings: ", err)
 		}
-	}()
+	}(cleanupCtx)
 
 	// Target crossystem params and their values to be tested.
 	targetCrossystemMap := map[string]string{
@@ -186,7 +193,7 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 				}
 				return nil
 			}, &getChargerPollOptions); err != nil {
-				s.Logf("Check for charger failed: %v. Attempting to check DUT's battery status", err)
+				s.Logf("Check for charger failed: %v Attempting to check DUT's battery status", err)
 				status, err := h.Reporter.BatteryStatus(ctx)
 				if err != nil {
 					s.Fatal("Check for battery status failed: ", err)
@@ -203,14 +210,62 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to sleep: ", err)
 			}
 
+			s.Log("Removing CCD watchdog")
 			if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
 				s.Fatal("Failed to remove watchdog for ccd: ", err)
 			}
+
+			// Check if DUT is offline after battery cutoff at the end of test. If it is,
+			// first check if power state is in S5 or G3, and boot DUT to S0 by pressing
+			// on power button. If there's no response at all, disconnecting and then
+			// reconnecting charger seems to help with restoring the connection.
+			defer func(ctx context.Context) {
+				if !s.DUT().Connected(ctx) {
+					if err := checkDUTAsleepAndPressPwr(ctx, h); err != nil {
+						s.Logf("DUT completely offline: %v Attempting to restore connection", err)
+						if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
+							s.Fatal("Failed to remove watchdog for ccd: ", err)
+						}
+						// To-do: depending on how the results turn out, we could
+						// extend the sleep in WatchdogRemove(), instead of adding
+						// another sleep here.
+						s.Log("Sleeping for 5 seconds")
+						if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+							s.Fatal("Failed to sleep: ", err)
+						}
+						s.Log("Removing DUT's power")
+						if err := h.SetDUTPower(ctx, false); err != nil {
+							s.Fatal("Failed to set pd role: ", err)
+						}
+						s.Log("Sleeping for 60 seconds")
+						if err := testing.Sleep(ctx, 60*time.Second); err != nil {
+							s.Fatal("Failed to sleep: ", err)
+						}
+						s.Log("Reconnecting DUT's power")
+						if err := h.SetDUTPower(ctx, true); err != nil {
+							s.Fatal("Failed to set pd role: ", err)
+						}
+					}
+					if err := h.WaitConnect(ctx); err != nil {
+						s.Fatal("DUT did not wake up: ", err)
+					}
+					if err := openCCD(ctx, h); err != nil {
+						s.Fatal("CCD not opened: ", err)
+					}
+				}
+			}(cleanupCtx)
 
 			s.Log("Cutting off DUT's battery")
 			cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
 			if err := cmd.BatteryCutoff(ctx); err != nil {
 				s.Fatal("Failed to send the battery cutoff command: ", err)
+			}
+
+			// 60 seconds of sleep may be necessary in order for some batteries to
+			// be fully cut off, and for reducing complications in waking DUTs.
+			s.Log("Sleeping for 60 seconds")
+			if err := testing.Sleep(ctx, 60*time.Second); err != nil {
+				s.Fatal("Failed to sleep: ", err)
 			}
 
 			s.Log("Checking EC unresponsive")
@@ -231,20 +286,10 @@ func FlagsPreservation(ctx context.Context, s *testing.State) {
 		if err := h.WaitConnect(waitConnectCtx); err != nil {
 			s.Fatal("Failed to reconnect to DUT: ", err)
 		}
-
-		// Cr50 goes to sleep when the battery is disconnected, and when DUT wakes, CCD state might be locked.
-		// Open CCD after supplying power and before talking to the EC.
-		if hasCCD, err := h.Servo.HasCCD(ctx); err != nil {
-			s.Fatal("While checking if servo has a CCD connection: ", err)
-		} else if hasCCD {
-			if val, err := h.Servo.GetString(ctx, servo.GSCCCDLevel); err != nil {
-				s.Fatal("Failed to get gsc_ccd_level: ", err)
-			} else if val != servo.Open {
-				s.Logf("CCD is not open, got %q. Attempting to unlock", val)
-				if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
-					s.Fatal("Failed to unlock CCD: ", err)
-				}
-			}
+		// Cr50 goes to sleep when the battery is disconnected, and when DUT wakes,
+		// CCD might be locked. Open CCD after waking DUT and before talking to the EC.
+		if err := openCCD(ctx, h); err != nil {
+			s.Fatal("CCD not opened: ", err)
 		}
 
 		s.Log("Saving crossystem params and their values after a power-cycle")
@@ -348,4 +393,39 @@ func logInformation(ctx context.Context, h *firmware.Helper, information string)
 		return "", err
 	}
 	return result, nil
+}
+
+// openCCD attempts to open ccd if it's closed.
+// To-do: we're adding a firmware helper function to check and open CCD via
+// a more thorough process, i.e. verifying testlab status, ccd capabilities,
+// and whether a servo micro is present.
+func openCCD(ctx context.Context, h *firmware.Helper) error {
+	if hasCCD, err := h.Servo.HasCCD(ctx); err != nil {
+		return errors.Wrap(err, "while checking if servo has a CCD connection")
+	} else if hasCCD {
+		if val, err := h.Servo.GetString(ctx, servo.GSCCCDLevel); err != nil {
+			return errors.Wrap(err, "failed to get gsc_ccd_level")
+		} else if val != servo.Open {
+			testing.ContextLogf(ctx, "CCD is not open, got %q. Attempting to unlock", val)
+			if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
+				return errors.Wrap(err, "failed to unlock CCD")
+			}
+		}
+	}
+	return nil
+}
+
+// checkDUTAsleepAndPressPwr checks if DUT is at S5 or G3, and presses power button to boot it.
+func checkDUTAsleepAndPressPwr(ctx context.Context, h *firmware.Helper) error {
+	shortCtx, cancelShortCtx := context.WithTimeout(ctx, 2*time.Minute)
+	defer cancelShortCtx()
+	testing.ContextLog(shortCtx, "Checking if power state is at S5 or G3")
+	if err := h.WaitForPowerStates(shortCtx, firmware.PowerStateInterval, 1*time.Minute, "S5", "G3"); err != nil {
+		return err
+	}
+	testing.ContextLogf(shortCtx, "Pressing power button for %s to wake DUT", h.Config.HoldPwrButtonPowerOn)
+	if err := h.Servo.KeypressWithDuration(shortCtx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOn)); err != nil {
+		return errors.Wrap(err, "failed to press power button")
+	}
+	return nil
 }
