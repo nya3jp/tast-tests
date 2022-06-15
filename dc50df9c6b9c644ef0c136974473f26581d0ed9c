@@ -16,6 +16,23 @@
       "message": "I\u0027ve used the following link to include more tests that are not using fixtures:\n\nhttps://source.chromium.org/search?q\u003d%22testing.AddTest(%22%20f:go$%20-fixture%20ArcEnabled%20-perf\u0026sq\u003d",
       "revId": "dc50df9c6b9c644ef0c136974473f26581d0ed9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea7f7cd_7ef0edb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-15T07:20:32Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "dc50df9c6b9c644ef0c136974473f26581d0ed9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
