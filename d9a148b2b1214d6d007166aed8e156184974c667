@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1b2adc5_b1b86090",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-06-15T09:11:03Z",
+      "side": 1,
+      "message": "I guess we need a way to specify that a destination is only reachable for root but not for chronos as that shall be the expected behavior of fall-through according to our discussion?",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 51
+      },
+      "revId": "d9a148b2b1214d6d007166aed8e156184974c667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
