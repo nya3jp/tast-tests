@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd377417_37cfc208",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-15T19:21:23Z",
+      "side": 1,
+      "message": "Yes, I think this makes it more generic, and probably reduces some duplication (otherwise there is no point in checking for usb4).",
+      "parentUuid": "5dbcd246_05dc8878",
+      "range": {
+        "startLine": 60,
+        "startChar": 68,
+        "endLine": 60,
+        "endChar": 88
+      },
+      "revId": "24a901aad391f0e52ddd9d3ffa72070aaa8ef0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b7e39d4_9abff985",
