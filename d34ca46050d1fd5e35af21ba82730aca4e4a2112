@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68bf1bf8_c0224723",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265562
+      },
+      "writtenOn": "2022-06-15T14:03:10Z",
+      "side": 1,
+      "message": "I took another look and you are right. Testing for the presence of dugong\u0027s init script probably makes sense for now until we provide some kind of preferred way for checking.",
+      "parentUuid": "8cda0351_2fa75c43",
+      "revId": "d34ca46050d1fd5e35af21ba82730aca4e4a2112",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0259be9a_81318477",
