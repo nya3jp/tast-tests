@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4c2689f_209f3107",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-15T07:22:59Z",
+      "side": 1,
+      "message": "nit: please add a prefix to the subject line. E.g. tast-tests, or the package name that is modified by the CL:\n\u003e arc: Cleanup...",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "48db090cf70386b1ec7102b6ccff4995b4f7b6de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "47ef9138_3b041042",
@@ -31,6 +54,23 @@
       "writtenOn": "2022-06-14T10:42:15Z",
       "side": 1,
       "message": "tast-owners@: Please take a look.",
+      "revId": "48db090cf70386b1ec7102b6ccff4995b4f7b6de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "504d874b_d3c36e80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-15T07:22:59Z",
+      "side": 1,
+      "message": "LGTM % nit\nIt is always nice to see the cleanup work :)",
       "revId": "48db090cf70386b1ec7102b6ccff4995b4f7b6de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
