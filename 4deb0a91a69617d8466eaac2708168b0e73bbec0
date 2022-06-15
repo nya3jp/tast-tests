@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66cd2e34_e1764dd0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-06-15T21:38:10Z",
+      "side": 1,
+      "message": "The IP route is generated automatically after assigning IP address to an interface; the IP route and IP address are cleaned up after bringing down the interface. First run these two commands, wifi.RoamAPGone test failed; after cherry-pick of this CL, the test passed.",
+      "parentUuid": "a896d842_fc51e175",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9454628d_5664448a",
         "filename": "src/chromiumos/tast/common/network/ip/runner.go",
         "patchSetId": 7
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-15T00:43:16Z",
       "side": 1,
       "message": "Can we share code with showLink above? The output should be the same format.",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c21af3c_2c85c084",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-06-15T21:38:10Z",
+      "side": 1,
+      "message": "showLink() returns the attributes of a given interface, it requires an interface name as the input. \nLinksUp returns the names of all running interfaces, it doesn\u0027t need an interface name as input. Then we can bring down the redundant interfaces in the result.\nWe need to know the interface name before we run commands on this interface.",
+      "parentUuid": "9454628d_5664448a",
       "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -65,6 +101,24 @@
       "writtenOn": "2022-06-15T00:43:16Z",
       "side": 1,
       "message": "Did you test this on an openwrt router?",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94498c8_4fc5678a",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-06-15T21:38:10Z",
+      "side": 1,
+      "message": "I tested on openwrt router, the connection to the router is lost after bringing down all interfaces except eth0 and lo. Instead, now we only clean interfaces in redundantInterfaces.\nAfter this change, it works on both legacy and openwrt routers.",
+      "parentUuid": "a6b50b73_aa95fa44",
       "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
