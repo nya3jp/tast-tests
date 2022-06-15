@@ -22,6 +22,30 @@
       },
       "revId": "d9a148b2b1214d6d007166aed8e156184974c667",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "971a447a_e0db229f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-15T10:55:48Z",
+      "side": 1,
+      "message": "If I didn\u0027t miss anything from our discussion, I suppose that the current VerifyOptions contains enough information to represent the expected fall-through behavior? We just need to change the verification here (maybe need to add expectation for bind-interface behavior)\n\nI haven\u0027t thought carefully on how to represent the split-routing property for the VPN cases, but I think we don\u0027t need to worry about that atm.",
+      "parentUuid": "a1b2adc5_b1b86090",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 51
+      },
+      "revId": "d9a148b2b1214d6d007166aed8e156184974c667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
