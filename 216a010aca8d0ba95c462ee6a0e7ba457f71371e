@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0847b40f_761b3ce9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-15T20:58:51Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5ac6766e_13249d42",
+      "range": {
+        "startLine": 50,
+        "startChar": 73,
+        "endLine": 50,
+        "endChar": 98
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37d7c61d_b33bc6ab",
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "In order to test for file persistence outside this function the vault needs to stay mounted. The cleanup for Unmount already happens in ChallengeResponseAuthSession on line 128 after the file test.",
       "parentUuid": "5b5b8575_fc9848ab",
+      "range": {
+        "startLine": 463,
+        "startChar": 2,
+        "endLine": 463,
+        "endChar": 3
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a4c582d_328af757",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-15T20:58:51Z",
+      "side": 1,
+      "message": "Thats fine. Then you also need to remove defer RemoveVault as well. (Maybe it doesn\u0027t even succeed because it is not unmounted first?)",
+      "parentUuid": "fc01b6f4_d9484d00",
       "range": {
         "startLine": 463,
         "startChar": 2,
