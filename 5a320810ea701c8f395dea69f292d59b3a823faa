@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e49a18_c663c68f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis_wifi_credentials.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1520982
+      },
+      "writtenOn": "2022-06-15T21:27:00Z",
+      "side": 1,
+      "message": "Originally I had it as WiFiTestData in a different CL but wasn\u0027t placing the commit messages properly causing several relation chains. When I re-did the CL, some of the further changes weren\u0027t moved over. You\u0027re correct, it doesn\u0027t work with TestData post-migration.",
+      "parentUuid": "65b71fb2_765887f5",
+      "range": {
+        "startLine": 40,
+        "startChar": 22,
+        "endLine": 40,
+        "endChar": 30
+      },
+      "revId": "5a320810ea701c8f395dea69f292d59b3a823faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4731bd6_f49d44da",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-15T18:34:10Z",
       "side": 1,
       "message": "ditto here",
+      "range": {
+        "startLine": 62,
+        "startChar": 37,
+        "endLine": 62,
+        "endChar": 45
+      },
+      "revId": "5a320810ea701c8f395dea69f292d59b3a823faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4b5ebb2_e6797454",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis_wifi_credentials.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1520982
+      },
+      "writtenOn": "2022-06-15T21:27:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4731bd6_f49d44da",
       "range": {
         "startLine": 62,
         "startChar": 37,
