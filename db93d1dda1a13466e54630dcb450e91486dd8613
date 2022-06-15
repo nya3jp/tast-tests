@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece188b3_4aae9e2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-15T19:17:36Z",
+      "side": 1,
+      "message": "Failed regex sounds like it should be a Fatal error.",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "db93d1dda1a13466e54630dcb450e91486dd8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f48a644d_093a46a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-15T19:17:36Z",
+      "side": 1,
+      "message": "Should you continue if you encounter a failure?",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "db93d1dda1a13466e54630dcb450e91486dd8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
