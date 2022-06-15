@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/projector"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -19,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/dlc"
 	"chromiumos/tast/testing"
 )
 
@@ -27,9 +29,9 @@ func init() {
 		Func:         CreationFlow,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Launches the Projector app and goes through the new screencast creation flow",
-		Contacts:     []string{"tobyhuang@chromium.org", "cros-projector@google.com"},
+		Contacts:     []string{"tobyhuang@chromium.org", "cros-projector+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "ondevice_speech"},
+		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Fixture:      "projectorLogin",
 	})
@@ -46,11 +48,7 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(2 * time.Minute)
 
-	closeOnboardingButton := nodewith.Name("Skip tour").Role(role.Button)
-	appWindow := nodewith.Name("Screencast").Role(role.Application)
-	reload := nodewith.Name("Reload Ctrl+R").Role(role.MenuItem)
-	maximizeButton := nodewith.Name("Maximize").Role(role.Button)
-	newScreencastButton := nodewith.Name("New screencast").Role(role.Button)
+	newScreencastButton := nodewith.Name("New screencast").Role(role.Button).Focusable()
 	screencastItem := nodewith.ClassName("screencast-media").Role(role.GenericContainer).First()
 	clickAnywhereToRecord := nodewith.Name("Click anywhere to record full screen").Role(role.StaticText)
 	annotatorTrayButton := nodewith.NameStartingWith("Toggle marker.").Role(role.Button)
@@ -64,40 +62,38 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Projector app: ", err)
 	}
 
-	// Dismiss the onboarding dialog, if it exists. Since each
-	// user only sees the onboarding flow a maximum of three
-	// times, the onboarding dialog may not appear.
-	if err := ui.WaitUntilExists(closeOnboardingButton)(ctx); err == nil {
-		s.Log("Dismissing the onboarding dialog")
-		if err = ui.LeftClickUntil(closeOnboardingButton, ui.Gone(closeOnboardingButton))(ctx); err != nil {
-			s.Fatal("Failed to close the onboarding dialog: ", err)
-		}
+	if err := projector.DismissOnboardingDialog(ctx, tconn); err != nil {
+		s.Fatal("Failed to close the onboarding dialog: ", err)
 	}
 
 	// UI action for refreshing the app until the element we're
 	// looking for exists.
-	// TODO(b/231097154): Refreshing in a loop should not
-	// be necessary. Replace with WaitUntilExists() once
-	// this bug has been fixed.
-	refreshApp := func(ctx context.Context) error {
-		if err := uiauto.Combine("refresh app",
-			ui.RightClickUntil(appWindow, ui.Exists(reload)),
-			ui.LeftClick(reload),
-		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to refresh app")
+	refreshApp := projector.RefreshApp(ctx, tconn)
+
+	if err := verifySodaInstalled(ctx); err != nil {
+		s.Log("SODA is not installed, verifying new screencast button is disabled")
+		if err = projector.VerifyNewScreencastButtonDisabled(ctx, tconn, "Speech recognition not supported"); err != nil {
+			s.Fatal("SODA is not installed, but new screencast button is enabled: ", err)
 		}
-		return nil
+		// Pass the test and exit prematurely.
+		return
+	}
+
+	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
+		s.Log("Microphone is unavailable, verifying new screencast button is disabled")
+		if err = projector.VerifyNewScreencastButtonDisabled(ctx, tconn, "Turn on microphone"); err != nil {
+			s.Fatal("Microphone is unavailable, but new screencast button is enabled: ", err)
+		}
+		// Pass the test and exit prematurely.
+		return
 	}
 
 	// We need to clean up any screencasts after the test to
 	// prevent taking up Drive quota over time.
 	defer deleteScreencastItems(ctxForCleanUp, tconn)
 
-	s.Log("Launching the new screencast creation flow")
+	s.Log("SODA and microphone are enabled, launching the new screencast creation flow")
 	if err := uiauto.Combine("launch the new screencast creation flow",
-		// Maximize the app to mitigate screen size
-		// differences on different devices.
-		ui.LeftClick(maximizeButton),
 		ui.WithInterval(5*time.Second).RetryUntil(refreshApp, ui.Exists(newScreencastButton)),
 		// Make sure there are no existing screencasts before
 		// starting the test.
@@ -163,6 +159,27 @@ func deleteScreencastItems(ctx context.Context, tconn *chrome.TestConn) error {
 
 	if err := ui.WithInterval(5*time.Second).RetryUntil(deleteScreencastItem, ui.Gone(screencastItem))(ctx); err != nil {
 		return errors.Wrap(err, "failed to delete all leftover screencast items")
+	}
+
+	return nil
+}
+
+func verifySodaInstalled(ctx context.Context) error {
+	// Check if dlc libsoda and libsoda-model-en-us are installed.
+	dlcMap, err := dlc.List(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to list installed DLC(s)")
+	}
+	testing.ContextLog(ctx, "Currently installed DLC(s) are: ", dlcMap)
+
+	_, ok := dlcMap["libsoda"]
+	if !ok {
+		return errors.Wrap(err, "dlc libsoda is not installed")
+	}
+
+	_, ok = dlcMap["libsoda-model-en-us"]
+	if !ok {
+		return errors.Wrap(err, "dlc libsoda-model-en-us is not installed")
 	}
 
 	return nil
