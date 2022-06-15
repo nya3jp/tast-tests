@@ -109,6 +109,12 @@ var FamilyLink = App{
 	Name: "Family Link",
 }
 
+// Feedback has details about the Feedback app.
+var Feedback = App{
+	ID:   "iffgohomcomlpmkfikfffagkkoojjffm",
+	Name: "Feedback",
+}
+
 // Files has details about the Files Chrome app.
 var Files = App{
 	ID:   "hhaomjibdihmijegdhdafkllkbggdgoj",
