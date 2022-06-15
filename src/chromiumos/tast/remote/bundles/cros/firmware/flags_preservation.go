@@ -21,10 +21,11 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         FlagsPreservation,
-		Desc:         "Checks that flag values are preserved over different power cycles",
-		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Func:     FlagsPreservation,
+		Desc:     "Checks that flag values are preserved over different power cycles",
+		Contacts: []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
+		// TODO(b/235742217): This test might be leaving broken DUTS that can't be auto-repaired. Add attr firmware_unstable when fixed.
+		Attr:         []string{"group:firmware"},
 		Fixture:      fixture.DevModeGBB,
 		SoftwareDeps: []string{"crossystem"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
