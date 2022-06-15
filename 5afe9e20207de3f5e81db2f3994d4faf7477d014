@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a505e2a7_3e76a4f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-15T19:29:07Z",
+      "side": 1,
+      "message": "What I meant to say is:\n\nShouldn\u0027t you return immediately with true (i.e `nil`) if checkUsbPortDir() returns nil?\n\nI don\u0027t see the use in keeping foundUsbPort if it\u0027s value is going to keep getting over-writte (and it is only set to true within the for loop).",
+      "parentUuid": "05500b8c_f74a6472",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "5afe9e20207de3f5e81db2f3994d4faf7477d014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dca495d4_fff887e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
         "patchSetId": 16

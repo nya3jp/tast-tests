@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2018b599_0594db54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-15T19:29:07Z",
+      "side": 1,
+      "message": "is this `sys/bus/thunderbolt`?\n\nIt would be good to just paste an actual example. Using \"/path/to/device\" in both cases mildly implies that both substrings are the same.",
+      "range": {
+        "startLine": 89,
+        "startChar": 29,
+        "endLine": 89,
+        "endChar": 44
+      },
+      "revId": "1950cadd69caad51ded8977e2cc7c142a0fa3060",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
