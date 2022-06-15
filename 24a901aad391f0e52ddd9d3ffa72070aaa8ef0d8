@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97533b9_ec4def64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-15T18:50:52Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to. Added return.",
+      "parentUuid": "bf4feaf8_4002c279",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 11
+      },
+      "revId": "24a901aad391f0e52ddd9d3ffa72070aaa8ef0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4558f76d_b296086c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dbcd246_05dc8878",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-15T18:50:52Z",
+      "side": 1,
+      "message": "Sorry for the confusion. Yes, I was thinking that absence of usb4 port should not lead to test failure since usb4 is not always supported. If there exists a link to usb4 port, we would check if there also exists a link from usb4 back to typec.\n\nI think this is a bit confusing, so as per another comment, I merged the two checks (usb and usb4) together and keeping track of `foundUsbPortDir` for both usb and usb4. So, it would check if there exists at least one usb port linked to each typec conn. Would this be more clear?",
+      "parentUuid": "4558f76d_b296086c",
+      "range": {
+        "startLine": 60,
+        "startChar": 68,
+        "endLine": 60,
+        "endChar": 88
+      },
+      "revId": "24a901aad391f0e52ddd9d3ffa72070aaa8ef0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b7e39d4_9abff985",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-14T23:45:17Z",
       "side": 1,
       "message": "This regex seems to be repeated. Is there some way we can run it just once, and still run the two checks (1 for USB4 and the other for \"regular\" USB).\n\nIt seems counterproductive and a little difficult to follow the same regex being executed twice.",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 100
+      },
+      "revId": "24a901aad391f0e52ddd9d3ffa72070aaa8ef0d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "631c4b76_f82f3306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-15T18:50:52Z",
+      "side": 1,
+      "message": "These two are actually different regex. Merged the two together into one regex check.",
+      "parentUuid": "9b7e39d4_9abff985",
       "range": {
         "startLine": 71,
         "startChar": 2,
