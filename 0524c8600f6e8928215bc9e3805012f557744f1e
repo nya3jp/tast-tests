@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab2c76bb_b0d3f693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-15T17:48:35Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "0524c8600f6e8928215bc9e3805012f557744f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b19f182_03a81149",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-15T17:48:35Z",
+      "side": 1,
+      "message": "Use DumpUITreeWithScreenshotOnError instead as a screenshot can make debugging of failures easier.",
+      "range": {
+        "startLine": 77,
+        "startChar": 16,
+        "endLine": 77,
+        "endChar": 33
+      },
+      "revId": "0524c8600f6e8928215bc9e3805012f557744f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ccfe70_a0d6d297",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-15T17:48:35Z",
+      "side": 1,
+      "message": "Is there a specific reason why this part is put into an extra function?",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 49
+      },
+      "revId": "0524c8600f6e8928215bc9e3805012f557744f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c58b7a_849f042c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-15T17:48:35Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "0524c8600f6e8928215bc9e3805012f557744f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bba33995_661ebdbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-15T17:48:35Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "0524c8600f6e8928215bc9e3805012f557744f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "821c1895_2f88e8cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-15T17:48:35Z",
+      "side": 1,
+      "message": "toggle",
+      "range": {
+        "startLine": 204,
+        "startChar": 60,
+        "endLine": 204,
+        "endChar": 66
+      },
+      "revId": "0524c8600f6e8928215bc9e3805012f557744f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "921c5cd7_431ea959",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/offline_login_with_username_and_photos_disabled.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-15T17:48:35Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "0524c8600f6e8928215bc9e3805012f557744f1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
