@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee362905_ddf48024",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-06-15T06:41:33Z",
+      "side": 1,
+      "message": "Is it true that we enable 3 seconds timer by default? If so, I believe it is an unexpected behavior.",
+      "range": {
+        "startLine": 102,
+        "startChar": 28,
+        "endLine": 102,
+        "endChar": 43
+      },
+      "revId": "0bc08497131c93a19cff0e1bfbdfa2146cee7a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e9291c6_701010e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-06-15T06:41:33Z",
+      "side": 1,
+      "message": "What does this . mean?",
+      "range": {
+        "startLine": 106,
+        "startChar": 28,
+        "endLine": 106,
+        "endChar": 29
+      },
+      "revId": "0bc08497131c93a19cff0e1bfbdfa2146cee7a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e8162eb_2782af7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-06-15T06:41:33Z",
+      "side": 1,
+      "message": "What does \"turnAround\" mean here?",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 25
+      },
+      "revId": "0bc08497131c93a19cff0e1bfbdfa2146cee7a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
