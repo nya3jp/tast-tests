@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "94121170_7a200f50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-06-16T09:11:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ba82121_391bbd6b",
+      "revId": "82df7cc98569cfc21443ff99dc94fc0053c68271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7ec842ff_aef2a6b5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99fae9ea_ad0967b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-06-16T09:11:43Z",
+      "side": 1,
+      "message": "This test is only running manually to generate the login data for hwsec.CrossVersionLogin. The data would be uploaded by the scripts (See https://source.corp.google.com/chromeos_public/src/platform2/hwsec-test-utils/cross_version_login/prepare_cross_version_login_data.sh). So the data should not be removed by the test.",
+      "parentUuid": "c8293ffa_1b772657",
+      "revId": "82df7cc98569cfc21443ff99dc94fc0053c68271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf3cd460_7f31a9df",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
         "patchSetId": 5
@@ -65,6 +101,30 @@
       "writtenOn": "2022-06-14T08:58:58Z",
       "side": 1,
       "message": "Consider using ioutil.TempDir() to create a temp directory with a unique name.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "82df7cc98569cfc21443ff99dc94fc0053c68271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a830ccc5_37c491f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-06-16T09:11:43Z",
+      "side": 1,
+      "message": "As comment in line 40, we would use the path in the upload script, so I think ioutil.TempDir() is not an option unless we find a better way to upload the data.",
+      "parentUuid": "cf3cd460_7f31a9df",
       "range": {
         "startLine": 41,
         "startChar": 1,
