@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae23bf11_3db37bc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-06-16T06:05:12Z",
+      "side": 1,
+      "message": "Out of curiosity, is the main issue the lack of debugging if it fails? Or is the timeout causing this to be flaky? or both?\n\nI can take a todo to improve the ARCPingSuccess",
+      "parentUuid": "ccb23d73_1603f620",
+      "range": {
+        "startLine": 85,
+        "startChar": 18,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "20cfd4c635b8ecd1179c2ebea4e5b3fe168d6a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "58e57256_5e1c9f49",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-16T05:51:13Z",
       "side": 1,
       "message": "It seems that after removing the 0.5 sleeping from the vpn package, \"vpn\" inteface may not be there when we reach here. When that happens, `reach` will try to ping \"vpn.google.com\" -- it got 3 addresses resolved, sometimes none of them is reachable within 3 seconds timeout, and thus a total 9 seconds is required in each poll, so the original 10 seconds is not enough and thus the test is flaky.\n\nTwo changes here:\n1) Shorten the timeout to execute `reach`, 2 seconds should be long enough since the target address is local;\n2) Even with 1), I observed that this Poll() still takes 9 seconds (not sure if it is expected), so extend the timeout to 20 seconds at the same time.",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 16
+      },
+      "revId": "20cfd4c635b8ecd1179c2ebea4e5b3fe168d6a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb3ecc7_ed6f6ade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arcvpn/arcvpn.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-06-16T06:05:12Z",
+      "side": 1,
+      "message": "These are super helpful findings! Could we add a comment somewhere about this so we don\u0027t accidentally shorten the timeout in the future?",
+      "parentUuid": "58e57256_5e1c9f49",
       "range": {
         "startLine": 113,
         "startChar": 2,
