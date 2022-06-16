@@ -111,6 +111,30 @@
       },
       "revId": "bc4465caff4747cdd19c1b70e23100fc625c3306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e53c43b_7aad1694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-16T02:55:43Z",
+      "side": 1,
+      "message": "This is something you can eventually improve with either: a complementary enum that would let you define more concrete scenario, a full blown bitmap set to configure more asserts to check.\n\nFor instance, Taoyu\u0027s suggestions:\n \u003e Has an non-link-local IPv6 address (not verified)\n \u003e Has local (router) reachability if IsPrimary\n \u003e Has global (server) reachability if IsPrimary\nCould be three separate enum values (with one implying the previous one), or three separate bits in the test config.",
+      "parentUuid": "a92e377b_08cdb714",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 10
+      },
+      "revId": "bc4465caff4747cdd19c1b70e23100fc625c3306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
