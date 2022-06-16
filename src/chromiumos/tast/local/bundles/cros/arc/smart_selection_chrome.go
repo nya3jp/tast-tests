@@ -9,8 +9,12 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -22,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SmartSelectionChrome,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test ARC's smart selections show up in Chrome's right click menu",
 		Contacts:     []string{"djacobo@chromium.org", "jorgegil@google.com", "chromeos-sw-engprod@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
@@ -31,22 +35,45 @@ func init() {
 		VarDeps:      []string{"arc.SmartSelectionChrome.username", "arc.SmartSelectionChrome.password"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Val:               browser.TypeAsh,
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			Val:               browser.TypeLacros,
+		}, {
+			Name:              "lacros_vm",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Val:               browser.TypeLacros,
 		}},
 	})
 }
 
 func SmartSelectionChrome(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	username := s.RequiredVar("arc.SmartSelectionChrome.username")
 	password := s.RequiredVar("arc.SmartSelectionChrome.password")
 
-	cr, err := chrome.New(ctx, chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ARCSupported())
+	opts := []chrome.Option{chrome.GAIALogin(chrome.Creds{User: username, Pass: password}), chrome.ARCSupported()}
+	if s.Param().(browser.Type) == browser.TypeLacros {
+		var err error
+		opts, err = lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
+		if err != nil {
+			s.Fatal("Failed to compute chrome options: ", err)
+		}
+	}
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start ARC by user policy: ", err)
@@ -55,6 +82,7 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 	if err := a.WaitIntentHelper(ctx); err != nil {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
@@ -63,10 +91,18 @@ func SmartSelectionChrome(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+
 	// Open page with an address on it.
-	if _, err := cr.NewConn(ctx, "https://google.com/search?q=1600+amphitheatre+parkway"); err != nil {
+	conn, err := br.NewConn(ctx, "https://google.com/search?q=1600+amphitheatre+parkway")
+	if err != nil {
 		s.Fatal("Failed to create new Chrome connection: ", err)
 	}
+	defer conn.Close()
 
 	// Wait for the address to appear.
 	address := nodewith.Name("1600 amphitheatre parkway").Role(role.StaticText).First()
