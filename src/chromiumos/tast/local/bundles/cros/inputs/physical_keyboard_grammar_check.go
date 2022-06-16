@@ -84,7 +84,7 @@ func PhysicalKeyboardGrammarCheck(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 	sentenceTextFinder := nodewith.Name(inputText).Role(role.StaticText)
 	grammarWindowFinder := nodewith.ClassName("GrammarSuggestionWindow").Role(role.Window)
-	grammarSuggestionButtonFinder := nodewith.ClassName("SuggestionView").Role(role.Button).Ancestor(grammarWindowFinder)
+	grammarSuggestionButtonFinder := nodewith.Name("are students").Ancestor(grammarWindowFinder).First()
 
 	clickOffsets := [2]int{10, -10}
 	i := 0
