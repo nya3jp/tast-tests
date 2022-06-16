@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b12796c_d650ad66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-16T14:00:45Z",
+      "side": 1,
+      "message": "\u003e but actually we are trying to ping  vpn.google.com  because there is no  vpn interface\n\nTo fix this issue we should change the command parsers in ArcNetworkService and ArcNetworkDebugTools. These are really very basic and could use named option argument like \"adb dumpsys wifi tools reach --network vpn \u003cip_or_hostname\u003e\" or something like that.",
+      "parentUuid": "a601d157_598c0d36",
+      "range": {
+        "startLine": 85,
+        "startChar": 18,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "20cfd4c635b8ecd1179c2ebea4e5b3fe168d6a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "58e57256_5e1c9f49",

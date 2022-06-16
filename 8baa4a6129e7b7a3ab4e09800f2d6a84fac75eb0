@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e2c3575_2ef44798",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-16T14:00:45Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "8baa4a6129e7b7a3ab4e09800f2d6a84fac75eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b3743e_07619fd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arcvpn/arcvpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-16T14:00:45Z",
+      "side": 1,
+      "message": "Any idea why this is the case ?",
+      "range": {
+        "startLine": 111,
+        "startChar": 65,
+        "endLine": 112,
+        "endChar": 65
+      },
+      "revId": "8baa4a6129e7b7a3ab4e09800f2d6a84fac75eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
