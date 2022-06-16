@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad7010a0_803c41c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flags_preservation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-06-16T09:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d141ea65_67bafc57",
+      "range": {
+        "startLine": 217,
+        "startChar": 3,
+        "endLine": 217,
+        "endChar": 13
+      },
+      "revId": "ec87a221698208e7e21d82c707d1c1dc0ac45f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "324e21dd_363f2fe2",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-15T19:51:00Z",
       "side": 1,
       "message": "This only works for servo 4.*, so check if the servo_pd_role control is present first. Or use SetDUTPower instead of SetPDRole",
+      "range": {
+        "startLine": 235,
+        "startChar": 24,
+        "endLine": 235,
+        "endChar": 33
+      },
+      "revId": "ec87a221698208e7e21d82c707d1c1dc0ac45f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49851573_0d6050a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flags_preservation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-06-16T09:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "324e21dd_363f2fe2",
       "range": {
         "startLine": 235,
         "startChar": 24,
