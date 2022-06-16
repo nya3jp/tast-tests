@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b8666c_fc51a46b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/check_key_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-16T14:22:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c100349c_9fa55c69",
+      "range": {
+        "startLine": 20,
+        "startChar": 50,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "b99b933b9cf697ef3a12e3ce5d0a4b0a53b5f9a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50a57ae0_b63e9fb1",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e69153c_fc31242e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/check_key_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-16T14:22:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50a57ae0_b63e9fb1",
+      "range": {
+        "startLine": 148,
+        "startChar": 26,
+        "endLine": 148,
+        "endChar": 27
+      },
+      "revId": "b99b933b9cf697ef3a12e3ce5d0a4b0a53b5f9a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b92ce8d_5d327188",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-06-16T01:59:47Z",
       "side": 1,
       "message": "assign to variable before passing so that readers can understand what this means, e.g.\n\n```\nencryptfs :\u003d false\nutility.CreatePersistantVault(..., encryptfs)\n```",
+      "range": {
+        "startLine": 164,
+        "startChar": 62,
+        "endLine": 164,
+        "endChar": 68
+      },
+      "revId": "b99b933b9cf697ef3a12e3ce5d0a4b0a53b5f9a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b403207_461438a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/check_key_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-16T14:22:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b92ce8d_5d327188",
       "range": {
         "startLine": 164,
         "startChar": 62,
