@@ -16,6 +16,23 @@
       "message": "Hi Gordon,\n\nPTAL. I am using a import to get mojo js object since the old method stopped working.\n\nRegards\nShijin",
       "revId": "3b7e4c67320b26ac5c86264407b870b2182ce1be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33bf5e2_5abbd2dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1458367
+      },
+      "writtenOn": "2022-06-16T20:38:35Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "3b7e4c67320b26ac5c86264407b870b2182ce1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
