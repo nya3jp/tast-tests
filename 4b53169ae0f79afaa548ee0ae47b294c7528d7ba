@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a0f36ae_3ce04a0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/connector.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1428319
+      },
+      "writtenOn": "2022-06-16T21:41:26Z",
+      "side": 1,
+      "message": "Since Brask and Kuldax are now added you could remove this text.",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 47
+      },
+      "revId": "4b53169ae0f79afaa548ee0ae47b294c7528d7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
