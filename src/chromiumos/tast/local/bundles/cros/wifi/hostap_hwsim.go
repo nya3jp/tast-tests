@@ -70,6 +70,7 @@ func init() {
 
 					"monitor_interface",
 					"wpas_config",
+					"wpas_ap",
 					"pmksa_cache",
 					"dfs",
 					"sae",
