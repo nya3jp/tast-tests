@@ -13,8 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/network/arcvpn"
-	"chromiumos/tast/local/bundles/cros/network/vpn"
-	localping "chromiumos/tast/local/network/ping"
+	"chromiumos/tast/local/bundles/cros/network/routing"
 	"chromiumos/tast/testing"
 )
 
@@ -67,8 +66,7 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 	if err := arcvpn.CheckARCVPNState(ctx, a, true); err != nil {
 		s.Fatal("Failed to start ArcHostVpnService: ", err)
 	}
-	pr := localping.NewLocalRunner()
-	if err := vpn.ExpectPingSuccess(ctx, pr, conn.Server.OverlayIP); err != nil {
+	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
 	}
 	if err := arcvpn.ExpectARCPingSuccess(ctx, a, "vpn", conn.Server.OverlayIP); err != nil {
@@ -81,7 +79,7 @@ func ARCVPNCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("ArcHostVpnService should be stopped, but isn't: ", err)
 	}
 	// VPN should still be reachable even without ArcHostVpnService
-	if err := vpn.ExpectPingSuccess(ctx, pr, conn.Server.OverlayIP); err != nil {
+	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
 	}
 	// arc0/eth0 are hardcoded in ARC as the iface of our fake ethernet network that VPN traffic
