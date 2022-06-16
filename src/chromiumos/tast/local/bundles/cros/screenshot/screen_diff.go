@@ -10,13 +10,17 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -26,6 +30,7 @@ func init() {
 		Desc:         "Test to confirm that the screen diffing library works as intended",
 		Contacts:     []string{"msta@google.com", "chrome-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(hwdep.Model("eve")),
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         screenshot.ScreenDiffVars,
 	})
@@ -42,27 +47,51 @@ func expectError(err error, expectation string) error {
 	return nil
 }
 
-func takeScreenshots(ctx context.Context, d screenshot.Differ) error {
-	_, err := filesapp.Launch(ctx, d.Tconn())
+func ScreenDiff(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	screenDiffConfig := screenshot.Config{
+		DefaultOptions: screenshot.Options{
+			WindowWidthDP:  1000,
+			WindowHeightDP: 632,
+			RemoveElements: []*nodewith.Finder{nodewith.ClassName("date")}},
+		NameSuffix: "V2"}
+
+	d, err := screenshot.NewDiffer(ctx, s, screenDiffConfig)
 	if err != nil {
-		return err
+		s.Fatal("Failed to initialize differ: ", err)
+	}
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, d.Tconn())
+	defer d.DieOnFailedDiffs()
+
+	if err := expectError(
+		d.Diff(ctx, "nowindowopen", nodewith.ClassName("FrameCaptionButton"), screenshot.Timeout(500*time.Millisecond))(ctx),
+		"unable to find focused window"); err != nil {
+		s.Fatal("Diffing with no window open succeeded: ", err)
+	}
+
+	_, err = filesapp.Launch(ctx, d.Tconn())
+	if err != nil {
+		s.Fatal("Failed to launch files app: ", err)
 	}
 
 	noRetries := screenshot.Timeout(500 * time.Millisecond)
 	if err := expectError(
 		d.Diff(ctx, "nomatches", nodewith.ClassName("MissingClassName"), noRetries)(ctx),
 		"failed to find node"); err != nil {
-		return errors.Wrap(err, "diffing with no matching elements succeeded")
+		s.Fatal("Diffing with no matching elements succeeded: ", err)
 	}
 	if err := expectError(
 		d.Diff(ctx, "nomatchesinwindow", nodewith.ClassName("UnifiedSystemTray"), noRetries)(ctx),
 		"failed to find node"); err != nil {
-		return errors.Wrap(err, "diffing with the matching element outside of the window succeeded")
+		s.Fatal("Diffing with the matching element outside of the window succeeded: ", err)
 	}
 	if err := expectError(
 		d.Diff(ctx, "multiplematches", nodewith.Name("My Files"), noRetries)(ctx),
 		"failed to find node"); err != nil {
-		return errors.Wrap(err, "diffing with multiple matching elements succeeded")
+		s.Fatal("Diffing with multiple matching elements succeeded: ", err)
 	}
 
 	ui := uiauto.New(d.Tconn())
@@ -81,68 +110,26 @@ func takeScreenshots(ctx context.Context, d screenshot.Differ) error {
 		// Device ejection is reset upon chrome start. The next test will still have the device.
 		uiauto.IfSuccessThen(ui.Exists(ejectButton),
 			uiauto.Combine("Eject device", ui.LeftClick(ejectButton), ui.WaitUntilGone(ejectButton))),
-		d.Diff(ctx, "minMaxClose",
-			nodewith.ClassName("FrameCaptionButtonContainerView")),
-		d.Diff(ctx, "searchButton", nodewith.Name("Search").Role(role.Button)),
-		d.Diff(ctx, "recentText", nodewith.Name("Recent").Role(role.StaticText)),
-		d.Diff(ctx, "recentItem", nodewith.Name("Recent").Role(role.TreeItem)),
-		d.Diff(ctx, "tree", nodewith.Role(role.Tree)),
 		ui.WaitUntilGone(nodewith.Role(role.ProgressIndicator)),
-		d.Diff(ctx, "tableHeader", nodewith.ClassName("table-header")),
-		d.Diff(ctx, "tableRow", nodewith.ClassName("table-row directory")),
-		d.DiffWindow(ctx, "filesApp"))(ctx); err != nil {
-		return err
+		d.Diff(ctx, "recentText", nodewith.Name("Recent").Role(role.StaticText)),
+		d.DiffWindow(ctx, "filesApp"),
+		d.DiffWindow(ctx, "filesAppMaximized", screenshot.WindowState(ash.WindowStateMaximized)))(ctx); err != nil {
+		s.Fatal("Failed to diff windows: ", err)
 	}
 
 	if err := expectError(
 		d.Diff(ctx, "filesApp", nodewith.First())(ctx),
 		"screenshot has already been taken"); err != nil {
-		return errors.Wrap(err, "sending the same diff twice succeeded")
+		s.Fatal("Sending the same diff twice succeeded: ", err)
 	}
-	return nil
-}
 
-func ScreenDiff(ctx context.Context, s *testing.State) {
-	screenDiffConfig := screenshot.Config{
-		DefaultOptions: screenshot.Options{
-			WindowWidthDP:  1000,
-			WindowHeightDP: 632,
-			RemoveElements: []*nodewith.Finder{nodewith.ClassName("date")}},
-		NameSuffix: "V2"}
-
-	// Normally the next line would be "defer d.DieOnFailedDiffs()"
-	// However, in our case, we want to run both this and DiffPerConfig.
-	d, err := screenshot.NewDiffer(ctx, s, screenDiffConfig)
+	revert, err := ash.EnsureTabletModeEnabled(ctx, d.Tconn(), true)
 	if err != nil {
-		s.Fatal("Failed to initialize differ: ", err)
+		s.Fatal("Failed to enter tablet mode: ", err)
 	}
+	defer revert(cleanupCtx)
 
-	if err := expectError(
-		d.Diff(ctx, "nowindowopen", nodewith.ClassName("FrameCaptionButton"), screenshot.Timeout(500*time.Millisecond))(ctx),
-		"unable to find focused window"); err != nil {
-		s.Fatal("Diffing with no window open succeeded: ", err)
-	}
-
-	if err := takeScreenshots(ctx, d); err != nil {
-		s.Fatal("Failed to screenshot with single config: ", err)
-	}
-
-	failedSingle := d.GetFailedDiffs()
-
-	// Unfortunately, it's not possible to test that images fail on gold, because
-	// gold would then comment on everyone's CLs saying that they failed this test.
-	// TODO(crbug.com/1173812): Once ThoroughConfigs has more than one element, switch to ThoroughConfigs()
-	failedMulti := screenshot.DiffPerConfig(ctx, s, screenshot.WithBase(screenDiffConfig, []screenshot.Config{}), func(d screenshot.Differ) {
-		if err := takeScreenshots(ctx, d); err != nil {
-			s.Fatal("Failed to take screenshot with multiple configs: ", err)
-		}
-	})
-
-	if failedSingle != nil && failedMulti != nil {
-		s.Fatalf("Failed both single and multi-config diffs: single-config %s AND multi-config %s", failedSingle, failedMulti)
-	} else if failedSingle != nil {
-		s.Fatal("Failed single-config diffs: ", failedSingle)
-	} else if failedMulti != nil {
-		s.Fatal("Failed multi-config diffs: ", failedMulti)
+	if err := d.DiffWindow(ctx, "filesAppSplit", screenshot.WindowState(ash.WindowStateLeftSnapped), screenshot.Retries(4))(ctx); err != nil {
+		s.Fatal("Failed to diff tablet window: ", err)
 	}
 }
