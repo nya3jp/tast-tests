@@ -107,6 +107,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb701e2d_23fabb91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-16T23:37:20Z",
+      "side": 1,
+      "message": "Yes, that is probably a good idea. I forgot about that helpful part from that CL :-) I\u0027ll work on landing it tomorrow.",
+      "parentUuid": "d911ad41_85c50b6a",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c84cef46_ac670a9c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
         "patchSetId": 6
@@ -311,6 +329,24 @@
       "side": 1,
       "message": "I made the change to simplify running commands in an env but I think I am confused by what you suggested here. I still need to have another `if` inside the `else` to check if |out| contains |okHeader|. Is the following what you are looking for?:\n\n```\nif out, err :\u003d portal.RunCommandInNetNS(ctx, cmd); err !\u003d nil; err !\u003d nil {\n  return err;\n} else {\n  if !bytes.Contains(out, okHeader) {\n    return errors.Errorf(\"unexpected curl result: got %s; want %s\", out, okHeader)\n  }\n}\n```\n\nCould you clarify what you are suggesting here?",
       "parentUuid": "f3223764_4b9c552f",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3966a9a4_facd959d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-16T23:37:20Z",
+      "side": 1,
+      "message": "What you did is what I was suggesting: combining the RunCommand with the if/else.",
+      "parentUuid": "d867595f_6257b8ad",
       "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -16,6 +16,23 @@
       "message": "Thanks for the comments Steven!",
       "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77db1d6d_fe5a165b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-16T23:37:20Z",
+      "side": 1,
+      "message": "nit: re-reading this code, I think that portalEnv would be more clear, even if it is longer. (I kept forgetting that \u0027portal\u0027 was an env type).",
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
