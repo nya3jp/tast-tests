@@ -50,14 +50,14 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 			Val:               browser.TypeLacros,
 		}, {
-			Name:              "lacros_primary",
-			Fixture:           "lacrosPrimary",
+			Name:              "lacros_only",
+			Fixture:           "lacrosOnly",
 			ExtraSoftwareDeps: []string{"lacros", "lacros_stable"},
 			ExtraAttr:         []string{"informational"},
 			Val:               browser.TypeLacros,
 		}, {
-			Name:              "lacros_primary_unstable",
-			Fixture:           "lacrosPrimary",
+			Name:              "lacros_only_unstable",
+			Fixture:           "lacrosOnly",
 			ExtraSoftwareDeps: []string{"lacros", "lacros_unstable"},
 			ExtraAttr:         []string{"informational"},
 			Val:               browser.TypeLacros,
