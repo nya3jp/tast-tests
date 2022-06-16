@@ -39,6 +39,30 @@
       },
       "revId": "edaf38c8bb89562469c426d7eb8468d7324d1101",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3919b699_5ae3acd1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-16T17:37:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e123bef0_6b601be9",
+      "range": {
+        "startLine": 83,
+        "startChar": 64,
+        "endLine": 83,
+        "endChar": 75
+      },
+      "revId": "edaf38c8bb89562469c426d7eb8468d7324d1101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
