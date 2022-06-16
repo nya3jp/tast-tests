@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e711ca30_9cc5ab7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-16T18:59:33Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s any indication currently. TestCaseHolder has a TestCaseFinished() method that seems to be what we want. Currently, we only check for this when receiving data (which indicates an unexpected message): https://source.corp.google.com/chromeos_public/src/third_party/virtual-usb-printer/mock_printer/mock_printer.cc;rcl\u003ddf39a58e2bad34b03437e6d61807acc3e45b0bf3;l\u003d81\n\nWe could additionally check for this right before sending a response: https://source.corp.google.com/chromeos_public/src/third_party/virtual-usb-printer/mock_printer/mock_printer.cc;rcl\u003ddf39a58e2bad34b03437e6d61807acc3e45b0bf3;l\u003d135\n\nThen we could log to a file once we catch that the test case has been finished. The virtual-usb-printer already has an argument for specifying a log path: https://source.corp.google.com/chromeos_public/src/third_party/virtual-usb-printer/virtual_usb_printer.cc;rcl\u003df6958c3ca5c29ba9aaf674b9843dea0cd555c2a5;l\u003d131\n\nAt the moment, that log path is only used by the eSCL manager to do some logging, but we could have the mock printer log there as well. How does all that sound?",
+      "parentUuid": "bb6d46e8_9f3f4429",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e9e5ccc_989590f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
         "patchSetId": 4
@@ -49,6 +67,24 @@
       "writtenOn": "2022-05-20T15:57:09Z",
       "side": 1,
       "message": "nit: This doesn\u0027t match the new expected format.  Please take a look at the PSA: https://groups.google.com/a/chromium.org/g/chromium-os-dev/c/gZBw_GxEeng/m/oH5BONcECwAJ",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d35680c8_957bfe49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-16T18:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e9e5ccc_989590f5",
       "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -70,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4b4c659_2592af57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-16T18:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74606494_34e4dce7",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "980354ad_f0dc7df9",
@@ -87,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68cf495b_50713fc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-16T18:59:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "980354ad_f0dc7df9",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6107cecb_411f8f96",
@@ -100,6 +172,24 @@
       "writtenOn": "2022-05-20T15:57:09Z",
       "side": 1,
       "message": "Is there a bug for this somewhere?  Is lpadmin not actually using an exit status of 9, or is it getting incorrectly parsed?",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a92caa4_16b8da4d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-16T18:59:33Z",
+      "side": 1,
+      "message": "I don\u0027t have a bug for this. I tested this out by manually starting the virtual USB printer with the textproto from this CL and running `lpadmin -v $URI -m everywhere` and then `echo $?`, and it looks like lpadmin is returning the correct exit code. I took a quick look at the tast code, which I think is where the error is, but I don\u0027t fully understand it yet. Do you want me to log a bug for the tast folks?",
+      "parentUuid": "6107cecb_411f8f96",
       "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
