@@ -28,8 +28,9 @@ func init() {
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			Val:               standardizedtestutil.GetClamshellTest(runStandardizedKeyboardTypingTest),
-			ExtraSoftwareDeps: []string{"android_p", "informational"},
+			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
+			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "tablet_mode",
 			Val:               standardizedtestutil.GetTabletTest(runStandardizedKeyboardTypingTest),
