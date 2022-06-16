@@ -64,7 +64,7 @@ func init() {
 				Fixture:           "loggedInAndKeepState",
 				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: videoCUJParam{
 					tier: cuj.Basic,
 					app:  videocuj.YoutubeWeb,
@@ -92,7 +92,7 @@ func init() {
 				Fixture:           "loggedInAndKeepState",
 				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: videoCUJParam{
 					tier: cuj.Plus,
 					app:  videocuj.YoutubeWeb,
@@ -120,7 +120,7 @@ func init() {
 				Fixture:           "loggedInAndKeepState",
 				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: videoCUJParam{
 					tier: cuj.Basic,
 					app:  videocuj.YoutubeApp,
@@ -148,7 +148,7 @@ func init() {
 				Fixture:           "loggedInAndKeepState",
 				Timeout:           10 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: videoCUJParam{
 					tier: cuj.Plus,
 					app:  videocuj.YoutubeApp,

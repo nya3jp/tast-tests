@@ -70,7 +70,7 @@ func init() {
 				Fixture:           "loggedInAndKeepState",
 				Timeout:           20 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
-				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: multiTaskingParam{
 					tier:     cuj.Basic,
 					appName:  et.YoutubeMusicAppName,
@@ -163,7 +163,7 @@ func init() {
 				Fixture:           "loggedInAndKeepState",
 				Timeout:           30 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
-				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: multiTaskingParam{
 					tier:     cuj.Plus,
 					appName:  et.YoutubeMusicAppName,

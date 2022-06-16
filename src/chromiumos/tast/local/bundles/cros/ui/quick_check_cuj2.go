@@ -59,6 +59,16 @@ func init() {
 					browserType: browser.TypeLacros,
 				},
 			}, {
+				Name:              "basic_unlock_crosbolt",
+				Fixture:           "loggedInAndKeepState",
+				Timeout:           5 * time.Minute,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: quickCheckParam{
+					tier:     cuj.Basic,
+					scenario: quickcheckcuj.Lock,
+				},
+			}, {
 				Name:    "basic_wakeup",
 				Fixture: "loggedInAndKeepState",
 				Timeout: 5 * time.Minute,
@@ -81,7 +91,7 @@ func init() {
 				Fixture:           "loggedInAndKeepState",
 				Timeout:           5 * time.Minute,
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
-				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: quickCheckParam{
 					tier:     cuj.Basic,
 					scenario: quickcheckcuj.Suspend,
