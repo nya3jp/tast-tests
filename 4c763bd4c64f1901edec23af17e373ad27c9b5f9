@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a040698b_d39c1ff5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-16T09:41:49Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "4c763bd4c64f1901edec23af17e373ad27c9b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41442a2d_7de2497a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/setup/perf_cuj_device_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-16T09:41:49Z",
+      "side": 1,
+      "message": "nit: a list of DUT models",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "4c763bd4c64f1901edec23af17e373ad27c9b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff17c8e1_ab9e8a36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/setup/perf_cuj_device_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-16T09:41:49Z",
+      "side": 1,
+      "message": "nit: Allowed hardware models are listed here.",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 55
+      },
+      "revId": "4c763bd4c64f1901edec23af17e373ad27c9b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
