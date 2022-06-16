@@ -61,6 +61,18 @@ func init() {
 			ExtraSoftwareDeps: []string{"lacros", "lacros_unstable"},
 			ExtraAttr:         []string{"informational"},
 			Val:               browser.TypeLacros,
+		}, {
+			Name:              "lacros_only",
+			Fixture:           "lacrosOnly",
+			ExtraSoftwareDeps: []string{"lacros", "lacros_stable"},
+			ExtraAttr:         []string{"informational"},
+			Val:               browser.TypeLacros,
+		}, {
+			Name:              "lacros_only_unstable",
+			Fixture:           "lacrosOnly",
+			ExtraSoftwareDeps: []string{"lacros", "lacros_unstable"},
+			ExtraAttr:         []string{"informational"},
+			Val:               browser.TypeLacros,
 		}},
 	})
 }
