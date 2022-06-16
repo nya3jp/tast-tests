@@ -11,6 +11,8 @@ import (
 	arcui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -21,19 +23,33 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ChromeIntentPicker,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verify Chrome Intent Picker can launch ARC app by visiting URL",
 		Contacts: []string{
 			"mxcai@chromium.org",
 			"chromeos-apps-foundation-team@google.com",
 		},
-		Attr:    []string{"group:mainline", "informational"},
-		Fixture: "arcBooted",
+		Attr:         []string{"group:mainline", "informational"},
+		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			ExtraSoftwareDeps: []string{"android_p", "chrome"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			Fixture:           "arcBooted",
+			Val:               browser.TypeAsh,
 		}, {
 			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm", "chrome"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Fixture:           "arcBooted",
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+			Fixture:           "lacrosWithArcBooted",
+			Val:               browser.TypeLacros,
+		}, {
+			Name:              "lacros_vm",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Fixture:           "lacrosWithArcBooted",
+			Val:               browser.TypeLacros,
 		}},
 		Timeout: 10 * time.Minute,
 	})
@@ -76,8 +92,14 @@ func ChromeIntentPicker(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing the APK: ", err)
 	}
 
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+
 	// Navigate to URL which ArcChromeIntentPickerTest app has associated an intent.
-	conn, err := cr.NewConn(ctx, "https://www.google.com")
+	conn, err := br.NewConn(ctx, "https://www.google.com")
 	if err != nil {
 		s.Fatal("Failed to create renderer: ", err)
 	}
