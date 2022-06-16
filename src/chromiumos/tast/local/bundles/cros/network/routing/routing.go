@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/network/dumputil"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/env"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/subnet"
@@ -172,8 +173,10 @@ func (e *testEnv) TearDown(ctx context.Context) error {
 	return lastErr
 }
 
-// ExpectPingSuccess pings |addr| as |user|, and returns nil if ping succeeded.
-func ExpectPingSuccess(ctx context.Context, addr, user string) error {
+// expectPingSuccess pings |addr| as |user|, and returns nil if ping succeeded.
+// Note that this function does not dump network info on failure. Use
+// ExpectPingSuccessWithTimeout() instead when applicable.
+func expectPingSuccess(ctx context.Context, addr, user string) error {
 	if err := deletePingEntriesInConntrack(ctx); err != nil {
 		return errors.Wrap(err, "failed to reset conntrack before pinging")
 	}
@@ -194,15 +197,21 @@ func ExpectPingSuccess(ctx context.Context, addr, user string) error {
 
 // ExpectPingSuccessWithTimeout keeps pinging |addr| as |user| with |timeout|,
 // and returns nil if ping succeeds. |timeout|=0 means only ping once and
-// return.
-func ExpectPingSuccessWithTimeout(ctx context.Context, addr, user string, timeout time.Duration) error {
+// return. Dumps the current network info on failure.
+func ExpectPingSuccessWithTimeout(ctx context.Context, addr, user string, timeout time.Duration) (retErr error) {
+	defer func() {
+		if retErr != nil {
+			dumpNetworkInfoAfterPingFailure(ctx)
+		}
+	}()
+
 	if timeout == 0 {
-		return ExpectPingSuccess(ctx, addr, user)
+		return expectPingSuccess(ctx, addr, user)
 	}
 
 	numRetries := 0
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		err := ExpectPingSuccess(ctx, addr, user)
+		err := expectPingSuccess(ctx, addr, user)
 		if err == nil {
 			return nil
 		}
@@ -215,7 +224,14 @@ func ExpectPingSuccessWithTimeout(ctx context.Context, addr, user string, timeou
 }
 
 // ExpectPingFailure pings |addr| as |user|, and returns nil if ping failed.
-func ExpectPingFailure(ctx context.Context, addr, user string) error {
+// Dumps the current network info on failure.
+func ExpectPingFailure(ctx context.Context, addr, user string) (retErr error) {
+	defer func() {
+		if retErr != nil {
+			dumpNetworkInfoAfterPingFailure(ctx)
+		}
+	}()
+
 	if err := deletePingEntriesInConntrack(ctx); err != nil {
 		return errors.Wrap(err, "failed to reset conntrack before pinging")
 	}
@@ -233,6 +249,15 @@ func ExpectPingFailure(ctx context.Context, addr, user string) error {
 		return errors.New("received ping reply but not expected")
 	}
 	return nil
+}
+
+func dumpNetworkInfoAfterPingFailure(ctx context.Context) {
+	// Encode current time into filename to avoid confliction.
+	filename := "network_dump_ping_" + time.Now().Format("030405000") + ".txt"
+	if err := dumputil.DumpNetworkInfo(ctx, filename); err != nil {
+		testing.ContextLog(ctx, "Failed to dump network info after a ping expectation failure: ", err)
+	}
+	testing.ContextLog(ctx, "Ping expectation failed. Dumped current network info into ", filename)
 }
 
 // deletePingEntriesInConntrack removes all the ping entries in conntrack table
@@ -345,7 +370,7 @@ func verifyNetworkConnectivity(ctx context.Context, router, server *env.Env, opt
 	for _, user := range []string{"root", "chronos"} {
 		for _, ip := range pingAddrs {
 			if opts.IsPrimary {
-				if err := ExpectPingSuccess(ctx, ip.String(), user); err != nil {
+				if err := ExpectPingSuccessWithTimeout(ctx, ip.String(), user, 0); err != nil {
 					errs = append(errs, errors.Wrapf(err, "non-local address %v is not reachable as user %s", ip, user))
 				}
 			} else {
