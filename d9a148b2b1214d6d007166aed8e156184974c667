@@ -94,6 +94,30 @@
       },
       "revId": "d9a148b2b1214d6d007166aed8e156184974c667",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b30747ee_962f9b0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-16T02:24:59Z",
+      "side": 1,
+      "message": "\u003e I\u0027m saying pingableAddrs and notPingableAddrs might not be enough\nYes sure, we can find a better representation here when we fix the logic in shill/patchpanel",
+      "parentUuid": "f12b8655_eff575c1",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 51
+      },
+      "revId": "d9a148b2b1214d6d007166aed8e156184974c667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
