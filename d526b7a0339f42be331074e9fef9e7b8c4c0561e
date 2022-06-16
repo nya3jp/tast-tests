@@ -16,6 +16,46 @@
       "message": "PTAL.",
       "revId": "d526b7a0339f42be331074e9fef9e7b8c4c0561e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2cf1b4_269514ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/open_with_menu_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T16:03:37Z",
+      "side": 1,
+      "message": "did you talk to the team to maintain this test later?",
+      "range": {
+        "startLine": 28,
+        "startChar": 49,
+        "endLine": 28,
+        "endChar": 107
+      },
+      "revId": "d526b7a0339f42be331074e9fef9e7b8c4c0561e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d290c61a_2abe2219",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/open_with_menu_chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T16:03:37Z",
+      "side": 1,
+      "message": "cleanupCtx here?",
+      "revId": "d526b7a0339f42be331074e9fef9e7b8c4c0561e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
