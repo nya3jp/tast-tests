@@ -10,13 +10,13 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/network/routing"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
-	localping "chromiumos/tast/local/network/ping"
 	"chromiumos/tast/testing"
 )
 
@@ -144,8 +144,7 @@ func VPNUI(ctx context.Context, s *testing.State) {
 	// Pings server gateway to make sure VPN is connected. This is required since
 	// some VPN services (e.g., WireGuard) will show connected even if we have a
 	// wrong configuration.
-	pr := localping.NewLocalRunner()
-	if err := vpn.ExpectPingSuccess(ctx, pr, vpnConn.Server.OverlayIP); err != nil {
+	if err := routing.ExpectPingSuccessWithTimeout(ctx, vpnConn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping %s: %v", vpnConn.Server.OverlayIP, err)
 	}
 
