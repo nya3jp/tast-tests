@@ -16,6 +16,159 @@
       "message": "(Only took a look at the Env setup)",
       "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ce3bbd5_8e0e621d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-16T17:05:47Z",
+      "side": 1,
+      "message": "I mostly focused on the test itself as I\u0027m still catching up on how the lower layers work.",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e277f24c_c10f2116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-16T17:05:47Z",
+      "side": 1,
+      "message": "This contains implementation details. It should just describe what we are testing. e.g. \"Ensures that setting up a virtual ethernet pair with an http server results in an online veth Service.\"",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bb966a8_aa4aecd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-16T17:05:47Z",
+      "side": 1,
+      "message": "We should avoid resetting Shill unless it is part of the test or otherwise necessary. We should assume that Shill is in a reasonable state at the beginning of the test.",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c84cef46_ac670a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-16T17:05:47Z",
+      "side": 1,
+      "message": "This appears to be unused. We could inline it or maybe make it part of CreateCaptivePortalEnv?",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89c464e6_15070f45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-16T17:05:47Z",
+      "side": 1,
+      "message": "Why 5?",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72cdb0bb_393fd976",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-16T17:05:47Z",
+      "side": 1,
+      "message": "The struct on the other hand would be more readable if declared out of line.",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44b438ea_9e45fd79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-16T17:05:47Z",
+      "side": 1,
+      "message": "192.168.101.1:80 should be a named constant.",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2046824c_9794bf56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-16T17:05:47Z",
+      "side": 1,
+      "message": "Maybe add a helper for running commands in netns? Maybe as a helper in virtualnet since it sets up \"netns\"? (We should be using a constant regardless).",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3223764_4b9c552f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-16T17:05:47Z",
+      "side": 1,
+      "message": "No else after a return unless required for context, e.g.:\nif out, err :\u003d ...; err !\u003d nil {\n  return err;\n} else {\n  // code using |out|\n}\nHere I might suggest the if/else pattern, especially if we simplify the curl call with a helper.",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
