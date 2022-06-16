@@ -5,10 +5,11 @@
 package mojo
 
 // BTConfigJS is javascript code that initializes the config object and defines
-// some additional functions
-const BTConfigJS = `function() {
+// some additional functions.
+const BTConfigJS = `async function () {
+    let btmojo = await import('chrome://resources/mojo/chromeos/services/bluetooth_config/public/mojom/cros_bluetooth_config.mojom-webui.js');
     return {
-        bluetoothConfig: chromeos.bluetoothConfig.mojom.CrosBluetoothConfig.getRemote(),
+        bluetoothConfig : btmojo.CrosBluetoothConfig.getRemote(),
 
         // for interface SystemPropertiesObserver
         // OnPropertiesUpdated(BluetoothSystemProperties properties);
@@ -18,10 +19,9 @@ const BTConfigJS = `function() {
             this.systemProperties_.modificationState = properties.modificationState;
         },
 
-
         // Initialization
         initSysPropObs: function() {
-            this.SysPropObsReceiver = new chromeos.bluetoothConfig.mojom.SystemPropertiesObserverReceiver(this);
+            this.SysPropObsReceiver = new btmojo.SystemPropertiesObserverReceiver(this);
             this.bluetoothConfig.observeSystemProperties(this.SysPropObsReceiver.$.bindNewPipeAndPassRemote());
         },
 
