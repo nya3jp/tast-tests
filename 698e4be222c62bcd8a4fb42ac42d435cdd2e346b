@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466ae8fa_7ed7937c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-06-16T06:29:11Z",
+      "side": 1,
+      "message": "If we want to start the app at the beginning of the test and stop after the whole test completes, how about simply using the \"ccaLaunched\" fixture?",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "698e4be222c62bcd8a4fb42ac42d435cdd2e346b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
