@@ -30,8 +30,6 @@ type testParam struct {
 	upload bool
 	// if set, keep local data in this directory.
 	dataDir string
-	// whether to enable TTS cache collection.
-	ttsEnabled bool
 }
 
 const (
@@ -130,10 +128,9 @@ func init() {
 			ExtraAttr:         []string{"group:arc-data-collector"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
-				vmEnabled:  false,
-				upload:     true,
-				dataDir:    "",
-				ttsEnabled: false,
+				vmEnabled: false,
+				upload:    true,
+				dataDir:   "",
 			},
 		}, {
 			Name:              "vm",
@@ -148,28 +145,25 @@ func init() {
 				// devices lower than 8G.
 				hwdep.MinMemory(7500)),
 			Val: testParam{
-				vmEnabled:  true,
-				upload:     true,
-				dataDir:    "",
-				ttsEnabled: false,
+				vmEnabled: true,
+				upload:    true,
+				dataDir:   "",
 			},
 		}, {
 			Name:              "local",
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParam{
-				vmEnabled:  false,
-				upload:     false,
-				dataDir:    "/tmp/data_collector",
-				ttsEnabled: true,
+				vmEnabled: false,
+				upload:    false,
+				dataDir:   "/tmp/data_collector",
 			},
 		}, {
 			Name:              "vm_local",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val: testParam{
-				vmEnabled:  true,
-				upload:     false,
-				dataDir:    "/tmp/data_collector",
-				ttsEnabled: true,
+				vmEnabled: true,
+				upload:    false,
+				dataDir:   "/tmp/data_collector",
 			},
 		}},
 		VarDeps: []string{"arc.perfAccountPool"},
@@ -401,20 +395,18 @@ func DataCollector(ctx context.Context, s *testing.State) {
 		s.Log("Retrying generating ureadahead, previous attempt failed: ", err)
 	}
 
-	if param.ttsEnabled {
-		attempts := 0
-		for {
-			err := genTTSCache(ctx, s, cl, filepath.Join(dataDir, ttsCache), v, &du)
-			if err == nil {
-				break
-			}
-			attempts = attempts + 1
-			dumpLogcat("tts", attempts)
-			if attempts > retryCount {
-				s.Fatal("Failed to generate TTS cache. No more retries left: ", err)
-			}
-			s.Log("Retrying generating TTS cache, previous attempt failed: ", err)
+	attempts = 0
+	for {
+		err := genTTSCache(ctx, s, cl, filepath.Join(dataDir, ttsCache), v, &du)
+		if err == nil {
+			break
 		}
+		attempts = attempts + 1
+		dumpLogcat("tts", attempts)
+		if attempts > retryCount {
+			s.Fatal("Failed to generate TTS cache. No more retries left: ", err)
+		}
+		s.Log("Retrying generating TTS cache, previous attempt failed: ", err)
 	}
 }
 
