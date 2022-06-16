@@ -490,6 +490,30 @@
       },
       "revId": "b398be50654e21a4a924b65c2f52361a83276104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfdecbe8_c3686dc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-16T02:23:07Z",
+      "side": 1,
+      "message": "Not sure if I understand the requirement correctly, just some thoughts:\nIt seems to me that the current code set up two subnets inside an Env (one for DHCP  and another for HTTP server), while actually we only have one interface inside that Env and thus only have one address, the two subnets sounds like an unusual setup to me. I guess we should make the HTTP server listening on the address which is on the in-interface of the Env.\n \nIf this is the case (HTTP server should listen on the interface IP which is used as the gateway in the DHCP subnet), I would suggest:\n1) In dnsmasq.go, Start() installs static ip (gateway ip) at first, and then uses this ip to populate the \"Address\" property in dnsmasq (i.e., \"/${AddressToForceIP}/${gateway ip}\"). We always want to force the domain to this gateway IP in this captive portal case IIUC.\n2) In CreateCaptivePortalEnv(), after starting the dnsmasq server, read the gateway ip by env.GetVethInAddrs(), and let HTTP server to listen on this ip (let it listen  on 0.0.0.0 should also work I assume). \n\nWDYT?",
+      "parentUuid": "41b0852a_8238c683",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 91,
+        "endChar": 41
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
