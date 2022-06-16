@@ -7,6 +7,7 @@ package screenshot
 import (
 	"time"
 
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 )
 
@@ -46,6 +47,10 @@ type Options struct {
 	// The minimum difference required to treat two pixels as different.
 	// Specifically, this is dr + dg + db (the sum of the difference in	each channel).
 	PixelDeltaThreshold int
+
+	// WindowState contains the window state to set the test to. If the window
+	// state is normal, then the window size will need to be explicitly specified.
+	WindowState ash.WindowStateType
 
 	// The width and height requested of a window, in DP.
 	// You probably don't want to set this yourself - the screen diffing
@@ -100,6 +105,9 @@ func (o *Options) FillDefaults(d Options) {
 	}
 	if o.RetryInterval == 0 {
 		o.RetryInterval = d.RetryInterval
+	}
+	if o.WindowState == "" {
+		o.WindowState = ash.WindowStateNormal
 	}
 	if !o.SkipWindowResize {
 		o.SkipWindowResize = d.SkipWindowResize
@@ -174,6 +182,11 @@ func Timeout(timeout time.Duration) Option {
 // PixelDeltaThreshold controls the screenshot test option PixelDeltaThreshold.
 func PixelDeltaThreshold(pixelDeltaThreshold int) Option {
 	return func(o *Options) { o.PixelDeltaThreshold = pixelDeltaThreshold }
+}
+
+// WindowState sets the window state of the screen.
+func WindowState(windowState ash.WindowStateType) Option {
+	return func(o *Options) { o.WindowState = windowState }
 }
 
 // WindowWidthDP controls the screenshot test option WindowWidthDP.

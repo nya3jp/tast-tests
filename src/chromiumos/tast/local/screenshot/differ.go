@@ -102,6 +102,7 @@ type differ struct {
 	failedTests []string
 	testMode    testMode
 	triage      string
+	isTablet    bool
 }
 
 // fixTwoDigitVersionNumber prefixes any two-digit milestone with a 0, to
@@ -168,7 +169,7 @@ func (d *differ) initialize(ctx context.Context) error {
 	}
 	d.uiScale = uiScale
 
-	tabletMode, err := ash.TabletModeEnabled(ctx, tconn)
+	d.isTablet, err = ash.TabletModeEnabled(ctx, tconn)
 	if err != nil {
 		return err
 	}
@@ -204,7 +205,7 @@ func (d *differ) initialize(ctx context.Context) error {
 		"resolution":             fmt.Sprintf("%dx%d", displayMode.WidthInNativePixels, displayMode.HeightInNativePixels),
 		"sub_pixel_antialiasing": currentSubPixelAntialiasingMethod(),
 		"scale":                  fmt.Sprintf("%.2f", uiScale),
-		"tablet_mode":            fmt.Sprintf("%t", tabletMode),
+		"tablet_mode":            fmt.Sprintf("%t", d.isTablet),
 		"test_group":             d.state.TestName(),
 		"version":                release[lsbrelease.Version],
 	}
@@ -241,7 +242,14 @@ func (d *differ) initialize(ctx context.Context) error {
 
 	d.triage = fmt.Sprintf("https://%s-gold.skia.org/search?%s", goldInstance, v.Encode())
 
-	if strings.HasPrefix(release[lsbrelease.BuildType], "Continuous Builder") {
+	isReleaseCandidate := regexp.MustCompile("-rc[0-9]*$").FindString(release[lsbrelease.BuilderPath]) != ""
+	if release[lsbrelease.BuildType] == "Official Build" || isReleaseCandidate {
+		build := release[lsbrelease.BuilderPath]
+		d.testMode = postsubmit
+		d.goldArgs = append(baseArgs, []string{
+			"--commit_id", fixTwoDigitVersionNumber(strings.Split(build, "/")[1]),
+			"--commit_metadata", fmt.Sprintf("gs://chromeos-image-archive/%s/manifest.xml", build)}...)
+	} else if strings.HasPrefix(release[lsbrelease.BuildType], "Continuous Builder") {
 		d.testMode = cq
 		builderMatch := regexp.MustCompile("-([0-9]+)$").FindStringSubmatch(release[lsbrelease.BuilderPath])
 		if builderMatch == nil {
@@ -256,12 +264,6 @@ func (d *differ) initialize(ctx context.Context) error {
 
 		// Note: This will falsely pick up local builds that have been flashed with an official build.
 		// In the future, we may attempt to come up with a way to distinguish between these two.
-	} else if release[lsbrelease.BuildType] == "Official Build" {
-		build := release[lsbrelease.BuilderPath]
-		d.testMode = postsubmit
-		d.goldArgs = append(baseArgs, []string{
-			"--commit_id", fixTwoDigitVersionNumber(strings.Split(build, "/")[1]),
-			"--commit_metadata", fmt.Sprintf("gs://chromeos-image-archive/%s/manifest.xml", build)}...)
 	} else {
 		d.testMode = local
 		// TODO(crbug.com/skia/11815): once gold supports a local dev mode, replace the git hash field with that.
@@ -411,24 +413,12 @@ func (d *differ) Tconn() *chrome.TestConn {
 	return d.tconn
 }
 
-// DiffPerConfig takes a function that performs a set of screenshot diff tests, and a set of configurations to run it on,
-// and runs that screenshot test on each configuration.
-func DiffPerConfig(ctx context.Context, state screenshotState, configs []Config, fn func(Differ)) error {
-	var d = &differ{state: state}
-	for _, config := range configs {
-		d.config = config
-		// Upon resetting config, chrome needs to be re-initialized.
-		d.chrome = nil
-		if err := d.initialize(ctx); err != nil {
-			return err
-		}
-		fn(d)
-	}
-	return d.GetFailedDiffs()
-}
-
 func (d *differ) capture(ctx context.Context, screenshotName string, finder *nodewith.Finder, options *Options) ([]string, error) {
 	var testArgs []string
+
+	if d.isTablet && options.WindowState == ash.WindowStateNormal {
+		return testArgs, errors.Errorf("Window state %s is not supported in tablet mode. Try settings options.WindowState = Fullscreen", options.WindowState)
+	}
 
 	ui := uiauto.New(d.tconn).WithTimeout(options.Timeout)
 	window, err := ash.GetActiveWindow(ctx, d.tconn)
@@ -441,10 +431,8 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 	}
 	windowBoundsDP := window.BoundsInRoot
 
-	// Even if the window already appears to be in normal state, it may actually be in the Default state. So always set to normal.
-	windowState, err := ash.SetWindowState(ctx, d.tconn, window.ID, ash.WMEventNormal, true /* waitForStateChange */)
-	if err != nil {
-		return testArgs, errors.Wrap(err, "failed to set window state")
+	if err := ash.SetWindowStateAndWait(ctx, d.tconn, window.ID, options.WindowState); err != nil {
+		return testArgs, err
 	}
 
 	// .First() ensures it selects the outermost window element.
@@ -452,9 +440,9 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 	// it won't attempt to translate (since it gets the name from the system,
 	// it's already translated).
 	windowFinder := nodewith.Role(role.Window).Attribute("name", window.Title).First()
-	shouldResize := window.CanResize && !options.SkipWindowResize
-	// You can only set the bounds of a window in normal state.
-	if windowState == ash.WindowStateNormal {
+
+	if options.WindowState == ash.WindowStateNormal {
+		shouldResize := window.CanResize && !options.SkipWindowResize
 		if shouldResize && (options.WindowWidthDP == 0 || options.WindowHeightDP == 0) {
 			return testArgs, errors.Errorf("please add screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: %d, WindowHeightDP: %d}} to your screendiff config", windowBoundsDP.Width, windowBoundsDP.Height)
 		}
@@ -489,9 +477,15 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 		if windowBoundsDP != requestedBounds {
 			return testArgs, errors.Errorf("Requested window bounds %+v, but got %+v", requestedBounds, windowBoundsDP)
 		}
-	}
-	if err := ash.WaitWindowFinishAnimating(ctx, d.tconn, window.ID); err != nil {
-		return testArgs, errors.Wrap(err, "Unable to wait for the window to finish animating")
+		if err := ash.WaitWindowFinishAnimating(ctx, d.tconn, window.ID); err != nil {
+			return testArgs, errors.Wrap(err, "Unable to wait for the window to finish animating")
+		}
+	} else {
+		window, err := ash.GetActiveWindow(ctx, d.tconn)
+		if err != nil {
+			return testArgs, errors.Wrapf(err, "Unable to find window after setting window state to %s", options.WindowState)
+		}
+		windowBoundsDP = window.BoundsInRoot
 	}
 
 	windowBoundsDP = windowBoundsDP.WithInset(options.WindowBorderWidthDP, options.WindowBorderWidthDP)
@@ -532,7 +526,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 		"--add-test-optional-key", fmt.Sprintf("cropped_resolution:%dx%d", boundsPx.Width, boundsPx.Height),
 		"--add-test-optional-key", fmt.Sprintf("screenshot_name:%s", screenshotName),
 		"--add-test-optional-key", fmt.Sprintf("window_size:%dx%d", windowBoundsPX.Width, windowBoundsPX.Height),
-		"--add-test-optional-key", fmt.Sprintf("window_state:%s", windowState),
+		"--add-test-optional-key", fmt.Sprintf("window_state:%s", options.WindowState),
 	)
 
 	srcOffset := image.Point{X: boundsPx.Left, Y: boundsPx.Top}
