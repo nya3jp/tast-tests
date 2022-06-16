@@ -22,6 +22,30 @@
       },
       "revId": "73b8c4bfed3e2bf3ff6bdf6704c3573787b222de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd36609b_2eb270b4",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-16T05:12:00Z",
+      "side": 1,
+      "message": "I already tested it - WindowStateMaximized works fine on tablet.",
+      "parentUuid": "91b73d21_24b4de69",
+      "range": {
+        "startLine": 419,
+        "startChar": 18,
+        "endLine": 419,
+        "endChar": 62
+      },
+      "revId": "73b8c4bfed3e2bf3ff6bdf6704c3573787b222de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
