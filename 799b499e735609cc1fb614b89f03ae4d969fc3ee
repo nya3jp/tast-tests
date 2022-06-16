@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9784f66d_e4397136",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-16T02:30:40Z",
+      "side": 1,
+      "message": "Sure, for next time I think it\u0027s better to include the actual command line though.",
+      "parentUuid": "320458c1_38e63fc0",
+      "revId": "799b499e735609cc1fb614b89f03ae4d969fc3ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db656ff3_cce1a06f",
