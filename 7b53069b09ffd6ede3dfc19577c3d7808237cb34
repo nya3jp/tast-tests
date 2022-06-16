@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "406a3a74_2dbf4228",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-16T22:59:45Z",
+      "side": 1,
+      "message": "LGTM % 1 nit to your discretion. ",
+      "revId": "7b53069b09ffd6ede3dfc19577c3d7808237cb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc7a1c9_04ab27a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-16T22:59:45Z",
+      "side": 1,
+      "message": "nit: I\u0027ll leave this up to your discretion but I don\u0027t think there\u0027s a benefit in introducing this `u` variable rather than returning immediately in each case. The rest of the block reads as a `Run a command and leave` but these two cases (User, and Chrome) deviate from that which was slightly confusing as a reader. It adds slight duplication but I think it might flow better.",
+      "revId": "7b53069b09ffd6ede3dfc19577c3d7808237cb34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
