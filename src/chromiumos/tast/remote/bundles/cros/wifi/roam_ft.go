@@ -20,10 +20,12 @@ import (
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/common/wifi/security/wpaeap"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
@@ -331,6 +333,11 @@ func RoamFT(ctx context.Context, s *testing.State) {
 		ctx, cancel = ap1.ReserveForClose(ctx)
 		defer cancel()
 
+		// Wait a little while for beacons to start actually being transmitted
+		if err := testing.Sleep(ctx, 500*time.Millisecond); err != nil {
+			s.Fatal("interrupted while sleeping for frame sender startup")
+		}
+
 		s.Logf("Sending BSS TM Request from AP %s to DUT %s", mac0, clientMAC)
 		req := hostapd.BSSTMReqParams{Neighbors: []string{mac1.String()}}
 		if err := ap0.SendBSSTMRequest(ctx, clientMAC, req); err != nil {
@@ -434,8 +441,41 @@ func RoamFT(ctx context.Context, s *testing.State) {
 	if _, err := tf.WifiClient().SetGlobalFTProperty(ctx, &wifi.SetGlobalFTPropertyRequest{Enabled: true}); err != nil {
 		s.Fatal("Failed to turn on the global FT property: ", err)
 	}
-	// Expect failure if we are running pure FT test and the DUT is not supporting SME.
-	runOnce(ctx, param.secConfFac, !param.mixed && !hasFTSupport(ctx))
+
+	// We want control over capturer start/stop so we don't use fixture with
+	// pcap but spawn it here and use manually.
+	pcapDevice, ok := tf.Pcap().(support.Capture)
+	if !ok {
+		s.Fatal("Device without capture support - device type: ", tf.Pcap().RouterType())
+	}
+
+	// ap0
+	pcapOps := []hostapd.Option{
+		hostapd.Channel(1), hostapd.Mode(hostapd.Mode80211g)}
+	// ap1
+	// pcapOps := []hostapd.Option{
+	// 	hostapd.Channel(157), hostapd.Mode(hostapd.Mode80211acPure),
+	// 	hostapd.HTCaps(hostapd.HTCapHT40Plus), hostapd.VHTCaps(hostapd.VHTCapSGI80),
+	// 	hostapd.VHTChWidth(hostapd.VHTChWidth80), hostapd.VHTCenterChannel(155),
+	// }
+
+	pcapConf, err := hostapd.NewConfig(pcapOps...)
+
+	freqOpts, err := pcapConf.PcapFreqOptions()
+	if err != nil {
+		s.Fatal("Failed to get Freq Opts: ", err)
+	}
+
+	_, err = wifiutil.CollectPcapForAction(ctx, pcapDevice, "1", pcapConf.Channel, freqOpts,
+		func(ctx context.Context) error {
+			// Expect failure if we are running pure FT test and the DUT is not supporting SME.
+			runOnce(ctx, param.secConfFac, !param.mixed && !hasFTSupport(ctx))
+			return nil
+		})
+	if err != nil {
+		s.Fatal("Failed to collect pcap or perform action: ", err)
+	}
+
 	// Run the test without global FT. It should pass iff we configured the AP in mixed mode.
 	if _, err := tf.WifiClient().SetGlobalFTProperty(ctx, &wifi.SetGlobalFTPropertyRequest{Enabled: false}); err != nil {
 		s.Fatal("Failed to turn off the global FT property: ", err)
