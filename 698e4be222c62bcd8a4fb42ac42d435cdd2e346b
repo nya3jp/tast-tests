@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa55e9c4_3d6fefb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-06-16T07:18:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "466ae8fa_7ed7937c",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "698e4be222c62bcd8a4fb42ac42d435cdd2e346b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44731c24_401bd459",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-16T06:30:10Z",
       "side": 1,
       "message": "Does it need to be complete string or it can also pass with partial? If we only use \"Switch to take photo\", will it pass?",
+      "range": {
+        "startLine": 110,
+        "startChar": 48,
+        "endLine": 110,
+        "endChar": 71
+      },
+      "revId": "698e4be222c62bcd8a4fb42ac42d435cdd2e346b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0defe393_fc334323",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-06-16T07:18:45Z",
+      "side": 1,
+      "message": "Thought it works, \"take photo\" is a shutter button and \"take photo radio button\" is a photo mode. In my opinion, it should be different.",
+      "parentUuid": "44731c24_401bd459",
       "range": {
         "startLine": 110,
         "startChar": 48,
