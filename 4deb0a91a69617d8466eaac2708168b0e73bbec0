@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8955ab18_41806a5d",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-16T05:42:11Z",
+      "side": 1,
+      "message": "Can we separate all of that parsing code out into one helper function that deserializes the output of any `ip link show ...` command into a list of  showLinkIfaceResult objects? Let\u0027s try to share code as much as possible.",
+      "parentUuid": "15b7b024_7107fda5",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eed86775_84682ae4",
         "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
         "patchSetId": 7
@@ -245,6 +263,24 @@
       "side": 1,
       "message": "On the openwrt router, it is this interface \n```\nbr-lan    Link encap:Ethernet  HWaddr 78:45:58:4D:0D:E4  \ninet addr:100.90.103.3  Bcast:100.90.103.255  Mask:255.255.252.0\n```\nThe configuration of openwrt route is different from legacy ones in terms of interfaces. We only need to clean up the interfaces initialized in the tests.",
       "parentUuid": "8f52281a_9ca61169",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c42aa78_65a37f80",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-16T05:42:11Z",
+      "side": 1,
+      "message": "Right, what I was suggesting was to have a list of \"blessed\" interfaces we expect to be up for each type of router. Then when we start a test, we bring down all other interfaces.",
+      "parentUuid": "68bb4ec1_3c036c57",
       "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

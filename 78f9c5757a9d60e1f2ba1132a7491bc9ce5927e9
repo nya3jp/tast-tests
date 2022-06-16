@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c9c5f2f_35e6210d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-16T05:42:11Z",
+      "side": 1,
+      "message": "is this part of the test or are you just doing it for cleanup?",
+      "range": {
+        "startLine": 31,
+        "startChar": 42,
+        "endLine": 31,
+        "endChar": 79
+      },
+      "revId": "78f9c5757a9d60e1f2ba1132a7491bc9ce5927e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
