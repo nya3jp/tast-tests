@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0922097_d146807d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/setup/perf_cuj_device_list.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2022-06-16T07:44:35Z",
+      "side": 1,
+      "message": "based on previous experience, \"morphius\" is not very stable. Unless you see different statistics in crosbolt.",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 38
+      },
+      "revId": "8d29b4181568e5f0de2f671b7f9efca1c1e3f350",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
