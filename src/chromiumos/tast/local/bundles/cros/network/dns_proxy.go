@@ -6,15 +6,14 @@ package network
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/dns"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/multivm"
+	"chromiumos/tast/local/network"
 	"chromiumos/tast/testing"
 )
 
@@ -137,7 +136,7 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get DNS proxy's network namespaces: ", err)
 	}
 
-	physIfs, err := physicalInterfaces(ctx)
+	physIfs, err := network.PhysicalInterfaces(ctx)
 	if err != nil {
 		s.Fatal("Failed to get physical interfaces: ", err)
 	}
@@ -151,7 +150,7 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	case dns.DoHAutomatic:
 		return
 	case dns.DoHOff:
-		block = dns.NewPlaintextBlock(nss, physIfs)
+		block = dns.NewPlaintextBlock(nss, physIfs, "")
 		dnsBlockedTC = []dns.ProxyTestCase{
 			{Client: dns.System, ExpectErr: true},
 			{Client: dns.User, ExpectErr: true},
@@ -175,12 +174,4 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	}); len(errs) > 0 {
 		s.Fatal("Failed to block DNS: ", errs)
 	}
-}
-
-func physicalInterfaces(ctx context.Context) ([]string, error) {
-	out, err := testexec.CommandContext(ctx, "/usr/bin/find", "/sys/class/net", "-type", "l", "-not", "-lname", "*virtual*", "-printf", "%f\n").Output(testexec.DumpLogOnError)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get physical interfaces")
-	}
-	return strings.Split(strings.TrimSpace(string(out)), "\n"), nil
 }

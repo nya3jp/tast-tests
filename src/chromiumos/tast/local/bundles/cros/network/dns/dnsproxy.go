@@ -6,6 +6,7 @@ package dns
 
 import (
 	"context"
+	"net"
 	"strconv"
 	"strings"
 	"time"
@@ -147,14 +148,27 @@ func (r rule) args() []string {
 	return append(args, []string{"-j", r.target, "-w"}...)
 }
 
-func newPlaintextDropRules(nss, ifs []string) []rule {
+func newPlaintextDropRules(nss, ifs []string, dest string) []rule {
+	var famv6 []bool
+	if dest != "" {
+		if net.ParseIP(dest).To4() != nil {
+			famv6 = append(famv6, false)
+		} else if net.ParseIP(dest).To16() != nil {
+			famv6 = append(famv6, true)
+		} else {
+			return nil
+		}
+	} else {
+		famv6 = append(famv6, []bool{false, true}...)
+	}
 	var rules []rule
 	r := rule{
 		chain:  "OUTPUT",
+		dest:   dest,
 		dport:  53,
 		target: "DROP",
 	}
-	for _, v6 := range []bool{false, true} {
+	for _, v6 := range famv6 {
 		r.ipc.v6 = v6
 		for _, p := range []string{"udp", "tcp"} {
 			r.proto = p
@@ -248,10 +262,10 @@ func newDoHVPNDropRules(ns string) []rule {
 }
 
 // NewPlaintextBlock creates a Block that will block any UDP or TCP packets egressing from
-// the namespaces in |nss| or interface in |ifs| on port 53.
-func NewPlaintextBlock(nss, ifs []string) *Block {
+// the namespaces in |nss| or interface in |ifs| on port 53, optionally, to |dest|.
+func NewPlaintextBlock(nss, ifs []string, dest string) *Block {
 	return &Block{
-		rules: newPlaintextDropRules(nss, ifs),
+		rules: newPlaintextDropRules(nss, ifs, dest),
 	}
 }
 
