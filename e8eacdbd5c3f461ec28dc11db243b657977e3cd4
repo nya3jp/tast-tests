@@ -50,6 +50,24 @@
       "message": "Is this missing a `\u0027`, i.e. `leo\u0027s fortune`? I just noticed that in the last CL as well and wanted to double check. If it\u0027s OK as is then maybe in a future CL you could write a quick comment so future readers don\u0027t accidently add the `\u0027`",
       "revId": "e8eacdbd5c3f461ec28dc11db243b657977e3cd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "773c3444_4a720ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_paid_app_parent_permission.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-06-16T21:47:18Z",
+      "side": 1,
+      "message": "Yes, I realized that leo s fortune and leo\u0027s fortune both have same search results. Updated it still to avoid any confusion.",
+      "parentUuid": "4e0e4d53_443c3cb8",
+      "revId": "e8eacdbd5c3f461ec28dc11db243b657977e3cd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
