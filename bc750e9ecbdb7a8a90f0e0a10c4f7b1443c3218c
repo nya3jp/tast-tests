@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cacbb94f_496738b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T04:51:21Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "bc750e9ecbdb7a8a90f0e0a10c4f7b1443c3218c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2422ada0_9a5924fe",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T04:51:21Z",
+      "side": 1,
+      "message": "nit/style:\n\nallRecords :\u003d make(...)",
+      "range": {
+        "startLine": 687,
+        "startChar": 1,
+        "endLine": 687,
+        "endChar": 17
+      },
+      "revId": "bc750e9ecbdb7a8a90f0e0a10c4f7b1443c3218c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32255eaa_90ed0c9d",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T04:51:21Z",
+      "side": 1,
+      "message": "ditto for style.",
+      "revId": "bc750e9ecbdb7a8a90f0e0a10c4f7b1443c3218c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
