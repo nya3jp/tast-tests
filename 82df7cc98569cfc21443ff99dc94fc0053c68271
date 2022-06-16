@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1f77696_6d29e4d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-16T16:07:53Z",
+      "side": 1,
+      "message": "Noted. Please put the explanation in the code comment as leaving data in /tmp is not trivial and the reason why might be forgotten for the following maintainer.",
+      "parentUuid": "99fae9ea_ad0967b3",
+      "revId": "82df7cc98569cfc21443ff99dc94fc0053c68271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf3cd460_7f31a9df",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
         "patchSetId": 5
@@ -125,6 +143,30 @@
       "side": 1,
       "message": "As comment in line 40, we would use the path in the upload script, so I think ioutil.TempDir() is not an option unless we find a better way to upload the data.",
       "parentUuid": "cf3cd460_7f31a9df",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "82df7cc98569cfc21443ff99dc94fc0053c68271",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae9e8c00_25dca8e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/prepare_cross_version_login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-16T16:07:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a830ccc5_37c491f3",
       "range": {
         "startLine": 41,
         "startChar": 1,
