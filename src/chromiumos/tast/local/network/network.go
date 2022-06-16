@@ -7,6 +7,7 @@ package network
 import (
 	"context"
 	"regexp"
+	"strings"
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
@@ -33,6 +34,15 @@ func Gateway(ctx context.Context, ifname string) (string, error) {
 	}
 	gateway := m[1]
 	return gateway, nil
+}
+
+// PhysicalInterfaces returns a list of physical interface names from /sys/class/net.
+func PhysicalInterfaces(ctx context.Context) ([]string, error) {
+	out, err := testexec.CommandContext(ctx, "/usr/bin/find", "/sys/class/net", "-type", "l", "-not", "-lname", "*virtual*", "-printf", "%f\n").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get physical interfaces")
+	}
+	return strings.Split(strings.TrimSpace(string(out)), "\n"), nil
 }
 
 // BlockShillPortalDetector blocks outgoing HTTP and HTTPS packets.
