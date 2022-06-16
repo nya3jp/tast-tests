@@ -188,7 +188,7 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	// '####' and passed in from ash-chrome as a single argument with --lacros-chrome-additional-args.
 	// See browser_manager.cc in Chrome source.
 	// Example:
-	//   --lacros-chrome-additional-args="--enable-features=Feature1,Feature2####--disable-features=Feature3####--foo=bar"
+	//   --lacros-chrome-additional-args=--enable-features=Feature1,Feature2####--disable-features=Feature3####--foo=bar
 	// will result in multiple arguments passed to lacros-chrome:
 	//   --enable-features=Feature1,Feature2
 	//   --disable-features=Feature3
