@@ -16,6 +16,103 @@
       "message": "LGTM but I\u0027m still trying to wrap my head around Go",
       "revId": "43b97788c5705e531f31ba67a9d6a6e64857ed9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a705265_c7b702e4",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T09:40:04Z",
+      "side": 1,
+      "message": "could you write a function returning the value, instead of parse and override the value held by the object?\n\nDitto for EncryptionStatus, too.",
+      "revId": "43b97788c5705e531f31ba67a9d6a6e64857ed9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95f148b6_1381827d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T09:40:04Z",
+      "side": 1,
+      "message": "go often drops getter prefixes. TPMSeedSet here. Ditto for below.",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "43b97788c5705e531f31ba67a9d6a6e64857ed9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2218bad8_7b9800fb",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T09:40:04Z",
+      "side": 1,
+      "message": "why not take string to avoid converting between string and []byte unnecessarily?",
+      "revId": "43b97788c5705e531f31ba67a9d6a6e64857ed9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef98b5fa_57cd5b99",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T09:40:04Z",
+      "side": 1,
+      "message": "if it is expected to be fit in a line, maybe wrap by ^$?",
+      "revId": "43b97788c5705e531f31ba67a9d6a6e64857ed9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33425576_e93107ff",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T09:40:04Z",
+      "side": 1,
+      "message": "could you move this out from function to avoid compiling this multiple times unnecessarily?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "43b97788c5705e531f31ba67a9d6a6e64857ed9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
