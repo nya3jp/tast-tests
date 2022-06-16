@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c4c02a4_fdcaa223",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-06-16T02:02:55Z",
+      "side": 1,
+      "message": "+2 for Tast Review",
+      "revId": "5b84057b5dad3f540cc1f9d6503d0c575437f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dcae3e2_bcefb11b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-06-16T02:02:55Z",
+      "side": 1,
+      "message": "optional: a brief comment explaining what these options mean might be useful. Even the EC Keyboard seems to involve a USB keyboard, which is confusing to me as an outsider reading this.",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "5b84057b5dad3f540cc1f9d6503d0c575437f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
