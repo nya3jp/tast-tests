@@ -46,6 +46,30 @@
       },
       "revId": "1221dc6a9317e7aa29342670c3c93bf4812505c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da39f2ac_a55d1f0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T16:00:11Z",
+      "side": 1,
+      "message": "Could you document that this is not running on any bots intentionally?",
+      "parentUuid": "ad06e0ef_02da7d7a",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "1221dc6a9317e7aa29342670c3c93bf4812505c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

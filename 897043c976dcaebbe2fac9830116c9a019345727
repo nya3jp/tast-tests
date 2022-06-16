@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf5921e_0bf0b019",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T16:00:11Z",
+      "side": 1,
+      "message": "nit: cleanupCtx",
+      "range": {
+        "startLine": 74,
+        "startChar": 33,
+        "endLine": 74,
+        "endChar": 36
+      },
+      "revId": "897043c976dcaebbe2fac9830116c9a019345727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20eec270_2cf8b660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T16:00:11Z",
+      "side": 1,
+      "message": "The last 2 mins looks redundant.\nCould you terminate the loop if endTime is closer than 2 mins? (If necessary, I\u0027m ok to wait for the remaining time, but waiting for whole 2 mins always looks not logically correct?)",
+      "revId": "897043c976dcaebbe2fac9830116c9a019345727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
