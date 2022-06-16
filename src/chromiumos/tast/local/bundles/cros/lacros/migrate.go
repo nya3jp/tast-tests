@@ -38,11 +38,11 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Params: []testing.Param{{
-			Name: "copy",
-			Val:  []chrome.Option{chrome.DisableFeatures("LacrosMoveProfileMigration")},
+			Name: "primary",
+			Val:  []lacrosfixt.Option{lacrosfixt.Mode(lacros.LacrosPrimary)},
 		}, {
-			Name: "move",
-			Val:  []chrome.Option{chrome.EnableFeatures("LacrosMoveProfileMigration")},
+			Name: "only",
+			Val:  []lacrosfixt.Option{lacrosfixt.Mode(lacros.LacrosOnly)},
 		}},
 	})
 }
@@ -55,7 +55,7 @@ func Migrate(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	prepareAshProfile(ctx, s, kb)
-	cr, err := migrateProfile(ctx, s.Param().([]chrome.Option))
+	cr, err := migrateProfile(ctx, s.Param().([]lacrosfixt.Option))
 	if err != nil {
 		s.Fatal("Failed to migrate profile: ", err)
 	}
@@ -322,7 +322,7 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 	}()
 }
 
-func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chrome, error) {
+func migrateProfile(ctx context.Context, opts []lacrosfixt.Option) (*chrome.Chrome, error) {
 	// TODO(chromium:1290297): This is a hack.
 	// chrome.New doesn't really support profile migration because it
 	// doesn't anticipate the additional Chrome restart that profile
@@ -333,18 +333,18 @@ func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chr
 	// In order to obtain a valid *Chrome value for the test to continue
 	// with, we restart Chrome once more after profile migration.
 	testing.ContextLog(ctx, "Restarting for profile migration")
-	opts := []chrome.Option{
+	chromeOpts := []chrome.Option{
 		chrome.KeepState(),
 		chrome.RemoveNotification(false),
 		chrome.EnableFeatures("LacrosProfileMigrationForAnyUser"),
 	}
-	opts = append(opts, extraOpts...)
-	opts, err := lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary), lacrosfixt.ChromeOptions(opts...)).Opts()
+	opts = append(opts, lacrosfixt.ChromeOptions(chromeOpts...))
+	chromeOpts, err := lacrosfixt.NewConfig(opts...).Opts()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to compute Chrome options")
 	}
 
-	crDoNotUse, err := chrome.New(ctx, opts...)
+	crDoNotUse, err := chrome.New(ctx, chromeOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -371,5 +371,5 @@ func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chr
 	}
 
 	testing.ContextLog(ctx, "Restarting after profile migration")
-	return chrome.New(ctx, opts...)
+	return chrome.New(ctx, chromeOpts...)
 }
