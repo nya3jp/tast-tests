@@ -16,6 +16,23 @@
       "message": "PTAL!",
       "revId": "a0423feeb9093cb891c36eb8b0dfdbdac5334be7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e6feb3_81b5dd79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T09:59:32Z",
+      "side": 1,
+      "message": "The revert of the culprit CL was landed before the latest tests, so we do not have data point yet.\nCould you wait for a bit more to collect data points that this is actually stable enough?",
+      "revId": "a0423feeb9093cb891c36eb8b0dfdbdac5334be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
