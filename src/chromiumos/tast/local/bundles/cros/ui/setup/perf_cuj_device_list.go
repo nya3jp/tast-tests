@@ -25,3 +25,9 @@ func PerfCUJPlusDevices() hwdep.Condition {
 func PerfCUJPremiumDevices() hwdep.Condition {
 	return hwdep.Model("volta", "vilboz", "dratini", "akemi", "dratini", "dragonair", "dooly", "drobit", "wyvern")
 }
+
+// PerfCUJDevices returns list of DUT models in all tiers.
+// Allowed  hardware models are listes here.
+func PerfCUJDevices() hwdep.Condition {
+	return hwdep.Model("volta", "dratini", "voema")
+}

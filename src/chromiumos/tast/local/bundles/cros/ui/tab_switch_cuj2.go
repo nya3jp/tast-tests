@@ -75,7 +75,7 @@ func init() {
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
-				ExtraHardwareDeps: hwdep.D(setup.PerfCUJBasicDevices()),
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 			}, {
 				Name:              "plus_noproxy",
 				Timeout:           40 * time.Minute,
@@ -95,7 +95,7 @@ func init() {
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
-				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPlusDevices()),
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 			}, {
 				Name:    "premium_noproxy",
 				Timeout: 45 * time.Minute,
@@ -117,7 +117,7 @@ func init() {
 				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 				Fixture:           "loggedInAndKeepState",
 				ExtraSoftwareDeps: []string{"arc"},
-				ExtraHardwareDeps: hwdep.D(setup.PerfCUJPremiumDevices()),
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 			},
 		},
 	})
