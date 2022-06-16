@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a44abea_f8f8ac67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-06-16T17:47:24Z",
+      "side": 1,
+      "message": "nit: test ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "45e3c78cf44d6a6f1d29d8affdca3a493a6c13b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4edfb88a_99306eb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-06-16T17:47:24Z",
+      "side": 1,
+      "message": "nit: test?",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "45e3c78cf44d6a6f1d29d8affdca3a493a6c13b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "234b1a34_c3dfd194",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-06-16T17:47:24Z",
+      "side": 1,
+      "message": "+2 % see comments",
+      "revId": "45e3c78cf44d6a6f1d29d8affdca3a493a6c13b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ce346a_ad97ce49",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-06-16T17:47:24Z",
+      "side": 1,
+      "message": "nit: avoid using | in docstring.\n\ngodoc doesn\u0027t support them",
+      "range": {
+        "startLine": 260,
+        "startChar": 76,
+        "endLine": 260,
+        "endChar": 77
+      },
+      "revId": "45e3c78cf44d6a6f1d29d8affdca3a493a6c13b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "573ca937_ec4c01e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_custom_nameserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-06-16T17:47:24Z",
+      "side": 1,
+      "message": "for a future CL perhaps. Make it its own function, since it is being used in other tests. e.g:\n\n  network.EnsureConnectivityIsAvailable(...)  // or a better name",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "45e3c78cf44d6a6f1d29d8affdca3a493a6c13b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "298e693d_c744dbc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_custom_nameserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-06-16T17:47:24Z",
+      "side": 1,
+      "message": "just double checking:\n\n  s.Error() means that the test will report the error but will continue executing the remaining part of the test. Is that what you want?\n  \nditto for L77",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "45e3c78cf44d6a6f1d29d8affdca3a493a6c13b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
