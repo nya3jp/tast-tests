@@ -22,6 +22,30 @@
       },
       "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e5f2212_eda4325e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dns.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-06-16T06:24:27Z",
+      "side": 1,
+      "message": "I don\u0027t remember. Maybe the ARC and Crostini deps? :)",
+      "parentUuid": "39efa46c_2e4093c7",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 0
+      },
+      "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
