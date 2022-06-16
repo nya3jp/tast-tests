@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38983999_4bf1f0a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-16T03:00:08Z",
+      "side": 1,
+      "message": "Please ignore this comment. This was saved in my draft comments before we agreed in our 1:1 that you would first submit this test with the current behavior, at least as a documentation-through-test goal.",
+      "parentUuid": "d19c57d0_9c1966c2",
+      "range": {
+        "startLine": 278,
+        "startChar": 3,
+        "endLine": 279,
+        "endChar": 20
+      },
+      "revId": "8557a264dd7ca1809a87b70ba4f834f48fe710d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30585242_150a7de1",
