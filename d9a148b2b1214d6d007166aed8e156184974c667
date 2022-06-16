@@ -118,6 +118,30 @@
       },
       "revId": "d9a148b2b1214d6d007166aed8e156184974c667",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf2fdd8_38aa74b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-16T02:58:54Z",
+      "side": 1,
+      "message": "\u003e I remember the expected behavior (of primary:physical secondary:physical case) is that system traffic should be allowed to fall through but user traffic not?\n\nYes. Note that we also discussed allowing this for Crostini for instance, which has its own traffic category but is not system traffic.\n\nThe real problem here is Chrome\u0027s behavior.\n\n\n\u003e I guess we need a way to specify that a destination is only reachable for root but not for chronos\n\nAgreed. Since the routing rules take into account the source, we will have more cases in the tests of checking an assert for traffic from a specific source. So ideally the asserts / code generating traffic should be organized around the patchpanel traffic sources and not the uids directly.",
+      "parentUuid": "b30747ee_962f9b0e",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 51
+      },
+      "revId": "d9a148b2b1214d6d007166aed8e156184974c667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
