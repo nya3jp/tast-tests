@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c5c0a9_f477bae9",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-16T16:02:29Z",
+      "side": 1,
+      "message": "I\u0027ve changed the order except for the GenericAccount API.",
+      "parentUuid": "03458d9b_3bca04a2",
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67b33aad_2f3376bd",
@@ -185,6 +203,30 @@
       "side": 1,
       "message": "Please put that comment in the code as it is not obvious.\n\nJust an ideas:\nWhat about providing builder functions for RequestOTAParams.\nBuildForPool(string) RequestOTAParams {}\nBuildForDefaultPool(string) RequestOTAParams {}\n\nand disallow instantiation of the struct like here https://stackoverflow.com/a/26462681\n\nThat way you decide and control what values are set on RequestOTAParams and also provide a clear API on how to properly create instances of that type.",
       "parentUuid": "8b33a996_f3404c1c",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 17
+      },
+      "revId": "dfd845b315ea4690018c4189732a5eaccd9ad606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4862219_259da310",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-16T16:02:29Z",
+      "side": 1,
+      "message": "I added builder functions and it is not exported anymore. However the fields of the struct must stay exported as they cannot be marshalled to a json object otherwise.",
+      "parentUuid": "7cd86bbb_389d1d5e",
       "range": {
         "startLine": 180,
         "startChar": 4,
