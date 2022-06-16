@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8379fc_d25930f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2022-06-16T15:57:52Z",
+      "side": 1,
+      "message": "Your CL has an error, please look at the build logs...it\u0027s not due to a flake.",
+      "revId": "b4abf9d3534d7a94535feff7a2cbc09dbc399c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29a5a303_f3cbc4ab",
