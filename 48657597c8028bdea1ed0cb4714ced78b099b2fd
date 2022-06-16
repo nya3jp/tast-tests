@@ -122,6 +122,358 @@
       "parentUuid": "cb8e7486_dcf1bce3",
       "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83701fb9_14678a0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "1. I have a few comments. Please take a look.\n\n2. Please run tast unit test: fast_build.sh -T \nThen add this line to commit log\nTEST\u003dtast unit test passed.\n",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99292c1b_9409ed27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "Do you have a Google contact?",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbc6dc3_a1adadbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "Avoid passing testing.State unless it is absolutely necessary:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nIn this case, you can call s.RequiredVar from the top level and pass it in. In this case, you don\u0027t need to pass testing.State.",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2bbc645_c196d10f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "See similar comment above.",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5ed066d_01c7226a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "Don\u0027t need an else here. The \"if\" clause has returned.",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e5a078_c7da62da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "```\n} else {\n```\ninfo.IsInternal will always be false it the code get to here.",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 43
+      },
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "109ed4fd_82995d43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "Do not a \"else\" here. The \"if\" clause returns.",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7257535c_c5b0a1d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "What if you can\u0027t find the source display.",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16bb0dc9_03794933",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "What if you can\u0027t find the dest display?",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b13db7_01f9b2ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "```\nif _, err :\u003d HTTPGetRequest(ctx, api); err !\u003d nil {\n```",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87aef8e5_aabe1548",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "```\nif _, err :\u003d HTTPGetRequest(ctx, api); err !\u003d nil {\n```",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c046f4f3_63b55e9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "```\nif _, err :\u003d HTTPGetRequest(ctx, api); err !\u003d nil {\n```",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e9ee7a_be9f9362",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "Can you do this instead?\n\n```\nreturn HTTPGetRequest(ctx, api)\n```",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b74d381_ebcccdae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "Can you do this instead?\n\n```\nreturn HTTPGetRequest(ctx, api)\n```",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52e53b86_8959d6cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "Can just do\n```\nreturn HTTPGetRequest(ctx, api)\n```",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "353a6151_c5a8c3d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "```\nif err :\u003d getFile.Output(testexec.DumpLogOnError); err !\u003d nil {\n```",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "797f35d3_b01fad31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "You can break here, right?",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8636e326_ae5206e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "```\nif err !\u003d nil {\n\tif wantState {\n\t    return errors.Wrap(err, \"failed to get eth0 operstate\")\n\t}\n\treturn nil\n}\n```",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042f5d21_131d7831",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "Don\u0027t need this line. By default currentStatus is false.\nOR you can do it without \"var\" declaration\n```\ncurrentStatus :\u003d false\n```",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c055582_31d4a1c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-16T03:45:21Z",
+      "side": 1,
+      "message": "You can break here, right?",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
