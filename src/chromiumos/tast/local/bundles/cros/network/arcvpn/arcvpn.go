@@ -106,21 +106,25 @@ func CheckARCVPNState(ctx context.Context, a *arc.ARC, expectedRunning bool) err
 // ArcNetworkDebugTools#reachCmd for possible 'network' values.
 func ExpectARCPingSuccess(ctx context.Context, a *arc.ARC, network, addr string) error {
 	testing.ContextLogf(ctx, "Start to ping %s from ARC over %q", addr, network)
-	// This polls for 5 seconds before it gives up on pinging from within ARC. We poll for a
-	// little bit since the ARP table within ARC might not be populated yet - so give it some
-	// time before the ping makes it through.
+	// This polls for 20 seconds before it gives up on pinging from within ARC. We
+	// poll for a little bit since the ARP table within ARC might not be populated
+	// yet - so give it some time before the ping makes it through.
+	// TODO(cassiewang): We observed in the local manual tests that sometimes this
+	// command gave: "*** SERVICE 'wifi' DUMP TIMEOUT (10000ms) EXPIRED ***". Need
+	// to check if this also happens on the lab machines, so use a relatively
+	// longer timeout here.
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		cmd := a.Command(ctx, "dumpsys", "wifi", "tools", "reach", network, addr)
 		o, err := cmd.Output(testexec.DumpLogOnError)
 		if err != nil {
-			return errors.Wrap(err, "failed to execute 'reach' commmand")
+			return errors.Wrapf(err, "failed to execute 'reach' commmand, output: %s", string(o))
 		}
 
 		if !strings.Contains(string(o), fmt.Sprintf("%s: reachable", addr)) {
-			return errors.New("ping was unreachable")
+			return errors.Errorf("ping was unreachable, output: %s", string(o))
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 20 * time.Second}); err != nil {
 		return errors.Wrap(err, "no response received in ARC")
 	}
 
