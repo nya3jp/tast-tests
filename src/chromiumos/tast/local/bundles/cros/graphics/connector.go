@@ -19,6 +19,8 @@ import (
 // Please contact chromeos-gfx@ team to edit the list if new device exposes dp++ support on purpose.
 var dpPlusModels = []string{
 	"asuka",
+	// brask family, only kinox is supporting dp++
+	"kinox",
 	"cave",
 	"caroline",
 	"chell",
