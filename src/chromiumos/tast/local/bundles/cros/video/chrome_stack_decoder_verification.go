@@ -70,6 +70,8 @@ var h264FilesFromBugs = []string{
 	"test_vectors/h264/files_from_bugs/b_172838252_pixelated_video_on_rk3399.h264",
 	"test_vectors/h264/files_from_bugs/b_174733646_video_with_out_of_order_frames_mtk_8173.h264",
 	"test_vectors/h264/files_from_bugs/b_210895987_still-colors-360p.h264",
+}
+var h2644KFilesFromBugs = []string{
 	"test_vectors/h264/files_from_bugs/b_227047778_mtk_8195_artifacts.h264",
 }
 
@@ -427,6 +429,15 @@ func init() {
 			ExtraData:         appendJSONFiles(h264FilesFromBugs),
 			Val: chromeStackDecoderVerificationTestParam{
 				videoFiles:    h264FilesFromBugs,
+				validatorType: decoding.MD5,
+			},
+		}, {
+			Name:              "h264_4k_files_from_bugs",
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild", "graphics_video_chromestackdecoding"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeH264_4K, "proprietary_codecs"},
+			ExtraData:         appendJSONFiles(h2644KFilesFromBugs),
+			Val: chromeStackDecoderVerificationTestParam{
+				videoFiles:    h2644KFilesFromBugs,
 				validatorType: decoding.MD5,
 			},
 		}, {
