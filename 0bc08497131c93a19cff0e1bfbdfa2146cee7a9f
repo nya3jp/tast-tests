@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23744f1f_88ac9beb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-06-16T02:09:07Z",
+      "side": 1,
+      "message": "Per offline discussion. Please help tested on ToT Chrome to ensure that it uses the CCA with latest behaviors.",
+      "parentUuid": "a94f4303_35278422",
+      "range": {
+        "startLine": 102,
+        "startChar": 28,
+        "endLine": 102,
+        "endChar": 43
+      },
+      "revId": "0bc08497131c93a19cff0e1bfbdfa2146cee7a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e9291c6_701010e2",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "It means nothing. That is the time ChromeVox introducing Document Scanning function.",
       "parentUuid": "0e9291c6_701010e2",
+      "range": {
+        "startLine": 106,
+        "startChar": 28,
+        "endLine": 106,
+        "endChar": 29
+      },
+      "revId": "0bc08497131c93a19cff0e1bfbdfa2146cee7a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "471cbde3_944c5aeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-06-16T02:09:07Z",
+      "side": 1,
+      "message": "What will happen if we don\u0027t include this line?",
+      "parentUuid": "18a3df5e_84ae5279",
       "range": {
         "startLine": 106,
         "startChar": 28,
