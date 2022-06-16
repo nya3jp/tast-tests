@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e56cbf11_8b9f9925",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1408793
+      },
+      "writtenOn": "2022-06-16T11:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4abe27a_1a5a968c",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "4c763bd4c64f1901edec23af17e373ad27c9b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aaae7fa0_7b9d1958",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-16T09:42:59Z",
       "side": 1,
       "message": "nit: sentence should finish with full stop.",
+      "range": {
+        "startLine": 12,
+        "startChar": 30,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "4c763bd4c64f1901edec23af17e373ad27c9b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f35ffb07_8538b22e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1408793
+      },
+      "writtenOn": "2022-06-16T11:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaae7fa0_7b9d1958",
       "range": {
         "startLine": 12,
         "startChar": 30,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65754732_adf5d2d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/setup/perf_cuj_device_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1408793
+      },
+      "writtenOn": "2022-06-16T11:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41442a2d_7de2497a",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "4c763bd4c64f1901edec23af17e373ad27c9b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff17c8e1_ab9e8a36",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-06-16T09:41:49Z",
       "side": 1,
       "message": "nit: Allowed hardware models are listed here.",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 55
+      },
+      "revId": "4c763bd4c64f1901edec23af17e373ad27c9b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f457ff7_b2faa35c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/setup/perf_cuj_device_list.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1408793
+      },
+      "writtenOn": "2022-06-16T11:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff17c8e1_ab9e8a36",
       "range": {
         "startLine": 30,
         "startChar": 3,
