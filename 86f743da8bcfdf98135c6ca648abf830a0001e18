@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ecca83_c045402a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-16T23:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e277f24c_c10f2116",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bb966a8_aa4aecd7",
@@ -71,6 +89,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d911ad41_85c50b6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-16T23:01:58Z",
+      "side": 1,
+      "message": "Would an improvement be to use a test profile like you made in shill_veth.go here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3668362/7/src/chromiumos/tast/local/shill/manager.go#444\n\nThat way we can safely pop the test profile once we are done. LMK if you think this could be useful/necessary.",
+      "parentUuid": "3bb966a8_aa4aecd7",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c84cef46_ac670a9c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
         "patchSetId": 6
@@ -82,6 +118,24 @@
       "writtenOn": "2022-06-16T17:05:47Z",
       "side": 1,
       "message": "This appears to be unused. We could inline it or maybe make it part of CreateCaptivePortalEnv?",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6214a8b5_920e94b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-16T23:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c84cef46_ac670a9c",
       "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +159,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07cf428d_273b4196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-16T23:01:58Z",
+      "side": 1,
+      "message": "My assumption is this is high enough to be the biggest priority. I copied this part from Jie\u0027s original routing test here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3670620/4/src/chromiumos/tast/local/bundles/cros/network/routing.go\n\n@Jie, could you comment here why 5?",
+      "parentUuid": "89c464e6_15070f45",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72cdb0bb_393fd976",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
         "patchSetId": 6
@@ -116,6 +188,24 @@
       "writtenOn": "2022-06-16T17:05:47Z",
       "side": 1,
       "message": "The struct on the other hand would be more readable if declared out of line.",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "604ac5de_888d813e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-16T23:01:58Z",
+      "side": 1,
+      "message": "Done. Also removed the suffix struct variable as it seemed unnecessary.",
+      "parentUuid": "72cdb0bb_393fd976",
       "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -137,6 +227,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b1d3cd5_2b7e996c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-16T23:01:58Z",
+      "side": 1,
+      "message": "Changed the implementation to get the address from the veth interface, no constant needed.",
+      "parentUuid": "44b438ea_9e45fd79",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2046824c_9794bf56",
@@ -154,6 +262,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b66bf5c_2c532081",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-16T23:01:58Z",
+      "side": 1,
+      "message": "Done, added it to the env.go instead since that is technically the environment that contains the netns.",
+      "parentUuid": "2046824c_9794bf56",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3223764_4b9c552f",
@@ -167,6 +293,24 @@
       "writtenOn": "2022-06-16T17:05:47Z",
       "side": 1,
       "message": "No else after a return unless required for context, e.g.:\nif out, err :\u003d ...; err !\u003d nil {\n  return err;\n} else {\n  // code using |out|\n}\nHere I might suggest the if/else pattern, especially if we simplify the curl call with a helper.",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d867595f_6257b8ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-16T23:01:58Z",
+      "side": 1,
+      "message": "I made the change to simplify running commands in an env but I think I am confused by what you suggested here. I still need to have another `if` inside the `else` to check if |out| contains |okHeader|. Is the following what you are looking for?:\n\n```\nif out, err :\u003d portal.RunCommandInNetNS(ctx, cmd); err !\u003d nil; err !\u003d nil {\n  return err;\n} else {\n  if !bytes.Contains(out, okHeader) {\n    return errors.Errorf(\"unexpected curl result: got %s; want %s\", out, okHeader)\n  }\n}\n```\n\nCould you clarify what you are suggesting here?",
+      "parentUuid": "f3223764_4b9c552f",
       "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
