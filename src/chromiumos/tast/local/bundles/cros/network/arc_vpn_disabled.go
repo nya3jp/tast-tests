@@ -11,8 +11,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/network/arcvpn"
-	"chromiumos/tast/local/bundles/cros/network/vpn"
-	localping "chromiumos/tast/local/network/ping"
+	"chromiumos/tast/local/bundles/cros/network/routing"
 	"chromiumos/tast/testing"
 )
 
@@ -50,8 +49,7 @@ func ARCVPNDisabled(ctx context.Context, s *testing.State) {
 	if _, err := conn.Connect(ctx); err != nil {
 		s.Fatal("Failed to connect to VPN server: ", err)
 	}
-	pr := localping.NewLocalRunner()
-	if err := vpn.ExpectPingSuccess(ctx, pr, conn.Server.OverlayIP); err != nil {
+	if err := routing.ExpectPingSuccessWithTimeout(ctx, conn.Server.OverlayIP, "chronos", 10*time.Second); err != nil {
 		s.Fatalf("Failed to ping from host %s: %v", conn.Server.OverlayIP, err)
 	}
 	// Currently, ARC VPN is disabled by default.
