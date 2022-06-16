@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03082fa0_b74adda3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-16T04:52:02Z",
+      "side": 1,
+      "message": "oops, crossing. anyways, slgtm for PS12.",
+      "revId": "6ea11e5afc6403e189be09972437c9bb0f22aef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
