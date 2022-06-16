@@ -1,4 +1,4 @@
-// Copyright 2019 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -22,27 +22,18 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         KernelCrash,
+		Func:         HypervisorCrash,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Verify artificial kernel crash creates crash files",
-		Contacts:     []string{"mutexlox@chromium.org", "cros-telemetry@google.com"},
+		Desc:         "Verify artificial hypervisor crash creates crash files",
+		Contacts:     []string{"pso@chromium.org", "cros-manatee@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"device_crash", "pstore", "reboot"},
+		SoftwareDeps: []string{"device_crash", "manatee", "pstore", "reboot"},
 		ServiceDeps:  []string{"tast.cros.crash.FixtureService"},
-		Params: []testing.Param{{
-			Name:              "real_consent",
-			ExtraAttr:         []string{"informational"},
-			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
-			Val:               crash_service.SetUpCrashTestRequest_REAL_CONSENT,
-		}, {
-			Name: "mock_consent",
-			Val:  crash_service.SetUpCrashTestRequest_MOCK_CONSENT,
-		}},
-		Timeout: 10 * time.Minute,
+		Timeout:      10 * time.Minute,
 	})
 }
 
-func KernelCrash(ctx context.Context, s *testing.State) {
+func HypervisorCrash(ctx context.Context, s *testing.State) {
 	const systemCrashDir = "/var/spool/crash"
 
 	d := s.DUT()
@@ -55,7 +46,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	fs := crash_service.NewFixtureServiceClient(cl.Conn)
 
 	req := crash_service.SetUpCrashTestRequest{
-		Consent: s.Param().(crash_service.SetUpCrashTestRequest_ConsentType),
+		Consent: crash_service.SetUpCrashTestRequest_MOCK_CONSENT,
 	}
 
 	// Shorten deadline to leave time for cleanup
@@ -88,7 +79,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if out, err := d.Conn().CommandContext(ctx, "logger", "Running KernelCrash").CombinedOutput(); err != nil {
+	if out, err := d.Conn().CommandContext(ctx, "logger", "Running HypervisorCrash").CombinedOutput(); err != nil {
 		s.Logf("WARNING: Failed to log info message: %s", out)
 		s.Log("Invoking 'logger' failed: ", err)
 	}
@@ -104,11 +95,8 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	// success is reported over the SSH connection. Redirect all I/O streams to ensure that the
 	// SSH exec request doesn't hang (see https://en.wikipedia.org/wiki/Nohup#Overcoming_hanging).
 	const cmd = `(sleep 2
-	if [ -f /sys/kernel/debug/provoke-crash/DIRECT ]; then
-		echo PANIC > /sys/kernel/debug/provoke-crash/DIRECT
-	else
-		echo panic > /proc/breakme
-	fi) >/dev/null 2>&1 </dev/null &`
+	manatee -a shell-notty -- -c "echo c > /proc/sysrq-trigger"
+  ) >/dev/null 2>&1 </dev/null &`
 	if err := d.Conn().CommandContext(ctx, "nohup", "sh", "-c", cmd).Run(); err != nil {
 		s.Fatal("Failed to panic DUT: ", err)
 	}
@@ -162,7 +150,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 			s.Error("Failed to save meta file")
 			continue
 		}
-		kernel.VerifyMetadata(s, match.Files[0], "kernel")
+		kernel.VerifyMetadata(s, match.Files[0], "hypervisor")
 	}
 
 	// Also remove the bios log if it was created.
