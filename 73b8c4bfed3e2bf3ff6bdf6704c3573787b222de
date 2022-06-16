@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b73d21_24b4de69",
+        "filename": "src/chromiumos/tast/local/screenshot/differ.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-16T05:07:35Z",
+      "side": 1,
+      "message": "not just `ash.WindowStateNormal`, IIRC, `ash.WindowStateMaximized` is also an invalud state in tablet. You may want to check all the invalid states in tablet mode.",
+      "range": {
+        "startLine": 419,
+        "startChar": 18,
+        "endLine": 419,
+        "endChar": 62
+      },
+      "revId": "73b8c4bfed3e2bf3ff6bdf6704c3573787b222de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
