@@ -514,6 +514,30 @@
       },
       "revId": "b398be50654e21a4a924b65c2f52361a83276104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1af3002f_2bec44bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-16T19:40:35Z",
+      "side": 1,
+      "message": "Great suggestion. I think my previous implementation came from a misunderstanding. Thanks so much for the suggestion. Let me know how it looks!",
+      "parentUuid": "bfdecbe8_c3686dc9",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 91,
+        "endChar": 41
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
