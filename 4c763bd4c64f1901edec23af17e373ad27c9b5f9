@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4abe27a_1a5a968c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-16T09:42:59Z",
+      "side": 1,
+      "message": "nit: CUJ",
+      "range": {
+        "startLine": 7,
+        "startChar": 39,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "4c763bd4c64f1901edec23af17e373ad27c9b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaae7fa0_7b9d1958",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-16T09:42:59Z",
+      "side": 1,
+      "message": "nit: sentence should finish with full stop.",
+      "range": {
+        "startLine": 12,
+        "startChar": 30,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "4c763bd4c64f1901edec23af17e373ad27c9b5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a040698b_d39c1ff5",
