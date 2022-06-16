@@ -192,6 +192,24 @@
       "parentUuid": "ed8994ac_a4a632d9",
       "revId": "b2fdcb23b1570fd447f4b2859a2bef8ea77813da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "158db8cd_daf583e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper_child.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-16T00:27:35Z",
+      "side": 1,
+      "message": "We shouldn\u0027t rely on it taking 4 seconds. It may take different amounts of time.\n\nCan you poll the ui to see when it goes away? Try using WaitUntilNotificationGone or uiauto + testing.Poll if that doesn\u0027t work.",
+      "parentUuid": "1f303122_f261ac74",
+      "revId": "b2fdcb23b1570fd447f4b2859a2bef8ea77813da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
