@@ -34,14 +34,50 @@ func init() {
 			Name:              "real_consent",
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"chrome", "metrics_consent"},
-			Val:               crash_service.SetUpCrashTestRequest_REAL_CONSENT,
+			Val: testParams{
+				consent:  crash_service.SetUpCrashTestRequest_REAL_CONSENT,
+				panicCmd: kernelPanicCmd,
+				execName: "kernel",
+			},
 		}, {
 			Name: "mock_consent",
-			Val:  crash_service.SetUpCrashTestRequest_MOCK_CONSENT,
+			Val: testParams{
+				consent:  crash_service.SetUpCrashTestRequest_MOCK_CONSENT,
+				panicCmd: kernelPanicCmd,
+				execName: "kernel",
+			},
+		}, {
+			Name: "hypervisor",
+			Val: testParams{
+				consent:  crash_service.SetUpCrashTestRequest_MOCK_CONSENT,
+				panicCmd: hypervisorPanicCmd,
+				execName: "hypervisor",
+			},
 		}},
 		Timeout: 10 * time.Minute,
 	})
 }
+
+type testParams struct {
+	consent  crash_service.SetUpCrashTestRequest_ConsentType
+	panicCmd string
+	execName string
+}
+
+// Run the triggering command in the background to avoid the DUT potentially going down before
+// success is reported over the SSH connection. Redirect all I/O streams to ensure that the
+// SSH exec request doesn't hang (see https://en.wikipedia.org/wiki/Nohup#Overcoming_hanging).
+
+const kernelPanicCmd = `(sleep 2
+  if [ -f /sys/kernel/debug/provoke-crash/DIRECT ]; then
+    echo PANIC > /sys/kernel/debug/provoke-crash/DIRECT
+  else
+    echo panic > /proc/breakme
+  fi) >/dev/null 2>&1 </dev/null &`
+
+const hypervisorPanicCmd = `(sleep 2
+  manatee -a shell-notty -- -c "echo c > /proc/sysrq-trigger"
+  ) >/dev/null 2>&1 </dev/null &`
 
 func KernelCrash(ctx context.Context, s *testing.State) {
 	const systemCrashDir = "/var/spool/crash"
@@ -54,9 +90,10 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	}
 
 	fs := crash_service.NewFixtureServiceClient(cl.Conn)
+	crash := s.Param().(testParams)
 
 	req := crash_service.SetUpCrashTestRequest{
-		Consent: s.Param().(crash_service.SetUpCrashTestRequest_ConsentType),
+		Consent: crash.consent,
 	}
 
 	// Shorten deadline to leave time for cleanup
@@ -75,8 +112,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	//
 	// If it fails to reconnect, we do not need to clean these up.
 	//
-	// Otherwise, we need to re-establish a connection to the machine and
-	// run TearDown.
+	// Otherwise, we need to run TearDown on the re-established connection to the machine.
 	defer func() {
 		s.Log("Cleaning up")
 		if fs != nil {
@@ -89,26 +125,20 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	if out, err := d.Conn().CommandContext(ctx, "logger", "Running KernelCrash").CombinedOutput(); err != nil {
+	if out, err := d.Conn().CommandContext(ctx, "logger", "Running", s.TestName()).CombinedOutput(); err != nil {
+		s.Log("Invoking 'logger' failed: ", err)
 		s.Logf("WARNING: Failed to log info message: %s", out)
 	}
 
 	// Sync filesystem to minimize impact of the panic on other tests
 	if out, err := d.Conn().CommandContext(ctx, "sync").CombinedOutput(); err != nil {
+		s.Log("Invoking 'sync' failed: ", err)
 		s.Fatalf("Failed to sync filesystems: %s", out)
 	}
 
-	// Trigger a panic
-	// Run the triggering command in the background to avoid the DUT potentially going down before
-	// success is reported over the SSH connection. Redirect all I/O streams to ensure that the
-	// SSH exec request doesn't hang (see https://en.wikipedia.org/wiki/Nohup#Overcoming_hanging).
-	cmd := `nohup sh -c 'sleep 2
-	if [ -f /sys/kernel/debug/provoke-crash/DIRECT ]; then
-		echo PANIC > /sys/kernel/debug/provoke-crash/DIRECT
-	else
-		echo panic > /proc/breakme
-	fi' >/dev/null 2>&1 </dev/null &`
-	if err := d.Conn().CommandContext(ctx, "sh", "-c", cmd).Run(); err != nil {
+	// Trigger a panic. We run the command with nohup so that the command is not
+	// affected by disconnection. The command should report success before panicking.
+	if err := d.Conn().CommandContext(ctx, "nohup", "sh", "-c", crash.panicCmd).Run(); err != nil {
 		s.Fatal("Failed to panic DUT: ", err)
 	}
 
@@ -136,7 +166,7 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	}
 	fs = crash_service.NewFixtureServiceClient(cl.Conn)
 
-	base := `kernel\.\d{8}\.\d{6}\.\d+\.0`
+	const base = `kernel\.\d{8}\.\d{6}\.\d+\.0`
 	waitReq := &crash_service.WaitForCrashFilesRequest{
 		Dirs:    []string{systemCrashDir},
 		Regexes: []string{base + `\.kcrash`, base + `\.meta`, base + `\.log`},
@@ -151,7 +181,9 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find crash files: " + err.Error())
 	}
 
-	// Verify that expected signature for kernel crashes is non-zero
+	execNameRegexp := regexp.MustCompile("(?m)^exec_name=" + crash.execName + "$")
+	badSigRegexp := regexp.MustCompile("sig=kernel-.+-00000000")
+	goodSigRegexp := regexp.MustCompile("sig=kernel-.+-[[:xdigit:]]{8}")
 	for _, match := range res.Matches {
 		if !strings.HasSuffix(match.Regex, ".meta") {
 			continue
@@ -167,8 +199,10 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 			s.Error("Failed to read meta file", match.Files[0])
 			continue
 		}
-		badSigRegexp := regexp.MustCompile("sig=kernel-.+-00000000")
-		goodSigRegexp := regexp.MustCompile("sig=kernel-.+-[[:xdigit:]]{8}")
+		s.Log("Checking exec_name")
+		if !execNameRegexp.Match(f) {
+			s.Error("Found wrong exec_name in meta file ", match.Files[0])
+		}
 		if badSigRegexp.Match(f) {
 			s.Error("Found all zero signature in meta file ", match.Files[0])
 		} else if !goodSigRegexp.Match(f) {
