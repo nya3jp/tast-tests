@@ -16,6 +16,184 @@
       "message": "Hello, I\u0027ve addressed the reviews, please help me review again. Thank you.",
       "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "540fce28_bd43a063",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-17T20:02:52Z",
+      "side": 1,
+      "message": "Thanks, John!",
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9570aaff_c2ed6341",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-17T20:02:52Z",
+      "side": 1,
+      "message": "Rather than a string, can you make this an enum?",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1606437_83a922ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-17T20:02:52Z",
+      "side": 1,
+      "message": "This ctx should also be `ctxForCleanup`, as the TearDownCrashTest is a necessary part of cleanup",
+      "range": {
+        "startLine": 67,
+        "startChar": 31,
+        "endLine": 67,
+        "endChar": 34
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9802965_a11571ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-17T20:02:52Z",
+      "side": 1,
+      "message": "optional: I wonder if it would be better to have `expectReport` as a parameter to the test; you could have a struct containing both the test type enum as well as whether to expect a report. That would make it easier to see which test types expect reports.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 22
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9310ad41_50373522",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-17T20:02:52Z",
+      "side": 1,
+      "message": "nit: Prefer filepath-specific functions:\n\n  filepath.Join(\"/home/user\", hash)",
+      "range": {
+        "startLine": 144,
+        "startChar": 13,
+        "endLine": 144,
+        "endChar": 47
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be0b5373_bf07132b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-17T20:02:52Z",
+      "side": 1,
+      "message": "Nit: prefer `os.RemoveAll` rather than using a shell.",
+      "range": {
+        "startLine": 145,
+        "startChar": 15,
+        "endLine": 145,
+        "endChar": 55
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f5b09f_08a8789d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-17T20:02:52Z",
+      "side": 1,
+      "message": "nit: Prefer `ioutil.WriteFile(userDir, nil, 0644)` for better errors, rather than using a shell.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 50
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c18d509_e527fcb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-17T20:02:52Z",
+      "side": 1,
+      "message": "In this case, it would probably help with debugging to save the crash, using `crash.MoveFilesToOut(s.OutDir(), /*files*/)`",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 39
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -200,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9259fe1b_21415973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-17T20:02:52Z",
+      "side": 1,
+      "message": "Yes, I believe that\u0027s correct.",
+      "parentUuid": "6759bceb_5519533d",
+      "range": {
+        "startLine": 58,
+        "startChar": 56,
+        "endLine": 58,
+        "endChar": 60
+      },
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61e9d41c_94f5a2e1",
