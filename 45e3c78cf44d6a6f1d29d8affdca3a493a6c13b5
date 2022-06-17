@@ -64,6 +64,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12155cb7_9fd23271",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-06-17T00:19:20Z",
+      "side": 1,
+      "message": "thanks for the review",
+      "revId": "45e3c78cf44d6a6f1d29d8affdca3a493a6c13b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18ce346a_ad97ce49",
@@ -77,6 +94,30 @@
       "writtenOn": "2022-06-16T17:47:24Z",
       "side": 1,
       "message": "nit: avoid using | in docstring.\n\ngodoc doesn\u0027t support them",
+      "range": {
+        "startLine": 260,
+        "startChar": 76,
+        "endLine": 260,
+        "endChar": 77
+      },
+      "revId": "45e3c78cf44d6a6f1d29d8affdca3a493a6c13b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dbd1365_33680b18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-06-17T00:19:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18ce346a_ad97ce49",
       "range": {
         "startLine": 260,
         "startChar": 76,
@@ -110,6 +151,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b666b84f_73d5c053",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_custom_nameserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-06-17T00:19:20Z",
+      "side": 1,
+      "message": "that\u0027s a reasonable suggestion",
+      "parentUuid": "573ca937_ec4c01e0",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 2
+      },
+      "revId": "45e3c78cf44d6a6f1d29d8affdca3a493a6c13b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "298e693d_c744dbc5",
@@ -123,6 +188,30 @@
       "writtenOn": "2022-06-16T17:47:24Z",
       "side": 1,
       "message": "just double checking:\n\n  s.Error() means that the test will report the error but will continue executing the remaining part of the test. Is that what you want?\n  \nditto for L77",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "45e3c78cf44d6a6f1d29d8affdca3a493a6c13b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83e52539_24261c04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy_custom_nameserver.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-06-17T00:19:20Z",
+      "side": 1,
+      "message": "yep. prior logic unrolled the slice and emitted an error for each.",
+      "parentUuid": "298e693d_c744dbc5",
       "range": {
         "startLine": 70,
         "startChar": 4,
