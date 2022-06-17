@@ -9,7 +9,6 @@ import (
 	"encoding/hex"
 	"fmt"
 	"net"
-	"strconv"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -27,6 +26,7 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/remote/wificell/router"
+	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
@@ -40,10 +40,11 @@ type ContParam struct {
 	Param      interface{}
 }
 
-// ContTest hods all varibles to be accessible for the whole continuity test.
+// ContTest holds all variables to be accessible for the whole continuity test.
 type ContTest struct {
 	tf          *wificell.TestFixture
 	r           router.StandardWithBridgeAndVeth
+	pcap        support.Capture
 	clientMAC   string
 	br          [2]string
 	veth        [2]string
@@ -74,12 +75,6 @@ func reserveForRelease(ctx context.Context) (context.Context, func()) {
 	return ctxutil.Shorten(ctx, 10*time.Second)
 }
 
-func uniqueAPName() string {
-	id := strconv.Itoa(apID)
-	apID++
-	return id
-}
-
 func hasFTSupport(ctx context.Context, s *testing.State) bool {
 	phys, _, err := iw.NewRemoteRunner(s.DUT().Conn()).ListPhys(ctx)
 	if err != nil {
@@ -100,7 +95,7 @@ func hasFTSupport(ctx context.Context, s *testing.State) bool {
 	return false
 }
 
-func setupPcapOnRouter(ctx context.Context, r router.Standard,
+func setupPcapOnRouter(ctx context.Context, r support.Capture,
 	apName string, apConf *hostapd.Config, ds *destructorStack) error {
 	freqOps, err := apConf.PcapFreqOptions()
 	if err != nil {
@@ -192,6 +187,11 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 	if err != nil {
 		s.Fatal("Failed to get router: ", err)
 	}
+	var ok bool
+	ct.pcap, ok = tf.Pcap().(support.Capture)
+	if !ok {
+		s.Fatal("Failed as device type doesn't have capture support: ", tf.Pcap().RouterType().String())
+	}
 
 	ct.veth[0], ct.veth[1], err = ct.r.NewVethPair(ctx)
 	if err != nil {
@@ -272,9 +272,13 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 	if err != nil {
 		s.Fatal("Failed to generate the hostapd config for AP0: ", err)
 	}
-	ap0Name := uniqueAPName()
+	ap0Name := tf.UniqueAPName()
 	if err = setupPcapOnRouter(ctx, ct.r, ap0Name, ap0Conf, ds); err != nil {
 		s.Fatal("Failed to setup pcap: ", err)
+	}
+
+	if err = setupPcapOnRouter(ctx, ct.pcap, "monitor"+ap0Name, ap0Conf, ds); err != nil {
+		s.Fatal("Failed to setup monitor: ", err)
 	}
 
 	dutCapturer, err := pcap.StartCapturer(ctx, s.DUT().Conn(), "dut", "wlan0", "/var/log/")
@@ -332,7 +336,7 @@ func (ct *ContTest) ContinuityTestSetupFinalize(ctx context.Context, s *testing.
 	s.Log("Starting the second AP")
 	ds, destroyIfNotExported := newDestructorStack()
 	defer destroyIfNotExported()
-	ap1Name := uniqueAPName()
+	ap1Name := ct.tf.UniqueAPName()
 	ap1Conf, err := hostapd.NewConfig(ct.apOps[1]...)
 	if err != nil {
 		s.Fatal("Failed to generate the hostapd config for AP1: ", err)
@@ -340,6 +344,10 @@ func (ct *ContTest) ContinuityTestSetupFinalize(ctx context.Context, s *testing.
 
 	if err = setupPcapOnRouter(ctx, ct.r, ap1Name, ap1Conf, ds); err != nil {
 		s.Fatal("Failed to setup pcap: ", err)
+	}
+
+	if err = setupPcapOnRouter(ctx, ct.pcap, "monitor"+ap1Name, ap1Conf, ds); err != nil {
+		s.Fatal("Failed to setup monitor: ", err)
 	}
 
 	ct.ap[1], err = ct.r.StartHostapd(ctx, ap1Name, ap1Conf)
