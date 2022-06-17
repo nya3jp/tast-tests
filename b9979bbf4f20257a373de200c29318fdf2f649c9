@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3371c559_9be2118d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_battery_cutoff.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-06-17T16:49:27Z",
+      "side": 1,
+      "message": "I forgot to add, this is what\u0027s output when no charger is attached:\n\n```\n2022-06-17T15:58:34.850820Z [15:58:34.850] Error at shutdown_with_command_battery_cutoff.go:66: Charger not attached\n2022-06-17T15:58:34.850903Z [15:58:34.850] Stack trace:\nCharger not attached\n    at chromiumos/tast/remote/bundles/cros/power.ShutdownWithCommandBatteryCutoff.func1 (shutdown_with_command_battery_cutoff.go:66)\n    at chromiumos/tast/internal/testingutil.Poll (poll.go:64)\n    at chromiumos/tast/testing.Poll (util.go:43)\n    at chromiumos/tast/remote/bundles/cros/power.ShutdownWithCommandBatteryCutoff (shutdown_with_command_battery_cutoff.go:60)\n    at chromiumos/tast/internal/planner.runTestWithConfig.func3.1 (run.go:824)\n    at chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n    at runtime.goexit (asm_amd64.s:1571)\n...\n2022-06-17T15:59:09.296768Z --------------------------------------------------------------------------------\n2022-06-17T15:59:09.296816Z power.ShutdownWithCommandBatteryCutoff [ FAIL ] Charger not attached\n2022-06-17T15:59:09.296835Z --------------------------------------------------------------------------------\n```",
+      "parentUuid": "3b489c06_4f430a8e",
+      "range": {
+        "startLine": 82,
+        "startChar": 53,
+        "endLine": 82,
+        "endChar": 66
+      },
+      "revId": "b9979bbf4f20257a373de200c29318fdf2f649c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cd276e6_ad618a78",
