@@ -37,6 +37,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51f9f5cf_b4636609",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-17T02:39:27Z",
+      "side": 1,
+      "message": "No longer needed I guess?",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 46
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a52ee10_19bb941b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-17T02:39:27Z",
+      "side": 1,
+      "message": "Do we still want to disable portal on Ethernet? I guess this is what we want to verify?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77db1d6d_fe5a165b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
         "patchSetId": 8
@@ -48,6 +94,144 @@
       "writtenOn": "2022-06-16T23:37:20Z",
       "side": 1,
       "message": "nit: re-reading this code, I think that portalEnv would be more clear, even if it is longer. (I kept forgetting that \u0027portal\u0027 was an env type).",
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23c5bae2_11dab22c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-17T02:39:27Z",
+      "side": 1,
+      "message": "Just to check my understanding, what\u0027s the purpose of this check here? I assume:\n1) To check HTTP server is ready: then this can be moved into httpserver.Start() since it makes better sense to let that function return only if it\u0027s ready?\n2) To check we can reach HTTP server from root netns (i.e., can reach a HTTP server on the router from DUT) (this will also include the routing setup on DUT): then maybe we should not run the curl inside netns but run it directly (with the address of router gateway)?",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 39
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece0a466_729d0e62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-17T02:39:27Z",
+      "side": 1,
+      "message": "How about just return the svc in CreateCaptivePortalEnv(), like what CreateRouterEnv() does now? Then we don\u0027t need to this again here.",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 0
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23922620_5199b10c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-17T02:39:27Z",
+      "side": 1,
+      "message": "Just curious, so this curl cmd cannot be run in chroot with env.CreateCommand()?",
+      "range": {
+        "startLine": 99,
+        "startChar": 24,
+        "endLine": 99,
+        "endChar": 41
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff5f8a60_e8d0aee2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-17T02:39:27Z",
+      "side": 1,
+      "message": "There is PropertyWatcher on Service, which can listen to the D-Bus signal on a Service, and can be used to simplified the code here. One example: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/vpn/connection.go;drc\u003dc190d76d63015ad49abad45561ae176604db2438;l\u003d527",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94b290b_60b4800a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-17T02:39:27Z",
+      "side": 1,
+      "message": "nit: since this |address| does not map to the address option in dnsmasq now, we may need a better name and/or some comments to explain.",
+      "range": {
+        "startLine": 55,
+        "startChar": 42,
+        "endLine": 55,
+        "endChar": 49
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17351336_f6140b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-17T02:39:27Z",
+      "side": 1,
+      "message": "Just to check my understanding: do we still need to enable lo now?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
       "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

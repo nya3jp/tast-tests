@@ -538,6 +538,30 @@
       },
       "revId": "b398be50654e21a4a924b65c2f52361a83276104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa00c242_1813414f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-17T02:39:27Z",
+      "side": 1,
+      "message": "LGTM about setting up the Env now. Thanks for polishing the code!",
+      "parentUuid": "1af3002f_2bec44bd",
+      "range": {
+        "startLine": 91,
+        "startChar": 32,
+        "endLine": 91,
+        "endChar": 41
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
