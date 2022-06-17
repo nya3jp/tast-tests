@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0dc665b_df494e18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-06-17T00:50:00Z",
+      "side": 1,
+      "message": "You\u0027ll need an owner to review this (I\u0027m not).",
+      "revId": "8c13cf5a638fbd3f5f5955173c53668063a6e4fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
