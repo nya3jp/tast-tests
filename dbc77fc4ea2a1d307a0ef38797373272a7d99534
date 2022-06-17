@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ff86395_f3fd9b8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T07:37:13Z",
+      "side": 1,
+      "message": "Manual test would be the fallback/stepping stone solution.\n\nPreferably I would want this test to run per milestone or weekly, or maybe per build (a little too frequently, will be acceptable if infra team doesn\u0027t complain about the 20 minutes extra run time). Do you have suggestions on how to specify a weekly or per milestone run, or if doing this per-build is acceptable? Thanks.",
+      "parentUuid": "7ea8275b_3eb4b9b4",
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fb4a50d_bee4cebf",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
         "patchSetId": 5
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-15T06:49:09Z",
       "side": 1,
       "message": "nit: not really needed, the comments in the remaining describe it pretty well 👍",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 62
+      },
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "119dc5e4_abc0f4b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T07:37:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fb4a50d_bee4cebf",
       "range": {
         "startLine": 45,
         "startChar": 2,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "171c799e_3bc8e40e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T07:37:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b045ff81_0b64b1cb",
+      "range": {
+        "startLine": 77,
+        "startChar": 21,
+        "endLine": 77,
+        "endChar": 23
+      },
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a2ff8fc_0995b58e",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-06-15T06:49:09Z",
       "side": 1,
       "message": "nit: this could just be a named inline function that you call once then defer. Something like:\n```\ncleanupCryptohome \u003d func(ctx context.Context) {\n...\n}\ncleanupCrypthome(ctx)\ndefer cleanupCryptohome(ctxForCleanup)\n```",
+      "range": {
+        "startLine": 95,
+        "startChar": 7,
+        "endLine": 105,
+        "endChar": 2
+      },
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "714fd8cc_40c93ffb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T07:37:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a2ff8fc_0995b58e",
       "range": {
         "startLine": 95,
         "startChar": 7,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b6072e5_660d0a96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T07:37:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7add38b_5ec0e49e",
+      "range": {
+        "startLine": 236,
+        "startChar": 116,
+        "endLine": 236,
+        "endChar": 122
+      },
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cffbfc0f_c28b9ab6",
@@ -140,6 +254,30 @@
       "writtenOn": "2022-06-15T06:49:09Z",
       "side": 1,
       "message": "Generally best to avoid `panic`\u0027s in a test. Prefer to return an error instead.",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 37
+      },
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c458852b_ced741ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T07:37:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cffbfc0f_c28b9ab6",
       "range": {
         "startLine": 245,
         "startChar": 1,
