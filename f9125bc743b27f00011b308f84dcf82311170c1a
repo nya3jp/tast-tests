@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c07f86_6fa530f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-17T08:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc514a2e_cc030ef8",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df6cb707_8cd4226e",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-17T01:09:00Z",
       "side": 1,
       "message": "Nit: cleanupCtx is the standard name for this",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03669d55_7c1eba94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-17T08:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df6cb707_8cd4226e",
       "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf50c19c_eee7a34a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-17T08:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "176c7260_abb036d2",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08cb4363_208f34b2",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-06-17T01:09:00Z",
       "side": 1,
       "message": "This is unnecessary - it doesn\u0027t make the code shorter or more clear",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27b5c0f6_a2744c01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-17T08:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08cb4363_208f34b2",
       "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2efd2206_3f9bd4cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-17T08:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3af7a458_d3dd11ce",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31908bb9_b31c4f7f",
@@ -99,6 +189,24 @@
       "writtenOn": "2022-06-17T01:09:00Z",
       "side": 1,
       "message": "Should we do some kind of verification that the photo exists on disk or something?",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3d4f36b_ab23bc29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-17T08:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31908bb9_b31c4f7f",
       "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -133,6 +241,42 @@
       "writtenOn": "2022-06-17T01:09:00Z",
       "side": 1,
       "message": "Shorter durations are generally preferable as it\u0027ll mean reduced load on the labs. Could you document why 10 seconds was chosen, and not, for example, 3 seconds.",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44efdf96_696556a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-17T08:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb3b1f99_7dd557f8",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42170a8a_02f8cb43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-17T08:45:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "331700b3_9138d0fe",
       "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
