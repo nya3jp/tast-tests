@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dab31e9b_9734ce20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-06-17T15:09:33Z",
+      "side": 1,
+      "message": "If I\u0027m understanding correctly, this combination would produce some log output when the test case was finished, and then the first check you linked would produce an error if additional requests came in.  Is that correct?  That sounds like a reasonable approach to me if that\u0027s the correct understanding.",
+      "parentUuid": "e711ca30_9cc5ab7e",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e9e5ccc_989590f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
         "patchSetId": 4
@@ -190,6 +208,24 @@
       "side": 1,
       "message": "I don\u0027t have a bug for this. I tested this out by manually starting the virtual USB printer with the textproto from this CL and running `lpadmin -v $URI -m everywhere` and then `echo $?`, and it looks like lpadmin is returning the correct exit code. I took a quick look at the tast code, which I think is where the error is, but I don\u0027t fully understand it yet. Do you want me to log a bug for the tast folks?",
       "parentUuid": "6107cecb_411f8f96",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a161fde7_349c04f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-06-17T15:09:33Z",
+      "side": 1,
+      "message": "If we think tast isn\u0027t capturing the correct process exit code, that does seem like something that should be fixed in the framework.  However, exit codes on Linux can be a little tricky because they also encode things like whether the process received a signal.  Do you get the expected exit code if you call testexec.GetWaitStatus directly?",
+      "parentUuid": "7a92caa4_16b8da4d",
       "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
