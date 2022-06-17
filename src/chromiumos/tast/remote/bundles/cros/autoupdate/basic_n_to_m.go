@@ -7,6 +7,7 @@ package autoupdate
 import (
 	"context"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/remote/bundles/cros/autoupdate/util"
 	"chromiumos/tast/testing"
 )
@@ -18,6 +19,7 @@ func init() {
 		Desc:         "Example test for updating to an older version using Nebraska and test images",
 		Contacts: []string{
 			"gabormagda@google.com", // Test author
+			"chromeos-commercial-remote-management@google.com",
 		},
 		Attr:         []string{}, // Manual execution only.
 		SoftwareDeps: []string{"reboot", "chrome", "auto_update_stable"},
@@ -26,9 +28,12 @@ func init() {
 			"tast.cros.autoupdate.UpdateService",
 		},
 		Timeout: util.TotalTestTime,
+		Fixture: fixture.Autoupdate,
 	})
 }
 
 func BasicNToM(ctx context.Context, s *testing.State) {
-	util.NToMTest(ctx, s.DUT(), s.OutDir(), s.RPCHint(), &util.Operations{}, 3 /*deltaM*/)
+	if err := util.NToMTest(ctx, s.DUT(), s.OutDir(), s.RPCHint(), &util.Operations{}, 3 /*deltaM*/); err != nil {
+		s.Error("Failed to complete the N to M update test: ", err)
+	}
 }

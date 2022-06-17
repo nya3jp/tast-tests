@@ -13,6 +13,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/ctxutil"
@@ -66,10 +67,13 @@ func init() {
 				previousVersionTarget: 3,
 			},
 		}},
+		Fixture: fixture.Autoupdate,
 	})
 }
 
 func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
+	paygen := s.FixtValue().(updateutil.WithPaygen).Paygen()
+
 	lsbContent := map[string]string{
 		lsbrelease.Board:     "",
 		lsbrelease.Version:   "",
@@ -94,11 +98,6 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	milestoneM := milestoneN - param.previousVersionTarget // Target milestone.
 
 	// Find the latest release for milestone M.
-	paygen, err := updateutil.LoadPaygenFromGS(ctx)
-	if err != nil {
-		s.Fatal("Failed to load paygen data: ", err)
-	}
-
 	filtered := paygen.FilterBoard(board).FilterDeltaType("OMAHA").FilterMilestone(milestoneM)
 	latest, err := filtered.FindLatest()
 	if err != nil {
