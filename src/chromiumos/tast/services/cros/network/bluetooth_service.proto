@@ -24,6 +24,12 @@ service BluetoothService {
 
   // ValidateBluetoothFunctional checks to see whether the Bluetooth device is usable.
   rpc ValidateBluetoothFunctional(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  rpc SetupBluetoothMojo(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc CleanupBluetoothMojo(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // SetBluetoothPoweredMojo sets the Bluetooth adapter power status via mojo
+  rpc SetBluetoothPoweredMojo(SetBluetoothPoweredMojoRequest) returns (google.protobuf.Empty) {}
 }
 
 message SetBluetoothPoweredRequest {
@@ -41,4 +47,7 @@ message GetBluetoothBootPrefResponse {
 }
 message GetBluetoothPoweredFastResponse {
     bool powered = 1;
+}
+message SetBluetoothPoweredMojoRequest {
+  bool powered = 1;
 }

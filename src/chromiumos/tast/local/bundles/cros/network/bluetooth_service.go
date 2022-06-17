@@ -13,7 +13,9 @@ import (
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/mojo"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/localstate"
@@ -32,7 +34,9 @@ func init() {
 
 // BluetoothService implements tast.cros.network.BluetoothService gRPC service.
 type BluetoothService struct {
-	s *testing.ServiceState
+	s  *testing.ServiceState
+	js chrome.JSObject
+	cr *chrome.Chrome
 }
 
 // SetBluetoothPowered sets the Bluetooth adapter power status via settingsPrivate. This setting persists across reboots.
@@ -211,4 +215,57 @@ func (s *BluetoothService) ValidateBluetoothFunctional(ctx context.Context, _ *e
 		return nil, errors.Wrap(err, "failed to stop Bluetooth adapter discovery")
 	}
 	return &empty.Empty{}, nil
+}
+
+func (s *BluetoothService) CleanupBluetoothMojo(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	s.js.Release(ctx)
+	s.cr.Close(ctx)
+	return &empty.Empty{}, nil
+}
+
+func (s *BluetoothService) SetupBluetoothMojo(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	cr, err := chrome.New(
+		ctx,
+	)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start Chrome")
+	}
+	//defer cr.Close(ctx)
+
+	// Open OS settings App Bluetooth Subpage
+	const url = "chrome://os-settings/bluetooth"
+	crConn, err := apps.LaunchOSSettings(ctx, cr, url)
+	if err != nil {
+		return nil, errors.Wrap(err, "Failed to open settings app: ")
+	}
+
+	var js chrome.JSObject
+
+	if err := crConn.Call(ctx, &js, mojo.BTConfigJS); err != nil {
+		return nil, errors.Wrap(err, "failed to create Bluetooth mojo JS")
+	}
+
+	if err := js.Call(ctx, nil, `function init(){ this.initSysPropObs()}`); err != nil {
+		return nil, errors.Wrap(err, "failed to initailize the observer")
+	}
+
+	s.js = js
+	s.cr = cr
+	return &empty.Empty{}, nil
+
+}
+
+// SetBluetoothPowered sets the Bluetooth adapter power status via settingsPrivate. This setting persists across reboots.
+func (s *BluetoothService) SetBluetoothPoweredMojo(ctx context.Context, req *network.SetBluetoothPoweredMojoRequest) (*empty.Empty, error) {
+
+	//if err := s.js.Call(ctx, nil, `function(enabled) {this.bluetoothConfig.setBluetoothEnabledState(enabled)}`, req.Powered); err != nil {
+	//		return nil, errors.Wrap(err, "setBluetoothEnabledState call failed")
+	//}
+
+	//returning here
+	if err := mojo.SetBluetoothEnabledState(ctx, s.js, req.Powered); err != nil {
+		return nil, errors.Wrap(err, "setBluetoothEnabledState local call failed")
+	}
+	return &empty.Empty{}, nil
+
 }
