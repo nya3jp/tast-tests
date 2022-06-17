@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3955815_e8ac2a2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper_child.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-17T02:49:18Z",
+      "side": 1,
+      "message": "IMO we can move this to directly before the usage.",
+      "revId": "b5d48e4f93efe7f774992bb1ca1a3a0e6db1c7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc9efcd2_1c806764",
+        "filename": "src/chromiumos/tast/local/personalization/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-17T02:49:18Z",
+      "side": 1,
+      "message": "commented out?",
+      "revId": "b5d48e4f93efe7f774992bb1ca1a3a0e6db1c7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
