@@ -22,6 +22,30 @@
       },
       "revId": "1bd4ae15600b6cfe464fa8e7295c17be59455a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e67ae39_5b4b9252",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-17T21:20:06Z",
+      "side": 1,
+      "message": "The cleanup for removing the vault and invalidateAuthSession happens within the function itself, there is already a line of code to unmountAll(ctx) on line 118 after we check for file persistence.",
+      "parentUuid": "3c0ae494_79cf9b8f",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "1bd4ae15600b6cfe464fa8e7295c17be59455a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

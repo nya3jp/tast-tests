@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "675259c1_d2837309",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-17T21:20:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac6766e_13249d42",
+      "range": {
+        "startLine": 50,
+        "startChar": 73,
+        "endLine": 50,
+        "endChar": 98
+      },
+      "revId": "216a010aca8d0ba95c462ee6a0e7ba457f71371e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37d7c61d_b33bc6ab",
