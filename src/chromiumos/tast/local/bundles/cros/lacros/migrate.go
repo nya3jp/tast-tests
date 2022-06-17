@@ -6,10 +6,13 @@ package lacros
 
 import (
 	"context"
+	"io/ioutil"
 	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
@@ -24,6 +27,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+var extensionFiles = []string{
+	"manifest.json",
+	"index.html",
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Migrate,
@@ -37,6 +45,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
+		Data:         extensionFiles,
 		Params: []testing.Param{{
 			Name: "copy",
 			Val:  []chrome.Option{chrome.DisableFeatures("LacrosMoveProfileMigration")},
@@ -54,8 +63,21 @@ func Migrate(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	prepareAshProfile(ctx, s, kb)
-	cr, err := migrateProfile(ctx, s.Param().([]chrome.Option))
+	extDir, err := ioutil.TempDir("", "simple_extension.")
+	if err != nil {
+		// errors.Wrap(err, "Failed to create directory for simple_extension.")
+		s.Fatal("Failed to create simple_extension dir: ")
+	}
+	defer os.RemoveAll(extDir)
+
+	for _, name := range extensionFiles {
+		if err := fsutil.CopyFile(s.DataPath(name), filepath.Join(extDir, name)); err != nil {
+			s.Fatal("Failed to copy file: ")
+		}
+	}
+
+	prepareAshProfile(ctx, s, kb, extDir)
+	cr, err := migrateProfile(ctx, s.Param().([]chrome.Option), extDir)
 	if err != nil {
 		s.Fatal("Failed to migrate profile: ", err)
 	}
@@ -71,11 +93,12 @@ const (
 	titleOfAlphabetPage  = "Alphabet"                         // https://abc.xyz page title.
 	titleOfDownloadsPage = "Downloads"                        // chrome://downloads page title.
 	titleOfNewTabPage    = "New Tab"                          // chrome://newtab page title.
-	cookie               = "MyCookie1234=abcd"                // Arbitrary cookie.
-	localStorageKey      = "myCat"                            // Arbitrary localStorage key.
-	localStorageValue    = "Meow"                             // Arbitrary localStorage value.
-	indexedDBUserID      = 123                                // Arbitrary user id.
-	indexedDBUserEmail   = "test@gmail.com"                   // Arbitrary user email.
+	simpleExtensionID    = "jjbombdcioakijidkhacpmocpojelebc"
+	cookie               = "MyCookie1234=abcd" // Arbitrary cookie.
+	localStorageKey      = "myCat"             // Arbitrary localStorage key.
+	localStorageValue    = "Meow"              // Arbitrary localStorage value.
+	indexedDBUserID      = 123                 // Arbitrary user id.
+	indexedDBUserEmail   = "test@gmail.com"    // Arbitrary user email.
 	// Create an arbitrary indexedDB store and add a value.
 	insertIndexedDBDataJS = `
     (userId, userEmail) => {
@@ -154,9 +177,9 @@ func waitForHistoryEntry(ctx context.Context, ui *uiauto.Context, br *browser.Br
 // prepareAshProfile resets profile migration, installs an extension, and
 // creates two tabs, browsing history, a bookmark, a download, a shortcut, a
 // cookie, an indexedDB entry and a localStorage value.
-func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.KeyboardEventWriter) {
+func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.KeyboardEventWriter, extDir string) {
 	// First restart Chrome with Lacros disabled in order to reset profile migration.
-	cr, err := chrome.New(ctx, chrome.DisableFeatures("LacrosSupport"))
+	cr, err := chrome.New(ctx, chrome.DisableFeatures("LacrosSupport"), chrome.UnpackedExtension(extDir))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
@@ -198,6 +221,14 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 		ui.RetryUntil(cr.Browser().ReloadActiveTab, ui.WithTimeout(7*time.Second).WaitUntilExists(removeButton)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to install: ", err)
+	}
+
+	// Navigate to chrome-extensions://{simpleExtensionID}/index.html.
+	if err := conn.Navigate(ctx, "chrome-extension://"+simpleExtensionID+"/index.html"); err != nil {
+		s.Fatal("Failed to navigate to simple extension page: ")
+	}
+	if err := conn.Call(ctx, nil, `() => chrome.storage.sync.set({'key': 'value'}, function(){})`); err != nil {
+		s.Fatal("Failed to call chrome.storage.sync.set(): ")
 	}
 
 	// Visit the Alphabet page, creating a history entry.
@@ -389,9 +420,31 @@ func verifyLacrosProfile(ctx context.Context, s *testing.State, kb *input.Keyboa
 			s.Fatal("Failed: ", err)
 		}
 	}()
+
+	func() {
+		conn, err := l.NewConn(ctx, "chrome-extension://"+simpleExtensionID+"/index.html")
+		if err != nil {
+			s.Fatal("Failed to open extension page: ", err)
+		}
+		defer conn.Close()
+		var success bool
+		if err := conn.Call(ctx, &success, `() => {
+			return new Promise((resolve, reject) => {
+				chrome.storage.sync.get(['key'], (result) => {
+					if (result.key == 'value') resolve(true)
+					else reject(false)
+				})
+			})
+		}`); err != nil {
+			s.Fatal("Could not call chrome.storage.sync.get")
+		}
+		if !success {
+			s.Fatal("Did not get the storage value wanted in Lacros")
+		}
+	}()
 }
 
-func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chrome, error) {
+func migrateProfile(ctx context.Context, extraOpts []chrome.Option, extDir string) (*chrome.Chrome, error) {
 	// TODO(chromium:1290297): This is a hack.
 	// chrome.New doesn't really support profile migration because it
 	// doesn't anticipate the additional Chrome restart that profile
@@ -406,6 +459,7 @@ func migrateProfile(ctx context.Context, extraOpts []chrome.Option) (*chrome.Chr
 		chrome.KeepState(),
 		chrome.RemoveNotification(false),
 		chrome.EnableFeatures("LacrosProfileMigrationForAnyUser"),
+		chrome.UnpackedExtension(extDir),
 	}
 	opts = append(opts, extraOpts...)
 	opts, err := lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary), lacrosfixt.ChromeOptions(opts...)).Opts()
