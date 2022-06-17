@@ -34,6 +34,24 @@
       "parentUuid": "b475fd28_d94b1af8",
       "revId": "df80d49b9209178681ccf2200c7fda45c93ea3a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fb8089c_dfcc07d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-06-17T02:21:30Z",
+      "side": 1,
+      "message": "Chrome 105 is now uprevved.",
+      "parentUuid": "cae7ad3b_2bf0225d",
+      "revId": "df80d49b9209178681ccf2200c7fda45c93ea3a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
