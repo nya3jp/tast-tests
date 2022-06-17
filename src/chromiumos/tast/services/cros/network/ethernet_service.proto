@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -24,6 +24,9 @@ service EthernetService {
 
   // SetWifi enables/disables Wifi via shill.
   rpc SetWifi(WifiRequest) returns (google.protobuf.Empty) {}
+
+  // DownloadPath returns the download path from cryptohome.
+  rpc DownloadPath (google.protobuf.Empty) returns (DownloadPathResponse) {}
 }
 
 message BrowseRequest {
@@ -32,4 +35,8 @@ message BrowseRequest {
 
 message WifiRequest{
   bool enabled = 1;
+}
+
+message DownloadPathResponse{
+  string DownloadPath = 1;
 }
