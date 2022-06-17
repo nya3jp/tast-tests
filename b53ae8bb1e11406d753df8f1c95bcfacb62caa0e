@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e053a7c_b579bc5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_ask_for_urls.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-17T10:04:15Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "5e98ece9_beeaa09e",
+      "revId": "b53ae8bb1e11406d753df8f1c95bcfacb62caa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "261a3cc9_406d9ccd",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-05-31T07:11:18Z",
       "side": 1,
       "message": "Similar to the other *Ask* test, I am wondering whether it would be best to also have a test case where the policy truly has an impact -- like when it is combined with DefaultFileSystemReadGuardSetting configured to block access by default.",
+      "revId": "b53ae8bb1e11406d753df8f1c95bcfacb62caa0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec10e816_d87f29c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_ask_for_urls.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-17T10:04:15Z",
+      "side": 1,
+      "message": "Done, the `DefaultFileSystem*GuardSetting` policies are added to `FileSystemWrite*` and `FileSystemRead*` accordingly.\n\nAlso we added 1 more [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3709465) containing 2 tests to exercise the `DefaultFileSystemWriteGuardSetting` and `DefaultFileSystemReadGuardSetting`.",
+      "parentUuid": "261a3cc9_406d9ccd",
       "revId": "b53ae8bb1e11406d753df8f1c95bcfacb62caa0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
