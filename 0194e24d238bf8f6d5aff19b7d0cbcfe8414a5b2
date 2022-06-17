@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44118332_76eb065a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1528812
+      },
+      "writtenOn": "2022-06-17T10:55:39Z",
+      "side": 1,
+      "message": "CL conflicted with @mcasas\u0027s recent change https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/a188a4adc48416a88ea0c86cc9af26ffab846045\n\nI rebased the CL and removed the conflicting test.",
+      "revId": "0194e24d238bf8f6d5aff19b7d0cbcfe8414a5b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
