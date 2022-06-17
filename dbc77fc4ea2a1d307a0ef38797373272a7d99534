@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "648644cd_c589e47c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T07:38:02Z",
+      "side": 1,
+      "message": "Note that there are plans to add reboot stress into this test, so the run time might stretch a bit more to 30 or so minutes, and maybe 10 or more reboots will be introduced.",
+      "parentUuid": "3ff86395_f3fd9b8e",
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fb4a50d_bee4cebf",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
         "patchSetId": 5
