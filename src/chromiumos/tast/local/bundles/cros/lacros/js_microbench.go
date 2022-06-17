@@ -7,6 +7,8 @@ package lacros
 import (
 	"context"
 	"io/ioutil"
+	"net/http"
+	"net/http/httptest"
 	"os"
 	"path/filepath"
 	"time"
@@ -89,6 +91,11 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 	}
 	defer os.Remove(htmlPath)
 
+	server := httptest.NewServer(http.FileServer(http.Dir(dir)))
+	defer server.Close()
+
+	url := server.URL + "/microbench.html"
+
 	pv := perf.NewValues()
 
 	// Run JS benchmark against ash-chrome.
@@ -119,7 +126,7 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 	}
 
 	// Run JS benchmark against ash-chrome.
-	if elapsed, err := runJSMicrobenchFromHTML(ctx, htmlPath, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
+	if elapsed, err := runJSMicrobenchFromHTML(ctx, url, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
 		return lacrosperf.SetupCrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
 	}); err != nil {
 		s.Error("Failed to run ash-chrome benchmark: ", err)
@@ -132,7 +139,7 @@ func JSMicrobench(ctx context.Context, s *testing.State) {
 	}
 
 	// Run JS benchmark against lacros-chrome.
-	if elapsed, err := runJSMicrobenchFromHTML(ctx, htmlPath, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
+	if elapsed, err := runJSMicrobenchFromHTML(ctx, url, func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error) {
 		conn, _, _, cleanup, err := lacrosperf.SetupLacrosTestWithPage(ctx, cr, url, lacrosperf.StabilizeAfterOpeningURL)
 		return conn, cleanup, err
 	}); err != nil {
@@ -180,7 +187,7 @@ func runJSMicrobench(
 // this test loads the HTML page with the same microbenchmark code.
 func runJSMicrobenchFromHTML(
 	ctx context.Context,
-	path string,
+	url string,
 	setup func(ctx context.Context, url string) (*chrome.Conn, lacrosperf.CleanupCallback, error)) (time.Duration, error) {
 	conn, cleanup, err := setup(ctx, chrome.BlankURL)
 	if err != nil {
@@ -188,10 +195,9 @@ func runJSMicrobenchFromHTML(
 	}
 	defer cleanup(ctx)
 
-	// Navigate the blankpage to the HTML file to be loaded.
 	// This blocks until the loading is completed. Specifically in this case,
 	// it blocks if the microbenchmark is running.
-	if err := conn.Navigate(ctx, "file://"+path); err != nil {
+	if err := conn.Navigate(ctx, url); err != nil {
 		return 0, errors.Wrap(err, "failed to navigate a blankpage to the path")
 	}
 
