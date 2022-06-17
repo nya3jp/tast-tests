@@ -75,8 +75,8 @@ func AudioAppsPlaying(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	var (
-		app  apputil.ARCAudioPlayer
-		song *apputil.Audio
+		app  apputil.ARCMediaPlayer
+		song *apputil.Media
 	)
 
 	switch s.Param().(audioAppType) {
@@ -85,13 +85,13 @@ func AudioAppsPlaying(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to create YouTube Music app instance: ", err)
 		}
-		song = apputil.NewAudio("Blank Space", "Taylor Swift • 3:51")
+		song = apputil.NewMedia("Blank Space", "Taylor Swift • 3:51")
 	case appSpotify:
 		app, err = spotify.New(ctx, kb, a, tconn, cr.Creds().User)
 		if err != nil {
 			s.Fatal("Failed to create Spotify app instance: ", err)
 		}
-		song = apputil.NewAudio("Photograph", "Song • Ed Sheeran")
+		song = apputil.NewMedia("Photograph", "Song • Ed Sheeran")
 	default:
 		s.Fatal("Unrecognized app type: ", s.Param())
 	}
