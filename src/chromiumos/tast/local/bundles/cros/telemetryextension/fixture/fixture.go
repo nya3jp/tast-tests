@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/bundles/cros/telemetryextension/vendorutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/sysutil"
@@ -49,6 +50,21 @@ func init() {
 		Data:            extFiles(false),
 	})
 	testing.AddFixture(&testing.Fixture{
+		Name: "telemetryExtensionOverrideOEMName",
+		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension on devices that are not officially supported yet",
+		Contacts: []string{
+			"lamzin@google.com", // Fixture and Telemetry Extension author
+			"mgawad@google.com", // Telemetry Extension author
+			"cros-oem-services-team@google.com",
+		},
+		Impl:            newTelemetryExtensionFixture(overrideOEMName()),
+		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
+		TearDownTimeout: cleanupTimeout,
+		PreTestTimeout:  10 * time.Second,
+		PostTestTimeout: 10 * time.Second,
+		Data:            extFiles(false),
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name: "telemetryExtensionOptionsPage",
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension with options page",
 		Contacts: []string{
@@ -65,13 +81,29 @@ func init() {
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "telemetryExtensionManaged",
-		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension for managed device",
+		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension on managed device",
 		Contacts: []string{
 			"lamzin@google.com", // Fixture and Telemetry Extension author
 			"mgawad@google.com", // Telemetry Extension author
 			"cros-oem-services-team@google.com",
 		},
 		Impl:            newTelemetryExtensionFixture(managed()),
+		Parent:          fixture.FakeDMSEnrolled,
+		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
+		TearDownTimeout: cleanupTimeout,
+		PreTestTimeout:  10 * time.Second,
+		PostTestTimeout: 10 * time.Second,
+		Vars:            []string{"policy.ManagedUser.accountPool"},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "telemetryExtensionOverrideOEMNameManaged",
+		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension on managed devices that are not officially supported yet",
+		Contacts: []string{
+			"lamzin@google.com", // Fixture and Telemetry Extension author
+			"mgawad@google.com", // Telemetry Extension author
+			"cros-oem-services-team@google.com",
+		},
+		Impl:            newTelemetryExtensionFixture(overrideOEMName(), managed()),
 		Parent:          fixture.FakeDMSEnrolled,
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
@@ -110,6 +142,12 @@ func managed() func(*telemetryExtensionFixture) {
 	}
 }
 
+func overrideOEMName() func(*telemetryExtensionFixture) {
+	return func(f *telemetryExtensionFixture) {
+		f.overrideOEMName = true
+	}
+}
+
 func newTelemetryExtensionFixture(opts ...option) *telemetryExtensionFixture {
 	f := &telemetryExtensionFixture{}
 	f.v.ExtID = "gogonhoemckpdpadfnjnpgbjpbjnodgc"
@@ -122,8 +160,9 @@ func newTelemetryExtensionFixture(opts ...option) *telemetryExtensionFixture {
 
 // telemetryExtensionFixture implements testing.FixtureImpl.
 type telemetryExtensionFixture struct {
-	optionsPage bool
-	managed     bool
+	optionsPage     bool
+	managed         bool
+	overrideOEMName bool
 
 	dir string
 	cr  *chrome.Chrome
@@ -285,7 +324,12 @@ func (f *telemetryExtensionFixture) setupChromeForConsumers(ctx context.Context,
 		return errors.Wrap(err, "failed to rename manifest file")
 	}
 
-	cr, err := chrome.New(ctx, chrome.UnpackedExtension(dir))
+	opts := []chrome.Option{chrome.UnpackedExtension(dir)}
+	if err := f.addOverrideOEMNameChromeArg(ctx, &opts); err != nil {
+		return err
+	}
+
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		return errors.Wrap(err, "failed to start Chrome")
 	}
@@ -306,11 +350,17 @@ func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Conte
 		return errors.Wrap(err, "failed to write policy blob before starting Chrome")
 	}
 
-	cr, err := chrome.New(ctx,
+	opts := []chrome.Option{
 		chrome.KeepEnrollment(),
 		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
 		chrome.DMSPolicy(fdms.URL),
-		chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout))
+		chrome.CustomLoginTimeout(chrome.ManagedUserLoginTimeout),
+	}
+	if err := f.addOverrideOEMNameChromeArg(ctx, &opts); err != nil {
+		return err
+	}
+
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		return errors.Wrap(err, "Chrome startup failed")
 	}
@@ -323,6 +373,17 @@ func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Conte
 
 	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
 		return errors.Wrap(err, "failed to serve and refresh")
+	}
+	return nil
+}
+
+func (f *telemetryExtensionFixture) addOverrideOEMNameChromeArg(ctx context.Context, opts *[]chrome.Option) error {
+	if f.overrideOEMName {
+		vendorName, err := vendorutils.FetchVendor(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to fetch vendor name")
+		}
+		*opts = append(*opts, chrome.ExtraArgs("--telemetry-extension-manufacturer-override-for-testing="+vendorName))
 	}
 	return nil
 }
