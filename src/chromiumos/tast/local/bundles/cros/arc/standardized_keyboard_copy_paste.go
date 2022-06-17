@@ -78,7 +78,7 @@ func runStandardizedKeyboardCopyPasteTest(ctx context.Context, testParameters st
 	textDestinationID := testParameters.AppPkgName + ":id/textCopyDestination"
 	const sourceText = "SOURCE_TEXT_TO_COPY"
 
-	if err := standardizedtestutil.ClickInputAndGuaranteeFocus(ctx, testParameters.Device.Object(ui.ID(textSourceID), ui.Text(sourceText))); err != nil {
+	if err := standardizedtestutil.ClickInputAndGuaranteeFocus(ctx, testParameters, ui.ID(textSourceID), ui.Text(sourceText)); err != nil {
 		return errors.Wrap(err, "unable to focus the source input")
 	}
 
@@ -91,7 +91,7 @@ func runStandardizedKeyboardCopyPasteTest(ctx context.Context, testParameters st
 	}
 
 	// Verify the destination field exists and paste into it.
-	if err := standardizedtestutil.ClickInputAndGuaranteeFocus(ctx, testParameters.Device.Object(ui.ID(textDestinationID))); err != nil {
+	if err := standardizedtestutil.ClickInputAndGuaranteeFocus(ctx, testParameters, ui.ID(textDestinationID)); err != nil {
 		return errors.Wrap(err, "unable to focus the destination input")
 	}
 
