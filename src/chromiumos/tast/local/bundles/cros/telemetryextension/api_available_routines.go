@@ -32,7 +32,7 @@ func init() {
 			},
 			{
 				Name:              "non_target_models",
-				Fixture:           "telemetryExtension",
+				Fixture:           "telemetryExtensionOverrideOEMName",
 				ExtraHardwareDeps: dep.NonTargetModels(),
 			},
 			{
@@ -42,7 +42,7 @@ func init() {
 			},
 			{
 				Name:              "non_target_models_managed",
-				Fixture:           "telemetryExtensionManaged",
+				Fixture:           "telemetryExtensionOverrideOEMNameManaged",
 				ExtraHardwareDeps: dep.NonTargetModels(),
 			},
 		},
