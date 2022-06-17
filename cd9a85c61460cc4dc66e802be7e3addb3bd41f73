@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe7df80_f724a512",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-17T01:28:38Z",
+      "side": 1,
+      "message": "I think we need data points. I\u0027d suggest to follow the Tast standards again, ~20 consecutive success on informational.\nThe fix was landed a couple of minutes ago with chumping.\nBecause this was enabled, and identified as flaky. This blocks chromeos-chrome uprev for a while. We should be very careful.",
+      "revId": "cd9a85c61460cc4dc66e802be7e3addb3bd41f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
