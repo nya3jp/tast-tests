@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e549c9a_56b450d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/startup_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-06-17T05:27:52Z",
+      "side": 1,
+      "message": "I think it\u0027d be useful to have buster + bullseye; this test should be always free (since it\u0027s batched with everything else installed using the fixture).",
+      "revId": "a4c1e2418ea680a32e48f780ea8041b3812929a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
