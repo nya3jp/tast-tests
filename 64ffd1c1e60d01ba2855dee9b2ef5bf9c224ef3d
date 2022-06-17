@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c172ee_efe8b068",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-17T17:32:03Z",
+      "side": 1,
+      "message": "You should really reformat these to fit in 72 chars.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "64ffd1c1e60d01ba2855dee9b2ef5bf9c224ef3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a5280f_1d66ac85",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_sig_ab.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-17T17:32:03Z",
+      "side": 1,
+      "message": "The idiomatic way is to say \"blah ... blah got XXX, want XXX\"",
+      "range": {
+        "startLine": 154,
+        "startChar": 35,
+        "endLine": 154,
+        "endChar": 50
+      },
+      "revId": "64ffd1c1e60d01ba2855dee9b2ef5bf9c224ef3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
