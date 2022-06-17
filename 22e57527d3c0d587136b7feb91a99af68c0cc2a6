@@ -16,6 +16,24 @@
       "message": "FYI: volteer-cq has had a this persistent failure for a few days\n\ntast-remote-tests-cros-0.0.2-r11116: # chromiumos/tast/local/policyutil/fixtures\ntast-remote-tests-cros-0.0.2-r11116: src/chromiumos/tast/local/policyutil/fixtures/fakedms.go:151:20: undefined: fsutil.CopyDir\ntast-remote-tests-cros-0.0.2-r11116:  * ERROR: chromeos-base/tast-remote-tests-cros-0.0.2-r11116::chromiumos failed (compile phase):\ntast-remote-tests-cros-0.0.2-r11116:  *   (no error message)\ntast-remote-tests-cros-0.0.2-r11116:  * \ntast-remote-tests-cros-0.0.2-r11116:  * Call stack:\ntast-remote-tests-cros-0.0.2-r11116:  *               ebuild.sh, line  125:  Called src_compile\ntast-remote-tests-cros-0.0.2-r11116:  *             environment, line 3436:  Called tast-bundle_src_compile\ntast-remote-tests-cros-0.0.2-r11116:  *             environment, line 3573:  Called cros-go_src_compile\ntast-remote-tests-cros-0.0.2-r11116:  *             environment, line 1000:  Called go_vet \u0027chromiumos/tast/...\u0027\ntast-remote-tests-cros-0.0.2-r11116:  *             environment, line 2869:  Called die\ntast-remote-tests-cros-0.0.2-r11116:  * The specific snippet of code:\ntast-remote-tests-cros-0.0.2-r11116:  *       GO111MODULE\u003d${GO111MODULE:-off} GOPATH\u003d\"$(cros-go_gopath)\" $(tc-getBUILD_GO) vet \"${CROS_GO_VET_FLAGS[@]}\" \"$@\" || die\ntast-remote-tests-cros-0.0.2-r11116:  * \ntast-remote-tests-cros-0.0.2-r11116:  * Build log: /var/log/portage/chromeos-base:tast-remote-tests-cros-0.0.2-r11116:20220615-172002.log\ntast-remote-tests-cros-0.0.2-r11116:  * Stable log symlink: /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r11116/temp/build.log\ntast-remote-tests-cros-0.0.2-r11116:  * CWD: /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r11116/work/tast-remote-tests-cros-0.0.2\ntast-remote-tests-cros-0.0.2-r11116:  * S:   /var/tmp/portage/chromeos-base/tast-remote-tests-cros-0.0.2-r11116/work/tast-remote-tests-cros-0.0.2\n\u003e\u003e\u003e 10:20:54.099 Jobs: 72 of 75 complete, 1 running, 1 failed    Load avg: 25.0, 9.9, 4.8\n\u003e\u003e\u003e 10:20:54.100 Jobs: 72 of 75 complete, 1 failed               Load avg: 25.0, 9.9, 4.8\n",
       "revId": "22e57527d3c0d587136b7feb91a99af68c0cc2a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc88b4a_eb5d7754",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-17T06:08:50Z",
+      "side": 1,
+      "message": "Noob tast question: you land tast code that does not compile?  Is that normal?",
+      "parentUuid": "d343772e_16523578",
+      "revId": "22e57527d3c0d587136b7feb91a99af68c0cc2a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
