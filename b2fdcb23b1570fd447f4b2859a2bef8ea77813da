@@ -246,6 +246,24 @@
       "parentUuid": "05c10e9d_b89ed2cb",
       "revId": "b2fdcb23b1570fd447f4b2859a2bef8ea77813da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc2ce2ef_5277773e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper_child.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-17T02:17:03Z",
+      "side": 1,
+      "message": "Yes, the notification will close automatically after few seconds. \nHowever, if I remove `ash.CloseNotifications` and just keep WaitForNotification then WaitUntilNotificationGone, I will get this error: \n`2022-06-17T02:04:18.214354Z [02:04:19.540] Error at set_online_wallpaper_child.go:72: Failed to wait for family link notification to disappear: failed to wait for notification to disappear: context deadline exceeded; last error follows: found a matching notification`.\nIIUC, WaitUntilNotificationGone should keep checking the notification lists until the matched notification is no longer available or timeout. And I set timeout of 20 seconds that should be sufficient for the notification to disappear. \nDo you have any recommendations?",
+      "parentUuid": "e4c39b99_8e2ec8fe",
+      "revId": "b2fdcb23b1570fd447f4b2859a2bef8ea77813da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
