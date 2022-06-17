@@ -45,7 +45,7 @@ type Spotify struct {
 	firstLogin bool
 }
 
-var _ apputil.ARCAudioPlayer = (*Spotify)(nil)
+var _ apputil.ARCMediaPlayer = (*Spotify)(nil)
 
 // New returns the the manager of Spotify, caller will able to control Spotify app through this object.
 func New(ctx context.Context, kb *input.KeyboardEventWriter, a *arc.ARC, tconn *chrome.TestConn, account string) (*Spotify, error) {
@@ -60,7 +60,7 @@ func New(ctx context.Context, kb *input.KeyboardEventWriter, a *arc.ARC, tconn *
 }
 
 // Play plays a song.
-func (s *Spotify) Play(ctx context.Context, song *apputil.Audio) error {
+func (s *Spotify) Play(ctx context.Context, song *apputil.Media) error {
 	const playPauseButtonID = idPrefix + "play_pause_button"
 	playButton := s.Device.Object(ui.ID(playPauseButtonID), ui.Enabled(true), ui.Description("Play"))
 
@@ -211,7 +211,7 @@ func (s *Spotify) waitUntilHomePageShows(ctx context.Context) error {
 // searchSongAndPlay searches a song and play.
 // If Spotify is installed for the first time, there will be no last listened song.
 // Search for a song to play.
-func (s *Spotify) searchSongAndPlay(ctx context.Context, song *apputil.Audio) error {
+func (s *Spotify) searchSongAndPlay(ctx context.Context, song *apputil.Media) error {
 	testing.ContextLog(ctx, "Try to search a song and play")
 
 	if err := uiauto.Combine("search song",

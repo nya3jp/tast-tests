@@ -49,7 +49,7 @@ type YouTubeMusic struct {
 	playerPaused  *ui.Object
 }
 
-var _ apputil.ARCAudioPlayer = (*YouTubeMusic)(nil)
+var _ apputil.ARCMediaPlayer = (*YouTubeMusic)(nil)
 
 // New returns YT Music instance.
 func New(ctx context.Context, kb *input.KeyboardEventWriter, tconn *chrome.TestConn, a *arc.ARC) (*YouTubeMusic, error) {
@@ -66,17 +66,22 @@ func New(ctx context.Context, kb *input.KeyboardEventWriter, tconn *chrome.TestC
 	}, nil
 }
 
+// Close remove playrecord and close YouTubeMusic app.
+func (yt *YouTubeMusic) Close(ctx context.Context, cr *chrome.Chrome, hasError func() bool, outDir string) error {
+	if err := yt.RemovePlayRecord(ctx); err != nil {
+		testing.ContextLog(ctx, "Failed to remove play record: ", err)
+	}
+	return yt.App.Close(ctx, cr, hasError, outDir)
+}
+
 // Play searches the given song and plays it.
-func (yt *YouTubeMusic) Play(ctx context.Context, song *apputil.Audio) error {
+func (yt *YouTubeMusic) Play(ctx context.Context, song *apputil.Media) error {
 	if err := yt.SkipPrompts(ctx); err != nil {
 		return err
 	}
 
 	if err := uiauto.Combine("search a new song to play",
-		apputil.FindAndClick(yt.Device.Object(ui.ID(searchBtnObjID)), defaultUITimeout),
-		apputil.FindAndClick(yt.Device.Object(ui.ID(searchTextObjID)), defaultUITimeout),
-		yt.KB.TypeAction(song.Query),
-		yt.KB.AccelAction("Enter"),
+		yt.Search(song.Query),
 		apputil.FindAndClick(yt.Device.Object(ui.ID(songBtnObjID), ui.Text("Songs")), defaultUITimeout),
 		apputil.FindAndClick(yt.Device.Object(ui.ID(subtitleObjID), ui.Text(song.Subtitle)), defaultUITimeout), // Multiple songs with the same title might exist, hence, the subtitle is used.
 	)(ctx); err != nil {
@@ -89,6 +94,29 @@ func (yt *YouTubeMusic) Play(ctx context.Context, song *apputil.Audio) error {
 		return errors.Wrap(err, "failed to verify YouTubeMusic is playing")
 	}
 	yt.playingSong = song.Query
+	return nil
+}
+
+// PlayVideo searches the given video and plays it.
+func (yt *YouTubeMusic) PlayVideo(ctx context.Context, media *apputil.Media) error {
+	if err := yt.SkipPrompts(ctx); err != nil {
+		return errors.Wrap(err, "failed to skip prompts")
+	}
+
+	if err := uiauto.Combine("search the video to play",
+		yt.Search(media.Query),
+		apputil.FindAndClick(yt.Device.Object(ui.ID(songBtnObjID), ui.Text("Videos")), defaultUITimeout),
+		apputil.FindAndClick(yt.Device.Object(ui.ID(songNameObjID), ui.Text(media.Subtitle)), defaultUITimeout),
+	)(ctx); err != nil {
+		return err
+	}
+
+	// Verify YouTubeMusic is playing.
+	// Long duration is essential as it is often that low end DUT takes a while to load the audio content to play.
+	if err := apputil.WaitForExists(yt.playerPlaying, longUITimeout)(ctx); err != nil {
+		return errors.Wrap(err, "failed to verify YouTubeMusic is playing")
+	}
+	yt.playingSong = media.Query
 	return nil
 }
 
@@ -160,6 +188,7 @@ func (yt *YouTubeMusic) SkipPrompts(ctx context.Context) error {
 		{yt.Device.Object(ui.DescriptionStartsWith("SKIP")), "SKIP", false},
 		{yt.Device.Object(ui.Text("NO, THANKS")), "NO, THANKS", false},
 		{yt.Device.Object(ui.Text("NO THANKS")), "NO THANKS", false},
+		{yt.Device.Object(ui.Description("NO THANKS")), "NO THANKS", false},
 		{yt.Device.Object(ui.Description("Close")), "Close", false},
 	}
 
@@ -206,4 +235,14 @@ func (yt *YouTubeMusic) SkipPrompts(ctx context.Context) error {
 	}
 	// All prompts have been cleared, or timed out to wait for prompts to occur.
 	return nil
+}
+
+// Search searches the source to play.
+func (yt *YouTubeMusic) Search(query string) uiauto.Action {
+	return uiauto.Combine("search for the source to play",
+		apputil.FindAndClick(yt.Device.Object(ui.ID(searchBtnObjID)), defaultUITimeout),
+		apputil.FindAndClick(yt.Device.Object(ui.ID(searchTextObjID)), defaultUITimeout),
+		yt.KB.TypeAction(query),
+		yt.KB.AccelAction("Enter"),
+	)
 }
