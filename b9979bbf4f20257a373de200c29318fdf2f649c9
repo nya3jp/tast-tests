@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b489c06_4f430a8e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_battery_cutoff.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-06-17T16:33:48Z",
+      "side": 1,
+      "message": "Good idea.\n\nDone.",
+      "parentUuid": "825747e9_4968c9c2",
+      "range": {
+        "startLine": 82,
+        "startChar": 53,
+        "endLine": 82,
+        "endChar": 66
+      },
+      "revId": "b9979bbf4f20257a373de200c29318fdf2f649c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cd276e6_ad618a78",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-16T14:48:33Z",
       "side": 1,
       "message": "Should we add a check to verify the device is running off of AC at this point to verify that the battery is still cutoff?",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 2
+      },
+      "revId": "b9979bbf4f20257a373de200c29318fdf2f649c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d08810e7_550ebda4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/shutdown_with_command_battery_cutoff.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1297197
+      },
+      "writtenOn": "2022-06-17T16:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cd276e6_ad618a78",
       "range": {
         "startLine": 106,
         "startChar": 1,
