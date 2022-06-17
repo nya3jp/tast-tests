@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae61eaba_ac9d9710",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-17T00:15:11Z",
+      "side": 1,
+      "message": "You probably don\u0027t need this at all anymore. Just use `chromeLoggedIn` fixture instead. This was used before IIRC to flip the flags, using `chromeLoggedIn` will give you a bit more speed.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee819a6_20b2d4b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-17T00:15:11Z",
+      "side": 1,
+      "message": "nit: extra line?",
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f0f0b0a_3229f84f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-17T00:15:11Z",
+      "side": 1,
+      "message": "The more I\u0027m reading this the more I\u0027m unsure this needs to be a `testing.Poll`. This will basically retry if the returned error is not nil. But there is nothing in the body of this that suggests any action that would make the outcome any different.\n\nThis would usually be used in the case you want to repeatedly do something until a condition is met, but you\u0027re just waiting for a dialog box to open? Once the box opens there\u0027s not closing it or anything so the next try will just fail again and again until timeout. Maybe remove the `testing.Poll` and make the timeout on line 131 be 15s instead.",
+      "range": {
+        "startLine": 127,
+        "startChar": 11,
+        "endLine": 127,
+        "endChar": 23
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c19ea7a0_ded47fc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-17T00:15:11Z",
+      "side": 1,
+      "message": "Is this not a fatal error? Is it possible to receive a dialog with statictext, without the expected ZIP file name and we want to try wait again? You can abort the `testing.Poll` by returning a `testing.PollBreak` if it makes sense to not try again.",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 67
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7efa685_a4f3a23a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-17T00:15:11Z",
+      "side": 1,
+      "message": "nit: avoid finding the window like this, it is different for SWA and legacy. Is it possible to wait for one of the files in the archive to appear instead?",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 74
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40c499c3_253e6e2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-17T00:15:11Z",
+      "side": 1,
+      "message": "Can you just use `files.WaitForFile(zipContentDirectoryLabel)` here?",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adf1058a_8aa0916f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-17T00:15:11Z",
+      "side": 1,
+      "message": "nit/optional: this might be useful to expose as a method on the FilesApp page object, i.e. files.Eject(expectedLabel) or something like that.",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31d02f03_4f3103d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-17T00:15:11Z",
+      "side": 1,
+      "message": "nit: what\u0027s the purpose of this bool? can you use this and set to false once processed instead of delete?",
+      "range": {
+        "startLine": 217,
+        "startChar": 38,
+        "endLine": 217,
+        "endChar": 42
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0b0d4a8_204b9e6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-17T00:15:11Z",
+      "side": 1,
+      "message": "why err1? should be fine to continue to use err",
+      "range": {
+        "startLine": 223,
+        "startChar": 19,
+        "endLine": 223,
+        "endChar": 23
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "012da195_b4ffadb7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-17T00:15:11Z",
+      "side": 1,
+      "message": "can just use err2",
+      "range": {
+        "startLine": 237,
+        "startChar": 7,
+        "endLine": 237,
+        "endChar": 11
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f847c1e_33590f76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-17T00:15:11Z",
+      "side": 1,
+      "message": "nit: there is also an `AccelAction` that you can use to put into a `uiauto.Combine` to join things together and make them more readable.",
+      "range": {
+        "startLine": 277,
+        "startChar": 14,
+        "endLine": 277,
+        "endChar": 19
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
