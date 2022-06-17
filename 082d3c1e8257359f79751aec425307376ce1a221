@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae8488d1_9f9e01cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/lock_screen_challenge_response_auth_session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-17T21:20:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "900c28d9_9d3b1d01",
+      "range": {
+        "startLine": 115,
+        "startChar": 93,
+        "endLine": 115,
+        "endChar": 113
+      },
+      "revId": "082d3c1e8257359f79751aec425307376ce1a221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27fd6e12_b11f41e8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-15T21:03:46Z",
       "side": 1,
       "message": "nit: maybe wrongUser or corruptedUserName",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 14
+      },
+      "revId": "082d3c1e8257359f79751aec425307376ce1a221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e461d54_a29321d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/lock_screen_challenge_response_auth_session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1430007
+      },
+      "writtenOn": "2022-06-17T21:20:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27fd6e12_b11f41e8",
       "range": {
         "startLine": 141,
         "startChar": 1,
