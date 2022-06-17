@@ -282,6 +282,24 @@
       "parentUuid": "dc2ce2ef_5277773e",
       "revId": "b2fdcb23b1570fd447f4b2859a2bef8ea77813da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da4d73c9_27400e54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper_child.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-17T02:35:54Z",
+      "side": 1,
+      "message": "You are right! The notification is just visually disappeared but still there when I expand quick tray.\nhttps://screenshot.googleplex.com/3YFikRuUcN8wKxQ\nThanks a lot!",
+      "parentUuid": "509f1c2b_0b486f0b",
+      "revId": "b2fdcb23b1570fd447f4b2859a2bef8ea77813da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
