@@ -38,6 +38,8 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Params: []testing.Param{
 			{
+				// TODO(crbug.com/1337389): remove "informational" once the issue is fixed.
+				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(perfutil.UnstableModels...)),
 			},
 			// TODO(crbug.com/1163981): remove "unstable" once we see stability on all platforms.
