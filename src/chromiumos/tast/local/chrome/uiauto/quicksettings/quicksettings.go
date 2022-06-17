@@ -83,7 +83,7 @@ func Rect(ctx context.Context, tconn *chrome.TestConn) (coords.Rect, error) {
 	}
 
 	for i := range results {
-		if err := ui.Exists(quickSettingsFinder.Ancestor(bubbleFrameView.Nth(i)))(ctx); err == nil {
+		if err := ui.Exists(RootFinder.Ancestor(bubbleFrameView.Nth(i)))(ctx); err == nil {
 			return results[i].Location, nil
 		}
 	}
@@ -106,7 +106,7 @@ func ClickStatusArea(ctx context.Context, tconn *chrome.TestConn) error {
 
 // Shown checks if Quick Settings exists in the UI.
 func Shown(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
-	return uiauto.New(tconn).IsNodeFound(ctx, quickSettingsFinder)
+	return uiauto.New(tconn).IsNodeFound(ctx, RootFinder)
 }
 
 // Show will click the status area to show Quick Settings and wait for it to appear.
@@ -125,7 +125,7 @@ func Show(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	ui := uiauto.New(tconn)
-	if err := ui.WithTimeout(uiTimeout).WaitUntilExists(quickSettingsFinder)(ctx); err != nil {
+	if err := ui.WithTimeout(uiTimeout).WaitUntilExists(RootFinder)(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for quick settings to appear")
 	}
 	return nil
@@ -145,7 +145,7 @@ func Hide(ctx context.Context, tconn *chrome.TestConn) error {
 	}
 
 	ui := uiauto.New(tconn)
-	if err := ui.WithTimeout(uiTimeout).WaitUntilGone(quickSettingsFinder)(ctx); err != nil {
+	if err := ui.WithTimeout(uiTimeout).WaitUntilGone(RootFinder)(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for quick settings to be hidden")
 	}
 	return nil
@@ -214,7 +214,7 @@ func ShowWithRetry(ctx context.Context, tconn *chrome.TestConn, timeout time.Dur
 	}
 
 	ui := uiauto.New(tconn)
-	if err := ui.WithPollOpts(testing.PollOptions{Timeout: timeout, Interval: time.Second}).LeftClickUntil(statusArea, ui.Exists(quickSettingsFinder))(ctx); err != nil {
+	if err := ui.WithPollOpts(testing.PollOptions{Timeout: timeout, Interval: time.Second}).LeftClickUntil(statusArea, ui.Exists(RootFinder))(ctx); err != nil {
 		return errors.Wrap(err, "quick settings not shown")
 	}
 	return nil
