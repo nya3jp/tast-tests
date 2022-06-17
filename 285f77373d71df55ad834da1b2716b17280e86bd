@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f2142a9_f9f67b52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-17T21:31:31Z",
+      "side": 1,
+      "message": "Thank you Jie for the suggestions and pointers. I am learning a ton about shill through this review so I really appreciate it.",
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51f9f5cf_b4636609",
@@ -71,6 +88,30 @@
       "writtenOn": "2022-06-17T02:39:27Z",
       "side": 1,
       "message": "Do we still want to disable portal on Ethernet? I guess this is what we want to verify?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 2
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c3c7bd_e2d734de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-17T21:31:31Z",
+      "side": 1,
+      "message": "Yep great catch. This had me fooled for a bit. Removed this bit and found out that I am actually getting no-connectivity as my service state on veth. But as long as I setup the dns server correctly (remove the configuration for port\u003d0 and possibly some other setup), I can get the service state back to online",
+      "parentUuid": "7a52ee10_19bb941b",
       "range": {
         "startLine": 43,
         "startChar": 0,
@@ -123,6 +164,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66d276d4_f348dc02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-17T21:31:31Z",
+      "side": 1,
+      "message": "1. Correct, we want to make sure the http server is up and running. Good point, we could move that into .Start()\n2. Also correct. Again, I agree with your point here, it should be curling from the address of the router gateway instead. Would be more representative of what the portal detector will do anyways.",
+      "parentUuid": "23c5bae2_11dab22c",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 39
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ece0a466_729d0e62",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
         "patchSetId": 8
@@ -157,6 +222,30 @@
       "writtenOn": "2022-06-17T02:39:27Z",
       "side": 1,
       "message": "Just curious, so this curl cmd cannot be run in chroot with env.CreateCommand()?",
+      "range": {
+        "startLine": 99,
+        "startChar": 24,
+        "endLine": 99,
+        "endChar": 41
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8969ede6_8649ab69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-17T21:31:31Z",
+      "side": 1,
+      "message": "It definitely can and I appreciate you pointing this out, as I did not notice the env.CreateCommand(). But in the end, I agree with your point above to instead run the curl command against the gateway address instead.",
+      "parentUuid": "23922620_5199b10c",
       "range": {
         "startLine": 99,
         "startChar": 24,
@@ -226,6 +315,30 @@
       "writtenOn": "2022-06-17T02:39:27Z",
       "side": 1,
       "message": "Just to check my understanding: do we still need to enable lo now?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 2
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0a40fb0_d2baa515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-17T21:31:31Z",
+      "side": 1,
+      "message": "Not if we run it against the gateway address, which is a change I will make in next patchset. Good catch!",
+      "parentUuid": "17351336_f6140b7d",
       "range": {
         "startLine": 42,
         "startChar": 0,
