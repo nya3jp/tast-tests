@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/services/cros/network"
 	"chromiumos/tast/testing"
@@ -96,4 +97,16 @@ func (e *EthernetService) SetWifi(ctx context.Context, request *network.WifiRequ
 		return nil, errors.Wrap(err, "failed to disable wifi via shill")
 	}
 	return &empty.Empty{}, nil
+}
+
+// DownloadPath returns the download path from cryptohome.
+func (e *EthernetService) DownloadPath(ctx context.Context, req *empty.Empty) (*network.DownloadPathResponse, error) {
+	if e.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, e.cr.NormalizedUser())
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get Downloads path")
+	}
+	return &network.DownloadPathResponse{DownloadPath: downloadsPath}, nil
 }
