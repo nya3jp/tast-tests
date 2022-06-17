@@ -62,6 +62,7 @@ var testFilesFix = []string{
 	"share_folder_zip_file.go",
 	"share_invalid_paths.go",
 	"sshfs_mount.go",
+	"startup_perf.go",
 	"sync_time.go",
 	"task_manager.go",
 	"uninstall_invalid_app.go",
