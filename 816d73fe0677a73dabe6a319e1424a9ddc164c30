@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "351441a1_d2d0032c",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-17T18:15:56Z",
+      "side": 1,
+      "message": "This is still needed since the `ScanResultsEvent` in wpa_monitor doesn\u0027t print the networks. I still need to call `wpa_cli scan_results` after the event and parse the found networks.",
+      "parentUuid": "a2d72ffd_b379a34a",
+      "revId": "816d73fe0677a73dabe6a319e1424a9ddc164c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e02908f_1be216f7",
         "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-15T04:23:22Z",
       "side": 1,
       "message": "this isn\u0027t true anymore.",
+      "range": {
+        "startLine": 227,
+        "startChar": 58,
+        "endLine": 227,
+        "endChar": 71
+      },
+      "revId": "816d73fe0677a73dabe6a319e1424a9ddc164c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "735013f2_cc5b248e",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-17T18:15:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e02908f_1be216f7",
       "range": {
         "startLine": 227,
         "startChar": 58,
