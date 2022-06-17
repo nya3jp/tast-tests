@@ -30,6 +30,7 @@ func init() {
 		Fixture:      "arcBootedInTabletMode",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			ExtraAttr:         []string{"informational"}, // TODO(b/236309112): Promote to critical again
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
