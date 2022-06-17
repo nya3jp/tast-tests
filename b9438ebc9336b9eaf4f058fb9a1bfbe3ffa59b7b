@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "821fa305_06b04980",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_no_cellular_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2022-06-17T02:09:50Z",
+      "side": 1,
+      "message": "dumb question....\n\nWe connect, then break, then try to curl the url?\n\n\nThis proves no cellular connection?\n\nIs this any different than just not running the connect/disconnect? If not, then why bother with all of the conn/disconn?\n\nIF so, Is it worth connecting --\u003e curl (proving we had a conn to begin with) --\u003e breaking --\u003e curl (proves the break actually caused the conn to fail)?",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "b9438ebc9336b9eaf4f058fb9a1bfbe3ffa59b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
