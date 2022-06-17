@@ -79,6 +79,21 @@ func init() {
 		PostTestTimeout: 10 * time.Second,
 		Vars:            []string{"policy.ManagedUser.accountPool"},
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "telemetryExtensionOverrideOEMName",
+		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension for devices that are not officially supported yet",
+		Contacts: []string{
+			"lamzin@google.com", // Fixture and Telemetry Extension author
+			"mgawad@google.com", // Telemetry Extension author
+			"cros-oem-services-team@google.com",
+		},
+		Impl:            newTelemetryExtensionFixture(),
+		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
+		TearDownTimeout: cleanupTimeout,
+		PreTestTimeout:  10 * time.Second,
+		PostTestTimeout: 10 * time.Second,
+		Data:            extFiles(false),
+	})
 }
 
 func manifestFile(optionsPage bool) string {
@@ -110,6 +125,12 @@ func managed() func(*telemetryExtensionFixture) {
 	}
 }
 
+func overrideOEMName() func(*telemetryExtensionFixture) {
+	return func(f *telemetryExtensionFixture) {
+		f.overrideOEMName = true
+	}
+}
+
 func newTelemetryExtensionFixture(opts ...option) *telemetryExtensionFixture {
 	f := &telemetryExtensionFixture{}
 	f.v.ExtID = "gogonhoemckpdpadfnjnpgbjpbjnodgc"
@@ -122,8 +143,9 @@ func newTelemetryExtensionFixture(opts ...option) *telemetryExtensionFixture {
 
 // telemetryExtensionFixture implements testing.FixtureImpl.
 type telemetryExtensionFixture struct {
-	optionsPage bool
-	managed     bool
+	optionsPage     bool
+	managed         bool
+	overrideOEMName bool
 
 	dir string
 	cr  *chrome.Chrome
