@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e2fb8b_512de9b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-17T19:22:11Z",
+      "side": 1,
+      "message": "Won scheduled a sync with me regarding these tests; I\u0027ll summarize my concerns here:\n\n`usbPort` and `usbPortPath` are misnomers, and misleading in terms of what the test is doing. Not all files within a Type-C ports directory are \"usb ports\" so labeling the iterator (and it\u0027s derived variables) as such is misleading.",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "fb66b4c5ab5f44014b48061e57ee1d5722a15e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2273b10a_b3e00ced",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-17T19:22:11Z",
+      "side": 1,
+      "message": "This flag conflates two checks together, and it is difficult to discern what the failure modes are.\n\nIt is more legible and clearer to segment the test into 2 parts:\n1. Look for USB port paths within the Type-C port directory; if none are found -\u003e fail\n2. For the USB port paths found in 1.) verify that each one has the right symlinks. If any of the ports fail the check -\u003e fail.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "fb66b4c5ab5f44014b48061e57ee1d5722a15e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
