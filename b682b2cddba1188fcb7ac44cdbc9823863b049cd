@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0bb41b9_1d511215",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-17T05:19:02Z",
+      "side": 1,
+      "message": "Decided to keep the tests in Tast for validating usernames, only remove the time-consuming installation. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3709456/3",
+      "revId": "b682b2cddba1188fcb7ac44cdbc9823863b049cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
