@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dc16e6b_350d04fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_input_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-17T01:12:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a6ef00f8_76f984ca",
+      "revId": "de8b67d6083668cfb510a5b86a75f4a26a8d5788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fce0dd4_853a3d3b",
