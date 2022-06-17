@@ -16,6 +16,46 @@
       "message": "PTAL. Thank you!",
       "revId": "549339468cf051c1f5f566d6252b0484b6564f54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75392c2_273d24d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-17T20:25:32Z",
+      "side": 1,
+      "message": "Please wait till domain expert +2.",
+      "revId": "549339468cf051c1f5f566d6252b0484b6564f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f012057b_7df95bd5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/audio_decoder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-17T20:25:32Z",
+      "side": 1,
+      "message": "Use Wrap to have better error message.",
+      "range": {
+        "startLine": 67,
+        "startChar": 22,
+        "endLine": 67,
+        "endChar": 25
+      },
+      "revId": "549339468cf051c1f5f566d6252b0484b6564f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
