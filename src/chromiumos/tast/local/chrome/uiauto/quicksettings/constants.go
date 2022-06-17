@@ -11,8 +11,8 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 )
 
-// quickSettingsFinder is the finder to find the Quick Settings area in the UI.
-var quickSettingsFinder = nodewith.ClassName("UnifiedSystemTrayView")
+// RootFinder is the finder to find the Quick Settings area in the UI.
+var RootFinder = nodewith.ClassName("UnifiedSystemTrayView")
 
 // StatusAreaWidget is the finder to find the control widgets.
 var StatusAreaWidget = nodewith.Role(role.Pane).HasClass("ash/StatusAreaWidgetDelegate")
