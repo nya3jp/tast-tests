@@ -126,6 +126,12 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		return nil, err
 	}
 
+	upLinkList := []string{"eth0", "lo"}
+	if err := common.InitializeInterfaces(shortCtx, r.ipr, upLinkList); err != nil {
+		r.Close(shortCtx)
+		return nil, err
+	}
+
 	killHostapdDhcp := func() {
 		shortCtx, st := timing.Start(shortCtx, "killHostapdDhcp")
 		defer st.End()
