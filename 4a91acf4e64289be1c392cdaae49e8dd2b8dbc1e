@@ -33,6 +33,41 @@
       "message": "Thanks for the quick fix!\n\n(BTW, given the instability around the logic, we might also want to consider adding a reliable API to change wallpaper or just placing a plain-white fullscreen activity?)",
       "revId": "4a91acf4e64289be1c392cdaae49e8dd2b8dbc1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00d3295b_e62b9ba1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-06-17T06:25:09Z",
+      "side": 1,
+      "message": "\u003e adding a reliable API to change wallpaper\nSGTM. Let me work on it!",
+      "parentUuid": "6eb4cb4d_aef52ef1",
+      "revId": "4a91acf4e64289be1c392cdaae49e8dd2b8dbc1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e6c84f_9ed7d8af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-06-17T06:25:09Z",
+      "side": 1,
+      "message": "tast-owners@: Please take a look.",
+      "revId": "4a91acf4e64289be1c392cdaae49e8dd2b8dbc1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
