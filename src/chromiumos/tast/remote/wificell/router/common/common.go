@@ -84,3 +84,23 @@ func RemoveDevicesWithPrefix(ctx context.Context, ipr *ip.Runner, prefix string)
 	}
 	return nil
 }
+
+// InitializeInterfaces tears down all the interfaces except those in linkList.
+func InitializeInterfaces(ctx context.Context, ipr *ip.Runner, linkList []string) error {
+	allLinks, err := ipr.AllInterfaceNames(ctx)
+	if err != nil {
+		return err
+	}
+re:
+	for _, link := range allLinks {
+		for _, upLink := range linkList {
+			if link == upLink {
+				continue re
+			}
+		}
+		if err := ipr.SetLinkDown(ctx, link); err != nil {
+			return err
+		}
+	}
+	return nil
+}
