@@ -234,6 +234,75 @@
       },
       "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f98a0fa_02f92ec3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-17T05:06:18Z",
+      "side": 1,
+      "message": "What about putting these options within the existing type EnvOptions as additional fields to configure ? This should allow to remove CreateCaptivePortalEnv() which looks basically the same as CreateRouterEnv().\n\nAlternatively you can embed type EnvOptions into type CaptivePortalOptions if you want a new type.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 13
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "489aa8ef_34b4f6c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-17T05:06:18Z",
+      "side": 1,
+      "message": "Could we try to reuse one of the eixsting setup function above ? This would avoid having to maintain multiple setup functions when we fix or add something. For instance this function does not have IPv6.",
+      "range": {
+        "startLine": 162,
+        "startChar": 5,
+        "endLine": 162,
+        "endChar": 27
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20e35df5_82ef0723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-17T05:06:18Z",
+      "side": 1,
+      "message": "IPv4 HTTP server.",
+      "range": {
+        "startLine": 195,
+        "startChar": 4,
+        "endLine": 195,
+        "endChar": 21
+      },
+      "revId": "285f77373d71df55ad834da1b2716b17280e86bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
