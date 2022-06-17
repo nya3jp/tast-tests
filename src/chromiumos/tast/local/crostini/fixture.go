@@ -9,6 +9,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -258,16 +259,18 @@ type crostiniFixture struct {
 	kb       *input.KeyboardEventWriter
 	preData  *preTestData
 	postData *PostTestData
+	values   *perf.Values
 	restart  bool
 }
 
 // FixtureData is the data returned by SetUp and passed to tests.
 type FixtureData struct {
-	Chrome   *chrome.Chrome
-	Tconn    *chrome.TestConn
-	Cont     *vm.Container
-	KB       *input.KeyboardEventWriter
-	PostData *PostTestData
+	Chrome        *chrome.Chrome
+	Tconn         *chrome.TestConn
+	Cont          *vm.Container
+	KB            *input.KeyboardEventWriter
+	PostData      *PostTestData
+	StartupValues *perf.Values
 }
 
 var preTestDataBuster = &preTestData{
@@ -336,10 +339,10 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 			s.Fatal("Failed to install Crostini: ", err)
 		}
 	}
-	if values, err := r.UpdateValues(ctx, f.tconn); err != nil {
+	if f.values, err = r.UpdateValues(ctx, f.tconn); err != nil {
 		s.Log("Can't update perf values: ", err)
 	} else {
-		values.Save(s.OutDir())
+		f.values.Save(s.OutDir())
 	}
 
 	f.cont, err = vm.DefaultContainer(ctx, f.cr.NormalizedUser())
@@ -360,7 +363,7 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 
-	return FixtureData{f.cr, f.tconn, f.cont, f.kb, f.postData}
+	return FixtureData{f.cr, f.tconn, f.cont, f.kb, f.postData, f.values}
 }
 
 func (f *crostiniFixture) TearDown(ctx context.Context, s *testing.FixtState) {

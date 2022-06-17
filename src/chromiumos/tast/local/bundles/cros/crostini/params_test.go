@@ -104,6 +104,7 @@ var perfTests = map[string]time.Duration{
 	"input_latency.go": 10 * time.Minute,
 	"mouse_perf.go":    7 * time.Minute,
 	"network_perf.go":  10 * time.Minute,
+	"startup_perf.go":  1 * time.Minute,
 	"vim_compile.go":   20 * time.Minute,
 }
 
