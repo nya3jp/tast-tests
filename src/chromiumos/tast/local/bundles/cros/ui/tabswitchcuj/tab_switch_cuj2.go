@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -514,6 +515,12 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	// Open all windows and tabs.
 	if err := openAllWindowsAndTabs(ctx, br, &windows, tsAction, caseLevel); err != nil {
 		s.Fatal("Failed to open targets for tab switch: ", err)
+	}
+	// Maximize all windows to ensure a consistent state.
+	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+		return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized)
+	}); err != nil {
+		s.Fatal("Failed to maximize windows: ", err)
 	}
 
 	// Total time used from beginning to load all pages.
