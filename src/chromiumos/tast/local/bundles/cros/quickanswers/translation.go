@@ -24,7 +24,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Translation,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Test Quick Answers unit conversion feature",
+		Desc:         "Test Quick Answers translation feature",
 		Contacts: []string{
 			"updowndota@google.com",
 			"croissant-eng@google.com",
@@ -43,7 +43,7 @@ func init() {
 	})
 }
 
-// Translation tests Quick Answers translation fearture.
+// Translation tests Quick Answers translation feature.
 func Translation(ctx context.Context, s *testing.State) {
 	// Reserve five seconds for various cleanup.
 	cleanupCtx := ctx
