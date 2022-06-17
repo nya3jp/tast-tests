@@ -33,8 +33,8 @@ func init() {
 				ExtraHardwareDeps: dep.TargetModels(),
 			},
 			{
-				Name:              "low_priority_target_models",
-				ExtraHardwareDeps: dep.LowPriorityTargetModels(),
+				Name:              "non_target_models",
+				ExtraHardwareDeps: dep.NonTargetModels(),
 			},
 		},
 	})
