@@ -46,6 +46,14 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 		mountCount = 15
 		// unmountCount is the times that we unmount all user's vault.
 		unmountCount = 2
+		// createSoftwareKeyCount is the times that we create a software-backed key.
+		createSoftwareKeyCount = 110
+		// createImportedKeyCount is the times that we create a key then import it.
+		createImportedKeyCount = 110
+		// createGeneratedKeyCount is the times that we generate a key in TPM.
+		createGeneratedKeyCount = 20
+		// removeKeyCount is the times that we remove a key.
+		removeKeyCount = 25
 	)
 
 	r := hwseclocal.NewCmdRunner()
@@ -55,6 +63,11 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create hwsec helper: ", err)
 	}
 	cryptohome := helper.CryptohomeClient()
+
+	pkcs11Util, err := pkcs11.NewChaps(ctx, r, cryptohome)
+	if err != nil {
+		s.Fatal("Failed to create PKCS#11 Utility: ", err)
+	}
 
 	// Prepare the states for this test and the user/pass lists.
 	state := &chapsStressState{}
@@ -69,6 +82,7 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 	// Seed the random with a deterministic seed for reproducible run.
 	state.rand = rand.New(rand.NewSource(42))
 	state.userCount = userCount
+	state.keysPerUser = keysPerUser
 
 	const scratchpadPath = "/tmp/ChapsECDSATest"
 
@@ -107,17 +121,21 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 	rounds := make([]roundType, 0)
 	rounds = append(rounds, fillRound(mountRound, mountCount)...)
 	rounds = append(rounds, fillRound(unmountRound, unmountCount)...)
+	rounds = append(rounds, fillRound(createSoftwareKeyRound, createSoftwareKeyCount)...)
+	rounds = append(rounds, fillRound(createImportedKeyRound, createImportedKeyCount)...)
+	rounds = append(rounds, fillRound(createGeneratedKeyRound, createGeneratedKeyCount)...)
+	rounds = append(rounds, fillRound(removeKeyRound, removeKeyCount)...)
 	state.rand.Shuffle(len(rounds), func(x, y int) {
 		rounds[x], rounds[y] = rounds[y], rounds[x]
 	})
 
 	for i := 0; i < len(rounds); i++ {
-		if err := runOneTurn(ctx, state, cryptohome, rounds[i]); err != nil {
+		if err := runOneTurn(ctx, state, cryptohome, rounds[i], pkcs11Util, scratchpadPath); err != nil {
 			s.Fatal("Turn failed: ", err)
 		}
 	}
 
-	s.Logf("Mounted %d times, unmounted %d times", state.mountCount, state.unmountCount)
+	s.Logf("Mounted %d times, unmounted %d times, created %d keys, removed %d keys", state.mountCount, state.unmountCount, state.createKeyCount, state.removeKeyCount)
 }
 
 // roundType is the type for determining what to do in a round, it's an enum.
@@ -127,6 +145,10 @@ type roundType int64
 const (
 	mountRound roundType = iota
 	unmountRound
+	createSoftwareKeyRound
+	createImportedKeyRound
+	createGeneratedKeyRound
+	removeKeyRound
 )
 
 // fillRound is a simple helper that create an array of size count filled with round.
@@ -155,6 +177,8 @@ type chapsStressState struct {
 	// rand is the source of randomness that is used throughout the test to ensure that
 	// it is deterministic.
 	rand *rand.Rand
+	// nextKeyID is the ID for the next created key
+	nextKeyID int
 
 	// Below are some statistics of the stress test run:
 
@@ -162,9 +186,23 @@ type chapsStressState struct {
 	mountCount int
 	// unmountCount is the number of times we unmounted all vaults.
 	unmountCount int
+	// createKeyCount is the number of times we created a key.
+	createKeyCount int
+	// removeKeyCount is the number of times we removed a key.
+	removeKeyCount int
 
 	// userCount is the number of users that we're testing simultaneously.
 	userCount int
+	// keysPerUser is the maximum number of keys we'll have per user.
+	keysPerUser int
+}
+
+// getNextKeyID generates the label and keyID for the key that we're going to create.
+func getNextKeyID(state *chapsStressState) (label, keyID string) {
+	keyID = fmt.Sprintf("4242%06X", state.nextKeyID)
+	label = "Key" + keyID
+	state.nextKeyID++
+	return label, keyID
 }
 
 // doMountUserTurn randomly selects a user that's not mounted and mount the vault.
@@ -221,16 +259,105 @@ func unmountAll(ctx context.Context, state *chapsStressState, cryptohome *hwsec.
 	return nil
 }
 
+// doCreateKeyTurn randomly create a key for a random user.
+func doCreateKeyTurn(ctx context.Context, state *chapsStressState, pkcs11Util *pkcs11.Chaps, scratchpadPath string, round roundType) error {
+	// Select a key that's not created.
+	var viableKeys []int
+	for i := 0; i < state.userCount*state.keysPerUser; i++ {
+		if state.keys[i] == nil && state.mounted[i/state.keysPerUser] {
+			viableKeys = append(viableKeys, i)
+		}
+	}
+
+	if len(viableKeys) == 0 {
+		// No key to create, not creating keys
+		return nil
+	}
+
+	// Select the key.
+	k := viableKeys[state.rand.Intn(len(viableKeys))]
+	username := state.usernames[k/state.keysPerUser]
+
+	createKeyFunc := func(label, keyID string) (*pkcs11.KeyInfo, error) {
+		return nil, errors.New("unused create key function called")
+	}
+	if round == createImportedKeyRound {
+		createKeyFunc = func(label, keyID string) (*pkcs11.KeyInfo, error) {
+			return pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, username, label, keyID, false, true)
+		}
+	} else if round == createSoftwareKeyRound {
+		createKeyFunc = func(label, keyID string) (*pkcs11.KeyInfo, error) {
+			return pkcs11Util.CreateRSASoftwareKey(ctx, scratchpadPath, username, label, keyID, true, true)
+		}
+	} else if round == createGeneratedKeyRound {
+		createKeyFunc = func(label, keyID string) (*pkcs11.KeyInfo, error) {
+			return pkcs11Util.CreateGeneratedKey(ctx, scratchpadPath, pkcs11.GenRSA2048, username, label, keyID)
+		}
+	} else {
+		return errors.New("invalid round in doCreateKeyTurn")
+	}
+
+	label, keyID := getNextKeyID(state)
+	key, err := createKeyFunc(label, keyID)
+	if err != nil {
+		return errors.Wrapf(err, "failed to create key for round %d", round)
+	}
+	state.keys[k] = key
+
+	state.createKeyCount++
+	testing.ContextLogf(ctx, "Create key %d", k)
+	return nil
+}
+
+// doRemoveKeyTurn removes a random key.
+func doRemoveKeyTurn(ctx context.Context, state *chapsStressState, pkcs11Util *pkcs11.Chaps) error {
+	// Select a key to remove
+	var viableKeys []int
+	for i := 0; i < state.userCount*state.keysPerUser; i++ {
+		if state.keys[i] != nil && state.mounted[i/state.keysPerUser] {
+			viableKeys = append(viableKeys, i)
+		}
+	}
+
+	if len(viableKeys) == 0 {
+		// No key to remove, not removing keys
+		return nil
+	}
+
+	// Select the key.
+	k := viableKeys[state.rand.Intn(len(viableKeys))]
+
+	if err := pkcs11Util.DestroyKey(ctx, state.keys[k]); err != nil {
+		return errors.Wrap(err, "failed to destroy key in remove key turn")
+	}
+
+	state.keys[k] = nil
+
+	state.removeKeyCount++
+	testing.ContextLogf(ctx, "Removed key %d", k)
+	return nil
+}
+
 // runOneTurn runs one iteration of the test. It'll do one of the following according to round:
 // - Mount a user
 // - Unmount all users
-func runOneTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.CryptohomeClient, round roundType) error {
+// - Create a key
+// - Remove a key
+func runOneTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.CryptohomeClient, round roundType, pkcs11Util *pkcs11.Chaps, scratchpadPath string) error {
 	if round == mountRound {
 		return doMountUserTurn(ctx, state, cryptohome)
 	}
 
 	if round == unmountRound {
 		return unmountAll(ctx, state, cryptohome)
+	}
+
+	if round == createSoftwareKeyRound || round == createImportedKeyRound || round == createGeneratedKeyRound {
+		return doCreateKeyTurn(ctx, state, pkcs11Util, scratchpadPath, round)
+	}
+
+	if round == removeKeyRound {
+		return doRemoveKeyTurn(ctx, state, pkcs11Util)
 	}
 
 	return errors.New("invalid round in runOneTurn")
