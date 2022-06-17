@@ -33,7 +33,7 @@ func addARCFixtures() {
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -55,6 +55,6 @@ func addARCFixtures() {
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 }

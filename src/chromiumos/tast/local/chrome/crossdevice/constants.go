@@ -4,6 +4,8 @@
 
 package crossdevice
 
+import "time"
+
 // Constants used in the adb commands for installing and launching the Multidevice Snippet.
 const (
 	MultideviceSnippetZipName      = "multidevice_snippet.zip"
@@ -49,3 +51,6 @@ const (
 	// SmartLockLogin defines logging in with Smart Lock
 	SmartLockLogin
 )
+
+// BugReportDuration is the duration to reserve for saving a bug report on an Android device.
+const BugReportDuration = 5 * time.Minute

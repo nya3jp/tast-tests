@@ -11,12 +11,15 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/android/adb"
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
@@ -26,6 +29,10 @@ import (
 
 // resetTimeout is the timeout duration to trying reset of the current fixture.
 const resetTimeout = 30 * time.Second
+
+// postTestTimeout is the timeout for the fixture PostTest stage.
+// We need a considerable amount of time to collect an Android bug report on failure.
+const postTestTimeout = resetTimeout + crossdevice.BugReportDuration
 
 // If skipping the Android login on a 'Some contacts' visibility test, you must specify the logged in Android username as -var=android_username="<username>" so we can configure the CrOS device's allowed Nearby contacts.
 const customAndroidUsername = "android_username"
@@ -77,6 +84,7 @@ type nearbyShareFixture struct {
 	// createBtsnoopCmd returns the command for btsnoop log capture. The command is started in PreTest and must be killed in PostTest before saving the logs.
 	createBtsnoopCmd func(string) *testexec.Cmd
 	btsnoopCmd       *testexec.Cmd
+	logcatStartTime  adb.LogcatTimestamp
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -120,11 +128,27 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	androidUsername := s.ParentValue().(*FixtData).AndroidUsername
 	loggedIn := s.ParentValue().(*FixtData).AndroidLoggedIn
 
-	// Reset and save logcat so we have Android logs even if fixture setup fails.
-	if err := androidDevice.ClearLogcat(ctx); err != nil {
-		s.Fatal("Failed to clear logcat at start of fixture setup")
+	// Allocate time for logging and taking a bugreport in case of failure.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, crossdevice.BugReportDuration)
+	defer cancel()
+
+	// Save logcat so we have Android logs even if fixture setup fails.
+	startTime, err := androidDevice.Device.LatestLogcatTimestamp(ctx)
+	if err != nil {
+		s.Fatal("Failed to get latest logcat timestamp: ", err)
 	}
-	defer androidDevice.DumpLogs(ctx, s.OutDir(), "fixture_setup_logcat.txt")
+	defer androidDevice.Device.DumpLogcatFromTimestamp(cleanupCtx, filepath.Join(s.OutDir(), "fixture_setup_logcat.txt"), startTime)
+	defer androidDevice.DumpLogs(cleanupCtx, s.OutDir(), "fixture_setup_persistent_logcat.txt")
+
+	// Save an Android bug report on setup failure.
+	defer func() {
+		if s.HasError() {
+			if err := crossdevice.BugReport(ctx, androidDevice.Device, s.OutDir()); err != nil {
+				s.Log("Failed to save Android bug report: ", err)
+			}
+		}
+	}()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -228,9 +252,13 @@ func (f *nearbyShareFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 		s.Error("Failed to start Chrome logging: ", err)
 	}
 	f.ChromeReader = chromeReader
-	if err := f.androidDevice.ClearLogcat(ctx); err != nil {
-		s.Fatal("Failed to clear logcat before the test run: ", err)
+
+	timestamp, err := f.androidDevice.Device.LatestLogcatTimestamp(ctx)
+	if err != nil {
+		s.Fatal("Failed to get latest logcat timestamp: ", err)
 	}
+	f.logcatStartTime = timestamp
+
 	if err := saveDeviceAttributes(f.crosAttributes, f.androidAttributes, filepath.Join(s.OutDir(), "device_attributes.json")); err != nil {
 		s.Error("Failed to save device attributes: ", err)
 	}
@@ -248,9 +276,14 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	if err := nearbyshare.SaveLogs(ctx, f.ChromeReader, filepath.Join(s.OutDir(), nearbycommon.ChromeLog)); err != nil {
 		s.Error("Failed to save Chrome log: ", err)
 	}
-	if err := f.androidDevice.DumpLogs(ctx, s.OutDir(), "nearby_logcat.txt"); err != nil {
-		s.Error("Failed to save Android logcat: ", err)
+
+	if err := f.androidDevice.Device.DumpLogcatFromTimestamp(ctx, filepath.Join(s.OutDir(), "nearby-logcat.txt"), f.logcatStartTime); err != nil {
+		s.Fatal("Failed to save logcat logs from the test: ", err)
 	}
+	if err := f.androidDevice.DumpLogs(ctx, s.OutDir(), "nearby-persistent-logcat.txt"); err != nil {
+		s.Fatal("Failed to save persistent logcat logs: ", err)
+	}
+
 	if err := f.btsnoopCmd.Kill(); err != nil {
 		s.Error("Failed to stop btsnoop log capture: ", err)
 	}
@@ -262,6 +295,12 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	}
 	if err := f.androidDevice.ClearDownloads(ctx); err != nil {
 		s.Error("Failed to clear contents of the Android downloads folder: ", err)
+	}
+
+	if s.HasError() {
+		if err := crossdevice.BugReport(ctx, f.androidDevice.Device, s.OutDir()); err != nil {
+			s.Error("Failed to save Android bug report: ", err)
+		}
 	}
 }
 

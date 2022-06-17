@@ -8,6 +8,7 @@ import (
 	"time"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
@@ -32,11 +33,11 @@ func addModulefoodAndroidFixtures() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent:          "nearbyShareGAIALoginAndroidAccount",
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -53,11 +54,11 @@ func addModulefoodAndroidFixtures() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 
 	// Fixtures for high-visibility sharing tests.
@@ -75,11 +76,11 @@ func addModulefoodAndroidFixtures() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -96,11 +97,11 @@ func addModulefoodAndroidFixtures() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent:          "nearbyShareGAIALogin",
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 
 	// Fixtures for "Some contacts" visibility tests, that select which contacts to be visible to.
@@ -121,11 +122,11 @@ func addModulefoodAndroidFixtures() {
 		Vars: []string{
 			customAndroidUsername,
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -145,11 +146,11 @@ func addModulefoodAndroidFixtures() {
 		Vars: []string{
 			customAndroidUsername,
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -169,10 +170,10 @@ func addModulefoodAndroidFixtures() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 }
