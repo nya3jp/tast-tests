@@ -264,6 +264,24 @@
       "parentUuid": "e4c39b99_8e2ec8fe",
       "revId": "b2fdcb23b1570fd447f4b2859a2bef8ea77813da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "509f1c2b_0b486f0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper_child.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-17T02:20:24Z",
+      "side": 1,
+      "message": "It sounds like the notification is not being automatically removed, but is instead just visually disappearing. If you open the notification tray I guess it will still be there. If that\u0027s the case, the current code is fine.\n\nSo just check the notification is just visually disappearing but still exists in the notification tray, and if so current code is fine IMO.",
+      "parentUuid": "dc2ce2ef_5277773e",
+      "revId": "b2fdcb23b1570fd447f4b2859a2bef8ea77813da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
