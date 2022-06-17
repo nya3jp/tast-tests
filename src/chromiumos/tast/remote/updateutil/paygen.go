@@ -44,6 +44,12 @@ type Board struct {
 	BuilderName    string `json:"builder_name"`
 }
 
+// WithPaygen is an interface for fixture values that contain a Paygen instance.
+// It allows retrieval of the underlying Paygen object.
+type WithPaygen interface {
+	Paygen() *Paygen
+}
+
 // FindLatestStable finds the entry in paygen.json for the latest image on the selected board.
 func FindLatestStable(ctx context.Context, board string) (*Delta, error) {
 	channel := "stable"
