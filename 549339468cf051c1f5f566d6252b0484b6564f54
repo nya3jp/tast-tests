@@ -56,6 +56,29 @@
       },
       "revId": "549339468cf051c1f5f566d6252b0484b6564f54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f0ec7f8_85520adc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/audio_decoder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1123899
+      },
+      "writtenOn": "2022-06-17T21:53:31Z",
+      "side": 1,
+      "message": "interesting, maybe add a parameter to specify if we want a response. \n\nusing `SendTextQueryViaUI` is fine, but we probably want to unify to one way to send the query, whether to expect a response is orthogonal.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 81
+      },
+      "revId": "549339468cf051c1f5f566d6252b0484b6564f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
