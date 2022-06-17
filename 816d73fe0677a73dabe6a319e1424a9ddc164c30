@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdc2a829_cc63d5b2",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-17T18:22:59Z",
+      "side": 1,
+      "message": "Ack, my mistake.",
+      "parentUuid": "351441a1_d2d0032c",
+      "revId": "816d73fe0677a73dabe6a319e1424a9ddc164c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e02908f_1be216f7",
@@ -79,6 +97,23 @@
         "endLine": 227,
         "endChar": 71
       },
+      "revId": "816d73fe0677a73dabe6a319e1424a9ddc164c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5af8f2b4_ecd32095",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-17T18:22:59Z",
+      "side": 1,
+      "message": "Sorry I should have asked before, is there a wpa ctrl event that we can use instead of polling here?",
       "revId": "816d73fe0677a73dabe6a319e1424a9ddc164c30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
