@@ -35,7 +35,7 @@ func init() {
 		Desc:         "Checks that device will charge when EC is in a low-power mode, as a replacement for manual test 1.4.11",
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable", "firmware_bringup"},
+		Attr:         []string{"group:firmware", "firmware_bringup"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"board", "model"},
 		Fixture:      fixture.NormalMode,
@@ -49,6 +49,8 @@ func init() {
 				formFactor: "chromeslate",
 				hasLid:     false,
 			},
+			// TODO(b/192394835): This test always fails. Please add attr firmware_unstable when it is fixed.
+			ExtraAttr: []string{},
 		}, {
 			Name:              "convertible",
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Convertible)),
@@ -57,6 +59,7 @@ func init() {
 				tabletModeOff: "tabletmode off",
 				hasLid:        true,
 			},
+			ExtraAttr: []string{"firmware_unstable"},
 		}, {
 			Name:              "detachable",
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable)),
@@ -65,12 +68,14 @@ func init() {
 				tabletModeOff: "basestate attach",
 				hasLid:        true,
 			},
+			ExtraAttr: []string{"firmware_unstable"},
 		}, {
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Clamshell)),
 			Val: &testArgsForECWakeOnCharge{
 				formFactor: "clamshell",
 				hasLid:     true,
 			},
+			ExtraAttr: []string{"firmware_unstable"},
 		}},
 	})
 }

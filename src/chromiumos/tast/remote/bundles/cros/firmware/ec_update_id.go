@@ -29,19 +29,22 @@ func init() {
 		Func:         ECUpdateID,
 		Desc:         "Verify corrupting RW firmware in EFS system results in switching between RW and RW_B and is corrected by AP",
 		Contacts:     []string{"tij@google.com", "cros-fw-engprod@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		Attr:         []string{"group:firmware"},
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Platform("fizz", "kalista")),
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService", "tast.cros.firmware.UtilsService"},
 		Timeout:      15 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:    "normal_mode",
-				Fixture: fixture.NormalMode,
+				Name:      "normal_mode",
+				Fixture:   fixture.NormalMode,
+				ExtraAttr: []string{"firmware_unstable"},
 			},
 			{
 				Name:    "dev_gbb",
 				Fixture: fixture.DevModeGBB,
+				// TODO(b/194908376): This test always fails. Please add attr firmware_unstable when it is fixed.
+				ExtraAttr: []string{},
 			},
 		},
 	})

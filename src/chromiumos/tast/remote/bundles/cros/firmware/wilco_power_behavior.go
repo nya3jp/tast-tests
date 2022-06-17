@@ -20,7 +20,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify Wilco devices can wake from pressing power, but not from connecting AC",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
-		Attr:         []string{"group:firmware", "firmware_unstable"},
+		// TODO(b/200305396): This test always fails. Add firmware_unstable attr when it is working.
+		Attr:         []string{"group:firmware"},
 		SoftwareDeps: []string{"wilco"},
 		Fixture:      fixture.NormalMode,
 	})
