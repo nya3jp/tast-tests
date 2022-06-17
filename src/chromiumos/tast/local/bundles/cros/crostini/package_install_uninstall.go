@@ -21,7 +21,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Installs and then uninstalls a package that we have copied into the container",
 		Contacts:     []string{"clumptini+oncall@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Data:         []string{"package.deb"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

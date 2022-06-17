@@ -40,7 +40,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that background crostini apps can not access the clipboard",
 		Contacts:     []string{"clumptini+oncall@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Data:         []string{blockerTitle},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
