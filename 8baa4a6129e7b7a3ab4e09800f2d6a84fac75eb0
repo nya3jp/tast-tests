@@ -39,6 +39,30 @@
       },
       "revId": "8baa4a6129e7b7a3ab4e09800f2d6a84fac75eb0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd6c6c41_18495f01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arcvpn/arcvpn.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-17T07:27:41Z",
+      "side": 1,
+      "message": "Did some more experience and discussed with Cassie offline. We observed some strange behavior on my DUT, sometimes the `dumpsys wifi` command will fail with:\n`*** SERVICE \u0027wifi\u0027 DUMP TIMEOUT (10000ms) EXPIRED ***`, but we didn\u0027t find this pattern in the lab (maybe the current timeout is not enough to reveal it).\nSince it seems that this patch does not change anything here (in theory we observed something similiar without this patch), I reverted most of the changes here and add a TODO.",
+      "parentUuid": "b4b3743e_07619fd8",
+      "range": {
+        "startLine": 111,
+        "startChar": 65,
+        "endLine": 112,
+        "endChar": 65
+      },
+      "revId": "8baa4a6129e7b7a3ab4e09800f2d6a84fac75eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
