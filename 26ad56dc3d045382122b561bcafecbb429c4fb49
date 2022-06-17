@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86f5cd5e_a2c0bfd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525163
+      },
+      "writtenOn": "2022-06-17T11:15:40Z",
+      "side": 1,
+      "message": "LGTM - thank you for testing the interactions with the other policies!",
+      "revId": "26ad56dc3d045382122b561bcafecbb429c4fb49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
