@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e5c62e_8dcda7a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_sig_ab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-06-17T16:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40317d41_f5c9901f",
+      "range": {
+        "startLine": 31,
+        "startChar": 85,
+        "endLine": 31,
+        "endChar": 101
+      },
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55ad384d_3a9d31ad",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-06-13T22:27:29Z",
       "side": 1,
       "message": "You should add a defer call here to remove the backup from the dut.",
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e840fb8_bd20737a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_sig_ab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-06-17T16:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55ad384d_3a9d31ad",
       "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +147,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a56bb52_d196a80c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_fw_sig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-06-17T16:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4c41eaa_95b520a8",
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f413cab0_8544de89",
@@ -118,6 +178,24 @@
       "writtenOn": "2022-06-13T22:27:29Z",
       "side": 1,
       "message": "You said Host in the log, but used USBMuxDUT in the call. Please update log to match",
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cd63964_0d68e5eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_fw_sig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-06-17T16:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f413cab0_8544de89",
       "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -241,6 +319,30 @@
       "side": 1,
       "message": "I used `git push`, now I know I shouldn\u0027t do that.",
       "parentUuid": "2cab67ca_5b36f33e",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "802603e7_b5370240",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-06-17T16:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b0a1c53_c3074f7f",
       "range": {
         "startLine": 113,
         "startChar": 3,
