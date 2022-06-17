@@ -70,6 +70,24 @@
       "parentUuid": "7ae5cc1d_c9b5e77e",
       "revId": "bf7f6252e7801af1b34d712ad121723a1d45dab9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51e27af_5aa12766",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-06-17T01:52:34Z",
+      "side": 1,
+      "message": "Yes, any CQ coverage is better than nothing.\nChatted with hidehiko@, if the failure looks confined to VMs and is unlikely user issues (eg, crbug/1316237 timing), we can move on adding a stable variant with \u0027lacros_stable\u0027 to exclude VMs in CQ runs. \n\nBtw, I realized that part of the test code needs to be changed for the deprecated path, so I\u0027ll need to fix it first and look out for more test runs to promote this in a follow up. PTAL again.",
+      "parentUuid": "0075af93_2c4bd02d",
+      "revId": "bf7f6252e7801af1b34d712ad121723a1d45dab9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
