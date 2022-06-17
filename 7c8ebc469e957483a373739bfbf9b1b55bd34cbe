@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd0c6228_8fdcdf86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T07:37:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9ee5115_0ee23a75",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 291,
+        "endChar": 44
+      },
+      "revId": "7c8ebc469e957483a373739bfbf9b1b55bd34cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef0f8343_9b42764c",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-15T06:09:44Z",
       "side": 1,
       "message": "Same here? You could return errors.New(\"invalid round in doCreateKeyTurn\") instead?",
+      "range": {
+        "startLine": 306,
+        "startChar": 2,
+        "endLine": 306,
+        "endChar": 43
+      },
+      "revId": "7c8ebc469e957483a373739bfbf9b1b55bd34cbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0b5273e_87bbf8ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T07:37:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef0f8343_9b42764c",
       "range": {
         "startLine": 306,
         "startChar": 2,
