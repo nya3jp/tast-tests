@@ -161,6 +161,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da7d52e_c9127467",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-06-17T17:51:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8955ab18_41806a5d",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eed86775_84682ae4",
@@ -281,6 +299,24 @@
       "side": 1,
       "message": "Right, what I was suggesting was to have a list of \"blessed\" interfaces we expect to be up for each type of router. Then when we start a test, we bring down all other interfaces.",
       "parentUuid": "68bb4ec1_3c036c57",
+      "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "000c1a54_ab3c002c",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-06-17T17:51:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9c42aa78_65a37f80",
       "revId": "4deb0a91a69617d8466eaac2708168b0e73bbec0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

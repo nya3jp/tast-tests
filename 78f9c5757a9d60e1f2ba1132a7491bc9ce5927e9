@@ -22,6 +22,30 @@
       },
       "revId": "78f9c5757a9d60e1f2ba1132a7491bc9ce5927e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64a2e2fc_d2a66755",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-06-17T17:51:27Z",
+      "side": 1,
+      "message": "The CL makes the status of an interface to \"DOWN\" by running `ip link set eth1 down`, the interface still exists.\n`ip link delete eth1` delete the interface, so that the interface disappears.",
+      "parentUuid": "9c9c5f2f_35e6210d",
+      "range": {
+        "startLine": 31,
+        "startChar": 42,
+        "endLine": 31,
+        "endChar": 79
+      },
+      "revId": "78f9c5757a9d60e1f2ba1132a7491bc9ce5927e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
