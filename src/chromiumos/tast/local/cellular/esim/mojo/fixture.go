@@ -26,6 +26,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		Parent:          "cellular",
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "chromeLoggedInWithMojoEuicc",
@@ -38,6 +39,7 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		Parent:          "cellular",
 	})
 }
 
