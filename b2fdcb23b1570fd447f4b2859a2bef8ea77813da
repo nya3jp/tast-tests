@@ -228,6 +228,24 @@
       "parentUuid": "158db8cd_daf583e9",
       "revId": "b2fdcb23b1570fd447f4b2859a2bef8ea77813da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4c39b99_8e2ec8fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper_child.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-17T01:40:06Z",
+      "side": 1,
+      "message": "No worries~\n\nIf it goes away automatically, I don\u0027t think we should close it explicitly, or we should ignore an error if we can\u0027t close it. If it automatically closes before we call ash.CloseNotifications, then the test will fail when it doesn\u0027t have to.\n\nThis is assuming the notification closes automatically, which it looked like it did based on the previous code.",
+      "parentUuid": "05c10e9d_b89ed2cb",
+      "revId": "b2fdcb23b1570fd447f4b2859a2bef8ea77813da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
