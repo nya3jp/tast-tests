@@ -339,3 +339,36 @@ func GetAndroidAttributes(ctx context.Context, adbDevice *adb.Device) (*AndroidA
 
 	return &metadata, nil
 }
+
+// BugReport pulls a bug report from the Android device.
+func BugReport(ctx context.Context, device *adb.Device, outDir string) error {
+	testing.ContextLog(ctx, "capturing Android bug report, this may take several minutes")
+	if err := device.BugReport(ctx, outDir); err != nil {
+		return errors.Wrap(err, "failed to generate bug report on the Android device")
+	}
+
+	// Find and rename the bug report to include "android" in the filename.
+	// This is to take advantage of the autotest log throttler rule that prevents
+	// files with "android" in the name from being trimmed/deleted, since the generated
+	// report can be fairly large (tens of MBs).
+	matches, err := filepath.Glob(filepath.Join(outDir, "bugreport*"))
+	if err != nil {
+		return errors.Wrapf(err, "bug report was not successfully pulled to %v", outDir)
+	}
+	if len(matches) != 1 {
+		return errors.Errorf("unexpected number of bug reports; wanted 1, got %v", len(matches))
+	}
+
+	p := strings.Split(matches[0], string(os.PathSeparator))
+	filename := p[len(p)-1]
+	if err := os.Rename(filepath.Join(outDir, filename), filepath.Join(outDir, "android-"+filename)); err != nil {
+		return errors.Wrap(err, "failed to prepend 'android' to the bug report filename")
+	}
+
+	// Clear the Android default bug report directory to clean up.
+	if err := device.RemoveAll(ctx, "/bugreports/*"); err != nil {
+		testing.ContextLog(ctx, "Failed to clear Android /bugreport directory")
+	}
+
+	return nil
+}

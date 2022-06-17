@@ -122,14 +122,15 @@ func (d *Device) EnableVerboseLoggingForTag(ctx context.Context, tag string) err
 }
 
 // DumpLogcat dumps logcat's output to the specified file.
-func (d *Device) DumpLogcat(ctx context.Context, filePath string) error {
+func (d *Device) DumpLogcat(ctx context.Context, filePath string, opts ...string) error {
 	out, err := os.Create(filePath)
 	if err != nil {
 		return errors.Wrap(err, "failed to create logcat output file")
 	}
 	defer out.Close()
 
-	cmd := d.Command(ctx, "logcat", "-d")
+	params := append([]string{"logcat", "-d"}, opts...)
+	cmd := d.Command(ctx, params...)
 	cmd.Stdout = out
 	cmd.Stderr = out
 
@@ -144,4 +145,30 @@ func (d *Device) DumpLogcat(ctx context.Context, filePath string) error {
 // becomes usable.
 func (d *Device) OutputLogcatGrep(ctx context.Context, grepArg string) ([]byte, error) {
 	return d.Command(ctx, "shell", "logcat", "-d", "|", "grep", grepArg).Output()
+}
+
+// LogcatTimestamp is a logcat-formatted timestamp string:
+// MM-DD hh:mm:ss.xxx ex: 06-15 17:03:00.887
+type LogcatTimestamp string
+
+// LogcatTimestampPattern is the regexp for matching a logcat timestamp string.
+var LogcatTimestampPattern = regexp.MustCompile(`\d{1,2}-\d{1,2} \d{1,2}:\d{1,2}:\d{1,2}.\d{1,3}`)
+
+// LatestLogcatTimestamp gets the timestamp of the latest logcat entry.
+// This can be used as a marker to get logcat entries that only happen after
+// this time, allowing for logcat dumps scoped to a particular test without
+// needing to clear logcat's buffers.
+func (d *Device) LatestLogcatTimestamp(ctx context.Context) (LogcatTimestamp, error) {
+	out, err := d.Command(ctx, "logcat", "-t", "1").Output(testexec.DumpLogOnError)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get latest logcat entry")
+	}
+	timestamp := LogcatTimestampPattern.Find(out)
+	return LogcatTimestamp(timestamp), nil
+}
+
+// DumpLogcatFromTimestamp dumps logcat's output to the specified file.
+// The output will only contain entries that occurred after the timestamp.
+func (d *Device) DumpLogcatFromTimestamp(ctx context.Context, filePath string, timestamp LogcatTimestamp) error {
+	return d.DumpLogcat(ctx, filePath, "-T", fmt.Sprintf("%v", timestamp))
 }

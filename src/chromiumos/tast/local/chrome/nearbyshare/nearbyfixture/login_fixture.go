@@ -10,6 +10,7 @@ import (
 	"time"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -362,11 +363,13 @@ func (f *nearbyShareLoginFixture) SetUp(ctx context.Context, s *testing.FixtStat
 		androidDevice.SetADBDevice(ctx, adbDevice)
 	}
 
-	// Reset and save logcat so we have Android logs even if fixture setup fails.
-	if err := androidDevice.ClearLogcat(ctx); err != nil {
-		s.Fatal("Failed to clear logcat at start of fixture setup")
-	}
-	defer androidDevice.DumpLogs(ctx, s.OutDir(), "fixture_setup_logcat.txt")
+	// Allocate time for saving logs in case of failure.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	// Save logcat so we have Android logs even if fixture setup fails.
+	defer androidDevice.DumpLogs(cleanupCtx, s.OutDir(), "fixture_setup_logcat.txt")
 
 	crosUsername := s.RequiredVar("nearbyshare.cros_username")
 	crosPassword := s.RequiredVar("nearbyshare.cros_password")

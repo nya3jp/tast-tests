@@ -27,7 +27,7 @@ const AndroidPhotosPath = "/sdcard/DCIM/Camera"
 // AndroidDevice represents an Android device that's been paired with the Chromebook (i.e. from the "Connected devices" section of OS settings).
 // Android control is achieved by making RPCs to the Multidevice Snippet running on the Android device, or by using ADB commands directly.
 type AndroidDevice struct {
-	device        *adb.Device
+	Device        *adb.Device
 	snippetClient *mobly.SnippetClient
 }
 
@@ -39,7 +39,7 @@ func NewAndroidDevice(ctx context.Context, d *adb.Device, apkZipPath string) (*A
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start the snippet client for the Multidevice Snippet")
 	}
-	return &AndroidDevice{device: d, snippetClient: snippetClient}, nil
+	return &AndroidDevice{Device: d, snippetClient: snippetClient}, nil
 }
 
 // ReconnectToSnippet restarts a connection to the Multidevice Snippet on Android device.
@@ -56,7 +56,7 @@ func (c *AndroidDevice) Cleanup(ctx context.Context) {
 // DumpLogs saves the Android device's logcat output to a file.
 func (c *AndroidDevice) DumpLogs(ctx context.Context, outDir, filename string) error {
 	filePath := filepath.Join(outDir, filename)
-	if err := c.device.DumpLogcat(ctx, filePath); err != nil {
+	if err := c.Device.DumpLogcat(ctx, filePath); err != nil {
 		testing.ContextLog(ctx, "Failed to dump Android logs: ", err)
 		return errors.Wrap(err, "failed to dump Android logs")
 	}
@@ -65,7 +65,7 @@ func (c *AndroidDevice) DumpLogs(ctx context.Context, outDir, filename string) e
 
 // ClearLogcat clears logcat so each test run can have only relevant logs.
 func (c *AndroidDevice) ClearLogcat(ctx context.Context) error {
-	if err := c.device.ClearLogcat(ctx); err != nil {
+	if err := c.Device.ClearLogcat(ctx); err != nil {
 		return errors.Wrap(err, "failed to clear previous logcat logs")
 	}
 	return nil
@@ -74,7 +74,7 @@ func (c *AndroidDevice) ClearLogcat(ctx context.Context) error {
 // StartScreenRecording starts screen recording on the Android device.
 // Defer the returned function to save the recording and clean up on the Android side.
 func (c *AndroidDevice) StartScreenRecording(ctx context.Context, filename, outDir string) (func(context.Context, func() bool) error, error) {
-	return c.device.StartScreenRecording(ctx, filename, outDir)
+	return c.Device.StartScreenRecording(ctx, filename, outDir)
 }
 
 // Pair pairs the Android device to nearby Chromebooks signed in with the same GAIA account.
@@ -84,7 +84,7 @@ func (c *AndroidDevice) StartScreenRecording(ctx context.Context, filename, outD
 // One notable difference is unlike the normal onboarding flow, not all features in the "Connected devices" page will be
 // enabled by default. Some (Phone Hub, WiFi Sync) may need to be toggled on after calling Pair.
 func (c *AndroidDevice) Pair(ctx context.Context) error {
-	user, err := c.device.GoogleAccount(ctx)
+	user, err := c.Device.GoogleAccount(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get device user account")
 	}
@@ -134,12 +134,12 @@ func (c *AndroidDevice) GenerateMessageNotification(ctx context.Context, id int,
 
 // EnablePhoneHubNotifications sets the flag on Android to allow Phone Hub to receive notification updates.
 func (c *AndroidDevice) EnablePhoneHubNotifications(ctx context.Context) error {
-	return c.device.ShellCommand(ctx, "cmd", "notification", "allow_listener", "com.google.android.gms/.auth.proximity.phonehub.PhoneHubNotificationListenerService").Run()
+	return c.Device.ShellCommand(ctx, "cmd", "notification", "allow_listener", "com.google.android.gms/.auth.proximity.phonehub.PhoneHubNotificationListenerService").Run()
 }
 
 // SetPIN sets a screen lock PIN on Android.
 func (c *AndroidDevice) SetPIN(ctx context.Context) error {
-	if err := c.device.SetPIN(ctx); err != nil {
+	if err := c.Device.SetPIN(ctx); err != nil {
 		return errors.Wrap(err, "failed to set a screen lock PIN on Android")
 	}
 	return nil
@@ -147,7 +147,7 @@ func (c *AndroidDevice) SetPIN(ctx context.Context) error {
 
 // ClearPIN clears a screen lock PIN on Android.
 func (c *AndroidDevice) ClearPIN(ctx context.Context) error {
-	if err := c.device.ClearPIN(ctx); err != nil {
+	if err := c.Device.ClearPIN(ctx); err != nil {
 		return errors.Wrap(err, "failed to clear  a screen lock PIN on Android")
 	}
 	return nil
@@ -155,7 +155,7 @@ func (c *AndroidDevice) ClearPIN(ctx context.Context) error {
 
 // GetAndroidAttributes returns the AndroidAttributes for the device.
 func (c *AndroidDevice) GetAndroidAttributes(ctx context.Context) (*AndroidAttributes, error) {
-	return GetAndroidAttributes(ctx, c.device)
+	return GetAndroidAttributes(ctx, c.Device)
 }
 
 // ToggleDoNotDisturb toggles the Do Not Disturb setting on the Android device.
@@ -164,7 +164,7 @@ func (c *AndroidDevice) ToggleDoNotDisturb(ctx context.Context, enable bool) err
 	if enable {
 		status = "on"
 	}
-	if err := c.device.ShellCommand(ctx, "cmd", "notification", "set_dnd", status).Run(); err != nil {
+	if err := c.Device.ShellCommand(ctx, "cmd", "notification", "set_dnd", status).Run(); err != nil {
 		return errors.Wrapf(err, "failed to set Do Not Disturb to %v", status)
 	}
 	return nil
@@ -172,7 +172,7 @@ func (c *AndroidDevice) ToggleDoNotDisturb(ctx context.Context, enable bool) err
 
 // DoNotDisturbEnabled returns true if Do Not Disturb is enabled, and false if it is disabled.
 func (c *AndroidDevice) DoNotDisturbEnabled(ctx context.Context) (bool, error) {
-	res, err := c.device.ShellCommand(ctx, "sh", "-c", "settings list global | grep zen_mode=").Output(testexec.DumpLogOnError)
+	res, err := c.Device.ShellCommand(ctx, "sh", "-c", "settings list global | grep zen_mode=").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get Do Not Disturb status")
 	}
@@ -200,7 +200,7 @@ func (c *AndroidDevice) WaitForDoNotDisturb(ctx context.Context, enabled bool, t
 
 // FindMyPhoneActive returns true if the "Find my phone" alarm is ringing.
 func (c *AndroidDevice) FindMyPhoneActive(ctx context.Context) (bool, error) {
-	out, err := c.device.ShellCommand(ctx, "dumpsys", "audio").Output(testexec.DumpLogOnError)
+	out, err := c.Device.ShellCommand(ctx, "dumpsys", "audio").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return false, err
 	}
@@ -231,13 +231,13 @@ func (c *AndroidDevice) WaitForFindMyPhone(ctx context.Context, active bool, tim
 // ToggleScreen turns the screen off and back on again.
 // This can also be used to easily disable the loud "Find my phone" ringer in case we fail to do so from the UI.
 func (c *AndroidDevice) ToggleScreen(ctx context.Context) error {
-	if err := c.device.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_POWER))); err != nil {
+	if err := c.Device.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_POWER))); err != nil {
 		return errors.Wrap(err, "failed to turn off the screen")
 	}
-	if err := c.device.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_WAKEUP))); err != nil {
+	if err := c.Device.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_WAKEUP))); err != nil {
 		return errors.Wrap(err, "failed to wake screen")
 	}
-	if err := c.device.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_MENU))); err != nil {
+	if err := c.Device.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_MENU))); err != nil {
 		return errors.Wrap(err, "failed to wake screen")
 	}
 	return nil
@@ -245,7 +245,7 @@ func (c *AndroidDevice) ToggleScreen(ctx context.Context) error {
 
 // TurnOnRecentPhotosFeature enables the recent photos feature through the phone side set up dialog.
 func (c *AndroidDevice) TurnOnRecentPhotosFeature(ctx context.Context) error {
-	uiDevice, err := ui.NewDeviceWithRetry(ctx, c.device)
+	uiDevice, err := ui.NewDeviceWithRetry(ctx, c.Device)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the UI Automator server")
 	}
@@ -264,18 +264,18 @@ func (c *AndroidDevice) TurnOnRecentPhotosFeature(ctx context.Context) error {
 
 // TakePhoto takes a photo with Camera app and returns the name of the new photo taken.
 func (c *AndroidDevice) TakePhoto(ctx context.Context) (string, error) {
-	if err := c.device.SendIntentCommand(ctx, "android.media.action.STILL_IMAGE_CAMERA", "").Run(); err != nil {
+	if err := c.Device.SendIntentCommand(ctx, "android.media.action.STILL_IMAGE_CAMERA", "").Run(); err != nil {
 		return "", errors.Wrap(err, "failed to open camera")
 	}
 	// Close the Camera app by pressing the back button when this function exits.
-	defer c.device.PressKeyCode(ctx, "KEYCODE_BACK")
+	defer c.Device.PressKeyCode(ctx, "KEYCODE_BACK")
 
 	mostRecentPhoto, err := c.GetMostRecentPhoto(ctx)
 	if err != nil {
 		return "", err
 	}
 
-	uiDevice, err := ui.NewDeviceWithRetry(ctx, c.device)
+	uiDevice, err := ui.NewDeviceWithRetry(ctx, c.Device)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to connect to the UI Automator server")
 	}
@@ -313,7 +313,7 @@ func (c *AndroidDevice) TakePhoto(ctx context.Context) (string, error) {
 // GetMostRecentPhoto returns the file name of the most recent photo taken on the device.
 // Returns an empty string if there's no photo on the device.
 func (c *AndroidDevice) GetMostRecentPhoto(ctx context.Context) (string, error) {
-	photos, err := c.device.ListContents(ctx, AndroidPhotosPath)
+	photos, err := c.Device.ListContents(ctx, AndroidPhotosPath)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to list files under %s", AndroidPhotosPath)
 	}
@@ -326,22 +326,22 @@ func (c *AndroidDevice) GetMostRecentPhoto(ctx context.Context) (string, error) 
 
 // FileSize returns the size of the specified file in bytes. Returns an error if the file does not exist.
 func (c *AndroidDevice) FileSize(ctx context.Context, filename string) (int64, error) {
-	return c.device.FileSize(ctx, filename)
+	return c.Device.FileSize(ctx, filename)
 }
 
 // SHA256Sum returns the sha256sum of the specified file as a string.
 func (c *AndroidDevice) SHA256Sum(ctx context.Context, filename string) (string, error) {
-	return c.device.SHA256Sum(ctx, filename)
+	return c.Device.SHA256Sum(ctx, filename)
 }
 
 // RemoveMediaFile removes the media file specified by filePath from the Android device's storage and media gallery.
 func (c *AndroidDevice) RemoveMediaFile(ctx context.Context, filePath string) error {
-	return c.device.RemoveMediaFile(ctx, filePath)
+	return c.Device.RemoveMediaFile(ctx, filePath)
 }
 
 // BatteryLevel returns the current battery level.
 func (c *AndroidDevice) BatteryLevel(ctx context.Context) (int, error) {
-	res, err := c.device.ShellCommand(ctx, "dumpsys", "battery").Output(testexec.DumpLogOnError)
+	res, err := c.Device.ShellCommand(ctx, "dumpsys", "battery").Output(testexec.DumpLogOnError)
 	if err != nil {
 		return -1, errors.Wrap(err, "failed to get battery status")
 	}
@@ -366,7 +366,7 @@ const (
 
 // LaunchChrome launches Chrome on the Android device.
 func (c *AndroidDevice) LaunchChrome(ctx context.Context) error {
-	if err := c.device.ShellCommand(ctx, "am", "start", "-n", chromeIntent).Run(testexec.DumpLogOnError); err != nil {
+	if err := c.Device.ShellCommand(ctx, "am", "start", "-n", chromeIntent).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to launch Chrome browser on Android")
 	}
 	return nil
@@ -374,7 +374,7 @@ func (c *AndroidDevice) LaunchChrome(ctx context.Context) error {
 
 // LaunchChromeAtURL opens the specified URL in Chrome.
 func (c *AndroidDevice) LaunchChromeAtURL(ctx context.Context, url string) error {
-	if err := c.device.ShellCommand(ctx, "am", "start", "-n", chromeIntent, "-d", url).Run(testexec.DumpLogOnError); err != nil {
+	if err := c.Device.ShellCommand(ctx, "am", "start", "-n", chromeIntent, "-d", url).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrapf(err, "failed to launch Chrome browser on Android with URL %v", url)
 	}
 	return nil
@@ -383,7 +383,7 @@ func (c *AndroidDevice) LaunchChromeAtURL(ctx context.Context, url string) error
 // EnableChromeSync turns on Chrome Sync using the UI.
 func (c *AndroidDevice) EnableChromeSync(ctx context.Context) error {
 	// Clear Chrome's data so we have a fresh start. This makes it easier to turn on Chrome Sync through the UI.
-	if err := c.device.ShellCommand(ctx, "pm", "clear", chromePkg).Run(testexec.DumpLogOnError); err != nil {
+	if err := c.Device.ShellCommand(ctx, "pm", "clear", chromePkg).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to clear Chrome app data")
 	}
 
@@ -393,7 +393,7 @@ func (c *AndroidDevice) EnableChromeSync(ctx context.Context) error {
 	}
 
 	// Set up uiautomator for UI controls.
-	d, err := ui.NewDeviceWithRetry(ctx, c.device)
+	d, err := ui.NewDeviceWithRetry(ctx, c.Device)
 	if err != nil {
 		return errors.Wrap(err, "failed initializing UI automator")
 	}

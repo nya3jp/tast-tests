@@ -8,6 +8,7 @@ import (
 	"time"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
@@ -28,10 +29,10 @@ func addBackgroundScanningFixtures() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent:          "nearbyShareGAIALoginBackgroundScanningEnabled",
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 }

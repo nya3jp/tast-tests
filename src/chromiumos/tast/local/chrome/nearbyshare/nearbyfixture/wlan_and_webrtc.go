@@ -8,6 +8,7 @@ import (
 	"time"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
@@ -28,11 +29,11 @@ func addWebRTCAndWLANFixtures() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -49,11 +50,11 @@ func addWebRTCAndWLANFixtures() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -71,10 +72,10 @@ func addWebRTCAndWLANFixtures() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 }

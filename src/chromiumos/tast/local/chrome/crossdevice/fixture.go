@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/android/adb"
 	crossdevicecommon "chromiumos/tast/common/cros/crossdevice"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
@@ -51,6 +52,10 @@ const (
 	customCrOSPassword = "cros_password"
 )
 
+// postTestTimeout is the timeout for the fixture PostTest stage.
+// We need a considerable amount of time to collect an Android bug report on failure.
+const postTestTimeout = resetTimeout + BugReportDuration
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "crossdeviceOnboardedAllFeatures",
@@ -68,11 +73,11 @@ func init() {
 			customCrOSPassword,
 			KeepStateVar,
 		},
-		SetUpTimeout:    10 * time.Minute,
+		SetUpTimeout:    10*time.Minute + BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "crossdeviceOnboarded",
@@ -90,11 +95,11 @@ func init() {
 			customCrOSPassword,
 			KeepStateVar,
 		},
-		SetUpTimeout:    10 * time.Minute,
+		SetUpTimeout:    10*time.Minute + BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "crossdeviceOnboardedNoLock",
@@ -112,11 +117,11 @@ func init() {
 			customCrOSPassword,
 			KeepStateVar,
 		},
-		SetUpTimeout:    10 * time.Minute,
+		SetUpTimeout:    10*time.Minute + BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 
 	// lacros fixtures
@@ -137,11 +142,11 @@ func init() {
 			customCrOSPassword,
 			KeepStateVar,
 		},
-		SetUpTimeout:    10 * time.Minute,
+		SetUpTimeout:    10*time.Minute + BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 }
 
@@ -159,6 +164,7 @@ type crossdeviceFixture struct {
 	saveAndroidScreenRecordingOnError func(context.Context, func() bool) error
 	saveScreenRecording               bool
 	lockFixture                       bool
+	logcatStartTime                   adb.LogcatTimestamp
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -192,16 +198,18 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	crosUsername := s.ParentValue().(*FixtData).Username
 	crosPassword := s.ParentValue().(*FixtData).Password
 
-	// Allocate time for logging and saving a screenshot in case of failure.
+	// Allocate time for logging and saving a screenshot and bugreport in case of failure.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second+BugReportDuration)
 	defer cancel()
 
-	// Reset and save logcat so we have Android logs even if fixture setup fails.
-	if err := androidDevice.ClearLogcat(ctx); err != nil {
-		s.Fatal("Failed to clear logcat at start of fixture setup")
+	// Save logcat so we have Android logs even if fixture setup fails.
+	startTime, err := androidDevice.Device.LatestLogcatTimestamp(ctx)
+	if err != nil {
+		s.Fatal("Failed to get latest logcat timestamp: ", err)
 	}
-	defer androidDevice.DumpLogs(cleanupCtx, s.OutDir(), "fixture_setup_logcat.txt")
+	defer androidDevice.Device.DumpLogcatFromTimestamp(cleanupCtx, filepath.Join(s.OutDir(), "fixture_setup_logcat.txt"), startTime)
+	defer androidDevice.DumpLogs(cleanupCtx, s.OutDir(), "fixture_setup_persistent_logcat.txt")
 
 	// Set default chrome options.
 	opts, err := f.fOpt(ctx, s)
@@ -258,6 +266,15 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	}
 	f.tconn = tconn
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "fixture")
+
+	// Capture a bug report on the Android phone if any onboarding/setup fails.
+	defer func() {
+		if s.HasError() {
+			if err := BugReport(ctx, androidDevice.Device, s.OutDir()); err != nil {
+				s.Log("Failed to save Android bug report: ", err)
+			}
+		}
+	}()
 
 	// Capture btsnoop logs during fixture setup to have adequate logging during the onboarding phase.
 	btsnoopCmd := bluetooth.StartBTSnoopLogging(ctx, filepath.Join(s.OutDir(), "crossdevice-fixture-btsnoop.log"))
@@ -378,9 +395,11 @@ func (f *crossdeviceFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 		s.Log("Failed to start the log saver: ", err)
 	}
 
-	if err := f.androidDevice.ClearLogcat(ctx); err != nil {
-		s.Fatal("Failed to clear logcat: ", err)
+	timestamp, err := f.androidDevice.Device.LatestLogcatTimestamp(ctx)
+	if err != nil {
+		s.Fatal("Failed to get latest logcat timestamp: ", err)
 	}
+	f.logcatStartTime = timestamp
 
 	if f.saveScreenRecording {
 		if f.kb == nil {
@@ -417,8 +436,11 @@ func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 		f.logMarker = nil
 	}
 
-	if err := f.androidDevice.DumpLogs(ctx, s.OutDir(), "crossdevice-logcat.txt"); err != nil {
-		s.Fatal("Failed to save logcat logs: ", err)
+	if err := f.androidDevice.Device.DumpLogcatFromTimestamp(ctx, filepath.Join(s.OutDir(), "crossdevice-logcat.txt"), f.logcatStartTime); err != nil {
+		s.Fatal("Failed to save logcat logs from the test: ", err)
+	}
+	if err := f.androidDevice.DumpLogs(ctx, s.OutDir(), "crossdevice-persistent-logcat.txt"); err != nil {
+		s.Fatal("Failed to save persistent logcat logs: ", err)
 	}
 
 	if f.saveScreenRecording {
@@ -438,6 +460,12 @@ func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 		}
 		if crosRecordErr != nil {
 			s.Fatal("Failed to save CrOS screen recording: ", crosRecordErr)
+		}
+	}
+
+	if s.HasError() {
+		if err := BugReport(ctx, f.androidDevice.Device, s.OutDir()); err != nil {
+			s.Error("Failed to save Android bug report: ", err)
 		}
 	}
 }
