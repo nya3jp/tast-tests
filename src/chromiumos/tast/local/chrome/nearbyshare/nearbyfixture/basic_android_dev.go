@@ -8,6 +8,7 @@ import (
 	"time"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
@@ -31,11 +32,11 @@ func addDevAndroidFixtures() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent:          "nearbyShareGAIALoginAndroidAccountDev",
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 
 	// Fixtures for high-visibility sharing tests.
@@ -53,11 +54,11 @@ func addDevAndroidFixtures() {
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
 		},
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -74,10 +75,10 @@ func addDevAndroidFixtures() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Parent:          "nearbyShareGAIALoginDev",
-		SetUpTimeout:    3 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
-		PostTestTimeout: resetTimeout,
+		PostTestTimeout: postTestTimeout,
 	})
 }
