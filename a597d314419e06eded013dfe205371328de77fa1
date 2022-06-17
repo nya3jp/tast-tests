@@ -50,6 +50,23 @@
       "message": "Sorry for the delay.",
       "revId": "a597d314419e06eded013dfe205371328de77fa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "795a55bc_b16cd985",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182404
+      },
+      "writtenOn": "2022-06-17T16:22:04Z",
+      "side": 1,
+      "message": "Thanks for reviews!",
+      "revId": "a597d314419e06eded013dfe205371328de77fa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
