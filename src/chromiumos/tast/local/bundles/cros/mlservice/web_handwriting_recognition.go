@@ -36,9 +36,8 @@ func init() {
 		}, {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
-			Fixture:           "lacrosPrimary",
-			ExtraSoftwareDeps: []string{"lacros"},
-			ExtraAttr:         []string{"informational"},
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros", "lacros_stable"},
 		}},
 		Data: []string{
 			"web_handwriting_recognition.html",
