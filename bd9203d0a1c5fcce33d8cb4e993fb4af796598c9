@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9c883aa_20f4e2ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_sig_ab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-06-17T16:29:13Z",
+      "side": 1,
+      "message": "To call the `cancel()` function just after reestablishing the connection.",
+      "parentUuid": "75166c0d_bcf0a580",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4c41eaa_95b520a8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_fw_sig.go",
         "patchSetId": 1
@@ -117,6 +141,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b60d0be_88f5f01b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_fw_sig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-06-17T16:29:13Z",
+      "side": 1,
+      "message": "I followed the test in FAFT and yes I should force the A versions at the very beginning.",
+      "parentUuid": "7848a19a_2d8fb5f9",
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ed5740e2_e64ef158",
         "filename": "src/chromiumos/tast/remote/firmware/helper.go",
         "patchSetId": 1
@@ -140,6 +182,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "175f006a_3e501430",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-06-17T16:29:13Z",
+      "side": 1,
+      "message": "But this will make it impossible to download the image during the test if the one on the USB stick was wrong.",
+      "parentUuid": "ed5740e2_e64ef158",
+      "range": {
+        "startLine": 541,
+        "startChar": 3,
+        "endLine": 541,
+        "endChar": 27
+      },
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cab67ca_5b36f33e",
         "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
         "patchSetId": 1
@@ -151,6 +217,30 @@
       "writtenOn": "2022-06-13T22:27:29Z",
       "side": 1,
       "message": "Misspelling.  Did tast lint pass when up did repo upload?",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b0a1c53_c3074f7f",
+        "filename": "src/chromiumos/tast/remote/firmware/reporters/crossystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-06-17T16:29:13Z",
+      "side": 1,
+      "message": "I used `git push`, now I know I shouldn\u0027t do that.",
+      "parentUuid": "2cab67ca_5b36f33e",
       "range": {
         "startLine": 113,
         "startChar": 3,
