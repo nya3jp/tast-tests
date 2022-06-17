@@ -73,10 +73,9 @@ func runStandardizedKeyboardTypingTest(ctx context.Context, testParameters stand
 	defer kbd.Close()
 
 	textKeyboardInputID := testParameters.AppPkgName + ":id/textKeyboardInput"
-	textKeyboardSelector := testParameters.Device.Object(ui.ID(textKeyboardInputID))
 	const textForTest = "abcdEFGH0123!@#$"
 
-	if err := standardizedtestutil.ClickInputAndGuaranteeFocus(ctx, textKeyboardSelector); err != nil {
+	if err := standardizedtestutil.ClickInputAndGuaranteeFocus(ctx, testParameters, ui.ID(textKeyboardInputID)); err != nil {
 		return errors.Wrap(err, "unable to focus the input")
 	}
 
