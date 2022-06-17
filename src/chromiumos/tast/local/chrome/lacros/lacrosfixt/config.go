@@ -6,10 +6,14 @@ package lacrosfixt
 
 import (
 	"io/ioutil"
+	"os"
+	"path/filepath"
 	"strings"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/internal/config"
+	"chromiumos/tast/local/chrome/internal/extension"
 	"chromiumos/tast/local/chrome/lacros"
 )
 
@@ -137,13 +141,22 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 	opts = append(opts, chrome.LacrosExtraArgs("--force-color-profile=srgb"))
 	opts = append(opts, chrome.LacrosExtraArgs("--force-raster-color-profile=srgb"))
 
-	// We reuse the custom extension from the chrome package for exposing private interfaces.
-	// TODO(hidehiko): Set up Tast test extension for lacros-chrome.
-	extDirs, err := chrome.DeprecatedPrepareExtensions()
+	dir, err := ioutil.TempDir("", "lacros_extensions.")
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to prepare extensions")
+		return nil, err
 	}
-	extList := strings.Join(extDirs, ",")
+	if err := os.Chmod(dir, 0755); err != nil {
+		return nil, err
+	}
+	chromeCfg, err := config.NewConfig(cfg.chromeOpts)
+	if err != nil {
+		return nil, err
+	}
+	exts, err := extension.PrepareExtensions(filepath.Join(dir, "extensions"), chromeCfg, extension.GuestModeDisabled)
+	if err != nil {
+		return nil, err
+	}
+	extList := strings.Join(exts.DeprecatedDirs(), ",")
 	opts = append(opts, chrome.LacrosExtraArgs(ExtensionArgs(chrome.TestExtensionID, extList)...))
 
 	// Enable Lacros.
