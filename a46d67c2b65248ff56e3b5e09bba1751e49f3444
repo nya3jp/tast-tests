@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22c88bc9_051ac59d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/productivity_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-06-17T06:52:32Z",
+      "side": 0,
+      "message": "Sorry for the new changes.\nThe problem I found was that Some DUTs needed to maximize the window for precise clicks. \nI additionally created a util to use:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3708539\n\nCan you review this cl together? Thanks!",
+      "parentUuid": "a07f3345_a2d1113e",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 1
+      },
+      "revId": "a46d67c2b65248ff56e3b5e09bba1751e49f3444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b337cd3_7953f621",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-16T09:49:32Z",
       "side": 0,
       "message": "Pls use commit message to describe all changes you make in this cl.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "a46d67c2b65248ff56e3b5e09bba1751e49f3444",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b129230b_0a9901c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/productivitycuj/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-06-17T06:52:32Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "0b337cd3_7953f621",
       "range": {
         "startLine": 39,
         "startChar": 1,
