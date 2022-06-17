@@ -23,7 +23,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SettingsButton,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Test Quick Answers unit conversion feature",
+		Desc:         "Test Quick Answers settings button",
 		Contacts: []string{
 			"updowndota@google.com",
 			"croissant-eng@google.com",
@@ -42,7 +42,7 @@ func init() {
 		}}})
 }
 
-// SettingsButton tests Quick Answers unit conversion fearture.
+// SettingsButton tests Quick Answers settings button.
 func SettingsButton(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)

@@ -43,7 +43,7 @@ func init() {
 	})
 }
 
-// UnitConversion tests Quick Answers unit conversion fearture.
+// UnitConversion tests Quick Answers unit conversion feature.
 func UnitConversion(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
