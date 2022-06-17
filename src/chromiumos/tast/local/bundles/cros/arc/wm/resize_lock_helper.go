@@ -770,6 +770,12 @@ func SetSolidWhiteWallpaper(ctx context.Context, ui *uiauto.Context) error {
 			return errors.Wrap(err, "failed to open wallpaper picker")
 		}
 	}
+
+	// Move the cursor to the active photo container before scrolling.
+	if err := ui.MouseMoveTo(nodewith.Role(role.ListBoxOption).HasClass("photo-inner-container").First(), time.Second)(ctx); err != nil {
+		return errors.Wrap(err, "failed to move mouse to the photo container")
+	}
+
 	// "Solid" collection is at the end of the collection list so we need to scroll down to make it visible on a small display.
 	if err := scrollDownUntilSucceeds(ctx, wallpaper.SelectCollection(ui, constants.SolidColorsCollection), mew); err != nil {
 		return errors.Wrap(err, "failed to select wallpaper collection")
