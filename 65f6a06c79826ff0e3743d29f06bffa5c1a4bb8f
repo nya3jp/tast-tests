@@ -194,6 +194,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "160085b5_540989eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-06-17T16:28:18Z",
+      "side": 1,
+      "message": "Marking as resolved. Now that https://crbug.com/1327976 is fixed, I\u0027ll give it another try when a new build with the fix (105.0.5126.0+) is uprevved to the OS.",
+      "parentUuid": "611238ad_4165e54c",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "65f6a06c79826ff0e3743d29f06bffa5c1a4bb8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b08ca638_03ee513c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
