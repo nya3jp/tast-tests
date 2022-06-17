@@ -194,6 +194,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4840c4e2_a9a23ed7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/arc_vpn_connect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1520542
+      },
+      "writtenOn": "2022-06-17T09:27:05Z",
+      "side": 1,
+      "message": "resolving",
+      "parentUuid": "f55cb6d2_e201c836",
+      "range": {
+        "startLine": 85,
+        "startChar": 18,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "20cfd4c635b8ecd1179c2ebea4e5b3fe168d6a12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "58e57256_5e1c9f49",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/arcvpn/arcvpn.go",
         "patchSetId": 2
