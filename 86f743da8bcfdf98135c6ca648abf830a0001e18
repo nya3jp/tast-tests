@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52485993_007aebc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-17T02:03:22Z",
+      "side": 1,
+      "message": "I include that test profile code in my patch which is in CQ: https://crrev.com/c/3689373\nBut Steven please feel free to do that patch on your side since I don\u0027t want to steal your idea :)\n\nSpeaking of this, there is another issue with that test profile: it seems to me that it does not work when we have a user profile, i.e., the test profile cannot be pushed upon a user profile [1]. That means that it will fail when there is a Chrome session, and for the test runs in the lab, I think it\u0027s possible that the previous test leaves an active Chrome session.\n\nI can think of the following solutions for this now:\n1) use shillReset, since there will be no user profile after it;\n2) remove that limitation in shill (I assume creating and pushing a non-user profile is test-only?)\n\nWDYT?\n\n[1] https://crsrc.org/o/src/platform2/shill/manager.cc;drc\u003db848cb4cf4f0216f3815d2e7d379f1c3e3afb215;l\u003d552",
+      "parentUuid": "bb701e2d_23fabb91",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c84cef46_ac670a9c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
         "patchSetId": 6
@@ -189,6 +207,24 @@
       "side": 1,
       "message": "My assumption is this is high enough to be the biggest priority. I copied this part from Jie\u0027s original routing test here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3670620/4/src/chromiumos/tast/local/bundles/cros/network/routing.go\n\n@Jie, could you comment here why 5?",
       "parentUuid": "89c464e6_15070f45",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ba985c2_814a3b69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-17T02:03:22Z",
+      "side": 1,
+      "message": "\u003e could you comment here why 5?\nAny positive number is fine if you want to make it a default network after Online.",
+      "parentUuid": "07cf428d_273b4196",
       "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
