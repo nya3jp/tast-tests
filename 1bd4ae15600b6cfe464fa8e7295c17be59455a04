@@ -46,6 +46,30 @@
       },
       "revId": "1bd4ae15600b6cfe464fa8e7295c17be59455a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea9b608e_41796595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-17T23:08:31Z",
+      "side": 1,
+      "message": "Yes, but line 118 doesn\u0027t cleanup if the function fails before it, for example at write operation on line 113.\nhttps://go.dev/blog/defer-panic-and-recover",
+      "parentUuid": "1e67ae39_5b4b9252",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "1bd4ae15600b6cfe464fa8e7295c17be59455a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
