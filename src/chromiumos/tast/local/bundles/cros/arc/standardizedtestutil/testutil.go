@@ -563,7 +563,8 @@ func getTouchEventCoordinatesForElement(ctx context.Context, testParameters Test
 }
 
 // ClickInputAndGuaranteeFocus makes sure an input exists, clicks it, and ensures it is focused.
-func ClickInputAndGuaranteeFocus(ctx context.Context, selector *ui.Object) error {
+func ClickInputAndGuaranteeFocus(ctx context.Context, testParameters TestFuncParams, selectorOpts ...ui.SelectorOption) error {
+	selector := testParameters.Device.Object(selectorOpts...)
 	if err := selector.WaitForExists(ctx, ShortUITimeout); err != nil {
 		return errors.Wrap(err, "unable to find the input")
 	}
@@ -572,12 +573,8 @@ func ClickInputAndGuaranteeFocus(ctx context.Context, selector *ui.Object) error
 		return errors.Wrap(err, "unable to click the input")
 	}
 
-	isFocused, err := selector.IsFocused(ctx)
-	if err != nil {
-		return errors.Wrap(err, "unable to check the inputs focus state")
-	}
-
-	if isFocused == false {
+	focusedSelector := testParameters.Device.Object(append(selectorOpts, ui.Focused(true))...)
+	if err := focusedSelector.WaitForExists(ctx, ShortUITimeout); err != nil {
 		return errors.Wrap(err, "unable to focus the input")
 	}
 
