@@ -86,6 +86,78 @@ func (r *Runner) Flags(ctx context.Context, iface string) ([]string, error) {
 	return flags, nil
 }
 
+// listAllLinks runs `ip link show [up] [interface name]` and parses out the
+// interface name, state, mac address, flags, and any iface alias of each
+// interface from the output.
+//
+// Example "ip link show" output:
+// 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+//    link/loopback 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+func (r *Runner) listAllLinks(ctx context.Context, isUp bool, iface string) ([]*showLinkIfaceResult, error) {
+	var allInterfaces []*showLinkIfaceResult
+	args := []string{"link", "show"}
+	if isUp {
+		args = append(args, "up")
+	}
+	if iface != "" {
+		args = append(args, iface)
+	}
+	// Run command and get output lines.
+	output, err := r.cmd.Output(ctx, "ip", args...)
+	if err != nil {
+		return nil, errors.Wrap(err, `failed to run "ip link show"`)
+	}
+	content := strings.Split(strings.TrimSpace(string(output)), "\n")
+	for line := 0; line < len(content); line++ {
+		// Find the lines that start like "2: iface:" or "2: iface@alias:".
+		ifaceNameMatcher := regexp.MustCompile("^\\d+:\\s+([^@:]+)@?[^:]*:")
+		ifaceNameMatch := ifaceNameMatcher.FindStringSubmatch(content[line])
+		if ifaceNameMatch == nil {
+			// This line does not have an iface name, so move on.
+			continue
+		}
+		// Parse first line for iface, iface alias, and flags.
+		ifaceLink := &showLinkIfaceResult{}
+		fields := strings.Fields(content[line])
+		if len(fields) < 5 {
+			return nil, errors.Errorf(`invalid "ip link show" output: %q`, output)
+		}
+		outputIfaceWithPossibleAlias := strings.TrimSuffix(fields[1], ":")
+		ifaceNames := strings.Split(outputIfaceWithPossibleAlias, "@")
+		if len(ifaceNames) > 1 {
+			ifaceLink.alias = ifaceNames[1]
+		}
+		ifaceLink.name = ifaceNames[0]
+		if iface != "" && ifaceLink.name != iface {
+			return nil, errors.Errorf("unmatched interface name, got %s, want %s", ifaceLink.name, iface)
+		}
+		ifaceLink.flags = fields[2]
+		// Parse the state from the next field after the "state" key.
+		for i := 3; i < (len(fields) - 1); i += 2 {
+			if fields[i] == "state" {
+				ifaceLink.state = fields[i+1]
+				break
+			}
+		}
+		if ifaceLink.state == "" {
+			return nil, errors.Errorf(`failed to parse state from "ip link show" output: %q`, output)
+		}
+		// Brief format not supported. Each interface occupies at least two lines.
+		if line >= len(content)-1 {
+			return nil, errors.Errorf(`invalid "ip link show" output: %q`, output)
+		}
+		// Parse second line for MAC.
+		fields = strings.Fields(content[line+1])
+		if len(fields) < 2 {
+			return nil, errors.Errorf(`invalid "ip link show" output: %q`, output)
+		}
+		ifaceLink.MAC = fields[1]
+		// Append ifaceLink to the result
+		allInterfaces = append(allInterfaces, ifaceLink)
+	}
+	return allInterfaces, nil
+}
+
 // showLink runs `ip link show <iface>` and parses out the interface name,
 // state, mac address, flags, and any iface alias from the output.
 //
@@ -93,49 +165,14 @@ func (r *Runner) Flags(ctx context.Context, iface string) ([]string, error) {
 // 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
 //    link/loopback 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
 func (r *Runner) showLink(ctx context.Context, iface string) (*showLinkIfaceResult, error) {
-	// Run command and get output lines.
-	output, err := r.cmd.Output(ctx, "ip", "link", "show", iface)
+	allInterfaces, err := r.listAllLinks(ctx, false, iface)
 	if err != nil {
-		return nil, errors.Wrapf(err, `failed to run "ip link show %s"`, iface)
+		return nil, err
 	}
-	content := strings.TrimSpace(string(output))
-	lines := strings.Split(content, "\n")
-	if len(lines) < 2 {
-		return nil, errors.Errorf("unexpected lines of results: got %d, want at least 2", len(lines))
+	if allInterfaces == nil {
+		return nil, errors.Errorf("Interface %s not found", iface)
 	}
-	// Parse first line for iface, iface alias, and flags.
-	ifaceLink := &showLinkIfaceResult{}
-	fields := strings.Fields(lines[0])
-	if len(fields) < 5 {
-		return nil, errors.Errorf(`invalid "ip link show" output: %q`, output)
-	}
-	outputIfaceWithPossibleAlias := strings.TrimSuffix(fields[1], ":")
-	ifaceNames := strings.Split(outputIfaceWithPossibleAlias, "@")
-	if len(ifaceNames) > 1 {
-		ifaceLink.alias = ifaceNames[1]
-	}
-	ifaceLink.name = ifaceNames[0]
-	if ifaceLink.name != iface {
-		return nil, errors.Errorf("unmatched interface name, got %s, want %s", ifaceLink.name, iface)
-	}
-	ifaceLink.flags = fields[2]
-	// Parse the state from the next field after the "state" key.
-	for i := 3; i < (len(fields) - 1); i += 2 {
-		if fields[i] == "state" {
-			ifaceLink.state = fields[i+1]
-			break
-		}
-	}
-	if ifaceLink.state == "" {
-		return nil, errors.Errorf(`failed to parse state from "ip link show" output: %q`, output)
-	}
-	// Parse second line for MAC.
-	fields = strings.Fields(lines[1])
-	if len(fields) < 2 {
-		return nil, errors.Errorf(`invalid "ip link show" output: %q`, output)
-	}
-	ifaceLink.MAC = fields[1]
-	return ifaceLink, nil
+	return allInterfaces[0], nil
 }
 
 // SetMAC sets MAC address of iface with command "ip link set $iface address $mac.
@@ -283,23 +320,14 @@ func (r *Runner) UnsetBridge(ctx context.Context, dev string) error {
 
 // LinkWithPrefix shows the device names that start with prefix.
 func (r *Runner) LinkWithPrefix(ctx context.Context, prefix string) ([]string, error) {
-	output, err := r.cmd.Output(ctx, "ip", "link", "show")
+	allInterfaces, err := r.listAllLinks(ctx, false, "")
 	if err != nil {
-		return nil, errors.Wrap(err, `failed to run "ip link show"`)
+		return nil, err
 	}
-	content := strings.TrimSpace(string(output))
 	var ifaceNamesMatchingPrefix []string
-	// Collect the "iface" from lines that start like "2: iface:" or "2: iface@alias:".
-	ifaceNameMatcher := regexp.MustCompile("^\\d+:\\s+([^@:]+)@?[^:]*:")
-	for _, line := range strings.Split(content, "\n") {
-		ifaceNameMatch := ifaceNameMatcher.FindStringSubmatch(line)
-		if ifaceNameMatch == nil {
-			// This line does not have an iface name, so move on.
-			continue
-		}
-		ifaceName := ifaceNameMatch[1]
-		if strings.HasPrefix(ifaceName, prefix) {
-			ifaceNamesMatchingPrefix = append(ifaceNamesMatchingPrefix, ifaceName)
+	for _, ifaceLink := range allInterfaces {
+		if strings.HasPrefix(ifaceLink.name, prefix) {
+			ifaceNamesMatchingPrefix = append(ifaceNamesMatchingPrefix, ifaceLink.name)
 		}
 	}
 	return ifaceNamesMatchingPrefix, nil
@@ -316,4 +344,17 @@ func (r *Runner) IfaceAlias(ctx context.Context, iface string) (string, error) {
 		return "", errors.Errorf("no alias found for iface %q", iface)
 	}
 	return ifaceLink.alias, nil
+}
+
+// ListUpLinks returns all the names of all running interfaces
+func (r *Runner) ListUpLinks(ctx context.Context) ([]string, error) {
+	ifaceLinks, err := r.listAllLinks(ctx, true, "")
+	if err != nil {
+		return nil, err
+	}
+	var linkList []string
+	for _, link := range ifaceLinks {
+		linkList = append(linkList, link.name)
+	}
+	return linkList, nil
 }
