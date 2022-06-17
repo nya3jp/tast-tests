@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e41443c8_7f9f1bac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper_child.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-17T19:31:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3955815_e8ac2a2a",
+      "revId": "b5d48e4f93efe7f774992bb1ca1a3a0e6db1c7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc9efcd2_1c806764",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-17T02:49:18Z",
       "side": 1,
       "message": "commented out?",
+      "revId": "b5d48e4f93efe7f774992bb1ca1a3a0e6db1c7dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7546bc97_a2403c26",
+        "filename": "src/chromiumos/tast/local/personalization/constants.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-17T19:31:48Z",
+      "side": 1,
+      "message": "yes, it\u0027s just a comment for all brya models with RGB keyboard supported. I just removed redrix as we only have vell model to test on at the moment.\nCan we use the board (brya) as the hardware dependency instead of models?",
+      "parentUuid": "bc9efcd2_1c806764",
       "revId": "b5d48e4f93efe7f774992bb1ca1a3a0e6db1c7dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
