@@ -168,3 +168,9 @@ func TargetModels() hwdep.Deps {
 func LowPriorityTargetModels() hwdep.Deps {
 	return hwdep.D(hwdep.Model(allAllowlistedOEMModels...), hwdep.SkipOnModel(targetModelList...))
 }
+
+// NonTargetModels returns hardwareDeps condition with skipped list of models aiming to pass Telemetry Extension tests.
+// This deps is needed to monitor issues acros all ChromeOS fleet except target model list, fix these issues and add fixed models to the target list.
+func NonTargetModels() hwdep.Deps {
+	return hwdep.D(hwdep.SkipOnModel(targetModelList...))
+}
