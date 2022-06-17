@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17f9ac2e_988f4e56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T08:13:08Z",
+      "side": 1,
+      "message": "The MountFailure name is already taken.\n\nIf LoginFailure is not acceptable, I\u0027ve changed it to MountVaultFailure.",
+      "parentUuid": "2def1bb1_3f6b8ef4",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 28
+      },
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3addbb67_9481117d",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
         "patchSetId": 1
@@ -71,6 +95,30 @@
       "writtenOn": "2022-06-13T18:57:37Z",
       "side": 1,
       "message": "Do we expect that this test will do anything related to devcoredumps (which are not the same thing as core dumps)? If not I think this is unnecessary.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 36
+      },
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96125546_eacf9d6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T08:13:08Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with devcoredumps are, so I guess not.",
+      "parentUuid": "3addbb67_9481117d",
       "range": {
         "startLine": 50,
         "startChar": 0,
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6759bceb_5519533d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T08:13:08Z",
+      "side": 1,
+      "message": "Done, is it correct to remove the \"defer crash.RestartAnomalyDetector(ctx)\" as well?",
+      "parentUuid": "cbb8105a_0c4c8f1d",
+      "range": {
+        "startLine": 58,
+        "startChar": 56,
+        "endLine": 58,
+        "endChar": 60
+      },
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "61e9d41c_94f5a2e1",
         "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
         "patchSetId": 1
@@ -117,6 +189,30 @@
       "writtenOn": "2022-06-13T18:57:37Z",
       "side": 1,
       "message": "Will this crash ever happen when we\u0027re logged in? It\u0027s testing login failure, right? If we\u0027ll always be logged out when the crash happens, i think we can just use crash.SystemCrashDir as the only directory to examine.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26514e76_27ce131e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T08:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61e9d41c_94f5a2e1",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adec96fe_0ae245b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T08:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76ac6714_84382df6",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 8
+      },
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "116d2729_130e37aa",
@@ -163,6 +283,30 @@
       "writtenOn": "2022-06-13T18:57:37Z",
       "side": 1,
       "message": "This seems like it\u0027s testing 4 different scenarios:\n\n* No report when non-existent user\n* No report when normal user\n* No report when incorrect password\n* Report when mount fails due to invalid directory\n\nCan you please split this into four sub-tests using parameterized tests[0] so that flakiness in one of these four will not prevent one of the others from going to critical?\n\n[0] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Parameterized-tests",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 0
+      },
+      "revId": "69d54aa1c22947d44785c58933a518fe2f3aa6e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af8eee72_5fbc99d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/login_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-06-17T08:13:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "116d2729_130e37aa",
       "range": {
         "startLine": 96,
         "startChar": 0,
