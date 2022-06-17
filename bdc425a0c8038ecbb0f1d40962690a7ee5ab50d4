@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "252eb8c6_332a53ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-17T09:59:58Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "f3087c20_faa63bcd",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "bdc425a0c8038ecbb0f1d40962690a7ee5ab50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98252fc1_22f303ff",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-05-31T07:08:50Z",
       "side": 1,
       "message": "nit: \"...frequently used functions for testing file system access\" or similar.",
+      "revId": "bdc425a0c8038ecbb0f1d40962690a7ee5ab50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27e7f8b_96987d5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_write/doc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-17T09:59:58Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "98252fc1_22f303ff",
       "revId": "bdc425a0c8038ecbb0f1d40962690a7ee5ab50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "defb516d_a9d0d43c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_write_ask_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-17T09:59:58Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "9c9a2792_fc1e18a8",
+      "revId": "bdc425a0c8038ecbb0f1d40962690a7ee5ab50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07379947_b9302e03",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "271ac8d0_8aa984bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_write_ask_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-17T09:59:58Z",
+      "side": 1,
+      "message": "Done, the `DefaultFileSystem*GuardSetting` policies are added to `FileSystemWrite*` and `FileSystemRead*` accordingly.\n\nAlso we added 1 more [CL](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3709465) containing 2 tests to exercise the `DefaultFileSystemWriteGuardSetting` and `DefaultFileSystemReadGuardSetting`.",
+      "parentUuid": "07379947_b9302e03",
+      "revId": "bdc425a0c8038ecbb0f1d40962690a7ee5ab50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb983ced_5e8ffb16",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-05-31T07:08:50Z",
       "side": 1,
       "message": "nit: \"parse\"",
+      "revId": "bdc425a0c8038ecbb0f1d40962690a7ee5ab50d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70d99bca_5fcfa986",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_write_blocked_for_urls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-17T09:59:58Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "fb983ced_5e8ffb16",
       "revId": "bdc425a0c8038ecbb0f1d40962690a7ee5ab50d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
