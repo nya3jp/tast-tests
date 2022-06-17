@@ -30,12 +30,13 @@ func init() {
 			Val:               standardizedtestutil.GetClamshellTest(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
-			ExtraAttr:         []string{"informational"},
+			ExtraAttr:         []string{"informational"}, // TODO(b/236179466) Promote to critical again.
 		}, {
 			Name:              "tablet_mode",
 			Val:               standardizedtestutil.GetTabletTest(runStandardizedKeyboardTypingTest),
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
+			ExtraAttr:         []string{"informational"}, // TODO(b/236179466) Promote to critical again.
 		}, {
 			Name:              "vm",
 			Val:               standardizedtestutil.GetClamshellTest(runStandardizedKeyboardTypingTest),
