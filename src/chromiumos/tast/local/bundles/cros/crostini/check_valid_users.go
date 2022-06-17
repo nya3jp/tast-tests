@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/local/crostini"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/settings"
-	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -152,26 +151,5 @@ func checkUsersAndInstall(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 		}
 
 	}
-
-	// Install with the last user.
-	if err := uiauto.Combine("",
-		ui.LeftClick(installButton),
-		ui.WithTimeout(8*time.Minute).WaitUntilGone(cui.InstallWindow))(ctx); err != nil {
-		return errors.Wrapf(err, "failed to install Crostini with user %q", users[len(users)-1])
-	}
-
-	// Find Terminal window.
-	terminalApp, err := terminalapp.Find(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to find terminal after installing Crostini")
-	}
-	defer terminalApp.Close()(ctx)
-
-	// Check user name in the Terminal app.
-	terminalWindow := nodewith.Name(users[len(users)-1] + "@penguin: ~").Role(role.RootWebArea)
-	if err := ui.WaitUntilExists(terminalWindow)(ctx); err != nil {
-		return errors.Wrapf(err, "failed to find username %s in terminal", users[len(users)-1])
-	}
-
 	return nil
 }
