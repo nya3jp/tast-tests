@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc514a2e_cc030ef8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-17T01:09:00Z",
+      "side": 1,
+      "message": "The type of this should be cca.Facing",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df6cb707_8cd4226e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-17T01:09:00Z",
+      "side": 1,
+      "message": "Nit: cleanupCtx is the standard name for this",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "176c7260_abb036d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-17T01:09:00Z",
+      "side": 1,
+      "message": "Is this required? Something like this should be in the fixture itself (and it looks like it might be). Could we either put this in the fixture, or verify that it\u0027s already in it?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/camera/cca/fixture.go;l\u003d408?q\u003dccalaunched\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2F\u0026start\u003d11",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08cb4363_208f34b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-17T01:09:00Z",
+      "side": 1,
+      "message": "This is unnecessary - it doesn\u0027t make the code shorter or more clear",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3af7a458_d3dd11ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-17T01:09:00Z",
+      "side": 1,
+      "message": "You can remove the switch once you switch to cca.Facing",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31908bb9_b31c4f7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-17T01:09:00Z",
+      "side": 1,
+      "message": "Should we do some kind of verification that the photo exists on disk or something?",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331700b3_9138d0fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-17T01:09:00Z",
+      "side": 1,
+      "message": "Should we do some kind of verification that the video exists on disk or something?",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb3b1f99_7dd557f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-17T01:09:00Z",
+      "side": 1,
+      "message": "Shorter durations are generally preferable as it\u0027ll mean reduced load on the labs. Could you document why 10 seconds was chosen, and not, for example, 3 seconds.",
+      "revId": "f9125bc743b27f00011b308f84dcf82311170c1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
