@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e315b7_25f61803",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-17T02:58:05Z",
+      "side": 1,
+      "message": "Rebasing dropped all CR replies - so please take another look. Thanks.",
+      "revId": "da363f1b26ce94187d03dc85c59dcb4ba3688296",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
