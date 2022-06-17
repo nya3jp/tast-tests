@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62072b3_c035c931",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-17T16:51:19Z",
+      "side": 1,
+      "message": "Nice refactoring!",
+      "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39efa46c_2e4093c7",
@@ -44,6 +61,97 @@
         "endLine": 273,
         "endChar": 0
       },
+      "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe6ca2e_2d85b97e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-17T16:51:19Z",
+      "side": 1,
+      "message": "How about appending:\n\nFor installing rules, it returns immediately when an error occurs.\nFor deleting rules, it removes all the rules and returns accumulated errors if any.",
+      "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf75db0_5bf5fd62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-17T16:51:19Z",
+      "side": 1,
+      "message": "We shall reserve some time for defer function to run:\n```\nctxCleanUp :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, pkga.TimeForCleanUp)\ndefer cancel()\ndefer func(ctx context.Context) {\n  ...\n}(ctxCleanUp)\n```\n\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 73,
+        "startChar": 27,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a44c368e_98c1c0f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-17T16:51:19Z",
+      "side": 1,
+      "message": "// network namespace",
+      "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "514f87b5_f1128e1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-17T16:51:19Z",
+      "side": 1,
+      "message": "// ipt returns iptables to use.\n\nOr rename it to iptables(), more self-explanatory.",
+      "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde94966_24a4388f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-17T16:51:19Z",
+      "side": 1,
+      "message": "Ending period. Same below",
       "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
