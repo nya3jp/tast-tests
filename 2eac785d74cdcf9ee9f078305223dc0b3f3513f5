@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b1a9a06_2b4849d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/file_system_read_for_urls_index.html",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-17T10:01:19Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "235c1a9b_fd121c4b",
+      "revId": "2eac785d74cdcf9ee9f078305223dc0b3f3513f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00f28813_da25f762",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "075e16a0_1f107c04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_blocked_for_urls.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-17T10:01:19Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "00f28813_da25f762",
+      "revId": "2eac785d74cdcf9ee9f078305223dc0b3f3513f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cbb74e9_6d3c0139",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-05-31T07:10:00Z",
       "side": 1,
       "message": "I think this could be a bit simpler by combining the two `Want*` booleans into a single `WantFileSystemAccess` boolean. This also avoids the potential pitfall of setting the wrong boolean for a given policy.",
+      "revId": "2eac785d74cdcf9ee9f078305223dc0b3f3513f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1fb59ca_4b338005",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_write/file_system_read_write.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-17T10:01:19Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "5cbb74e9_6d3c0139",
       "revId": "2eac785d74cdcf9ee9f078305223dc0b3f3513f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
