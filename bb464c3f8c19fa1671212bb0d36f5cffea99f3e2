@@ -710,6 +710,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48ed329f_5d8a973d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-06-18T01:05:30Z",
+      "side": 1,
+      "message": "Developers can send commands to FuseBox during development, or when investigating or debugging crashes.\n\nPer https://buganizer.corp.google.com/issues/236412379, even the ChromeOS system sends commands to the FuseBox:\n\n  `df -h` breaks the FuseBox, users cannot log into their machines.\n\nSeems to be a P0 bug. TODO: fix that bug, merge the fix, add `df -h` coverage to the current test.",
+      "parentUuid": "78460f48_bd72ba82",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 0
+      },
+      "revId": "bb464c3f8c19fa1671212bb0d36f5cffea99f3e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "73078415_332808e2",
         "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox_fuse_frontend.go",
         "patchSetId": 25
