@@ -82,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7045c661_368ff079",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-06-19T22:56:20Z",
+      "side": 1,
+      "message": "this logic is handled in the outer function.",
+      "parentUuid": "afe6ca2e_2d85b97e",
+      "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebf75db0_5bf5fd62",
@@ -95,6 +113,30 @@
       "writtenOn": "2022-06-17T16:51:19Z",
       "side": 1,
       "message": "We shall reserve some time for defer function to run:\n```\nctxCleanUp :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, pkga.TimeForCleanUp)\ndefer cancel()\ndefer func(ctx context.Context) {\n  ...\n}(ctxCleanUp)\n```\n\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 73,
+        "startChar": 27,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7744f49_b8ed841b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-06-19T22:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebf75db0_5bf5fd62",
       "range": {
         "startLine": 73,
         "startChar": 27,
@@ -122,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "043d28c4_f2700fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-06-19T22:56:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a44c368e_98c1c0f3",
+      "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "514f87b5_f1128e1f",
@@ -139,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dbd4994_96e8e3ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-06-19T22:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "514f87b5_f1128e1f",
+      "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bde94966_24a4388f",
@@ -152,6 +230,24 @@
       "writtenOn": "2022-06-17T16:51:19Z",
       "side": 1,
       "message": "Ending period. Same below",
+      "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f933628c_6f85e622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns/dnsproxy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1307765
+      },
+      "writtenOn": "2022-06-19T22:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bde94966_24a4388f",
       "revId": "7d7c5e662ea7788793c4ce50f9a3cfdf0e66d1e5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
