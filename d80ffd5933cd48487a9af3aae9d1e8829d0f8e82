@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2bc03b8_302dd3cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-06-19T12:49:51Z",
+      "side": 1,
+      "message": "could we make a separate sub-test for `rdc_range` check?\n\nOr the original test can\u0027t help us guard CQ for potential regressions.",
+      "range": {
+        "startLine": 35,
+        "startChar": 43,
+        "endLine": 35,
+        "endChar": 58
+      },
+      "revId": "d80ffd5933cd48487a9af3aae9d1e8829d0f8e82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
