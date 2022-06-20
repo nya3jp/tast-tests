@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d5b47d8_9464ca70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-06-20T07:14:30Z",
+      "side": 1,
+      "message": "Are the nonflaky on the non-kernelnext variants?\n\nIf not, presumably they\u0027re real issues on the newer kernel so I\u0027d be nervous about dropping them to informational.\nI wouldn\u0027t expect kernelnext to be on the CQ until they\u0027re stable so it shouldn\u0027t matter?",
+      "revId": "9e4e28a83607191789167efb5e5b412c3722c171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
