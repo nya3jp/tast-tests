@@ -45,6 +45,9 @@ type TestOptions struct {
 	// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes* about temporal layers.
 	temporalLayers int
 
+	// Used bitrate mode. Either cbr or vbr.
+	bitrateMode string
+
 	// Encode bitrate.
 	bitrate int
 
@@ -60,6 +63,18 @@ func MakeTestOptions(webMName string, profile videotype.CodecProfile) TestOption
 		profile:        profile,
 		spatialLayers:  1,
 		temporalLayers: 1,
+		bitrateMode:    "cbr",
+	}
+}
+
+// MakeVBRTestOptions creates TestOptions from webMName and profile and bitrate mode is VBR.
+func MakeVBRTestOptions(webMName string, profile videotype.CodecProfile) TestOptions {
+	return TestOptions{
+		webMName:       webMName,
+		profile:        profile,
+		spatialLayers:  1,
+		temporalLayers: 1,
+		bitrateMode:    "vbr",
 	}
 }
 
@@ -72,6 +87,7 @@ func MakeBitrateTestOptions(webMName string, profile videotype.CodecProfile, bit
 		profile:        profile,
 		spatialLayers:  1,
 		temporalLayers: 1,
+		bitrateMode:    "cbr",
 		bitrate:        bitrate,
 	}
 }
@@ -85,6 +101,7 @@ func MakeTestOptionsWithNoGlobalVaapiLock(webMName string, profile videotype.Cod
 		profile:                profile,
 		spatialLayers:          1,
 		temporalLayers:         1,
+		bitrateMode:            "cbr",
 		disableGlobalVaapiLock: true,
 	}
 }
@@ -102,7 +119,16 @@ func MakeTestOptionsWithSVCLayers(webMName string, profile videotype.CodecProfil
 		profile:        profile,
 		spatialLayers:  spatialLayers,
 		temporalLayers: temporalLayers,
+		bitrateMode:    "cbr",
 	}
+}
+
+// MakeVBRTestOptionsWithSVCLayers creates TestOptions from webMName, profile and svc, and bitrate mode is VBR.
+// svc is the string defined in https://w3c.github.io/webrtc-svc/#scalabilitymodes.
+func MakeVBRTestOptionsWithSVCLayers(webMName string, profile videotype.CodecProfile, svc string) TestOptions {
+	testOpts := MakeTestOptionsWithSVCLayers(webMName, profile, svc)
+	testOpts.bitrateMode = "vbr"
+	return testOpts
 }
 
 // TestData returns the files used in video.EncodeAccel(Perf), the webm file and the json file returned by encode.YUVJSONFileNameFor().
@@ -178,6 +204,9 @@ func RunAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions) 
 	}
 	if opts.temporalLayers > 1 {
 		testArgs = append(testArgs, fmt.Sprintf("--num_temporal_layers=%d", opts.temporalLayers))
+	}
+	if opts.bitrateMode != "" {
+		testArgs = append(testArgs, fmt.Sprintf("--bitrate_mode=%s", opts.bitrateMode))
 	}
 	if opts.disableGlobalVaapiLock {
 		testArgs = append(testArgs, "--disable_vaapi_lock")
@@ -272,6 +301,9 @@ func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptio
 	}
 	if opts.temporalLayers > 1 {
 		testArgs = append(testArgs, fmt.Sprintf("--num_temporal_layers=%d", opts.temporalLayers))
+	}
+	if opts.bitrateMode != "" {
+		testArgs = append(testArgs, fmt.Sprintf("--bitrate_mode=%s", opts.bitrateMode))
 	}
 	if opts.bitrate > 0 {
 		testArgs = append(testArgs, fmt.Sprintf("--bitrate=%d", opts.bitrate))
