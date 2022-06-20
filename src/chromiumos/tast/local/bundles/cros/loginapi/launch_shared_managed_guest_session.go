@@ -26,7 +26,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Test chrome.login.launchSharedManagedGuestSession Extension API",
 		Contacts: []string{
-			"jityao@google.com", // Test author
+			"hendrich@chromium.com",
 			"chromeos-commercial-identity@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
