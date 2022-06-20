@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d815318_144c38be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-06-20T05:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a5a3ee9_c82b0fd6",
+      "revId": "b3df14d32aa23e629133f321be7a8e16d46741d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec7b413b_3a077ee3",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-20T01:50:25Z",
       "side": 1,
       "message": "i\u0027d add `else if` with explicit check + `else` with an error for an unhandled case. To protect against different strings to be passed as a param.",
+      "revId": "b3df14d32aa23e629133f321be7a8e16d46741d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6336baaf_a4def586",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-06-20T05:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec7b413b_3a077ee3",
       "revId": "b3df14d32aa23e629133f321be7a8e16d46741d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
