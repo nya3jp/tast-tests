@@ -39,6 +39,7 @@ func CompleteConsolidatedConsentOnboardingFlow(ctx context.Context, ui *uiauto.C
 
 	skip := nodewith.Name("Skip").Role(role.Button)
 	noThanks := nodewith.Name("No thanks").Role(role.Button)
+	next := nodewith.Name("Next").Role(role.Button)
 	getStarted := nodewith.Name("Get started").Role(role.Button)
 	syncAccept := nodewith.NameRegex(regexp.MustCompile("Accept and continue|Got it")).Role(role.Button)
 	err = uiauto.Combine("go through the oobe flow screens after the consolidated consent screen",
@@ -49,6 +50,7 @@ func CompleteConsolidatedConsentOnboardingFlow(ctx context.Context, ui *uiauto.C
 		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(skip), ui.LeftClick(skip)),
 		uiauto.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClickUntil(noThanks, ui.Gone(noThanks))),
 		uiauto.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
+		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(next), ui.LeftClick(next)),
 		ui.WaitUntilExists(getStarted),
 		ui.LeftClick(getStarted),
 	)(ctx)
@@ -62,7 +64,7 @@ func CompleteRegularOnboardingFlow(ctx context.Context, ui *uiauto.Context, revi
 	getStarted := nodewith.Name("Get started").Role(role.Button)
 	syncAccept := nodewith.NameRegex(regexp.MustCompile("Accept and continue|Got it")).Role(role.Button)
 	more := nodewith.Name("More").Role(role.Button)
-
+	next := nodewith.Name("Next").Role(role.Button)
 	err := uiauto.Combine("go through the onboarding UI prior to ARC ToS acceptance",
 		uiauto.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(syncAccept), ui.LeftClick(syncAccept)),
 		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(skip), ui.LeftClickUntil(skip, ui.Gone(skip))),
@@ -82,6 +84,7 @@ func CompleteRegularOnboardingFlow(ctx context.Context, ui *uiauto.Context, revi
 		ui.LeftClick(nodewith.Name("Accept").Role(role.Button)),
 		uiauto.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClickUntil(noThanks, ui.Gone(noThanks))),
 		uiauto.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
+		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(next), ui.LeftClick(next)),
 		ui.WaitUntilExists(getStarted),
 		ui.LeftClick(getStarted),
 	)(ctx)
