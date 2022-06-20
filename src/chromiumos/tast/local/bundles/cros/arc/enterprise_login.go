@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/tape"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
@@ -16,9 +17,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const enterpriseLoginTestTimeout = 8 * time.Minute
+
 type testParams struct {
-	username   string // username for Chrome login.
-	password   string // password to login.
+	poolID     string // id of the account pool used for Chrome login.
 	arcEnabled bool   // arcEnabled is the value of ArcEnabled user policy.
 }
 
@@ -30,80 +32,72 @@ func init() {
 		Contacts:     []string{"mhasank@chromium.org", "arc-commercial@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"arc", "chrome"},
-		Timeout:      8 * time.Minute,
+		Timeout:      enterpriseLoginTestTimeout,
 		Params: []testing.Param{
 			{
 				Name: "managed_3pp_true",
 				Val: testParams{
-					username:   "arc.EnterpriseLogin.managed_3pp_true_user",
-					password:   "arc.EnterpriseLogin.managed_3pp_true_password",
+					poolID:     "arc_enterprise_login_managed_3pp_true",
 					arcEnabled: true,
 				}},
 			{
 				Name: "managed_3pp_false",
 				Val: testParams{
-					username:   "arc.EnterpriseLogin.managed_3pp_false_user",
-					password:   "arc.EnterpriseLogin.managed_3pp_false_password",
+					poolID:     "arc_enterprise_login_managed_3pp_false",
 					arcEnabled: false,
 				}},
 			{
 				Name: "managed_necktie_false",
 				Val: testParams{
-					username:   "arc.EnterpriseLogin.managed_necktie_false_user",
-					password:   "arc.EnterpriseLogin.managed_necktie_false_password",
+					poolID:     "arc_enterprise_login_managed_necktie_false",
 					arcEnabled: false,
 				}},
 			{
 				Name: "managed_necktie_true",
 				Val: testParams{
-					username:   "arc.EnterpriseLogin.managed_necktie_true_user",
-					password:   "arc.EnterpriseLogin.managed_necktie_true_password",
+					poolID:     "arc_enterprise_login_managed_necktie_true",
 					arcEnabled: true,
 				}},
 			{
 				Name: "managed_unmanaged_false",
 				Val: testParams{
-					username:   "arc.EnterpriseLogin.managed_unmanaged_false_user",
-					password:   "arc.EnterpriseLogin.managed_unmanaged_false_password",
+					poolID:     "arc_enterprise_login_managed_unmanaged_false",
 					arcEnabled: false,
 				}},
 			{
 				Name: "managed_unmanaged_true",
 				Val: testParams{
-					username:   "arc.EnterpriseLogin.managed_unmanaged_true_user",
-					password:   "arc.EnterpriseLogin.managed_unmanaged_true_password",
+					poolID:     "arc_enterprise_login_managed_unmanaged_true",
 					arcEnabled: true,
 				}}},
-		VarDeps: []string{
-			"arc.EnterpriseLogin.managed_3pp_true_user",
-			"arc.EnterpriseLogin.managed_3pp_true_password",
-			"arc.EnterpriseLogin.managed_3pp_false_user",
-			"arc.EnterpriseLogin.managed_3pp_false_password",
-			"arc.EnterpriseLogin.managed_necktie_false_user",
-			"arc.EnterpriseLogin.managed_necktie_false_password",
-			"arc.EnterpriseLogin.managed_necktie_true_user",
-			"arc.EnterpriseLogin.managed_necktie_true_password",
-			"arc.EnterpriseLogin.managed_unmanaged_false_user",
-			"arc.EnterpriseLogin.managed_unmanaged_false_password",
-			"arc.EnterpriseLogin.managed_unmanaged_true_user",
-			"arc.EnterpriseLogin.managed_unmanaged_true_password",
-		},
+		VarDeps: []string{"tape.service_account_key"},
 	})
 }
 
 func EnterpriseLogin(ctx context.Context, s *testing.State) {
 	const (
-		cleanupTime = 10 * time.Second // time reserved for cleanup.
+		cleanupTime = 1 * time.Minute // time reserved for cleanup.
 	)
+
 	param := s.Param().(testParams)
-	username := s.RequiredVar(param.username)
-	password := s.RequiredVar(param.password)
 	arcEnabled := param.arcEnabled
+
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	// Lease a test account for the duration of the test.
+	acc, cleanupLease, err := tape.LeaseAccount(ctx, param.poolID, enterpriseLoginTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	if err != nil {
+		s.Fatal("Failed to lease a test account: ", err)
+	}
+	defer cleanupLease(cleanupCtx)
 
 	// Log-in to Chrome and allow to launch ARC if allowed by user policy.
 	cr, err := chrome.New(
 		ctx,
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.GAIALogin(chrome.Creds{User: acc.UserName, Pass: acc.Password}),
 		chrome.ARCSupported(),
 		chrome.UnRestrictARCCPU(),
 		// TODO(b/154760453): switch to fake DMS once crbug.com/1099310 is resolved
@@ -112,10 +106,6 @@ func EnterpriseLogin(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	defer cr.Close(ctx)
-
-	// Use a shorter context to leave time for cleanup.
-	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
