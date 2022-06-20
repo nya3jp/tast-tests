@@ -72,9 +72,19 @@ var testFilesFix = []string{
 	"xattrs.go",
 }
 
+var testFilesFixCustomTimeout = map[string]time.Duration{
+	// Audio playback configurations took about 6 minutes on model with echo reference
+	"audio_playback_configurations.go": 10 * time.Minute,
+}
+
 func TestFixTestParams(t *testing.T) {
 	for _, filename := range testFilesFix {
+		var customTimeout time.Duration
+		if timeout, ok := testFilesFixCustomTimeout[filename]; ok {
+			customTimeout = timeout
+		}
 		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
+			Timeout:    customTimeout,
 			UseFixture: true,
 		}})
 		genparams.Ensure(t, filename, params)
