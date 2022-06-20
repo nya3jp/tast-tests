@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08618673_7f1fefae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-20T04:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5616b2d8_51c4bb3d",
+      "revId": "dcaacf6e3aedf72a13309f2657673dd958aaf0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d458fad4_9a3f4a02",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-20T01:20:54Z",
       "side": 1,
       "message": "Nit: this comment doesn\u0027t help - please remove. Comments should generally explain why you do something. Only explain what something does in a comment if it\u0027s not obvious from the code.",
+      "revId": "dcaacf6e3aedf72a13309f2657673dd958aaf0d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1958f38f_97e66384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_capture_operation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-20T04:45:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d458fad4_9a3f4a02",
       "revId": "dcaacf6e3aedf72a13309f2657673dd958aaf0d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
