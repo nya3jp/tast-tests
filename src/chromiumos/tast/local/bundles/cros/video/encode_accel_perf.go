@@ -80,6 +80,46 @@ func init() {
 			ExtraData:         encode.TestData(crowd2160p),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
 		}, {
+			Name:              "h264_180p_vbr",
+			Val:               encode.MakeVBRTestOptions(crowd180p, videotype.H264BaselineProf),
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         encode.TestData(crowd180p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
+		}, {
+			Name:              "h264_360p_vbr",
+			Val:               encode.MakeVBRTestOptions(crowd360p, videotype.H264BaselineProf),
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         encode.TestData(crowd360p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
+		}, {
+			Name:              "h264_720p_vbr",
+			Val:               encode.MakeVBRTestOptions(crowd720p, videotype.H264BaselineProf),
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         encode.TestData(crowd720p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
+		}, {
+			Name:              "h264_720p_l1t2_vbr",
+			Val:               encode.MakeVBRTestOptionsWithSVCLayers(crowd720p, videotype.H264BaselineProf, "L1T2"),
+			ExtraData:         encode.TestData(crowd720p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "vaapi"},
+		}, {
+			Name:              "h264_720p_l1t3_vbr",
+			Val:               encode.MakeVBRTestOptionsWithSVCLayers(crowd720p, videotype.H264BaselineProf, "L1T3"),
+			ExtraData:         encode.TestData(crowd720p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "vaapi"},
+		}, {
+			Name:              "h264_1080p_vbr",
+			Val:               encode.MakeVBRTestOptions(crowd1080p, videotype.H264BaselineProf),
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         encode.TestData(crowd1080p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
+		}, {
+			Name:              "h264_2160p_vbr",
+			Val:               encode.MakeVBRTestOptions(crowd2160p, videotype.H264BaselineProf),
+			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+			ExtraData:         encode.TestData(crowd2160p),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264_4K},
+		}, {
 			Name:              "h264_1080p_baseline_x2",
 			Val:               encode.MakeBitrateTestOptions(crowd1080p, videotype.H264BaselineProf, 1920*1080*2),
 			ExtraAttr:         []string{"group:graphics", "graphics_video", "graphics_weekly"},
