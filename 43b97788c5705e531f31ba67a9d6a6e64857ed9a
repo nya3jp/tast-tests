@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f350227_f63857c7",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-20T13:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a705265_c7b702e4",
+      "revId": "43b97788c5705e531f31ba67a9d6a6e64857ed9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95f148b6_1381827d",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-16T09:40:04Z",
       "side": 1,
       "message": "go often drops getter prefixes. TPMSeedSet here. Ditto for below.",
+      "range": {
+        "startLine": 49,
+        "startChar": 27,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "43b97788c5705e531f31ba67a9d6a6e64857ed9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29bf5c63_53eb2cf2",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-20T13:04:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95f148b6_1381827d",
       "range": {
         "startLine": 49,
         "startChar": 27,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c9d05d0_f0741a1d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-20T13:04:45Z",
+      "side": 1,
+      "message": "I\u0027ve copied that from `fingerprint_flash_protect.go`. I agree that taking string is better.",
+      "parentUuid": "2218bad8_7b9800fb",
+      "revId": "43b97788c5705e531f31ba67a9d6a6e64857ed9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef98b5fa_57cd5b99",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-06-16T09:40:04Z",
       "side": 1,
       "message": "if it is expected to be fit in a line, maybe wrap by ^$?",
+      "revId": "43b97788c5705e531f31ba67a9d6a6e64857ed9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7af730_942965a9",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-20T13:04:45Z",
+      "side": 1,
+      "message": "It\u0027s not. We can have white space before and flag names after.",
+      "parentUuid": "ef98b5fa_57cd5b99",
       "revId": "43b97788c5705e531f31ba67a9d6a6e64857ed9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
