@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f4a98c_a658ee10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-20T05:13:18Z",
+      "side": 1,
+      "message": "why not use the existing service? https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/chrome_service.go;l\u003d42?q\u003d%22Service)%20New%22",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 69
+      },
+      "revId": "5f75d054f7fe418a19eaf57b7a78fecc1410f0dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89d77f5c_ee261107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-20T05:13:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 50,
+        "startChar": 26,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "5f75d054f7fe418a19eaf57b7a78fecc1410f0dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de29c62a_9bff5216",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/ethernet_speed.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-20T05:13:18Z",
+      "side": 1,
+      "message": "please also specific the `Timeout` field.",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "5f75d054f7fe418a19eaf57b7a78fecc1410f0dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "917422e8_b4605314",
+        "filename": "src/chromiumos/tast/services/cros/network/ethernet_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-20T05:13:18Z",
+      "side": 1,
+      "message": "`DownloadPathResponse` the return value name should match the method name.",
+      "range": {
+        "startLine": 23,
+        "startChar": 52,
+        "endLine": 23,
+        "endChar": 68
+      },
+      "revId": "5f75d054f7fe418a19eaf57b7a78fecc1410f0dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8046066_c3798810",
+        "filename": "src/chromiumos/tast/services/cros/network/ethernet_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-20T05:13:18Z",
+      "side": 1,
+      "message": "why need this if it is never used?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "5f75d054f7fe418a19eaf57b7a78fecc1410f0dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
