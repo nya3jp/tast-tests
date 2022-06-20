@@ -19,8 +19,8 @@ func init() {
 		Func:         FilesAppWatch,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks crostini FilesApp watch",
-		Contacts:     []string{"joelhockey@chromium.org", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
+		Attr:         []string{"group:mainline"},
 		Vars:         []string{"keepState", "ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
