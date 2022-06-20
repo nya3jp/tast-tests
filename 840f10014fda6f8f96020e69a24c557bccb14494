@@ -16,6 +16,80 @@
       "message": "Added a new test, please take a look.",
       "revId": "840f10014fda6f8f96020e69a24c557bccb14494",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4278beb8_efcf7d76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-20T10:32:38Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "840f10014fda6f8f96020e69a24c557bccb14494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6dd0001_2690dbbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_remember_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-20T10:32:38Z",
+      "side": 1,
+      "message": "nit: other actions have comments that help understand what is being done from user POV. Please odd one here too.",
+      "revId": "840f10014fda6f8f96020e69a24c557bccb14494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a27374a_da199e9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_remember_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-20T10:32:38Z",
+      "side": 1,
+      "message": "Please adjust the action description.",
+      "range": {
+        "startLine": 122,
+        "startChar": 27,
+        "endLine": 122,
+        "endChar": 47
+      },
+      "revId": "840f10014fda6f8f96020e69a24c557bccb14494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ac0b864_38347075",
+        "filename": "src/chromiumos/tast/local/kerberos/ticket.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-20T10:32:38Z",
+      "side": 1,
+      "message": "nit: Finish the sentence with dot.",
+      "revId": "840f10014fda6f8f96020e69a24c557bccb14494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
