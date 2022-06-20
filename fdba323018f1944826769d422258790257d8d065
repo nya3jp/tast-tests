@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e5bdeb7_67a3187c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-06-20T07:00:38Z",
+      "side": 1,
+      "message": "\u003e \"suport\" is a possible misspelling of \"support\".\n\nPlease fix.",
+      "parentUuid": "2dd9581f_a33da1e7",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "fdba323018f1944826769d422258790257d8d065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
