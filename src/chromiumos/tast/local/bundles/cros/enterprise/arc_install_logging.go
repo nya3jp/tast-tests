@@ -16,6 +16,8 @@ import (
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/tape"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
@@ -27,6 +29,8 @@ import (
 	"chromiumos/tast/timing"
 )
 
+const arcInstallLoggingTestTimeout = 13 * time.Minute
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ARCInstallLogging,
@@ -35,8 +39,8 @@ func init() {
 		Contacts:     []string{"yixie@chromium.org", "mhasank@chromium.org", "arc-commercial@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      13 * time.Minute,
-		VarDeps:      []string{"enterprise.ARCInstallLogging.user", "enterprise.ARCInstallLogging.password"},
+		Timeout:      arcInstallLoggingTestTimeout,
+		VarDeps:      []string{tape.ServiceAccountVar},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -75,16 +79,26 @@ const (
 // - check that app installation log is uploaded from Chrome.
 func ARCInstallLogging(ctx context.Context, s *testing.State) {
 	const testPackage = "com.managedchrome.arcloggingtest"
+	const poolID = "arc_logging_test"
 
-	user := s.RequiredVar("enterprise.ARCInstallLogging.user")
-	password := s.RequiredVar("enterprise.ARCInstallLogging.password")
+	// Shorten deadline to leave time for cleanup
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
+	defer cancel()
+
+	// Lease a test account for the duration of the test.
+	acc, cleanupLease, err := tape.LeaseAccount(ctx, poolID, arcInstallLoggingTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	if err != nil {
+		s.Fatal("Failed to lease a test account: ", err)
+	}
+	defer cleanupLease(cleanupCtx)
 
 	// Login to Chrome and allow to launch ARC if allowed by user policy. Flag --install-log-fast-upload-for-tests reduces delay of uploading chrome log.
 	// Flag --arc-install-event-chrome-log-for-tests logs ARC install events to chrome log.
 	args := append(arc.DisableSyncFlags(), "--install-log-fast-upload-for-tests", "--arc-install-event-chrome-log-for-tests")
 	cr, err := chrome.New(
 		ctx,
-		chrome.GAIALogin(chrome.Creds{User: user, Pass: password}),
+		chrome.GAIALogin(chrome.Creds{User: acc.UserName, Pass: acc.Password}),
 		chrome.ARCSupported(),
 		chrome.UnRestrictARCCPU(),
 		chrome.ProdPolicy(),
