@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "843702c5_fa6282ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-06-20T15:04:55Z",
+      "side": 1,
+      "message": "Hi Renuga,\nA new screen was added recently to the onboarding flow which is the current cause of tast tests failures.",
+      "revId": "0cd465d1878606fd8d48f81abc93dd5d1ec2059b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
