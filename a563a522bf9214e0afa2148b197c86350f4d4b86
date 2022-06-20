@@ -33,6 +33,41 @@
       "message": "@Hidehiko,\n\nCan you please help in sharing the CQ logs?",
       "revId": "a563a522bf9214e0afa2148b197c86350f4d4b86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11fa9a31_9d2fce81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-20T13:01:05Z",
+      "side": 1,
+      "message": "could you fix build error?",
+      "revId": "a563a522bf9214e0afa2148b197c86350f4d4b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b0721e1_233a5acd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-20T13:01:05Z",
+      "side": 1,
+      "message": "src/chromiumos/tast/local/bundles/cros/typec/usb_storage_functionality.go:58:17: cannot use 1024 * 1024 * 1024 * 2 (untyped int constant 2147483648) as int value in struct literal (overflows)",
+      "parentUuid": "da623969_5e1987f4",
+      "revId": "a563a522bf9214e0afa2148b197c86350f4d4b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
