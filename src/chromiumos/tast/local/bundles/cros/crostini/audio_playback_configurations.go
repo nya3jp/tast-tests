@@ -30,27 +30,27 @@ func init() {
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
 				Fixture:           "crostiniBuster",
-				Timeout:           7 * time.Minute,
+				Timeout:           10 * time.Minute,
 			}, {
 				Name:              "buster_unstable",
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				Fixture:           "crostiniBuster",
-				Timeout:           7 * time.Minute,
+				Timeout:           10 * time.Minute,
 			}, {
 				Name:              "bullseye_stable",
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
 				Fixture:           "crostiniBullseye",
-				Timeout:           7 * time.Minute,
+				Timeout:           10 * time.Minute,
 			}, {
 				Name:              "bullseye_unstable",
 				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,
 				Fixture:           "crostiniBullseye",
-				Timeout:           7 * time.Minute,
+				Timeout:           10 * time.Minute,
 			},
 		},
 	})
@@ -92,16 +92,28 @@ func AudioPlaybackConfigurations(ctx context.Context, s *testing.State) {
 			if res.Error != nil {
 				s.Fatal("Failed to poll streams: ", res.Error)
 			}
-			if len(res.Streams) != 1 {
-				s.Fatalf("Unexpected number of streams: got %d, expect 1", len(res.Streams))
+
+			// For model with echo reference enabled, we will get 2 streams.
+			// Remove the echo reference stream from our result.
+			var streams []crastestclient.StreamInfo
+			for _, stream := range res.Streams {
+				if stream.ClientType == "CRAS_CLIENT_TYPE_SERVER_STREAM" &&
+					stream.Direction == "Input" {
+					continue
+				}
+				streams = append(streams, stream)
+			}
+
+			if len(streams) != 1 {
+				s.Fatalf("Unexpected number of streams: got %d, expect 1", len(streams))
 			}
 			// Verifies the channel number.
-			if res.Streams[0].NumChannels != ch {
-				s.Fatalf("Unexpected channel number: got %d, want %d", res.Streams[0].NumChannels, ch)
+			if streams[0].NumChannels != ch {
+				s.Fatalf("Unexpected channel number: got %d, want %d", streams[0].NumChannels, ch)
 			}
 			// Verifies the sample rate.
-			if res.Streams[0].FrameRate != rate {
-				s.Fatalf("Unexpected sample rate: got %d, want %d", res.Streams[0].FrameRate, rate)
+			if streams[0].FrameRate != rate {
+				s.Fatalf("Unexpected sample rate: got %d, want %d", streams[0].FrameRate, rate)
 			}
 		}
 	}
