@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7f43e5c_9a017e64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-20T18:08:05Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\n\nThanks for the review. Please take another look. Thanks!",
+      "revId": "19080f46de6fc2e7ac53cd3a1e0c52173bbb800c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -16,6 +16,24 @@
       "message": "this has overlap with LowPriorityTargetModels.\nMaybe hwdep.D(hwdep.SkipOnModel(allAllowlistedOEMModels...), SkipOnModel(targetmodelList...))\n\n?",
       "revId": "d2d62d0409cc64a185ecc3a10873e81a53c11a5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "661fabcb_b0f219a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/dep/dep.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-20T18:08:05Z",
+      "side": 1,
+      "message": "I removed LowPriorityTargetModels. PTAL.",
+      "parentUuid": "112d34c9_249304ab",
+      "revId": "d2d62d0409cc64a185ecc3a10873e81a53c11a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
