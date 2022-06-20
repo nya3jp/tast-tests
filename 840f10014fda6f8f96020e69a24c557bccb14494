@@ -75,6 +75,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca2aeb8b_01dadc56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_remember_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-06-20T12:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a27374a_da199e9d",
+      "range": {
+        "startLine": 122,
+        "startChar": 27,
+        "endLine": 122,
+        "endChar": 47
+      },
+      "revId": "840f10014fda6f8f96020e69a24c557bccb14494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96ef0bfe_e9cd90f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_remember_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-06-20T12:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6dd0001_2690dbbd",
+      "revId": "840f10014fda6f8f96020e69a24c557bccb14494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ac0b864_38347075",
@@ -88,6 +130,24 @@
       "writtenOn": "2022-06-20T10:32:38Z",
       "side": 1,
       "message": "nit: Finish the sentence with dot.",
+      "revId": "840f10014fda6f8f96020e69a24c557bccb14494",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d4fae6_6395a29b",
+        "filename": "src/chromiumos/tast/local/kerberos/ticket.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-06-20T12:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ac0b864_38347075",
       "revId": "840f10014fda6f8f96020e69a24c557bccb14494",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
