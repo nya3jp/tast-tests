@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb42b1db_a6f49e1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-20T11:17:11Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "d5956319_ba187b18",
+      "revId": "14875e2ba24ae8ca1f21de02768a95544a4a200c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95c26beb_d253c468",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-17T19:50:12Z",
       "side": 1,
       "message": "this should test items that are *not* in recent apps (there\u0027s a separate test that tests uninstalling fro recent apps).\n\nI think using \"Last\" item that has ExpandedItemsClass, and app name should work here (though, there may be a better way to filter out items with a particular ancestor)",
+      "revId": "14875e2ba24ae8ca1f21de02768a95544a4a200c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91a24bf5_179e6f10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-20T11:17:11Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "95c26beb_d253c468",
       "revId": "14875e2ba24ae8ca1f21de02768a95544a4a200c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
