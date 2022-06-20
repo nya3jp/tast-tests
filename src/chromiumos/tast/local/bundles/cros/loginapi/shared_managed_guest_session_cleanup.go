@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package policy
+package loginapi
 
 import (
 	"context"
@@ -28,7 +28,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test chrome.login.endSharedSession Extension API properly performs cleanup",
 		Contacts: []string{
-			"jityao@google.com", // Test author
+			"hendrich@chromium.com",
 			"chromeos-commercial-identity@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
