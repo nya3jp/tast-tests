@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10cb7e0_d4c252f4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_system_locked.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-06-20T14:51:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4192b130_c94a98ed",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 1
+      },
+      "revId": "af691d504654b1246cdc2091a66b501128de97e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1098c1d9_9b40908b",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-06-15T11:33:12Z",
       "side": 1,
       "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\nDoes Servo.GetString take long time (like potentially timing out)? If not, I think we can omit this log line because other log lines would give enough information.",
+      "revId": "af691d504654b1246cdc2091a66b501128de97e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acac4b51_bf25a64c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_system_locked.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-06-20T14:51:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1098c1d9_9b40908b",
       "revId": "af691d504654b1246cdc2091a66b501128de97e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "805efd2a_e2faba44",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_system_locked.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-06-20T14:51:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "202ce73e_449ce1e9",
+      "revId": "af691d504654b1246cdc2091a66b501128de97e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cf8cd38_ee807025",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-06-15T11:33:12Z",
       "side": 1,
       "message": "How about:\n  if enable {\n    // Enable sw wp\n    ...\n  } else {\n    ...\n  }\nbecause these blocks are exclusive?\n\nAlso, as an alternative option, I think it would be simpler just to inline enableStr and fwwpState, because currently only 3 lines (98--100) is shared between the two codepaths:\n\n  if enable {\n    // enable SW WP before hardware WP\n    if .... {\n      ...\n    }\n    if err :\u003d h.Servo.SetFWWPState(ctx, servo.FWWPStateOn); err !\u003d nil {\n      return errors.Wrapf(err, \"failed to enable .....\")\n    }\n  } else {\n    if err :\u003d h.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err !\u003d nil {\n      return errors.Wrapf(err, \"failed to disable .....\")\n    }\n    // Disable SW WP....\n    if ... {\n      ...\n    }\n  }",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "af691d504654b1246cdc2091a66b501128de97e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ff207b5_35a60ed6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_system_locked.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-06-20T14:51:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cf8cd38_ee807025",
       "range": {
         "startLine": 86,
         "startChar": 0,
