@@ -79,8 +79,8 @@ func init() {
 		Func:         CopyPaste,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test copy paste functionality",
-		Contacts:     []string{"sidereal@google.com", "cros-containers-dev@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
+		Attr:         []string{"group:mainline"},
 		Data:         []string{copyApplet, pasteApplet},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
