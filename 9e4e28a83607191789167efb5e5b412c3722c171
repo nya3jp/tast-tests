@@ -16,6 +16,24 @@
       "message": "Are the nonflaky on the non-kernelnext variants?\n\nIf not, presumably they\u0027re real issues on the newer kernel so I\u0027d be nervous about dropping them to informational.\nI wouldn\u0027t expect kernelnext to be on the CQ until they\u0027re stable so it shouldn\u0027t matter?",
       "revId": "9e4e28a83607191789167efb5e5b412c3722c171",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9758571_5542dfb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-20T07:47:28Z",
+      "side": 1,
+      "message": "\u003e Are the nonflaky on the non-kernelnext variants?\n\nThe tests are good on non-kernelnext variants.\n\n\u003e If not, presumably they\u0027re real issues on the newer kernel so I\u0027d be nervous about dropping them to informational.\nThe affected tests are all informational anyway. Dropping them to informational helps to promote the tests on stable models, as board-specific issues should not block the tests from being promoted to CQ.\n\n(p.s. there also should be someone regularly auditing this file to remove unstable boards if the issues are solved. Currently I am doing this, and I will address this in the handover workshop and delegate it to Clumptini triagers)\n\n\u003e I wouldn\u0027t expect kernelnext to be on the CQ until they\u0027re stable so it shouldn\u0027t matter?\nYes,there are no kernelnext boards running in CQ, so dropping these boards shouldn\u0027t affect the protection of the tests in CQ.",
+      "parentUuid": "4d5b47d8_9464ca70",
+      "revId": "9e4e28a83607191789167efb5e5b412c3722c171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
