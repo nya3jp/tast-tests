@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a5b3db3_0803dae8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-20T13:15:27Z",
+      "side": 1,
+      "message": "LGTM for the code. Pls double check the Contact field before submitting.",
+      "revId": "5e85cc81ad978db9f043d1b547b810e0dc466a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
