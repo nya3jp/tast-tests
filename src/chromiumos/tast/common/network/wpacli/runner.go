@@ -5,8 +5,10 @@
 package wpacli
 
 import (
+	"bufio"
 	"context"
 	"fmt"
+	"net"
 	"strings"
 
 	"chromiumos/tast/common/network/cmd"
@@ -91,4 +93,45 @@ func (r *Runner) Set(ctx context.Context, prop Property, val string) error {
 		return errors.Errorf("failed to get 'OK' in wpa_cli set output: %s", string(cmdOut))
 	}
 	return nil
+}
+
+// Scan triggers a scan sequence in wpa_supplicant.
+func (r *Runner) Scan(ctx context.Context) error {
+	return r.runSimpleCmd(ctx, "scan")
+}
+
+// FetchANQP triggers ANQP request for each compatible BSS found during the last scan.
+func (r *Runner) FetchANQP(ctx context.Context) error {
+	return r.runSimpleCmd(ctx, "fetch_anqp")
+}
+
+// runSimpleCmd runs a wpa_cli command without argument.
+func (r *Runner) runSimpleCmd(ctx context.Context, cmd string) error {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI(cmd)...)
+	if err != nil {
+		return errors.Wrapf(err, "failed running wpa_cli %q", cmd)
+	}
+	if !strings.Contains(string(cmdOut), "OK") {
+		return errors.Errorf("failed to get 'OK' in wpa_cli %q output: %s", cmd, string(cmdOut))
+	}
+	return nil
+}
+
+// BSS fetches from wpa_supplicant all the known information about a given BSSID.
+func (r *Runner) BSS(ctx context.Context, addr net.HardwareAddr) (map[string]string, error) {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("bss", addr.String())...)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed running wpa_cli 'bss %s'", addr)
+	}
+
+	bss := make(map[string]string)
+	s := bufio.NewScanner(strings.NewReader(string(cmdOut)))
+	for s.Scan() {
+		line := s.Text()
+		if strings.Contains(line, "=") {
+			elems := strings.Split(line, "=")
+			bss[elems[0]] = elems[1]
+		}
+	}
+	return bss, nil
 }

@@ -116,6 +116,170 @@ type AdditionalBSS struct {
 	BSSID     string
 }
 
+// VenueInfo is the type for specifying the kind of venue the network is deployed.
+type VenueInfo struct {
+	Group byte
+	Type  byte
+}
+
+// VenueInfo values as described by IEEE 802.11u std 7.3.1.
+var (
+	VenueInfoUnspecified                 VenueInfo = VenueInfo{0, 0}
+	VenueInfoUnspecifiedAssembly         VenueInfo = VenueInfo{1, 0}
+	VenueInfoArena                       VenueInfo = VenueInfo{1, 1}
+	VenueInfoStadium                     VenueInfo = VenueInfo{1, 2}
+	VenueInfoPassengerTerminal           VenueInfo = VenueInfo{1, 3}
+	VenueInfoAmphitheater                VenueInfo = VenueInfo{1, 4}
+	VenueInfoAmusementPark               VenueInfo = VenueInfo{1, 5}
+	VenueInfoPlaceOfWorship              VenueInfo = VenueInfo{1, 6}
+	VenueInfoConventionCenter            VenueInfo = VenueInfo{1, 7}
+	VenueInfoLibrary                     VenueInfo = VenueInfo{1, 8}
+	VenueInfoMuseum                      VenueInfo = VenueInfo{1, 9}
+	VenueInfoRestaurant                  VenueInfo = VenueInfo{1, 10}
+	VenueInfoTheater                     VenueInfo = VenueInfo{1, 11}
+	VenueInfoBar                         VenueInfo = VenueInfo{1, 12}
+	VenueInfoCoffeeShop                  VenueInfo = VenueInfo{1, 13}
+	VenueInfoZooOrAquarium               VenueInfo = VenueInfo{1, 14}
+	VenueInfoEmergencyCoordinationCenter VenueInfo = VenueInfo{1, 15}
+
+	VenueInfoUnspecifiedBusiness            VenueInfo = VenueInfo{2, 1}
+	VenueInfoDoctorOrDentist                VenueInfo = VenueInfo{2, 2}
+	VenueInfoBank                           VenueInfo = VenueInfo{2, 3}
+	VenueInfoFireStation                    VenueInfo = VenueInfo{2, 4}
+	VenueInfoPoliceStation                  VenueInfo = VenueInfo{2, 5}
+	VenueInfoPostOffice                     VenueInfo = VenueInfo{2, 6}
+	VenueInfoProfessionalOffice             VenueInfo = VenueInfo{2, 7}
+	VenueInfoResearchAndDevelopmentFacility VenueInfo = VenueInfo{2, 8}
+	VenueInfoAttorneyOffice                 VenueInfo = VenueInfo{2, 9}
+
+	VenueInfoUnspecifiedEducational VenueInfo = VenueInfo{3, 0}
+	VenueInfoPrimarySchool          VenueInfo = VenueInfo{3, 1}
+	VenueInfoSecondarySchool        VenueInfo = VenueInfo{3, 2}
+	VenueInfoUniversityOrCollege    VenueInfo = VenueInfo{3, 3}
+
+	VenueInfoUnspecifiedFactoryAndIndustrial VenueInfo = VenueInfo{4, 0}
+	VenueInfoFactory                         VenueInfo = VenueInfo{4, 1}
+
+	VenueInfoUnspecifiedInstitutional VenueInfo = VenueInfo{5, 0}
+	VenueInfoHospital                 VenueInfo = VenueInfo{5, 1}
+	VenueInfoLongTermCareFacility     VenueInfo = VenueInfo{5, 2}
+	VenueInfoRehabilitationCenter     VenueInfo = VenueInfo{5, 3}
+	VenueInfoGroupHome                VenueInfo = VenueInfo{5, 4}
+	VenueInfoPrisonOrJail             VenueInfo = VenueInfo{5, 5}
+
+	VenueInfoUnspecifiedMercantile    VenueInfo = VenueInfo{6, 0}
+	VenueInfoRetailStore              VenueInfo = VenueInfo{6, 1}
+	VenueInfoGroceryMarket            VenueInfo = VenueInfo{6, 2}
+	VenueInfoAutomotiveServiceStation VenueInfo = VenueInfo{6, 3}
+	VenueInfoShoppingMall             VenueInfo = VenueInfo{6, 4}
+	VenueInfoGasStation               VenueInfo = VenueInfo{6, 5}
+
+	VenueInfoUnspecifiedResidential VenueInfo = VenueInfo{7, 0}
+	VenueInfoHotelOrMotel           VenueInfo = VenueInfo{7, 1}
+	VenueInfoDormitory              VenueInfo = VenueInfo{7, 2}
+	VenueInfoBoardingHouse          VenueInfo = VenueInfo{7, 3}
+
+	VenueInfoUnspecifiedVehicular VenueInfo = VenueInfo{10, 0}
+	VenueInfoAutomobileOrTruck    VenueInfo = VenueInfo{10, 1}
+	VenueInfoAirplane             VenueInfo = VenueInfo{10, 2}
+	VenueInfoBus                  VenueInfo = VenueInfo{10, 3}
+	VenueInfoFerry                VenueInfo = VenueInfo{10, 4}
+	VenueInfoShipOrBoat           VenueInfo = VenueInfo{10, 5}
+	VenueInfoTrain                VenueInfo = VenueInfo{10, 6}
+	VenueInfoMotorBike            VenueInfo = VenueInfo{10, 7}
+
+	VenueInfoUnspecifiedOutdoor VenueInfo = VenueInfo{11, 0}
+	VenueInfoMultimeshNetwork   VenueInfo = VenueInfo{11, 1}
+	VenueInfoCityPark           VenueInfo = VenueInfo{11, 2}
+	VenueInfoRestArea           VenueInfo = VenueInfo{11, 3}
+	VenueInfoTrafficControl     VenueInfo = VenueInfo{11, 4}
+)
+
+// RealmEncoding is the type for specifying the encoding of the realm domain name.
+type RealmEncoding byte
+
+// Realm domain name encoding values as defined in IEEE 802.11u - 7.3.4.9.
+const (
+	RealmEncodingRFC4282 RealmEncoding = 0
+	RealmEncodingUTF8    RealmEncoding = 1
+)
+
+// NAIRealm is the type for specifying the
+type NAIRealm struct {
+	Domains  []string
+	Encoding RealmEncoding
+	Methods  []EAPMethod
+}
+
+// EAPMethodType is the type for specifying the EAP authentication method of a realm.
+type EAPMethodType byte
+
+// EAP Method types as defined by IANA (see http://www.iana.org/assignments/eap-numbers/eap-numbers.xhtml#eap-numbers-4)
+const (
+	EAPMethodTypeTLS  EAPMethodType = 13
+	EAPMethodTypeTTLS EAPMethodType = 21
+)
+
+// EAPMethod contains a set of authentication parameters associated with a EAP authentication method.
+type EAPMethod struct {
+	Type   EAPMethodType
+	Params []EAPAuthParam
+}
+
+// EAPAuthParamType is the type for specifying additional EAP authentication parameters.
+type EAPAuthParamType byte
+
+// EAP authentication parameter types as defined in IEEE 802.11u - Table 7-43bo.
+const (
+	AuthParamInnerNonEAP EAPAuthParamType = 2
+	AuthParamInnerEAP    EAPAuthParamType = 3
+	AuthParamCredential  EAPAuthParamType = 5
+	AuthParamTunneledEAP EAPAuthParamType = 6
+)
+
+// EAP authentication values for AuthParamInnerNonEAP (see IEEE 802.11u - table 7-43bo).
+const (
+	AuthNonEAPAuthPAP      byte = 1
+	AuthNonEAPAuthCHAP     byte = 2
+	AuthNonEAPAuthMSCHAP   byte = 3
+	AuthNonEAPAuthMSCHAPV2 byte = 4
+)
+
+// EAP authentication values for AuthParamCredential (see IEEE 802.11u - table 7-43bo).
+const (
+	AuthCredentialsSIM              byte = 1
+	AuthCredentialsUSIM             byte = 2
+	AuthCredentialsNFCSecureElement byte = 3
+	AuthCredentialsHardwareToken    byte = 4
+	AuthCredentialsSoftToken        byte = 5
+	AuthCredentialsCertificate      byte = 6
+	AuthCredentialsUsernamePassword byte = 7
+	AuthCredentialsAnonymous        byte = 9
+	AuthCredentialsVendorSpecific   byte = 10
+)
+
+// EAPAuthParam describes an EAP authentication parameter using a type and a value.
+type EAPAuthParam struct {
+	Type  EAPAuthParamType
+	Value byte
+}
+
+// String provides a readable representation of the realm in the format of hostapd configuration.
+func (r NAIRealm) String() string {
+	var builder strings.Builder
+	builder.WriteString(fmt.Sprintf("%d,%s", r.Encoding, strings.Join(r.Domains, ";")))
+
+	// Append the optionnal authentication methods.
+	for _, m := range r.Methods {
+		builder.WriteString(fmt.Sprintf(",%d", m.Type))
+		for _, p := range m.Params {
+			builder.WriteString(fmt.Sprintf("[%d:%d]", p.Type, p.Value))
+		}
+	}
+
+	return builder.String()
+}
+
 // Option is the function signature used to specify options of Config.
 type Option func(*Config)
 
@@ -311,6 +475,48 @@ func BasicRates(r ...float32) Option {
 	}
 }
 
+// Interworking returns an Option which enables interworking service in hostapd config.
+func Interworking() Option {
+	return func(c *Config) {
+		c.Interworking = true
+	}
+}
+
+// VenueInfos returns an Option which sets the venue group and type in hostapd config.
+func VenueInfos(vi VenueInfo) Option {
+	return func(c *Config) {
+		c.VenueInfo = vi
+	}
+}
+
+// VenueNames returns an Option which sets the venue names in hostapd config.
+func VenueNames(n ...string) Option {
+	return func(c *Config) {
+		c.VenueNames = append([]string(nil), n...)
+	}
+}
+
+// RoamingConsortiums returns an Option which sets the roaming consortium OI(s) in hostapd configuration.
+func RoamingConsortiums(rc ...string) Option {
+	return func(c *Config) {
+		c.RoamingConsortiums = append([]string(nil), rc...)
+	}
+}
+
+// DomainNames returns an Option which sets the interworking domain names in hostapd configuration.
+func DomainNames(d ...string) Option {
+	return func(c *Config) {
+		c.DomainNames = append([]string(nil), d...)
+	}
+}
+
+// Realms returns an Option which sets the Network Access Identifier Realms in hostapd configuration.
+func Realms(r ...NAIRealm) Option {
+	return func(c *Config) {
+		c.Realms = append([]NAIRealm(nil), r...)
+	}
+}
+
 // EnvironmentVars returns an Option which sets the env vars map in hostapd config.
 func EnvironmentVars(envVars map[string]string) Option {
 	return func(c *Config) {
@@ -377,6 +583,12 @@ type Config struct {
 	AdditionalBSSs     []AdditionalBSS
 	SupportedRates     []float32
 	BasicRates         []float32
+	Interworking       bool
+	VenueInfo
+	VenueNames         []string
+	RoamingConsortiums []string
+	DomainNames        []string
+	Realms             []NAIRealm
 	EnvironmentVars    map[string]string
 }
 
@@ -524,6 +736,24 @@ func (c *Config) Format(iface, ctrlPath string) (string, error) {
 			rates[i] = fmt.Sprintf("%d", int(r*10))
 		}
 		configure("basic_rates", strings.Join(rates, " "))
+	}
+
+	if c.Interworking {
+		configure("interworking", "1")
+		configure("venue_group", strconv.Itoa(int(c.VenueInfo.Group)))
+		configure("venue_type", strconv.Itoa(int(c.VenueInfo.Type)))
+		for _, name := range c.VenueNames {
+			configure("venue_name", name)
+		}
+		for _, rc := range c.RoamingConsortiums {
+			configure("roaming_consortium", rc)
+		}
+		if len(c.DomainNames) > 0 {
+			configure("domain_name", strings.Join(c.DomainNames, ","))
+		}
+		for _, r := range c.Realms {
+			configure("nai_realm", r.String())
+		}
 	}
 
 	return builder.String(), nil
