@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ab8e6bb_535b7a54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-20T09:15:08Z",
+      "side": 1,
+      "message": "I\u0027m not entirely sure where the best place is, but might be worth reaching out to the go/chromeos-spera folks to chat. I believe they have long running performance tests and might be better positioned to answer this.",
+      "parentUuid": "648644cd_c589e47c",
+      "revId": "dbc77fc4ea2a1d307a0ef38797373272a7d99534",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fb4a50d_bee4cebf",
