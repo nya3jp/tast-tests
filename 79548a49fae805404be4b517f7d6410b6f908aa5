@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be49469c_200ff7e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-20T05:14:22Z",
+      "side": 1,
+      "message": "Please add me back after the CL is ready for Tast review.",
+      "revId": "79548a49fae805404be4b517f7d6410b6f908aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4b3fddb_a6fbcf60",
