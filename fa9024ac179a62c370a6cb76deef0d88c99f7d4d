@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac7f4181_2fb404b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-20T07:31:31Z",
+      "side": 1,
+      "message": "Thank you so much for creating the fixture! :) I left have a few comments",
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08557ee1_8348d60e",
@@ -77,6 +94,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "968dc11d_f1feacfb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-20T07:31:31Z",
+      "side": 1,
+      "message": "just wondering if it would make sense to get the lsbContent information from the fixture instead, so it is available to all this kind of tests, WDYT?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2d25636_c41a74f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-20T07:31:31Z",
+      "side": 1,
+      "message": "As this is now covered by the fixture, maybe we should remove it from the test to avoid having duplicated code with similar functionality?",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 3
+      },
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5b11eda_ffda1746",
         "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
         "patchSetId": 2
@@ -93,6 +156,29 @@
         "startChar": 90,
         "endLine": 20,
         "endChar": 105
+      },
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a38afc91_c0feee42",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-20T07:31:31Z",
+      "side": 1,
+      "message": "maybe use the if initializer instead?",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 14
       },
       "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -117,6 +203,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "790200e5_3a170980",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-20T07:31:31Z",
+      "side": 1,
+      "message": "maybe it would be more easy to read by checking if the version is the original one instead, to leave in that case and then continue with the rest of the code, logging the reason why we need to continue.\n\nAlso, please do not add the \"else if\" after the err fatal condition, as by the guidelines, the rest of the \"normal code\" after a condition then ends in a terminal condition should not be indented (see go/go-style/decisions#indent-error-flow)\n\n```\nif version \u003d\u003d au.originalVersion {\n    s.Log(\"No change in the OS image version after the test\")\n    return // There is no need to restore the image version.\n}\ns.Logf(\"Image version was not restored to %s after the test, it remained %s\", au.originalVersion, version)\n```",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4a216ba_7a07a8c7",
         "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
         "patchSetId": 2
@@ -128,6 +237,29 @@
       "writtenOn": "2022-06-20T06:56:59Z",
       "side": 1,
       "message": "nit: file a bug and link it from here.",
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eebe7cb7_117a6d22",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-20T07:31:31Z",
+      "side": 1,
+      "message": "Same suggestion as above\n\n```\nif version \u003d\u003d au.originalVersion {\n    s.Log(\"The image restoration was successful\")\n    return\n}\ns.Logf(\"Image version was not restored to %s after the rollback, it is %s\", au.originalVersion, version)\n```",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 2
+      },
       "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
