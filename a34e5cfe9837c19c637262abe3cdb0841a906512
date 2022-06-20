@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0431e230_69956dee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-20T05:07:15Z",
+      "side": 1,
+      "message": "this sounds a bit ambiguous to me. Do you mean, you need to reconnect here? Or, you do not need to reconnect here?",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa76a5f5_14caf81e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-20T05:07:15Z",
+      "side": 1,
+      "message": "could you keep err?",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7471c39c_4a31300d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-20T05:07:15Z",
+      "side": 1,
+      "message": "ditto for err.",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a48e55_073b479d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-20T05:07:15Z",
+      "side": 1,
+      "message": "nit: const",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f6e2a2_44042366",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-20T05:07:15Z",
+      "side": 1,
+      "message": "I think this \"sh -c\" can be dropped?",
+      "range": {
+        "startLine": 99,
+        "startChar": 40,
+        "endLine": 99,
+        "endChar": 51
+      },
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc0ff602_8102a20f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-20T05:07:15Z",
+      "side": 1,
+      "message": "const",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f88b31e_9401104e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-20T05:07:15Z",
+      "side": 1,
+      "message": "looks same with kernel_crash.go? Can this be extracted into a utility function?",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b68f1a_23a027dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-20T05:07:15Z",
+      "side": 1,
+      "message": "could you move this out from the loop not to do for each?\nDitto for below.",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
