@@ -18,8 +18,8 @@ import (
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/mapui"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -111,7 +111,7 @@ func ShowHomeButton(ctx context.Context, s *testing.State) {
 
 			// Confirm the status of the Home button node.
 			ui := uiauto.New(tconn)
-			homeButton := nodewith.Name("Home").Role(role.Button).First()
+			homeButton := mapui.ChromeHomeButton.First()
 			if err = ui.WaitUntilExists(homeButton)(ctx); err != nil {
 				if !strings.Contains(err.Error(), nodewith.ErrNotFound) {
 					s.Fatal("Failed to wait for 'Home' button: ", err)
