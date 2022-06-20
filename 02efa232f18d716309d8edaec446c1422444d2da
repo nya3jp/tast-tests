@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4641e209_f5109271",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/inputs/touch_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-20T07:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8e62e0f_ec2f05a6",
+      "range": {
+        "startLine": 97,
+        "startChar": 35,
+        "endLine": 97,
+        "endChar": 51
+      },
+      "revId": "02efa232f18d716309d8edaec446c1422444d2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54fe6edb_4f29bf57",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1419d120_e6467849",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/inputs/touch_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-20T07:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54fe6edb_4f29bf57",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 3
+      },
+      "revId": "02efa232f18d716309d8edaec446c1422444d2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b12f6b1d_1082bda2",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-20T02:51:29Z",
       "side": 1,
       "message": "nit: missing full stop",
+      "range": {
+        "startLine": 116,
+        "startChar": 70,
+        "endLine": 116,
+        "endChar": 71
+      },
+      "revId": "02efa232f18d716309d8edaec446c1422444d2da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "887868c5_3e78d3d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/inputs/touch_coldboot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-20T07:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b12f6b1d_1082bda2",
       "range": {
         "startLine": 116,
         "startChar": 70,
