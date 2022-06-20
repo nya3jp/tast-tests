@@ -19,6 +19,8 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const arcSnapshotTestTimeout = 40 * time.Minute
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ArcSnapshot,
@@ -31,7 +33,7 @@ func init() {
 		Attr:         []string{"group:arc-data-snapshot"},
 		ServiceDeps:  []string{"tast.cros.enterprise.ArcSnapshotService", "tast.cros.tape.Service"},
 		SoftwareDeps: []string{"chrome", "reboot", "arc", "tpm2", "amd64"},
-		Timeout:      40 * time.Minute,
+		Timeout:      arcSnapshotTestTimeout,
 		VarDeps: []string{
 			"enterprise.ArcSnapshot.packages",
 			"tape.service_account_key",
@@ -64,19 +66,14 @@ func ArcSnapshot(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create tape client: ", err)
 	}
 
-	poolID := "arc_snapshot"
-	reqOTAparams := tape.NewRequestOTAParams(40*60, &poolID, false)
-	acc, err := tape.RequestAccount(ctx, httpClient, reqOTAparams)
-	if err != nil {
-		s.Fatal("RequestAccount failed: ", err)
-	}
+	const poolID = "arc_snapshot"
 
-	defer func(ctx context.Context) {
-		err = acc.ReleaseAccount(ctx, httpClient)
-		if err != nil {
-			s.Fatal("ReleaseAccount failed: ", err)
-		}
-	}(cleanupCtx)
+	// Lease a test account for the duration of the test.
+	acc, cleanupLease, err := tape.LeaseTestAccount(ctx, poolID, arcSnapshotTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	if err != nil {
+		s.Fatal("Failed to lease a test account: ", err)
+	}
+	defer cleanupLease(cleanupCtx)
 
 	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
