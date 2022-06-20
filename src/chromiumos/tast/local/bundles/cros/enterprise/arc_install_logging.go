@@ -16,6 +16,8 @@ import (
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/tape"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/enterprise/arcent"
@@ -36,7 +38,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      13 * time.Minute,
-		VarDeps:      []string{"enterprise.ARCInstallLogging.user", "enterprise.ARCInstallLogging.password"},
+		VarDeps:      []string{"tape.service_account_key"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -76,15 +78,36 @@ const (
 func ARCInstallLogging(ctx context.Context, s *testing.State) {
 	const testPackage = "com.managedchrome.arcloggingtest"
 
-	user := s.RequiredVar("enterprise.ARCInstallLogging.user")
-	password := s.RequiredVar("enterprise.ARCInstallLogging.password")
+	// Shorten deadline to leave time for cleanup
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
+	defer cancel()
+
+	httpClient, err := tape.NewTapeClient(ctx, tape.WithCredsJSON([]byte(s.RequiredVar("tape.service_account_key"))))
+	if err != nil {
+		s.Fatal("Failed to create tape client: ", err)
+	}
+
+	poolID := "arc_logging_test"
+	reqOTAparams := tape.NewRequestOTAParams(40*60, &poolID, false)
+	acc, err := tape.RequestAccount(ctx, httpClient, reqOTAparams)
+	if err != nil {
+		s.Fatal("RequestAccount failed: ", err)
+	}
+
+	defer func(ctx context.Context) {
+		err = acc.ReleaseAccount(ctx, httpClient)
+		if err != nil {
+			s.Fatal("ReleaseAccount failed: ", err)
+		}
+	}(cleanupCtx)
 
 	// Login to Chrome and allow to launch ARC if allowed by user policy. Flag --install-log-fast-upload-for-tests reduces delay of uploading chrome log.
 	// Flag --arc-install-event-chrome-log-for-tests logs ARC install events to chrome log.
 	args := append(arc.DisableSyncFlags(), "--install-log-fast-upload-for-tests", "--arc-install-event-chrome-log-for-tests")
 	cr, err := chrome.New(
 		ctx,
-		chrome.GAIALogin(chrome.Creds{User: user, Pass: password}),
+		chrome.GAIALogin(chrome.Creds{User: acc.UserName, Pass: acc.Password}),
 		chrome.ARCSupported(),
 		chrome.UnRestrictARCCPU(),
 		chrome.ProdPolicy(),
