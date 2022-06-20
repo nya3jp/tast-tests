@@ -16,6 +16,23 @@
       "message": "The test is looking very stable.\n\nThe only failures in https://tastboard.corp.google.com/test/crostini.BackupRestore.stable have been flakes installing crostini which are not related to this test.",
       "revId": "a49cc8025f2fc0f9c9411f803337801ba7eadbc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec6d08fe_092f5115",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-06-20T00:41:16Z",
+      "side": 1,
+      "message": "Fergus had already approved this, I\u0027m not sure why he dropped off the reviewer list.\n\nAnd Fergus, fyi your status shows \"OOO (15th April - 25th April)\"",
+      "revId": "a49cc8025f2fc0f9c9411f803337801ba7eadbc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
