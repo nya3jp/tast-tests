@@ -33,6 +33,46 @@
       "message": "LGTM",
       "revId": "3b7e4c67320b26ac5c86264407b870b2182ce1be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e38f7530_c24f8195",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-20T13:04:28Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "3b7e4c67320b26ac5c86264407b870b2182ce1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efd205e7_566ddbbc",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/js_wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-20T13:04:28Z",
+      "side": 1,
+      "message": "nit: End the comment with a dot .",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 28
+      },
+      "revId": "3b7e4c67320b26ac5c86264407b870b2182ce1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
