@@ -42,6 +42,12 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 	}
 
 	t := &FirmwareTest{d: d, servo: pxy}
+	// Close servo connection when this function is going to return an error.
+	defer func() {
+		if initError != nil {
+			t.servo.Close(ctx)
+		}
+	}()
 
 	t.daemonState, err = stopDaemons(ctx, t.UpstartService(), []string{
 		biodUpstartJobName,
@@ -50,6 +56,16 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		//  USB on some platforms.
 		powerdUpstartJobName,
 	})
+	// Start daemons when this function is going to return an error.
+	defer func() {
+		if initError != nil {
+			testing.ContextLog(ctx, "NewFirmwareTest failed, restore daemon state")
+			if err := restoreDaemons(ctx, t.UpstartService(), t.daemonState); err != nil {
+				testing.ContextLog(ctx, "Failed to restart daemons")
+			}
+		}
+	}()
+	// Check if daemons were stopped correctly.
 	if err != nil {
 		return nil, err
 	}
