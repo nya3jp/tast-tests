@@ -34,25 +34,27 @@ func init() {
 			"cienet-development@googlegroups.com",
 			"essential-inputs-team@google.com",
 		},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome"},
-		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.FrenchFrance}),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
 				Fixture:           fixture.ClamshellNonVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "informational",
 				Fixture:           fixture.ClamshellNonVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
