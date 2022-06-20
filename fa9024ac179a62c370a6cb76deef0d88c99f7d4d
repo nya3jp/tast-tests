@@ -206,6 +206,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56ecc0c8_442eecb7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-06-20T09:14:54Z",
+      "side": 1,
+      "message": "I would say we should not - at least for vault compat roll forward is the exact part we want to test and rollback is just a \"setup\" for the test",
+      "parentUuid": "20c67a9d_8c023fe4",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 3
+      },
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5b11eda_ffda1746",
         "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
         "patchSetId": 2
