@@ -5,8 +5,10 @@
 package wpacli
 
 import (
+	"bufio"
 	"context"
 	"fmt"
+	"net"
 	"strings"
 
 	"chromiumos/tast/common/network/cmd"
@@ -123,4 +125,33 @@ func (r *Runner) TDLSTeardown(ctx context.Context, mac string) error {
 // TDLSLinkStatus runs tdls_link_status command.
 func (r *Runner) TDLSLinkStatus(ctx context.Context, mac string) error {
 	return r.run(ctx, "TDLS link status: connected", "tdls_link_status", mac)
+}
+
+// Scan triggers a scan sequence in wpa_supplicant.
+func (r *Runner) Scan(ctx context.Context) error {
+	return r.run(ctx, "OK", "scan")
+}
+
+// FetchANQP triggers ANQP request for each compatible BSS found during the last scan.
+func (r *Runner) FetchANQP(ctx context.Context) error {
+	return r.run(ctx, "OK", "fetch_anqp")
+}
+
+// BSS fetches from wpa_supplicant all the known information about a given BSSID.
+func (r *Runner) BSS(ctx context.Context, addr net.HardwareAddr) (map[string]string, error) {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("bss", addr.String())...)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed running wpa_cli 'bss %s'", addr)
+	}
+
+	bss := make(map[string]string)
+	s := bufio.NewScanner(strings.NewReader(string(cmdOut)))
+	for s.Scan() {
+		line := s.Text()
+		if strings.Contains(line, "=") {
+			elems := strings.Split(line, "=")
+			bss[elems[0]] = elems[1]
+		}
+	}
+	return bss, nil
 }
