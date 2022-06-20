@@ -16,6 +16,23 @@
       "message": "PTAL, thanks!\n\nFYI: you still have an OOO message (30th of May) next to your name in gerrit",
       "revId": "fb113ca960d184ab55f0535b9708c4df0a39f7c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b4a2e61_d5b85c8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273632
+      },
+      "writtenOn": "2022-06-20T21:16:07Z",
+      "side": 1,
+      "message": "just saw that there is an group for owners to spread the load, using that instead",
+      "revId": "fb113ca960d184ab55f0535b9708c4df0a39f7c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
