@@ -16,6 +16,23 @@
       "message": "Hi Matt,\nSorry that this fell through the crack. \nIt is smart that you moved the function to chrome package so we can leverage `cfg, err :\u003d config.NewConfig(opts)` to make ToOptions more testable.\nThanks,\nJonathan",
       "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e6d5356_5109a80e",
+        "filename": "src/chromiumos/tast/local/chrome/options_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-20T12:58:23Z",
+      "side": 1,
+      "message": "Could you move this to services/cros/ui package?\nI don\u0027t think chrome package would like to depend on it.",
+      "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
