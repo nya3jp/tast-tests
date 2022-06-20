@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81341ff1_9903ceeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-06-20T06:14:32Z",
+      "side": 1,
+      "message": "also add the fixture to other n_to_m tests in the directory (vault_copmpat and login)",
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
