@@ -16,14 +16,14 @@ async function DecodeFrames(videoURL, numFrames) {
 }
 
 async function EncodeAndSave(codec, acceleration, width, height, bitrate,
-                             framerate, scalabilityMode) {
+                             framerate, scalabilityMode, bitrateMode) {
   if (scalabilityMode === "") {
     scalabilityMode = undefined;
   }
 
   let encoder = await CreateEncoder(codec, acceleration, width, height,
                                     bitrate, framerate, bitstreamSaver,
-                                    scalabilityMode);
+                                    scalabilityMode, bitrateMode);
   if (!encoder) {
     TEST.failExit();
     return;
