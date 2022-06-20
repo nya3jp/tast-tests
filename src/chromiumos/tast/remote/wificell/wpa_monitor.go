@@ -9,6 +9,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"net"
 	"regexp"
 	"strconv"
 	"strings"
@@ -49,6 +50,13 @@ type DisconnectedEvent struct {
 
 // ScanResultsEvent defines data of CTRL-EVENT-SCAN-RESULTS event.
 type ScanResultsEvent struct {
+}
+
+// ANQPQueryDoneEvent defines data of ANQP-QUERY-DONE event.
+type ANQPQueryDoneEvent struct {
+	Addr    net.HardwareAddr
+	Success bool
+	Result  string
 }
 
 // WPAMonitor holds internal context of the WPA monitor.
@@ -121,6 +129,20 @@ var eventDefs = []eventDef{
 			return new(ScanResultsEvent), nil
 		},
 	},
+	{
+		regexp.MustCompile(`ANQP-QUERY-DONE addr=([\da-fA-F:]+) result=([A-Z_]+)`),
+		func(matches []string) (SupplicantEvent, error) {
+			addr, err := net.ParseMAC(matches[1])
+			if err != nil {
+				return nil, err
+			}
+			return &ANQPQueryDoneEvent{
+				Addr:    addr,
+				Success: matches[2] == "SUCCESS",
+				Result:  matches[2],
+			}, nil
+		},
+	},
 }
 
 // ToLogString formats the event data to string suitable for logging.
@@ -137,6 +159,11 @@ func (e *ScanResultsEvent) ToLogString() string {
 func (e *DisconnectedEvent) ToLogString() string {
 	const timeLayout = "2006-01-02 15:04:05.000000"
 	return fmt.Sprintf("%s %+v\n", e.RcvTime.Format(timeLayout), e)
+}
+
+// ToLogString formats the event data to string suitable for logging.
+func (e *ANQPQueryDoneEvent) ToLogString() string {
+	return fmt.Sprintf("%+v\n", e)
 }
 
 // Start initializes the wpa_supplicant monitor.
