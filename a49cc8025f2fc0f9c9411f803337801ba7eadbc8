@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29ad4d9_473d46ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-06-20T00:40:03Z",
+      "side": 1,
+      "message": "The test is looking very stable.\n\nThe only failures in https://tastboard.corp.google.com/test/crostini.BackupRestore.stable have been flakes installing crostini which are not related to this test.",
+      "revId": "a49cc8025f2fc0f9c9411f803337801ba7eadbc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
