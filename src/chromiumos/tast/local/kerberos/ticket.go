@@ -45,6 +45,22 @@ func AddTicket(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, u
 		return errors.Wrap(err, "failed to add Kerberos ticket")
 	}
 
+	if err := CheckForTicket(ctx, ui, config); err != nil {
+		return errors.Wrap(err, "failed to find active ticket")
+	}
+
+	apps.Close(ctx, tconn, apps.Settings.ID)
+
+	// Wait for OS Setting to close.
+	if err := ui.WaitUntilGone(nodewith.Name("Settings - Kerberos tickets").Role(role.Window))(ctx); err != nil {
+		return errors.Wrap(err, "failed to close os settings")
+	}
+
+	return nil
+}
+
+// CheckForTicket tries to find the ticket in the kerberos menu and checks that it's not "expired".
+func CheckForTicket(ctx context.Context, ui *uiauto.Context, config *Configuration) error {
 	// Wait for ticket to appear.
 	testing.ContextLog(ctx, "Waiting for Kerberos ticket to appear")
 	if err := ui.WaitUntilExists(nodewith.Name(config.KerberosAccount).Role(role.StaticText))(ctx); err != nil {
@@ -55,14 +71,7 @@ func AddTicket(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, u
 	// resolved. UI tree is not refreshed for 1 minute.
 	// Check that ticket is not expired.
 	if err := ui.Exists(nodewith.Name("Expired").Role(role.StaticText))(ctx); err == nil {
-		return errors.New("Kerberos ticket is expired")
-	}
-
-	apps.Close(ctx, tconn, apps.Settings.ID)
-
-	// Wait for OS Setting to close.
-	if err := ui.WaitUntilGone(nodewith.Name("Settings - Kerberos tickets").Role(role.Window))(ctx); err != nil {
-		return errors.Wrap(err, "failed to close os settings")
+		return errors.New("Kerberos ticket has expired")
 	}
 
 	return nil
