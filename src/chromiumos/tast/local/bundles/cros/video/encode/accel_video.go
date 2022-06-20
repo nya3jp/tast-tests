@@ -47,6 +47,9 @@ type TestOptions struct {
 	// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes* about temporal layers.
 	temporalLayers int
 
+	// Used bitrate mode. either cbr or vbr.
+	bitrateMode string
+
 	// Encode bitrate.
 	bitrate int
 
@@ -104,6 +107,18 @@ func MakeTestOptionsWithSVCLayers(webMName string, profile videotype.CodecProfil
 		profile:        profile,
 		spatialLayers:  spatialLayers,
 		temporalLayers: temporalLayers,
+	}
+}
+
+// MakeTestOptionsWithBitrateMode creates TestOptions from webMName, profile, bitrateMode.
+// bitrateMode svc is either "vbr" or "cbr".
+func MakeTestOptionsWithBitrateMode(webMName string, profile videotype.CodecProfile, bitrateMode string) TestOptions {
+	return TestOptions{
+		webMName:       webMName,
+		profile:        profile,
+		spatialLayers:  1,
+		temporalLayers: 1,
+		bitrateMode:    bitrateMode,
 	}
 }
 
@@ -188,6 +203,9 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 	}
 	if opts.temporalLayers > 1 {
 		testArgs = append(testArgs, fmt.Sprintf("--num_temporal_layers=%d", opts.temporalLayers))
+	}
+	if opts.bitrateMode != "" {
+		testArgs = append(testArgs, fmt.Sprintf("--bitrate_mode=%s", opts.bitrateMode))
 	}
 	if opts.disableGlobalVaapiLock {
 		testArgs = append(testArgs, "--disable_vaapi_lock")

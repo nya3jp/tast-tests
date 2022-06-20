@@ -75,6 +75,11 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264, "vaapi"},
 			ExtraData:         encode.TestData(tulip720P),
 		}, {
+			Name:              "h264_720p_vbr",
+			Val:               encode.MakeTestOptionsWithBitrateMode(tulip720P, videotype.H264BaselineProf, "vbr"),
+			ExtraSoftwareDeps: []string{caps.HWEncodeH264VBR},
+			ExtraData:         encode.TestData(tulip720P),
+		}, {
 			Name:              "h264_1080p",
 			Val:               encode.MakeTestOptions(crowd1080P, videotype.H264BaselineProf),
 			ExtraSoftwareDeps: []string{caps.HWEncodeH264},
