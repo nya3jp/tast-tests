@@ -1204,6 +1204,23 @@ func TestPlatformDecodingParams(t *testing.T) {
 		})
 	}
 
+	// Generate ffmpeg H264 tests.
+	for _, group := range []string{"baseline", "main", "first_mb_in_slice"} {
+		files := h264Files[group]
+
+		param := paramData{
+			Name:         fmt.Sprintf("ffmpeg_h264_%s", group),
+			Decoder:      ffmpegMD5Path,
+			CmdBuilder:   "ffmpegMD5VAAPIargs",
+			Files:        files,
+			Timeout:      defaultTimeout,
+			SoftwareDeps: []string{"vaapi", caps.HWDecodeVP8},
+			Metadata:     genExtraData(files),
+			Attr:         []string{"graphics_video_h264"},
+		}
+		params = append(params, param)
+	}
+
 	code := genparams.Template(t, `{{ range . }}{
 		Name: {{ .Name | fmt }},
 		Val:  platformDecodingParams{
