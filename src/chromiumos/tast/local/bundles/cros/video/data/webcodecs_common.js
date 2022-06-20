@@ -90,9 +90,9 @@ async function CreateEncoder(
   height,
   bitrate,
   framerate,
-  saver = undefined,
-  scalabilityMode = undefined,
-  bitrateMode = "constant"
+  saver,
+  scalabilityMode,
+  bitrateMode,
 ) {
   let encoderConfig = {
     codec: codec,

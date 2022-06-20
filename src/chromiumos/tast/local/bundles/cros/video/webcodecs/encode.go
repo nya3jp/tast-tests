@@ -30,6 +30,9 @@ type TestEncodeArgs struct {
 	// ScalabilityMode is a "scalabilityMode" identifier.
 	// https://www.w3.org/TR/webrtc-svc/#scalabilitymodes
 	ScalabilityMode string
+	// BitrateMode is a bitrate mode identifier.
+	// https://www.w3.org/TR/mediastream-recording/#bitratemode
+	BitrateMode string
 	// Acceleration denotes which encoder is used, hardware or software.
 	Acceleration HardwareAcceleration
 }
@@ -148,7 +151,7 @@ func RunEncodeTest(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 
 	bitrate := config.width * config.height * config.framerate / 10
 	if err := conn.Call(ctx, nil, "EncodeAndSave", codec, testArgs.Acceleration, config.width, config.height,
-		bitrate, config.framerate, testArgs.ScalabilityMode); err != nil {
+		bitrate, config.framerate, testArgs.ScalabilityMode, testArgs.BitrateMode); err != nil {
 		return outputJSLogAndError(cleanupCtx, conn, errors.Wrap(err, "failed executing EncodeAndSave"))
 	}
 

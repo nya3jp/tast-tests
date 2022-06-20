@@ -501,6 +501,24 @@ func init() {
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+
+	// TODO(b/202926617): Remove once hardaware variable bitrate encoding is enabled by default.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeWebCodecsWithHWVBREncoding",
+		Desc:     "Similar to chromeVideo fixture but enabling using WebCodecs API and hardware variable bitrate encoding",
+		Contacts: []string{"chromeos-gfx-video@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.ExtraArgs(chromeVideoArgs...),
+				chrome.ExtraArgs(chromeWebCodecsArgs...),
+				chrome.ExtraArgs("--enable-features=ChromeOSHWVBREncoding"),
+			}, nil
+		}),
+		Parent:          "gpuWatchDog",
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 }
 
 var chromeVideoArgs = []string{
