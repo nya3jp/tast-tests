@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/tape"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
@@ -35,18 +36,17 @@ import (
 // 6) Upload the tbz2 file into gs://chromiumos-test-assets-public/tast/cros/arc/ and update
 //    the .external file (See tast/local/bundles/cros/arc/data/data_migration_pi_x86_64.external).
 const (
-	homeDataNameNycX86       = "data_migration_nyc_x86_64"
-	homeDataNamePiX86        = "data_migration_pi_x86_64"
-	homeDataNamePiArm        = "data_migration_pi_arm64"
-	homeDataNameManagedPiX86 = "data_migration_managed_pi_x86_64"
-	unmanagedUsernameVar     = "arc.DataMigration.username"
-	unmanagedPasswordVar     = "arc.DataMigration.password"
-	managedUsernameVar       = "arc.DataMigration.managed_username"
-	managedPasswordVar       = "arc.DataMigration.managed_password"
+	homeDataNameNycX86            = "data_migration_nyc_x86_64"
+	homeDataNamePiX86             = "data_migration_pi_x86_64"
+	homeDataNamePiArm             = "data_migration_pi_arm64"
+	homeDataNameManagedPiX86      = "data_migration_managed_pi_x86_64"
+	arcDataMigrationUnmanagedPool = "arc_data_migration_unmanaged"
+	arcDataMigrationManagedPool   = "arc_data_migration_managed"
+	dataMigrationTestTimeout      = 10 * time.Minute
 )
 
 type dataMigrationTestParams struct {
-	managed      bool
+	poolID       string
 	dataFileName string
 }
 
@@ -60,13 +60,13 @@ func init() {
 		// "no_qemu" is added for excluding betty from the target board list.
 		// TODO(b/179636279): Remove "no_qemu" after making the test pass on betty.
 		SoftwareDeps: []string{"chrome", "no_qemu"},
-		Timeout:      10 * time.Minute,
-		VarDeps:      []string{unmanagedUsernameVar, unmanagedPasswordVar, managedUsernameVar, managedPasswordVar},
+		Timeout:      dataMigrationTestTimeout,
+		VarDeps:      []string{tape.ServiceAccountVar},
 		Params: []testing.Param{{
 			// Launch ARC P with /data created on ARC N (for x86).
 			Name: "n_to_p_x86",
 			Val: dataMigrationTestParams{
-				managed:      false,
+				poolID:       arcDataMigrationUnmanagedPool,
 				dataFileName: homeDataNameNycX86,
 			},
 			ExtraData:         []string{homeDataNameNycX86},
@@ -75,7 +75,7 @@ func init() {
 			// Launch ARC R with /data created on ARC P (for x86).
 			Name: "p_to_r_x86",
 			Val: dataMigrationTestParams{
-				managed:      false,
+				poolID:       arcDataMigrationUnmanagedPool,
 				dataFileName: homeDataNamePiX86,
 			},
 			ExtraData:         []string{homeDataNamePiX86},
@@ -84,7 +84,7 @@ func init() {
 			// Launch ARC R with /data created on ARC P (for arm).
 			Name: "p_to_r_arm",
 			Val: dataMigrationTestParams{
-				managed:      false,
+				poolID:       arcDataMigrationUnmanagedPool,
 				dataFileName: homeDataNamePiArm,
 			},
 			ExtraData:         []string{homeDataNamePiArm},
@@ -93,7 +93,7 @@ func init() {
 			// Launch ARC R with /data created on ARC P for managed user(for x86).
 			Name: "managed_p_to_r_x86",
 			Val: dataMigrationTestParams{
-				managed:      true,
+				poolID:       arcDataMigrationManagedPool,
 				dataFileName: homeDataNameManagedPiX86,
 			},
 			ExtraData:         []string{homeDataNameManagedPiX86},
@@ -115,38 +115,37 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	)
 
 	params := s.Param().(dataMigrationTestParams)
-	var username, password string
-	if params.managed {
-		username = s.RequiredVar(managedUsernameVar)
-		password = s.RequiredVar(managedPasswordVar)
-	} else {
-		username = s.RequiredVar(unmanagedUsernameVar)
-		password = s.RequiredVar(unmanagedPasswordVar)
-	}
 	homeDataPath := s.DataPath(params.dataFileName)
+
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
+	defer cancel()
+
+	// Lease a test account for the duration of the test.
+	acc, cleanupLease, err := tape.LeaseTestAccount(ctx, params.poolID, dataMigrationTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	if err != nil {
+		s.Fatal("Failed to lease a test account: ", err)
+	}
+	defer cleanupLease(cleanupCtx)
 
 	// Ensure to sign out before executing mountVaultWithArchivedHomeData().
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to sign out: ", err)
 	}
 
-	// Use a shortened context for test operations to reserve time for cleanup.
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
-	defer cancel()
-
 	// Unarchive the home data under vault before signing in.
-	if err := mountVaultWithArchivedHomeData(ctx, homeDataPath, username, password); err != nil {
+	if err := mountVaultWithArchivedHomeData(ctx, homeDataPath, acc.UserName, acc.Password); err != nil {
 		s.Fatal("Failed to mount home with archived data: ", err)
 	}
 	defer func() {
-		cryptohome.UnmountVault(cleanupCtx, username)
-		cryptohome.RemoveVault(cleanupCtx, username)
+		cryptohome.UnmountVault(cleanupCtx, acc.UserName)
+		cryptohome.RemoveVault(cleanupCtx, acc.UserName)
 	}()
 
 	args := append(arc.DisableSyncFlags(), "--disable-arc-data-wipe")
 	cr, err := chrome.New(ctx,
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.GAIALogin(chrome.Creds{User: acc.UserName, Pass: acc.Password}),
 		chrome.ARCSupported(), chrome.KeepState(), chrome.ExtraArgs(args...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -159,7 +158,7 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close(ctx)
 
-	systemSdkVersion, err := checkSdkVersionsInPackagesXML(ctx, a, username)
+	systemSdkVersion, err := checkSdkVersionsInPackagesXML(ctx, a, acc.UserName)
 	if err != nil {
 		s.Fatal("Failed to check SDK version in packages.xml: ", err)
 	}
