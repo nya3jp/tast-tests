@@ -138,6 +138,17 @@ var UnstableModels = []string{
 	"cerise",
 	// http://b/234402067
 	"taniks",
+	// http://b/236548895 http://b/236547873
+	// Platform brya-kernelnext
+	"gimble",
+	"redrix",
+	// Platform volteer-kernelnext
+	"volteer2",
+	"eldrid",
+	// Platform zork-kernelnext
+	"ezkinil",
+	"gumboz",
+	"vilboz14",
 }
 
 // CrostiniMinDiskSizeCond is a hardware condition that only runs tests on models with > 12GB of disk size.
