@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53b57a27_d5d7cb67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-06-20T06:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a8c5a12_b6710fb3",
+      "range": {
+        "startLine": 111,
+        "startChar": 71,
+        "endLine": 111,
+        "endChar": 87
+      },
+      "revId": "761f692994d55b0b78d0a2f6f6c9f3e370f1b9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c2123e5_6241d584",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-06-20T02:56:00Z",
       "side": 1,
       "message": "clar: why do you need to pass this? As far as I can see, you don\u0027t need to use it.\n\nPassing it is generally discouraged:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#state",
+      "range": {
+        "startLine": 119,
+        "startChar": 72,
+        "endLine": 119,
+        "endChar": 88
+      },
+      "revId": "761f692994d55b0b78d0a2f6f6c9f3e370f1b9c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3c093a8_70c6960d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-06-20T06:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c2123e5_6241d584",
       "range": {
         "startLine": 119,
         "startChar": 72,
