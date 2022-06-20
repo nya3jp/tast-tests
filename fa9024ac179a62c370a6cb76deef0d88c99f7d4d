@@ -110,6 +110,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "676eeed9_7411ece5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/basic_n_to_m.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-20T13:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea009439_3edfa8f3",
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "968dc11d_f1feacfb",
@@ -346,6 +364,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f62bfb6e_9bb09c5a",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-20T13:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a38afc91_c0feee42",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 14
+      },
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6128293_c2710b90",
@@ -359,6 +401,24 @@
       "writtenOn": "2022-06-20T06:56:59Z",
       "side": 1,
       "message": "nit: remove line",
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae37cdbc_bc717171",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-20T13:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6128293_c2710b90",
       "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -410,6 +470,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afbfc9c4_be5012cb",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-20T13:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5608f04_dc94215c",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4a216ba_7a07a8c7",
@@ -423,6 +507,24 @@
       "writtenOn": "2022-06-20T06:56:59Z",
       "side": 1,
       "message": "nit: file a bug and link it from here.",
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7ced696_ccd45d06",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-20T13:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4a216ba_7a07a8c7",
       "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -450,6 +552,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d0d5da1_15900236",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-20T13:29:29Z",
+      "side": 1,
+      "message": "I put it in an else branch, so it has access to `version`.",
+      "parentUuid": "eebe7cb7_117a6d22",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 2
+      },
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aeae65b8_f3ec6019",
@@ -463,6 +589,24 @@
       "writtenOn": "2022-06-20T06:56:59Z",
       "side": 1,
       "message": "Does it make sense to check the version again and try to restore?",
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6fa6d96_963560d8",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-20T13:29:29Z",
+      "side": 1,
+      "message": "I made a modification, and with this the TLS will do a forced provisioning if there is a version mismatch.",
+      "parentUuid": "aeae65b8_f3ec6019",
       "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
