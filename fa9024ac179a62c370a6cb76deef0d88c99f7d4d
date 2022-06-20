@@ -343,6 +343,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1dae33a7_7c699a74",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-06-20T13:34:59Z",
+      "side": 1,
+      "message": "\"ensures that the DUT stays on initially provisioned test image\"?",
+      "parentUuid": "03314f4a_56fd13f3",
+      "range": {
+        "startLine": 20,
+        "startChar": 90,
+        "endLine": 20,
+        "endChar": 105
+      },
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a38afc91_c0feee42",
         "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
         "patchSetId": 2
@@ -607,6 +631,24 @@
       "side": 1,
       "message": "I made a modification, and with this the TLS will do a forced provisioning if there is a version mismatch.",
       "parentUuid": "aeae65b8_f3ec6019",
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2447f0b_3bf942ea",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-06-20T13:34:59Z",
+      "side": 1,
+      "message": "nit: add a comment/link to code so it\u0027s clear",
+      "parentUuid": "f6fa6d96_963560d8",
       "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
