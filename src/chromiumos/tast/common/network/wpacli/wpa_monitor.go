@@ -69,6 +69,13 @@ type P2PGroupStartedEvent struct {
 type ScanResultsEvent struct {
 }
 
+// ANQPQueryDoneEvent defines data of ANQP-QUERY-DONE event.
+type ANQPQueryDoneEvent struct {
+	Addr    string
+	Success bool
+	Result  string
+}
+
 // WPAMonitor holds internal context of the WPA monitor.
 type WPAMonitor struct {
 	stdin         io.WriteCloser
@@ -167,6 +174,16 @@ var eventDefs = []eventDef{
 			return new(ScanResultsEvent), nil
 		},
 	},
+	{
+		regexp.MustCompile(`ANQP-QUERY-DONE addr=([\da-fA-F:]+) result=([A-Z_]+)`),
+		func(matches []string) (SupplicantEvent, error) {
+			return &ANQPQueryDoneEvent{
+				Addr:    matches[1],
+				Success: matches[2] == "SUCCESS",
+				Result:  matches[2],
+			}, nil
+		},
+	},
 }
 
 // ToLogString formats the event data to string suitable for logging.
@@ -193,6 +210,11 @@ func (e *ConnectedEvent) ToLogString() string {
 
 // ToLogString formats the event data to string suitable for logging.
 func (e *P2PGroupStartedEvent) ToLogString() string {
+	return fmt.Sprintf("%+v\n", e)
+}
+
+// ToLogString formats the event data to string suitable for logging.
+func (e *ANQPQueryDoneEvent) ToLogString() string {
 	return fmt.Sprintf("%+v\n", e)
 }
 

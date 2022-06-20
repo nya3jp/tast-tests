@@ -5,8 +5,10 @@
 package wpacli
 
 import (
+	"bufio"
 	"context"
 	"fmt"
+	"net"
 	"regexp"
 	"strconv"
 	"strings"
@@ -173,8 +175,8 @@ func (r *Runner) statusMap(ctx context.Context, iface string) (map[string]string
 	return statusMap, nil
 }
 
-// scan requests new BSS scan.
-func (r *Runner) scan(ctx context.Context) error {
+// Scan requests new BSS scan.
+func (r *Runner) Scan(ctx context.Context) error {
 	return r.run(ctx, "OK", "scan")
 }
 
@@ -237,7 +239,7 @@ func (r *Runner) DiscoverNetwork(ctx context.Context, dutConn *ssh.Conn, ssid st
 
 	const waitForScanResultsTimeout = 10 * time.Second
 	scanOnce := func(ctx context.Context, ssid string) error {
-		if err := r.scan(ctx); err != nil {
+		if err := r.Scan(ctx); err != nil {
 			// Don't fail if the scan command failed due to the radio being busy.
 			if !strings.Contains(fmt.Sprint(err), "FAIL-BUSY") {
 				return errors.Wrap(err, "failed to trigger scan")
@@ -320,4 +322,67 @@ func (r *Runner) P2PAddGONetwork(ctx context.Context, ssid, passphrase string) e
 	}
 
 	return nil
+}
+
+func (r *Runner) fetchANQP(ctx context.Context) error {
+	return r.run(ctx, "OK", "fetch_anqp")
+}
+
+// FetchANQP triggers ANQP request for each compatible BSS found during the last scan.
+func (r *Runner) FetchANQP(ctx context.Context, dutConn *ssh.Conn, bssid string) error {
+	const wpaMonitorStopTimeout = 2 * time.Second
+	wpaMonitor := new(WPAMonitor)
+	stop, ctx, err := wpaMonitor.StartWPAMonitor(ctx, dutConn, wpaMonitorStopTimeout)
+	if err != nil {
+		return errors.Wrap(err, "failed to start wpa monitor")
+	}
+	defer stop()
+
+	if err := r.fetchANQP(ctx); err != nil {
+		return errors.Wrap(err, "failed to trigger ANQP fetch")
+	}
+
+	const waitForANQPQueryDoneTimeout = 30 * time.Second
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		event, err := wpaMonitor.WaitForEvent(ctx)
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to wait for ANQPQueryDoneEvent"))
+		}
+		if event == nil { // timeout
+			return testing.PollBreak(errors.New("timed out waiting for ANQPQueryDoneEvent"))
+		}
+		e, ok := event.(*ANQPQueryDoneEvent)
+		if !ok {
+			return errors.New("no ANQPQueryDoneEvent found")
+		}
+		if e.Addr != bssid {
+			return errors.New("ANQPQueryDoneEvent for another BSSID")
+		}
+		if !e.Success {
+			return testing.PollBreak(errors.Errorf("ANQP query failed: %v", e))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: waitForANQPQueryDoneTimeout}); err != nil {
+		return err
+	}
+	return nil
+}
+
+// BSS fetches from wpa_supplicant all the known information about a given BSSID.
+func (r *Runner) BSS(ctx context.Context, addr net.HardwareAddr) (map[string]string, error) {
+	cmdOut, err := r.cmd.Output(ctx, "sudo", sudoWPACLI("bss", addr.String())...)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed running wpa_cli 'bss %s'", addr)
+	}
+
+	bss := make(map[string]string)
+	s := bufio.NewScanner(strings.NewReader(string(cmdOut)))
+	for s.Scan() {
+		line := s.Text()
+		if strings.Contains(line, "=") {
+			elems := strings.Split(line, "=")
+			bss[elems[0]] = elems[1]
+		}
+	}
+	return bss, nil
 }
