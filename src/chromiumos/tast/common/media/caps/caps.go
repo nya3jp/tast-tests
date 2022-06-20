@@ -88,16 +88,19 @@ const (
 	// Video Encoding
 	HWEncodeH264    = Prefix + "hw_enc_h264_1080_30"
 	HWEncodeH264_4K = Prefix + "hw_enc_h264_2160_30"
+	HWEncodeH264VBR = Prefix + "hw_enc_h264_vbr"
 	// TODO: add here HWEncodeH264OddDimension when video.EncodeAccel has a test
 	// exercising odd-dimension encoding.
 
 	HWEncodeVP8             = Prefix + "hw_enc_vp8_1080_30"
 	HWEncodeVP8_4K          = Prefix + "hw_enc_vp8_2160_30"
 	HWEncodeVP8OddDimension = Prefix + "hw_enc_vp8_odd_dimension"
+	HWEncodeVP8VBR          = Prefix + "hw_enc_vp8_vbr"
 
 	HWEncodeVP9             = Prefix + "hw_enc_vp9_1080_30"
 	HWEncodeVP9_4K          = Prefix + "hw_enc_vp9_2160_30"
 	HWEncodeVP9OddDimension = Prefix + "hw_enc_vp9_odd_dimension"
+	HWEncodeVP9VBR          = Prefix + "hw_enc_vp9_vbr"
 
 	// JPEG Encoding
 	HWEncodeJPEG = Prefix + "hw_enc_jpeg"
