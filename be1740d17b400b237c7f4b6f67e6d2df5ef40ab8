@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "307118c0_187feb11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-21T06:35:13Z",
+      "side": 1,
+      "message": "thanks!",
+      "revId": "be1740d17b400b237c7f4b6f67e6d2df5ef40ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda26014_eeb06df1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/gamepad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-21T06:35:13Z",
+      "side": 1,
+      "message": "nit:\nIf the flag is false, computing the diff is unnecessary.\ncan we check the flag first and then compute the diff if necessary, although it increases the indentation?",
+      "revId": "be1740d17b400b237c7f4b6f67e6d2df5ef40ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
