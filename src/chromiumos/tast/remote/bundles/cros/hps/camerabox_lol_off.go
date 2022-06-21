@@ -33,7 +33,7 @@ func init() {
 			"chromeos-hps-swe@google.com",
 		},
 		Attr:         []string{"group:camerabox", "group:hps", "hps_perbuild"},
-		Timeout:      6 * time.Minute,
+		Timeout:      10 * time.Minute,
 		SoftwareDeps: []string{"hps", "chrome", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.browser.ChromeService", "tast.cros.hps.HpsService"},
 		Vars:         []string{"tablet", "grpcServerPort"},
