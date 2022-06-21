@@ -33,6 +33,24 @@
       "message": "super nit: We could probably do\n\n  if (*tconn !\u003d *bTconn)\n\nPassing `bt` feels a bit extra work.",
       "revId": "deddf3d8e3b812f2962f52e43444189e93f7cd87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd0b14c9_354727ed",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-21T20:57:19Z",
+      "side": 1,
+      "message": "Yes, this is what we usually do.",
+      "parentUuid": "1f0d5849_d858e78a",
+      "revId": "deddf3d8e3b812f2962f52e43444189e93f7cd87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
