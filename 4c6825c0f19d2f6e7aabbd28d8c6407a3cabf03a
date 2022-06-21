@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c61723f1_67589c9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-06-21T17:30:49Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "4c6825c0f19d2f6e7aabbd28d8c6407a3cabf03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f2b6fb_a699b3d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-06-21T17:30:49Z",
+      "side": 1,
+      "message": "nit: lacros_pin_and_unpin_unstable",
+      "range": {
+        "startLine": 90,
+        "startChar": 10,
+        "endLine": 90,
+        "endChar": 25
+      },
+      "revId": "4c6825c0f19d2f6e7aabbd28d8c6407a3cabf03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
