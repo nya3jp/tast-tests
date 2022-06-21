@@ -16,6 +16,46 @@
       "message": "+tast-owners@ for tast review, thanks!",
       "revId": "310c15ea1e98dcac841c234dc4acd87bbb3f90e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e001898a_aac30bec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-06-21T17:39:33Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "310c15ea1e98dcac841c234dc4acd87bbb3f90e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a704d900_cda51d4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-06-21T17:39:33Z",
+      "side": 1,
+      "message": "nit: assuming this is HHMMSS.MS, I would use:\n\n  \"235959:9999\"",
+      "range": {
+        "startLine": 256,
+        "startChar": 55,
+        "endLine": 256,
+        "endChar": 61
+      },
+      "revId": "310c15ea1e98dcac841c234dc4acd87bbb3f90e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
