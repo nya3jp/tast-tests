@@ -67,6 +67,24 @@
       "message": "Hi David/Avery,\n\nCan you please share the CQ logs?",
       "revId": "b0261eae7ab913c183c7940c170ddd954a0a4a52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c6408ec_dece0884",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-21T16:40:26Z",
+      "side": 1,
+      "message": "Two brya builds broke which I don\u0027t believe was related to your CL. Can you rebase and resubmit?",
+      "parentUuid": "8c1c7bf3_6387061d",
+      "revId": "b0261eae7ab913c183c7940c170ddd954a0a4a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
