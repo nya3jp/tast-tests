@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa927dc0_3baa66e5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-21T21:06:04Z",
+      "side": 1,
+      "message": "It seems like we might want another input here, something like `optionName`. If I\u0027m understanding the checked/unchecked/mixed states correctly, it seems like this function currently either selects or unselects every option in the checkbox at once. I think what we\u0027re really after is a function that can manipulate a single option in the checkbox. Is this feasible?\n\nEither that or I\u0027m not understanding this completely. What does it mean to left click an entire checkbox?",
+      "range": {
+        "startLine": 278,
+        "startChar": 5,
+        "endLine": 278,
+        "endChar": 21
+      },
+      "revId": "b7204bed74961cb383cab6fb8baedf59d2346e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ce6898_d2ec579c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-21T21:06:04Z",
+      "side": 1,
+      "message": "Can we just add this to the uiauto.Combine statement on line 302 and change that action\u0027s description to \"find and left click checkbox\"? If not, and this check needs to be performed first, then let\u0027s at least get rid of the uiauto.Combine statement here since we\u0027re only performing a single action.",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 58
+      },
+      "revId": "b7204bed74961cb383cab6fb8baedf59d2346e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
