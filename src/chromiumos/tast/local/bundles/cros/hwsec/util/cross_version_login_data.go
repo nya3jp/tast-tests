@@ -310,7 +310,6 @@ func createChallengeResponseData(ctx context.Context, lf LogFunc, cryptohome *hw
 
 func createPasswordData(ctx context.Context, cryptohome *hwsec.CryptohomeClient, supportsLE bool) (*CrossVersionLoginConfig, error) {
 	const (
-		keyLabel   = "legacy-0"
 		extraPass  = "extraPass"
 		extraLabel = "extraLabel"
 		pin        = "123456"
@@ -324,8 +323,17 @@ func createPasswordData(ctx context.Context, cryptohome *hwsec.CryptohomeClient,
 	cr.Close(ctx)
 	username := cr.Creds().User
 	password := cr.Creds().Pass
+
+	labels, err := cryptohome.ListVaultKeys(ctx, username)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to list key label")
+	}
+	if len(labels) != 1 {
+		return nil, errors.Errorf("expected exactly 1 label, but got %v", labels)
+	}
+
 	authConfig := hwsec.NewPassAuthConfig(username, password)
-	config := NewPassAuthCrossVersionLoginConfig(authConfig, keyLabel)
+	config := NewPassAuthCrossVersionLoginConfig(authConfig, labels[0])
 	if err := config.AddVaultKeyData(ctx, cryptohome, NewVaultKeyInfo(extraPass, extraLabel, false)); err != nil {
 		return nil, errors.Wrap(err, "failed to add vault key data of password")
 	}
