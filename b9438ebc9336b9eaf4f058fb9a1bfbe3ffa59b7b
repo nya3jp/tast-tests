@@ -46,6 +46,29 @@
       },
       "revId": "b9438ebc9336b9eaf4f058fb9a1bfbe3ffa59b7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c87d5f_935f69ba",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2022-06-21T18:02:05Z",
+      "side": 1,
+      "message": "this order is guaranteed?  seems pretty fragile",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 26
+      },
+      "revId": "b9438ebc9336b9eaf4f058fb9a1bfbe3ffa59b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
