@@ -13,7 +13,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -42,11 +41,6 @@ func init() {
 
 // PlatformV4L2 runs v4l2-compliance binary test.
 func PlatformV4L2(ctx context.Context, s *testing.State) {
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to stop ui job: ", err)
-	}
-	defer upstart.EnsureJobRunning(ctx, "ui")
-
 	command := s.Param().([]string)
 
 	s.Log("Running ", shutil.EscapeSlice(command))

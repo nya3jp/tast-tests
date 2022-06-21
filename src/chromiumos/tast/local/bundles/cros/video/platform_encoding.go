@@ -26,7 +26,6 @@ import (
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/power"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -811,11 +810,6 @@ func init() {
 // is decompressed using testParam.decoder so that it can be compared with the
 // original YUV file.
 func PlatformEncoding(ctx context.Context, s *testing.State) {
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to stop ui job: ", err)
-	}
-	defer upstart.EnsureJobRunning(ctx, "ui")
-
 	testOpt := s.Param().(testParam)
 
 	yuvFile, err := encoding.PrepareYUV(ctx, s.DataPath(testOpt.filename), videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
