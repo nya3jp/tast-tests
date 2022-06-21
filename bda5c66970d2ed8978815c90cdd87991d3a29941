@@ -33,6 +33,24 @@
       "message": "Could you move this to services/cros/ui package?\nI don\u0027t think chrome package would like to depend on it.",
       "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab07231_785c1966",
+        "filename": "src/chromiumos/tast/local/chrome/options_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-21T01:41:51Z",
+      "side": 1,
+      "message": "The code was originally in the services/cros/ui package, but I moved it here because it was untestable in there. This is the comment that used to be in the code which I was resolving.\n\n// TODO(jonfan): Find a creative way to unit test this function. The underlying object Config and MutableConfig are private. chrome.Option are callback functions that work on Config, and they cannot be compared easily without having access to Config or its Mock Interface.",
+      "parentUuid": "3e6d5356_5109a80e",
+      "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
