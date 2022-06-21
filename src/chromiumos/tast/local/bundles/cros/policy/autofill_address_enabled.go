@@ -169,8 +169,8 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 				ui := uiauto.New(tconn)
 
 				if err := uiauto.Combine("open the add address dialog",
-					ui.LeftClick(nodewith.Name("Add address").Role(role.Button)),
-					ui.WaitUntilExists(nodewith.Name("Save").Role(role.Button)),
+					ui.WithTimeout(45*time.Second).LeftClick(nodewith.Name("Add").Role(role.Button)),
+					ui.WithTimeout(45*time.Second).WaitUntilExists(nodewith.Name("Save").Role(role.Button)),
 				)(ctx); err != nil {
 					s.Fatal("Failed to open the add address dialog: ", err)
 				}
