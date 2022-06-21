@@ -164,7 +164,12 @@ func TestOutput(t *gotesting.T) {
 }
 
 func TestGetWaitStatus(t *gotesting.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
 	err28 := exec.Command("sh", "-c", "exit 28").Run()
+	_, err65 := CommandContext(ctx, "sh", "-c", "exit 65").Output()
+	_, _, err09 := CommandContext(ctx, "sh", "-c", "exit 9").SeparatedOutput()
+	_, err42 := CommandContext(ctx, "sh", "-c", "exit 42").CombinedOutput()
 
 	for _, c := range []struct {
 		err  error
@@ -173,6 +178,9 @@ func TestGetWaitStatus(t *gotesting.T) {
 	}{
 		{nil, 0, true},
 		{err28, 28, true},
+		{err65, 65, true},
+		{err09, 9, true},
+		{err42, 42, true},
 		{errors.New("foo"), 0, false},
 	} {
 		status, ok := GetWaitStatus(c.err)
@@ -187,6 +195,9 @@ func TestExitCode(t *gotesting.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	err28 := exec.Command("sh", "-c", "exit 28").Run()
+	_, err65 := CommandContext(ctx, "sh", "-c", "exit 65").Output()
+	_, _, err09 := CommandContext(ctx, "sh", "-c", "exit 9").SeparatedOutput()
+	_, err42 := CommandContext(ctx, "sh", "-c", "exit 42").CombinedOutput()
 	killed := CommandContext(ctx, "sleep", "3s")
 	if err := killed.Start(); err != nil {
 		t.Fatal("Failed to start a process: ", err)
@@ -203,6 +214,9 @@ func TestExitCode(t *gotesting.T) {
 	}{
 		{nil, 0, true},
 		{err28, 28, true},
+		{err65, 65, true},
+		{err09, 9, true},
+		{err42, 42, true},
 		{errKilled, 128 + 9 /* SIGKILL */, true},
 		{errors.New("foo"), 0, false},
 	} {

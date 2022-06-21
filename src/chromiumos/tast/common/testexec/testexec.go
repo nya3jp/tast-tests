@@ -10,7 +10,7 @@
 // rewriting imports should work. In addition, several methods are available,
 // such as Kill and DumpLog.
 //
-// Features
+// # Features
 //
 // Automatic log collection. os/exec sends stdout/stderr to /dev/null unless
 // explicitly specified to collect them. This default behavior makes it very
@@ -24,10 +24,10 @@
 //
 // Usage
 //
-//  cmd := testexec.CommandContext(ctx, "some", "external", "command")
-//  if err := cmd.Run(testexec.DumpLogOnError); err != nil {
-//      return err
-//  }
+//	cmd := testexec.CommandContext(ctx, "some", "external", "command")
+//	if err := cmd.Run(testexec.DumpLogOnError); err != nil {
+//	    return err
+//	}
 package testexec
 
 import (
@@ -395,7 +395,8 @@ func GetWaitStatus(err error) (status syscall.WaitStatus, ok bool) {
 	if err == nil {
 		return 0, true
 	}
-	errExit, ok := err.(*exec.ExitError)
+	var errExit *exec.ExitError
+	ok = errors.As(err, &errExit)
 	if !ok {
 		return 0, false
 	}
