@@ -69,6 +69,24 @@
       "parentUuid": "bab07231_785c1966",
       "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df8f8408_a7cdf197",
+        "filename": "src/chromiumos/tast/local/chrome/options_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-21T03:11:24Z",
+      "side": 1,
+      "message": "IMO, a wrapper struct is also a hacky solution to this that avoids the underlying problem.\n\nIs there any reason why chrome.NewConfig / chrome.Config needs to be internal? There\u0027s nothing dangerous you can do with it, as it only contains getters (MutableConfig is a separate type).",
+      "parentUuid": "8773b191_9b779d81",
+      "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
