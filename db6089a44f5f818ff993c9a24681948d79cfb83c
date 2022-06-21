@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "139ed2e7_42586719",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-06-21T18:42:11Z",
+      "side": 1,
+      "message": "Should this come before the `return nil, err` on the line above? Otherwise it won\u0027t handle the case where `stopDaemons` returns an error. It looks like `stopDaemons` could fail for a couple reasons and calling `restoreDaemons` likely also won\u0027t work, but doesn\u0027t seem like it would hurt to try.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "db6089a44f5f818ff993c9a24681948d79cfb83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
