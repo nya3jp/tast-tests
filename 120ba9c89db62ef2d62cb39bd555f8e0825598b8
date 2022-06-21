@@ -114,6 +114,30 @@
       },
       "revId": "120ba9c89db62ef2d62cb39bd555f8e0825598b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71c57ed7_cbf5dfe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-21T20:28:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8b6e61f8_e4020506",
+      "range": {
+        "startLine": 354,
+        "startChar": 2,
+        "endLine": 354,
+        "endChar": 27
+      },
+      "revId": "120ba9c89db62ef2d62cb39bd555f8e0825598b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
