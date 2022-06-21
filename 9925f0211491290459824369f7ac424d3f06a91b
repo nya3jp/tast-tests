@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b1974e_ff57abb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-06-21T23:04:39Z",
+      "side": 1,
+      "message": "keep it \u003c80 chars",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 106
+      },
+      "revId": "9925f0211491290459824369f7ac424d3f06a91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92770f90_c9bd23fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-06-21T23:04:39Z",
+      "side": 1,
+      "message": "do we plan on having the feedback app displayed in the launcher? Or should we instead press the shortcut to have it appear",
+      "revId": "9925f0211491290459824369f7ac424d3f06a91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
