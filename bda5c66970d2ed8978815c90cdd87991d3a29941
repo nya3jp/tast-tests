@@ -51,6 +51,24 @@
       "parentUuid": "3e6d5356_5109a80e",
       "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8773b191_9b779d81",
+        "filename": "src/chromiumos/tast/local/chrome/options_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-21T02:30:05Z",
+      "side": 1,
+      "message": "I see. So it\u0027s a limitation of function.\nHow about switching it to wrapper struct?\nActually, we were thinking to do so for sharing the args with lacros.\nFYI: edcourtney@, hyungtaekim@, neis@.",
+      "parentUuid": "bab07231_785c1966",
+      "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
