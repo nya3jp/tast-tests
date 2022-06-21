@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "332d30a9_79a3cf98",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-21T20:29:44Z",
+      "side": 1,
+      "message": "The cleanup function does not need to reconnect - that is taken care of by the main body of the test.\n\nHowever, the cleanup function may run in three states (1) test failed so early that the original connection is still available, (2) connection lost, not able to reconnect, and (3) reconnected successfully.",
+      "parentUuid": "0431e230_69956dee",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa76a5f5_14caf81e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2022-06-20T05:07:15Z",
       "side": 1,
       "message": "could you keep err?",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b52e2a_3c781f86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-21T20:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa76a5f5_14caf81e",
       "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c93b4fd_3cfc953d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-21T20:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7471c39c_4a31300d",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61a48e55_073b479d",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-06-20T05:07:15Z",
       "side": 1,
       "message": "nit: const",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a8a390_1b85d9d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-21T20:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61a48e55_073b479d",
       "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +178,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2f2ae40_66e10ba7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-21T20:29:44Z",
+      "side": 1,
+      "message": "I tried it, but executing nohup directly does not work. I\u0027m not sure why.",
+      "parentUuid": "35f6e2a2_44042366",
+      "range": {
+        "startLine": 99,
+        "startChar": 40,
+        "endLine": 99,
+        "endChar": 51
+      },
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc0ff602_8102a20f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
         "patchSetId": 2
@@ -111,6 +213,24 @@
       "writtenOn": "2022-06-20T05:07:15Z",
       "side": 1,
       "message": "const",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d65fa4_1cadfb4a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-21T20:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc0ff602_8102a20f",
       "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -134,6 +254,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9de93519_5d1847da",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-21T20:29:44Z",
+      "side": 1,
+      "message": "Yes, it is identical. The entire file is mostly identical - I made a copy of kernel_crash.go and changed just a few parts.\n\nGiven that these are tests, I think that it is good for them to be independent, unless we want to specifically assert that the two signatures are expected to be identical. In this case there is no requirement for the signatures to be identical.",
+      "parentUuid": "7f88b31e_9401104e",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4b68f1a_23a027dd",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
         "patchSetId": 2
@@ -145,6 +283,24 @@
       "writtenOn": "2022-06-20T05:07:15Z",
       "side": 1,
       "message": "could you move this out from the loop not to do for each?\nDitto for below.",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1480adfd_533739eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-21T20:29:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4b68f1a_23a027dd",
       "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
