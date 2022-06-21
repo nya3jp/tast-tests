@@ -42,6 +42,9 @@ func init() {
 
 // PlatformV4L2 runs v4l2-compliance binary test.
 func PlatformV4L2(ctx context.Context, s *testing.State) {
+	// Test doesn't use the graphicsNoChrome fixture since the driver may
+	// write errors to the kernel logs which are picked up by the GPU
+	// watchdog.
 	if err := upstart.StopJob(ctx, "ui"); err != nil {
 		s.Fatal("Failed to stop ui job: ", err)
 	}

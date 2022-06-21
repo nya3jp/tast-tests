@@ -14,7 +14,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/video/videovars"
 	"chromiumos/tast/local/chrome"
@@ -26,7 +25,6 @@ import (
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/sysutil"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 )
@@ -141,20 +139,12 @@ func codecProfileToEncodeCodecOption(profile videotype.CodecProfile) (string, er
 }
 
 // RunAccelVideoTest runs all tests in video_encode_accelerator_tests.
-func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestOptions) {
+func RunAccelVideoTest(ctx context.Context, s *testing.State, opts TestOptions) {
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		s.Fatal("Failed to set values for verbose logging")
 	}
 	defer vl.Close()
-
-	ctx, cancel := ctxutil.Shorten(ctxForDefer, 10*time.Second)
-	defer cancel()
-
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		s.Error("Failed to stop ui: ", err)
-	}
-	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	yuvPath, err := encoding.PrepareYUV(ctx, s.DataPath(opts.webMName),
 		videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
@@ -222,7 +212,7 @@ func RunAccelVideoTest(ctxForDefer context.Context, s *testing.State, opts TestO
 // This is used to measure cpu usage and power consumption in the practical case.
 // - Quality performance: the specified test video is encoded for 300 frames and computes the SSIM and PSNR metrics of the encoded stream.
 // - Multiple concurrent performance: the specified test video is encoded with multiple concurrent encoders as fast as possible.
-func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts TestOptions) error {
+func RunAccelVideoPerfTest(ctx context.Context, s *testing.State, opts TestOptions) error {
 	const (
 		// Name of the uncapped performance test.
 		uncappedTestname = "MeasureUncappedPerformance"
@@ -236,19 +226,12 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 		exec = "video_encode_accelerator_perf_tests"
 	)
 
-	ctx, cancel := ctxutil.Shorten(ctxForDefer, 10*time.Second)
-	defer cancel()
 	// Setup benchmark mode.
 	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to set up benchmark mode")
 	}
 	defer cleanUpBenchmark(ctx)
-
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		s.Error("Failed to stop ui: ", err)
-	}
-	defer upstart.EnsureJobRunning(ctx, "ui")
 
 	yuvPath, err := encoding.PrepareYUV(ctx, s.DataPath(opts.webMName),
 		videotype.I420, coords.NewSize(0, 0) /* placeholder size */)
