@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72fb4312_49520d24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-21T20:53:58Z",
+      "side": 1,
+      "message": "The first check I linked is active today, and logs an error to /var/log/messages if additional requests come in after the test case is finished. This behavior exists today. We could also log those error messages to our log file if we wanted to. Otherwise yes, the changes I proposed would log some output to the log file when the test case finishes.\n\nOnce we settle on an approach, I figured it would be clearer to implement that in a follow-up CL, although we could hold off on this CL, make the virtual USB printer changes necessary and then update this CL if you\u0027d rather. Let me know!",
+      "parentUuid": "dab31e9b_9734ce20",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e9e5ccc_989590f5",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
         "patchSetId": 4
@@ -226,6 +244,24 @@
       "side": 1,
       "message": "If we think tast isn\u0027t capturing the correct process exit code, that does seem like something that should be fixed in the framework.  However, exit codes on Linux can be a little tricky because they also encode things like whether the process received a signal.  Do you get the expected exit code if you call testexec.GetWaitStatus directly?",
       "parentUuid": "7a92caa4_16b8da4d",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1c9b749_4db24295",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-21T20:53:58Z",
+      "side": 1,
+      "message": "Unfortunately not - the `ok` bool returned by testexec.GetWaitStatus is false.",
+      "parentUuid": "a161fde7_349c04f3",
       "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
