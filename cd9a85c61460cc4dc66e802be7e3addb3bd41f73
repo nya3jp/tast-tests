@@ -33,6 +33,24 @@
       "message": "https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2022-06-07\u0026last_date\u003d2022-06-20\u0026test\u003dcrostini.*%28%28Basic%29%7C%28Crash%29%7C%28GPU%29%7C%28Home%29%7C%28LaunchBrowser%29%7C%28LaunchTerminal%29%7C%28NoSharedFolder%29%7C%28Notify%29%7C%28PackageInfo%29%7C%28PackageInstallUninstall%29%7C%28SecureCopyPaste%29%7C%28SharedFontFiles%29%7C%28SSHFSMount%29%7C%28UninstallInvalidApp%29%7C%28Xattrs%29%29.*_stable%24\u0026build\u003d%28%28R104%29%7C%28R105%29%29-%5Cd%2B%5C.0%5C.0\u0026exclude_model\u003dlars%7Ccave%7Cchell%7Ckano%7Cvolmar%7Cprimus%7Ccaroline%7Ccerise%7Ctaniks%7Cgimble%7Credrix%7Cvolteer2%7Celdrid%7Cezkinil%7Cgumboz%7Cvilboz14\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\n\nthe tests listed in the CL are all in good shape, the only failures are known flake for all Tast tests (including the critical ones).\n",
       "revId": "cd9a85c61460cc4dc66e802be7e3addb3bd41f73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08517d67_0302358c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-06-21T01:47:12Z",
+      "side": 1,
+      "message": "Been a few days collecting data now and Alvin\u0027s had a look and confirmed they\u0027re sufficiently stable (see his comment when approving) so going to submit this now. Please let me know if you have any more concerns.",
+      "parentUuid": "1fe7df80_f724a512",
+      "revId": "cd9a85c61460cc4dc66e802be7e3addb3bd41f73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
