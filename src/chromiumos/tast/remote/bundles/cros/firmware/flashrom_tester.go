@@ -77,15 +77,12 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 		text := stdoutSc.Text()
 		s.Logf("Tester output: %s", text)
 
-		// Check for failing subtests i.e. check if the tester printed
-		// a line containing a subtest result the result wasn't a pass.
-		// Example tester reesults:
+		// Find output lines that contain a non-passing subtest result
+		// Example subtest results:
 		//    <+> Lock_top_quad test: Pass
 		//    <+> Lock_bottom_quad test: Fail
-
 		if strings.Contains(text, subtestResultPrefix) && !strings.Contains(text, subtestPass) {
-			s.Fatal("Failed subtest: ", text)
-
+			s.Error(text)
 		}
 
 		// Change HWWP when prompted by the tester
@@ -112,7 +109,5 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 				s.Fatal("WriteString() failed: ", err)
 			}
 		}
-
 	}
-
 }
