@@ -222,6 +222,30 @@
       },
       "revId": "2edf9c65c8be3764ec03691ac5a2c69c2e5f0d1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb844c0_2f4b35a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-06-21T23:52:55Z",
+      "side": 1,
+      "message": "You can, and you have to call Wait :)\n\nYou can make this function to return `(cmd *testexec.Cmd, stdout io.Reader, err error)`. Then in the caller:\n\n```\ncmd, stdout, err :\u003d deviceScanner(ctx)\nif err !\u003d nil {\n  ...\n}\ndefer cmd.Wait()\ndefer cmd.Kill()\n\nscanner :\u003d bufio.NewScanner(stdout)\n```",
+      "parentUuid": "099e362f_d3171439",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 4
+      },
+      "revId": "2edf9c65c8be3764ec03691ac5a2c69c2e5f0d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

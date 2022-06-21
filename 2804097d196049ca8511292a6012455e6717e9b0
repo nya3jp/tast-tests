@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7eec57_72a81e18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118346
+      },
+      "writtenOn": "2022-06-21T23:52:55Z",
+      "side": 1,
+      "message": "Hi, sorry I overlooked this change earlier.\n\nSince I\u0027m no longer a Tast reviewer, let me reassign this to tast-owners@ to pick another reviewer.",
+      "revId": "2804097d196049ca8511292a6012455e6717e9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
