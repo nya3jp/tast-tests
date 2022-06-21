@@ -87,6 +87,24 @@
       "parentUuid": "8773b191_9b779d81",
       "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ba1dd3_3bf4707d",
+        "filename": "src/chromiumos/tast/local/chrome/options_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-21T05:58:38Z",
+      "side": 1,
+      "message": "It\u0027s internal implementation details, rather than public API for chrome package.\nWhat cros/ui needs is public API i.e. chrome.Option, so making it testable sounds more reasonable to me. Thoughts?",
+      "parentUuid": "df8f8408_a7cdf197",
+      "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
