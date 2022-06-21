@@ -65,12 +65,6 @@ var prunePaths = []string{
 	"/lib/modules/*/vdso32",
 }
 
-// File match strings which will be ignored when searching for ELF files.
-var ignoreMatches = []string{
-	"libstdc++.so.*",
-	"libgcc_s.so.*",
-}
-
 // Allowed files for the BIND_NOW condition.
 var nowAllowlist = []string{
 	// FIXME: crbug.com/535032
@@ -94,24 +88,6 @@ var textrelAllowlist []string
 var stackAllowlist []string
 
 var loadwxAllowlist []string
-
-// FIXME(b/194115264): re-enable once all pre-built binaries are linked against compiler-rt/libunwind.
-// var libgccAllowlist = []string
-
-var libstdcAllowlist = []string{
-	// Flash player
-	"/opt/google/chrome/pepper/libpepflashplayer.so",
-
-	// Prebuilt hdcp driver binary from Intel.
-	"/usr/sbin/hdcpd",
-	// Prebuilt binaries installed by Intel Camera HAL on kabylake boards.
-	"/usr/lib64/libSkyCamAIC.so",
-	"/usr/lib64/libSkyCamAICKBL.so",
-	// Part of prebuilt driver binary used in Tegra boards.
-	"/usr/lib/libnvmmlite_video.so",
-	// Allowed in b/73422412.
-	"/opt/google/rta/rtanalytics_main",
-}
 
 func loadDLCs(ctx context.Context) error {
 	criticalDLCs := []string{"pita"}
@@ -158,15 +134,6 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 	// Condition: Verify no binaries have W+X LOAD program headers.
 	conds = append(conds, toolchain.NewELFCondition(toolchain.LoadwxVerify, loadwxAllowlist))
 
-	// Condition: Verify all binaries are not linked with libgcc_s.so.
-	// FIXME: re-enable once all pre-built binaries are linked against compiler-rt/libunwind.
-	// libgccVerify := toolchain.CreateNotLinkedVerify("libgcc_s.so*")
-	// conds = append(conds, toolchain.NewELFCondition(libgccVerify, libgccAllowlist))
-
-	// Condition: Verify all binaries are not linked with libstdc++.so.
-	libstdcVerify := toolchain.CreateNotLinkedVerify("libstdc++.so*")
-	conds = append(conds, toolchain.NewELFCondition(libstdcVerify, libstdcAllowlist))
-
 	err := filepath.Walk("/", func(path string, info os.FileInfo, err error) error {
 		if os.IsNotExist(err) {
 			// The file has been removed after listed in the parent directory.
@@ -191,16 +158,6 @@ func ToolchainOptions(ctx context.Context, s *testing.State) {
 		if !info.Mode().IsRegular() || info.Mode()&0111 == 0 {
 			// Skip non-regular and non-executable files.
 			return nil
-		}
-		// Skip ignored files from ignoreMatches.
-		for _, im := range ignoreMatches {
-			m, err := filepath.Match(im, info.Name())
-			if err != nil {
-				s.Fatalf("Could not match %v to %v", path, im)
-			}
-			if m {
-				return nil
-			}
 		}
 
 		ef, err := elf.Open(path)
