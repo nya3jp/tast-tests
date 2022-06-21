@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c45ca5b8_115de29f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-21T19:30:51Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s a good recommendation. I\u0027m not sure how I should place `EncryptionStatusTPMSeedSet` in the comment.",
+      "parentUuid": "ea3a8746_181350e9",
+      "revId": "dfee4f7b8723d2306e89503a03a6b06a8cd350e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8295417_f9badf9f",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-21T19:07:50Z",
       "side": 1,
       "message": "Could you add a comment that the definition comes from `FP_ENC_STATUS_SEED_SET` in [ec_commands.h](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/ec_commands.h;l\u003d7461-7462;drc\u003d85a557651d91dd1ae45483df342f964afb11cb8d)?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 55
+      },
+      "revId": "dfee4f7b8723d2306e89503a03a6b06a8cd350e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "974f2ca1_721c9a54",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-21T19:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8295417_f9badf9f",
       "range": {
         "startLine": 22,
         "startChar": 1,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de4e943b_5d7a995c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-21T19:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b7eb544_139d9cdb",
+      "range": {
+        "startLine": 51,
+        "startChar": 59,
+        "endLine": 51,
+        "endChar": 60
+      },
+      "revId": "dfee4f7b8723d2306e89503a03a6b06a8cd350e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f714809d_d2480496",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-06-21T19:07:50Z",
       "side": 1,
       "message": "IntelliJ says this escape is redundant",
+      "range": {
+        "startLine": 52,
+        "startChar": 45,
+        "endLine": 52,
+        "endChar": 46
+      },
+      "revId": "dfee4f7b8723d2306e89503a03a6b06a8cd350e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d4a193b_05be6631",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-21T19:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f714809d_d2480496",
       "range": {
         "startLine": 52,
         "startChar": 45,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3025484e_9bb6ff2b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-21T19:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dde4cf4_e26f20fc",
+      "range": {
+        "startLine": 10,
+        "startChar": 64,
+        "endLine": 10,
+        "endChar": 76
+      },
+      "revId": "dfee4f7b8723d2306e89503a03a6b06a8cd350e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ece3df0d_f255db5a",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-06-21T19:07:50Z",
       "side": 1,
       "message": "\"example output\"",
+      "range": {
+        "startLine": 31,
+        "startChar": 64,
+        "endLine": 31,
+        "endChar": 76
+      },
+      "revId": "dfee4f7b8723d2306e89503a03a6b06a8cd350e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e26af3b3_19d81ffc",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-21T19:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ece3df0d_f255db5a",
       "range": {
         "startLine": 31,
         "startChar": 64,
