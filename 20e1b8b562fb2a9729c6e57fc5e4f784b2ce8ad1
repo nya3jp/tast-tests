@@ -70,6 +70,24 @@
       "parentUuid": "061dfaa8_e90869f4",
       "revId": "20e1b8b562fb2a9729c6e57fc5e4f784b2ce8ad1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f03f14ac_5202911b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-06-21T04:27:57Z",
+      "side": 1,
+      "message": "The recycling disablement does not seem to be working as expected, see (ran two hours ago):\nhttps://ci.chromium.org/ui/p/chromeos/builders/cq/cq-orchestrator/b8810784447003260289/overview",
+      "parentUuid": "94544e82_f3adb565",
+      "revId": "20e1b8b562fb2a9729c6e57fc5e4f784b2ce8ad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
