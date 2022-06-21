@@ -7,10 +7,13 @@ package notifications
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -23,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         InlineReply,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verify inline reply for Chrome notification works",
 		Contacts: []string{
 			"sun.tsai@cienet.com",
@@ -32,20 +35,34 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "lacros",
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 // InlineReply verifies that inline reply for Chrome notification works.
 func InlineReply(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to set up browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+
 	// TODO(crbug.com/1311030): Update this website with the notification test page when it is fully functional.
-	conn, err := cr.NewConn(ctx, "https://tests.peter.sh/notification-generator")
+	conn, err := br.NewConn(ctx, "https://tests.peter.sh/notification-generator")
 	if err != nil {
 		s.Fatal("Failed to open the web page: ", err)
 	}
@@ -66,7 +83,8 @@ func InlineReply(ctx context.Context, s *testing.State) {
 	permissionBubble := nodewith.Name("tests.peter.sh wants to").HasClass("PermissionPromptBubbleView").Role(role.Window)
 	if err := uiauto.IfSuccessThen(
 		ui.WaitUntilExists(permissionBubble),
-		ui.LeftClick(nodewith.Name("Allow").Ancestor(permissionBubble).Role(role.Button)),
+		// TODO(b/236799853): Use ui.LeftClick after node position mismatching issue is resolved.
+		ui.DoDefault(nodewith.Name("Allow").Ancestor(permissionBubble).Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to allow the notification permission: ", err)
 	}
@@ -100,7 +118,8 @@ func InlineReply(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("send notification",
 		ui.WaitUntilExists(sendBtn), // This is to make sure that the node exists in the UI tree before calling MakeVisible on it.
 		ui.MakeVisible(sendBtn),
-		ui.LeftClick(sendBtn),
+		// TODO(b/236799853): Use ui.LeftClick after node position mismatching issue is resolved.
+		ui.DoDefault(sendBtn),
 	)(ctx); err != nil {
 		s.Fatal("Failed to complete the combined steps: ", err)
 	}
@@ -112,15 +131,15 @@ func InlineReply(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	const replyMsg = "Test reply message"
-	notificationWindow := nodewith.HasClass("ash/message_center/MessagePopup").Role(role.Window)
-	browserWindow := nodewith.Name("Chrome - Notification Generator | Peter.sh").HasClass("BrowserFrame").Role(role.Window)
+	ashNotificationWindow := nodewith.HasClass("ash/message_center/MessagePopup").Role(role.Window)
+	browserNotificationWindow := nodewith.Name("tests.peter.sh says").HasClass("JavaScriptTabModalDialogViewViews").Role(role.Window)
 	if err := uiauto.Combine("send reply",
-		ui.WaitUntilExists(notificationWindow),
-		ui.LeftClick(nodewith.Name("REPLY").Role(role.Button).Ancestor(notificationWindow)),
-		ui.EnsureFocused(nodewith.HasClass("Textfield").Role(role.TextField).Ancestor(notificationWindow)),
+		ui.WaitUntilExists(ashNotificationWindow),
+		ui.LeftClick(nodewith.NameRegex(regexp.MustCompile("(?i)REPLY")).Role(role.Button).Ancestor(ashNotificationWindow)),
+		ui.EnsureFocused(nodewith.HasClass("Textfield").Role(role.TextField).Ancestor(ashNotificationWindow)),
 		kb.TypeAction(replyMsg),
 		kb.AccelAction("Enter"),
-		ui.WaitUntilExists(nodewith.Name(fmt.Sprintf(`Clicked on "Notification title" (action: "0", reply: "%s")`, replyMsg)).Ancestor(browserWindow)),
+		ui.WaitUntilExists(nodewith.Name(fmt.Sprintf(`Clicked on "Notification title" (action: "0", reply: "%s")`, replyMsg)).Ancestor(browserNotificationWindow)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to complete the combined steps: ", err)
 	}
