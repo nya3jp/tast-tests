@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2de3925e_2c8e5fee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/audio_decoder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-06-21T02:45:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f012057b_7df95bd5",
+      "range": {
+        "startLine": 67,
+        "startChar": 22,
+        "endLine": 67,
+        "endChar": 25
+      },
+      "revId": "549339468cf051c1f5f566d6252b0484b6564f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f0ec7f8_85520adc",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-06-17T21:53:31Z",
       "side": 1,
       "message": "interesting, maybe add a parameter to specify if we want a response. \n\nusing `SendTextQueryViaUI` is fine, but we probably want to unify to one way to send the query, whether to expect a response is orthogonal.",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 81
+      },
+      "revId": "549339468cf051c1f5f566d6252b0484b6564f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccbcc0f5_e351e6a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/audio_decoder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-06-21T02:45:25Z",
+      "side": 1,
+      "message": "I agree that we should have a single way to send a text query.\n\nActually I initially considered adding expectResponse option to the private API. But it requires us to add another private API as the API takes callback as its last parameter and we cannot extend the API in a compatible way.\n\nOn second thought, I think that there should be no strong reason to use private API. It\u0027s also better to exercise the launcher UI from test coverage perspective. I added this as a kind of an experiment for this CL. If this approach is stable enough, my plan is to replace the private API one with this UI one.\n\nI filed a bug to track this: b/236655455.",
+      "parentUuid": "1f0ec7f8_85520adc",
       "range": {
         "startLine": 109,
         "startChar": 0,
