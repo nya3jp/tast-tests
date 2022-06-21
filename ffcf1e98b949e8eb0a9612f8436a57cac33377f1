@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f71d435_8afbfc65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-06-21T16:37:43Z",
+      "side": 1,
+      "message": "nit: can we rename this to arcSession",
+      "range": {
+        "startLine": 198,
+        "startChar": 5,
+        "endLine": 198,
+        "endChar": 6
+      },
+      "revId": "ffcf1e98b949e8eb0a9612f8436a57cac33377f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73415776_840e1a91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-06-21T16:37:43Z",
+      "side": 1,
+      "message": "nit: rename to device?",
+      "range": {
+        "startLine": 201,
+        "startChar": 3,
+        "endLine": 201,
+        "endChar": 4
+      },
+      "revId": "ffcf1e98b949e8eb0a9612f8436a57cac33377f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
