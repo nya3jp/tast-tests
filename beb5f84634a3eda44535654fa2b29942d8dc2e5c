@@ -145,6 +145,30 @@
       },
       "revId": "beb5f84634a3eda44535654fa2b29942d8dc2e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48648407_5ae4bac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-06-21T17:26:49Z",
+      "side": 1,
+      "message": "Looks much cleaner now. Thanks!",
+      "parentUuid": "345c39a8_1e6b6799",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 2
+      },
+      "revId": "beb5f84634a3eda44535654fa2b29942d8dc2e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
