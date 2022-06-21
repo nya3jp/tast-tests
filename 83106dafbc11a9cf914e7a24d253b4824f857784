@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03eb8023_e26a05dd",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-21T21:11:09Z",
+      "side": 1,
+      "message": "Is the search box focused whenever the advanced settings dialog is open, regardless of any other actions that have been performed since the dialog was opened? For example, say I opened the advanced settings dialog, then scrolled down and manipulated some specific advanced feature. At that point in time, is the search box still focused? If not, then I don\u0027t like this approach, since this function only works in a specific sequence of events.",
+      "range": {
+        "startLine": 346,
+        "startChar": 73,
+        "endLine": 349,
+        "endChar": 26
+      },
+      "revId": "83106dafbc11a9cf914e7a24d253b4824f857784",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
