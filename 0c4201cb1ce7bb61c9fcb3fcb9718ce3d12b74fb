@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cc06b28_bbf934dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-21T10:47:58Z",
+      "side": 1,
+      "message": "The last link does not work for me. From what I see in the Tast , lacros window does not have \"Add address\" button, but has \"Add\" button. Maybe this is a problem?\n\nanother problem is that you are trying to take a screenshot and dump UI tree after closing the browser.",
+      "parentUuid": "08a6e312_97893b69",
+      "revId": "0c4201cb1ce7bb61c9fcb3fcb9718ce3d12b74fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23469cc9_8fc9f146",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
         "patchSetId": 1
