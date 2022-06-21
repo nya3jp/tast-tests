@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86dccc73_91490c3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-21T04:34:03Z",
+      "side": 1,
+      "message": "LGTM with comment.",
+      "revId": "29b3b47cd3eb0c163d0bd82576720ead7feed473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc1bad6d_e58bae9f",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint_encryption.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-21T04:34:03Z",
+      "side": 1,
+      "message": "sorry, I should be clearer. Set() looks setter function, so IsSet can be readable (as an exception... hmm...).",
+      "range": {
+        "startLine": 26,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "29b3b47cd3eb0c163d0bd82576720ead7feed473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
