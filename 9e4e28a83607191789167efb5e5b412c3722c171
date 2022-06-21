@@ -34,6 +34,24 @@
       "parentUuid": "4d5b47d8_9464ca70",
       "revId": "9e4e28a83607191789167efb5e5b412c3722c171",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2292641f_15c1c6a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-21T00:13:30Z",
+      "side": 1,
+      "message": "as discussed offline, keeping the kernelnext boards critical.",
+      "parentUuid": "d9758571_5542dfb6",
+      "revId": "9e4e28a83607191789167efb5e5b412c3722c171",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
