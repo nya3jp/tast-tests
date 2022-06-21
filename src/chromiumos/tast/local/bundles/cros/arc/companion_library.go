@@ -81,7 +81,6 @@ var generalTests = []companionLibTestEntry{
 	{"Window State", mainActivity, testWindowState},
 	{"Workspace Insets", mainActivity, testWorkspaceInsets},
 	{"Caption Button", mainActivity, testCaptionButton},
-	{"Device Mode", mainActivity, testDeviceMode},
 	{"Caption Height", mainActivity, testCaptionHeight},
 	{"Maximize App-controlled Window", mainActivity, testMaximize},
 	{"Always on Top Window State", mainActivity, testAlwaysOnTop},
@@ -94,6 +93,12 @@ var arcPOnlyTests = []companionLibTestEntry{
 	{"Window Bound", mainActivity, testWindowBounds},
 	// TODO(sstan): Add unresizable activity sub-test for ARC R.
 	{"Window Bound for Unresizable Activity", unresizableMainActivity, testWindowBounds},
+}
+
+// Device mode changed by tast test will not cause the display mode change sometimes,
+// so move it to unstable tests.
+var unstableTests = []companionLibTestEntry{
+	{"Device Mode", mainActivity, testDeviceMode},
 }
 
 func init() {
@@ -116,6 +121,10 @@ func init() {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val:               generalTests,
+		}, {
+			Name:              "vm_unstable",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               append(generalTests, unstableTests...),
 		}},
 	})
 }
