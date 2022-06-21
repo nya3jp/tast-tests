@@ -16,6 +16,23 @@
       "message": "Thank you!",
       "revId": "ccf15a53721ab84da30554200cd8fd6ac1987d9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a04717f_21e5af3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-06-21T03:18:09Z",
+      "side": 1,
+      "message": "@xiaohuic: PTAL. This CL requires a CR+2.",
+      "revId": "ccf15a53721ab84da30554200cd8fd6ac1987d9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
