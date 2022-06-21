@@ -93,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd5494d0_6a80d479",
+        "filename": "src/chromiumos/tast/common/fixture/autoupdate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-21T14:49:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08557ee1_8348d60e",
+      "range": {
+        "startLine": 9,
+        "startChar": 74,
+        "endLine": 9,
+        "endChar": 89
+      },
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea009439_3edfa8f3",
@@ -294,6 +318,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3042d912_930efa7a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-21T14:49:36Z",
+      "side": 1,
+      "message": "I am closing this thread. Please reopen it if you have something to add.",
+      "parentUuid": "42389b10_1580bd38",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 3
+      },
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5b11eda_ffda1746",
@@ -355,6 +403,30 @@
       "side": 1,
       "message": "\"ensures that the DUT stays on initially provisioned test image\"?",
       "parentUuid": "03314f4a_56fd13f3",
+      "range": {
+        "startLine": 20,
+        "startChar": 90,
+        "endLine": 20,
+        "endChar": 105
+      },
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0793c76_706b0bd0",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-21T14:49:36Z",
+      "side": 1,
+      "message": "Done, thanks for the suggestion!",
+      "parentUuid": "1dae33a7_7c699a74",
       "range": {
         "startLine": 20,
         "startChar": 90,
@@ -649,6 +721,24 @@
       "side": 1,
       "message": "nit: add a comment/link to code so it\u0027s clear",
       "parentUuid": "f6fa6d96_963560d8",
+      "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f081029_d847b5f2",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-21T14:49:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2447f0b_3bf942ea",
       "revId": "fa9024ac179a62c370a6cb76deef0d88c99f7d4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
