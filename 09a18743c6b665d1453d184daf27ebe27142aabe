@@ -33,6 +33,24 @@
       "message": "Sorry should have been clearer about this in person: when possible, can you have the `ip link show ...` command do the filtering for you? For example, can you pass arguments into listAllLinks (for example, a bool for showing up links only, a string for specifying the iface name, etc.) and have listAllLinks construct the command and return the relevant information?",
       "revId": "09a18743c6b665d1453d184daf27ebe27142aabe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db0098f_03dc8d40",
+        "filename": "src/chromiumos/tast/common/network/ip/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1529893
+      },
+      "writtenOn": "2022-06-21T18:04:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4d135bb9_0d5a729d",
+      "revId": "09a18743c6b665d1453d184daf27ebe27142aabe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
