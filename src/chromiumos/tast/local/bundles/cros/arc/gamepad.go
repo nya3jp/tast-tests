@@ -18,6 +18,10 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type gamepadTestParams struct {
+	hasKeysImplemented bool // hasKeys API is only implemented from ARC R and above.
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Gamepad,
@@ -29,9 +33,15 @@ func init() {
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
+			Val: gamepadTestParams{
+				hasKeysImplemented: false,
+			},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val: gamepadTestParams{
+				hasKeysImplemented: true,
+			},
 		}},
 	})
 }
@@ -54,6 +64,9 @@ type inputDevice struct {
 
 // verifyGamepadDeviceInfo confirms the gamepad's InputDevice information is correct.
 func verifyGamepadDeviceInfo(s *testing.State, gp *input.GamepadEventWriter, d *inputDevice) {
+	param := s.Param().(gamepadTestParams)
+	hasKeysImplemented := param.hasKeysImplemented
+
 	// DeviceID may change at runtime.
 	if d.ProductID != gp.ProductID() {
 		s.Errorf("product ID doesn't match: got %v; want %v", d.ProductID, gp.ProductID())
@@ -128,7 +141,7 @@ func verifyGamepadDeviceInfo(s *testing.State, gp *input.GamepadEventWriter, d *
 		}
 	}
 
-	if diff := cmp.Diff(supportedKeyCodeMapping, d.SupportedKeyCodes); diff != "" {
+	if diff := cmp.Diff(supportedKeyCodeMapping, d.SupportedKeyCodes); hasKeysImplemented && diff != "" {
 		s.Errorf("Keycode support doesn't match %s", diff)
 	}
 	return
