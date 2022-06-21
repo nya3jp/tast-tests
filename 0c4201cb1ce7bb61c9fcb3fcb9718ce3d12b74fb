@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08a6e312_97893b69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-06-21T09:46:55Z",
+      "side": 1,
+      "message": "The errors are regarding finding the buttons. There was already another similar fix we earlier: https://crrev.com/c/3695898 vsavu@ said that the machines the tests run on are very slow but dunno really. I can\u0027t replicate the issues.\n\nLinks:\nhttps://tastboard.corp.google.com/test/policy.AutofillAddressEnabled.lacros\nAn example of the views: http://shortn/_REg3fzcNok",
+      "parentUuid": "624ae5bf_87fbe920",
+      "revId": "0c4201cb1ce7bb61c9fcb3fcb9718ce3d12b74fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23469cc9_8fc9f146",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
         "patchSetId": 1
@@ -67,6 +85,30 @@
       "writtenOn": "2022-06-21T09:04:32Z",
       "side": 1,
       "message": "Default timeout is 15 seconds which is already a lot IMO\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d60",
+      "range": {
+        "startLine": 172,
+        "startChar": 20,
+        "endLine": 172,
+        "endChar": 34
+      },
+      "revId": "0c4201cb1ce7bb61c9fcb3fcb9718ce3d12b74fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d0a8b8d_ffbfb753",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-06-21T09:46:55Z",
+      "side": 1,
+      "message": "Well it is. But idk what\u0027s going on, I was not able to repro any of the failures on my updated DUT so I\u0027m out of ideas. The view looks like it\u0027s not ready in that 15 seconds.",
+      "parentUuid": "23469cc9_8fc9f146",
       "range": {
         "startLine": 172,
         "startChar": 20,
