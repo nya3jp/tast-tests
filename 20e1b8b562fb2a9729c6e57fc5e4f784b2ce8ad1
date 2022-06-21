@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a61143e4_eba4f9ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-06-21T00:02:49Z",
+      "side": 1,
+      "message": "It seems that this CL made the tablet_mode test very flaky, which is now blocking many CQ runs (44 in the last 24 hours)\n\ncould there be an interaction between the test variants, and now that this one is no longer being run, the other one is failing?",
+      "revId": "20e1b8b562fb2a9729c6e57fc5e4f784b2ce8ad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
