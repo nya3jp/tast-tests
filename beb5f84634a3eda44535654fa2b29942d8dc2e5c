@@ -100,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58ce252d_f9578b25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-06-21T17:28:16Z",
+      "side": 1,
+      "message": "Can we post the instructions somewhere for adding/removing accounts in Tape and how to get access to GCP account and stuff?",
+      "parentUuid": "4bbe7b9d_07f6dfdd",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 41
+      },
+      "revId": "beb5f84634a3eda44535654fa2b29942d8dc2e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "045c9f34_689ff85b",
