@@ -34,6 +34,24 @@
       "parentUuid": "a61143e4_eba4f9ec",
       "revId": "20e1b8b562fb2a9729c6e57fc5e4f784b2ce8ad1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "061dfaa8_e90869f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-06-21T00:07:32Z",
+      "side": 1,
+      "message": "Hmm, tablet_mode variant is already demoted to informational 3 days ago: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3708541",
+      "parentUuid": "fbf0bc5e_38ee6896",
+      "revId": "20e1b8b562fb2a9729c6e57fc5e4f784b2ce8ad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
