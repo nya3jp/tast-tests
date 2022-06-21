@@ -114,9 +114,8 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		if err := ui.WithTimeout(shortUITimeout).WaitUntilGone(unableButton)(ctx); err != nil {
 			avPerm := nodewith.NameRegex(regexp.MustCompile(".*Use your (microphone|camera).*")).ClassName("RootView").Role(role.AlertDialog).First()
 			allowButton := nodewith.Name("Allow").Role(role.Button).Ancestor(avPerm)
-			testing.ContextLog(ctx, "Start to allow microphone and camera permissions")
 			if err := ui.WaitUntilExists(avPerm)(ctx); err == nil {
-				if err := uiauto.Combine("allow microphone and camera",
+				if err := uiauto.NamedCombine("allow microphone and camera permissions",
 					// Immediately clicking the allow button sometimes doesn't work. Sleep 2 seconds.
 					uiauto.Sleep(2*time.Second),
 					ui.LeftClick(allowButton),
@@ -171,13 +170,12 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		return ui.WithTimeout(mediumUITimeout).LeftClickUntil(joinAudioButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(joinAudioButton))(ctx)
 	}
 	startVideo := func(ctx context.Context) error {
-		testing.ContextLog(ctx, "Start video")
 		cameraButton := nodewith.NameRegex(regexp.MustCompile(cameraRegexCapture)).Role(role.Button)
 		startVideoButton := nodewith.NameRegex(regexp.MustCompile(startVideoRegexCapture)).Role(role.Button)
 		stopVideoButton := nodewith.NameRegex(regexp.MustCompile(stopVideoRegexCapture)).Role(role.Button)
 		// Start video requires camera permission.
 		// Allow permission doesn't succeed every time. So add retry here.
-		return ui.Retry(3, uiauto.Combine("start video",
+		return ui.Retry(3, uiauto.NamedCombine("start video",
 			conf.showInterface,
 			uiauto.NamedAction("to detect camera button within 15 seconds", ui.WaitUntilExists(cameraButton)),
 			// Some DUTs start playing video for the first time.
@@ -202,8 +200,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		ui.MakeVisible(joinButton),
 		ui.LeftClickUntil(joinButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(joinButton)),
 	))
-	testing.ContextLog(ctx, "Join conference")
-	return uiauto.Combine("join conference",
+	return uiauto.NamedCombine("join conference",
 		openZoomAndSignIn,
 		ui.WaitUntilExists(joinFromYourBrowser),
 		uiauto.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(acceptCookiesButton),
@@ -261,12 +258,11 @@ func (conf *ZoomConference) changeLayout(mode string) action.Action {
 
 		modeNode := nodewith.Name(mode).Role(role.MenuItem)
 		actionName := "Change layout to " + mode
-		return uiauto.NamedAction(actionName,
-			ui.Retry(3, uiauto.Combine(actionName,
-				conf.showInterface,
-				uiauto.IfSuccessThen(ui.Gone(modeNode), ui.LeftClick(viewButton)),
-				ui.LeftClick(modeNode),
-			)))(ctx)
+		return ui.Retry(3, uiauto.NamedCombine(actionName,
+			conf.showInterface,
+			uiauto.IfSuccessThen(ui.Gone(modeNode), ui.LeftClick(viewButton)),
+			ui.LeftClick(modeNode),
+		))(ctx)
 	}
 }
 
@@ -341,10 +337,7 @@ func (conf *ZoomConference) SwitchTabs(ctx context.Context) error {
 
 // TypingInChat opens chat window and type.
 func (conf *ZoomConference) TypingInChat(ctx context.Context) error {
-	const (
-		actionName = "open chat window and type"
-		message    = "Hello! How are you?"
-	)
+	const message = "Hello! How are you?"
 	// Close all notifications to prevent them from covering the chat text field.
 	if err := ash.CloseNotifications(ctx, conf.tconn); err != nil {
 		return errors.Wrap(err, "failed to close otifications")
@@ -355,7 +348,7 @@ func (conf *ZoomConference) TypingInChat(ctx context.Context) error {
 	manageChatPanel := nodewith.Name("Manage Chat Panel").Role(role.PopUpButton)
 	manageChatPanelMenu := nodewith.Name("Manage Chat Panel").Role(role.Menu)
 	closeButton := nodewith.Name("Close").Role(role.MenuItem).Ancestor(manageChatPanelMenu)
-	return uiauto.NamedAction(actionName, uiauto.Combine(actionName,
+	return uiauto.NamedCombine("open chat window and type",
 		conf.ui.DoDefault(chatButton),
 		conf.ui.WaitUntilExists(chatTextField),
 		conf.ui.LeftClickUntil(chatTextField, conf.ui.WithTimeout(shortUITimeout).WaitUntilExists(chatTextField.Focused())),
@@ -365,7 +358,7 @@ func (conf *ZoomConference) TypingInChat(ctx context.Context) error {
 		uiauto.Sleep(viewingTime), // After typing, wait 5 seconds for viewing.
 		conf.ui.LeftClick(manageChatPanel),
 		conf.ui.LeftClick(closeButton),
-	))(ctx)
+	)(ctx)
 }
 
 // BackgroundChange changes the background to patterned background and reset to none.
@@ -373,13 +366,17 @@ func (conf *ZoomConference) TypingInChat(ctx context.Context) error {
 // Zoom doesn't have background blur option for web version so changing background is used to fullfil
 // the requirement.
 func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
+	const (
+		noneBackground   = "None"
+		staticBackground = "San Francisco.jpg"
+	)
 	ui := conf.ui
-	webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
-	changeBackground := func(backgroundNumber int) error {
+	changeBackground := func(backgroundOption string) error {
+		webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
 		settingsButton := nodewith.Name("Settings").Role(role.Button).Ancestor(webArea)
 		settingsWindow := nodewith.Name("settings dialog window").Role(role.Application).Ancestor(webArea)
 		backgroundTab := nodewith.Name("Background").Role(role.Tab).Ancestor(settingsWindow)
-		backgroundItem := nodewith.Role(role.ListItem).Ancestor(settingsWindow)
+		backgroundItem := nodewith.NameContaining(backgroundOption).Role(role.ListBoxOption).Ancestor(settingsWindow)
 		closeButton := nodewith.Role(role.Button).HasClass("settings-dialog__close").Ancestor(settingsWindow)
 		openBackgroundPanel := func(ctx context.Context) error {
 			var actions []action.Action
@@ -406,13 +403,15 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 			}
 			return nil
 		}
-		testing.ContextLogf(ctx, "Change background to listitem %d and enter full screen", backgroundNumber)
-		return uiauto.Combine("change background",
+		return uiauto.NamedCombine("change background to "+backgroundOption,
 			ui.Retry(3, openBackgroundPanel), // Open "Background" panel.
 			// Some low end DUTs need more time to load the background settings.
-			ui.WithTimeout(longUITimeout).LeftClick(backgroundItem.Nth(backgroundNumber)),
+			ui.WithTimeout(longUITimeout).LeftClickUntil(backgroundItem,
+				ui.WithTimeout(shortUITimeout).WaitUntilExists(backgroundItem.Focused())),
+			// After applying the new background, give it 3 seconds to load the new background before closing the settings.
+			uiauto.Sleep(shortUITimeout),
 			ui.LeftClick(closeButton), // Close "Background" panel.
-			takeScreenshot(conf.cr, conf.outDir, fmt.Sprintf("change-background-to-background%d", backgroundNumber)),
+			takeScreenshot(conf.cr, conf.outDir, fmt.Sprintf("change-background-to-background-%q", backgroundOption)),
 			// Double click to enter full screen.
 			doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Zoom", true),
 			// After applying new background, give it 5 seconds for viewing before applying next one.
@@ -424,18 +423,12 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 	if err := conf.uiHandler.SwitchToChromeTabByName("Zoom")(ctx); err != nil {
 		return CheckSignedOutError(ctx, conf.tconn, errors.Wrap(err, "failed to switch to zoom page"))
 	}
-	// Background item doesn't have a specific node name but a role name.
-	// We could get the background item from the listitem.
-	// The first background item is none, others are patterned background.
-	// Click backgroundItem.Nth(1) means change background to first background img.
-	// Click backgroundItem.Nth(0) means change background to none.
-	if err := changeBackground(1); err != nil {
-		return errors.Wrap(err, "failed to change background to first image")
+	if err := changeBackground(staticBackground); err != nil {
+		return errors.Wrap(err, "failed to change background to static background")
 	}
-	if err := changeBackground(0); err != nil {
+	if err := changeBackground(noneBackground); err != nil {
 		return errors.Wrap(err, "failed to change background to none")
 	}
-
 	return nil
 }
 
@@ -459,8 +452,7 @@ func (conf *ZoomConference) Presenting(ctx context.Context, application googleAp
 		presentTab := nodewith.ClassName("AXVirtualView").Role(role.Cell).Name(appTabName)
 		shareButton := nodewith.Name("Share").Role(role.Button)
 		stopSharing := nodewith.Name("Stop sharing").Role(role.Button).First()
-		testing.ContextLog(ctx, "Share screen")
-		return uiauto.Combine("share Screen",
+		return uiauto.NamedCombine("share Screen",
 			conf.uiHandler.SwitchToChromeTabByName("Zoom"),
 			conf.showInterface,
 			ui.LeftClickUntil(shareScreenButton, ui.WithTimeout(shortUITimeout).WaitUntilExists(presenMode)),
