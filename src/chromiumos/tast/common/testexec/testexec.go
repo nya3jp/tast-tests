@@ -395,7 +395,8 @@ func GetWaitStatus(err error) (status syscall.WaitStatus, ok bool) {
 	if err == nil {
 		return 0, true
 	}
-	errExit, ok := err.(*exec.ExitError)
+	var errExit *exec.ExitError
+	ok = errors.As(err, &errExit)
 	if !ok {
 		return 0, false
 	}
