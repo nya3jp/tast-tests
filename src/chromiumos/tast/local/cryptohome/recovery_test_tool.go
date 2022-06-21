@@ -33,12 +33,14 @@ const (
 	customEpochResponseFile     = "custom_epoch_response"
 	epochResponseFile           = "epoch_response"
 	mediatorPubKeyFile          = "mediator_pub_key"
+	customMediatorPubKeyFile    = "custom_mediator_pub_key"
 )
 
 // RecoveryTestTool is a command line test tool for cryptohome recovery testing.
 type RecoveryTestTool struct {
-	tmpFolderName   string
-	useFakeMediator bool
+	tmpFolderName string
+	// custom mediator key, if not set - the fake mediator (with fake mediator key) will be used.
+	mediatorPubKeyHex string
 }
 
 // NewRecoveryTestToolWithFakeMediator creates a new instance of RecoveryTestTool with generated directory.
@@ -51,24 +53,29 @@ func NewRecoveryTestToolWithFakeMediator() (*RecoveryTestTool, error) {
 		return nil, errors.Wrap(err, "could not create a temp directory")
 	}
 	return &RecoveryTestTool{
-		tmpFolderName:   name,
-		useFakeMediator: true,
+		tmpFolderName:     name,
+		mediatorPubKeyHex: "",
 	}, nil
 }
 
 // NewRecoveryTestTool creates a new instance of RecoveryTestTool with generated directory.
 // The instance will not use fake mediation. Use Save* methods to set the real server replies.
 // Call RemoveDir in the end of the test.
-func NewRecoveryTestTool() (*RecoveryTestTool, error) {
+func NewRecoveryTestTool(mediatorPubKeyHex string) (*RecoveryTestTool, error) {
 	// Create a temp directory.
 	name, err := ioutil.TempDir("", "cryptohome_test_tool_out_*")
 	if err != nil {
 		return nil, errors.Wrap(err, "could not create a temp directory")
 	}
 	return &RecoveryTestTool{
-		tmpFolderName:   name,
-		useFakeMediator: false,
+		tmpFolderName:     name,
+		mediatorPubKeyHex: mediatorPubKeyHex,
 	}, nil
+}
+
+// useFakeMediator returns true if fake (local) mediator should be used.
+func (c *RecoveryTestTool) useFakeMediator() bool {
+	return c.mediatorPubKeyHex == ""
 }
 
 // call calls the test tool with provided parameters.
@@ -110,7 +117,7 @@ func (c *RecoveryTestTool) RemoveDir() error {
 
 // SaveCustomRAPT saves the provided reauth proof token to be used in CreateRecoveryRequest.
 func (c *RecoveryTestTool) SaveCustomRAPT(rapt []byte) error {
-	if c.useFakeMediator {
+	if c.useFakeMediator() {
 		return errors.New("cannot use custom RAPT file with fake mediator")
 	}
 	return c.writeFileHexEncoded(customRAPTFile, rapt)
@@ -118,7 +125,7 @@ func (c *RecoveryTestTool) SaveCustomRAPT(rapt []byte) error {
 
 // SaveCustomEpoch saves the provided epoch to be used in CreateRecoveryRequest and Decrypt.
 func (c *RecoveryTestTool) SaveCustomEpoch(epoch []byte) error {
-	if c.useFakeMediator {
+	if c.useFakeMediator() {
 		return errors.New("cannot use custom epoch response file with fake mediator")
 	}
 	return c.writeFileHexEncoded(customEpochResponseFile, epoch)
@@ -126,7 +133,7 @@ func (c *RecoveryTestTool) SaveCustomEpoch(epoch []byte) error {
 
 // SaveCustomResponse saves the provided epoch to be used in Decrypt.
 func (c *RecoveryTestTool) SaveCustomResponse(response []byte) error {
-	if c.useFakeMediator {
+	if c.useFakeMediator() {
 		return errors.New("cannot use custom recovery response file with fake mediator")
 	}
 	return c.writeFileHexEncoded(recoveryResponseFile, response)
@@ -147,7 +154,7 @@ func (c *RecoveryTestTool) FetchRecoveryRequest() ([]byte, error) {
 
 // CreateHsmPayload calls "--action=recovery_crypto_create_hsm_payload" step.
 func (c *RecoveryTestTool) CreateHsmPayload(ctx context.Context) error {
-	return c.call(ctx,
+	args := []string{
 		"--action=recovery_crypto_create_hsm_payload",
 		c.getFileParam("destination_share_out_file", destinationShareFile),
 		c.getFileParam("rsa_priv_key_out_file", rsaPrivKeyFile),
@@ -155,7 +162,17 @@ func (c *RecoveryTestTool) CreateHsmPayload(ctx context.Context) error {
 		c.getFileParam("channel_priv_key_out_file", channelPrivKeyFile),
 		c.getFileParam("serialized_hsm_payload_out_file", hsmPayloadFile),
 		c.getFileParam("recovery_secret_out_file", recoverySecretCreatedFile),
-	)
+	}
+
+	if !c.useFakeMediator() {
+		if err := c.writeFile(customMediatorPubKeyFile, []byte(c.mediatorPubKeyHex)); err != nil {
+			return errors.Wrapf(err, "could not write the mediator public key file (%s)", customMediatorPubKeyFile)
+		}
+
+		args = append(args, c.getFileParam("mediator_pub_key_in_file", customMediatorPubKeyFile))
+	}
+
+	return c.call(ctx, args...)
 }
 
 // CreateRecoveryRequest calls "--action=recovery_crypto_create_recovery_request" step.
@@ -169,7 +186,7 @@ func (c *RecoveryTestTool) CreateRecoveryRequest(ctx context.Context) error {
 		c.getFileParam("ephemeral_pub_key_out_file", ephemeralPubKeyFile),
 		c.getFileParam("recovery_request_out_file", recoveryRequestFile),
 	}
-	if !c.useFakeMediator {
+	if !c.useFakeMediator() {
 		args = append(args,
 			c.getFileParam("gaia_rapt_in_file", customRAPTFile),
 			c.getFileParam("epoch_response_in_file", customEpochResponseFile),
@@ -180,7 +197,7 @@ func (c *RecoveryTestTool) CreateRecoveryRequest(ctx context.Context) error {
 
 // FakeMediate calls "--action=recovery_crypto_mediate" step.
 func (c *RecoveryTestTool) FakeMediate(ctx context.Context) error {
-	if !c.useFakeMediator {
+	if !c.useFakeMediator() {
 		return errors.New("cannot use fake mediator")
 	}
 	return c.call(ctx,
@@ -200,7 +217,7 @@ func (c *RecoveryTestTool) Decrypt(ctx context.Context) error {
 		c.getFileParam("destination_share_in_file", destinationShareFile),
 		c.getFileParam("recovery_secret_out_file", recoverySecretDecryptedFile),
 	}
-	if !c.useFakeMediator {
+	if !c.useFakeMediator() {
 		args = append(args,
 			c.getFileParam("epoch_response_in_file", customEpochResponseFile),
 		)
@@ -228,7 +245,7 @@ func (c *RecoveryTestTool) Validate(ctx context.Context) error {
 // FakeMediateWithRequest calls "--action=recovery_crypto_mediate" step.
 // Returns hex-encoded response on success.
 func (c *RecoveryTestTool) FakeMediateWithRequest(ctx context.Context, requestHex string) (string, error) {
-	if !c.useFakeMediator {
+	if !c.useFakeMediator() {
 		return "", errors.New("cannot use fake mediator")
 	}
 
@@ -254,7 +271,7 @@ func (c *RecoveryTestTool) FakeMediateWithRequest(ctx context.Context, requestHe
 // FetchFakeEpochResponseHex calls "--action=recovery_crypto_get_fake_epoch".
 // Returns hex-encoded epoch response on success.
 func (c *RecoveryTestTool) FetchFakeEpochResponseHex(ctx context.Context) (string, error) {
-	if !c.useFakeMediator {
+	if !c.useFakeMediator() {
 		return "", errors.New("cannot use fake mediator")
 	}
 
@@ -275,7 +292,7 @@ func (c *RecoveryTestTool) FetchFakeEpochResponseHex(ctx context.Context) (strin
 // FetchFakeMediatorPubKeyHex calls "--action=recovery_crypto_get_fake_mediator_pub_key".
 // Returns hex-encoded mediator key on success.
 func (c *RecoveryTestTool) FetchFakeMediatorPubKeyHex(ctx context.Context) (string, error) {
-	if !c.useFakeMediator {
+	if !c.useFakeMediator() {
 		return "", errors.New("cannot use fake mediator")
 	}
 
