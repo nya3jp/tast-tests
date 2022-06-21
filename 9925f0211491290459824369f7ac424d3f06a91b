@@ -39,6 +39,48 @@
       "message": "do we plan on having the feedback app displayed in the launcher? Or should we instead press the shortcut to have it appear",
       "revId": "9925f0211491290459824369f7ac424d3f06a91b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5ac10e8_d33502e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-06-21T23:22:40Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "65b1974e_ff57abb9",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 106
+      },
+      "revId": "9925f0211491290459824369f7ac424d3f06a91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66fe19f9_667e6959",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_launcher.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-06-21T23:22:40Z",
+      "side": 1,
+      "message": "Yes, we will have it displayed in the launcher.\nhttps://docs.google.com/presentation/d/1qR9k-drFTVHl1qR0f4DAjMivObOpN3R9WU8dzlyGJk0/edit#slide\u003did.ga5501b410e_0_310",
+      "parentUuid": "92770f90_c9bd23fd",
+      "revId": "9925f0211491290459824369f7ac424d3f06a91b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
