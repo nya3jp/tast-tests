@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c03ea2_82e6f45e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quick_check_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-21T18:24:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "726f99cf_81f1a617",
+      "range": {
+        "startLine": 99,
+        "startChar": 44,
+        "endLine": 99,
+        "endChar": 49
+      },
+      "revId": "19a64747f7c24436775b61d2477eb7c9ec011cc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fecfb75_07c5becc",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-15T16:26:35Z",
       "side": 1,
       "message": "ditto, need a `bTconn` because the test has lacros variations.",
+      "range": {
+        "startLine": 202,
+        "startChar": 44,
+        "endLine": 202,
+        "endChar": 49
+      },
+      "revId": "19a64747f7c24436775b61d2477eb7c9ec011cc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60a46099_36de9e22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-21T18:24:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fecfb75_07c5becc",
       "range": {
         "startLine": 202,
         "startChar": 44,
