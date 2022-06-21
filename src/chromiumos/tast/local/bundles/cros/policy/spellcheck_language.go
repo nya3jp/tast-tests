@@ -66,8 +66,6 @@ func SpellcheckLanguage(ctx context.Context, s *testing.State) {
 		s.Error("Failed to update policy: ", err)
 	}
 
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
-
 	// The default language in the DUT is English US. Therefore, the test
 	// chooses different languages to test this policy. To avoid false
 	// positives, the test will check for the text marker highlight and for
@@ -114,6 +112,8 @@ func verifySpellcheckForLanguage(ctx context.Context, s *testing.State, cr *chro
 		return errors.Wrap(err, "failed to open the browser")
 	}
 	defer closeBrowser(cleanupCtx)
+
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+language.languageName)
 
 	// Open a data URI of a page containing a textarea.
 	conn, err := br.NewConn(ctx, "data:text/html, <textarea aria-label='textarea'/>")

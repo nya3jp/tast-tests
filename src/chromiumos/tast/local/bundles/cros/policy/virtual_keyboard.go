@@ -290,9 +290,6 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 
 	for _, tc := range tcs {
 		s.Run(ctx, tc.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(
-				ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+tc.name)
-
 			// Get tablet mode state.
 			tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
 			if err != nil {
@@ -324,6 +321,9 @@ func VirtualKeyboard(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open the browser: ", err)
 			}
 			defer closeBrowser(cleanupCtx)
+
+			defer faillog.DumpUITreeWithScreenshotOnError(
+				ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+tc.name)
 
 			conn, err := br.NewConn(ctx, "")
 			if err != nil {
