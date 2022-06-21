@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "233f8c2a_44d4b1df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/testsetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-21T16:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07a6a524_7d67e5ac",
+      "revId": "d34555d15d6eaa05cc70fe01802817490107c097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93e46c7b_ded130e7",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-14T17:19:10Z",
       "side": 1,
       "message": "I would add a check to see if `cr` is nil before using it.",
+      "revId": "d34555d15d6eaa05cc70fe01802817490107c097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d13c95d_04f2b339",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/testsetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-21T16:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93e46c7b_ded130e7",
       "revId": "d34555d15d6eaa05cc70fe01802817490107c097",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be41f9fb_643009ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/testsetup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-21T16:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cacffea8_790e7f20",
+      "revId": "d34555d15d6eaa05cc70fe01802817490107c097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02f9682c_bad88c04",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95c7e535_a3ac334a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-21T16:33:02Z",
+      "side": 1,
+      "message": "pretty sure this won\u0027t fail for that reason, I think that check is mainly used to know whether or not we need to rotate the tablet screen.",
+      "parentUuid": "02f9682c_bad88c04",
+      "revId": "d34555d15d6eaa05cc70fe01802817490107c097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddd1d836_02017f7f",
@@ -82,6 +154,24 @@
       "writtenOn": "2022-06-14T17:19:10Z",
       "side": 1,
       "message": "Unintentionally commented out.",
+      "revId": "d34555d15d6eaa05cc70fe01802817490107c097",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a0769f0_24070ee7",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-21T16:33:02Z",
+      "side": 1,
+      "message": "Ah yes. I accidentally committed my workaround for getting tests to run over wifi...",
+      "parentUuid": "ddd1d836_02017f7f",
       "revId": "d34555d15d6eaa05cc70fe01802817490107c097",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
