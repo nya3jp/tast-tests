@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff1a9aed_d3554f23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-06-21T04:02:06Z",
+      "side": 1,
+      "message": "This test has failed 30 different CL\u0027s CQ runs since it was made critical, it should probably be fixed or disabled.\n\nYou can find the failed runs in Weetbix: https://chops-weetbix-dev.appspot.com/p/chromeos/rules/1355be2c96ce9b090d38756269ac3790",
+      "revId": "8e06c067e48d3121fc3ff04405b2c2a46d3ef7bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
