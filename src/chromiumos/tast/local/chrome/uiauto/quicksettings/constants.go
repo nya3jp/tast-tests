@@ -14,6 +14,9 @@ import (
 // quickSettingsFinder is the finder to find the Quick Settings area in the UI.
 var quickSettingsFinder = nodewith.ClassName("UnifiedSystemTrayView")
 
+// SystemTray is to distinguish it from calendar view in cases that use the calendar, it is also the finder to find the Quick Settings area in the UI.
+var SystemTray = nodewith.ClassName("UnifiedSystemTray")
+
 // StatusAreaWidget is the finder to find the control widgets.
 var StatusAreaWidget = nodewith.Role(role.Pane).HasClass("ash/StatusAreaWidgetDelegate")
 
