@@ -23,7 +23,7 @@ func init() {
 			"emaxx@chromium.org", // Test authors
 			"cryptohome-core@google.com",
 		},
-		Attr:    []string{"informational", "group:mainline"},
+		Attr:    []string{"group:mainline"},
 		Timeout: 60 * time.Second,
 	})
 }
