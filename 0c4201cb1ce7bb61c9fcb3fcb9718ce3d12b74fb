@@ -135,6 +135,30 @@
       },
       "revId": "0c4201cb1ce7bb61c9fcb3fcb9718ce3d12b74fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bec46e75_e44a2c75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-06-21T12:10:02Z",
+      "side": 1,
+      "message": "We could try it out like this without changing the Timeouts? Resolving the comment.",
+      "parentUuid": "8d0a8b8d_ffbfb753",
+      "range": {
+        "startLine": 172,
+        "startChar": 20,
+        "endLine": 172,
+        "endChar": 34
+      },
+      "revId": "0c4201cb1ce7bb61c9fcb3fcb9718ce3d12b74fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
