@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c7311c_9c2bf6c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-06-21T13:30:08Z",
+      "side": 1,
+      "message": "Thank you for your comments, please review.",
+      "revId": "838819cbcfb422698d38d61138dc98b17bd95ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fe8102d_c5f4cb23",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-06-21T11:12:27Z",
       "side": 1,
       "message": "nit: how about:\n\"Failed to check initial write protect state: \"\nto be consistent with the other message above?",
+      "revId": "838819cbcfb422698d38d61138dc98b17bd95ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e8fc6f4_d51255ba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_system_locked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-06-21T13:30:08Z",
+      "side": 1,
+      "message": "Done (I think the word \"recognize\" is more appropriate here)",
+      "parentUuid": "4fe8102d_c5f4cb23",
       "revId": "838819cbcfb422698d38d61138dc98b17bd95ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +89,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8e85bafa_1f3e74bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_system_locked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-06-21T13:30:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0262c1b1_0f9f6925",
+      "revId": "838819cbcfb422698d38d61138dc98b17bd95ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5b98fd19_48829efc",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_system_locked.go",
         "patchSetId": 3
@@ -65,6 +118,24 @@
       "writtenOn": "2022-06-21T11:12:27Z",
       "side": 1,
       "message": "optional:\nI see common pattern in our codebase like:\n  return true, nil\n  return false, nil\n  return false, errors.New(....)\nThis would avoid introducing local variables if the logic to create return value is simple enough.",
+      "revId": "838819cbcfb422698d38d61138dc98b17bd95ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f2d7cf_707c99fd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_system_locked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-06-21T13:30:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b98fd19_48829efc",
       "revId": "838819cbcfb422698d38d61138dc98b17bd95ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +153,24 @@
       "writtenOn": "2022-06-21T11:12:27Z",
       "side": 1,
       "message": "Please include the wrong state string into the error message, so as to help debugging in case of such failure.",
+      "revId": "838819cbcfb422698d38d61138dc98b17bd95ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b974336_89d04ff4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ec_system_locked.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-06-21T13:30:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98a506ce_dc23d0ec",
       "revId": "838819cbcfb422698d38d61138dc98b17bd95ec4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
