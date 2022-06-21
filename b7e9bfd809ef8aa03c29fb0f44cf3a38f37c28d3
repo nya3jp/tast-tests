@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5680d681_64384602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-21T23:07:39Z",
+      "side": 0,
+      "message": "This is probably unrelated, isn\u0027t it?",
+      "range": {
+        "startLine": 106,
+        "startChar": 31,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "b7e9bfd809ef8aa03c29fb0f44cf3a38f37c28d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

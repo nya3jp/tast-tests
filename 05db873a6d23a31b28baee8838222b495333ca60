@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74b1a3cd_f96bdad7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/testsetup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-21T23:07:39Z",
+      "side": 1,
+      "message": "I am not sure about it, It sounds too generic.\nI.e. everything in the platform/tast-tests is a tast test ;)\n\nMaybe TPS test? We should also ask xiyuan opinion on it.",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 13
+      },
+      "revId": "05db873a6d23a31b28baee8838222b495333ca60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06d03ba_471b3202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/testsetup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-21T23:07:39Z",
+      "side": 1,
+      "message": "go/go-style/decisions#contexts",
+      "revId": "05db873a6d23a31b28baee8838222b495333ca60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
