@@ -125,7 +125,6 @@ func ChromePolicyPageStatusTimestamps(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	// Setup browser based on the chrome type.
 	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
@@ -133,6 +132,8 @@ func ChromePolicyPageStatusTimestamps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open the browser: ", err)
 	}
 	defer closeBrowser(cleanupCtx)
+
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	// Select types of status boxes we want to check.
 	boxNames := []string{"User policies"}

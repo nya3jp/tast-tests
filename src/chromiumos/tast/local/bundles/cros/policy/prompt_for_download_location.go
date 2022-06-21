@@ -24,10 +24,10 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/checked"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -75,13 +75,18 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get users Download path: ", err)
+	}
+
 	defer func() { // Clean up Downloads directory.
-		files, err := ioutil.ReadDir(filesapp.DownloadPath)
+		files, err := ioutil.ReadDir(downloadsPath)
 		if err != nil {
 			s.Fatal("Failed to get files from Downloads directory: ", err)
 		}
 		for _, file := range files {
-			if err = os.RemoveAll(filepath.Join(filesapp.DownloadPath, file.Name())); err != nil {
+			if err = os.RemoveAll(filepath.Join(downloadsPath, file.Name())); err != nil {
 				s.Fatal("Failed to remove file: ", file.Name())
 			}
 		}
@@ -117,8 +122,6 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
-
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
@@ -135,6 +138,8 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open the browser: ", err)
 			}
 			defer closeBrowser(cleanupCtx)
+
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			if err := policyutil.SettingsPage(ctx, cr, br, "downloads").
 				SelectNode(ctx, nodewith.
@@ -169,11 +174,11 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 				}
 
 				// Check if the file was downloaded.
-				if _, err := os.Stat(filesapp.DownloadPath + "prompt_for_download_location.zip"); err != nil && !os.IsNotExist(err) {
+				if _, err := os.Stat(downloadsPath + "prompt_for_download_location.zip"); err != nil && !os.IsNotExist(err) {
 					return testing.PollBreak(errors.Wrap(err, "finding downloaded file failed"))
 				} else if !os.IsNotExist(err) {
 					// Remove downloaded file.
-					if err := os.Remove(filesapp.DownloadPath + "prompt_for_download_location.zip"); err != nil {
+					if err := os.Remove(downloadsPath + "prompt_for_download_location.zip"); err != nil {
 						return testing.PollBreak(errors.Wrap(err, "failed to remove prompt_for_download_location.zip"))
 					}
 					asked = false

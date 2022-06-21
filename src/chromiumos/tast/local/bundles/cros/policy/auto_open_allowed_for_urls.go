@@ -22,9 +22,9 @@ import (
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -96,8 +96,6 @@ func AutoOpenAllowedForURLs(ctx context.Context, s *testing.State) {
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
-
 			// Perform cleanup.
 			if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
 				s.Fatal("Failed to clean up: ", err)
@@ -123,6 +121,8 @@ func AutoOpenAllowedForURLs(ctx context.Context, s *testing.State) {
 			}
 			defer closeBrowser(cleanupCtx)
 
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+
 			// We cannot directly open the file we are trying to download via
 			// NewConn(), since NewConn() expects Chrome to navigate to the URL
 			// passed to it. However, Chrome does not navigate and change its URL when
@@ -135,11 +135,16 @@ func AutoOpenAllowedForURLs(ctx context.Context, s *testing.State) {
 			}
 			defer conn.Close()
 
+			downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+			if err != nil {
+				s.Fatal("Failed to get users Download path: ", err)
+			}
+
 			clickLink := fmt.Sprintf(`document.getElementById("%s").click();`, param.linkIDToClick)
 			if err := conn.Eval(ctx, clickLink, nil); err != nil {
 				s.Fatal("Failed to click download link: ", err)
 			}
-			defer os.Remove(path.Join(filesapp.DownloadPath, downloadFileName))
+			defer os.Remove(path.Join(downloadsPath, downloadFileName))
 
 			// Connect to Test API to use it with the UI library.
 			tconn, err := cr.TestAPIConn(ctx)
