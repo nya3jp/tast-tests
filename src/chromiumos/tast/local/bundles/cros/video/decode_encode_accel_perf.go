@@ -12,7 +12,6 @@ import (
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/video/encode"
 	"chromiumos/tast/local/bundles/cros/video/videovars"
 	"chromiumos/tast/local/chrome"
@@ -23,7 +22,6 @@ import (
 	"chromiumos/tast/local/media/encoding"
 	"chromiumos/tast/local/media/videotype"
 	"chromiumos/tast/local/sysutil"
-	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -37,6 +35,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+		Fixture:      "graphicsNoChrome",
 		SoftwareDeps: []string{"chrome", caps.HWDecodeVP8, caps.HWEncodeVP8},
 		Data: []string{"perf/vp8/1080p_30fps_300frames.vp8.ivf", "perf/vp8/1080p_30fps_300frames.vp8.ivf.json",
 			"crowd-1920x1080.vp9.webm", "crowd-1920x1080.yuv.json"},
@@ -47,8 +46,6 @@ func init() {
 
 func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 	const (
-		// Time reserved for cleanup.
-		cleanupTime = 10 * time.Second
 		// Time to wait for CPU to stabilize after launching tests.
 		stabilize = 5 * time.Second
 		// Duration of the interval during which CPU usage will be measured.
@@ -59,24 +56,12 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 		encodeFileName = "crowd-1920x1080.vp9.webm"
 	)
 
-	// Only a single process can have access to the GPU, so we are required to
-	// call "stop ui" at the start of the test. This will shut down the chrome
-	// process and allow us to claim ownership of the GPU.
-	if err := upstart.StopJob(ctx, "ui"); err != nil {
-		s.Fatal("Failed to stop ui: ", err)
-	}
-	defer upstart.EnsureJobRunning(ctx, "ui")
-
 	// Setup benchmark mode.
 	cleanUpBenchmark, err := mediacpu.SetUpBenchmark(ctx)
 	if err != nil {
 		s.Fatal("Failed to set up benchmark mode: ", err)
 	}
 	defer cleanUpBenchmark(ctx)
-
-	// Reserve time to restart the ui job and perform cleanup at the end of the test.
-	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
 
 	// Create a raw YUV video and JSON for it to encode for the video encoder tests.
 	yuvPath, err := encoding.PrepareYUV(ctx, s.DataPath(encodeFileName),

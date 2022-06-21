@@ -39,6 +39,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_perbuild"},
+		Fixture:      "graphicsNoChrome",
 		Params: []testing.Param{{
 			Name:              "h264_180p",
 			Val:               encode.MakeTestOptions(tulip180P, videotype.H264BaselineProf),
