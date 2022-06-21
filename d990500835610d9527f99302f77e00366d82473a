@@ -158,6 +158,30 @@
       },
       "revId": "d990500835610d9527f99302f77e00366d82473a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a32551f2_8aba78c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page_exists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-21T14:33:08Z",
+      "side": 1,
+      "message": "The CL is merged. I was a bit busy with other things last week. Will continue working on this now.",
+      "parentUuid": "b741b5ce_16c3b736",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 44
+      },
+      "revId": "d990500835610d9527f99302f77e00366d82473a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
