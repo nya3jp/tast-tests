@@ -349,7 +349,7 @@ func verifyHourClock(ctx context.Context, ui *uiauto.Context, is24Hour bool) err
 		reg = regexp.MustCompile(fmt.Sprintf(`(\d+):(\d+), (%s), (%s) (\d+), (\d+)`, date, Month))
 	}
 
-	if err := ui.WaitUntilExists(nodewith.NameRegex(reg).Ancestor(quicksettings.StatusAreaWidget))(ctx); err != nil {
+	if err := ui.WaitUntilExists(nodewith.NameRegex(reg).Ancestor(quicksettings.SystemTray))(ctx); err != nil {
 		if is24Hour {
 			return errors.Wrap(err, `AM/PM should disappear when 24-hour clock mode is enable`)
 		}
@@ -372,7 +372,7 @@ func verifyTimeZone(ctx context.Context, ui *uiauto.Context, timeZoneReg *regexp
 		false: "15:04 PM, Monday, January _2, 2006",
 	}
 
-	timeviewInfo, err := ui.Info(ctx, nodewith.HasClass("TimeView").Ancestor(quicksettings.StatusAreaWidget))
+	timeviewInfo, err := ui.Info(ctx, nodewith.HasClass("TimeView").Ancestor(quicksettings.SystemTray))
 	if err != nil {
 		return errors.Wrap(err, "failed to get information of TimeView")
 	}
