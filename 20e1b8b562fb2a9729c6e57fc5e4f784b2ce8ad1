@@ -16,6 +16,24 @@
       "message": "It seems that this CL made the tablet_mode test very flaky, which is now blocking many CQ runs (44 in the last 24 hours)\n\ncould there be an interaction between the test variants, and now that this one is no longer being run, the other one is failing?",
       "revId": "20e1b8b562fb2a9729c6e57fc5e4f784b2ce8ad1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbf0bc5e_38ee6896",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-06-21T00:04:35Z",
+      "side": 1,
+      "message": "Failure pattern can be seen here: https://ci.chromium.org/ui/test/chromeos%3Acq/arc.StandardizedKeyboardTyping.tablet_mode?q\u003dVHASH%3A38abc603dbe614ed\n\nFailure error message is: Full Screen: Test run failed: unable to focus the input: unable to check the inputs focus state: IsFocused failed: objInfo (selector\u003d{ResourceId:org.chromium.arc.testapp.arcstandardizedinputtest:id/textKeyboardInput}) failed: objInfo: Attempt to invoke virtual method \u0027android.graphics.Rect androidx.test.uiautomator.UiObject2.getVisibleBounds()\u0027 on a null object reference\n\n\nThis only happens on VM testing, not hardware.",
+      "parentUuid": "a61143e4_eba4f9ec",
+      "revId": "20e1b8b562fb2a9729c6e57fc5e4f784b2ce8ad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
