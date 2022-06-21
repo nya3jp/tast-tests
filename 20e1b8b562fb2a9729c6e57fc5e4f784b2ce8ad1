@@ -52,6 +52,24 @@
       "parentUuid": "fbf0bc5e_38ee6896",
       "revId": "20e1b8b562fb2a9729c6e57fc5e4f784b2ce8ad1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94544e82_f3adb565",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524179
+      },
+      "writtenOn": "2022-06-21T01:07:27Z",
+      "side": 1,
+      "message": "Some builds are reusing the image instead of rebuilding new one, that is why there are still failures. The CL for disabling recycling image for these builds are merged 6/20: https://crrev.com/i/4829518",
+      "parentUuid": "061dfaa8_e90869f4",
+      "revId": "20e1b8b562fb2a9729c6e57fc5e4f784b2ce8ad1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
