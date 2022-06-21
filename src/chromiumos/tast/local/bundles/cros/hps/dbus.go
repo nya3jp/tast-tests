@@ -10,10 +10,11 @@ import (
 	"github.com/godbus/dbus/v5"
 
 	pb "chromiumos/system_api/hps_proto"
+	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/media/vm"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -24,9 +25,7 @@ func init() {
 			"evanbenn@chromium.org", // Test author
 			"chromeos-hps-swe@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
-		// TODO(b/227525135): re-enable when we have some brya DUTs with HPS
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("brya")),
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"hps"},
 	})
 }
@@ -40,6 +39,16 @@ func DBus(ctx context.Context, s *testing.State) {
 
 		job = "hpsd"
 	)
+
+	hasHps, err := crosconfig.Get(ctx, "/hps", "has-hps")
+	if err != nil && !crosconfig.IsNotFound(err) {
+		s.Fatal("Failed to get has-hps property: ", err)
+	}
+	// hpsd is only expected to work if the HPS hardware is present,
+	// or if it's configured to use a fake device in a VM.
+	if hasHps != "true" && !vm.IsRunningOnVM() {
+		return
+	}
 
 	s.Logf("Restarting %s job and waiting for %s service", job, dbusName)
 	if err := upstart.RestartJob(ctx, job); err != nil {

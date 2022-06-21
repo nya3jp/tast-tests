@@ -7,9 +7,11 @@ package hps
 import (
 	"context"
 
+	upstartcommon "chromiumos/tast/common/upstart"
+	"chromiumos/tast/local/crosconfig"
+	"chromiumos/tast/local/media/vm"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -20,9 +22,7 @@ func init() {
 			"evanbenn@chromium.org", // Test author
 			"chromeos-hps-swe@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
-		// TODO(b/227525135): re-enable when we have some brya DUTs with HPS
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("brya")),
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"hps"},
 	})
 }
@@ -30,7 +30,25 @@ func init() {
 // Running checks the hpsd job and fails if it isn't running or has a process
 // in the zombie state.
 func Running(ctx context.Context, s *testing.State) {
-	if err := upstart.CheckJob(ctx, "hpsd"); err != nil {
-		s.Fatal("Test failed: ", err)
+	hasHps, err := crosconfig.Get(ctx, "/hps", "has-hps")
+	if err != nil && !crosconfig.IsNotFound(err) {
+		s.Fatal("Failed to get has-hps property: ", err)
+	}
+	// hpsd is only expected to be running if the HPS hardware is present,
+	// or if it's configured to use a fake device in a VM.
+	expectRunning := hasHps == "true" || vm.IsRunningOnVM()
+
+	if expectRunning {
+		if err := upstart.CheckJob(ctx, "hpsd"); err != nil {
+			s.Fatal("Test failed: ", err)
+		}
+	} else {
+		_, state, _, err := upstart.JobStatus(ctx, "hpsd")
+		if err != nil {
+			s.Fatal("Failed to get hpsd Upstart job status: ", err)
+		}
+		if state != upstartcommon.WaitingState {
+			s.Fatalf("hpsd unexpectedly in state %v, expected waiting", state)
+		}
 	}
 }
