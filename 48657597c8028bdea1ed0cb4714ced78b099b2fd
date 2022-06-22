@@ -196,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4dd326a4_269ab978",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-22T16:19:54Z",
+      "side": 1,
+      "message": "It will be better if there is a Google FTE in the contact. It is fine if you cannot find one. It is better for future support issue if there is one. Thanks.",
+      "parentUuid": "9fddcaf4_37f1c910",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3cbc6dc3_a1adadbf",
         "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
         "patchSetId": 9
