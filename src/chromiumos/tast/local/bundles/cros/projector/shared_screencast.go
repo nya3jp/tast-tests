@@ -71,8 +71,10 @@ func SharedScreencast(ctx context.Context, s *testing.State) {
 
 	screencastTitle := nodewith.Name("Screencast for Tast (Do not modify)").Role(role.StaticText)
 
+	refreshApp := projector.RefreshApp(ctx, tconn)
+
 	// Verify the shared screencast title rendered correctly.
-	if err := ui.WaitUntilExists(screencastTitle)(ctx); err != nil {
+	if err := ui.WithInterval(5*time.Second).RetryUntil(refreshApp, ui.Exists(screencastTitle))(ctx); err != nil {
 		s.Fatal("Failed to render shared screencast: ", err)
 	}
 }
