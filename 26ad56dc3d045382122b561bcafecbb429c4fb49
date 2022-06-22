@@ -16,6 +16,46 @@
       "message": "LGTM - thank you for testing the interactions with the other policies!",
       "revId": "26ad56dc3d045382122b561bcafecbb429c4fb49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a260b4c_b95b788d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T11:26:46Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "26ad56dc3d045382122b561bcafecbb429c4fb49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3132a1fb_67dcc162",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/file_system_read_write/file_system_read_write.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T11:26:46Z",
+      "side": 1,
+      "message": "nit: I am not sure that when using the testing matrix (param) all tests will end up overriding the same screenshot (when failures happen).",
+      "range": {
+        "startLine": 169,
+        "startChar": 88,
+        "endLine": 169,
+        "endChar": 95
+      },
+      "revId": "26ad56dc3d045382122b561bcafecbb429c4fb49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
