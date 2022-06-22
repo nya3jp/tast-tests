@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed0bd4f_48efc4f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-06-22T10:49:49Z",
+      "side": 1,
+      "message": "Ok, I have chosen the second option in order to avoid repeating similar text within a single message.",
+      "revId": "d5110e73b912d9b2b5fce3ff515851cda7b0d824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
