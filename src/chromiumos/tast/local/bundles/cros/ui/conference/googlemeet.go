@@ -57,6 +57,8 @@ const (
 	retryTimes        = 3
 )
 
+var meetWebArea = nodewith.NameContaining(meetTitle).Role(role.RootWebArea)
+
 // Join joins a new conference room.
 func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur bool) error {
 	tconn := conf.tconn
@@ -325,54 +327,38 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		return nil
 	}
 
-	meetWebArea := nodewith.NameContaining(meetTitle).Role(role.RootWebArea)
 	// Checks the number of participants in the conference that
 	// for different tiers testing would ask for different size.
 	checkParticipantsNum := func(ctx context.Context) error {
-		participant := nodewith.NameRegex(regexp.MustCompile(`^[\d]+$`)).Role(role.StaticText).Ancestor(meetWebArea)
-		if err := uiauto.Combine("wait for the meet page to load participant",
-			conf.closeNotifDialog(),
-			// Some DUT models have poor performance. When joining
-			// a large conference (over 15 participants), it would take much time
-			// to render DOM elements. Set a longer timer here.
-			ui.WithTimeout(longUITimeout).WaitUntilExists(participant),
-		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to wait participant info")
-		}
-		participantInfo, err := ui.Info(ctx, participant)
-		if err != nil {
-			return errors.Wrap(err, "failed to get participant info")
-		}
-		strs := strings.Split(participantInfo.Name, " ")
-		num, err := strconv.ParseInt(strs[0], 10, 64)
-		if err != nil {
-			return errors.Wrap(err, "cannot parse number of participants")
-		}
-
-		// Check number of participants following this logic:
+		// Check the number of participants following this logic:
 		// - Class size room: >= 38 participants
 		// - Large size room: 16 ~ 17 participants
 		// - Small size room: 5 ~ 6 participants
 		// - One to one room: 2
+
 		roomSize := conf.roomSize
-		participantNumber := int(num)
-		if participantNumber == 1 {
-			return ParticipantError(errors.Wrapf(err, "there are no other participants in the conference room %q; meeting participant number got %d; want %d", room, num, roomSize))
+		participants, err := conf.GetParticipants(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get the the number of meeting participants")
+		}
+		if participants == 1 {
+			return ParticipantError(errors.Wrapf(err, "there are no other participants in the conference room %q; meeting participant number got %d; want %d", room, participants, roomSize))
 		}
 		switch roomSize {
 		case ClassRoomSize:
-			if participantNumber < roomSize {
-				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want at least %d", room, num, roomSize))
+			if participants < roomSize {
+				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want at least %d", room, participants, roomSize))
 			}
 		case SmallRoomSize, LargeRoomSize:
-			if participantNumber != roomSize && participantNumber != roomSize+1 {
-				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want %d ~ %d", room, num, roomSize, roomSize+1))
+			if participants != roomSize && participants != roomSize+1 {
+				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want %d ~ %d", room, participants, roomSize, roomSize+1))
 			}
 		case TwoRoomSize:
-			if participantNumber != roomSize {
-				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want %d", room, num, roomSize))
+			if participants != roomSize {
+				return ParticipantError(errors.Wrapf(err, "room url %q; meeting participant number got %d; want %d", room, participants, roomSize))
 			}
 		}
+
 		return nil
 	}
 
@@ -390,6 +376,34 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		// Add retry to get the correct participants number.
 		ui.WithInterval(time.Second).Retry(5, checkParticipantsNum),
 	)(ctx)
+}
+
+// GetParticipants returns the number of meeting participants.
+func (conf *GoogleMeetConference) GetParticipants(ctx context.Context) (int, error) {
+	ui := conf.ui
+
+	participant := nodewith.NameRegex(regexp.MustCompile(`^[\d]+$`)).Role(role.StaticText).Ancestor(meetWebArea)
+	if err := uiauto.NamedCombine("wait for the meet page to load participant",
+		conf.closeNotifDialog(),
+		// Some DUT models have poor performance. When joining
+		// a large conference (over 15 participants), it would take much time
+		// to render DOM elements. Set a longer timer here.
+		ui.WithTimeout(longUITimeout).WaitUntilExists(participant),
+	)(ctx); err != nil {
+		return 0, errors.Wrap(err, "failed to wait participant info")
+	}
+
+	node, err := ui.Info(ctx, participant)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get participant info")
+	}
+	info := strings.Split(node.Name, " ")
+	participants, err := strconv.ParseInt(info[0], 10, 64)
+	if err != nil {
+		return 0, errors.Wrap(err, "cannot parse number of participants")
+	}
+
+	return int(participants), nil
 }
 
 // VideoAudioControl controls the video and audio during conference.
@@ -713,7 +727,6 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 		}
 		return uiauto.NamedAction("switch tab to "+tabName, conf.uiHandler.SwitchToChromeTabByName(tabName))
 	}
-	meetWebArea := nodewith.NameContaining(meetTitle).Role(role.RootWebArea)
 	alertDialog := nodewith.Name("Your screen is still visible to others").Role(role.Alert)
 	closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(alertDialog)
 	closeAlertDialog := uiauto.IfSuccessThen(

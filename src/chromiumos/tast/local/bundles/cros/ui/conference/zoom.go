@@ -134,27 +134,13 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 	// Checks the number of participants in the conference that
 	// for different tiers testing would ask for different size
 	checkParticipantsNum := func(ctx context.Context) error {
-		participant := nodewith.NameContaining("open the participants list pane").Role(role.Button)
-		noParticipant := nodewith.NameContaining("[0] particpants").Role(role.Button)
-		if err := uiauto.Combine("wait participants",
-			ui.WaitUntilExists(participant),
-			ui.WithTimeout(mediumUITimeout).WaitUntilGone(noParticipant),
-		)(ctx); err != nil {
-			return errors.Wrap(err, "failed to wait participants")
-		}
-		participantInfo, err := ui.Info(ctx, participant)
+		roomSize := conf.roomSize
+		participants, err := conf.GetParticipants(ctx)
 		if err != nil {
-			return errors.Wrap(err, "failed to get participant info")
+			return errors.Wrap(err, "failed to get the the number of meeting participants")
 		}
-		testing.ContextLog(ctx, "Get participant info: ", participantInfo.Name)
-		strs := strings.Split(participantInfo.Name, "[")
-		strs = strings.Split(strs[1], "]")
-		num, err := strconv.ParseInt(strs[0], 10, 64)
-		if err != nil {
-			return errors.Wrap(err, "cannot parse number of participants")
-		}
-		if int(num) != conf.roomSize {
-			return errors.Wrapf(err, "meeting participant number is %d but %d is expected", num, conf.roomSize)
+		if int(participants) != roomSize {
+			return errors.Wrapf(err, "meeting participant number is %d but %d is expected", participants, roomSize)
 		}
 		return nil
 	}
@@ -222,6 +208,34 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		ui.Retry(3, joinAudio),
 		startVideo,
 	)(ctx)
+}
+
+// GetParticipants returns the number of meeting participants.
+func (conf *ZoomConference) GetParticipants(ctx context.Context) (int, error) {
+	ui := conf.ui
+
+	participant := nodewith.NameContaining("open the participants list pane").Role(role.Button)
+	noParticipant := nodewith.NameContaining("[0] particpants").Role(role.Button)
+	if err := uiauto.NamedCombine("wait participants",
+		ui.WaitUntilExists(participant),
+		ui.WithTimeout(mediumUITimeout).WaitUntilGone(noParticipant),
+	)(ctx); err != nil {
+		return 0, errors.Wrap(err, "failed to wait participant info")
+	}
+
+	node, err := ui.Info(ctx, participant)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get participant info")
+	}
+	testing.ContextLog(ctx, "Get participant info: ", node.Name)
+	info := strings.Split(node.Name, "[")
+	info = strings.Split(info[1], "]")
+	participants, err := strconv.ParseInt(info[0], 10, 64)
+	if err != nil {
+		return 0, errors.Wrap(err, "cannot parse number of participants")
+	}
+
+	return int(participants), nil
 }
 
 // SetLayoutMax sets the conference UI layout to max tiled grid.

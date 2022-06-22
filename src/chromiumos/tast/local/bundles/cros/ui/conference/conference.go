@@ -49,6 +49,7 @@ type Conference interface {
 	Presenting(ctx context.Context, application googleApplication) error
 	End(ctx context.Context) error
 	SetBrowser(br *browser.Browser)
+	GetParticipants(ctx context.Context) (int, error)
 	LostNetworkCount() int
 	DisplayAllParticipantsTime() time.Duration
 }
