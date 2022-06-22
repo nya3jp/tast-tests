@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9539a68_0f3a9af5",
+        "filename": "src/chromiumos/tast/local/screenshot/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-22T03:14:12Z",
+      "side": 1,
+      "message": "I disagree. Tablet should not be supported by default, as it produces several times as many screendiffs, something which a test writer may not be aware of when writing the test.\n\nIf the ease of code writing is your concern, then this is a non-issue. We can always just add a TabletWindowState and ClamshellWindowState to config or provide similar helper functions.",
+      "parentUuid": "3d7212a3_bee36a36",
+      "range": {
+        "startLine": 110,
+        "startChar": 22,
+        "endLine": 110,
+        "endChar": 39
+      },
+      "revId": "32e59ef4dba0fe2cf11de1a3970740d476a27e95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a175374_eb51b3bc",
         "filename": "src/chromiumos/tast/local/screenshot/differ.go",
         "patchSetId": 1
