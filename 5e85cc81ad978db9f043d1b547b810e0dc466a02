@@ -34,6 +34,24 @@
       "parentUuid": "0a5b3db3_0803dae8",
       "revId": "5e85cc81ad978db9f043d1b547b810e0dc466a02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9778b1_2c46c8dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302660
+      },
+      "writtenOn": "2022-06-22T08:12:42Z",
+      "side": 1,
+      "message": "We decided to lacros-tok team for now.",
+      "parentUuid": "f79177bd_d34748a4",
+      "revId": "5e85cc81ad978db9f043d1b547b810e0dc466a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
