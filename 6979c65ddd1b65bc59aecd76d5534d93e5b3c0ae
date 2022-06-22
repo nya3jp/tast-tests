@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b52981f_bc4ca77e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511666
+      },
+      "writtenOn": "2022-06-22T10:33:54Z",
+      "side": 1,
+      "message": "Alternatively, we could consider just setting the range as `0x00,0x00` once and for all in line 273. I wasn\u0027t sure if that would have any side effects on DUTs that worked the first time. There may be a better approach, but for now, this fix would only be applied if the first attempt in setting gbb flags fails.",
+      "revId": "6979c65ddd1b65bc59aecd76d5534d93e5b3c0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
