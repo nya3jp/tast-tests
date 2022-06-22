@@ -145,15 +145,17 @@ var firmwareVersionMap = map[FPBoardName]map[string]firmwareMetadata{
 }
 
 // BoardTransportIsUART returns true if the device communicates with the FPMCU
-// using a UART transport
+// using a UART transport.
 func BoardTransportIsUART(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
+	// To compare with CHROMEOS_RELEASE_BOARD in /etc/lsb-release.
 	var uartBoards = []string{"guybrush", "zork"}
 	hostBoard, err := reporters.New(d.DUT()).Board(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to query host board")
 	}
+	baseBoard := strings.Split(hostBoard, "-")
 	for i := range uartBoards {
-		if uartBoards[i] == hostBoard {
+		if baseBoard[0] == uartBoards[i] {
 			return true, nil
 		}
 	}
