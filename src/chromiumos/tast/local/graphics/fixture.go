@@ -134,8 +134,9 @@ func (f *gpuWatchHangsFixture) SetUp(ctx context.Context, s *testing.FixtState) 
 		`hangcheck recover!`,      // Freedreno
 		`mtk-mdp.*: cmdq timeout`, // Mediatek
 		`amdgpu: GPU reset begin!`,
-		`scp ipi .* ack time out !`, // Mediatek
-		`mtk-iommu .*: fault`,       // Mediatek (at least MT8183)
+		`scp ipi .* ack time out !`,                      // Mediatek
+		`mtk-iommu .*: fault`,                            // Mediatek (at least MT8183)
+		`qcom-venus .*video-codec: SFR message from FW:`, // Qualcomm
 	}
 	// TODO(pwang): add regex for memory faults.
 	f.regexp = regexp.MustCompile(strings.Join(hangRegexStrs, "|"))
