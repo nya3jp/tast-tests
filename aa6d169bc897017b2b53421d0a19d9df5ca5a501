@@ -16,6 +16,24 @@
       "message": "How does this splitting work? I don\u0027t see an extra `HardwareDep` or similar, nor do I see code to force a specific display mode?",
       "revId": "aa6d169bc897017b2b53421d0a19d9df5ca5a501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f368d0_0924b57b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-22T05:01:47Z",
+      "side": 1,
+      "message": "This is handled in this separate CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3715177/1",
+      "parentUuid": "aa8f556c_5d8aebdd",
+      "revId": "aa6d169bc897017b2b53421d0a19d9df5ca5a501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
