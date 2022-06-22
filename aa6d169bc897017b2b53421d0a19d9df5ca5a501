@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "561fb8cd_60300823",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-22T07:08:13Z",
+      "side": 1,
+      "message": "I was planning to submit them together (when multiple CLs in a chain are CQ+1/2\u0027ed together, they will share one builder thus the number of tests remains the same, if that\u0027s your concern). Small CLs rule :)\n\nSince the other CL is small, it makes sense to add it here. Merged the other CL here.",
+      "parentUuid": "05c53b81_9b6bc8dd",
+      "revId": "aa6d169bc897017b2b53421d0a19d9df5ca5a501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "caf12c9e_8ee44018",
@@ -67,6 +85,30 @@
       "writtenOn": "2022-06-22T06:21:09Z",
       "side": 1,
       "message": "You\u0027re using test name to communicate information to the fixture? Might be fragile, how about we do something more explicit e.g. param to the test or new fixtures?",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "aa6d169bc897017b2b53421d0a19d9df5ca5a501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e11c4364_8e0b0124",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-22T07:08:13Z",
+      "side": 1,
+      "message": "That\u0027s absolutely right. The current limitation is that the params are not accessible in `PreTest`, already sent a feature request to the Tast team (http://b/235164130). \n\nCurrently there are two solutions:\n1, set the display mode in `PreTest`, and use test name (I used enums instead of free-form string to reduce the risks) for now. Then revise to use param.Val to communicate once http://b/235164130 is resolved.\n2, create new fixtures and set the display mode in `SetUp`. The only issue is that `Setup` only runs once for all sharing tests, and if one test happens to change the display mode and doesn\u0027t revert it, the following tests will be affected, while (1) ensures every test is running in the right mode.\n\nLet me know what you think.",
+      "parentUuid": "caf12c9e_8ee44018",
       "range": {
         "startLine": 74,
         "startChar": 24,
