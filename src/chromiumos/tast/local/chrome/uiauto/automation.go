@@ -465,6 +465,28 @@ func (ac *Context) WaitUntilExists(finder *nodewith.Finder) Action {
 	}
 }
 
+// WaitUntilEnabled returns a function that waits until the node found by the
+// input finder is not disabled. Use it when an action should be taken after
+// the node is enabled. E.g.
+// uiauto.Combine("Click 'Save' button",
+//   ui.WaitUntilEnabled(saveButton),
+//   ui.LeftClick(saveButton)
+// )
+func (ac *Context) WaitUntilEnabled(finder *nodewith.Finder) Action {
+	return func(ctx context.Context) error {
+		return testing.Poll(ctx, func(ctx context.Context) error {
+			nodeInfo, err := ac.Info(ctx, finder)
+			if err != nil {
+				return err
+			}
+			if nodeInfo.Restriction == restriction.Disabled {
+				return errors.Wrapf(err, "%v is diabled", nodeInfo.Name)
+			}
+			return nil
+		}, &ac.pollOpts)
+	}
+}
+
 // ErrNodeAppeared is returned if node is expected not to be visible
 var ErrNodeAppeared = errors.New("node appeared when it should not")
 

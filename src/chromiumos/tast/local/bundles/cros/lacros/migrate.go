@@ -182,7 +182,7 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 	saveButton := nodewith.Name("Save").Role(role.Button)
 	if err := uiauto.Combine("Click 'Save' button",
 		ui.WaitUntilExists(saveButton),
-		ui.WaitUntilGone(saveButton.Attribute("disabled", "")),
+		ui.WaitUntilEnabled(saveButton),
 		ui.LeftClick(saveButton),
 		ui.WaitUntilGone(saveButton),
 	)(ctx); err != nil {
