@@ -51,10 +51,6 @@ func SAPCaps(ctx context.Context, s *testing.State) {
 		s.Error("AP mode not supported")
 	}
 
-	if res[0].MaxSTAs < 16 {
-		s.Error("Less than 16 associated STAs are supported in AP mode: ", res[0].MaxSTAs)
-	}
-
 	if res[0].SupportHESTA {
 		if !res[0].SupportHEAP {
 			s.Error("Device doesn't support HE in AP mode")
@@ -65,5 +61,9 @@ func SAPCaps(ctx context.Context, s *testing.State) {
 		if !res[0].SupportHE40HE80AP {
 			s.Error("Device doesn't support 5ghz HE in AP mode")
 		}
+	}
+
+	if res[0].MaxSTAs < 16 {
+		s.Log("Less than 16 associated STAs are supported in AP mode: ", res[0].MaxSTAs)
 	}
 }
