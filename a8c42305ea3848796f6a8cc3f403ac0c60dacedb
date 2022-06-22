@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f6864c1_908ecaa9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1526354
+      },
+      "writtenOn": "2022-06-22T17:51:02Z",
+      "side": 1,
+      "message": "Hello,\nThe CL was rebased and had a small update in the test. Could you PTAL again? Thank you!",
+      "revId": "a8c42305ea3848796f6a8cc3f403ac0c60dacedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
