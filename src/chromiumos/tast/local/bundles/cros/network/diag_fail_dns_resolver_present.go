@@ -42,7 +42,7 @@ func init() {
 			"stevenjb@chromium.org",          // network-health tech lead
 			"cros-network-health@google.com", // network-health team
 		},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "no_qemu"},
 		Attr:         []string{"group:mainline"},
 		Fixture:      "networkDiagnosticsShillReset",
 		Params: []testing.Param{{
