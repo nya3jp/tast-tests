@@ -33,11 +33,13 @@ func init() {
 
 func PersistentCreateAuthSession(ctx context.Context, s *testing.State) {
 	const (
-		userName        = "foo@bar.baz"
-		userPassword    = "secret"
-		keyLabel        = "foo"
-		testFile        = "file"
-		testFileContent = "content"
+		userName                              = "foo@bar.baz"
+		userPassword                          = "secret"
+		keyLabel                              = "foo"
+		testFile                              = "file"
+		testFileContent                       = "content"
+		wrongPassword                         = "wrongPassword"
+		cryptohomeErrorAuthorizationKeyFailed = 3
 	)
 
 	ctxForCleanUp := ctx
@@ -90,7 +92,17 @@ func PersistentCreateAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, keyLabel, false, false)
+	// Authenticate with the wrong password.
+	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, wrongPassword, keyLabel, false, false)
+	var exitErr *hwsec.CmdExitError
+	if !errors.As(err, &exitErr) {
+		s.Fatalf("Unexpected error: got %q; want *hwsec.CmdExitError", err)
+	}
+	if exitErr.ExitCode != cryptohomeErrorAuthorizationKeyFailed {
+		s.Fatalf("Unexpected exit code: got %d; want %d", exitErr.ExitCode, cryptohomeErrorAuthorizationKeyFailed)
+	}
+
+	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, keyLabel, false, false)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
