@@ -39,6 +39,30 @@
       },
       "revId": "8e936cbadf6d3e5d7df0cdb7ef96a6646e8ae3d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c5afd1d_26099322",
+        "filename": "src/chromiumos/tast/common/perf/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-22T16:08:17Z",
+      "side": 1,
+      "message": "Note that `Values.Save` always saves to the same file name (`results-chart.json` for our case).\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/perf/perf.go;l\u003d421;rcl\u003d9aed9e010d50e533be23b2d6afee28cba334e515\n\nThis means that `Values` in a list would save the the same file and overwrites the data written by previous `Values`. So we would end up with only the data of the last `Values` in the list.\n\nWhat problem do we hit when putting data of all runs into one `Values`? Is it the later runs would overwrite the data of previous runs? If so, could we use your `MergeWithSuffix`?",
+      "parentUuid": "c38a3893_06071ce7",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 1
+      },
+      "revId": "8e936cbadf6d3e5d7df0cdb7ef96a6646e8ae3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
