@@ -141,6 +141,30 @@
       },
       "revId": "aa6d169bc897017b2b53421d0a19d9df5ca5a501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d76299dc_339b3c5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-22T23:19:32Z",
+      "side": 1,
+      "message": "Thanks for the headsup! Actually we can combine 1 and 2. Though currently `PreTest` cannot communicate with test param, but it can access `preTestData`.\n\nRevised to use new fixtures.",
+      "parentUuid": "8de15d33_e768eaca",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "aa6d169bc897017b2b53421d0a19d9df5ca5a501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
