@@ -123,6 +123,24 @@
       "parentUuid": "b3ba1dd3_3bf4707d",
       "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6cdcb92_8ef4f9bd",
+        "filename": "src/chromiumos/tast/local/chrome/options_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-22T14:15:38Z",
+      "side": 1,
+      "message": "I\u0027d rather to avoid stepping into chrome package internals on testing cros/ui.\n\nThe responsibility of the cros/ui is to convert proto into chrome.Option.\nThus, my recommendation is to focus on it, i.e., introducing a way to check the equality of chrome.Option. Converting it into struct achieve it, and thus is my recommendation. If you can come up with other ideas, I\u0027m open to discuss.\nActually, proto API looks designed to be mapped into chrome.Option, i.e., it is just straightforward API conversion, and your utility looks focusing on it.\n\nConverting chrome.Option to chrome.Config, which is internal as you find, is the responsibility of the chrome package. If you\u0027d like to add tests to convert chrome.Option to chrome.Config, that can be added as a unittest of chrome package, without needing to export any internal stuff.",
+      "parentUuid": "f6a82334_2da14d41",
+      "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
