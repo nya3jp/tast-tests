@@ -16,6 +16,149 @@
       "message": "Added new test, please take a look.",
       "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0b1c0ab_b00f5913",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T10:49:44Z",
+      "side": 1,
+      "message": "Thanks for the new test!",
+      "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1607e13d_cfebe86b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T10:49:44Z",
+      "side": 1,
+      "message": "Why this value was picked?",
+      "range": {
+        "startLine": 52,
+        "startChar": 49,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e463448_4bf19694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T10:49:44Z",
+      "side": 1,
+      "message": "Let\u0027s close the OS Settings app and not leave it opened.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b3949b8_d4209ab6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T10:49:44Z",
+      "side": 1,
+      "message": "I am not sure if the word \"syntaxis\" is intended or is a glued \"syntax\" and \"is\". If intended please ignore this comment.",
+      "range": {
+        "startLine": 153,
+        "startChar": 53,
+        "endLine": 153,
+        "endChar": 61
+      },
+      "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dd99a56_a6f25e9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T10:49:44Z",
+      "side": 1,
+      "message": "I guess this line violates the syntax. Perhaps add the comment on the right stating that this causes intentional syntax violation.",
+      "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de7d7b43_13c2b196",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T10:49:44Z",
+      "side": 1,
+      "message": "Similarly as above - a comment (if this is the violation) would help. Also explaining why this causes syntax error.",
+      "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53656e7b_3f4eb9e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T10:49:44Z",
+      "side": 1,
+      "message": "What is the blocklisted option? Allowing weak crypto?",
+      "range": {
+        "startLine": 178,
+        "startChar": 49,
+        "endLine": 178,
+        "endChar": 77
+      },
+      "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
