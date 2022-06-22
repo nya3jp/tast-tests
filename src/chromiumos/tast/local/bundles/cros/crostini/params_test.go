@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/genparams"
+	"chromiumos/tast/local/chrome/devicemode"
 	"chromiumos/tast/local/crostini"
 )
 
@@ -180,14 +181,25 @@ var appTests = []string{
 
 func TestAppTestParams(t *testing.T) {
 	for _, filename := range appTests {
-		params := crostini.MakeTestParamsFromList(t, []crostini.Param{{
-			Timeout:             15 * time.Minute,
-			MinimalSet:          true,
-			StableHardwareDep:   "crostini.CrostiniAppStable",
-			UnstableHardwareDep: "crostini.CrostiniAppUnstable",
-			UseLargeContainer:   true,
-			UseFixture:          true,
-		}})
+		params := crostini.MakeTestParamsFromList(t, []crostini.Param{
+			{
+				Timeout:             15 * time.Minute,
+				MinimalSet:          true,
+				StableHardwareDep:   "crostini.CrostiniAppStable",
+				UnstableHardwareDep: "crostini.CrostiniAppUnstable",
+				UseLargeContainer:   true,
+				UseFixture:          true,
+				DeviceMode:          devicemode.TabletMode,
+			},
+			{
+				Timeout:             15 * time.Minute,
+				MinimalSet:          true,
+				StableHardwareDep:   "crostini.CrostiniAppStable",
+				UnstableHardwareDep: "crostini.CrostiniAppUnstable",
+				UseLargeContainer:   true,
+				UseFixture:          true,
+				DeviceMode:          devicemode.ClamshellMode,
+			}})
 		genparams.Ensure(t, filename, params)
 	}
 }
