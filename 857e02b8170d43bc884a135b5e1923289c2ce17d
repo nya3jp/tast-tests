@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf4cf1a_78a72c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-06-22T00:05:05Z",
+      "side": 1,
+      "message": "Is this still used anywhere? If not, can we remove it?",
+      "revId": "857e02b8170d43bc884a135b5e1923289c2ce17d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
