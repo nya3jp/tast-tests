@@ -26,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AutomaticTicketAccessFileSystem,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks the behavior of accessing file system secured with Kerberos using Kerberos account",
 		Contacts: []string{
 			"kamilszarek@google.com", // Test author
