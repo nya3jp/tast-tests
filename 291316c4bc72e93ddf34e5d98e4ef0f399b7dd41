@@ -16,6 +16,24 @@
       "message": "There are ~20 code doing the same.\nAlong with your original change, they need to be updated, too.\nCould you fix them, too?",
       "revId": "291316c4bc72e93ddf34e5d98e4ef0f399b7dd41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13b22fe6_2da3902d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-06-22T15:23:07Z",
+      "side": 1,
+      "message": "The only path in testexec that wraps an error is in SeparatedOutput.  I checked all the places that call testexec.SeparatedOutput, and none of them were calling ExitCode or GetWaitStatus on the result.  I think the other places that are casting the err to exec.ExitStatus are safe because they\u0027re operating directly on a non-wrapped error.\n\nHowever, I did notice that testexec has unit tests, so I added the output-capturing wrappers to make sure they\u0027re all handled.  PTAL.",
+      "parentUuid": "450e7519_4774399c",
+      "revId": "291316c4bc72e93ddf34e5d98e4ef0f399b7dd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
