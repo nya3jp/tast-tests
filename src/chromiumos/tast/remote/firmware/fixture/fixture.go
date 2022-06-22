@@ -273,10 +273,12 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 		if err := i.value.Helper.DUT.Conn().CommandContext(ctx, "flashrom", "-p", "host", "--wp-disable").Run(exec.DumpLogOnError); err != nil {
 			s.Fatal("Failed to disable software WP: ", err)
 		}
+
 		s.Log("Setting GBB flags to ", i.value.GBBFlags.Set)
-		if err := common.SetGBBFlags(ctx, i.value.Helper.DUT, i.value.GBBFlags.Set); err != nil {
+		if err := i.setGBB(ctx, s); err != nil {
 			s.Fatal("SetGBBFlags failed: ", err)
 		}
+
 		if common.GBBFlagsChanged(curr, i.value.GBBFlags, common.RebootRequiredGBBFlags()) {
 			s.Log("Resetting DUT due to GBB flag change")
 			rebootRequired = true
@@ -461,6 +463,31 @@ func (i *impl) rebootToMode(ctx context.Context, mode common.BootMode, opts ...f
 	}
 	if err := ms.RebootToMode(ctx, mode, opts...); err != nil {
 		return errors.Wrapf(err, "failed to reboot to mode %q", mode)
+	}
+	return nil
+}
+
+// setGBB sets gbb flags to the specified values, and allows two attempts.
+// If the first attempt fails, the second attempt would perform an extra step
+// to clear the ap software write protection range (i.e. 0x00, 0x00), and then
+// retry SetGBBFlags again. This procedure aims for solving b/236026413.
+func (i *impl) setGBB(ctx context.Context, s *testing.FixtTestState) error {
+	for attempt := 1; attempt <= 2; attempt++ {
+		if err := common.SetGBBFlags(ctx, i.value.Helper.DUT, i.value.GBBFlags.Set); err != nil {
+			switch attempt {
+			case 1:
+				s.Log("SetGBBFlags failed. Attempting to clear host wp range and retry")
+				clearRange := "0x00" + "," + "0x00"
+				if err := i.value.Helper.DUT.Conn().CommandContext(
+					ctx, "flashrom", "-p", "host", "--wp-disable", "--wp-range", clearRange).Run(exec.DumpLogOnError); err != nil {
+					return errors.Wrap(err, "failed to disable software WP with cleared range")
+				}
+			case 2:
+				return err
+			}
+		} else {
+			break
+		}
 	}
 	return nil
 }
