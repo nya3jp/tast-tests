@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9b104c7_42f5b294",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-06-22T20:58:08Z",
+      "side": 1,
+      "message": "still LGTM. btw CQ dry run doesn\u0027t actually run any Tast tests so it\u0027s not super useful for CLs in this repo. if the test can build+run locally then you should be good to try and CQ+2",
+      "revId": "433dab9e530c1a2543cdc48c5601abd93cb149df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
