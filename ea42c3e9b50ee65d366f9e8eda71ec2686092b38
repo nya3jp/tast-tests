@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5243533_c4a6b3f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-22T22:05:45Z",
+      "side": 1,
+      "message": "nit: End with a `.`.",
+      "revId": "ea42c3e9b50ee65d366f9e8eda71ec2686092b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cac3c24e_c57f4cbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-22T22:05:45Z",
+      "side": 1,
+      "message": "nit: End with a `.`.",
+      "revId": "ea42c3e9b50ee65d366f9e8eda71ec2686092b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51694120_235f31a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-22T22:05:45Z",
+      "side": 1,
+      "message": "nit: End with a `.`.",
+      "revId": "ea42c3e9b50ee65d366f9e8eda71ec2686092b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b616f6_a5586e72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-22T22:05:45Z",
+      "side": 1,
+      "message": "Are we sure that the video would be playing after pressing \u003cspace\u003e for 20s? Depending on 5s interval in 20s so that we pressed it 4 times? If so, let\u0027s document it.",
+      "revId": "ea42c3e9b50ee65d366f9e8eda71ec2686092b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
