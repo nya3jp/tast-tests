@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4760600_3b094fe3",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-22T21:01:52Z",
+      "side": 1,
+      "message": "Could you add a comment that these values are checked against `CHROMEOS_RELEASE_BOARD` in `/etc/lsb-release`? ([code](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/reporters/platform.go;l\u003d17-42;drc\u003d019a1d7f2d757ebfe1ee206f796b9563e0d721a3))\n\nBy the way, I think that we need to add `zork-kernelnext` and `guybrush-kernelnext` also, because they can appear too (provided an example `/etc/lsb-release` for `nocturne-kernelnext` but this will apply for other boards too).\n\n[lsb-release for zork-arc-r](https://storage.cloud.google.com/chromeos-test-logs/test-runner/prod/2022-06-17/edafe7f2-c233-4beb-8e01-7d6426c4634e/autoserv_test/tast/results/system_logs/lsb-release)\n```\nCHROMEOS_RELEASE_BOARD\u003dzork-arc-r\n```\n\n[lsb-release for nocturne-kernelnext](https://storage.cloud.google.com/chromeos-test-logs/test-runner/prod/2022-06-17/51c9701a-703a-4f39-9c52-d8f2ece9ed8e/autoserv_test/tast/results/system_logs/lsb-release)\n```\nCHROMEOS_RELEASE_BOARD\u003dnocturne-kernelnext\n```",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 60
+      },
+      "revId": "36be0aa8580b7f9aa96b15d43b8a60215ccbd779",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
