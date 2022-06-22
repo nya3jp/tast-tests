@@ -62,22 +62,22 @@ type guestLogEntry struct {
 }
 
 var preRunGuestLogEntryList = []guestLogEntry{
-	guestLogEntry{
+	{
 		entryName:   "glxinfo output",
 		logFileName: "glxinfo.txt",
 		command:     []string{"glxinfo", "-display", ":0"},
 	},
-	guestLogEntry{
+	{
 		entryName:   "dpkg output",
 		logFileName: "dpkg.txt",
 		command:     []string{"dpkg", "-l"},
 	},
-	guestLogEntry{
+	{
 		entryName:   "pacman output",
 		logFileName: "pacman.txt",
 		command:     []string{"pacman", "-Q"},
 	},
-	guestLogEntry{
+	{
 		entryName:   "lsb-release",
 		logFileName: "lsb-release.txt",
 		command:     []string{"cat", "/etc/lsb-release"},
@@ -85,7 +85,7 @@ var preRunGuestLogEntryList = []guestLogEntry{
 }
 
 var postRunGuestLogEntryList = []guestLogEntry{
-	guestLogEntry{
+	{
 		entryName:   "dmesg output",
 		logFileName: "dmesg.log",
 		command:     []string{"dmesg"},
@@ -436,7 +436,7 @@ func (s *fileServer) ServeHTTP(wr http.ResponseWriter, req *http.Request) {
 	wr.WriteHeader(http.StatusOK)
 }
 
-func startFileServer(ctx context.Context, addr, outDir string, cloudStorage *testing.CloudStorage, repository *comm.RepositoryInfo, gpi *graphicsPowerInterface) *http.Server {
+func startFileServer(ctx context.Context, addr, outDir string, cloudStorage *testing.CloudStorage, repository *comm.RepositoryInfo, gpi *graphicsPowerInterface) (*http.Server, error) {
 	handler := &fileServer{cloudStorage: cloudStorage, repository: repository, outDir: outDir, gpi: gpi}
 	testing.ContextLog(ctx, "Starting server at "+addr)
 	server := &http.Server{
@@ -446,12 +446,17 @@ func startFileServer(ctx context.Context, addr, outDir string, cloudStorage *tes
 			return ctx
 		},
 	}
+	listener, err := net.Listen("tcp", server.Addr)
+	// The server will close the listener when it closes, so no need to defer that.
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to listen on %v", server.Addr)
+	}
 	go func() {
-		if err := server.ListenAndServe(); err != http.ErrServerClosed {
+		if err := server.Serve(listener); err != http.ErrServerClosed {
 			testing.ContextLog(ctx, "Error: ListenAndServe() failed: ", err)
 		}
 	}()
-	return server
+	return server, nil
 }
 
 func pushTraceReplayApp(ctx context.Context, guest IGuestOS, serverIP string, serverPort int) error {
@@ -619,7 +624,10 @@ func RunTraceReplayTest(ctx context.Context, resultDir string, cloudStorage *tes
 	}
 
 	serverAddr := fmt.Sprintf("%s:%d", outboundIP, fileServerPort)
-	server := startFileServer(ctx, serverAddr, outDir, cloudStorage, &group.Repository, gpi)
+	server, err := startFileServer(ctx, serverAddr, outDir, cloudStorage, &group.Repository, gpi)
+	if err != nil {
+		return errors.Wrap(err, "failed to start file server")
+	}
 	defer func() {
 		if err := server.Shutdown(ctx); err != nil {
 			testing.ContextLog(ctx, "WARNING: Unable to shutdown file server: ", err)
