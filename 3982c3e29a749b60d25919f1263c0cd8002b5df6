@@ -16,6 +16,23 @@
       "message": "LGTM 😊",
       "revId": "3982c3e29a749b60d25919f1263c0cd8002b5df6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ad3d2d_48fe967f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T11:28:31Z",
+      "side": 1,
+      "message": "LGTM. Thanks for the CL. ",
+      "revId": "3982c3e29a749b60d25919f1263c0cd8002b5df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
