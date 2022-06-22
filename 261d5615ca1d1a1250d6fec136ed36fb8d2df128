@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c603d41a_e5f967a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-22T01:44:20Z",
+      "side": 1,
+      "message": "Replaced `resolve(false)` with `reject()`.\n\nI\u0027ve also added one more asynchronous call before resolving the promise to make sure that adding the data into object store is successful.\n\nCould you take another look please?\n\nThanks!",
+      "revId": "261d5615ca1d1a1250d6fec136ed36fb8d2df128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
