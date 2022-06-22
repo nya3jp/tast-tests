@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b14a7d0d_8647f00a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 25
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-22T23:11:12Z",
+      "side": 1,
+      "message": "Hey Prashant,\n\nI changed the commit message to describe the issue more clearly and point out the test was refactored. In the current lab environment, we cannot run `lsusb` on DUT if the servo is off, so I do not think we can have the same mechanism used in the old autotest to simulate USB connect/disconnect.",
+      "parentUuid": "3c4e2892_a1583f1e",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "b7d4fad0dc2b5da0a820864d0d01e531210b987c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9fb94d94_8777ed29",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 25
