@@ -58,6 +58,10 @@ type Cmd struct {
 	log bytes.Buffer
 	// ctx is the context given to Command that specifies the timeout of the external command.
 	ctx context.Context
+	// subCtx is the context given to the underlying os.exec.Command.
+	subCtx context.Context
+	// subCtxCancel forces the cancellation of the os.exec.Command.
+	subCtxCancel context.CancelFunc
 	// timedOut indicates if the process hit timeout. This is set in Wait().
 	timedOut bool
 	// watchdogStop is notified in Wait to ask the watchdog goroutine to stop.
@@ -96,7 +100,10 @@ var (
 //
 // See os/exec package for details.
 func CommandContext(ctx context.Context, name string, arg ...string) *Cmd {
-	cmd := exec.Command(name, arg...)
+	// We ignore context timeout warning of linter because we use this
+	// context for explicit cancellation control of the underlying Command.
+	subCtx, subCtxCancel := context.WithCancel(context.Background()) // NOLINT
+	cmd := exec.CommandContext(subCtx, name, arg...)
 
 	// Enable Setpgid so we can terminate the whole subprocesses.
 	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
@@ -104,6 +111,8 @@ func CommandContext(ctx context.Context, name string, arg ...string) *Cmd {
 	return &Cmd{
 		Cmd:          cmd,
 		ctx:          ctx,
+		subCtx:       subCtx,
+		subCtxCancel: subCtxCancel,
 		watchdogStop: make(chan bool, 1),
 	}
 }
@@ -320,6 +329,12 @@ func (c *Cmd) Signal(signal syscall.Signal) error {
 	if c.Process == nil {
 		return errNotStarted
 	}
+
+	// Force cancelation for the context passed to underlying
+	// os.exec.Command to ensure closure of outstanding FDs. We want to do
+	// it AFTER we issue kill signal, to ensure that the signal is sent to
+	// the whole process group, not only its leading process.
+	defer c.subCtxCancel()
 
 	// ProcessState may be set in another go-routine calling Wait(),
 	// so there's a room of timing issue.
