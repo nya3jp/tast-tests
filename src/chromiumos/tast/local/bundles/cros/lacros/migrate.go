@@ -84,7 +84,7 @@ func waitForHistoryEntry(ctx context.Context, ui *uiauto.Context, br *browser.Br
 	defer conn.Close()
 	alphabetLink := nodewith.Name(titleOfAlphabetPage).Role(role.Link)
 	if allowReload {
-		err = ui.RetryUntil(br.ReloadActiveTab, ui.WithTimeout(7*time.Second).WaitUntilExists(alphabetLink))(ctx)
+		err = ui.RetryUntil(br.ReloadActiveTab, ui.Exists(alphabetLink))(ctx)
 	} else {
 		err = ui.WaitUntilExists(alphabetLink)(ctx)
 	}
