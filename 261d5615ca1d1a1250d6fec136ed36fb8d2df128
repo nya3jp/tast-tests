@@ -16,6 +16,69 @@
       "message": "Replaced `resolve(false)` with `reject()`.\n\nI\u0027ve also added one more asynchronous call before resolving the promise to make sure that adding the data into object store is successful.\n\nCould you take another look please?\n\nThanks!",
       "revId": "261d5615ca1d1a1250d6fec136ed36fb8d2df128",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88ad91d_20aacfdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-22T13:11:20Z",
+      "side": 1,
+      "message": "could yo udrop this, too?",
+      "range": {
+        "startLine": 103,
+        "startChar": 50,
+        "endLine": 103,
+        "endChar": 54
+      },
+      "revId": "261d5615ca1d1a1250d6fec136ed36fb8d2df128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba80889_f7d38cef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-22T13:11:20Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "261d5615ca1d1a1250d6fec136ed36fb8d2df128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49df5ce8_90acaa8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-22T13:11:20Z",
+      "side": 1,
+      "message": "nit: nil here, as you no longer turn value.\n\nDitto for below.",
+      "range": {
+        "startLine": 225,
+        "startChar": 26,
+        "endLine": 225,
+        "endChar": 34
+      },
+      "revId": "261d5615ca1d1a1250d6fec136ed36fb8d2df128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
