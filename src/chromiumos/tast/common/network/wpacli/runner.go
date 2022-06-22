@@ -283,3 +283,46 @@ func (r *Runner) IsConnected(ctx context.Context, iface string) (bool, error) {
 
 	return false, nil
 }
+
+// ScanNetwork scans for specific network with SSID and returns nil if the network id found
+// in the scan results.
+func (r *Runner) ScanNetwork(ctx context.Context, dutConn *ssh.Conn, ssid string) error {
+	timeoutCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
+	const wpaMonitorStopTimeout = 2 * time.Second
+	wpaMonitor := new(WPAMonitor)
+	stop, ctx, err := wpaMonitor.StartWPAMonitor(timeoutCtx, dutConn, wpaMonitorStopTimeout)
+	if err != nil {
+		return errors.Wrap(err, "faled to start wpa monitor")
+	}
+	defer stop()
+
+	if err := r.scan(ctx); err != nil {
+		return errors.Wrap(err, "failed to trigger scan")
+	}
+
+	for {
+		event, err := wpaMonitor.WaitForEvent(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to wait for ScanResultsEvent event")
+		}
+		if event == nil { // timeout
+			return errors.Wrap(err, "timeout waiting for the ScanResultsEvent")
+		}
+		if _, scanSuccess := event.(*ScanResultsEvent); scanSuccess {
+			return nil
+		}
+	}
+
+	results, err := r.scanResults(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get the scan results")
+	}
+	for _, network := range results {
+		if network["SSID"] == ssid {
+			return nil
+		}
+	}
+
+	return errors.Errorf("failed the SSID=%s not found in the scan results", ssid)
+}
