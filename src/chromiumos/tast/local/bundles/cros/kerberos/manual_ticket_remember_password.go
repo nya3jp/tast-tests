@@ -29,7 +29,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ManualTicketRememberPassword,
-		LacrosStatus: testing.LacrosVariantUnneeded,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks if the remember password feature is working properly",
 		Contacts: []string{
 			"slutskii@google.com",

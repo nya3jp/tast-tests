@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -15,52 +15,49 @@ import (
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/kerberos"
-	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
+	"chromiumos/tast/local/mgs"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         ManualTicketAccessWebsite,
+		Func:         MgsManualTicketAccessWebsite,
 		LacrosStatus: testing.LacrosVariantNeeded,
-		Desc:         "Checks the behavior of accessing website secured by Kerberos after adding Kerberos ticket",
+		Desc:         "Checks if Kerberos is working properly in MGS",
 		Contacts: []string{
-			"kamilszarek@google.com", // Test author
-			"alexanderhartl@google.com",
+			"slutskii@google.com",
 			"chromeos-commercial-identity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"kerberos.username", "kerberos.password", "kerberos.domain"},
-		Fixture:      fixture.FakeDMS,
+		Fixture:      fixture.FakeDMSEnrolled,
 	})
 }
 
-func ManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
+func MgsManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(*fakedms.FakeDMS)
 	username := s.RequiredVar("kerberos.username")
 	password := s.RequiredVar("kerberos.password")
 	domain := s.RequiredVar("kerberos.domain")
 	config := kerberos.ConstructConfig(domain, username)
 
-	// Start a Chrome instance that will fetch policies from the FakeDMS.
-	cr, err := chrome.New(ctx,
-		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
-		chrome.DMSPolicy(fdms.URL),
-		chrome.KeepEnrollment())
-	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
-	}
+	mgs, cr, err := mgs.New(
+		ctx,
+		fdms,
+		mgs.DefaultAccount(),
+		mgs.AutoLaunch(mgs.MgsAccountID),
+		mgs.AddPublicAccountPolicies(mgs.MgsAccountID, []policy.Policy{&policy.KerberosEnabled{Val: true},
+			&policy.AuthServerAllowlist{Val: config.ServerAllowlist}}),
+	)
 
 	defer func(ctx context.Context) {
-		// Use cr as a reference to close the last started Chrome instance.
-		if err := cr.Close(ctx); err != nil {
+		// Use mgs as a reference to close the last started MGS instance.
+		if err := mgs.Close(ctx); err != nil {
 			s.Error("Failed to close Chrome connection: ", err)
 		}
 	}(ctx)
@@ -75,14 +72,6 @@ func ManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 	}
 
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_manual_ticket")
-
-	// Set Kerberos configuration.
-	if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{
-		&policy.KerberosEnabled{Val: true},
-		&policy.AuthServerAllowlist{Val: config.ServerAllowlist},
-	}); err != nil {
-		s.Fatal("Failed to update policies: ", err)
-	}
 
 	conn, err := cr.NewConn(ctx, config.WebsiteAddress)
 	if err != nil {
@@ -140,7 +129,9 @@ func ManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 
 	// Add a Kerberos ticket.
-	kerberos.AddTicket(ctx, cr, tconn, ui, keyboard, config, password)
+	if err := kerberos.AddTicket(ctx, cr, tconn, ui, keyboard, config, password); err != nil {
+		s.Fatal("Failed to add Kerberos ticket: ", err)
+	}
 
 	s.Log("Wait for website to have non-empty title")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
