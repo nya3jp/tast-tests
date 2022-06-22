@@ -33,6 +33,24 @@
       "message": "Is useFakeMediator true if and only if mediatorPubKeyHex is set? If so, can we merge them and e.g. use an empty string for mediatorPubKeyHex\n\nIf not, do we need to check if mediatorPubKeyHex is empty before writing it into customMediatorPubKeyFile?",
       "revId": "a594220017d02f4b95bd7ce9a00d3c84ced832f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b881ddff_6d5c0959",
+        "filename": "src/chromiumos/tast/local/cryptohome/recovery_test_tool.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-06-22T08:46:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d3f57c4_bcb87f5a",
+      "revId": "a594220017d02f4b95bd7ce9a00d3c84ced832f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
