@@ -16,6 +16,29 @@
       "message": "Hello,\nThe CL was rebased and had a small update in the test. Could you PTAL again? Thank you!",
       "revId": "a8c42305ea3848796f6a8cc3f403ac0c60dacedb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "656b7640_0fb737ca",
+        "filename": "src/chromiumos/tast/local/wallpaper/wallpaper.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-22T22:02:08Z",
+      "side": 1,
+      "message": "could you explain more about what this does? Are you waiting for the node to be visible in the ui tree or on screen? Note: a node may exist in the ui tree even though it is not visible on screen, especially in cases scrolling is needed.",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 86
+      },
+      "revId": "a8c42305ea3848796f6a8cc3f403ac0c60dacedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
