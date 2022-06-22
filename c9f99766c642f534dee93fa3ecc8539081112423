@@ -16,6 +16,24 @@
       "message": "Hi Matt Stark,\n\nCan you please share the CQ logs?",
       "revId": "c9f99766c642f534dee93fa3ecc8539081112423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14958b6a_ac8808d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-22T01:45:56Z",
+      "side": 1,
+      "message": "I don\u0027t know how to share the logs, but I took a look and it appeared to be infra-related failures, not failures with your test.",
+      "parentUuid": "5ffcc53a_c950a700",
+      "revId": "c9f99766c642f534dee93fa3ecc8539081112423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
