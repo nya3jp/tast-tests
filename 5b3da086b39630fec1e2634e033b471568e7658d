@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9ad9b61_54646678",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-06-22T15:43:32Z",
+      "side": 1,
+      "message": "LGTM with nits.",
+      "revId": "5b3da086b39630fec1e2634e033b471568e7658d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b924c8f8_d7e8e6b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-06-22T15:43:32Z",
+      "side": 1,
+      "message": "nit: *lifetime",
+      "range": {
+        "startLine": 142,
+        "startChar": 32,
+        "endLine": 142,
+        "endChar": 40
+      },
+      "revId": "5b3da086b39630fec1e2634e033b471568e7658d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e840c3_55016f14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-06-22T15:43:32Z",
+      "side": 1,
+      "message": "nit: *cannot",
+      "range": {
+        "startLine": 153,
+        "startChar": 29,
+        "endLine": 153,
+        "endChar": 36
+      },
+      "revId": "5b3da086b39630fec1e2634e033b471568e7658d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94267618_eb09c8ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-06-22T15:43:32Z",
+      "side": 1,
+      "message": "nit: *cannot",
+      "range": {
+        "startLine": 178,
+        "startChar": 29,
+        "endLine": 178,
+        "endChar": 36
+      },
+      "revId": "5b3da086b39630fec1e2634e033b471568e7658d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
