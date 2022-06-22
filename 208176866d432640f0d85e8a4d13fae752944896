@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ef65ac_97c25747",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-06-22T20:42:34Z",
+      "side": 1,
+      "message": "nit: Should the introduction of this new event be mentioned in commit log?",
+      "range": {
+        "startLine": 51,
+        "startChar": 34,
+        "endLine": 51,
+        "endChar": 54
+      },
+      "revId": "208176866d432640f0d85e8a4d13fae752944896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
