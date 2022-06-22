@@ -70,6 +70,30 @@
       },
       "revId": "56cc7cad36447716d7581626233169bbf90b4976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf5b0889_fd502544",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-06-22T02:20:20Z",
+      "side": 1,
+      "message": "Thanks for the pointer. I think I got bogged down looking at tast attributes whereas hwdep is really what I want.\n\nI have a patch for tast which defines hwdep.HPS() by checking cros_config and that is working nicely. The problem is we want this test to *also* run on amd64-generic where the HPS hardware is not present but hpsd uses a fake peripheral instead. That provides useful test coverage while there\u0027s still no lab DUTs with a real HPS peripheral. If I change this test to have:\n\n    HardwareDeps: hwdep.D(hwdep.HPS()),\n\nthen it no longer be run on VMs.\n\nI guess I could define the hwdep.HPS() condition to be satisfied if the HPS peripheral is really present *or* the DUT is a VM. But that seems a bit iffy. It\u0027s a \"hardware\" dependency after all.\n\nAnother option might be to define a separate test like hps.DBusForFakeDevice which checks essentially the same thing but runs only on VMs instead.\n\nWhat do you think?",
+      "parentUuid": "1c272591_a314c61e",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "56cc7cad36447716d7581626233169bbf90b4976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
