@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f4e0b0f_d7b4818d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-22T22:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5243533_c4a6b3f3",
+      "revId": "ea42c3e9b50ee65d366f9e8eda71ec2686092b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cac3c24e_c57f4cbf",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-22T22:05:45Z",
       "side": 1,
       "message": "nit: End with a `.`.",
+      "revId": "ea42c3e9b50ee65d366f9e8eda71ec2686092b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d137216_18def3f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-22T22:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cac3c24e_c57f4cbf",
       "revId": "ea42c3e9b50ee65d366f9e8eda71ec2686092b38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b74b5335_6ca28fba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-22T22:23:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51694120_235f31a8",
+      "revId": "ea42c3e9b50ee65d366f9e8eda71ec2686092b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99b616f6_a5586e72",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-06-22T22:05:45Z",
       "side": 1,
       "message": "Are we sure that the video would be playing after pressing \u003cspace\u003e for 20s? Depending on 5s interval in 20s so that we pressed it 4 times? If so, let\u0027s document it.",
+      "revId": "ea42c3e9b50ee65d366f9e8eda71ec2686092b38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "736aee0c_1269d99a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-22T22:23:18Z",
+      "side": 1,
+      "message": "That\u0027s a good point of confusion. I tried to add a thorough comment to make sure future readers know how the math adds up. But yes, you are right: we repeat pressing the space bar with a 5 second delay for 20 seconds, so that adds up to 4 space bar presses. As long as the (repeat duration) / (the delay) is even, the video will always be playing after this code block.\n\nBut to clarify: we wouldn\u0027t be pressing and holding the spacebar for 20 seconds. We would press and immediately release, wait 5 seconds, and repeat that 4 times.",
+      "parentUuid": "99b616f6_a5586e72",
       "revId": "ea42c3e9b50ee65d366f9e8eda71ec2686092b38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
