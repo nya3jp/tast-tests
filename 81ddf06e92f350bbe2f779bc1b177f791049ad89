@@ -154,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "516cbc42_302e90eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-06-22T13:15:17Z",
+      "side": 1,
+      "message": "The word \"syntaxis\" does exist and it also means the same, but I\u0027ll change it to \"syntax\" to avoid further confusion.",
+      "parentUuid": "0b3949b8_d4209ab6",
+      "range": {
+        "startLine": 153,
+        "startChar": 53,
+        "endLine": 153,
+        "endChar": 61
+      },
+      "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6dd99a56_a6f25e9c",
         "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
         "patchSetId": 2
