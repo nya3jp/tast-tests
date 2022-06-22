@@ -117,6 +117,30 @@
       },
       "revId": "aa6d169bc897017b2b53421d0a19d9df5ca5a501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de15d33_e768eaca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-06-22T09:06:05Z",
+      "side": 1,
+      "message": "With 2, don\u0027t fixtures have `reset` or similar between-test hooks so that you can make sure the state is right? That seems to solve the downside of 2?",
+      "parentUuid": "e11c4364_8e0b0124",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "aa6d169bc897017b2b53421d0a19d9df5ca5a501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
