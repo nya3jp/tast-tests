@@ -101,6 +101,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6712f4b_b8d7c8fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-22T15:45:21Z",
+      "side": 1,
+      "message": "Sorry, this git dropped on my radar. \n\nI am not sure whether we should put it in a separate file. I would vote that we only move to a separate file if the code is shared outside this test. Generally, I would prefer to keep code for one test inside one file. 400+ line is not very crazy.",
+      "parentUuid": "3fe38ac3_d0ae073a",
+      "revId": "b3a624032dcf9852c94412d3b0d1d40ef9fa49ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09fc8489_e0eeb8d6",
