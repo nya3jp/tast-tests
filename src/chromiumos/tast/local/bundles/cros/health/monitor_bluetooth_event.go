@@ -22,7 +22,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Monitors the Bluetooth event detected properly or not",
 		Contacts:     []string{"cros-tdm-tpe-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "diagnostics"},
 		Fixture:      "crosHealthdRunning",
 		HardwareDeps: hwdep.D(hwdep.Bluetooth()),
