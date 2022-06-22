@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -43,7 +44,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VideoCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Measures the smoothess of switch between full screen video and a tab/app",
+		Desc:         "Measures the performance of a critical user journey for YouTube web",
 		Contacts:     []string{"xiyuan@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc"},
@@ -255,6 +256,35 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	// Wait for <video> tag to show up.
 	if err := webutil.WaitForYoutubeVideo(ctx, ytConn, 0); err != nil {
 		s.Fatal("Failed to wait for video element: ", err)
+	}
+
+	// Dismiss any potential popup notification.
+	uiLongWait := ac.WithTimeout(15 * time.Second)
+	bubble := nodewith.ClassName("PermissionPromptBubbleView").First()
+	allow := nodewith.Name("Allow").Role(role.Button).Ancestor(bubble)
+	// Check and grant permissions.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Long wait for permission bubble and break poll loop when it times out.
+		if uiLongWait.WaitUntilExists(bubble)(ctx) != nil {
+			return nil
+		}
+		if err := pc.Click(allow)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click the Allow button")
+		}
+		return errors.New("granting permissions")
+	}, &testing.PollOptions{Interval: time.Second, Timeout: time.Minute}); err != nil {
+		s.Fatal("Failed to grant permissions: ", err)
+	}
+
+	// Check the paused attribute on the HTML video element on the
+	// Youtube webpage to determine its current playing state.
+	isYoutubeVideoPlaying := func() (bool, error) {
+		const script = `document.querySelector("video").paused`
+		var isPaused bool
+		if err := ytConn.Eval(ctx, script, &isPaused); err != nil {
+			return false, err
+		}
+		return !isPaused, nil
 	}
 
 	// Hold alt a bit then tab to show the window cycle list.
@@ -522,6 +552,34 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 			return w.ID == ytWinID && w.IsActive && w.State == ash.WindowStateFullscreen
 		}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
 			return errors.Wrap(err, "failed to wait active fullscreen youtube window")
+		}
+
+		// Adjust volume by pressing and holding the up and down arrow.
+		if err := inputsimulations.RepeatKeyHold(ctx, kb, "Down", 2*time.Second, time.Second, 1); err != nil {
+			return errors.Wrap(err, "failed to lower volume with down arrow")
+		}
+		if err := inputsimulations.RepeatKeyHold(ctx, kb, "Up", 2*time.Second, time.Second, 1); err != nil {
+			return errors.Wrap(err, "failed to raise volume with up arrow")
+		}
+
+		// Press the spacebar 4 times, with a 3 second delay between presses.
+		// Since the video is playing before the spacebar is pressed,
+		// the state of the video will be: paused -> playing -> paused -> playing,
+		// with the state of the video changing every 5 seconds.
+		if err := inputsimulations.RepeatKeyPress(ctx, kb, "Space", 3*time.Second, 4); err != nil {
+			return errors.Wrap(err, "failed to pause and play the video")
+		}
+
+		// Ensure the video is playing after toggling with the spacebar.
+		if isPlaying, err := isYoutubeVideoPlaying(); err != nil {
+			return errors.Wrap(err, "failed to check video playing status")
+		} else if !isPlaying {
+			return errors.New("youtube video is paused, video is expected to be playing")
+		}
+
+		// Simulate user passively watching video.
+		if err := testing.Sleep(ctx, 30*time.Second); err != nil {
+			return errors.Wrap(err, "failed to idle while watching video")
 		}
 
 		return nil
