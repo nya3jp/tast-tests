@@ -51,6 +51,7 @@ var sectionEnumToSection = map[pb.ImageSection]bios.ImageSection{
 	pb.ImageSection_FWSignBImageSection:          bios.FWSignBImageSection,
 	pb.ImageSection_FWBodyAImageSection:          bios.FWBodyAImageSection,
 	pb.ImageSection_FWBodyBImageSection:          bios.FWBodyBImageSection,
+	pb.ImageSection_APWPROImageSection:           bios.APWPROImageSection,
 }
 
 // updateModeEnumtoMode maps the enum from FirmwareUpdateModeRequest to a bios FirmwareUpdateMode.
@@ -105,18 +106,20 @@ func (bs *BiosService) ClearAndSetGBBFlags(ctx context.Context, req *pb.GBBFlags
 	return &empty.Empty{}, nil
 }
 
-// EnableAPSoftwareWriteProtect enables the AP software write protect.
-func (bs *BiosService) EnableAPSoftwareWriteProtect(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	if err := bios.EnableAPSoftwareWriteProtect(ctx); err != nil {
-		return nil, err
+// SetAPSoftwareWriteProtect sets the AP software write protect.
+func (bs *BiosService) SetAPSoftwareWriteProtect(ctx context.Context, req *pb.WPRequest) (*empty.Empty, error) {
+	args := &bios.WPArgs{
+		WPRangeStart:  -1, // Fill with default values initially.
+		WPRangeLength: -1,
+		WPSection:     bios.EmptyImageSection,
 	}
-	return &empty.Empty{}, nil
-}
-
-// DisableAPSoftwareWriteProtect disables the AP software write protect.
-// HW write protection needs to be disabled first.
-func (*BiosService) DisableAPSoftwareWriteProtect(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	if err := bios.DisableAPSoftwareWriteProtect(ctx); err != nil {
+	if req.WPRangeStart != -1 && req.WPRangeLength != -1 {
+		args.WPRangeStart = req.WPRangeStart
+		args.WPRangeLength = req.WPRangeLength
+	} else if sectionEnumToSection[req.WPSection] != bios.EmptyImageSection {
+		args.WPSection = sectionEnumToSection[req.WPSection]
+	}
+	if err := bios.SetAPSoftwareWriteProtect(ctx, req.Enable, args); err != nil {
 		return nil, err
 	}
 	return &empty.Empty{}, nil
