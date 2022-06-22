@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30a0e8b1_b0f452f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-22T08:33:24Z",
+      "side": 1,
+      "message": "Hi,\n\nCould you take a look at this patch please?\n\nThanks,\nYuta",
+      "revId": "87fa92ad86bfdbd835a843055082fc4e8c581a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
