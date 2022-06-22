@@ -94,6 +94,30 @@
       },
       "revId": "56cc7cad36447716d7581626233169bbf90b4976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dd0c8ee_1b6ba31e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-22T13:17:59Z",
+      "side": 1,
+      "message": "\"OR\" condition is not well supported in general.\nHow about having two parameterized tests, one for hwdep.HPS() and the other for VM (by software dep)?",
+      "parentUuid": "bf5b0889_fd502544",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "56cc7cad36447716d7581626233169bbf90b4976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
