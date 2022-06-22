@@ -22,6 +22,30 @@
       },
       "revId": "75ba64cd5804d81f8302bd06de470c0bf9999b73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f698d2_e2cb2bd9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1532847
+      },
+      "writtenOn": "2022-06-22T03:39:42Z",
+      "side": 1,
+      "message": "Hi Junichi, it is not because of manatee that broke. It is actually a kernel patch fix that landed on 5.4 but it is not on the 5.10 kernel (and thus only volteer-manatee broke). The patches are landed after we see the same issues happened on brya devices and it is merged on 5.10-manatee as well.\n\nI can do some test on the devices and re-enable it if everything looks fine.",
+      "parentUuid": "1acd8c53_4e5b6e06",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 71
+      },
+      "revId": "75ba64cd5804d81f8302bd06de470c0bf9999b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
