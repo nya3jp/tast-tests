@@ -9,8 +9,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
@@ -176,7 +174,10 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 
 	s.Log("Enabling AP software write protect")
 	bs := pb.NewBiosServiceClient(h.RPCClient.Conn)
-	if _, err := bs.EnableAPSoftwareWriteProtect(ctx, &empty.Empty{}); err != nil {
+	if _, err := bs.SetAPSoftwareWriteProtect(ctx, &pb.WPRequest{
+		Enable:    true,
+		WPSection: pb.ImageSection_APWPROImageSection,
+	}); err != nil {
 		s.Fatal("Failed to enable AP write protection: ", err)
 	}
 
