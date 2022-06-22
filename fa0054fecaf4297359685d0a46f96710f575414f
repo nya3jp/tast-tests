@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3d90f29_39e34bb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-22T17:03:00Z",
+      "side": 1,
+      "message": "I am a bit confused. How does it related to \n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3555520\n\nThis was the CL mentioned in b/233160831\n\nAlso, I also looking into storage.FullQualificationStress.functional. I could not find the place that it calls CommandContext or Signal?\n\nI don\u0027t really understand how it is related to the issue? Please provide more information.\n\nThanks.\n\n",
+      "revId": "fa0054fecaf4297359685d0a46f96710f575414f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
