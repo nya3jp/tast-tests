@@ -45,7 +45,7 @@ func UnicornPaidAppParentPermission(ctx context.Context, s *testing.State) {
 		askinMessageButtonText = "Ask in a message"
 		askinPersonButtonText  = "Ask in person"
 		playStoreSearchText    = "Search for apps & games"
-		gamesAppName           = "leo's fortune"
+		gamesAppName           = "the wonder weeks"
 	)
 	parentUser := s.RequiredVar("arc.parentUser")
 	cr := s.FixtValue().(*familylink.FixtData).Chrome
@@ -109,6 +109,14 @@ func UnicornPaidAppParentPermission(ctx context.Context, s *testing.State) {
 	}
 	if err := d.PressKeyCode(ctx, ui.KEYCODE_ENTER, 0); err != nil {
 		s.Fatal("Failed to click on KEYCODE_ENTER button: ", err)
+	}
+
+	searchResult := d.Object(ui.ClassName("android.view.View"), ui.DescriptionContains("$"),ui.Index(1))
+	if err := searchResult.WaitForExists(ctx, 30*time.Second); err != nil {
+		s.Fatal("Search Result doesn't exist: ", err)
+	}
+	if err := searchResult.Click(ctx); err != nil {
+		s.Fatal("Failed to click on Search Result: ", err)
 	}
 
 	installButton := d.Object(ui.ClassName("android.widget.Button"), ui.TextContains("$"), ui.Enabled(true))
