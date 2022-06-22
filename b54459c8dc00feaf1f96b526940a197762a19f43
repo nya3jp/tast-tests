@@ -654,6 +654,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e04bf6_ba1d5be2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-22T16:50:40Z",
+      "side": 1,
+      "message": "Shortening the context is necessary to ensure that cleanup can succeed when the test times out. In both of my suggested ways of writing the code, `defer lacros.CloseLacros(closeCtx, setupVars.l)` is still written before `defer setupVars.recorder.Close(closeCtx)`, the same as how your CL is already. I am only suggesting more readable ways of representing the same logic.\n\nWhile the CL currently seems needlessly hard to read, you can just submit it if you are in a hurry. The code seems needlessly unreadable but should work.",
+      "parentUuid": "8bdadf1e_ce874069",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 41
+      },
+      "revId": "b54459c8dc00feaf1f96b526940a197762a19f43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91fb320c_41ff8abf",
