@@ -124,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef713ec_4ab173dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-06-22T05:11:01Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "58ce252d_f9578b25",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 41
+      },
+      "revId": "beb5f84634a3eda44535654fa2b29942d8dc2e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "045c9f34_689ff85b",
