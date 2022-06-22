@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab66a186_c6e902fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-06-22T12:18:45Z",
+      "side": 1,
+      "message": "No particular reasons. The only problematic thing is I didn\u0027t want to add only hours (for example 3h), because I was afraid we can get 2 hours 59 minutes (and not \"3 hours\") in our ticket description, when we add the ticket. And that\u0027s inconsistent behavior I\u0027ve tried to avoid.",
+      "parentUuid": "1607e13d_cfebe86b",
+      "range": {
+        "startLine": 52,
+        "startChar": 49,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e463448_4bf19694",
         "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
         "patchSetId": 2
@@ -71,6 +95,30 @@
       "writtenOn": "2022-06-22T10:49:44Z",
       "side": 1,
       "message": "Let\u0027s close the OS Settings app and not leave it opened.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5286cbd6_5eda7c8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-06-22T12:18:45Z",
+      "side": 1,
+      "message": "Could you please explain, why do we need to close the Settings app? (I have a theory it\u0027s something to do with the fixtures, but i am not sure)",
+      "parentUuid": "5e463448_4bf19694",
       "range": {
         "startLine": 96,
         "startChar": 0,
@@ -151,6 +199,30 @@
       "writtenOn": "2022-06-22T10:49:44Z",
       "side": 1,
       "message": "What is the blocklisted option? Allowing weak crypto?",
+      "range": {
+        "startLine": 178,
+        "startChar": 49,
+        "endLine": 178,
+        "endChar": 77
+      },
+      "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeeebc2c_940f1968",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-06-22T12:18:45Z",
+      "side": 1,
+      "message": "Yes. I guess I\u0027ll add an explaining comment to the right.",
+      "parentUuid": "53656e7b_3f4eb9e2",
       "range": {
         "startLine": 178,
         "startChar": 49,
