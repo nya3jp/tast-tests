@@ -32,6 +32,16 @@ const (
 	uninstallationTimeout = 2 * time.Minute
 )
 
+// DisplayMode represents the display mode of a device.
+type DisplayMode string
+
+const (
+	// Tablet indicates the tablet display mode.
+	Tablet DisplayMode = "tablet"
+	// Clamshell indicates the clamshell display mode.
+	Clamshell DisplayMode = "clamshell"
+)
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInForCrostini",
