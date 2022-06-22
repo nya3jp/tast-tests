@@ -70,6 +70,30 @@
       },
       "revId": "1bd4ae15600b6cfe464fa8e7295c17be59455a04",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103c1fe7_19453440",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-06-22T01:17:38Z",
+      "side": 1,
+      "message": "Please don\u0027t forget to fix this before pushing to cq",
+      "parentUuid": "ea9b608e_41796595",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 2
+      },
+      "revId": "1bd4ae15600b6cfe464fa8e7295c17be59455a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
