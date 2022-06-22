@@ -6,7 +6,9 @@ package crostini
 
 import (
 	"context"
+	"path/filepath"
 	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -14,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -28,6 +31,7 @@ import (
 const (
 	installationTimeout   = 15 * time.Minute
 	checkContainerTimeout = time.Minute
+	preTestTimeout        = 30 * time.Second
 	postTestTimeout       = 30 * time.Second
 	uninstallationTimeout = 2 * time.Minute
 )
@@ -204,6 +208,7 @@ func init() {
 		Impl:            &crostiniFixture{preData: preTestDataBusterLC},
 		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: uninstallationTimeout,
 		Parent:          "chromeLoggedInForCrostini",
@@ -263,14 +268,15 @@ type preTestData struct {
 
 // crostiniFixture holds the runtime state of the fixture.
 type crostiniFixture struct {
-	cr       *chrome.Chrome
-	tconn    *chrome.TestConn
-	cont     *vm.Container
-	kb       *input.KeyboardEventWriter
-	preData  *preTestData
-	postData *PostTestData
-	values   *perf.Values
-	restart  bool
+	cr                *chrome.Chrome
+	tconn             *chrome.TestConn
+	cont              *vm.Container
+	kb                *input.KeyboardEventWriter
+	preData           *preTestData
+	postData          *PostTestData
+	values            *perf.Values
+	restart           bool
+	revertDisplayMode func(ctx context.Context) error
 }
 
 // FixtureData is the data returned by SetUp and passed to tests.
@@ -405,9 +411,24 @@ func (f *crostiniFixture) Reset(ctx context.Context) error {
 }
 
 func (f *crostiniFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	testName := filepath.Base(s.OutDir())
+	shouldSetMode := strings.Contains(testName, string(Tablet)) || strings.Contains(testName, string(Clamshell))
+	if shouldSetMode {
+		revert, err := ash.EnsureTabletModeEnabled(ctx, f.tconn, strings.Contains(testName, string(Tablet)))
+		if err != nil {
+			s.Log("Failed to set display mode")
+		}
+		f.revertDisplayMode = revert
+	}
 }
 
 func (f *crostiniFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if f.revertDisplayMode != nil {
+		if err := f.revertDisplayMode(ctx); err != nil {
+			s.Log("Failed to reset display mode")
+		}
+		f.revertDisplayMode = nil
+	}
 	// TODO (jinrongwu): use FixtureData instead of PreData and modify RunCrostiniPostTest when deprecating pre.go.
 	RunCrostiniPostTest(ctx, PreData{f.cr, f.tconn, f.cont, f.kb, f.postData})
 }
