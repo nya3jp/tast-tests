@@ -16,6 +16,132 @@
       "message": "Hi Han-lin, \nI need your help to review the code",
       "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a653b630_8af1a8af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-06-22T10:09:40Z",
+      "side": 1,
+      "message": "Replace the owners by you :)",
+      "range": {
+        "startLine": 31,
+        "startChar": 25,
+        "endLine": 31,
+        "endChar": 65
+      },
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b146134f_e40822cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-06-22T10:09:40Z",
+      "side": 1,
+      "message": "nit: Capitalize the first character and add period at the end. Similar for other comments.",
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58028803_4cdfe34f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-06-22T10:09:40Z",
+      "side": 1,
+      "message": "nit: Move the comment to the line above. I think we rarely use tailing comments.",
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c870c7e_12d2631b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-06-22T10:09:40Z",
+      "side": 1,
+      "message": "Can we define this as `getLibraryPath(name string)`? Since it only uses the name.",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 55
+      },
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "586c85e4_1c6c45dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-06-22T10:09:40Z",
+      "side": 1,
+      "message": "Can there be more than one paths? Maybe refactor the logics to find `/usr/lib64` and then `/usr/lib/` in preference order so it looks more deterministic.",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 19
+      },
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5b16f4c_829c9b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1318626
+      },
+      "writtenOn": "2022-06-22T10:09:40Z",
+      "side": 1,
+      "message": "Can we modify `cmd` explicitly here? I think it\u0027s not very readable to have this function pointer that looks just points to a constant routine.",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 34
+      },
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
