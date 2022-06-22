@@ -108,6 +108,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dacdfe86_617dc234",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-22T18:30:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "07acf31d_6ca506df",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e9e5ccc_989590f5",
@@ -298,6 +316,24 @@
       "side": 1,
       "message": "I think crrev.com/c/3715695 will fix this.",
       "parentUuid": "e1c9b749_4db24295",
+      "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7deacb0_d51bba85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-22T18:30:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2f329c90_021d3241",
       "revId": "aa33878c0df7750a41429ca2b2d3182ca8706cc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
