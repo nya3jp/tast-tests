@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88dd1266_4e1a6626",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1485520
+      },
+      "writtenOn": "2022-06-22T00:02:15Z",
+      "side": 1,
+      "message": "change to cros-feedback-app@google.com",
+      "revId": "2bbb7df652e096743d24e7af298fe508864a7147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10379d9d_76a3aef4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_launcher.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1485520
+      },
+      "writtenOn": "2022-06-22T00:02:15Z",
+      "side": 1,
+      "message": "Do you think we should also verify important html elements exist?  The search page should have text input field, help content section, and continue button.",
+      "revId": "2bbb7df652e096743d24e7af298fe508864a7147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
