@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55ef9915_075c511a",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "\u003e \"connetced\" is a possible misspelling of \"connected\".\n\nPlease fix.",
+      "parentUuid": "2cca7130_0746dfb4",
+      "range": {
+        "startLine": 210,
+        "startChar": 42,
+        "endLine": 210,
+        "endChar": 51
+      },
+      "revId": "3fd6a4ae05063781a734d76002017ea2940bb8c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

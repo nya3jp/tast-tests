@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da58ff31_3cbd2ecc",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "I added a comment. Let me know If should extend it.",
+      "parentUuid": "d474bf3b_bb56dd45",
+      "range": {
+        "startLine": 299,
+        "startChar": 71,
+        "endLine": 299,
+        "endChar": 81
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4031893_246149b2",
         "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
         "patchSetId": 11
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08166c48_41357f20",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5907af9f_77a28182",
+      "range": {
+        "startLine": 340,
+        "startChar": 27,
+        "endLine": 340,
+        "endChar": 32
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a1a6983_4de2dade",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4031893_246149b2",
+      "range": {
+        "startLine": 340,
+        "startChar": 16,
+        "endLine": 340,
+        "endChar": 26
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab778129_1a50037b",
@@ -83,6 +155,24 @@
       "writtenOn": "2022-06-11T03:57:33Z",
       "side": 1,
       "message": "leave a comment here explaining what this means",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c16b70_e8f4e4da",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "I added a comment. Let me know If should extend it.",
+      "parentUuid": "ab778129_1a50037b",
       "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd866fc_ded52c97",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "I changed the name to ScanNetwork() and moved the function to the prev CL.",
+      "parentUuid": "92020e42_4fe53d10",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe17084b_9049861a",
@@ -117,6 +225,24 @@
       "writtenOn": "2022-06-11T03:57:33Z",
       "side": 1,
       "message": "this should be done using wpa_monitor for the ScanDone event",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd1eadbc_219af512",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "Done, I used the wpa_monitor instead and moved it to the prev CL.",
+      "parentUuid": "fe17084b_9049861a",
       "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8348915_f68271a3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ea2c63_7e4a1c6c",
+      "range": {
+        "startLine": 18,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92545436_1554cd1c",
@@ -161,6 +311,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a967b43_47a8fbae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "I had to comment this to be able to run the test locally. The change is in Cq-depend: chromium:3655483\n\nI uncommented this line.",
+      "parentUuid": "92545436_1554cd1c",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5790762c_ba180351",
@@ -174,6 +342,30 @@
       "writtenOn": "2022-06-13T22:44:04Z",
       "side": 1,
       "message": "*Deconfigure",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc97900c_46923c76",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5790762c_ba180351",
       "range": {
         "startLine": 40,
         "startChar": 5,
@@ -207,6 +399,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f38caba_5a153a3d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e4958ee_5d6584e1",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 10
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5be6753_02190bf3",
@@ -224,6 +440,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4f1d9b2_afa279c9",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1436,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "I have noticed delays for the interface to show up when I was developing in Autotest. Same as here I was using iw to find the interface name instead of wpa_cli.\n\nI have tested using the wpa_cli to get the interface name and I don\u0027t see any delays. I changed this function to p2pIface() which uses the function Interfaces() that used wpa_cli to get the interface name without polling.",
+      "parentUuid": "c5be6753_02190bf3",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f76f838_d2e1e4f5",
@@ -237,6 +471,24 @@
       "writtenOn": "2022-06-11T03:57:33Z",
       "side": 1,
       "message": "It doesn\u0027t really make sense to me that you check for the interface using iw and remove it using wpa_cli. Can you do both using wpa_cli?",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f8606d8_d95588d9",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1467,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "Yes, I can use the wpa_cli interface:\n```\nlocalhost ~ # sudo -u wpa -g wpa wpa_cli interface\nSelected interface \u0027p2p-wlan0-10\u0027\nAvailable interfaces:\np2p-wlan0-10\np2p-dev-wlan0\nwlan0\n```\n\nDone, It\u0027s  in the prev CL.",
+      "parentUuid": "0f76f838_d2e1e4f5",
       "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -264,6 +516,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c068d228_84aa4038",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "I add a param to choose the GO and Client in the next CL.",
+      "parentUuid": "4af2dfe2_ec0bee86",
+      "range": {
+        "startLine": 1485,
+        "startChar": 23,
+        "endLine": 1485,
+        "endChar": 37
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd4f4895_4adca2f3",
@@ -277,6 +553,30 @@
       "writtenOn": "2022-06-13T22:44:04Z",
       "side": 1,
       "message": "Ditto my comment above about hard-coding the roles.",
+      "range": {
+        "startLine": 1529,
+        "startChar": 23,
+        "endLine": 1529,
+        "endChar": 41
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3df81385_b1bba9f6",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:51:07Z",
+      "side": 1,
+      "message": "I add a param to choose the GO and Client in the next CL.",
+      "parentUuid": "bd4f4895_4adca2f3",
       "range": {
         "startLine": 1529,
         "startChar": 23,
