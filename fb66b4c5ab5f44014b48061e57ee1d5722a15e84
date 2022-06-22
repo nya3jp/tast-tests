@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "327c94b1_6f6a56d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-22T19:46:13Z",
+      "side": 1,
+      "message": "Changed naming to `file` going through `ls`. Sorry for confusion.",
+      "parentUuid": "01e2fb8b_512de9b7",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "fb66b4c5ab5f44014b48061e57ee1d5722a15e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2273b10a_b3e00ced",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-17T19:22:11Z",
       "side": 1,
       "message": "This flag conflates two checks together, and it is difficult to discern what the failure modes are.\n\nIt is more legible and clearer to segment the test into 2 parts:\n1. Look for USB port paths within the Type-C port directory; if none are found -\u003e fail\n2. For the USB port paths found in 1.) verify that each one has the right symlinks. If any of the ports fail the check -\u003e fail.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "fb66b4c5ab5f44014b48061e57ee1d5722a15e84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "747e2c4d_93ef045d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-22T19:46:13Z",
+      "side": 1,
+      "message": "Separated the two checks as discussed offline.",
+      "parentUuid": "2273b10a_b3e00ced",
       "range": {
         "startLine": 72,
         "startChar": 0,
