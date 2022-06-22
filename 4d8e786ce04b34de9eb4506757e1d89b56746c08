@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0753f33_7ee3594b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1518777
+      },
+      "writtenOn": "2022-06-22T22:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebf8d3fa_f78b1178",
+      "revId": "4d8e786ce04b34de9eb4506757e1d89b56746c08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf85253d_161663c1",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7de9c25_62ee3529",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1518777
+      },
+      "writtenOn": "2022-06-22T22:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf85253d_161663c1",
+      "revId": "4d8e786ce04b34de9eb4506757e1d89b56746c08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89e4f8f6_bda14d52",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-06-17T17:07:06Z",
       "side": 1,
       "message": "This it the duplicate block.",
+      "revId": "4d8e786ce04b34de9eb4506757e1d89b56746c08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fee4870_4d213eca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/run_tests.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1518777
+      },
+      "writtenOn": "2022-06-22T22:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89e4f8f6_bda14d52",
       "revId": "4d8e786ce04b34de9eb4506757e1d89b56746c08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
