@@ -116,6 +116,24 @@
       "message": "Sorry I should have asked before, is there a wpa ctrl event that we can use instead of polling here?",
       "revId": "816d73fe0677a73dabe6a319e1424a9ddc164c30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3202595_4f74ca33",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-22T17:11:53Z",
+      "side": 1,
+      "message": "I see these events:\n```\n\u003c3\u003eCTRL-EVENT-SCAN-STARTED \n\u003c3\u003eCTRL-EVENT-SCAN-RESULTS \n\u003c3\u003eCTRL-EVENT-DISCONNECTED bssid\u003dd0:d3:e0:9c:21:f1 reason\u003d3 locally_generated\u003d1\n\u003c3\u003eCTRL-EVENT-REGDOM-CHANGE init\u003dCORE type\u003dWORLD\n\u003c3\u003eCTRL-EVENT-REGDOM-CHANGE init\u003dUSER type\u003dCOUNTRY alpha2\u003dUS\n\u003c3\u003eTrying to associate with d0:d3:e0:9c:21:f1 (SSID\u003d\u0027GoogleGuest\u0027 freq\u003d5500 MHz)\n\u003c3\u003eAssociated with d0:d3:e0:9c:21:f1\n\u003c3\u003eCTRL-EVENT-CONNECTED - Connection to d0:d3:e0:9c:21:f1 completed [id\u003d0 id_str\u003d]\n\u003c3\u003eCTRL-EVENT-SUBNET-STATUS-UPDATE status\u003d0\n\u003c3\u003eCTRL-EVENT-REGDOM-CHANGE init\u003dCOUNTRY_IE type\u003dCOUNTRY alpha2\u003dUS\n\u003c3\u003eCTRL-EVENT-SIGNAL-CHANGE above\u003d1 signal\u003d-52 noise\u003d-92 txrate\u003d360000\n```\n\nI removed this function it\u0027t not needed anymore.\n\nIn the next CL `P2PConnect()`, I am using IsConnected() to check if the interface is connected, if the interface is not connected I wait for the Connetced event.",
+      "parentUuid": "5af8f2b4_ecd32095",
+      "revId": "816d73fe0677a73dabe6a319e1424a9ddc164c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
