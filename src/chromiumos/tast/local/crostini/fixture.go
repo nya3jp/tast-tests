@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/devicemode"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -28,6 +29,7 @@ import (
 const (
 	installationTimeout   = 15 * time.Minute
 	checkContainerTimeout = time.Minute
+	preTestTimeout        = 30 * time.Second
 	postTestTimeout       = 30 * time.Second
 	uninstallationTimeout = 2 * time.Minute
 )
@@ -194,6 +196,37 @@ func init() {
 		Impl:            &crostiniFixture{preData: preTestDataBusterLC},
 		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInForCrostini",
+		Vars:            []string{"keepState"},
+		Data:            []string{GetContainerMetadataArtifact("buster", true), GetContainerRootfsArtifact("buster", true)},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBusterLargeContainerTablet",
+		Desc:            "Install Crostini with Bullseye in large container with apps installed in tablet mode",
+		Contacts:        []string{"clumptini+oncall@google.com"},
+		Impl:            &crostiniFixture{preData: preTestDataBusterLCTablet},
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		ResetTimeout:    checkContainerTimeout,
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+		TearDownTimeout: uninstallationTimeout,
+		Parent:          "chromeLoggedInForCrostini",
+		Vars:            []string{"keepState"},
+		Data:            []string{GetContainerMetadataArtifact("buster", true), GetContainerRootfsArtifact("buster", true)},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:            "crostiniBusterLargeContainerClamshell",
+		Desc:            "Install Crostini with Bullseye in large container with apps installed in clamshell mode",
+		Contacts:        []string{"clumptini+oncall@google.com"},
+		Impl:            &crostiniFixture{preData: preTestDataBusterLCClamshell},
+		SetUpTimeout:    installationTimeout + uninstallationTimeout,
+		ResetTimeout:    checkContainerTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: uninstallationTimeout,
 		Parent:          "chromeLoggedInForCrostini",
@@ -249,18 +282,20 @@ type preTestData struct {
 	container     containerType
 	debianVersion vm.ContainerDebianVersion
 	startedOK     bool
+	deviceMode    devicemode.DeviceMode
 }
 
 // crostiniFixture holds the runtime state of the fixture.
 type crostiniFixture struct {
-	cr       *chrome.Chrome
-	tconn    *chrome.TestConn
-	cont     *vm.Container
-	kb       *input.KeyboardEventWriter
-	preData  *preTestData
-	postData *PostTestData
-	values   *perf.Values
-	restart  bool
+	cr               *chrome.Chrome
+	tconn            *chrome.TestConn
+	cont             *vm.Container
+	kb               *input.KeyboardEventWriter
+	preData          *preTestData
+	postData         *PostTestData
+	values           *perf.Values
+	restart          bool
+	revertDeviceMode func(ctx context.Context) error
 }
 
 // FixtureData is the data returned by SetUp and passed to tests.
@@ -286,6 +321,18 @@ var preTestDataBullseye = &preTestData{
 var preTestDataBusterLC = &preTestData{
 	container:     largeContainer,
 	debianVersion: vm.DebianBuster,
+}
+
+var preTestDataBusterLCTablet = &preTestData{
+	container:     largeContainer,
+	debianVersion: vm.DebianBuster,
+	deviceMode:    devicemode.TabletMode,
+}
+
+var preTestDataBusterLCClamshell = &preTestData{
+	container:     largeContainer,
+	debianVersion: vm.DebianBuster,
+	deviceMode:    devicemode.ClamshellMode,
 }
 
 func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -395,9 +442,21 @@ func (f *crostiniFixture) Reset(ctx context.Context) error {
 }
 
 func (f *crostiniFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	revert, err := devicemode.EnsureDeviceMode(ctx, f.tconn, f.preData.deviceMode)
+	if err != nil {
+		s.Logf("Failed to set device mode to %s : %s", f.preData.deviceMode, err)
+	}
+	f.revertDeviceMode = revert
+
 }
 
 func (f *crostiniFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if f.revertDeviceMode != nil {
+		if err := f.revertDeviceMode(ctx); err != nil {
+			s.Log("Failed to reset device mode: ", err)
+		}
+		f.revertDeviceMode = nil
+	}
 	// TODO (jinrongwu): use FixtureData instead of PreData and modify RunCrostiniPostTest when deprecating pre.go.
 	RunCrostiniPostTest(ctx, PreData{f.cr, f.tconn, f.cont, f.kb, f.postData})
 }

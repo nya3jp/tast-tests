@@ -59,6 +59,7 @@ import (
 
 	"chromiumos/tast/common/genparams"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/devicemode"
 	"chromiumos/tast/local/vm"
 )
 
@@ -162,6 +163,12 @@ type Param struct {
 	// In addition, an extra val of the browser type will
 	// be added to all params of the test case as well.
 	TestLacros bool
+
+	// DeviceMode indicates whether the tests explicitly use use tablet mode
+	// or clamshell mode.
+	// The fixtures will force enable the given display mode in PreTest and
+	// reset in PostTest.
+	DeviceMode devicemode.DeviceMode
 }
 
 type generatedParam struct {
@@ -264,6 +271,11 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				// include it in the test name.
 				name = combineName(name, string(i.debianVersion))
 			}
+
+			if testCase.DeviceMode == devicemode.TabletMode || testCase.DeviceMode == devicemode.ClamshellMode {
+				name = combineName(name, testCase.DeviceMode.String())
+			}
+
 			if !testCase.IsNotMainline && !testCase.OnlyStableBoards {
 				if i.stable {
 					name = combineName(name, "stable")
@@ -277,7 +289,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 
 			// _unstable tests can never be CQ critical.
 			var extraAttr []string
-			if (!i.stable && canBeCritical) || bt == browser.TypeLacros {
+			if (!i.stable && canBeCritical) || bt == browser.TypeLacros || testCase.DeviceMode == devicemode.TabletMode {
 				extraAttr = append(extraAttr, "informational")
 			}
 
@@ -290,13 +302,15 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 					if testCase.StableHardwareDep != "" {
 						hardwareDeps = testCase.StableHardwareDep
 					} else if testCase.UseLargeContainer {
-						hardwareDeps = "crostini.CrostiniAppTest"
+						hardwareDeps = "crostini.CrostiniAppStable"
 					} else {
 						hardwareDeps = "crostini.CrostiniStable"
 					}
 				} else {
 					if testCase.UnstableHardwareDep != "" {
 						hardwareDeps = testCase.UnstableHardwareDep
+					} else if testCase.UseLargeContainer {
+						hardwareDeps = "crostini.CrostiniAppUnstable"
 					} else {
 						hardwareDeps = "crostini.CrostiniUnstable"
 					}
@@ -317,7 +331,13 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				if testCase.SelfManagedInstall {
 					fixture = ""
 				} else if testCase.UseLargeContainer {
-					fixture = fmt.Sprintf("\"crostini%sLargeContainer\"", strings.Title(string(i.debianVersion)))
+					suffix := ""
+					if testCase.DeviceMode == devicemode.TabletMode {
+						suffix = "Tablet"
+					} else if testCase.DeviceMode == devicemode.ClamshellMode {
+						suffix = "Clamshell"
+					}
+					fixture = fmt.Sprintf("\"crostini%sLargeContainer%s\"", strings.Title(string(i.debianVersion)), suffix)
 				} else if testCase.UseGaiaLogin {
 					fixture = fmt.Sprintf("\"crostini%sGaia\"", strings.Title(string(i.debianVersion)))
 				} else if testCase.Restart {
@@ -327,6 +347,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				} else {
 					fixture = fmt.Sprintf("\"crostini%s\"", strings.Title(string(i.debianVersion)))
 				}
+
 			} else {
 				extraData = append(extraData,
 					fmt.Sprintf("crostini.GetContainerMetadataArtifact(%q, %t)", i.debianVersion, testCase.UseLargeContainer),
