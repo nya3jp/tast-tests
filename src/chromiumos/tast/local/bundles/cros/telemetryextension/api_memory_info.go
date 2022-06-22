@@ -40,9 +40,9 @@ func init() {
 				ExtraHardwareDeps: dep.TargetModels(),
 			},
 			{
-				Name:              "non_target_models",
+				Name:              "low_priority_target_models",
 				Fixture:           "telemetryExtension",
-				ExtraHardwareDeps: dep.NonTargetModels(),
+				ExtraHardwareDeps: dep.LowPriorityTargetModels(),
 			},
 			{
 				Name:              "target_models_managed",
@@ -50,9 +50,9 @@ func init() {
 				ExtraHardwareDeps: dep.TargetModels(),
 			},
 			{
-				Name:              "non_target_models_managed",
+				Name:              "low_priority_target_models_managed",
 				Fixture:           "telemetryExtensionManaged",
-				ExtraHardwareDeps: dep.NonTargetModels(),
+				ExtraHardwareDeps: dep.LowPriorityTargetModels(),
 			},
 		},
 	})

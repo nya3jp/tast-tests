@@ -28,8 +28,8 @@ func init() {
 				ExtraHardwareDeps: dep.TargetModels(),
 			},
 			{
-				Name:              "non_target_models",
-				ExtraHardwareDeps: dep.NonTargetModels(),
+				Name:              "low_priority_target_models",
+				ExtraHardwareDeps: dep.LowPriorityTargetModels(),
 			},
 		},
 	})
