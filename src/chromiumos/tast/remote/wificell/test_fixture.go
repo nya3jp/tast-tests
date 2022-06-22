@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/common/network/arping"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
+	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/pkcs11/netcertstore"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/common/wifi/security/base"
@@ -737,21 +738,13 @@ const wpaMonitorStopTimeout = 10 * time.Second
 
 // StartWPAMonitor configures and starts wpa_supplicant events monitor
 // newCtx is ctx shortened for the stop function, which should be deferred by the caller.
-func (tf *TestFixture) StartWPAMonitor(ctx context.Context, dutIdx DutIdx) (wpaMonitor *WPAMonitor, stop func(), newCtx context.Context, retErr error) {
-	wpaMonitor = new(WPAMonitor)
-	if err := wpaMonitor.Start(ctx, tf.duts[dutIdx].dut.Conn()); err != nil {
+func (tf *TestFixture) StartWPAMonitor(ctx context.Context, dutIdx DutIdx) (wpaMonitor *wpacli.WPAMonitor, stop func(), newCtx context.Context, retErr error) {
+	wpaMonitor = new(wpacli.WPAMonitor)
+	stop, newCtx, err := wpaMonitor.StartWPAMonitor(ctx, tf.duts[dutIdx].dut.Conn(), wpaMonitorStopTimeout)
+	if err != nil {
 		return nil, nil, ctx, err
 	}
-	sCtx, sCancel := ctxutil.Shorten(ctx, wpaMonitorStopTimeout)
-	return wpaMonitor, func() {
-		sCancel()
-		timeoutCtx, cancel := context.WithTimeout(ctx, wpaMonitorStopTimeout)
-		defer cancel()
-		if err := wpaMonitor.Stop(timeoutCtx); err != nil {
-			testing.ContextLog(ctx, "Failed to wait for wpa monitor stop: ", err)
-		}
-		testing.ContextLog(ctx, "Wpa monitor stopped")
-	}, sCtx, nil
+	return wpaMonitor, stop, newCtx, nil
 }
 
 // Capturer returns the auto-spawned Capturer for the APIface instance.
