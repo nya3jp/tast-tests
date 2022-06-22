@@ -162,6 +162,12 @@ type Param struct {
 	// In addition, an extra val of the browser type will
 	// be added to all params of the test case as well.
 	TestLacros bool
+
+	// DisplayMode indicates whether the tests explicitly use use tablet mode
+	// or clamshell mode.
+	// The fixtures will force enable the given display mode in PreTest and
+	// reset in PostTest.
+	DisplayMode DisplayMode
 }
 
 type generatedParam struct {
@@ -264,6 +270,11 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 				// include it in the test name.
 				name = combineName(name, string(i.debianVersion))
 			}
+
+			if testCase.DisplayMode == Tablet || testCase.DisplayMode == Clamshell {
+				name = combineName(name, string(testCase.DisplayMode))
+			}
+
 			if !testCase.IsNotMainline && !testCase.OnlyStableBoards {
 				if i.stable {
 					name = combineName(name, "stable")
@@ -277,7 +288,7 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 
 			// _unstable tests can never be CQ critical.
 			var extraAttr []string
-			if (!i.stable && canBeCritical) || bt == browser.TypeLacros {
+			if (!i.stable && canBeCritical) || bt == browser.TypeLacros || testCase.DisplayMode == Tablet {
 				extraAttr = append(extraAttr, "informational")
 			}
 
@@ -290,13 +301,15 @@ func MakeTestParamsFromList(t genparams.TestingT, baseCases []Param) string {
 					if testCase.StableHardwareDep != "" {
 						hardwareDeps = testCase.StableHardwareDep
 					} else if testCase.UseLargeContainer {
-						hardwareDeps = "crostini.CrostiniAppTest"
+						hardwareDeps = "crostini.CrostiniAppStable"
 					} else {
 						hardwareDeps = "crostini.CrostiniStable"
 					}
 				} else {
 					if testCase.UnstableHardwareDep != "" {
 						hardwareDeps = testCase.UnstableHardwareDep
+					} else if testCase.UseLargeContainer {
+						hardwareDeps = "crostini.CrostiniAppUnstable"
 					} else {
 						hardwareDeps = "crostini.CrostiniUnstable"
 					}
