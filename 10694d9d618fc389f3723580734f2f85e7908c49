@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0ce3cb_e28143f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-06-22T17:25:37Z",
+      "side": 1,
+      "message": "Are fixtures usually supposed to do such heavy checks/write to the DUT?",
+      "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5739df92_89800df8",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-06-22T17:25:37Z",
+      "side": 1,
+      "message": "nit: Why is this ssh check required? Shouldn\u0027t the DUT already be ssh\u0027able?",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 36
+      },
+      "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d19d6fa_c2301059",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-06-22T17:25:37Z",
+      "side": 1,
+      "message": "What about the FW updates that could happen after rollback? Waits on kernel to get sticky?",
+      "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
