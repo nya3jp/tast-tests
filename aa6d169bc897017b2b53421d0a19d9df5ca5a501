@@ -34,6 +34,47 @@
       "parentUuid": "aa8f556c_5d8aebdd",
       "revId": "aa6d169bc897017b2b53421d0a19d9df5ca5a501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c53b81_9b6bc8dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-06-22T06:21:09Z",
+      "side": 1,
+      "message": "I see. I think it\u0027d make more sense as one CL: we don\u0027t want to land this commit without the other as it doubles the number of tests for no reason.",
+      "parentUuid": "e5f368d0_0924b57b",
+      "revId": "aa6d169bc897017b2b53421d0a19d9df5ca5a501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caf12c9e_8ee44018",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_vscode.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-06-22T06:21:09Z",
+      "side": 1,
+      "message": "You\u0027re using test name to communicate information to the fixture? Might be fragile, how about we do something more explicit e.g. param to the test or new fixtures?",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "aa6d169bc897017b2b53421d0a19d9df5ca5a501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
