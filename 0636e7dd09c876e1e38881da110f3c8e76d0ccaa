@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4190ce7_a903fcaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T11:35:20Z",
+      "side": 1,
+      "message": "nit: Break the line - line limit is 72 chars.",
+      "revId": "0636e7dd09c876e1e38881da110f3c8e76d0ccaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "af4b3f65_47a46d85",
@@ -14,6 +31,23 @@
       "writtenOn": "2022-06-17T11:08:02Z",
       "side": 1,
       "message": "LGTM, thank you!",
+      "revId": "0636e7dd09c876e1e38881da110f3c8e76d0ccaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d66d44_9b149b4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T11:35:20Z",
+      "side": 1,
+      "message": "LGTM % nit. Thank you for the change.  ",
       "revId": "0636e7dd09c876e1e38881da110f3c8e76d0ccaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
