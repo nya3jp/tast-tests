@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "136e4387_f22843fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-22T17:58:35Z",
+      "side": 1,
+      "message": "Thanks for adding this test! \n\n+chadduffin@ FYI\n",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0db25c5b_f814179e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-22T17:58:35Z",
+      "side": 1,
+      "message": "We should describe what this tests, even if that is fairly trivial, rather than describing this as an \"example\". We can note that it is primarily intended ans an example in the comment above TestConfigDuringOobe.",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0369c68_011ebaa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-22T17:58:35Z",
+      "side": 1,
+      "message": "Consider adding this to the informational suite and using this as a baseline test for oobe network configuration.",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b0dbf6_85028d7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-22T17:58:35Z",
+      "side": 1,
+      "message": "\"Test\" is redundant, let\u0027s name this OobeNetworkConfig, or maybe OobeNetworkConfigBaseline if the plan is to add more of these in different files (but it might be possible to set these up as a single test with multiple parameters. See diag_passing.go or vpn_connect.go for examples).",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b14f91_bba85ae2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-22T17:58:35Z",
+      "side": 1,
+      "message": "We could put both this and the WaitForOOBEConnection call into a fixture if we expect to need them in multiple tests. Using a fixture will also group the tests and reduce per-test overhead.",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c48720_f3caa6b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-22T17:58:35Z",
+      "side": 1,
+      "message": "While it is common practice to defer Close functions directly, we will want to know (and fail this test) if the ForgetNetwork call does not succeed. We should instead defer a local function that calls s.Fatal if ForgetNetwork returns an error.",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a97f5cea_d69023c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-22T17:58:35Z",
+      "side": 1,
+      "message": "Let\u0027s this two separate tests with fatal errors since there is something broken if these fail.",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d2b0b84_aa320835",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-22T17:58:35Z",
+      "side": 1,
+      "message": "It looks like this is just NewCrosNetworkConfig with a call to WaitForOOBEConnection. We should keep that outside of this module since it doesn\u0027t have anything to do with cros_network_config. We can make the WaitForOOBEConnection call part of a fixture instead.\n\nAlso, in general, we shouldn\u0027t have something named NewCrosNetworkConfigOobe that returns a CrosNetworkConfig. A reader would expect it to return a CrosNetworkConfigOobe type which doesn\u0027t exist.",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
