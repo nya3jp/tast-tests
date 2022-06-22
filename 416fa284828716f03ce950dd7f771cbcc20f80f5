@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b6f45e1_4c9cf22d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-22T19:29:09Z",
+      "side": 1,
+      "message": "Apologies for the delay, I\u0027ve been distracted by various things. PTAL.\n",
+      "revId": "416fa284828716f03ce950dd7f771cbcc20f80f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

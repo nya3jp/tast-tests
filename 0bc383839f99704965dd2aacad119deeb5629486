@@ -292,6 +292,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "37f36656_2d67438a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-22T19:29:09Z",
+      "side": 1,
+      "message": "Matthew has a good point, we shouldn\u0027t rely on the timeout. This is really just for my own edification, I\u0027ll go ahead and just make this an informational log.",
+      "parentUuid": "8794a31b_75e5cf00",
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3d97d3a4_3ade8411",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
         "patchSetId": 6
@@ -422,6 +440,30 @@
       "side": 1,
       "message": "\u003e Maybe we could remove the default profile at the beginning of the test?\nSounds good to me, I would suggest using the shillReset fixture",
       "parentUuid": "a1aa3a50_1f27aaa5",
+      "range": {
+        "startLine": 127,
+        "startChar": 16,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "0bc383839f99704965dd2aacad119deeb5629486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff071051_1a25848b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-22T19:29:09Z",
+      "side": 1,
+      "message": "I thought about using shillReset, but this test isn\u0027t a great model for a fixture because we restart shill in the middle of the test which is a bit unusual, and adding another restart is a pretty large hammer.\n\nHowever, getting the initial priority and increasing it by one is pretty trivial, so it makes sense to do that. Done.",
+      "parentUuid": "3efed59e_499b41e0",
       "range": {
         "startLine": 127,
         "startChar": 16,
