@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df4bca8a_6e122009",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2022-06-22T16:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02b6611e_01529a06",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "857e02b8170d43bc884a135b5e1923289c2ce17d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ceb22bf_4be1737b",
@@ -77,6 +101,24 @@
       "writtenOn": "2022-06-22T00:05:05Z",
       "side": 1,
       "message": "Is this still used anywhere? If not, can we remove it?",
+      "revId": "857e02b8170d43bc884a135b5e1923289c2ce17d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d20078c7_da4abdc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1171009
+      },
+      "writtenOn": "2022-06-22T16:27:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bf4cf1a_78a72c25",
       "revId": "857e02b8170d43bc884a135b5e1923289c2ce17d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
