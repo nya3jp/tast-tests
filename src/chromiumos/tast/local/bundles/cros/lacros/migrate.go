@@ -74,15 +74,15 @@ const (
 	cookie               = "MyCookie1234=abcd"                // Arbitrary cookie.
 )
 
-func waitForHistoryEntry(ctx context.Context, ui *uiauto.Context, br *browser.Browser, allowReload bool) error {
+func waitForHistoryEntry(ctx context.Context, ui *uiauto.Context, br *browser.Browser, allowRetry bool) error {
 	conn, err := br.NewConn(ctx, "chrome://history")
 	if err != nil {
 		return errors.Wrap(err, "failed to open history page")
 	}
 	defer conn.Close()
 	alphabetLink := nodewith.Name(titleOfAlphabetPage).Role(role.Link)
-	if allowReload {
-		err = ui.RetryUntil(br.ReloadActiveTab, ui.WithTimeout(7*time.Second).WaitUntilExists(alphabetLink))(ctx)
+	if allowRetry {
+		err = ui.RetryUntil(br.ReloadActiveTab, ui.Exists(alphabetLink))(ctx)
 	} else {
 		err = ui.WaitUntilExists(alphabetLink)(ctx)
 	}
