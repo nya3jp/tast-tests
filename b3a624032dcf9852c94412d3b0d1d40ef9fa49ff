@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe38ac3_d0ae073a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-22T15:07:45Z",
+      "side": 1,
+      "message": "We should consider this for a followup CL and not hold this CL up.",
+      "parentUuid": "df6e2228_9cd54bbf",
+      "revId": "b3a624032dcf9852c94412d3b0d1d40ef9fa49ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09fc8489_e0eeb8d6",
