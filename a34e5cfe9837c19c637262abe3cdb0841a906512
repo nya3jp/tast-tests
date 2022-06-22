@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb357d5b_2aacc665",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-22T13:04:36Z",
+      "side": 1,
+      "message": "thanks.\nthen, in which case you need to run clean up?",
+      "parentUuid": "332d30a9_79a3cf98",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa76a5f5_14caf81e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
         "patchSetId": 2
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "aa76a5f5_14caf81e",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f41e6ab_acb88357",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-22T13:04:36Z",
+      "side": 1,
+      "message": "Could you use common formatting that Tast is using? err is formated by %v followed by \": \" at the end?\nDitto for below.",
+      "parentUuid": "98b52e2a_3c781f86",
       "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -202,6 +244,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1593c4c6_ae92de01",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-22T13:04:36Z",
+      "side": 1,
+      "message": "could you investigate why?",
+      "parentUuid": "e2f2ae40_66e10ba7",
+      "range": {
+        "startLine": 99,
+        "startChar": 40,
+        "endLine": 99,
+        "endChar": 51
+      },
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc0ff602_8102a20f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
         "patchSetId": 2
@@ -266,6 +332,24 @@
       "side": 1,
       "message": "Yes, it is identical. The entire file is mostly identical - I made a copy of kernel_crash.go and changed just a few parts.\n\nGiven that these are tests, I think that it is good for them to be independent, unless we want to specifically assert that the two signatures are expected to be identical. In this case there is no requirement for the signatures to be identical.",
       "parentUuid": "7f88b31e_9401104e",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "768b7a6f_c28530bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-22T13:04:36Z",
+      "side": 1,
+      "message": "I agreed that in some cases, code duplication is also an option for testing or even in production.\nWe should consider whether they are conceptually doing the same or not.\nI\u0027m reading so, and thus recommending to refactor.",
+      "parentUuid": "9de93519_5d1847da",
       "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
