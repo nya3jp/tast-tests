@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "100ea0f5_922010ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-22T21:02:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ece188b3_4aae9e2b",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "db93d1dda1a13466e54630dcb450e91486dd8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f48a644d_093a46a3",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-15T19:17:36Z",
       "side": 1,
       "message": "Should you continue if you encounter a failure?",
+      "range": {
+        "startLine": 48,
+        "startChar": 3,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "db93d1dda1a13466e54630dcb450e91486dd8613",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf14004_b7d359bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-22T21:02:16Z",
+      "side": 1,
+      "message": "We do not need to continue if there is an error. Changed to `Fatal` to stop the test.",
+      "parentUuid": "f48a644d_093a46a3",
       "range": {
         "startLine": 48,
         "startChar": 3,
