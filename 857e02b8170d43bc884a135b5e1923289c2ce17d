@@ -3,6 +3,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02b6611e_01529a06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-22T15:29:34Z",
+      "side": 1,
+      "message": "nit: `security`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "857e02b8170d43bc884a135b5e1923289c2ce17d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ceb22bf_4be1737b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-22T15:29:34Z",
+      "side": 1,
+      "message": "nit: can be two lines",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "857e02b8170d43bc884a135b5e1923289c2ce17d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "326e74d0_05e7479f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-22T15:29:34Z",
+      "side": 1,
+      "message": "lgtm with nits",
+      "revId": "857e02b8170d43bc884a135b5e1923289c2ce17d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9bf4cf1a_78a72c25",
         "filename": "src/chromiumos/tast/local/bundles/cros/security/toolchain_options.go",
         "patchSetId": 5
