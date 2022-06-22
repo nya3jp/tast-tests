@@ -94,6 +94,30 @@
       },
       "revId": "acbf1916ba41990545e6290b84694582a0b78962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "974654b7_f47986f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_multi_tasking_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-22T16:34:42Z",
+      "side": 1,
+      "message": "Resolving because of approval of moving function to recorder.",
+      "parentUuid": "7a084504_046df9c1",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 2
+      },
+      "revId": "acbf1916ba41990545e6290b84694582a0b78962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
