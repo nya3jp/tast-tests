@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a14130_0033756c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T11:31:34Z",
+      "side": 1,
+      "message": "Break the line before \"policy\" - line limit 72 chars.",
+      "revId": "05d6e3198aa660602c0018ecbc4630d26c2e58f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c23eed97_6e3d4500",
@@ -14,6 +31,23 @@
       "writtenOn": "2022-06-17T11:21:04Z",
       "side": 1,
       "message": "LGTM - thank you for testing the interactions with the Default* policy!",
+      "revId": "05d6e3198aa660602c0018ecbc4630d26c2e58f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e18c84_36e0b77b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-22T11:31:34Z",
+      "side": 1,
+      "message": "LGTM % nit. Thanks for the tests.",
       "revId": "05d6e3198aa660602c0018ecbc4630d26c2e58f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
