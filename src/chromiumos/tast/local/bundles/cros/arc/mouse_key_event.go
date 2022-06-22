@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/testing"
 )
@@ -64,6 +65,16 @@ func MouseKeyEvent(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start an activity: ", err)
 	}
 	defer act.Stop(cleanupCtx, tconn)
+
+	// Ensure mouse cursor is in the center.
+	info, err := ash.GetARCAppWindowInfo(ctx, tconn, act.PackageName())
+	if err != nil {
+		s.Fatal("Failed to get window info of the activity: ", err)
+	}
+	cp := info.BoundsInRoot.CenterPoint()
+	if err := mouse.Move(tconn, cp, 0)(ctx); err != nil {
+		s.Fatal("Failed to move cursor to the center point: ", err)
+	}
 
 	if err := mouse.Press(tconn, mouse.ForwardButton)(ctx); err != nil {
 		s.Fatal("Failed to press forward button on mouse: ", err)
