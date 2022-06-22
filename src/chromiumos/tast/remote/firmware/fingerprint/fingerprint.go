@@ -105,40 +105,40 @@ var keyIDMap = map[string]keyType{
 //      what we release) is exactly what we expect.
 var firmwareVersionMap = map[FPBoardName]map[string]firmwareMetadata{
 	FPBoardNameBloonchipper: {
-		"bloonchipper_v2.0.4277-9f652bb3-RO_v2.0.14206-ad46faf-RW.bin": {
-			sha256sum: "f1443eba10b5c3ec35376e9abe33438a7a99af21151a707866e06e5a01043f8a",
+		"bloonchipper_v2.0.4277-9f652bb3-RO_v2.0.14348-e5fb0b9-RW.bin": {
+			sha256sum: "e7d8029216a9003fa467b23067ee4d216f052980e2419211beebcb26b2738f31",
 			roVersion: "bloonchipper_v2.0.4277-9f652bb3",
-			rwVersion: "bloonchipper_v2.0.14206-ad46faf",
+			rwVersion: "bloonchipper_v2.0.14348-e5fb0b9",
 			keyID:     "1c590ef36399f6a2b2ef87079c135b69ef89eb60",
 		},
-		"bloonchipper_v2.0.5938-197506c1-RO_v2.0.14206-ad46faf-RW.bin": {
-			sha256sum: "c3dc1bad9b4d10f4b13108edd5e720675dbf2e01488e31ceb0cfbf90467144c3",
+		"bloonchipper_v2.0.5938-197506c1-RO_v2.0.14348-e5fb0b9-RW.bin": {
+			sha256sum: "689d70de090f92a397a6ca0484945a58fe7faf71d2ca0840272a626e33a3a413",
 			roVersion: "bloonchipper_v2.0.5938-197506c1",
-			rwVersion: "bloonchipper_v2.0.14206-ad46faf",
+			rwVersion: "bloonchipper_v2.0.14348-e5fb0b9",
 			keyID:     "1c590ef36399f6a2b2ef87079c135b69ef89eb60",
 		},
 	},
 	FPBoardNameNocturne: {
-		"nocturne_fp_v2.2.64-58cf5974e-RO_v2.0.14198-63a8a136-RW.bin": {
-			sha256sum: "02ee397efbb9698c8db34335ba2a540a345b5f0aaa57a4d890ef74f0654c0b7e",
+		"nocturne_fp_v2.2.64-58cf5974e-RO_v2.0.14340-6c1587ca-RW.bin": {
+			sha256sum: "88c9a45f35d7344251a6945f40701bca2ab2581633c23f4e29e43774e0c2c80f",
 			roVersion: "nocturne_fp_v2.2.64-58cf5974e",
-			rwVersion: "nocturne_fp_v2.0.14198-63a8a136",
+			rwVersion: "nocturne_fp_v2.0.14340-6c1587ca",
 			keyID:     "6f38c866182bd9bf7a4462c06ac04fa6a0074351",
 		},
 	},
 	FPBoardNameNami: {
-		"nami_fp_v2.2.144-7a08e07eb-RO_v2.0.14198-63a8a1366e-RW.bin": {
-			sha256sum: "dabe168f17ab0dc5a744d643ed98527dc487a863ce58e6677fd10818ef7d3d7e",
+		"nami_fp_v2.2.144-7a08e07eb-RO_v2.0.14340-6c1587ca70-RW.bin": {
+			sha256sum: "8f8e8cc6e541b4312ad79bd2b6736e31434c88677117b86c2dd3b7e41e8f28e9",
 			roVersion: "nami_fp_v2.2.144-7a08e07eb",
-			rwVersion: "nami_fp_v2.0.14198-63a8a1366e",
+			rwVersion: "nami_fp_v2.0.14340-6c1587ca70",
 			keyID:     "35486c0090ca390408f1fbbf2a182966084fe2f8",
 		},
 	},
 	FPBoardNameDartmonkey: {
-		"dartmonkey_v2.0.2887-311310808-RO_v2.0.14198-63a8a1366-RW.bin": {
-			sha256sum: "ebc1c529a0028ef7a4a654311b39aacd930161d4ccfa21c9ce5b110591f7c8d4",
+		"dartmonkey_v2.0.2887-311310808-RO_v2.0.14340-6c1587ca7-RW.bin": {
+			sha256sum: "9f53319deb1cf049e2ceea70865c4f4cdb561ebc8c94d7a9cd1f5ed33a9f3451",
 			roVersion: "dartmonkey_v2.0.2887-311310808",
-			rwVersion: "dartmonkey_v2.0.14198-63a8a1366",
+			rwVersion: "dartmonkey_v2.0.14340-6c1587ca7",
 			keyID:     "257a0aa3ac9e81aa4bc3aabdb6d3d079117c5799",
 		},
 	},
