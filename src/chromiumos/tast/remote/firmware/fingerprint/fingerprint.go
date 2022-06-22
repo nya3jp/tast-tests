@@ -147,7 +147,7 @@ var firmwareVersionMap = map[FPBoardName]map[string]firmwareMetadata{
 // BoardTransportIsUART returns true if the device communicates with the FPMCU
 // using a UART transport
 func BoardTransportIsUART(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
-	var uartBoards = []string{"guybrush", "zork"}
+	var uartBoards = []string{"guybrush", "zork", "zork-arc-r"}
 	hostBoard, err := reporters.New(d.DUT()).Board(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to query host board")
