@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1c5739f_df6fba7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/search_help_content.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1485520
+      },
+      "writtenOn": "2022-06-22T17:12:32Z",
+      "side": 1,
+      "message": "Before entering any text, the page will fetch 5 top help contents. Can you test this case too? \n\nThen, after entering some text, the help content should change. Maybe you can retrieve the label of the help context section and verify it. \n\nThe three possible labels are:\nTop help content, Suggested Help content, ....",
+      "revId": "f3dc8fd8a98abc58b0b428c552b82449a5443d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "742987c9_abe089c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/search_help_content.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1485520
+      },
+      "writtenOn": "2022-06-22T17:12:32Z",
+      "side": 1,
+      "message": "This condition may not be robust. What returned depends on ranking algorithm. How about verify two things?\n1) There are five items returned. \n2) Click the first link should open the article, i.e., the link is valid.",
+      "revId": "f3dc8fd8a98abc58b0b428c552b82449a5443d5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
