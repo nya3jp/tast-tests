@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4d28a18_eb8afd08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-22T18:56:47Z",
+      "side": 1,
+      "message": "LGTM with tast-style % nit.",
+      "revId": "e05cedf879fb9b61babffbd7f5172d91ef2f756e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25531fed_ed525db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-22T18:56:47Z",
+      "side": 1,
+      "message": "nit. Let\u0027s move this to line 42 and use cleanupCtx to close Chrome too. \ncr.Close(cleanupCtx)",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 15
+      },
+      "revId": "e05cedf879fb9b61babffbd7f5172d91ef2f756e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
