@@ -292,6 +292,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "95fc9ae2_aec79152",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-22T16:12:20Z",
+      "side": 1,
+      "message": "Rather, \n\n  \"nohup\", \"sh\", \"-c\", `\u0027sleep 2 manatee -a shell-notty -- -c \"echo c \u003e /proc/sysrq-trigger\"\u0027 \u003e/dev/null 2\u003e\u00261 \u003c/dev/null \u0026`",
+      "parentUuid": "b2537266_ed2e44c1",
+      "range": {
+        "startLine": 99,
+        "startChar": 40,
+        "endLine": 99,
+        "endChar": 51
+      },
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc0ff602_8102a20f",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
         "patchSetId": 2
