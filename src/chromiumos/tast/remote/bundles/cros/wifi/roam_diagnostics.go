@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
@@ -93,7 +94,7 @@ func init() {
 
 // requestScans requests network scan and waits for first scan event from wpa_supplicant.
 // Tries roamDiagnosticsScanCount times. Calls s.Fatal if not successful.
-func requestScans(ctx context.Context, s *testing.State, wpaMonitor *wificell.WPAMonitor) {
+func requestScans(ctx context.Context, s *testing.State, wpaMonitor *wpacli.WPAMonitor) {
 	tf := s.FixtValue().(*wificell.TestFixture)
 
 	scanSuccess := false
@@ -113,7 +114,7 @@ retryLoop:
 			if event == nil { // timeout
 				break
 			}
-			_, scanSuccess = event.(*wificell.ScanResultsEvent)
+			_, scanSuccess = event.(*wpacli.ScanResultsEvent)
 			if scanSuccess {
 				break retryLoop
 			}
@@ -127,12 +128,12 @@ retryLoop:
 
 // updateRoamStats checks if roaming happened in roamDiagnosticsRoamTimeout time
 // and updades statistics accordingly.
-func updateRoamStats(ctx context.Context, s *testing.State, wpaMonitor *wificell.WPAMonitor, roamLog *os.File,
+func updateRoamStats(ctx context.Context, s *testing.State, wpaMonitor *wpacli.WPAMonitor, roamLog *os.File,
 	stats *roamDiagnosticsStatsMap) {
 
 	timeoutCtx, cancel := context.WithTimeout(ctx, roamDiagnosticsRoamTimeout)
 	defer cancel()
-	var roam *wificell.RoamEvent
+	var roam *wpacli.RoamEvent
 	for {
 		var received bool
 		event, err := wpaMonitor.WaitForEvent(timeoutCtx)
@@ -142,7 +143,7 @@ func updateRoamStats(ctx context.Context, s *testing.State, wpaMonitor *wificell
 		if event == nil { // timeout
 			break
 		}
-		roam, received = event.(*wificell.RoamEvent)
+		roam, received = event.(*wpacli.RoamEvent)
 		if received && !roam.Skip {
 			break
 		}
