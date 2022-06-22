@@ -28,6 +28,7 @@ import (
 const (
 	installationTimeout   = 15 * time.Minute
 	checkContainerTimeout = time.Minute
+	preTestTimeout        = 30 * time.Second
 	postTestTimeout       = 30 * time.Second
 	uninstallationTimeout = 2 * time.Minute
 )
@@ -194,6 +195,7 @@ func init() {
 		Impl:            &crostiniFixture{preData: preTestDataBusterLC},
 		SetUpTimeout:    installationTimeout + uninstallationTimeout,
 		ResetTimeout:    checkContainerTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: uninstallationTimeout,
 		Parent:          "chromeLoggedInForCrostini",
@@ -284,6 +286,16 @@ var preTestDataBullseye = &preTestData{
 }
 
 var preTestDataBusterLC = &preTestData{
+	container:     largeContainer,
+	debianVersion: vm.DebianBuster,
+}
+
+var preTestDataBusterLCTablet = &preTestData{
+	container:     largeContainer,
+	debianVersion: vm.DebianBuster,
+}
+
+var preTestDataBusterLCClamshell = &preTestData{
 	container:     largeContainer,
 	debianVersion: vm.DebianBuster,
 }
@@ -395,6 +407,7 @@ func (f *crostiniFixture) Reset(ctx context.Context) error {
 }
 
 func (f *crostiniFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+
 }
 
 func (f *crostiniFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
