@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67e2cf28_f4a53639",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-22T17:09:18Z",
+      "side": 1,
+      "message": "LGTM % 1 nit",
+      "revId": "e288b713735b4f86020a14fab9a60f4a2255b17e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0d13c1e_f0ccc2e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_paid_app_parent_permission.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-22T17:09:18Z",
+      "side": 1,
+      "message": "nit: replace \"$\" with \"search result\" in both error messages to give context to the message. the selector should be surfaced by `err`.",
+      "revId": "e288b713735b4f86020a14fab9a60f4a2255b17e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
