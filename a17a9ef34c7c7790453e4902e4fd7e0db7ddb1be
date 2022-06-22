@@ -16,6 +16,29 @@
       "message": "Please review, thank you!",
       "revId": "a17a9ef34c7c7790453e4902e4fd7e0db7ddb1be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ea825f_c5d25fe2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-22T18:28:16Z",
+      "side": 1,
+      "message": "aren\u0027t we scrolling with a gesture here, rather than the scroll bar?",
+      "range": {
+        "startLine": 195,
+        "startChar": 16,
+        "endLine": 195,
+        "endChar": 25
+      },
+      "revId": "a17a9ef34c7c7790453e4902e4fd7e0db7ddb1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
