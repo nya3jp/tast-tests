@@ -16,10 +16,8 @@ service BiosService {
   rpc GetGBBFlags (google.protobuf.Empty) returns (GBBFlagsState) {}
   // ClearAndSetGBBFlags modifies the specified flags, leaving the rest unchanged.
   rpc ClearAndSetGBBFlags (GBBFlagsState) returns (google.protobuf.Empty) {}
-  // EnableAPSoftwareWriteProtect enables the AP software write protect.
-  rpc EnableAPSoftwareWriteProtect (google.protobuf.Empty) returns (google.protobuf.Empty) {}
-  // DisableAPSoftwareWriteProtect disables the AP software write protect.
-  rpc DisableAPSoftwareWriteProtect (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  // SetAPSoftwareWriteProtect sets the software AP write protect.
+  rpc SetAPSoftwareWriteProtect (WPRequest) returns (google.protobuf.Empty) {}
   // CorruptFWSection writes garbage bytes to the entire section specified.
   rpc CorruptFWSection (CorruptSection) returns (google.protobuf.Empty) {}
   // BackupImageSection backs up the current fw region locally and returns its path.
@@ -89,6 +87,7 @@ enum ImageSection {
   FWSignBImageSection = 11;
   FWBodyAImageSection = 12;
   FWBodyBImageSection = 13;
+  APWPROImageSection = 14;
 }
 
 enum UpdateMode {
@@ -124,4 +123,13 @@ message CorruptSection {
 message FirmwareUpdateModeRequest {
   UpdateMode Mode = 1;
   string Options = 2;
+}
+
+// WPRequest provides args for enabling/disabling software write protect.
+// Provide either (WPsection) OR (range start AND range length) OR (neither).
+message WPRequest {
+  bool Enable = 1;
+  sint64 WPRangeStart = 2;     // Pass -1 for WPRangeStart/Length to skip setting these values. 
+  sint64 WPRangeLength = 3;
+  ImageSection WPSection = 4;  // Pass EmptyImageSection to skip setting this value.
 }
