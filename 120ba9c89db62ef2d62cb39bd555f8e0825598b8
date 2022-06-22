@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e5d40a3_0df3265a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-22T22:10:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1f976f1_284eb2c7",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 63
+      },
+      "revId": "120ba9c89db62ef2d62cb39bd555f8e0825598b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6850e92f_c546c796",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-06T16:47:41Z",
       "side": 1,
       "message": "`fix`",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 31
+      },
+      "revId": "120ba9c89db62ef2d62cb39bd555f8e0825598b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee99f08_e39c1e06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-22T22:10:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6850e92f_c546c796",
       "range": {
         "startLine": 9,
         "startChar": 25,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93220806_35d3c271",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-22T22:10:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db849f78_0b4cb6d3",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "120ba9c89db62ef2d62cb39bd555f8e0825598b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7423e8d1_7f478397",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-06T16:47:41Z",
       "side": 1,
       "message": "Can you get rid of this? It seems like the purpose is to wait for the shelf icon animation, and you are providing a better way to do that.",
+      "range": {
+        "startLine": 311,
+        "startChar": 2,
+        "endLine": 311,
+        "endChar": 27
+      },
+      "revId": "120ba9c89db62ef2d62cb39bd555f8e0825598b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed28d35e_4d47e92d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_rearrangement.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-22T22:10:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7423e8d1_7f478397",
       "range": {
         "startLine": 311,
         "startChar": 2,
