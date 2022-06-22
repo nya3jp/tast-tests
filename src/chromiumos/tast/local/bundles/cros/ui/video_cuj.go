@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -194,31 +195,12 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 
 	ac := uiauto.New(tconn)
 
-	configs := []cujrecorder.MetricConfig{
-		cujrecorder.NewCustomMetricConfig(
-			"Ash.Smoothness.PercentDroppedFrames_1sWindow", "percent",
-			perf.SmallerIsBetter),
-		cujrecorder.NewCustomMetricConfig(
-			"Browser.Responsiveness.JankyIntervalsPerThirtySeconds3", "janks",
-			perf.SmallerIsBetter),
-	}
-	if tabletMode {
-		configs = append(configs,
-			cujrecorder.NewLatencyMetricConfig("Ash.DragWindowFromShelf.PresentationTime"),
-			cujrecorder.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Enter.TabletMode"),
-			cujrecorder.NewSmoothnessMetricConfig("Ash.Overview.AnimationSmoothness.Exit.TabletMode"),
-		)
-	} else {
-		configs = append(configs,
-			cujrecorder.NewSmoothnessMetricConfig("Ash.WindowCycleView.AnimationSmoothness.Container"),
-		)
-	}
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
 
-	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, configs...); err != nil {
+	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
 		s.Fatal("Failed to add recorded metrics: ", err)
 	}
 	if testParam.tracing {
@@ -267,6 +249,24 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 	// Wait for <video> tag to show up.
 	if err := webutil.WaitForYoutubeVideo(ctx, ytConn, 0); err != nil {
 		s.Fatal("Failed to wait for video element: ", err)
+	}
+
+	// Dismiss any potential popup notification
+	uiLongWait := ac.WithTimeout(15 * time.Second)
+	bubble := nodewith.ClassName("PermissionPromptBubbleView").First()
+	allow := nodewith.Name("Allow").Role(role.Button).Ancestor(bubble)
+	// Check and grant permissions.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Long wait for permission bubble and break poll loop when it times out.
+		if err := uiLongWait.WaitUntilExists(bubble)(ctx); err != nil {
+			return nil
+		}
+		if err := pc.Click(allow)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click the allow button")
+		}
+		return errors.New("granting permissions")
+	}, &testing.PollOptions{Interval: time.Second, Timeout: 1 * time.Minute}); err != nil {
+		s.Fatal("Failed to grant permissions: ", err)
 	}
 
 	// Hold alt a bit then tab to show the window cycle list.
@@ -527,6 +527,19 @@ func VideoCUJ(ctx context.Context, s *testing.State) {
 		} else {
 			if err := altTab(); err != nil {
 				return errors.Wrap(err, "failed to alt-tab")
+			}
+
+			// Adjust volume by pressing and holding the up and down arrow
+			if err := inputsimulations.RepeatKeyHoldFor(ctx, kb, "Down", 2*time.Second, 0*time.Second, 2*time.Second); err != nil {
+				return errors.Wrap(err, "failed to scroll down")
+			}
+			if err := inputsimulations.RepeatKeyHoldFor(ctx, kb, "Up", 2*time.Second, 0*time.Second, 2*time.Second); err != nil {
+				return errors.Wrap(err, "failed to scroll down")
+			}
+
+			// Pause and play the video with the spacebar
+			if err := inputsimulations.RepeatKeyPressFor(ctx, kb, "Space", 5*time.Second, 20*time.Second); err != nil {
+				return errors.Wrap(err, "failed to scroll down")
 			}
 		}
 
