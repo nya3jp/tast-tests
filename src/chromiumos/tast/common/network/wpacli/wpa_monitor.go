@@ -1,8 +1,8 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package wificell
+package wpacli
 
 import (
 	"bufio"
@@ -14,6 +14,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
@@ -45,6 +46,12 @@ type DisconnectedEvent struct {
 	Reason           int
 	LocallyGenerated string
 	RcvTime          time.Time
+}
+
+// ConnectedEvent defines data of CTRL-EVENT-CONNECTED event.
+type ConnectedEvent struct {
+	BSSID   string
+	RcvTime time.Time
 }
 
 // ScanResultsEvent defines data of CTRL-EVENT-SCAN-RESULTS event.
@@ -92,6 +99,15 @@ var eventDefs = []eventDef{
 		},
 	},
 	{
+		regexp.MustCompile(`CTRL-EVENT-CONNECTED - Connection to ([\da-fA-F:]+) completed`),
+		func(matches []string) (_ SupplicantEvent, firstError error) {
+			event := new(ConnectedEvent)
+			event.BSSID = matches[1]
+			event.RcvTime = time.Now()
+			return event, firstError
+		},
+	},
+	{
 		regexp.MustCompile(
 			`CTRL-EVENT-DO-ROAM cur_bssid=([\da-fA-F:]+) cur_freq=(\d+) ` +
 				`cur_level=([\d-]+) cur_est=(\d+) ` +
@@ -133,10 +149,34 @@ func (e *ScanResultsEvent) ToLogString() string {
 	return ""
 }
 
-// ToLogString formats the event data to string suitable for logging
+// ToLogString formats the event data to string suitable for logging.
 func (e *DisconnectedEvent) ToLogString() string {
 	const timeLayout = "2006-01-02 15:04:05.000000"
 	return fmt.Sprintf("%s %+v\n", e.RcvTime.Format(timeLayout), e)
+}
+
+// ToLogString formats the event data to string suitable for logging.
+func (e *ConnectedEvent) ToLogString() string {
+	const timeLayout = "2006-01-02 15:04:05.000000"
+	return fmt.Sprintf("%s %+v\n", e.RcvTime.Format(timeLayout), e)
+}
+
+// StartWPAMonitor configures and starts wpa_supplicant events monitor
+// newCtx is ctx shortened for the stop function, which should be deferred by the caller.
+func (w *WPAMonitor) StartWPAMonitor(ctx context.Context, dutConn *ssh.Conn, timeout time.Duration) (stop func(), newCtx context.Context, retErr error) {
+	if err := w.Start(ctx, dutConn); err != nil {
+		return nil, ctx, err
+	}
+	sCtx, sCancel := ctxutil.Shorten(ctx, timeout)
+	return func() {
+		sCancel()
+		timeoutCtx, cancel := context.WithTimeout(ctx, timeout)
+		defer cancel()
+		if err := w.Stop(timeoutCtx); err != nil {
+			testing.ContextLog(ctx, "Failed to wait for wpa monitor stop: ", err)
+		}
+		testing.ContextLog(ctx, "Wpa monitor stopped")
+	}, sCtx, nil
 }
 
 // Start initializes the wpa_supplicant monitor.

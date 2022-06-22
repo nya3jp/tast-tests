@@ -13,6 +13,7 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/wifi/security"
 	"chromiumos/tast/remote/bundles/cros/wifi/wifiutil"
@@ -141,13 +142,13 @@ func simulateDUTMove(ctx context.Context, s *testing.State, offsetRange rangeDef
 
 // collectWPAEvents collects all Roam and Disconnected events from wpa_supplicant since last call to this
 // or to wpaMonitor.ClearEvents.
-func collectWPAEvents(ctx context.Context, s *testing.State, wpaMonitor *wificell.WPAMonitor) (
-	skipRoamEvents []*wificell.RoamEvent, disconnectedEvents []*wificell.DisconnectedEvent) {
+func collectWPAEvents(ctx context.Context, s *testing.State, wpaMonitor *wpacli.WPAMonitor) (
+	skipRoamEvents []*wpacli.RoamEvent, disconnectedEvents []*wpacli.DisconnectedEvent) {
 
 	timeoutCtx, cancel := context.WithTimeout(ctx, roamNaturalRoamTimeout)
 	defer cancel()
-	skipRoamEvents = []*wificell.RoamEvent{}
-	disconnectedEvents = []*wificell.DisconnectedEvent{}
+	skipRoamEvents = []*wpacli.RoamEvent{}
+	disconnectedEvents = []*wpacli.DisconnectedEvent{}
 	for {
 		event, err := wpaMonitor.WaitForEvent(timeoutCtx)
 		if err != nil {
@@ -158,11 +159,11 @@ func collectWPAEvents(ctx context.Context, s *testing.State, wpaMonitor *wificel
 		}
 		rnDebug(s, event)
 		switch e := event.(type) {
-		case *wificell.RoamEvent:
+		case *wpacli.RoamEvent:
 			if e.Skip {
 				skipRoamEvents = append(skipRoamEvents, e)
 			}
-		case *wificell.DisconnectedEvent:
+		case *wpacli.DisconnectedEvent:
 			disconnectedEvents = append(disconnectedEvents, e)
 		}
 	}

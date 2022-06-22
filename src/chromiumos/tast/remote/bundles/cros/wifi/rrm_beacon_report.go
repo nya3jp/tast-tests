@@ -18,6 +18,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/google/gopacket/layers"
 
+	"chromiumos/tast/common/network/wpacli"
 	"chromiumos/tast/common/wifi/ieee80211"
 	"chromiumos/tast/common/wifi/security/wpa"
 	"chromiumos/tast/ctxutil"
@@ -234,7 +235,7 @@ func RRMBeaconReport(ctx context.Context, s *testing.State) {
 	}
 	runOnce := func(ctx context.Context, params hostapd.BeaconReqParams, expected []reportBSS, name string) error {
 		SendBeaconRequest := func(ctx context.Context) error {
-			var wpaMonitor *wificell.WPAMonitor
+			var wpaMonitor *wpacli.WPAMonitor
 			if params.Mode != hostapd.ModeTable {
 				var stop func()
 				wpaMonitor, stop, ctx, err = tf.StartWPAMonitor(ctx, wificell.DefaultDUT)
@@ -255,7 +256,7 @@ func RRMBeaconReport(ctx context.Context, s *testing.State) {
 					if event == nil {
 						return testing.PollBreak(errors.New("timed out waiting for scan event"))
 					}
-					if _, scanSuccess := event.(*wificell.ScanResultsEvent); scanSuccess {
+					if _, scanSuccess := event.(*wpacli.ScanResultsEvent); scanSuccess {
 						return nil
 					}
 					return errors.New("no scan event found")
