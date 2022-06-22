@@ -212,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f681536f_c8e943b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-06-22T18:12:20Z",
+      "side": 1,
+      "message": "Please add my name to the list for now. flin@google.com  Thanks.",
+      "parentUuid": "4dd326a4_269ab978",
+      "revId": "48657597c8028bdea1ed0cb4714ced78b099b2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cbc6dc3_a1adadbf",
