@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cd4dc1f_6fc6008e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-22T23:47:01Z",
+      "side": 1,
+      "message": "`shelf:` (not capitalized, and without `[tast-tests]`)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "0e41de7a951bc014aabcc064a4118be8f2145af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dea39af_f08f94e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-22T23:47:01Z",
+      "side": 1,
+      "message": "`Wait` (capitalized)",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "0e41de7a951bc014aabcc064a4118be8f2145af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90ff7d00_86b706de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-22T23:47:01Z",
+      "side": 1,
+      "message": "`icon\u0027s`",
+      "range": {
+        "startLine": 10,
+        "startChar": 50,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "0e41de7a951bc014aabcc064a4118be8f2145af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ccde692_08c2732b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-22T23:47:01Z",
+      "side": 1,
+      "message": "This line is way too long.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 109
+      },
+      "revId": "0e41de7a951bc014aabcc064a4118be8f2145af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
