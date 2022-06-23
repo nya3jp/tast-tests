@@ -52,6 +52,24 @@
       "parentUuid": "cd59445b_70cf9624",
       "revId": "670d28ee2962a6a6d4213db35c423a18c83cf802",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f783d61_9ff55231",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T20:13:35Z",
+      "side": 1,
+      "message": "Sorry, I linked the bug above wrong. b/236030517#comment2",
+      "parentUuid": "eb9d40c1_4d79daff",
+      "revId": "670d28ee2962a6a6d4213db35c423a18c83cf802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
