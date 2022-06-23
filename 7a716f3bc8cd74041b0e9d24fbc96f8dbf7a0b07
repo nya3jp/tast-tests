@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a6c4ed3_49c4ac3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-06-23T23:30:03Z",
+      "side": 1,
+      "message": "can rm this and just be `Update this test to...`",
+      "range": {
+        "startLine": 9,
+        "startChar": 63,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "7a716f3bc8cd74041b0e9d24fbc96f8dbf7a0b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "166686d9_80f83c22",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-06-23T23:00:25Z",
       "side": 1,
       "message": "PTAL!",
+      "revId": "7a716f3bc8cd74041b0e9d24fbc96f8dbf7a0b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc990bcd_08c060d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-06-23T23:30:03Z",
+      "side": 1,
+      "message": "I\u0027m worried about a race condition here. This check executes too quickly, meaning if there was a bug that allowed policy controlled avatar user to see the avatar subpage, it is likely that this part would still pass because the route has not changed yet and the breadcrumb has not been added yet.",
       "revId": "7a716f3bc8cd74041b0e9d24fbc96f8dbf7a0b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
