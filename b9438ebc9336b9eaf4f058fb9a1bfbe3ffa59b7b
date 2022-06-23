@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e33580fb_723cdc4d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_no_cellular_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-06-23T04:54:21Z",
+      "side": 1,
+      "message": "The cellular interface can be either rmnet_data0 (on QMI modems) or wwan0 (on MBIM modems). Ideally the test should disable non cellular interfaces and then run a ping. For reference check https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/cellular/host_cellular_network_connectivity.go;l\u003d29?q\u003dhostcellular\u0026sq\u003d",
+      "revId": "b9438ebc9336b9eaf4f058fb9a1bfbe3ffa59b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc3d1e4_a4fa911c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_no_cellular_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-06-23T04:54:21Z",
+      "side": 1,
+      "message": "I see that we are passing a bunch of callbox configurations here, is it possible to specify the apn name too?. The reason I ask this is because we now support internet (dual stack) internet-ipv4 (ipv4 only) and internet-ipv6 (ipv6 only) networks.",
+      "revId": "b9438ebc9336b9eaf4f058fb9a1bfbe3ffa59b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "821fa305_06b04980",
         "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_no_cellular_data.go",
         "patchSetId": 3
@@ -90,6 +124,46 @@
         "startChar": 0,
         "endLine": 116,
         "endChar": 26
+      },
+      "revId": "b9438ebc9336b9eaf4f058fb9a1bfbe3ffa59b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87908575_6f866067",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-06-23T04:54:21Z",
+      "side": 1,
+      "message": "Can we change this to use the wrapper functions in https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/cellular/cellular_helper.go?",
+      "revId": "b9438ebc9336b9eaf4f058fb9a1bfbe3ffa59b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6f29479_e15b2c60",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1441092
+      },
+      "writtenOn": "2022-06-23T04:54:21Z",
+      "side": 1,
+      "message": "We should change this to use NewModemWithSim() from https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/modemmanager/modem.go - this will ensure that we select the slot with the active SIM.",
+      "range": {
+        "startLine": 174,
+        "startChar": 18,
+        "endLine": 174,
+        "endChar": 25
       },
       "revId": "b9438ebc9336b9eaf4f058fb9a1bfbe3ffa59b7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
