@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "108343aa_0b2dd9a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T00:04:51Z",
+      "side": 1,
+      "message": "nit: mention that this adjusts the volume.",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12860c41_707b2589",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T00:04:51Z",
+      "side": 1,
+      "message": "The words `verify that` should be written only once.",
+      "range": {
+        "startLine": 15,
+        "startChar": 58,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "dbba2eff_50ed0fa8",
@@ -14,6 +60,236 @@
       "writtenOn": "2022-06-22T22:25:05Z",
       "side": 1,
       "message": "lgtm\n\nThanks.",
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23f294a_989c4e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations/keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T00:04:51Z",
+      "side": 1,
+      "message": "`and`",
+      "range": {
+        "startLine": 26,
+        "startChar": 37,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dec9c98_df3a3677",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations/keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T00:04:51Z",
+      "side": 1,
+      "message": "`each`",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 26
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "369a5df9_deb85742",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations/keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T00:04:51Z",
+      "side": 1,
+      "message": "nit: `action.Combine`",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be425020_844446e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations/keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T00:04:51Z",
+      "side": 1,
+      "message": "optional nit: I would put this at the end of the previous line, to better separate the name from the action steps.",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3dcabf3_67b973aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations/keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T00:04:51Z",
+      "side": 1,
+      "message": "nit: Add a comma and line ending, for consistency with `RepeatKeyPressFor`.",
+      "range": {
+        "startLine": 35,
+        "startChar": 38,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e9a5ac_6f454d74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T00:04:51Z",
+      "side": 1,
+      "message": "nit: just write: `uiLongWait.WaitUntilExists(bubble)(ctx) !\u003d nil`",
+      "range": {
+        "startLine": 268,
+        "startChar": 5,
+        "endLine": 268,
+        "endChar": 63
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ede985b8_f7880f18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T00:04:51Z",
+      "side": 1,
+      "message": "nit: `Allow` (capitalized)",
+      "range": {
+        "startLine": 272,
+        "startChar": 48,
+        "endLine": 272,
+        "endChar": 53
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a5347f_4902e728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T00:04:51Z",
+      "side": 1,
+      "message": "nit: no need to multiply a value by one.",
+      "range": {
+        "startLine": 275,
+        "startChar": 57,
+        "endLine": 275,
+        "endChar": 61
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc8ecf9_b71e22fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T00:04:51Z",
+      "side": 1,
+      "message": "nit: only one space here",
+      "range": {
+        "startLine": 549,
+        "startChar": 28,
+        "endLine": 549,
+        "endChar": 30
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eb2aa16_f79561fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T00:04:51Z",
+      "side": 1,
+      "message": "nit: `and` instead of `or`",
+      "range": {
+        "startLine": 553,
+        "startChar": 45,
+        "endLine": 553,
+        "endChar": 47
+      },
       "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
