@@ -22,8 +22,6 @@ const (
 const (
 	// ChromePolicyLoggedIn is a fixture name.
 	ChromePolicyLoggedIn = "chromePolicyLoggedIn"
-	// ChromePolicyLoggedInWithoutPersonalizationHub is a fixture name.
-	ChromePolicyLoggedInWithoutPersonalizationHub = "chromePolicyLoggedInWithoutPersonalizationHub"
 	// ChromePolicyLoggedInLockscreen is a fixture name.
 	ChromePolicyLoggedInLockscreen = "chromePolicyLoggedInLockscreen"
 	// ChromePolicyLoggedInIsolatedApp is a fixture name.
