@@ -11,6 +11,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -20,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cpu"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/gtest"
 	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/encoding"
@@ -349,32 +351,33 @@ func RunAccelVideoPerfTest(ctxForDefer context.Context, s *testing.State, opts T
 
 	// Test 2: Measure CPU usage and power consumption while running capped
 	// performance test only.
-	measurements, err := mediacpu.MeasureProcessUsage(ctx, measureInterval, mediacpu.KillProcess, gtest.New(
-		filepath.Join(chrome.BinTestDir, exec),
-		gtest.Logfile(filepath.Join(s.OutDir(), exec+".cap.log")),
-		gtest.Filter("*"+cappedTestname),
-		// Repeat enough times to run for full measurement duration. We don't
-		// use -1 here as this can result in huge log files (b/138822793).
-		gtest.Repeat(1000),
-		gtest.ExtraArgs(testArgs...),
-		gtest.UID(int(sysutil.ChronosUID)),
-	))
-	if err != nil {
-		return errors.Wrapf(err, "failed to measure CPU usage %v", exec)
-	}
-	p.Set(perf.Metric{
-		Name:      "cpu_usage",
-		Unit:      "percent",
-		Direction: perf.SmallerIsBetter,
-	}, measurements["cpu"])
+	var procErr, cpuErr error
+	var wg sync.WaitGroup
+	wg.Add(2)
+	go func() {
+		defer wg.Done()
+		procErr = graphics.TimedRunGTest(ctx, measureInterval, gtest.New(
+			filepath.Join(chrome.BinTestDir, exec),
+			gtest.Logfile(filepath.Join(s.OutDir(), exec+".cap.log")),
+			gtest.Filter("*"+cappedTestname),
+			// Repeat enough times to run for full measurement duration. We don't
+			// use -1 here as this can result in huge log files (b/138822793).
+			gtest.Repeat(1000),
+			gtest.ExtraArgs(testArgs...),
+			gtest.UID(int(sysutil.ChronosUID)),
+		))
+	}()
+	go func() {
+		defer wg.Done()
+		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, 0*time.Second, measureInterval, "", p)
+	}()
 
-	// Power measurements are not supported on all platforms.
-	if power, ok := measurements["power"]; ok {
-		p.Set(perf.Metric{
-			Name:      "power_consumption",
-			Unit:      "watt",
-			Direction: perf.SmallerIsBetter,
-		}, power)
+	wg.Wait()
+	if procErr != nil {
+		return errors.Wrap(procErr, "failed to run GTest binary")
+	}
+	if cpuErr != nil {
+		return errors.Wrap(cpuErr, "failed to measure CPU/Package power")
 	}
 
 	if err := p.Save(s.OutDir()); err != nil {
