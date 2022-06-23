@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9936bc5a_31038f9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-06-23T18:22:14Z",
+      "side": 1,
+      "message": "Forgot Hyung Tae was OOO, adding other team members who can +2",
+      "revId": "55f19776f87a0794da7ec1d43095334b8a2382be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6073c78b_fc9cd0be",
@@ -14,6 +31,24 @@
       "writtenOn": "2022-06-23T17:10:56Z",
       "side": 1,
       "message": "Do you want to include this part(227-237) in a nested function? So it is clear when the defer d.DieOnFailedDiffs() will happen.",
+      "revId": "55f19776f87a0794da7ec1d43095334b8a2382be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f359a41_3f3acbbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-06-23T18:22:14Z",
+      "side": 1,
+      "message": "each cycle iteration of the loop is wrapped in a function (L215) so the defers should fire correctly for each test case",
+      "parentUuid": "6073c78b_fc9cd0be",
       "revId": "55f19776f87a0794da7ec1d43095334b8a2382be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
