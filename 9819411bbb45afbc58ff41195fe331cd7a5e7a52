@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f8b1c8d_ad829a0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T03:19:02Z",
+      "side": 1,
+      "message": "nodewith works in desktop area, not app wide. A root parent finder is highly recommended. \n\ne.g.\n\nvar tinkercadNodeFinder \u003d nodewith.Ancestor(rootFinder)\n.. \u003d tinkercadNodeFinder.HasClass().Role().",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21a6119f_cc5a0779",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T03:19:02Z",
+      "side": 1,
+      "message": "This kind of locator is super fragile. Please keep it in mind to avoid multiple efforts to stabilize the test.",
+      "range": {
+        "startLine": 104,
+        "startChar": 32,
+        "endLine": 104,
+        "endChar": 40
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f11f102_8c176898",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T03:19:02Z",
+      "side": 1,
+      "message": "As I know DoDefault is more preferred than LeftClick. Can we do it in one go.",
+      "range": {
+        "startLine": 111,
+        "startChar": 9,
+        "endLine": 111,
+        "endChar": 23
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24bdc1ec_85d63791",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T03:19:02Z",
+      "side": 1,
+      "message": "nit: hasn\u0027t",
+      "range": {
+        "startLine": 116,
+        "startChar": 46,
+        "endLine": 116,
+        "endChar": 53
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d98a7a_8b940b32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T03:19:02Z",
+      "side": 1,
+      "message": "Please rework on the finders as suggested above.",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 99
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5bc885b_c7191576",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T03:19:02Z",
+      "side": 1,
+      "message": "This wrapper is redundant. You can call webutil function directly.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 1
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dad77bbd_e92b91ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T03:19:02Z",
+      "side": 1,
+      "message": "This is a very bad practice. A GET function should not change any reference data.\n\nPlease refine it as \n\n(tc *TinkerCad) GetEditorWindowRect() (*rect, error)",
+      "range": {
+        "startLine": 184,
+        "startChar": 6,
+        "endLine": 184,
+        "endChar": 56
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e10cc6_f54528e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T03:19:02Z",
+      "side": 1,
+      "message": "HasClass function split the Class attribute with space, and match any item inside. Why it has space in between?",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 127
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f91771a_f4d89fc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T03:19:02Z",
+      "side": 1,
+      "message": "I do not think \"F\" is an accelerator. Should it be TypeAction?",
+      "range": {
+        "startLine": 229,
+        "startChar": 9,
+        "endLine": 229,
+        "endChar": 20
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e7463c_8af555b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T03:19:02Z",
+      "side": 1,
+      "message": "doDefault.",
+      "range": {
+        "startLine": 284,
+        "startChar": 14,
+        "endLine": 284,
+        "endChar": 23
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "319cbf00_a910b787",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T03:19:02Z",
+      "side": 1,
+      "message": "Function name should be meaningful. If this function involves export and result verification, it should be named as ExportAndVerify",
+      "range": {
+        "startLine": 288,
+        "startChar": 21,
+        "endLine": 288,
+        "endChar": 27
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
