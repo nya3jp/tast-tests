@@ -569,8 +569,8 @@ func MeasurePackageCStateCounters(ctx context.Context, t time.Duration, p *perf.
 // [1] https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-power
 func MeasureSystemPowerConsumption(ctx context.Context, c *chrome.TestConn, t time.Duration, p *perf.Values) error {
 	cleanup, err := setup.PowerTest(ctx, c, setup.PowerTestOptions{
-		Battery:    setup.ForceBatteryDischarge,
-		NightLight: setup.DisableNightLight})
+		NightLight: setup.DisableNightLight,
+	}, setup.NewBatteryDischargeFromMode(setup.ForceBatteryDischarge))
 	if err != nil {
 		// This is not really an error: sometimes powerd is down or lost and setting
 		// up the power test fails. Just don't provide any metric.
@@ -737,17 +737,17 @@ func UpdatePerfMetricFromHistogram(ctx context.Context, tconn *chrome.TestConn, 
 // and cpu.WaitUntilIdle() before starting the actual test logic, to set up and
 // wait for the CPU usage to stabilize to a low level. Example:
 //
-//  import "chromiumos/tast/local/media/cpu"
+//	import "chromiumos/tast/local/media/cpu"
 //
-//  cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
-//  if err != nil {
-//    return errors.Wrap(err, "failed to set up CPU benchmark")
-//  }
-//  defer cleanUpBenchmark(ctx)
+//	cleanUpBenchmark, err := cpu.SetUpBenchmark(ctx)
+//	if err != nil {
+//		return errors.Wrap(err, "failed to set up CPU benchmark")
+//	}
+//	defer cleanUpBenchmark(ctx)
 //
-//  if err := cpu.WaitUntilIdle(ctx); err != nil {
-//    return errors.Wrap(err, "failed waiting for CPU to become idle")
-//  }
+//	if err := cpu.WaitUntilIdle(ctx); err != nil {
+//		return errors.Wrap(err, "failed waiting for CPU to become idle")
+//	}
 func MeasureCPUUsageAndPower(ctx context.Context, stabilization, measurement time.Duration, p *perf.Values) error {
 	if stabilization != 0 {
 		testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", stabilization)
