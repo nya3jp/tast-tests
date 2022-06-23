@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8677f6a_cda72adf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-23T06:47:19Z",
+      "side": 1,
+      "message": "nit:\nSubject line should start with a topic (package name or \"tast-tests\", and there is no need for a dot at the end.\n arc: Ensure cursor is in the center before test starts.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "f3db00b06e8875b1f218b2a116c10a9f4b8a4665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "efec49cd_7dab39d4",
@@ -14,6 +37,29 @@
       "writtenOn": "2022-06-23T04:27:21Z",
       "side": 1,
       "message": "Thanks for reviewing!",
+      "revId": "f3db00b06e8875b1f218b2a116c10a9f4b8a4665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c3fbf0b_4a3a37a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/mouse_key_event.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-23T06:47:19Z",
+      "side": 1,
+      "message": "nit: Comments should be full sentences, ending with a dot.",
+      "range": {
+        "startLine": 69,
+        "startChar": 34,
+        "endLine": 69,
+        "endChar": 40
+      },
       "revId": "f3db00b06e8875b1f218b2a116c10a9f4b8a4665",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
