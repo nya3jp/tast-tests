@@ -36,7 +36,7 @@ func init() {
 		Parent:          fixture.FakeDMS,
 	})
 
-	// TODO(b/230901276): Remove once policy.UserAvatarImage is either removed or updated.
+	// TODO(b/230901276): Remove once policy.UserAvatarImageFromSettings is removed.
 	testing.AddFixture(&testing.Fixture{
 		Name:     fixture.ChromePolicyLoggedInWithoutPersonalizationHub,
 		Desc:     "Logged into a user session with \"Personalization Hub\" turned off",
