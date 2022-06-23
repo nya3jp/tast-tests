@@ -16,6 +16,52 @@
       "message": "Apologies for the delay, I\u0027ve been distracted by various things. PTAL.\n",
       "revId": "416fa284828716f03ce950dd7f771cbcc20f80f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e970548e_d8d1ae12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-23T10:06:40Z",
+      "side": 1,
+      "message": "Just some thought: since this service is not connected, the priority will be persisted into the ethernet_{MAC_ADDR} group but not ethernet_any, so even if the test profile is not removed after shill restarted, that value will not be loaded to the physical eth service because the mac addr does not match.\nIs it what we want to verify? Or do we want to verify that the priority on veth is set to default after restart instead of the physical eth?",
+      "range": {
+        "startLine": 113,
+        "startChar": 10,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "416fa284828716f03ce950dd7f771cbcc20f80f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3b20814_f28f05ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-23T10:06:40Z",
+      "side": 1,
+      "message": "Just to check my understanding about this comment, I suppose we do not expect any property to be saved in this test (it should be on the test profile)?",
+      "range": {
+        "startLine": 122,
+        "startChar": 29,
+        "endLine": 122,
+        "endChar": 73
+      },
+      "revId": "416fa284828716f03ce950dd7f771cbcc20f80f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
