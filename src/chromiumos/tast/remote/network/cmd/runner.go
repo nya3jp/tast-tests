@@ -7,12 +7,17 @@ package cmd
 
 import (
 	"context"
+	"io"
+	"os"
 
 	"chromiumos/tast/common/network/cmd"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
 )
 
 const logName = "cmdOutput.txt"
+
+var command *ssh.Cmd
 
 // RemoteCmdRunner is the object used for running remote commands.
 type RemoteCmdRunner struct {
@@ -35,4 +40,41 @@ func (r *RemoteCmdRunner) Output(ctx context.Context, cmd string, args ...string
 		return cc.Output()
 	}
 	return cc.Output(ssh.DumpLogOnError)
+}
+
+// Create creates a command.
+func (r *RemoteCmdRunner) Create(ctx context.Context, cmd string, args ...string) {
+	command = r.Host.CommandContext(ctx, cmd, args...)
+}
+
+// SetStdOut sets the standard output of existed command.
+func (r *RemoteCmdRunner) SetStdOut(stdoutFile *os.File) {
+	command.Stdout = stdoutFile
+}
+
+// StderrPipe sets standard error pipe of existed command.
+func (r *RemoteCmdRunner) StderrPipe() (io.ReadCloser, error) {
+	return command.StderrPipe()
+}
+
+// StartExistedCmd starts existed command.
+func (r *RemoteCmdRunner) StartExistedCmd() error {
+	if command == nil {
+		return errors.New("there is no command object to start")
+	}
+	return command.Start()
+}
+
+// WaitExistedCmd waits existed command.
+func (r *RemoteCmdRunner) WaitExistedCmd() error {
+	if command == nil {
+		return errors.New("there is no command object to wait")
+	}
+	command.Wait()
+	return nil
+}
+
+// CheckCmdExisted check if the command existed.
+func (r *RemoteCmdRunner) CheckCmdExisted() bool {
+	return command != nil
 }
