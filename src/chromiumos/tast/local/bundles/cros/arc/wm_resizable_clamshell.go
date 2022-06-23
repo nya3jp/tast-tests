@@ -20,6 +20,7 @@ import (
 	uiauto "chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/testing"
 )
@@ -827,13 +828,9 @@ func snapToHalfHelper(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, d
 	}
 
 	if dragTheActivity {
-		wInfo, err := ash.GetARCAppWindowInfo(ctx, tconn, wm.Pkg24)
-		if err != nil {
-			return errors.Wrap(err, "failed to get arc app window info")
-		}
+		pc := pointer.NewMouse(tconn)
 
-		source := coords.NewPoint(wInfo.TargetBounds.Left+wInfo.TargetBounds.Width/2, wInfo.TargetBounds.Top+5)
-		if err := leftClickDragSource(ctx, tconn, source, dInfo.WorkArea.Width, isLeft); err != nil {
+		if err := wm.DragCaptionToSnap(ctx, tconn, pc, dInfo, act, isLeft); err != nil {
 			return errors.Wrap(err, "failed to drag caption bar to corner of screen")
 		}
 	} else {
@@ -1140,19 +1137,6 @@ func leftClickDragCaptionButton(ctx context.Context, tconn *chrome.TestConn, btn
 
 	dest := coords.NewPoint(captionBtn.Location.CenterPoint().X+d, captionBtn.Location.CenterPoint().Y)
 	return mouse.Drag(tconn, captionBtn.Location.CenterPoint(), dest, 500*time.Millisecond)(ctx)
-}
-
-// leftClickDragSource function will simulate left click on source coordinate and drag to left/right top corner of screen.
-func leftClickDragSource(ctx context.Context, tconn *chrome.TestConn, source coords.Point, screenWidth int, toLeft bool) error {
-	destX := 0
-	destY := 0
-
-	if !toLeft {
-		destX = screenWidth
-	}
-
-	dest := coords.NewPoint(destX, destY)
-	return mouse.Drag(tconn, source, dest, 750*time.Millisecond)(ctx)
 }
 
 // rcMaxRestoreTestHelper performs RC02 test.
