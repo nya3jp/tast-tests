@@ -6,6 +6,7 @@ package videocuj
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -93,11 +94,7 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		return errors.Wrap(err, "failed to instruct device to stay on YouTube web")
 	}
 
-	// Clear notification prompts if exists. If the notification alert popup isn't clear,
-	// operations that require finding the current active window (i.e., SwitchWindowToDisplay)
-	// will not succeed.
-	prompts := []string{"Allow", "Never", "NO THANKS"}
-	if err := clearNotificationPrompts(ctx, y.ui, y.uiHdl, prompts...); err != nil {
+	if err := clearNotificationPrompts(ctx, y.ui); err != nil {
 		return errors.Wrap(err, "failed to clear notification prompts")
 	}
 
@@ -198,8 +195,9 @@ func (y *YtWeb) EnterFullscreen(ctx context.Context) error {
 	}
 
 	// Notification prompts are sometimes shown in fullscreen.
-	prompts := []string{"Allow", "Never", "NO THANKS"}
-	clearNotificationPrompts(ctx, y.ui, y.uiHdl, prompts...)
+	if err := clearNotificationPrompts(ctx, y.ui); err != nil {
+		return errors.Wrap(err, "failed to clear notification prompts")
+	}
 
 	fullscreenBtn := nodewith.Name("Full screen (f)").Role(role.Button)
 	if err := y.ui.DoDefault(fullscreenBtn)(ctx); err != nil {
@@ -415,11 +413,22 @@ func (y *YtWeb) Close(ctx context.Context) {
 }
 
 // clearNotificationPrompts finds and clears some youtube web prompts.
-func clearNotificationPrompts(ctx context.Context, ui *uiauto.Context, uiHdl cuj.UIActionHandler, prompts ...string) error {
+func clearNotificationPrompts(ctx context.Context, ui *uiauto.Context) error {
+	tartgetPrompts := nodewith.NameRegex(regexp.MustCompile("(Allow|Never|NO THANKS)")).Role(role.Button)
+	nodes, err := ui.NodesInfo(ctx, tartgetPrompts)
+	if err != nil {
+		return err
+	}
+	if len(nodes) == 0 {
+		return nil
+	}
+
+	testing.ContextLog(ctx, "Start to clear notification prompts")
+	prompts := []string{"Allow", "Never", "NO THANKS"}
 	for _, name := range prompts {
 		tartgetPrompt := nodewith.Name(name).Role(role.Button)
 		if err := uiauto.IfSuccessThen(
-			ui.WaitUntilExists(tartgetPrompt),
+			ui.WithTimeout(shortUITimeout).WaitUntilExists(tartgetPrompt),
 			ui.DoDefaultUntil(tartgetPrompt, ui.WithTimeout(shortUITimeout).WaitUntilGone(tartgetPrompt)),
 		)(ctx); err != nil {
 			testing.ContextLogf(ctx, "Failed to clear prompt %q", name)
