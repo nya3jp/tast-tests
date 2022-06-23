@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b96027ae_0cf1f22d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-06-23T16:56:49Z",
+      "side": 1,
+      "message": "I think the approach from [flash_fp_mcu](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/util/flash_fp_mcu;l\u003d222-244;drc\u003d3eddb22fbd23621f0636307a4d641f4b2edf3cdd) would be better. We can split the `hostBoard` by `-` and take the first piece.",
+      "range": {
+        "startLine": 157,
+        "startChar": 13,
+        "endLine": 157,
+        "endChar": 21
+      },
+      "revId": "bc41f49b622cbee68827f3218ee472f584d5b90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
