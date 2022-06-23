@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efb0bab1_1ad411e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-23T15:32:04Z",
+      "side": 1,
+      "message": "Hi all,\n\nI replaced JS code from [1] to [2], because in [1] was breaking 1 test. Now I verified that [2] does not break anything and works as expected.\n\n[1] chrome.os !\u003d\u003d undefined \u0026\u0026 chrome.os.telemetry !\u003d\u003d undefined;\n[2] document.querySelector(\"body \u003e pre\") !\u003d\u003d null",
+      "revId": "2eb8d2bc0fb0345ff4f1aa10b4abc31a3f659c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
