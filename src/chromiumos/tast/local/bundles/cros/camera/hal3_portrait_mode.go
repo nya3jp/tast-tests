@@ -20,7 +20,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies camera portrait mode function with HAL3 interface",
 		Contacts:     []string{"hywu@chromium.org", "chromeos-camera-eng@google.com"},
-		SoftwareDeps: []string{"arc", "arc_camera3", "chrome", caps.BuiltinCamera},
+		SoftwareDeps: []string{"arc", "arc_camera3", "camera_feature_portrait_mode", "chrome", caps.BuiltinCamera},
 		Data:         []string{portraitModeTestFile},
 		Pre:          chrome.LoggedIn(),
 		Timeout:      4 * time.Minute,
