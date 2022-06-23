@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3d61519_3df1702e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T22:11:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ace5f86_d02c1045",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 282,
+        "endChar": 11
+      },
+      "revId": "d468a5b9d2f9169b8ce8eac6f1dcd9b15e7f34bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f47fb218_7936843b",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cda2796_3d97101c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T22:11:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f47fb218_7936843b",
+      "range": {
+        "startLine": 566,
+        "startChar": 49,
+        "endLine": 566,
+        "endChar": 50
+      },
+      "revId": "d468a5b9d2f9169b8ce8eac6f1dcd9b15e7f34bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1bc04e4_67eff4c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T22:11:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbc54aaa_be06c79f",
+      "range": {
+        "startLine": 566,
+        "startChar": 6,
+        "endLine": 566,
+        "endChar": 13
+      },
+      "revId": "d468a5b9d2f9169b8ce8eac6f1dcd9b15e7f34bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "039a14ae_07b0192c",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-23T20:57:28Z",
       "side": 1,
       "message": "nit: `video`",
+      "range": {
+        "startLine": 569,
+        "startChar": 44,
+        "endLine": 569,
+        "endChar": 45
+      },
+      "revId": "d468a5b9d2f9169b8ce8eac6f1dcd9b15e7f34bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5afaf503_9a65a509",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T22:11:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "039a14ae_07b0192c",
       "range": {
         "startLine": 569,
         "startChar": 44,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05290b18_6f01241f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T22:11:20Z",
+      "side": 1,
+      "message": "This test already factors out all of the `Eval` calls into separate functions to make the code more readable (i.e. altTab, enterFullscreen). I also think that this is a reasonable chunk of code that could be reused throughout the file. Thus, for consistency and readability, I want to keep it in a separate function.\n\nTo solve the doubly wrapped error, I just returned the error directly from isYoutubeVideoPlaying. Although, to note, all other errors in this test appear to be doubly wrapped too.",
+      "parentUuid": "718478d8_e9d5ca93",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 572,
+        "endChar": 4
+      },
+      "revId": "d468a5b9d2f9169b8ce8eac6f1dcd9b15e7f34bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "411f0453_3bdd1cb1",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
         "patchSetId": 11
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ab2b4a5_7af36d6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T22:11:20Z",
+      "side": 1,
+      "message": "Delaying changing this until other comments are resolved, so the description change is accurate.",
+      "parentUuid": "411f0453_3bdd1cb1",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 577,
+        "endChar": 4
+      },
+      "revId": "d468a5b9d2f9169b8ce8eac6f1dcd9b15e7f34bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a390486_9710fb3f",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
         "patchSetId": 11
@@ -152,6 +296,30 @@
       "writtenOn": "2022-06-23T20:57:28Z",
       "side": 1,
       "message": "I am concerned about creating such a difference between the clamshell variants and the tablet variants. We may want to be able to make a fair comparison between performance data for clamshell mode and tablet mode.",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 3
+      },
+      "revId": "d468a5b9d2f9169b8ce8eac6f1dcd9b15e7f34bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30eb8c98_1baa7411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T22:11:20Z",
+      "side": 1,
+      "message": "@achuith wdyt? Any changes that add keyboard latency will ultimately make tablet mode and clamshell mode diverge. Also, you mentioned we might want to have \"longer periods of playing\" the video, which currently we don\u0027t really do. Right now we just alt-tab between the Youtube video and another webpage.\n\nIMO, adding changes such as increasing / decreasing the volume, playing and pausing the video, and simulating a user watching the video, all make this test more of a critical user journey than it is right now. If you want, I can go through the test and try to add those things to the tablet mode part of the test. Otherwise, I could make a new variant of the test that explicitly does what I mentioned above.",
+      "parentUuid": "3a390486_9710fb3f",
       "range": {
         "startLine": 528,
         "startChar": 0,
