@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "371f0385_3b64d6d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-23T13:11:02Z",
+      "side": 1,
+      "message": "This sounds ambiguous to me.\nCould you elaborate why you want to cancel the subprocess on sending signal, which sounds not directly related?\nThe changed behavior looks surprising, at least.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "fa0054fecaf4297359685d0a46f96710f575414f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b3d90f29_39e34bb5",
