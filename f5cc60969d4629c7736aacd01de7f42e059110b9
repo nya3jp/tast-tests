@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f6415c3_f6196698",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T02:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "108343aa_0b2dd9a5",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12860c41_707b2589",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-23T00:04:51Z",
       "side": 1,
       "message": "The words `verify that` should be written only once.",
+      "range": {
+        "startLine": 15,
+        "startChar": 58,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82bc6a58_931275cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T02:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12860c41_707b2589",
       "range": {
         "startLine": 15,
         "startChar": 58,
@@ -110,6 +158,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a20b16a_27854adb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations/keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T02:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c23f294a_989c4e98",
+      "range": {
+        "startLine": 26,
+        "startChar": 37,
+        "endLine": 26,
+        "endChar": 38
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ba82368_0b833078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations/keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T02:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dec9c98_df3a3677",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 26,
+        "endChar": 26
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "369a5df9_deb85742",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-06-23T00:04:51Z",
       "side": 1,
       "message": "nit: `action.Combine`",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 16
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0dc4b63_f5378e96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations/keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T02:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "369a5df9_deb85742",
       "range": {
         "startLine": 29,
         "startChar": 2,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da9069cb_f2cd448e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations/keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T02:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be425020_844446e0",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3dcabf3_67b973aa",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-06-23T00:04:51Z",
       "side": 1,
       "message": "nit: Add a comma and line ending, for consistency with `RepeatKeyPressFor`.",
+      "range": {
+        "startLine": 35,
+        "startChar": 38,
+        "endLine": 35,
+        "endChar": 44
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "328c51e2_a8826766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations/keyboard.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T02:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3dcabf3_67b973aa",
       "range": {
         "startLine": 35,
         "startChar": 38,
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9059d864_565d3007",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T02:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32e9a5ac_6f454d74",
+      "range": {
+        "startLine": 268,
+        "startChar": 5,
+        "endLine": 268,
+        "endChar": 63
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ede985b8_f7880f18",
@@ -215,6 +407,30 @@
       "writtenOn": "2022-06-23T00:04:51Z",
       "side": 1,
       "message": "nit: `Allow` (capitalized)",
+      "range": {
+        "startLine": 272,
+        "startChar": 48,
+        "endLine": 272,
+        "endChar": 53
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b205868_46dd5c71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T02:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ede985b8_f7880f18",
       "range": {
         "startLine": 272,
         "startChar": 48,
@@ -248,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f5cbf98_89db18f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T02:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6a5347f_4902e728",
+      "range": {
+        "startLine": 275,
+        "startChar": 57,
+        "endLine": 275,
+        "endChar": 61
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fc8ecf9_b71e22fb",
@@ -261,6 +501,30 @@
       "writtenOn": "2022-06-23T00:04:51Z",
       "side": 1,
       "message": "nit: only one space here",
+      "range": {
+        "startLine": 549,
+        "startChar": 28,
+        "endLine": 549,
+        "endChar": 30
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5dd1147_37c986a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T02:02:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fc8ecf9_b71e22fb",
       "range": {
         "startLine": 549,
         "startChar": 28,
@@ -294,6 +558,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6295983_1777649f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T02:02:11Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "752fce20_a262b6f6",
+      "range": {
+        "startLine": 552,
+        "startChar": 13,
+        "endLine": 552,
+        "endChar": 47
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3eb2aa16_f79561fd",
@@ -307,6 +595,30 @@
       "writtenOn": "2022-06-23T00:04:51Z",
       "side": 1,
       "message": "nit: `and` instead of `or`",
+      "range": {
+        "startLine": 553,
+        "startChar": 45,
+        "endLine": 553,
+        "endChar": 47
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96ac3a71_72c3effd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T02:02:11Z",
+      "side": 1,
+      "message": "I want to keep \"or\", because the failure will be a failure of pressing the spacebar, which is either pausing or playing the video (not both at the same time).",
+      "parentUuid": "3eb2aa16_f79561fd",
       "range": {
         "startLine": 553,
         "startChar": 45,
