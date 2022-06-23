@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/servo"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
 )
@@ -57,12 +58,18 @@ func WilcoPowerBehavior(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Verifying DUT's AP is off")
-	apState, err := h.Servo.RunCR50CommandGetOutput(ctx, "ccdstate", []string{`AP:(\s+\w+)`})
-	if err != nil {
-		s.Fatal("Cr50 console command: ", err)
-	}
-	if strings.TrimSpace(apState[0][1]) != "off" {
-		s.Fatalf("Unexpected AP state: %s", strings.TrimSpace(apState[0][1]))
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		apState, err := h.Servo.RunCR50CommandGetOutput(ctx, "ccdstate", []string{`AP:(\s+\w+)`})
+		if err != nil {
+			return errors.Wrap(err, "failed to run cr50 command")
+		}
+
+		if strings.TrimSpace(apState[0][1]) != "off" {
+			return errors.Wrapf(err, "unexpected AP state: %s", strings.TrimSpace(apState[0][1]))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
+		s.Fatal("Failed to verify DUT's AP is off: ", err)
 	}
 
 	s.Log("Connecting charger")
@@ -74,7 +81,7 @@ func WilcoPowerBehavior(ctx context.Context, s *testing.State) {
 	// Expect a timeout in waiting for DUT to reconnect.
 	waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 1*time.Minute)
 	defer cancelWaitConnect()
-	err = d.WaitConnect(waitConnectCtx)
+	err := d.WaitConnect(waitConnectCtx)
 	switch err.(type) {
 	case nil:
 		s.Fatal("DUT woke up unexpectedly")
