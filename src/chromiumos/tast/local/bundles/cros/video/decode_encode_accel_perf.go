@@ -8,6 +8,7 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"sync"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
@@ -18,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cpu"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/gtest"
 	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/encoding"
@@ -116,28 +118,32 @@ func DecodeEncodeAccelPerf(ctx context.Context, s *testing.State) {
 			"--output_folder=" + s.OutDir(),
 		})
 
-	// Measure CPU usage while both the encoder and decoder performance tests are running.
-	measurements, err := mediacpu.MeasureProcessUsage(ctx, measureDuration, mediacpu.KillProcess, encodeTest, decodeTest)
-	if err != nil {
-		s.Fatal("Failed to measure CPU usage: ", err)
-	}
-	s.Logf("CPU usage: %.2f%%", measurements["cpu"])
-
-	// Create and save performance report.
 	p := perf.NewValues()
-	p.Set(perf.Metric{
-		Name:      "cpu_usage",
-		Unit:      "percent",
-		Direction: perf.SmallerIsBetter,
-	}, measurements["cpu"])
+	var encodeErr, decodeErr, cpuErr error
+	var wg sync.WaitGroup
+	wg.Add(3)
+	go func() {
+		defer wg.Done()
+		encodeErr = graphics.TimedRunGTest(ctx, measureDuration, encodeTest)
+	}()
+	go func() {
+		defer wg.Done()
+		decodeErr = graphics.TimedRunGTest(ctx, measureDuration, decodeTest)
+	}()
+	go func() {
+		defer wg.Done()
+		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, 0*time.Second, measureDuration, "", p)
+	}()
 
-	// Power measurements are not supported on all platforms.
-	if power, ok := measurements["power"]; ok {
-		p.Set(perf.Metric{
-			Name:      "power_consumption",
-			Unit:      "watt",
-			Direction: perf.SmallerIsBetter,
-		}, power)
+	wg.Wait()
+	if encodeErr != nil {
+		s.Fatal("Failed to run GTest encoding binary: ", encodeErr)
+	}
+	if decodeErr != nil {
+		s.Fatal("Failed to run GTest decoding binary: ", decodeErr)
+	}
+	if cpuErr != nil {
+		s.Fatal("Failed to measure CPU/Package power: ", cpuErr)
 	}
 
 	if err := p.Save(s.OutDir()); err != nil {
