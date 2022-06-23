@@ -16,6 +16,24 @@
       "message": "can we call s.Error() instead?",
       "revId": "d8b35cf64f90c9088d1b48c69d759b39dd492346",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27d88f53_ea8e1bad",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-06-23T03:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72caf61d_e954ede4",
+      "revId": "d8b35cf64f90c9088d1b48c69d759b39dd492346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
