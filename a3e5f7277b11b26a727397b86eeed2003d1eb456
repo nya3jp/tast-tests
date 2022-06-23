@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec5737f_e21662c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-23T12:41:48Z",
+      "side": 1,
+      "message": "There\u0027s a failure.\nR105-14912.0.0\tdedede (cret360)\n\nCould you check what was going on?",
+      "revId": "a3e5f7277b11b26a727397b86eeed2003d1eb456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
