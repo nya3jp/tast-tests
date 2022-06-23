@@ -33,6 +33,24 @@
       "message": "nit: replace \"$\" with \"search result\" in both error messages to give context to the message. the selector should be surfaced by `err`.",
       "revId": "e288b713735b4f86020a14fab9a60f4a2255b17e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d767213a_4b97eb78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_paid_app_parent_permission.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-06-23T00:01:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0d13c1e_f0ccc2e7",
+      "revId": "e288b713735b4f86020a14fab9a60f4a2255b17e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
