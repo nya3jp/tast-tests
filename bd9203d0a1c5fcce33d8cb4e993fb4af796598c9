@@ -154,6 +154,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d94dbd0_c8c38a51",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_sig_ab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-06-23T16:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee017d26_24856710",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4c41eaa_95b520a8",
@@ -259,6 +283,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e77a69e_c46f012e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_fw_sig.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-06-23T16:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b60d0be_88f5f01b",
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed5740e2_e64ef158",
@@ -320,6 +362,30 @@
       "side": 1,
       "message": "```\nerr \u003d func() error {\n  if err \u003d h.ServoProxy.RunCommand(ctx, true, \"mount\", \"-o\", \"ro\", mountSrc, mountPath); err !\u003d nil {\n    return errors.Errorf(\"Mount of %q failed at %q\", mountSrc, mountPath)\n  }\n  defer h.ServoProxy.RunCommand(ctx, true, \"umount\", mountPath)\n  output, err :\u003d h.ServoProxy.OutputCommand(ctx, true, \"cat\", \n  fmt.Sprintf(\"%s/etc/lsb-release\", mountPath))\n  if err !\u003d nil {\n    return errors.New(\"failed to read lsb-release\")\n  }\n  lsb, err \u003d lsbrelease.Parse(bytes.NewReader(output))\n  if err !\u003d nil {\n    return errors.New(\"failed to parse lsb-release\")\n  }\n  return nil\n}()\nif err !\u003d nil {\n  if cloudStorage \u003d\u003d nil {\n    return errors.Wrap(err, \"bad USB image, and requested no USB image download\")\n  } else {\n    testing.ContextLog(ctx, \"Bad USB image: \", err)\n  }\n}\n```",
       "parentUuid": "175f006a_3e501430",
+      "range": {
+        "startLine": 541,
+        "startChar": 3,
+        "endLine": 541,
+        "endChar": 27
+      },
+      "revId": "bd9203d0a1c5fcce33d8cb4e993fb4af796598c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f45b9a14_5bc9a69e",
+        "filename": "src/chromiumos/tast/remote/firmware/helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-06-23T16:20:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b852f40c_1e8b1f29",
       "range": {
         "startLine": 541,
         "startChar": 3,
