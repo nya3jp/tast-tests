@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NoSystemUI,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that no system UI is shown in PWA Kiosk",
 		Contacts: []string{
 			"irfedorova@google.com", // Test author

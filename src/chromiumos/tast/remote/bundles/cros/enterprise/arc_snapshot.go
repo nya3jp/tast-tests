@@ -24,7 +24,7 @@ const arcSnapshotTestTimeout = 40 * time.Minute
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ArcSnapshot,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test taking ARC data/ snapshot",
 		Contacts: []string{
 			"pbond@chromium.org", // Test author
