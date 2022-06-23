@@ -41,6 +41,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4f01fc_756497aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-23T09:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a653b630_8af1a8af",
+      "range": {
+        "startLine": 31,
+        "startChar": 25,
+        "endLine": 31,
+        "endChar": 65
+      },
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d25063df_901d106e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-23T09:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a653b630_8af1a8af",
+      "range": {
+        "startLine": 31,
+        "startChar": 25,
+        "endLine": 31,
+        "endChar": 65
+      },
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b146134f_e40822cc",
@@ -75,6 +123,60 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67050dfa_72ba16b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-23T09:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58028803_4cdfe34f",
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ac42c9_ea95f6bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-23T09:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58028803_4cdfe34f",
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9c7ba51_aa4c9106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-23T09:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b146134f_e40822cc",
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c870c7e_12d2631b",
@@ -88,6 +190,30 @@
       "writtenOn": "2022-06-22T10:09:40Z",
       "side": 1,
       "message": "Can we define this as `getLibraryPath(name string)`? Since it only uses the name.",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 55
+      },
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "436328e0_3213a52b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-23T09:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c870c7e_12d2631b",
       "range": {
         "startLine": 58,
         "startChar": 5,
@@ -121,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae08da8c_1285776d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-23T09:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "586c85e4_1c6c45dd",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 19
+      },
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5b16f4c_829c9b9f",
@@ -134,6 +284,54 @@
       "writtenOn": "2022-06-22T10:09:40Z",
       "side": 1,
       "message": "Can we modify `cmd` explicitly here? I think it\u0027s not very readable to have this function pointer that looks just points to a constant routine.",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 34
+      },
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0675fc88_718f6756",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-23T09:42:32Z",
+      "side": 1,
+      "message": "maybe, I\u0027ll just simplify the `cmd` modification",
+      "parentUuid": "f5b16f4c_829c9b9f",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 34
+      },
+      "revId": "01f7c967736f23df73f4e9eed59aceb91e11ce03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2434890_55e9ea7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-23T09:42:32Z",
+      "side": 1,
+      "message": "I\u0027ll simplify the cmd related codes",
+      "parentUuid": "f5b16f4c_829c9b9f",
       "range": {
         "startLine": 92,
         "startChar": 2,
