@@ -6,7 +6,6 @@ package network
 
 import (
 	"context"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -61,19 +60,14 @@ func DNSProxyCustomNameserver(ctx context.Context, s *testing.State) {
 		{Client: dns.User},
 		{Client: dns.Chrome},
 	}
-	// Returns a random domain name to use, avoids any potential caching.
-	genDomain := func() string { return strconv.FormatInt(time.Now().UnixNano(), 16) + ".com" }
-	opts := dns.QueryOptions{
-		Domain: genDomain(),
-	}
-	if errs := dns.TestQueryDNSProxy(ctx, tc, nil, nil, &opts); len(errs) > 0 {
+	if errs := dns.TestQueryDNSProxy(ctx, tc, nil, nil, dns.NewQueryOptions()); len(errs) > 0 {
 		s.Error("Failed initial DNS check: ", errs)
 	}
 
 	// Confirm that host queries to a different nameserver also work.
-	opts.Domain = genDomain()
+	opts := dns.NewQueryOptions()
 	opts.Nameserver = "1.1.1.1"
-	if errs := dns.TestQueryDNSProxy(ctx, tc, nil, nil, &opts); len(errs) > 0 {
+	if errs := dns.TestQueryDNSProxy(ctx, tc, nil, nil, opts); len(errs) > 0 {
 		s.Error("Failed nameserver confirmation check: ", errs)
 	}
 
@@ -90,8 +84,8 @@ func DNSProxyCustomNameserver(ctx context.Context, s *testing.State) {
 		for i := 0; i < len(tc); i++ {
 			tc[i].ExpectErr = true
 		}
-		opts.Domain = genDomain()
-		if errs := dns.TestQueryDNSProxy(ctx, tc, nil, nil, &opts); len(errs) > 0 {
+		opts.Domain = dns.RandDomain()
+		if errs := dns.TestQueryDNSProxy(ctx, tc, nil, nil, opts); len(errs) > 0 {
 			s.Error("Failed nameserver verification: ", errs)
 		}
 	}); len(errs) > 0 {

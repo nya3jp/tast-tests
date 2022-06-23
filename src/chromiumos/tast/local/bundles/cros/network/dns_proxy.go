@@ -57,16 +57,6 @@ func init() {
 // 1. Ensuring that DNS queries are successful.
 // 2. Ensuring that DNS queries are using proper mode (Off, Automatic, Always On) by blocking the expected ports, expecting the queries to fail.
 func DNSProxy(ctx context.Context, s *testing.State) {
-	const (
-		// Randomly generated domains to be resolved. Different domains are used to avoid caching.
-		domainDefaultDoHOff          = "a2ffec2cb85be5e7.com"
-		domainDefaultDoHAutomatic    = "b3ae8819fed33ac3.com"
-		domainDefaultDoHAlwaysOn     = "c103afeaadbc112a.com"
-		domainDNSBlockedDoHOff       = "da39a3ee5e6b4b0d.com"
-		domainDNSBlockedDoHAutomatic = "eb39510b23affe12.com"
-		domainDNSBlockedDoHAlwaysOn  = "ff3e2abb9002aba1.com"
-	)
-
 	// If the main body of the test times out, we still want to reserve a few
 	// seconds to allow for our cleanup code to run.
 	cleanupCtx := ctx
@@ -104,19 +94,6 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to install dig in container: ", err)
 	}
 
-	var domainDefault, domainDNSBlocked string
-	switch params.mode {
-	case dns.DoHOff:
-		domainDefault = domainDefaultDoHOff
-		domainDNSBlocked = domainDNSBlockedDoHOff
-	case dns.DoHAutomatic:
-		domainDefault = domainDefaultDoHAutomatic
-		domainDNSBlocked = domainDNSBlockedDoHAutomatic
-	case dns.DoHAlwaysOn:
-		domainDefault = domainDefaultDoHAlwaysOn
-		domainDNSBlocked = domainDNSBlockedDoHAlwaysOn
-	}
-
 	// By default, DNS query should work.
 	var defaultTC = []dns.ProxyTestCase{
 		{Client: dns.System},
@@ -125,7 +102,7 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 		{Client: dns.Crostini},
 		{Client: dns.ARC},
 	}
-	if errs := dns.TestQueryDNSProxy(ctx, defaultTC, a, cont, &dns.QueryOptions{Domain: domainDefault}); len(errs) != 0 {
+	if errs := dns.TestQueryDNSProxy(ctx, defaultTC, a, cont, dns.NewQueryOptions()); len(errs) != 0 {
 		for _, err := range errs {
 			s.Error("Failed DNS query check: ", err)
 		}
@@ -168,7 +145,7 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 
 	// DNS queries should fail if corresponding DNS packets (plain-text or secure) are dropped.
 	if errs := block.Run(ctx, func(ctx context.Context) {
-		if errs := dns.TestQueryDNSProxy(ctx, dnsBlockedTC, a, cont, &dns.QueryOptions{Domain: domainDNSBlocked}); len(errs) != 0 {
+		if errs := dns.TestQueryDNSProxy(ctx, dnsBlockedTC, a, cont, dns.NewQueryOptions()); len(errs) != 0 {
 			s.Error("Failed DNS query check: ", errs)
 		}
 	}); len(errs) > 0 {
