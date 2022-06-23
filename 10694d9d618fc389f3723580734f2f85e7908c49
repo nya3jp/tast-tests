@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e5747e3_51c0db56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-06-23T02:48:29Z",
+      "side": 1,
+      "message": "Yes I get that, but why not just fail if a test in a suite failed or just simply provision again if the version isn\u0027t on the expected?\n\nIt just seems like a lot of logic to get to expected version and opens room for error/flakiness.",
+      "parentUuid": "2fde040f_d56ec445",
+      "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5739df92_89800df8",
