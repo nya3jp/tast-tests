@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cc335b1_e397b4f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-23T07:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c88ad91d_20aacfdb",
+      "range": {
+        "startLine": 103,
+        "startChar": 50,
+        "endLine": 103,
+        "endChar": 54
+      },
+      "revId": "261d5615ca1d1a1250d6fec136ed36fb8d2df128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fba80889_f7d38cef",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f5df8f_96c747a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-23T07:10:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fba80889_f7d38cef",
+      "revId": "261d5615ca1d1a1250d6fec136ed36fb8d2df128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49df5ce8_90acaa8f",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-06-22T13:11:20Z",
       "side": 1,
       "message": "nit: nil here, as you no longer turn value.\n\nDitto for below.",
+      "range": {
+        "startLine": 225,
+        "startChar": 26,
+        "endLine": 225,
+        "endChar": 34
+      },
+      "revId": "261d5615ca1d1a1250d6fec136ed36fb8d2df128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a98b038f_b3c1cac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-23T07:10:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49df5ce8_90acaa8f",
       "range": {
         "startLine": 225,
         "startChar": 26,
