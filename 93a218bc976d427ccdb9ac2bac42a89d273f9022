@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0451deae_3445e263",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T16:55:35Z",
+      "side": 1,
+      "message": "`\t// Reserve time for cleanup`",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 28
+      },
+      "revId": "93a218bc976d427ccdb9ac2bac42a89d273f9022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f735385a_0ac5575d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T16:55:35Z",
+      "side": 1,
+      "message": "`closeCtx`",
+      "range": {
+        "startLine": 375,
+        "startChar": 27,
+        "endLine": 375,
+        "endChar": 30
+      },
+      "revId": "93a218bc976d427ccdb9ac2bac42a89d273f9022",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
