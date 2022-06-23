@@ -11,11 +11,14 @@ import (
 	"io/ioutil"
 	"path/filepath"
 	"strconv"
+	"syscall"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/gtest"
@@ -131,7 +134,7 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, testDir string,
 	logPath := fmt.Sprintf("%s/%s.%s.log", s.OutDir(), exec, id)
 	outPath := fmt.Sprintf("%s/perf_output.%s.json", s.OutDir(), id)
 	startTime := time.Now()
-	measurements, err := mediacpu.MeasureProcessUsage(ctx, measureDuration, mediacpu.WaitProcess,
+	measurements, err := measureProcessUsage(ctx, measureDuration,
 		gtest.New(
 			filepath.Join(chrome.BinTestDir, exec),
 			gtest.Logfile(logPath),
@@ -166,4 +169,72 @@ func runJPEGPerfBenchmark(ctx context.Context, s *testing.State, testDir string,
 	}
 
 	return cpuUsage, metrics
+}
+
+// measureProcessUsage starts one or more gtest processes and measures CPU usage and power consumption asynchronously
+// for the given duration. A map is returned containing CPU usage (percentage in [0-100] range) with key "cpu" and power
+// consumption (Watts) with key "power" if supported.
+func measureProcessUsage(ctx context.Context, duration time.Duration, ts ...*gtest.GTest) (measurements map[string]float64, retErr error) {
+	const (
+		stabilizeTime = 1 * time.Second // time to wait for CPU to stabilize after launching proc.
+		cleanupTime   = 5 * time.Second // time reserved for cleanup after measuring.
+	)
+
+	for _, t := range ts {
+		// Start the process asynchronously by calling the provided startup function.
+		cmd, err := t.Start(ctx)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to run binary")
+		}
+
+		// Clean up the process upon exiting the function.
+		defer func() {
+			// Wait for the process to terminate.
+			if err := cmd.Wait(); err != nil {
+				retErr = err
+				testing.ContextLog(ctx, "Failed waiting for the command to exit: ", retErr)
+			}
+			return
+
+			// If the exit option is 'KillProcess' we will send a 'SIGKILL' signal
+			// to the process after collecting performance metrics.
+			if err := cmd.Kill(); err != nil {
+				retErr = err
+				testing.ContextLog(ctx, "Failed to kill process: ", retErr)
+				return
+			}
+
+			// After sending a 'SIGKILL' signal to the process we need to wait
+			// for the process to terminate. If Wait() doesn't return any error,
+			// we know the process already terminated before we explicitly killed
+			// it and the measured performance metrics are invalid.
+			err = cmd.Wait()
+			if err == nil {
+				retErr = errors.New("process did not run for entire measurement duration")
+				testing.ContextLog(ctx, retErr)
+				return
+			}
+
+			// Check whether the process was terminated with a 'SIGKILL' signal.
+			ws, ok := testexec.GetWaitStatus(err)
+			if !ok {
+				retErr = errors.Wrap(err, "failed to get wait status")
+				testing.ContextLog(ctx, retErr)
+			} else if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
+				retErr = errors.Wrap(err, "process did not terminate with SIGKILL signal")
+				testing.ContextLog(ctx, retErr)
+			}
+		}()
+	}
+
+	// Use a shorter context to leave time for cleanup upon failure.
+	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
+	defer cancel()
+
+	if err := testing.Sleep(ctx, stabilizeTime); err != nil {
+		return nil, errors.Wrap(err, "failed waiting for CPU usage to stabilize")
+	}
+
+	testing.ContextLog(ctx, "Measuring CPU usage and power consumption for ", duration.Round(time.Second))
+	return mediacpu.MeasureUsage(ctx, duration)
 }

@@ -13,7 +13,6 @@ import (
 	"regexp"
 	"strconv"
 	"sync"
-	"syscall"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -21,94 +20,12 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cpu"
-	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
-// ExitOption describes how to clean up the child process upon function exit.
-type ExitOption int
-
-const (
-	// KillProcess option kills the child process when the function is done.
-	KillProcess ExitOption = iota
-	// WaitProcess option waits for the child process to finish.
-	WaitProcess
-)
-
 // raplExec is the command used to measure power consumption, only supported on Intel platforms.
 const raplExec = "/usr/bin/dump_intel_rapl_consumption"
-
-// MeasureProcessUsage starts one or more gtest processes and measures CPU usage and power consumption asynchronously
-// for the given duration. A map is returned containing CPU usage (percentage in [0-100] range) with key "cpu" and power
-// consumption (Watts) with key "power" if supported.
-func MeasureProcessUsage(ctx context.Context, duration time.Duration,
-	exitOption ExitOption, ts ...*gtest.GTest) (measurements map[string]float64, retErr error) {
-	const (
-		stabilizeTime = 1 * time.Second // time to wait for CPU to stabilize after launching proc.
-		cleanupTime   = 5 * time.Second // time reserved for cleanup after measuring.
-	)
-
-	for _, t := range ts {
-		// Start the process asynchronously by calling the provided startup function.
-		cmd, err := t.Start(ctx)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to run binary")
-		}
-
-		// Clean up the process upon exiting the function.
-		defer func() {
-			// If the exit option is 'WaitProcess' wait for the process to terminate.
-			if exitOption == WaitProcess {
-				if err := cmd.Wait(); err != nil {
-					retErr = err
-					testing.ContextLog(ctx, "Failed waiting for the command to exit: ", retErr)
-				}
-				return
-			}
-
-			// If the exit option is 'KillProcess' we will send a 'SIGKILL' signal
-			// to the process after collecting performance metrics.
-			if err := cmd.Kill(); err != nil {
-				retErr = err
-				testing.ContextLog(ctx, "Failed to kill process: ", retErr)
-				return
-			}
-
-			// After sending a 'SIGKILL' signal to the process we need to wait
-			// for the process to terminate. If Wait() doesn't return any error,
-			// we know the process already terminated before we explicitly killed
-			// it and the measured performance metrics are invalid.
-			err = cmd.Wait()
-			if err == nil {
-				retErr = errors.New("process did not run for entire measurement duration")
-				testing.ContextLog(ctx, retErr)
-				return
-			}
-
-			// Check whether the process was terminated with a 'SIGKILL' signal.
-			ws, ok := testexec.GetWaitStatus(err)
-			if !ok {
-				retErr = errors.Wrap(err, "failed to get wait status")
-				testing.ContextLog(ctx, retErr)
-			} else if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
-				retErr = errors.Wrap(err, "process did not terminate with SIGKILL signal")
-				testing.ContextLog(ctx, retErr)
-			}
-		}()
-	}
-
-	// Use a shorter context to leave time for cleanup upon failure.
-	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
-	defer cancel()
-
-	if err := testing.Sleep(ctx, stabilizeTime); err != nil {
-		return nil, errors.Wrap(err, "failed waiting for CPU usage to stabilize")
-	}
-
-	testing.ContextLog(ctx, "Measuring CPU usage and power consumption for ", duration.Round(time.Second))
-	return MeasureUsage(ctx, duration)
-}
 
 // SetUpBenchmark performs setup needed for running benchmarks. It disables CPU
 // frequency scaling and thermal throttling. A deferred call to the returned
