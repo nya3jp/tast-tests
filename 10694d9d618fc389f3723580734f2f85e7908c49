@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44f28093_8893194f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-06-23T16:39:57Z",
+      "side": 1,
+      "message": "When I say provision here, it is the reinstallation step this fixture is doing already if there is a mismatch.\n\nNot the call into services, which provisions before tests are even run.",
+      "parentUuid": "47db949a_ff85a582",
+      "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5739df92_89800df8",
@@ -119,6 +137,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f586dc72_a31b9012",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-06-23T16:39:57Z",
+      "side": 1,
+      "message": "Ack\u0027ing, I think as long as the err returned can indicate the correct error it should be distinguishable.",
+      "parentUuid": "3eeb22d8_5259da55",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 36
+      },
+      "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d19d6fa_c2301059",
@@ -150,6 +192,24 @@
       "side": 1,
       "message": "Can you chare more info on when can a FW update happen? What triggers it?",
       "parentUuid": "6d19d6fa_c2301059",
+      "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86de1a9e_b43ae429",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1351160
+      },
+      "writtenOn": "2022-06-23T16:39:57Z",
+      "side": 1,
+      "message": "The current implementation of `UpdateFromGS` is incomplete, there are missing pieces to stick to the test update it actually applied.\n\nIf following tests from the fixture happen to run + reboot the DUT (once or a few times), the slots could switch back.\n\nSame goes for rollingback before the stick.\n\nFW updates will apply again if they are required prior to UI coming up.",
+      "parentUuid": "52d0f55b_96f7e732",
       "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
