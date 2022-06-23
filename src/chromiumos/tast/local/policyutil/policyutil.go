@@ -5,9 +5,13 @@
 package policyutil
 
 import (
+	"bytes"
 	"context"
+	"image"
+	"image/jpeg"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"time"
 
 	"chromiumos/tast/common/policy"
@@ -73,6 +77,27 @@ func InstallPwaAppByPolicy(ctx context.Context, tconn *chrome.TestConn, cr *chro
 	}
 
 	return id, name, cleanUp, nil
+}
+
+// GetImgFromFilePath returns bytes of the image with the filePath.
+// TODO(crbug.com/1188690): Remove when the bug is fixed.
+func GetImgFromFilePath(filePath string) ([]byte, error) {
+	f, err := os.Open(filePath)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	image, _, err := image.Decode(f)
+	if err != nil {
+		return nil, err
+	}
+	buf := new(bytes.Buffer)
+	err = jpeg.Encode(buf, image, nil)
+	if err != nil {
+		return nil, err
+	}
+	imgBytes := buf.Bytes()
+	return imgBytes, nil
 }
 
 // serveAndVerify is a helper function. Similar to ServeAndVerify(OnLoginScreen) but also accepts the test connection.
