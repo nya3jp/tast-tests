@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45371d31_33b94aea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_no_cellular_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-23T15:14:23Z",
+      "side": 1,
+      "message": "We should be able to get the interface name from shill, but if we\u0027re using `RunTestOnCellularInterface` then we probably don\u0027t need to specify it in the ping/curl invocation.",
+      "parentUuid": "e33580fb_723cdc4d",
+      "revId": "b9438ebc9336b9eaf4f058fb9a1bfbe3ffa59b7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dc3d1e4_a4fa911c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/cellular/assert_no_cellular_data.go",
         "patchSetId": 3
