@@ -11,6 +11,8 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
+	"sort"
 	"time"
 
 	"chromiumos/tast/common/hwsec"
@@ -137,11 +139,92 @@ func prefixToVersion(prefix string) ([3]int, error) {
 	return version, nil
 }
 
+// checkKeysLabels checks if the list of key labels matches target and returns
+// an error if it doesn't.
+func checkKeysLabels(ctx context.Context, cryptohome *hwsec.CryptohomeClient, username string, target []string) error {
+	labels, err := cryptohome.ListVaultKeys(ctx, username)
+	if err != nil {
+		return errors.Wrap(err, "failed to list keys")
+	}
+	// Sort and compare the actual and expected keys.
+	sort.Strings(labels)
+	sortedTarget := make([]string, len(target))
+	copy(sortedTarget, target)
+	sort.Strings(sortedTarget)
+
+	if !reflect.DeepEqual(labels, sortedTarget) {
+		return errors.Errorf("mismatch result from list keys, got %q, expected %q", labels, sortedTarget)
+	}
+
+	return nil
+}
+
+// testCheckKey tests that CheckVault() works as expected
+func testCheckKey(ctx context.Context, cryptohome *hwsec.CryptohomeClient, username string, keyInfo *util.VaultKeyInfo, invalidPassword string) error {
+	if _, err := cryptohome.CheckVault(ctx, keyInfo.KeyLabel, hwsec.NewPassAuthConfig(username, keyInfo.Password)); err != nil {
+		return errors.Wrap(err, "failed to check vault")
+	}
+	if _, err := cryptohome.CheckVault(ctx, keyInfo.KeyLabel, hwsec.NewPassAuthConfig(username, invalidPassword)); err == nil {
+		return errors.New("unexpectedly can check vault with invalid password")
+	}
+	return nil
+}
+
+// testRemoveKey tests that RemoveVaultKey() works as expected
+func testRemoveKey(ctx context.Context, cryptohome *hwsec.CryptohomeClient, username, password string, keyInfo *util.VaultKeyInfo) error {
+	if err := cryptohome.RemoveVaultKey(ctx, username, password, keyInfo.KeyLabel); err != nil {
+		return errors.Wrap(err, "failed to remove key")
+	}
+	if _, err := cryptohome.CheckVault(ctx, keyInfo.KeyLabel, hwsec.NewPassAuthConfig(username, keyInfo.Password)); err == nil {
+		return errors.New("unexpectedly can the check vault with removed key")
+	}
+	return nil
+}
+
+// testAddRemoveKey tests that AddVaultKey() and RemoveVaultKey() works as expected
+func testAddRemoveKey(ctx context.Context, cryptohome *hwsec.CryptohomeClient, username, password, label string, keyInfo *util.VaultKeyInfo, invalidPassword string) error {
+	if err := cryptohome.AddVaultKey(ctx, username, password, label, keyInfo.Password, keyInfo.KeyLabel, keyInfo.LowEntropy); err != nil {
+		return errors.Wrap(err, "failed to add key")
+	}
+	if err := testCheckKey(ctx, cryptohome, username, keyInfo, invalidPassword); err != nil {
+		return errors.Wrap(err, "failed to properly check key")
+	}
+	if err := testRemoveKey(ctx, cryptohome, username, password, keyInfo); err != nil {
+		return errors.Wrap(err, "failed to properly remove key")
+	}
+	return nil
+}
+
+// testMigrateKey tests that ChangeVaultPassword() works as expected
+func testMigrateKey(ctx context.Context, cryptohome *hwsec.CryptohomeClient, username, password, label, invalidPassword string) error {
+	const changedPassword = "changedPass"
+	if err := cryptohome.ChangeVaultPassword(ctx, username, invalidPassword, label, changedPassword); err == nil {
+		return errors.New("unexpectedly can change vault password with invalid password")
+	}
+	if err := cryptohome.ChangeVaultPassword(ctx, username, password, label, changedPassword); err != nil {
+		return errors.Wrap(err, "failed to change vault password")
+	}
+	if err := testCheckKey(ctx, cryptohome, username, util.NewVaultKeyInfo(changedPassword, label, false), password); err != nil {
+		return errors.Wrap(err, "failed to properly check key after password is changed")
+	}
+	if err := cryptohome.ChangeVaultPassword(ctx, username, changedPassword, label, password); err != nil {
+		return errors.Wrap(err, "failed to change vault password back")
+	}
+	if err := testCheckKey(ctx, cryptohome, username, util.NewVaultKeyInfo(password, label, false), changedPassword); err != nil {
+		return errors.Wrap(err, "failed to properly check key after password is changed back")
+	}
+	return nil
+}
+
 // testConfig verifies the login functionality of specific auth config from CrossVersionLoginConfig.
 func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.CryptohomeClient, config *util.CrossVersionLoginConfig) error {
 	const (
-		newPassword = "newPass"
-		newLabel    = "newLabel"
+		newPassword     = "newPass"
+		newLabel        = "newLabel"
+		newPin          = "654321"
+		newPinLabel     = "newPinLabel"
+		invalidPassword = "wrongPass"
+		invalidPin      = "000000"
 	)
 	authConfig := config.AuthConfig
 	rsaKey := config.RsaKey
@@ -170,31 +253,45 @@ func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.Cryptoho
 	if _, err := cryptohome.CheckVault(ctx, keyLabel, &authConfig); err != nil {
 		return errors.Wrap(err, "failed to check vault")
 	}
-	if _, err := cryptohome.ListVaultKeys(ctx, username); err != nil {
-		return errors.Wrap(err, "failed to list vault keys")
+	var targetLabels = []string{config.KeyLabel}
+	for _, vaultKey := range config.ExtraVaultKeys {
+		targetLabels = append(targetLabels, vaultKey.KeyLabel)
+	}
+	if err := checkKeysLabels(ctx, cryptohome, username, targetLabels); err != nil {
+		return errors.Wrap(err, "failed to check key labels")
 	}
 	if authConfig.AuthType == hwsec.PassAuth {
 		for _, vaultKey := range config.ExtraVaultKeys {
-			if _, err := cryptohome.CheckVault(ctx, vaultKey.KeyLabel, hwsec.NewPassAuthConfig(username, vaultKey.Password)); err != nil {
-				return errors.Wrap(err, "failed to check vault with extra vault key")
+			keyForm := "password"
+			invalidSecret := invalidPassword
+			if vaultKey.LowEntropy {
+				keyForm = "pin"
+				invalidSecret = invalidPin
 			}
-			if err := cryptohome.RemoveVaultKey(ctx, username, password, vaultKey.KeyLabel); err != nil {
-				return errors.Wrap(err, "failed to remove extra vault key")
+			if err := testCheckKey(ctx, cryptohome, username, &vaultKey, invalidSecret); err != nil {
+				return errors.Wrapf(err, "failed to properly check key with extra %s key", keyForm)
+			}
+			if err := testRemoveKey(ctx, cryptohome, username, password, &vaultKey); err != nil {
+				return errors.Wrapf(err, "failed to properly remove key with extra %s key", keyForm)
 			}
 		}
-		if err := cryptohome.AddVaultKey(ctx, username, password, config.KeyLabel, newPassword, newLabel, false); err != nil {
-			return errors.Wrap(err, "failed to add key")
+		if err := testAddRemoveKey(ctx, cryptohome, username, password, keyLabel, util.NewVaultKeyInfo(newPassword, newLabel, false), invalidPassword); err != nil {
+			return errors.Wrap(err, "failed to properly add or remove password key")
 		}
-		if _, err := cryptohome.CheckVault(ctx, newLabel, hwsec.NewPassAuthConfig(username, newPassword)); err != nil {
-			return errors.Wrap(err, "failed to check vault with new key")
+		if err := testAddRemoveKey(ctx, cryptohome, username, password, keyLabel, util.NewVaultKeyInfo(newPin, newPinLabel, true), invalidPin); err != nil {
+			return errors.Wrap(err, "failed to properly add or remove pin key")
 		}
-		if err := cryptohome.RemoveVaultKey(ctx, username, password, newLabel); err != nil {
-			return errors.Wrap(err, "failed to remove key")
+		if err := testMigrateKey(ctx, cryptohome, username, password, keyLabel, invalidPassword); err != nil {
+			return errors.Wrap(err, "failed to properly migrate key")
 		}
+	}
+	if _, err := cryptohome.RemoveVault(ctx, username); err != nil {
+		return errors.Wrap(err, "failed to remove vault")
 	}
 	return nil
 }
 
+// testVersion verifies the login functionality in the specific version.
 func testVersion(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.CryptohomeClient, daemonController *hwsec.DaemonController, dataPath, configPath string) error {
 	configJSON, err := ioutil.ReadFile(configPath)
 	if err != nil {
