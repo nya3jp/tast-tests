@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183b3af9_124fc92d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/run.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T02:50:42Z",
+      "side": 1,
+      "message": "nit: %s or %q is better.",
+      "range": {
+        "startLine": 110,
+        "startChar": 58,
+        "endLine": 110,
+        "endChar": 60
+      },
+      "revId": "ac2e57c6ca6f60bac1ec160f2d390552c1ea24d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "018f8b28_b27f1111",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu_3d_modeling_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T02:50:42Z",
+      "side": 1,
+      "message": "Please add at least a Googler contact for the test.",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 67
+      },
+      "revId": "ac2e57c6ca6f60bac1ec160f2d390552c1ea24d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96320087_8152e80b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu_3d_modeling_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-23T02:50:42Z",
+      "side": 1,
+      "message": "Is this test for SPERA or CQ? Please confirm where this test should run? If it is used for CUJ, can you double check script file path?",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "ac2e57c6ca6f60bac1ec160f2d390552c1ea24d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
