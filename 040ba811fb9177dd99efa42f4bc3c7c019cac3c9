@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af20ab67_82475641",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-23T07:08:45Z",
+      "side": 1,
+      "message": "nit: the double prefixes looks funny\n audio: Add validation of rdc range to sound_card_init",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "040ba811fb9177dd99efa42f4bc3c7c019cac3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b0d4472_d38a9323",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-23T07:08:45Z",
+      "side": 1,
+      "message": "nit: lines too long. A line should not be longer than 72 characters.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 76
+      },
+      "revId": "040ba811fb9177dd99efa42f4bc3c7c019cac3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fece3800_a2e848b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-23T07:08:45Z",
+      "side": 1,
+      "message": "This seems like an independent change from the other. Please separate tha changes into 2 CLs.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "040ba811fb9177dd99efa42f4bc3c7c019cac3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c48117bc_f35c7377",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-23T07:08:45Z",
+      "side": 1,
+      "message": "Sorry for a late review, I missed the first mail.\nIf there is no reply for a Tast review request within a day, please feel free to ping the reviewer.",
+      "revId": "040ba811fb9177dd99efa42f4bc3c7c019cac3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c4605a6_fdfedf16",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-23T07:08:45Z",
+      "side": 1,
+      "message": "RDC seems like an abbreviation, so it should be `rdc` or `RDC` depending on the case of the first letter. go/go-style/decisions#initialisms",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 4
+      },
+      "revId": "040ba811fb9177dd99efa42f4bc3c7c019cac3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9348487b_5179a3eb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-23T07:08:45Z",
+      "side": 1,
+      "message": "As the test does a reboot `SoftwareDeps: []string{\"reboot\"}` should be added to init as well.",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "040ba811fb9177dd99efa42f4bc3c7c019cac3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d659e30c_7cd811fa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-23T07:08:45Z",
+      "side": 1,
+      "message": "Function names should not countain `get`. go/go-style/decisions#getters",
+      "range": {
+        "startLine": 180,
+        "startChar": 5,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "040ba811fb9177dd99efa42f4bc3c7c019cac3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
