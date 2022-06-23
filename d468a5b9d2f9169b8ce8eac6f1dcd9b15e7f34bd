@@ -328,6 +328,30 @@
       },
       "revId": "d468a5b9d2f9169b8ce8eac6f1dcd9b15e7f34bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dd154f4_3909aada",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-23T22:55:38Z",
+      "side": 1,
+      "message": "It\u0027s a valid concern, but unfortunately we need keyboard input for the test, and there\u0027s no keyboard in tablet mode so this just seems unavoidable. Potentially we could fall back to pausing using some other non-keyboard scheme in tablet mode, but doesn\u0027t seem worth the effort. I think a few other tests also diverge between clamshell and tablet, so maybe this is ok. I\u0027d proceed with this.",
+      "parentUuid": "30eb8c98_1baa7411",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 3
+      },
+      "revId": "d468a5b9d2f9169b8ce8eac6f1dcd9b15e7f34bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
