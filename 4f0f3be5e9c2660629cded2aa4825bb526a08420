@@ -33,6 +33,24 @@
       "message": "Why the extra line?",
       "revId": "4f0f3be5e9c2660629cded2aa4825bb526a08420",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c5390cf_6be7eceb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-23T11:30:47Z",
+      "side": 1,
+      "message": "Because repo upload failed with the following error:\n```\n[FAILED] chromiumos/platform/tast-tests: _check_gofmt                    \n    Files not formatted with gofmt:\n    src/chromiumos/tast/local/bundles/cros/policy/webauthn_factors.go\n```\nI had to make some changes to pass gofmt.",
+      "parentUuid": "9093822a_374afda0",
+      "revId": "4f0f3be5e9c2660629cded2aa4825bb526a08420",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
