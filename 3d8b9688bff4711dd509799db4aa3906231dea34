@@ -22,6 +22,30 @@
       },
       "revId": "3d8b9688bff4711dd509799db4aa3906231dea34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfbfd79b_2f503141",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-06-23T04:45:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7306a1c9_36ec38db",
+      "range": {
+        "startLine": 76,
+        "startChar": 64,
+        "endLine": 76,
+        "endChar": 77
+      },
+      "revId": "3d8b9688bff4711dd509799db4aa3906231dea34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
