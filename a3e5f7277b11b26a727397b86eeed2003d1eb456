@@ -16,6 +16,24 @@
       "message": "There\u0027s a failure.\nR105-14912.0.0\tdedede (cret360)\n\nCould you check what was going on?",
       "revId": "a3e5f7277b11b26a727397b86eeed2003d1eb456",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d17e0e_3ff22155",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-06-23T14:13:52Z",
+      "side": 1,
+      "message": "This was probably because `cros_healthd` did not restart successfully and most `health.*` tests failed.\n\nref: https://stainless.corp.google.com/browse/chromeos-test-logs/test-runner/prod/2022-06-10/7e9c6395-199e-4793-a9f2-f39b14bd6601/autoserv_test/tast/results/tests/health.MonitorBluetoothEvent/",
+      "parentUuid": "3ec5737f_e21662c8",
+      "revId": "a3e5f7277b11b26a727397b86eeed2003d1eb456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
