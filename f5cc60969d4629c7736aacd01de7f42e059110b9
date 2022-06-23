@@ -627,6 +627,30 @@
       },
       "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e125657_f3b01590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T20:57:28Z",
+      "side": 1,
+      "message": "I think that if the failure happens, it will most likely be because of test timeout, and the timeout will most likely be reached by `action.Sleep`, not `kw.AccelAction`. So the failure will probably be a failure to wait. The wait is part of the process to repeatedly `pause and play the video`, but if the wait fails then I would not describe it as a failure to `pause or play the video`.",
+      "parentUuid": "96ac3a71_72c3effd",
+      "range": {
+        "startLine": 553,
+        "startChar": 45,
+        "endLine": 553,
+        "endChar": 47
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
