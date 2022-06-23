@@ -34,6 +34,24 @@
       "parentUuid": "450e7519_4774399c",
       "revId": "291316c4bc72e93ddf34e5d98e4ef0f399b7dd41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ea72a1_de2536e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-23T13:14:41Z",
+      "side": 1,
+      "message": "Oh wait, it\u0027d be surprising behavior if it is different between SeparatedOutput and others, Wait(), Run(), Output(), and CombinedOutput().\nWhy was it only for SeparatedOutput, rather than making behavior consistent across methods?",
+      "parentUuid": "13b22fe6_2da3902d",
+      "revId": "291316c4bc72e93ddf34e5d98e4ef0f399b7dd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
