@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04e28e8_d856f694",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T23:19:40Z",
+      "side": 1,
+      "message": "nit:\n\t\t\tif isPlaying, err :\u003d isYoutubeVideoPlaying(); err !\u003d nil {",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 18
+      },
+      "revId": "51b45db400058f49c20941eb9857bb549d958d30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -236,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36343dfe_bf542f40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T23:19:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "05290b18_6f01241f",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 572,
+        "endChar": 4
+      },
+      "revId": "d468a5b9d2f9169b8ce8eac6f1dcd9b15e7f34bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "411f0453_3bdd1cb1",
@@ -344,6 +368,30 @@
       "side": 1,
       "message": "It\u0027s a valid concern, but unfortunately we need keyboard input for the test, and there\u0027s no keyboard in tablet mode so this just seems unavoidable. Potentially we could fall back to pausing using some other non-keyboard scheme in tablet mode, but doesn\u0027t seem worth the effort. I think a few other tests also diverge between clamshell and tablet, so maybe this is ok. I\u0027d proceed with this.",
       "parentUuid": "30eb8c98_1baa7411",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 3
+      },
+      "revId": "d468a5b9d2f9169b8ce8eac6f1dcd9b15e7f34bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59028677_d9e27153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T23:19:40Z",
+      "side": 1,
+      "message": "I think you can include keyboard input in tablet mode. A real user could do it by connecting an external keyboard; I do that all the time.",
+      "parentUuid": "6dd154f4_3909aada",
       "range": {
         "startLine": 528,
         "startChar": 0,
