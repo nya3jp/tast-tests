@@ -16,6 +16,24 @@
       "message": "Alternatively, we could consider just setting the range as `0x00,0x00` once and for all in line 273. I wasn\u0027t sure if that would have any side effects on DUTs that worked the first time. There may be a better approach, but for now, this fix would only be applied if the first attempt in setting gbb flags fails.",
       "revId": "6979c65ddd1b65bc59aecd76d5534d93e5b3c0ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aacbeb3_f07523a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-06-23T09:03:57Z",
+      "side": 1,
+      "message": "I haven\u0027t found this to cause any issues and I think since the advice to use `--wp-range 0,0` shows up on the `flashrom --help` info itself, I think it would be ok to do it directly as well.",
+      "parentUuid": "0b52981f_bc4ca77e",
+      "revId": "6979c65ddd1b65bc59aecd76d5534d93e5b3c0ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
