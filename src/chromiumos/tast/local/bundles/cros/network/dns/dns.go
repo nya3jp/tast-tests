@@ -7,6 +7,7 @@ package dns
 import (
 	"context"
 	"regexp"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
@@ -215,10 +216,22 @@ func SetDoHMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, 
 	return nil
 }
 
+// RandDomain returns a random domain name that can be useful for avoiding caching while testing DNS queries.
+func RandDomain() string {
+	return strconv.FormatInt(time.Now().UnixNano(), 16) + ".com"
+}
+
 // QueryOptions are provided to QueryDNS to configure the lookup query.
 type QueryOptions struct {
 	Domain     string
 	Nameserver string
+}
+
+// NewQueryOptions returns a new options pre-populated with a random domain for testing.
+func NewQueryOptions() *QueryOptions {
+	return &QueryOptions{
+		Domain: RandDomain(),
+	}
 }
 
 func (o QueryOptions) digArgs() []string {
