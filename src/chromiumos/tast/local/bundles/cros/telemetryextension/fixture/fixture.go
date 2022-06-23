@@ -21,6 +21,9 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/telemetryextension/vendorutils"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/local/upstart"
@@ -212,31 +215,19 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		}
 	}
 
-	pwaConn, err := f.cr.NewConn(ctx, "https://www.google.com")
-	if err != nil {
-		s.Fatal("Failed to create connection to google.com: ", err)
-	}
-	f.v.PwaConn = pwaConn
-
-	if err := chrome.AddTastLibrary(ctx, pwaConn); err != nil {
-		s.Fatal("Failed to add Tast library to google.com: ", err)
-	}
-
-	extConn, err := f.cr.NewConn(ctx, fmt.Sprintf("chrome-extension://%s/sw.js", f.v.ExtID))
-	if err != nil {
-		s.Fatal("Failed to create connection to Telemetry Extension: ", err)
-	}
-	f.v.ExtConn = extConn
-
-	if err := chrome.AddTastLibrary(ctx, extConn); err != nil {
-		s.Fatal("Failed to add Tast library to Telemetry Extension: ", err)
-	}
-
 	tconn, err := f.cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get test API connections: ", err)
 	}
 	f.v.TConn = tconn
+
+	if err := f.setupConnectionToPWA(ctx); err != nil {
+		s.Fatal("Failed to setup connection to PWA: ", err)
+	}
+
+	if err := f.setupConnectionToExtension(ctx); err != nil {
+		s.Fatal("Failed to setup connection to Telemetry Extension: ", err)
+	}
 
 	if err := upstart.EnsureJobRunning(ctx, crosHealthdJobName); err != nil {
 		s.Fatalf("Failed to start %s daemon", crosHealthdJobName)
@@ -374,6 +365,58 @@ func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Conte
 	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
 		return errors.Wrap(err, "failed to serve and refresh")
 	}
+	return nil
+}
+
+func (f *telemetryExtensionFixture) setupConnectionToPWA(ctx context.Context) error {
+	pwaConn, err := f.cr.NewConn(ctx, "https://www.google.com")
+	if err != nil {
+		return errors.Wrap(err, "failed to create connection to google.com")
+	}
+	f.v.PwaConn = pwaConn
+
+	if err := chrome.AddTastLibrary(ctx, pwaConn); err != nil {
+		return errors.Wrap(err, "failed to add Tast library to google.com")
+	}
+	return nil
+}
+
+func (f *telemetryExtensionFixture) setupConnectionToExtension(ctx context.Context) error {
+	conn, err := f.cr.NewConn(ctx, fmt.Sprintf("chrome-extension://%s/sw.js", f.v.ExtID))
+	if err != nil {
+		return errors.Wrap(err, "failed to create connection to Telemetry Extension")
+	}
+	f.v.ExtConn = conn
+
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		const js = `
+			(function() {
+				return document.querySelector("body > pre") !== null;
+			})()
+		`
+		isExtensionInstalled := false
+		if err := conn.Eval(ctx, js, &isExtensionInstalled); err != nil {
+			return errors.Wrap(err, "failed to verify whether chrome.os.telemetry is defined")
+		}
+
+		if isExtensionInstalled {
+			return nil
+		}
+
+		reloadButton := nodewith.Role(role.Button).Name("Reload").ClassName("ReloadButton")
+		if err := uiauto.New(f.v.TConn).LeftClick(reloadButton)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click reload button")
+		}
+
+		return errors.New("chrome.os.telemetry is undefined")
+	}, &testing.PollOptions{Timeout: 10 * time.Second, Interval: time.Second}); err != nil {
+		return errors.Wrap(err, "failed to verify that extension is installed")
+	}
+
+	if err := chrome.AddTastLibrary(ctx, conn); err != nil {
+		return errors.Wrap(err, "failed to add Tast library to Telemetry Extension")
+	}
+
 	return nil
 }
 
