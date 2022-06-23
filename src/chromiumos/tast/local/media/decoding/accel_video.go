@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"sync"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -16,6 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/cpu"
+	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/gtest"
 	mediacpu "chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/media/logging"
@@ -217,7 +219,7 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, paramet
 		// Binary name.
 		exec = "video_decode_accelerator_perf_tests"
 		// Duration of the interval during which CPU usage will be measured.
-		measureDuration = 20 * time.Second
+		measurementDuration = 20 * time.Second
 		// Time reserved for cleanup.
 		cleanupTime = 10 * time.Second
 	)
@@ -277,34 +279,34 @@ func RunAccelVideoPerfTest(ctx context.Context, outDir, filename string, paramet
 			return errors.Wrap(err, "failed to parse performance metrics")
 		}
 
-		// Run the same test case on repeat for a while and collect CPU and power
-		// usage.
-		measurements, err := mediacpu.MeasureProcessUsage(ctx, measureDuration, mediacpu.KillProcess, gtest.New(
-			filepath.Join(chrome.BinTestDir, exec),
-			gtest.Logfile(filepath.Join(outDir, exec+"."+test.gTestName+".onrepeat.log")),
-			gtest.Filter("*"+test.gTestName),
-			// Repeat enough times to run for full measurement duration. We don't
-			// use -1 here as this can result in huge log files (b/138822793).
-			gtest.Repeat(1000),
-			gtest.ExtraArgs(args...),
-			gtest.UID(int(sysutil.ChronosUID)),
-		))
-		if err != nil {
-			return errors.Wrapf(err, "failed to measure CPU/Power usage %v", exec)
-		}
-		p.Set(perf.Metric{
-			Name:      test.metricPrefix + ".cpu_usage",
-			Unit:      "percent",
-			Direction: perf.SmallerIsBetter,
-		}, measurements["cpu"])
+		// Run the same test case on repeat for measurementDuration and collect performance metrics.
+		var procErr, cpuErr error
+		var wg sync.WaitGroup
+		wg.Add(2)
+		go func() {
+			defer wg.Done()
+			procErr = graphics.TimedRunGTest(ctx, measurementDuration, gtest.New(
+				filepath.Join(chrome.BinTestDir, exec),
+				gtest.Logfile(filepath.Join(outDir, exec+"."+test.gTestName+".onrepeat.log")),
+				gtest.Filter("*"+test.gTestName),
+				// Repeat enough times to run for full measurement duration. We don't
+				// use -1 here as this can result in huge log files (b/138822793).
+				gtest.Repeat(1000),
+				gtest.ExtraArgs(args...),
+				gtest.UID(int(sysutil.ChronosUID)),
+			))
+		}()
+		go func() {
+			defer wg.Done()
+			cpuErr = graphics.MeasureCPUUsageAndPower(ctx, 0*time.Second, measurementDuration, test.metricPrefix, p)
+		}()
 
-		// Power measurements are not supported on all platforms.
-		if power, ok := measurements["power"]; ok {
-			p.Set(perf.Metric{
-				Name:      test.metricPrefix + ".power_consumption",
-				Unit:      "watt",
-				Direction: perf.SmallerIsBetter,
-			}, power)
+		wg.Wait()
+		if procErr != nil {
+			return errors.Wrap(procErr, "failed to run GTest binary")
+		}
+		if cpuErr != nil {
+			return errors.Wrap(cpuErr, "failed to measure CPU/Package power")
 		}
 	}
 
