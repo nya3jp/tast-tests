@@ -270,8 +270,13 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 		if err := i.value.Helper.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 			s.Fatal("Failed to disable write protect: ", err)
 		}
-		if err := i.value.Helper.DUT.Conn().CommandContext(ctx, "flashrom", "-p", "host", "--wp-disable").Run(exec.DumpLogOnError); err != nil {
-			s.Fatal("Failed to disable software WP: ", err)
+		// As reported in b/236026413, SetGBBFlags was unsuccessful for some DUTs and failed during erase and write.
+		// From manual tests, clearing host and ec write protection ranges would resolve this error.
+		for _, programmer := range []string{"ec", "host"} {
+			if err := i.value.Helper.DUT.Conn().CommandContext(
+				ctx, "flashrom", "-p", programmer, "--wp-disable", "--wp-range=0,0").Run(exec.DumpLogOnError); err != nil {
+				s.Fatalf("Failed to disable %s software WP: %v", programmer, err)
+			}
 		}
 		s.Log("Setting GBB flags to ", i.value.GBBFlags.Set)
 		if err := common.SetGBBFlags(ctx, i.value.Helper.DUT, i.value.GBBFlags.Set); err != nil {
