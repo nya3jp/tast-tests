@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/variations"
 	"chromiumos/tast/testing"
 )
@@ -45,7 +46,7 @@ func init() {
 			"variations_test_index.html",
 			"logo_chrome_color_1x_web_32dp.png",
 		},
-		Vars:    []string{"fakeVariationsChannel", "useSeedOnDisk"},
+		Vars:    append([]string{"fakeVariationsChannel", "useSeedOnDisk"}, screenshot.ScreenDiffVars...),
 		Timeout: 5 * time.Minute,
 	})
 }
@@ -189,9 +190,10 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 	type tc struct {
-		url    string
-		text   string
-		finder *nodewith.Finder
+		url           string
+		text          string
+		finder        *nodewith.Finder
+		skiaGoldImage string
 	}
 	tests := []tc{
 		{
@@ -201,21 +203,36 @@ func ChromeVariationsSmoke(ctx context.Context, s *testing.State) {
 			finder: nodewith.Name("Success").Role(role.Heading),
 		},
 		{
-			url:    filepath.Join(server.URL, "variations_test_index.html"),
-			text:   "The Chromium Projects",
-			finder: nodewith.Name("The Chromium Projects").Role(role.Heading),
+			url:           filepath.Join(server.URL, "variations_test_index.html"),
+			text:          "The Chromium Projects",
+			finder:        nodewith.Name("The Chromium Projects").Role(role.Heading),
+			skiaGoldImage: "finch_smoke_render_chromium_org_html",
 		},
 	}
 	ui := uiauto.New(tconn)
 	for _, t := range tests {
-		c, err := cr.NewConn(ctx, t.url)
-		if err != nil {
-			s.Fatalf("Failed to open Chrome browser with URL %v: %v", t.url, err)
-		}
-		defer c.Close()
+		func() {
+			c, err := cr.NewConn(ctx, t.url)
+			if err != nil {
+				s.Fatalf("Failed to open Chrome browser with URL %v: %v", t.url, err)
+			}
+			defer c.Close()
+			defer c.CloseTarget(ctx)
 
-		if err := ui.WaitUntilExists(t.finder)(ctx); err != nil {
-			s.Fatalf("Failed to find text %q on page %q: %v", t.text, t.url, err)
-		}
+			if err := ui.WaitUntilExists(t.finder)(ctx); err != nil {
+				s.Fatalf("Failed to find text %q on page %q: %v", t.text, t.url, err)
+			}
+
+			if len(t.skiaGoldImage) > 0 {
+				d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 1024, WindowHeightDP: 720}})
+				if err != nil {
+					s.Fatal("Failed to start screen differ: ", err)
+				}
+				defer d.DieOnFailedDiffs()
+				if err := d.Diff(ctx, "variations_smoke", nodewith.Role(role.RootWebArea), screenshot.Retries(5), screenshot.RetryInterval(time.Second))(ctx); err != nil {
+					s.Error("Failed the skia gold diff: ", err)
+				}
+			}
+		}()
 	}
 }
