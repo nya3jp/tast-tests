@@ -134,18 +134,19 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 		}, &testing.PollOptions{Interval: time.Second, Timeout: time.Minute}); err != nil {
 			s.Fatal("Production variations seed not fetched: ", err)
 		}
-		if err := injectSeedInLocalState(ctx, &testSeed); err != nil {
-			s.Fatal("Failed to inject test seed: ", err)
-		}
-		// Ensure the seed was injected. There is no waiting time required because it will not download the seed.
-		currentSeed, err := readVariationsSeed(ctx)
-		if err != nil {
-			s.Fatal("Failed to read variations seed info")
-		}
-		if currentSeed.CompressedSeed != testSeed.CompressedSeed || currentSeed.SeedSignature != testSeed.SeedSignature {
-			s.Fatal("Local State has not updated with the test seed")
-		}
 	}()
+	// Inject the seed, after the browser is closed. So no new seed is downloaded.
+	if err := injectSeedInLocalState(ctx, &testSeed); err != nil {
+		s.Fatal("Failed to inject test seed: ", err)
+	}
+	// Ensure the seed was injected. There is no waiting time required because it will not download the seed.
+	currentSeed, err := readVariationsSeed(ctx)
+	if err != nil {
+		s.Fatal("Failed to read variations seed info")
+	}
+	if currentSeed.CompressedSeed != testSeed.CompressedSeed || currentSeed.SeedSignature != testSeed.SeedSignature {
+		s.Fatal("Local State has not updated with the test seed")
+	}
 	func() {
 		l, err := lacros.Launch(ctx, tconn)
 		if err != nil {
@@ -202,7 +203,7 @@ func VariationSmoke(ctx context.Context, s *testing.State) {
 					defer d.DieOnFailedDiffs()
 					if err := uiauto.Combine("create finch smoke screenshot",
 						uda.WaitUntilExists(uidetection.Word("Home")),
-						d.DiffWindow(ctx, "finch_smoke", screenshot.Retries(2), screenshot.RetryInterval(time.Millisecond*600)))(ctx); err != nil {
+						d.DiffWindow(ctx, "finch_smoke", screenshot.Retries(3), screenshot.RetryInterval(time.Millisecond*600)))(ctx); err != nil {
 						s.Error("Failed the skia gold diff: ", err)
 					}
 				}
