@@ -76,6 +76,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e01cec7_e2b24a02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-23T17:24:23Z",
+      "side": 1,
+      "message": "I am worried that this test may cause unexpected failure for other tests.\n\nThe test AttestationNoExternalServer was pretty stable, but failed in CQs for this CL.\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dbranch\u0026col\u003dqueued_date\u0026first_date\u003d2022-06-21\u0026last_date\u003d2022-06-23\u0026test\u003dAttestationNoExternalServer\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\n\nThe errors were new.\n\n```\nFailed to disable local test infra feature: failed to disable fake pca agent: failed to stop fake pca agent: failed wait for shutdown: signal: killed\n```\n\nAlso, are we able to reproduce the original failure consistantly in our local dev env?\n\nThanks.\n",
+      "revId": "fa0054fecaf4297359685d0a46f96710f575414f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31f0e2f3_b88d08df",
