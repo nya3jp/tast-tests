@@ -20,7 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PrintersBulkAccessDefaultMode,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify behavior of default PrintersBulkAccessMode policy on Managed Guest Session",
 		Contacts: []string{
 			"mohamedaomar@google.com", // Test author

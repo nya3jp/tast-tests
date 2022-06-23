@@ -20,7 +20,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ForceYouTubeRestrict,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Verify behavior of ForceYouTubeRestrict policy on Managed Guest Session",
 		Contacts: []string{
 			"cmfcmf@google.com", // Test author

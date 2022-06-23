@@ -35,7 +35,7 @@ type webauthnTestParam struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebauthnFactors,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks that WebAuthn options are enabled or disabled based on the policy value",
 		Contacts: []string{
 			"hcyang@google.com", // Test author
@@ -61,9 +61,10 @@ func init() {
 // It tests "setup" and "webauthn", but not "quick_unlock" or other auth usages. So it will include
 // just enough test cases to verify:
 // 1. WebAuthnFactors enabled will enable "setup" the auth method and using it for "webauthn",
-//    even if all other policies disable it.
+// even if all other policies disable it.
+//
 // 2. WebAuthnFactors disabled will disable using the auth method for "webauthn" even if all other
-//    policies enabled it, but will not disable "setup" for that auth method.
+// policies enabled it, but will not disable "setup" for that auth method.
 func WebauthnFactors(ctx context.Context, s *testing.State) {
 	// TODO(b/210418148): The external site we currently use keeps record for a registered username for a while,
 	// so re-using a username will result in non-identical requests from the server. So for now we need truly
