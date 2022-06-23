@@ -16,6 +16,46 @@
       "message": "Hi Tast owners, this CL is ready for review.",
       "revId": "33b33c7e781636b0b4428d91712a574f92cd1ea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42450589_d0167203",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-23T20:47:39Z",
+      "side": 1,
+      "message": "In what situation would SODA not be installed? Is it controlled by any USE flag? Can we use SoftwareDeps instead?",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "33b33c7e781636b0b4428d91712a574f92cd1ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cf546da_c39e59e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-23T20:47:39Z",
+      "side": 1,
+      "message": "I\u0027d suggest split your test into two and use HardwareDeps Microphone.",
+      "revId": "33b33c7e781636b0b4428d91712a574f92cd1ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
