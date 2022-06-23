@@ -16,6 +16,23 @@
       "message": "PTAL!",
       "revId": "7a716f3bc8cd74041b0e9d24fbc96f8dbf7a0b07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d93012e6_ca563cfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-06-23T23:03:52Z",
+      "side": 1,
+      "message": "Copied from `personalization.SetDefaultUserAvatar`. Should probably pull it out into personalization/personalization.go",
+      "revId": "7a716f3bc8cd74041b0e9d24fbc96f8dbf7a0b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
