@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43393c71_7788d211",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-06-23T00:31:25Z",
+      "side": 1,
+      "message": "FullQualificationStress uses testexec. Comments 15 of the bug onwards explain my investigation. TL;DR; my working theory is that there is a diff dealing with deadlines between testexec and os.exec, there the former will not close outstanding fds, which may cause some hangs why exactly it causes hangs I do not know, but backtraces indicate stuckness on those channels)",
+      "parentUuid": "b3d90f29_39e34bb5",
+      "revId": "fa0054fecaf4297359685d0a46f96710f575414f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31f0e2f3_b88d08df",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-22T17:32:36Z",
       "side": 1,
       "message": "If I understand correctly, Signal does not necessary kill a process. It depends on the signal handler of the process, right?",
+      "revId": "fa0054fecaf4297359685d0a46f96710f575414f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bcd79da_f3857353",
+        "filename": "src/chromiumos/tast/common/testexec/testexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-06-23T00:31:25Z",
+      "side": 1,
+      "message": "we issue sigkill for deadline.",
+      "parentUuid": "31f0e2f3_b88d08df",
       "revId": "fa0054fecaf4297359685d0a46f96710f575414f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
