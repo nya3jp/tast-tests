@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/network/dns"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/multivm"
@@ -35,9 +34,6 @@ func init() {
 // DNSProxyCustomNameserver verifies that when a plaintext DNS query is made to a specific nameserver,
 // explicitly overriding the network configuration, that dns-proxy is elided and the query goes directly to that server.
 func DNSProxyCustomNameserver(ctx context.Context, s *testing.State) {
-	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
-	defer cancel()
-
 	// Ensure plaintext query.
 	pre := s.PreValue().(*multivm.PreData)
 	cr := pre.Chrome
@@ -54,7 +50,7 @@ func DNSProxyCustomNameserver(ctx context.Context, s *testing.State) {
 	}
 
 	// By default, host DNS queries work as-is.
-	// TODO(b/230686377i, b/232882301) - Add Crostini and ARC
+	// TODO(b/230686377, b/232882301) - Add Crostini and ARC
 	tc := []dns.ProxyTestCase{
 		{Client: dns.System},
 		{Client: dns.User},
