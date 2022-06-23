@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba6b38b7_9bd458fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T23:04:50Z",
+      "side": 1,
+      "message": "`Clean up` (two words) because the single word cleanup is a noun, not a verb.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "7fc7b41463191f938f3ff327c96e4b55c6ec68ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "43c874a5_b73d266b",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-06-23T22:42:51Z",
       "side": 1,
       "message": "Please review, thanks!",
+      "revId": "7fc7b41463191f938f3ff327c96e4b55c6ec68ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10ebf6dc_f46701c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T23:04:50Z",
+      "side": 1,
+      "message": "lgtm with grammatical correction",
       "revId": "7fc7b41463191f938f3ff327c96e4b55c6ec68ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
