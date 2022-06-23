@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47db949a_ff85a582",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-06-23T06:19:57Z",
+      "side": 1,
+      "message": "Things within a suite don\u0027t care about the right version, they expect it. AFAIU, the provisioner is not a part of tast and is not run in between individual tests within the suite - that kind of non hermiticity plagues not only autoupdate, but is a separate conversation to have with engprod I guess if necessary.",
+      "parentUuid": "6e5747e3_51c0db56",
+      "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5739df92_89800df8",
