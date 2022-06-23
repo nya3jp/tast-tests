@@ -16,6 +16,24 @@
       "message": "How are we ensuring this? It\u0027s a big problem if the video just stops playing from this point onwards - the test run would be invalid. I think it might be better for the pauses to be much shorter - less than a second, with longer periods of playing. We probably want more than 4 key strokes - it\u0027s not enough to detect anomalous input delay.",
       "revId": "670d28ee2962a6a6d4213db35c423a18c83cf802",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd59445b_70cf9624",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-23T16:05:57Z",
+      "side": 1,
+      "message": "\u003e How are we ensuring this? It\u0027s a big problem if the video just stops playing from this point onwards - the test run would be invalid. \n\nWe could add a check to validate it. Check out L573 that gets video smoothness via javascript. We could do `document.querySelector(\"video\")` to get \u003cvideo\u003e (luckily youtube page has only one \u003cvideo\u003e). Then we could use `paused` property to check whether the video is playing.",
+      "parentUuid": "6c6440ff_6f6c9108",
+      "revId": "670d28ee2962a6a6d4213db35c423a18c83cf802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
