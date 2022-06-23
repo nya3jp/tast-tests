@@ -273,6 +273,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "752fce20_a262b6f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-23T00:14:07Z",
+      "side": 1,
+      "message": "This function uses `RetryUntil` but I think that `uiauto.Repeat` would be a better choice because you care about the exact number of times the key is pressed.",
+      "range": {
+        "startLine": 552,
+        "startChar": 13,
+        "endLine": 552,
+        "endChar": 47
+      },
+      "revId": "f5cc60969d4629c7736aacd01de7f42e059110b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3eb2aa16_f79561fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
         "patchSetId": 9
