@@ -118,6 +118,30 @@
       },
       "revId": "56cc7cad36447716d7581626233169bbf90b4976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faa18803_c36abf47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/dbus.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-06-23T01:05:39Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! I didn\u0027t know about parametrized tests but that seems like a good solution here. I\u0027ve updated this patch to have two Params as you suggested.",
+      "parentUuid": "8dd0c8ee_1b6ba31e",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "56cc7cad36447716d7581626233169bbf90b4976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
