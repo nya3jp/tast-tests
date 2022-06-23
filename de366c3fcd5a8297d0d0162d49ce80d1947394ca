@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c71a62c7_22fd0c47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/rgbkbd/capslock_rgb_state_updates.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-06-23T02:15:33Z",
+      "side": 1,
+      "message": "Is there a hard requirement like \"the backlight should be updated in 100ms\"? If so, please note in the error message about it.\nIf not, can we use polling any signs instead of fixed time delay?",
+      "revId": "de366c3fcd5a8297d0d0162d49ce80d1947394ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
