@@ -17,6 +17,7 @@ import (
 	"strconv"
 	"strings"
 	"sync"
+	"syscall"
 	"time"
 
 	"chromiumos/tast/common/perf"
@@ -25,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/chromeproc"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/local/media/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/power/setup"
@@ -782,5 +784,50 @@ func MeasureCPUUsageAndPower(ctx context.Context, stabilization, measurement tim
 			Direction: perf.SmallerIsBetter,
 		}, power)
 	}
+	return nil
+}
+
+// TimedRunGTest runs t for interval seconds, where t is expected to run for
+// much longer than said interval (ideally forever). This function will return
+// error if t fails to start, or finishes/dies before interval.
+func TimedRunGTest(ctx context.Context, interval time.Duration, t *gtest.GTest) (retErr error) {
+	// Start the process asynchronously.
+	cmd, err := t.Start(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to run binary")
+	}
+
+	// Clean up the process upon exiting the function.
+	defer func() {
+		if err := cmd.Kill(); err != nil {
+			retErr = err
+			testing.ContextLog(ctx, "Failed to kill process: ", retErr)
+			return
+		}
+
+		// Wait for the process to terminate.
+		err = cmd.Wait()
+		if err == nil {
+			retErr = errors.New("process did not run for entire interval duration")
+			testing.ContextLog(ctx, retErr)
+			return
+		}
+
+		// Check whether the process was terminated with a 'SIGKILL' signal.
+		ws, ok := testexec.GetWaitStatus(err)
+		if !ok {
+			retErr = errors.Wrap(err, "failed to get wait status")
+			testing.ContextLog(ctx, retErr)
+		} else if !ws.Signaled() || ws.Signal() != syscall.SIGKILL {
+			retErr = errors.Wrap(err, "process did not terminate with SIGKILL signal")
+			testing.ContextLog(ctx, retErr)
+		}
+	}()
+
+	testing.ContextLog(ctx, "Running GTest for ", interval.Round(time.Second))
+	if err := testing.Sleep(ctx, interval); err != nil {
+		return errors.Wrap(err, "failed to sleep")
+	}
+
 	return nil
 }
