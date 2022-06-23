@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5fc3ff9_bbe1a6d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-23T09:20:47Z",
+      "side": 1,
+      "message": "Got it. Please leave a comment about that in the code.",
+      "parentUuid": "ab66a186_c6e902fb",
+      "range": {
+        "startLine": 52,
+        "startChar": 49,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e463448_4bf19694",
         "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
         "patchSetId": 2
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "Could you please explain, why do we need to close the Settings app? (I have a theory it\u0027s something to do with the fixtures, but i am not sure)",
       "parentUuid": "5e463448_4bf19694",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 2
+      },
+      "revId": "81ddf06e92f350bbe2f779bc1b177f791049ad89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63c3084f_e104d5a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-23T09:20:47Z",
+      "side": 1,
+      "message": "We went over that. It is my bad on this comment.",
+      "parentUuid": "5286cbd6_5eda7c8b",
       "range": {
         "startLine": 96,
         "startChar": 0,
