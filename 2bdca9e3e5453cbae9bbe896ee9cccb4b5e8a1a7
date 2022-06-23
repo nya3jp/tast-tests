@@ -16,6 +16,23 @@
       "message": "Hi all,\n\nPTAL. Thanks!",
       "revId": "2bdca9e3e5453cbae9bbe896ee9cccb4b5e8a1a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8da54ed0_be17e5e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-06-23T03:04:07Z",
+      "side": 1,
+      "message": "Please wait for team member +1 before submitting, but looks fine from Tast perspective.",
+      "revId": "2bdca9e3e5453cbae9bbe896ee9cccb4b5e8a1a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
