@@ -34,6 +34,24 @@
       "parentUuid": "6c6440ff_6f6c9108",
       "revId": "670d28ee2962a6a6d4213db35c423a18c83cf802",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb9d40c1_4d79daff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-23T19:35:28Z",
+      "side": 1,
+      "message": "I added the video playing validation step and verified it works. I also added about 30 seconds of passively watching the video -- I can get rid of this if you want, but I figured since it\u0027s VideoCUJ we should probably have at least some time where the video is just simply playing?\n\nJust to clarify how the keyboard input in this test works:\nWe press and hold the the down arrow, then press and hold the up arrow (to address Trevor\u0027s comment 236030517#comment2). Then we press the space bar 4 times. That\u0027s 6 key presses. Then we sleep/passively watch the video for 30 seconds. However, we use \"RunFor\" and thus rerun this part of the test for a total of 10 minutes. After my changes, we would have about 6 key presses every 46 seconds (4 seconds to move volume up and down, 12 seconds to press spacebar 4 times, 30 seconds of sleep). This amounts to \u003e78 key presses (600 / 46 * 6). \n\nWe can easily increase the total number of key-presses if you think that\u0027s too small by pressing the spacebar more frequently (instead of 4 presses, we could do 10 or something). We can also easily decrease the amount of time passively watching the video, which would make us repeat the key presses more frequently. Jsyk, VideoCUJ.clamshell runs for 30 minutes, so we would collect quite a bit of latency data for that variant in particular.",
+      "parentUuid": "cd59445b_70cf9624",
+      "revId": "670d28ee2962a6a6d4213db35c423a18c83cf802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
