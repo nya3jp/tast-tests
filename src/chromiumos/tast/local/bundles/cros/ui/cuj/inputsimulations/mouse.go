@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package cuj
+package inputsimulations
 
 import (
 	"context"
@@ -17,12 +17,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// SimulateMouseMovement moves the mouse in a spiral according to r = theta, starting at the
+// MoveMouseFor moves the mouse in a spiral according to r = theta, starting at the
 // center of the screen. The mouse position is reset to the center of the screen once it
 // reaches the border of the screen. Using this math function allows for both specifying
 // a path for the mouse without defining coordinates in advance, as well as progressively
 // increasing the speed that the mouse moves.
-func SimulateMouseMovement(ctx context.Context, tconn *chrome.TestConn, duration time.Duration) error {
+func MoveMouseFor(ctx context.Context, tconn *chrome.TestConn, duration time.Duration) error {
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to get the primary display info")
