@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -295,6 +296,7 @@ func init() {
 //   - Open a Google Docs window (if necessary).
 //   - Enter split mode (if necessary).
 //   - Turn off camera (if necessary).
+//
 // During recording:
 //   - Join the meeting.
 //   - Add participants(bots) to the meeting.
@@ -303,6 +305,7 @@ func init() {
 //   - Start to present (if necessary).
 //   - Input notes to Google Docs file (if necessary).
 //   - Wait for 30 seconds before ending the meeting.
+//
 // After recording:
 //   - Record and save metrics.
 func MeetCUJ(ctx context.Context, s *testing.State) {
@@ -818,7 +821,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 		// Ensures that meet session is long enough. graphics.MeasureGPUCounters
 		// exits early without errors on ARM where there is no i915 counters.
-		if err := cuj.SimulateMouseMovement(ctx, tconn, meetTimeout); err != nil {
+		if err := inputsimulations.MoveMouseFor(ctx, tconn, meetTimeout); err != nil {
 			return errors.Wrap(err, "failed to simulate mouse movement")
 		}
 		if err := <-errc; err != nil {
