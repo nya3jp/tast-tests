@@ -13,6 +13,7 @@ import (
 	"html/template"
 	"net"
 	"os"
+	"strconv"
 	"strings"
 
 	"chromiumos/tast/common/testexec"
@@ -20,14 +21,19 @@ import (
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/env"
 )
 
+//# matches any domain.
 const confTemplate = `
-port=0 # disable dns
 interface={{.ifname}}
+{{if .enable_dhcp}}
 dhcp-range={{.pool_start}},{{.pool_end}},{{.netmask}},12h
 dhcp-option=option:netmask,{{.netmask}}
 dhcp-option=option:router,{{.gateway}}
-{{if .dns}}
+{{end}}
+{{if .enable_dns}}
 dhcp-option=option:dns-server,{{.dns}}
+address=/#/{{.resolvedIP}}
+{{else}}
+port=0 # disable dns
 {{end}}
 `
 
@@ -40,23 +46,25 @@ const (
 )
 
 type dnsmasq struct {
-	env    *env.Env
-	subnet *net.IPNet
-	dns    []string
-	cmd    *testexec.Cmd
+	env              *env.Env
+	subnet           *net.IPNet
+	dns              []string
+	cmd              *testexec.Cmd
+	enableDNS        bool
+	enableDHCP       bool
+	addressToForceIP string
 }
 
 // New creates a new dnsmasq object. Currently dnsmasq will only be used as a
 // DHCP server daemon. The returned object can be passed to Env.StartServer(),
 // its lifetime will be managed by the Env object.
-func New(subnet *net.IPNet, dns []string) *dnsmasq {
-	return &dnsmasq{subnet: subnet, dns: dns}
+func New(subnet *net.IPNet, enableDNS, enableDHCP bool, addressToForceIP string, dns []string) *dnsmasq {
+	return &dnsmasq{subnet: subnet, enableDNS: enableDNS, enableDHCP: enableDHCP, addressToForceIP: addressToForceIP, dns: dns}
 }
 
 // Start starts the dnsmasq process.
 func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 	d.env = env
-
 	ip := d.subnet.IP.To4()
 	if ip == nil {
 		return errors.Errorf("given subnet %s is not invalid", d.subnet.String())
@@ -77,9 +85,17 @@ func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 		"netmask":    mask.String(),
 		"gateway":    gateway.String(),
 	}
-	if len(d.dns) > 0 {
+
+	if d.enableDNS {
+		confVals["enable_dns"] = strconv.FormatBool(d.enableDNS)
 		confVals["dns"] = strings.Join(d.dns, ",")
+		confVals["resolvedIP"] = d.addressToForceIP
 	}
+
+	if d.enableDHCP {
+		confVals["enable_dhcp"] = strconv.FormatBool(d.enableDHCP)
+	}
+
 	b := &bytes.Buffer{}
 	template.Must(template.New("").Parse(confTemplate)).Execute(b, confVals)
 	if err := os.WriteFile(d.env.ChrootPath(confPath), []byte(b.String()), 0644); err != nil {
