@@ -7,22 +7,17 @@ package drivefs
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
-	"os"
 	"strings"
 	"time"
 
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
 
 const (
-	driveFsSetupTimeout            = time.Minute
-	driveFsCommandLineArgsFileName = "command_line_args"
+	driveFsSetupTimeout = time.Minute
 )
 
 var (
@@ -110,6 +105,9 @@ type FixtureData struct {
 
 	// The APIClient singleton.
 	APIClient *APIClient
+
+	// The DriveFS helper, reused by tests.
+	DriveFs *DriveFs
 }
 
 type fixture struct {
@@ -117,6 +115,7 @@ type fixture struct {
 	cr             *chrome.Chrome
 	tconn          *chrome.TestConn
 	APIClient      *APIClient
+	driveFs        *DriveFs
 	chromeOptions  []chrome.Option
 	drivefsOptions map[string]string
 }
@@ -127,18 +126,20 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 
 	// If mountPath exists and API client is not nil, check if Drive has stabilized and return early if it has.
 	if f.mountPath != "" && f.APIClient != nil {
-		mountPath, err := WaitForDriveFs(ctx, f.cr.NormalizedUser())
+		dfs, err := NewDriveFs(ctx, f.cr.NormalizedUser())
 		if err != nil {
 			s.Log("Failed waiting for DriveFS to stabilize: ", err)
 			chrome.Unlock()
 			f.cleanUp(ctx, s)
 		} else {
-			f.mountPath = mountPath
+			f.driveFs = dfs
+			f.mountPath = f.driveFs.MountPath()
 			return &FixtureData{
 				Chrome:      f.cr,
 				MountPath:   f.mountPath,
 				TestAPIConn: f.tconn,
 				APIClient:   f.APIClient,
+				DriveFs:     f.driveFs,
 			}
 		}
 	}
@@ -166,12 +167,13 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		}
 	}()
 
-	mountPath, err := WaitForDriveFs(ctx, f.cr.NormalizedUser())
+	dfs, err := NewDriveFs(ctx, f.cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed waiting for DriveFS to start: ", err)
 	}
 	s.Log("drivefs fully started")
-	f.mountPath = mountPath
+	f.driveFs = dfs
+	f.mountPath = f.driveFs.MountPath()
 
 	if len(f.drivefsOptions) > 0 {
 		var options []string
@@ -179,31 +181,10 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 			options = append(options, fmt.Sprintf("%s:%s", flag, value))
 		}
 		cliArgs := fmt.Sprintf("--features=%s", strings.Join(options, ","))
-
-		// The command_line_args file must be placed at ~/GCache/v2/[persistableToken].
-		persistableToken := PersistableToken(f.mountPath)
-		if len(persistableToken) == 0 {
-			s.Fatal("Failed to obtain the drive persistable token: ", f.mountPath)
-		}
-		homeDir, err := cryptohome.UserPath(ctx, f.cr.NormalizedUser())
-		if err != nil {
-			s.Fatal("Failed to obtain home dir path: ", err)
-		}
-		if err := ioutil.WriteFile(ConfigPath(homeDir, persistableToken, driveFsCommandLineArgsFileName), []byte(cliArgs), 0644); err != nil {
+		if err := f.driveFs.WriteCommandLineFlags(cliArgs); err != nil {
 			s.Fatal("Failed to write command line args: ", err)
 		}
-
-		// Kill DriveFS, cros-disks will ensure another starts up.
-		if err := testexec.CommandContext(ctx, "pkill", "-HUP", "drivefs").Run(); err != nil {
-			// pkill exits with code 1 if it could find no matching process (see: man 1 pkill).
-			// As it has not started, this is an acceptable as the next start will
-			// use the new command line arguments.
-			if ws, ok := testexec.GetWaitStatus(err); !ok || !ws.Exited() || ws.ExitStatus() != 1 {
-				return errors.Wrap(err, "failed to kill crash_sender processes")
-			}
-		}
-
-		if _, err := WaitForDriveFs(ctx, f.cr.NormalizedUser()); err != nil {
+		if err := f.driveFs.Restart(ctx); err != nil {
 			s.Fatal("Failed waiting for DriveFS to restart: ", err)
 		}
 	}
@@ -234,6 +215,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		MountPath:   f.mountPath,
 		TestAPIConn: f.tconn,
 		APIClient:   f.APIClient,
+		DriveFs:     f.driveFs,
 	}
 }
 
@@ -256,19 +238,12 @@ func (f *fixture) cleanUp(ctx context.Context, s *testing.FixtState) {
 	f.tconn = nil
 	f.APIClient = nil
 
-	if len(f.drivefsOptions) > 0 {
-		persistableToken := PersistableToken(f.mountPath)
-		if len(persistableToken) == 0 {
-			s.Fatal("Failed to obtain the drive persistable token from mount path: ", f.mountPath)
-		}
-		homeDir, err := cryptohome.UserPath(ctx, f.cr.NormalizedUser())
-		if err != nil {
-			s.Fatal("Failed to obtain home dir path: ", err)
-		}
-		if err := os.Remove(ConfigPath(homeDir, persistableToken, driveFsCommandLineArgsFileName)); err != nil {
+	if len(f.drivefsOptions) > 0 && f.driveFs != nil {
+		if err := f.driveFs.ClearCommandLineFlags(); err != nil {
 			s.Fatal("Failed to remove command line args file: ", err)
 		}
 	}
+	f.driveFs = nil
 	f.mountPath = ""
 
 	if f.cr != nil {

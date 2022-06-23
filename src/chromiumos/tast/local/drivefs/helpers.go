@@ -45,6 +45,10 @@ func SaveDriveLogsOnError(ctx context.Context, hasError func() bool, normalizedU
 		testing.ContextLog(ctx, "Could not obtain the home dir path: ", err)
 		return
 	}
+	saveDriveLogs(ctx, homeDir, persistableToken)
+}
+
+func saveDriveLogs(ctx context.Context, homeDir, persistableToken string) {
 	driveLogPath := ConfigPath(homeDir, persistableToken, "Logs", "drivefs.txt")
 	logContents, err := ioutil.ReadFile(driveLogPath)
 	if err != nil {
