@@ -73,6 +73,30 @@
       },
       "revId": "3b7e4c67320b26ac5c86264407b870b2182ce1be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81eb7683_1bfed0d5",
+        "filename": "src/chromiumos/tast/local/bluetooth/mojo/js_wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1267867
+      },
+      "writtenOn": "2022-06-23T19:59:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efd205e7_566ddbbc",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 28
+      },
+      "revId": "3b7e4c67320b26ac5c86264407b870b2182ce1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
