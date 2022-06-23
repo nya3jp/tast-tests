@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce540b48_18b5083a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-23T18:53:57Z",
+      "side": 1,
+      "message": "Do you still have problem running tast unit tests?\n\nI do have one suggestion. Please take a look. Thanks.",
+      "revId": "a2295f8c80919be0fad75f7c04ee6d3fe98fa949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b81cf5_16687613",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/time_taken_suspend_resume.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-23T18:53:57Z",
+      "side": 1,
+      "message": "I think using a list here is hard to read and does not simplify the code too much. How about something like:\n\n```\nconst (\n\tstartResumeTimeExp \u003d `start_resume_time\\s*\u003d\\s*(\\d+\\.\\d+)`\n\tendResumeTimeExp \u003d `end_resume_time\\s*\u003d\\s*(\\d+\\.\\d+)`\n\tstartSuspendTimeExp \u003d `start_suspend_time\\s*\u003d\\s*(\\d+\\.\\d+)`\n\tendSuspendTimeExp \u003d `end_suspend_time\\s*\u003d\\s*(\\d+\\.\\d+)`\n)\n\nstartResumeTime, err \u003d startResumeTimeExp.timeStampFindStringSubmatch(string(b)))\nif err !\u003d nil {\n    return 0.0, 0.0, errors.Wrapf(err, \"failed to get start resume timestamp for %v\", line)\n}\nendResumeTime, err \u003d endResumeTimeExp.timeStampFindStringSubmatch(string(b)))\nif err !\u003d nil {\n    return 0.0, 0.0, errors.Wrapf(err, \"failed to get end resume timestamp for %v\", line)\n}\nstartSuspendTime, err \u003d startSuspendTimeExp.timeStampFindStringSubmatch(string(b)))\nif err !\u003d nil {\n    return 0.0, 0.0, errors.Wrapf(err, \"failed to get start suspend timestamp for %v\", line)\n}\nendSuspendTime, err \u003d endSuspendTimeExp.timeStampFindStringSubmatch(string(b)))\nif err !\u003d nil {\n    return 0.0, 0.0, errors.Wrapf(err, \"failed to get end suspend timestamp for %v\", line)\n}\n```",
+      "revId": "a2295f8c80919be0fad75f7c04ee6d3fe98fa949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
