@@ -104,7 +104,7 @@ func MeasurePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSys
 	}()
 	go func() {
 		defer wg.Done()
-		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, stabilizationDuration, measurementDuration, p)
+		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, stabilizationDuration, measurementDuration, "", p)
 	}()
 	wg.Wait()
 	if gpuErr != nil {

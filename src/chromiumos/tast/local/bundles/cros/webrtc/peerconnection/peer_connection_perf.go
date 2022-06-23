@@ -329,7 +329,7 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 	}()
 	go func() {
 		defer wg.Done()
-		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, cpuStabilization, cpuMeasuring, p)
+		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, cpuStabilization, cpuMeasuring, "", p)
 	}()
 	go func() {
 		defer wg.Done()

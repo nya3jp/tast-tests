@@ -85,7 +85,7 @@ func RunCaptureStream(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 	}()
 	go func() {
 		defer wg.Done()
-		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, 0, measurementDuration, p)
+		cpuErr = graphics.MeasureCPUUsageAndPower(ctx, 0, measurementDuration, "", p)
 	}()
 	wg.Wait()
 	if gpuErr != nil {

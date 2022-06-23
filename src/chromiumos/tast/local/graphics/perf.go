@@ -748,7 +748,7 @@ func UpdatePerfMetricFromHistogram(ctx context.Context, tconn *chrome.TestConn, 
 //  if err := cpu.WaitUntilIdle(ctx); err != nil {
 //    return errors.Wrap(err, "failed waiting for CPU to become idle")
 //  }
-func MeasureCPUUsageAndPower(ctx context.Context, stabilization, measurement time.Duration, p *perf.Values) error {
+func MeasureCPUUsageAndPower(ctx context.Context, stabilization, measurement time.Duration, optionalPrefix string, p *perf.Values) error {
 	if stabilization != 0 {
 		testing.ContextLogf(ctx, "Sleeping %v to wait for CPU usage to stabilize", stabilization)
 		if err := testing.Sleep(ctx, stabilization); err != nil {
@@ -762,10 +762,14 @@ func MeasureCPUUsageAndPower(ctx context.Context, stabilization, measurement tim
 		return errors.Wrap(err, "failed to measure CPU usage and power consumption")
 	}
 
+	if len(optionalPrefix) > 0 {
+		optionalPrefix += "."
+	}
+
 	cpuUsage := measurements["cpu"]
 	testing.ContextLogf(ctx, "CPU usage: %f%%", cpuUsage)
 	p.Set(perf.Metric{
-		Name:      "cpu_usage",
+		Name:      optionalPrefix + "cpu_usage",
 		Unit:      "percent",
 		Direction: perf.SmallerIsBetter,
 	}, cpuUsage)
@@ -773,7 +777,7 @@ func MeasureCPUUsageAndPower(ctx context.Context, stabilization, measurement tim
 	if power, ok := measurements["power"]; ok {
 		testing.ContextLogf(ctx, "Avg pkg power usage: %fW", power)
 		p.Set(perf.Metric{
-			Name:      "pkg_power_usage",
+			Name:      optionalPrefix + "pkg_power_usage",
 			Unit:      "W",
 			Direction: perf.SmallerIsBetter,
 		}, power)

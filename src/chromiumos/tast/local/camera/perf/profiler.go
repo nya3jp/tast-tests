@@ -93,7 +93,7 @@ func Start(ctx context.Context, sDur, mDur time.Duration, outPrefix, outdir stri
 	allTaskfunc := map[ProfilerType]taskfunc{
 		CPU: func() (*perf.Values, error) {
 			pv := perf.NewValues()
-			if err := graphics.MeasureCPUUsageAndPower(ctx, pctx.StabilizeDuration, pctx.MeasureDuration, pv); err != nil {
+			if err := graphics.MeasureCPUUsageAndPower(ctx, pctx.StabilizeDuration, pctx.MeasureDuration, "", pv); err != nil {
 				return nil, errors.Wrap(err, "failed to measure CPU and power usage")
 			}
 			return pv, nil
