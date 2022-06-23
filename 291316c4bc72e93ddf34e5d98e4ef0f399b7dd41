@@ -52,6 +52,24 @@
       "parentUuid": "13b22fe6_2da3902d",
       "revId": "291316c4bc72e93ddf34e5d98e4ef0f399b7dd41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f5b7e8a_5ef195c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-06-23T20:07:23Z",
+      "side": 1,
+      "message": "crrev.com/c/3157892 just added the wrapping to SeparatedOutput without touching the other functions.  I think the incompatibility wasn\u0027t noticed at the time because there weren\u0027t any existing code paths that called GetWaitStatus on the result.  We could add the same wrapper to all the other code paths that return an error from testexec, but I think that will be much more likely to break existing code.  We could also revert crrev.com/c/3157892 to bring back consistency, but it\u0027s been 9 months since that change landed and may cause its own incompatibilities at this point.\n\nSince we\u0027re already dealing with the two different types of errors being returned at this point, I don\u0027t think there\u0027s any way to restore consistency without scrutinizing all the callers.  My thought on the way forward here would be to submit this CL because it makes testexec itself handle both cases, and then optionally consider doing follow-up work to convert all the other callers to use similar `errors.As` logic to make them future-proof as well.  The new unit tests should catch if somebody adds a similar wrapper in the future, so we could also just wait and do that work at that future time.  What do you think?",
+      "parentUuid": "a6ea72a1_de2536e4",
+      "revId": "291316c4bc72e93ddf34e5d98e4ef0f399b7dd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
