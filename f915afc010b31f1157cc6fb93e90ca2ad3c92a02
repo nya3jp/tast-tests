@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a80244d_4fdcd5eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_ipv4_static.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-23T06:25:04Z",
+      "side": 1,
+      "message": "Good suggestion. Currently we have no plan to reuse this code, I would prefer pushing this off until we need that to find out a better way to abstract this part. (currently we\u0027ll need expose some variables in this part, e.g., localIPv4Addr, routerIPv4Addr)",
+      "parentUuid": "e05a065d_a302529b",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 2
+      },
+      "revId": "f915afc010b31f1157cc6fb93e90ca2ad3c92a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "970f0729_a5453861",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_ipv4_static.go",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-13T08:40:22Z",
       "side": 1,
       "message": "If this has a dependency on your recent shill fix, don\u0027t forget to add the Cq-Depend if the shill fix does not land immediately.",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 36
+      },
+      "revId": "f915afc010b31f1157cc6fb93e90ca2ad3c92a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a8eb8a_d06c6425",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_ipv4_static.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-23T06:25:04Z",
+      "side": 1,
+      "message": "Shill patches are already in, so marked this as resolved here.",
+      "parentUuid": "970f0729_a5453861",
       "range": {
         "startLine": 148,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d0c609_2308349a",
+        "filename": "src/chromiumos/tast/local/shill/ipconfig.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-23T06:25:04Z",
+      "side": 1,
+      "message": "SGTM. Removed, thanks for the information!",
+      "parentUuid": "429815a9_cce49540",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "f915afc010b31f1157cc6fb93e90ca2ad3c92a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f24daea6_3f77979d",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3816dd1_d9c344a1",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-23T06:25:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f24daea6_3f77979d",
+      "range": {
+        "startLine": 58,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 64
+      },
+      "revId": "f915afc010b31f1157cc6fb93e90ca2ad3c92a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ace99bb1_5e5556d7",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-06-13T08:40:22Z",
       "side": 1,
       "message": "nit: D",
+      "range": {
+        "startLine": 62,
+        "startChar": 46,
+        "endLine": 62,
+        "endChar": 47
+      },
+      "revId": "f915afc010b31f1157cc6fb93e90ca2ad3c92a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5b25eef_4703f194",
+        "filename": "src/chromiumos/tast/local/shill/service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-23T06:25:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ace99bb1_5e5556d7",
       "range": {
         "startLine": 62,
         "startChar": 46,

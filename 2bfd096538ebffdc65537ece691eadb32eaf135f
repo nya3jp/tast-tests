@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bca44fcb_4207b08c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-23T06:25:04Z",
+      "side": 1,
+      "message": "Thanks for the review!\n+tast-owners@ for tast review, thanks!",
+      "revId": "2bfd096538ebffdc65537ece691eadb32eaf135f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
