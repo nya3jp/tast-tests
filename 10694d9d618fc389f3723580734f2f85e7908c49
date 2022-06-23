@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fde040f_d56ec445",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-06-23T01:56:24Z",
+      "side": 1,
+      "message": "There is no other way to have automate tests for cros version compatibilities but to roll forward and back, and having fixture ensures that one failing test is not causing others to run at a wrong version",
+      "parentUuid": "7e0ce3cb_e28143f8",
+      "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5739df92_89800df8",
