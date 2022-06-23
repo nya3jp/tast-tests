@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dd351bc_6bd3b4a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-23T08:38:37Z",
+      "side": 1,
+      "message": "Hi Omar,\n\nI\u0027ve resolved the merge conflicts. Can you please review and provide CR+2?",
+      "revId": "aadd21e25b98e4d0cb92c4357d5f92c8aa3d01e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
