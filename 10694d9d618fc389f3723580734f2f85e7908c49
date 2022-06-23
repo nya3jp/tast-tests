@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3eeb22d8_5259da55",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-23T06:41:24Z",
+      "side": 1,
+      "message": "The SSH is not always available after a test, sometimes a test fails because it cannot restore the connection after a reboot.\nThis check is there to separate the connection error from the other errors.\nWe saw it in a different fixture that it can be misleading if the first \"real\" command of the fixture fail because of the missing connection.",
+      "parentUuid": "5739df92_89800df8",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 36
+      },
+      "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d19d6fa_c2301059",
         "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
         "patchSetId": 4
@@ -108,6 +132,24 @@
       "writtenOn": "2022-06-22T17:25:37Z",
       "side": 1,
       "message": "What about the FW updates that could happen after rollback? Waits on kernel to get sticky?",
+      "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d0f55b_96f7e732",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-23T06:41:24Z",
+      "side": 1,
+      "message": "Can you chare more info on when can a FW update happen? What triggers it?",
+      "parentUuid": "6d19d6fa_c2301059",
       "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
