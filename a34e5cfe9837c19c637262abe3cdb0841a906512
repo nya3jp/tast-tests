@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66ca6711_f9fe9978",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-24T02:30:49Z",
+      "side": 1,
+      "message": "In all cases, but it needs to clean up differently depending on when it runs.",
+      "parentUuid": "bb357d5b_2aacc665",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa76a5f5_14caf81e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
         "patchSetId": 2
@@ -121,6 +145,24 @@
       "side": 1,
       "message": "Could you use common formatting that Tast is using? err is formated by %v followed by \": \" at the end?\nDitto for below.",
       "parentUuid": "98b52e2a_3c781f86",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "527a6a6a_036b9b96",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-24T02:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f41e6ab_acb88357",
       "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -314,6 +356,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e48241_29a7fdd3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-24T02:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95fc9ae2_aec79152",
+      "range": {
+        "startLine": 99,
+        "startChar": 40,
+        "endLine": 99,
+        "endChar": 51
+      },
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc0ff602_8102a20f",
@@ -398,6 +464,24 @@
       "side": 1,
       "message": "I agreed that in some cases, code duplication is also an option for testing or even in production.\nWe should consider whether they are conceptually doing the same or not.\nI\u0027m reading so, and thus recommending to refactor.",
       "parentUuid": "9de93519_5d1847da",
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37871ac5_04a1cd0e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-24T02:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "768b7a6f_c28530bf",
       "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
