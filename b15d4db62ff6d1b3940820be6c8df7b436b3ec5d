@@ -16,6 +16,23 @@
       "message": "Thanks for the review :) I have modified the code and added a few comments for clarification",
       "revId": "b15d4db62ff6d1b3940820be6c8df7b436b3ec5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce077547_34d01aed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/oobe_network_config_baseline.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-24T17:01:54Z",
+      "side": 1,
+      "message": "I missed this before, but what is \u0027nw\u0027? If it\u0027s short for \u0027new\u0027, just use new.",
+      "revId": "b15d4db62ff6d1b3940820be6c8df7b436b3ec5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

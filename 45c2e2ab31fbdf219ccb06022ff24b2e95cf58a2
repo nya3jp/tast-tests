@@ -123,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1320104_2d5e9ce4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-24T17:01:54Z",
+      "side": 1,
+      "message": "In that case we could probably omit the \u0027baseline\u0027 for now (but it\u0027s also fine as-is).",
+      "parentUuid": "10a6798e_1d650a1e",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83b14f91_bba85ae2",
@@ -154,6 +172,24 @@
       "side": 1,
       "message": "As this is an example, I would rather leave all the steps required in here as reference.",
       "parentUuid": "83b14f91_bba85ae2",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80c9c7c3_dd86f8b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-24T17:01:54Z",
+      "side": 1,
+      "message": "OK. At some point we probably *should* have additional tests, but if that work isn\u0027t planned we can add the fixture later.",
+      "parentUuid": "6b040e46_3195adb4",
       "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -230,6 +266,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86725081_6c67c277",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-24T17:01:54Z",
+      "side": 1,
+      "message": "If we want to use a single test, I would suggest the following. Error lines are much easier to scan than log lines, and will show up in the test failure summary on Stainless:\n\nif !propertiesMatch(managedProperties, newProperties) {\n  s.Fatalf(\"Properties do not match.\\nGot: %+v\\nWant: %+v\", newProperties.TypeConfig.Wifi, managedProperties.TypeProperties.Wifi)\n}",
+      "parentUuid": "d85059f1_10fc458c",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d2b0b84_aa320835",
         "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config.go",
         "patchSetId": 2
@@ -259,6 +313,24 @@
       "side": 1,
       "message": "It requires to be here because we are expected to use it in rollback remote tests so it cannot be set up in a fixture. At the moment the connection is only available from the chrome://network page but that it is not possible to make it work during oobe, so I created this alternative one to create the api connection during oobe instead. It follows a similar pattern to the existing NewCrosNetworkConfig but using an oobe connection instead.\n\nAs the name could have been misleading, I have updated it to add Oobe at the beginning instead so the distinction between the two possible creations should be clearer.",
       "parentUuid": "5d2b0b84_aa320835",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c48660fc_1061e51f",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-24T17:01:54Z",
+      "side": 1,
+      "message": "Oh I see. This is also connecting to a different page. That was not clear to me.\n\nI suggest the following:\n1. Modify NewCrosNetworkConfig to take |conn| as an argument.\n2. Add wrappers for CreateLoggedInCrosNetworkConfig and CreateOobeCrosNetworkConfig that create the appropriate connections and pass that to NewCrosNetworkConfig.\n3. Replace existing calls to NewCrosNetworkConfig with CreateLoggedInCrosNetworkConfig.\n\nThat will make the existing code more clear and will have less duplicate code.",
+      "parentUuid": "c3cfa5ba_4f0e5d62",
       "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
