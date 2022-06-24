@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "643803c9_889c1517",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-24T02:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6419bc3d_7ee19b33",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "b86c6c2d0e4d2ffc705c953478f61dbf075022ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4ff5e14_89d6fa7e",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7884b264_4f1379c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-24T02:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4ff5e14_89d6fa7e",
+      "range": {
+        "startLine": 32,
+        "startChar": 28,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "b86c6c2d0e4d2ffc705c953478f61dbf075022ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd9a0c3d_36f251b4",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-06-24T02:32:19Z",
       "side": 1,
       "message": "Should be updated since we obtain the Service object directly now.",
+      "range": {
+        "startLine": 158,
+        "startChar": 46,
+        "endLine": 158,
+        "endChar": 71
+      },
+      "revId": "b86c6c2d0e4d2ffc705c953478f61dbf075022ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa473b6c_0f5d28cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-24T02:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd9a0c3d_36f251b4",
       "range": {
         "startLine": 158,
         "startChar": 46,
