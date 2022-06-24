@@ -46,6 +46,7 @@ const (
 	DevicePropertyCellularAPNList            = "Cellular.APNList"
 	DevicePropertyCellularHomeProvider       = "Cellular.HomeProvider"
 	DevicePropertyCellularICCID              = "Cellular.ICCID"
+	DevicePropertyCellularMDN                = "Cellular.MDN"
 	DevicePropertyCellularPolicyAllowRoaming = "Cellular.PolicyAllowRoaming"
 	DevicePropertyCellularSIMPresent         = "Cellular.SIMPresent"
 	DevicePropertyCellularSIMSlotInfo        = "Cellular.SIMSlotInfo"
@@ -286,8 +287,9 @@ const (
 // Device background scan methods.
 // The values are from wpa_supplicant + "none" for no background scan.
 // See:
-//   https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
-//   platform2/shill/supplicant/wpa_supplicant.cc
+//
+//	https://w1.fi/cgit/hostap/plain/wpa_supplicant/wpa_supplicant.conf
+//	platform2/shill/supplicant/wpa_supplicant.cc
 const (
 	DeviceBgscanMethodSimple = "simple"
 	DeviceBgscanMethodLearn  = "learn"
