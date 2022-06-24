@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e1fc304_ac217f0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-24T17:55:22Z",
+      "side": 1,
+      "message": "nit: \"coreTestDuration minutes\"",
+      "range": {
+        "startLine": 321,
+        "startChar": 41,
+        "endLine": 321,
+        "endChar": 69
+      },
+      "revId": "a2a7303543e76ad0986a54f52337b3f6b7f52baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c4530c_2aed3e4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tabswitchcuj/tab_switch_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-24T17:55:22Z",
+      "side": 1,
+      "message": "I think this comment is stale? You did this up on L363~365.",
+      "revId": "a2a7303543e76ad0986a54f52337b3f6b7f52baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
