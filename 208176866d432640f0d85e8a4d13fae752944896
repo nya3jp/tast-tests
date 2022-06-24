@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e67340da_82894a75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-06-24T18:05:39Z",
+      "side": 1,
+      "message": "Will you please do this for the rest of the stack as well?",
+      "parentUuid": "f1c63fff_859e519a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "208176866d432640f0d85e8a4d13fae752944896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9ef65ac_97c25747",
