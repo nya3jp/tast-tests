@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f30801_d371853c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_aplay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-06-24T08:46:13Z",
+      "side": 1,
+      "message": "Could we have copy an example results from `aplay -l` and add in comment here for future readers?",
+      "revId": "8cd19ed87e02b0ca4234456f378da3475906fd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd253c31_941c82e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_aplay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-06-24T08:46:13Z",
+      "side": 1,
+      "message": "Could we keep this at the init section? then the style will be more consistent to other tests",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 4
+      },
+      "revId": "8cd19ed87e02b0ca4234456f378da3475906fd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91bae7c8_e71dda40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_arecord.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-06-24T08:46:13Z",
+      "side": 1,
+      "message": "paste an example output here in the comments (better with example with multiple sub-stream) will let readers understand the possible output.",
+      "revId": "8cd19ed87e02b0ca4234456f378da3475906fd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f166eda_0e3ab47e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_arecord.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-06-24T08:46:13Z",
+      "side": 1,
+      "message": "move this to the init section as Params",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 31
+      },
+      "revId": "8cd19ed87e02b0ca4234456f378da3475906fd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
