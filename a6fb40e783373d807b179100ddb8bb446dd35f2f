@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "428a3bae_9014f173",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-24T23:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64450543_787f418e",
+      "revId": "a6fb40e783373d807b179100ddb8bb446dd35f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a0ea23d_9db02ac1",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63b45e12_45e37365",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-24T23:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a0ea23d_9db02ac1",
+      "revId": "a6fb40e783373d807b179100ddb8bb446dd35f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16ed0cbe_c2573dbe",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-06-24T13:44:44Z",
       "side": 1,
       "message": "this won\u0027t run, because Fatalf() exits from the function.\nCould you move this above, or included into Fatalf() (i.e. output \"out\" via Log or even to a file, then Fatalf with err?)",
+      "revId": "a6fb40e783373d807b179100ddb8bb446dd35f2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dbae045_dbbf3c19",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-24T23:23:15Z",
+      "side": 1,
+      "message": "Moved up.",
+      "parentUuid": "16ed0cbe_c2573dbe",
       "revId": "a6fb40e783373d807b179100ddb8bb446dd35f2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
