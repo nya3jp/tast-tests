@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35373658_05a51b7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-24T02:03:54Z",
+      "side": 1,
+      "message": "lgtm I left some refactoring ideas",
+      "revId": "62e9794d470b879795538d67e1508d3f8cc2be55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aca702d_9c3fec74",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-24T02:03:54Z",
+      "side": 1,
+      "message": "How about introducing a struct to contain these arguments? It is easier for future developement as well.",
+      "range": {
+        "startLine": 751,
+        "startChar": 50,
+        "endLine": 751,
+        "endChar": 113
+      },
+      "revId": "62e9794d470b879795538d67e1508d3f8cc2be55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98578824_7f7b0edb",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-24T02:03:54Z",
+      "side": 1,
+      "message": "There\u0027s a reportMetric function in this file. \nDo you want to use that function and let other measurements pass in the prefix too?",
+      "range": {
+        "startLine": 771,
+        "startChar": 1,
+        "endLine": 771,
+        "endChar": 18
+      },
+      "revId": "62e9794d470b879795538d67e1508d3f8cc2be55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
