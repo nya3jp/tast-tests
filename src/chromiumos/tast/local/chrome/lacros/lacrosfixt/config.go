@@ -120,7 +120,7 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 	opts = append(opts, chrome.LacrosExtraArgs("--hide-crash-restore-bubble"))
 
 	// Suppress experimental Lacros infobar and possible others as well.
-	opts = append(opts, chrome.LacrosExtraArgs("--test-type"))
+	//opts = append(opts, chrome.LacrosExtraArgs("--test-type"))
 
 	// The What's-New feature automatically redirects the browser to a WebUI page to display the
 	// new feature if this is first time the user opens the browser or the user has upgraded
