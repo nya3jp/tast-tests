@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c3a88c_5f14dfb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-06-24T22:35:21Z",
+      "side": 1,
+      "message": "+1 for power owner\nYou need tast-owner to +2",
+      "revId": "dbc47e7f75b9ac25fe5dfa2aa6632f2147cf6713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
