@@ -1,0 +1,882 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba6ae86c_5e50fd49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Please use the imperative mood as described in rule #5 at https://cbea.ms/git-commit/",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207ad908_7b26471a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Please wrap at 72 characters. For example, that means `\"free` can go at the end of the first line. See https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 57
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "954f195a_ce07c526",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "There should be no apostrophe here. This is the possessive its which has no apostrophe because it is like the words his and her. It is unlike the contraction it\u0027s meaning \"it is.\"",
+      "range": {
+        "startLine": 30,
+        "startChar": 71,
+        "endLine": 30,
+        "endChar": 72
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c29ea3eb_2c21c1f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "This comment should be a complete sentence beginning with `aueYearOffset` and ending with a punctuation mark. See https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 53
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e57e00_9f4f4581",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Please document it with a code comment. See https://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 42,
+        "startChar": 5,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb870ab3_2e4d90fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "comma",
+      "range": {
+        "startLine": 63,
+        "startChar": 31,
+        "endLine": 63,
+        "endChar": 32
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce6707fe_e12ca4e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "nit: Please wrap comments to line width consistent within each comment (although I am okay with wrapping different comments to different line widths). Here, if the length of the second line is okay, then the first line certainly does not have to end at the word `that`.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 70
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50058814_ce813a9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "nit: End with a period. See https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 63,
+        "startChar": 60,
+        "endLine": 63,
+        "endChar": 70
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ee89e72_83f35340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Do this after calling `getLibraryPath`, so that if `getLibraryPath` returns an error, you leave the `cmd` object unmodified.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "886974ef_d68682fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Please consolidate into one `append` call with three arguments. You can put line endings between arguments so it does not have to be an inordinately long line of code.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 88
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60517551_c1eeb373",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Instead of doing this, `timeLeap` should just have a parameter `seconds int64`. It is actually easier for the calling code to provide the number of seconds directly, so there is no point in using `time.Duration`.",
+      "range": {
+        "startLine": 75,
+        "startChar": 60,
+        "endLine": 75,
+        "endChar": 86
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69389eb7_5f04f478",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Please document it with a code comment. See https://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e7da38_a0dc1a90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Remove this blank line.",
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50e07b3d_675f70a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Please consolidate, thus:\n\tcmd.SysProcAttr \u003d \u0026syscall.SysProcAttr{\n\t\tCredential: \u0026syscall.Credential{Uid: uid, Gid: gid}\n\t}",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 69
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d3cf515_9557a9ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`action.Action`",
+      "range": {
+        "startLine": 99,
+        "startChar": 33,
+        "endLine": 99,
+        "endChar": 70
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9826997d_4ba36d24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Please document it with a code comment. See https://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 99,
+        "startChar": 5,
+        "endLine": 99,
+        "endChar": 10
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb782696_2b6a64ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`\tcleanup :\u003d func(ctx context.Context) { return nil }`",
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84106e52_f7d47b5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`cleanup`",
+      "range": {
+        "startLine": 103,
+        "startChar": 9,
+        "endLine": 103,
+        "endChar": 55
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7548a010_6b17b9a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`const crosCameraAlgoJobName \u003d`",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 25
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363d2e6a_80d4e280",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`errors.Wrapf(err, \"failed to stop job %q\", crosCameraAlgoJobName)`",
+      "range": {
+        "startLine": 108,
+        "startChar": 14,
+        "endLine": 108,
+        "endChar": 72
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067a47d8_b7de7ca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`cleanup`",
+      "range": {
+        "startLine": 108,
+        "startChar": 9,
+        "endLine": 108,
+        "endChar": 12
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2e21f52_3638e87a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`\tcleanup \u003d func(ctx context.Context) error {`",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 62
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6760a689_0cb8df24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Remove this blank line.",
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c018e76_1424e46c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`return errors.Wrap(err, \"failed to stop test process\")`",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 115,
+        "endChar": 55
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b381d2_6d16cd12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`return errors.Wrapf(err, \"failed to resume job %q\", crosCameraAlgoJobName)`",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 73
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13c8f24c_ccdda889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Remove this blank line.",
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f06120ea_044a0569",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`cleanup`",
+      "range": {
+        "startLine": 126,
+        "startChar": 9,
+        "endLine": 126,
+        "endChar": 21
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "695923bf_1fb83000",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`cleanup`",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 137,
+        "endChar": 20
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da176137_eea8ae27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Please document it with a code comment. See https://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 140,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 24
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "944c3a7d_ddd6e316",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "nit: Remove the word `the`.",
+      "range": {
+        "startLine": 141,
+        "startChar": 34,
+        "endLine": 141,
+        "endChar": 37
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0d6e5cb_3c5cf3a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "nit: Capitalize `Testing`.",
+      "range": {
+        "startLine": 141,
+        "startChar": 26,
+        "endLine": 141,
+        "endChar": 33
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ee6b42_7845c183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Remove this blank line.",
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e90ae18_585afdff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Reserve time for cleanup so that the cleanup will work when the test times out. For an example of how to do that, look here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go;drc\u003d90712d731f28a669e497669b598b9da982cfa899;l\u003d45",
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e2d11af_a4e8e7b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`\t\ts.Fatal(\"libfake_date_time tests failed: \", err)`",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 8
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e6d155_937bc693",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`cleanup`",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 9
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ab4e713_b6debaa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Just call it `err`.",
+      "range": {
+        "startLine": 176,
+        "startChar": 11,
+        "endLine": 176,
+        "endChar": 19
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d92c7b2_7f734a03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Just make sure that `setup` will never return a nil cleanup function.",
+      "range": {
+        "startLine": 177,
+        "startChar": 4,
+        "endLine": 177,
+        "endChar": 19
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72edc9a6_e20622f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "It is better if `setup` does not return a function with a `*testing.State` parameter. So do this here:\n\tdefer func(ctx context.Context) {\n\t\tif err :\u003d cleanup(ctx); err !\u003d nil {\n\t\t\ts.Error(\"Failed to clean up: \", err)\n\t\t}\n\t}(cleanupCtx)",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 24
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e134eef_84d134d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "`\t\ts.Fatal(\"Failed to set up: \", err)`",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 8
+      },
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce234835_ab44d1d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:07:40Z",
+      "side": 1,
+      "message": "Remove this blank line.",
+      "revId": "a94a10cd9e88097614f2a589b95750437f349852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
