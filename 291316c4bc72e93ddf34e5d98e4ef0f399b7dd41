@@ -70,6 +70,24 @@
       "parentUuid": "a6ea72a1_de2536e4",
       "revId": "291316c4bc72e93ddf34e5d98e4ef0f399b7dd41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "102ed23d_c14372c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-24T13:10:43Z",
+      "side": 1,
+      "message": "Thank you for explanation of the background.\nI agreed on most of the points.\n\nOne thing I\u0027d like to add is, we should fix the inconsistency anyways, indeed although it looks beyond the goal of this CL.\nCould you file a bug and assign to the original author?\nActually the change looks incorrect, the error log says subcommand returned non zero status, but more variation of errors can be returned from Wait.\n\nThe correct way I think is to fix all \".(*ExitError)\" code by using errors.As,\nfollowed by moving the error wrapping code into (at the end of) Wait(), so that all cases can be covered.",
+      "parentUuid": "2f5b7e8a_5ef195c0",
+      "revId": "291316c4bc72e93ddf34e5d98e4ef0f399b7dd41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
