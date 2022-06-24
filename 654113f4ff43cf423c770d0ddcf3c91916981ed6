@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e822aee_3ef0f098",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-24T20:59:58Z",
+      "side": 1,
+      "message": "Thanks everyone for the comments, helps a ton.\n\nThe following happened in this patch:\n- Http server is now called in a goroutine within golang, no longer uses python\n- We are now checking for the service state \u0027redirect-found\u0027. In order to get online state, we will need to have an additional https server, which should be the next steps.\n- All comments as well",
+      "revId": "654113f4ff43cf423c770d0ddcf3c91916981ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b03c0ce_78b97279",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-24T20:59:58Z",
+      "side": 1,
+      "message": "Although this accomplished what we want, it feels kind of awkward. Curious on suggestions to refactor here.",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "654113f4ff43cf423c770d0ddcf3c91916981ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

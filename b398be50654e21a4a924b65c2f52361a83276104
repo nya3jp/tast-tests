@@ -279,6 +279,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aef39f5_e22543ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-24T20:59:58Z",
+      "side": 1,
+      "message": "Changed to a golang, done.",
+      "parentUuid": "35cce377_048aebb1",
+      "range": {
+        "startLine": 21,
+        "startChar": 30,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d31182a_8de19d1c",
@@ -387,6 +411,30 @@
       "side": 1,
       "message": "I wanted to add here that I intend to remove this on final submission, just wanted it here so the curl works for test. I will remove both this and the curl before final submission. I will leave this as unresolved until done so as a reminder.",
       "parentUuid": "8191a030_d04acb91",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 75
+      },
+      "revId": "b398be50654e21a4a924b65c2f52361a83276104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea81ba38_9f808170",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-24T20:59:58Z",
+      "side": 1,
+      "message": "Done because the loopback interface bringup has been removed and the http server listens on 0.0.0.0",
+      "parentUuid": "317a7b56_a33f5716",
       "range": {
         "startLine": 55,
         "startChar": 1,

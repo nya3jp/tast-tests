@@ -263,6 +263,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c06f43c_302929c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-24T20:59:58Z",
+      "side": 1,
+      "message": "This have been removed from the code. It was necessary when we had a check to curl the http server, but that has been removed since it is not necessary",
+      "parentUuid": "8fb03cc4_3c6edbe5",
+      "revId": "d56c9e5fe506303fc65b691197c2f120976eb811",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e01d80bc_b43f5d3d",

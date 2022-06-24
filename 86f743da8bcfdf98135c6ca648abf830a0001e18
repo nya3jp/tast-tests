@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0eaca23_efe5d7c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-24T20:59:58Z",
+      "side": 1,
+      "message": "Leaving the resetshill for now, WDYT?",
+      "parentUuid": "52485993_007aebc9",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c84cef46_ac670a9c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
         "patchSetId": 6
@@ -225,6 +243,24 @@
       "side": 1,
       "message": "\u003e could you comment here why 5?\nAny positive number is fine if you want to make it a default network after Online.",
       "parentUuid": "07cf428d_273b4196",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46de63fc_5fbd4bab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-24T20:59:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ba985c2_814a3b69",
       "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
