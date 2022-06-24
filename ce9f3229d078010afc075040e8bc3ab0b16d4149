@@ -22,6 +22,30 @@
       },
       "revId": "ce9f3229d078010afc075040e8bc3ab0b16d4149",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1de67a95_de805533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu_3d_modeling_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-24T06:21:05Z",
+      "side": 1,
+      "message": "All CUJ test follows the ui.\u003cCUJ\u003e.\u003ctier\u003e_\u003capp\u003e kind of naming conversion, so it is easy to identify the tier of the test",
+      "parentUuid": "b345753c_f3bb0cec",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 8
+      },
+      "revId": "ce9f3229d078010afc075040e8bc3ab0b16d4149",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
