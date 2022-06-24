@@ -51,8 +51,7 @@ func CompleteConsolidatedConsentOnboardingFlow(ctx context.Context, ui *uiauto.C
 		uiauto.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClickUntil(noThanks, ui.Gone(noThanks))),
 		uiauto.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
 		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(next), ui.LeftClick(next)),
-		ui.WaitUntilExists(getStarted),
-		ui.LeftClick(getStarted),
+		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(getStarted), ui.LeftClick(getStarted)),
 	)(ctx)
 	return err
 }
@@ -85,8 +84,7 @@ func CompleteRegularOnboardingFlow(ctx context.Context, ui *uiauto.Context, revi
 		uiauto.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClickUntil(noThanks, ui.Gone(noThanks))),
 		uiauto.IfSuccessThen(ui.WithTimeout(60*time.Second).WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
 		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(next), ui.LeftClick(next)),
-		ui.WaitUntilExists(getStarted),
-		ui.LeftClick(getStarted),
+		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(getStarted), ui.LeftClick(getStarted)),
 	)(ctx)
 	return err
 }
