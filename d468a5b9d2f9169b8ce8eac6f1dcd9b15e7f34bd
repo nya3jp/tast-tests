@@ -307,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "333d4bc4_f97fe57b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-24T00:19:38Z",
+      "side": 1,
+      "message": "Updated description.",
+      "parentUuid": "3ab2b4a5_7af36d6f",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 577,
+        "endChar": 4
+      },
+      "revId": "d468a5b9d2f9169b8ce8eac6f1dcd9b15e7f34bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a390486_9710fb3f",
@@ -392,6 +416,30 @@
       "side": 1,
       "message": "I think you can include keyboard input in tablet mode. A real user could do it by connecting an external keyboard; I do that all the time.",
       "parentUuid": "6dd154f4_3909aada",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 3
+      },
+      "revId": "d468a5b9d2f9169b8ce8eac6f1dcd9b15e7f34bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8470b870_8b0168cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-24T00:19:38Z",
+      "side": 1,
+      "message": "Ok, I moved out the keyboard input so that it happens for both tablet and clamshell. I also tested it and verified that we can have input in tablet mode, and that we still collect key press latency.",
+      "parentUuid": "59028677_d9e27153",
       "range": {
         "startLine": 528,
         "startChar": 0,
