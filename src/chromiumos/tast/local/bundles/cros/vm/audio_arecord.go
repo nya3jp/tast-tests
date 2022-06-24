@@ -48,29 +48,77 @@ func AudioArecord(ctx context.Context, s *testing.State) {
 	deviceRegex := regexp.MustCompile(`card \d+:.*\[(?P<Card>.*)\], device \d+:.*\[(?P<Device>.*)\]`)
 
 	for _, tc := range []struct {
-		name                string
-		crosvmArgs          []string
-		vhostUserArgs       []string
-		expectedCardNames   []string
-		expectedDeviceNames []string
+		name                     string
+		crosvmArgs               []string
+		vhostUserArgs            []string
+		expectedCardNames        []string
+		expectedDeviceNames      []string
+		expectedStreamsPerDevice int
 	}{
 		{
-			name:                "virtio_cras_snd",
-			crosvmArgs:          []string{"--cras-snd", "capture=true,socket_type=legacy"},
-			expectedCardNames:   []string{"VirtIO SoundCard"},
-			expectedDeviceNames: []string{"VirtIO PCM 0"},
+			name:                     "virtio_cras_snd",
+			crosvmArgs:               []string{"--cras-snd", "capture=true,socket_type=legacy"},
+			expectedCardNames:        []string{"VirtIO SoundCard"},
+			expectedDeviceNames:      []string{"VirtIO PCM 0"},
+			expectedStreamsPerDevice: 1,
 		},
 		{
-			name:                "vhost_user_cras",
-			vhostUserArgs:       []string{"cras-snd", "--config", "capture=true,socket_type=legacy"},
-			expectedCardNames:   []string{"VirtIO SoundCard"},
-			expectedDeviceNames: []string{"VirtIO PCM 0"},
+			name:                     "virtio_cras_snd_3_devices_4_streams",
+			crosvmArgs:               []string{"--cras-snd", "capture=true,socket_type=legacy,num_input_devices=3,num_input_streams=4"},
+			expectedCardNames:        []string{"VirtIO SoundCard", "VirtIO SoundCard", "VirtIO SoundCard"},
+			expectedDeviceNames:      []string{"VirtIO PCM 0", "VirtIO PCM 1", "VirtIO PCM 2"},
+			expectedStreamsPerDevice: 4,
 		},
 		{
-			name:                "ac97",
-			crosvmArgs:          []string{"--ac97", "backend=cras,socket_type=legacy"},
-			expectedCardNames:   []string{"Intel 82801AA-ICH", "Intel 82801AA-ICH"},
-			expectedDeviceNames: []string{"Intel 82801AA-ICH", "Intel 82801AA-ICH - MIC ADC"},
+			name:                     "virtio_cras_snd_1_device_3_streams",
+			crosvmArgs:               []string{"--cras-snd", "capture=true,socket_type=legacy,num_input_streams=3"},
+			expectedCardNames:        []string{"VirtIO SoundCard"},
+			expectedDeviceNames:      []string{"VirtIO PCM 0"},
+			expectedStreamsPerDevice: 3,
+		},
+		{
+			name:                     "virtio_cras_snd_3_devices_1_stream",
+			crosvmArgs:               []string{"--cras-snd", "capture=true,socket_type=legacy,num_input_devices=3"},
+			expectedCardNames:        []string{"VirtIO SoundCard", "VirtIO SoundCard", "VirtIO SoundCard"},
+			expectedDeviceNames:      []string{"VirtIO PCM 0", "VirtIO PCM 1", "VirtIO PCM 2"},
+			expectedStreamsPerDevice: 1,
+		},
+
+		{
+			name:                     "vhost_user_cras",
+			vhostUserArgs:            []string{"cras-snd", "--config", "capture=true,socket_type=legacy"},
+			expectedCardNames:        []string{"VirtIO SoundCard"},
+			expectedDeviceNames:      []string{"VirtIO PCM 0"},
+			expectedStreamsPerDevice: 1,
+		},
+		{
+			name:                     "vhost_user_cras_3_devices_4_streams",
+			vhostUserArgs:            []string{"cras-snd", "--config", "capture=true,socket_type=legacy,num_input_devices=3,num_input_streams=4"},
+			expectedCardNames:        []string{"VirtIO SoundCard", "VirtIO SoundCard", "VirtIO SoundCard"},
+			expectedDeviceNames:      []string{"VirtIO PCM 0", "VirtIO PCM 1", "VirtIO PCM 2"},
+			expectedStreamsPerDevice: 4,
+		},
+		{
+			name:                     "vhost_user_cras_1_device_3_streams",
+			vhostUserArgs:            []string{"cras-snd", "--config", "capture=true,socket_type=legacy,num_input_streams=3"},
+			expectedCardNames:        []string{"VirtIO SoundCard"},
+			expectedDeviceNames:      []string{"VirtIO PCM 0"},
+			expectedStreamsPerDevice: 3,
+		},
+		{
+			name:                     "vhost_user_cras_3_devices_1_stream",
+			vhostUserArgs:            []string{"cras-snd", "--config", "capture=true,socket_type=legacy,num_input_devices=3"},
+			expectedCardNames:        []string{"VirtIO SoundCard", "VirtIO SoundCard", "VirtIO SoundCard"},
+			expectedDeviceNames:      []string{"VirtIO PCM 0", "VirtIO PCM 1", "VirtIO PCM 2"},
+			expectedStreamsPerDevice: 1,
+		},
+
+		{
+			name:                     "ac97",
+			crosvmArgs:               []string{"--ac97", "backend=cras,socket_type=legacy"},
+			expectedCardNames:        []string{"Intel 82801AA-ICH", "Intel 82801AA-ICH"},
+			expectedDeviceNames:      []string{"Intel 82801AA-ICH", "Intel 82801AA-ICH - MIC ADC"},
+			expectedStreamsPerDevice: 1,
 		},
 	} {
 		config := audioutils.Config{
@@ -97,6 +145,16 @@ func AudioArecord(ctx context.Context, s *testing.State) {
 				continue
 			}
 
+			if devicesCnt >= len(tc.expectedCardNames) {
+				s.Errorf("%s card name count is more than expected: got %s", tc.name, match[1])
+				continue
+			}
+
+			if devicesCnt >= len(tc.expectedDeviceNames) {
+				s.Errorf("%s device name count is more than expected: got %s", tc.name, match[2])
+				continue
+			}
+
 			if match[1] != tc.expectedCardNames[devicesCnt] {
 				s.Errorf("%s card name incorrect: got %s, want %s", tc.name, match[1], tc.expectedCardNames[devicesCnt])
 			}
@@ -104,10 +162,23 @@ func AudioArecord(ctx context.Context, s *testing.State) {
 				s.Errorf("%s device name incorrect: got %s, want %s", tc.name, match[2], tc.expectedDeviceNames[devicesCnt])
 			}
 			devicesCnt++
+
+			// Expect next line: "Subdevices: n/n"
+			idx++
+			if idx >= len(lines) {
+				s.Errorf("%s device %s has no subdevices line after it", tc.name, match[2])
+				break
+			}
+
+			lines[idx] = strings.TrimSpace(lines[idx])
+			expectSubdevices := fmt.Sprintf("Subdevices: %d/%d", tc.expectedStreamsPerDevice, tc.expectedStreamsPerDevice)
+			if lines[idx] != expectSubdevices {
+				s.Errorf("%s device %s subdevice line incorrect: got %q, want %q", tc.name, match[2], lines[idx], expectSubdevices)
+			}
 		}
 
 		if devicesCnt != len(tc.expectedDeviceNames) {
-			s.Errorf("%s device count incorrect: got %d, want %d", tc.name, devicesCnt, 1)
+			s.Errorf("%s device count incorrect: got %d, want %d", tc.name, devicesCnt, len(tc.expectedDeviceNames))
 		}
 	}
 
