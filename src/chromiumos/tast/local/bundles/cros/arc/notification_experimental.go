@@ -182,7 +182,7 @@ func testExpandButton(ctx context.Context, ui *uiauto.Context, mousePC pointer.C
 }
 
 func testExpandNotification(ctx, cleanupCtx context.Context, tconn *chrome.TestConn, a *arc.ARC, ui *uiauto.Context, mousePC pointer.Context, style string) error {
-	if err := quicksettings.Show(ctx, tconn); err != nil {
+	if err := quicksettings.ShowWithRetry(ctx, tconn, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to open Quick Settings")
 	}
 	defer quicksettings.Hide(cleanupCtx, tconn)
@@ -199,7 +199,7 @@ func testExpandNotification(ctx, cleanupCtx context.Context, tconn *chrome.TestC
 }
 
 func testCloseNotification(ctx, cleanupCtx context.Context, tconn *chrome.TestConn, a *arc.ARC, ui *uiauto.Context, mousePC, touchPC pointer.Context, style string, close closeMethod) error {
-	if err := quicksettings.Show(ctx, tconn); err != nil {
+	if err := quicksettings.ShowWithRetry(ctx, tconn, 10*time.Second); err != nil {
 		return errors.Wrap(err, "failed to open Quick Settings")
 	}
 	defer quicksettings.Hide(cleanupCtx, tconn)
