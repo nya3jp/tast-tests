@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ff6f37_f49851c3",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 1522,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-24T21:29:51Z",
+      "side": 1,
+      "message": "Romved it.",
+      "parentUuid": "a2fafbf8_0021e009",
+      "range": {
+        "startLine": 1522,
+        "startChar": 4,
+        "endLine": 1522,
+        "endChar": 47
+      },
+      "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04dd12b4_9a429c59",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-06-24T18:02:35Z",
       "side": 1,
       "message": "This isn\u0027t removing any ifaces",
+      "range": {
+        "startLine": 1527,
+        "startChar": 1,
+        "endLine": 1527,
+        "endChar": 40
+      },
+      "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b87ab5c_227878df",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 1527,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-24T21:29:51Z",
+      "side": 1,
+      "message": "Removed it.",
+      "parentUuid": "04dd12b4_9a429c59",
       "range": {
         "startLine": 1527,
         "startChar": 1,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f58ff80_b718eb98",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-24T21:29:51Z",
+      "side": 1,
+      "message": "I agree, the function now returns \"\" and nil if no p2p interface is matched.",
+      "parentUuid": "001e734e_fd83b74a",
+      "range": {
+        "startLine": 1534,
+        "startChar": 1,
+        "endLine": 1534,
+        "endChar": 58
+      },
+      "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "475c2859_2a5bbc81",
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cd7d088_8993687d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 1540,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-24T21:29:51Z",
+      "side": 1,
+      "message": "Removed it.",
+      "parentUuid": "475c2859_2a5bbc81",
+      "range": {
+        "startLine": 1540,
+        "startChar": 4,
+        "endLine": 1540,
+        "endChar": 47
+      },
+      "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d46b6a3_cc697181",
@@ -140,6 +236,30 @@
       "writtenOn": "2022-06-24T18:02:35Z",
       "side": 1,
       "message": "Isn\u0027t this name chosen (or at least influenced) by the driver? I don\u0027t think we can just assume it will always be the same. `iw dev {devname} info` includes a \"type\" field. I think we should be using this instead. Ditto for the above \"p2pIface\" function.",
+      "range": {
+        "startLine": 1548,
+        "startChar": 30,
+        "endLine": 1548,
+        "endChar": 40
+      },
+      "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7039075c_fbfa3787",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-24T21:29:51Z",
+      "side": 1,
+      "message": "I used iw intiallyto find the p2p interface with checking the type but I had a reasonable review from @matthew to try to use wpa_cli to find the interface. let me check, if there is a way to check the interface type using wpa_cli.\n\nFrom my testing, I only see the suffix number `p2p-wlan0-num` would change. however, I didn\u0027t test this across all platfroms, so I agree checking the type is the right way to do it.",
+      "parentUuid": "8d46b6a3_cc697181",
       "range": {
         "startLine": 1548,
         "startChar": 30,
