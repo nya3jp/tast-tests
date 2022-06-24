@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efcdc3ec_325afd9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-24T09:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0db25c5b_f814179e",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0369c68_011ebaa4",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-22T17:58:35Z",
       "side": 1,
       "message": "Consider adding this to the informational suite and using this as a baseline test for oobe network configuration.",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "325b0a7b_cac1ebfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-24T09:44:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0369c68_011ebaa4",
       "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10a6798e_1d650a1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-24T09:44:07Z",
+      "side": 1,
+      "message": "Done. There is no plan to extend this test as I created it as an example of how to use the API in the OOBE so it can be used as a reference.",
+      "parentUuid": "e6b0dbf6_85028d7a",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83b14f91_bba85ae2",
@@ -86,6 +140,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b040e46_3195adb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-24T09:44:07Z",
+      "side": 1,
+      "message": "As this is an example, I would rather leave all the steps required in here as reference.",
+      "parentUuid": "83b14f91_bba85ae2",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5c48720_f3caa6b5",
@@ -99,6 +171,24 @@
       "writtenOn": "2022-06-22T17:58:35Z",
       "side": 1,
       "message": "While it is common practice to defer Close functions directly, we will want to know (and fail this test) if the ForgetNetwork call does not succeed. We should instead defer a local function that calls s.Fatal if ForgetNetwork returns an error.",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c09f6d7_adee66d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-24T09:44:07Z",
+      "side": 1,
+      "message": "Good point, I have added that :)",
+      "parentUuid": "c5c48720_f3caa6b5",
       "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +212,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d85059f1_10fc458c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-24T09:44:07Z",
+      "side": 1,
+      "message": "The error already shows that something is broken and makes the test fail. I use error instead of fatal to be able to log the set vs expected information. I do not think it requires two separate tests as this information should be enough to see what is wrong. If any of the fields is not the expected one, with these logs we are able to see if the error comes from one not matching, both, or the configuration actually not being setup.",
+      "parentUuid": "a97f5cea_d69023c7",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d2b0b84_aa320835",
         "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config.go",
         "patchSetId": 2
@@ -133,6 +241,24 @@
       "writtenOn": "2022-06-22T17:58:35Z",
       "side": 1,
       "message": "It looks like this is just NewCrosNetworkConfig with a call to WaitForOOBEConnection. We should keep that outside of this module since it doesn\u0027t have anything to do with cros_network_config. We can make the WaitForOOBEConnection call part of a fixture instead.\n\nAlso, in general, we shouldn\u0027t have something named NewCrosNetworkConfigOobe that returns a CrosNetworkConfig. A reader would expect it to return a CrosNetworkConfigOobe type which doesn\u0027t exist.",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3cfa5ba_4f0e5d62",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-24T09:44:07Z",
+      "side": 1,
+      "message": "It requires to be here because we are expected to use it in rollback remote tests so it cannot be set up in a fixture. At the moment the connection is only available from the chrome://network page but that it is not possible to make it work during oobe, so I created this alternative one to create the api connection during oobe instead. It follows a similar pattern to the existing NewCrosNetworkConfig but using an oobe connection instead.\n\nAs the name could have been misleading, I have updated it to add Oobe at the beginning instead so the distinction between the two possible creations should be clearer.",
+      "parentUuid": "5d2b0b84_aa320835",
       "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
