@@ -61,8 +61,14 @@ func FwupdInhibitSuspend(ctx context.Context, s *testing.State) {
 	}
 
 	// make sure dut battery is charging/charged
-	if err := fwupd.SetFwupdChargingState(ctx, true); err != nil {
+	if cleanup, err := fwupd.SetFwupdChargingState(ctx, true); err != nil {
 		s.Fatal("Failed to set charging state: ", err)
+	} else {
+		defer func() {
+			if err := cleanup(ctx); err != nil {
+				s.Fatal("Failed to cleanup: ", err)
+			}
+		}()
 	}
 
 	// run the update
