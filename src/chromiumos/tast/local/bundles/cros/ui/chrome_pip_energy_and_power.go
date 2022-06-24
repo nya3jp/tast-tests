@@ -58,12 +58,12 @@ func init() {
 		}, {
 			Name:              "small_lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			Fixture:           "lacros",
+			Fixture:           "lacros2",
 			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: false, browserType: browser.TypeLacros},
 		}, {
 			Name:              "big_lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			Fixture:           "lacros",
+			Fixture:           "lacros2",
 			Val:               chromePIPEnergyAndPowerTestParams{bigPIP: true, browserType: browser.TypeLacros},
 		}},
 	})

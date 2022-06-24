@@ -30,6 +30,23 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
+	// lacros2 is a copy of the lacros fixture. If a test is failing in the lab
+	// but it passes when you run it yourself, then you can change the fixture
+	// from lacros to lacros2 so you do not have to deal with improper cleanup
+	// in tests that run before yours. It would be better to fix the improper
+	// cleanup, but there is no way to find the test with the improper cleanup.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacros2",
+		Desc:     "Copy of the lacros fixture",
+		Contacts: []string{"amusbach@chromium.org", "lacros-team@google.com"},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return NewConfig().Opts()
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+
 	// lacrosPerf is the same as lacros, but has some options specific for perf tests.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "lacrosPerf",
