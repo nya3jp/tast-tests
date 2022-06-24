@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b9c7541_803a5d34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-24T14:27:36Z",
+      "side": 1,
+      "message": "\u003e \"Veify\" is a possible misspelling of \"Verify\".\n\nPlease fix.",
+      "parentUuid": "22b5ed84_156a753a",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 187,
+        "endChar": 9
+      },
+      "revId": "5bad88967198e28dbb7d942ac00a00344e9b6922",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
