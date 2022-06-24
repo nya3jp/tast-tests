@@ -7,6 +7,7 @@ package mojo
 import (
 	"context"
 
+	"chromiumos/tast/common/hermesconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -92,7 +93,7 @@ func (f *eSimMojoFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Failed to get eUICC via hermes: ", err)
 	}
 
-	if err := hEuicc.DBusObject.Call(ctx, "UseTestCerts", f.isTestEuicc).Err; err != nil {
+	if err := hEuicc.DBusObject.Call(ctx, hermesconst.EuiccMethodUseTestCerts, f.isTestEuicc).Err; err != nil {
 		s.Fatal("Failed to set use test cert on eUICC: ", err)
 	}
 

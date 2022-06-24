@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/hermesconst"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
@@ -64,7 +65,7 @@ func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get test euicc: ", err)
 	}
 
-	if err := euicc.DBusObject.Call(ctx, "ResetMemory", 1).Err; err != nil {
+	if err := euicc.DBusObject.Call(ctx, hermesconst.EuiccMethodResetMemory, 1).Err; err != nil {
 		s.Fatal("Failed to reset test euicc: ", err)
 	}
 	s.Log("Reset test euicc completed")
@@ -139,7 +140,7 @@ func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 		},
 	}
 
-	if err := euicc.DBusObject.Call(ctx, "UseTestCerts", true).Err; err != nil {
+	if err := euicc.DBusObject.Call(ctx, hermesconst.EuiccMethodUseTestCerts, true).Err; err != nil {
 		s.Fatal("Failed to set use test cert on test euicc: ", err)
 	}
 
@@ -147,7 +148,7 @@ func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ServeAndRefresh ONC policy: ", err)
 	}
 	s.Log("Applied device policy with managed cellular network configuration")
-	defer euicc.DBusObject.Call(ctx, "ResetMemory", 1)
+	defer euicc.DBusObject.Call(ctx, hermesconst.EuiccMethodResetMemory, 1)
 
 	if err := verifyTestESimProfileNotModifiable(ctx, tconn); err != nil {
 		s.Fatal("Failed to verify newly installed stork profile: ", err)
