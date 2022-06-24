@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df82367c_23713dcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-24T13:36:35Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "ee7cd890297a742b8faac447ce2d3474d4c56174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eff37cdd_20967fc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-24T13:36:35Z",
+      "side": 1,
+      "message": "nit: %q",
+      "range": {
+        "startLine": 179,
+        "startChar": 21,
+        "endLine": 179,
+        "endChar": 22
+      },
+      "revId": "ee7cd890297a742b8faac447ce2d3474d4c56174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e4fa67_b1467f15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-24T13:36:35Z",
+      "side": 1,
+      "message": "nit: pass ctx by value here",
+      "range": {
+        "startLine": 231,
+        "startChar": 2,
+        "endLine": 231,
+        "endChar": 4
+      },
+      "revId": "ee7cd890297a742b8faac447ce2d3474d4c56174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
