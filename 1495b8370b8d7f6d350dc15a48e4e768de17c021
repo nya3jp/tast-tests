@@ -46,6 +46,30 @@
       },
       "revId": "1495b8370b8d7f6d350dc15a48e4e768de17c021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6991e5f4_ff5eaa67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations/keyboard.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T19:50:17Z",
+      "side": 1,
+      "message": "I suggest you make a `RepeatKeyHold` function like the above `RepeatKeyPress` function, and pass `1`. If `RepeatKeyHoldFor` will be more appropriate for other tests, you can keep it separate so you have four functions `RepeatKeyPressFor`, `RepeatKeyPress`, `RepeatKeyHoldFor`, and `RepeatKeyHold`. That will be clean and consistent.",
+      "parentUuid": "67e2b24a_1231e034",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 139
+      },
+      "revId": "1495b8370b8d7f6d350dc15a48e4e768de17c021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
