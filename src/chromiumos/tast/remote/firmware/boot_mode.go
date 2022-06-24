@@ -170,6 +170,10 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 
 	switch toMode {
 	case fwCommon.BootModeNormal:
+		testing.ContextLog(ctx, "Disabling dev requst")
+		if err := h.DUT.Conn().CommandContext(ctx, "crossystem", "disable_dev_request=1").Run(ssh.DumpLogOnError); err != nil {
+			return errors.Wrap(err, "sending disable dev request")
+		}
 		if err := ms.PowerOff(ctx); err != nil {
 			return errors.Wrap(err, "powering off DUT")
 		}
@@ -210,8 +214,9 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			return errors.Wrapf(err, "failed to reconnect to DUT after booting to %s", toMode)
 		}
 	case fwCommon.BootModeDev:
-		testing.ContextLog(ctx, "Disabling dev_boot_usb, disabling dev_boot_signed_only")
-		if err := h.DUT.Conn().CommandContext(ctx, "crossystem", "dev_boot_usb=0", "dev_boot_signed_only=0", "dev_default_boot=disk").Run(ssh.DumpLogOnError); err != nil {
+		testing.ContextLog(ctx, "Disabling dev_boot_usb, disabling dev_boot_signed_only, enabling dev_request")
+		if err := h.DUT.Conn().CommandContext(
+			ctx, "crossystem", "dev_boot_usb=0", "dev_boot_signed_only=0", "dev_default_boot=disk", "disable_dev_request=0").Run(ssh.DumpLogOnError); err != nil {
 			return errors.Wrap(err, "disabling dev_boot_usb")
 		}
 		if msOptsContain(opts, AllowGBBForce) {
