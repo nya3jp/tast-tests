@@ -16,6 +16,52 @@
       "message": "LGTM.\n\n@Mohamed this approach may be useful for test cases we have in plan for 3rd party testing.",
       "revId": "e3a4fd164cc561f31aee0abb5a1f05d412b6481f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86f734c5_b1ac626f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T16:43:52Z",
+      "side": 1,
+      "message": "nit: `YouTube`",
+      "range": {
+        "startLine": 47,
+        "startChar": 73,
+        "endLine": 47,
+        "endChar": 80
+      },
+      "revId": "e3a4fd164cc561f31aee0abb5a1f05d412b6481f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e50eab0_8a72e504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T16:43:52Z",
+      "side": 1,
+      "message": "The purpose of this code is to wait for (and verify) the expected effect of lines 527-549. Therefore it belongs immediately after that. Please don\u0027t sandwich your code in between.",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 583,
+        "endChar": 3
+      },
+      "revId": "e3a4fd164cc561f31aee0abb5a1f05d412b6481f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
