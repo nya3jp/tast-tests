@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ba40123_a0dc7623",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-24T13:44:44Z",
+      "side": 1,
+      "message": "Ok, thanks. how about then\n\n\"Otherwise, we need to run TearDown on the re-established connection to the machine\"\n\nbecause reconnection is done outside of this defer function.",
+      "parentUuid": "66ca6711_f9fe9978",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "a34e5cfe9837c19c637262abe3cdb0841a906512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa76a5f5_14caf81e",
         "filename": "src/chromiumos/tast/remote/bundles/cros/crash/hypervisor_crash.go",
         "patchSetId": 2
