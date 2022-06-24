@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1c63fff_859e519a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-24T17:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74b9628f_f76fa4b0",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "208176866d432640f0d85e8a4d13fae752944896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9ef65ac_97c25747",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd28930_d63bd003",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-24T17:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9ef65ac_97c25747",
+      "range": {
+        "startLine": 51,
+        "startChar": 34,
+        "endLine": 51,
+        "endChar": 54
+      },
+      "revId": "208176866d432640f0d85e8a4d13fae752944896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9056d3dd_7d598bad",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-22T20:55:02Z",
       "side": 1,
       "message": "Please add a sample of this output formatting working correctly to the TEST\u003d section.",
+      "range": {
+        "startLine": 161,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 64
+      },
+      "revId": "208176866d432640f0d85e8a4d13fae752944896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e85d0ed_01637490",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-24T17:01:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9056d3dd_7d598bad",
       "range": {
         "startLine": 161,
         "startChar": 2,
