@@ -95,14 +95,14 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	}
 
 	// By default, DNS query should work.
-	var defaultTC = []dns.ProxyTestCase{
+	tc := []dns.ProxyTestCase{
 		{Client: dns.System},
 		{Client: dns.User},
 		{Client: dns.Chrome},
 		{Client: dns.Crostini},
 		{Client: dns.ARC},
 	}
-	if errs := dns.TestQueryDNSProxy(ctx, defaultTC, a, cont, dns.NewQueryOptions()); len(errs) != 0 {
+	if errs := dns.TestQueryDNSProxy(ctx, tc, a, cont, dns.NewQueryOptions()); len(errs) != 0 {
 		for _, err := range errs {
 			s.Error("Failed DNS query check: ", err)
 		}
@@ -119,36 +119,45 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	}
 
 	// Block plain-text or secure DNS through iptables.
-	var (
-		block        *dns.Block
-		dnsBlockedTC []dns.ProxyTestCase
-	)
+	var blocks []*dns.Block
 	switch params.mode {
 	case dns.DoHAutomatic:
-		return
+		// Confirm blocking plaintext still works (DoH preferred/used).
+		blocks = append(blocks, dns.NewPlaintextBlock(nss, physIfs, ""))
+		// Verify blocking HTTPS also works (fallback).
+		blocks = append(blocks, dns.NewDoHBlock(nss, physIfs))
+		// Chrome isn't tested since it manages it's own DoH flow.
+		tc = []dns.ProxyTestCase{
+			{Client: dns.System},
+			{Client: dns.User},
+			{Client: dns.Crostini},
+			{Client: dns.ARC}}
 	case dns.DoHOff:
-		block = dns.NewPlaintextBlock(nss, physIfs, "")
-		dnsBlockedTC = []dns.ProxyTestCase{
+		// Verify blocking plaintext causes queries fail (no DoH option).
+		blocks = append(blocks, dns.NewPlaintextBlock(nss, physIfs, ""))
+		tc = []dns.ProxyTestCase{
 			{Client: dns.System, ExpectErr: true},
 			{Client: dns.User, ExpectErr: true},
 			{Client: dns.Chrome, ExpectErr: true},
 			{Client: dns.Crostini, ExpectErr: true},
 			{Client: dns.ARC}}
 	case dns.DoHAlwaysOn:
-		block = dns.NewDoHBlock(nss, physIfs)
-		dnsBlockedTC = []dns.ProxyTestCase{
+		// Verify blocking HTTPS causes queries to fail (no plaintext fallback).
+		blocks = append(blocks, dns.NewDoHBlock(nss, physIfs))
+		tc = []dns.ProxyTestCase{
 			{Client: dns.System, ExpectErr: true},
 			{Client: dns.User, ExpectErr: true},
 			{Client: dns.Crostini, ExpectErr: true},
 			{Client: dns.ARC}}
 	}
 
-	// DNS queries should fail if corresponding DNS packets (plain-text or secure) are dropped.
-	if errs := block.Run(ctx, func(ctx context.Context) {
-		if errs := dns.TestQueryDNSProxy(ctx, dnsBlockedTC, a, cont, dns.NewQueryOptions()); len(errs) != 0 {
-			s.Error("Failed DNS query check: ", errs)
+	for _, block := range blocks {
+		if errs := block.Run(ctx, func(ctx context.Context) {
+			if errs := dns.TestQueryDNSProxy(ctx, tc, a, cont, dns.NewQueryOptions()); len(errs) != 0 {
+				s.Error("Failed DNS query check: ", errs)
+			}
+		}); len(errs) > 0 {
+			s.Fatal("Failed to block DNS: ", errs)
 		}
-	}); len(errs) > 0 {
-		s.Fatal("Failed to block DNS: ", errs)
 	}
 }
