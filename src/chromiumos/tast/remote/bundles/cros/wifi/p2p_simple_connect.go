@@ -41,7 +41,7 @@ func P2PSimpleConnect(ctx context.Context, s *testing.State) {
 		8- Deconfigure the p2p GO.
 	*/
 	tf := s.FixtValue().(*wificell.TestFixture)
-	if err := tf.P2PConfigureGO(ctx); err != nil {
+	if err := tf.P2PConfigureGO(ctx, wificell.P2PDeviceDUT); err != nil {
 		s.Fatal("Failed to configure the p2p group owner (GO): ", err)
 	}
 	defer func(ctx context.Context) {
@@ -52,7 +52,7 @@ func P2PSimpleConnect(ctx context.Context, s *testing.State) {
 	ctx, cancel := tf.ReserveForDeconfigP2P(ctx)
 	defer cancel()
 
-	if err := tf.P2PConfigureClient(ctx); err != nil {
+	if err := tf.P2PConfigureClient(ctx, wificell.P2PDeviceCompanionDUT); err != nil {
 		s.Fatal("Failed to configure the p2p client: ", err)
 	}
 	defer func(ctx context.Context) {
