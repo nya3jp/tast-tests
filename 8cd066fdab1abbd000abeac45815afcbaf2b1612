@@ -16,6 +16,29 @@
       "message": "+tast-owners@ for tast review, thanks!",
       "revId": "8cd066fdab1abbd000abeac45815afcbaf2b1612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c282023_2d5f34fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_ipv4_static_with_dhcp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-24T01:00:02Z",
+      "side": 1,
+      "message": "For best practice, it would be nice to create a cleanupCtx to reserve a bit time for teardown. Otherwise, TearDown will not be executed if test fails on ctx timeout. IIUC teardown is a critical step for shill tests.\n\ncleanupCtx :\u003d ctx\n// Use a shortened context for test operations to reserve time for cleanup.\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n\ndefer func(ctx context.Context){...}(cleanupCtx)",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "8cd066fdab1abbd000abeac45815afcbaf2b1612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
