@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "321f9a08_97d22f00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2968,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-06-24T05:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0499c9d5_bca09e6c",
+      "revId": "e61c31cbf43dd0cd179e486cdb7af2c9a712db09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89d22544_299f6a12",
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a32b4e2_37c7114b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2972,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-06-24T05:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89d22544_299f6a12",
+      "revId": "e61c31cbf43dd0cd179e486cdb7af2c9a712db09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "930e11d9_77c1f0d6",
@@ -66,6 +102,30 @@
       "writtenOn": "2022-05-20T12:37:55Z",
       "side": 1,
       "message": "\"Get\" is redundant here and is usually frowned upon by other Tast reviewers 😊\nAFAIK it should be acceptable to have Band as Config method as well.\nOr even better: \n```\nfunc (b BandEnum) String() string {\n  return []string{\"2.4GHz\", \"5GHz\", \"6GHz\"}[b]\n}\n\n```\n?",
+      "range": {
+        "startLine": 80,
+        "startChar": 17,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "e61c31cbf43dd0cd179e486cdb7af2c9a712db09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d025731f_48365cd9",
+        "filename": "src/chromiumos/tast/remote/wificell/tethering/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-06-24T05:52:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "930e11d9_77c1f0d6",
       "range": {
         "startLine": 80,
         "startChar": 17,
