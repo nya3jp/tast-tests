@@ -16,6 +16,138 @@
       "message": "ping for review :)",
       "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b79ebbc3_29420713",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-06-24T18:02:35Z",
+      "side": 1,
+      "message": "I am happy with this % my outstanding comments. Will +2 when resolved.",
+      "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2fafbf8_0021e009",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 1522,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-06-24T18:02:35Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like you check this?",
+      "range": {
+        "startLine": 1522,
+        "startChar": 4,
+        "endLine": 1522,
+        "endChar": 47
+      },
+      "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04dd12b4_9a429c59",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 1527,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-06-24T18:02:35Z",
+      "side": 1,
+      "message": "This isn\u0027t removing any ifaces",
+      "range": {
+        "startLine": 1527,
+        "startChar": 1,
+        "endLine": 1527,
+        "endChar": 40
+      },
+      "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001e734e_fd83b74a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 1534,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-06-24T18:02:35Z",
+      "side": 1,
+      "message": "I don\u0027t feel like we should be returning an error here. I think we should let the caller check for an empty string and decide for itself whether the lack of a p2p iface represents an error. (The underlying issue is that with the current design, the caller has no way to distinguish between a missing p2p iface or an actual failed wpa_cli invocation).",
+      "range": {
+        "startLine": 1534,
+        "startChar": 1,
+        "endLine": 1534,
+        "endChar": 58
+      },
+      "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "475c2859_2a5bbc81",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 1540,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-06-24T18:02:35Z",
+      "side": 1,
+      "message": "Same as above, it doesn\u0027t look like you check this?",
+      "range": {
+        "startLine": 1540,
+        "startChar": 4,
+        "endLine": 1540,
+        "endChar": 47
+      },
+      "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d46b6a3_cc697181",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-06-24T18:02:35Z",
+      "side": 1,
+      "message": "Isn\u0027t this name chosen (or at least influenced) by the driver? I don\u0027t think we can just assume it will always be the same. `iw dev {devname} info` includes a \"type\" field. I think we should be using this instead. Ditto for the above \"p2pIface\" function.",
+      "range": {
+        "startLine": 1548,
+        "startChar": 30,
+        "endLine": 1548,
+        "endChar": 40
+      },
+      "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
