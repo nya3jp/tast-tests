@@ -16,6 +16,24 @@
       "message": "Does it make sense to have crostiniBusterLargeContainer be the parent fixture? That saves you tearing down and reinstalling between tablet mode and clamshell though might be more work since I think then Tablet/Clamshell is a completely new fixture? Either way works I think.",
       "revId": "eea943d6aeb1b6d7c97f9192176abb0c9e10f806",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3217c9ef_0ad237cb",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-24T03:49:39Z",
+      "side": 1,
+      "message": "Yes, that\u0027s better I think.\n\nRevised to create completely new fixtures for Tablet/Clamshell and use `crostiniBusterLargeContainer` as the parent fixture to reduce overheads between tablet mode and clamshell.",
+      "parentUuid": "822310b2_12572bf9",
+      "revId": "eea943d6aeb1b6d7c97f9192176abb0c9e10f806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
