@@ -83,6 +83,39 @@ func setUpNetwork(ctx context.Context, api *nc.CrosNetworkConfig, properties nc.
 	return networkResponse, nil
 }
 
+// verifyNetworks checks the networks set are the expected ones.
+func verifyNetworks(ctx context.Context, networks []*aupb.NetworkInformation, api *nc.CrosNetworkConfig) (*aupb.VerifyRollbackResponse, error) {
+	response := &aupb.VerifyRollbackResponse{
+		Successful:          true,
+		VerificationDetails: "",
+	}
+
+	for idx, networkInfo := range networks {
+		// Obtain properties of network set.
+		guid := networkInfo.Guid
+		managedProperties, err := api.GetManagedProperties(ctx, guid)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to get managed properties for guid %s", guid)
+		}
+
+		// Retrieve corresponding supported network configuration.
+		// It is assumed that the guid are received in the same order they were set,
+		// so we use the idx to identify which is the corresponding network.
+		nwID := nws.ConfigID(idx)
+		preservedNw, err := nws.VerifyNetwork(ctx, nwID, managedProperties)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to verify network")
+		}
+
+		if !preservedNw {
+			response.Successful = false
+			response.VerificationDetails += nws.SupportedNetworks[nwID].Type + " network was not preserved;"
+		}
+	}
+
+	return response, nil
+}
+
 // VerifyRollback checks that the device is on the enrollment screen, then logs
 // in as a normal user and verifies the previously set-up networks exists.
 // VerifyRollbackRequest needs to contain the unchanged NetworkInformation from
@@ -118,14 +151,26 @@ func (r *RollbackService) VerifyRollback(ctx context.Context, request *aupb.Veri
 		return nil, errors.Wrapf(err, "failed to convert milestone %s to integer", lsbContent[lsbrelease.Milestone])
 	}
 
-	response := &aupb.VerifyRollbackResponse{
-		Successful:          true,
-		VerificationDetails: "",
+	if milestoneVal < 100 {
+		response := &aupb.VerifyRollbackResponse{
+			Successful:          true,
+			VerificationDetails: "Image does not support a full rollback verification",
+		}
+		return response, nil
 	}
 
-	if milestoneVal < 100 {
-		response.Successful = true
-		response.VerificationDetails = "Image does not support a full rollback verification"
+	// Verify network configuration during OOBE.
+	apiOobe, err := nc.CreateOobeCrosNetworkConfig(ctx, cr)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get cros network config api during OOBE")
+	}
+	defer apiOobe.Close(ctx)
+
+	testing.ContextLogf(ctx, "Verify preservation of networks during OOBE: %s ", request.Networks)
+	if response, err := verifyNetworks(ctx, request.Networks, apiOobe); err != nil {
+		return nil, errors.Wrap(err, "failed to verify networks during OOBE")
+	} else if !response.Successful {
+		// The verification is unsuccessful. Finish here and return the response.
 		return response, nil
 	}
 
@@ -139,28 +184,11 @@ func (r *RollbackService) VerifyRollback(ctx context.Context, request *aupb.Veri
 	}
 	defer api.Close(ctx)
 
-	testing.ContextLogf(ctx, "Verify preservation of networks set: %s ", request.Networks)
-	for idx, networkInfo := range request.Networks {
-		// Obtain properties of network set.
-		guid := networkInfo.Guid
-		managedProperties, err := api.GetManagedProperties(ctx, guid)
-		if err != nil {
-			return nil, errors.Wrapf(err, "failed to get managed properties for guid %s", guid)
-		}
-
-		// Retrieve corresponding supported network configuration.
-		// It is assumed that the guid are received in the same order they were set,
-		// so we use the idx to identify which is the corresponding network.
-		nwID := nws.ConfigID(idx)
-		preservedNw, err := nws.VerifyNetwork(ctx, nwID, managedProperties)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to verify network")
-		}
-
-		if !preservedNw {
-			response.Successful = false
-			response.VerificationDetails += nws.SupportedNetworks[nwID].Type + " network was not preserved;"
-		}
+	// Verify network configuration after login.
+	testing.ContextLogf(ctx, "Verify preservation of networks after login: %s ", request.Networks)
+	response, err := verifyNetworks(ctx, request.Networks, api)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to verify networks")
 	}
 
 	return response, nil
