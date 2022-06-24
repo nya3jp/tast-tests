@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c08181d_30521577",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-24T13:02:13Z",
+      "side": 1,
+      "message": "I\u0027m still struggling with understanding the relationship between your code and the comment in the bug.\nLet me set up VC next week to be on the same page.",
+      "revId": "70c3deb0ac4bcacea335ccb2c9ca4ca504f65a18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
