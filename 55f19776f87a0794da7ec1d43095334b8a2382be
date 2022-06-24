@@ -51,6 +51,24 @@
       "parentUuid": "6073c78b_fc9cd0be",
       "revId": "55f19776f87a0794da7ec1d43095334b8a2382be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd13356_cc2aac0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_variations_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1509752
+      },
+      "writtenOn": "2022-06-24T21:05:52Z",
+      "side": 1,
+      "message": "sg. Thanks.",
+      "parentUuid": "0f359a41_3f3acbbc",
+      "revId": "55f19776f87a0794da7ec1d43095334b8a2382be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
