@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f572de9_63573cd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-24T17:06:16Z",
+      "side": 1,
+      "message": "There have been some major changes since last review (patch3-patch10):\n1- Added the function Interfaces()\n2- Added the function ScanNetwork()\n\nReady for review now :)",
+      "revId": "c6ac03c2efccdb6a19ca70b46efe46ee010fa3c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
