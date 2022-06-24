@@ -212,6 +212,24 @@
       "parentUuid": "52d0f55b_96f7e732",
       "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "170a7a7d_751608bb",
+        "filename": "src/chromiumos/tast/remote/updateutil/autoupdate_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-24T11:22:20Z",
+      "side": 1,
+      "message": "Thanks for pointing this out! I filed a bug about it: b/237058730\nI am closing this thread, as this issue should be resolved in a separate CL.",
+      "parentUuid": "86de1a9e_b43ae429",
+      "revId": "10694d9d618fc389f3723580734f2f85e7908c49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
