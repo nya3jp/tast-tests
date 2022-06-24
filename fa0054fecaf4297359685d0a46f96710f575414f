@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "06c20704_fc244dfe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-06-24T00:07:52Z",
+      "side": 1,
+      "message": "Extended the commit description, PTAL",
+      "parentUuid": "371f0385_3b64d6d4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 69
+      },
+      "revId": "fa0054fecaf4297359685d0a46f96710f575414f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b3d90f29_39e34bb5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -124,6 +148,24 @@
       "side": 1,
       "message": "we issue sigkill for deadline.",
       "parentUuid": "31f0e2f3_b88d08df",
+      "revId": "fa0054fecaf4297359685d0a46f96710f575414f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05bd8c48_98647b80",
+        "filename": "src/chromiumos/tast/common/testexec/testexec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-06-24T00:07:52Z",
+      "side": 1,
+      "message": "made it explict so we only trigger this on SIGKILL",
+      "parentUuid": "4bcd79da_f3857353",
       "revId": "fa0054fecaf4297359685d0a46f96710f575414f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
