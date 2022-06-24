@@ -21,7 +21,7 @@ func init() {
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
+		Attr:         []string{"group:mainline", "group:wificell", "wificell_func", "group:labqual"},
 		SoftwareDeps: []string{"wifi", "shill-wifi"},
 		HardwareDeps: hwdep.D(hwdep.Wifi80211ax()),
 	})
