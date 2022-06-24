@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "661304f5_a2433c9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-06-24T22:16:55Z",
+      "side": 1,
+      "message": "Think these two tests get scheduled after tast.lacros.PowerVideocall.lacros[1]. Other tests run before seem to be using ash chrome fixture. The log can be found in status.log[2]. Could you try to run tast.lacros.PowerVideocall.lacros with ui.ChromePIPEnergyAndPower.big_lacros and see if we can repro the failure?\n\n[1]https://screenshot.googleplex.com/5mV7ySWW3HKh5No\n[2]https://screenshot.googleplex.com/3rTLqPRFhrtn7ed",
+      "revId": "9e8db320f54245cbad387ff2bbf4fdca7e8b3bfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
