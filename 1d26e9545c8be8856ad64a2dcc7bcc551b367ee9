@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6596a6c_26554348",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-24T18:39:59Z",
+      "side": 1,
+      "message": "LGTM % changing error message ",
+      "revId": "1d26e9545c8be8856ad64a2dcc7bcc551b367ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4733574e_e1d5b1c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_blocked_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-24T18:39:59Z",
+      "side": 1,
+      "message": "This message should change to represent the new requirement: \"Disabled install button for blocked app does not exist: \" ?",
+      "revId": "1d26e9545c8be8856ad64a2dcc7bcc551b367ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
