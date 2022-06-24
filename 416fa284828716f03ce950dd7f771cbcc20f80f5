@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e5fe94d_3e5075b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-24T02:17:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "434ff770_7fec3033",
+      "range": {
+        "startLine": 113,
+        "startChar": 10,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "416fa284828716f03ce950dd7f771cbcc20f80f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3b20814_f28f05ab",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Correct. I will clarify the comments.",
       "parentUuid": "d3b20814_f28f05ab",
+      "range": {
+        "startLine": 122,
+        "startChar": 29,
+        "endLine": 122,
+        "endChar": 73
+      },
+      "revId": "416fa284828716f03ce950dd7f771cbcc20f80f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29ce1a7e_326c321e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-24T02:17:56Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "a45ecb21_7747091e",
       "range": {
         "startLine": 122,
         "startChar": 29,
