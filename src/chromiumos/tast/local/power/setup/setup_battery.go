@@ -20,12 +20,12 @@ type chargeControlState struct {
 }
 
 var (
-	ccDischarge = chargeControlState{"discharge", "Charge state machine force discharge."}
-	ccNormal    = chargeControlState{"normal", "Charge state machine is in normal mode."}
+	ccDischarge = chargeControlState{"dontcharge", "Override port set to -2"}
+	ccNormal    = chargeControlState{"off", "Override port set to -1"}
 )
 
 func setChargeControl(ctx context.Context, s chargeControlState) error {
-	stdout, stderr, err := testexec.CommandContext(ctx, "ectool", "chargecontrol", s.state).SeparatedOutput(testexec.DumpLogOnError)
+	stdout, stderr, err := testexec.CommandContext(ctx, "ectool", "chargeoverride", s.state).SeparatedOutput(testexec.DumpLogOnError)
 	if err != nil {
 		return errors.Wrapf(err, "unable to set battery charge to %s, got error %s", s.state, string(stderr))
 	}
