@@ -141,6 +141,24 @@
       "parentUuid": "f6a82334_2da14d41",
       "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc585e4_be7b24b3",
+        "filename": "src/chromiumos/tast/local/chrome/options_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-24T01:07:56Z",
+      "side": 1,
+      "message": "Checking the equality of chrome.Option won\u0027t work here. The type of chrome.Option is func(cfg *MutableConfig) error. There\u0027s no way to compare that without looking at the underlying MutableConfig type. Also, we don\u0027t output a single option, but a slice of options, and we don\u0027t guarantee the order.\n\nI think a more reasonable solution might be to simply access NewConfig. Then, in the test, we could assert that deepEqual(NewConfig(ToOptions(proto)), NewConfig(expected_opts)). This would avoid accessing any implementation details of Config, but still test it just as thoroughly, so it\u0027d be robust to any change to implementation of Config.",
+      "parentUuid": "b6cdcb92_8ef4f9bd",
+      "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
