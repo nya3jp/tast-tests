@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03d5172c_8639d369",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-06-24T00:04:28Z",
+      "side": 1,
+      "message": "Done, I added back software dep ondevice_speech that ensures SODA is installed.",
+      "parentUuid": "42450589_d0167203",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "33b33c7e781636b0b4428d91712a574f92cd1ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cf546da_c39e59e3",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-06-23T20:47:39Z",
       "side": 1,
       "message": "I\u0027d suggest split your test into two and use HardwareDeps Microphone.",
+      "revId": "33b33c7e781636b0b4428d91712a574f92cd1ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14bac6ba_69c95f80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/creation_flow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-06-24T00:04:28Z",
+      "side": 1,
+      "message": "Done, created new test NewScreencastButtonCondition. PTAL",
+      "parentUuid": "1cf546da_c39e59e3",
       "revId": "33b33c7e781636b0b4428d91712a574f92cd1ea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08840a85_26bada47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-06-24T00:04:28Z",
+      "side": 1,
+      "message": "Thanks for reviewing, Po-Hsien.",
+      "revId": "78305daa88fc3a1eb7999458ed40f14b2df71dae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
