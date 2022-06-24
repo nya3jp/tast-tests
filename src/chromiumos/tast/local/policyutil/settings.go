@@ -88,8 +88,10 @@ func OSSettingsPageWithPassword(ctx context.Context, cr *chrome.Chrome, shortLin
 		return page
 	}
 
+	passwordNode := nodewith.Name("Confirm your password")
+
 	uia := uiauto.New(tconn)
-	if err := uia.WaitUntilExists(nodewith.Name("Confirm your password").First())(ctx); err != nil {
+	if err := uia.WaitUntilExists(passwordNode.First())(ctx); err != nil {
 		testing.ContextLog(ctx, "Could not find password dialog: ", err)
 		return page
 	}
@@ -103,6 +105,11 @@ func OSSettingsPageWithPassword(ctx context.Context, cr *chrome.Chrome, shortLin
 
 	if err := keyboard.Type(ctx, password+"\n"); err != nil {
 		page.err = errors.Wrap(err, "failed to type password")
+		return page
+	}
+
+	if err := uia.WaitUntilGone(passwordNode)(ctx); err != nil {
+		testing.ContextLog(ctx, "Could not wait until password dialog is gone: ", err)
 		return page
 	}
 
