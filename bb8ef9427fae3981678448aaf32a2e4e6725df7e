@@ -22,6 +22,30 @@
       },
       "revId": "bb8ef9427fae3981678448aaf32a2e4e6725df7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3094f854_0817efd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-06-24T02:14:54Z",
+      "side": 1,
+      "message": "Thank you for your suggestion.\nThis will be changed in another cl.\nThis cl mainly deals with blocking issues.",
+      "parentUuid": "bd00a2ea_d881883b",
+      "range": {
+        "startLine": 492,
+        "startChar": 1,
+        "endLine": 492,
+        "endChar": 66
+      },
+      "revId": "bb8ef9427fae3981678448aaf32a2e4e6725df7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
