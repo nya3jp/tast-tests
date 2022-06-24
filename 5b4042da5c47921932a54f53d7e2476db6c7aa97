@@ -16,6 +16,98 @@
       "message": "First step to add test to validate ownnumbers property value.",
       "revId": "5b4042da5c47921932a54f53d7e2476db6c7aa97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca1f4526_cdf243c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_validate_ownnumber.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-24T16:01:42Z",
+      "side": 1,
+      "message": "is stevenjb@ owning this test?",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "5b4042da5c47921932a54f53d7e2476db6c7aa97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf72306a_594991a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_validate_ownnumber.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-24T16:01:42Z",
+      "side": 1,
+      "message": "MDN?",
+      "range": {
+        "startLine": 75,
+        "startChar": 41,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "5b4042da5c47921932a54f53d7e2476db6c7aa97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d7b9f4e_41b9b0b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_validate_ownnumber.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-24T16:01:42Z",
+      "side": 1,
+      "message": "nit: OwnNumber?",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 18
+      },
+      "revId": "5b4042da5c47921932a54f53d7e2476db6c7aa97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d16882_96cd4c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_validate_ownnumber.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-24T16:01:42Z",
+      "side": 1,
+      "message": "Do we need this?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "5b4042da5c47921932a54f53d7e2476db6c7aa97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
