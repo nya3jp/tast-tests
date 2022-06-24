@@ -30,7 +30,7 @@ func init() {
 			"qjw@chromium.org",
 			"chrome-apps-platform-rationalization@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		Pre:          chrome.LoggedIn(),
