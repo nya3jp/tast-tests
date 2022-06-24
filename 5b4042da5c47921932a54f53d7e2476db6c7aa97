@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9512c18_ceb66fc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_validate_ownnumber.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-24T17:15:30Z",
+      "side": 1,
+      "message": "As I took from shill, mistake. Modified.",
+      "parentUuid": "ca1f4526_cdf243c3",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "5b4042da5c47921932a54f53d7e2476db6c7aa97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf72306a_594991a9",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-24T16:01:42Z",
       "side": 1,
       "message": "MDN?",
+      "range": {
+        "startLine": 75,
+        "startChar": 41,
+        "endLine": 75,
+        "endChar": 51
+      },
+      "revId": "5b4042da5c47921932a54f53d7e2476db6c7aa97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62204dfc_897f5855",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_validate_ownnumber.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-24T17:15:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cf72306a_594991a9",
       "range": {
         "startLine": 75,
         "startChar": 41,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d82a34_d9011447",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_validate_ownnumber.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-24T17:15:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1d7b9f4e_41b9b0b1",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 18
+      },
+      "revId": "5b4042da5c47921932a54f53d7e2476db6c7aa97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12d16882_96cd4c69",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-06-24T16:01:42Z",
       "side": 1,
       "message": "Do we need this?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "5b4042da5c47921932a54f53d7e2476db6c7aa97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce5b0fb5_6a22c647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/shill_cellular_validate_ownnumber.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-24T17:15:30Z",
+      "side": 1,
+      "message": "No, thought of placing somewhere in middile to find any link between login/logout user of chrome apart from OOBE with \u0027OwnNumbers\u0027 property disappearence. \n\nRemoving it.",
+      "parentUuid": "12d16882_96cd4c69",
       "range": {
         "startLine": 84,
         "startChar": 0,
