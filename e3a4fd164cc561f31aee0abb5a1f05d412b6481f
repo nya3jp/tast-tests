@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cc43bc0_8a822bd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-24T16:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86f734c5_b1ac626f",
+      "range": {
+        "startLine": 47,
+        "startChar": 73,
+        "endLine": 47,
+        "endChar": 80
+      },
+      "revId": "e3a4fd164cc561f31aee0abb5a1f05d412b6481f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e50eab0_8a72e504",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-24T16:43:52Z",
       "side": 1,
       "message": "The purpose of this code is to wait for (and verify) the expected effect of lines 527-549. Therefore it belongs immediately after that. Please don\u0027t sandwich your code in between.",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 583,
+        "endChar": 3
+      },
+      "revId": "e3a4fd164cc561f31aee0abb5a1f05d412b6481f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70439c27_da6fc369",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-06-24T16:59:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e50eab0_8a72e504",
       "range": {
         "startLine": 579,
         "startChar": 0,
