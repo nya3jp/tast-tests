@@ -23,7 +23,7 @@ func init() {
 		Contacts: []string{
 			"noel@chromium.org",
 			"benreich@chromium.org",
-			"chromeos-files-app@google.com",
+			"chromeos-files-syd@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
 	})
