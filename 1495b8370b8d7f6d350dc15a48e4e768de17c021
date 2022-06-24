@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dad2748_01e344cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/inputsimulations/keyboard.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-24T18:25:28Z",
+      "side": 1,
+      "message": "If you only use this function with `keyHoldDuration` equal to `duration`, then I don\u0027t think the repetition functionality is necessary.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 139
+      },
+      "revId": "1495b8370b8d7f6d350dc15a48e4e768de17c021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
