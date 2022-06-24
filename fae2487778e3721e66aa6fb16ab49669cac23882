@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "687ab743_fda4bcff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-24T18:53:47Z",
+      "side": 1,
+      "message": "LGTM as tast-owner % nits",
+      "revId": "fae2487778e3721e66aa6fb16ab49669cac23882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0682936c_df07566e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/search_help_content.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-24T18:53:47Z",
+      "side": 1,
+      "message": "nit: same as above check? Maybe just introduce a helper function to check for this? That will help consolidate any changes to the number of items as well.",
+      "revId": "fae2487778e3721e66aa6fb16ab49669cac23882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3e67b7e_850234e3",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/feedbackapp/feedbackapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-24T18:53:47Z",
+      "side": 1,
+      "message": "nit: This is only used in one spot (`Launch` below), could it just be incorporated into the `Launch` function?",
+      "revId": "fae2487778e3721e66aa6fb16ab49669cac23882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2e6759c_65a9012e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/feedbackapp/feedbackapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-06-24T18:53:47Z",
+      "side": 1,
+      "message": "nit: The name of the function shouldn\u0027t be used as part of the description. How about `Launch starts the Feedback app via the default method`?",
+      "revId": "fae2487778e3721e66aa6fb16ab49669cac23882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
