@@ -25,7 +25,7 @@ func init() {
 		Timeout:      3 * time.Minute,
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedInGuest",
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
