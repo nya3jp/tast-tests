@@ -19,31 +19,43 @@ import (
 const ReleaseURI = "https://storage.googleapis.com/chromeos-localmirror/lvfs/test/3fab34cfa1ef97238fb24c5e40a979bc544bb2b0967b863e43e7d58e0d9a923f-fakedevice124.cab"
 
 // ChargingStateTimeout has the time needed for polling battery charging state changes.
-const ChargingStateTimeout = 59 * time.Minute
+const ChargingStateTimeout = 2 * time.Minute
 
 const (
 	// This is a string that appears when the computer is discharging.
 	dischargeString = `uint32 [0-9]\s+uint32 2`
 )
 
-func setBatteryNormal(ctx context.Context) error {
-	if err := testexec.CommandContext(ctx, "ectool", "chargecontrol", "normal").Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "ectool chargecontrol failed")
-	}
-	return nil
-}
-
 // SetFwupdChargingState sets the battery charging state and polls for
 // the appropriate change to be registered by powerd via its dbus
 // method.
-func SetFwupdChargingState(ctx context.Context, charge bool) error {
+func SetFwupdChargingState(ctx context.Context, charge bool) (setup.CleanupCallback, error) {
+	var localCleanup setup.CleanupCallback
+
+	// Local cleanup function in case polling fails below
+	defer func() {
+		if localCleanup == nil {
+			return
+		}
+
+		if err := localCleanup(ctx); err != nil {
+			testing.ContextLog(ctx, "WARNING Failed to re-enable AC power: ", err)
+		}
+	}()
+
 	if charge {
-		if err := setBatteryNormal(ctx); err != nil {
-			return err
+		if err := setup.AllowBatteryCharging(ctx); err != nil {
+			return nil, err
+		}
+
+		// Return a no-op function to avoid a `cleanup != nil` check for the callers.
+		localCleanup = func(ctx context.Context) error {
+			return nil
 		}
 	} else {
-		if _, err := setup.SetBatteryDischarge(ctx, 20.0); err != nil {
-			return err
+		var err error
+		if localCleanup, err = setup.SetBatteryDischarge(ctx, 20.0); err != nil {
+			return nil, err
 		}
 	}
 
@@ -55,20 +67,30 @@ func SetFwupdChargingState(ctx context.Context, charge bool) error {
 		if err != nil {
 			return err
 		}
-		matched, err := regexp.Match(dischargeString, output)
-		if charge == matched {
-			cmd := testexec.CommandContext(ctx, "stressapptest", "-s", "30")
-			if err := cmd.Run(); err != nil {
-				return err
-			}
+		discharging, err := regexp.Match(dischargeString, output)
+
+		if err != nil {
+			return err
 		}
-		if charge == matched || err != nil {
-			return errors.New("powerd has not registered a battery state change")
+
+		if (charge && !discharging) || (!charge && discharging) {
+			return nil
 		}
-		return nil
+
+		testing.ContextLog(ctx, "INFO running stressapptest to discharge the battery")
+		cmd = testexec.CommandContext(ctx, "stressapptest", "-s", "30")
+		if err := cmd.Run(); err != nil {
+			testing.ContextLog(ctx, "WARNING stressapptest failed: ", err)
+		}
+
+		return errors.New("powerd has not registered a battery state change")
 	}, &testing.PollOptions{Timeout: ChargingStateTimeout}); err != nil {
-		return errors.Wrap(err, "battery polling was unsuccessful")
+		return nil, errors.Wrap(err, "battery polling was unsuccessful")
 	}
 
-	return nil
+	retCleanup := localCleanup
+	// Disable the local cleanup function above
+	localCleanup = nil
+
+	return retCleanup, nil
 }
