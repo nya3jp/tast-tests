@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4ae4982_db615579",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-24T06:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f8b1c8d_ad829a0c",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21a6119f_cc5a0779",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-23T03:19:02Z",
       "side": 1,
       "message": "This kind of locator is super fragile. Please keep it in mind to avoid multiple efforts to stabilize the test.",
+      "range": {
+        "startLine": 104,
+        "startChar": 32,
+        "endLine": 104,
+        "endChar": 40
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b723de2_2d972307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-24T06:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21a6119f_cc5a0779",
       "range": {
         "startLine": 104,
         "startChar": 32,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b3a4ba_f87a8082",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-24T06:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f11f102_8c176898",
+      "range": {
+        "startLine": 111,
+        "startChar": 9,
+        "endLine": 111,
+        "endChar": 23
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24bdc1ec_85d63791",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-23T03:19:02Z",
       "side": 1,
       "message": "nit: hasn\u0027t",
+      "range": {
+        "startLine": 116,
+        "startChar": 46,
+        "endLine": 116,
+        "endChar": 53
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70759f24_4e36e58c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-24T06:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24bdc1ec_85d63791",
       "range": {
         "startLine": 116,
         "startChar": 46,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ea5b304_295c4645",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-24T06:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17d98a7a_8b940b32",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 99
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5bc885b_c7191576",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-06-23T03:19:02Z",
       "side": 1,
       "message": "This wrapper is redundant. You can call webutil function directly.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 1
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b246e185_2a989190",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-24T06:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5bc885b_c7191576",
       "range": {
         "startLine": 172,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6fd0e8f_8acadfee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-24T06:20:58Z",
+      "side": 1,
+      "message": "define tc.editorWinRect as coords.Rect",
+      "parentUuid": "dad77bbd_e92b91ed",
+      "range": {
+        "startLine": 184,
+        "startChar": 6,
+        "endLine": 184,
+        "endChar": 56
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29e10cc6_f54528e6",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f45a474b_cc002b88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-24T06:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29e10cc6_f54528e6",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 199,
+        "endChar": 127
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f91771a_f4d89fc8",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-06-23T03:19:02Z",
       "side": 1,
       "message": "I do not think \"F\" is an accelerator. Should it be TypeAction?",
+      "range": {
+        "startLine": 229,
+        "startChar": 9,
+        "endLine": 229,
+        "endChar": 20
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1d7d01d_f71ffe20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-24T06:20:58Z",
+      "side": 1,
+      "message": "Since TypeAction doesn\u0027t work for TinkerCAD shortcut, replace it with TypeKeyAction.",
+      "parentUuid": "1f91771a_f4d89fc8",
       "range": {
         "startLine": 229,
         "startChar": 9,
@@ -233,6 +449,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf2920b1_3cf4db07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-24T06:20:58Z",
+      "side": 1,
+      "message": "Excuse me, can you explain why it nees DoDefault here?\nI think LeftClick should be more stable.",
+      "parentUuid": "54e7463c_8af555b3",
+      "range": {
+        "startLine": 284,
+        "startChar": 14,
+        "endLine": 284,
+        "endChar": 23
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "319cbf00_a910b787",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
         "patchSetId": 2
@@ -244,6 +484,30 @@
       "writtenOn": "2022-06-23T03:19:02Z",
       "side": 1,
       "message": "Function name should be meaningful. If this function involves export and result verification, it should be named as ExportAndVerify",
+      "range": {
+        "startLine": 288,
+        "startChar": 21,
+        "endLine": 288,
+        "endChar": 27
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41dc066c_0acd7549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-24T06:20:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "319cbf00_a910b787",
       "range": {
         "startLine": 288,
         "startChar": 21,
