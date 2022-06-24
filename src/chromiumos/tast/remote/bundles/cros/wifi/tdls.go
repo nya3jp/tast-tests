@@ -55,7 +55,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.WifiTDLS()),
 		Params: []testing.Param{
 			{
-				// The test comprises of environment setup phase (~90sec) and testcase run (150ms-10s).
+				// The test comprises of environment setup phase (~90sec) and testcase run (5-10s).
 				// So the most optimal option for running multiple testcases would be to setup environment once then
 				// run all test cases. For clarity test cases are organized in separate functions (with option
 				// of running it in reverse direction). Also for clarity, each testcase has unique name
@@ -86,11 +86,32 @@ func tdlsDiscover(ctx context.Context, tc *tdlsTestcase, peer1, peer2 tdlsPeer) 
 	//    (wpa_cli responds OK only after successful negotiation).
 	testing.ContextLogf(ctx, "Peer MAC: %s", peer2.mac.String())
 
-	// TODO(b/234845693): move to a dedicated remote runner.
-	r := wpacli.NewRunner(&cmd.RemoteCmdRunner{Host: peer1.conn})
-	err := r.TDLSDiscover(ctx, peer2.mac.String())
+	freqOpts, err := tc.ap.Config().PcapFreqOptions()
 	if err != nil {
-		return errors.Wrap(err, "failed TDLS Discover")
+		return errors.Wrap(err, "failed to get Freq Opts")
+	}
+
+	pcapPath, err := wifiutil.CollectPcapForAction(ctx, tc.pcap, tc.tf.UniqueAPName(), tc.ap.Config().Channel, freqOpts,
+		func(ctx context.Context) (ret error) {
+			// TODO(b/234845693): move to a dedicated remote runner.
+			r := wpacli.NewRunner(&cmd.RemoteCmdRunner{Host: peer1.conn})
+			err := r.TDLSDiscover(ctx, peer2.mac.String())
+			if err != nil {
+				return errors.Wrap(err, "failed TDLS Discover")
+			}
+			return nil
+		})
+	if err != nil {
+		return errors.Wrap(err, "failed to collect pcap or perform action")
+	}
+
+	pkts, err := wifiutil.VerifyTDLSDiscoveryPackets(pcapPath, []net.HardwareAddr{peer1.mac, peer2.mac})
+	if err != nil {
+		return errors.Wrap(err, "failed to fiter packets")
+	} else if len(pkts) > 0 {
+		// Better to log offending packets once than to return them with error which gets printed multiple times.
+		testing.ContextLogf(ctx, "Found invalid packets:%s", wifiutil.DumpPkts(pkts))
+		return errors.New("invalid packets spotted")
 	}
 	testing.ContextLog(ctx, "Success")
 	return nil
