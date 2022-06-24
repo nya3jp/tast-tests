@@ -33,6 +33,115 @@
       "message": "Miguel, PTAL!",
       "revId": "e8d46bbdd7a5da4f4dc750c2dbd23b65440196c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "742ce89b_5a48afd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-24T18:44:33Z",
+      "side": 1,
+      "message": "The idea looks good, some comments.",
+      "revId": "e8d46bbdd7a5da4f4dc750c2dbd23b65440196c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11f26da3_d6e66063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-24T18:44:33Z",
+      "side": 1,
+      "message": "Doh my math is so broken. Both 3x3 720p and 2x2 1080p are as \nmany pixels as 4K. I just re-read this after my comments below\nand found the mistake.",
+      "range": {
+        "startLine": 203,
+        "startChar": 39,
+        "endLine": 203,
+        "endChar": 70
+      },
+      "revId": "e8d46bbdd7a5da4f4dc750c2dbd23b65440196c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58bfc82e_d953b944",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-24T18:44:33Z",
+      "side": 1,
+      "message": "I\u0027d suggest making this 3x3 and merging the current ones\n(e.g. h264_720p_30fps_hw_3x3 and such) into these new test\ncases (and maybe make the \"8\" threads a \"9\"). WDYT?\n\nNote that the current 3x3 are not really monitored by \nanyone, they exist to collect data for later ad-hoc\nanalysis.",
+      "range": {
+        "startLine": 244,
+        "startChar": 42,
+        "endLine": 244,
+        "endChar": 48
+      },
+      "revId": "e8d46bbdd7a5da4f4dc750c2dbd23b65440196c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39667cc7_1223cb2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-24T18:44:33Z",
+      "side": 1,
+      "message": "Looking at the generated test cases, we\u0027ll have:\n - x2\n - x9 (if you accept my suggestion above)\n - x16\n - x49\n\neach with 720p videos. Some comments:\n \n1. In the real world, I don\u0027t think Meet or any other service\nwould try to decode up to 49x720, instead it would ramp\ndown resolution as the number of videos in parallel increases.\nSo e.g. it would do x2 720, x9 480p, x16 360p and x49 180p\nor so. I\u0027m not sure if up to x49 720p is intended or not,\nhence this question.\n\n2. Regardless of 1., it would be interesting to have a \nrough estimate of how many pixels each test case moves, and\nuse it to add a larger ExtraSoftwareDeps, e.g. x9 720p ~\u003d 4K\nin terms of #pixels, so we should consider that to avoid the\nnext point:\n  \n3. From experience, small devices might not be able to cope\nwith all of the defined use cases, e.g. MTK might misbehave or\n(more commonly) leave the device hot or broken for later tests \n:S I don\u0027t have a solution for this, but maybe we could start\nwith VA-API devices only?",
+      "range": {
+        "startLine": 246,
+        "startChar": 4,
+        "endLine": 246,
+        "endChar": 13
+      },
+      "revId": "e8d46bbdd7a5da4f4dc750c2dbd23b65440196c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba1642d_b96f8c9c",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-24T18:44:33Z",
+      "side": 1,
+      "message": "nit: s/crhomeVideo/chromeVideo/ ?",
+      "range": {
+        "startLine": 529,
+        "startChar": 21,
+        "endLine": 529,
+        "endChar": 32
+      },
+      "revId": "e8d46bbdd7a5da4f4dc750c2dbd23b65440196c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
