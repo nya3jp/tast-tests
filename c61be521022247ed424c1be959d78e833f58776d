@@ -16,6 +16,121 @@
       "message": "pwang@ PTAL -- this is the only meaty CL in the chain, because\nit introduces a new method in graphics/perf.go. If it LGTY,\ncould you review the others? They should be trivial.",
       "revId": "c61be521022247ed424c1be959d78e833f58776d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ae9e99_474e550d",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-24T02:03:14Z",
+      "side": 1,
+      "message": "This function itself sounds weird to me but makes sense if you have a measuerment running in parallel.\n\nI think it is easier to understand if you initiate goroutine in the function instead of deferring to the caller.\nWDYT?",
+      "range": {
+        "startLine": 793,
+        "startChar": 5,
+        "endLine": 793,
+        "endChar": 18
+      },
+      "revId": "c61be521022247ed424c1be959d78e833f58776d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c87a23a_5a5d3f36",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-24T02:03:14Z",
+      "side": 1,
+      "message": "Can you pass a ctx which timeout is interval? You may be want to check if the global ctx timeout, the ctx in the argument, is greater than interval though.\n\nIf an err is returned and is a timeout error, simply pass otherwise return error?",
+      "range": {
+        "startLine": 795,
+        "startChar": 21,
+        "endLine": 795,
+        "endChar": 24
+      },
+      "revId": "c61be521022247ed424c1be959d78e833f58776d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddd8e15b_a7b53915",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-24T02:03:14Z",
+      "side": 1,
+      "message": "Look at the code, it seems t.Start won\u0027t save the gtest_output.xml IIUC. Is that what you expect?",
+      "range": {
+        "startLine": 795,
+        "startChar": 15,
+        "endLine": 795,
+        "endChar": 20
+      },
+      "revId": "c61be521022247ed424c1be959d78e833f58776d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62862da9_89635d08",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-24T02:03:14Z",
+      "side": 1,
+      "message": "one line.",
+      "range": {
+        "startLine": 809,
+        "startChar": 2,
+        "endLine": 810,
+        "endChar": 15
+      },
+      "revId": "c61be521022247ed424c1be959d78e833f58776d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be5a085_5160ef8a",
+        "filename": "src/chromiumos/tast/local/media/decoding/accel_video.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-24T02:03:14Z",
+      "side": 1,
+      "message": "In case where procErr and cpuErr both are non-nil, we lost track of cpuErr. Could you Wrap both errors?",
+      "range": {
+        "startLine": 309,
+        "startChar": 22,
+        "endLine": 309,
+        "endChar": 28
+      },
+      "revId": "c61be521022247ed424c1be959d78e833f58776d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
