@@ -33,6 +33,24 @@
       "message": "This message should change to represent the new requirement: \"Disabled install button for blocked app does not exist: \" ?",
       "revId": "1d26e9545c8be8856ad64a2dcc7bcc551b367ee9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe00cd5_a3309751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/unicorn_blocked_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1474010
+      },
+      "writtenOn": "2022-06-24T19:41:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4733574e_e1d5b1c3",
+      "revId": "1d26e9545c8be8856ad64a2dcc7bcc551b367ee9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
