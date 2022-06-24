@@ -30,14 +30,21 @@ const (
 
 // Hermes.Euicc methods
 const (
-	EuiccMethodRefreshInstalledProfiles         = "RefreshInstalledProfiles"
+	EuiccMethodInstallPendingProfile            = "InstallPendingProfile"
 	EuiccMethodInstallProfileFromActivationCode = "InstallProfileFromActivationCode"
-	EuiccMethodUninstallProfile                 = "UninstallProfile"
+	EuiccMethodIsTestEuicc                      = "IsTestEuicc"
+	EuiccMethodRefreshInstalledProfiles         = "RefreshInstalledProfiles"
+	EuiccMethodRequestPendingProfiles           = "RequestPendingProfiles"
 	EuiccMethodResetMemory                      = "ResetMemory"
+	EuiccMethodUseTestCerts                     = "UseTestCerts"
+	EuiccMethodUninstallProfile                 = "UninstallProfile"
 )
 
 // Hermes.Euicc properties
 const (
+	EuiccPropertyEid                         = "Eid"
+	EuiccPropertyInstalledProfiles           = "InstalledProfiles"
+	EuiccPropertyPendingProfiles             = "PendingProfiles"
 	EuiccPropertyProfileRefreshedAtLeastOnce = "ProfilesRefreshedAtLeastOnce"
 )
 
@@ -68,4 +75,9 @@ const (
 	ProfileClassTest         = 0
 	ProfileClassProvisioning = 1
 	ProfileClassOperational  = 2
+)
+
+// Google SMDS Server address, passing an empty |root_smds| will use default lpa.ds.gsma.com.
+const (
+	RootSmdsAddress = "prod.smds.rsp.goog"
 )
