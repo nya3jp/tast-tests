@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c919628b_f57c94f4",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-25T03:16:49Z",
+      "side": 1,
+      "message": "\"Specify connection to an existing persistent group\"",
+      "parentUuid": "da58ff31_3cbd2ecc",
+      "range": {
+        "startLine": 299,
+        "startChar": 71,
+        "endLine": 299,
+        "endChar": 81
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4031893_246149b2",
         "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
         "patchSetId": 11
@@ -173,6 +197,24 @@
       "side": 1,
       "message": "I added a comment. Let me know If should extend it.",
       "parentUuid": "ab778129_1a50037b",
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e06e9025_2d11da4b",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-25T03:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14c16b70_e8f4e4da",
       "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
