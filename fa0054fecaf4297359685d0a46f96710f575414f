@@ -173,6 +173,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d43942b_dc36d980",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1404997
+      },
+      "writtenOn": "2022-06-26T15:41:41Z",
+      "side": 1,
+      "message": "May be I misunderstood your Q. I wasn\u0027t able to locally reprot the original problem, but didn\u0027t try the test. Checking it, looks like it uses SIGTERM explicitly for stopping. So my check for SIGKILL should fix that. Unfortunately I accidentatly did CR+1 not CQ+1 last time :) triggering again",
+      "parentUuid": "ac59dd66_fb8c63a4",
+      "revId": "fa0054fecaf4297359685d0a46f96710f575414f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31f0e2f3_b88d08df",
         "filename": "src/chromiumos/tast/common/testexec/testexec.go",
         "patchSetId": 1
