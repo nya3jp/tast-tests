@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f55ff94_80ea9788",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-26T09:13:42Z",
+      "side": 1,
+      "message": "Pls replace all LeftClick with DoDefault.",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 17
+      },
+      "revId": "873616f81f2f2c72a59997068ea51016a9e12c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d54b3f7_0d970321",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-26T09:13:42Z",
+      "side": 1,
+      "message": "nit: tc.kb.TypeAction(\"f\")",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 36
+      },
+      "revId": "873616f81f2f2c72a59997068ea51016a9e12c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15a324b2_6135563c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-26T09:13:42Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 245,
+        "startChar": 2,
+        "endLine": 245,
+        "endChar": 35
+      },
+      "revId": "873616f81f2f2c72a59997068ea51016a9e12c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

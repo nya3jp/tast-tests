@@ -332,6 +332,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "409fd80f_3f622dab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-26T09:13:42Z",
+      "side": 1,
+      "message": "Problem not fixed. You should not change tc in a get function.",
+      "parentUuid": "b6fd0e8f_8acadfee",
+      "range": {
+        "startLine": 184,
+        "startChar": 6,
+        "endLine": 184,
+        "endChar": 56
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "29e10cc6_f54528e6",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
         "patchSetId": 2
@@ -461,6 +485,30 @@
       "side": 1,
       "message": "Excuse me, can you explain why it nees DoDefault here?\nI think LeftClick should be more stable.",
       "parentUuid": "54e7463c_8af555b3",
+      "range": {
+        "startLine": 284,
+        "startChar": 14,
+        "endLine": 284,
+        "endChar": 23
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eefdcd3_f27e8e02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-06-26T09:13:42Z",
+      "side": 1,
+      "message": "LeftClick does not work well on LaCrOS. If you look at other CUJ tests, you can see lots of recent changes on fixing it.\n\ne.g. https://crrev.com/c/3714535, https://crrev.com/c/3714534",
+      "parentUuid": "cf2920b1_3cf4db07",
       "range": {
         "startLine": 284,
         "startChar": 14,
