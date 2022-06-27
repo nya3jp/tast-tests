@@ -6,6 +6,8 @@ package crostini
 
 import (
 	"context"
+	"io/ioutil"
+	"regexp"
 	"time"
 
 	"github.com/godbus/dbus/v5"
@@ -28,9 +30,9 @@ const (
 	oomAnomalyEventServiceInterface   = "org.chromium.AnomalyEventServiceInterface"
 	oomAnomalyGuestOOMEventSignalName = "GuestOomEvent"
 	crosEventHistogram                = "Platform.CrOSEvent"
+	sigRegexp                         = "sig=guest-oom-event"
 	oomEventHistogramEnum             = 34
-
-	killCode = 9
+	killCode                          = 9
 )
 
 func init() {
@@ -89,6 +91,11 @@ func OOMEvent(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	daemonStorePaths, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Failed to get daemon store crash dir: ", err)
+	}
+
 	s.Log("Getting baseline metrics histogram")
 	histogram, err := metrics.GetHistogram(ctx, tconn, crosEventHistogram)
 	if err != nil {
@@ -107,6 +114,51 @@ func OOMEvent(ctx context.Context, s *testing.State) {
 	if err := checkOOMHistogram(ctx, tconn, histogram); err != nil {
 		s.Fatal("Could not get updated histogram: ", err)
 	}
+
+	if err := checkCrashReport(ctx, s, daemonStorePaths); err != nil {
+		s.Fatal("Could not find crash report: ", err)
+	}
+}
+
+func checkCrashReport(ctx context.Context, s *testing.State, daemonStorePaths []string) error {
+	s.Log("Checking for expected crash reports")
+	s.Log("looking in dirs: ", daemonStorePaths)
+
+	allfiles, err := crash.WaitForCrashFiles(ctx, daemonStorePaths, []string{`.*`})
+	if err != nil {
+		s.Fatal("Couldn't find any files")
+	}
+	s.Log("+++++++++++++++")
+	s.Log("files: ", allfiles)
+	s.Log("+++++++++++++++")
+
+	files, err := crash.WaitForCrashFiles(ctx, daemonStorePaths,
+		[]string{`guest_oom_event.*\.meta`,
+			`guest_oom_event.*\.log`})
+	if err != nil {
+		s.Fatal("Couldn't find expected files: ", err)
+	}
+
+	s.Log("Checking for expected metadata signature")
+
+	metaData, err := ioutil.ReadFile(files[`guest_oom_event.*\.meta`][0])
+	if err != nil {
+		s.Fatal("Failed to read the metadata file: ", err)
+	}
+	if re := regexp.MustCompile(sigRegexp); !re.Match(metaData) {
+		s.Fatalf("Did not find expected line %q in metadata file", sigRegexp)
+	}
+
+	// If the crash report files were as expected, delete
+	// them. This stops them from being uploaded to the crash
+	// server and polluting the data with fake crashes.
+	//
+	// Don't die on error, because this is just a cleanup step.
+	if err = crash.RemoveAllFiles(ctx, files); err != nil {
+		s.Log("Failed to clean up generated crash files: ", err)
+	}
+
+	return nil
 }
 
 func checkOOMHistogram(ctx context.Context, tconn *chrome.TestConn, histogram *metrics.Histogram) error {
@@ -135,6 +187,8 @@ func checkOOMHistogram(ctx context.Context, tconn *chrome.TestConn, histogram *m
 	if err != nil {
 		return errors.Wrap(err, "failed polling on metrics.GetHistogram")
 	}
+
+	testing.ContextLog(ctx, "Found the expected histogram")
 
 	return nil
 }
