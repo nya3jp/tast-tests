@@ -275,6 +275,11 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 
 	var vmPackPath string
 	if vmEnabled {
+		// Pass kernel param to ARCVM dev config
+		if err := arc.WriteArcvmDevConf(ctx, "--arcvm-mount-debugfs"); err != nil {
+			return nil, errors.Wrap(err, "failed to write arcvm dev config")
+		}
+		defer arc.RestoreArcvmDevConf(ctx)
 		// Pull and obtain ARCVM pack from guest OS.
 		vmPackPath, err = getGuestPack(ctx)
 		if err != nil {
