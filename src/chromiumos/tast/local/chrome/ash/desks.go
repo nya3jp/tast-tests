@@ -10,7 +10,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/input"
 )
 
 // CreateNewDesk requests Ash to create a new Virtual Desk which would fail if
@@ -108,4 +110,68 @@ func FindDeskTemplates(ctx context.Context, ac *uiauto.Context) ([]uiauto.NodeIn
 		return nil, errors.Wrap(err, "failed to find SavedDeskItemView")
 	}
 	return savedDeskItemViewInfo, nil
+}
+
+// DeleteAllDeskTemplates cleans up desk templates by using a series of mouse and keyboard events to delete each template.
+func DeleteAllDeskTemplates(ctx context.Context, ac *uiauto.Context, tconn *chrome.TestConn) error {
+	libraryButton := nodewith.Name("Library")
+	savedDeskGridView := nodewith.ClassName("SavedDeskLibraryView")
+	closeButton := nodewith.ClassName("CloseButton").Name("Delete")
+	deleteDialog := nodewith.ClassName("SavedDeskDialog")
+	// See if there are desk templates to delete.
+	found, err := ac.IsNodeFound(ctx, libraryButton)
+	if err != nil {
+		return errors.Wrap(err, "failed to try to find library button")
+	}
+	for found {
+		if err := uiauto.Combine(
+			"Go into Library",
+			ac.LeftClick(libraryButton),
+			ac.WaitUntilExists(savedDeskGridView),
+		)(ctx); err != nil {
+			return errors.Wrap(err, "failed to get into library view for clean up")
+		}
+		deskTemplatesInfo, err := FindDeskTemplates(ctx, ac)
+		if err != nil {
+			return errors.Wrap(err, "failed to find desk templates")
+		}
+		for i := range deskTemplatesInfo {
+			firstDeskTemplate := nodewith.ClassName("SavedDeskItemView").First()
+			if err := ac.MouseMoveTo(firstDeskTemplate, 0)(ctx); err != nil {
+				return errors.Wrapf(err, "failed to mouse over to desk template at position %s", i+1)
+			}
+			// Mouse press and hold on the desk template card to bring the delete button up.
+			if err := mouse.Press(tconn, mouse.LeftButton)(ctx); err != nil {
+				return errors.Wrap(err, "failed to press and hold desk template card")
+			}
+			kb, err := input.Keyboard(ctx)
+			if err != nil {
+				return errors.Wrap(err, "failed create keyboard")
+			}
+			defer kb.Close()
+			if err := uiauto.Combine(
+				"Delete desk templates",
+				ac.WaitUntilExists(closeButton),
+				ac.LeftClick(closeButton),
+				ac.WaitUntilExists(deleteDialog),
+				kb.AccelAction("Enter"),
+			)(ctx); err != nil {
+				return errors.Wrap(err, "fail to delete desk template")
+			}
+		}
+		// Exits overview mode.
+		if err := SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+			return errors.Wrap(err, "fail to get out of overview mode")
+		}
+		// Re-enter overview mode and continue deleting saved desk templates.
+		if err := SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+			return errors.Wrap(err, "fail to set overview mode")
+		}
+
+		found, err = ac.IsNodeFound(ctx, libraryButton)
+		if err != nil {
+			return errors.Wrap(err, "failed to try to find library button")
+		}
+	}
+	return nil
 }
