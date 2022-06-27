@@ -81,6 +81,22 @@ func (d *APIClient) Createfolder(ctx context.Context, fileName string, dirPath [
 	return d.service.Files.Create(folder).Context(ctx).Do()
 }
 
+// GetFileByID gets the metadata of a file on Drive by the `fileID` of
+// the file.
+func (d *APIClient) GetFileByID(ctx context.Context, fileID string) (*drive.File, error) {
+	return d.service.Files.Get(fileID).Fields(
+		"id",
+		"resourceKey",
+		"name",
+		"size",
+		"mimeType",
+		"parents",
+		"trashed",
+		"version",
+		"md5Checksum",
+	).Context(ctx).Do()
+}
+
 // RemoveFileByID removes the file by supplied fileID.
 func (d *APIClient) RemoveFileByID(ctx context.Context, fileID string) error {
 	return d.service.Files.Delete(fileID).Context(ctx).Do()
