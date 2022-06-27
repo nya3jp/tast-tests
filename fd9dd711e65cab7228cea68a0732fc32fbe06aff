@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4bedfb9_2b9b6f7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-06-27T19:12:26Z",
+      "side": 1,
+      "message": "\u003e \"interation\" is a possible misspelling of \"iteration\" or \"interaction\".\n\nDone.",
+      "parentUuid": "22eb123c_b71d6bdc",
+      "range": {
+        "startLine": 7,
+        "startChar": 30,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "fd9dd711e65cab7228cea68a0732fc32fbe06aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
