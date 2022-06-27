@@ -94,6 +94,30 @@
       },
       "revId": "918544fb2955f3b8fdcbef2174b48f9755e557aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e535b2d_679bfa80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-06-27T22:20:00Z",
+      "side": 1,
+      "message": "Since this CL never landed I went ahead and made the change.",
+      "parentUuid": "b0867eb5_dbfaed4f",
+      "range": {
+        "startLine": 258,
+        "startChar": 16,
+        "endLine": 258,
+        "endChar": 20
+      },
+      "revId": "918544fb2955f3b8fdcbef2174b48f9755e557aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
