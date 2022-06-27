@@ -108,6 +108,17 @@ func init() {
 			},
 			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
+			Name:      "2p_enterprise",
+			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
+			Val: meetTest{
+				num:         1,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeAsh,
+			},
+			Fixture: "loggedInToCUJUserEnterpriseWithWebRTCEventLogging",
+		}, {
 			Name:      "lacros_2p",
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
@@ -131,6 +142,17 @@ func init() {
 			},
 			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
+			Name:      "4p_enterprise",
+			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
+			Val: meetTest{
+				num:         3,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeAsh,
+			},
+			Fixture: "loggedInToCUJUserEnterpriseWithWebRTCEventLogging",
+		}, {
 			// Small meeting.
 			Name:      "4p_present_notes_split",
 			Timeout:   defaultTestTimeout,
@@ -146,6 +168,20 @@ func init() {
 			},
 			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
+			Name:      "4p_present_notes_split_enterprise",
+			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
+			Val: meetTest{
+				num:         3,
+				layout:      meetLayoutTiled,
+				present:     true,
+				docs:        true,
+				split:       true,
+				cam:         true,
+				browserType: browser.TypeAsh,
+			},
+			Fixture: "loggedInToCUJUserEnterpriseWithWebRTCEventLogging",
+		}, {
 			// Big meeting.
 			Name:      "16p",
 			Timeout:   defaultTestTimeout,
@@ -157,6 +193,18 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
+		}, {
+			// Big meeting.
+			Name:      "16p_enterprise",
+			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
+			Val: meetTest{
+				num:         15,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeAsh,
+			},
+			Fixture: "loggedInToCUJUserEnterpriseWithWebRTCEventLogging",
 		}, {
 			// Even bigger meeting.
 			Name:      "49p",
