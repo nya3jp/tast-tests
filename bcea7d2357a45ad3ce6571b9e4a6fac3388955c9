@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be57aa2b_d5c79005",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-06-27T22:27:43Z",
+      "side": 1,
+      "message": "Tast owners, please take a look.",
+      "revId": "bcea7d2357a45ad3ce6571b9e4a6fac3388955c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "431d7fc1_506efe0f",
@@ -65,6 +82,24 @@
       "writtenOn": "2022-06-27T22:25:36Z",
       "side": 1,
       "message": "Discussed offline. There are no tests using the nudges ATM. So no need to make it an option.",
+      "parentUuid": "431d7fc1_506efe0f",
+      "revId": "bcea7d2357a45ad3ce6571b9e4a6fac3388955c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c201c738_33e8aa2d",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-06-27T22:27:43Z",
+      "side": 1,
+      "message": "Specifically, I checked with minch@ and wcwang@. There aren\u0027t any tast tests that need the dark/light nudge or the launcher nudge.",
       "parentUuid": "431d7fc1_506efe0f",
       "revId": "bcea7d2357a45ad3ce6571b9e4a6fac3388955c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
