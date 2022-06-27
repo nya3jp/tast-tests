@@ -35,6 +35,7 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 		userName        = "foo@bar.baz"
 		userPassword    = "secret"
 		updatedPassword = "updatedsecret"
+		wrongPassword   = "wrongPassword"
 		keyLabel        = "fake_label"
 		testFile        = "file"
 		testFileContent = "content"
@@ -97,15 +98,30 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to write a file to the vault: ", err)
 	}
 
-	// Unmount and mount again.
-	if err := client.UnmountAll(ctx); err != nil {
-		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
+	if err := cryptohome.TestLockScreen(ctx, userName, userPassword, wrongPassword, keyLabel, client); err != nil {
+		s.Fatal("Failed to check lock screen with initial password: ", err)
 	}
 
 	// Update credential for the user.
 	authSessionID, err = cryptohome.UpdateUserCredentialWithAuthSession(ctx, userName, userPassword, updatedPassword, false, false)
 	if err != nil {
 		s.Fatal("Failed to update credential: ", err)
+	}
+	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
+
+	if err := cryptohome.TestLockScreen(ctx, userName, updatedPassword, userPassword, keyLabel, client); err != nil {
+		s.Fatal("Failed to check lock screen after changing password: ", err)
+	}
+
+	// Unmount and mount again.
+	if err := client.UnmountAll(ctx); err != nil {
+		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
+	}
+
+	// Authenticate again with old credential. This operation should now fail.
+	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, keyLabel, false, false)
+	if err == nil {
+		s.Fatal("Authenticate with old credentials succeeded when it should have failed")
 	}
 	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
@@ -125,5 +141,10 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read back test file: ", err)
 	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
 		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
+	}
+
+	// Ensure we still pass unlock screen
+	if err := cryptohome.TestLockScreen(ctx, userName, updatedPassword, userPassword, keyLabel, client); err != nil {
+		s.Fatal("Failed to check lock screen after re-login: ", err)
 	}
 }
