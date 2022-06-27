@@ -39,8 +39,19 @@ type ApStaConnectedEvent struct {
 	Addr net.HardwareAddr
 }
 
+// ApStaDisconnectedEvent defines data of AP-STA-DISCONNECTED event.
+type ApStaDisconnectedEvent struct {
+	// Addr is the MAC address of the station disconnected from the AP.
+	Addr net.HardwareAddr
+}
+
 // ToLogString formats the event data to a string suitable for logging.
 func (e *ApStaConnectedEvent) ToLogString() string {
+	return fmt.Sprintf("%+v\n", e)
+}
+
+// ToLogString formats the event data to a string suitable for logging.
+func (e *ApStaDisconnectedEvent) ToLogString() string {
 	return fmt.Sprintf("%+v\n", e)
 }
 
@@ -66,6 +77,16 @@ var eventDefs = []eventDef{
 				return nil, errors.Wrapf(err, "failed to parse station address %q", matches[1])
 			}
 			return &ApStaConnectedEvent{addr}, nil
+		},
+	},
+	{
+		regexp.MustCompile(`AP-STA-DISCONNECTED ([\da-fA-F:]+)`),
+		func(matches []string) (Event, error) {
+			addr, err := net.ParseMAC(matches[1])
+			if err != nil {
+				return nil, errors.Wrapf(err, "failed to parse station address %q", matches[1])
+			}
+			return &ApStaDisconnectedEvent{addr}, nil
 		},
 	},
 }
