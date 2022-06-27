@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6728ba03_92c0330e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-27T09:19:13Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "f3ccc80d040b8ec8f6c56becfbb58c7ce4915e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c08b7f64_80193922",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pin_unpin_media_pod.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-27T09:19:13Z",
+      "side": 1,
+      "message": "nit: rename it to `ytAppLink`",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "f3ccc80d040b8ec8f6c56becfbb58c7ce4915e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3e326af_6f521206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pin_unpin_media_pod.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-27T09:19:13Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 11
+      },
+      "revId": "f3ccc80d040b8ec8f6c56becfbb58c7ce4915e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81d7c7e0_97a58a1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pin_unpin_media_pod.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-27T09:19:13Z",
+      "side": 1,
+      "message": "nit: make them const:\n\n```\nconst (\n  ...\n)\n```",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 60
+      },
+      "revId": "f3ccc80d040b8ec8f6c56becfbb58c7ce4915e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
