@@ -174,11 +174,11 @@ func PromptForDownloadLocation(ctx context.Context, s *testing.State) {
 				}
 
 				// Check if the file was downloaded.
-				if _, err := os.Stat(downloadsPath + "prompt_for_download_location.zip"); err != nil && !os.IsNotExist(err) {
+				if _, err := os.Stat(downloadsPath + "/prompt_for_download_location.zip"); err != nil && !os.IsNotExist(err) {
 					return testing.PollBreak(errors.Wrap(err, "finding downloaded file failed"))
 				} else if !os.IsNotExist(err) {
 					// Remove downloaded file.
-					if err := os.Remove(downloadsPath + "prompt_for_download_location.zip"); err != nil {
+					if err := os.Remove(downloadsPath + "/prompt_for_download_location.zip"); err != nil {
 						return testing.PollBreak(errors.Wrap(err, "failed to remove prompt_for_download_location.zip"))
 					}
 					asked = false
