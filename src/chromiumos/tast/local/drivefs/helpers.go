@@ -6,10 +6,16 @@ package drivefs
 
 import (
 	"context"
+	"crypto/md5"
+	"fmt"
+	"io"
 	"io/ioutil"
+	"math/rand"
+	"os"
 	"path"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
@@ -63,4 +69,25 @@ func saveDriveLogs(ctx context.Context, homeDir, persistableToken string) {
 	if err = ioutil.WriteFile(filepath.Join(outDir, "drivefs_logs.txt"), logContents, 0644); err != nil {
 		testing.ContextLog(ctx, "Could not write the Drive log to out dir: ", err)
 	}
+}
+
+// GenerateTestFileName generates a unique-ish file name based on a provided
+// prefix, the current time, and a random number.
+func GenerateTestFileName(prefix string) string {
+	return fmt.Sprintf("%s-%d-%d", prefix, time.Now().UnixNano(), rand.Intn(10000))
+}
+
+// MD5SumFile generates an MD5 sum of a file at `path`.
+func MD5SumFile(path string) (string, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return "", err
+	}
+	defer file.Close()
+	hash := md5.New()
+	_, err = io.Copy(hash, file)
+	if err != nil {
+		return "", err
+	}
+	return fmt.Sprintf("%x", hash.Sum(nil)), nil
 }
