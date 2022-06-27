@@ -6,6 +6,7 @@ package wmp
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -34,13 +35,14 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"chrome", "android_vm"},
-		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
+		SoftwareDeps: []string{"chrome", "android_vm", "no_kernel_upstream"},
+		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 180*time.Second,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 	})
 }
 
 func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
+	// TODO(zhumatthew): Remove `no_kernel_upstream` from SoftwareDeps once kernel_uprev boards are more stable.
 	// Reserve five seconds for various cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
@@ -87,18 +89,50 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}
 
-	// Open PlayStore, Chrome and Files.
-	for _, app := range []apps.App{apps.PlayStore, apps.Chrome, apps.Files} {
+	// Enters overview mode and check if we need to clean up save desk templates.
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+		s.Fatal("Failed to set overview mode: ", err)
+	}
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
+
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		s.Fatal("Failed to wait for overview animation to be completed: ", err)
+	}
+
+	// Find the "Library" button.
+	libraryButton := nodewith.Name("Library")
+	if err := ac.WithTimeout(30 * time.Second).WaitUntilExists(libraryButton)(ctx); err == nil {
+		// Check to see if chrome sync is done fetching for desk templates. If so, delete all the desk templates.
+		removeDeskTemplatesError := ash.DeleteAllDeskTemplates(ctx, ac, tconn)
+		if removeDeskTemplatesError != nil {
+			s.Fatal("Fail to clean up desk templates: ", err)
+		}
+	}
+
+	// Exit overview mode
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to exit overview mode: ", err)
+	}
+
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		s.Fatal("Failed to wait for overview animation to be completed: ", err)
+	}
+
+	// Opens PlayStore, Chrome and Files.
+	appsList := []apps.App{apps.Chrome, apps.Files, apps.PlayStore}
+	for _, app := range appsList {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to open %s: %v", app.Name, err)
 		}
 		if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 			s.Fatalf("%s did not appear in shelf after launch: %s", app.Name, err)
 		}
-	}
-
-	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait for app launch events to be completed: ", err)
+		// Wait for the launched app window to become visible.
+		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
+			return w.IsVisible && strings.Contains(w.Title, app.Name)
+		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+			s.Fatalf("%v app window not visible after launching: %v", app.Name, err)
+		}
 	}
 
 	// Define keyboard to perform keyboard shortcuts.
@@ -112,6 +146,8 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
+
 	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		s.Fatal("Failed to wait for overview animation to be completed: ", err)
 	}
