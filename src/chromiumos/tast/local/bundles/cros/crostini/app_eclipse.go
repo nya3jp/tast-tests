@@ -7,7 +7,6 @@ package crostini
 import (
 	"context"
 	"fmt"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/testexec"
@@ -72,17 +71,6 @@ func AppEclipse(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-
-	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
-	if err != nil {
-		s.Log("Failed to create ScreenRecorder: ", err)
-	}
-
-	defer uiauto.ScreenRecorderStopSaveRelease(ctx, screenRecorder, filepath.Join(s.OutDir(), "record.webm"))
-
-	if screenRecorder != nil {
-		screenRecorder.Start(ctx, tconn)
-	}
 
 	// Open Terminal app.
 	terminalApp, err := terminalapp.Launch(ctx, tconn)
