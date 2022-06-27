@@ -39,6 +39,30 @@
       },
       "revId": "8cd066fdab1abbd000abeac45815afcbaf2b1612",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a712d6d6_1e8d729a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_ipv4_static_with_dhcp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-27T04:23:07Z",
+      "side": 1,
+      "message": "Done. Good to know that, just found this is also on go/tast-writing but I missed that. Thanks for the suggestion!\nCould you also help review this patch https://crrev.com/c/3721185 which applying this pattern to other routing tests? Thanks!",
+      "parentUuid": "3c282023_2d5f34fc",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 11
+      },
+      "revId": "8cd066fdab1abbd000abeac45815afcbaf2b1612",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
