@@ -56,11 +56,12 @@ func init() {
 // Difference for Play Store shown times in case package manager, GMS Core and other caches
 // enabled/disabled are tracked. This difference shows the benefit using the pre-generated
 // caches. Results are:
-//   * Average time difference for ARC optin in seconds
-//   * Average time difference for ARC optin in percents relative to the boot with caches on.
+//   - Average time difference for ARC optin in seconds
+//   - Average time difference for ARC optin in percents relative to the boot with caches on.
+//
 // Optional (in case RAPL interface is available)
-//   * Average energy difference required for ARC optin in joules.
-//   * Average energy difference required for ARC optin in percents relative to the boot with caches on.
+//   - Average energy difference required for ARC optin in joules.
+//   - Average energy difference required for ARC optin in percents relative to the boot with caches on.
 func CachePerf(ctx context.Context, s *testing.State) {
 	const (
 		// successBootCount is the number of passing ARC boots to collect results.
@@ -253,7 +254,7 @@ func bootARCCachePerf(ctx context.Context, s *testing.State, mode cacheMode) (ti
 	}
 
 	s.Log("Waiting for Play Store window to be shown")
-	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
+	if err := optin.WaitForPlayStoreShown(ctx, tconn, 2*time.Minute); err != nil {
 		return 0, 0, errors.Wrap(err, "failed to wait Play Store shown")
 	}
 
