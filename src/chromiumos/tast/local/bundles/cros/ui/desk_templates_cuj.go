@@ -40,7 +40,7 @@ func init() {
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc"},
-		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 2*time.Minute,
+		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 3*time.Minute,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 	})
 }
@@ -132,9 +132,19 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-			return errors.Wrap(err, "error in waiting for overview animation to be completed")
+			s.Fatal("Failed to wait for overview animation to be completed: ", err)
 		}
 
+		// Find the "Library" button.
+		libraryButton := nodewith.Name("Library")
+
+		if err := ac.WithTimeout(30 * time.Second).WaitUntilExists(libraryButton)(ctx); err == nil {
+			// Check to see if chrome sync is done fetching for desk templates. If so, delete all the desk templates.
+			removeDeskTemplatesError := ash.DeleteAllDeskTemplates(ctx, ac, tconn)
+			if removeDeskTemplatesError != nil {
+				s.Fatal("Fail to clean up desk templates: ", err)
+			}
+		}
 		// Find the "save desk as a template" button.
 		saveDeskButton := nodewith.ClassName("SaveDeskTemplateButton")
 		desksTemplatesGridView := nodewith.ClassName("SavedDeskLibraryView")
@@ -168,9 +178,6 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 			return errors.Wrap(err, "unable to set overview mode")
 		}
-
-		// Find the "Library" button.
-		libraryButton := nodewith.Name("Library")
 
 		// Show saved desk template.
 		if err := uiauto.Combine(
