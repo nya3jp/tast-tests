@@ -288,6 +288,9 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	if err := RemovePerUserConsent(ctx); err != nil {
 		return errors.Wrap(err, "failed to clean up per-user consent")
 	}
+	if err := RemovePerUserAppSyncConsent(ctx); err != nil {
+		return errors.Wrap(err, "failed to clean up per-user appsync consent")
+	}
 
 	// Reinitialize crash_reporter in case previous tests have left bad state
 	// in core_pattern, etc.
@@ -375,6 +378,46 @@ func RemovePerUserConsent(ctx context.Context) error {
 			testing.ContextLogf(ctx, "Error removing consent-enabled file %s: %v", f, err)
 			if firstErr == nil {
 				firstErr = errors.Wrapf(err, "failed removing consent-enabled file %s", f)
+			}
+		}
+	}
+	return firstErr
+}
+
+// CreatePerUserAppSyncConsent creates the per-user AppSync consent file with the specified state.
+func CreatePerUserAppSyncConsent(ctx context.Context, enable bool) error {
+	dirs, err := GetDaemonStoreAppSyncConsentDirs(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get daemon store appsync consent dirs")
+	}
+	// Set consent for all active dirs.
+	for _, d := range dirs {
+		f := filepath.Join(d, daemonStoreConsentName)
+		contents := "0"
+		if enable {
+			contents = "1"
+		}
+		if err := ioutil.WriteFile(f, []byte(contents), 0644); err != nil {
+			return errors.Wrapf(err, "failed writing appsync consent-enabled file %s", f)
+		}
+	}
+	return nil
+}
+
+// RemovePerUserAppSyncConsent deletes the per-user AppSync consent files to effectively remove consent.
+func RemovePerUserAppSyncConsent(ctx context.Context) error {
+	dirs, err := GetDaemonStoreAppSyncConsentDirs(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get daemon store appsync consent dirs")
+	}
+	// Clear per-user consent for all active dirs.
+	var firstErr error
+	for _, d := range dirs {
+		f := filepath.Join(d, daemonStoreConsentName)
+		if err := os.Remove(f); err != nil && !os.IsNotExist(err) {
+			testing.ContextLogf(ctx, "Error removing appsync consent-enabled file %s: %v", f, err)
+			if firstErr == nil {
+				firstErr = errors.Wrapf(err, "failed removing appsync consent-enabled file %s", f)
 			}
 		}
 	}

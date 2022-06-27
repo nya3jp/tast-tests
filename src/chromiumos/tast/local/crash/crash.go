@@ -261,6 +261,34 @@ func GetDaemonStoreConsentDirs(ctx context.Context) ([]string, error) {
 	return ret, nil
 }
 
+// GetDaemonStoreAppSyncConsentDirs gives the paths to the daemon store consent directories for the currently active sessions.
+func GetDaemonStoreAppSyncConsentDirs(ctx context.Context) ([]string, error) {
+	// Need to wait until the UI job is running and has stablized in order to ensure
+	// that daemon-store will be available.
+	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
+		return []string{}, errors.Wrap(err, "failed to ensure ui job is running")
+	}
+
+	sessionManager, err := session.NewSessionManager(ctx)
+	if err != nil {
+		return []string{}, errors.Wrap(err, "couldn't start session manager")
+	}
+
+	sessions, err := sessionManager.RetrieveActiveSessions(ctx)
+	if err != nil {
+		return []string{}, errors.Wrap(err, "couldn't retrieve active sessions")
+	}
+
+	var ret []string
+	for k := range sessions {
+		userhash := sessions[k]
+		ret = append(ret, fmt.Sprintf("/home/root/%s/appsync-consent", userhash))
+	}
+	// If no one is logged in, that's okay -- just return an empty list and don't fail.
+	// (Many tests are run when no user is logged in.)
+	return ret, nil
+}
+
 // RegexesNotFound is an error type, used to indicate that
 // WaitForCrashFiles didn't find matches for all of the regexs.
 type RegexesNotFound struct {
@@ -336,8 +364,9 @@ func MetaString(metaString string) WaitForCrashFilesOpt {
 // If any regex was not matched, instead returns an error of type RegexesNotFound.
 //
 // When it comes to deleting files, tests should:
-//   * Remove matching files that they expect to generate
-//   * Leave matching files they do not expect to generate
+//   - Remove matching files that they expect to generate
+//   - Leave matching files they do not expect to generate
+//
 // If there are more matches than expected and the test can't tell which are expected, it shouldn't delete any.
 func WaitForCrashFiles(ctx context.Context, dirs, regexes []string, opts ...WaitForCrashFilesOpt) (map[string][]string, error) {
 	// Always insist that meta files have "done=1", otherwise we may return
