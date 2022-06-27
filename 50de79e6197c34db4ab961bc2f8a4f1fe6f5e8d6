@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47fe244d_0e860871",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-27T18:27:38Z",
+      "side": 1,
+      "message": "only to this or other hermes tests aswell ? I see multiprofile, testci not having cellular fixture.",
+      "parentUuid": "acada1d3_e092c4d0",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 4
+      },
+      "revId": "50de79e6197c34db4ab961bc2f8a4f1fe6f5e8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bfbde80f_4da6b950",
         "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-27T17:49:05Z",
       "side": 1,
       "message": "5 minutes is sufficient for the test, I guess.",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 13
+      },
+      "revId": "50de79e6197c34db4ab961bc2f8a4f1fe6f5e8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "138ab9b1_4784fbd7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-27T18:27:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bfbde80f_4da6b950",
       "range": {
         "startLine": 25,
         "startChar": 11,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9280f769_9b4d9012",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-27T18:27:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba836935_4652a9a1",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "50de79e6197c34db4ab961bc2f8a4f1fe6f5e8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b13034d3_13515e32",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1254b307_5bf51ebb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-27T18:27:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b13034d3_13515e32",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 11
+      },
+      "revId": "50de79e6197c34db4ab961bc2f8a4f1fe6f5e8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "574ff27a_594ffcc1",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-06-27T17:49:05Z",
       "side": 1,
       "message": "We can remove this code. PendingProfiles will not affect other tests.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 51
+      },
+      "revId": "50de79e6197c34db4ab961bc2f8a4f1fe6f5e8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82ff191a_2816d076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1443943
+      },
+      "writtenOn": "2022-06-27T18:27:38Z",
+      "side": 1,
+      "message": "Does reset helps to clear pendingprofiles property value for next time this test run?",
+      "parentUuid": "574ff27a_594ffcc1",
       "range": {
         "startLine": 64,
         "startChar": 0,
