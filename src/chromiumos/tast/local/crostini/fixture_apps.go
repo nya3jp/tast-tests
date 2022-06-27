@@ -6,9 +6,11 @@ package crostini
 
 import (
 	"context"
+	"path/filepath"
 
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/devicemode"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/testing"
 )
 
@@ -45,6 +47,7 @@ type crostiniAppsFixture struct {
 	tconn            *chrome.TestConn
 	deviceMode       devicemode.DeviceMode
 	revertDeviceMode func(ctx context.Context) error
+	screenRecorder   *uiauto.ScreenRecorder
 }
 
 func (f *crostiniAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -53,6 +56,19 @@ func (f *crostiniAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) i
 }
 
 func (f *crostiniAppsFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	// Setup the screen recorder.
+	recorder, err := uiauto.NewScreenRecorder(ctx, f.tconn)
+	if err != nil {
+		s.Log("Failed to create screen recorder: ", err)
+		return
+	}
+	if err := recorder.Start(ctx, f.tconn); err != nil {
+		s.Log("Failed to start screen recorder: ", err)
+		return
+	}
+	f.screenRecorder = recorder
+
+	// Setup the device mode.
 	revert, err := devicemode.EnsureDeviceMode(ctx, f.tconn, f.deviceMode)
 	if err != nil {
 		s.Logf("Failed to set device mode to %s : %s", f.deviceMode, err)
@@ -66,6 +82,9 @@ func (f *crostiniAppsFixture) PostTest(ctx context.Context, s *testing.FixtTestS
 			s.Log("Failed to reset device mode: ", err)
 		}
 		f.revertDeviceMode = nil
+	}
+	if f.screenRecorder != nil {
+		f.screenRecorder.StopAndSaveOnError(ctx, filepath.Join(s.OutDir(), "record.webm"), s.HasError)
 	}
 }
 
