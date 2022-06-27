@@ -16,6 +16,24 @@
       "message": "Discussed with Prashant offline that the test should be skipped (not pass) when not testable. (no USB device detected when changing servo MUX state)\n\nPrashant@, I think we need to move this logic (change servo MUX state then check `lsusb`) into a dependency to skip the test, but it seems that servo is not taken into account in hardware/software dependencies. Would it be okay to have a TODO here?",
       "revId": "3b9072325e98e678caf3ee2f19466d0753580a6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9424153a_eaafd61a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/usb_hotplug_unplug_suspend_resume.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-27T18:29:09Z",
+      "side": 1,
+      "message": "Added a TODO.\nPrashant, can you take a look if this is okay?",
+      "parentUuid": "470da326_a2d79a9e",
+      "revId": "3b9072325e98e678caf3ee2f19466d0753580a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
