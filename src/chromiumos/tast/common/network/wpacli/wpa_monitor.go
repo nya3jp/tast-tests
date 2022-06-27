@@ -54,6 +54,16 @@ type ConnectedEvent struct {
 	RcvTime time.Time
 }
 
+// P2PGroupStartedEvent defines data of P2P-GROUP-STARTED event.
+type P2PGroupStartedEvent struct {
+	IfaceName  string
+	IfaceType  string
+	SSID       string
+	Freq       int
+	Passphrase string
+	GODevAddr  string
+}
+
 // ScanResultsEvent defines data of CTRL-EVENT-SCAN-RESULTS event.
 type ScanResultsEvent struct {
 }
@@ -104,6 +114,21 @@ var eventDefs = []eventDef{
 			event := new(ConnectedEvent)
 			event.BSSID = matches[1]
 			event.RcvTime = time.Now()
+			return event, firstError
+		},
+	},
+	// Example of P2P-GROUP-STARTED output:
+	// P2P-GROUP-STARTED p2p-wlan0-13 GO ssid="DIRECT-0t" freq=2412 passphrase="sktW4VIQ" go_dev_addr=4c:77:cb:54:8e:50
+	{
+		regexp.MustCompile(`P2P-GROUP-STARTED ([\da-zA-Z-]+) ([\da-zA-Z]+) ssid="([\da-zA-Z-]+)" freq=([\d]+) passphrase="([\da-zA-Z]+)" go_dev_addr=([\da-zA-Z:]+)`),
+		func(matches []string) (_ SupplicantEvent, firstError error) {
+			event := new(P2PGroupStartedEvent)
+			event.IfaceName = matches[1]
+			event.IfaceType = matches[2]
+			event.SSID = matches[3]
+			event.Freq = atoi(matches[4], &firstError)
+			event.Passphrase = matches[5]
+			event.GODevAddr = matches[6]
 			return event, firstError
 		},
 	},
@@ -159,6 +184,11 @@ func (e *DisconnectedEvent) ToLogString() string {
 func (e *ConnectedEvent) ToLogString() string {
 	const timeLayout = "2006-01-02 15:04:05.000000"
 	return fmt.Sprintf("%s %+v\n", e.RcvTime.Format(timeLayout), e)
+}
+
+// ToLogString formats the event data to string suitable for logging.
+func (e *P2PGroupStartedEvent) ToLogString() string {
+	return fmt.Sprintf("%+v\n", e)
 }
 
 // StartWPAMonitor configures and starts wpa_supplicant events monitor
