@@ -67,6 +67,98 @@
       "message": "Replacing myself with alvinjia@ who has more context on these changes.",
       "revId": "a977ff4bb4e9020601a4f43ad4b2bcf2e8390b19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098823ac_019605fd",
+        "filename": "src/chromiumos/tast/local/arc/apputil/youtube/youtube.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-27T00:58:32Z",
+      "side": 1,
+      "message": "How about refactoring these using `uiauto.Combine`?",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "a977ff4bb4e9020601a4f43ad4b2bcf2e8390b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a01b074_80598ead",
+        "filename": "src/chromiumos/tast/local/arc/apputil/youtube/youtube.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-27T00:58:32Z",
+      "side": 1,
+      "message": "nit: just `time.Second`",
+      "range": {
+        "startLine": 115,
+        "startChar": 35,
+        "endLine": 115,
+        "endChar": 50
+      },
+      "revId": "a977ff4bb4e9020601a4f43ad4b2bcf2e8390b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47b08a64_b97fd19a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_source_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-27T00:58:32Z",
+      "side": 1,
+      "message": "You also need handle other errors.",
+      "range": {
+        "startLine": 75,
+        "startChar": 42,
+        "endLine": 75,
+        "endChar": 60
+      },
+      "revId": "a977ff4bb4e9020601a4f43ad4b2bcf2e8390b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91f8b423_f3bee1da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/media_source_ui.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-27T00:58:32Z",
+      "side": 1,
+      "message": "you may want to call this earlier, otherwise it can only capture the error of `ui.WaitUntilExists(resourceName)(ctx)`",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 108
+      },
+      "revId": "a977ff4bb4e9020601a4f43ad4b2bcf2e8390b19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
