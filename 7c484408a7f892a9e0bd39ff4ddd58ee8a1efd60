@@ -16,6 +16,23 @@
       "message": "Ran locally https://paste.googleplex.com/5118908819308544",
       "revId": "7c484408a7f892a9e0bd39ff4ddd58ee8a1efd60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fba49fb6_7e7d6358",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-27T08:40:33Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "7c484408a7f892a9e0bd39ff4ddd58ee8a1efd60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
