@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/rpc"
 	pb "chromiumos/tast/services/cros/hps"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -34,6 +35,7 @@ func init() {
 		},
 		Attr:         []string{"group:camerabox", "group:hps", "hps_perbuild"},
 		Timeout:      6 * time.Minute,
+		HardwareDeps: hwdep.D(hwdep.HPS()),
 		SoftwareDeps: []string{"hps", "chrome", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.browser.ChromeService", "tast.cros.hps.HpsService"},
 		Vars:         []string{"tablet", "grpcServerPort"},
