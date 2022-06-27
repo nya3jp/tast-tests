@@ -53,6 +53,7 @@ func init() {
 					credentials: &passpoint.Credentials{
 						Domain:  passpoint.BlueDomain,
 						HomeOIs: []uint64{passpoint.HomeOI},
+						Auth:    passpoint.AuthTTLS,
 					},
 					aps: []passpoint.AccessPoint{
 						{
@@ -77,6 +78,7 @@ func init() {
 						Domain:     passpoint.BlueDomain,
 						HomeOIs:    []uint64{passpoint.HomeOI},
 						RoamingOIs: []uint64{passpoint.RoamingOI1, passpoint.RoamingOI2},
+						Auth:       passpoint.AuthTTLS,
 					},
 					aps: []passpoint.AccessPoint{
 						{
@@ -101,6 +103,7 @@ func init() {
 						Domain:     passpoint.BlueDomain,
 						HomeOIs:    []uint64{passpoint.HomeOI},
 						RoamingOIs: []uint64{passpoint.RoamingOI1, passpoint.RoamingOI2},
+						Auth:       passpoint.AuthTTLS,
 					},
 					aps: []passpoint.AccessPoint{
 						{
@@ -125,6 +128,7 @@ func init() {
 						Domain:     passpoint.BlueDomain,
 						HomeOIs:    []uint64{passpoint.HomeOI},
 						RoamingOIs: []uint64{passpoint.RoamingOI1, passpoint.RoamingOI2},
+						Auth:       passpoint.AuthTTLS,
 					},
 					aps: []passpoint.AccessPoint{
 						{
@@ -193,7 +197,11 @@ func PasspointRoaming(ctx context.Context, s *testing.State) {
 	defer tc.manager.SetInterworkingSelectEnabled(ctx, tc.clientIface, false)
 
 	// Add the set of credentials to Shill.
-	if err := tc.manager.AddPasspointCredentials(ctx, profile, tc.credentials.ToProperties()); err != nil {
+	prop, err := tc.credentials.ToShillProperties()
+	if err != nil {
+		s.Fatal("Failed to get credentials' shill properties: ", err)
+	}
+	if err := tc.manager.AddPasspointCredentials(ctx, profile, prop); err != nil {
 		s.Fatal("Failed to set Passpoint credentials: ", err)
 	}
 
