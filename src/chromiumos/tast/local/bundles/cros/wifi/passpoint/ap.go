@@ -19,16 +19,6 @@ import (
 	"chromiumos/tast/local/hostapd"
 )
 
-// Auth is the authentication method the access point will expose.
-type Auth int
-
-const (
-	// AuthTLS represents the EAP-TLS authentication method.
-	AuthTLS Auth = iota
-	// AuthTTLS represents the EAP-TTLS with MSCHAPv2 authentication method.
-	AuthTTLS
-)
-
 // AccessPoint describes a Passpoint compatible access point with its match criteria.
 type AccessPoint struct {
 	// SSID is the name of the network.
