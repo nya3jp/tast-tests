@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "345cc535_3c901874",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-27T08:22:36Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "827c51829feb8d0420e50328f7c1cf2a4f4904ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86aabbdf_0f352053",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-27T08:22:36Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "827c51829feb8d0420e50328f7c1cf2a4f4904ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5140369_d9fe0756",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-27T08:22:36Z",
+      "side": 1,
+      "message": "nit: missing .",
+      "revId": "827c51829feb8d0420e50328f7c1cf2a4f4904ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
