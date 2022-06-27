@@ -35,7 +35,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
-		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
+		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 180*time.Second,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 	})
 }
@@ -112,8 +112,14 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
-	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait for overview animation to be completed: ", err)
+	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
+
+	if err := ac.WithInterval(90*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		// If there are event changes, check to see if it's a finish chrome sync for desk templates. If so, delete all the desk templates.
+		removeDeskTemplatesError := ash.DeleteAllDeskTemplates(ctx, ac, tconn)
+		if removeDeskTemplatesError != nil {
+			s.Fatal("Fail to clean up desk templates: ", err)
+		}
 	}
 
 	// Find the save desk buttons and the grid views.
