@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acada1d3_e092c4d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-06-27T17:49:05Z",
+      "side": 1,
+      "message": "Please add cellular fixture",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 4
+      },
+      "revId": "50de79e6197c34db4ab961bc2f8a4f1fe6f5e8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfbde80f_4da6b950",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-06-27T17:49:05Z",
+      "side": 1,
+      "message": "5 minutes is sufficient for the test, I guess.",
+      "range": {
+        "startLine": 25,
+        "startChar": 11,
+        "endLine": 25,
+        "endChar": 13
+      },
+      "revId": "50de79e6197c34db4ab961bc2f8a4f1fe6f5e8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba836935_4652a9a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-06-27T17:49:05Z",
+      "side": 1,
+      "message": "We also don\u0027t need to reset the eUICC for this test.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "50de79e6197c34db4ab961bc2f8a4f1fe6f5e8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b13034d3_13515e32",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-06-27T17:49:05Z",
+      "side": 1,
+      "message": "nit: EID",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 11
+      },
+      "revId": "50de79e6197c34db4ab961bc2f8a4f1fe6f5e8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574ff27a_594ffcc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-06-27T17:49:05Z",
+      "side": 1,
+      "message": "We can remove this code. PendingProfiles will not affect other tests.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 51
+      },
+      "revId": "50de79e6197c34db4ab961bc2f8a4f1fe6f5e8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
