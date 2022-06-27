@@ -51,6 +51,24 @@
       "parentUuid": "3f58f1b6_2e99ad6c",
       "revId": "192c121b9cf858d9f8e9025f0a5f8d207bc402c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af79d893_2da91ac9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-27T16:29:19Z",
+      "side": 1,
+      "message": "OK, maybe change this comment to \"Please ensure there is a stork profile for this EID already before running the test\" or something.",
+      "parentUuid": "8e86234e_b16dc212",
+      "revId": "192c121b9cf858d9f8e9025f0a5f8d207bc402c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
