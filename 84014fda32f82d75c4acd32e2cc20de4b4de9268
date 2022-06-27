@@ -16,6 +16,57 @@
       "message": "Please review.\n\nThis is a small improvement for one real-life failure we diagnosed manually, but I decided to automate the verification so that we avoid time-consuming investigation.",
       "revId": "84014fda32f82d75c4acd32e2cc20de4b4de9268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1087b168_837c1d97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-27T15:56:20Z",
+      "side": 1,
+      "message": "I have nit comments. Also, please have a domain expert to give you a +2. Thanks.",
+      "revId": "84014fda32f82d75c4acd32e2cc20de4b4de9268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb285fe_7afb24c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-27T15:56:20Z",
+      "side": 1,
+      "message": "Do not need else. The if-clause returns.",
+      "revId": "84014fda32f82d75c4acd32e2cc20de4b4de9268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35a4b585_2483c0ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-27T15:56:20Z",
+      "side": 1,
+      "message": "nit: Please add comments for this function how it determines whether it is true or false.",
+      "revId": "84014fda32f82d75c4acd32e2cc20de4b4de9268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
