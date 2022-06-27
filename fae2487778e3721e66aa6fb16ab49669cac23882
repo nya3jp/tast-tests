@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb57b78_d1e7211f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/search_help_content.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-06-27T17:02:36Z",
+      "side": 1,
+      "message": "Good suggestion. Done.",
+      "parentUuid": "0682936c_df07566e",
+      "revId": "fae2487778e3721e66aa6fb16ab49669cac23882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3e67b7e_850234e3",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dbaf604_60baac6c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/feedbackapp/feedbackapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-06-27T17:02:36Z",
+      "side": 1,
+      "message": "Good catch. I simplified the code based on your suggestion.",
+      "parentUuid": "a3e67b7e_850234e3",
+      "revId": "fae2487778e3721e66aa6fb16ab49669cac23882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2e6759c_65a9012e",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-06-24T18:53:47Z",
       "side": 1,
       "message": "nit: The name of the function shouldn\u0027t be used as part of the description. How about `Launch starts the Feedback app via the default method`?",
+      "revId": "fae2487778e3721e66aa6fb16ab49669cac23882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2421ff80_e44c9e64",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/feedbackapp/feedbackapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-06-27T17:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2e6759c_65a9012e",
       "revId": "fae2487778e3721e66aa6fb16ab49669cac23882",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
