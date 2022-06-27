@@ -35,7 +35,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
-		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
+		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 180*time.Second,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 	})
 }
@@ -112,15 +112,26 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for overview animation to be completed: ", err)
 	}
 
+	// Find the "Library" button.
+	libraryButton := nodewith.Name("Library")
+
+	if err := ac.WithTimeout(30 * time.Second).WaitUntilExists(libraryButton)(ctx); err == nil {
+		// Check to see if chrome sync is done fetching for desk templates. If so, delete all the desk templates.
+		removeDeskTemplatesError := ash.DeleteAllDeskTemplates(ctx, ac, tconn)
+		if removeDeskTemplatesError != nil {
+			s.Fatal("Fail to clean up desk templates: ", err)
+		}
+	}
+
 	// Find the "save desk as a template" button.
 	saveDeskButton := nodewith.ClassName("SaveDeskTemplateButton")
-	desksTemplatesGridView := nodewith.ClassName("SavedDeskLibraryView")
+	savedDeskGridView := nodewith.ClassName("SavedDeskLibraryView")
 
 	if err := uiauto.Combine(
 		"save a desk template",
 		ac.LeftClick(saveDeskButton),
 		// Wait for the saved desk grid shows up.
-		ac.WaitUntilExists(desksTemplatesGridView),
+		ac.WaitUntilExists(savedDeskGridView),
 	)(ctx); err != nil {
 		s.Fatal("Failed to save a desk template: ", err)
 	}
@@ -146,14 +157,12 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
 
-	// Find the "Library" button.
-	templatesButton := nodewith.Name("Library")
 	// Show saved desk template.
 	if err := uiauto.Combine(
 		"show the saved desks template",
-		ac.LeftClick(templatesButton),
+		ac.LeftClick(libraryButton),
 		// Wait for the saved desks grid shows up.
-		ac.WaitUntilExists(desksTemplatesGridView),
+		ac.WaitUntilExists(savedDeskGridView),
 	)(ctx); err != nil {
 		s.Fatal("Failed to show saved desks templates: ", err)
 	}
@@ -172,7 +181,7 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 	newDeskMiniView :=
 		nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", "Desk 1 (1)"))
 
-	// Launch the saved desk template.
+	// Launch the desk template.
 	if err := uiauto.Combine(
 		"launch the saved desk template",
 		ac.LeftClick(firstDeskTemplate),
