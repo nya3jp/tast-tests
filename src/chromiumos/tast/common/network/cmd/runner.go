@@ -7,6 +7,8 @@ package cmd
 
 import (
 	"context"
+	"io"
+	"os"
 )
 
 // Runner is the shared interface for local/remote command execution.
@@ -15,4 +17,16 @@ type Runner interface {
 	Run(ctx context.Context, cmd string, args ...string) error
 	// Output runs a command, waits for its completion and returns stdout output of the command.
 	Output(ctx context.Context, cmd string, args ...string) ([]byte, error)
+	// Create creates a command.
+	Create(ctx context.Context, cmd string, args ...string)
+	// SetStdOut sets the standard output of existed command.
+	SetStdOut(stdoutFile *os.File)
+	// StderrPipe sets standard error pipe of existed command.
+	StderrPipe() (io.ReadCloser, error)
+	// StartExistedCmd starts existed command.
+	StartExistedCmd() error
+	// WaitExistedCmd waits existed command.
+	WaitExistedCmd() error
+	// CheckCmdExisted check if the command existed.
+	CheckCmdExisted() bool
 }
