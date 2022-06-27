@@ -46,6 +46,30 @@
       },
       "revId": "453aebe9ce690750f39d41648a8eb8134716e824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d73ba480_e5ae163d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-27T20:51:55Z",
+      "side": 1,
+      "message": "Ah great, thanks! can you please add a comment here explaining the nohup?",
+      "parentUuid": "17d5ceb6_452306d9",
+      "range": {
+        "startLine": 140,
+        "startChar": 41,
+        "endLine": 140,
+        "endChar": 46
+      },
+      "revId": "453aebe9ce690750f39d41648a8eb8134716e824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
