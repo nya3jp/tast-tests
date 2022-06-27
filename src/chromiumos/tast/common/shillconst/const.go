@@ -41,6 +41,7 @@ const (
 	DevicePropertyPowered         = "Powered"
 	DevicePropertyType            = "Type"
 	DevicePropertySelectedService = "SelectedService"
+	DevicePropertyIPConfigs       = "IPConfigs"
 
 	// Cellular device property names.
 	DevicePropertyCellularAPNList            = "Cellular.APNList"
@@ -129,6 +130,7 @@ const (
 	ServicePropertyAutoConnect       = "AutoConnect"
 	ServicePropertyGUID              = "GUID"
 	ServicePropertyProvider          = "Provider"
+	ServicePropertyPriority          = "Priority"
 	ServicePropertyEphemeralPriority = "EphemeralPriority"
 
 	// Cellular service property names.
