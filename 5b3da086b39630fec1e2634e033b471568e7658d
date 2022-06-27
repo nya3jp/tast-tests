@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c44ca9d3_b533c7e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-06-27T11:13:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b924c8f8_d7e8e6b3",
+      "range": {
+        "startLine": 142,
+        "startChar": 32,
+        "endLine": 142,
+        "endChar": 40
+      },
+      "revId": "5b3da086b39630fec1e2634e033b471568e7658d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6e840c3_55016f14",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bdd0ffd_e0b86d4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-06-27T11:13:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6e840c3_55016f14",
+      "range": {
+        "startLine": 153,
+        "startChar": 29,
+        "endLine": 153,
+        "endChar": 36
+      },
+      "revId": "5b3da086b39630fec1e2634e033b471568e7658d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94267618_eb09c8ab",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-06-22T15:43:32Z",
       "side": 1,
       "message": "nit: *cannot",
+      "range": {
+        "startLine": 178,
+        "startChar": 29,
+        "endLine": 178,
+        "endChar": 36
+      },
+      "revId": "5b3da086b39630fec1e2634e033b471568e7658d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fb59997_b5fb4c69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/manual_ticket_edit_configuration.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-06-27T11:13:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94267618_eb09c8ab",
       "range": {
         "startLine": 178,
         "startChar": 29,
