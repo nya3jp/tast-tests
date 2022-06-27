@@ -30,9 +30,11 @@ func init() {
 
 func PinUnlockFail(ctx context.Context, s *testing.State) {
 	const (
-		Pin          = "1234567890"
-		wrongPin     = "0123456789"
-		maxNumberTry = 10
+		Pin      = "1234567890"
+		wrongPin = "0123456789"
+		// TODO(b/234715681): Change lockout attempts to the correct value 5 after auth_locked
+		// is set correctly after lockout.
+		lockoutAttempts = 6
 	)
 
 	cr, err := chrome.New(ctx)
@@ -73,10 +75,14 @@ func PinUnlockFail(ctx context.Context, s *testing.State) {
 
 	// Enter the wrong PIN to trigger password field. Here we would
 	// try multiple times of the wrong password until pin pad
-	// disappears or that we had tried |maxNumberTry| times already.
-	count := 1
+	// disappears or that we had tried |lockoutAttempts| times already.
+	count := 0
 	ui := uiauto.New(tconn)
-	for count < maxNumberTry && lockscreen.HasPinPad(ctx, tconn) {
+	for count < lockoutAttempts {
+		if !lockscreen.HasPinPad(ctx, tconn) {
+			s.Fatalf("Failed to find PIN pad after %v incorrect attempts", count)
+		}
+
 		// Enter and submit the PIN to unlock the DUT.
 		if err := lockscreen.EnterPIN(ctx, tconn, keyboard, wrongPin); err != nil {
 			s.Fatal("Failed to enter PIN: ", err)
@@ -86,7 +92,7 @@ func PinUnlockFail(ctx context.Context, s *testing.State) {
 		}
 
 		// Wait to see the Auth error.
-		if count > 1 {
+		if count > 0 {
 			if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(lockscreen.ConsecutiveAuthErrorFinder)(ctx); err != nil {
 				s.Fatal("Failed to see the Auth error: ", err)
 			}
@@ -98,7 +104,7 @@ func PinUnlockFail(ctx context.Context, s *testing.State) {
 
 		count++
 	}
-	if count == maxNumberTry && lockscreen.HasPinPad(ctx, tconn) {
+	if lockscreen.HasPinPad(ctx, tconn) {
 		s.Fatal("Failed to see pin pad hidden: ", err)
 	}
 
