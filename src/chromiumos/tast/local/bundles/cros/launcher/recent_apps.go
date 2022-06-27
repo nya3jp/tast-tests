@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -211,6 +212,13 @@ func RecentApps(ctx context.Context, s *testing.State) {
 
 	if err := ash.WaitForApp(ctx, tconn, appID, 10*time.Second); err != nil {
 		s.Fatalf("App %s never opened: %v", appName, err)
+	}
+
+	// ARC Apps need to wait for the window to finish initialization after they show in the shelf.
+	if arcBoot {
+		if err := ui.WaitUntilExists(nodewith.Role(role.Window).NameContaining("InstallAppWith").ClassName("RootView"))(ctx); err != nil {
+			s.Fatal("Failed to wait for app window: ", err)
+		}
 	}
 
 	if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {

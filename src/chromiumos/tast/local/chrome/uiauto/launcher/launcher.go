@@ -231,7 +231,12 @@ func OpenExpandedView(tconn *chrome.TestConn) uiauto.Action {
 // HideTabletModeLauncher returns a function that hides the launcher in tablet mode by launching the Chrome browser.
 func HideTabletModeLauncher(tconn *chrome.TestConn) uiauto.Action {
 	return func(ctx context.Context) error {
-		if err := LaunchApp(tconn, apps.Chrome.Name)(ctx); err != nil {
+		// Allows Chrome or CHromium browser.
+		chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to find the chrome app")
+		}
+		if err := LaunchApp(tconn, chromeApp.Name)(ctx); err != nil {
 			return errors.Wrap(err, "failed to hide launcher in tablet by activating the browser")
 		}
 
