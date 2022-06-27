@@ -234,6 +234,30 @@
       },
       "revId": "50de79e6197c34db4ab961bc2f8a4f1fe6f5e8d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32708d4d_1a1702b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/hermes_smds.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-06-27T18:30:36Z",
+      "side": 1,
+      "message": "No, reset only clears profiles that are already installed.",
+      "parentUuid": "82ff191a_2816d076",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 51
+      },
+      "revId": "50de79e6197c34db4ab961bc2f8a4f1fe6f5e8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
