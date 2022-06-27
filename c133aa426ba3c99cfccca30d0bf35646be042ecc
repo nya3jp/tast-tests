@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67972c91_0e86d7b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-06-27T18:16:41Z",
+      "side": 1,
+      "message": "+aprilzhou who originally authored `desk_templates_cuj.go` for reviewing `desk_templates_cuj.go`\n",
+      "revId": "c133aa426ba3c99cfccca30d0bf35646be042ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2665fbd_4b7ed0b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-06-27T18:16:41Z",
+      "side": 1,
+      "message": "Just FYI, zhumatthew@ is working on deprecating the `DeskTemplateSync` feature and find a solution for avoiding syncing saved desks in tests.",
+      "range": {
+        "startLine": 53,
+        "startChar": 26,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "c133aa426ba3c99cfccca30d0bf35646be042ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22920e57_bb5737cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-06-27T18:16:41Z",
+      "side": 1,
+      "message": "Could you please verify the existence of the saved desk before launching?",
+      "range": {
+        "startLine": 285,
+        "startChar": 4,
+        "endLine": 285,
+        "endChar": 25
+      },
+      "revId": "c133aa426ba3c99cfccca30d0bf35646be042ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "348b4ba9_f700cc03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-06-27T18:16:41Z",
+      "side": 1,
+      "message": "Do you mean \"saved template\"?",
+      "range": {
+        "startLine": 361,
+        "startChar": 35,
+        "endLine": 361,
+        "endChar": 39
+      },
+      "revId": "c133aa426ba3c99cfccca30d0bf35646be042ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
