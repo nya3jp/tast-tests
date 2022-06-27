@@ -39,8 +39,8 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
-		SoftwareDeps: []string{"chrome", "arc"},
-		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 2*time.Minute,
+		SoftwareDeps: []string{"chrome", "arc", "no_kernel_upstream"},
+		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 3*time.Minute,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 	})
 }
@@ -132,7 +132,7 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-			return errors.Wrap(err, "error in waiting for overview animation to be completed")
+			s.Fatal("Failed to wait for overview animation to be completed: ", err)
 		}
 
 		// Find the "save desk as a template" button.
@@ -171,7 +171,6 @@ func DeskTemplatesCUJ(ctx context.Context, s *testing.State) {
 
 		// Find the "Library" button.
 		libraryButton := nodewith.Name("Library")
-
 		// Show saved desk template.
 		if err := uiauto.Combine(
 			"show the saved desks template",
