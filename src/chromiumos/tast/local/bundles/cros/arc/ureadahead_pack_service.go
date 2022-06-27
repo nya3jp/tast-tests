@@ -91,6 +91,11 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 	var arcRoot string
 	// Part of arguments differ in container and arcvm.
 	if vmEnabled {
+		// Pass kernel param to ARCVM dev config
+		if err := arc.AppendToArcvmDevConf(ctx, "--params=androidboot.arcvm_mount_debugfs=1"); err != nil {
+			return nil, errors.Wrap(err, "failed to write arcvm dev config")
+		}
+		defer arc.RestoreArcvmDevConf(ctx)
 		packPath = filepath.Join(ureadaheadDataDir, arcvmPackName)
 		args = append(args, fmt.Sprintf("--path-prefix-filter=%s", arcvmRoot))
 		args = append(args, fmt.Sprintf("--pack-file=%s", packPath))
@@ -122,7 +127,7 @@ func (c *UreadaheadPackService) Generate(ctx context.Context, request *arcpb.Ure
 
 	chromeArgs := append(arc.DisableSyncFlags(), "--arc-force-show-optin-ui")
 	if vmEnabled {
-		chromeArgs = append(chromeArgs, "--arcvm-mount-debugfs", "--arcvm-ureadahead-mode=generate")
+		chromeArgs = append(chromeArgs, "--arcvm-ureadahead-mode=generate")
 	}
 
 	opts := []chrome.Option{
