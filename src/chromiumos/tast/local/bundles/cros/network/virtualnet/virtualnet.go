@@ -30,10 +30,23 @@ type EnvOptions struct {
 	// EnableDHCP enables the DHCP server in the Env. IPv4 address can be obtained
 	// on the interface by DHCP.
 	EnableDHCP bool
+	// EnableDNS enables the DNS server in the Env. All hosts can be resolved
+	// to the provided IP address.
+	EnableDNS bool
+	//AddressToForceIP is the address to force a specifice ip. When DNS feature is enabled,
+	//all domain name will be resolved to AddressToForceIP.
+	AddressToForceIP string
 	// RAServer enables the RA server in the Env. IPv6 addresses can be obtained
 	// on the interface by SLAAC.
 	RAServer bool
 }
+
+type dnsMasqParams struct {
+	ifName string
+	ip     []byte
+}
+
+var params dnsMasqParams
 
 // CreateRouterEnv creates a virtualnet Env with the given options. On success,
 // returns the corresponding shill Service and Env object. It's caller's
@@ -58,15 +71,24 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		}
 	}()
 
-	if opts.EnableDHCP {
+	if opts.EnableDHCP || opts.EnableDNS {
 		v4Subnet, err := pool.AllocNextIPv4Subnet()
+		params.ip = v4Subnet.IP.To4()
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
 		}
-		dnsmasq := dnsmasq.New(v4Subnet, []string{})
+
+		var dns = []string{}
+		if opts.EnableDNS {
+			//The address 0.0.0.0 is taken to mean the address of the machine running dnsmasq.
+			dns = append(dns, "0.0.0.0")
+		}
+
+		dnsmasq := dnsmasq.New(v4Subnet, opts.EnableDHCP, opts.EnableDNS, opts.AddressToForceIP, dns)
 		if err := router.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to start dnsmasq")
 		}
+		params.ifName = router.VethOutName
 	}
 
 	if opts.RAServer {
@@ -90,7 +112,7 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		return nil, nil, errors.Wrapf(err, "failed to find shill service for %s", router.VethOutName)
 	}
 
-	if err := svc.SetProperty(ctx, shillconst.ServicePropertyEphemeralPriority, opts.Priority); err != nil {
+	if err := svc.SetProperty(ctx, shillconst.ServicePropertyPriority, opts.Priority); err != nil {
 		return nil, nil, errors.Wrap(err, "failed to configure priority on interface")
 	}
 
@@ -172,4 +194,9 @@ func findEthernetServiceByIfName(ctx context.Context, m *shill.Manager, ifName s
 		return nil, errors.Wrap(err, "failed to get the selected service path")
 	}
 	return shill.NewService(ctx, servicePath)
+}
+
+// GetDNSMasqParams can get the interface and subnet IP address of DNSMasq service.
+func GetDNSMasqParams() (string, []byte) {
+	return params.ifName, params.ip
 }
