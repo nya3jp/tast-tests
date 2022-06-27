@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e7eed94_aef26339",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-27T16:04:53Z",
+      "side": 1,
+      "message": "Please have a domain expert to give you a +2. Thanks.",
+      "revId": "faa1c8f112688dd2a092ee378472dd57a8fb7344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5730634d_63bb90db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-27T16:04:53Z",
+      "side": 1,
+      "message": "nit: \"and strongbad\"",
+      "revId": "faa1c8f112688dd2a092ee378472dd57a8fb7344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
