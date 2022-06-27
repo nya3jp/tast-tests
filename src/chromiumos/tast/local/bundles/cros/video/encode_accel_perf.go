@@ -39,6 +39,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("asurada", "hayato", "spherion")),
 		// Default timeout (i.e. 2 minutes) is not enough.
 		Timeout: 10 * time.Minute,
+		Fixture: "graphicsNoChrome",
 		Params: []testing.Param{{
 			Name:              "h264_180p",
 			Val:               encode.MakeTestOptions(crowd180p, videotype.H264BaselineProf),
