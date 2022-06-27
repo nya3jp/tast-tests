@@ -70,6 +70,30 @@
       },
       "revId": "453aebe9ce690750f39d41648a8eb8134716e824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b954e0_7064bc80",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-27T21:37:09Z",
+      "side": 1,
+      "message": "Actually, we shouldn\u0027t need the nohup at all. The only reason I can see for wanting it is if we wanted to disconnect from the DUT before panicing.\n\nI just tried running the test on my DUT without the nohup, and all three variants of the test succeeded. Shall I drop it?",
+      "parentUuid": "d73ba480_e5ae163d",
+      "range": {
+        "startLine": 140,
+        "startChar": 41,
+        "endLine": 140,
+        "endChar": 46
+      },
+      "revId": "453aebe9ce690750f39d41648a8eb8134716e824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
