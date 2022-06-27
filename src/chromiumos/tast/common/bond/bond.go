@@ -205,9 +205,21 @@ func WithVP9(allow, send bool) AddBotsOption {
 // duration. On success, it also returns the list of bot IDs and the number
 // of bots that failed to join.
 func (c *Client) AddBots(ctx context.Context, meetingCode string, numBots int, ttl time.Duration, opts ...AddBotsOption) ([]int, int, error) {
+	var layout string
+
+	if numBots <= 1 {
+		layout = "SPOTLIGHT"
+	} else if numBots <= 5 {
+		layout = "BRADY_BUNCH"
+	} else if numBots <= 15 {
+		layout = "BRADY_BUNCH_4_4"
+	} else {
+		layout = "BRADY_BUNCH_7_7"
+	}
+
 	options := addBotsOptions{
 		sendFPS:         24,
-		requestedLayout: "BRADY_BUNCH_4_4",
+		requestedLayout: layout,
 		allowVP9:        true,
 		sendVP9:         true,
 	}
