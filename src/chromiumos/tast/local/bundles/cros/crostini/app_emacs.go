@@ -84,38 +84,36 @@ func AppEmacs(ctx context.Context, s *testing.State) {
 	}
 	defer revert(cleanupCtx)
 
-	uiauto.RecordScreen(ctx, s, tconn, func() {
-		// Open Terminal app.
-		terminalApp, err := terminalapp.Launch(ctx, tconn)
-		if err != nil {
-			s.Fatal("Failed to open Terminal app: ", err)
-		}
+	// Open Terminal app.
+	terminalApp, err := terminalapp.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to open Terminal app: ", err)
+	}
 
-		restartIfError := true
+	restartIfError := true
 
-		defer func() {
-			// Restart Crostini in the end in case any error in the middle and Emacs is not closed.
-			// This also closes the Terminal window.
-			if restartIfError {
-				if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(cleanupCtx); err != nil {
-					s.Log("Failed to restart Crostini: ", err)
-				}
-			} else {
-				terminalApp.Exit(keyboard)(cleanupCtx)
+	defer func() {
+		// Restart Crostini in the end in case any error in the middle and Emacs is not closed.
+		// This also closes the Terminal window.
+		if restartIfError {
+			if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(cleanupCtx); err != nil {
+				s.Log("Failed to restart Crostini: ", err)
 			}
-		}()
-
-		d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 666, WindowHeightDP: 714}})
-		if err != nil {
-			s.Fatal("Failed to start screen differ: ", err)
+		} else {
+			terminalApp.Exit(keyboard)(cleanupCtx)
 		}
+	}()
 
-		if err := createFileWithEmacs(ctx, keyboard, terminalApp, tconn, cont, d); err != nil {
-			s.Fatal("Failed to create file with emacs in Terminal: ", err)
-		}
+	d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 666, WindowHeightDP: 714}})
+	if err != nil {
+		s.Fatal("Failed to start screen differ: ", err)
+	}
 
-		restartIfError = false
-	})
+	if err := createFileWithEmacs(ctx, keyboard, terminalApp, tconn, cont, d); err != nil {
+		s.Fatal("Failed to create file with emacs in Terminal: ", err)
+	}
+
+	restartIfError = false
 }
 
 // createFileWithEmacs creates a file with emacs and types a string into it and save it in container.
