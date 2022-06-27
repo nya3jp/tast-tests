@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb5929d_a75ddddb",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-27T20:43:20Z",
+      "side": 1,
+      "message": "We only need to loop starting here.",
+      "revId": "48590d920bde4250ee424a9fd586d92f2badc62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
