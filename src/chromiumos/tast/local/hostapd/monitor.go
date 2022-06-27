@@ -33,14 +33,16 @@ type Event interface {
 	ToLogString() string
 }
 
-// ApStaConnectedEvent defines data of AP-STA-CONNECTED event.
-type ApStaConnectedEvent struct {
+// ApStaConnectionEvent defines data of AP-STA-CONNECTED or AP-STA-DISCONNECTED event.
+type ApStaConnectionEvent struct {
 	// Addr is the MAC address of the station connected to the AP.
 	Addr net.HardwareAddr
+	// Connected is a boolean to differentiate AP-STA-CONNECTED and AP-STA-DISCONNECTED event.
+	Connected bool
 }
 
 // ToLogString formats the event data to a string suitable for logging.
-func (e *ApStaConnectedEvent) ToLogString() string {
+func (e *ApStaConnectionEvent) ToLogString() string {
 	return fmt.Sprintf("%+v\n", e)
 }
 
@@ -59,13 +61,16 @@ type eventDef struct {
 
 var eventDefs = []eventDef{
 	{
-		regexp.MustCompile(`AP-STA-CONNECTED ([\da-fA-F:]+)`),
+		regexp.MustCompile(`AP-STA-(DIS)?CONNECTED ([\da-fA-F:]+)`),
 		func(matches []string) (Event, error) {
-			addr, err := net.ParseMAC(matches[1])
+			addr, err := net.ParseMAC(matches[2])
 			if err != nil {
 				return nil, errors.Wrapf(err, "failed to parse station address %q", matches[1])
 			}
-			return &ApStaConnectedEvent{addr}, nil
+			if matches[1] == "" {
+				return &ApStaConnectionEvent{addr, true}, nil
+			}
+			return &ApStaConnectionEvent{addr, false}, nil
 		},
 	},
 }
