@@ -16,6 +16,23 @@
       "message": "lgtm from audio perspective",
       "revId": "59183c458f48c908f14ba711529e408d878b2674",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01f9ac46_d02c9574",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-27T07:47:29Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "59183c458f48c908f14ba711529e408d878b2674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
