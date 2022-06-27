@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b919a095_a51574ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-27T18:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6a9448d_341d9d51",
+      "range": {
+        "startLine": 68,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "442ceaa9b20fe0c5a60e96babd65aa6ed5139cd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f30d4dde_60b3dba1",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f64dde45_cec248f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-27T18:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f30d4dde_60b3dba1",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 3
+      },
+      "revId": "442ceaa9b20fe0c5a60e96babd65aa6ed5139cd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec4866f0_9427c3d5",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-06-24T23:21:49Z",
       "side": 1,
       "message": "This can just be an `else if` clause of the inlined if check from L11.",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 3
+      },
+      "revId": "442ceaa9b20fe0c5a60e96babd65aa6ed5139cd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e6c13f9_53981a09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/symlink_to_usb.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-06-27T18:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec4866f0_9427c3d5",
       "range": {
         "startLine": 115,
         "startChar": 2,
