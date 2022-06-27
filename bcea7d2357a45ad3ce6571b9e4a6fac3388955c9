@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5299f3c9_1f294011",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-27T22:25:36Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "bcea7d2357a45ad3ce6571b9e4a6fac3388955c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "431d7fc1_506efe0f",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-06-27T22:09:57Z",
       "side": 1,
       "message": "Are there nudge tests that need the nudges? If so, maybe we might need an chrome.Option and configure mode like `HideCrashRestoreBubble` and `--hide-crash-restore-bubble` in L72 below.",
+      "revId": "bcea7d2357a45ad3ce6571b9e4a6fac3388955c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f87b20b_78cb5b8a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-27T22:25:36Z",
+      "side": 1,
+      "message": "Discussed offline. There are no tests using the nudges ATM. So no need to make it an option.",
+      "parentUuid": "431d7fc1_506efe0f",
       "revId": "bcea7d2357a45ad3ce6571b9e4a6fac3388955c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
