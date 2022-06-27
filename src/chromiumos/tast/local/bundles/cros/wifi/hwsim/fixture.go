@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -31,6 +32,8 @@ type ShillSimulatedWiFi struct {
 	// Simulated Wi-Fi interfaces available to be used as access point
 	// interfaces.
 	AP []string
+	// ARC's handle. This is only added when using the fixture "arcBooted".
+	ARC *arc.ARC
 }
 
 type fixture struct {
@@ -59,6 +62,19 @@ func init() {
 		TearDownTimeout: hwsimTimeout,
 		ResetTimeout:    hwsimTimeout,
 		Impl:            &fixture{},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "shillSimulatedWiFiWithArcBooted",
+		Desc: "A fixture that loads the Wi-Fi hardware simulator and ensures Shill is configured correctly",
+		Contacts: []string{
+			"damiendejean@google.com", // fixture maintainer
+			"cros-networking@google.com",
+		},
+		SetUpTimeout:    hwsimTimeout,
+		TearDownTimeout: hwsimTimeout,
+		ResetTimeout:    hwsimTimeout,
+		Impl:            &fixture{},
+		Parent:          "arcBooted",
 	})
 }
 
@@ -178,10 +194,14 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 
 	f.claimedIfaces = claimedIfaces
 	success = true
-	return &ShillSimulatedWiFi{
+	fixt := &ShillSimulatedWiFi{
 		Client: []string{clientIface},
 		AP:     apIfaces,
 	}
+	if s.ParentValue() != nil {
+		fixt.ARC = s.ParentValue().(*arc.PreData).ARC
+	}
+	return fixt
 }
 
 func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
