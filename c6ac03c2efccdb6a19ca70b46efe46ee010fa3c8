@@ -33,6 +33,24 @@
       "message": "you should check scan results first before requesting a scan in case it\u0027s already in the cache.",
       "revId": "c6ac03c2efccdb6a19ca70b46efe46ee010fa3c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecbaf9ff_46caa49f",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-27T04:14:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f44dd46f_010cdcb3",
+      "revId": "c6ac03c2efccdb6a19ca70b46efe46ee010fa3c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
