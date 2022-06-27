@@ -16,6 +16,24 @@
       "message": "We only need to loop starting here.",
       "revId": "48590d920bde4250ee424a9fd586d92f2badc62f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26853412_3f952472",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-27T21:46:58Z",
+      "side": 1,
+      "message": "IIUC, we need to restart the monitor if the function `wpaMonitor.WaitForEvent(ctx)` fails due to timing out waiting for the `ScanResultsEvent`.",
+      "parentUuid": "cdb5929d_a75ddddb",
+      "revId": "48590d920bde4250ee424a9fd586d92f2badc62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
