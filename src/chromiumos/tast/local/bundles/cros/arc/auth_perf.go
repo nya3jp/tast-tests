@@ -55,7 +55,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		// This test steps through opt-in flow 10 times and each iteration takes 20~40 seconds.
-		Timeout: 20 * time.Minute,
+		Timeout: 30 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "managed",
 			ExtraSoftwareDeps: []string{"android_p"},

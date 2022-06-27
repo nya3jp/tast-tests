@@ -121,7 +121,7 @@ func performArcInitialBoot(ctx context.Context, credPool string) (chrome.Creds, 
 		return chrome.Creds{}, errors.Wrap(err, "failed to optin")
 	}
 
-	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
+	if err := optin.WaitForPlayStoreShown(ctx, tconn, 2*time.Minute); err != nil {
 		return chrome.Creds{}, errors.Wrap(err, "failed to wait Play Store shown")
 	}
 
@@ -130,8 +130,9 @@ func performArcInitialBoot(ctx context.Context, credPool string) (chrome.Creds, 
 
 // performArcRegularBoot performs ARC boot and starts Play Store app deferred and waits it is
 // actually shown. It returns:
-//   * time between the user session is created and and Play Store window is shown.
-//   * time to fully start Android system server. This is included into the metric above.
+//   - time between the user session is created and and Play Store window is shown.
+//   - time to fully start Android system server. This is included into the metric above.
+//
 // Note, it is not actually possible to measure this time directly from test due to tast
 // login is complex and ends after user session is actually created. Instead it uses existing ARC
 // histogram first app launch request and delay. Combined value is actual time that representss
@@ -182,7 +183,7 @@ func performArcRegularBoot(ctx context.Context, testDir string, creds chrome.Cre
 		return 0, 0, 0, errors.Wrap(err, "failed to launch Play Store")
 	}
 
-	if err := optin.WaitForPlayStoreShown(ctx, tconn, time.Minute); err != nil {
+	if err := optin.WaitForPlayStoreShown(ctx, tconn, 2*time.Minute); err != nil {
 		return 0, 0, 0, errors.Wrap(err, "failed to wait Play Store shown")
 	}
 
@@ -213,7 +214,7 @@ func performArcRegularBoot(ctx context.Context, testDir string, creds chrome.Cre
 	return request + delay, request + delayShown, p["boot_progress_enable_screen"], nil
 }
 
-//readFirstAppLaunchHistogram reads histogram and converts it to Duration.
+// readFirstAppLaunchHistogram reads histogram and converts it to Duration.
 func readFirstAppLaunchHistogram(ctx context.Context, tconn *chrome.TestConn, name string) (time.Duration, error) {
 	metric, err := metrics.WaitForHistogram(ctx, tconn, name, 20*time.Second)
 	if err != nil {

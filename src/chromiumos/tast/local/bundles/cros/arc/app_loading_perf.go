@@ -48,7 +48,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{apploading.X86ApkName, apploading.ArmApkName},
-		Timeout:      25 * time.Minute,
+		Timeout:      40 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val: testParameters{
