@@ -49,7 +49,7 @@ var boardArchMapping = map[string]string{
 	"nautilus": "amd64",
 	"guybrush": "amd64",
 	"brya":     "amd64",
-	// syzkaller binaries built for trogdor are 32 bit.
+	// syzkaller binaries built for trogdor and strongbad are 32 bit.
 	"trogdor":   "arm",
 	"strongbad": "arm",
 }
