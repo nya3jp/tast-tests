@@ -94,6 +94,30 @@
       },
       "revId": "453aebe9ce690750f39d41648a8eb8134716e824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "284d6ea6_44b2d471",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-27T21:59:29Z",
+      "side": 1,
+      "message": "I definitely think we should keep it; we could run into circumstances where we have a race if we omit it altogether. (If the device doesn\u0027t disconnect before the kernel panics)",
+      "parentUuid": "65b954e0_7064bc80",
+      "range": {
+        "startLine": 140,
+        "startChar": 41,
+        "endLine": 140,
+        "endChar": 46
+      },
+      "revId": "453aebe9ce690750f39d41648a8eb8134716e824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
