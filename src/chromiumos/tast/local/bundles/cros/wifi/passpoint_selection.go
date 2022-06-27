@@ -52,6 +52,7 @@ func init() {
 					credentials: []*passpoint.Credentials{
 						{
 							Domain: passpoint.BlueDomain,
+							Auth:   passpoint.AuthTTLS,
 						},
 					},
 					aps: []passpoint.AccessPoint{
@@ -72,6 +73,7 @@ func init() {
 						{
 							Domain:  passpoint.BlueDomain,
 							HomeOIs: []uint64{passpoint.HomeOI},
+							Auth:    passpoint.AuthTTLS,
 						},
 					},
 					aps: []passpoint.AccessPoint{
@@ -92,6 +94,7 @@ func init() {
 						{
 							Domain:          passpoint.BlueDomain,
 							RequiredHomeOIs: []uint64{passpoint.HomeOI},
+							Auth:            passpoint.AuthTTLS,
 						},
 					},
 					aps: []passpoint.AccessPoint{
@@ -116,6 +119,7 @@ func init() {
 					credentials: []*passpoint.Credentials{
 						{
 							Domain: passpoint.BlueDomain,
+							Auth:   passpoint.AuthTTLS,
 						},
 					},
 					aps: []passpoint.AccessPoint{
@@ -137,6 +141,7 @@ func init() {
 							Domain:     passpoint.BlueDomain,
 							HomeOIs:    []uint64{passpoint.HomeOI},
 							RoamingOIs: []uint64{passpoint.RoamingOI1},
+							Auth:       passpoint.AuthTTLS,
 						},
 					},
 					aps: []passpoint.AccessPoint{
@@ -158,6 +163,7 @@ func init() {
 							Domain:     passpoint.BlueDomain,
 							HomeOIs:    []uint64{passpoint.HomeOI},
 							RoamingOIs: []uint64{passpoint.RoamingOI1},
+							Auth:       passpoint.AuthTTLS,
 						},
 					},
 					aps: []passpoint.AccessPoint{
@@ -183,6 +189,7 @@ func init() {
 					credentials: []*passpoint.Credentials{
 						{
 							Domain: passpoint.BlueDomain,
+							Auth:   passpoint.AuthTTLS,
 						},
 					},
 					aps: []passpoint.AccessPoint{
@@ -209,9 +216,11 @@ func init() {
 						{
 							Domain:  passpoint.BlueDomain,
 							HomeOIs: []uint64{passpoint.HomeOI},
+							Auth:    passpoint.AuthTTLS,
 						}, {
 							Domain:  passpoint.RedDomain,
 							HomeOIs: []uint64{passpoint.HomeOI},
+							Auth:    passpoint.AuthTTLS,
 						},
 					},
 					aps: []passpoint.AccessPoint{
@@ -233,10 +242,12 @@ func init() {
 							Domain:     passpoint.GreenDomain,
 							HomeOIs:    []uint64{passpoint.RoamingOI1},
 							RoamingOIs: []uint64{passpoint.HomeOI},
+							Auth:       passpoint.AuthTTLS,
 						}, {
 							Domain:     passpoint.RedDomain,
 							HomeOIs:    []uint64{passpoint.RoamingOI2},
 							RoamingOIs: []uint64{passpoint.HomeOI},
+							Auth:       passpoint.AuthTTLS,
 						},
 					},
 					aps: []passpoint.AccessPoint{
@@ -257,10 +268,12 @@ func init() {
 						{
 							Domain:  passpoint.BlueDomain,
 							HomeOIs: []uint64{passpoint.HomeOI},
+							Auth:    passpoint.AuthTTLS,
 						}, {
 							Domain:     passpoint.RedDomain,
 							HomeOIs:    []uint64{passpoint.RoamingOI2},
 							RoamingOIs: []uint64{passpoint.RoamingOI1},
+							Auth:       passpoint.AuthTTLS,
 						},
 					},
 					aps: []passpoint.AccessPoint{
@@ -339,7 +352,11 @@ func PasspointSelection(ctx context.Context, s *testing.State) {
 
 	// Add the sets of credentials to Shill.
 	for _, c := range tc.credentials {
-		if err := tc.manager.AddPasspointCredentials(ctx, profile, c.ToProperties()); err != nil {
+		prop, err := c.ToShillProperties()
+		if err != nil {
+			s.Fatal("Failed to get credentials' shill properties: ", err)
+		}
+		if err := tc.manager.AddPasspointCredentials(ctx, profile, prop); err != nil {
 			s.Fatal("Failed to set Passpoint credentials: ", err)
 		}
 	}
