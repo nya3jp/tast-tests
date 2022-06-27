@@ -5,20 +5,16 @@
 package pcap
 
 import (
-	"bytes"
 	"context"
 	"fmt"
-	"io"
 	"os"
 	"path/filepath"
-	"strconv"
 	"sync"
-	"time"
 
-	"chromiumos/tast/common/network/daemonutil"
+	"chromiumos/tast/common/network/tcpdump"
 	"chromiumos/tast/common/wificell/router"
-	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	remotetcpdump "chromiumos/tast/remote/network/tcpdump"
 	"chromiumos/tast/remote/wificell/fileutil"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
@@ -36,25 +32,18 @@ func Snaplen(s uint64) Option {
 
 // Capturer controls a tcpdump process to capture packets on an interface.
 type Capturer struct {
-	host    *ssh.Conn
-	name    string
-	iface   string
-	workDir string
-
-	snaplen uint64
-
+	host       *ssh.Conn
+	name       string
+	iface      string
+	workDir    string
+	snaplen    uint64
 	cmd        *ssh.Cmd
 	stdoutFile *os.File
 	stderrFile *os.File
 	wg         sync.WaitGroup
 	downloaded bool
+	runner     *tcpdump.Runner
 }
-
-const (
-	tcpdumpCmd               = "tcpdump"
-	durationForClose         = 4 * time.Second
-	durationForInternalClose = 2 * time.Second
-)
 
 // StartCapturer creates and starts a Capturer.
 // After getting a Capturer instance, c, the caller should call c.Close() at the end, and use the
@@ -66,6 +55,7 @@ func StartCapturer(ctx context.Context, host *ssh.Conn, name, iface, workDir str
 		iface:   iface,
 		workDir: workDir,
 	}
+
 	for _, opt := range opts {
 		opt(c)
 	}
@@ -76,105 +66,41 @@ func StartCapturer(ctx context.Context, host *ssh.Conn, name, iface, workDir str
 	return c, nil
 }
 
-func (c *Capturer) start(fullCtx context.Context) (err error) {
-	// Clean up on error.
-	defer func() {
-		if err != nil {
-			c.close(fullCtx)
-		}
-	}()
-
-	// Reserve time for the above deferred call.
-	ctx, ctxCancel := ctxutil.Shorten(fullCtx, durationForInternalClose)
-	defer ctxCancel()
-
-	testing.ContextLogf(ctx, "Starting capturer on %s", c.iface)
-
-	args := []string{"-U", "-i", c.iface, "-w", c.packetPathOnRemote()}
-	if c.snaplen != 0 {
-		args = append(args, "-s", strconv.FormatUint(c.snaplen, 10))
-	}
-
-	cmd := c.host.CommandContext(ctx, tcpdumpCmd, args...)
+func (c *Capturer) start(ctx context.Context) (err error) {
 	c.stdoutFile, err = fileutil.PrepareOutDirFile(ctx, c.filename("stdout"))
 	if err != nil {
 		return errors.Wrap(err, "failed to open stdout log of tcpdump")
 	}
-	cmd.Stdout = c.stdoutFile
-
 	c.stderrFile, err = fileutil.PrepareOutDirFile(ctx, c.filename("stderr"))
 	if err != nil {
 		return errors.Wrap(err, "failed to open stderr log of tcpdump")
 	}
-	stderrPipe, err := cmd.StderrPipe()
+	c.runner = remotetcpdump.NewRemoteRunner(c.host)
+	if c.snaplen != 0 {
+		c.runner.Snaplen(c.snaplen)
+	}
+	_, err = c.runner.StartTcpdump(ctx, c.iface, c.packetPathOnRemote(), c.stdoutFile, c.stderrFile)
+
 	if err != nil {
-		return errors.Wrap(err, "failed to obtain StderrPipe of tcpdump")
-	}
-	readyFunc := func(buf []byte) (bool, error) {
-		return bytes.Contains(buf, []byte("listening on")), nil
-	}
-	readyWriter := daemonutil.NewReadyWriter(readyFunc)
-	c.wg.Add(1)
-	go func() {
-		defer c.wg.Done()
-		defer stderrPipe.Close()
-		defer readyWriter.Close()
-		multiWriter := io.MultiWriter(c.stderrFile, readyWriter)
-		io.Copy(multiWriter, stderrPipe)
-	}()
-
-	if err := cmd.Start(); err != nil {
 		return errors.Wrap(err, "failed to start tcpdump")
-	}
-	c.cmd = cmd
-
-	testing.ContextLog(ctx, "Waiting for tcpdump to be ready")
-	readyCtx, readyCtxCancel := context.WithTimeout(ctx, 15*time.Second)
-	defer readyCtxCancel()
-	if err := readyWriter.Wait(readyCtx); err != nil {
-		return err
 	}
 
 	return nil
 }
 
-// close kills the process, tries to download the packet file if available and
-// releases occupied resources.
-func (c *Capturer) close(ctx context.Context) error {
-	var err error
-	if c.cmd != nil {
-		// Kill with SIGTERM here, so that the process can flush buffer.
-		// If the process does not die before deadline, cmd.Wait will then abort it.
-		// TODO(crbug.com/1030635): Signal through SSH might not work. Use pkill to send signal for now.
-		c.host.CommandContext(ctx, "pkill", "-f", fmt.Sprintf("^%s.*%s", tcpdumpCmd, c.packetPathOnRemote())).Run()
-		c.cmd.Wait()
-		err = c.downloadPacket(ctx)
-	}
-	// Wait for the bg routine to end before closing files.
-	c.wg.Wait()
-	if c.stderrFile != nil {
-		c.stderrFile.Close()
-	}
-	if c.stdoutFile != nil {
-		c.stdoutFile.Close()
-	}
-	return err
-}
-
 // ReserveForClose returns a shortened ctx with cancel function.
 // The shortened ctx is used for running things before c.Close() to reserve time for it to run.
 func (c *Capturer) ReserveForClose(ctx context.Context) (context.Context, context.CancelFunc) {
-	return ctxutil.Shorten(ctx, durationForClose)
+	return c.runner.ReserveForClose(ctx)
 }
 
 // Close terminates the capturer and downloads the pcap file from host to OutDir.
 func (c *Capturer) Close(ctx context.Context) error {
-	// Wait 2 seconds (2 * libpcap poll timeout) before killing the
-	// process so that it can properly catch all packets.
-	// Investigation of the timeout can be found in crrev.com/c/288814.
-	// TODO(b/154787243): Find a better way to wait for pcap to be done.
-	testing.Sleep(ctx, 2*time.Second)
-	return c.close(ctx)
+	c.runner.Close(ctx)
+	if c.runner.CmdExists() {
+		return c.downloadPacket(ctx)
+	}
+	return nil
 }
 
 // Interface returns the interface the capturer runs on.
