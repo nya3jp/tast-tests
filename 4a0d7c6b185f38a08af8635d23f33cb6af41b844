@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "99c9e78f_ce213b86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-27T04:53:17Z",
+      "side": 1,
+      "message": "RDC",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "4a0d7c6b185f38a08af8635d23f33cb6af41b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55690cbe_efc22d4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-27T04:53:17Z",
+      "side": 1,
+      "message": "RDC. It is better to attach the full name here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "4a0d7c6b185f38a08af8635d23f33cb6af41b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ae87902_59ee6e32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-27T04:53:17Z",
+      "side": 1,
+      "message": "Git comment does not support markdown syntax for now, so you may remove the back-quotes.",
+      "range": {
+        "startLine": 11,
+        "startChar": 13,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "4a0d7c6b185f38a08af8635d23f33cb6af41b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "84971145_e83c88f6",
@@ -14,6 +83,80 @@
       "writtenOn": "2022-06-27T04:33:44Z",
       "side": 1,
       "message": "lgtm from audio perspective",
+      "revId": "4a0d7c6b185f38a08af8635d23f33cb6af41b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "366ca9dc_b9ef1c56",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-27T04:53:17Z",
+      "side": 1,
+      "message": "// List of RDC range per channel.",
+      "revId": "4a0d7c6b185f38a08af8635d23f33cb6af41b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5235e308_dfb0de1f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-27T04:53:17Z",
+      "side": 1,
+      "message": "Note that testParameters and subTestParameters are shared within the package (bundles/cros/audio). Advice to use more specific name.\n\nHow about:\n* subTestParameters -\u003e soundCardInitTestParams\n* testParameters -\u003e soundCardInitTest",
+      "revId": "4a0d7c6b185f38a08af8635d23f33cb6af41b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74d6788a_f5ac181c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-27T04:53:17Z",
+      "side": 1,
+      "message": "RDC\n\nIt would be nice to append full name here: RDC (R...)",
+      "range": {
+        "startLine": 99,
+        "startChar": 41,
+        "endLine": 99,
+        "endChar": 44
+      },
+      "revId": "4a0d7c6b185f38a08af8635d23f33cb6af41b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb620393_dbaca083",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-27T04:53:17Z",
+      "side": 1,
+      "message": "Use cleanupCtx. For example, line 229.",
       "revId": "4a0d7c6b185f38a08af8635d23f33cb6af41b844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
