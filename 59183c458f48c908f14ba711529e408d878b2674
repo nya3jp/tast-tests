@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cd02afc_98bdc3f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271167
+      },
+      "writtenOn": "2022-06-27T04:33:52Z",
+      "side": 1,
+      "message": "lgtm from audio perspective",
+      "revId": "59183c458f48c908f14ba711529e408d878b2674",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
