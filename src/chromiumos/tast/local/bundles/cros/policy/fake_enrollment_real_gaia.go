@@ -96,7 +96,7 @@ func FakeEnrollmentRealGAIA(ctx context.Context, s *testing.State) {
 	defer conn.Close()
 
 	var got string
-	if err := conn.Eval(ctx, `document.querySelector("#status-box-container > fieldset:nth-child(2) > div:nth-child(18) > div.is-affiliated").innerText`, &got); err != nil {
+	if err := conn.Eval(ctx, `document.querySelector("#status-box-container > fieldset:nth-child(2) > div > div.is-affiliated").innerText`, &got); err != nil {
 		s.Fatal("Failed to retrieve is affiliated value: ", err)
 	}
 
