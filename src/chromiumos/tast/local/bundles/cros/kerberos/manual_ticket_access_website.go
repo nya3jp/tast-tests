@@ -140,7 +140,9 @@ func ManualTicketAccessWebsite(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 
 	// Add a Kerberos ticket.
-	kerberos.AddTicket(ctx, cr, tconn, ui, keyboard, config, password)
+	if err := kerberos.AddTicket(ctx, cr, tconn, ui, keyboard, config, password); err != nil {
+		s.Fatal("Failed to add Kerberos ticket: ", err)
+	}
 
 	s.Log("Wait for website to have non-empty title")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {

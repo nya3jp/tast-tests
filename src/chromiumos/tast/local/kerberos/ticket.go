@@ -63,7 +63,7 @@ func AddTicket(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, u
 func CheckForTicket(ctx context.Context, ui *uiauto.Context, config *Configuration) error {
 	// Wait for ticket to appear.
 	testing.ContextLog(ctx, "Waiting for Kerberos ticket to appear")
-	if err := ui.WaitUntilExists(nodewith.Name(config.KerberosAccount).Role(role.StaticText))(ctx); err != nil {
+	if err := ui.WaitUntilExists(nodewith.Name(config.KerberosAccount).Role(role.StaticText).State(state.Editable, false))(ctx); err != nil {
 		return errors.Wrap(err, "failed to find Kerberos ticket")
 	}
 
