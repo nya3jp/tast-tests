@@ -22,6 +22,30 @@
       },
       "revId": "42dbe8df7c361b3b2721d411eeeda858bd580471",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "165ec568_440b65cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hps/dbus.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-06-27T05:47:37Z",
+      "side": 1,
+      "message": "Okay, I sent another patch to add \"fake_hps\" software feature and amended this one to use it for the parametrized test.",
+      "parentUuid": "a21494ef_0e4219de",
+      "range": {
+        "startLine": 36,
+        "startChar": 31,
+        "endLine": 36,
+        "endChar": 37
+      },
+      "revId": "42dbe8df7c361b3b2721d411eeeda858bd580471",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
