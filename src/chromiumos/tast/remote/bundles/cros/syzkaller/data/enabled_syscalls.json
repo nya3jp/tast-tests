@@ -614,7 +614,7 @@
 	},
 	{
 		"driver": "qrtr-modem(CONFIG_QRTR)",
-		"boards": ["trogdor"],
+		"boards": ["trogdor", "strongbad"],
 		"syscalls": [
 			"socket$qrtr",
 			"bind$qrtr",
@@ -630,7 +630,7 @@
 	},
 	{
 		"driver": "freedreno(CONFIG_DRM_MSM)",
-		"boards": ["trogdor"],
+		"boards": ["trogdor", "strongbad"],
 		"startup_cmds": ["ln -s /dev/dri/card1 /dev/msm"],
 		"syscalls": [
 			"openat$msm",
