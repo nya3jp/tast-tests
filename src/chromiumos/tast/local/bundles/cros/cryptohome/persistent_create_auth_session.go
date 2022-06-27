@@ -72,7 +72,7 @@ func PersistentCreateAuthSession(ctx context.Context, s *testing.State) {
 	}
 	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
 
-	if err := testLockScreen(ctx, userName, userPassword, keyLabel, client); err != nil {
+	if err := cryptohome.TestLockScreen(ctx, userName, userPassword, wrongPassword, keyLabel, client); err != nil {
 		s.Fatal("Failed to check lock screen: ", err)
 	}
 
@@ -118,36 +118,4 @@ func PersistentCreateAuthSession(ctx context.Context, s *testing.State) {
 	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
 		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
 	}
-}
-
-func testLockScreen(ctx context.Context, userName, userPassword, keyLabel string, client *hwsec.CryptohomeClient) error {
-	const (
-		wrongPassword = "wrong-password"
-	)
-
-	accepted, err := client.CheckVault(ctx, keyLabel, hwsec.NewPassAuthConfig(userName, userPassword))
-	if err != nil {
-		return errors.Wrap(err, "failed to check correct password")
-	}
-	if !accepted {
-		return errors.New("correct password rejected")
-	}
-
-	accepted, err = client.CheckVault(ctx, "" /* label */, hwsec.NewPassAuthConfig(userName, userPassword))
-	if err != nil {
-		return errors.Wrap(err, "failed to check correct password with wildcard label")
-	}
-	if !accepted {
-		return errors.New("correct password rejected with wildcard label")
-	}
-
-	accepted, err = client.CheckVault(ctx, keyLabel, hwsec.NewPassAuthConfig(userName, wrongPassword))
-	if err == nil {
-		return errors.Wrap(err, "wrong password check succeeded when it shouldn't")
-	}
-	if accepted {
-		return errors.New("wrong password check returned true despite an error")
-	}
-
-	return nil
 }
