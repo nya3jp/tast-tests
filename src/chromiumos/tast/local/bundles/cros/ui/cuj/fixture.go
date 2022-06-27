@@ -91,6 +91,20 @@ func init() {
 		Vars:            []string{"ui.cujAccountPool"},
 	})
 	testing.AddFixture(&testing.Fixture{
+		Name: "loggedInToCUJUserEnterprise",
+		Desc: "The main fixture used for UI CUJ tests using an enterprise account",
+		Contacts: []string{
+			"xiyuan@chromium.org",
+			"chromeos-perfmetrics-eng@google.com",
+		},
+		Impl:            &loggedInToCUJUserFixture{bt: browser.TypeAsh, useEnterprisePool: true},
+		Parent:          "prepareForCUJ",
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		Vars:            []string{"ui.cujEnterpriseAccountPool"},
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name: "loggedInAndKeepState",
 		Desc: "The CUJ test fixture which keeps login state",
 		Contacts: []string{
@@ -149,8 +163,15 @@ func init() {
 	})
 }
 
-func loginOption(s *testing.FixtState) chrome.Option {
-	return chrome.GAIALoginPool(s.RequiredVar("ui.cujAccountPool"))
+func loginOption(s *testing.FixtState, useEnterprisePool bool) chrome.Option {
+	var accounts = ""
+	if useEnterprisePool {
+		accounts = s.RequiredVar("ui.cujEnterpriseAccountPool")
+	} else {
+		accounts = s.RequiredVar("ui.cujAccountPool")
+	}
+
+	return chrome.GAIALoginPool(accounts)
 }
 
 func runningPackages(ctx context.Context, a *arc.ARC) (map[string]struct{}, error) {
@@ -251,6 +272,7 @@ type loggedInToCUJUserFixture struct {
 	webUITabStrip bool
 	// bt describes what type of browser this fixture should use
 	bt browser.Type
+	useEnterprisePool bool
 }
 
 func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -261,7 +283,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 		defer cancel()
 
 		opts := []chrome.Option{
-			loginOption(s),
+			loginOption(s, f.useEnterprisePool),
 			chrome.ARCSupported(),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...),
 		}
