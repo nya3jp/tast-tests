@@ -107,6 +107,17 @@ func init() {
 			},
 			Fixture: "loggedInToCUJUser",
 		}, {
+			Name:    "2p_ent",
+			Timeout: defaultTestTimeout,
+			// ExtraAttr: []string{"group:cuj"},
+			Val: meetTest{
+				num:         1,
+				layout:      meetLayoutAuto,
+				cam:         true,
+				browserType: browser.TypeAsh,
+			},
+			Fixture: "loggedInToCUJUserEnterprise",
+		}, {
 			Name:      "lacros_2p",
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
@@ -129,6 +140,17 @@ func init() {
 				browserType: browser.TypeAsh,
 			},
 			Fixture: "loggedInToCUJUser",
+		}, {
+			Name:    "4p_ent",
+			Timeout: defaultTestTimeout,
+			// ExtraAttr: []string{"group:cuj"},
+			Val: meetTest{
+				num:         3,
+				layout:      meetLayoutAuto,
+				cam:         true,
+				browserType: browser.TypeAsh,
+			},
+			Fixture: "loggedInToCUJUserEnterprise",
 		}, {
 			// Small meeting.
 			Name:      "4p_present_notes_split",
