@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "165479a3_557b3530",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-06-27T22:20:48Z",
+      "side": 1,
+      "message": "Hi Alex, this test isn\u0027t ready but I wanted to ask a question about it, could you please check out the comment below.\nThanks.",
+      "revId": "bb5fe032fd41cf832104ef83ef2ce0e1ebb01e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5710b54e_2d12e998",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_no_license_enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-06-27T22:20:48Z",
+      "side": 1,
+      "message": "Unclear how to expose the real error that happens during enrollment.\n\nWhen I have the code like this it passes but that\u0027s not how it should be done because it doesn\u0027t check for any specific error. If I modify the test to \"err !\u003d nil\" to actually expose the error, it\u0027s just a standard \"failed to start chrome\". I tried searching the logs for the strings that appear in the image below I don\u0027t find anything. Any idea how to actually check that this enrollment error appeared on screen?\n\nThe error that I\u0027m seeing on screen: https://screenshot.googleplex.com/6nmqnsFMh4eEUF8.png",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 49
+      },
+      "revId": "bb5fe032fd41cf832104ef83ef2ce0e1ebb01e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
