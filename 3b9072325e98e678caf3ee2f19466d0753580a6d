@@ -34,6 +34,24 @@
       "parentUuid": "470da326_a2d79a9e",
       "revId": "3b9072325e98e678caf3ee2f19466d0753580a6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb5a5c56_83c9bef8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/typec/usb_hotplug_unplug_suspend_resume.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-06-27T18:39:42Z",
+      "side": 1,
+      "message": "I don\u0027t think is the right approach. TODO\u0027s often get forgotten, and in the meanwhile this test will silently pass on multiple pieces of hardware where it shouldn\u0027t be runnning.\n\nI would rather this be fixed at the outset (I\u0027m not aware of any release this is blocking).\n\nAt the very least there needs to be a plan/design of how to identify systems on which this should run before landing this patch.",
+      "parentUuid": "9424153a_eaafd61a",
+      "revId": "3b9072325e98e678caf3ee2f19466d0753580a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
