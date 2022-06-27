@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eaf8476_8db70403",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-27T20:09:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95d235cb_2175e55e",
+      "revId": "6b159ca3a7ff76477c4a30150d84f4517175dda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "019ca263_dc39204c",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fc71703_4142e347",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-27T20:09:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "019ca263_dc39204c",
+      "range": {
+        "startLine": 301,
+        "startChar": 27,
+        "endLine": 301,
+        "endChar": 32
+      },
+      "revId": "6b159ca3a7ff76477c4a30150d84f4517175dda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccdecfc4_ddc9f477",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-06-27T17:25:39Z",
       "side": 1,
       "message": "I would try the scan and wait routine one more time in case the the initial scan failure due to FAIL-BUSY was caused by a scan that initiated before you configured the GO. i.e. if any part of this fails the first time (including checkScanResults below), try one more time.",
+      "revId": "6b159ca3a7ff76477c4a30150d84f4517175dda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c90cd57_dc70d0b5",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-27T20:09:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccdecfc4_ddc9f477",
       "revId": "6b159ca3a7ff76477c4a30150d84f4517175dda7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
