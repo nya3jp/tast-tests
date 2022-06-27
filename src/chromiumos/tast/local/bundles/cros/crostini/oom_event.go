@@ -6,6 +6,8 @@ package crostini
 
 import (
 	"context"
+	"io/ioutil"
+	"regexp"
 	"time"
 
 	"github.com/godbus/dbus/v5"
@@ -28,9 +30,10 @@ const (
 	oomAnomalyEventServiceInterface   = "org.chromium.AnomalyEventServiceInterface"
 	oomAnomalyGuestOOMEventSignalName = "GuestOomEvent"
 	crosEventHistogram                = "Platform.CrOSEvent"
+	sigRegexp                         = "sig=guest-oom-event"
+	logRegexp                         = ".* Out of memory: Killed process .*tail.*"
 	oomEventHistogramEnum             = 34
-
-	killCode = 9
+	killCode                          = 9
 )
 
 func init() {
@@ -100,13 +103,62 @@ func OOMEvent(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := checkDbusSignal(ctx, cont, s); err != nil {
+	if err := checkDbusSignal(ctx, cont); err != nil {
 		s.Fatal("Didn't get an error signal for OOM process: ", err)
 	}
 
 	if err := checkOOMHistogram(ctx, tconn, histogram); err != nil {
 		s.Fatal("Could not get updated histogram: ", err)
 	}
+
+	if err := checkCrashReport(ctx); err != nil {
+		s.Fatal("Could not find crash report: ", err)
+	}
+}
+
+func checkCrashReport(ctx context.Context) error {
+	testing.ContextLog(ctx, "Checking for expected crash reports")
+
+	daemonStorePaths, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get daemon store crash dir")
+	}
+
+	files, err := crash.WaitForCrashFiles(ctx, daemonStorePaths,
+		[]string{`guest_oom_event.*\.meta`,
+			`guest_oom_event.*\.log`})
+	if err != nil {
+		return errors.Wrap(err, "couldn't find expected files")
+	}
+
+	testing.ContextLog(ctx, "Checking for expected metadata signature")
+
+	metaData, err := ioutil.ReadFile(files[`guest_oom_event.*\.meta`][0])
+	if err != nil {
+		return errors.Wrap(err, "failed to read the metadata file")
+	}
+	if re := regexp.MustCompile(sigRegexp); !re.Match(metaData) {
+		return errors.Errorf("Did not find expected line %q in metadata file", sigRegexp)
+	}
+
+	log, err := ioutil.ReadFile(files[`guest_oom_event.*\.log`][0])
+	if err != nil {
+		return errors.Wrap(err, "couldn't read log file")
+	}
+	if re := regexp.MustCompile(logRegexp); !re.Match(log) {
+		return errors.Errorf("Did not find expected line %q in log file", logRegexp)
+	}
+
+	// If the crash report files were as expected, delete
+	// them. This stops them from being uploaded to the crash
+	// server and polluting the data with fake crashes.
+	//
+	// Don't die on error, because this is just a cleanup step.
+	if err = crash.RemoveAllFiles(ctx, files); err != nil {
+		testing.ContextLogf(ctx, "Failed to clean up generated crash files: %q", err)
+	}
+
+	return nil
 }
 
 func checkOOMHistogram(ctx context.Context, tconn *chrome.TestConn, histogram *metrics.Histogram) error {
@@ -136,10 +188,12 @@ func checkOOMHistogram(ctx context.Context, tconn *chrome.TestConn, histogram *m
 		return errors.Wrap(err, "failed polling on metrics.GetHistogram")
 	}
 
+	testing.ContextLog(ctx, "Found the expected histogram")
+
 	return nil
 }
 
-func checkDbusSignal(ctx context.Context, container *vm.Container, s *testing.State) (resultError error) {
+func checkDbusSignal(ctx context.Context, container *vm.Container) (resultError error) {
 	match := dbusutil.MatchSpec{
 		Type:      "signal",
 		Path:      oomAnomalyEventServicePath,
@@ -160,7 +214,7 @@ func checkDbusSignal(ctx context.Context, container *vm.Container, s *testing.St
 		}
 	}()
 
-	s.Log("Starting tail process")
+	testing.ContextLog(ctx, "Starting tail process")
 	// tail will buffer input in-memory until it reaches a newline, so it can
 	// print at least one line at a time. Since /dev/zero by definition has no
 	// newlines, the memory of the process should expand until eventually the
@@ -168,10 +222,10 @@ func checkDbusSignal(ctx context.Context, container *vm.Container, s *testing.St
 	cmd := container.VM.Command(ctx, "tail", "/dev/zero")
 	code, extracted := testexec.ExitCode(cmd.Run())
 	if !extracted {
-		s.Fatal("Failed to extract exit code from running tail ")
+		return errors.New("failed to extract exit code from running tail")
 	}
 	if code != killCode {
-		s.Fatalf("Failed to fail correctly, expected process to exit with code %v, exited with %v instead", killCode, code)
+		return errors.Errorf("failed to fail correctly, expected process to exit with code %v, exited with %v instead", killCode, code)
 	}
 
 	testing.ContextLog(ctx, "Waiting for signal from anomaly_detector")
