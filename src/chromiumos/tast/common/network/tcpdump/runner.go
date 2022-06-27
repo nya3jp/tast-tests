@@ -176,9 +176,11 @@ func (r *Runner) Close(ctx context.Context) error {
 	return r.close(ctx)
 }
 
-// OutputTCP returns TCP packets captured by the tcpdump utility.
-func (r *Runner) OutputTCP(ctx context.Context) ([]byte, error) {
-	out, err := r.cmd.Output(ctx, "tcpdump", "tcp", "-r", r.config.packetPath)
+// Output returns packets captured by the tcpdump utility.
+// args is set to filter tcpdump packets.
+func (r *Runner) Output(ctx context.Context, args ...string) ([]byte, error) {
+	args = append(args, "-r", r.config.packetPath)
+	out, err := r.cmd.Output(ctx, "tcpdump", args...)
 	if err != nil {
 		return nil, err
 	}

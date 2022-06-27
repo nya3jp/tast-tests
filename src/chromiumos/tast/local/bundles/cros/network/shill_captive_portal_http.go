@@ -39,12 +39,12 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 	}
 
 	opts := virtualnet.EnvOptions{
-		Priority:              5,
-		NameSuffix:            "",
-		EnableDHCP:            true,
-		RAServer:              false,
-		HTTPServer:            true,
-		AddressToForceGateway: "www.gstatic.com",
+		Priority:     5,
+		NameSuffix:   "",
+		EnableDHCP:   true,
+		RAServer:     false,
+		HTTPServer:   true,
+		ResolvedHost: "www.gstatic.com",
 	}
 	pool := subnet.NewPool()
 	service, portalEnv, err := virtualnet.CreateRouterEnv(ctx, m, pool, opts)
