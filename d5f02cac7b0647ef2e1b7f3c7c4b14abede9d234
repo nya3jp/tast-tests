@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c048dd6d_c93fc5bb",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-27T22:34:02Z",
+      "side": 1,
+      "message": "nit: Write `var layout string` and put `\"BRADY_BUNCH_7_7\"` in an `else` so that the layout constants appear in order of ascending number of meeting participants.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 2
+      },
+      "revId": "d5f02cac7b0647ef2e1b7f3c7c4b14abede9d234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
