@@ -8,7 +8,9 @@ import (
 	"context"
 	"os"
 	"path"
+	"strings"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
@@ -16,6 +18,10 @@ import (
 
 const (
 	driveFsCommandLineArgsFileName = "command_line_args"
+
+	driveFsXattrPinned      = "user.drive.pinned"
+	driveFsXattrUncommitted = "user.drive.uncommitted"
+	driveFsXattrID          = "user.drive.id"
 )
 
 // DriveFs is a helper object for working with `drivefs` instances run within
@@ -105,4 +111,101 @@ func (dfs *DriveFs) SaveLogsOnError(ctx context.Context, hasError func() bool) {
 		return
 	}
 	saveDriveLogs(ctx, dfs.homeDir, dfs.persistableToken)
+}
+
+func (dfs *DriveFs) ensureDriveFsPath(path string) error {
+	if strings.HasPrefix(path, dfs.mountPath) {
+		return nil
+	}
+	return errors.New("Path is not in drivefs: " + path)
+}
+
+// File wraps an `os.File` with additional helper functions.
+type File struct {
+	*os.File
+}
+
+// Open opens a `drivefs.File`, see `os.Open` and `os.File`.
+func (dfs *DriveFs) Open(name string) (*File, error) {
+	if err := dfs.ensureDriveFsPath(name); err != nil {
+		return nil, err
+	}
+	file, err := os.Open(name)
+	if err != nil {
+		return nil, err
+	}
+	return &File{
+		file,
+	}, nil
+}
+
+// Create creates a new `drivefs.File`, see `os.Create` and `os.File`.
+func (dfs *DriveFs) Create(name string) (*File, error) {
+	if err := dfs.ensureDriveFsPath(name); err != nil {
+		return nil, err
+	}
+	file, err := os.Create(name)
+	if err != nil {
+		return nil, err
+	}
+	return &File{
+		file,
+	}, nil
+}
+
+// IsPinned returns `true` if the file is pinned in DriveFS.
+//
+// Note: This doesn't indicate if the file data has been downloaded, just if it
+// _should_ be downloaded.
+func (file *File) IsPinned() (bool, error) {
+	return GetXattrBool(file.Name(), driveFsXattrPinned)
+}
+
+// SetPinned pins or unpins a file in DriveFS.
+//
+// Note: Pinning a file only marks it for download. Unpinning the file will
+// free it for eviction, but it won't be evicted until necessary.
+func (file *File) SetPinned(pinned bool) error {
+	return SetXattrBool(file.Name(), driveFsXattrPinned, pinned)
+}
+
+// IsUncommitted returns `true` if the file has uncommitted/unuploaded data.
+func (file *File) IsUncommitted() (bool, error) {
+	return GetXattrBool(file.Name(), driveFsXattrUncommitted)
+}
+
+// ItemID returns the item ID of the file, if it has been created on the cloud.
+//
+// Note: Unuploaded files will have a `local-` prefixed ID. This ID will be
+// replaced with a cloud ID once uploaded.
+func (file *File) ItemID() (string, error) {
+	return GetXattrString(file.Name(), driveFsXattrID)
+}
+
+// IDCreated returns an action that fails until a cloud ID is created.
+func (file *File) IDCreated() action.Action {
+	return action.Named("await file id creation", func(ctx context.Context) error {
+		id, err := file.ItemID()
+		if err != nil {
+			return err
+		}
+		if strings.HasPrefix(id, "local-") {
+			return errors.New("file has local ID: " + id)
+		}
+		return nil
+	})
+}
+
+// Committed returns an action that fails until the file is committed.
+func (file *File) Committed() action.Action {
+	return action.Named("await file commit", func(ctx context.Context) error {
+		uncommitted, err := file.IsUncommitted()
+		if err != nil {
+			return err
+		}
+		if uncommitted {
+			return errors.New("file is uncommitted")
+		}
+		return nil
+	})
 }
