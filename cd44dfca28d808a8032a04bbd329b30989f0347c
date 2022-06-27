@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b21a40c_d9a4fdbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-06-27T10:57:38Z",
+      "side": 1,
+      "message": "Hello Jeremy, please have a look to the following script for AP RO Interop Bootability and Basic Performance test. \n\nWe are currently considering to run this test in a few number of models.\n\nThank you in advance. ",
+      "revId": "cd44dfca28d808a8032a04bbd329b30989f0347c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
