@@ -196,6 +196,18 @@ const STAAssociationTimeout = time.Minute
 // WaitForSTAAssociated polls an access point until a specific station is
 // associated or timeout is fired.
 func WaitForSTAAssociated(ctx context.Context, m *hostapd.Monitor, client string, timeout time.Duration) error {
+	return waitForSTAAssociationEvent(ctx, m, client, timeout, true)
+}
+
+// WaitForSTADissociated polls an access point until a specific station is
+// dissociated or timeout is fired.
+func WaitForSTADissociated(ctx context.Context, m *hostapd.Monitor, client string, timeout time.Duration) error {
+	return waitForSTAAssociationEvent(ctx, m, client, timeout, false)
+}
+
+// waitForSTAAssociationEvent polls an access point for until a specific station got an
+// association event (association or dissociation based on the parameter association) or until timeout is fired.
+func waitForSTAAssociationEvent(ctx context.Context, m *hostapd.Monitor, client string, timeout time.Duration, association bool) error {
 	timeoutContext, cancel := context.WithTimeout(ctx, timeout)
 	defer cancel()
 
@@ -212,7 +224,13 @@ func WaitForSTAAssociated(ctx context.Context, m *hostapd.Monitor, client string
 		if event == nil { // timeout
 			return errors.New("association event timeout")
 		}
-		if e, ok := event.(*hostapd.ApStaConnectedEvent); ok {
+		if e, ok := event.(*hostapd.ApStaConnectedEvent); ok && association {
+			if bytes.Compare(iface.HardwareAddr, e.Addr) != 0 {
+				return errors.Errorf("unexpected station association: got %v want %v", e.Addr, iface.HardwareAddr)
+			}
+			return nil
+		}
+		if e, ok := event.(*hostapd.ApStaDisconnectedEvent); ok && !association {
 			if bytes.Compare(iface.HardwareAddr, e.Addr) != 0 {
 				return errors.Errorf("unexpected station association: got %v want %v", e.Addr, iface.HardwareAddr)
 			}
