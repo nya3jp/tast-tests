@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/policyutil/externaldata"
+	"chromiumos/tast/local/syslog"
 	ppb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
@@ -48,6 +49,33 @@ type PolicyService struct { // NOLINT
 	fakeDMSRemoval bool
 
 	eds *externaldata.Server
+}
+
+// NewReader checks for enrollment error in logs using.
+func (c *PolicyService) NewReader(ctx context.Context, req *ppb.NewReaderRequest) (*empty.Empty, error) {
+	chromeReader, err := syslog.NewReader(ctx, syslog.Program("chrome"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to run NewReader")
+	}
+	defer chromeReader.Close()
+
+	const (
+		logScanTimeout = 90 * time.Second
+	)
+
+	const (
+		enrollmentErrorLog = "Enrollment Error"
+	)
+
+	testing.ContextLog(ctx, "Waiting for enrollment failure message")
+	if _, err := chromeReader.Wait(ctx, logScanTimeout,
+		func(e *syslog.Entry) bool {
+			return strings.Contains(e.Content, enrollmentErrorLog)
+		},
+	); err != nil {
+		return nil, errors.Wrap(err, "Enrollment failure message didn't happen")
+	}
+	return &empty.Empty{}, nil
 }
 
 // GAIAEnrollAndLoginUsingChrome enrolls the device using dmserver. Specified user is logged in after this function completes.
