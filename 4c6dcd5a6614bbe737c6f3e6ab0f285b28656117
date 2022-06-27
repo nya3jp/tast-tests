@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "144f1e9a_2d8f018b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-27T04:24:08Z",
+      "side": 1,
+      "message": "Follow-up patch for the suggestion in https://crrev.com/c/3697774\nPTAL, thanks!",
+      "revId": "4c6dcd5a6614bbe737c6f3e6ab0f285b28656117",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
