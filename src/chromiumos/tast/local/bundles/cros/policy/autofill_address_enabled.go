@@ -152,7 +152,6 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open the browser: ", err)
 			}
 			defer closeBrowser(cleanupCtx)
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
@@ -170,7 +169,7 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 				ui := uiauto.New(tconn)
 
 				if err := uiauto.Combine("open the add address dialog",
-					ui.LeftClick(nodewith.Name("Add").Role(role.Button)),
+					ui.LeftClick(nodewith.Name("Add address").Role(role.Button)),
 					ui.WaitUntilExists(nodewith.Name("Save").Role(role.Button)),
 				)(ctx); err != nil {
 					s.Fatal("Failed to open the add address dialog: ", err)
