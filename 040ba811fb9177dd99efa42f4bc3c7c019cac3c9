@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "100b7f23_ab52d2d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-06-27T03:14:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af20ab67_82475641",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "040ba811fb9177dd99efa42f4bc3c7c019cac3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b0d4472_d38a9323",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-23T07:08:45Z",
       "side": 1,
       "message": "nit: lines too long. A line should not be longer than 72 characters.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 76
+      },
+      "revId": "040ba811fb9177dd99efa42f4bc3c7c019cac3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0515738_00f28491",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-06-27T03:14:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0d4472_d38a9323",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -110,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e416a44_3e250895",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-06-27T03:14:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c4605a6_fdfedf16",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 4
+      },
+      "revId": "040ba811fb9177dd99efa42f4bc3c7c019cac3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9348487b_5179a3eb",
@@ -133,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4688f446_453c09ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-06-27T03:14:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9348487b_5179a3eb",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "040ba811fb9177dd99efa42f4bc3c7c019cac3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d659e30c_7cd811fa",
@@ -146,6 +242,30 @@
       "writtenOn": "2022-06-23T07:08:45Z",
       "side": 1,
       "message": "Function names should not countain `get`. go/go-style/decisions#getters",
+      "range": {
+        "startLine": 180,
+        "startChar": 5,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "040ba811fb9177dd99efa42f4bc3c7c019cac3c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c0c7a9_19cb238d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-06-27T03:14:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d659e30c_7cd811fa",
       "range": {
         "startLine": 180,
         "startChar": 5,
