@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca132610_e280230f",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-27T20:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86aabbdf_0f352053",
+      "revId": "827c51829feb8d0420e50328f7c1cf2a4f4904ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5140369_d9fe0756",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-06-27T08:22:36Z",
       "side": 1,
       "message": "nit: missing .",
+      "revId": "827c51829feb8d0420e50328f7c1cf2a4f4904ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbc339fe_899530e3",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-27T20:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5140369_d9fe0756",
       "revId": "827c51829feb8d0420e50328f7c1cf2a4f4904ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
