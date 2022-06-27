@@ -24,10 +24,17 @@ func init() {
 			"evanbenn@chromium.org", // Test author
 			"chromeos-hps-swe@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
-		// TODO(b/227525135): re-enable when we have some brya DUTs with HPS
-		HardwareDeps: hwdep.D(hwdep.SkipOnModel("brya")),
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"hps"},
+		Params: []testing.Param{{
+			ExtraHardwareDeps: hwdep.D(hwdep.HPS()),
+		}, {
+			// On *-generic images, hpsd is configured to use
+			// a fake peripheral which works for testing the DBus
+			// interface in a VM.
+			Name:              "fake",
+			ExtraSoftwareDeps: []string{"fake_hps"},
+		}},
 	})
 }
 
