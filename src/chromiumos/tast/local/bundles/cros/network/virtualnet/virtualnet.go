@@ -6,6 +6,7 @@ package virtualnet
 
 import (
 	"context"
+	"net"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
@@ -33,6 +34,12 @@ type EnvOptions struct {
 	// RAServer enables the RA server in the Env. IPv6 addresses can be obtained
 	// on the interface by SLAAC.
 	RAServer bool
+	// ResolvedHost is the hostname to force an specific IPv4 or IPv6 address.
+	// When ResolvedHost is queried from dnsmasq, dnsmasq will respond with ResolveHostToIP.
+	ResolvedHost string
+	// ResolveHostToIP is the IP address returned when doing a DNS query
+	// for ResolvedHost.
+	ResolveHostToIP net.IP
 }
 
 // CreateRouterEnv creates a virtualnet Env with the given options. On success,
@@ -63,7 +70,7 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
 		}
-		dnsmasq := dnsmasq.New(v4Subnet, []string{})
+		dnsmasq := dnsmasq.New(v4Subnet, []string{}, opts.ResolvedHost, opts.ResolveHostToIP)
 		if err := router.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to start dnsmasq")
 		}
@@ -90,7 +97,7 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		return nil, nil, errors.Wrapf(err, "failed to find shill service for %s", router.VethOutName)
 	}
 
-	if err := svc.SetProperty(ctx, shillconst.ServicePropertyEphemeralPriority, opts.Priority); err != nil {
+	if err := svc.SetProperty(ctx, shillconst.ServicePropertyPriority, opts.Priority); err != nil {
 		return nil, nil, errors.Wrap(err, "failed to configure priority on interface")
 	}
 
