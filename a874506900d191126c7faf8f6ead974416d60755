@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb09b079_a9d1224b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-27T16:13:23Z",
+      "side": 1,
+      "message": "FYI, it\u0027s worth rebasing sooner rather than later, as tf has been refactored a bit.",
+      "revId": "a874506900d191126c7faf8f6ead974416d60755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
