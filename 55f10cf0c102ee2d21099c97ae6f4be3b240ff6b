@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c55f84_eb986ebd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-06-27T19:02:15Z",
+      "side": 1,
+      "message": "yzd@, aprilzhou@ please review changes to your tast-tests. Thank you.",
+      "revId": "55f10cf0c102ee2d21099c97ae6f4be3b240ff6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
