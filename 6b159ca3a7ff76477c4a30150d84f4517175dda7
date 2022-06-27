@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d235cb_2175e55e",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-27T17:25:39Z",
+      "side": 1,
+      "message": "failed to find SSID\u003d%s in the scan results",
+      "revId": "6b159ca3a7ff76477c4a30150d84f4517175dda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "019ca263_dc39204c",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-27T17:25:39Z",
+      "side": 1,
+      "message": "sp",
+      "range": {
+        "startLine": 301,
+        "startChar": 27,
+        "endLine": 301,
+        "endChar": 32
+      },
+      "revId": "6b159ca3a7ff76477c4a30150d84f4517175dda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccdecfc4_ddc9f477",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-27T17:25:39Z",
+      "side": 1,
+      "message": "I would try the scan and wait routine one more time in case the the initial scan failure due to FAIL-BUSY was caused by a scan that initiated before you configured the GO. i.e. if any part of this fails the first time (including checkScanResults below), try one more time.",
+      "revId": "6b159ca3a7ff76477c4a30150d84f4517175dda7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
