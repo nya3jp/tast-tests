@@ -6,7 +6,9 @@ package ip
 
 import (
 	"context"
+	"io"
 	"net"
+	"os"
 	"reflect"
 	"testing"
 )
@@ -27,6 +29,46 @@ func (r *stubCmdRunner) Run(ctx context.Context, cmd string, args ...string) err
 // the pre-assigned output.
 func (r *stubCmdRunner) Output(ctx context.Context, cmd string, args ...string) ([]byte, error) {
 	return r.out, nil
+}
+
+// CreateCmd is a stub function which does nothing.
+func (r *stubCmdRunner) CreateCmd(ctx context.Context, cmd string, args ...string) {
+	return
+}
+
+// SetStdOut is a stub function which does nothing.
+func (r *stubCmdRunner) SetStdOut(stdoutFile *os.File) {
+	return
+}
+
+// StderrPipe is a stub function which always returns nil.
+func (r *stubCmdRunner) StderrPipe() (io.ReadCloser, error) {
+	return nil, nil
+}
+
+// StartCmd is a stub function which always returns nil.
+func (r *stubCmdRunner) StartCmd() error {
+	return nil
+}
+
+// WaitCmd is a stub function which always returns nil.
+func (r *stubCmdRunner) WaitCmd() error {
+	return nil
+}
+
+// CmdExists is a stub function which always returns false.
+func (r *stubCmdRunner) CmdExists() bool {
+	return false
+}
+
+// ReleaseProcess is a stub function which always returns nil.
+func (r *stubCmdRunner) ReleaseProcess() error {
+	return nil
+}
+
+// ResetCmd is a stub function which does nothing.
+func (r *stubCmdRunner) ResetCmd() {
+	return
 }
 
 func TestGetMAC(t *testing.T) {

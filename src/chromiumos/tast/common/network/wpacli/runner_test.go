@@ -7,6 +7,8 @@ package wpacli
 import (
 	"bytes"
 	"context"
+	"io"
+	"os"
 	"reflect"
 	"strings"
 	"testing"
@@ -63,6 +65,46 @@ func (r *cmdRunner) Output(ctx context.Context, cmd string, args ...string) ([]b
 
 func (r *cmdRunner) Run(ctx context.Context, cmd string, args ...string) error {
 	return errors.New("shall not be called")
+}
+
+// CreateCmd is a mock function which does nothing.
+func (r *cmdRunner) CreateCmd(ctx context.Context, cmd string, args ...string) {
+	return
+}
+
+// SetStdOut is a mock function which does nothing.
+func (r *cmdRunner) SetStdOut(stdoutFile *os.File) {
+	return
+}
+
+// StderrPipe is a mock function which always returns nil.
+func (r *cmdRunner) StderrPipe() (io.ReadCloser, error) {
+	return nil, nil
+}
+
+// StartCmd is a mock function which always returns nil.
+func (r *cmdRunner) StartCmd() error {
+	return nil
+}
+
+// WaitCmd is a mock function which always returns nil.
+func (r *cmdRunner) WaitCmd() error {
+	return nil
+}
+
+// CmdExists is a mock function which always returns false.
+func (r *cmdRunner) CmdExists() bool {
+	return false
+}
+
+// ReleaseProcess is a mock function which always returns nil.
+func (r *cmdRunner) ReleaseProcess() error {
+	return nil
+}
+
+// ResetCmd is a mock function which does nothing.
+func (r *cmdRunner) ResetCmd() {
+	return
 }
 
 func TestPing(t *testing.T) {
