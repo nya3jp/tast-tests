@@ -6,6 +6,7 @@ package virtualnet
 
 import (
 	"context"
+	"net"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
@@ -36,11 +37,12 @@ type EnvOptions struct {
 	RAServer bool
 	// HTTPServer enables the HTTP server in the Env.
 	HTTPServer bool
-	// AddressToForceGateway is the address to force an IPv4 or IPv6 address to
-	// the gateway. When paired with a dnsmasq server, the DNS is queried for this
-	// address, and dnsmasq will respond with the address to the gateway. For the
-	// captive portal case, dnsmasq will respond with the address of the HTTP server
-	AddressToForceGateway string
+	// ResolvedHost is the hostname to force an specific IPv4 or IPv6 address.
+	// When ResolvedHost is queried from dnsmasq, dnsmasq will respond with ResolveHostToIP.
+	ResolvedHost string
+	// ResolveHostToIP is the IP address returned when doing a DNS query
+	// for ResolvedHost.
+	ResolveHostToIP net.IP
 }
 
 // CreateRouterEnv creates a virtualnet Env with the given options. On success,
@@ -71,7 +73,7 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
 		}
-		dnsmasq := dnsmasq.New(v4Subnet, []string{}, opts.AddressToForceGateway)
+		dnsmasq := dnsmasq.New(v4Subnet, []string{}, opts.ResolvedHost, opts.ResolveHostToIP)
 		if err := router.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to start dnsmasq")
 		}
@@ -105,7 +107,7 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		return nil, nil, errors.Wrapf(err, "failed to find shill service for %s", router.VethOutName)
 	}
 
-	if err := svc.SetProperty(ctx, shillconst.ServicePropertyEphemeralPriority, opts.Priority); err != nil {
+	if err := svc.SetProperty(ctx, shillconst.ServicePropertyPriority, opts.Priority); err != nil {
 		return nil, nil, errors.Wrap(err, "failed to configure priority on interface")
 	}
 
