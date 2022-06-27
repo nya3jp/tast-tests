@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb10ec8e_404490b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-06-27T04:50:26Z",
+      "side": 1,
+      "message": "Hi reviewers, please help me review this CL, thanks.\n\nI\u0027m thinking about whether we should merge this before the tagged bug is fixed with the TODO, or just merge it after the bug is fixed so we can directly set the counter to 5. But anyway it\u0027s a one-liner change so I think we can start the review first.",
+      "revId": "bb0c2ade50604aa9cb4c09bd7198048035b02f32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
