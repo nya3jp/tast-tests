@@ -50,6 +50,24 @@
       "message": "I don\u0027t believe I\u0027m a code owner for TAST repos, but FWIW LGTM",
       "revId": "20437218032772b0660c9589b310daaf82bbf707",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdcfcdf0_c594f37e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-27T18:43:10Z",
+      "side": 1,
+      "message": "FYI, my +1 is good for owner approval.",
+      "parentUuid": "2c61c9a0_5eb3fea2",
+      "revId": "20437218032772b0660c9589b310daaf82bbf707",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
