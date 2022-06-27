@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -35,6 +36,7 @@ func init() {
 		},
 		Attr:         []string{"group:camerabox", "group:hps"},
 		Timeout:      20 * time.Minute,
+		HardwareDeps: hwdep.D(hwdep.HPS()),
 		SoftwareDeps: []string{"hps", "chrome", caps.BuiltinCamera},
 		Vars:         []string{"tablet"},
 	})
