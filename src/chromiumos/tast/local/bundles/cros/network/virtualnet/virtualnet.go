@@ -6,6 +6,7 @@ package virtualnet
 
 import (
 	"context"
+	"net"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
@@ -31,16 +32,22 @@ type EnvOptions struct {
 	// EnableDHCP enables the DHCP server in the Env. IPv4 address can be obtained
 	// on the interface by DHCP.
 	EnableDHCP bool
+	// EnableDNS enables the DNS functionality. It only support resolving ResolvedHost
+	// to a single IP address ResolveHostToIP provided during configuration.
+	EnableDNS bool
 	// RAServer enables the RA server in the Env. IPv6 addresses can be obtained
 	// on the interface by SLAAC.
 	RAServer bool
 	// HTTPServer enables the HTTP server in the Env.
 	HTTPServer bool
-	// AddressToForceGateway is the address to force an IPv4 or IPv6 address to
-	// the gateway. When paired with a dnsmasq server, the DNS is queried for this
-	// address, and dnsmasq will respond with the address to the gateway. For the
-	// captive portal case, dnsmasq will respond with the address of the HTTP server
-	AddressToForceGateway string
+	// ResolvedHost is the hostname to force a specific IPv4 or IPv6 address.
+	// When ResolvedHost is queried from dnsmasq, dnsmasq will respond with ResolveHostToIP.
+	// If resolvedHost is not set, it matches any domain in dnsmasq configuration.
+	ResolvedHost string
+	// ResolveHostToIP is the IP address returned when doing a DNS query for ResolvedHost.
+	// If resolveHostToIP is not set, resolvedHost is resolved to an IPv4 or IPv6 address
+	// to the gateway of the virtualnet Env created with these EnvOptions.
+	ResolveHostToIP net.IP
 }
 
 // CreateRouterEnv creates a virtualnet Env with the given options. On success,
@@ -71,7 +78,7 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		if err != nil {
 			return nil, nil, errors.Wrap(err, "failed to allocate v4 subnet for DHCP")
 		}
-		dnsmasq := dnsmasq.New(v4Subnet, []string{}, opts.AddressToForceGateway)
+		dnsmasq := dnsmasq.New(v4Subnet, opts.EnableDNS, []string{}, opts.ResolvedHost, opts.ResolveHostToIP)
 		if err := router.StartServer(ctx, "dnsmasq", dnsmasq); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to start dnsmasq")
 		}
