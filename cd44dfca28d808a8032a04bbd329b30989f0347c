@@ -16,6 +16,98 @@
       "message": "Hello Jeremy, please have a look to the following script for AP RO Interop Bootability and Basic Performance test. \n\nWe are currently considering to run this test in a few number of models.\n\nThank you in advance. ",
       "revId": "cd44dfca28d808a8032a04bbd329b30989f0347c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb76025_a55acbb7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_ro_bootability_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-27T22:31:27Z",
+      "side": 1,
+      "message": "Since this test will leave the dut in a bit of a mess with what firmware is installed at the end of the test, I think we should probably not put it in firmware_unstable. We could add a new suite specifically for it, and run the test less often than daily. Really it only needs to be run when the json file is updated.",
+      "range": {
+        "startLine": 60,
+        "startChar": 43,
+        "endLine": 60,
+        "endChar": 62
+      },
+      "revId": "cd44dfca28d808a8032a04bbd329b30989f0347c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09229984_acc7ecba",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_ro_bootability_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-27T22:31:27Z",
+      "side": 1,
+      "message": "Is dev mode required here? In general if we don\u0027t care about the mode, I prefer NormalMode.",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "cd44dfca28d808a8032a04bbd329b30989f0347c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee720f77_dcd98b48",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_ro_bootability_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-27T22:31:27Z",
+      "side": 1,
+      "message": "We probably want to use the firmware that we found on the machine before the test started, instead of the one from the shellball.",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 2
+      },
+      "revId": "cd44dfca28d808a8032a04bbd329b30989f0347c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71792dad_017e7e02",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_ro_bootability_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-27T22:31:27Z",
+      "side": 1,
+      "message": "This will probably only work when running locally. In the lab I don\u0027t think it will. Please see if you can use testing.State.CloudStorage instead.",
+      "range": {
+        "startLine": 322,
+        "startChar": 13,
+        "endLine": 322,
+        "endChar": 36
+      },
+      "revId": "cd44dfca28d808a8032a04bbd329b30989f0347c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
