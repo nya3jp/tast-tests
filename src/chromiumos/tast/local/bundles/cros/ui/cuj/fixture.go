@@ -96,13 +96,17 @@ func init() {
 		Vars:            []string{"ui.cujAccountPool"},
 	})
 	testing.AddFixture(&testing.Fixture{
-		Name: "loggedInToCUJUserEnterprise",
-		Desc: "The main fixture used for UI CUJ tests using an enterprise account",
+		Name: "loggedInToCUJUserEnterpriseWithWebRTCEventLogging",
+		Desc: "The main fixture used for UI CUJ tests using an enterprise account, with WebRTC event logging",
 		Contacts: []string{
 			"xiyuan@chromium.org",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl:            &loggedInToCUJUserFixture{bt: browser.TypeAsh, useEnterprisePool: true},
+		Impl: &loggedInToCUJUserFixture{
+			chromeExtraOpts:   []chrome.Option{chrome.ExtraArgs(webRTCEventLogCommandFlag)},
+			bt:                browser.TypeAsh,
+			useEnterprisePool: true,
+		},
 		Parent:          "prepareForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
