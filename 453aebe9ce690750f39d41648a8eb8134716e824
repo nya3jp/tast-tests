@@ -22,6 +22,30 @@
       },
       "revId": "453aebe9ce690750f39d41648a8eb8134716e824",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17d5ceb6_452306d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-06-27T20:48:03Z",
+      "side": 1,
+      "message": "Yes, because I removed nohup from the panic command lines on line 71 \u0026 78.",
+      "parentUuid": "184fd3ea_2808f57b",
+      "range": {
+        "startLine": 140,
+        "startChar": 41,
+        "endLine": 140,
+        "endChar": 46
+      },
+      "revId": "453aebe9ce690750f39d41648a8eb8134716e824",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
