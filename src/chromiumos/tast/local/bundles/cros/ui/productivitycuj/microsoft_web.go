@@ -178,16 +178,32 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, cr *chrome
 	excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
 	canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
 
-	copyFromExistingSheet := uiauto.Combine("copy from existing spreadsheet",
-		app.openBlankDocument(excel),
-		app.uiHdl.SwitchToChromeTabByName(excelTab),
-		app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(canvas),
-		app.selectBox("A1"),
-		app.kb.AccelAction("Ctrl+A"),
-		uiauto.Sleep(dataWaitTime), // Given time to select all data.
-		app.kb.AccelAction("Ctrl+C"),
-		uiauto.Sleep(dataWaitTime), // Given time to copy data.
-	)
+	copyFromExistingSheet := func(ctx context.Context) error {
+		checkCopiedData := func(ctx context.Context) error {
+			data, err := getClipboardText(ctx, app.tconn)
+			if err != nil {
+				return err
+			}
+			if lines := strings.Split(data, "\n"); len(lines) != 100 && !strings.HasPrefix(data, "1") {
+				return errors.New("incorrect pasted content")
+			}
+			return nil
+		}
+		copyAll := uiauto.NamedCombine("copy all data",
+			app.selectBox("A1"),
+			app.kb.AccelAction("Ctrl+A"),
+			uiauto.Sleep(dataWaitTime), // Given time to select all data.
+			app.kb.AccelAction("Ctrl+C"),
+			uiauto.Sleep(dataWaitTime), // Given time to copy data.
+			checkCopiedData,
+		)
+		return uiauto.Combine("copy from existing spreadsheet",
+			app.openBlankDocument(excel),
+			app.uiHdl.SwitchToChromeTabByName(excelTab),
+			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(canvas),
+			app.ui.Retry(retryTimes, copyAll),
+		)(ctx)
+	}
 
 	pasteIntoNewSheet := uiauto.Combine("paste into newly created spreadsheet",
 		app.uiHdl.SwitchToChromeTabByName("Book"),
@@ -727,11 +743,19 @@ func (app *MicrosoftWebOffice) openNewFile(service string) action.Action {
 // Therefore, we try to open a blank document from OneDrive to avoid this situation.
 func (app *MicrosoftWebOffice) openBlankDocument(service string) action.Action {
 	return func(ctx context.Context) error {
-		// Skip an alert dialog "Get the most out of your OneDrive" when it pops up.
 		noThanksButton := nodewith.Name("No thanks").Role(role.Button).Focusable()
-		if err := uiauto.IfSuccessThen(
-			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(noThanksButton),
-			app.uiHdl.Click(noThanksButton),
+		closeDialogButton := nodewith.Name("Close dialog").Role(role.Button).Focusable()
+		if err := uiauto.Combine("close dialogs",
+			// Skip an alert dialog "Get the most out of your OneDrive" when it pops up.
+			uiauto.IfSuccessThen(
+				app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(noThanksButton),
+				app.uiHdl.Click(noThanksButton),
+			),
+			// Skip "Let's get you started" when the dialog pops up.
+			uiauto.IfSuccessThen(
+				app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(closeDialogButton),
+				app.uiHdl.Click(closeDialogButton),
+			),
 		)(ctx); err != nil {
 			return err
 		}
