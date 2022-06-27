@@ -39,6 +39,30 @@
       },
       "revId": "2bfd096538ebffdc65537ece691eadb32eaf135f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c66a196_1b4eeafd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_ipv4_static.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-27T04:08:26Z",
+      "side": 1,
+      "message": "Yes, added a comment here.\nIt\u0027s very unlikely that we want to change this behavior in the future so I think a comment should be enough.",
+      "parentUuid": "742d3d23_47dd3136",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "2bfd096538ebffdc65537ece691eadb32eaf135f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
