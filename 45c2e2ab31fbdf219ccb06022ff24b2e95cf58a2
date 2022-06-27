@@ -282,6 +282,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "837217b4_db03683a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/test_config_during_oobe.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-27T11:09:55Z",
+      "side": 1,
+      "message": "Good point, I have updated it so the information appears with the error message.",
+      "parentUuid": "86725081_6c67c277",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d2b0b84_aa320835",
@@ -331,6 +349,24 @@
       "side": 1,
       "message": "Oh I see. This is also connecting to a different page. That was not clear to me.\n\nI suggest the following:\n1. Modify NewCrosNetworkConfig to take |conn| as an argument.\n2. Add wrappers for CreateLoggedInCrosNetworkConfig and CreateOobeCrosNetworkConfig that create the appropriate connections and pass that to NewCrosNetworkConfig.\n3. Replace existing calls to NewCrosNetworkConfig with CreateLoggedInCrosNetworkConfig.\n\nThat will make the existing code more clear and will have less duplicate code.",
       "parentUuid": "c3cfa5ba_4f0e5d62",
+      "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03874ca3_2bc98750",
+        "filename": "src/chromiumos/tast/local/network/netconfig/cros_network_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-27T11:09:55Z",
+      "side": 1,
+      "message": "Thank you for the suggestion, I have updated the code.",
+      "parentUuid": "c48660fc_1061e51f",
       "revId": "45c2e2ab31fbdf219ccb06022ff24b2e95cf58a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

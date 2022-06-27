@@ -33,6 +33,24 @@
       "message": "I missed this before, but what is \u0027nw\u0027? If it\u0027s short for \u0027new\u0027, just use new.",
       "revId": "b15d4db62ff6d1b3940820be6c8df7b436b3ec5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0193d050_d2104ce8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/oobe_network_config_baseline.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-27T11:09:55Z",
+      "side": 1,
+      "message": "It refers to network. I have updated the name of the variable to clarify :)",
+      "parentUuid": "ce077547_34d01aed",
+      "revId": "b15d4db62ff6d1b3940820be6c8df7b436b3ec5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
