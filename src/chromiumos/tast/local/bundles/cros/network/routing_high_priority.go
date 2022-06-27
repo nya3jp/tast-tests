@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/network/routing"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet"
 	"chromiumos/tast/testing"
@@ -24,15 +25,20 @@ func init() {
 }
 
 func RoutingHighPriority(ctx context.Context, s *testing.State) {
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	testEnv := routing.NewTestEnv()
 	if err := testEnv.SetUp(ctx); err != nil {
 		s.Fatal("Failed to set up routing test env: ", err)
 	}
-	defer func() {
+	defer func(ctx context.Context) {
 		if err := testEnv.TearDown(ctx); err != nil {
 			s.Error("Failed to tear down routing test env: ", err)
 		}
-	}()
+	}(cleanupCtx)
 
 	// Create the test network with higher priority and thus it should become the
 	// default network.
