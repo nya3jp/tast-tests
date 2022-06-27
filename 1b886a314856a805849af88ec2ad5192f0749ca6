@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed63fc46_c43a47cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-27T16:50:02Z",
+      "side": 1,
+      "message": "Good to know, thanks!",
+      "parentUuid": "3c4e8eae_19b745f9",
+      "revId": "1b886a314856a805849af88ec2ad5192f0749ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df861f7a_7dd668e9",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-25T01:00:51Z",
       "side": 1,
       "message": "you\u0027ll want to store the original context, otherwise this is just shortening the deadline by 1 second everywhere and it won\u0027t reserve time for cleanup in the deferred function I believe. The usual pattern for saving time for deferred cleanup looks like:\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, time.Second)\ndefer cancel()\n\ndefer func() {\n  ...\n  m.RemoveTestProfile(cleanupCtx)\n}\n\n// Also use cleanupCtx in any other deferred cleanup funcs below.\n```",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 15
+      },
+      "revId": "1b886a314856a805849af88ec2ad5192f0749ca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79ffe80e_9c1b0afe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_veth.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-27T16:50:02Z",
+      "side": 1,
+      "message": "Ah, yes, thank you! Originally the cleanup just called popFunc which uses the original context. When RemoveTestProfile was added I forgot to use the original context there (and below).",
+      "parentUuid": "df861f7a_7dd668e9",
       "range": {
         "startLine": 60,
         "startChar": 1,

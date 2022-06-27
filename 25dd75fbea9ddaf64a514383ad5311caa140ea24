@@ -604,6 +604,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5510c89a_264fa19b",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-27T16:50:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8eeed36a_b29afacc",
+      "revId": "25dd75fbea9ddaf64a514383ad5311caa140ea24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6eda4c6c_8478ec0f",
