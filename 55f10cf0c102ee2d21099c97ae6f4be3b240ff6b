@@ -16,6 +16,29 @@
       "message": "yzd@, aprilzhou@ please review changes to your tast-tests. Thank you.",
       "revId": "55f10cf0c102ee2d21099c97ae6f4be3b240ff6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63241cf3_5f80e848",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-06-27T21:30:19Z",
+      "side": 1,
+      "message": "This pending CL: https://crrev.com/c/3723225 is going to disable sync on this test. How should we proceed?",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 27
+      },
+      "revId": "55f10cf0c102ee2d21099c97ae6f4be3b240ff6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
