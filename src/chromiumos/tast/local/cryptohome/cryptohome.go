@@ -592,3 +592,35 @@ func PrepareEphemeralUserWithAuthSession(ctx context.Context, username string) (
 
 	return authSessionID, nil
 }
+
+// TestLockScreen does lock screen password checks.
+func TestLockScreen(ctx context.Context, userName, userPassword, wrongPassword, keyLabel string, client *hwsec.CryptohomeClient) error {
+	cmdRunner := hwseclocal.NewCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
+	accepted, err := cryptohome.CheckVault(ctx, keyLabel, hwsec.NewPassAuthConfig(userName, userPassword))
+	if err != nil {
+		return errors.Wrap(err, "failed to check correct password")
+	}
+	if !accepted {
+		return errors.New("correct password rejected")
+	}
+
+	accepted, err = cryptohome.CheckVault(ctx, "" /* label */, hwsec.NewPassAuthConfig(userName, userPassword))
+	if err != nil {
+		return errors.Wrap(err, "failed to check correct password with wildcard label")
+	}
+	if !accepted {
+		return errors.New("correct password rejected with wildcard label")
+	}
+
+	accepted, err = cryptohome.CheckVault(ctx, keyLabel, hwsec.NewPassAuthConfig(userName, wrongPassword))
+	if err == nil {
+		return errors.Wrap(err, "wrong password check succeeded when it shouldn't")
+	}
+	if accepted {
+		return errors.New("wrong password check returned true despite an error")
+	}
+
+	return nil
+}
