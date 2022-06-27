@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/network/routing"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet"
 	"chromiumos/tast/testing"
@@ -28,12 +29,17 @@ func init() {
 // configuration on it, its state should become failure after the DHCP timeout,
 // and this process should have no routing impact.
 func RoutingNoIP(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	// Use a shortened context for test operations to reserve time for cleanup.
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	testEnv := routing.NewTestEnv()
 	if err := testEnv.SetUp(ctx); err != nil {
 		s.Fatal("Failed to set up routing test env: ", err)
 	}
 	defer func() {
-		if err := testEnv.TearDown(ctx); err != nil {
+		if err := testEnv.TearDown(cleanupCtx); err != nil {
 			s.Error("Failed to tear down routing test env: ", err)
 		}
 	}()
