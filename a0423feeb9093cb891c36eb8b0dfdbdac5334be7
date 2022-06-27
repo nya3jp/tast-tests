@@ -33,6 +33,23 @@
       "message": "The revert of the culprit CL was landed before the latest tests, so we do not have data point yet.\nCould you wait for a bit more to collect data points that this is actually stable enough?",
       "revId": "a0423feeb9093cb891c36eb8b0dfdbdac5334be7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5a687ba_6cf30195",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1298257
+      },
+      "writtenOn": "2022-06-27T13:48:15Z",
+      "side": 1,
+      "message": "Waited for 10 days or so and all the failures seem to be due to the flakiness of arc.Booted fixture for now. Do you think we can resubmit this?",
+      "revId": "a0423feeb9093cb891c36eb8b0dfdbdac5334be7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
