@@ -45,19 +45,22 @@ const (
 type dnsmasq struct {
 	env *env.Env
 	// subnet is the subnet that is used to define the gateway address and the range of DHCP addresses.
-	subnet *net.IPNet
-	// forceAddressToGateway is the domain name that is forced to the Gateway address.
-	forceAddressToGateway string
+	subnet          *net.IPNet
+	resolvedHost    string
+	resolveHostToIP net.IP
 	// dns defines the addresses for external DNS servers.
-	dns []string
-	cmd *testexec.Cmd
+	dns       []string
+	cmd       *testexec.Cmd
+	enableDNS bool
 }
 
-// New creates a new dnsmasq object. Currently dnsmasq will only be used as a
-// DHCP server daemon. The returned object can be passed to Env.StartServer(),
-// its lifetime will be managed by the Env object.
-func New(subnet *net.IPNet, dns []string, forceAddressToGateway string) *dnsmasq {
-	return &dnsmasq{subnet: subnet, dns: dns, forceAddressToGateway: forceAddressToGateway}
+// New creates a new dnsmasq object. enableDNS enables the DNS functionality. It supports
+// resolving resolvedHost to resolveHostToIP. If resolvedHost is not set, it matches any domain
+// in dnsmasq configuration. If resolveHostToIP is not set, resolvedHost is resolved to the
+// gateway. dns contains the DNS server list which will be broadcasted by DHCP. The returned
+// object can be passed to Env.StartServer(), its lifetime will be managed by the Env object.
+func New(subnet *net.IPNet, enableDNS bool, dns []string, resolvedHost string, resolveHostToIP net.IP) *dnsmasq {
+	return &dnsmasq{subnet: subnet, enableDNS: enableDNS, dns: dns, resolvedHost: resolvedHost, resolveHostToIP: resolveHostToIP}
 }
 
 // Start starts the dnsmasq process.
@@ -85,11 +88,27 @@ func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 		"gateway":    gateway.String(),
 		"port":       "0", // disable DNS
 	}
+
 	if len(d.dns) > 0 {
 		confVals["dns"] = strings.Join(d.dns, ",")
 	}
-	if d.forceAddressToGateway != "" {
-		confVals["address"] = fmt.Sprintf("/%v/%v", d.forceAddressToGateway, gateway.String())
+
+	var resolvedIP, resolvedHost string
+
+	if d.resolveHostToIP == nil {
+		resolvedIP = gateway.String()
+	} else {
+		resolvedIP = d.resolveHostToIP.String()
+	}
+
+	if d.resolvedHost == "" {
+		resolvedHost = "#" // '#' matches any domain in dnsmasq configuration.
+	} else {
+		resolvedHost = d.resolvedHost
+	}
+
+	if d.enableDNS {
+		confVals["address"] = fmt.Sprintf("/%v/%v", resolvedHost, resolvedIP)
 		confVals["port"] = dnsPort // enable DNS if needed for address forwarding
 	}
 	b := &bytes.Buffer{}

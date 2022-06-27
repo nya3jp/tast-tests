@@ -133,6 +133,7 @@ const (
 	ServicePropertyProvider          = "Provider"
 	ServicePropertyPriority          = "Priority"
 	ServicePropertyEphemeralPriority = "EphemeralPriority"
+	ServicePropertyCheckPortal       = "CheckPortal"
 
 	// Cellular service property names.
 	ServicePropertyCellularICCID         = "Cellular.ICCID"
