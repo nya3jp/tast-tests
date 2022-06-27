@@ -39,6 +39,30 @@
       },
       "revId": "654113f4ff43cf423c770d0ddcf3c91916981ed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7df41c88_e78cf867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-27T02:19:24Z",
+      "side": 1,
+      "message": "IIUC (didn\u0027t do experiment by myself, just according to the manual of dnsmasq), when specifying \"port\", dnsmasq will start the DNS server by itself, so I guess in the first if branch (`if len(d.dns) \u003e 0`), we don\u0027t need to set \"port\", since in this case we expect using the external DNS servers (d.dns).\n\nAnother question is, in the second if branch (`if d.forceAddressToIP !\u003d \"\"`), do we need to also append `${gateway}:53` to the dns list to make DHCP broadcasting this DNS? Did you check that if the IPConfig object exposed by shill contain this DNS server (after setup, run `/usr/local/lib/flimflam/test/list-ipconfigs etho_routert` on DUT before cleanup, maybe need to add a timeout in the test to avoid cleanup happens too fast)? But it seems that this part should works well if this test passes...\n\nThanks!",
+      "parentUuid": "5b03c0ce_78b97279",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "654113f4ff43cf423c770d0ddcf3c91916981ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

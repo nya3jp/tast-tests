@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6f28df_f097ece6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-27T02:19:24Z",
+      "side": 1,
+      "message": "Just a question: Is there any chance that, the DNS request actually go to the physical network since it\u0027s still the primary one at this moment?",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 49
+      },
+      "revId": "65e6fabebccfb3e4b659cc2ebde6d6c37a29f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ebe6b9_f8a371b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-27T02:19:24Z",
+      "side": 1,
+      "message": "nit: How about |forceAddressToGateway| or |forceNameToGatewway|? It\u0027s unclear that what \"IP\" is in this name.",
+      "range": {
+        "startLine": 56,
+        "startChar": 42,
+        "endLine": 56,
+        "endChar": 58
+      },
+      "revId": "65e6fabebccfb3e4b659cc2ebde6d6c37a29f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bad3a2cd_169f4d25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-27T02:19:24Z",
+      "side": 1,
+      "message": "nit: It seems to me that this the default behavior of this httpserver is do a redirection for all requests, maybe worth a comment above.",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "65e6fabebccfb3e4b659cc2ebde6d6c37a29f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67d54ea4_161f7e7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-27T02:19:24Z",
+      "side": 1,
+      "message": "Looks cool!",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 4
+      },
+      "revId": "65e6fabebccfb3e4b659cc2ebde6d6c37a29f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
