@@ -16,6 +16,23 @@
       "message": "Thanks for the review, I have addressed the comments.\n\nAdded in cc the owners of the tests I needed to update just for reference so everyone is aware of the change. In two of the tests I also deferred the closure of the api because I realised it was missing.",
       "revId": "8d22d536861f3bc218bd968c0262677a7195e6a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecc3cc4b_e078d200",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-27T15:12:29Z",
+      "side": 1,
+      "message": "Much more clear and scalable, thanks! LGTM w/ nit.\nYou will need a review from tast-owners@ also.\n",
+      "revId": "8d22d536861f3bc218bd968c0262677a7195e6a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
