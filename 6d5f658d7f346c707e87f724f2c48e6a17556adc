@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a628431_0665533d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-06-27T19:32:55Z",
+      "side": 1,
+      "message": "Following the style guide for camel case names, I suggest renaming the test to MgsManualTicketAccessWebsite.\n\nhttps://engdoc.corp.google.com/eng/doc/devguide/java/style/index.md?cl\u003dhead#s5.3-camel-case",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "6d5f658d7f346c707e87f724f2c48e6a17556adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b5947f6_96e8574a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-06-27T19:32:55Z",
+      "side": 1,
+      "message": "Thanks for automating one more test!",
+      "revId": "6d5f658d7f346c707e87f724f2c48e6a17556adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a486a417_3a71014d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/mgs_manual_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-06-27T19:32:55Z",
+      "side": 1,
+      "message": "nit: add space after //",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "6d5f658d7f346c707e87f724f2c48e6a17556adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
