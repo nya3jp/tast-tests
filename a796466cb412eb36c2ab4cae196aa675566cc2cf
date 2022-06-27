@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9cb0b6d_7e5e25de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-27T19:15:05Z",
+      "side": 1,
+      "message": "If you only have one param, I\u0027d suggest getting rid of these field altogether and add your ARC-T dependency to `SoftwareDeps`",
+      "revId": "a796466cb412eb36c2ab4cae196aa675566cc2cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f734e9f6_6bfac648",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
         "patchSetId": 8

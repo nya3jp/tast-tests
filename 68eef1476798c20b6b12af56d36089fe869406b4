@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a542c412_9936c06d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-27T19:15:05Z",
+      "side": 1,
+      "message": "Make a `Cq-Depend` here on this CL, referencing your two other CLs (ex. refer to http://crrev/c/4799899) to make sure that this CL doesn\u0027t get submitted before those",
+      "revId": "68eef1476798c20b6b12af56d36089fe869406b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fdda7a7_25e88b20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-27T19:15:05Z",
+      "side": 1,
+      "message": "Revise to the common Go format for error checking:\n\n```\nif palette :\u003d themeOverlay[\"android.theme.customization.system_palette\"].(float64); palette !\u003d 50 {\n    s.Error(\"~~~system_palette wanted: 50 was: \", palette)\n}\n```",
+      "revId": "68eef1476798c20b6b12af56d36089fe869406b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7113ada_dde57d19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-27T19:15:05Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "68eef1476798c20b6b12af56d36089fe869406b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
