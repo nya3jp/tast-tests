@@ -21,67 +21,13 @@ import (
 	"chromiumos/tast/errors"
 )
 
-// MaxTimeout is the maximum timeout which is allowed when requesting a test account.
-const MaxTimeout = 60 * 60 * 6
-
-// MaxGenericAccountTimeoutInSeconds is the maximum timeout which is allowed
-// when requesting a generic account (2 hours).
-const MaxGenericAccountTimeoutInSeconds = 60 * 60 * 2
-
 const tapeURL = "https://tape-307412.ey.r.appspot.com/"
 const tapeAudience = "770216225211-ihjn20dlehf94m9l4l5h0b0iilvd1vhc.apps.googleusercontent.com"
 
-// Account is a struct representing an owned test account with its credentials.
-type Account struct {
-	ID          int64   `json:"id"`           // Unique Id for the OTA assigned by Tape.
-	UserName    string  `json:"username"`     // UserName of the OTA, represents the primary email address.
-	GaiaID      int64   `json:"gaia_id"`      // Gaia Id of the OTA.
-	CustomerID  string  `json:"customer_id"`  // The customer id of the managed domain the account is assigned to.
-	OrgunitID   string  `json:"orgunit_id"`   // Id of the organizational unit the account is assigned to.
-	Password    string  `json:"password"`     // The password of the account.
-	PoolID      string  `json:"pool_id"`      // Id of a pool of accounts which the account belongs to.
-	ReleaseTime float64 `json:"release_time"` // Timestamp when the account will be released again.
-	RequestID   string  `json:"request_id"`   // Unique id used to identify the requester of an account in Tape.
-}
-
-type requestOTAParams struct {
-	TimeoutInSeconds int32   `json:"timeout"` // Time the OTA will be marked as in use.
-	PoolID           *string `json:"pool_id"` // The id of the pool of accounts the OTA is requested from, when omitted the default pool will be used.
-	Lock             bool    `json:"lock"`    // Flag to ensure the OTA cannot be requested by another test.
-}
-
-// NewRequestOTAParams creates and returns a requestOTAParams struct.
-func NewRequestOTAParams(timeoutInSeconds int32, poolID *string, lock bool) requestOTAParams {
-	return requestOTAParams{
-		TimeoutInSeconds: timeoutInSeconds,
-		PoolID:           poolID,
-		Lock:             lock,
-	}
-}
-
-// NewRequestOTAParamsForDefaultPool creates and returns a requestOTAParams struct for the default account pool.
-func NewRequestOTAParamsForDefaultPool(timeoutInSeconds int32, lock bool) requestOTAParams {
-	return requestOTAParams{
-		TimeoutInSeconds: timeoutInSeconds,
-		Lock:             lock,
-	}
-}
-
-// GenericAccount stores information about a generic account in TAPE.
-type GenericAccount struct {
-	ID          int64   `json:"id"`
-	Username    string  `json:"username"`
-	Password    string  `json:"password"`
-	PoolID      string  `json:"pool_id"`
-	ReleaseTime float64 `json:"release_time"`
-	RequestID   string  `json:"request_id"`
-}
-
-// RequestGenericAccountParams holds the parameters for the
-// request generic account endpoint.
-type RequestGenericAccountParams struct {
-	TimeoutInSeconds int32   `json:"timeout"`
-	PoolID           *string `json:"pool_id"`
+// client is created with NewClient and holds a *http.Client struct with an open id connect token
+// for authentication against the TAPE GCP.
+type client struct {
+	httpClient *http.Client
 }
 
 // createTokenSource an oauth2.TokenSource from a service account key file.
@@ -99,68 +45,30 @@ func createTokenSource(ctx context.Context, credsJSON []byte) (oauth2.TokenSourc
 	return config.TokenSource(ctx), nil
 }
 
-type newTapeClientOption struct {
-	credsJSON       []byte
-	pathToCredsJSON string
-}
-
-// NewTapeClientOption is used to configure the TAPE client.
-type NewTapeClientOption func(*newTapeClientOption)
-
-// WithCredsJSON specifies the json service account data to use.
-func WithCredsJSON(jsonData []byte) NewTapeClientOption {
-	return func(opt *newTapeClientOption) {
-		opt.credsJSON = jsonData
-	}
-}
-
-// WithPathToCredsJSON specifies the path to a service account file to use.
-func WithPathToCredsJSON(pathToCredsJSON string) NewTapeClientOption {
-	return func(opt *newTapeClientOption) {
-		opt.pathToCredsJSON = pathToCredsJSON
-	}
-}
-
-// NewTapeClient creates a http client which provides the necessary token to connect to the TAPE
+// NewClient creates a http client which provides the necessary token to connect to the TAPE
 // GCP from a service account key file. This function can only be called remotely as the DuT does
 // not have service account key files. All functions in the tape package should be passed this http client.
-func NewTapeClient(ctx context.Context, opts ...NewTapeClientOption) (*http.Client, error) {
-	// Copy over all options.
-	option := newTapeClientOption{}
-	for _, opt := range opts {
-		opt(&option)
-	}
-
-	// Load the correct credentials.
-	var credsJSON []byte
-	var err error
-	if len(option.credsJSON) > 0 {
-		credsJSON = option.credsJSON
-	} else if len(option.pathToCredsJSON) > 0 {
-		credsJSON, err = ioutil.ReadFile(option.pathToCredsJSON)
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to read credential json")
-		}
-	} else {
-		return nil, errors.New("One of credsJSON or pathToCredsJSON must be set")
-	}
-
+func NewClient(ctx context.Context, credsJSON []byte) (*client, error) {
 	// Return the Oauth client using the credentials.
 	ts, err := createTokenSource(ctx, credsJSON)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create token")
 	}
 
-	return oauth2.NewClient(ctx, ts), nil
+	client := &client{
+		httpClient: oauth2.NewClient(ctx, ts),
+	}
+
+	return client, nil
 }
 
 // sendRequestWithTimeout makes a call to the specified REST endpoint of TAPE with the given http method and payload.
-func sendRequestWithTimeout(ctx context.Context, method, endpoint string, timeout time.Duration, payload *bytes.Reader, client *http.Client) (*http.Response, error) {
-	// Set the timeout of the client and return to the original after.
-	originalTimeout := client.Timeout
-	client.Timeout = timeout
+func (c *client) sendRequestWithTimeout(ctx context.Context, method, endpoint string, timeout time.Duration, payload *bytes.Reader) (*http.Response, error) {
+	// Set the timeout of the http client and return to the original after.
+	originalTimeout := c.httpClient.Timeout
+	c.httpClient.Timeout = timeout
 	defer func() {
-		client.Timeout = originalTimeout
+		c.httpClient.Timeout = originalTimeout
 	}()
 
 	// Create a request.
@@ -170,7 +78,7 @@ func sendRequestWithTimeout(ctx context.Context, method, endpoint string, timeou
 	}
 	req.Header.Set("Content-Type", "application/json")
 	// Send the request.
-	response, err := client.Do(req)
+	response, err := c.httpClient.Do(req)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get a response from TAPE")
 	}
@@ -181,20 +89,27 @@ func sendRequestWithTimeout(ctx context.Context, method, endpoint string, timeou
 	return response, nil
 }
 
-// RequestAccount calls TAPE to obtain credentials for an available owned test account and returns it.
-// If lock is set to true the returned Account can not be obtained by other calls to RequestAccount until it is
-// released or it times out after the given timeout is reached. A timeout of 0 will use the
-// DEFAULT_ACCOUNT_TIMEOUT of the TAPE server which is 2 hours and is also the maximum allowed timeout.
-// The returned password is temporary and will be valid for roughly one day. If no poolID is present in the
-// params then the default pool will be used.
-func RequestAccount(ctx context.Context, client *http.Client, params requestOTAParams) (*Account, error) {
+type requestAccountParams interface {
+	endpoint() string
+	validate() error
+}
+
+func validateAccountRequest(timeoutInSeconds, maxTimeoutInSeconds int64, poolID *string) error {
 	// Validate the provided parameters.
-	if int64(params.TimeoutInSeconds) > int64(MaxTimeout) {
-		return nil, errors.Errorf("Timeout may not be larger than %v seconds", MaxTimeout)
+	if timeoutInSeconds > maxTimeoutInSeconds {
+		return errors.Errorf("Timeout may not be larger than %v seconds", maxTimeoutInSeconds)
 	}
 
-	if params.PoolID != nil && len(*params.PoolID) <= 0 {
-		return nil, errors.New("PoolID must not be empty when set")
+	if poolID != nil && len(*poolID) <= 0 {
+		return errors.New("PoolID must not be empty when set")
+	}
+
+	return nil
+}
+
+func (c *client) requestAccount(ctx context.Context, params requestAccountParams) ([]byte, error) {
+	if err := params.validate(); err != nil {
+		return nil, errors.Wrap(err, "validation of the account request failed")
 	}
 
 	payloadBytes, err := json.Marshal(params)
@@ -202,150 +117,8 @@ func RequestAccount(ctx context.Context, client *http.Client, params requestOTAP
 		return nil, errors.Wrap(err, "failed to marshal data")
 	}
 	payload := bytes.NewReader(payloadBytes)
-	response, err := sendRequestWithTimeout(ctx, "POST", "OTA/request", 30*time.Second, payload, client)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to make REST call")
-	}
-	defer response.Body.Close()
-	// Read the response.
-	respBody, err := ioutil.ReadAll(response.Body)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to read response from TAPE")
-	}
 
-	var acc Account
-	err = json.Unmarshal([]byte(respBody), &acc)
-	if err != nil {
-		return nil, err
-	}
-	return &acc, nil
-}
-
-// RegeneratePassword calls TAPE to obtain a new temporary Password for the given Account and returns the Account.
-// A temporary password will be valid for roughly a day. Tests are not expected to use this as RequestAccount will
-// already provide a temporary password.
-func (acc *Account) RegeneratePassword(ctx context.Context, client *http.Client) error {
-	payloadBytes, err := json.Marshal(acc)
-	if err != nil {
-		return errors.Wrap(err, "failed to marshal data")
-	}
-	payload := bytes.NewReader(payloadBytes)
-	response, err := sendRequestWithTimeout(ctx, "POST", "regeneratePassword", 30*time.Second, payload, client)
-	if err != nil {
-		return errors.Wrap(err, "failed to make REST call")
-	}
-	defer response.Body.Close()
-	// Read the response.
-	respBody, err := ioutil.ReadAll(response.Body)
-	if err != nil {
-		return errors.Wrap(err, "failed to read response from TAPE")
-	}
-	var password string
-	err = json.Unmarshal([]byte(respBody), &password)
-	if err != nil {
-		return err
-	}
-	acc.Password = password
-	return nil
-}
-
-// CleanUp calls TAPE to clean up the Account. All policies will be set to their default values and all other
-// state changes will also be reverted. However the account will not be released with this call.
-// Accounts will always be cleaned up when they are requested with RequestAccount, tests are not expected to call
-// this function to clean up when a test is finished.
-func (acc *Account) CleanUp(ctx context.Context, client *http.Client) error {
-	payloadBytes, err := json.Marshal(acc)
-	if err != nil {
-		return errors.Wrap(err, "failed to convert Account to json")
-	}
-	payload := bytes.NewReader(payloadBytes)
-	response, err := sendRequestWithTimeout(ctx, "POST", "cleanUp", 60*time.Second, payload, client)
-	if err != nil {
-		return errors.Wrap(err, "failed to make REST call")
-	}
-	defer response.Body.Close()
-	// Read the response.
-	_, err = ioutil.ReadAll(response.Body)
-	if err != nil {
-		return errors.Wrap(err, "failed to read response from TAPE")
-	}
-	return nil
-}
-
-// ReleaseAccount calls TAPE to release the Account so it becomes available again.
-func (acc *Account) ReleaseAccount(ctx context.Context, client *http.Client) error {
-	payloadBytes, err := json.Marshal(acc)
-	if err != nil {
-		return errors.Wrap(err, "failed to convert Account to json")
-	}
-	payload := bytes.NewReader(payloadBytes)
-	response, err := sendRequestWithTimeout(ctx, "POST", "OTA/release", 30*time.Second, payload, client)
-	if err != nil {
-		return errors.Wrap(err, "failed to make REST call")
-	}
-	defer response.Body.Close()
-	// Read the response.
-	_, err = ioutil.ReadAll(response.Body)
-	if err != nil {
-		return errors.Wrap(err, "failed to read response from TAPE")
-	}
-	return nil
-}
-
-// SetPolicy calls TAPE to set policySchema in DPanel.
-func (acc *Account) SetPolicy(ctx context.Context, client *http.Client, policySchema PolicySchema) error {
-	payloadBytes, err := policySchema.Schema2JSON(acc.OrgunitID)
-	if err != nil {
-		return errors.Wrap(err, "failed to marshal data")
-	}
-	payload := bytes.NewReader(payloadBytes)
-	response, err := sendRequestWithTimeout(ctx, "POST", "Policies/setPolicy", 30*time.Second, payload, client)
-	if err != nil {
-		return errors.Wrap(err, "failed to make REST call")
-	}
-	defer response.Body.Close()
-	return nil
-}
-
-// DeprovisionRequest is a struct containing the necessary data to deprovision a device.
-type DeprovisionRequest struct {
-	DeviceID   string `json:"deviceid"`
-	CustomerID string `json:"customerid"`
-}
-
-// Deprovision calls TAPE to deprovision a device in DPanel.
-func Deprovision(ctx context.Context, client *http.Client, request DeprovisionRequest) error {
-	payloadBytes, err := json.Marshal(request)
-	if err != nil {
-		return errors.Wrap(err, "failed to marshal data")
-	}
-	payload := bytes.NewReader(payloadBytes)
-	response, err := sendRequestWithTimeout(ctx, "POST", "Devices/deprovision", 60*time.Second, payload, client)
-	if err != nil {
-		return errors.Wrap(err, "failed to make REST call")
-	}
-	defer response.Body.Close()
-	return nil
-}
-
-// RequestGenericAccount sends a request for leasing a generic account.
-func RequestGenericAccount(ctx context.Context, params RequestGenericAccountParams, client *http.Client) (*GenericAccount, error) {
-	// Validate the provided parameters.
-	if int64(params.TimeoutInSeconds) > int64(MaxGenericAccountTimeoutInSeconds) {
-		return nil, errors.Errorf("Timeout may not be larger than %v seconds", MaxGenericAccountTimeoutInSeconds)
-	}
-
-	if params.PoolID != nil && len(*params.PoolID) <= 0 {
-		return nil, errors.New("PoolID must not be empty when set")
-	}
-
-	// Make the request
-	payloadBytes, err := json.Marshal(params)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to marshal data")
-	}
-	payload := bytes.NewReader(payloadBytes)
-	response, err := sendRequestWithTimeout(ctx, "POST", "GenericAccount/request", 30*time.Second, payload, client)
+	response, err := c.sendRequestWithTimeout(ctx, "POST", params.endpoint(), 30*time.Second, payload)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to make request")
 	}
@@ -356,30 +129,17 @@ func RequestGenericAccount(ctx context.Context, params RequestGenericAccountPara
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to read response")
 	}
-	var acc GenericAccount
-	if err := json.Unmarshal([]byte(respBody), &acc); err != nil {
-		return nil, errors.Wrap(err, "failed to unmarshal response")
-	}
-	return &acc, nil
+
+	return respBody, nil
 }
 
-// ReleaseGenericAccount sends a request for releasing a leased account.
-func ReleaseGenericAccount(ctx context.Context, account *GenericAccount, client *http.Client) error {
-	if account == nil {
-		return errors.New("account is not set")
-	}
-
-	if client == nil {
-		return errors.New("client is not set")
-	}
-
-	// Make the request
+func (c *client) releaseAccount(ctx context.Context, account interface{}, endpoint string) error {
 	payloadBytes, err := json.Marshal(account)
 	if err != nil {
 		return errors.Wrap(err, "failed to marshal data")
 	}
 	payload := bytes.NewReader(payloadBytes)
-	response, err := sendRequestWithTimeout(ctx, "POST", "GenericAccount/release", 30*time.Second, payload, client)
+	response, err := c.sendRequestWithTimeout(ctx, "POST", endpoint, 30*time.Second, payload)
 	if err != nil {
 		return errors.Wrap(err, "failed to make request")
 	}
@@ -390,5 +150,187 @@ func ReleaseGenericAccount(ctx context.Context, account *GenericAccount, client 
 		return errors.Errorf("failed to release account, status code: %d", response.StatusCode)
 	}
 
+	return nil
+}
+
+// GenericAccount holds the data of a generic account that can be used in tests.
+type GenericAccount struct {
+	ID          int64   `json:"id"`
+	Username    string  `json:"username"`
+	Password    string  `json:"password"`
+	PoolID      string  `json:"pool_id"`
+	ReleaseTime float64 `json:"release_time"`
+	RequestID   string  `json:"request_id"`
+}
+
+// MaxGenericAccountTimeoutInSeconds is the maximum timeout which is allowed
+// when requesting a generic account (2 hours).
+const MaxGenericAccountTimeoutInSeconds = 60 * 60 * 2
+
+// requestOwnedTestAccountParams is a struct containing the necessary data to request a generic
+// account from TAPE.
+type requestGenericAccountParams struct {
+	TimeoutInSeconds int32   `json:"timeout"`
+	PoolID           *string `json:"pool_id"`
+}
+
+func (rp *requestGenericAccountParams) endpoint() string {
+	return "GenericAccount/request"
+}
+
+func (rp *requestGenericAccountParams) validate() error {
+	return validateAccountRequest(int64(rp.TimeoutInSeconds), int64(MaxGenericAccountTimeoutInSeconds), rp.PoolID)
+}
+
+// NewRequestGenericAccountParams creates a new requestGenericAccountParams struct filled with the given parameters.
+func NewRequestGenericAccountParams(timeoutInSeconds int32, poolID string) *requestGenericAccountParams {
+	return &requestGenericAccountParams{
+		TimeoutInSeconds: timeoutInSeconds,
+		PoolID:           &poolID,
+	}
+}
+
+// RequestGenericAccount sends a request for leasing a generic account.
+func (c *client) RequestGenericAccount(ctx context.Context, params *requestGenericAccountParams) (*GenericAccount, error) {
+	respBody, err := c.requestAccount(ctx, params)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to request account")
+	}
+
+	var account GenericAccount
+	err = json.Unmarshal(respBody, &account)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal response")
+	}
+	return &account, nil
+}
+
+// ReleaseGenericAccount sends a request for releasing a leased account.
+func (c *client) ReleaseGenericAccount(ctx context.Context, account *GenericAccount) error {
+	return c.releaseAccount(ctx, account, "GenericAccount/release")
+}
+
+// MaxOwnedTestAccountTimeout is the maximum timeout which is allowed when requesting a test account.
+const MaxOwnedTestAccountTimeout = 60 * 60 * 6
+
+// OwnedTestAccount holds all data of an owned test account which can be used in tests.
+type OwnedTestAccount struct {
+	GenericAccount
+	GaiaID     int64  `json:"gaia_id"`
+	CustomerID string `json:"customer_id"`
+	OrgunitID  string `json:"orgunit_id"`
+}
+
+// requestOwnedTestAccountParams is a struct containing the necessary data to request an owned
+// test account from TAPE.
+type requestOwnedTestAccountParams struct {
+	requestGenericAccountParams
+	Lock bool `json:"lock"`
+}
+
+func (rp *requestOwnedTestAccountParams) endpoint() string {
+	return "OTA/request"
+}
+
+func (rp *requestOwnedTestAccountParams) validate() error {
+	return validateAccountRequest(int64(rp.TimeoutInSeconds), int64(MaxOwnedTestAccountTimeout), rp.PoolID)
+}
+
+// NewRequestOwnedTestAccountParams creates a new requestOwnedTestAccountParams struct filled with the given parameters.
+func NewRequestOwnedTestAccountParams(timeoutInSeconds int32, poolID string, lock bool) *requestOwnedTestAccountParams {
+	params := NewRequestGenericAccountParams(timeoutInSeconds, poolID)
+	return &requestOwnedTestAccountParams{
+		requestGenericAccountParams: *params,
+		Lock:                        lock,
+	}
+}
+
+// RequestOwnedTestAccount calls TAPE to obtain credentials for an available owned test account and returns it.
+// If lock is set to true the returned Account can not be obtained by other calls to RequestAccount until it is
+// released or it times out after the given timeout is reached. A timeout of 0 will use the
+// DEFAULT_ACCOUNT_TIMEOUT of the TAPE server which is 2 hours and is also the maximum allowed timeout.
+// The returned password is temporary and will be valid for roughly one day. If no poolID is present in the
+// params then the default pool will be used.
+func (c *client) RequestOwnedTestAccount(ctx context.Context, params *requestOwnedTestAccountParams) (*OwnedTestAccount, error) {
+	respBody, err := c.requestAccount(ctx, params)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to request account")
+	}
+
+	var account OwnedTestAccount
+	err = json.Unmarshal([]byte(respBody), &account)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to unmarshal response")
+	}
+	return &account, nil
+}
+
+// ReleaseAccount calls TAPE to release the Account so it becomes available again.
+func (c *client) ReleaseOwnedTestAccount(ctx context.Context, account *OwnedTestAccount) error {
+	return c.releaseAccount(ctx, account, "OTA/release")
+}
+
+// setPolicyRequest is a struct containing the necessary data to set a policy schema in DPanel.
+type setPolicyRequest struct {
+	PolicySchema string `json:"policy_schema"`
+	CustomerID   string `json:"customer_id"`
+}
+
+// NewSetPolicyRequest creates a setPolicyRequest struct for use in the SetPolicy function.
+func NewSetPolicyRequest(policySchema PolicySchema, orgunitID, customerID string) (*setPolicyRequest, error) {
+	schemaJSONString, err := policySchema.Schema2JSON(orgunitID)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to marshal data")
+	}
+
+	request := &setPolicyRequest{
+		PolicySchema: string(schemaJSONString),
+		CustomerID:   customerID,
+	}
+	return request, nil
+}
+
+// SetPolicy calls TAPE to set a policySchema in DPanel.
+func (c *client) SetPolicy(ctx context.Context, request *setPolicyRequest) error {
+	payloadBytes, err := json.Marshal(request)
+	if err != nil {
+		return errors.Wrap(err, "failed to marshal data")
+	}
+	payload := bytes.NewReader(payloadBytes)
+	response, err := c.sendRequestWithTimeout(ctx, "POST", "Policies/setPolicy", 30*time.Second, payload)
+	if err != nil {
+		return errors.Wrap(err, "failed to make REST call")
+	}
+	defer response.Body.Close()
+	return nil
+}
+
+// deprovisionRequest is a struct containing the necessary data to deprovision a device.
+type deprovisionRequest struct {
+	DeviceID   string `json:"device_id"`
+	CustomerID string `json:"customer_id"`
+}
+
+// NewDeprovisionRequest creates a DeprovisionRequest for use in the Deprovision function.
+func NewDeprovisionRequest(deivceID, customerID string) *deprovisionRequest {
+	request := &deprovisionRequest{
+		DeviceID:   deivceID,
+		CustomerID: customerID,
+	}
+	return request
+}
+
+// Deprovision calls TAPE to deprovision a device in DPanel.
+func (c *client) Deprovision(ctx context.Context, request *deprovisionRequest) error {
+	payloadBytes, err := json.Marshal(request)
+	if err != nil {
+		return errors.Wrap(err, "failed to marshal data")
+	}
+	payload := bytes.NewReader(payloadBytes)
+	response, err := c.sendRequestWithTimeout(ctx, "POST", "Devices/deprovision", 60*time.Second, payload)
+	if err != nil {
+		return errors.Wrap(err, "failed to make REST call")
+	}
+	defer response.Body.Close()
 	return nil
 }
