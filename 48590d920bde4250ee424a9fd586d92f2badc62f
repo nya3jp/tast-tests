@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f018769d_5a08e8fd",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T03:09:03Z",
+      "side": 1,
+      "message": "This function is in the prev CL in wpa_monitor.go",
+      "parentUuid": "d5891135_6c2867f0",
+      "revId": "48590d920bde4250ee424a9fd586d92f2badc62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdb5929d_a75ddddb",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "No, it just waits for the context passed in to timeout. It should still be usable afterward.",
       "parentUuid": "26853412_3f952472",
+      "revId": "48590d920bde4250ee424a9fd586d92f2badc62f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "581cf268_760672da",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T03:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90669530_f38d1de9",
       "revId": "48590d920bde4250ee424a9fd586d92f2badc62f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
