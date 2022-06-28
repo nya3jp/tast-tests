@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36910bc4_4ba686b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-28T08:43:43Z",
+      "side": 1,
+      "message": "Hi Hidehiko,\n\nWe\u0027ve fixed the build error. Can you please review and provide CR+2?",
+      "revId": "3be3ffb6d4fe3198638ed438fb361f1d75dd8dd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
