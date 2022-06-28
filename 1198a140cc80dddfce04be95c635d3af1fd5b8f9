@@ -68,6 +68,46 @@
       "parentUuid": "b37b0d7d_17d0d105",
       "revId": "1198a140cc80dddfce04be95c635d3af1fd5b8f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2609e6e1_701c1c61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-06-28T22:22:04Z",
+      "side": 1,
+      "message": "LGTM with some nit, it still needs someone else\u0027s +2",
+      "revId": "1198a140cc80dddfce04be95c635d3af1fd5b8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d96172_7e7ae866",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1521657
+      },
+      "writtenOn": "2022-06-28T22:22:04Z",
+      "side": 1,
+      "message": "nit: can you please correct the typo here?",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "1198a140cc80dddfce04be95c635d3af1fd5b8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
