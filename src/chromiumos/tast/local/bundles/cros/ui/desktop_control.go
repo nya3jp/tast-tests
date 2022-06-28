@@ -170,7 +170,7 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 
 		uiBase := uiauto.New(tconn)
 		ui := uiBase.WithPollOpts(waitingOption)
-		statusarea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
+		statusarea := nodewith.ClassName("UnifiedSystemTray")
 		collapseButton := nodewith.ClassName("CollapseButton")
 
 		if err := uiauto.Combine(
