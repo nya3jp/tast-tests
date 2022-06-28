@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f19d3f_54ff2540",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-06-28T09:25:15Z",
+      "side": 1,
+      "message": "Does this work without any setup as replacement for enrollment? configureNetworks used Chrome (not OOBE) if I recall correctly. Or does configureNetwork incidentally properly login even from beginning of the oobe screen?",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "99bce191d6406433109e2ac046c497e9be15d2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
