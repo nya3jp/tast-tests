@@ -55,7 +55,7 @@ func SettingsButton(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, "settings.quick_answers.enabled", true); err != nil {
+	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setAllowedPref)`, "settings.quick_answers.enabled", true); err != nil {
 		s.Fatal("Failed to enable Quick Answers: ", err)
 	}
 

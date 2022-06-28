@@ -62,10 +62,10 @@ func readVariationsSeed(ctx context.Context) (*variations.SeedData, error) {
 
 // injectVariationsSeed injects the given seed into Local State. The seed will be loaded and take effect on the next run of Chrome (i.e. next user session).
 func injectVariationsSeed(ctx context.Context, tconn *chrome.TestConn, seed *variations.SeedData) error {
-	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setWhitelistedPref)", variations.SeedSignaturePref, seed.SeedSignature); err != nil {
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setAllowedPref)", variations.SeedSignaturePref, seed.SeedSignature); err != nil {
 		return errors.Wrapf(err, "failed to set %v", variations.SeedSignaturePref)
 	}
-	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setWhitelistedPref)", variations.CompressedSeedPref, seed.CompressedSeed); err != nil {
+	if err := tconn.Call(ctx, nil, "tast.promisify(chrome.autotestPrivate.setAllowedPref)", variations.CompressedSeedPref, seed.CompressedSeed); err != nil {
 		return errors.Wrapf(err, "failed to set %v", variations.CompressedSeedPref)
 	}
 	return nil
