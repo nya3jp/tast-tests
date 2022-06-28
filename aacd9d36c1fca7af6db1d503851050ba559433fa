@@ -106,6 +106,24 @@
       "parentUuid": "d88e95dd_b41a896f",
       "revId": "aacd9d36c1fca7af6db1d503851050ba559433fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee2eefb5_62544be0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-06-28T08:06:08Z",
+      "side": 1,
+      "message": "I confirm that after update_chroot the error is gone. Thank you Byron!",
+      "parentUuid": "d0bea177_52d3b329",
+      "revId": "aacd9d36c1fca7af6db1d503851050ba559433fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
