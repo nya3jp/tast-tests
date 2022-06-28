@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3831c2f1_61186e62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-28T17:02:25Z",
+      "side": 1,
+      "message": "LGTM!",
+      "revId": "cf0d562825a2b7ac551648f97be52610eda606ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8c7d90a_957b39ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-28T17:02:25Z",
+      "side": 1,
+      "message": "nit: Shouldn\u0027t this be \"1, 2\" ? Two videos side by side are easier\nto fit into a Chromebook screen than them being on top of each \nother (the latter would need a larger \"zoom out\" and that might \ninterfere with perf results?).",
+      "range": {
+        "startLine": 245,
+        "startChar": 42,
+        "endLine": 245,
+        "endChar": 46
+      },
+      "revId": "cf0d562825a2b7ac551648f97be52610eda606ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -101,6 +101,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f14683e5_56db1ba0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-28T17:02:25Z",
+      "side": 1,
+      "message": "Update it to \"2x2 1080\" please. Thanks!",
+      "parentUuid": "3f43ffa1_00ff5b05",
+      "range": {
+        "startLine": 203,
+        "startChar": 39,
+        "endLine": 203,
+        "endChar": 70
+      },
+      "revId": "e8d46bbdd7a5da4f4dc750c2dbd23b65440196c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58bfc82e_d953b944",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
         "patchSetId": 2
