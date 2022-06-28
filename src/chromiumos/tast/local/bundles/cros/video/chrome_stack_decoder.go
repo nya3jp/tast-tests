@@ -50,12 +50,12 @@ func init() {
 		}, {
 			Name:              "hevc",
 			Val:               chromeStackDecoderTestParam{dataPath: "test-25fps.hevc"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
 			ExtraData:         []string{"test-25fps.hevc", "test-25fps.hevc.json"},
 		}, {
 			Name:              "hevc_10bit",
 			Val:               chromeStackDecoderTestParam{dataPath: "test-25fps.hevc10"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC10BPP, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC10BPP, "proprietary_codecs"},
 			ExtraData:         []string{"test-25fps.hevc10", "test-25fps.hevc10.json"},
 		}, {
 			Name:              "vp8",
@@ -85,7 +85,7 @@ func init() {
 		}, {
 			Name:              "hevc_resolution_switch",
 			Val:               chromeStackDecoderTestParam{dataPath: "switch_1080p_720p_240frames.hevc"},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs"},
 			ExtraData:         []string{"switch_1080p_720p_240frames.hevc", "switch_1080p_720p_240frames.hevc.json"},
 		}, {
 			Name:              "vp8_resolution_switch",
@@ -146,7 +146,7 @@ func init() {
 		}, {
 			Name:              "hevc_global_vaapi_lock_disabled",
 			Val:               chromeStackDecoderTestParam{dataPath: "test-25fps.hevc", disableGlobalVaapiLock: true},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content", "thread_safe_libva_backend"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "thread_safe_libva_backend"},
 			ExtraData:         []string{"test-25fps.hevc", "test-25fps.hevc.json"},
 		}, {
 			Name:              "vp8_global_vaapi_lock_disabled",
@@ -171,7 +171,7 @@ func init() {
 		}, {
 			Name:              "hevc_resolution_switch_global_vaapi_lock_disabled",
 			Val:               chromeStackDecoderTestParam{dataPath: "switch_1080p_720p_240frames.hevc", disableGlobalVaapiLock: true},
-			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "protected_content", "thread_safe_libva_backend"},
+			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC, "proprietary_codecs", "thread_safe_libva_backend"},
 			ExtraData:         []string{"switch_1080p_720p_240frames.hevc", "switch_1080p_720p_240frames.hevc.json"},
 		}, {
 			Name:              "vp8_resolution_switch_global_vaapi_lock_disabled",
