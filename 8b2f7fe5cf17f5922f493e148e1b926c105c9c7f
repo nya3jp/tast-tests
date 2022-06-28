@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "544f6fb1_fccb7718",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-28T11:57:49Z",
+      "side": 1,
+      "message": "LGTM \u0026 nits\nPlease wait for a +2 from Shuo-Peng as well.",
+      "revId": "8b2f7fe5cf17f5922f493e148e1b926c105c9c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d47dc276_6ddb50d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-28T11:57:49Z",
+      "side": 1,
+      "message": "nit: you are mixing `s.Log` and `s.Logf` for log messages like this (text + variable). Please pick one method.",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 6
+      },
+      "revId": "8b2f7fe5cf17f5922f493e148e1b926c105c9c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "953b36e5_49fb9dab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-28T11:57:49Z",
+      "side": 1,
+      "message": "nit: check the `rdc`, `RDC` in the error messages, logs as well.",
+      "range": {
+        "startLine": 294,
+        "startChar": 54,
+        "endLine": 294,
+        "endChar": 57
+      },
+      "revId": "8b2f7fe5cf17f5922f493e148e1b926c105c9c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e96b71_b9c5dd79",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-28T11:57:49Z",
+      "side": 1,
+      "message": "nit: no need for `param.`",
+      "range": {
+        "startLine": 322,
+        "startChar": 47,
+        "endLine": 322,
+        "endChar": 64
+      },
+      "revId": "8b2f7fe5cf17f5922f493e148e1b926c105c9c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c1c8c63_3bee89cb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-28T11:57:49Z",
+      "side": 1,
+      "message": "nit: please use `want` here. go/go-style/decisions#identify-the-function",
+      "range": {
+        "startLine": 332,
+        "startChar": 45,
+        "endLine": 332,
+        "endChar": 51
+      },
+      "revId": "8b2f7fe5cf17f5922f493e148e1b926c105c9c7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

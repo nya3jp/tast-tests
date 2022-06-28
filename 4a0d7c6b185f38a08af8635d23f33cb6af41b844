@@ -518,6 +518,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ab1d910_0efbc201",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/audio/sound_card_init.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-28T11:57:49Z",
+      "side": 1,
+      "message": "Now I see that this was a bad suggestion to do it this CL, as it makes it harder to see the change. But I think it can remain in it now, as we are getting familiar with the changes :)",
+      "parentUuid": "4e9eecd1_f4e5fd52",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 20
+      },
+      "revId": "4a0d7c6b185f38a08af8635d23f33cb6af41b844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb620393_dbaca083",
