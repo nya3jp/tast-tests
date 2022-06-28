@@ -16,6 +16,24 @@
       "message": "Should this be added back in? It was part of this bug: https://b.corp.google.com/issues/226196024 for cleaning up overview mode that\u0027s not ended by the tast framework.",
       "revId": "fc114b1ab6d3ca6e2d01c90abd7ea2ae2519e17f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5603f37_ecc90854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-06-28T23:08:08Z",
+      "side": 0,
+      "message": "Thanks for the feedback! How does this different from specifically exit overview at line #370?",
+      "parentUuid": "685e88d2_195c74ae",
+      "revId": "fc114b1ab6d3ca6e2d01c90abd7ea2ae2519e17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
