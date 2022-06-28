@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfccf1d4_ede3b3ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-28T10:48:03Z",
+      "side": 1,
+      "message": "Removed drag_drop.go from the list due to http://b/237350866",
+      "revId": "71297f51ade422cc100c57ba1d0e0bb61deba4f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
