@@ -33,6 +33,23 @@
       "message": "Avery for a second look, seems fine to me",
       "revId": "991c7f4f281dd0bdd9dd4578dd7bdb4882e45fa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e30e70c5_f72b5298",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-28T08:07:58Z",
+      "side": 1,
+      "message": "I think you do:\nif useEnterprisePool {\n  accounts :\u003d ...\n} else {\n  accounts :\u003d ...\n}\n\nbut you definitely don\u0027t use var afaik",
+      "revId": "991c7f4f281dd0bdd9dd4578dd7bdb4882e45fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
