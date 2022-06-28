@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7dbc29f_d6003446",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T21:41:13Z",
+      "side": 1,
+      "message": "I agree, sorry for the early ping.",
+      "parentUuid": "d56650eb_ddf6e291",
+      "revId": "93b114d152410e07360420228421d3acfcb6da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "334898fe_c701c01f",
@@ -76,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b677cd_c01bf6e1",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T21:41:13Z",
+      "side": 1,
+      "message": "There is no reason, I changed it to use testing.Poll instead.",
+      "parentUuid": "334898fe_c701c01f",
+      "range": {
+        "startLine": 268,
+        "startChar": 2,
+        "endLine": 268,
+        "endChar": 7
+      },
+      "revId": "93b114d152410e07360420228421d3acfcb6da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "facfd032_7a4193ac",
@@ -89,6 +131,30 @@
       "writtenOn": "2022-06-28T20:18:33Z",
       "side": 1,
       "message": "I suggest using a const instead of a magic num detailing the retry limit.",
+      "range": {
+        "startLine": 290,
+        "startChar": 23,
+        "endLine": 290,
+        "endChar": 24
+      },
+      "revId": "93b114d152410e07360420228421d3acfcb6da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e05972fe_fbe5d941",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T21:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "facfd032_7a4193ac",
       "range": {
         "startLine": 290,
         "startChar": 23,
