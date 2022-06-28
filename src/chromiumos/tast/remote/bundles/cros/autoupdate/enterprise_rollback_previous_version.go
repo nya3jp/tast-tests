@@ -6,16 +6,12 @@ package autoupdate
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"strconv"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/common/policy"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -24,7 +20,6 @@ import (
 	"chromiumos/tast/remote/updateutil"
 	"chromiumos/tast/rpc"
 	aupb "chromiumos/tast/services/cros/autoupdate"
-	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
 
@@ -48,7 +43,6 @@ func init() {
 			"tast.cros.autoupdate.NebraskaService",
 			"tast.cros.autoupdate.RollbackService",
 			"tast.cros.autoupdate.UpdateService",
-			"tast.cros.policy.PolicyService",
 		},
 		Timeout: updateutil.UpdateTimeout + 12*time.Minute,
 		Params: []testing.Param{{
@@ -71,6 +65,9 @@ func init() {
 	})
 }
 
+// EnterpriseRollbackPreviousVersion does not use enrollment so any
+// functionality that depend on the enrollment of the device should be not be
+// added to this test.
 func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	paygen := s.FixtValue().(updateutil.WithPaygen).Paygen()
 
@@ -162,10 +159,6 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
-	if err := enrollDevice(ctx, s.DUT(), s.RPCHint()); err != nil {
-		s.Fatal("Failed to enroll the device before rollback: ", err)
-	}
-
 	networksInfo, err := configureNetworks(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to configure networks: ", err)
@@ -249,31 +242,6 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 			s.Log(verifyResponse.VerificationDetails)
 		}
 	}
-}
-
-// enrollDevice follows the steps required to enroll the device.
-func enrollDevice(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
-	client, err := rpc.Dial(ctx, dut, rpcHint)
-	if err != nil {
-		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
-	}
-	defer client.Close(ctx)
-
-	policyJSON, err := json.Marshal(policy.NewBlob())
-	if err != nil {
-		return errors.Wrap(err, "failed to serialize policies")
-	}
-
-	policyClient := ps.NewPolicyServiceClient(client.Conn)
-	defer policyClient.StopChromeAndFakeDMS(ctx, &empty.Empty{})
-
-	if _, err := policyClient.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
-		PolicyJson: policyJSON,
-	}); err != nil {
-		return errors.Wrap(err, "failed to enroll")
-	}
-
-	return nil
 }
 
 // configureNetworks sets up the networks supported by rollback.
