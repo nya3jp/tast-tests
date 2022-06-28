@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7efc8440_5b6e2edc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_sig_ab.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-28T19:59:40Z",
+      "side": 1,
+      "message": "You should use ioutil.TempFile instead of hardcoding /tmp.",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 40
+      },
+      "revId": "7b463d3c29cfc6a6cc66e1c70d066dd7f542b5db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "572cf97a_00cc07db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_sig_ab.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-28T19:59:40Z",
+      "side": 1,
+      "message": "I would set up the USB key before the defer that cleans up, since it fails so often. No reason to cleanup the corrupt firmware if we didn\u0027t corrupt it.",
+      "revId": "7b463d3c29cfc6a6cc66e1c70d066dd7f542b5db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
