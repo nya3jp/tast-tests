@@ -9,12 +9,16 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
 // crosHealthdJobName is the name of the cros_healthd upstart job
 const crosHealthdJobName = "cros_healthd"
+
+// crosHealthdServiceName is the name of the cros_healthd D-Bus service
+const crosHealthdServiceName = "org.chromium.CrosHealthd"
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -103,10 +107,20 @@ func (f *crosHealthdFixture) RestartHealthdService(ctx context.Context) error {
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
 		return errors.Wrap(err, "unable to ensure 'ui' upstart service is running")
 	}
-	// Ensure cros_healthd is up and wait until Mojo bootstrap flow is done.
+	// Ensure cros_healthd is up.
 	if err := upstart.EnsureJobRunning(ctx, "cros_healthd"); err != nil {
 		return errors.Wrap(err, "failed to start cros_healthd")
 	}
+	// It is possible that cros_healthd actually crashes but the upstart job is regarded as running.
+	// Wait for the D-Bus service to be available to detect this case.
+	bus, err := dbusutil.SystemBus()
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to the D-Bus system bus")
+	}
+	if err := dbusutil.WaitForService(ctx, bus, crosHealthdServiceName); err != nil {
+		return errors.Wrapf(err, "failed to wait for %q D-Bus service", crosHealthdServiceName)
+	}
+	// Wait until the Mojo bootstrap flow is done.
 	if err := waitForMojoBootstrap(ctx); err != nil {
 		return errors.Wrap(err, "unable to wait for mojo bootstrap")
 	}
