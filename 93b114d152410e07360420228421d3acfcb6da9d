@@ -34,6 +34,69 @@
       "parentUuid": "a9bd15dc_8bfb6135",
       "revId": "93b114d152410e07360420228421d3acfcb6da9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ade355_809827d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-28T20:18:33Z",
+      "side": 1,
+      "message": "Just commenting to say that I see that Interfaces() was removed as it seems like the tests won\u0027t need to acquire the interface anymore. I\u0027ve added a few comments to ScanNetwork.",
+      "revId": "93b114d152410e07360420228421d3acfcb6da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "334898fe_c701c01f",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-28T20:18:33Z",
+      "side": 1,
+      "message": "Is there a reason why we can\u0027t use testing.Poll here?",
+      "range": {
+        "startLine": 268,
+        "startChar": 2,
+        "endLine": 268,
+        "endChar": 7
+      },
+      "revId": "93b114d152410e07360420228421d3acfcb6da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "facfd032_7a4193ac",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-28T20:18:33Z",
+      "side": 1,
+      "message": "I suggest using a const instead of a magic num detailing the retry limit.",
+      "range": {
+        "startLine": 290,
+        "startChar": 23,
+        "endLine": 290,
+        "endChar": 24
+      },
+      "revId": "93b114d152410e07360420228421d3acfcb6da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
