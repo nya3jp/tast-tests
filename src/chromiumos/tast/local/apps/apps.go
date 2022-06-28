@@ -313,6 +313,12 @@ var Projector = App{
 	Name: "Screencast",
 }
 
+// KeyboardSV has details about the Keyboard Shortcut Viewer app.
+var KeyboardSV = App{
+	ID:   "bhbpmkoclkgbgaefijcdgkfjghcmiijm",
+	Name: "Keyboard Shortcut Viewer",
+}
+
 // Launch launches an app specified by appID.
 func Launch(ctx context.Context, tconn *chrome.TestConn, appID string) error {
 	_, err := getInstalledAppID(ctx, tconn, func(app *ash.ChromeApp) bool { return app.AppID == appID }, nil)
