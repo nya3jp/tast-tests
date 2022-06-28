@@ -23,7 +23,6 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SerialNumberPermission,
 		LacrosStatus: testing.LacrosVariantNeeded,
-		Fixture:      "telemetryExtensionOptionsPage",
 		Desc:         "Tests that Chrome extension can have options page and request additional serial number permission at runtime",
 		Contacts: []string{
 			"lamzin@google.com", // Test and Telemetry Extension author
@@ -35,10 +34,22 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "target_models",
+				Fixture:           "telemetryExtensionOptionsPage",
 				ExtraHardwareDeps: dep.TargetModels(),
 			},
 			{
 				Name:              "non_target_models",
+				Fixture:           "telemetryExtensionOptionsPage",
+				ExtraHardwareDeps: dep.NonTargetModels(),
+			},
+			{
+				Name:              "target_models_lacros",
+				Fixture:           "telemetryExtensionOptionsPageLacros",
+				ExtraHardwareDeps: dep.TargetModels(),
+			},
+			{
+				Name:              "non_target_models_lacros",
+				Fixture:           "telemetryExtensionOptionsPageLacros",
 				ExtraHardwareDeps: dep.NonTargetModels(),
 			},
 		},
