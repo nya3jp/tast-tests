@@ -258,7 +258,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		return &empty.Empty{}, nil
 	}
 
-	if len(meet.BondCreds) > 0 {
+	if meet.BondEnabled {
 		for { // Using for loop for the sake of breaking out of the block.
 			var bondConn *bond.Client
 			var bondMeetingCode string
