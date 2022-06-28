@@ -16,6 +16,23 @@
       "message": "This should fix a recent regression to the tast.video.EncodeAccelPerf test cases.\n\nPTAL when you get a chance. Thanks!",
       "revId": "61642a869b5ef9fd291f556e1f7527770f3ae9ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de7ce310_a9021bb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-28T11:36:23Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "61642a869b5ef9fd291f556e1f7527770f3ae9ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
