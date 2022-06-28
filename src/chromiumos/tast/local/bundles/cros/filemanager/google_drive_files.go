@@ -54,7 +54,9 @@ func init() {
 			"cienet-development@googlegroups.com",
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// TODO(crbug/1299712): This test is constantly failing. The maintainers are
+		// external and it overlaps with other more robust tests (e.g. filemanager.DrivefsGoogleDoc).
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{jpegFile, pngFile},
 		Fixture:      "driveFsStarted",
