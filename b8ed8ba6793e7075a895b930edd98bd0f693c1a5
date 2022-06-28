@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1226ae7a_af45cab4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-06-28T08:25:43Z",
+      "side": 1,
+      "message": "nit: update",
+      "range": {
+        "startLine": 119,
+        "startChar": 69,
+        "endLine": 120,
+        "endChar": 74
+      },
+      "revId": "b8ed8ba6793e7075a895b930edd98bd0f693c1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86aa6e70_76762bd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-06-28T08:25:43Z",
+      "side": 1,
+      "message": "nit: OOBE (https://github.com/golang/go/wiki/CodeReviewComments#initialisms)",
+      "range": {
+        "startLine": 167,
+        "startChar": 10,
+        "endLine": 167,
+        "endChar": 14
+      },
+      "revId": "b8ed8ba6793e7075a895b930edd98bd0f693c1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88801704_005264ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-06-28T08:25:43Z",
+      "side": 1,
+      "message": "Do you think we need to close apiOobe here? I recall adding js to something and then not closing it properly may cause memory leaks but I have no idea whether that\u0027s relevant here.",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 2
+      },
+      "revId": "b8ed8ba6793e7075a895b930edd98bd0f693c1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79caa7e7_bea36ef1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-06-28T08:25:43Z",
+      "side": 1,
+      "message": "Let\u0027s get rid of that? Feel free to do it here or in a separate CL.",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 22
+      },
+      "revId": "1845e68b311eda0340230dffc9f23ef395b152e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
