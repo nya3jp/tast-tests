@@ -22,6 +22,30 @@
       },
       "revId": "ad4d2eecc51e0294e0dcfd913a0fc631fb81f256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd8a62c5_ccbe262e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dump_vpd_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-28T17:53:45Z",
+      "side": 1,
+      "message": "By default, both stdout and stderr are redirected to the log stored in the Cmd, so this should be correct...\n\nI guess they might want to have them as files instead of dumped to the test output?",
+      "parentUuid": "a85b37bc_7ce69a4f",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 125,
+        "endChar": 40
+      },
+      "revId": "ad4d2eecc51e0294e0dcfd913a0fc631fb81f256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
