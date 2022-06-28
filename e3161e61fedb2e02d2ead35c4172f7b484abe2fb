@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ee9f8ea_3db77a78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desktop_control.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-28T22:06:47Z",
+      "side": 1,
+      "message": "It has a code comment stating that `ClassName` is deprecated and you should use `HasClass` instead.",
+      "range": {
+        "startLine": 173,
+        "startChar": 25,
+        "endLine": 173,
+        "endChar": 34
+      },
+      "revId": "e3161e61fedb2e02d2ead35c4172f7b484abe2fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
