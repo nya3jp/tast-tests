@@ -33,6 +33,23 @@
       "message": "tast-owners@: please take a look.",
       "revId": "1094401567adc353649c0f8499380cb0d6d49010",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a1752ef_e5d30c46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-28T10:24:09Z",
+      "side": 1,
+      "message": "LGTM without waiting for shadow as it is trivial CL.",
+      "revId": "1094401567adc353649c0f8499380cb0d6d49010",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
