@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/camera/testutil"
 	"chromiumos/tast/local/crosconfig"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -28,6 +29,8 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{caps.BuiltinUSBCamera},
+		// Primus camera module's privacy switch is not connected to the shutter b/236661871
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("primus")),
 	})
 }
 
