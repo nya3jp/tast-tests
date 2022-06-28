@@ -50,6 +50,24 @@
       "message": "I think you do:\nif useEnterprisePool {\n  accounts :\u003d ...\n} else {\n  accounts :\u003d ...\n}\n\nbut you definitely don\u0027t use var afaik",
       "revId": "991c7f4f281dd0bdd9dd4578dd7bdb4882e45fa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e554a69c_a615bc3b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-06-28T18:03:40Z",
+      "side": 1,
+      "message": "I tried it, but the declaration is limited in scope if I do it that way:\n\n```\n2022-06-28T15:43:48.499954Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go:168:3: accounts declared but not used\n2022-06-28T15:43:48.499991Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go:170:3: accounts declared but not used\n2022-06-28T15:43:48.500008Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go:173:30: undefined: accounts\n```",
+      "parentUuid": "e30e70c5_f72b5298",
+      "revId": "991c7f4f281dd0bdd9dd4578dd7bdb4882e45fa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
