@@ -69,7 +69,7 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 
 		// When charger disconnects/reconnects, there's a temporary drop in connection with the DUT.
 		// Wait for DUT to reconnect before proceeding to the next step.
-		waitConnectShortCtx, cancelWaitConnectShort := context.WithTimeout(ctx, 1*time.Minute)
+		waitConnectShortCtx, cancelWaitConnectShort := context.WithTimeout(ctx, 90*time.Second)
 		defer cancelWaitConnectShort()
 		if err := h.WaitConnect(waitConnectShortCtx); err != nil {
 			s.Fatal("Failed to reconnect to DUT: ", err)
@@ -86,15 +86,28 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 		}
 
 		// Verify that DUT's charger was plugged/unplugged as expected.
+		var checkACInformation bool
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			checkACInformation = false
 			currentCharger, err := h.Servo.GetChargerAttached(ctx)
 			if err != nil {
 				return err
 			} else if currentCharger != hasPluggedAC {
+				checkACInformation = true
 				return errors.Errorf("expected charger attached: %t, but got: %t", hasPluggedAC, currentCharger)
 			}
 			return nil
-		}, &testing.PollOptions{Timeout: 30 * time.Second, Interval: 1 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: 1 * time.Minute, Interval: 1 * time.Second}); err != nil {
+			if checkACInformation {
+				// For debugging purposes, log charger information if the charger
+				// state is unexpected and before failing the test.
+				s.Log("Running host command to check charger information")
+				if ac, err := checkACInfo(ctx, h); err != nil {
+					s.Fatal("Unable to read ac information: ", err)
+				} else {
+					s.Logf("Line power %s", ac)
+				}
+			}
 			s.Fatal("While determining charger state: ", err)
 		}
 
@@ -158,7 +171,7 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
+		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 150*time.Second)
 		defer cancelWaitConnect()
 
 		if err := h.WaitConnect(waitConnectCtx); err != nil {
@@ -179,7 +192,7 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		s.Log("Checking AC information")
+		s.Log("Checking charger information")
 		if ac, err := checkACInfo(ctx, h); err != nil {
 			s.Fatal("While verifying ac information: ", err)
 		} else {
@@ -231,26 +244,34 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 }
 
 // checkACInfo runs the host command 'power_supply_info', and returns information relevant to
-// the AC. For debugging purposes, at the moment, only the source and online status are checked.
+// the line power section.
 func checkACInfo(ctx context.Context, h *firmware.Helper) (string, error) {
-	acLines := map[string]*regexp.Regexp{
-		"source": regexp.MustCompile(`enum type:(\s+\w+)`),
-		"online": regexp.MustCompile(`online:(\s+\w+)`),
-	}
+	// Regular expression.
+	re := regexp.MustCompile(`Device:\s+Line Power(\s+)(\n|.)*?supports dual-role:\s+\w+`)
 	out, err := h.DUT.Conn().CommandContext(ctx, "power_supply_info").Output()
 	if err != nil {
 		return "", errors.Wrap(err, "failed to retrieve AC info from DUT")
 	}
-	var measurements []string
-	for k, v := range acLines {
-		match := v.FindStringSubmatch(string(out))
-		if len(match) < 2 {
-			return "", errors.Errorf("Did not match regex %q in %q", v, string(out))
-		}
-		acInfo := strings.TrimSpace(match[1])
-		measurements = append(measurements, fmt.Sprintf("%s: %s", k, acInfo))
+	match := re.FindStringSubmatch(string(out))
+	if match[0] == "" {
+		return "", errors.New("no regexp match found")
 	}
-	return strings.Join(measurements, ", "), nil
+	chargerInfoMap := make(map[string]string)
+	for _, val := range strings.Split(match[0], "\n") {
+		val := strings.Split(val, ":")
+		chargerInfoKey := strings.TrimSpace(val[0])
+		chargerInfoVal := strings.TrimSpace(val[1])
+		chargerInfoMap[strings.ReplaceAll(chargerInfoKey, " ", "_")] = chargerInfoVal
+	}
+	// Expand wantData if more information is needed.
+	var infoStr string
+	wantData := []string{"enum_type", "type", "online", "active_source", "available_sources"}
+	for _, name := range wantData {
+		if attr, ok := chargerInfoMap[name]; ok && attr != "" {
+			infoStr += fmt.Sprintf("%s:%s", name, chargerInfoMap[name]) + "; "
+		}
+	}
+	return infoStr, nil
 }
 
 // checkBatteryInfo runs the host command 'power_supply_info'and returns information relevant
