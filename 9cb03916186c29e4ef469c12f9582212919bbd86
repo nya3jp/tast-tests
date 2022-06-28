@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "685b6ac9_bebe61ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-28T19:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc8904d5_2a5539fb",
+      "revId": "9cb03916186c29e4ef469c12f9582212919bbd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2d5f38a_df3ca344",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8c63301_92888471",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-28T19:48:00Z",
+      "side": 1,
+      "message": "I think we\u0027re safe here - `printer.Stop` shouldn\u0027t change any UI state that we\u0027re interested in.",
+      "parentUuid": "c2d5f38a_df3ca344",
+      "revId": "9cb03916186c29e4ef469c12f9582212919bbd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4e3bfdf_a29ce2b2",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-06-28T16:49:13Z",
       "side": 1,
       "message": "probably good to use cleanupCtx here too",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "9cb03916186c29e4ef469c12f9582212919bbd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df9491a_df1daaa3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-28T19:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4e3bfdf_a29ce2b2",
       "range": {
         "startLine": 64,
         "startChar": 3,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0e5b49_f063897c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-28T19:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d573ca81_4aaa1e58",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "9cb03916186c29e4ef469c12f9582212919bbd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92577f18_3da476e9",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-06-28T16:49:13Z",
       "side": 1,
       "message": "nit: Unexpected since it\u0027s reporting the incorrect message",
+      "range": {
+        "startLine": 74,
+        "startChar": 11,
+        "endLine": 74,
+        "endChar": 19
+      },
+      "revId": "9cb03916186c29e4ef469c12f9582212919bbd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19ed811_72f9653b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1302456
+      },
+      "writtenOn": "2022-06-28T19:48:00Z",
+      "side": 1,
+      "message": "Reworded this message since it was confusing.",
+      "parentUuid": "92577f18_3da476e9",
       "range": {
         "startLine": 74,
         "startChar": 11,
