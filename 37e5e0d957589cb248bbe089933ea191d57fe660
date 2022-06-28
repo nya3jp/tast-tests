@@ -33,6 +33,40 @@
       "message": "Will add tast-owners if the general implementation is ok. Please let me know, thanks! :)",
       "revId": "37e5e0d957589cb248bbe089933ea191d57fe660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74423250_93bf5312",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-28T12:20:48Z",
+      "side": 1,
+      "message": "nit: damiendejean@google.com",
+      "revId": "37e5e0d957589cb248bbe089933ea191d57fe660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3390b801_d047dd4f",
+        "filename": "src/chromiumos/tast/local/hostapd/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-06-28T12:20:48Z",
+      "side": 1,
+      "message": "If possible I\u0027d prefer you follow the pattern implemented here and in `wpa_monitor.go` that uses one type per hostapd/wpa_supplicant event. The idea is to replicate hostapd/supplicant messages as if you were using `{hostapd,wpa}_cli` :)",
+      "revId": "37e5e0d957589cb248bbe089933ea191d57fe660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
