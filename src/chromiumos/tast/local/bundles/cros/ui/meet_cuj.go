@@ -311,6 +311,7 @@ func init() {
 //   - Open a Google Docs window (if necessary).
 //   - Enter split mode (if necessary).
 //   - Turn off camera (if necessary).
+//
 // During recording:
 //   - Join the meeting.
 //   - Add participants(bots) to the meeting.
@@ -319,6 +320,7 @@ func init() {
 //   - Start to present (if necessary).
 //   - Input notes to Google Docs file (if necessary).
 //   - Wait for 30 seconds before ending the meeting.
+//
 // After recording:
 //   - Record and save metrics.
 func MeetCUJ(ctx context.Context, s *testing.State) {
@@ -1109,10 +1111,7 @@ func reportWebRTCInternals(pv *perf.Values, dump []byte, numBots int) error {
 	}
 
 	codec := make(map[string]videoCodecReport)
-	for direction, expectedCount := range map[string]int{
-		"Inbound":  numBots,
-		"Outbound": 1,
-	} {
+	for _, direction := range []string{"Inbound", "Outbound"} {
 		description, ok := codecDescription[direction]
 		if !ok {
 			return errors.Errorf("no %s video stream [codec] statistics", direction)
@@ -1129,9 +1128,6 @@ func reportWebRTCInternals(pv *perf.Values, dump []byte, numBots int) error {
 		if !ok {
 			return errors.Errorf("missing %s video stream statistics", direction)
 		}
-		if len(byStreamID) != expectedCount {
-			return errors.Errorf("unexpected number of %s video streams: got %d; want %d", direction, len(byStreamID), expectedCount)
-		}
 		for streamID, byStatName := range byStreamID {
 			for statName := range unit {
 				if _, ok := byStatName[statName]; !ok {
@@ -1139,6 +1135,10 @@ func reportWebRTCInternals(pv *perf.Values, dump []byte, numBots int) error {
 				}
 			}
 		}
+	}
+
+	if numInboundStreams := len(byDirection["Inbound"]); numInboundStreams != numBots {
+		return errors.Errorf("unexpected number of Inbound video streams: got %d; want %d", numInboundStreams, numBots)
 	}
 
 	pv.Set(perf.Metric{
@@ -1152,31 +1152,23 @@ func reportWebRTCInternals(pv *perf.Values, dump []byte, numBots int) error {
 		Direction: perf.BiggerIsBetter,
 	}, float64(codec["Outbound"]))
 
-	var whichBot uint
-	for _, byStatName := range byDirection["Inbound"] {
-		for statName, report := range byStatName {
-			pv.Set(perf.Metric{
-				Name:      "WebRTCInternals.Video.Inbound." + statName,
-				Variant:   fmt.Sprintf("bot%02d", whichBot),
-				Unit:      unit[statName],
-				Direction: perf.BiggerIsBetter,
-				Multiple:  true,
-			}, report...)
+	for direction, variantFormat := range map[string]string{
+		"Inbound":  "bot%02d",
+		"Outbound": "stream%d",
+	} {
+		var whichStream uint
+		for _, byStatName := range byDirection[direction] {
+			for statName, report := range byStatName {
+				pv.Set(perf.Metric{
+					Name:      fmt.Sprintf("WebRTCInternals.Video.%s.%s", direction, statName),
+					Variant:   fmt.Sprintf(variantFormat, whichStream),
+					Unit:      unit[statName],
+					Direction: perf.BiggerIsBetter,
+					Multiple:  true,
+				}, report...)
+			}
+			whichStream++
 		}
-		whichBot++
-	}
-
-	var outboundByStatName indexByStatName
-	for _, byStatName := range byDirection["Outbound"] {
-		outboundByStatName = byStatName
-	}
-	for statName, report := range outboundByStatName {
-		pv.Set(perf.Metric{
-			Name:      "WebRTCInternals.Video.Outbound." + statName,
-			Unit:      unit[statName],
-			Direction: perf.BiggerIsBetter,
-			Multiple:  true,
-		}, report...)
 	}
 
 	return nil
