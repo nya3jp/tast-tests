@@ -19,6 +19,7 @@ import (
 type GoogleMeetConfig struct {
 	Account       string
 	Password      string
+	BondEnabled   bool
 	BondCreds     []byte
 	URLs          []string
 	RetryTimeout  time.Duration
@@ -46,9 +47,19 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 		return GoogleMeetConfig{}, errors.New("failed to get variable ui.meet_password")
 	}
 
-	creds, ok := s.Var("ui.bond_credentials")
-	if !ok {
-		creds = ""
+	var bondEnabled bool
+	bondEnabledStr, ok := s.Var("ui.bond_enabled")
+	if ok && bondEnabledStr == "true" {
+		bondEnabled = true
+	} else {
+		bondEnabled = false
+	}
+	bondCreds, ok := s.Var("ui.bond_key")
+	if !ok || len(bondCreds) < 1 {
+		if bondEnabled {
+			return GoogleMeetConfig{}, errors.New("bond API is enabled via ui.bond_enabled but ui.bond_key is not set")
+		}
+		bondCreds = ""
 	}
 
 	var urlVar, urlSeondaryVar string
@@ -86,7 +97,7 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 		return urls
 	}
 	meetURLs := varToURLs(urlVar, "ui.meet_url")
-	if len(meetURLs) == 0 && creds == "" {
+	if len(meetURLs) == 0 && bondCreds == "" {
 		// Primary meet URL is mandatory.
 		return GoogleMeetConfig{}, errors.New("neither valid primary meet URLs nor BOND credentials are given")
 	}
@@ -125,7 +136,8 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 	return GoogleMeetConfig{
 		Account:       meetAccount,
 		Password:      meetPassword,
-		BondCreds:     []byte(creds),
+		BondEnabled:   bondEnabled,
+		BondCreds:     []byte(bondCreds),
 		URLs:          meetURLs,
 		RetryTimeout:  meetRetryTimeout,
 		RetryInterval: meetRetryInterval,
