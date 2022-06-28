@@ -168,7 +168,7 @@ func SetBetterOnboardingEnabled(ctx context.Context, tconn *chrome.TestConn, ena
 
 // setPrefValue is a helper function to set value for Assistant related preferences.
 func setPrefValue(ctx context.Context, tconn *chrome.TestConn, prefName string, value interface{}) error {
-	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, prefName, value)
+	return tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setAllowedPref)`, prefName, value)
 }
 
 // ToggleUIWithHotkey mimics the Assistant key press to open/close the Assistant UI.

@@ -547,7 +547,7 @@ func (vkbCtx *VirtualKeyboardContext) TapMultipasteSuggestion(itemName string) u
 // When disabled, the tablet non-a11y virtual keyboard will be used.
 func (vkbCtx *VirtualKeyboardContext) EnableA11yVirtualKeyboard(enabled bool) uiauto.Action {
 	return func(ctx context.Context) error {
-		return vkbCtx.tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setWhitelistedPref)`, "settings.a11y.virtual_keyboard", enabled)
+		return vkbCtx.tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.setAllowedPref)`, "settings.a11y.virtual_keyboard", enabled)
 	}
 }
 

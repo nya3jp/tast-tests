@@ -49,7 +49,7 @@ func (*AdbSideloadService) SetRequestAdbSideloadFlag(ctx context.Context, reques
 	// couldn't use tast.promisify here as we are using the TestAPIConn before the login has happened, and tast is not defined yet
 	if err := tconn.Eval(ctx, `
 	new Promise((resolve, reject) => {
-		chrome.autotestPrivate.setWhitelistedPref('EnableAdbSideloadingRequested', true, () => {
+		chrome.autotestPrivate.setAllowedPref('EnableAdbSideloadingRequested', true, () => {
 			resolve();
 		});
 	})`, nil); err != nil {
