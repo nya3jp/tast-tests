@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1fe0c3a_c37bedc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-28T11:01:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1226ae7a_af45cab4",
+      "range": {
+        "startLine": 119,
+        "startChar": 69,
+        "endLine": 120,
+        "endChar": 74
+      },
+      "revId": "b8ed8ba6793e7075a895b930edd98bd0f693c1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86aa6e70_76762bd3",
@@ -47,6 +71,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d83a6095_471538fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-28T11:01:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86aa6e70_76762bd3",
+      "range": {
+        "startLine": 167,
+        "startChar": 10,
+        "endLine": 167,
+        "endChar": 14
+      },
+      "revId": "b8ed8ba6793e7075a895b930edd98bd0f693c1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ed768d_10402d42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-28T11:01:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86aa6e70_76762bd3",
+      "range": {
+        "startLine": 167,
+        "startChar": 10,
+        "endLine": 167,
+        "endChar": 14
+      },
+      "revId": "b8ed8ba6793e7075a895b930edd98bd0f693c1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88801704_005264ac",
@@ -60,6 +132,30 @@
       "writtenOn": "2022-06-28T08:25:43Z",
       "side": 1,
       "message": "Do you think we need to close apiOobe here? I recall adding js to something and then not closing it properly may cause memory leaks but I have no idea whether that\u0027s relevant here.",
+      "range": {
+        "startLine": 175,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 2
+      },
+      "revId": "b8ed8ba6793e7075a895b930edd98bd0f693c1a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f3b0c21_cd7bda4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-28T11:01:32Z",
+      "side": 1,
+      "message": "I think it is better to close it just in case, as we do not really need it anymore afterwards. I have moved the close call here instead",
+      "parentUuid": "88801704_005264ac",
       "range": {
         "startLine": 175,
         "startChar": 1,
