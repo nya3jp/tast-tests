@@ -70,6 +70,24 @@
       "parentUuid": "9e98e747_19e92e94",
       "revId": "aacd9d36c1fca7af6db1d503851050ba559433fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d88e95dd_b41a896f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-06-28T06:15:17Z",
+      "side": 1,
+      "message": "Yeah it\u0027s 1.17.1. Would updating the chroot solve the issue? I think there is some way to notifiy developers that they need to update their chroot, I have seen such a prompt in the shell before.",
+      "parentUuid": "34aead0f_6ba5bb5a",
+      "revId": "aacd9d36c1fca7af6db1d503851050ba559433fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
