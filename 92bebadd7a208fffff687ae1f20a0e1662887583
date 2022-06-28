@@ -131,6 +131,24 @@
       "message": "Another approach here might be to use a type switch, e.g.\n```\nfunc SetXattr(path, name string, data interface {}) error {\n\tswitch xattr :\u003d data.(type) {\n\tcase bool:\n\t\treturn unix.Setxattr(path, name, xattr, 0)\n\tcase string:\n\t\treturn unix.Setxattr(path, name, []byte(xattr), 0)\n\tcase bool:\n\t\tif xattr {\n\t\t\treturn unix.Setxattr(path, name, \"1\", 0)\n\t\t}\n\t\treturn unix.Setxattr(path, name, \"0\", 0)\n\tdefault:\n\t\treturn errors.New(\"unknown xattr data type supplied\")\n\t}\n}\n```\nYou could then avoid adding new functions for every type and have the logic in a single switch statement.",
       "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36270ebd_0b5b81bb",
+        "filename": "src/chromiumos/tast/local/drivefs/xattr.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-28T04:03:56Z",
+      "side": 1,
+      "message": "Woops the first `case` meant to be `bytes` instead of `bool`",
+      "parentUuid": "67dbf96d_6d5ebeb0",
+      "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
