@@ -22,6 +22,30 @@
       },
       "revId": "d5f02cac7b0647ef2e1b7f3c7c4b14abede9d234",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f562444c_0b1584cd",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-06-28T17:59:47Z",
+      "side": 1,
+      "message": "Thanks for teaching me Go :) I originally had the else clause because I didn\u0027t know how to specify the data type.",
+      "parentUuid": "c048dd6d_c93fc5bb",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 2
+      },
+      "revId": "d5f02cac7b0647ef2e1b7f3c7c4b14abede9d234",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
