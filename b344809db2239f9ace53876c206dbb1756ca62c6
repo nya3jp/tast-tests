@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd5595b2_790baedd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/display_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-28T08:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9b49935_c92356af",
+      "range": {
+        "startLine": 31,
+        "startChar": 47,
+        "endLine": 31,
+        "endChar": 58
+      },
+      "revId": "b344809db2239f9ace53876c206dbb1756ca62c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb4cbf9d_aa3aaeaf",
@@ -71,6 +95,24 @@
       "writtenOn": "2022-06-16T23:54:46Z",
       "side": 1,
       "message": "This construction is odd, it seems you just want to match one of a list of valid values. Maybe you should pass a []string or map[string]struct{} and just do a string prefix match over this set of options?\nThat would be easier to follow, rather than this string manipulation to create a regex to match \"HDMI\" or \"DP\".",
+      "revId": "b344809db2239f9ace53876c206dbb1756ca62c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "132139b5_a632d286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/display_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-28T08:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb4cbf9d_aa3aaeaf",
       "revId": "b344809db2239f9ace53876c206dbb1756ca62c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +134,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e08348a_e1f5b092",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/typecutils/display_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-28T08:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ebd805a_ffa0705f",
+      "revId": "b344809db2239f9ace53876c206dbb1756ca62c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "518ef900_6f6798c1",
@@ -105,6 +165,30 @@
       "writtenOn": "2022-06-16T23:54:46Z",
       "side": 1,
       "message": "assign to variable before passing to improve readability (so know what this parameter means)",
+      "range": {
+        "startLine": 119,
+        "startChar": 50,
+        "endLine": 119,
+        "endChar": 55
+      },
+      "revId": "b344809db2239f9ace53876c206dbb1756ca62c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07a0f2a3_594d341a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_gatex_card_display_functionalities.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-28T08:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "518ef900_6f6798c1",
       "range": {
         "startLine": 119,
         "startChar": 50,
@@ -138,6 +222,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e0be071_ec803f45",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_gatex_card_display_functionalities.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-28T08:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a6b23b8_096f83e5",
+      "range": {
+        "startLine": 124,
+        "startChar": 57,
+        "endLine": 124,
+        "endChar": 61
+      },
+      "revId": "b344809db2239f9ace53876c206dbb1756ca62c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1bd377c_2f61f192",
@@ -151,6 +259,24 @@
       "writtenOn": "2022-06-16T23:47:36Z",
       "side": 1,
       "message": "nit: extra line between err and err !\u003d nil, delete?",
+      "revId": "b344809db2239f9ace53876c206dbb1756ca62c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f164838d_b545a809",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_gatex_card_display_functionalities.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-28T08:05:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1bd377c_2f61f192",
       "revId": "b344809db2239f9ace53876c206dbb1756ca62c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
