@@ -37,11 +37,6 @@ func fillSwDeps(codec, resolution, frameRate string) []string {
 	if codec == "h264" || codec == "hevc" {
 		swDeps = append(swDeps, "proprietary_codecs")
 	}
-	// TODO(b/221247444, b/232255167): Remove this provision when ChromeOS
-	// supports HEVC clear video playback.
-	if codec == "hevc" {
-		swDeps = append(swDeps, "protected_content")
-	}
 	return swDeps
 }
 

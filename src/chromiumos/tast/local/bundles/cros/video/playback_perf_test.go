@@ -49,11 +49,6 @@ func genPlaybackPerfSwDeps(codec string, resolution, fps int, dec string) []stri
 	if codec == "h264" || codec == "hevc" || codec == "hevc10" {
 		swDeps = append(swDeps, "proprietary_codecs")
 	}
-	// TODO(b/221247444, b/232255167): Remove this provision when ChromeOS
-	// supports HEVC clear video playback.
-	if codec == "hevc" || codec == "hevc10" {
-		swDeps = append(swDeps, "protected_content")
-	}
 
 	if dec != "hw" {
 		return swDeps
