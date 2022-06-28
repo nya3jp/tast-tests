@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c8eeae7_1b6963c1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-28T20:03:27Z",
+      "side": 1,
+      "message": "We have a context timeout of 20 sec on line 329, does this worst case runtime factor into this estimate?",
+      "range": {
+        "startLine": 58,
+        "startChar": 82,
+        "endLine": 58,
+        "endChar": 86
+      },
+      "revId": "84014fda32f82d75c4acd32e2cc20de4b4de9268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbb285fe_7afb24c3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 2
@@ -65,6 +88,52 @@
       "writtenOn": "2022-06-27T15:56:20Z",
       "side": 1,
       "message": "nit: Please add comments for this function how it determines whether it is true or false.",
+      "revId": "84014fda32f82d75c4acd32e2cc20de4b4de9268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5905d72e_a2768b29",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-28T20:03:27Z",
+      "side": 1,
+      "message": "IIUC, VerifyTDLSDiscoveryPackets is used to find anomalous packets. It appears that if packets are returned, we would fail the test for having unexpected frames. Having a func name with Verify implies to me that emitted results are \"verified\" rather than problematic. Do you think it would be better to change this function name to something like FindTDLSDiscoveryPacketAnomalies?",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 31
+      },
+      "revId": "84014fda32f82d75c4acd32e2cc20de4b4de9268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a04668c_ed62bdbd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-06-28T20:03:27Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 18
+      },
       "revId": "84014fda32f82d75c4acd32e2cc20de4b4de9268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
