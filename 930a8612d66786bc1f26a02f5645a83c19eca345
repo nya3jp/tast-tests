@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "017088ad_f2e16f53",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T03:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c919628b_f57c94f4",
+      "range": {
+        "startLine": 299,
+        "startChar": 71,
+        "endLine": 299,
+        "endChar": 81
+      },
+      "revId": "930a8612d66786bc1f26a02f5645a83c19eca345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4031893_246149b2",

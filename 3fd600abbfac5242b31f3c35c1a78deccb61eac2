@@ -268,6 +268,30 @@
       },
       "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3ae6646_5478e0d4",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T03:17:42Z",
+      "side": 1,
+      "message": "I removed this code, instead I am waiting for the event `P2PGroupStartedEvent` which has the interface name and type.",
+      "parentUuid": "7039075c_fbfa3787",
+      "range": {
+        "startLine": 1548,
+        "startChar": 30,
+        "endLine": 1548,
+        "endChar": 40
+      },
+      "revId": "3fd600abbfac5242b31f3c35c1a78deccb61eac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

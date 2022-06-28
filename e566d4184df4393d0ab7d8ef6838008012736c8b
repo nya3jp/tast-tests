@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f0e0978_69f1d89d",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T03:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "997830a2_5cdd4143",
+      "revId": "e566d4184df4393d0ab7d8ef6838008012736c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97344849_d51d0886",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-25T03:16:49Z",
       "side": 1,
       "message": "This change definitely belongs in the previous patch, but anyway abortScan doesn\u0027t even abort the scan at the driver level for many drivers, so we don\u0027t ever use it. Also, scanning twice in quick succession like this is unlikely to actually result in success the second time around since the radio is occupied for several seconds at a time.\n\nI would suggest just not failing even if the scan fails due to the radio being busy.",
+      "revId": "e566d4184df4393d0ab7d8ef6838008012736c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5edef27f_417f8388",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T03:17:42Z",
+      "side": 1,
+      "message": "I removed abortScan() and added a condition to not fail if the err is `FAIL-BUSY`in the previous CL.",
+      "parentUuid": "97344849_d51d0886",
       "revId": "e566d4184df4393d0ab7d8ef6838008012736c8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7bec9bc_0249a295",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T03:17:42Z",
+      "side": 1,
+      "message": "I removed this code, instead I am waiting for the event `P2PGroupStartedEvent` which has the interface name and type.",
+      "parentUuid": "d41eb55b_a1ca8518",
+      "revId": "e566d4184df4393d0ab7d8ef6838008012736c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a98d37ca_291ebb43",
@@ -65,6 +119,30 @@
       "writtenOn": "2022-06-25T03:16:49Z",
       "side": 1,
       "message": "nit: not scan success",
+      "range": {
+        "startLine": 1670,
+        "startChar": 9,
+        "endLine": 1670,
+        "endChar": 20
+      },
+      "revId": "e566d4184df4393d0ab7d8ef6838008012736c8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e60fc07_80933b24",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1670,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T03:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a98d37ca_291ebb43",
       "range": {
         "startLine": 1670,
         "startChar": 9,

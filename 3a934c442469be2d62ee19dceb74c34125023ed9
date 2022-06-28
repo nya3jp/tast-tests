@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2959ade_af41149f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T03:17:42Z",
+      "side": 1,
+      "message": "Added the wpa_monitor event `P2PGroupStartedEvent` which happens after creating the group owner (After: `p2p_group_add`) and after connecting the client to the GO network (After: `p2p_group_add persistent\u003d0`) Note: this event happens after the connection is done, so there is no need to wait for Conntected event.",
+      "revId": "3a934c442469be2d62ee19dceb74c34125023ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
