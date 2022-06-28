@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dfcdad1_8227dd82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508803
+      },
+      "writtenOn": "2022-06-28T21:03:32Z",
+      "side": 1,
+      "message": "I changed the `drivefs.File` interface to avoid opening the file by default. This is mostly to avoid dangling open handles, which will prevent DriveFS from uploading the file. The downside is that the new interface diverges more from `os.File`.",
+      "revId": "d7113a1202d5f5969be2908762a469dc463e69d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

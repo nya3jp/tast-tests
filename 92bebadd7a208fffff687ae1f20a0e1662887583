@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede444cf_8b617ff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_blob_upload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1508803
+      },
+      "writtenOn": "2022-06-28T21:03:32Z",
+      "side": 1,
+      "message": "Done. I added an internal 1KB test file. LMK if it should be external.",
+      "parentUuid": "95050101_65d703b7",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3145b82c_4beab4a0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-28T04:00:33Z",
       "side": 1,
       "message": "You want to pass through `cleanupCtx` here",
+      "range": {
+        "startLine": 84,
+        "startChar": 37,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b37e94_f6e2710f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_blob_upload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1508803
+      },
+      "writtenOn": "2022-06-28T21:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3145b82c_4beab4a0",
       "range": {
         "startLine": 84,
         "startChar": 37,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a5a1a0_80853bfa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_blob_upload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1508803
+      },
+      "writtenOn": "2022-06-28T21:03:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbcdc88f_33e40bf3",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 16
+      },
+      "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19b3bb3a_4cb435f1",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f09cbb6_c929ce61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_blob_upload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1508803
+      },
+      "writtenOn": "2022-06-28T21:03:32Z",
+      "side": 1,
+      "message": "Done. I ended up changing the pattern to avoid opening the file. It is unnecessary when using a data file.",
+      "parentUuid": "19b3bb3a_4cb435f1",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 17
+      },
+      "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28a1f6f6_7d46bb06",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-06-28T04:00:33Z",
       "side": 1,
       "message": "Typically this should end in the `Action` prefix, like `IDCreatedAction`",
+      "range": {
+        "startLine": 186,
+        "startChar": 18,
+        "endLine": 186,
+        "endChar": 27
+      },
+      "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cfe046c_9b111231",
+        "filename": "src/chromiumos/tast/local/drivefs/drivefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1508803
+      },
+      "writtenOn": "2022-06-28T21:03:32Z",
+      "side": 1,
+      "message": "Done, here and below.",
+      "parentUuid": "28a1f6f6_7d46bb06",
       "range": {
         "startLine": 186,
         "startChar": 18,
@@ -147,6 +267,24 @@
       "side": 1,
       "message": "Woops the first `case` meant to be `bytes` instead of `bool`",
       "parentUuid": "67dbf96d_6d5ebeb0",
+      "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08831a33_df4a6338",
+        "filename": "src/chromiumos/tast/local/drivefs/xattr.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1508803
+      },
+      "writtenOn": "2022-06-28T21:03:32Z",
+      "side": 1,
+      "message": "Done. Totally forgot about Golang\u0027s type assertions. This is much cleaner.",
+      "parentUuid": "36270ebd_0b5b81bb",
       "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
