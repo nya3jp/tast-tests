@@ -94,6 +94,30 @@
       },
       "revId": "5ffcaebf29048a7b6db0fea5ad0382f27977b363",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e41659cf_78682109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dump_vpd_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-06-28T11:50:22Z",
+      "side": 1,
+      "message": "Hmm ok, just a bit confused by the structure of the test.",
+      "parentUuid": "41b7d9b3_1b290d2d",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "5ffcaebf29048a7b6db0fea5ad0382f27977b363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
