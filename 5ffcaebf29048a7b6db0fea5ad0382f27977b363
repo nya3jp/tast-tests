@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c81982c9_244e3358",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dump_vpd_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-06-28T09:21:31Z",
+      "side": 1,
+      "message": "Isn\u0027t this just retrying what the last two steps in your original test do anyways?",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "5ffcaebf29048a7b6db0fea5ad0382f27977b363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
