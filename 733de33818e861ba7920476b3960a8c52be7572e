@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8bc87c6_ab0d8e98",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-28T22:16:23Z",
+      "side": 1,
+      "message": "`const timeOffsetSeconds \u003d secondsInOneDay * daysInOneYear * aueYearOffset`\nNote that this eliminates the need to typecast to `int64`, because a constant has no specific type. Here is a demonstration:\nhttps://go.dev/play/p/FBkeeoHHyFm",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 76
+      },
+      "revId": "733de33818e861ba7920476b3960a8c52be7572e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e308e8_f7a88c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-28T22:16:23Z",
+      "side": 1,
+      "message": "Likewise",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 66
+      },
+      "revId": "733de33818e861ba7920476b3960a8c52be7572e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
