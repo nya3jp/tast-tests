@@ -7,7 +7,9 @@ package platform
 import (
 	"bufio"
 	"context"
+	"fmt"
 	"os"
+	"path/filepath"
 	"regexp"
 	"time"
 
@@ -94,7 +96,32 @@ func DumpVPDLog(ctx context.Context, s *testing.State) {
 }
 
 func runDumpVPDLog(ctx context.Context) error {
+	outdir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		return errors.New("failed to create output directory")
+	}
+
+	now := time.Now()
+	basename := fmt.Sprintf("dump_vpd_log.%s", now)
+
+	outfile, err := os.Create(filepath.Join(outdir, basename+".out"))
+	if err != nil {
+		return errors.Wrap(err, "failed to create output file")
+	}
+	defer outfile.Close()
+
+	errfile, err := os.Create(filepath.Join(outdir, basename+".err"))
+	if err != nil {
+		return errors.Wrap(err, "failed to create error file")
+	}
+	defer errfile.Close()
+
 	cmd := testexec.CommandContext(ctx, "/usr/sbin/dump_vpd_log")
+
+	cmd.Stdout = outfile
+	cmd.Stderr = errfile
+
+	testing.ContextLogf(ctx, "Running dump_vpd_log, dumping output as %q", basename)
 	return cmd.Run(testexec.DumpLogOnError)
 }
 
