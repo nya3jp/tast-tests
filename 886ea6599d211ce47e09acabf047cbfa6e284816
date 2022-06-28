@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50432efa_ef2bfe3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-28T22:27:47Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with optional nit",
+      "revId": "886ea6599d211ce47e09acabf047cbfa6e284816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9a9c6c9_11ad1148",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-28T22:27:47Z",
+      "side": 1,
+      "message": "optional nit: If you want, you can make the code look like this:\n\toptions :\u003d addBotsOptions{sendFPS: 24, allowVP9: true, sendVP9: true}\n\tif numBots \u003c\u003d 1 {\n\t\toptions.requestedLayout \u003d \"SPOTLIGHT\"\n\t} else if numBots \u003c\u003d 5 {\n\t\toptions.requestedLayout \u003d \"BRADY_BUNCH\"\n\t} else if numBots \u003c\u003d 15 {\n\t\toptions.requestedLayout \u003d \"BRADY_BUNCH_4_4\"\n\t} else {\n\t\toptions.requestedLayout \u003d \"BRADY_BUNCH_7_7\"\n\t}\n\tfor _, opt :\u003d range opts {\n\t\topt(\u0026options)\n\t}",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 0
+      },
+      "revId": "886ea6599d211ce47e09acabf047cbfa6e284816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
