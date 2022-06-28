@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -91,11 +92,11 @@ func ShortcutSearch(ctx context.Context, s *testing.State) {
 	subtests := []shortcutSearchTestCase{
 		{
 			searchKeyword: "Lock Screen",
-			result:        "Lock screen, Shortcuts, Search+ l",
+			result:        "Lock screen, Shortcuts, Launcher+ l",
 		},
 		{
 			searchKeyword: "Launcher",
-			result:        "Open/close the launcher, Shortcuts, Search",
+			result:        "Open/close the launcher, Shortcuts, Launcher",
 		},
 		{
 			searchKeyword: "Overview",
@@ -132,11 +133,26 @@ func ShortcutSearch(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to search: ", err)
 			}
 
-			if err := uiauto.Combine("clear search",
-				ui.LeftClick(clearSearchButton),
-				ui.WaitUntilGone(resultFinder),
-			)(ctx); err != nil {
-				s.Fatal("Failed to clear search results: ", err)
+			if err := kb.TypeKeyAction(input.KEY_ENTER)(ctx); err != nil {
+				s.Fatal("Failed to launch first search result: ", err)
+			}
+
+			if err := ash.WaitForApp(ctx, tconn, apps.KeyboardSV.ID, time.Minute); err != nil {
+				s.Fatal("Keyboard Shortcut Viewer failed to open: ", err)
+			}
+
+			if running, err := ash.AppRunning(ctx, tconn, apps.KeyboardSV.ID); err != nil {
+				s.Fatalf("Failed to check if Keyboard Shortcut View is running: %s", err)
+			} else if !running {
+				s.Fatalf("KeyboardSV not running: %s", err)
+			}
+
+			if err := apps.Close(ctx, tconn, apps.KeyboardSV.ID); err != nil {
+				s.Fatalf("Failed to close Keyboard Shortcut View: %s", err)
+			}
+
+			if err := ash.WaitForAppClosed(ctx, tconn, apps.KeyboardSV.ID); err != nil {
+				s.Fatalf("Keyboard Shortcut View did not close successfully: %s", err)
 			}
 		})
 	}
