@@ -81,6 +81,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/policy"
 	_ "chromiumos/tast/local/bundles/cros/power"
 	_ "chromiumos/tast/local/bundles/cros/printer"
+	_ "chromiumos/tast/local/bundles/cros/privacyhub"
 	_ "chromiumos/tast/local/bundles/cros/projector"
 	_ "chromiumos/tast/local/bundles/cros/qemu"
 	_ "chromiumos/tast/local/bundles/cros/quickanswers"
