@@ -41,6 +41,10 @@ func DumpVPDLog(ctx context.Context, s *testing.State) {
 		if err := runDumpVPDLog(ctx); err != nil {
 			s.Error("Failed to restore the VPD cache: ", err)
 		}
+
+		if err := validateCache(); err != nil {
+			s.Error("Restored cache is not valid: ", err)
+		}
 	}(ctx)
 
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
