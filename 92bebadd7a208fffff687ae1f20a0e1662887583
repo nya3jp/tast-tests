@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95050101_65d703b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_blob_upload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-28T04:00:33Z",
+      "side": 1,
+      "message": "Generally introducing randomness is not particularly ideal, I wonder if you could just create a test file of N bytes and have it stored as a data file and we pull it down at runtime\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Data-files",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3145b82c_4beab4a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_blob_upload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-28T04:00:33Z",
+      "side": 1,
+      "message": "You want to pass through `cleanupCtx` here",
+      "range": {
+        "startLine": 84,
+        "startChar": 37,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbcdc88f_33e40bf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_blob_upload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-28T04:00:33Z",
+      "side": 1,
+      "message": "nit: you can collapse these\n```\nif err :\u003d writeRandomData(...); err !\u003d nil {\n```",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 16
+      },
+      "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b3bb3a_4cb435f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_blob_upload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-28T04:00:33Z",
+      "side": 1,
+      "message": "Should we check this error and at the very least log it?",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 17
+      },
+      "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a1f6f6_7d46bb06",
+        "filename": "src/chromiumos/tast/local/drivefs/drivefs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-28T04:00:33Z",
+      "side": 1,
+      "message": "Typically this should end in the `Action` prefix, like `IDCreatedAction`",
+      "range": {
+        "startLine": 186,
+        "startChar": 18,
+        "endLine": 186,
+        "endChar": 27
+      },
+      "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67dbf96d_6d5ebeb0",
+        "filename": "src/chromiumos/tast/local/drivefs/xattr.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-28T04:00:33Z",
+      "side": 1,
+      "message": "Another approach here might be to use a type switch, e.g.\n```\nfunc SetXattr(path, name string, data interface {}) error {\n\tswitch xattr :\u003d data.(type) {\n\tcase bool:\n\t\treturn unix.Setxattr(path, name, xattr, 0)\n\tcase string:\n\t\treturn unix.Setxattr(path, name, []byte(xattr), 0)\n\tcase bool:\n\t\tif xattr {\n\t\t\treturn unix.Setxattr(path, name, \"1\", 0)\n\t\t}\n\t\treturn unix.Setxattr(path, name, \"0\", 0)\n\tdefault:\n\t\treturn errors.New(\"unknown xattr data type supplied\")\n\t}\n}\n```\nYou could then avoid adding new functions for every type and have the logic in a single switch statement.",
+      "revId": "92bebadd7a208fffff687ae1f20a0e1662887583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
