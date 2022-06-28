@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ff325e0_accefd69",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T16:48:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43016e28_456e9596",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 215,
+        "endChar": 11
+      },
+      "revId": "589d1c07cdc9c11b91b664dcd116c6ab5a40d879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a68394ff_697f5b1f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-27T16:13:23Z",
       "side": 1,
       "message": "If you rebase, you could simply use `return run(ctx, \"OK\", \"p2p_group_add\", \"persistent\u003d0\")`",
+      "range": {
+        "startLine": 221,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 11
+      },
+      "revId": "589d1c07cdc9c11b91b664dcd116c6ab5a40d879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e6f4b8_7c84018b",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T16:48:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a68394ff_697f5b1f",
       "range": {
         "startLine": 221,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fe13a9c_f19c9a70",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T16:48:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a5efe37_5da99b8a",
+      "range": {
+        "startLine": 233,
+        "startChar": 1,
+        "endLine": 240,
+        "endChar": 11
+      },
+      "revId": "589d1c07cdc9c11b91b664dcd116c6ab5a40d879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ab1d5e2_0579bdab",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-27T16:13:23Z",
       "side": 1,
       "message": "If you rebase, you could simply use `return run(ctx, \"OK\", \"p2p_flush\")`",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 252,
+        "endChar": 11
+      },
+      "revId": "589d1c07cdc9c11b91b664dcd116c6ab5a40d879",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9051ca37_76fcb757",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T16:48:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ab1d5e2_0579bdab",
       "range": {
         "startLine": 245,
         "startChar": 1,
