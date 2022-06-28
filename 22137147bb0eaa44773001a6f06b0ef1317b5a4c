@@ -16,6 +16,40 @@
       "message": "Thanks for the review, I have addressed the comments :)",
       "revId": "22137147bb0eaa44773001a6f06b0ef1317b5a4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd6fe1d8_6a634955",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-28T22:06:11Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "22137147bb0eaa44773001a6f06b0ef1317b5a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f7ee50_41d712b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-06-28T22:06:11Z",
+      "side": 1,
+      "message": "nit: rename `api` to something more descriptive, given the existence of `apiOOBE` (e.g. `apiPostOOBE`)",
+      "revId": "22137147bb0eaa44773001a6f06b0ef1317b5a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
