@@ -6,20 +6,15 @@ package policy
 
 import (
 	"context"
-	"encoding/json"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/empty"
-
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/common/policy"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
 	aupb "chromiumos/tast/services/cros/autoupdate"
-	ps "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
 
@@ -33,10 +28,9 @@ func init() {
 			"crisguerrero@chromium.org",
 			"chromeos-commercial-remote-management@google.com",
 		},
-		Attr:         []string{"group:enrollment"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"reboot", "chrome"},
 		ServiceDeps: []string{
-			"tast.cros.policy.PolicyService",
 			"tast.cros.autoupdate.RollbackService",
 		},
 		Timeout: 10 * time.Minute,
@@ -45,6 +39,9 @@ func init() {
 
 var logsAndCrashes = []string{"/var/log", "/var/spool/crash", "/home/chronos/crash", "/mnt/stateful_partition/unencrypted/preserve/crash", "/run/crash_reporter/crash"}
 
+// EnterpriseRollbackInPlace does not expect to use enrolment so any
+// functionality that depend on the enrolment of the device should be not be
+// added to this test.
 func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
@@ -68,12 +65,9 @@ func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 	if err := resetTPM(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM before test: ", err)
 	}
-	if err := enroll(ctx, s.DUT(), s.RPCHint()); err != nil {
-		s.Fatal("Failed to enroll before rollback: ", err)
-	}
 	networksInfo, err := configureNetworks(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
-		s.Fatal("Failed to configure network: ", err)
+		s.Fatal("Failed to configure networks: ", err)
 	}
 	if err := saveRollbackData(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to save rollback data: ", err)
@@ -101,29 +95,6 @@ func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 
 func resetTPM(ctx context.Context, dut *dut.DUT) error {
 	return policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, dut)
-}
-
-func enroll(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
-	client, err := rpc.Dial(ctx, dut, rpcHint)
-	if err != nil {
-		return errors.Wrap(err, "failed to connect to the RPC service on the DUT")
-	}
-	defer client.Close(ctx)
-
-	policyJSON, err := json.Marshal(policy.NewBlob())
-	if err != nil {
-		return errors.Wrap(err, "failed to serialize policies")
-	}
-
-	policyClient := ps.NewPolicyServiceClient(client.Conn)
-	defer policyClient.StopChromeAndFakeDMS(ctx, &empty.Empty{})
-
-	if _, err := policyClient.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
-		PolicyJson: policyJSON,
-	}); err != nil {
-		return errors.Wrap(err, "failed to enroll before rollback")
-	}
-	return nil
 }
 
 func configureNetworks(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) ([]*aupb.NetworkInformation, error) {
