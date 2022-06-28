@@ -22,6 +22,30 @@
       },
       "revId": "99bce191d6406433109e2ac046c497e9be15d2d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e76659e4_ae30939e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-28T13:27:00Z",
+      "side": 1,
+      "message": "As discussed offline, I have removed everything enroll-related from the rollback service and tests :)",
+      "parentUuid": "65f19d3f_54ff2540",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "99bce191d6406433109e2ac046c497e9be15d2d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
