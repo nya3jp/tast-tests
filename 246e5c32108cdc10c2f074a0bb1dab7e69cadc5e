@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a156f2_92a88fb3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/shimlessrma/rmaweb/ui.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-06-28T07:52:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffe303c0_f197a12e",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 56
+      },
+      "revId": "246e5c32108cdc10c2f074a0bb1dab7e69cadc5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60021ba6_114583ae",
