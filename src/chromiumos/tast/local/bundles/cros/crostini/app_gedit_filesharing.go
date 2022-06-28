@@ -37,7 +37,7 @@ var (
 	tmpFilename              = "testfile.txt"
 	tmpFileCrostiniMountPath = filepath.Join(sharedfolders.MountPathDownloads, tmpFilename)
 	tmpFileContents          = "This is a text string in a text file in the Downloads folder."
-	geditContextMenuItem     = "Open with Text Editor"
+	geditContextMenuItem     = "Text Editor"
 	viewContextMenuItem      = "View"
 )
 
@@ -110,7 +110,7 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 	// Open tmp file with Gedit.
 	err = uiauto.Combine("open tmp file with Gedit",
 		filesApp.OpenDownloads(),
-		filesApp.ClickContextMenuItem(tmpFilename, filesapp.OpenWith, geditContextMenuItem),
+		filesApp.ClickContextMenuItemRegex(tmpFilename, filesapp.OpenWith, geditContextMenuItem),
 	)(ctx)
 	if err != nil {
 		s.Fatal("Failed to open tmp file in the Downloads folder: ", err)
@@ -230,7 +230,7 @@ func checkFilesharingWorksAfterRestart(
 	// Re-open file with Gedit and validate contents.
 	err = uiauto.Combine("open downloads folder, open text file with Gedit, validate contents",
 		filesApp.OpenDownloads(),
-		filesApp.ClickContextMenuItem(tmpFilename, filesapp.OpenWith, geditContextMenuItem),
+		filesApp.ClickContextMenuItemRegex(tmpFilename, filesapp.OpenWith, geditContextMenuItem),
 		ui.WaitUntilExists(geditWindow),
 		ud.WaitUntilExists(uidetection.TextBlock(strings.Split(tmpFileContents, " "))),
 	)(ctx)
