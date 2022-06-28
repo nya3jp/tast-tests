@@ -37,7 +37,7 @@ var (
 	tmpFilename              = "testfile.txt"
 	tmpFileCrostiniMountPath = filepath.Join(sharedfolders.MountPathDownloads, tmpFilename)
 	tmpFileContents          = "This is a text string in a text file in the Downloads folder."
-	geditContextMenuItem     = "Open with Text Editor"
+	geditContextMenuItem     = "Text Editor"
 	viewContextMenuItem      = "View"
 )
 
