@@ -63,7 +63,7 @@ func OpenWithTerminal(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Files app: ", err)
 	}
 
-	if err := filesApp.ClickContextMenuItem("Downloads", "Open with Terminal")(ctx); err != nil {
+	if err := filesApp.ClickContextMenuItemRegex("Downloads", "Terminal")(ctx); err != nil {
 		s.Fatal("Open with Terminal failed: ", err)
 	}
 

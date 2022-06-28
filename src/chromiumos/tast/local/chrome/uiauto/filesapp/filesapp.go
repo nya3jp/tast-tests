@@ -281,6 +281,20 @@ func (f *FilesApp) ClickContextMenuItem(fileName string, menuItems ...string) ui
 	return uiauto.Combine(fmt.Sprintf("ClickContextMenuItem(%s, %s)", fileName, menuItems), steps...)
 }
 
+// ClickContextMenuItemRegex returns a function that right clicks a file to
+// open the context menu and then clicks on sub menu items using regexp.
+// This method will not select context menu for items in the navigation tree.
+func (f *FilesApp) ClickContextMenuItemRegex(fileName string, menuItems ...string) uiauto.Action {
+	var steps []uiauto.Action
+	// Open Context menu.
+	steps = append(steps, f.RightClick(file(fileName)))
+	// Iterate over the menu items and click them.
+	for _, menuItem := range menuItems {
+		steps = append(steps, f.LeftClick(nodewith.NameRegex(regexp.MustCompile(menuItem)).Role(role.MenuItem)))
+	}
+	return uiauto.Combine(fmt.Sprintf("ClickContextMenuItem(%s, %s)", fileName, menuItems), steps...)
+}
+
 // ClickDirectoryContextMenuItem returns a function that right clicks a directory in the navigation tree to open the context menu and then clicks on sub menu items.
 // An error is returned if dir is not found or right click fails.
 func (f *FilesApp) ClickDirectoryContextMenuItem(dirName string, menuItems ...string) uiauto.Action {
