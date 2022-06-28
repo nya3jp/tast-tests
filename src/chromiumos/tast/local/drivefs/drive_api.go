@@ -7,17 +7,34 @@ package drivefs
 import (
 	"context"
 	"fmt"
+	"io"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"time"
 
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 	drive "google.golang.org/api/drive/v3"
+	"google.golang.org/api/googleapi"
 	"google.golang.org/api/option"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+)
+
+var (
+	defaultFileFields = []googleapi.Field{
+		"id",
+		"resourceKey",
+		"name",
+		"size",
+		"mimeType",
+		"parents",
+		"trashed",
+		"version",
+		"md5Checksum",
+	}
 )
 
 // APIClient contains the Drive API service.
@@ -81,20 +98,43 @@ func (d *APIClient) Createfolder(ctx context.Context, fileName string, dirPath [
 	return d.service.Files.Create(folder).Context(ctx).Do()
 }
 
+// CreateFile creates a blob/binary file on Google Drive.
+//
+// The file is created in the folder specified by `parentID`, use `"root"` for
+// the user's My Drive root. The file will be created with the supplied
+// `fileName` and `content`, `content` may be `nil`.
+func (d *APIClient) CreateFile(ctx context.Context,
+	fileName, parentID string, content io.Reader) (*drive.File, error) {
+	file := &drive.File{
+		Name:    fileName,
+		Parents: []string{parentID},
+	}
+	createRequest := d.service.Files.Create(file).Fields(defaultFileFields...).Context(ctx)
+	if content != nil {
+		createRequest = createRequest.Media(content)
+	}
+	return createRequest.Do()
+}
+
+// CreateFileFromLocalFile creates a blob/binary file on Google Drive from a
+// local file.
+//
+// This function is the same as `CreateFile`, but allows specifying the path
+// of a local file to upload.
+func (d *APIClient) CreateFileFromLocalFile(ctx context.Context,
+	fileName, parentID, localFilePath string) (*drive.File, error) {
+	localFile, err := os.Open(localFilePath)
+	if err != nil {
+		return nil, err
+	}
+	defer localFile.Close()
+	return d.CreateFile(ctx, fileName, parentID, localFile)
+}
+
 // GetFileByID gets the metadata of a file on Drive by the `fileID` of
 // the file.
 func (d *APIClient) GetFileByID(ctx context.Context, fileID string) (*drive.File, error) {
-	return d.service.Files.Get(fileID).Fields(
-		"id",
-		"resourceKey",
-		"name",
-		"size",
-		"mimeType",
-		"parents",
-		"trashed",
-		"version",
-		"md5Checksum",
-	).Context(ctx).Do()
+	return d.service.Files.Get(fileID).Fields(defaultFileFields...).Context(ctx).Do()
 }
 
 // RemoveFileByID removes the file by supplied fileID.
