@@ -6,6 +6,7 @@ package kerberos
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
@@ -19,7 +20,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/kerberos"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -48,12 +48,13 @@ func AutomaticTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 	config := kerberos.ConstructConfig(domain, username)
 
 	kerberosAcc := policy.KerberosAccountsValue{
-		Principal: config.KerberosAccount,
-		Password:  password,
+		Principal: "${LOGIN_ID}" + "@" + domain,
+		Password:  "${PASSWORD}",
 		Krb5conf:  []string{config.RealmsConfig},
 	}
 
 	pb := policy.NewBlob()
+	pb.PolicyUser = username + "@managedchrome.com"
 	pb.AddPolicies([]policy.Policy{
 		&policy.KerberosEnabled{Val: true},
 		&policy.KerberosAccounts{
@@ -67,15 +68,25 @@ func AutomaticTicketAccessFileSystem(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to write policies to FakeDMS: ", err)
 	}
 
+	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx,
-		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
+		chrome.FakeLogin(chrome.Creds{User: username + "@managedchrome.com", Pass: password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.KeepEnrollment(),
 	)
 	if err != nil {
 		s.Fatal("Creating Chrome with deferred login failed: ", err)
 	}
-	defer cr.Close(ctx)
+
+	defer func(ctx context.Context) {
+		// Use cr as a reference to close the last started Chrome instance.
+		if err := cr.Close(ctx); err != nil {
+			s.Error("Failed to close Chrome connection: ", err)
+		}
+	}(ctx)
+
+	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
+	defer cancel()
 
 	// Connect to Test API to use it with the UI library.
 	tconn, err := cr.TestAPIConn(ctx)
