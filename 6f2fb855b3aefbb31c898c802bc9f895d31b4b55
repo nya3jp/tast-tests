@@ -16,6 +16,24 @@
       "message": "Did you run any of the tests you modified?",
       "revId": "6f2fb855b3aefbb31c898c802bc9f895d31b4b55",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0803be78_323acb22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-06-28T06:54:43Z",
+      "side": 1,
+      "message": "yes, they all pass:\n```\ntast run -var\u003drouters\u003dlocalhost:2210,localhost:2212 -var\u003dpcap\u003dlocalhost:2212 localhost:2200  wifi.RRMBeaconReport [[PASS ]]\n```\n```\ntast run -var\u003drouters\u003dlocalhost:2210,localhost:2212 -var\u003dattenuator\u003dchromeos15-row3-rack12-host5-attenuator.cros -var\u003dpcap\u003dlocalhost:2212 localhost:2200  wifi.RoamNatural [[ PASS ]]\n```\n```\ntast run -var\u003drouters\u003dlocalhost:2210,localhost:2212 -var\u003dattenuator\u003dchromeos15-row3-rack12-host5-attenuator.cros -var\u003dpcap\u003dlocalhost:2212 localhost:2200  wifi.RoamDiagnostics [[ PASS ]]\n```",
+      "parentUuid": "02548d66_18c29c7c",
+      "revId": "6f2fb855b3aefbb31c898c802bc9f895d31b4b55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
