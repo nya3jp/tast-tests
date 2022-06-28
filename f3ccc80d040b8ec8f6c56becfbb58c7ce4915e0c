@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f59b81c6_31825b46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pin_unpin_media_pod.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-28T07:49:06Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "c08b7f64_80193922",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 10
+      },
+      "revId": "f3ccc80d040b8ec8f6c56becfbb58c7ce4915e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3e326af_6f521206",
@@ -82,6 +106,54 @@
         "startChar": 1,
         "endLine": 65,
         "endChar": 60
+      },
+      "revId": "f3ccc80d040b8ec8f6c56becfbb58c7ce4915e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d565de6b_929fe698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pin_unpin_media_pod.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-28T07:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81d7c7e0_97a58a1f",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 60
+      },
+      "revId": "f3ccc80d040b8ec8f6c56becfbb58c7ce4915e0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d0f0de_def3fd90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pin_unpin_media_pod.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-06-28T07:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3e326af_6f521206",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 11
       },
       "revId": "f3ccc80d040b8ec8f6c56becfbb58c7ce4915e0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
