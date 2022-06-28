@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "685e88d2_195c74ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-06-28T17:35:05Z",
+      "side": 0,
+      "message": "Should this be added back in? It was part of this bug: https://b.corp.google.com/issues/226196024 for cleaning up overview mode that\u0027s not ended by the tast framework.",
+      "revId": "fc114b1ab6d3ca6e2d01c90abd7ea2ae2519e17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
