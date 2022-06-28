@@ -51,6 +51,8 @@ func init() {
 			"ui.meet_password",
 			// Credentials for BOND API.
 			"ui.bond_credentials",
+			"spera.bond_enabled",
+			"spera.bond_credentials",
 
 			// Static Google meet rooms with different participant number have been created.
 			// They have different URLs. ui.meet_url can be used to run a specific subtest but
@@ -258,7 +260,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		return &empty.Empty{}, nil
 	}
 
-	if len(meet.BondCreds) > 0 {
+	if meet.BondEnabled {
 		for { // Using for loop for the sake of breaking out of the block.
 			var bondConn *bond.Client
 			var bondMeetingCode string
