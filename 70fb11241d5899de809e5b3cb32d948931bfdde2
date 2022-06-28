@@ -16,6 +16,29 @@
       "message": "We need blessing from tast-owners.",
       "revId": "70fb11241d5899de809e5b3cb32d948931bfdde2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eea2580_17cc5766",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-28T22:22:34Z",
+      "side": 1,
+      "message": "To minimize code duplication, it should be written this way:\n\tvar variableName string\n\tif useEnterprisePool {\n\t\tvariableName \u003d \"ui.cujEnterpriseAccountPool\"\n\t} else {\n\t\tvariableName \u003d \"ui.cujAccountPool\"\n\t}\n\treturn chrome.GAIALoginPool(s.RequiredVar(variableName))",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 0
+      },
+      "revId": "70fb11241d5899de809e5b3cb32d948931bfdde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
