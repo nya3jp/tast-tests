@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "813e100c_6702ce39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-28T08:10:46Z",
+      "side": 1,
+      "message": "Hmm, I wonder if it\u0027s just better to switch everything to enterprise by default, and maybe have 1-2 consumer tests?",
+      "parentUuid": "a67cba37_b2f37a40",
+      "range": {
+        "startLine": 110,
+        "startChar": 13,
+        "endLine": 110,
+        "endChar": 19
+      },
+      "revId": "6365b92acdb27fca25bda28faabc8b098bc59e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "015f4c63_9ea14863",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-28T07:03:54Z",
       "side": 1,
       "message": "delete?",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 39
+      },
+      "revId": "6365b92acdb27fca25bda28faabc8b098bc59e08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0fdde94_f2c6d5c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-06-28T08:10:46Z",
+      "side": 1,
+      "message": "probably should uncomment this so it can run in the lab",
+      "parentUuid": "015f4c63_9ea14863",
       "range": {
         "startLine": 112,
         "startChar": 3,
