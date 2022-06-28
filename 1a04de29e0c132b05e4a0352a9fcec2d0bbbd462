@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11deefaf_690153f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-28T10:22:01Z",
+      "side": 1,
+      "message": "LGTM % nit\n\nPlease wait Kerker LGTM before submitting.",
+      "revId": "1a04de29e0c132b05e4a0352a9fcec2d0bbbd462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e790c6d5_7c00e407",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-28T10:22:01Z",
+      "side": 1,
+      "message": "nit: split it into 2 if statements:\n\n```\nbus, err :\u003d dbusutil.SystemBus()\nif err !\u003d nil {\n  return errors.Wrap(err, \"failed to connect to the D-Bus system bus\")\n}\nif err :\u003d dbusutil.WaitForService(ctx, bus, crosHealthdServiceName); err !\u003d nil {\n  return errors.Wrapf(err, \"failed to wait for %q D-Bus service\", ...)\n}\n```\n\nalso add blank lines before and after to better readability.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "1a04de29e0c132b05e4a0352a9fcec2d0bbbd462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
