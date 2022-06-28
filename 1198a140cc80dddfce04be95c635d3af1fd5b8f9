@@ -33,6 +33,41 @@
       "message": "This has popped up on my list of pending CLs, typically we wait for the area leads to review the logic before reviewing from tast owners. Will wait for Kevin / Jun before reviewing. ",
       "revId": "1198a140cc80dddfce04be95c635d3af1fd5b8f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a18e990_c89ec196",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-28T20:00:26Z",
+      "side": 1,
+      "message": "Friendly review Ping 😊",
+      "revId": "1198a140cc80dddfce04be95c635d3af1fd5b8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dbffc35_67f766ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-28T20:00:26Z",
+      "side": 1,
+      "message": "That\u0027s OK.",
+      "parentUuid": "b37b0d7d_17d0d105",
+      "revId": "1198a140cc80dddfce04be95c635d3af1fd5b8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
