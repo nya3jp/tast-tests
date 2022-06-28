@@ -86,6 +86,12 @@ func (d *APIClient) RemoveFileByID(ctx context.Context, fileID string) error {
 	return d.service.Files.Delete(fileID).Context(ctx).Do()
 }
 
+// ListAllFilesOlderThan returns a list of files older than `duration` from now.
+func (d *APIClient) ListAllFilesOlderThan(ctx context.Context, duration time.Duration) (*drive.FileList, error) {
+	olderDate := time.Now().Add(-duration).Format(time.RFC3339)
+	return d.service.Files.List().Q(fmt.Sprintf("modifiedTime < '%s'", olderDate)).Context(ctx).Do()
+}
+
 // RenewRefreshTokenForAccount obtains a new OAuth refresh token for an account logged in
 // on the chrome.Chrome instance. This is used by filemanager.DrivefsNewRefreshTokens
 // test to easily obtain a set of new refresh tokens for the pooled GAIA logins.
