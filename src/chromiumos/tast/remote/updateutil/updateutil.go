@@ -8,6 +8,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"math/rand"
 	"net"
 	"path/filepath"
@@ -21,6 +22,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -171,6 +173,12 @@ func UpdateFromGS(ctx context.Context, dut *dut.DUT, outdir string, rpcHint *tes
 
 	// Download the payload metadata from the caching server.
 	if err := dut.Conn().CommandContext(preparationCtx, "wget", args...).Run(); err != nil {
+		// List files to see if it contains the file we wanted to download.
+		// A longer context should be used here, otherwise it won't work in case of a timeout.
+		if err := bucketContentToFile(cachingCtx, gsPathPrefix, filepath.Join(outdir, "gs_bucket_content.txt")); err != nil {
+			testing.ContextLog(cachingCtx, "Could not save GS bucket content: ", err)
+		}
+
 		return errors.Wrap(err, "failed to download payload metadata")
 	}
 
@@ -308,4 +316,19 @@ func lroWait(ctx context.Context, client longrunning.OperationsClient, name stri
 			return op, nil
 		}
 	}
+}
+
+func bucketContentToFile(ctx context.Context, gsFolder, logPath string) error {
+	out, err := testexec.CommandContext(ctx, "gsutil", "ls", gsFolder).Output(testexec.DumpLogOnError)
+	if err != nil {
+		return errors.Wrap(err, "failed to list files in the GS bucket")
+	}
+
+	if err := ioutil.WriteFile(logPath, out, 0644); err != nil {
+		return errors.Wrapf(err, "failed to write GS bucket content content to %s", logPath)
+	}
+
+	testing.ContextLogf(ctx, "The content of the %q folder was copied to %s", gsFolder, logPath)
+
+	return nil
 }
