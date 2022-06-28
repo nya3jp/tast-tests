@@ -41,7 +41,7 @@ func (r *RollbackService) SetUpNetworks(ctx context.Context, request *aupb.SetUp
 	// Open chrome and create a connection to the network configuration api.
 	// This is needed to set up each network without having to create a connection
 	// each time.
-	cr, err := chrome.New(ctx, chrome.KeepEnrollment())
+	cr, err := chrome.New(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start Chrome")
 	}
