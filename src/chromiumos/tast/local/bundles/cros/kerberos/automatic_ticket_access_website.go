@@ -22,8 +22,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/kerberos"
-	"chromiumos/tast/local/policyutil"
-	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
 
@@ -51,13 +49,36 @@ func AutomaticTicketAccessWebsite(ctx context.Context, s *testing.State) {
 	domain := s.RequiredVar("kerberos.domain")
 	config := kerberos.ConstructConfig(domain, username)
 
+	kerberosAcc := policy.KerberosAccountsValue{
+		Principal: "${LOGIN_ID}" + "@" + domain,
+		Password:  "${PASSWORD}",
+		Krb5conf:  []string{config.RealmsConfig},
+	}
+
+	pb := policy.NewBlob()
+	pb.PolicyUser = username + "@managedchrome.com"
+	pb.AddPolicies([]policy.Policy{
+		&policy.KerberosEnabled{Val: true},
+		&policy.AuthServerAllowlist{Val: config.ServerAllowlist},
+		&policy.KerberosAccounts{
+			Val: []policy.KerberosAccountsValueIf{
+				&kerberosAcc,
+			},
+		},
+	})
+
+	if err := fdms.WritePolicyBlob(pb); err != nil {
+		s.Fatal("Failed to write policies to FakeDMS: ", err)
+	}
+
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	cr, err := chrome.New(ctx,
-		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
+		chrome.FakeLogin(chrome.Creds{User: username + "@managedchrome.com", Pass: password}),
 		chrome.DMSPolicy(fdms.URL),
-		chrome.KeepEnrollment())
+		chrome.KeepEnrollment(),
+	)
 	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
+		s.Fatal("Creating Chrome with deferred login failed: ", err)
 	}
 
 	defer func(ctx context.Context) {
@@ -77,25 +98,6 @@ func AutomaticTicketAccessWebsite(ctx context.Context, s *testing.State) {
 	}
 
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_automatic_ticket")
-
-	kerberosAcc := policy.KerberosAccountsValue{
-		Principal: config.KerberosAccount,
-		Password:  password,
-		Krb5conf:  []string{config.RealmsConfig},
-	}
-
-	// Update policies.
-	if err := policyutil.ServeAndVerify(ctx, fdms, cr, []policy.Policy{
-		&policy.KerberosEnabled{Val: true},
-		&policy.AuthServerAllowlist{Val: config.ServerAllowlist},
-		&policy.KerberosAccounts{
-			Val: []policy.KerberosAccountsValueIf{
-				&kerberosAcc,
-			},
-		},
-	}); err != nil {
-		s.Fatal("Failed to update policies: ", err)
-	}
 
 	_, err = apps.LaunchOSSettings(ctx, cr, "chrome://os-settings/kerberos")
 	if err != nil {
