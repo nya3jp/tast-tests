@@ -39,6 +39,30 @@
       },
       "revId": "55f10cf0c102ee2d21099c97ae6f4be3b240ff6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca85a2ac_73f0c85e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-06-28T17:20:00Z",
+      "side": 1,
+      "message": "Discussed this offline, keep the sync flag, and run this in a script until all the accounts are cleaned of server saved templates. Keep the `DeleteAllDeskTemplates` for future uses.",
+      "parentUuid": "63241cf3_5f80e848",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 27
+      },
+      "revId": "55f10cf0c102ee2d21099c97ae6f4be3b240ff6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
