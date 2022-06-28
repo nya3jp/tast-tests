@@ -508,7 +508,7 @@ func verifyEmbeddedDisplayIdentifier(ctx context.Context, EDP *embeddedDisplayIn
 	if serialNumberRaw == "" && EDP.SerialNumber != nil {
 		return errors.New("there is no SerialNumber info, but cros_healthd report it")
 	} else if serialNumberRaw != "" {
-		if serialNumber, err := strconv.ParseUint(serialNumberRaw, 10, 8); err != nil {
+		if serialNumber, err := strconv.ParseUint(serialNumberRaw, 10, 32); err != nil {
 			return err
 		} else if err := compareUintPointer((*uint32)(EDP.SerialNumber), uint32(serialNumber), "SerialNumber"); err != nil {
 			return err
@@ -543,7 +543,7 @@ func verifyEmbeddedDisplayManufactureDate(ctx context.Context, EDP *embeddedDisp
 	if manufactureWeekRaw == "" && EDP.ManufactureWeek != nil {
 		return errors.New("there is no ManufactureWeek info, but cros_healthd report it")
 	} else if manufactureWeekRaw != "" {
-		if manufactureWeek, err := strconv.ParseUint(manufactureWeekRaw, 10, 32); err != nil {
+		if manufactureWeek, err := strconv.ParseUint(manufactureWeekRaw, 10, 8); err != nil {
 			return err
 		} else if err := compareUintPointer(EDP.ManufactureWeek, uint8(manufactureWeek), "ManufactureWeek"); err != nil {
 			return err
