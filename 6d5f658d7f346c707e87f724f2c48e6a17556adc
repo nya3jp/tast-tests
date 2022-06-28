@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dac4a356_c43e364e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-06-28T13:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a628431_0665533d",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "6d5f658d7f346c707e87f724f2c48e6a17556adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3b5947f6_96e8574a",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-27T19:32:55Z",
       "side": 1,
       "message": "nit: add space after //",
+      "range": {
+        "startLine": 68,
+        "startChar": 3,
+        "endLine": 68,
+        "endChar": 10
+      },
+      "revId": "6d5f658d7f346c707e87f724f2c48e6a17556adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0049881f_e7e0ced0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kerberos/mgs_manual_ticket_access_website.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-06-28T13:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a486a417_3a71014d",
       "range": {
         "startLine": 68,
         "startChar": 3,
