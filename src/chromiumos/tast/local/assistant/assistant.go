@@ -92,9 +92,9 @@ func SendTextQueryViaUI(ctx context.Context, tconn *chrome.TestConn, query strin
 		return errors.Wrap(err, "failed to toggle Assistant UI with hotkey")
 	}
 
-	assistantUI := nodewith.HasClass("AssistantPageView")
+	assistantUI := nodewith.HasClass("AssistantDialogPlate")
 	if err := uiauto.New(tconn).WaitUntilExists(assistantUI)(ctx); err != nil {
-		return errors.Wrap(err, "failed to wait AssistantPageView")
+		return errors.Wrap(err, "failed to wait AssistantDialogPlate")
 	}
 
 	// Type query
@@ -136,7 +136,7 @@ func SetVoiceInteractionConsentValue(ctx context.Context, tconn *chrome.TestConn
 // this feature must explicitly enable it during setup. Also note that once
 // better onboarding has been activated for a session, it will remain enabled
 // for the duration of that session until an Assistant interaction happens.
-//  It is recommended to disable Better Onboarding for Assistant performance
+// It is recommended to disable Better Onboarding for Assistant performance
 // tests that are not explicitly testing the Better Onboarding feature.
 func SetBetterOnboardingEnabled(ctx context.Context, tconn *chrome.TestConn, enabled bool) error {
 	// The maximum number of user sessions in which to show Assistant onboarding.
@@ -173,9 +173,9 @@ func ToggleUIWithHotkey(ctx context.Context, tconn *chrome.TestConn, accel Accel
 }
 
 // VerboseLogging is a helper function passed into chrome.New which will:
-//     - Enable VLOG traces in the assistant code.
-//     - Enable PII in VLOG traces in the assistant code. This will log the
-//       actual queries sent, and the replies received.
+//   - Enable VLOG traces in the assistant code.
+//   - Enable PII in VLOG traces in the assistant code. This will log the
+//     actual queries sent, and the replies received.
 func VerboseLogging() chrome.Option {
 	return chrome.ExtraArgs(
 		"--vmodule=*/assistant/*=3",
