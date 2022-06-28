@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b1a20dd_4b01a9a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-28T02:00:08Z",
+      "side": 1,
+      "message": "nit: Let\u0027s add a bit more context, to avoid confusion between 3 callsites and to make the test self-documenting. E.g.:\n\n1: \"Failed to check lock screen with initial password: \"\n2: \"Failed to check lock screen after changing password: \"\n3: \"Failed to check lock screen after re-login: \"",
+      "range": {
+        "startLine": 113,
+        "startChar": 10,
+        "endLine": 113,
+        "endChar": 41
+      },
+      "revId": "9b37d02ae0bbf7ed077c2853085751b27a705a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6689babf_b533e555",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-28T02:00:08Z",
+      "side": 1,
+      "message": "nit: No need to print |err| - it\u0027s nil.",
+      "range": {
+        "startLine": 124,
+        "startChar": 86,
+        "endLine": 124,
+        "endChar": 89
+      },
+      "revId": "9b37d02ae0bbf7ed077c2853085751b27a705a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
