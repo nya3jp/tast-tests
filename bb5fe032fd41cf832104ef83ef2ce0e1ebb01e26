@@ -39,6 +39,30 @@
       },
       "revId": "bb5fe032fd41cf832104ef83ef2ce0e1ebb01e26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "253cf895_1ac43f43",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_no_license_enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-06-28T17:40:24Z",
+      "side": 1,
+      "message": "It looks like the error reported in the code is just something else than what is being shown on the screen.\nUsually the error will contain a chain of errors, with the first on here being \"failed to start chrome\" and then some others should follow. Maybe one of those is a good candidate to check for.\nCan you provide the full error message? Maybe I can find something there that could be used.",
+      "parentUuid": "5710b54e_2d12e998",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 49
+      },
+      "revId": "bb5fe032fd41cf832104ef83ef2ce0e1ebb01e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
