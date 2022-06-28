@@ -7,6 +7,7 @@ package crostini
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"strings"
 	"time"
 
@@ -131,7 +132,7 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 	)
 
 	ui := uiauto.New(tconn)
-	getStarted := nodewith.NameStartingWith("Get Started - Visual Studio Code").Role(role.Window).First()
+	appWindow := nodewith.NameRegex(regexp.MustCompile("Visual Studio Code")).Role(role.Window).First()
 	appWindowUnsaved := nodewith.NameStartingWith(fmt.Sprintf("● %s - Visual Studio Code", testNewFile)).Role(role.Window).First()
 	appWindowSaved := nodewith.NameStartingWith(fmt.Sprintf("%s - Visual Studio Code", testSavedFile)).Role(role.Window).First()
 
@@ -152,10 +153,10 @@ func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.Term
 		// Wait until the window is stable.
 		uda.WaitUntilExists(uidetection.Word("File")),
 		// Left click the app window to focus.
-		ui.LeftClick(getStarted),
+		ui.LeftClick(appWindow),
 		// Press ctrl+Q to exit window.
 		keyboard.AccelAction("ctrl+Q"),
-		ui.WaitUntilGone(getStarted))(ctx); err != nil {
+		ui.WaitUntilGone(appWindow))(ctx); err != nil {
 		return err
 	}
 

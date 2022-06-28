@@ -64,7 +64,7 @@ func AppGeditUnshareFolder(ctx context.Context, s *testing.State) {
 		tmpFilename          = "test_file.txt"
 		tmpFileContents      = "Test file string in file in the Linux shared folder."
 		geditWindowAshTitle  = "test_file.txt [Read-Only] (/mnt/chromeos/MyFiles/Downloads) - gedit"
-		geditContextMenuItem = "Open with Text Editor"
+		geditContextMenuItem = "Text Editor"
 	)
 
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
@@ -135,7 +135,7 @@ func AppGeditUnshareFolder(ctx context.Context, s *testing.State) {
 	geditWindow := nodewith.NameContaining(tmpFilename).Role(role.Window).First()
 	err = uiauto.Combine("open temp file with Gedit",
 		filesApp.OpenDownloads(),
-		filesApp.ClickContextMenuItem(tmpFilename, filesapp.OpenWith, geditContextMenuItem),
+		filesApp.ClickContextMenuItemRegex(tmpFilename, filesapp.OpenWith, geditContextMenuItem),
 		ui.WaitUntilExists(geditWindow),
 	)(ctx)
 	if err != nil {
