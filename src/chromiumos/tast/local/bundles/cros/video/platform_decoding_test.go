@@ -1188,6 +1188,38 @@ func TestPlatformDecodingParams(t *testing.T) {
 		}
 	}
 
+	// Generate ffmpeg VAAPI AV1 tests.
+	params = append(params, paramData{
+		Name:       "ffmpeg_vaapi_av1",
+		Decoder:    filepath.Join(chrome.BinTestDir, "decode_test"),
+		CmdBuilder: "av1decodeVAAPIargs",
+		Files:      vaapiAv1Files,
+		Timeout:    defaultTimeout,
+		// These SoftwareDeps do not include the 10 bit version of AV1.
+		SoftwareDeps: []string{"vaapi", caps.HWDecodeAV1},
+		Metadata:     genExtraData(vaapiAv1Files),
+		Attr:         []string{"graphics_video_av1"},
+	})
+
+	for _, bit := range []string{"8bit"} {
+		for _, cat := range []string{"quantizer", "size", "allintra", "cdfupdate", "motionvec"} {
+			files := av1AomFiles[bit][cat]
+			param := paramData{
+				Name:       fmt.Sprintf("ffmpeg_vaapi_av1_%s_%s", bit, cat),
+				Decoder:    filepath.Join(chrome.BinTestDir, "decode_test"),
+				CmdBuilder: "av1decodeVAAPIargs",
+				Files:      files,
+				Timeout:    defaultTimeout,
+				// These SoftwareDeps do not include the 10 bit version of AV1.
+				SoftwareDeps: []string{"vaapi", caps.HWDecodeAV1},
+				Metadata:     genExtraData(files),
+				Attr:         []string{"graphics_video_av1"},
+			}
+
+			params = append(params, param)
+		}
+	}
+
 	// Generate ffmpeg VP8 tests.
 	for _, testGroup := range []string{"inter", "inter_multi_coeff", "inter_segment", "intra", "intra_multi_coeff", "intra_segment", "comprehensive"} {
 		files := vp8Files[testGroup]
