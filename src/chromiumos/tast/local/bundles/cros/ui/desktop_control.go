@@ -123,7 +123,7 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to press Search")
 		}
 		ui := uiauto.New(tconn)
-		bubble := nodewith.ClassName(ash.AppListBubbleClassName)
+		bubble := nodewith.HasClass(ash.AppListBubbleClassName)
 		if err := ui.WaitUntilExists(bubble)(ctx); err != nil {
 			return errors.Wrap(err, "could not open bubble by pressing Search key")
 		}
@@ -170,8 +170,8 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 
 		uiBase := uiauto.New(tconn)
 		ui := uiBase.WithPollOpts(waitingOption)
-		statusarea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
-		collapseButton := nodewith.ClassName("CollapseButton")
+		statusarea := nodewith.HasClass("UnifiedSystemTray")
+		collapseButton := nodewith.HasClass("CollapseButton")
 
 		if err := uiauto.Combine(
 			"quick-settings open and close",
