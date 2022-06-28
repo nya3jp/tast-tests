@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f43ffa1_00ff5b05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-28T10:03:13Z",
+      "side": 1,
+      "message": "Shall I remove this comment?",
+      "parentUuid": "11f26da3_d6e66063",
+      "range": {
+        "startLine": 203,
+        "startChar": 39,
+        "endLine": 203,
+        "endChar": 70
+      },
+      "revId": "e8d46bbdd7a5da4f4dc750c2dbd23b65440196c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58bfc82e_d953b944",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
         "patchSetId": 2
@@ -88,6 +112,30 @@
       "writtenOn": "2022-06-24T18:44:33Z",
       "side": 1,
       "message": "I\u0027d suggest making this 3x3 and merging the current ones\n(e.g. h264_720p_30fps_hw_3x3 and such) into these new test\ncases (and maybe make the \"8\" threads a \"9\"). WDYT?\n\nNote that the current 3x3 are not really monitored by \nanyone, they exist to collect data for later ad-hoc\nanalysis.",
+      "range": {
+        "startLine": 244,
+        "startChar": 42,
+        "endLine": 244,
+        "endChar": 48
+      },
+      "revId": "e8d46bbdd7a5da4f4dc750c2dbd23b65440196c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "751cad38_20e67acc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-28T10:03:13Z",
+      "side": 1,
+      "message": "Sounds good. Done.",
+      "parentUuid": "58bfc82e_d953b944",
       "range": {
         "startLine": 244,
         "startChar": 42,
@@ -123,6 +171,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1a01c13e_cc5f8ee7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-28T10:03:13Z",
+      "side": 1,
+      "message": "I observed the resolution fed by Meet while Send resolution and Receive resolution settings both are set to 720p.\n  # of senders | resolution\n  1            | 720p\n  2            | 360p\n  9            | 180p\n  16           | 180p\n  49           | 180p\n\nI set 1080p for 2, 480p for 9, 360p for 16 and 180p for 49.\n1080p is to simulate regular video playback.\nOthers are based on Meet though it is different from real Meet, I think it makes sense.\nHow do you think?",
+      "parentUuid": "39667cc7_1223cb2d",
+      "range": {
+        "startLine": 246,
+        "startChar": 4,
+        "endLine": 246,
+        "endChar": 13
+      },
+      "revId": "e8d46bbdd7a5da4f4dc750c2dbd23b65440196c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fba1642d_b96f8c9c",
         "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
         "patchSetId": 2
@@ -134,6 +206,30 @@
       "writtenOn": "2022-06-24T18:44:33Z",
       "side": 1,
       "message": "nit: s/crhomeVideo/chromeVideo/ ?",
+      "range": {
+        "startLine": 529,
+        "startChar": 21,
+        "endLine": 529,
+        "endChar": 32
+      },
+      "revId": "e8d46bbdd7a5da4f4dc750c2dbd23b65440196c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06077ceb_2587e0a9",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-28T10:03:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fba1642d_b96f8c9c",
       "range": {
         "startLine": 529,
         "startChar": 21,
