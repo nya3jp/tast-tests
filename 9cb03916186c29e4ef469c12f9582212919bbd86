@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eae941dd_d7e39209",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-06-28T16:49:13Z",
+      "side": 1,
+      "message": "LGTM with a few nits",
+      "revId": "9cb03916186c29e4ef469c12f9582212919bbd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc8904d5_2a5539fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-06-28T16:49:13Z",
+      "side": 1,
+      "message": "add one personal contact email if possible (https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration)",
+      "revId": "9cb03916186c29e4ef469c12f9582212919bbd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2d5f38a_df3ca344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-06-28T16:49:13Z",
+      "side": 1,
+      "message": "if the deferred `printer.Stop` call on L60 below will change any relevant UI state that you want to capture, you may want to move this function below that since defers are LIFO.\n\nalso `faillog.DumpUITreeWithScreenshotOnError` might be useful here as well, since the default screenshot that Tast captures is usually after all defers have ran.",
+      "revId": "9cb03916186c29e4ef469c12f9582212919bbd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4e3bfdf_a29ce2b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-06-28T16:49:13Z",
+      "side": 1,
+      "message": "probably good to use cleanupCtx here too",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "9cb03916186c29e4ef469c12f9582212919bbd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d573ca81_4aaa1e58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-06-28T16:49:13Z",
+      "side": 1,
+      "message": "nit: this is a bit mysterious to someone unfamiliar with the domain, might be nice to add a comment about the behavior here unless it\u0027s something very obvious to those familiar with it",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "9cb03916186c29e4ef469c12f9582212919bbd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92577f18_3da476e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/reject_document_format.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-06-28T16:49:13Z",
+      "side": 1,
+      "message": "nit: Unexpected since it\u0027s reporting the incorrect message",
+      "range": {
+        "startLine": 74,
+        "startChar": 11,
+        "endLine": 74,
+        "endChar": 19
+      },
+      "revId": "9cb03916186c29e4ef469c12f9582212919bbd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
