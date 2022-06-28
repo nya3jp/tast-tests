@@ -44,8 +44,8 @@ func init() {
 	})
 }
 
-// getVmtapIP returns the IPv4 address associated with the TAP virtual network interface on host.
-func getVmtapIP() (ip string, err error) {
+// getVmtapIP returns the IP address associated with the TAP virtual network interface on host.
+func getVmtapIP(s *testing.State) (ip string, err error) {
 	ifaces, err := net.Interfaces()
 	if err != nil {
 		return "", errors.Wrap(err, "could not get interfaces")
@@ -59,11 +59,11 @@ func getVmtapIP() (ip string, err error) {
 			return "", errors.Wrapf(err, "could not get addresses of interface %q", iface.Name)
 		}
 		for _, addr := range addrs {
-			if v, ok := addr.(*net.IPNet); ok && v.IP.To4() != nil {
+			if v, ok := addr.(*net.IPNet); ok && !v.IP.IsUnspecified() {
 				return v.IP.String(), nil
 			}
 		}
-		return "", errors.Errorf("could not find IPv4 address in %q", iface.Name)
+		s.Logf("Could not find IP address in %q", iface.Name)
 	}
 	return "", errors.New("could not find vmtap interface")
 }
@@ -191,7 +191,7 @@ func NetworkPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Get host and container IP.
-	hostIP, err := getVmtapIP()
+	hostIP, err := getVmtapIP(s)
 	if err != nil {
 		s.Fatal("Failed to get host IP address: ", err)
 	}
