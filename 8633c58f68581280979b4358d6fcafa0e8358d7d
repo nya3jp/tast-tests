@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80595477_75e8eaa3",
+        "filename": "src/chromiumos/tast/remote/firmware/fixture/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-28T20:55:03Z",
+      "side": 1,
+      "message": "This could be \"0,0\" no need for the concatination.",
+      "range": {
+        "startLine": 275,
+        "startChar": 16,
+        "endLine": 275,
+        "endChar": 37
+      },
+      "revId": "8633c58f68581280979b4358d6fcafa0e8358d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35cdf7e7_965aafa6",
+        "filename": "src/chromiumos/tast/remote/firmware/fixture/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-28T20:55:03Z",
+      "side": 1,
+      "message": "GBB flags are stored in the AP image, so I don\u0027t know why ec write protect would matter, but I will yield to your empirical testing.",
+      "range": {
+        "startLine": 276,
+        "startChar": 38,
+        "endLine": 276,
+        "endChar": 42
+      },
+      "revId": "8633c58f68581280979b4358d6fcafa0e8358d7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
