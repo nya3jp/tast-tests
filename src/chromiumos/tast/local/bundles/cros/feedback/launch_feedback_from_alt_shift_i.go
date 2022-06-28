@@ -9,12 +9,12 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
@@ -23,9 +23,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         LaunchFeedbackFromLauncher,
+		Func:         LaunchFeedbackFromAltShiftI,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Feedback app can be found and launched from the launcher",
+		Desc:         "Feedback app can be launched from alt+shift+i",
 		Contacts: []string{
 			"zhangwenyu@google.com",
 			"xiangdongkong@google.com",
@@ -36,20 +36,20 @@ func init() {
 	})
 }
 
-// LaunchFeedbackFromLauncher verifies launching Feedback app from the launcher.
-func LaunchFeedbackFromLauncher(ctx context.Context, s *testing.State) {
+// LaunchFeedbackFromAltShiftI verifies launching feedback app from alt+shift+i.
+func LaunchFeedbackFromAltShiftI(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	s.Log("Set up chrome")
+	s.Log("Setting up chrome")
 	cr, err := chrome.New(ctx, chrome.EnableFeatures("OsFeedback"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(cleanupCtx)
 
-	s.Log("Set up test API")
+	s.Log("Setting up test API")
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to Test API: ", err)
@@ -58,44 +58,48 @@ func LaunchFeedbackFromLauncher(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	s.Log("Set up keyboard")
+	s.Log("Setting up keyboard")
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
 	}
 	defer kb.Close()
 
-	s.Log("Launch Feedback app from launcher")
-	if err := launcher.SearchAndLaunchWithQuery(
-		tconn, kb, "feedback", apps.Feedback.Name)(ctx); err != nil {
-		s.Fatal("Failed to search and launch app: ", err)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		s.Log("Launching Feedback app with alt+shift+i")
+		if err := kb.Accel(ctx, "Alt+Shift+I"); err != nil {
+			return errors.Wrap(err, "failed pressing alt+shift+i")
+		}
+
+		s.Log("Verifying Feedback app is launched")
+		if err = ash.WaitForApp(ctx, tconn, apps.Feedback.ID, 20*time.Second); err != nil {
+			return errors.Wrap(err, "could not find app in shelf after launch")
+		}
+
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+		s.Fatal("Failed launching Feedback app: ", err)
 	}
 
-	s.Log("Verify Feedback app is launched")
-	err = ash.WaitForApp(ctx, tconn, apps.Feedback.ID, time.Minute)
-	if err != nil {
-		s.Fatal("Could not find app in shelf after launch: ", err)
-	}
-
-	s.Log("Verify issue description input exists")
+	s.Log("Verifying issue description input exists")
 	issueDescriptionInput := nodewith.Role(role.TextField)
 	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(issueDescriptionInput)(
 		ctx); err != nil {
-		s.Fatal("Failed to find the issue description text input: ", err)
+		s.Error("Failed to find the issue description text input: ", err)
 	}
 
-	s.Log("Verify continue button exists")
+	s.Log("Verifying continue button exists")
 	button := nodewith.Name("Continue").Role(role.Button)
 	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(button)(ctx); err != nil {
-		s.Fatal("Failed to find continue button: ", err)
+		s.Error("Failed to find continue button: ", err)
 	}
 
-	s.Log("Verify five default help content links exist")
+	s.Log("Verifying five default help content links exist")
 	helpLink := nodewith.Role(role.Link).Ancestor(nodewith.Role(role.Iframe))
 	for i := 0; i < 5; i++ {
 		item := helpLink.Nth(i)
 		if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(item)(ctx); err != nil {
-			s.Fatal("Failed to find five help links: ", err)
+			s.Error("Failed to find five help links: ", err)
 		}
 	}
 }
