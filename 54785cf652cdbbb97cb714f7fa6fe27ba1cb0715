@@ -16,6 +16,23 @@
       "message": "+2 to logic, some nits.",
       "revId": "54785cf652cdbbb97cb714f7fa6fe27ba1cb0715",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04d87bdb_1950643f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-28T20:03:54Z",
+      "side": 1,
+      "message": "Friendly review Ping 😊",
+      "revId": "54785cf652cdbbb97cb714f7fa6fe27ba1cb0715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
