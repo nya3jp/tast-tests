@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d250b87b_064265d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-06-28T01:00:56Z",
+      "side": 1,
+      "message": "I\u0027m getting build errors with this CL:\n\n2022-06-28T00:59:35.636309Z Building local_test_runner, cros, remote_test_runner, cros\n2022-06-28T00:59:36.678577Z # chromiumos/tast/local/bundles/cros/health\n2022-06-28T00:59:36.678655Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go:229:6: missing function body\n2022-06-28T00:59:36.678679Z ../platform/tast-tests/src/chromiumos/tast/local/bundles/cros/health/probe_display_info.go:229:24: syntax error: unexpected [, expecting (\n",
+      "revId": "aacd9d36c1fca7af6db1d503851050ba559433fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
