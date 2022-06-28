@@ -20,7 +20,6 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/network/veth"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/subnet"
 	"chromiumos/tast/testing"
 )
@@ -429,20 +428,13 @@ func (e *Env) makeNetNS(ctx context.Context) error {
 		return errors.Wrapf(err, "failed to enable ipv6 forwarding in %s", e.NetNSName)
 	}
 
-	vethPair, err := veth.NewPair(ctx, e.VethInName, e.VethOutName)
-	if err != nil {
+	// Veth pair will be removed together with netns, so no explicit cleanup is
+	// needed here.
+	if err := testexec.CommandContext(ctx, "ip", "link",
+		"add", e.VethOutName, "type", "veth",
+		"peer", e.VethInName, "netns", e.NetNSName,
+	).Run(); err != nil {
 		return errors.Wrap(err, "failed to setup veth")
-	}
-
-	// Move the in interface into the created netns and bring it up.
-	if err := testexec.CommandContext(ctx, "ip", "link", "set", e.VethInName, "netns", e.NetNSName).Run(); err != nil {
-		// We only need to delete the veth pair if we failed to move one peer into
-		// the netns. If this step succeeds, veth pair will be removed with the
-		// netns together.
-		if err := vethPair.Delete(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to delete veth pair: ", err)
-		}
-		return errors.Wrap(err, "failed to move the network interface to the namespace of the server")
 	}
 
 	if err := e.RunWithoutChroot(ctx, "ip", "link", "set", e.VethInName, "up"); err != nil {
