@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfff9897_d6e6f3ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-28T20:29:47Z",
+      "side": 1,
+      "message": "Line 329 is setup phase still (I calculated ~90s including tests fixture startup, from \"Started test wifi.TDLS\" it\u0027s under 30s).\n\nTimeout for a single testcase is set for 30s, ten lines later.",
+      "parentUuid": "3c8eeae7_1b6963c1",
+      "range": {
+        "startLine": 58,
+        "startChar": 82,
+        "endLine": 58,
+        "endChar": 86
+      },
+      "revId": "84014fda32f82d75c4acd32e2cc20de4b4de9268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbb285fe_7afb24c3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/tdls.go",
         "patchSetId": 2
@@ -151,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40dbb001_2a130a29",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-28T20:29:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5905d72e_a2768b29",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 31
+      },
+      "revId": "84014fda32f82d75c4acd32e2cc20de4b4de9268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a04668c_ed62bdbd",
@@ -164,6 +212,30 @@
       "writtenOn": "2022-06-28T20:03:27Z",
       "side": 1,
       "message": "remove?",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 18
+      },
+      "revId": "84014fda32f82d75c4acd32e2cc20de4b4de9268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2410bd5_6f982c64",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/tdls_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-28T20:29:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a04668c_ed62bdbd",
       "range": {
         "startLine": 181,
         "startChar": 4,
