@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "235f0d5e_98e75a91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-28T09:51:23Z",
+      "side": 1,
+      "message": "- Added a camera button test\n- Split the sub-page check in two\n- Addressed the comments ",
+      "revId": "2424f1b3f0a8964028aade50fdc2e35c0822a277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
