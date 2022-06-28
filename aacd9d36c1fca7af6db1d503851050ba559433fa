@@ -34,6 +34,24 @@
       "parentUuid": "d250b87b_064265d1",
       "revId": "aacd9d36c1fca7af6db1d503851050ba559433fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e98e747_19e92e94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-06-28T05:58:26Z",
+      "side": 1,
+      "message": "Let me ping Byron directly.",
+      "parentUuid": "d61ea34f_656a9f4a",
+      "revId": "aacd9d36c1fca7af6db1d503851050ba559433fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
