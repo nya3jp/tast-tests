@@ -1,4 +1,4 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -74,7 +74,7 @@ func TimezoneEditable(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	// Expecting name with pattern like "Time zone (UTC+3:00) Arabian Standard Time (Baghdad)".
+	// Expecting name with pattern like "Time zone (UTC+4:00) Arabian Standard Time (Baghdad)".
 	timeZoneReg := regexp.MustCompile(`(Time zone )?\(UTC([+-])(\d+):(\d+)\).*Time.*`)
 
 	for i, user := range []timezoneUserType{
