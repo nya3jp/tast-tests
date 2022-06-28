@@ -38,6 +38,16 @@ func init() {
 				ExtraHardwareDeps: dep.NonTargetModels(),
 			},
 			{
+				Name:              "target_models_lacros",
+				Fixture:           "telemetryExtensionLacros",
+				ExtraHardwareDeps: dep.TargetModels(),
+			},
+			{
+				Name:              "non_target_models_lacros",
+				Fixture:           "telemetryExtensionOverrideOEMNameLacros",
+				ExtraHardwareDeps: dep.NonTargetModels(),
+			},
+			{
 				Name:              "target_models_managed",
 				Fixture:           "telemetryExtensionManaged",
 				ExtraHardwareDeps: dep.TargetModels(),
