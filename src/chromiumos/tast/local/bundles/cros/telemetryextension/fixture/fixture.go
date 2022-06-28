@@ -21,6 +21,9 @@ import (
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/telemetryextension/vendorutils"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -53,6 +56,21 @@ func init() {
 		Data:            extFiles(false),
 	})
 	testing.AddFixture(&testing.Fixture{
+		Name: "telemetryExtensionLacros",
+		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension in Lacros browser",
+		Contacts: []string{
+			"lamzin@google.com", // Fixture and Telemetry Extension author
+			"mgawad@google.com", // Telemetry Extension author
+			"cros-oem-services-team@google.com",
+		},
+		Impl:            newTelemetryExtensionFixture(lacros()),
+		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
+		TearDownTimeout: cleanupTimeout,
+		PreTestTimeout:  10 * time.Second,
+		PostTestTimeout: 10 * time.Second,
+		Data:            extFiles(false),
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name: "telemetryExtensionOverrideOEMName",
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension on devices that are not officially supported yet",
 		Contacts: []string{
@@ -68,6 +86,21 @@ func init() {
 		Data:            extFiles(false),
 	})
 	testing.AddFixture(&testing.Fixture{
+		Name: "telemetryExtensionOverrideOEMNameLacros",
+		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension in Lacros browser on devices that are not officially supported yet",
+		Contacts: []string{
+			"lamzin@google.com", // Fixture and Telemetry Extension author
+			"mgawad@google.com", // Telemetry Extension author
+			"cros-oem-services-team@google.com",
+		},
+		Impl:            newTelemetryExtensionFixture(lacros(), overrideOEMName()),
+		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
+		TearDownTimeout: cleanupTimeout,
+		PreTestTimeout:  10 * time.Second,
+		PostTestTimeout: 10 * time.Second,
+		Data:            extFiles(false),
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name: "telemetryExtensionOptionsPage",
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension with options page",
 		Contacts: []string{
@@ -76,6 +109,21 @@ func init() {
 			"cros-oem-services-team@google.com",
 		},
 		Impl:            newTelemetryExtensionFixture(optionsPage()),
+		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
+		TearDownTimeout: cleanupTimeout,
+		PreTestTimeout:  10 * time.Second,
+		PostTestTimeout: 10 * time.Second,
+		Data:            extFiles(true),
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "telemetryExtensionOptionsPageLacros",
+		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension with options page in Lacros browser",
+		Contacts: []string{
+			"lamzin@google.com", // Fixture and Telemetry Extension author
+			"mgawad@google.com", // Telemetry Extension author
+			"cros-oem-services-team@google.com",
+		},
+		Impl:            newTelemetryExtensionFixture(lacros(), optionsPage()),
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
 		PreTestTimeout:  10 * time.Second,
@@ -133,6 +181,12 @@ func extFiles(optionsPage bool) []string {
 
 type option func(*telemetryExtensionFixture)
 
+func lacros() func(*telemetryExtensionFixture) {
+	return func(f *telemetryExtensionFixture) {
+		f.bt = browser.TypeLacros
+	}
+}
+
 func optionsPage() func(*telemetryExtensionFixture) {
 	return func(f *telemetryExtensionFixture) {
 		f.optionsPage = true
@@ -153,6 +207,7 @@ func overrideOEMName() func(*telemetryExtensionFixture) {
 
 func newTelemetryExtensionFixture(opts ...option) *telemetryExtensionFixture {
 	f := &telemetryExtensionFixture{}
+	f.bt = browser.TypeAsh
 	f.v.ExtID = "gogonhoemckpdpadfnjnpgbjpbjnodgc"
 
 	for _, opt := range opts {
@@ -163,12 +218,15 @@ func newTelemetryExtensionFixture(opts ...option) *telemetryExtensionFixture {
 
 // telemetryExtensionFixture implements testing.FixtureImpl.
 type telemetryExtensionFixture struct {
+	bt              browser.Type
 	optionsPage     bool
 	managed         bool
 	overrideOEMName bool
 
-	dir string
-	cr  *chrome.Chrome
+	dir     string
+	cr      *chrome.Chrome
+	br      *browser.Browser
+	closeBr func(ctx context.Context)
 
 	healthdPID int
 
@@ -215,6 +273,13 @@ func (f *telemetryExtensionFixture) SetUp(ctx context.Context, s *testing.FixtSt
 		}
 	}
 
+	br, closeBr, err := browserfixt.SetUp(ctx, f.cr, f.bt)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	f.br = br
+	f.closeBr = closeBr
+
 	tconn, err := f.cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get test API connections: ", err)
@@ -249,6 +314,13 @@ func (f *telemetryExtensionFixture) TearDown(ctx context.Context, s *testing.Fix
 			s.Error("Failed to close connection to google.com: ", err)
 		}
 		f.v.PwaConn = nil
+	}
+
+	if f.br != nil {
+		f.closeBr(ctx)
+
+		f.br = nil
+		f.closeBr = nil
 	}
 
 	if f.cr != nil {
@@ -315,9 +387,20 @@ func (f *telemetryExtensionFixture) setupChromeForConsumers(ctx context.Context,
 		return errors.Wrap(err, "failed to rename manifest file")
 	}
 
-	opts := []chrome.Option{chrome.UnpackedExtension(dir)}
+	var opts []chrome.Option
 	if err := f.addOverrideOEMNameChromeArg(ctx, &opts); err != nil {
 		return err
+	}
+	if f.bt == browser.TypeAsh {
+		opts = append(opts, chrome.UnpackedExtension(dir))
+	}
+	if f.bt == browser.TypeLacros {
+		lopts, err := lacrosfixt.NewConfig().Opts()
+		if err != nil {
+			return errors.Wrap(err, "failed to get lacros options")
+		}
+		opts = append(opts, lopts...)
+		opts = append(opts, chrome.LacrosExtraArgs(fmt.Sprintf("--load-extension=%s", dir)))
 	}
 
 	cr, err := chrome.New(ctx, opts...)
@@ -325,6 +408,7 @@ func (f *telemetryExtensionFixture) setupChromeForConsumers(ctx context.Context,
 		return errors.Wrap(err, "failed to start Chrome")
 	}
 	f.cr = cr
+
 	return nil
 }
 
@@ -369,7 +453,7 @@ func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Conte
 }
 
 func (f *telemetryExtensionFixture) setupConnectionToPWA(ctx context.Context) error {
-	pwaConn, err := f.cr.NewConn(ctx, "https://www.google.com")
+	pwaConn, err := f.br.NewConn(ctx, "https://www.google.com")
 	if err != nil {
 		return errors.Wrap(err, "failed to create connection to google.com")
 	}
@@ -382,7 +466,7 @@ func (f *telemetryExtensionFixture) setupConnectionToPWA(ctx context.Context) er
 }
 
 func (f *telemetryExtensionFixture) setupConnectionToExtension(ctx context.Context) error {
-	conn, err := f.cr.NewConn(ctx, fmt.Sprintf("chrome-extension://%s/sw.js", f.v.ExtID))
+	conn, err := f.br.NewConn(ctx, fmt.Sprintf("chrome-extension://%s/sw.js", f.v.ExtID))
 	if err != nil {
 		return errors.Wrap(err, "failed to create connection to Telemetry Extension")
 	}
