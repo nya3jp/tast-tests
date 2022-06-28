@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01935f3b_b1692b92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-28T14:33:43Z",
+      "side": 1,
+      "message": "So what\u0027s the long-term plan for these direct accessed to the DOM? Should we encapsulate them all in some kind of a TestAPI",
+      "range": {
+        "startLine": 86,
+        "startChar": 60,
+        "endLine": 86,
+        "endChar": 108
+      },
+      "revId": "19c207e9ac759531b9eba2da8eda44229b5f162e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4021a932_275222b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-28T14:33:43Z",
+      "side": 1,
+      "message": "Would be interesting to additionally check that the \"offline\" login (not via Gaia) is now possible with the new password and is impossible via the old one.",
+      "revId": "19c207e9ac759531b9eba2da8eda44229b5f162e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
