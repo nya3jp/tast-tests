@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "98913acb_2b22fe2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-28T22:10:56Z",
+      "side": 1,
+      "message": "nit: I think just `virtualnet:` probably should be sufficient. Is there something else called `virtualnet` outside of `network`?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "099dc9ad5b240cbc433098cb28865be206aa023d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e2676c7b_7df9df53",
@@ -31,6 +54,46 @@
       "writtenOn": "2022-06-28T05:45:45Z",
       "side": 1,
       "message": "+tast-owners for tast review. Thanks!",
+      "revId": "099dc9ad5b240cbc433098cb28865be206aa023d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d46047e4_dc0ef3fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-28T22:10:56Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with nits",
+      "revId": "099dc9ad5b240cbc433098cb28865be206aa023d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6da788_a8dd31ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-28T22:10:56Z",
+      "side": 1,
+      "message": "nit: No need to make a separate variable for `addVethArgs`. You can just write:\n\tif err :\u003d testexec.CommandContext(ctx, \"ip\", \"link\",\n\t\t\"add\", e.VethOutName, \"type\", \"veth\",\n\t\t\"peer\", e.VethInName, \"netns\", e.NetNSName,\n\t).Run(); err !\u003d nil {",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 81
+      },
       "revId": "099dc9ad5b240cbc433098cb28865be206aa023d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
