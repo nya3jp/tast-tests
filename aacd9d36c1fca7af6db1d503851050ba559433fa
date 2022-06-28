@@ -52,6 +52,24 @@
       "parentUuid": "d61ea34f_656a9f4a",
       "revId": "aacd9d36c1fca7af6db1d503851050ba559433fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34aead0f_6ba5bb5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-06-28T06:11:27Z",
+      "side": 1,
+      "message": "Hi Neis and Ershov,\n\nAccording to the error message, the problem might be that the Golang version in your environment does not support generic functions, which is supported since Go 1.18.\n\nCould you help me check your env via `go version`?",
+      "parentUuid": "9e98e747_19e92e94",
+      "revId": "aacd9d36c1fca7af6db1d503851050ba559433fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
