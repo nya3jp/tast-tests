@@ -16,6 +16,24 @@
       "message": "Friendly ping for review :)",
       "revId": "93b114d152410e07360420228421d3acfcb6da9d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d56650eb_ddf6e291",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-28T16:51:56Z",
+      "side": 1,
+      "message": "You submitted a patchset yesterday evening and it\u0027s the start of the workday the following day. Please be mindful of others\u0027 time.",
+      "parentUuid": "a9bd15dc_8bfb6135",
+      "revId": "93b114d152410e07360420228421d3acfcb6da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
