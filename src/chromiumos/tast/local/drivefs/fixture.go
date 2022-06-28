@@ -10,6 +10,7 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
@@ -32,7 +33,7 @@ func init() {
 		Impl:            &fixture{},
 		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupTimeout,
 		ResetTimeout:    driveFsSetupTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
+		TearDownTimeout: time.Hour,
 		Vars: []string{
 			"drivefs.accountPool",
 			"drivefs.extensionClientID",
@@ -124,6 +125,10 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	ctx, st := timing.Start(ctx, "prepare_drivefs_fixture")
 	defer st.End()
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	// If mountPath exists and API client is not nil, check if Drive has stabilized and return early if it has.
 	if f.mountPath != "" && f.APIClient != nil {
 		dfs, err := NewDriveFs(ctx, f.cr.NormalizedUser())
@@ -149,7 +154,7 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	shouldClose := true
 	defer func() {
 		if shouldClose {
-			f.cleanUp(ctx, s)
+			f.cleanUp(cleanupCtx, s)
 		}
 	}()
 
@@ -233,10 +238,9 @@ func (f *fixture) PreTest(ctx context.Context, s *testing.FixtTestState) {}
 
 func (f *fixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
 
-// cleanUp closes Chrome, resets the mountPath to empty string and sets tconn to nil.
+// cleanUp makes a best effort attempt to restore the state to where it was pretest.
 func (f *fixture) cleanUp(ctx context.Context, s *testing.FixtState) {
 	f.tconn = nil
-	f.APIClient = nil
 
 	if len(f.drivefsOptions) > 0 && f.driveFs != nil {
 		if err := f.driveFs.ClearCommandLineFlags(); err != nil {
@@ -252,6 +256,26 @@ func (f *fixture) cleanUp(ctx context.Context, s *testing.FixtState) {
 		}
 		f.cr = nil
 	}
+
+	// Clean up files in this account that are older than 1 hour, files past this
+	// date are assumed no longer required and were not successfully cleaned up.
+	// Note this removal can take a while ~1s per file and may end up exceeding
+	// the timeout, this is not a failure as the next run will try to remove the
+	// files that weren't deleted in time.
+	fileList, err := f.APIClient.ListAllFilesOlderThan(ctx, time.Hour)
+	if err != nil {
+		s.Error("Failed to list all my drive files: ", err)
+	} else {
+		s.Logf("Attempting to remove %d files older than 1 hour", len(fileList.Files))
+		for _, i := range fileList.Files {
+			if err := f.APIClient.RemoveFileByID(ctx, i.Id); err != nil {
+				s.Logf("Failed to remove file %q (%s): %v", i.Name, i.Id, err)
+			} else {
+				s.Logf("Successfully removed file %q (%s, %s)", i.Name, i.Id, i.ModifiedTime)
+			}
+		}
+	}
+	f.APIClient = nil
 }
 
 // getRefreshTokenForAccount returns the matching refresh token for the
