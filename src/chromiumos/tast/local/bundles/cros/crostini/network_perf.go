@@ -7,6 +7,7 @@ package crostini
 import (
 	"bytes"
 	"context"
+	"encoding/binary"
 	"encoding/json"
 	"fmt"
 	"net"
@@ -17,10 +18,12 @@ import (
 	"strings"
 	"time"
 
+	pp "chromiumos/system_api/patchpanel_proto"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crostini"
+	patchpanel "chromiumos/tast/local/network/patchpanel_client"
 	"chromiumos/tast/testing"
 )
 
@@ -44,28 +47,33 @@ func init() {
 	})
 }
 
-// getVmtapIP returns the IPv4 address associated with the TAP virtual network interface on host.
-func getVmtapIP() (ip string, err error) {
-	ifaces, err := net.Interfaces()
+// getTerminaHostIP returns the IP address associated with the TAP virtual network interface on host.
+func getTerminaHostIP(ctx context.Context, s *testing.State) (ip string, err error) {
+	pc, err := patchpanel.New(ctx)
 	if err != nil {
-		return "", errors.Wrap(err, "could not get interfaces")
+		s.Fatal("Failed to create patchpanel client: ", err)
 	}
-	for _, iface := range ifaces {
-		if !strings.HasPrefix(iface.Name, "vmtap") {
+
+	// Get all patchpanel managed devices.
+	response, err := pc.GetDevices(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "failed to get patchpanel devices")
+	}
+
+	// Find the ipv4 address of the TERMINA_VM device.
+	for _, device := range response.Devices {
+		if device.GuestType != pp.NetworkDevice_TERMINA_VM {
 			continue
 		}
-		addrs, err := iface.Addrs()
-		if err != nil {
-			return "", errors.Wrapf(err, "could not get addresses of interface %q", iface.Name)
+		if ipv4 := device.HostIpv4Addr; ipv4 != 0 {
+			var ip net.IP = make([]byte, 4)
+			// If our host CPU isn't LittleEndian, this will fail. Right now, that's not an issue.
+			binary.LittleEndian.PutUint32(ip, ipv4)
+			return ip.String(), nil
 		}
-		for _, addr := range addrs {
-			if v, ok := addr.(*net.IPNet); ok && v.IP.To4() != nil {
-				return v.IP.String(), nil
-			}
-		}
-		return "", errors.Errorf("could not find IPv4 address in %q", iface.Name)
 	}
-	return "", errors.New("could not find vmtap interface")
+
+	return "", errors.New("could not find TERMINA host ip address")
 }
 
 // parsePingMessage parses the output of a ping command.
@@ -191,7 +199,7 @@ func NetworkPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Get host and container IP.
-	hostIP, err := getVmtapIP()
+	hostIP, err := getTerminaHostIP(ctx, s)
 	if err != nil {
 		s.Fatal("Failed to get host IP address: ", err)
 	}
