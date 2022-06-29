@@ -87,6 +87,24 @@
       "parentUuid": "c5d83973_3a625627",
       "revId": "fdb370a73b5d0c4f6c928ca48e245954968f881d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "417771a3_b96fbd04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-06-29T22:17:04Z",
+      "side": 1,
+      "message": "Yup. Sounds good!",
+      "parentUuid": "8eb6d99d_1244b8ee",
+      "revId": "fdb370a73b5d0c4f6c928ca48e245954968f881d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
