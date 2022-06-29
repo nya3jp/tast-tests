@@ -80,7 +80,7 @@ func EnableAndWaitForReady(ctx context.Context, tconn *chrome.TestConn) error {
 // SendTextQuery sends text query to Assistant and returns the query status.
 func SendTextQuery(ctx context.Context, tconn *chrome.TestConn, query string) (QueryStatus, error) {
 	var status QueryStatus
-	err := tconn.Call(ctx, &status, `tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)`, query, 10*1000 /* timeout_ms */)
+	err := tconn.Call(ctx, &status, `tast.promisify(chrome.autotestPrivate.sendAssistantTextQuery)`, query, 30*1000 /* timeout_ms */)
 	return status, err
 }
 
