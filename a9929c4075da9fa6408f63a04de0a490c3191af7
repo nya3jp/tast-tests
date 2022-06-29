@@ -22,6 +22,30 @@
       },
       "revId": "a9929c4075da9fa6408f63a04de0a490c3191af7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3f4cff_b8cbe918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1504483
+      },
+      "writtenOn": "2022-06-29T06:34:04Z",
+      "side": 1,
+      "message": "spera.bond_credentials is because ui.bond_credentials is used by another team in a similar test.\nWe want to keep our key and our usage/quotas separate from them for better isolation. If anything happens to their test and their key gets blocked, our tests will be unaffected; and vice versa.\n\nspera.bond_enabled is a separate flag for easier control. bond_credentials is a big magic string which is always good to have in the config. If we have to add or remove it, there is a danger of loss or accidental modification.",
+      "parentUuid": "90af82ea_5887e169",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 26
+      },
+      "revId": "a9929c4075da9fa6408f63a04de0a490c3191af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
