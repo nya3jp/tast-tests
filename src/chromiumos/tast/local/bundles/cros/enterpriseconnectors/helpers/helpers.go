@@ -9,6 +9,7 @@ import (
 	"context"
 	"net/http/httptest"
 	"os"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -16,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/testing"
 )
 
@@ -86,16 +86,16 @@ func GetTestFileParams() []TestFileParams {
 // WaitForDMTokenRegistered waits until a valid DM token exists.
 // This is done by downloading unknown_malware.zip from `download.html`.
 // This function fails if scanning is disabled.
-func WaitForDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, server *httptest.Server) error {
+func WaitForDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, server *httptest.Server, downloadsPath string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		return checkDMTokenRegistered(ctx, br, tconn, server)
+		return checkDMTokenRegistered(ctx, br, tconn, server, downloadsPath)
 	}, &testing.PollOptions{Timeout: 2 * time.Minute, Interval: 5 * time.Second}); err != nil {
 		return errors.Wrap(err, "failed to wait for dm token to be registered")
 	}
 	return nil
 }
 
-func checkDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, server *httptest.Server) error {
+func checkDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn, server *httptest.Server, downloadsPath string) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -134,7 +134,7 @@ func checkDMTokenRegistered(ctx context.Context, br *browser.Browser, tconn *chr
 	}
 
 	// Remove file if it was downloaded.
-	defer os.Remove(filesapp.DownloadPath + "unknown_malware.zip")
+	defer os.Remove(filepath.Join(downloadsPath, "unknown_malware.zip"))
 
 	var failedToGetToken bool
 	if err := testing.Poll(ctx, func(ctx context.Context) error {

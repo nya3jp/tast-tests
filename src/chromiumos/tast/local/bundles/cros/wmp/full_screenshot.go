@@ -17,9 +17,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/wmp"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -50,7 +50,11 @@ func FullScreenshot(ctx context.Context, s *testing.State) {
 	}
 
 	// For verifying the full screenshot later, delete all screenshot files first.
-	if err := deleteAllScreenshots(); err != nil {
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	if err := deleteAllScreenshots(downloadsPath); err != nil {
 		s.Fatal("Failed to delete all screenshots: ", err)
 	}
 
@@ -100,13 +104,13 @@ func FullScreenshot(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to capture screenshot: ", err)
 	}
 	defer func(ctx context.Context) {
-		if err := deleteAllScreenshots(); err != nil {
+		if err := deleteAllScreenshots(downloadsPath); err != nil {
 			testing.ContextLog(ctx, "Failed to delete the screenshot")
 		}
 	}(cleanupCtx)
 
 	testing.ContextLog(ctx, "Check the existence and the size of the screenshot")
-	if err := checkScreenshot(ctx, tconn, displayInfo); err != nil {
+	if err := checkScreenshot(ctx, tconn, displayInfo, downloadsPath); err != nil {
 		s.Fatal("Failed to verify the screenshot: ", err)
 	}
 }
@@ -115,8 +119,8 @@ const (
 	screenshotPattern = "Screenshot*.png"
 )
 
-func deleteAllScreenshots() error {
-	files, err := filepath.Glob(filepath.Join(filesapp.DownloadPath, screenshotPattern))
+func deleteAllScreenshots(downloadsPath string) error {
+	files, err := filepath.Glob(filepath.Join(downloadsPath, screenshotPattern))
 	if err != nil {
 		return errors.Wrapf(err, "the pattern %q is malformed", screenshotPattern)
 	}
@@ -132,14 +136,14 @@ func deleteAllScreenshots() error {
 
 // checkScreenshot checks the screenshot's existence.
 // And then verifies its size is the same as the size of the full screen by decoding the screenshot.
-func checkScreenshot(ctx context.Context, tconn *chrome.TestConn, displayInfo *display.Info) error {
+func checkScreenshot(ctx context.Context, tconn *chrome.TestConn, displayInfo *display.Info, downloadsPath string) error {
 	displayMode, err := displayInfo.GetSelectedMode()
 	if err != nil {
 		return errors.Wrap(err, "failed to get display mode")
 	}
 	fullScreenSize := coords.NewSize(displayMode.WidthInNativePixels, displayMode.HeightInNativePixels)
 
-	files, err := filepath.Glob(filepath.Join(filesapp.DownloadPath, screenshotPattern))
+	files, err := filepath.Glob(filepath.Join(downloadsPath, screenshotPattern))
 	if err != nil {
 		return errors.Wrapf(err, "the pattern %q is malformed", screenshotPattern)
 	}

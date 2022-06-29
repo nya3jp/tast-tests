@@ -18,8 +18,8 @@ import (
 	"chromiumos/tast/local/chrome/crossdevice/phonehub"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/holdingspace"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -81,7 +81,12 @@ func DownloadRecentPhoto(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to read source photo size: ", err)
 	}
-	if err := waitUntilDownloadComplete(ctx, photoName, sourceFileSizeBytes); err != nil {
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, chrome.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	crosPhotoFilePath := filepath.Join(downloadsPath, photoName)
+	if err := waitUntilDownloadComplete(ctx, crosPhotoFilePath, sourceFileSizeBytes); err != nil {
 		s.Fatal("Photo download cannot be completed: ", err)
 	}
 	if err := comparePhotoHashes(ctx, photoName, androidDevice); err != nil {
@@ -98,10 +103,9 @@ func DownloadRecentPhoto(ctx context.Context, s *testing.State) {
 }
 
 // waitUntilDownloadComplete waits for the target photo to be fully downloaded to the CrOS device's download directory.
-func waitUntilDownloadComplete(ctx context.Context, photoName string, sourceFileSizeBytes int64) error {
-	crosFilePath := filepath.Join(filesapp.DownloadPath, photoName)
+func waitUntilDownloadComplete(ctx context.Context, crosPhotoFilePath string, sourceFileSizeBytes int64) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		fi, err := os.Stat(crosFilePath)
+		fi, err := os.Stat(crosPhotoFilePath)
 		if err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to get the size of the downloaded photo on CrOS"))
 		}
@@ -116,15 +120,15 @@ func waitUntilDownloadComplete(ctx context.Context, photoName string, sourceFile
 }
 
 // comparePhotoHashes verifies that the hash of the downloaded photo matches the hash of the source photo on the Android device.
-func comparePhotoHashes(ctx context.Context, photoName string, androidDevice *crossdevice.AndroidDevice) error {
+func comparePhotoHashes(ctx context.Context, crosPhotoFilePath string, androidDevice *crossdevice.AndroidDevice) error {
+	photoName := filepath.Base(crosPhotoFilePath)
 	androidFilePath := filepath.Join(crossdevice.AndroidPhotosPath, photoName)
 	androidHash, err := androidDevice.SHA256Sum(ctx, androidFilePath)
 	if err != nil {
 		return errors.Wrap(err, "failed to compute hash of the source photo on the Android device")
 	}
 
-	crosFilePath := filepath.Join(filesapp.DownloadPath, photoName)
-	crosHash, err := hashFile(ctx, crosFilePath)
+	crosHash, err := hashFile(ctx, crosPhotoFilePath)
 	if err != nil {
 		return errors.Wrap(err, "failed to compute hash of the downloaded photo on the CrOS device")
 	}
