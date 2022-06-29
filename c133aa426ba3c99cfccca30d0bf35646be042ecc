@@ -72,6 +72,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "40ca2b38_dbed32dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-06-29T18:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07650e63_44dfb025",
+      "revId": "c133aa426ba3c99cfccca30d0bf35646be042ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d2665fbd_4b7ed0b3",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
         "patchSetId": 2
@@ -152,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "579b1037_91ca44a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-06-29T18:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9d70d75_6da6f260",
+      "revId": "c133aa426ba3c99cfccca30d0bf35646be042ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d7d34ca_4b987c97",
@@ -224,6 +260,30 @@
       "side": 1,
       "message": "Sure thing. Will do in next patch set.",
       "parentUuid": "22920e57_bb5737cd",
+      "range": {
+        "startLine": 285,
+        "startChar": 4,
+        "endLine": 285,
+        "endChar": 25
+      },
+      "revId": "c133aa426ba3c99cfccca30d0bf35646be042ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "265d04e2_0b723dd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-06-29T18:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab0ba3ac_0be6b992",
       "range": {
         "startLine": 285,
         "startChar": 4,

@@ -70,6 +70,24 @@
       "parentUuid": "fa08b1e0_e9e8c453",
       "revId": "fc114b1ab6d3ca6e2d01c90abd7ea2ae2519e17f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f6f976_7a834185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-06-29T18:41:21Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "be0a5d44_82179ea2",
+      "revId": "fc114b1ab6d3ca6e2d01c90abd7ea2ae2519e17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
