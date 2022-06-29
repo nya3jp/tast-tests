@@ -16,6 +16,46 @@
       "message": "andrewxu@ for first pass :)",
       "revId": "7a63d01c8faf0f225b46f74bd79777075150166b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a4044b6_079df8d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-29T18:00:25Z",
+      "side": 1,
+      "message": "LGTM with nits",
+      "revId": "7a63d01c8faf0f225b46f74bd79777075150166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3826afb4_6aab8094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/shortcut_search.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-29T18:00:25Z",
+      "side": 1,
+      "message": "Maybe use kb.TypeKeyAction(input.KEY_ENTER)(ctx) directly?",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 38
+      },
+      "revId": "7a63d01c8faf0f225b46f74bd79777075150166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
