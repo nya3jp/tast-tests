@@ -34,6 +34,7 @@ func init() {
 			return []chrome.Option{
 				VerboseLogging(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
+				chrome.EnableFeatures("EnableDspHotword"),
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout,
@@ -101,6 +102,7 @@ func init() {
 				}),
 				VerboseLogging(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
+				chrome.EnableFeatures("EnableDspHotword"),
 			}, nil
 		}),
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
