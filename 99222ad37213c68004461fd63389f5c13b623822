@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7415c818_cd16455c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T10:05:07Z",
+      "side": 1,
+      "message": "Sorry for delay. Back from OOO.",
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a506ee3f_c3a73fc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T10:05:07Z",
+      "side": 1,
+      "message": "nit/style:\n\nuid, err :\u003d sysutil.GetUID(username)\n...\n\nreturn uid, gid, nil",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 36
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa311e3f_a66115f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T10:05:07Z",
+      "side": 1,
+      "message": "nit: tries",
+      "range": {
+        "startLine": 47,
+        "startChar": 17,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1da2ab3b_e652ed8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T10:05:07Z",
+      "side": 1,
+      "message": "nit/style: tast / go does not use getter prefixes in general. Could you drop it?\nlibraryPath().",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d19c48_d2f5d27b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T10:05:07Z",
+      "side": 1,
+      "message": "style: \"cannot\" (starting with a small latter)",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "137529af_3e8f5810",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T10:05:07Z",
+      "side": 1,
+      "message": "How about simply return the value when found?\n\n    for _, path :\u003d range []string{\"/usr/lib*/\", \"/usr/local/lib*/\"} {\n      libs, err :\u003d filepath.Glob(filepath.Join(path, name))\n      if err !\u003d nil {\n        return \"\", err\n      }\n      if len(libs) \u003e 0 {\n        return libs[0], nil\n      }\n    }\n    return \"\", errors.New(\"cannot find \" + name)",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 24
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8a8fa5a_592c4ea7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T10:05:07Z",
+      "side": 1,
+      "message": "nit/style: \"LD_PRELOAD\u003d\" + libPath",
+      "range": {
+        "startLine": 82,
+        "startChar": 27,
+        "endLine": 82,
+        "endChar": 64
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89de5f45_1d0956e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T10:05:07Z",
+      "side": 1,
+      "message": "nil can be returned?",
+      "range": {
+        "startLine": 113,
+        "startChar": 9,
+        "endLine": 113,
+        "endChar": 16
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95b13728_bfefac91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T10:05:07Z",
+      "side": 1,
+      "message": "conflicting with the description.\nCould you run EnsureJobRunning and return nil here?",
+      "range": {
+        "startLine": 136,
+        "startChar": 9,
+        "endLine": 136,
+        "endChar": 16
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f3357a_f16895dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T10:05:07Z",
+      "side": 1,
+      "message": "could you move this up to (just after) L188?",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 2
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
