@@ -12,15 +12,14 @@ import (
 	"regexp"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 )
 
 // HasScreenRecord checks if any screen record file is present in Download folder.
-func HasScreenRecord(ctx context.Context) (bool, error) {
+func HasScreenRecord(ctx context.Context, downloadsPath string) (bool, error) {
 	re := regexp.MustCompile("Screen recording(.*?).webm")
 	hasScreenRecord := false
 	foundFileError := errors.New("stop walking because the target file is already found")
-	if err := filepath.Walk(filesapp.DownloadPath, func(path string, info os.FileInfo, err error) error {
+	if err := filepath.Walk(downloadsPath, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return errors.Wrap(err, "failed to walk through files in Downloads folder")
 		}

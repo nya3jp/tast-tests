@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -100,7 +101,11 @@ func RecordFullScreen(ctx context.Context, s *testing.State) {
 	}
 
 	// Checks there is a screen record video file stored in Downloads folder.
-	has, err := wmputils.HasScreenRecord(ctx)
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	has, err := wmputils.HasScreenRecord(ctx, downloadsPath)
 	if err != nil {
 		s.Fatal("Failed to check whether screen record is present: ", err)
 	}

@@ -22,9 +22,9 @@ import (
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filepicker"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -130,19 +130,25 @@ func init() {
 // 2. Whether the correct UI is shown
 // 3. Whether the deep scan result is correct (especially relevant for AllowsImmediateDelivery==true)
 func TestFileAttached(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+
 	// Clear Downloads directory.
-	files, err := ioutil.ReadDir(filesapp.DownloadPath)
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	files, err := ioutil.ReadDir(downloadsPath)
 	if err != nil {
 		s.Fatal("Failed to get files from Downloads directory")
 	}
 	for _, file := range files {
-		if err := os.RemoveAll(filepath.Join(filesapp.DownloadPath, file.Name())); err != nil {
+		if err := os.RemoveAll(filepath.Join(downloadsPath, file.Name())); err != nil {
 			s.Fatal("Failed to remove file: ", file.Name())
 		}
 	}
 
 	// Verify policy.
-	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
@@ -198,13 +204,17 @@ func testFileAttachedForBrowser(ctx context.Context, s *testing.State, browserTy
 	// Need to wait for a valid dm token, i.e., the proper initialization of the enterprise connectors.
 	if testParams.ScansEnabled {
 		s.Log("Checking for dm token")
-		if err := helpers.WaitForDMTokenRegistered(ctx, br, tconn, server); err != nil {
+		if err := helpers.WaitForDMTokenRegistered(ctx, br, tconn, server, downloadsPath); err != nil {
 			s.Fatal("Failed to wait for DM token: ", err)
 		}
 	}
 
 	// Create test directory if it does not yet exist.
-	testDirPath := filepath.Join(filesapp.MyFilesPath, "test_dir")
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's MyFiles path: ", err)
+	}
+	testDirPath := filepath.Join(myFilesPath, "test_dir")
 	if _, err := os.Stat(testDirPath); os.IsNotExist(err) {
 		if err := os.Mkdir(testDirPath, 0755); err != nil {
 			s.Fatal("Failed to create test folder: ", err)
