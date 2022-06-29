@@ -8,6 +8,7 @@ import (
 	"context"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
@@ -40,11 +41,21 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name:              "stable",
+			Name:              "stable_clamshell_mode",
+			Val:               launcher.TestCase{TabletMode: false},
 			ExtraHardwareDeps: hwdep.D(hwdep.Model(stableModels...)),
 		}, {
-			Name:              "unstable",
+			Name:              "stable_tablet_mode",
+			Val:               launcher.TestCase{TabletMode: true},
+			ExtraHardwareDeps: hwdep.D(hwdep.Model(stableModels...), hwdep.InternalDisplay()),
+		}, {
+			Name:              "unstable_clamshell_mode",
+			Val:               launcher.TestCase{TabletMode: false},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(stableModels...)),
+		}, {
+			Name:              "unstable_tablet_mode",
+			Val:               launcher.TestCase{TabletMode: true},
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(stableModels...), hwdep.InternalDisplay()),
 		}},
 	})
 }
@@ -57,6 +68,7 @@ type testData struct {
 // SearchResults verifies launcher search returns Help content and omnibox result.
 func SearchResults(ctx context.Context, s *testing.State) {
 	cr, err := chrome.New(ctx, chrome.EnableFeatures("EnableOmniboxRichEntities"))
+	cleanupCtx := ctx
 	if err != nil {
 		s.Fatal("Failed to start chrome: ", err)
 	}
@@ -67,6 +79,20 @@ func SearchResults(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	tabletMode := s.Param().(launcher.TestCase).TabletMode
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	if err != nil {
+		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
+	}
+	defer cleanup(cleanupCtx)
+
+	if !tabletMode {
+		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+			s.Fatal("Launcher not closed: ", err)
+		}
+	}
 
 	// TODO (crbug/1126816): Showoff help results in Launcher Search.
 	var subtests = []testData{
