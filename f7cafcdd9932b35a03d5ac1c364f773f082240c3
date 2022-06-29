@@ -211,6 +211,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c262771e_5d3a0f09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-06-29T23:23:39Z",
+      "side": 1,
+      "message": "Thanks for your advice. I used “GetProperties()” in “PropertyHolder” to get the default value of “CheckPortalList” and the default value is an empty string. I think \"SetProperty()\" should be used to enable portal detection on ethernet.",
+      "parentUuid": "fa116e2e_61f2f80e",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44361e89_c12fc147",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 4
@@ -748,6 +772,24 @@
       "side": 1,
       "message": "0.0.0.0 is either a wildcard address or means \"nil address\" depending on context. But it is not an effective destination address. I am also a bit confused why this is needed.\n\nDoes that mean that if we pass to dnsmasq 0.0.0.0 for the name server configuration dnsmasq will act itself as the name server and advertise this in the DHCP leases ? In that case I agree with Jie\u0027s comment below.",
       "parentUuid": "06c39254_03a1b1d7",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a96f300_6b203ff4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-06-29T23:23:39Z",
+      "side": 1,
+      "message": "dnsmasq will send some standard options to the DHCP client. When the developer sets \"dhcp-option\u003doption:dns-server, 0.0.0.0\" in the dnsmasq configuration, the dnsmasq service tells the DHCP client that the DNS server is set to the address of the machine running dnsmasq. The special address 0.0.0.0 means \"the address of the machine running dnsmasq\", I would move this part to dnsmasq.Start() as Jay suggested.",
+      "parentUuid": "2fc90117_ae1d9847",
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
