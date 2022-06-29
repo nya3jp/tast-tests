@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90af82ea_5887e169",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1390217
+      },
+      "writtenOn": "2022-06-29T06:27:04Z",
+      "side": 1,
+      "message": "Why both flags are needed? spera.bond_enabled controls the mechanism and either ui.bond_credential or spera.bond_creadential is for providing the certificate, not both. I would leave ui.bond_credentials and would rename spera.bond_enabled to ui.bond_enabled",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 26
+      },
+      "revId": "a9929c4075da9fa6408f63a04de0a490c3191af7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
