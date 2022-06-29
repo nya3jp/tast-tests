@@ -208,6 +208,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cc62bebe_8a5ffcc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-06-29T20:52:34Z",
+      "side": 1,
+      "message": "Yeah, I dug a little deeper. Please correct me if I get it wrong. I found when `kEnableSavedDesks` is enabled, `DesksClient` does not check if `kDeskTemplateSync` is enabled, like here [1] [2]. As a quick test, when I disable `kEnableSavedDesks` and `kDeskTemplateSync` at the same time, the client does not fetch synced templates anymore, and thus does not mess up the tast tests. Maybe I should just disable sync here anyway.\n\n[1] https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ui/ash/desks/desks_client.cc;l\u003d199-216\n[2] https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ui/ash/desks/desks_client.cc;l\u003d417-436",
+      "parentUuid": "c3186b71_f36d4ebe",
+      "revId": "c133aa426ba3c99cfccca30d0bf35646be042ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d7d34ca_4b987c97",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
         "patchSetId": 2
