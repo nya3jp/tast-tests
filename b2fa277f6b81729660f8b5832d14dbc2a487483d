@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d3777fb_610dafe2",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-29T22:33:15Z",
+      "side": 1,
+      "message": "nit: DiscoverNetwork is slightly more accurate",
+      "range": {
+        "startLine": 246,
+        "startChar": 17,
+        "endLine": 246,
+        "endChar": 21
+      },
+      "revId": "b2fa277f6b81729660f8b5832d14dbc2a487483d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
