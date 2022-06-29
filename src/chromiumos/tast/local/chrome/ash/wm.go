@@ -761,7 +761,7 @@ func DragToShowOverview(ctx context.Context, tsw *input.TouchscreenEventWriter, 
 	}
 
 	// Make gesture duration sufficiently long for window drag not to be recognized as a gesture to the home screen.
-	duration := time.Duration(displayInfo.Bounds.Height/3) * time.Millisecond
+	duration := 2 * time.Duration(displayInfo.Bounds.Height) * time.Millisecond
 
 	start := displayInfo.Bounds.BottomCenter()
 	startX, startY := tcc.ConvertLocation(start)
