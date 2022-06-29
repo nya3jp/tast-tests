@@ -6,6 +6,7 @@ package notifications
 
 import (
 	"context"
+	"regexp"
 	"strings"
 	"time"
 
@@ -107,7 +108,7 @@ func ScreenCaptureNotification(ctx context.Context, s *testing.State) {
 	}
 
 	// Click "delete" button.
-	deleteButton := nodewith.Name("DELETE").Role(role.Button)
+	deleteButton := nodewith.NameRegex(regexp.MustCompile("(?i)delete")).Role(role.Button)
 	if err := ui.LeftClick(deleteButton)(ctx); err != nil {
 		s.Fatal("Failed to click delete button: ", err)
 	}
@@ -132,7 +133,7 @@ func ScreenCaptureNotification(ctx context.Context, s *testing.State) {
 	}
 
 	// Click edit button, check if Gallery app open up.
-	editButton := nodewith.Name("EDIT").Role(role.Button)
+	editButton := nodewith.NameRegex(regexp.MustCompile("(?i)edit")).Role(role.Button)
 	if err := ui.LeftClick(editButton)(ctx); err != nil {
 		s.Fatal("Failed to click edit button: ", err)
 	}
