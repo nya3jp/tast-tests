@@ -39,8 +39,7 @@ func init() {
 			{
 				Name:              "lacros",
 				Fixture:           "lacrosForEAInJP",
-				ExtraSoftwareDeps: []string{"lacros"},
-				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 			},
 		},
 	})
