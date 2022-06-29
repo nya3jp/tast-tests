@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -101,7 +102,11 @@ func PlayAndRecordAudio(ctx context.Context, s *testing.State) {
 	s.Logf("Selected audio device name: %s", audioDeviceName)
 
 	recWavFileName := "30SEC_REC.wav"
-	recWavFile := filepath.Join(filesapp.DownloadPath, recWavFileName)
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	recWavFile := filepath.Join(downloadsPath, recWavFileName)
 	cmd := fmt.Sprintf("play -c %d -r %d %s & rec -r %d -c %d %s trim 0 30", audioChannel, audioRate, wavTempFile.Name(), audioRate, audioChannel, recWavFile)
 	output := testexec.CommandContext(ctx, "sh", "-c", cmd)
 	if err := output.Run(testexec.DumpLogOnError); err != nil {

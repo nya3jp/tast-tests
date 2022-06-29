@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/holdingspace"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -68,7 +69,11 @@ func FilesAppDragAndDropPin(ctx context.Context, s *testing.State) {
 
 	// Create our file, with appropriate permissions so we can delete later.
 	const testFile = "test.txt"
-	testFilePath := filepath.Join(filesapp.MyFilesPath, testFile)
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's MyFiles path: ", err)
+	}
+	testFilePath := filepath.Join(myFilesPath, testFile)
 	if err := ioutil.WriteFile(testFilePath, []byte("Per aspera, ad astra"),
 		0644); err != nil {
 		s.Fatalf("Creating file %q failed: %s", testFilePath, err)

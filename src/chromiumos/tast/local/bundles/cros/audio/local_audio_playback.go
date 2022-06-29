@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -61,7 +62,11 @@ func LocalAudioPlayback(ctx context.Context, s *testing.State) {
 
 	// Generate sine raw input file that lasts 30 seconds.
 	rawFileName := "30SEC.raw"
-	rawFilePath := filepath.Join(filesapp.DownloadPath, rawFileName)
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	rawFilePath := filepath.Join(downloadsPath, rawFileName)
 	rawFile := audio.TestRawData{
 		Path:          rawFilePath,
 		BitsPerSample: 16,
@@ -77,7 +82,7 @@ func LocalAudioPlayback(ctx context.Context, s *testing.State) {
 	defer os.Remove(rawFile.Path)
 
 	wavFileName := "30SEC.wav"
-	wavFile := filepath.Join(filesapp.DownloadPath, wavFileName)
+	wavFile := filepath.Join(downloadsPath, wavFileName)
 	if err := audio.ConvertRawToWav(ctx, rawFilePath, wavFile, 48000, 2); err != nil {
 		s.Fatal("Failed to convert raw to wav: ", err)
 	}
