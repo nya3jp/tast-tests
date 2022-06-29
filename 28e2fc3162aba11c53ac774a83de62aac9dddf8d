@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afec4364_8f395c12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-06-29T01:24:04Z",
+      "side": 1,
+      "message": "Only this one from this chain is missing to be submitted. PTAL Hidehiko. Thank you very much.",
+      "revId": "28e2fc3162aba11c53ac774a83de62aac9dddf8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
