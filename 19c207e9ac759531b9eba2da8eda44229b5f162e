@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b70d7d4e_8810c8d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password_failure.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-06-29T13:56:10Z",
+      "side": 1,
+      "message": "I don\u0027t have much context on this, but Chrome already has the \"--enable-oobe-test-api\" switch that enables some kind of test-only API on the login screen. Seems that the API itself is there: https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/resources/chromeos/login/test_api/test_api.js\n\nYou can probably talk to rsorokin@ or antrim@ about the best path forward for the DOM accesses in this particular test you wrote.",
+      "parentUuid": "a6ed7f46_0c274188",
+      "range": {
+        "startLine": 86,
+        "startChar": 60,
+        "endLine": 86,
+        "endChar": 108
+      },
+      "revId": "19c207e9ac759531b9eba2da8eda44229b5f162e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4021a932_275222b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password_failure.go",
         "patchSetId": 1
