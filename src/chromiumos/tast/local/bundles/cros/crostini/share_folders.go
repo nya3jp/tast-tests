@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -97,8 +98,12 @@ func ShareFolders(ctx context.Context, s *testing.State) {
 		// It is created to test that non-shared folders should not be shared while other folders are shared.
 		sharedFolder3 = sharedfolders.SharedDownloads + " › " + folder3
 	)
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
 	for _, folder := range []string{folder1, folder2, folder3} {
-		path := filepath.Join(filesapp.DownloadPath, folder)
+		path := filepath.Join(downloadsPath, folder)
 		if err := os.MkdirAll(path, 0755); err != nil {
 			s.Fatalf("Failed to create %s in Downloads: %q", folder, err)
 		}
