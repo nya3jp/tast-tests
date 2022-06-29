@@ -32,8 +32,8 @@ const (
 	pkg = "org.chromium.arc.testapp.inputoverlay"
 	cls = "org.chromium.arc.testapp.inputoverlay.MainActivity"
 
-	// inputOverlayFilepath is the directory where input overlay files are stored.
-	inputOverlayFilepath = "/home/chronos/user/google_gio"
+	// inputOverlayFilename is the directory where input overlay files are stored.
+	inputOverlayFilename = "google_gio"
 	// cleanupOnErrorTime reserves time for cleanup in case of an error.
 	cleanupOnErrorTime = time.Second * 30
 	// errorMargin denotes the allowable +/- difference from the calculated x and
@@ -130,7 +130,11 @@ func SetupTestApp(ctx context.Context, s *testing.State, testFunc PerformTestFun
 	}(cleanupCtx)
 
 	// Clear input overlay files.
-	defer os.RemoveAll(inputOverlayFilepath)
+	userPath, err := cryptohome.UserPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's home directory path: ", err)
+	}
+	defer os.RemoveAll(filepath.Join(userPath, inputOverlayFilename))
 
 	act, err := arc.NewActivity(a, pkg, cls)
 	if err != nil {
