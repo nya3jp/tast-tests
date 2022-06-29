@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e682877f_771345f5",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-06-29T20:49:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d43a17c9_7ef3a3c2",
+      "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e87219e_f54234ba",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-29T00:30:04Z",
       "side": 1,
       "message": "prefer negative check and return early. Also, returning an error is better.",
+      "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42cf455_6f256e0c",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-06-29T20:49:02Z",
+      "side": 1,
+      "message": "agree. I modified it to use a negative check and return an error when no command has been created.",
+      "parentUuid": "8e87219e_f54234ba",
       "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e502d4fe_49b9af09",
+        "filename": "src/chromiumos/tast/local/network/cmd/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-06-29T20:49:02Z",
+      "side": 1,
+      "message": "all \"existed\" descriptions in function names have been removed",
+      "parentUuid": "6ccb28e6_28e9df42",
+      "range": {
+        "startLine": 60,
+        "startChar": 30,
+        "endLine": 60,
+        "endChar": 37
+      },
+      "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da347540_2c3d9c34",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-06-29T00:30:04Z",
       "side": 1,
       "message": "include as part of struct below?",
+      "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b5551df_d23facd6",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-06-29T20:49:02Z",
+      "side": 1,
+      "message": "your suggestion is better. I have moved the \"command\" field to \"RemoteCmdRunner\" struct",
+      "parentUuid": "da347540_2c3d9c34",
       "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6e7e6c7_fc3afc1e",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-06-29T20:49:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac2a765a_c5c974b2",
+      "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56732acd_95b6f3e0",
@@ -105,6 +201,24 @@
       "writtenOn": "2022-06-29T00:30:04Z",
       "side": 1,
       "message": "use CheckCmdExisted. Same above",
+      "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31deb187_12c61909",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-06-29T20:49:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56732acd_95b6f3e0",
       "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8f6ba3_ae6f8a8c",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-06-29T20:49:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "732938be_e3c99e64",
+      "range": {
+        "startLine": 78,
+        "startChar": 26,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f87ceb1a_7c35cf2d",
@@ -149,6 +287,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "639c053c_e6cfd440",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-06-29T20:49:02Z",
+      "side": 1,
+      "message": "agree. I have moved global variable \"runner\" to struct \"Capturer\".",
+      "parentUuid": "f87ceb1a_7c35cf2d",
+      "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bcf9fdb_bc63bf4f",
@@ -162,6 +318,24 @@
       "writtenOn": "2022-06-29T00:30:04Z",
       "side": 1,
       "message": "directly return error here",
+      "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04793989_3dc386db",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-06-29T20:49:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bcf9fdb_bc63bf4f",
       "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
