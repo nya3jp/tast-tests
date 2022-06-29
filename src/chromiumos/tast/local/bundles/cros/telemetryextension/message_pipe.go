@@ -6,6 +6,7 @@ package telemetryextension
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/telemetryextension/dep"
 	"chromiumos/tast/local/bundles/cros/telemetryextension/fixture"
@@ -66,6 +67,9 @@ func MessagePipe(ctx context.Context, s *testing.State) {
 		Success   bool        `json:"success"`
 		Telemetry interface{} `json:"telemetry"`
 	}
+
+	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+	defer cancel()
 
 	var resp response
 	if err := v.PwaConn.Call(ctx, &resp,
