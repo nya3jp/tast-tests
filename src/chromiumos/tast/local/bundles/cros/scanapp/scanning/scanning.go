@@ -29,8 +29,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/scanapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/ippusbbridge"
@@ -58,9 +58,9 @@ const (
 	// virtual USB scanner.
 	EsclCapabilities = "/usr/local/etc/virtual-usb-printer/escl_capabilities.json"
 
-	// DefaultScanPattern is the pattern used to find files in the default
-	// scan-to location.
-	DefaultScanPattern = filesapp.MyFilesPath + "/scan*_*.*"
+	// DefaultScanFilePattern is the pattern used to find files in the default
+	// scan-to location, this pattern is appended to the user's MyFiles path.
+	DefaultScanFilePattern = "scan*_*.*"
 
 	// MMPerInch is the conversion factor from inches to mm.
 	MMPerInch = 25.4
@@ -512,13 +512,18 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 		s.Fatal("Failed to expand More settings: ", err)
 	}
 
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve users MyFiles path: ", err)
+	}
+	defaultScanPattern := filepath.Join(myFilesPath, DefaultScanFilePattern)
 	for _, test := range testParams {
 		settings := test.Settings
 		settings.Scanner = printer.VisibleName
 		s.Run(ctx, test.Name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+test.Name)
 			defer func() {
-				if err := RemoveScans(DefaultScanPattern); err != nil {
+				if err := RemoveScans(defaultScanPattern); err != nil {
 					s.Error("Failed to remove scans: ", err)
 				}
 			}()
@@ -536,7 +541,7 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 				s.Fatal("Failed to perform scan: ", err)
 			}
 
-			scan, err := GetScan(DefaultScanPattern)
+			scan, err := GetScan(defaultScanPattern)
 			if err != nil {
 				s.Fatal("Failed to find scan: ", err)
 			}
@@ -611,6 +616,11 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		rand.Seed(time.Now().UnixNano())
 	}
 
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve users MyFiles path: ", err)
+	}
+	defaultScanPattern := filepath.Join(myFilesPath, DefaultScanFilePattern)
 	for _, source := range scanner.SupportedSources {
 		s.Log("Testing source: ", source.SourceType)
 
@@ -629,7 +639,7 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 		// combinations until each setting has been tested at least once.
 		if source.SourceType == scanapp.SourceFlatbed {
 			defer func() {
-				if err := RemoveScans(DefaultScanPattern); err != nil {
+				if err := RemoveScans(defaultScanPattern); err != nil {
 					s.Error("Failed to remove scans: ", err)
 				}
 			}()
@@ -690,7 +700,7 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 				s.Fatal("Failed to perform scan: ", err)
 			}
 
-			scan, err := GetScan(DefaultScanPattern)
+			scan, err := GetScan(defaultScanPattern)
 			if err != nil {
 				s.Fatal("Failed to find scan: ", err)
 			}
@@ -700,7 +710,7 @@ func RunHardwareTests(ctx context.Context, s *testing.State, cr *chrome.Chrome, 
 				s.Error("Failed to verify scanned image: ", err)
 			}
 
-			err = RemoveScans(DefaultScanPattern)
+			err = RemoveScans(defaultScanPattern)
 			if err != nil {
 				s.Error("Failed to remove scans: ", err)
 			}
