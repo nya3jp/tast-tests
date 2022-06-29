@@ -29,7 +29,6 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
-		VarDeps:      []string{"arc.OpenWithMenuChrome.username", "arc.OpenWithMenuChrome.password"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 			Fixture:           "arcBooted",
