@@ -39,6 +39,30 @@
       },
       "revId": "886ea6599d211ce47e09acabf047cbfa6e284816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0ccc12a_6a1b4f88",
+        "filename": "src/chromiumos/tast/common/bond/bond.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-06-29T16:02:56Z",
+      "side": 1,
+      "message": "I got a green CQ run so I\u0027m going to leave it as it :)",
+      "parentUuid": "b9a9c6c9_11ad1148",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 0
+      },
+      "revId": "886ea6599d211ce47e09acabf047cbfa6e284816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
