@@ -16,6 +16,52 @@
       "message": "I suspect that the failure related to the order of the Recent Apps would get fixed after this one is fixed.\n\nTested on caroline and deedee.",
       "revId": "fc6a1930b3c46be6889296dbf060692c56f85511",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e129495_2207b365",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-06-29T00:56:25Z",
+      "side": 1,
+      "message": "nit: go doesn\u0027t have strict line limits, but it\u0027s still recommended to keep comments \u003c80 characters if there isn\u0027t a specific reason not to (e.g. a url).\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#comment-line-length",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 95
+      },
+      "revId": "fc6a1930b3c46be6889296dbf060692c56f85511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b7cb69_204c40aa",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-06-29T00:56:25Z",
+      "side": 1,
+      "message": "nit: Chromium",
+      "range": {
+        "startLine": 234,
+        "startChar": 22,
+        "endLine": 234,
+        "endChar": 30
+      },
+      "revId": "fc6a1930b3c46be6889296dbf060692c56f85511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
