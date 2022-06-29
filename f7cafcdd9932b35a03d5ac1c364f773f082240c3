@@ -235,6 +235,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "165f2b2b_981187f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-06-29T23:56:14Z",
+      "side": 1,
+      "message": "So, portal detection actually defaults to disabled on all technologies (an empty string). Chrome enables it once the TOS is assigned (for reasons I\u0027m not actually familiar with). \n\nSo, any DUT where Chrome has logged in should have this set to \"wifi,cellular,ethernet\", but a freshly imaged DUT may not. We may need to be careful about with portal tests.\n\nIf we do set this, we should also make a best effort to restore the initial state. We can use a testing profile for that (there is a manager.PushTestProfile helper for that) or get/save the initial value and restore it.",
+      "parentUuid": "c262771e_5d3a0f09",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44361e89_c12fc147",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 4
