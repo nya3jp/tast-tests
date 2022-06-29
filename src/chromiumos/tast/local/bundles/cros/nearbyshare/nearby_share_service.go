@@ -23,7 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/services/cros/nearbyservice"
 	"chromiumos/tast/testing"
@@ -371,8 +371,12 @@ func (n *NearbyService) AcceptFastInitiationNotification(ctx context.Context, re
 
 // ClearTransferredFiles clears the transferred files in the receivers Downloads folder.
 func (n *NearbyService) ClearTransferredFiles(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, n.cr.NormalizedUser())
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get user's Download path")
+	}
 	for _, f := range n.fileNames {
-		filePath := filepath.Join(filesapp.DownloadPath, f)
+		filePath := filepath.Join(downloadsPath, f)
 		testing.ContextLog(ctx, "file to delete: ", filePath)
 		if err := os.Remove(filePath); err != nil {
 			return nil, errors.Wrapf(err, "failed to remove %s from Downloads on receiver", filePath)
