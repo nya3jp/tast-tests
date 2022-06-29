@@ -27,8 +27,73 @@ type searchSettingsTestCase struct {
 	passwordProtected bool             // whether the settings page is password protected.
 }
 
+type searchSettingsVals struct {
+	tabletMode bool                     // whether the device is on tablet mode.
+	testCases  []searchSettingsTestCase // test cases
+}
+
 const deviceUserPassword = "testpass"
 const settingsWindowTitle = "Settings"
+
+var standardTestCases = []searchSettingsTestCase{
+	{
+		searchTerm:        "Guest browsing",
+		searchResult:      "Guest browsing, Manage other people",
+		wantValue:         nodewith.Name("Manage other people").Role(role.Heading),
+		passwordProtected: false,
+	},
+	{
+		searchTerm:        "Show usernames and photos on the sign-in screen",
+		searchResult:      "Show usernames and photos on the sign-in screen, Manage other people",
+		wantValue:         nodewith.Name("Manage other people").Role(role.Heading),
+		passwordProtected: false,
+	},
+	{
+		searchTerm:        "Restrict sign-in",
+		searchResult:      "Restrict sign-in, Manage other people",
+		wantValue:         nodewith.Name("Manage other people").Role(role.Heading),
+		passwordProtected: false,
+	},
+	{
+		searchTerm:        "Add restricted user",
+		searchResult:      "Add restricted user, Manage other people",
+		wantValue:         nodewith.Name("Manage other people").Role(role.Heading),
+		passwordProtected: false,
+	},
+	{
+		searchTerm:        "Screen lock PIN",
+		searchResult:      "Screen lock PIN, Lock screen and sign-in",
+		wantValue:         nodewith.NameStartingWith("Lock screen").Role(role.Heading),
+		passwordProtected: true,
+	},
+	{
+		searchTerm:        "Lock screen",
+		searchResult:      "Lock screen and sign-in, Security and Privacy",
+		wantValue:         nodewith.NameStartingWith("Lock screen").Role(role.Heading),
+		passwordProtected: true,
+	},
+	{
+		searchTerm:        "Add Google account",
+		searchResult:      "Add Google Account, My accounts",
+		wantValue:         nodewith.Name("Add Google Account").Role(role.Button),
+		passwordProtected: false,
+	},
+}
+
+var fingerprintTestCases = []searchSettingsTestCase{
+	{
+		searchTerm:        "Fingerprint settings",
+		searchResult:      "Fingerprint settings, Lock screen and sign-in",
+		wantValue:         nodewith.Name("Fingerprint").Role(role.Heading),
+		passwordProtected: true,
+	},
+	{
+		searchTerm:        "Add fingerprint",
+		searchResult:      "Add fingerprint, Fingerprint",
+		wantValue:         nodewith.Name("Fingerprint").Role(role.Heading),
+		passwordProtected: true,
+	},
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -44,73 +109,27 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{{
-			Val: []searchSettingsTestCase{
-				{
-					searchTerm:        "Guest browsing",
-					searchResult:      "Guest browsing, Manage other people",
-					wantValue:         nodewith.Name("Manage other people").Role(role.Heading),
-					passwordProtected: false,
-				},
-				{
-					searchTerm:        "Show usernames and photos on the sign-in screen",
-					searchResult:      "Show usernames and photos on the sign-in screen, Manage other people",
-					wantValue:         nodewith.Name("Manage other people").Role(role.Heading),
-					passwordProtected: false,
-				},
-				{
-					searchTerm:        "Restrict sign-in",
-					searchResult:      "Restrict sign-in, Manage other people",
-					wantValue:         nodewith.Name("Manage other people").Role(role.Heading),
-					passwordProtected: false,
-				},
-				{
-					searchTerm:        "Add restricted user",
-					searchResult:      "Add restricted user, Manage other people",
-					wantValue:         nodewith.Name("Manage other people").Role(role.Heading),
-					passwordProtected: false,
-				},
-				{
-					searchTerm:        "Screen lock PIN",
-					searchResult:      "Screen lock PIN, Lock screen and sign-in",
-					wantValue:         nodewith.NameStartingWith("Lock screen").Role(role.Heading),
-					passwordProtected: true,
-				},
-				{
-					searchTerm:        "Lock screen",
-					searchResult:      "Lock screen and sign-in, Security and Privacy",
-					wantValue:         nodewith.NameStartingWith("Lock screen").Role(role.Heading),
-					passwordProtected: true,
-				},
-				{
-					searchTerm:        "Add Google account",
-					searchResult:      "Add Google Account, My accounts",
-					wantValue:         nodewith.Name("Add Google Account").Role(role.Button),
-					passwordProtected: false,
-				},
-			},
+			Name: "clamshel_mode",
+			Val:  searchSettingsVals{tabletMode: false, testCases: standardTestCases},
 		}, {
-			Name:              "fingerprint_tests",
+			Name:              "tablet_mode",
+			Val:               searchSettingsVals{tabletMode: true, testCases: standardTestCases},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		}, {
+			Name:              "fingerprint_tests_clamshell_mode",
 			ExtraHardwareDeps: hwdep.D(hwdep.Fingerprint()),
-			Val: []searchSettingsTestCase{
-				{
-					searchTerm:        "Fingerprint settings",
-					searchResult:      "Fingerprint settings, Lock screen and sign-in",
-					wantValue:         nodewith.Name("Fingerprint").Role(role.Heading),
-					passwordProtected: true,
-				},
-				{
-					searchTerm:        "Add fingerprint",
-					searchResult:      "Add fingerprint, Fingerprint",
-					wantValue:         nodewith.Name("Fingerprint").Role(role.Heading),
-					passwordProtected: true,
-				},
-			},
+			Val:               searchSettingsVals{tabletMode: false, testCases: fingerprintTestCases},
+		}, {
+			Name:              "fingerprint_tests_tablet_mode",
+			ExtraHardwareDeps: hwdep.D(hwdep.Fingerprint(), hwdep.InternalDisplay()),
+			Val:               searchSettingsVals{tabletMode: true, testCases: fingerprintTestCases},
 		}},
 	})
 }
 
 func SearchSettingsSections(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	cleanupCtx := ctx
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
@@ -122,7 +141,23 @@ func SearchSettingsSections(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	tcs := s.Param().([]searchSettingsTestCase)
+	testParams := s.Param().(searchSettingsVals)
+	tabletMode := testParams.tabletMode
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	if err != nil {
+		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
+	}
+	defer cleanup(cleanupCtx)
+
+	if !tabletMode {
+		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+			s.Fatal("Launcher not closed: ", err)
+		}
+	}
+
+	tcs := testParams.testCases
+
 	for _, tc := range tcs {
 		s.Run(ctx, tc.searchTerm, func(ctx context.Context, s *testing.State) {
 			defer func(ctx context.Context) {
