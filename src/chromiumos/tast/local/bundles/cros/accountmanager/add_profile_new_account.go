@@ -122,7 +122,7 @@ func AddProfileNewAccount(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Finish profile addition")
-	syncProfileRoot := nodewith.Name("Turn on sync?").Role(role.RootWebArea)
+	syncProfileRoot := nodewith.Name("Turn on Chrome browser sync?").Role(role.RootWebArea)
 	yesButton := nodewith.Name("Yes, I'm in").Role(role.Button).Focusable().Ancestor(syncProfileRoot)
 	if err := uiauto.Combine("click on yesButton",
 		ui.WaitUntilExists(yesButton),

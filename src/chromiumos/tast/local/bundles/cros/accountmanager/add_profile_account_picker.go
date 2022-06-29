@@ -107,7 +107,7 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 	chooseProfileRoot := nodewith.Name("Choose a profile").Role(role.RootWebArea)
 	addButton := nodewith.Name("Add").Role(role.Button).Focusable().Ancestor(chooseProfileRoot)
 	// Nodes on the last screen of the profile addition dialog:
-	syncProfileRoot := nodewith.Name("Turn on sync?").Role(role.RootWebArea)
+	syncProfileRoot := nodewith.Name("Turn on Chrome browser sync?").Role(role.RootWebArea)
 	yesButton := nodewith.Name("Yes, I'm in").Role(role.Button).Focusable().Ancestor(syncProfileRoot)
 
 	if err := uiauto.Combine("add a profile",
