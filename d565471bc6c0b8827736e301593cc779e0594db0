@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b82cb93_e26b70c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-29T22:12:45Z",
+      "side": 1,
+      "message": "Include here that you ran wifi_matfunc",
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ad368e4_414e9cf1",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-29T22:12:45Z",
+      "side": 1,
+      "message": "why?",
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a40502a_e6799baa",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-29T22:12:45Z",
+      "side": 1,
+      "message": "nit: space after //",
+      "range": {
+        "startLine": 139,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 4
+      },
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d272f7ce_b22116da",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-29T22:12:45Z",
+      "side": 1,
+      "message": "What exactly does this mean? Are you saying that this command is unnecessary and will fail for local tests?",
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea50b38_c3a3ec2e",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-29T22:12:45Z",
+      "side": 1,
+      "message": "Let\u0027s not remove it. It\u0027s possible that we may add additional filters in the future.",
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2388d4_d956007f",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-29T22:12:45Z",
+      "side": 1,
+      "message": "can\u0027t we just call this directly?",
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20eb5a5_edd7cba5",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-29T22:12:45Z",
+      "side": 1,
+      "message": "nit: maybe CreateCmd is better",
+      "range": {
+        "startLine": 45,
+        "startChar": 26,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39cfd9e9_e9195c90",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-29T22:12:45Z",
+      "side": 1,
+      "message": "We should also provide a counterpart to Create to reset the state",
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

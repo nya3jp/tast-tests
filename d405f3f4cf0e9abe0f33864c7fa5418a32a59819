@@ -190,6 +190,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7582eaf7_a647da8a",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-29T22:12:45Z",
+      "side": 1,
+      "message": "Ah shoot, sorry, can we undo this? I missed that Create stored the command object, which we don\u0027t need to do for these",
+      "parentUuid": "e6e7e6c7_fc3afc1e",
+      "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56732acd_95b6f3e0",
         "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
         "patchSetId": 1
