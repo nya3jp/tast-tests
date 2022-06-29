@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f50a6c78_065dc637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-29T18:30:45Z",
+      "side": 1,
+      "message": "End with a period. See https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 31,
+        "startChar": 72,
+        "endLine": 31,
+        "endChar": 80
+      },
+      "revId": "05df5434c219748a8411f2a7e612d3e7dafe551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcb0fa70_f67928eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-29T18:30:45Z",
+      "side": 1,
+      "message": "All of these comments should abide by https://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "revId": "05df5434c219748a8411f2a7e612d3e7dafe551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c1f889b_cb51aa5e",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
         "patchSetId": 1
@@ -19,6 +65,52 @@
         "startChar": 0,
         "endLine": 46,
         "endChar": 14
+      },
+      "revId": "05df5434c219748a8411f2a7e612d3e7dafe551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f1ae7cb_ed4c038b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-29T18:30:45Z",
+      "side": 1,
+      "message": "It is better if such errors can be identified at compile time rather than run time. Here is what I suggest:\nhttps://go.dev/play/p/IwVpCtnpgu-",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "05df5434c219748a8411f2a7e612d3e7dafe551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "466ba753_ac482707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-29T18:30:45Z",
+      "side": 1,
+      "message": "This is definitely unnecessarily repetitious. How about:\n\tfor propName, ois :\u003d range map[string][]uint64 {\n\t\tshillconst.PasspointCredentialsPropertyHomeOIs:          pc.HomeOIs,\n\t\tshillconst.PasspointCredentialsPropertyRequiredHomeOIs:  pc.RequiredHomeOIs,\n\t\tshillconst.PasspointCredentialsPropertyRoamingConsortia: pc.RoamingOIs,\n\t} {\n\t\tvar propOIs []string\n\t\tfor _, oi :\u003d range ois {\n\t\t\tpropOIs \u003d append(propOIs, strconv.FormatUint(oi, 10))\n\t\t}\n\t\tprops[propName] \u003d propOIs\n\t}",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
       },
       "revId": "05df5434c219748a8411f2a7e612d3e7dafe551f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
