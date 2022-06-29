@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -123,9 +124,13 @@ func EnableDisableBluetoothWithAudioPlay(ctx context.Context, s *testing.State) 
 		defer btDevice.Disconnect(cleanupCtx)
 	}
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
 	iter := s.Param().(int)
 	duration := iter * 60
-	devName, err := audioPlayback(ctx, tconn, duration)
+	devName, err := audioPlayback(ctx, tconn, downloadsPath, duration)
 	if err != nil {
 		s.Fatal("Failed to play audio: ", err)
 	}
@@ -145,7 +150,7 @@ func EnableDisableBluetoothWithAudioPlay(ctx context.Context, s *testing.State) 
 			}
 		}
 		// Remove audio file at cleanup.
-		audioFilePath := filepath.Join(filesapp.DownloadPath, "AudioFile.wav")
+		audioFilePath := filepath.Join(downloadsPath, "AudioFile.wav")
 		if _, err := os.Stat(audioFilePath); err == nil {
 			if err := os.Chmod(audioFilePath, 777); err == nil {
 				if err := os.Remove(audioFilePath); err != nil {
@@ -214,7 +219,7 @@ func EnableDisableBluetoothWithAudioPlay(ctx context.Context, s *testing.State) 
 
 // audioPlayback generates wav audio file, play using default player
 // and verify audio routing through bluetooth device.
-func audioPlayback(ctx context.Context, tconn *chrome.TestConn, duration int) (string, error) {
+func audioPlayback(ctx context.Context, tconn *chrome.TestConn, downloadsPath string, duration int) (string, error) {
 	cras, err := audio.NewCras(ctx)
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create Cras object")
@@ -248,7 +253,7 @@ func audioPlayback(ctx context.Context, tconn *chrome.TestConn, duration int) (s
 
 	// Generate sine raw input file that lasts for provided duration.
 	rawFileName := "AudioFile.raw"
-	rawFilePath := filepath.Join(filesapp.DownloadPath, rawFileName)
+	rawFilePath := filepath.Join(downloadsPath, rawFileName)
 	rawFile := audio.TestRawData{
 		Path:          rawFilePath,
 		BitsPerSample: 16,
@@ -264,7 +269,7 @@ func audioPlayback(ctx context.Context, tconn *chrome.TestConn, duration int) (s
 	defer os.Remove(rawFile.Path)
 
 	wavFileName := "AudioFile.wav"
-	wavFile := filepath.Join(filesapp.DownloadPath, wavFileName)
+	wavFile := filepath.Join(downloadsPath, wavFileName)
 	if err := audio.ConvertRawToWav(ctx, rawFilePath, wavFile, 48000, 2); err != nil {
 		return "", errors.Wrap(err, "failed to convert raw to wav")
 	}

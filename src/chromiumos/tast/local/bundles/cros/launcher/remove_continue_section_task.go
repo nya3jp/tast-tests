@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -99,12 +100,16 @@ func RemoveContinueSectionTask(ctx context.Context, s *testing.State) {
 		numFiles = 4
 	}
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
 	var testDocFileNames []string
 	for i := 0; i < numFiles; i++ {
 		testFileName := fmt.Sprintf("fake-file-%d-%d.html", time.Now().UnixNano(), rand.Intn(10000))
 		testDocFileNames = append(testDocFileNames, testFileName)
 		// Create a test file.
-		filePath := filepath.Join(filesapp.DownloadPath, testFileName)
+		filePath := filepath.Join(downloadsPath, testFileName)
 		fileContent := fmt.Sprintf("Test file %d", i)
 		if err := ioutil.WriteFile(filePath, []byte(fileContent), 0644); err != nil {
 			s.Fatalf("Failed to create file %d in Downloads: %v", i, err)
