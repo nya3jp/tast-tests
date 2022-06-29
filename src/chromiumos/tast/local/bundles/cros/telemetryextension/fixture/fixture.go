@@ -108,7 +108,7 @@ func init() {
 			"mgawad@google.com", // Telemetry Extension author
 			"cros-oem-services-team@google.com",
 		},
-		Impl:            newTelemetryExtensionFixture(managed()),
+		Impl:            newTelemetryExtensionFixture(lacros(), managed()),
 		Parent:          fixture.FakeDMSEnrolled,
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
@@ -361,17 +361,21 @@ func (f *telemetryExtensionFixture) setupChromeForConsumers(ctx context.Context,
 	if err := f.addOverrideOEMNameChromeArg(ctx, &opts); err != nil {
 		return err
 	}
-	if f.bt == browser.TypeAsh {
-		opts = append(opts, chrome.UnpackedExtension(dir))
+	if err := f.addLacrosChromeArgs(ctx, &opts); err != nil {
+		return err
 	}
-	if f.bt == browser.TypeLacros {
-		lopts, err := lacrosfixt.NewConfig().Opts()
-		if err != nil {
-			return errors.Wrap(err, "failed to get lacros options")
-		}
-		opts = append(opts, lopts...)
-		opts = append(opts, chrome.LacrosExtraArgs(fmt.Sprintf("--load-extension=%s", dir)))
-	}
+
+	// if f.bt == browser.TypeAsh {
+	// 	opts = append(opts, chrome.UnpackedExtension(dir))
+	// }
+	// if f.bt == browser.TypeLacros {
+	// 	lopts, err := lacrosfixt.NewConfig().Opts()
+	// 	if err != nil {
+	// 		return errors.Wrap(err, "failed to get lacros options")
+	// 	}
+	// 	opts = append(opts, lopts...)
+	// 	opts = append(opts, chrome.LacrosExtraArgs(fmt.Sprintf("--load-extension=%s", dir)))
+	// }
 
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
@@ -404,6 +408,19 @@ func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Conte
 	if err := f.addOverrideOEMNameChromeArg(ctx, &opts); err != nil {
 		return err
 	}
+	// if err := f.addLacrosChromeArgs(ctx, &opts); err != nil {
+	// 	return err
+	// }
+
+	if f.bt == browser.TypeLacros {
+		lopts, err := lacrosfixt.NewConfig(
+			lacrosfixt.ChromeOptions(chrome.GAIALogin(chrome.Creds{User: username, Pass: password})),
+			lacrosfixt.EnableChromeFRE()).Opts()
+		if err != nil {
+			return errors.Wrap(err, "failed to get lacros options")
+		}
+		opts = append(opts, lopts...)
+	}
 
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
@@ -415,6 +432,10 @@ func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Conte
 	pb.AddPolicy(&policy.ExtensionInstallForcelist{Val: []string{f.v.ExtID}})
 	// Allow DevTools on force installed extensions. Value 1 here means "allowed".
 	pb.AddPolicy(&policy.DeveloperToolsAvailability{Val: 1})
+
+	if f.bt == browser.TypeLacros {
+		pb.AddPolicy(&policy.LacrosAvailability{Val: "lacros_primary"})
+	}
 
 	if err := policyutil.ServeBlobAndRefresh(ctx, fdms, cr, pb); err != nil {
 		return errors.Wrap(err, "failed to serve and refresh")
@@ -481,6 +502,24 @@ func (f *telemetryExtensionFixture) addOverrideOEMNameChromeArg(ctx context.Cont
 			return errors.Wrap(err, "failed to fetch vendor name")
 		}
 		*opts = append(*opts, chrome.ExtraArgs("--telemetry-extension-manufacturer-override-for-testing="+vendorName))
+	}
+	return nil
+}
+
+func (f *telemetryExtensionFixture) addLacrosChromeArgs(ctx context.Context, opts *[]chrome.Option) error {
+	if f.bt == browser.TypeAsh && !f.managed {
+		*opts = append(*opts, chrome.UnpackedExtension(f.dir))
+	}
+	if f.bt == browser.TypeLacros {
+		lopts, err := lacrosfixt.NewConfig().Opts()
+		if err != nil {
+			return errors.Wrap(err, "failed to get lacros options")
+		}
+		*opts = append(*opts, lopts...)
+
+		if !f.managed {
+			*opts = append(*opts, chrome.LacrosExtraArgs(fmt.Sprintf("--load-extension=%s", f.dir)))
+		}
 	}
 	return nil
 }
