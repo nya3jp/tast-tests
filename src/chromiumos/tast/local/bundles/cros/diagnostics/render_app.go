@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -28,6 +29,11 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		HardwareDeps: hwdep.D(
+			// "gru" is the platform name for scarlet devices. Scarlet
+			// needs to be treated differently to handle mobile navigation.
+			// TODO(ashleydp): Split tests into "gru" (mobile) and other models.
+			hwdep.SkipOnModel("gru")),
 	})
 }
 
