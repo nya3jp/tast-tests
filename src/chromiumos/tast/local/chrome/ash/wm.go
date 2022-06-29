@@ -760,8 +760,9 @@ func DragToShowOverview(ctx context.Context, tsw *input.TouchscreenEventWriter, 
 		return errors.Wrap(err, "unable to create touch coordinate converter")
 	}
 
+	testing.ContextLog(ctx, displayInfo.Bounds.Height)
 	// Make gesture duration sufficiently long for window drag not to be recognized as a gesture to the home screen.
-	duration := time.Duration(displayInfo.Bounds.Height/3) * time.Millisecond
+	duration := 2 * time.Duration(displayInfo.Bounds.Height) * time.Millisecond
 
 	start := displayInfo.Bounds.BottomCenter()
 	startX, startY := tcc.ConvertLocation(start)
@@ -779,6 +780,7 @@ func DragToShowOverview(ctx context.Context, tsw *input.TouchscreenEventWriter, 
 	if err := testing.Sleep(ctx, pauseDuration); err != nil {
 		return errors.Wrap(err, "failed to sleep while waiting for overview to trigger")
 	}
+
 	if err := stw.End(); err != nil {
 		return errors.Wrap(err, "failed to finish the swipe gesture")
 	}
