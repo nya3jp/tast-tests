@@ -429,6 +429,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4894f517_d36c41d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-29T22:13:41Z",
+      "side": 1,
+      "message": "+1, we should parse this further.",
+      "parentUuid": "16d65b78_0b7b424c",
+      "range": {
+        "startLine": 182,
+        "startChar": 12,
+        "endLine": 182,
+        "endChar": 57
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12fb78a0_4fa591da",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 4
