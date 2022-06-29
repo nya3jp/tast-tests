@@ -111,6 +111,7 @@ func init() {
 
 func SearchSettingsSections(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	cleanupCtx := ctx
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
@@ -123,53 +124,70 @@ func SearchSettingsSections(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	tcs := s.Param().([]searchSettingsTestCase)
+
+	tabletModeValues := [2]bool{false, true}
+
 	for _, tc := range tcs {
-		s.Run(ctx, tc.searchTerm, func(ctx context.Context, s *testing.State) {
-			defer func(ctx context.Context) {
-				// Cleanup: close the OS Settings window.
+		for _, tabletMode := range tabletModeValues {
+			cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+			if err != nil {
+				s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
+			}
+			defer cleanup(cleanupCtx)
+
+			if !tabletMode {
+				if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+					s.Fatal("Launcher not closed: ", err)
+				}
+			}
+
+			s.Run(ctx, tc.searchTerm, func(ctx context.Context, s *testing.State) {
+				defer func(ctx context.Context) {
+					// Cleanup: close the OS Settings window.
+					activeWindow, err := ash.GetActiveWindow(ctx, tconn)
+					if err != nil {
+						s.Fatal("Failed to get the active window: ", err)
+					}
+					if err := activeWindow.CloseWindow(ctx, tconn); err != nil {
+						s.Fatalf("Failed to close the window(%s): %v", activeWindow.Name, err)
+					}
+				}(ctx)
+
+				defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+tc.searchTerm)
+
+				ui := uiauto.New(tconn)
+				result := launcher.SearchResultListItemFinder.NameStartingWith(tc.searchResult).First()
+				if err := uiauto.Combine("search for result in launcher",
+					launcher.Open(tconn),
+					launcher.Search(tconn, kb, tc.searchTerm),
+					ui.WaitUntilExists(result),
+					ui.LeftClick(result),
+				)(ctx); err != nil {
+					s.Fatalf("Failed to search for result %q in launcher: %v", tc.searchTerm, err)
+				}
+
 				activeWindow, err := ash.GetActiveWindow(ctx, tconn)
 				if err != nil {
 					s.Fatal("Failed to get the active window: ", err)
 				}
-				if err := activeWindow.CloseWindow(ctx, tconn); err != nil {
-					s.Fatalf("Failed to close the window(%s): %v", activeWindow.Name, err)
+				if activeWindow.Title != settingsWindowTitle {
+					s.Fatalf("Active window is %q, expected %q", activeWindow.Title, settingsWindowTitle)
 				}
-			}(ctx)
 
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+tc.searchTerm)
-
-			ui := uiauto.New(tconn)
-			result := launcher.SearchResultListItemFinder.NameStartingWith(tc.searchResult).First()
-			if err := uiauto.Combine("search for result in launcher",
-				launcher.Open(tconn),
-				launcher.Search(tconn, kb, tc.searchTerm),
-				ui.WaitUntilExists(result),
-				ui.LeftClick(result),
-			)(ctx); err != nil {
-				s.Fatalf("Failed to search for result %q in launcher: %v", tc.searchTerm, err)
-			}
-
-			activeWindow, err := ash.GetActiveWindow(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to get the active window: ", err)
-			}
-			if activeWindow.Title != settingsWindowTitle {
-				s.Fatalf("Active window is %q, expected %q", activeWindow.Title, settingsWindowTitle)
-			}
-
-			if tc.passwordProtected {
-				err := enterPassword(ctx, ui, kb, deviceUserPassword)
-				if err != nil {
-					s.Fatal("Failed to enter password: ", err)
+				if tc.passwordProtected {
+					err := enterPassword(ctx, ui, kb, deviceUserPassword)
+					if err != nil {
+						s.Fatal("Failed to enter password: ", err)
+					}
 				}
-			}
 
-			settings := nodewith.NameStartingWith("Settings").Role(role.Window).First()
-			expectedNode := tc.wantValue.Ancestor(settings).First()
-			if err := ui.WaitUntilExists(expectedNode)(ctx); err != nil {
-				s.Fatalf("Failed to find the node %q: %v", tc.wantValue.Pretty(), err)
-			}
-		})
+				settings := nodewith.NameStartingWith("Settings").Role(role.Window).First()
+				expectedNode := tc.wantValue.Ancestor(settings).First()
+				if err := ui.WaitUntilExists(expectedNode)(ctx); err != nil {
+					s.Fatalf("Failed to find the node %q: %v", tc.wantValue.Pretty(), err)
+				}
+			})
+		}
 	}
 }
 
