@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
@@ -45,7 +46,7 @@ func init() {
 			"dlunev@google.com", // Test author
 			"chromeos-storage@google.com",
 		},
-		Attr:         []string{}, // Test disabled because of b/233735246.
+		Attr:         []string{"group:autoupdate"},
 		SoftwareDeps: []string{"tpm", "reboot", "chrome", "auto_update_stable"},
 		ServiceDeps: []string{
 			"tast.cros.autoupdate.NebraskaService",
@@ -63,6 +64,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"use_fscrypt_v2"},
 			Val:               &params{VaultType: fscryptV1VaultType},
 		}},
+		Fixture: fixture.Autoupdate,
 	})
 }
 
