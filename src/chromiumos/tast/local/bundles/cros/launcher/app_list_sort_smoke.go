@@ -142,6 +142,11 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
 	}
 
+	ui := uiauto.New(tconn)
+	if err := ui.WaitUntilExists(launcher.ReorderEducationNudgeFinder)(ctx); err != nil {
+		s.Fatal("Failed to wait for the reorder education nudge to show: ", err)
+	}
+
 	appsGrid := nodewith.ClassName(launcher.BubbleAppsGridViewClass)
 	if tabletMode {
 		appsGrid = nodewith.ClassName(launcher.PagedAppsGridViewClass)
@@ -149,7 +154,6 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 
 	lastFakeAppName := fakeAppNamesInOrder[len(fakeAppNamesInOrder)-1]
 	lastFakeApp := nodewith.ClassName(launcher.ExpandedItemsClass).Ancestor(appsGrid).Name(lastFakeAppName)
-	ui := uiauto.New(tconn)
 	if err := ui.WaitForLocation(lastFakeApp)(ctx); err != nil {
 		s.Fatalf("Failed to wait for the fake app %q location to be idle: %v", lastFakeAppName, err)
 	}
