@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -276,6 +277,13 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 			}
 		}
 
+		// Maximize all windows to ensure a consistent state.
+		if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+			return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized)
+		}); err != nil {
+			return errors.Wrap(err, "failed to maximize windows")
+		}
+
 		// After tabs are all opened, rotate tablet device while browsing,
 		// and only do rotation on tablet mode
 		if tabletMode {
@@ -304,9 +312,6 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 				// Retry few times to ensure UI action can be done.
 				if err := uiauto.Retry(retryTimes, switchFunc)(ctx); err != nil {
 					return errors.Wrapf(err, "failed to switch between %s with retryTimes %d", switchDesc, retryTimes)
-				}
-				if err := webutil.WaitForRender(ctx, tab.conn, 10*time.Second); err != nil {
-					return errors.Wrapf(err, "failed to wait for finish render [%s]", tab.url)
 				}
 				// Wait each page to finish loading (to see if the network connection works).
 				timeout := time.Minute
