@@ -22,6 +22,30 @@
       },
       "revId": "c2780872f11cd62afe78e0d87058e494fd7b27f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b5401fa_a2ef8164",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1459152
+      },
+      "writtenOn": "2022-06-29T07:17:17Z",
+      "side": 1,
+      "message": "I guess that since nobody is reading the value of the control, it is not producing any event.\n\nOn GPIO based devices, an IRQ triggers a read, which updates the control that creates a new event.",
+      "parentUuid": "8d15134e_a6579d8d",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 66
+      },
+      "revId": "c2780872f11cd62afe78e0d87058e494fd7b27f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
