@@ -56,6 +56,30 @@
       },
       "revId": "28e2fc3162aba11c53ac774a83de62aac9dddf8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4004c39a_d940f367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/full_restore_always_restore.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-06-29T19:56:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8bd923b_42863244",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 17
+      },
+      "revId": "28e2fc3162aba11c53ac774a83de62aac9dddf8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
