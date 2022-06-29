@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b31648_c46e2900",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-29T18:49:19Z",
+      "side": 1,
+      "message": "Please use the imperative mood as described here:\nhttps://cbea.ms/git-commit/#imperative",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "eb702c2e6fa5202eef5b87f284d034b5cbe9dd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f09462d8_6da776b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-29T18:49:19Z",
+      "side": 1,
+      "message": "`feedback` (not capitalized)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "eb702c2e6fa5202eef5b87f284d034b5cbe9dd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d27faa6_e57ffc03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-29T18:49:19Z",
+      "side": 1,
+      "message": "nit: Use verb forms ending in `ing` in the `s.Log` strings, because they describe what the test is doing whereas (for example) `Set up chrome` sounds like \"Please set up chrome because the test can\u0027t do it automatically.\"",
+      "revId": "eb702c2e6fa5202eef5b87f284d034b5cbe9dd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55dfba23_8472084a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_alt_shift_i.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-29T18:49:19Z",
+      "side": 1,
+      "message": "nit: `to`",
+      "range": {
+        "startLine": 54,
+        "startChar": 28,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "eb702c2e6fa5202eef5b87f284d034b5cbe9dd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be208b2c_531843be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_alt_shift_i.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-29T18:49:19Z",
+      "side": 1,
+      "message": "Please check the returned `error`.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 34
+      },
+      "revId": "eb702c2e6fa5202eef5b87f284d034b5cbe9dd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae14a6e_6be8ab9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_alt_shift_i.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-29T18:49:19Z",
+      "side": 1,
+      "message": "`\tif err :\u003d ash.WaitForApp(ctx, tconn, apps.Feedback.ID, time.Minute); err !\u003d nil {`",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 16
+      },
+      "revId": "eb702c2e6fa5202eef5b87f284d034b5cbe9dd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1e413cd_3dc4be56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_alt_shift_i.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-29T18:49:19Z",
+      "side": 1,
+      "message": "This should be `s.Error` rather than `s.Fatal`. If the issue description text input is not found, it is worth also checking for the continue button and the five default help content links, and you can generate multiple errors if multiple things are missing.",
+      "range": {
+        "startLine": 85,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 9
+      },
+      "revId": "eb702c2e6fa5202eef5b87f284d034b5cbe9dd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc2f4bc6_11f120c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_alt_shift_i.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-29T18:49:19Z",
+      "side": 1,
+      "message": "Likewise, this should be `s.Error` rather than `s.Fatal`.",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 9
+      },
+      "revId": "eb702c2e6fa5202eef5b87f284d034b5cbe9dd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ee2e0f_cf2e2c39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/launch_feedback_from_alt_shift_i.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-29T18:49:19Z",
+      "side": 1,
+      "message": "`s.Error`",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 10
+      },
+      "revId": "eb702c2e6fa5202eef5b87f284d034b5cbe9dd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
