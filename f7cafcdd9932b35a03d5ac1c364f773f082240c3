@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7621e73a_41701833",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "nit: dnsmasq or Dnsmasq (here and elsewhere)\nhttps://thekelleys.org.uk/dnsmasq/doc.html",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e24af2b_871cc3e7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 4
@@ -60,6 +83,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "446f74a4_36714aab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "Just to check my understanding, what\u0027s the core logic that this test wants to verify? For example:\n- Do we want to check that portal detector is using the DNS settings on the network it is running on (but not other networks)?\n- Do we want to check that how portal detector uses the DNS resolved results (mix of v4 and v6 addresses) on different network environments (v4-only, v6-only, dual-stack)? (I\u0027m not familiar with portal detection, is there any difference in this case?)",
+      "parentUuid": "7b903a30_4f16d4db",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a76e9ced_dfd1718e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 4
@@ -94,6 +135,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa116e2e_61f2f80e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "Portal detection is enabled by default on Ethernet so I suppose we don\u0027t need to set it explicitly here.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44361e89_c12fc147",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 4
@@ -105,6 +169,24 @@
       "writtenOn": "2022-06-29T00:29:45Z",
       "side": 1,
       "message": "don\u0027t assume the gateway here, get it directly from Env",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1cf26b5_5ab59d01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "You can use GetVethInAddrs() or WaitForVethInAddrs() to get the gateway address. Their difference is WaitForVethInAddrs() will wait for addresses appearing on the interface and thus could be useful to get the IPv6 address allocated by the RA server.",
+      "parentUuid": "44361e89_c12fc147",
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +226,52 @@
         "startChar": 2,
         "endLine": 99,
         "endChar": 3
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3174a8cb_a6890cc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "virtualnet.CreateRouterEnv() returns the associated service for this interface, we can use that directly if we only need the service.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8857c0_bb041570",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "FYI I have a patch in CQ that add a go struct for the IPConfig object, which can be used to simplify this part of code. That patch also adds a GetIPConfigs() method to Service to get the IPConfigs on the Device selecting this Service.\n\n[1] https://crrev.com/c/3697759/16/src/chromiumos/tast/local/shill/ipconfig.go",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 33
       },
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -225,6 +353,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16d65b78_0b7b424c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "Just a question: is this enough to verify that this is the dst IP in the portal detection probe (I suppose this is what we want to verify here), but not other traffic ocassionally includes this address (e.g., reply to DNS query)?",
+      "range": {
+        "startLine": 182,
+        "startChar": 12,
+        "endLine": 182,
+        "endChar": 57
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12fb78a0_4fa591da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "I suppose we can Service.WaitForConnectedOrError() or Service.WaitForProperty() to simplify this code.\nExample: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/routing_no_ip.go;drc\u003d22f182da6f80f806a24e162f8d428ceb27290128;l\u003d59",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 21
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7479976_aa1dd9a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "Maybe we can skip introducing this option now since we always want to enable DHCP at the moment?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 11
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c4b218d_ab169f20",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "Worth some comments for the params, e.g., \"enabel DNS server functionality in dnsmasq if enableDNS is true; dns contains the DNS server list which will be broadcasted by DHCP\"",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e469875b_a09c51d8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
         "patchSetId": 4
@@ -242,6 +462,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e419ac0_b106877d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "IIUC, this sentence actually points to the next |AddressToForceIP| field. How about 1) merging these two into one field or 2) just removing this sentence?",
+      "range": {
+        "startLine": 33,
+        "startChar": 49,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60424444_b635b6b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "nit: This name sounds a little confusing to me, since it\u0027s not clear what an \"Address\" is (name or IP address?), how about \"ResolveNamesToIP\" or some other name?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a2a2032_e0e7c7d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "I suppose this struct is not needed according to other comments. If we still need it, it\u0027s better to avoid a global variable, since CreateRouterEnv() may be called multiple times.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06c39254_03a1b1d7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
         "patchSetId": 4
@@ -253,6 +542,29 @@
       "writtenOn": "2022-06-29T00:29:45Z",
       "side": 1,
       "message": "What\u0027s the purpose of this?",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c8beb0c_ae8a75f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-29T03:43:27Z",
+      "side": 1,
+      "message": "I think it\u0027s better to do this in dnsmasq.Start(), since when we enable its dns server functionality, we always want to include the address in the DHCP option.",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 3
+      },
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
