@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/arc/storage"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -50,7 +50,11 @@ func DownloadsFolder(ctx context.Context, s *testing.State) {
 		{LabelID: storage.URIID, Value: downloadURI},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
-	config := storage.TestConfig{DirPath: filesapp.DownloadPath, DirName: "Downloads",
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	config := storage.TestConfig{DirPath: downloadsPath, DirName: "Downloads",
 		DirTitle: "Files - Downloads", CreateTestFile: true, FileName: "storage.txt"}
 
 	// In ARCVM, Downloads integration depends on MyFiles mount.
