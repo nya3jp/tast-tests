@@ -143,3 +143,22 @@ func CheckGlyphsbyRegion(ui *uiauto.Context, regionCode string) action.Action {
 		return nil
 	}
 }
+
+// DismissColorModeNudgeIfExists will get rid of the color theme nudge that
+// appears the first time launching chrome. This method will find and wait
+// for nudge to go away as there is no dismiss button.
+func DismissColorModeNudgeIfExists(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	nudge := nodewith.NameContaining("Switch between dark and light theme").First()
+	nudgeFound, err := ui.IsNodeFound(ctx, nudge)
+	if err != nil {
+		return errors.Wrap(err, "failed to search for nudge")
+	}
+
+	if nudgeFound {
+		if err := ui.WithTimeout(45 * time.Second).WaitUntilGone(nudge)(ctx); err != nil {
+			return errors.Wrap(err, "nudge not dismissing")
+		}
+	}
+	return nil
+}
