@@ -16,6 +16,40 @@
       "message": "depend on https://crrev.com/c/3726427",
       "revId": "d35537aead11d5dd84306c429c4ad95afda762ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f743a5b_e0ad3fce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-29T06:40:27Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "d35537aead11d5dd84306c429c4ad95afda762ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b44da21d_098704da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_pin_lockout.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-06-29T06:40:27Z",
+      "side": 1,
+      "message": "nit: End comment with dot.",
+      "revId": "d35537aead11d5dd84306c429c4ad95afda762ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
