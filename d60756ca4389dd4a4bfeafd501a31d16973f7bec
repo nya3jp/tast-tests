@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8211380c_5a1929aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-06-29T21:32:55Z",
+      "side": 1,
+      "message": "@wrong could you take a look at the test cases? I am worried about the:\n\nLauncher search result for \"Long tail answers\" test case \n\nThere appears to be answer card support for who is the current president of the USA/prime minister of Australia but I am not getting answer cards for who is the FIRST president of the USA/prime minister of Australia. This means that the test will flake based off of future politics :(",
+      "revId": "d60756ca4389dd4a4bfeafd501a31d16973f7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
