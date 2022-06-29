@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -128,15 +129,18 @@ func AudioPlaybackStress(ctx context.Context, s *testing.State) {
 
 	// Disconnect BT device.
 	defer btDevice.Disconnect(ctx)
-
-	if err := playAudio(ctx, tconn, testOpt.stressDuration); err != nil {
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	if err := playAudio(ctx, tconn, downloadsPath, testOpt.stressDuration); err != nil {
 		s.Fatal("Failed to play audio: ", err)
 	}
 }
 
 // playAudio generates wav audio file, play using default player
 // and verify audio routing through bluetooth device.
-func playAudio(ctx context.Context, tconn *chrome.TestConn, dur time.Duration) error {
+func playAudio(ctx context.Context, tconn *chrome.TestConn, downloadsPath string, dur time.Duration) error {
 	cras, err := audio.NewCras(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create Cras object")
@@ -171,7 +175,7 @@ func playAudio(ctx context.Context, tconn *chrome.TestConn, dur time.Duration) e
 
 	// Generate sine raw input file that lasts 30 seconds.
 	rawFileName := "AudioFile.raw"
-	rawFilePath := filepath.Join(filesapp.DownloadPath, rawFileName)
+	rawFilePath := filepath.Join(downloadsPath, rawFileName)
 	duration := int(dur / time.Second)
 	rawFile := audio.TestRawData{
 		Path:          rawFilePath,
@@ -188,7 +192,7 @@ func playAudio(ctx context.Context, tconn *chrome.TestConn, dur time.Duration) e
 	defer os.Remove(rawFile.Path)
 
 	wavFileName := "AudioFile.wav"
-	wavFile := filepath.Join(filesapp.DownloadPath, wavFileName)
+	wavFile := filepath.Join(downloadsPath, wavFileName)
 	if err := audio.ConvertRawToWav(ctx, rawFilePath, wavFile, 48000, 2); err != nil {
 		return errors.Wrap(err, "failed to convert raw to wav")
 	}
