@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c2d9b4_021090a7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-29T05:30:19Z",
+      "side": 1,
+      "message": "oh, I didn\u0027t know that. Thanks.",
+      "parentUuid": "a8bc87c6_ab0d8e98",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 76
+      },
+      "revId": "733de33818e861ba7920476b3960a8c52be7572e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1e308e8_f7a88c33",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-28T22:16:23Z",
       "side": 1,
       "message": "Likewise",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 66
+      },
+      "revId": "733de33818e861ba7920476b3960a8c52be7572e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8f384d4_5069a415",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-29T05:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1e308e8_f7a88c33",
       "range": {
         "startLine": 156,
         "startChar": 1,
