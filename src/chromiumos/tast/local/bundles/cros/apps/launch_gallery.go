@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -75,11 +76,15 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 	//TODO(crbug/1146196) Remove retry after Downloads mounting issue fixed.
 	// Setup the test image.
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
 	// Use the test name to unique name the local test image file.
 	// Otherwise the following tests sharing the same Chrome session might have name conflicts.
 	// e.g. http://b/198381192.
 	localFile := "launch_gallery" + testFile
-	localFileLocation := filepath.Join(filesapp.DownloadPath, localFile)
+	localFileLocation := filepath.Join(downloadsPath, localFile)
 	if err := ui.Retry(10, func(context.Context) error {
 		return fsutil.CopyFile(s.DataPath(testFile), localFileLocation)
 	})(ctx); err != nil {

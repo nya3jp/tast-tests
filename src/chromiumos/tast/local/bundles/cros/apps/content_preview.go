@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -65,14 +66,18 @@ func ContentPreview(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
 	// Clean up in the end.
 	defer func() {
-		files, err := ioutil.ReadDir(filesapp.DownloadPath)
+		files, err := ioutil.ReadDir(downloadsPath)
 		if err != nil {
 			s.Log("Failed to read files in Downloads: ", err)
 		} else {
 			for _, f := range files {
-				path := filepath.Join(filesapp.DownloadPath, f.Name())
+				path := filepath.Join(downloadsPath, f.Name())
 				if err := os.RemoveAll(path); err != nil {
 					s.Logf("Failed to RemoveAll(%q)", path)
 				}
@@ -83,25 +88,25 @@ func ContentPreview(ctx context.Context, s *testing.State) {
 	subTests := []subTestData{
 		{
 			name:        cpTextFileName,
-			filePath:    filepath.Join(filesapp.DownloadPath, cpTextFileName),
+			filePath:    filepath.Join(downloadsPath, cpTextFileName),
 			thumbnail:   "", // TODO (melzhang@google.com): to add functions to create thumbnail for the files.
 			shareString: cpTextFileName,
 		},
 		{
 			name:        cpZipFileName,
-			filePath:    filepath.Join(filesapp.DownloadPath, cpZipFileName),
+			filePath:    filepath.Join(downloadsPath, cpZipFileName),
 			thumbnail:   "",
 			shareString: cpZipFileName,
 		},
 		{
 			name:        cpVideoFileName,
-			filePath:    filepath.Join(filesapp.DownloadPath, cpVideoFileName),
+			filePath:    filepath.Join(downloadsPath, cpVideoFileName),
 			thumbnail:   "",
 			shareString: cpVideoFileName,
 		},
 		{
 			name:        cpPngFileName,
-			filePath:    filepath.Join(filesapp.DownloadPath, cpPngFileName),
+			filePath:    filepath.Join(downloadsPath, cpPngFileName),
 			thumbnail:   "",
 			shareString: cpPngFileName,
 		},
