@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/scanapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/document"
 	"chromiumos/tast/local/printing/ippusbbridge"
@@ -147,11 +148,16 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set scan settings: ", err)
 	}
 
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve users MyFiles path: ", err)
+	}
+	defaultScanPattern := filepath.Join(myFilesPath, scanning.DefaultScanFilePattern)
 	for _, test := range multiPageScanTests {
 		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_multi_page_scan")
 			defer func() {
-				if err := scanning.RemoveScans(scanning.DefaultScanPattern); err != nil {
+				if err := scanning.RemoveScans(defaultScanPattern); err != nil {
 					s.Error("Failed to remove scans: ", err)
 				}
 			}()
@@ -189,7 +195,7 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to save scan scan: ", err)
 			}
 
-			scan, err := scanning.GetScan(scanning.DefaultScanPattern)
+			scan, err := scanning.GetScan(defaultScanPattern)
 			if err != nil {
 				s.Fatal("Failed to find scan: ", err)
 			}

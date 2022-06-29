@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/cswitch"
 	"chromiumos/tast/testing"
 )
@@ -116,7 +117,11 @@ func HotplugUSBHeadsetAudioPlayback(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to detect USB headset after plug: ", err)
 	}
 
-	if err := audioPlay(ctx, tconn); err != nil {
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	if err := audioPlay(ctx, tconn, downloadsPath); err != nil {
 		s.Fatal("Failed to play audio file: ", err)
 	}
 
@@ -169,7 +174,7 @@ func HotplugUSBHeadsetAudioPlayback(ctx context.Context, s *testing.State) {
 
 // audioPlay generates wav audio file, play using default player
 // and verify audio routing through BT device.
-func audioPlay(ctx context.Context, tconn *chrome.TestConn) error {
+func audioPlay(ctx context.Context, tconn *chrome.TestConn, downloadsPath string) error {
 	cras, err := audio.NewCras(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create Cras object")
@@ -198,7 +203,7 @@ func audioPlay(ctx context.Context, tconn *chrome.TestConn) error {
 
 	// Generate sine raw input file that lasts 60 seconds.
 	rawFileName := "AudioFile.raw"
-	rawFilePath := filepath.Join(filesapp.DownloadPath, rawFileName)
+	rawFilePath := filepath.Join(downloadsPath, rawFileName)
 	rawFile := audio.TestRawData{
 		Path:          rawFilePath,
 		BitsPerSample: 16,
@@ -214,7 +219,7 @@ func audioPlay(ctx context.Context, tconn *chrome.TestConn) error {
 	defer os.Remove(rawFile.Path)
 
 	wavFileName := "AudioFile.wav"
-	wavFile := filepath.Join(filesapp.DownloadPath, wavFileName)
+	wavFile := filepath.Join(downloadsPath, wavFileName)
 	if err := audio.ConvertRawToWav(ctx, rawFilePath, wavFile, 48000, 2); err != nil {
 		return errors.Wrap(err, "failed to convert raw to wav")
 	}
