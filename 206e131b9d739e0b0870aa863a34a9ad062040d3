@@ -56,6 +56,30 @@
       },
       "revId": "206e131b9d739e0b0870aa863a34a9ad062040d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b714665f_a68d8d50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-29T16:06:45Z",
+      "side": 1,
+      "message": "browser.TypeAsh is string, so using switch won\u0027t help here.",
+      "parentUuid": "f7f9a54d_ce6e8bd8",
+      "range": {
+        "startLine": 394,
+        "startChar": 1,
+        "endLine": 404,
+        "endChar": 2
+      },
+      "revId": "206e131b9d739e0b0870aa863a34a9ad062040d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
