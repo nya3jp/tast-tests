@@ -104,8 +104,7 @@ func init() {
 				Name:              "clamshell_logged_in_stable_lacros",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 				Fixture:           "lacrosForEA",
-				ExtraSoftwareDeps: []string{"lacros"},
-				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				Val: testParameters{
 					tabletMode: false,
 					oobe:       false,
@@ -114,8 +113,7 @@ func init() {
 			{
 				Name:              "tablet_logged_in_stable_lacros",
 				Fixture:           "lacrosForEA",
-				ExtraSoftwareDeps: []string{"lacros"},
-				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros_stable"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.TouchScreen()),
 				Val: testParameters{
 					tabletMode: true,
