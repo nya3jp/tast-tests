@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0aecb9e_f39a372c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-29T09:15:58Z",
+      "side": 1,
+      "message": "CC line are FYI for their respective areas. No functional changes, just updating to move away from the deprecated bind mount.\n\nayaelattar@ for DLP\nleandre@ for notification\nlamzin@ for policy\nsimonha@ for https\nrnanjappan@ for MTP fixture",
+      "revId": "61cc8fb70c544b0c32f999de6c4a0974711ef88c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
