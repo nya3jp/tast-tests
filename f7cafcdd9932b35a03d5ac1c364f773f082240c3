@@ -101,6 +101,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2af64358_e8a3ba46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-29T05:02:21Z",
+      "side": 1,
+      "message": "We want to check that portal detector uses DNS results. My question (more specifically) is: is it meaningful to verify this logic on v6 and/or dual stack networks as well? I think from the portal detector standpoint, there isn\u0027t a difference (HttpRequest handles DNS resolution the same way I think), so I would lean towards \"no\", but just want to double check in case I missed something.",
+      "parentUuid": "446f74a4_36714aab",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a76e9ced_dfd1718e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 4
