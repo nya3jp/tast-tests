@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6ffafe3_9fcf3ec3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-29T08:22:27Z",
+      "side": 1,
+      "message": "anasalazar@ for launcher.* tests\n\nThe bluetooth tests are by external authors, updating their tests as a matter of code health.",
+      "revId": "7b74d3ae3163a38f3391beaa111869d5e9e27dfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
