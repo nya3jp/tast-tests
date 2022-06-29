@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -25,9 +26,9 @@ import (
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/sysutil"
@@ -78,8 +79,8 @@ func init() {
 
 // copyToDownloads copies the test data file with `fileName` into the Downloads
 // directory, so it can be picked from the ChromeOS file picker.
-func copyToDownloads(s *testing.State, fileName string) {
-	newPath := filesapp.DownloadPath + "/" + fileName
+func copyToDownloads(s *testing.State, downloadsPath, fileName string) {
+	newPath := filepath.Join(downloadsPath, fileName)
 	err := fsutil.CopyFile(s.DataPath(fileName), newPath)
 	if err != nil {
 		s.Fatalf("Failed to move file %s: %v", fileName, err)
@@ -95,9 +96,9 @@ func copyToDownloads(s *testing.State, fileName string) {
 // importCACert copies the `fileName` test data file into the Downloads
 // directory and uses the Import button on the chrome://settings/certificates
 // page to manually import it.
-func importCACert(ctx context.Context, s *testing.State, ui *uiauto.Context) {
+func importCACert(ctx context.Context, s *testing.State, ui *uiauto.Context, downloadsPath string) {
 	const fileName = rootCertFileName
-	copyToDownloads(s, fileName)
+	copyToDownloads(s, downloadsPath, fileName)
 
 	const trustCheckboxText = "Trust this certificate for identifying websites"
 	if err := uiauto.Combine("import CA cert",
@@ -117,9 +118,9 @@ func importCACert(ctx context.Context, s *testing.State, ui *uiauto.Context) {
 // importClientCert copies the client cert data file into the Downloads
 // directory and uses the Import and Bind button on the
 // chrome://settings/certificates page to manually import it.
-func importClientCert(ctx context.Context, s *testing.State, ui *uiauto.Context) {
+func importClientCert(ctx context.Context, s *testing.State, ui *uiauto.Context, downloadsPath string) {
 	const fileName = clientCertFileName
-	copyToDownloads(s, fileName)
+	copyToDownloads(s, downloadsPath, fileName)
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -279,8 +280,12 @@ func CertSettingsPage(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	importCACert(ctx, s, ui)
-	importClientCert(ctx, s, ui)
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	importCACert(ctx, s, ui, downloadsPath)
+	importClientCert(ctx, s, ui, downloadsPath)
 	waitForClientCert(ctx, s)
 
 	createAndUseWebsite(ctx, s, browser, ui)
