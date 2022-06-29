@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f34529b_427a1d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T14:05:33Z",
+      "side": 1,
+      "message": "Could you clarify the unit? Degree, radian or something else?",
+      "range": {
+        "startLine": 73,
+        "startChar": 58,
+        "endLine": 73,
+        "endChar": 66
+      },
+      "revId": "1c4469c7290d14f51fc1dffe3b50457892acb603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4afb4890_e1d31d31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T14:05:33Z",
+      "side": 1,
+      "message": "could you use named return value for documentation purpose?",
+      "range": {
+        "startLine": 84,
+        "startChar": 38,
+        "endLine": 84,
+        "endChar": 46
+      },
+      "revId": "1c4469c7290d14f51fc1dffe3b50457892acb603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f70c19d_39b086fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T14:05:33Z",
+      "side": 1,
+      "message": "could you move this out from this function so taht it won\u0027t need to be compiled for each invoecation.",
+      "revId": "1c4469c7290d14f51fc1dffe3b50457892acb603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2460c4_4b1f7b72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T14:05:33Z",
+      "side": 1,
+      "message": "this can be called at any time, so \"initial\" sounds like out of scope. Could you drop?",
+      "range": {
+        "startLine": 92,
+        "startChar": 48,
+        "endLine": 92,
+        "endChar": 55
+      },
+      "revId": "1c4469c7290d14f51fc1dffe3b50457892acb603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a19e63_285534b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T14:05:33Z",
+      "side": 1,
+      "message": "also no \"init\" needed. Ditto for below.",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 5
+      },
+      "revId": "1c4469c7290d14f51fc1dffe3b50457892acb603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e497c4f5_d3225dc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T14:05:33Z",
+      "side": 1,
+      "message": "could you make the name consistent?\nlid/hys (preferred) or lidAngle/hysAngle.",
+      "revId": "1c4469c7290d14f51fc1dffe3b50457892acb603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1844fa3e_17c34ad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T14:05:33Z",
+      "side": 1,
+      "message": "nit: \"const\"\n\ncould you use consistent name here, too?",
+      "revId": "1c4469c7290d14f51fc1dffe3b50457892acb603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "441993a1_9ee4c553",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T14:05:33Z",
+      "side": 1,
+      "message": "nit: \":\u003d\"",
+      "range": {
+        "startLine": 120,
+        "startChar": 9,
+        "endLine": 120,
+        "endChar": 10
+      },
+      "revId": "1c4469c7290d14f51fc1dffe3b50457892acb603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef7189ec_786d097f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T14:05:33Z",
+      "side": 1,
+      "message": "could you handle error?\nCould you avoid parsing CombinedOutput() as there\u0027s no guarantee that stdout/stderr won\u0027t interlaced.",
+      "revId": "1c4469c7290d14f51fc1dffe3b50457892acb603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
