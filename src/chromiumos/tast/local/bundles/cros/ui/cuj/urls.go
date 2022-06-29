@@ -145,4 +145,11 @@ const (
 
 	// WeVideoURL specifies the URL for WeVideo.
 	WeVideoURL = "https://www.wevideo.com/"
+
+	// URLs used by TinkerCadCUJ.
+
+	// TinkerCadSignInURL specifies the URL for TinkerCad sign in.
+	TinkerCadSignInURL = "https://www.tinkercad.com/login"
+	// TinkerCadDashboardURL specifies the URL for TinkerCad dashboard.
+	TinkerCadDashboardURL = "https://www.tinkercad.com/dashboard"
 )
