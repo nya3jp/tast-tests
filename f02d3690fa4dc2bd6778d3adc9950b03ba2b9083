@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b143314_28d7e934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-06-29T22:38:39Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of `kernel_uprev` boards? If they are intended to be more cutting edge and has high chances of failing ARC++ anyway, we might never want to support testing on these boards.",
+      "range": {
+        "startLine": 50,
+        "startChar": 93,
+        "endLine": 50,
+        "endChar": 108
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
