@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -74,21 +75,26 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+
 	sharedFolders := sharedfolders.NewSharedFolders(tconn)
 	// Clean up in the end.
 	defer func() {
 		if err := sharedFolders.UnshareAll(cont, cr)(cleanupCtx); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
-		if err := cleanupfolder.RemoveAllFilesInDirectory(filesapp.DownloadPath); err != nil {
-			s.Errorf("Failed to remove all files in %s: %v", filesapp.DownloadPath, err)
+		if err := cleanupfolder.RemoveAllFilesInDirectory(downloadsPath); err != nil {
+			s.Errorf("Failed to remove all files in %s: %v", downloadsPath, err)
 		}
 	}()
 
 	// Make sure the downloads directory is empty before we start as any files
 	// left over from previous tests will make the test fail.
-	if err := cleanupfolder.RemoveAllFilesInDirectory(filesapp.DownloadPath); err != nil {
-		s.Fatalf("Failed to remove all files in %s: %v", filesapp.DownloadPath, err)
+	if err := cleanupfolder.RemoveAllFilesInDirectory(downloadsPath); err != nil {
+		s.Fatalf("Failed to remove all files in %s: %v", downloadsPath, err)
 	}
 
 	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
@@ -147,11 +153,11 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 		)
 
 		// Add a file and a folder in Downloads.
-		filePath := filepath.Join(filesapp.DownloadPath, testFile)
+		filePath := filepath.Join(downloadsPath, testFile)
 		if err := ioutil.WriteFile(filePath, []byte(testString), 0644); err != nil {
 			s.Fatal("Failed to create file in Downloads: ", err)
 		}
-		folderPath := filepath.Join(filesapp.DownloadPath, testFolder)
+		folderPath := filepath.Join(downloadsPath, testFolder)
 		if err := os.MkdirAll(folderPath, 0755); err != nil {
 			s.Fatal("Failed to create test folder in Downloads: ", err)
 		}
@@ -207,7 +213,7 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 		}
 
 		// Check the content of the test file in ChromeOS.
-		b, err := ioutil.ReadFile(filepath.Join(filesapp.DownloadPath, testFile))
+		b, err := ioutil.ReadFile(filepath.Join(downloadsPath, testFile))
 		if err != nil {
 			s.Fatal("Failed to read the file in ChromeOS: ", err)
 		}
@@ -224,7 +230,7 @@ func ShareDownloadsAddFiles(ctx context.Context, s *testing.State) {
 		)
 
 		// Add a file in Downloads.
-		filePath := filepath.Join(filesapp.DownloadPath, testFile)
+		filePath := filepath.Join(downloadsPath, testFile)
 		if err := ioutil.WriteFile(filePath, []byte(testString), 0755); err != nil {
 			s.Fatal("Failed to create file in Downloads: ", err)
 		}
