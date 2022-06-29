@@ -77,7 +77,7 @@ func OpenAccountManagerSettingsAction(tconn *chrome.TestConn, cr *chrome.Chrome)
 // AddAccount adds an account in-session. Account addition dialog should be already open.
 func AddAccount(ctx context.Context, tconn *chrome.TestConn, email, password string) error {
 	// Set up keyboard.
-	kb, err := input.Keyboard(ctx)
+	kb, err := input.VirtualKeyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get keyboard")
 	}
