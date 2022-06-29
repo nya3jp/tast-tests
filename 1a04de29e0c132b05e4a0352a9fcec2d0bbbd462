@@ -39,6 +39,30 @@
       },
       "revId": "1a04de29e0c132b05e4a0352a9fcec2d0bbbd462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1bc9e9_30f278bb",
+        "filename": "src/chromiumos/tast/local/croshealthd/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1530527
+      },
+      "writtenOn": "2022-06-29T03:12:48Z",
+      "side": 1,
+      "message": "Done. Also, I added comments to explain its purpose and separate lines for readability.",
+      "parentUuid": "e790c6d5_7c00e407",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "1a04de29e0c132b05e4a0352a9fcec2d0bbbd462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
