@@ -28,7 +28,7 @@ type Process struct {
 // String returns a human-readable string representation for struct Process.
 func (p Process) String() string {
 	// Cmdline is usually enough for most cases for human inspection.
-	return fmt.Sprintf("[%d %s %q]", p.PID, p.SEContext, p.Cmdline)
+	return fmt.Sprintf("[%d %q %s]", p.PID, p.Cmdline, p.SEContext)
 }
 
 // GetProcesses returns currently-running processes.

@@ -23,7 +23,7 @@ const (
 	Unstable
 )
 
-const domainIsolationErrorMessage = "every daemon must have its own domain. Please follow steps 1~3 of https://chromium.googlesource.com/chromiumos/docs/+/main/security/selinux.md#Practice-in-Examples to create a permissive domain for your daemon."
+const domainIsolationErrorMessage = "THIS IS A SECURITY BUG. Follow steps 1~3 of https://chromium.googlesource.com/chromiumos/docs/+/HEAD/security/selinux.md#Writing-SELinux-policy-for-a-daemon to create a permissive domain for the daemon."
 
 // ProcessesTestInternal runs the test suite for SELinuxProcesses(Experimental|Informational)?
 func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector []ProcessTestCaseSelector) {
@@ -78,7 +78,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				}
 			case notString:
 				if strings.Contains(proc.SEContext, ":"+testCase.context+":") {
-					fmt.Fprintf(&errorLine, "; want anything except %q", testCase.context)
+					fmt.Fprintf(&errorLine, "; expected to have its own SELinux domain and not %q", testCase.context)
 					if testCase.errorMsg != "" {
 						fmt.Fprintf(&errorLine, "; %v", testCase.errorMsg)
 					}
@@ -195,7 +195,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				// python3 is for crbug.com/1151463.
 				// mkdir is for crbug.com/1156295.
 				{notCmdline, ".*(frecon|agetty|ping|recover_dts|udevadm|update_rw_vpd|mosys|vpd|flashrom|moblab|autotest|devserver|rotatelogs|apache2|envoy|containerd|python3|mkdir).*", notString, "chromeos", zeroProcs, domainIsolationErrorMessage},
-				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notString, "minijailed", zeroProcs, domainIsolationErrorMessage},
+				{notCmdline, ".*(frecon|agetty|ping|recover_duts).*", notString, "unconfined_proc", zeroProcs, domainIsolationErrorMessage},
 				{notExe, "(/sbin/init|/bin/bash)", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
 				// coreutils and ping are excluded for recover_duts scripts.
 				// logger is common to redirect output widely used from init conf scripts.
@@ -208,7 +208,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{notExe, "(/bin/([db]a)?sh|/usr/bin/coreutils|/usr/bin/logger)", notString, "cros_init_scripts", zeroProcs, domainIsolationErrorMessage},
 				{notExe, "(/sbin/init|/bin/bash)", notString, "cros_init", zeroProcs, domainIsolationErrorMessage},
 				{notCmdline, ".*(ping|frecon|agetty|recover_duts).*", notString, "chromeos", zeroProcs, domainIsolationErrorMessage},
-				{cmdline, ".*", notString, "minijailed", zeroProcs, domainIsolationErrorMessage},
+				{cmdline, ".*", notString, "unconfined_proc", zeroProcs, domainIsolationErrorMessage},
 			}...)
 		}
 	}
