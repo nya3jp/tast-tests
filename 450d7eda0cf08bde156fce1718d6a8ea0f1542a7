@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "890310dc_e7358cbe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/copy_files_to_linux_files.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-06-29T04:22:28Z",
+      "side": 1,
+      "message": "Nit: user\u0027s. Here and elsewhere.",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 30
+      },
+      "revId": "450d7eda0cf08bde156fce1718d6a8ea0f1542a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
