@@ -260,6 +260,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87dba6f2_890414cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-06-29T22:31:46Z",
+      "side": 1,
+      "message": "Thanks for confirming, Yongshun!",
+      "parentUuid": "e8a7c064_21d022a8",
+      "revId": "c133aa426ba3c99cfccca30d0bf35646be042ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d7d34ca_4b987c97",
