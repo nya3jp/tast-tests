@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c355d9fd_d00798bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-29T14:15:33Z",
+      "side": 1,
+      "message": "LGTM, but I just want to make sure we don\u0027t have an endianess issue.\n\nIn C the expecation is that we can jsut slam the int32 read from the proto into a struct in_addr s_addr field and be done: https://source.chromium.org/chromium/chromium/src/+/main:ash/components/arc/net/arc_net_host_impl.cc;l\u003d397?q\u003darc_net_host_impl\u0026ss\u003dchromium. This works regardless of the CPU endianess as long as the int32 bytes are never interpreted.",
+      "revId": "4a78ef9da072f600c6111c8a4563595caebbd90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4923e358_e3369368",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/network_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-29T14:15:33Z",
+      "side": 1,
+      "message": "There maybe a problem here. Normally the IP address in binary should always be moved around in network order aka big endian, which allows to assign address literal in the \"natural reading order\" like:\n ipv4 :\u003d net.IP{192, 168, 0, 1}\n \nSo I am a little confused to see we have to use LittleEndian.PutUint32(). Does that mean that the code needs to be aware at runtime of the endianess of the CPU running the code ?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 42
+      },
+      "revId": "4a78ef9da072f600c6111c8a4563595caebbd90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
