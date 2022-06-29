@@ -16,9 +16,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 )
@@ -123,7 +123,11 @@ func ConfigureChromeToAcceptCertificate(ctx context.Context, config ServerConfig
 	_, caCertFileName := filepath.Split(config.CaCertificatePath)
 
 	// Copy the certificate file to a local Downloads directory.
-	certDest := filepath.Join(filesapp.MyFilesPath, filesapp.Downloads, caCertFileName)
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		return errors.Wrap(err, "failed to retrieve user's Downloads path")
+	}
+	certDest := filepath.Join(downloadsPath, caCertFileName)
 	if err := copyFile(config.CaCertificatePath, certDest); err != nil {
 		return errors.Wrap(err, "failed to copy certificate")
 	}

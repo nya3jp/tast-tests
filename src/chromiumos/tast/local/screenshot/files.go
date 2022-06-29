@@ -10,12 +10,11 @@ import (
 	"regexp"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 )
 
 // screenshotPaths returns list of screenshot paths in Download folder.
-func screenshotPaths() ([]string, error) {
-	if _, err := os.Stat(filesapp.DownloadPath); errors.Is(err, os.ErrNotExist) {
+func screenshotPaths(path string) ([]string, error) {
+	if _, err := os.Stat(path); errors.Is(err, os.ErrNotExist) {
 		// If Download folder does not exist, then there are no screenshots.
 		return nil, nil
 	}
@@ -23,7 +22,7 @@ func screenshotPaths() ([]string, error) {
 	re := regexp.MustCompile(`Screenshot.*png`)
 	var paths []string
 
-	if err := filepath.Walk(filesapp.DownloadPath, func(path string, info os.FileInfo, err error) error {
+	if err := filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return errors.Wrap(err, "failed to walk through files in Downloads folder")
 		}
@@ -38,18 +37,18 @@ func screenshotPaths() ([]string, error) {
 	return paths, nil
 }
 
-// HasScreenshots returns whether Download folder has screenshots.
-func HasScreenshots() (bool, error) {
-	paths, err := screenshotPaths()
+// HasScreenshots returns whether `path` has screenshots.
+func HasScreenshots(path string) (bool, error) {
+	paths, err := screenshotPaths(path)
 	if err != nil {
 		return false, err
 	}
 	return len(paths) > 0, nil
 }
 
-// RemoveScreenshots removes screenshots from Download folder.
-func RemoveScreenshots() error {
-	paths, err := screenshotPaths()
+// RemoveScreenshots removes screenshots from supplied `path`.
+func RemoveScreenshots(path string) error {
+	paths, err := screenshotPaths(path)
 	if err != nil {
 		return errors.Wrap(err, "failed to get list of screenshots")
 	}
