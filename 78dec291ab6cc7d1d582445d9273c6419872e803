@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e63c62e_3311504b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-06-29T16:22:09Z",
+      "side": 1,
+      "message": "Do you intend to use a constant for the extension names in this file?",
+      "revId": "78dec291ab6cc7d1d582445d9273c6419872e803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
