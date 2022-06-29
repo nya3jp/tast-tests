@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8df7dab9_8bdaf27b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-06-29T01:14:40Z",
+      "side": 1,
+      "message": "Done!\n\nIt looks like the roaming and selection test also uses your chromium account, should we change them?",
+      "parentUuid": "74423250_93bf5312",
+      "revId": "37e5e0d957589cb248bbe089933ea191d57fe660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3390b801_d047dd4f",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-06-28T12:20:48Z",
       "side": 1,
       "message": "If possible I\u0027d prefer you follow the pattern implemented here and in `wpa_monitor.go` that uses one type per hostapd/wpa_supplicant event. The idea is to replicate hostapd/supplicant messages as if you were using `{hostapd,wpa}_cli` :)",
+      "revId": "37e5e0d957589cb248bbe089933ea191d57fe660",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e7b8df_66104025",
+        "filename": "src/chromiumos/tast/local/hostapd/monitor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-06-29T01:14:40Z",
+      "side": 1,
+      "message": "SGTM, done! Thanks for the sugggestion!",
+      "parentUuid": "3390b801_d047dd4f",
       "revId": "37e5e0d957589cb248bbe089933ea191d57fe660",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
