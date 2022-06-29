@@ -20,9 +20,9 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -68,7 +68,11 @@ func LaunchGalleryFromNotifications(ctx context.Context, s *testing.State) {
 		uiTimeout            = 20 * time.Second
 		downloadCompleteText = "Download complete"
 	)
-	testImageFileLocation := filepath.Join(filesapp.DownloadPath, testImageFileName)
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	testImageFileLocation := filepath.Join(downloadsPath, testImageFileName)
 	defer os.Remove(testImageFileLocation)
 
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))

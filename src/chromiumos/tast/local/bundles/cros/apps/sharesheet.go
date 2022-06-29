@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -61,7 +62,11 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 	)
 
 	// Setup the test file.
-	testFileLocation := filepath.Join(filesapp.DownloadPath, expectedFileName)
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	testFileLocation := filepath.Join(downloadsPath, expectedFileName)
 	if err := ioutil.WriteFile(testFileLocation, []byte(expectedFileContents), 0644); err != nil {
 		s.Fatalf("Failed to create file %q: %s", testFileLocation, err)
 	}
