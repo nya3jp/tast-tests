@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec08e66_2c495910",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-29T15:00:51Z",
+      "side": 1,
+      "message": "I think we need to consider both cases of configuring IPv4 name server and IPv6 name server to avoid hardcoding IPv4 behavior into the virtualnet.go.\n\nFor instance right now the fields added to EnvOptions are not ideal from that perspective.\n\nI would suggest to add at least 3 new fields:\n  - enableIPv4DNS bool. Only does something if DHCP is also configured\n  - enableIPv6DNS bool. Only does something if RAServer is also configured\n  - a map[string][]net.IP field that specify a mapping of hostnames-as-strings to list of IP addresses (can be both v4 and v6) to simulate the A and AAAA answers from the nameservers. One thing we should support is the v4 nameserver returning IPv6 addresses (AAAA queries over IPv4).",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e24af2b_871cc3e7",
@@ -113,6 +130,24 @@
       "side": 1,
       "message": "We want to check that portal detector uses DNS results. My question (more specifically) is: is it meaningful to verify this logic on v6 and/or dual stack networks as well? I think from the portal detector standpoint, there isn\u0027t a difference (HttpRequest handles DNS resolution the same way I think), so I would lean towards \"no\", but just want to double check in case I missed something.",
       "parentUuid": "446f74a4_36714aab",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5496f020_b47c35a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-29T15:00:51Z",
+      "side": 1,
+      "message": "I think we definitely want to cover v4 only and v6 only. However since the portal detector works entirely within one IP family, when it queries the target URLs hostnames IPs it will only ask and consider result of the IP family used for the query. So that means that to test the IPv6 behavior you need to set up an IPv6 nameserver, and advertise it through the RA server with the RA RDNSS option.\n\nSo if this patch only adds configuration for an IPv4 resolved address, we can only test the behavior with IPv4 only.\n\nTesting dual stack is another can of worms because right now the behavior of portal detection will depend on the order of the configuration which is racy. I ll explain more on b/230339227 because it turns out it is exactly related to what we discussed for crrev/c/3722136.\n\nUltimately we probably want to change the portal behavior on dual stack networks, so for now let\u0027s only focus on v4 only and v6 only cases.",
+      "parentUuid": "2af64358_e8a3ba46",
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -480,6 +515,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "623cbd38_03af2b44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-29T15:00:51Z",
+      "side": 1,
+      "message": "DNS A or AAAA results are raw IP addresses. The client that did the query needs to know which destination port to use for the next step, depending on the protocol used. For instance :80 for http, :443 for https, etc.",
+      "parentUuid": "e469875b_a09c51d8",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e419ac0_b106877d",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
         "patchSetId": 4
@@ -491,6 +544,30 @@
       "writtenOn": "2022-06-29T03:43:27Z",
       "side": 1,
       "message": "IIUC, this sentence actually points to the next |AddressToForceIP| field. How about 1) merging these two into one field or 2) just removing this sentence?",
+      "range": {
+        "startLine": 33,
+        "startChar": 49,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f74a6d1_849d7ef1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-29T15:00:51Z",
+      "side": 1,
+      "message": "Normally a real name server would not resolve all hostnames to a set address. We should specify this is a temporary solution until we can support something a bit more sophisticated like providing a /etc/hosts-like file, for instance as a list of {net:IP, string} pairs.\n\nSo maybe say: \"Only support resolving all hostnames to a single IP address provided during configuration\".",
+      "parentUuid": "2e419ac0_b106877d",
       "range": {
         "startLine": 33,
         "startChar": 49,
@@ -519,6 +596,75 @@
         "startChar": 1,
         "endLine": 38,
         "endChar": 17
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ac9c87_043e5d97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-29T15:00:51Z",
+      "side": 1,
+      "message": "If possible prefer to use net.IP type directly.",
+      "range": {
+        "startLine": 38,
+        "startChar": 18,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbe2c4d2_8fd02396",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-29T15:00:51Z",
+      "side": 1,
+      "message": "what is this field used for ?",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 7
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20b92abc_969feece",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-29T15:00:51Z",
+      "side": 1,
+      "message": "net.IP",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 14
       },
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -560,6 +706,24 @@
       "writtenOn": "2022-06-29T00:29:45Z",
       "side": 1,
       "message": "What\u0027s the purpose of this?",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc90117_ae1d9847",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-29T15:00:51Z",
+      "side": 1,
+      "message": "0.0.0.0 is either a wildcard address or means \"nil address\" depending on context. But it is not an effective destination address. I am also a bit confused why this is needed.\n\nDoes that mean that if we pass to dnsmasq 0.0.0.0 for the name server configuration dnsmasq will act itself as the name server and advertise this in the DHCP leases ? In that case I agree with Jie\u0027s comment below.",
+      "parentUuid": "06c39254_03a1b1d7",
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
