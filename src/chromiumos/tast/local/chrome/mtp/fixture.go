@@ -19,7 +19,7 @@ import (
 	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -114,9 +114,13 @@ func (f *mtpFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{
 		}
 	}
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, f.cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve user's Downloads path: ", err)
+	}
 	// Set up the test file.
 	const textFile = "storage.txt"
-	testFileLocation := filepath.Join(filesapp.DownloadPath, textFile)
+	testFileLocation := filepath.Join(downloadsPath, textFile)
 	if err := ioutil.WriteFile(testFileLocation, []byte("this is a test"), 0777); err != nil {
 		s.Fatalf("Creating file %s failed: %s", testFileLocation, err)
 	}

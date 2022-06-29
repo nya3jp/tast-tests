@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/screenshot"
@@ -39,8 +40,12 @@ func DisableScreenshotsHotkey(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve user's Downloads path: ", err)
+	}
 	defer func() {
-		if err := screenshot.RemoveScreenshots(); err != nil {
+		if err := screenshot.RemoveScreenshots(downloadsPath); err != nil {
 			s.Error("Failed to remove screenshots after all tests: ", err)
 		}
 	}()
@@ -104,7 +109,7 @@ func DisableScreenshotsHotkey(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to close notifications: ", err)
 			}
 
-			if err := screenshot.RemoveScreenshots(); err != nil {
+			if err := screenshot.RemoveScreenshots(downloadsPath); err != nil {
 				s.Fatal("Failed to remove screenshots: ", err)
 			}
 
@@ -121,7 +126,7 @@ func DisableScreenshotsHotkey(ctx context.Context, s *testing.State) {
 				s.Fatalf("Failed to wait notification with title %q: %v", tc.wantNotification, err)
 			}
 
-			has, err := screenshot.HasScreenshots()
+			has, err := screenshot.HasScreenshots(downloadsPath)
 			if err != nil {
 				s.Fatal("Failed to check whether screenshot is present: ", err)
 			}

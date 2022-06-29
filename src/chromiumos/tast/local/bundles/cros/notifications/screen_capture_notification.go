@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/clipboard"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -43,8 +44,12 @@ func ScreenCaptureNotification(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve user's Downloads path: ", err)
+	}
 	// Remove all screenshots at the beginning.
-	if err = screenshot.RemoveScreenshots(); err != nil {
+	if err = screenshot.RemoveScreenshots(downloadsPath); err != nil {
 		s.Fatal("Failed to remove screenshots: ", err)
 	}
 
@@ -78,7 +83,7 @@ func ScreenCaptureNotification(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify that screenshot is saved in Download folder.
-	has, err := screenshot.HasScreenshots()
+	has, err := screenshot.HasScreenshots(downloadsPath)
 	if err != nil {
 		s.Fatal("Failed to check whether screenshot is present: ", err)
 	}
@@ -114,7 +119,7 @@ func ScreenCaptureNotification(ctx context.Context, s *testing.State) {
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Verify that our screenshot is deleted (not present in the Download folder).
-		has, err = screenshot.HasScreenshots()
+		has, err = screenshot.HasScreenshots(downloadsPath)
 		if err != nil {
 			return errors.Wrap(err, "failed to check whether screenshot is present")
 		}
