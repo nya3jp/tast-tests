@@ -7,6 +7,7 @@ package notifications
 import (
 	"context"
 	"fmt"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -116,7 +117,7 @@ func InlineReply(ctx context.Context, s *testing.State) {
 	browserWindow := nodewith.Name("Chrome - Notification Generator | Peter.sh").HasClass("BrowserFrame").Role(role.Window)
 	if err := uiauto.Combine("send reply",
 		ui.WaitUntilExists(notificationWindow),
-		ui.LeftClick(nodewith.Name("REPLY").Role(role.Button).Ancestor(notificationWindow)),
+		ui.LeftClick(nodewith.NameRegex(regexp.MustCompile("(?i)reply")).Role(role.Button).Ancestor(notificationWindow)),
 		ui.EnsureFocused(nodewith.HasClass("Textfield").Role(role.TextField).Ancestor(notificationWindow)),
 		kb.TypeAction(replyMsg),
 		kb.AccelAction("Enter"),
