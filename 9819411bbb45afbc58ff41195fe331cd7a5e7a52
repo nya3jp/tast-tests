@@ -354,6 +354,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86dbe99d_4a5bb171",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-29T02:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "409fd80f_3f622dab",
+      "range": {
+        "startLine": 184,
+        "startChar": 6,
+        "endLine": 184,
+        "endChar": 56
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29e10cc6_f54528e6",
@@ -509,6 +533,30 @@
       "side": 1,
       "message": "LeftClick does not work well on LaCrOS. If you look at other CUJ tests, you can see lots of recent changes on fixing it.\n\ne.g. https://crrev.com/c/3714535, https://crrev.com/c/3714534",
       "parentUuid": "cf2920b1_3cf4db07",
+      "range": {
+        "startLine": 284,
+        "startChar": 14,
+        "endLine": 284,
+        "endChar": 23
+      },
+      "revId": "9819411bbb45afbc58ff41195fe331cd7a5e7a52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c9eafad_7bd934ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-29T02:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5eefdcd3_f27e8e02",
       "range": {
         "startLine": 284,
         "startChar": 14,

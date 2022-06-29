@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faac2683_706b189c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-29T02:38:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f55ff94_80ea9788",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 17
+      },
+      "revId": "873616f81f2f2c72a59997068ea51016a9e12c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d54b3f7_0d970321",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eef99f1_dcf58c5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-29T02:38:18Z",
+      "side": 1,
+      "message": "Since TypeAction doesn\u0027t work for TinkerCAD shortcut, replace it with TypeKeyAction.",
+      "parentUuid": "4d54b3f7_0d970321",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 36
+      },
+      "revId": "873616f81f2f2c72a59997068ea51016a9e12c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15a324b2_6135563c",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-26T09:13:42Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 245,
+        "startChar": 2,
+        "endLine": 245,
+        "endChar": 35
+      },
+      "revId": "873616f81f2f2c72a59997068ea51016a9e12c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "976e4868_10ea4c33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad/tinkercad.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1539025
+      },
+      "writtenOn": "2022-06-29T02:38:18Z",
+      "side": 1,
+      "message": "Since TypeAction doesn\u0027t work for TinkerCAD shortcut, replace it with TypeKeyAction.",
+      "parentUuid": "15a324b2_6135563c",
       "range": {
         "startLine": 245,
         "startChar": 2,
