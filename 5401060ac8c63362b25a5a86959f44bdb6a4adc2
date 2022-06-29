@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77dca365_c53e85cc",
+        "filename": "src/chromiumos/tast/remote/firmware/suspend/suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-29T17:49:12Z",
+      "side": 1,
+      "message": "Maybe those consts should just be the strings. I.e.\n\n```\ntype State string\n\nconst (\n  StateS3 State \u003d \"S3\"\n  StateS0ix State \u003d \"S0ix\"\n)\n\nfunc (state State) String() string {\n  return string(state)\n}\n```",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 1
+      },
+      "revId": "5401060ac8c63362b25a5a86959f44bdb6a4adc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e44d03_a65d28e1",
+        "filename": "src/chromiumos/tast/remote/firmware/suspend/suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-06-29T17:49:12Z",
+      "side": 1,
+      "message": "Based on how this was used in the follup cl, this seems likely to lead to confusion.\n\nI.e. If suspend breaks on some platform, the error will be \"Attempting to run on an unsupported platform\" and the \"fix\" will be to add the model to the skip list, when the right answer is to fix suspend there.\n\nMaybe this should be renamed \"VerifySuspendWake\", and shouldn\u0027t return a bool of false, but instead an error of \"Kernel doesn\u0027t support state %q, but was expected to\" or something like that.\n\nThen a failure here is always an error.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 61
+      },
+      "revId": "5401060ac8c63362b25a5a86959f44bdb6a4adc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
