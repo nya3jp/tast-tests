@@ -147,6 +147,22 @@ func init() {
 		Vars:            []string{"policy.ManagedUser.accountPool"},
 	})
 	testing.AddFixture(&testing.Fixture{
+		Name: "telemetryExtensionManagedLacros",
+		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension in Lacros browser on managed device",
+		Contacts: []string{
+			"lamzin@google.com", // Fixture and Telemetry Extension author
+			"mgawad@google.com", // Telemetry Extension author
+			"cros-oem-services-team@google.com",
+		},
+		Impl:            newTelemetryExtensionFixture(managed(), lacros()),
+		Parent:          fixture.PersistentLacrosEnrolled,
+		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
+		TearDownTimeout: cleanupTimeout,
+		PreTestTimeout:  10 * time.Second,
+		PostTestTimeout: 10 * time.Second,
+		Vars:            []string{"policy.ManagedUser.accountPool"},
+	})
+	testing.AddFixture(&testing.Fixture{
 		Name: "telemetryExtensionOverrideOEMNameManaged",
 		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension on managed devices that are not officially supported yet",
 		Contacts: []string{
@@ -156,6 +172,22 @@ func init() {
 		},
 		Impl:            newTelemetryExtensionFixture(overrideOEMName(), managed()),
 		Parent:          fixture.FakeDMSEnrolled,
+		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
+		TearDownTimeout: cleanupTimeout,
+		PreTestTimeout:  10 * time.Second,
+		PostTestTimeout: 10 * time.Second,
+		Vars:            []string{"policy.ManagedUser.accountPool"},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "telemetryExtensionOverrideOEMNameManagedLacros",
+		Desc: "Telemetry Extension fixture with running PWA and companion Telemetry Extension in Lacros browser on managed devices that are not officially supported yet",
+		Contacts: []string{
+			"lamzin@google.com", // Fixture and Telemetry Extension author
+			"mgawad@google.com", // Telemetry Extension author
+			"cros-oem-services-team@google.com",
+		},
+		Impl:            newTelemetryExtensionFixture(overrideOEMName(), managed(), lacros()),
+		Parent:          fixture.PersistentLacrosEnrolled,
 		SetUpTimeout:    chrome.LoginTimeout + 30*time.Second + cleanupTimeout,
 		TearDownTimeout: cleanupTimeout,
 		PreTestTimeout:  10 * time.Second,
@@ -433,6 +465,14 @@ func (f *telemetryExtensionFixture) setupChromeForManagedUsers(ctx context.Conte
 	}
 	if err := f.addOverrideOEMNameChromeArg(ctx, &opts); err != nil {
 		return err
+	}
+	if f.bt == browser.TypeLacros {
+		extraOpts, err := lacrosfixt.NewConfig(
+			lacrosfixt.ChromeOptions(chrome.GAIALogin(chrome.Creds{User: username, Pass: password}))).Opts()
+		if err != nil {
+			return errors.Wrap(err, "failed to get lacros options")
+		}
+		opts = append(opts, extraOpts...)
 	}
 
 	cr, err := chrome.New(ctx, opts...)
