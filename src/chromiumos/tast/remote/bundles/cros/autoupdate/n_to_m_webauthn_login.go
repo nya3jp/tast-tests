@@ -12,6 +12,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/bundles/cros/autoupdate/util"
 	"chromiumos/tast/rpc"
@@ -30,7 +31,7 @@ func init() {
 			"hcyang@google.com", // Test author
 			"cros-hwsec@google.com",
 		},
-		Attr:         []string{}, // Test disabled because of b/233735246.
+		Attr:         []string{"group:autoupdate"},
 		SoftwareDeps: []string{"reboot", "chrome", "auto_update_stable"},
 		ServiceDeps: []string{
 			"tast.cros.browser.ChromeService",
@@ -46,6 +47,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"gsc"},
 		}},
 		Timeout: util.TotalTestTime,
+		Fixture: fixture.Autoupdate,
 	})
 }
 
