@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b322b5a_0ceadf8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-29T08:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f599828_5bbd009d",
+      "revId": "22137147bb0eaa44773001a6f06b0ef1317b5a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17f7ee50_41d712b2",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-06-28T22:06:11Z",
       "side": 1,
       "message": "nit: rename `api` to something more descriptive, given the existence of `apiOOBE` (e.g. `apiPostOOBE`)",
+      "revId": "22137147bb0eaa44773001a6f06b0ef1317b5a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bfb907c_fe4acf38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-06-29T08:45:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17f7ee50_41d712b2",
       "revId": "22137147bb0eaa44773001a6f06b0ef1317b5a4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
