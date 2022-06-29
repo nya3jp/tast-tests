@@ -25,7 +25,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayStore,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "A functional test of the Play Store that installs Google Calendar",
+		Desc:         "A functional test of the Play Store that installs Google Calculator",
 		Contacts:     []string{"arc-core@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		Params: []testing.Param{{
