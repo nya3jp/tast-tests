@@ -235,10 +235,17 @@ func LaunchInMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn
 	}, nil
 }
 
-// LaunchBrowser launches a local web server to serve inputs testing on
-// different type of input fields.
+// LaunchBrowser launches a local web server with the default html to serve
+// inputs testing on different type of input fields.
 // It opens either a Ash browser or a Lacros browser based on the arguments.
 func LaunchBrowser(ctx context.Context, browserType browser.Type, cr *chrome.Chrome, tconn *chrome.TestConn) (*InputsTestServer, error) {
+	return LaunchBrowserWithHTML(ctx, browserType, cr, tconn, html)
+}
+
+// LaunchBrowserWithHTML launches a local web server with the specified html to
+// serve inputs testing on different type of input fields.
+// It opens either a Ash browser or a Lacros browser based on the arguments.
+func LaunchBrowserWithHTML(ctx context.Context, browserType browser.Type, cr *chrome.Chrome, tconn *chrome.TestConn, rawHTML string) (*InputsTestServer, error) {
 	// URL path needs to be in the allowlist to enable some features.
 	// https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/input_method/assistive_suggester.cc.
 	const urlPath = "e14s-test"
@@ -247,7 +254,7 @@ func LaunchBrowser(ctx context.Context, browserType browser.Type, cr *chrome.Chr
 
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "text/html")
-		io.WriteString(w, html)
+		io.WriteString(w, rawHTML)
 	}))
 	defer func() {
 		if hasError {
