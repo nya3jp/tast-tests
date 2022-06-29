@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -242,8 +242,12 @@ func PhoneToCrosHighVis(ctx context.Context, s *testing.State) {
 	// Repeat the file hash check for a few seconds, as we have no indicator on the CrOS side for when the received file has been completely written.
 	// TODO(crbug/1173190): Remove polling when we can confirm the transfer status with public test functions.
 	s.Log("Comparing Android and CrOS file hashes")
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := nearbytestutils.FileHashComparison(ctx, []string{testFile}, filesapp.DownloadPath, filepath.Join(android.DownloadDir, nearbysnippet.SendDir), androidDevice); err != nil {
+		if err := nearbytestutils.FileHashComparison(ctx, []string{testFile}, downloadsPath, filepath.Join(android.DownloadDir, nearbysnippet.SendDir), androidDevice); err != nil {
 			return errors.Wrap(err, "file hashes don't match yet")
 		}
 		return nil

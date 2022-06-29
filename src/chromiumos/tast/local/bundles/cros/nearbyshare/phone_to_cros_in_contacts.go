@@ -16,7 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -199,7 +199,11 @@ func PhoneToCrosInContacts(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Comparing Android and CrOS file hashes")
-	if err := nearbytestutils.FileHashComparison(ctx, []string{testFile}, filesapp.DownloadPath, filepath.Join(android.DownloadDir, nearbysnippet.SendDir), androidDevice); err != nil {
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	if err := nearbytestutils.FileHashComparison(ctx, []string{testFile}, downloadsPath, filepath.Join(android.DownloadDir, nearbysnippet.SendDir), androidDevice); err != nil {
 		s.Fatal("Failed file hash comparison: ", err)
 	}
 	s.Log("Share completed and file hashes match on both sides")
