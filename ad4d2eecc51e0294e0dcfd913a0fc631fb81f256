@@ -70,6 +70,30 @@
       },
       "revId": "ad4d2eecc51e0294e0dcfd913a0fc631fb81f256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6cab513_e4bae5f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dump_vpd_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-29T17:59:28Z",
+      "side": 1,
+      "message": "Not sure what you mean by \"doesn\u0027t report errors\", seems like there are plenty of `exit 1`s in there which should trigger this log dump (including on flashrom failure).\n\nIf we need the logs unconditionally though then I guess this makes sense one way or the other.",
+      "parentUuid": "e3c9f3e3_73cb5579",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 125,
+        "endChar": 40
+      },
+      "revId": "ad4d2eecc51e0294e0dcfd913a0fc631fb81f256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
