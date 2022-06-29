@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00499c20_4f5e39d1",
+        "filename": "src/chromiumos/tast/local/network/tcpdump/tcpdump.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-29T00:29:45Z",
+      "side": 1,
+      "message": "This looks really similar to capturer.go. Can we double check whether or not there\u0027s a way to share code?",
+      "revId": "91515b348b23e58cb6441e5916c574273676c080",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
