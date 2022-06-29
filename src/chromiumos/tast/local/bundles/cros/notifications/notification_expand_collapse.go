@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -150,8 +151,12 @@ func NotificationExpandCollapse(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to generate notification, test expand/collapse in message center: ", err)
 	}
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve user's Downloads path: ", err)
+	}
 	// Remove all screenshots at the end.
-	if err = screenshot.RemoveScreenshots(); err != nil {
+	if err = screenshot.RemoveScreenshots(downloadsPath); err != nil {
 		s.Fatal("Failed to remove screenshots: ", err)
 	}
 }

@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/screenshot"
@@ -251,8 +252,12 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 		s.Fatal("Failed to close notifications: ", err)
 	}
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve user's Downloads path: ", err)
+	}
 	// Clean up previous screenshots.
-	if err := screenshot.RemoveScreenshots(); err != nil {
+	if err := screenshot.RemoveScreenshots(downloadsPath); err != nil {
 		s.Fatal("Failed to remove screenshots: ", err)
 	}
 
@@ -269,11 +274,11 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 	}
 	defer conn.Close()
 
-	testScreenshot(ctx, s, tconn, keyboard, s.Param().(screenshotTestParams))
+	testScreenshot(ctx, s, tconn, keyboard, downloadsPath, s.Param().(screenshotTestParams))
 }
 
 // testScreenshot attempts to take a screenshot, and reports errors if the behavior is different than expected.
-func testScreenshot(ctx context.Context, s *testing.State, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, params screenshotTestParams) {
+func testScreenshot(ctx context.Context, s *testing.State, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, downloadsPath string, params screenshotTestParams) {
 	// Press Ctrl+F5 to take the screenshot.
 	if err := keyboard.Accel(ctx, "Ctrl+F5"); err != nil {
 		s.Fatal("Failed to type screenshot hotkey: ", err)
@@ -304,7 +309,7 @@ func testScreenshot(ctx context.Context, s *testing.State, tconn *chrome.TestCon
 	}
 
 	// Check if a screenshot was taken.
-	takenScreenshot, err := screenshot.HasScreenshots()
+	takenScreenshot, err := screenshot.HasScreenshots(downloadsPath)
 	if err != nil {
 		s.Fatal("Failed to check if a screenshot was taken: ", err)
 	}
