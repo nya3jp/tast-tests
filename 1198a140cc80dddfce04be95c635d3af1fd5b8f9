@@ -151,6 +151,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b806c7a_f0c5a3a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-29T14:46:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e3d6f63_b6d6ffae",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "1198a140cc80dddfce04be95c635d3af1fd5b8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f726dcf1_ffc9a4ae",
@@ -164,6 +188,30 @@
       "writtenOn": "2022-06-29T10:38:08Z",
       "side": 1,
       "message": "nit: usually good to keep the error messages consistent, e.g. \"Failed as device type doesn\u0027t have capture support: \"",
+      "range": {
+        "startLine": 193,
+        "startChar": 11,
+        "endLine": 193,
+        "endChar": 17
+      },
+      "revId": "1198a140cc80dddfce04be95c635d3af1fd5b8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5be6be5e_a5b56fe7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-06-29T14:46:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f726dcf1_ffc9a4ae",
       "range": {
         "startLine": 193,
         "startChar": 11,
