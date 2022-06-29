@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -83,27 +84,31 @@ func ShareFolderZipFile(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get users Download path: ", err)
+	}
 	sharedFolders := sharedfolders.NewSharedFolders(tconn)
 	// Clean up in the end.
 	defer func() {
 		if err := sharedFolders.UnshareAll(cont, cr)(cleanupCtx); err != nil {
 			s.Error("Failed to unshare all folders: ", err)
 		}
-		if err := cleanupfolder.RemoveAllFilesInDirectory(filesapp.DownloadPath); err != nil {
-			s.Errorf("Failed to remove all files in %s: %v", filesapp.DownloadPath, err)
+		if err := cleanupfolder.RemoveAllFilesInDirectory(downloadsPath); err != nil {
+			s.Errorf("Failed to remove all files in %s: %v", downloadsPath, err)
 		}
 	}()
 
 	// Make sure the downloads directory is empty before we start as any files
 	// left over from previous tests will make the test fail.
-	if err := cleanupfolder.RemoveAllFilesInDirectory(filesapp.DownloadPath); err != nil {
-		s.Fatalf("Failed to remove all files in %s: %v", filesapp.DownloadPath, err)
+	if err := cleanupfolder.RemoveAllFilesInDirectory(downloadsPath); err != nil {
+		s.Fatalf("Failed to remove all files in %s: %v", downloadsPath, err)
 	}
 
 	// Create test files and folders.
 	// This will create a folder in Downloads.
 	// Inside the folder, there is a test file and zip file.
-	if err := createTestData(ctx); err != nil {
+	if err := createTestData(ctx, downloadsPath); err != nil {
 		s.Fatal("Failed to create test data: ", err)
 	}
 
@@ -144,27 +149,27 @@ func ShareFolderZipFile(ctx context.Context, s *testing.State) {
 	} */
 }
 
-func createTestData(ctx context.Context) error {
+func createTestData(ctx context.Context, downloadsPath string) error {
 	// Create a folder in Downloads.
-	folderPath := filepath.Join(filesapp.DownloadPath, testFolderZip)
+	folderPath := filepath.Join(downloadsPath, testFolderZip)
 	if err := os.MkdirAll(folderPath, 0755); err != nil {
 		return errors.Wrap(err, "failed to create test folder in Downloads")
 	}
 
 	// Create a file inside the folder.
-	filePath := filepath.Join(filesapp.DownloadPath, testFolderZip, testFileZip1)
+	filePath := filepath.Join(downloadsPath, testFolderZip, testFileZip1)
 	if err := ioutil.WriteFile(filePath, []byte("testString"), 0644); err != nil {
 		return errors.Wrap(err, "failed to create file in Downloads")
 	}
 
 	// Create a zip file.
-	zipPath := filepath.Join(filesapp.DownloadPath, testFolderZip, testZip)
+	zipPath := filepath.Join(downloadsPath, testFolderZip, testZip)
 	if err := testexec.CommandContext(ctx, "zip", "-j", zipPath, filePath).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to create zip file")
 	}
 
 	// Rename the test file so that it would not conflict when extracting later.
-	otherFilePath := filepath.Join(filesapp.DownloadPath, testFolderZip, testFileZip2)
+	otherFilePath := filepath.Join(downloadsPath, testFolderZip, testFileZip2)
 	if err := testexec.CommandContext(ctx, "mv", filePath, otherFilePath).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to rename the test file")
 	}

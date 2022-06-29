@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/sharedfolders"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -110,12 +111,16 @@ func DragDrop(ctx context.Context, s *testing.State) {
 		fileDragFromFilesapp = "filesapp.txt"
 		fileDragFromCrostini = "crostini.txt"
 	)
-	path := filepath.Join(filesapp.MyFilesPath, dirDragFromFilesapp)
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, pre.Chrome.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get users MyFiles path: ", err)
+	}
+	path := filepath.Join(myFilesPath, dirDragFromFilesapp)
 	if err := os.Mkdir(path, 0644); err != nil {
 		s.Fatalf("Create dir %s failed: %s", path, err)
 	}
 	defer os.Remove(path)
-	path = filepath.Join(filesapp.MyFilesPath, fileDragFromFilesapp)
+	path = filepath.Join(myFilesPath, fileDragFromFilesapp)
 	if err := ioutil.WriteFile(path, []byte(fileDragFromFilesapp), 0644); err != nil {
 		s.Fatalf("Create file %s failed: %s", path, err)
 	}
@@ -250,7 +255,11 @@ func dragFromCrostini(ctx context.Context, pre crostini.FixtureData, files *file
 		return errors.Wrap(err, "find the test file in Files app")
 	}
 
-	crosPath := filepath.Join(filesapp.MyFilesPath, path)
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, pre.Chrome.NormalizedUser())
+	if err != nil {
+		return errors.Wrap(err, "failed to get users MyFiles path")
+	}
+	crosPath := filepath.Join(myFilesPath, path)
 	if _, err := os.Stat(crosPath); err != nil {
 		return errors.Wrap(err, "stat")
 	}
