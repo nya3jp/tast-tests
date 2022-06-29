@@ -87,6 +87,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4913182a_6cd9a7fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-29T10:38:08Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "1198a140cc80dddfce04be95c635d3af1fd5b8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62d96172_7e7ae866",
@@ -105,6 +122,53 @@
         "startChar": 12,
         "endLine": 43,
         "endChar": 16
+      },
+      "revId": "1198a140cc80dddfce04be95c635d3af1fd5b8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3d6f63_b6d6ffae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-29T10:38:08Z",
+      "side": 1,
+      "message": "If you decide to fix this, there\u0027s another one:\nvaribles \u003d variables",
+      "parentUuid": "62d96172_7e7ae866",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 16
+      },
+      "revId": "1198a140cc80dddfce04be95c635d3af1fd5b8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f726dcf1_ffc9a4ae",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/cont_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-06-29T10:38:08Z",
+      "side": 1,
+      "message": "nit: usually good to keep the error messages consistent, e.g. \"Failed as device type doesn\u0027t have capture support: \"",
+      "range": {
+        "startLine": 193,
+        "startChar": 11,
+        "endLine": 193,
+        "endChar": 17
       },
       "revId": "1198a140cc80dddfce04be95c635d3af1fd5b8f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
