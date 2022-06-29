@@ -111,6 +111,30 @@
       },
       "revId": "8e936cbadf6d3e5d7df0cdb7ef96a6646e8ae3d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bac0873_a6ebb470",
+        "filename": "src/chromiumos/tast/common/perf/perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-06-29T03:42:27Z",
+      "side": 1,
+      "message": "\u003e Maybe we should not use cujrecorder and use perfutil.Runner that supports collect metrics for multiple runs better.\n\nYou were right. The stopper was the test data reader that supports only one test result file (i.e. it could be either perfutil or crosbolt result file, but not both). So I moved data reporting to the perfutil.",
+      "parentUuid": "b5811f25_16e42643",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 1
+      },
+      "revId": "8e936cbadf6d3e5d7df0cdb7ef96a6646e8ae3d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
