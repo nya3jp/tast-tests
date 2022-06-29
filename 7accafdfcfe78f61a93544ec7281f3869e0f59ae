@@ -33,6 +33,24 @@
       "message": "LGTM if these are not CQ tests. If they are, is it possible to create a new group for them to run as informational for a while? I am not familiar with this test group.",
       "revId": "7accafdfcfe78f61a93544ec7281f3869e0f59ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f405b5_fa2109c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-06-29T15:13:42Z",
+      "side": 1,
+      "message": "Not CQ : )\n\nThanks!",
+      "parentUuid": "389bc5e8_c53d956a",
+      "revId": "7accafdfcfe78f61a93544ec7281f3869e0f59ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
