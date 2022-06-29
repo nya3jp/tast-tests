@@ -250,6 +250,11 @@ func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.Cryptoho
 	username := authConfig.Username
 	password := authConfig.Password
 
+	authID, err := cryptohome.StartAuthSession(ctx, username, false /* isEphemeral */)
+	if err != nil {
+		return errors.Wrap(err, "failed to start auth session")
+	}
+
 	if authConfig.AuthType == hwsec.ChallengeAuth {
 		dbusConn, err := dbusutil.SystemBus()
 		if err != nil {
@@ -303,6 +308,10 @@ func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.Cryptoho
 		}
 		if err := testCheckKey(ctx, cryptohome, username, util.NewVaultKeyInfo(password, keyLabel, false), invalidPassword); err != nil {
 			return errors.Wrap(err, "failed to properly check key")
+		}
+
+		if err := cryptohome.AuthenticateAuthSession(ctx, password, keyLabel, authID, false); err != nil {
+			return errors.Wrap(err, "failed to authenticate auth session")
 		}
 
 		for _, vaultKey := range config.ExtraVaultKeys {
