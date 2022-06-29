@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "006c2204_99f2c528",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-06-29T12:54:25Z",
+      "side": 1,
+      "message": "responding because 1 business day passed after shadow reviewer was assigned.",
+      "revId": "72391dd876aa7fcb23d58e31ae0ff47ce71a882e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5a2b733_099a9e28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-06-29T12:54:25Z",
+      "side": 1,
+      "message": "\":\u003d\" is preferred over var for consistency.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "72391dd876aa7fcb23d58e31ae0ff47ce71a882e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d37e0198_e0fcb38f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-06-29T12:54:25Z",
+      "side": 1,
+      "message": "nit: Did you mean to add some value to the error message after the colon?",
+      "revId": "72391dd876aa7fcb23d58e31ae0ff47ce71a882e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2facff0_e26d00a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-06-29T12:54:25Z",
+      "side": 1,
+      "message": "I think it should catch the case where the expected string pattern was not found for avoiding out-of-range error, and show what the input was to the error message for easier diagnosing.\nSame for the other occurances.",
+      "revId": "72391dd876aa7fcb23d58e31ae0ff47ce71a882e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad035bf6_f3cb4d9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-06-29T12:54:25Z",
+      "side": 1,
+      "message": "maybe \u003e2 or \u003e\u003d3 because message[2] is read inside?\n\nAlso, is it OK to pass the test without these verification when `message` is empty here, for example?",
+      "revId": "72391dd876aa7fcb23d58e31ae0ff47ce71a882e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
