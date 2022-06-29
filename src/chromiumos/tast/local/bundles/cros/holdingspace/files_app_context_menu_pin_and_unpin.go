@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/holdingspace"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -86,7 +87,11 @@ func FilesAppContextMenuPinAndUnpin(ctx context.Context, s *testing.State) {
 	}
 
 	targetName := s.Param().(string)
-	targetPath := filepath.Join(filesapp.MyFilesPath, targetName)
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's MyFiles path: ", err)
+	}
+	targetPath := filepath.Join(myFilesPath, targetName)
 
 	if err := createTarget(targetPath, strings.HasSuffix(targetName, "txt") /* isFile */); err != nil {
 		s.Fatalf("Failed to create %q: %v", targetPath, err)

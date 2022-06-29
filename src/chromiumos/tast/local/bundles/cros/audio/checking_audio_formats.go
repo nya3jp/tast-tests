@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/audio/audionode"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -26,6 +27,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CheckingAudioFormats,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies supported audio file formats",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome"},
@@ -47,10 +49,11 @@ func CheckingAudioFormats(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	const (
-		expectedAudioNode = "INTERNAL_SPEAKER"
-		downloadsPath     = filesapp.DownloadPath
-	)
+	const expectedAudioNode = "INTERNAL_SPEAKER"
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
 
 	audioFiles := []string{"audio.flac", "audio.m4a", "audio.ogg", "audio.wav"}
 	audioFileRe := regexp.MustCompile(`^audio.(wav|m4a|ogg|flac)$`)

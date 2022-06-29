@@ -17,16 +17,16 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/holdingspace"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
 type screenshotParams struct {
-	testfunc func(*chrome.TestConn, *uiauto.Context, string) uiauto.Action
+	testfunc func(*chrome.TestConn, *uiauto.Context, string, string) uiauto.Action
 }
 
 func init() {
@@ -85,8 +85,13 @@ func Screenshot(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	defer faillog.SaveScreenshotOnError(ctx, cr, s.OutDir(), s.HasError)
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+
 	// Ensure no screenshots exist prior to testing.
-	screenshots, err := getScreenshots()
+	screenshots, err := getScreenshots(downloadsPath)
 	if err != nil || len(screenshots) != 0 {
 		s.Fatal("Failed to verify no screenshots exist: ", err)
 	}
@@ -102,7 +107,7 @@ func Screenshot(ctx context.Context, s *testing.State) {
 		// Capture a fullscreen screenshot using the virtual keyboard. This should
 		// behave consistently across device form factors.
 		func(ctx context.Context) error {
-			screenshotLocation, err = takeScreenshot(ctx)
+			screenshotLocation, err = takeScreenshot(ctx, downloadsPath)
 			return err
 		},
 	)(ctx); err != nil {
@@ -128,7 +133,7 @@ func Screenshot(ctx context.Context, s *testing.State) {
 	}
 
 	// Perform additional parameterized testing.
-	if err := s.Param().(screenshotParams).testfunc(tconn, ui, screenshotName)(ctx); err != nil {
+	if err := s.Param().(screenshotParams).testfunc(tconn, ui, downloadsPath, screenshotName)(ctx); err != nil {
 		s.Fatal("Failed to perform parameterized testing: ", err)
 	}
 
@@ -150,7 +155,7 @@ func Screenshot(ctx context.Context, s *testing.State) {
 
 // testScreenshotLaunch performs testing of launching a screenshot.
 func testScreenshotLaunch(
-	tconn *chrome.TestConn, ui *uiauto.Context, screenshotName string) uiauto.Action {
+	tconn *chrome.TestConn, ui *uiauto.Context, downloadsPath, screenshotName string) uiauto.Action {
 	return uiauto.Combine("launch screenshot",
 		// Double click the screenshot view. This will wait until the screenshot
 		// view exists and stabilizes before performing the double click.
@@ -170,7 +175,7 @@ func testScreenshotLaunch(
 
 // testScreenshotOverflow performs testing of screenshot overflow behavior.
 func testScreenshotOverflow(
-	tconn *chrome.TestConn, ui *uiauto.Context, screenshotName string) uiauto.Action {
+	tconn *chrome.TestConn, ui *uiauto.Context, downloadsPath, screenshotName string) uiauto.Action {
 	return func(ctx context.Context) error {
 		// Holding space UI can accommodate up to three screenshots at a time. This
 		// test will take three additional screenshots to the one already taken in
@@ -190,7 +195,7 @@ func testScreenshotOverflow(
 			// Take the first additional screenshot and verify state.
 			func(ctx context.Context) error {
 				var err error
-				if screenshotLocations[0], err = takeScreenshot(ctx); err != nil {
+				if screenshotLocations[0], err = takeScreenshot(ctx, downloadsPath); err != nil {
 					return err
 				}
 				return uiauto.Combine(
@@ -205,7 +210,7 @@ func testScreenshotOverflow(
 			// Take the second additional screenshot and verify state.
 			func(ctx context.Context) error {
 				var err error
-				if screenshotLocations[1], err = takeScreenshot(ctx); err != nil {
+				if screenshotLocations[1], err = takeScreenshot(ctx, downloadsPath); err != nil {
 					return err
 				}
 				return uiauto.Combine(
@@ -222,7 +227,7 @@ func testScreenshotOverflow(
 			// Take the third additional screenshot and verify state.
 			func(ctx context.Context) error {
 				var err error
-				if screenshotLocations[2], err = takeScreenshot(ctx); err != nil {
+				if screenshotLocations[2], err = takeScreenshot(ctx, downloadsPath); err != nil {
 					return err
 				}
 				return uiauto.Combine(
@@ -263,7 +268,7 @@ func testScreenshotOverflow(
 
 // testScreenshotPinAndUnpin performs testing of pinning and unpinning a screenshot.
 func testScreenshotPinAndUnpin(
-	tconn *chrome.TestConn, ui *uiauto.Context, screenshotName string) uiauto.Action {
+	tconn *chrome.TestConn, ui *uiauto.Context, downloadsPath, screenshotName string) uiauto.Action {
 	return uiauto.Combine("pin and unpin screenshot",
 		// Right click the screenshot view. This will wait until the screenshot view
 		// exists and stabilizes before showing the context menu.
@@ -295,7 +300,7 @@ func testScreenshotPinAndUnpin(
 
 // testScreenshotRemove performs testing of removing a screenshot.
 func testScreenshotRemove(
-	tconn *chrome.TestConn, ui *uiauto.Context, screenshotName string) uiauto.Action {
+	tconn *chrome.TestConn, ui *uiauto.Context, downloadsPath, screenshotName string) uiauto.Action {
 	return uiauto.Combine("remove screenshot",
 		// Right click the screenshot view. This will wait until the screenshot view
 		// exists and stabilizes before showing the context menu.
@@ -314,10 +319,10 @@ func testScreenshotRemove(
 
 // getScreenshots returns the locations of screenshot files present in the user's
 // downloads directory. Screenshot files are assumed to match a specific pattern.
-func getScreenshots() (map[string]struct{}, error) {
+func getScreenshots(downloadsPath string) (map[string]struct{}, error) {
 	result := make(map[string]struct{})
 	screenshots, err := filepath.Glob(filepath.Join(
-		filesapp.DownloadPath, "Screenshot*.png"))
+		downloadsPath, "Screenshot*.png"))
 	if err == nil {
 		for i := range screenshots {
 			result[screenshots[i]] = struct{}{}
@@ -329,11 +334,11 @@ func getScreenshots() (map[string]struct{}, error) {
 // takeScreenshot captures a fullscreen screenshot using the virtual keyboard
 // and returns the location of the screenshot file in the user's downloads
 // directory. This should behave consistently across device form factors.
-func takeScreenshot(ctx context.Context) (string, error) {
+func takeScreenshot(ctx context.Context, downloadsPath string) (string, error) {
 	var result string
 
 	// Cache existing screenshots.
-	screenshots, err := getScreenshots()
+	screenshots, err := getScreenshots(downloadsPath)
 	if err != nil {
 		return result, err
 	}
@@ -352,7 +357,7 @@ func takeScreenshot(ctx context.Context) (string, error) {
 
 	// Wait for screenshot.
 	err = testing.Poll(ctx, func(ctx context.Context) error {
-		newScreenshots, err := getScreenshots()
+		newScreenshots, err := getScreenshots(downloadsPath)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
