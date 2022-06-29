@@ -46,6 +46,11 @@ func init() {
 	})
 }
 
+type searchTestCases struct {
+	name       string
+	tabletMode bool
+}
+
 // SearchGoogleDocument tests that App Launcher Search: Google Document in Drive.
 func SearchGoogleDocument(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*drivefs.FixtureData).Chrome
@@ -86,27 +91,57 @@ func SearchGoogleDocument(ctx context.Context, s *testing.State) {
 	}
 	s.Logf("File %q is available in Files app", drivePath)
 
-	// The expected result will not be an app, so launcher.SearchAndLaunchWithQuery and other similar functions do not work.
-	if err := uiauto.Combine(fmt.Sprintf("search %q in launcher", gDocFilename),
-		launcher.Open(tconn),
-		launcher.Search(tconn, kb, gDocFilename),
-	)(ctx); err != nil {
-		s.Fatalf("Failed to search %s in launcher: %v", gDocFilename, err)
+	subtests := []searchTestCases{
+		{
+			name:       "Clamshell Mode",
+			tabletMode: false,
+		},
+		{
+			name:       "Tablet Mode",
+			tabletMode: true,
+		},
 	}
 
-	resultFinder := launcher.SearchResultListItemFinder.NameRegex(regexp.MustCompile(`^` + gDocFilename)).First()
-	ui := uiauto.New(tconn)
+	for _, subtest := range subtests {
+		s.Run(ctx, subtest.name, func(ctx context.Context, s *testing.State) {
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+subtest.name)
 
-	if err := ui.LeftClick(resultFinder)(ctx); err != nil {
-		s.Fatalf("Failed to left click %s in launcher: %v", gDocFilename, err)
-	}
-	defer ash.CloseAllWindows(cleanupCtx, tconn)
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "launched_result_ui_dump")
+			cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, subtest.tabletMode)
+			if err != nil {
+				s.Fatalf("Failed to ensure %s: %v", subtest.tabletMode, err)
+			}
+			defer cleanup(cleanupCtx)
 
-	browserRootFinder := nodewith.Role(role.Window).HasClass("BrowserRootView")
-	expectedNode := browserRootFinder.NameRegex(regexp.MustCompile(fmt.Sprintf("^%s - Google Docs - Google Chrome - .*", gDocFilename)))
+			if !subtest.tabletMode {
+				if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+					s.Fatal("Launcher not closed: ", err)
+				}
+			}
 
-	if err := uiauto.New(tconn).WaitUntilExists(expectedNode)(ctx); err != nil {
-		s.Fatal("Failed to verify search result: ", err)
+			// The expected result will not be an app, so launcher.SearchAndLaunchWithQuery and other similar functions do not work.
+			if err := uiauto.Combine(fmt.Sprintf("search %q in launcher", gDocFilename),
+				launcher.Open(tconn),
+				launcher.Search(tconn, kb, gDocFilename),
+			)(ctx); err != nil {
+				s.Fatalf("Failed to search %s in launcher: %v", gDocFilename, err)
+			}
+
+			resultFinder := launcher.SearchResultListItemFinder.NameRegex(regexp.MustCompile(`^` + gDocFilename)).First()
+			ui := uiauto.New(tconn)
+
+			if err := ui.LeftClick(resultFinder)(ctx); err != nil {
+				s.Fatalf("Failed to left click %s in launcher: %v", gDocFilename, err)
+			}
+			defer ash.CloseAllWindows(cleanupCtx, tconn)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "launched_result_ui_dump")
+
+			browserRootFinder := nodewith.Role(role.Window).HasClass("BrowserRootView")
+			expectedNode := browserRootFinder.NameRegex(regexp.MustCompile(fmt.Sprintf("^%s - Google Docs - Google Chrome - .*", gDocFilename)))
+
+			if err := uiauto.New(tconn).WaitUntilExists(expectedNode)(ctx); err != nil {
+				s.Fatal("Failed to verify search result: ", err)
+			}
+
+		})
 	}
 }
