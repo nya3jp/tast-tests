@@ -2442,6 +2442,17 @@ func av1decodeVAAPIargs(ctx context.Context, filename string) []string {
 	}
 }
 
+// hevcdecodeVAAPIargs provides the arguments to use with the HEVC decoding binary exe for vaapi.
+func hevcdecodeVAAPIargs(ctx context.Context, filename string) []string {
+	return []string{
+		"--video=" + filename,
+		"--md5",
+		// vpxdec is used to compute reference hashes, and outputs only those for
+		// visible frames
+		"--visible",
+	}
+}
+
 // vp9decodeVAAPIargs provides the arguments to use with the VP9 decoding binary exe for vaapi.
 func vp9decodeVAAPIargs(ctx context.Context, filename string) []string {
 	return []string{
