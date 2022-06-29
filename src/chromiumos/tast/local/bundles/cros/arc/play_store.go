@@ -14,6 +14,11 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -25,7 +30,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PlayStore,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "A functional test of the Play Store that installs Google Calendar",
+		Desc:         "A functional test of the Play Store that installs Google Calculator",
 		Contacts:     []string{"arc-core@google.com", "cros-arc-te@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:arc-functional"},
 		Params: []testing.Param{{
@@ -48,6 +53,7 @@ func init() {
 func PlayStore(ctx context.Context, s *testing.State) {
 	const (
 		pkgName = "com.google.android.calculator"
+		appName = "Calculator"
 	)
 
 	// Setup Chrome.
@@ -103,5 +109,25 @@ func PlayStore(ctx context.Context, s *testing.State) {
 	s.Log("Installing app")
 	if err := playstore.InstallApp(ctx, a, d, pkgName, &playstore.Options{TryLimit: -1}); err != nil {
 		s.Fatal("Failed to install app: ", err)
+	}
+
+	// Setup keyboard.
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to find keyboard: ", err)
+	}
+	defer kb.Close()
+
+	ui := uiauto.New(tconn)
+
+	//Search for and launch the app.
+
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
+
+	if err := uiauto.Combine("search for calculator in launcher",
+		launcher.SearchAndLaunchWithQuery(tconn, kb, appName, appName),
+		ui.WaitUntilExists(nodewith.Name("Calculator").ClassName("Widget")),
+	)(ctx); err != nil {
+		s.Fatal("Failed to search and launch: ", err)
 	}
 }
