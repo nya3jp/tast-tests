@@ -7,6 +7,7 @@ package diagnostics
 import (
 	"context"
 	"os"
+	"path"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/restriction"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
 )
 
@@ -78,9 +80,17 @@ func saveButtonDisabled(ctx context.Context, tconn *chrome.TestConn) error {
 	return nil
 }
 
-func verifySessionLogFile(ctx context.Context) error {
+func getSessionLogPath(ctx context.Context, user string) (string, error) {
+	const fileName = "session_log.txt"
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, user)
+	if err != nil {
+		return "", errors.Wrap(err, "Unable to get downloads path for user")
+	}
+	return path.Join(downloadsPath, fileName), nil
+}
+
+func verifySessionLogFile(ctx context.Context, filePath string) error {
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		const filePath = "/home/chronos/user/MyFiles/Downloads/session_log.txt"
 		filesInfo, err := os.Stat(filePath)
 
 		if os.IsNotExist(err) {
@@ -116,6 +126,11 @@ func SessionLog(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
+	// Ensure `DarkLightModeNudge` dismissed before launching app.
+	if err := diagnosticsapp.DismissColorModeNudgeIfExists(ctx, tconn); err != nil {
+		s.Fatal("Failed to dismiss nudge: ", err)
+	}
+
 	dxRootnode, err := diagnosticsapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch diagnostics app: ", err)
@@ -136,7 +151,12 @@ func SessionLog(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to save session log: ", err)
 	}
 
-	if err := verifySessionLogFile(ctx); err != nil {
+	sessionLogPath, err := getSessionLogPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get session log path for user: ", err)
+	}
+
+	if err := verifySessionLogFile(ctx, sessionLogPath); err != nil {
 		s.Fatal("Failed to verify that session log file was not empty: ", err)
 	}
 
