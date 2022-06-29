@@ -16,6 +16,24 @@
       "message": "Do you intend to use a constant for the extension names in this file?",
       "revId": "78dec291ab6cc7d1d582445d9273c6419872e803",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92051f1d_4f4348aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-06-29T17:27:56Z",
+      "side": 1,
+      "message": "Do you mean whether we want to put fixture names into constants?\n\ni.e.\n\n```\n// fixture.go file\n\nconst (\n  ...\n  TelemetryExtensionManagedLacros \u003d \"telemetryExtensionManagedLacros\"\n)\n\ntesting.AddFixture(\u0026testing.Fixture{\n  Name: TelemetryExtensionManagedLacros,\n  ...\n  \n\n// api.go test file\n...\nParams: []testing.Param{\n  {\n    Name:              \"target_models\",\n    Fixture:          fixture.TelemetryExtensionManagedLacros,\n    ExtraHardwareDeps: dep.TargetModels(),\n  },\n...\n\n```",
+      "parentUuid": "1e63c62e_3311504b",
+      "revId": "78dec291ab6cc7d1d582445d9273c6419872e803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
