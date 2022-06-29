@@ -6,8 +6,11 @@ package assistant
 
 import (
 	"context"
+	"fmt"
+	"strconv"
 	"time"
 
+	"chromiumos/tast/common/chameleon"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
@@ -22,6 +25,23 @@ const (
 	postTestTimeout = time.Minute
 )
 
+var (
+	chameleonHostname = testing.RegisterVarString(
+		"assistant.chameleon_host",
+		"localhost",
+		"Hostname for Chameleon")
+
+	chameleonSSHPort = testing.RegisterVarString(
+		"assistant.chameleon_ssh_port",
+		"22",
+		"SSH port for Chameleon")
+
+	chameleonPort = testing.RegisterVarString(
+		"assistant.chameleon_port",
+		"9992",
+		"Port for chameleond on Chameleon")
+)
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name: "assistantBase",
@@ -34,6 +54,7 @@ func init() {
 			return []chrome.Option{
 				VerboseLogging(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
+				chrome.EnableFeatures("EnableDspHotword"),
 			}, nil
 		}),
 		SetUpTimeout:    chrome.LoginTimeout,
@@ -107,6 +128,25 @@ func init() {
 		PostTestTimeout: arc.PostTestTimeout,
 		ResetTimeout:    arc.ResetTimeout,
 		TearDownTimeout: arc.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "assistantBaseWithHotword",
+		Desc: "Chrome session for assistant testing with Hotword enabled",
+		Contacts: []string{
+			"yawano@google.com",
+			"assitive-eng@google.com",
+		},
+		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				VerboseLogging(),
+				chrome.ExtraArgs(arc.DisableSyncFlags()...),
+				chrome.EnableFeatures("EnableDspHotword"),
+			}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
 	})
 
 	testing.AddFixture(&testing.Fixture{
@@ -199,6 +239,23 @@ func init() {
 			return FixtData{
 				Chrome: preData.Chrome,
 				ARC:    preData.ARC,
+			}
+		}),
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "assistantAudioBox",
+		Desc: "Assistant is enabled with access to Chameleon",
+		Contacts: []string{
+			"yawano@google.com",
+			"assistive-eng@google.com",
+		},
+		Parent: "assistantBaseWithHotword",
+		Impl: NewAudioBoxFixture(func(s *testing.FixtState) AudioBoxFixtData {
+			return AudioBoxFixtData{
+				Chrome: s.ParentValue().(*chrome.Chrome),
 			}
 		}),
 		PreTestTimeout:  preTestTimeout,
@@ -306,6 +363,105 @@ func (f *enabledFixture) PostTest(ctx context.Context, s *testing.FixtTestState)
 	// screenshot if a test fails. Also a previous test might leave the launcher
 	// open if it failed by missing an expected response. It can cause a
 	// following test to fail. Disabling assistant will close the launcher.
+	if err := Cleanup(ctx, s.HasError, f.cr, tconn); err != nil {
+		s.Fatal("Failed to disable Assistant: ", err)
+	}
+}
+
+type parentAudioBoxFixtDataCallback func(s *testing.FixtState) AudioBoxFixtData
+
+type audioBoxFixture struct {
+	cr        *chrome.Chrome
+	chameleon *chameleon.Chameleon
+	cb        parentAudioBoxFixtDataCallback
+}
+
+// AudioBoxFixtData is fixture data of assistant fixture with chameleon support.
+type AudioBoxFixtData struct {
+	Chrome            *chrome.Chrome
+	Chameleon         *chameleon.Chameleon
+	ChameleonHostname string
+	ChameleonPort     int
+	ChameleonSSHPort  int
+}
+
+// NewAudioBoxFixture returns new fixture.
+func NewAudioBoxFixture(cb parentAudioBoxFixtDataCallback) testing.FixtureImpl {
+	return &audioBoxFixture{
+		cb: cb,
+	}
+}
+
+func (f *audioBoxFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	fixtData := f.cb(s)
+	f.cr = fixtData.Chrome
+	var err error
+
+	//verify that port numbers are integers
+	fixtData.ChameleonPort, err = strconv.Atoi(chameleonPort.Value())
+	if err != nil {
+		s.Fatalf("Failed to convert assistant.chameleon_port with value: %s to integer: %v", chameleonPort.Value(), err)
+	}
+	fixtData.ChameleonSSHPort, err = strconv.Atoi(chameleonSSHPort.Value())
+	if err != nil {
+		s.Fatalf("Failed to convert assistant.chameleon_ssh_port with value: %s to integer: %v", chameleonSSHPort.Value(), err)
+	}
+	fixtData.ChameleonHostname = chameleonHostname.Value()
+
+	// Setup Chameleon
+	// In Skylab, DUT and chameleon follow the naming convention: <dut> and <dut>-chameleon
+	// While DUT and chamelon can ssh directly though IPs against each other, they cannot
+	// resolve machine names to IPs and IP resolution has to be done outside of the local test.
+	// Drone keeps the metadata of DUT and chameleon and can help resolve hostname to IP.
+	// Drone will pass information like chameleon host, chameleon host_port, ssh_port as
+	// tast input through the autotest control file.
+	chameleonAddr := fmt.Sprintf("%s:%d", chameleonHostname.Value(), fixtData.ChameleonPort)
+	s.Logf("Connect to Chameleon:%s", chameleonAddr)
+	fixtData.Chameleon, err = chameleon.New(ctx, chameleonAddr)
+	if err != nil {
+		s.Fatal("Failed to connect to chameleon board: ", err)
+	}
+	f.chameleon = fixtData.Chameleon
+
+	if hasAudioSupport, err := fixtData.Chameleon.HasAudioSupport(ctx, chameleon.LineOut); !hasAudioSupport || err != nil {
+		s.Fatalf("Chameleon has no audio support for %s: %v", chameleon.LineOut, err)
+	}
+
+	return &fixtData
+}
+
+func (f *audioBoxFixture) TearDown(ctx context.Context, s *testing.FixtState) {
+	if f.chameleon != nil {
+		defer f.chameleon.Close(ctx)
+	}
+
+}
+func (f *audioBoxFixture) Reset(ctx context.Context) error {
+	return nil
+}
+
+func (f *audioBoxFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	// Enable Assistant
+	tconn, err := f.cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create test API connection: ", err)
+	}
+
+	if err := EnableAndWaitForReady(ctx, tconn); err != nil {
+		s.Fatal("Failed to enable Assistant: ", err)
+	}
+
+	// reset Chameleon to ensure a consistent state for testing
+	f.chameleon.Reset(ctx)
+}
+
+func (f *audioBoxFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	// Disable Assistant
+	tconn, err := f.cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create test API connection: ", err)
+	}
+
 	if err := Cleanup(ctx, s.HasError, f.cr, tconn); err != nil {
 		s.Fatal("Failed to disable Assistant: ", err)
 	}

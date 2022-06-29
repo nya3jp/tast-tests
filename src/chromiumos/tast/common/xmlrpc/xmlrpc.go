@@ -237,14 +237,40 @@ func newValue(in interface{}) (value, error) {
 			s.Members = append(s.Members, member{Name: key, Value: value{Str: &str}})
 		}
 		return value{Struct: &s}, nil
+	case map[string]interface{}:
+		var s xmlStruct
+		for key, obj := range v {
+			val, err := newValue(obj)
+			if err != nil {
+				return value{}, errors.Wrapf(err, "failed when calling newValue on key: %v value: %v", key, obj)
+			}
+			s.Members = append(s.Members, member{Name: key, Value: val})
+		}
+		return value{Struct: &s}, nil
+	default:
+		// This is to support type definition wrapping around primitive type
+		// without having the client code perform a type conversion.
+		// e.g. type NewType int
+		// If the underlying type is one of the primitive types supported,
+		// we recursively call NewValue by peeling of one layer of indirection.
+		switch reflect.TypeOf(in).Kind() {
+		case reflect.Int:
+			return newValue(int(reflect.ValueOf(in).Int()))
+		case reflect.Bool:
+			return newValue(reflect.ValueOf(in).Bool())
+		case reflect.Float64:
+			return newValue(float64(reflect.ValueOf(in).Float()))
+		case reflect.String:
+			return newValue(reflect.ValueOf(in).String())
+		}
 	}
-
 	return value{}, errors.Errorf("%q is not a supported type for newValue", reflect.TypeOf(in))
 }
 
 // newParams creates a list of XML-RPC <params>.
 func newParams(args []interface{}) ([]param, error) {
 	var params []param
+
 	for _, arg := range args {
 		v, err := newValue(arg)
 		if err != nil {
@@ -378,6 +404,17 @@ func unpackValue(val value, out interface{}) error {
 			}
 			(*o)[e.Name] = i
 		}
+	case *[][]string:
+		if val.Array == nil {
+			return errors.Errorf("value %s is not an array value", val)
+		}
+		for _, e := range val.Array.Values {
+			var value []string
+			if err := unpackValue(e, &value); err != nil {
+				return err
+			}
+			*o = append(*o, value)
+		}
 	default:
 		return errors.Errorf("%q is not a supported type for unpackValue", reflect.TypeOf(out))
 	}
@@ -465,7 +502,6 @@ func (r *XMLRpc) Run(ctx context.Context, cl Call, out ...interface{}) error {
 	if err = xml.Unmarshal(bodyBytes, &res); err != nil {
 		return err
 	}
-
 	if err = res.checkFault(); err != nil {
 		return err
 	}
@@ -474,7 +510,7 @@ func (r *XMLRpc) Run(ctx context.Context, cl Call, out ...interface{}) error {
 	// Otherwise, return without unpacking.
 	if len(out) > 0 {
 		if err := res.unpack(out); err != nil {
-			testing.ContextLogf(ctx, "Failed to unpack XML-RPC response for request %v: %s", cl, string(bodyBytes))
+			testing.ContextLogf(ctx, "Failed to unpack XML-RPC response for request %v: %s : err: %v", cl, string(bodyBytes), err)
 			return err
 		}
 	}

@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"math"
 	"reflect"
+	"sort"
 	"strconv"
 	"testing"
 )
@@ -278,6 +279,67 @@ func TestNewValue(t *testing.T) {
 		t.Errorf("got %v; want %v", v.Array, expectedArrayOfInt)
 	}
 
+	// Test for map[string]string conversion
+	k1 := "k1"
+	k2 := "k2"
+	v1 := "v1"
+	v2 := "v2"
+	mapStrOfStr := map[string]string{k1: v1, k2: v2}
+	expectedMapStrOfString := xmlStruct{Members: []member{
+		{Name: k1, Value: value{Str: &v1}},
+		{Name: k2, Value: value{Str: &v2}},
+	}}
+	v, err = newValue(mapStrOfStr)
+	if err != nil {
+		t.Errorf("input %v gave unexpected error: %v", mapStrOfStr, err)
+		return
+	}
+	// There is no guarantee of the map traversal order.
+	// Sort the result xmlStruct to enable that comparison can be done deterministically
+	members := v.Struct.Members
+	sort.SliceStable(members, func(i, j int) bool {
+		return members[i].Name < members[j].Name
+	})
+	if !reflect.DeepEqual(*v.Struct, expectedMapStrOfString) {
+		t.Errorf("got %v; want %v", v.Struct, expectedMapStrOfString)
+	}
+
+	// Test for map[string]interface{} conversion with differet type definition wrappers
+	strKey := "sk"
+	boolKey := "bk"
+	floatKey := "fk"
+	intKey := "ik"
+	type newStringType string
+	var strVal newStringType = "rutabaga"
+	type newBoolType bool
+	var boolVal = true
+	type newFloatType float64
+	var floatVal = -3.14
+	type newIntType int
+	var intVal = -1
+
+	mapStrOfInterface := map[string]interface{}{boolKey: boolVal, floatKey: floatVal, intKey: intVal, strKey: strVal}
+	expectedMapStrOfInterface := xmlStruct{Members: []member{
+		{Name: boolKey, Value: value{Boolean: &expectedBoolStr}},
+		{Name: floatKey, Value: value{Double: &expectedDoubleStr}},
+		{Name: intKey, Value: value{Int: &expectedIntStr}},
+		{Name: strKey, Value: value{Str: &expectedStr}},
+	}}
+	v, err = newValue(mapStrOfInterface)
+	if err != nil {
+		t.Errorf("newValue(%q) failed: %v", mapStrOfInterface, err)
+		return
+	}
+	// There is no guarantee of the map traversal order.
+	// Sort the result xmlStruct to enable that comparison can be done deterministically
+	members = v.Struct.Members
+	sort.SliceStable(members, func(i, j int) bool {
+		return members[i].Name < members[j].Name
+	})
+	if !reflect.DeepEqual(*v.Struct, expectedMapStrOfInterface) {
+		t.Errorf("got %v; want %v", v.Struct, expectedMapStrOfInterface)
+	}
+
 	expectedUnsupported := struct{}{}
 	v, err = newValue(expectedUnsupported)
 	if err == nil {
@@ -348,7 +410,8 @@ func TestUnpack(t *testing.T) {
 
 	arrIntIn := []int{1, 2}
 	strMapIn := map[string]string{"One": "1", "Two": "2"}
-	params, err := newParams([]interface{}{"rutabaga", true, 1, -3.14, arrIntIn, strMapIn})
+	arrArrStringIn := [][]string{{"v11", "v12"}, {"v21", "v22"}}
+	params, err := newParams([]interface{}{"rutabaga", true, 1, -3.14, arrIntIn, strMapIn, arrArrStringIn})
 	if err != nil {
 		t.Fatal("creating params: ", err)
 	}
@@ -358,8 +421,9 @@ func TestUnpack(t *testing.T) {
 	var intOut int
 	var floatOut float64
 	var arrIntOut []int
+	var arrArrStringOut [][]string
 	strMapOut := make(map[string]string)
-	if err := resp.unpack([]interface{}{&stringOut, &boolOut, &intOut, &floatOut, &arrIntOut, &strMapOut}); err != nil {
+	if err := resp.unpack([]interface{}{&stringOut, &boolOut, &intOut, &floatOut, &arrIntOut, &strMapOut, &arrArrStringOut}); err != nil {
 		t.Fatal("unpacking:", err)
 	}
 	if stringOut != "rutabaga" {
@@ -380,6 +444,10 @@ func TestUnpack(t *testing.T) {
 	if !reflect.DeepEqual(strMapIn, strMapOut) {
 		t.Errorf("unpacking %v: got %v", strMapIn, strMapOut)
 	}
+	if !reflect.DeepEqual(arrArrStringIn, arrArrStringOut) {
+		t.Errorf("unpacking %v: got %v", arrArrStringIn, arrArrStringOut)
+	}
+
 }
 
 func TestXMLResponse(t *testing.T) {
