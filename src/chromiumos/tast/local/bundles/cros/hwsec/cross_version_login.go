@@ -229,6 +229,11 @@ func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.Cryptoho
 	username := authConfig.Username
 	password := authConfig.Password
 
+	authID, err := cryptohome.StartAuthSession(ctx, username, false /* isEphemeral */)
+	if err != nil {
+		return errors.Wrap(err, "failed to start auth session")
+	}
+
 	if authConfig.AuthType == hwsec.ChallengeAuth {
 		dbusConn, err := dbusutil.SystemBus()
 		if err != nil {
@@ -245,26 +250,42 @@ func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.Cryptoho
 			return errors.Wrap(err, "failed to export D-Bus key delegate")
 		}
 		defer keyDelegate.Close()
-	}
-
-	if _, err := cryptohome.CheckVault(ctx, keyLabel, &authConfig); err != nil {
-		return errors.Wrap(err, "failed to check vault")
-	}
-
-	var targetLabels = []string{config.KeyLabel}
-	for _, vaultKey := range config.ExtraVaultKeys {
-		targetLabels = append(targetLabels, vaultKey.KeyLabel)
-	}
-	if err := testListKeys(ctx, cryptohome, username, targetLabels); err != nil {
-		return errors.Wrap(err, "failed to check key labels")
-	}
-	for _, label := range targetLabels {
-		if _, err := cryptohome.GetKeyData(ctx, username, label); err != nil {
-			return errors.Wrapf(err, "failed to get data of key %s", label)
+		if _, err := cryptohome.CheckVault(ctx, keyLabel, &authConfig); err != nil {
+			return errors.Wrap(err, "failed to check vault")
 		}
-	}
 
-	if authConfig.AuthType == hwsec.PassAuth {
+		if err := cryptohome.AuthenticateChallengeCredentialWithAuthSession(ctx, authID, &authConfig); err != nil {
+			return errors.Wrap(err, "failed to authenticate challenge credential with auth session")
+		}
+
+		if err := testListKeys(ctx, cryptohome, username, []string{config.KeyLabel}); err != nil {
+			return errors.Wrap(err, "failed to check key labels")
+		}
+		if _, err := cryptohome.GetKeyData(ctx, username, config.KeyLabel); err != nil {
+			return errors.Wrapf(err, "failed to get data of key %s", config.KeyLabel)
+		}
+	} else if authConfig.AuthType == hwsec.PassAuth {
+		if _, err := cryptohome.CheckVault(ctx, keyLabel, &authConfig); err != nil {
+			return errors.Wrap(err, "failed to check vault")
+		}
+
+		if err := cryptohome.AuthenticateAuthSession(ctx, password, keyLabel, authID, false); err != nil {
+			return errors.Wrap(err, "failed to authenticate auth session")
+		}
+
+		var targetLabels = []string{config.KeyLabel}
+		for _, vaultKey := range config.ExtraVaultKeys {
+			targetLabels = append(targetLabels, vaultKey.KeyLabel)
+		}
+		if err := testListKeys(ctx, cryptohome, username, targetLabels); err != nil {
+			return errors.Wrap(err, "failed to check key labels")
+		}
+		for _, label := range targetLabels {
+			if _, err := cryptohome.GetKeyData(ctx, username, label); err != nil {
+				return errors.Wrapf(err, "failed to get data of key %s", label)
+			}
+		}
+
 		for _, vaultKey := range config.ExtraVaultKeys {
 			keyForm := "password"
 			invalidSecret := invalidPassword
