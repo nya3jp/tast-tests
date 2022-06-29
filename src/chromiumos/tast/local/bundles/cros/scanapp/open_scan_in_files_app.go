@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/scanapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
@@ -99,9 +100,14 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get scanner status over ippusb_bridge socket: ", err)
 	}
 
+	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to retrieve users MyFiles path: ", err)
+	}
+	defaultScanPattern := filepath.Join(myFilesPath, scanning.DefaultScanFilePattern)
 	// Remove scans after the test completes.
 	defer func() {
-		if err := scanning.RemoveScans(scanning.DefaultScanPattern); err != nil {
+		if err := scanning.RemoveScans(defaultScanPattern); err != nil {
 			s.Error("Failed to remove scans: ", err)
 		}
 	}()
@@ -135,7 +141,7 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify the scan can be found in the Files app.
-	scan, err := scanning.GetScan(scanning.DefaultScanPattern)
+	scan, err := scanning.GetScan(defaultScanPattern)
 	if err != nil {
 		s.Fatal("Failed to find scan: ", err)
 	}

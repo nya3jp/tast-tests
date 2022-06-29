@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -111,8 +112,12 @@ func DMICRecord(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to route the audio through expected audio node: got %q; want %q", devName, deviceName)
 	}
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
 	args := []string{"-r", strconv.Itoa(audioRate), "-c", strconv.Itoa(audioChannel),
-		filepath.Join(filesapp.DownloadPath, recWavFileName), "trim", "0", "30"}
+		filepath.Join(downloadsPath, recWavFileName), "trim", "0", "30"}
 
 	cmd := testexec.CommandContext(ctx, "rec", args...)
 	s.Logf("Recording audio using: %s", cmd)
@@ -126,7 +131,7 @@ func DMICRecord(ctx context.Context, s *testing.State) {
 	}
 	defer func(ctx context.Context) {
 		files.Close(ctx)
-		if err := os.Remove(filepath.Join(filesapp.DownloadPath, recWavFileName)); err != nil {
+		if err := os.Remove(filepath.Join(downloadsPath, recWavFileName)); err != nil {
 			s.Errorf("Failed to delete file %q: %v", recWavFileName, err)
 		}
 		if err = kb.Accel(ctx, "Ctrl+W"); err != nil {
