@@ -63,6 +63,9 @@ var SearchResultListViewFinder = nodewith.ClassName("SearchResultListView")
 // SearchResultListLabelFinder is the finder of the list label in launcher search result.
 var SearchResultListLabelFinder = nodewith.ClassName("Label")
 
+// ReorderEducationNudgeFinder is the finder of the reorder education nudge.
+var ReorderEducationNudgeFinder = nodewith.ClassName("Label").Name("Sort your apps by name or color")
+
 // TestCase describes modes in which the launcher UI can be shown, and by which launcher test should generally be parameterized.
 type TestCase struct {
 	ProductivityLauncher bool // Whether productivity launcher feature should be enabled
@@ -182,6 +185,24 @@ func SearchAndRightClick(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, 
 // Open return a function that opens the launcher.
 func Open(tconn *chrome.TestConn) uiauto.Action {
 	return OpenExpandedView(tconn)
+}
+
+// ShowLauncher shows the launcher and waits until the launcher is visible. isBubbleLauncher specifies the type of launcher to show.
+func ShowLauncher(isBubbleLauncher bool, tconn *chrome.TestConn) uiauto.Action {
+	if isBubbleLauncher {
+		return OpenBubbleLauncher(tconn)
+	}
+
+	return OpenExpandedView(tconn)
+}
+
+// HideLauncher hides the launcher and waits until the launcher is hidden or its state becomes "hidden". isBubbleLauncher specifies the type of launcher to hide.
+func HideLauncher(isBubbleLauncher bool, tconn *chrome.TestConn) uiauto.Action {
+	if isBubbleLauncher {
+		return CloseBubbleLauncher(tconn)
+	}
+
+	return HideTabletModeLauncher(tconn)
 }
 
 // OpenExpandedView return a function that opens the Launcher to the Apps list page.
