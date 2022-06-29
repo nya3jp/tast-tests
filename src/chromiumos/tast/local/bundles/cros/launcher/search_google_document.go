@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/drivefs"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // A file on Google Drive might take longer to synchronize with Files app.
@@ -43,6 +44,14 @@ func init() {
 		SoftwareDeps: []string{"chrome", "drivefs", "chrome_internal"},
 		Fixture:      "driveFsStarted",
 		Timeout:      2*time.Minute + driveSyncTimeout,
+		Params: []testing.Param{{
+			Name: "clamshell_mode",
+			Val:  launcher.TestCase{TabletMode: false},
+		}, {
+			Name:              "tablet_mode",
+			Val:               launcher.TestCase{TabletMode: true},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+		}},
 	})
 }
 
@@ -85,6 +94,20 @@ func SearchGoogleDocument(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to wait for file %q to be available: %v", drivePath, err)
 	}
 	s.Logf("File %q is available in Files app", drivePath)
+
+	tabletMode := s.Param().(launcher.TestCase).TabletMode
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	if err != nil {
+		s.Fatal("Failed to ensure tablet/clamshell mode: ", err)
+	}
+	defer cleanup(cleanupCtx)
+
+	if !tabletMode {
+		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+			s.Fatal("Launcher not closed: ", err)
+		}
+	}
 
 	// The expected result will not be an app, so launcher.SearchAndLaunchWithQuery and other similar functions do not work.
 	if err := uiauto.Combine(fmt.Sprintf("search %q in launcher", gDocFilename),

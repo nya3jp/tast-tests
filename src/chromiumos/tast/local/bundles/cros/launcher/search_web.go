@@ -35,6 +35,19 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "drivefs", "chrome_internal"},
 		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Name: "stable_clamshell",
+			Val:  launcher.TestCase{TabletMode: false},
+		}, {
+			Name: "stable_tablet",
+			Val:  launcher.TestCase{TabletMode: true},
+		}, {
+			Name: "unstable_clamshell",
+			Val:  launcher.TestCase{TabletMode: false},
+		}, {
+			Name: "unstable_tablet",
+			Val:  launcher.TestCase{TabletMode: true},
+		}},
 	})
 }
 
@@ -56,6 +69,20 @@ func SearchWeb(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
+
+	tabletMode := s.Param().(launcher.TestCase).TabletMode
+
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	if err != nil {
+		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
+	}
+	defer cleanup(cleanupCtx)
+
+	if !tabletMode {
+		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+			s.Fatal("Launcher not closed: ", err)
+		}
+	}
 
 	query := "web browser"
 
