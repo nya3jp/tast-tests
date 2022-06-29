@@ -16,6 +16,97 @@
       "message": "Hi,\n\nPlease take a look at this patch. I\u0027m hoping to promote the new MigrateBasic test to critical first while we work on flakiness related to states.",
       "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b98c1d3_68974dcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate/common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T13:50:28Z",
+      "side": 1,
+      "message": "could you mention about this return value in the doc, too?",
+      "range": {
+        "startLine": 22,
+        "startChar": 61,
+        "endLine": 22,
+        "endChar": 75
+      },
+      "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e85df32_1af204de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate/common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T13:50:28Z",
+      "side": 1,
+      "message": "the name \"Profile\" is a bit surprising.\nMaybe MigrateProfile or something?",
+      "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20ceb340_1e0ad479",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate/common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T13:50:28Z",
+      "side": 1,
+      "message": "It\u0027s not a regression, but could you close the prev connection before this chrome.New() ?",
+      "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b875f8f_67d56792",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T13:50:28Z",
+      "side": 1,
+      "message": "this looks like just a utility. Instead of taking testing.State, could you return error and then handle it the caller?",
+      "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "385a77ea_f4fd18ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-29T13:50:28Z",
+      "side": 1,
+      "message": "could you Close() the returned lacros instance?",
+      "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
