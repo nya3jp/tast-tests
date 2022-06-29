@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/testing"
 )
@@ -119,20 +119,25 @@ func init() {
 }
 
 func TestDownload(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	// Clear Downloads directory.
-	files, err := ioutil.ReadDir(filesapp.DownloadPath)
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Download path: ", err)
+	}
+	files, err := ioutil.ReadDir(downloadsPath)
 	if err != nil {
 		s.Fatal("Failed to get files from Downloads directory")
 	}
 	for _, file := range files {
-		if err = os.RemoveAll(filepath.Join(filesapp.DownloadPath, file.Name())); err != nil {
+		if err = os.RemoveAll(filepath.Join(downloadsPath, file.Name())); err != nil {
 			s.Fatal("Failed to remove file: ", file.Name())
 		}
 	}
 
 	// Verify policy.
-	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
+	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
@@ -149,11 +154,11 @@ func TestDownload(ctx context.Context, s *testing.State) {
 		s.Fatal("Policy is set, but shouldn't be")
 	}
 
-	testDownloadForBrowser(ctx, s, browser.TypeLacros)
-	testDownloadForBrowser(ctx, s, browser.TypeAsh)
+	testDownloadForBrowser(ctx, s, downloadsPath, browser.TypeLacros)
+	testDownloadForBrowser(ctx, s, downloadsPath, browser.TypeAsh)
 }
 
-func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType browser.Type) {
+func testDownloadForBrowser(ctx context.Context, s *testing.State, downloadsPath string, browserType browser.Type) {
 	testParams := s.Param().(helpers.TestParams)
 
 	cr := s.FixtValue().(chrome.HasChrome).Chrome()
@@ -187,7 +192,7 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 	// Need to wait for a valid dm token, i.e., the proper initialization of the enterprise connectors.
 	if testParams.ScansEnabled {
 		s.Log("Checking for dm token")
-		if err := helpers.WaitForDMTokenRegistered(ctx, br, tconn, server); err != nil {
+		if err := helpers.WaitForDMTokenRegistered(ctx, br, tconn, server, downloadsPath); err != nil {
 			s.Fatal("Failed to wait for DM token: ", err)
 		}
 	}
@@ -243,8 +248,8 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 
 			// Cleanup file
 			defer func() {
-				if _, err := os.Stat(filesapp.DownloadPath + dlFileName); !os.IsNotExist(err) {
-					if err := os.Remove(filesapp.DownloadPath + dlFileName); err != nil {
+				if _, err := os.Stat(filepath.Join(downloadsPath, dlFileName)); !os.IsNotExist(err) {
+					if err := os.Remove(filepath.Join(downloadsPath, dlFileName)); err != nil {
 						s.Error("Failed to remove ", dlFileName, ": ", err)
 					}
 				}
@@ -274,7 +279,7 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, browserType b
 			}
 
 			// Check file blocked/existence.
-			_, err = os.Stat(filesapp.DownloadPath + dlFileName)
+			_, err = os.Stat(filepath.Join(downloadsPath, dlFileName))
 			if os.IsNotExist(err) {
 				if !shouldBlockDownload {
 					s.Error("Download was blocked, but shouldn't have been: ", err)
