@@ -93,6 +93,22 @@ func AnswerCards(ctx context.Context, s *testing.State) {
 			searchKeyword:  "1+1",
 			validateAction: ui.WaitUntilExists(launcher.SearchResultListItemFinder.NameContaining("1+1, 2")),
 		},
+		{
+			searchKeyword:  "who is the president of the United States",
+			validateAction: ui.WaitUntilExists(launcher.SearchResultListItemFinder.NameContaining("who is the president of the united states, Joe Biden")),
+		},
+		{
+			searchKeyword:  "455 lb in kg",
+			validateAction: ui.WaitUntilExists(launcher.SearchResultListItemFinder.NameRegex(regexp.MustCompile("455 lb in kg, 206.*"))),
+		},
+		{
+			searchKeyword:  "goog stock",
+			validateAction: ui.WaitUntilExists(launcher.SearchResultListItemFinder.NameRegex(regexp.MustCompile("NASDAQ"))),
+		},
+		{
+			searchKeyword:  "weather",
+			validateAction: ui.WaitUntilExists(launcher.SearchResultListItemFinder.NameRegex(regexp.MustCompile("[-0-9]"))),
+		},
 	}
 
 	for _, subtest := range subtests {
@@ -103,13 +119,9 @@ func AnswerCards(ctx context.Context, s *testing.State) {
 				launcher.Open(tconn),
 				launcher.Search(tconn, kb, subtest.searchKeyword),
 				subtest.validateAction,
+				launcher.CloseBubbleLauncher(tconn),
 			)(ctx); err != nil {
 				s.Fatal("Failed to search: ", err)
-			}
-
-			// Close launcher search by sending KEY_ESC.
-			if err := kb.TypeKey(ctx, input.KEY_ESC); err != nil {
-				s.Fatalf("Failed to send %d: %v", input.KEY_UP, err)
 			}
 		})
 	}
