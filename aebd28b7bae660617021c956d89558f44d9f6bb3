@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69b5ca1b_2052fd1a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-06-29T21:57:32Z",
+      "side": 1,
+      "message": "could be replaced with just \"an app\" to avoid this inconsistency in the future.",
+      "range": {
+        "startLine": 28,
+        "startChar": 67,
+        "endLine": 28,
+        "endChar": 84
+      },
+      "revId": "aebd28b7bae660617021c956d89558f44d9f6bb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
