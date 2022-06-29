@@ -16,6 +16,24 @@
       "message": "Should this return? Presumably you should either continue anyway (to do the rest of the setup) or fail the entire test.",
       "revId": "2cae1ee4f582cca350d518a84fd3eddc7fdf935b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80245ceb_b9bbb51a",
+        "filename": "src/chromiumos/tast/local/crostini/fixture_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-29T02:34:01Z",
+      "side": 1,
+      "message": "Good catch! Removed the return so the rest of the setup can continue. Thanks.",
+      "parentUuid": "5a506f42_bb677946",
+      "revId": "2cae1ee4f582cca350d518a84fd3eddc7fdf935b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
