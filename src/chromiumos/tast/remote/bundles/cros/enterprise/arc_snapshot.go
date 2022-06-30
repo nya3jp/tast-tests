@@ -36,8 +36,7 @@ func init() {
 		Timeout:      arcSnapshotTestTimeout,
 		VarDeps: []string{
 			"enterprise.ArcSnapshot.packages",
-			"tape.service_account_key",
-			"tape.managedchrome_id",
+			tape.ServiceAccountVar,
 		},
 	})
 }
@@ -61,19 +60,18 @@ func ArcSnapshot(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	httpClient, err := tape.NewTapeClient(ctx, tape.WithCredsJSON([]byte(s.RequiredVar("tape.service_account_key"))))
+	tapeClient, err := tape.NewClient(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)))
 	if err != nil {
 		s.Fatal("Failed to create tape client: ", err)
 	}
 
-	const poolID = "arc_snapshot"
-
 	// Lease a test account for the duration of the test.
-	acc, cleanupLease, err := tape.LeaseAccount(ctx, poolID, arcSnapshotTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	accRequest := tape.NewRequestOwnedTestAccountParams(int32(arcSnapshotTestTimeout.Seconds()), tape.ArcSnapshot, false)
+	accHelper, acc, err := tape.NewOwnedTestAccountHelper(ctx, accRequest, tape.WithCredsJSON([]byte(s.RequiredVar(tape.ServiceAccountVar))))
 	if err != nil {
-		s.Fatal("Failed to lease a test account: ", err)
+		s.Fatal("Failed to create an account helper: ", err)
 	}
-	defer cleanupLease(cleanupCtx)
+	defer accHelper.CleanUp(cleanupCtx)
 
 	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
@@ -84,25 +82,21 @@ func ArcSnapshot(ctx context.Context, s *testing.State) {
 	service := enterprise.NewArcSnapshotServiceClient(cl.Conn)
 
 	s.Log("Enrolling device")
-	if _, err = service.Enroll(ctx, &enterprise.EnrollRequest{User: acc.UserName, Pass: acc.Password}); err != nil {
+	if _, err = service.Enroll(ctx, &enterprise.EnrollRequest{User: acc.Username, Pass: acc.Password}); err != nil {
 		s.Fatal("Remote call Enroll() failed: ", err)
 	}
 
 	tapeService := ts.NewServiceClient(cl.Conn)
-	customerID := s.RequiredVar("tape.managedchrome_id")
 	// Get the device id of the DUT to deprovision it at the end of the test.
-	res, err := tapeService.GetDeviceID(ctx, &ts.GetDeviceIDRequest{CustomerID: customerID})
+	res, err := tapeService.GetDeviceID(ctx, &ts.GetDeviceIDRequest{CustomerID: acc.CustomerID})
 	if err != nil {
 		s.Fatal("Failed to get the deviceID: ", err)
 	}
 
 	// Deprovision the DUT at the end of the test.
 	defer func(ctx context.Context) {
-		var request tape.DeprovisionRequest
-		request.DeviceID = res.DeviceID
-		request.CustomerID = customerID
-
-		if err = tape.Deprovision(ctx, httpClient, request); err != nil {
+		request := tape.NewDeprovisionRequest(res.DeviceID, acc.CustomerID)
+		if err = tapeClient.Deprovision(ctx, request); err != nil {
 			s.Fatalf("Failed to deprovision device %s: %v", request.DeviceID, err)
 		}
 	}(cleanupCtx)
