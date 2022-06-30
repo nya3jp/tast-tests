@@ -58,7 +58,6 @@ func init() {
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Val:               withRetries,
 				Timeout:           15 * time.Minute,
-				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "unstable",
