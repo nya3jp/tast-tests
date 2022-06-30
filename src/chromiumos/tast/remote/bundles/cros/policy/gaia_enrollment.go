@@ -18,11 +18,11 @@ import (
 )
 
 type testInfo struct {
-	username   string // username for Chrome login
-	password   string // password to login
-	dmserver   string // device management server url
-	customerid string // ID of the domain used in the test
+	dmserver string // device management server url
+	poolID   string // poolID for the used test account
 }
+
+const gaiaEnrollmentTimeout = 7 * time.Minute
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -36,53 +36,44 @@ func init() {
 		Attr:         []string{"group:dpanel-end2end"},
 		SoftwareDeps: []string{"reboot", "chrome"},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.tape.Service"},
-		Timeout:      7 * time.Minute,
+		Timeout:      gaiaEnrollmentTimeout,
 		Params: []testing.Param{
 			{
 				Name: "autopush",
 				Val: testInfo{
-					username:   "policy.GAIAEnrollment.user_name",
-					password:   "policy.GAIAEnrollment.password",
-					dmserver:   "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
-					customerid: "tape.managedchrome_id",
+					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+					poolID:   tape.Enrollment,
 				},
 			},
 			{
 				Name: "autopush_new_saml",
 				Val: testInfo{
-					username:   "policy.GAIAEnrollment.new_saml_user_name",
-					password:   "policy.GAIAEnrollment.new_saml_password",
-					dmserver:   "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
-					customerid: "tape.crosprqa4_id",
+					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+					poolID:   tape.EnrollmentSaml,
 				},
 			},
 		},
 		Vars: []string{
-			"policy.GAIAEnrollment.user_name",
-			"policy.GAIAEnrollment.password",
-			"policy.GAIAEnrollment.new_saml_user_name",
-			"policy.GAIAEnrollment.new_saml_password",
-			"tape.service_account_key",
-			"tape.managedchrome_id",
-			"tape.crosprqa4_id",
+			tape.ServiceAccountVar,
 		},
 	})
 }
 
 func GAIAEnrollment(ctx context.Context, s *testing.State) {
 	param := s.Param().(testInfo)
-	username := s.RequiredVar(param.username)
-	password := s.RequiredVar(param.password)
 	dmServerURL := param.dmserver
+	poolID := param.poolID
+
+	// Shorten deadline to leave time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
+	defer cancel()
 
 	defer func(ctx context.Context) {
 		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 			s.Error("Failed to reset TPM after test: ", err)
 		}
-	}(ctx)
-
-	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
-	defer cancel()
+	}(cleanupCtx)
 
 	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
@@ -92,37 +83,41 @@ func GAIAEnrollment(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
-	defer cl.Close(ctx)
+	defer cl.Close(cleanupCtx)
 
 	pc := ps.NewPolicyServiceClient(cl.Conn)
 
+	tapeClient, err := tape.NewClient(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	if err != nil {
+		s.Fatal("Failed to create tape client: ", err)
+	}
+
+	// Create an account manager and lease a test account for the duration of the test.
+	accManager, acc, err := tape.NewOwnedTestAccountManagerFromClient(ctx, tapeClient, false, tape.WithTimeout(int32(gaiaEnrollmentTimeout.Seconds())), tape.WithPoolID(poolID))
+	if err != nil {
+		s.Fatal("Failed to create an account manager and lease an account: ", err)
+	}
+	defer accManager.CleanUp(cleanupCtx)
+
 	if _, err := pc.GAIAEnrollUsingChrome(ctx, &ps.GAIAEnrollUsingChromeRequest{
-		Username:    username,
-		Password:    password,
+		Username:    acc.Username,
+		Password:    acc.Password,
 		DmserverURL: dmServerURL,
 	}); err != nil {
 		s.Fatal("Failed to enroll using chrome: ", err)
 	}
 
 	tapeService := ts.NewServiceClient(cl.Conn)
-	customerID := s.RequiredVar(param.customerid)
 	// Get the device id of the DUT to deprovision it at the end of the test.
-	res, err := tapeService.GetDeviceID(ctx, &ts.GetDeviceIDRequest{CustomerID: customerID})
+	res, err := tapeService.GetDeviceID(ctx, &ts.GetDeviceIDRequest{CustomerID: acc.CustomerID})
 	if err != nil {
 		s.Fatal("Failed to get the deviceID: ", err)
 	}
 
 	// Deprovision the DUT at the end of the test.
 	defer func(ctx context.Context) {
-		var request tape.DeprovisionRequest
-		request.DeviceID = res.DeviceID
-		request.CustomerID = customerID
-		tapeClient, err := tape.NewTapeClient(ctx, tape.WithCredsJSON([]byte(s.RequiredVar("tape.service_account_key"))))
-		if err != nil {
-			s.Fatal("Failed to create tape client: ", err)
+		if err = tapeClient.Deprovision(ctx, res.DeviceID, acc.CustomerID); err != nil {
+			s.Fatalf("Failed to deprovision device %s: %v", res.DeviceID, err)
 		}
-		if err = tape.Deprovision(ctx, tapeClient, request); err != nil {
-			s.Fatalf("Failed to deprovision device %s: %v", request.DeviceID, err)
-		}
-	}(ctx)
+	}(cleanupCtx)
 }
