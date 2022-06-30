@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d94e7aa8_ceeb9c10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-06-30T04:42:08Z",
+      "side": 1,
+      "message": "Notice that you can test this using\n\ntast run $DUT video.PlatformDecoding.vaapi_hevc_main\n\nAnd you should put this here.\n\nIt will fail of course. The results are in a directory like below.\n\ntmp/tast/results/20220629-212932/tests/video.PlatformDecoding.vaapi_hevc_main \n\n2022-06-30T04:33:33.651664Z [04:33:32.792] /usr/local/libexec/chrome-binary-tests/decode_test failed unexpectedly: Running `/usr/local/libexec/chrome-binary-tests/decode_test --video\u003d/usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/video/data/test_vectors/hevc/main/AMP_A_Samsung_7.hevc --md5 --visible`\n\nlibva info: VA-API version 1.13.0\nlibva info: Trying to open /usr/lib64/va/drivers/iHD_drv_video.so\nlibva info: Found init function __vaDriverInit_1_13\nlibva info: va_openDriver() returns 0\n2022-06-30T04:33:32.786320Z ERROR decode_test: [decode.cc(127)] Couldn\u0027t initialize IVF parser\n2022-06-30T04:33:32.786433Z ERROR decode_test: [decode.cc(243)] Failed to create decoder for file: /usr/local/share/tast/data_pushed/chromiumos/tast/local/bundles/cros/video/data/test_vectors/hevc/main/AMP_A_Samsung_7.hevc",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "a31ffe12913464b8f2570d37f398a75363a86f90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a0bbae86_7191aa65",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-06-30T04:26:14Z",
       "side": 1,
       "message": "I am sorry I edited the wrong change by accident. I fixed it, but do you mind hitting the Rebase button on the upper right or reuploading what you have locally?",
+      "revId": "a31ffe12913464b8f2570d37f398a75363a86f90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd04c643_f0c8f4fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-06-30T04:42:08Z",
+      "side": 1,
+      "message": "Looks good to me (modulo testing the change as noted and updating the commit message) but Jao-ke should also take a look.",
       "revId": "a31ffe12913464b8f2570d37f398a75363a86f90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
