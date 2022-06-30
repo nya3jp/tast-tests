@@ -39,6 +39,7 @@ const (
 				name: node.name,
 				restriction: node.restriction,
 				role: node.role,
+				selected: node.selected,
 				state: node.state,
 				value: node.value,
 			}`
@@ -169,6 +170,7 @@ type NodeInfo struct {
 	Name           string                  `json:"name,omitempty"`
 	Restriction    restriction.Restriction `json:"restriction,omitempty"`
 	Role           role.Role               `json:"role,omitempty"`
+	Selected       bool                    `json:"selected,omitempty"`
 	State          map[state.State]bool    `json:"state,omitempty"`
 	Value          string                  `json:"value,omitempty"`
 }
