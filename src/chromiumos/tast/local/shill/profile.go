@@ -43,3 +43,8 @@ func (p *Profile) GetEntry(ctx context.Context, entryID string) (map[string]inte
 func (p *Profile) DeleteEntry(ctx context.Context, entryID string) error {
 	return p.Call(ctx, "DeleteEntry", entryID).Err
 }
+
+// SetProperty calls the SetProperty method on the profile.
+func (p *Profile) SetProperty(ctx context.Context, prop string, value interface{}) error {
+	return p.Call(ctx, "SetProperty", prop, value).Err
+}
