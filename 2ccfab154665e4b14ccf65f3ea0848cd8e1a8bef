@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eeddd6b_7a350819",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/no_page_without_flag.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-30T09:44:13Z",
+      "side": 1,
+      "message": "I have merged it in one parametrized testcase as suggested by Jun",
+      "parentUuid": "7de5d4ef_b97f1972",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "2ccfab154665e4b14ccf65f3ea0848cd8e1a8bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8823bbf2_84b77590",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-30T01:53:40Z",
       "side": 1,
       "message": "you don\u0027t need this",
+      "range": {
+        "startLine": 38,
+        "startChar": 28,
+        "endLine": 38,
+        "endChar": 51
+      },
+      "revId": "2ccfab154665e4b14ccf65f3ea0848cd8e1a8bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "320d9dae_7a9a01c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/no_page_without_flag.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-30T09:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8823bbf2_84b77590",
       "range": {
         "startLine": 38,
         "startChar": 28,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af7d26d7_56b5ceec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/toggles_exist.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-30T09:44:13Z",
+      "side": 1,
+      "message": "I thought there should be one assertion per test.\nBut ok. Merged to one testcase again.",
+      "parentUuid": "26a82b40_a3ca6745",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 132
+      },
+      "revId": "2ccfab154665e4b14ccf65f3ea0848cd8e1a8bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "232e5c2f_27d1f4a8",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-06-30T01:53:40Z",
       "side": 1,
       "message": "you should put this after checking err, as it could get panic if settings is `nil` in case of errors.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "2ccfab154665e4b14ccf65f3ea0848cd8e1a8bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "511129fa_e3cc4d24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/toggles_exist.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-06-30T09:44:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "232e5c2f_27d1f4a8",
       "range": {
         "startLine": 53,
         "startChar": 1,
