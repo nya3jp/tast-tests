@@ -7,7 +7,9 @@ package typecutils
 import (
 	"bufio"
 	"context"
+	"crypto/sha256"
 	"io"
+	"io/ioutil"
 	"os"
 	"regexp"
 	"strings"
@@ -114,4 +116,50 @@ func CopyFile(src, dst string) error {
 		return errors.Wrap(err, "failed to copy")
 	}
 	return nil
+}
+
+// FileChecksum checks the checksum for the input file.
+func FileChecksum(path string) ([]byte, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return []byte{}, errors.Wrap(err, "failed to open files")
+	}
+	defer file.Close()
+
+	h := sha256.New()
+	if _, err := io.Copy(h, file); err != nil {
+		return []byte{}, errors.Wrap(err, "failed to calculate the hash of the files")
+	}
+
+	return h.Sum(nil), nil
+}
+
+// RemovableDirs returns the connected removable devices.
+func RemovableDirs(mountPath string) ([]string, error) {
+	fis, err := ioutil.ReadDir(mountPath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to read directory")
+	}
+	var ret []string
+	for _, fi := range fis {
+		ret = append(ret, fi.Name())
+	}
+	return ret, nil
+}
+
+// TbtMountPath returns the latest removable device.
+func TbtMountPath(dirsAfterPlug, dirsbeforePlug []string) string {
+	for _, afterPlug := range dirsAfterPlug {
+		found := false
+		for _, beforePlug := range dirsbeforePlug {
+			if afterPlug == beforePlug {
+				found = true
+				break
+			}
+		}
+		if !found {
+			return afterPlug
+		}
+	}
+	return ""
 }
