@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "195f10bf_c092e94e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-06-30T04:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f50a6c78_065dc637",
+      "range": {
+        "startLine": 31,
+        "startChar": 72,
+        "endLine": 31,
+        "endChar": 80
+      },
+      "revId": "05df5434c219748a8411f2a7e612d3e7dafe551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcb0fa70_f67928eb",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a8b8d8_7b70d6c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-06-30T04:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcb0fa70_f67928eb",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 5
+      },
+      "revId": "05df5434c219748a8411f2a7e612d3e7dafe551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c1f889b_cb51aa5e",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-29T13:27:30Z",
       "side": 1,
       "message": "Should we add that this only support TTLS for now ?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "05df5434c219748a8411f2a7e612d3e7dafe551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6723280a_23f27dd8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-06-30T04:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c1f889b_cb51aa5e",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cacbca68_32a537b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-06-30T04:12:52Z",
+      "side": 1,
+      "message": "Thanks for the suggestion!\n\nI would not be too comfortable with doing this though as it might add complexity to the code once additional use cases are added (e.g. see the follow-up patch). I\u0027m also not too sure about committing to have the the auth type to be the child class of the whole Passpoint Credentials.\n\nWould it be okay to keep it as-is? Thanks!",
+      "parentUuid": "8f1ae7cb_ed4c038b",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "05df5434c219748a8411f2a7e612d3e7dafe551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "466ba753_ac482707",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
         "patchSetId": 1
@@ -106,6 +202,30 @@
       "writtenOn": "2022-06-29T18:30:45Z",
       "side": 1,
       "message": "This is definitely unnecessarily repetitious. How about:\n\tfor propName, ois :\u003d range map[string][]uint64 {\n\t\tshillconst.PasspointCredentialsPropertyHomeOIs:          pc.HomeOIs,\n\t\tshillconst.PasspointCredentialsPropertyRequiredHomeOIs:  pc.RequiredHomeOIs,\n\t\tshillconst.PasspointCredentialsPropertyRoamingConsortia: pc.RoamingOIs,\n\t} {\n\t\tvar propOIs []string\n\t\tfor _, oi :\u003d range ois {\n\t\t\tpropOIs \u003d append(propOIs, strconv.FormatUint(oi, 10))\n\t\t}\n\t\tprops[propName] \u003d propOIs\n\t}",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "05df5434c219748a8411f2a7e612d3e7dafe551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3645129_f2f2e10d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-06-30T04:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "466ba753_ac482707",
       "range": {
         "startLine": 65,
         "startChar": 0,
