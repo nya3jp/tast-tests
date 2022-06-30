@@ -69,6 +69,24 @@
       "parentUuid": "680adaf0_bee1719d",
       "revId": "238a111b9eadd4f9fcbd6dfe1f9a4308e9c2851c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f39c702_65c1297f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1536410
+      },
+      "writtenOn": "2022-06-30T22:51:07Z",
+      "side": 1,
+      "message": "We see several failures in CQ due to this. I would suggest we submit this first and then make other improvements to the test.",
+      "parentUuid": "df7aa65e_32716a52",
+      "revId": "238a111b9eadd4f9fcbd6dfe1f9a4308e9c2851c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
