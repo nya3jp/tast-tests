@@ -56,6 +56,30 @@
       },
       "revId": "221618af6f95b3f89e4fba894bd6a14a8739aecb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27188778_856d8702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-06-30T04:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12264cea_dfeda27d",
+      "range": {
+        "startLine": 105,
+        "startChar": 78,
+        "endLine": 105,
+        "endChar": 103
+      },
+      "revId": "221618af6f95b3f89e4fba894bd6a14a8739aecb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
