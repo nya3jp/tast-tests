@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97e2ce09_0ae089e3",
+        "filename": "src/chromiumos/tast/remote/firmware/suspend/suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-06-30T20:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77dca365_c53e85cc",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 1
+      },
+      "revId": "5401060ac8c63362b25a5a86959f44bdb6a4adc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10e44d03_a65d28e1",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-29T17:49:12Z",
       "side": 1,
       "message": "Based on how this was used in the follup cl, this seems likely to lead to confusion.\n\nI.e. If suspend breaks on some platform, the error will be \"Attempting to run on an unsupported platform\" and the \"fix\" will be to add the model to the skip list, when the right answer is to fix suspend there.\n\nMaybe this should be renamed \"VerifySuspendWake\", and shouldn\u0027t return a bool of false, but instead an error of \"Kernel doesn\u0027t support state %q, but was expected to\" or something like that.\n\nThen a failure here is always an error.",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 154,
+        "endChar": 61
+      },
+      "revId": "5401060ac8c63362b25a5a86959f44bdb6a4adc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c3e2a3_26a0c828",
+        "filename": "src/chromiumos/tast/remote/firmware/suspend/suspend.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1531252
+      },
+      "writtenOn": "2022-06-30T20:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10e44d03_a65d28e1",
       "range": {
         "startLine": 152,
         "startChar": 1,
