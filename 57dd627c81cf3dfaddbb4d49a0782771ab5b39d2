@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6017c09_ad7c14af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate/common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-06-30T07:23:27Z",
+      "side": 1,
+      "message": "Run() SGTM.",
+      "parentUuid": "43775d46_695cd4e6",
+      "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20ceb340_1e0ad479",
