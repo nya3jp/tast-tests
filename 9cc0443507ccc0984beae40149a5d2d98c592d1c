@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "508d18f8_a28f9fe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-30T17:58:00Z",
+      "side": 1,
+      "message": "IIUC tast style guide generally frowns on passing around a testing.State. Instead, can you use testing.ContextLog(ctx, \u003cmessage\u003e) and return error values from this method?",
+      "range": {
+        "startLine": 119,
+        "startChar": 43,
+        "endLine": 119,
+        "endChar": 59
+      },
+      "revId": "9cc0443507ccc0984beae40149a5d2d98c592d1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

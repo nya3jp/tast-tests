@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e07cbe60_8aea74c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-06-30T17:58:00Z",
+      "side": 0,
+      "message": "this should probably stay \"informational\" for now until we have some confidence in the changes, as they\u0027re pretty significant",
+      "range": {
+        "startLine": 49,
+        "startChar": 44,
+        "endLine": 49,
+        "endChar": 57
+      },
+      "revId": "83599eb4a57e5a1a7e2c89ee71087c094bf126ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
