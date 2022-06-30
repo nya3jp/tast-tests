@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb40834_211f0217",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-30T23:30:17Z",
+      "side": 1,
+      "message": "nit: `MenuPowerOff test`",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa5f775_8e6d27b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-30T23:30:17Z",
+      "side": 1,
+      "message": "Wrap at 72 characters. See: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 122
+      },
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05e76eb1_817465f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-30T23:30:17Z",
+      "side": 1,
+      "message": "Each of the functions `powerOffFromUIMenu` and `nTimeKeyPress` should not have parameter `s *testing.State`. Return errors, check them in `MenuPowerOff`, and only call `s.Fatal` directly from `MenuPowerOff`. Where `powerOffFromUIMenu` calls `s.Log`, it can use `testing.ContextLog` to eliminate the need for parameter `s *testing.State`.",
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a1f370b_63965e53",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-30T23:30:17Z",
+      "side": 1,
+      "message": "I do not see any usage of this. Please remove it.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "038e718d_d4749daf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-30T23:30:17Z",
+      "side": 1,
+      "message": "Just write this:\n\tif switcher :\u003d h.Config.ModeSwitcherType; switcher !\u003d \"menu_switcher\" \u0026\u0026 switcher !\u003d \"tablet_detachable_switcher\" {\n\t\ts.Log(\"Test skipped for menuless UI, DUT\u0027s mode-switcher type is: \", switcher)\n\t\treturn\n\t}\n\t\n\tif err :\u003d h.Servo.SetPowerState(ctx, servo.PowerStateRec); err !\u003d nil {\n\t\ts.Fatal(\"Failed to restart to recovery mode: \", err)\n\t}\n\t...",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a300466_c202b328",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-30T23:30:17Z",
+      "side": 1,
+      "message": "How about:\n\tswitch h.Config.ModeSwitcherType {\n\tcase \"menu_switcher\":\n\t\t// Power off is the last option in the menu for both developer and recovery screen\n\t\tnTimeKeyPress(ctx, h, s, \"\u003cdown\u003e\", 7)\n\tcase \"tablet_detachable_switcher\":\n\t\tswitch screen {\n\t\tcase \"rec\":\n\t\t\t// Enter the menu by pressing \u003cdown\u003e and choose power off option which is directly below the default option\n\t\t\tnTimeKeyPress(ctx, h, s, \"\u003cdown\u003e\", 2)\n\t\tcase \"dev\":\n\t\t\t// Power off is the default option\n\t\t}\n\t}",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
