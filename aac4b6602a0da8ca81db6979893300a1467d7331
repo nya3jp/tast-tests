@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cc278d2_100da6d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-06-30T12:03:33Z",
+      "side": 1,
+      "message": "My opinion is that having the Auth type field is acceptable and enough for this case, but can be convinced either way.",
+      "revId": "aac4b6602a0da8ca81db6979893300a1467d7331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

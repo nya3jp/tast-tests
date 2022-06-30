@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "231d2ba9_d718c83a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-06-30T12:03:33Z",
+      "side": 1,
+      "message": "I think Avery\u0027s suggestion makes sense, but looking other usage in the follow-up patch, I think keeping as-is is acceptable.\n\nFor example, preparePPSMOHomeSP has a conditional inside it based on the auth type. For separating the two types, we\u0027d need some refactoring to separate the shared code portion in the function into superclass\u0027s method, etc., but I don\u0027t feel that that abstraction gives as much benefit as we do for this check.",
+      "parentUuid": "cacbca68_32a537b6",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "05df5434c219748a8411f2a7e612d3e7dafe551f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "466ba753_ac482707",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
         "patchSetId": 1
