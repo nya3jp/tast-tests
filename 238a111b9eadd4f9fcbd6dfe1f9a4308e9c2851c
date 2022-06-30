@@ -33,6 +33,24 @@
       "message": "I\u0027m not sure if we should mark *this* test as informational specifically, it seems like it\u0027s just a victim of the session manager being in a bad state after a prior test...",
       "revId": "238a111b9eadd4f9fcbd6dfe1f9a4308e9c2851c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "680adaf0_bee1719d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241666
+      },
+      "writtenOn": "2022-06-30T22:06:48Z",
+      "side": 1,
+      "message": "yeah, the other test should be marked informational: a _lot_ of other tests would react similar to the current test if the session was crashing during the setup of the tests.",
+      "parentUuid": "2da9a86f_cf9e3eb3",
+      "revId": "238a111b9eadd4f9fcbd6dfe1f9a4308e9c2851c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
