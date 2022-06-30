@@ -54,6 +54,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7880646_e0f95226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/hide_continue_section_clamshell.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-06-30T14:09:44Z",
+      "side": 1,
+      "message": "Can you shorten the ctx for the cleanup function to revert to original state?",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 18
+      },
+      "revId": "92cca0c3605961bd5bc097f3f3667849acade10c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37e4fa43_9a09e591",
         "filename": "src/chromiumos/tast/local/bundles/cros/launcher/hide_continue_section_clamshell.go",
         "patchSetId": 2
