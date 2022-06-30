@@ -22,6 +22,30 @@
       },
       "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11ba3174_642120b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-06-30T00:57:56Z",
+      "side": 1,
+      "message": "One purpose of kernel_uprev is to bring ARC++ support to boards that previously weren\u0027t supported. The other purpose seems to deal with improving performance and extending end of life services to chromebooks already out.",
+      "parentUuid": "4b143314_28d7e934",
+      "range": {
+        "startLine": 50,
+        "startChar": 93,
+        "endLine": 50,
+        "endChar": 108
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
