@@ -35,7 +35,7 @@ func init() {
 		Contacts:     []string{"arthur.chuang@cienet.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_ec"},
 		SoftwareDeps: []string{"chrome"},
-		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
+		Vars:         []string{"ui.signinProfileTestExtensionManifestKey"},
 		ServiceDeps:  []string{"tast.cros.ui.ScreenLockService", "tast.cros.ui.PowerMenuService", "tast.cros.graphics.ScreenshotService"},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.FormFactor(hwdep.Convertible, hwdep.Chromeslate, hwdep.Detachable)),
@@ -167,7 +167,10 @@ func ECTabletMode(ctx context.Context, s *testing.State) {
 			s.Logf("------------------------Perform testCase: %s------------------------", testCase)
 			// Chrome instance is necessary to check for the presence of the power menu.
 			// Start Chrome to show the login screen with a user pod.
-			manifestKey := s.RequiredVar("ui.signinProfileTestExtensionManifestKey")
+			manifestKey, ok := s.Var("ui.signinProfileTestExtensionManifestKey")
+			if !ok {
+				s.Fatal("Failed to get the required secret ui.signinProfileTestExtensionManifestKey. Please install the tast-tests-private repo using the instructions at https://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/docs/faft-how-to-run-doc.md#tast-tests-private")
+			}
 			signInRequest := ui.NewChromeRequest{
 				Login: false,
 				Key:   manifestKey,
