@@ -23,8 +23,7 @@ func init() {
 		Func: PINWeaver,
 		Desc: "Checks that LE credentials work",
 		Contacts: []string{
-			"kerrnel@chromium.org", // Test author
-			"cros-cryptohome-dev@google.com",
+			"cros-hwsec@google.com",
 		},
 		Attr:         []string{"informational", "group:mainline"},
 		SoftwareDeps: []string{"pinweaver", "reboot"},
