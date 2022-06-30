@@ -16,6 +16,24 @@
       "message": "Should this logic live in uiauto itself? I imagine it might be biting other teams?",
       "revId": "3dd598b5436bba7bb0d5619bfb23140d6f7f7cad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a20e0f80_dc177ec3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-30T02:10:37Z",
+      "side": 1,
+      "message": "Not necessarily, as sometimes it is intended to just check the existence of a node in the ui tree. \n\nBut I knew it was also affecting the inputs team for the virtual keyboard.\n\nI will raise this to the Tast team. Before they make any decision on this, let\u0027s change it in our end first.",
+      "parentUuid": "1461062f_75880a36",
+      "revId": "3dd598b5436bba7bb0d5619bfb23140d6f7f7cad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
