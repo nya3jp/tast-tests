@@ -1,0 +1,262 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a3011c_1b057146",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-30T10:04:55Z",
+      "side": 1,
+      "message": "nit: line too long.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 73
+      },
+      "revId": "3a3c4911c838920a8bd12d27d3e13bcafd5040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8925ea52_1f23c1d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-30T10:04:55Z",
+      "side": 1,
+      "message": "nit: line too long\nSuggestion: `TEST\u003dtast run -var\u003dservo\u003d\u003cSERVO\u003e -var\u003dfirmware.ECPath\u003d\u003cPATH\u003e \u003cDUT\u003e`",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 85
+      },
+      "revId": "3a3c4911c838920a8bd12d27d3e13bcafd5040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "197fe4e9_b3cc896e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-30T10:04:55Z",
+      "side": 1,
+      "message": "I will check again for +2 after the nits are resolved.",
+      "revId": "3a3c4911c838920a8bd12d27d3e13bcafd5040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1385e155_a12a4a2e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-30T10:04:55Z",
+      "side": 1,
+      "message": "nit: `fwpb`",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "3a3c4911c838920a8bd12d27d3e13bcafd5040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5068b790_be2a62f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-30T10:04:55Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#global-runtime-variables-recommended-for-new-code\nPlease use this for runtime variables.",
+      "revId": "3a3c4911c838920a8bd12d27d3e13bcafd5040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "531a112f_a919bbf9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-30T10:04:55Z",
+      "side": 1,
+      "message": "nit: `pathToEC`",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 9
+      },
+      "revId": "3a3c4911c838920a8bd12d27d3e13bcafd5040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ac285a_d08d1812",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-30T10:04:55Z",
+      "side": 1,
+      "message": "nit: `disableECSoftwareSync` so it is not exported.\nMaybe create a const from it.",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "3a3c4911c838920a8bd12d27d3e13bcafd5040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fe5bf72_d7d74db3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-30T10:04:55Z",
+      "side": 1,
+      "message": "nit: this can be removed, just like in the next check.",
+      "range": {
+        "startLine": 126,
+        "startChar": 4,
+        "endLine": 126,
+        "endChar": 17
+      },
+      "revId": "3a3c4911c838920a8bd12d27d3e13bcafd5040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34fd1d80_b7ec5981",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-30T10:04:55Z",
+      "side": 1,
+      "message": "nit: EC",
+      "revId": "3a3c4911c838920a8bd12d27d3e13bcafd5040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58ff12d1_32ac1f41",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-30T10:04:55Z",
+      "side": 1,
+      "message": "nit: same as for `disableECSoftwareSync`.",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 21
+      },
+      "revId": "3a3c4911c838920a8bd12d27d3e13bcafd5040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dba6d0f_b52604d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-30T10:04:55Z",
+      "side": 1,
+      "message": "Do you think it would be worth it to create a function out of this? It is used twice.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 2
+      },
+      "revId": "3a3c4911c838920a8bd12d27d3e13bcafd5040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b781245_d76b7b28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-06-30T10:04:55Z",
+      "side": 1,
+      "message": "nit: failed to run",
+      "range": {
+        "startLine": 176,
+        "startChar": 35,
+        "endLine": 176,
+        "endChar": 42
+      },
+      "revId": "3a3c4911c838920a8bd12d27d3e13bcafd5040b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
