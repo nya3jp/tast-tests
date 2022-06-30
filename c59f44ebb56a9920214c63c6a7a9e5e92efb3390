@@ -16,6 +16,23 @@
       "message": "Shuo-Peng, could you PTAL. Thanks \n- hardik",
       "revId": "c59f44ebb56a9920214c63c6a7a9e5e92efb3390",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e7343ed_a4bc86ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-06-30T16:18:17Z",
+      "side": 1,
+      "message": "Looking for a new tast owner",
+      "revId": "c59f44ebb56a9920214c63c6a7a9e5e92efb3390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
