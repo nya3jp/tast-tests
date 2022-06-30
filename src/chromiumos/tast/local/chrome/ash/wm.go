@@ -565,13 +565,16 @@ func FindWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Win
 }
 
 // FindOnlyWindow returns the Chrome window with which the given predicate returns true.
-// If there are multiple, this returns an error.
+// If there are none or multiple, this returns an error.
 func FindOnlyWindow(ctx context.Context, tconn *chrome.TestConn, predicate func(*Window) bool) (*Window, error) {
 	windows, err := FindAllWindows(ctx, tconn, predicate)
 	if err != nil {
 		return nil, err
 	}
-	if len(windows) != 1 {
+	if len(windows) < 1 {
+		return nil, ErrWindowNotFound
+	}
+	if len(windows) > 1 {
 		return nil, ErrMultipleWindowsFound
 	}
 	return windows[0], err
