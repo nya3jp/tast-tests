@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e8b0712_c98e50d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-06-30T23:49:31Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s better to restrict commit messages to ASCII. I don\u0027t think it\u0027s in the style guide anywhere, so I\u0027ll leave it up to you.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 1
+      },
+      "revId": "c59f44ebb56a9920214c63c6a7a9e5e92efb3390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7ea7c894_cc75ee2b",
