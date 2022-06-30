@@ -162,14 +162,9 @@ func ShowContinueSection(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to show continue section: ", err)
 	}
 
-	// Click on the button to confirm the privacy notice.
-	privacyNoticeButton := nodewith.Ancestor(continueSection).ClassName("PillButton")
-	if err := uiauto.Combine("Accept privacy notice",
-		ui.WaitUntilExists(privacyNoticeButton),
-		ui.LeftClick(privacyNoticeButton),
-		ui.WaitUntilGone(privacyNoticeButton),
-	)(ctx); err != nil {
-		s.Fatal("Failed to confirm privacy notice: ", err)
+	// Dismiss the privacy notice.
+	if err := launcher.DismissPrivacyNotice(ctx, tconn); err != nil {
+		s.Fatal("Failed to dismiss privacy notice: ", err)
 	}
 
 	for i, filePath := range testDocFileNames {
