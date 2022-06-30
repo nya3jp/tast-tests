@@ -33,6 +33,24 @@
       "message": "For appending error in fatal error message, you may just:\n```\ns.Fatal(\"...: \", err)\n```\nsame below",
       "revId": "98c3cf6e95e51cf473c38c9ef77f6710e782bb80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "126eaa82_44cb9094",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/shortcut_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-06-30T16:31:52Z",
+      "side": 1,
+      "message": "Done, thanks for the review!",
+      "parentUuid": "bed25274_999e4bff",
+      "revId": "98c3cf6e95e51cf473c38c9ef77f6710e782bb80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
