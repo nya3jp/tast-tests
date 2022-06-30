@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
@@ -50,10 +51,11 @@ type WeVideo struct {
 	kb         *input.KeyboardEventWriter
 	clips      map[string]Clip
 	tabletMode bool
+	br         *browser.Browser
 }
 
 // NewWeVideo creates an instance of WeVideo.
-func NewWeVideo(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, uiHandler cuj.UIActionHandler, tabletMode bool) *WeVideo {
+func NewWeVideo(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, uiHandler cuj.UIActionHandler, tabletMode bool, br *browser.Browser) *WeVideo {
 	return &WeVideo{
 		tconn:      tconn,
 		ui:         uiauto.New(tconn),
@@ -61,13 +63,14 @@ func NewWeVideo(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, uiHandler
 		uiHandler:  uiHandler,
 		clips:      make(map[string]Clip),
 		tabletMode: tabletMode,
+		br:         br,
 	}
 }
 
 // Open opens a WeVideo webpage on chrome browser.
-func (w *WeVideo) Open(cr *chrome.Chrome) action.Action {
+func (w *WeVideo) Open() action.Action {
 	return func(ctx context.Context) (err error) {
-		w.conn, err = cr.NewConn(ctx, cuj.WeVideoURL)
+		w.conn, err = w.uiHandler.NewChromeTab(ctx, w.br, cuj.WeVideoURL, true)
 		if err != nil {
 			return errors.Wrap(err, "failed to connect to chrome")
 		}
@@ -77,7 +80,6 @@ func (w *WeVideo) Open(cr *chrome.Chrome) action.Action {
 
 // Login logs in WeVideo.
 func (w *WeVideo) Login(account string) action.Action {
-	const actionName = "log in WeVideo"
 	ui := w.ui
 	loginRequired := func(ctx context.Context) error {
 		if err := ui.Exists(weVideoWebArea)(ctx); err == nil {
@@ -91,7 +93,7 @@ func (w *WeVideo) Login(account string) action.Action {
 	targetAccount := nodewith.Name(account).Role(role.StaticText)
 
 	loginWithGoogle := uiauto.NamedCombine("login with Google",
-		ui.LeftClickUntil(googleLink, ui.WithTimeout(shortUITimeout).WaitUntilExists(targetAccount)),
+		ui.DoDefaultUntil(googleLink, ui.WithTimeout(shortUITimeout).WaitUntilExists(targetAccount)),
 		ui.LeftClickUntil(targetAccount, ui.WithTimeout(shortUITimeout).WaitUntilGone(targetAccount)),
 	)
 	// Sign up process.
@@ -108,8 +110,8 @@ func (w *WeVideo) Login(account string) action.Action {
 	return uiauto.IfSuccessThen(loginRequired,
 		// There is a bug in Wevideo login process, sometimes it needs to login twice with google account.
 		// So add retry login here.
-		uiauto.Retry(3, uiauto.NamedCombine(actionName,
-			uiauto.IfSuccessThen(ui.Exists(loginButton), ui.LeftClick(loginButton)),
+		uiauto.Retry(3, uiauto.NamedCombine("log in WeVideo",
+			uiauto.IfSuccessThen(ui.Exists(loginButton), ui.DoDefault(loginButton)),
 			ui.WaitUntilExists(loginWebArea),
 			loginWithGoogle,
 			// Sign up if there is a sign up page.
@@ -121,25 +123,23 @@ func (w *WeVideo) Login(account string) action.Action {
 
 // Create creates the new video editing.
 func (w *WeVideo) Create() action.Action {
-	const actionName = "create the new video editing"
 	promptWindow := nodewith.ClassName("Modal medium")
 	closeButton := nodewith.Name("CLOSE").Role(role.Button).Ancestor(promptWindow)
 	createNewButton := nodewith.NameContaining("CREATE NEW").Role(role.Button).Ancestor(weVideoWebArea)
 	videoText := nodewith.Name("Video").Role(role.StaticText).Ancestor(weVideoWebArea)
 	titleText := nodewith.Name("MY VIDEO").Role(role.StaticText).Ancestor(weVideoWebArea)
 	// The pop-up prompt window display time is not necessarily, so add retry to ensure that the window is closed.
-	return uiauto.Retry(3, uiauto.NamedCombine(actionName,
+	return uiauto.Retry(3, uiauto.NamedCombine("create the new video editing",
 		// Close the pop-up prompt window.
 		uiauto.IfSuccessThen(w.ui.WithTimeout(shortUITimeout).WaitUntilExists(closeButton), w.ui.LeftClick(closeButton)),
-		w.ui.LeftClick(createNewButton),
-		w.ui.LeftClick(videoText),
+		w.ui.DoDefault(createNewButton),
+		w.ui.DoDefault(videoText),
 		w.ui.WithTimeout(longUITimeout).WaitUntilExists(titleText),
 	))
 }
 
 // AddStockVideo adds stock video to expected track.
-func (w *WeVideo) AddStockVideo(clipName, clipTime, expectedTrack string) action.Action {
-	actionName := fmt.Sprintf("add stock video \"%s\"", clipName)
+func (w *WeVideo) AddStockVideo(clipName, previousClipName, clipTime, expectedTrack string) action.Action {
 	ui := w.ui
 	searchVideo := nodewith.Name("Search videos").Role(role.TextField)
 	stockMediaButton := nodewith.Name("Videos").Role(role.Button).HasClass("MuiListItem-button")
@@ -166,18 +166,24 @@ func (w *WeVideo) AddStockVideo(clipName, clipTime, expectedTrack string) action
 		if err != nil {
 			return err
 		}
-		expectedTrack := nodewith.Name(expectedTrack).Role(role.StaticText)
-		trackLocation, err := ui.Location(ctx, expectedTrack)
-		if err != nil {
-			return err
-		}
-		playHead := nodewith.Name("Playhead").Role(role.GenericContainer)
-		playHeadLocation, err := ui.Location(ctx, playHead)
-		if err != nil {
-			return err
-		}
+
 		dragUpStart := clipLocation.CenterPoint()
-		dragUpEnd := coords.NewPoint(playHeadLocation.Right(), trackLocation.CenterY())
+		var dragUpEnd coords.Point
+		if previousClipName != "" {
+			dragUpEnd = w.clips[previousClipName].endPoint
+		} else {
+			expectedTrack := nodewith.Name(expectedTrack).Role(role.StaticText)
+			trackLocation, err := ui.Location(ctx, expectedTrack)
+			if err != nil {
+				return err
+			}
+			playHead := nodewith.Name("Playhead").Role(role.GenericContainer)
+			playHeadLocation, err := ui.Location(ctx, playHead)
+			if err != nil {
+				return err
+			}
+			dragUpEnd = coords.NewPoint(playHeadLocation.Right(), trackLocation.CenterY())
+		}
 		insertAndPush := nodewith.NameContaining("Insert and push").Role(role.StaticText)
 		pc := pointer.NewMouse(w.tconn)
 		defer pc.Close()
@@ -205,7 +211,7 @@ func (w *WeVideo) AddStockVideo(clipName, clipTime, expectedTrack string) action
 		}
 		return nil
 	}
-	return uiauto.NamedCombine(actionName,
+	return uiauto.NamedCombine(fmt.Sprintf("add stock video \"%s\"", clipName),
 		openStockMedia,
 		findVideo,
 		dragVideoToTrack,
@@ -216,7 +222,6 @@ func (w *WeVideo) AddStockVideo(clipName, clipTime, expectedTrack string) action
 
 // AddText adds static text to the expected track.
 func (w *WeVideo) AddText(clipName, expectedTrack, text string) action.Action {
-	actionName := fmt.Sprintf("add text to clip \"%s\"", clipName)
 	ui := w.ui
 	textButton := nodewith.Name("Text").Role(role.Button).HasClass("MuiListItem-button")
 	// It removes the text info, so it can only capture "Basic text" node by classname.
@@ -276,7 +281,7 @@ func (w *WeVideo) AddText(clipName, expectedTrack, text string) action.Action {
 		)(ctx)
 	}
 
-	return uiauto.NamedCombine(actionName,
+	return uiauto.NamedCombine(fmt.Sprintf("add text to clip \"%s\"", clipName),
 		w.closePromptWindow(),
 		ui.LeftClick(textButton),
 		dragTextToTrack,
@@ -286,7 +291,6 @@ func (w *WeVideo) AddText(clipName, expectedTrack, text string) action.Action {
 
 // AddTransition adds transition to the expected clip.
 func (w *WeVideo) AddTransition(clipName string) action.Action {
-	actionName := fmt.Sprintf("add transition \"Cross fade\" to clip \"%s\"", clipName)
 	transitionButton := nodewith.Name("Transitions").Role(role.Button).HasClass("MuiListItem-button")
 	transitionClip := nodewith.ClassName("transition-icon").Role(role.GenericContainer)
 	dragTransitionToClip := func(ctx context.Context) error {
@@ -303,11 +307,11 @@ func (w *WeVideo) AddTransition(clipName string) action.Action {
 		return uiauto.Retry(3, uiauto.Combine("drag transition to clip",
 			pc.Drag(dragUpStart, pc.DragTo(dragUpEnd, dragTime)),
 			// Check the transition is added.
-			w.ui.WaitUntilExists(transitionClip),
+			w.ui.WithTimeout(shortUITimeout).WaitUntilExists(transitionClip),
 		))(ctx)
 
 	}
-	return uiauto.NamedCombine(actionName,
+	return uiauto.NamedCombine(fmt.Sprintf("add transition \"Cross fade\" to clip \"%s\"", clipName),
 		w.closePromptWindow(),
 		w.ui.LeftClick(transitionButton),
 		dragTransitionToClip,
@@ -316,11 +320,10 @@ func (w *WeVideo) AddTransition(clipName string) action.Action {
 
 // PlayVideo plays the edited video from the beginning of expected clip.
 func (w *WeVideo) PlayVideo(clipName string) action.Action {
-	const actionName = "play the edited video from the beginning to the end"
 	playButton := nodewith.NameContaining("Play the video").Role(role.GenericContainer)
-	return uiauto.NamedCombine(actionName,
+	return uiauto.NamedCombine("play the edited video from the beginning to the end",
 		w.ui.MouseClickAtLocation(0, w.clips[clipName].startPoint),
-		w.ui.LeftClick(playButton),
+		w.ui.DoDefault(playButton),
 		w.waitUntilPlaying(shortUITimeout),
 		w.waitUntilPaused(longUITimeout),
 	)
@@ -328,10 +331,7 @@ func (w *WeVideo) PlayVideo(clipName string) action.Action {
 
 // waitUntilPlaying waits until the edited video is playing.
 func (w *WeVideo) waitUntilPlaying(timeout time.Duration) action.Action {
-	const (
-		actionName    = "wait until playing"
-		preparingText = "We're preparing your preview"
-	)
+	const preparingText = "We're preparing your preview"
 	var err error
 	var startTime time.Time
 	var startPlayTime, currentPlayTime string
@@ -360,7 +360,7 @@ func (w *WeVideo) waitUntilPlaying(timeout time.Duration) action.Action {
 		}
 		return errors.New("video is not playing")
 	}
-	return uiauto.NamedCombine(actionName,
+	return uiauto.NamedCombine("wait until playing",
 		setStartPlayTime,
 		w.ui.WithTimeout(timeout+longUITimeout).RetryUntil(setCurrentPlayTime, checkIsPlaying),
 	)
@@ -368,7 +368,6 @@ func (w *WeVideo) waitUntilPlaying(timeout time.Duration) action.Action {
 
 // waitUntilPaused waits until the edited video is paused.
 func (w *WeVideo) waitUntilPaused(timeout time.Duration) action.Action {
-	const actionName = "wait until paused"
 	var startTime time.Time
 	var startPlayTime, currentPlayTime string
 	getStartTime := func(ctx context.Context) error {
@@ -395,7 +394,7 @@ func (w *WeVideo) waitUntilPaused(timeout time.Duration) action.Action {
 		}
 		return errors.New("video is not paused")
 	}
-	return uiauto.NamedCombine(actionName,
+	return uiauto.NamedCombine("wait until paused",
 		getStartTime,
 		w.ui.WithTimeout(timeout).RetryUntil(getPlayTime, checkIsPaused),
 	)

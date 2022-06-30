@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/videoeditingcuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 )
@@ -19,11 +20,10 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EDUVideoEditingCUJ,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of editing video on the web",
 		Contacts:     []string{"xliu@cienet.com", "jane.yang@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "enrolledLoggedInToCUJUser",
 		Vars: []string{
 			// Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
 			"ui.cuj_mode",
@@ -31,7 +31,16 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "premium_wevideo",
+				Fixture: "enrolledLoggedInToCUJUser",
 				Timeout: 5 * time.Minute,
+				Val:     browser.TypeAsh,
+			},
+			{
+				Name:              "premium_lacros_wevideo",
+				Timeout:           5 * time.Minute,
+				Fixture:           "enrolledLoggedInToCUJUserLacros",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val:               browser.TypeLacros,
 			},
 		},
 	})
@@ -72,7 +81,7 @@ func EDUVideoEditingCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer cleanup(cleanupCtx)
 	}
-	if err := videoeditingcuj.Run(ctx, s.OutDir(), cr, tabletMode); err != nil {
+	if err := videoeditingcuj.Run(ctx, s.OutDir(), cr, tabletMode, s.Param().(browser.Type)); err != nil {
 		s.Fatal("Failed to run the video editing on the web cuj: ", err)
 	}
 }
