@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62e2b08a_e662551f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_list_sort_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-30T20:57:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ce62798_feffcd39",
+      "revId": "be7438b4a90269f539dedb23e3eba57eadbbf8ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ce6393c_6b80768d",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-30T19:52:44Z",
       "side": 1,
       "message": "ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "be7438b4a90269f539dedb23e3eba57eadbbf8ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b94e74f7_cb8c8dcf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/reorder_nudge_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-06-30T20:57:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ce6393c_6b80768d",
       "range": {
         "startLine": 36,
         "startChar": 0,
