@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d15c1b_6449ed0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_google_document.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-06-30T20:33:03Z",
+      "side": 1,
+      "message": "let\u0027s use clamshell_mode and tablet_mode\n\nand I\u0027d consider making tablet mode test param (so we run two separate tests, instead of one test with two subtests) - for example, that way tast would close any open browser windos between test runs",
+      "revId": "d0f8b9cd8063608d32865a94ddf83cb234f8634c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a31043_64ba3b1e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_results.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-06-30T20:33:03Z",
+      "side": 1,
+      "message": "nit: stable_clamshell_mode",
+      "revId": "d0f8b9cd8063608d32865a94ddf83cb234f8634c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
