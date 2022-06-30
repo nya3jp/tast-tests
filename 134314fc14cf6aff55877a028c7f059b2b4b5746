@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f09b64ac_6eeb88e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-06-30T22:10:03Z",
+      "side": 1,
+      "message": "LGTM w/nits.",
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15cd7e65_c4e3cfcc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-06-30T22:10:03Z",
+      "side": 1,
+      "message": "Nit: End with period (comments are full sentences).",
+      "range": {
+        "startLine": 35,
+        "startChar": 39,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bbfdd68_c83a9379",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-06-30T22:10:03Z",
+      "side": 1,
+      "message": "Nit: And here.",
+      "range": {
+        "startLine": 66,
+        "startChar": 39,
+        "endLine": 66,
+        "endChar": 45
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58899bb4_6a72ad54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-06-30T22:10:03Z",
+      "side": 1,
+      "message": "Nit: And here.",
+      "range": {
+        "startLine": 79,
+        "startChar": 62,
+        "endLine": 79,
+        "endChar": 68
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
