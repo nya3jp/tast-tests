@@ -177,6 +177,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8513058f_cd7a68ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-30T16:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffc007aa_86dd650b",
+      "revId": "86f743da8bcfdf98135c6ca648abf830a0001e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c84cef46_ac670a9c",

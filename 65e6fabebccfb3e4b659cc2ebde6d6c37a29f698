@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8dfc2e5_b59bc406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-30T16:54:14Z",
+      "side": 1,
+      "message": "Not to my knowledge. It appears to always be using the virtual network as intended through the test.\n\nCould you explain why you believe the DNS request could go to the physical network here?",
+      "parentUuid": "4f6f28df_f097ece6",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 49
+      },
+      "revId": "65e6fabebccfb3e4b659cc2ebde6d6c37a29f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56ebe6b9_f8a371b1",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
         "patchSetId": 11
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-27T02:19:24Z",
       "side": 1,
       "message": "nit: How about |forceAddressToGateway| or |forceNameToGatewway|? It\u0027s unclear that what \"IP\" is in this name.",
+      "range": {
+        "startLine": 56,
+        "startChar": 42,
+        "endLine": 56,
+        "endChar": 58
+      },
+      "revId": "65e6fabebccfb3e4b659cc2ebde6d6c37a29f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "190a0b96_f80eab60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-30T16:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ebe6b9_f8a371b1",
       "range": {
         "startLine": 56,
         "startChar": 42,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-06-27T02:19:24Z",
       "side": 1,
       "message": "nit: It seems to me that this the default behavior of this httpserver is do a redirection for all requests, maybe worth a comment above.",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "65e6fabebccfb3e4b659cc2ebde6d6c37a29f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a75ece_41f692c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-30T16:54:14Z",
+      "side": 1,
+      "message": "Done. I want to make it clear that eventually this httpserver package will include functionality to do more than just redirect, but for the purpose of this CL I will add this comment.",
+      "parentUuid": "bad3a2cd_169f4d25",
       "range": {
         "startLine": 42,
         "startChar": 27,

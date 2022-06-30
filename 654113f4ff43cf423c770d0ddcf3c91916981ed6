@@ -63,6 +63,30 @@
       },
       "revId": "654113f4ff43cf423c770d0ddcf3c91916981ed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "824f9120_f0826c96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-30T16:54:14Z",
+      "side": 1,
+      "message": "\u003e Do we need to also append  `${gateway}:53`  to the dns list to make DHCP broadcasting this DNS? Did you check that if the IPConfig object exposed by shill contain this DNS server\n\nThe ipconfig came back with this as the gateway: `Gateway \u003d 192.168.100.1` so it appears to be working as expected. So I believe we do not need to add that to the dns list. Please correct me if I am wrong here.",
+      "parentUuid": "7df41c88_e78cf867",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "654113f4ff43cf423c770d0ddcf3c91916981ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
