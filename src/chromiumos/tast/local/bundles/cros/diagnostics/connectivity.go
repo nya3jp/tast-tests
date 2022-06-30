@@ -28,6 +28,19 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: diagnosticsapp.SkipNarrowPlatformsHwdeps,
+				Val:               diagnosticsapp.TestParams{},
+			},
+			{
+				Name:              "gru",
+				ExtraHardwareDeps: diagnosticsapp.NarrowPlatformsHwdeps,
+				Val: diagnosticsapp.TestParams{
+					IsNarrowDevice: true,
+				},
+			},
+		},
 	})
 }
 
@@ -48,6 +61,14 @@ func Connectivity(ctx context.Context, s *testing.State) {
 	dxRootnode, err := diagnosticsapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch diagnostics app: ", err)
+	}
+
+	// Open navigation if device is narrow view.
+	paramVal := s.Param().(diagnosticsapp.TestParams)
+	if paramVal.IsNarrowDevice {
+		if err := diagnosticsapp.ClickNavigationMenuButton(ctx, tconn); err != nil {
+			s.Fatal("Could not click the menu button: ", err)
+		}
 	}
 
 	// Find the Connectivity navigation item.

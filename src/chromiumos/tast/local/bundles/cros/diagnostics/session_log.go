@@ -20,7 +20,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -36,11 +35,19 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		HardwareDeps: hwdep.D(
-			// "gru" is the platform name for scarlet devices. Scarlet
-			// needs to be treated differently to handle mobile navigation.
-			// TODO(ashleydp): Split tests into "gru" (mobile) and other models.
-			hwdep.SkipOnPlatform("gru")),
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: diagnosticsapp.SkipNarrowPlatformsHwdeps,
+				Val:               diagnosticsapp.TestParams{},
+			},
+			{
+				Name:              "gru",
+				ExtraHardwareDeps: diagnosticsapp.NarrowPlatformsHwdeps,
+				Val: diagnosticsapp.TestParams{
+					IsNarrowDevice: true,
+				},
+			},
+		},
 	})
 }
 
@@ -140,6 +147,14 @@ func SessionLog(ctx context.Context, s *testing.State) {
 	dxRootnode, err := diagnosticsapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch diagnostics app: ", err)
+	}
+
+	// Open navigation if device is narrow view.
+	paramVal := s.Param().(diagnosticsapp.TestParams)
+	if paramVal.IsNarrowDevice {
+		if err := diagnosticsapp.ClickNavigationMenuButton(ctx, tconn); err != nil {
+			s.Fatal("Could not click the menu button: ", err)
+		}
 	}
 
 	// Find session log button. If needed, scroll down to make the session log visible and Click session log button.
