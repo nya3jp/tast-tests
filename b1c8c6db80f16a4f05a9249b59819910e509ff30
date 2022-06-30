@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ec8b36_3da427a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-06-30T02:51:35Z",
+      "side": 1,
+      "message": "Hi Hidehiko Abe,\n\nAre we getting different errors now or this dry run failure is not related to our CL?",
+      "revId": "b1c8c6db80f16a4f05a9249b59819910e509ff30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
