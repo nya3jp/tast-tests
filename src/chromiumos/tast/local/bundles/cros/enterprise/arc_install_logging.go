@@ -79,26 +79,25 @@ const (
 // - check that app installation log is uploaded from Chrome.
 func ARCInstallLogging(ctx context.Context, s *testing.State) {
 	const testPackage = "com.managedchrome.arcloggingtest"
-	const poolID = "arc_logging_test"
 
 	// Shorten deadline to leave time for cleanup
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
 	defer cancel()
 
-	// Lease a test account for the duration of the test.
-	acc, cleanupLease, err := tape.LeaseAccount(ctx, poolID, arcInstallLoggingTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	accRequest := tape.NewRequestOwnedTestAccountParams(int32(arcInstallLoggingTestTimeout.Seconds()), tape.ArcLoggingTest, false)
+	accHelper, acc, err := tape.NewOwnedTestAccountHelper(ctx, accRequest, tape.WithCredsJSON([]byte(s.RequiredVar(tape.ServiceAccountVar))))
 	if err != nil {
-		s.Fatal("Failed to lease a test account: ", err)
+		s.Fatal("Failed to create an account helper: ", err)
 	}
-	defer cleanupLease(cleanupCtx)
+	defer accHelper.CleanUp(cleanupCtx)
 
 	// Login to Chrome and allow to launch ARC if allowed by user policy. Flag --install-log-fast-upload-for-tests reduces delay of uploading chrome log.
 	// Flag --arc-install-event-chrome-log-for-tests logs ARC install events to chrome log.
 	args := append(arc.DisableSyncFlags(), "--install-log-fast-upload-for-tests", "--arc-install-event-chrome-log-for-tests")
 	cr, err := chrome.New(
 		ctx,
-		chrome.GAIALogin(chrome.Creds{User: acc.UserName, Pass: acc.Password}),
+		chrome.GAIALogin(chrome.Creds{User: acc.Username, Pass: acc.Password}),
 		chrome.ARCSupported(),
 		chrome.UnRestrictARCCPU(),
 		chrome.ProdPolicy(),

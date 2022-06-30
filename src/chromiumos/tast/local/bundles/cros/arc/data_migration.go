@@ -36,13 +36,11 @@ import (
 // 6) Upload the tbz2 file into gs://chromiumos-test-assets-public/tast/cros/arc/ and update
 //    the .external file (See tast/local/bundles/cros/arc/data/data_migration_pi_x86_64.external).
 const (
-	homeDataNameNycX86            = "data_migration_nyc_x86_64"
-	homeDataNamePiX86             = "data_migration_pi_x86_64"
-	homeDataNamePiArm             = "data_migration_pi_arm64"
-	homeDataNameManagedPiX86      = "data_migration_managed_pi_x86_64"
-	arcDataMigrationUnmanagedPool = "arc_data_migration_unmanaged"
-	arcDataMigrationManagedPool   = "arc_data_migration_managed"
-	dataMigrationTestTimeout      = 10 * time.Minute
+	homeDataNameNycX86       = "data_migration_nyc_x86_64"
+	homeDataNamePiX86        = "data_migration_pi_x86_64"
+	homeDataNamePiArm        = "data_migration_pi_arm64"
+	homeDataNameManagedPiX86 = "data_migration_managed_pi_x86_64"
+	dataMigrationTestTimeout = 10 * time.Minute
 )
 
 type dataMigrationTestParams struct {
@@ -66,7 +64,7 @@ func init() {
 			// Launch ARC P with /data created on ARC N (for x86).
 			Name: "n_to_p_x86",
 			Val: dataMigrationTestParams{
-				poolID:       arcDataMigrationUnmanagedPool,
+				poolID:       tape.ArcDataMigrationUnmanaged,
 				dataFileName: homeDataNameNycX86,
 			},
 			ExtraData:         []string{homeDataNameNycX86},
@@ -75,7 +73,7 @@ func init() {
 			// Launch ARC R with /data created on ARC P (for x86).
 			Name: "p_to_r_x86",
 			Val: dataMigrationTestParams{
-				poolID:       arcDataMigrationUnmanagedPool,
+				poolID:       tape.ArcDataMigrationUnmanaged,
 				dataFileName: homeDataNamePiX86,
 			},
 			ExtraData:         []string{homeDataNamePiX86},
@@ -84,7 +82,7 @@ func init() {
 			// Launch ARC R with /data created on ARC P (for arm).
 			Name: "p_to_r_arm",
 			Val: dataMigrationTestParams{
-				poolID:       arcDataMigrationUnmanagedPool,
+				poolID:       tape.ArcDataMigrationUnmanaged,
 				dataFileName: homeDataNamePiArm,
 			},
 			ExtraData:         []string{homeDataNamePiArm},
@@ -93,7 +91,7 @@ func init() {
 			// Launch ARC R with /data created on ARC P for managed user(for x86).
 			Name: "managed_p_to_r_x86",
 			Val: dataMigrationTestParams{
-				poolID:       arcDataMigrationManagedPool,
+				poolID:       tape.ArcDataMigrationManaged,
 				dataFileName: homeDataNameManagedPiX86,
 			},
 			ExtraData:         []string{homeDataNameManagedPiX86},
@@ -123,11 +121,12 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Lease a test account for the duration of the test.
-	acc, cleanupLease, err := tape.LeaseAccount(ctx, params.poolID, dataMigrationTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	accRequest := tape.NewRequestOwnedTestAccountParams(int32(dataMigrationTestTimeout.Seconds()), params.poolID, false)
+	accHelper, acc, err := tape.NewOwnedTestAccountHelper(ctx, accRequest, tape.WithCredsJSON([]byte(s.RequiredVar(tape.ServiceAccountVar))))
 	if err != nil {
-		s.Fatal("Failed to lease a test account: ", err)
+		s.Fatal("Failed to create an account helper: ", err)
 	}
-	defer cleanupLease(cleanupCtx)
+	defer accHelper.CleanUp(cleanupCtx)
 
 	// Ensure to sign out before executing mountVaultWithArchivedHomeData().
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
@@ -135,17 +134,17 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	}
 
 	// Unarchive the home data under vault before signing in.
-	if err := mountVaultWithArchivedHomeData(ctx, homeDataPath, acc.UserName, acc.Password); err != nil {
+	if err := mountVaultWithArchivedHomeData(ctx, homeDataPath, acc.Username, acc.Password); err != nil {
 		s.Fatal("Failed to mount home with archived data: ", err)
 	}
 	defer func() {
-		cryptohome.UnmountVault(cleanupCtx, acc.UserName)
-		cryptohome.RemoveVault(cleanupCtx, acc.UserName)
+		cryptohome.UnmountVault(cleanupCtx, acc.Username)
+		cryptohome.RemoveVault(cleanupCtx, acc.Username)
 	}()
 
 	args := append(arc.DisableSyncFlags(), "--disable-arc-data-wipe")
 	cr, err := chrome.New(ctx,
-		chrome.GAIALogin(chrome.Creds{User: acc.UserName, Pass: acc.Password}),
+		chrome.GAIALogin(chrome.Creds{User: acc.Username, Pass: acc.Password}),
 		chrome.ARCSupported(), chrome.KeepState(), chrome.ExtraArgs(args...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -158,7 +157,7 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close(ctx)
 
-	systemSdkVersion, err := checkSdkVersionsInPackagesXML(ctx, a, acc.UserName)
+	systemSdkVersion, err := checkSdkVersionsInPackagesXML(ctx, a, acc.Username)
 	if err != nil {
 		s.Fatal("Failed to check SDK version in packages.xml: ", err)
 	}
