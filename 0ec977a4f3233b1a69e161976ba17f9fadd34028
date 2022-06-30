@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a8833a_f92ab721",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-30T23:27:30Z",
+      "side": 1,
+      "message": "See https://source.corp.google.com/chromeos_public/src/third_party/wpa_supplicant-cros/current/wpa_supplicant/p2p_supplicant.c;rcl\u003df8246e13fff5ac26d0be8a3057ba4d18be5eb209;l\u003d1334, the event can optionally have \"[PERSISTENT]\" at the end. Let\u0027s parse this for completion and include a bool for persistent group",
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35cb3f9b_3e81ca66",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-30T23:27:30Z",
+      "side": 1,
+      "message": "should be a-fA-F",
+      "range": {
+        "startLine": 123,
+        "startChar": 147,
+        "endLine": 123,
+        "endChar": 153
+      },
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7cf277_df6531ee",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-30T23:27:30Z",
+      "side": 1,
+      "message": "SSIDs aren\u0027t limited to this. Use wildcard instead.",
+      "range": {
+        "startLine": 123,
+        "startChar": 76,
+        "endLine": 123,
+        "endChar": 88
+      },
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97a42744_330515c2",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-30T23:27:30Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 123,
+        "startChar": 117,
+        "endLine": 123,
+        "endChar": 127
+      },
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c050c04a_76cbebd5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-30T23:27:30Z",
+      "side": 1,
+      "message": "is there an informationl attribute we can use?",
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0ab2709_a88de004",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-06-30T23:27:30Z",
+      "side": 1,
+      "message": "Can we just have ConfigureClient and ConfigureGO both take a connection object so that we don\u0027t hardcode which device we\u0027re configuring? I know you\u0027re doing this in the following CL, but can we just do it here instead?",
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
