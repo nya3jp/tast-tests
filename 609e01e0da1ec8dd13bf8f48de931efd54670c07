@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "853cdfcb_05804ce1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_transfer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-06-30T02:39:54Z",
+      "side": 1,
+      "message": "Nit: if we intend to copy it both ways, we should verify that the hash of the source matches what it used to be.",
+      "revId": "609e01e0da1ec8dd13bf8f48de931efd54670c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
