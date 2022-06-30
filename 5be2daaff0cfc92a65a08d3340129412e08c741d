@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cac9dfce_ff0b4302",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/inline_reply.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-30T00:00:41Z",
+      "side": 1,
+      "message": "maybe we can use regex here? `NameRegex(regexp.MustCompile(\"(?i)replay\"))`.\nditto to others.",
+      "range": {
+        "startLine": 119,
+        "startChar": 24,
+        "endLine": 119,
+        "endChar": 37
+      },
+      "revId": "5be2daaff0cfc92a65a08d3340129412e08c741d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
