@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7aa8576_514536d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-06-30T16:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14ed683c_fd6d48ab",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 63
+      },
+      "revId": "d60756ca4389dd4a4bfeafd501a31d16973f7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1483c213_9e9ca994",
@@ -112,6 +136,30 @@
       "writtenOn": "2022-06-30T14:29:01Z",
       "side": 1,
       "message": "nit: If this is to match the temperature, maybe this can be more specific, for example to match an optional \"-\" plus one or more digits. Maybe like -?[0-9]+ or -?[1-9][0-9]*",
+      "range": {
+        "startLine": 110,
+        "startChar": 104,
+        "endLine": 110,
+        "endChar": 110
+      },
+      "revId": "d60756ca4389dd4a4bfeafd501a31d16973f7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9996e724_ed511e6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-06-30T16:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1483c213_9e9ca994",
       "range": {
         "startLine": 110,
         "startChar": 104,
