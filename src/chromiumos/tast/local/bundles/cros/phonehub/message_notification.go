@@ -6,6 +6,7 @@ package phonehub
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -83,8 +84,8 @@ func MessageNotification(ctx context.Context, s *testing.State) {
 	}
 	replyText := "Goodbye!"
 	ui := uiauto.New(tconn)
-	if err := ui.LeftClick(nodewith.Role(role.Button).Name("REPLY"))(ctx); err != nil {
-		s.Fatal("Failed to click notification's REPLY button: ", err)
+	if err := ui.LeftClick(nodewith.Role(role.Button).NameRegex(regexp.MustCompile("(?i)reply")))(ctx); err != nil {
+		s.Fatal("Failed to click notification's reply button: ", err)
 	}
 	if err := kb.Type(ctx, replyText+"\n"); err != nil {
 		s.Fatal("Failed to type a reply in the notification: ", err)
