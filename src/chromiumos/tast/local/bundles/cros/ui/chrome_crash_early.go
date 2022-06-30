@@ -6,9 +6,11 @@ package ui
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/session"
@@ -97,6 +99,19 @@ func ChromeCrashEarly(ctx context.Context, s *testing.State) {
 	if files, err := crash.WaitForCrashFiles(ctx, []string{crash.LocalCrashDir}, regexes,
 		crash.MetaString(earlyCrashSignature), crash.MetaString(earlyCrashSignature2),
 		crash.MetaString(expectedProductName)); err != nil {
+		// Failure investigation: Sometimes, it looks like util::IsReallyTestImage
+		// is returning false and thus preventing mock consent from working. Copy
+		// the various lsb-release files used by util::IsReallyTestImage to the
+		// test results.
+		if err := fsutil.CopyFile("/etc/lsb-release",
+			filepath.Join(s.OutDir(), "etc-lsb-release")); err != nil {
+			s.Log("Failed to copy /etc/lsb-release for forensic analysis: ", err)
+		}
+		if err := fsutil.CopyFile("/var/lib/crash_reporter/lsb-release",
+			filepath.Join(s.OutDir(), "var-lib-crash_reporter-lsb-release")); err != nil {
+			s.Log("Failed to copy /var/lib/crash_reporter/ for forensic analysis: ", err)
+		}
+
 		s.Fatal("Couldn't find early crash files: ", err)
 	} else if err := crash.RemoveAllFiles(ctx, files); err != nil {
 		s.Log("Couldn't clean up files: ", err)
