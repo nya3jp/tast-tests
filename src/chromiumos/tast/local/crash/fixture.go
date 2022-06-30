@@ -246,8 +246,7 @@ func FilterCrashes(s string) Option {
 
 // SetUpCrashTest indicates that we are running a test that involves the crash
 // reporting system (crash_reporter, crash_sender, or anomaly_detector). The
-// test should "defer TearDownCrashTest(ctx)" after calling this. If developer image
-// behavior is required for the test, call SetUpDevImageCrashTest instead.
+// test should "defer TearDownCrashTest(ctx)" after calling this.
 func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	crashDirs := []crashAndStash{
 		{SystemCrashDir, systemCrashStash},
@@ -585,7 +584,7 @@ func tearDownCrashTest(ctx context.Context, p *tearDownParams) error {
 	var firstErr error
 
 	// If crashTestInProgressFile does not exist, something else already removed the file
-	// or it was never created (See SetUpDevImageCrashTest).
+	// or it was never created.
 	// Well, whatever, we're in the correct state now (the file is gone).
 	filePath := filepath.Join(p.inProgDir, crashTestInProgressFile)
 	if err := os.Remove(filePath); err != nil && !os.IsNotExist(err) {
