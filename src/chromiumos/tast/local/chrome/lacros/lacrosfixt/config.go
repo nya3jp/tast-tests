@@ -153,6 +153,7 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 	// Note that specifying the feature LacrosSupport has side-effects, so
 	// we specify it even if the lacros path is being overridden by lacros.DeployedBinary.
 	opts = append(opts, chrome.EnableFeatures("LacrosSupport"))
+	opts = append(opts, chrome.ExtraArgs("--lacros-availability-ignore"))
 	switch cfg.selection {
 	case lacros.Rootfs:
 		opts = append(opts, chrome.ExtraArgs("--lacros-selection=rootfs"))
