@@ -1,0 +1,34 @@
+# Test networks added to test the software stack.
+mno {
+  data {
+    uuid : "test-network"
+    country : "us"
+    localized_name {
+      name : "Test Network"
+    }
+    olp {
+      olp_filter {
+        type: MCCMNC
+        regex: "[0-9]+"
+      }
+      method : POST
+      url : "https://test.test-network.com/bbportal/chrome/start4g.do"
+      post_data : "iccid=${iccid}&imei=${imei}&mdn=${mdn}"
+    }
+    mccmnc : "00101"
+    mccmnc : "001000"
+    mccmnc : "001001"
+    mccmnc : "001002"
+    mccmnc : "001003"
+    mobile_apn {
+      apn : "callbox-ipv4"
+      ip_type: IPV4
+      is_attach_apn: true
+      username: "username"
+      password: "password"
+      localized_name {
+        name : "Test Network APN"
+      }
+    }
+  }
+}
