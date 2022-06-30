@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e09768dd_1f2176ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-30T22:27:34Z",
+      "side": 1,
+      "message": "refactor this to multiple lines to improve readability:\n```\n[]testing.Param{\n    {\n         Name: \"feature_on\", \n         Val: true,\n     }, \n     {\n         Name: \"feature_off\", \n         Val: false,\n     },\n}\n```",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 100
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "959299e1_77b8e789",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-30T22:27:34Z",
+      "side": 1,
+      "message": "better to create two helper functions to test the scenario of featureOn/featureOff, to avoid redundant usage of `if featureOn{}else{}`.",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15cd7e65_c4e3cfcc",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
         "patchSetId": 11
