@@ -16,6 +16,98 @@
       "message": "This one is ready for review",
       "revId": "2ccfab154665e4b14ccf65f3ea0848cd8e1a8bef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7de5d4ef_b97f1972",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/no_page_without_flag.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-30T01:53:40Z",
+      "side": 1,
+      "message": "suggest to rename to `SettingPageNotExistWithoutFlag`",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "2ccfab154665e4b14ccf65f3ea0848cd8e1a8bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8823bbf2_84b77590",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/no_page_without_flag.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-30T01:53:40Z",
+      "side": 1,
+      "message": "you don\u0027t need this",
+      "range": {
+        "startLine": 38,
+        "startChar": 28,
+        "endLine": 38,
+        "endChar": 51
+      },
+      "revId": "2ccfab154665e4b14ccf65f3ea0848cd8e1a8bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26a82b40_a3ca6745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/toggles_exist.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-30T01:53:40Z",
+      "side": 1,
+      "message": "can you check this in the `SettingsPageExists` test, instead of creating a new test for it?",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 132
+      },
+      "revId": "2ccfab154665e4b14ccf65f3ea0848cd8e1a8bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "232e5c2f_27d1f4a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/toggles_exist.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-06-30T01:53:40Z",
+      "side": 1,
+      "message": "you should put this after checking err, as it could get panic if settings is `nil` in case of errors.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 33
+      },
+      "revId": "2ccfab154665e4b14ccf65f3ea0848cd8e1a8bef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
