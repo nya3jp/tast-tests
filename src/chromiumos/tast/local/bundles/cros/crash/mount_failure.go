@@ -21,7 +21,7 @@ func init() {
 		Func:     MountFailure,
 		Desc:     "Verify mount and umount failures are logged as expected",
 		Contacts: []string{"sarthakkukreti@google.com", "cros-telemetry@google.com"},
-		Attr:     []string{"group:mainline"},
+		Attr:     []string{"group:mainline", "informational"},
 	})
 }
 
