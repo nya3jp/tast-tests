@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea8e8d6_b04bc3da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-06-30T21:42:25Z",
+      "side": 1,
+      "message": "Hi Alvin, it says that your vote was outdated. Would you mind taking another quick look at this CL?",
+      "revId": "1172c06cb8d9c004819dbe617edde4e8edec1d3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
