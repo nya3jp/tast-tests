@@ -78,7 +78,7 @@ func init() {
 				Name:              "default",
 				ExtraHardwareDeps: hwdep.D(hwdep.NoX86()),
 				Val: testParameters{
-					apBootRegexp: `power state [0-9]+ = S0`,
+					apBootRegexp: `power state \d+ = S0,`,
 					apBootMax:    1 * time.Second,
 				},
 			},
@@ -98,7 +98,7 @@ const (
 func BootTime(ctx context.Context, s *testing.State) {
 	param := s.Param().(testParameters)
 	rebootingStarted := regexp.MustCompile(`Rebooting!`)
-	coldBootFinished := regexp.MustCompile(`power state 1 = S5`)
+	coldBootFinished := regexp.MustCompile(`power state \d+ = S5,`)
 	// This means the AP is initialized, but does not mean ChromeOS is booted.
 	apBootFinished := regexp.MustCompile(param.apBootRegexp)
 	// YY-mm-dd HH:MM:SS.sss, but only looking at the MM:SS.sss here
