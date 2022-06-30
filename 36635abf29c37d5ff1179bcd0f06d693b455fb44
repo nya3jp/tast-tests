@@ -1,0 +1,323 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3850f656_2b2b29d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "Seems like both of these tests now have the same body, or at least re-use most of their code (and have exactly the same general structure). Can we refactor this to reduce the duplication?",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "028238db_5ec11617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the GetAllWindows call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b6be458_96195c68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "what does this mean, and where is kTemplate defined or used here?",
+      "range": {
+        "startLine": 219,
+        "startChar": 34,
+        "endLine": 219,
+        "endChar": 43
+      },
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "979a5ca8_62e060f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the GetAllWindows call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe0160af_9f606b53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "you don\u0027t need to explain this both here and on L271",
+      "range": {
+        "startLine": 263,
+        "startChar": 29,
+        "endLine": 263,
+        "endChar": 60
+      },
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95e651e_9cce3b0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "what does kSaveAndRecall refer to here?",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc8709a_9c8fd90e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the GetAllWindows call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08b3eae0_c7f9bfcb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the GetAllWindows call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e03df0d_eb801064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the FindDeskTemplates call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ecc8ce4_2c944ace",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the GetAllWindows call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "801b574f_1fd51bb9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "ditto re: what is kTemplate referring to here?",
+      "range": {
+        "startLine": 194,
+        "startChar": 33,
+        "endLine": 194,
+        "endChar": 42
+      },
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0078fdf_174961e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the GetAllWindows call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "048052af_215bb0a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "you don\u0027t need to explain this both here and on L246",
+      "range": {
+        "startLine": 238,
+        "startChar": 28,
+        "endLine": 238,
+        "endChar": 59
+      },
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d74d94f_404bb9fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "what does kSaveAndRecall refer to here?",
+      "range": {
+        "startLine": 290,
+        "startChar": 29,
+        "endLine": 290,
+        "endChar": 43
+      },
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dc90a67_32db4e82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the GetAllWindows call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f64032_55352702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the GetAllWindows call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7b859db_376e4c16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:47:52Z",
+      "side": 1,
+      "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the FindDeskTemplates call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
