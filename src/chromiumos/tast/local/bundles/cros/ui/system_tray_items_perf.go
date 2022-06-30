@@ -84,6 +84,9 @@ func SystemTrayItemsPerf(ctx context.Context, s *testing.State) {
 			ac.WaitUntilExists(recordTakenLabel),
 			// Close the notification so that tray item performs hide animation.
 			ac.LeftClick(popupNotification),
+			// Opening too many "Files" app window might cause the system hang on some device.
+			// Thus, we close that window on every iteration.
+			kb.AccelAction("Ctrl+W"),
 		)(ctx); err != nil {
 			return err
 		}
