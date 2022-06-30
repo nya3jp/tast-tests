@@ -19,10 +19,18 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // KeyState defines keyboard tester's key state.
 type KeyState string
+
+// TestParams defines parameters that can be set in test to describe how it
+// should run.
+type TestParams struct {
+	// Represents if device has default narrow view for navigation.
+	IsNarrowDevice bool
+}
 
 const (
 	// These strings come from IDS_KEYBOARD_DIAGRAM_ARIA_LABEL_NOT_PRESSED,
@@ -38,6 +46,19 @@ const (
 	// KeyTested is used to verify the key is in the tested state.
 	KeyTested KeyState = "key tested"
 )
+
+// SkipNarrowPlatformsHwdeps test parameter configuration for skipping
+// narrow devices.
+var SkipNarrowPlatformsHwdeps = hwdep.D(
+	// "gru" is the platform name for scarlet devices.
+	hwdep.SkipOnPlatform("gru"))
+
+// NarrowPlatformsHwdeps test parameter configuration for including
+// narrow devices.
+var NarrowPlatformsHwdeps = hwdep.D(
+	// "gru" is the platform name for scarlet devices. Scarlet
+	// needs to be treated differently to handle mobile navigation.
+	hwdep.Platform("gru"))
 
 var (
 	// diagnosticsRootNodeParams export is used to find the root node of diagnostics.
@@ -93,6 +114,11 @@ var (
 
 	// DxKeyboardTester export is used to find the keyboard tester on the input page.
 	DxKeyboardTester = nodewith.HasClass("body-container").Role(role.GenericContainer)
+
+	// DxNarrowMenuButton export is used to find the navigation menu on narrow views.
+	DxNarrowMenuButton = nodewith.Name("Diagnostics").Role(role.Button).First()
+
+	defaultPolling = testing.PollOptions{Interval: time.Second, Timeout: 20 * time.Second}
 )
 
 // DiagnosticsRootNode returns the root ui node of Diagnotsics app.
@@ -159,6 +185,27 @@ func WaitUntilColorModeNudgeGoneIfExists(ctx context.Context, tconn *chrome.Test
 		if err := ui.WithTimeout(45 * time.Second).WaitUntilGone(nudge)(ctx); err != nil {
 			return errors.Wrap(err, "nudge not dismissing")
 		}
+	}
+	return nil
+}
+
+// ClickNavigationMenuButton will click the hamburger menu button in the
+// Diagnostics app to toggle the navigation view on narrow views.
+func ClickNavigationMenuButton(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	dxRootNode, err := DiagnosticsRootNode(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to find diagnostics app")
+	}
+
+	// Get menu node under Diagnostics app and click it.
+	menuButton := DxNarrowMenuButton.Ancestor(dxRootNode)
+	if err := uiauto.Combine("find and click menu button",
+		ui.WithTimeout(20*time.Second).WaitUntilExists(menuButton),
+		ui.FocusAndWait(menuButton),
+		ui.WithPollOpts(defaultPolling).LeftClick(menuButton),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "menu click failed")
 	}
 	return nil
 }
