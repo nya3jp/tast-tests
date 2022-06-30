@@ -161,6 +161,22 @@ func init() {
 			"ui.cujAccountPool",
 		},
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "enrolledLoggedInToCUJUserLacros",
+		Desc: "Logged in with gaia user on an enrolled device and used for lacros variation of CUJ tests",
+		Contacts: []string{
+			"jane.yang@cienet.com",
+			"chromeos-perfmetrics-eng@google.com",
+		},
+		Impl:            &loggedInToCUJUserFixture{webUITabStrip: true, bt: browser.TypeLacros},
+		Parent:          "cpuIdleForEnrolledCUJ",
+		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + chrome.GAIALoginTimeout + optin.OptinTimeout + 2*time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		Vars: []string{
+			"ui.cujAccountPool",
+		},
+	})
 }
 
 func loginOption(s *testing.FixtState, useEnterprisePool bool) chrome.Option {
