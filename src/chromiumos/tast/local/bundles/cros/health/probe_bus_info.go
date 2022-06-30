@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/pci"
+	"chromiumos/tast/local/bundles/cros/health/types"
 	"chromiumos/tast/local/bundles/cros/health/usb"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/croshealthd"
@@ -139,9 +140,9 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get bus telemetry info: ", err)
 	}
 
-	var pciDevs []busDevice
-	var usbDevs []busDevice
-	var tbtDevs []busDevice
+	var pciDevs []types.BusDevice
+	var usbDevs []types.BusDevice
+	var tbtDevs []types.BusDevice
 	for _, d := range res.Devices {
 		if d.BusInfo.PCIBusInfo != nil {
 			pciDevs = append(pciDevs, d)
@@ -178,11 +179,11 @@ func ProbeBusInfo(ctx context.Context, s *testing.State) {
 
 // validatePCIDevices validates the PCI devices with the expected PCI
 // devices extracted by the "lspci" command.
-func validatePCIDevices(ctx context.Context, devs []busDevice, checkProgIf bool) error {
+func validatePCIDevices(ctx context.Context, devs []types.BusDevice, checkProgIf bool) error {
 	var got []pci.Device
 	for _, d := range devs {
 		pciBusInfo := d.BusInfo.PCIBusInfo
-		// TODO:(b/199683963): Validation of busDevice.DeviceClass is skipped.
+		// TODO:(b/199683963): Validation of types.BusDevice.DeviceClass is skipped.
 		pd := pci.Device{
 			VendorID: fmt.Sprintf("%04x", pciBusInfo.VendorID),
 			DeviceID: fmt.Sprintf("%04x", pciBusInfo.DeviceID),
@@ -215,11 +216,11 @@ func validatePCIDevices(ctx context.Context, devs []busDevice, checkProgIf bool)
 
 // validateUSBDevices validates the USB devices with the expected USB
 // devices extracted by the "usb-devices" and the "lsusb" commands.
-func validateUSBDevices(ctx context.Context, devs []busDevice) error {
+func validateUSBDevices(ctx context.Context, devs []types.BusDevice) error {
 	var got []usb.Device
 	for _, d := range devs {
 		udIn := d.BusInfo.USBBusInfo
-		// TODO:(b/199683963): Validation of busDevice.DeviceClass is skipped.
+		// TODO:(b/199683963): Validation of types.BusDevice.DeviceClass is skipped.
 		udOut := usb.Device{
 			VendorID:    fmt.Sprintf("%04x", udIn.VendorID),
 			ProdID:      fmt.Sprintf("%04x", udIn.ProductID),
@@ -257,7 +258,7 @@ func validateUSBDevices(ctx context.Context, devs []busDevice) error {
 	return nil
 }
 
-func validateThundeboltDevices(ctx context.Context, devs []busDevice, isDeviceConnected bool) error {
+func validateThundeboltDevices(ctx context.Context, devs []types.BusDevice, isDeviceConnected bool) error {
 	checkInterfacesDetected := false
 	productName, err := ioutil.ReadFile("/sys/bus/thunderbolt/devices/0-0/device_name")
 	if err != nil {
@@ -323,77 +324,5 @@ func validateThundeboltDevices(ctx context.Context, devs []busDevice, isDeviceCo
 
 // busResult represents the BusResult in cros-healthd mojo interface.
 type busResult struct {
-	Devices []busDevice `json:"devices"`
-}
-
-// busDevice represents the BusDevice in cros-healthd mojo interface.
-type busDevice struct {
-	VendorName  string  `json:"vendor_name"`
-	ProductName string  `json:"product_name"`
-	DeviceClass string  `json:"device_class"`
-	BusInfo     busInfo `json:"bus_info"`
-}
-
-// busInfo represents the BusInfo in cros-healthd mojo interface.
-type busInfo struct {
-	PCIBusInfo         *pciBusInfo         `json:"pci_bus_info"`
-	USBBusInfo         *usbBusInfo         `json:"usb_bus_info"`
-	ThunderboltBusInfo *thunderboltBusInfo `json:"thunderbolt_bus_info"`
-}
-
-// pciBusInfo represents the PciBusInfo in cros-healthd mojo interface.
-type pciBusInfo struct {
-	ClassID    uint8   `json:"class_id"`
-	SubClassID uint8   `json:"subclass_id"`
-	ProgIfID   uint8   `json:"prog_if_id"`
-	VendorID   uint16  `json:"vendor_id"`
-	DeviceID   uint16  `json:"device_id"`
-	Driver     *string `json:"driver"`
-}
-
-// usbBusInfo represents the UsbBusInfo in cros-healthd mojo interface.
-type usbBusInfo struct {
-	ClassID                  uint8                     `json:"class_id"`
-	SubClassID               uint8                     `json:"subclass_id"`
-	ProtocolID               uint8                     `json:"protocol_id"`
-	VendorID                 uint16                    `json:"vendor_id"`
-	ProductID                uint16                    `json:"product_id"`
-	Interfaces               []usbInterfaceInfo        `json:"interfaces"`
-	FwupdFirmwareVersionInfo *fwupdFirmwareVersionInfo `json:"fwupd_firmware_version_info"`
-}
-
-// usbInterfaceInfo represents the UsbInterfaceInfo in cros-healthd mojo
-// interface.
-type usbInterfaceInfo struct {
-	InterfaceNumber uint8   `json:"interface_number"`
-	ClassID         uint8   `json:"class_id"`
-	SubClassID      uint8   `json:"subclass_id"`
-	ProtocolID      uint8   `json:"protocol_id"`
-	Driver          *string `json:"driver"`
-}
-
-// fwupdFirmwareVersionInfo represents the FwupdFirmwareVersionInfo in
-// cros-healthd mojo interface.
-type fwupdFirmwareVersionInfo struct {
-	Version       string `json:"version"`
-	VersionFormat string `json:"version_format"`
-}
-
-// thunderboltInterfaceInfo represents the ThunderboltInterfaces in cros-healthd mojo
-// interface.
-type thunderboltInterfaceInfo struct {
-	Authorized      bool   `json:"authorized"`
-	DeviceFwVersion string `json:"device_fw_version"`
-	DeviceName      string `json:"device_name"`
-	DeviceType      string `json:"device_type"`
-	DeviceUUID      string `json:"device_uuid"`
-	RxSpeedGbs      string `json:"rx_speed_gbs"`
-	TxSpeedGbs      string `json:"tx_speed_gbs"`
-	VendorName      string `json:"vendor_name"`
-}
-
-// thunderboltBusInfo represents the ThunderboltBusInfo in cros-healthd mojo interface.
-type thunderboltBusInfo struct {
-	SecurityLevel         string                     `json:"security_level"`
-	ThunderboltInterfaces []thunderboltInterfaceInfo `json:"thunderbolt_interfaces"`
+	Devices []types.BusDevice `json:"devices"`
 }
