@@ -42,6 +42,7 @@ func init() {
 			// we would need to split them to different test sets.
 			ExtraSoftwareDeps: []string{"no_tpm_dynamic"},
 			Val: []string{
+				"R90-13816.106.0_betty_20220630",
 				"R91-13904.0.0_betty_20211216",
 				"R92-13982.0.0_betty_20211216",
 				"R93-14092.0.0_betty_20211216",
@@ -55,6 +56,9 @@ func init() {
 				"R102-14695.0.0_betty_20220510",
 			},
 			ExtraData: []string{
+				// See cross_version_login/README.md on how to create these.
+				"cross_version_login/R90-13816.106.0_betty_20220630_config.json",
+				"cross_version_login/R90-13816.106.0_betty_20220630_data.tar.gz",
 				"cross_version_login/R91-13904.0.0_betty_20211216_config.json",
 				"cross_version_login/R91-13904.0.0_betty_20211216_data.tar.gz",
 				"cross_version_login/R92-13982.0.0_betty_20211216_config.json",
