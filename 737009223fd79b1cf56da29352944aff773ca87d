@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e48a0fe_01a475eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_search_and_launch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-06-30T17:53:39Z",
+      "side": 1,
+      "message": "I don\u0027t think this test needs this line since the Play Store showing up is unrelated. We\u0027re finding an app in the launcher and starting it from there.",
+      "revId": "737009223fd79b1cf56da29352944aff773ca87d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
