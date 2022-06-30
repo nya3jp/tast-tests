@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20f09394_9e094f9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-06-30T17:26:31Z",
+      "side": 1,
+      "message": "lgtm, but not a tast expert - probably get a review from one",
+      "revId": "ac15b6e82e6a051fd539547f982169e5808acdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f00325c6_b76e689f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-06-30T17:26:31Z",
+      "side": 1,
+      "message": "nit: not really a dismiss but rather a wait until gone, maybe consider changing the name to better reflect the behavior?",
+      "range": {
+        "startLine": 150,
+        "startChar": 5,
+        "endLine": 150,
+        "endChar": 34
+      },
+      "revId": "ac15b6e82e6a051fd539547f982169e5808acdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
