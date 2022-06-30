@@ -7,7 +7,6 @@ package lacros
 import (
 	"context"
 	"os"
-	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -84,7 +83,7 @@ func waitForHistoryEntry(ctx context.Context, ui *uiauto.Context, br *browser.Br
 	defer conn.Close()
 	alphabetLink := nodewith.Name(titleOfAlphabetPage).Role(role.Link)
 	if allowReload {
-		err = ui.RetryUntil(br.ReloadActiveTab, ui.Exists(alphabetLink))(ctx)
+		err = ui.RetryUntil(br.ReloadActiveTab, ui.WaitUntilExists(alphabetLink))(ctx)
 	} else {
 		err = ui.WaitUntilExists(alphabetLink)(ctx)
 	}
@@ -140,8 +139,7 @@ func prepareAshProfile(ctx context.Context, s *testing.State, kb *input.Keyboard
 		ui.LeftClick(addButton1),
 		// The "Add extension" button may not immediately be clickable.
 		ui.LeftClickUntil(addButton2, ui.Gone(addButton2)),
-		// TODO(crbug.com/1326398): Remove tab reload when this bug is fixed.
-		ui.RetryUntil(cr.Browser().ReloadActiveTab, ui.WithTimeout(7*time.Second).WaitUntilExists(removeButton)),
+		ui.WaitUntilExists(removeButton),
 	)(ctx); err != nil {
 		s.Fatal("Failed to install: ", err)
 	}
