@@ -123,11 +123,11 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Lease a test account for the duration of the test.
-	acc, cleanupLease, err := tape.LeaseAccount(ctx, params.poolID, dataMigrationTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	accHelper, acc, err := tape.NewOwnedTestAccountManager(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)), false, tape.WithTimeout(int32(dataMigrationTestTimeout.Seconds())), tape.WithPoolID(params.poolID))
 	if err != nil {
 		s.Fatal("Failed to lease a test account: ", err)
 	}
-	defer cleanupLease(cleanupCtx)
+	defer accHelper.CleanUp(cleanupCtx)
 
 	// Ensure to sign out before executing mountVaultWithArchivedHomeData().
 	if err := upstart.RestartJob(ctx, "ui"); err != nil {
@@ -135,17 +135,17 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	}
 
 	// Unarchive the home data under vault before signing in.
-	if err := mountVaultWithArchivedHomeData(ctx, homeDataPath, acc.UserName, acc.Password); err != nil {
+	if err := mountVaultWithArchivedHomeData(ctx, homeDataPath, acc.Username, acc.Password); err != nil {
 		s.Fatal("Failed to mount home with archived data: ", err)
 	}
 	defer func() {
-		cryptohome.UnmountVault(cleanupCtx, acc.UserName)
-		cryptohome.RemoveVault(cleanupCtx, acc.UserName)
+		cryptohome.UnmountVault(cleanupCtx, acc.Username)
+		cryptohome.RemoveVault(cleanupCtx, acc.Username)
 	}()
 
 	args := append(arc.DisableSyncFlags(), "--disable-arc-data-wipe")
 	cr, err := chrome.New(ctx,
-		chrome.GAIALogin(chrome.Creds{User: acc.UserName, Pass: acc.Password}),
+		chrome.GAIALogin(chrome.Creds{User: acc.Username, Pass: acc.Password}),
 		chrome.ARCSupported(), chrome.KeepState(), chrome.ExtraArgs(args...))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
@@ -158,7 +158,7 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	}
 	defer a.Close(ctx)
 
-	systemSdkVersion, err := checkSdkVersionsInPackagesXML(ctx, a, acc.UserName)
+	systemSdkVersion, err := checkSdkVersionsInPackagesXML(ctx, a, acc.Username)
 	if err != nil {
 		s.Fatal("Failed to check SDK version in packages.xml: ", err)
 	}
