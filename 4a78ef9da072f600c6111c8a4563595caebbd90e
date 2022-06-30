@@ -39,6 +39,30 @@
       },
       "revId": "4a78ef9da072f600c6111c8a4563595caebbd90e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55be0e6a_9e5cb713",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/network_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1210615
+      },
+      "writtenOn": "2022-06-30T00:08:03Z",
+      "side": 1,
+      "message": "The field has already been unmarshalled into a platform specific uint32 by this point. At least on my hatch, I had to use binary.LittleEndian to get this to work. However, if the original field had been bytes instead of uint32, we could have gone directly to net.IP without worrying",
+      "parentUuid": "4923e358_e3369368",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 42
+      },
+      "revId": "4a78ef9da072f600c6111c8a4563595caebbd90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
