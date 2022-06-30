@@ -16,6 +16,23 @@
       "message": "pwang, please take another look.",
       "revId": "1ab613039b7e097b53dd32cceddeafbe5200e0e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d41b3ba8_87afa860",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-06-30T16:51:42Z",
+      "side": 1,
+      "message": "Thanks for the reviews!",
+      "revId": "1ab613039b7e097b53dd32cceddeafbe5200e0e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
