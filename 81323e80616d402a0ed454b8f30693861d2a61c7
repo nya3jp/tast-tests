@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e102ab5_78f926d7",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-30T15:21:45Z",
+      "side": 1,
+      "message": "This is probably not needed as you can use the EphemeralPriority property below",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 46
+      },
+      "revId": "81323e80616d402a0ed454b8f30693861d2a61c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f3766a_32c9ba07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-30T15:21:45Z",
+      "side": 1,
+      "message": "You can remove lines 48-51 and replace it with a test fixture like this test did: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/shill_veth.go;rcl\u003d87e65d3dbaa64d7961b050b0d1e5446ed34dea56;l\u003d28\n\nFixtures allow tests to have a shared setup, so you don\u0027t have to repeat code multiple times for similar tests.\nDoc here: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#fixtures",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "81323e80616d402a0ed454b8f30693861d2a61c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016a1bab_34cd3d46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-06-30T15:21:45Z",
+      "side": 1,
+      "message": "Just for my understanding, does this \u0027#\u0027 make the rest of the line a comment? Or is it doing something like including all address to this IP? Just curious as I am unsure what is happening here.",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "81323e80616d402a0ed454b8f30693861d2a61c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
