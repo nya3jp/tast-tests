@@ -87,17 +87,17 @@ func EnterpriseLogin(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, cleanupTime)
 	defer cancel()
 
-	// Lease a test account for the duration of the test.
-	acc, cleanupLease, err := tape.LeaseAccount(ctx, param.poolID, enterpriseLoginTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	// Create an account manager and lease a test account for the duration of the test.
+	accHelper, acc, err := tape.NewOwnedTestAccountManager(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)), false, tape.WithTimeout(int32(enterpriseLoginTestTimeout.Seconds())), tape.WithPoolID(param.poolID))
 	if err != nil {
-		s.Fatal("Failed to lease a test account: ", err)
+		s.Fatal("Failed to create an account manager and lease an account: ", err)
 	}
-	defer cleanupLease(cleanupCtx)
+	defer accHelper.CleanUp(cleanupCtx)
 
 	// Log-in to Chrome and allow to launch ARC if allowed by user policy.
 	cr, err := chrome.New(
 		ctx,
-		chrome.GAIALogin(chrome.Creds{User: acc.UserName, Pass: acc.Password}),
+		chrome.GAIALogin(chrome.Creds{User: acc.Username, Pass: acc.Password}),
 		chrome.ARCSupported(),
 		chrome.UnRestrictARCCPU(),
 		// TODO(b/154760453): switch to fake DMS once crbug.com/1099310 is resolved
