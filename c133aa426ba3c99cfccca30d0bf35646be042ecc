@@ -313,6 +313,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f67a0ac8_90620583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1531947
+      },
+      "writtenOn": "2022-06-30T17:33:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "69ef8094_53910c5f",
+      "revId": "c133aa426ba3c99cfccca30d0bf35646be042ecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22920e57_bb5737cd",
