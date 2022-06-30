@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "998dfdb2_67347fa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-30T08:01:12Z",
+      "side": 1,
+      "message": "one nit",
+      "revId": "98c3cf6e95e51cf473c38c9ef77f6710e782bb80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed25274_999e4bff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/shortcut_search.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-06-30T08:01:12Z",
+      "side": 1,
+      "message": "For appending error in fatal error message, you may just:\n```\ns.Fatal(\"...: \", err)\n```\nsame below",
+      "revId": "98c3cf6e95e51cf473c38c9ef77f6710e782bb80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
