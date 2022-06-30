@@ -142,7 +142,7 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to do initial login: ", err)
 	}
 
-	const iterationCount = 7
+	const iterationCount = 1
 	pv := perf.NewValues()
 	for i := 0; i < iterationCount; i++ {
 		testing.ContextLogf(ctx, "StartupPerf: Running iteration %d/%d", i+1, iterationCount)
