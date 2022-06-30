@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a27de394_6587762b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-30T16:13:15Z",
+      "side": 1,
+      "message": "Can you run tast unit test: fast_build.sh -T?\nIf so, please do and add this line to commit log.\nTEST\u003dtast unit tests passed.\n\nIf not, that\u0027s ok.\n",
+      "revId": "7691a67304f52e26534d6a533a7d6aabafff74f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e6c4ce6_cbdca822",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flash_coreboot_flashrom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-30T16:13:15Z",
+      "side": 1,
+      "message": "nit: Do you have Google contact? If yes, please add it here. If not, it is fine.",
+      "revId": "7691a67304f52e26534d6a533a7d6aabafff74f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45a6bb68_f5d79221",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flash_coreboot_flashrom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-06-30T16:13:15Z",
+      "side": 1,
+      "message": "nit: It is not really important. We usually do it this way.\n\n```\n\tout, err :\u003d dut.Conn().CommandContext(ctx, \"flashrom\", args...).Output(ssh.DumpLogOnError)\n\tif err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to run flashrom cmd\")\n\t}\n\tif match :\u003d regexp.MustCompile(`SUCCESS`).FindSubmatch(out); match \u003d\u003d nil {\n\t\treturn errors.Errorf(\"flashrom did not produce success message: %s\", string(out))\n\t}\n\t\n```",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 2
+      },
+      "revId": "7691a67304f52e26534d6a533a7d6aabafff74f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
