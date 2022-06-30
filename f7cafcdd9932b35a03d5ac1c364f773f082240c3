@@ -259,6 +259,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "336a33d1_94de93ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-06-30T01:21:52Z",
+      "side": 1,
+      "message": "Ah this is something new to me, thanks for the explanation!\nI\u0027ll leave this open for Steven\u0027s comment (restore state or use testing profile)",
+      "parentUuid": "165f2b2b_981187f4",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 2
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44361e89_c12fc147",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 4
