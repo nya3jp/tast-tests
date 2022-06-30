@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a4c314_64036f34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-30T16:27:55Z",
+      "side": 1,
+      "message": "nit: `apps`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "6d88fea67048f694f51f4b1d51820e1b3cea5c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62154184_90883018",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-30T16:27:55Z",
+      "side": 1,
+      "message": "Capitalize `Close`\nSee https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "6d88fea67048f694f51f4b1d51820e1b3cea5c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe03171_f9224542",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-30T16:27:55Z",
+      "side": 1,
+      "message": "nit: `tast run \u003cDUT\u003e apps.LaunchSystemWebAppsFromURL`",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "6d88fea67048f694f51f4b1d51820e1b3cea5c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c5f7ff14_011740c7",
@@ -14,6 +83,46 @@
       "writtenOn": "2022-06-30T08:18:22Z",
       "side": 1,
       "message": "tast-owners: PTAL",
+      "revId": "6d88fea67048f694f51f4b1d51820e1b3cea5c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87d68427_b4845e81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-30T16:27:55Z",
+      "side": 1,
+      "message": "lgtm with some simple changes",
+      "revId": "6d88fea67048f694f51f4b1d51820e1b3cea5c92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afdccd37_98a8293c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_system_web_apps_from_url.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-06-30T16:27:55Z",
+      "side": 1,
+      "message": "This should be `:\u003d` instead of `\u003d`",
+      "range": {
+        "startLine": 142,
+        "startChar": 8,
+        "endLine": 142,
+        "endChar": 9
+      },
       "revId": "6d88fea67048f694f51f4b1d51820e1b3cea5c92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
