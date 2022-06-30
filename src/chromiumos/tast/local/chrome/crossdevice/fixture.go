@@ -436,6 +436,21 @@ func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 		f.logMarker = nil
 	}
 
+	// Restore connection to the ADB-over-WiFi device if it was lost during the test.
+	// This is needed for Instant Tether tests that disable WiFi on the Chromebook which interrupts the ADB connection.
+	if PhoneIP.Value() != "" && f.androidDevice.Device.IsConnected(ctx) != nil {
+		s.Log("Connection to ADB device lost, restaring")
+		device, err := AdbOverWifi(ctx)
+		if err != nil {
+			s.Fatal("Failed to re-initialize adb-over-wifi: ", err)
+		}
+		f.androidDevice.Device = device
+
+		if err := f.androidDevice.ReconnectToSnippet(ctx); err != nil {
+			s.Fatal("Failed to reconnect to the snippet: ", err)
+		}
+	}
+
 	if err := f.androidDevice.Device.DumpLogcatFromTimestamp(ctx, filepath.Join(s.OutDir(), "crossdevice-logcat.txt"), f.logcatStartTime); err != nil {
 		s.Fatal("Failed to save logcat logs from the test: ", err)
 	}
