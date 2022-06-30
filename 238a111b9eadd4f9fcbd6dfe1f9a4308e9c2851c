@@ -51,6 +51,24 @@
       "parentUuid": "2da9a86f_cf9e3eb3",
       "revId": "238a111b9eadd4f9fcbd6dfe1f9a4308e9c2851c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7aa65e_32716a52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-06-30T22:30:55Z",
+      "side": 1,
+      "message": "The session manager\u0027s bad state is dumping chrome. While chrome should not be crashing, but could we make `crash.MountFailure` to ensure `ui` job is up and running at the start of test to make it more robust, e.g. `upstart.EnsureJobRunning(ctx, \"ui\")` ?",
+      "parentUuid": "680adaf0_bee1719d",
+      "revId": "238a111b9eadd4f9fcbd6dfe1f9a4308e9c2851c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
