@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44871d21_3ac8fd1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-30T03:11:02Z",
+      "side": 1,
+      "message": "thanks for the reviews",
+      "parentUuid": "7415c818_cd16455c",
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a506ee3f_c3a73fc8",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-06-29T10:05:07Z",
       "side": 1,
       "message": "nit/style:\n\nuid, err :\u003d sysutil.GetUID(username)\n...\n\nreturn uid, gid, nil",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 36
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "631e8da6_95ef2612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3/hal3.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-30T03:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a506ee3f_c3a73fc8",
       "range": {
         "startLine": 67,
         "startChar": 1,
@@ -104,6 +146,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6081e876_27fb2842",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-30T03:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa311e3f_a66115f6",
+      "range": {
+        "startLine": 47,
+        "startChar": 17,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b927dfd_e6953876",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-30T03:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1da2ab3b_e652ed8f",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3d19c48_d2f5d27b",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-06-29T10:05:07Z",
       "side": 1,
       "message": "style: \"cannot\" (starting with a small latter)",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27e901dc_d0be5a33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-30T03:11:02Z",
+      "side": 1,
+      "message": "In other case, I got error messages in the repo upload hook: \"Error messages should not start with uppercase\", idk why this one doesn\u0027t trigger the error.",
+      "parentUuid": "a3d19c48_d2f5d27b",
       "range": {
         "startLine": 64,
         "startChar": 25,
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "293d2f3c_cca5a40e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-30T03:11:02Z",
+      "side": 1,
+      "message": "oh yes, it could be simpler",
+      "parentUuid": "137529af_3e8f5810",
+      "range": {
+        "startLine": 51,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 24
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8a8fa5a_592c4ea7",
@@ -163,6 +301,30 @@
       "writtenOn": "2022-06-29T10:05:07Z",
       "side": 1,
       "message": "nit/style: \"LD_PRELOAD\u003d\" + libPath",
+      "range": {
+        "startLine": 82,
+        "startChar": 27,
+        "endLine": 82,
+        "endChar": 64
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "271b8790_19900be3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-30T03:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8a8fa5a_592c4ea7",
       "range": {
         "startLine": 82,
         "startChar": 27,
@@ -196,6 +358,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ece4669_180426b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-30T03:11:02Z",
+      "side": 1,
+      "message": "Oh, doing that means we\u0027ll have to check if the cleanup function is defined or not.\nThis way, we guarantee that cleanup function will always be defined.",
+      "parentUuid": "89de5f45_1d0956e2",
+      "range": {
+        "startLine": 113,
+        "startChar": 9,
+        "endLine": 113,
+        "endChar": 16
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95b13728_bfefac91",
@@ -219,6 +405,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da2aab56_0fb29ae2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-30T03:11:02Z",
+      "side": 1,
+      "message": "Oh this one got updated based on feedback on the previous code review comments.\nI forgot to update the description.",
+      "parentUuid": "95b13728_bfefac91",
+      "range": {
+        "startLine": 136,
+        "startChar": 9,
+        "endLine": 136,
+        "endChar": 16
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25f3357a_f16895dd",
@@ -232,6 +442,30 @@
       "writtenOn": "2022-06-29T10:05:07Z",
       "side": 1,
       "message": "could you move this up to (just after) L188?",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 2
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f2d1c8_c569281a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-06-30T03:11:02Z",
+      "side": 1,
+      "message": "the cleanup function will never be nil, so it must always be executed",
+      "parentUuid": "25f3357a_f16895dd",
       "range": {
         "startLine": 195,
         "startChar": 1,
