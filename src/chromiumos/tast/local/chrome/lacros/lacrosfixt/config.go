@@ -112,6 +112,8 @@ func ExtensionArgs(extID, extList string) []string {
 func (cfg *Config) Opts() ([]chrome.Option, error) {
 	var opts []chrome.Option
 
+	opts = append(opts, chrome.ExtraArgs("--lacros-stability=canary"))
+
 	// Disable launching lacros on login.
 	opts = append(opts, chrome.ExtraArgs("--disable-login-lacros-opening"))
 
