@@ -87,7 +87,7 @@ func ARCInstallLogging(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Lease a test account for the duration of the test.
-	acc, cleanupLease, err := tape.LeaseAccount(ctx, poolID, arcInstallLoggingTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	accHelper, acc, err := tape.NewOwnedTestAccountManager(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)), false, tape.WithTimeout(int32(arcInstallLoggingTestTimeout.Seconds())), tape.WithPoolID(tape.ArcLoggingTest))
 	if err != nil {
 		s.Fatal("Failed to lease a test account: ", err)
 	}

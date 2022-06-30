@@ -88,7 +88,7 @@ func EnterpriseLogin(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Lease a test account for the duration of the test.
-	acc, cleanupLease, err := tape.LeaseAccount(ctx, param.poolID, enterpriseLoginTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	accHelper, acc, err := tape.NewOwnedTestAccountManager(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)), false, tape.WithTimeout(int32(enterpriseLoginTestTimeout.Seconds())), tape.WithPoolID(param.poolID))
 	if err != nil {
 		s.Fatal("Failed to lease a test account: ", err)
 	}

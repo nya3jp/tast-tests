@@ -123,7 +123,7 @@ func DataMigration(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Lease a test account for the duration of the test.
-	acc, cleanupLease, err := tape.LeaseAccount(ctx, params.poolID, dataMigrationTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	accHelper, acc, err := tape.NewOwnedTestAccountManager(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)), false, tape.WithTimeout(int32(dataMigrationTestTimeout.Seconds())), tape.WithPoolID(params.poolID))
 	if err != nil {
 		s.Fatal("Failed to lease a test account: ", err)
 	}

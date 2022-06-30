@@ -69,7 +69,7 @@ func ArcSnapshot(ctx context.Context, s *testing.State) {
 	const poolID = "arc_snapshot"
 
 	// Lease a test account for the duration of the test.
-	acc, cleanupLease, err := tape.LeaseAccount(ctx, poolID, arcSnapshotTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	accHelper, acc, err := tape.NewOwnedTestAccountManager(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)), false, tape.WithTimeout(int32(arcSnapshotTestTimeout.Seconds())), tape.WithPoolID(tape.ArcSnapshot))
 	if err != nil {
 		s.Fatal("Failed to lease a test account: ", err)
 	}
@@ -98,12 +98,8 @@ func ArcSnapshot(ctx context.Context, s *testing.State) {
 
 	// Deprovision the DUT at the end of the test.
 	defer func(ctx context.Context) {
-		var request tape.DeprovisionRequest
-		request.DeviceID = res.DeviceID
-		request.CustomerID = customerID
-
-		if err = tape.Deprovision(ctx, httpClient, request); err != nil {
-			s.Fatalf("Failed to deprovision device %s: %v", request.DeviceID, err)
+		if err = tapeClient.Deprovision(ctx, res.DeviceID, acc.CustomerID); err != nil {
+			s.Fatalf("Failed to deprovision device %s: %v", res.DeviceID, err)
 		}
 	}(cleanupCtx)
 
