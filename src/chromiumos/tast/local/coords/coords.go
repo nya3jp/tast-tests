@@ -137,6 +137,11 @@ func (r Rect) BottomRight() Point {
 	return Point{X: r.Left + r.Width, Y: r.Top + r.Height}
 }
 
+// TopCenter returns the center location of the top edge of the rectangle.
+func (r Rect) TopCenter() Point {
+	return Point{X: r.Left + r.Width/2, Y: r.Top}
+}
+
 // BottomCenter returns the center location of the bottom edge of the rectangle.
 func (r Rect) BottomCenter() Point {
 	return Point{X: r.Left + r.Width/2, Y: r.Top + r.Height}
@@ -219,6 +224,16 @@ func (r Rect) WithInset(dw, dh int) Rect {
 // WithOffset returns a new Rect offset by the given amounts.
 func (r Rect) WithOffset(dl, dt int) Rect {
 	return NewRect(r.Left+dl, r.Top+dt, r.Width, r.Height)
+}
+
+// WithResizeAboutCenter returns a rectangle with the same CenterPoint() and the given size.
+func (r Rect) WithResizeAboutCenter(w, h int) Rect {
+	// Keep in mind that each division by two is rounded towards zero.
+	return NewRect(r.Left+r.Width/2-w/2, r.Top+r.Height/2-h/2, w, h)
+	// CenterPoint().X on this rectangle would be computed as r.Left+r.Width/2-w/2+w/2.
+	// r.CenterPoint().X would be computed as r.Left+r.Width/2. These X computations
+	// would agree because -w/2+w/2 will cancel out no matter which way w/2 is rounded.
+	// Same deal for Y.
 }
 
 // convertBounds is used by ConvertBoundsFromDPToPX and ConvertBoundsFromPXToDP.
