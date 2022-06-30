@@ -170,9 +170,20 @@ func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.Cryptoho
 	if _, err := cryptohome.CheckVault(ctx, keyLabel, &authConfig); err != nil {
 		return errors.Wrap(err, "failed to check vault")
 	}
-	if _, err := cryptohome.ListVaultKeys(ctx, username); err != nil {
+
+	labels, err := cryptohome.ListVaultKeys(ctx, username)
+	if err != nil {
 		return errors.Wrap(err, "failed to list vault keys")
 	}
+	if len(labels) == 0 {
+		return errors.New("vault key list is unexpectedly empty")
+	}
+	for _, label := range labels {
+		if _, err := cryptohome.GetKeyData(ctx, username, label); err != nil {
+			return errors.Wrapf(err, "failed to get data of key %s", label)
+		}
+	}
+
 	if authConfig.AuthType == hwsec.PassAuth {
 		for _, vaultKey := range config.ExtraVaultKeys {
 			if _, err := cryptohome.CheckVault(ctx, vaultKey.KeyLabel, hwsec.NewPassAuthConfig(username, vaultKey.Password)); err != nil {
