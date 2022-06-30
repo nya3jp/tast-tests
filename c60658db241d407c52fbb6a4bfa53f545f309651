@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2474f78_ac552a2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/hide_continue_section_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-06-30T16:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79035613_9b007f9e",
+      "revId": "c60658db241d407c52fbb6a4bfa53f545f309651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0394063b_5f763c72",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-06-30T03:35:00Z",
       "side": 1,
       "message": "Other steps like line 80 and 93 uses the default timeout (60 seconds), but this uses 3 seconds timeout. Is there a specific reason for this step?",
+      "revId": "c60658db241d407c52fbb6a4bfa53f545f309651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ba3e78_ec0aebc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/hide_continue_section_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-06-30T16:23:24Z",
+      "side": 1,
+      "message": "I just copied this from another test. :-) I think a longer timeout would be fine. Switched to the default.",
+      "parentUuid": "0394063b_5f763c72",
       "revId": "c60658db241d407c52fbb6a4bfa53f545f309651",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
