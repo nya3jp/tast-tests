@@ -41,7 +41,7 @@ const (
 )
 
 // Run runs the EDUVideoEditingCUJ test.
-func Run(ctx context.Context, outDir string, cr *chrome.Chrome, tabletMode bool) error {
+func Run(ctx context.Context, outDir string, cr *chrome.Chrome, tabletMode bool, bt browser.Type) error {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
@@ -77,10 +77,20 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, tabletMode bool)
 	}
 
 	testing.ContextLog(ctx, "Start to get browser start time")
-	_, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, browser.TypeAsh)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, bt)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser start time")
 	}
+	br := cr.Browser()
+	var bTconn *chrome.TestConn
+	if l != nil {
+		bTconn, err = l.TestAPIConn(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get lacros test API conn")
+		}
+		br = l.Browser()
+	}
+	defer cuj.CloseAllWindows(ctx, tconn)
 
 	options := cujrecorder.NewPerformanceCUJOptions()
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, options)
@@ -88,12 +98,12 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, tabletMode bool)
 		return errors.Wrap(err, "failed to create a recorder")
 	}
 	defer recorder.Close(cleanupCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, nil, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
-		return videoEditingScenario(ctx, tconn, cr, kb, uiHdl, tabletMode, outDir)
+		return videoEditingScenario(ctx, tconn, cr, kb, uiHdl, tabletMode, outDir, br)
 	}); err != nil {
 		return errors.Wrap(err, "failed to run the video editing on the WeVideo web")
 	}
@@ -121,14 +131,14 @@ func Run(ctx context.Context, outDir string, cr *chrome.Chrome, tabletMode bool)
 }
 
 func videoEditingScenario(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, kb *input.KeyboardEventWriter,
-	uiHdl cuj.UIActionHandler, tabletMode bool, outDir string) error {
+	uiHdl cuj.UIActionHandler, tabletMode bool, outDir string, br *browser.Browser) error {
 	hasError := true
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
 	account := cr.Creds().User
-	w := wevideo.NewWeVideo(tconn, kb, uiHdl, tabletMode)
-	if err := w.Open(cr)(ctx); err != nil {
+	w := wevideo.NewWeVideo(tconn, kb, uiHdl, tabletMode, br)
+	if err := w.Open()(ctx); err != nil {
 		return errors.Wrap(err, "failed to open the WeVideo page")
 	}
 	defer cleanup(cleanupCtx, tconn, cr, w, outDir, func() bool { return hasError })
@@ -137,14 +147,14 @@ func videoEditingScenario(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 		maximizeBrowserWindow(ctx, tconn, tabletMode),
 		w.Login(account),
 		w.Create(),
-		w.AddStockVideo(clip1, clipTime1, videoTrack),
-		w.AddStockVideo(clip2, clipTime2, videoTrack),
+		w.AddStockVideo(clip1, "", clipTime1, videoTrack),
+		w.AddStockVideo(clip2, clip1, clipTime2, videoTrack),
 		w.AddText(clip1, textTrack, demoText),
 	)(ctx); err != nil {
 		return err
 	}
 
-	if err := googleapps.NewGoogleDocs(cr, tconn, true)(ctx); err != nil {
+	if err := googleapps.NewGoogleDocs(br, tconn, true)(ctx); err != nil {
 		return err
 	}
 	defer docCleanup(cleanupCtx, tconn, cr, uiHdl, outDir, func() bool { return hasError })
@@ -201,7 +211,6 @@ func cleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, w *
 	// The screenshot and ui tree dump must been taken before the connection is closed.
 	faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, hasError, cr, "ui_dump")
 	w.Close(ctx)
-	cuj.CloseAllWindows(ctx, tconn)
 }
 
 func docCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome, uiHdl cuj.UIActionHandler, outDir string, hasError func() bool) {
