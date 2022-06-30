@@ -16,6 +16,110 @@
       "message": "@wrong could you take a look at the test cases? I am worried about the:\n\nLauncher search result for \"Long tail answers\" test case \n\nThere appears to be answer card support for who is the current president of the USA/prime minister of Australia but I am not getting answer cards for who is the FIRST president of the USA/prime minister of Australia. This means that the test will flake based off of future politics :(",
       "revId": "d60756ca4389dd4a4bfeafd501a31d16973f7bec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b16e2dd_497f070c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2022-06-30T14:29:01Z",
+      "side": 1,
+      "message": "Hah! this is one of the most amusing causes of flaky test that I\u0027ve seen so far. I\u0027ve left some comments :)",
+      "parentUuid": "8211380c_5a1929aa",
+      "revId": "d60756ca4389dd4a4bfeafd501a31d16973f7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c65861a_a8c27214",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2022-06-30T14:29:01Z",
+      "side": 1,
+      "message": "Thanks Yulun, test cases lgtm with some comments :)",
+      "revId": "d60756ca4389dd4a4bfeafd501a31d16973f7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89874099_4f78e29f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2022-06-30T14:29:01Z",
+      "side": 1,
+      "message": "nice",
+      "range": {
+        "startLine": 85,
+        "startChar": 34,
+        "endLine": 85,
+        "endChar": 39
+      },
+      "revId": "d60756ca4389dd4a4bfeafd501a31d16973f7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ed683c_fd6d48ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2022-06-30T14:29:01Z",
+      "side": 1,
+      "message": "These \"long tail\" answers are from a system called Porky Pig (go/porkypig). There are some other sample queries from Moma, such as \"is europe a continent\", which is (hopefully??) less likely to change...",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 63
+      },
+      "revId": "d60756ca4389dd4a4bfeafd501a31d16973f7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1483c213_9e9ca994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/answer_cards.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2022-06-30T14:29:01Z",
+      "side": 1,
+      "message": "nit: If this is to match the temperature, maybe this can be more specific, for example to match an optional \"-\" plus one or more digits. Maybe like -?[0-9]+ or -?[1-9][0-9]*",
+      "range": {
+        "startLine": 110,
+        "startChar": 104,
+        "endLine": 110,
+        "endChar": 110
+      },
+      "revId": "d60756ca4389dd4a4bfeafd501a31d16973f7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
