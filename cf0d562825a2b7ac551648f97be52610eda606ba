@@ -56,6 +56,30 @@
       },
       "revId": "cf0d562825a2b7ac551648f97be52610eda606ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c1bc842_912b9f2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-06-30T03:12:45Z",
+      "side": 1,
+      "message": "2, 1 is width\u003d2 and height\u003d1.\nSo the videos are put side by side.",
+      "parentUuid": "e8c7d90a_957b39ae",
+      "range": {
+        "startLine": 245,
+        "startChar": 42,
+        "endLine": 245,
+        "endChar": 46
+      },
+      "revId": "cf0d562825a2b7ac551648f97be52610eda606ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
