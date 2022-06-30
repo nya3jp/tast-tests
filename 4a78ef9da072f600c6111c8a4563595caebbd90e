@@ -63,6 +63,30 @@
       },
       "revId": "4a78ef9da072f600c6111c8a4563595caebbd90e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7836fa81_e2e884a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/network_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-06-30T04:27:31Z",
+      "side": 1,
+      "message": "Thanks for raising this point, we ll discuss what it would entail to update the proto field type to byte and see if the migration is not too costly.\n\nCode LGTM with the limitations of the current proto.",
+      "parentUuid": "55be0e6a_9e5cb713",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 42
+      },
+      "revId": "4a78ef9da072f600c6111c8a4563595caebbd90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
