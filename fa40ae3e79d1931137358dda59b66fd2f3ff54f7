@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78be436e_53732ee3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T19:49:47Z",
+      "side": 1,
+      "message": "skipping shadow review for a trivial refactor",
+      "revId": "fa40ae3e79d1931137358dda59b66fd2f3ff54f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
