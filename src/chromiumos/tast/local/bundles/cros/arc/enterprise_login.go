@@ -37,40 +37,40 @@ func init() {
 			{
 				Name: "managed_3pp_true",
 				Val: testParams{
-					poolID:     "arc_enterprise_login_managed_3pp_true",
+					poolID:     tape.ArcEnterpriseLoginManaged3ppTrue,
 					arcEnabled: true,
 				}},
 			{
 				Name: "managed_3pp_false",
 				Val: testParams{
-					poolID:     "arc_enterprise_login_managed_3pp_false",
+					poolID:     tape.ArcEnterpriseLoginManaged3ppFalse,
 					arcEnabled: false,
 				}},
 			{
 				Name: "managed_necktie_false",
 				Val: testParams{
-					poolID:     "arc_enterprise_login_managed_necktie_false",
+					poolID:     tape.ArcEnterpriseLoginManagedNecktieFalse,
 					arcEnabled: false,
 				}},
 			{
 				Name: "managed_necktie_true",
 				Val: testParams{
-					poolID:     "arc_enterprise_login_managed_necktie_true",
+					poolID:     tape.ArcEnterpriseLoginManagedNecktieTrue,
 					arcEnabled: true,
 				}},
 			{
 				Name: "managed_unmanaged_false",
 				Val: testParams{
-					poolID:     "arc_enterprise_login_managed_unmanaged_false",
+					poolID:     tape.ArcEnterpriseLoginManagedUnmanagedFalse,
 					arcEnabled: false,
 				}},
 			{
 				Name: "managed_unmanaged_true",
 				Val: testParams{
-					poolID:     "arc_enterprise_login_managed_unmanaged_true",
+					poolID:     tape.ArcEnterpriseLoginManagedUnmanagedTrue,
 					arcEnabled: true,
 				}}},
-		VarDeps: []string{"tape.service_account_key"},
+		VarDeps: []string{tape.ServiceAccountVar},
 	})
 }
 
@@ -88,16 +88,17 @@ func EnterpriseLogin(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Lease a test account for the duration of the test.
-	acc, cleanupLease, err := tape.LeaseAccount(ctx, param.poolID, enterpriseLoginTestTimeout, false, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	accRequest := tape.NewRequestOwnedTestAccountParams(int32(enterpriseLoginTestTimeout.Seconds()), param.poolID, false)
+	accHelper, acc, err := tape.NewOwnedTestAccountHelper(ctx, accRequest, tape.WithCredsJSON([]byte(s.RequiredVar(tape.ServiceAccountVar))))
 	if err != nil {
-		s.Fatal("Failed to lease a test account: ", err)
+		s.Fatal("Failed to create an account helper: ", err)
 	}
-	defer cleanupLease(cleanupCtx)
+	defer accHelper.CleanUp(cleanupCtx)
 
 	// Log-in to Chrome and allow to launch ARC if allowed by user policy.
 	cr, err := chrome.New(
 		ctx,
-		chrome.GAIALogin(chrome.Creds{User: acc.UserName, Pass: acc.Password}),
+		chrome.GAIALogin(chrome.Creds{User: acc.Username, Pass: acc.Password}),
 		chrome.ARCSupported(),
 		chrome.UnRestrictARCCPU(),
 		// TODO(b/154760453): switch to fake DMS once crbug.com/1099310 is resolved
