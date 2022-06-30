@@ -1208,6 +1208,22 @@ func DismissSortNudgeIfExists(ctx context.Context, tconn *chrome.TestConn) error
 	return nil
 }
 
+// DismissPrivacyNotice waits for the continue section privacy notice to appear,
+// then dismisses it by clicking the "OK" button.
+func DismissPrivacyNotice(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	continueSection := nodewith.ClassName("ContinueSectionView")
+	privacyNoticeButton := nodewith.Ancestor(continueSection).ClassName("PillButton").Name("OK")
+	if err := uiauto.Combine("Click on privacy notice OK button",
+		ui.WaitUntilExists(privacyNoticeButton),
+		ui.LeftClick(privacyNoticeButton),
+		ui.WaitUntilGone(privacyNoticeButton),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click OK button")
+	}
+	return nil
+}
+
 // UninstallsAppUsingContextMenu uninstalls an app using the context menu in the apps grid. This method should be called with an open apps grid.
 func UninstallsAppUsingContextMenu(ctx context.Context, tconn *chrome.TestConn, app *nodewith.Finder) error {
 	ui := uiauto.New(tconn)
