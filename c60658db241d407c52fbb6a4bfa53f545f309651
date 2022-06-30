@@ -33,6 +33,40 @@
       "message": "Tast owners, please take a look.",
       "revId": "c60658db241d407c52fbb6a4bfa53f545f309651",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79035613_9b007f9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/hide_continue_section_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-06-30T03:35:00Z",
+      "side": 1,
+      "message": "\u003e make sure that the clean-up function has sufficient time to run\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "revId": "c60658db241d407c52fbb6a4bfa53f545f309651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0394063b_5f763c72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/hide_continue_section_tablet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-06-30T03:35:00Z",
+      "side": 1,
+      "message": "Other steps like line 80 and 93 uses the default timeout (60 seconds), but this uses 3 seconds timeout. Is there a specific reason for this step?",
+      "revId": "c60658db241d407c52fbb6a4bfa53f545f309651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
