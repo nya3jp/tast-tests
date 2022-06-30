@@ -862,7 +862,7 @@ func (app *MicrosoftWebOffice) searchSampleSheet(ctx context.Context) error {
 			app.clickNavigationItem(recent),
 			app.ui.WaitUntilExists(recentWebArea),
 			app.switchToListView,
-			app.uiHdl.ClickUntil(link, app.ui.Gone(link)),
+			app.ui.DoDefaultUntil(link, app.ui.Gone(link)),
 			app.maybeCloseOneDriveTab(recentTab),
 		)(ctx)
 	}
