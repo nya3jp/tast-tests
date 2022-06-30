@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -138,19 +139,8 @@ func verifyAndLaunchSystemWebAppFromURL(ctx context.Context, cr *chrome.Chrome, 
 		return errors.Wrap(err, "failed waiting for URL to load")
 	}
 
-	if err := connTarget.Eval(ctxWithTimeout, "window.close()", nil); err != nil {
-		return errors.Wrap(err, "failed closing the window")
-	}
-
-	err = connTarget.Eval(ctxWithTimeout, "window.close()", nil)
-	if err != nil {
-		// Don't propagate `err`, window.close() cause `connTarget` to
-		// disconnect (because its tab is closed) before Eval() returns.
-		// This results in "the connection is closing" and causes the test
-		// to fail when the code is working as intended.
-		//
-		// Here we log the error in case something else went wrong.
-		testing.ContextLog(ctx, "window.close() errored with: ", err)
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to close app window")
 	}
 
 	return nil
