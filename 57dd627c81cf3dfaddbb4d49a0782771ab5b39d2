@@ -58,6 +58,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b28cf0_2a3e2b65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate/common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-30T05:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b98c1d3_68974dcf",
+      "range": {
+        "startLine": 22,
+        "startChar": 61,
+        "endLine": 22,
+        "endChar": 75
+      },
+      "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43775d46_695cd4e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate/common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-30T05:43:42Z",
+      "side": 1,
+      "message": "I initially put it as MigrateProfile but since the package name is migrate, linter in presubmit complained about `migrate.MigrateProfile()` and `Profile()` was the name recommended.\n\nWhat about `migrate.Run()`?",
+      "parentUuid": "6e85df32_1af204de",
+      "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20ceb340_1e0ad479",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-06-29T13:50:28Z",
       "side": 1,
       "message": "It\u0027s not a regression, but could you close the prev connection before this chrome.New() ?",
+      "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8520028_93e0cc2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate/common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-30T05:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20ceb340_1e0ad479",
       "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe3e1353_21d74f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-30T05:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3542265_6c3e6fb7",
+      "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b875f8f_67d56792",
@@ -109,6 +187,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e6fe05_098dffd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-30T05:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b875f8f_67d56792",
+      "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "385a77ea_f4fd18ba",
@@ -122,6 +218,24 @@
       "writtenOn": "2022-06-29T13:50:28Z",
       "side": 1,
       "message": "could you Close() the returned lacros instance?",
+      "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719a124a_32721480",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-06-30T05:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "385a77ea_f4fd18ba",
       "revId": "57dd627c81cf3dfaddbb4d49a0782771ab5b39d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
