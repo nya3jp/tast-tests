@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72e373d7_5fab8d56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529068
+      },
+      "writtenOn": "2022-06-30T17:12:32Z",
+      "side": 1,
+      "message": "This is one of the CLs to update the test usages of the autotest API ",
+      "revId": "786abb004e10f0fd8bc0192f457a9fc8a735910d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
