@@ -16,6 +16,46 @@
       "message": "lgtm",
       "revId": "6c3e59d6f5de1dfd7f42ef8636fd9bb1bc098b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f33600be_5909d8d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:29:06Z",
+      "side": 1,
+      "message": "Is there a bug filed for this?",
+      "revId": "6c3e59d6f5de1dfd7f42ef8636fd9bb1bc098b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cda0743b_0e20542e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/login_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-06-30T20:29:06Z",
+      "side": 1,
+      "message": "I guess this was already in the pre-patch version but why do we check this?",
+      "range": {
+        "startLine": 437,
+        "startChar": 39,
+        "endLine": 437,
+        "endChar": 66
+      },
+      "revId": "6c3e59d6f5de1dfd7f42ef8636fd9bb1bc098b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
