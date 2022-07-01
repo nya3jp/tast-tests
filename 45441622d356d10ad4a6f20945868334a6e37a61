@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae207123_86a72722",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-07-01T01:19:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6549d856_32978b03",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "45441622d356d10ad4a6f20945868334a6e37a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0e8831a_17c43672",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-06-30T11:44:02Z",
       "side": 1,
       "message": "The markdown three back-quotes shall be removed.",
+      "revId": "45441622d356d10ad4a6f20945868334a6e37a61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "325fd4bd_6aa9fea3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1358673
+      },
+      "writtenOn": "2022-07-01T01:19:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0e8831a_17c43672",
       "revId": "45441622d356d10ad4a6f20945868334a6e37a61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
