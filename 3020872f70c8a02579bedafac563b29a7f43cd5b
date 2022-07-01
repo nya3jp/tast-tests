@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd792fff_de904112",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-07-01T15:51:56Z",
+      "side": 1,
+      "message": "Previous CL (https://crrev.com/c/3679318) has been submitted, so submitting this one now:)",
+      "revId": "3020872f70c8a02579bedafac563b29a7f43cd5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
