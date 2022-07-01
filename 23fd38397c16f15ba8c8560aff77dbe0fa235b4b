@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e2dfe11_73fee907",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-07-01T13:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "feb40834_211f0217",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5aa5f775_8e6d27b8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-30T23:30:17Z",
       "side": 1,
       "message": "Wrap at 72 characters. See: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 122
+      },
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6880ed8_695065c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-07-01T13:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aa5f775_8e6d27b8",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "586b08df_589dc78c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-07-01T13:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05e76eb1_817465f1",
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a1f370b_63965e53",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-06-30T23:30:17Z",
       "side": 1,
       "message": "I do not see any usage of this. Please remove it.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2109e85_c844992c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-07-01T13:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a1f370b_63965e53",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e37d116_79dac7de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-07-01T13:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df380dbe_241af880",
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30613f94_3a5fd7ec",
@@ -123,6 +231,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59c1364d_05cd9bdd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-07-01T13:26:31Z",
+      "side": 1,
+      "message": "I\u0027m just trying to follow the convention used in tast-tests: `*firmware.Helper` is defined as `h` in every test. Should we change it?",
+      "parentUuid": "30613f94_3a5fd7ec",
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0e7b96f_2460e915",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
         "patchSetId": 1
@@ -134,6 +260,24 @@
       "writtenOn": "2022-07-01T01:22:07Z",
       "side": 1,
       "message": "There\u0027s no err on this line",
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a64e0579_7db332d3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-07-01T13:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0e7b96f_2460e915",
       "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0b92401_fb172ca0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-07-01T13:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "038e718d_d4749daf",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a300466_c202b328",
@@ -174,6 +342,30 @@
       "writtenOn": "2022-06-30T23:30:17Z",
       "side": 1,
       "message": "How about:\n\tswitch h.Config.ModeSwitcherType {\n\tcase \"menu_switcher\":\n\t\t// Power off is the last option in the menu for both developer and recovery screen\n\t\tnTimeKeyPress(ctx, h, s, \"\u003cdown\u003e\", 7)\n\tcase \"tablet_detachable_switcher\":\n\t\tswitch screen {\n\t\tcase \"rec\":\n\t\t\t// Enter the menu by pressing \u003cdown\u003e and choose power off option which is directly below the default option\n\t\t\tnTimeKeyPress(ctx, h, s, \"\u003cdown\u003e\", 2)\n\t\tcase \"dev\":\n\t\t\t// Power off is the default option\n\t\t}\n\t}",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7995d4a1_f0d973cd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-07-01T13:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a300466_c202b328",
       "range": {
         "startLine": 75,
         "startChar": 0,
