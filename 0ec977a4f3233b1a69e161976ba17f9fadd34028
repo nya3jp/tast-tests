@@ -322,6 +322,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c4629e6_5148b131",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-01T20:33:19Z",
+      "side": 1,
+      "message": "sgtm, but we should get approval that that makes sense.",
+      "parentUuid": "861cadca_4b7360a7",
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0ab2709_a88de004",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
         "patchSetId": 31
