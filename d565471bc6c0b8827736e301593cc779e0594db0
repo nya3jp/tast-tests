@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa5e19e_27fadaf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T21:22:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b82cb93_e26b70c1",
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ad368e4_414e9cf1",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-06-29T22:12:45Z",
       "side": 1,
       "message": "why?",
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "914a039c_c469192e",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T21:22:44Z",
+      "side": 1,
+      "message": "The previous situation was that when leaving the function, the tcpdump process would become a zombie process. I mistakenly thought that using testing.Sleep() would solve it, but it doesn\u0027t. Now I use the release function to detach the tcpdump process from the parent process, so that the tcpdump process can still run after the parent process terminates.",
+      "parentUuid": "9ad368e4_414e9cf1",
       "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95c39038_13aeb1d9",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T21:22:44Z",
+      "side": 1,
+      "message": "Does not need this comment after using the releasing function to detach the tcpdump process from its parent process.",
+      "parentUuid": "d272f7ce_b22116da",
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea3017b8_19e5beaa",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T21:22:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a40502a_e6799baa",
+      "range": {
+        "startLine": 139,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 4
+      },
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dea50b38_c3a3ec2e",
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d75b4e4f_fe30d69e",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T21:22:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea50b38_c3a3ec2e",
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c2388d4_d956007f",
@@ -105,6 +201,24 @@
       "writtenOn": "2022-06-29T22:12:45Z",
       "side": 1,
       "message": "can\u0027t we just call this directly?",
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d5f645b_eb02b2c2",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T21:22:44Z",
+      "side": 1,
+      "message": "I can call \"r.cmd.CmdExists()\" directly in the \"tcpdump/runner.go\". However, \"r.cmd\" is a private field and I can\u0027t access it outside of \"tcpdump/runner.go\", so I still need to wrap a function to use it",
+      "parentUuid": "5c2388d4_d956007f",
       "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28f3cb91_3e7113d3",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T21:22:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c20eb5a5_edd7cba5",
+      "range": {
+        "startLine": 45,
+        "startChar": 26,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39cfd9e9_e9195c90",
@@ -145,6 +283,24 @@
       "writtenOn": "2022-06-29T22:12:45Z",
       "side": 1,
       "message": "We should also provide a counterpart to Create to reset the state",
+      "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8830ef08_a94ee143",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T21:22:44Z",
+      "side": 1,
+      "message": "implement a ResetCmd() to reset the command",
+      "parentUuid": "39cfd9e9_e9195c90",
       "revId": "d565471bc6c0b8827736e301593cc779e0594db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

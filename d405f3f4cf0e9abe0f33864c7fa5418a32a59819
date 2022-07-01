@@ -206,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "800b37a3_eb7330da",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T21:22:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7582eaf7_a647da8a",
+      "revId": "d405f3f4cf0e9abe0f33864c7fa5418a32a59819",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56732acd_95b6f3e0",
