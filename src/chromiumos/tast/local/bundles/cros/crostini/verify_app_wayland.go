@@ -20,7 +20,7 @@ func init() {
 		Func:         VerifyAppWayland,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Runs a Wayland crostini application from the terminal and verifies that it renders",
-		Contacts:     []string{"smbarber@chromium.org", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

@@ -26,7 +26,7 @@ func init() {
 		Func:         ShareDownloads,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test sharing Downloads with Crostini",
-		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

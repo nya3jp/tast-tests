@@ -25,7 +25,7 @@ func init() {
 		Func:         HomeDirectoryRenameFile,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test renaming a file in Linux files and container using a pre-built crostini image",
-		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

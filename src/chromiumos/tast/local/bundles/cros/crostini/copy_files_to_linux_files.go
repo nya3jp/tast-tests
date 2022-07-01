@@ -31,7 +31,7 @@ func init() {
 		Func:         CopyFilesToLinuxFiles,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests copying files to Linux files using a pre-built crostini image",
-		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

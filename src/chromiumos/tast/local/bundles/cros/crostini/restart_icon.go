@@ -18,7 +18,7 @@ func init() {
 		Func:         RestartIcon,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that we can shut down and restart crostini through clicking the Terminal icon on launcher",
-		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

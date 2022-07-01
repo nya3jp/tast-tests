@@ -22,7 +22,7 @@ func init() {
 		Func:         CommandCd,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test command cd in Terminal window",
-		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

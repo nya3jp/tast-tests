@@ -19,7 +19,7 @@ func init() {
 		Func:         RemoveOk,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test uninstalling Crostini via the Settings app",
-		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

@@ -21,7 +21,7 @@ func init() {
 		Func:         CommandPs,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test command ps in Terminal window",
-		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

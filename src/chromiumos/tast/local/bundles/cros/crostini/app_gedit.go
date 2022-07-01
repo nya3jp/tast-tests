@@ -29,7 +29,7 @@ func init() {
 		Func:         AppGedit,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test gedit in Terminal window",
-		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Vars:         screenshot.ScreenDiffVars,
 		SoftwareDeps: []string{"chrome", "vm_host"},

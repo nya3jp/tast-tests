@@ -23,7 +23,7 @@ func init() {
 		Func:         NoAccessToDrive,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Run a test to make sure crostini does not have access to GoogleDrive",
-		Contacts:     []string{"jinrong@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"jinrong@google.com", "clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host", "chrome_internal", "drivefs"},
 		Params: []testing.Param{
