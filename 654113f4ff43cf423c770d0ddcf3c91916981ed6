@@ -87,6 +87,30 @@
       },
       "revId": "654113f4ff43cf423c770d0ddcf3c91916981ed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78f96775_5a8f027a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-01T02:31:37Z",
+      "side": 1,
+      "message": "Sorry I was not clear: did this address (\"192.168.100.1\") also appears in the \"NameServers\" field in the IPConfig object? That\u0027s the DNS list which should be used by the PortalDetector.\n\nMy actual question is: don\u0027t we need to append \"0.0.0.0\" to the |dns| list as what was done in this patch https://crrev.com/c/3722629?  (I just learned that 0.0.0.0 can be used to represent gateway from that patch)",
+      "parentUuid": "824f9120_f0826c96",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "654113f4ff43cf423c770d0ddcf3c91916981ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

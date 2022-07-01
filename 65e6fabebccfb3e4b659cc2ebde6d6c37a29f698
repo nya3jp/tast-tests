@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f6885d_546baa57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-01T02:31:37Z",
+      "side": 1,
+      "message": "nvm, I just checked the interface of PortalDetector in shill, it takes the |dns_list| from the Connection, so I believe it only sends traffic on that network.",
+      "parentUuid": "e8dfc2e5_b59bc406",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 49
+      },
+      "revId": "65e6fabebccfb3e4b659cc2ebde6d6c37a29f698",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56ebe6b9_f8a371b1",
