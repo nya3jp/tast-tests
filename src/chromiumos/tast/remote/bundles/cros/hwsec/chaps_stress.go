@@ -15,8 +15,8 @@ import (
 	"chromiumos/tast/common/pkcs11/pkcs11test"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/hwsec/util"
-	hwseclocal "chromiumos/tast/local/hwsec"
+	"chromiumos/tast/remote/bundles/cros/hwsec/util"
+	hwsecremote "chromiumos/tast/remote/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -58,9 +58,9 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 		signKeyCount = 650
 	)
 
-	r := hwseclocal.NewCmdRunner()
+	r := hwsecremote.NewCmdRunner(s.DUT())
 
-	helper, err := hwseclocal.NewHelper(r)
+	helper, err := hwsecremote.NewHelper(r, s.DUT())
 	if err != nil {
 		s.Fatal("Failed to create hwsec helper: ", err)
 	}
@@ -77,7 +77,7 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 	state.passwords = make([]string, userCount)
 	for i := 0; i < userCount; i++ {
 		state.usernames[i] = fmt.Sprintf("u%d.%s", i, util.FirstUsername)
-		state.passwords[i] = fmt.Sprintf("u%d.%s", i, util.FirstPassword)
+		state.passwords[i] = fmt.Sprintf("u%d.%s", i, util.FirstPassword1)
 	}
 	state.mounted = make([]bool, userCount)
 	state.keys = make([]*pkcs11.KeyInfo, userCount*keysPerUser)
@@ -232,7 +232,7 @@ func doMountUserTurn(ctx context.Context, state *chapsStressState, cryptohome *h
 	password := state.passwords[u]
 
 	// Mount the vault.
-	if err := cryptohome.MountVault(ctx, util.PasswordLabel, hwsec.NewPassAuthConfig(username, password), true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, util.Password1Label, hwsec.NewPassAuthConfig(username, password), true, hwsec.NewVaultConfig()); err != nil {
 		return errors.Wrapf(err, "failed to mount vault in mount user turn for user %d", u)
 	}
 
