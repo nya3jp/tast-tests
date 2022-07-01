@@ -16,6 +16,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/remote/hypervisor"
 	"chromiumos/tast/rpc"
 	crash_service "chromiumos/tast/services/cros/crash"
 	"chromiumos/tast/testing"
@@ -47,7 +48,8 @@ func init() {
 				execName: "kernel",
 			},
 		}, {
-			Name: "hypervisor",
+			Name:              "hypervisor",
+			ExtraSoftwareDeps: []string{"manatee"},
 			Val: testParams{
 				consent:  crash_service.SetUpCrashTestRequest_MOCK_CONSENT,
 				panicCmd: hypervisorPanicCmd,
@@ -94,6 +96,11 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 
 	req := crash_service.SetUpCrashTestRequest{
 		Consent: crash.consent,
+	}
+
+	manatee, err := hypervisor.IsManatee(ctx, d)
+	if err != nil {
+		s.Log("WARNING: Failed to check for ManaTEE: ", err)
 	}
 
 	// Shorten deadline to leave time for cleanup
@@ -167,9 +174,15 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	fs = crash_service.NewFixtureServiceClient(cl.Conn)
 
 	const base = `kernel\.\d{8}\.\d{6}\.\d+\.0`
+	crashFileRegexes := []string{base + `\.kcrash`, base + `\.meta`, base + `\.log`}
+	if manatee && crash.execName != "hypervisor" {
+		// ChromeOS crashes on manatee should include hypervisor_log.
+		// Hypervisor crashes should not include a separate hypervisor_log.
+		crashFileRegexes = append(crashFileRegexes, base+`\.hypervisor_log`)
+	}
 	waitReq := &crash_service.WaitForCrashFilesRequest{
 		Dirs:    []string{systemCrashDir},
-		Regexes: []string{base + `\.kcrash`, base + `\.meta`, base + `\.log`},
+		Regexes: crashFileRegexes,
 	}
 	s.Log("Waiting for files to become present")
 	res, err := fs.WaitForCrashFiles(ctx, waitReq)

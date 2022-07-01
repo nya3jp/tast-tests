@@ -53,6 +53,7 @@ func TestGetCrashes(t *gotesting.T) {
 	fooGPU := writeCrashFile(t, td, "foo.i915_error_state.log.xz", "")
 	fooCompressedTxt := writeCrashFile(t, td, "foo.txt.gz", "")
 	fooBIOSLog := writeCrashFile(t, td, "foo.bios_log", "")
+	fooHypervisorLog := writeCrashFile(t, td, "foo.hypervisor_log", "")
 	fooKCrash := writeCrashFile(t, td, "foo.kcrash", "")
 	fooCompressedLog := writeCrashFile(t, td, "foo.log.gz", "")
 	barDmp := writeCrashFile(t, td, "bar.dmp", "")
@@ -67,7 +68,7 @@ func TestGetCrashes(t *gotesting.T) {
 		t.Fatalf("GetCrashes(%v) failed: %v", dirs, err)
 	}
 	sort.Strings(files)
-	if exp := []string{barDmp.abs, fooBIOSLog.abs, fooCore.abs, fooDmp.abs, fooGPU.abs, fooInfo.abs, fooKCrash.abs, fooLog.abs, fooCompressedLog.abs, fooMeta.abs, fooProclog.abs, fooCompressedTxt.abs}; !reflect.DeepEqual(files, exp) {
+	if exp := []string{barDmp.abs, fooBIOSLog.abs, fooCore.abs, fooDmp.abs, fooHypervisorLog.abs, fooGPU.abs, fooInfo.abs, fooKCrash.abs, fooLog.abs, fooCompressedLog.abs, fooMeta.abs, fooProclog.abs, fooCompressedTxt.abs}; !reflect.DeepEqual(files, exp) {
 		t.Errorf("GetCrashes(%v) = %v; want %v", dirs, files, exp)
 	}
 }
