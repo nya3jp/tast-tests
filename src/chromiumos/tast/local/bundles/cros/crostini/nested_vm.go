@@ -18,7 +18,7 @@ func init() {
 		Func:         NestedVM,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test that /dev/kvm is present and basic functionality works",
-		Contacts:     []string{"sidereal@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"sidereal@google.com", "clumptini@google.com"},
 		SoftwareDeps: []string{"chrome", "vm_host", "untrusted_vm", "amd64"},
 		Attr:         []string{"group:mainline", "informational"},
 		// The build_image script strips out .c files, so we

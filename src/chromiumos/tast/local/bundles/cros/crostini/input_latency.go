@@ -34,7 +34,7 @@ func init() {
 		Func:         InputLatency,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests Crostini input latency",
-		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
+		Contacts:     []string{"cylee@chromium.org", "clumptini@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{"input_latency_server.py"},
 		SoftwareDeps: []string{"chrome", "vm_host"},

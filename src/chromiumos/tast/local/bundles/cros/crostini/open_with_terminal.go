@@ -19,7 +19,7 @@ func init() {
 		Func:         OpenWithTerminal,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Open directory in FilesApp with terminal",
-		Contacts:     []string{"joelhockey@chromium.org", "cros-containers-dev@google.com"},
+		Contacts:     []string{"joelhockey@chromium.org", "clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
