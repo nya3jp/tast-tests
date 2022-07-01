@@ -231,6 +231,24 @@
       "parentUuid": "7d67a15d_f9140027",
       "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf69a0e_be15ed36",
+        "filename": "src/chromiumos/tast/local/chrome/options_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-01T08:25:29Z",
+      "side": 1,
+      "message": "\u003e The option I proposed doesn\u0027t break encapsulation\n\nConfig is internal, so exposing it is breaking the encapsulation.\nOutside of the internal code should not depend on it.\n\n\u003e The only private thing we require access to is NewConfig, and only in the test.\n\nExactly, so as you find here, your proposal is to break the encapsulation and I don\u0027t think we should do it for workaround. Let\u0027s make a proper fix, instead.\n\n\u003e I can put the test in the chrome internals package\n\nI think the test should be outside of the package as the actual code is there.\n\nAgain, the blocker is \"Option\" is not comparable, so my suggestion is to make it possible. You\u0027ll need to resolve it, or if you don\u0027t want to do it by yourself, you have to wait someone working on it in the future, or come up with some idea works with other engs, too (which should not be breaking encapsulation way).",
+      "parentUuid": "e4bef3ae_8a2abb11",
+      "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
