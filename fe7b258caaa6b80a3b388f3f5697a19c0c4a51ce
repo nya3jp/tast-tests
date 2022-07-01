@@ -16,6 +16,24 @@
       "message": "Failures can be found on the tastboard, at least. Could you take a look at them?",
       "revId": "fe7b258caaa6b80a3b388f3f5697a19c0c4a51ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b34bcef_6352e6a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-07-01T19:39:40Z",
+      "side": 1,
+      "message": "Looks to me like those are on a kernelnext board, brya-kernelnext. These boards are used for stabilization in the kernel uprev process, and they are often marked as non-critical to indicate this fact. The failures don\u0027t appear in Nicolas link stainless query because it is configured with the option \"Exclude non critical build/board(s)\". I also see one error on an Octopus(blooglet) device which also appears to be from a non critical build or board.\n\nStainless without Exclude non critical build/board(s):  http://stainless/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-06-04\u0026last_date\u003d2022-07-01\u0026test\u003dIWScan\u0026model\u003dblooglet\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\n\nStainless with Exclude non critical build/board(s): http://stainless/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-06-04\u0026last_date\u003d2022-07-01\u0026test\u003dIWScan\u0026model\u003dblooglet\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dtrue",
+      "parentUuid": "ffb357cd_0043aeab",
+      "revId": "fe7b258caaa6b80a3b388f3f5697a19c0c4a51ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
