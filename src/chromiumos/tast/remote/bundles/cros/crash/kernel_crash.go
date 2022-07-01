@@ -16,6 +16,8 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/dut"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
 	crash_service "chromiumos/tast/services/cros/crash"
 	"chromiumos/tast/testing"
@@ -79,6 +81,22 @@ const hypervisorPanicCmd = `(sleep 2
   manatee -a shell-notty -- -c "echo c > /proc/sysrq-trigger"
   ) >/dev/null 2>&1 </dev/null &`
 
+func isManatee(ctx context.Context, d *dut.DUT) (bool, error) {
+	const cmd = `if [ -f /etc/init/dugong.conf ]; then echo yes; else echo no; fi`
+	out, err := d.Conn().CommandContext(ctx, "sh", "-c", cmd).CombinedOutput()
+	if err != nil {
+		return false, err
+	}
+	outstr := strings.TrimSpace(string(out))
+	if outstr == "yes" {
+		return true, nil
+	} else if outstr == "no" {
+		return false, nil
+	} else {
+		return false, errors.Errorf("unexpected output when testing for manatee: %s", out)
+	}
+}
+
 func KernelCrash(ctx context.Context, s *testing.State) {
 	const systemCrashDir = "/var/spool/crash"
 
@@ -94,6 +112,11 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 
 	req := crash_service.SetUpCrashTestRequest{
 		Consent: crash.consent,
+	}
+
+	manatee, err := isManatee(ctx, d)
+	if err != nil {
+		s.Log("WARNING: Failed to check for ManaTEE: ", err)
 	}
 
 	// Shorten deadline to leave time for cleanup
@@ -167,9 +190,13 @@ func KernelCrash(ctx context.Context, s *testing.State) {
 	fs = crash_service.NewFixtureServiceClient(cl.Conn)
 
 	const base = `kernel\.\d{8}\.\d{6}\.\d+\.0`
+	crashFileRegexes := []string{base + `\.kcrash`, base + `\.meta`, base + `\.log`}
+	if manatee {
+		crashFileRegexes = append(crashFileRegexes, base+`\.hypervisor_log`)
+	}
 	waitReq := &crash_service.WaitForCrashFilesRequest{
 		Dirs:    []string{systemCrashDir},
-		Regexes: []string{base + `\.kcrash`, base + `\.meta`, base + `\.log`},
+		Regexes: crashFileRegexes,
 	}
 	s.Log("Waiting for files to become present")
 	res, err := fs.WaitForCrashFiles(ctx, waitReq)
