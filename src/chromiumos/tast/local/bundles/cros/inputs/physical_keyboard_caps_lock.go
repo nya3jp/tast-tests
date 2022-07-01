@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
+	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -26,23 +27,31 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PhysicalKeyboardCapsLock,
-		LacrosStatus: testing.LacrosVariantUnneeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that user can lock Caps on physical keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.DefaultInputMethod}),
 		Timeout:      2 * time.Minute,
-		Fixture:      fixture.ClamshellNonVK,
 		Params: []testing.Param{
 			{
+				Fixture:           fixture.ClamshellNonVK,
+				ExtraAttr:         []string{"informational", "group:input-tools-upstream"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
-				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "informational",
+				Fixture:           fixture.ClamshellNonVK,
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+			},
+			{
+				Name:              "lacros",
+				Fixture:           fixture.LacrosClamshellNonVK,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 			},
 		},
 	})
@@ -68,12 +77,29 @@ func PhysicalKeyboardCapsLock(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 	capsOnImageFinder := nodewith.Name("CAPS LOCK is on").Role(role.Image)
 
-	// TODO(b/196771467) Validate typing after changing caps lock.
-	actionName := "PK caps lock and unlock"
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch inputs test server: ", err)
+	}
+	inputField := testserver.TextAreaInputField
+
+	defer its.CloseAll(cleanupCtx)
+
+	// Pressing the shift key by itself does not have any affect if no caps lock.
+	// However if the test failed while caps lock is still enabled, shift will
+	// disable it. This is just to make sure the state of the caps lock is clean
+	// for the next test that uses the fixture.
+	defer keyboard.AccelAction("Shift")(cleanupCtx)
+
+	actionName := "PK enable caps lock, type and disable caps lock"
 	if err := uiauto.UserAction(actionName,
 		uiauto.Combine(actionName,
 			keyboard.AccelAction("Alt+Search"),
 			ui.WaitUntilExists(capsOnImageFinder),
+			its.Clear(inputField),
+			its.ClickFieldAndWaitForActive(inputField),
+			keyboard.TypeAction("abcdefghijklmnopqrstuvwxyz01234! ABCDEFGHIJKLMNOPQRSTUVWXYZ01234!"),
+			util.WaitForFieldTextToBe(tconn, inputField.Finder(), "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234! abcdefghijklmnopqrstuvwxyz01234!"),
 			keyboard.AccelAction("Shift"),
 			ui.WaitUntilGone(capsOnImageFinder),
 		),
