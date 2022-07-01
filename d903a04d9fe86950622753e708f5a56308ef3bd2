@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1e15497_6db2afba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508803
+      },
+      "writtenOn": "2022-07-01T15:56:24Z",
+      "side": 1,
+      "message": "I\u0027m cool only running t",
+      "revId": "d903a04d9fe86950622753e708f5a56308ef3bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36b9c610_12d1692a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_blob_download_offline.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1508803
+      },
+      "writtenOn": "2022-07-01T15:56:24Z",
+      "side": 1,
+      "message": "I\u0027m intentionally not tagging this as `group:mainline`. Using `network.ExecFuncOnChromeOffline` in a mainline test seems overly risky, as any failure within that function will break networking for all following tests. My plan is to only run these tests within G3. It\u0027ll be isolated there and we use a new VM every time.",
+      "revId": "d903a04d9fe86950622753e708f5a56308ef3bd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
