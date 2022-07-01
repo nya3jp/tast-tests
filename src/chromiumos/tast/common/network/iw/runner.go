@@ -175,9 +175,11 @@ type section struct {
 // sectionAttributes contains temporary results while parsing sections.
 // Sections are defined as blocks of text that are delimited by level 1 indent lines.
 // e.g.
+//
 //	Band 1:
 //		Maximum RX AMPDU length 65535 bytes (exponent: 0x003)
 //		Minimum RX AMPDU time spacing: 4 usec (0x05)
+//
 // The 2nd and 3rd lines belong to the section of "Band 1".
 type sectionAttributes struct {
 	bands                 []Band
@@ -364,12 +366,22 @@ func (r *Runner) LinkValue(ctx context.Context, iface, iwLinkKey string) (string
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to get link information from interface %s", iface)
 	}
-	kvs := getAllLinkKeys(string(res))
+	kvs := allLinkKeys(string(res))
 	out := kvs[iwLinkKey]
 	if out == "" {
 		return "", errors.Errorf("could not extract link value from link information with link key %s: %v", iwLinkKey, kvs)
 	}
 	return out, nil
+}
+
+// AllStationInformation gets the all the station information from the iw station dump output.
+func (r *Runner) AllStationInformation(ctx context.Context, iface string) (map[string]string, error) {
+	res, err := r.cmd.Output(ctx, "iw", "dev", iface, "station", "dump")
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get station information from interface %s", iface)
+	}
+	kvs := allLinkKeys(string(res))
+	return kvs, nil
 }
 
 // OperatingMode gets the interface's operating mode.
@@ -574,8 +586,10 @@ func newSetFreqConf(ctrlFreq int, ops ...SetFreqOption) (*setFreqConf, error) {
 // init derives center frequency of 80, 160 MHz channel if not given and ensures the
 // options fits the input requirement of iw "set freq" function.
 // Format:
-//   set freq <freq> [NOHT|HT20|HT40+|HT40-|5MHz|10MHz|80MHz]
-//   set freq <control freq> [5|10|20|40|80|80+80|160] [<center1_freq> [<center2_freq>]]
+//
+//	set freq <freq> [NOHT|HT20|HT40+|HT40-|5MHz|10MHz|80MHz]
+//	set freq <control freq> [5|10|20|40|80|80+80|160] [<center1_freq> [<center2_freq>]]
+//
 // We use the second pattern for 80, 80+80 and 160, and the first one for the rest as iw
 // will derive the center frequency for us so we don't have to duplicate the logic.
 // This function does not validate the given frequencies here and delegate it to iw.
@@ -768,8 +782,8 @@ func extractBSSID(out string) (string, error) {
 	return m[1], nil
 }
 
-// getAllLinkKeys parses `link` or `station dump` output into key value pairs.
-func getAllLinkKeys(out string) map[string]string {
+// allLinkKeys parses `link` or `station dump` output into key value pairs.
+func allLinkKeys(out string) map[string]string {
 	kv := make(map[string]string)
 	r := regexp.MustCompile(`^\s+(.*):\s+(.*)$`)
 	for _, line := range strings.Split(out, "\n") {
