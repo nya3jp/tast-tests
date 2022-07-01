@@ -87,6 +87,96 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50ee1547_647d14e7",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-07-01T18:28:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a42744_330515c2",
+      "range": {
+        "startLine": 123,
+        "startChar": 117,
+        "endLine": 123,
+        "endChar": 127
+      },
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60de6cc3_1ebda56d",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-07-01T18:28:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e7cf277_df6531ee",
+      "range": {
+        "startLine": 123,
+        "startChar": 76,
+        "endLine": 123,
+        "endChar": 88
+      },
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8b322c8_b8b691f0",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-07-01T18:28:51Z",
+      "side": 1,
+      "message": "Passphrase includes more letters as shown in the example above.",
+      "parentUuid": "35cb3f9b_3e81ca66",
+      "range": {
+        "startLine": 123,
+        "startChar": 147,
+        "endLine": 123,
+        "endChar": 153
+      },
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f072657_08663843",
+        "filename": "src/chromiumos/tast/common/network/wpacli/wpa_monitor.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-07-01T18:28:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8a8833a_f92ab721",
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c050c04a_76cbebd5",
@@ -106,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30c7df39_543f6be7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-07-01T18:28:51Z",
+      "side": 1,
+      "message": "IIUC, the `informational` attr is a sub-attr of the `group:mainline` [1]. Similarlly, the attr `wificell_unstable` is a sub attr of the `group:wificell` [2].\n\nShould we create an additional attr `wificell_cross_device_unstable`/ `wificell_cross_device_informational`?\n\n+harpreet, WDYT?\n\n[1]:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/attr.go;rcl\u003d8d972e6da8004e5e728580bb41f8c8b2eff8e2ea;l\u003d58\n\n[2]:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/testing/attr.go;rcl\u003d8d972e6da8004e5e728580bb41f8c8b2eff8e2ea;l\u003d424",
+      "parentUuid": "c050c04a_76cbebd5",
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0ab2709_a88de004",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
         "patchSetId": 31
@@ -117,6 +225,24 @@
       "writtenOn": "2022-06-30T23:27:30Z",
       "side": 1,
       "message": "Can we just have ConfigureClient and ConfigureGO both take a connection object so that we don\u0027t hardcode which device we\u0027re configuring? I know you\u0027re doing this in the following CL, but can we just do it here instead?",
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d73eddd_dd7519f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-07-01T18:28:51Z",
+      "side": 1,
+      "message": "The reason I split them is to speed up the process of merging the test, since the review could take longer time.\n\nI can merge them to one CL if that make more sense.",
+      "parentUuid": "d0ab2709_a88de004",
       "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
