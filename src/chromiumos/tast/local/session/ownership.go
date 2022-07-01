@@ -226,3 +226,19 @@ func RetrieveSettings(ctx context.Context, sm *SessionManager) (*enterprise_mana
 	}
 	return rsettings, nil
 }
+
+// RetrievePolicyData requests that the given SessionManager return the
+// currently stored PolicyData.
+func RetrievePolicyData(ctx context.Context, sm *SessionManager) (*enterprise_management_proto.PolicyData, error) {
+	ret, err := sm.RetrievePolicyEx(ctx, DevicePolicyDescriptor())
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to retrieve policy")
+	}
+
+	rPol := &enterprise_management_proto.PolicyData{}
+	if err = proto.Unmarshal(ret.PolicyData, rPol); err != nil {
+		return nil, errors.Wrap(err, "failed to parse PolicyData")
+	}
+
+	return rPol, nil
+}
