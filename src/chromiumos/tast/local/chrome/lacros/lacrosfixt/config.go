@@ -6,6 +6,7 @@ package lacrosfixt
 
 import (
 	"io/ioutil"
+	"os"
 	"strings"
 
 	"chromiumos/tast/errors"
@@ -162,6 +163,9 @@ func (cfg *Config) Opts() ([]chrome.Option, error) {
 		// ash-chrome will choose between rootfs and stateful.
 	}
 	if cfg.deployed {
+		if _, err := os.Stat(cfg.deployedPath); err != nil {
+			return nil, errors.Wrap(err, "invalid lacros.DeployedBinary value")
+		}
 		opts = append(opts, chrome.ExtraArgs("--lacros-chrome-path="+cfg.deployedPath))
 	}
 
