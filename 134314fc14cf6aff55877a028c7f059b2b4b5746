@@ -89,6 +89,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ddc83ce_5a11deb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-01T06:43:42Z",
+      "side": 1,
+      "message": "One problem here: When this feature is enabled by default or enabled using finch flag. This test will start to fail. \n\nIf you really want to test a scenario that this feature can be disabled, you should probably explicitly disable the feature with chrome.DisableFeatures(\"crosPrivacyHub\")",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aae2646_2b147743",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-01T06:43:42Z",
+      "side": 1,
+      "message": "nit: remove the empty line.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6bbfdd68_c83a9379",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
         "patchSetId": 11
