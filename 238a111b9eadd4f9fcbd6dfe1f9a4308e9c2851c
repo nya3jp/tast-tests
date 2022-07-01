@@ -141,6 +141,24 @@
       "parentUuid": "5e418e78_6cb8b150",
       "revId": "238a111b9eadd4f9fcbd6dfe1f9a4308e9c2851c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f924608_f28ced6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2022-07-01T12:09:24Z",
+      "side": 1,
+      "message": "I opened http://crrev.com/c/3738527 to mark `apps.SystemWebAppsReinstall` informational.",
+      "parentUuid": "7922b3e9_91035080",
+      "revId": "238a111b9eadd4f9fcbd6dfe1f9a4308e9c2851c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
