@@ -66,6 +66,7 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		"--force-color-profile=srgb",                 // Force chrome to treat the display as sRGB. See b/221643955 for details.
 		"--force-raster-color-profile=srgb",          // Force rendering to run in the sRGB color space. See b/221643955 for details.
 	}
+	args = append(args, "--enable-features=EnableOobePolymer3")
 	if !cfg.EnableRestoreTabs() {
 		args = append(args, "--no-startup-window") // Do not start up chrome://newtab by default to avoid unexpected patterns (doodle etc.)
 	}
