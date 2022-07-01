@@ -480,6 +480,13 @@ func (f *bootedFixture) SetUp(ctx context.Context, s *testing.FixtState) interfa
 			s.Fatal("Failed to write arcvm_dev.conf: ", err)
 		}
 	}
+	defer func() {
+		if !success && f.arcvmConfig != "" {
+			if err := RestoreArcvmDevConf(ctx); err != nil {
+				s.Fatal("Failed to restore arcvm_dev.conf: ", err)
+			}
+		}
+	}()
 
 	opts, err := f.fOpt(ctx, s)
 	if err != nil {
