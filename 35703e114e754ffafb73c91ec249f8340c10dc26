@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07992dbe_cc2b061e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T23:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a50ea9a3_d64e34ce",
+      "revId": "35703e114e754ffafb73c91ec249f8340c10dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d0a43c5_1aaa8ecb",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-01T22:27:08Z",
       "side": 1,
       "message": "You also ran the DNS test in the following CL",
+      "revId": "35703e114e754ffafb73c91ec249f8340c10dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9fedf7b_cfde6863",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T23:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d0a43c5_1aaa8ecb",
       "revId": "35703e114e754ffafb73c91ec249f8340c10dc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2240ff_d886deec",
+        "filename": "src/chromiumos/tast/common/network/cmd/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T23:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e6a6323_aad5f554",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "35703e114e754ffafb73c91ec249f8340c10dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4952f10_f74a22c3",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-07-01T22:27:08Z",
       "side": 1,
       "message": "nit: fix line wrapping.",
+      "revId": "35703e114e754ffafb73c91ec249f8340c10dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff7b2186_f85a69b5",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T23:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4952f10_f74a22c3",
       "revId": "35703e114e754ffafb73c91ec249f8340c10dc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -92,6 +170,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d391ea46_a031580a",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T23:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0476457d_cb67f70f",
+      "revId": "35703e114e754ffafb73c91ec249f8340c10dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93631c0d_f4327da2",
@@ -105,6 +201,24 @@
       "writtenOn": "2022-07-01T22:27:08Z",
       "side": 1,
       "message": "nit: use r.CmdExists",
+      "revId": "35703e114e754ffafb73c91ec249f8340c10dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4323fbd9_5a528e37",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T23:48:01Z",
+      "side": 1,
+      "message": "I ended up removing CmdExists() because I think the operation of the command is best encapsulated in the tcpdump utility.",
+      "parentUuid": "93631c0d_f4327da2",
       "revId": "35703e114e754ffafb73c91ec249f8340c10dc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -126,6 +240,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2bc3bf6_bfe8f96a",
+        "filename": "src/chromiumos/tast/local/network/cmd/runner.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T23:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "416fdda2_b765c48c",
+      "revId": "35703e114e754ffafb73c91ec249f8340c10dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b5fe2fd_6b759e14",
@@ -139,6 +271,24 @@
       "writtenOn": "2022-07-01T22:27:08Z",
       "side": 1,
       "message": "ResetCmd",
+      "revId": "35703e114e754ffafb73c91ec249f8340c10dc26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec826e0_bfa1fdd7",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-01T23:48:01Z",
+      "side": 1,
+      "message": "I call ResetCmd() in tcpdump/runner.go. All command operations are encapsulated inside the tcpdump utility.",
+      "parentUuid": "4b5fe2fd_6b759e14",
       "revId": "35703e114e754ffafb73c91ec249f8340c10dc26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
