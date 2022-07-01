@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aca479e_a17d7077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-01T11:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e09768dd_1f2176ca",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 100
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "959299e1_77b8e789",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faa21d4f_eb2c477d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-01T11:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "959299e1_77b8e789",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15cd7e65_c4e3cfcc",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-06-30T22:10:03Z",
       "side": 1,
       "message": "Nit: End with period (comments are full sentences).",
+      "range": {
+        "startLine": 35,
+        "startChar": 39,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e175145f_6ebb05a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-01T11:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15cd7e65_c4e3cfcc",
       "range": {
         "startLine": 35,
         "startChar": 39,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2f233404_1dcd3b05",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-01T11:02:22Z",
+      "side": 1,
+      "message": "I\u0027m checking that it is not enabled by default by mistake.\nWhen it is eventually enabled by default, we\u0027ll need to adjust expectations in this test.",
+      "parentUuid": "6ddc83ce_5a11deb3",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aae2646_2b147743",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
         "patchSetId": 11
@@ -123,6 +219,30 @@
       "writtenOn": "2022-07-01T06:43:42Z",
       "side": 1,
       "message": "nit: remove the empty line.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb5e66b2_59da002b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-01T11:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aae2646_2b147743",
       "range": {
         "startLine": 49,
         "startChar": 0,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2a78dbe_260135a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-01T11:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bbfdd68_c83a9379",
+      "range": {
+        "startLine": 66,
+        "startChar": 39,
+        "endLine": 66,
+        "endChar": 45
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58899bb4_6a72ad54",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-06-30T22:10:03Z",
       "side": 1,
       "message": "Nit: And here.",
+      "range": {
+        "startLine": 79,
+        "startChar": 62,
+        "endLine": 79,
+        "endChar": 68
+      },
+      "revId": "134314fc14cf6aff55877a028c7f059b2b4b5746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1355258a_81e32041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-01T11:02:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58899bb4_6a72ad54",
       "range": {
         "startLine": 79,
         "startChar": 62,
