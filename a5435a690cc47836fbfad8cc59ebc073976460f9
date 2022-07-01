@@ -104,6 +104,24 @@
       "parentUuid": "a769802c_92e67f35",
       "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d80bd1ea_50b82f4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-01T09:08:19Z",
+      "side": 1,
+      "message": "Thanks for sharing the sample CL.\n\nAs per our understanding, sub-packages are allowed only to be imported within the parent package right? We cannot import say the [videocuj](https://source.chromium.org/chromiumos/_/chromium/chromiumos/platform/tast-tests/+/808f9f6a60d544d086eb79cf2b179e299c7f11be:src/chromiumos/tast/local/bundles/cros/ui/videocuj/) sub-package from `tast/local/bundles/cros/ui/` into our new `tast/local/bundles/cros/{new package}` package test for running the YouTube videos, as per this [link](https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Scoping-and-shared-code).\n\nPlease correct me if I\u0027m wrong.",
+      "parentUuid": "32a7b9d4_025745e3",
+      "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
