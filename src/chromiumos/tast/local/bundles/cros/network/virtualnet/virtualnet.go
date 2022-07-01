@@ -6,6 +6,7 @@ package virtualnet
 
 import (
 	"context"
+	"net/http"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
@@ -34,8 +35,10 @@ type EnvOptions struct {
 	// RAServer enables the RA server in the Env. IPv6 addresses can be obtained
 	// on the interface by SLAAC.
 	RAServer bool
-	// HTTPServer enables the HTTP server in the Env.
-	HTTPServer bool
+	// HTTPServerResponseHandler is the handler function for the HTTPServer to
+	// customize how the HTTPServer should respond to requests. If the handler is
+	// defined, then this enables the HTTP server in the Env.
+	HTTPServerResponseHandler func(rw http.ResponseWriter, req *http.Request)
 	// AddressToForceGateway is the address to force an IPv4 or IPv6 address to
 	// the gateway. When paired with a dnsmasq server, the DNS is queried for this
 	// address, and dnsmasq will respond with the address to the gateway. For the
@@ -93,8 +96,8 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		}
 	}
 
-	if opts.HTTPServer {
-		httpserver := httpserver.New("80")
+	if opts.HTTPServerResponseHandler != nil {
+		httpserver := httpserver.New("80", opts.HTTPServerResponseHandler)
 		if err := router.StartServer(ctx, "httpserver", httpserver); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to start http server")
 		}
