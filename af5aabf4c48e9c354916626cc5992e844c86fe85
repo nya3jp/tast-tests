@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4d9eaa1_b9d5e863",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_search_and_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-07-01T17:20:59Z",
+      "side": 1,
+      "message": "This CL originally added search+launch functionality to play_store.go but was later asked to land the new scenario in a new test. It appears that MaxOptinAttempts was added due to flakiness here:\n\nhttps://b.corp.google.com/issues/188034829?pli\u003d1\n\nWhich is odd since vm flakiness should give vm more opt in attempts. I am setting MaxOptinAttempts to 2 for both vm and arc++. Perhaps Muhammad could give additional context?",
+      "parentUuid": "93759248_957ee74c",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "af5aabf4c48e9c354916626cc5992e844c86fe85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "777e10e3_aac05966",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-01T00:09:28Z",
       "side": 1,
       "message": "It\u0027s necessary to reserve time for cleanup:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 68,
+        "startChar": 16,
+        "endLine": 68,
+        "endChar": 19
+      },
+      "revId": "af5aabf4c48e9c354916626cc5992e844c86fe85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06a513d5_4b43e746",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_search_and_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1317950
+      },
+      "writtenOn": "2022-07-01T17:20:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "777e10e3_aac05966",
       "range": {
         "startLine": 68,
         "startChar": 16,
