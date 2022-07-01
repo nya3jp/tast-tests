@@ -47,15 +47,17 @@ func init() {
 			loginPoolVar,
 			packagesVar,
 		},
+		// "no_qemu" is added for excluding betty from the target board list.
+		// TODO(b/191102176): Remove "no_qemu" after making the test pass on betty.
 		Params: []testing.Param{
 			{
-				ExtraSoftwareDeps: []string{"android_p"},
+				ExtraSoftwareDeps: []string{"android_p", "no_qemu"},
 				Val:               withRetries,
 				Timeout:           15 * time.Minute,
 			},
 			{
 				Name:              "vm",
-				ExtraSoftwareDeps: []string{"android_vm"},
+				ExtraSoftwareDeps: []string{"android_vm", "no_qemu"},
 				Val:               withRetries,
 				Timeout:           15 * time.Minute,
 				ExtraAttr:         []string{"informational"},
