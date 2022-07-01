@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c749652_e118318c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-07-01T03:24:27Z",
+      "side": 1,
+      "message": "There seem to be a number of failures that are not present on the boot test, like on the non-kernelnext brya boards, and failures to install packages/establish ADB connections.",
+      "revId": "55c50b2626e769390376a793735254fd3d05ee6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
