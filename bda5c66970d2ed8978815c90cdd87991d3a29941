@@ -249,6 +249,24 @@
       "parentUuid": "e4bef3ae_8a2abb11",
       "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b6f2db_f732262e",
+        "filename": "src/chromiumos/tast/local/chrome/options_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-01T16:18:13Z",
+      "side": 1,
+      "message": "Currently `config.NewConfig(opts)` is visible and is already used in the `src/chromiumos/tast/local/chrome` package by chrome.go. I don\u0027t think the proposed change opens up more access to `config.NewConfig(opts)`\n\nOutside of that directory, if I recall correctly, there is linting check that prevents local_test or remote_test from importing from `chromiumos/tast/local/chrome/internal/config` so we should be safe there.",
+      "parentUuid": "2bf69a0e_be15ed36",
+      "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
