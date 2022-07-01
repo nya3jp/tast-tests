@@ -49,6 +49,8 @@ var sectionEnumToSection = map[pb.ImageSection]bios.ImageSection{
 	pb.ImageSection_RWVPDImageSection:            bios.RWVPDImageSection,
 	pb.ImageSection_FWSignAImageSection:          bios.FWSignAImageSection,
 	pb.ImageSection_FWSignBImageSection:          bios.FWSignBImageSection,
+	pb.ImageSection_FWBodyAImageSection:          bios.FWBodyAImageSection,
+	pb.ImageSection_FWBodyBImageSection:          bios.FWBodyBImageSection,
 }
 
 // updateModeEnumtoMode maps the enum from FirmwareUpdateModeRequest to a bios FirmwareUpdateMode.
