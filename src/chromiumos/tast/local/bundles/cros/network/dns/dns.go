@@ -265,20 +265,30 @@ func QueryDNS(ctx context.Context, c Client, a *arc.ARC, cont *vm.Container, opt
 
 // ProxyTestCase contains test case for DNS proxy tests.
 type ProxyTestCase struct {
-	Client    Client
-	ExpectErr bool
+	Client     Client
+	ExpectErr  bool
+	AllowRetry bool
 }
 
 // TestQueryDNSProxy runs a set of test cases for DNS proxy.
 func TestQueryDNSProxy(ctx context.Context, tcs []ProxyTestCase, a *arc.ARC, cont *vm.Container, opts *QueryOptions) []error {
 	var errs []error
 	for _, tc := range tcs {
-		err := QueryDNS(ctx, tc.Client, a, cont, opts)
-		if err != nil && !tc.ExpectErr {
-			errs = append(errs, errors.Wrapf(err, "DNS query failed for %s", GetClientString(tc.Client)))
-		}
-		if err == nil && tc.ExpectErr {
-			errs = append(errs, errors.Errorf("successful DNS query for %s, but expected failure", GetClientString(tc.Client)))
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var err error
+			qErr := QueryDNS(ctx, tc.Client, a, cont, opts)
+			if qErr != nil && !tc.ExpectErr {
+				err = errors.Wrapf(qErr, "DNS query failed for %s", GetClientString(tc.Client))
+			}
+			if qErr == nil && tc.ExpectErr {
+				err = errors.Errorf("successful DNS query for %s, but expected failure", GetClientString(tc.Client))
+			}
+			if !tc.AllowRetry {
+				return testing.PollBreak(err)
+			}
+			return err
+		}, &testing.PollOptions{Timeout: 15 * time.Second}); err != nil {
+			errs = append(errs, err)
 		}
 	}
 	return errs
