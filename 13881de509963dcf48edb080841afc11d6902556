@@ -16,6 +16,75 @@
       "message": "Prashant@ Can you take a look at this CL for a review? Thank you",
       "revId": "13881de509963dcf48edb080841afc11d6902556",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d21f35_60ef374e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-07-01T17:56:16Z",
+      "side": 1,
+      "message": "since panel is not used elsewhere, just merged the if block into L57 :\n if panel, err :\u003d readFileFromDir(...); err !\u003d nil {\n } else if panel !\u003d top ... {\n }",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "13881de509963dcf48edb080841afc11d6902556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7360e20_7f135bd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-07-01T17:56:16Z",
+      "side": 1,
+      "message": "same comment as L58",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "13881de509963dcf48edb080841afc11d6902556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4b79db_67b41a4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2022-07-01T17:56:16Z",
+      "side": 1,
+      "message": "Same comment as L58",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "13881de509963dcf48edb080841afc11d6902556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
