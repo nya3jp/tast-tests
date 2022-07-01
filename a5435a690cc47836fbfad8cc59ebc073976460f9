@@ -33,6 +33,41 @@
       "message": "All our inputs tests are for google virtual keyboard, and this test can run without google VK. Since it is not in mainline, it is probably fine to leave it in the code repo. ",
       "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33bf1156_51cdbb85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-01T03:02:20Z",
+      "side": 1,
+      "message": "Makes sense. We can keep the cl for sure.",
+      "parentUuid": "aac2cebf_89cf9063",
+      "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdfc6707_6c7a05de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-01T03:02:20Z",
+      "side": 1,
+      "message": "Ambalavanan, as what I noticed, intel has added quite a number of Tast tests. Is it for a specific project? I would suggest you to create a separate package to accomodate all related tests to distinguish from others. ",
+      "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
