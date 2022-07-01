@@ -32,16 +32,16 @@ const maxGAIAEnterpriseEnrollmentRetries = 3
 // succeed.
 const gaiaEnterpriseEnrollmentTimeout = 3 * time.Minute
 
-//  domainRe is a regex used to obtain the domain (without top level domain)
-//  out of an email string.
-//  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome] and
-//  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2]
+// domainRe is a regex used to obtain the domain (without top level domain)
+// out of an email string.
+// e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome] and
+// ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2]
 var domainRe = regexp.MustCompile(`^[^@]+@([^@]+)\.[^.@]*$`)
 
-//  fullDomainRe is a regex used to obtain the full domain (with top level
-//  domain) out of an email string.
-//  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome.com] and
-//  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2.com]
+// fullDomainRe is a regex used to obtain the full domain (with top level
+// domain) out of an email string.
+// e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome.com] and
+// ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2.com]
 var fullDomainRe = regexp.MustCompile(`^[^@]+@([^@]+)$`)
 
 // userDomain will return the "domain" section (without top level domain) of
