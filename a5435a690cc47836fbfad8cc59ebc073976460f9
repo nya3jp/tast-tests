@@ -211,6 +211,24 @@
       "parentUuid": "95d2bedb_6c40bfd7",
       "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1ee250_1ab30fa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-01T11:14:09Z",
+      "side": 1,
+      "message": "Can you also let us know if we can make this new Intel package as a private package? If so can you please provide some links or documentation on how to do it?",
+      "parentUuid": "47897bda_206632a3",
+      "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
