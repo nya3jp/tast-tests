@@ -111,6 +111,30 @@
       },
       "revId": "654113f4ff43cf423c770d0ddcf3c91916981ed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a3ac1a3_15defe48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-01T15:36:20Z",
+      "side": 1,
+      "message": "\u003e did this address (\"192.168.100.1\") also appears in the \"NameServers\" field in the IPConfig object?\n\nYes, just double checked and the command you shared returns this:\n```\nNameServers \u003d [\n    192.168.100.1\n]\n```\n\n\u003e  don\u0027t we need to append \"0.0.0.0\" to the |dns| list as what was done in this patch https://crrev.com/c/3722629?\n\nI could, but considering I already have the correct addresses for Gateway and NameServers, would it be necessary?",
+      "parentUuid": "78f96775_5a8f027a",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "654113f4ff43cf423c770d0ddcf3c91916981ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
