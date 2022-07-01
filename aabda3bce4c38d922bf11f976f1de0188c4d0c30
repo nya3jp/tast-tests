@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8803298c_0576537e",
+        "filename": "src/chromiumos/tast/common/usbutils/display_helper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-01T07:36:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a83d497d_762a92a3",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 44
+      },
+      "revId": "aabda3bce4c38d922bf11f976f1de0188c4d0c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71200af0_175df07c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-11T10:11:46Z",
       "side": 1,
       "message": "Please also specific the `Timeout` field.",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 16
+      },
+      "revId": "aabda3bce4c38d922bf11f976f1de0188c4d0c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "701e29fc_cf42899a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/system_peripherals_functionality_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-01T07:36:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71200af0_175df07c",
       "range": {
         "startLine": 39,
         "startChar": 9,
