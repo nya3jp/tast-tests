@@ -89,6 +89,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "df380dbe_241af880",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-07-01T01:22:07Z",
+      "side": 1,
+      "message": "Please add an explicit test timeout",
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30613f94_3a5fd7ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-07-01T01:22:07Z",
+      "side": 1,
+      "message": "Nit: h is not a very clear variable name, could we make it helper",
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e7b96f_2460e915",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-07-01T01:22:07Z",
+      "side": 1,
+      "message": "There\u0027s no err on this line",
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "038e718d_d4749daf",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
         "patchSetId": 1
