@@ -7,8 +7,10 @@ package virtualnet
 import (
 	"context"
 	"net"
+	"net/http"
 	"time"
 
+	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq"
@@ -38,8 +40,14 @@ type EnvOptions struct {
 	// RAServer enables the RA server in the Env. IPv6 addresses can be obtained
 	// on the interface by SLAAC.
 	RAServer bool
-	// HTTPServer enables the HTTP server in the Env.
-	HTTPServer bool
+	// HTTPServerResponseHandler is the handler function for the HTTP and HTTPS Server
+	// to customize how the server should respond to requests. If the handler is
+	// set, then this enables the HTTP server in the Env.
+	HTTPServerResponseHandler func(rw http.ResponseWriter, req *http.Request)
+	// ServerCredentials contains the |Certificate| and |PrivateKey| for an HTTPS server.
+	// If this is not set or |HTTPServerResponseHandler| is not set, then an HTTPS
+	// server will not be started.
+	ServerCredentials *certificate.Credential
 	// ResolvedHost is the hostname to force a specific IPv4 or IPv6 address.
 	// When ResolvedHost is queried from dnsmasq, dnsmasq will respond with ResolveHostToIP.
 	// If resolvedHost is not set, it matches any domain in dnsmasq configuration.
@@ -100,10 +108,17 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 		}
 	}
 
-	if opts.HTTPServer {
-		httpserver := httpserver.New("80")
+	if opts.HTTPServerResponseHandler != nil {
+		httpserver := httpserver.New("80", nil, opts.HTTPServerResponseHandler)
 		if err := router.StartServer(ctx, "httpserver", httpserver); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to start http server")
+		}
+	}
+
+	if opts.HTTPServerResponseHandler != nil && opts.ServerCredentials != nil {
+		httpsserver := httpserver.New("443", opts.ServerCredentials, opts.HTTPServerResponseHandler)
+		if err := router.StartServer(ctx, "httpsserver", httpsserver); err != nil {
+			return nil, nil, errors.Wrap(err, "failed to start https server")
 		}
 	}
 
