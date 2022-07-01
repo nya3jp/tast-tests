@@ -7,6 +7,7 @@ package policy
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -21,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/policyutil/externaldata"
+	"chromiumos/tast/local/session"
 	ppb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
@@ -85,6 +87,26 @@ func (c *PolicyService) GAIAEnrollUsingChrome(ctx context.Context, req *ppb.GAIA
 
 	c.chrome = cr
 
+	return &empty.Empty{}, nil
+}
+
+func (c *PolicyService) GAIAEnrollForReporting(ctx context.Context, req *ppb.GAIAEnrollForReportingRequest) (*empty.Empty, error) {
+	testing.ContextLogf(ctx, "Enrolling using Chrome with username: %s, dmserver: %s", string(req.Username), string(req.DmserverUrl))
+
+	cr, err := chrome.New(
+		ctx,
+		chrome.GAIAEnterpriseEnroll(chrome.Creds{User: req.Username, Pass: req.Password}),
+		chrome.NoLogin(),
+		chrome.DMSPolicy(req.DmserverUrl),
+		chrome.EnableFeatures(req.EnabledFeatures),
+		chrome.EncryptedReportingAddr(fmt.Sprintf("%v/record", req.ReportingServerUrl)),
+		chrome.ExtraArgs(req.ExtraArgs),
+	)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start chrome")
+	}
+
+	c.chrome = cr
 	return &empty.Empty{}, nil
 }
 
@@ -541,4 +563,20 @@ func (c *PolicyService) EvalExpressionInChromeURL(ctx context.Context, req *ppb.
 	}
 
 	return &empty.Empty{}, nil
+}
+
+func (c *PolicyService) ClientID(ctx context.Context, req *empty.Empty) (*ppb.ClientIdResponse, error) {
+	sm, err := session.NewSessionManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create session_manager binding")
+	}
+
+	p, err := session.RetrievePolicyData(ctx, sm)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to retrieve settings")
+	} else if p == nil {
+		return nil, errors.New("client ID not found")
+	}
+
+	return &ppb.ClientIdResponse{ClientId: *p.DeviceId}, nil
 }
