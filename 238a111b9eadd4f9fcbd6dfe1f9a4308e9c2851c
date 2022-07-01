@@ -123,6 +123,24 @@
       "parentUuid": "3a91014e_40873f11",
       "revId": "238a111b9eadd4f9fcbd6dfe1f9a4308e9c2851c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "227f6903_daf86ee0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2022-07-01T12:04:34Z",
+      "side": 1,
+      "message": "The fast_build.sh script is in the tast repo, not tast-tests. Should I still run it?",
+      "parentUuid": "5e418e78_6cb8b150",
+      "revId": "238a111b9eadd4f9fcbd6dfe1f9a4308e9c2851c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
