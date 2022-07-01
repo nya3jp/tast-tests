@@ -241,6 +241,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b0c6655_bfbd3338",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-01T10:12:37Z",
+      "side": 1,
+      "message": "to avoid false-positive (e.g., we have to allow message starting with a capital letter, if it is proper noun etc.)",
+      "parentUuid": "27e901dc_d0be5a33",
+      "range": {
+        "startLine": 64,
+        "startChar": 25,
+        "endLine": 64,
+        "endChar": 26
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "137529af_3e8f5810",
@@ -372,6 +396,30 @@
       "side": 1,
       "message": "Oh, doing that means we\u0027ll have to check if the cleanup function is defined or not.\nThis way, we guarantee that cleanup function will always be defined.",
       "parentUuid": "89de5f45_1d0956e2",
+      "range": {
+        "startLine": 113,
+        "startChar": 9,
+        "endLine": 113,
+        "endChar": 16
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec273ad5_4ea3475e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-01T10:12:37Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s a good idea to let it call clean up always.\nIn many cases, cleanup requires to be called on success, and if not tear down inside the function so that from caller\u0027s point of view it looks doing nothing.\n\nMy recommendation is to return cleanup callback only when success.\nSpecifically, in this case, your returned clean up is tweaked for each step. I don\u0027t think we can easily say it gets enough benefit by this approach.",
+      "parentUuid": "5ece4669_180426b3",
       "range": {
         "startLine": 113,
         "startChar": 9,
