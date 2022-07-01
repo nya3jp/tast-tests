@@ -86,6 +86,24 @@
       "parentUuid": "cdfc6707_6c7a05de",
       "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32a7b9d4_025745e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-01T08:46:13Z",
+      "side": 1,
+      "message": "Create a seperate suite is not that hard. https://crrev.com/c/2203337 can be a good example. Sitting in \"tast/local/bundles/cros/{new package}\" would not prevent you importing any libs.",
+      "parentUuid": "a769802c_92e67f35",
+      "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
