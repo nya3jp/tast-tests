@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94fd26be_f52068ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-01T16:00:03Z",
+      "side": 1,
+      "message": "Generally looks good to me, just some notes about cleanup, context, and comments.",
+      "revId": "95685c2d4182b9aed643c4e12f0c51d3b1fe6eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23f58f21_519b821a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-01T16:00:03Z",
+      "side": 1,
+      "message": "As discussed on another CL, we should use a test profile here to avoid affecting the shill state, or use a helper / cleanup pattern:\n\ncleanupEnablePortal, err :\u003d m.EnablePortalDetection(ctx);\nif err !\u003d nil { s.Fatal(...); }\nctx, cancel :\u003d ctxutil.Shorten(ctx, 1*time.Second)\ndefer cancel\ndefer cleanupEnablePortal()",
+      "revId": "95685c2d4182b9aed643c4e12f0c51d3b1fe6eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06150f48_d5d1d6ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-01T16:00:03Z",
+      "side": 1,
+      "message": "We need to shorten the ctx for everything below this to ensure time for cleanup. One way to do that is to have portalEnv store the ctx passed to it to use for Cleanup and shorten ctx locally. Another way is to set cleanupCtx :\u003d ctx; ctx \u003d ctxutil.Shorten; defer portalEnv.Cleanup(cleanupCtx).",
+      "revId": "95685c2d4182b9aed643c4e12f0c51d3b1fe6eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e588957_48a80ec9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-01T16:00:03Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "95685c2d4182b9aed643c4e12f0c51d3b1fe6eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "490e3bb8_3340decf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-01T16:00:03Z",
+      "side": 1,
+      "message": "We should document the input parameters here or in the dnsmasq struct above.",
+      "revId": "95685c2d4182b9aed643c4e12f0c51d3b1fe6eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d4e79f2_f86c72d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-01T16:00:03Z",
+      "side": 1,
+      "message": "Document how |ip| and |port| are used here are in the httpserver struct.",
+      "revId": "95685c2d4182b9aed643c4e12f0c51d3b1fe6eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
