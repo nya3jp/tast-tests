@@ -55,7 +55,10 @@ func Enrollment(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	pJSON, err := json.Marshal(policy.NewBlob())
+	pb := policy.NewBlob()
+	pb.AddPolicy(&policy.ReportDeviceLoginLogout{Val: true})
+
+	pJSON, err := json.Marshal(pb)
 	if err != nil {
 		s.Fatal("Failed to serialize policies: ", err)
 	}
