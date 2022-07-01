@@ -340,6 +340,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56a9670c_6072103b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-07-01T20:45:10Z",
+      "side": 1,
+      "message": "Sure!!",
+      "parentUuid": "5c4629e6_5148b131",
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0ab2709_a88de004",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
         "patchSetId": 31
