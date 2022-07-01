@@ -844,6 +844,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da87d46d_56dcf951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-01T17:47:07Z",
+      "side": 1,
+      "message": "I am not sure this is necessary. I believe if you provide no address at all for `dhcp-option\u003doption:dns-server`, it assumes that the host you are running dnsmasq on is the DNS server.\n\nI would double check this though.",
+      "parentUuid": "7a96f300_6b203ff4",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c8beb0c_ae8a75f7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
         "patchSetId": 4
