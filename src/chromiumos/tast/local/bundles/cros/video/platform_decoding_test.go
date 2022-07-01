@@ -1019,6 +1019,23 @@ func TestPlatformDecodingParams(t *testing.T) {
 		params = append(params, param)
 	}
 
+	// Generates VAAPI H264 tests.
+	for _, group := range []string{"baseline", "main", "first_mb_in_slice"} {
+		files := h264Files[group]
+
+		param := paramData{
+			Name:         fmt.Sprintf("vaapi_h264_%s", group),
+			Decoder:      filepath.Join(chrome.BinTestDir, "decode_test"),
+			CmdBuilder:   "h264decodeVAAPIargs",
+			Files:        files,
+			Timeout:      defaultTimeout,
+			SoftwareDeps: []string{"vaapi", caps.HWDecodeH264},
+			Metadata:     genExtraData(files),
+			Attr:         []string{"graphics_video_h264"},
+		}
+		params = append(params, param)
+	}
+
 	// Generate V4L2 HEVC tests.
 	for _, testGroup := range []string{"main"} {
 		files := hevcFiles[testGroup]
