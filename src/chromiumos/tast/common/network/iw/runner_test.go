@@ -73,7 +73,7 @@ func (r *stubCmdRunner) ResetCmd() {
 	return
 }
 
-func TestGetAllLinkKeys(t *testing.T) {
+func TestAllLinkKeys(t *testing.T) {
 	const testStr = `Connected to 74:e5:43:10:4f:c0 (on wlan0)
       SSID: PMKSACaching_4m9p5_ch1
       freq: 5220
@@ -96,10 +96,10 @@ func TestGetAllLinkKeys(t *testing.T) {
 		"RX":          "5370 bytes (37 packets)",
 		"tx bitrate":  "13.0 MBit/s MCS 1",
 	}
-	l := getAllLinkKeys(testStr)
+	l := allLinkKeys(testStr)
 
 	if !reflect.DeepEqual(l, cmpMap) {
-		t.Errorf("unexpected result in getAllLinkKeys: got %v, want %v", l, cmpMap)
+		t.Errorf("unexpected result in allLinkKeys: got %v, want %v", l, cmpMap)
 	}
 }
 
