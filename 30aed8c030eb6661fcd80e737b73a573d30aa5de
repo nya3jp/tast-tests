@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "711c1b70_1847fca4",
+        "filename": "src/chromiumos/tast/local/typecutils/display_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-01T06:43:38Z",
+      "side": 1,
+      "message": "Is this correct, you want to match for HDMIHDMI or DPDP?",
+      "revId": "30aed8c030eb6661fcd80e737b73a573d30aa5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dec46037_2430a3df",
         "filename": "src/chromiumos/tast/local/typecutils/display_helper.go",
         "patchSetId": 4
