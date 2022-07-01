@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91e5539_16cc5631",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-01T13:42:51Z",
+      "side": 1,
+      "message": "Added check for the microphone toggle that was merged in the meantime.",
+      "revId": "c63c9322f02e6e9517838b8870602b92b09a9cd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
