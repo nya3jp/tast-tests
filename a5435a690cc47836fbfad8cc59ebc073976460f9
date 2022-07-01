@@ -68,6 +68,24 @@
       "message": "Ambalavanan, as what I noticed, intel has added quite a number of Tast tests. Is it for a specific project? I would suggest you to create a separate package to accomodate all related tests to distinguish from others. ",
       "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a769802c_92e67f35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-01T05:40:51Z",
+      "side": 1,
+      "message": "Hi Jun Sheng,\n\nIntel is collaborating with Chinmay/Alex from Google and we are upstreaming our automation scripts. We initially started it for Brya project and we are continuing the efforts for ongoing projects as well.\n\nWe have a plan to create a separate suite for Intel tests in this quarter. But creating a separate package will be difficult, as in many case we are reusing the existing libs and importing these libraries from other packages to Intel package is not possible.",
+      "parentUuid": "cdfc6707_6c7a05de",
+      "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
