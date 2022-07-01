@@ -34,6 +34,24 @@
       "parentUuid": "ffb357cd_0043aeab",
       "revId": "fe7b258caaa6b80a3b388f3f5697a19c0c4a51ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32611ee2_6892f2b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-07-01T20:04:03Z",
+      "side": 1,
+      "message": "What Kevin said :-)\n\nbrya-kernelnext is experimental so we can ignore the failures there.\n\nThere\u0027s a single other failure in the last 2 weeks\n```\n2022-06-24T05:25:26.778179Z INFO tast[3463]: wifi.IWScan: External command failed: signal: killed\n2022-06-24T05:25:26.778256Z INFO tast[3463]: wifi.IWScan: Command: iw dev wlan0 scan\n```\n\nIIUC `iw` got killed, that does not look like an issue with the itself.",
+      "parentUuid": "0b34bcef_6352e6a5",
+      "revId": "fe7b258caaa6b80a3b388f3f5697a19c0c4a51ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
