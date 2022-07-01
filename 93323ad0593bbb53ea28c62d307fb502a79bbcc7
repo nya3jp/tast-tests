@@ -16,6 +16,23 @@
       "message": "PTAL - is cros-hwsec@ the right group for this?",
       "revId": "93323ad0593bbb53ea28c62d307fb502a79bbcc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61a938df_74f4f2ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-01T02:58:41Z",
+      "side": 1,
+      "message": "Thanks, John.",
+      "revId": "93323ad0593bbb53ea28c62d307fb502a79bbcc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
