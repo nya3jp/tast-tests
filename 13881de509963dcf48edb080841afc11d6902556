@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "411b453c_8353b648",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-07-01T19:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83d21f35_60ef374e",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "13881de509963dcf48edb080841afc11d6902556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7360e20_7f135bd3",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "348ea60d_5689b4f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-07-01T19:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7360e20_7f135bd3",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "13881de509963dcf48edb080841afc11d6902556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a4b79db_67b41a4a",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-07-01T17:56:16Z",
       "side": 1,
       "message": "Same comment as L58",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "13881de509963dcf48edb080841afc11d6902556",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbb80ca2_1f0bc0d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/physical_location.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-07-01T19:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a4b79db_67b41a4a",
       "range": {
         "startLine": 79,
         "startChar": 0,
