@@ -34,6 +34,24 @@
       "parentUuid": "09193b31_cfaac97f",
       "revId": "bd8cb89ee7aa9f15d19b81a6533eeb13e7e514a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b34ba4ac_41c07ba9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-07-01T20:41:50Z",
+      "side": 1,
+      "message": "OK, I pulled it out into a utility module.",
+      "parentUuid": "eb717c3e_554a5b9d",
+      "revId": "bd8cb89ee7aa9f15d19b81a6533eeb13e7e514a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
