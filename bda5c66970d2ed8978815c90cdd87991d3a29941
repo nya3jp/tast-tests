@@ -213,6 +213,24 @@
       "parentUuid": "662b5cb4_4401c145",
       "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4bef3ae_8a2abb11",
+        "filename": "src/chromiumos/tast/local/chrome/options_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-07-01T00:18:14Z",
+      "side": 1,
+      "message": "The option I proposed doesn\u0027t break encapsulation in a way that affects maintainence at all, though (assert that deepEqual(NewConfig(ToOptions(proto)), NewConfig(expected_opts))). The only private thing we require access to is NewConfig, and only in the test. While the implementation details of config might change, the existince of the NewConfig function is unlikely to change.\n\nIf you\u0027d like, I can put the test in the chrome internals package and the actual code outside of it.",
+      "parentUuid": "7d67a15d_f9140027",
+      "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
