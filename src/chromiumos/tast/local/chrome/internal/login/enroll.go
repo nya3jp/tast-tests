@@ -32,16 +32,16 @@ const maxGAIAEnterpriseEnrollmentRetries = 3
 // succeed.
 const gaiaEnterpriseEnrollmentTimeout = 3 * time.Minute
 
-//  domainRe is a regex used to obtain the domain (without top level domain)
-//  out of an email string.
-//  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome] and
-//  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2]
+// domainRe is a regex used to obtain the domain (without top level domain)
+// out of an email string.
+// e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome] and
+// ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2]
 var domainRe = regexp.MustCompile(`^[^@]+@([^@]+)\.[^.@]*$`)
 
-//  fullDomainRe is a regex used to obtain the full domain (with top level
-//  domain) out of an email string.
-//  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome.com] and
-//  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2.com]
+// fullDomainRe is a regex used to obtain the full domain (with top level
+// domain) out of an email string.
+// e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome.com] and
+// ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2.com]
 var fullDomainRe = regexp.MustCompile(`^[^@]+@([^@]+)$`)
 
 // userDomain will return the "domain" section (without top level domain) of
@@ -294,7 +294,7 @@ func performGAIAEnrollmentSignIn(ctx context.Context, oobeConn *driver.Conn, cre
 		// management server.
 		// Check if enrollment maybe retried.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+			ctx, cancel := context.WithTimeout(ctx, 60*time.Second)
 			defer cancel()
 
 			var isOnErrorStep bool
@@ -320,7 +320,7 @@ func performGAIAEnrollmentSignIn(ctx context.Context, oobeConn *driver.Conn, cre
 			}
 
 			return nil
-		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
+		}, &testing.PollOptions{Timeout: 1 * time.Minute}); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to check if enrollment can be retried"))
 		}
 

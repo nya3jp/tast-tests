@@ -60,7 +60,7 @@ const (
 	// EnrollmentAndLoginTimeout is the maximum amount of time that Chrome is expected to take to perform both enrollment and login.
 	// Tests that call New with both enrollment and the default fake login mode should declare a timeout that's at least this long.
 	// TODO(crbug.com/1199705): Find a better value.
-	EnrollmentAndLoginTimeout = LoginTimeout + 1*time.Minute
+	EnrollmentAndLoginTimeout = LoginTimeout + 2*time.Minute
 
 	// tryReuseSessionTimeout is the maximum amount of time that Chrome is expected to take to perform
 	// session reuse checking. Chrome will connect to the exsting Chrome instance, obtained the
