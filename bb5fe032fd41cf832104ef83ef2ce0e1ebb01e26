@@ -63,6 +63,30 @@
       },
       "revId": "bb5fe032fd41cf832104ef83ef2ce0e1ebb01e26",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89d7ab10_025d57d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_no_license_enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-01T17:38:16Z",
+      "side": 1,
+      "message": "Going to try and go the chrome log route to pick up the enrollment error.",
+      "parentUuid": "253cf895_1ac43f43",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 49
+      },
+      "revId": "bb5fe032fd41cf832104ef83ef2ce0e1ebb01e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
