@@ -42,7 +42,9 @@ func init() {
 		Desc:         "Checks that ARC is launched when policy is set",
 		Contacts:     []string{"mhasank@chromium.org", "arc-commercial@google.com"},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome", "play_store"},
+		// "no_qemu" is added for excluding betty from the target board list.
+		// TODO(b/191102176): Remove "no_qemu" after making the test pass on betty.
+		SoftwareDeps: []string{"chrome", "play_store", "no_qemu"},
 		VarDeps: []string{
 			loginPoolVar,
 			packagesVar,
