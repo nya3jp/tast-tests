@@ -229,6 +229,24 @@
       "parentUuid": "47897bda_206632a3",
       "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "730c602e_d7f48af3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-01T12:52:17Z",
+      "side": 1,
+      "message": "I sort of heard this story a while go. I believe your associated Eng / EngProd team will find out a solution that works for you. Since it is irrelevant of this cl, let\u0027s keep it separate. \n\nI will abandon this CL and leave the test for now.",
+      "parentUuid": "ba1ee250_1ab30fa3",
+      "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
