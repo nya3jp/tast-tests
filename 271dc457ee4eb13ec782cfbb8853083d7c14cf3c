@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cc86332_98d6186d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508803
+      },
+      "writtenOn": "2022-07-01T15:33:08Z",
+      "side": 1,
+      "message": "This is substantially similar to the upload test in the previous CL, just in the reverse direction. ",
+      "revId": "271dc457ee4eb13ec782cfbb8853083d7c14cf3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
