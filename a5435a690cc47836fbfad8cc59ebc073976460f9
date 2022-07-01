@@ -16,6 +16,23 @@
       "message": "Hi reviewers,\n\nI do not see any reason to test this scenario. Enabling A11y keyboard from OS-settings is not part of Inputs feature. A11y keyboard testing has been covered in many input tests. http://source/search?q\u003da11y\u0026sq\u003d\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fbundles%2Fcros%2Finputs%2F",
       "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac2cebf_89cf9063",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-01T02:40:53Z",
+      "side": 1,
+      "message": "All our inputs tests are for google virtual keyboard, and this test can run without google VK. Since it is not in mainline, it is probably fine to leave it in the code repo. ",
+      "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
