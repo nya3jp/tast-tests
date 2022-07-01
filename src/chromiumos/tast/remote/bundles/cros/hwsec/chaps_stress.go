@@ -56,6 +56,8 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 		removeKeyCount = 25
 		// signKeyCount is the times that we sign a key.
 		signKeyCount = 650
+		// rebootCount is the times that we reboot.
+		rebootCount = 15
 	)
 
 	r := hwsecremote.NewCmdRunner(s.DUT())
@@ -86,7 +88,8 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 	state.userCount = userCount
 	state.keysPerUser = keysPerUser
 
-	const scratchpadPath = "/tmp/ChapsECDSATest"
+	// We'll reboot in this test, so the scratchpad have to survive reboot.
+	const scratchpadPath = "/var/tmp/ChapsECDSATest"
 
 	// Give the cleanup 30 seconds to finish.
 	ctxForCleanup := ctx
@@ -128,17 +131,18 @@ func ChapsStress(ctx context.Context, s *testing.State) {
 	rounds = append(rounds, fillRound(createGeneratedKeyRound, createGeneratedKeyCount)...)
 	rounds = append(rounds, fillRound(removeKeyRound, removeKeyCount)...)
 	rounds = append(rounds, fillRound(signKeyRound, signKeyCount)...)
+	rounds = append(rounds, fillRound(rebootRound, rebootCount)...)
 	state.rand.Shuffle(len(rounds), func(x, y int) {
 		rounds[x], rounds[y] = rounds[y], rounds[x]
 	})
 
 	for i := 0; i < len(rounds); i++ {
-		if err := runOneTurn(ctx, state, cryptohome, rounds[i], pkcs11Util, scratchpadPath, f1, f2); err != nil {
+		if err := runOneTurn(ctx, state, cryptohome, rounds[i], helper, pkcs11Util, scratchpadPath, f1, f2); err != nil {
 			s.Fatal("Turn failed: ", err)
 		}
 	}
 
-	s.Logf("Mounted %d times, unmounted %d times, created %d keys, removed %d keys, signed %d times", state.mountCount, state.unmountCount, state.createKeyCount, state.removeKeyCount, state.signCount)
+	s.Logf("Mounted %d times, unmounted %d times, created %d keys, removed %d keys, signed %d times, rebooted %d times", state.mountCount, state.unmountCount, state.createKeyCount, state.removeKeyCount, state.signCount, state.rebootCount)
 }
 
 // roundType is the type for determining what to do in a round, it's an enum.
@@ -153,6 +157,7 @@ const (
 	createGeneratedKeyRound
 	removeKeyRound
 	signKeyRound
+	rebootRound
 )
 
 // fillRound is a simple helper that create an array of size count filled with round.
@@ -196,6 +201,8 @@ type chapsStressState struct {
 	removeKeyCount int
 	// signCount is the number of times we signed with a key.
 	signCount int
+	// rebootCount is the number of times we rebooted.
+	rebootCount int
 
 	// userCount is the number of users that we're testing simultaneously.
 	userCount int
@@ -378,13 +385,30 @@ func doSignKeyTurn(ctx context.Context, state *chapsStressState, pkcs11Util *pkc
 	return nil
 }
 
+// doRebootTurn reboots the DUT.
+func doRebootTurn(ctx context.Context, state *chapsStressState, helper *hwsecremote.CmdHelperRemote) error {
+	if err := helper.Reboot(ctx); err != nil {
+		return errors.Wrap(err, "failed to reboot")
+	}
+
+	// Mark all mounted vault as unmounted.
+	for i := 0; i < state.userCount; i++ {
+		state.mounted[i] = false
+	}
+
+	state.unmountCount++
+
+	return nil
+}
+
 // runOneTurn runs one iteration of the test. It'll do one of the following according to round:
 // - Mount a user
 // - Unmount all users
 // - Create a key
 // - Remove a key
 // - Sign with a key
-func runOneTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.CryptohomeClient, round roundType, pkcs11Util *pkcs11.Chaps, scratchpadPath, f1, f2 string) error {
+// - Reboot
+func runOneTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.CryptohomeClient, round roundType, helper *hwsecremote.CmdHelperRemote, pkcs11Util *pkcs11.Chaps, scratchpadPath, f1, f2 string) error {
 	if round == mountRound {
 		return doMountUserTurn(ctx, state, cryptohome)
 	}
@@ -403,6 +427,10 @@ func runOneTurn(ctx context.Context, state *chapsStressState, cryptohome *hwsec.
 
 	if round == signKeyRound {
 		return doSignKeyTurn(ctx, state, pkcs11Util, f1, f2)
+	}
+
+	if round == rebootRound {
+		return doRebootTurn(ctx, state, helper)
 	}
 
 	return errors.New("invalid round in runOneTurn")
