@@ -634,3 +634,10 @@ func (m *Manager) RemoveFakeUserProfile(ctx context.Context, name string) error 
 	}
 	return nil
 }
+
+// SetDNSProxyDOHProviders updates the mapping of DoH provider to nameserver(s).
+func (m *Manager) SetDNSProxyDOHProviders(ctx context.Context, url string, ns []string) error {
+	return m.Call(ctx, "ClaimInterface", map[string]interface{}{
+		url: strings.Join(ns, ","),
+	}).Err
+}

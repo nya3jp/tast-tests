@@ -8,12 +8,14 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/network/dns"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/multivm"
 	"chromiumos/tast/local/network"
+	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
 
@@ -122,6 +124,34 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	var blocks []*dns.Block
 	switch params.mode {
 	case dns.DoHAutomatic:
+		// We need to override the DoH provider <-> nameserver mapping that Chrome gave to shill.
+		m, err := shill.NewManager(ctx)
+		if err != nil {
+			s.Fatal("Failed to obtain shill manager: ", err)
+		}
+		svc, err := m.FindMatchingService(ctx, map[string]interface{}{
+			shillconst.ServicePropertyState: shillconst.ServiceStateOnline,
+		})
+		if err != nil {
+			s.Fatal("Failed to obtain online service: ", err)
+		}
+		cfgs, err := svc.GetIPConfigs(ctx)
+		if err != nil {
+			s.Fatal("Failed to get IP configuration: ", err)
+		}
+		var ns []string
+		for _, cfg := range cfgs {
+			ip, err := cfg.GetIPProperties(ctx)
+			if err != nil {
+				s.Fatal("Failed to get IP properties: ", err)
+			}
+			ns = append(ns, ip.NameServers...)
+		}
+		s.Logf("Found nameservers: %v", ns)
+		if err := m.SetDNSProxyDOHProviders(ctx, dns.GoogleDoHProvider, ns); err != nil {
+			s.Fatal("Failed to set dns-proxy DoH providers: ", err)
+		}
+
 		// Confirm blocking plaintext still works (DoH preferred/used).
 		blocks = append(blocks, dns.NewPlaintextBlock(nss, physIfs, ""))
 		// Verify blocking HTTPS also works (fallback).
