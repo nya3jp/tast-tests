@@ -122,6 +122,24 @@
       "parentUuid": "32a7b9d4_025745e3",
       "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a6e568_258fadfb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-01T09:15:21Z",
+      "side": 1,
+      "message": "You are right. tast/local/bundles/cros are test suites, not for libs. For any common libs that used for multiple suites, should sit in \"tast/local/\". Take inputs as an example, tast/local/chrome/uiauto/vkb/vkb.go is the lib path, so any tests can use vkb functions. It would not be accessible if I put it in local/bundles/cros/inputs.",
+      "parentUuid": "d80bd1ea_50b82f4c",
+      "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
