@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d10b010_b4c9530f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-01T18:25:46Z",
+      "side": 1,
+      "message": "Why `build\u003dfalse`?",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe8b868_efcdb328",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-01T18:25:46Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 58,
+        "startChar": 32,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09dee2d8_9c11d783",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-01T18:25:46Z",
+      "side": 1,
+      "message": "nit: terminate comments w/ period",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25eb32ee_e2558de7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-01T18:25:46Z",
+      "side": 1,
+      "message": "nit: move closer to use",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aa788d5_75b3c3cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-01T18:25:46Z",
+      "side": 1,
+      "message": "nit: `filename`",
+      "range": {
+        "startLine": 66,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 15
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a3d2835_1518ba95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-01T18:25:46Z",
+      "side": 1,
+      "message": "nit: inline the condition",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6728e63d_7e80f874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-01T18:25:46Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 57
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "509e5c49_0d0e1cc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-01T18:25:46Z",
+      "side": 1,
+      "message": "nit: inline the condition",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 16
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e532bdb_865b49ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-01T18:25:46Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 72
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1205ad7_bb1f97a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-01T18:25:46Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 40
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2fcfd6d_4d863146",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-01T18:25:46Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 61
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "523cf512_4ac998ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-01T18:25:46Z",
+      "side": 1,
+      "message": "Let\u0027s move this up closer to where `filePath` is defined",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 26
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b027495_84b57a7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-01T18:25:46Z",
+      "side": 1,
+      "message": "All of these actions can be `uiauto.Combine`-d",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
