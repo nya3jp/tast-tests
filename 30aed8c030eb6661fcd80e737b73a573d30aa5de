@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd972c90_cb0ba61c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_gatex_card_display_functionalities.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-01T06:41:44Z",
+      "side": 1,
+      "message": "nit: USB4GatexCardDisplayFunctionality is probably more conventional",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "30aed8c030eb6661fcd80e737b73a573d30aa5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54486d88_b8f67b0b",
+        "filename": "src/chromiumos/tast/local/typecutils/display_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-01T06:41:44Z",
+      "side": 1,
+      "message": "Use https://pkg.go.dev/strings#HasPrefix instead",
+      "revId": "30aed8c030eb6661fcd80e737b73a573d30aa5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec46037_2430a3df",
+        "filename": "src/chromiumos/tast/local/typecutils/display_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-01T06:41:44Z",
+      "side": 1,
+      "message": "A comment with example output of \"/sys/kernel/debug/dri/0/i915_display_info\" (or a few relevant lines thereof) would help readers understand what these regular expressions are doing and what they need to handle.",
+      "revId": "30aed8c030eb6661fcd80e737b73a573d30aa5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6329cba5_6d9af594",
+        "filename": "src/chromiumos/tast/local/typecutils/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-01T06:41:44Z",
+      "side": 1,
+      "message": "See:\nhttps://go.dev/doc/effective_go#mixed-caps\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nThis should become CheckUSBPDMuxInfo.",
+      "range": {
+        "startLine": 223,
+        "startChar": 5,
+        "endLine": 223,
+        "endChar": 22
+      },
+      "revId": "30aed8c030eb6661fcd80e737b73a573d30aa5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
