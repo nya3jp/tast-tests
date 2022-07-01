@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "280edecb_c44dd4ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508803
+      },
+      "writtenOn": "2022-07-01T14:27:34Z",
+      "side": 1,
+      "message": "LGTM, cleaning up the accounts makes sense. ",
+      "revId": "728136d79df121f524490d85d1f69637cf808dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "310ad725_6d7bf62a",
+        "filename": "src/chromiumos/tast/local/drivefs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1508803
+      },
+      "writtenOn": "2022-07-01T14:27:34Z",
+      "side": 1,
+      "message": "Should this come last, after all other cleanup steps?",
+      "revId": "728136d79df121f524490d85d1f69637cf808dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4ea8a7_1efed70c",
+        "filename": "src/chromiumos/tast/local/drivefs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1508803
+      },
+      "writtenOn": "2022-07-01T14:27:34Z",
+      "side": 1,
+      "message": "Would it be worth bailing from the loop if we have less than a few seconds left on the `ctx`?\n\n```\nif ctxutil.DeadlineBefore(ctx, time.Now().Add(time.Second * 3)) {\n    s.Logf(\"Bailing from removal, no time left\")\n    break\n}\n```",
+      "revId": "728136d79df121f524490d85d1f69637cf808dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
