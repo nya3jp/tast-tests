@@ -16,6 +16,23 @@
       "message": "Getting a new Tast reviewer because Shuo-Peng Liao is not reviewing.",
       "revId": "9ce8dc3859953cb5061e61e51443da374df7275d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9716f1c6_2216abdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-01T08:41:20Z",
+      "side": 1,
+      "message": "Sorry for not replying to the request, but I first had to wait for the shadow reviewer, Joseph to do their review.\nIf in the future there is no reply in one business day, please ping the Tast reviewers.",
+      "revId": "9ce8dc3859953cb5061e61e51443da374df7275d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
