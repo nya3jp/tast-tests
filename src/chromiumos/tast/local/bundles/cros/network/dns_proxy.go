@@ -117,7 +117,7 @@ func DNSProxy(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to get physical interfaces: ", err)
 	}
-	s
+
 	// Block plain-text or secure DNS through iptables.
 	var blocks []*dns.Block
 	switch params.mode {
