@@ -76,6 +76,12 @@ const (
 	// FWSignBImageSection is the named section for Firmware B Sign as output from dump_fmap.
 	FWSignBImageSection ImageSection = "VBLOCK_B"
 
+	// FWBodyAImageSection is the named section for Firmware A Body as output from dump_fmap.
+	FWBodyAImageSection ImageSection = "FW_MAIN_A"
+
+	// FWBodyBImageSection is the named section for Firmware B Body as output from dump_fmap.
+	FWBodyBImageSection ImageSection = "FW_MAIN_B"
+
 	// gbbHeaderOffset is the location of the GBB header in GBBImageSection.
 	gbbHeaderOffset uint = 12
 )
@@ -85,6 +91,8 @@ var defaultChromeosFmapConversion = map[ImageSection]string{
 	GBBImageSection:     "FV_GBB",
 	FWSignAImageSection: "VBOOTA",
 	FWSignBImageSection: "VBOOTB",
+	FWBodyAImageSection: "FVMAIN",
+	FWBodyBImageSection: "FVMAINB",
 }
 
 // SectionInfo represents the location and size of a firmware image section.
