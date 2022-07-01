@@ -16,10 +16,13 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         VideoDecodeAccelVD,
-		Desc:         "Verifies ARCVM hardware decode acceleration using a media::VideoDecoder by running the c2_e2e_test APK (see go/arcvm-vd)",
-		Contacts:     []string{"chromeos-video-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Func:     VideoDecodeAccelVD,
+		Desc:     "Verifies ARCVM hardware decode acceleration using a media::VideoDecoder by running the c2_e2e_test APK (see go/arcvm-vd)",
+		Contacts: []string{"chromeos-video-eng@google.com"},
+		// TODO(b/237334804): disable temporarily because when the fixture for these
+		// tests runs, the devices are left in a bad state which prevents other
+		// tests from running. Uncomment the following line when that's fixed.
+		// Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Fixture:      "arcBootedWithVideoLoggingVD",
