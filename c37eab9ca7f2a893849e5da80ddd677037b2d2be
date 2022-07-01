@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9783e342_6139068e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394709
+      },
+      "writtenOn": "2022-07-01T20:54:11Z",
+      "side": 1,
+      "message": "I can\u0027t really review this CL, just a few nits",
+      "revId": "c37eab9ca7f2a893849e5da80ddd677037b2d2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1921362_c44b24fa",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1394709
+      },
+      "writtenOn": "2022-07-01T20:54:11Z",
+      "side": 1,
+      "message": "Consistent with everywhere else, this should be 1*time.Minute",
+      "range": {
+        "startLine": 297,
+        "startChar": 43,
+        "endLine": 297,
+        "endChar": 57
+      },
+      "revId": "c37eab9ca7f2a893849e5da80ddd677037b2d2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6d6d49d_551d370e",
+        "filename": "src/chromiumos/tast/local/session/ownership.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1394709
+      },
+      "writtenOn": "2022-07-01T20:54:11Z",
+      "side": 1,
+      "message": "\\n before this part?",
+      "range": {
+        "startLine": 232,
+        "startChar": 64,
+        "endLine": 232,
+        "endChar": 115
+      },
+      "revId": "c37eab9ca7f2a893849e5da80ddd677037b2d2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f82521d0_44247acd",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.pb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1595,
+      "author": {
+        "id": 1394709
+      },
+      "writtenOn": "2022-07-01T20:54:11Z",
+      "side": 1,
+      "message": "Split into 2 lines?",
+      "range": {
+        "startLine": 1595,
+        "startChar": 0,
+        "endLine": 1595,
+        "endChar": 99
+      },
+      "revId": "c37eab9ca7f2a893849e5da80ddd677037b2d2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "613ea4d9_1dc933e4",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.pb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1394709
+      },
+      "writtenOn": "2022-07-01T20:54:11Z",
+      "side": 1,
+      "message": "Split into 2 lines?",
+      "range": {
+        "startLine": 1635,
+        "startChar": 1,
+        "endLine": 1635,
+        "endChar": 100
+      },
+      "revId": "c37eab9ca7f2a893849e5da80ddd677037b2d2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb94b3d2_883b40fc",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.pb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1394709
+      },
+      "writtenOn": "2022-07-01T20:54:11Z",
+      "side": 1,
+      "message": "Split into 2 lines?",
+      "range": {
+        "startLine": 1826,
+        "startChar": 1,
+        "endLine": 1826,
+        "endChar": 136
+      },
+      "revId": "c37eab9ca7f2a893849e5da80ddd677037b2d2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6fbb6df_c59a753e",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.pb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1827,
+      "author": {
+        "id": 1394709
+      },
+      "writtenOn": "2022-07-01T20:54:11Z",
+      "side": 1,
+      "message": "Split into 2 lines?",
+      "range": {
+        "startLine": 1827,
+        "startChar": 1,
+        "endLine": 1827,
+        "endChar": 96
+      },
+      "revId": "c37eab9ca7f2a893849e5da80ddd677037b2d2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
