@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2596157_56abae90",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_sig_ab.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-01T20:37:45Z",
+      "side": 1,
+      "message": "This needs to be slightly sooner. For example if you corrupt A, and then corrupting B fails, you won\u0027t restore.",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 25
+      },
+      "revId": "67b3ca40e411d3eaeaab8ec53678cc6bef3ee091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
