@@ -6,6 +6,7 @@ package network
 
 import (
 	"context"
+	"net/http"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
@@ -16,13 +17,45 @@ import (
 	"chromiumos/tast/testing"
 )
 
+type params struct {
+	ServiceState        string
+	HTTPResponseHandler func(rw http.ResponseWriter, req *http.Request)
+}
+
+var (
+	redirectURL = "http://www.foo.com"
+)
+
+func redirectHandler(url string) func(http.ResponseWriter, *http.Request) {
+	return func(rw http.ResponseWriter, req *http.Request) {
+		http.Redirect(rw, req, url, http.StatusFound)
+	}
+}
+
+func redirectWithNoLocationHandler(rw http.ResponseWriter, req *http.Request) {
+	rw.WriteHeader(http.StatusFound)
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     ShillCaptivePortalHTTP,
-		Desc:     "Ensures that setting up a virtual ethernet pair with a DNS server that points portal detection queries to an http server that responds with '302 Redirect' with a Redirect URL. This results in a service state of 'redirect-found' for the ethernet service",
+		Desc:     "Ensures that setting up a virtual ethernet pair with a DNS server that points portal detection queries to an http server that responds via the handler. This results in a service state of |ServiceState| via the params for the ethernet service",
 		Contacts: []string{"michaelrygiel@google.com", "cros-network-health-team@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
 		Fixture:  "shillReset",
+		Params: []testing.Param{{
+			Name: "redirectfound",
+			Val: &params{
+				ServiceState:        shillconst.ServiceStateRedirectFound,
+				HTTPResponseHandler: redirectHandler(redirectURL),
+			},
+		}, {
+			Name: "portalsuspected",
+			Val: &params{
+				ServiceState:        shillconst.ServiceStatePortalSuspected,
+				HTTPResponseHandler: redirectWithNoLocationHandler,
+			},
+		}},
 	})
 }
 
@@ -36,16 +69,19 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 	// Relying on shillReset test fixture to undo the enabling of portal detection.
 	if err := m.EnablePortalDetection(ctx); err != nil {
 		s.Fatal("Enable Portal Detection failed: ", err)
+
 	}
 
+	params := s.Param().(*params)
 	opts := virtualnet.EnvOptions{
-		Priority:     5,
-		NameSuffix:   "",
-		EnableDHCP:   true,
-		EnableDNS:    true,
-		RAServer:     false,
-		HTTPServer:   true,
-		ResolvedHost: "www.gstatic.com",
+		Priority:                  5,
+		NameSuffix:                "",
+		EnableDHCP:                true,
+		EnableDNS:                 true,
+		RAServer:                  false,
+		HTTPServer:                true,
+		HTTPServerResponseHandler: params.HTTPResponseHandler,
+		ResolvedHost:              "www.gstatic.com",
 	}
 	pool := subnet.NewPool()
 	service, portalEnv, err := virtualnet.CreateRouterEnv(ctx, m, pool, opts)
@@ -69,11 +105,11 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 
 	timeoutCtx, cancel := context.WithTimeout(ctx, 35*time.Second)
 	defer cancel()
-	s.Log("Check if service state is 'redirect-found'")
-	var ServiceRedirectState = []interface{}{
-		shillconst.ServiceStateRedirectFound,
+	s.Logf("Check if service state is %q", params.ServiceState)
+	var expectedServiceState = []interface{}{
+		params.ServiceState,
 	}
-	_, err = pw.ExpectIn(timeoutCtx, shillconst.ServicePropertyState, ServiceRedirectState)
+	_, err = pw.ExpectIn(timeoutCtx, shillconst.ServicePropertyState, expectedServiceState)
 	if err != nil {
 		s.Fatal("Service state is unexpected: ", err)
 	}
