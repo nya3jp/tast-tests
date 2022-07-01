@@ -28,7 +28,7 @@ func init() {
 		Func:         ResizeBackupRestore,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test resizing disk of Crostini from the Settings app between backup and restore",
-		Contacts:     []string{"nverne@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"nverne@google.com", "clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
