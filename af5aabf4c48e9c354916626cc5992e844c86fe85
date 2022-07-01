@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "070457d8_b3de1b0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_search_and_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-07-01T17:28:07Z",
+      "side": 1,
+      "message": "It\u0027s fine to adjust the retries based on whichever of the two is flakier",
+      "parentUuid": "d4d9eaa1_b9d5e863",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "af5aabf4c48e9c354916626cc5992e844c86fe85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "777e10e3_aac05966",
