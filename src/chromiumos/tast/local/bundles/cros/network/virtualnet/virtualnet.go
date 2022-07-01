@@ -6,6 +6,7 @@ package virtualnet
 
 import (
 	"context"
+	"net/http"
 	"time"
 
 	"chromiumos/tast/common/shillconst"
@@ -36,6 +37,9 @@ type EnvOptions struct {
 	RAServer bool
 	// HTTPServer enables the IPv4 HTTP server in the Env.
 	HTTPServer bool
+	// HTTPServerResponseHandler is the handler function for the HTTPServer to
+	// customize how the HTTPServer should respond to requests
+	HTTPServerResponseHandler func(rw http.ResponseWriter, req *http.Request)
 	// AddressToForceGateway is the address to force an IPv4 address, which in the
 	// captive portal case will be the IPv4 address of the HTTP server
 	AddressToForceGateway string
@@ -92,8 +96,7 @@ func CreateRouterEnv(ctx context.Context, m *shill.Manager, pool *subnet.Pool, o
 	}
 
 	if opts.HTTPServer {
-		// Start IPv4 HTTP server
-		httpserver := httpserver.New("0.0.0.0", "80")
+		httpserver := httpserver.New("0.0.0.0", "80", opts.HTTPServerResponseHandler)
 		if err := router.StartServer(ctx, "httpserver", httpserver); err != nil {
 			return nil, nil, errors.Wrap(err, "failed to start http server")
 		}

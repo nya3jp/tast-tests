@@ -19,8 +19,7 @@ import (
 
 // Paths in chroot.
 const (
-	logPath     = "/tmp/httpServer.log"
-	redirectURL = "http://www.foo.com"
+	logPath = "/tmp/httpServer.log"
 )
 
 type httpserver struct {
@@ -28,30 +27,34 @@ type httpserver struct {
 	host string
 	// port is the port that the HTTP server will listen and serve on
 	port   string
+	handle func(rw http.ResponseWriter, req *http.Request)
 	server *http.Server
 	env    *env.Env
 }
 
 // Handler for HTTP server
-type Handler struct{}
+type Handler struct {
+	handle func(rw http.ResponseWriter, req *http.Request)
+}
 
 func (h *Handler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
-	http.Redirect(rw, req, redirectURL, http.StatusFound)
+	h.handle(rw, req)
 }
 
 // New creates a new httpserver object. The returned object can be passed to
 // Env.StartServer(), its lifetime will be managed by the Env object. The
-// httpserver will only respond with 302 redirects. Host and port will be
+// httpserver will only respond with |handle|. Host and port will be
 // be combined to make an address of the format |host:port| for the HTTP server
 // to listen and serve on.
-func New(host, port string) *httpserver {
-	return &httpserver{host: host, port: port}
+func New(host, port string, handle func(rw http.ResponseWriter, req *http.Request)) *httpserver {
+	return &httpserver{host: host, port: port, handle: handle}
 }
 
 // Start starts the HTTP server in a separate process
 func (h *httpserver) Start(ctx context.Context, env *env.Env) (retErr error) {
 	h.env = env
-	h.server = &http.Server{Addr: fmt.Sprintf("%v:%v", h.host, h.port), Handler: &Handler{}}
+	handler := &Handler{handle: h.handle}
+	h.server = &http.Server{Addr: fmt.Sprintf("%v:%v", h.host, h.port), Handler: handler}
 
 	errChannel := make(chan error)
 	go func() {
