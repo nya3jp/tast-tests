@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcacfcd7_5a9b3857",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-07-01T18:40:08Z",
+      "side": 1,
+      "message": "You can also use $\u003cboard_name\u003e for whichever board it is you used to test!",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "d6c1fc0ff69c0ddf0c0f9e9752669b8a6b9b7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9939fb6_edf94ddd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1134874
+      },
+      "writtenOn": "2022-07-01T18:40:08Z",
+      "side": 1,
+      "message": "Would you also please run in a chroot\n /mnt/host/source/src/platform/tast/fast_build.sh -T?\nand add the line\n TEST\u003dfast_build.sh -T\n \nThanks!",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "d6c1fc0ff69c0ddf0c0f9e9752669b8a6b9b7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7eba88de_107ad45c",
