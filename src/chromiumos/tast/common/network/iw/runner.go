@@ -372,6 +372,16 @@ func (r *Runner) LinkValue(ctx context.Context, iface, iwLinkKey string) (string
 	return out, nil
 }
 
+// AllStationInformation gets the all the station information from the iw station dump output.
+func (r *Runner) AllStationInformation(ctx context.Context, iface string) (map[string]string, error) {
+	res, err := r.cmd.Output(ctx, "iw", "dev", iface, "station", "dump")
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to get station information from interface %s", iface)
+	}
+	kvs := getAllLinkKeys(string(res))
+	return kvs, nil
+}
+
 // OperatingMode gets the interface's operating mode.
 func (r *Runner) OperatingMode(ctx context.Context, iface string) (string, error) {
 	out, err := r.cmd.Output(ctx, "iw", "dev", iface, "info")
