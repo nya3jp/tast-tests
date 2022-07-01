@@ -135,6 +135,30 @@
       },
       "revId": "654113f4ff43cf423c770d0ddcf3c91916981ed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d7a75f5_7f5daf26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-01T18:57:14Z",
+      "side": 1,
+      "message": "Also I believe that you do not need to append 0.0.0.0. If you provide no address at all for `dhcp-option\u003doption:dns-server`, it assumes that the host you are running dnsmasq on is the DNS server. Correct me if I am wrong",
+      "parentUuid": "1a3ac1a3_15defe48",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 2
+      },
+      "revId": "654113f4ff43cf423c770d0ddcf3c91916981ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
