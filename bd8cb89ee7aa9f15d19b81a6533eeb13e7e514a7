@@ -16,6 +16,24 @@
       "message": "Since this is already being done for the memory management service, we might want to put this in a common area once instead of per-test.",
       "revId": "bd8cb89ee7aa9f15d19b81a6533eeb13e7e514a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb717c3e_554a5b9d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/crash/kernel_crash.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1510622
+      },
+      "writtenOn": "2022-07-01T14:15:32Z",
+      "side": 1,
+      "message": "Those tests are local, not remote, so the code is a bit different, but in general I agree.\n\nWhere would it go? Can I put it in src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/manatee/...?",
+      "parentUuid": "09193b31_cfaac97f",
+      "revId": "bd8cb89ee7aa9f15d19b81a6533eeb13e7e514a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
