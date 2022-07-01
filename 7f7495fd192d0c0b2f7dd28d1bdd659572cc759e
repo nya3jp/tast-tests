@@ -16,6 +16,24 @@
       "message": "Please do not this. Instead, please fix your managed account.",
       "revId": "7f7495fd192d0c0b2f7dd28d1bdd659572cc759e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11762858_dcd465aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527578
+      },
+      "writtenOn": "2022-07-01T07:43:17Z",
+      "side": 1,
+      "message": "Got it. \nIs it only possible to repair managed accounts?\nThe current account has no settings for Lacros.\nCan we enable this argument to our own fixture? (Enable this argument from opts.)",
+      "parentUuid": "aae265bd_b93ebccc",
+      "revId": "7f7495fd192d0c0b2f7dd28d1bdd659572cc759e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
