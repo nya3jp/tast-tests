@@ -39,6 +39,30 @@
       },
       "revId": "ac15b6e82e6a051fd539547f982169e5808acdee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43c59637_ebb31c77",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1513257
+      },
+      "writtenOn": "2022-07-01T19:00:20Z",
+      "side": 1,
+      "message": "Done. Updated the function name to be `WaitUntilColorModeNudgeGoneIfExists`.",
+      "parentUuid": "f00325c6_b76e689f",
+      "range": {
+        "startLine": 150,
+        "startChar": 5,
+        "endLine": 150,
+        "endChar": 34
+      },
+      "revId": "ac15b6e82e6a051fd539547f982169e5808acdee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
