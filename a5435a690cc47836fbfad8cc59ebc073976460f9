@@ -140,6 +140,24 @@
       "parentUuid": "d80bd1ea_50b82f4c",
       "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea3f961_491459af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-01T09:24:23Z",
+      "side": 1,
+      "message": "Understood. So, we\u0027ll plan to place the new Intel tests that doesn\u0027t import any sub-packages in the `tast/local/bundles/cros/{new package}` package. \n\nIn-case we need to import the sub-packages in our tests, we will place them under the same parent package. \n\nWe\u0027ll also plan to place our new lib. files under the `tast/local` path, so that it can be accessed from our new package.\n\nThis strategy should be fine right?",
+      "parentUuid": "95a6e568_258fadfb",
+      "revId": "a5435a690cc47836fbfad8cc59ebc073976460f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
