@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb580d2a_e96bac97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/session_log.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-02T00:32:09Z",
+      "side": 1,
+      "message": "style nit: lower case for error strings at this level",
+      "range": {
+        "startLine": 93,
+        "startChar": 31,
+        "endLine": 93,
+        "endChar": 32
+      },
+      "revId": "b31ee3b7dcd158a30a515df8acf2c49bd580db39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
