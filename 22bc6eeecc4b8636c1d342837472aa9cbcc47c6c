@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0291d805_a7acd3bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/cross_version_login/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-02T01:20:49Z",
+      "side": 1,
+      "message": "On this topic, I think I should upload the VM image I built somewhere. That way, new test snapshots can be generated easily in the future, without the need in manual checkout/cherry-pick/build steps.\n\nAnd if we put the VM into a well-defined place we could even teach prepare_cross_version_login_data.sh to automatically grab it from that custom folder. WDYT?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "22bc6eeecc4b8636c1d342837472aa9cbcc47c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
