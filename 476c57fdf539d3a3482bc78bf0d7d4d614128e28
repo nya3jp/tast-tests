@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87ad7b45_0a9dca45",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-02T00:26:59Z",
+      "side": 1,
+      "message": "Why not just ResetCmd here instead of below?",
+      "revId": "476c57fdf539d3a3482bc78bf0d7d4d614128e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d096ecb7_36f02077",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-02T00:26:59Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a good way to track the lifetime of tcpdump. That should be handled inside the tcpdump runner itself. You can just do an existence check before you call c.runner.Close(ctx).",
+      "revId": "476c57fdf539d3a3482bc78bf0d7d4d614128e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
