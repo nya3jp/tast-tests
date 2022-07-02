@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8fb7cc0_6e8b8c01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-02T02:26:52Z",
+      "side": 1,
+      "message": "nit: checks",
+      "range": {
+        "startLine": 41,
+        "startChar": 61,
+        "endLine": 41,
+        "endChar": 66
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7add670d_e0c42240",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-02T02:26:52Z",
+      "side": 1,
+      "message": "Just a question, why we need an Enter here? Does this always have the same effect if the test failed at different stages?",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 36
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f690690f_8878ecdb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-02T02:26:52Z",
+      "side": 1,
+      "message": "Do we expect anything to happen in this 1 sec sleep? Or do you mean DUT will go to sleep by itself after decreasing brightness to zero?",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 0
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e902ad4e_378cca70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-02T02:26:52Z",
+      "side": 1,
+      "message": "nit: HDMI, an acronym should have a consitent case\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 361,
+        "startChar": 11,
+        "endLine": 361,
+        "endChar": 15
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
