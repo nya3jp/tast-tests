@@ -18,6 +18,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cbb47cf_b2045740",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-02T03:04:20Z",
+      "side": 1,
+      "message": "Generally looks good but I would like to avoid hardcoding IPv4 only behavior. We should really make sure this test will be easy to extend to the IPv6 only case and dual stack case. ",
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e9d9ee_6590dfa4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-02T03:04:20Z",
+      "side": 1,
+      "message": "We should maybe add here that this also requires forcing the DNS queries made by portal detection to be pointed to that server. Otherwise the http server only listening on its namespace address alone would not be enough to achieve redirection of the http traffic.",
+      "range": {
+        "startLine": 23,
+        "startChar": 13,
+        "endLine": 23,
+        "endChar": 179
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77c836ba_ef73def9",
@@ -66,6 +106,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1254ab1_42573ead",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-02T03:04:20Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we obtain a temporary directory from the testing context at runtime ?",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30644ad_c5148137",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-02T03:04:20Z",
+      "side": 1,
+      "message": "I would suggest making this a configuration parameter so that you don\u0027t have to write asserts in test case that have to hardcode this url for the redirect property exposed by shill.",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "178041cf_f7c406de",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
         "patchSetId": 13
@@ -82,6 +168,75 @@
         "startChar": 64,
         "endLine": 27,
         "endChar": 66
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91cb64bd_2464fbf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-02T03:04:20Z",
+      "side": 1,
+      "message": "Actually this variable is an IP address, not a hostname. A TCP listener will typically not know about its own hostname. This field name should ideally be changed to net.IP.\n\nMore generally do we really need to control this value ? afaiu the namespace will always have only 1 relevant virtual interface wrt what the ChromeOS host can see, so it seems correct to always listen on 0.0.0.0 or ::",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f5ff90c_7c5b527b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-02T03:04:20Z",
+      "side": 1,
+      "message": "We should avoid hardcoding anything IPv4-only.\n\nTo support well IPv4-only or IPv6-only or dual stack, I would suggest choosing one approach between:\n\na) if HTTPServer \u003d\u003d true \u0026\u0026 EnableDHCP \u003d\u003d true \u003d\u003e http server listen on \"0.0.0.0\" +  HTTPServer \u003d\u003d true \u0026\u0026 RAServer \u003d\u003d true \u003d\u003e http server listen on \"::\" (equivalent of 0.0.0.0 for IPv6). a) does not support http server with static IPv4 configuration.\n\nb) if HTTPServer \u003d\u003d true, http server listen both on \"0.0.0.0\" and \"::\" regardless of IP configuration. This supports http server with static IPv4 configuration.\n\nc) introduce two separate variables IPv4HTTPServer and IPv6HTTPServer. i.e in this patch you should rename HTTPServer to IPv4HTTPServer.\n\nTo listen over IPv6 you will need a separate instance of httpserver.New(). This is going to point out all the place in the code where hardcoding the fact of listening on IPv4 will not extend well to listening on both address families.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41d34c01_d22c2e76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-02T03:04:20Z",
+      "side": 1,
+      "message": "What does \"forcing an address\" means here concretely in term of traffic exchanged ? We should be more specific.",
+      "range": {
+        "startLine": 39,
+        "startChar": 29,
+        "endLine": 39,
+        "endChar": 65
       },
       "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
