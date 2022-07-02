@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2816c912_7def66dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-02T02:56:09Z",
+      "side": 1,
+      "message": "Still LGTM % some nits",
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77c836ba_ef73def9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-02T02:56:09Z",
+      "side": 1,
+      "message": "I think we don\u0027t really need to create cleanupCtx for each cleanup. Just using one with reserving enough time for all of them should be fine. (and moving the creation of cleanupCtx to the beginning of the test should be cleaner)",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5226984d_2d6c614e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-02T02:56:09Z",
+      "side": 1,
+      "message": "Now that we are using shillReset fixture now, I guess this cleanup is not necessary. WDYT?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 7
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "178041cf_f7c406de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-02T02:56:09Z",
+      "side": 1,
+      "message": "(Here and other places) Comments should be sentences and thus a period is needed at the end.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 27,
+        "startChar": 64,
+        "endLine": 27,
+        "endChar": 66
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
