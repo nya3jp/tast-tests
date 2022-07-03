@@ -14,6 +14,12 @@ import (
 	"chromiumos/tast/errors"
 )
 
+// ReportingPoliciesDisabledUser is the path to the secert username for the policies disabled OU.
+const ReportingPoliciesDisabledUser = "policy.reporting_policies_disabled_usename"
+
+// ReportingPoliciesDisabledPassword is the path to the secert password for the policies disabled OU.
+const ReportingPoliciesDisabledPassword = "policy.reporting_policies_disabled_password"
+
 // ManagedChromeCustomerIDPath is the path to the secret customer ID var for managedchrome.
 const ManagedChromeCustomerIDPath = "policy.managedchrome_obfuscated_customer_id"
 
@@ -35,9 +41,54 @@ type InputEvent struct {
 			Time        string `json:"timestampUs"`
 		} `json:"reportingRecordEvent"`
 	} `json:"apiEvent"`
-	ObfuscatedCustomerID string `json:"obfuscatedCustomerID"`
-	ObfuscatedGaiaID     string `json:"obfuscatedGaiaID"`
-	ClientID             string `json:"clientId"`
+	ObfuscatedCustomerID string                `json:"obfuscatedCustomerID"`
+	ObfuscatedGaiaID     string                `json:"obfuscatedGaiaID"`
+	ClientID             string                `json:"clientId"`
+	WrappedEncryptedData *WrappedEncryptedData `json:"wrappedEncryptedData"`
+	/*WrappedEncryptedData *struct {
+		MetricData *struct {
+			Time     string `json:"timestampMs"`
+			InfoData *struct {
+				MemoryInfo *struct {
+					TMEInfo *struct {
+						MemoryEncryptionState     *string `json:"encryptionState"`
+						MaxKeys                   *int64  `json:"maxKeys"`
+						KeyLength                 *int64  `json:"keyLength"`
+						MemoryEncryptionAlgorithm *string `json:"encryptionAlgorithm"`
+					} `json:"tmeInfo"`
+				} `json:"memoryInfo"`
+			} `json:"infoData"`
+		} `json:"metricData"`
+	} `json:"wrappedEncryptedData"`*/
+}
+
+// WrappedEncryptedData mirrors the wrappedEncryptedData JSON field
+type WrappedEncryptedData struct {
+	MetricData *MetricData `json:"metricData"`
+}
+
+// MetricData mirrors the metricData JSON field
+type MetricData struct {
+	Time     string    `json:"timestampMs"`
+	InfoData *InfoData `json:"infoData"`
+}
+
+// InfoData mirrors the infoData JSON field
+type InfoData struct {
+	MemoryInfo *MemoryInfo `json:"memoryInfo"`
+}
+
+// MemoryInfo mirrors the memoryInfo JSON field
+type MemoryInfo struct {
+	TMEInfo *TMEInfo `json:"tmeInfo"`
+}
+
+// TMEInfo mirrors the TMEInfo JSON field
+type TMEInfo struct {
+	MemoryEncryptionState     string `json:"encryptionState"`
+	MaxKeys                   int64  `json:"maxKeys"`
+	KeyLength                 int64  `json:"keyLength"`
+	MemoryEncryptionAlgorithm string `json:"encryptionAlgorithm"`
 }
 
 type inputEventsResponse struct {
