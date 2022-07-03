@@ -73,8 +73,8 @@ func init() {
 
 func GAIAEnrollment(ctx context.Context, s *testing.State) {
 	param := s.Param().(testInfo)
-	username := s.RequiredVar(param.username)
-	password := s.RequiredVar(param.password)
+	//	username := s.RequiredVar(param.username)
+	//	password := s.RequiredVar(param.password)
 	dmServerURL := param.dmserver
 
 	defer func(ctx context.Context) {
@@ -99,8 +99,8 @@ func GAIAEnrollment(ctx context.Context, s *testing.State) {
 	pc := ps.NewPolicyServiceClient(cl.Conn)
 
 	if _, err := pc.GAIAEnrollUsingChrome(ctx, &ps.GAIAEnrollUsingChromeRequest{
-		Username:    username,
-		Password:    password,
+		Username:    "memory_reporting_enabled_tast@managedchrome.com",
+		Password:    "test123!!",
 		DmserverURL: dmServerURL,
 	}); err != nil {
 		s.Fatal("Failed to enroll using chrome: ", err)
