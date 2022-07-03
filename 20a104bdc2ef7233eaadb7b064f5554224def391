@@ -16,6 +16,115 @@
       "message": "LGTM",
       "revId": "20a104bdc2ef7233eaadb7b064f5554224def391",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "179a4494_590114f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-03T23:13:24Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "20a104bdc2ef7233eaadb7b064f5554224def391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e48fb8ce_9604dfc6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/reorder_nudge_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-03T23:13:24Z",
+      "side": 1,
+      "message": "nit: maybe reserve a few seconds to ensure this is ran on cleanup?\n```\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n```",
+      "range": {
+        "startLine": 62,
+        "startChar": 47,
+        "endLine": 62,
+        "endChar": 50
+      },
+      "revId": "20a104bdc2ef7233eaadb7b064f5554224def391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ddbe2e3_c2ebff8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/reorder_nudge_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-03T23:13:24Z",
+      "side": 1,
+      "message": "nit: fourth",
+      "range": {
+        "startLine": 78,
+        "startChar": 118,
+        "endLine": 78,
+        "endChar": 123
+      },
+      "revId": "20a104bdc2ef7233eaadb7b064f5554224def391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd448ffa_08d1a36d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/reorder_nudge_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-03T23:13:24Z",
+      "side": 1,
+      "message": "nit: add a gap here, it\u0027ll be \"open then closethe bubble launcher 4 times\" at the moment",
+      "range": {
+        "startLine": 79,
+        "startChar": 42,
+        "endLine": 79,
+        "endChar": 43
+      },
+      "revId": "20a104bdc2ef7233eaadb7b064f5554224def391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4d583e7_9fef3529",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-03T23:13:24Z",
+      "side": 1,
+      "message": "nit: generally good to maintain similar order to the other functions in this file (e.g. `SearchAndRightClick` takes a `tconn` first)",
+      "range": {
+        "startLine": 191,
+        "startChar": 18,
+        "endLine": 191,
+        "endChar": 63
+      },
+      "revId": "20a104bdc2ef7233eaadb7b064f5554224def391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
