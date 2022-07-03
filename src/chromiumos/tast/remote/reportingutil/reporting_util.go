@@ -10,9 +10,17 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
+
+// ReportingPoliciesDisabledUser is the path to the secert username for the policies disabled OU.
+const ReportingPoliciesDisabledUser = "policy.reporting_policies_disabled_usename"
+
+// ReportingPoliciesDisabledPassword is the path to the secert password for the policies disabled OU.
+const ReportingPoliciesDisabledPassword = "policy.reporting_policies_disabled_password"
 
 // ManagedChromeCustomerIDPath is the path to the secret customer ID var for managedchrome.
 const ManagedChromeCustomerIDPath = "policy.managedchrome_obfuscated_customer_id"
@@ -26,6 +34,10 @@ const DmServerURL = "https://crosman-alpha.sandbox.google.com/devicemanagement/d
 // ReportingServerURL is the URL to the autopush reporting server.
 const ReportingServerURL = "https://autopush-chromereporting-pa.sandbox.googleapis.com/v1"
 
+// VerifyEventTypeCallback is passed to the PruneEvents function. If this function returns false for an event
+// then PruneEvents will not include the event in the returned list.
+type VerifyEventTypeCallback func(InputEvent) bool
+
 // InputEvent is the model for the response from Reporting API. Add to this
 // when you want to query for new fields.
 type InputEvent struct {
@@ -35,13 +47,67 @@ type InputEvent struct {
 			Time        string `json:"timestampUs"`
 		} `json:"reportingRecordEvent"`
 	} `json:"apiEvent"`
-	ObfuscatedCustomerID string `json:"obfuscatedCustomerID"`
-	ObfuscatedGaiaID     string `json:"obfuscatedGaiaID"`
-	ClientID             string `json:"clientId"`
+	ObfuscatedCustomerID string                `json:"obfuscatedCustomerID"`
+	ObfuscatedGaiaID     string                `json:"obfuscatedGaiaID"`
+	ClientID             string                `json:"clientId"`
+	WrappedEncryptedData *WrappedEncryptedData `json:"wrappedEncryptedData"`
+}
+
+// WrappedEncryptedData mirrors the wrappedEncryptedData JSON field.
+type WrappedEncryptedData struct {
+	MetricData *MetricData `json:"metricData"`
+}
+
+// MetricData mirrors the metricData JSON field.
+type MetricData struct {
+	Time     string    `json:"timestampMs"`
+	InfoData *InfoData `json:"infoData"`
+}
+
+// InfoData mirrors the infoData JSON field.
+type InfoData struct {
+	MemoryInfo *MemoryInfo `json:"memoryInfo"`
+}
+
+// MemoryInfo mirrors the memoryInfo JSON field.
+type MemoryInfo struct {
+	TMEInfo *TMEInfo `json:"tmeInfo"`
+}
+
+// TMEInfo mirrors the TMEInfo JSON field.
+type TMEInfo struct {
+	MemoryEncryptionState     string `json:"encryptionState"`
+	MaxKeys                   int64  `json:"maxKeys"`
+	KeyLength                 int64  `json:"keyLength"`
+	MemoryEncryptionAlgorithm string `json:"encryptionAlgorithm"`
 }
 
 type inputEventsResponse struct {
 	Event []InputEvent `json:"event"`
+}
+
+// PruneEvents reduces the events response to only memory events after test began.
+func PruneEvents(ctx context.Context, events []InputEvent, clientID string, testStartTime int64, correctEventType VerifyEventTypeCallback) ([]InputEvent, error) {
+	var prunedEvents []InputEvent
+	for _, event := range events {
+		if event.ClientID != clientID {
+			continue
+		}
+		if !correctEventType(event) {
+			continue
+		}
+		us, err := strconv.ParseInt(event.APIEvent.ReportingRecordEvent.Time, 10, 64)
+		if err != nil {
+			return prunedEvents, errors.Wrap(err, "failed to parse int64 Spanner timestamp from event")
+		}
+		if us > testStartTime {
+			prunedEvents = append(prunedEvents, event)
+			j, _ := json.Marshal(event)
+			testing.ContextLog(ctx, "Found a valid event ", string(j))
+		}
+	}
+
+	return prunedEvents, nil
 }
 
 // LookupEvents Call the Reporting API Server's ChromeReportingDebugService.LookupEvents
