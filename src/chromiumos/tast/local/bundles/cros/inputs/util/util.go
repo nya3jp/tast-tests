@@ -108,7 +108,7 @@ func RunSubtestsPerInputMethodAndMessage(ctx context.Context, uc *useractions.Us
 	for _, im := range inputMethods {
 		// Setup input method.
 		s.Logf("Set current input method to: %q", im)
-		if err := im.InstallAndActivate(uc.TestAPIConn())(ctx); err != nil {
+		if err := im.InstallAndActivateUserAction(uc)(ctx); err != nil {
 			s.Fatalf("Failed to set input method to %q: %v: ", im, err)
 		}
 		uc.SetAttribute(useractions.AttributeInputMethod, im.Name)
@@ -127,12 +127,12 @@ func RunSubtestsPerInputMethodAndMessage(ctx context.Context, uc *useractions.Us
 
 // RunSubtestsPerInputMethodAndModalidy runs subtest that uses testName and inputdata on
 // every combination of given input methods and messages.
-func RunSubtestsPerInputMethodAndModalidy(ctx context.Context, tconn *chrome.TestConn, s *testing.State,
+func RunSubtestsPerInputMethodAndModalidy(ctx context.Context, uc *useractions.UserContext, s *testing.State,
 	inputMethods []ime.InputMethod, messages map[InputModality]data.Message, subtest func(testName string, modality InputModality, inputData data.InputData) func(ctx context.Context, s *testing.State)) {
 	for _, im := range inputMethods {
 		// Setup input method.
 		s.Logf("Set current input method to: %s", im)
-		if err := im.InstallAndActivate(tconn)(ctx); err != nil {
+		if err := im.InstallAndActivateUserAction(uc)(ctx); err != nil {
 			s.Fatalf("Failed to set input method to %s: %v: ", im, err)
 		}
 

@@ -106,7 +106,7 @@ func PhysicalKeyboardAutocorrect(ctx context.Context, s *testing.State) {
 	inputMethod := testCase.InputMethod
 	s.Logf("Set current input method to: %q", inputMethod)
 
-	if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
+	if err := inputMethod.InstallAndActivateUserAction(uc)(ctx); err != nil {
 		s.Fatalf("Failed to set input method to %q: %v: ", inputMethod, err)
 	}
 	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)

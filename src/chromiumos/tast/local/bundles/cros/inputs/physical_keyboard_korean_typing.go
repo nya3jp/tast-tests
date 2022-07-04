@@ -74,7 +74,7 @@ func PhysicalKeyboardKoreanTyping(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	// Add IME for testing.
-	if err := ime.Korean.InstallAndActivate(tconn)(ctx); err != nil {
+	if err := ime.Korean.InstallAndActivateUserAction(uc)(ctx); err != nil {
 		s.Fatal("Failed to switch to Korean IME")
 	}
 	uc.SetAttribute(useractions.AttributeInputMethod, ime.Korean.Name)

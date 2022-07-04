@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/useractions"
 )
 
 // TODO(b/192819861): Define new input method struct and migrate existing use of InputMethodCode.
@@ -549,6 +550,22 @@ func (im InputMethod) InstallAndActivate(tconn *chrome.TestConn) action.Action {
 	)
 }
 
+// InstallAndActivateUserAction returns an user action installing the input method
+// and set it to active via Chrome API. It can be used to collect DUT environment information
+// and measure the perforamce of installing a certain input method.
+func (im InputMethod) InstallAndActivateUserAction(uc *useractions.UserContext) action.Action {
+	return uiauto.UserAction(
+		"Add and activate input method via Chromium API",
+		im.InstallAndActivate(uc.TestAPIConn()),
+		uc, &useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeFeature:     useractions.FeatureIMEManagement,
+				useractions.AttributeInputMethod: im.Name,
+			},
+		},
+	)
+}
+
 // Remove uninstalls the input method via Chrome API.
 func (im InputMethod) Remove(tconn *chrome.TestConn) action.Action {
 	f := func(ctx context.Context, fullyQualifiedIMEID string) error {
@@ -569,7 +586,9 @@ func (im InputMethod) actionWithFullyQualifiedID(tconn *chrome.TestConn, f func(
 
 // SetSettings changes the IME setting via chrome api.
 // `chrome.inputMethodPrivate.setSettings(
-//     "xkb:us::eng", { "physicalKeyboardAutoCorrectionLevel": 1})`,
+//
+//	"xkb:us::eng", { "physicalKeyboardAutoCorrectionLevel": 1})`,
+//
 // Note: Settings change won't take effect until the next input session.
 // e.g. focus on a text field, or change input method.
 // Live setting change is not supported because it never happens in a real user environment.
