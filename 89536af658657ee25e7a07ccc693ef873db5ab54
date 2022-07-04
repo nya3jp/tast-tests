@@ -16,6 +16,29 @@
       "message": "Hi Victor and Alex,\nSorry to bother about this test again but I\u0027m a bit stuck and not sure who else to ask.\nSo I modified the test to check for the enrollment error in chrome logs. I essentially made the test very similar to the https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go test which also uses the syslog to check that kiosk mode started(https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/kioskmode/kiosk_mode.go;rcl\u003dee386d9e00e83a7302bd890b8e1cf33a8ae6c42b;l\u003d134). However here I can\u0027t get it to work, not sure what am doing wrong exactly.\nMaybe I\u0027m looking in the wrong logs? \nSorry for the test not being very clean. I included a run below, the test can\u0027t find the Enrollment Error in the logs but then at the very bottom of the paste when I actually search in the test log directory myself I do find the Enrollment Error string.\nhttps://paste.googleplex.com/6743893455405056\n\nAny ideas what\u0027s going on here?\nThanks!",
       "revId": "89536af658657ee25e7a07ccc693ef873db5ab54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa87ea32_32ea4ea2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-04T07:58:57Z",
+      "side": 1,
+      "message": "Please split this into 2 functions, one to create the reader and one to wait for the message. You need to start the reader before enrollment starts, start enrollment and then wait for the message.\n\nMaybe it makes sense to move this to a separate syslog service.\n\nnit: This name is too generic. Maybe WaitForEnrollmentError? I\u0027d also return the actual log statement to the client.",
+      "range": {
+        "startLine": 55,
+        "startChar": 24,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "89536af658657ee25e7a07ccc693ef873db5ab54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
