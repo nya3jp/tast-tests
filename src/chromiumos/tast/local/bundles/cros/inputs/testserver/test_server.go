@@ -322,6 +322,15 @@ func (its *InputsTestServer) Clear(inputField InputField) uiauto.Action {
 	}
 }
 
+// ScrollTo returns an action that scrolls to a given coordinate in the page
+// via javascript.
+func (its *InputsTestServer) ScrollTo(x, y int32) uiauto.Action {
+	return func(ctx context.Context) error {
+		return its.pc.Eval(ctx,
+			fmt.Sprintf(`window.scrollTo(%d, %d);`, x, y), nil)
+	}
+}
+
 // WaitForFieldToBeActive returns an action waiting for certain input field to be the active element.
 func (its *InputsTestServer) WaitForFieldToBeActive(inputField InputField) uiauto.Action {
 	return func(ctx context.Context) error {
