@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4e471c_048832c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-04T06:09:33Z",
+      "side": 1,
+      "message": "rli",
+      "revId": "0fa4e5fa7d6ff92566c003b531aebab60abb680a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fe6a3d1_8b399cb5",
@@ -62,6 +79,30 @@
       "side": 1,
       "message": "yeah, that a valid concern. Considering we have so many tests in CQ, the false-positive issue could be detected in CQ of the CL. \n\nThat\u0027s fine if you just want to try it in a minimal way first.",
       "parentUuid": "0428899a_fe48fa84",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 85
+      },
+      "revId": "0fa4e5fa7d6ff92566c003b531aebab60abb680a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44ec8e0d_1e122832",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-04T06:09:33Z",
+      "side": 1,
+      "message": "Not really a false-positive but concerning on racing conditions. If the API returns 100ms earlier than the actual readiness, it would slip through CQ and flaky from time to time. My plan is to do it on IME based.",
+      "parentUuid": "9d882db2_ce4533f7",
       "range": {
         "startLine": 104,
         "startChar": 1,
