@@ -34,6 +34,24 @@
       "parentUuid": "489bea39_6e710ea9",
       "revId": "700f08e763d5a4712a3815cff2c9005855ee9788",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54117229_9e046229",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/cross_version_login/R90-13816.106.0_betty_20220630_config.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-07-04T06:02:21Z",
+      "side": 1,
+      "message": "IIRC, with latest tpm2_simulator, we should be able to create the pin vault key, but I don\u0027t see it in the config. Is there any reason we could not create one?",
+      "parentUuid": "5af80010_9ca4d87a",
+      "revId": "700f08e763d5a4712a3815cff2c9005855ee9788",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

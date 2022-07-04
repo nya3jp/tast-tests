@@ -22,6 +22,30 @@
       },
       "revId": "22bc6eeecc4b8636c1d342837472aa9cbcc47c6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b6f45f2_81f72a37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/cross_version_login/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-07-04T06:02:21Z",
+      "side": 1,
+      "message": "Sounds good. If you upload the image of VM to Google Storage, we should be able to use the GS link. Then, adding an option in prepare_cross_version_login_data.sh to download from specific link would be useful in this case.",
+      "parentUuid": "0291d805_a7acd3bc",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "22bc6eeecc4b8636c1d342837472aa9cbcc47c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
