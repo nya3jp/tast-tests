@@ -16,6 +16,23 @@
       "message": "Please have a look, thank you.",
       "revId": "1c6d504c1e323bf3d7f96587250228eb4ca5fb46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c00ec29_91bd5888",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-07-04T07:15:48Z",
+      "side": 1,
+      "message": "Hi Frank,\n\nI just upload the CL.\nPlease have a look.\n\nAnd I also have one thing to change in \"VerifyAllWindowsOnDisplay\" func in \"Chromebook_window.go\" file.\nHow do I fix this issue?",
+      "revId": "1c6d504c1e323bf3d7f96587250228eb4ca5fb46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
