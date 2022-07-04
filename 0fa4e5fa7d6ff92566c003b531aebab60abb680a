@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0428899a_fe48fa84",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-04T05:54:26Z",
+      "side": 1,
+      "message": "Ye. It is really useful suggestion. I even has done the improvement locally. However the concern is that we do not trust this new API yet. If it is enabled for all IMEs, it can false return true and potentially cause some tests flaky.\n\nWaitForInputMethodActivated is used in 2 type of functions: \"IME UI installation\" and \"IME API installation\". Currently change will only affect Zhuyin IME installed from UI.",
+      "parentUuid": "3fe6a3d1_8b399cb5",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 85
+      },
+      "revId": "0fa4e5fa7d6ff92566c003b531aebab60abb680a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f1f89f37_b55e89e3",
