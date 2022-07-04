@@ -51,6 +51,23 @@
       "message": "atlas-cq and volteer-cq failures were b/236709670\n\nreven-vmtest failure was b/237696882\n\nLet\u0027s try again next week.",
       "revId": "c742c0134f608292b277da69dc7236bcba790f0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5631b545_8a18cba4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-07-04T23:24:19Z",
+      "side": 1,
+      "message": "reven-vmtest still broken due to b/237534756 / b/237696882, let\u0027s give it one more try in case it\u0027s just an intermittent flake...",
+      "revId": "c742c0134f608292b277da69dc7236bcba790f0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
