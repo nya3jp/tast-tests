@@ -88,8 +88,8 @@ func HTMLVideoRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	}
 
 	hists, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
-		if err := testing.Sleep(ctx, time.Second); err != nil {
-			return errors.Wrap(err, "failed to wait a second")
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait 5 seconds")
 		}
 		return nil
 	}, "Viz.DisplayCompositor.OverlayStrategy")
@@ -105,9 +105,11 @@ func HTMLVideoRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	for _, bucket := range hist.Buckets {
 		// bucket.Min will be from enum OverlayStrategies as defined
 		// in tools/metrics/histograms/enums.xml in the chromium
-		// code base. 1 is "No overlay", and 4 is "Underlay".
-		if bucket.Min != 1 && bucket.Min != 4 {
-			s.Errorf("Found %d frame(s) with an unexpected overlay strategy: got %d; want 1 or 4", bucket.Count, bucket.Min)
+		// code base. 4 is "Underlay".
+		if bucket.Min == 4 {
+			return
 		}
 	}
+
+	s.Errorf("Found %d frame(s); none as overlay strategy Underlay", hist.TotalCount())
 }

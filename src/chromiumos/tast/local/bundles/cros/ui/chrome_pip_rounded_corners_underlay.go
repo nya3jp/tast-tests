@@ -221,8 +221,8 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 
 	// Verify consistent use of the Underlay overlay strategy now.
 	hists, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
-		if err := testing.Sleep(ctx, time.Second); err != nil {
-			return errors.Wrap(err, "failed to wait a second")
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait 5 seconds")
 		}
 		return nil
 	}, histName)
@@ -236,8 +236,13 @@ func ChromePIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	}
 
 	for _, bucket := range hist.Buckets {
-		if bucket.Min != overlayStrategyUnderlay {
-			s.Errorf("Found %d frame(s) with an unexpected overlay strategy: got %d; want %d", bucket.Count, bucket.Min, overlayStrategyUnderlay)
+		// bucket.Min will be from enum OverlayStrategies as defined
+		// in tools/metrics/histograms/enums.xml in the chromium
+		// code base. 4 is "Underlay".
+		if bucket.Min == 4 {
+			return
 		}
 	}
+
+	s.Errorf("Found %d frame(s); none as overlay strategy Underlay", hist.TotalCount())
 }

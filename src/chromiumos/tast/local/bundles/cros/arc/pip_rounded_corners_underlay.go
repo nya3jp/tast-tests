@@ -125,8 +125,8 @@ func PIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	}
 
 	hists, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
-		if err := testing.Sleep(ctx, time.Second); err != nil {
-			return errors.Wrap(err, "failed to wait a second")
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait 5 seconds")
 		}
 		return nil
 	}, "Viz.DisplayCompositor.OverlayStrategy")
@@ -142,10 +142,11 @@ func PIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	for _, bucket := range hist.Buckets {
 		// bucket.Min will be from enum OverlayStrategies as defined
 		// in tools/metrics/histograms/enums.xml in the chromium
-		// code base. We want the PIP video promoted to overlay with
-		// the underlay overlay strategy (4) or not at all (1,6,7).
-		if bucket.Min != 1 && bucket.Min != 4 && bucket.Min != 6 && bucket.Min != 7 {
-			s.Errorf("Found %d frame(s) with an unexpected overlay strategy: got %d; want 1, 4, 6, or 7", bucket.Count, bucket.Min)
+		// code base. 4 is "Underlay".
+		if bucket.Min == 4 {
+			return
 		}
 	}
+
+	s.Errorf("Found %d frame(s); none as overlay strategy Underlay", hist.TotalCount())
 }
