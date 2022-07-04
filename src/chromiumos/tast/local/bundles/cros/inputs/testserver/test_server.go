@@ -11,6 +11,7 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"strconv"
 	"strings"
 	"time"
 
@@ -319,6 +320,22 @@ func (its *InputsTestServer) Close() {
 func (its *InputsTestServer) Clear(inputField InputField) uiauto.Action {
 	return func(ctx context.Context) error {
 		return its.pc.Eval(ctx, fmt.Sprintf(`document.querySelector("*[aria-label='%s']").value=''`, inputField), nil)
+	}
+}
+
+// ScrollTo returns an action that scrolls to a given coordinate in the page
+// via javascript.
+func (its *InputsTestServer) ScrollTo(x, y int32) uiauto.Action {
+	return func(ctx context.Context) error {
+		return its.pc.Eval(ctx, fmt.Sprintf(`window.scrollTo(%d, %d);`, x, y), nil)
+	}
+}
+
+// ScrollIntoView returns an action that scrolls into a given input field
+// and aligns it with the view edges via javascript.
+func (its *InputsTestServer) ScrollIntoView(inputField InputField, alignToTop bool) uiauto.Action {
+	return func(ctx context.Context) error {
+		return its.pc.Eval(ctx, fmt.Sprintf(`document.querySelector("*[aria-label='%s']").scrollIntoView(%s);`, inputField, strconv.FormatBool(alignToTop)), nil)
 	}
 }
 
