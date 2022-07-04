@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d8686a_3920f346",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-04T07:52:47Z",
+      "side": 1,
+      "message": "Do we need to dump the entire bucket or can we check for the file itself?",
+      "revId": "dd039b22a88da70705b8f3b8fc9a76fff3b5bf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
