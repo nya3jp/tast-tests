@@ -270,6 +270,17 @@ func (i *impl) PreTest(ctx context.Context, s *testing.FixtTestState) {
 		if err := i.value.Helper.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 			s.Fatal("Failed to disable write protect: ", err)
 		}
+		// Disabling software write protect is not possible if hardware write protect is enabled.
+		s.Log("Rebooting DUT to ensure hardware wp disabled")
+		if err := i.value.Helper.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+			s.Fatal("Failed to reset DUT: ", err)
+		}
+		s.Log("Waiting for DUT to power ON")
+		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
+		defer cancelWaitConnect()
+		if err := i.value.Helper.WaitConnect(waitConnectCtx); err != nil {
+			s.Fatal("Failed to reconnect to DUT: ", err)
+		}
 		// As reported in b/236026413, SetGBBFlags was unsuccessful for some DUTs and failed during erase and write.
 		// From manual tests, clearing host and ec write protection ranges would resolve this error.
 		for _, programmer := range []string{"ec", "host"} {
