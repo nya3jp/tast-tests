@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da3b6a17_432c0651",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-04T08:14:51Z",
+      "side": 1,
+      "message": "Does this need to be exported? Can we hide it from test writers?",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "8be558eb0b976b556e6c1f61d46f60b007f35275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb481b79_fa662d2c",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-04T08:14:51Z",
+      "side": 1,
+      "message": "Please add a comment on why this interface needs to be used.\n\nWhy not use a plain struct instead? Or even better, just pass all parameters to the function directly.",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 25
+      },
+      "revId": "8be558eb0b976b556e6c1f61d46f60b007f35275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23143bc8_0d1208ef",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-04T08:14:51Z",
+      "side": 1,
+      "message": "Maybe options would make sense here.\n\nTimeoutInSeconds and PoolID sound like something we can provide good defaults for.",
+      "range": {
+        "startLine": 193,
+        "startChar": 60,
+        "endLine": 193,
+        "endChar": 95
+      },
+      "revId": "8be558eb0b976b556e6c1f61d46f60b007f35275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7aed03b_8ad70047",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-04T08:14:51Z",
+      "side": 1,
+      "message": "Same as above, maybe we can use options instead.",
+      "range": {
+        "startLine": 249,
+        "startChar": 62,
+        "endLine": 249,
+        "endChar": 68
+      },
+      "revId": "8be558eb0b976b556e6c1f61d46f60b007f35275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad0035a2_44281fec",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-04T08:14:51Z",
+      "side": 1,
+      "message": "I\u0027m not sure we need for both the New\u003cSomething\u003eRequest and \u003cSomething\u003e functions. The requests are not that large and we can simply pass all data as parameters to the \u003cSomething\u003e functions instead.",
+      "revId": "8be558eb0b976b556e6c1f61d46f60b007f35275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
