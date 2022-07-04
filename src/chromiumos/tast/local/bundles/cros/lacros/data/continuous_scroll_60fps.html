@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>60 fps Test continuous scroll</title>
+  <h1 id="pagetext"></h1>
+</head>
+
+<body>
+  <style>
+    body {
+      height: 10vh;
+      margin: 0;
+    }
+  </style>
+</body>
+
+<script>
+  let g_frame_count = 0;
+  let g_direction = 1;
+  let k_repeat_string = "abcd efghijkl mnopqr stuvwxyz ";
+  let str = k_repeat_string;
+  for (let i = 0; i < 1000; i++) {
+    str = str + k_repeat_string;
+  }
+  document.getElementById("pagetext").innerHTML = str;
+
+  function drawAnimation() {
+    window.scrollBy(0,g_direction*1);
+    if(window.scrollY > 300){
+      g_direction = -1; 
+    }
+    if(window.scrollY < 30){
+      g_direction = 1; 
+    }
+    requestAnimationFrame(drawAnimation);
+  }
+  requestAnimationFrame(drawAnimation);
+</script>
+
+</html>
