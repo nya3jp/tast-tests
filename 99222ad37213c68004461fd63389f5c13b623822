@@ -430,6 +430,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73d0d0a7_414eebeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-07-04T06:07:03Z",
+      "side": 1,
+      "message": "I see, let\u0027s do that",
+      "parentUuid": "ec273ad5_4ea3475e",
+      "range": {
+        "startLine": 113,
+        "startChar": 9,
+        "endLine": 113,
+        "endChar": 16
+      },
+      "revId": "99222ad37213c68004461fd63389f5c13b623822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95b13728_bfefac91",
