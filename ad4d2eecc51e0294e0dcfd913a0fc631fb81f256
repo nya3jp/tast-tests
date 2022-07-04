@@ -118,6 +118,30 @@
       },
       "revId": "ad4d2eecc51e0294e0dcfd913a0fc631fb81f256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "339b7fa8_becb5267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dump_vpd_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-04T07:47:57Z",
+      "side": 1,
+      "message": "We get the output of flashrom this way.",
+      "parentUuid": "6037252b_15c9ee60",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 125,
+        "endChar": 40
+      },
+      "revId": "ad4d2eecc51e0294e0dcfd913a0fc631fb81f256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
