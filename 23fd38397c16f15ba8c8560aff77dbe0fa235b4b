@@ -247,6 +247,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f669ff1_c067c01e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-07-04T02:00:18Z",
+      "side": 1,
+      "message": "Probably not worth the effort - let\u0027s leave as is.",
+      "parentUuid": "59c1364d_05cd9bdd",
+      "revId": "23fd38397c16f15ba8c8560aff77dbe0fa235b4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0e7b96f_2460e915",
