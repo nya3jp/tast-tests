@@ -33,6 +33,24 @@
       "message": "Optional: Do you know if there\u0027s a software dependency for this to ensure that we never run the test in the first place?",
       "revId": "485975163f485d20ee343e8d8245f1fa1e778f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdfffc6a_a204416d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/menu_power_off.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1545397
+      },
+      "writtenOn": "2022-07-04T12:04:04Z",
+      "side": 1,
+      "message": "I can see no such dependency: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md",
+      "parentUuid": "a645c13d_f374c7b7",
+      "revId": "485975163f485d20ee343e8d8245f1fa1e778f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
