@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9acda862_d385ac3a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/system_peripherals_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-04T00:37:57Z",
+      "side": 1,
+      "message": "the deferred function is executed nearby the inner-most function return, which is line 180. Ideally, you should call `context.WithTimeout` and `defer cancel` within the same scope.\n\nYou might create helper functions for doing this.",
+      "range": {
+        "startLine": 130,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 17
+      },
+      "revId": "6b3def8799acc1061c4072192fd19228edef63a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e20f31_10bb34d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/power/system_peripherals_functionality_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-04T00:37:57Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 17
+      },
+      "revId": "6b3def8799acc1061c4072192fd19228edef63a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
