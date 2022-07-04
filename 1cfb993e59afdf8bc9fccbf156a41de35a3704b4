@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded7bc9e_7a27931f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-07-04T12:31:11Z",
+      "side": 1,
+      "message": "Sorry that I overlooked in patchset 1, but `lshw` command has -json flag which outputs machine-parsable output. Please rewrite using it because it is more stable.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "1cfb993e59afdf8bc9fccbf156a41de35a3704b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
