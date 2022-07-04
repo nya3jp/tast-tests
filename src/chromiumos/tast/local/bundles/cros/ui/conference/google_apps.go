@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/googleapps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -51,7 +52,7 @@ const (
 
 // presentApps creates Google Slides and Google Docs, shares screen and presents
 // the specified application to the conference.
-func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIActionHandler, cr *chrome.Chrome, cs ash.ConnSource,
+func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIActionHandler, cr *chrome.Chrome, br *browser.Browser,
 	shareScreen, stopPresenting action.Action, application googleApplication, outDir string, extendedDisplay bool) (err error) {
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
@@ -127,7 +128,7 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	if err := googleapps.NewGoogleSlides(cs, tconn, extendedDisplay)(ctx); err != nil {
+	if err := googleapps.NewGoogleSlides(ctx, tconn, br, uiHandler, extendedDisplay); err != nil {
 		return CheckSignedOutError(ctx, tconn, err)
 	}
 	// Delete slide after presenting.
@@ -166,7 +167,7 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 		}
 	}
 
-	if err := googleapps.NewGoogleDocs(cs, tconn, extendedDisplay)(ctx); err != nil {
+	if err := googleapps.NewGoogleDocs(ctx, tconn, br, uiHandler, extendedDisplay); err != nil {
 		return CheckSignedOutError(ctx, tconn, err)
 	}
 	// Delete document after presenting.
