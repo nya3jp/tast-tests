@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -29,32 +28,27 @@ import (
 const slideName = "Google Slides"
 
 // NewGoogleSlides returns an action that creates a new google slides from web.
-func NewGoogleSlides(cs ash.ConnSource, tconn *chrome.TestConn, newWindow bool) action.Action {
-	const newSlidesURL = "https://slides.new"
+func NewGoogleSlides(ctx context.Context, tconn *chrome.TestConn, br *browser.Browser, uiHandler cuj.UIActionHandler, newWindow bool) error {
 	ui := uiauto.New(tconn)
 	var opts []browser.CreateTargetOption
 	if newWindow {
 		opts = append(opts, browser.WithNewWindow())
 	}
+	testing.ContextLog(ctx, "Start to create google slide")
+	conn, err := uiHandler.NewChromeTab(ctx, br, cuj.NewGoogleSlidesURL, newWindow)
+	if err != nil {
+		return errors.Wrap(err, "failed to open the google document")
+	}
+	defer conn.Close()
+	if err := webutil.WaitForQuiescence(ctx, conn, longerUIWaitTime); err != nil {
+		return errors.Wrap(err, "failed to wait for page to finish loading")
+	}
 	filmstripView := nodewith.Name("Filmstrip view").Role(role.TabPanel)
 	gotIt := nodewith.Name("Got it").First()
-	return uiauto.Combine("create google slide",
-		func(ctx context.Context) error {
-			testing.ContextLog(ctx, "Start to create google slide")
-			conn, err := cs.NewConn(ctx, newSlidesURL, opts...)
-			if err != nil {
-				return err
-			}
-			defer conn.Close()
-
-			if err := webutil.WaitForQuiescence(ctx, conn, longerUIWaitTime); err != nil {
-				return errors.Wrap(err, "failed to wait for page to finish loading")
-			}
-			return nil
-		},
+	return uiauto.Combine("confirm to enter Google Slides",
 		ui.WithTimeout(longerUIWaitTime).WaitUntilExists(filmstripView),
-		uiauto.IfSuccessThen(ui.Exists(gotIt), ui.LeftClick(gotIt)),
-	)
+		uiauto.IfSuccessThen(ui.Exists(gotIt), ui.DoDefault(gotIt)),
+	)(ctx)
 }
 
 // NewSlide returns an action that creates a new slide, edits its title and content.
@@ -64,20 +58,18 @@ func NewSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title, cont
 	titleNode := nodewith.Name("title").First()
 	pageNumberNode := nodewith.Name(pageNumber).First()
 	textNode := nodewith.Name("text").First()
-	return uiauto.NamedAction(fmt.Sprintf("to create a new slide with page number %s and edit its content", pageNumber),
-		uiauto.Combine("create a new slide and edit content",
-			ui.WaitUntilExists(newSlide),
-			ui.WithTimeout(longerUIWaitTime).LeftClickUntil(newSlide, ui.WithTimeout(25*time.Second).WaitUntilExists(pageNumberNode)),
-			ui.WaitUntilExists(titleNode),
-			ui.DoubleClick(titleNode),
-			uiauto.Sleep(time.Second),
-			kb.TypeAction(title),
-			ui.WaitUntilExists(textNode),
-			ui.DoubleClick(textNode),
-			uiauto.Sleep(time.Second),
-			kb.TypeAction(content),
-			waitForSlideSaved(tconn),
-		),
+	return uiauto.NamedCombine(fmt.Sprintf("to create a new slide with page number %s and edit its content", pageNumber),
+		ui.WaitUntilExists(newSlide),
+		ui.WithTimeout(longerUIWaitTime).DoDefaultUntil(newSlide, ui.WithTimeout(25*time.Second).WaitUntilExists(pageNumberNode)),
+		ui.WaitUntilExists(titleNode),
+		ui.DoubleClick(titleNode),
+		uiauto.Sleep(time.Second),
+		kb.TypeAction(title),
+		ui.WaitUntilExists(textNode),
+		ui.DoubleClick(textNode),
+		uiauto.Sleep(time.Second),
+		kb.TypeAction(content),
+		waitForSlideSaved(tconn),
 	)
 }
 
@@ -86,10 +78,10 @@ func RenameSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title st
 	ui := uiauto.New(tconn)
 	slideWebArea := nodewith.NameContaining(slideName).Role(role.RootWebArea)
 	renameTextbox := nodewith.Name("Rename").ClassName("docs-title-input").Ancestor(slideWebArea).Editable().Focusable()
-	return uiauto.NamedAction("to rename the slide",
+	return uiauto.NamedAction("rename the slide",
 		ui.Retry(5, uiauto.Combine("rename slide",
 			ui.WaitUntilExists(slideWebArea),
-			ui.LeftClickUntil(renameTextbox, ui.WithTimeout(5*time.Second).WaitUntilExists(renameTextbox.State("focused", true))),
+			ui.DoDefaultUntil(renameTextbox, ui.WithTimeout(5*time.Second).WaitUntilExists(renameTextbox.State("focused", true))),
 			kb.AccelAction("Ctrl+A"),
 			kb.TypeAction(title),
 			waitForFieldTextToBe(tconn, renameTextbox, title),
@@ -107,28 +99,26 @@ func PresentSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slideCo
 	// There are two versions of ui to present slide.
 	presentFromBeginningButton := nodewith.NameRegex(regexp.MustCompile("(Present|Start) from beginning.*")).Role(role.MenuItem).First()
 	menuBar := nodewith.Name("Menu bar").Role(role.Banner).Ancestor(slideWebArea).First()
-	return uiauto.NamedAction("to present slide",
-		uiauto.Combine("present Slide",
-			ui.WaitUntilExists(presentationOptionsButton),
-			ui.LeftClickUntil(presentationOptionsButton, ui.WithTimeout(5*time.Second).WaitUntilExists(presentFromBeginningButton)),
-			ui.LeftClick(presentFromBeginningButton),
-			ui.WithTimeout(40*time.Second).WaitUntilGone(presentationOptionsButton),
-			func(ctx context.Context) error {
-				testing.ContextLog(ctx, "Switch slides")
-				for i := 0; i < slideCount; i++ {
-					if err := uiauto.Combine("present Slide",
-						kb.AccelAction("Enter"),   // Press enter to switch slide.
-						uiauto.Sleep(time.Second), // Sleep to wait for slide switching.
-					)(ctx); err != nil {
-						return errors.Wrap(err, "failed to switch slide")
-					}
+	return uiauto.NamedCombine("present slide",
+		ui.WaitUntilExists(presentationOptionsButton),
+		ui.DoDefaultUntil(presentationOptionsButton, ui.WithTimeout(5*time.Second).WaitUntilExists(presentFromBeginningButton)),
+		ui.DoDefault(presentFromBeginningButton),
+		ui.WithTimeout(40*time.Second).WaitUntilGone(presentationOptionsButton),
+		func(ctx context.Context) error {
+			testing.ContextLog(ctx, "Switch slides")
+			for i := 0; i < slideCount; i++ {
+				if err := uiauto.Combine("present Slide",
+					kb.AccelAction("Enter"),   // Press enter to switch slide.
+					uiauto.Sleep(time.Second), // Sleep to wait for slide switching.
+				)(ctx); err != nil {
+					return errors.Wrap(err, "failed to switch slide")
 				}
-				return nil
-			},
-			kb.AccelAction("Esc"), //Press Esc to leave presentation mode
-			// Some of DUT models with poor performance need to wait a long time to leave presentation mode.
-			ui.WithTimeout(longerUIWaitTime).WaitUntilExists(menuBar),
-		),
+			}
+			return nil
+		},
+		kb.AccelAction("Esc"), //Press Esc to leave presentation mode
+		// Some of DUT models with poor performance need to wait a long time to leave presentation mode.
+		ui.WithTimeout(longerUIWaitTime).WaitUntilExists(menuBar),
 	)
 }
 
@@ -137,39 +127,35 @@ func EditSlideTitle(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title
 	ui := uiauto.New(tconn)
 	titleNode := nodewith.Name("title").First()
 	subtitleNode := nodewith.Name("subtitle").First()
-	return uiauto.NamedAction("to edit slide title and subtitle",
-		uiauto.Combine("edit slide and subtitle",
-			ui.WaitUntilExists(titleNode),
-			ui.DoubleClick(titleNode),
-			uiauto.Sleep(time.Second),
-			kb.TypeAction(title),
-			ui.WaitUntilExists(subtitleNode),
-			ui.DoubleClick(subtitleNode),
-			uiauto.Sleep(time.Second),
-			kb.TypeAction(subtitle),
-			waitForSlideSaved(tconn),
-		),
+	return uiauto.NamedCombine("edit slide title and subtitle",
+		ui.WaitUntilExists(titleNode),
+		ui.DoubleClick(titleNode),
+		uiauto.Sleep(time.Second),
+		kb.TypeAction(title),
+		ui.WaitUntilExists(subtitleNode),
+		ui.DoubleClick(subtitleNode),
+		uiauto.Sleep(time.Second),
+		kb.TypeAction(subtitle),
+		waitForSlideSaved(tconn),
 	)
 }
 
 // EditSlide returns an action that edits google slide.
 func EditSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, text, expectedText string) action.Action {
 	ui := uiauto.New(tconn)
-	return uiauto.NamedAction("to edit slide",
-		uiauto.Combine("edit slide",
-			func(ctx context.Context) error {
-				nodes := nodewith.Name(text)
-				nodesInfo, err := ui.NodesInfo(ctx, nodes)
-				if err != nil {
-					return errors.Wrap(err, "failed to get nodes info")
-				}
-				return mouse.DoubleClick(tconn, nodesInfo[len(nodesInfo)-1].Location.CenterPoint(), 500*time.Millisecond)(ctx)
-			},
-			kb.TypeAction(expectedText),
-			kb.AccelAction("Esc"),
-			kb.AccelAction("Esc"),
-			waitForSlideSaved(tconn),
-		),
+	return uiauto.NamedCombine("edit slide",
+		func(ctx context.Context) error {
+			nodes := nodewith.Name(text)
+			nodesInfo, err := ui.NodesInfo(ctx, nodes)
+			if err != nil {
+				return errors.Wrap(err, "failed to get nodes info")
+			}
+			return mouse.DoubleClick(tconn, nodesInfo[len(nodesInfo)-1].Location.CenterPoint(), 500*time.Millisecond)(ctx)
+		},
+		kb.TypeAction(expectedText),
+		kb.AccelAction("Esc"),
+		kb.AccelAction("Esc"),
+		waitForSlideSaved(tconn),
 	)
 }
 
@@ -184,16 +170,14 @@ func DeleteSlide(tconn *chrome.TestConn) action.Action {
 	moveToTrash := nodewith.NameContaining("Move to trash t").Role(role.MenuItem)
 	goToSlidesHome := nodewith.Name("Go to Slides home screen").Role(role.Button)
 	leaveButton := nodewith.Name("Leave").Role(role.Button)
-	return uiauto.NamedAction("to delete slide",
-		uiauto.Combine("delete slide",
-			cuj.ExpandMenu(tconn, fileButton, menu, 482),
-			ui.LeftClick(moveToTrash),
-			ui.LeftClick(goToSlidesHome),
-			// When leaving the edit slide, sometimes the "Leave Site?" dialog box will pop up.
-			// If it appears, click the leave button.
-			uiauto.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(leaveButton), ui.LeftClick(leaveButton)),
-			ui.WithTimeout(longerUIWaitTime).WaitUntilExists(slideHomeWebArea),
-		),
+	return uiauto.NamedCombine("delete slide",
+		cuj.ExpandMenu(tconn, fileButton, menu, 482),
+		ui.DoDefault(moveToTrash),
+		ui.DoDefault(goToSlidesHome),
+		// When leaving the edit slide, sometimes the "Leave Site?" dialog box will pop up.
+		// If it appears, click the leave button.
+		uiauto.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(leaveButton), ui.DoDefault(leaveButton)),
+		ui.WithTimeout(longerUIWaitTime).WaitUntilExists(slideHomeWebArea),
 	)
 }
 

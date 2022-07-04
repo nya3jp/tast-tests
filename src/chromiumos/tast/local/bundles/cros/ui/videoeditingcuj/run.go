@@ -154,7 +154,7 @@ func videoEditingScenario(ctx context.Context, tconn *chrome.TestConn, cr *chrom
 		return err
 	}
 
-	if err := googleapps.NewGoogleDocs(br, tconn, true)(ctx); err != nil {
+	if err := googleapps.NewGoogleDocs(ctx, tconn, br, uiHdl, true); err != nil {
 		return err
 	}
 	defer docCleanup(cleanupCtx, tconn, cr, uiHdl, outDir, func() bool { return hasError })
