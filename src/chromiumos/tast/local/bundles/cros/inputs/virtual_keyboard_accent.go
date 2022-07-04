@@ -85,7 +85,7 @@ func VirtualKeyboardAccent(ctx context.Context, s *testing.State) {
 		languageLabel = "FR"
 	)
 
-	if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
+	if err := inputMethod.InstallAndActivateUserAction(uc)(ctx); err != nil {
 		s.Fatal("Failed to set input method: ", err)
 	}
 	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)

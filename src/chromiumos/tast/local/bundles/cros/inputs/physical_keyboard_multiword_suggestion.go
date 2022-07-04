@@ -65,7 +65,7 @@ func PhysicalKeyboardMultiwordSuggestion(ctx context.Context, s *testing.State) 
 
 	// Activate function checks the current IME. It does nothing if the given input method is already in-use.
 	// It is called here just in case IME has been changed in last test.
-	if err := inputMethod.Activate(tconn)(ctx); err != nil {
+	if err := inputMethod.InstallAndActivateUserAction(uc)(ctx); err != nil {
 		s.Fatal("Failed to set IME: ", err)
 	}
 	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)

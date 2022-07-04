@@ -62,7 +62,7 @@ func PhysicalKeyboardCantoneseTyping(ctx context.Context, s *testing.State) {
 	im := ime.Cantonese
 
 	s.Log("Set current input method to: ", im)
-	if err := im.InstallAndActivate(tconn)(ctx); err != nil {
+	if err := im.InstallAndActivateUserAction(uc)(ctx); err != nil {
 		s.Fatalf("Failed to set input method to %v: %v: ", im, err)
 	}
 	uc.SetAttribute(useractions.AttributeInputMethod, im.Name)
