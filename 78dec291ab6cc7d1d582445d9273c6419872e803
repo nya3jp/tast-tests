@@ -52,6 +52,24 @@
       "parentUuid": "92051f1d_4f4348aa",
       "revId": "78dec291ab6cc7d1d582445d9273c6419872e803",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b30601_5e72af1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/fixture/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-04T07:46:46Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "b3496e62_e531a717",
+      "revId": "78dec291ab6cc7d1d582445d9273c6419872e803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
