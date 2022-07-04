@@ -152,6 +152,8 @@ func WebauthnPINLockout(ctx context.Context, s *testing.State) {
 		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(node)(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait for the retry button")
 		}
+		// The button isn't clickable at the instant it appears. So wait a second before clicking.
+		testing.Sleep(ctx, time.Second*1)
 		if err = ui.DoDefault(node)(ctx); err != nil {
 			return errors.Wrap(err, "failed to press the retry button")
 		}
