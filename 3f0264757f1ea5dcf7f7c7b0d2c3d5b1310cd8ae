@@ -34,6 +34,23 @@
       "parentUuid": "8ff68ee8_f9787920",
       "revId": "3f0264757f1ea5dcf7f7c7b0d2c3d5b1310cd8ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f77ef1_43a861d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-07-04T02:58:55Z",
+      "side": 1,
+      "message": "This seems like a fragile way to split test cases, as soon as you have another narrow board you will need to change the name of the tests.\n\nAside from this, if you need to split the tests along another dimension, you will end up with 4 test cases, a third dimension you end up with 8, etc.  Wouldn\u0027t it be better in this case to just have the test check for the presence of some node in the expanded menu, and try expanding it if the node is not present?",
+      "revId": "3f0264757f1ea5dcf7f7c7b0d2c3d5b1310cd8ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
