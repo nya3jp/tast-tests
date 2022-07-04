@@ -401,17 +401,19 @@ func validateVirtualization(gotVirtualization virtualizationInfo) error {
 func validateVulnerabilities(gotVulnerabilities map[string]vulnerabilityInfo) error {
 	expectedVulnerabilities := make(map[string]vulnerabilityInfo)
 	vulnerabilityFiles, err := ioutil.ReadDir("/sys/devices/system/cpu/vulnerabilities")
-	if err != nil {
+	if err != nil && !os.IsNotExist(err) {
 		return errors.Wrap(err, "failed to read vulnerabilities directory")
 	}
-	for _, vulnerabilityFile := range vulnerabilityFiles {
-		name := vulnerabilityFile.Name()
-		out, err := ioutil.ReadFile("/sys/devices/system/cpu/vulnerabilities/" + name)
-		if err != nil {
-			return errors.Wrapf(err, "failed to read vulnerability: %s", name)
+	if err == nil {
+		for _, vulnerabilityFile := range vulnerabilityFiles {
+			name := vulnerabilityFile.Name()
+			out, err := ioutil.ReadFile("/sys/devices/system/cpu/vulnerabilities/" + name)
+			if err != nil {
+				return errors.Wrapf(err, "failed to read vulnerability: %s", name)
+			}
+			expectedVulnerabilities[name] =
+				vulnerabilityInfo{Message: strings.TrimSpace(string(out))}
 		}
-		expectedVulnerabilities[name] =
-			vulnerabilityInfo{Message: strings.TrimSpace(string(out))}
 	}
 
 	ignoreOpt := cmpopts.IgnoreFields(vulnerabilityInfo{}, "Status")
