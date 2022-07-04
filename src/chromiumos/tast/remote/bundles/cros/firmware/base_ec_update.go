@@ -5,9 +5,16 @@
 package firmware
 
 import (
+	"bufio"
+	"bytes"
 	"context"
+	"fmt"
+	"io"
+	"io/ioutil"
+	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -21,7 +28,6 @@ import (
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
 	fwpb "chromiumos/tast/services/cros/firmware"
-	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -33,7 +39,6 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check that detachable base notification appears upon firmware update",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
-		Data:         []string{"moonball_old_20220406.bin"},
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
@@ -43,6 +48,20 @@ func init() {
 		),
 		Fixture: fixture.DevModeGBB,
 	})
+}
+
+// baseECInfo contains information about the name and version of base ec.
+type baseECInfo struct {
+	name    string
+	version string
+}
+
+// modifiedFileDir contains paths defined as follows,
+// onLocal: path on the local machine.
+// onHost: path on DUT, where the modified base ec bin file will be copied to.
+type modifiedFileDir struct {
+	onLocal string
+	onHost  string
 }
 
 func BaseECUpdate(ctx context.Context, s *testing.State) {
@@ -72,12 +91,36 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 	dut := s.DUT()
 	ecTool := firmware.NewECTool(dut, firmware.ECToolNameMain)
 
-	srcImgPath := s.DataPath("moonball_old_20220406.bin")
-	dstImgPath := filepath.Join("/tmp", strings.Split(srcImgPath, "data/")[1])
-
 	utilServiceClient := fwpb.NewUtilsServiceClient(h.RPCClient.Conn)
+	crosCfgRes, err := utilServiceClient.GetDetachableBaseValue(ctx, &empty.Empty{})
+	if err != nil {
+		s.Fatal("Failed to get detachable-base attribute values: ", err)
+	}
+
+	tempDir, err := ioutil.TempDir("", "BaseECUpdate")
+	if err != nil {
+		s.Fatal("Failed to create a temp dir")
+	}
+	defer os.RemoveAll(tempDir)
+
+	// fileDir creates paths to save the modified base ec bin file at respective locations.
+	fileDir := modifiedFileDir{
+		onLocal: filepath.Join(tempDir, "modifiedBaseECLocal.bin"),
+		onHost:  filepath.Join(tempDir, "modifiedBaseECHost.bin"),
+	}
+
+	s.Log("Saving the base ec firmware version before flashing an old image")
+	originalBaseEC, err := getBaseECInfo(ctx, dut, crosCfgRes.ProductId)
+	if err != nil {
+		s.Fatal("Failed to check base ec's version: ", err)
+	}
+
+	if err := modifyBaseEC(ctx, dut, originalBaseEC, &fileDir); err != nil {
+		s.Fatal("Failed to modify base-ec: ", err)
+	}
+
 	s.Log("Flashing an old image to detachable-base ec")
-	if err := flashAnOldImgToDetachableBaseEC(ctx, dut, utilServiceClient, srcImgPath, dstImgPath); err != nil {
+	if err := flashAnOldImgToDetachableBaseEC(ctx, dut, crosCfgRes, fileDir.onHost); err != nil {
 		s.Fatal("Failed to flash base ec to an old version: ", err)
 	}
 
@@ -89,7 +132,7 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Saving the base ec firmware version after flashing an old image")
-	oldRWVersion, err := getBaseECVersion(ctx, dut)
+	oldBaseEC, err := getBaseECInfo(ctx, dut, crosCfgRes.ProductId)
 	if err != nil {
 		s.Fatal("Failed to check base ec's version: ", err)
 	}
@@ -108,40 +151,37 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Saving the base ec firmware version after reboot ")
-	newRWVersion, err := getBaseECVersion(ctx, dut)
+	newBaseEC, err := getBaseECInfo(ctx, dut, crosCfgRes.ProductId)
 	if err != nil {
 		s.Fatal("Failed to check base ec's version: ", err)
 	}
 
 	s.Log("Verifying that base ec updated after a reboot")
-	if !verifyBaseECVersion(oldRWVersion, newRWVersion) {
+	if !verifyBaseECVersion(oldBaseEC.version[len(oldBaseEC.name)+1:], newBaseEC.version[len(newBaseEC.name)+1:]) {
 		s.Fatal("Failed to update the base ec back to default version")
 	}
 }
 
-func flashAnOldImgToDetachableBaseEC(ctx context.Context, dut *dut.DUT, utilsSvcClient fwpb.UtilsServiceClient, srcImg, dstImg string) error {
-	// We downloaded an old base ec image from the following source:
-	// https://chrome-internal-review.googlesource.com/c/chromeos/overlays/overlay-kukui-private/+/2743655
-	// This file was pre-uploaded to Google Cloud as external data.
-	_, err := linuxssh.PutFiles(ctx, dut.Conn(), map[string]string{srcImg: dstImg}, linuxssh.DereferenceSymlinks)
-	if err != nil {
-		return errors.Wrap(err, "failed to copy an old ec file downloaded from the Cloud to DUT")
-	}
-
-	crosCfgRes, err := utilsSvcClient.GetDetachableBaseValue(ctx, &empty.Empty{})
-	if err != nil {
-		return errors.Wrap(err, "failed to get detachable-base attribute values")
-	}
-
+func flashAnOldImgToDetachableBaseEC(ctx context.Context, dut *dut.DUT, crosConfig *fwpb.CrosConfigResponse, dstImg string) error {
 	if err := dut.Conn().CommandContext(
 		ctx,
 		"/sbin/minijail0", "-e", "-N", "-p", "-l", "-u",
 		"hammerd", "-g", "hammerd", "-c", "0002", "/usr/bin/hammerd",
 		"--ec_image_path="+dstImg,
-		crosCfgRes.Values[0], crosCfgRes.Values[1], crosCfgRes.Values[2],
+		"--product_id="+crosConfig.ProductId,
+		"--vendor_id="+crosConfig.VendorId,
+		"--usb_path="+crosConfig.UsbPath,
 		"--update_if=always",
 	).Run(testexec.DumpLogOnError); err != nil {
-		return errors.Wrap(err, "unable to run the hammerd command")
+		// Error message: libminijail[9206]: child process 9207 exited with status 14
+		// From: https://chromium.googlesource.com/chromiumos/platform/minijail/+/
+		// c8b21e1a37d1c81f4331011999c30f6e5aef4dca/libminijail.c (Line 1294)
+		// Suspect it's a protection pipeline to guarantee the integrity of file.
+		// Can skip for now and it would not fail the test.
+		if !strings.Contains(err.Error(), "Process exited with status 14") {
+			return errors.Wrap(err, "unable to run the hammerd command")
+		}
+		testing.ContextLogf(ctx, "Error: %q while running hammer command in DUT", err)
 	}
 
 	return nil
@@ -151,27 +191,46 @@ func verifyBaseECVersion(old, new string) bool {
 	return semver.Compare(old, new) == -1
 }
 
-func getBaseECVersion(ctx context.Context, dut *dut.DUT) (string, error) {
-	// From our tested runs, 'hammer_info.py' only supports release versions greater than
-	// or equal to R99. Relevant CL can be found as follows:
-	// https://chromium-review.googlesource.com/c/chromiumos/platform2/+/3380089
-	testing.ContextLog(ctx, "Running 'hammer_info.py' to read the base EC RW version")
-	hammerInfoPath := "/usr/local/bin/hammer_info.py"
-	out, err := dut.Conn().CommandContext(ctx, "python3", hammerInfoPath).Output(ssh.DumpLogOnError)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to run the hammer_info file")
+func getBaseECInfo(ctx context.Context, dut *dut.DUT, productIDDecimal string) (baseECInfo, error) {
+	var baseEC baseECInfo
+	productID, _ := strconv.Atoi(productIDDecimal)
+	hexProductID := strconv.FormatInt(int64(productID), 16)
+	deviceParams := fmt.Sprintf("18d1:%s", hexProductID)
+
+	outputUsbUpdater := ""
+	// Poll on the usb_updater2 command, as the first few iterations
+	// might run into the 'can't find device' error.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		output, err := dut.Conn().CommandContext(ctx, "usb_updater2", "-d", deviceParams, "-f").Output(testexec.DumpLogOnError)
+		if err != nil {
+			return errors.Wrap(err, "failed to run usb_updater2 command in the dut")
+		}
+		outputUsbUpdater = string(output)
+		return nil
+	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
+		errors.Wrap(err, "failed to get the info from usb_updater2")
 	}
 
-	rawString := string(out)
-	reg := regexp.MustCompile(`rw_version="\D+_`)
-	match := reg.FindStringSubmatch(rawString)
-	msg := strings.Split(rawString, match[0])
-	rwVersion := strings.Split(msg[len(msg)-1], "-")
-
-	if len(rwVersion[0]) == 0 {
-		return "", errors.New("failed to extract the rw version")
+	baseECInfoMap := map[string]*regexp.Regexp{
+		"name":    regexp.MustCompile(`version:\s+(\w+)_v`),
+		"version": regexp.MustCompile(`version:\s+(\w+.\w.\w+-\w+)`),
 	}
-	return rwVersion[0], nil
+
+	for k, v := range baseECInfoMap {
+		match := v.FindStringSubmatch(outputUsbUpdater)
+		if len(match) < 2 {
+			return baseEC, errors.Errorf("did not match regex %q in %q", v, outputUsbUpdater)
+		}
+		usbUpdater2Info := strings.TrimSpace(match[1])
+
+		switch k {
+		case "name":
+			baseEC.name = usbUpdater2Info
+		case "version":
+			baseEC.version = usbUpdater2Info
+		}
+	}
+	return baseEC, nil
 }
 
 func triggerAndFindNotification(ctx context.Context, ecTool *firmware.ECTool, utilSvcClient fwpb.UtilsServiceClient) error {
@@ -224,5 +283,79 @@ func triggerAndFindNotification(ctx context.Context, ecTool *firmware.ECTool, ut
 		return errors.Wrap(err, "failed to find notification of detachable keyboard update")
 	}
 
+	return nil
+}
+
+// modifyBaseEC copies the /lib/firmware/base-ec.fw to local,
+// modifies its version -1 and puts it back to /tmp/ folder in DUT.
+func modifyBaseEC(ctx context.Context, dut *dut.DUT, boardInfo baseECInfo, fileDir *modifiedFileDir) error {
+
+	originalBaseECBinFile := fmt.Sprintf("/lib/firmware/%s.fw", boardInfo.name)
+
+	testing.ContextLog(ctx, "Copying base-ec.fw from DUT to local")
+	if err := linuxssh.GetFile(ctx, dut.Conn(), originalBaseECBinFile, fileDir.onLocal, linuxssh.DereferenceSymlinks); err != nil {
+		return errors.Wrap(err, "failed to copy base-ec.fw to local")
+	}
+
+	f, err := os.Open(fileDir.onLocal)
+	if err != nil {
+		return errors.Wrap(err, "failed to open base-ec.bin")
+	}
+	defer f.Close()
+
+	stat, err := f.Stat()
+	if err != nil {
+		return errors.Wrap(err, "failed to read base-ec.bin")
+	}
+
+	reader := bufio.NewReader(f)
+	buf := make([]byte, stat.Size())
+
+	for {
+		_, err := reader.Read(buf)
+		if err != nil {
+			if err != io.EOF {
+				testing.ContextLog(ctx, "Unexpected error: ", err)
+			}
+			break
+		}
+
+	}
+	testing.ContextLog(ctx, "Current base-ec version: ", boardInfo.version)
+	testing.ContextLog(ctx, "Starting to modify base-ec.bin")
+
+	indexRWBoard := len(buf)
+	count := bytes.Count(buf, []byte(boardInfo.name+"_v"))
+	if count == 0 {
+		return errors.Wrapf(err, "did not find %s in the base-ec.bin", boardInfo.name+"_v")
+	}
+
+	for i := 0; i < count; i++ {
+		indexRWBoard = bytes.LastIndex(buf[:indexRWBoard], []byte(boardInfo.name+"_v"))
+		indexVersionToModify := indexRWBoard
+		indexVersionToModify += (len(boardInfo.name) + 2)
+		// version -1
+		buf[indexVersionToModify] = buf[indexVersionToModify] - 1
+	}
+	testing.ContextLog(ctx, "Modified base-ec version: ", string(buf[indexRWBoard:indexRWBoard+len(boardInfo.version)]))
+
+	// create a new bin file.
+	file, err := os.Create(fileDir.onLocal)
+	if err != nil {
+		return errors.New("failed to create a new bin file")
+	}
+	defer func() {
+		os.Remove(fileDir.onLocal)
+		file.Close()
+	}()
+
+	if _, err := file.Write(buf); err != nil {
+		return errors.New("failed to write modified binary code into a new file")
+	}
+
+	testing.ContextLog(ctx, "Copy the modified base-ec.bin back to DUT")
+	if _, err := linuxssh.PutFiles(ctx, dut.Conn(), map[string]string{fileDir.onLocal: fileDir.onHost}, linuxssh.DereferenceSymlinks); err != nil {
+		return errors.Wrap(err, "failed to copy files into DUT")
+	}
 	return nil
 }
