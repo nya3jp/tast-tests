@@ -577,7 +577,10 @@ func (im InputMethod) WaitUntilActivated(tconn *chrome.TestConn) action.Action {
 	}
 
 	f := func(ctx context.Context, fullyQualifiedIMEID string) error {
-		return WaitForInputMethodActivated(ctx, tconn, fullyQualifiedIMEID, imWarmingUpTime)
+		if im == ChineseZhuyin {
+			return WaitForInputMethodActivated(ctx, tconn, fullyQualifiedIMEID)
+		}
+		return WaitForInputMethodActivatedWithSleep(ctx, tconn, fullyQualifiedIMEID, imWarmingUpTime)
 	}
 	return im.actionWithFullyQualifiedID(tconn, f)
 }
