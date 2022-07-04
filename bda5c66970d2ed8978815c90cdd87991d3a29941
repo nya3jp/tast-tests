@@ -285,6 +285,24 @@
       "parentUuid": "37b6f2db_f732262e",
       "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78eff52f_915964a6",
+        "filename": "src/chromiumos/tast/local/chrome/options_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-04T05:04:34Z",
+      "side": 1,
+      "message": "\u003e Currently  config.NewConfig(opts)  is visible and is already used in the  src/chromiumos/tast/local/chrome  package by chrome.go. I don\u0027t think the proposed change opens up more access to  config.NewConfig(opts) \n\nThe beginning of the discussion was: chrome package should not depend on cros/ui.",
+      "parentUuid": "6c913fa6_5d32aab4",
+      "revId": "bda5c66970d2ed8978815c90cdd87991d3a29941",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
