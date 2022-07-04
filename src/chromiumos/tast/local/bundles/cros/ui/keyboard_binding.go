@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -63,7 +64,7 @@ func KeyboardBinding(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Physical keyboard is required for this test.
-	// Some models satisfy `HardwareDeps: hwdep.D(hwdep.Keyboard())` but cannot detect physical keyboards.
+	// Some models satisfy "HardwareDeps: hwdep.D(hwdep.Keyboard())" but cannot detect physical keyboards.
 	// TODO: Remove this once b/223069313 fixed.
 	isPhysicalKbDetected, _, err := input.FindPhysicalKeyboard(ctx)
 	if err != nil {
@@ -106,7 +107,7 @@ func KeyboardBinding(ctx context.Context, s *testing.State) {
 	// Go to "Keyboard" page.
 	keyboardLinkNode := nodewith.HasClass("cr-title-text").Name("Keyboard").Role(role.Heading)
 	if err := settings.NavigateToPageURL(ctx, cr, "keyboard-overlay", ui.Exists(keyboardLinkNode)); err != nil {
-		s.Fatal("Failed to open `Keyboard settings` page: ", err)
+		s.Fatal("Failed to open 'Keyboard settings' page: ", err)
 	}
 
 	// The key name and function name of "Search"/"Launcher" will display differently across different models,
@@ -189,7 +190,7 @@ func obtainSearchKeyAndFunction(ctx context.Context, ui *uiauto.Context) (*key, 
 			continue
 		}
 	}
-	return nil, nil, errors.Wrap(err, "failed to identify the key name and function name of `Search`/`Launcher`")
+	return nil, nil, errors.Wrap(err, "failed to identify the key name and function name of 'Launcher'")
 }
 
 // setKeybinding sets the key binding of the key to the specified option.
@@ -265,14 +266,14 @@ func (v *searchFunctionVerifier) cleanup(ctx context.Context) error {
 	}, &testing.PollOptions{Timeout: time.Minute})
 }
 
-// accel accels the key to trigger the function.
+// accel accelerates the key to trigger the function.
 func (v *searchFunctionVerifier) accel(ctx context.Context) error {
 	return v.kb.AccelAction(v.boundKeyVal)(ctx)
 }
 
 // verify verifies if the key is triggered.
 func (v *searchFunctionVerifier) verify(ctx context.Context) error {
-	return ash.WaitForLauncherState(ctx, v.tconn, ash.Peeking)
+	return launcher.WaitForClamshellLauncherSearchExit(v.tconn)(ctx)
 }
 
 // functionName returns the function name of "Search"/"Launcher".
@@ -314,7 +315,7 @@ func (v *ctrlFunctionVerifier) cleanup(ctx context.Context) error {
 	return apps.Close(ctx, v.tconn, apps.Files.ID)
 }
 
-// accel accels the key to trigger the function.
+// accel accelerates the key to trigger the function.
 func (v *ctrlFunctionVerifier) accel(ctx context.Context) error {
 	return v.kb.AccelAction(v.boundKeyVal + "+w")(ctx)
 }
@@ -358,9 +359,9 @@ func (v *altFunctionVerifier) cleanup(ctx context.Context) error {
 	return apps.Close(ctx, v.tconn, apps.Files.ID)
 }
 
-// accel accels the key to trigger the function.
+// accel accelerates the key to trigger the function.
 func (v *altFunctionVerifier) accel(ctx context.Context) error {
-	return uiauto.Combine(fmt.Sprintf("press `%s+tab` to trigger window cycle item view", v.boundKeyVal),
+	return uiauto.Combine(fmt.Sprintf("press '%s+tab' to trigger window cycle item view", v.boundKeyVal),
 		v.kb.AccelPressAction(v.boundKeyVal),
 		v.kb.AccelAction("tab"),
 	)(ctx)
@@ -405,7 +406,7 @@ func (v *capslockFunctionVerifier) cleanup(ctx context.Context) error {
 	)(ctx)
 }
 
-// accel accels the key to trigger the function.
+// accel accelerates the key to trigger the function.
 func (v *capslockFunctionVerifier) accel(ctx context.Context) error {
 	return v.kb.AccelAction(v.boundKeyVal)(ctx)
 }
@@ -446,7 +447,7 @@ func (v *escapeFunctionVerifier) cleanup(ctx context.Context) error {
 	return nil
 }
 
-// accel accels the key to trigger the function.
+// accel accelerates the key to trigger the function.
 func (v *escapeFunctionVerifier) accel(ctx context.Context) error {
 	return v.kb.AccelAction(v.boundKeyVal)(ctx)
 }
@@ -493,7 +494,7 @@ func (v *backspaceFunctionVerifier) cleanup(ctx context.Context) error {
 	return settings.ClearSearch()(ctx)
 }
 
-// accel accels the key to trigger the function.
+// accel accelerates the key to trigger the function.
 func (v *backspaceFunctionVerifier) accel(ctx context.Context) error {
 	return v.kb.AccelAction(v.boundKeyVal)(ctx)
 }
@@ -552,7 +553,7 @@ func (v *disableFunctionVerifier) cleanup(ctx context.Context) error {
 	return v.verifier.cleanup(ctx)
 }
 
-// accel accels the key to trigger the function.
+// accel accelerates the key to trigger the function.
 func (v *disableFunctionVerifier) accel(ctx context.Context) error {
 	return v.verifier.accel(ctx)
 }
