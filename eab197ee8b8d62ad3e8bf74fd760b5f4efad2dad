@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d1518d_54faa0d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_caps_lock.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-04T07:18:51Z",
+      "side": 1,
+      "message": "you might also need add `ExtraHardwareDeps: hwdep.D(pre.InputsStableModels)` for lacros as it is expected to promote to CQ eventually.",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "eab197ee8b8d62ad3e8bf74fd760b5f4efad2dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b2f20c6_76ac4a97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_caps_lock.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-04T07:18:51Z",
+      "side": 1,
+      "message": "You probably don\u0027t need two subtests, how about performing the following actions in one uiauto.Combine()?\n\n```\nkeyboard.AccelAction(\"Alt+Search\"),\nui.WaitUntilExists(capsOnImageFinder),\nits.Clear(inputField),\nits.ClickFieldAndWaitForActive(inputField),\nkeyboard.TypeAction(...),\nutil.WaitForFieldTextToBe(tconn, inputField.Finder(), ...),\nkeyboard.AccelAction(\"Shift\"),\nui.WaitUntilGone(capsOnImageFinder),\n```",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "eab197ee8b8d62ad3e8bf74fd760b5f4efad2dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
