@@ -60,16 +60,15 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
-	// lacrosForceDelegation is the same as lacros but
-	// forces delegated composition.
+	// lacrosForceNonDelegation is the same as lacros but
+	// forces delegated composition off as well as hw overlays.
 	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosPerfForceDelegated",
-		Desc:     "Lacros Chrome from a pre-built image with delegated compositing forced on",
+		Name:     "lacrosPerfForceNonDelegated",
+		Desc:     "Lacros Chrome from a pre-built image with both delegated compositing and hw overlays forced off",
 		Contacts: []string{"petermcneeley@chromium.org", "edcourtney@chromium.org"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfig(ChromeOptions(
-				chrome.LacrosExtraArgs("--enable-gpu-memory-buffer-compositor-resources"),
-				chrome.LacrosEnableFeatures("DelegatedCompositing"),
+			return NewConfig(ChromeOptions(chrome.ExtraArgs("--enable-hardware-overlays=\"\""),
+				chrome.LacrosDisableFeatures("DelegatedCompositing"),
 				chrome.DisableFeatures("FirmwareUpdaterApp"))).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
