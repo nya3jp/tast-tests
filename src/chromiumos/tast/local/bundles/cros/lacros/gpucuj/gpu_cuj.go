@@ -65,6 +65,10 @@ type page struct {
 
 var pageSet = []page{
 	{
+		name: "scroll60fps", // Manual Scrolling 60 fps. This is for testing delegated compositing scroll performance.
+		url:  "/continuous_scroll_60fps.html",
+	},
+	{
 		name: "tiles60fps", // Gradient updated at 60 fps. This is for testing delegated compositing tile performance.
 		url:  "/gradient_color_60fps.html",
 	},
