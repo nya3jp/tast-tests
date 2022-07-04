@@ -11,6 +11,7 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"strconv"
 	"strings"
 	"time"
 
@@ -61,6 +62,7 @@ const (
 	TextAreaAutoShiftInWord     InputField = "autocapitalize in words mode"
 	TextAreaAutoShiftInChar     InputField = "autocapitalize in characters mode"
 	TextAreaAutoShiftOff        InputField = "autocapitalize off"
+	OffscreenTextField          InputField = "offscreen"
 
 	// pageTitle is also the rootWebArea name in A11y to identify the scope of the page.
 	pageTitle = "E14s test page"
@@ -137,6 +139,7 @@ const html = `<!DOCTYPE html>
 <pre>&lt;autocapitalize: off"/&gt;</pre>
 <textarea rows="3" aria-label="autocapitalize off" autocapitalize="none" style="width: 100%"></textarea>
 <br /><br />
+<textarea style="position: absolute; top: 6000px; height: 30px; width: 100%;" aria-label="offscreen"></textarea>
 `
 
 // InputsTestServer is an unified server instance being used to manage web server and connection.
@@ -326,6 +329,22 @@ func (its *InputsTestServer) Close() {
 func (its *InputsTestServer) Clear(inputField InputField) uiauto.Action {
 	return func(ctx context.Context) error {
 		return its.pc.Eval(ctx, fmt.Sprintf(`document.querySelector("*[aria-label='%s']").value=''`, inputField), nil)
+	}
+}
+
+// ScrollTo returns an action that scrolls to a given coordinate in the page
+// via javascript.
+func (its *InputsTestServer) ScrollTo(x, y int32) uiauto.Action {
+	return func(ctx context.Context) error {
+		return its.pc.Eval(ctx, fmt.Sprintf(`window.scrollTo(%d, %d);`, x, y), nil)
+	}
+}
+
+// ScrollIntoView returns an action that scrolls into a given input field
+// and aligns it with the view edges via javascript.
+func (its *InputsTestServer) ScrollIntoView(inputField InputField, alignToTop bool) uiauto.Action {
+	return func(ctx context.Context) error {
+		return its.pc.Eval(ctx, fmt.Sprintf(`document.querySelector("*[aria-label='%s']").scrollIntoView(%s);`, inputField, strconv.FormatBool(alignToTop)), nil)
 	}
 }
 
