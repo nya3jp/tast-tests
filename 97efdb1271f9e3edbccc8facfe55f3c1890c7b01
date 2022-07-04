@@ -39,6 +39,30 @@
       },
       "revId": "97efdb1271f9e3edbccc8facfe55f3c1890c7b01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28e5c8fa_c0797d64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_pin_lockout.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2022-07-04T15:38:13Z",
+      "side": 1,
+      "message": "I can only think of UI changes, but then we\u0027ll have to WaitUntil in the poll, which doesn\u0027t make much sense?\n\nLike click -\u003e wait 5 seconds to see if new UI showed up -\u003e if not continue to poll.",
+      "parentUuid": "958547b8_2f3ee692",
+      "range": {
+        "startLine": 157,
+        "startChar": 14,
+        "endLine": 157,
+        "endChar": 23
+      },
+      "revId": "97efdb1271f9e3edbccc8facfe55f3c1890c7b01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
