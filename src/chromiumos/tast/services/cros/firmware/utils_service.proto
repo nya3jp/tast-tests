@@ -70,7 +70,9 @@ message NodeElement {
 
 // CrosConfigResponse provides relevant crosconfig values.
 message CrosConfigResponse {
-  repeated string values = 1;
+  string product_id = 1;
+  string vendor_id = 2; 
+  string usb_path= 3 ;
 }
 
 // SpeedometerResponse provides the result from running a speedometer test.
