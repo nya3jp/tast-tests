@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "072ec781_0338a707",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_caps_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-04T06:07:04Z",
+      "side": 1,
+      "message": "You might also want to try with type \"A\" and expect \"a\" in output.",
+      "range": {
+        "startLine": 111,
+        "startChar": 25,
+        "endLine": 111,
+        "endChar": 52
+      },
+      "revId": "642766e1b9a106b266715a3c5ce232b72785dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41091fb1_6cdaf9fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_caps_lock.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-04T06:07:04Z",
+      "side": 1,
+      "message": "can you add useractions.AttributeTestScenario with the test description:\n\nuseractions.AttributeTestScenario: subtest.scenario",
+      "range": {
+        "startLine": 127,
+        "startChar": 18,
+        "endLine": 127,
+        "endChar": 34
+      },
+      "revId": "642766e1b9a106b266715a3c5ce232b72785dd2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
