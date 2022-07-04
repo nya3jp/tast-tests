@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fe6a3d1_8b399cb5",
+        "filename": "src/chromiumos/tast/local/chrome/ime/ime.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-04T04:43:13Z",
+      "side": 1,
+      "message": "I think you could just change the return part of the previous function `WaitForInputMethodActivated` to the following, instead of creating another function `WaitForInputMethodActivatedWithSleep`.\n```\nif err!\u003dtconn.WaitForExprWithTimeout(\n    ctx,\n    `chrome.autotestPrivate.isInputMethodReadyForTesting`,\n    warmUpTime,\n); err!\u003dnil \u0026\u0026 err is not timeout error { //Timeout error is ignored on purpose.\n    return err\n}\nreturn nil\n```\nIt returns immediately if the API returns true and otherwise wait for `warmUpTime`, which is backward-compatible, and you don\u0027t need to touch elsewhere (i.e. experimenting this with Zhuyi).",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 85
+      },
+      "revId": "0fa4e5fa7d6ff92566c003b531aebab60abb680a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f1f89f37_b55e89e3",
