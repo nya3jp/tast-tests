@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61557b5f_318a4448",
+        "filename": "src/chromiumos/tast/common/tape/helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-04T08:20:28Z",
+      "side": 1,
+      "message": "AccountManager instead of AccountHelper?",
+      "range": {
+        "startLine": 67,
+        "startChar": 15,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "67cc1dc7903e6753da0364256547d018f3adc437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5e68101_e8d38a5b",
+        "filename": "src/chromiumos/tast/common/tape/helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-04T08:20:28Z",
+      "side": 1,
+      "message": "Do we need a function to release individual accounts?",
+      "revId": "67cc1dc7903e6753da0364256547d018f3adc437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ee10c02_5b85c981",
+        "filename": "src/chromiumos/tast/common/tape/pool_ids.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-04T08:20:28Z",
+      "side": 1,
+      "message": "Can we get some defaults here as well?",
+      "revId": "67cc1dc7903e6753da0364256547d018f3adc437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
