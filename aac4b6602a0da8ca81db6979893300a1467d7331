@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49b65501_d0fcd0cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-07-04T00:57:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e6c93c_9986488a",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "aac4b6602a0da8ca81db6979893300a1467d7331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "904f3d72_4e4e3019",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-06-30T17:24:51Z",
       "side": 1,
       "message": "hyphen",
+      "range": {
+        "startLine": 39,
+        "startChar": 35,
+        "endLine": 39,
+        "endChar": 36
+      },
+      "revId": "aac4b6602a0da8ca81db6979893300a1467d7331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "251ce341_fd6e9872",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-07-04T00:57:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "904f3d72_4e4e3019",
       "range": {
         "startLine": 39,
         "startChar": 35,
