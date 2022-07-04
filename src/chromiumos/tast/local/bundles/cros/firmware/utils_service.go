@@ -7,7 +7,6 @@ package firmware
 import (
 	"bytes"
 	"context"
-	"fmt"
 	"regexp"
 	"strings"
 	"time"
@@ -255,26 +254,27 @@ func (us *UtilsService) FindSingleNode(ctx context.Context, req *fwpb.NodeElemen
 // such as product-id, usb-path, and vendor-id. The values are saved and returned
 // in a list.
 func (us *UtilsService) GetDetachableBaseValue(ctx context.Context, req *empty.Empty) (*fwpb.CrosConfigResponse, error) {
-	paramsTable := map[string]string{
-		"--vendor_id=":  "vendor-id",
-		"--product_id=": "product-id",
-		"--usb_path=":   "usb-path",
-	}
+	paramsSlice := []string{"product-id", "vendor-id", "usb-path"}
 
-	var args []string
-	for k, v := range paramsTable {
+	crosCfgRes := fwpb.CrosConfigResponse{}
+
+	for _, v := range paramsSlice {
 		value, err := crosconfig.Get(ctx, "/detachable-base", v)
 		if err != nil {
 			return nil, err
 		}
-		res := fmt.Sprintf(k+"%s", value)
-		args = append(args, res)
+		if value == "" {
+			return nil, errors.Errorf("%s is empty", v)
+		}
+		switch v {
+		case "product-id":
+			crosCfgRes.ProductId = value
+		case "vendor-id":
+			crosCfgRes.VendorId = value
+		case "usb-path":
+			crosCfgRes.UsbPath = value
+		}
 	}
-
-	crosCfgRes := fwpb.CrosConfigResponse{
-		Values: args,
-	}
-
 	return &crosCfgRes, nil
 }
 
