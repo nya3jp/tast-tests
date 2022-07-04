@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "656252cb_c49ab423",
+        "filename": "src/chromiumos/tast/local/chrome/ime/input_method.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-04T07:32:51Z",
+      "side": 1,
+      "message": "changed by auto lint.",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 2
+      },
+      "revId": "13f7f54c11b4c6c952138f05f2394b8e8fd3c1c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
