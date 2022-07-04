@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a8b9eb4_199a6cdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_search_and_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-04T00:50:25Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 92,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "a384ca46e402fe360b44b327521e1eaaa80db65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d47207_f41a8efe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_search_and_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-04T00:50:25Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 95,
+        "startChar": 23,
+        "endLine": 95,
+        "endChar": 26
+      },
+      "revId": "a384ca46e402fe360b44b327521e1eaaa80db65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a519f96e_b17f8d1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_search_and_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-04T00:50:25Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 98,
+        "startChar": 24,
+        "endLine": 98,
+        "endChar": 27
+      },
+      "revId": "a384ca46e402fe360b44b327521e1eaaa80db65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716110f7_9a9bdb6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_search_and_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-04T00:50:25Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 108,
+        "startChar": 15,
+        "endLine": 108,
+        "endChar": 18
+      },
+      "revId": "a384ca46e402fe360b44b327521e1eaaa80db65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5be9a4f_4c5e07c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/play_store_search_and_launch.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-04T00:50:25Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 125,
+        "startChar": 47,
+        "endLine": 125,
+        "endChar": 50
+      },
+      "revId": "a384ca46e402fe360b44b327521e1eaaa80db65f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
