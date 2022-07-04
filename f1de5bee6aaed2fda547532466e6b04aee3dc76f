@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44b7bf8e_9b76af8d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/ethernet_speed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-04T00:13:38Z",
+      "side": 1,
+      "message": "please also reserve time for clean-up tasks, see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 19
+      },
+      "revId": "f1de5bee6aaed2fda547532466e6b04aee3dc76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820f43fa_fbeea028",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/ethernet_speed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-04T00:13:38Z",
+      "side": 1,
+      "message": "you also need to remove this file in the DUT.",
+      "range": {
+        "startLine": 101,
+        "startChar": 31,
+        "endLine": 101,
+        "endChar": 43
+      },
+      "revId": "f1de5bee6aaed2fda547532466e6b04aee3dc76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f50f6d_7ba079d4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/ethernet_speed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-04T00:13:38Z",
+      "side": 1,
+      "message": "you should put this immediately after the creation of the file.",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 65
+      },
+      "revId": "f1de5bee6aaed2fda547532466e6b04aee3dc76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d73b73b_a3b9c567",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/ethernet_speed.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-04T00:13:38Z",
+      "side": 1,
+      "message": "`s.Fatal` is more appropriate here.",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 10
+      },
+      "revId": "f1de5bee6aaed2fda547532466e6b04aee3dc76f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
