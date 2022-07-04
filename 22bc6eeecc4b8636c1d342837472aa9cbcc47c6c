@@ -46,6 +46,30 @@
       },
       "revId": "22bc6eeecc4b8636c1d342837472aa9cbcc47c6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d462ce11_accb8a87",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/data/cross_version_login/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-04T12:56:47Z",
+      "side": 1,
+      "message": "Ack - Great, let\u0027s do that indeed. I\u0027ll do it in a separate CL.",
+      "parentUuid": "2b6f45f2_81f72a37",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "22bc6eeecc4b8636c1d342837472aa9cbcc47c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
