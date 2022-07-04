@@ -56,6 +56,7 @@ const (
 	FeatureIMESpecific         string = "IME Specific Feature"
 	FeaturePKTyping            string = "PK Typing Input"
 	FeatureDeadKeys            string = "Dead Keys"
+	FeatureVKOverscroll        string = "VK Overscroll"
 	FeatureVKTyping            string = "VK Typing Input"
 	FeatureVKAutoShift         string = "VK AutoShift"
 	FeatureVoiceInput          string = "Voice Input"
