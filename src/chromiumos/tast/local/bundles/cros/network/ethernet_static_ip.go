@@ -62,15 +62,40 @@ func waitForIPOnInterface(ctx context.Context, iface, expected string, timeout t
 	return nil
 }
 
+func waitForAddressCacheInShill(ctx context.Context) {
+	// DeviceInfo in shill keeps a cache of the list of addresses installed on an
+	// interface. This cache is updated by the kernel via RTNL messages. When
+	// shill tries to configure an address on an interface, it will consult this
+	// cache at first, and skip the operation if this address has already been
+	// installed. In this test, we install two addresses on the same interface
+	// alternately, and thus it's possible that the cache has not been updated
+	// when the same address is being installed again. Since we cannot check that
+	// internal state inside shill here, add a timeout to avoid races.
+	testing.Sleep(ctx, time.Second)
+}
+
 func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	const (
 		testDefaultProfileName = "ethTestProfile"
 		testUserProfileName    = "ethTestProfile2"
+		testGateway            = "10.9.8.1"
 		testIP1                = "10.9.8.2"
 		testIP2                = "10.9.8.3"
+		testPrefixLen          = 24
 		// TODO(crbug/1027742): Shorten the timeout after the root cause of long IP waiting time is found.
 		timeoutWaitForIP = 30 * time.Second
 	)
+
+	staticIPProps1 := map[string]interface{}{
+		shillconst.IPConfigPropertyAddress:   testIP1,
+		shillconst.IPConfigPropertyPrefixlen: testPrefixLen,
+		shillconst.IPConfigPropertyGateway:   testGateway,
+	}
+	staticIPProps2 := map[string]interface{}{
+		shillconst.IPConfigPropertyAddress:   testIP2,
+		shillconst.IPConfigPropertyPrefixlen: testPrefixLen,
+		shillconst.IPConfigPropertyGateway:   testGateway,
+	}
 
 	// We lose connectivity along the way here, and if that races with the
 	// recover_duts network-recovery hooks, it may interrupt us.
@@ -151,7 +176,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Unable to find service: ", err)
 	}
-	if err = service.SetProperty(ctx, shillconst.ServicePropertyStaticIPConfig, map[string]interface{}{shillconst.IPConfigPropertyAddress: testIP1}); err != nil {
+	if err = service.SetProperty(ctx, shillconst.ServicePropertyStaticIPConfig, staticIPProps1); err != nil {
 		s.Fatal("Failed to set property: ", err)
 	}
 
@@ -187,7 +212,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	}
 	defaultProfileProps := map[string]interface{}{
 		shillconst.ServicePropertyType:           "ethernet",
-		shillconst.ServicePropertyStaticIPConfig: map[string]interface{}{shillconst.IPConfigPropertyAddress: testIP1},
+		shillconst.ServicePropertyStaticIPConfig: staticIPProps1,
 	}
 	if _, err := manager.WaitForServiceProperties(ctx, defaultProfileProps, 5*time.Second); err != nil {
 		s.Fatal("Unable to find service: ", err)
@@ -200,7 +225,7 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	s.Log("Configure different static IP for the new profile")
 	userProfileProps := map[string]interface{}{
 		shillconst.ServicePropertyType:           "ethernet",
-		shillconst.ServicePropertyStaticIPConfig: map[string]interface{}{shillconst.IPConfigPropertyAddress: testIP2},
+		shillconst.ServicePropertyStaticIPConfig: staticIPProps2,
 	}
 	if _, err = manager.ConfigureServiceForProfile(ctx, userProfileObjectPath, userProfileProps); err != nil {
 		s.Fatal("Unable to configure service: ", err)
@@ -212,6 +237,8 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to find expected IP for Ethernet: ", err)
 	}
 
+	waitForAddressCacheInShill(ctx)
+
 	// Test that after profile pop, first static IP is there.
 	s.Log("Popping user profile and checking that static IP has reverted")
 	if err = manager.PopProfile(ctx, testUserProfileName); err != nil {
@@ -220,6 +247,8 @@ func EthernetStaticIP(ctx context.Context, s *testing.State) {
 	if err = waitForIPOnInterface(ctx, iface, testIP1, timeoutWaitForIP); err != nil {
 		s.Fatal("Unable to find expected IP for Ethernet: ", err)
 	}
+
+	waitForAddressCacheInShill(ctx)
 
 	// Test that after push, second static IP is there again.
 	s.Log("Re-pushing the same user profile and checking that static IP changes")
