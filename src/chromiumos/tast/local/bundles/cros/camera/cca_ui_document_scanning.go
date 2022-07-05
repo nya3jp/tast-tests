@@ -26,7 +26,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that CCA can take a photo for document and generate the document file via file VCD",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
+		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera", "group:ml_service", "ml_service_ondevice_document_scanner"},
 		SoftwareDeps: []string{"camera_app", "chrome", "ondevice_document_scanner", caps.BuiltinOrVividCamera},
 		Data:         []string{"document_3264x2448.mjpeg"},
 		Params: []testing.Param{{
