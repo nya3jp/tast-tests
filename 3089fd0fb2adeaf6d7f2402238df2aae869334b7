@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "822720e9_cee7b1df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-05T09:25:43Z",
+      "side": 1,
+      "message": "I also cannot review the functionality in this CL, as I lack the domain level required knowledge except for policy_service.go which looks good to me.\n\nI can give you the tast reviewers approval if you get a +1 from someone who can review this CL for its functionality.",
+      "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abcaa1bd_7eb5d2c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-05T09:25:43Z",
+      "side": 1,
+      "message": "nit:\nvalidateHeartbeatEvents validates whether a list of events, received by the Reporting API Server, contains events sent by this test.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 148
+      },
+      "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96e94763_99b9cda0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-05T09:25:43Z",
+      "side": 1,
+      "message": "I think we could reduce the interval here to break the poll faster. Is there a reason why we shouldn\u0027t poll this every second?",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 27
+      },
+      "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
