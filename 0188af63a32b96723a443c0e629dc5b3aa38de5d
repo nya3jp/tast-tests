@@ -22,6 +22,54 @@
       },
       "revId": "0188af63a32b96723a443c0e629dc5b3aa38de5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a16e60df_b5b17ae1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1523288
+      },
+      "writtenOn": "2022-07-05T00:35:52Z",
+      "side": 0,
+      "message": "Thanks for your comment. We have found an existing function to replace the original Launcher verification.",
+      "parentUuid": "9132020c_57730f21",
+      "range": {
+        "startLine": 275,
+        "startChar": 12,
+        "endLine": 275,
+        "endChar": 32
+      },
+      "revId": "0188af63a32b96723a443c0e629dc5b3aa38de5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7996b539_ffdfa281",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1523288
+      },
+      "writtenOn": "2022-07-05T00:35:52Z",
+      "side": 0,
+      "message": "ash.WaitForLauncherState() calls JS command to asset",
+      "parentUuid": "9132020c_57730f21",
+      "range": {
+        "startLine": 275,
+        "startChar": 12,
+        "endLine": 275,
+        "endChar": 32
+      },
+      "revId": "0188af63a32b96723a443c0e629dc5b3aa38de5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
