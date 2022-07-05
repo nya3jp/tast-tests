@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7bcc1f_07e0c85f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T09:01:41Z",
+      "side": 1,
+      "message": "LGTM with two requests.",
+      "revId": "132f5b351281b74a6e2ae5cdfd96aaea741e4d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f978d380_cdb358bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T09:01:41Z",
+      "side": 1,
+      "message": "could you file a tracking bug and add the lnink to here? Like\n\nTODO(b/...): ...",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 9
+      },
+      "revId": "132f5b351281b74a6e2ae5cdfd96aaea741e4d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67da94de_f34776ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T09:01:41Z",
+      "side": 1,
+      "message": "I\u0027d use\n\nsleepingDuration \u003d endTime.Sub(time.Now())\nif sleepingDuration \u003e\u003d 2*time.Minute {\n  sleepingDuration \u003d 2*time.Minute\n}\n\nif err :\u003d testing.Sleep(ctx, sleepingDuration); err !\u003d nil {\n...",
+      "range": {
+        "startLine": 181,
+        "startChar": 3,
+        "endLine": 191,
+        "endChar": 4
+      },
+      "revId": "132f5b351281b74a6e2ae5cdfd96aaea741e4d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
