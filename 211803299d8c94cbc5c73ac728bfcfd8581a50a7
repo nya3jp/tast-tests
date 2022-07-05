@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7d59aab_1bc7859c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-07-05T04:49:26Z",
+      "side": 1,
+      "message": "general Go tip: I think you are not supposed to break up long lines.",
+      "revId": "211803299d8c94cbc5c73ac728bfcfd8581a50a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b896b096_52c04e91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-07-05T04:49:26Z",
+      "side": 1,
+      "message": "Q: how is \"too far\" defined here? Is this saying that the input field shouldn\u0027t be above double the vk height?\n\nI wonder if there\u0027s a way to check if the input field is visible on the screen instead?",
+      "revId": "211803299d8c94cbc5c73ac728bfcfd8581a50a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
