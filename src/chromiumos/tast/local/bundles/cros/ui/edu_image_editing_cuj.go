@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/imageeditingcuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -24,12 +25,11 @@ const testImage = "Lenna.png"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         EDUImageEditingCUJ,
-		LacrosStatus: testing.LacrosVariantUnneeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of editing photos on the web",
 		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "enrolledLoggedInToCUJUser",
 		Data:         []string{testImage},
 		Vars: []string{
 			"ui.cuj_mode", // Optional. Expecting "tablet" or "clamshell".
@@ -37,8 +37,16 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:    "basic_google_photos",
+				Fixture: "enrolledLoggedInToCUJUser",
 				Timeout: 5 * time.Minute,
-				Val:     cuj.Basic,
+				Val:     browser.TypeAsh,
+			},
+			{
+				Name:              "basic_lacros_google_photos",
+				Fixture:           "enrolledLoggedInToCUJUserLacros",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Timeout:           5 * time.Minute,
+				Val:               browser.TypeLacros,
 			},
 		},
 	})
@@ -97,10 +105,11 @@ func EDUImageEditingCUJ(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	testImageLocation := s.DataPath(testImage)
+	bt := s.Param().(browser.Type)
 
-	googlePhotos := imageeditingcuj.NewGooglePhotos(cr, tconn, uiHdl, kb, cr.Creds().Pass)
+	googlePhotos := imageeditingcuj.NewGooglePhotos(tconn, uiHdl, kb, cr.Creds().Pass)
 
-	if err := imageeditingcuj.Run(ctx, cr, googlePhotos, tabletMode, s.OutDir(), testImage, testImageLocation); err != nil {
+	if err := imageeditingcuj.Run(ctx, cr, googlePhotos, bt, tabletMode, s.OutDir(), testImage, testImageLocation); err != nil {
 		s.Fatal("Failed to run image editing cuj: ", err)
 	}
 }
