@@ -87,6 +87,54 @@
       },
       "revId": "1389ddc8b33e23ac74f3777b072f8427b725efac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a1e743d_aab01e01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-07-05T11:02:37Z",
+      "side": 1,
+      "message": "oh I learned somethi",
+      "parentUuid": "8583b34f_c88bf78b",
+      "range": {
+        "startLine": 116,
+        "startChar": 36,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "1389ddc8b33e23ac74f3777b072f8427b725efac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d134924_d28949d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-07-05T11:02:37Z",
+      "side": 1,
+      "message": "oh I learned something new today\nhttps://stackoverflow.com/questions/36050503/golang-child-processes-become-zombies\n\nAbout the `crosCameraAlgoStartCmd.Kill()`, somehow I\u0027m getting error: `no such process`\nand what actually happen is, the process was still there, not killed at all.\n\nI see that the `testexec Cmd.Kill` implementation is slightly different than the original `os/exec cmd.Process.Kill` implementation",
+      "parentUuid": "236c37fc_6110016f",
+      "range": {
+        "startLine": 116,
+        "startChar": 36,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "1389ddc8b33e23ac74f3777b072f8427b725efac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
