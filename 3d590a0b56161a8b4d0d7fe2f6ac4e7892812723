@@ -83,6 +83,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "727e09ad_437a52ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-05T16:58:56Z",
+      "side": 1,
+      "message": "Agreed, a single shortened cleanup context (maybe give 5 seconds instead of 1) should be sufficient and can be passed to each of the cleanup functions.",
+      "parentUuid": "77c836ba_ef73def9",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5226984d_2d6c614e",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
         "patchSetId": 13
@@ -100,6 +124,47 @@
         "endLine": 99,
         "endChar": 7
       },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbbfdf53_8affe41e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-05T16:58:56Z",
+      "side": 1,
+      "message": "Hmm, it looks like the shillReset fixture does remove the default profile (I didn\u0027t realize that, I guess that explains why we always need to enable this in the first place). So you\u0027re right, this isn\u0027t strictly necessary, but it\u0027s never a bad idea to include cleanup in a test. A comment noting that we are relying on shillReset to restore this would however also suffice.\n\nI also suspect this will be generally helpful and could be part of shill.Manager.",
+      "parentUuid": "5226984d_2d6c614e",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 7
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ced3aca_36a32746",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-05T16:58:56Z",
+      "side": 1,
+      "message": "nit: s/the host you are running dnsmasq on/the host that is running dnsmasq/",
       "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
