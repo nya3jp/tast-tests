@@ -26,17 +26,27 @@ import (
 )
 
 // Run implements the main logic of the EDUImageEditingCUJ test case.
-func Run(ctx context.Context, cr *chrome.Chrome, googlePhotos *GooglePhotos, tabletMode bool, outDir, testImage, testImageLocation string) (retErr error) {
+func Run(ctx context.Context, cr *chrome.Chrome, googlePhotos *GooglePhotos, bt browser.Type, tabletMode bool, outDir, testImage, testImageLocation string) (retErr error) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the test API connection")
 	}
 
 	testing.ContextLog(ctx, "Start to get browser start time")
-	_, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, browser.TypeAsh)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, tabletMode, bt)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser start time")
 	}
+	br := cr.Browser()
+	if l != nil {
+		defer l.Close(ctx)
+		br = l.Browser()
+	}
+	bTconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create a TestConn instance")
+	}
+	googlePhotos.SetBrowser(br)
 
 	// Give 10 seconds to set initial settings. It is critical to ensure
 	// cleanupSetting can be executed with a valid context so it has its
@@ -85,7 +95,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, googlePhotos *GooglePhotos, tab
 		return errors.Wrap(err, "failed to create the recorder")
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, nil, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 
