@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5066e59a_1ac5cccb",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-05T11:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18c76421_21a9cbe5",
+      "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abcaa1bd_7eb5d2c8",
@@ -66,6 +84,30 @@
       "writtenOn": "2022-07-05T09:25:43Z",
       "side": 1,
       "message": "nit:\nvalidateHeartbeatEvents validates whether a list of events, received by the Reporting API Server, contains events sent by this test.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 148
+      },
+      "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2b5a22b_16512fdd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-05T11:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abcaa1bd_7eb5d2c8",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -99,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3cd5d98_b8b2d70d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-05T11:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69d1a41e_c4426928",
+      "range": {
+        "startLine": 81,
+        "startChar": 23,
+        "endLine": 81,
+        "endChar": 60
+      },
+      "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96e94763_99b9cda0",
@@ -122,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d03e4b5_833d0188",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-05T11:11:21Z",
+      "side": 1,
+      "message": "Changed to 30 seconds. My reasoning is that if this test begins to be ran often on the CQ, it could put unnecessary load on the server.",
+      "parentUuid": "96e94763_99b9cda0",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 27
+      },
+      "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c100c64a_de165160",
@@ -135,6 +225,24 @@
       "writtenOn": "2022-07-05T09:59:06Z",
       "side": 1,
       "message": "Please move this to a separate package, it has nothing to do with policies.",
+      "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca2da62b_1baf333b",
+        "filename": "src/chromiumos/tast/remote/policyutil/reporting_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-05T11:11:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c100c64a_de165160",
       "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
