@@ -16,6 +16,23 @@
       "message": "Please also get a +1 from a teammate with context on this change.",
       "revId": "4094e5958b71e9c26787272b52fdb10c3b5c251e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26b213d1_e2dd818f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-05T10:03:54Z",
+      "side": 1,
+      "message": "chingkang@: Friendly ping. Thanks.",
+      "revId": "4094e5958b71e9c26787272b52fdb10c3b5c251e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
