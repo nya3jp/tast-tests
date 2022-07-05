@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "23e576b2_93aef4e2",
+        "filename": "src/chromiumos/tast/local/drivefs/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-05T03:30:06Z",
+      "side": 1,
+      "message": "Agree. I think if we move this to the last stage we should also be able to run out the deadline cleaning up.",
+      "parentUuid": "310ad725_6d7bf62a",
+      "revId": "728136d79df121f524490d85d1f69637cf808dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6c4ea8a7_1efed70c",
         "filename": "src/chromiumos/tast/local/drivefs/fixture.go",
         "patchSetId": 2
