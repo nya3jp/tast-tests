@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2c73916_0cde5a00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-07-05T02:49:40Z",
+      "side": 1,
+      "message": "\u003e \"immedately\" is a possible misspelling of \"immediately\".\n\nPlease fix.",
+      "parentUuid": "a059301c_bf31e60b",
+      "range": {
+        "startLine": 10,
+        "startChar": 51,
+        "endLine": 10,
+        "endChar": 61
+      },
+      "revId": "2d95a6f39dc8e2fe68e3051cd3d18f571b9fe7fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
