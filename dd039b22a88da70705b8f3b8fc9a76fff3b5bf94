@@ -16,6 +16,24 @@
       "message": "Do we need to dump the entire bucket or can we check for the file itself?",
       "revId": "dd039b22a88da70705b8f3b8fc9a76fff3b5bf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a2f3901_5270cdaf",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-05T09:44:01Z",
+      "side": 1,
+      "message": "It is not the entire bucket, only the ones in the folder we are interested in. I can rename the function to `bucketFolderContentListToFile` if you prefer.\nAnd at the moment we don\u0027t need the other file names in the folder, but I would still prefer to have it in case the json file gets renamed for something different.",
+      "parentUuid": "45d8686a_3920f346",
+      "revId": "dd039b22a88da70705b8f3b8fc9a76fff3b5bf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
