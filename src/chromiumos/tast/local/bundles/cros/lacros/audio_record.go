@@ -31,6 +31,13 @@ func init() {
 }
 
 func AudioRecord(ctx context.Context, s *testing.State) {
+	// Load ALSA loopback module.
+	unload, err := audio.LoadAloop(ctx)
+	if err != nil {
+		s.Fatal("Failed to load ALSA loopback module: ", err)
+	}
+	defer unload(ctx)
+
 	tconn, err := s.FixtValue().(chrome.HasChrome).Chrome().TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
