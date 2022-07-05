@@ -17,8 +17,12 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// longerUIWaitTime indicates the time to wait for some UI elements that need more time to appear.
-const longerUIWaitTime = time.Minute
+const (
+	longUITimeout      = time.Minute     // Used for situations where UI elements that need more time to appear.
+	shortUITimeout     = 5 * time.Second // Used for situations where UI response are faster.
+	saveToDriveTimeout = 5 * time.Second // saveToDriveTimeout indicates the maximum waiting time for Google to save to Drive.
+	retryTimes         = 3               // Used for some operations that need to be retried.
+)
 
 // waitForDocumentSaved waits for the document state to "Saved to Drive".
 func waitForDocumentSaved(tconn *chrome.TestConn, appName string) action.Action {
@@ -27,12 +31,12 @@ func waitForDocumentSaved(tconn *chrome.TestConn, appName string) action.Action 
 	documentSavedState := nodewith.NameContaining("Document status: Saved to Drive").Role(role.Button).Ancestor(webArea)
 	return func(ctx context.Context) error {
 		startTime := time.Now()
-		if err := ui.WithTimeout(longerUIWaitTime).WaitUntilExists(documentSavedState)(ctx); err != nil {
+		if err := ui.WithTimeout(saveToDriveTimeout).WaitUntilExists(documentSavedState)(ctx); err != nil {
 			unableToLoadDialog := nodewith.Name("Unable to load file").Role(role.Dialog)
 			if loadFileErr := ui.Exists(unableToLoadDialog)(ctx); loadFileErr == nil {
 				return errors.New("unable to load file")
 			}
-			testing.ContextLog(ctx, "Failed to wait for document saved within ", longerUIWaitTime)
+			testing.ContextLog(ctx, "Failed to wait for document saved within ", saveToDriveTimeout)
 		} else {
 			testing.ContextLog(ctx, "Saved to drive in ", time.Now().Sub(startTime))
 		}

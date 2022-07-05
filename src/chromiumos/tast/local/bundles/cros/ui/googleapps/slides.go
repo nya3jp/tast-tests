@@ -27,6 +27,8 @@ import (
 // slideName represents the name of the Google Slides web area.
 const slideName = "Google Slides"
 
+var slideWebArea = nodewith.NameContaining(slideName).Role(role.RootWebArea)
+
 // NewGoogleSlides returns an action that creates a new google slides from web.
 func NewGoogleSlides(ctx context.Context, tconn *chrome.TestConn, br *browser.Browser, uiHandler cuj.UIActionHandler, newWindow bool) error {
 	ui := uiauto.New(tconn)
@@ -40,13 +42,13 @@ func NewGoogleSlides(ctx context.Context, tconn *chrome.TestConn, br *browser.Br
 		return errors.Wrap(err, "failed to open the google document")
 	}
 	defer conn.Close()
-	if err := webutil.WaitForQuiescence(ctx, conn, longerUIWaitTime); err != nil {
+	if err := webutil.WaitForQuiescence(ctx, conn, longUITimeout); err != nil {
 		return errors.Wrap(err, "failed to wait for page to finish loading")
 	}
 	filmstripView := nodewith.Name("Filmstrip view").Role(role.TabPanel)
 	gotIt := nodewith.Name("Got it").First()
 	return uiauto.Combine("confirm to enter Google Slides",
-		ui.WithTimeout(longerUIWaitTime).WaitUntilExists(filmstripView),
+		ui.WithTimeout(longUITimeout).WaitUntilExists(filmstripView),
 		uiauto.IfSuccessThen(ui.Exists(gotIt), ui.DoDefault(gotIt)),
 	)(ctx)
 }
@@ -60,7 +62,7 @@ func NewSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title, cont
 	textNode := nodewith.Name("text").First()
 	return uiauto.NamedCombine(fmt.Sprintf("to create a new slide with page number %s and edit its content", pageNumber),
 		ui.WaitUntilExists(newSlide),
-		ui.WithTimeout(longerUIWaitTime).DoDefaultUntil(newSlide, ui.WithTimeout(25*time.Second).WaitUntilExists(pageNumberNode)),
+		ui.WithTimeout(longUITimeout).DoDefaultUntil(newSlide, ui.WithTimeout(25*time.Second).WaitUntilExists(pageNumberNode)),
 		ui.WaitUntilExists(titleNode),
 		ui.DoubleClick(titleNode),
 		uiauto.Sleep(time.Second),
@@ -76,7 +78,6 @@ func NewSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title, cont
 // RenameSlide returns an action that renames google slide.
 func RenameSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title string) action.Action {
 	ui := uiauto.New(tconn)
-	slideWebArea := nodewith.NameContaining(slideName).Role(role.RootWebArea)
 	renameTextbox := nodewith.Name("Rename").ClassName("docs-title-input").Ancestor(slideWebArea).Editable().Focusable()
 	return uiauto.NamedAction("rename the slide",
 		ui.Retry(5, uiauto.Combine("rename slide",
@@ -94,7 +95,6 @@ func RenameSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title st
 // PresentSlide returns an action that presents google slide.
 func PresentSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slideCount int) action.Action {
 	ui := uiauto.New(tconn)
-	slideWebArea := nodewith.NameContaining(slideName).Role(role.RootWebArea)
 	presentationOptionsButton := nodewith.Name("Presentation options").First()
 	// There are two versions of ui to present slide.
 	presentFromBeginningButton := nodewith.NameRegex(regexp.MustCompile("(Present|Start) from beginning.*")).Role(role.MenuItem).First()
@@ -118,7 +118,7 @@ func PresentSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slideCo
 		},
 		kb.AccelAction("Esc"), //Press Esc to leave presentation mode
 		// Some of DUT models with poor performance need to wait a long time to leave presentation mode.
-		ui.WithTimeout(longerUIWaitTime).WaitUntilExists(menuBar),
+		ui.WithTimeout(longUITimeout).WaitUntilExists(menuBar),
 	)
 }
 
@@ -162,7 +162,6 @@ func EditSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, text, expe
 // DeleteSlide returns an action that deletes google slide.
 func DeleteSlide(tconn *chrome.TestConn) action.Action {
 	ui := uiauto.New(tconn)
-	slideWebArea := nodewith.NameContaining(slideName).Role(role.RootWebArea)
 	slideHomeWebArea := nodewith.Name(slideName).Role(role.RootWebArea)
 	application := nodewith.Role(role.Application).Ancestor(slideWebArea) // Google Slide appliction node.
 	fileButton := nodewith.Name("File").Role(role.MenuItem).Ancestor(application)
@@ -176,8 +175,9 @@ func DeleteSlide(tconn *chrome.TestConn) action.Action {
 		ui.DoDefault(goToSlidesHome),
 		// When leaving the edit slide, sometimes the "Leave Site?" dialog box will pop up.
 		// If it appears, click the leave button.
-		uiauto.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(leaveButton), ui.DoDefault(leaveButton)),
-		ui.WithTimeout(longerUIWaitTime).WaitUntilExists(slideHomeWebArea),
+		uiauto.IfSuccessThen(ui.WithTimeout(10*time.Second).WaitUntilExists(leaveButton),
+			ui.DoDefaultUntil(leaveButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(leaveButton))),
+		ui.WithTimeout(longUITimeout).WaitUntilExists(slideHomeWebArea),
 	)
 }
 
