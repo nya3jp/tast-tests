@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f58dc5d_ecfa4589",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-05T11:11:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bea410ed_ea93fa8d",
+      "range": {
+        "startLine": 118,
+        "startChar": 15,
+        "endLine": 118,
+        "endChar": 22
+      },
+      "revId": "ae93f9cdf412c3ed19a04c84839d191cb7749b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d138492_0447e299",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-05T10:16:25Z",
       "side": 1,
       "message": "Is this milliseconds or microseconds? In the latter case you should name this differently as ms is the official abbreviation of milliseconds and makes this confusing when reading the code.",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 4
+      },
+      "revId": "ae93f9cdf412c3ed19a04c84839d191cb7749b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e0cc02f_b0c83541",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-05T11:11:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d138492_0447e299",
       "range": {
         "startLine": 128,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2dbae39_023fe579",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-05T11:11:00Z",
+      "side": 1,
+      "message": "It does exist. Im a little fuzzy on how it happens but it is a valid case. This is how the implementers of the actual feature (ours is just reporting it) handle it in their test case so I defer to them.",
+      "parentUuid": "8fdb853d_991bda10",
+      "range": {
+        "startLine": 155,
+        "startChar": 43,
+        "endLine": 155,
+        "endChar": 75
+      },
+      "revId": "ae93f9cdf412c3ed19a04c84839d191cb7749b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8817e7a_518da310",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-07-05T10:16:25Z",
       "side": 1,
       "message": "Isn\u0027t this redundant to the previous check in line 151?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "ae93f9cdf412c3ed19a04c84839d191cb7749b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1383e570_8640e1ef",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-05T11:11:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8817e7a_518da310",
       "range": {
         "startLine": 160,
         "startChar": 0,
