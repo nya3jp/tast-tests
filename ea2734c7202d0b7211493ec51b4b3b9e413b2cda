@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a5aa292_ff2b5683",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-05T14:24:17Z",
+      "side": 1,
+      "message": "Only the raw bytes buffers are represented as hex strings, others fields like ssid, bssid, and so on are supposed to be valid ascii, as far as I know.",
+      "parentUuid": "f722db32_c6ff8c91",
+      "range": {
+        "startLine": 148,
+        "startChar": 23,
+        "endLine": 148,
+        "endChar": 56
+      },
+      "revId": "ea2734c7202d0b7211493ec51b4b3b9e413b2cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae52f55f_46eb0f48",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
         "patchSetId": 4
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7dad339_4aafce59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-05T14:24:17Z",
+      "side": 1,
+      "message": "AFAIK there\u0027s no command to flush ANQP cache only.\n\nOn one hand, the test relies on the fact a new random BSSID is generated for each test case so we shouldn\u0027t have an unexpected cache hit. On the other hand supplicant events are filtered using the BSSID to avoid receiving events for a previously known access point.",
+      "parentUuid": "ae52f55f_46eb0f48",
+      "range": {
+        "startLine": 141,
+        "startChar": 5,
+        "endLine": 141,
+        "endChar": 9
+      },
+      "revId": "ea2734c7202d0b7211493ec51b4b3b9e413b2cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84d2d23f_9ab3b5db",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
         "patchSetId": 4
@@ -77,6 +125,30 @@
       "writtenOn": "2022-07-05T05:14:30Z",
       "side": 1,
       "message": "nit: \"BSS information\" or \"BSS ANQP information\" ?",
+      "range": {
+        "startLine": 179,
+        "startChar": 28,
+        "endLine": 179,
+        "endChar": 31
+      },
+      "revId": "ea2734c7202d0b7211493ec51b4b3b9e413b2cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bdba0f6_6ca2030e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-05T14:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84d2d23f_9ab3b5db",
       "range": {
         "startLine": 179,
         "startChar": 28,
@@ -133,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f3da26_3a0dc2bf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-05T14:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19ad965d_5d6b4950",
+      "range": {
+        "startLine": 322,
+        "startChar": 19,
+        "endLine": 322,
+        "endChar": 26
+      },
+      "revId": "ea2734c7202d0b7211493ec51b4b3b9e413b2cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2f65776_c0e5ea81",
@@ -146,6 +242,30 @@
       "writtenOn": "2022-07-05T05:14:30Z",
       "side": 1,
       "message": "nit: also print |s| here and for other DecodeString() errors in this file.",
+      "range": {
+        "startLine": 23,
+        "startChar": 31,
+        "endLine": 23,
+        "endChar": 76
+      },
+      "revId": "ea2734c7202d0b7211493ec51b4b3b9e413b2cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14d80339_c025bd70",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/anqp_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-05T14:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2f65776_c0e5ea81",
       "range": {
         "startLine": 23,
         "startChar": 31,
@@ -179,6 +299,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22eb03ae_69c494e3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/anqp_util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-05T14:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54be5ad4_5a8853bf",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 7
+      },
+      "revId": "ea2734c7202d0b7211493ec51b4b3b9e413b2cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c0a44a6_c57b59a1",
@@ -192,6 +336,30 @@
       "writtenOn": "2022-07-05T05:14:30Z",
       "side": 1,
       "message": "Should this one have its own block. This is the only value with Group\u003d\u003d0.",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 65
+      },
+      "revId": "ea2734c7202d0b7211493ec51b4b3b9e413b2cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "698c5315_2406cc4b",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-05T14:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c0a44a6_c57b59a1",
       "range": {
         "startLine": 127,
         "startChar": 1,
@@ -227,6 +395,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfcec3b5_1de6b153",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-05T14:24:17Z",
+      "side": 1,
+      "message": "Actually interworking provides helpful information about the network behind the access point. If you look at the available options (https://android.googlesource.com/platform/external/wpa_supplicant_8/+/refs/heads/master/hostapd/hostapd.conf#2480) in `hostapd` we might be able to guess in advance the conditions to access the network.\nNote that not all the fields are exposed by supplicant.",
+      "parentUuid": "68593453_bc952ff6",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "ea2734c7202d0b7211493ec51b4b3b9e413b2cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a55cb8d_5cf1c872",
         "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
         "patchSetId": 4
@@ -238,6 +430,30 @@
       "writtenOn": "2022-07-05T05:14:30Z",
       "side": 1,
       "message": "does the \u0027result\u0027 value here correspond to some enum defined by the supplicant ?",
+      "range": {
+        "startLine": 132,
+        "startChar": 66,
+        "endLine": 132,
+        "endChar": 73
+      },
+      "revId": "ea2734c7202d0b7211493ec51b4b3b9e413b2cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3337d6fb_12d76552",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-05T14:24:17Z",
+      "side": 1,
+      "message": "It\u0027s also a string in supplicant, for now I found 3 values: `SUCCESS`, `FAILURE` and `INVALID_FRAME`. It\u0027s not an enum and might be set by anyone on the path the event is following.",
+      "parentUuid": "9a55cb8d_5cf1c872",
       "range": {
         "startLine": 132,
         "startChar": 66,
