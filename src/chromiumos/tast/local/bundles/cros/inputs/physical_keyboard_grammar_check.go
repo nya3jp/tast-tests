@@ -42,6 +42,12 @@ func init() {
 				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
+				Name:              "informational",
+				Fixture:           fixture.ClamshellNonVKWithGrammarCheck,
+				ExtraSoftwareDeps: []string{"ondevice_grammar"},
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(pre.GrammarEnabledModels...)),
+			},
+			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosClamshellNonVKWithGrammarCheck,
 				ExtraSoftwareDeps: []string{"lacros"},

@@ -40,6 +40,12 @@ func init() {
 				Fixture: fixture.ClamshellNonVKWithMultiwordSuggest,
 			},
 			{
+				Name:              "informational",
+				Fixture:           fixture.ClamshellNonVKWithMultiwordSuggest,
+				ExtraSoftwareDeps: []string{"ondevice_text_suggestions"},
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(pre.MultiwordEnabledModels...)),
+			},
+			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosClamshellNonVKWithMultiwordSuggest,
 				ExtraSoftwareDeps: []string{"lacros"},
