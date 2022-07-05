@@ -190,6 +190,30 @@
       },
       "revId": "ad4d2eecc51e0294e0dcfd913a0fc631fb81f256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b90e23_4cc43e75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dump_vpd_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-07-05T07:36:35Z",
+      "side": 1,
+      "message": "I would say dump_vpd_log should return 1 if there\u0027s an error. If not, shouldn\u0027t we fix that instead?\n\nhttps://source.corp.google.com/chromeos_public/src/platform/vpd/util/dump_vpd_log;l\u003d143?q\u003ddump_vpd_log\u0026sq\u003dpackage:chromeos_public\n\nInteresting that you\u0027re saying it writes the error to a file. I don\u0027t think that\u0027s what it was meant to do. Looking at the script it seems it should fail, clean up its temp file without writing anything to a file and write the error to stdout. Could it be that there\u0027s a bug in that script if flashrom fails?",
+      "parentUuid": "40638f59_b66f4b55",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 125,
+        "endChar": 40
+      },
+      "revId": "ad4d2eecc51e0294e0dcfd913a0fc631fb81f256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
