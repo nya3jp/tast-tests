@@ -152,4 +152,9 @@ const (
 	TinkerCadSignInURL = "https://www.tinkercad.com/login"
 	// TinkerCadDashboardURL specifies the URL for TinkerCad dashboard.
 	TinkerCadDashboardURL = "https://www.tinkercad.com/dashboard"
+
+	// URLs used by Gaming Proxy CUJ
+
+	// CrosVideoURL specifies the URL for cros video.
+	CrosVideoURL = "https://crosvideo.appspot.com/"
 )
