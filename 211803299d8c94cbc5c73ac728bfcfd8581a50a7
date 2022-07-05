@@ -69,6 +69,24 @@
       "parentUuid": "b896b096_52c04e91",
       "revId": "211803299d8c94cbc5c73ac728bfcfd8581a50a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0902588_464d2d54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-07-05T07:12:48Z",
+      "side": 1,
+      "message": "oh okay, I don\u0027t know if the double height is a strict requirement, so maybe we should remove it?",
+      "parentUuid": "b398c50e_62403696",
+      "revId": "211803299d8c94cbc5c73ac728bfcfd8581a50a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
