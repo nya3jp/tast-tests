@@ -221,6 +221,24 @@
       "message": "nit: missing .\nSame for the following comments.",
       "revId": "ae93f9cdf412c3ed19a04c84839d191cb7749b06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70db2384_49e2b316",
+        "filename": "src/chromiumos/tast/remote/policyutil/reporting_util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-05T12:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e40e0b4_6e27cb83",
+      "revId": "ae93f9cdf412c3ed19a04c84839d191cb7749b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
