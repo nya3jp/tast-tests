@@ -28,7 +28,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks on device multiword suggestions with physical keyboard typing",
 		Contacts:     []string{"curtismcmullan@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
+		Attr:         []string{"group:mainline", "informational", "group:input-tools", "group:ml_service", "ml_service_ondevice_text_suggestions"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 		SoftwareDeps: []string{"chrome", "ondevice_text_suggestions"},
 		Timeout:      5 * time.Minute,

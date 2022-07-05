@@ -32,7 +32,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks on device grammar check with physical keyboard typing",
 		Contacts:     []string{"jiwan@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:ml_service", "ml_service_ondevice_grammar_check"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 		SoftwareDeps: []string{"chrome", "ondevice_grammar"},
 		Params: []testing.Param{
