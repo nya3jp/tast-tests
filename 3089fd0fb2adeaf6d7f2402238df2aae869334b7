@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fac173fd_3ff65db0",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-05T09:59:06Z",
+      "side": 1,
+      "message": "Do not increase the default timeout, use a custom one instead.",
+      "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abcaa1bd_7eb5d2c8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
         "patchSetId": 5
@@ -36,6 +53,29 @@
         "startChar": 0,
         "endLine": 52,
         "endChar": 148
+      },
+      "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d1a41e_c4426928",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-05T09:59:06Z",
+      "side": 1,
+      "message": "Please use EnsureTPMAndSystemStateAreReset instead",
+      "range": {
+        "startLine": 81,
+        "startChar": 23,
+        "endLine": 81,
+        "endChar": 60
       },
       "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -60,6 +100,23 @@
         "endLine": 127,
         "endChar": 27
       },
+      "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c100c64a_de165160",
+        "filename": "src/chromiumos/tast/remote/policyutil/reporting_util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-05T09:59:06Z",
+      "side": 1,
+      "message": "Please move this to a separate package, it has nothing to do with policies.",
       "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
