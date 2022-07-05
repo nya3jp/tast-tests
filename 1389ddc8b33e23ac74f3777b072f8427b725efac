@@ -63,6 +63,30 @@
       },
       "revId": "1389ddc8b33e23ac74f3777b072f8427b725efac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "236c37fc_6110016f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T09:58:54Z",
+      "side": 1,
+      "message": "Yes, kill then wait, to collect the zombie process.",
+      "parentUuid": "8583b34f_c88bf78b",
+      "range": {
+        "startLine": 116,
+        "startChar": 36,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "1389ddc8b33e23ac74f3777b072f8427b725efac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
