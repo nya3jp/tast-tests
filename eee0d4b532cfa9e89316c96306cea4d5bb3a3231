@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2087886_00205034",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_cpu_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T08:55:48Z",
+      "side": 0,
+      "message": "I think we\u0027d like to keep this check, but exclude ENOENT errors explicitly.\nhttps://pkg.go.dev/os#IsNotExist",
+      "revId": "eee0d4b532cfa9e89316c96306cea4d5bb3a3231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
