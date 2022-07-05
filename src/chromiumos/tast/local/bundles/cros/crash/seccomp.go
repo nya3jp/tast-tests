@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -29,7 +30,10 @@ func init() {
 			"jorgelo@google.com",
 			"cros-telemetry@google.com",
 		},
-		Attr: []string{"group:mainline"},
+		// TODO(b/238032402): Figure out what is making it fail and
+		// reenable.
+		HardwareDeps: hwdep.D(hwdep.SkipOnModel("reven")),
+		Attr:         []string{"group:mainline"},
 	})
 }
 
