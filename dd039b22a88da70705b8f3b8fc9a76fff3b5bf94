@@ -34,6 +34,24 @@
       "parentUuid": "45d8686a_3920f346",
       "revId": "dd039b22a88da70705b8f3b8fc9a76fff3b5bf94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53322da1_991165d1",
+        "filename": "src/chromiumos/tast/remote/updateutil/updateutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-05T09:48:51Z",
+      "side": 1,
+      "message": "The name is fine, add a comment on why you are dumping the entire bucket.",
+      "parentUuid": "8a2f3901_5270cdaf",
+      "revId": "dd039b22a88da70705b8f3b8fc9a76fff3b5bf94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
