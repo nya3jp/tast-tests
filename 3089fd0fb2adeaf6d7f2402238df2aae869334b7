@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18c76421_21a9cbe5",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-05T09:59:54Z",
+      "side": 1,
+      "message": "chrome.CustomLoginTimeout",
+      "parentUuid": "fac173fd_3ff65db0",
+      "revId": "3089fd0fb2adeaf6d7f2402238df2aae869334b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "abcaa1bd_7eb5d2c8",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
         "patchSetId": 5
