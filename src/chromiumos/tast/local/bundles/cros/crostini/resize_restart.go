@@ -98,6 +98,10 @@ func ResizeRestart(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify resize results: ", err)
 	}
 
+	if err := terminalApp.Close()(ctx); err != nil {
+		s.Fatal("Failed to close terminal: ", err)
+	}
+
 	// Resize back to the default value.
 	sizeOnSlider, size, err = st.Resize(ctx, keyboard, targetSize, curSize)
 	if err != nil {
