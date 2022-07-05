@@ -33,6 +33,23 @@
       "message": "Thanks good to me. It would be nice to see them turn green. I will abandon this cl and leave the rest to you.",
       "revId": "0d4afb7e5566b494ecebb5797704b1edace633fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef93efe_942dab1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-05T00:33:01Z",
+      "side": 1,
+      "message": "@ jonfan It has been 3 months and no fix on the test. To avoid wasting mainline hw resources, can you please CR+2 to remove this test from mainline? Once it is fixed, we can add it back again.",
+      "revId": "0d4afb7e5566b494ecebb5797704b1edace633fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
