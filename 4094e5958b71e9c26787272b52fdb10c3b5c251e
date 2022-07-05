@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da0be17d_35075e35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-05T00:43:09Z",
+      "side": 1,
+      "message": "Please also get a +1 from a teammate with context on this change.",
+      "revId": "4094e5958b71e9c26787272b52fdb10c3b5c251e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
