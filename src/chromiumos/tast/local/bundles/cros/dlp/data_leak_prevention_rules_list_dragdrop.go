@@ -122,8 +122,6 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
-
 			if err := cr.ResetState(ctx); err != nil {
 				s.Fatal("Failed to reset the Chrome: ", err)
 			}
@@ -150,6 +148,8 @@ func DataLeakPreventionRulesListDragdrop(ctx context.Context, s *testing.State) 
 				s.Fatalf("Failed to open page %q: %v", param.srcURL, err)
 			}
 			defer srcConn.Close()
+
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			if err := webutil.WaitForQuiescence(ctx, srcConn, 10*time.Second); err != nil {
 				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", param.srcURL, err)

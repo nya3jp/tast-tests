@@ -12,7 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
-	policyBlob "chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
@@ -144,8 +144,6 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
-
 			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 			if err != nil {
 				s.Fatal("Failed to open the browser: ", err)
@@ -174,6 +172,8 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 				s.Fatal("Failed to open page: ", err)
 			}
 			defer googleConn.Close()
+
+			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 				s.Fatal("Failed to wait for google.com to be loaded and achieve quiescence: ", err)

@@ -228,8 +228,6 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 	}
 	defer keyboard.Close()
 
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+s.Param().(screenshotTestParams).name)
-
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
@@ -268,6 +266,8 @@ func DataLeakPreventionRulesListScreenshot(ctx context.Context, s *testing.State
 		s.Fatal("Failed to open page: ", err)
 	}
 	defer conn.Close()
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+s.Param().(screenshotTestParams).name)
 
 	testScreenshot(ctx, s, tconn, keyboard, s.Param().(screenshotTestParams))
 }
