@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb81403b_61f29c93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_blob_download.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-05T03:35:51Z",
+      "side": 1,
+      "message": "Should this be fatal?",
+      "range": {
+        "startLine": 90,
+        "startChar": 4,
+        "endLine": 90,
+        "endChar": 9
+      },
+      "revId": "ed812544995213010ad8608f9772fe18645cff6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
