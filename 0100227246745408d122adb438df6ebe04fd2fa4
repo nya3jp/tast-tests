@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b1dfb2a_7e06a3a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-07-05T09:25:38Z",
+      "side": 1,
+      "message": "Unfortunely, I didn\u0027t find anything similar to \"arraysEqualUnordered\". :(\n\nBTW, this function actually refer to https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/hwsec/cryptohome_keys_and_mount_validity.go;l\u003d79.\n\nI am not sure why the passing the expected values to the function is not undesired. IMO, since the function tests that the API is working properly, we should do checking the equality of labels in this function.",
+      "parentUuid": "0a8b54e2_5a170432",
+      "range": {
+        "startLine": 143,
+        "startChar": 92,
+        "endLine": 143,
+        "endChar": 98
+      },
+      "revId": "0100227246745408d122adb438df6ebe04fd2fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd3cb7de_d72e1360",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
         "patchSetId": 7
@@ -60,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6a1d9ac_4e0145ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-07-05T09:25:38Z",
+      "side": 1,
+      "message": "Good point. The passwords in config should not be any of invalidPassword, invalidPin and changedPassword. Also, the labels in config should be neither newPasswordLabel nor newPinLabel.  See line 285 to line 296 in patchset 8.",
+      "parentUuid": "dd3cb7de_d72e1360",
+      "revId": "0100227246745408d122adb438df6ebe04fd2fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f874f1f3_cf605d3b",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
         "patchSetId": 7
@@ -71,6 +113,30 @@
       "writtenOn": "2022-07-04T10:46:10Z",
       "side": 1,
       "message": "nit: Let\u0027s wrap this into a function as well.",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 2
+      },
+      "revId": "0100227246745408d122adb438df6ebe04fd2fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d31747_f4d67d29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-07-05T09:25:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f874f1f3_cf605d3b",
       "range": {
         "startLine": 261,
         "startChar": 0,
