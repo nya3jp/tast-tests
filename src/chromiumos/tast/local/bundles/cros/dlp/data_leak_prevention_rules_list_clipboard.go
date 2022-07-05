@@ -110,8 +110,6 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
-			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
-
 			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 			if err != nil {
 				s.Fatal("Failed to open the browser: ", err)
@@ -145,6 +143,8 @@ func DataLeakPreventionRulesListClipboard(ctx context.Context, s *testing.State)
 				s.Fatalf("Failed to open page %q: %v", destURL, err)
 			}
 			defer destConn.Close()
+
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			if err := webutil.WaitForQuiescence(ctx, destConn, 10*time.Second); err != nil {
 				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", destURL, err)
