@@ -28,7 +28,9 @@ func init() {
 			"eariassoto@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// TODO(b/229003599): This test is failing on tablets and Chromeboxes.
+		// We are disabling until the root cause is fixed.
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      fixture.LacrosPolicyLoggedIn,
 	})
