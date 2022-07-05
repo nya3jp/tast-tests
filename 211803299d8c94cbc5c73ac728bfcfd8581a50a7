@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e075e389_ed524773",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-05T07:04:28Z",
+      "side": 1,
+      "message": "Thanks for the tip. I reverted most of the line breaks specifically on the strings. Please let me know if I missed any others.",
+      "parentUuid": "f7d59aab_1bc7859c",
+      "revId": "211803299d8c94cbc5c73ac728bfcfd8581a50a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b896b096_52c04e91",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-05T04:49:26Z",
       "side": 1,
       "message": "Q: how is \"too far\" defined here? Is this saying that the input field shouldn\u0027t be above double the vk height?\n\nI wonder if there\u0027s a way to check if the input field is visible on the screen instead?",
+      "revId": "211803299d8c94cbc5c73ac728bfcfd8581a50a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b398c50e_62403696",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-05T07:04:28Z",
+      "side": 1,
+      "message": "\u003e\u003e Q: how is \"too far\" defined here? Is this saying that the input field shouldn\u0027t be above double the vk height?\n\nThis is an additional condition (not the main one) to check overscroll has not scrolled too much. You are correct, it checks bottom of the text area is not above double the vk height. I can remove this in the case it is not useful?\n\n\u003e\u003e I wonder if there\u0027s a way to check if the input field is visible on the screen instead?\n\nIt\u0027s already implemented, PTAL line 117 (corrected the comparison boundaries after your review). It checks that the input field is in the screen and its top is strictly above the top of the vk. A more accurate condition would be checking if the whole Caret bound is visible (ash sometimes scrolls exactly to the bottom of the current caret), however it might be more complex and tricky to test that (I guess needs to be implemented in JS). Do you think that condition is necessary to be in tast test?",
+      "parentUuid": "b896b096_52c04e91",
       "revId": "211803299d8c94cbc5c73ac728bfcfd8581a50a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
