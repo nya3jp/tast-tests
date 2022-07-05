@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bcdceef_9b6fa13b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-05T10:28:29Z",
+      "side": 1,
+      "message": "Even if the node is outside the view port, its.ClickField function automatically move it into viewport. http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go?l\u003d365\n\nAlso the node position can potentially change in future. Hardcode is not ideal.\n\nI would suggest you to implement a function in its package named its.FindInputField(fieldCondition) to locate an input field on the bottom screen.\n\np.s. This sounds not easy. Maybe add a TODO here and follow it up later.",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 50
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee97f6cc_7d1e7ad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-05T10:28:29Z",
+      "side": 1,
+      "message": "In my opinion, newly added \u0027NamedCombine\u0027 is better than \u0027Combine\u0027. It prints out log when execute the function.",
+      "range": {
+        "startLine": 82,
+        "startChar": 34,
+        "endLine": 82,
+        "endChar": 41
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e32502_84236470",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-05T10:28:29Z",
+      "side": 1,
+      "message": "I reckon this is not required.",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b44e4c3_9aabcb5d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-05T10:28:29Z",
+      "side": 1,
+      "message": "ClickFieldUntilVKShown waits for VK locationed. So I feel this is not required either.",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 37
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88006774_6097fbe3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-05T10:28:29Z",
+      "side": 1,
+      "message": "nit: double .",
+      "range": {
+        "startLine": 116,
+        "startChar": 65,
+        "endLine": 116,
+        "endChar": 67
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212de2a2_7c077fd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-05T10:28:29Z",
+      "side": 1,
+      "message": "This is not accurate. It should be click input field at bottom should push up viewport.",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 17
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5e318c5_022ba10c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-05T10:28:29Z",
+      "side": 1,
+      "message": "TapKeysIgnoringCase. Otherwise this does not work on a field that enabled auto-shift.",
+      "range": {
+        "startLine": 159,
+        "startChar": 10,
+        "endLine": 159,
+        "endChar": 17
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
