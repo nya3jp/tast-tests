@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7636be0f_675f96f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-05T13:55:43Z",
+      "side": 1,
+      "message": "function removed",
+      "parentUuid": "a2df823a_57db3bd5",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "479ecf0d_e69cd251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-05T13:55:43Z",
+      "side": 1,
+      "message": "function removed",
+      "parentUuid": "277337cf_f7efa4bd",
+      "range": {
+        "startLine": 44,
+        "startChar": 67,
+        "endLine": 44,
+        "endChar": 71
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ef175e7_37eb9cd1",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-04T01:14:54Z",
       "side": 1,
       "message": "This function is redundant. It simply equals `uiauto.New(tconn).WaitUntilExists(menu)`",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 1
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c0b13c5_1f66832c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-05T13:55:43Z",
+      "side": 1,
+      "message": "function removed",
+      "parentUuid": "1ef175e7_37eb9cd1",
       "range": {
         "startLine": 44,
         "startChar": 0,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3e2e885_51bfbb46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-05T13:55:43Z",
+      "side": 1,
+      "message": "OK, reduced to 5",
+      "parentUuid": "c0c6030e_c491cb16",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 50
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c5ce7fe_35810dfe",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
         "patchSetId": 14
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6d1ad7b_cf95129d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-05T13:55:43Z",
+      "side": 1,
+      "message": "What pointer and what do you mean it is misused?\nIf you are talking about cts, I gather there is no reference passing in golang and I don\u0027t know how large the ctx is and whether it is legal to copy it, so passing a pointer seems like a natural way to avoid a copy.",
+      "parentUuid": "7c5ce7fe_35810dfe",
+      "range": {
+        "startLine": 61,
+        "startChar": 46,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da67a14c_22895aa0",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
         "patchSetId": 14
@@ -129,6 +249,30 @@
       "writtenOn": "2022-07-04T01:14:54Z",
       "side": 1,
       "message": "The error is dismissed in the return. Please use errors.Wrapf",
+      "range": {
+        "startLine": 63,
+        "startChar": 3,
+        "endLine": 63,
+        "endChar": 70
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c359a6f_92b54254",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-05T13:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da67a14c_22895aa0",
       "range": {
         "startLine": 63,
         "startChar": 3,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e687255_ad6abf91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-05T13:55:43Z",
+      "side": 1,
+      "message": "Could you be more specific as to what is wrong or inconsistent? Thank you.",
+      "parentUuid": "5067f631_9bc3fac6",
+      "range": {
+        "startLine": 69,
+        "startChar": 34,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85549c6c_2135eab0",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
         "patchSetId": 14
@@ -175,6 +343,30 @@
       "writtenOn": "2022-07-04T01:14:54Z",
       "side": 1,
       "message": "I do not think you really understand cleanupCtx and ctx.",
+      "range": {
+        "startLine": 117,
+        "startChar": 27,
+        "endLine": 117,
+        "endChar": 44
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3559f10e_40fe15be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-05T13:55:43Z",
+      "side": 1,
+      "message": "I really don\u0027t. Can you explain?",
+      "parentUuid": "85549c6c_2135eab0",
       "range": {
         "startLine": 117,
         "startChar": 27,
