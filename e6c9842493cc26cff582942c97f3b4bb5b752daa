@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c00d170_c8fc546f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-05T22:44:27Z",
+      "side": 1,
+      "message": "nit: This part, as well as the check of |usedLabels|, are identical between two cases.\n\nCan we get rid of the code duplication? I suppose we can structure the function as: (1) auth-type-specific preparation, (2) common checks, (3) auth-type-specific checks.",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 3
+      },
+      "revId": "e6c9842493cc26cff582942c97f3b4bb5b752daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

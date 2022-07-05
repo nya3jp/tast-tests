@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0817ce23_f369ea58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-05T22:44:27Z",
+      "side": 1,
+      "message": "Alright, let\u0027s leave this question to tast-owners@.",
+      "parentUuid": "9b1dfb2a_7e06a3a6",
+      "range": {
+        "startLine": 143,
+        "startChar": 92,
+        "endLine": 143,
+        "endChar": 98
+      },
+      "revId": "0100227246745408d122adb438df6ebe04fd2fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd3cb7de_d72e1360",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
         "patchSetId": 7
