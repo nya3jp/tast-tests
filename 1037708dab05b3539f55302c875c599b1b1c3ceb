@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7f879ac_7ba074ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "I think lacros vairation is needed.",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f8fb7cc0_6e8b8c01",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
         "patchSetId": 2
@@ -49,6 +66,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7d35136_c0f88638",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "nit/style:\n\nuiHandler, err :\u003d cuj.NewClamshellActionHandler(...)\nif err !\u003d nil {\n  ...",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 76
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cfcc161_793ef1a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "Could you clarify what is this sleep for? Are you waiting brightness to become zeron? If so could you wait for the condition, instead of just sleeping fixed amount of the time?",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f690690f_8878ecdb",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
         "patchSetId": 2
@@ -72,6 +129,194 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1bf1ec6_cd308f3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "the name and actual its implementation does not look aligned.\n\nDoes this just wait for the element then click?",
+      "range": {
+        "startLine": 195,
+        "startChar": 3,
+        "endLine": 195,
+        "endChar": 80
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c1c0a68_9cf142d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "you may be interested in to use DoDefault?",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "695614ed_2f4d799b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "could you move this to L218?\nOr,\n\nbrightness, err :\u003d systemBrightness(..)\n...\nif err :\u003d testing.Poll(... func(...) {\n  newBrightness, err :\u003d systemBrightness(...)\n  ...\n  if brightness \u003d\u003d newBrightness {\n    return errors.New(...)\n  }\n  brightness \u003d newBrightness\n  return nil\n}, ...) ...\n...\nreturn brightness",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2c0b93_9cd249af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "go prefers shorter name by using the currounding context. \"b\" looks enough.",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 14
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c71352ff_53b32b3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "could you use textexec.CommandContext?",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d007c0bc_65470dbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "could you not take testingState and instead return the error and handle it in the caller properly?",
+      "range": {
+        "startLine": 255,
+        "startChar": 45,
+        "endLine": 255,
+        "endChar": 62
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "234ea9d5_bc158c01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b8ae0f2_d860dfc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "maybe waitForExternalDisplayName() to tell callers this may take time.",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc9a6c9e_d54b8f75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "the behavior and the function name does not look matched.\n\nwaitForSettingsApp or something?",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b76b49e_fb51b022",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "nit: const",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e902ad4e_378cca70",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
         "patchSetId": 2
@@ -89,6 +334,91 @@
         "endLine": 361,
         "endChar": 15
       },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d68db0a4_c8861173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "could you move this out from the function, so that you don\u0027t need to compile this multiple times.",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d722758_386b54a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "Match is enough?",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf4b5cbb_595e8097",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "does this verification? Looks just waiting?",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c42f02_3de3104b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "Looks redundant. Why not just use LeftClick?",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c85ac289_b49678e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-05T04:35:20Z",
+      "side": 1,
+      "message": "I guess you need to verify each operation works somehow in each step?",
       "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
