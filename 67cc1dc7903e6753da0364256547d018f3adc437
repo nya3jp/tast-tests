@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f632b3cf_9c428f0a",
+        "filename": "src/chromiumos/tast/common/tape/helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-05T17:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61557b5f_318a4448",
+      "range": {
+        "startLine": 67,
+        "startChar": 15,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "67cc1dc7903e6753da0364256547d018f3adc437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5e68101_e8d38a5b",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f347178_a06cdbbe",
+        "filename": "src/chromiumos/tast/common/tape/helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-05T17:01:21Z",
+      "side": 1,
+      "message": "We could add it, but I don\u0027t really see a use case for that.\nAfter all the benefit of the AccountManager is that it releases the accounts for you.",
+      "parentUuid": "e5e68101_e8d38a5b",
+      "revId": "67cc1dc7903e6753da0364256547d018f3adc437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ee10c02_5b85c981",
         "filename": "src/chromiumos/tast/common/tape/pool_ids.go",
         "patchSetId": 4
@@ -54,6 +96,24 @@
       "writtenOn": "2022-07-04T08:20:28Z",
       "side": 1,
       "message": "Can we get some defaults here as well?",
+      "revId": "67cc1dc7903e6753da0364256547d018f3adc437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fd600d5_bf514121",
+        "filename": "src/chromiumos/tast/common/tape/pool_ids.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-05T17:01:21Z",
+      "side": 1,
+      "message": "The backend will use the default pool when we provide no poolID in the request.",
+      "parentUuid": "5ee10c02_5b85c981",
       "revId": "67cc1dc7903e6753da0364256547d018f3adc437",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
