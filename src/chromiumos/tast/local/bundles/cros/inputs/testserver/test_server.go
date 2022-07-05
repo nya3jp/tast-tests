@@ -249,13 +249,19 @@ func LaunchBrowserWithHTML(ctx context.Context, browserType browser.Type, cr *ch
 	// URL path needs to be in the allowlist to enable some features.
 	// https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/input_method/assistive_suggester.cc.
 	const urlPath = "e14s-test"
+
+	return LaunchBrowserWithServer(ctx, browserType, cr, tconn, httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Add("Content-Type", "text/html")
+		io.WriteString(w, rawHTML)
+	})), urlPath)
+}
+
+// LaunchBrowserWithServer launches a given server.
+// It opens either a Ash browser or a Lacros browser based on the arguments.
+func LaunchBrowserWithServer(ctx context.Context, browserType browser.Type, cr *chrome.Chrome, tconn *chrome.TestConn, server *httptest.Server, urlPath string) (*InputsTestServer, error) {
 	testing.ContextLog(ctx, "Start a local server to test inputs")
 	hasError := true
 
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Add("Content-Type", "text/html")
-		io.WriteString(w, rawHTML)
-	}))
 	defer func() {
 		if hasError {
 			server.Close()
