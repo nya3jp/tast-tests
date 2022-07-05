@@ -33,13 +33,18 @@ func init() {
 		Desc:         "Checks on device grammar check with physical keyboard typing",
 		Contacts:     []string{"jiwan@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
-		HardwareDeps: hwdep.D(hwdep.Model(pre.GrammarEnabledModels...)),
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "ondevice_grammar"},
 		Params: []testing.Param{
 			{
-				Fixture:   fixture.ClamshellNonVKWithGrammarCheck,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture:           fixture.ClamshellNonVKWithGrammarCheck,
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(pre.GrammarEnabledModels...)),
+				ExtraAttr:         []string{"group:input-tools-upstream"},
+			},
+			{
+				Name:              "informational",
+				Fixture:           fixture.ClamshellNonVKWithGrammarCheck,
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(pre.GrammarEnabledModels...)),
 			},
 			{
 				Name:              "lacros",
