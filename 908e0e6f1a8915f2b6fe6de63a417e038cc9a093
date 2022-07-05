@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c15195fd_dfc2c251",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-05T07:29:45Z",
+      "side": 1,
+      "message": "nit: add a point about comment/string cleanups",
+      "revId": "908e0e6f1a8915f2b6fe6de63a417e038cc9a093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a057360e_9a653ab6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-05T07:29:45Z",
+      "side": 1,
+      "message": "LGTM, but please wait for another reviewer to approve",
+      "revId": "908e0e6f1a8915f2b6fe6de63a417e038cc9a093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
