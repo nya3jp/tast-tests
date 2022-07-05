@@ -111,8 +111,6 @@ func DataLeakPreventionRulesListClipboardHistory(ctx context.Context, s *testing
 			ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 			defer cancel()
 
-			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
-
 			// Setup browser based on the chrome type.
 			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 			if err != nil {
@@ -147,6 +145,8 @@ func DataLeakPreventionRulesListClipboardHistory(ctx context.Context, s *testing
 				s.Fatalf("Failed to open page %q: %v", destURL, err)
 			}
 			defer destConn.Close()
+
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			if err := webutil.WaitForQuiescence(ctx, destConn, 10*time.Second); err != nil {
 				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", destURL, err)
