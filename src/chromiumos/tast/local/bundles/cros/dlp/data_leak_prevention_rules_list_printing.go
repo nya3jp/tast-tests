@@ -207,8 +207,6 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 	}
 	defer keyboard.Close()
 
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+s.Param().(printingTestParams).name)
-
 	// Update the policy blob.
 	pb := policy.NewBlob()
 	pb.AddPolicies(s.Param().(printingTestParams).policyDLP)
@@ -229,6 +227,8 @@ func DataLeakPreventionRulesListPrinting(ctx context.Context, s *testing.State) 
 		s.Fatal("Failed to open page: ", err)
 	}
 	defer conn.Close()
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+s.Param().(printingTestParams).name)
 
 	// Make a call to print page.
 	if err := testPrinting(ctx, tconn, keyboard, s.Param().(printingTestParams).restriction); err != nil {
