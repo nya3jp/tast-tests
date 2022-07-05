@@ -537,7 +537,8 @@ func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWrit
 		s.ui.WaitUntilGone(ResizeDiskDialog.Self))(ctx); err != nil {
 		return "", 0, errors.Wrap(err, "failed to resize")
 	}
-
+	// TODO (crbug/1232877): remove this line when crbug/1232877 is resolved.
+	testing.Sleep(ctx, time.Second)
 	return sizeOnSlider, size, nil
 }
 
