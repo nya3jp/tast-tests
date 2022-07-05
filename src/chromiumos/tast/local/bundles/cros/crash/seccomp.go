@@ -29,7 +29,7 @@ func init() {
 			"jorgelo@google.com",
 			"cros-telemetry@google.com",
 		},
-		Attr: []string{"group:mainline"},
+		Attr: []string{"group:mainline", "informational"},
 	})
 }
 
