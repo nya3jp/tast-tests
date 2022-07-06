@@ -499,6 +499,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54e0252e_82c763cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-06T15:31:38Z",
+      "side": 1,
+      "message": "Thanks. Is it now better?",
+      "parentUuid": "56f5026d_99aaa607",
+      "range": {
+        "startLine": 117,
+        "startChar": 27,
+        "endLine": 117,
+        "endChar": 44
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5a4da7d_763de2cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
         "patchSetId": 14
