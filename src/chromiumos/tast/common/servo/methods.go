@@ -63,13 +63,15 @@ type IntControl string
 
 // These are the Servo controls which can be get/set with an integer value.
 const (
-	BatteryChargeMAH     IntControl = "battery_charge_mah"
-	BatteryCurrentMA     IntControl = "ppvar_vbat_ma"
-	BatteryFullChargeMAH IntControl = "battery_full_charge_mah"
-	BatteryVoltageMV     IntControl = "ppvar_vbat_mv"
-	VolumeDownHold       IntControl = "volume_down_hold"    // Integer represents a number of milliseconds.
-	VolumeUpHold         IntControl = "volume_up_hold"      // Integer represents a number of milliseconds.
-	VolumeUpDownHold     IntControl = "volume_up_down_hold" // Integer represents a number of milliseconds.
+	BatteryChargeMAH             IntControl = "battery_charge_mah"
+	BatteryCurrentMA             IntControl = "ppvar_vbat_ma"
+	BatteryDesignVoltageDesignMV IntControl = "battery_voltage_design_mv"
+	BatteryFullDesignMAH         IntControl = "battery_full_design_mah"
+	BatteryFullChargeMAH         IntControl = "battery_full_charge_mah"
+	BatteryVoltageMV             IntControl = "ppvar_vbat_mv"
+	VolumeDownHold               IntControl = "volume_down_hold"    // Integer represents a number of milliseconds.
+	VolumeUpHold                 IntControl = "volume_up_hold"      // Integer represents a number of milliseconds.
+	VolumeUpDownHold             IntControl = "volume_up_down_hold" // Integer represents a number of milliseconds.
 )
 
 // A FloatControl contains the name of a gettable/settable Control which takes a floating-point value.
@@ -613,6 +615,16 @@ func (s *Servo) GetBatteryChargeMAH(ctx context.Context) (int, error) {
 // GetBatteryFullChargeMAH returns the battery's last full charge in mAh.
 func (s *Servo) GetBatteryFullChargeMAH(ctx context.Context) (int, error) {
 	return s.GetInt(ctx, BatteryFullChargeMAH)
+}
+
+// GetBatteryDesignVoltageDesignMV returns the battery's design voltage in mV
+func (s *Servo) GetBatteryDesignVoltageDesignMV(ctx context.Context) (int, error) {
+	return s.GetInt(ctx, BatteryDesignVoltageDesignMV)
+}
+
+// GetBatteryFullDesignMAH returns the battery's full design capacity in mAh
+func (s *Servo) GetBatteryFullDesignMAH(ctx context.Context) (int, error) {
+	return s.GetInt(ctx, BatteryFullDesignMAH)
 }
 
 // GetFloat returns the floating-point value of a specified control.
