@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f38ba158_ab04eddd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:35:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "446f59ab_f2e7c398",
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64a02fb0_1bd019f9",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a962fe_37ba8038",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:35:51Z",
+      "side": 1,
+      "message": "I would expect each test to have max 3 events, and almost always only 1 to match so it shouldn\u0027t be too spammy.",
+      "parentUuid": "64a02fb0_1bd019f9",
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12604fae_77bdd8d5",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-07-06T13:49:44Z",
       "side": 1,
       "message": "Maybe it makes more sense to record the start time after the fake powerwash.",
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bdda3e9_aa40fa2c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:35:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12604fae_77bdd8d5",
       "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +163,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5821685_fc0d715a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:35:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e73ddbe4_93a71712",
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7636e0d_444a1f5b",
@@ -122,6 +194,30 @@
       "writtenOn": "2022-07-06T13:49:44Z",
       "side": 1,
       "message": "\"sleep\"?",
+      "range": {
+        "startLine": 229,
+        "startChar": 21,
+        "endLine": 229,
+        "endChar": 55
+      },
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa68f5ca_8947e5dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:35:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7636e0d_444a1f5b",
       "range": {
         "startLine": 229,
         "startChar": 21,
@@ -149,6 +245,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8538f23f_b4328581",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:35:51Z",
+      "side": 1,
+      "message": "In this test, I would specifically only expect one event.",
+      "parentUuid": "3d1e6c91_db02c06f",
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "982b93b6_ed88074f",
@@ -162,6 +276,30 @@
       "writtenOn": "2022-07-06T13:49:44Z",
       "side": 1,
       "message": "This is not needed here, you can add everything to Errorf",
+      "range": {
+        "startLine": 263,
+        "startChar": 54,
+        "endLine": 263,
+        "endChar": 65
+      },
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24797a9f_02556abc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:35:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "982b93b6_ed88074f",
       "range": {
         "startLine": 263,
         "startChar": 54,
