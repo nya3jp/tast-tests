@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee741b67_b4d3864b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-06T10:46:20Z",
+      "side": 1,
+      "message": "This is too long. As dlp package is not big, you don\u0027t have to include the name in the subject line.\ne.g. `Move faillog after browser setup`",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 74
+      },
+      "revId": "42a74c87ad789e965bf5f8f06201eafb6f98e2a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5098721c_ce37cc4e",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-07-05T16:58:51Z",
       "side": 1,
       "message": "Thanks in advance.",
+      "revId": "42a74c87ad789e965bf5f8f06201eafb6f98e2a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7be1396c_edbdbb1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-06T10:46:20Z",
+      "side": 1,
+      "message": "Can you do this change for all the dlp tests, where the faillog creation is defer too early? I didn\u0027t check all the tests, but e.g. data_leak_prevention_rules_list_screenshot.go is one like this.",
       "revId": "42a74c87ad789e965bf5f8f06201eafb6f98e2a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
