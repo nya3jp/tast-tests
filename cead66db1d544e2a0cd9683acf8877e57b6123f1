@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86c7520_cc6dcaa2",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-06T18:23:09Z",
+      "side": 1,
+      "message": "nit: just return r.close(ctx)",
+      "revId": "cead66db1d544e2a0cd9683acf8877e57b6123f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffcb5262_734235df",
+        "filename": "src/chromiumos/tast/remote/wificell/pcap/capturer.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-06T18:23:09Z",
+      "side": 1,
+      "message": "For the sake of not changing behavior, you should still close before the if block, but you can just do the check before and assign the value to a local variable.",
+      "revId": "cead66db1d544e2a0cd9683acf8877e57b6123f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
