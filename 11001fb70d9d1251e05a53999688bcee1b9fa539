@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad3e8e77_051dd1b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-06T16:27:45Z",
+      "side": 1,
+      "message": "nit: all lower case `lacros`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "11001fb70d9d1251e05a53999688bcee1b9fa539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ead01af8_dbc31cb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-06T16:27:45Z",
+      "side": 1,
+      "message": "nit: no space",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "11001fb70d9d1251e05a53999688bcee1b9fa539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eae99661_4aba4e02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-06T16:27:45Z",
+      "side": 1,
+      "message": "I see that this CL modifies the test to expect that the underlay overlay strategy will always be used for at least one frame. Why should the test allow some frames for which the underlay overlay strategy is not used?",
+      "revId": "11001fb70d9d1251e05a53999688bcee1b9fa539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec292af9_d6aba490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/html_video_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-06T16:27:45Z",
+      "side": 1,
+      "message": "Now this should be `five seconds`",
+      "range": {
+        "startLine": 92,
+        "startChar": 43,
+        "endLine": 92,
+        "endChar": 51
+      },
+      "revId": "11001fb70d9d1251e05a53999688bcee1b9fa539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ccf663_49ef9ff0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/html_video_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-06T16:27:45Z",
+      "side": 1,
+      "message": "nit: To eliminate the need for the `foundUnderlay` variable, just `return`.",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 23
+      },
+      "revId": "11001fb70d9d1251e05a53999688bcee1b9fa539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "620f1c5d_0cac6e38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/html_video_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-06T16:27:45Z",
+      "side": 1,
+      "message": "nit: Nix the `numberOfFrames` variable and just use `hist.TotalCount()`.",
+      "range": {
+        "startLine": 117,
+        "startChar": 67,
+        "endLine": 117,
+        "endChar": 81
+      },
+      "revId": "11001fb70d9d1251e05a53999688bcee1b9fa539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
