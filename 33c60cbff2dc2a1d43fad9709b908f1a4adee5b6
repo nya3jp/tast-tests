@@ -34,6 +34,24 @@
       "parentUuid": "4937537e_ed647785",
       "revId": "33c60cbff2dc2a1d43fad9709b908f1a4adee5b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d67086c_59b84683",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-07-06T02:21:59Z",
+      "side": 1,
+      "message": "Last time I measured start up on a non-lab Eve it was like 4 seconds, fairly consistently...\n\nLooking at crosbolt I don\u0027t see Eve but other Poppy\u0027s even at their slowest look like \u003c30 seconds.\n\nDon\u0027t worry about creating a bug, figuring out performance is probably its own big project.",
+      "parentUuid": "35ecd782_dc823838",
+      "revId": "33c60cbff2dc2a1d43fad9709b908f1a4adee5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
