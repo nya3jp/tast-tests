@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a405dd86_c39492ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_hardware_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-07-06T12:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c51fa07_94d63088",
+      "range": {
+        "startLine": 32,
+        "startChar": 26,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "7d1f0aa6466e38e0a4cdc83228ba3cd2c71e6586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b451406f_ab9b624d",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-04T06:47:12Z",
       "side": 1,
       "message": "nit: suggest to rename to `validateXXX` to be meaningful.",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "7d1f0aa6466e38e0a4cdc83228ba3cd2c71e6586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea139d7_ca679099",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_audio_hardware_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-07-06T12:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b451406f_ab9b624d",
       "range": {
         "startLine": 43,
         "startChar": 5,
