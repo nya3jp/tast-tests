@@ -37,6 +37,7 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/loginstatus"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/local/webrtcinternals"
 	"chromiumos/tast/testing"
@@ -736,6 +737,18 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 		if err := meetConn.Eval(ctx, "hrTelemetryApi.streamQuality.receive720p()", nil); err != nil {
 			return errors.Wrap(err, "failed to request receiving 720p")
+		}
+
+		// Direct all the bots to pin the test user for high video resolution.
+		login, err := loginstatus.GetLoginStatus(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get login status: ", err)
+		}
+		if !login.IsLoggedIn {
+			s.Fatal("Got login status indicating that the user is not logged in")
+		}
+		if err := bc.ExecuteScript(ctx, fmt.Sprintf("@all pin_participant %q", *login.DisplayName), meetingCode); err != nil {
+			s.Fatal("Failed to direct bots to pin the test user: ", err)
 		}
 
 		if meet.present {
