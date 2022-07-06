@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a79d3d35_741283c2",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-06T23:15:28Z",
+      "side": 1,
+      "message": "s/technology/technologies/. Also note in the comment that it is a comma-separated list of shill technologies. \nAlternatively (and preferable I think), since this is a convenience function, we could just use a constant to enable portal detection for cellular/ethernet/wifi since that is likely what we will always want.",
+      "revId": "d4311293ce68616b14c273664d3c2361c7a280ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3421b9_16ad16a9",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-06T23:15:28Z",
+      "side": 1,
+      "message": "Apologies for not noting this before, but if we do provide a cleanup function, we would want to query the property first, then restore it to that. We could also be clever and not do anything if the existing property matches the provided one.\n\nThat said, since we currently aren\u0027t using the cleanup callback, we could just remove the cleanup for now. That makes this a little bit trivial, but if we provide the technology list as a constant as suggested above, it will simplify the calling code a bit.",
+      "revId": "d4311293ce68616b14c273664d3c2361c7a280ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
