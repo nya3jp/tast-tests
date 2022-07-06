@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd8aa325_494f8e78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-06T01:27:52Z",
+      "side": 1,
+      "message": "This also assumes that the title of the file is exactly \"E14s test page\". How about reading the string from the file and call the originial `LaunchBrowserWithHTML` instead? So this CL https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3742805 ensures the title is valid.",
+      "range": {
+        "startLine": 261,
+        "startChar": 5,
+        "endLine": 261,
+        "endChar": 28
+      },
+      "revId": "d47c89c83ed58c0e56ddce50c656a123c71d54c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
