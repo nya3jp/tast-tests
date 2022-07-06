@@ -260,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba5cbd9_a05daee8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-06T15:30:50Z",
+      "side": 1,
+      "message": "Ah, ok, my bad. Thanks.",
+      "parentUuid": "9d04a411_06e0a70e",
+      "range": {
+        "startLine": 61,
+        "startChar": 46,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da67a14c_22895aa0",
@@ -378,6 +402,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda2dede_336560a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-06T15:30:50Z",
+      "side": 1,
+      "message": "AHA, the reason is that err \u003d\u003d nil is easy to typo as err \u003d nil, which is an assignment and hence a potential bug.\nOn the other hand if you typo nil \u003d\u003d err as nil \u003d err, that\u0027s a syntax error and you will be warned early.\nBut OK, if this is not the common pattern, I can change it.",
+      "parentUuid": "2974af25_26a0e28c",
+      "range": {
+        "startLine": 69,
+        "startChar": 34,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85549c6c_2135eab0",
@@ -462,6 +510,30 @@
       "writtenOn": "2022-07-04T01:14:54Z",
       "side": 1,
       "message": "nit: is not",
+      "range": {
+        "startLine": 121,
+        "startChar": 71,
+        "endLine": 121,
+        "endChar": 74
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3d2e83f_5d1b6f43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-06T15:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5a4da7d_763de2cd",
       "range": {
         "startLine": 121,
         "startChar": 71,

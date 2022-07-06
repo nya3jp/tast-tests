@@ -22,6 +22,30 @@
       },
       "revId": "63cad8ec6458c0b90ecd2eb58aa81ccaed192796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d1da643_e319c8f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-06T15:30:50Z",
+      "side": 1,
+      "message": "The problem is that LaunchAtPageURL requires a \u0027condition\u0027.\nDo you think I should merge both chasks into one condition, or should I use something like func(){return true} as condition and then do the checks with other methods? Or is there some other function that I can use that doesn\u0027t requre a condition?",
+      "parentUuid": "940c9a89_74117d54",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "63cad8ec6458c0b90ecd2eb58aa81ccaed192796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
