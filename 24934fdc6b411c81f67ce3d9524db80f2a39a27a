@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5daaba_94afdfc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-06T08:50:01Z",
+      "side": 1,
+      "message": "This test is pretty long now because we need to restart chrome and go through OOBE for every subtest. Is this OK or should I split it into several test files with the same content/implementation but different policies set?",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 54
+      },
+      "revId": "24934fdc6b411c81f67ce3d9524db80f2a39a27a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
