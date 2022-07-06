@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c2e0ff_699ad267",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-06T19:25:27Z",
+      "side": 1,
+      "message": "are GAIA accounts actually needed for these tests? if there\u0027s a way to just avoid using them, I think that would help a lot with managing state between tests. or is there a way to disable syncing desk templates?",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "18e7471b_59e496f1",
@@ -60,6 +83,138 @@
         "startChar": 93,
         "endLine": 50,
         "endChar": 108
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f333e1_00ba9572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-06T19:25:27Z",
+      "side": 1,
+      "message": "I noticed this seems to be used every time after `ash.SetOverviewModeAndWait`. Should it just be added to that function?",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc8dcb4_bd31b484",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-06T19:25:27Z",
+      "side": 1,
+      "message": "I think it would be better to restructure this so errors are handled properly. Maybe something like:\n```\nfound, err :\u003d ac.IsNodeFound(...)\nif err !\u003d nil {\n  return errors.Wrap(err, \"msg\")\n}\n\nfor found {\n  \u003crest of the loop\u003e\n  // reevaluate `found` at the end\n  found, err \u003d ac.IsNodeFound(ctx, libraryButton)\n  if err !\u003d nil {\n    return errors.Wrap(err, \"msg\")\n  }\n}\n```",
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc4cbf4_7355c59d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-06T19:25:27Z",
+      "side": 1,
+      "message": "error should be handled",
+      "range": {
+        "startLine": 130,
+        "startChar": 21,
+        "endLine": 130,
+        "endChar": 22
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83031ed5_557f5ee7",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-06T19:25:27Z",
+      "side": 1,
+      "message": "nit: I think this could be shortened to `for i :\u003d range(deskTemplatesInfo)`",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 47
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cf52f50_8fa46b48",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-06T19:25:27Z",
+      "side": 1,
+      "message": "no need to use `uiauto.Combine` for a single action",
+      "range": {
+        "startLine": 133,
+        "startChar": 13,
+        "endLine": 133,
+        "endChar": 27
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c319054_fde67ed9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-06T19:25:27Z",
+      "side": 1,
+      "message": "why not just `ac.LeftClick(firstDeskTemplate)(ctx)`? if the distinction is important here, I\u0027d suggest leaving a comment",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 39
       },
       "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
