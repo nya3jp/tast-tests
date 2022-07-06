@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e2767398_1853aef8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-06T14:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d9151ee_2109011f",
+      "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "98199498_45b8e771",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e8201f7_bb3e9737",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-06T14:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "518a4523_3b630dfa",
+      "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27357423_2c7d72c0",
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f220ae5_bf1b48dd",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-06T14:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27357423_2c7d72c0",
+      "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "216a91f4_8f6c6878",
@@ -99,6 +153,24 @@
       "writtenOn": "2022-07-06T12:58:36Z",
       "side": 1,
       "message": "nit: add the timeoutInSeconds to the error message.",
+      "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eddfd9e_cbfc1873",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-06T14:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "216a91f4_8f6c6878",
       "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -140,6 +212,30 @@
       "side": 1,
       "message": "After checking all CLs, I see how that effort would spill over other parts of the code. Maybe it is too much for now.",
       "parentUuid": "7bb9d622_c53b710d",
+      "range": {
+        "startLine": 140,
+        "startChar": 61,
+        "endLine": 140,
+        "endChar": 72
+      },
+      "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb2d280_3c058bad",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-06T14:20:53Z",
+      "side": 1,
+      "message": "At first I wanted to do it that way, and I spent several hours to find a good way to do it but every change created other problems elsewhere, so this is so far the best compromise I could find that is not too ugly and has no bigger problems.",
+      "parentUuid": "c0fba7e6_fd2d594a",
       "range": {
         "startLine": 140,
         "startChar": 61,
