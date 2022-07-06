@@ -29,7 +29,7 @@ import (
 const tinkerCadTerm = "Tinkercad"
 
 // Run runs the EDU3DModelingCUJ test.
-func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, outDir, sampleDesignURL, rotateIconPath string) (retErr error) {
+func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, bt browser.Type, outDir, sampleDesignURL, rotateIconPath string) (retErr error) {
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to the test API connection")
@@ -62,12 +62,21 @@ func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, outDir, sampleDe
 	}
 	defer uiHandler.Close()
 
-	var browserStartTime time.Duration
 	testing.ContextLog(ctx, "Start to get browser start time")
-	_, browserStartTime, err = cuj.GetBrowserStartTime(ctx, tconn, true, isTablet, browser.TypeAsh)
+	l, browserStartTime, err := cuj.GetBrowserStartTime(ctx, tconn, true, isTablet, bt)
 	if err != nil {
 		return errors.Wrap(err, "failed to get browser start time")
 	}
+	br := cr.Browser()
+	var bTconn *chrome.TestConn
+	if l != nil {
+		bTconn, err = l.TestAPIConn(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to get lacros test API conn")
+		}
+		br = l.Browser()
+	}
+	defer cuj.CloseAllWindows(ctx, tconn)
 
 	// Shorten the context to cleanup recorder.
 	cleanUpRecorderCtx := ctx
@@ -81,7 +90,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, outDir, sampleDe
 		return errors.Wrap(err, "failed to create the recorder")
 	}
 	defer recorder.Close(cleanUpRecorderCtx)
-	if err := cuj.AddPerformanceCUJMetrics(tconn, nil, recorder); err != nil {
+	if err := cuj.AddPerformanceCUJMetrics(tconn, bTconn, recorder); err != nil {
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 
@@ -103,10 +112,10 @@ func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, outDir, sampleDe
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		account := cr.Creds().User
-		tinkerCad := tinkercad.NewTinkerCad(tconn, kb, rotateIconPath)
+		tinkerCad := tinkercad.NewTinkerCad(tconn, kb, br, rotateIconPath)
 
 		// Open TinkerCAD on the chrome.
-		if err := tinkerCad.Open(ctx, cr); err != nil {
+		if err := tinkerCad.Open(ctx); err != nil {
 			return errors.Wrapf(err, "failed to open TinkerCAD URL %v", cuj.TinkerCadSignInURL)
 		}
 		defer func(ctx context.Context) {
@@ -130,13 +139,13 @@ func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, outDir, sampleDe
 		}
 
 		// Login to TinkerCAD with google oauth.
-		if err := tinkerCad.Login(ctx, account); err != nil {
-			return err
+		if err := tinkerCad.Login(account)(ctx); err != nil {
+			return errors.Wrap(err, "failed to login to TinkerCAD")
 		}
 
 		// Open another tab than switch back to TinkerCAD.
 		testing.ContextLog(ctx, "Open another tab in same browser")
-		conn, err := cr.NewConn(ctx, cuj.WikipediaMainURL)
+		conn, err := br.NewConn(ctx, cuj.WikipediaMainURL)
 		if err != nil {
 			return errors.Wrapf(err, "failed to open URL %s", cuj.WikipediaMainURL)
 		}
@@ -152,7 +161,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, isTablet bool, outDir, sampleDe
 		// Copy the design from URL than delete it at the final step.
 		designName, err := tinkerCad.Copy(ctx, sampleDesignURL)
 		if err != nil {
-			return err
+			return errors.Wrapf(err, "failed to copy the sample design from %s", sampleDesignURL)
 		}
 		defer func(ctx context.Context) {
 			// If case fails, dump the last screen before deleting the design.

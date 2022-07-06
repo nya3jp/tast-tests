@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -36,6 +37,7 @@ type TinkerCad struct {
 	tconn          *chrome.TestConn
 	kb             *input.KeyboardEventWriter
 	pc             *pointer.MouseContext
+	br             *browser.Browser
 	EditorWinRect  coords.Rect
 	exportFilePath string
 	rotateIconPath string
@@ -73,16 +75,17 @@ const (
 	// Used for waiting the design being stable enough to do the next step.
 	waitUIDuration = 3 * time.Second
 	// Used for situations where UI response might be faster.
-	shortUITimeout = 10 * time.Second
+	shortUITimeout = 8 * time.Second
 )
 
 // NewTinkerCad creates an instance of TinkerCAD.
-func NewTinkerCad(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, rotateIconPath string) *TinkerCad {
+func NewTinkerCad(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, br *browser.Browser, rotateIconPath string) *TinkerCad {
 	return &TinkerCad{
 		ui:             uiauto.New(tconn),
 		ud:             uidetection.NewDefault(tconn),
 		tconn:          tconn,
 		kb:             kb,
+		br:             br,
 		pc:             pointer.NewMouse(tconn),
 		EditorWinRect:  coords.Rect{},
 		rotateIconPath: rotateIconPath,
@@ -90,8 +93,8 @@ func NewTinkerCad(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, rotateI
 }
 
 // Open opens a TinkerCAD website on chrome browser.
-func (tc *TinkerCad) Open(ctx context.Context, cr *chrome.Chrome) (err error) {
-	tc.conn, err = cr.NewConn(ctx, cuj.TinkerCadDashboardURL)
+func (tc *TinkerCad) Open(ctx context.Context) (err error) {
+	tc.conn, err = tc.br.NewConn(ctx, cuj.TinkerCadDashboardURL)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to chrome")
 	}
@@ -100,38 +103,36 @@ func (tc *TinkerCad) Open(ctx context.Context, cr *chrome.Chrome) (err error) {
 
 // Login logs in to TinkerCAD with google oauth.
 // Will do sign up process if don't have a TinkerCAD account.
-func (tc *TinkerCad) Login(ctx context.Context, account string) error {
-	if err := tc.conn.Navigate(ctx, cuj.TinkerCadSignInURL); err != nil {
-		return errors.Wrapf(err, "failed to navigate to %s", cuj.TinkerCadSignInURL)
-	}
-	signInWithGoogleOauth := func(ctx context.Context) error {
-		personalAccounts := loginAreaFinder.Name("Personal accounts").Role(role.StaticText)
-		signIn := loginAreaFinder.Name("Sign in with Google").Role(role.StaticText)
-		account := nodewith.Name(account).Role(role.StaticText)
-		btnContinue := nodewith.Name("Continue").HasClass("adsk-btn").Role(role.Button)
-		// If the DUT has only one account, it would login to TinkerCAD directly.
-		// Otherwise, it would show list of accounts.
-		// Also it will do sign up process if haven't done it before.
-		return uiauto.NamedCombine("login to TinkerCAD",
-			tc.ui.DoDefaultUntil(personalAccounts, tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(signIn)),
-			tc.ui.DoDefault(signIn),
-			// Click account button while there's more than one google account.
-			uiauto.IfSuccessThen(tc.ui.WaitUntilExists(account),
-				tc.ui.DoDefaultUntil(account, tc.ui.Gone(account))),
-			// Click continue button while the account hasn't signed up.
-			uiauto.IfSuccessThen(tc.ui.WaitUntilExists(btnContinue),
-				tc.ui.DoDefault(btnContinue)),
-		)(ctx)
-	}
-	testing.ContextLogf(ctx, "Login to TinkerCAD though google oauth with %s", account)
-	createNewDesign := dashboardAreaFinder.Name("Create new design").Role(role.StaticText)
-	if err := tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(createNewDesign)(ctx); err != nil {
-		if err := signInWithGoogleOauth(ctx); err != nil {
-			return errors.Wrap(err, "failed to sign in TinkerCAD with google oauth")
+func (tc *TinkerCad) Login(account string) action.Action {
+	return func(ctx context.Context) error {
+		signInWithGoogleOauth := func(ctx context.Context) error {
+			personalAccounts := loginAreaFinder.Name("Personal accounts").Role(role.StaticText)
+			signIn := loginAreaFinder.Name("Sign in with Google").Role(role.StaticText)
+			account := nodewith.Name(account).Role(role.StaticText)
+			btnContinue := nodewith.Name("Continue").HasClass("adsk-btn").Role(role.Button)
+			// If the DUT has only one account, it would login to TinkerCAD directly.
+			// Otherwise, it would show list of accounts.
+			// Also it will do sign up process if haven't done it before.
+			return uiauto.NamedCombine("login to TinkerCAD",
+				tc.ui.DoDefaultUntil(personalAccounts,
+					tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(signIn)),
+				tc.ui.DoDefault(signIn),
+				// Click account button while there's more than one google account.
+				uiauto.IfSuccessThen(tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(account),
+					tc.ui.DoDefaultUntil(account, tc.ui.Gone(account))),
+				// Click continue button while the account hasn't signed up.
+				uiauto.IfSuccessThen(tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(btnContinue),
+					tc.ui.DoDefault(btnContinue)),
+			)(ctx)
 		}
+		if err := tc.conn.Navigate(ctx, cuj.TinkerCadSignInURL); err != nil {
+			return errors.Wrapf(err, "failed to navigate to %s", cuj.TinkerCadSignInURL)
+		}
+		createNewDesign := dashboardAreaFinder.Name("Create new design").Role(role.StaticText)
+		return uiauto.NamedCombine("login to TinkerCAD though google oauth with "+account,
+			uiauto.IfSuccessThen(tc.ui.WithTimeout(shortUITimeout).WaitUntilGone(createNewDesign),
+				signInWithGoogleOauth))(ctx)
 	}
-	testing.ContextLog(ctx, "Already login to TinkerCAD, going to reuse it")
-	return nil
 }
 
 // Copy copies an initial design from sample design URL and returns the name of the design.
@@ -192,6 +193,8 @@ func (tc *TinkerCad) GetEditorWindowRect(ctx context.Context) (coords.Rect, erro
 
 // DisableGrid disable show grid option.
 func (tc *TinkerCad) DisableGrid() action.Action {
+	popUpMsg := nodewith.NameContaining("to your design!").Role(role.StaticText)
+	popUpClose := nodewith.HasClass("new-feature-details-toast-title-button-close").Role(role.GenericContainer)
 	btnEditGrid := editorAreaFinder.Name("Edit Grid").Role(role.StaticText)
 	cbContainer := nodewith.HasClass("editgrid__modal__block1__showGridContainer").Role(role.GenericContainer)
 	cbShowGrid := nodewith.HasClass("editor__inspector__item__checkbox").Role(role.CheckBox).Ancestor(cbContainer)
@@ -199,7 +202,9 @@ func (tc *TinkerCad) DisableGrid() action.Action {
 	return uiauto.NamedCombine("disable show grid option",
 		tc.ui.DoDefault(btnEditGrid),
 		tc.ui.DoDefault(cbShowGrid),
-		tc.ui.DoDefault(btnUpdateGrid))
+		tc.ui.DoDefault(btnUpdateGrid),
+		uiauto.IfSuccessThen(tc.ui.WithTimeout(shortUITimeout).WaitUntilExists(popUpMsg),
+			tc.ui.DoDefault(popUpClose)))
 }
 
 // AddShapeAndRotate adds primitive shape by given shape name and rotates it.
@@ -237,7 +242,6 @@ func (tc *TinkerCad) AddShapeAndRotate(shapeName string) action.Action {
 // RotateAll rotates all shapes at the same time.
 func (tc *TinkerCad) RotateAll() action.Action {
 	return uiauto.NamedCombine("rotate all shapes together",
-		tc.Visualize(ViewHome),
 		// Pressing ctrl+A for select all shortcut on TinkerCad.
 		tc.kb.AccelAction("ctrl+A"),
 		// Pressing F for focus shortcut on TinkerCad and this helps draging action to be more stable.
