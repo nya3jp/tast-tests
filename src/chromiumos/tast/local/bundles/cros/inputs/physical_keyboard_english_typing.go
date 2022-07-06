@@ -28,21 +28,19 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that physical keyboard can perform basic typing",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Fixture:   fixture.ClamshellNonVK,
-				ExtraAttr: []string{"group:input-tools-upstream"},
+				Fixture: fixture.ClamshellNonVK,
 			},
 			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraSoftwareDeps: []string{"lacros"},
-				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
