@@ -97,6 +97,30 @@
       },
       "revId": "aad48598a4c24f214c92bad9bf08bba2ac0b72fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "394454e0_e82f62bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-06T02:36:37Z",
+      "side": 1,
+      "message": "Not really, I cannot think of any non-intrusive way to check/test its state. This cache is only \"visible“ when we setting an address, but setting an address will further affect its state.",
+      "parentUuid": "9f7a5445_127d7bfe",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 14
+      },
+      "revId": "aad48598a4c24f214c92bad9bf08bba2ac0b72fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
