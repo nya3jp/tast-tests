@@ -35,7 +35,7 @@ func init() {
 		Desc:         "Checks emoji suggestions with physical keyboard typing",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 		Fixture:      fixture.ClamshellNonVK,
 		Params: []testing.Param{

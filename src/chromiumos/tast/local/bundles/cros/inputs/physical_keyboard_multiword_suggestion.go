@@ -33,7 +33,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
 		HardwareDeps: hwdep.D(hwdep.Model(pre.MultiwordEnabledModels...)),
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{

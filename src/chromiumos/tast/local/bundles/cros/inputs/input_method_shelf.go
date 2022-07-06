@@ -32,7 +32,7 @@ func init() {
 		Desc:         "Verifies that user can toggle shelf option and switch inut method",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.DefaultInputMethod, ime.JapaneseWithUSKeyboard}),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{

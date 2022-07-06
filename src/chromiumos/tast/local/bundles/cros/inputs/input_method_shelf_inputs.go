@@ -39,7 +39,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test input functions triggered from IME tray",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
-		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
+		SoftwareDeps: []string{"chrome", "chrome_internal", "google_virtual_keyboard"},
 		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.DefaultInputMethod}),
 		Data:         data.ExtractExternalFiles(testMessages, []ime.InputMethod{ime.DefaultInputMethod}),

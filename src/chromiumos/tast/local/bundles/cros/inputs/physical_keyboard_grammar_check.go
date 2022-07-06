@@ -35,7 +35,7 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		HardwareDeps: hwdep.D(hwdep.Model(pre.GrammarEnabledModels...)),
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{
 			{
 				Fixture:   fixture.ClamshellNonVKWithGrammarCheck,
