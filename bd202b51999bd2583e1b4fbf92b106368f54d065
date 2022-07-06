@@ -16,6 +16,24 @@
       "message": "Is this change intentional? The function is called \"mountVault...\", so it\u0027s kinda self-contradicting if we unmount the vault before returning.\n\n(I haven\u0027t checked what the rest of the test does, but I presume it does the mount for a reason.)",
       "revId": "bd202b51999bd2583e1b4fbf92b106368f54d065",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49e4e860_51aae9b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-06T23:37:32Z",
+      "side": 1,
+      "message": "This was intentional, I did make a comment about it in Description. But upon further thought, I\u0027m going to leave this one out",
+      "parentUuid": "e162f50f_2c763794",
+      "revId": "bd202b51999bd2583e1b4fbf92b106368f54d065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
