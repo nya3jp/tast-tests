@@ -34,6 +34,24 @@
       "parentUuid": "e162f50f_2c763794",
       "revId": "bd202b51999bd2583e1b4fbf92b106368f54d065",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b36de973_b710f1e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/data_migration.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-06T23:38:57Z",
+      "side": 1,
+      "message": "Ack, thanks - let\u0027s keep it focused on the bugfix.\nPlease update the description now :-)",
+      "parentUuid": "49e4e860_51aae9b8",
+      "revId": "bd202b51999bd2583e1b4fbf92b106368f54d065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
