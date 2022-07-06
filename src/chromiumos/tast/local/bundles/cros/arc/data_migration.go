@@ -205,8 +205,8 @@ func mountVaultWithArchivedHomeData(ctx context.Context, homeDataPath, username,
 	}
 	success := false
 	defer func() {
+		cryptohome.UnmountVault(ctx, username)
 		if !success {
-			cryptohome.UnmountVault(ctx, username)
 			cryptohome.RemoveVault(ctx, username)
 		}
 	}()
