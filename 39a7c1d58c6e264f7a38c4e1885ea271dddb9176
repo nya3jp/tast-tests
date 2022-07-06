@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc271bc3_885008a8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T15:22:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45fe57c3_aafa8cd6",
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "446f59ab_f2e7c398",
@@ -136,6 +154,30 @@
       "writtenOn": "2022-07-06T13:49:44Z",
       "side": 1,
       "message": "Use EnsureTPMAndSystemStateAreReset instead",
+      "range": {
+        "startLine": 194,
+        "startChar": 23,
+        "endLine": 194,
+        "endChar": 60
+      },
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d19a1c3_c7e1fb8a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T15:22:49Z",
+      "side": 1,
+      "message": "Files b/238187800",
+      "parentUuid": "bccd7bc5_9162d6a0",
       "range": {
         "startLine": 194,
         "startChar": 23,
