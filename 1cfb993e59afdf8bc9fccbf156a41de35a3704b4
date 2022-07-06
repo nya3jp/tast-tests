@@ -39,6 +39,30 @@
       },
       "revId": "1cfb993e59afdf8bc9fccbf156a41de35a3704b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d169322_a2d0c5dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-06T07:28:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ded7bc9e_7a27931f",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "1cfb993e59afdf8bc9fccbf156a41de35a3704b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
