@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c0dc08_067d7736",
+        "filename": "src/chromiumos/tast/local/chrome/internal/login/enroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edc3a57a_5a88d02a",
+      "revId": "f72d8f1877cc0eb277c1621c4d322fb3beb7e953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b4a2c99_14c89ac6",
