@@ -1089,6 +1089,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd09f3dc_ac039320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-06T16:10:09Z",
+      "side": 1,
+      "message": "Please get rid of the word `no`. My comment was about consistency in whether comments end with a period. The comment `// box size in pixels` below does not end with a period, so I thought these should not either.",
+      "parentUuid": "10662ea5_d618508e",
+      "range": {
+        "startLine": 282,
+        "startChar": 43,
+        "endLine": 282,
+        "endChar": 44
+      },
+      "revId": "2804097d196049ca8511292a6012455e6717e9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e8aa8b6_9be3115e",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
         "patchSetId": 4
@@ -1124,6 +1148,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "7e8aa8b6_9be3115e",
+      "range": {
+        "startLine": 283,
+        "startChar": 48,
+        "endLine": 283,
+        "endChar": 49
+      },
+      "revId": "2804097d196049ca8511292a6012455e6717e9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8929bd92_f29756f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-06T16:10:09Z",
+      "side": 1,
+      "message": "Same deal.",
+      "parentUuid": "0986f851_bb2f1fa2",
       "range": {
         "startLine": 283,
         "startChar": 48,
