@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e49a95_ba4a2bd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-06T22:07:18Z",
+      "side": 1,
+      "message": "I didn\u0027t do a full review yet, but I\u0027d prefer using the whole platform stack (shill, wpa_supplicant, driver, and below) the way our other integration tests do. Could we follow the same model here?",
+      "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b54322dc_75a971f0",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-06T22:07:18Z",
+      "side": 1,
+      "message": "Heads up that this is being added here https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3697340 so you may have to rebase once that lands.",
+      "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ac7932a_089aeb75",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-06T22:07:18Z",
+      "side": 1,
+      "message": "Also add yourself here while the test is unstable",
+      "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "214b60ce_adcfef14",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-06T22:07:18Z",
+      "side": 1,
+      "message": "wificell_unstable as well",
+      "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0291ff4a_3fef9502",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-06T22:07:18Z",
+      "side": 1,
+      "message": "nit: For other BSSIDs below, we just store it as a string. Can we keep the same pattern here?",
+      "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
