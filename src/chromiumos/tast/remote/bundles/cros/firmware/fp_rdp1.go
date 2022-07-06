@@ -32,7 +32,7 @@ func init() {
 			"chromeos-fingerprint@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Timeout:      6 * time.Minute,
+		Timeout:      9 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
 		ServiceDeps:  []string{"tast.cros.platform.UpstartService", dutfs.ServiceName},
@@ -156,17 +156,27 @@ func testRDP1(ctx context.Context, outdir string, d *rpcdut.RPCDUT, buildFwFile 
 		}()
 	}
 
-	errcode, ok := err.(*ssh.ExitError)
-	if !ok {
-		return errors.New("failed to return Exit Error")
+	exitStatus := 0
+	if err != nil {
+		errcode, ok := err.(*ssh.ExitError)
+		if !ok {
+			return errors.New("failed to return Exit Error")
+		}
+		if errcode.Signal() != "" {
+			return errors.New("flash fpmcu terminated from signal: " + errcode.Signal())
+		}
+		exitStatus = errcode.ExitStatus()
 	}
-	if errcode.Signal() != "" {
-		return errors.New("flash fpmcu terminated from signal: " + errcode.Signal())
-	}
-	// Flash fpmcu in RDP1 should fail and not read any bytes from flash.
-	// Flash fpmcu in RDP1 run with removeReadProtect should trigger mass erase which sets all bytes to 0xFF.
-	if errcode.ExitStatus() == 0 {
-		return errors.New("flash fpmcu completed successfully")
+
+	// Flash_fp_mcu in RDP1 should fail and not read any bytes from flash.
+	// Flash_fp_mcu in RDP1 run with removeReadProtect should trigger mass
+	// erase which sets all bytes to 0xFF. It will return zero exit status
+	// on boards that require reboot (eg. zork) or non-zero on boards that
+	// doesn't require reboot (because flash_fp_mcu fails to check if
+	// firmware is functional).
+	testing.ContextLogf(ctx, "flash_fp_mcu exited with status %d", exitStatus)
+	if !removeFlashReadProtect && exitStatus == 0 {
+		return errors.New("flash_fp_mcu completed successfully")
 	}
 
 	if removeFlashReadProtect {
