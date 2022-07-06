@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3872330f_d4961ad2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T16:35:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36268b09_f27c6827",
+      "revId": "6a95865eda584a9561054a9decb5da06fecc7405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95aad23b_fb90a48d",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10cd7e0c_197b47df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T16:35:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95aad23b_fb90a48d",
+      "revId": "6a95865eda584a9561054a9decb5da06fecc7405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43a5ad54_49e35d2d",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-07-06T16:18:20Z",
       "side": 1,
       "message": "nit: pass time.Time around instead of int64",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 14
+      },
+      "revId": "6a95865eda584a9561054a9decb5da06fecc7405",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da4fe2ae_05d5ce83",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T16:35:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43a5ad54_49e35d2d",
       "range": {
         "startLine": 92,
         "startChar": 1,
