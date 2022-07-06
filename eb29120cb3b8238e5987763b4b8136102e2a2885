@@ -16,6 +16,24 @@
       "message": "+2 to avoid round trips, but why are we wanting to also disable HW overlay?",
       "revId": "eb29120cb3b8238e5987763b4b8136102e2a2885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70eb7925_acf05767",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447542
+      },
+      "writtenOn": "2022-07-06T02:58:40Z",
+      "side": 1,
+      "message": "I want data that compares the actual cost of double compositing which was the original motivation for delegated compositing.",
+      "parentUuid": "4bd37bc3_d23f9be2",
+      "revId": "eb29120cb3b8238e5987763b4b8136102e2a2885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
