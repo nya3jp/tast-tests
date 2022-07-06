@@ -124,6 +124,30 @@
       },
       "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0fba7e6_fd2d594a",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-06T13:03:39Z",
+      "side": 1,
+      "message": "After checking all CLs, I see how that effort would spill over other parts of the code. Maybe it is too much for now.",
+      "parentUuid": "7bb9d622_c53b710d",
+      "range": {
+        "startLine": 140,
+        "startChar": 61,
+        "endLine": 140,
+        "endChar": 72
+      },
+      "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
