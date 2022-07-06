@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeeff04e_1a5ba12d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8afc7e49_278c1ada",
+      "revId": "f72d8f1877cc0eb277c1621c4d322fb3beb7e953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edc3a57a_5a88d02a",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec728625_497f0279",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b4a2c99_14c89ac6",
+      "revId": "f72d8f1877cc0eb277c1621c4d322fb3beb7e953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa0a223e_b18a967f",
@@ -65,6 +101,30 @@
       "writtenOn": "2022-07-06T13:44:12Z",
       "side": 1,
       "message": "nit: explain in a comment what you are trying to do here.\n\nIf possible use time helpers instead, maybe UnixMicro?",
+      "range": {
+        "startLine": 63,
+        "startChar": 28,
+        "endLine": 63,
+        "endChar": 74
+      },
+      "revId": "f72d8f1877cc0eb277c1621c4d322fb3beb7e953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e22ba8db_f2cc5cdb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:36:15Z",
+      "side": 1,
+      "message": "Made it better 😊",
+      "parentUuid": "aa0a223e_b18a967f",
       "range": {
         "startLine": 63,
         "startChar": 28,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8300572d_2581a6f6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c35754af_0a486c4e",
+      "range": {
+        "startLine": 65,
+        "startChar": 7,
+        "endLine": 65,
+        "endChar": 8
+      },
+      "revId": "f72d8f1877cc0eb277c1621c4d322fb3beb7e953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fcca2e2_715bbcee",
@@ -115,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9ec3677_5e7b0cf2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fcca2e2_715bbcee",
+      "revId": "f72d8f1877cc0eb277c1621c4d322fb3beb7e953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0da0f2b_25e8b794",
@@ -128,6 +230,24 @@
       "writtenOn": "2022-07-06T13:44:12Z",
       "side": 1,
       "message": "Remove this line",
+      "revId": "f72d8f1877cc0eb277c1621c4d322fb3beb7e953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "945358d1_39266983",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/heartbeat_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-07-06T14:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0da0f2b_25e8b794",
       "revId": "f72d8f1877cc0eb277c1621c4d322fb3beb7e953",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
