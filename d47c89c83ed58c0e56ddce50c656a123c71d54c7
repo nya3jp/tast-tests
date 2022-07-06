@@ -46,6 +46,30 @@
       },
       "revId": "d47c89c83ed58c0e56ddce50c656a123c71d54c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82fdac49_10479356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-06T02:32:49Z",
+      "side": 1,
+      "message": "I am afraid read file and call html does not work. Those js files need to be pushed to DUT and requested at runtime. A alternative way I am thinking is to add a new attribute of InputsTestServer, named pageTitle. \n\nLiterally, InputsTestServer is a web page hosted for testing, it is not intended to do page navigation etc. So it should be safe.",
+      "parentUuid": "cd8aa325_494f8e78",
+      "range": {
+        "startLine": 261,
+        "startChar": 5,
+        "endLine": 261,
+        "endChar": 28
+      },
+      "revId": "d47c89c83ed58c0e56ddce50c656a123c71d54c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
