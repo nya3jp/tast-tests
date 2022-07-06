@@ -67,11 +67,9 @@ func CheckForTicket(ctx context.Context, ui *uiauto.Context, config *Configurati
 		return errors.Wrap(err, "failed to find Kerberos ticket")
 	}
 
-	// TODO: chromium/1249773 change to get "Active" state once the bug is
-	// resolved. UI tree is not refreshed for 1 minute.
-	// Check that ticket is not expired.
-	if err := ui.Exists(nodewith.Name("Expired").Role(role.StaticText))(ctx); err == nil {
-		return errors.New("Kerberos ticket has expired")
+	// Check that ticket is "Active".
+	if err := ui.WaitUntilExists(nodewith.Name("Active").Role(role.StaticText))(ctx); err != nil {
+		return errors.New("Kerberos ticket is not Active")
 	}
 
 	return nil
