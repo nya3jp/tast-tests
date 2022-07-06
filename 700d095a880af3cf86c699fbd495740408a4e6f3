@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b23151ea_8d4d4c11",
+        "filename": "src/chromiumos/tast/remote/firmware/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-06T15:29:38Z",
+      "side": 1,
+      "message": "Maybe we should check if the software write protect is already disabled before we reboot, since rebooting is slow.",
+      "range": {
+        "startLine": 273,
+        "startChar": 5,
+        "endLine": 273,
+        "endChar": 37
+      },
+      "revId": "700d095a880af3cf86c699fbd495740408a4e6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
