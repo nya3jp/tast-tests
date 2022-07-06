@@ -22,7 +22,7 @@ import (
 )
 
 var (
-	defaultIterations = 10 // The number of boot iterations. Can be overridden by var "arc.PerfBoot.iterations".
+	defaultIterations = 5 // The number of boot iterations. Can be overridden by var "arc.PerfBoot.iterations".
 )
 
 func init() {
@@ -39,7 +39,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.arc.PerfBootService"},
 		Vars:         []string{"arc.PerfBoot.iterations"},
-		Timeout:      20 * time.Minute,
+		Timeout:      25 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
