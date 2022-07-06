@@ -267,10 +267,21 @@ func NotificationExperimental(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for Android to be idle: ", err)
 	}
 
+	info, err := display.GetPrimaryInfo(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get primary display info: ", err)
+	}
+	hasTouchSupport := info.HasTouchSupport
+
 	// Test notification closing.
 	for _, style := range []string{"basic", "big_text", "big_picture", "inbox", "messaging"} {
 		for _, close := range []closeMethod{closeMethodSwipeOut, closeMethodClickEvent, closeMethodClearAllButton, closeMethodCloseButton} {
 			s.Run(ctx, fmt.Sprintf("Close notification (style=%s closeMethod=%s)", style, close), func(ctx context.Context, s *testing.State) {
+				if close == closeMethodSwipeOut && !hasTouchSupport {
+					testing.ContextLog(ctx, "Skipping because the device doesn't have touch support")
+					return
+				}
+
 				// Cleanup
 				defer ash.CloseNotifications(cleanupCtx, tconn)
 
