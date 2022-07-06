@@ -68,6 +68,64 @@
       "parentUuid": "520d71cd_d8a1d4f5",
       "revId": "e3df83ba37cdc5454a5744ab86d7d449cf0575d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "676da0d4_7df29551",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-06T08:08:09Z",
+      "side": 1,
+      "message": "Thanks for clarifying, I think that\u0027s probably fine.",
+      "parentUuid": "b78d4e60_057268bd",
+      "revId": "e3df83ba37cdc5454a5744ab86d7d449cf0575d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66bc56d5_ff4049ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-06T08:08:09Z",
+      "side": 1,
+      "message": "This CL is failing the builds, you missed importing the package \"display\".",
+      "revId": "e3df83ba37cdc5454a5744ab86d7d449cf0575d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "955f028d_574e8a53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification_experimental.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-06T08:08:09Z",
+      "side": 1,
+      "message": "nit: Skipping closeMethodSwipeOut",
+      "range": {
+        "startLine": 281,
+        "startChar": 30,
+        "endLine": 281,
+        "endChar": 38
+      },
+      "revId": "e3df83ba37cdc5454a5744ab86d7d449cf0575d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
