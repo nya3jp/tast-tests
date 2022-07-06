@@ -358,6 +358,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d6d9dfd_20d6ae0b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-07-06T23:32:43Z",
+      "side": 1,
+      "message": "You can setup separate stable and unstable suites as its done for other wifi suites. https://screenshot.googleplex.com/8iaSzG9dWbtBdsw\n\neg. \nwificell-func-stable - https://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.wificell-func-stable;bpv\u003d0\n\nwificell-func-unstable - https://source.corp.google.com/chromeos_public/src/third_party/autotest/files/server/site_tests/tast/control.wificell-func-unstable;bpv\u003d0",
+      "parentUuid": "56a9670c_6072103b",
+      "revId": "0ec977a4f3233b1a69e161976ba17f9fadd34028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0ab2709_a88de004",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/p2p_simple_connect.go",
         "patchSetId": 31
