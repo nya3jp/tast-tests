@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97015b45_648d287a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-06T05:05:45Z",
+      "side": 1,
+      "message": "The current solution looks good enough to me. I think one assumption to the test is the input field out of viewport in the beginning. It would be nice to add an early assertion after `inputField :\u003d testserver.TextAreaAutoShiftOff` to make sure it is out of screen.",
+      "parentUuid": "c7083a61_fac3c990",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 50
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee97f6cc_7d1e7ad5",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
         "patchSetId": 7
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "It currently cleans up the state for \"trigger overscroll by typing using VK\" user action. I think better to keep it as it is, given it ensures the reusability of the action for any future tests and has minor extra overhead for \"perform overscroll before showing VK\".",
       "parentUuid": "30e32502_84236470",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b53d33cd_d74c2c2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-06T05:05:45Z",
+      "side": 1,
+      "message": "Ack. My suggestion is to explicitly call vkbCtx.HideVirtualKeyboard() in each test to close VK explicitly.",
+      "parentUuid": "6d3a860b_d04db96e",
       "range": {
         "startLine": 83,
         "startChar": 2,
