@@ -34,6 +34,9 @@ const (
 
 	// userCleanupWaitTime is the time we wait to cleanup a user post user creation.
 	userCleanupWaitTime = 5 * time.Second
+
+	// defaultGaiaPasswordLabel is the default label used to sign into chromebook using their GAIA account.
+	defaultGaiaPasswordLabel = "gaia"
 )
 
 // UserHash returns user's cryptohome hash.
@@ -144,7 +147,7 @@ func CreateVault(ctx context.Context, user, password string) error {
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 	mountInfo := hwsec.NewCryptohomeMountInfo(cmdRunner, cryptohome)
 
-	if err := cryptohome.MountVault(ctx, "bar", hwsec.NewPassAuthConfig(user, password), true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, defaultGaiaPasswordLabel, hwsec.NewPassAuthConfig(user, password), true, hwsec.NewVaultConfig()); err != nil {
 		return errors.Wrap(err, "failed to create user vault")
 	}
 
