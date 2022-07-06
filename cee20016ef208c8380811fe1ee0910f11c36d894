@@ -1,0 +1,429 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa2df32_4c410d0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "Thank you for working on this! Most comments are trivial ones.",
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b34f12b2_66a74fc8",
+        "filename": "src/chromiumos/tast/common/chameleon/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "nit: better to wrap an err with errors.Wrap(err, \"failed to make HasAudioSupport xmlrpc request\") etc for better error message.",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42658a40_a839f4b4",
+        "filename": "src/chromiumos/tast/common/chameleon/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "optional nit: if busNumber only takes 1 or 2, how about to define this in constants?",
+      "range": {
+        "startLine": 28,
+        "startChar": 60,
+        "endLine": 28,
+        "endChar": 73
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3845098a_0ca5e7bf",
+        "filename": "src/chromiumos/tast/common/chameleon/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "nit: If we only support one format for now, how about to add a check in this function whether audioDataFormat equals with SUPPORTED_AUDIO_DATA_FORMAT? If it doesn\u0027t match, we can return an error message for better error handling.",
+      "range": {
+        "startLine": 53,
+        "startChar": 88,
+        "endLine": 53,
+        "endChar": 103
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cebc182_a7a5d01f",
+        "filename": "src/chromiumos/tast/common/chameleon/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "nit: same here. Wrap an error for a better error message.",
+      "range": {
+        "startLine": 81,
+        "startChar": 16,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820f37d1_7092f8ac",
+        "filename": "src/chromiumos/tast/common/chameleon/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "nit: same here. Wrap an error for better error handling.",
+      "range": {
+        "startLine": 93,
+        "startChar": 16,
+        "endLine": 93,
+        "endChar": 19
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a78778cf_ba1315e6",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "This ASCII art is broken in gerrit. It might be enforced by a linter. But if a linter allows it, I would recommend you to use a space here.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 35
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b40fe72_bde02c0f",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "Those constants are swapped.",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 67
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "942e1fd5_32d4be93",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "nit: Supported",
+      "range": {
+        "startLine": 152,
+        "startChar": 3,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2352cdb_b3ef3005",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "nit: remove this? Is this a debug code?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "869bcc17_d23b976d",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "Can this case cover `case map[string]string:`? i.e. can we merge the above case to this one?",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 29
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "156f0d3b_9e8604cb",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "nit: it would be nice if we can provide a better error message here. e.g. include key name, etc.",
+      "range": {
+        "startLine": 248,
+        "startChar": 20,
+        "endLine": 248,
+        "endChar": 23
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdbe9871_eeeaa446",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "optional: how about to make this part as a new fixture, e.g. assistantAudioBox, etc.\n\nFixture can have vars as well: https://pkg.go.dev/chromium.googlesource.com/chromiumos/platform/tast.git/src/chromiumos/tast/internal/testing#Fixture",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5acaa268_05bf9f37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "Should this be LineOut?",
+      "range": {
+        "startLine": 115,
+        "startChar": 56,
+        "endLine": 115,
+        "endChar": 66
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d1a0885_2ebad43e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "nit: int?",
+      "range": {
+        "startLine": 148,
+        "startChar": 55,
+        "endLine": 148,
+        "endChar": 62
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61169566_5091265f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "nit: mention that this one is to play audio from DUT.",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 85
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58bfcdf5_ab9297bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "How about to remove \"group:mainline\" for now?\n\nThis will make this test run in our labs. I guess that hotword is disabled on all DUTs by default in our labs. But I think it\u0027s safe to avoid running this test in our labs for now as this can trigger google assistant on nearby devices if they are hotword enabled, which can cause random test failures.",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a640f693_7332c5ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "nit: delete this blank line.",
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a81e7be_789d3547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-06T07:30:36Z",
+      "side": 1,
+      "message": "nit: debug code? Can this be a simple s.Fatal?",
+      "range": {
+        "startLine": 59,
+        "startChar": 104,
+        "endLine": 59,
+        "endChar": 114
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
