@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee58bcc_d3f527dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-06T09:21:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f3fcf0b_80d297b5",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "aa09cbb8dea904ea95668fb14a6fedbaf676de60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec41c60d_b26f01ea",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-06T02:22:59Z",
       "side": 1,
       "message": "nit: comment should finish with full stop.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "aa09cbb8dea904ea95668fb14a6fedbaf676de60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2682e67e_38d3d2f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-06T09:21:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec41c60d_b26f01ea",
       "range": {
         "startLine": 71,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f55864fe_c62dde2c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-06T09:21:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfef7a04_e4212383",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 18
+      },
+      "revId": "aa09cbb8dea904ea95668fb14a6fedbaf676de60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b8d84b0_16fbbf35",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13e804ee_1f9cb3bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-06T09:21:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b8d84b0_16fbbf35",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 26
+      },
+      "revId": "aa09cbb8dea904ea95668fb14a6fedbaf676de60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f56b7228_cdfbe2de",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-07-06T02:22:59Z",
       "side": 1,
       "message": "DoDefault is suggested as a replacement for LeftClick in LaCrOS. It is more stable. Can you fix it in the whole script?",
+      "range": {
+        "startLine": 95,
+        "startChar": 16,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "aa09cbb8dea904ea95668fb14a6fedbaf676de60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75a96e70_7f492267",
+        "filename": "src/chromiumos/tast/local/bundles/cros/accountmanager/add_profile.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-06T09:21:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f56b7228_cdfbe2de",
       "range": {
         "startLine": 95,
         "startChar": 16,
