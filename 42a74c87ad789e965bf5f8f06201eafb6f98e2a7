@@ -56,6 +56,23 @@
       "message": "Can you do this change for all the dlp tests, where the faillog creation is defer too early? I didn\u0027t check all the tests, but e.g. data_leak_prevention_rules_list_screenshot.go is one like this.",
       "revId": "42a74c87ad789e965bf5f8f06201eafb6f98e2a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60dbfac8_861439f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-07-06T13:37:01Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "42a74c87ad789e965bf5f8f06201eafb6f98e2a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
