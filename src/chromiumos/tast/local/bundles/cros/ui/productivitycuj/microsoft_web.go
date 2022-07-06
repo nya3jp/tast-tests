@@ -252,7 +252,7 @@ func (app *MicrosoftWebOffice) MoveDataFromDocToSheet(ctx context.Context) error
 	paragraph := nodewith.Role(role.GenericContainer).Ancestor(wordWebArea).HasClass("EditingSurfaceBody").Editable()
 	if err := uiauto.NamedCombine("switch to Microsoft Word cut selected text from the document",
 		app.uiHdl.SwitchToChromeTabByName(wordTab),
-		app.uiHdl.Click(paragraph),
+		app.ui.DoDefault(paragraph),
 		app.kb.AccelAction("Ctrl+A"),
 		app.kb.AccelAction("Ctrl+C"),
 		uiauto.Sleep(dataWaitTime), // Given time to select all data.
