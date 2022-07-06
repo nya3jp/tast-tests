@@ -30,7 +30,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that Cantonese physical keyboard works",
 		Contacts:     []string{"shend@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools", "group:input-tools-upstream"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Cantonese}),
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
@@ -62,7 +62,7 @@ func PhysicalKeyboardCantoneseTyping(ctx context.Context, s *testing.State) {
 	im := ime.Cantonese
 
 	s.Log("Set current input method to: ", im)
-	if err := im.InstallAndActivateUserAction(uc)(ctx); err != nil {
+	if err := im.InstallAndActivate(tconn)(ctx); err != nil {
 		s.Fatalf("Failed to set input method to %v: %v: ", im, err)
 	}
 	uc.SetAttribute(useractions.AttributeInputMethod, im.Name)
