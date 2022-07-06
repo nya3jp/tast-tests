@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45fe57c3_aafa8cd6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-06T13:49:44Z",
+      "side": 1,
+      "message": "Move this to the util package, it seems useful in general.",
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "446f59ab_f2e7c398",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-06T13:49:44Z",
+      "side": 1,
+      "message": "Same as in the parent, document or use standard helpers.",
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64a02fb0_1bd019f9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-06T13:49:44Z",
+      "side": 1,
+      "message": "nit: This might be spammy.",
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12604fae_77bdd8d5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-06T13:49:44Z",
+      "side": 1,
+      "message": "Maybe it makes more sense to record the start time after the fake powerwash.",
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bccd7bc5_9162d6a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-06T13:49:44Z",
+      "side": 1,
+      "message": "Use EnsureTPMAndSystemStateAreReset instead",
+      "range": {
+        "startLine": 194,
+        "startChar": 23,
+        "endLine": 194,
+        "endChar": 60
+      },
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e73ddbe4_93a71712",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-06T13:49:44Z",
+      "side": 1,
+      "message": "nit: reflow",
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7636e0d_444a1f5b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-06T13:49:44Z",
+      "side": 1,
+      "message": "\"sleep\"?",
+      "range": {
+        "startLine": 229,
+        "startChar": 21,
+        "endLine": 229,
+        "endChar": 55
+      },
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d1e6c91_db02c06f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-06T13:49:44Z",
+      "side": 1,
+      "message": "Is this a problem?",
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982b93b6_ed88074f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-06T13:49:44Z",
+      "side": 1,
+      "message": "This is not needed here, you can add everything to Errorf",
+      "range": {
+        "startLine": 263,
+        "startChar": 54,
+        "endLine": 263,
+        "endChar": 65
+      },
+      "revId": "39a7c1d58c6e264f7a38c4e1885ea271dddb9176",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
