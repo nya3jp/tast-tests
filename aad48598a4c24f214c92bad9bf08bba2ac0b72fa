@@ -18,6 +18,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf39070_68869e62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-06T01:01:57Z",
+      "side": 1,
+      "message": "Yes, I would also vote for that. It will be another non-trivial refactor though.",
+      "parentUuid": "629641cc_ec83966f",
+      "revId": "aad48598a4c24f214c92bad9bf08bba2ac0b72fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9168f34_6f7f9302",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-06T01:01:57Z",
+      "side": 1,
+      "message": "+tast-owners@ for tast review. Thanks!",
+      "revId": "aad48598a4c24f214c92bad9bf08bba2ac0b72fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06ed064c_b311f220",
