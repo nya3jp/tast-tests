@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1eb88b1d_e0b8b079",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-06T22:52:47Z",
+      "side": 1,
+      "message": "cool, I imagine that will help!",
+      "parentUuid": "d2bb7c4c_4779a325",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "18e7471b_59e496f1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 12
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "These aren\u0027t used in a few other tast tests that calls the `ash.SetOverviewModeAndWait` method. Ex: `overview_drag_window_perf.go`.",
       "parentUuid": "22f333e1_00ba9572",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba23914f_cae9c602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-06T22:52:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "500778fe_65626a78",
       "range": {
         "startLine": 181,
         "startChar": 1,
