@@ -870,7 +870,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if err := os.WriteFile(filepath.Join(s.OutDir(), "webrtc-internals.json"), dump, 0644); err != nil {
 				s.Error("Failed to write WebRTC internals dump to test results folder: ", err)
 			}
-			if err := reportWebRTCInternals(pv, dump, meet.num); err != nil {
+			if err := reportWebRTCInternals(pv, dump, meet.num, meet.present); err != nil {
 				s.Error("Failed to report info from WebRTC internals dump to performance metrics: ", err)
 			}
 		}
@@ -1024,151 +1024,172 @@ func dumpWebRTCInternals(ctx context.Context, tconn *chrome.TestConn, ui *uiauto
 }
 
 // reportWebRTCInternals reports info from a WebRTC internals dump to performance metrics.
-func reportWebRTCInternals(pv *perf.Values, dump []byte, numBots int) error {
+func reportWebRTCInternals(pv *perf.Values, dump []byte, numBots int, present bool) error {
 	var webRTC webrtcinternals.Dump
 	if err := json.Unmarshal(dump, &webRTC); err != nil {
 		return errors.Wrap(err, "failed to unmarshal WebRTC internals dump")
 	}
-	if len(webRTC.PeerConnections) != 1 {
-		return errors.Errorf("unexpected number of peer connections: got %d; want 1", len(webRTC.PeerConnections))
-	}
-	var peerConn webrtcinternals.PeerConnection
-	for _, pc := range webRTC.PeerConnections {
-		peerConn = pc
+
+	expectedConns := 1
+	if present {
+		expectedConns = 2
 	}
 
+	if numConns := len(webRTC.PeerConnections); numConns != expectedConns {
+		return errors.Errorf("unexpected number of peer connections: got %d; want %d", numConns, expectedConns)
+	}
+
+	connectionTypeRegexp := regexp.MustCompile(`^RTCOutboundRTPVideoStream_(\d+)-contentType$`)
 	videoStreamRegexp := regexp.MustCompile(`^RTC(Inbound|Outbound)RTPVideoStream_(\d+)-(.+)$`)
-	codecDescription := make(map[string]string)
 	unit := map[string]string{
 		"frameWidth":      "px",
 		"frameHeight":     "px",
 		"framesPerSecond": "fps",
 	}
-
 	type timeSeries []float64
 	type indexByStatName map[string]timeSeries
 	type indexByStreamID map[string]indexByStatName
 	type indexByDirection map[string]indexByStreamID
-	byDirection := make(indexByDirection)
-
-	for fullName, statistic := range peerConn.Stats {
-		matches := videoStreamRegexp.FindStringSubmatch(fullName)
-		if len(matches) == 0 {
-			continue
-		}
-		direction := matches[1]
-		streamID := matches[2]
-		statName := matches[3]
-
-		if statName == "[codec]" {
-			if len(statistic.Values) == 0 {
-				return errors.Errorf("no values for %q", fullName)
+	for _, peerConn := range webRTC.PeerConnections {
+		var isScreenshareConn bool
+		byDirection := make(indexByDirection)
+		codecDescription := make(map[string]string)
+		for fullName, statistic := range peerConn.Stats {
+			if !isScreenshareConn {
+				// contentType is only reported for screen sharing peer connections.
+				peerConnMatches := connectionTypeRegexp.FindStringSubmatch(fullName)
+				isScreenshareConn = len(peerConnMatches) != 0
 			}
-			firstCodec := statistic.Values[0]
+
+			matches := videoStreamRegexp.FindStringSubmatch(fullName)
+			if len(matches) == 0 {
+				continue
+			}
+			direction := matches[1]
+			streamID := matches[2]
+			statName := matches[3]
+
+			if statName == "[codec]" {
+				if len(statistic.Values) == 0 {
+					return errors.Errorf("no values for %q", fullName)
+				}
+				firstCodec := statistic.Values[0]
+				for _, value := range statistic.Values {
+					if firstCodec != value {
+						return errors.Errorf("found time-varying codec for %q: %v", fullName, statistic.Values)
+					}
+				}
+				description, ok := firstCodec.(string)
+				if !ok {
+					return errors.Errorf("expected %q values to be strings; got %v", fullName, statistic.Values)
+				}
+
+				previousDescription, ok := codecDescription[direction]
+				if !ok {
+					codecDescription[direction] = description
+				} else if previousDescription != description {
+					return errors.Errorf("found differing %s video stream codecs: %s versus %s", direction, previousDescription, description)
+				}
+
+				continue
+			}
+
+			if _, ok := unit[statName]; !ok {
+				continue
+			}
+
+			var report timeSeries
 			for _, value := range statistic.Values {
-				if firstCodec != value {
-					return errors.Errorf("found time-varying codec for %q: %v", fullName, statistic.Values)
+				metric, ok := value.(float64)
+				if !ok {
+					return errors.Errorf("expected %q values to be numerical; got %v", fullName, statistic.Values)
 				}
+				report = append(report, metric)
 			}
-			description, ok := firstCodec.(string)
+
+			byStreamID, ok := byDirection[direction]
 			if !ok {
-				return errors.Errorf("expected %q values to be strings; got %v", fullName, statistic.Values)
+				byStreamID = make(indexByStreamID)
+				byDirection[direction] = byStreamID
 			}
-
-			previousDescription, ok := codecDescription[direction]
+			byStatName, ok := byStreamID[streamID]
 			if !ok {
-				codecDescription[direction] = description
-			} else if previousDescription != description {
-				return errors.Errorf("found differing %s video stream codecs: %s versus %s", direction, previousDescription, description)
+				byStatName = make(indexByStatName)
+				byStreamID[streamID] = byStatName
+			}
+			byStatName[statName] = report
+		}
+		codec := make(map[string]videoCodecReport)
+		for _, direction := range []string{"Inbound", "Outbound"} {
+			if isScreenshareConn && direction == "Inbound" {
+				continue
 			}
 
-			continue
-		}
-
-		if _, ok := unit[statName]; !ok {
-			continue
-		}
-
-		var report timeSeries
-		for _, value := range statistic.Values {
-			metric, ok := value.(float64)
+			description, ok := codecDescription[direction]
 			if !ok {
-				return errors.Errorf("expected %q values to be numerical; got %v", fullName, statistic.Values)
+				return errors.Errorf("no %s video stream [codec] statistics", direction)
 			}
-			report = append(report, metric)
-		}
+			if strings.HasPrefix(description, "VP8") {
+				codec[direction] = vp8
+			} else if strings.HasPrefix(description, "VP9") {
+				codec[direction] = vp9
+			} else {
+				return errors.Errorf("unrecognized %s video stream codec: %q", direction, description)
+			}
 
-		byStreamID, ok := byDirection[direction]
-		if !ok {
-			byStreamID = make(indexByStreamID)
-			byDirection[direction] = byStreamID
-		}
-		byStatName, ok := byStreamID[streamID]
-		if !ok {
-			byStatName = make(indexByStatName)
-			byStreamID[streamID] = byStatName
-		}
-		byStatName[statName] = report
-	}
-
-	codec := make(map[string]videoCodecReport)
-	for _, direction := range []string{"Inbound", "Outbound"} {
-		description, ok := codecDescription[direction]
-		if !ok {
-			return errors.Errorf("no %s video stream [codec] statistics", direction)
-		}
-		if strings.HasPrefix(description, "VP8") {
-			codec[direction] = vp8
-		} else if strings.HasPrefix(description, "VP9") {
-			codec[direction] = vp9
-		} else {
-			return errors.Errorf("unrecognized %s video stream codec: %q", direction, description)
-		}
-
-		byStreamID, ok := byDirection[direction]
-		if !ok {
-			return errors.Errorf("missing %s video stream statistics", direction)
-		}
-		for streamID, byStatName := range byStreamID {
-			for statName := range unit {
-				if _, ok := byStatName[statName]; !ok {
-					return errors.Errorf("missing %s statistic for %s video stream %s", statName, direction, streamID)
+			byStreamID, ok := byDirection[direction]
+			if !ok {
+				return errors.Errorf("missing %s video stream statistics", direction)
+			}
+			for streamID, byStatName := range byStreamID {
+				for statName := range unit {
+					if _, ok := byStatName[statName]; !ok {
+						return errors.Errorf("missing %s statistic for %s video stream %s", statName, direction, streamID)
+					}
 				}
 			}
 		}
-	}
 
-	if numInboundStreams := len(byDirection["Inbound"]); numInboundStreams != numBots {
-		return errors.Errorf("unexpected number of Inbound video streams: got %d; want %d", numInboundStreams, numBots)
-	}
-
-	pv.Set(perf.Metric{
-		Name:      "meetcuj_decoding_codec",
-		Unit:      "unitless",
-		Direction: perf.BiggerIsBetter,
-	}, float64(codec["Inbound"]))
-	pv.Set(perf.Metric{
-		Name:      "meetcuj_encoding_codec",
-		Unit:      "unitless",
-		Direction: perf.BiggerIsBetter,
-	}, float64(codec["Outbound"]))
-
-	for direction, variantFormat := range map[string]string{
-		"Inbound":  "bot%02d",
-		"Outbound": "stream%d",
-	} {
-		var whichStream uint
-		for _, byStatName := range byDirection[direction] {
-			for statName, report := range byStatName {
-				pv.Set(perf.Metric{
-					Name:      fmt.Sprintf("WebRTCInternals.Video.%s.%s", direction, statName),
-					Variant:   fmt.Sprintf(variantFormat, whichStream),
-					Unit:      unit[statName],
-					Direction: perf.BiggerIsBetter,
-					Multiple:  true,
-				}, report...)
+		if !isScreenshareConn {
+			if numInboundStreams := len(byDirection["Inbound"]); numInboundStreams != numBots {
+				return errors.Errorf("unexpected number of Inbound video streams: got %d; want %d", numInboundStreams, numBots)
 			}
-			whichStream++
+
+			pv.Set(perf.Metric{
+				Name:      "meetcuj_decoding_codec",
+				Unit:      "unitless",
+				Direction: perf.BiggerIsBetter,
+			}, float64(codec["Inbound"]))
+		}
+
+		pv.Set(perf.Metric{
+			Name:      "meetcuj_encoding_codec",
+			Unit:      "unitless",
+			Direction: perf.BiggerIsBetter,
+		}, float64(codec["Outbound"]))
+
+		screenShareSuffix := ""
+		if isScreenshareConn {
+			screenShareSuffix = ".Screenshare"
+		}
+
+		for direction, variantFormat := range map[string]string{
+			"Inbound":  "bot%02d",
+			"Outbound": "stream%d",
+		} {
+			var whichStream uint
+			for _, byStatName := range byDirection[direction] {
+				for statName, report := range byStatName {
+					pv.Set(perf.Metric{
+						Name:      fmt.Sprintf("WebRTCInternals.Video%s.%s.%s", screenShareSuffix, direction, statName),
+						Variant:   fmt.Sprintf(variantFormat, whichStream),
+						Unit:      unit[statName],
+						Direction: perf.BiggerIsBetter,
+						Multiple:  true,
+					}, report...)
+				}
+				whichStream++
+			}
 		}
 	}
 
