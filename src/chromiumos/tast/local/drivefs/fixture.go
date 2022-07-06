@@ -18,7 +18,7 @@ import (
 )
 
 const (
-	driveFsSetupTimeout = time.Minute
+	driveFsSetupAndTearDownTimeout = time.Minute
 )
 
 var (
@@ -31,8 +31,8 @@ func init() {
 		Desc:            "Ensures DriveFS is mounted and provides an authenticated Drive API Client",
 		Contacts:        []string{"benreich@chromium.org", "chromeos-files-syd@chromium.org"},
 		Impl:            &fixture{},
-		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupTimeout,
-		ResetTimeout:    driveFsSetupTimeout,
+		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupAndTearDownTimeout,
+		ResetTimeout:    driveFsSetupAndTearDownTimeout,
 		TearDownTimeout: time.Hour,
 		Vars: []string{
 			"drivefs.accountPool",
@@ -45,9 +45,9 @@ func init() {
 		Desc:            "Ensures DriveFS is mounted and provides an authenticated Drive API Client",
 		Contacts:        []string{"benreich@chromium.org", "chromeos-files-syd@chromium.org"},
 		Impl:            &fixture{chromeOptions: []chrome.Option{chrome.EnableFeatures("FilesTrash")}},
-		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupTimeout,
-		ResetTimeout:    driveFsSetupTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
+		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupAndTearDownTimeout,
+		ResetTimeout:    driveFsSetupAndTearDownTimeout,
+		TearDownTimeout: chrome.ResetTimeout + driveFsSetupAndTearDownTimeout,
 		Vars: []string{
 			"drivefs.accountPool",
 			"drivefs.extensionClientID",
@@ -64,9 +64,9 @@ func init() {
 			"switchblade":     "true",
 			"switchblade_dss": "true",
 		}},
-		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupTimeout,
-		ResetTimeout:    driveFsSetupTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
+		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupAndTearDownTimeout,
+		ResetTimeout:    driveFsSetupAndTearDownTimeout,
+		TearDownTimeout: chrome.ResetTimeout + driveFsSetupAndTearDownTimeout,
 		Vars: []string{
 			"drivefs.accountPool",
 			"drivefs.extensionClientID",
@@ -82,9 +82,9 @@ func init() {
 		}, drivefsOptions: map[string]string{
 			"use_cros_http_client": "true",
 		}},
-		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupTimeout,
-		ResetTimeout:    driveFsSetupTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
+		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupAndTearDownTimeout,
+		ResetTimeout:    driveFsSetupAndTearDownTimeout,
+		TearDownTimeout: chrome.ResetTimeout + driveFsSetupAndTearDownTimeout,
 		Vars: []string{
 			"drivefs.accountPool",
 			"drivefs.extensionClientID",
