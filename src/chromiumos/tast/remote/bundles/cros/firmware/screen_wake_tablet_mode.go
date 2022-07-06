@@ -20,6 +20,7 @@ import (
 	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/services/cros/graphics"
 	"chromiumos/tast/services/cros/inputs"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -54,6 +55,7 @@ var (
 	evKeyboard    evtestEvent = "keyboard"
 	evTouchpad    evtestEvent = "touchpad"
 	evTouchscreen evtestEvent = "touchscreen"
+	evDisplay     evtestEvent = "display"
 )
 
 // Below are the respective stdout scanners for devices monitored with evtest.
@@ -61,6 +63,7 @@ var (
 	scannKeyboard    *bufio.Scanner
 	scannTouchpad    *bufio.Scanner
 	scannTouchscreen *bufio.Scanner
+	scannDisplay     *bufio.Scanner
 )
 
 // Note: while in tablet mode, some models were observed to still have their keyboards seen
@@ -87,7 +90,6 @@ var convertibleKeyboardScanned = []string{
 	"eldrid",
 	"storo360",
 	"jinlon",
-	"garg360",
 	"helios",
 	"kled",
 	"kasumi360",
@@ -100,6 +102,7 @@ var convertibleKeyboardScanned = []string{
 	"morphius",
 	"ezkinil",
 	"kohaku",
+	"voxel",
 }
 
 func init() {
@@ -267,8 +270,12 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			}
 			devPath = res.Path
 		}
-
-		cmd := h.DUT.Conn().CommandContext(ctx, "evtest", devPath)
+		var cmd *ssh.Cmd
+		if evEvent == evDisplay {
+			cmd = h.DUT.Conn().CommandContext(ctx, "stdbuf", "-o0", "udevadm", "monitor", "--subsystem-match=backlight", "--udev")
+		} else {
+			cmd = h.DUT.Conn().CommandContext(ctx, "evtest", devPath)
+		}
 		stdout, err := cmd.StdoutPipe()
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to create stdout pipe")
@@ -287,11 +294,15 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		var expMatch *regexp.Regexp
 
 		s.Logf("Monitor evtest on %s", evEvent)
-		if evEvent == evKeyboard {
+		switch evEvent {
+		case evKeyboard:
 			regex := `Event.*time.*code\s(\d*)\s\(` + `KEY_ENTER` + `\)`
 			expMatch = regexp.MustCompile(regex)
-		} else {
+		case evTouchpad, evTouchscreen:
 			regex := `Event.*time.*code\s(\d*)\s\(` + `ABS_PRESSURE` + `\)`
+			expMatch = regexp.MustCompile(regex)
+		case evDisplay:
+			regex := `UDEV.*change.*\s+\(` + `backlight` + `\)`
 			expMatch = regexp.MustCompile(regex)
 		}
 
@@ -322,10 +333,10 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 				return nil
 			case out := <-text:
 				match := expMatch.FindStringSubmatch(out)
-				if !shouldRespond && match != nil {
-					return errors.Errorf("%s was unexpectedly active in tablet mode", evEvent)
-				}
-				if match != nil {
+				if len(match) > 0 {
+					if !shouldRespond {
+						return errors.Errorf("%s was unexpectedly active in tablet mode", evEvent)
+					}
 					s.Logf("Detected %s: %s", evEvent, match)
 					return nil
 				}
@@ -484,6 +495,11 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 				s.Log("Skip because DUT does not have a lid")
 				return nil
 			}
+			// Scan for changed event relevant to DUT's display (i.e. backlight), using the udev management tool.
+			scannDisplay, err := deviceScanner(ctx, evDisplay)
+			if err != nil {
+				return errors.Wrap(err, "while scanning for display")
+			}
 			// Emulate the action of moving lid by turning off tablet mode.
 			s.Log("Turn off tablet mode to wake the screen")
 			if err := checkAndRunTabletMode(ctx, testArgs.tabletmodeOFF); err != nil {
@@ -498,6 +514,11 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			if err := testing.Sleep(ctx, 3*time.Second); err != nil {
 				return errors.Wrap(err, "failed to sleep")
 			}
+			// Monitor if any output has returned indicating a change in display's backlight.
+			if err := evtestMonitor(ctx, evDisplay, scannDisplay, true); err != nil {
+				return errors.Wrap(err, "while scanning for display")
+			}
+			return nil
 		case screenWakeByCloseOpenLid:
 			if !testArgs.hasLid {
 				s.Log("Skip because DUT does not have a lid")
@@ -587,7 +608,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 
 	// Check from a list of names that might be relevant to DUT's screen based on
 	// the ec code, and if one exists, save it for future use in verifying screen state.
-	possibleNames := []firmware.GpioName{firmware.ECEDPBLEN, firmware.BLDISABLEL, firmware.ENBLOD, firmware.ENABLEBACKLIGHT, firmware.ENABLEBACKLIGHTL}
+	possibleNames := []firmware.GpioName{firmware.ECEDPBLEN, firmware.BLDISABLEL, firmware.ENBLOD, firmware.ENABLEBACKLIGHT}
 	cmd := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
 	foundNames, err := cmd.FindBaseGpio(ctx, possibleNames)
 	if err != nil {
@@ -602,7 +623,7 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	for _, device := range []evtestEvent{evKeyboard, evTouchpad, evTouchscreen} {
+	for _, device := range []evtestEvent{evKeyboard, evTouchpad, evTouchscreen, evDisplay} {
 		var err error
 		switch device {
 		case evKeyboard:
