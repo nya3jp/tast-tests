@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07713a8b_fe1710b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-06T10:42:02Z",
+      "side": 1,
+      "message": "This is correct as well, but it is also good if you use the package name as a prefix:\n`policy: Disable PreventDefaultProfileRemoval test`\nYou can just \"Ack\" this comment, and close it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "69e1adfba943e411e5024c0881da6c5d91eb143b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65950609_1d16135e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-06T10:42:02Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "69e1adfba943e411e5024c0881da6c5d91eb143b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae82884_51ad601a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/prevent_default_profile_removal.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-06T10:42:02Z",
+      "side": 1,
+      "message": "nit: it would nicer if this `We` is in the next line.",
+      "range": {
+        "startLine": 31,
+        "startChar": 73,
+        "endLine": 31,
+        "endChar": 75
+      },
+      "revId": "69e1adfba943e411e5024c0881da6c5d91eb143b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
