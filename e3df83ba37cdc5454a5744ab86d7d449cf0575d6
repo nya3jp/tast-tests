@@ -50,6 +50,24 @@
       "message": "This CL will make the test always succeed on non-touch screen devices, which might be a false positive.\n\nInstead, could you add `HardwareDeps: hwdep.D(hwdep.Touchscreen()),` in the test registration? So it can just skip the test on the non-touch screen devices. see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/test_dependencies.md#hardware-dependencies",
       "revId": "e3df83ba37cdc5454a5744ab86d7d449cf0575d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b78d4e60_057268bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413870
+      },
+      "writtenOn": "2022-07-06T06:08:29Z",
+      "side": 1,
+      "message": "Yeah, I know the hardware deps can exclude the whole test variant. But I\u0027d like to exclude one of the steps in the test requiring the touch screen(i.e. close \u003d\u003d closeMethodSwipeOut).. WDYT?",
+      "parentUuid": "520d71cd_d8a1d4f5",
+      "revId": "e3df83ba37cdc5454a5744ab86d7d449cf0575d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
