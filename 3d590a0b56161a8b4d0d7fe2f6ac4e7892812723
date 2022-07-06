@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74934927_2e320867",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-06T21:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3e9d9ee_6590dfa4",
+      "range": {
+        "startLine": 23,
+        "startChar": 13,
+        "endLine": 23,
+        "endChar": 179
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77c836ba_ef73def9",
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "Agreed, a single shortened cleanup context (maybe give 5 seconds instead of 1) should be sufficient and can be passed to each of the cleanup functions.",
       "parentUuid": "77c836ba_ef73def9",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 27
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0029b3ed_3103fe86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-06T21:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "727e09ad_437a52ec",
       "range": {
         "startLine": 41,
         "startChar": 1,
@@ -152,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36adf267_c1b6975a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-06T21:00:13Z",
+      "side": 1,
+      "message": "Done. Added this to the shill.Manager and just did not assign the cleanup function since we assume that shillreset test fixture will do it for us",
+      "parentUuid": "cbbfdf53_8affe41e",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 7
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ced3aca_36a32746",
@@ -165,6 +237,24 @@
       "writtenOn": "2022-07-05T16:58:56Z",
       "side": 1,
       "message": "nit: s/the host you are running dnsmasq on/the host that is running dnsmasq/",
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d46207_a557f0c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-06T21:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ced3aca_36a32746",
       "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -194,6 +284,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98c5ed3c_11042c06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-06T21:00:13Z",
+      "side": 1,
+      "message": "Honestly, I wasn\u0027t entirely sure about this one. I figured I would keep it consistent by doing exactly what the dnsmasq.go package did, but for httpserver. It does write the logs in the temporary chroot, which the chroot file system gets removed at the end of the test. If you think we should do what you suggested instead, LMK.",
+      "parentUuid": "e1254ab1_42573ead",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f30644ad_c5148137",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
         "patchSetId": 13
@@ -205,6 +319,30 @@
       "writtenOn": "2022-07-02T03:04:20Z",
       "side": 1,
       "message": "I would suggest making this a configuration parameter so that you don\u0027t have to write asserts in test case that have to hardcode this url for the redirect property exposed by shill.",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab9bf79_ca70e77f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-06T21:00:13Z",
+      "side": 1,
+      "message": "In the second CL in this chain, I pulled out the entire handler function from the httpserver and made it so you can more precisely configure how the httpserver will handle requests within each test. Seen here: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3739230/1/src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go \n\nLMK if that achieves what you were looking for here.",
+      "parentUuid": "f30644ad_c5148137",
       "range": {
         "startLine": 23,
         "startChar": 1,
@@ -261,6 +399,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e65b31a2_431b4b1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-06T21:00:13Z",
+      "side": 1,
+      "message": "\u003e More generally do we really need to control this value ?\n\nGood point. For this instance, no. I removed the |host| value and have the http server listen on port 80.",
+      "parentUuid": "91cb64bd_2464fbf1",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad46028_46e1cadb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-06T21:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "178041cf_f7c406de",
+      "range": {
+        "startLine": 27,
+        "startChar": 64,
+        "endLine": 27,
+        "endChar": 66
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f5ff90c_7c5b527b",
@@ -284,6 +470,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5def689d_1cd42e64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-06T21:00:13Z",
+      "side": 1,
+      "message": "It appears that the http.server will listen on ipv4 and ipv6 by default (http.ServeType \u003d tcp by default, which you can configure to tcp4 or tcp6 if you want only one address family). So by removing the host (or what I used as the IP), it should be listening on both address families.",
+      "parentUuid": "7f5ff90c_7c5b527b",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41d34c01_d22c2e76",
@@ -297,6 +507,30 @@
       "writtenOn": "2022-07-02T03:04:20Z",
       "side": 1,
       "message": "What does \"forcing an address\" means here concretely in term of traffic exchanged ? We should be more specific.",
+      "range": {
+        "startLine": 39,
+        "startChar": 29,
+        "endLine": 39,
+        "endChar": 65
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5720053_01c25223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-06T21:00:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41d34c01_d22c2e76",
       "range": {
         "startLine": 39,
         "startChar": 29,
