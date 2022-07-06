@@ -33,6 +33,7 @@ const (
 	NodeInfoJS = `{
 				checked: node.checked,
 				className: node.className,
+				description: node.description,
 				htmlAttributes: node.htmlAttributes,
 				location: node.location,
 				name: node.name,
@@ -111,9 +112,12 @@ func UserAction(name string, fn Action, uc *useractions.UserContext, cfg *userac
 // Combine combines a list of functions from Context to error into one function.
 // Combine adds the name of the operation into the error message to clarify the step.
 // It is recommended to start the name of operations with a verb, e.g.,
-//     "open Downloads and right click a folder"
+//
+//	"open Downloads and right click a folder"
+//
 // Then the failure msg would be like:
-//     "failed to open Downloads and right click a folder on step ..."
+//
+//	"failed to open Downloads and right click a folder on step ..."
 func Combine(name string, steps ...Action) Action {
 	return action.Combine(name, steps...)
 }
@@ -159,6 +163,7 @@ func Repeat(n int, fn Action) Action {
 type NodeInfo struct {
 	Checked        checked.Checked         `json:"checked,omitempty"`
 	ClassName      string                  `json:"className,omitempty"`
+	Description    string                  `json:"description,omitempty"`
 	HTMLAttributes map[string]string       `json:"htmlAttributes,omitempty"`
 	Location       coords.Rect             `json:"location,omitempty"`
 	Name           string                  `json:"name,omitempty"`
@@ -469,8 +474,10 @@ func (ac *Context) WaitUntilExists(finder *nodewith.Finder) Action {
 // input finder is not disabled. Use it when an action should be taken after
 // the node is enabled. E.g.
 // uiauto.Combine("Click 'Save' button",
-//   ui.WaitUntilEnabled(saveButton),
-//   ui.LeftClick(saveButton)
+//
+//	ui.WaitUntilEnabled(saveButton),
+//	ui.LeftClick(saveButton)
+//
 // )
 func (ac *Context) WaitUntilEnabled(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
@@ -854,12 +861,13 @@ func (ac *Context) MakeVisible(finder *nodewith.Finder) Action {
 // The function returns an error only if the preFunc succeeds but action fails,
 // It returns nil in all other situations.
 // Example:
-//   dialog := nodewith.Name("Dialog").Role(role.Dialog)
-//   button := nodewith.Name("Ok").Role(role.Button).Ancestor(dialog)
-//   ui := uiauto.New(tconn)
-//   if err := uiauto.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(dialog), ui.LeftClick(button))(ctx); err != nil {
-//	    ...
-//   }
+//
+//	  dialog := nodewith.Name("Dialog").Role(role.Dialog)
+//	  button := nodewith.Name("Ok").Role(role.Button).Ancestor(dialog)
+//	  ui := uiauto.New(tconn)
+//	  if err := uiauto.IfSuccessThen(ui.WithTimeout(5*time.Second).WaitUntilExists(dialog), ui.LeftClick(button))(ctx); err != nil {
+//		    ...
+//	  }
 func IfSuccessThen(preFunc, fn Action) Action {
 	return action.IfSuccessThen(preFunc, fn)
 }
@@ -882,8 +890,9 @@ func (ac *Context) RetrySilently(n int, fn Action) Action {
 
 // CheckRestriction returns a function that checks the restriction of the node found by the input finder is as expected.
 // disabled/enabled is a common usecase, e.g,
-//    CheckRestriction(installButton, restriction.Disabled)
-//    CheckRestriction(installButton, restriction.None)
+//
+//	CheckRestriction(installButton, restriction.Disabled)
+//	CheckRestriction(installButton, restriction.None)
 func (ac *Context) CheckRestriction(finder *nodewith.Finder, restriction restriction.Restriction) Action {
 	return func(ctx context.Context) error {
 		nodeInfo, err := ac.Info(ctx, finder)
