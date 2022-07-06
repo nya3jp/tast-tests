@@ -9,25 +9,22 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: EDU3DModelingCUJ,
-		// TODO(b/236668705): Implement the lacros variant.
-		LacrosStatus: testing.LacrosVariantNeeded,
+		Func:         EDU3DModelingCUJ,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of editing the 3D models on TinkerCAD website",
 		Contacts:     []string{"abergman@google.com", "xliu@cienet.com", "jeff.lin@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"rotate.png"},
-		Fixture:      "enrolledLoggedInToCUJUser",
-		Timeout:      10 * time.Minute,
 		Vars: []string{
 			// Required. The URL of initial 3D model design. It will be copied when test starts.
 			"ui.sampleDesignURL",
@@ -36,8 +33,17 @@ func init() {
 		},
 		Params: []testing.Param{
 			{
-				Name: "plus_tinkercad",
-				Val:  cuj.Plus,
+				Name:    "plus_tinkercad",
+				Timeout: 6 * time.Minute,
+				Fixture: "enrolledLoggedInToCUJUser",
+				Val:     browser.TypeAsh,
+			},
+			{
+				Name:              "plus_lacros_tinkercad",
+				Timeout:           6 * time.Minute,
+				Fixture:           "enrolledLoggedInToCUJUserLacros",
+				Val:               browser.TypeLacros,
+				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
 	})
@@ -81,8 +87,9 @@ func EDU3DModelingCUJ(ctx context.Context, s *testing.State) {
 		defer cleanup(cleanupCtx)
 	}
 
+	bt := s.Param().(browser.Type)
 	rotateIconPath := s.DataPath("rotate.png")
-	if err := edu3dmodelingcuj.Run(ctx, cr, tabletMode, s.OutDir(), sampleDesignURL, rotateIconPath); err != nil {
+	if err := edu3dmodelingcuj.Run(ctx, cr, tabletMode, bt, s.OutDir(), sampleDesignURL, rotateIconPath); err != nil {
 		s.Fatal("Failed to run tinkercad cuj: ", err)
 	}
 }
