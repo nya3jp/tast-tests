@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9151ee_2109011f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-06T12:58:36Z",
+      "side": 1,
+      "message": "nit: add line break.",
+      "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "98199498_45b8e771",
@@ -31,6 +48,80 @@
       "writtenOn": "2022-07-06T06:54:03Z",
       "side": 1,
       "message": "LGTM, but Kamil might have different opinions.",
+      "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "518a4523_3b630dfa",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-06T12:58:36Z",
+      "side": 1,
+      "message": "Let\u0027s log the failure (at least that there were some failures), preferably with details like status code and reason - if response has it.",
+      "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27357423_2c7d72c0",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-06T12:58:36Z",
+      "side": 1,
+      "message": "I think for forensic it would be good to log also the body of the response.",
+      "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "216a91f4_8f6c6878",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-06T12:58:36Z",
+      "side": 1,
+      "message": "nit: add the timeoutInSeconds to the error message.",
+      "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bb9d622_c53b710d",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-06T12:58:36Z",
+      "side": 1,
+      "message": "nit: Do you want to accept any object here? \n\nI see below, why this was done. I think that is kind of okay as we use it internally. Please add a comment that the account has to be of a specific type. \n\nIf we wanted to bound it by type we would have to introduce a marker interface. However, as accounts are only data structure it would be a bit artificial.\n\nExample: https://go.dev/play/p/3axvqWRlmf5\n\n\nIn the next CL https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3738122/\n\nthere are two types introduced ownedTestAccountManager and genericAccountManager. They hold reference to the tape\u0027s client and an array of accounts. Both types also have the same method attached - RequestAccount (accepting the same parameters and only returning different types), New, NewFromClient and Cleanup.\n\nI was thinking if we consolidate it to have one managed and that would be account agnostic.\n\nWDYT?",
+      "range": {
+        "startLine": 140,
+        "startChar": 61,
+        "endLine": 140,
+        "endChar": 72
+      },
       "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
