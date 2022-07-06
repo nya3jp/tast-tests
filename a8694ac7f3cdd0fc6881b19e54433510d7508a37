@@ -63,6 +63,30 @@
       },
       "revId": "a8694ac7f3cdd0fc6881b19e54433510d7508a37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c690da30_fe7f5b99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_pin_lockout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-06T02:18:31Z",
+      "side": 1,
+      "message": "Question back: What is the exact condition to make the click work for your case? I guess some handler is installed afterwards?",
+      "parentUuid": "44628257_7f0a2be6",
+      "range": {
+        "startLine": 155,
+        "startChar": 14,
+        "endLine": 155,
+        "endChar": 28
+      },
+      "revId": "a8694ac7f3cdd0fc6881b19e54433510d7508a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
