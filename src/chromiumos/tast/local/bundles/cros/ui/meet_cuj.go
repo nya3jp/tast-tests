@@ -37,6 +37,7 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/loginstatus"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/local/webrtcinternals"
 	"chromiumos/tast/testing"
@@ -447,6 +448,18 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			addBotsCount -= len(botList)
 			wait *= 10
 		}
+	}
+
+	// Direct all the bots to pin the test user for high video resolution.
+	login, err := loginstatus.GetLoginStatus(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get login status: ", err)
+	}
+	if !login.IsLoggedIn {
+		s.Fatal("Got login status indicating that the user is not logged in")
+	}
+	if err := bc.ExecuteScript(ctx, fmt.Sprintf("@all pin_participant %q", *login.DisplayName), meetingCode); err != nil {
+		s.Fatal("Failed to direct bots to pin the test user: ", err)
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
