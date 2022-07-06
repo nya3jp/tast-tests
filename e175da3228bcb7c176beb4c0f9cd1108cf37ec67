@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c65c08_47b9b680",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-07-06T14:01:23Z",
+      "side": 1,
+      "message": "nit: This line is too long.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 73
+      },
+      "revId": "e175da3228bcb7c176beb4c0f9cd1108cf37ec67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7f8ec53a_d2487728",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-07-06T13:33:19Z",
       "side": 1,
       "message": "Small change, please take a look\nCould not reproduce the corresponding UI tree bug,\nthere is a chance it was fixed already.\nGonna revert if something pops up in Tastboards.",
+      "revId": "e175da3228bcb7c176beb4c0f9cd1108cf37ec67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a821419e_b968b54c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365228
+      },
+      "writtenOn": "2022-07-06T14:01:23Z",
+      "side": 1,
+      "message": "LGTM with a nit",
       "revId": "e175da3228bcb7c176beb4c0f9cd1108cf37ec67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
