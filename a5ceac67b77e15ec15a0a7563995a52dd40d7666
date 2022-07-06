@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6549fa2_dc9f458f",
+        "filename": "src/chromiumos/tast/remote/reportingutil/reporting_util.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-06T16:19:31Z",
+      "side": 1,
+      "message": "Use time.Time to represent time.",
+      "range": {
+        "startLine": 90,
+        "startChar": 76,
+        "endLine": 90,
+        "endChar": 89
+      },
+      "revId": "a5ceac67b77e15ec15a0a7563995a52dd40d7666",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
