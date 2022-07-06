@@ -34,6 +34,24 @@
       "parentUuid": "4bd37bc3_d23f9be2",
       "revId": "eb29120cb3b8238e5987763b4b8136102e2a2885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13dee055_f9a66c51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-07-06T03:01:44Z",
+      "side": 1,
+      "message": "That makes sense. What about comparing delegated compositing on vs off? Do we have that comparison somewhere as well? I think that\u0027s also a useful comparison.",
+      "parentUuid": "70eb7925_acf05767",
+      "revId": "eb29120cb3b8238e5987763b4b8136102e2a2885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
