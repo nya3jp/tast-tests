@@ -89,7 +89,7 @@ func DisplayProperTimeFormat(ctx context.Context, s *testing.State) {
 			}
 
 			// Verify time format.
-			TimeView := nodewith.ClassName("TimeView")
+			TimeView := nodewith.ClassName("TimeView").First()
 			info, err := ui.Info(ctx, TimeView)
 			if err != nil {
 				s.Fatal("Failed to get node info for the time view: ", err)
