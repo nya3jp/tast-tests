@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b15a9d04_4cbf31ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/app_compatibility_code_mirror.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-06T04:00:14Z",
+      "side": 1,
+      "message": "E14s tests are prefix with VirtualKeyboard or PhysicalKeyboard in convention. This test sounds VK specific.",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "d47c89c83ed58c0e56ddce50c656a123c71d54c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00af2539_38d0a37b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/app_compatibility_code_mirror.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-06T04:00:14Z",
+      "side": 1,
+      "message": "How about: App Compatibility - CodeMirror",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 13
+      },
+      "revId": "d47c89c83ed58c0e56ddce50c656a123c71d54c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5197d68_d65c8ac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/app_compatibility_code_mirror.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-06T04:00:14Z",
+      "side": 1,
+      "message": "vkbCtx.ClickUntilVKShown(existingTextFinder) can be more stable.",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 36
+      },
+      "revId": "d47c89c83ed58c0e56ddce50c656a123c71d54c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd8aa325_494f8e78",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
         "patchSetId": 2
