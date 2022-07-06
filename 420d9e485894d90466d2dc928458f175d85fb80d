@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d6a46fb_8dd5551b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-06T19:52:26Z",
+      "side": 1,
+      "message": "Hi Toni, this is the tast test for the pin/unpin extensions/shortcut. PTAL. Thank you!",
+      "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
