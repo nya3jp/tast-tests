@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "044312f3_de45f771",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-06T21:50:59Z",
+      "side": 1,
+      "message": "Wait sorry I just realized that you weren\u0027t using r.run() for all of these. Can you change that?",
+      "revId": "525db48bc4bf00a1717b9f1306e64767ed335670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
