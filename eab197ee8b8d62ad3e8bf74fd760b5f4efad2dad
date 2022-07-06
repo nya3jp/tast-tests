@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab6cd68f_402f251f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_caps_lock.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-06T05:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3d1518d_54faa0d1",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 52
+      },
+      "revId": "eab197ee8b8d62ad3e8bf74fd760b5f4efad2dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b2f20c6_76ac4a97",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "+1 One more problem here: The test can potentially fail anywhere in between and leaking the state as shifted. It ruins the environment and fails following test cases using the same fixture.\n\nCan you find the chromium API to force disable shift state post test?\nhttps://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go;l\u003d562?q\u003dinputsFixtureImpl",
       "parentUuid": "7b2f20c6_76ac4a97",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "eab197ee8b8d62ad3e8bf74fd760b5f4efad2dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e053c4bf_0aee44f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_caps_lock.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-06T05:01:06Z",
+      "side": 1,
+      "message": "DONE: Combining tests\n\nre: disabling capslock if enabled at the end of test. Based on offline discussion with Jun, I decided to just defer a shift key press (see line 92). see comment in code.",
+      "parentUuid": "89a18082_7f478f1d",
       "range": {
         "startLine": 87,
         "startChar": 0,
