@@ -22,6 +22,30 @@
       },
       "revId": "d47c89c83ed58c0e56ddce50c656a123c71d54c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0437540b_ace03226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-07-06T02:28:13Z",
+      "side": 1,
+      "message": "How do I do LaunchBrowserWithHTML and also use a custom server to serve the data files?\n\nCan I somehow combine two HandlerFuncs?",
+      "parentUuid": "cd8aa325_494f8e78",
+      "range": {
+        "startLine": 261,
+        "startChar": 5,
+        "endLine": 261,
+        "endChar": 28
+      },
+      "revId": "d47c89c83ed58c0e56ddce50c656a123c71d54c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
