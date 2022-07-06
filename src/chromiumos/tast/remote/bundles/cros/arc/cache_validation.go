@@ -343,8 +343,10 @@ func getTTSCache(ctx context.Context, s *testing.State, cl *rpc.Client, tempDir 
 		subDir = filepath.Join(tempDir, "withoutCache")
 	}
 
-	if err := os.Mkdir(subDir, os.ModePerm); err != nil {
-		s.Fatal(errors.Wrap(err, "failed to created temp dir for TTS caches"))
+	if _, err := os.Stat(subDir); os.IsNotExist(err) {
+		if err := os.Mkdir(subDir, os.ModePerm); err != nil {
+			s.Fatal(errors.Wrap(err, "failed to created temp dir for TTS caches"))
+		}
 	}
 
 	getFile := func(file string) string {
