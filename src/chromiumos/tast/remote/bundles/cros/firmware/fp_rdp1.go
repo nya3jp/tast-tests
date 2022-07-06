@@ -140,6 +140,22 @@ func testRDP1(ctx context.Context, outdir string, d *rpcdut.RPCDUT, buildFwFile 
 	defer logFile.Close()
 	cmd.Stdout = logFile
 	err = cmd.Run()
+	// Schedule DUT reboot if needed. This is intended to reboot DUT on SSH
+	// or file checking failures. AlreadyRebooted variable is used to
+	// prevent from unnecessary reboot if DUT was already rebooted after
+	// checking flash contents.
+	alreadyRebooted := false
+	if needsReboot {
+		defer func() {
+			if !alreadyRebooted {
+				testing.ContextLog(ctx, "Rebooting")
+				if err := d.Reboot(ctx); err != nil {
+					testing.ContextLog(ctx, "Failed to reboot DUT")
+				}
+			}
+		}()
+	}
+
 	errcode, ok := err.(*ssh.ExitError)
 	if !ok {
 		return errors.New("failed to return Exit Error")
@@ -193,6 +209,7 @@ func testRDP1(ctx context.Context, outdir string, d *rpcdut.RPCDUT, buildFwFile 
 		if err := d.Reboot(ctx); err != nil {
 			return errors.Wrap(err, "failed to reboot DUT")
 		}
+		alreadyRebooted = true
 	}
 
 	_, err = fingerprint.CheckFirmwareIsFunctional(ctx, d.DUT())
