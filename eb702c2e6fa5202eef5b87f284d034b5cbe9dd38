@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1c66c82_fec0d091",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-06T16:46:34Z",
+      "side": 1,
+      "message": "Done. Just updated the first word from \"Feedback\" to \"feedback\".",
+      "parentUuid": "312adc58_106b560a",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "eb702c2e6fa5202eef5b87f284d034b5cbe9dd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d27faa6_e57ffc03",
@@ -132,6 +156,24 @@
       "writtenOn": "2022-06-29T18:49:19Z",
       "side": 1,
       "message": "nit: Use verb forms ending in `ing` in the `s.Log` strings, because they describe what the test is doing whereas (for example) `Set up chrome` sounds like \"Please set up chrome because the test can\u0027t do it automatically.\"",
+      "revId": "eb702c2e6fa5202eef5b87f284d034b5cbe9dd38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "098afae9_1ba9e1c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-06T16:46:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d27faa6_e57ffc03",
       "revId": "eb702c2e6fa5202eef5b87f284d034b5cbe9dd38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
