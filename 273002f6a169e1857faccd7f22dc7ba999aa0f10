@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9d04a411_06e0a70e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-06T04:23:53Z",
+      "side": 1,
+      "message": "The ctx already a pointer. You can directly use ossettings.LaunchAtPageURL(ctx..)",
+      "parentUuid": "b6d1ad7b_cf95129d",
+      "range": {
+        "startLine": 61,
+        "startChar": 46,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da67a14c_22895aa0",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
         "patchSetId": 14
@@ -332,6 +356,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2974af25_26a0e28c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-06T04:23:53Z",
+      "side": 1,
+      "message": "It is usually if err :\u003d func(); err !\u003d nil\n\nnil !\u003d err is not good for consistency. \n\nhttps://go.dev/blog/error-handling-and-go",
+      "parentUuid": "2e687255_ad6abf91",
+      "range": {
+        "startLine": 69,
+        "startChar": 34,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85549c6c_2135eab0",
         "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
         "patchSetId": 14
@@ -367,6 +415,30 @@
       "side": 1,
       "message": "I really don\u0027t. Can you explain?",
       "parentUuid": "85549c6c_2135eab0",
+      "range": {
+        "startLine": 117,
+        "startChar": 27,
+        "endLine": 117,
+        "endChar": 44
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f5026d_99aaa607",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-06T04:23:53Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task",
+      "parentUuid": "3559f10e_40fe15be",
       "range": {
         "startLine": 117,
         "startChar": 27,

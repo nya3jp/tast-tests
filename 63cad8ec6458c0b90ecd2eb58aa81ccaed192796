@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "940c9a89_74117d54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-06T04:23:53Z",
+      "side": 1,
+      "message": "2 checkToggle here open and close the OS setting page twice. Not sure why do not check both on the page.",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "63cad8ec6458c0b90ecd2eb58aa81ccaed192796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
