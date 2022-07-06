@@ -110,6 +110,7 @@ var expectedWLANDriver = map[wlan.DeviceID]map[string]string{
 		"4.19": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
 		"5.4":  "wireless/marvell/mwifiex/mwifiex_sdio.ko",
 		"5.10": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
+		"5.15": "wireless/marvell/mwifiex/mwifiex_sdio.ko",
 	},
 	wlan.BroadcomBCM4354SDIO: {
 		"3.8":  "wireless/brcm80211/brcmfmac/brcmfmac.ko",
