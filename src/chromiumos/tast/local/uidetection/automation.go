@@ -201,6 +201,34 @@ func (uda *Context) Location(ctx context.Context, s *Finder) (*Location, error) 
 		Rect: coords.ConvertBoundsFromPXToDP(rect, scaleFactor)}, nil
 }
 
+// WaitForLocation returns a function that waits until the UI location is
+// stabilized or consistent for two consecutive screenshots.
+func (uda *Context) WaitForLocation(s *Finder) uiauto.Action {
+	return func(ctx context.Context) error {
+		var lastLocation *Location
+		var currentLocation *Location
+		var err error
+
+		start := time.Now()
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if lastLocation, err = uda.Location(ctx, s); err != nil {
+				// Reset lastLocation on error.
+				lastLocation = &Location{}
+				return err
+			}
+			if currentLocation.Rect != lastLocation.Rect {
+				lastLocation = currentLocation
+				elapsed := time.Since(start)
+				return errors.Errorf("%s has not stopped changing location after %s, perhaps increase timeout", s.desc, elapsed)
+			}
+			return nil
+		}, &uda.pollOpts); err != nil {
+			return err
+		}
+		return nil
+	}
+}
+
 // Exists returns an action that returns nil if the specified element exists.
 func (uda *Context) Exists(s *Finder) uiauto.Action {
 	return func(ctx context.Context) error {
