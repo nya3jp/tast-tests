@@ -123,6 +123,30 @@
       },
       "revId": "8a320f40e648bcce00a91bcb3800ff65e0d8c05a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecb6177a_feac8bf7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-06T15:49:17Z",
+      "side": 1,
+      "message": "+2 is sticky, so feel free to submit to the CQ instead of just dry run",
+      "parentUuid": "9817b527_913e5a8a",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 30
+      },
+      "revId": "8a320f40e648bcce00a91bcb3800ff65e0d8c05a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
