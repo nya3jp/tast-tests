@@ -16,6 +16,29 @@
       "message": "Hi Jeremy,\n\nPlease review it. \nThank you.",
       "revId": "186fa103ed1f3472706bccca2dd53400106a7add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2872e5ab_2ed51e74",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-06T19:03:23Z",
+      "side": 1,
+      "message": "This will probably work in this scenario, but in general never reuse proto enums, so please add `reserved 1;` and start the new fields at 2.",
+      "range": {
+        "startLine": 73,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "186fa103ed1f3472706bccca2dd53400106a7add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
