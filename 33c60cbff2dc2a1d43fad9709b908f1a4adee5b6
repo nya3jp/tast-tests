@@ -16,6 +16,24 @@
       "message": "\u003e1 minute to launch Crostini is a really long time. LGTM to keep the test on the CQ, but what\u0027s going on with the devices that they\u0027re so slow?",
       "revId": "33c60cbff2dc2a1d43fad9709b908f1a4adee5b6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35ecd782_dc823838",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-06T01:31:22Z",
+      "side": 1,
+      "message": "It took more than 30 seconds to launch Crostini after shutdown on my local DUT (which is of high permance). What is the expected time here? do we need to create a bug to investiage this?",
+      "parentUuid": "4937537e_ed647785",
+      "revId": "33c60cbff2dc2a1d43fad9709b908f1a4adee5b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
