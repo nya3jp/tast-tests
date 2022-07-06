@@ -16,6 +16,23 @@
       "message": "Thanks for the comments.",
       "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc03af3a_6a1315dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-06T06:54:03Z",
+      "side": 1,
+      "message": "LGTM, but Kamil might have different opinions.",
+      "revId": "3fa34dc1757c9ee4c9defb8fa5cea01134c3a0a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

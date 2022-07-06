@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff34d95c_555a0663",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-06T06:54:03Z",
+      "side": 1,
+      "message": "We could create a higher level API that calls the API privately. But we can do that if it\u0027s actually needed. Checked the tests and the current code is pretty readable.",
+      "parentUuid": "17c639a5_990b0643",
+      "range": {
+        "startLine": 50,
+        "startChar": 5,
+        "endLine": 50,
+        "endChar": 14
+      },
+      "revId": "8be558eb0b976b556e6c1f61d46f60b007f35275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb481b79_fa662d2c",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "I tried that initially but that causes some issues in other parts of the code, e.g. we either need to define different options for poolID and timeout for GenericAccounts and OwnedTestAccounts, or we create a lock option which both can use but only makes sense in OwnedTestAccounts or OwnedTestAccounts get the poolID and timeout as options but the lock as a regular parameter.\n\nIn the helper I also need to then create different constructors depending if you want to get them from an existing client or a new client, as I cannot use two different options in the same function.\n\nI changed it accordingly, I have no strong feelings about either approach but there is unfortunately no way to make everything \"nice\".",
       "parentUuid": "23143bc8_0d1208ef",
+      "range": {
+        "startLine": 193,
+        "startChar": 60,
+        "endLine": 193,
+        "endChar": 95
+      },
+      "revId": "8be558eb0b976b556e6c1f61d46f60b007f35275",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c0e540_833509f3",
+        "filename": "src/chromiumos/tast/common/tape/tape.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-06T06:54:03Z",
+      "side": 1,
+      "message": "The current approach LGTM",
+      "parentUuid": "3950b972_3b2a6833",
       "range": {
         "startLine": 193,
         "startChar": 60,
