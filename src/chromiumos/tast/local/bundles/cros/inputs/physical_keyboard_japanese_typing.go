@@ -53,7 +53,6 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				Val:               ime.JapaneseWithUSKeyboard,
 				ExtraSoftwareDeps: []string{"lacros"},
-				ExtraAttr:         []string{"informational"},
 				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.JapaneseWithUSKeyboard}),
 			},
 			{
@@ -61,7 +60,6 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				Val:               ime.Japanese,
 				ExtraSoftwareDeps: []string{"lacros"},
-				ExtraAttr:         []string{"informational"},
 				ExtraSearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.Japanese}),
 			},
 		},
