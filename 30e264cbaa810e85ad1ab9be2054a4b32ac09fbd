@@ -22,6 +22,30 @@
       },
       "revId": "30e264cbaa810e85ad1ab9be2054a4b32ac09fbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08e316cd_e24aaab1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_caps_lock.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-06T06:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eca5bbc6_98ef4566",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "30e264cbaa810e85ad1ab9be2054a4b32ac09fbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
