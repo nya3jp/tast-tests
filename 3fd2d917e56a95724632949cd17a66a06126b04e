@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7083a61_fac3c990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-06T04:53:36Z",
+      "side": 1,
+      "message": "Thanks for your helpful comments. \n\n\u003e\u003e Even if the node is outside the view port, its.ClickField function automatically move it into viewport.\n\n`MakeVisible` currently makes the input field visible and at the \"bottom of the page\" but better to make the test more concrete. So, I updated the code and added a new function `ScrollIntoView` to explicitly align the bottom of the input field with the bottom of the page by scrolling. Also, removed the usage of `ClickFieldUntilVKShown` which included the `MakeVisible` call.\n\n\u003e\u003e Also the node position can potentially change in future. Hardcode is not ideal.\n\u003e\u003e I would suggest you to implement a function in its package named its.FindInputField(fieldCondition) to locate an input field on the bottom screen.\n\nI agree, it is tricky though.\n\nIt think it is not possible to guarantee that a text area with no type (e.g. numeric, date, etc.), right location and height exist all the time.\n\nThere are couple of feasible options to consider based on the existing tests:\n- Keep as it is relying on the fact that the testserver is not going to be changed dramatically and TextAreaAutoShiftOff remains offscreen with the same height and type (there are more than 15 text areas before it).\n- Create a new input field, add it to the testserver and add a code comment for it to highlight this needs to be kept at the very bottom of the page (offscreen)\n- Create a function to find an input field outside the viewport with no type set for it.\n\nI personally prefer option 1 or 2. Option 3 is not my favourite because it makes test complex and the test case dynamic (e.g. might return an unexpected text area invalidating the test). WDYT?",
+      "parentUuid": "1bcdceef_9b6fa13b",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 50
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee97f6cc_7d1e7ad5",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-05T10:28:29Z",
       "side": 1,
       "message": "In my opinion, newly added \u0027NamedCombine\u0027 is better than \u0027Combine\u0027. It prints out log when execute the function.",
+      "range": {
+        "startLine": 82,
+        "startChar": 34,
+        "endLine": 82,
+        "endChar": 41
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13be47ee_29b7cd62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-06T04:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee97f6cc_7d1e7ad5",
       "range": {
         "startLine": 82,
         "startChar": 34,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d3a860b_d04db96e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-06T04:53:36Z",
+      "side": 1,
+      "message": "It currently cleans up the state for \"trigger overscroll by typing using VK\" user action. I think better to keep it as it is, given it ensures the reusability of the action for any future tests and has minor extra overhead for \"perform overscroll before showing VK\".",
+      "parentUuid": "30e32502_84236470",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b44e4c3_9aabcb5d",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-05T10:28:29Z",
       "side": 1,
       "message": "ClickFieldUntilVKShown waits for VK locationed. So I feel this is not required either.",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 37
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c21b3c36_cdd34a31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-06T04:53:36Z",
+      "side": 1,
+      "message": "To the best of my understanding about the implementation of the overscroll feature, overscroll is applied after VK is shown and its bounds are set. So, there is a delay between the VK showing up and performing overscroll which `ClickFieldUntilVKShown` only waits for the former. This delay can be higher in Lacros. So, the sleep reduces the change of the test to become flaky with increase of the delay between VK show up and overscroll over different devices and clients.",
+      "parentUuid": "8b44e4c3_9aabcb5d",
       "range": {
         "startLine": 93,
         "startChar": 2,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39fbe6bc_78237710",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-06T04:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88006774_6097fbe3",
+      "range": {
+        "startLine": 116,
+        "startChar": 65,
+        "endLine": 116,
+        "endChar": 67
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "212de2a2_7c077fd3",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d66591_27ec1a68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-06T04:53:36Z",
+      "side": 1,
+      "message": "I udpated the code comments and explained this in the first review comment.",
+      "parentUuid": "212de2a2_7c077fd3",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 17
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5e318c5_022ba10c",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-07-05T10:28:29Z",
       "side": 1,
       "message": "TapKeysIgnoringCase. Otherwise this does not work on a field that enabled auto-shift.",
+      "range": {
+        "startLine": 159,
+        "startChar": 10,
+        "endLine": 159,
+        "endChar": 17
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6f26418_5370fb3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-06T04:53:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5e318c5_022ba10c",
       "range": {
         "startLine": 159,
         "startChar": 10,
