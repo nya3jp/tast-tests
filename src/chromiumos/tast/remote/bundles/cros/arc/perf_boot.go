@@ -39,7 +39,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.arc.PerfBootService"},
 		Vars:         []string{"arc.PerfBoot.iterations"},
-		Timeout:      20 * time.Minute,
+		Timeout:      50 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
