@@ -74,6 +74,29 @@
       },
       "revId": "aad48598a4c24f214c92bad9bf08bba2ac0b72fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f7a5445_127d7bfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/ethernet_static_ip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-06T02:27:47Z",
+      "side": 1,
+      "message": "A hard sleep is not ideal. Do you have any other approach polling the cache change?",
+      "range": {
+        "startLine": 74,
+        "startChar": 9,
+        "endLine": 74,
+        "endChar": 14
+      },
+      "revId": "aad48598a4c24f214c92bad9bf08bba2ac0b72fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
