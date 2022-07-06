@@ -70,6 +70,30 @@
       },
       "revId": "d47c89c83ed58c0e56ddce50c656a123c71d54c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69cd77f9_bf80cba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-06T02:59:07Z",
+      "side": 1,
+      "message": "That goes back to the original issue with title, we probably should extract the title from the code instead of modifying it. I will rework on https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3742805\n\nFor this CL, I think it is fine as long as it works. Just to be clear, @shend, could you add `The title of the serving HTML must be \"E14s test page\"` in the comment?",
+      "parentUuid": "82fdac49_10479356",
+      "range": {
+        "startLine": 261,
+        "startChar": 5,
+        "endLine": 261,
+        "endChar": 28
+      },
+      "revId": "d47c89c83ed58c0e56ddce50c656a123c71d54c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
