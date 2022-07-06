@@ -88,8 +88,8 @@ func DisplayProperTimeFormat(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to find status area widget: ", err)
 			}
 
-			// Verify time format.
-			TimeView := nodewith.ClassName("TimeView")
+			// Verify time format. There are 2 TimeView nodes and the names are identical too, just one shows the date and one shows the time.
+			TimeView := nodewith.ClassName("TimeView").First()
 			info, err := ui.Info(ctx, TimeView)
 			if err != nil {
 				s.Fatal("Failed to get node info for the time view: ", err)
