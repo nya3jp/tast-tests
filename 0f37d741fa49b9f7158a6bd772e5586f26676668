@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26a326de_809b4a07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2022-07-06T11:59:39Z",
+      "side": 1,
+      "message": "We should not need to demote any of the `crash.` tasts (I see this is a revert anyway). The root cause is actually b/237534756, which induces a chrome crash causing subsequent tasts in the `crash.` category to fail. We have opened b/238173644 to improve the `crash.` tasts\u0027 handling of the case where chrome is crashing.",
+      "revId": "0f37d741fa49b9f7158a6bd772e5586f26676668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
