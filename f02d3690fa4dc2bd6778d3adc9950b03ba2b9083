@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2bb7c4c_4779a325",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-07-06T21:04:30Z",
+      "side": 1,
+      "message": "There\u0027s an outgoing CL: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3723225\nthat disables the desk templates sync.",
+      "parentUuid": "a9c2e0ff_699ad267",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "18e7471b_59e496f1",
@@ -113,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "500778fe_65626a78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-07-06T21:04:30Z",
+      "side": 1,
+      "message": "These aren\u0027t used in a few other tast tests that calls the `ash.SetOverviewModeAndWait` method. Ex: `overview_drag_window_perf.go`.",
+      "parentUuid": "22f333e1_00ba9572",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 2
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fc8dcb4_bd31b484",
         "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
         "patchSetId": 12
@@ -124,6 +172,24 @@
       "writtenOn": "2022-07-06T19:25:27Z",
       "side": 1,
       "message": "I think it would be better to restructure this so errors are handled properly. Maybe something like:\n```\nfound, err :\u003d ac.IsNodeFound(...)\nif err !\u003d nil {\n  return errors.Wrap(err, \"msg\")\n}\n\nfor found {\n  \u003crest of the loop\u003e\n  // reevaluate `found` at the end\n  found, err \u003d ac.IsNodeFound(ctx, libraryButton)\n  if err !\u003d nil {\n    return errors.Wrap(err, \"msg\")\n  }\n}\n```",
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac114bf6_bbb09b30",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-07-06T21:04:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fc8dcb4_bd31b484",
       "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -141,6 +207,30 @@
       "writtenOn": "2022-07-06T19:25:27Z",
       "side": 1,
       "message": "error should be handled",
+      "range": {
+        "startLine": 130,
+        "startChar": 21,
+        "endLine": 130,
+        "endChar": 22
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f0ab63_31bae6a9",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-07-06T21:04:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcc4cbf4_7355c59d",
       "range": {
         "startLine": 130,
         "startChar": 21,
@@ -174,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cab66882_8b6cb51f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-07-06T21:04:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83031ed5_557f5ee7",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 47
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cf52f50_8fa46b48",
@@ -197,6 +311,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "310fdbfc_7ca8d6ba",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-07-06T21:04:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cf52f50_8fa46b48",
+      "range": {
+        "startLine": 133,
+        "startChar": 13,
+        "endLine": 133,
+        "endChar": 27
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c319054_fde67ed9",
@@ -210,6 +348,30 @@
       "writtenOn": "2022-07-06T19:25:27Z",
       "side": 1,
       "message": "why not just `ac.LeftClick(firstDeskTemplate)(ctx)`? if the distinction is important here, I\u0027d suggest leaving a comment",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 139,
+        "endChar": 39
+      },
+      "revId": "f02d3690fa4dc2bd6778d3adc9950b03ba2b9083",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "143da22b_87df8af5",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-07-06T21:04:30Z",
+      "side": 1,
+      "message": "Added a comment. Essentially, I want to simulate a mouse press and hold on a card so that additional widgets will appear on that card.",
+      "parentUuid": "0c319054_fde67ed9",
       "range": {
         "startLine": 133,
         "startChar": 3,
