@@ -33,7 +33,6 @@ func init() {
 			"chromeos-apps-foundation-team@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Vars:         []string{"ui.gaiaPoolDefault"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
 			Val: browser.TypeAsh,
@@ -43,6 +42,7 @@ func init() {
 			ExtraAttr:         []string{"informational"},
 			Val:               browser.TypeLacros,
 		}},
+		Timeout: 6 * time.Minute,
 	})
 }
 
