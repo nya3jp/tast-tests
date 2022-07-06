@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78af50c0_440c285d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb4_gatex_card_display_functionalities.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-06T11:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd972c90_cb0ba61c",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 51
+      },
+      "revId": "30aed8c030eb6661fcd80e737b73a573d30aa5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54486d88_b8f67b0b",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-01T06:41:44Z",
       "side": 1,
       "message": "Use https://pkg.go.dev/strings#HasPrefix instead",
+      "revId": "30aed8c030eb6661fcd80e737b73a573d30aa5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "354b4f0a_225e7d04",
+        "filename": "src/chromiumos/tast/local/typecutils/display_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-06T11:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54486d88_b8f67b0b",
       "revId": "30aed8c030eb6661fcd80e737b73a573d30aa5de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "273d29f2_7ccb5ada",
+        "filename": "src/chromiumos/tast/local/typecutils/display_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-06T11:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "711c1b70_1847fca4",
+      "revId": "30aed8c030eb6661fcd80e737b73a573d30aa5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dec46037_2430a3df",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4d98688_257de26a",
+        "filename": "src/chromiumos/tast/local/typecutils/display_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-06T11:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dec46037_2430a3df",
+      "revId": "30aed8c030eb6661fcd80e737b73a573d30aa5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6329cba5_6d9af594",
@@ -88,6 +166,30 @@
       "writtenOn": "2022-07-01T06:41:44Z",
       "side": 1,
       "message": "See:\nhttps://go.dev/doc/effective_go#mixed-caps\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms\n\nThis should become CheckUSBPDMuxInfo.",
+      "range": {
+        "startLine": 223,
+        "startChar": 5,
+        "endLine": 223,
+        "endChar": 22
+      },
+      "revId": "30aed8c030eb6661fcd80e737b73a573d30aa5de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72ed98a0_83b1d61c",
+        "filename": "src/chromiumos/tast/local/typecutils/utils.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-06T11:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6329cba5_6d9af594",
       "range": {
         "startLine": 223,
         "startChar": 5,
