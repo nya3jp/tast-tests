@@ -33,6 +33,24 @@
       "message": "Will this test cause informational test to fail? Is so, I think we should remove this line now and have the test owner to put it back to informational in future.",
       "revId": "ad72a70a16ade473c96ec18c78377f60440c8154",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "405d41e7_71c01784",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2022-07-06T17:12:49Z",
+      "side": 1,
+      "message": "This test caused multiple `crash.` tasts to fail in the reven-vmtest builders, including release builders, resulting in the build target being set to non-critical (see crrev/i/4863339).\n\nWe would like to set reven-vmtest back to critical as soon as possible and at this point the only failing test is a `crash.` test:\nhttps://ci.chromium.org/p/chromeos/builders/vmtest/reven-vmtest-direct-tast-vm?limit\u003d200\n\nThe chrome crash induced by `apps.SystemWebAppsReinstall` reproduces ~88% of the time, hence the couple of successful builds. Once we demote this test we should be able to restore the other `crash.` tasts that were demoted in an attempt to address the issue.\n\nI have also filed b/238173644 to improve the `crash.` tasts\u0027 handling of the case where session manager is down, so they fail with a more descriptive error.",
+      "parentUuid": "6bc015e4_f07528b4",
+      "revId": "ad72a70a16ade473c96ec18c78377f60440c8154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
