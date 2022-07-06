@@ -32,7 +32,7 @@ func init() {
 		Desc:         "Checks that right click input field and select emoji with physical keyboard",
 		Contacts:     []string{"shengjun@chromium.org", "jopalmer@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
-		SoftwareDeps: []string{"chrome"},
+		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.DefaultInputMethod}),
 		Params: []testing.Param{
 			{
