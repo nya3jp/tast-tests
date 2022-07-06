@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d9fc6d_4dbbb677",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-06T02:25:45Z",
+      "side": 1,
+      "message": "unsetting LGTM now. PTAL my comment below.",
+      "revId": "0f638a1dc1adc839f67099aafa700f994600d235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
