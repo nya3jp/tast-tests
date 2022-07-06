@@ -16,6 +16,24 @@
       "message": "Hi Jeremy,\n\nCan you please get us the CQ failure logs?",
       "revId": "19e38f28a8e88f28d86bc776fd4bba3613845ec2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8c484e_bca219d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-06T16:35:56Z",
+      "side": 1,
+      "message": "```\n2022-07-04T07:56:45.365365Z Started test crash.Seccomp\n2022-07-04T07:56:45.662880Z [07:56:45.488] Error at seccomp.go:69: Failed to set up crash test: failed to get daemon store crash directories: couldn\u0027t retrieve active sessions: Message recipient disconnected from message bus without replying\n2022-07-04T07:56:45.665736Z [07:56:45.488] Stack trace:\nFailed to set up crash test\n\tat chromiumos/tast/local/bundles/cros/crash.Seccomp (seccomp.go:69)\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func3.1 (run.go:824)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n\tat runtime.goexit (asm_amd64.s:1571)\nfailed to get daemon store crash directories\n\tat chromiumos/tast/local/crash.SetUpCrashTest (fixture.go:275)\n\tat chromiumos/tast/local/bundles/cros/crash.Seccomp (seccomp.go:68)\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func3.1 (run.go:824)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n\tat runtime.goexit (asm_amd64.s:1571)\ncouldn\u0027t retrieve active sessions\n\tat chromiumos/tast/local/crash.GetDaemonStoreCrashDirs (crash.go:215)\n\tat chromiumos/tast/local/crash.SetUpCrashTest (fixture.go:273)\n\tat chromiumos/tast/local/bundles/cros/crash.Seccomp (seccomp.go:68)\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func3.1 (run.go:824)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n\tat runtime.goexit (asm_amd64.s:1571)\nMessage recipient disconnected from message bus without replying\n\tat ???\n2022-07-04T07:56:46.006815Z [07:56:45.833] Failed to take screenshot by Chrome API: failed to create a new Chrome Devtools Protocol session: failed to query browser\u0027s HTTP endpoint: Get \"http://localhost:33823/json/version\": dial tcp [::1]:33823: connect: connection refused\n2022-07-04T07:56:46.021400Z [07:56:45.848] External command failed: exit status 1\n2022-07-04T07:56:46.024091Z [07:56:45.848] Command: screenshot /usr/local/tmp/tast_out.20220704-005513.043287928/crash.Seccomp/faillog/screenshot_builtin.png\n2022-07-04T07:56:46.027992Z [07:56:45.848] Uncaptured output:\n2022-07-04T07:56:45.846715Z ERROR screenshot: [screenshot.cc(111)] CRTC not found. Is the screen on?\n\n2022-07-04T07:56:46.032237Z [07:56:45.848] Failed to take screenshot by a command: failed running \"screenshot /usr/local/tmp/tast_out.20220704-005513.043287928/crash.Seccomp/faillog/screenshot_builtin.png\"\n2022-07-04T07:56:46.035352Z Completed test crash.Seccomp in 658ms with 1 error(s)\n```",
+      "parentUuid": "d6542d81_611dc99a",
+      "revId": "19e38f28a8e88f28d86bc776fd4bba3613845ec2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
