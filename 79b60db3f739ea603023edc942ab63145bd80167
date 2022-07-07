@@ -16,6 +16,29 @@
       "message": "Hello Kyle! Went ahead and put together that fix we discussed and verified that both tests are passing on a device. Please take a look at this change whenever you have a moment!",
       "revId": "79b60db3f739ea603023edc942ab63145bd80167",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131099a0_b7e11752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-07T21:08:08Z",
+      "side": 1,
+      "message": "`HasClass(\"ToggleButton\")` could also work here if you think the classname will ever revert to just \"ToggleButton\", but either way is fine",
+      "range": {
+        "startLine": 59,
+        "startChar": 53,
+        "endLine": 59,
+        "endChar": 81
+      },
+      "revId": "79b60db3f739ea603023edc942ab63145bd80167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
