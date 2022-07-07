@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a5744f_0990bac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T05:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f978d380_cdb358bf",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 9
+      },
+      "revId": "132f5b351281b74a6e2ae5cdfd96aaea741e4d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67da94de_f34776ca",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-05T09:01:41Z",
       "side": 1,
       "message": "I\u0027d use\n\nsleepingDuration \u003d endTime.Sub(time.Now())\nif sleepingDuration \u003e\u003d 2*time.Minute {\n  sleepingDuration \u003d 2*time.Minute\n}\n\nif err :\u003d testing.Sleep(ctx, sleepingDuration); err !\u003d nil {\n...",
+      "range": {
+        "startLine": 181,
+        "startChar": 3,
+        "endLine": 191,
+        "endChar": 4
+      },
+      "revId": "132f5b351281b74a6e2ae5cdfd96aaea741e4d41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af7b9256_5f045398",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/stress_audio_playback_onboard_speaker.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T05:03:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67da94de_f34776ca",
       "range": {
         "startLine": 181,
         "startChar": 3,
