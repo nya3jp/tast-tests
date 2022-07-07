@@ -214,6 +214,30 @@
       },
       "revId": "ad4d2eecc51e0294e0dcfd913a0fc631fb81f256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e96fdff_d32f48e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/dump_vpd_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-07T07:20:50Z",
+      "side": 1,
+      "message": "AFAIK it\u0027s WAI. flashrom might also not return an error via return code. Artem is working on improving the entire flow.",
+      "parentUuid": "e3b90e23_4cc43e75",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 125,
+        "endChar": 40
+      },
+      "revId": "ad4d2eecc51e0294e0dcfd913a0fc631fb81f256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
