@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "143bb6d3_d562418c",
+        "filename": "src/chromiumos/tast/common/network/cmd/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-07T15:17:22Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3482ff9_09a50235",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-07T15:17:22Z",
+      "side": 1,
+      "message": "add docstring to function.\n\nfrom: https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#doc-comments\n\n\u003e ... must have doc comments ... as should unexported type or function declarations with unobvious behavior or meaning",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "136d28b4_6e169f35",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-07T15:17:22Z",
+      "side": 1,
+      "message": "as it is, it looks like a getter.  Add `Set` prefix",
+      "range": {
+        "startLine": 133,
+        "startChar": 17,
+        "endLine": 133,
+        "endChar": 24
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5bacf49_f580d677",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-07T15:17:22Z",
+      "side": 1,
+      "message": "what happens if some calls `close` more than once?\n\n\nperhaps doing some kind of cleanup ?\n\ne.g:\n\n    if r.CmdExists() {\n       ...\n       r.ResetCmd()\n    }\n    \n    if r.config.stderrFile !\u003d nil {\n      ...\n      r.config.stderrFile \u003d nil\n    }",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 11
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba9268ce_2bf20f79",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-07T15:17:22Z",
+      "side": 1,
+      "message": "nit:  \"will output\" -\u003e \"outputs\"\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#comment-sentences",
+      "range": {
+        "startLine": 175,
+        "startChar": 13,
+        "endLine": 175,
+        "endChar": 17
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a95ac937_038e7023",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-07T15:17:22Z",
+      "side": 1,
+      "message": "I\u0027d add a more descriptive comment... like: \"OutputTCP returns the TCP packets\"... or something like that...",
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9298b99_dedb1103",
+        "filename": "src/chromiumos/tast/local/network/cmd/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-07T15:17:22Z",
+      "side": 1,
+      "message": "nit: here and in the rest: \"will set\" -\u003e \"sets\"\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#doc-comments",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 16
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2555c2_bffb82c9",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-07T15:17:22Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
