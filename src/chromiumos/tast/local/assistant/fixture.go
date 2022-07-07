@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/testing"
 )
 
@@ -21,6 +22,10 @@ const (
 	preTestTimeout  = time.Minute
 	postTestTimeout = time.Minute
 )
+
+func ashNoNudgesExtraArg() chrome.Option {
+	return chrome.ExtraArgs("--ash-no-nudges")
+}
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -33,6 +38,7 @@ func init() {
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				VerboseLogging(),
+				ashNoNudgesExtraArg(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 			}, nil
 		}),
@@ -51,6 +57,7 @@ func init() {
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				VerboseLogging(),
+				ashNoNudgesExtraArg(),
 				chrome.EnableFeatures("StartAssistantAudioDecoderOnDemand"),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 			}, nil
@@ -70,6 +77,7 @@ func init() {
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
 				VerboseLogging(),
+				ashNoNudgesExtraArg(),
 				chrome.DisableFeatures("ProductivityLauncher"),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 			}, nil
@@ -100,6 +108,7 @@ func init() {
 					Pass: s.RequiredVar("assistant.password"),
 				}),
 				VerboseLogging(),
+				ashNoNudgesExtraArg(),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 			}, nil
 		}),
@@ -203,6 +212,42 @@ func init() {
 		}),
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "assistantClamshellPerf",
+		Desc: "Assistant clamshell fixture for running performance test",
+		Contacts: []string{
+			"yawano@google.com",
+			"assistive-eng@google.com",
+		},
+		Parent:         "assistantClamshell",
+		Impl:           newPerfFixture(),
+		PreTestTimeout: perfFixturePreTestTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "assistantClamshellWithLegacyLauncherPerf",
+		Desc: "Assistant clamshell legacy launcher fixture for running performance test",
+		Contacts: []string{
+			"yawano@google.com",
+			"assistive-eng@google.com",
+		},
+		Parent:         "assistantClamshellWithLegacyLauncher",
+		Impl:           newPerfFixture(),
+		PreTestTimeout: perfFixturePreTestTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name: "assistantPerf",
+		Desc: "Assistant fixture for running performance test",
+		Contacts: []string{
+			"yawano@google.com",
+			"assistive-eng@google.com",
+		},
+		Parent:         "assistant",
+		Impl:           newPerfFixture(),
+		PreTestTimeout: perfFixturePreTestTimeout,
 	})
 }
 
@@ -310,3 +355,27 @@ func (f *enabledFixture) PostTest(ctx context.Context, s *testing.FixtTestState)
 		s.Fatal("Failed to disable Assistant: ", err)
 	}
 }
+
+type perfFixture struct{}
+
+const perfFixturePreTestTimeout = 2 * time.Minute
+
+func newPerfFixture() testing.FixtureImpl {
+	return &perfFixture{}
+}
+
+func (f *perfFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	return s.ParentValue()
+}
+func (f *perfFixture) TearDown(ctx context.Context, s *testing.FixtState) {}
+func (f *perfFixture) Reset(ctx context.Context) error {
+	return nil
+}
+func (f *perfFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	// We don't want to include noises from cpu busy state.
+	// As a best practice, wait cpu idle time before running a performance related test.
+	if err := cpu.WaitUntilIdle(ctx); err != nil {
+		s.Fatal("Failed to wait for cpu idle time: ", err)
+	}
+}
+func (f *perfFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}

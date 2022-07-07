@@ -29,7 +29,7 @@ func init() {
 		Contacts:     []string{"cowmoo@chromium.org", "xiaohuic@chromium.org", "assistive-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Fixture:      "assistant",
+		Fixture:      "assistantClamshellPerf",
 		Params: []testing.Param{
 			{
 				Name:              "assistant_key",
@@ -74,18 +74,6 @@ func BetterOnboardingBubbleLauncherAnimationPerf(ctx context.Context, s *testing
 			s.Error("Failed to disable better onboarding: ", err)
 		}
 	}()
-
-	const IsTabletMode = false
-	cleanupTabletMode, err := ash.EnsureTabletModeEnabled(ctx, tconn, IsTabletMode)
-	if err != nil {
-		s.Fatal("Failed to put into Clamshell mode: ", err)
-	}
-	defer cleanupTabletMode(ctx)
-
-	// If a DUT switches from Tablet mode to Clamshell mode, it can take a while until launcher gets settled down.
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-		s.Fatal("Failed to wait the launcher state Closed: ", err)
-	}
 
 	pv := perf.NewValues()
 
