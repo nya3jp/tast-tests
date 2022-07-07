@@ -517,18 +517,12 @@ func CheckValidFlashState(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoard
 // InitializeHWAndSWWriteProtect ensures hardware and software write protect are initialized as requested.
 func InitializeHWAndSWWriteProtect(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, fpBoard FPBoardName, enableHWWP, enableSWWP bool) error {
 	testing.ContextLogf(ctx, "Initializing HW WP to %t, SW WP to %t", enableHWWP, enableSWWP)
-	// HW write protect must be disabled to disable SW write protect.
-	if !enableSWWP {
-		if err := SetHardwareWriteProtect(ctx, pxy, false); err != nil {
-			return err
-		}
-	}
-
-	if err := SetSoftwareWriteProtect(ctx, d.DUT(), enableSWWP); err != nil {
+	// HW write protect must be changed to change SW write protect.
+	if err := SetHardwareWriteProtect(ctx, pxy, enableHWWP); err != nil {
 		return err
 	}
 
-	if err := SetHardwareWriteProtect(ctx, pxy, enableHWWP); err != nil {
+	if err := SetSoftwareWriteProtect(ctx, d.DUT(), enableSWWP); err != nil {
 		return err
 	}
 
