@@ -183,6 +183,30 @@
       },
       "revId": "1389ddc8b33e23ac74f3777b072f8427b725efac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e9e0c8d_5c7ccbc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-07T13:25:50Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/main:src/chromiumos/tast/common/testexec/testexec.go;l\u003d102\n\nIt\u0027s a default behavior actually. So something different is caused.\nActually, I expect that behavior, so that signal is delivered to the process group.",
+      "parentUuid": "73c41a1a_53078f1c",
+      "range": {
+        "startLine": 116,
+        "startChar": 36,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "1389ddc8b33e23ac74f3777b072f8427b725efac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
