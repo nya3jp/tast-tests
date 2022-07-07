@@ -327,7 +327,7 @@ func (a *AndroidNearbyDevice) SendFile(ctx context.Context, senderName, receiver
 func (a *AndroidNearbyDevice) SendWifi(ctx context.Context, senderName, receiverName, shareWifiName, wifiPassword string, securityType nearbycommon.SecurityType, turnaroundTime time.Duration) error {
 	// Reset the transferCallback between shares.
 	a.transferCallback = ""
-	res, err := a.snippetClient.RPC(ctx, mobly.DefaultRPCResponseTimeout, "sendWiFi", senderName, receiverName, shareWifiName, securityType, wifiPassword, int(turnaroundTime.Seconds()))
+	res, err := a.snippetClient.RPC(ctx, mobly.DefaultRPCResponseTimeout, "sendWifi", senderName, receiverName, shareWifiName, securityType, wifiPassword, int(turnaroundTime.Seconds()))
 	if err != nil {
 		return err
 	}
