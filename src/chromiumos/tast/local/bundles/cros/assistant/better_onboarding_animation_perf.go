@@ -7,11 +7,11 @@ package assistant
 import (
 	"context"
 	"fmt"
-	"time"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/assistant"
+	"chromiumos/tast/local/bundles/cros/assistant/assistantutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
@@ -27,7 +27,7 @@ func init() {
 		Contacts:     []string{"cowmoo@chromium.org", "xiaohuic@chromium.org", "assistive-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Fixture:      "assistantWithLegacyLauncher",
+		Fixture:      "assistantClamshellWithLegacyLauncherPerf",
 		Params: []testing.Param{
 			{
 				Name:              "assistant_key",
@@ -73,18 +73,6 @@ func BetterOnboardingAnimationPerf(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	const IsTabletMode = false
-	cleanupTabletMode, err := ash.EnsureTabletModeEnabled(ctx, tconn, IsTabletMode)
-	if err != nil {
-		s.Fatal("Failed to put into Clamshell mode: ", err)
-	}
-	defer cleanupTabletMode(ctx)
-
-	// If a DUT switches from Tablet mode to Clamshell mode, it can take a while until launcher gets settled down.
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-		s.Fatal("Failed to wait the launcher state Closed: ", err)
-	}
-
 	pv := perf.NewValues()
 
 	// Open and close Assistant UI for the first time in the session.
@@ -103,59 +91,44 @@ func BetterOnboardingAnimationPerf(ctx context.Context, s *testing.State) {
 }
 
 func recordAssistantToggleSmoothness(ctx context.Context, tconn *chrome.TestConn, pv *perf.Values, postfix string, accel assistant.Accelerator) error {
-	// Open the Assistant UI and gather metrics.
-	// TODO(b:178409604) add "Apps.StateTransition.AnimationSmoothness.Half.ClamshellMode" when it is recorded properly.
-	histograms, err := metrics.RunAndWaitAll(
-		ctx,
-		tconn,
-		3*time.Second,
+	assistantutils.RecordAnimationPerformance(ctx, tconn, pv,
+		[]string{"Ash.Assistant.AnimationSmoothness.ResizeAssistantPageView",
+			"Apps.StateTransition.AnimationSmoothness.Half.ClamshellMode"},
 		func(ctx context.Context) error {
-			return toggleAssistantUI(ctx, tconn, accel)
+			// Closed->Peeking.
+			if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
+				return errors.Wrap(err, "failed to open the embedded UI")
+			}
+
+			if err := ash.WaitForLauncherState(ctx, tconn, ash.Half); err != nil {
+				return errors.Wrap(err, "failed to switch the state to 'Half'")
+			}
+			return nil
 		},
-		"Ash.Assistant.AnimationSmoothness.ResizeAssistantPageView",
-		"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode",
+		func(h *metrics.Histogram) string {
+			return fmt.Sprintf("%s.Open.%s", h.Name, postfix)
+		},
 	)
-	if err != nil {
-		return errors.Wrap(err, "failed to collect histogram")
-	}
 
-	for _, h := range histograms {
-		mean, err := h.Mean()
+	assistantutils.RecordAnimationPerformance(ctx, tconn, pv,
+		[]string{"Ash.Assistant.AnimationSmoothness.ResizeAssistantPageView",
+			"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode"},
+		func(ctx context.Context) error {
+			// Peeking->Closed.
+			if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
+				return errors.Wrap(err, "failed to close the embedded UI")
+			}
 
-		if err != nil {
-			return errors.Wrapf(err, "failed to get mean for histogram %s", h.Name)
-		}
+			if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+				return errors.Wrap(err, "failed to switch the state to 'Closed'")
+			}
 
-		pv.Set(perf.Metric{
-			Name:      fmt.Sprintf("%s.%s", h.Name, postfix),
-			Unit:      "percent",
-			Direction: perf.BiggerIsBetter,
-		}, mean)
-	}
-
-	return nil
-}
-
-// toggleAssistantUI opens and then closes the Assistant UI via hotkey. Launcher
-// opens to Half state, rather than Peeking, because Better Onboarding requires extra space.
-func toggleAssistantUI(ctx context.Context, tconn *chrome.TestConn, accel assistant.Accelerator) error {
-	// Closed->Peeking.
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
-		return errors.Wrap(err, "failed to open the embedded UI")
-	}
-
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Half); err != nil {
-		return errors.Wrap(err, "failed to switch the state to 'Half'")
-	}
-
-	// Peeking->Closed.
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
-		return errors.Wrap(err, "failed to close the embedded UI")
-	}
-
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-		return errors.Wrap(err, "failed to switch the state to 'Closed'")
-	}
+			return nil
+		},
+		func(h *metrics.Histogram) string {
+			return fmt.Sprintf("%s.Close.%s", h.Name, postfix)
+		},
+	)
 
 	return nil
 }
