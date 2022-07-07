@@ -16,6 +16,24 @@
       "message": "let better reduce number of iter?",
       "revId": "f3a45ac618489c49effa13fe8101c9627769eb94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eb7d8a6_87109e7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537589
+      },
+      "writtenOn": "2022-07-07T18:03:31Z",
+      "side": 1,
+      "message": "Yeah that sounds like a better idea than just increasing the timeout given how long each run might take. I just picked 5 as number of iteration and also increase the timeout to 25 mins to be sure. Let me know if you have suggestions on what numbers to take.",
+      "parentUuid": "9ef6df99_ba4b1070",
+      "revId": "f3a45ac618489c49effa13fe8101c9627769eb94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
