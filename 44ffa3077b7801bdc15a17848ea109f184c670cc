@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7122b03_aa8ca372",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-07T17:31:55Z",
+      "side": 1,
+      "message": "It seems the file I used previously was uploaded after test run. I found another file with earlier timestamp. Please review. Thanks.",
+      "revId": "44ffa3077b7801bdc15a17848ea109f184c670cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
