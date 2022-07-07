@@ -68,6 +68,23 @@
       "message": "reven-vmtest still broken due to b/237534756 / b/237696882, let\u0027s give it one more try in case it\u0027s just an intermittent flake...",
       "revId": "c742c0134f608292b277da69dc7236bcba790f0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1431623c_2eaf2596",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-07-07T00:30:50Z",
+      "side": 1,
+      "message": "Seems like the reven-vmtest crash test failures may be fixed now, let\u0027s give it another try...",
+      "revId": "c742c0134f608292b277da69dc7236bcba790f0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
