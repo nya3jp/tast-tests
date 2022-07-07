@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb74d0e8_75c29647",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-07T19:22:19Z",
+      "side": 1,
+      "message": "nit: I\u0027d pass this in as a method argument",
+      "revId": "fe46b783f3ac03f5ecae1988b2acf078b0d35b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1bd506d_f61344e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-07T19:22:19Z",
+      "side": 1,
+      "message": "I\u0027d consider cropping the rect bounds to the bottom of item view (to minimize pixels from the app item icon that appear in the screenshot)",
+      "revId": "fe46b783f3ac03f5ecae1988b2acf078b0d35b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc8dc81_99dc7406",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-07T19:22:19Z",
+      "side": 1,
+      "message": "should we make this compare to a min value (something like 16, or 25?)",
+      "revId": "fe46b783f3ac03f5ecae1988b2acf078b0d35b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
