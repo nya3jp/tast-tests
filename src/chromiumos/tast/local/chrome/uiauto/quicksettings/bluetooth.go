@@ -29,7 +29,7 @@ var BluetoothDetailedViewSettingsButton = nodewith.ClassName("IconButton").NameC
 
 // BluetoothDetailedViewToggleButton is the Bluetooth toggle child within the
 // detailed Bluetooth view.
-var BluetoothDetailedViewToggleButton = nodewith.ClassName("ToggleButton").NameContaining("Bluetooth").Ancestor(bluetoothDetailedView)
+var BluetoothDetailedViewToggleButton = nodewith.HasClass("TrayToggleButton").NameContaining("Bluetooth").Ancestor(bluetoothDetailedView)
 
 // NavigateToBluetoothDetailedView will navigate to the detailed Bluetooth view
 // within the Quick Settings. This is safe to call even when the Quick Settings
