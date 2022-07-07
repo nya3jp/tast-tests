@@ -117,6 +117,30 @@
       },
       "revId": "74ec899674433bb5d5c02190dceb74797fe8cabf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c27fc6_e1311e68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-07T13:46:02Z",
+      "side": 1,
+      "message": "That\u0027s what I thought and tat\u0027s why I waited for the privacyMenu to render by doing this first:\n\nif err :\u003d ui.WithTimeout(3*time.Second).WaitUntilExists(privacyMenu)(ctx); err !\u003d nil {\n      s.Fatal(\"Failed to find Privacy Hub in OS setting page: \", err)\n}\n\nWhy does that not work?",
+      "parentUuid": "015a120c_acff92af",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "74ec899674433bb5d5c02190dceb74797fe8cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
