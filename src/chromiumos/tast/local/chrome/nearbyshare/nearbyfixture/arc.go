@@ -8,6 +8,7 @@ import (
 	"time"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
+	"chromiumos/tast/local/chrome/crossdevice"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/testing"
 )
@@ -29,7 +30,7 @@ func addARCFixtures() {
 			"chromeos-sw-engprod@google.com",
 			"arc-app-dev@google.com",
 		},
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
@@ -51,7 +52,7 @@ func addARCFixtures() {
 			"arc-app-dev@google.com",
 		},
 		Parent:          "nearbyShareGAIALoginARCEnabled",
-		SetUpTimeout:    2 * time.Minute,
+		SetUpTimeout:    3*time.Minute + crossdevice.BugReportDuration,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
 		PreTestTimeout:  resetTimeout,
