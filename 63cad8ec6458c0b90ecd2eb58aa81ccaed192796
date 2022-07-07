@@ -70,6 +70,30 @@
       },
       "revId": "63cad8ec6458c0b90ecd2eb58aa81ccaed192796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ba4b45_a06f1b4e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-07T09:51:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "732f78cd_c0e4c318",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "63cad8ec6458c0b90ecd2eb58aa81ccaed192796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

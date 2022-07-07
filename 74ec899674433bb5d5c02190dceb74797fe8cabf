@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b3e2dd_e499396a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-07T09:51:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6ab45d01_fb59df3d",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 1
+      },
+      "revId": "74ec899674433bb5d5c02190dceb74797fe8cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a37c916_b1b2ebf8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-07T01:20:27Z",
       "side": 1,
       "message": "cameraLabel :\u003d nodewith.Name(\"Camera\").Role(role.ToggleButton)\nmicrophoneLabel :\u003d nodewith.Name(\"Microphone\").Role(role.ToggleButton)\n\nui :\u003d uiauto.New(tconn)\n\nif featureOn {\n    if err :\u003d uiauto.Combine(\"Verify privacy menu page\",\n        ui.LeftClick(privacyMenu),\n        ui.WaitUntilExists(cameraLabel),\n        ui.WaitUntilExists(microphoneLabel),\n    )(ctx); err !\u003d nil{\n        s.Fatal(\"Failed to verify privacy menu:\", err)\n    }\n)else if err :\u003d ui.WithTimeout(3*time.Second).WaitUntilExists(privacyMenu)(ctx); err \u003d\u003d nil{\n    s.Fatal(\"Found Privacy Hub in OS setting page even though the flag is not set\")\n}",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "74ec899674433bb5d5c02190dceb74797fe8cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5309b6a_70737275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1541412
+      },
+      "writtenOn": "2022-07-07T09:51:48Z",
+      "side": 1,
+      "message": "Thank you!\nThis however gives me an error, seems it can\u0027t find the camera button after click:\n\n Error at settings_page.go:89: Failed to verify privacy menu:failed to Verify privacy m\nenu page on step 2: context deadline exceeded; last error follows: Uncaught (in promise): \"failed to find node with properties: {\nname: /^Camera$/, role: toggleButton}\" \n\nThis is the code I tested it with:\nhttps://paste.googleplex.com/5027775955075072",
+      "parentUuid": "4a37c916_b1b2ebf8",
       "range": {
         "startLine": 101,
         "startChar": 1,
