@@ -12,12 +12,12 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/assistant"
+	"chromiumos/tast/local/bundles/cros/assistant/assistantutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -31,7 +31,7 @@ func init() {
 		Contacts:     []string{"xiaohuic@chromium.org", "assistive-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Fixture:      "assistantClamshell",
+		Fixture:      "assistantClamshellPerf",
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{
 			{
@@ -108,45 +108,25 @@ func EmbeddedUIBubbleLauncherOpenAndCloseAnimationPerf(ctx context.Context, s *t
 	const maxNumOfWindows = 2
 	pv := perf.NewValues()
 	for openedWindows := 0; openedWindows <= maxNumOfWindows; openedWindows++ {
-		// We need to stabilize the CPU usage before the measurement happens. This may or
-		// may not be satisfied in time.
-		if err := cpu.WaitUntilIdle(ctx); err != nil {
-			s.Error("Failed to wait for system UI to be stabilized: ", err)
-		}
+		assistantutils.RecordAnimationPerformance(ctx, tconn, pv,
+			[]string{"Apps.ClamshellLauncher.AnimationSmoothness.Open"},
+			func(ctx context.Context) error {
+				return toggleEmbeddedUI(ctx, tconn, accel, true)
+			},
+			func(h *metrics.Histogram) string {
+				return fmt.Sprintf("%s.%dwindows", h.Name, openedWindows)
+			},
+		)
 
-		for toggle := 0; toggle <= 1; toggle++ {
-			show := toggle == 0
-			var targetHistogram string
-			if show {
-				targetHistogram = "Apps.ClamshellLauncher.AnimationSmoothness.Open"
-			} else {
-				targetHistogram = "Apps.ClamshellLauncher.AnimationSmoothness.Close"
-			}
-
-			histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second,
-				func(ctx context.Context) error {
-					return toggleEmbeddedUI(ctx, tconn, accel, show)
-				},
-				targetHistogram)
-
-			if err != nil {
-				s.Fatal("Failed to run embedded UI animation or get histograms: ", err)
-			}
-
-			// Collects the histogram results.
-			for _, h := range histograms {
-				mean, err := h.Mean()
-				if err != nil {
-					s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
-				}
-
-				pv.Set(perf.Metric{
-					Name:      fmt.Sprintf("%s.%dwindows", h.Name, openedWindows),
-					Unit:      "percent",
-					Direction: perf.BiggerIsBetter,
-				}, mean)
-			}
-		}
+		assistantutils.RecordAnimationPerformance(ctx, tconn, pv,
+			[]string{"Apps.ClamshellLauncher.AnimationSmoothness.Close"},
+			func(ctx context.Context) error {
+				return toggleEmbeddedUI(ctx, tconn, accel, false)
+			},
+			func(h *metrics.Histogram) string {
+				return fmt.Sprintf("%s.%dwindows", h.Name, openedWindows)
+			},
+		)
 
 		// Increases the number of browser windows opened in the background by 1
 		// until we reach the target.
