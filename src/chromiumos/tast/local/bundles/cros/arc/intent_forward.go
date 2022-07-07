@@ -13,26 +13,43 @@ import (
 	"time"
 
 	"github.com/mafredri/cdp/protocol/target"
-
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         IntentForward,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks Android intents are forwarded to Chrome",
 		Contacts:     []string{"nya@chromium.org", "arc-eng@google.com"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "arcBooted",
 		Attr:         []string{"group:mainline", "group:arc-functional"},
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
+			Val:               browser.TypeAsh,
+			Fixture:           "arcBooted",
+		},{
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"android_p","lacros"},
+			Val:               browser.TypeLacros,
+			Fixture:           "lacrosWithArcBooted",
+
+		},{
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               browser.TypeAsh,
+			Fixture:           "arcBooted",
+
+		},{
+			Name:              "lacros_vm",
+			ExtraSoftwareDeps: []string{"android_vm","lacros"},
+			Val:               browser.TypeLacros,
+			Fixture:           "lacrosWithArcBooted",
+
 		}},
 	})
 }
@@ -61,7 +78,7 @@ func IntentForward(ctx context.Context, s *testing.State) {
 	defer server.Close()
 	localWebURL := server.URL + "/" // Must end with a slash
 
-	checkIntent := func(action, data, url string) {
+	checkIntent := func(action, data, url string, bt browser.Type) {
 		ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
 		defer cancel()
 
@@ -72,19 +89,23 @@ func IntentForward(ctx context.Context, s *testing.State) {
 			return
 		}
 
+		br, err := browserfixt.Connect(ctx, cr, bt)
+		if err != nil {
+			s.Error(err, "failed to connect to browser")
+		}
 		urlMatcher := func(t *target.Info) bool {
 			matched, _ := regexp.MatchString(url, t.URL)
 			return matched
 		}
-		conn, err := cr.NewConnForTarget(ctx, urlMatcher)
+
+		conn, err := br.NewConnForTarget(ctx, urlMatcher)
 		if err != nil {
 			s.Errorf("%s(%s) -> %s: %v", action, data, url, err)
-		} else {
-			conn.Close()
-		}
+		} 
+		defer conn.Close()
 	}
 
-	checkIntent(viewAction, localWebURL, localWebURL)
-	checkIntent(setWallpaperAction, "", wallpaperPickerURL)
-	checkIntent(viewDownloadsAction, "", filesAppURL)
+	checkIntent(viewAction, localWebURL, localWebURL, s.Param().(browser.Type))
+	checkIntent(setWallpaperAction, "", wallpaperPickerURL, browser.TypeAsh)
+	checkIntent(viewDownloadsAction, "", filesAppURL, browser.TypeAsh)
 }
