@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ab45d01_fb59df3d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-07T01:20:27Z",
+      "side": 1,
+      "message": "This can be removed according to my below suggestion.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 1
+      },
+      "revId": "74ec899674433bb5d5c02190dceb74797fe8cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a37c916_b1b2ebf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-07T01:20:27Z",
+      "side": 1,
+      "message": "cameraLabel :\u003d nodewith.Name(\"Camera\").Role(role.ToggleButton)\nmicrophoneLabel :\u003d nodewith.Name(\"Microphone\").Role(role.ToggleButton)\n\nui :\u003d uiauto.New(tconn)\n\nif featureOn {\n    if err :\u003d uiauto.Combine(\"Verify privacy menu page\",\n        ui.LeftClick(privacyMenu),\n        ui.WaitUntilExists(cameraLabel),\n        ui.WaitUntilExists(microphoneLabel),\n    )(ctx); err !\u003d nil{\n        s.Fatal(\"Failed to verify privacy menu:\", err)\n    }\n)else if err :\u003d ui.WithTimeout(3*time.Second).WaitUntilExists(privacyMenu)(ctx); err \u003d\u003d nil{\n    s.Fatal(\"Found Privacy Hub in OS setting page even though the flag is not set\")\n}",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "74ec899674433bb5d5c02190dceb74797fe8cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

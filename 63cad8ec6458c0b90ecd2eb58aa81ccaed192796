@@ -46,6 +46,30 @@
       },
       "revId": "63cad8ec6458c0b90ecd2eb58aa81ccaed192796",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732f78cd_c0e4c318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-07T01:20:27Z",
+      "side": 1,
+      "message": "The condition is used to assert that you are on the page, any elements / title can be used. \n\nYour test case is pretty simple, since you are already on OS settings page and checked whether privacyhub menu exists.\n\nI will suggest the code change in place. Please refer to another comment.",
+      "parentUuid": "3d1da643_e319c8f9",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "63cad8ec6458c0b90ecd2eb58aa81ccaed192796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

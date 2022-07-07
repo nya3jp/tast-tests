@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fa191fd_da0a6aad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-07T01:20:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c3e2e885_51bfbb46",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 50
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c5ce7fe_35810dfe",
@@ -511,6 +535,30 @@
       "side": 1,
       "message": "Thanks. Is it now better?",
       "parentUuid": "56f5026d_99aaa607",
+      "range": {
+        "startLine": 117,
+        "startChar": 27,
+        "endLine": 117,
+        "endChar": 44
+      },
+      "revId": "273002f6a169e1857faccd7f22dc7ba999aa0f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7778ab28_6b188410",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-07T01:20:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54e0252e_82c763cc",
       "range": {
         "startLine": 117,
         "startChar": 27,
