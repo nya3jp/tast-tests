@@ -115,13 +115,12 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 		locationID      = "com.android.settings:id/switch_widget"
 	)
 
-	// Scroll until logout is visible.
+	// Scroll until system is visible.
 	scrollLayout := arcDevice.Object(androidui.ClassName(scrollClassName), androidui.Scrollable(true))
 	system := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)system"), androidui.Enabled(true))
 	if err := scrollLayout.WaitForExists(ctx, timeoutUI); err == nil {
 		scrollLayout.ScrollTo(ctx, system)
 	}
-
 	t, ok := arc.Type()
 	if !ok {
 		return errors.New("Unable to determine arc type")
@@ -139,6 +138,13 @@ func checkAndroidSettings(ctx context.Context, arcDevice *androidui.Device) erro
 	}
 
 	aboutDevice := arcDevice.Object(androidui.ClassName("android.widget.TextView"), androidui.TextMatches("(?i)about device"), androidui.Enabled(true))
+	if t == arc.VM {
+		scrollLayout := arcDevice.Object(androidui.ClassName(scrollClassName), androidui.Scrollable(true))
+		if err := scrollLayout.WaitForExists(ctx, timeoutUI); err == nil {
+			testing.ContextLog(ctx, "Scroll to About device")
+			scrollLayout.ScrollTo(ctx, aboutDevice)
+		}
+	}
 
 	if err := aboutDevice.WaitForExists(ctx, timeoutUI); err != nil {
 		return errors.Wrap(err, "failed finding About Device Text View")
