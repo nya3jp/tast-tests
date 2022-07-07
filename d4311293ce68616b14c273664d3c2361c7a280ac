@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2a631a7_e6f4683f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-07T01:50:25Z",
+      "side": 1,
+      "message": "nit: for naming cleanupCtx should be more common, and in fact go prefer shorter names\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 15
+      },
+      "revId": "d4311293ce68616b14c273664d3c2361c7a280ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a79d3d35_741283c2",
         "filename": "src/chromiumos/tast/local/shill/manager.go",
         "patchSetId": 15

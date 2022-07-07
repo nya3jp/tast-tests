@@ -306,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ad82a5_07739d03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-07T01:50:25Z",
+      "side": 1,
+      "message": "Yes, this is the path in chroot (mentioned in the above comment). Sorry I should answer to this comment earlier.",
+      "parentUuid": "98c5ed3c_11042c06",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f30644ad_c5148137",
@@ -437,6 +461,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "178041cf_f7c406de",
+      "range": {
+        "startLine": 27,
+        "startChar": 64,
+        "endLine": 27,
+        "endChar": 66
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7903a337_da26a734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-07T01:50:25Z",
+      "side": 1,
+      "message": "nit: \"port\" should be used here instead of \"Port\" to match the var name although it is at the beginning of a sentence. Sorry for not being clear in my previous comment.",
+      "parentUuid": "8ad46028_46e1cadb",
       "range": {
         "startLine": 27,
         "startChar": 64,
