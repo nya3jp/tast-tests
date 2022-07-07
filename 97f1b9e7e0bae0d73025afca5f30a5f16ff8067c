@@ -16,6 +16,24 @@
       "message": "Note, you\u0027ll need to add tast control files in autotest for wificell_cross_device_tdls along with other needed changes similar to what you did for wificell_cross_device_p2p.",
       "revId": "97f1b9e7e0bae0d73025afca5f30a5f16ff8067c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33546052_55950841",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-07-07T07:11:25Z",
+      "side": 1,
+      "message": "Done:\n3750046: Adding new suites: wifi_cross_device_tdls | https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/3750046",
+      "parentUuid": "26c4def2_11a36f28",
+      "revId": "97f1b9e7e0bae0d73025afca5f30a5f16ff8067c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
