@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "27d3c091_ddaf32cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T21:32:00Z",
+      "side": 1,
+      "message": "We don\u0027t really need integration tests to test code paths we don\u0027t use.",
+      "parentUuid": "4cc9078a_658ce553",
+      "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b54322dc_75a971f0",
         "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
         "patchSetId": 8
