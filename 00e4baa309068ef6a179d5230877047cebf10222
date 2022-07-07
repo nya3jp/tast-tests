@@ -16,6 +16,69 @@
       "message": "PTAL. Thank you!",
       "revId": "00e4baa309068ef6a179d5230877047cebf10222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5807c39c_4068d029",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-07T09:26:11Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with nits",
+      "revId": "00e4baa309068ef6a179d5230877047cebf10222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07db0d39_decdcb35",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-07T09:26:11Z",
+      "side": 1,
+      "message": "Maybe worth a comment on why this value is chosen for future reference?\nAnd for the naming, perhaps some name like |waitForCPUIdleTimeout| makes better sense?",
+      "range": {
+        "startLine": 361,
+        "startChar": 34,
+        "endLine": 361,
+        "endChar": 49
+      },
+      "revId": "00e4baa309068ef6a179d5230877047cebf10222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ead7f5a_065161c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/assistantutils/performance.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-07T09:26:11Z",
+      "side": 1,
+      "message": "nit: end with period. Go comment should be sentences.\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "range": {
+        "startLine": 20,
+        "startChar": 75,
+        "endLine": 20,
+        "endChar": 82
+      },
+      "revId": "00e4baa309068ef6a179d5230877047cebf10222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
