@@ -8,13 +8,20 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+	"fmt"
 	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	//"chromiumos/tast/ctxutil"
+
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -22,13 +29,23 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ImagePaste,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks image copy paste app compat CUJ",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
-		SoftwareDeps: []string{"chrome", "android_vm"},
+		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"image_paste_manifest.json", "image_paste_background.js", "image_paste_foreground.html", "image_paste_sample.png"},
 		Timeout:      4 * time.Minute,
+		Params: []testing.Param{{
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               browser.TypeAsh,
+		},{
+			Name:              "lacros_vm",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Val:               browser.TypeLacros,
+		}},
+
 	})
 }
 
@@ -44,10 +61,32 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to copy extension %s: %v", name, err)
 		}
 	}
+	opts := []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell")}
 
-	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir), chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell"))
+	if s.Param().(browser.Type) == browser.TypeAsh {
+		opts = append(opts, chrome.UnpackedExtension(extDir))
+	}
+	if s.Param().(browser.Type) == browser.TypeLacros {
+		extraOpts, err := lacrosfixt.NewConfig().Opts()
+		if err != nil {
+			s.Error("Failed to get lacros options: ", err)
+		}
+		opts = append(opts, extraOpts...)
+		opts = append(opts, chrome.LacrosExtraArgs(fmt.Sprintf("--load-extension=%s", extDir)))
+	}
+
+	// opts := []chrome.Option{chrome.UnpackedExtension(extDir),chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell")}
+	// if s.Param().(browser.Type) == browser.TypeLacros {
+	// 	var err error
+	// 	opts, err = lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
+	// 	if err != nil {
+	// 		s.Fatal("Failed to compute chrome options: ", err)
+	// 	}
+	// }
+
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
+		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
 
@@ -76,12 +115,19 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 		counterID    = pkg + ":id/counter"
 	)
 
+
+	br, err := browserfixt.Connect(ctx, cr, s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	//defer closeBrowser(ctx)
+
 	extID, err := chrome.ComputeExtensionID(extDir)
 	if err != nil {
 		s.Fatalf("Failed to compute extension ID for %v: %v", extDir, err)
 	}
 	fgURL := "chrome-extension://" + extID + "/foreground.html"
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(fgURL))
+	conn, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL(fgURL))
 	if err != nil {
 		s.Fatalf("Could not connect to extension at %v: %v", fgURL, err)
 	}
