@@ -6,7 +6,7 @@ package assistant
 
 import (
 	"context"
-	"time"
+	"fmt"
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
@@ -30,7 +30,7 @@ func init() {
 		Contacts:     []string{"cowmoo@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Fixture:      "assistantClamshellWithLegacyLauncher",
+		Fixture:      "assistantClamshellWithLegacyLauncherPerf",
 		Params: []testing.Param{
 			{
 				Name:              "assistant_key",
@@ -49,6 +49,8 @@ func init() {
 // LauncherToPeekingAnimationPerf measures the animation smoothness of showing
 // and hiding the assistant while the launcher is open.
 func LauncherToPeekingAnimationPerf(ctx context.Context, s *testing.State) {
+	const histogramResizeAssistantPageView = "Ash.Assistant.AnimationSmoothness.ResizeAssistantPageView"
+
 	accel := s.Param().(assistant.Accelerator)
 
 	fixtData := s.FixtValue().(*assistant.FixtData)
@@ -82,25 +84,38 @@ func LauncherToPeekingAnimationPerf(ctx context.Context, s *testing.State) {
 			}
 		}
 
+		if err := toggleLauncher(ctx, tconn, ash.Peeking); err != nil {
+			s.Fatal("Failed to toggle launcher to peeking state: ", err)
+		}
+
 		if err := cpu.WaitUntilIdle(ctx); err != nil {
 			s.Error("Failed to wait for system cpu idle: ", err)
 		}
 
-		histograms, err := metrics.RunAndWaitAll(
-			ctx,
-			tconn,
-			time.Second,
+		// Measure animation performance of showing Assistant UI
+		assistantutils.RecordAnimationPerformance(ctx, tconn, pv,
+			[]string{histogramResizeAssistantPageView},
 			func(ctx context.Context) error {
-				return showAndHideAssistant(ctx, tconn, keyboard, accel)
+				return assistant.ToggleUIWithHotkey(ctx, tconn, accel)
 			},
-			"Ash.Assistant.AnimationSmoothness.ResizeAssistantPageView",
+			func(h *metrics.Histogram) string {
+				return fmt.Sprintf("%s.Show.%dwindows", h.Name, nWindows)
+			},
 		)
-		if err != nil {
-			s.Fatal("Failed to collect histograms: ", err)
-		}
 
-		if err := assistantutils.ProcessHistogram(histograms, pv, nWindows); err != nil {
-			s.Fatal("Failed to process histograms: ", err)
+		// Measure animation performance of hiding Assistant UI
+		assistantutils.RecordAnimationPerformance(ctx, tconn, pv,
+			[]string{histogramResizeAssistantPageView},
+			func(ctx context.Context) error {
+				return keyboard.Accel(ctx, "esc")
+			},
+			func(h *metrics.Histogram) string {
+				return fmt.Sprintf("%s.Hide.%dwindows", h.Name, nWindows)
+			},
+		)
+
+		if err := toggleLauncher(ctx, tconn, ash.Closed); err != nil {
+			s.Fatal("Failed to toggle launcher to closed state: ", err)
 		}
 	}
 
@@ -119,27 +134,6 @@ func toggleLauncher(
 	}
 	if err := ash.WaitForLauncherState(ctx, tconn, expectedState); err != nil {
 		return errors.Wrapf(err, "failed to wait for launcher state %s", expectedState)
-	}
-	return nil
-}
-
-func showAndHideAssistant(
-	ctx context.Context,
-	tconn *chrome.TestConn,
-	keyboard *input.KeyboardEventWriter,
-	accel assistant.Accelerator,
-) error {
-	if err := toggleLauncher(ctx, tconn, ash.Peeking); err != nil {
-		return err
-	}
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
-		return errors.Wrap(err, "failed to open the embedded UI")
-	}
-	if err := keyboard.Accel(ctx, "esc"); err != nil {
-		return errors.Wrap(err, "failed to send escape key")
-	}
-	if err := toggleLauncher(ctx, tconn, ash.Closed); err != nil {
-		return err
 	}
 	return nil
 }
