@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9c32451_db083851",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2022-07-07T10:53:17Z",
+      "side": 1,
+      "message": "Hey folks, after merging crrev/c/3748138 the `crash.` tast failures have gone away:\nhttps://ci.chromium.org/p/chromeos/builders/vmtest/reven-vmtest-direct-tast-vm?limit\u003d200\n\nWe should promote this test so we can restore coverage.",
+      "revId": "2fe4b827cc77cca8630a55aa10eb4b16f8405995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
