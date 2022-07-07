@@ -16,6 +16,24 @@
       "message": "Nit: if we intend to copy it both ways, we should verify that the hash of the source matches what it used to be.",
       "revId": "609e01e0da1ec8dd13bf8f48de931efd54670c07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec96b18a_cc93dff4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/usb_transfer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T08:39:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "853cdfcb_05804ce1",
+      "revId": "609e01e0da1ec8dd13bf8f48de931efd54670c07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
