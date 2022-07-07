@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b91cef_1d99e15d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-07T10:48:34Z",
+      "side": 1,
+      "message": "could you describe more background here?\nI think there is some gap between linked bug and this CL, too, which should be clarified for future readers.",
+      "revId": "44b72913ba654f75fa4dfed78e6e2eade2edb703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a7d2662b_b44805fc",
@@ -48,6 +65,23 @@
       "writtenOn": "2022-07-06T06:45:06Z",
       "side": 1,
       "message": "Hello, please help me review this change. Thank you.",
+      "revId": "44b72913ba654f75fa4dfed78e6e2eade2edb703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b941a2aa_31837ee5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-07T10:48:34Z",
+      "side": 1,
+      "message": "The code is looking good.",
       "revId": "44b72913ba654f75fa4dfed78e6e2eade2edb703",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
