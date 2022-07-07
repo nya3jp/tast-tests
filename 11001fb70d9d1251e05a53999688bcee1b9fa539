@@ -81,6 +81,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "935eeee3_b684885c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447542
+      },
+      "writtenOn": "2022-07-07T02:57:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84195303_f9df7650",
+      "revId": "11001fb70d9d1251e05a53999688bcee1b9fa539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35b8647f_3a1758ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447542
+      },
+      "writtenOn": "2022-07-07T02:57:19Z",
+      "side": 1,
+      "message": "We have overlay prioritization which might not kick in for a few frames. My other concern is that sometimes a video will play very poorly on a low end device for the first bit (perhaps it is loading or decoding).",
+      "parentUuid": "eae99661_4aba4e02",
+      "revId": "11001fb70d9d1251e05a53999688bcee1b9fa539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec292af9_d6aba490",
@@ -94,6 +130,30 @@
       "writtenOn": "2022-07-06T16:27:45Z",
       "side": 1,
       "message": "Now this should be `five seconds`",
+      "range": {
+        "startLine": 92,
+        "startChar": 43,
+        "endLine": 92,
+        "endChar": 51
+      },
+      "revId": "11001fb70d9d1251e05a53999688bcee1b9fa539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15232e2b_b0856f0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/html_video_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1447542
+      },
+      "writtenOn": "2022-07-07T02:57:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec292af9_d6aba490",
       "range": {
         "startLine": 92,
         "startChar": 43,
@@ -127,6 +187,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94eda6b4_8e92e1dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/html_video_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1447542
+      },
+      "writtenOn": "2022-07-07T02:57:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01ccf663_49ef9ff0",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 23
+      },
+      "revId": "11001fb70d9d1251e05a53999688bcee1b9fa539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "620f1c5d_0cac6e38",
@@ -140,6 +224,30 @@
       "writtenOn": "2022-07-06T16:27:45Z",
       "side": 1,
       "message": "nit: Nix the `numberOfFrames` variable and just use `hist.TotalCount()`.",
+      "range": {
+        "startLine": 117,
+        "startChar": 67,
+        "endLine": 117,
+        "endChar": 81
+      },
+      "revId": "11001fb70d9d1251e05a53999688bcee1b9fa539",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6afa055_312ff7ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/html_video_rounded_corners_underlay.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1447542
+      },
+      "writtenOn": "2022-07-07T02:57:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "620f1c5d_0cac6e38",
       "range": {
         "startLine": 117,
         "startChar": 67,
