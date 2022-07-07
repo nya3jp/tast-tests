@@ -136,29 +136,28 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	kw, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to create a keyboard: ", err)
-	}
-	defer kw.Close()
-
-	if bt != browser.TypeAsh {
-
-		// Wayland protocol, clipboard "write" requires entering the window
-		// through a user interaction before. We do so using Alt+Tab.
-		if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
-			s.Error("Failed to hit alt-tab to focus back to extension: ", err)
-		}
-		if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
-			s.Error("Failed to hit alt-tab to focus back to extension: ", err)
-		}
-	}
-
 	// Copy an image from Chrome. clipboard.write() is available only after any user interaction.
 	// TODO(b/247034953): Rewrite this without a custom extension so that we can use a fixture.
 	uia := uiauto.New(tconn)
-	finder := nodewith.Role(role.Button).HasClass("copy_button").First()
-	if err := uia.WithTimeout(10 * time.Second).LeftClick(finder)(ctx); err != nil {
+	// Find the extension window and focus it to make sure the UI tree is updated.
+	window := nodewith.Role(role.Window).Name("Image Paste Extension").ClassName("Widget").First()
+	if err := uia.WithTimeout(10 * time.Second).FocusAndWait(window)(ctx); err != nil {
+		s.Fatal("Failed to focus the extension window: ", err)
+	}
+	// Click the center of the extension window. The copy button should be there.
+	// TODO(yhanada): This is a workaround until finding the copy button and clicking it works correctly with lacros.
+	// uiauto.Location() returns the location which origin is the left-top of the extension window rather than
+	// the location from the left top of the screen. Once the issue is fixed, the following simple code should work.
+	/*
+	   finder := nodewith.Role(role.Button).HasClass("copy_button")
+	   if err := uia.LeftClick(finder)(ctx); err != nil {
+	     ...
+	*/
+	windowLoc, err := uia.Location(ctx, window)
+	if err != nil {
+		s.Fatal("Cannot get the location of the extension window: ", err)
+	}
+	if err := uia.WithTimeout(10*time.Second).MouseClickAtLocation(0, windowLoc.CenterPoint())(ctx); err != nil {
 		s.Fatal("Cannot click on the copy button: ", err)
 	}
 
