@@ -75,7 +75,8 @@ func WebAPK(ctx context.Context, s *testing.State) {
 	// Due to the UI Automator flakiness, we still can't use the arcBooted fixture as it starts UI Automator automatically.
 	cr, err := chrome.New(ctx,
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
-		chrome.ARCEnabled())
+		chrome.ARCEnabled(),
+		chrome.EnableFilesAppSWA())
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
@@ -270,7 +271,7 @@ func verifySharedFiles(ctx context.Context, shareChan chan shareResult) error {
 		select {
 		case receivedShare = <-shareChan:
 		case <-ctx.Done():
-			return errors.New("timeout waiting to receive shared text")
+			return errors.New("timeout waiting to receive shared files")
 		}
 
 		// Occasionally, a second Intent is fired at ArcWebApkActivity after
