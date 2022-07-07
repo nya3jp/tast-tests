@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4cc9078a_658ce553",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-07T13:04:55Z",
+      "side": 1,
+      "message": "I\u0027d like to, the thing is ANQP results are processed by `wpa_supplicant` to perform the interworking selection, we have no code in Shill parsing/using it. That\u0027s why the test talks to supplicant.",
+      "parentUuid": "64e49a95_ba4a2bd9",
+      "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b54322dc_75a971f0",
         "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
         "patchSetId": 8
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd969ad8_c5fa7a7c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-07T13:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ac7932a_089aeb75",
+      "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "214b60ce_adcfef14",
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbef5bae_92e72701",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-07T13:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "214b60ce_adcfef14",
+      "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0291ff4a_3fef9502",
@@ -82,6 +136,24 @@
       "writtenOn": "2022-07-06T22:07:18Z",
       "side": 1,
       "message": "nit: For other BSSIDs below, we just store it as a string. Can we keep the same pattern here?",
+      "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4359461_f0376f76",
+        "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-07T13:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0291ff4a_3fef9502",
       "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
