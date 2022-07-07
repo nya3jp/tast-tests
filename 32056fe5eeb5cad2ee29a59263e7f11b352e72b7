@@ -16,6 +16,24 @@
       "message": "Hi Frank,\n\nJust make it more clearly.\nI just mention a question how to deal with changes about \"VerfiyAllWindowsOnDisplay\" on upper comment.\n\nI suppose there is 2 way to do, but I am not sure which one is better.\none is uploading file to here, \nthe other one is updating file in dock1, which is here \n(https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3583398).\n",
       "revId": "32056fe5eeb5cad2ee29a59263e7f11b352e72b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ae7e007_6c769911",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-07-07T16:59:53Z",
+      "side": 1,
+      "message": "You always update the latest change here.  The old cl is submitted and completed.",
+      "parentUuid": "c3d610bc_0aab62a8",
+      "revId": "32056fe5eeb5cad2ee29a59263e7f11b352e72b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
