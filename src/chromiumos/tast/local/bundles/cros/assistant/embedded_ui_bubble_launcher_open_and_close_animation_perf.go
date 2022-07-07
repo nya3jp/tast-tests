@@ -10,14 +10,10 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/assistant"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/assistant/assistantutils"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
-	"chromiumos/tast/local/chrome/uiauto"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -31,8 +27,9 @@ func init() {
 		Contacts:     []string{"xiaohuic@chromium.org", "assistive-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Fixture:      "assistantClamshell",
-		Timeout:      3 * time.Minute,
+		Fixture:      "assistantClamshellPerf",
+		// Due to b/238758287, first close animation can always take 2 mins.
+		Timeout: 6 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:              "assistant_key",
@@ -46,28 +43,6 @@ func init() {
 			},
 		},
 	})
-}
-
-// toggleEmbeddedUI opens/closes the Launcher-embedded Assistant UI via hotkey.
-// show indicates whether the hotkey is expected to show or hide the UI
-func toggleEmbeddedUI(ctx context.Context, tconn *chrome.TestConn, accel assistant.Accelerator, show bool) error {
-	if err := assistant.ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
-		return errors.Wrap(err, "failed to open the embedded UI")
-	}
-
-	ui := uiauto.New(tconn)
-	bubble := nodewith.ClassName(ash.AppListBubbleClassName)
-	if show {
-		if err := ui.WaitUntilExists(bubble)(ctx); err != nil {
-			return errors.Wrap(err, "could not open launcher bubble by pressing assistant hotkey")
-		}
-	} else {
-		if err := ui.WaitUntilGone(bubble)(ctx); err != nil {
-			return errors.Wrap(err, "could not close launcher bubble by pressing assistant hotkey")
-		}
-	}
-
-	return nil
 }
 
 func EmbeddedUIBubbleLauncherOpenAndCloseAnimationPerf(ctx context.Context, s *testing.State) {
@@ -108,44 +83,30 @@ func EmbeddedUIBubbleLauncherOpenAndCloseAnimationPerf(ctx context.Context, s *t
 	const maxNumOfWindows = 2
 	pv := perf.NewValues()
 	for openedWindows := 0; openedWindows <= maxNumOfWindows; openedWindows++ {
-		// We need to stabilize the CPU usage before the measurement happens. This may or
-		// may not be satisfied in time.
-		if err := cpu.WaitUntilIdle(ctx); err != nil {
-			s.Error("Failed to wait for system UI to be stabilized: ", err)
+		if err := assistantutils.RecordAnimationPerformance(ctx, s, tconn, pv,
+			[]string{"Apps.ClamshellLauncher.AnimationSmoothness.Open"},
+			func(ctx context.Context) error {
+				return assistant.ToggleUIWithHotkey(ctx, tconn, accel)
+			},
+			func(h *metrics.Histogram) string {
+				return fmt.Sprintf("%s.%dwindows", h.Name, openedWindows)
+			},
+		); err != nil {
+			s.Fatal("Failed to run performance test of opening embedded UI: ", err)
 		}
 
-		for toggle := 0; toggle <= 1; toggle++ {
-			show := toggle == 0
-			var targetHistogram string
-			if show {
-				targetHistogram = "Apps.ClamshellLauncher.AnimationSmoothness.Open"
-			} else {
-				targetHistogram = "Apps.ClamshellLauncher.AnimationSmoothness.Close"
-			}
-
-			histograms, err := metrics.RunAndWaitAll(ctx, tconn, time.Second,
-				func(ctx context.Context) error {
-					return toggleEmbeddedUI(ctx, tconn, accel, show)
-				},
-				targetHistogram)
-
-			if err != nil {
-				s.Fatal("Failed to run embedded UI animation or get histograms: ", err)
-			}
-
-			// Collects the histogram results.
-			for _, h := range histograms {
-				mean, err := h.Mean()
-				if err != nil {
-					s.Fatalf("Failed to get mean for histogram %s: %v", h.Name, err)
-				}
-
-				pv.Set(perf.Metric{
-					Name:      fmt.Sprintf("%s.%dwindows", h.Name, openedWindows),
-					Unit:      "percent",
-					Direction: perf.BiggerIsBetter,
-				}, mean)
-			}
+		// TODO(b/238758287): Because of this issue, this always waits 2 mins for cpu idle time
+		// for the first run (at least) on betty-vm.
+		if err := assistantutils.RecordAnimationPerformance(ctx, s, tconn, pv,
+			[]string{"Apps.ClamshellLauncher.AnimationSmoothness.Close"},
+			func(ctx context.Context) error {
+				return assistant.ToggleUIWithHotkey(ctx, tconn, accel)
+			},
+			func(h *metrics.Histogram) string {
+				return fmt.Sprintf("%s.%dwindows", h.Name, openedWindows)
+			},
+		); err != nil {
+			s.Fatal("Failed to run performance test of closing embedded UI: ", err)
 		}
 
 		// Increases the number of browser windows opened in the background by 1
