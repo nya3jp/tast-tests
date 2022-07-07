@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "409b0b46_cf7b222d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501397
+      },
+      "writtenOn": "2022-07-07T23:47:48Z",
+      "side": 1,
+      "message": "Which is [ArcNotificationTest/AndroidManifest.xml](https://source.corp.google.com/chromeos_public/src/platform/tast-tests/android/ArcNotificationTest/AndroidManifest.xml), correct? If I bump the SDK to 33, will it still back compatible?",
+      "parentUuid": "55b286fe_cacaaae1",
+      "revId": "7386003281ec6c2d19d07bc9078d3e2b2765fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd1c2308_465cdf56",
@@ -54,6 +72,54 @@
       "writtenOn": "2022-06-10T14:38:22Z",
       "side": 1,
       "message": "s.Fatal() on failure, maybe?",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 8
+      },
+      "revId": "7386003281ec6c2d19d07bc9078d3e2b2765fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5d0fa98_1c75b7aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1501397
+      },
+      "writtenOn": "2022-07-07T23:47:48Z",
+      "side": 1,
+      "message": "Hi Hanada-San, thanks for reviewing. This code will work for both P, R, \u0026 T since this part only logs the failure of finding the permission dialog instead of failing the test here. So, the test tries to find the permission dialog and bypass it, if not, it logs what just happened, so that later, when the test fail to edit notification, there is the log to explain the cause of the failure. I added more comments to explain it.",
+      "parentUuid": "dd1c2308_465cdf56",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 13
+      },
+      "revId": "7386003281ec6c2d19d07bc9078d3e2b2765fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ef8bdc_33207f1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1501397
+      },
+      "writtenOn": "2022-07-07T23:47:48Z",
+      "side": 1,
+      "message": "Thanks for reviewing. Right now, there is a divergence between P/R and T, that only T is showing the permission dialog. Thus, it tries to find the dialog, if the dialog is not found, log it instead of fail the test, so that P and R will not fail here.I wonder if this approach is ok for the situation. I added more comments to explain the situation.",
+      "parentUuid": "de8935c9_7747a948",
       "range": {
         "startLine": 108,
         "startChar": 1,
