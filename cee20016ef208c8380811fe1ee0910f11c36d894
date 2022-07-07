@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbc8c88c_a858629e",
+        "filename": "src/chromiumos/tast/common/chameleon/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b34f12b2_66a74fc8",
+      "range": {
+        "startLine": 20,
+        "startChar": 16,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42658a40_a839f4b4",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-06T07:30:36Z",
       "side": 1,
       "message": "optional nit: if busNumber only takes 1 or 2, how about to define this in constants?",
+      "range": {
+        "startLine": 28,
+        "startChar": 60,
+        "endLine": 28,
+        "endChar": 73
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd83eb88_1bc8e8c0",
+        "filename": "src/chromiumos/tast/common/chameleon/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42658a40_a839f4b4",
       "range": {
         "startLine": 28,
         "startChar": 60,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b008a1eb_bfa0d1e7",
+        "filename": "src/chromiumos/tast/common/chameleon/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3845098a_0ca5e7bf",
+      "range": {
+        "startLine": 53,
+        "startChar": 88,
+        "endLine": 53,
+        "endChar": 103
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cebc182_a7a5d01f",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-07-06T07:30:36Z",
       "side": 1,
       "message": "nit: same here. Wrap an error for a better error message.",
+      "range": {
+        "startLine": 81,
+        "startChar": 16,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a3c5549_3670d3fd",
+        "filename": "src/chromiumos/tast/common/chameleon/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cebc182_a7a5d01f",
       "range": {
         "startLine": 81,
         "startChar": 16,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f0ec44_d69df67c",
+        "filename": "src/chromiumos/tast/common/chameleon/audio.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "820f37d1_7092f8ac",
+      "range": {
+        "startLine": 93,
+        "startChar": 16,
+        "endLine": 93,
+        "endChar": 19
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a78778cf_ba1315e6",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-07-06T07:30:36Z",
       "side": 1,
       "message": "This ASCII art is broken in gerrit. It might be enforced by a linter. But if a linter allows it, I would recommend you to use a space here.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 35
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab755cdf_d167201e",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Thanks, linter seems to get quite aggressive in trimming spaces. Now it is looking a tad better.",
+      "parentUuid": "a78778cf_ba1315e6",
       "range": {
         "startLine": 69,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce0cf3e_a3bd754f",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b40fe72_bde02c0f",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 67
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "942e1fd5_32d4be93",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-07-06T07:30:36Z",
       "side": 1,
       "message": "nit: Supported",
+      "range": {
+        "startLine": 152,
+        "startChar": 3,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29898ef1_bdf8cdc4",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "942e1fd5_32d4be93",
       "range": {
         "startLine": 152,
         "startChar": 3,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "884206d2_3025dd32",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2352cdb_b3ef3005",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "869bcc17_d23b976d",
@@ -238,6 +454,30 @@
       "writtenOn": "2022-07-06T07:30:36Z",
       "side": 1,
       "message": "Can this case cover `case map[string]string:`? i.e. can we merge the above case to this one?",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 29
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75866cca_e276eb20",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "I also had the same doubt when I added, and since xmlrpc is primarily used for servo, I wanted to be more on the safe side.\nI have add a couple of unit test cases to verify this.\nI tried using `map[string]interface{}:` to cover both cases.  During runtime execution, the switch case block does not consider  `map[string]string:`  to be `map[string]interface{}:`, so the switch block cannot be merged. \nThat said, maybe the codeline is quite similar that contents can be merged, but with all the type casting, it was always looking a bit messy so I decided to leave them separate for now.",
+      "parentUuid": "869bcc17_d23b976d",
       "range": {
         "startLine": 243,
         "startChar": 1,
@@ -267,6 +507,47 @@
         "endLine": 248,
         "endChar": 23
       },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b0703cc_6b6fd4ac",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "156f0d3b_9e8604cb",
+      "range": {
+        "startLine": 248,
+        "startChar": 20,
+        "endLine": 248,
+        "endChar": 23
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "304c8050_349243a7",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Here I also tried to cover more ground with a `*[][]interface{}` and hoping the reflect would allow that to handle array of array of any primitive type. e.g. `*[][]string`, but the switch case during runtime does not consider `*[][]string` a `*[][]interface{}`.",
       "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -317,6 +598,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f11ad5_4100fe84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5acaa268_05bf9f37",
+      "range": {
+        "startLine": 115,
+        "startChar": 56,
+        "endLine": 115,
+        "endChar": 66
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d1a0885_2ebad43e",
@@ -340,6 +645,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c42a94_14491ecb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d1a0885_2ebad43e",
+      "range": {
+        "startLine": 148,
+        "startChar": 55,
+        "endLine": 148,
+        "endChar": 62
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61169566_5091265f",
@@ -353,6 +682,30 @@
       "writtenOn": "2022-07-06T07:30:36Z",
       "side": 1,
       "message": "nit: mention that this one is to play audio from DUT.",
+      "range": {
+        "startLine": 24,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 85
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3640170b_d1175509",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61169566_5091265f",
       "range": {
         "startLine": 24,
         "startChar": 17,
@@ -388,6 +741,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abc6958d_b595302d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Yes. I think that it is better to run these test in a sound isolated environment.\n\nIf I recall correctly, the test will need to belong to a group for that to compile.  \nFor assistant test case requiring audio support we can establish a new group (like in https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3495709)\n\nDo you have an preference on the naming of the group?",
+      "parentUuid": "58bfcdf5_ab9297bd",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a640f693_7332c5ae",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
         "patchSetId": 3
@@ -399,6 +776,24 @@
       "writtenOn": "2022-07-06T07:30:36Z",
       "side": 1,
       "message": "nit: delete this blank line.",
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "809896f9_7e56e356",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a640f693_7332c5ae",
       "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -416,6 +811,30 @@
       "writtenOn": "2022-07-06T07:30:36Z",
       "side": 1,
       "message": "nit: debug code? Can this be a simple s.Fatal?",
+      "range": {
+        "startLine": 59,
+        "startChar": 104,
+        "endLine": 59,
+        "endChar": 114
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3898c3e6_63af5ea6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Yes, `s.Fatal` should suffice.",
+      "parentUuid": "2a81e7be_789d3547",
       "range": {
         "startLine": 59,
         "startChar": 104,

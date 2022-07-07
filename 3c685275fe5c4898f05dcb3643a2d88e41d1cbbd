@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "973e2bef_dbc0634b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:55:06Z",
+      "side": 1,
+      "message": "Hi Yuki, \nThanks for taking such a detailed look at it and offering great suggestions.\nI moved the chameleon setup to the assistant fixture.\nThanks,\nJonathan",
+      "revId": "3c685275fe5c4898f05dcb3643a2d88e41d1cbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
