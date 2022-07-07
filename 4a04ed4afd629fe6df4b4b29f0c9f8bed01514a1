@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a0ea30b_926eefea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-07T18:29:56Z",
+      "side": 1,
+      "message": "great, this is looking much better. Mostly small stuff. Thanks for refactoring this!",
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "228426e2_121a6654",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-07T18:29:56Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7d732d6_40a0df44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-07T18:29:56Z",
+      "side": 1,
+      "message": "nit: ... and its windows to appear?",
+      "range": {
+        "startLine": 58,
+        "startChar": 47,
+        "endLine": 58,
+        "endChar": 48
+      },
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a872417_a2c7ffd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-07T18:29:56Z",
+      "side": 1,
+      "message": "nit: remove \"the\" here",
+      "range": {
+        "startLine": 73,
+        "startChar": 59,
+        "endLine": 73,
+        "endChar": 62
+      },
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89b4dd73_23fccb9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-07T18:29:56Z",
+      "side": 1,
+      "message": "Would it be better to `WaitForAppLaunch` at the end instead of doing this here, or do we not care about the window count?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 3
+      },
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "547f3c96_f5069faa",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-07T18:29:56Z",
+      "side": 1,
+      "message": "Might be something good to do later, but should we check that we\u0027re in the overview mode and error out early if we aren\u0027t?",
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f34b20a_4d73610f",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-07T18:29:56Z",
+      "side": 1,
+      "message": "any reason not to just use an enum for this?",
+      "range": {
+        "startLine": 117,
+        "startChar": 62,
+        "endLine": 117,
+        "endChar": 75
+      },
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a76ec90_dead9a53",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-07T18:29:56Z",
+      "side": 1,
+      "message": "nit: maybe you want to log the desk number in here as well, if that makes it easier to debug",
+      "range": {
+        "startLine": 238,
+        "startChar": 29,
+        "endLine": 238,
+        "endChar": 63
+      },
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
