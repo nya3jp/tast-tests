@@ -16,6 +16,23 @@
       "message": "Thanks for the review! Adding tast-owners.",
       "revId": "0cdb4ebb857a4070aacd6d9a378b23635c8214a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d13298a_d613beee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-07-07T23:54:04Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "0cdb4ebb857a4070aacd6d9a378b23635c8214a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
