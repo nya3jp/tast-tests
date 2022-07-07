@@ -12,10 +12,11 @@ option go_package = "chromiumos/tast/services/cros/policy";
 
 // Policy provides functions to perform enrollment.
 service PolicyService {
+  rpc StartNewReader(StartNewReaderRequest) returns (google.protobuf.Empty) {}
+  rpc WaitForEnrollmentError(WaitForEnrollmentErrorRequest) returns (google.protobuf.Empty) {}
   rpc EnrollUsingChrome(EnrollUsingChromeRequest) returns (google.protobuf.Empty) {}
   rpc GAIAEnrollUsingChrome(GAIAEnrollUsingChromeRequest) returns (google.protobuf.Empty) {}
   rpc GAIAEnrollAndLoginUsingChrome(GAIAEnrollAndLoginUsingChromeRequest) returns (google.protobuf.Empty) {}
-  rpc GAIAEnrollForReporting(GAIAEnrollForReportingRequest) returns (google.protobuf.Empty) {}
   rpc UpdatePolicies(UpdatePoliciesRequest) returns (google.protobuf.Empty) {}
   rpc CheckChromeAndFakeDMS(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc StopChromeAndFakeDMS(google.protobuf.Empty) returns (google.protobuf.Empty) {}
@@ -44,9 +45,12 @@ service PolicyService {
   // Creates a new connection to the Chrome URL in the request and evaluates the expression in the request on it.
   rpc EvalExpressionInChromeURL(EvalExpressionInChromeUrlRequest)
       returns (google.protobuf.Empty) {}
+}
 
-  // Grabs Client ID for the session
-  rpc ClientID(google.protobuf.Empty) returns (ClientIdResponse) {}
+message StartNewReaderRequest {
+}
+
+message WaitForEnrollmentErrorRequest {
 }
 
 message EnrollUsingChromeRequest {
@@ -68,15 +72,6 @@ message GAIAEnrollAndLoginUsingChromeRequest {
   string username = 1;
   string password = 2;
   string dmserverURL = 3;
-}
-
-message GAIAEnrollForReportingRequest{
-  string username = 1;
-  string password = 2;
-  string dmserver_url = 3;
-  string reporting_server_url = 4;
-  string enabled_features = 5;
-  string extra_args = 6;
 }
 
 message CreateFakeDMSDirRequest {
@@ -134,8 +129,4 @@ message StartChromeRequest {
   bool skip_login = 3;
   bool keep_enrollment = 4;
   bool defer_login = 5;
-}
-
-message ClientIdResponse {
-  string clientId = 1;
 }
