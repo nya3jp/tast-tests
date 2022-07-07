@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a3b5d3c_fd09503d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_state_transitions_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-07-07T00:48:38Z",
+      "side": 1,
+      "message": "why do we need to enter Maximized here when we already have dragUnmaximizeAndMaximize to measure maximize performance?",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 252,
+        "endChar": 28
+      },
+      "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
