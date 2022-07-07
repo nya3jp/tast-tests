@@ -17,7 +17,7 @@ func init() {
 		Desc:     "Demonstrates how to use artifact data files for remote test",
 		Contacts: []string{"seewaifu@chromium.org", "tast-owners@chromium.org"},
 		Attr:     []string{"group:mainline", "informational"},
-		Data:     []string{"artifact_files_metadata_json"},
+		Data:     []string{"artifact_files_partial_metadata_json"},
 	})
 }
 
@@ -29,7 +29,7 @@ func RemoteArtifactFiles(ctx context.Context, s *testing.State) {
 	// s.DataPath just similarly as internal data files or static external data files.
 	// However, this works for ChromeOS images built on official builders only;
 	// on developer builds an error is raised.
-	if b, err := ioutil.ReadFile(s.DataPath("artifact_files_metadata_json")); err != nil {
+	if b, err := ioutil.ReadFile(s.DataPath("artifact_files_partial_metadata_json")); err != nil {
 		s.Error("Failed reading artifact external data file: ", err)
 	} else {
 		s.Logf("Read artifact external data file (%d bytes)", len(b))
