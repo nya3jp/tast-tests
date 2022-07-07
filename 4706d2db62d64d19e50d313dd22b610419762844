@@ -50,6 +50,23 @@
       "message": "Hello, please help me review this change. Thanks.",
       "revId": "4706d2db62d64d19e50d313dd22b610419762844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4698081_b4387e09",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-07T12:14:56Z",
+      "side": 1,
+      "message": "how about using Tast\u0027s tmp directory?",
+      "revId": "4706d2db62d64d19e50d313dd22b610419762844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
