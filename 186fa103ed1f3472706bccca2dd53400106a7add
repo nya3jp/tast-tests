@@ -39,6 +39,30 @@
       },
       "revId": "186fa103ed1f3472706bccca2dd53400106a7add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51fac505_8a6eb72f",
+        "filename": "src/chromiumos/tast/services/cros/firmware/utils_service.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1532302
+      },
+      "writtenOn": "2022-07-07T01:53:56Z",
+      "side": 1,
+      "message": "Done. Thank you!",
+      "parentUuid": "2872e5ab_2ed51e74",
+      "range": {
+        "startLine": 73,
+        "startChar": 21,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "186fa103ed1f3472706bccca2dd53400106a7add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
