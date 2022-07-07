@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "816b4b8d_5658d55a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T23:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "228426e2_121a6654",
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7d732d6_40a0df44",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-07-07T18:29:56Z",
       "side": 1,
       "message": "nit: ... and its windows to appear?",
+      "range": {
+        "startLine": 58,
+        "startChar": 47,
+        "endLine": 58,
+        "endChar": 48
+      },
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c53c80_f8d0153e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T23:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d732d6_40a0df44",
       "range": {
         "startLine": 58,
         "startChar": 47,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73244103_c8736d67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T23:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a872417_a2c7ffd2",
+      "range": {
+        "startLine": 73,
+        "startChar": 59,
+        "endLine": 73,
+        "endChar": 62
+      },
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89b4dd73_23fccb9d",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-07-07T18:29:56Z",
       "side": 1,
       "message": "Would it be better to `WaitForAppLaunch` at the end instead of doing this here, or do we not care about the window count?",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 3
+      },
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "016bb11b_cce04d09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/wmputils/wm.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T23:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89b4dd73_23fccb9d",
       "range": {
         "startLine": 92,
         "startChar": 0,
@@ -121,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "842f3826_90a15f2c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T23:44:26Z",
+      "side": 1,
+      "message": "Added todo here and below.",
+      "parentUuid": "547f3c96_f5069faa",
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f34b20a_4d73610f",
@@ -144,6 +252,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce0d236_f1aedc19",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T23:44:26Z",
+      "side": 1,
+      "message": "Done, also thanks a lot for the offline help regarding golang enum.",
+      "parentUuid": "2f34b20a_4d73610f",
+      "range": {
+        "startLine": 117,
+        "startChar": 62,
+        "endLine": 117,
+        "endChar": 75
+      },
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a76ec90_dead9a53",
@@ -157,6 +289,30 @@
       "writtenOn": "2022-07-07T18:29:56Z",
       "side": 1,
       "message": "nit: maybe you want to log the desk number in here as well, if that makes it easier to debug",
+      "range": {
+        "startLine": 238,
+        "startChar": 29,
+        "endLine": 238,
+        "endChar": 63
+      },
+      "revId": "4a04ed4afd629fe6df4b4b29f0c9f8bed01514a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b839863_e7d72a2d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T23:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a76ec90_dead9a53",
       "range": {
         "startLine": 238,
         "startChar": 29,
