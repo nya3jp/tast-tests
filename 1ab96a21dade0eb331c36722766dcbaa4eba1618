@@ -1,0 +1,243 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3094611_538beb16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T01:11:04Z",
+      "side": 1,
+      "message": "Sorry for late review",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c346cc8c_be857c19",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T01:11:04Z",
+      "side": 1,
+      "message": "nit: ssid, key_mgmt, psk string",
+      "range": {
+        "startLine": 133,
+        "startChar": 63,
+        "endLine": 133,
+        "endChar": 103
+      },
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "229277b2_2fc5bcb2",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T01:11:04Z",
+      "side": 1,
+      "message": "nit: leave comment for non-obvious things like this (describe what mode\u003d2 does)",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25efa3b1_556a00a4",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T01:11:04Z",
+      "side": 1,
+      "message": "Also Arowa is adding a setNetwork and addNetwork function, so it would be good to use those directly once that CL lands (which should be soon).",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "893174b0_1bf60199",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T01:11:04Z",
+      "side": 1,
+      "message": "Do we need to set proto (https://source.corp.google.com/chromeos_public/src/platform2/shill/supplicant/wpa_supplicant.cc;rcl\u003d474a4e06d034992dad2b9745058501ddcec0fcca;l\u003d153) like we do to connect to a network in station mode in shill? When we set the key_mgmt to WPA-PSK, does that not also allow normal WPA connection?",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62077e4_eec456ae",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T01:11:04Z",
+      "side": 1,
+      "message": "Is there a better way to do this with wpa_monitor? i.e. are there ctrl events that we can take advantage of instead of polling like this?",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "748e4ed7_906242bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2901,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T01:11:04Z",
+      "side": 1,
+      "message": "Add b/",
+      "range": {
+        "startLine": 2901,
+        "startChar": 4,
+        "endLine": 2901,
+        "endChar": 8
+      },
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfc0073f_1eeeb333",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2925,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T01:11:04Z",
+      "side": 1,
+      "message": "same",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a9707a_c303c046",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2952,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T01:11:04Z",
+      "side": 1,
+      "message": "You need a space between the key_mgmts",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be20926c_786345f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2962,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T01:11:04Z",
+      "side": 1,
+      "message": "Any chance we can reuse https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/router/legacy/router.go;rcl\u003d7c16009f10bbcbf725a5495d3bc9729c30a754b3;l\u003d491 ?",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eda77846_327f93fe",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T01:11:04Z",
+      "side": 1,
+      "message": "We\u0027re removing this. Let\u0027s add a cross_device_sap and also include cross_device_unstable (see https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/3724349 and https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3723220)",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7be3190c_02c28a33",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1539,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T01:11:04Z",
+      "side": 1,
+      "message": "nit: else if?\n\nIf we need to support this, we should also have a mixed mode constant in dbus-constants.h instead of allowing a space separated list",
+      "range": {
+        "startLine": 1539,
+        "startChar": 2,
+        "endLine": 1539,
+        "endChar": 4
+      },
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cce0d9e0_8162b968",
+        "filename": "src/chromiumos/tast/remote/wificell/tethering/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-07T01:11:04Z",
+      "side": 1,
+      "message": "can we reuse https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/hostapd/config.go;rcl\u003da9d70301a3c3125cd17eec2b6ee04bb40ef45787;l\u003d894 ?",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
