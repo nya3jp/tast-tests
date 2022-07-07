@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58997ede_05ff5d8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-07T22:57:27Z",
+      "side": 1,
+      "message": "I tried ui.WaitUntilGone(inputField.Finder().OffScreen()) to check input is inside screen, however it seems this does not take into account the case the input is inside the screen but occluded by VK.",
+      "parentUuid": "0ff65492_ffcf3de0",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 30
+      },
+      "revId": "9b00bb825d8b82e63ac7502e100bfa7523e605b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c34ce4a7_118ea5ef",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-07T02:03:08Z",
       "side": 1,
       "message": "Is this still required as the below function uses retry. It should be moved underneath if so.",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 37
+      },
+      "revId": "9b00bb825d8b82e63ac7502e100bfa7523e605b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee64b10_427eedc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-07T22:57:27Z",
+      "side": 1,
+      "message": "This code is removed, PTAL the first comment.",
+      "parentUuid": "c34ce4a7_118ea5ef",
       "range": {
         "startLine": 149,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e0edade_c1d9d03e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-07T22:57:27Z",
+      "side": 1,
+      "message": "This code is removed, PTAL the first comment.",
+      "parentUuid": "ea26b42f_02001fb1",
+      "range": {
+        "startLine": 155,
+        "startChar": 22,
+        "endLine": 155,
+        "endChar": 47
+      },
+      "revId": "9b00bb825d8b82e63ac7502e100bfa7523e605b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3213f99e_622540a4",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-07T02:03:08Z",
       "side": 1,
       "message": "nit: include err in fatal message.",
+      "range": {
+        "startLine": 156,
+        "startChar": 74,
+        "endLine": 156,
+        "endChar": 75
+      },
+      "revId": "9b00bb825d8b82e63ac7502e100bfa7523e605b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a54c509_45ea9f6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-07T22:57:27Z",
+      "side": 1,
+      "message": "This code is removed, PTAL the first comment.",
+      "parentUuid": "3213f99e_622540a4",
       "range": {
         "startLine": 156,
         "startChar": 74,

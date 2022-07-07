@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c240c62_d71aff7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-07T22:57:27Z",
+      "side": 1,
+      "message": "After a chat with @shend, I implemented a better solution here where a new input field is added that is set outside of screen. So, the initial validation is not necessary anymore. PTAL the changes. Thanks :)",
+      "parentUuid": "bbbf3bd6_bad0074c",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 50
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee97f6cc_7d1e7ad5",
