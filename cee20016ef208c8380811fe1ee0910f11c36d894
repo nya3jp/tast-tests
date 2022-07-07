@@ -575,6 +575,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09c51c8b_0631db9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-07T21:59:18Z",
+      "side": 1,
+      "message": "Yes. This is moved to a fixture now.",
+      "parentUuid": "fdbe9871_eeeaa446",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5acaa268_05bf9f37",
