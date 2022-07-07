@@ -22,6 +22,30 @@
       },
       "revId": "80a4acd49a6ee2cdd08ee1d56dda6631e4bf4c9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66989345_d7dcbd52",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T16:46:51Z",
+      "side": 1,
+      "message": "Agree. It also could also be helpful to document the truth table, since manipulating the write protect settings is fairly confusing. I did something similar in the [autotest implementation](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/server/cros/faft/fingerprint_test.py;l\u003d434-438;drc\u003d012f69abd58c6d1c9f769baa4b3f93e3238fc5c1). Your implementation removes the redundant HW WP setting:\n\n```\n        sw: 0, hw: 0 \u003d\u003e hw(0) -\u003e sw(0)\n        sw: 0, hw: 1 \u003d\u003e hw(0) -\u003e sw(0) -\u003e hw(1)\n        sw: 1, hw: 0 \u003d\u003e hw(1) -\u003e sw(1) -\u003e hw(0)\n        sw: 1, hw: 1 \u003d\u003e hw(1) -\u003e sw(1)\n```",
+      "parentUuid": "5734772b_0ab530ed",
+      "range": {
+        "startLine": 520,
+        "startChar": 26,
+        "endLine": 520,
+        "endChar": 36
+      },
+      "revId": "80a4acd49a6ee2cdd08ee1d56dda6631e4bf4c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
