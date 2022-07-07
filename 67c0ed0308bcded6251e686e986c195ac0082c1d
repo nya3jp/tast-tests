@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d305b07d_95c17981",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/dns_proxy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-07-07T06:13:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "292b9c7a_3bc5a28a",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 91
+      },
+      "revId": "67c0ed0308bcded6251e686e986c195ac0082c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a5b3169_c043f89c",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-07T06:04:04Z",
       "side": 1,
       "message": "We should maybe clarify this is setting the mapping to a single provider. Otherwise we could pass a map[string][]string directly here.",
+      "range": {
+        "startLine": 638,
+        "startChar": 35,
+        "endLine": 638,
+        "endChar": 80
+      },
+      "revId": "67c0ed0308bcded6251e686e986c195ac0082c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f20612_88e5b67d",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-07-07T06:13:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a5b3169_c043f89c",
       "range": {
         "startLine": 638,
         "startChar": 35,
