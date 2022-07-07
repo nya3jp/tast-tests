@@ -28,9 +28,9 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         KeyboardServiceGRPC,
+		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Check basic functionality of KeyboardService",
 		Contacts:     []string{"jonfan@google.com", "chromeos-sw-engprod@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Vars:         []string{"grpcServerPort"},
 		HardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Clamshell)),
