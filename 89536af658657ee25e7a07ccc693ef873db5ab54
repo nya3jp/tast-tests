@@ -39,6 +39,30 @@
       },
       "revId": "89536af658657ee25e7a07ccc693ef873db5ab54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3fc4895_78a37039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-07T23:26:54Z",
+      "side": 1,
+      "message": "Done. Split into 2 functions and modified the name.\nI\u0027d rather not create a new service for this now as I was messing around with this test for a bit but if you think it\u0027s important I\u0027ll add a TODO and can clean this up in the follow up.",
+      "parentUuid": "fa87ea32_32ea4ea2",
+      "range": {
+        "startLine": 55,
+        "startChar": 24,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "89536af658657ee25e7a07ccc693ef873db5ab54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
