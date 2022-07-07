@@ -12,9 +12,14 @@ import (
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -22,17 +27,31 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ImagePaste,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks image copy paste app compat CUJ",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
-		SoftwareDeps: []string{"chrome", "android_vm"},
+		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"image_paste_manifest.json", "image_paste_background.js", "image_paste_foreground.html", "image_paste_sample.png"},
 		Timeout:      4 * time.Minute,
+		Params: []testing.Param{{
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "lacros_vm",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func ImagePaste(ctx context.Context, s *testing.State) {
+	// Reserves five seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	s.Log("Copying extension to temp directory")
 	extDir, err := ioutil.TempDir("", "tast.arc.ImagePasteExtension")
 	if err != nil {
@@ -44,29 +63,40 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to copy extension %s: %v", name, err)
 		}
 	}
-
-	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir), chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
+	opts := []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell")}
+	bt := s.Param().(browser.Type)
+	switch bt {
+	case browser.TypeLacros:
+		opts = append(opts, chrome.LacrosUnpackedExtension(extDir))
+	case browser.TypeAsh:
+		opts = append(opts, chrome.UnpackedExtension(extDir))
 	}
-	defer cr.Close(ctx)
 
-	a, err := arc.New(ctx, s.OutDir())
+	// Set up the browser with the extensions.
+	// Note that it will open an extra new tab window for lacros to start its process before loading the extensions.
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), opts...)
 	if err != nil {
-		s.Fatal("Failed to start ARC: ", err)
+		s.Fatal("Failed to start Chrome: ", err)
 	}
-	defer a.Close(ctx)
+	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
+	a, err := arc.New(ctx, s.OutDir())
+	if err != nil {
+		s.Fatal("Failed to start ARC: ", err)
+	}
+	defer a.Close(cleanupCtx)
+
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
 		s.Fatal("Failed initializing UI Automator: ", err)
 	}
-	defer d.Close(ctx)
+	defer d.Close(cleanupCtx)
 
 	const (
 		apk          = "ArcImagePasteTest.apk"
@@ -81,19 +111,30 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to compute extension ID for %v: %v", extDir, err)
 	}
 	fgURL := "chrome-extension://" + extID + "/foreground.html"
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(fgURL))
+	conn, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL(fgURL))
 	if err != nil {
 		s.Fatalf("Could not connect to extension at %v: %v", fgURL, err)
 	}
 	defer conn.Close()
 
+	// Close the extra browser window for lacros to ensure the extension window is kept open and focused.
+	// TODO(rnanjappan): It doesn't seem to bring the extension to the front, which causes clipboard to fail.
+	if err := br.CloseWithURL(ctx, chrome.NewTabURL); err != nil {
+		s.Fatal("Failed to close the browser: ", err)
+	}
+	if ws, err := ash.GetAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the window list: ", err)
+	} else if len(ws) != 1 {
+		s.Fatalf("Expected 1 window, got %v window(s), ws: %v", len(ws), ws)
+	}
+
 	// Paste an image from Chrome. clipboard.write() is only available for the focused window,
 	// so we use a foreground page here.
 	// TODO(tetsui): Rewrite this without a custom extension so that we can use a fixture.
 	if err := conn.Call(ctx, nil, `async () => {
-	  const response = await fetch('sample.png');
-	  const blob = await response.blob();
-	  await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+		const response = await fetch('sample.png');
+		const blob = await response.blob();
+		await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
 	}`); err != nil {
 		s.Fatal("Failed to paste an image: ", err)
 	}
@@ -109,7 +150,7 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 	if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
 		s.Fatalf("Failed to start the activity %q", activityName)
 	}
-	defer act.Stop(ctx, tconn)
+	defer act.Stop(cleanupCtx, tconn)
 
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
