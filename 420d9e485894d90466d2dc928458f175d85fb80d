@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "694c959d_d2905c90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-07T23:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18debc5f_5c567566",
+      "range": {
+        "startLine": 37,
+        "startChar": 58,
+        "endLine": 37,
+        "endChar": 60
+      },
+      "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1fd53df_bc930334",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-07T20:05:23Z",
       "side": 1,
       "message": "I think we can probably skip cases with productivity launcher disabled",
+      "range": {
+        "startLine": 51,
+        "startChar": 30,
+        "endLine": 51,
+        "endChar": 57
+      },
+      "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dacb779_0f1fbba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-07T23:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1fd53df_bc930334",
       "range": {
         "startLine": 51,
         "startChar": 30,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e8e5d54_88de59c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-07T23:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc1385b_7b73623d",
+      "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e884446_524f2467",
@@ -94,6 +160,24 @@
       "writtenOn": "2022-07-07T20:05:23Z",
       "side": 1,
       "message": "use https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/apps/apps.go;drc\u003df1c3219621b5317d4855ac52995a4f9c30754bed;l\u003d433",
+      "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a44069e_d3d943d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-07T23:44:43Z",
+      "side": 1,
+      "message": "Done, but I\u0027m not quite sure if this is what you meant.",
+      "parentUuid": "4e884446_524f2467",
       "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc807b6d_afe54a73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-07T23:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86db082d_4efdc3ab",
+      "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "63b31ba0_30ed7580",
@@ -128,6 +230,24 @@
       "writtenOn": "2022-07-07T20:05:23Z",
       "side": 1,
       "message": "nit: appItemOnShelf",
+      "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e850e0e_0ea1d2e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-07T23:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63b31ba0_30ed7580",
       "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -157,6 +277,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d56b2efc_0c45e3ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-07T23:44:43Z",
+      "side": 1,
+      "message": "Yes. The fake app opens the Google website as default.\nreference: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/launcher.go;l\u003d177?q\u003dPrepareDefaultFakeApps",
+      "parentUuid": "da7e290d_7036123d",
+      "range": {
+        "startLine": 236,
+        "startChar": 38,
+        "endLine": 236,
+        "endChar": 44
+      },
+      "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "154f1295_609ed534",
         "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
         "patchSetId": 1
@@ -168,6 +312,24 @@
       "writtenOn": "2022-07-07T20:05:23Z",
       "side": 1,
       "message": "document this",
+      "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9616ff76_e37423c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-07T23:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "154f1295_609ed534",
       "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -185,6 +347,24 @@
       "writtenOn": "2022-07-07T20:05:23Z",
       "side": 1,
       "message": "we know which option we want here, so maybe something like would be better:\n\n```\n  var newInstanceItemFinder\n  if instanceType \u003d\u003d tab {\n    newInstanceMenuItemFinder \u003d nodewith.Name(\"New tab\").ClassName(\"MenuItemVieww\")\n  } else {\n     newInstanceMenuItemFinder \u003d nodewith.Name(\"New window\").ClassName(\"MenuItemView\");\n  }\n  \n  menuItemFound, err :\u003d ui.IsNodeFound(ctx, newInstanceMenuFinder)\n  if err !\u003d nil {\n    return errors.Wrap()\n  }\n  if !menuItemFound {\n    setLaunchAppAs(app, instanceType);\n  }\n  // click on newIntanceMenuFinder\n \n```",
+      "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec050397_718387b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-07T23:44:43Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion! This really made the code clean :)",
+      "parentUuid": "9348f1d5_0f9f9d2d",
       "revId": "420d9e485894d90466d2dc928458f175d85fb80d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
