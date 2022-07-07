@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12197e67_b41c1bda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "I synced with Yanzhu offline and figured out why we have such similar test at the very beginning. It was meant for the ChromeOS Total Performance Score go/tps-dashboard. Guess I do not really need to modify cuj test here for save-and-recall. Also I will soon split wmp.DesksTemplatesLaunch into two separate tests, one for desk templates and the other for save-and-recall. Anyway, I still put procedures that may be reused into helper functions, so it\u0027s easier and less code duplication going forward.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "028238db_5ec11617",
@@ -31,6 +48,24 @@
       "writtenOn": "2022-06-30T20:47:52Z",
       "side": 1,
       "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the GetAllWindows call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daad4435_08967d81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "NA as I will not modify the cuj test in next patch set.",
+      "parentUuid": "028238db_5ec11617",
       "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cea35c9_04d08c75",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Same here.",
+      "parentUuid": "0b6be458_96195c68",
+      "range": {
+        "startLine": 219,
+        "startChar": 34,
+        "endLine": 219,
+        "endChar": 43
+      },
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "979a5ca8_62e060f4",
@@ -71,6 +130,24 @@
       "writtenOn": "2022-06-30T20:47:52Z",
       "side": 1,
       "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the GetAllWindows call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aba938f2_cc656620",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Same here.",
+      "parentUuid": "979a5ca8_62e060f4",
       "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -98,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55bcb2fc_8ca78491",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Same here.",
+      "parentUuid": "fe0160af_9f606b53",
+      "range": {
+        "startLine": 263,
+        "startChar": 29,
+        "endLine": 263,
+        "endChar": 60
+      },
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f95e651e_9cce3b0b",
@@ -111,6 +212,24 @@
       "writtenOn": "2022-06-30T20:47:52Z",
       "side": 1,
       "message": "what does kSaveAndRecall refer to here?",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff1bf9a_ad7a480b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Same here.",
+      "parentUuid": "f95e651e_9cce3b0b",
       "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +251,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eea8dad0_8be63608",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Same here.",
+      "parentUuid": "4cc8709a_9c8fd90e",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08b3eae0_c7f9bfcb",
@@ -145,6 +282,24 @@
       "writtenOn": "2022-06-30T20:47:52Z",
       "side": 1,
       "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the GetAllWindows call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5d7fca5_4393f7a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Same here.",
+      "parentUuid": "08b3eae0_c7f9bfcb",
       "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -166,6 +321,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f34bfc_cdb097de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Same here.",
+      "parentUuid": "7e03df0d_eb801064",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ecc8ce4_2c944ace",
@@ -179,6 +352,24 @@
       "writtenOn": "2022-06-30T20:47:52Z",
       "side": 1,
       "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the GetAllWindows call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7720de_50d76d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ecc8ce4_2c944ace",
       "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -206,6 +397,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20ec1945_af881d61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "This is a type of saved desks. It\u0027s defined in chromium repo here [1]. A user click save as a template button, then it\u0027s a saved desk of this type. Similar for `kSaveAndRecall `.\n[1] https://source.chromium.org/chromium/chromium/src/+/main:ash/public/cpp/desk_template.h;l\u003d33",
+      "parentUuid": "801b574f_1fd51bb9",
+      "range": {
+        "startLine": 194,
+        "startChar": 33,
+        "endLine": 194,
+        "endChar": 42
+      },
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0078fdf_174961e4",
@@ -223,6 +438,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96784fb9_8cdab91a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0078fdf_174961e4",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "048052af_215bb0a4",
@@ -236,6 +469,30 @@
       "writtenOn": "2022-06-30T20:47:52Z",
       "side": 1,
       "message": "you don\u0027t need to explain this both here and on L246",
+      "range": {
+        "startLine": 238,
+        "startChar": 28,
+        "endLine": 238,
+        "endChar": 59
+      },
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "631e017a_95352308",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "048052af_215bb0a4",
       "range": {
         "startLine": 238,
         "startChar": 28,
@@ -269,6 +526,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb58db85_a9ef9efc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Same as `kTemplate` above.",
+      "parentUuid": "2d74d94f_404bb9fe",
+      "range": {
+        "startLine": 290,
+        "startChar": 29,
+        "endLine": 290,
+        "endChar": 43
+      },
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dc90a67_32db4e82",
@@ -282,6 +563,24 @@
       "writtenOn": "2022-06-30T20:47:52Z",
       "side": 1,
       "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the GetAllWindows call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2efd440f_94956e73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dc90a67_32db4e82",
       "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -303,6 +602,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4689ccf_a887c813",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5f64032_55352702",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7b859db_376e4c16",
@@ -316,6 +633,24 @@
       "writtenOn": "2022-06-30T20:47:52Z",
       "side": 1,
       "message": "Flip the `err \u003d\u003d nil` condition around and fail early if the FindDeskTemplates call fails.",
+      "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b724afb1_834f1b7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-07T00:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7b859db_376e4c16",
       "revId": "36635abf29c37d5ff1179bcd0f06d693b455fb44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
