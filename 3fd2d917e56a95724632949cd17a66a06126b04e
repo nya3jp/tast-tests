@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bbbf3bd6_bad0074c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-07T01:00:46Z",
+      "side": 1,
+      "message": "I did some refactor and added an initial test for validating the assumption that the the input field is either offscreen or in a position that can be occluded by the VK.\nNow there is a chance of failure for this test due to its validity rather than overscroll issues. I added comments to help fixing such scenarios in the future. We might consider dropping this initial validation or improve the test at some point.",
+      "parentUuid": "97015b45_648d287a",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 50
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee97f6cc_7d1e7ad5",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
         "patchSetId": 7
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "Ack. My suggestion is to explicitly call vkbCtx.HideVirtualKeyboard() in each test to close VK explicitly.",
       "parentUuid": "6d3a860b_d04db96e",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "3fd2d917e56a95724632949cd17a66a06126b04e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e135ea6c_6d8f0d6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-07T01:00:46Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b53d33cd_d74c2c2e",
       "range": {
         "startLine": 83,
         "startChar": 2,
