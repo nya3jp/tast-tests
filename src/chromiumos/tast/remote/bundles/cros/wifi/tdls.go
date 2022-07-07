@@ -49,7 +49,7 @@ func init() {
 			"jck@semihalf.com",
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:         []string{"group:wificell_dual_dut"},
+		Attr:         []string{"group:wificell_cross_device", "wificell_cross_device_tdls", "wificell_cross_device_unstable"},
 		ServiceDeps:  []string{wificell.TFServiceName},
 		Fixture:      "wificellFixtCompanionDut",
 		HardwareDeps: hwdep.D(hwdep.WifiTDLS()),
