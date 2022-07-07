@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ac4af6_5b652f0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-07-07T01:46:12Z",
+      "side": 1,
+      "message": "I think it\u0027d be simpler and readable to define structs for the desired fields like the example of https://pkg.go.dev/encoding/json#Unmarshal",
+      "revId": "e5678005b7115394dfaca4ec6f4f7793ce71af58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bee7a59_45159c42",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/sata_storage.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-07-07T01:46:12Z",
+      "side": 1,
+      "message": "Is this intended to pick the last element in the array slice?",
+      "revId": "e5678005b7115394dfaca4ec6f4f7793ce71af58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
