@@ -83,7 +83,7 @@ func AcceptFastInitiationNotification(ctx context.Context, tconn *chrome.TestCon
 	}
 
 	ui := uiauto.New(tconn)
-	btn := nodewith.Role(role.Button).Name(btnName).Ancestor(nodewith.Role(role.AlertDialog))
+	btn := nodewith.Role(role.Button).NameRegex(regexp.MustCompile("(?i)" + btnName)).Ancestor(nodewith.Role(role.AlertDialog))
 	if err := ui.LeftClick(btn)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click sharing notification's receive button")
 	}
