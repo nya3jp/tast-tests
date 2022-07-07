@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a71ccb_ebe4fd10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-07-07T20:23:32Z",
+      "side": 1,
+      "message": "Hello Kyle! Went ahead and put together that fix we discussed and verified that both tests are passing on a device. Please take a look at this change whenever you have a moment!",
+      "revId": "79b60db3f739ea603023edc942ab63145bd80167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
