@@ -517,19 +517,28 @@ func CheckValidFlashState(ctx context.Context, d *rpcdut.RPCDUT, fpBoard FPBoard
 // InitializeHWAndSWWriteProtect ensures hardware and software write protect are initialized as requested.
 func InitializeHWAndSWWriteProtect(ctx context.Context, d *rpcdut.RPCDUT, pxy *servo.Proxy, fpBoard FPBoardName, enableHWWP, enableSWWP bool) error {
 	testing.ContextLogf(ctx, "Initializing HW WP to %t, SW WP to %t", enableHWWP, enableSWWP)
-	// HW write protect must be disabled to disable SW write protect.
-	if !enableSWWP {
-		if err := SetHardwareWriteProtect(ctx, pxy, false); err != nil {
-			return err
-		}
+	// The HW write protect level must match the desired SW write protect
+	// level prior to modifying SW write protect. Once the SW write protect
+	// level has been updated it is safe to set the HW write protect to the
+	// desired level.
+	// Write protect truth table:
+	// sw: 0, hw: 0 => hw(0) -> sw(0)
+	// sw: 0, hw: 1 => hw(0) -> sw(0) -> hw(1)
+	// sw: 1, hw: 0 => hw(1) -> sw(1) -> hw(0)
+	// sw: 1, hw: 1 => hw(1) -> sw(1)
+	if err := SetHardwareWriteProtect(ctx, pxy, enableSWWP); err != nil {
+		return err
 	}
 
 	if err := SetSoftwareWriteProtect(ctx, d.DUT(), enableSWWP); err != nil {
 		return err
 	}
 
-	if err := SetHardwareWriteProtect(ctx, pxy, enableHWWP); err != nil {
-		return err
+	if enableHWWP != enableSWWP {
+		// Set HW write protect to target state.
+		if err := SetHardwareWriteProtect(ctx, pxy, enableHWWP); err != nil {
+			return err
+		}
 	}
 
 	if err := CheckWriteProtectStateCorrect(ctx, d.DUT(), enableSWWP, enableHWWP); err != nil {
