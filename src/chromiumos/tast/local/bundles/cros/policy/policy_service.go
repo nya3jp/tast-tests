@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/policyutil/externaldata"
 	"chromiumos/tast/local/session"
+	"chromiumos/tast/local/syslog"
 	ppb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
@@ -48,8 +49,42 @@ type PolicyService struct { // NOLINT
 	fakeDMS        *fakedms.FakeDMS
 	fakeDMSDir     string
 	fakeDMSRemoval bool
+	chromeReader   *syslog.Reader
 
 	eds *externaldata.Server
+}
+
+// StartNewChromeReader starts new syslog reader. When using this make sure to always call a function at the end
+// to close the reader such as WaitForEnrollmentError.
+func (c *PolicyService) StartNewChromeReader(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	chromeReader, err := syslog.NewReader(ctx, syslog.Program(syslog.Chrome))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start NewReader")
+	}
+
+	c.chromeReader = chromeReader
+	return &empty.Empty{}, nil
+}
+
+// WaitForEnrollmentError checks for enrollment error in logs using syslog.
+func (c *PolicyService) WaitForEnrollmentError(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+
+	const (
+		logScanTimeout     = 90 * time.Second
+		enrollmentErrorLog = "Enrollment Error"
+	)
+
+	testing.ContextLog(ctx, "Waiting for enrollment failure message")
+	if _, err := c.chromeReader.Wait(ctx, logScanTimeout,
+		func(e *syslog.Entry) bool {
+			return strings.Contains(e.Content, enrollmentErrorLog)
+		},
+	); err != nil {
+		return nil, errors.Wrap(err, "Enrollment failure message didn't happen")
+	}
+
+	defer c.chromeReader.Close()
+	return &empty.Empty{}, nil
 }
 
 // GAIAEnrollAndLoginUsingChrome enrolls the device using dmserver. Specified user is logged in after this function completes.
