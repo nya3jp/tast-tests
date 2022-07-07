@@ -16,6 +16,24 @@
       "message": "Wait sorry I just realized that you weren\u0027t using r.run() for all of these. Can you change that?",
       "revId": "525db48bc4bf00a1717b9f1306e64767ed335670",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f35a9564_38401311",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-07-07T08:45:37Z",
+      "side": 1,
+      "message": "I changed the functions that don\u0027t use the cmdOut {RemoveAllNetworks, setNetwork, scan}\n\nThe other functions not related to this change should be changed in a new CL {Set, ClearBSSIDIgnore}\n\nWDYT?",
+      "parentUuid": "044312f3_de45f771",
+      "revId": "525db48bc4bf00a1717b9f1306e64767ed335670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
