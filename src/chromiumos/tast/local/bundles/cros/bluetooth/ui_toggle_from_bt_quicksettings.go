@@ -56,7 +56,7 @@ func UIToggleFromBTQuicksettings(ctx context.Context, s *testing.State) {
 	// Bluetooth Quick Settings UI.
 	bluetoothSettings := nodewith.ClassName("BluetoothDetailedViewLegacy")
 	// Bluetooth button in the bluetooth quick setting menu, when Bluetooth is off.
-	bluetoothToggleButton := nodewith.Name("Bluetooth").ClassName("ToggleButton").Role(role.Switch)
+	bluetoothToggleButton := nodewith.Name("Bluetooth").HasClass("ToggleButton").Role(role.Switch)
 
 	// Power on Bluetooth adapter.
 	if err = bluetooth.Enable(ctx); err != nil {
