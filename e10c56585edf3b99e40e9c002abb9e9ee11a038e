@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e9ce9d6_8f0bcf59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T16:28:40Z",
+      "side": 1,
+      "message": "For clarity, can you mention that removeReadProtect is false in this case?",
+      "range": {
+        "startLine": 171,
+        "startChar": 5,
+        "endLine": 171,
+        "endChar": 71
+      },
+      "revId": "e10c56585edf3b99e40e9c002abb9e9ee11a038e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5acf5166_b6480035",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T16:28:40Z",
+      "side": 1,
+      "message": "nit: e.g.",
+      "range": {
+        "startLine": 174,
+        "startChar": 35,
+        "endLine": 174,
+        "endChar": 38
+      },
+      "revId": "e10c56585edf3b99e40e9c002abb9e9ee11a038e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3f39a12_61dbb345",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T16:28:40Z",
+      "side": 1,
+      "message": "don\u0027t",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 11
+      },
+      "revId": "e10c56585edf3b99e40e9c002abb9e9ee11a038e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7b2f365_d3a7512b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_rdp1.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T16:28:40Z",
+      "side": 1,
+      "message": "The comment above mentions boards that require reboot (`needsReboot`), but doesn\u0027t check that case.\n\nShould we change to something like this?\n\n```\n\texpectFlashFpMcuSuccess :\u003d false\n\tif removeFlashReadProtect \u0026\u0026 needsReboot {\n\t\texpectFlashFpMcuSuccess \u003d true\n\t}\n\tif expectFlashFpMcuSuccess \u0026\u0026 exitStatus !\u003d 0 {\n\t\treturn errors.New(\"flash_fp_mcu failed, but should have succeeded\")\n\t} else if !expectFlashFpMcuSuccess \u0026\u0026 exitStatus \u003d\u003d 0 {\n\t\treturn errors.New(\"flash_fp_mcu succeeded, but should have failed\")\n\t}\n```",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 178,
+        "endChar": 27
+      },
+      "revId": "e10c56585edf3b99e40e9c002abb9e9ee11a038e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
