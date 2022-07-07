@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b86ebcb9_5c02553d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501397
+      },
+      "writtenOn": "2022-07-07T23:54:28Z",
+      "side": 1,
+      "message": "And Yes, the permission requirement is something new in T.",
+      "parentUuid": "409b0b46_cf7b222d",
+      "revId": "7386003281ec6c2d19d07bc9078d3e2b2765fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd1c2308_465cdf56",
