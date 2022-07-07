@@ -359,7 +359,8 @@ func restoreDaemons(ctx context.Context, upstartService platform.UpstartServiceC
 // isFPUpdaterEnabled returns true if the fingerprint updater is enabled.
 func isFPUpdaterEnabled(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
 	fs := dutfs.NewClient(d.RPC().Conn)
-	return fs.Exists(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile))
+	disabled, err := fs.Exists(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile))
+	return !disabled, err
 }
 
 // enableFPUpdater enables the fingerprint updater if it is disabled.
