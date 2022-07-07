@@ -193,8 +193,8 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 		}
 
 		// If FP updater disabled, re-enable it
-		fpUpdaterEnabled, err := isFPUpdaterEnabled(ctx, t.d)
-		if err == nil && !fpUpdaterEnabled {
+		fpUpdaterDisabled, err := isFPUpdaterDisabled(ctx, t.d)
+		if err == nil && fpUpdaterDisabled {
 			if err := enableFPUpdater(ctx, t.d); err != nil && firstErr == nil {
 				firstErr = err
 			}
@@ -356,8 +356,8 @@ func restoreDaemons(ctx context.Context, upstartService platform.UpstartServiceC
 	return firstErr
 }
 
-// isFPUpdaterEnabled returns true if the fingerprint updater is enabled.
-func isFPUpdaterEnabled(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
+// isFPUpdaterDisabled returns true if the fingerprint updater is enabled.
+func isFPUpdaterDisabled(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
 	fs := dutfs.NewClient(d.RPC().Conn)
 	return fs.Exists(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile))
 }
