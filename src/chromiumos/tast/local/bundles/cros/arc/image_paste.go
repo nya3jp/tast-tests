@@ -8,13 +8,24 @@ import (
 	"context"
 	"io/ioutil"
 	"os"
+
+	//"fmt"
 	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/ctxutil"
+
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
+
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
+
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -22,17 +33,30 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ImagePaste,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks image copy paste app compat CUJ",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
-		SoftwareDeps: []string{"chrome", "android_vm"},
+		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{"image_paste_manifest.json", "image_paste_background.js", "image_paste_foreground.html", "image_paste_sample.png"},
 		Timeout:      4 * time.Minute,
+		Params: []testing.Param{{
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
+			Val:               browser.TypeAsh,
+		}, {
+			Name:              "lacros_vm",
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
 func ImagePaste(ctx context.Context, s *testing.State) {
+	// Reserve five seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 	s.Log("Copying extension to temp directory")
 	extDir, err := ioutil.TempDir("", "tast.arc.ImagePasteExtension")
 	if err != nil {
@@ -44,23 +68,34 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to copy extension %s: %v", name, err)
 		}
 	}
+	opts := []chrome.Option{chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell")}
 
-	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir), chrome.ARCEnabled(), chrome.ExtraArgs("--force-tablet-mode=clamshell"))
-	if err != nil {
-		s.Fatal("Failed to connect to Chrome: ", err)
+	bt := s.Param().(browser.Type)
+	switch bt {
+	case browser.TypeLacros:
+		opts = append(opts, chrome.LacrosUnpackedExtension(extDir))
+	case browser.TypeAsh:
+		opts = append(opts, chrome.UnpackedExtension(extDir))
 	}
-	defer cr.Close(ctx)
+
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), opts...)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
 	defer a.Close(ctx)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
 
 	d, err := a.NewUIDevice(ctx)
 	if err != nil {
@@ -81,11 +116,30 @@ func ImagePaste(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to compute extension ID for %v: %v", extDir, err)
 	}
 	fgURL := "chrome-extension://" + extID + "/foreground.html"
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(fgURL))
+	conn, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL(fgURL))
 	if err != nil {
 		s.Fatalf("Could not connect to extension at %v: %v", fgURL, err)
 	}
 	defer conn.Close()
+
+	kw, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to create a keyboard: ", err)
+	}
+	defer kw.Close()
+
+	if ws, err := ash.GetAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to get the window list: ", err)
+	} else if len(ws) != 1 {
+		s.Logf("Expected 1 window, got %v window(s), ws: %v", len(ws), ws)
+		// Click Alt+Tab twice to bring focus to Lacros Extension Window.
+		if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
+			s.Error("Failed to hit alt-tab to focus back to extension: ", err)
+		}
+		if err := kw.Accel(ctx, "Alt+Tab"); err != nil {
+			s.Error("Failed to hit alt-tab to focus back to extension: ", err)
+		}
+	}
 
 	// Paste an image from Chrome. clipboard.write() is only available for the focused window,
 	// so we use a foreground page here.
