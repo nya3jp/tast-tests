@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb5cf3ec_80bd44f3",
+        "filename": "src/chromiumos/tast/common/network/cmd/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-07T17:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "143bb6d3_d562418c",
+      "range": {
+        "startLine": 36,
+        "startChar": 13,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3482ff9_09a50235",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-07T15:17:22Z",
       "side": 1,
       "message": "add docstring to function.\n\nfrom: https://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#doc-comments\n\n\u003e ... must have doc comments ... as should unexported type or function declarations with unobvious behavior or meaning",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "060fe685_40e87622",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-07T17:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3482ff9_09a50235",
       "range": {
         "startLine": 71,
         "startChar": 17,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e97071b_a3cfc734",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-07T17:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "136d28b4_6e169f35",
+      "range": {
+        "startLine": 133,
+        "startChar": 17,
+        "endLine": 133,
+        "endChar": 24
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5bacf49_f580d677",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-07T15:17:22Z",
       "side": 1,
       "message": "what happens if some calls `close` more than once?\n\n\nperhaps doing some kind of cleanup ?\n\ne.g:\n\n    if r.CmdExists() {\n       ...\n       r.ResetCmd()\n    }\n    \n    if r.config.stderrFile !\u003d nil {\n      ...\n      r.config.stderrFile \u003d nil\n    }",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 11
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "370d158b_d69e143a",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-07T17:30:49Z",
+      "side": 1,
+      "message": "It looks like I should restore all the states to avoid closing the file again. Thanks for your opinion.",
+      "parentUuid": "f5bacf49_f580d677",
       "range": {
         "startLine": 156,
         "startChar": 0,
@@ -133,6 +229,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de474f28_754e123c",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-07T17:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba9268ce_2bf20f79",
+      "range": {
+        "startLine": 175,
+        "startChar": 13,
+        "endLine": 175,
+        "endChar": 17
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0cca211_3f54081b",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-07T17:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a95ac937_038e7023",
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9298b99_dedb1103",
@@ -156,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5b43bf8_02336e23",
+        "filename": "src/chromiumos/tast/local/network/cmd/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-07T17:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9298b99_dedb1103",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 16
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c2555c2_bffb82c9",
@@ -169,6 +331,30 @@
       "writtenOn": "2022-07-07T15:17:22Z",
       "side": 1,
       "message": "ditto above",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 16
+      },
+      "revId": "e10e718ac531a911b38dd3111ca174ea565e778d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "382f15bc_be365a85",
+        "filename": "src/chromiumos/tast/remote/network/cmd/runner.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-07T17:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c2555c2_bffb82c9",
       "range": {
         "startLine": 88,
         "startChar": 12,
