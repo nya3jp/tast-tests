@@ -34,6 +34,24 @@
       "parentUuid": "269741fa_c5b0ca53",
       "revId": "443d983ee3f0233e90b5a86a472e31d878936ddb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f5cc2ff_0ab5e382",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-07T12:06:46Z",
+      "side": 1,
+      "message": "agreed. I\u0027ve updated now the commit message to be more clear about this. \n\nThanks for the review!",
+      "parentUuid": "e45f8cc1_91c3bf3a",
+      "revId": "443d983ee3f0233e90b5a86a472e31d878936ddb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
