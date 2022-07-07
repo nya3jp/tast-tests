@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b05b43b_70c42834",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-07T00:28:59Z",
+      "side": 1,
+      "message": "nit: `Report` rather than `Record`\n\nThe metrics are already recorded by chrome://webrtc-internals and can be found in webrtc-internals.json on Stainless, so this CL is all about reporting, not recording.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "ac8d87d6d9b07b10194797a0eaef43f2bdd47008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47967eed_4fd07cba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-07T00:28:59Z",
+      "side": 1,
+      "message": "Add meetcuj_screenshare_codec.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 58
+      },
+      "revId": "ac8d87d6d9b07b10194797a0eaef43f2bdd47008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "986d3ce3_87ec97c4",
@@ -14,6 +60,155 @@
       "writtenOn": "2022-07-06T23:25:30Z",
       "side": 1,
       "message": "Please review, thank you!",
+      "revId": "ac8d87d6d9b07b10194797a0eaef43f2bdd47008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db1b981b_4752db69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-07T00:28:59Z",
+      "side": 1,
+      "message": "I am taking the rest of the week off. Good luck.",
+      "revId": "ac8d87d6d9b07b10194797a0eaef43f2bdd47008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002186fa_e9a02d34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-07T00:28:59Z",
+      "side": 1,
+      "message": "Please document that when `reportWebRTCInternals` returns a non-nil `error`, it still reports on peer connections that were fully validated before the error was encountered.",
+      "range": {
+        "startLine": 1026,
+        "startChar": 0,
+        "endLine": 1026,
+        "endChar": 90
+      },
+      "revId": "ac8d87d6d9b07b10194797a0eaef43f2bdd47008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9904cd76_c9a05f60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-07T00:28:59Z",
+      "side": 1,
+      "message": "nit: Remove this blank line.",
+      "revId": "ac8d87d6d9b07b10194797a0eaef43f2bdd47008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d4cb657_3ff17759",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-07T00:28:59Z",
+      "side": 1,
+      "message": "Instead of making a whole separate regular expression, please just check if `statName` equals `\"contentType\"`, like the code that already checks if `statName` is `\"[codec]\"`. You can refactor most of the loop body as a `switch` statement like this:\n\t\t\tswitch statName {\n\t\t\tcase \"contentType\":\n\t\t\t\tisScreenshareConn \u003d true\n\t\t\tcase \"[codec]\":\n\t\t\t\tif len(statistic.Values) \u003d\u003d 0 {\n\t\t\t\t\treturn errors.Errorf(\"no values for %q\", fullName)\n\t\t\t\t}\n\t\t\t\tfirstCodec :\u003d statistic.Values[0]\n\t\t\t\tfor _, value :\u003d range statistic.Values {\n\t\t\t\t\tif firstCodec !\u003d value {\n\t\t\t\t\t\treturn errors.Errorf(\"found time-varying codec for %q: %v\", fullName, statistic.Values)\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tdescription, ok :\u003d firstCodec.(string)\n\t\t\t\tif !ok {\n\t\t\t\t\treturn errors.Errorf(\"expected %q values to be strings; got %v\", fullName, statistic.Values)\n\t\t\t\t}\n\n\t\t\t\tif previousDescription, ok :\u003d codecDescription[direction]; !ok {\n\t\t\t\t\tcodecDescription[direction] \u003d description\n\t\t\t\t} else if previousDescription !\u003d description {\n\t\t\t\t\t\treturn errors.Errorf(\"found differing %s video stream codecs: %s versus %s\", direction, previousDescription, description)\n\t\t\t\t}\n\t\t\tdefault:\n\t\t\t\tif _, ok :\u003d unit[statName]; !ok {\n\t\t\t\t\tbreak\n\t\t\t\t}\n\n\t\t\t\tvar report timeSeries\n\t\t\t\tfor _, value :\u003d range statistic.Values {\n\t\t\t\t\tmetric, ok :\u003d value.(float64)\n\t\t\t\t\tif !ok {\n\t\t\t\t\t\treturn errors.Errorf(\"expected %q values to be numerical; got %v\", fullName, statistic.Values)\n\t\t\t\t\t}\n\t\t\t\t\treport \u003d append(report, metric)\n\t\t\t\t}\n\n\t\t\t\tbyStreamID, ok :\u003d byDirection[direction]\n\t\t\t\tif !ok {\n\t\t\t\t\tbyStreamID \u003d make(indexByStreamID)\n\t\t\t\t\tbyDirection[direction] \u003d byStreamID\n\t\t\t\t}\n\t\t\t\tbyStatName, ok :\u003d byStreamID[streamID]\n\t\t\t\tif !ok {\n\t\t\t\t\tbyStatName \u003d make(indexByStatName)\n\t\t\t\t\tbyStreamID[streamID] \u003d byStatName\n\t\t\t\t}\n\t\t\t\tbyStatName[statName] \u003d report\n\t\t\t}",
+      "range": {
+        "startLine": 1042,
+        "startChar": 1,
+        "endLine": 1042,
+        "endChar": 92
+      },
+      "revId": "ac8d87d6d9b07b10194797a0eaef43f2bdd47008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab1210fa_47d80483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-07T00:28:59Z",
+      "side": 1,
+      "message": "Instead of discarding the peer connection ID with `_`, how about using it in all the error messages?",
+      "range": {
+        "startLine": 1053,
+        "startChar": 5,
+        "endLine": 1053,
+        "endChar": 6
+      },
+      "revId": "ac8d87d6d9b07b10194797a0eaef43f2bdd47008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b07dcd3_66a3bf1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-07T00:28:59Z",
+      "side": 1,
+      "message": "How about:\n\t\tvar directions []string\n\t\tif isScreenshareConn {\n\t\t\tdirections \u003d []string{\"Outbound\"}\n\t\t} else {\n\t\t\tdirections \u003d []string{\"Inbound\", \"Outbound\"}\n\t\t}\n\t\tfor _, direction :\u003d range directions {",
+      "range": {
+        "startLine": 1120,
+        "startChar": 0,
+        "endLine": 1123,
+        "endChar": 4
+      },
+      "revId": "ac8d87d6d9b07b10194797a0eaef43f2bdd47008",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25228dbb_951b127e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-07T00:28:59Z",
+      "side": 1,
+      "message": "I see that you are reporting the video codecs for the webcam and the screenshare to the same metric, so that one will overwrite the other. Please use a different metric name, like maybe meetcuj_screenshare_codec, to report the video codec for screenshare separately. You can do it like so:\n\t\tscreenShareSuffix :\u003d \"\"\n\t\tif isScreenshareConn {\n\t\t\tpv.Set(perf.Metric{\n\t\t\t\tName:      \"meetcuj_screenshare_codec\",\n\t\t\t\tUnit:      \"unitless\",\n\t\t\t\tDirection: perf.BiggerIsBetter,\n\t\t\t}, float64(codec[\"Outbound\"]))\n\n\t\t\tscreenShareSuffix \u003d \".Screenshare\"\n\t\t} else {\n\t\t\tif numInboundStreams :\u003d len(byDirection[\"Inbound\"]); numInboundStreams !\u003d numBots {\n\t\t\t\treturn errors.Errorf(\"unexpected number of Inbound video streams: got %d; want %d\", numInboundStreams, numBots)\n\t\t\t}\n\n\t\t\tpv.Set(perf.Metric{\n\t\t\t\tName:      \"meetcuj_decoding_codec\",\n\t\t\t\tUnit:      \"unitless\",\n\t\t\t\tDirection: perf.BiggerIsBetter,\n\t\t\t}, float64(codec[\"Inbound\"]))\n\t\t\tpv.Set(perf.Metric{\n\t\t\t\tName:      \"meetcuj_encoding_codec\",\n\t\t\t\tUnit:      \"unitless\",\n\t\t\t\tDirection: perf.BiggerIsBetter,\n\t\t\t}, float64(codec[\"Outbound\"]))\n\t\t}",
+      "range": {
+        "startLine": 1163,
+        "startChar": 15,
+        "endLine": 1163,
+        "endChar": 37
+      },
       "revId": "ac8d87d6d9b07b10194797a0eaef43f2bdd47008",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
