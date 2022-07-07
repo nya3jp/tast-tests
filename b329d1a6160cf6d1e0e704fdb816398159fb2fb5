@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a8944e7_50465d5c",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2022-07-07T15:27:44Z",
+      "side": 1,
+      "message": "Can we keep the name as `isFPUpdaterEnabled` and invert the logic? Positive logic is [easier to read](http://go/tott/530).",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 1
+      },
+      "revId": "b329d1a6160cf6d1e0e704fdb816398159fb2fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
