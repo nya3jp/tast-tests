@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b8239b_af0f3914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/reorder_nudge_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-07-07T21:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e48fb8ce_9604dfc6",
+      "range": {
+        "startLine": 62,
+        "startChar": 47,
+        "endLine": 62,
+        "endChar": 50
+      },
+      "revId": "20a104bdc2ef7233eaadb7b064f5554224def391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ddbe2e3_c2ebff8a",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-07-03T23:13:24Z",
       "side": 1,
       "message": "nit: fourth",
+      "range": {
+        "startLine": 78,
+        "startChar": 118,
+        "endLine": 78,
+        "endChar": 123
+      },
+      "revId": "20a104bdc2ef7233eaadb7b064f5554224def391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e70b72_d0ee5417",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/reorder_nudge_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-07-07T21:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ddbe2e3_c2ebff8a",
       "range": {
         "startLine": 78,
         "startChar": 118,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19de125d_81e0fade",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/reorder_nudge_smoke.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-07-07T21:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd448ffa_08d1a36d",
+      "range": {
+        "startLine": 79,
+        "startChar": 42,
+        "endLine": 79,
+        "endChar": 43
+      },
+      "revId": "20a104bdc2ef7233eaadb7b064f5554224def391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4d583e7_9fef3529",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-07-03T23:13:24Z",
       "side": 1,
       "message": "nit: generally good to maintain similar order to the other functions in this file (e.g. `SearchAndRightClick` takes a `tconn` first)",
+      "range": {
+        "startLine": 191,
+        "startChar": 18,
+        "endLine": 191,
+        "endChar": 63
+      },
+      "revId": "20a104bdc2ef7233eaadb7b064f5554224def391",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4969c4c_0ab0eb05",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-07-07T21:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4d583e7_9fef3529",
       "range": {
         "startLine": 191,
         "startChar": 18,
