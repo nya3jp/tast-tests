@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5734772b_0ab530ed",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-07T16:13:08Z",
+      "side": 1,
+      "message": "The wording in this comment is a bit misleading now. I think combining these two comment lines to say something like:\n```\n// The HW write protect level must match the desired SW write protect level\n// prior to modifying SW write protect. Once the SW write protect level has been\n// updated it is safe to set the HW write protect to the desired level. \n```",
+      "range": {
+        "startLine": 520,
+        "startChar": 26,
+        "endLine": 520,
+        "endChar": 36
+      },
+      "revId": "80a4acd49a6ee2cdd08ee1d56dda6631e4bf4c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
