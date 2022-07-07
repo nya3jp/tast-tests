@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42069ab0_3da2af09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7f879ac_7ba074ee",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8fb7cc0_6e8b8c01",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-02T02:26:52Z",
       "side": 1,
       "message": "nit: checks",
+      "range": {
+        "startLine": 41,
+        "startChar": 61,
+        "endLine": 41,
+        "endChar": 66
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d9b40cb_4d7c4b54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8fb7cc0_6e8b8c01",
       "range": {
         "startLine": 41,
         "startChar": 61,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdaa4ba3_510222b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7add670d_e0c42240",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 36
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7d35136_c0f88638",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-07-05T04:35:20Z",
       "side": 1,
       "message": "nit/style:\n\nuiHandler, err :\u003d cuj.NewClamshellActionHandler(...)\nif err !\u003d nil {\n  ...",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 76
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "141675ce_8a21c76d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7d35136_c0f88638",
       "range": {
         "startLine": 145,
         "startChar": 1,
@@ -104,6 +194,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "802bf090_bc2b1106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cfcc161_793ef1a1",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f690690f_8878ecdb",
@@ -117,6 +225,30 @@
       "writtenOn": "2022-07-02T02:26:52Z",
       "side": 1,
       "message": "Do we expect anything to happen in this 1 sec sleep? Or do you mean DUT will go to sleep by itself after decreasing brightness to zero?",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 0
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78b6d517_24c8bf5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f690690f_8878ecdb",
       "range": {
         "startLine": 186,
         "startChar": 1,
@@ -150,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22b46d60_40ab9a59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1bf1ec6_cd308f3d",
+      "range": {
+        "startLine": 195,
+        "startChar": 3,
+        "endLine": 195,
+        "endChar": 80
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c1c0a68_9cf142d5",
@@ -167,6 +323,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aafc18da_4ee730ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c1c0a68_9cf142d5",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "695614ed_2f4d799b",
@@ -180,6 +354,24 @@
       "writtenOn": "2022-07-05T04:35:20Z",
       "side": 1,
       "message": "could you move this to L218?\nOr,\n\nbrightness, err :\u003d systemBrightness(..)\n...\nif err :\u003d testing.Poll(... func(...) {\n  newBrightness, err :\u003d systemBrightness(...)\n  ...\n  if brightness \u003d\u003d newBrightness {\n    return errors.New(...)\n  }\n  brightness \u003d newBrightness\n  return nil\n}, ...) ...\n...\nreturn brightness",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40fccbea_39c664f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "695614ed_2f4d799b",
       "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -207,6 +399,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65b11cf9_f4ab4805",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e2c0b93_9cd249af",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 14
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c71352ff_53b32b3a",
@@ -220,6 +436,24 @@
       "writtenOn": "2022-07-05T04:35:20Z",
       "side": 1,
       "message": "could you use textexec.CommandContext?",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fde3999_3cc54197",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c71352ff_53b32b3a",
       "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -247,6 +481,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd62113a_660ce6c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d007c0bc_65470dbd",
+      "range": {
+        "startLine": 255,
+        "startChar": 45,
+        "endLine": 255,
+        "endChar": 62
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "234ea9d5_bc158c01",
@@ -260,6 +518,24 @@
       "writtenOn": "2022-07-05T04:35:20Z",
       "side": 1,
       "message": "ditto.",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df98b0f1_d8678f85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "234ea9d5_bc158c01",
       "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -281,6 +557,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06f31a0_e4a4e976",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b8ae0f2_d860dfc7",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc9a6c9e_d54b8f75",
@@ -298,6 +592,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fda99f4_42e44887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc9a6c9e_d54b8f75",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b76b49e_fb51b022",
@@ -311,6 +623,24 @@
       "writtenOn": "2022-07-05T04:35:20Z",
       "side": 1,
       "message": "nit: const",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a941cf0c_7b99ce70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b76b49e_fb51b022",
       "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -338,6 +668,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92d2140f_536bea0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e902ad4e_378cca70",
+      "range": {
+        "startLine": 361,
+        "startChar": 11,
+        "endLine": 361,
+        "endChar": 15
+      },
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d68db0a4_c8861173",
@@ -351,6 +705,24 @@
       "writtenOn": "2022-07-05T04:35:20Z",
       "side": 1,
       "message": "could you move this out from the function, so that you don\u0027t need to compile this multiple times.",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe18bed_2a408db2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d68db0a4_c8861173",
       "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -372,6 +744,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4449fb_d3a4e806",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d722758_386b54a1",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf4b5cbb_595e8097",
@@ -385,6 +775,24 @@
       "writtenOn": "2022-07-05T04:35:20Z",
       "side": 1,
       "message": "does this verification? Looks just waiting?",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27c83cfe_046acc35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf4b5cbb_595e8097",
       "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -406,6 +814,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40d5a7bd_c9451caf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c42f02_3de3104b",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c85ac289_b49678e5",
@@ -419,6 +845,24 @@
       "writtenOn": "2022-07-05T04:35:20Z",
       "side": 1,
       "message": "I guess you need to verify each operation works somehow in each step?",
+      "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "523e56aa_48e958c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-07T13:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c85ac289_b49678e5",
       "revId": "1037708dab05b3539f55302c875c599b1b1c3ceb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
