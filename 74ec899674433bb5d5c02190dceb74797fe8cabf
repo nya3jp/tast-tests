@@ -93,6 +93,30 @@
       },
       "revId": "74ec899674433bb5d5c02190dceb74797fe8cabf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "015a120c_acff92af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/privacyhub/settings_page.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-07T10:18:50Z",
+      "side": 1,
+      "message": "See revised code here http://go/paste/6529951302942720\n\nLeftClick does not work here because the page does not complete rendering. You can use DoDefault to force push Click event on button or use LeftClickUntil to retry.",
+      "parentUuid": "d5309b6a_70737275",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "74ec899674433bb5d5c02190dceb74797fe8cabf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
