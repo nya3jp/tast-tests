@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08a49a9d_424becae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_results.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-07-07T17:05:54Z",
+      "side": 1,
+      "message": "Right! Thanks",
+      "parentUuid": "32f62312_e4b78d80",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "f46703e1a2e2493bfda1fefefc7d496fe7ca9096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72b9a7ac_52500d00",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47ba3bc1_d8655e35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_settings_sections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-07-07T17:05:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72b9a7ac_52500d00",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 18
+      },
+      "revId": "f46703e1a2e2493bfda1fefefc7d496fe7ca9096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a28e468f_2c601b2d",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-07-07T09:01:42Z",
       "side": 1,
       "message": "nit: you can just use `testParams.testCases` here",
+      "range": {
+        "startLine": 161,
+        "startChar": 20,
+        "endLine": 161,
+        "endChar": 23
+      },
+      "revId": "f46703e1a2e2493bfda1fefefc7d496fe7ca9096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fd32d70_d1a29562",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_settings_sections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1368351
+      },
+      "writtenOn": "2022-07-07T17:05:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a28e468f_2c601b2d",
       "range": {
         "startLine": 161,
         "startChar": 20,
