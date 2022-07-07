@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c655732_c64fa69e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-07-07T09:01:42Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "f46703e1a2e2493bfda1fefefc7d496fe7ca9096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32f62312_e4b78d80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_results.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-07-07T09:01:42Z",
+      "side": 1,
+      "message": "nit: did you forget to add \n\n```\nctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\ndefer cancel()\n```\n\n?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "f46703e1a2e2493bfda1fefefc7d496fe7ca9096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72b9a7ac_52500d00",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_settings_sections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-07-07T09:01:42Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 18
+      },
+      "revId": "f46703e1a2e2493bfda1fefefc7d496fe7ca9096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a28e468f_2c601b2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/search_settings_sections.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-07-07T09:01:42Z",
+      "side": 1,
+      "message": "nit: you can just use `testParams.testCases` here",
+      "range": {
+        "startLine": 161,
+        "startChar": 20,
+        "endLine": 161,
+        "endChar": 23
+      },
+      "revId": "f46703e1a2e2493bfda1fefefc7d496fe7ca9096",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
