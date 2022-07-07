@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e597c6cc_25fd85e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_dock_gatkex_usb4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-07T09:54:20Z",
+      "side": 1,
+      "message": "do you need to fail the test in the cleanup task?",
+      "range": {
+        "startLine": 115,
+        "startChar": 3,
+        "endLine": 115,
+        "endChar": 10
+      },
+      "revId": "b5a3e2a1e1c76f53c4e88e6dcd9e0710b6db19dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "482ce2fd_c4fef9c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_dock_gatkex_usb4.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-07T09:54:20Z",
+      "side": 1,
+      "message": "you need to put this before its use at line 252. Preferrably after it is initialized.",
+      "range": {
+        "startLine": 255,
+        "startChar": 1,
+        "endLine": 255,
+        "endChar": 19
+      },
+      "revId": "b5a3e2a1e1c76f53c4e88e6dcd9e0710b6db19dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
