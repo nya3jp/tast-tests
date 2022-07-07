@@ -67,6 +67,24 @@
       "message": "nit:\nmaybe \"defaultGaiaPasswordLabel is used to sign into chromebook.\" ?",
       "revId": "80631cad9d38aeb82c38de3ea26cefc48763278b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e6cbbbb_9fe37d8c",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-07T15:53:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29c44bcb_b22bdc11",
+      "revId": "80631cad9d38aeb82c38de3ea26cefc48763278b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
