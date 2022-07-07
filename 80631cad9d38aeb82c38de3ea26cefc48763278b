@@ -16,6 +16,23 @@
       "message": "cancelling +2 for waiting for shadow review",
       "revId": "80631cad9d38aeb82c38de3ea26cefc48763278b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dbfd413_09d4354a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-07T01:24:06Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm",
+      "revId": "80631cad9d38aeb82c38de3ea26cefc48763278b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
