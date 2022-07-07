@@ -16,6 +16,24 @@
       "message": "tast-wise: +2 (wait for +2 from someone from your team)",
       "revId": "39cdd21832d11d86b8465d6c64a5140465c152c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "501dcf02_a46b3893",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-07T15:34:10Z",
+      "side": 1,
+      "message": "Thanks! Actually I found a way to optimise it the code a little bit: the second `SetHardwareWriteProtect()` call is not necessary when `enableSWWP \u003d\u003d enableHWWP`",
+      "parentUuid": "dd96bbd0_719fe98b",
+      "revId": "39cdd21832d11d86b8465d6c64a5140465c152c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
