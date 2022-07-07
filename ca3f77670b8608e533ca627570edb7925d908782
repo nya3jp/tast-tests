@@ -46,6 +46,30 @@
       },
       "revId": "ca3f77670b8608e533ca627570edb7925d908782",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8437d1a5_4e358757",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-07T12:17:05Z",
+      "side": 1,
+      "message": "\u003e Providing user-input is not required in our case, but \u0027evtest\u0027 command will wait for user input so as per our requirement only CombinedOutput is working.\n\nSorry,user-input and CombinedOutput didn\u0027t connect. Could you elaborate further? Why you need to use \"CombinedOutput\"? Do you need to mix Stdout/Stderr? They may be interleaved so at least parsing it is highly discouraged.",
+      "parentUuid": "80065948_88e7f616",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 134,
+        "endChar": 52
+      },
+      "revId": "ca3f77670b8608e533ca627570edb7925d908782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
