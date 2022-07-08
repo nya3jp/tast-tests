@@ -16,6 +16,29 @@
       "message": "Changed to WIP. Please don\u0027t review yet.",
       "revId": "9067fc6ac2aa36a33401b6a0cd42aa4b749e6455",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfe8c040_673bef28",
+        "filename": "src/chromiumos/tast/remote/policyutil/clean_ownership.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-08T13:01:19Z",
+      "side": 1,
+      "message": "I will update it once we have refactored Tape API in repo.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "9067fc6ac2aa36a33401b6a0cd42aa4b749e6455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

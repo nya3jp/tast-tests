@@ -176,6 +176,24 @@
       "parentUuid": "e723f320_49292a7b",
       "revId": "1fdaf64a17a987b21e3346403123b605534c393a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cffb5c3_8fb2ab1d",
+        "filename": "src/chromiumos/tast/remote/policyutil/clean_ownership.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-08T13:01:19Z",
+      "side": 1,
+      "message": "We finally have it working!!",
+      "parentUuid": "6ba6232a_24ddf29c",
+      "revId": "1fdaf64a17a987b21e3346403123b605534c393a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
