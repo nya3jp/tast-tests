@@ -34,6 +34,24 @@
       "parentUuid": "0c5d4620_88fba27a",
       "revId": "7435725fd753ecf688e622c0c23617bfe8b4e283",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c483c728_22f6ed01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-08T04:10:19Z",
+      "side": 1,
+      "message": "Actually, there is a better way.\n\nThe new patch reserves the original logic, and adds an additional check in the case when the alert dialog and the delete button both do not exist, which is the case for the existing test failures. In that case, we can simply check if the \"Turn on\" button.",
+      "parentUuid": "2e3b6a4a_447a35ac",
+      "revId": "7435725fd753ecf688e622c0c23617bfe8b4e283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
