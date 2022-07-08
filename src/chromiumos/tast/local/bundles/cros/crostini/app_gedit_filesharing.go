@@ -208,7 +208,7 @@ func checkFilesharingBeforeRestart(
 
 	err := uiauto.Combine("validate contents of text file opened with Chrome (a non-linux app)",
 		filesApp.ClickContextMenuItem(tmpFilename, filesapp.OpenWith, viewContextMenuItem),
-		ud.WaitUntilExists(uidetection.TextBlock(strings.Split(tmpFileContents, " "))),
+		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("text string", " "))),
 	)(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to right click on text file in Downloads folder and open with default Text app")
@@ -246,7 +246,7 @@ func checkFilesharingWorksAfterRestart(
 		filesApp.OpenDownloads(),
 		filesApp.ClickContextMenuItemRegex(tmpFilename, filesapp.OpenWith, geditContextMenuItem),
 		ui.WaitUntilExists(geditWindow),
-		ud.WaitUntilExists(uidetection.TextBlock(strings.Split(tmpFileContents, " "))),
+		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("text string", " ")).WithinA11yNode(geditWindow)),
 	)(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to re-open Gedit to check file contents")
