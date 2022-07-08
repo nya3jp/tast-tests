@@ -278,7 +278,7 @@ func BootMode(ctx context.Context, s *testing.State) {
 		}
 
 		s.Log("Waiting for DUT to power ON")
-		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
+		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 5*time.Minute)
 		defer cancelWaitConnect()
 
 		if err := s.DUT().WaitConnect(waitConnectCtx); err != nil {
