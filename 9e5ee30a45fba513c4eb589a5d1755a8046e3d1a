@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c1a730_8239edf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-08T01:29:03Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with one nit",
+      "revId": "9e5ee30a45fba513c4eb589a5d1755a8046e3d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9444cd57_9d810cf5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-08T01:29:03Z",
+      "side": 1,
+      "message": "nit: maybe need a more descriptive name after moving this out since there is no context.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "9e5ee30a45fba513c4eb589a5d1755a8046e3d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
