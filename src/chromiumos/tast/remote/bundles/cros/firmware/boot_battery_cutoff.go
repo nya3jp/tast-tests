@@ -6,12 +6,14 @@ package firmware
 
 import (
 	"context"
+	"regexp"
 	"strings"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/servo"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
@@ -51,6 +53,7 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnFormFactor(hwdep.Chromeslate)),
 			Val:               false,
 		}},
+		Timeout: 10 * time.Minute,
 	})
 }
 
@@ -163,27 +166,100 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	// Enable software write protect.
-	s.Log("Enabling EC software write protect")
-	if err := s.DUT().Conn().CommandContext(ctx, "ectool", "flashprotect", "enable").Run(ssh.DumpLogOnError); err != nil {
-		if out, err := s.DUT().Conn().CommandContext(ctx, "flashrom", "-p", "ec", "--wp-status").Output(ssh.DumpLogOnError); err != nil {
-			s.Error("Failed to run command flashrom to collect the write protection status: ", err)
-		} else {
-			s.Log("Flashrom Output: ", string(out))
+	// Open CCD at the end of the test if it's locked. Also, disable write protections
+	// that were enabled during this test, so that other tests would not be affected
+	// later (i.e. setting gbb flags to change boot mode).
+	var (
+		hardwareWPEnabled   bool
+		ecSoftwareWPEnabled bool
+		apSoftwareWPEnabled bool
+	)
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Minute)
+	defer cancel()
+
+	defer func(ctx context.Context, hardwareWPEnabled, apSoftwareWPEnabled, ecSoftwareWPEnabled *bool) {
+		// Cr50 goes to sleep when battery is disconnected, and when DUT wakes, CCD state might be locked.
+		if hasCCD, err := h.Servo.HasCCD(ctx); err != nil {
+			s.Fatal("While checking if servo has a CCD connection: ", err)
+		} else if hasCCD {
+			if val, err := h.Servo.GetString(ctx, servo.GSCCCDLevel); err != nil {
+				s.Fatal("Failed to get gsc_ccd_level: ", err)
+			} else if val != servo.Open {
+				s.Logf("CCD is not open, got %q. Attempting to unlock", val)
+				if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
+					s.Fatal("Failed to unlock CCD: ", err)
+				}
+			}
 		}
-		s.Fatal("Failed to enable EC software write protect: ", err)
+		if *hardwareWPEnabled {
+			s.Log("Disabling hardware write protect")
+			if err := h.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
+				s.Fatal("Failed to disable hardware write protect: ", err)
+			}
+			s.Log("Rebooting DUT to ensure hardware WP disabled")
+			if err := h.Servo.SetPowerState(ctx, servo.PowerStateWarmReset); err != nil {
+				s.Fatal("Faild to reset DUT: ", err)
+			}
+			h.CloseRPCConnection(ctx)
+			if err := h.WaitConnect(ctx); err != nil {
+				s.Fatal("Failed to reconnect to DUT: ", err)
+			}
+		}
+		if *apSoftwareWPEnabled {
+			s.Log("Disabling ap software write protect")
+			if err := h.RequireRPCClient(ctx); err != nil {
+				s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+			}
+			bios := pb.NewBiosServiceClient(h.RPCClient.Conn)
+			if _, err := bios.DisableAPSoftwareWriteProtect(ctx, &empty.Empty{}); err != nil {
+				s.Fatal("Failed to disable AP write protect: ", err)
+			}
+		}
+		if *ecSoftwareWPEnabled {
+			s.Log("Disabling ec software write protect")
+			if err := s.DUT().Conn().CommandContext(ctx, "ectool", "flashprotect", "disable").Run(ssh.DumpLogOnError); err != nil {
+				s.Fatal("Failed to disable ec write protect: ", err)
+			}
+		}
+	}(cleanupCtx, &hardwareWPEnabled, &apSoftwareWPEnabled, &ecSoftwareWPEnabled)
+
+	// Check ec and ap software write protect status.
+	// Enable write protections before battery cutoff.
+	for _, programmer := range []string{"ec", "host"} {
+		wpStatus, err := s.DUT().Conn().CommandContext(ctx, "flashrom", "-p", programmer, "--wp-status").Output(ssh.DumpLogOnError)
+		if err != nil {
+			s.Fatal("Failed to check for ec write protection: ", err)
+		}
+		if reWPEnabled := regexp.MustCompile(`WP: write protect is enabled`); !reWPEnabled.Match(wpStatus) {
+			s.Logf("Enabling %s software write protect", programmer)
+			switch programmer {
+			case "ec":
+				if err := s.DUT().Conn().CommandContext(ctx, "ectool", "flashprotect", "enable").Run(ssh.DumpLogOnError); err != nil {
+					s.Fatal("Failed to enable EC software write protect: ", err)
+				}
+				ecSoftwareWPEnabled = true
+			case "host":
+				bs := pb.NewBiosServiceClient(h.RPCClient.Conn)
+				if _, err := bs.EnableAPSoftwareWriteProtect(ctx, &empty.Empty{}); err != nil {
+					s.Fatal("Failed to enable AP write protection: ", err)
+				}
+				apSoftwareWPEnabled = true
+			}
+		}
 	}
 
-	s.Log("Enabling AP software write protect")
-	bs := pb.NewBiosServiceClient(h.RPCClient.Conn)
-	if _, err := bs.EnableAPSoftwareWriteProtect(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Failed to enable AP write protection: ", err)
+	// Check and enable hardware write protect.
+	hardwareWP, err := h.Servo.GetString(ctx, servo.FWWPState)
+	if err != nil {
+		s.Fatal("Failed to get write protect state: ", err)
 	}
-
-	// Enable hardware write protect.
-	s.Log("Enabling hardware write protect")
-	if err := h.Servo.SetFWWPState(ctx, servo.FWWPStateOn); err != nil {
-		s.Fatal("Failed to enable hardware write protect: ", err)
+	if servo.FWWPStateValue(hardwareWP) != servo.FWWPStateOn {
+		s.Log("Enabling hardware write protect")
+		if err := h.Servo.SetFWWPState(ctx, servo.FWWPStateOn); err != nil {
+			s.Fatal("Failed to enable hardware write protect: ", err)
+		}
+		hardwareWPEnabled = true
 	}
 
 	// Send battery cutoff and check EC is unresponsive.
@@ -213,21 +289,6 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 	}
 	s.Log("DUT booted succesfully")
 
-	// Cr50 goes to sleep when the battery is disconnected, and when DUT wakes, CCD state might be locked.
-	// Open CCD after supplying power and before talking to the EC.
-	if hasCCD, err := h.Servo.HasCCD(ctx); err != nil {
-		s.Fatal("While checking if servo has a CCD connection: ", err)
-	} else if hasCCD {
-		if val, err := h.Servo.GetString(ctx, servo.GSCCCDLevel); err != nil {
-			s.Fatal("Failed to get gsc_ccd_level: ", err)
-		} else if val != servo.Open {
-			s.Logf("CCD is not open, got %q. Attempting to unlock", val)
-			if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
-				s.Fatal("Failed to unlock CCD: ", err)
-			}
-		}
-	}
-
 	// If is a CHROMESLATE and a micro-servo is connected, repeat the test but wake up the DUT with power button.
 	if ffIsChromeslate && hasMicroOrC2D2 {
 		s.Log("Performing extra steps for CHROMESLATE")
@@ -251,7 +312,6 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 		// During this test, the EC will become unresponsive and a micro-servo will be required to press the powerkey.
 		s.Log("WARNING: DUT is a chromeslate but no micro-servo is present")
 	}
-
 }
 
 // wakeDUTS0 will check DUT's power state if replugging AC fails to fully awake DUT from battery cutoff.
