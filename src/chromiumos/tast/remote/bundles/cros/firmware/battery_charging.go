@@ -27,6 +27,7 @@ func init() {
 		Attr:         []string{"group:firmware", "firmware_unstable"},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
+		Timeout:      10 * time.Minute,
 	})
 }
 
@@ -69,7 +70,7 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 
 		// When charger disconnects/reconnects, there's a temporary drop in connection with the DUT.
 		// Wait for DUT to reconnect before proceeding to the next step.
-		waitConnectShortCtx, cancelWaitConnectShort := context.WithTimeout(ctx, 90*time.Second)
+		waitConnectShortCtx, cancelWaitConnectShort := context.WithTimeout(ctx, 5*time.Minute)
 		defer cancelWaitConnectShort()
 		if err := h.WaitConnect(waitConnectShortCtx); err != nil {
 			s.Fatal("Failed to reconnect to DUT: ", err)
@@ -171,7 +172,7 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			}
 		}
 
-		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 150*time.Second)
+		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 5*time.Minute)
 		defer cancelWaitConnect()
 
 		if err := h.WaitConnect(waitConnectCtx); err != nil {

@@ -60,6 +60,7 @@ func init() {
 				setLaptopMode: "basestate attach",
 			},
 		}},
+		Timeout: 10 * time.Minute,
 	})
 }
 
