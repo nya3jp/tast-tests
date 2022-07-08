@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e3cb992_8abbc757",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-08T10:46:42Z",
+      "side": 1,
+      "message": "nit: can you link the new buganizer bug instead?",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "056dab354a8d5798dd9e445e5bab53a6c062f512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9bfde56_47fc5b31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-08T10:46:42Z",
+      "side": 1,
+      "message": "At least you should add the fastbuild here.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "056dab354a8d5798dd9e445e5bab53a6c062f512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23c453c4_f8ab483b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-08T10:46:42Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "056dab354a8d5798dd9e445e5bab53a6c062f512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
