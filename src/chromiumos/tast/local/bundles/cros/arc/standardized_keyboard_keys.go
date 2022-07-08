@@ -69,9 +69,7 @@ func init() {
 			Name:              "tablet_mode",
 			Val:               standardizedtestutil.GetTabletTest(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_p"},
-			// TODO(b/230668486): Certain kukui boards are flakey for no obvious reason so temporarily disable.
 			ExtraAttr:         []string{"informational"},
-			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep, hwdep.SkipOnModel("kodama", "krane")),
 		}, {
 			Name:              "vm",
 			Val:               standardizedtestutil.GetClamshellTest(runStandardizedKeyboardKeysTest),
