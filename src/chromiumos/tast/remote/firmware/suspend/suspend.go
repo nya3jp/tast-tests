@@ -44,27 +44,29 @@ const (
 
 // SuspendArgs are arguments for SuspendDUT
 type SuspendArgs struct {
-	delay int // Delay before suspending in seconds
+	Delay int // Delay before suspending in seconds
 }
 
 // DefaultSuspendArgs creates default arguments for SuspendDUT
 func DefaultSuspendArgs() SuspendArgs {
 	return SuspendArgs{
-		delay: suspendDelaySeconds,
+		Delay: suspendDelaySeconds,
 	}
 }
 
 // WakeArgs are arguments for WakeDUT
 type WakeArgs struct {
-	timeout  time.Duration // Duration to wait for DUT to wakeup/reconnect
-	interval time.Duration // How often to check for DUT wakeup/reconnect
+	Timeout        time.Duration // Duration to wait for DUT to wakeup/reconnect
+	Interval       time.Duration // How often to check for DUT wakeup/reconnect
+	ForceReconnect bool          // Attempt to reconnect to the DUT if it doesn't automatically
 }
 
 // DefaultWakeArgs creates default arguments for WakeDUT
 func DefaultWakeArgs() WakeArgs {
 	return WakeArgs{
-		timeout:  wakeTimeout,
-		interval: wakeInterval,
+		Timeout:        wakeTimeout,
+		Interval:       wakeInterval,
+		ForceReconnect: false,
 	}
 }
 
@@ -100,7 +102,7 @@ func (s *Context) SuspendDUT(state State, args SuspendArgs) error {
 		return err
 	}
 
-	cmd := s.h.DUT.Conn().CommandContext(s.ctx, "powerd_dbus_suspend", fmt.Sprintf("--delay=%d", args.delay))
+	cmd := s.h.DUT.Conn().CommandContext(s.ctx, "powerd_dbus_suspend", fmt.Sprintf("--delay=%d", args.Delay))
 	if err := cmd.Start(); err != nil {
 		return errors.Errorf("failed to invoke powerd_dbus_suspend: %s", err)
 	}
@@ -130,13 +132,23 @@ func (s *Context) WakeDUT(args WakeArgs) error {
 
 		return nil
 
-	}, &testing.PollOptions{Timeout: args.timeout, Interval: args.interval})
+	}, &testing.PollOptions{Timeout: args.Timeout, Interval: args.Interval})
 
-	if err != nil {
-		return errors.New("failed to reconnect to DUT after entering S0")
+	if err == nil {
+		return nil
 	}
 
-	return nil
+	// After a long suspend the DUT may not reconnect automatically
+	// So we can attempt to trigger a reconnection
+	if args.ForceReconnect {
+		connectCtx, cancel := context.WithTimeout(s.ctx, args.Timeout)
+		defer cancel()
+		if err = s.h.WaitConnect(connectCtx); err == nil {
+			return nil
+		}
+	}
+
+	return errors.New("failed to reconnect to DUT after entering S0")
 }
 
 // VerifySupendWake determines if the DUT supports a given state.
