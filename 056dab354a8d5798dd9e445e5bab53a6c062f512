@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb17a7a3_c3fab55d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-08T11:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e3cb992_8abbc757",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "056dab354a8d5798dd9e445e5bab53a6c062f512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9bfde56_47fc5b31",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-08T10:46:42Z",
       "side": 1,
       "message": "At least you should add the fastbuild here.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "056dab354a8d5798dd9e445e5bab53a6c062f512",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c274247d_60cf1473",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-08T11:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9bfde56_47fc5b31",
       "range": {
         "startLine": 14,
         "startChar": 5,
