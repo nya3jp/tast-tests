@@ -8,6 +8,8 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/rpc"
+	ts "chromiumos/tast/services/cros/tape"
 )
 
 // ServiceAccountVar holds the name of the variable which stores the service account credentials for TAPE.
@@ -173,5 +175,19 @@ func (ah *ownedTestAccountManager) CleanUp(ctx context.Context) error {
 		return errors.Wrap(combinedErrors, "failed to release some accounts")
 	}
 
+	return nil
+}
+
+// DeprovisionHelper is a helper function to deprovision a device in a managed domain.
+func (c *client) DeprovisionHelper(ctx context.Context, rpcClient *rpc.Client, customerID string) error {
+	tapeService := ts.NewServiceClient(rpcClient.Conn)
+	// Get the device ID of the DUT to deprovision it at the end of the test.
+	res, err := tapeService.GetDeviceID(ctx, &ts.GetDeviceIDRequest{CustomerID: customerID})
+	if err != nil {
+		return errors.Wrap(err, "failed to get the deviceID")
+	}
+	if err = c.Deprovision(ctx, res.DeviceID, customerID); err != nil {
+		return errors.Wrapf(err, "failed to deprovision device %s", res.DeviceID)
+	}
 	return nil
 }

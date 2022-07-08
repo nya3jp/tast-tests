@@ -8,8 +8,10 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/tape"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/remote/gaiaenrollment"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
 	ks "chromiumos/tast/services/cros/kiosk"
@@ -17,11 +19,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type testCreds struct {
-	username string // username for Chrome login
-	password string // password to login
-	dmserver string // device management server url
-}
+const gaiaKioskEnrollmentTimeout = 7 * time.Minute
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -32,41 +30,40 @@ func init() {
 			"rzakarian@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		Attr:         []string{}, // Need dedicated device ready in the lab, b/227604028.
+		Attr:         []string{"group:dpanel-end2end"},
 		SoftwareDeps: []string{"reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.kiosk.KioskService", "tast.cros.hwsec.OwnershipService"},
-		Timeout:      7 * time.Minute,
+		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.kiosk.KioskService", "tast.cros.hwsec.OwnershipService", "tast.cros.tape.Service"},
+		Timeout:      gaiaKioskEnrollmentTimeout,
 		Params: []testing.Param{
 			{
 				Name: "autopush",
-				Val: testCreds{
-					username: "policy.GAIAKioskEnrollment.user_name",
-					password: "policy.GAIAKioskEnrollment.password",
-					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+				Val: gaiaenrollment.TestParams{
+					DMServer: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+					PoolID:   tape.EnrollmentKiosk,
 				},
 			},
 		},
 		Vars: []string{
-			"policy.GAIAKioskEnrollment.user_name",
-			"policy.GAIAKioskEnrollment.password",
+			tape.ServiceAccountVar,
 		},
 	})
 }
 
 func GAIAKioskEnrollment(ctx context.Context, s *testing.State) {
-	param := s.Param().(testCreds)
-	username := s.RequiredVar(param.username)
-	password := s.RequiredVar(param.password)
-	dmServerURL := param.dmserver
+	param := s.Param().(gaiaenrollment.TestParams)
+	dmServerURL := param.DMServer
+	poolID := param.PoolID
+
+	// Shorten deadline to leave time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
+	defer cancel()
 
 	defer func(ctx context.Context) {
 		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 			s.Error("Failed to reset TPM after test: ", err)
 		}
-	}(ctx)
-
-	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
-	defer cancel()
+	}(cleanupCtx)
 
 	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
@@ -76,7 +73,7 @@ func GAIAKioskEnrollment(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
-	defer cl.Close(ctx)
+	defer cl.Close(cleanupCtx)
 
 	pc := ps.NewPolicyServiceClient(cl.Conn)
 	kc := ks.NewKioskServiceClient(cl.Conn)
@@ -93,13 +90,33 @@ func GAIAKioskEnrollment(ctx context.Context, s *testing.State) {
 
 	go checkKioskStarted()
 
+	tapeClient, err := tape.NewClient(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)))
+	if err != nil {
+		s.Fatal("Failed to create tape client: ", err)
+	}
+
+	timeout := int32(gaiaKioskEnrollmentTimeout.Seconds())
+	// Create an account manager and lease a test account for the duration of the test.
+	accManager, acc, err := tape.NewOwnedTestAccountManagerFromClient(ctx, tapeClient, false /*lock*/, tape.WithTimeout(timeout), tape.WithPoolID(poolID))
+	if err != nil {
+		s.Fatal("Failed to create an account manager and lease an account: ", err)
+	}
+	defer accManager.CleanUp(cleanupCtx)
+
 	if _, err := pc.GAIAEnrollUsingChrome(ctx, &ps.GAIAEnrollUsingChromeRequest{
-		Username:    username,
-		Password:    password,
+		Username:    acc.Username,
+		Password:    acc.Password,
 		DmserverURL: dmServerURL,
 	}); err != nil {
 		s.Fatal("Failed to enroll using chrome: ", err)
 	}
+
+	// Deprovision the DUT at the end of the test.
+	defer func(ctx context.Context) {
+		if err := tapeClient.DeprovisionHelper(cleanupCtx, cl, acc.CustomerID); err != nil {
+			s.Fatal("Failed to deprovision device: ", err)
+		}
+	}(cleanupCtx)
 
 	if err := <-kioskErr; err != nil {
 		s.Error("kiosk failed to start: ", err)
