@@ -75,28 +75,20 @@ func ShortcutSearch(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	testCase := s.Param().(launcher.TestCase)
-	tabletMode := testCase.TabletMode
-
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, testCase.TabletMode, testCase.ProductivityLauncher, false /*stabilizeAppCount*/)
 	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 	defer cleanup(cleanupCtx)
-
-	if !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed: ", err)
-		}
-	}
 
 	subtests := []shortcutSearchTestCase{
 		{
 			searchKeyword: "Lock Screen",
-			result:        "Lock screen, Shortcuts, Launcher+ l",
+			result:        "Lock screen, Shortcuts, Search+ l",
 		},
 		{
 			searchKeyword: "Launcher",
-			result:        "Open/close the launcher, Shortcuts, Launcher",
+			result:        "Open/close the launcher, Shortcuts, Search",
 		},
 		{
 			searchKeyword: "Overview",

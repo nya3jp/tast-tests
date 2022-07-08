@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
@@ -73,17 +72,11 @@ func ExitSearchShowApps(ctx context.Context, s *testing.State) {
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
 	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 	defer cleanup(cleanupCtx)
-
-	if !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed: ", err)
-		}
-	}
 
 	ui := uiauto.New(tconn)
 
