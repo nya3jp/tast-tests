@@ -448,7 +448,7 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 			return errors.Errorf("%d target(s) still open", stillClosingCount)
 		}
 		return nil
-	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: 10 * time.Second}); err != nil {
+	}, &testing.PollOptions{Interval: 10 * time.Millisecond, Timeout: 15 * time.Second}); err != nil {
 		return errors.Wrap(err, "not all targets finished closing")
 	}
 
