@@ -9,6 +9,7 @@ import (
 	"crypto/rsa"
 	"crypto/x509"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"math/rand"
 	"os"
@@ -46,6 +47,7 @@ type CrossVersionLoginConfig struct {
 	RsaKey         *rsa.PrivateKey
 	KeyLabel       string
 	ExtraVaultKeys []VaultKeyInfo
+	HasUserVault   bool
 }
 
 // NewPassAuthCrossVersionLoginConfig creates cross version-login config from password auth config
@@ -243,8 +245,11 @@ func createChallengeResponseData(ctx context.Context, lf LogFunc, cryptohome *hw
 	defer keyDelegate.Close()
 
 	authConfig := hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg)
+	// Enforce the usage of ecryptfs, so that we can take a usable snapshot of encrypted files.
+	vaultConfig := hwsec.NewVaultConfig()
+	vaultConfig.Ecryptfs = true
 	// Create the challenge-response protected cryptohome.
-	if err := cryptohome.MountVault(ctx, keyLabel, authConfig, true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, keyLabel, authConfig, true, vaultConfig); err != nil {
 		return nil, errors.Wrap(err, "failed to create cryptohome")
 	}
 	if keyDelegate.ChallengeCallCnt == 0 {
@@ -253,7 +258,18 @@ func createChallengeResponseData(ctx context.Context, lf LogFunc, cryptohome *hw
 	if _, err := cryptohome.CheckVault(ctx, keyLabel, authConfig); err != nil {
 		return nil, errors.Wrap(err, "failed to check the key for the mounted cryptohome")
 	}
-	return NewChallengeAuthCrossVersionLoginConfig(authConfig, keyLabel, rsaKey), nil
+	config := NewChallengeAuthCrossVersionLoginConfig(authConfig, keyLabel, rsaKey)
+
+	// It's expected that the ecryptfs was used because we specified `Ecryptfs` in `vaultConfig`.
+	hasEcryptfs, err := ecryptfsVaultExists(ctx, cryptohome, testUser)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check ecryptfs presence")
+	}
+	if !hasEcryptfs {
+		return nil, errors.New("no ecryptfs user vault found")
+	}
+	config.HasUserVault = true
+	return config, nil
 }
 
 func createPasswordData(ctx context.Context, cryptohome *hwsec.CryptohomeClient, supportsLE bool) (*CrossVersionLoginConfig, error) {
@@ -263,8 +279,8 @@ func createPasswordData(ctx context.Context, cryptohome *hwsec.CryptohomeClient,
 		pin        = "123456"
 		pinLabel   = "pinLabel"
 	)
-	// Add the new password login data
-	cr, err := chrome.New(ctx)
+	// Add the new password login data. Enforce the usage of ecryptfs, so that we can take a usable snapshot of encrypted files.
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--cryptohome-use-old-encryption-for-testing"))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to log in by Chrome")
 	}
@@ -282,6 +298,11 @@ func createPasswordData(ctx context.Context, cryptohome *hwsec.CryptohomeClient,
 
 	authConfig := hwsec.NewPassAuthConfig(username, password)
 	config := NewPassAuthCrossVersionLoginConfig(authConfig, labels[0])
+	config.HasUserVault, err = ecryptfsVaultExists(ctx, cryptohome, username)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check ecryptfs presence")
+	}
+
 	if err := config.AddVaultKeyData(ctx, cryptohome, NewVaultKeyInfo(extraPass, extraLabel, false)); err != nil {
 		return nil, errors.Wrap(err, "failed to add vault key data of password")
 	}
@@ -291,6 +312,23 @@ func createPasswordData(ctx context.Context, cryptohome *hwsec.CryptohomeClient,
 		}
 	}
 	return config, nil
+}
+
+// ecryptfsVaultExists returns whether ecryptfs vault exists for the given user.
+func ecryptfsVaultExists(ctx context.Context, cryptohome *hwsec.CryptohomeClient, username string) (bool, error) {
+	const ecryptfsVaultDir = "/home/.shadow/%s/vault"
+	sanitizedUsername, err := cryptohome.GetSanitizedUsername(ctx, username, false /* useDBus */)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to sanitize username")
+	}
+	dir := fmt.Sprintf(ecryptfsVaultDir, sanitizedUsername)
+	if _, err := os.Stat(dir); err != nil {
+		if os.IsNotExist(err) {
+			return false, nil
+		}
+		return false, errors.Wrap(err, "failed to perform stat")
+	}
+	return true, nil
 }
 
 // PrepareCrossVersionLoginData prepares the login data and config for CrossVersionLogin and saves them to dataPath and configPath respectively
