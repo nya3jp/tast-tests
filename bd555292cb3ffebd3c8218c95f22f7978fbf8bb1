@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e285b229_fbb33e0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-08T17:28:57Z",
+      "side": 1,
+      "message": "Good point. Moved it to the end of WaitForEnrollmentError. That way it gets called after it\u0027s done waiting which is a good place to call it.",
+      "parentUuid": "4f365b98_50f7aa65",
+      "revId": "bd555292cb3ffebd3c8218c95f22f7978fbf8bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09b6ad50_3ea23ba8",
@@ -54,6 +72,54 @@
       "writtenOn": "2022-07-08T06:56:48Z",
       "side": 1,
       "message": "StartNewChromeReader",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "bd555292cb3ffebd3c8218c95f22f7978fbf8bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29794e56_b583f3ec",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-08T17:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "09b6ad50_3ea23ba8",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "bd555292cb3ffebd3c8218c95f22f7978fbf8bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b461b37_03e24a4e",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-08T17:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c37324ee_0dad9edc",
       "range": {
         "startLine": 15,
         "startChar": 6,
