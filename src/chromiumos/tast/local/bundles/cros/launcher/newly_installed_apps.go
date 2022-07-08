@@ -95,21 +95,14 @@ func NewlyInstalledApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tc.TabletMode)
-	if err != nil {
-		s.Fatalf("Failed to ensure tablet mode state %t: %v", tc.TabletMode, err)
-	}
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tc.TabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
 	defer cleanup(cleanupCtx)
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
+	}
 
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
-	if !tc.TabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
-		}
-	}
-
-	launcher.OpenProductivityLauncher(ctx, tconn, tc.TabletMode)
 	view := appItemViewNode(tc.TabletMode)
 	if isNewInstall, err := isInNewInstallState(ctx, cr, tconn, view); err != nil {
 		s.Fatal("Unable to compute new install state state: ", err)
