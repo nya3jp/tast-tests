@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "44e2fd1c_47b1445b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-08T07:28:50Z",
+      "side": 1,
+      "message": "ANQP requests are indirectly used by Shill when it uses `wpa_supplicant` interworking network selection mechanism. Shill does not pull the requests results (it\u0027s not needed for now) from `wpa_supplicant`, but still depends on it to select Passpoint networks. So we use the code path.\n\nI can drop it if you want, but it seemed important to test as this is the only hardware dependent part of Passpoint.",
+      "parentUuid": "27d3c091_ddaf32cb",
+      "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b54322dc_75a971f0",
         "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
         "patchSetId": 8
