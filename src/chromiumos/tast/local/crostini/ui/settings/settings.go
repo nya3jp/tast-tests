@@ -319,7 +319,7 @@ func (s *Settings) ClickRemove() uiauto.Action {
 func (s *Settings) Remove() uiauto.Action {
 	return uiauto.Combine("remove Linux",
 		s.ClickRemove(),
-		s.ui.LeftClickUntil(RemoveConfirmDialog.Delete, s.ui.WithTimeout(shortUITimeout).WaitUntilExists(RemoveLinuxAlert)),
+		s.ui.LeftClickUntil(RemoveConfirmDialog.Delete, s.ui.WithTimeout(shortUITimeout).WaitUntilGone(RemoveConfirmDialog.Self)),
 		s.ui.WithTimeout(time.Minute).WaitUntilGone(RemoveLinuxAlert),
 		s.ui.WaitUntilExists(TurnOnButton))
 }
