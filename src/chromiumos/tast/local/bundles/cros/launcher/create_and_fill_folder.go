@@ -10,6 +10,7 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
@@ -55,6 +56,10 @@ func CreateAndFillFolder(ctx context.Context, s *testing.State) {
 	}
 	defer os.RemoveAll(extDirBase)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	// Create 50 fake apps and get the the options to add to the new chrome session.
 	opts, err := ash.GeneratePrepareFakeAppsOptions(extDirBase, 50)
 	if err != nil {
@@ -74,7 +79,7 @@ func CreateAndFillFolder(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -82,37 +87,18 @@ func CreateAndFillFolder(ctx context.Context, s *testing.State) {
 	}
 
 	tabletMode := testCase.TabletMode
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, true /*stabilizeAppCount*/)
 	if err != nil {
-		s.Fatalf("Failed to ensure tablet mode state %t: %v", tabletMode, err)
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
-	defer cleanup(ctx)
-
-	if !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
-		}
-	}
-
-	usingBubbleLauncher := productivityLauncher && !tabletMode
-	// Open the Launcher on the apps grid page.
-	if usingBubbleLauncher {
-		if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open bubble launcher: ", err)
-		}
-	} else {
-		if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open Expanded Application list view: ", err)
-		}
-	}
-
-	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
-	}
+	defer cleanup(cleanupCtx)
 
 	if err := launcher.CreateFolder(ctx, tconn, productivityLauncher); err != nil {
 		s.Fatal("Failed to create folder app: ", err)
 	}
+
+	usingBubbleLauncher := !tabletMode && productivityLauncher
 
 	// The folder already has 2 items. Add 46 more items to get to the maximum folder size of 48 apps.
 	if err := launcher.AddItemsToFolder(ctx, tconn, launcher.UnnamedFolderFinder, 46, !usingBubbleLauncher); err != nil {

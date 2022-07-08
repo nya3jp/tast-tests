@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -56,6 +57,10 @@ func init() {
 
 // PinAppToShelf tests if pinning application onto shelf behaves correctly.
 func PinAppToShelf(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	testCase := s.Param().(launcher.TestCase)
 	tabletMode := testCase.TabletMode
 	productivityLauncher := testCase.ProductivityLauncher
@@ -70,39 +75,19 @@ func PinAppToShelf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start chrome: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, true /*stabilizeAppCount*/)
 	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
-	if !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
-		}
-	}
-
-	// Open the Launcher and go to Apps list page.
-	if productivityLauncher && !tabletMode {
-		if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open bubble launcher: ", err)
-		}
-	} else {
-		if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open Expanded Application list view: ", err)
-		}
-	}
-
-	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
-	}
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	app1 := apps.WebStore
 	app2 := apps.App{ID: "fake_0", Name: "fake app 0"}

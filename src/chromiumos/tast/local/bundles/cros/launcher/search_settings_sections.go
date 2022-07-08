@@ -109,7 +109,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Fixture:      "chromeLoggedInWithProductivityLauncher",
 		Params: []testing.Param{{
 			Name: "clamshel_mode",
 			Val:  searchSettingsVals{tabletMode: false, testCases: standardTestCases},
@@ -148,19 +148,11 @@ func SearchSettingsSections(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	testParams := s.Param().(searchSettingsVals)
-	tabletMode := testParams.tabletMode
-
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, testParams.tabletMode, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
 	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 	defer cleanup(cleanupCtx)
-
-	if !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed: ", err)
-		}
-	}
 
 	for _, tc := range testParams.testCases {
 		s.Run(ctx, tc.searchTerm, func(ctx context.Context, s *testing.State) {

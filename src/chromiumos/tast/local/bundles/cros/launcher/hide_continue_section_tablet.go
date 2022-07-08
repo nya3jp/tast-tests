@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
@@ -56,17 +55,11 @@ func HideContinueSectionTablet(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
-	// Switch to tablet mode.
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, true)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, true /*tabletMode*/, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
 	if err != nil {
-		s.Fatal("Failed to ensure clamshell mode: ", err)
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 	defer cleanup(cleanupCtx)
-
-	// Show the launcher.
-	if err := launcher.OpenProductivityLauncher(ctx, tconn, true); err != nil {
-		s.Fatal("Failed to open launcher: ", err)
-	}
 
 	// Ensure continue section exists.
 	ui := uiauto.New(tconn)
