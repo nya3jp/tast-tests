@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dcc7992_40b16fd2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-08T02:32:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "917cf53f_20ead2af",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "90cb8875bcccf4c5f36b18cdfd3e7284b8e6a2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d7a30bc_63f5f704",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-08T00:08:16Z",
       "side": 1,
       "message": "Can you get rid of this param since it does not have any other use case? It is very confusing and easily understood as making it out of view.\n\nBtw, is it possible to call uiauto.MakeVisible here? I suppose it does the same thing.",
+      "range": {
+        "startLine": 88,
+        "startChar": 33,
+        "endLine": 88,
+        "endChar": 38
+      },
+      "revId": "90cb8875bcccf4c5f36b18cdfd3e7284b8e6a2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aae6567_7a3560e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1542572
+      },
+      "writtenOn": "2022-07-08T02:32:19Z",
+      "side": 1,
+      "message": "\u003e\u003e Can you get rid of this param since it does not have any other use case? It is very confusing and easily understood as making it out of view.\n\nI think it is better to keep it because of reusability and consistency with JS api where its default value is \u0027true\u0027.\n\nhttps://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView\n\n\u003e\u003e Btw, is it possible to call uiauto.MakeVisible here? I suppose it does the same thing.\n\nPTAL the previous comments of the review https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3744522/comments/1bcdceef_9b6fa13b (first two comments). It seems it does the same thing, but there is no guarantee for a consistent behaviour overtime (I also couldn\u0027t dig into all the codes to confirm MakeVisible does this all the time).",
+      "parentUuid": "3d7a30bc_63f5f704",
       "range": {
         "startLine": 88,
         "startChar": 33,
