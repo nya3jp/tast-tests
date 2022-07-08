@@ -467,6 +467,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1229851_76af3779",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:35:48Z",
+      "side": 1,
+      "message": "Oh that\u0027s pretty interesting, and no I don\u0027t think we use that at all in shill. That being said, based on our hs2.0 metric  https://uma.googleplex.com/p/chrome/timeline_v2?sid\u003d6bc2d93fb7da5f471ed5996109f6a7bc, the vast majority of APs don\u0027t support it, so it probably won\u0027t really be helpful atm.",
+      "parentUuid": "cfcec3b5_1de6b153",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "ea2734c7202d0b7211493ec51b4b3b9e413b2cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9a55cb8d_5cf1c872",
         "filename": "src/chromiumos/tast/remote/wificell/wpa_monitor.go",
         "patchSetId": 4

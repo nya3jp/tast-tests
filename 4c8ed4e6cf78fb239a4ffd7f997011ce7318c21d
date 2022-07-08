@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15825b02_4311e237",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:35:48Z",
+      "side": 1,
+      "message": "what\u0027s the difference between this and interworking_select?",
+      "revId": "4c8ed4e6cf78fb239a4ffd7f997011ce7318c21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5998e06c_20fedf4a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:35:48Z",
+      "side": 1,
+      "message": "Can you be a little more descriptive, i.e. list out the steps?",
+      "revId": "4c8ed4e6cf78fb239a4ffd7f997011ce7318c21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ffb052_0cb84a29",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:35:48Z",
+      "side": 1,
+      "message": "Can you struct-ify, define {de}serialize functions and const-ify the separator?",
+      "revId": "4c8ed4e6cf78fb239a4ffd7f997011ce7318c21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2415c0b_41bc1c28",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:35:48Z",
+      "side": 1,
+      "message": "prefer testing.poll, but I think it\u0027s probably best to wait for Arowa\u0027s CL to land because I think there\u0027s similar functionality there.",
+      "revId": "4c8ed4e6cf78fb239a4ffd7f997011ce7318c21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e9dfa82_01dd3878",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:35:48Z",
+      "side": 1,
+      "message": "we should be able to move this to wpacli after Arowa\u0027s CL.",
+      "revId": "4c8ed4e6cf78fb239a4ffd7f997011ce7318c21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af0f6ffb_d0a00c8b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/anqp_util.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:35:48Z",
+      "side": 1,
+      "message": "Would you be able to define structs for these and use something like binary.Read and/or io.ReadFull to parse it? It would make it easier to understand the expected format of the data, and consolidate magic numbers in one place.",
+      "revId": "4c8ed4e6cf78fb239a4ffd7f997011ce7318c21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e1e66c3_b77a36e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/anqp_util.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:35:48Z",
+      "side": 1,
+      "message": "sp",
+      "range": {
+        "startLine": 145,
+        "startChar": 16,
+        "endLine": 145,
+        "endChar": 22
+      },
+      "revId": "4c8ed4e6cf78fb239a4ffd7f997011ce7318c21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf94dee9_38f330f3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/wifiutil/anqp_util.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:35:48Z",
+      "side": 1,
+      "message": "nit: const-ify",
+      "range": {
+        "startLine": 173,
+        "startChar": 51,
+        "endLine": 173,
+        "endChar": 52
+      },
+      "revId": "4c8ed4e6cf78fb239a4ffd7f997011ce7318c21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

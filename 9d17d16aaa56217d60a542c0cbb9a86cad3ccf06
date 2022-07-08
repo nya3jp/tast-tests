@@ -92,6 +92,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a66b46a2_ec9e6c93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:35:48Z",
+      "side": 1,
+      "message": "that makes sense, keeping this as is is fine with me.",
+      "parentUuid": "36ce75fc_5502dd10",
+      "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b54322dc_75a971f0",
         "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
         "patchSetId": 8
