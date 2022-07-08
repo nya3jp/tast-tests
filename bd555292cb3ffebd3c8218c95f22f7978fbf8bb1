@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f365b98_50f7aa65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-08T06:56:48Z",
+      "side": 1,
+      "message": "This will close the reader after the return, I\u0027m not sure that\u0027s intended.\n\nMaybe add an RPC to close the reader from the test.",
+      "revId": "bd555292cb3ffebd3c8218c95f22f7978fbf8bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09b6ad50_3ea23ba8",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-08T06:56:48Z",
+      "side": 1,
+      "message": "google.protobuf.Empty\n\nWe can introduce request structs when actually needed. Same below.",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "bd555292cb3ffebd3c8218c95f22f7978fbf8bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c37324ee_0dad9edc",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-08T06:56:48Z",
+      "side": 1,
+      "message": "StartNewChromeReader",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "bd555292cb3ffebd3c8218c95f22f7978fbf8bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
