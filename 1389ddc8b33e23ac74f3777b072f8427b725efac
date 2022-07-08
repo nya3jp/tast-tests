@@ -207,6 +207,30 @@
       },
       "revId": "1389ddc8b33e23ac74f3777b072f8427b725efac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a5deed_ca131531",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1544253
+      },
+      "writtenOn": "2022-07-08T03:17:58Z",
+      "side": 1,
+      "message": "yes that is default, but if I do\n```\ncmd.SysProcAttr \u003d \u0026syscall.SysProcAttr{}\n```\nwithout setting the Setpgid, then it will be default to false,\nin the previous patchset, I modified SysProcAttr by creating a new SysProcAttr without setting the Setpgid value.\n\ndemo:\nhttps://go.dev/play/p/V4klasOiaTt",
+      "parentUuid": "1e9e0c8d_5c7ccbc1",
+      "range": {
+        "startLine": 116,
+        "startChar": 36,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "1389ddc8b33e23ac74f3777b072f8427b725efac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
