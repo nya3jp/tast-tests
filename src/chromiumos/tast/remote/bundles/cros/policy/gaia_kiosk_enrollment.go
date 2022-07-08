@@ -8,19 +8,22 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/tape"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
 	ks "chromiumos/tast/services/cros/kiosk"
 	ps "chromiumos/tast/services/cros/policy"
+	ts "chromiumos/tast/services/cros/tape"
 	"chromiumos/tast/testing"
 )
 
 type testCreds struct {
-	username string // username for Chrome login
-	password string // password to login
-	dmserver string // device management server url
+	username   string // username for Chrome login
+	password   string // password to login
+	dmserver   string // device management server url
+	customerid string // ID of the domain used in the test
 }
 
 func init() {
@@ -32,23 +35,26 @@ func init() {
 			"rzakarian@google.com", // Test author
 			"chromeos-commercial-remote-management@google.com",
 		},
-		Attr:         []string{}, // Need dedicated device ready in the lab, b/227604028.
+		Attr:         []string{"group:dpanel-end2end"},
 		SoftwareDeps: []string{"reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.kiosk.KioskService", "tast.cros.hwsec.OwnershipService"},
+		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.kiosk.KioskService", "tast.cros.hwsec.OwnershipService", "tast.cros.tape.Service"},
 		Timeout:      7 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "autopush",
 				Val: testCreds{
-					username: "policy.GAIAKioskEnrollment.user_name",
-					password: "policy.GAIAKioskEnrollment.password",
-					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+					username:   "policy.GAIAKioskEnrollment.user_name",
+					password:   "policy.GAIAKioskEnrollment.password",
+					dmserver:   "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+					customerid: "tape.managedchrome_id",
 				},
 			},
 		},
 		Vars: []string{
 			"policy.GAIAKioskEnrollment.user_name",
 			"policy.GAIAKioskEnrollment.password",
+			"tape.service_account_key",
+			"tape.managedchrome_id",
 		},
 	})
 }
@@ -104,4 +110,26 @@ func GAIAKioskEnrollment(ctx context.Context, s *testing.State) {
 	if err := <-kioskErr; err != nil {
 		s.Error("kiosk failed to start: ", err)
 	}
+
+	tapeService := ts.NewServiceClient(cl.Conn)
+	customerID := s.RequiredVar(param.customerid)
+	// Get the device id of the DUT to deprovision it at the end of the test.
+	res, err := tapeService.GetDeviceID(ctx, &ts.GetDeviceIDRequest{CustomerID: customerID})
+	if err != nil {
+		s.Fatal("Failed to get the deviceID: ", err)
+	}
+
+	// Deprovision the DUT at the end of the test.
+	defer func(ctx context.Context) {
+		var request tape.DeprovisionRequest
+		request.DeviceID = res.DeviceID
+		request.CustomerID = customerID
+		tapeClient, err := tape.NewTapeClient(ctx, tape.WithCredsJSON([]byte(s.RequiredVar("tape.service_account_key"))))
+		if err != nil {
+			s.Fatal("Failed to create tape client: ", err)
+		}
+		if err = tape.Deprovision(ctx, tapeClient, request); err != nil {
+			s.Fatalf("Failed to deprovision device %s: %v", request.DeviceID, err)
+		}
+	}(ctx)
 }
