@@ -38,11 +38,21 @@ public class KeysTestActivity extends Activity {
     /** Holds all of the keys that need to be tested. */
     private List<KeyTestItem> mKeyCodesToTest;
 
+    private ArrayList<Integer> mObservedKeyCodes;
+
     private LinearLayout mLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            mObservedKeyCodes = savedInstanceState.getIntegerArrayList("ObservedKeyCodes");
+        }
+        if (mObservedKeyCodes == null) {
+            mObservedKeyCodes = new ArrayList<>();
+        }
+
         setContentView(R.layout.activity_keys_test);
 
         // Setup the keys to test.
@@ -61,6 +71,10 @@ public class KeysTestActivity extends Activity {
         // Setup text views with all of the keys that will be tested.
         mLayout = findViewById(R.id.layoutStandardizedTest);
         for (KeyTestItem curKeyTestItem : mKeyCodesToTest) {
+            if (mObservedKeyCodes.contains(curKeyTestItem.keyCode)) {
+                // Skip an item for the already observed KeyCode.
+                continue;
+            }
             TextView el = new TextView(this);
             el.setId(curKeyTestItem.layoutId);
             el.setText(curKeyTestItem.displayName);
@@ -72,6 +86,12 @@ public class KeysTestActivity extends Activity {
         mLayout.requestFocus();
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putIntegerArrayList("ObservedKeyCodes", mObservedKeyCodes);
+    }
+
     /**
      * At the start of the application, a series of labels for each trackable key will be added to
      * the view. In this method, when a key is clicked, and the label still exists, it will be
@@ -80,6 +100,8 @@ public class KeysTestActivity extends Activity {
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        mObservedKeyCodes.add(keyCode);
+
         // Handle the case where the key pressed matches a key being looked for.
         KeyTestItem foundItem =
                 mKeyCodesToTest.stream().filter(x -> x.keyCode == keyCode).findFirst().orElse(null);
