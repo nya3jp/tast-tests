@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f21bc7cb_f009c558",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-08T18:52:40Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "4b3494b1664beed0133a64b85c7bf3817d9866dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02efaf8c_1ab11988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-08T18:52:40Z",
+      "side": 1,
+      "message": "nit: move this after defer on line 94 (so we get the screenshot before tablet mode changes)",
+      "revId": "4b3494b1664beed0133a64b85c7bf3817d9866dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
