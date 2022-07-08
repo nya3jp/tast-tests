@@ -39,6 +39,30 @@
       },
       "revId": "9e5ee30a45fba513c4eb589a5d1755a8046e3d1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23daddc0_2b014908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-08T06:42:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9444cd57_9d810cf5",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "9e5ee30a45fba513c4eb589a5d1755a8046e3d1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
