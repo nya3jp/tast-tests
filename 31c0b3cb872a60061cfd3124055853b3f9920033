@@ -70,6 +70,30 @@
       },
       "revId": "31c0b3cb872a60061cfd3124055853b3f9920033",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac25ad9e_8f73f253",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-07-08T00:50:06Z",
+      "side": 1,
+      "message": "But there\u0027s already a struct for this. It\u0027s called MutableConfig. It\u0027d be very redundant to have Config, MutableConfig, and Options, which is esesntially MutableConfigBuilder, and I don\u0027t think it provides any actual benefits turning it into a struct. This current solution doesn\u0027t break encapsulation, and I think it\u0027s perfectly reasonable to print out a diff of the config, given that they still can\u0027t access the config implementation.",
+      "parentUuid": "dddfe8d7_ac56d60b",
+      "range": {
+        "startLine": 515,
+        "startChar": 38,
+        "endLine": 515,
+        "endChar": 44
+      },
+      "revId": "31c0b3cb872a60061cfd3124055853b3f9920033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
