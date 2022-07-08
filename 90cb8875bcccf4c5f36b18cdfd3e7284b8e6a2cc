@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "917cf53f_20ead2af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-08T00:08:16Z",
+      "side": 1,
+      "message": "nit: move \"informational\" to common Attr.",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 38
+      },
+      "revId": "90cb8875bcccf4c5f36b18cdfd3e7284b8e6a2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d7a30bc_63f5f704",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_overscroll.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-08T00:08:16Z",
+      "side": 1,
+      "message": "Can you get rid of this param since it does not have any other use case? It is very confusing and easily understood as making it out of view.\n\nBtw, is it possible to call uiauto.MakeVisible here? I suppose it does the same thing.",
+      "range": {
+        "startLine": 88,
+        "startChar": 33,
+        "endLine": 88,
+        "endChar": 38
+      },
+      "revId": "90cb8875bcccf4c5f36b18cdfd3e7284b8e6a2cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
