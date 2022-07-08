@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb98de8_f58fcf82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-07-08T05:45:44Z",
+      "side": 1,
+      "message": "LGTM, pwang@ can you PTAL? Thanks!",
+      "revId": "14dbd650acc2a27c6dad9c86e98f49e22e703a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d2c8b3e_d4068a8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/data/perfetto_tbm_traced_probes.pbtxt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-07-08T05:45:44Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether relative paths like this as OK for Tast\nreview. Will let the Tast reviewers decide.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "14dbd650acc2a27c6dad9c86e98f49e22e703a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea466b38_e7efb7f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-07-08T05:45:44Z",
+      "side": 1,
+      "message": "nit: calling these 4 metrics e.g. \n\n  \"context_switches_in_gpu_process(_per_decoder_thread)_(cnt|avg)\"\n\nmight be clearer down the line (and crosbolt will group them\ntogether, which can\u0027t hurt).",
+      "range": {
+        "startLine": 272,
+        "startChar": 15,
+        "endLine": 272,
+        "endChar": 61
+      },
+      "revId": "14dbd650acc2a27c6dad9c86e98f49e22e703a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef8ef74a_c45f5142",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-07-08T05:45:44Z",
+      "side": 1,
+      "message": "Instead of having all these groups of four zeros, maybe we could\ndefine a struct for these measurement? That should make it easier\nto give it a return-parameter name and just return it without\nfiling in.",
+      "range": {
+        "startLine": 327,
+        "startChar": 9,
+        "endLine": 327,
+        "endChar": 20
+      },
+      "revId": "14dbd650acc2a27c6dad9c86e98f49e22e703a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc3fb08_e89fa1e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-07-08T05:45:44Z",
+      "side": 1,
+      "message": "nit: s/measuremenDuration/measurementDuration/ (there\u0027s a typo).",
+      "range": {
+        "startLine": 331,
+        "startChar": 30,
+        "endLine": 331,
+        "endChar": 48
+      },
+      "revId": "14dbd650acc2a27c6dad9c86e98f49e22e703a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb8051c_10706b2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-07-08T05:45:44Z",
+      "side": 1,
+      "message": "nit: Same as below, maybe we could give these |res| indexes a name\nvia a const definition?",
+      "range": {
+        "startLine": 362,
+        "startChar": 32,
+        "endLine": 362,
+        "endChar": 33
+      },
+      "revId": "14dbd650acc2a27c6dad9c86e98f49e22e703a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17264bc8_730c64ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback/playback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1113991
+      },
+      "writtenOn": "2022-07-08T05:45:44Z",
+      "side": 1,
+      "message": "This and the next line *1000 might be clearer with parentheses and\nalso by giving a name to the constant. I know that Tast/Go is not big\ninto readability but it will help maintenance down the line.",
+      "range": {
+        "startLine": 379,
+        "startChar": 67,
+        "endLine": 379,
+        "endChar": 74
+      },
+      "revId": "14dbd650acc2a27c6dad9c86e98f49e22e703a9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
