@@ -112,26 +112,10 @@ func RemoveSuggestedSearchResult(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to close the window(%s): %v", activeWindow.Name, err)
 	}
 
-	// Start launcher test logic.
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
-	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
-	}
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
 	defer cleanup(cleanupCtx)
-
-	if !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed: ", err)
-		}
-	}
-
-	// Cleanup to ensure launcher is not showing search UI, and that bubble launcher is hidden when
-	// the test ends.
-	ui := uiauto.New(tconn)
-	if tabletMode {
-		defer clearSearch(tconn)(cleanupCtx)
-	} else {
-		defer launcher.CloseBubbleLauncher(tconn)(cleanupCtx)
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
@@ -140,6 +124,7 @@ func RemoveSuggestedSearchResult(ctx context.Context, s *testing.State) {
 
 	// Open the launcher, and search for the test query - verifies that the search yields the
 	// associated "Google Search" result.
+	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("search launcher",
 		launcher.Open(tconn),
 		launcher.Search(tconn, kb, testQuery),

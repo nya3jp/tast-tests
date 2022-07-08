@@ -10,6 +10,7 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -109,6 +110,10 @@ func init() {
 // maintains the app list sort order. The installations under both temporary sort and permanent
 // sort get verified.
 func InstallArcAppWithAppListSorted(ctx context.Context, s *testing.State) {
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	var opts []chrome.Option
 	testParam := s.Param().(launcher.SortTestType)
 
@@ -149,9 +154,7 @@ func InstallArcAppWithAppListSorted(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
-	defer cr.Close(ctx)
-
-	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
+	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -163,41 +166,18 @@ func InstallArcAppWithAppListSorted(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start ARC: ", err)
 	}
-	defer a.Close(ctx)
+	defer a.Close(cleanupCtx)
 
 	// Enter the tablet/clamshell mode depending on the test param.
 	tabletMode := testParam.TabletMode
-	originallyEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
+	defer cleanup(cleanupCtx)
 	if err != nil {
-		s.Fatal("Failed to check if DUT is in tablet mode: ", err)
-	}
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
-	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
-	}
-	defer cleanup(ctx)
-
-	// Ensure that the tablet launcher is closed before opening a launcher instance for test in clamshell.
-	if originallyEnabled && !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
-		}
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 
-	// Ensure that the launcher shows.
-	if tabletMode {
-		if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open expanded Application list view: ", err)
-		}
-	} else {
-		if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open bubble launcher: ", err)
-		}
-	}
-
-	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
-	}
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	var appsGrid *nodewith.Finder
 	if tabletMode {
