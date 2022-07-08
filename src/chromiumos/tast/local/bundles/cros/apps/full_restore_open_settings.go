@@ -83,7 +83,7 @@ func FullRestoreOpenSettings(ctx context.Context, s *testing.State) {
 		}
 
 		alertDialog := nodewith.NameStartingWith("Restore apps?").Role(role.AlertDialog)
-		settingsButton := nodewith.Name("SETTINGS").Role(role.Button).Ancestor(alertDialog)
+		settingsButton := nodewith.Name("Settings").Role(role.Button).Ancestor(alertDialog)
 
 		ui := uiauto.New(tconn)
 		defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
@@ -112,7 +112,7 @@ func FullRestoreOpenSettings(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to wait for quick setting: ", err)
 		}
 
-		restoreButton := nodewith.Name("RESTORE").Role(role.Button)
+		restoreButton := nodewith.Name("Restore").Role(role.Button)
 		if err := ui.LeftClick(restoreButton)(ctx); err != nil {
 			s.Fatal("Failed to click notification RESTORE button: ", err)
 		}
