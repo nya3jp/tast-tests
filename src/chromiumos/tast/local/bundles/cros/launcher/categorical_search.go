@@ -10,10 +10,11 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -71,18 +72,11 @@ func CategoricalSearch(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	testCase := s.Param().(launcher.TestCase)
-	tabletMode := testCase.TabletMode
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
-	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
-	}
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, testCase.TabletMode, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
 	defer cleanup(cleanupCtx)
-
-	if !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed: ", err)
-		}
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 
 	subtests := []categoricalSearchTestCase{
@@ -114,20 +108,18 @@ func CategoricalSearch(ctx context.Context, s *testing.State) {
 
 	for _, subtest := range subtests {
 		s.Run(ctx, subtest.searchKeyword, func(ctx context.Context, s *testing.State) {
+			ui := uiauto.New(tconn)
+			clearSearchButton := nodewith.Role(role.Button).Name("Clear searchbox text")
+			defer ui.LeftClick(clearSearchButton)(cleanupCtx)
+
 			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+string(subtest.searchKeyword))
 
 			if err := uiauto.Combine("search launcher",
-				launcher.Open(tconn),
 				launcher.Search(tconn, kb, subtest.searchKeyword),
 				launcher.WaitForCategoryLabel(tconn, subtest.category, subtest.categoryLabel),
 				launcher.WaitForCategorizedResult(tconn, subtest.category, subtest.result),
 			)(ctx); err != nil {
 				s.Fatal("Failed to search: ", err)
-			}
-
-			// Exit launcher search without closing the launcher using KEY_ESC.
-			if err := kb.TypeKey(ctx, input.KEY_ESC); err != nil {
-				s.Fatalf("Failed to send %d: %v", input.KEY_ESC, err)
 			}
 		})
 	}
