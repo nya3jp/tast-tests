@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131c7c07_78591d0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-08T13:33:51Z",
+      "side": 1,
+      "message": "@antrim: I\u0027ve added you because this test would catch b/238026709 (\"misapplied Kiosk key type backfill\"), although only after I regenerate the M91 snapshot with the Ecryptfs usage in it.",
+      "range": {
+        "startLine": 20,
+        "startChar": 18,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "35e115a91bd6dd190b77a5f2ce91f6e028ef58fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
