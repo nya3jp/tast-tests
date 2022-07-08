@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d65fc4_cb74f536",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-07-08T15:05:48Z",
+      "side": 1,
+      "message": "Thank you for the speedy review and offline discussions Kyle! :)",
+      "revId": "79b60db3f739ea603023edc942ab63145bd80167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "131099a0_b7e11752",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-07-07T21:08:08Z",
       "side": 1,
       "message": "`HasClass(\"ToggleButton\")` could also work here if you think the classname will ever revert to just \"ToggleButton\", but either way is fine",
+      "range": {
+        "startLine": 59,
+        "startChar": 53,
+        "endLine": 59,
+        "endChar": 81
+      },
+      "revId": "79b60db3f739ea603023edc942ab63145bd80167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a4a3e2_acbf70be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/ui_toggle_from_bt_quicksettings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-07-08T15:05:48Z",
+      "side": 1,
+      "message": "I was thinking that was the case too, but when I tested with `HasClass(\"ToggleButton\")` locally it actually started to fail. I looked into this a little and it seems like the regex used by `HasClass()` uses `\\bToggleButton\\b` and won\u0027t actually match `TrayToggleButton` :(",
+      "parentUuid": "131099a0_b7e11752",
       "range": {
         "startLine": 59,
         "startChar": 53,
