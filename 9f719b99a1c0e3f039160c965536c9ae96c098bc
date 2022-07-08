@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b47ddf_9888ce0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-08T03:29:36Z",
+      "side": 1,
+      "message": "\u003e \"disapper\" is a possible misspelling of \"disappear\".\n\nPlease fix.",
+      "parentUuid": "2e5cea0d_81dcedb4",
+      "range": {
+        "startLine": 16,
+        "startChar": 46,
+        "endLine": 16,
+        "endChar": 54
+      },
+      "revId": "9f719b99a1c0e3f039160c965536c9ae96c098bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
