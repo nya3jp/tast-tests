@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe02ff4_76918d97",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/submit_feedback_and_close_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-08T06:15:15Z",
+      "side": 1,
+      "message": "The test has a total of 150 seconds of timeouts, but the default tast timeout is only 120 seconds. If the timeouts are actually reasonable, you might want to increase the test\u0027s timeout a bit, perhaps to 180 seconds.",
+      "range": {
+        "startLine": 35,
+        "startChar": 34,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "d194ad820321b0446ad6bb973f9913ec25d3ccbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "956ff356_5d889980",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/submit_feedback_and_close_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-08T06:15:15Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me that this should be a helper function. According to the best practices [1]:\n\n\u003e Test helpers are functions that do setup or cleanup tasks. All failures that occur in test helpers are expected to be failures of the environment\n\nPut another way, the code being tested should generally be part of the test function itself. As the test is right now, a more appropriate summary would be \"SubmitFeedbackAndCloseApp validates the Feedback app\u0027s confirmation page and closes the app\". I would recommend in-lining this helper function.\n\n[1] go/go-style/best-practices#test-functions",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 79
+      },
+      "revId": "d194ad820321b0446ad6bb973f9913ec25d3ccbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e49b15eb_47f363ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/submit_feedback_and_close_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-08T06:15:15Z",
+      "side": 1,
+      "message": "nit: I think the \"Verifying ... exists in the confirmation page\" logs overly verbose [1]. At most, I think a single log at the start along the lines of \"Verifying confirmation page UI\" is sufficient.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 62
+      },
+      "revId": "d194ad820321b0446ad6bb973f9913ec25d3ccbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4900e757_165b599c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/submit_feedback_and_close_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-08T06:15:15Z",
+      "side": 1,
+      "message": "I don\u0027t think these timeouts are necessary. The first one might be helpful, if you want to enforce that the feedback UI shows up within 20 seconds. However, the other `ui.WithTimeout(...)` timeouts are redundant.",
+      "range": {
+        "startLine": 71,
+        "startChar": 14,
+        "endLine": 71,
+        "endChar": 43
+      },
+      "revId": "d194ad820321b0446ad6bb973f9913ec25d3ccbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844f992c_28aa6eb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/submit_feedback_and_close_app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-08T06:15:15Z",
+      "side": 1,
+      "message": "This should probably be logged outside of the testing.Poll call, so it only appears at most once.",
+      "range": {
+        "startLine": 108,
+        "startChar": 2,
+        "endLine": 108,
+        "endChar": 46
+      },
+      "revId": "d194ad820321b0446ad6bb973f9913ec25d3ccbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba02f399_1d994d4f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/feedbackapp/feedbackapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-08T06:15:15Z",
+      "side": 1,
+      "message": "nit: unnecessary line break",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 2
+      },
+      "revId": "d194ad820321b0446ad6bb973f9913ec25d3ccbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
