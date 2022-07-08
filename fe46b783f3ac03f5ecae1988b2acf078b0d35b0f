@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7f5b1db_571e8fc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-08T18:48:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb74d0e8_75c29647",
+      "revId": "fe46b783f3ac03f5ecae1988b2acf078b0d35b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1bd506d_f61344e7",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5499b93e_bee594cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-08T18:48:48Z",
+      "side": 1,
+      "message": "Used plain white app icon instead. Probably it\u0027d be hard to maintain all hardcoded values for icon size / paddings for tablet and clamshell modes (since we can\u0027t query the label element and its coordinates directly).",
+      "parentUuid": "f1bd506d_f61344e7",
+      "revId": "fe46b783f3ac03f5ecae1988b2acf078b0d35b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dc8dc81_99dc7406",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-07-07T19:22:19Z",
       "side": 1,
       "message": "should we make this compare to a min value (something like 16, or 25?)",
+      "revId": "fe46b783f3ac03f5ecae1988b2acf078b0d35b0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "647979cb_b3565da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-08T18:48:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dc8dc81_99dc7406",
       "revId": "fe46b783f3ac03f5ecae1988b2acf078b0d35b0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
