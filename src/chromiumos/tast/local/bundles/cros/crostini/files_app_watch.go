@@ -8,7 +8,9 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
@@ -60,6 +62,7 @@ func FilesAppWatch(ctx context.Context, s *testing.State) {
 	pre := s.FixtValue().(crostini.FixtureData)
 	tconn := pre.Tconn
 	cont := pre.Cont
+	cr := pre.Chrome
 
 	const (
 		testFileName1   = "FilesAppWatch1.txt"
@@ -67,17 +70,23 @@ func FilesAppWatch(ctx context.Context, s *testing.State) {
 		testFileContent = "FilesAppWatch"
 	)
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
 	if err := cont.WriteFile(ctx, testFileName1, testFileContent); err != nil {
 		s.Fatal("Create file failed: ", err)
 	}
-	defer cont.RemoveAll(ctx, testFileName1)
+	defer cont.RemoveAll(cleanupCtx, testFileName1)
 
 	// Launch the files application
 	files, err := filesapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Launching the Files App failed: ", err)
 	}
+	defer files.Close(cleanupCtx)
 
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 	// Validate file1.txt is shown in 'Linux files'.
 	if err := uiauto.Combine("find file1.txt",
 		files.OpenDir("Linux files", "Files - Linux files"),
@@ -88,7 +97,7 @@ func FilesAppWatch(ctx context.Context, s *testing.State) {
 	if err := cont.WriteFile(ctx, testFileName2, testFileContent); err != nil {
 		s.Fatal("Create file failed: ", err)
 	}
-	defer cont.RemoveAll(ctx, testFileName2)
+	defer cont.RemoveAll(cleanupCtx, testFileName2)
 	if err := files.WithTimeout(10 * time.Second).WaitForFile(testFileName2)(ctx); err != nil {
 		s.Fatal("Waiting for file2.txt failed: ", err)
 	}
