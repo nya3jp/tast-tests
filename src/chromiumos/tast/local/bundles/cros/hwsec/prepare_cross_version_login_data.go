@@ -47,6 +47,6 @@ func PrepareCrossVersionLoginData(ctx context.Context, s *testing.State) {
 	dataPath := filepath.Join(tmpDir, "data.tar.gz")
 	configPath := filepath.Join(tmpDir, "config.json")
 	if err := util.PrepareCrossVersionLoginData(ctx, s.Logf, cryptohome, daemonController, dataPath, configPath); err != nil {
-		s.Fatal("Failed to prepare cross-vesrion login data: ", err)
+		s.Fatal("Failed to prepare cross-version login data: ", err)
 	}
 }
