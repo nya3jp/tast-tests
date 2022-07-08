@@ -16,6 +16,24 @@
       "message": "There seem to be a number of failures that are not present on the boot test, like on the non-kernelnext brya boards, and failures to install packages/establish ADB connections.",
       "revId": "55c50b2626e769390376a793735254fd3d05ee6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7ed75b_60dd565b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-07-08T18:17:24Z",
+      "side": 1,
+      "message": "The last feature related failure is in \tR105-14944.0.0\tbrya (vell). In the last 20 builds, all failures are failure to connect to Chrome browser or Android failing to boot which is unrelated to the test or scenario being tested. These are platform failures that are reflected in other Critical tests as well.\n\nCan you please check again?",
+      "parentUuid": "1c749652_e118318c",
+      "revId": "55c50b2626e769390376a793735254fd3d05ee6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
