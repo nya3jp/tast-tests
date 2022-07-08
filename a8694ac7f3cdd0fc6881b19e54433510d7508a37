@@ -145,6 +145,30 @@
       },
       "revId": "a8694ac7f3cdd0fc6881b19e54433510d7508a37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff50f0a5_27800602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_pin_lockout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1178840
+      },
+      "writtenOn": "2022-07-08T23:47:34Z",
+      "side": 1,
+      "message": "I\u0027m not sure how do this more cleanly either, but looking at the tast docs, this pattern doesn\u0027t look entirely uncommon? https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_3.md#dealing-with-a-race-condition\n\nIf you want to avoid repeating the action, perhaps you could call WaitUntilGone()? (But again, I don\u0027t really know tast.)",
+      "parentUuid": "9ab10038_123e88a1",
+      "range": {
+        "startLine": 155,
+        "startChar": 14,
+        "endLine": 155,
+        "endChar": 28
+      },
+      "revId": "a8694ac7f3cdd0fc6881b19e54433510d7508a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
