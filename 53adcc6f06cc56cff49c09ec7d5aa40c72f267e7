@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ffc71a_978c95cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-08T17:50:53Z",
+      "side": 1,
+      "message": "add a comment that this expects that a node defined by `app` node finder is visible",
+      "revId": "53adcc6f06cc56cff49c09ec7d5aa40c72f267e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13291bcb_fe4ad614",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-08T17:50:53Z",
+      "side": 1,
+      "message": "you can pass in the node finder for the target option",
+      "revId": "53adcc6f06cc56cff49c09ec7d5aa40c72f267e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b90eb257_fa41d5c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-08T17:50:53Z",
+      "side": 1,
+      "message": "this block makes behavior inconsistent depending on the initial app launch type - if the the target launch type matches the current launch type, the method would launcht the app twice, and if types don\u0027t match, it would be launched once.\n\nCan we remove this block, and maybe have a step to close the context menu.\n\nOr even better, add \n```\n  uiauto.Combine(\n    ui.RightClick(app),\n    ui.WaitUntilExists(newInstanceMenuItem)\n  )\n  \n```\nafter the call to setLaunchAppAs",
+      "revId": "53adcc6f06cc56cff49c09ec7d5aa40c72f267e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e01dbe5_75696259",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-08T17:50:53Z",
+      "side": 1,
+      "message": "move these closer to where they\u0027re first used",
+      "revId": "53adcc6f06cc56cff49c09ec7d5aa40c72f267e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02ee2579_77011f91",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-08T17:50:53Z",
+      "side": 1,
+      "message": "document this - also, check if we have something similar in launcher.go",
+      "revId": "53adcc6f06cc56cff49c09ec7d5aa40c72f267e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
