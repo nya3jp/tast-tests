@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22364a09_024bf95a",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-08T23:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c346cc8c_be857c19",
+      "range": {
+        "startLine": 133,
+        "startChar": 63,
+        "endLine": 133,
+        "endChar": 103
+      },
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "229277b2_2fc5bcb2",
@@ -77,6 +101,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "226b0302_deafe312",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-08T23:22:54Z",
+      "side": 1,
+      "message": "SG. Will rebase when the CL lands.",
+      "parentUuid": "25efa3b1_556a00a4",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11521ee3_ed10798b",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-08T23:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "229277b2_2fc5bcb2",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "893174b0_1bf60199",
         "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
         "patchSetId": 4
@@ -88,6 +148,24 @@
       "writtenOn": "2022-07-07T01:11:04Z",
       "side": 1,
       "message": "Do we need to set proto (https://source.corp.google.com/chromeos_public/src/platform2/shill/supplicant/wpa_supplicant.cc;rcl\u003d474a4e06d034992dad2b9745058501ddcec0fcca;l\u003d153) like we do to connect to a network in station mode in shill? When we set the key_mgmt to WPA-PSK, does that not also allow normal WPA connection?",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07161fe7_72927ad3",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-08T23:22:54Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. Yes, we need to specifically set proto to RSN to avoid WPA being used.",
+      "parentUuid": "893174b0_1bf60199",
       "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +183,24 @@
       "writtenOn": "2022-07-07T01:11:04Z",
       "side": 1,
       "message": "Is there a better way to do this with wpa_monitor? i.e. are there ctrl events that we can take advantage of instead of polling like this?",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0773c4cd_3a5a18e9",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-08T23:22:54Z",
+      "side": 1,
+      "message": "wpa_monitor is a remote package which a local shill_service cannot depend on. I can move all the local start/stop tethering and start/stop DHCP functions to remote package wificell/test_fixture. But in the near future, when Shill support is landed, we still need to call local shill_service to start/stop tethering. So I would prefer to keep it in local so that it could be easily deleted and changed to use Shill dbus calls later. How do you think?",
+      "parentUuid": "f62077e4_eec456ae",
       "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +228,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "056cab70_493e311a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2901,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-08T23:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "748e4ed7_906242bb",
+      "range": {
+        "startLine": 2901,
+        "startChar": 4,
+        "endLine": 2901,
+        "endChar": 8
+      },
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfc0073f_1eeeb333",
@@ -149,6 +269,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a61af90_927d1cfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2925,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-08T23:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfc0073f_1eeeb333",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40a9707a_c303c046",
@@ -162,6 +300,24 @@
       "writtenOn": "2022-07-07T01:11:04Z",
       "side": 1,
       "message": "You need a space between the key_mgmts",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54287e9e_a786ca27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2952,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-08T23:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40a9707a_c303c046",
       "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -185,6 +341,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b0d76cac_2711e40f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2962,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-08T23:22:54Z",
+      "side": 1,
+      "message": "Probably not. This shill_service is a local package while the one in router is a remote one. Local package cannot depend on a remote package.\n\nThis function will be deleted later when Shill and patchpanel support of tethering is merged and DHCP will be taken care of by a single Shill dbus command.",
+      "parentUuid": "be20926c_786345f4",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eda77846_327f93fe",
         "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
         "patchSetId": 4
@@ -196,6 +370,24 @@
       "writtenOn": "2022-07-07T01:11:04Z",
       "side": 1,
       "message": "We\u0027re removing this. Let\u0027s add a cross_device_sap and also include cross_device_unstable (see https://chromium-review.googlesource.com/c/chromiumos/third_party/autotest/+/3724349 and https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3723220)",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8e8399_740244db",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-08T23:22:54Z",
+      "side": 1,
+      "message": "SG. Waiting for the CL landed.",
+      "parentUuid": "eda77846_327f93fe",
       "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -223,6 +415,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a062c10_d1b1970b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1539,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-08T23:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7be3190c_02c28a33",
+      "range": {
+        "startLine": 1539,
+        "startChar": 2,
+        "endLine": 1539,
+        "endChar": 4
+      },
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cce0d9e0_8162b968",
@@ -236,6 +452,24 @@
       "writtenOn": "2022-07-07T01:11:04Z",
       "side": 1,
       "message": "can we reuse https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/wificell/hostapd/config.go;rcl\u003da9d70301a3c3125cd17eec2b6ee04bb40ef45787;l\u003d894 ?",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b620ac88_c118b963",
+        "filename": "src/chromiumos/tast/remote/wificell/tethering/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-08T23:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cce0d9e0_8162b968",
       "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
