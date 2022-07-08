@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/metrics"
 	"chromiumos/tast/local/sysutil"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -269,6 +270,13 @@ func SetUpCrashTest(ctx context.Context, opts ...Option) error {
 	for _, opt := range opts {
 		opt(&p)
 	}
+
+	// Need to wait until the UI job is running and has stablized in order to ensure
+	// that daemon-store will be available.
+	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
+		return errors.Wrap(err, "failed to ensure ui job is running")
+	}
+
 	// Unconditionally stash daemon-store crash dirs now that we're almost-always using daemon-store.
 	daemonStorePaths, err := GetDaemonStoreCrashDirs(ctx)
 	if err != nil {
