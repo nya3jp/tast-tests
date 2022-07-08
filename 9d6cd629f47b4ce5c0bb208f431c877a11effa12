@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5a976a0_b6e80ce0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-08T16:42:25Z",
+      "side": 0,
+      "message": "So I don\u0027t know if it was a hard requirement to write all the decompression code in vanilla Golang...\n\nFor this CL this code lacked the correct application of permissions, i.e., it created all files as root, which made it impossible for Chrome to work with /home/chronos/. While it could be possible to fix the code here accordingly, I just thought - why don\u0027t we just call \"tar\" that already implements all this.",
+      "revId": "9d6cd629f47b4ce5c0bb208f431c877a11effa12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
