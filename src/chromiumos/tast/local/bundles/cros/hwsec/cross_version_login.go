@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hwsec/util"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/dbusutil"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/lsbrelease"
@@ -143,6 +144,48 @@ func prefixToVersion(prefix string) ([3]int, error) {
 
 // testConfig verifies the login functionality of specific auth config from CrossVersionLoginConfig.
 func testConfig(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.CryptohomeClient, config *util.CrossVersionLoginConfig) error {
+	// Exercise the regular login flow as driven by Chrome Login Screen, to catch any regressions in APIs between Cryptohomed and Chrome.
+	// This part of the test is only possible when the snapshot contains mountable user data and not just keysets
+	// (see cross_version_login_data.go for details).
+	if config.HasUserVault {
+		if err := testConfigViaChrome(ctx, config); err != nil {
+			return errors.Wrap(err, "failed to test config via Chrome")
+		}
+	}
+
+	if err := testConfigViaCryptohome(ctx, lf, cryptohome, config); err != nil {
+		return errors.Wrap(err, "failed to test config via Cryptohome")
+	}
+
+	return nil
+}
+
+// testConfigViaChrome verifies the login functionality via Chrome Login Screen.
+func testConfigViaChrome(ctx context.Context, config *util.CrossVersionLoginConfig) error {
+	authConfig := config.AuthConfig
+	username := authConfig.Username
+
+	// The smart card authentication is not currently supported in this subtest, as it'd require loading
+	// fake smart card middleware extensions in Chrome.
+	if authConfig.AuthType != hwsec.PassAuth {
+		return nil
+	}
+
+	// Check password login.
+	cr, err := chrome.New(ctx, chrome.FakeLogin(chrome.Creds{User: username, Pass: authConfig.Password}), chrome.KeepState())
+	if err != nil {
+		return errors.Wrap(err, "failed to log in with password")
+	}
+	if err := cr.Close(ctx); err != nil {
+		return errors.Wrap(err, "failed to log out after password login")
+	}
+
+	// TODO(b/237120336): Check PIN login as well.
+	return nil
+}
+
+// testConfigViaCryptohome verifies the login functionality by making requests via Cryptohome CLI.
+func testConfigViaCryptohome(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.CryptohomeClient, config *util.CrossVersionLoginConfig) error {
 	const (
 		newPassword = "newPass"
 		newLabel    = "newLabel"

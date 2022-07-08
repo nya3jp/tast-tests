@@ -201,6 +201,7 @@ func CreateCrossVersionLoginData(ctx context.Context, daemonController *hwsec.Da
 	files := []string{
 		"/mnt/stateful_partition/unencrypted/tpm2-simulator/NVChip",
 		"/home/.shadow",
+		"/home/chronos",
 	}
 	if err := compressData(archivePath, files); err != nil {
 		return errors.Wrap(err, "failed to compress the cryptohome data")
