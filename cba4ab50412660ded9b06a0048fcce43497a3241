@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b483456_39ca1439",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001299
+      },
+      "writtenOn": "2022-07-08T18:00:31Z",
+      "side": 1,
+      "message": "Maxim, note that there is a possible merge conflict detected by Gerrit",
+      "revId": "cba4ab50412660ded9b06a0048fcce43497a3241",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
