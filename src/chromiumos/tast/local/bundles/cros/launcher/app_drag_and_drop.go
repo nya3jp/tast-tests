@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
@@ -36,12 +35,20 @@ func init() {
 		},
 		Attr: []string{"group:mainline", "informational"},
 		Params: []testing.Param{{
-			Name:    "productivity_launcher",
-			Val:     true,
+			Name:    "productivity_launcher_clamshell_mode",
+			Val:     launcher.TestCase{ProductivityLauncher: true, TabletMode: false},
 			Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
 		}, {
-			Name:    "",
-			Val:     false,
+			Name:    "clamshell_mode",
+			Val:     launcher.TestCase{ProductivityLauncher: false, TabletMode: false},
+			Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
+		}, {
+			Name:    "productivity_launcher_tablet_mode",
+			Val:     launcher.TestCase{ProductivityLauncher: true, TabletMode: true},
+			Fixture: "chromeLoggedInWith100FakeAppsProductivityLauncher",
+		}, {
+			Name:    "tablet_mode",
+			Val:     launcher.TestCase{ProductivityLauncher: false, TabletMode: true},
 			Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
 		}},
 	})
@@ -56,96 +63,65 @@ func AppDragAndDrop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 
-	ui := uiauto.New(tconn)
-
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	for _, subtest := range []struct {
-		modeName string
-		isTablet bool
-	}{
-		{"drag and drop app in clamshell mode", false},
-		{"drag and drop app in tablet mode", true},
-	} {
-		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, subtest.isTablet)
+	testCase := s.Param().(launcher.TestCase)
+	tabletMode := testCase.TabletMode
+	productivityLauncher := testCase.ProductivityLauncher
+
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, true /*stabilizeAppCount*/)
+	defer cleanup(cleanupCtx)
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
+	}
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_dump")
+
+	// Each subtest requires at least 3 items on the current page - the
+	// first page may have a (default) page break after several
+	// default apps, and depending on the device may not have enough apps to
+	// satisfy this requirement.
+	// To work around this, start the test on the second launcher page.
+	// startPage defines which page starts testing.
+	startPage := 2
+	ui := uiauto.New(tconn)
+	usingBubbleLauncher := productivityLauncher && !tabletMode
+	if !usingBubbleLauncher {
+		if err := switchToPage(ui, startPage)(ctx); err != nil {
+			s.Fatal("Failed to switch to second page for test: ", err)
+		}
+	}
+
+	firstItem, err := launcher.FirstNonRecentAppItem(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to count recent apps items: ", err)
+	}
+
+	if !usingBubbleLauncher {
+		firstItem, err = getFirstItemOnCurrentPage(ctx, tconn, firstItem)
 		if err != nil {
-			s.Fatal("Failed to set tablet mode to be tabletMode: ", err)
+			s.Fatal("Failed to get the first item on the current page: ", err)
 		}
-		defer cleanup(cleanupCtx)
+	}
 
-		productivityLauncher := s.Param().(bool)
-		f := func(ctx context.Context, s *testing.State) {
-			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, subtest.modeName+"_ui_dump")
+	if err := dragIconToIcon(ctx, tconn, ui, firstItem, productivityLauncher); err != nil {
+		s.Fatal("Failed to drag the first icon to the second icon: ", err)
+	}
 
-			if !subtest.isTablet {
-				if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-					s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
-				}
-			}
-
-			usingBubbleLauncher := productivityLauncher && !subtest.isTablet
-			// Open the Launcher and go to Apps list page.
-			if usingBubbleLauncher {
-				if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
-					s.Fatal("Failed to open bubble launcher: ", err)
-				}
-			} else {
-				if err := launcher.Open(tconn)(ctx); err != nil {
-					s.Fatal("Failed to open the launcher: ", err)
-				}
-			}
-
-			if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
-				s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
-			}
-
-			// Each subtest requires at least 3 items on the current page - the first page may have a (default) page break after several
-			// default apps, and depending on the device may not have enough apps to satisfy this requirement.
-			// To work around this, start the test on the second launcher page.
-			// startPage defines which page starts testing.
-			startPage := 2
-			if !usingBubbleLauncher {
-				if err := switchToPage(ui, startPage)(ctx); err != nil {
-					s.Fatal("Failed to switch to second page for test: ", err)
-				}
-			}
-
-			firstItem, err := launcher.FirstNonRecentAppItem(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to count recent apps items: ", err)
-			}
-
-			if !usingBubbleLauncher {
-				firstItem, err = getFirstItemOnCurrentPage(ctx, tconn, firstItem)
-				if err != nil {
-					s.Fatal("Failed to get the first item on the current page: ", err)
-				}
-			}
-
-			if err := dragIconToIcon(ctx, tconn, ui, firstItem, productivityLauncher); err != nil {
-				s.Fatal("Failed to drag the first icon to the second icon: ", err)
-			}
-
-			if !usingBubbleLauncher {
-				if err := dragIconToNextPage(ctx, tconn, ui, firstItem, startPage); err != nil {
-					s.Fatal("Failed to drag the first icon to next page: ", err)
-				}
-			} else {
-				dropIndex, err := dragFirstIconToScrollableContainerBottom(ctx, tconn, ui)
-				if err != nil {
-					s.Fatal("Failed to drag the first icon to bottom of scrollable container: ", err)
-				}
-
-				if err := dragIconToScrollableContainerTop(ctx, tconn, ui, dropIndex); err != nil {
-					s.Fatal("Failed to drag the last item to top of scrollable container: ", err)
-				}
-			}
+	if !usingBubbleLauncher {
+		if err := dragIconToNextPage(ctx, tconn, ui, firstItem, startPage); err != nil {
+			s.Fatal("Failed to drag the first icon to next page: ", err)
+		}
+	} else {
+		dropIndex, err := dragFirstIconToScrollableContainerBottom(ctx, tconn, ui)
+		if err != nil {
+			s.Fatal("Failed to drag the first icon to bottom of scrollable container: ", err)
 		}
 
-		if !s.Run(ctx, subtest.modeName, f) {
-			s.Errorf("Failed to run subtest %q", subtest.modeName)
+		if err := dragIconToScrollableContainerTop(ctx, tconn, ui, dropIndex); err != nil {
+			s.Fatal("Failed to drag the last item to top of scrollable container: ", err)
 		}
 	}
 }
