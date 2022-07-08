@@ -319,7 +319,19 @@ func (s *Settings) ClickRemove() uiauto.Action {
 func (s *Settings) Remove() uiauto.Action {
 	return uiauto.Combine("remove Linux",
 		s.ClickRemove(),
-		s.ui.LeftClickUntil(RemoveConfirmDialog.Delete, s.ui.WithTimeout(shortUITimeout).WaitUntilExists(RemoveLinuxAlert)),
+		// RemoveLinuxAlert may appear and disappear quickly, thus it is
+		// possible the test is in a state where RemoveConfirmDialog.Delete
+		// and RemoveLinuxAlert both do not exist, which may cause a failure.
+		// In that case, check if the "Turn on" button exists.
+		func(ctx context.Context) error {
+			if err := s.ui.LeftClickUntil(RemoveConfirmDialog.Delete, s.ui.WithTimeout(shortUITimeout).WaitUntilExists(RemoveLinuxAlert))(ctx); err != nil {
+				if strings.Contains(err.Error(), nodewith.ErrNotFound) {
+					return s.ui.WaitUntilExists(TurnOnButton)(ctx)
+				}
+				return err
+			}
+			return nil
+		},
 		s.ui.WithTimeout(time.Minute).WaitUntilGone(RemoveLinuxAlert),
 		s.ui.WaitUntilExists(TurnOnButton))
 }
