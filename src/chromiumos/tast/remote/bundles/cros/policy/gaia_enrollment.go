@@ -10,17 +10,12 @@ import (
 
 	"chromiumos/tast/common/tape"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/remote/gaiaenrollment"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
 	ps "chromiumos/tast/services/cros/policy"
-	ts "chromiumos/tast/services/cros/tape"
 	"chromiumos/tast/testing"
 )
-
-type testInfo struct {
-	dmserver string // device management server url
-	poolID   string // poolID for the used test account
-}
 
 const gaiaEnrollmentTimeout = 7 * time.Minute
 
@@ -40,16 +35,16 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "autopush",
-				Val: testInfo{
-					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
-					poolID:   tape.Enrollment,
+				Val: gaiaenrollment.TestParams{
+					DMServer: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+					PoolID:   tape.Enrollment,
 				},
 			},
 			{
 				Name: "autopush_new_saml",
-				Val: testInfo{
-					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
-					poolID:   tape.EnrollmentSaml,
+				Val: gaiaenrollment.TestParams{
+					DMServer: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+					PoolID:   tape.Crosprqa4Com,
 				},
 			},
 		},
@@ -60,9 +55,9 @@ func init() {
 }
 
 func GAIAEnrollment(ctx context.Context, s *testing.State) {
-	param := s.Param().(testInfo)
-	dmServerURL := param.dmserver
-	poolID := param.poolID
+	param := s.Param().(gaiaenrollment.TestParams)
+	dmServerURL := param.DMServer
+	poolID := param.PoolID
 
 	// Shorten deadline to leave time for cleanup.
 	cleanupCtx := ctx
@@ -92,8 +87,9 @@ func GAIAEnrollment(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create tape client: ", err)
 	}
 
+	timeout := int32(gaiaEnrollmentTimeout.Seconds())
 	// Create an account manager and lease a test account for the duration of the test.
-	accManager, acc, err := tape.NewOwnedTestAccountManagerFromClient(ctx, tapeClient, false, tape.WithTimeout(int32(gaiaEnrollmentTimeout.Seconds())), tape.WithPoolID(poolID))
+	accManager, acc, err := tape.NewOwnedTestAccountManagerFromClient(ctx, tapeClient, false /*lock*/, tape.WithTimeout(timeout), tape.WithPoolID(poolID))
 	if err != nil {
 		s.Fatal("Failed to create an account manager and lease an account: ", err)
 	}
@@ -107,17 +103,10 @@ func GAIAEnrollment(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enroll using chrome: ", err)
 	}
 
-	tapeService := ts.NewServiceClient(cl.Conn)
-	// Get the device id of the DUT to deprovision it at the end of the test.
-	res, err := tapeService.GetDeviceID(ctx, &ts.GetDeviceIDRequest{CustomerID: acc.CustomerID})
-	if err != nil {
-		s.Fatal("Failed to get the deviceID: ", err)
-	}
-
 	// Deprovision the DUT at the end of the test.
 	defer func(ctx context.Context) {
-		if err = tapeClient.Deprovision(ctx, res.DeviceID, acc.CustomerID); err != nil {
-			s.Fatalf("Failed to deprovision device %s: %v", res.DeviceID, err)
+		if err := tapeClient.DeprovisionHelper(cleanupCtx, cl, acc.CustomerID); err != nil {
+			s.Fatal("Failed to deprovision device: ", err)
 		}
 	}(cleanupCtx)
 }
