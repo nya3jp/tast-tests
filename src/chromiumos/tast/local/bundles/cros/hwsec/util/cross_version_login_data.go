@@ -9,6 +9,7 @@ import (
 	"crypto/rsa"
 	"crypto/x509"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"math/rand"
 	"os"
@@ -40,12 +41,23 @@ func NewVaultKeyInfo(password, label string, lowEntropy bool) *VaultKeyInfo {
 	return info
 }
 
+const (
+	// NoVaultFS is the constant for CrossVersionLoginConfig.VaultFSType,
+	// representing the absence of the user vault in the snapshot.
+	NoVaultFS = iota
+	// ECRYPTFSVaultFS is the constant for CrossVersionLoginConfig.VaultFSType,
+	// representing the usage of eCryptfs for the user vault.
+	ECRYPTFSVaultFS = iota
+)
+
 // CrossVersionLoginConfig contains the information for cross-version login
 type CrossVersionLoginConfig struct {
 	AuthConfig     hwsec.AuthConfig
 	RsaKey         *rsa.PrivateKey
 	KeyLabel       string
 	ExtraVaultKeys []VaultKeyInfo
+	// VaultFSType is the type of the file system used for the user vault.
+	VaultFSType int
 }
 
 // NewPassAuthCrossVersionLoginConfig creates cross version-login config from password auth config
@@ -243,8 +255,11 @@ func createChallengeResponseData(ctx context.Context, lf LogFunc, cryptohome *hw
 	defer keyDelegate.Close()
 
 	authConfig := hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg)
+	// Enforce the usage of ecryptfs, so that we can take a usable snapshot of encrypted files.
+	vaultConfig := hwsec.NewVaultConfig()
+	vaultConfig.Ecryptfs = true
 	// Create the challenge-response protected cryptohome.
-	if err := cryptohome.MountVault(ctx, keyLabel, authConfig, true, hwsec.NewVaultConfig()); err != nil {
+	if err := cryptohome.MountVault(ctx, keyLabel, authConfig, true, vaultConfig); err != nil {
 		return nil, errors.Wrap(err, "failed to create cryptohome")
 	}
 	if keyDelegate.ChallengeCallCnt == 0 {
@@ -253,7 +268,19 @@ func createChallengeResponseData(ctx context.Context, lf LogFunc, cryptohome *hw
 	if _, err := cryptohome.CheckVault(ctx, keyLabel, authConfig); err != nil {
 		return nil, errors.Wrap(err, "failed to check the key for the mounted cryptohome")
 	}
-	return NewChallengeAuthCrossVersionLoginConfig(authConfig, keyLabel, rsaKey), nil
+
+	// It's expected that the ecryptfs was used because we specified `Ecryptfs` in `vaultConfig`.
+	ecryptfsExists, err := ecryptfsVaultExists(ctx, cryptohome, testUser)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check ecryptfs presence")
+	}
+	if !ecryptfsExists {
+		return nil, errors.New("no ecryptfs user vault found")
+	}
+
+	config := NewChallengeAuthCrossVersionLoginConfig(authConfig, keyLabel, rsaKey)
+	config.VaultFSType = ECRYPTFSVaultFS
+	return config, nil
 }
 
 func createPasswordData(ctx context.Context, cryptohome *hwsec.CryptohomeClient, supportsLE bool) (*CrossVersionLoginConfig, error) {
@@ -263,8 +290,8 @@ func createPasswordData(ctx context.Context, cryptohome *hwsec.CryptohomeClient,
 		pin        = "123456"
 		pinLabel   = "pinLabel"
 	)
-	// Add the new password login data
-	cr, err := chrome.New(ctx)
+	// Add the new password login data. Enforce the usage of ecryptfs, so that we can take a usable snapshot of encrypted files.
+	cr, err := chrome.New(ctx, chrome.ExtraArgs("--cryptohome-use-old-encryption-for-testing"))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to log in by Chrome")
 	}
@@ -282,6 +309,14 @@ func createPasswordData(ctx context.Context, cryptohome *hwsec.CryptohomeClient,
 
 	authConfig := hwsec.NewPassAuthConfig(username, password)
 	config := NewPassAuthCrossVersionLoginConfig(authConfig, labels[0])
+	ecryptfsExists, err := ecryptfsVaultExists(ctx, cryptohome, username)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check ecryptfs presence")
+	}
+	if ecryptfsExists {
+		config.VaultFSType = ECRYPTFSVaultFS
+	}
+
 	if err := config.AddVaultKeyData(ctx, cryptohome, NewVaultKeyInfo(extraPass, extraLabel, false)); err != nil {
 		return nil, errors.Wrap(err, "failed to add vault key data of password")
 	}
@@ -291,6 +326,22 @@ func createPasswordData(ctx context.Context, cryptohome *hwsec.CryptohomeClient,
 		}
 	}
 	return config, nil
+}
+
+// ecryptfsVaultExists returns whether ecryptfs vault exists for the given user.
+func ecryptfsVaultExists(ctx context.Context, cryptohome *hwsec.CryptohomeClient, username string) (bool, error) {
+	sanitizedUsername, err := cryptohome.GetSanitizedUsername(ctx, username, false /* useDBus */)
+	if err != nil {
+		return false, errors.Wrap(err, "failed to sanitize username")
+	}
+	ecryptfsVaultDir := fmt.Sprintf("/home/.shadow/%s/vault", sanitizedUsername)
+	if _, err := os.Stat(ecryptfsVaultDir); err != nil {
+		if os.IsNotExist(err) {
+			return false, nil
+		}
+		return false, errors.Wrap(err, "failed to perform stat")
+	}
+	return true, nil
 }
 
 // PrepareCrossVersionLoginData prepares the login data and config for CrossVersionLogin and saves them to dataPath and configPath respectively
