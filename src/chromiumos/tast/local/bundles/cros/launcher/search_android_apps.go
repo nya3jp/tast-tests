@@ -13,7 +13,6 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/input"
@@ -127,17 +126,10 @@ func SearchAndroidApps(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
-	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
-	}
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, false /*stabilizeAppCount*/)
 	defer cleanup(cleanupCtx)
-
-	// When a DUT switches from tablet mode to clamshell mode, sometimes it takes a while to settle down.
-	if !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
-		}
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 
 	if err := launcher.SearchAndWaitForAppOpen(tconn, kb, apps.PlayStore)(ctx); err != nil {

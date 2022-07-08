@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
@@ -54,32 +53,14 @@ func BubbleScroll(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Bubble launcher requires clamshell mode.
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
-	if err != nil {
-		s.Fatal("Failed to ensure clamshell mode: ", err)
-	}
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, false /*tabletMode*/, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
 	defer cleanup(cleanupCtx)
-
-	defer launcher.CloseBubbleLauncher(tconn)(cleanupCtx)
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
+	}
 
 	// On failure, take the screenshot before the above cleanup() happens.
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
-
-	// Ensure tablet launcher has finished closing.
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-		s.Fatal("Launcher not closed: ", err)
-	}
-
-	// Ensure bubble launcher is open.
-	if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
-		s.Fatal("Failed to open bubble launcher: ", err)
-	}
-
-	// Ensure apps are finished installing.
-	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
-	}
 
 	// Get the expected browser, which might be "Chromium" on unbranded builds.
 	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
