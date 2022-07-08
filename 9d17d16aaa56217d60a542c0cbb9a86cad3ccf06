@@ -74,6 +74,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "36ce75fc_5502dd10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-08T08:37:40Z",
+      "side": 1,
+      "message": "We should not rule out deeper integration in the future where shill fetches ANQP results directly. For instance the full Android Passpoint APIs would require we do it (fortunately atm this is not enforced in CTS and the code is only usable by Android system Apps not shipping on ARC). So generally having some coverage in tast seems beneficial.",
+      "parentUuid": "44e2fd1c_47b1445b",
+      "revId": "9d17d16aaa56217d60a542c0cbb9a86cad3ccf06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b54322dc_75a971f0",
         "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
         "patchSetId": 8
