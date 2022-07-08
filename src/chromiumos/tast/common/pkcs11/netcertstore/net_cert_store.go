@@ -49,7 +49,7 @@ const (
 	// TestPassword is the password to the user above.
 	TestPassword = "not_a_real_password"
 	// testKeyLabel is the key label for the vault key that belongs to the user above.
-	testKeyLabel = "password"
+	testKeyLabel = "gaia"
 	// Note that the credentials above are made up and isn't actual confidential information.
 
 	// scratchpadPath is just a location for us to store tmp files.
