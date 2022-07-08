@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "115898ed_0e4e6411",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desks_templates_launch.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-08T21:31:50Z",
+      "side": 1,
+      "message": "Hi Matthew, just found this change. With this cleanup step, do you want me to keep disabling sync in my CL? It might be beneficial to leave sync open so it can clean up synced desks for test account. What do you think?",
+      "range": {
+        "startLine": 106,
+        "startChar": 34,
+        "endLine": 106,
+        "endChar": 56
+      },
+      "revId": "5d926be583449270191a4e2a455cf2b0a2bec56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
