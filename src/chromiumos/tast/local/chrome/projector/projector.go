@@ -22,7 +22,7 @@ import (
 // Replace with WaitUntilExists() once this bug has been fixed.
 func RefreshApp(ctx context.Context, tconn *chrome.TestConn) uiauto.Action {
 	ui := uiauto.New(tconn)
-	appWindow := nodewith.Name("Screencast").Role(role.Application)
+	appWindow := nodewith.ClassName("WebAppFrameToolbarView").Role(role.Pane)
 	reload := nodewith.Name("Reload Ctrl+R").Role(role.MenuItem)
 
 	return func(ctx context.Context) error {
