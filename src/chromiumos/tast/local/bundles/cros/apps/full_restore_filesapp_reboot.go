@@ -78,7 +78,7 @@ func FullRestoreFilesappReboot(ctx context.Context, s *testing.State) {
 		}
 
 		alertDialog := nodewith.NameStartingWith("Restore apps?").Role(role.AlertDialog)
-		restoreButton := nodewith.Name("RESTORE").Role(role.Button).Ancestor(alertDialog)
+		restoreButton := nodewith.Name("Restore").Role(role.Button).Ancestor(alertDialog)
 		downloads := nodewith.Name(filesapp.Downloads).Role(role.TreeItem).Ancestor(filesapp.WindowFinder(apps.Files.ID))
 
 		ui := uiauto.New(tconn)
