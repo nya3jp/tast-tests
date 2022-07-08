@@ -16,6 +16,69 @@
       "message": "Hi Yuki, \nThanks for taking such a detailed look at it and offering great suggestions.\nI moved the chameleon setup to the assistant fixture.\nThanks,\nJonathan",
       "revId": "3c685275fe5c4898f05dcb3643a2d88e41d1cbbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12db917f_1eb76844",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-08T08:50:23Z",
+      "side": 1,
+      "message": "Still lgtm. Thank you!\n\ntast-owners@: Also PTAL the comment about the test attribute. Thank you!",
+      "revId": "3c685275fe5c4898f05dcb3643a2d88e41d1cbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc8cfb52_533bd664",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-08T08:50:23Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of those new types?",
+      "range": {
+        "startLine": 312,
+        "startChar": 6,
+        "endLine": 312,
+        "endChar": 19
+      },
+      "revId": "3c685275fe5c4898f05dcb3643a2d88e41d1cbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7eb5e1d_7a6fc947",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-08T08:50:23Z",
+      "side": 1,
+      "message": "optional: How about making the structure of fixtures as follow:?\n\n// This one is for Chrome session\nassistantBaseWithHotword:\n  Impl: chrome.NewLoggedInFixture\n\n// This one is for setting up Assistant related things\nassistantWithHotword:\n  Impl: NewAssistantFixture\n  Parent: assistantBaseWithHotword\n\n// This one is for setting up Chameleon device related things\nassistantWithAudioBox:\n  Impl: NewAudioBoxFixture\n  Parent: assistantWithHotword\n  Vars: assistant.chameleon_host, ..., etc\n\nWith this, you can avoid having assistant related logic duplicated in NewAudioBoxFixture.",
+      "range": {
+        "startLine": 249,
+        "startChar": 9,
+        "endLine": 249,
+        "endChar": 26
+      },
+      "revId": "3c685275fe5c4898f05dcb3643a2d88e41d1cbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

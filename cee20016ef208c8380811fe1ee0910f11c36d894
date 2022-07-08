@@ -488,6 +488,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c88ad36_d0ba502b",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-08T08:50:23Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "75866cca_e276eb20",
+      "range": {
+        "startLine": 243,
+        "startChar": 1,
+        "endLine": 243,
+        "endChar": 29
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "156f0d3b_9e8604cb",
@@ -777,6 +801,30 @@
       "side": 1,
       "message": "Yes. I think that it is better to run these test in a sound isolated environment.\n\nIf I recall correctly, the test will need to belong to a group for that to compile.  \nFor assistant test case requiring audio support we can establish a new group (like in https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3495709)\n\nDo you have an preference on the naming of the group?",
       "parentUuid": "58bfcdf5_ab9297bd",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c17a3f_93038772",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-08T08:50:23Z",
+      "side": 1,
+      "message": "If we add a group, does it run in a lab? I\u0027m more suggesting on checking this test as a disabling test: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#disabling-tests\n\nMy main concern is that this test interferes with other devices in the lab, i.e. \"Okay Google\" voice from this test triggers Assistant in another device, which can lead to an unexpected test failure on the device.\n\nLet me add a tast-owners@ to ask their opinion.",
+      "parentUuid": "abc6958d_b595302d",
       "range": {
         "startLine": 30,
         "startChar": 25,
