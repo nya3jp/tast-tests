@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
@@ -74,18 +73,10 @@ func ShortcutSearch(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	testCase := s.Param().(launcher.TestCase)
-	tabletMode := testCase.TabletMode
-
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
-	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
-	}
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, testCase.TabletMode, testCase.ProductivityLauncher, false /*stabilixeAppCount*/)
 	defer cleanup(cleanupCtx)
-
-	if !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed: ", err)
-		}
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 
 	subtests := []shortcutSearchTestCase{

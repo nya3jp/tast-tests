@@ -79,29 +79,10 @@ func SearchInstalledApps(ctx context.Context, s *testing.State) {
 	defer kw.Close()
 
 	testCase := s.Param().(launcher.TestCase)
-	tabletMode := testCase.TabletMode
-	if !tabletMode {
-		defer func(ctx context.Context) {
-			if err := ui.RetryUntil(
-				kw.AccelAction("esc"),
-				func(ctx context.Context) error { return ash.WaitForLauncherState(ctx, tconn, ash.Closed) },
-			)(ctx); err != nil {
-				testing.ContextLog(ctx, "Failed to dismiss launcher: ", err)
-			}
-		}(cleanupCtx)
-	}
-
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
-	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
-	}
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, testCase.TabletMode, testCase.ProductivityLauncher, false /*stabilizeAppCount*/)
 	defer cleanup(cleanupCtx)
-
-	// When a DUT switches from tablet mode to clamshell mode, sometimes it takes a while to settle down.
-	if !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
-		}
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 
 	cwsapp := newCwsAppGoogleDrawings(cr, tconn)
