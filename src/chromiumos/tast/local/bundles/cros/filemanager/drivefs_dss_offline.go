@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 	"math/rand"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -70,37 +71,46 @@ func DrivefsDssOffline(ctx context.Context, s *testing.State) {
 	APIClient := s.FixtValue().(*drivefs.FixtureData).APIClient
 	cr := s.FixtValue().(*drivefs.FixtureData).Chrome
 	tconn := s.FixtValue().(*drivefs.FixtureData).TestAPIConn
-	mountPath := s.FixtValue().(*drivefs.FixtureData).MountPath
+	driveFsClient := s.FixtValue().(*drivefs.FixtureData).DriveFs
 
-	testDocFileName := fmt.Sprintf("doc-drivefs-%d-%d", time.Now().UnixNano(), rand.Intn(10000))
+	uniqueSuffix := fmt.Sprintf("-%d-%d", time.Now().UnixNano(), rand.Intn(10000))
+	testDocFileName := fmt.Sprintf("doc-drivefs-%s", uniqueSuffix)
+	uniqueTestFolderName := fmt.Sprintf("DrivefsDssOffline-%s", uniqueSuffix)
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
 
-	// Create a blank Google doc in the root GDrive directory.
-	file, err := APIClient.CreateBlankGoogleDoc(ctx, testDocFileName, []string{"root"})
+	// Create the unique folder that will be directly navigated to below.
+	testFilePath := driveFsClient.MyDrivePath(uniqueTestFolderName, testDocFileName)
+	folder, err := APIClient.Createfolder(ctx, uniqueTestFolderName, []string{"root"})
+	if err != nil {
+		s.Fatal("Failed to create folder in MyDrive: ", err)
+	}
+	defer APIClient.RemoveFileByID(cleanupCtx, folder.Id)
+
+	// Create a blank Google doc in the nested folder above.
+	file, err := APIClient.CreateBlankGoogleDoc(ctx, testDocFileName, []string{folder.Id})
 	if err != nil {
 		s.Fatal("Failed to create blank google doc: ", err)
 	}
 	defer APIClient.RemoveFileByID(cleanupCtx, file.Id)
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-	defer drivefs.SaveDriveLogsOnError(ctx, s.HasError, cr.NormalizedUser(), mountPath)
+	defer driveFsClient.SaveLogsOnError(cleanupCtx, s.HasError)
 
 	if err := installRequiredExtensions(ctx, cr, tconn); err != nil {
 		s.Fatal("Failed to install the required extensions: ", err)
 	}
 
-	// Launch Files App.
-	filesApp, err := filesapp.Launch(ctx, tconn)
+	// Launch Files App directly to the directory containing the `testFilePath`.
+	filesApp, err := filesapp.LaunchSWAToPath(ctx, tconn, filepath.Dir(testFilePath))
 	if err != nil {
-		s.Fatal("Failed to launch the Files App: ", err)
+		s.Fatalf("Failed to launch the Files App to path %q: %v", filepath.Dir(testFilePath), err)
 	}
 
 	// Try make the newly created Google doc available offline.
 	testFileNameWithExt := fmt.Sprintf("%s.gdoc", testDocFileName)
 	if err := uiauto.Combine(fmt.Sprintf("Make test file %q in Drive available offline", testFileNameWithExt),
-		filesApp.OpenDrive(),
 		filesApp.WaitForFile(testFileNameWithExt),
 		filesApp.ToggleAvailableOfflineForFile(testFileNameWithExt),
 		filesApp.LeftClick(nodewith.Name("Enable Offline").Role(role.Button)),
