@@ -250,13 +250,6 @@ func (f *fixture) cleanUp(ctx context.Context, s *testing.FixtState) {
 	f.driveFs = nil
 	f.mountPath = ""
 
-	if f.cr != nil {
-		if err := f.cr.Close(ctx); err != nil {
-			s.Log("Failed closing chrome: ", err)
-		}
-		f.cr = nil
-	}
-
 	// Clean up files in this account that are older than 1 hour, files past this
 	// date are assumed no longer required and were not successfully cleaned up.
 	// Note this removal can take a while ~1s per file and may end up exceeding
@@ -276,6 +269,12 @@ func (f *fixture) cleanUp(ctx context.Context, s *testing.FixtState) {
 		}
 	}
 	f.APIClient = nil
+	if f.cr != nil {
+		if err := f.cr.Close(ctx); err != nil {
+			s.Log("Failed closing chrome: ", err)
+		}
+		f.cr = nil
+	}
 }
 
 // getRefreshTokenForAccount returns the matching refresh token for the
