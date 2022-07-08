@@ -272,7 +272,7 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 	if err != nil {
 		s.Fatal("Failed to generate the hostapd config for AP0: ", err)
 	}
-	ap0Name := uniqueAPName()
+	ap0Name := wificell.UniqueAPName()
 	if err = setupPcapOnRouter(ctx, ct.r, ap0Name, ap0Conf, ds); err != nil {
 		s.Fatal("Failed to setup pcap: ", err)
 	}
@@ -332,7 +332,7 @@ func (ct *ContTest) ContinuityTestSetupFinalize(ctx context.Context, s *testing.
 	s.Log("Starting the second AP")
 	ds, destroyIfNotExported := newDestructorStack()
 	defer destroyIfNotExported()
-	ap1Name := uniqueAPName()
+	ap1Name := wificell.UniqueAPName()
 	ap1Conf, err := hostapd.NewConfig(ct.apOps[1]...)
 	if err != nil {
 		s.Fatal("Failed to generate the hostapd config for AP1: ", err)

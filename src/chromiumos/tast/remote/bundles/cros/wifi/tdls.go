@@ -234,7 +234,7 @@ func TDLS(ctx context.Context, s *testing.State) {
 		s.Fatalf("Router type %q does not have sufficient support for this test", apIface.Router().RouterType().String())
 	}
 
-	apName := tf.UniqueAPName()
+	apName := wificell.UniqueAPName()
 	freqOps, err := apIface.Config().PcapFreqOptions()
 	if err != nil {
 		s.Fatal("Failed to get Freq Opts: ", err)
