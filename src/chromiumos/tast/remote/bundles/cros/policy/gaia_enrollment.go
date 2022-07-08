@@ -10,17 +10,13 @@ import (
 
 	"chromiumos/tast/common/tape"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/remote/gaiaenrollment"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
 	ps "chromiumos/tast/services/cros/policy"
 	ts "chromiumos/tast/services/cros/tape"
 	"chromiumos/tast/testing"
 )
-
-type testInfo struct {
-	dmserver string // device management server url
-	poolID   string // poolID for the used test account
-}
 
 const gaiaEnrollmentTimeout = 7 * time.Minute
 
@@ -40,16 +36,16 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name: "autopush",
-				Val: testInfo{
-					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
-					poolID:   tape.Enrollment,
+				Val: gaiaenrollment.TestParams{
+					DMServer: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+					PoolID:   tape.Enrollment,
 				},
 			},
 			{
 				Name: "autopush_new_saml",
-				Val: testInfo{
-					dmserver: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
-					poolID:   tape.EnrollmentSaml,
+				Val: gaiaenrollment.TestParams{
+					DMServer: "https://crosman-alpha.sandbox.google.com/devicemanagement/data/api",
+					PoolID:   tape.EnrollmentSaml,
 				},
 			},
 		},
@@ -60,9 +56,9 @@ func init() {
 }
 
 func GAIAEnrollment(ctx context.Context, s *testing.State) {
-	param := s.Param().(testInfo)
-	dmServerURL := param.dmserver
-	poolID := param.poolID
+	param := s.Param().(gaiaenrollment.TestParams)
+	dmServerURL := param.DMServer
+	poolID := param.PoolID
 
 	// Shorten deadline to leave time for cleanup.
 	cleanupCtx := ctx
