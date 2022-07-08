@@ -8,6 +8,8 @@ package filesapp
 import (
 	"context"
 	"fmt"
+	"os"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
@@ -114,6 +116,31 @@ func LaunchSWA(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	// Launch the Files App.
 	if err := apps.LaunchSystemWebApp(ctx, tconn, "File Manager", "chrome://file-manager"); err != nil {
 		return nil, err
+	}
+
+	return App(ctx, tconn, apps.FilesSWA.ID)
+}
+
+// LaunchSWAToPath launches the Files app directly to the supplied path.
+// This avoids navigating the Files app when you want to just access the folder directly.
+func LaunchSWAToPath(ctx context.Context, tconn *chrome.TestConn, path string) (*FilesApp, error) {
+	if !filepath.IsAbs(path) {
+		return nil, errors.New("failed as supplied path is not absolute")
+	}
+	// Wait for the supplied path to exist and to be a directory before launching
+	// to it.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if info, err := os.Stat(path); os.IsNotExist(err) {
+			return errors.New("failed as file changes are still propagating")
+		} else if err != nil || !info.IsDir() {
+			return testing.PollBreak(errors.Wrapf(err, "failed to wait for path %q to exist or path is not a directory", path))
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		return nil, err
+	}
+	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.launchFilesAppToFolder)`, path); err != nil {
+		return nil, errors.Wrapf(err, "failed to launch Files app to path: %q", path)
 	}
 
 	return App(ctx, tconn, apps.FilesSWA.ID)
