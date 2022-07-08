@@ -1527,6 +1527,24 @@
       "parentUuid": "33d8b554_3180f1c1",
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2036ebe3_ed77ca40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:55:57Z",
+      "side": 1,
+      "message": "I\u0027ve asked @michaelrygiel about this issue and it may be due to an outdated version of ChromeOS on my DUT. The EphemeralPriority property was recently added. I\u0027ll try to flash a new image to my DUT later to fix this.\nThis is the commit for code change: https://chromium-review.googlesource.com/c/chromiumos/platform2/+/3653642",
+      "parentUuid": "4f0d7ce5_71af6c40",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
