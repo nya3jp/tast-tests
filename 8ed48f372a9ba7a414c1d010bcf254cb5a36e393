@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "be54ee31_87a9c382",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_consecutive_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-07-08T17:19:03Z",
+      "side": 1,
+      "message": "120 minutes is an extremely long time for a test to hold lab resources. Would it be possible to reduce this in any way, or is this common in firmware related tests?\n\nWe may just want to double check with the Tast development team before submission to ensure this is OK if it can\u0027t be changed.",
+      "revId": "8ed48f372a9ba7a414c1d010bcf254cb5a36e393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30943c3f_1f538d92",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_consecutive_lid_switch.go",
         "patchSetId": 1
