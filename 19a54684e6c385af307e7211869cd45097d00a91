@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f3891d3_f807a54b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/navigate_between_search_and_share_data_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-08T16:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e873a9ad_0e40ea57",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "19a54684e6c385af307e7211869cd45097d00a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f03efcd4_f831687b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-08T07:13:38Z",
       "side": 1,
       "message": "Highly recommended to use DumpUITreeWithScreenshotOnError instead. It dumps screenshot as well.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 75
+      },
+      "revId": "19a54684e6c385af307e7211869cd45097d00a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c57183b_d79b1e29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/navigate_between_search_and_share_data_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-08T16:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f03efcd4_f831687b",
       "range": {
         "startLine": 55,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5607691_6446520f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/navigate_between_search_and_share_data_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-08T16:35:13Z",
+      "side": 1,
+      "message": "Done. Good suggestion.",
+      "parentUuid": "14906741_7aa3025b",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "19a54684e6c385af307e7211869cd45097d00a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e13ee7a0_93c24c84",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-08T07:13:38Z",
       "side": 1,
       "message": "According to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#when-to-log\n\nPlease remove this log and below logs.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 66
+      },
+      "revId": "19a54684e6c385af307e7211869cd45097d00a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caded7e1_19e6617e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/navigate_between_search_and_share_data_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-08T16:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e13ee7a0_93c24c84",
       "range": {
         "startLine": 59,
         "startChar": 1,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f44fe5af_5e09d102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/navigate_between_search_and_share_data_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-08T16:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6cbe145_e5be054e",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "19a54684e6c385af307e7211869cd45097d00a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "790e4c3c_f8d8de62",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-07-08T07:13:38Z",
       "side": 1,
       "message": "Refer to other comment. The wait function is not required.",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "19a54684e6c385af307e7211869cd45097d00a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "803a9f2d_11bf7ec0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/navigate_between_search_and_share_data_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-08T16:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "790e4c3c_f8d8de62",
       "range": {
         "startLine": 96,
         "startChar": 5,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ed82d75_e8462249",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/navigate_between_search_and_share_data_page.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-08T16:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29623470_da0cbbef",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 14
+      },
+      "revId": "19a54684e6c385af307e7211869cd45097d00a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "605193f7_b6de66e2",
@@ -175,6 +343,30 @@
       "writtenOn": "2022-07-08T07:13:38Z",
       "side": 1,
       "message": "nit: Can be done in one line. Also it is constant.\n\nconst IssueText \u003d \"I am not able to connect to Bluetooth\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 1
+      },
+      "revId": "19a54684e6c385af307e7211869cd45097d00a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3fff528_5e5493bd",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/feedbackapp/feedbackapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-08T16:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "605193f7_b6de66e2",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -202,6 +394,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "787756a6_87bedbda",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/feedbackapp/feedbackapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-08T16:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa678c69_e1f5205a",
+      "revId": "19a54684e6c385af307e7211869cd45097d00a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a735d5f_c2a50080",
@@ -225,6 +435,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "176d6ddd_b31fa84b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/feedbackapp/feedbackapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-08T16:35:13Z",
+      "side": 1,
+      "message": "Done. Good to know, thanks for sharing.",
+      "parentUuid": "3a735d5f_c2a50080",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 18
+      },
+      "revId": "19a54684e6c385af307e7211869cd45097d00a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59b2d7b9_a1a52171",
@@ -238,6 +472,30 @@
       "writtenOn": "2022-07-08T07:13:38Z",
       "side": 1,
       "message": "Same to above, you do not need WaitUntilExists and these combined functions but action the node directly.",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 14
+      },
+      "revId": "19a54684e6c385af307e7211869cd45097d00a91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c57edbda_df7d52f2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/feedbackapp/feedbackapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-08T16:35:13Z",
+      "side": 1,
+      "message": "Done. Thanks.",
+      "parentUuid": "59b2d7b9_a1a52171",
       "range": {
         "startLine": 85,
         "startChar": 5,
