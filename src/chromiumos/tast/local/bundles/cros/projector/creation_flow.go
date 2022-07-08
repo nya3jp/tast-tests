@@ -7,6 +7,7 @@ package projector
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -50,7 +51,8 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 
 	newScreencastButton := nodewith.Name("New screencast").Role(role.Button).Focusable()
 	screencastItem := nodewith.ClassName("screencast-media").Role(role.GenericContainer).First()
-	clickAnywhereToRecord := nodewith.Name("Click anywhere to record full screen").Role(role.StaticText)
+	clickOrTapRegex := regexp.MustCompile("(Click|Tap) anywhere to record full screen")
+	clickOrTapAnywhereToRecord := nodewith.NameRegex(clickOrTapRegex).Role(role.StaticText)
 	annotatorTrayButton := nodewith.NameStartingWith("Toggle marker.").Role(role.Button)
 	inkCanvas := nodewith.ClassName("ink-engine").Role(role.Canvas)
 	blueMarkerButton := nodewith.Name("Blue").Role(role.Button)
@@ -84,8 +86,8 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 		// recording session starts, so the button should
 		// disappear.
 		ui.LeftClickUntil(newScreencastButton, ui.Gone(newScreencastButton)),
-		ui.WaitUntilExists(clickAnywhereToRecord),
-		ui.LeftClickUntil(clickAnywhereToRecord, ui.Gone(clickAnywhereToRecord)),
+		ui.WaitUntilExists(clickOrTapAnywhereToRecord),
+		ui.LeftClickUntil(clickOrTapAnywhereToRecord, ui.Gone(clickOrTapAnywhereToRecord)),
 		ui.WaitUntilExists(annotatorTrayButton),
 		// Enable the annotator.
 		ui.WithInterval(time.Second).LeftClickUntil(annotatorTrayButton, ui.Exists(inkCanvas)),

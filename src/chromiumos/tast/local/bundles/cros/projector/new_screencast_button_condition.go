@@ -77,6 +77,6 @@ func NewScreencastButtonCondition(ctx context.Context, s *testing.State) {
 	ui := uiauto.New(tconn)
 	newScreencastButton := nodewith.Name("New screencast").Role(role.Button).Focusable()
 	if err := ui.WithInterval(5*time.Second).RetryUntil(refreshApp, ui.Exists(newScreencastButton))(ctx); err != nil {
-		s.Fatal("SODA and microphone are enabled, but new screencast button is disabled")
+		s.Fatal("SODA and microphone are enabled, but new screencast button is disabled: ", err)
 	}
 }
