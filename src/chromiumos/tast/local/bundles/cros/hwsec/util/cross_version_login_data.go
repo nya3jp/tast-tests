@@ -13,6 +13,7 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"os"
+	"path"
 	"strings"
 
 	cpb "chromiumos/system_api/cryptohome_proto"
@@ -143,6 +144,7 @@ func CreateCrossVersionLoginData(ctx context.Context, daemonController *hwsec.Da
 	paths := []string{
 		"/mnt/stateful_partition/unencrypted/tpm2-simulator/NVChip",
 		"/home/.shadow",
+		"/home/chronos",
 	}
 	// Skip packing the "mount" directories, since the file systems it's
 	// used for don't allow taking snapshots. E.g., ext4 fscrypt complains
@@ -156,6 +158,22 @@ func CreateCrossVersionLoginData(ctx context.Context, daemonController *hwsec.Da
 	return nil
 }
 
+// removeAllChildren deletes all files and folders from the specified directory.
+func removeAllChildren(dirPath string) error {
+	dir, err := ioutil.ReadDir(dirPath)
+	if err != nil {
+		return errors.Wrap(err, "failed to read dir")
+	}
+	firstErr := error(nil)
+	for _, f := range dir {
+		fullPath := path.Join([]string{dirPath, f.Name()}...)
+		if err := os.RemoveAll(fullPath); err != nil {
+			firstErr = errors.Wrapf(err, "failed to remove %s", f)
+		}
+	}
+	return firstErr
+}
+
 // LoadCrossVersionLoginData loads the data that is used in cross-version login test.
 func LoadCrossVersionLoginData(ctx context.Context, daemonController *hwsec.DaemonController, archivePath string) error {
 	if err := stopHwsecDaemons(ctx, daemonController); err != nil {
@@ -165,6 +183,10 @@ func LoadCrossVersionLoginData(ctx context.Context, daemonController *hwsec.Daem
 
 	// Remove the `/home/.shadow` first to prevent any unexpected file remaining.
 	if err := os.RemoveAll("/home/.shadow"); err != nil {
+		return errors.Wrap(err, "failed to remove old data")
+	}
+	// Clean up `/home/chronos` as well (note that deleting this directory itself would fail).
+	if err := removeAllChildren("/home/chronos"); err != nil {
 		return errors.Wrap(err, "failed to remove old data")
 	}
 
