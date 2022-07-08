@@ -16,6 +16,24 @@
       "message": "Step 2 only checked for the dialog once every 5 seconds?\n\nDoes the new script have issues where we run step 3 before the alert appears and then don\u0027t time out waiting for turn on to appear again?",
       "revId": "7435725fd753ecf688e622c0c23617bfe8b4e283",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e3b6a4a_447a35ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-08T03:22:46Z",
+      "side": 1,
+      "message": "\u003e Step 2 only checked for the dialog once every 5 seconds?\nIt checks for the dialog every 300ms by default, and each check waits for 5 seconds.\n\u003e Does the new script have issues where we run step 3 before the alert appears and then don\u0027t time out waiting for turn on to appear again?\nRight, that\u0027s very likely, thanks for pointing it out!\n\nI revised it (in patchset 3) to directly wait for the \"Turn on\" button. As the alert dialog appears then disappears, and the duration is underministic and varying based on devices or affected by rase conditions. Checking on this item could be a source of flakes. \n\nThe alternative is to use a smaller interval (i.e. 100 ms) in the previous check, if checking the alert dialog is needed. This may reduce the number of failures, but may not 100% solve the issue.\n\nWDYT?",
+      "parentUuid": "0c5d4620_88fba27a",
+      "revId": "7435725fd753ecf688e622c0c23617bfe8b4e283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
