@@ -1,0 +1,4 @@
+SELECT * FROM (
+  (SELECT max(dur) AS open_device FROM slice WHERE name LIKE '%OpenDevice%'),
+  (SELECT max(dur) AS configure_streams FROM slice WHERE name LIKE '%ConfigureStreams%')
+);
