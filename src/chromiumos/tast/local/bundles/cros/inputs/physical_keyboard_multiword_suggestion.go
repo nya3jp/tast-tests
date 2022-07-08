@@ -10,7 +10,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/fixture"
-	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
@@ -21,7 +20,6 @@ import (
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -31,9 +29,8 @@ func init() {
 		Desc:         "Checks on device multiword suggestions with physical keyboard typing",
 		Contacts:     []string{"curtismcmullan@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:input-tools"},
-		HardwareDeps: hwdep.D(hwdep.Model(pre.MultiwordEnabledModels...)),
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
-		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		SoftwareDeps: []string{"chrome", "chrome_internal", "ondevice_text_suggestions"},
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
