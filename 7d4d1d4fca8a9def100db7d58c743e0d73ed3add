@@ -16,6 +16,24 @@
       "message": "Why not just use DefaultDUT and PeerDUT? i.e. just pass in dutIdx to functions below.",
       "revId": "7d4d1d4fca8a9def100db7d58c743e0d73ed3add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca613416_5055f86e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-07-08T23:27:35Z",
+      "side": 1,
+      "message": "I was thinking to add `P2PDeviceAndroidPhone1` and `P2PDeviceAndroidPhone2` in the future as P2PDevice options and the function `P2PDeviceConn()` should return `*ssh.Conn` instead of `*dut.DUT`. However, I am not sure if the android phones can be accessed through ssh similar to the DUT, so I can run wpa_cli commands. I see the package `nearbysnippet` is used to interact with the android phones.\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/nearbyshare/nearbysnippet/snippet.go",
+      "parentUuid": "2cf19c5f_0ae483fb",
+      "revId": "7d4d1d4fca8a9def100db7d58c743e0d73ed3add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
