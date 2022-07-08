@@ -34,6 +34,24 @@
       "parentUuid": "4e0efa5d_2ed9adc6",
       "revId": "23e4fbac8f19ffd4fd17e571169af247cad793e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38757fe3_34dca05e",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-07-08T06:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8906b09b_e448ae39",
+      "revId": "23e4fbac8f19ffd4fd17e571169af247cad793e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
