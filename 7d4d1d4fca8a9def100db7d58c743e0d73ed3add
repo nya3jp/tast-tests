@@ -34,6 +34,24 @@
       "parentUuid": "2cf19c5f_0ae483fb",
       "revId": "7d4d1d4fca8a9def100db7d58c743e0d73ed3add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a6c3255_80c5979b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:50:52Z",
+      "side": 1,
+      "message": "Ah okay, that makes sense. Can you add those constants in (or at least a TODO) so that it makes sense why we\u0027re not using a dutIdx? Also the Unknown one is probably unnecessary.",
+      "parentUuid": "ca613416_5055f86e",
+      "revId": "7d4d1d4fca8a9def100db7d58c743e0d73ed3add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

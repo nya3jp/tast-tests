@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574fa2ee_2b89927f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:50:52Z",
+      "side": 1,
+      "message": "can you add a newline above this (maybe a comment as well) to make the separation clear for p2p related fields?",
+      "revId": "d2942b804d54aa31dbbe6f71df96d410280ef388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02641f2_47693e8a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 1539,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:50:52Z",
+      "side": 1,
+      "message": "I think it\u0027s sufficient to just say \"unexpected P2P device type: \" and then the int value",
+      "revId": "d2942b804d54aa31dbbe6f71df96d410280ef388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa7a9fd3_4426e86a",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:50:52Z",
+      "side": 1,
+      "message": "no need for this.",
+      "revId": "d2942b804d54aa31dbbe6f71df96d410280ef388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de54fa7c_cb47f986",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 1561,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:50:52Z",
+      "side": 1,
+      "message": "nit: can you combine these two lines into one line?",
+      "revId": "d2942b804d54aa31dbbe6f71df96d410280ef388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "878a4cf4_e3fbbbe1",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-08T23:50:52Z",
+      "side": 1,
+      "message": "same",
+      "revId": "d2942b804d54aa31dbbe6f71df96d410280ef388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
