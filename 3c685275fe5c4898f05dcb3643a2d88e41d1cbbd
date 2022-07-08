@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88e0b274_7b85dda1",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-08T21:20:34Z",
+      "side": 1,
+      "message": "This is to facilitate the upstream usage from the Chameleon APIs. e.g. https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3741526/4/src/chromiumos/tast/common/chameleon/audio.go#41\nwe had `type PortId int` as a parameter, and we don\u0027t have to do an explicit conversion through the reflection API on each of the chameleon audio APIs(like extract the int value of `PortId`).",
+      "parentUuid": "cc8cfb52_533bd664",
+      "range": {
+        "startLine": 312,
+        "startChar": 6,
+        "endLine": 312,
+        "endChar": 19
+      },
+      "revId": "3c685275fe5c4898f05dcb3643a2d88e41d1cbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7eb5e1d_7a6fc947",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-07-08T08:50:23Z",
       "side": 1,
       "message": "optional: How about making the structure of fixtures as follow:?\n\n// This one is for Chrome session\nassistantBaseWithHotword:\n  Impl: chrome.NewLoggedInFixture\n\n// This one is for setting up Assistant related things\nassistantWithHotword:\n  Impl: NewAssistantFixture\n  Parent: assistantBaseWithHotword\n\n// This one is for setting up Chameleon device related things\nassistantWithAudioBox:\n  Impl: NewAudioBoxFixture\n  Parent: assistantWithHotword\n  Vars: assistant.chameleon_host, ..., etc\n\nWith this, you can avoid having assistant related logic duplicated in NewAudioBoxFixture.",
+      "range": {
+        "startLine": 249,
+        "startChar": 9,
+        "endLine": 249,
+        "endChar": 26
+      },
+      "revId": "3c685275fe5c4898f05dcb3643a2d88e41d1cbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68dd4a5a_619719de",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-08T21:20:34Z",
+      "side": 1,
+      "message": "Thanks for the pointer!",
+      "parentUuid": "f7eb5e1d_7a6fc947",
       "range": {
         "startLine": 249,
         "startChar": 9,

@@ -835,6 +835,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8edf192f_bd627e71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-08T21:20:34Z",
+      "side": 1,
+      "message": "Sure, thanks! I think this use case is more for showcasing the possibility. I will check that in as a disabled test.",
+      "parentUuid": "c7c17a3f_93038772",
+      "range": {
+        "startLine": 30,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 41
+      },
+      "revId": "cee20016ef208c8380811fe1ee0910f11c36d894",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a640f693_7332c5ae",
