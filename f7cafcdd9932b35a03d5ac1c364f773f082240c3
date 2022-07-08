@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9b3c434d_2ffcec5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "All fixes. thanks for your reminder.",
+      "parentUuid": "7621e73a_41701833",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5ec08e66_2c495910",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49721fe1_cbb65da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e24af2b_871cc3e7",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7b3d20a_0e75dbe0",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-06-29T00:29:45Z",
       "side": 1,
       "message": "cros-network-health-team@google.com",
+      "range": {
+        "startLine": 32,
+        "startChar": 46,
+        "endLine": 32,
+        "endChar": 74
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8763b95d_a93a466b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7b3d20a_0e75dbe0",
       "range": {
         "startLine": 32,
         "startChar": 46,
@@ -169,6 +235,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa3137ae_a3e3ac39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Already used testing.ContextOutDir to replace /var/log, thanks for the suggestion",
+      "parentUuid": "a76e9ced_dfd1718e",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f63ad61_f7db851d",
@@ -182,6 +266,24 @@
       "writtenOn": "2022-06-29T00:29:45Z",
       "side": 1,
       "message": "unused",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15e27998_4a69f23e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "I have already removed this field.",
+      "parentUuid": "3f63ad61_f7db851d",
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -316,6 +418,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03af06fc_e276c6cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Thanks for your suggestion, I use WaitForVethInAddrs() to get the gateway address instead of setting it here.",
+      "parentUuid": "a1cf26b5_5ab59d01",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5cde9b1e_63174d27",
@@ -329,6 +449,24 @@
       "writtenOn": "2022-06-29T00:29:45Z",
       "side": 1,
       "message": "this doesn\u0027t seem necessary. any other thoughts here?",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc4ca78_3629dbaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Checking the nameservers used by shill with the ipconfig api and analyzing the http probe packets with the tcpdump utility is indeed sufficient proof that dnsmasq works. I removed this function to make the whole test clearer.",
+      "parentUuid": "5cde9b1e_63174d27",
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -356,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b183749_ac57b96a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "246c0885_52009cad",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 3
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3174a8cb_a6890cc1",
@@ -369,6 +531,30 @@
       "writtenOn": "2022-06-29T03:43:27Z",
       "side": 1,
       "message": "virtualnet.CreateRouterEnv() returns the associated service for this interface, we can use that directly if we only need the service.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "511d7f45_a7122aa8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3174a8cb_a6890cc1",
       "range": {
         "startLine": 101,
         "startChar": 1,
@@ -419,6 +605,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d449a5c4_d89f68a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "I couldn\u0027t find IPv4 and IPv6 categories in ipconfig properties, so I used len(strings.Split(ipAddr, \".\")) to check if ipconfig\u0027s ip address is IPv4 and skip if not. But I\u0027m not sure if this is the most efficient way",
+      "parentUuid": "fe32068c_36eb14e8",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e485de45_2a7b9755",
@@ -432,6 +636,24 @@
       "writtenOn": "2022-06-29T00:29:45Z",
       "side": 1,
       "message": "you can just directly check gateway here.",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b91fd794_2f44a2a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Corrected. If the name server is the same as the IP address of dnsmasq service, the function will return directly and the test will pass. If the correct name server is not found at the end, an error will be reported.",
+      "parentUuid": "e485de45_2a7b9755",
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -459,6 +681,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5acd8a04_a4ecdccc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Removed, this function is no longer used,",
+      "parentUuid": "1430c192_2db72619",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 18
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f15cfec2_dac9558d",
@@ -472,6 +718,24 @@
       "writtenOn": "2022-06-29T00:29:45Z",
       "side": 1,
       "message": "rm",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f54306_00bc8786",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f15cfec2_dac9558d",
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -525,6 +789,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "566233eb_1487235b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "I captured some tcp packets as follows:\n\n12:51:25.112075 IP 192.168.100.93.39590 \u003e 129.0.0.1.https: Flags [S], seq 3778806688, win 64240, options [mss 1460,sackOK,TS val 3476527466 ecr 0,nop,wscale 7], length 0\n12:51:25.112103 IP 192.168.100.93.44540 \u003e 129.0.0.1.http: Flags [S], seq 1742435852, win 64240, options [mss 1460,sackOK,TS val 3476527466 ecr 0,nop,wscale 7], length 0\n\nThis time I used regular expression to parse the string, the IP address needs to be on the right of the \u003e to prove that it is the dst IP. The IP address must be followed by the http string to prove that it is an http request. Not sure if this is enough? We can continue the discussion.",
+      "parentUuid": "4894f517_d36c41d6",
+      "range": {
+        "startLine": 182,
+        "startChar": 12,
+        "endLine": 182,
+        "endChar": 57
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12fb78a0_4fa591da",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 4
@@ -536,6 +824,30 @@
       "writtenOn": "2022-06-29T03:43:27Z",
       "side": 1,
       "message": "I suppose we can Service.WaitForConnectedOrError() or Service.WaitForProperty() to simplify this code.\nExample: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/routing_no_ip.go;drc\u003d22f182da6f80f806a24e162f8d428ceb27290128;l\u003d59",
+      "range": {
+        "startLine": 188,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 21
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a01acc8_58469e15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "You\u0027re right. Service.WaitForProperty() can do the same thing as my waitServiceReady() so I don\u0027t need to create my own version.",
+      "parentUuid": "12fb78a0_4fa591da",
       "range": {
         "startLine": 188,
         "startChar": 5,
@@ -571,6 +883,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90cdd842_d45b6b65",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "The program will determine whether to start dnsmasq according to EnableDHCP field, and then the DNS function of dnsmasq depends on whether opts.ResolvedHost is set. Is it more appropriate to change EnableDHCP to EnableDnsmasq?",
+      "parentUuid": "b7479976_aa1dd9a5",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 11
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c4b218d_ab169f20",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
         "patchSetId": 4
@@ -582,6 +918,30 @@
       "writtenOn": "2022-06-29T03:43:27Z",
       "side": 1,
       "message": "Worth some comments for the params, e.g., \"enabel DNS server functionality in dnsmasq if enableDNS is true; dns contains the DNS server list which will be broadcasted by DHCP\"",
+      "range": {
+        "startLine": 61,
+        "startChar": 28,
+        "endLine": 61,
+        "endChar": 37
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17da522e_d5bcff69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "I removed the enableDNS parameter and added comments for the new parameters: ResolvedHost and ResolveHostToIP.",
+      "parentUuid": "0c4b218d_ab169f20",
       "range": {
         "startLine": 61,
         "startChar": 28,
@@ -627,6 +987,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "550d9016_b2523344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "If there is no special setting, the default port is 53. If set to 0, DNS functionality is disabled. In dnsmasq.go, I referenced https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3689992 to avoid too many merge conflicts later, so I added port field here.",
+      "parentUuid": "623cbd38_03af2b44",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e419ac0_b106877d",
@@ -664,6 +1042,30 @@
       "side": 1,
       "message": "Normally a real name server would not resolve all hostnames to a set address. We should specify this is a temporary solution until we can support something a bit more sophisticated like providing a /etc/hosts-like file, for instance as a list of {net:IP, string} pairs.\n\nSo maybe say: \"Only support resolving all hostnames to a single IP address provided during configuration\".",
       "parentUuid": "2e419ac0_b106877d",
+      "range": {
+        "startLine": 33,
+        "startChar": 49,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3378efc_ade2ac19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "I ended up removing the EnableDNS field and adding ResolvedHost and ResolveHostToIP fields. When ResolvedHost and ResolveHostToIP are set, dnsmasq will resolve ResolvedHost to ResolveHostToIP.",
+      "parentUuid": "0f74a6d1_849d7ef1",
       "range": {
         "startLine": 33,
         "startChar": 49,
@@ -720,6 +1122,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5afaf8a_fe3e5291",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Great idea. I have modified it. Thank you for your suggestion.",
+      "parentUuid": "60424444_b635b6b7",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 17
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf76188_780ec9c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Understand. I used net.IP as the IP address\u0027s type.",
+      "parentUuid": "c6ac9c87_043e5d97",
+      "range": {
+        "startLine": 38,
+        "startChar": 18,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbe2c4d2_8fd02396",
@@ -733,6 +1183,30 @@
       "writtenOn": "2022-06-29T15:00:51Z",
       "side": 1,
       "message": "what is this field used for ?",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 7
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1040bdea_d1722f7a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "The dnsMasqParams struct is not used and has been removed because I can get those fields from env.go.",
+      "parentUuid": "bbe2c4d2_8fd02396",
       "range": {
         "startLine": 45,
         "startChar": 1,
@@ -766,6 +1240,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3949cb00_50ad674e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "The dnsMasqParams struct is not used and has been removed because I can get those fields from env.go.",
+      "parentUuid": "20b92abc_969feece",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a2a2032_e0e7c7d4",
@@ -779,6 +1277,30 @@
       "writtenOn": "2022-06-29T03:43:27Z",
       "side": 1,
       "message": "I suppose this struct is not needed according to other comments. If we still need it, it\u0027s better to avoid a global variable, since CreateRouterEnv() may be called multiple times.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "744790f1_5e81b853",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "The dnsMasqParams struct has been removed entirely.",
+      "parentUuid": "2a2a2032_e0e7c7d4",
       "range": {
         "startLine": 44,
         "startChar": 0,
@@ -860,6 +1382,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5730e3f5_55b35825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "You\u0027re right. If dhcp-option\u003doption:dns-server is not specifically set in the dnsmasq configuration, the DNS server will be the host on which dnsmasq is running. I have removed this statement. Thank you for the information.",
+      "parentUuid": "da87d46d_56dcf951",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c8beb0c_ae8a75f7",
@@ -873,6 +1413,30 @@
       "writtenOn": "2022-06-29T03:43:27Z",
       "side": 1,
       "message": "I think it\u0027s better to do this in dnsmasq.Start(), since when we enable its dns server functionality, we always want to include the address in the DHCP option.",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 85,
+        "endChar": 3
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aeea663_9635b147",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Based on the discussion above, I removed this statement.",
+      "parentUuid": "7c8beb0c_ae8a75f7",
       "range": {
         "startLine": 81,
         "startChar": 2,
@@ -906,6 +1470,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2547538c_4795928c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "The dnsMasqParams struct has been removed entirely.",
+      "parentUuid": "2f7b4ff7_ab2e5c15",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 36
+      },
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33d8b554_3180f1c1",
@@ -919,6 +1507,24 @@
       "writtenOn": "2022-06-29T00:29:45Z",
       "side": 1,
       "message": "I think you may have changed this accidentally",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f0d7ce5_71af6c40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "When I use shillconst.ServicePropertyEphemeralPriority, the test will report an error: Property EphemeralPriority does not exist, so I replaced this parameter. I will try to find a way to correct it.",
+      "parentUuid": "33d8b554_3180f1c1",
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

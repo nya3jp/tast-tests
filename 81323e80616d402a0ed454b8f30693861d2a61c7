@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20228d8f_45c4f864",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "Thank you for the information. This is new to me and fixtures are great for avoiding duplicate setups and redundant code.",
+      "parentUuid": "51f3766a_32c9ba07",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "81323e80616d402a0ed454b8f30693861d2a61c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "016a1bab_34cd3d46",
@@ -60,6 +84,30 @@
       "writtenOn": "2022-06-30T15:21:45Z",
       "side": 1,
       "message": "Just for my understanding, does this \u0027#\u0027 make the rest of the line a comment? Or is it doing something like including all address to this IP? Just curious as I am unsure what is happening here.",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "81323e80616d402a0ed454b8f30693861d2a61c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63226bf3_f0567702",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-08T20:24:39Z",
+      "side": 1,
+      "message": "According to the dnsmasq man page, \u0027#\u0027 matches any domain. For example, address\u003d/#/1.2.3.4 will always return 1.2.3.4 for any query. For my tests, I only care about the DNS resolved result, so I used \u0027#\u0027 here.",
+      "parentUuid": "016a1bab_34cd3d46",
       "range": {
         "startLine": 34,
         "startChar": 9,
