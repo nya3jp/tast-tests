@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55643140_68d3ac79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-08T02:17:33Z",
+      "side": 1,
+      "message": "So I was assigned as a reviewer again for tast...\nSorry for one more question after reading the code again",
+      "revId": "bcf4477abadc54931d590199eb799ad7ccbd5f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b6f8a4e_887df768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-08T02:17:33Z",
+      "side": 1,
+      "message": "sorry I was confused by this part, if both dns and forceAddressToGateway are empty, no DNS server will be broadcasted, is that correct? Is so, perhaps just \"dns defines the external DNS servers\" or something else?",
+      "range": {
+        "startLine": 51,
+        "startChar": 46,
+        "endLine": 51,
+        "endChar": 134
+      },
+      "revId": "bcf4477abadc54931d590199eb799ad7ccbd5f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c2b0239_7391e292",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-08T02:17:33Z",
+      "side": 1,
+      "message": "cleanup will be nil if err is not nil \nso maybe just\n```\ncleanup, err :\u003d h.env.EnterNetNS(ctx)\nif err !\u003d nil {\n  ...\n}\ndefer cleanup()\n...\n```",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 12
+      },
+      "revId": "bcf4477abadc54931d590199eb799ad7ccbd5f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
