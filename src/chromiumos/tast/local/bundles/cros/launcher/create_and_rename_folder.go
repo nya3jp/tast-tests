@@ -8,7 +8,6 @@ import (
 	"context"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/input"
@@ -76,36 +75,10 @@ func CreateAndRenameFolder(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	originallyEnabled, err := ash.TabletModeEnabled(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to check if DUT is in tablet mode: ", err)
-	}
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
-	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
-	}
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, true)
 	defer cleanup(ctx)
-
-	// When a DUT switches from tablet mode to clamshell mode, sometimes it takes a while to settle down.
-	if originallyEnabled && !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
-		}
-	}
-
-	// Open the Launcher and go to Apps list page.
-	if productivityLauncher && !tabletMode {
-		if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open bubble launcher: ", err)
-		}
-	} else {
-		if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open Expanded Application list view: ", err)
-		}
-	}
-
-	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 
 	if err := launcher.CreateFolder(ctx, tconn, productivityLauncher); err != nil {

@@ -125,6 +125,86 @@ func WaitForCategorizedResult(tconn *chrome.TestConn, category, result string) u
 	return ui.WaitUntilExists(SearchResultListItemFinder.Name(result).Ancestor(categoryListView))
 }
 
+// SetUpLauncherTest performs common launcher test setup steps that set correct tablet mode state, and open the launcher.
+// `tabletMode` indicates whether the test uses tablet mode or clamshell mode launcher.
+// `productivityLauncher` indicates whether the test uses productivity launcher, i.e. whether ProductivityLauncher feature is enabled.
+// `waitForStableAppCount` indicates whether setup should wait for the number of apps shown in the launcher to stabilize (and for
+// default system apps to finish installing). This can be skipped by tests that don't interact with the apps in the app list directly.
+// If unsure, set this to true.
+//
+// Returns a method that should be called to reset system UI state set by the method.
+// Expected usage is
+// “`
+//
+//	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, ...)
+//	defer cleanup(ctx)
+//	if err != nil {
+//	  s.Fatal("Test setup failed: ", err)
+//	}
+//
+// “`
+func SetUpLauncherTest(ctx context.Context, tconn *chrome.TestConn, tabletMode, productivityLauncher, waitForStableAppCount bool) (func(ctx context.Context) error, error) {
+	cleanupTabletMode, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	if err != nil {
+		return cleanupTabletMode, errors.Wrapf(err, "failed to ensure tablet mode state %t", tabletMode)
+	}
+
+	// Function that presses the Escape key twice to ensure that the clameshell mode is closed. Pressing the Escape key
+	// once is not always enough - if a folder is open, or the launcher is showing search results, pressing the Escape key
+	// will go back to the launcher apps page.
+	ensureLauncherClosed := func(ctx context.Context) error {
+		kb, err := input.Keyboard(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to find keyboard")
+		}
+		defer kb.Close()
+
+		if err := kb.TypeKey(ctx, input.KEY_ESC); err != nil {
+			return errors.Wrapf(err, "failed to send %d", input.KEY_ESC)
+		}
+		if err := kb.TypeKey(ctx, input.KEY_ESC); err != nil {
+			return errors.Wrapf(err, "failed to send %d for the second time", input.KEY_ESC)
+		}
+		return nil
+	}
+
+	if err := ensureLauncherClosed(ctx); err != nil {
+		return cleanupTabletMode, errors.Wrap(err, "Unable to ensure launcher closed")
+	}
+
+	if !tabletMode {
+
+		// Ensure that tablet mode launcher animation completes before proceeding with tests.
+		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
+			return cleanupTabletMode, errors.Wrap(err, "Launcher not closed after transition to clamshell mode")
+		}
+	}
+
+	if productivityLauncher {
+		if err := OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
+			return cleanupTabletMode, errors.Wrap(err, "failed to open bubble launcher")
+		}
+	} else {
+		if err := OpenExpandedView(tconn)(ctx); err != nil {
+			return cleanupTabletMode, errors.Wrap(err, "failed to open Expanded Application list view")
+		}
+	}
+
+	// Wait for the set of apps show in the launcher to stabilize - app insertion into the apps grid may interfere with
+	// certain operations within the apps grid (for example, app list item drag), and may cause failures if a default app
+	// is installed mid test.
+	if waitForStableAppCount {
+		if err := WaitForStableNumberOfApps(ctx, tconn); err != nil {
+			err = errors.Wrap(err, "failed to wait for item count in app list to stabilize")
+		}
+	}
+
+	return func(ctx context.Context) error {
+		ensureLauncherClosed(ctx)
+		return cleanupTabletMode(ctx)
+	}, err
+}
+
 // CreateAppSearchFinder creates a finder for an app search result in the current launcher search UI.
 // It expects the launcher search page to be open - search containers within which apps are searched depend on
 // whether productivity launcher is enabled, which is inferred from the current app list search UI state.

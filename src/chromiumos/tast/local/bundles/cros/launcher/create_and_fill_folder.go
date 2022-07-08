@@ -82,37 +82,19 @@ func CreateAndFillFolder(ctx context.Context, s *testing.State) {
 	}
 
 	tabletMode := testCase.TabletMode
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
-	if err != nil {
-		s.Fatalf("Failed to ensure tablet mode state %t: %v", tabletMode, err)
-	}
+
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, true)
 	defer cleanup(ctx)
 
-	if !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
-		}
-	}
-
-	usingBubbleLauncher := productivityLauncher && !tabletMode
-	// Open the Launcher on the apps grid page.
-	if usingBubbleLauncher {
-		if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open bubble launcher: ", err)
-		}
-	} else {
-		if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open Expanded Application list view: ", err)
-		}
-	}
-
-	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 
 	if err := launcher.CreateFolder(ctx, tconn, productivityLauncher); err != nil {
 		s.Fatal("Failed to create folder app: ", err)
 	}
+
+	usingBubbleLauncher := !tabletMode && productivityLauncher
 
 	// The folder already has 2 items. Add 46 more items to get to the maximum folder size of 48 apps.
 	if err := launcher.AddItemsToFolder(ctx, tconn, launcher.UnnamedFolderFinder, 46, !usingBubbleLauncher); err != nil {

@@ -53,19 +53,10 @@ func HideContinueSectionClamshell(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	// Bubble launcher requires clamshell mode.
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
-	if err != nil {
-		s.Fatal("Failed to ensure clamshell mode: ", err)
-	}
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, false, true, false)
 	defer cleanup(cleanupCtx)
-
-	if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-		s.Fatal("Launcher not closed: ", err)
-	}
-
-	// Ensure bubble launcher is open.
-	if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
-		s.Fatal("Failed to open bubble launcher: ", err)
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 
 	// Ensure continue section exists.
