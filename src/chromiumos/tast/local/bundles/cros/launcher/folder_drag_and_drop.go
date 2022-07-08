@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
@@ -81,35 +80,14 @@ func FolderDragAndDrop(ctx context.Context, s *testing.State) {
 	tabletMode := testCase.TabletMode
 	productivityLauncher := testCase.ProductivityLauncher
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
-	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
-	}
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, productivityLauncher, true)
 	defer cleanup(cleanupCtx)
-
-	if !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
-		}
-	}
-
-	usingBubbleLauncher := productivityLauncher && !tabletMode
-	// Open the Launcher and go to Apps list page.
-	if usingBubbleLauncher {
-		if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open bubble launcher: ", err)
-		}
-	} else {
-		if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open Expanded Application list view: ", err)
-		}
-	}
-
-	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 
 	ui := uiauto.New(tconn)
+	usingBubbleLauncher := productivityLauncher && !tabletMode
 	if !usingBubbleLauncher {
 		pageSwitcher := nodewith.ClassName("IconButton").Ancestor(nodewith.ClassName("PageSwitcher"))
 		if err := ui.WithTimeout(5 * time.Second).LeftClick(pageSwitcher.Nth(0))(ctx); err != nil {

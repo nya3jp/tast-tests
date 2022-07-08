@@ -147,24 +147,13 @@ func UninstallApp(ctx context.Context, s *testing.State) {
 	defer uninstall(cleanupCtx, cr, tconn, app)
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "uninstall_app_from_launcher")
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, app.isTabletMode)
-	if err != nil {
-		s.Fatalf("Failed to ensure tablet mode enabled(%v): %v", app.isTabletMode, err)
-	}
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, app.isTabletMode, true, true)
 	defer cleanup(cleanupCtx)
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "uninstall_app_from_launcher_after_tablet_mode_enabled")
-
-	// Wait for the launcher to change to closed state after exiting tablet mode,
-	// to make sure launcher is not still animating to hidden state from tablet mode change to clamshell mode.
-	if !app.isTabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Failed to wait launcher closed: ", err)
-		}
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 
-	if err := launcher.Open(tconn)(ctx); err != nil {
-		s.Fatal("Failed to open launcher: ", err)
-	}
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "uninstall_app_from_launcher_after_test_setup")
 
 	ui := uiauto.New(tconn)
 

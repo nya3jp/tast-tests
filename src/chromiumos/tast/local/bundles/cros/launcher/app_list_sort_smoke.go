@@ -110,36 +110,12 @@ func AppListSortSmoke(ctx context.Context, s *testing.State) {
 	}
 
 	tabletMode := testParam.TabletMode
-	originallyEnabled, err := ash.TabletModeEnabled(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to check if DUT is in tablet mode: ", err)
-	}
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
-	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
-	}
+
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true, true)
 	defer cleanup(ctx)
 
-	// Ensure that the tablet launcher is closed before opening a launcher instance for test in clamshell.
-	if originallyEnabled && !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
-		}
-	}
-
-	// Ensure that the launcher shows.
-	if tabletMode {
-		if err := launcher.OpenExpandedView(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open expanded Application list view: ", err)
-		}
-	} else {
-		if err := launcher.OpenBubbleLauncher(tconn)(ctx); err != nil {
-			s.Fatal("Failed to open bubble launcher: ", err)
-		}
-	}
-
-	if err := launcher.WaitForStableNumberOfApps(ctx, tconn); err != nil {
-		s.Fatal("Failed to wait for item count in app list to stabilize: ", err)
+	if err != nil {
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 
 	appsGrid := nodewith.ClassName(launcher.BubbleAppsGridViewClass)

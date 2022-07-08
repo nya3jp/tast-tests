@@ -112,20 +112,11 @@ func RecentApps(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tabletMode, true, true)
+	defer cleanup(ctx)
+
 	if err != nil {
-		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
-	}
-	defer cleanup(cleanupCtx)
-
-	if !tabletMode {
-		if err := ash.WaitForLauncherState(ctx, tconn, ash.Closed); err != nil {
-			s.Fatal("Launcher not closed after transition to clamshell mode: ", err)
-		}
-	}
-
-	if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
-		s.Fatal("Failed to open launcher: ", err)
+		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 
 	// Recent apps always show the first time with default suggestions.
