@@ -51,68 +51,65 @@ func SearchHelpContent(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(cleanupCtx)
 
-	s.Log("Setting up test API")
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to Test API: ", err)
 	}
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr,
+		"ui_dump")
 
 	ui := uiauto.New(tconn)
 
-	s.Log("Setting up keyboard")
+	// Setting up keyboard.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
 	}
 	defer kb.Close()
 
-	s.Log("Launching feedback app")
+	// Launching feedback app.
 	feedbackRootNode, err := feedbackapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch feedback app: ", err)
 	}
 
-	s.Log("Verifying help content title")
+	// Verifying help content title.
 	title := nodewith.Name("Top help content").Role(role.StaticText).Ancestor(feedbackRootNode)
 	if err := ui.WaitUntilExists(title)(ctx); err != nil {
 		s.Fatal("Failed to find the help content title: ", err)
 	}
 
-	s.Log("Verifying there are five default help links")
+	// Verifying there are five default help links.
 	_, err = verifyLinks(ctx, tconn, 5)
 	if err != nil {
 		s.Fatal("Failed to find five help links: ", err)
 	}
 
-	s.Log("Looking for the issue description text input")
+	// Looking for the issue description text input.
 	issueDescriptionInput := nodewith.Role(role.TextField).Ancestor(feedbackRootNode)
-	if err := uiauto.Combine("Focus text field",
-		ui.WaitUntilExists(issueDescriptionInput),
-		ui.EnsureFocused(issueDescriptionInput),
-	)(ctx); err != nil {
+	if err := ui.EnsureFocused(issueDescriptionInput)(ctx); err != nil {
 		s.Fatal("Failed to find the issue description text input: ", err)
 	}
 
-	s.Log("Typing issue description")
+	// Typing issue description.
 	if err := kb.Type(ctx, "I am not able to connect to Bluetooth"); err != nil {
 		s.Fatal("Failed to type issue description: ", err)
 	}
 
-	s.Log("Verifying help content title has changed")
+	// Verifying help content title has changed.
 	updatedTitle := nodewith.Name("Suggested help content").Role(role.StaticText).Ancestor(
 		feedbackRootNode)
 	if err := ui.WaitUntilExists(updatedTitle)(ctx); err != nil {
 		s.Fatal("Failed to find the updated help content title: ", err)
 	}
 
-	s.Log("Verifying there are five help content link")
+	// Verifying there are five help content link.
 	updatedHelpLink, err := verifyLinks(ctx, tconn, 5)
 	if err != nil {
 		s.Fatal("Failed to find five help links: ", err)
 	}
 
-	s.Log("Verifying the link can be opened")
+	// Verifying the link can be opened.
 	if err := ui.LeftClick(updatedHelpLink.First())(ctx); err != nil {
 		s.Fatal("Failed to open help link: ", err)
 	}

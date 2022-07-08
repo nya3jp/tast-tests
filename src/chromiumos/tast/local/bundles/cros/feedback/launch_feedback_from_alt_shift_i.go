@@ -49,16 +49,16 @@ func LaunchFeedbackFromAltShiftI(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(cleanupCtx)
 
-	s.Log("Setting up test API")
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to Test API: ", err)
 	}
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr,
+		"ui_dump")
 
-	ui := uiauto.New(tconn)
+	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
-	s.Log("Setting up keyboard")
+	// Setting up keyboard.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
@@ -66,12 +66,12 @@ func LaunchFeedbackFromAltShiftI(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		s.Log("Launching Feedback app with alt+shift+i")
+		// Launching Feedback app with alt+shift+i.
 		if err := kb.Accel(ctx, "Alt+Shift+I"); err != nil {
 			return errors.Wrap(err, "failed pressing alt+shift+i")
 		}
 
-		s.Log("Verifying Feedback app is launched")
+		// Verifying Feedback app is launched.
 		if err = ash.WaitForApp(ctx, tconn, apps.Feedback.ID, 20*time.Second); err != nil {
 			return errors.Wrap(err, "could not find app in shelf after launch")
 		}
@@ -81,24 +81,22 @@ func LaunchFeedbackFromAltShiftI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed launching Feedback app: ", err)
 	}
 
-	s.Log("Verifying issue description input exists")
+	// Verifying essential elements exist.
 	issueDescriptionInput := nodewith.Role(role.TextField)
-	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(issueDescriptionInput)(
-		ctx); err != nil {
-		s.Error("Failed to find the issue description text input: ", err)
-	}
-
-	s.Log("Verifying continue button exists")
 	button := nodewith.Name("Continue").Role(role.Button)
-	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(button)(ctx); err != nil {
-		s.Error("Failed to find continue button: ", err)
+
+	if err := uiauto.Combine("Verify essential elements exist",
+		ui.WaitUntilExists(issueDescriptionInput),
+		ui.WaitUntilExists(button),
+	)(ctx); err != nil {
+		s.Fatal("Failed to find element: ", err)
 	}
 
-	s.Log("Verifying five default help content links exist")
+	// Verifying five default help content links exist.
 	helpLink := nodewith.Role(role.Link).Ancestor(nodewith.Role(role.Iframe))
 	for i := 0; i < 5; i++ {
 		item := helpLink.Nth(i)
-		if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(item)(ctx); err != nil {
+		if err := ui.WaitUntilExists(item)(ctx); err != nil {
 			s.Error("Failed to find five help links: ", err)
 		}
 	}
