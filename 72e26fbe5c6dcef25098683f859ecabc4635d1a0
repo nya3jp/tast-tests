@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ad9103c_917dad16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-08T09:39:57Z",
+      "side": 1,
+      "message": "nit: prefix should be the package name (or tast-tests if you change multiple packages).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "72e26fbe5c6dcef25098683f859ecabc4635d1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "016dd502_a030dfe9",
@@ -14,6 +37,24 @@
       "writtenOn": "2022-07-07T23:56:39Z",
       "side": 1,
       "message": "Sorry, I don\u0027t really like TEST\u003dNone\n\n1. Please run tast unit test: ./fast_build.sh -T\n   Then add \nTEST\u003dtast unit test passed\n   in the commit log.\n\n2. Please manually run the affected tests.\n\n3. nit: Please include a valid buganizer number. (3) is really a nit.\n\nThanks.\n",
+      "revId": "72e26fbe5c6dcef25098683f859ecabc4635d1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dac9e241_a4445fbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-08T09:39:57Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "016dd502_a030dfe9",
       "revId": "72e26fbe5c6dcef25098683f859ecabc4635d1a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
