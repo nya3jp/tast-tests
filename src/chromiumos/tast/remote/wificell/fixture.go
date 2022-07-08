@@ -255,7 +255,7 @@ func (f *tastFixtureImpl) recoverUnhealthyDUT(ctx context.Context, d *dut.DUT, s
 }
 
 func (f *tastFixtureImpl) enrollChrome(ctx context.Context, s *testing.FixtState, dutIdx int) error {
-	pc := policy.NewPolicyServiceClient(f.tf.duts[dutIdx].rpc.Conn)
+	pc := policy.NewPolicyServiceClient(f.tf.duts[dutIdx].RpcConn())
 	pJSON, err := json.Marshal(policyBlob.NewBlob())
 	if err != nil {
 		return errors.Wrap(err, "failed to serialize policies")
@@ -402,20 +402,20 @@ func (f *tastFixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 	duts := f.tf.duts // Make a copy of the slice to iterate over.
 	for _, d := range duts {
 		if f.features&TFFeaturesEnroll != 0 {
-			pc := policy.NewPolicyServiceClient(d.rpc.Conn)
+			pc := policy.NewPolicyServiceClient(d.RpcConn())
 
 			if _, err := pc.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
 				s.Error("Failed to close Chrome instance and Fake DMS: ", err)
 			}
 
 			// Reset DUT TPM and system state to leave it in a good state post test.
-			if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, d.dut); err != nil {
+			if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, d.DUT()); err != nil {
 				s.Error("Failed to reset TPM: ", err)
 			}
 		}
 		// Ensure DUT is healthy here again, so that we don't leave with
 		// bad state to later tests/tasks.
-		if err := f.recoverUnhealthyDUT(ctx, d.dut, s); err != nil {
+		if err := f.recoverUnhealthyDUT(ctx, d.DUT(), s); err != nil {
 			s.Fatal("Failed to recover unhealthy DUT: ", err)
 		}
 	}

@@ -47,10 +47,11 @@ type supportedRouter interface {
 // It is comprised of a hostapd and a dhcpd. The DHCP server is assigned with the subnet
 // 192.168.$subnetIdx.0/24.
 type APIface struct {
-	router    supportedRouter
-	name      string
-	iface     string
-	subnetIdx byte
+	wifiRouter WiFiRouter
+	router     supportedRouter
+	name       string
+	iface      string
+	subnetIdx  byte
 
 	hostapd *hostapd.Server
 	dhcpd   *dhcp.Server
@@ -99,7 +100,7 @@ func (h *APIface) ServerSubnet() *net.IPNet {
 // StartAPIface starts the service.
 // After started, the caller should call h.Stop() at the end, and use the shortened ctx
 // (provided by h.ReserveForStop()) before h.Stop() to reserve time for h.Stop() to run.
-func StartAPIface(ctx context.Context, r router.Base, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
+func StartAPIface(ctx context.Context, r WiFiRouter, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "StartAPIface")
 	defer st.End()
 
@@ -107,12 +108,13 @@ func StartAPIface(ctx context.Context, r router.Base, name string, conf *hostapd
 	var err error
 
 	// Validate router support.
-	if rSupported, ok := r.(supportedRouter); ok {
+	if rSupported, ok := r.obj().(supportedRouter); ok {
 		h.router = rSupported
 	} else {
 		return nil, errors.New("router type must support Hostapd and DHCP")
 	}
 
+	h.wifiRouter = r
 	h.hostapd, err = h.router.StartHostapd(ctx, name, conf)
 	if err != nil {
 		return nil, err
