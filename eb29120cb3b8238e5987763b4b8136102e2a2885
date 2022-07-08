@@ -88,6 +88,24 @@
       "parentUuid": "410474b2_9cebe30e",
       "revId": "eb29120cb3b8238e5987763b4b8136102e2a2885",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f2748f1_6f214de4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-07-08T00:32:42Z",
+      "side": 1,
+      "message": "in that case can we rename these tests and fixtures to _composited_non_delegated to differentiate + follow the convention?",
+      "parentUuid": "b977951c_22360046",
+      "revId": "eb29120cb3b8238e5987763b4b8136102e2a2885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
