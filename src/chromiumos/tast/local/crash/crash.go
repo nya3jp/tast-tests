@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/session"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -208,6 +209,12 @@ func GetCrashDir(ctx context.Context, username string) (string, error) {
 
 // GetDaemonStoreCrashDirs gives the paths to the daemon store crash directories for the currently active sessions.
 func GetDaemonStoreCrashDirs(ctx context.Context) ([]string, error) {
+	// Need to wait until the UI job is running and has stablized in order to ensure
+	// that daemon-store will be available.
+	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
+		return []string{}, errors.Wrap(err, "failed to ensure ui job is running")
+	}
+
 	sessionManager, err := session.NewSessionManager(ctx)
 	if err != nil {
 		return []string{}, errors.Wrap(err, "couldn't start session manager")
@@ -228,6 +235,12 @@ func GetDaemonStoreCrashDirs(ctx context.Context) ([]string, error) {
 
 // GetDaemonStoreConsentDirs gives the paths to the daemon store consent directories for the currently active sessions.
 func GetDaemonStoreConsentDirs(ctx context.Context) ([]string, error) {
+	// Need to wait until the UI job is running and has stablized in order to ensure
+	// that daemon-store will be available.
+	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
+		return []string{}, errors.Wrap(err, "failed to ensure ui job is running")
+	}
+
 	sessionManager, err := session.NewSessionManager(ctx)
 	if err != nil {
 		return []string{}, errors.Wrap(err, "couldn't start session manager")
