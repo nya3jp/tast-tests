@@ -16,6 +16,7 @@ const (
 	DefaultManaged                        = "default_managed"
 	Enrollment                            = "enrollment"
 	EnrollmentSaml                        = "enrollment_saml"
+	EnrollmentKiosk                       = "enrollment_kiosk"
 )
 
 // PoolIds for unmanaged owned test accounts.
