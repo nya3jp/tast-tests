@@ -8,6 +8,8 @@ package filesapp
 import (
 	"context"
 	"fmt"
+	"os"
+	"path/filepath"
 	"regexp"
 	"strings"
 	"time"
@@ -114,6 +116,22 @@ func LaunchSWA(ctx context.Context, tconn *chrome.TestConn) (*FilesApp, error) {
 	// Launch the Files App.
 	if err := apps.LaunchSystemWebApp(ctx, tconn, "File Manager", "chrome://file-manager"); err != nil {
 		return nil, err
+	}
+
+	return App(ctx, tconn, apps.FilesSWA.ID)
+}
+
+// LaunchSWAToPath launches the Files app directly to the supplied path.
+// This avoids navigating the Files app when you want to just access the folder directly.
+func LaunchSWAToPath(ctx context.Context, tconn *chrome.TestConn, path string) (*FilesApp, error) {
+	if !filepath.IsAbs(path) {
+		return nil, errors.New("failed as supplied path is not absolute")
+	}
+	if info, err := os.Stat("/path/to/whatever"); os.IsNotExist(err) || !info.IsDir() {
+		return nil, errors.New("failed as supplied path does not exist or is not a directory")
+	}
+	if err := tconn.Call(ctx, nil, `tast.promisify(chrome.autotestPrivate.launchFilesAppToFolder)`, path); err != nil {
+		return nil, errors.Wrapf(err, "failed to launch Files app to path: %q", path)
 	}
 
 	return App(ctx, tconn, apps.FilesSWA.ID)
