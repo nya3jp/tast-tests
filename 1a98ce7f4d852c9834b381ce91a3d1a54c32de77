@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30dbdb3e_abb3bc53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-09T03:34:08Z",
+      "side": 1,
+      "message": "BTW I\u0027m curious whether this is really needed. Somehow the test still passes on my machine even if I remove these lines...\nIs this specific to some environments?",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 2
+      },
+      "revId": "1a98ce7f4d852c9834b381ce91a3d1a54c32de77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
