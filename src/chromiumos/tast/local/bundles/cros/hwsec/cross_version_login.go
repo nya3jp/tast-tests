@@ -55,6 +55,7 @@ func init() {
 				"R100-14526.0.0_betty_20220712",
 				"R101-14588.0.0_betty_20220712",
 				"R102-14695.0.0_betty_20220712",
+				"R103-14816.99.0_betty_20220712",
 			},
 			ExtraData: []string{
 				// See cross_version_login/README.md on how to create these.
@@ -82,6 +83,8 @@ func init() {
 				"cross_version_login/R101-14588.0.0_betty_20220712_data.tar.gz",
 				"cross_version_login/R102-14695.0.0_betty_20220712_config.json",
 				"cross_version_login/R102-14695.0.0_betty_20220712_data.tar.gz",
+				"cross_version_login/R103-14816.99.0_betty_20220712_config.json",
+				"cross_version_login/R103-14816.99.0_betty_20220712_data.tar.gz",
 			},
 		}, {
 			Name:              "tpm_dynamic",
@@ -94,6 +97,7 @@ func init() {
 				"R100-14526.0.0_reven-vmtest_20220712",
 				"R101-14588.0.0_reven-vmtest_20220712",
 				"R102-14695.0.0_reven-vmtest_20220712",
+				"R103-14816.99.0_reven-vmtest_20220712",
 			},
 			ExtraData: []string{
 				"cross_version_login/R96-14268.0.0_reven-vmtest_20220712_config.json",
@@ -110,6 +114,8 @@ func init() {
 				"cross_version_login/R101-14588.0.0_reven-vmtest_20220712_data.tar.gz",
 				"cross_version_login/R102-14695.0.0_reven-vmtest_20220712_config.json",
 				"cross_version_login/R102-14695.0.0_reven-vmtest_20220712_data.tar.gz",
+				"cross_version_login/R103-14816.99.0_reven-vmtest_20220712_config.json",
+				"cross_version_login/R103-14816.99.0_reven-vmtest_20220712_data.tar.gz",
 			},
 		}, {
 			// To test data migration from the current device to itself. This is for verifying the functionality of hwsec.CrossVersionLogin and hwsec.PrepareCrossVersionLoginData.
