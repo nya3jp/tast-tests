@@ -33,6 +33,52 @@
       "message": "Hi Puthik/Mengqi,\n\nCan you please review this CL?",
       "revId": "852b10049bc54eb20c3a503124126dbc08986c02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b59e4f3f_3948d7ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/time_taken_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-07-09T00:45:12Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this \"or\" instead of \"and\"?\n\nIt should fail in case like suspend takes 0.1 seconds but resume take 10 seconds",
+      "range": {
+        "startLine": 126,
+        "startChar": 21,
+        "endLine": 126,
+        "endChar": 24
+      },
+      "revId": "852b10049bc54eb20c3a503124126dbc08986c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c90f104_08c2aee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/time_taken_suspend_resume.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-07-09T00:45:12Z",
+      "side": 1,
+      "message": "Do not hard code 1 second as time limit on both constant.\nAlso note that actual resume time limit for S0ix is 0.5 seconds",
+      "range": {
+        "startLine": 126,
+        "startChar": 9,
+        "endLine": 126,
+        "endChar": 20
+      },
+      "revId": "852b10049bc54eb20c3a503124126dbc08986c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
