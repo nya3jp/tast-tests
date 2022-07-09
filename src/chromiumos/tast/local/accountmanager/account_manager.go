@@ -323,6 +323,7 @@ func removeSelectedAccountFromOSSettings(ctx context.Context, tconn *chrome.Test
 	if err := uiauto.Combine("Click Remove account",
 		ui.WaitUntilExists(removeAccountButton),
 		ui.LeftClick(removeAccountButton),
+		ui.WaitUntilGone(removeAccountButton),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to to click Remove account")
 	}
@@ -356,36 +357,15 @@ func TestCleanup(ctx context.Context, tconn *chrome.TestConn, cr *chrome.Chrome)
 
 	moreActionsButton := nodewith.NameStartingWith("More actions,").Role(role.Button).First()
 	for {
-		moreActionsFound, err := ui.IsNodeFound(ctx, moreActionsButton)
-		if err != nil {
-			return errors.Wrap(err, "failed to search for More actions button")
-		}
-		if !moreActionsFound {
+		if err := ui.Exists(moreActionsButton)(ctx); err != nil {
 			// There are no "More actions, *" buttons left. It means all secondary accounts are removed.
 			break
 		}
-
-		// Select specific "More actions, <email> button.
-		info, err := ui.Info(ctx, moreActionsButton)
-		if err != nil {
-			return errors.Wrap(err, "failed to get More actions button info")
-		}
-		accountMoreActionsButton := nodewith.Name(info.Name).Role(role.Button)
-
-		// Find and click "More actions, <email>" button.
-		if err := uiauto.Combine("Click More actions",
-			ui.WaitUntilExists(accountMoreActionsButton),
-			ui.LeftClick(accountMoreActionsButton),
-		)(ctx); err != nil {
+		if err := ui.LeftClick(moreActionsButton)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click More actions button")
 		}
-
 		if err := removeSelectedAccountFromOSSettings(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to remove account from OS Setting")
-		}
-
-		if err := ui.WaitUntilGone(accountMoreActionsButton)(ctx); err != nil {
-			return errors.Wrap(err, "failed to wait until account is removed")
 		}
 	}
 
