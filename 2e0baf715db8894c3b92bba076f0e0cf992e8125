@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ee05fb_442911a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-10T23:17:29Z",
+      "side": 1,
+      "message": "Please respect the commit message. This CL includes much more than enabling LaCrOS. Most use body section to summarise each change. Otherwise you should split out the change to separate CL.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "2e0baf715db8894c3b92bba076f0e0cf992e8125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db19dacb_5987cc67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-10T23:17:29Z",
+      "side": 1,
+      "message": "nit:\n\nreturn ash.ForEachWindow(ctx, g.tconn, func(w *ash.Window) error {\n\t\t\treturn ash.SetWindowStateAndWait(ctx, g.tconn, w.ID, ash.WindowStateMaximized)\n\t\t});",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 12
+      },
+      "revId": "2e0baf715db8894c3b92bba076f0e0cf992e8125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a808525_f7742a5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-10T23:17:29Z",
+      "side": 1,
+      "message": "Please return uiauto.Action, g.login is not recommended. \n\nTo handle the newly added condition check, you can use IfSuccessThen, or create a new IfFailThen: \n\nhttps://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d863",
+      "range": {
+        "startLine": 106,
+        "startChar": 23,
+        "endLine": 106,
+        "endChar": 55
+      },
+      "revId": "2e0baf715db8894c3b92bba076f0e0cf992e8125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
