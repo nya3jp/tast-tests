@@ -99,6 +99,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24e1f465_403df4e6",
+        "filename": "src/chromiumos/tast/common/xmlrpc/xmlrpc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-11T21:47:34Z",
+      "side": 1,
+      "message": "Ack. Thank you for the explanation!\n\nWould you mind adding a comment about its intention? e.g. define newType here to test that xmlrpc API can handle type wrapping around primitive types, etc.",
+      "parentUuid": "88e0b274_7b85dda1",
+      "range": {
+        "startLine": 312,
+        "startChar": 6,
+        "endLine": 312,
+        "endChar": 19
+      },
+      "revId": "3c685275fe5c4898f05dcb3643a2d88e41d1cbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7eb5e1d_7a6fc947",
