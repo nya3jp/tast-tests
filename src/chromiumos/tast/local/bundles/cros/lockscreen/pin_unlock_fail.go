@@ -30,11 +30,9 @@ func init() {
 
 func PinUnlockFail(ctx context.Context, s *testing.State) {
 	const (
-		Pin      = "1234567890"
-		wrongPin = "0123456789"
-		// TODO(b/234715681): Change lockout attempts to the correct value 5 after auth_locked
-		// is set correctly after lockout.
-		lockoutAttempts = 6
+		Pin             = "1234567890"
+		wrongPin        = "0123456789"
+		lockoutAttempts = 5
 	)
 
 	cr, err := chrome.New(ctx)
