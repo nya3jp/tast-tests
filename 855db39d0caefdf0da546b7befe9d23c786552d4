@@ -283,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f15b427_b4a57d04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-11T06:04:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54031a65_9e545827",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6728e63d_7e80f874",
@@ -367,6 +391,30 @@
       "side": 1,
       "message": "If I do inline, like this\n`if dxRootnode, err :\u003d diagnosticsapp.Launch(ctx, tconn); err !\u003d nil {\n s.Fatal(\"Could not open diagnostics app: \", err)\n }`\n I need the `dxRootnode` below.",
       "parentUuid": "509e5c49_0d0e1cc4",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 16
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22c663cc_0062f679",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-11T06:04:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b8ee62f9_42e79762",
       "range": {
         "startLine": 78,
         "startChar": 0,
@@ -602,6 +650,30 @@
       "side": 1,
       "message": "I combined them but I need to head to office to run it on DUT. Thank you",
       "parentUuid": "9b027495_84b57a7a",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b82f8331_90545cb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-11T06:04:34Z",
+      "side": 1,
+      "message": "It\u0027s possible to deploy to a DUT from home, let me know if you have trouble finding instructions :)",
+      "parentUuid": "c68c0e1c_33568f5f",
       "range": {
         "startLine": 85,
         "startChar": 0,
