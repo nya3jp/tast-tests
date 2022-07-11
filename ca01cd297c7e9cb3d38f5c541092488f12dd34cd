@@ -16,6 +16,46 @@
       "message": "+yulunwu for another pair of eyes",
       "revId": "ca01cd297c7e9cb3d38f5c541092488f12dd34cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4f8e2c_b5ccba69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-07-11T23:54:04Z",
+      "side": 1,
+      "message": "Thank you! It is very useful",
+      "revId": "ca01cd297c7e9cb3d38f5c541092488f12dd34cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ce67c94_49a1bfe6",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1299441
+      },
+      "writtenOn": "2022-07-11T23:54:04Z",
+      "side": 1,
+      "message": "nit: if I remember correctly, in the golang code, the function parameter should not be embraced by \"`\". Therefore, use tabletMode directly here.",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 15
+      },
+      "revId": "ca01cd297c7e9cb3d38f5c541092488f12dd34cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
