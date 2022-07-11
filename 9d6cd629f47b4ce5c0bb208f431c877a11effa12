@@ -34,6 +34,24 @@
       "parentUuid": "c5a976a0_b6e80ce0",
       "revId": "9d6cd629f47b4ce5c0bb208f431c877a11effa12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76e6f0ba_378ef6fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-11T23:25:36Z",
+      "side": 0,
+      "message": "Yes the general guidance is to use the golang packages as much as possible. Idiomatic go is easier to follow then exec\u0027ing out to a utility. This generally helps with being more readable and understandable.\n\nI think in this case give nthe additional complexity required just to get the same functionality as `--preserve-permissions` I\u0027d be happy to CR+2. What I would ask is you break the command out to separate lines and comment each flag and what you\u0027re trying to achieve by using it, e.g.\n```\ntestexec.CommandContext(ctx, \"tar\"\n  \"--extract\", // Extracts the supplied source to stdout.\n  \"--gzip\",    // Use gzip to decode the archive whilst extracting.\n...\n}\n```",
+      "parentUuid": "2e3bd202_ccef2591",
+      "revId": "9d6cd629f47b4ce5c0bb208f431c877a11effa12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

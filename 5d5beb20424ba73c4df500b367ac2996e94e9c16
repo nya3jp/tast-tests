@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d815c296_860c28c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-11T23:25:36Z",
+      "side": 1,
+      "message": "I think it\u0027s better to be absolute with the utility, e.g. `/bin/tar` instead of setting this.",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 14
+      },
+      "revId": "5d5beb20424ba73c4df500b367ac2996e94e9c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24269338_2daba8db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-11T23:25:36Z",
+      "side": 1,
+      "message": "This will bail out on the first error, did you want to continue the removal and error only if \u003e0 failed?",
+      "range": {
+        "startLine": 190,
+        "startChar": 10,
+        "endLine": 190,
+        "endChar": 22
+      },
+      "revId": "5d5beb20424ba73c4df500b367ac2996e94e9c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2701b8a8_01de215a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-11T23:25:36Z",
+      "side": 1,
+      "message": "nit does not",
+      "range": {
+        "startLine": 216,
+        "startChar": 19,
+        "endLine": 216,
+        "endChar": 21
+      },
+      "revId": "5d5beb20424ba73c4df500b367ac2996e94e9c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
