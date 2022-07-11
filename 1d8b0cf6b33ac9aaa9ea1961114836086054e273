@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a4abcbf_6090e419",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-07-11T00:57:45Z",
+      "side": 1,
+      "message": "I\u0027m not sure how I can test this against the Sydney Satlab DUT -- or are you happy for me to just cowboy this straight in, Misha/Eunice?",
+      "revId": "1d8b0cf6b33ac9aaa9ea1961114836086054e273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
