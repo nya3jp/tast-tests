@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfb1aed3_976bfad3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-11T23:52:43Z",
+      "side": 1,
+      "message": "this opens 4 windows, right? Can we add a browser with 2 tabs?",
+      "revId": "7373137d43426f7d7d14bfe84ae89c7bcf81be41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
