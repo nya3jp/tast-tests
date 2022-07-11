@@ -16,6 +16,24 @@
       "message": "Can you fix the bug description? Looks like Loic unintentionally changed it.",
       "revId": "af692a4d3450e24b0f9befe30288db1c2c254eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4be76093_e3d52217",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-11T20:57:44Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. Did not notice this bug had also been altered.",
+      "parentUuid": "dd0c2d80_4bb0e7cb",
+      "revId": "af692a4d3450e24b0f9befe30288db1c2c254eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
