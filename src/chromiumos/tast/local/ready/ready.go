@@ -319,15 +319,15 @@ func ensureTPMInitialized(ctx context.Context) error {
 	tpmStatus := func(ctx context.Context) (enabled, initialized, owned, runtimeSelect bool, err error) {
 		tpmOut, err := testexec.CommandContext(ctx, "tpm_manager_client", "status", "--nonsensitive").Output()
 		if err != nil {
-			return false, false, false, false, err
+			return false, false, false, false, errors.Wrap(err, "tpm_manager_client status failed")
 		}
 		tpmFeaturesOut, err := testexec.CommandContext(ctx, "tpm_manager_client", "get_supported_features").Output()
 		if err != nil {
-			return false, false, false, false, err
+			return false, false, false, false, errors.Wrap(err, "tpm_manager_client get_supported_features failed")
 		}
 		attestOut, err := testexec.CommandContext(ctx, "attestation_client", "status").Output()
 		if err != nil {
-			return false, false, false, false, err
+			return false, false, false, false, errors.Wrap(err, "attestation_client status failed")
 		}
 		return tpmEnabledRegexp.Match(tpmOut), tpmInitializedRegexp.Match(attestOut), tpmOwnedRegexp.Match(tpmOut), tpmSupportRuntimeSelectionRegexp.Match(tpmFeaturesOut), nil
 	}
@@ -335,7 +335,7 @@ func ensureTPMInitialized(ctx context.Context) error {
 	// Check if the TPM is disabled or already initialized.
 	enabled, initialized, owned, runtimeSelect, err := tpmStatus(ctx)
 	if err != nil {
-		return err
+		return errors.Wrap(err, "failed to obtain TPM status")
 	} else if !enabled || (!runtimeSelect && initialized) {
 		return nil
 	}
@@ -345,7 +345,7 @@ func ensureTPMInitialized(ctx context.Context) error {
 		testing.ContextLog(ctx, "TPM is already owned; finishing initialization")
 	}
 	if err := testexec.CommandContext(ctx, "tpm_manager_client", "take_ownership").Run(); err != nil {
-		return err
+		return errors.Wrap(err, "tpm_manager_client take_ownership failed")
 	}
 	// Don't wait for attestation prepared when we are using TPM runtime selection.
 	if runtimeSelect {
