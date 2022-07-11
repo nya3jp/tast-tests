@@ -59,6 +59,7 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 		expectedFileContents = "test file contents"
 		localServerPort      = 8080
 		installTimeout       = 15 * time.Second
+		testAppID            = "cpdpbfelifklonephgpieimdpcecgoen"
 	)
 
 	// Setup the test file.
@@ -109,12 +110,11 @@ func Sharesheet(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	appID, err := apps.InstallPWAForURL(ctx, cr, fmt.Sprintf("http://localhost:%v/sharesheet_index.html", localServerPort), installTimeout)
-	if err != nil {
+	if err := apps.InstallPWAForURL(ctx, tconn, cr.Browser(), fmt.Sprintf("http://localhost:%v/sharesheet_index.html", localServerPort), installTimeout); err != nil {
 		s.Fatal("Failed to install PWA for URL: ", err)
 	}
 
-	if err := ash.WaitForChromeAppInstalled(ctx, tconn, appID, installTimeout); err != nil {
+	if err := ash.WaitForChromeAppInstalled(ctx, tconn, testAppID, installTimeout); err != nil {
 		s.Fatal("Failed to wait for PWA to be installed: ", err)
 	}
 

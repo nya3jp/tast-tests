@@ -16,6 +16,9 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/appsplatform/webapks"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/webapk"
 	"chromiumos/tast/testing"
 )
@@ -54,10 +57,20 @@ func init() {
 			webapks.WebShareTargetWebApk.IndexPageDataPath,
 		},
 		Params: []testing.Param{{
+			Val:               browser.TypeAsh,
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
+			Val:               browser.TypeAsh,
 			ExtraSoftwareDeps: []string{"android_vm"},
+		}, {
+			Name:              "lacros",
+			Val:               browser.TypeLacros,
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
+		}, {
+			Name:              "lacros_vm",
+			Val:               browser.TypeLacros,
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 		}},
 		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 3*time.Minute,
 		VarDeps: []string{"ui.gaiaPoolDefault"},
@@ -73,13 +86,28 @@ func WebAPK(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	// Due to the UI Automator flakiness, we still can't use the arcBooted fixture as it starts UI Automator automatically.
-	cr, err := chrome.New(ctx,
-		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+	var opts []chrome.Option
+	opts = append(opts, chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ARCEnabled())
+	if s.Param().(browser.Type) == browser.TypeLacros {
+		lacrosOpts, err := lacrosfixt.NewConfig().Opts()
+		if err != nil {
+			s.Fatal("Failed to get Lacros options: ", err)
+		}
+		opts = append(opts, lacrosOpts...)
+	}
+
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Failed to connect to Chrome: ", err)
 	}
 	defer cr.Close(cleanupCtx)
+
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
 
 	a, err := arc.New(ctx, s.OutDir())
 	if err != nil {
@@ -92,7 +120,7 @@ func WebAPK(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	wm, err := webapk.NewManager(ctx, cr, a, s, webapks.WebShareTargetWebApk)
+	wm, err := webapk.NewManager(ctx, cr, br, a, s, webapks.WebShareTargetWebApk)
 	if err != nil {
 		s.Fatal("Failed to create WebAPK Manager: ", err)
 	}
