@@ -290,12 +290,6 @@ func lockOutPIN(ctx context.Context, user string, cryptohomeClient *hwsec.Crypto
 		return errors.New("mount succeeded but should have failed")
 	}
 
-	// TODO(b/234715681): Remove this extra failing attempt once cryptohome is fixed
-	// to return auth_locked on the first failure.
-	if err := cryptohomeClient.MountVault(ctx, keyLabel1, hwsec.NewPassAuthConfig(user, badPIN), false, hwsec.NewVaultConfig()); err == nil {
-		return errors.New("extra mount attempt succeeded but should have failed")
-	}
-
 	locked, err := getPINLockState(ctx, user, keyLabel1, cryptohomeClient)
 	if err != nil {
 		return errors.Wrap(err, "failed to get PIN lock state")
