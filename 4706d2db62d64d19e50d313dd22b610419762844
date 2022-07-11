@@ -139,6 +139,24 @@
       "parentUuid": "ac7ca452_3665f99c",
       "revId": "4706d2db62d64d19e50d313dd22b610419762844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25be733f_e9dc18cc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-11T16:28:16Z",
+      "side": 1,
+      "message": "I am not aware of any API for user to create a tmpdir on the DUT for remote test. How about using s.OutDir()? While Tast does not create the directory remotely on the DUT for remote tests, I think the path may still valid.",
+      "parentUuid": "fad8cd0f_b2979851",
+      "revId": "4706d2db62d64d19e50d313dd22b610419762844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
