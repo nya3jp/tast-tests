@@ -34,6 +34,23 @@
       "parentUuid": "f8c7b2d7_3089fc3b",
       "revId": "e4801cb2c2fee5637dc35950da88d0889fe12e4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5a40b80_ae6a7539",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-07-11T19:58:01Z",
+      "side": 1,
+      "message": "The following tests are not fully stable. \n\n- tast.cellular.ShillCellularApn.round_robin_attach_apn",
+      "revId": "e4801cb2c2fee5637dc35950da88d0889fe12e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
