@@ -16,6 +16,24 @@
       "message": "Does \"text string\" get consistently picked up? What\u0027s special about those words thet they\u0027re detected and the others might not be?",
       "revId": "1d49dd0dd433c82429275d2a4b2f5865899ca174",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f2f6485_ea0a57d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-11T02:04:38Z",
+      "side": 1,
+      "message": "Yes, \"text string\" gets consistently picked up in three skylab DUTs in which the test failed before.\n\nFor this specific test, the issue is about the word \"Downloads\" being unexpectedly detected as two words \"Down\" and \"loads\". Another option is to use Regex: \"Down.*\" as in \"This is a text string in a text file in the Down.* folder.\" It is hard to get a conclusion about which words to avoid before we see the actual results, but the good thing is that the results are normally consistent and reproduciable.",
+      "parentUuid": "45154e11_665b8d62",
+      "revId": "1d49dd0dd433c82429275d2a4b2f5865899ca174",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
