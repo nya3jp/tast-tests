@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a921daed_e678e24d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-11T18:49:31Z",
+      "side": 1,
+      "message": "optional nit: `errPrefix :\u003d fmt.Sprintf(\"[peerConnId\u003d%s]\", connIDText)`",
+      "range": {
+        "startLine": 1061,
+        "startChar": 2,
+        "endLine": 1061,
+        "endChar": 56
+      },
+      "revId": "069b06f0ac79c392b8b42474d699c750abfb4c5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

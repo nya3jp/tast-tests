@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fffebf64_5ae2007f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-11T18:49:31Z",
+      "side": 1,
+      "message": "The `for` loop on line 1082 iterates over the timeline for the `contentType` of a stream. It will detect if the `contentType` of a stream changes during the Meet call.\n\nIf there are multiple streams in the screenshare peer connection, they will correspond to different values of `streamID` in different iterations of the `for` loop on line 1066. For example, if there is one iteration where `streamID` is `\"1422362931\"` and `statName` is `\"contentType\"`, and if there are iterations where `streamID` is `\"1392782657\"` but none of them have `statName` equal to `\"contentType\"`, then you should return an error. In this example, maybe stream `1422362931` is a screenshare but stream `1392782657` is not.",
+      "parentUuid": "1cd3fd37_cc64c433",
+      "revId": "1ab54b938e2f150973819cb9c4f040cb5eee0aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e337a478_b4136319",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 5
