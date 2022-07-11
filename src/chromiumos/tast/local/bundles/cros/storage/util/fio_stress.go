@@ -115,7 +115,7 @@ func runFIO(ctx context.Context, testDataPath, jobFile string, verifyOnly bool) 
 		verifyFlag = "1"
 	}
 
-	cmd := testexec.CommandContext(ctx, "fio", jobFile, "--output-format=json", "--end_fsync=1")
+	cmd := testexec.CommandContext(ctx, "fio", jobFile, "--output-format=json", "--end_fsync=1", "--thread")
 	cmd.Env = []string{
 		"FILENAME=" + testDataPath,
 		"FILESIZE=" + strconv.Itoa(defaultFileSizeBytes),
