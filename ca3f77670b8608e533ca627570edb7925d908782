@@ -94,6 +94,30 @@
       },
       "revId": "ca3f77670b8608e533ca627570edb7925d908782",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0850082e_38092e6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-11T16:17:52Z",
+      "side": 1,
+      "message": "\u003e If we are only using the  testexec.CommandContext().Output()  it fails with exit(1) status.\n\nCould you check why? And why CombinedOutput solves it?",
+      "parentUuid": "8cec9b92_41ede7d3",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 134,
+        "endChar": 52
+      },
+      "revId": "ca3f77670b8608e533ca627570edb7925d908782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
