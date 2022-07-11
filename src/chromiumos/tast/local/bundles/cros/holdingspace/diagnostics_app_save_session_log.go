@@ -85,4 +85,5 @@ func DiagnosticsAppSaveSessionLog(ctx context.Context, s *testing.State) {
 		ui.LeftClick(holdingspace.FindTray()),
 		ui.WaitUntilExists(holdingspace.FindDownloadChip().Name(filename)),
 	)(ctx)
+
 }
