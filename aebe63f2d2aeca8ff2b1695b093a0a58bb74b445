@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f016bf1e_c98c4889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-11T17:30:17Z",
+      "side": 1,
+      "message": "nit: Remove this blank line because the error below is so closely related to the `for` loop above.",
+      "revId": "aebe63f2d2aeca8ff2b1695b093a0a58bb74b445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bf3de1a_5a67ba3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/html_video_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-11T17:30:17Z",
+      "side": 1,
+      "message": "nit: Remove this blank line because the error below is so closely related to the `for` loop above.",
+      "revId": "aebe63f2d2aeca8ff2b1695b093a0a58bb74b445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6e5921f_7984a99a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-11T17:30:17Z",
+      "side": 1,
+      "message": "nit: Remove this blank line because the error below is so closely related to the `for` loop above.",
+      "revId": "aebe63f2d2aeca8ff2b1695b093a0a58bb74b445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

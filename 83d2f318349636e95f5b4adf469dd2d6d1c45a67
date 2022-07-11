@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c6d74b5_9a74e920",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_pip_rounded_corners_underlay.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-11T17:30:17Z",
+      "side": 0,
+      "message": "Please adapt this functionality to your expectations and use it also for ARC PIP and HTML video. The main idea here is to wait until the underlay overlay strategy has been used for at least one frame, and then check that the underlay overlay strategy is used consistently thereafter. If the video should always be promoted to an overlay, then you can get rid of the `failOnError` variable.",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 63
+      },
+      "revId": "83d2f318349636e95f5b4adf469dd2d6d1c45a67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
