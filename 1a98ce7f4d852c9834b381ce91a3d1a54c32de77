@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90a534b6_05c0817e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-11T11:57:05Z",
+      "side": 1,
+      "message": "Thanks, Ching-Kang. Let me loop in tast-owners@ to get guidance on the \"tar\" part.",
+      "revId": "1a98ce7f4d852c9834b381ce91a3d1a54c32de77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30dbdb3e_abb3bc53",
