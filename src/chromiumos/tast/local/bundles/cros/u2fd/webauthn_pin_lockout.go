@@ -67,14 +67,12 @@ func WebauthnPINLockout(ctx context.Context, s *testing.State) {
 	}
 
 	const (
-		username     = fixtures.Username
-		password     = fixtures.Password
-		PIN          = "123456"
-		IncorrectPIN = "000000"
-		autosubmit   = false
-		// TODO(b/234715681): Change lockout attempts to the correct value 5 after auth_locked
-		// is set correctly after lockout.
-		pinLockoutAttempts = 6
+		username           = fixtures.Username
+		password           = fixtures.Password
+		PIN                = "123456"
+		IncorrectPIN       = "000000"
+		autosubmit         = false
+		pinLockoutAttempts = 5
 	)
 
 	pinPolicies := []policy.Policy{
