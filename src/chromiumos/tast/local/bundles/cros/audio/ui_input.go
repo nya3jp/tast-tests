@@ -42,13 +42,12 @@ func init() {
 		Contacts:     []string{"johnylin@chromium.org", "cychiang@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone()),
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Pre:          chrome.LoggedIn(),
 		Params: []testing.Param{
 			{
-				Name:      "gain",
-				Val:       gainSlider,
-				ExtraAttr: []string{"informational"},
+				Name: "gain",
+				Val:  gainSlider,
 			},
 			{
 				Name: "mute",
