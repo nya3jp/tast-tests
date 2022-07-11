@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "089f7955_a560865c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-11T16:40:47Z",
+      "side": 1,
+      "message": "nit: you can avoid hardcoding the redirect url here by making a function that returns a function to simulate currying:\n\nfunc redirectHandler(url string) func(http.ResponseWriter, *http.Request) {\n  return func(rw http.ResponseWriter, req *http.Request) {\n    http.Redirect(rw, req, redirectURL, http.StatusFound)\n  }\n}",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "28695582b2b9ca47b35c8515077c0c4489e7f1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aec988b_4a1b44c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-11T16:40:47Z",
+      "side": 1,
+      "message": "It seems that having a handler defined is redundant with HTTPServer \u003d\u003d true.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 56
+      },
+      "revId": "28695582b2b9ca47b35c8515077c0c4489e7f1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2a5aee5_04833318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-11T16:40:47Z",
+      "side": 1,
+      "message": "Note for later: we will also need a listener on 443 as well for simulating the interactions with the HTTPS probe when they are not blocked by the portal.",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "28695582b2b9ca47b35c8515077c0c4489e7f1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
