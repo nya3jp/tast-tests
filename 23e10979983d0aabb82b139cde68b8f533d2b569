@@ -16,6 +16,41 @@
       "message": "Hi Patrick,\n\nCan you please help in sharing the CQ failure logs?",
       "revId": "23e10979983d0aabb82b139cde68b8f533d2b569",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ffcaa7_628057f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-11T05:18:09Z",
+      "side": 1,
+      "message": "tast-remote-tests-cros-0.0.2-r11418: # chromiumos/tast/local/typecutils\ntast-remote-tests-cros-0.0.2-r11418: src/chromiumos/tast/local/typecutils/display_helper.go:50:7: self-assignment of displayName to displayName",
+      "parentUuid": "4d1bbbd6_421f51b2",
+      "revId": "23e10979983d0aabb82b139cde68b8f533d2b569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8473238b_ed1af27e",
+        "filename": "src/chromiumos/tast/local/typecutils/display_helper.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-11T05:18:09Z",
+      "side": 1,
+      "message": "^ This is the line which is failing the linter, the statement is redundant",
+      "revId": "23e10979983d0aabb82b139cde68b8f533d2b569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
