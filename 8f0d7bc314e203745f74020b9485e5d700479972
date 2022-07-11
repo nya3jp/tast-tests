@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30f7397c_978e68a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2504,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-07-11T15:53:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f774903f_33dcb50f",
+      "range": {
+        "startLine": 2504,
+        "startChar": 5,
+        "endLine": 2504,
+        "endChar": 24
+      },
+      "revId": "8f0d7bc314e203745f74020b9485e5d700479972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9100e0ca_7ef5f5cc",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-07-01T21:45:38Z",
       "side": 1,
       "message": "This does not apply since H.264 is not part of the VPx family\nof codecs. Maybe OpenH264 ?",
+      "range": {
+        "startLine": 2508,
+        "startChar": 5,
+        "endLine": 2508,
+        "endChar": 11
+      },
+      "revId": "8f0d7bc314e203745f74020b9485e5d700479972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd7bfcd9_7012df48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2508,
+      "author": {
+        "id": 1526622
+      },
+      "writtenOn": "2022-07-11T15:53:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9100e0ca_7ef5f5cc",
       "range": {
         "startLine": 2508,
         "startChar": 5,
