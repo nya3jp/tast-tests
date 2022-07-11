@@ -682,6 +682,30 @@
       },
       "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9985d667_d2d930fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-07-11T23:33:29Z",
+      "side": 1,
+      "message": "I went through go/crosfleet-cli and was able to get a lab DUT and ssh into it from cloudtop, but whenever I try running the tast test using the hostname of the lab DUT I get failed to connect to chromeos2-row7-rack7-host42.cros.corp.google.com. I tried setting up the sshwatcher command `go run platform/dev/contrib/sshwatcher/sshwatcher.go chromeos2-row7-rack7-host42.cros.corp.google.com 2222` and it says to try pre-connecting. If I try to do `ssh root@chromeos2-row7-rack7-host42.cros.corp.google.com` from in (cr) it says Connection closed by remote host.",
+      "parentUuid": "c68c0e1c_33568f5f",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
