@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1cd3fd37_cc64c433",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-11T18:08:12Z",
+      "side": 1,
+      "message": "I think I had that already? At the for loop in line 1082 in the current patch set, I check that each value in the contentType statistic is \"screenshare\". Also, contentType is only reported for screenshare, so the lack of that stat is evidence enough for non screenshare.",
+      "parentUuid": "9fabeaff_9af8a856",
+      "revId": "1ab54b938e2f150973819cb9c4f040cb5eee0aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e337a478_b4136319",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 5
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-11T17:09:00Z",
       "side": 1,
       "message": "I suggest:\n\t\tconnIDText, err :\u003d connID.MarshalText()\n\t\tif err !\u003d nil {",
+      "range": {
+        "startLine": 1057,
+        "startChar": 0,
+        "endLine": 1059,
+        "endChar": 57
+      },
+      "revId": "1ab54b938e2f150973819cb9c4f040cb5eee0aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a6faea_148389f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-11T18:08:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e337a478_b4136319",
       "range": {
         "startLine": 1057,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3415e019_3d226f8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-11T18:08:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94f0c7d3_048f2ee3",
+      "revId": "1ab54b938e2f150973819cb9c4f040cb5eee0aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb910462_e3cc57c9",
@@ -71,6 +131,30 @@
       "writtenOn": "2022-07-11T17:09:00Z",
       "side": 1,
       "message": "nit: To minimize code duplication, you can write it this way:\n\texpectedNumScreenshareConns :\u003d 0\n\tif present {\n\t\texpectedNumScreenshareConns \u003d 1\n\t}\n\tconst expectedNumOtherConns \u003d 1\n\tif numScreenshareConns !\u003d expectedNumScreenshareConns || numOtherConns !\u003d expectedNumOtherConns {\n\t\treturn errors.Errorf(\"unexpected peer connection types: got %d screenshare connection(s) and %d other peer connection(s), expected %d, %d respectively\",\n\t\t\tnumScreenshareConns, numOtherConns, expectedNumScreenshareConns, expectedNumOtherConns)\n\t}",
+      "range": {
+        "startLine": 1218,
+        "startChar": 0,
+        "endLine": 1222,
+        "endChar": 2
+      },
+      "revId": "1ab54b938e2f150973819cb9c4f040cb5eee0aec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f33d78f_d27cc69b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-11T18:08:12Z",
+      "side": 1,
+      "message": "Done -- much better.",
+      "parentUuid": "bb910462_e3cc57c9",
       "range": {
         "startLine": 1218,
         "startChar": 0,
