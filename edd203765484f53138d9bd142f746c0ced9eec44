@@ -259,6 +259,30 @@
       },
       "revId": "edd203765484f53138d9bd142f746c0ced9eec44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8b240e2_a50516ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-11T06:47:07Z",
+      "side": 1,
+      "message": "Just in case `WaitForFieldTextToBe` fails thus following cleanup release actions don\u0027t execute. \n\nSince you already have the deferred cleanups at Line 110-111, it probably won\u0027t make a difference.",
+      "parentUuid": "88eba3c5_c3a616b4",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 41
+      },
+      "revId": "edd203765484f53138d9bd142f746c0ced9eec44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
