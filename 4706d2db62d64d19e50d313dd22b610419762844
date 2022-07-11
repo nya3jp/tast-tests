@@ -121,6 +121,24 @@
       "parentUuid": "051f6dd6_3a180b1e",
       "revId": "4706d2db62d64d19e50d313dd22b610419762844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fad8cd0f_b2979851",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-11T16:16:28Z",
+      "side": 1,
+      "message": "Seewai, is there any API to take temp dir path for Tast on DUT in remote test?\nOr, is it ok to add somewhere (any recommendations)?",
+      "parentUuid": "ac7ca452_3665f99c",
+      "revId": "4706d2db62d64d19e50d313dd22b610419762844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
