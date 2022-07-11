@@ -7,7 +7,6 @@ package apps
 
 import (
 	"context"
-	"fmt"
 	"net/url"
 	"time"
 
@@ -15,6 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -474,35 +474,32 @@ func PrimaryBrowser(ctx context.Context, tconn *chrome.TestConn) (App, error) {
 	return browserApp, nil
 }
 
-// InstallPWAForURL navigates to a PWA, attempts to install and returns the installed app ID.
-func InstallPWAForURL(ctx context.Context, cr *chrome.Chrome, pwaURL string, timeout time.Duration) (string, error) {
-	conn, err := cr.NewConn(ctx, pwaURL)
+// InstallPWAForURL navigates to a PWA and attempts to install it.
+// The given TestConn must be a connection to Ash.
+func InstallPWAForURL(ctx context.Context, tconn *chrome.TestConn, br *browser.Browser, pwaURL string, timeout time.Duration) error {
+	conn, err := br.NewConn(ctx, pwaURL)
 	if err != nil {
-		return "", errors.Wrapf(err, "failed to open URL %q", pwaURL)
+		return errors.Wrapf(err, "failed to open URL %q", pwaURL)
 	}
 	defer conn.Close()
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to connect to test API")
-	}
-
 	// The installability checks occur asynchronously for PWAs.
 	// Wait for the Install button to appear in the Chrome omnibox before installing.
-	ui := uiauto.New(tconn)
-	install := nodewith.ClassName("PwaInstallView").Role(role.Button)
-	if err := ui.WithTimeout(timeout).WaitUntilExists(install)(ctx); err != nil {
-		return "", errors.Wrap(err, "failed to wait for the install button in the omnibox")
+	ui := uiauto.New(tconn).WithInterval(2 * time.Second)
+	installIcon := nodewith.ClassName("PwaInstallView").Role(role.Button)
+	if err := ui.WithTimeout(timeout).WaitUntilExists(installIcon)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for the install button in the omnibox")
 	}
 
-	evalString := fmt.Sprintf("tast.promisify(chrome.autotestPrivate.installPWAForCurrentURL)(%d)", timeout.Milliseconds())
+	installButton := nodewith.Name("Install").Role(role.Button)
 
-	var appID string
-	if err := tconn.Eval(ctx, evalString, &appID); err != nil {
-		return "", errors.Wrap(err, "failed to run installPWAForCurrentURL")
+	if err := uiauto.Combine("Install PWA through omnibox",
+		ui.LeftClick(installIcon),
+		ui.LeftClick(installButton))(ctx); err != nil {
+		return errors.Wrap(err, "failed to click install button")
 	}
 
-	return appID, nil
+	return nil
 }
 
 // LaunchChromeByShortcut launches a new Chrome window in either normal user mode by shortcut `Ctl+N`

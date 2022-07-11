@@ -20,6 +20,7 @@ import (
 
 const port = 8080
 const url = "http://localhost:%v/pwa_index.html"
+const appID = "cpdpbfelifklonephgpieimdpcecgoen"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -68,16 +69,15 @@ func ProgressiveWebApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
-	id, err := apps.InstallPWAForURL(ctx, cr, fmt.Sprintf(url, port), 15*time.Second)
-	if err != nil {
+	if err := apps.InstallPWAForURL(ctx, tconn, cr.Browser(), fmt.Sprintf(url, port), 15*time.Second); err != nil {
 		s.Fatal("Failed to install PWA for URL: ", err)
 	}
 
-	if err := ash.WaitForChromeAppInstalled(ctx, tconn, id, 15*time.Second); err != nil {
+	if err := ash.WaitForChromeAppInstalled(ctx, tconn, appID, 15*time.Second); err != nil {
 		s.Fatal("Failed to wait for PWA to be installed: ", err)
 	}
 
-	if err := ash.WaitForApp(ctx, tconn, id, 15*time.Second); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, appID, 15*time.Second); err != nil {
 		s.Fatal("Failed to wait for PWA to open: ", err)
 	}
 }
