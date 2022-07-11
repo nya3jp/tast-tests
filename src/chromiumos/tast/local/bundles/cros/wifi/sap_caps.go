@@ -19,10 +19,9 @@ func init() {
 		Func: SAPCaps,
 		Desc: "Verifies DUT supports SoftAP and a minimum set of required protocols",
 		Contacts: []string{
-			"jintaolin@chromium.org",          // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:         []string{"group:wificell", "wificell_func", "wificell_unstable"},
+		Attr:         []string{"group:wificell", "wificell_func"},
 		SoftwareDeps: []string{"wifi"},
 		HardwareDeps: hwdep.D(hwdep.WifiSAP()),
 	})
