@@ -146,6 +146,30 @@
       },
       "revId": "7386003281ec6c2d19d07bc9078d3e2b2765fe90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d95fdd59_2b3a388d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/notification.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-11T09:43:17Z",
+      "side": 1,
+      "message": "Thank you for comment. I think the direction SG in this case, but then, I\u0027d recommend to check it only for T (and fail if not found), rather than ignoring the error.",
+      "parentUuid": "b2ef8bdc_33207f1b",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 8
+      },
+      "revId": "7386003281ec6c2d19d07bc9078d3e2b2765fe90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
