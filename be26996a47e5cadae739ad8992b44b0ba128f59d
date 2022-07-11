@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fea8329_2c8cb3d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-07-11T16:12:37Z",
+      "side": 1,
+      "message": "A future alternative may be to move this option to the `click` function as an optional argument, and have it accept the selector of a \u0027safe\u0027 element, i.e.\n\n`uidetection.click(..., WithMoveMouseAfterClick(\u003cselector of known element\u003e))`\n\nThat way each step clearly defines additional logic which could help address flakiness if doing it at this general level starts to show stability problems.",
+      "revId": "be26996a47e5cadae739ad8992b44b0ba128f59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f88f812_e486b975",
         "filename": "src/chromiumos/tast/local/uidetection/automation.go",
         "patchSetId": 1
@@ -19,6 +36,29 @@
         "startChar": 20,
         "endLine": 53,
         "endChar": 27
+      },
+      "revId": "be26996a47e5cadae739ad8992b44b0ba128f59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aae9e67_5c822165",
+        "filename": "src/chromiumos/tast/local/uidetection/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-07-11T16:12:37Z",
+      "side": 1,
+      "message": "Is the timing necessary here? 0 should move it instantly and since the `mouse.Move` above has a timing, that should still account for the issue that was fixed previously. \n\nI have some concerns that there could be elements between `loc` and `top right` that have `onHover` handlers, which may get triggered when the mouse moves in this way. \n\nThere\u0027s still a chance that going from `top right` to `next element` triggers those events, but at least we\u0027d be eliminating 1 of the opportunities for that to happen.",
+      "range": {
+        "startLine": 153,
+        "startChar": 69,
+        "endLine": 153,
+        "endChar": 89
       },
       "revId": "be26996a47e5cadae739ad8992b44b0ba128f59d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
