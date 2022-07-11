@@ -70,6 +70,30 @@
       },
       "revId": "ca3f77670b8608e533ca627570edb7925d908782",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cec9b92_41ede7d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/tablet_mode_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-11T12:10:50Z",
+      "side": 1,
+      "message": "When we give this `evtest` command, it will display some output via Stdout and wait for user-input like below.\n```\nlocalhost ~ # evtest\nNo device specified, trying to scan all of /dev/input/event*\nAvailable devices:\n/dev/input/event0:\tLid Switch\n/dev/input/event1:\tPower Button\n/dev/input/event10:\tELAN90FC:00 04F3:2A49 Stylus\n/dev/input/event11:\tsof-rt5682 Headset Jack\n/dev/input/event12:\tsof-rt5682 HDMI/DP,pcm\u003d2\n/dev/input/event13:\tsof-rt5682 HDMI/DP,pcm\u003d3\n/dev/input/event14:\tsof-rt5682 HDMI/DP,pcm\u003d4\n/dev/input/event15:\tsof-rt5682 HDMI/DP,pcm\u003d5\n/dev/input/event16:\tcros_fp_input\n/dev/input/event2:\tAT Translated Set 2 keyboard\n/dev/input/event3:\tcros_ec_buttons\n/dev/input/event4:\tPRP0001:00\n/dev/input/event5:\tElan Touchpad\n/dev/input/event6:\tELAN90FC:00 04F3:2A49\n/dev/input/event7:\tELAN90FC:00 04F3:2A49 UNKNOWN\n/dev/input/event8:\tELAN90FC:00 04F3:2A49 UNKNOWN\n/dev/input/event9:\tELAN90FC:00 04F3:2A49 Stylus\nSelect the device event number [0-16]: \n```\n\n We are actually interested in this Stdout to identify the device number for touchpad. If we are only using the `testexec.CommandContext().Output()` it fails with exit(1) status. Hence we are using the `CombinedOutput` to get this data and identify the device event number.\n \n If we can achieve this is any other method, please let us know.",
+      "parentUuid": "8437d1a5_4e358757",
+      "range": {
+        "startLine": 134,
+        "startChar": 36,
+        "endLine": 134,
+        "endChar": 52
+      },
+      "revId": "ca3f77670b8608e533ca627570edb7925d908782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
