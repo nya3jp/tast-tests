@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db985a8b_db2fee26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-11T04:05:24Z",
+      "side": 1,
+      "message": "since physical keyboard caps lock is its own test, it probably makes sense for us to group altgr in the same test. We also need to add a few other imes that do altgr.\n\nWhich existing test do you think it might be a better subtest of?",
+      "parentUuid": "18a05cdb_b80aca46",
+      "range": {
+        "startLine": 70,
+        "startChar": 21,
+        "endLine": 70,
+        "endChar": 55
+      },
+      "revId": "edd203765484f53138d9bd142f746c0ced9eec44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25b8cd2c_43553041",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
         "patchSetId": 3
