@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2dc459d6_ba84929e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-11T04:29:35Z",
+      "side": 1,
+      "message": "Could you change this to `EnglishUSWithInternationalKeyboard, Swedish` which are used in this test?",
+      "range": {
+        "startLine": 33,
+        "startChar": 54,
+        "endLine": 33,
+        "endChar": 76
+      },
+      "revId": "edd203765484f53138d9bd142f746c0ced9eec44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18a05cdb_b80aca46",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
         "patchSetId": 3
@@ -50,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e47eeeb_f2ace519",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-11T04:29:35Z",
+      "side": 1,
+      "message": "I think it is fine to create a separate test for altgr as you can more controls of the test cases (i.e., IMEs) here.",
+      "parentUuid": "db985a8b_db2fee26",
+      "range": {
+        "startLine": 70,
+        "startChar": 21,
+        "endLine": 70,
+        "endChar": 55
+      },
+      "revId": "edd203765484f53138d9bd142f746c0ced9eec44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25b8cd2c_43553041",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
         "patchSetId": 3
@@ -66,6 +113,29 @@
         "startChar": 18,
         "endLine": 71,
         "endChar": 49
+      },
+      "revId": "edd203765484f53138d9bd142f746c0ced9eec44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ddc067c_c03d4c2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-11T04:29:35Z",
+      "side": 1,
+      "message": "does it make sense to move this before `util.WaitForFieldTextToBe`?",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 41
       },
       "revId": "edd203765484f53138d9bd142f746c0ced9eec44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
