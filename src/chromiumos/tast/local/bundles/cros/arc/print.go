@@ -66,6 +66,7 @@ func init() {
 
 // stableModels is a list of models stable enough for the CQ.
 var stableModels = []string{
+	"caroline",
 	"chell",
 
 	// dedede:
@@ -75,13 +76,60 @@ var stableModels = []string{
 
 	"drallion",
 	"drallion360",
+	"elm",
 	"gandof",
+
+	// grunt:
+	"aleena",
+	"barla",
+	"careena",
+	"kasumi",
+	"kasumi360",
+	"liara",
+	"treeya",
+	"treeya360",
+
+	"hana",
 
 	// hatch:
 	"akemi",
 	"dratini",
 	"jinlon",
 	"kindred",
+
+	// jacuzzi:
+	"burnet",
+	"cozmo",
+	"damu",
+	"esche",
+	"fennel",
+	"fennel14",
+	"juniper",
+	"kappa",
+	"kenzo",
+	"pico",
+	"pico6",
+	"willow",
+
+	// kalista:
+	"karma",
+
+	"kevin",
+
+	// kukui:
+	"kakadu",
+	"katsu",
+	"krane",
+
+	// nami:
+	"akali",
+	"akali360",
+	"bard",
+	"ekko",
+	"pantheon",
+	"sona",
+	"syndra",
+	"vayne",
 
 	// octopus:
 	"blooguard",
@@ -110,6 +158,22 @@ var stableModels = []string{
 	// sarien:
 	"arcada",
 
+	"soraka",
+
+	// strongbad:
+	"coachz",
+	"homestar",
+	"mrbland",
+	"quackingstick",
+	"wormdingler",
+
+	// trogdor:
+	"lazor",
+	"limozeen",
+	"pazquel",
+	"pompom",
+	"kingoftown",
+
 	"sentry",
 	"ultima",
 
@@ -119,7 +183,15 @@ var stableModels = []string{
 	"voxel",
 
 	// zork:
+	"berknip",
+	"dirinboz",
+	"jelboz",
+	"jelboz360",
+	"morphius",
+	"vilboz",
 	"vilboz14",
+	"vilboz360",
+	"woomax",
 }
 
 func Print(ctx context.Context, s *testing.State) {
