@@ -49,6 +49,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9092fc6_aa46ecac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-11T22:41:04Z",
+      "side": 1,
+      "message": "this function should return an error and not take testing.State. When you do s.Error below, I think the test still continues to run.",
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9109850_11ab1728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-11T22:41:04Z",
+      "side": 1,
+      "message": "+1 to waitFor...",
+      "parentUuid": "c296aa58_b6405dc8",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a9f7cca_c6099e82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-11T22:41:04Z",
+      "side": 1,
+      "message": "net.ParseIP(...)",
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb769dd2_6aa5512f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-11T22:41:04Z",
+      "side": 1,
+      "message": "nit: also check that servers is non-empty",
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed61a6ff_a1648f39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-11T22:41:04Z",
+      "side": 1,
+      "message": "Actually, I realized that this is not the most reliable way to trigger portal detection. RecheckPortal calls Device::RequestPortalDetection, which won\u0027t restart the portal detection if it\u0027s currently ongoing. Let\u0027s instead do the following:\n\n1. Set kCheckPortalProperty to false: https://source.corp.google.com/chromeos_public/src/platform2/system_api/dbus/shill/dbus-constants.h;rcl\u003db59da3208b4fb3261e451f2ff3d4ca4003724a5f;l\u003d123. This should force the state to Online.\n2. Wait for the state to be Online.\n3. Set kCheckPortalProperty to true.\n4. Wait for the state to be some portalled state.\n5. Close tcpdump.",
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f34889e_e44a54ce",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 11
@@ -95,6 +187,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "469d84b4_bbfcfdaf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-11T22:41:04Z",
+      "side": 1,
+      "message": "I think this is meant to be above RecheckPortal, as you\u0027ve pointed out above.",
+      "parentUuid": "f98062ab_fa2e0360",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 15
+      },
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cb8f64b_9f75a937",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 11
@@ -111,6 +227,29 @@
         "startChar": 5,
         "endLine": 163,
         "endChar": 21
+      },
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e540fb_288a8640",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-11T22:41:04Z",
+      "side": 1,
+      "message": "is this still necessary?",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 178,
+        "endChar": 19
       },
       "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
