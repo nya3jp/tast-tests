@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f74e0a_7a53e107",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-07-11T15:46:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9570aaff_c2ed6341",
+      "range": {
+        "startLine": 28,
+        "startChar": 10,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1606437_83a922ce",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-06-17T20:02:52Z",
       "side": 1,
       "message": "This ctx should also be `ctxForCleanup`, as the TearDownCrashTest is a necessary part of cleanup",
+      "range": {
+        "startLine": 67,
+        "startChar": 31,
+        "endLine": 67,
+        "endChar": 34
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1930866e_fb47bccc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-07-11T15:46:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1606437_83a922ce",
       "range": {
         "startLine": 67,
         "startChar": 31,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8909e630_16193c1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-07-11T15:46:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9802965_a11571ef",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 22
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9310ad41_50373522",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-06-17T20:02:52Z",
       "side": 1,
       "message": "nit: Prefer filepath-specific functions:\n\n  filepath.Join(\"/home/user\", hash)",
+      "range": {
+        "startLine": 144,
+        "startChar": 13,
+        "endLine": 144,
+        "endChar": 47
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b7febb9_34a0779f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-07-11T15:46:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9310ad41_50373522",
       "range": {
         "startLine": 144,
         "startChar": 13,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8d3a799_60227af1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-07-11T15:46:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be0b5373_bf07132b",
+      "range": {
+        "startLine": 145,
+        "startChar": 15,
+        "endLine": 145,
+        "endChar": 55
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25f5b09f_08a8789d",
@@ -173,6 +293,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad10749_19aa4a15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-07-11T15:46:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25f5b09f_08a8789d",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 50
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c18d509_e527fcb8",
@@ -186,6 +330,30 @@
       "writtenOn": "2022-06-17T20:02:52Z",
       "side": 1,
       "message": "In this case, it would probably help with debugging to save the crash, using `crash.MoveFilesToOut(s.OutDir(), /*files*/)`",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 39
+      },
+      "revId": "2b71d813692fa183bb1e33bdb7b3659383247c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e46aebfb_e72f62b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-07-11T15:46:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c18d509_e527fcb8",
       "range": {
         "startLine": 174,
         "startChar": 0,
