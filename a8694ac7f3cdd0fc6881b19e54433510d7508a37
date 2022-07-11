@@ -87,6 +87,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db29699_66847d03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2022-07-11T15:45:19Z",
+      "side": 1,
+      "message": "LGTM for HWSec related stuff.",
+      "revId": "a8694ac7f3cdd0fc6881b19e54433510d7508a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88788762_9816f398",
