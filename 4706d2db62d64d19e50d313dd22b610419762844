@@ -85,6 +85,24 @@
       "parentUuid": "a4698081_b4387e09",
       "revId": "4706d2db62d64d19e50d313dd22b610419762844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051f6dd6_3a180b1e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-11T10:05:27Z",
+      "side": 1,
+      "message": "https://source.chromium.org/chromium/chromiumos/platform/tast/+/main:src/chromiumos/tast/cmd/tast/internal/run/config/config.go;l\u003d425\n\nTast creates its own temporary directory. The dir will survive reboot, but will be wiped on test completion, AFAIK.",
+      "parentUuid": "61bdb389_048f219e",
+      "revId": "4706d2db62d64d19e50d313dd22b610419762844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
