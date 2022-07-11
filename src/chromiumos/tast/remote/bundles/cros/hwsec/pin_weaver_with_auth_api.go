@@ -187,17 +187,17 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run attemptWrongPIN with error: ", err)
 	}
 
-	// After the PIN lock out we should not be able to authenticate with correct PIN.
+	// Since the pin is not locked out yet, we should be able to log back in again.
 	if err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
 		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
 	}
 
-	// Attempt four wrong PIN.
+	// Attempt four wrong PIN again
 	if err = attemptWrongPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, 4 /*attempts*/); err != nil {
 		s.Fatal("Failed to run attemptWrongPIN with error: ", err)
 	}
 
-	// After the PIN lock out we should not be able to authenticate with correct PIN.
+	// Since the pin is not locked out yet, we should be able to log back in again.
 	if err = authenticateWithCorrectPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, true /*shouldAuthenticate*/); err != nil {
 		s.Fatal("Failed to run authenticateWithCorrectPIN with error: ", err)
 	}
@@ -216,7 +216,7 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 
 	// Lockout the PIN this time.
 	// TODO(b/234715681) only one attempt should be sufficient when this bug gets fixed.
-	if err = attemptWrongPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, 2 /*attempts*/); err != nil {
+	if err = attemptWrongPIN(ctx, ctxForCleanUp, testUser1, cmdRunner, helper, userParam, 1 /*attempts*/); err != nil {
 		s.Fatal("Failed to run attemptWrongPIN with error: ", err)
 	}
 
