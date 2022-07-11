@@ -103,6 +103,24 @@
       "parentUuid": "61bdb389_048f219e",
       "revId": "4706d2db62d64d19e50d313dd22b610419762844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac7ca452_3665f99c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-07-11T11:33:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "051f6dd6_3a180b1e",
+      "revId": "4706d2db62d64d19e50d313dd22b610419762844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
