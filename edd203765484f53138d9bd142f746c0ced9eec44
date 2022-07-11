@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc265eb4_bc49f0b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1379515
+      },
+      "writtenOn": "2022-07-11T04:54:27Z",
+      "side": 1,
+      "message": "Caps lock as its own test also feels a bit hacky - maybe src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_input_fields.go ? IDK, maybe just a nit, just feels overkill having a whole test for altgr",
+      "parentUuid": "5e47eeeb_f2ace519",
+      "range": {
+        "startLine": 70,
+        "startChar": 21,
+        "endLine": 70,
+        "endChar": 55
+      },
+      "revId": "edd203765484f53138d9bd142f746c0ced9eec44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25b8cd2c_43553041",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
         "patchSetId": 3
