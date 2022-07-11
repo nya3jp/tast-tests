@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure how I can test this against the Sydney Satlab DUT -- or are you happy for me to just cowboy this straight in, Misha/Eunice?",
       "revId": "1d8b0cf6b33ac9aaa9ea1961114836086054e273",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb5e3c32_02355b27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-07-11T05:38:53Z",
+      "side": 1,
+      "message": "go/satlab-local-test-run-execution (and you\u0027ll need to know a few HPS-Satlab specific details, ask me in private).",
+      "parentUuid": "3a4abcbf_6090e419",
+      "revId": "1d8b0cf6b33ac9aaa9ea1961114836086054e273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
