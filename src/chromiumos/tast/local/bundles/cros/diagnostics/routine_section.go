@@ -78,14 +78,14 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not verify successful run of at least one CPU routine: ", err)
 	}
 
-	cancelBtn := diagnosticsapp.DxCancelTestButton.Ancestor(dxRootnode)
-	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(cancelBtn)(ctx); err != nil {
-		s.Fatal("Failed to find a cancel button: ", err)
-	}
-
 	// Cancel the test after first routine succeeds
-	if err := ui.LeftClick(cancelBtn)(ctx); err != nil {
-		s.Fatal("Could not click the cancel button: ", err)
+	cancelBtn := diagnosticsapp.DxCancelTestButton.Ancestor(dxRootnode)
+	if err := uiauto.Combine("click Cancel",
+		ui.WithTimeout(20*time.Second).WaitUntilExists(cancelBtn),
+		ui.MakeVisible(cancelBtn),
+		ui.WithPollOpts(pollOpts).LeftClick(cancelBtn),
+	)(ctx); err != nil {
+		s.Fatal("Failed to click cancel button: ", err)
 	}
 
 	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(diagnosticsapp.DxCancelledBadge.Ancestor(dxRootnode).First())(ctx); err != nil {
