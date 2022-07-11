@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfee6890_1c3bda4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-07-11T03:51:57Z",
+      "side": 1,
+      "message": "Thanks for your advise!",
+      "parentUuid": "86ee05fb_442911a3",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "2e0baf715db8894c3b92bba076f0e0cf992e8125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db19dacb_5987cc67",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e6b813d_995adcbb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-07-11T03:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db19dacb_5987cc67",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 12
+      },
+      "revId": "2e0baf715db8894c3b92bba076f0e0cf992e8125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a808525_f7742a5f",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-10T23:17:29Z",
       "side": 1,
       "message": "Please return uiauto.Action, g.login is not recommended. \n\nTo handle the newly added condition check, you can use IfSuccessThen, or create a new IfFailThen: \n\nhttps://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d863",
+      "range": {
+        "startLine": 106,
+        "startChar": 23,
+        "endLine": 106,
+        "endChar": 55
+      },
+      "revId": "2e0baf715db8894c3b92bba076f0e0cf992e8125",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15336eba_84030875",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/imageeditingcuj/google_photo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-07-11T03:51:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a808525_f7742a5f",
       "range": {
         "startLine": 106,
         "startChar": 23,
