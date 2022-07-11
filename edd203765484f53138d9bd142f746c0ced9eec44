@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80570493_f07b0f22",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-11T05:10:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dc459d6_ba84929e",
+      "range": {
+        "startLine": 33,
+        "startChar": 54,
+        "endLine": 33,
+        "endChar": 76
+      },
+      "revId": "edd203765484f53138d9bd142f746c0ced9eec44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18a05cdb_b80aca46",
@@ -119,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08e39602_0c681462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-11T05:10:10Z",
+      "side": 1,
+      "message": "If the tests share the same fixture, they all just run consecutively on the same fixture anyways (no start up and shut down for fixture in between tests), so the only start up costs for this test is having to launch the new browser.\n\nI\u0027m not too sure what the concern is here, are you worried about the cost of setup for each test?\n\nI think if we end up added subtests for altgr in a general PK tast test, we won\u0027t be able to parameterise it as easily.",
+      "parentUuid": "5e47eeeb_f2ace519",
+      "range": {
+        "startLine": 70,
+        "startChar": 21,
+        "endLine": 70,
+        "endChar": 55
+      },
+      "revId": "edd203765484f53138d9bd142f746c0ced9eec44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25b8cd2c_43553041",
@@ -179,6 +227,30 @@
       "writtenOn": "2022-07-11T04:29:35Z",
       "side": 1,
       "message": "does it make sense to move this before `util.WaitForFieldTextToBe`?",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 41
+      },
+      "revId": "edd203765484f53138d9bd142f746c0ced9eec44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88eba3c5_c3a616b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-11T05:10:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure how it will make a difference, but I just moved it before the last waitforfieldtexttobe in the new patch with shifted variants.\n\nPTAL",
+      "parentUuid": "8ddc067c_c03d4c2b",
       "range": {
         "startLine": 124,
         "startChar": 5,
