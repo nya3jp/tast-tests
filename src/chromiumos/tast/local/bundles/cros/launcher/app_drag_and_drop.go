@@ -334,8 +334,7 @@ func isItemInPage(ctx context.Context, ui *uiauto.Context, itemName string, targ
 // isItemOnscreen checks whether the target is on the current page.
 func isItemOnscreen(ctx context.Context, ui *uiauto.Context, itemName string) (bool, error) {
 	itemView := launcher.AppItemViewFinder(itemName)
-	item := nodewith.Name(itemName).HasClass("Label").Ancestor(itemView)
-	info, err := ui.Info(ctx, item)
+	info, err := ui.Info(ctx, itemView)
 	if err != nil {
 		return false, err
 	}
