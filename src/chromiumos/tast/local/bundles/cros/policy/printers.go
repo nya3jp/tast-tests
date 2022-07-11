@@ -110,10 +110,10 @@ func Printers(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("select the printer and print",
 		kb.AccelAction("Ctrl+P"),
 		ui.WaitUntilExists(nodewith.Role(role.Window).Name("Print").ClassName("RootView")),
-		ui.LeftClick(nodewith.Role(role.PopUpButton).NameStartingWith("Destination")),
-		ui.LeftClick(nodewith.Role(role.MenuItem).Name("See more destinations")),
-		ui.LeftClick(nodewith.Role(role.Cell).NameStartingWith(printerName)),
-		ui.LeftClick(nodewith.Role(role.Button).Name("Print")),
+		ui.DoDefault(nodewith.Role(role.PopUpButton).NameStartingWith("Destination")),
+		ui.DoDefault(nodewith.Role(role.MenuItem).Name("See more destinations")),
+		ui.DoDefault(nodewith.Role(role.Cell).NameStartingWith(printerName)),
+		ui.DoDefault(nodewith.Role(role.Button).Name("Print")),
 		// Wait for the print preview window to close. Otherwise, the print preview
 		// may still be in the process of closing when we launch the print
 		// management app, and, once fully closed, steal focus from the print
