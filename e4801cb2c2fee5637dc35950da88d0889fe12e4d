@@ -51,6 +51,24 @@
       "message": "The following tests are not fully stable. \n\n- tast.cellular.ShillCellularApn.round_robin_attach_apn",
       "revId": "e4801cb2c2fee5637dc35950da88d0889fe12e4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a852030_1d6626d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-07-11T19:59:48Z",
+      "side": 1,
+      "message": "- tast.cellular.ShillCellularApn.round_robin_connect_ipv4_default_attach\n- tast.cellular.ShillCellularConnectToUnknownMno.unknown_carrier",
+      "parentUuid": "d5a40b80_ae6a7539",
+      "revId": "e4801cb2c2fee5637dc35950da88d0889fe12e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
