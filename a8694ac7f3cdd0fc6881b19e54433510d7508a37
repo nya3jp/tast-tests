@@ -106,6 +106,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58a52f12_b9b513ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-11T16:04:16Z",
+      "side": 1,
+      "message": "That means we are not fully understanding the cause of failures yet, right?\nIf we introduce some flakiness, it would also shadow real bugs.\nI\u0027m open for the short term solution (e.g. I\u0027m supportive to revert some CL if some regression is introduced by that even without fully understanding the background),  but, at least this is not the case AFAIK, we should understand the situation sooner than later. We are not sure if this approach will never introduce any flakiness, right? Thoughts?",
+      "parentUuid": "f905a7c5_e1770abf",
+      "revId": "a8694ac7f3cdd0fc6881b19e54433510d7508a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88788762_9816f398",
         "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_pin_lockout.go",
         "patchSetId": 3
@@ -237,6 +255,30 @@
       "side": 1,
       "message": "It can\u0027t just be WaitUntilGone because the first click might have no effect at all. If the click takes effect in reasonable timeout we won\u0027t repeat the action anyway.",
       "parentUuid": "ff50f0a5_27800602",
+      "range": {
+        "startLine": 155,
+        "startChar": 14,
+        "endLine": 155,
+        "endChar": 28
+      },
+      "revId": "a8694ac7f3cdd0fc6881b19e54433510d7508a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "237bf990_4cb4af37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_pin_lockout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-11T16:04:16Z",
+      "side": 1,
+      "message": "Martin, regardless of Tast, could you help us understand why sometimes the button works and sometimes not, even if it looks \"enabled\"? Is there any timing issue? If so what is the condition in UI (again regardless of Tast)?",
+      "parentUuid": "2ceb871a_332995a0",
       "range": {
         "startLine": 155,
         "startChar": 14,
