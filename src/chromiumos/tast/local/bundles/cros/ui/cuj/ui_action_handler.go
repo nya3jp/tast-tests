@@ -258,27 +258,36 @@ func (t *TabletActionHandler) showTabList() action.Action {
 
 // NewChromeTab creates a new tab of Google Chrome.
 // newWindow indicates whether this new tab should open in current Chrome window or in new Chrome window.
-// TODO (b/227525974): Support lacros-Chrome.
 func (t *TabletActionHandler) NewChromeTab(ctx context.Context, br *browser.Browser, url string, newWindow bool) (*chrome.Conn, error) {
-	ctx, cancel := context.WithTimeout(ctx, 120*time.Second)
+	ctx, cancel := context.WithTimeout(ctx, 2*time.Minute)
 	defer cancel()
 
-	if newWindow {
-		// The function is called with the assumption that all existing tabs are navigated to a certain URL.
-		// New tab (chrome://newtab/) should exist only for lacros-Chrome when it is initially launched.
-		// Find this initial lacros-Chrome new tab.
-		targets, err := br.FindTargets(ctx, chrome.MatchTargetURL("chrome://newtab/"))
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to find new tab targets")
-		}
-		if len(targets) > 1 {
-			return nil, errors.New("more than one new tabs already exist")
-		}
-		if len(targets) == 0 {
+	// If no browser window is open, create a new one.
+	// This is supposed to work for ash that test case open a tab without launch chrome beforehand.
+	chromeApp, err := apps.PrimaryBrowser(ctx, t.tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "could not find the Chrome app")
+	}
+	shown, err := ash.AppShown(ctx, t.tconn, chromeApp.ID)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check if the browser window is shown or not")
+	}
+
+	// The function is called with the assumption that all existing tabs are navigated to a certain URL.
+	// New tab (chrome://newtab/) should exist only for lacros-Chrome when it is initially launched.
+	// Find this initial lacros-Chrome new tab.
+	targets, err := br.FindTargets(ctx, chrome.MatchTargetURL("chrome://newtab/"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find new tab targets")
+	}
+	if len(targets) > 1 {
+		return nil, errors.New("more than one new tabs already exist")
+	}
+	if len(targets) == 0 {
+		if newWindow || !shown {
 			// No new tab. Create a new window and return.
 			return br.NewConn(ctx, url, browser.WithNewWindow())
 		}
-	} else {
 		// There may be multiple browser windows under tablet mode, with one active and others invisible.
 		// The UI layout of different windows are the same and with the same coordinates. So tap the first
 		// found button will trigger the tap on the same button of the active window.
@@ -753,22 +762,21 @@ func (cl *ClamshellActionHandler) clickOpenedAppOnShelf(ctx context.Context, app
 // NewChromeTab creates a new tab of Google Chrome.
 // newWindow indicates this new tab should open in current Chrome window or open in new Chrome window.
 func (cl *ClamshellActionHandler) NewChromeTab(ctx context.Context, br *browser.Browser, url string, newWindow bool) (*chrome.Conn, error) {
-	if newWindow {
-		// The function is called with the assumption that all existing tabs are navigated to a certain URL.
-		// New tab (chrome://newtab/) should exist only for lacros-Chrome when it is initially launched.
-		// Find this initial lacros-Chrome new tab.
-		targets, err := br.FindTargets(ctx, chrome.MatchTargetURL("chrome://newtab/"))
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to find new tab targets")
-		}
-		if len(targets) > 1 {
-			return nil, errors.New("more than one new tabs already exist")
-		}
-		if len(targets) == 0 {
+	// The function is called with the assumption that all existing tabs are navigated to a certain URL.
+	// New tab (chrome://newtab/) should exist only for lacros-Chrome when it is initially launched.
+	// Find this initial lacros-Chrome new tab.
+	targets, err := br.FindTargets(ctx, chrome.MatchTargetURL("chrome://newtab/"))
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find new tab targets")
+	}
+	if len(targets) > 1 {
+		return nil, errors.New("more than one new tabs already exist")
+	}
+	if len(targets) == 0 {
+		if newWindow {
 			// No new tab. Create a new window and return.
 			return br.NewConn(ctx, url, browser.WithNewWindow())
 		}
-	} else {
 		// Create a new tab in the existing window.
 		if err := cl.kb.Accel(ctx, "Ctrl+T"); err != nil {
 			return nil, errors.Wrap(err, "failed to hit Ctrl-T")
