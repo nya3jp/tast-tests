@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75147ab9_a9185f71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-11T18:44:43Z",
+      "side": 1,
+      "message": "Thanks for the quick review Yanzhu and Eric!",
+      "revId": "76c21034b2d4adf7309d0cc4cb0d130df4b9c221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56b52012_60ea238e",
@@ -48,6 +65,30 @@
       "writtenOn": "2022-07-11T18:09:25Z",
       "side": 1,
       "message": "Is there a bug filed for this? Put it here if so",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "76c21034b2d4adf7309d0cc4cb0d130df4b9c221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c84d52ae_14c776dd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_delete.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-11T18:44:43Z",
+      "side": 1,
+      "message": "I created b/238645466 and assigned it to Matthew. Comment updated. Thanks!",
+      "parentUuid": "56b52012_60ea238e",
       "range": {
         "startLine": 45,
         "startChar": 9,
@@ -75,6 +116,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "495bff0f_eb2fcfba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_delete.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-11T18:44:43Z",
+      "side": 1,
+      "message": "This will be run only once without sync. But with `DeskTemplateSync` (enabled by default), there will be saved desks synced to the test device. You might notice for all the other tests, they disable `DeskTemplateSync` explicitly to avoid synced desks messing up with tests, also avoid creating too many useless desks to be synced to the cloud. Thanks for bringing this up, for readability I updated comments to applicable place so it\u0027s easier to follow.",
+      "parentUuid": "72895a72_31cc7ed3",
+      "revId": "76c21034b2d4adf7309d0cc4cb0d130df4b9c221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "989702f6_f67dfa4f",
@@ -98,6 +157,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93b5adc9_23aa35b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_delete.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-11T18:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "989702f6_f67dfa4f",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 33
+      },
+      "revId": "76c21034b2d4adf7309d0cc4cb0d130df4b9c221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3481eeaf_c90e8f05",
@@ -111,6 +194,30 @@
       "writtenOn": "2022-07-11T18:09:25Z",
       "side": 1,
       "message": "`!visible`?",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 20
+      },
+      "revId": "76c21034b2d4adf7309d0cc4cb0d130df4b9c221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2933cb9_b38d33cc",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-11T18:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3481eeaf_c90e8f05",
       "range": {
         "startLine": 192,
         "startChar": 4,
