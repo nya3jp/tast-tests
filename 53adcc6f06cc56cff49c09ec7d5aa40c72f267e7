@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ab77ce_375933f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-11T21:52:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66ffc71a_978c95cc",
+      "revId": "53adcc6f06cc56cff49c09ec7d5aa40c72f267e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13291bcb_fe4ad614",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-08T17:50:53Z",
       "side": 1,
       "message": "you can pass in the node finder for the target option",
+      "revId": "53adcc6f06cc56cff49c09ec7d5aa40c72f267e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9d49ab6_205fd8fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-11T21:52:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13291bcb_fe4ad614",
       "revId": "53adcc6f06cc56cff49c09ec7d5aa40c72f267e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3ceea6b_8a1e48c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-11T21:52:32Z",
+      "side": 1,
+      "message": "I implemented this in patch 1, but I thought that the extra step to close the context menu without doing anything and then reopen it again is a bit... redundant.\nThe current implementation directly launches the app and returns early on line 252 to prevent launching the app twice. Please let me know if this looks good to you.",
+      "parentUuid": "b90eb257_fa41d5c4",
+      "revId": "53adcc6f06cc56cff49c09ec7d5aa40c72f267e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e01dbe5_75696259",
         "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
         "patchSetId": 2
@@ -65,6 +119,24 @@
       "writtenOn": "2022-07-08T17:50:53Z",
       "side": 1,
       "message": "move these closer to where they\u0027re first used",
+      "revId": "53adcc6f06cc56cff49c09ec7d5aa40c72f267e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5171c81_5756d0a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-11T21:52:32Z",
+      "side": 1,
+      "message": "Removed and replaced by using the newInstanceMenuItem passed from function caller.",
+      "parentUuid": "9e01dbe5_75696259",
       "revId": "53adcc6f06cc56cff49c09ec7d5aa40c72f267e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +154,24 @@
       "writtenOn": "2022-07-08T17:50:53Z",
       "side": 1,
       "message": "document this - also, check if we have something similar in launcher.go",
+      "revId": "53adcc6f06cc56cff49c09ec7d5aa40c72f267e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d791358_904ad044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-11T21:52:32Z",
+      "side": 1,
+      "message": "Replaced by launcher.OpenProductivityLauncher.",
+      "parentUuid": "02ee2579_77011f91",
       "revId": "53adcc6f06cc56cff49c09ec7d5aa40c72f267e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
