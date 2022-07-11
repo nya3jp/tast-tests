@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd0c2d80_4bb0e7cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-11T19:31:33Z",
+      "side": 1,
+      "message": "Can you fix the bug description? Looks like Loic unintentionally changed it.",
+      "revId": "af692a4d3450e24b0f9befe30288db1c2c254eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
