@@ -109,7 +109,7 @@ func BreadcrumbNodeFinder(breadcrumb string) *nodewith.Finder {
 
 // SearchForAppInLauncher returns an action to search and select result in launcher.
 func SearchForAppInLauncher(query, result string, kb *input.KeyboardEventWriter, ui *uiauto.Context) uiauto.Action {
-	searchResult := nodewith.Role("listBoxOption").NameContaining(result).HasClass("ui/app_list/SearchResultView").First()
+	searchResult := nodewith.Role("listBoxOption").NameContaining(result).HasClass("SearchResultTileItemView").First()
 	return uiauto.Combine("search and select result in launcher",
 		kb.AccelAction("Search"),
 		ui.WaitUntilExists(nodewith.Role(role.TextField).HasClass("Textfield")),
