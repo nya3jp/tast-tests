@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11a3c2c_2b10106c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-11T16:45:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7650110f_531b1e2b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "951caf5c_6fe994f5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-11T07:49:41Z",
       "side": 1,
       "message": "nit: please add an extra newline before this.\nA structure like this one https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/bubble_launch_app.go is more readable.",
+      "range": {
+        "startLine": 47,
+        "startChar": 26,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5b9986d_8f569109",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-11T16:45:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "951caf5c_6fe994f5",
       "range": {
         "startLine": 47,
         "startChar": 26,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0e2e76_5f53833a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-11T16:45:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46bb7be4_bcc9e633",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 41
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3289fd7_9ea5dcd3",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-11T07:49:41Z",
       "side": 1,
       "message": "It is better to have a `cleanupCtx` so the tablet mode is restored even if the test times out.",
+      "range": {
+        "startLine": 92,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ea781f_684b25ca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-11T16:45:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3289fd7_9ea5dcd3",
       "range": {
         "startLine": 92,
         "startChar": 15,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb7c9ec3_31162672",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-11T16:45:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5500b38e_c2c2402a",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 19
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "767a4a6a_508838c9",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5678bb2c_25e05d07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-11T16:45:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "767a4a6a_508838c9",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 22
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ba48c6b_49144b27",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-07-11T07:49:41Z",
       "side": 1,
       "message": "Is this a change to pass the lint check?",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 2
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2f7a91_2208332a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-11T16:45:58Z",
+      "side": 1,
+      "message": "Yeah. Actually it was autoformatted by my IDE. Tried to revert these changes and got:\n\n```\n[FAILED] chromiumos/platform/tast-tests: _check_gofmt                     \n    Files not formatted with gofmt:\n    src/chromiumos/tast/local/chrome/uiauto/automation.go\n\nFATAL: Preupload failed due to above error(s).\n```",
+      "parentUuid": "5ba48c6b_49144b27",
       "range": {
         "startLine": 478,
         "startChar": 0,
