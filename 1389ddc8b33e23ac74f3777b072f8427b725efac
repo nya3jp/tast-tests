@@ -231,6 +231,30 @@
       },
       "revId": "1389ddc8b33e23ac74f3777b072f8427b725efac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f0639a5_3b39ef2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/hal3_aue.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-11T09:49:55Z",
+      "side": 1,
+      "message": "Ah! I see. Thank you for explanation.",
+      "parentUuid": "49a5deed_ca131531",
+      "range": {
+        "startLine": 116,
+        "startChar": 36,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "1389ddc8b33e23ac74f3777b072f8427b725efac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
