@@ -16,6 +16,109 @@
       "message": "Hi zhumatthew@ yzd@ ejcaruso@ Could you please take another look at this change? \nIt\u0027s because [1] was just submitted today and I did some more refactoring work. Thanks!\n\n[1] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3727393",
       "revId": "76c21034b2d4adf7309d0cc4cb0d130df4b9c221",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "782410d0_86fac6b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-11T18:09:25Z",
+      "side": 1,
+      "message": "If we\u0027re relying on the delete test to clean up, doesn\u0027t that make stale state potentially a problem if the tests run in the other order?\n\nAlso, it looks like desk syncing is now turned off for these tests.",
+      "revId": "76c21034b2d4adf7309d0cc4cb0d130df4b9c221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56b52012_60ea238e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_delete.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-11T18:09:25Z",
+      "side": 1,
+      "message": "Is there a bug filed for this? Put it here if so",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "76c21034b2d4adf7309d0cc4cb0d130df4b9c221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72895a72_31cc7ed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_delete.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-11T18:09:25Z",
+      "side": 1,
+      "message": "is there some reason this needs to be in a loop? I\u0027m having trouble understanding the code flow here as it seems like this is something that should presumably happen once.",
+      "revId": "76c21034b2d4adf7309d0cc4cb0d130df4b9c221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "989702f6_f67dfa4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/desk_templates_delete.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-11T18:09:25Z",
+      "side": 1,
+      "message": "just `libraryButtonVisible`?",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 33
+      },
+      "revId": "76c21034b2d4adf7309d0cc4cb0d130df4b9c221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3481eeaf_c90e8f05",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-11T18:09:25Z",
+      "side": 1,
+      "message": "`!visible`?",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 20
+      },
+      "revId": "76c21034b2d4adf7309d0cc4cb0d130df4b9c221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
