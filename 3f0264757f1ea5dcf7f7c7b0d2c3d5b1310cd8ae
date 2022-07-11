@@ -51,6 +51,24 @@
       "message": "This seems like a fragile way to split test cases, as soon as you have another narrow board you will need to change the name of the tests.\n\nAside from this, if you need to split the tests along another dimension, you will end up with 4 test cases, a third dimension you end up with 8, etc.  Wouldn\u0027t it be better in this case to just have the test check for the presence of some node in the expanded menu, and try expanding it if the node is not present?",
       "revId": "3f0264757f1ea5dcf7f7c7b0d2c3d5b1310cd8ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a930c4d6_17356466",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/connectivity.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1513257
+      },
+      "writtenOn": "2022-07-11T15:41:11Z",
+      "side": 1,
+      "message": "I\u0027m fine with either updating the name or adding the \"exists\" check. I went with this implementation because it was the suggested solution when I asked in the Tast user chat about the preferred practice. However, if we do the node-exists-check route doesn\u0027t that mean that the performance for the tests will be less since only Scarlet/gru will use those steps but all boards will have to run the check?",
+      "parentUuid": "79f77ef1_43a861d8",
+      "revId": "3f0264757f1ea5dcf7f7c7b0d2c3d5b1310cd8ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
