@@ -69,6 +69,24 @@
       "message": "Thank you for explanation!\n\nbut... new errors were observed on non-kernel-next boards.\nCould you check them too?",
       "revId": "fe7b258caaa6b80a3b388f3f5697a19c0c4a51ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22b49d97_487d1b5c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-07-11T18:37:10Z",
+      "side": 1,
+      "message": "In both cases (octopus/bluebird and strongbad/mrbland) the WiFi chipset is not reachable because the firmware has crashed.\n\nFor strongbad it started happening before the test, so more a generic flake than a test flake:\n```\n2022-07-02T19:16:42.650646Z ERR wpa_supplicant[925]: wlan0: Failed to initialize driver interface\n2022-07-02T19:16:42.650747Z ERR kernel: [ 1423.517687] failed to send QMI message\n2022-07-02T19:16:42.650762Z ERR kernel: [ 1423.517710] ath10k_snoc 18800000.wifi: failed to send config request: -104\n```\n\nFor octopus it does seem concurrent with the test\n```\n2022-07-07T07:47:19.490076Z ERR kernel: [ 1515.489088] iwlwifi 0000:00:0c.0: Failed to load firmware chunk!\n2022-07-07T07:47:19.490101Z ERR kernel: [ 1515.489098] iwlwifi 0000:00:0c.0: iwlwifi transaction failed, dumping registers\n```\n\nI doubt the octopus wifi firmware crash was caused by the test itself (you can see the flake rate on that test is ~0.2% and you\u0027d expect a higher rate than that) but we don\u0027t really have way to completely rule it out given the reproduction rate\n\n\nWhat are the next steps? Given the rate of failure -and the spread across platforms-, fixing the flake would be ~P4, which is unlikely to be addressed any time soon given the relative impact. Do we hold the test?",
+      "parentUuid": "ecef6e77_304a6b38",
+      "revId": "fe7b258caaa6b80a3b388f3f5697a19c0c4a51ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
