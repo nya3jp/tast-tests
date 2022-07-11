@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -92,6 +93,8 @@ func LacrosWebApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for the install button in the omnibox")
 	}
 	installButton := nodewith.Name("Install").Role(role.Button)
+
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn) // returns OS UI trees including Lacros a11y tree.
 
 	if err := uiauto.Combine("",
 		ui.LeftClick(installIcon),
