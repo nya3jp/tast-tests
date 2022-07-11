@@ -225,6 +225,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16672641_6c4fde0c",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-11T22:52:49Z",
+      "side": 1,
+      "message": "Arowa\u0027s CLs actually moved wpa_monitor to part of the wpacli package now, so it should be accessible.",
+      "parentUuid": "0773c4cd_3a5a18e9",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "748e4ed7_906242bb",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
         "patchSetId": 4
@@ -371,6 +389,24 @@
       "side": 1,
       "message": "Probably not. This shill_service is a local package while the one in router is a remote one. Local package cannot depend on a remote package.\n\nThis function will be deleted later when Shill and patchpanel support of tethering is merged and DHCP will be taken care of by a single Shill dbus command.",
       "parentUuid": "be20926c_786345f4",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a6a79b8_91d925bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2962,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-11T22:52:49Z",
+      "side": 1,
+      "message": "\u003e This function will be deleted later when Shill and patchpanel support of tethering is merged and DHCP will be taken care of by a single Shill dbus command.\n\nYeah that\u0027s a good point, I\u0027m fine letting this go in as is.",
+      "parentUuid": "b0d76cac_2711e40f",
       "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

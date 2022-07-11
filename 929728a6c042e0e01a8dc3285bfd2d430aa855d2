@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "217f4404_44699871",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-11T22:52:49Z",
+      "side": 1,
+      "message": "Can you also add a step by step description of the test here?",
+      "revId": "929728a6c042e0e01a8dc3285bfd2d430aa855d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
