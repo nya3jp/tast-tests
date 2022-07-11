@@ -94,6 +94,30 @@
       },
       "revId": "31c0b3cb872a60061cfd3124055853b3f9920033",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a79e5cd_19add6b2",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-11T15:12:47Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t think it provides any actual benefits turning it into a struct.\n\nIt will help us in the future to merge lacros options and chrome options.\nIndeed, it\u0027s not your scope, and it\u0027s fine for you not working on it, and instead you\u0027d like to be blocked, then it\u0027s up to you.\nI do not want to make changes that conflict with it, though.\n\n\u003e This current solution doesn\u0027t break encapsulation\n\nyou are exposing the config internals via OptionsDiff\u0027s return value, ...right...?\nThat\u0027s why I recommended not to depend on such.",
+      "parentUuid": "ac25ad9e_8f73f253",
+      "range": {
+        "startLine": 515,
+        "startChar": 38,
+        "endLine": 515,
+        "endChar": 44
+      },
+      "revId": "31c0b3cb872a60061cfd3124055853b3f9920033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
