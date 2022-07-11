@@ -287,6 +287,30 @@
       },
       "revId": "a8694ac7f3cdd0fc6881b19e54433510d7508a37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90c8ccf7_9544bc8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_pin_lockout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1178840
+      },
+      "writtenOn": "2022-07-11T16:06:39Z",
+      "side": 1,
+      "message": "Ah, I see. So it\u0027s equivalent to this case from the tutorial then, right? https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/codelab_3.md#interacting-with-the-accessibility-tree:~:text\u003dWhen%20you%20run,nil%20%7B%0A%20%20s.Fatal(...)%0A%7D",
+      "parentUuid": "2ceb871a_332995a0",
+      "range": {
+        "startLine": 155,
+        "startChar": 14,
+        "endLine": 155,
+        "endChar": 28
+      },
+      "revId": "a8694ac7f3cdd0fc6881b19e54433510d7508a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
