@@ -68,6 +68,23 @@
       "message": "I think I find the root cause and better solution... Removing vote for now.",
       "revId": "2661dc3524b12041b62d1923261ca496e484e1f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ede2c719_041b1481",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-07-11T07:19:05Z",
+      "side": 1,
+      "message": "Still submitting this, because this improves the stability, but I\u0027ll post detailed analysis in the bug later.",
+      "revId": "2661dc3524b12041b62d1923261ca496e484e1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
