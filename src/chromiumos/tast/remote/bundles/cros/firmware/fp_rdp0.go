@@ -130,19 +130,23 @@ func testRDP0(ctx context.Context, d *rpcdut.RPCDUT, buildFwFile string, removeF
 		return errors.Wrap(err, "failed to create remote temp directory")
 	}
 	defer func() {
-		tempDirExists, err := fs.Exists(ctx, tempdirPath)
-		if err != nil {
-			e = errors.Wrapf(err, "failed to check existence of temp directory: %q", tempdirPath)
-			return
-		}
+		if fs != nil {
+			tempDirExists, err := fs.Exists(ctx, tempdirPath)
+			if err != nil {
+				e = errors.Wrapf(err, "failed to check existence of temp directory: %q", tempdirPath)
+				return
+			}
 
-		if !tempDirExists {
-			// If we rebooted, the directory may no longer exist.
-			return
-		}
+			if !tempDirExists {
+				// If we rebooted, the directory may no longer exist.
+				return
+			}
 
-		if err := fs.RemoveAll(ctx, tempdirPath); err != nil {
-			e = errors.Wrapf(err, "failed to remove temp directory: %q", tempdirPath)
+			if err := fs.RemoveAll(ctx, tempdirPath); err != nil {
+				e = errors.Wrapf(err, "failed to remove temp directory: %q", tempdirPath)
+			}
+		} else {
+			testing.ContextLog(ctx, "DUTFS connection not available. Skip removing the temp directory")
 		}
 	}()
 
@@ -170,9 +174,13 @@ func testRDP0(ctx context.Context, d *rpcdut.RPCDUT, buildFwFile string, removeF
 
 	if needsReboot {
 		testing.ContextLog(ctx, "Rebooting")
+		// Reboot invalidates RPC client handle saved in fs. Assign nil
+		// to fs to mark it explicitly as invalid.
+		fs = nil
 		if err := d.Reboot(ctx); err != nil {
 			return errors.Wrap(err, "failed to reboot DUT")
 		}
+		fs = dutfs.NewClient(d.RPC().Conn)
 	}
 
 	if _, err := fingerprint.CheckFirmwareIsFunctional(ctx, d.DUT()); err != nil {
