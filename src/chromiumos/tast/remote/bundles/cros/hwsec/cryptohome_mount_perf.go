@@ -36,7 +36,7 @@ func init() {
 		ServiceDeps: []string{
 			"tast.cros.hwsec.AttestationDBusService",
 		},
-		Timeout: 6 * time.Minute,
+		Timeout: 12 * time.Minute,
 	})
 }
 
