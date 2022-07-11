@@ -200,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76cf6376_c8f75bca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/activity_indicators.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1313340
+      },
+      "writtenOn": "2022-07-11T23:39:30Z",
+      "side": 1,
+      "message": "I moved this before the first use of `ctx`",
+      "parentUuid": "025b81f3_be665ff1",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 52
+      },
+      "revId": "1a5a39e68f00d53eeab3724d450c176467aa32f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1ebdfaf_dab958ed",
