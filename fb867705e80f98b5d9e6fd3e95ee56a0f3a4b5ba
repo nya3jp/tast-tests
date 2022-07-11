@@ -16,6 +16,24 @@
       "message": "While I was looking into the linting issue, I saw that this method will likely fail in the same way. I went ahead and duplicated the logic here, since both of these methods are almost exactly the same.\n\nI can consolidate them in a followup CL.",
       "revId": "fb867705e80f98b5d9e6fd3e95ee56a0f3a4b5ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d194f2a_f731473f",
+        "filename": "src/chromiumos/tast/local/crash/crash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-07-11T21:37:16Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "f4bab8fc_7d6b46e5",
+      "revId": "fb867705e80f98b5d9e6fd3e95ee56a0f3a4b5ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
