@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b3b907b_b9e050fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_numpad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-11T09:07:29Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "b9421f13d7ffaf3f4f419d14a9c584c9c097efcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93de2a44_091d3bba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_numpad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-11T09:07:29Z",
+      "side": 1,
+      "message": "%q can be better.",
+      "range": {
+        "startLine": 112,
+        "startChar": 40,
+        "endLine": 112,
+        "endChar": 42
+      },
+      "revId": "b9421f13d7ffaf3f4f419d14a9c584c9c097efcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3305b716_a59d4f95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_numpad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-11T09:07:29Z",
+      "side": 1,
+      "message": "%q can be better.",
+      "range": {
+        "startLine": 117,
+        "startChar": 46,
+        "endLine": 117,
+        "endChar": 48
+      },
+      "revId": "b9421f13d7ffaf3f4f419d14a9c584c9c097efcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c125176_8c92e3fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_numpad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-11T09:07:29Z",
+      "side": 1,
+      "message": "nit: UserAction Name: \"PK numpad input\"",
+      "range": {
+        "startLine": 145,
+        "startChar": 4,
+        "endLine": 145,
+        "endChar": 21
+      },
+      "revId": "b9421f13d7ffaf3f4f419d14a9c584c9c097efcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f5e95a_f3504c99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_numpad.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-11T09:07:29Z",
+      "side": 1,
+      "message": "useractions.AttributeFeature:      useractions.FeaturePKTyping,",
+      "revId": "b9421f13d7ffaf3f4f419d14a9c584c9c097efcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
