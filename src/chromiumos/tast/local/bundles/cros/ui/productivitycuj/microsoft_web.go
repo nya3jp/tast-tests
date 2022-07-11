@@ -184,7 +184,7 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, cr *chrome
 			if err != nil {
 				return err
 			}
-			if lines := strings.Split(data, "\n"); len(lines) != 100 && !strings.HasPrefix(data, "1") {
+			if lines := strings.Fields(data); len(lines) != 100 && !strings.HasPrefix(data, "1") {
 				return errors.New("incorrect pasted content")
 			}
 			return nil
@@ -195,7 +195,7 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, cr *chrome
 			uiauto.Sleep(dataWaitTime), // Given time to select all data.
 			app.kb.AccelAction("Ctrl+C"),
 			uiauto.Sleep(dataWaitTime), // Given time to copy data.
-			checkCopiedData,
+			uiauto.IfFailThen(checkCopiedData, app.selectRangeWithGoTo),
 		)
 		return uiauto.Combine("copy from existing spreadsheet",
 			app.openBlankDocument(excel),
@@ -249,10 +249,10 @@ func (app *MicrosoftWebOffice) OpenSpreadsheet(ctx context.Context, fileName str
 // MoveDataFromDocToSheet moves data from document to spreadsheet.
 func (app *MicrosoftWebOffice) MoveDataFromDocToSheet(ctx context.Context) error {
 	wordWebArea := nodewith.Name("Word").Role(role.RootWebArea)
-	paragraph := nodewith.Role(role.GenericContainer).Ancestor(wordWebArea).HasClass("EditingSurfaceBody").Editable()
+	paragraph := nodewith.Role(role.GenericContainer).Ancestor(wordWebArea).HasClass("EditingSurfaceBody").Focusable()
 	if err := uiauto.NamedCombine("switch to Microsoft Word cut selected text from the document",
 		app.uiHdl.SwitchToChromeTabByName(wordTab),
-		app.ui.DoDefault(paragraph),
+		uiauto.IfFailThen(app.ui.DoDefault(paragraph), app.ui.DoDefault(paragraph.Editable())),
 		app.kb.AccelAction("Ctrl+A"),
 		app.kb.AccelAction("Ctrl+C"),
 		uiauto.Sleep(dataWaitTime), // Given time to select all data.
@@ -902,16 +902,18 @@ func (app *MicrosoftWebOffice) openFindAndSelect(ctx context.Context) error {
 	)(ctx)
 }
 
-// selectRange selects the range by clicking on the "Name Box" or opening "Go to" box since the tapping response is different with clicking.
-func (app *MicrosoftWebOffice) selectRange(ctx context.Context) error {
-	testing.ContextLog(ctx, `Selecting "Range"`)
+// selectRangeWithNameBox selects the range by clicking on the "Name Box".
+func (app *MicrosoftWebOffice) selectRangeWithNameBox(ctx context.Context) error {
+	testing.ContextLog(ctx, `Selecting range by focus on "Name Box"`)
 
 	// In the clamshell mode, the "Name Box" can be focused with just click.
-	if !app.tabletMode {
-		testing.ContextLog(ctx, `Selecting range by focus on "Name Box"`)
-		nameBox := nodewith.NameContaining("Name Box").Role(role.TextFieldWithComboBox).Editable()
-		return app.ui.DoDefaultUntil(nameBox, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nameBox.Focused()))(ctx)
-	}
+	nameBox := nodewith.NameContaining("Name Box").Role(role.TextFieldWithComboBox).Editable()
+	return app.ui.DoDefaultUntil(nameBox, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nameBox.Focused()))(ctx)
+}
+
+// selectRangeWithGoTo selects the range by opening "Go to" box since the tapping response is different with clicking.
+func (app *MicrosoftWebOffice) selectRangeWithGoTo(ctx context.Context) error {
+	testing.ContextLog(ctx, `Selecting range by open "Go to"`)
 
 	rangeText := nodewith.Name("Range:").Role(role.TextField).Editable()
 	rangeTextFocused := rangeText.Focused()
@@ -941,7 +943,7 @@ func (app *MicrosoftWebOffice) selectRange(ctx context.Context) error {
 // selectBox selects the specified cell using the name box.
 func (app *MicrosoftWebOffice) selectBox(box string) action.Action {
 	return uiauto.NamedCombine(fmt.Sprintf("select box %q", box),
-		app.selectRange,
+		app.selectRangeWithNameBox,
 		app.kb.AccelAction("Ctrl+A"), // Make sure to clear the content and re-input.
 		app.kb.TypeAction(box),
 		app.kb.AccelAction("Enter"),
