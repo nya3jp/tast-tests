@@ -12,13 +12,18 @@ type Options struct {
 	Retries int
 	// The interval between retries.
 	RetryInterval time.Duration
+	// Move the mouse to the right center of the screen after clicking, so that
+	// it does not interfere with screenshots when the application renders the
+	// cursor.
+	MoveAfterClick bool
 }
 
 // DefaultOptions return options with default values.
-func DefaultOptions() *Options {
-	return &Options{
-		Retries:       1,
-		RetryInterval: time.Second,
+func DefaultOptions() Options {
+	return Options{
+		Retries:        1,
+		RetryInterval:  time.Second,
+		MoveAfterClick: false,
 	}
 }
 
@@ -33,4 +38,11 @@ func Retries(retries int) Option {
 // RetryInterval controls the interval between retries.
 func RetryInterval(retryInterval time.Duration) Option {
 	return func(o *Options) { o.RetryInterval = retryInterval }
+}
+
+// MoveAfterClick enables moving the cursor out of the way after every click.
+func MoveAfterClick() Option {
+	return func(o *Options) {
+		o.MoveAfterClick = true
+	}
 }

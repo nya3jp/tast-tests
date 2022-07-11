@@ -50,7 +50,7 @@ type Context struct {
 	tconn              *chrome.TestConn
 	detector           *uiDetector
 	pollOpts           testing.PollOptions
-	options            *Options
+	options            Options
 	screenshotStrategy ScreenshotStrategy
 }
 
@@ -119,7 +119,7 @@ func (uda *Context) WithScreenshotStrategy(s ScreenshotStrategy) *Context {
 func (uda *Context) WithOptions(optionList ...Option) *Context {
 	c := uda.copy()
 	for _, opt := range optionList {
-		opt(c.options)
+		opt(&c.options)
 	}
 	return c
 }
@@ -142,8 +142,19 @@ func (uda *Context) click(s *Finder, button mouse.Button) uiauto.Action {
 			if err := mouse.Move(uda.tconn, loc.CenterPoint(), 250*time.Millisecond)(ctx); err != nil {
 				return errors.Wrap(err, "failed to move the mouse into position")
 			}
-
-			return mouse.Click(uda.tconn, loc.CenterPoint(), button)(ctx)
+			if err := mouse.Click(uda.tconn, loc.CenterPoint(), button)(ctx); err != nil {
+				return err
+			}
+			if uda.options.MoveAfterClick {
+				screens, err := display.GetInfo(ctx, uda.tconn)
+				if err != nil {
+					return errors.Wrap(err, "failed to get the display info")
+				}
+				if err := mouse.Move(uda.tconn, screens[0].Bounds.RightCenter(), 250*time.Millisecond)(ctx); err != nil {
+					return errors.Wrap(err, "failed to move the mouse after click")
+				}
+			}
+			return nil
 		}, &uda.pollOpts)
 	}, uda.options.RetryInterval)
 }
