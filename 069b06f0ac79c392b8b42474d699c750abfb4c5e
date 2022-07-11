@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "baa4e2d6_5dad34d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-07-11T21:38:32Z",
+      "side": 1,
+      "message": "Question - are we sure that we\u0027re not collecting webrtc logs somewhere already? Could you please look through the stainless log files",
+      "revId": "069b06f0ac79c392b8b42474d699c750abfb4c5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a921daed_e678e24d",
