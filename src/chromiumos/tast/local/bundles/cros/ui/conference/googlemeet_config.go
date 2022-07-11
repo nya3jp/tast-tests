@@ -48,16 +48,16 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 	}
 
 	var bondEnabled bool
-	bondEnabledStr, ok := s.Var("ui.bond_enabled")
+	bondEnabledStr, ok := s.Var("ui.GoogleMeetCUJ.bond_enabled")
 	if ok && bondEnabledStr == "true" {
 		bondEnabled = true
 	} else {
 		bondEnabled = false
 	}
-	bondCreds, ok := s.Var("ui.bond_key")
+	bondCreds, ok := s.Var("ui.GoogleMeetCUJ.bond_key")
 	if !ok || len(bondCreds) < 1 {
 		if bondEnabled {
-			return GoogleMeetConfig{}, errors.New("bond API is enabled via ui.bond_enabled but ui.bond_key is not set")
+			return GoogleMeetConfig{}, errors.New("bond API is enabled via ui.GoogleMeetCUJ.bond_enabled but ui.bond_key is not set")
 		}
 		bondCreds = ""
 	}

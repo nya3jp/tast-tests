@@ -50,8 +50,8 @@ func init() {
 			"ui.meet_account",
 			"ui.meet_password",
 			// Credentials for BOND API.
-			"ui.bond_enabled",
-			"ui.bond_key",
+			"ui.GoogleMeetCUJ.bond_enabled",
+			"ui.GoogleMeetCUJ.bond_key",
 
 			// Static Google meet rooms with different participant number have been created.
 			// They have different URLs. ui.meet_url can be used to run a specific subtest but
