@@ -311,6 +311,30 @@
       },
       "revId": "a8694ac7f3cdd0fc6881b19e54433510d7508a37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9470ba96_dd58182e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/u2fd/webauthn_pin_lockout.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1178840
+      },
+      "writtenOn": "2022-07-11T16:14:47Z",
+      "side": 1,
+      "message": "(Overlapped replies)\n\n\u003e Martin, regardless of Tast, could you help us understand why sometimes the button works and sometimes not, even if it looks \"enabled\"\n\nI\u0027m not sure. Perhaps it\u0027s because we first replace the child view and then update the visibility of the accept/cancel buttons (see https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ui/views/webauthn/authenticator_request_dialog_view.cc;l\u003d81-83;drc\u003dc46305e60d61c056449700a741f6f4e002e2c073;bpv\u003d1;bpt\u003d1).\n\nBut based what I\u0027m reading in the Tast tutorial, this seems like a pretty common problem.",
+      "parentUuid": "90c8ccf7_9544bc8a",
+      "range": {
+        "startLine": 155,
+        "startChar": 14,
+        "endLine": 155,
+        "endChar": 28
+      },
+      "revId": "a8694ac7f3cdd0fc6881b19e54433510d7508a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
