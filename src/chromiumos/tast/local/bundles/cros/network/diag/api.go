@@ -57,7 +57,7 @@ func (m *MojoAPI) PollRoutine(ctx context.Context, routine string, expectedResul
 	// If the context does not have the deadline, use 10 seconds timeout.
 	var timeout time.Duration
 	if _, ok := ctx.Deadline(); !ok {
-		timeout = 10 * time.Second
+		timeout = 30 * time.Second
 	}
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
