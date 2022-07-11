@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc52daf0_b29691b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-11T04:37:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b8cd2c_43553041",
+      "range": {
+        "startLine": 71,
+        "startChar": 18,
+        "endLine": 71,
+        "endChar": 49
+      },
+      "revId": "edd203765484f53138d9bd142f746c0ced9eec44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ddc067c_c03d4c2b",
