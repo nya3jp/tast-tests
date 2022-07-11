@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "767ab118_3b4dc024",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-07-11T14:12:12Z",
+      "side": 1,
+      "message": "Hi Renuga,\n\nWhile the tast tests are passing now on ChromiumOS bots, it\u0027s still not stable on ChromeOS bots (check last comment in the bug).\nDemoting the test temporarily, until I stabilize it on ChromeOS bots as well.",
+      "revId": "182b929a758a89be65a19239ba30ca0bc5a5f923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
