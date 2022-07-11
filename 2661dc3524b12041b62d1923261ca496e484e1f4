@@ -33,6 +33,24 @@
       "message": "Thanks for taking a look, this is a really interesting find - can I ask if there was something in particular that made it obvious? I\u0027m wondering if there are things I should look for in the other standardized tests which might signal a similar issue?",
       "revId": "2661dc3524b12041b62d1923261ca496e484e1f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae598a2_a93d816b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-07-11T02:41:42Z",
+      "side": 1,
+      "message": "Generally, when changing windowing mode (window state) triggers app restart.\n\nFor example, ash.SetARCAppWindowStateAndWait can wait for animation finishing on the Chrome side, but there\u0027s chance that Android is still doing some work and restart can be triggered due to windowing mode change after that.\n\nBut I haven\u0027t figured out why this happens only on kukui devices in this case, so I\u0027ll let you know when I find it in detail.",
+      "parentUuid": "d6283924_c591e534",
+      "revId": "2661dc3524b12041b62d1923261ca496e484e1f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
