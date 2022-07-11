@@ -77,6 +77,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18f6d91a_842b1456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_state_transitions_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-11T23:35:47Z",
+      "side": 1,
+      "message": "Doesn\u0027t have to be in this cl, but we might want to consider having our own setup function that works like here[1], so we don\u0027t have to rely on lacros.Setup to setup Ash? It seems confusing, since it could look like to someone who has never seen the implementation of lacros.Setup that we wastefully setup Lacros for ash tests. \n https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go;l\u003d378",
+      "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a804b04_b5435c15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_state_transitions_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-11T23:35:47Z",
+      "side": 1,
+      "message": "Just wanted to note, short drag durations were what caused the \"failed to enter overview mode\" failures in VideoCUJ.tablet, because the durations were so short that the touch was never initially registered. Those durations were 280ms long and failed within a couple of minutes into the test. Can we maybe run this on an older device and makes sure it can consistently perform this action?",
+      "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a64ee13b_9c2b4175",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_state_transitions_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-11T23:35:47Z",
+      "side": 1,
+      "message": "Should we also be collecting the common metrics? (Using `recorder.AddCommonMetrics`)?",
+      "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a3b5d3c_fd09503d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_state_transitions_cuj.go",
         "patchSetId": 1
