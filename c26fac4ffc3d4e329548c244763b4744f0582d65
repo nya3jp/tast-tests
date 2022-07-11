@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cd2d5fa_0eeb1f81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-11T02:31:07Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm with one nit",
+      "revId": "c26fac4ffc3d4e329548c244763b4744f0582d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40574b46_41370ddf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-11T02:31:07Z",
+      "side": 1,
+      "message": "nit: also need to remove this call :)",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "c26fac4ffc3d4e329548c244763b4744f0582d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
