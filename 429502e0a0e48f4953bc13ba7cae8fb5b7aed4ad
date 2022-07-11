@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dfb6bb0d_5e2f4ff4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-07-11T03:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff5e6fa3_197f289f",
+      "revId": "429502e0a0e48f4953bc13ba7cae8fb5b7aed4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6e144524_da53e0f0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -92,6 +110,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b3d409_7a9c4464",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-07-11T03:45:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f97ea0be_df84525e",
+      "range": {
+        "startLine": 79,
+        "startChar": 23,
+        "endLine": 79,
+        "endChar": 58
+      },
+      "revId": "429502e0a0e48f4953bc13ba7cae8fb5b7aed4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74696c7d_915a6c28",
@@ -105,6 +147,30 @@
       "writtenOn": "2022-07-08T10:01:34Z",
       "side": 1,
       "message": "If it can be avoided, it is better not to pass the testing state to functions.\nYou can call `defer faillog` before `verifyGhostWindow()` calls, this way you don\u0027t need to pass `cr` and `s`.",
+      "range": {
+        "startLine": 90,
+        "startChar": 100,
+        "endLine": 90,
+        "endChar": 116
+      },
+      "revId": "429502e0a0e48f4953bc13ba7cae8fb5b7aed4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c8dc6b_266e14fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-07-11T03:45:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "74696c7d_915a6c28",
       "range": {
         "startLine": 90,
         "startChar": 100,
@@ -138,6 +204,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e657d3_da4f9b17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-07-11T03:45:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1da71dac_5be713a5",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 6
+      },
+      "revId": "429502e0a0e48f4953bc13ba7cae8fb5b7aed4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "758322aa_d7fe0364",
@@ -151,6 +241,30 @@
       "writtenOn": "2022-07-08T10:01:34Z",
       "side": 1,
       "message": "nit: it is better to have the main test function as the first function in the file.",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 16
+      },
+      "revId": "429502e0a0e48f4953bc13ba7cae8fb5b7aed4ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c220b186_a5d582d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/ghost_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-07-11T03:45:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "758322aa_d7fe0364",
       "range": {
         "startLine": 206,
         "startChar": 5,

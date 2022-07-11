@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a918090_22bccdb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510928
+      },
+      "writtenOn": "2022-07-11T03:45:18Z",
+      "side": 1,
+      "message": "Thanks for your review! I will raise another CL for these nits.",
+      "revId": "3422ff9b175382cae1d64f884bd683fa2a356652",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
