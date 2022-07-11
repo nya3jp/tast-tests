@@ -22,6 +22,30 @@
       },
       "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "327e80ad_6fc8a4ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_state_transitions_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-11T21:06:09Z",
+      "side": 1,
+      "message": "There are differences that will affect the animation performance. `dragUnmaximizeAndMaximize` performs a workflow of dragging the window from the top and back to the top. The maximize/unmaximize animations have a shorter duration in that workflow than in other workflows such as clicking the buttons in the top right corner of the window. Also, when you drag the window from the top, the window bounds change during the unmaximize animation.\n\nThat is why we have special histograms only triggered by `dragUnmaximizeAndMaximize`:\n\tAsh.Window.AnimationSmoothness.CrossFade.DragMaximize\n\tAsh.Window.AnimationSmoothness.CrossFade.DragUnmaximize\n...whereas when `ash.SetWindowStateAndWait` maximizes or unmaximizes the window, it triggers this histogram:\n\tAsh.Window.AnimationSmoothness.CrossFade",
+      "parentUuid": "4a3b5d3c_fd09503d",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 252,
+        "endChar": 28
+      },
+      "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
