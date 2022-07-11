@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad3f0aa7_1ddfd6f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-11T23:52:48Z",
+      "side": 1,
+      "message": "Could we just create a new method `uidetection.LeftClickAndMoveMouseAfter` instead of adding an option?",
+      "parentUuid": "8fea8329_2c8cb3d4",
+      "revId": "be26996a47e5cadae739ad8992b44b0ba128f59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f88f812_e486b975",
         "filename": "src/chromiumos/tast/local/uidetection/automation.go",
         "patchSetId": 1
