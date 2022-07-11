@@ -18,6 +18,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58883531_96fe8147",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-11T16:19:39Z",
+      "side": 1,
+      "message": "LGTM for network content. Should tast reviewers own the final approval ?",
+      "revId": "c26fac4ffc3d4e329548c244763b4744f0582d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70a4183a_07d61072",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-11T16:19:39Z",
+      "side": 1,
+      "message": "typo. Actually you could remove \"virtual\" altogether since shill thinks of this network interface as a physical ethernet network.",
+      "range": {
+        "startLine": 22,
+        "startChar": 249,
+        "endLine": 22,
+        "endChar": 257
+      },
+      "revId": "c26fac4ffc3d4e329548c244763b4744f0582d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be188647_fe9be92b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-11T16:19:39Z",
+      "side": 1,
+      "message": "So now we should specify here or in New() that the servers listens on any IPv4 or IPv6 address for the namespace.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 54
+      },
+      "revId": "c26fac4ffc3d4e329548c244763b4744f0582d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40574b46_41370ddf",

@@ -377,6 +377,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b84bba7_db012df9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-11T16:19:39Z",
+      "side": 1,
+      "message": "Yes that will work nicely. SGTM to fix this in the next patch.",
+      "parentUuid": "dab9bf79_ca70e77f",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "178041cf_f7c406de",
@@ -519,6 +543,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2773e133_cb294e18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-11T16:19:39Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "e65b31a2_431b4b1b",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f5ff90c_7c5b527b",
@@ -556,6 +604,30 @@
       "side": 1,
       "message": "It appears that the http.server will listen on ipv4 and ipv6 by default (http.ServeType \u003d tcp by default, which you can configure to tcp4 or tcp6 if you want only one address family). So by removing the host (or what I used as the IP), it should be listening on both address families.",
       "parentUuid": "7f5ff90c_7c5b527b",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 16
+      },
+      "revId": "3d590a0b56161a8b4d0d7fe2f6ac4e7892812723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d387b0_e24e655e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-11T16:19:39Z",
+      "side": 1,
+      "message": "Ahh that\u0027s a nice feature of the Go http server package. If removing the address ends up implementing solution a) with the default behavior of Go http server package, that will work well I think.",
+      "parentUuid": "5def689d_1cd42e64",
       "range": {
         "startLine": 37,
         "startChar": 0,
