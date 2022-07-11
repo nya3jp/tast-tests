@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f685689b_41a54d76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-07-11T09:29:48Z",
+      "side": 1,
+      "message": "hwsec-wise LGTM.",
+      "revId": "687f54af85a5c4b15d85643f277c741bee037f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01b9a63f_05601ee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-07-11T09:29:48Z",
+      "side": 1,
+      "message": "nit: Maybe we could log the error of ecryptfsVaultExists() here. If the error is not expected, the log might be useful to debug.",
+      "range": {
+        "startLine": 349,
+        "startChar": 1,
+        "endLine": 349,
+        "endChar": 76
+      },
+      "revId": "687f54af85a5c4b15d85643f277c741bee037f86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
