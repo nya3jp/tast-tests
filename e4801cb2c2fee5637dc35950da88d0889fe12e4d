@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8c7b2d7_3089fc3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-07-11T01:38:43Z",
+      "side": 1,
+      "message": "Is there a regression in M105? These tests are failing consistently.\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dbuild\u0026col\u003dtest\u0026first_date\u003d2022-06-28\u0026last_date\u003d2022-07-11\u0026test\u003dShillCellularConnectToUnknownMno%7CShillCellularApn\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse",
+      "revId": "e4801cb2c2fee5637dc35950da88d0889fe12e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
