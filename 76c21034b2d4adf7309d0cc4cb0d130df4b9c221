@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7b6e186_61eb109d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510647
+      },
+      "writtenOn": "2022-07-11T18:51:03Z",
+      "side": 1,
+      "message": "All other tests would not sync. They will not download desks from cloud or upload new desks to cloud, thus sync no longer messes those tests up. Delete test uses sync because it can clean up data that is already synced to cloud for test accounts.",
+      "parentUuid": "782410d0_86fac6b2",
+      "revId": "76c21034b2d4adf7309d0cc4cb0d130df4b9c221",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56b52012_60ea238e",
