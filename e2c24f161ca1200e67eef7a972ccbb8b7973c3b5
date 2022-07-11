@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7650110f_531b1e2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-11T07:49:41Z",
+      "side": 1,
+      "message": "nit: The subject line should have a prefix, which is usually the changes package. E.g.:\n`launcher: Add test for newly installed apps`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "951caf5c_6fe994f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-11T07:49:41Z",
+      "side": 1,
+      "message": "nit: please add an extra newline before this.\nA structure like this one https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/bubble_launch_app.go is more readable.",
+      "range": {
+        "startLine": 47,
+        "startChar": 26,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46bb7be4_bcc9e633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-11T07:49:41Z",
+      "side": 1,
+      "message": "nit: please add a prefix to the temp dir.",
+      "range": {
+        "startLine": 62,
+        "startChar": 39,
+        "endLine": 62,
+        "endChar": 41
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3289fd7_9ea5dcd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-11T07:49:41Z",
+      "side": 1,
+      "message": "It is better to have a `cleanupCtx` so the tablet mode is restored even if the test times out.",
+      "range": {
+        "startLine": 92,
+        "startChar": 15,
+        "endLine": 92,
+        "endChar": 18
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5500b38e_c2c2402a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-11T07:49:41Z",
+      "side": 1,
+      "message": "Function names should not start with get go/go-style/decisions#getters\nE.g. use `appItemViewNode`.",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 19
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba48c6b_49144b27",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-11T07:49:41Z",
+      "side": 1,
+      "message": "Is this a change to pass the lint check?",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 2
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
