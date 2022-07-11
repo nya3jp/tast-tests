@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82735fb9_8067ed88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/touch_suspend_resume.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-11T17:55:14Z",
+      "side": 1,
+      "message": "I guess that 15 milliseconds could be comparable to some processing delay between the swipes on a cheap device. You might want to consider maintaining a consistent pace by doing something like this:\n\tstartTime :\u003d time.Now()\n\tfor i :\u003d 0; i \u003c segments; i++ {\n\t\tif err :\u003d testing.Sleep(ctx, time.Until(startTime.Add(time.Duration(i) * (15 * time.Millisecond)))); err !\u003d nil {\n\t\t\treturn errors.Wrap(err, \"failed to sleep\")\n\t\t}\n\t\t...\n\t}\nYou could also consider similar things for the dotted line and the box.",
+      "range": {
+        "startLine": 304,
+        "startChar": 31,
+        "endLine": 304,
+        "endChar": 50
+      },
+      "revId": "0188fa4ff1a1368ea22523191b3566bebe84473e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
