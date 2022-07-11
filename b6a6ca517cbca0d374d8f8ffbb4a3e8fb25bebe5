@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17399d16_51758d1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-07-11T21:25:49Z",
+      "side": 1,
+      "message": "Perhaps save the log file too?",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 79
+      },
+      "revId": "b6a6ca517cbca0d374d8f8ffbb4a3e8fb25bebe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
