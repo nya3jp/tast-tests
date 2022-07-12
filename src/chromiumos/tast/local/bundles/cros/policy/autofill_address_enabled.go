@@ -169,7 +169,7 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 				ui := uiauto.New(tconn)
 
 				if err := uiauto.Combine("open the add address dialog",
-					ui.LeftClick(nodewith.Name("Add address").Role(role.Button)),
+					ui.DoDefault(nodewith.Name("Add address").Role(role.Button)),
 					ui.WaitUntilExists(nodewith.Name("Save").Role(role.Button)),
 				)(ctx); err != nil {
 					s.Fatal("Failed to open the add address dialog: ", err)
@@ -186,7 +186,7 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 					addressField := nodewith.Role(role.TextField).Name(address.fieldName)
 					if err := uiauto.Combine("fill in address text field",
 						ui.MakeVisible(addressField),
-						ui.LeftClick(addressField),
+						ui.DoDefault(addressField),
 					)(ctx); err != nil {
 						s.Fatal("Failed to click the text field: ", err)
 					}
@@ -194,7 +194,7 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 						s.Fatal("Failed to type to the text field: ", err)
 					}
 				}
-				if err := ui.LeftClick(nodewith.Role(role.Button).Name("Save"))(ctx); err != nil {
+				if err := ui.DoDefault(nodewith.Role(role.Button).Name("Save"))(ctx); err != nil {
 					s.Fatal("Failed to click the Save button: ", err)
 				}
 
@@ -211,7 +211,7 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 					ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button).ClassName("test-target-button")),
 					ui.LeftClick(nodewith.Role(role.InlineTextBox).Name("Email")),
 					ui.WithTimeout(45*time.Second).WaitUntilExists(suggestionPopup),
-					ui.LeftClick(suggestionPopup),
+					ui.DoDefault(suggestionPopup),
 					ui.WaitUntilExists(nodewith.Role(role.InlineTextBox).Name(addressValues[1].fieldValue)),
 				)(ctx); err != nil {
 					s.Fatal("Failed to trigger and use address autofill: ", err)

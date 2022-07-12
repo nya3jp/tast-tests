@@ -138,8 +138,8 @@ func ConfigureChromeToAcceptCertificate(ctx context.Context, config ServerConfig
 	authorities := nodewith.Name("Authorities").Role(role.Tab)
 	authTabText := nodewith.Name("You have certificates on file that identify these certificate authorities").Role(role.StaticText)
 	importButton := nodewith.Name("Import").Role(role.Button)
-	certFileItem := nodewith.Name(caCertFileName).First()
-	openButton := nodewith.Name("Open").Role(role.Button)
+	certFileItem := nodewith.Name(caCertFileName).Role(role.ListBoxOption).Focusable()
+	openButton := nodewith.Name("Open").Role(role.Button).Focusable()
 	trust1Checkbox := nodewith.NameContaining("Trust this certificate for identifying websites").Role(role.CheckBox)
 	trust2Checkbox := nodewith.NameContaining("Trust this certificate for identifying email users").Role(role.CheckBox)
 	trust3Checkbox := nodewith.NameContaining("Trust this certificate for identifying software makers").Role(role.CheckBox)
@@ -147,20 +147,20 @@ func ConfigureChromeToAcceptCertificate(ctx context.Context, config ServerConfig
 
 	if err := uiauto.Combine("set_cerficate",
 		ui.WaitUntilExists(authorities),
-		ui.LeftClick(authorities),
+		ui.DoDefault(authorities),
 		ui.WaitUntilExists(authTabText),
 		ui.WaitUntilExists(importButton),
-		ui.LeftClick(importButton),
+		ui.DoDefault(importButton),
 		ui.WaitUntilExists(certFileItem),
 		ui.LeftClick(certFileItem),
 		ui.WaitUntilExists(openButton),
-		ui.LeftClick(openButton),
+		ui.DoDefault(openButton),
 		ui.WaitUntilExists(trust1Checkbox),
 		ui.WaitUntilExists(okButton),
-		ui.LeftClick(trust1Checkbox),
-		ui.LeftClick(trust2Checkbox),
-		ui.LeftClick(trust3Checkbox),
-		ui.LeftClick(okButton),
+		ui.DoDefault(trust1Checkbox),
+		ui.DoDefault(trust2Checkbox),
+		ui.DoDefault(trust3Checkbox),
+		ui.DoDefault(okButton),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to set certificate")
 	}
@@ -191,7 +191,7 @@ func CertificateExists(ctx context.Context, cr *chrome.Chrome, br *browser.Brows
 
 	if err := uiauto.Combine("open correct tab",
 		ui.WaitUntilExists(authorities),
-		ui.LeftClick(authorities),
+		ui.DoDefault(authorities),
 		ui.WaitUntilExists(authTabText),
 	)(ctx); err != nil {
 		return false, errors.Wrap(err, "failed to open authorities tab")
