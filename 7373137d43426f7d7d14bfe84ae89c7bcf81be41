@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee1cf51_ea3f7ec9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2022-07-12T05:12:37Z",
+      "side": 1,
+      "message": "Test cases LGTM, ",
+      "revId": "7373137d43426f7d7d14bfe84ae89c7bcf81be41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfb1aed3_976bfad3",
@@ -14,6 +31,24 @@
       "writtenOn": "2022-07-11T23:52:43Z",
       "side": 1,
       "message": "this opens 4 windows, right? Can we add a browser with 2 tabs?",
+      "revId": "7373137d43426f7d7d14bfe84ae89c7bcf81be41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b36b0e1_0047dae8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2022-07-12T05:12:37Z",
+      "side": 1,
+      "message": "+1 to this request, it would be good to test the search with a multi-tab window. Other than that, the test cases LGTM :)",
+      "parentUuid": "bfb1aed3_976bfad3",
       "revId": "7373137d43426f7d7d14bfe84ae89c7bcf81be41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
