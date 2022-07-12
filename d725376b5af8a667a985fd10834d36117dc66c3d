@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0befb055_f6bea3dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_autocorrect_accent_key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-12T02:41:06Z",
+      "side": 1,
+      "message": "`s.Fatal`\nthis is causing the build failures.",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 10
+      },
+      "revId": "d725376b5af8a667a985fd10834d36117dc66c3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
