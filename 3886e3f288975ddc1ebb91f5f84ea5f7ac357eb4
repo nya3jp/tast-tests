@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44b71bc9_aa4ba2df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-12T22:27:09Z",
+      "side": 1,
+      "message": "Done.\nRemove the line below as I think they are doing the same thing.",
+      "parentUuid": "e5b4efb2_d6df7cf8",
+      "revId": "3886e3f288975ddc1ebb91f5f84ea5f7ac357eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58cdc1f2_39a018a3",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-12T18:04:55Z",
       "side": 1,
       "message": "I think the flow here is a bit confusing, how about:\n\n```\nif !isMenuItemFound {\n  if err :\u003d setLanchAppAs(); err !\u003d nil {\n     return errors.Wrap(...)\n  }\n  // Changing the app launch type from the app context menu closes the context menu - reopen it, and the rest of the method assumes the context menu is open.\n  \tif err :\u003d uiauto.Combine(\"Reopen context menu\",\n\t\tui.RightClick(app),\n\t\tui.WaitUntilExists(newInstanceMenuItem),\n\t)(ctx); err !\u003d nil {\n\t}\n}\n\nif err :\u003d uiauto.Combine(\"Open new app instance\",\n  ui.LeftClick(newInstanceMenuItem)...\n....\n\n```",
+      "revId": "3886e3f288975ddc1ebb91f5f84ea5f7ac357eb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f142fc34_374a948f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-12T22:27:09Z",
+      "side": 1,
+      "message": "This looks good and easier to understand! Implemented in this patch.",
+      "parentUuid": "58cdc1f2_39a018a3",
       "revId": "3886e3f288975ddc1ebb91f5f84ea5f7ac357eb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
