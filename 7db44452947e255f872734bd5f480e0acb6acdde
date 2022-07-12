@@ -22,6 +22,30 @@
       },
       "revId": "7db44452947e255f872734bd5f480e0acb6acdde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e04abad_896557ce",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-12T19:58:18Z",
+      "side": 1,
+      "message": "I\u0027m okay with that. This also affects disabling FP updater, so I have to update the function too.",
+      "parentUuid": "da772d17_6690d9ec",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 5
+      },
+      "revId": "7db44452947e255f872734bd5f480e0acb6acdde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
