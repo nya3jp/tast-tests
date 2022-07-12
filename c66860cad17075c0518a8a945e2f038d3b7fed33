@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e58c8cc_86a42d79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-07-12T21:58:32Z",
+      "side": 1,
+      "message": "The test will fail. But since we have turned the flag default on since M104, fixture `ChromePolicyLoggedIn` will have personalization hub enabled.",
+      "parentUuid": "9a67c932_21ce32b9",
+      "revId": "c66860cad17075c0518a8a945e2f038d3b7fed33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e80d910d_6e21794d",
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "Avatars get changed on a slow cycle (less than once per year now). But we should be able to find an avatar and get the name if we select something like Nth avatar in the list and read the name attribute.",
       "parentUuid": "e80d910d_6e21794d",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 40
+      },
+      "revId": "c66860cad17075c0518a8a945e2f038d3b7fed33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1969b801_90ff6f01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-07-12T21:58:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eed6cf8_2e8fefec",
       "range": {
         "startLine": 50,
         "startChar": 2,
