@@ -40,6 +40,16 @@ type testParameters struct {
 	lacrosMode      lacros.Mode
 }
 
+// spVars represents the configurable parameters for the StartupPerf benchmark.
+type spVars struct {
+	// iterations are the number of iteration runs that the test will run.
+	iterations int
+	// skipInitialLogin indicates whether the test will skip the initial login.
+	skipInitialLogin bool
+	// skipRegularLogin indicates whether the test will skip the regular login.
+	skipRegularLogin bool
+}
+
 var (
 	defaultIterations = 7 // The number of iterations. Can be overridden by var "lacros.StartupPerf.iterations".
 )
@@ -86,7 +96,7 @@ func init() {
 				browser.TypeAsh, lacros.NotSelected, lacros.NotSpecified,
 			},
 		}},
-		Vars:    []string{"lacros.StartupPerf.iterations"},
+		Vars:    []string{"lacros.StartupPerf.iterations", "skipInitialLogin", "skipRegularLogin"},
 		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
@@ -142,45 +152,40 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect session_manager: ", err)
 	}
 
-	// Start UI, open a browser and leave a window opened in 'server.URL'.
-	creds, err := performInitialLogin(ctx, param.bt, cfg, s.RequiredVar("ui.gaiaPoolDefault"), s.OutDir(), s.HasError, server.URL)
-	if err != nil {
-		s.Fatal("Failed to do initial login: ", err)
-	}
-
-	iterationCount := defaultIterations
-	if iter, ok := s.Var("lacros.StartupPerf.iterations"); ok {
-		i, err := strconv.Atoi(iter)
+	vars := parseVars(s)
+	var creds chrome.Creds
+	if !vars.skipInitialLogin {
+		// Start UI, open a browser and leave a window opened in 'server.URL'.
+		creds, err = performInitialLogin(ctx, param.bt, cfg, s.RequiredVar("ui.gaiaPoolDefault"), s.OutDir(), s.HasError, server.URL)
 		if err != nil {
-			// User might want to override the default value of iterationCount but passed a
-			// malformed value. Fail the test to inform the user.
-			s.Fatalf("Invalid lacros.StartupPerf.iterations value %v: %v", iter, err)
+			s.Fatal("Failed to do initial login: ", err)
 		}
-		iterationCount = i
 	}
 
-	pv := perf.NewValues()
-	for i := 0; i < iterationCount; i++ {
-		testing.ContextLogf(ctx, "StartupPerf: Running iteration %d/%d", i+1, iterationCount)
+	if !vars.skipRegularLogin {
+		pv := perf.NewValues()
+		for i := 0; i < vars.iterations; i++ {
+			testing.ContextLogf(ctx, "StartupPerf: Running iteration %d/%d", i+1, vars.iterations)
 
-		// Start to collect data, restart UI, wait for browser window to be opened and get the
-		// metrics.
-		v, err := performRegularLogin(ctx, param.bt, creds, cfg, s.OutDir(), s.HasError, sm, server.URL, htmlPageTitle)
-		if err != nil {
-			s.Error("Failed to do regular login: ", err)
-			// keep on the next iteration in case of failure
-			continue
+			// Start to collect data, restart UI, wait for browser window to be opened and get the
+			// metrics.
+			v, err := performRegularLogin(ctx, param.bt, creds, cfg, s.OutDir(), s.HasError, sm, server.URL, htmlPageTitle)
+			if err != nil {
+				s.Error("Failed to do regular login: ", err)
+				// keep on the next iteration in case of failure
+				continue
+			}
+
+			// Record the metrics.
+			recordStartupPerf(pv, "login_time", v.loginTime)
+			recordStartupPerf(pv, "window_restore_time", v.windowRestoreTime)
+			recordStartupPerf(pv, "lacros_load_time", v.lacrosLoadTime)
+			recordStartupPerf(pv, "lacros_start_time", v.lacrosStartTime)
 		}
 
-		// Record the metrics.
-		recordStartupPerf(pv, "login_time", v.loginTime)
-		recordStartupPerf(pv, "window_restore_time", v.windowRestoreTime)
-		recordStartupPerf(pv, "lacros_load_time", v.lacrosLoadTime)
-		recordStartupPerf(pv, "lacros_start_time", v.lacrosStartTime)
-	}
-
-	if err := pv.Save(s.OutDir()); err != nil {
-		s.Fatal("Failed saving perf data: ", err)
+		if err := pv.Save(s.OutDir()); err != nil {
+			s.Fatal("Failed saving perf data: ", err)
+		}
 	}
 }
 
@@ -200,6 +205,42 @@ func createHTMLServer(title string) *httptest.Server {
 		w.Header().Set("Content-Type", "text/html")
 		io.WriteString(w, htmlPageWithSpecificTitle)
 	}))
+}
+
+func parseVars(s *testing.State) spVars {
+	iterations := defaultIterations
+	if iter, ok := s.Var("lacros.StartupPerf.iterations"); ok {
+		i, err := strconv.Atoi(iter)
+		if err != nil {
+			// User might want to override the default value of iterations but passed a malformed
+			// value. Fail the test to inform the user.
+			s.Fatalf("Invalid lacros.StartupPerf.iterations value %v: %v", iter, err)
+		}
+		iterations = i
+	}
+
+	var err error
+	skipInitialLogin := false
+	if v, ok := s.Var("skipInitialLogin"); ok {
+		skipInitialLogin, err = strconv.ParseBool(v)
+		if err != nil {
+			s.Fatal("Unable to convert skipInitialLogin var to bool: ", err)
+		}
+	}
+
+	skipRegularLogin := false
+	if v, ok := s.Var("skipRegularLogin"); ok {
+		skipRegularLogin, err = strconv.ParseBool(v)
+		if err != nil {
+			s.Fatal("Unable to convert skipRegularLogin var to bool: ", err)
+		}
+	}
+
+	return spVars{
+		iterations,
+		skipInitialLogin,
+		skipRegularLogin,
+	}
 }
 
 // performInitialLogin does the initial UI session login and opens a very particular browser
