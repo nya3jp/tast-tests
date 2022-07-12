@@ -34,6 +34,24 @@
       "parentUuid": "1c749652_e118318c",
       "revId": "55c50b2626e769390376a793735254fd3d05ee6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1a5d5a_26e7fcb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-07-12T01:19:29Z",
+      "side": 1,
+      "message": "I get that they are failures that don\u0027t seem particularly related to the test\nhowever, you are not sharing a fixture with any existing tests\nso this is effectively introducing a new independent source of flakiness to the CQ which can be expected to fail a number of new CLs that wouldn\u0027t have failed before.\nIt is also quite commonly over the 60 second test execution guideline from go/tast-add-test\n\nIt is possible this is acceptable (especially if the failures are not in fact independant of the other arc tests - ie. they all pass and fail together), but I don\u0027t think I should make the call here.\n\nAdding Seewai to decide.",
+      "parentUuid": "5e7ed75b_60dd565b",
+      "revId": "55c50b2626e769390376a793735254fd3d05ee6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
