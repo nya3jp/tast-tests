@@ -108,11 +108,22 @@ func (s *Spotify) loginIfRequired(ctx context.Context) error {
 	// Spotify is performing A/B testing and there are two possible UI results,
 	// 1. A label with text "Already have an account? Log in."
 	// 2. A button with text "Log in"
-	if exist, err := apputil.CheckObjectExists(ctx, s.Device.Object(ui.TextContains("Log in")), shortUITimeout); err != nil {
+	loginObject := s.Device.Object(ui.TextContains("Log in"))
+	if exist, err := apputil.CheckObjectExists(ctx, loginObject, shortUITimeout); err != nil {
 		return errors.Wrap(err, "failed to find login button")
 	} else if !exist {
 		testing.ContextLog(ctx, "Already signed in to Spotify")
 		return nil
+	}
+
+	// Spotify has another user login UI. If the text "Try Spotify for" is displayed, it should click "Log in" to continue.
+	if exist, err := apputil.CheckObjectExists(ctx, s.Device.Object(ui.TextContains("Try Spotify for")), shortUITimeout); err != nil {
+		return errors.Wrap(err, `failed to check the text "Try Spotify for" exists`)
+	} else if exist {
+		testing.ContextLog(ctx, `Find the text "Try Spotify for"`)
+		if err := apputil.ClickIfExist(loginObject, shortUITimeout)(ctx); err != nil {
+			return errors.Wrap(err, `failed to click "Log in" text`)
+		}
 	}
 
 	testing.ContextLog(ctx, "Signing into Spotify")
