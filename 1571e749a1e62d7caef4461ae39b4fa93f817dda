@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86a87d65_dea2aa03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-12T22:31:10Z",
+      "side": 1,
+      "message": "probably deserves a comment.\nSomething like \"If the current app launch type differs from the target launch type, update it.\"",
+      "revId": "1571e749a1e62d7caef4461ae39b4fa93f817dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
