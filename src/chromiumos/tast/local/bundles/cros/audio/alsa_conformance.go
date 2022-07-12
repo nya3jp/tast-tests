@@ -29,7 +29,8 @@ func init() {
 		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		// TODO(b/213524693) : remove "chronicler" when b/213524693 is fixed.
-		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone(), hwdep.SkipOnModel("chronicler")),
+		// TODO(b/238591902) : remove "nautilus" and "nautiluslte" when b/238591902 is fixed.
+		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone(), hwdep.SkipOnModel("chronicler", "nautilus", "nautiluslte")),
 		Timeout:      10 * time.Minute,
 	})
 }
