@@ -98,6 +98,10 @@ func (e *testEnv) SetUp(ctx context.Context) error {
 		return errors.Wrap(err, "failed to create manager proxy")
 	}
 
+	if err = e.Manager.PopAllUserProfiles(ctx); err != nil {
+		return errors.Wrap(err, "failed to pop all user profile in shill")
+	}
+
 	// Push a test profile to guarantee that all changes related to shill
 	// profile will be undone:
 	// 1) after the test if the test ends normally;
