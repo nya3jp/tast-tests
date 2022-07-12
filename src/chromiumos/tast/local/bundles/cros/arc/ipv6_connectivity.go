@@ -6,23 +6,23 @@ package arc
 
 import (
 	"context"
-	"path/filepath"
+	"net"
 	"time"
 
 	"chromiumos/tast/common/testexec"
-	"chromiumos/tast/errors"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/network/routing"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         IPv6Connectivity,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks IPv6 connectivity inside ARC",
 		Contacts:     []string{"taoyl@google.com", "cros-networking@google.com"},
-		// FIXME: Uncomment Attr: after lab supports IPv6.  http://b/161239666
-		// Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_p", "chrome"},
 		Timeout:      4 * time.Minute,
 		Fixture:      "arcBooted",
@@ -30,44 +30,53 @@ func init() {
 }
 
 func IPv6Connectivity(ctx context.Context, s *testing.State) {
-	const (
-		pingTimeout      = 10 * time.Second
-		googleDNSIPv6    = "2001:4860:4860::8888"
-		googleDotComIPv6 = "ipv6.google.com"
-	)
 	a := s.FixtValue().(*arc.PreData).ARC
 
-	verify := func(ctx context.Context, cmd func(context.Context, string, ...string) *testexec.Cmd, bindir string) error {
-		// Verify global IPv6 address is configured correctly.
-		out, err := cmd(ctx, filepath.Join(bindir, "ip"), "-6", "addr", "show", "scope", "global").Output(testexec.DumpLogOnError)
-		if err != nil {
-			return errors.Wrap(err, "failed to get address information")
+	// Use a shortened context for test operations to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	testEnv := routing.NewTestEnv()
+	if err := testEnv.SetUp(ctx); err != nil {
+		s.Fatal("Failed to set up routing test env: ", err)
+	}
+	defer func(ctx context.Context) {
+		if err := testEnv.TearDown(ctx); err != nil {
+			s.Error("Failed to tear down routing test env: ", err)
 		}
-		if len(out) == 0 {
-			return errors.New("no global IPv6 address is configured")
-		}
-		// Verify connectivity to literal IPv6 address destination.
+	}(cleanupCtx)
+
+	// Capture and log IP address information in ARC for debugging
+	out, err := a.Command(ctx, "/system/bin/ip", "-6", "addr", "show", "scope", "global").Output(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatal("Failed to get address information: ", err)
+	}
+	if len(out) == 0 {
+		s.Fatal("No global IPv6 address is configured")
+	}
+	testing.ContextLog(ctx, "ARC address information: ", string(out))
+
+	// ping virtual router address and virtual server address from ARC
+	routerAddrs, err := testEnv.BaseRouter.WaitForVethInAddrs(ctx, false, true)
+	if err != nil {
+		s.Fatal("Failed to get inner addrs from router env: ", err)
+	}
+	serverAddrs, err := testEnv.BaseServer.WaitForVethInAddrs(ctx, false, true)
+	if err != nil {
+		s.Fatal("Failed to get inner addrs from server env: ", err)
+	}
+
+	pingTimeout := 5 * time.Second
+	var pingAddrs []net.IP
+	pingAddrs = append(pingAddrs, routerAddrs.IPv6Addrs...)
+	pingAddrs = append(pingAddrs, serverAddrs.IPv6Addrs...)
+	for _, ip := range pingAddrs {
+		testing.ContextLog(ctx, "Start to ping ", ip.String(), " in ARC")
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			return cmd(ctx, filepath.Join(bindir, "ping6"), "-c1", "-w1", googleDNSIPv6).Run()
+			return a.Command(ctx, "/system/bin/ping6", "-c1", "-w1", ip.String()).Run()
 		}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
-			return errors.Wrapf(err, "cannot ping %s", googleDNSIPv6)
+			s.Fatalf("Cannot ping %s: %v", ip.String(), err)
 		}
-		// Verify connectivity to IPv6-only host name.
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			return cmd(ctx, filepath.Join(bindir, "ping6"), "-c1", "-w1", googleDotComIPv6).Run()
-		}, &testing.PollOptions{Timeout: pingTimeout}); err != nil {
-			return errors.Wrapf(err, "cannot ping %s", googleDotComIPv6)
-		}
-		return nil
 	}
-
-	// Check IPv6 availablility at host first. If test fails in this part then it's a lab net issue instead of ARC issue.
-	if err := verify(ctx, testexec.CommandContext, "/bin"); err != nil {
-		s.Fatal("Failed to communicate from host, check lab network setting: ", err)
-	}
-
-	if err := verify(ctx, a.Command, "/system/bin"); err != nil {
-		s.Error("Failed to communicate from ARC: ", err)
-	}
-
 }
