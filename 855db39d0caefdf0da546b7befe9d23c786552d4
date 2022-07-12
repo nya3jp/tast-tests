@@ -730,6 +730,30 @@
       },
       "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb8099b_d5131ddd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-07-12T16:21:04Z",
+      "side": 1,
+      "message": "I guess I followed the wrong instructions yesterday. I was trying to figure out how to run tast test to DUT without being on the same network and/or having a wired connection to DUT. Where are the instruction to deploy to a local DUT from home?",
+      "parentUuid": "3bd48dde_dd9cf086",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
