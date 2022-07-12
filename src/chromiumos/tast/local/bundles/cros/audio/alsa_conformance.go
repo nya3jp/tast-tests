@@ -28,7 +28,8 @@ func init() {
 		Desc:         "Runs alsa_conformance_test to test basic functions of ALSA",
 		Contacts:     []string{"yuhsuan@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
-		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone()),
+		// TODO(b/213524693) : remove "chronicler" when b/213524693 is fixed.
+		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone(), hwdep.SkipOnModel("chronicler")),
 		Timeout:      10 * time.Minute,
 	})
 }
