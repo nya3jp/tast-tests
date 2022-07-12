@@ -438,7 +438,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			// enough for the test to get info from chrome://webrtc-internals.
 			botList, numFailures, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+30*time.Minute, meet.botsOptions...)
 			if err != nil {
-				s.Fatalf("Failed to create %d bots: ", addBotsCount)
+				s.Fatalf("Failed to create %d bots: %v", addBotsCount, err)
 			}
 			s.Logf("%d bots started, %d bots failed", len(botList), numFailures)
 			if numFailures == 0 {
