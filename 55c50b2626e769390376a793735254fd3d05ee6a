@@ -52,6 +52,23 @@
       "parentUuid": "5e7ed75b_60dd565b",
       "revId": "55c50b2626e769390376a793735254fd3d05ee6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2ea3b5_91dc9587",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-07-12T01:28:05Z",
+      "side": 1,
+      "message": "Hi Joel and Dimitry,\n\nAs ARC++ constables, do you have an objection to this test being promoted to stable? The failures in last 20 runs are infra and ARC boot related and are not tied to this test.",
+      "revId": "55c50b2626e769390376a793735254fd3d05ee6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
