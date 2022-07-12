@@ -16,6 +16,40 @@
       "message": "Thank you for the review!\n\nwutao@: PTAL. Thank you!",
       "revId": "4b8872c5bbf8592270b388d935d5fd1e30b51604",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca0c5e2_08e28448",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-07-12T00:27:42Z",
+      "side": 1,
+      "message": "Thanks.\nCould you please consolidate the ways to open/close assistant UI if possible, e.g. some time we call ToggleUIWithHotkey, some time call toggleEmbeddedUI. \n",
+      "revId": "4b8872c5bbf8592270b388d935d5fd1e30b51604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc072666_3f5c308b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/better_onboarding_animation_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1228419
+      },
+      "writtenOn": "2022-07-12T00:27:42Z",
+      "side": 1,
+      "message": "Do we need WaitForLaunherState in other tests?",
+      "revId": "4b8872c5bbf8592270b388d935d5fd1e30b51604",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
