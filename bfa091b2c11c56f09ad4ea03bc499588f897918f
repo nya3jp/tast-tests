@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b402f78_cbcc2e80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/display_page_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-12T19:03:40Z",
+      "side": 1,
+      "message": "nit: Set (use \"Setting\" in log messages)",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 11
+      },
+      "revId": "bfa091b2c11c56f09ad4ea03bc499588f897918f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "685f8cec_b6b15e44",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/display_page_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-12T19:03:40Z",
+      "side": 1,
+      "message": "nit: Open",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 11
+      },
+      "revId": "bfa091b2c11c56f09ad4ea03bc499588f897918f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55dd5a53_13a7a415",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/display_page_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-12T19:03:40Z",
+      "side": 1,
+      "message": "nit: Launch",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 13
+      },
+      "revId": "bfa091b2c11c56f09ad4ea03bc499588f897918f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf8889b8_c493d383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/display_page_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-12T19:03:40Z",
+      "side": 1,
+      "message": "nit: `Verify URL test exists.`",
+      "revId": "bfa091b2c11c56f09ad4ea03bc499588f897918f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
