@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5bdb2d31_beae07e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1535227
+      },
+      "writtenOn": "2022-07-12T16:30:18Z",
+      "side": 1,
+      "message": "Yes that worked! did `git rebase -i HEAD~4` then added `d` next to commits I wanted to delete, then did `git commit --amend`, then it let me do `repo upload .`",
+      "parentUuid": "c10287f0_93e7bc3c",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 52
+      },
+      "revId": "c0d287c3a4dff5d4cfec89c0730f3351add7f01c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0eacaaae_1bf1bad6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
