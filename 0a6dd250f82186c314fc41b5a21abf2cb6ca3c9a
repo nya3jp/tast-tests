@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be383d60_24d65019",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2022-07-12T14:53:22Z",
+      "side": 1,
+      "message": "Note this needs https://crrev.com/c/3757472/1 to land first, but I do not know how I can create a CL that depends on a CL from another person.",
+      "revId": "0a6dd250f82186c314fc41b5a21abf2cb6ca3c9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
