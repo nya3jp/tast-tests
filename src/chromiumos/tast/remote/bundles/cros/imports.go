@@ -16,6 +16,7 @@ import (
 	_ "chromiumos/tast/remote/bundles/cros/enterprise"
 	_ "chromiumos/tast/remote/bundles/cros/example"
 	_ "chromiumos/tast/remote/bundles/cros/factory"
+	_ "chromiumos/tast/remote/bundles/cros/feedback"
 	_ "chromiumos/tast/remote/bundles/cros/filemanager"
 	_ "chromiumos/tast/remote/bundles/cros/firmware"
 	_ "chromiumos/tast/remote/bundles/cros/firmware/utils"
