@@ -16,6 +16,23 @@
       "message": "Po-Hsien is going to be OOO, adding Seewai for OWNERS review.",
       "revId": "3d4987883c1bf73260d99d5e7a2e623528d8db4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9bf54ff_b96b9b66",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-07-12T22:00:45Z",
+      "side": 1,
+      "message": "Looks like Joey is missing CQ permissions.",
+      "revId": "3d4987883c1bf73260d99d5e7a2e623528d8db4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
