@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d12a1fce_00b543fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-07-12T05:41:11Z",
+      "side": 1,
+      "message": "Preemptive comment. I haven\u0027t had time to take another pass at this, but it looks like this test is failing consistently on devices with 2 built-in ethernet.\n\nOur ARC implementation could only have at most 2 eth devices, so the additional eth device added by this test on devices with 2 eth will fail.\n\nWe\u0027d probably need to fix this before promoting.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 114
+      },
+      "revId": "6e336ba9c93cdcd18123bf1211aadd0e11c65edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
