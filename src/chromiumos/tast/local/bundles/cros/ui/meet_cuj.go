@@ -37,6 +37,7 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/loginstatus"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/local/webrtcinternals"
 	"chromiumos/tast/testing"
@@ -101,7 +102,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:         1,
+				num:         2,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeAsh,
@@ -112,7 +113,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:         1,
+				num:         2,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeLacros,
@@ -124,7 +125,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:         3,
+				num:         4,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeAsh,
@@ -136,7 +137,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:         3,
+				num:         4,
 				layout:      meetLayoutTiled,
 				present:     true,
 				docs:        true,
@@ -151,7 +152,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:         15,
+				num:         16,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeAsh,
@@ -163,7 +164,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:         48,
+				num:         49,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeAsh,
@@ -175,7 +176,7 @@ func init() {
 			Timeout:   defaultTestTimeout + 20*time.Minute,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:         15,
+				num:         16,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeAsh,
@@ -187,7 +188,7 @@ func init() {
 			Name:    "16p_validation",
 			Timeout: defaultTestTimeout + 10*time.Minute,
 			Val: meetTest{
-				num:         15,
+				num:         16,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeAsh,
@@ -199,7 +200,7 @@ func init() {
 			Name:    "16p_notes",
 			Timeout: defaultTestTimeout,
 			Val: meetTest{
-				num:         15,
+				num:         16,
 				layout:      meetLayoutTiled,
 				docs:        true,
 				split:       true,
@@ -212,7 +213,7 @@ func init() {
 			Name:    "16p_jamboard",
 			Timeout: defaultTestTimeout + 15*time.Minute,
 			Val: meetTest{
-				num:         15,
+				num:         16,
 				layout:      meetLayoutTiled,
 				jamboard:    true,
 				split:       true,
@@ -226,7 +227,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:         3,
+				num:         4,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeLacros,
@@ -238,7 +239,7 @@ func init() {
 			Name:    "49p_vp8",
 			Timeout: defaultTestTimeout,
 			Val: meetTest{
-				num:         48,
+				num:         49,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeAsh,
@@ -251,7 +252,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:         15,
+				num:         16,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeLacros,
@@ -263,7 +264,7 @@ func init() {
 			Name:    "lacros_16p_trace",
 			Timeout: defaultTestTimeout + 20*time.Minute,
 			Val: meetTest{
-				num:         15,
+				num:         16,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				browserType: browser.TypeLacros,
@@ -276,7 +277,7 @@ func init() {
 			Name:    "2p_30m",
 			Timeout: defaultTestTimeout + 30*time.Minute,
 			Val: meetTest{
-				num:         1,
+				num:         2,
 				layout:      meetLayoutTiled,
 				cam:         true,
 				duration:    30 * time.Minute,
@@ -289,7 +290,7 @@ func init() {
 			Timeout:   defaultTestTimeout,
 			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
-				num:         3,
+				num:         4,
 				layout:      meetLayoutTiled,
 				present:     true,
 				docs:        true,
@@ -427,7 +428,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				s.Log("Failed to remove all bots: ", err)
 			}
 		}(closeCtx)
-		addBotsCount := meet.num
+		addBotsCount := meet.num - 1
 		wait := 100 * time.Millisecond
 		for i := 0; i < 3; i++ {
 			// Exponential backoff. The wait time is 0.1s, 1s and 10s before each retry.
@@ -447,6 +448,15 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			addBotsCount -= len(botList)
 			wait *= 10
 		}
+	}
+
+	// Create a bot with spotlight layout to request HD video.
+	spotlightBotList, _, err := bc.AddBots(sctx, meetingCode, 1, meetTimeout+30*time.Minute, append(meet.botsOptions, bond.WithLayout("SPOTLIGHT"))...)
+	if err != nil {
+		s.Fatal("Failed to create bot with spotlight layout: ", err)
+	}
+	if len(spotlightBotList) != 1 {
+		s.Fatal("Bot with spotlight layout failed")
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
@@ -736,6 +746,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 		if err := meetConn.Eval(ctx, "hrTelemetryApi.streamQuality.receive720p()", nil); err != nil {
 			return errors.Wrap(err, "failed to request receiving 720p")
+		}
+
+		// Direct the spotlight bot to pin the test user so
+		// that the test user will have to provide HD video.
+		login, err := loginstatus.GetLoginStatus(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get login status: ", err)
+		}
+		if !login.IsLoggedIn {
+			s.Fatal("Got login status indicating that the user is not logged in")
+		}
+		if err := bc.ExecuteScript(ctx, fmt.Sprintf("@b%d pin_participant_by_name %q", spotlightBotList[0], *login.DisplayName), meetingCode); err != nil {
+			s.Fatal("Failed to direct the spotlight bot to pin the test user: ", err)
 		}
 
 		if meet.present {
