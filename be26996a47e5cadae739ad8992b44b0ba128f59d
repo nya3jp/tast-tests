@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10059831_e77b3eba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-07-12T08:30:37Z",
+      "side": 1,
+      "message": "I\u0027ve just added uda.Move and uda.MoveToPoint actions, since the retry logic won\u0027t help a failed click anyways (the mouse would move away, but would not be able to detect the click didn\u0027t go through, so we\u0027ll fail anyways).\n\nUsing move, we can compose a few actions to be able to retry clicks e.g.:\n```\nuiauto.Retry(3, uiauto.Combine(\"Select Royale High\",\n\tuda.MoveToPoint(safePoint),\n\tuda.LeftClick(uidetection.CustomIcon(s.DataPath(icon))),\n\tuda.WaitUntilExists(uidetection.CustomIcon(s.DataPath(\"roblox-launch-game.png\"))),\n)),\n```\n\nShould something like this be in a helper? In uidetection?",
+      "parentUuid": "ad3f0aa7_1ddfd6f0",
+      "revId": "be26996a47e5cadae739ad8992b44b0ba128f59d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f88f812_e486b975",
         "filename": "src/chromiumos/tast/local/uidetection/automation.go",
         "patchSetId": 1
