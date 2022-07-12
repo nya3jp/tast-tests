@@ -108,6 +108,7 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		// Disable biod upstart job so that it doesn't interfere with the test when
 		// we reboot.
 		upstartService := t.UpstartService()
+		testing.ContextLogf(ctx, "Disabling %s job", biodUpstartJobName)
 		if _, err := upstartService.DisableJob(ctx, &platform.DisableJobRequest{JobName: biodUpstartJobName}); err != nil {
 			return nil, errors.Wrap(err, "failed to disable biod upstart job")
 		}
@@ -185,6 +186,7 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 		// If biod upstart job disabled, re-enable it
 		resp, err := t.UpstartService().IsJobEnabled(ctx, &platform.IsJobEnabledRequest{JobName: biodUpstartJobName})
 		if err == nil && !resp.Enabled {
+			testing.ContextLogf(ctx, "Enabling %s job", biodUpstartJobName)
 			if _, err := t.UpstartService().EnableJob(ctx, &platform.EnableJobRequest{JobName: biodUpstartJobName}); err != nil && firstErr == nil {
 				firstErr = err
 			}
