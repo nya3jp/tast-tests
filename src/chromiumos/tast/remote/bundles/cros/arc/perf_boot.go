@@ -35,7 +35,7 @@ func init() {
 			"niwa@chromium.org",   // Tast port author.
 			"arc-performance@google.com",
 		},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "crosbolt_arc_perf_qual"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.arc.PerfBootService"},
 		Vars:         []string{"arc.PerfBoot.iterations"},
