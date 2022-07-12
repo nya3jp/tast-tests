@@ -706,6 +706,30 @@
       },
       "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bd48dde_dd9cf086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-12T16:06:15Z",
+      "side": 1,
+      "message": "You are complicating your life by trying to check out a lab DUT :) Generally the only reason to do that is if a particular board is failing which you cannot get access to physically. Otherwise, it will be much simpler for you to just deploy to a local DUT from home, same as in office :)",
+      "parentUuid": "9985d667_d2d930fd",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

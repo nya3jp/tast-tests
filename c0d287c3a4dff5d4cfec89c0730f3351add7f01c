@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbae39de_83afd359",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-12T16:06:15Z",
+      "side": 1,
+      "message": "Don\u0027t mark comments as done until a patchset is uploaded which addresses the comments, otherwise it makes it very difficult to track :)\n\nSounds like you are (a) trying to upload from the wrong branch which has the correct branch set as upstream or (b) have modified the Change-Id in your CL description.",
+      "parentUuid": "fb1fbc5a_1806278c",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 52
+      },
+      "revId": "c0d287c3a4dff5d4cfec89c0730f3351add7f01c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0eacaaae_1bf1bad6",
