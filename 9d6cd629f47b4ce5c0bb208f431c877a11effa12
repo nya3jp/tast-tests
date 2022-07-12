@@ -52,6 +52,24 @@
       "parentUuid": "2e3bd202_ccef2591",
       "revId": "9d6cd629f47b4ce5c0bb208f431c877a11effa12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1318bd5b_db4a326d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-12T03:13:46Z",
+      "side": 0,
+      "message": "Thanks for the insights and the guidance!\n\nAs a quick update, I realized I\u0027ll need to change the compression code to use the \"tar\" program as well, since there the vanilla Go code didn\u0027t store directory permissions in the archive. Without this, this chain CLs won\u0027t land: other tests, like security.StatefulFiles, start complaining about wrong permissions on /home/.shadow/. I suppose there are many other subtle cases, like symlinks, that the \"tar\" program just handles better.\n\nI think I\u0027m going to create another CL that will change the compression code to use \"tar\". I\u0027ll also need to regenerate all snapshots with that change, because without it \"untar\"ing old snapshots will corrupt permissions on /home/.shadow/.",
+      "parentUuid": "76e6f0ba_378ef6fc",
+      "revId": "9d6cd629f47b4ce5c0bb208f431c877a11effa12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
