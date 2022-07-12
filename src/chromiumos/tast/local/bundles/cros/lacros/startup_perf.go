@@ -10,6 +10,7 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"strconv"
 	"strings"
 	"time"
 
@@ -38,6 +39,10 @@ type testParameters struct {
 	lacrosSelection lacros.Selection
 	lacrosMode      lacros.Mode
 }
+
+var (
+	defaultIterations = 7 // The number of iterations. Can be overridden by var "lacros.StartupPerf.iterations".
+)
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -81,6 +86,7 @@ func init() {
 				browser.TypeAsh, lacros.NotSelected, lacros.NotSpecified,
 			},
 		}},
+		Vars:    []string{"lacros.StartupPerf.iterations"},
 		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
@@ -142,7 +148,17 @@ func StartupPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to do initial login: ", err)
 	}
 
-	const iterationCount = 7
+	iterationCount := defaultIterations
+	if iter, ok := s.Var("lacros.StartupPerf.iterations"); ok {
+		i, err := strconv.Atoi(iter)
+		if err != nil {
+			// User might want to override the default value of iterationCount but passed a
+			// malformed value. Fail the test to inform the user.
+			s.Fatalf("Invalid lacros.StartupPerf.iterations value %v: %v", iter, err)
+		}
+		iterationCount = i
+	}
+
 	pv := perf.NewValues()
 	for i := 0; i < iterationCount; i++ {
 		testing.ContextLogf(ctx, "StartupPerf: Running iteration %d/%d", i+1, iterationCount)
