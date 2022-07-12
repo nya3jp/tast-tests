@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	common_fixture "chromiumos/tast/common/fixture"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/pre"
@@ -37,6 +38,12 @@ func init() {
 			{
 				Name:      "us_en",
 				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
+				Val:       ime.EnglishUS,
+			},
+			{
+				Name:      "kiosk",
+				Fixture:   common_fixture.KioskLoggedInLacros,
 				ExtraAttr: []string{"group:input-tools-upstream"},
 				Val:       ime.EnglishUS,
 			},

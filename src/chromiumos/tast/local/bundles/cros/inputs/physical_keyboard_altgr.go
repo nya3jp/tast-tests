@@ -27,11 +27,11 @@ func init() {
 		Func:         PhysicalKeyboardAltgr,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that user can lock altgr modifier key on physical keyboard",
-		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
+		Contacts:     []string{"jhtin@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUSWithInternationalKeyboard, ime.Swedish}),
-		Timeout:      2 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
 				Fixture:           fixture.ClamshellNonVK,
@@ -66,7 +66,6 @@ func PhysicalKeyboardAltgr(ctx context.Context, s *testing.State) {
 		expectedText        string
 		expectedShiftedText string
 	}{
-		// TODO(b/237498932): Add other keyboards listed in bug report.
 		{
 			inputMethod:         ime.EnglishUSWithInternationalKeyboard,
 			typeAction:          "abcdefghijklmnopqrstuvwxyz0123456789",
@@ -78,6 +77,30 @@ func PhysicalKeyboardAltgr(ctx context.Context, s *testing.State) {
 			typeAction:          "abcdefghijklmnopqrstuvwxyz0123456789",
 			expectedText:        "ª”©ð€đŋħ→łµnœþ@®ßþ↓“ł»←«}¡@£$€¥{[]",
 			expectedShiftedText: "º’©Ð¢ªŊĦıŁºNŒÞΩ®§Þ↑‘Ł>¥<°¹²³¼¢⅝÷«»",
+		},
+		{
+			inputMethod:         ime.Norwegian,
+			typeAction:          "abcdefghijklmnopqrstuvwxyz0123456789",
+			expectedText:        "ª”©ð€đŋħ→łµnœπ@®ßþ↓“ł»←«}¡@£$½¥{[]",
+			expectedShiftedText: "º’©Ð¢ªŊĦıŁºNŒΠΩ™§Þ↑‘Ł>¥<°¹²³¼‰⅝÷«»",
+		},
+		{
+			inputMethod:         ime.EnglishUK,
+			typeAction:          "abcdefghijklmnopqrstuvwxyz0123456789",
+			expectedText:        "á”çðéđŋħíłµnóþ@¶ßŧú“ẃ»ý«}¹€½[]",
+			expectedShiftedText: "Á’ÇÐÉªŊĦÍŁºNÓÞΩ®§ŦÚ‘Ẃ>Ý<°¡½⅓¼⅜⅝⅞™±",
+		},
+		{
+			inputMethod:         ime.Polish,
+			typeAction:          "abcdefghijklmnopqrstuvwxyz0123456789",
+			expectedText:        "ą”ćðęæŋ’→ə…łµńóþπ©śß↓„œź←ż»≠²³¢€½§·«",
+			expectedShiftedText: "Ą“ĆÐĘÆŊ•↔Ə∞ŃÓÞΩ®Ś™↑‘ŒŹ¥Ż°¡¿£¼‰∧≈¾±",
+		},
+		{
+			inputMethod:         ime.DutchNetherlands,
+			typeAction:          "abcdefghijklmnopqrstuvwxyz0123456789",
+			expectedText:        "áb©ðéfghíjœøµñóöä®ßþúvåxüæ’¡²³¤€¼½¾‘",
+			expectedShiftedText: "ÁB¢ÐÉFGHÍJŒØµÑÓÖÄ®§ÞÚVÅXÜÆ£",
 		},
 	}
 
@@ -103,7 +126,7 @@ func PhysicalKeyboardAltgr(ctx context.Context, s *testing.State) {
 
 	for _, testcase := range testCases {
 		name := "PKAltgrModifierWorksFor" + testcase.inputMethod.ShortLabel
-		scenario := "PK Altgr Modifier Works For " + testcase.inputMethod.Name
+		scenario := "Verify PK Altgr Modifier Works For " + testcase.inputMethod.Name
 
 		s.Run(ctx, name, func(ctx context.Context, s *testing.State) {
 			// Reset Altgr, in case Altgr is in a held-down state (if release action did not get run due to failures)
@@ -118,8 +141,8 @@ func PhysicalKeyboardAltgr(ctx context.Context, s *testing.State) {
 				s.Fatalf("Failed to set input method to %v: %v: ", im, err)
 			}
 
-			if err := uiauto.UserAction(scenario,
-				uiauto.Combine(scenario,
+			if err := uiauto.UserAction("Verify PK Altgr Modifer Output",
+				uiauto.Combine("Verify PK Altgr Modifier Output",
 					its.Clear(inputField),
 					its.ClickFieldAndWaitForActive(inputField),
 					keyboard.AccelPressAction("Altgr"),
