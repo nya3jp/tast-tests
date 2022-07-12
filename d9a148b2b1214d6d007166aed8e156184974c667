@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e59696a9_64798709",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-12T07:19:53Z",
+      "side": 1,
+      "message": "Sorry maybe I didn\u0027t get it, do you mean the address scope for IPv6?",
+      "parentUuid": "6497e9ac_d7ef66f8",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 59
+      },
+      "revId": "d9a148b2b1214d6d007166aed8e156184974c667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f79702f6_5600dde2",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-16T03:08:02Z",
       "side": 1,
       "message": "We should maybe comment this case to better explain why it might be changed later on if we remove this distinction.",
+      "range": {
+        "startLine": 361,
+        "startChar": 20,
+        "endLine": 361,
+        "endChar": 41
+      },
+      "revId": "d9a148b2b1214d6d007166aed8e156184974c667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9981fd7f_3238fce1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-12T07:19:53Z",
+      "side": 1,
+      "message": "Moved the comment above down here.",
+      "parentUuid": "f79702f6_5600dde2",
       "range": {
         "startLine": 361,
         "startChar": 20,
@@ -203,6 +251,30 @@
       "writtenOn": "2022-06-16T03:08:02Z",
       "side": 1,
       "message": "We should add a comment here that currently we expect ping to a v6 destination to fallthrough here with the way that src selection algorithm picks an address with address scoping.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 50
+      },
+      "revId": "d9a148b2b1214d6d007166aed8e156184974c667",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba4a27a_482be183",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing_fallthrough.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-12T07:19:53Z",
+      "side": 1,
+      "message": "This is mentioned inside verifyNetworkConnectivity(). I think it\u0027s better not to duplicate that here.",
+      "parentUuid": "a58baabf_fac2a121",
       "range": {
         "startLine": 82,
         "startChar": 0,
