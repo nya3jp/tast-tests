@@ -299,6 +299,22 @@ var NepaliTransliteration = InputMethod{
 	VoiceLanguage:       LanguageNe,
 }
 
+// DutchNetherlands represents the input method of Dutch (Netherlands).
+var DutchNetherlands = InputMethod{
+	Name:                "Dutch (Netherlands)",
+	ID:                  "xkb:us:intl:nld",
+	HandwritingLanguage: LanguageNl,
+	VoiceLanguage:       LanguageNl,
+}
+
+// Norwegian represents the input method of Norwegian.
+var Norwegian = InputMethod{
+	Name:                "Norwegian",
+	ID:                  "xkb:no::nob",
+	HandwritingLanguage: LanguageNo,
+	VoiceLanguage:       LanguageNo,
+}
+
 // Odia represents the input method of Odia.
 var Odia = InputMethod{
 	Name:                "Odia",
@@ -313,6 +329,14 @@ var PersianTransliteration = InputMethod{
 	ID:                  "fa-t-i0-und",
 	HandwritingLanguage: LanguageFa,
 	VoiceLanguage:       LanguageFa,
+}
+
+// Polish represents the input method of Polish.
+var Polish = InputMethod{
+	Name:                "Polish",
+	ID:                  "xkb:pl::pol",
+	HandwritingLanguage: LanguagePl,
+	VoiceLanguage:       LanguagePl,
 }
 
 // Punjabi represents the input method of Punjabi.
@@ -386,6 +410,7 @@ var inputMethods = []InputMethod{
 	ChineseTraditionalPinyin,
 	ChineseWubi,
 	ChineseZhuyin,
+	DutchNetherlands,
 	Korean,
 	Arabic,
 	GreekTransliteration,
@@ -395,8 +420,10 @@ var inputMethods = []InputMethod{
 	Malayalam,
 	Marathi,
 	NepaliTransliteration,
+	Norwegian,
 	Odia,
 	PersianTransliteration,
+	Polish,
 	Punjabi,
 	Russian,
 	Sanskrit,

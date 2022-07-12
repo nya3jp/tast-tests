@@ -31,7 +31,7 @@ func init() {
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUSWithInternationalKeyboard, ime.Swedish}),
-		Timeout:      2 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
 				Fixture:           fixture.ClamshellNonVK,
@@ -66,7 +66,6 @@ func PhysicalKeyboardAltgr(ctx context.Context, s *testing.State) {
 		expectedText        string
 		expectedShiftedText string
 	}{
-		// TODO(b/237498932): Add other keyboards listed in bug report.
 		{
 			inputMethod:         ime.EnglishUSWithInternationalKeyboard,
 			typeAction:          "abcdefghijklmnopqrstuvwxyz0123456789",
@@ -78,6 +77,30 @@ func PhysicalKeyboardAltgr(ctx context.Context, s *testing.State) {
 			typeAction:          "abcdefghijklmnopqrstuvwxyz0123456789",
 			expectedText:        "ª”©ð€đŋħ→łµnœþ@®ßþ↓“ł»←«}¡@£$€¥{[]",
 			expectedShiftedText: "º’©Ð¢ªŊĦıŁºNŒÞΩ®§Þ↑‘Ł>¥<°¹²³¼¢⅝÷«»",
+		},
+		{
+			inputMethod:         ime.Norwegian,
+			typeAction:          "abcdefghijklmnopqrstuvwxyz0123456789",
+			expectedText:        "ª”©ð€đŋħ→łµnœπ@®ßþ↓“ł»←«}¡@£$½¥{[]",
+			expectedShiftedText: "º’©Ð¢ªŊĦıŁºNŒΠΩ™§Þ↑‘Ł>¥<°¹²³¼‰⅝÷«»",
+		},
+		{
+			inputMethod:         ime.EnglishUK,
+			typeAction:          "abcdefghijklmnopqrstuvwxyz0123456789",
+			expectedText:        "á”çðéđŋħíłµnóþ@¶ßŧú“ẃ»ý«}¹€½[]",
+			expectedShiftedText: "Á’ÇÐÉªŊĦÍŁºNÓÞΩ®§ŦÚ‘Ẃ>Ý<°¡½⅓¼⅜⅝⅞™±",
+		},
+		{
+			inputMethod:         ime.Polish,
+			typeAction:          "abcdefghijklmnopqrstuvwxyz0123456789",
+			expectedText:        "ą”ćðęæŋ’→ə…łµńóþπ©śß↓„œź←ż»≠²³¢€½§·«",
+			expectedShiftedText: "Ą“ĆÐĘÆŊ•↔Ə∞ŃÓÞΩ®Ś™↑‘ŒŹ¥Ż°¡¿£¼‰∧≈¾±",
+		},
+		{
+			inputMethod:         ime.DutchNetherlands,
+			typeAction:          "abcdefghijklmnopqrstuvwxyz0123456789",
+			expectedText:        "áb©ðéfghíjœøµñóöä®ßþúvåxüæ’¡²³¤€¼½¾‘",
+			expectedShiftedText: "ÁB¢ÐÉFGHÍJŒØµÑÓÖÄ®§ÞÚVÅXÜÆ£",
 		},
 	}
 
