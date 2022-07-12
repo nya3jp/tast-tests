@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e49e76_5be4a344",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/submit_feedback_and_close_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-12T19:04:32Z",
+      "side": 1,
+      "message": "FYI it looks like this test didn\u0027t set any custom timeout for the UI automation context, so the default (15 seconds) will be used.",
+      "range": {
+        "startLine": 95,
+        "startChar": 5,
+        "endLine": 95,
+        "endChar": 18
+      },
+      "revId": "296d377c70c0b812e135d83e2fee217af0e63e33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
