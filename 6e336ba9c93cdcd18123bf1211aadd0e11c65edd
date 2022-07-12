@@ -46,6 +46,30 @@
       },
       "revId": "6e336ba9c93cdcd18123bf1211aadd0e11c65edd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ebd3116_e394596d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-07-12T06:04:53Z",
+      "side": 1,
+      "message": "Slight correction: 2 connected eth devices connected would probably be a better wording.\n\nI think it\u0027s puff, fizz, kalista, coral, sarien (might miss something).\n\nSee:\nhttps://tastboard.corp.google.com/test/arc.MultiNetworking\nhttps://tastboard.corp.google.com/test/arc.MultiNetworking.vm",
+      "parentUuid": "badd5a1c_fe7452b1",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 114
+      },
+      "revId": "6e336ba9c93cdcd18123bf1211aadd0e11c65edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
