@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d44dd58b_753b354d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-12T15:03:14Z",
+      "side": 1,
+      "message": "nit: Please add a bit more context into the description.",
+      "revId": "b6e2298e883fdbdff6751cc688117a211cb20ef0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
