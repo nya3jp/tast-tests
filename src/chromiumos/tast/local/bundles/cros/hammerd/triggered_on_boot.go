@@ -15,6 +15,7 @@ import (
 	"time"
 
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -24,6 +25,7 @@ func init() {
 		Contacts:     []string{"fshao@chromium.org"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"hammerd"},
+		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.ECFeatureDetachableBase()),
 		Timeout:      1 * time.Minute,
 	})
 }
