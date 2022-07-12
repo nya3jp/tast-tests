@@ -86,6 +86,24 @@
       "message": "It only have two consecutive passed. I understand that the failures were related to other reason. However, we really only tested it for two build. Unless there is any urgency to have this test to be available, I would suggest to wait for 20 passes. Thanks.",
       "revId": "55c50b2626e769390376a793735254fd3d05ee6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8bdadda_3acb417d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1399098
+      },
+      "writtenOn": "2022-07-12T16:38:11Z",
+      "side": 1,
+      "message": "Experimental boards (kernelnext) are unstable and fail frequently. Preventing CQ promotion of tests due to them will make it hard for us to promote tests. \n\nWe have had multiple P0s where a tast test didn\u0027t catch the issue because it was marked informational.\n\nI think we only need to consider boards that block CQ.\n\nThe worst case impact of this promotion is that the test turns out to be flaky (which there isn\u0027t evidence for) and it is demoted again. The worst cast impact of not promoting this test is shipping regressions to the customers. \n\nI think test is stable on stable boards and the container version is already promoted to CQ so I recommend we go ahead.",
+      "parentUuid": "d709cf2e_422a2210",
+      "revId": "55c50b2626e769390376a793735254fd3d05ee6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
