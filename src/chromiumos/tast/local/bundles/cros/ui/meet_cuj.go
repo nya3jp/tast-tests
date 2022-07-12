@@ -37,6 +37,7 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/loginstatus"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/local/webrtcinternals"
@@ -485,25 +486,38 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			s.Log("Failed to remove all bots: ", err)
 		}
 	}(closeCtx)
-	addBotsCount := meet.num
-	wait := 100 * time.Millisecond
-	for i := 0; i < 3; i++ {
-		// Exponential backoff. The wait time is 0.1s, 1s and 10s before each retry.
-		if err := testing.Sleep(ctx, wait); err != nil {
-			s.Errorf("Failed to sleep for %v: %v", wait, err)
+	// We create a total of meet.num bots: meet.num - 1 bots here,
+	// and then 1 bot with spotlight layout in a separate step.
+	addBotsCount := meet.num - 1
+	if addBotsCount > 0 {
+		wait := 100 * time.Millisecond
+		for i := 0; i < 3; i++ {
+			if err := testing.Sleep(ctx, wait); err != nil {
+				s.Errorf("Failed to sleep for %v: %v", wait, err)
+			}
+			// Exponential backoff. The wait time is 0.1s, 1s and 10s before each retry.
+			wait *= 10
+			// Add 30 minutes to the bot duration, to ensure that the bots stay long
+			// enough for the test to get info from chrome://webrtc-internals.
+			botList, numFailures, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+30*time.Minute, meet.botsOptions...)
+			if err != nil {
+				s.Fatalf("Failed to create %d bots: %v", addBotsCount, err)
+			}
+			s.Logf("%d bots started, %d bots failed", len(botList), numFailures)
+			if numFailures == 0 {
+				break
+			}
+			addBotsCount -= len(botList)
 		}
-		// Add 30 minutes to the bot duration, to ensure that the bots stay long
-		// enough for the test to get info from chrome://webrtc-internals.
-		botList, numFailures, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+30*time.Minute, meet.botsOptions...)
-		if err != nil {
-			s.Fatalf("Failed to create %d bots: %v", addBotsCount, err)
-		}
-		s.Logf("%d bots started, %d bots failed", len(botList), numFailures)
-		if numFailures == 0 {
-			break
-		}
-		addBotsCount -= len(botList)
-		wait *= 10
+	}
+
+	// Create a bot with spotlight layout to request HD video.
+	spotlightBotList, _, err := bc.AddBots(sctx, meetingCode, 1, meetTimeout+30*time.Minute, append(meet.botsOptions, bond.WithLayout("SPOTLIGHT"))...)
+	if err != nil {
+		s.Fatal("Failed to create bot with spotlight layout: ", err)
+	}
+	if len(spotlightBotList) != 1 {
+		s.Fatal("Bot with spotlight layout failed")
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
@@ -823,6 +837,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 		if err := meetConn.Eval(ctx, "hrTelemetryApi.streamQuality.receive720p()", nil); err != nil {
 			return errors.Wrap(err, "failed to request receiving 720p")
+		}
+
+		// Direct the spotlight bot to pin the test user so
+		// that the test user will have to provide HD video.
+		login, err := loginstatus.GetLoginStatus(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get login status: ", err)
+		}
+		if !login.IsLoggedIn {
+			s.Fatal("Expect to see a user is logged in in login status")
+		}
+		if err := bc.ExecuteScript(ctx, fmt.Sprintf("@b%d pin_participant_by_name %q", spotlightBotList[0], *login.DisplayName), meetingCode); err != nil {
+			s.Fatal("Failed to direct the spotlight bot to pin the test user: ", err)
 		}
 
 		if meet.present {
