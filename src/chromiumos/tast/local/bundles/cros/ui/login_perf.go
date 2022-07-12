@@ -49,7 +49,7 @@ func init() {
 			"ui.gaiaPoolDefault",
 		},
 		// Test runs login / chrome restart 60+ times.
-		Timeout: 60 * time.Minute,
+		Timeout: 120 * time.Minute,
 		Data:    []string{"animation.html", "animation.js"},
 	})
 }
