@@ -258,7 +258,7 @@ func (ar *actionResult) stringArray() ([]string, error) {
 		return nil, errors.Wrapf(err, "failed to JSON encoding user action attributes: %v", ar.attributes)
 	}
 
-	errMessage := ""
+	errMessage := "NULL"
 	if ar.err != nil {
 		errMessage = fmt.Sprintf("%v", ar.err)
 	}
