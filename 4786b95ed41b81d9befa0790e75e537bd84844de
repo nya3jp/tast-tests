@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41fb6e62_775d0a85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-12T21:55:12Z",
+      "side": 1,
+      "message": "I think I\u0027d prefer keeping it the way it is currently so in case we want to add something else to the prefix, we wouldn\u0027t have to edit ~15 error msgs. I also think someone looking up the error wouldn\u0027t even be able to copy/paste the whole error message with `peerConnID` because we insert the unique id with %s, so they\u0027d copy paste the words after that to find the LOC.",
+      "parentUuid": "d0ad59f5_d5fb3731",
+      "range": {
+        "startLine": 1061,
+        "startChar": 0,
+        "endLine": 1061,
+        "endChar": 57
+      },
+      "revId": "4786b95ed41b81d9befa0790e75e537bd84844de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a063b43_d30a3e8f",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1537f047_a2baec28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-12T21:55:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a063b43_d30a3e8f",
+      "range": {
+        "startLine": 1097,
+        "startChar": 58,
+        "endLine": 1097,
+        "endChar": 64
+      },
+      "revId": "4786b95ed41b81d9befa0790e75e537bd84844de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce81c3b1_64c6b077",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-12T16:39:10Z",
       "side": 1,
       "message": "This should just be `numStreamsWithContentType !\u003d expectedNumStreamsWithContentType`.",
+      "range": {
+        "startLine": 1154,
+        "startChar": 5,
+        "endLine": 1154,
+        "endChar": 90
+      },
+      "revId": "4786b95ed41b81d9befa0790e75e537bd84844de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ad67df_716147e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-12T21:55:12Z",
+      "side": 1,
+      "message": "Sorry, that\u0027s correct.",
+      "parentUuid": "ce81c3b1_64c6b077",
       "range": {
         "startLine": 1154,
         "startChar": 5,
