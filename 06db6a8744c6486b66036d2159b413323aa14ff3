@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c2d5947_00b0f1c3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-12T20:35:30Z",
+      "side": 1,
+      "message": "nit: fix comment and error message",
+      "revId": "06db6a8744c6486b66036d2159b413323aa14ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ccb1402_b8f790f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-12T20:35:30Z",
+      "side": 1,
+      "message": "are these always expected to be in the same order?",
+      "revId": "06db6a8744c6486b66036d2159b413323aa14ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "668a64ae_7edcfef3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-12T20:35:30Z",
+      "side": 1,
+      "message": "why not use DeepEqual here as well?",
+      "revId": "06db6a8744c6486b66036d2159b413323aa14ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e76e5d1_7c945bee",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-12T20:35:30Z",
+      "side": 1,
+      "message": "rm",
+      "revId": "06db6a8744c6486b66036d2159b413323aa14ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
