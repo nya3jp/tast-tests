@@ -156,6 +156,24 @@
       "parentUuid": "00b19b86_90eaa970",
       "revId": "f3eed494f15d658cdfcbbf91d5fb0fb8a955617c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62155573_56b056f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1322771
+      },
+      "writtenOn": "2022-07-12T01:01:23Z",
+      "side": 1,
+      "message": "Ah yep, the moment it\u0027s only matching on tab title. We\u0027re still playing around with the matching algorithm, so for now we\u0027ll only be able to test title matching :)",
+      "parentUuid": "4cf69ddd_d9cd03bb",
+      "revId": "f3eed494f15d658cdfcbbf91d5fb0fb8a955617c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
