@@ -285,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4157114_09baa48d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-12T07:47:11Z",
+      "side": 1,
+      "message": "I still recommend returning with a bool value.\nIt is not an issue to convert the description into a bool value in the function, what I pointed out that comparing the return value to whether it should be a newly installed app or not should be in the main function.\nThe current solution is still hard to read.\n\nIf you don\u0027t want to split this function into 2 (one for the description and one for the blue dot), you can convert both info into bool, if they match, return that value, if they mismatch, return with an error.",
+      "parentUuid": "5678bb2c_25e05d07",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 22
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ba48c6b_49144b27",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
         "patchSetId": 5

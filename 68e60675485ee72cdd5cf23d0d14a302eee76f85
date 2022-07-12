@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64e025d9_79b5301f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-12T07:47:11Z",
+      "side": 1,
+      "message": "I would avoid using a `.` in the folder name. While it is not a problem for Linux, it can still cause unexpected errors.",
+      "range": {
+        "startLine": 77,
+        "startChar": 48,
+        "endLine": 77,
+        "endChar": 49
+      },
+      "revId": "68e60675485ee72cdd5cf23d0d14a302eee76f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
