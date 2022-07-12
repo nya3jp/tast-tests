@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0ad59f5_d5fb3731",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-12T16:39:10Z",
+      "side": 1,
+      "message": "optional nit: Remove this line and write every error like\n\t\treturn errors.Errorf(\"[peerConnId\u003d%s] example error about %s video stream %s\", connIDText, direction, streamID)\nbecause if the test reports an error and someone looks for the corresponding code, that might be easier to find.",
+      "range": {
+        "startLine": 1061,
+        "startChar": 0,
+        "endLine": 1061,
+        "endChar": 57
+      },
+      "revId": "4786b95ed41b81d9befa0790e75e537bd84844de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a063b43_d30a3e8f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-12T16:39:10Z",
+      "side": 1,
+      "message": "`in %q time series`",
+      "range": {
+        "startLine": 1097,
+        "startChar": 58,
+        "endLine": 1097,
+        "endChar": 64
+      },
+      "revId": "4786b95ed41b81d9befa0790e75e537bd84844de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce81c3b1_64c6b077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-12T16:39:10Z",
+      "side": 1,
+      "message": "This should just be `numStreamsWithContentType !\u003d expectedNumStreamsWithContentType`.",
+      "range": {
+        "startLine": 1154,
+        "startChar": 5,
+        "endLine": 1154,
+        "endChar": 90
+      },
+      "revId": "4786b95ed41b81d9befa0790e75e537bd84844de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
