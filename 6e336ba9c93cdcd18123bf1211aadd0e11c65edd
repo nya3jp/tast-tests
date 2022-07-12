@@ -70,6 +70,30 @@
       },
       "revId": "6e336ba9c93cdcd18123bf1211aadd0e11c65edd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80592b00_4aff9255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/multi_networking.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-07-12T06:20:34Z",
+      "side": 1,
+      "message": "Ah I do see \"Cannot make virtual Device: No more addresses available for type Ethernet\" in fizz-kernelnext and kalista-kernelnext. Thanks for pointing that out. I think it\u0027s a problem we need to tackle as it could affect other arc network tests we plan to add using virtualnet.\n\n\ncoral-kernelnext and zork-kernelnext looks like a general ARC issue though (Android failed to boot in very early stage: init/crosvm process did not start up: context deadline exceeded; last error follows: didn\u0027t find init process)",
+      "parentUuid": "9ebd3116_e394596d",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 114
+      },
+      "revId": "6e336ba9c93cdcd18123bf1211aadd0e11c65edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
