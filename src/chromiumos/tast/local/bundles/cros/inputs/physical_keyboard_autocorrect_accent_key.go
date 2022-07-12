@@ -25,7 +25,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PhysicalKeyboardAccentKeyAutocorrect,
+		Func:         PhysicalKeyboardAutocorrectAccentKey,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that physical keyboard with accent keys can perform typing with autocorrects",
 		Contacts: []string{
@@ -54,14 +54,12 @@ func init() {
 				Fixture:           fixture.LacrosClamshellNonVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraSoftwareDeps: []string{"lacros"},
-				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 		},
 	})
 }
 
-// PhysicalKeyboardAccentKeyAutocorrect checks that physical keyboard with accent keys can perform typing with autocorrects.
-func PhysicalKeyboardAccentKeyAutocorrect(ctx context.Context, s *testing.State) {
+func PhysicalKeyboardAutocorrectAccentKey(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(fixture.FixtData).Chrome
 	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 	uc := s.FixtValue().(fixture.FixtData).UserContext
@@ -70,11 +68,22 @@ func PhysicalKeyboardAccentKeyAutocorrect(ctx context.Context, s *testing.State)
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	inputMethod := ime.FrenchFrance
-	s.Logf("Set current input method to: %q", inputMethod)
+	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch inputs test server: ", err)
+	}
+	defer its.CloseAll(cleanupCtx)
 
-	if err := inputMethod.InstallAndActivateUserAction(uc)(ctx); err != nil {
-		s.Fatalf("Failed to set input method to %q: %v: ", inputMethod, err)
+	inputMethod := ime.FrenchFrance
+
+	// Install IME and change auto-correct setting both need to wait for warm up.
+	// Performing Install -> Setting -> Activate can save the wait time (15s) to speed up testing.
+	if err := uiauto.NamedCombine("set current input method to: %q with PK autocorrect",
+		inputMethod.Install(tconn),
+		imesettings.SetPKAutoCorrection(uc, inputMethod, imesettings.AutoCorrectionModest),
+		inputMethod.Activate(tconn),
+	)(ctx); err != nil {
+		s.Fatalf("Failed to set current input method to %q: %v", inputMethod, err)
 	}
 	uc.SetAttribute(useractions.AttributeInputMethod, inputMethod.Name)
 
@@ -84,12 +93,6 @@ func PhysicalKeyboardAccentKeyAutocorrect(ctx context.Context, s *testing.State)
 	}
 	defer kb.Close()
 
-	its, err := testserver.LaunchBrowser(ctx, s.FixtValue().(fixture.FixtData).BrowserType, cr, tconn)
-	if err != nil {
-		s.Fatal("Failed to launch inputs test server: ", err)
-	}
-	defer its.CloseAll(cleanupCtx)
-
 	defer func(ctx context.Context) {
 		if err := inputMethod.ResetSettings(tconn)(ctx); err != nil {
 			// Only log errors in cleanup.
@@ -97,43 +100,32 @@ func PhysicalKeyboardAccentKeyAutocorrect(ctx context.Context, s *testing.State)
 		}
 	}(cleanupCtx)
 
-	for _, sample := range []struct {
-		inputString         string // string to type
-		expectedString      string // expected result
-		autocorrectedString string // autocorrected result
-		autoCorrectLevel    imesettings.AutoCorrectionLevel
-	}{
-		{"2", "é", "é", imesettings.AutoCorrectionOff},             //normal
-		{"d2jq", "déja", "déjà", imesettings.AutoCorrectionModest}, //misspelt
-	} {
-		f := func(ctx context.Context, s *testing.State) {
-			inputField := testserver.TextAreaInputField
+	inputField := testserver.TextAreaInputField
 
-			action := uiauto.Combine("validate PK autocorrect with accent keys",
-				imesettings.SetPKAutoCorrection(uc, inputMethod, sample.autoCorrectLevel),
-				// TODO(b/157686038): remove sleep.
-				// imesettings.setAutoCorrection: sleep for 5s may be too short to set auto correction for some DUTs which causes auto correction to fail.
-				uiauto.Sleep(15*time.Second),
-				its.ClearThenClickFieldAndWaitForActive(inputField),
-				kb.TypeAction(sample.inputString),
-				util.WaitForFieldTextToBe(tconn, inputField.Finder(), sample.expectedString),
-				kb.AccelAction("space"),
-				util.WaitForFieldTextToBe(tconn, inputField.Finder(), sample.autocorrectedString+" "),
-			)
+	const (
+		typeKeys            = "d2jq"
+		inputString         = "déja"
+		autocorrectedString = "déjà"
+	)
 
-			if err := uiauto.UserAction("input PK autocorrect with accent keys",
-				action,
-				uc,
-				&useractions.UserActionCfg{
-					Attributes: map[string]string{
-						useractions.AttributeInputField:   string(inputField),
-						useractions.AttributeTestScenario: fmt.Sprintf(`output string is %q`, sample.autocorrectedString),
-					}},
-			)(ctx); err != nil {
-				s.Fatalf("Failed to validate PK autocorrect with accent keys %s: %v", sample.expectedString, err)
-			}
+	action := uiauto.Combine("validate PK autocorrect with accent keys",
+		its.ClearThenClickFieldAndWaitForActive(inputField),
+		kb.TypeAction(typeKeys),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), inputString),
+		kb.AccelAction("space"),
+		util.WaitForFieldTextToBe(tconn, inputField.Finder(), autocorrectedString+" "),
+	)
 
-		}
-		s.Run(ctx, fmt.Sprintf("test of accent key: %s", sample.expectedString), f)
+	if err := uiauto.UserAction("PK input accent keys with auto-correct on",
+		action,
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeInputField:   string(inputField),
+				useractions.AttributeFeature:      useractions.FeatureAutoCorrection,
+				useractions.AttributeTestScenario: fmt.Sprintf(`Input %q get %q`, inputString, autocorrectedString),
+			}},
+	)(ctx); err != nil {
+		s.Fatal("Failed to validate PK autocorrect with accent keys: ", err)
 	}
 }
