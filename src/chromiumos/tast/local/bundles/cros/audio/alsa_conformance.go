@@ -30,7 +30,8 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		// TODO(b/213524693) : remove "chronicler" when b/213524693 is fixed.
 		// TODO(b/238591902) : remove "nautilus" and "nautiluslte" when b/238591902 is fixed.
-		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone(), hwdep.SkipOnModel("chronicler", "nautilus", "nautiluslte")),
+		// TODO(b/238591444) : remove "soraka" when b/238591444 is fixed.
+		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone(), hwdep.SkipOnModel("chronicler", "nautilus", "nautiluslte", "soraka")),
 		Timeout:      10 * time.Minute,
 	})
 }
