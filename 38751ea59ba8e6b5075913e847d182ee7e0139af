@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd4be53b_e64169ab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/screenshot_is_taken.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-12T16:54:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df7b55c0_f60def22",
+      "revId": "38751ea59ba8e6b5075913e847d182ee7e0139af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd818205_bbde639f",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29b2cbe5_6fe95ffd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/screenshot_is_taken.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-12T16:54:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd818205_bbde639f",
+      "range": {
+        "startLine": 80,
+        "startChar": 11,
+        "endLine": 80,
+        "endChar": 34
+      },
+      "revId": "38751ea59ba8e6b5075913e847d182ee7e0139af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dd91bf8_04a7e29f",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-07-12T16:27:57Z",
       "side": 1,
       "message": "`testing.Poll` is not necessary here. Instead you can change the timeout of the UI automation context for the `ui.WaitUntilExists` call:\n```\nif err :\u003d ui.WithTimeout(time.Minute).WaitUntilExists(screenshotDialog)(ctx) ...\n```\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/uiauto/automation.go;l\u003d65",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 23
+      },
+      "revId": "38751ea59ba8e6b5075913e847d182ee7e0139af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bb60481_31cea6a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/screenshot_is_taken.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-12T16:54:10Z",
+      "side": 1,
+      "message": "The screenshot dialog takes a little bit of time to close after clicking the button. So it fails for the first try, and then succeeds for the second or third try. Using a Poll here works.\n\nI tried `WaitUntilExists` + `WithTimeout`, but the test is not able to pass.",
+      "parentUuid": "1dd91bf8_04a7e29f",
       "range": {
         "startLine": 84,
         "startChar": 1,
