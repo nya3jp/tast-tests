@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e220303d_5fb98e19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 23
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-07-12T19:01:23Z",
+      "side": 1,
+      "message": "First of all, thanks Jie for your review, however, I think I still need CR+1/CR+2 from a Tast owner to submit this change.",
+      "revId": "939fe70e7874b7b286bd075ded5f6e76071847a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
