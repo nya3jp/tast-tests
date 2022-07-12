@@ -16,6 +16,29 @@
       "message": "LGTM.",
       "revId": "643e5f7b7cffae56f9d2d893276af10c8c8e072f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abe285c4_12b3084a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/auto_login_bailout.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1124166
+      },
+      "writtenOn": "2022-07-12T16:21:39Z",
+      "side": 1,
+      "message": "This is the last resort. I\u0027d prefer to wait for some event without a timer. Could you please file a bug for it and add a TODO with a bug number to the comment?",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 51
+      },
+      "revId": "643e5f7b7cffae56f9d2d893276af10c8c8e072f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
