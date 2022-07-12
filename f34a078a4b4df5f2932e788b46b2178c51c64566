@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10ba9d00_c7f06399",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/sap_caps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-12T16:24:34Z",
+      "side": 0,
+      "message": "If Jin Tao is not available, is it possible to have another person as the first contact?",
+      "revId": "f34a078a4b4df5f2932e788b46b2178c51c64566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
