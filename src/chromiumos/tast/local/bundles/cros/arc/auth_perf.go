@@ -52,7 +52,7 @@ func init() {
 			"niwa@chromium.org",  // Tast port author.
 			"arc-performance@google.com",
 		},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "crosbolt_arc_perf_qual"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		// This test steps through opt-in flow 10 times and each iteration takes 20~40 seconds.
 		Timeout: 30 * time.Minute,
