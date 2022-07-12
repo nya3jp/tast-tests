@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c33a154_b11eab69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-12T06:44:54Z",
+      "side": 1,
+      "message": "super nit: I am not the author of this test case or reviewed the initial CL. Please change it to your name as primary contact.",
+      "range": {
+        "startLine": 30,
+        "startChar": 26,
+        "endLine": 30,
+        "endChar": 47
+      },
+      "revId": "15b6dda7d3abb6e59d1f924cafe0a1092c2fc802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88174e88_6672cc15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_altgr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-12T06:44:54Z",
+      "side": 1,
+      "message": "In the design of go/e14s-tast-coverage. Test cases are organised at 3 levels: Feature -\u003e User Action -\u003e Scenario. In this case it is \"PK Typing Input\" -\u003e \"Verify PK Altgr Modifier works\" -\u003e \"Verify PK Altgr Modifier works for \" + testcase.inputMethod.Name",
+      "range": {
+        "startLine": 144,
+        "startChar": 31,
+        "endLine": 144,
+        "endChar": 39
+      },
+      "revId": "15b6dda7d3abb6e59d1f924cafe0a1092c2fc802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
