@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74093a7d_69ad60c8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T11:16:31Z",
+      "side": 1,
+      "message": "nit: line break at 72 chars.",
+      "revId": "5af5699b9a9106ee1413fddcc01e6d1d7402ea27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d637cc2e_d9bfd6af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T11:16:31Z",
+      "side": 1,
+      "message": "LGTM % minor nit.",
+      "revId": "5af5699b9a9106ee1413fddcc01e6d1d7402ea27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4016e119_4b169d2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T11:16:31Z",
+      "side": 1,
+      "message": "nit: Line break for comments is 80 chars. Please split the lines.",
+      "revId": "5af5699b9a9106ee1413fddcc01e6d1d7402ea27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
