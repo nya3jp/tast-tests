@@ -46,6 +46,9 @@ func SetupDisplay(ctx context.Context, s *testing.State) (map[string]chart.NameP
 	}
 
 	c, hostPaths, err := chart.New(ctx, s.DUT(), chartAddr, s.OutDir(), filePaths)
+	if err != nil {
+		return make(map[string]chart.NamePath), &chart.Chart{}, errors.Wrap(err, "failed to send the files")
+	}
 
 	pathsMap := map[string]chart.NamePath{
 		ZeroPresence: hostPaths[0],
@@ -53,9 +56,6 @@ func SetupDisplay(ctx context.Context, s *testing.State) (map[string]chart.NameP
 		TwoPresence:  hostPaths[2],
 	}
 
-	if err != nil {
-		return make(map[string]chart.NamePath), &chart.Chart{}, errors.Wrap(err, "failed to send the files")
-	}
 	return pathsMap, c, nil
 }
 
