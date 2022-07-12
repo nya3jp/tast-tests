@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72a965b7_c8d099b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-12T01:29:33Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm for tast",
+      "revId": "9497cd3f4e951c59b10377bae48985ba620abc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e10ac906_397ff001",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1533,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-12T01:29:33Z",
+      "side": 1,
+      "message": "nit: returns",
+      "range": {
+        "startLine": 1533,
+        "startChar": 17,
+        "endLine": 1533,
+        "endChar": 23
+      },
+      "revId": "9497cd3f4e951c59b10377bae48985ba620abc4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
