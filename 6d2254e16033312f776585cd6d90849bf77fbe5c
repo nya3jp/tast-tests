@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85922bff_17a6f503",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-07-12T19:11:35Z",
+      "side": 1,
+      "message": "FYI, a runtime switch --tether-host-scans-ignore-wired-connections [1] can be passed to make the Chromebook perform a tether scan + display an Instant Tethering notification, even if connected to Ethernet.\n\nIf this approach is reasonably stable / passing, then this is fine with me and LGTM.\n\n1) https://source.chromium.org/chromium/chromium/src/+/main:ash/constants/ash_switches.cc;l\u003d837;drc\u003d843911a994428b40537550f48b52d0d58cf08dd3",
+      "revId": "6d2254e16033312f776585cd6d90849bf77fbe5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c075b13_53e221ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1229022
+      },
+      "writtenOn": "2022-07-12T19:11:35Z",
+      "side": 1,
+      "message": "wifi",
+      "range": {
+        "startLine": 75,
+        "startChar": 29,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "6d2254e16033312f776585cd6d90849bf77fbe5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
