@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cb9c22a_437c5939",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-12T14:40:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a5aa292_ff2b5683",
+      "range": {
+        "startLine": 148,
+        "startChar": 23,
+        "endLine": 148,
+        "endChar": 56
+      },
+      "revId": "ea2734c7202d0b7211493ec51b4b3b9e413b2cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae52f55f_46eb0f48",
@@ -479,6 +503,30 @@
       "side": 1,
       "message": "Oh that\u0027s pretty interesting, and no I don\u0027t think we use that at all in shill. That being said, based on our hs2.0 metric  https://uma.googleplex.com/p/chrome/timeline_v2?sid\u003d6bc2d93fb7da5f471ed5996109f6a7bc, the vast majority of APs don\u0027t support it, so it probably won\u0027t really be helpful atm.",
       "parentUuid": "cfcec3b5_1de6b153",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "ea2734c7202d0b7211493ec51b4b3b9e413b2cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500f569a_509ac301",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-12T14:40:55Z",
+      "side": 1,
+      "message": "Even if hs20 is based on 802.11u, interworking and hs20 capabilities are advertised in two different ways. An access point can advertise 802.11u support without advertising hs20 support. Thus the hs20 metric tells nothing about the availability of interworking caps.\nI guess we could also add a metric to know if it\u0027s supported in the wild or not.",
+      "parentUuid": "a1229851_76af3779",
       "range": {
         "startLine": 128,
         "startChar": 1,
