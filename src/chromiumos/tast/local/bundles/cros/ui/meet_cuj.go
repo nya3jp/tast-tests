@@ -37,6 +37,7 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/loginstatus"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/local/webrtcinternals"
 	"chromiumos/tast/testing"
@@ -449,6 +450,15 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// Create a bot with spotlight layout to request HD video.
+	spotlightBotList, _, err := bc.AddBots(sctx, meetingCode, 1, meetTimeout+30*time.Minute, append(meet.botsOptions, bond.WithLayout("SPOTLIGHT"))...)
+	if err != nil {
+		s.Fatal("Failed to create bot with spotlight layout: ", err)
+	}
+	if len(spotlightBotList) != 1 {
+		s.Fatal("Bot with spotlight layout failed")
+	}
+
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to create TabCrashChecker: ", err)
@@ -719,7 +729,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err := meetConn.Eval(ctx, "hrTelemetryApi.getParticipantCount()", &participantCount); err != nil {
 			return errors.Wrap(err, "failed to get participant count")
 		}
-		if expectedParticipantCount := meet.num + 1; participantCount != expectedParticipantCount {
+		if expectedParticipantCount := meet.num + 2; participantCount != expectedParticipantCount {
 			return errors.Errorf("got %d participants, expected %d", participantCount, expectedParticipantCount)
 		}
 
@@ -736,6 +746,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 		if err := meetConn.Eval(ctx, "hrTelemetryApi.streamQuality.receive720p()", nil); err != nil {
 			return errors.Wrap(err, "failed to request receiving 720p")
+		}
+
+		// Direct the spotlight bot to pin the test user so
+		// that the test user will have to provide HD video.
+		login, err := loginstatus.GetLoginStatus(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get login status: ", err)
+		}
+		if !login.IsLoggedIn {
+			s.Fatal("Got login status indicating that the user is not logged in")
+		}
+		if err := bc.ExecuteScript(ctx, fmt.Sprintf("@b%d pin_participant_by_name %q", spotlightBotList[0], *login.DisplayName), meetingCode); err != nil {
+			s.Fatal("Failed to direct the spotlight bot to pin the test user: ", err)
 		}
 
 		if meet.present {
@@ -870,7 +893,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if err := os.WriteFile(filepath.Join(s.OutDir(), "webrtc-internals.json"), dump, 0644); err != nil {
 				s.Error("Failed to write WebRTC internals dump to test results folder: ", err)
 			}
-			if err := reportWebRTCInternals(pv, dump, meet.num, meet.present); err != nil {
+			if err := reportWebRTCInternals(pv, dump, meet.num+1, meet.present); err != nil {
 				s.Error("Failed to report info from WebRTC internals dump to performance metrics: ", err)
 			}
 		}
@@ -936,7 +959,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if info.outbound {
 				expectedCount = 1
 			} else {
-				expectedCount = int64(meet.num)
+				expectedCount = int64(meet.num + 1)
 			}
 			if count != expectedCount {
 				s.Errorf("Unexpected sample count on %s: got %d; expected %d", hist.Name, count, expectedCount)
