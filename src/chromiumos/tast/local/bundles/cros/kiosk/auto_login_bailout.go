@@ -51,7 +51,10 @@ func AutoLoginBailout(ctx context.Context, s *testing.State) {
 		fdms,
 		kioskmode.DefaultLocalAccounts(),
 		kioskmode.ExtraChromeOptions(chromeOptions),
-		kioskmode.AutoLaunch(kioskmode.WebKioskAccountID))
+		kioskmode.AutoLaunch(kioskmode.WebKioskAccountID),
+		// Instead of waiting for startup, it waits for kiosk mode to be ready to launch.
+		kioskmode.SkipSuccessfulLaunchCheck(),
+	)
 
 	if err != nil {
 		s.Error("Failed to start Chrome in Kiosk mode: ", err)
@@ -64,6 +67,7 @@ func AutoLoginBailout(ctx context.Context, s *testing.State) {
 	}
 
 	// Restart Chrome with a signin profile test extension to check UI on login screen.
+	// KeepState() will keep the Kiosk setup.
 	cr, err := kiosk.RestartChromeWithOptions(
 		ctx,
 		chrome.NoLogin(),
@@ -78,6 +82,7 @@ func AutoLoginBailout(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
+
 	ui := uiauto.New(tconn)
 	if err := ui.WaitUntilExists(nodewith.Name("Kiosk application launch canceled."))(ctx); err != nil {
 		s.Fatal("Kiosk application is failed to be canceled by user: ", err)
