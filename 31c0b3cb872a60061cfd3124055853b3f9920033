@@ -118,6 +118,30 @@
       },
       "revId": "31c0b3cb872a60061cfd3124055853b3f9920033",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15224567_18bf6051",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-07-12T05:49:50Z",
+      "side": 1,
+      "message": "\u003e I do not want to make changes that conflict with it, though.\nThis can\u0027t possibly conflict with other code, as since the return type is a string, the only thing the user can do with it is to print the diff out to the user, or confirm whether the diff is empty. They can\u0027t do something like check if two specific members are equal, or anything that involves caring about the actual underlying struct.\n\n\u003e you are exposing the config internals via OptionsDiff\u0027s return value, ...right...?\nI\u0027d say no. It is \"exposed\" in the sense of you can see a string corresponding to the diff between two configs, but I think that\u0027s perfectly reasonable. Consider how this function will be used, and also consider that the config members pretty clearly map to options:\n\ndiff, _ :\u003d OptionsDiff(codeUnderTest(), []Option{options.ExtraArg(\"--my-flag\")})\nif diff !\u003d \u0027\u0027 {\n t.Errorf(\"Options mismatch (-got +want):\\n%s\", diff)\n}\n\nIf this fails, you would get an error message along the lines of\nOptions mismatch (-got +want):\n+ ExtraArgs: --my-flag\n\nIMO, this is extremely clear what failed, is unable to break code when it changes, as it doesn\u0027t provide access to the underlying config for a program (only in a way that can be read by a human), and the MutableConfig usually has a pretty simple 1-1 mapping with options.\n\nIf you still don\u0027t want this, I can replace the string diff with a bool indicating whether they\u0027re the same object, but IMO, this is pretty stupid as it\u0027s the same thing, just with less debugging information available to the test writer.",
+      "parentUuid": "4a79e5cd_19add6b2",
+      "range": {
+        "startLine": 515,
+        "startChar": 38,
+        "endLine": 515,
+        "endChar": 44
+      },
+      "revId": "31c0b3cb872a60061cfd3124055853b3f9920033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
