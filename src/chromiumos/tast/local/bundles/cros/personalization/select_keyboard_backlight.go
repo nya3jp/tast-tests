@@ -41,6 +41,7 @@ func SelectKeyboardBacklight(ctx context.Context, s *testing.State) {
 	const (
 		backlightColor1 = "Blue"
 		backlightColor2 = "Rainbow"
+		backlightColor3 = "Wallpaper color"
 	)
 	cr := s.FixtValue().(*chrome.Chrome)
 
@@ -71,6 +72,10 @@ func SelectKeyboardBacklight(ctx context.Context, s *testing.State) {
 	if err := testKeyboardBacklight(ui, backlightColor2)(ctx); err != nil {
 		s.Fatalf("Failed to select backlight color %v: %v", backlightColor2, err)
 	}
+
+	if err := testKeyboardBacklight(ui, backlightColor3)(ctx); err != nil {
+		s.Fatalf("Failed to select backlight color %v: %v", backlightColor3, err)
+	}
 }
 
 func testKeyboardBacklight(ui *uiauto.Context, backlightColor string) uiauto.Action {
@@ -78,6 +83,7 @@ func testKeyboardBacklight(ui *uiauto.Context, backlightColor string) uiauto.Act
 	selectedColor := nodewith.HasClass("color-container tast-selected-color").Name(backlightColor)
 
 	return uiauto.Combine("validate the selected backlight color",
+		ui.MakeVisible(colorOption),
 		ui.LeftClick(colorOption),
 		ui.WaitUntilExists(selectedColor))
 }
