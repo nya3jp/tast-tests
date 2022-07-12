@@ -69,6 +69,75 @@
       "parentUuid": "4b36b0e1_0047dae8",
       "revId": "7373137d43426f7d7d14bfe84ae89c7bcf81be41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a144bcee_6569357e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-12T17:22:11Z",
+      "side": 1,
+      "message": "ack.",
+      "parentUuid": "9abf7295_f2804257",
+      "revId": "7373137d43426f7d7d14bfe84ae89c7bcf81be41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d40bf16d_4501a161",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-12T17:22:11Z",
+      "side": 1,
+      "message": "using s.Run() to run subtests may be a good idea (for more isolation between test cases) - see https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/categorical_search.go;drc\u003d324124db54dba04ac03acb16cff999e5bbc9b861;l\u003d116",
+      "revId": "7373137d43426f7d7d14bfe84ae89c7bcf81be41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa60b5f_4b11f04e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-12T17:22:11Z",
+      "side": 1,
+      "message": "can we verify that the browser window gets focus?",
+      "revId": "7373137d43426f7d7d14bfe84ae89c7bcf81be41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0b9195_28ffc908",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-12T17:22:11Z",
+      "side": 1,
+      "message": "potential additions to the test case:\n* open one tab in a separate window\n* mimimize one window (to verify the window gets activated even when minimized)\n* at the end close all windows, and verify that the open tab search returns no results",
+      "revId": "7373137d43426f7d7d14bfe84ae89c7bcf81be41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
