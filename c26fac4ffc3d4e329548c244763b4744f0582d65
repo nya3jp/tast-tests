@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4bf7d69_525b829c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-12T15:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70a4183a_07d61072",
+      "range": {
+        "startLine": 22,
+        "startChar": 249,
+        "endLine": 22,
+        "endChar": 257
+      },
+      "revId": "c26fac4ffc3d4e329548c244763b4744f0582d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be188647_fe9be92b",
@@ -98,6 +122,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4913fe7_82b058e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-12T15:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be188647_fe9be92b",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 54
+      },
+      "revId": "c26fac4ffc3d4e329548c244763b4744f0582d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40574b46_41370ddf",
@@ -111,6 +159,30 @@
       "writtenOn": "2022-07-11T02:31:07Z",
       "side": 1,
       "message": "nit: also need to remove this call :)",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "c26fac4ffc3d4e329548c244763b4744f0582d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3e05a40_51f6679e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-12T15:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40574b46_41370ddf",
       "range": {
         "startLine": 64,
         "startChar": 3,
