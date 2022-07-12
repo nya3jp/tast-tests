@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9891c5b_5da3c985",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_consecutive_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-07-12T21:50:44Z",
+      "side": 1,
+      "message": "I see the test that is being ported here was in \"faft_stress.\"  Since firmware_unstable gets scheduled against a dedicated pool I think it\u0027s (i.e. problems will be limited to FAFT testing and not impact the CQ).  When this test is ready to graduate from firmware_unstable, might make sense to look at defining a suite similar to faft_stress.",
+      "parentUuid": "9ffac8ab_f1039c99",
+      "revId": "8ed48f372a9ba7a414c1d010bcf254cb5a36e393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "30943c3f_1f538d92",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_consecutive_lid_switch.go",
         "patchSetId": 1
@@ -120,6 +138,30 @@
       "side": 1,
       "message": "Oh, right. It\u0027s done that way in original FAFT test, but the only reason to have Chrome opened is to login as regular user/guest to make DUT act \"as usual\" with its power modes. On login screen it goes off with lid closed, but when user is logged in the system will simply sleep as desired.\n\nBut if you have better/simpler way to achieve that, I\u0027m interested and welcome every suggestion.",
       "parentUuid": "af6dfabe_e5507f75",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 69
+      },
+      "revId": "8ed48f372a9ba7a414c1d010bcf254cb5a36e393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d11bb9f_6bf14e14",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_consecutive_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2022-07-12T21:50:44Z",
+      "side": 1,
+      "message": "Not aware of any simpler way, might be a good idea to capture the \"why\" in a comment (i.e. something like \"Need to login, because on the login screen the DUT goes off with the lid closed, whereas the intent is to exercise suspend.\")",
+      "parentUuid": "84ee11b6_e376a06b",
       "range": {
         "startLine": 64,
         "startChar": 1,
