@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1559fad_f7c0a126",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-12T23:00:39Z",
+      "side": 1,
+      "message": "Thanks Toni for reviewing the cl!\nHello tast-owners, the tast test is reviewed by our team members. Please take a look for the owner review. Thank you!",
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
