@@ -51,6 +51,23 @@
       "message": "🤠",
       "revId": "1d8b0cf6b33ac9aaa9ea1961114836086054e273",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c898898_ed4da873",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508123
+      },
+      "writtenOn": "2022-07-12T03:31:13Z",
+      "side": 1,
+      "message": "Looks like it\u0027s a new flake in the arc.OobeArc test, probably related to b/232592745 ... I don\u0027t see this particular failure reported in Tastboard anywhere though. Let\u0027s see if it happens on the second try.",
+      "revId": "1d8b0cf6b33ac9aaa9ea1961114836086054e273",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
