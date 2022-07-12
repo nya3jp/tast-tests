@@ -88,6 +88,72 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0b8fc6d_81287d62",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-12T21:29:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a430c3af_5b2721fb",
+      "range": {
+        "startLine": 78,
+        "startChar": 75,
+        "endLine": 78,
+        "endChar": 82
+      },
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a86b83a_52228372",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-12T21:29:23Z",
+      "side": 1,
+      "message": "Thanks for your suggestion. I adopted Jie\u0027s first method and moved all the test items back to the main function to make the whole implementation more logical.",
+      "parentUuid": "c296aa58_b6405dc8",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c6e021_47001317",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-12T21:29:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9092fc6_aa46ecac",
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a9f7cca_c6099e82",
@@ -101,6 +167,24 @@
       "writtenOn": "2022-07-11T22:41:04Z",
       "side": 1,
       "message": "net.ParseIP(...)",
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e0d1c85_9a9674db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-12T21:29:23Z",
+      "side": 1,
+      "message": "Thanks for your guidance. I use net.ParseIP() to check if the IP address is valid and net.ParseIP().To4() to check if the IP address is ipV4.",
+      "parentUuid": "3a9f7cca_c6099e82",
       "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1823811a_3c874ac5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-12T21:29:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb769dd2_6aa5512f",
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed61a6ff_a1648f39",
@@ -135,6 +237,24 @@
       "writtenOn": "2022-07-11T22:41:04Z",
       "side": 1,
       "message": "Actually, I realized that this is not the most reliable way to trigger portal detection. RecheckPortal calls Device::RequestPortalDetection, which won\u0027t restart the portal detection if it\u0027s currently ongoing. Let\u0027s instead do the following:\n\n1. Set kCheckPortalProperty to false: https://source.corp.google.com/chromeos_public/src/platform2/system_api/dbus/shill/dbus-constants.h;rcl\u003db59da3208b4fb3261e451f2ff3d4ca4003724a5f;l\u003d123. This should force the state to Online.\n2. Wait for the state to be Online.\n3. Set kCheckPortalProperty to true.\n4. Wait for the state to be some portalled state.\n5. Close tcpdump.",
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f798ac_c6753703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-12T21:29:23Z",
+      "side": 1,
+      "message": "Thank you for your explanation of RecheckPortal! I followed your steps to set the kCheckPortalProperty and wait for the status to go online. Finally, close the tcpdump utility.",
+      "parentUuid": "ed61a6ff_a1648f39",
       "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -233,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3de195f3_8111674a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-12T21:29:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f34889e_e44a54ce",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 15
+      },
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cb8f64b_9f75a937",
@@ -256,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd31f6c0_aac87489",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-12T21:29:23Z",
+      "side": 1,
+      "message": "I don\u0027t need to reuse this function so I move all statements to the main function.",
+      "parentUuid": "2cb8f64b_9f75a937",
+      "range": {
+        "startLine": 163,
+        "startChar": 5,
+        "endLine": 163,
+        "endChar": 21
+      },
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29e540fb_288a8640",
@@ -269,6 +437,30 @@
       "writtenOn": "2022-07-11T22:41:04Z",
       "side": 1,
       "message": "is this still necessary?",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 178,
+        "endChar": 19
+      },
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be9234b_0710b30e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-12T21:29:23Z",
+      "side": 1,
+      "message": "Yes, it is required. Because the tcpdump utility needs two parameters whose data types are os.File. The function is needed to convert the path string to os.File. \nHowever, I can refactor this part and move this function into the tcpdump utility. Because I used testing.ContextOutDir() to get a directory here, the behavior of local and remote tests becomes the same. I plan to create another commit to modify this part, separate from the modification of DNS test.",
+      "parentUuid": "29e540fb_288a8640",
       "range": {
         "startLine": 178,
         "startChar": 5,
