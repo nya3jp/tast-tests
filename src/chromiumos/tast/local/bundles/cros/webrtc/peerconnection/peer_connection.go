@@ -36,6 +36,19 @@ const (
 	NoVerifyHWAcceleratorUsed
 )
 
+// DisplayMediaType represents displaySurface property in displayMedia constraints.
+// See https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints/displaySurface.
+type DisplayMediaType string
+
+const (
+	// Monitor is to capture an entire screen.
+	Monitor DisplayMediaType = "monitor"
+	// Window is to capture a window.
+	Window = "window"
+	// Tab is to capture tab in a browser.
+	Tab = "browser"
+)
+
 const (
 
 	// LoopbackFile is the file containing the RTCPeerConnection loopback code.
@@ -47,7 +60,7 @@ const (
 
 // RunRTCPeerConnection launches a loopback RTCPeerConnection and inspects that the
 // VerifyHWAcceleratorMode codec is hardware accelerated if profile is not NoVerifyHWAcceleratorUsed.
-func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyMode VerifyHWAcceleratorMode, profile string, simulcast bool, svc string) error {
+func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyMode VerifyHWAcceleratorMode, profile string, simulcast bool, svc string, displayMediaType DisplayMediaType) error {
 	if simulcast && svc != "" {
 		return errors.New("|simulcast| and |svc| cannot be set simultaneously")
 	}
@@ -85,7 +98,7 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
-	if err := conn.Call(ctx, nil, "start", profile, simulcast, svc); err != nil {
+	if err := conn.Call(ctx, nil, "start", profile, simulcast, svc, displayMediaType); err != nil {
 		return errors.Wrap(err, "error establishing connection")
 	}
 

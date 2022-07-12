@@ -62,6 +62,21 @@ func init() {
 			Val:     peerconnection.MakeSWTestOptions("VP9"),
 			Fixture: "chromeVideoWithFakeWebcamAndNoHwAcceleration",
 		}, {
+			Name:              "vp9_monitor_hw",
+			Val:               peerconnection.MakeCaptureTestOptions("VP9", peerconnection.Monitor),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
+			Fixture:           "chromeScreenCapture",
+		}, {
+			Name:              "vp9_window_hw",
+			Val:               peerconnection.MakeCaptureTestOptions("VP9", peerconnection.Window),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
+			Fixture:           "chromeWindowCapture",
+		}, {
+			Name:              "vp9_tab_hw",
+			Val:               peerconnection.MakeCaptureTestOptions("VP9", peerconnection.Tab),
+			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
+			Fixture:           "chromeTabCapture",
+		}, {
 			// This is a 2 temporal layers test, via the (experimental) API.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
 			Name:              "vp9_hw_svc_l1t2",

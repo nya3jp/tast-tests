@@ -27,7 +27,8 @@ type rtcTest struct {
 	simulcast bool
 	// ScalableVideoCodec "scalabilityMode" identifier.
 	// https://www.w3.org/TR/webrtc-svc/#scalabilitymodes
-	svc string
+	svc              string
+	displayMediaType peerconnection.DisplayMediaType
 }
 
 func init() {
@@ -138,6 +139,21 @@ func init() {
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
+			Name:              "vp9_monitor",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", displayMediaType: peerconnection.Monitor},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeScreenCapture",
+		}, {
+			Name:              "vp9_window",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", displayMediaType: peerconnection.Window},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeWindowCapture",
+		}, {
+			Name:              "vp9_tab",
+			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9", displayMediaType: peerconnection.Tab},
+			ExtraSoftwareDeps: []string{caps.HWEncodeVP9},
+			Fixture:           "chromeTabCapture",
+		}, {
 			// This is a 2 temporal layers test, via the (experimental) API.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
 			Name:              "vp8_enc_svc_l1t2",
@@ -191,7 +207,7 @@ func init() {
 // specified, verifies it uses accelerated encoding / decoding.
 func RTCPeerConnection(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(rtcTest)
-	if err := peerconnection.RunRTCPeerConnection(ctx, s.FixtValue().(*chrome.Chrome), s.DataFileSystem(), testOpt.verifyMode, testOpt.profile, testOpt.simulcast, testOpt.svc); err != nil {
+	if err := peerconnection.RunRTCPeerConnection(ctx, s.FixtValue().(*chrome.Chrome), s.DataFileSystem(), testOpt.verifyMode, testOpt.profile, testOpt.simulcast, testOpt.svc, testOpt.displayMediaType); err != nil {
 		s.Error("Failed to run RunRTCPeerConnection: ", err)
 	}
 }

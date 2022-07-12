@@ -6,8 +6,12 @@ let localPeerConnection = new RTCPeerConnection();
 let remotePeerConnection = new RTCPeerConnection();
 
 async function start(
-    profile, isSimulcast, svcScalabilityMode = '', width = 1280, height = 720) {
-  const constraints = {audio : false, video : {width : width, height : height}};
+  profile, isSimulcast, svcScalabilityMode = '', displayMediaType = '',
+  width = 1280, height = 720) {
+  let constraints = {audio : false, video : {width : width, height : height}};
+  if (displayMediaType !== '') {
+    constraints.video.displaySurface = displayMediaType;
+  }
 
   localPeerConnection.onicecandidate = e =>
       remotePeerConnection.addIceCandidate(e.candidate);
@@ -36,7 +40,12 @@ async function start(
 }
 
 async function runLoopbackPeerConnection(constraints, profile, targetBitrate) {
-  const stream = await navigator.mediaDevices.getUserMedia(constraints);
+  let stream;
+  if (constraints.video.displaySurface) {
+    stream = await navigator.mediaDevices.getDisplayMedia(constraints)
+  } else {
+    stream = await navigator.mediaDevices.getUserMedia(constraints);
+  }
   localPeerConnection.addTransceiver(stream.getVideoTracks()[0], {
     // Prefer resolution even at the cost of visual quality to avoid falling
     // down to SW video encoding, see b/181320567 or crbug.com/1179020.
