@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d154f1e_f243e653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-12T00:28:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d021a99b_5523d066",
+      "range": {
+        "startLine": 1065,
+        "startChar": 31,
+        "endLine": 1065,
+        "endChar": 35
+      },
+      "revId": "955028afd57410830c2aeb1c116d40203bbde08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9454b61_0a16f918",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-11T23:27:40Z",
       "side": 1,
       "message": "There is no need to check if `streamID` is already in the set. Nothing will go wrong if you put it in the set several times.\n\nHowever I do suggest you check `direction \u003d\u003d \"Outbound\"` and only include the Outbound video streams in `streamIDs`, because I suspect it may be possible for an Inbound stream and an Outbound stream to have the same ID. Rename `streamIDs` to `outboundStreamIDs` and add a comment that unlike `byDirection[\"Outbound\"]`, it will include every Outbound video stream even if the stream has none of the statistics in `unit`.",
+      "range": {
+        "startLine": 1077,
+        "startChar": 6,
+        "endLine": 1077,
+        "endChar": 39
+      },
+      "revId": "955028afd57410830c2aeb1c116d40203bbde08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d1c3eb4_48d94edf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-12T00:28:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9454b61_0a16f918",
       "range": {
         "startLine": 1077,
         "startChar": 6,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07b5293d_d96b94f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1082,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-12T00:28:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cba71593_31097f9c",
+      "revId": "955028afd57410830c2aeb1c116d40203bbde08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "321f048b_f36de442",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-07-11T23:27:40Z",
       "side": 1,
       "message": "nit: I think it would be cleaner to just write\n\t\tisScreenshareConn :\u003d numStreamsWithContentType \u003e 0\nat line 1144.",
+      "range": {
+        "startLine": 1084,
+        "startChar": 0,
+        "endLine": 1084,
+        "endChar": 28
+      },
+      "revId": "955028afd57410830c2aeb1c116d40203bbde08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c96074c3_3d8412d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-12T00:28:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "321f048b_f36de442",
       "range": {
         "startLine": 1084,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7c31cb_65da7889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-12T00:28:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d9eff53_6af9406c",
+      "range": {
+        "startLine": 1092,
+        "startChar": 0,
+        "endLine": 1092,
+        "endChar": 129
+      },
+      "revId": "955028afd57410830c2aeb1c116d40203bbde08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "279e9217_76a9e7a2",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-07-11T23:27:40Z",
       "side": 1,
       "message": "This will report the expected number of streams as `totalStreams` even if `isScreenshareConn` is false. Please do this:\n\t\texpectedNumStreamsWithContentType :\u003d 0\n\t\tif isScreenshareConn {\n\t\t\texpectedNumStreamsWithContentType \u003d len(outboundStreamIDs)\n\t\t}\n\t\tif numStreamsWithContentType !\u003d expectedNumStreamsWithContentType {\n\t\t\treturn errors.Errorf(\"%s unexpected number of streams with the contentType statistic: got %d; expected %d\", errPrefix, numStreamsWithContentType, expectedNumStreamsWithContentType)\n\t\t}",
+      "range": {
+        "startLine": 1146,
+        "startChar": 0,
+        "endLine": 1146,
+        "endChar": 146
+      },
+      "revId": "955028afd57410830c2aeb1c116d40203bbde08c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42e66c6f_d0446d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-12T00:28:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "279e9217_76a9e7a2",
       "range": {
         "startLine": 1146,
         "startChar": 0,
