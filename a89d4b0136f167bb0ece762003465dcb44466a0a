@@ -209,6 +209,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9bbb15e_d57b1ba6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-12T01:19:57Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t mean to send this comment out, it should be replaced by the above one...\nResovling this one and leave that one open",
+      "parentUuid": "469d84b4_bbfcfdaf",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 15
+      },
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cb8f64b_9f75a937",
