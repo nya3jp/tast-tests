@@ -7,11 +7,13 @@ package dlp
 import (
 	"context"
 	"io/ioutil"
+	"net/http"
+	"net/http/httptest"
+	"net/url"
 	"os"
 	"path/filepath"
 	"time"
 
-	"chromiumos/tast/common/fixture"
 	policyBlob "chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
@@ -19,14 +21,13 @@ import (
 	"chromiumos/tast/local/bundles/cros/dlp/clipboard"
 	"chromiumos/tast/local/bundles/cros/dlp/policy"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/browser"
-	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -35,7 +36,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DataLeakPreventionRulesListClipboardExt,
-		LacrosStatus: testing.LacrosVariantExists,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test behavior of DataLeakPreventionRulesList policy with clipboard blocked restriction when accessed by extension",
 		Contacts: []string{
 			"ayaelattar@google.com",
@@ -44,17 +45,8 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Attr:         []string{"group:mainline", "informational"},
-		Data:         []string{"manifest.json", "background.js", "content.js"},
-		Params: []testing.Param{{
-			Name:    "ash",
-			Fixture: fixture.ChromePolicyLoggedIn,
-			Val:     browser.TypeAsh,
-		}, {
-			Name:              "lacros",
-			ExtraSoftwareDeps: []string{"lacros"},
-			Fixture:           fixture.LacrosPolicyLoggedIn,
-			Val:               browser.TypeLacros,
-		}},
+		Fixture:      "fakeDMS",
+		Data:         []string{"manifest.json", "background.js", "content.js", "text_1.html", "text_2.html", "editable_text_box.html"},
 	})
 }
 func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.State) {
@@ -105,6 +97,19 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 		s.Fatal("Failed to connect to test API: ", err)
 	}
 
+	allowedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer allowedServer.Close()
+
+	blockedServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer blockedServer.Close()
+
+	destServer := httptest.NewServer(http.FileServer(s.DataFileSystem()))
+	defer destServer.Close()
+
+	if err := policyutil.ServeAndVerify(ctx, fakeDMS, cr, policy.PopulateDLPPolicyForClipboard(blockedServer.URL, destServer.URL)); err != nil {
+		s.Fatal("Failed to serve and verify the DLP policy: ", err)
+	}
+
 	keyboard, err := input.VirtualKeyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard: ", err)
@@ -129,37 +134,31 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 	// See RestrictiveDLPPolicyForClipboard function in policy package for more details.
 	for _, param := range []struct {
 		name          string
-		url           string
+		sourceURL     string
 		accessAllowed bool
 	}{
 		{
 			name:          "accessDenied",
-			url:           "www.example.com",
+			sourceURL:     blockedServer.URL + "/text_1.html",
 			accessAllowed: false,
 		},
 		{
 			name:          "accessAllowed",
-			url:           "www.chromium.org",
+			sourceURL:     allowedServer.URL + "/text_2.html",
 			accessAllowed: true,
 		},
 	} {
 		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
-			br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+			conn, err := cr.NewConn(ctx, param.sourceURL)
 			if err != nil {
-				s.Fatal("Failed to open the browser: ", err)
-			}
-			defer closeBrowser(ctx)
-
-			conn, err := br.NewConn(ctx, "https://"+param.url)
-			if err != nil {
-				s.Fatal("Failed to open page: ", err)
+				s.Fatalf("Failed to open page %q: %v", param.sourceURL, err)
 			}
 			defer conn.Close()
 
 			if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
-				s.Fatalf("Failed to wait for %q to be loaded and achieve quiescence: %s", param.url, err)
+				s.Fatalf("Failed to wait for %q to be loaded and achieve quiescence: %s", param.sourceURL, err)
 			}
 
 			ui := uiauto.New(tconn)
@@ -169,14 +168,15 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 				s.Fatal("Failed to copy text from source browser: ", err)
 			}
 
-			googleConn, err := br.NewConn(ctx, "https://google.com")
+			destURL := destServer.URL + "/editable_text_box.html"
+			destConn, err := cr.NewConn(ctx, destURL)
 			if err != nil {
 				s.Fatal("Failed to open page: ", err)
 			}
-			defer googleConn.Close()
+			defer destConn.Close()
 
-			if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
-				s.Fatal("Failed to wait for google.com to be loaded and achieve quiescence: ", err)
+			if err := webutil.WaitForQuiescence(ctx, destConn, 10*time.Second); err != nil {
+				s.Fatalf("Failed to wait for %q to achieve quiescence: %v", destURL, err)
 			}
 
 			if err := uiauto.Combine("Select tab and press Ctrl+Z",
@@ -195,7 +195,7 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 
 			// This can be too fast, so poll till the extension updates the webpage title.
 			if err := testing.Poll(ctx, func(ctx context.Context) error {
-				if err := googleConn.Eval(ctx, "document.title", &actualTitle); err != nil {
+				if err := destConn.Eval(ctx, "document.title", &actualTitle); err != nil {
 					return errors.Wrap(err, "failed to get the webpage title")
 				}
 
@@ -211,7 +211,12 @@ func DataLeakPreventionRulesListClipboardExt(ctx context.Context, s *testing.Sta
 				s.Fatalf("Found page title %s, expected %s: %s", actualTitle, expectedTitle, err)
 			}
 
-			err = clipboard.CheckClipboardBubble(ctx, ui, param.url)
+			parsedSourceURL, err := url.Parse(blockedServer.URL)
+			if err != nil {
+				s.Fatalf("Failed to parse blocked server URL %s: %s", blockedServer.URL, err)
+			}
+
+			err = clipboard.CheckClipboardBubble(ctx, ui, parsedSourceURL.Hostname())
 			// Clipboard DLP bubble is not expected when access allowed.
 			if err == nil && param.accessAllowed {
 				s.Error("Notification found, expected none")
