@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 // bootModeTestParams defines the params for a single test-case.
@@ -24,11 +25,12 @@ import (
 // resetType defines whether ModeAwareReboot should use a warm or a cold reset.
 // checkBootFromMain checks whether device boots from the main storage when a memory device is attached.
 type bootModeTestParams struct {
-	bootToMode        fwCommon.BootMode
-	allowGBBForce     bool
-	resetAfterBoot    bool
-	resetType         firmware.ResetType
-	checkBootFromMain bool
+	bootToMode          fwCommon.BootMode
+	allowGBBForce       bool
+	resetAfterBoot      bool
+	resetType           firmware.ResetType
+	checkBootFromMain   bool
+	checkToNoGoodScreen bool
 }
 
 func init() {
@@ -150,6 +152,16 @@ func init() {
 			},
 			ExtraAttr: []string{"firmware_bios", "firmware_level2"},
 			Timeout:   15 * time.Minute,
+		}, {
+			Name:              "detachable_nogood_screen",
+			Fixture:           fixture.NormalMode,
+			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Detachable)),
+			Val: bootModeTestParams{
+				bootToMode:          fwCommon.BootModeDev,
+				checkToNoGoodScreen: true,
+			},
+			ExtraAttr: []string{"firmware_unstable", "firmware_usb"},
+			Timeout:   15 * time.Minute,
 		}},
 	})
 }
@@ -214,6 +226,24 @@ func BootMode(ctx context.Context, s *testing.State) {
 			// Don't check the dev-force GBB flag if there's no reason for it to have been set.
 			opts = append(opts, firmware.AssumeGBBFlagsCorrect)
 		}
+
+		if tc.checkToNoGoodScreen {
+			opts = append(opts, firmware.CheckToNoGoodScreen)
+
+			usbdev, err := h.Servo.GetStringTimeout(ctx, servo.ImageUSBKeyDev, time.Second*90)
+			if err != nil {
+				s.Fatal("Servo call image_usbkey_dev failed: ", err)
+			}
+			if usbdev == "" {
+				s.Fatal("No USB key detected: ", err)
+			}
+
+			// Format the USB device to remove all data stored.
+			if err := h.ServoProxy.RunCommand(ctx, true, "mkfs.vfat", "-I", usbdev); err != nil {
+				s.Fatal("Failed to clean the usb: ", err)
+			}
+		}
+
 		s.Logf("Transitioning to %s mode with options %+v", tc.bootToMode, opts)
 		if err = ms.RebootToMode(ctx, tc.bootToMode, opts...); err != nil {
 			s.Fatalf("Error during transition from %s to %s: %+v", pv.BootMode, tc.bootToMode, err)
