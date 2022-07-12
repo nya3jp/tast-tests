@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/remote/sysutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/platform"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -119,6 +120,11 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 				if _, err := upstartService.EnableJob(ctx, &platform.EnableJobRequest{JobName: biodUpstartJobName}); err != nil {
 					testing.ContextLog(ctx, "Failed to re-enable biod upstart job")
 				}
+				// Sync filesystem to make sure that services are restored correctly.
+				// This will also sync necessary changes to enable FP updater.
+				if err := d.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
+					testing.ContextLogf(ctx, "Failed to sync DUT: %s", err)
+				}
 			}
 		}()
 
@@ -135,6 +141,11 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 				}
 			}
 		}()
+
+		// Sync filesystem to make sure that services are disabled correctly.
+		if err := d.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
+			return nil, errors.Wrap(err, "failed to sync DUT")
+		}
 
 		// Account for the additional time that rebooting adds.
 		t.cleanupTime += 3 * time.Minute
@@ -213,6 +224,11 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 			}
 		} else if err != nil && firstErr == nil {
 			firstErr = errors.Wrapf(err, "failed to check existence of temp directory: %q", t.dutTempDir)
+		}
+
+		// Sync filesystem to make sure that services are enabled correctly.
+		if err := t.d.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil && firstErr == nil {
+			firstErr = errors.Wrap(err, "failed to sync DUT")
 		}
 	}
 
