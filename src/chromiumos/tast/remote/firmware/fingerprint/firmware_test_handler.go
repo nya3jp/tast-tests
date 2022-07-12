@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/remote/sysutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/platform"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -369,12 +370,28 @@ func isFPUpdaterEnabled(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
 func enableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
 	fs := dutfs.NewClient(d.RPC().Conn)
 	testing.ContextLog(ctx, "Enabling the fingerprint updater")
-	return fs.Remove(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile))
+	disableFpUpdaterPath := filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile)
+	if err := fs.Remove(ctx, disableFpUpdaterPath); err != nil {
+		return errors.Wrapf(err, "failed to remove %q", disableFpUpdaterPath)
+	}
+	// Sync filesystem to make sure that FP updater is enabled correctly.
+	if err := d.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to sync DUT")
+	}
+	return nil
 }
 
 // disableFPUpdater disables the fingerprint updater if it is enabled.
 func disableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
 	fs := dutfs.NewClient(d.RPC().Conn)
 	testing.ContextLog(ctx, "Disabling the fingerprint updater")
-	return fs.WriteFile(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile), nil, 0)
+	disableFpUpdaterPath := filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile)
+	if err := fs.WriteFile(ctx, disableFpUpdaterPath, nil, 0); err != nil {
+		return errors.Wrapf(err, "failed to create %q", disableFpUpdaterPath)
+	}
+	// Sync filesystem to make sure that FP updater is disabled correctly.
+	if err := d.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to sync DUT")
+	}
+	return nil
 }
