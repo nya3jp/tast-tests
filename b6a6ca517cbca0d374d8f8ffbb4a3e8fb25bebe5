@@ -22,6 +22,30 @@
       },
       "revId": "b6a6ca517cbca0d374d8f8ffbb4a3e8fb25bebe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d185b697_3fe1bba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-07-12T19:27:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17399d16_51758d1b",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 79
+      },
+      "revId": "b6a6ca517cbca0d374d8f8ffbb4a3e8fb25bebe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
