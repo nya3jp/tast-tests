@@ -307,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79acfab9_1e8fb723",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-12T14:24:55Z",
+      "side": 1,
+      "message": "Please take a look at the updated version.",
+      "parentUuid": "f4157114_09baa48d",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 22
+      },
+      "revId": "e2c24f161ca1200e67eef7a972ccbb8b7973c3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ba48c6b_49144b27",
