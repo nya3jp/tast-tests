@@ -36,6 +36,19 @@ const (
 	NoVerifyHWAcceleratorUsed
 )
 
+// DisplayMediaType represents displaySurface property in displayMedia constraints.
+// See https://w3c.github.io/mediacapture-screen-share/#dom-displaycapturesurfacetype.
+type DisplayMediaType string
+
+const (
+	// CaptureMonitor is to capture an entire screen.
+	CaptureMonitor DisplayMediaType = "monitor"
+	// CaptureWindow is to capture a window.
+	CaptureWindow = "window"
+	// CaptureTab is to capture tab in a browser.
+	CaptureTab = "browser"
+)
+
 const (
 
 	// LoopbackFile is the file containing the RTCPeerConnection loopback code.
@@ -47,11 +60,13 @@ const (
 
 // RunRTCPeerConnection launches a loopback RTCPeerConnection and inspects that the
 // VerifyHWAcceleratorMode codec is hardware accelerated if profile is not NoVerifyHWAcceleratorUsed.
-func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyMode VerifyHWAcceleratorMode, profile string, simulcast bool, svc string) error {
+func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, verifyMode VerifyHWAcceleratorMode, profile string, simulcast bool, svc string, displayMediaType DisplayMediaType) error {
 	if simulcast && svc != "" {
 		return errors.New("|simulcast| and |svc| cannot be set simultaneously")
 	}
-
+	if displayMediaType != "" && (simulcast || svc != "") {
+		return errors.New("Screen capture can't be used with simulcast or SVC")
+	}
 	vl, err := logging.NewVideoLogger()
 	if err != nil {
 		return errors.Wrap(err, "failed to set values for verbose logging")
@@ -85,7 +100,7 @@ func RunRTCPeerConnection(ctx context.Context, cr *chrome.Chrome, fileSystem htt
 		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
-	if err := conn.Call(ctx, nil, "start", profile, simulcast, svc); err != nil {
+	if err := conn.Call(ctx, nil, "start", profile, simulcast, svc, displayMediaType); err != nil {
 		return errors.Wrap(err, "error establishing connection")
 	}
 
