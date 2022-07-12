@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bca1da4_2390d8bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-12T21:50:23Z",
+      "side": 1,
+      "message": "Really cool, did not know this was a thing. Thanks for bringing currying to my attention!",
+      "parentUuid": "089f7955_a560865c",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "28695582b2b9ca47b35c8515077c0c4489e7f1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2aec988b_4a1b44c4",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "558c207b_86db567b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-12T21:50:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aec988b_4a1b44c4",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 56
+      },
+      "revId": "28695582b2b9ca47b35c8515077c0c4489e7f1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2a5aee5_04833318",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-11T16:40:47Z",
       "side": 1,
       "message": "Note for later: we will also need a listener on 443 as well for simulating the interactions with the HTTPS probe when they are not blocked by the portal.",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 35
+      },
+      "revId": "28695582b2b9ca47b35c8515077c0c4489e7f1c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cc3318d_a52241d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-12T21:50:23Z",
+      "side": 1,
+      "message": "Noted. This is why I originally wanted to keep the port as a parameter to the http.server in the previous CL in the chain. The ideal scenario is to have another argument for enabling TLS so we can start two servers (HTTP and HTTPS) to reach an online state.",
+      "parentUuid": "f2a5aee5_04833318",
       "range": {
         "startLine": 101,
         "startChar": 16,
