@@ -33,7 +33,7 @@ func TestLogCleanActionResult(t *testing.T) {
 		t.Fatal("Failed to parse action result: ", err)
 	}
 
-	want := []string{"actionName", "testName", "{}", "", startTime.Format(actionTimeFormat), endTime.Format(actionTimeFormat), "true", ""}
+	want := []string{"actionName", "testName", "{}", "", startTime.Format(actionTimeFormat), endTime.Format(actionTimeFormat), "true", "NULL"}
 
 	if !cmp.Equal(got, want) {
 		t.Errorf("failed to format action result; got %+v, want %+v", got, want)
