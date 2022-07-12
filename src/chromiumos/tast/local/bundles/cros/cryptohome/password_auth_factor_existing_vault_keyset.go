@@ -38,7 +38,7 @@ func PasswordAuthFactorExistingVaultKeyset(ctx context.Context, s *testing.State
 	const (
 		userName        = "foo@bar.baz"
 		userPassword    = "secret"
-		passwordLabel   = "bar"
+		passwordLabel   = "gaia"
 		testFile        = "file"
 		testFileContent = "content"
 		ussFlagFile     = "/var/lib/cryptohome/uss_enabled"
