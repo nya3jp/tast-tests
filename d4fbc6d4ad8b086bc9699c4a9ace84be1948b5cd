@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c31a70ca_6d767f4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-12T15:18:49Z",
+      "side": 1,
+      "message": "Thanks for reviewing!",
+      "parentUuid": "7df24bb7_2cf36fe4",
+      "revId": "d4fbc6d4ad8b086bc9699c4a9ace84be1948b5cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b87e612_082d718f",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-12T14:47:07Z",
       "side": 1,
       "message": "minor nit: you can move this into the `if`.",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 63
+      },
+      "revId": "d4fbc6d4ad8b086bc9699c4a9ace84be1948b5cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c7fb73a_432b402c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-12T15:18:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b87e612_082d718f",
       "range": {
         "startLine": 114,
         "startChar": 1,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0643d10_e08cef6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-12T15:18:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecbf2908_f2591c27",
+      "range": {
+        "startLine": 118,
+        "startChar": 11,
+        "endLine": 118,
+        "endChar": 64
+      },
+      "revId": "d4fbc6d4ad8b086bc9699c4a9ace84be1948b5cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4608f6d_06b438f7",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e1bfe08_2c063dbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-12T15:18:49Z",
+      "side": 1,
+      "message": "Actually I don\u0027t need to query app item view for the second time. Removed.",
+      "parentUuid": "f4608f6d_06b438f7",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 38
+      },
+      "revId": "d4fbc6d4ad8b086bc9699c4a9ace84be1948b5cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e469e050_3405e233",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-07-12T14:47:07Z",
       "side": 1,
       "message": "Maybe add a hasDescr !\u003d hasDot check, and return with an error if they are different. But only if you don\u0027t expect such a state.",
+      "revId": "d4fbc6d4ad8b086bc9699c4a9ace84be1948b5cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf705ea_325a17c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-12T15:18:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e469e050_3405e233",
       "revId": "d4fbc6d4ad8b086bc9699c4a9ace84be1948b5cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
