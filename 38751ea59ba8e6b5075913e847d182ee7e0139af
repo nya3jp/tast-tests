@@ -152,6 +152,30 @@
       },
       "revId": "38751ea59ba8e6b5075913e847d182ee7e0139af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "463ec00d_e4271acb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/screenshot_is_taken.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-07-12T17:22:05Z",
+      "side": 1,
+      "message": "`WaitUntilGone` is exactly what I need! Thanks, Kyle.\n\nI did not add `WithTimeout` here because it\u0027s added globally in line 57.",
+      "parentUuid": "f8cd4ed0_3ec39f2d",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 23
+      },
+      "revId": "38751ea59ba8e6b5075913e847d182ee7e0139af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
