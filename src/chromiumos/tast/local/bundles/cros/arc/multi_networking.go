@@ -25,7 +25,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Verifies guest network setup upon physical interface change",
 		Contacts:     []string{"taoyl@google.com", "cros-networking@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
@@ -96,7 +96,7 @@ func MultiNetworking(ctx context.Context, s *testing.State) {
 
 		testing.Poll(ctx, func(ctx context.Context) error {
 			if err := arc.BootstrapCommand(ctx, "/system/bin/ip", "link", "show", ifName).Run(); err != nil {
-				return errors.Wrapf(err, "failed verifying interface %s in ARC (%s)", ifName, err)
+				return errors.Wrapf(err, "failed verifying interface %s in ARC", ifName)
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: configurationPollTimeout})
