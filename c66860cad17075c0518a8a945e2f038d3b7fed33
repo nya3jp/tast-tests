@@ -56,6 +56,30 @@
       },
       "revId": "c66860cad17075c0518a8a945e2f038d3b7fed33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eed6cf8_2e8fefec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-07-12T16:32:47Z",
+      "side": 1,
+      "message": "Avatars get changed on a slow cycle (less than once per year now). But we should be able to find an avatar and get the name if we select something like Nth avatar in the list and read the name attribute.",
+      "parentUuid": "e80d910d_6e21794d",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 40
+      },
+      "revId": "c66860cad17075c0518a8a945e2f038d3b7fed33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
