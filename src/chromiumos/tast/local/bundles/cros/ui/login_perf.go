@@ -48,8 +48,8 @@ func init() {
 			"ui.signinProfileTestExtensionManifestKey",
 			"ui.gaiaPoolDefault",
 		},
-		// Test runs login / chrome restart 60+ times.
-		Timeout: 60 * time.Minute,
+		// Test runs login / chrome restart 120+ times.
+		Timeout: 120 * time.Minute,
 		Data:    []string{"animation.html", "animation.js"},
 	})
 }
