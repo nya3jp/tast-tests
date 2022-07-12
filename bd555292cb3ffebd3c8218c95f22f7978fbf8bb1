@@ -152,6 +152,30 @@
       },
       "revId": "bd555292cb3ffebd3c8218c95f22f7978fbf8bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "805b19f6_6ef2ad3e",
+        "filename": "src/chromiumos/tast/services/cros/policy/policy.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-12T20:53:14Z",
+      "side": 1,
+      "message": "Ah, sorry I misunderstood last time. Done, using protobuf.Empty now.",
+      "parentUuid": "a8910ce1_150a699e",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "bd555292cb3ffebd3c8218c95f22f7978fbf8bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

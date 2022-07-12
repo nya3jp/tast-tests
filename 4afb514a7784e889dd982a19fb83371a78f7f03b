@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f37777_759572a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/policy_service.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-12T20:53:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c211111a_9286d1fe",
+      "revId": "4afb514a7784e889dd982a19fb83371a78f7f03b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03dd3f28_355873cf",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-12T07:04:44Z",
       "side": 1,
       "message": "You don\u0027t need a channel and goroutine here.\n\nYou start the reader,\nenroll -\u003e logs errors.\ncheck for errors",
+      "revId": "4afb514a7784e889dd982a19fb83371a78f7f03b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "424afdfd_4b9d5b73",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_no_license_enrollment.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-12T20:53:14Z",
+      "side": 1,
+      "message": "If I switch to this way then the test fails to locate the string and errors out. \n\nWouldn\u0027t it make sense to do this test the same way kiosk test does it? They essentially do the same thing, just check the logs for a specific string. https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go;rcl\u003dd7c38f24a2bc8c12743dd2d2bb76635350b0252f;l\u003d84\nIf I switch it back to the way I currently have it starts working again.",
+      "parentUuid": "03dd3f28_355873cf",
       "revId": "4afb514a7784e889dd982a19fb83371a78f7f03b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
