@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "8483d6e2b66d656d6472e47e15aeaca1a4f23009",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59addaa5_02bfbcea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-12T15:08:51Z",
+      "side": 1,
+      "message": "LGTM\nIt is enough to move the faillog right after the `defer closeBrowser(cleanupCtx)` calls, but the current placement is good as well. As I checked there are not much happening between `defer closeBrowser(cleanupCtx)` and `defer faillog` that should be included in the UI tree or on the screenshot.",
+      "revId": "8483d6e2b66d656d6472e47e15aeaca1a4f23009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
