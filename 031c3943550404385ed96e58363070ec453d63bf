@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "765981d8_fb4f7cda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_credit_card_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-07-12T13:47:09Z",
+      "side": 1,
+      "message": "I did notice this one as well but here using DoDefault didn\u0027t work so thus left to be LeftClick.",
+      "range": {
+        "startLine": 237,
+        "startChar": 6,
+        "endLine": 237,
+        "endChar": 86
+      },
+      "revId": "031c3943550404385ed96e58363070ec453d63bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
