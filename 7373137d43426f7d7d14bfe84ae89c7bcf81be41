@@ -51,6 +51,24 @@
       "parentUuid": "bfb1aed3_976bfad3",
       "revId": "7373137d43426f7d7d14bfe84ae89c7bcf81be41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9abf7295_f2804257",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1536953
+      },
+      "writtenOn": "2022-07-12T16:02:57Z",
+      "side": 1,
+      "message": "Actually when I test this locally it does open up the four tabs in a single window. I believe this is because CreateTargetArgs.NewWindow is false by default: https://github.com/mafredri/cdp/blob/main/protocol/target/command.go#L164",
+      "parentUuid": "4b36b0e1_0047dae8",
+      "revId": "7373137d43426f7d7d14bfe84ae89c7bcf81be41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
