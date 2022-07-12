@@ -45,8 +45,7 @@ func init() {
 		SoftwareDeps: []string{"reboot"},
 		// Skips atlas, nocturne, lindar, lillipup as they don't use sound_card_init to initialized their smart amps.
 		// Skip volteer2 as it's a reference design device not an official launched device.
-		// TODO(b/221702936) : remove "kano" when b/221702936 is fixed.
-		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel("atlas", "nocturne", "volteer2", "lindar", "lillipup", "helios", "kano")),
+		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel("atlas", "nocturne", "volteer2", "lindar", "lillipup", "helios")),
 		Contacts:     []string{"judyhsiao@chromium.org", "yuhsuan@chromium.org"},
 		Attr:         []string{"group:mainline"},
 		Timeout:      5 * time.Minute,
