@@ -9,10 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/feedbackapp"
@@ -90,20 +87,13 @@ func SubmitFeedbackAndCloseApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find element: ", err)
 	}
 
-	// Looking for done button and click.
+	// Clicking done button and verifying feedback window is closed.
 	doneButton := nodewith.Name("Done").Role(role.Button).Ancestor(feedbackRootNode)
-	if err := ui.DoDefault(doneButton)(ctx); err != nil {
-		s.Fatal("Failed to find done button: ", err)
-	}
 
-	// Verifying feedback window is closed.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if err := ash.WaitForApp(ctx, tconn, apps.Feedback.ID, 10*time.Second); err == nil {
-			return errors.Wrap(err, "feedback app is not closed")
-		}
-
-		return nil
-	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+	if err := uiauto.Combine("Verify feedback window is closed",
+		ui.DoDefault(doneButton),
+		ui.WaitUntilGone(feedbackRootNode),
+	)(ctx); err != nil {
 		s.Fatal("Failed to verify feedback window is closed: ", err)
 	}
 }
