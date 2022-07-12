@@ -70,6 +70,24 @@
       "parentUuid": "76e6f0ba_378ef6fc",
       "revId": "9d6cd629f47b4ce5c0bb208f431c877a11effa12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d93f42a_06370d73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-12T14:57:18Z",
+      "side": 0,
+      "message": "Done (kept the \"tar\"-related changes in this CL, and will extract the \"/home/chronos\" part into a separate one)",
+      "parentUuid": "1318bd5b_db4a326d",
+      "revId": "9d6cd629f47b4ce5c0bb208f431c877a11effa12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

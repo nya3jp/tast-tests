@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "810f4fc0_febe8278",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-12T14:57:18Z",
+      "side": 1,
+      "message": "@chingkang: I took the chance and renamed this snapshot to be explicitly marked as \"custombuild\", so that it\u0027s clear it wasn\u0027t generated on a standard image from Goldeneye. That should hopefully help avoid any confusion between \"vanilla\" OS images and the custom-built ones.\n\nPTAL - WDYT?",
+      "range": {
+        "startLine": 61,
+        "startChar": 40,
+        "endLine": 61,
+        "endChar": 60
+      },
+      "revId": "a56d1ff876046eb5eb9976a85496c450e93c73dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

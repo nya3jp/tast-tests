@@ -63,6 +63,30 @@
       },
       "revId": "1a98ce7f4d852c9834b381ce91a3d1a54c32de77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f6ca5f8_04ae393e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-12T14:57:18Z",
+      "side": 1,
+      "message": "Thanks for the context! Yeah, let\u0027s get rid of this using \"tar\" with \"--selinux\". This will actually make the test a bit more realistic, since we\u0027ll use the attributes that the old Chrome OS put on these originally, not the ones that ToT sets.",
+      "parentUuid": "54f64f07_56200885",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 2
+      },
+      "revId": "1a98ce7f4d852c9834b381ce91a3d1a54c32de77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

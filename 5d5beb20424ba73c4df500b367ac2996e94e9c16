@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c597a192_998abfda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-12T14:57:18Z",
+      "side": 1,
+      "message": "Ack - This was for changing the work directory in order to unpack the files at correct locations. I\u0027ve added a comment on this now. Please reopen if your question still holds.",
+      "parentUuid": "d815c296_860c28c7",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 14
+      },
+      "revId": "5d5beb20424ba73c4df500b367ac2996e94e9c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24269338_2daba8db",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "630877c2_44344039",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-12T14:57:18Z",
+      "side": 1,
+      "message": "Ack - This was a good question, thanks. This part will go into a separate CL now, but I like the idea.",
+      "parentUuid": "24269338_2daba8db",
+      "range": {
+        "startLine": 190,
+        "startChar": 10,
+        "endLine": 190,
+        "endChar": 22
+      },
+      "revId": "5d5beb20424ba73c4df500b367ac2996e94e9c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2701b8a8_01de215a",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-11T23:25:36Z",
       "side": 1,
       "message": "nit does not",
+      "range": {
+        "startLine": 216,
+        "startChar": 19,
+        "endLine": 216,
+        "endChar": 21
+      },
+      "revId": "5d5beb20424ba73c4df500b367ac2996e94e9c16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a775b8b_3e1621a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-12T14:57:18Z",
+      "side": 1,
+      "message": "Ack - Deleted this altogether, now that we use \"tar\" with \"--selinux\".",
+      "parentUuid": "2701b8a8_01de215a",
       "range": {
         "startLine": 216,
         "startChar": 19,
