@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1763872_e64edcd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-07-12T06:32:50Z",
+      "side": 1,
+      "message": "Shall we wait until the Fixture Failure issue (b/238567263) is resolved?",
+      "revId": "db5703be512fcd74dfe357f1c2351975657f9178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
