@@ -16,6 +16,210 @@
       "message": "lgtm. Thank you!",
       "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7361ca67_6b048e6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T12:40:44Z",
+      "side": 1,
+      "message": "LGTM % nits about comments.",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2f0e9e0_6e9e1bc5",
+        "filename": "src/chromiumos/tast/common/chameleon/audio.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T12:40:44Z",
+      "side": 1,
+      "message": "nit: line break at 80 chars.",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6295d946_7125f4bc",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T12:40:44Z",
+      "side": 1,
+      "message": "nit: Start the comment with a capital letter, add a space after //, and end the sentence with .",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39fa7963_06df45e5",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T12:40:44Z",
+      "side": 1,
+      "message": "nit: Add a dot at the end.",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ebec2fd_7ed1ae5a",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T12:40:44Z",
+      "side": 1,
+      "message": "nit: Start with a capital letter and add . at the end.",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5838ae51_db32747c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T12:40:44Z",
+      "side": 1,
+      "message": "nit: Add . at the end.",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e88d1fc_ea6c7ed3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T12:40:44Z",
+      "side": 1,
+      "message": "nit: Add . at the end.",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd6c17f_8e0dc1a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T12:40:44Z",
+      "side": 1,
+      "message": "nit: Add . at the end.",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63a43d58_4956c54f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T12:40:44Z",
+      "side": 1,
+      "message": "nit: Start with a capital letter add . at the end.",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e39119e_cac06558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T12:40:44Z",
+      "side": 1,
+      "message": "nit: Start the sentence with a capital letter, add . at the end.",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d71b4b_be7b2f24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T12:40:44Z",
+      "side": 1,
+      "message": "nit: Add . at the end.",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f9866e_fcbbf27b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-12T12:40:44Z",
+      "side": 1,
+      "message": "nit: Add . at the end.",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
