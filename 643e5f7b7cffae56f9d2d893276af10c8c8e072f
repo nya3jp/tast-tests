@@ -39,6 +39,30 @@
       },
       "revId": "643e5f7b7cffae56f9d2d893276af10c8c8e072f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d28cb3d_1f0e99d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/auto_login_bailout.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1424962
+      },
+      "writtenOn": "2022-07-13T07:40:39Z",
+      "side": 1,
+      "message": "Done - I assigned b/238841265 to you for this cleanup.",
+      "parentUuid": "abe285c4_12b3084a",
+      "range": {
+        "startLine": 72,
+        "startChar": 11,
+        "endLine": 72,
+        "endChar": 51
+      },
+      "revId": "643e5f7b7cffae56f9d2d893276af10c8c8e072f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
