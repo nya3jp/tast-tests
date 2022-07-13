@@ -94,7 +94,6 @@ func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 	if len(d.dns) > 0 {
 		confVals["dns"] = strings.Join(d.dns, ",")
 	}
-
 	var resolvedIP, resolvedHost string
 
 	if d.resolveHostToIP == nil {
