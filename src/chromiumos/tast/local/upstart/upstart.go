@@ -425,11 +425,18 @@ func WaitForJobStatus(ctx context.Context, job string, goal upstart.Goal, state 
 
 // DisableJob disables the given upstart job, which takes effect on the next
 // reboot. The rootfs must be writable when this function is called.
-func DisableJob(job string) error {
+func DisableJob(ctx context.Context, job string) error {
 	jobFile := job + ".conf"
 	currentJobPath := filepath.Join(upstartJobDir, jobFile)
 	newJobPath := filepath.Join(statefulPartitionDir, jobFile)
-	return fsutil.MoveFile(currentJobPath, newJobPath)
+	if err := fsutil.MoveFile(currentJobPath, newJobPath); err != nil {
+		return errors.Wrap(err, "failed to move file")
+	}
+	// Sync filesystem to make sure that services are disabled correctly.
+	if err := testexec.CommandContext(ctx, "sync").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to sync DUT")
+	}
+	return nil
 }
 
 // IsJobEnabled returns true if the given upstart job is enabled.
@@ -448,11 +455,18 @@ func IsJobEnabled(job string) (bool, error) {
 // EnableJob enables the given upstart job. The job must have already been
 // disabled with DisableJob before this function is called. The rootfs must be
 // writable when this function is called.
-func EnableJob(job string) error {
+func EnableJob(ctx context.Context, job string) error {
 	jobFile := job + ".conf"
 	currentJobPath := filepath.Join(statefulPartitionDir, jobFile)
 	newJobPath := filepath.Join(upstartJobDir, jobFile)
-	return fsutil.MoveFile(currentJobPath, newJobPath)
+	if err := fsutil.MoveFile(currentJobPath, newJobPath); err != nil {
+		return errors.Wrap(err, "failed to move file")
+	}
+	// Sync filesystem to make sure that services are enabled correctly.
+	if err := testexec.CommandContext(ctx, "sync").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to sync DUT")
+	}
+	return nil
 }
 
 // LogPriority represents a logging priority of upstart.
