@@ -155,10 +155,12 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		}
 
 		appName = "InstallAppWithAppListSortedMockApp"
+		const pkgName = "org.chromium.arc.testapp.installappwithapplistsorted"
 		appID, err = ash.WaitForChromeAppByNameInstalled(ctx, tconn, appName, 1*time.Minute)
 		if err != nil {
 			s.Fatalf("Failed to wait until %s(%s) is installed: %v", appName, appID, err)
 		}
+		defer uninstallArcApp(cleanupCtx, tconn, a, pkgName, appID)
 	} else {
 		// Install an app from the Chrome webstore.
 		cwsapp := newCwsApp(cr, tconn)
@@ -166,10 +168,11 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		if err := cwsapp.install(ctx); err != nil {
 			s.Fatal("Failed to install an app from Chrome Web Store: ", err)
 		}
+		defer uninstallAppViaSettings(ctx, cr, tconn, appName, appID)
+
 		appName = cwsapp.name
 		appID = cwsapp.id
 	}
-	defer uninstallAppViaSettings(ctx, cr, tconn, appName, appID)
 
 	if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
 		s.Fatal("Failed to open launcher: ", err)
@@ -309,6 +312,20 @@ func uninstallAppViaSettings(ctx context.Context, cr *chrome.Chrome, tconn *chro
 	}()
 	testing.ContextLogf(ctx, "Uninstall app: %q", name)
 	return ossettings.UninstallApp(ctx, tconn, cr, name, id)
+}
+
+// uninstallArcApp attempts to uninstall an app with the ARC suite if it is installed.
+func uninstallArcApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, pkgName, id string) error {
+	isInstalled, err := ash.ChromeAppInstalled(ctx, tconn, id)
+	if err != nil {
+		return errors.Wrap(err, "failed to check app's existance")
+	}
+
+	if !isInstalled {
+		testing.ContextLogf(ctx, "App %q is already uninstalled", pkgName)
+		return nil
+	}
+	return a.Uninstall(ctx, pkgName)
 }
 
 // verifyLeadingRecentApps confirms that the leading apps in the recent app section appear in the same order as orderedAppsNames.
