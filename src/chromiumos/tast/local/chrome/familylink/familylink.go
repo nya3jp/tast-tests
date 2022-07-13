@@ -249,54 +249,60 @@ func CreateUsageTimeLimitPolicy() *policy.UsageTimeLimit {
 
 // VerifyUserSignedIntoBrowserAsChild creates and opens the browser, then checks that the provided email is signed in and recognized as a child user.
 func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, bt browser.Type, email, outDir string) (err error) {
-	testing.ContextLog(ctx, "Verifying user is signed in and recognized as a child in browser")
+	testing.ContextLog(ctx, "Verifying user is signed in as a child in the browser")
 
-	// Reserve ten seconds for cleanup.
+	// Reserve time for cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Set up browser, and open a new tab window.
-	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, bt, chrome.NewTabURL)
+	// Set up browser and open a new tab window.
+	testing.ContextLog(ctx, "Opening browser with family link internals page")
+	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, bt, "chrome://family-link-user-internals/")
 	if err != nil {
 		return errors.Wrap(err, "failed to set up browser")
 	}
 	defer closeBrowser(cleanupCtx)
 	defer conn.Close()
 
-	// Check for signed in user.
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return err != nil }, cr, "ui_tree")
 
-	if err := ui.WaitUntilExists(nodewith.NameContaining(strings.ToLower(email)).NameStartingWith("Google Account:"))(ctx); err != nil {
-		return errors.Wrapf(err, "user with email %s is not logged into browser", email)
-	}
-
 	// Parse family link internals page.
-	if err := conn.Navigate(ctx, "chrome://family-link-user-internals"); err != nil {
-		return errors.Wrap(err, "failed to navigate to family link user internals")
-	}
-	rows := nodewith.Role(role.LayoutTableRow)
-	childCell := nodewith.Role(role.LayoutTableCell).Name("Child")
-	if err := ui.WaitUntilExists(childCell)(ctx); err != nil {
+	testing.ContextLog(ctx, "Parsing family link internals page")
+	rows := nodewith.Role(role.LayoutTableRow).Ancestor(nodewith.Role(role.WebView))
+	if err := ui.WaitUntilExists(rows.First())(ctx); err != nil {
 		return errors.Wrap(err, "could not load family link user internals table")
 	}
 	nodes, err := ui.NodesInfo(ctx, rows)
 	if err != nil {
 		return errors.Wrap(err, "failed to retrieve nodes info for rows")
 	}
-
-	// Family link user internals has a table with unnamed rows containing labels
-	// and values. To find the correct row, we must iterate through all rows, check
-	// that it contains a cell with the label "Child", and check that the
-	// row also contains the correct value. It is expected for the label
-	// to only occur once in the table.
 	foundIsChild := false
+	foundEmail := false
+	// Family link user internals has a table with unnamed rows containing labels
+	// and values. To find the correct rows, we must iterate through all rows, check
+	// that it contains a cell with the label we are looking for, and check that the
+	// row also contains the correct value. It is expected for the labels of interest
+	// to only occur once in the table.
 	for i := range nodes {
 		row := rows.Nth(i)
+		// If this is the row labeled "Account", check value matches user email.
+		accountCell := nodewith.Role(role.LayoutTableCell).Name("Account").Ancestor(row)
+		emailValueCell := nodewith.Role(role.LayoutTableCell).Name(strings.ToLower(email)).Ancestor(row)
+		if err := ui.Exists(accountCell)(ctx); err == nil {
+			if foundEmail {
+				return errors.New("account row should only occur once")
+			}
+			foundEmail = true
+			if valueErr := ui.Exists(emailValueCell)(ctx); valueErr != nil {
+				return errors.Wrapf(valueErr, "user with email %s is not logged into browser", email)
+			}
+		}
 		// If this is the row labeled "Child", check value is true.
+		childCell := nodewith.Role(role.LayoutTableCell).Name("Child").Ancestor(row)
 		trueCell := nodewith.Role(role.LayoutTableCell).Name("true").Ancestor(row)
-		if err := ui.Exists(childCell.Ancestor(row))(ctx); err == nil {
+		if err := ui.Exists(childCell)(ctx); err == nil {
 			if foundIsChild {
 				return errors.New("child row should only occur once")
 			}
@@ -308,6 +314,9 @@ func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, 
 	}
 	if !foundIsChild {
 		return errors.New("could not find child row in family link user internals table")
+	}
+	if !foundEmail {
+		return errors.New("could not find account row in family link user internals table")
 	}
 	return nil
 }
@@ -341,11 +350,13 @@ func NavigateExtensionApprovalFlow(ctx context.Context, cr *chrome.Chrome, tconn
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 
 	// Install extension parent permission flow.
-	testing.ContextLog(ctx, "Clicking add extension")
+	testing.ContextLog(ctx, "Finding button that adds the extension")
 	addButton := nodewith.Name("Add to Chrome").Role(role.Button).First()
 	if err := ui.WaitUntilExists(addButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to load page")
 	}
+
+	testing.ContextLog(ctx, "Clicking button that adds the extension")
 	if err := ui.LeftClick(addButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click add extension")
 	}
