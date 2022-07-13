@@ -22,6 +22,30 @@
       },
       "revId": "9a7cbfd62431faaeca361be3f3d4198450867bca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a5a1db_8d77e812",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1340192
+      },
+      "writtenOn": "2022-07-13T00:03:52Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong opinion but maybe perf_qual is ok because\n1) crrev.com/c/3748553 got +2.\n2) We already have `qual` suite such as infra_qual and memory_qual.",
+      "parentUuid": "0746ecbb_2a68798b",
+      "range": {
+        "startLine": 48,
+        "startChar": 65,
+        "endLine": 48,
+        "endChar": 87
+      },
+      "revId": "9a7cbfd62431faaeca361be3f3d4198450867bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
