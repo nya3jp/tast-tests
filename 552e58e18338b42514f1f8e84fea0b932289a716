@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8e7db80_abecf1e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-13T01:51:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c990045d_1b9d29fe",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 80
+      },
+      "revId": "552e58e18338b42514f1f8e84fea0b932289a716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f9e00a6_f562ca60",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-12T20:27:35Z",
       "side": 1,
       "message": "nit: I suggest writing it this way (and nixing the above string constant):\n\tecryptfsVaultDir :\u003d fmt.Sprintf(\"/home/.shadow/%s/vault\", sanitizedUsername)\n\tif _, err :\u003d os.Stat(ecryptfsVaultDir); err !\u003d nil {",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 40
+      },
+      "revId": "552e58e18338b42514f1f8e84fea0b932289a716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f06d6f90_f99dba21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-13T01:51:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f9e00a6_f562ca60",
       "range": {
         "startLine": 319,
         "startChar": 0,
