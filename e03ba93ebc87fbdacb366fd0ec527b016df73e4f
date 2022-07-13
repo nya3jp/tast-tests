@@ -117,6 +117,24 @@
       "parentUuid": "6056a4e9_30c3c326",
       "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed115474_6c23c4ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-07-13T18:58:24Z",
+      "side": 1,
+      "message": "Acked, thanks for trying! In that case I\u0027m fine with zooming it with key presses.",
+      "parentUuid": "59379a2d_6d0c417c",
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
