@@ -16,6 +16,23 @@
       "message": "Thanks for the reviews! +tast-owner for tast review",
       "revId": "787c9a87457f859df3c61a11caa0eba13a7af6b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c4d440_82f41a44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-13T01:09:05Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "787c9a87457f859df3c61a11caa0eba13a7af6b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
