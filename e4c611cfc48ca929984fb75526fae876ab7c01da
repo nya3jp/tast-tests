@@ -33,6 +33,24 @@
       "message": "pls keep copyright year.",
       "revId": "e4c611cfc48ca929984fb75526fae876ab7c01da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a7887ee_d8526f31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hammerd/triggered_on_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1302705
+      },
+      "writtenOn": "2022-07-13T16:36:59Z",
+      "side": 1,
+      "message": "Done, thanks!",
+      "parentUuid": "1fa255fc_6e7fb026",
+      "revId": "e4c611cfc48ca929984fb75526fae876ab7c01da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
