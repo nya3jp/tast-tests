@@ -87,6 +87,24 @@
       "parentUuid": "ecef6e77_304a6b38",
       "revId": "fe7b258caaa6b80a3b388f3f5697a19c0c4a51ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23be2e64_3f4f15d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-13T15:57:30Z",
+      "side": 1,
+      "message": "~0.2% sounds like too high to promote, unfortunately. We\u0027ll hit the issue roughly once every day or two.",
+      "parentUuid": "22b49d97_487d1b5c",
+      "revId": "fe7b258caaa6b80a3b388f3f5697a19c0c4a51ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
