@@ -157,6 +157,24 @@
       "parentUuid": "fad8cd0f_b2979851",
       "revId": "4706d2db62d64d19e50d313dd22b610419762844",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acf5adac_53df3f88",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/chaps_stress.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1314760
+      },
+      "writtenOn": "2022-07-13T08:35:12Z",
+      "side": 1,
+      "message": "I tried (see patchset 5) and it seems that s.OutDir() is in /tmp, it looks like this:\n/tmp/tast/results/\u003ctime\u003e/tast_out.\u003ctime and numbers\u003e/hwsec.ChapsStress/\n\nIt\u0027s lost during reboot and thus unsuitable for this test\u0027s purpose.",
+      "parentUuid": "25be733f_e9dc18cc",
+      "revId": "4706d2db62d64d19e50d313dd22b610419762844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
