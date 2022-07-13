@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81c339ac_8a97baa1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-07-13T23:30:38Z",
+      "side": 1,
+      "message": "Hey Galen!\nI would like to bring back your previous solution for verifying that child is signed into the browser. I tested locally and lacros variant is working as expected now. \nThis obviously does not resolve the flakes, but it will make it easier for me to further debug thanks to having less possible points of failure.\n\nPTAL!",
+      "revId": "2b026e286cd229f0be6d9d3fa7e35b23bdd2e148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
