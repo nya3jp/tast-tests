@@ -11,6 +11,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.print.PrintAttributes;
 import android.print.PrintManager;
+import android.view.View;
 
 /**
  * Main activity for the ArcPrintTest app.
@@ -26,7 +27,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.main_activity);
+    }
 
+
+    public void onPrintButtonClick(View v) {
         // Set the job name, which will be displayed in the print queue.
         String jobName = getString(R.string.app_name) + " Document";
 
