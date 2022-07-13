@@ -18,6 +18,9 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// LacrosFirstRunPath is the path to `First Run` sentinel file in Lacros profile dir.
+const LacrosFirstRunPath = "/home/chronos/user/lacros/First Run"
+
 // Run migrates user profile from Ash to Lacros and wait until migration is marked as completed by Ash.
 // Once the migration is completed, it will relaunch Ash Chrome and returns the new `chrome.Chrome` instance.
 func Run(ctx context.Context, opts []lacrosfixt.Option) (*chrome.Chrome, error) {
