@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9c3d7cd_31a5a595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/fixture/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-13T09:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "109963d2_76821372",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 1
+      },
+      "revId": "fc23cdf42d633f7acc335b5e06a62a4048c492fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4d24910_ad01088c",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-13T07:31:38Z",
       "side": 1,
       "message": "JP?",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 32
+      },
+      "revId": "fc23cdf42d633f7acc335b5e06a62a4048c492fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb57ba47_fa7f2266",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_help_language.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-13T09:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4d24910_ad01088c",
       "range": {
         "startLine": 36,
         "startChar": 24,
