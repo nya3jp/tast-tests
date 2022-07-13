@@ -12,6 +12,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 
 	"chromiumos/tast/common/servo"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
@@ -41,7 +42,7 @@ func init() {
 		Fixture:      fixture.NormalMode,
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.Battery()),
-		Timeout:      15 * time.Minute,
+		Timeout:      20 * time.Minute,
 		Params: []testing.Param{{
 			Name:              "chromeslate",
 			ExtraHardwareDeps: hwdep.D(hwdep.FormFactor(hwdep.Chromeslate)),
@@ -136,6 +137,13 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 	}
 
 	openCCD := func(ctx context.Context) error {
+		// For debugging purposes, explicitly log servo type.
+		servoType, err := h.Servo.GetServoType(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to find servo type")
+		}
+		s.Logf("Servo type: %s", servoType)
+
 		if hasCCD, err := h.Servo.HasCCD(ctx); err != nil {
 			return errors.Wrap(err, "while checking if servo has a CCD connection")
 		} else if hasCCD {
@@ -253,11 +261,49 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
+	// To prevent leaving DUT in an offline state, open lid and perform a cold reset at the end of test.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Minute)
+	defer cancel()
+
+	args := s.Param().(*testArgsForECWakeOnCharge)
+	defer func(ctx context.Context, args *testArgsForECWakeOnCharge) {
+		if args.hasLid {
+			if err := h.Servo.OpenLid(ctx); err != nil {
+				s.Fatal("Failed to set lid state: ", err)
+			}
+			s.Log("Waiting for S0 powerstate")
+			if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "S0"); err != nil {
+				s.Fatal("Failed to wait for S0 powerstate: ", err)
+			}
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				lidState, err := h.Servo.LidOpenState(ctx)
+				if err != nil {
+					return errors.Wrap(err, "failed to check the lid state")
+				}
+				if lidState != string(servo.LidOpenYes) {
+					return errors.Errorf("expected: %q got: %q", servo.LidOpenYes, lidState)
+				}
+				return nil
+			}, &testing.PollOptions{Timeout: 1 * time.Minute, Interval: 1 * time.Second}); err != nil {
+				s.Fatal("Failed to check for lid: ", err)
+			}
+		}
+		s.Log("Cold resetting DUT at the end of test")
+		if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
+			s.Fatal("Failed to cold reset DUT at the end of test: ", err)
+		}
+		s.Log("Waiting for reconnection to DUT")
+		if err := h.WaitConnect(ctx); err != nil {
+			s.Fatal("Unable to reconnect to DUT: ", err)
+		}
+	}(cleanupCtx, args)
+
+	// Monitor servo connection in the background, and attempt to reconnect if the connection drops.
 	done := make(chan struct{})
 	defer func() {
 		done <- struct{}{}
 	}()
-
 	go func() {
 	monitorServo:
 		for {
@@ -278,15 +324,6 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			}
 		}
 	}()
-
-	// To prevent leaving DUT in an offline state, perform a cold reset at the end of test.
-	defer func() {
-		s.Log("Cold resetting DUT at the end of test")
-		if err := h.Servo.SetPowerState(ctx, servo.PowerStateReset); err != nil {
-			s.Fatal("Failed to cold reset DUT at the end of test: ", err)
-		}
-	}()
-	args := s.Param().(*testArgsForECWakeOnCharge)
 	for _, tc := range []struct {
 		lidOpen string
 	}{
@@ -473,19 +510,6 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			if lidStateFinal != tc.lidOpen {
 				s.Fatalf("DUT's lid_open state has changed from %s to %s", tc.lidOpen, lidStateFinal)
 			}
-		}
-	}
-
-	if args.hasLid {
-		if err := h.Servo.OpenLid(ctx); err != nil {
-			s.Fatal("Failed to set lid state: ", err)
-		}
-		s.Log("Waiting for S0 powerstate")
-		if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "S0"); err != nil {
-			s.Fatal("Failed to wait for S0 powerstate: ", err)
-		}
-		if err := h.WaitConnect(ctx); err != nil {
-			s.Fatal("Failed to reconnect to DUT after opening lid: ", err)
 		}
 	}
 }
