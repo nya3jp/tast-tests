@@ -28,6 +28,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      chrome.GAIALoginTimeout + 3*time.Minute,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 	})
 }
@@ -35,7 +36,6 @@ func init() {
 func GestureNavigation(ctx context.Context, s *testing.State) {
 	var (
 		acceptAndContinue = nodewith.Name("Accept and continue").Role(role.Button)
-		assistantPage     = nodewith.ClassName("assistant-optin-flow")
 		getStarted        = nodewith.Name("Get started").Role(role.Button)
 		next              = nodewith.Name("Next").Role(role.Button)
 		noThanks          = nodewith.Name("No thanks").Role(role.Button)
@@ -44,6 +44,7 @@ func GestureNavigation(ctx context.Context, s *testing.State) {
 
 	cr, err := chrome.New(ctx,
 		chrome.DontSkipOOBEAfterLogin(),
+		chrome.DisableFeatures("OobeConsolidatedConsent", "EnableOobeThemeSelection"),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ExtraArgs("--force-tablet-mode=touch_view"), // Tablet mode is needed to trigger gesture screens
 	)
@@ -59,23 +60,65 @@ func GestureNavigation(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 	ui := uiauto.New(tconn).WithTimeout(60 * time.Second)
 
-	if err := uiauto.Combine("Go through the OOBE flow UI after the GAIA login",
-		uiauto.IfSuccessThen(ui.WaitUntilExists(acceptAndContinue), ui.LeftClick(acceptAndContinue)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(skip), ui.LeftClick(skip)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(skip), ui.LeftClick(skip)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(assistantPage), ui.LeftClick(noThanks)),
-	)(ctx); err != nil {
-		s.Fatal("Failed to test oobe Arc: ", err)
+	// Accept terms of service.
+	if err := ui.WaitUntilExists(acceptAndContinue)(ctx); err != nil {
+		s.Fatal("Failed to wait until sync consent shown: ", err)
+	}
+	if err := ui.LeftClick(acceptAndContinue)(ctx); err != nil {
+		s.Fatal("Failed to click on accept and continue: ", err)
+	}
+	// Skip fingerprint setup screen.
+	if err := ui.WaitUntilExists(skip)(ctx); err != nil {
+		s.Fatal("Failed to wait until fingerprint screen shown: ", err)
+	}
+	if err := ui.LeftClick(skip)(ctx); err != nil {
+		s.Fatal("Failed to click on skip: ", err)
+	}
+	// Skip pin setup screen.
+	if err := ui.WaitUntilExists(skip)(ctx); err != nil {
+		s.Fatal("Failed to wait until pin setup shown: ", err)
+	}
+	if err := ui.LeftClick(skip)(ctx); err != nil {
+		s.Fatal("Failed to click on skip: ", err)
+	}
+	// Skip assistant flow.
+	if err := ui.WaitUntilExists(noThanks)(ctx); err != nil {
+		s.Fatal("Failed to wait until hey google screen shown: ", err)
+	}
+	if err := ui.LeftClickUntil(noThanks, ui.Gone(noThanks))(ctx); err != nil {
+		s.Fatal("Failed to click on no thanks: ", err)
 	}
 
-	if err := uiauto.Combine("Go through the gesture flow",
-		uiauto.IfSuccessThen(ui.WaitUntilExists(getStarted), ui.LeftClick(getStarted)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(next), ui.LeftClick(next)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(next), ui.LeftClick(next)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(next), ui.LeftClick(next)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(getStarted), ui.LeftClick(getStarted)),
-	)(ctx); err != nil {
-		s.Fatal("Failed to test oobe Arc tablet flow: ", err)
+	// Gesture navigation flow.
+	if err := ui.WaitUntilExists(getStarted)(ctx); err != nil {
+		s.Fatal("Failed to wait until gesture navigation main screen shown: ", err)
+	}
+	if err := ui.LeftClick(getStarted)(ctx); err != nil {
+		s.Fatal("Failed to click on get started: ", err)
+	}
+	if err := ui.WaitUntilExists(next)(ctx); err != nil {
+		s.Fatal("Failed to wait until go home shown: ", err)
+	}
+	if err := ui.LeftClick(next)(ctx); err != nil {
+		s.Fatal("Failed to click on next: ", err)
+	}
+	if err := ui.WaitUntilExists(next)(ctx); err != nil {
+		s.Fatal("Failed to wait until swotch to another app shown: ", err)
+	}
+	if err := ui.LeftClick(next)(ctx); err != nil {
+		s.Fatal("Failed to click on next: ", err)
+	}
+	if err := ui.WaitUntilExists(next)(ctx); err != nil {
+		s.Fatal("Failed to wait until go back shown: ", err)
+	}
+	if err := ui.LeftClick(next)(ctx); err != nil {
+		s.Fatal("Failed to click on next: ", err)
+	}
+	// Pass marketing opt in screen.
+	if err := ui.WaitUntilExists(getStarted)(ctx); err != nil {
+		s.Fatal("Failed to wait until marketing opt in shown: ", err)
+	}
+	if err := ui.LeftClick(getStarted)(ctx); err != nil {
+		s.Fatal("Failed to click on get started: ", err)
 	}
 }
