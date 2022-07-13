@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de161400_5e59ce5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-07-13T22:08:27Z",
+      "side": 1,
+      "message": "To fix code yellow test failures, remove p99 latency as test pass threshold for now until an exact scenario to properly define a limit.",
+      "revId": "c60068ff8352168f07862328697b7d503b0cd877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
