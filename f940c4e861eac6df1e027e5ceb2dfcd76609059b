@@ -51,6 +51,24 @@
       "message": "I see in some cases you dropped the individual owner. Since (I assume) these are the tests which aren\u0027t ready for handover let\u0027s keep the individual owner if they don\u0027t report up to dca@ (if they do report to dca@ or there\u0027s no owner besides cros-containers-dev then might as well set it to clumptini+oncall since we by-default own them).\n\nMight be good to replace jinrongwu@, zubinpratap@ and ashpakov@ with alvinjia@ since all the former are out or gone but check with him first how EngProd want to handle that.",
       "revId": "f940c4e861eac6df1e027e5ceb2dfcd76609059b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ea915e7_38b9fe82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-13T02:55:56Z",
+      "side": 1,
+      "message": "SGTM, feel free to add me there for these tests that are not ready.",
+      "parentUuid": "aeea007e_61b3b96d",
+      "revId": "f940c4e861eac6df1e027e5ceb2dfcd76609059b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
