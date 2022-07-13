@@ -22,6 +22,30 @@
       },
       "revId": "fc583b61d8c2a6b1b503d1b5ec99b0af2a212e2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a200b001_309f30ab",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-13T01:19:53Z",
+      "side": 1,
+      "message": "Interesting... this came from a git rebase on main. Going to remove it if it\u0027s considering this an addition. Thanks for the catch!",
+      "parentUuid": "847a9e3e_bdc16162",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 645,
+        "endChar": 0
+      },
+      "revId": "fc583b61d8c2a6b1b503d1b5ec99b0af2a212e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
