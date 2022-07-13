@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c44145_dff698c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-13T03:04:55Z",
+      "side": 1,
+      "message": "there\u0027s https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3755610 in cq",
+      "revId": "f148e06187c3c43e6b6f6669c742fd2136e75f06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
