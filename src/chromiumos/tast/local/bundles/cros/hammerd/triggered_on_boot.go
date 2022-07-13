@@ -35,13 +35,15 @@ func TriggeredOnBoot(ctx context.Context, s *testing.State) {
 	var logs []string
 	var logFound = false
 
-	// Getting the full hammerd log for the current boot while considering that
-	// the log may have been rotated e.g. hammerd.log => hammerd.1.log.
+	// The system rotates the logs on a daily basis (i.e. renaming xxx.log to
+	// xxx.1.log and so on) and keeps them for a week at most. In other words,
+	// it's possible that the full log is split into different log files.
+	// To address that, We need to start from the eldest log and concatenate them
+	// together.
 	//
 	// Note that the syslog package is not used here because it does not provide
 	// enough support to achieve what we need here, and people prefer to keep
-	// the syslog reader simple unless there's a good solution that can be
-	// applied to all kinds of syslogs.
+	// the syslog reader simple and general to support all kinds of syslogs.
 	//
 	// Duplicating the full log of the current boot into one single file may help
 	// in this case, but unfortunately rsyslog doesn't seem to have the
@@ -83,16 +85,19 @@ func TriggeredOnBoot(ctx context.Context, s *testing.State) {
 		}
 	}
 	if !logFound {
-		s.Fatal("Cannot find available hammerd log to validate")
+		s.Fatal("Failed to locate hammerd-at-boot log. ",
+			"The system may have failed to invoke Hammerd upstart job")
 	}
 
 	// Look for patterns that indicate Hammerd failures.
+	// Note that hwdep ensures the base is currently attached, but that doesn't
+	// mean the base was also attached when the system booted.
 	for _, line := range logs {
 		if strings.Contains(line, "Base not connected, skipping hammerd at boot") {
-			s.Fatal("Base not connected, Hammerd was not triggered on boot")
+			s.Fatal("Base is currently attached, but Hammerd didn't find it at boot")
 		}
 		if strings.Contains(line, "Send the DBus signal: BaseFirmwareUpdateFailed") {
-			s.Fatal("Hammerd failed to update base firmware")
+			s.Fatal("Hammerd failed to update base firmware at boot")
 		}
 	}
 
@@ -110,6 +115,6 @@ func TriggeredOnBoot(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to read the power control: ", powerControlFile)
 	} else if control := strings.TrimSuffix(string(buf), "\n"); control != "auto" {
-		s.Fatal("Autosuspend is not enabled on hammer port: ", control)
+		s.Fatal("Autosuspend is not enabled on the detachable base: ", control)
 	}
 }
