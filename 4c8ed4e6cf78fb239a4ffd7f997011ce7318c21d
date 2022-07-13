@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c10484_d91edd64",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-13T09:19:23Z",
+      "side": 1,
+      "message": "`interworking_select` uses ANQP queries, but not necessarily the same as `fetch_anqp`. Actually the ANQP request is a generic way to request attribute values from the AP. `fetch_anqp` asks for a \"default\" set of attributes but `interworking_select` asks for more as it requires specific hs20 attributes to perform the match.",
+      "parentUuid": "117c1f63_e4a9fb5f",
+      "revId": "4c8ed4e6cf78fb239a4ffd7f997011ce7318c21d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5998e06c_20fedf4a",

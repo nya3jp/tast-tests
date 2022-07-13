@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "daf0dc02_5266473b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-13T09:19:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c2d5947_00b0f1c3",
+      "revId": "06db6a8744c6486b66036d2159b413323aa14ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ccb1402_b8f790f5",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-12T20:35:30Z",
       "side": 1,
       "message": "are these always expected to be in the same order?",
+      "revId": "06db6a8744c6486b66036d2159b413323aa14ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b608ffef_636e589e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-13T09:19:23Z",
+      "side": 1,
+      "message": "In the context of the test yes, because we use hostap implementation on both sides.",
+      "parentUuid": "9ccb1402_b8f790f5",
       "revId": "06db6a8744c6486b66036d2159b413323aa14ff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c35673_abd75bf1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-13T09:19:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "668a64ae_7edcfef3",
+      "revId": "06db6a8744c6486b66036d2159b413323aa14ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e76e5d1_7c945bee",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-07-12T20:35:30Z",
       "side": 1,
       "message": "rm",
+      "revId": "06db6a8744c6486b66036d2159b413323aa14ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26469da7_4a2bda5f",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-13T09:19:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e76e5d1_7c945bee",
       "revId": "06db6a8744c6486b66036d2159b413323aa14ff3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

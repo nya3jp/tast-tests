@@ -561,6 +561,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cedafd25_01cdac8c",
+        "filename": "src/chromiumos/tast/remote/wificell/hostapd/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-13T09:19:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "408dfec9_5bf6bbc6",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 10
+      },
+      "revId": "ea2734c7202d0b7211493ec51b4b3b9e413b2cda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a55cb8d_5cf1c872",
