@@ -562,12 +562,16 @@ public class Camera2VideoFragment extends Fragment {
                         public void onConfigured(CameraCaptureSession cameraCaptureSession) {
                             mPreviewSession = cameraCaptureSession;
                             updatePreview();
-                            mCameraOpenCloseLock.release();
+                            if (mCameraOpenCloseLock.availablePermits() == 0) {
+                                mCameraOpenCloseLock.release();
+                            }
                         }
 
                         @Override
                         public void onConfigureFailed(CameraCaptureSession cameraCaptureSession) {
-                            mCameraOpenCloseLock.release();
+                            if (mCameraOpenCloseLock.availablePermits() == 0) {
+                                mCameraOpenCloseLock.release();
+                            }
                             throw new RuntimeException("Failed to configure capture session.");
                         }
                     },
