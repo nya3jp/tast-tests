@@ -205,7 +205,10 @@ func LaunchInMode(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn
 	}
 
 	var pc *chrome.Conn
-	pc, err = cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
+	// Temporarily changed to demonstrate in cl. chrome://newtab/ doesn't seem to exist in kiosk mode, and there is only one "tab".
+	// Hence we can just match all pages.
+	// 	pc, err = cr.NewConnForTarget(ctx, chrome.MatchTargetURL("chrome://newtab/"))
+	pc, err = cr.NewConnForTarget(ctx, chrome.MatchAllPages())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to find new tab")
 	}
