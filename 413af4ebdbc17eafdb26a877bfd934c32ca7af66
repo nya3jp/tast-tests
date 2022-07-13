@@ -16,6 +16,24 @@
       "message": "the name looks weird. maybe swap with exitFullscreenText?",
       "revId": "413af4ebdbc17eafdb26a877bfd934c32ca7af66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07321557_9a62bfc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/youtube_stream_hdmi_display.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-13T07:07:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa34a4d9_19c5de3f",
+      "revId": "413af4ebdbc17eafdb26a877bfd934c32ca7af66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
