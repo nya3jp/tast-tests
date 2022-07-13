@@ -78,8 +78,8 @@ type MemoryInfo struct {
 // TMEInfo mirrors the TMEInfo JSON field.
 type TMEInfo struct {
 	MemoryEncryptionState     string `json:"encryptionState"`
-	MaxKeys                   int64  `json:"maxKeys"`
-	KeyLength                 int64  `json:"keyLength"`
+	MaxKeys                   string `json:"maxKeys"`
+	KeyLength                 string `json:"keyLength"`
 	MemoryEncryptionAlgorithm string `json:"encryptionAlgorithm"`
 }
 
@@ -105,10 +105,10 @@ func PruneEvents(ctx context.Context, events []InputEvent, clientID string, test
 		if t.After(testStartTime) {
 			prunedEvents = append(prunedEvents, event)
 			if j, err := json.Marshal(event); err != nil {
-				testing.ContextLog(ctx, "Found a valid event ", string(j))
-			} else {
+				testing.ContextLog(ctx, "Failed to marshall event: ", err)
 				return []InputEvent{}, errors.Wrap(err, "failed to marshal event")
 			}
+			testing.ContextLog(ctx, "Found a valid event ", string(j))
 		}
 	}
 

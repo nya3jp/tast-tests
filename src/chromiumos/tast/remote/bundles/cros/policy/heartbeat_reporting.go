@@ -56,10 +56,9 @@ func validateHeartbeatEvents(ctx context.Context, events []reportingutil.InputEv
 			t := time.UnixMicro(us)
 			if t.After(testStartTime) {
 				if j, err := json.Marshal(event); err != nil {
-					testing.ContextLog(ctx, "Found a valid event: ", string(j))
-				} else {
 					return true, errors.Wrap(err, "failed to marshal event")
 				}
+				testing.ContextLog(ctx, "Found a valid event: ", string(j))
 				return true, nil
 			}
 		}

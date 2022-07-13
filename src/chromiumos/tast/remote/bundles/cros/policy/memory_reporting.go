@@ -6,6 +6,7 @@ package policy
 
 import (
 	"context"
+	"strconv"
 	"strings"
 	"time"
 
@@ -118,11 +119,15 @@ func tmeInfo(event reportingutil.InputEvent) *reportingutil.TMEInfo {
 
 func validateTMEInfo(ctx context.Context, tmeInfo reportingutil.TMEInfo, vProSpecific bool) error {
 	if vProSpecific {
-		if tmeInfo.KeyLength <= 0 {
-			return errors.Errorf("failed to verify key length: %v", tmeInfo.KeyLength)
+		if keyLength, err := strconv.ParseInt(tmeInfo.KeyLength, 10, 64); err != nil {
+			return errors.Wrap(err, "failed to parse key length")
+		} else if keyLength <= 0 {
+			return errors.Errorf("failed to verify key length: %v", keyLength)
 		}
-		if tmeInfo.MaxKeys <= 0 {
-			return errors.Errorf("failed to verify max Keys: %v", tmeInfo.MaxKeys)
+		if maxKeys, err := strconv.ParseInt(tmeInfo.MaxKeys, 10, 64); err != nil {
+			return errors.Wrap(err, "failed to parse max keys")
+		} else if maxKeys <= 0 {
+			return errors.Errorf("failed to verify max keys: %v", maxKeys)
 		}
 		if tmeInfo.MemoryEncryptionState == "UNSPECIFIED_MEMORY_ENCRYPTION_STATE" {
 			return errors.Errorf("failed to verify encryption state: %v", tmeInfo.MemoryEncryptionState)
@@ -131,11 +136,12 @@ func validateTMEInfo(ctx context.Context, tmeInfo reportingutil.TMEInfo, vProSpe
 			return errors.Errorf("failed to verify encryption algorithm: %v", tmeInfo.MemoryEncryptionAlgorithm)
 		}
 	} else {
-		if tmeInfo.KeyLength != 0 {
+		// For nonVpro cases, key length and max keys should be unset.
+		if tmeInfo.KeyLength != "" {
 			return errors.Errorf("failed to verify key length: %v", tmeInfo.KeyLength)
 		}
-		if tmeInfo.MaxKeys != 0 {
-			return errors.Errorf("failed to verify max Keys: %v", tmeInfo.MaxKeys)
+		if tmeInfo.MaxKeys != "" {
+			return errors.Errorf("failed to verify max keys: %v", tmeInfo.MaxKeys)
 		}
 		if tmeInfo.MemoryEncryptionState != "MEMORY_ENCRYPTION_STATE_DISABLED" {
 			return errors.Errorf("failed to verify encryption state: %v", tmeInfo.MemoryEncryptionState)
@@ -155,7 +161,7 @@ func MemoryReporting(ctx context.Context, s *testing.State) {
 	APIKey := s.RequiredVar(reportingutil.EventsAPIKeyPath)
 
 	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 			s.Error("Failed to reset TPM after test: ", err)
 		}
 	}(ctx)
@@ -233,7 +239,7 @@ func MemoryReporting(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}, &testing.PollOptions{
-		Timeout:  1 * time.Minute,
+		Timeout:  3 * time.Minute,
 		Interval: 30 * time.Second,
 	}); err != nil {
 		s.Errorf("Failed to validate heartbeat event: %v:", err)
