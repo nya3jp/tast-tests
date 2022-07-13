@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f8c48e_52537cac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-13T17:01:49Z",
+      "side": 1,
+      "message": "I have two comments. Please take a look. BTW, you should not have a CR+1 for yourself.\n\nThanks.\n",
+      "revId": "07d62cce440ec51c89cd03f3fbebfcf3c6eb10ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c09a7f49_d9b505ec",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_body_ab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-13T17:01:49Z",
+      "side": 1,
+      "message": "I think ioutil.TempFile is going to be deprecated in Go 1.17. Maybe it is better to use os.CreateTemp.",
+      "revId": "07d62cce440ec51c89cd03f3fbebfcf3c6eb10ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f4dc77d_cf15aac6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_body_ab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-13T17:01:49Z",
+      "side": 1,
+      "message": "How about\n\ndefer func() {\n    FWBodyADst.Close()\n    os.Remove(FWBodyADst.Name())\n}()",
+      "revId": "07d62cce440ec51c89cd03f3fbebfcf3c6eb10ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ae90cb_eb96ecc7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/utils/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-13T17:01:49Z",
+      "side": 1,
+      "message": "nit: Are those ContextLog necessary in this function? I think error message in are uniques enough to tell you where it failed.",
+      "revId": "07d62cce440ec51c89cd03f3fbebfcf3c6eb10ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
