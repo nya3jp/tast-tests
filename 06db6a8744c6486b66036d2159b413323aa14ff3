@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de58707_f01cfd4e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-13T22:39:38Z",
+      "side": 1,
+      "message": "Okay I think that\u0027s fine.",
+      "parentUuid": "b608ffef_636e589e",
+      "revId": "06db6a8744c6486b66036d2159b413323aa14ff3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "668a64ae_7edcfef3",
