@@ -37,6 +37,7 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/graphics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/local/webrtcinternals"
 	"chromiumos/tast/testing"
@@ -874,6 +875,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 				s.Error("Failed to report info from WebRTC internals dump to performance metrics: ", err)
 			}
 		}
+	}
+
+	// Take a screenshot prior to closing Meet, to facilitate potential debugging.
+	screenshotFile := filepath.Join(s.OutDir(), "meet.png")
+	if err := screenshot.CaptureChrome(ctx, cr, screenshotFile); err != nil {
+		s.Log("Failed to take screenshot: ", err)
 	}
 
 	// Report WebRTC metrics for video streams.
