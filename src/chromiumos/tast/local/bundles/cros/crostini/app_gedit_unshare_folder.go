@@ -85,6 +85,7 @@ func AppGeditUnshareFolder(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(crostini.FixtureData).Chrome
 	keyboard := s.FixtValue().(crostini.FixtureData).KB
 	cont := s.FixtValue().(crostini.FixtureData).Cont
+	d := s.FixtValue().(crostini.FixtureData).Differ()
 
 	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
 	if err != nil {
@@ -182,17 +183,6 @@ func AppGeditUnshareFolder(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Performing screendiff")
-	revert, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
-	if err != nil {
-		s.Fatal("Failed to enter clamshell mode: ", err)
-	}
-	defer revert(cleanupCtx)
-
-	d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 900, WindowHeightDP: 748}})
-	if err != nil {
-		s.Fatal("Failed to start screen differ: ", err)
-	}
-
 	if err := uiauto.Combine("checking screendiff of the Gedit window",
 		crostini.TakeAppScreenshot("gedit"),
 		// Screendiff test. Retrying 10 times, every 600 millis as cursor blinks about
