@@ -39,6 +39,30 @@
       },
       "revId": "99bd9cfb28d0fe6f5ff3f1c72a90fb45b1c6d66b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff38a93_5dfdd92c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-13T15:56:22Z",
+      "side": 1,
+      "message": "I tried to fix it with a map. But maybe I should have created a map \u003ckey, testCase\u003e instead 🤔\nLet me know what you think",
+      "parentUuid": "93d6acf0_5b9db5fe",
+      "range": {
+        "startLine": 71,
+        "startChar": 30,
+        "endLine": 72,
+        "endChar": 43
+      },
+      "revId": "99bd9cfb28d0fe6f5ff3f1c72a90fb45b1c6d66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
