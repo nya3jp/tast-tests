@@ -146,8 +146,11 @@ func (e *Env) Cleanup(ctx context.Context) error {
 		}
 	}
 
-	// Remove netns.
+	// Remove veth interface and the netns.
 	if e.netnsCreated {
+		if err := testexec.CommandContext(ctx, "ip", "link", "delete", e.VethOutName).Run(); err != nil {
+			return errors.Wrap(err, "failed to setup veth")
+		}
 		if err := testexec.CommandContext(ctx, "ip", "netns", "del", e.NetNSName).Run(); err != nil {
 			updateLastErrAndLog(errors.Wrapf(err, "failed to delete the netns %s", e.NetNSName))
 		}
