@@ -350,11 +350,25 @@ func (its *InputsTestServer) ScrollIntoView(inputField InputField, alignToTop bo
 
 // WaitForFieldToBeActive returns an action waiting for certain input field to be the active element.
 func (its *InputsTestServer) WaitForFieldToBeActive(inputField InputField) uiauto.Action {
-	return func(ctx context.Context) error {
+	waitForFieldAction := func(ctx context.Context) error {
 		return its.pc.WaitForExprFailOnErrWithTimeout(ctx,
 			fmt.Sprintf(`!!document.activeElement && document.querySelector("*[aria-label='%s']")===document.activeElement`,
 				inputField), 3*time.Second)
 	}
+
+	return uiauto.Combine("... wait for input field to be active",
+		waitForFieldAction,
+		// The following sleep is required to avoid a race condition
+		// between OnFocus events and the first keypress event (or other
+		// input event) in the focused input. There have been cases of
+		// flakey tests resulting from a race condition like this
+		// recently, where the first keypress is entered before the
+		// input method has been fully initialized via the respective
+		// OnFocus event. The sleep has been added to this method as
+		// input actions are likely to follow an invocation of this
+		// method. See b/235417796 for more.
+		uiauto.Sleep(50*time.Millisecond),
+	)
 }
 
 // ClickFieldAndWaitForActive returns an action clicking the input field and waiting for it to be active.
