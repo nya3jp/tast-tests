@@ -16,6 +16,24 @@
       "message": "Tastboard does show two recent failures.  Just to confirm, those are unrelated to the test, right?",
       "revId": "d914534816fda7f9abe03e7c1b3e8d36bf4bd497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40662664_545bf1a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-07-13T19:32:39Z",
+      "side": 1,
+      "message": "Yes, they seem like some sort of network problem.  I was able to run the cupstestppd command manually with no problem, and I also ran the printer.TestPPDs tast test successfully.",
+      "parentUuid": "ac3edd58_697159ed",
+      "revId": "d914534816fda7f9abe03e7c1b3e8d36bf4bd497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
