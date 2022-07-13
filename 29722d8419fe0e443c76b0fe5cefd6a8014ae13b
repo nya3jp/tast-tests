@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a3c6c09_3c81eb8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-13T21:43:08Z",
+      "side": 1,
+      "message": "wutao@: PTAL again. I made non-trivial changes from the last patch set.\n\nNotably:\n- Add error handlings for RecordAnimationPerformance.\n- Keep running the performance test even if it fails to wait for the cpu idle time.\n- Added TODO(b/178409604) back.\n\nThank you!",
+      "revId": "29722d8419fe0e443c76b0fe5cefd6a8014ae13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
