@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a945e61f_4f3b71df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1536953
+      },
+      "writtenOn": "2022-07-13T20:56:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56cc4c14_f2bd0d52",
+      "range": {
+        "startLine": 52,
+        "startChar": 22,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "e741f0fb3a33d8730870c11baf11d59b42fca1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0665cb1f_0ce6bcf2",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-13T17:53:31Z",
       "side": 1,
       "message": "move this outside the loop?",
+      "revId": "e741f0fb3a33d8730870c11baf11d59b42fca1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "234cabc8_acdf0f9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1536953
+      },
+      "writtenOn": "2022-07-13T20:56:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0665cb1f_0ce6bcf2",
       "revId": "e741f0fb3a33d8730870c11baf11d59b42fca1f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +113,30 @@
       "writtenOn": "2022-07-13T17:53:31Z",
       "side": 1,
       "message": "maybe move this before searching for tab info.",
+      "range": {
+        "startLine": 107,
+        "startChar": 16,
+        "endLine": 107,
+        "endChar": 30
+      },
+      "revId": "e741f0fb3a33d8730870c11baf11d59b42fca1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64159df2_caa70675",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1536953
+      },
+      "writtenOn": "2022-07-13T20:56:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a967aafa_f945a5fd",
       "range": {
         "startLine": 107,
         "startChar": 16,
