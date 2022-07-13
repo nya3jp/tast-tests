@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/apps/fixture"
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
@@ -70,40 +71,41 @@ func init() {
 			}, {
 				Name:              "clamshell_logged_in_stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
+				Fixture:           fixture.LoggedIn,
 				Val: testParameters{
 					tabletMode: false,
 					oobe:       false,
 				},
-				Fixture: "chromeLoggedInForEA",
 			}, {
 				Name:              "clamshell_logged_in_unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
+				Fixture:           fixture.LoggedIn,
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
-					tabletMode: true,
-					oobe:       true,
+					tabletMode: false,
+					oobe:       false,
 				},
 			}, {
 				Name:              "tablet_logged_in_stable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.TouchScreen()),
+				Fixture:           fixture.LoggedIn,
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       false,
 				},
-				Fixture: "chromeLoggedInForEA",
 			}, {
 				Name:              "tablet_logged_in_unstable",
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels, hwdep.TouchScreen()),
+				Fixture:           fixture.LoggedIn,
 				ExtraAttr:         []string{"informational"},
 				Val: testParameters{
 					tabletMode: true,
 					oobe:       false,
 				},
-				Fixture: "chromeLoggedInForEA",
 			}, {
 				Name:              "clamshell_logged_in_stable_lacros",
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
-				Fixture:           "lacrosForEA",
+				Fixture:           fixture.LacrosLoggedIn,
 				ExtraSoftwareDeps: []string{"lacros_stable"},
 				Val: testParameters{
 					tabletMode: false,
@@ -112,7 +114,7 @@ func init() {
 			},
 			{
 				Name:              "tablet_logged_in_stable_lacros",
-				Fixture:           "lacrosForEA",
+				Fixture:           fixture.LacrosLoggedIn,
 				ExtraSoftwareDeps: []string{"lacros_stable"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels, hwdep.TouchScreen()),
 				Val: testParameters{

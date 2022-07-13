@@ -12,6 +12,7 @@ import (
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/apps/fixture"
 	"chromiumos/tast/local/bundles/cros/apps/galleryapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
@@ -44,16 +45,16 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "stable",
-				Fixture:           "chromeLoggedInForEA",
+				Fixture:           fixture.LoggedIn,
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			}, {
 				Name:              "unstable",
-				Fixture:           "chromeLoggedInForEA",
+				Fixture:           fixture.LoggedIn,
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			}, {
 				Name:              "lacros",
-				Fixture:           "lacrosForEA",
+				Fixture:           fixture.LacrosLoggedIn,
 				ExtraSoftwareDeps: []string{"lacros_stable"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			},
