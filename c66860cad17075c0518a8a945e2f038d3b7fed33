@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8652915_88370480",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-07-13T18:38:38Z",
+      "side": 1,
+      "message": "It makes sense to me to keep the old flow, but I\u0027m not sure which one is the best practice to do that:\n1. `if (flag_is_off) /*run old flow*/ else /*run new flow*/`\n2. Keeping both versions, and let the configuration to determine which test to run based on the state of the feature flag.\nDo you have any suggestions?",
+      "parentUuid": "80caf2d8_b1f1914a",
+      "revId": "c66860cad17075c0518a8a945e2f038d3b7fed33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e80d910d_6e21794d",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
         "patchSetId": 3
