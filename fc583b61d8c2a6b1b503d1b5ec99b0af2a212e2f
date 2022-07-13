@@ -70,6 +70,30 @@
       },
       "revId": "fc583b61d8c2a6b1b503d1b5ec99b0af2a212e2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80482667_668c9478",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-13T01:25:06Z",
+      "side": 1,
+      "message": "Ah it got us both for a second there haha. Absolutely no problem, going to push this back up to CQ+2",
+      "parentUuid": "c5138a25_9e2df324",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 645,
+        "endChar": 0
+      },
+      "revId": "fc583b61d8c2a6b1b503d1b5ec99b0af2a212e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
