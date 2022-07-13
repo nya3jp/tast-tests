@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1f8ac22_5a78ed91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-13T23:31:36Z",
+      "side": 1,
+      "message": "Make it one line. We wrap at 72 characters, and if you put this all on one line then it will be exactly 72 characters, so it is fine that way.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "036ea6ceee3dfab81feb8cec5b0b76b80f6f0786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a82767b_7181b32f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-13T23:31:36Z",
+      "side": 1,
+      "message": "This should be `ui.OverviewPerf*` (ending in `*`) so that all three variants are run.",
+      "range": {
+        "startLine": 13,
+        "startChar": 19,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "036ea6ceee3dfab81feb8cec5b0b76b80f6f0786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f62654c_3f41c768",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-13T23:31:36Z",
+      "side": 1,
+      "message": "How about:\n\tfunc OverviewPerf(ctx context.Context, s *testing.State) {\n\t\t...\n\n\t\tdefer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)\n\t\trunner :\u003d perfutil.NewRunner(cr.Browser())\n\t\tcurrentWindows :\u003d 0\n\t\t// Run the overview mode enter/exit flow for various situations.\n\t\t// - Change the number of browser windows.\n\t\t// - The window system status; clamshell mode with maximized windows,\n\t\t//   clamshell mode with normal windows, tablet mode with maximized\n\t\t//   windows, tablet mode with minimized windows (the home screen),\n\t\t//   tablet split view with maximized overview windows, or tablet\n\t\t//   split view with minimized overview windows.\n\t\tfor i, windows :\u003d range []int{2, 3, 4, 8} {\n\t\t\tif err :\u003d ash.CreateWindows(ctx, tconn, cs, url, test.windows-currentWindows); err !\u003d nil {\n\t\t\t\ts.Fatal(\"Failed to create browser windows: \", err)\n\t\t\t}\n\n\t\t\t// This must be done after ash.CreateWindows to avoid terminating lacros-chrome.\n\t\t\tif i \u003d\u003d 0 \u0026\u0026 s.Param().(browser.Type) \u003d\u003d browser.TypeLacros {\n\t\t\t\tif err :\u003d l.Browser().CloseWithURL(ctx, chrome.NewTabURL); err !\u003d nil {\n\t\t\t\t\ts.Fatal(\"Failed to close about:blank: \", err)\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tcurrentWindows \u003d windows\n\n\t\t\twindowsDescription :\u003d fmt.Sprintf(\"%dwindows\", windows)\n\t\t\tfor _, test :\u003d range []struct {\n\t\t\t\tfullDescriptionFmt  string\n\t\t\t\ttablet              bool\n\t\t\t\toverviewWindowState ash.WindowStateType\n\t\t\t\thistogramSuffix     string\n\t\t\t}{\n\t\t\t\t{\"SingleClamshellMode-%dwindows\", false, ash.WindowStateMaximized, \"SingleClamshellMode\"},\n\t\t\t\t{\"ClamshellMode-%dwindows\", false, ash.WindowStateNormal, \"ClamshellMode\"},\n\t\t\t\t{\"TabletMode-%dwindows\", true, ash.WindowStateMaximized, \"TabletMode\"},\n\t\t\t\t{\"MinimizedTabletMode-%dwindows\", true, ash.WindowStateMinimized, \"MinimizedTabletMode\"},\n\t\t\t} {\n\t\t\t\tfullDescription :\u003d fmt.Sprintf(test.fullDescriptionFmt, windows)\n\t\t\t\tif err :\u003d doTestCase(\n\t\t\t\t\tctx, tconn, runner, fullDescription, windowsDescription, test.tablet, test.overviewWindowState, false,\n\t\t\t\t\t\"Ash.Overview.AnimationSmoothness.Enter.\"+histogramSuffix,\n\t\t\t\t\t\"Ash.Overview.AnimationSmoothness.Exit.\"+histogramSuffix,\n\t\t\t\t); err !\u003d nil {\n\t\t\t\t\ts.Errorf(\"Test case %q failed: %s\", fullDescription, err)\n\t\t\t\t}\n\t\t\t}\n\n\t\t\tif i \u003d\u003d 0 {\n\t\t\t\tif err :\u003d doTestCase(\n\t\t\t\t\tctx, tconn, runner, \"SplitView-2windows\", windowsDescription, true, ash.WindowStateMaximized, true,\n\t\t\t\t\t// The overview exit animation does not include the window being activated.\n\t\t\t\t\t// Thus, the SplitView-2windows case has no overview exit animation at all.\n\t\t\t\t\t\"Ash.Overview.AnimationSmoothness.Enter.SplitView\",\n\t\t\t\t); err !\u003d nil {\n\t\t\t\t\ts.Error(\"Test case \\\"SplitView-2windows\\\" failed: \", err)\n\t\t\t\t}\n\t\t\t\tcontinue\n\t\t\t}\n\n\t\t\tfor _, test :\u003d range []struct {\n\t\t\t\tfullDescriptionFmt    string\n\t\t\t\twindowsDescriptionFmt string\n\t\t\t\toverviewWindowState   ash.WindowStateType\n\t\t\t}{\n\t\t\t\t{\"SplitView-%dwindowsincludingmaximizedoverviewwindows\", \"%dwindowsincludingmaximizedoverviewwindows\", ash.WindowStateMaximized},\n\t\t\t\t{\"SplitView-%dwindowsincludingminimizedoverviewwindows\", \"%dwindowsincludingminimizedoverviewwindows\", ash.WindowStateMinimized},\n\t\t\t} {\n\t\t\t\tfullDescription :\u003d fmt.Sprintf(test.fullDescriptionFmt, windows)\n\t\t\t\twindowsDescription :\u003d fmt.Sprintf(test.windowsDescriptionFmt, windows)\n\t\t\t\tif err :\u003d doTestCase(\n\t\t\t\t\tctx, tconn, runner, fullDescription, windowsDescription, true, test.overviewWindowState, true,\n\t\t\t\t\t\"Ash.Overview.AnimationSmoothness.Enter.SplitView\",\n\t\t\t\t\t\"Ash.Overview.AnimationSmoothness.Exit.SplitView\",\n\t\t\t\t); err !\u003d nil {\n\t\t\t\t\ts.Errorf(\"Test case %q failed: %s\", fullDescription, err)\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tif err :\u003d runner.Values().Save(ctx, s.OutDir()); err !\u003d nil {\n\t\t\ts.Error(\"Failed saving perf data: \", err)\n\t\t}\n\t}\n\n\tfunc doTestCase(\n\t\tctx context.Context,\n\t\ttconn *chrome.TestConn,\n\t\trunner *perfutil.Runner,\n\t\tfullDescription string,\n\t\twindowsDescription string,\n\t\ttablet bool,\n\t\toverviewWindowState ash.WindowStateType,\n\t\tsplitView bool,\n\t\thistograms ...string,\n\t) error {\n\t\t// Ensure display on to record ui performance correctly.\n\t\tif err :\u003d power.TurnOnDisplay(ctx); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to turn on display: \", err)\n\t\t}\n\n\t\t// Here we try to set tablet mode enabled/disabled,\n\t\t...\n\t}",
+      "revId": "036ea6ceee3dfab81feb8cec5b0b76b80f6f0786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de6327f0_339b12fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-13T23:31:36Z",
+      "side": 1,
+      "message": "Then you need to run `power.TurnOnDisplay` even more often than this, right?",
+      "range": {
+        "startLine": 191,
+        "startChar": 22,
+        "endLine": 192,
+        "endChar": 72
+      },
+      "revId": "036ea6ceee3dfab81feb8cec5b0b76b80f6f0786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
