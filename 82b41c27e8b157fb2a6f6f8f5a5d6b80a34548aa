@@ -34,6 +34,24 @@
       "parentUuid": "bfc0dc75_407e77c0",
       "revId": "82b41c27e8b157fb2a6f6f8f5a5d6b80a34548aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db33a1aa_98542938",
+        "filename": "src/chromiumos/tast/local/crostini/fixture_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-07-13T09:04:46Z",
+      "side": 1,
+      "message": "Optional: add a comment explaining this?",
+      "parentUuid": "20d01cd4_cb0598e1",
+      "revId": "82b41c27e8b157fb2a6f6f8f5a5d6b80a34548aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
