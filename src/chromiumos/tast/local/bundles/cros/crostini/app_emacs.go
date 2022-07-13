@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -72,17 +71,12 @@ func AppEmacs(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(crostini.FixtureData).Chrome
 	keyboard := s.FixtValue().(crostini.FixtureData).KB
 	cont := s.FixtValue().(crostini.FixtureData).Cont
+	d := s.FixtValue().(crostini.FixtureData).Differ()
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-
-	revert, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
-	if err != nil {
-		s.Fatal("Failed to enter clamshell mode: ", err)
-	}
-	defer revert(cleanupCtx)
 
 	// Open Terminal app.
 	terminalApp, err := terminalapp.Launch(ctx, tconn)
@@ -103,11 +97,6 @@ func AppEmacs(ctx context.Context, s *testing.State) {
 			terminalApp.Exit(keyboard)(cleanupCtx)
 		}
 	}()
-
-	d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 666, WindowHeightDP: 714}})
-	if err != nil {
-		s.Fatal("Failed to start screen differ: ", err)
-	}
 
 	if err := createFileWithEmacs(ctx, keyboard, terminalApp, tconn, cont, d); err != nil {
 		s.Fatal("Failed to create file with emacs in Terminal: ", err)

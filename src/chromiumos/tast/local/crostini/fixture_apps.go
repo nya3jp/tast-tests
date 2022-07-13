@@ -9,8 +9,10 @@ import (
 	"path/filepath"
 
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/devicemode"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -24,7 +26,7 @@ func init() {
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		Parent:          "crostiniBusterLargeContainer",
-		Vars:            []string{"keepState"},
+		Vars:            append([]string{"keepState"}, screenshot.ScreenDiffVars...),
 		Data:            []string{GetContainerMetadataArtifact("buster", true), GetContainerRootfsArtifact("buster", true)},
 	})
 
@@ -37,22 +39,27 @@ func init() {
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		Parent:          "crostiniBusterLargeContainer",
-		Vars:            []string{"keepState"},
+		Vars:            append([]string{"keepState"}, screenshot.ScreenDiffVars...),
 		Data:            []string{GetContainerMetadataArtifact("buster", true), GetContainerRootfsArtifact("buster", true)},
 	})
 }
 
 // crostiniAppsFixture holds the runtime state of the fixture.
 type crostiniAppsFixture struct {
+	cr               *chrome.Chrome
 	tconn            *chrome.TestConn
 	deviceMode       devicemode.DeviceMode
 	revertDeviceMode func(ctx context.Context) error
 	screenRecorder   *uiauto.ScreenRecorder
+	screenDiffer     *Screendiffer
 }
 
 func (f *crostiniAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	f.tconn = s.ParentValue().(FixtureData).Tconn
-	return s.ParentValue().(FixtureData)
+	f.cr = s.ParentValue().(FixtureData).Chrome
+	f.screenDiffer = &Screendiffer{differ: nil, state: &screenDiffState{fixtState: s}}
+	p := s.ParentValue().(FixtureData)
+	return FixtureData{p.Chrome, p.Tconn, p.Cont, p.KB, p.PostData, p.StartupValues, f.screenDiffer}
 }
 
 func (f *crostiniAppsFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
@@ -74,9 +81,32 @@ func (f *crostiniAppsFixture) PreTest(ctx context.Context, s *testing.FixtTestSt
 		s.Logf("Failed to set device mode to %s : %s", f.deviceMode, err)
 	}
 	f.revertDeviceMode = revert
+
+	// Setup screendiff.
+	f.screenDiffer.state.testState = s
+	defaultWindowState := ash.WindowStateNormal
+	if f.deviceMode == devicemode.TabletMode {
+		// WindowStateNormal is invalid in the tablet mode.
+		defaultWindowState = ash.WindowStateMaximized
+	}
+	screendiffConfig := screenshot.Config{
+		DefaultOptions: screenshot.Options{
+			SkipWindowResize: true,
+			WindowState:      defaultWindowState},
+		SkipDpiNormalization: true,
+	}
+	differ, err := screenshot.NewDifferFromChrome(ctx, f.screenDiffer.state, f.cr, screendiffConfig)
+	if err != nil {
+		s.Log("Failed to start screen differ: ", err)
+	}
+	f.screenDiffer.differ = &differ
 }
 
 func (f *crostiniAppsFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if f.screenDiffer.differ != nil {
+		(*f.screenDiffer.differ).GetFailedDiffs()
+	}
+
 	if f.revertDeviceMode != nil {
 		if err := f.revertDeviceMode(ctx); err != nil {
 			s.Log("Failed to reset device mode: ", err)
