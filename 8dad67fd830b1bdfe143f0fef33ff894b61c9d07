@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e49400e9_ad271a9c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/brightness_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1536939
+      },
+      "writtenOn": "2022-07-13T00:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c76eae63_36ba20c4",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "8dad67fd830b1bdfe143f0fef33ff894b61c9d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b638452b_8144bdd0",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a80e9b6b_93c6556f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/brightness_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1536939
+      },
+      "writtenOn": "2022-07-13T00:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b638452b_8144bdd0",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 7
+      },
+      "revId": "8dad67fd830b1bdfe143f0fef33ff894b61c9d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "897c3da4_2cc357e3",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-12T19:20:11Z",
       "side": 1,
       "message": "nit: Unmute",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 12
+      },
+      "revId": "8dad67fd830b1bdfe143f0fef33ff894b61c9d07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d160bb24_330c6f95",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quicksettings/brightness_volume_slider.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1536939
+      },
+      "writtenOn": "2022-07-13T00:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "897c3da4_2cc357e3",
       "range": {
         "startLine": 60,
         "startChar": 4,
