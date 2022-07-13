@@ -29,23 +29,18 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		VarDeps:      []string{"ui.gaiaPoolDefault"},
+		Timeout:      chrome.LoginTimeout + 3*time.Minute,
 	})
 }
 
 func GestureNavigation(ctx context.Context, s *testing.State) {
 	var (
-		acceptAndContinue = nodewith.Name("Accept and continue").Role(role.Button)
-		assistantPage     = nodewith.ClassName("assistant-optin-flow")
-		getStarted        = nodewith.Name("Get started").Role(role.Button)
-		next              = nodewith.Name("Next").Role(role.Button)
-		noThanks          = nodewith.Name("No thanks").Role(role.Button)
-		skip              = nodewith.Name("Skip").Role(role.StaticText)
+		getStarted = nodewith.Name("Get started").Role(role.Button)
+		next       = nodewith.Name("Next").Role(role.Button)
 	)
 
 	cr, err := chrome.New(ctx,
 		chrome.DontSkipOOBEAfterLogin(),
-		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.ExtraArgs("--force-tablet-mode=touch_view"), // Tablet mode is needed to trigger gesture screens
 	)
 	if err != nil {
@@ -58,25 +53,48 @@ func GestureNavigation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	func() {
+		oobeConn, err := cr.WaitForOOBEConnection(ctx)
+		if err != nil {
+			s.Fatal("Failed to create OOBE connection: ", err)
+		}
+		defer oobeConn.Close()
+
+		if err := oobeConn.Eval(ctx, "OobeAPI.advanceToScreen('gesture-navigation')", nil); err != nil {
+			s.Fatal("Failed to advance to the gesture navigation screen: ", err)
+		}
+
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.GestureNavigation.isVisible()"); err != nil {
+			s.Fatal("Failed to wait for the gesture navigation screen: ", err)
+		}
+	}()
+
 	ui := uiauto.New(tconn).WithTimeout(60 * time.Second)
 
-	if err := uiauto.Combine("Go through the OOBE flow UI after the GAIA login",
-		uiauto.IfSuccessThen(ui.WaitUntilExists(acceptAndContinue), ui.LeftClick(acceptAndContinue)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(skip), ui.LeftClick(skip)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(skip), ui.LeftClick(skip)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(noThanks), ui.LeftClick(noThanks)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(assistantPage), ui.LeftClick(noThanks)),
-	)(ctx); err != nil {
-		s.Fatal("Failed to test oobe Arc: ", err)
+	// Gesture navigation flow.
+	if err := ui.WaitUntilExists(getStarted)(ctx); err != nil {
+		s.Fatal("Failed to wait until gesture navigation main screen shown: ", err)
 	}
-
-	if err := uiauto.Combine("Go through the gesture flow",
-		uiauto.IfSuccessThen(ui.WaitUntilExists(getStarted), ui.LeftClick(getStarted)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(next), ui.LeftClick(next)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(next), ui.LeftClick(next)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(next), ui.LeftClick(next)),
-		uiauto.IfSuccessThen(ui.WaitUntilExists(getStarted), ui.LeftClick(getStarted)),
-	)(ctx); err != nil {
-		s.Fatal("Failed to test oobe Arc tablet flow: ", err)
+	if err := ui.LeftClick(getStarted)(ctx); err != nil {
+		s.Fatal("Failed to click on get started: ", err)
+	}
+	if err := ui.WaitUntilExists(next)(ctx); err != nil {
+		s.Fatal("Failed to wait until go home shown: ", err)
+	}
+	if err := ui.LeftClick(next)(ctx); err != nil {
+		s.Fatal("Failed to click on next: ", err)
+	}
+	if err := ui.WaitUntilExists(next)(ctx); err != nil {
+		s.Fatal("Failed to wait until swotch to another app shown: ", err)
+	}
+	if err := ui.LeftClick(next)(ctx); err != nil {
+		s.Fatal("Failed to click on next: ", err)
+	}
+	if err := ui.WaitUntilExists(next)(ctx); err != nil {
+		s.Fatal("Failed to wait until go back shown: ", err)
+	}
+	if err := ui.LeftClick(next)(ctx); err != nil {
+		s.Fatal("Failed to click on next: ", err)
 	}
 }
