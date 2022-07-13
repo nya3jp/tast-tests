@@ -7,4 +7,6 @@
 <resources>
     <!-- The application name [CHAR_LIMIT=NONE] -->
     <string name="app_name" translatable="false">ARC Print Test</string>
+    <!-- The label for the print button -->
+    <string name="print" translatable="false">Print</string>
 </resources>

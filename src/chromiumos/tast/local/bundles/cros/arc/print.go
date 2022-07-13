@@ -12,6 +12,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -196,14 +197,16 @@ var stableModels = []string{
 
 func Print(ctx context.Context, s *testing.State) {
 	const (
-		apkName      = "ArcPrintTest.apk"
-		pkgName      = "org.chromium.arc.testapp.print"
-		activityName = "MainActivity"
-		printerName  = "DavieV Virtual USB Printer (USB)"
+		apkName       = "ArcPrintTest.apk"
+		pkgName       = "org.chromium.arc.testapp.print"
+		activityName  = "MainActivity"
+		printerName   = "DavieV Virtual USB Printer (USB)"
+		printButtonID = "org.chromium.arc.testapp.print:id/button_print"
 	)
 
 	cr := s.FixtValue().(*arc.PreData).Chrome
 	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -267,9 +270,17 @@ func Print(ctx context.Context, s *testing.State) {
 	if _, err := ash.SetARCAppWindowState(ctx, tconn, pkgName, ash.WMEventMaximize); err != nil {
 		s.Log("Failed to set app window to Maximized state: ", err)
 	}
-
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateMaximized); err != nil {
 		s.Log("Failed to wait for app window to enter Maximized state: ", err)
+	}
+
+	// Click the Android print button to launch print preview.
+	// The rest of the UI interactions below happen in Chrome.
+	if err := d.WaitForIdle(ctx, 10*time.Second); err != nil {
+		s.Log("Failed to wait for idle activity: ", err)
+	}
+	if err := d.Object(ui.ID(printButtonID)).Click(ctx); err != nil {
+		s.Fatal("Failed to click print button: ", err)
 	}
 
 	// Wait for print preview to load before selecting a printer.
