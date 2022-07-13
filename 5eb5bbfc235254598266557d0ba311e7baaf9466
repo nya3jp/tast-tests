@@ -16,6 +16,24 @@
       "message": "PTAL. Is it enough to pass the bots for the corresponding tast test to run? Can you launch them?",
       "revId": "5eb5bbfc235254598266557d0ba311e7baaf9466",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6efdf4eb_301240a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-13T14:51:31Z",
+      "side": 1,
+      "message": "Starting tryjob.\n\n\u003e Can you launch them?\n\nQuestion back: did you run the test locally as commented in TEST\u003d line?",
+      "parentUuid": "b8c48c9a_702e2e5f",
+      "revId": "5eb5bbfc235254598266557d0ba311e7baaf9466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
