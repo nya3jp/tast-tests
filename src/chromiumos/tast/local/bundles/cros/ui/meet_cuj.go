@@ -363,6 +363,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	// Sets the display zoom factor to minimum, to ensure that all
 	// meeting participants' video can be shown simultaneously.
+	// The display zoom should be done before the Meet window is
+	// opened, to prevent visual oddities on some devices. We also
+	// zoom out on the browser after the Meet window is opened,
+	// because on some boards the display zoom is not enough to
+	// show all of the participants.
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the primary display info: ", err)
@@ -633,6 +638,26 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Interval: time.Second, Timeout: 2 * time.Minute}); err != nil {
 		s.Fatal("Failed to grant permissions: ", err)
 	}
+
+	// Zoom out on the browser to maximize the number of visible video
+	// feeds. This needs to be done before the final layout mode has been set,
+	// so that Meet can properly recalculate how many inbound videos should
+	// be visible. Pressing Ctrl+Minus 3 times results in the zoom going from
+	// 100% -> 90% -> 80% -> 75%.
+	if err := inputsimulations.RepeatKeyPress(ctx, kw, "Ctrl+-", 500*time.Millisecond, 3); err != nil {
+		s.Fatal("Failed to repeatedly press Ctrl+Minus to zoom out: ", err)
+	}
+
+	// While the zoom popup is open, verify that we zoomed correctly.
+	zoomNode := nodewith.HasClass("ZoomValue")
+	zoomInfo, err := ui.Info(ctx, zoomNode)
+	if err != nil {
+		s.Fatal("Failed to find zoom value popup: ", err)
+	}
+	if zoomInfo.Name != "75%" {
+		s.Fatalf("Unexpected zoom value: got %s; want 75%%", zoomInfo.Name)
+	}
+	s.Log(ctx, "Zoomed browser window to 75%")
 
 	var collaborationRE *regexp.Regexp
 	if meet.docs {
