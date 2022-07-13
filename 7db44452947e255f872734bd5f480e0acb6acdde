@@ -46,6 +46,30 @@
       },
       "revId": "7db44452947e255f872734bd5f480e0acb6acdde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2fd4323_bfad36fe",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-13T12:11:47Z",
+      "side": 1,
+      "message": "In this patch I\u0027m changing `disableFPUpdater`, `enableFPUpdater` functions.\nUpstart changes can be found [here](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3758131)",
+      "parentUuid": "6e04abad_896557ce",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 5
+      },
+      "revId": "7db44452947e255f872734bd5f480e0acb6acdde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
