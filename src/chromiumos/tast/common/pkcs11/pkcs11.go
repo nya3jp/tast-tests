@@ -372,7 +372,7 @@ func (p *Chaps) ImportPEMKeyAndCertBySlot(ctx context.Context, scratchpadPath, p
 		}
 
 		// Import the object with p11_replay
-		if msg, err := p.runner.Run(ctx, "p11_replay", "--slot="+strconv.Itoa(slot), "--import", "--type=privkey", "--path="+keyDerPath, "--id="+objID); err != nil {
+		if msg, err := p.runner.Run(ctx, "p11_replay", "--slot="+strconv.Itoa(slot), "--import", "--type=privkey", "--path="+keyDerPath, "--id="+objID, "--force_software"); err != nil {
 			testing.ContextLogf(ctx, "p11_replay failed to import key: %q", msg)
 			return nil, errors.Wrap(err, "failed to import object with p11_replay")
 		}
@@ -396,7 +396,7 @@ func (p *Chaps) ImportPEMKeyAndCertBySlot(ctx context.Context, scratchpadPath, p
 		}
 
 		// Import the object with p11_replay
-		if _, err := p.runner.Run(ctx, "p11_replay", "--slot="+strconv.Itoa(slot), "--import", "--type=cert", "--path="+certDerPath, "--id="+objID); err != nil {
+		if _, err := p.runner.Run(ctx, "p11_replay", "--slot="+strconv.Itoa(slot), "--import", "--type=cert", "--path="+certDerPath, "--id="+objID, "--force_software"); err != nil {
 			return nil, errors.Wrap(err, "failed to import cert with p11_replay")
 		}
 	}
