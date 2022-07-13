@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a1d9204_9f86b847",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-13T17:14:04Z",
+      "side": 1,
+      "message": "No, the only two tests with 49p are `MeetCUJ.49p_vp8` and `MeetCUJ.49p`, but I believe `MeetCUJ.49p` is the only one actually running.",
+      "parentUuid": "59897f98_5b37af8a",
+      "range": {
+        "startLine": 14,
+        "startChar": 46,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc32579e_435971a3",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-13T17:00:50Z",
       "side": 1,
       "message": "Is this the best way to do this? Do we want the key presses? Is this likely to be flaky?",
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47a008b4_82ae0e5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-13T17:14:04Z",
+      "side": 1,
+      "message": "The other method I tried still involved key presses, which was holding down the ctrl key, pressing minus 3 times, and releasing the ctrl key. Both that method and the one written here performed equally, so I chose this method since it was much simpler.\n\nSuch an action like this could possibly add flakiness, but I\u0027m not sure any way of directly setting browser zoom. I did run this test many, many times at this point, and I\u0027ve never seen any flakiness at least. However, to be safe, I could log the zoom error here instead of fail the test outright, since ~ 60% of the devices don\u0027t even need the browser zoom to work properly. I don\u0027t think zoom itself should affect any of the WebRTC metrics.",
+      "parentUuid": "dc32579e_435971a3",
       "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
