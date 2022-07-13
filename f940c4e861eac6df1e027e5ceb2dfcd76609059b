@@ -16,6 +16,24 @@
       "message": "are we updating this when these tests are ready to be promoted to critical (one of the handover criteria)?",
       "revId": "f940c4e861eac6df1e027e5ceb2dfcd76609059b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "849ac731_19f11775",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535342
+      },
+      "writtenOn": "2022-07-13T02:50:11Z",
+      "side": 1,
+      "message": "yes, in the handover doc we decided to use the following: \n\nBefore promotion owners: clumptini@ \u0026 the original author (some original authors have left the team, hence some tests only have clumptini@ listed)\n\nAfter promotion to critical: clumptini+oncall@ as the owner so our oncaller can filter mailbox for any critical test breakages\n\nAll the tests in this CL should be non-critical, so they all have clumptini@ as a contact. Please correct me if I made a mistake somewhere.",
+      "parentUuid": "38f99b48_940be0dd",
+      "revId": "f940c4e861eac6df1e027e5ceb2dfcd76609059b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
