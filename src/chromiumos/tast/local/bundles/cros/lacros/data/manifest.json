@@ -1,0 +1,8 @@
+{
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwWuqPkMoqNIwjeyw6QPvBcVwoiRMnRkZBB9f0IRl5WRrGbk5+W7x9qwPucBB2PVdBgBy0/TKN3Uw/hYSCyOPrHYoHV5nDmulUIM7+Emlga303e9kKotGg+0QlVZS40l8Y4BlLj0ifBfYJnH+RoMQpIB0XbiyBLYufFgqmzV3ZmFMS6Qv0A+j9jZQcc7WjfsxJKZFpzuTIiWrYzyufr17fTS/qyV9aON3E440Ut75/puOcRCtYUMxlKs22NZgyNzUwRrznbyF9Fxaw8AmnNtbjSSIV+3pIE/cGl9lB6ppAcJHN4gOzwr3zejRenscfiE60Ez/0iVYoTjaxIm6T+PugwIDAQAB",
+    "name": "Simple Extension",
+    "description": "The extension includes index.html which tast tests can open to call extension apis.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "permissions": ["storage"]
+}
