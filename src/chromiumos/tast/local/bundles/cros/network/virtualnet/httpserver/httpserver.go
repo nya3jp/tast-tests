@@ -13,18 +13,26 @@ import (
 	"net/http"
 	"os"
 
+	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/env"
 )
 
 // Paths in chroot.
 const (
-	logPath = "/tmp/httpServer.log"
+	opensslPath = "/usr/bin/openssl"
+	keyPath     = "/tmp/test.key"
+	csrPath     = "/tmp/test.csr"
+	crtPath     = "/tmp/test.crt"
+	sslCrtPath  = "/etc/ssl/certs/"
+	logPath     = "/tmp/httpServer.log"
 )
 
 type httpserver struct {
 	// port is the port that the HTTP server will listen and serve on.
-	port   string
+	port string
+	// https is true if the server is https. If false, server is just http
+	https  bool
 	handle func(rw http.ResponseWriter, req *http.Request)
 	server *http.Server
 	env    *env.Env
@@ -44,8 +52,8 @@ func (h *Handler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 // Env.StartServer(), its lifetime will be managed by the Env object. The
 // httpserver will only respond with |handle|. Port will be the port the
 // HTTP server listens and serves on.
-func New(port string, handle func(rw http.ResponseWriter, req *http.Request)) *httpserver {
-	return &httpserver{port: port, handle: handle}
+func New(port string, https bool, handle func(rw http.ResponseWriter, req *http.Request)) *httpserver {
+	return &httpserver{port: port, https: https, handle: handle}
 }
 
 // Start starts the HTTP server in a separate process. The HTTP server listens on
@@ -68,8 +76,23 @@ func (h *httpserver) Start(ctx context.Context, env *env.Env) (retErr error) {
 			errChannel <- err
 			return
 		}
-		errChannel <- nil
-		h.server.Serve(ln)
+		if h.https {
+			certs := certificate.TestCert3()
+			if err := os.WriteFile(crtPath, []byte(certs.ServerCred.Cert), 0644); err != nil {
+				errChannel <- err
+				return
+			}
+			if err := os.WriteFile(keyPath, []byte(certs.ServerCred.PrivateKey), 0644); err != nil {
+				errChannel <- err
+				return
+			}
+
+			errChannel <- nil
+			err = h.server.ServeTLS(ln, crtPath, keyPath)
+		} else {
+			errChannel <- nil
+			h.server.Serve(ln)
+		}
 	}()
 
 	return <-errChannel
