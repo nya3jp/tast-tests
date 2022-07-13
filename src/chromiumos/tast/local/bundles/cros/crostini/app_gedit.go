@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -71,6 +70,7 @@ func AppGedit(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(crostini.FixtureData).Chrome
 	keyboard := s.FixtValue().(crostini.FixtureData).KB
 	cont := s.FixtValue().(crostini.FixtureData).Cont
+	d := s.FixtValue().(crostini.FixtureData).Differ()
 
 	// Use a shortened context for test operations to reserve time for cleanup.
 	cleanupCtx := ctx
@@ -95,18 +95,7 @@ func AppGedit(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	revert, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
-	if err != nil {
-		s.Fatal("Failed to enter clamshell mode: ", err)
-	}
-	defer revert(cleanupCtx)
-
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
-
-	d, err := screenshot.NewDifferFromChrome(ctx, s, cr, screenshot.Config{DefaultOptions: screenshot.Options{WindowWidthDP: 652, WindowHeightDP: 484}})
-	if err != nil {
-		s.Fatal("Failed to start screen differ: ", err)
-	}
 
 	// Create a file using gedit in Terminal.
 	if err := testCreateFileWithGedit(ctx, terminalApp, keyboard, tconn, cont, d); err != nil {
