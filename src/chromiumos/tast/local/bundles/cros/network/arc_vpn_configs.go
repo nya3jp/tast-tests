@@ -14,8 +14,8 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/bundles/cros/network/arcvpn"
-	"chromiumos/tast/local/bundles/cros/network/routing"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
+	"chromiumos/tast/local/network/routing"
 	"chromiumos/tast/testing"
 )
 

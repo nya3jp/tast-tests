@@ -10,10 +10,10 @@ import (
 
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq"
-	"chromiumos/tast/local/bundles/cros/network/virtualnet/env"
-	"chromiumos/tast/local/bundles/cros/network/virtualnet/radvd"
-	"chromiumos/tast/local/bundles/cros/network/virtualnet/subnet"
+	"chromiumos/tast/local/network/virtualnet/dnsmasq"
+	"chromiumos/tast/local/network/virtualnet/env"
+	"chromiumos/tast/local/network/virtualnet/radvd"
+	"chromiumos/tast/local/network/virtualnet/subnet"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )

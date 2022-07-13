@@ -9,9 +9,9 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/network/dumputil"
-	"chromiumos/tast/local/bundles/cros/network/routing"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
+	"chromiumos/tast/local/network/dumputil"
+	"chromiumos/tast/local/network/routing"
 	"chromiumos/tast/testing"
 )
 
