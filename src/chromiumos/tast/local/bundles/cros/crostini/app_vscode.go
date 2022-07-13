@@ -98,20 +98,7 @@ func AppVscode(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Terminal app: ", err)
 	}
-
-	restartIfError := true
-
-	defer func() {
-		// Restart Crostini in the end in case any error in the middle and Visual Studio Code is not closed.
-		// This also closes the Terminal window.
-		if restartIfError {
-			if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(cleanupCtx); err != nil {
-				s.Log("Failed to restart Crostini: ", err)
-			}
-		} else {
-			terminalApp.Exit(keyboard)(cleanupCtx)
-		}
-	}()
+	defer terminalApp.Exit(keyboard)(cleanupCtx)
 
 	// Cursor blinking breaks screenshots.
 	cont.WriteFile(ctx, ".config/Code/User/settings.json", `{"editor.cursorBlinking": "solid","workbench.startupEditor": "None"}`)
@@ -121,8 +108,6 @@ func AppVscode(ctx context.Context, s *testing.State) {
 	if err := testCreateFileWithVSCode(ctx, terminalApp, keyboard, tconn, cont, d); err != nil {
 		s.Fatal("Failed to create file with Visual Studio Code in Terminal: ", err)
 	}
-
-	restartIfError = false
 }
 
 func testCreateFileWithVSCode(ctx context.Context, terminalApp *terminalapp.TerminalApp, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn, cont *vm.Container, d screenshot.Differ) error {

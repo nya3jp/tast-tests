@@ -143,17 +143,7 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 		}
 		s.Fatal("Failed to open Crostini Terminal: ", err)
 	}
-
-	// Restart crostini in the end in case any error in the middle and gedit is not closed.
-	// This also closes the Terminal window.
-	restartIfError := true
-	defer func(ctx context.Context) {
-		if restartIfError {
-			if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(ctx); err != nil {
-				s.Log("Failed to restart crostini: ", err)
-			}
-		}
-	}(cleanupCtx)
+	defer terminalApp.Exit(keyboard)(cleanupCtx)
 
 	err = checkFilesharingBeforeRestart(
 		ctx, cont, tconn, ui, ud, filesApp, keyboard, geditWindow, filesAppShelfButton)
@@ -172,8 +162,6 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed tests to check whether file sharing  works correctly after restart of Crostini: ", err)
 	}
-
-	restartIfError = false
 }
 
 func checkFilesharingBeforeRestart(
