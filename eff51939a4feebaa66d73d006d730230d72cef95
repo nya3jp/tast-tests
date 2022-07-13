@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4669ede6_2201cafa",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-13T00:58:05Z",
+      "side": 1,
+      "message": "args ...string",
+      "range": {
+        "startLine": 181,
+        "startChar": 45,
+        "endLine": 181,
+        "endChar": 49
+      },
+      "revId": "eff51939a4feebaa66d73d006d730230d72cef95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ec4885_45366c19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-13T00:58:05Z",
+      "side": 1,
+      "message": "\"no HTTP traffic to ${resolveHotToIP} found\"",
+      "range": {
+        "startLine": 96,
+        "startChar": 39,
+        "endLine": 96,
+        "endChar": 61
+      },
+      "revId": "eff51939a4feebaa66d73d006d730230d72cef95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94882076_f7842e6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-13T00:58:05Z",
+      "side": 1,
+      "message": "nit: IPConfig. same everywhere else",
+      "range": {
+        "startLine": 117,
+        "startChar": 46,
+        "endLine": 117,
+        "endChar": 48
+      },
+      "revId": "eff51939a4feebaa66d73d006d730230d72cef95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "643d3d8a_3d02e84a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-13T00:58:05Z",
+      "side": 1,
+      "message": "nit: store this as a local var so you don\u0027t have to do it twice",
+      "range": {
+        "startLine": 125,
+        "startChar": 5,
+        "endLine": 125,
+        "endChar": 24
+      },
+      "revId": "eff51939a4feebaa66d73d006d730230d72cef95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29532d08_b72241f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-13T00:58:05Z",
+      "side": 1,
+      "message": "you should wait for the service to transition to a portalled state at this point, not online.",
+      "revId": "eff51939a4feebaa66d73d006d730230d72cef95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d23a4336_d77a77d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-13T00:58:05Z",
+      "side": 1,
+      "message": "let\u0027s get rid of this function and inline it above, there\u0027s not too much value here",
+      "revId": "eff51939a4feebaa66d73d006d730230d72cef95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

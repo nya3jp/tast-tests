@@ -469,6 +469,30 @@
       },
       "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2b42b5_bce012e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-13T00:58:05Z",
+      "side": 1,
+      "message": "Oh gotcha, never mind this is fine.",
+      "parentUuid": "8be9234b_0710b30e",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 178,
+        "endChar": 19
+      },
+      "revId": "a89d4b0136f167bb0ece762003465dcb44466a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
