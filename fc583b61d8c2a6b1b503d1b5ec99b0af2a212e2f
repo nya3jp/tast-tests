@@ -46,6 +46,30 @@
       },
       "revId": "fc583b61d8c2a6b1b503d1b5ec99b0af2a212e2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5138a25_9e2df324",
+        "filename": "src/chromiumos/tast/local/shill/manager.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-13T01:22:50Z",
+      "side": 1,
+      "message": "Ah nvm, actually if I check base..PS20 then this diff disappears, so seems just a display issue.",
+      "parentUuid": "a200b001_309f30ab",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 645,
+        "endChar": 0
+      },
+      "revId": "fc583b61d8c2a6b1b503d1b5ec99b0af2a212e2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
