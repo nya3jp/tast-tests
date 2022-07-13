@@ -81,6 +81,24 @@
       "parentUuid": "dc32579e_435971a3",
       "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6056a4e9_30c3c326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-07-13T17:32:25Z",
+      "side": 1,
+      "message": "Could we just call `document.body.style.zoom \u003d \"75%\"`?\n\ne.g. \n```\nif err :\u003d conn.Eval(ctx, \"document.body.style.zoom \u003d \u002775%\u0027\", nil); err !\u003d nil {\n...\n}\n```",
+      "parentUuid": "47a008b4_82ae0e5c",
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
