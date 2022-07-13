@@ -53,6 +53,7 @@ func init() {
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.Model(cursiveEnabledModels...)),
+		Vars:         []string{"cursiveServerURL"},
 	})
 }
 
@@ -73,16 +74,21 @@ func CursiveSmoke(ctx context.Context, s *testing.State) {
 	installIcon := nodewith.HasClass("PwaInstallView").Role(role.Button)
 	installButton := nodewith.Name("Install").Role(role.Button)
 
-	conn, err := cr.NewConn(ctx, cursive.AppURL)
+	appURL := cursive.AppURL
+	if serverURL, ok := s.Var("cursiveServerURL"); ok {
+		appURL = serverURL
+	}
+
+	conn, err := cr.NewConn(ctx, appURL)
 	if err != nil {
-		s.Fatalf("Failed to open URL %q: %v", cursive.AppURL, err)
+		s.Fatalf("Failed to open URL %q: %v", appURL, err)
 	}
 	defer conn.Close()
 	defer conn.CloseTarget(cleanupCtx)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Wait for longer time after second launch, since it can be delayed on low-end devices.
-		if err := ui.WithTimeout(10 * time.Second).WaitUntilExists(installIcon)(ctx); err != nil {
+		if err := ui.WithTimeout(30 * time.Second).WaitUntilExists(installIcon)(ctx); err != nil {
 			testing.ContextLog(ctx, "Install button is not shown initially. See b/230413572")
 			testing.ContextLog(ctx, "Refresh page to enable installation")
 			if reloadErr := conn.Eval(ctx, `location.reload()`, nil); reloadErr != nil {
@@ -92,7 +98,7 @@ func CursiveSmoke(ctx context.Context, s *testing.State) {
 		}
 
 		return nil
-	}, &testing.PollOptions{Timeout: 2 * time.Minute}); err != nil {
+	}, &testing.PollOptions{Timeout: 3 * time.Minute}); err != nil {
 		s.Fatal("Failed to wait for Cursive to be installable: ", err)
 	}
 
