@@ -145,6 +145,8 @@ func AppGeditUnshareFolder(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed a setup step in this test: ", err)
 	}
 
+	ud := uidetection.NewDefault(tconn)
+
 	// Open tmp file with Gedit.
 	ui := uiauto.New(tconn)
 	geditWindow := nodewith.NameContaining(tmpFilename).Role(role.Window).First()
@@ -152,6 +154,7 @@ func AppGeditUnshareFolder(ctx context.Context, s *testing.State) {
 		filesApp.OpenDownloads(),
 		filesApp.ClickContextMenuItemRegex(tmpFilename, filesapp.OpenWith, geditContextMenuItem),
 		ui.WaitUntilExists(geditWindow),
+		ud.WaitUntilExists(uidetection.TextBlock([]string{"file", "string"})),
 	)(ctx)
 	if err != nil {
 		s.Fatal("Failed to open tmp file in the Downloads folder: ", err)
@@ -191,8 +194,6 @@ func AppGeditUnshareFolder(ctx context.Context, s *testing.State) {
 	)(ctx); err != nil {
 		s.Fatal("Failed to perform screendiff: ", err)
 	}
-
-	ud := uidetection.NewDefault(tconn)
 
 	// Note we check that err is nil rather than not nil first.
 	// Since the folder is no longer shared, the "ctrl+S" keyboard action
