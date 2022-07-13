@@ -64,7 +64,7 @@ func clearMigrationState(ctx context.Context) error {
 	defer cr.Close(ctx)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if _, err := os.Stat("/home/chronos/user/lacros/First Run"); !os.IsNotExist(err) {
+		if _, err := os.Stat(migrate.LacrosFirstRunPath); !os.IsNotExist(err) {
 			return errors.Wrap(err, "'First Run' file exists or cannot be read")
 		}
 		return nil
@@ -77,7 +77,7 @@ func clearMigrationState(ctx context.Context) error {
 
 // verifyLacrosLaunch checks if Lacros is launchable after profile migration.
 func verifyLacrosLaunch(ctx context.Context, s *testing.State, cr *chrome.Chrome) {
-	if _, err := os.Stat("/home/chronos/user/lacros/First Run"); err != nil {
+	if _, err := os.Stat(migrate.LacrosFirstRunPath); err != nil {
 		s.Fatal("Error reading 'First Run' file: ", err)
 	}
 
