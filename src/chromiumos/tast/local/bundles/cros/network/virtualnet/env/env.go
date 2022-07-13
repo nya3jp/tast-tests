@@ -146,7 +146,7 @@ func (e *Env) Cleanup(ctx context.Context) error {
 		}
 	}
 
-	// Remove netns.
+	// Remove veth interface and the netns.
 	if e.netnsCreated {
 		if err := testexec.CommandContext(ctx, "ip", "netns", "del", e.NetNSName).Run(); err != nil {
 			updateLastErrAndLog(errors.Wrapf(err, "failed to delete the netns %s", e.NetNSName))
@@ -156,6 +156,17 @@ func (e *Env) Cleanup(ctx context.Context) error {
 	// Remove the chroot filesystem.
 	if _, err := testexec.CommandContext(ctx, "rm", "-rf", "--one-file-system", e.chrootDir).Output(); err != nil {
 		updateLastErrAndLog(errors.Wrap(err, "failed removing chroot filesystem"))
+	}
+
+	// Wait until veth pair is removed. It should happen once we remove the netns,
+	// but it may take up to 2 seconds (on a local DUT) to finish.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if _, err := net.InterfaceByName(e.VethOutName); err == nil {
+			return errors.Errorf("veth %f still exists", e.VethOutName)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second}); err != nil {
+		updateLastErrAndLog(errors.Wrapf(err, "failed to wait for veth %s disappeared", e.VethOutName))
 	}
 
 	return lastErr
