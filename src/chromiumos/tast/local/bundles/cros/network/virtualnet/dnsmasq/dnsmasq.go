@@ -89,7 +89,7 @@ func (d *dnsmasq) Start(ctx context.Context, env *env.Env) error {
 		confVals["dns"] = strings.Join(d.dns, ",")
 	}
 	if d.forceAddressToGateway != "" {
-		confVals["address"] = fmt.Sprintf("/%v/%v", d.forceAddressToGateway, gateway.String())
+		confVals["address"] = fmt.Sprintf("/#/%v", gateway.String())
 		confVals["port"] = dnsPort // enable DNS if needed for address forwarding
 	}
 	b := &bytes.Buffer{}
