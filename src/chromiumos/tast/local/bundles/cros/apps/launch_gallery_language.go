@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/apps/fixture"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -34,11 +35,11 @@ func init() {
 		HardwareDeps: hwdep.D(pre.AppsStableModels),
 		Params: []testing.Param{
 			{
-				Fixture: "chromeLoggedInForEAInJP",
+				Fixture: fixture.LoggedInJP,
 			},
 			{
 				Name:              "lacros",
-				Fixture:           "lacrosForEAInJP",
+				Fixture:           fixture.LacrosLoggedInJP,
 				ExtraSoftwareDeps: []string{"lacros_stable"},
 			},
 		},
