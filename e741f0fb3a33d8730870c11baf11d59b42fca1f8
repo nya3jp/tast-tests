@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56cc4c14_f2bd0d52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-13T17:53:31Z",
+      "side": 1,
+      "message": "nit: I\u0027d define a test case struct, and make this a list - that way you can add more test params, e.g. test name to use in DumpUITree",
+      "range": {
+        "startLine": 52,
+        "startChar": 22,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "e741f0fb3a33d8730870c11baf11d59b42fca1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0665cb1f_0ce6bcf2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-13T17:53:31Z",
+      "side": 1,
+      "message": "move this outside the loop?",
+      "revId": "e741f0fb3a33d8730870c11baf11d59b42fca1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6599fd57_ccd982d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-13T17:53:31Z",
+      "side": 1,
+      "message": "let\u0027s parameterize this test by tablet/clamshell mode, and use OpenProductivityLauncher",
+      "revId": "e741f0fb3a33d8730870c11baf11d59b42fca1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a967aafa_f945a5fd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-13T17:53:31Z",
+      "side": 1,
+      "message": "maybe move this before searching for tab info.",
+      "range": {
+        "startLine": 107,
+        "startChar": 16,
+        "endLine": 107,
+        "endChar": 30
+      },
+      "revId": "e741f0fb3a33d8730870c11baf11d59b42fca1f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
