@@ -35,6 +35,7 @@ func init() {
 			"ui.signinProfileTestExtensionManifestKey",
 			"ui.gaiaPoolDefault",
 		},
+		Timeout: chrome.LoginTimeout + 5*time.Minute,
 		Params: []testing.Param{{
 			Val: false,
 		}, {
@@ -80,7 +81,7 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
-	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
+	ui := uiauto.New(tconn).WithTimeout(60 * time.Second)
 
 	s.Log("Waiting for the welcome screen")
 	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.WelcomeScreen.isVisible()"); err != nil {
