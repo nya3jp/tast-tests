@@ -6,6 +6,7 @@ package ui
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"time"
@@ -35,18 +36,18 @@ func init() {
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "chromeLoggedIn",
-			Timeout: 7 * time.Minute,
+			Timeout: 14 * time.Minute,
 		}, {
 			Name:    "skia_renderer",
 			Val:     browser.TypeAsh,
 			Fixture: "chromeLoggedInWith100FakeAppsSkiaRenderer",
-			Timeout: 7 * time.Minute,
+			Timeout: 14 * time.Minute,
 		}, {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
 			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-			Timeout:           10 * time.Minute,
+			Timeout:           20 * time.Minute,
 		}},
 		Data: []string{"animation.html", "animation.js"},
 	})
@@ -57,11 +58,6 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-
-	// Ensure display on to record ui performance correctly.
-	if err := power.TurnOnDisplay(ctx); err != nil {
-		s.Fatal("Failed to turn on display: ", err)
-	}
 
 	cr, l, cs, err := lacros.Setup(ctx, s.FixtValue(), s.Param().(browser.Type))
 	if err != nil {
@@ -85,6 +81,101 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	defer server.Close()
 	url := server.URL + "/animation.html"
 
+	type testParam struct {
+		fullDescription     string
+		windowsDescription  string
+		windows             int
+		tablet              bool
+		overviewWindowState ash.WindowStateType
+		splitView           bool
+		histograms          []string
+	}
+
+	genParams := func(n int) []testParam {
+		params := []testParam{
+			{
+				fullDescription:     fmt.Sprintf("SingleClamshellMode-%dwindows", n),
+				windowsDescription:  fmt.Sprintf("%dwindows", n),
+				windows:             n,
+				tablet:              false,
+				overviewWindowState: ash.WindowStateMaximized,
+				splitView:           false,
+				histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.SingleClamshellMode",
+					"Ash.Overview.AnimationSmoothness.Exit.SingleClamshellMode"},
+			}, {
+				fullDescription:     fmt.Sprintf("ClamshellMode-%dwindows", n),
+				windowsDescription:  fmt.Sprintf("%dwindows", n),
+				windows:             n,
+				tablet:              false,
+				overviewWindowState: ash.WindowStateNormal,
+				splitView:           false,
+				histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.ClamshellMode",
+					"Ash.Overview.AnimationSmoothness.Exit.ClamshellMode"},
+			}, {
+				fullDescription:     fmt.Sprintf("TabletMode-%dwindows", n),
+				windowsDescription:  fmt.Sprintf("%dwindows", n),
+				windows:             n,
+				tablet:              true,
+				overviewWindowState: ash.WindowStateMaximized,
+				splitView:           false,
+				histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.TabletMode",
+					"Ash.Overview.AnimationSmoothness.Exit.TabletMode"},
+			}, {
+				fullDescription:     fmt.Sprintf("MinimizedTabletMode-%dwindows", n),
+				windowsDescription:  fmt.Sprintf("%dwindows", n),
+				windows:             n,
+				tablet:              true,
+				overviewWindowState: ash.WindowStateMinimized,
+				splitView:           false,
+				histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.MinimizedTabletMode",
+					"Ash.Overview.AnimationSmoothness.Exit.MinimizedTabletMode"},
+			}}
+
+		if n == 2 {
+			params = append(params, testParam{
+				fullDescription:     fmt.Sprintf("SplitView-%dwindows", n),
+				windowsDescription:  fmt.Sprintf("%dwindows", n),
+				windows:             n,
+				tablet:              true,
+				overviewWindowState: ash.WindowStateMaximized,
+				splitView:           true,
+				// The overview exit animation does not include the window being activated.
+				// Thus, the SplitView-2windows case has no overview exit animation at all.
+				histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.SplitView"},
+			})
+		} else if n > 2 {
+			params = append(params, []testParam{
+				{
+					fullDescription:     fmt.Sprintf("SplitView-%dwindowsincludingmaximizedoverviewwindows", n),
+					windowsDescription:  fmt.Sprintf("%dwindowsincludingmaximizedoverviewwindows", n),
+					windows:             n,
+					tablet:              true,
+					overviewWindowState: ash.WindowStateMaximized,
+					splitView:           true,
+					histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.SplitView",
+						"Ash.Overview.AnimationSmoothness.Exit.SplitView"},
+				}, {
+					fullDescription:     fmt.Sprintf("SplitView-%dwindowsincludingminimizedoverviewwindows", n),
+					windowsDescription:  fmt.Sprintf("%dwindowsincludingminimizedoverviewwindows", n),
+					windows:             n,
+					tablet:              true,
+					overviewWindowState: ash.WindowStateMinimized,
+					splitView:           true,
+					histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.SplitView",
+						"Ash.Overview.AnimationSmoothness.Exit.SplitView"},
+				},
+			}...)
+		}
+		return params
+	}
+
+	// Note the test only create windows so the number of windows must be in
+	// increasing order here.
+	params := genParams(2)
+	params = append(params, genParams(3)...)
+	params = append(params, genParams(4)...)
+	params = append(params, genParams(8)...)
+
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 	runner := perfutil.NewRunner(cr.Browser())
 	currentWindows := 0
@@ -95,115 +186,14 @@ func OverviewPerf(ctx context.Context, s *testing.State) {
 	//   windows, tablet mode with minimized windows (the home screen),
 	//   tablet split view with maximized overview windows, or tablet
 	//   split view with minimized overview windows.
-	for i, test := range []struct {
-		fullDescription     string
-		windowsDescription  string
-		windows             int
-		tablet              bool
-		overviewWindowState ash.WindowStateType
-		splitView           bool
-		histograms          []string
-	}{{
-		fullDescription:     "SingleClamshellMode-2windows",
-		windowsDescription:  "2windows",
-		windows:             2,
-		tablet:              false,
-		overviewWindowState: ash.WindowStateMaximized,
-		splitView:           false,
-		histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.SingleClamshellMode",
-			"Ash.Overview.AnimationSmoothness.Exit.SingleClamshellMode"},
-	}, {
-		fullDescription:     "ClamshellMode-2windows",
-		windowsDescription:  "2windows",
-		windows:             2,
-		tablet:              false,
-		overviewWindowState: ash.WindowStateNormal,
-		splitView:           false,
-		histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.ClamshellMode",
-			"Ash.Overview.AnimationSmoothness.Exit.ClamshellMode"},
-	}, {
-		fullDescription:     "TabletMode-2windows",
-		windowsDescription:  "2windows",
-		windows:             2,
-		tablet:              true,
-		overviewWindowState: ash.WindowStateMaximized,
-		splitView:           false,
-		histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.TabletMode",
-			"Ash.Overview.AnimationSmoothness.Exit.TabletMode"},
-	}, {
-		fullDescription:     "MinimizedTabletMode-2windows",
-		windowsDescription:  "2windows",
-		windows:             2,
-		tablet:              true,
-		overviewWindowState: ash.WindowStateMinimized,
-		splitView:           false,
-		histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.MinimizedTabletMode",
-			"Ash.Overview.AnimationSmoothness.Exit.MinimizedTabletMode"},
-	}, {
-		fullDescription:     "SplitView-2windows",
-		windowsDescription:  "2windows",
-		windows:             2,
-		tablet:              true,
-		overviewWindowState: ash.WindowStateMaximized,
-		splitView:           true,
-		// The overview exit animation does not include the window being activated.
-		// Thus, the SplitView-2windows case has no overview exit animation at all.
-		histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.SplitView"},
-	}, {
-		fullDescription:     "SingleClamshellMode-8windows",
-		windowsDescription:  "8windows",
-		windows:             8,
-		tablet:              false,
-		overviewWindowState: ash.WindowStateMaximized,
-		splitView:           false,
-		histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.SingleClamshellMode",
-			"Ash.Overview.AnimationSmoothness.Exit.SingleClamshellMode"},
-	}, {
-		fullDescription:     "ClamshellMode-8windows",
-		windowsDescription:  "8windows",
-		windows:             8,
-		tablet:              false,
-		overviewWindowState: ash.WindowStateNormal,
-		splitView:           false,
-		histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.ClamshellMode",
-			"Ash.Overview.AnimationSmoothness.Exit.ClamshellMode"},
-	}, {
-		fullDescription:     "TabletMode-8windows",
-		windowsDescription:  "8windows",
-		windows:             8,
-		tablet:              true,
-		overviewWindowState: ash.WindowStateMaximized,
-		splitView:           false,
-		histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.TabletMode",
-			"Ash.Overview.AnimationSmoothness.Exit.TabletMode"},
-	}, {
-		fullDescription:     "MinimizedTabletMode-8windows",
-		windowsDescription:  "8windows",
-		windows:             8,
-		tablet:              true,
-		overviewWindowState: ash.WindowStateMinimized,
-		splitView:           false,
-		histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.MinimizedTabletMode",
-			"Ash.Overview.AnimationSmoothness.Exit.MinimizedTabletMode"},
-	}, {
-		fullDescription:     "SplitView-8windowsincludingmaximizedoverviewwindows",
-		windowsDescription:  "8windowsincludingmaximizedoverviewwindows",
-		windows:             8,
-		tablet:              true,
-		overviewWindowState: ash.WindowStateMaximized,
-		splitView:           true,
-		histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.SplitView",
-			"Ash.Overview.AnimationSmoothness.Exit.SplitView"},
-	}, {
-		fullDescription:     "SplitView-8windowsincludingminimizedoverviewwindows",
-		windowsDescription:  "8windowsincludingminimizedoverviewwindows",
-		windows:             8,
-		tablet:              true,
-		overviewWindowState: ash.WindowStateMinimized,
-		splitView:           true,
-		histograms: []string{"Ash.Overview.AnimationSmoothness.Enter.SplitView",
-			"Ash.Overview.AnimationSmoothness.Exit.SplitView"},
-	}} {
+	for i, test := range params {
+		// Ensure display on to record ui performance correctly. It is put inside
+		// the loop because the overall duration of the loop has no input events
+		// and last longer than default 7 minutes before display is turned off.
+		if err := power.TurnOnDisplay(ctx); err != nil {
+			s.Fatal("Failed to turn on display: ", err)
+		}
+
 		// This assumes that the test scenarios are sorted by
 		// number of windows. If not, then this will generate
 		// Panic: runtime error: makeslice: cap out of range
