@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "762ef5bc_c9fba8fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-13T20:26:31Z",
+      "side": 1,
+      "message": "crrev/c/3760780",
+      "parentUuid": "1b952967_4fd63819",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59897f98_5b37af8a",
@@ -183,6 +207,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb2f53ae_4a14ac28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-13T20:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd930485_ed86c10a",
+      "range": {
+        "startLine": 649,
+        "startChar": 38,
+        "endLine": 649,
+        "endChar": 47
+      },
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d221db9_d399748f",
@@ -196,6 +244,30 @@
       "writtenOn": "2022-07-13T19:01:02Z",
       "side": 1,
       "message": "`\"Unexpected zoom value: got %s; want 75%%\"`\nSee: https://github.com/golang/go/wiki/CodeReviewComments#useful-test-failures",
+      "range": {
+        "startLine": 659,
+        "startChar": 11,
+        "endLine": 659,
+        "endChar": 64
+      },
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba090714_46c43d69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-13T20:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d221db9_d399748f",
       "range": {
         "startLine": 659,
         "startChar": 11,
@@ -229,6 +301,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f45bf2e_537c83a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-13T20:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7da9ac67_c45b82f8",
+      "range": {
+        "startLine": 661,
+        "startChar": 1,
+        "endLine": 661,
+        "endChar": 25
+      },
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17026ce2_68f7a813",
@@ -242,6 +338,30 @@
       "writtenOn": "2022-07-13T19:01:02Z",
       "side": 1,
       "message": "comma",
+      "range": {
+        "startLine": 943,
+        "startChar": 26,
+        "endLine": 943,
+        "endChar": 27
+      },
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c29eacb1_ee75c4ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-13T20:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17026ce2_68f7a813",
       "range": {
         "startLine": 943,
         "startChar": 26,
@@ -275,6 +395,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64fa2e56_cbdd1f9d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-13T20:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3112927_04fb4683",
+      "range": {
+        "startLine": 946,
+        "startChar": 3,
+        "endLine": 946,
+        "endChar": 27
+      },
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f206902_e23c2d34",
@@ -288,6 +432,30 @@
       "writtenOn": "2022-07-13T19:01:02Z",
       "side": 1,
       "message": "The screenshot should be taken before [1]. `metrics.Run` performs a diff of histograms before and after calling its function argument, and so this function argument should do only the action that triggers the desired histogram samples. Also, the screenshot should be taken in a separate CL.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go;drc\u003dfa8d0b89d4c6fe76367c9a4cb1e1215e80f9352f;l\u003d879",
+      "range": {
+        "startLine": 942,
+        "startChar": 65,
+        "endLine": 947,
+        "endChar": 3
+      },
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbe8b663_cf790ae2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-13T20:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f206902_e23c2d34",
       "range": {
         "startLine": 942,
         "startChar": 65,
