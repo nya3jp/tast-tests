@@ -543,9 +543,7 @@ func (f *inputsFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) int
 }
 
 func (f *inputsFixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {
-	// filepath.Base(s.OutDir()) returns the test name.
-	// TODO(b/235164130) use s.TestName once it is available.
-	f.uc.SetTestName(filepath.Base(s.OutDir()))
+	f.uc.SetTestName(s.TestName())
 
 	recorder, err := uiauto.NewScreenRecorder(ctx, f.tconn)
 	if err != nil {
