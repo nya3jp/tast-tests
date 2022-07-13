@@ -415,6 +415,13 @@ func (its *InputsTestServer) ValidateInputOnField(inputField InputField, inputFu
 	return uiauto.Combine("validate input function on field "+string(inputField),
 		its.Clear(inputField),
 		its.ClickFieldAndWaitForActive(inputField),
+		// The following sleep is required to avoid a race condition
+		// between OnFocus events and the first keypress entered in the
+		// inputFunc. There have been cases of flakey tests resulting
+		// from a race condition like this, where the first keypress is
+		// entered before the input method has been fully initialized
+		// via the respective OnFocus event. See b/235417796 for more.
+		uiauto.Sleep(50*time.Millisecond),
 		inputFunc,
 		util.WaitForFieldTextToBeIgnoringCase(its.tconn, inputField.Finder(), expectedValue),
 	)
