@@ -16,6 +16,143 @@
       "message": "PTAL.",
       "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "806ebf70_527863df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-13T14:23:10Z",
+      "side": 1,
+      "message": "could you document the configuration?",
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ec0902_0ff55223",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-13T14:23:10Z",
+      "side": 1,
+      "message": "nit: maybe \"parseVars\" ?",
+      "range": {
+        "startLine": 152,
+        "startChar": 9,
+        "endLine": 152,
+        "endChar": 12
+      },
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d3e988d_c9676fc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-13T14:23:10Z",
+      "side": 1,
+      "message": "style: !vars.skipInitialLogin",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 33
+      },
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "604b21d2_dd9fe71d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-13T14:23:10Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f11bf7_bae7d2d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-13T14:23:10Z",
+      "side": 1,
+      "message": "Is it intentional to use empty creds here if skipInitialLogin is set?\nOr, should we make this as an optional stuff?",
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3b75576_232ab4ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-13T14:23:10Z",
+      "side": 1,
+      "message": "you don\u0027t need err decl here.",
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4826350_7c1f75d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-13T14:23:10Z",
+      "side": 1,
+      "message": "style: can be just \u0027s\u0027, i think. (as go prefers shorter name with context).",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 222,
+        "endChar": 23
+      },
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
