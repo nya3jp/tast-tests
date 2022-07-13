@@ -107,7 +107,7 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 
 	cleanupSetting, err := cuj.InitializeSetting(ctx, tconn)
 	if err != nil {
-		s.Fatal("Failed to set initial settings")
+		s.Fatal("Failed to set initial settings: ", err)
 	}
 	defer cleanupSetting(cleanupSettingsCtx)
 
