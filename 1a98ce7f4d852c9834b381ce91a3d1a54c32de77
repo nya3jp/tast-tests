@@ -87,6 +87,30 @@
       },
       "revId": "1a98ce7f4d852c9834b381ce91a3d1a54c32de77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2152ab6_044b96eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-13T01:48:26Z",
+      "side": 1,
+      "message": "OK so in the end I had to restore this call, because apparently there\u0027s some issue with unpacking selinux attributes when running on amd64-generic. This will need to be investigated separately, but this shouldn\u0027t block the CL as it preserves the status-quo now.",
+      "parentUuid": "9f6ca5f8_04ae393e",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 2
+      },
+      "revId": "1a98ce7f4d852c9834b381ce91a3d1a54c32de77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
