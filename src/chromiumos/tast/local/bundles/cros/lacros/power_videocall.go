@@ -220,6 +220,7 @@ func PowerVideocall(ctx context.Context, s *testing.State) {
 			return nil
 		},
 		"Event.Latency.EndToEnd.KeyPress",
+		"EventLatency.KeyPressed.TotalLatency",
 	)
 	if err != nil {
 		if params.collectTrace {
