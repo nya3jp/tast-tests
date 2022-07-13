@@ -8,10 +8,13 @@ package utils
 
 import (
 	"context"
+	"time"
 
 	fwCommon "chromiumos/tast/common/firmware"
+	"chromiumos/tast/common/servo"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
+	"chromiumos/tast/remote/firmware/reporters"
 	"chromiumos/tast/testing"
 )
 
@@ -42,5 +45,61 @@ func ChangeFWVariant(ctx context.Context, h *firmware.Helper, ms *firmware.ModeS
 			return errors.Wrap(err, "requiring BiosServiceClient")
 		}
 	}
+	return nil
+}
+
+// CheckRecReason checks if recovery reason occures in the expReason slice
+func CheckRecReason(ctx context.Context, h *firmware.Helper, ms *firmware.ModeSwitcher, expReasons []reporters.RecoveryReason) error {
+	testing.ContextLog(ctx, "Set the USB Mux direction to Host")
+	if err := h.Servo.SetUSBMuxState(ctx, servo.USBMuxHost); err != nil {
+		errors.Wrap(err, "failed to set the USB Mux direction to the Host")
+	}
+
+	// Test element required if rebooting from recovery to anything
+	if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogCCD); err != nil {
+		errors.Wrap(err, "failed to remove watchdog for ccd")
+	}
+
+	testing.ContextLog(ctx, "Warm reboot with skiping waiting and sync")
+	if err := h.Servo.SetPowerState(ctx, servo.PowerStateWarmReset); err != nil {
+		errors.Wrap(err, "failed to warm reset DUT")
+	}
+
+	testing.ContextLog(ctx, "Require a servo")
+	if err := h.RequireServo(ctx); err != nil {
+		errors.Wrap(err, "failed to init servo")
+	}
+
+	testing.ContextLog(ctx, "Close RPC Connection")
+	if err := h.CloseRPCConnection(ctx); err != nil {
+		errors.Wrap(err, "failed to close RPC connection")
+	}
+
+	// Recovery mode requires the DUT to boot the image on the USB.
+	// Thus, the servo must show the USB to the DUT.
+	testing.ContextLog(ctx, "Enable Recovery mode")
+	if err := ms.EnableRecMode(ctx, servo.USBMuxDUT); err != nil {
+		errors.Wrap(err, "failed to enable recovery mode")
+	}
+
+	testing.ContextLog(ctx, "Reestablishing connection to DUT")
+	connectCtx, cancel := context.WithTimeout(ctx, 10*time.Minute)
+	defer cancel()
+	if err := h.WaitConnect(connectCtx); err != nil {
+		errors.Wrap(err, "failed to reconnect to DUT after booting to recovery mode")
+	}
+
+	testing.ContextLog(ctx, "Expect recovery boot")
+	if isRecovery, err := h.Reporter.CheckBootMode(ctx, fwCommon.BootModeRecovery); err != nil {
+		errors.Wrap(err, "failed to check a boot mode")
+	} else if !isRecovery {
+		errors.New("failed to boot into the recovery mode")
+	}
+
+	testing.ContextLog(ctx, "Check recovery reason")
+	if containsRecReason, err := h.Reporter.ContainsRecoveryReason(ctx, expReasons); err != nil || !containsRecReason {
+		errors.Wrap(err, "failed to get expected recovery reason")
+	}
+
 	return nil
 }

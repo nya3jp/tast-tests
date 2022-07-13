@@ -11,7 +11,6 @@ import (
 	"strconv"
 	"time"
 
-	fwCommon "chromiumos/tast/common/firmware"
 	fwUtils "chromiumos/tast/remote/bundles/cros/firmware/utils"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
@@ -25,8 +24,8 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         CorruptBothFWSigAB,
-		Desc:         "Servo based both firmware signature A and B corruption test. This test requires a USB disk with ChromeOS test image plugged-in. this test corrupts both firmware signature A and B. On next reboot, the firmware verification fails and enters recovery mode. This test then checks the success of the recovery boot",
+		Func:         CorruptBothFWBodyAB,
+		Desc:         "Servo based both firmware body A and B corruption test. This test requires a USB disk with ChromeOS test image plugged-in. this test corrupts both firmware body A and B. On next reboot, the firmware verification fails and enters recovery mode. This test then checks the success of the recovery boot",
 		Contacts:     []string{"pf@semihalf.com", "chromeos-firmware@google.com"},
 		Attr:         []string{"group:firmware", "firmware_experimental", "firmware_usb"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
@@ -49,7 +48,7 @@ func init() {
 	})
 }
 
-func CorruptBothFWSigAB(ctx context.Context, s *testing.State) {
+func CorruptBothFWBodyAB(ctx context.Context, s *testing.State) {
 	h := s.FixtValue().(*fixture.Value).Helper
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to init servo: ", err)
@@ -64,45 +63,45 @@ func CorruptBothFWSigAB(ctx context.Context, s *testing.State) {
 		s.Fatal("Creating mode switcher: ", err)
 	}
 
-	s.Log("Backup firmware A/B signatures")
-	FWSignABkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_FWSignAImageSection, Programmer: pb.Programmer_BIOSProgrammer})
+	s.Log("Backup firmware A/B body")
+	FWBodyABkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_FWBodyAImageSection, Programmer: pb.Programmer_BIOSProgrammer})
 	if err != nil {
-		s.Fatal("Failed to backup current FW Sign A region: ", err)
+		s.Fatal("Failed to backup current FW Body A region: ", err)
 	}
 	defer func() {
-		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", FWSignABkp.Path).Output(ssh.DumpLogOnError); err != nil {
-			s.Fatal("Failed to delete FW Sign A backup: ", err)
+		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", FWBodyABkp.Path).Output(ssh.DumpLogOnError); err != nil {
+			s.Fatal("Failed to delete FW Body A backup: ", err)
 		}
 	}()
-	FWSignBBkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_FWSignBImageSection, Programmer: pb.Programmer_BIOSProgrammer})
+	FWBodyBBkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_FWBodyBImageSection, Programmer: pb.Programmer_BIOSProgrammer})
 	if err != nil {
-		s.Fatal("Failed to backup current FW Sign B region: ", err)
+		s.Fatal("Failed to backup current FW Body B region: ", err)
 	}
 	defer func() {
-		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", FWSignBBkp.Path).Output(ssh.DumpLogOnError); err != nil {
-			s.Fatal("Failed to delete FW Sign B backup: ", err)
+		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", FWBodyBBkp.Path).Output(ssh.DumpLogOnError); err != nil {
+			s.Fatal("Failed to delete FW Body B backup: ", err)
 		}
 	}()
 
 	s.Log("Copy backup files to the Host")
-	FWSignADst, err := ioutil.TempFile("", "FWSignABackup")
+	FWBodyADst, err := ioutil.TempFile("", "FWBodyABackup")
 	if err != nil {
 		s.Fatal("Failed to create temporary file for firmware sign A backup")
 	}
-	defer os.Remove(FWSignADst.Name())
-	defer FWSignADst.Close()
+	defer os.Remove(FWBodyADst.Name())
+	defer FWBodyADst.Close()
 
-	FWSignBDst, err := ioutil.TempFile("", "FWSignBBackup")
+	FWBodyBDst, err := ioutil.TempFile("", "FWBodyBBackup")
 	if err != nil {
 		s.Fatal("Failed to create temporary file for firmware sign B backup")
 	}
-	defer os.Remove(FWSignBDst.Name())
-	defer FWSignBDst.Close()
+	defer os.Remove(FWBodyBDst.Name())
+	defer FWBodyBDst.Close()
 
-	if err := linuxssh.GetFile(ctx, s.DUT().Conn(), FWSignABkp.Path, FWSignADst.Name(), linuxssh.PreserveSymlinks); err != nil {
+	if err := linuxssh.GetFile(ctx, s.DUT().Conn(), FWBodyABkp.Path, FWBodyADst.Name(), linuxssh.PreserveSymlinks); err != nil {
 		s.Fatal("Failed to copy a FW A Sign backup to the Host")
 	}
-	if err := linuxssh.GetFile(ctx, s.DUT().Conn(), FWSignBBkp.Path, FWSignBDst.Name(), linuxssh.PreserveSymlinks); err != nil {
+	if err := linuxssh.GetFile(ctx, s.DUT().Conn(), FWBodyBBkp.Path, FWBodyBDst.Name(), linuxssh.PreserveSymlinks); err != nil {
 		s.Fatal("Failed to copy a FW B Sign backup to the Host")
 	}
 
@@ -143,17 +142,17 @@ func CorruptBothFWSigAB(ctx context.Context, s *testing.State) {
 			s.Fatal("Requiring BiosServiceClient: ", err)
 		}
 
-		s.Log("Get back FW Signs backup from host to DUT")
-		if _, err := linuxssh.PutFiles(ctx, s.DUT().Conn(), map[string]string{FWSignADst.Name(): FWSignABkp.Path, FWSignBDst.Name(): FWSignBBkp.Path}, linuxssh.PreserveSymlinks); err != nil {
+		s.Log("Get back FW Bodys backup from host to DUT")
+		if _, err := linuxssh.PutFiles(ctx, s.DUT().Conn(), map[string]string{FWBodyADst.Name(): FWBodyABkp.Path, FWBodyBDst.Name(): FWBodyBBkp.Path}, linuxssh.PreserveSymlinks); err != nil {
 			s.Fatal("Failed to get backup files to DUT from Host")
 		}
 
-		s.Log("Restore firmware signs")
-		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, FWSignABkp); err != nil {
-			s.Fatal("Failed to restore FW Sign A: ", err)
+		s.Log("Restore firmware bodys")
+		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, FWBodyABkp); err != nil {
+			s.Fatal("Failed to restore FW Body A: ", err)
 		}
-		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, FWSignBBkp); err != nil {
-			s.Fatal("Failed to restore FW Sign B: ", err)
+		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, FWBodyBBkp); err != nil {
+			s.Fatal("Failed to restore FW Body B: ", err)
 		}
 
 		if err := ms.ModeAwareReboot(ctx, firmware.WarmReset, firmware.AssumeRecoveryMode); err != nil {
@@ -177,14 +176,14 @@ func CorruptBothFWSigAB(ctx context.Context, s *testing.State) {
 
 	}()
 
-	s.Log("Corrupt Firmware A Sign")
-	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.CorruptSection{Section: pb.ImageSection_FWSignAImageSection, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
-		s.Fatal("Failed to corrupt Firmware A Sign (VBOOTA) section: ", err)
+	s.Log("Corrupt Firmware A Body")
+	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.CorruptSection{Section: pb.ImageSection_FWBodyAImageSection, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
+		s.Fatal("Failed to corrupt Firmware A Body (FVMAIN) section: ", err)
 	}
 
-	s.Log("Corrupt Firmware B Sign")
-	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.CorruptSection{Section: pb.ImageSection_FWSignBImageSection, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
-		s.Fatal("Failed to corrupt Firmware B Sign (VBOOTB) section: ", err)
+	s.Log("Corrupt Firmware B Body")
+	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.CorruptSection{Section: pb.ImageSection_FWBodyBImageSection, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
+		s.Fatal("Failed to corrupt Firmware B Body (FVMAINB) section: ", err)
 	}
 
 	s.Log("Copy TAST Files from DUT")
@@ -196,16 +195,7 @@ func CorruptBothFWSigAB(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to sync DUT: ", err)
 	}
 
-	if err := fwUtils.CheckRecReason(ctx, h, ms, []reporters.RecoveryReason{reporters.RecoveryReasonROInvalidRW, reporters.RecoveryReasonRWVerifyKeyblock}); err != nil {
-		s.Fatal("Failed when checking recovery reason: ", err)
-	}
-
-	s.Log("Set FW tries to B")
-	if err := firmware.SetFWTries(ctx, h.DUT, fwCommon.RWSectionB, 0); err != nil {
-		s.Fatal("Failed to set FW tries to B")
-	}
-
-	if err := fwUtils.CheckRecReason(ctx, h, ms, []reporters.RecoveryReason{reporters.RecoveryReasonROInvalidRW, reporters.RecoveryReasonRWVerifyKeyblock}); err != nil {
+	if err := fwUtils.CheckRecReason(ctx, h, ms, []reporters.RecoveryReason{reporters.RecoveryReasonROInvalidRW, reporters.RecoveryReasonRWVerifyBody}); err != nil {
 		s.Fatal("Failed when checking recovery reason: ", err)
 	}
 }
