@@ -19,7 +19,6 @@ import (
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/verifier"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 type pingParam struct {
@@ -36,12 +35,11 @@ func init() {
 			"jck@semihalf.com",                // Test author
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr:         []string{"group:wificell", "wificell_perf", "wificell_unstable"},
-		ServiceDeps:  []string{wificell.TFServiceName},
-		HardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
-		Fixture:      "wificellFixtWithCapture",
-		Timeout:      time.Minute * 5, // The average test time doubled.
-		Vars:         []string{"wifi.RoamContPing.rounds"},
+		Attr:        []string{"group:wificell", "wificell_perf", "wificell_unstable"},
+		ServiceDeps: []string{wificell.TFServiceName},
+		Fixture:     "wificellFixtWithCapture",
+		Timeout:     time.Minute * 5, // The average test time doubled.
+		Vars:        []string{"wifi.RoamContPing.rounds"},
 		Params: []testing.Param{{
 			Name: "none",
 			Val: wifiutil.ContParam{

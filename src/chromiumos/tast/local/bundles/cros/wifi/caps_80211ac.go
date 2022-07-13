@@ -11,7 +11,6 @@ import (
 
 	"chromiumos/tast/local/network/iw"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -23,7 +22,6 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
 		SoftwareDeps: []string{"wifi"},
-		HardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 	})
 }
 
