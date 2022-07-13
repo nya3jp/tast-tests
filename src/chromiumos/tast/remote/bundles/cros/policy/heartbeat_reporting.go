@@ -56,10 +56,9 @@ func validateHeartbeatEvents(ctx context.Context, events []reportingutil.InputEv
 			t := time.UnixMicro(us)
 			if t.After(testStartTime) {
 				if j, err := json.Marshal(event); err != nil {
-					testing.ContextLog(ctx, "Found a valid event: ", string(j))
-				} else {
 					return true, errors.Wrap(err, "failed to marshal event")
 				}
+				testing.ContextLog(ctx, "Found a valid event: ", string(j))
 				return true, nil
 			}
 		}
@@ -68,8 +67,10 @@ func validateHeartbeatEvents(ctx context.Context, events []reportingutil.InputEv
 }
 
 func HeartbeatReporting(ctx context.Context, s *testing.State) {
-	user := s.RequiredVar("policy.HeartbeatReporting.user_name")
-	pass := s.RequiredVar("policy.HeartbeatReporting.password")
+	//user := s.RequiredVar("policy.HeartbeatReporting.user_name")
+	//pass := s.RequiredVar("policy.HeartbeatReporting.password")
+	user := "memory_reporting_enabled_tast@managedchrome.com"
+	pass := "test123!!"
 	cID := s.RequiredVar(reportingutil.ManagedChromeCustomerIDPath)
 	APIKey := s.RequiredVar(reportingutil.EventsAPIKeyPath)
 
