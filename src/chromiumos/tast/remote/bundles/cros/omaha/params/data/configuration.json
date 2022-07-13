@@ -15,10 +15,11 @@
 	  "100": 14526,
 	  "101": 14588,
 	  "102": 14695,
-	  "103": 14816
+	  "103": 14816,
+	  "104": 14909
 	},
-	"CurrentStableChrome": 101,
-	"NextStableChrome": 102,
+	"CurrentStableChrome": 103,
+	"NextStableChrome": 104,
 	"CurrentChromeOSLTS": 96,
 	"CurrentChromeOSLTSMinor": 73
   }
