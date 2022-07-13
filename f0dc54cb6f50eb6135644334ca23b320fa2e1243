@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1bd2c1d_0f221fa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-07-13T05:41:54Z",
+      "side": 1,
+      "message": "This is likely going to cause a lot of conflicts so I\u0027m going to wait for all the ongoing work on the package to be landed and redo this. Uploading it now just so that I can upload the depending patches (for preemptive review).",
+      "revId": "f0dc54cb6f50eb6135644334ca23b320fa2e1243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
