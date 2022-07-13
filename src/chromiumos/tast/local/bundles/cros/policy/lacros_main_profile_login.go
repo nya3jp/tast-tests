@@ -9,6 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
@@ -16,9 +18,45 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
 	"chromiumos/tast/testing"
 )
+
+type testCase struct {
+	// The button that should be pressed to accept of decline sync.
+	// if not present - FRE is expected to be skipped.
+	// Provided string is a key in testElements array.
+	syncButton string
+	// The sync message that is expected to be shown at the end of the test.
+	// Provided string is a key in testElements array.
+	syncMessage             string
+	enableSyncConsentPolicy *policy.EnableSyncConsent
+	syncDisabledPolicy      *policy.SyncDisabled
+}
+
+func profileMenu() *nodewith.Finder {
+	return nodewith.Name("Settings - Sync and Google services").Role(role.RootWebArea)
+}
+
+// testElements keys.
+const (
+	confirmSyncButton = "confirmSyncButton"
+	denySyncButton    = "denySyncButton"
+	syncOnState       = "syncOnState"
+	syncOffState      = "syncOffState"
+	syncDisabledState = "syncDisabledState"
+)
+
+var testElements = map[string]*nodewith.Finder{
+	confirmSyncButton: nodewith.Name("Yes, I'm in").Role(role.Button),
+	denySyncButton:    nodewith.Name("No thanks").Role(role.Button),
+	// When sync is on - "Turn off" button is shown.
+	syncOnState: nodewith.Name("Turn off").Role(role.Button).Ancestor(profileMenu()),
+	// When sync is off - "Turn on sync" button is shown.
+	syncOffState:      nodewith.NameStartingWith("Turn on sync").Role(role.Button).Ancestor(profileMenu()),
+	syncDisabledState: nodewith.Name("Sync disabled").Role(role.StaticText).Ancestor(profileMenu()),
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -32,85 +70,133 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.LacrosPolicyLoggedInRealUser,
-		Timeout:      2*chrome.LoginTimeout + time.Minute,
+		Params: []testing.Param{
+			// cases with no policy.
+			{
+				Name: "no_policy_sync_on",
+				Val: testCase{
+					syncButton:              confirmSyncButton,
+					syncMessage:             syncOnState,
+					enableSyncConsentPolicy: &policy.EnableSyncConsent{Stat: policy.StatusUnset},
+					syncDisabledPolicy:      &policy.SyncDisabled{Stat: policy.StatusUnset},
+				},
+			},
+			{
+				Name: "no_policy_sync_off",
+				Val: testCase{
+					syncButton:              denySyncButton,
+					syncMessage:             syncOffState,
+					enableSyncConsentPolicy: &policy.EnableSyncConsent{Stat: policy.StatusUnset},
+					syncDisabledPolicy:      &policy.SyncDisabled{Stat: policy.StatusUnset},
+				},
+			},
+			// SyncDisabled = true -> FRE is skipped, sync is disabled.
+			{
+				Name: "sync_disabled",
+				Val: testCase{
+					syncMessage:             syncDisabledState,
+					enableSyncConsentPolicy: &policy.EnableSyncConsent{Stat: policy.StatusUnset},
+					syncDisabledPolicy:      &policy.SyncDisabled{Val: true},
+				},
+			},
+			{
+				Name: "sync_disabled_with_sync_consent_disabled",
+				Val: testCase{
+					syncMessage:             syncDisabledState,
+					enableSyncConsentPolicy: &policy.EnableSyncConsent{Val: false},
+					syncDisabledPolicy:      &policy.SyncDisabled{Val: true},
+				},
+			},
+			{
+				Name: "sync_disabled_with_sync_consent_enabled",
+				Val: testCase{
+					syncMessage:             syncDisabledState,
+					enableSyncConsentPolicy: &policy.EnableSyncConsent{Val: true},
+					syncDisabledPolicy:      &policy.SyncDisabled{Val: true},
+				},
+			},
+			// EnableSyncConsent = false -> FRE is skipped, sync is enabled.
+			{
+				Name: "sync_consent_disabled",
+				Val: testCase{
+					syncMessage:             syncOnState,
+					enableSyncConsentPolicy: &policy.EnableSyncConsent{Val: false},
+					syncDisabledPolicy:      &policy.SyncDisabled{Stat: policy.StatusUnset},
+				},
+			},
+			{
+				Name: "sync_consent_disabled_with_sync_disabled_false",
+				Val: testCase{
+					syncMessage:             syncOnState,
+					enableSyncConsentPolicy: &policy.EnableSyncConsent{Val: false},
+					syncDisabledPolicy:      &policy.SyncDisabled{Val: false},
+				},
+			}},
+		Timeout: chrome.LoginTimeout + time.Minute,
 	})
 }
 
 func LacrosMainProfileLogin(ctx context.Context, s *testing.State) {
-	profileMenu := nodewith.NameStartingWith("Accounts and sync").Role(role.Menu)
+	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
+	param := s.Param().(testCase)
 
-	for _, param := range []struct {
-		// name is the subtest name.
-		name string
-		// the button that should be pressed to accept of decline sync.
-		syncButton *nodewith.Finder
-		// the sync message that is expected to be shown at the end of the test.
-		syncMessage *nodewith.Finder
-	}{
-		{
-			name:        "no_policy_sync_on",
-			syncButton:  nodewith.Name("Yes, I'm in").Role(role.Button),
-			syncMessage: nodewith.Name("Sync is on").Role(role.StaticText).Ancestor(profileMenu),
-		},
-		{
-			name:        "no_policy_sync_off",
-			syncButton:  nodewith.Name("No thanks").Role(role.Button),
-			syncMessage: nodewith.Name("Sync is off").Role(role.StaticText).Ancestor(profileMenu),
-		},
-	} {
-		s.Run(ctx, param.name, func(ctx context.Context, s *testing.State) {
-			// Reserve 30 seconds for various cleanup.
-			cleanupCtx := ctx
-			ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
-			defer cancel()
+	// Reserve 30 seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
 
-			// Start chrome.
-			cr, err := chrome.New(ctx, s.FixtValue().(*fixtures.PolicyRealUserFixtData).Opts()...)
-			if err != nil {
-				s.Fatal("Failed to start Chrome: ", err)
-			}
-			defer cr.Close(cleanupCtx)
+	// Start chrome.
+	cr, err := chrome.New(ctx, s.FixtValue().(*fixtures.PolicyRealUserFixtData).Opts()...)
+	if err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
 
-			// Connect to Test API to use it with the UI library.
-			tconn, err := cr.TestAPIConn(ctx)
-			if err != nil {
-				s.Fatal("Failed to connect Test API: ", err)
-			}
-			defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	// Perform cleanup.
+	if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
+		s.Fatal("Failed to clean up: ", err)
+	}
 
-			// Launch Lacros.
-			lacros, err := lacros.Launch(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to launch lacros-chrome: ", err)
-			}
-			defer lacros.Close(cleanupCtx)
+	// Update policies.
+	policies := []policy.Policy{param.enableSyncConsentPolicy, param.syncDisabledPolicy}
+	if err := policyutil.ServeAndRefresh(ctx, fdms, cr, policies); err != nil {
+		s.Fatal("Failed to update policies: ", err)
+	}
 
-			ui := uiauto.New(tconn)
+	// Connect to Test API to use it with the UI library.
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect Test API: ", err)
+	}
 
-			welcomeButton := nodewith.Name("Let's go").Role(role.Button)
-			if err := uiauto.Combine("accept or decline sync",
-				ui.WaitUntilExists(welcomeButton),
-				ui.DoDefaultUntil(welcomeButton, ui.Exists(param.syncButton)),
-				ui.DoDefault(param.syncButton),
-			)(ctx); err != nil {
-				s.Fatal("Failed to accept or decline sync: ", err)
-			}
+	// Launch Lacros.
+	lacros, err := lacros.Launch(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to launch lacros-chrome: ", err)
+	}
+	defer lacros.Close(cleanupCtx)
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "lacros_login_ui_tree")
 
-			profileToolbarButton := nodewith.ClassName("AvatarToolbarButton").Role(role.Button).Focusable()
-			loggedInUserEmail := nodewith.Name(cr.User()).Role(role.StaticText).Ancestor(profileMenu)
+	ui := uiauto.New(tconn)
 
-			if err := uiauto.Combine("open the toolbar and check that the sync is on",
-				ui.WaitUntilExists(profileToolbarButton),
-				// Sync message may show an error in the beginning, but should change to 'sync is on/off'.
-				ui.WithTimeout(time.Minute).DoDefaultUntil(profileToolbarButton,
-					uiauto.Combine("check that the user is logged in",
-						ui.Exists(loggedInUserEmail),
-						ui.Exists(param.syncMessage),
-					),
-				),
-			)(ctx); err != nil {
-				s.Fatal("Failed to check that the sync is on: ", err)
-			}
-		})
+	if param.syncButton != "" {
+		welcomeButton := nodewith.Name("Let's go").Role(role.Button)
+		if err := uiauto.Combine("accept or decline sync",
+			ui.WaitUntilExists(welcomeButton),
+			ui.DoDefaultUntil(welcomeButton, ui.Exists(testElements[param.syncButton])),
+			ui.DoDefault(testElements[param.syncButton]),
+		)(ctx); err != nil {
+			s.Fatal("Failed to accept or decline sync: ", err)
+		}
+	}
+
+	conn, err := lacros.NewConn(ctx, "chrome://settings/syncSetup")
+	if err != nil {
+		s.Fatal("Failed to open a new tab in Lacros browser: ", err)
+	}
+	defer conn.Close()
+
+	if err := ui.WaitUntilExists(testElements[param.syncMessage])(ctx); err != nil {
+		s.Fatal("Failed to find the expected sync message: ", err)
 	}
 }
