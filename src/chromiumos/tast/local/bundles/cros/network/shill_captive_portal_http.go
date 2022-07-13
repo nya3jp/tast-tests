@@ -18,12 +18,14 @@ import (
 )
 
 type params struct {
-	ServiceState        string
-	HTTPResponseHandler func(rw http.ResponseWriter, req *http.Request)
+	ServiceState         string
+	HTTPResponseHandler  func(rw http.ResponseWriter, req *http.Request)
+	HTTPSResponseHandler func(rw http.ResponseWriter, req *http.Request)
 }
 
 var (
-	redirectURL = "http://www.example.com"
+	redirectURL    = "http://www.example.com"
+	httpsPortalURL = "https://www.example.com"
 )
 
 func redirectHandler(url string) func(http.ResponseWriter, *http.Request) {
@@ -36,6 +38,10 @@ func redirectWithNoLocationHandler(rw http.ResponseWriter, req *http.Request) {
 	rw.WriteHeader(http.StatusFound)
 }
 
+func noContentHandler(rw http.ResponseWriter, req *http.Request) {
+	rw.WriteHeader(http.StatusNoContent)
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     ShillCaptivePortalHTTP,
@@ -46,14 +52,23 @@ func init() {
 		Params: []testing.Param{{
 			Name: "redirectfound",
 			Val: &params{
-				ServiceState:        shillconst.ServiceStateRedirectFound,
-				HTTPResponseHandler: redirectHandler(redirectURL),
+				ServiceState:         shillconst.ServiceStateRedirectFound,
+				HTTPResponseHandler:  redirectHandler(redirectURL),
+				HTTPSResponseHandler: nil,
 			},
 		}, {
 			Name: "portalsuspected",
 			Val: &params{
-				ServiceState:        shillconst.ServiceStatePortalSuspected,
-				HTTPResponseHandler: redirectWithNoLocationHandler,
+				ServiceState:         shillconst.ServiceStatePortalSuspected,
+				HTTPResponseHandler:  redirectWithNoLocationHandler,
+				HTTPSResponseHandler: nil,
+			},
+		}, {
+			Name: "online",
+			Val: &params{
+				ServiceState:         shillconst.ServiceStateOnline,
+				HTTPResponseHandler:  noContentHandler,
+				HTTPSResponseHandler: noContentHandler,
 			},
 		}},
 	})
@@ -69,27 +84,31 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 	// Relying on shillReset test fixture to undo the enabling of portal detection.
 	if err := m.EnablePortalDetection(ctx); err != nil {
 		s.Fatal("Enable Portal Detection failed: ", err)
-
 	}
+
+	if err := m.SetProperty(ctx, shillconst.ManagerPropertyPortalHTTPSURL, httpsPortalURL); err != nil {
+		s.Fatal("Failed to set portal httpsurl: ", err)
+	}
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
 
 	params := s.Param().(*params)
 	opts := virtualnet.EnvOptions{
-		Priority:                  5,
-		NameSuffix:                "",
-		EnableDHCP:                true,
-		EnableDNS:                 true,
-		RAServer:                  false,
-		HTTPServerResponseHandler: params.HTTPResponseHandler,
-		ResolvedHost:              "www.gstatic.com",
+		Priority:   5,
+		NameSuffix: "",
+		EnableDHCP: true,
+		EnableDNS:  true,
+		RAServer:   false,
+		// ServerCredentials:          &certs.ServerCred,
+		HTTPSServerResponseHandler: params.HTTPSResponseHandler,
+		HTTPServerResponseHandler:  params.HTTPResponseHandler,
 	}
 	pool := subnet.NewPool()
 	service, portalEnv, err := virtualnet.CreateRouterEnv(ctx, m, pool, opts)
 	if err != nil {
 		s.Fatal("Failed to create a portal env: ", err)
 	}
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
 	defer portalEnv.Cleanup(cleanupCtx)
 
 	pw, err := service.CreateWatcher(ctx)
@@ -97,13 +116,15 @@ func ShillCaptivePortalHTTP(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create watcher: ", err)
 	}
 	defer pw.Close(cleanupCtx)
+
 	s.Log("Make service restart portal detector")
 	if err := m.RecheckPortal(ctx); err != nil {
 		s.Fatal("Failed to invoke RecheckPortal on shill: ", err)
 	}
 
-	timeoutCtx, cancel := context.WithTimeout(ctx, 35*time.Second)
+	timeoutCtx, cancel := context.WithTimeout(ctx, 30*time.Second)
 	defer cancel()
+
 	s.Logf("Check if service state is %q", params.ServiceState)
 	var expectedServiceState = []interface{}{
 		params.ServiceState,
