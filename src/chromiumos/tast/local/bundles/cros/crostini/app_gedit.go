@@ -67,7 +67,6 @@ func init() {
 }
 func AppGedit(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
-	cr := s.FixtValue().(crostini.FixtureData).Chrome
 	keyboard := s.FixtValue().(crostini.FixtureData).KB
 	cont := s.FixtValue().(crostini.FixtureData).Cont
 	d := s.FixtValue().(crostini.FixtureData).Differ()
@@ -82,18 +81,7 @@ func AppGedit(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Terminal app: ", err)
 	}
-
-	restartIfError := true
-
-	defer func() {
-		// Restart crostini in the end in case any error in the middle and gedit is not closed.
-		// This also closes the Terminal window.
-		if restartIfError {
-			if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(cleanupCtx); err != nil {
-				s.Log("Failed to restart crostini: ", err)
-			}
-		}
-	}()
+	defer terminalApp.Exit(keyboard)(cleanupCtx)
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
@@ -101,9 +89,6 @@ func AppGedit(ctx context.Context, s *testing.State) {
 	if err := testCreateFileWithGedit(ctx, terminalApp, keyboard, tconn, cont, d); err != nil {
 		s.Fatal("Failed to create file with gedit in Terminal: ", err)
 	}
-
-	restartIfError = false
-
 }
 
 func testCreateFileWithGedit(ctx context.Context, terminalApp *terminalapp.TerminalApp, keyboard *input.KeyboardEventWriter, tconn *chrome.TestConn, cont *vm.Container, d screenshot.Differ) error {

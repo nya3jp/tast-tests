@@ -12,7 +12,10 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/devicemode"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/crostini/ui/terminalapp"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -48,6 +51,8 @@ func init() {
 type crostiniAppsFixture struct {
 	cr               *chrome.Chrome
 	tconn            *chrome.TestConn
+	cont             *vm.Container
+	kb               *input.KeyboardEventWriter
 	deviceMode       devicemode.DeviceMode
 	revertDeviceMode func(ctx context.Context) error
 	screenRecorder   *uiauto.ScreenRecorder
@@ -55,10 +60,12 @@ type crostiniAppsFixture struct {
 }
 
 func (f *crostiniAppsFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	f.tconn = s.ParentValue().(FixtureData).Tconn
-	f.cr = s.ParentValue().(FixtureData).Chrome
-	f.screenDiffer = &Screendiffer{differ: nil, state: &screenDiffState{fixtState: s}}
 	p := s.ParentValue().(FixtureData)
+	f.tconn = p.Tconn
+	f.cr = p.Chrome
+	f.cont = p.Cont
+	f.kb = p.KB
+	f.screenDiffer = &Screendiffer{differ: nil, state: &screenDiffState{fixtState: s}}
 	return FixtureData{p.Chrome, p.Tconn, p.Cont, p.KB, p.PostData, p.StartupValues, f.screenDiffer}
 }
 
@@ -123,6 +130,20 @@ func (f *crostiniAppsFixture) PostTest(ctx context.Context, s *testing.FixtTestS
 	}
 	if f.screenRecorder != nil {
 		f.screenRecorder.StopAndSaveOnError(ctx, filepath.Join(s.OutDir(), "record.webm"), s.HasError)
+	}
+
+	// Restart Crostini in case of test failures to leave a clean env for the
+	// following tests. This ensures all open apps are closed.
+	if s.HasError() {
+		// Open Terminal app.
+		terminalApp, err := terminalapp.Launch(ctx, f.tconn)
+		if err != nil {
+			s.Log("Failed to open Terminal app: ", err)
+		} else {
+			if err := terminalApp.RestartCrostini(f.kb, f.cont, f.cr.NormalizedUser())(ctx); err != nil {
+				s.Log("Failed to restart Crostini: ", err)
+			}
+		}
 	}
 }
 

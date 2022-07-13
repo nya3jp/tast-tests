@@ -68,7 +68,6 @@ func init() {
 }
 func AppEmacs(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(crostini.FixtureData).Tconn
-	cr := s.FixtValue().(crostini.FixtureData).Chrome
 	keyboard := s.FixtValue().(crostini.FixtureData).KB
 	cont := s.FixtValue().(crostini.FixtureData).Cont
 	d := s.FixtValue().(crostini.FixtureData).Differ()
@@ -84,25 +83,11 @@ func AppEmacs(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Terminal app: ", err)
 	}
 
-	restartIfError := true
-
-	defer func() {
-		// Restart Crostini in the end in case any error in the middle and Emacs is not closed.
-		// This also closes the Terminal window.
-		if restartIfError {
-			if err := terminalApp.RestartCrostini(keyboard, cont, cr.NormalizedUser())(cleanupCtx); err != nil {
-				s.Log("Failed to restart Crostini: ", err)
-			}
-		} else {
-			terminalApp.Exit(keyboard)(cleanupCtx)
-		}
-	}()
+	defer terminalApp.Exit(keyboard)(cleanupCtx)
 
 	if err := createFileWithEmacs(ctx, keyboard, terminalApp, tconn, cont, d); err != nil {
 		s.Fatal("Failed to create file with emacs in Terminal: ", err)
 	}
-
-	restartIfError = false
 }
 
 // createFileWithEmacs creates a file with emacs and types a string into it and save it in container.
