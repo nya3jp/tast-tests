@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62499da3_bf4f8bcd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-13T06:25:18Z",
+      "side": 1,
+      "message": "you also need to specify `PreTestTimeout` and `PostTimeout`, same to other fixtures. Otherwise, the PreTest and PostTest functions (for screen recorders) will not execute.",
+      "range": {
+        "startLine": 39,
+        "startChar": 29,
+        "endLine": 39,
+        "endChar": 36
+      },
+      "revId": "bfa17ee4da9d07c4973a6b681d119e788d0b50af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d161d6d_c43cb5f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-13T06:25:18Z",
+      "side": 1,
+      "message": "just `time.Minute`",
+      "range": {
+        "startLine": 77,
+        "startChar": 41,
+        "endLine": 77,
+        "endChar": 55
+      },
+      "revId": "bfa17ee4da9d07c4973a6b681d119e788d0b50af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a0ebcc_51397dde",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-13T06:25:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 91,
+        "startChar": 41,
+        "endLine": 91,
+        "endChar": 54
+      },
+      "revId": "bfa17ee4da9d07c4973a6b681d119e788d0b50af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94f94da_d1487752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-13T06:25:18Z",
+      "side": 1,
+      "message": "just `fixtureImpl`",
+      "range": {
+        "startLine": 115,
+        "startChar": 5,
+        "endLine": 115,
+        "endChar": 18
+      },
+      "revId": "bfa17ee4da9d07c4973a6b681d119e788d0b50af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fcca034_b540ac99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/fixture/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-13T06:25:18Z",
+      "side": 1,
+      "message": "you are not using these two in any exsiting fixtures. Suggest to remove them, and only add them when needed.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 23
+      },
+      "revId": "bfa17ee4da9d07c4973a6b681d119e788d0b50af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
