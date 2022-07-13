@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "225467b1_5d2c49f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-13T18:37:05Z",
+      "side": 1,
+      "message": "CL message:\n- Start with the package name (storage:)\n- Start the sentence with a capital letter",
+      "revId": "ec096399305820f0d943fb0a503b1ff9f400d308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef30ee9a_7617436c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-13T18:37:05Z",
+      "side": 1,
+      "message": "LGTM % nit.",
+      "revId": "ec096399305820f0d943fb0a503b1ff9f400d308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d04339d6_9a95596e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/util/disk_info.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-13T18:37:05Z",
+      "side": 1,
+      "message": "nit: Please add a comment about what is being extracted here from the testPath.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 44
+      },
+      "revId": "ec096399305820f0d943fb0a503b1ff9f400d308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
