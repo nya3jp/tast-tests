@@ -52,6 +52,23 @@
       "parentUuid": "6efdf4eb_301240a1",
       "revId": "5eb5bbfc235254598266557d0ba311e7baaf9466",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5adec00e_a5e210ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-13T23:21:49Z",
+      "side": 1,
+      "message": "The code change looks pretty promising to me.",
+      "revId": "5eb5bbfc235254598266557d0ba311e7baaf9466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
