@@ -15,8 +15,13 @@ async function() {
     crosNetworkConfig_: null,
 
     getCrosNetworkConfig() {
+      // Check ash namespace and fallback to chromeos if unavailable, for renaming.
+      // TODO(crbug.com/1164001): Remove the fallback once the renaming is completed.
+      let has_ash_mojom = typeof ash !== "undefined" &&
+                          typeof ash.networkConfig !== "undefined";
       if (!this.crosNetworkConfig_) {
-        this.crosNetworkConfig_ =
+        this.crosNetworkConfig_ = has_ash_mojom ?
+          ash.networkConfig.mojom.CrosNetworkConfig.getRemote() :
           chromeos.networkConfig.mojom.CrosNetworkConfig.getRemote();
       }
       return this.crosNetworkConfig_;
