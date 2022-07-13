@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca965de0_9b44b2c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/googleapps/docs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-07-13T02:39:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a99d71e_a18b0232",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 11
+      },
+      "revId": "89ae9a7405c9eb668744309d53afe49e325c0ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a25a790_ee48277e",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-12T06:52:41Z",
       "side": 1,
       "message": "Can you also replace all LeftClick with DoDefault? Also there are some LeftClickUntil",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 14
+      },
+      "revId": "89ae9a7405c9eb668744309d53afe49e325c0ae6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e1903f_fedc0044",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/googleapps/docs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-07-13T02:39:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a25a790_ee48277e",
       "range": {
         "startLine": 86,
         "startChar": 5,
