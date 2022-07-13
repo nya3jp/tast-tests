@@ -137,7 +137,6 @@ func simpleConnect80211ac() []simpleConnectParams {
 			ap.Mode(ap.Mode80211acPure), ap.Channel(60), ap.HTCaps(ap.HTCapHT20), ap.SpectrumManagement(),
 			ap.VHTChWidth(ap.VHTChWidth20Or40),
 		`}},
-		ExtraHardwareDeps: "hwdep.D(hwdep.Wifi80211ac())",
 	}, {
 		Name: "80211acvht40",
 		Doc:  simpleConnectDocPref("an open 802.11ac network on channel 48 with a channel width of 40MHz."),
@@ -145,7 +144,6 @@ func simpleConnect80211ac() []simpleConnectParams {
 			ap.Mode(ap.Mode80211acPure), ap.Channel(48), ap.HTCaps(ap.HTCapHT40),
 			ap.VHTChWidth(ap.VHTChWidth20Or40),
 		`}},
-		ExtraHardwareDeps: "hwdep.D(hwdep.Wifi80211ac())",
 	}, {
 		Name: "80211acvht80mixed",
 		Doc:  simpleConnectDocPref("an open 802.11ac network on 5GHz channel 36 with center channel of 42 and channel width of 80MHz."),
@@ -161,7 +159,6 @@ func simpleConnect80211ac() []simpleConnectParams {
 			ap.Mode(ap.Mode80211acPure), ap.Channel(157), ap.HTCaps(ap.HTCapHT40Plus),
 			ap.VHTCaps(ap.VHTCapSGI80), ap.VHTCenterChannel(155), ap.VHTChWidth(ap.VHTChWidth80),
 		`}},
-		ExtraHardwareDeps: "hwdep.D(hwdep.Wifi80211ac())",
 	}}
 }
 
@@ -331,7 +328,6 @@ func simpleConnectWPAVHT80() simpleConnectParams {
 				wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
 			)`,
 		}},
-		ExtraHardwareDeps: "hwdep.D(hwdep.Wifi80211ac())",
 	}
 }
 
