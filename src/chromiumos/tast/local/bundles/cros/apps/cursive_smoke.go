@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/apps/cursive"
+	"chromiumos/tast/local/bundles/cros/apps/fixture"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -49,7 +50,7 @@ func init() {
 			"gabpalado@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromeLoggedInForEA",
+		Fixture:      fixture.LoggedIn,
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.Model(cursiveEnabledModels...)),
