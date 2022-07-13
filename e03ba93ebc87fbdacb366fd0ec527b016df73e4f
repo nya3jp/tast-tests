@@ -99,6 +99,24 @@
       "parentUuid": "47a008b4_82ae0e5c",
       "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59379a2d_6d0c417c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-13T18:24:00Z",
+      "side": 1,
+      "message": "Just tried it: unfortunately it didn\u0027t work... Pretty sure that directly setting the zoom doesn\u0027t tell MeetCUJ to resize/readjust the elements on the screen appropriately, so the screen ends up looking really funky. \n\n[49p] https://photos.app.goo.gl/BE7M7voH6Gr1Cfbm8\n[lacros_2p] https://photos.app.goo.gl/KJwNTexMZ7u8MevK7",
+      "parentUuid": "6056a4e9_30c3c326",
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
