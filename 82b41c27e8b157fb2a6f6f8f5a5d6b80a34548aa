@@ -16,6 +16,24 @@
       "message": "Why SkipDpiNormalization?",
       "revId": "82b41c27e8b157fb2a6f6f8f5a5d6b80a34548aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20d01cd4_cb0598e1",
+        "filename": "src/chromiumos/tast/local/crostini/fixture_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-13T04:22:22Z",
+      "side": 1,
+      "message": "We tried to normalize\u0026resize the app window to be the same size on all devices, but it doesn\u0027t help much to reduce the number of untriaged images, as the apps are still rendered differently on difference models despite of being the same size. \n\nOn the other hand, it may introduce some side-effects, i.e., it may make everything very small on the screen thus add difficulty for ui detection; if not properly reverted, other tests sharing the same fixture will run in the normalized state unexpectedly.",
+      "parentUuid": "bfc0dc75_407e77c0",
+      "revId": "82b41c27e8b157fb2a6f6f8f5a5d6b80a34548aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
