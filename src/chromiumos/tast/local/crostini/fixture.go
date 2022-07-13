@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	dlcutil "chromiumos/tast/local/dlc"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
@@ -272,6 +273,7 @@ type FixtureData struct {
 	KB            *input.KeyboardEventWriter
 	PostData      *PostTestData
 	StartupValues *perf.Values
+	Screendiffer  *Screendiffer
 }
 
 var preTestDataBuster = &preTestData{
@@ -287,6 +289,11 @@ var preTestDataBullseye = &preTestData{
 var preTestDataBusterLC = &preTestData{
 	container:     largeContainer,
 	debianVersion: vm.DebianBuster,
+}
+
+// Differ returns an instance implementing the interface screenshot.Differ.
+func (f FixtureData) Differ() screenshot.Differ {
+	return *f.Screendiffer.differ
 }
 
 func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -328,7 +335,7 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	if err != nil {
 		s.Log("Can't record initial restart metrics: ", err)
 	}
-	if checkKeepState(s) && terminaDLCAvailable() {
+	if checkKeepState(s) {
 		s.Log("keepState attempting to start the existing VM and container by launching Terminal")
 		if err = f.launchExitTerminal(ctx); err != nil {
 			s.Fatal("KeepState error: ", err)
@@ -364,7 +371,7 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 
-	return FixtureData{f.cr, f.tconn, f.cont, f.kb, f.postData, f.values}
+	return FixtureData{f.cr, f.tconn, f.cont, f.kb, f.postData, f.values, nil}
 }
 
 func (f *crostiniFixture) TearDown(ctx context.Context, s *testing.FixtState) {
