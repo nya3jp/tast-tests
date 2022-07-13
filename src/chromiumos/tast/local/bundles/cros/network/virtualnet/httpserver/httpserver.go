@@ -13,21 +13,26 @@ import (
 	"net/http"
 	"os"
 
+	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/env"
 )
 
 // Paths in chroot.
 const (
+	keyPath = "/tmp/test.key"
+	crtPath = "/tmp/test.crt"
 	logPath = "/tmp/httpServer.log"
 )
 
 type httpserver struct {
 	// port is the port that the HTTP server will listen and serve on.
-	port   string
-	handle func(rw http.ResponseWriter, req *http.Request)
-	server *http.Server
-	env    *env.Env
+	port string
+	// serverCredentials is set if the server is https.
+	serverCredentials *certificate.Credential
+	handle            func(rw http.ResponseWriter, req *http.Request)
+	server            *http.Server
+	env               *env.Env
 }
 
 // Handler creates the object to handle the response for the HTTP server.
@@ -35,21 +40,23 @@ type Handler struct {
 	handle func(rw http.ResponseWriter, req *http.Request)
 }
 
-// ServeHTTP will have the HTTP server respond with 302 redirects and a redirect URL.
+// ServeHTTP will have the HTTP server respond to requests with |handle|.
 func (h *Handler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	h.handle(rw, req)
 }
 
 // New creates a new httpserver object. The returned object can be passed to
 // Env.StartServer(), its lifetime will be managed by the Env object. The
-// httpserver will only respond with |handle|. Port will be the port the
-// HTTP server listens and serves on.
-func New(port string, handle func(rw http.ResponseWriter, req *http.Request)) *httpserver {
-	return &httpserver{port: port, handle: handle}
+// httpserver will only respond with |handle|. |port| will be the port the
+// HTTP server listens and serves on. |serverCredentials| will contain the credentials
+// for an HTTPS server. If this is nil, the server only listens for HTTP.
+func New(port string, serverCredentials *certificate.Credential, handle func(rw http.ResponseWriter, req *http.Request)) *httpserver {
+	return &httpserver{port: port, serverCredentials: serverCredentials, handle: handle}
 }
 
 // Start starts the HTTP server in a separate process. The HTTP server listens on
-// any IPv4 and IPv6 address within the namespace.
+// any IPv4 and IPv6 address within the namespace. If |serverCredentials| is set,
+// the server started will be HTTPS.
 func (h *httpserver) Start(ctx context.Context, env *env.Env) (retErr error) {
 	h.env = env
 	handler := &Handler{handle: h.handle}
@@ -68,8 +75,22 @@ func (h *httpserver) Start(ctx context.Context, env *env.Env) (retErr error) {
 			errChannel <- err
 			return
 		}
-		errChannel <- nil
-		h.server.Serve(ln)
+		if h.serverCredentials != nil {
+			if err := os.WriteFile(crtPath, []byte(h.serverCredentials.Cert), 0644); err != nil {
+				errChannel <- err
+				return
+			}
+			if err := os.WriteFile(keyPath, []byte(h.serverCredentials.PrivateKey), 0644); err != nil {
+				errChannel <- err
+				return
+			}
+
+			errChannel <- nil
+			err = h.server.ServeTLS(ln, crtPath, keyPath)
+		} else {
+			errChannel <- nil
+			h.server.Serve(ln)
+		}
 	}()
 
 	return <-errChannel
