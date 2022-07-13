@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb25e7b_be744462",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_state_transitions_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-07-13T20:18:33Z",
+      "side": 1,
+      "message": "let\u0027s keep them for now as some unstable schedule has been seen in test suite {cuj}",
+      "parentUuid": "a6a47477_84028204",
+      "range": {
+        "startLine": 53,
+        "startChar": 26,
+        "endLine": 53,
+        "endChar": 62
+      },
+      "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9329a25c_3bb4959e",
