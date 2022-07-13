@@ -16,6 +16,46 @@
       "message": "PTAL.",
       "revId": "252b5fe27ae345d8ccec565aeae93d574babae8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d58001_dd52039f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-13T14:17:57Z",
+      "side": 1,
+      "message": "could you include |err| in the message?",
+      "revId": "252b5fe27ae345d8ccec565aeae93d574babae8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a36afc_7028e938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-13T14:17:57Z",
+      "side": 1,
+      "message": "style\n\ni, err :\u003d strconv.Atoi(iter)\nif err !\u003d nil {\n  s.Fatal(...)\n}\niterationCount \u003d i",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 3
+      },
+      "revId": "252b5fe27ae345d8ccec565aeae93d574babae8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
