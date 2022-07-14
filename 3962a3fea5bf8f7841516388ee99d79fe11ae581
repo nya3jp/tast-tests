@@ -50,6 +50,24 @@
       "message": "LGTM.\n\nShould we also remove gralloctest ?\n\nhttp://cs/chromeos_public/src/platform/minigbm/cros_gralloc/gralloc0/tests/gralloctest.c",
       "revId": "3962a3fea5bf8f7841516388ee99d79fe11ae581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "344f4b7d_d05c9d05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1509302
+      },
+      "writtenOn": "2022-07-14T05:51:55Z",
+      "side": 1,
+      "message": "Better leave it there for now. After ARCVM migration is done, we\u0027ll start considering split minigbm cros_gralloc to aosp and only leave the core minigbm part on upstream side. Let\u0027s decide what to do with them by then.",
+      "parentUuid": "f48a63dd_22ba816d",
+      "revId": "3962a3fea5bf8f7841516388ee99d79fe11ae581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
