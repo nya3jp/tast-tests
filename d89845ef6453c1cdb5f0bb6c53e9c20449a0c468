@@ -37,6 +37,159 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48ead5e5_03529aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-14T23:59:22Z",
+      "side": 1,
+      "message": "We need to shorten the ctx used below and use the original for cleanup. Here\u0027s an example:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go;l\u003d54?q\u003dcleanupCtx\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fbundles%2Fcros%2Fnetwork%2F",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee042d3_ffeabd73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-14T23:59:22Z",
+      "side": 1,
+      "message": "nit: s/ but want/, want/",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15436a56_ffe17abf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-14T23:59:22Z",
+      "side": 1,
+      "message": "nit: While golang does prefer shorter variables, this is a large function and \u0027r\u0027 is fairly ambiguous (router, resolver, etc), so I would suggest \u0027runner\u0027 here.",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec43f315_6840c481",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-14T23:59:22Z",
+      "side": 1,
+      "message": "Combine lines:\nif err :\u003d ...; err !\u003d nil {",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca461184_a36b1e2f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-14T23:59:22Z",
+      "side": 1,
+      "message": "Since |out| is only used for error checking, use this pattern:\nif out, err :\u003d ...; err !\u003d nil {\n  ...\n} else if out \u003d\u003d nil {\n  ...\n}\nThat makes it more clear that err and out are only used in the immediate clauses.",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "671a7112_7f91a514",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-14T23:59:22Z",
+      "side": 1,
+      "message": "nit: Combine lines, golang allows lines \u003e 80 characters and I think that will be a little more clear.",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "290dd147_0e279436",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-14T23:59:22Z",
+      "side": 1,
+      "message": "nit: props (since \u0027p\u0027 looks like a single property)",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f7682cc_df6472c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-14T23:59:22Z",
+      "side": 1,
+      "message": "nit: Just \"no nameserver\"",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d782d5c8_42bdc5f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-14T23:59:22Z",
+      "side": 1,
+      "message": "Shorten ctx and pass cleanupCtx to the deferred func.",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53678540_a3de6b0c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 15
@@ -54,6 +207,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e8bca09_9a9c491d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-14T23:59:22Z",
+      "side": 1,
+      "message": "+1, same above. You can use shillconst.DefaultTimeout for these (it is 30 seconds).\nAlso maybe combine lines as above.",
+      "parentUuid": "53678540_a3de6b0c",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3270ccd2_f08456a9",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 15
@@ -65,6 +236,24 @@
       "writtenOn": "2022-07-14T23:19:33Z",
       "side": 1,
       "message": "nit: let\u0027s make this 30 seconds",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23b99b0f_262f349e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-14T23:59:22Z",
+      "side": 1,
+      "message": "+ combine lines.",
+      "parentUuid": "3270ccd2_f08456a9",
       "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
