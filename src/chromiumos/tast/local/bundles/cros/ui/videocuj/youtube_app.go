@@ -6,6 +6,7 @@ package videocuj
 
 import (
 	"context"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -17,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -26,6 +28,7 @@ const (
 	playBtnDesc     = "Play video"
 	pauseBtnDesc    = "Pause video"
 	playerViewID    = youtubePkg + ":id/player_view"
+	bottomSheetID   = youtubePkg + ":id/design_bottom_sheet"
 	optionsDialogID = youtubePkg + ":id/bottom_sheet_list_view"
 	uiWaitTime      = 3 * time.Second // this is for arc-obj, not for uiauto.Context
 	retryTimes      = 3
@@ -41,17 +44,19 @@ type YtApp struct {
 	d       *androidui.Device
 	video   VideoSrc
 	act     *arc.Activity
+	outDir  string
 	premium bool // Indicate if the account is premium.
 }
 
 // NewYtApp creates an instance of YtApp.
-func NewYtApp(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, a *arc.ARC, d *androidui.Device, video VideoSrc) *YtApp {
+func NewYtApp(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, a *arc.ARC, d *androidui.Device, video VideoSrc, outDir string) *YtApp {
 	return &YtApp{
 		tconn:   tconn,
 		kb:      kb,
 		a:       a,
 		d:       d,
 		video:   video,
+		outDir:  outDir,
 		premium: true,
 	}
 }
@@ -68,14 +73,10 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 		accountImageDescription = "Account"
 		noThanksText            = "NO THANKS"
 		skipTrialText           = "SKIP TRIAL"
-		qualityText             = "Quality"
-		advancedText            = "Advanced"
 		accountImageID          = youtubePkg + ":id/image"
 		searchButtonID          = youtubePkg + ":id/menu_item_1"
 		searchEditTextID        = youtubePkg + ":id/search_edit_text"
 		resultsViewID           = youtubePkg + ":id/results"
-		qualityListItemID       = youtubePkg + ":id/list_item_text"
-		moreOptions             = youtubePkg + ":id/player_overflow_button"
 		dismissID               = youtubePkg + ":id/dismiss"
 	)
 
@@ -154,72 +155,6 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 		return nil
 	}
 
-	// Switch quality is a continuous action.
-	// Dut to the different response time of DUTs.
-	// We need to combine these actions in Poll to make switch quality works smoothly.
-	switchQuality := func(resolution string) error {
-		if err := y.skipAds(ctx); err != nil {
-			return errors.Wrap(err, "failed to skip YouTube ads")
-		}
-
-		testing.ContextLogf(ctx, "Switch Quality to %q", resolution)
-		startTime := time.Now()
-		if err := testing.Poll(ctx, func(context.Context) error {
-			// The playerView cannot be found/clicked when the options dialog (used for selecting quality) is present.
-			// Press "Esc" to dismiss the options dialog, if present.
-			optionsDialog := y.d.Object(androidui.ID(optionsDialogID))
-			if err := optionsDialog.Exists(ctx); err == nil {
-				if err := y.kb.AccelAction("Esc")(ctx); err != nil {
-					return errors.Wrap(err, "failed to press Esc to dismiss existing options dialog before clicking 'More options' button")
-				}
-				testing.ContextLog(ctx, "Dismissed existing options dialog before clicking 'More options' button")
-			}
-
-			playerView := y.d.Object(androidui.ID(playerViewID))
-			if err := cuj.FindAndClick(playerView, uiWaitTime)(ctx); err != nil {
-				return errors.Wrap(err, "failed to find/click the player view on switch quality")
-			}
-
-			moreBtn := y.d.Object(androidui.ID(moreOptions))
-			if err := cuj.FindAndClick(moreBtn, uiWaitTime)(ctx); err != nil {
-				return errors.Wrap(err, "failed to find/click the 'More options'")
-			}
-
-			qualityBtn := y.d.Object(androidui.Text(qualityText))
-			if err := cuj.FindAndClick(qualityBtn, uiWaitTime)(ctx); err != nil {
-				return errors.Wrap(err, "failed to find/click the Quality")
-			}
-
-			advancedBtn := y.d.Object(androidui.Text(advancedText))
-			if err := cuj.FindAndClick(advancedBtn, uiWaitTime)(ctx); err != nil {
-				return errors.Wrap(err, "failed to find/click the advanced option")
-			}
-
-			targetQuality := y.d.Object(androidui.Text(resolution), androidui.ID(qualityListItemID))
-			qualitySelectionPopup := y.d.Object(androidui.Text("Quality for current video"))
-			if err := qualitySelectionPopup.WaitForExists(ctx, 2*time.Second); err != nil {
-				return errors.Wrap(err, "failed to wait for quality selection popup")
-			}
-			if err := targetQuality.WaitForExists(ctx, 2*time.Second); err != nil {
-				return testing.PollBreak(errors.New("the requested resolution is not supported on this device"))
-			}
-
-			// Immediately clicking the target button sometimes doesn't work.
-			if err := testing.Sleep(ctx, time.Second); err != nil {
-				return errors.Wrap(err, "failed to sleep and wait before click resolution")
-			}
-			if err := targetQuality.Click(ctx); err != nil {
-				return errors.Wrap(err, "failed to click the target quality")
-			}
-
-			testing.ContextLogf(ctx, "Elapsed time when switching quality: %.3f s", time.Since(startTime).Seconds())
-			return nil
-		}, &testing.PollOptions{Interval: time.Second, Timeout: time.Minute}); err != nil {
-			return err
-		}
-		return nil
-	}
-
 	if err := playVideo(); err != nil {
 		return errors.Wrap(err, "failed to play video")
 	}
@@ -231,11 +166,97 @@ func (y *YtApp) OpenAndPlayVideo(ctx context.Context) (err error) {
 		return errors.Wrap(err, "failed to wait for loading to complete")
 	}
 
-	if err := switchQuality(y.video.Quality); err != nil {
+	if err := y.switchQuality(ctx, y.video.Quality); err != nil {
 		return errors.Wrap(err, "failed to switch Quality")
 	}
 
 	return nil
+}
+
+// switchQuality switches the video quality by continuous action.
+// Due to the different response time of DUTs.
+// We need to combine these actions in Poll to make switch quality works smoothly.
+func (y *YtApp) switchQuality(ctx context.Context, resolution string) error {
+	testing.ContextLogf(ctx, "Switch Quality to %q", resolution)
+
+	const (
+		qualityText       = "Quality"
+		advancedText      = "Advanced"
+		moreOptions       = youtubePkg + ":id/player_overflow_button"
+		touchOutsideID    = youtubePkg + ":id/touch_outside"
+		barRootID         = youtubePkg + ":id/action_bar_root"
+		qualityListItemID = youtubePkg + ":id/list_item_text"
+		titleResolutionID = youtubePkg + ":id/bottom_sheet_title_resolution"
+	)
+
+	if err := y.skipAds(ctx); err != nil {
+		return errors.Wrap(err, "failed to skip YouTube ads")
+	}
+
+	startTime := time.Now()
+	return testing.Poll(ctx, func(context.Context) error {
+		optionsDialog := y.d.Object(androidui.ID(optionsDialogID))
+		bottomSheet := y.d.Object(androidui.ID(bottomSheetID))
+		err1 := optionsDialog.Exists(ctx)
+		err2 := bottomSheet.Exists(ctx)
+		qualityButtonIndex := 0
+		// The playerView cannot be found/clicked when the options dialog (used for selecting quality) is present.
+		// Press "Esc" to dismiss the options dialog, if present.
+		if err1 == nil || err2 == nil {
+			if err := y.kb.AccelAction("Esc")(ctx); err != nil {
+				return errors.Wrap(err, "failed to press Esc to dismiss existing options dialog before clicking 'More options' button")
+			}
+			testing.ContextLog(ctx, "Dismissed existing options dialog before clicking 'More options' button")
+			// There are two versions of the ARC UI for "More Options", which affects the index of the "Quality" button.
+			if err2 == nil {
+				qualityButtonIndex = 1
+			}
+		}
+
+		playerView := y.d.Object(androidui.ID(playerViewID))
+		if err := cuj.FindAndClick(playerView, uiWaitTime)(ctx); err != nil {
+			return errors.Wrap(err, "failed to find/click the player view on switch quality")
+		}
+
+		moreBtn := y.d.Object(androidui.ID(moreOptions))
+		if err := cuj.FindAndClick(moreBtn, uiWaitTime)(ctx); err != nil {
+			return errors.Wrap(err, "failed to find/click the 'More options'")
+		}
+
+		// Capture screenshots before clicking the "Quality" option.
+		if err := screenshot.Capture(ctx, filepath.Join(y.outDir, "before-click-quality.png")); err != nil {
+			return errors.Wrap(err, "failed to capture screenshot before clicking 'Quality' option")
+		}
+
+		testing.ContextLogf(ctx, "Select %q option", qualityText)
+		qualityButton := y.d.Object(androidui.ClassName("android.view.ViewGroup"), androidui.Clickable(true), androidui.Index(qualityButtonIndex))
+		if err := cuj.FindAndClick(qualityButton, uiWaitTime)(ctx); err != nil {
+			return err
+		}
+
+		// Capture screenshots after clicking the "Quality" option.
+		if err := screenshot.Capture(ctx, filepath.Join(y.outDir, "after-click-quality.png")); err != nil {
+			return errors.Wrap(err, "failed to capture screenshot after clicking 'Quality' option")
+		}
+
+		advancedButton := y.d.Object(androidui.Text(advancedText))
+		if err := cuj.FindAndClick(advancedButton, uiWaitTime)(ctx); err != nil {
+			return errors.Wrap(err, "failed to find/click the advanced option")
+		}
+
+		testing.ContextLogf(ctx, "Select target quality: %q", resolution)
+		targetQualityButton := y.d.Object(androidui.ID(qualityListItemID), androidui.Text(resolution))
+		// Immediately clicking the target button sometimes doesn't work.
+		if err := testing.Sleep(ctx, time.Second); err != nil {
+			return errors.Wrap(err, "failed to sleep and wait before click resolution")
+		}
+		if err := cuj.FindAndClick(targetQualityButton, uiWaitTime)(ctx); err != nil {
+			return errors.Wrap(err, "failed to click the target quality")
+		}
+
+		testing.ContextLogf(ctx, "Elapsed time when switching quality: %.3f s", time.Since(startTime).Seconds())
+		return nil
+	}, &testing.PollOptions{Interval: time.Second, Timeout: time.Minute})
 }
 
 func (y *YtApp) waitForLoadingComplete(ctx context.Context) error {

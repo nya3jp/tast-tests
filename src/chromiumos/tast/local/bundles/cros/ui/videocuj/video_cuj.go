@@ -252,7 +252,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 			case YoutubeWeb:
 				videoApp = NewYtWeb(br, tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
 			case YoutubeApp:
-				videoApp = NewYtApp(tconn, kb, a, d, videoSource)
+				videoApp = NewYtApp(tconn, kb, a, d, videoSource, outDir)
 			}
 
 			// Give time to cleanup videoApp resources.
