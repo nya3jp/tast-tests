@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c3aeec8_832c7271",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-14T14:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "806ebf70_527863df",
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14ec0902_0ff55223",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-07-13T14:23:10Z",
       "side": 1,
       "message": "nit: maybe \"parseVars\" ?",
+      "range": {
+        "startLine": 152,
+        "startChar": 9,
+        "endLine": 152,
+        "endChar": 12
+      },
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09667bf5_dea045e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-14T14:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14ec0902_0ff55223",
       "range": {
         "startLine": 152,
         "startChar": 9,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea45f167_bb901e56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-14T14:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d3e988d_c9676fc3",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 33
+      },
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "604b21d2_dd9fe71d",
@@ -94,6 +160,24 @@
       "writtenOn": "2022-07-13T14:23:10Z",
       "side": 1,
       "message": "ditto",
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1acadb0a_9118434a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-14T14:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "604b21d2_dd9fe71d",
       "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -115,6 +199,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f32a7a0e_46373a67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-14T14:24:33Z",
+      "side": 1,
+      "message": "It\u0027s intentional, yup.\n\nLike stated in the commit message, with this CL changes, the added options don\u0027t make much sense at this point. They\u0027ll become useful really in the following CL only when we introduce cmd line options for passing the credentials.\n\nTbh I\u0027ve made this semantic split only to facilitate your review. I could think in another way, if you prefer.\n\nAnyhow, I\u0027ve cleared now the commit message. I\u0027m taking the freedom to mark this issue as resolved in the meantime.",
+      "parentUuid": "a6f11bf7_bae7d2d9",
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3b75576_232ab4ec",
@@ -132,6 +234,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3ff4acd_6c0e6405",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-14T14:24:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3b75576_232ab4ec",
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4826350_7c1f75d3",
@@ -145,6 +265,30 @@
       "writtenOn": "2022-07-13T14:23:10Z",
       "side": 1,
       "message": "style: can be just \u0027s\u0027, i think. (as go prefers shorter name with context).",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 222,
+        "endChar": 23
+      },
+      "revId": "5bea3910eb46ff415eda0ebaa023243eb8555c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c5e811_fe1fa7db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-14T14:24:33Z",
+      "side": 1,
+      "message": "Done. Although I\u0027ve used \u0027v\u0027 instead due \u0027s\u0027 is already used for the testing.State fn parameter.",
+      "parentUuid": "f4826350_7c1f75d3",
       "range": {
         "startLine": 222,
         "startChar": 4,
