@@ -51,6 +51,24 @@
       "message": "There are currently two failures in the last 20 runs:\n\n* R105-14958.0.0\toctopus (dood)\n* R105-14962.0.0\thana-kernelnext (hana)\n\nDo we know why?",
       "revId": "d914534816fda7f9abe03e7c1b3e8d36bf4bd497",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f18a218d_e06c27bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-07-14T18:12:49Z",
+      "side": 1,
+      "message": "It looks like the DUT had rebooted for some reason, or some sort of ssh/network issue.  I don\u0027t see anything related to our actual printing test that might have caused the problem.",
+      "parentUuid": "82639140_9231184e",
+      "revId": "d914534816fda7f9abe03e7c1b3e8d36bf4bd497",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
