@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29673b5b_83498b40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/everyday_multi_tasking_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-07-14T15:39:46Z",
+      "side": 1,
+      "message": "Cheng: you probably want to pick one suite to run this - there\u0027s no point running the same test multiple times. Here and below.",
+      "revId": "02525f8b1bd90d9941d1d33ea47290b4783d58a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dc7d4ae_8510a988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tab_switch_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-07-14T15:39:46Z",
+      "side": 1,
+      "message": "Get rid of these?",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 63
+      },
+      "revId": "02525f8b1bd90d9941d1d33ea47290b4783d58a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f9f9b39_9d0350e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/video_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-07-14T15:39:46Z",
+      "side": 1,
+      "message": "Get rid of these?",
+      "range": {
+        "startLine": 50,
+        "startChar": 25,
+        "endLine": 50,
+        "endChar": 64
+      },
+      "revId": "02525f8b1bd90d9941d1d33ea47290b4783d58a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
