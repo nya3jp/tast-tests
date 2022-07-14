@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a612aa00_4d4fb09a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-14T23:23:23Z",
+      "side": 1,
+      "message": "mostly lgtm, defer to network health + networking folks for approval",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97958ef2_abd8428f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-14T23:23:23Z",
+      "side": 1,
+      "message": "a constant like this looks like it belongs in the dnsmasq.go file",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53678540_a3de6b0c",
