@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b8f1a3b_a2916b11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-14T14:24:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62d58001_dd52039f",
+      "revId": "252b5fe27ae345d8ccec565aeae93d574babae8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53a36afc_7028e938",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-07-13T14:17:57Z",
       "side": 1,
       "message": "style\n\ni, err :\u003d strconv.Atoi(iter)\nif err !\u003d nil {\n  s.Fatal(...)\n}\niterationCount \u003d i",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 3
+      },
+      "revId": "252b5fe27ae345d8ccec565aeae93d574babae8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31e89e85_e56b7063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-14T14:24:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53a36afc_7028e938",
       "range": {
         "startLine": 153,
         "startChar": 2,
