@@ -13,9 +13,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/apps/fixture"
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -37,21 +37,21 @@ func init() {
 		Params: []testing.Param{
 			{
 				Name:              "stable",
-				Fixture:           "chromeLoggedInForEA",
+				Fixture:           fixture.LoggedIn,
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			}, {
 				Name:              "unstable",
-				Fixture:           "chromeLoggedInForEA",
+				Fixture:           fixture.LoggedIn,
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			},
 			{
 				Name:              "stable_guest",
-				Fixture:           "chromeLoggedInGuestForEA",
+				Fixture:           fixture.LoggedInGuest,
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			}, {
 				Name:              "unstable_guest",
-				Fixture:           "chromeLoggedInGuestForEA",
+				Fixture:           fixture.LoggedInGuest,
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			},
@@ -61,16 +61,13 @@ func init() {
 
 // LaunchHelpAppFromShortcut verifies launching Help app from Ctrl+Shift+/.
 func LaunchHelpAppFromShortcut(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(fixture.FixtData).Chrome
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	kw, err := input.Keyboard(ctx)
