@@ -224,6 +224,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95bd5410_8232e97a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-14T23:08:26Z",
+      "side": 1,
+      "message": "I have discussed with @Matthew Wang about this issue. After `kCheckPortalProperty` is set to true and the HTTP probe fails, the shill state will change from `online` to `no-connectivity`.",
+      "parentUuid": "b790701f_b52af546",
+      "revId": "eff51939a4feebaa66d73d006d730230d72cef95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d23a4336_d77a77d7",
