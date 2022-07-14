@@ -208,11 +208,13 @@ func collectMaliPerformanceCounters(ctx context.Context, interval time.Duration)
 	for i := 0; i < numSamples; i++ {
 		maliStatsCmd := exec.Command("mali_stats", "-u", "10000")
 		var out bytes.Buffer
+		var stderr bytes.Buffer
 		maliStatsCmd.Stdout = &out
+		maliStatsCmd.Stderr = &stderr
 
 		err := maliStatsCmd.Run()
 		if err != nil {
-			return nil, 0, errors.Wrap(err, "error running mali_stats")
+			return nil, 0, errors.Wrapf(err, "error running mali_stats (%s)", stderr)
 		}
 
 		percentUsage, err := strconv.ParseFloat(out.String()[:strings.Index(out.String(), "%")], 64)
