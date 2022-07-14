@@ -22,6 +22,30 @@
       },
       "revId": "cc174b863ff9e18aaeb7739731672376156ad354",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "067aca8b_9af12b28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2022-07-14T02:31:29Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, but we want to wait AFTER we know the input has become active, not before.",
+      "parentUuid": "ee5b1bf4_8712aca1",
+      "range": {
+        "startLine": 354,
+        "startChar": 2,
+        "endLine": 354,
+        "endChar": 8
+      },
+      "revId": "cc174b863ff9e18aaeb7739731672376156ad354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
