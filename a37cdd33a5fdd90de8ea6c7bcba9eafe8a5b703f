@@ -16,6 +16,120 @@
       "message": "PTAL.",
       "revId": "a37cdd33a5fdd90de8ea6c7bcba9eafe8a5b703f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d17ccfd_25847c60",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/coldboot_startup_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-14T17:26:59Z",
+      "side": 1,
+      "message": "nit: this is const.",
+      "revId": "a37cdd33a5fdd90de8ea6c7bcba9eafe8a5b703f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1886dc8c_3d3adb03",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/coldboot_startup_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-14T17:26:59Z",
+      "side": 1,
+      "message": "could you avoid using global vars? Instead use local vars and pass values as needed?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 25
+      },
+      "revId": "a37cdd33a5fdd90de8ea6c7bcba9eafe8a5b703f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b05a8a66_eb03d94b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/coldboot_startup_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-14T17:26:59Z",
+      "side": 1,
+      "message": "Could you clarify why you use s.Run() here...?",
+      "revId": "a37cdd33a5fdd90de8ea6c7bcba9eafe8a5b703f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0489f37_6bde3594",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/coldboot_startup_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-14T17:26:59Z",
+      "side": 1,
+      "message": "nit/style:\n\nif _, _, err :\u003d ...; err !\u003d nil {\n  ...",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "a37cdd33a5fdd90de8ea6c7bcba9eafe8a5b703f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "966f99f8_6ce03f53",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/coldboot_startup_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-14T17:26:59Z",
+      "side": 1,
+      "message": "style\n\ni, err :\u003d strconv.Atoi(...)\nif err !\u003d nil {\n  s.Fatal(...)\n}\niterations \u003d i",
+      "revId": "a37cdd33a5fdd90de8ea6c7bcba9eafe8a5b703f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c004be9_09a027d0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/meta/coldboot_startup_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-14T17:26:59Z",
+      "side": 1,
+      "message": "ditto for the style.\n\nLooks as same as above? can we share the code?",
+      "revId": "a37cdd33a5fdd90de8ea6c7bcba9eafe8a5b703f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
