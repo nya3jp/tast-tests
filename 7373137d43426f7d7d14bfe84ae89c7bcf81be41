@@ -174,6 +174,24 @@
       "message": "potential additions to the test case:\n* open one tab in a separate window\n* mimimize one window (to verify the window gets activated even when minimized)\n* at the end close all windows, and verify that the open tab search returns no results",
       "revId": "7373137d43426f7d7d14bfe84ae89c7bcf81be41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f9cfc2f_8ec40385",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1536953
+      },
+      "writtenOn": "2022-07-14T19:33:57Z",
+      "side": 1,
+      "message": "I added the first two cases you mentioned. I\u0027d like to add the third test case in a follow-up CL if that\u0027s alright, as this CL is starting to get large.",
+      "parentUuid": "1e0b9195_28ffc908",
+      "revId": "7373137d43426f7d7d14bfe84ae89c7bcf81be41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
