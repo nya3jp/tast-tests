@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f8fb8ff_8376333b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-14T16:57:52Z",
+      "side": 1,
+      "message": "Marking as resolved -- if we want to add lacros_49p please lmk and I can make a separate bug for that.",
+      "parentUuid": "2a1d9204_9f86b847",
+      "range": {
+        "startLine": 14,
+        "startChar": 46,
+        "endLine": 14,
+        "endChar": 55
+      },
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc32579e_435971a3",
@@ -180,6 +204,24 @@
       "side": 1,
       "message": "Acked, thanks for trying! In that case I\u0027m fine with zooming it with key presses.",
       "parentUuid": "59379a2d_6d0c417c",
+      "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d21b768_11fefbef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-14T16:57:52Z",
+      "side": 1,
+      "message": "Sounds good!",
+      "parentUuid": "ed115474_6c23c4ef",
       "revId": "e03ba93ebc87fbdacb366fd0ec527b016df73e4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
