@@ -92,7 +92,7 @@ func DisplayPageURL(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch feedback app and go to share data page: ", err)
 	}
 
-	// Verify url text exist.
+	// Verify url text exists.
 	urlText := nodewith.NameContaining(url).Role(role.StaticText).Ancestor(feedbackRootNode)
 	if err := ui.WaitUntilExists(urlText)(ctx); err != nil {
 		s.Fatal("Failed to find element: ", err)

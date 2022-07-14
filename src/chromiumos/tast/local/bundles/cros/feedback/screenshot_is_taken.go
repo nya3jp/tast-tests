@@ -56,14 +56,14 @@ func ScreenshotIsTaken(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
-	// Launching feedback app and go to share data page.
+	// Launch feedback app and go to share data page.
 	feedbackRootNode, err := feedbackapp.LaunchAndGoToShareDataPage(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch feedback app and go to share data page: ", err)
 	}
 
-	// Verifying screenshot label and image exist.
-	// Verifying clicking screenshot will open screenshot diaglog.
+	// Verify screenshot label and image exist.
+	// Verify clicking screenshot will open screenshot diaglog.
 	screenshotLabel := nodewith.Name("Screenshot").Role(role.StaticText).Ancestor(
 		feedbackRootNode)
 	screenshotImg := nodewith.Name("$i18n{screenshotA11y}").Role(role.Image).Ancestor(
@@ -78,7 +78,7 @@ func ScreenshotIsTaken(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to verify screenshot exists: ", err)
 	}
 
-	// Verifying clicking screenshot button will close screenshot diaglog.
+	// Verify clicking screenshot button will close screenshot diaglog.
 	screenshotButton := nodewith.Name("Screenshot").Role(role.Button).Ancestor(feedbackRootNode)
 
 	if err := uiauto.Combine("Verify clicking screenshot button closes dialog",

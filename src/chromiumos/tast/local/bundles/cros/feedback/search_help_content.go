@@ -60,56 +60,56 @@ func SearchHelpContent(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	// Setting up keyboard.
+	// Set up keyboard.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
 	}
 	defer kb.Close()
 
-	// Launching feedback app.
+	// Launch feedback app.
 	feedbackRootNode, err := feedbackapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch feedback app: ", err)
 	}
 
-	// Verifying help content title.
+	// Verify help content title exists.
 	title := nodewith.Name("Top help content").Role(role.StaticText).Ancestor(feedbackRootNode)
 	if err := ui.WaitUntilExists(title)(ctx); err != nil {
 		s.Fatal("Failed to find the help content title: ", err)
 	}
 
-	// Verifying there are five default help links.
+	// Verify there are five default help links.
 	_, err = verifyLinks(ctx, tconn, 5)
 	if err != nil {
 		s.Fatal("Failed to find five help links: ", err)
 	}
 
-	// Looking for the issue description text input.
+	// Find the issue description text input.
 	issueDescriptionInput := nodewith.Role(role.TextField).Ancestor(feedbackRootNode)
 	if err := ui.EnsureFocused(issueDescriptionInput)(ctx); err != nil {
 		s.Fatal("Failed to find the issue description text input: ", err)
 	}
 
-	// Typing issue description.
+	// Type issue description.
 	if err := kb.Type(ctx, "I am not able to connect to Bluetooth"); err != nil {
 		s.Fatal("Failed to type issue description: ", err)
 	}
 
-	// Verifying help content title has changed.
+	// Verify help content title has changed.
 	updatedTitle := nodewith.Name("Suggested help content").Role(role.StaticText).Ancestor(
 		feedbackRootNode)
 	if err := ui.WaitUntilExists(updatedTitle)(ctx); err != nil {
 		s.Fatal("Failed to find the updated help content title: ", err)
 	}
 
-	// Verifying there are five help content link.
+	// Verify there are five help content link.
 	updatedHelpLink, err := verifyLinks(ctx, tconn, 5)
 	if err != nil {
 		s.Fatal("Failed to find five help links: ", err)
 	}
 
-	// Verifying the link can be opened.
+	// Verify the link can be opened.
 	if err := ui.LeftClick(updatedHelpLink.First())(ctx); err != nil {
 		s.Fatal("Failed to open help link: ", err)
 	}
