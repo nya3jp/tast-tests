@@ -16,6 +16,98 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "f0a70c062b838faf2c1cf1f242376d417e6019eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f144323_e72ffbc8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-14T01:01:50Z",
+      "side": 1,
+      "message": "`60 * time.Second`",
+      "range": {
+        "startLine": 60,
+        "startChar": 22,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "f0a70c062b838faf2c1cf1f242376d417e6019eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94b138a7_d1dfa98a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-14T01:01:50Z",
+      "side": 1,
+      "message": "`loginCrashMetaName, loginCrashLogName`",
+      "range": {
+        "startLine": 89,
+        "startChar": 33,
+        "endLine": 89,
+        "endChar": 92
+      },
+      "revId": "f0a70c062b838faf2c1cf1f242376d417e6019eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a22de13f_44e4e699",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-14T01:01:50Z",
+      "side": 1,
+      "message": "nit: There was already a \"Phase 2\" comment on line 116, so this and the subsequent \"Phase 3\" should be renumbered.",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 11
+      },
+      "revId": "f0a70c062b838faf2c1cf1f242376d417e6019eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7e4c94_1f695957",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crash/mount_vault_failure.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-14T01:01:50Z",
+      "side": 1,
+      "message": "nit: This message is a little vague - what is \"it\". Also, it\u0027s probably better to say \"Unexpected crash\" rather than just \"Crash\" for clarity.",
+      "range": {
+        "startLine": 209,
+        "startChar": 12,
+        "endLine": 209,
+        "endChar": 37
+      },
+      "revId": "f0a70c062b838faf2c1cf1f242376d417e6019eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
