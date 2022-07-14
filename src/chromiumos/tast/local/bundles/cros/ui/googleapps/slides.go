@@ -81,7 +81,7 @@ func RenameSlide(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title st
 	return uiauto.NamedAction("rename the slide",
 		ui.Retry(5, uiauto.Combine("rename slide",
 			ui.WaitUntilExists(slideWebArea),
-			ui.DoDefaultUntil(renameTextbox, ui.WithTimeout(5*time.Second).WaitUntilExists(renameTextbox.State("focused", true))),
+			ui.LeftClickUntil(renameTextbox, ui.WithTimeout(5*time.Second).WaitUntilExists(renameTextbox.State("focused", true))),
 			kb.AccelAction("Ctrl+A"),
 			kb.TypeAction(title),
 			waitForFieldTextToBe(tconn, renameTextbox, title),
