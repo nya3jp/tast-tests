@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "783d1bbd_58b86ede",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-07-14T05:34:23Z",
+      "side": 1,
+      "message": "Please wait for team member review before submitting",
+      "revId": "16bceabef5ebaf27e93de2ea1405172eb061c644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "453c0b43_bfb6583d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-07-14T05:34:23Z",
+      "side": 1,
+      "message": "This is not equivalent code, the error from this would be ignored by the IfSuccessThen\n\nIf this change is desired, please update the commit description to make the change in behaviour clear.",
+      "revId": "16bceabef5ebaf27e93de2ea1405172eb061c644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
