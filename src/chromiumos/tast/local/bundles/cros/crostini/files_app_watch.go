@@ -74,10 +74,16 @@ func FilesAppWatch(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
+	cleanupFile := func(ctx context.Context, filename string) {
+		if err := cont.RemoveAll(ctx, filename); err != nil {
+			s.Logf("Failed to remove file %s: %s", filename, err)
+		}
+	}
+
 	if err := cont.WriteFile(ctx, testFileName1, testFileContent); err != nil {
 		s.Fatal("Create file failed: ", err)
 	}
-	defer cont.RemoveAll(cleanupCtx, testFileName1)
+	defer cleanupFile(cleanupCtx, testFileName1)
 
 	// Launch the files application
 	files, err := filesapp.Launch(ctx, tconn)
@@ -97,7 +103,7 @@ func FilesAppWatch(ctx context.Context, s *testing.State) {
 	if err := cont.WriteFile(ctx, testFileName2, testFileContent); err != nil {
 		s.Fatal("Create file failed: ", err)
 	}
-	defer cont.RemoveAll(cleanupCtx, testFileName2)
+	defer cleanupFile(cleanupCtx, testFileName2)
 	if err := files.WithTimeout(10 * time.Second).WaitForFile(testFileName2)(ctx); err != nil {
 		s.Fatal("Waiting for file2.txt failed: ", err)
 	}
