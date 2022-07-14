@@ -10,11 +10,12 @@ import (
 	"sync"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/testing"
 )
 
 // runContinuousStorageStress is a storage stress that is periodically interrupted by a power suspend.
-func runContinuousStorageStress(ctx context.Context, job, jobFile string, rw *FioResultWriter, path string) {
+func runContinuousStorageStress(ctx context.Context, job, jobFile string, rw *FioResultWriter, path string) error {
 	testConfig := TestConfig{
 		Path:         path,
 		Job:          job,
@@ -24,54 +25,67 @@ func runContinuousStorageStress(ctx context.Context, job, jobFile string, rw *Fi
 	// Running write stress continuously, until timeout.
 	for {
 		if ctx.Err() != nil {
-			return
+			return nil
 		}
-		RunFioStress(ctx, testConfig)
+		if err := RunFioStress(ctx, testConfig); err != nil {
+			return err
+		}
 	}
+	return nil
 }
 
 // runPeriodicPowerSuspend repeatedly suspends the DUT that is running a FIO
 // Exits only when context deadline is exceeded.
-func runPeriodicPowerSuspend(ctx context.Context, SkipS0iXResidencyCheck bool) {
+func runPeriodicPowerSuspend(ctx context.Context, SkipS0iXResidencyCheck bool) error {
 	// Indefinite loop of randomized sleeps and power suspends.
 	for {
 		if ctx.Err() != nil {
-			return
+			return nil
 		}
 		sleepDuration := time.Duration(rand.Intn(30)+30) * time.Second
 		testing.ContextLog(ctx, "Sleeping for ", sleepDuration)
 		testing.Sleep(ctx, sleepDuration)
 		if err := Suspend(ctx, SkipS0iXResidencyCheck); err != nil {
-			testing.ContextLog(ctx, "Error suspending system: ", err)
+			return errors.Wrap(err, "failed to suspend DUT")
 		}
 	}
 }
 
 // runTasksInParallel runs stress tasks in parallel until finished or until
 // timeout. "0" timeout means no timeout.
-// TODO(dlunev, abergman): figure out if we need to have a different way
-// to handle premature task cancelation.
-func runTasksInParallel(ctx context.Context, timeout time.Duration, tasks []func(ctx context.Context)) {
+func runTasksInParallel(ctx context.Context, timeout time.Duration, tasks []func(ctx context.Context) error) error {
+	var cancel context.CancelFunc = nil
+	var firstError error = nil
+	var firstErrorLock sync.Mutex
+
 	if timeout != 0 {
-		ctxWithTimeout, cancel := context.WithTimeout(ctx, timeout)
-		defer cancel()
-		ctx = ctxWithTimeout
+		ctx, cancel = context.WithTimeout(ctx, timeout)
+	} else {
+		ctx, cancel = context.WithCancel(ctx)
 	}
+	defer cancel()
 
 	testing.ContextLog(ctx, "Starting parallel tasks at: ", time.Now())
 
 	var wg sync.WaitGroup
 	for i, task := range tasks {
 		wg.Add(1)
-		go func(taskToRun func(ctx context.Context), taskId int) {
+		go func(taskToRun func(ctx context.Context) error, taskId int) {
 			testing.ContextLog(ctx, "Starting taskId: ", taskId)
-			taskToRun(ctx)
+			err := taskToRun(ctx)
 			testing.ContextLog(ctx, "Finishing taskId: ", taskId)
+			firstErrorLock.Lock()
+			if err != nil && firstError == nil && !errors.Is(err, context.DeadlineExceeded) {
+				firstError = errors.Wrap(err, "error while running parallel tasks")
+				cancel()
+			}
+			firstErrorLock.Unlock()
 			wg.Done()
 		}(task, i)
 	}
 	wg.Wait()
 	testing.ContextLog(ctx, "Finished parallel tasks at: ", time.Now())
+	return firstError
 }
 
 // StressRunner is the main entry point of the unversal stress block.
