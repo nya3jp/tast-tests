@@ -22,6 +22,30 @@
       },
       "revId": "668749e6a8e0d0a8666a7f4eddc2b3b33917c7fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3975be06_85d8a7b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-14T23:44:49Z",
+      "side": 1,
+      "message": "Good point. I have to keep the total number of bots the same and just make one of them the spotlight bot.",
+      "parentUuid": "a5329848_45f36a68",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 19
+      },
+      "revId": "668749e6a8e0d0a8666a7f4eddc2b3b33917c7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
