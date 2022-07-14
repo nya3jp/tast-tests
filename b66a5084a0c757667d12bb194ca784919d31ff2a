@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6bee44d_0ba7dae8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-07-14T03:06:08Z",
+      "side": 1,
+      "message": "PTAL.\n\nHaving the closure NOT close the browser seems more natural for Connect since it\u0027s used to connect to an already open browser.\n\nHowever, I\u0027m tempted to follow up with adding a parameter to the closure that lets one close the browser as well (i.e. the parameter decides whether Close or CloseResources is called).\n\nAlternatively, perhaps it\u0027s time to provide a Close and Free method (or similar) on Browser.\n\nBTW, the closeBrowser closure returned by browserfixt.SetUp and browserfixt.SetUpWithURL is quite weird currently because for Ash it doesn\u0027t actually close the browser.",
+      "revId": "b66a5084a0c757667d12bb194ca784919d31ff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
