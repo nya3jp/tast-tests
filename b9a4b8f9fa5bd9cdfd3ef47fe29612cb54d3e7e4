@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a192a4a_1f9e095d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-14T10:38:17Z",
+      "side": 1,
+      "message": "nit: Use capital T",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "b9a4b8f9fa5bd9cdfd3ef47fe29612cb54d3e7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9624e1a3_09798719",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/attach_file.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-14T10:38:17Z",
+      "side": 1,
+      "message": "Did you consider using static files (data files) that the test would transfer to the Download folder and then use them?\n\ne.g. https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/apps/content_preview.go;l\u003d134?q\u003dContentPreview\u0026sq\u003dpackage:%5Echrom\n\nyou wouldn\u0027t have to take a screenshot (which is not a test case related) and later rename that (which is also not a test case related). You would remove possible points of failures.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "b9a4b8f9fa5bd9cdfd3ef47fe29612cb54d3e7e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
