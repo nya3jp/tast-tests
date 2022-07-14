@@ -132,10 +132,11 @@ func runQRCodeTest(ctx context.Context, cr *chrome.Chrome, bt browser.Type, app 
 		}
 
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			br, err := browserfixt.Connect(ctx, cr, bt)
+			br, brCleanUp, err := browserfixt.Connect(ctx, cr, bt)
 			if err != nil {
 				return err
 			}
+			defer brCleanUp(ctx)
 			ok, err := br.IsTargetAvailable(ctx, chrome.MatchTargetURL(testParams.expected))
 			if err != nil {
 				return testing.PollBreak(err)

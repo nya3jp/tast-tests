@@ -109,10 +109,11 @@ func RecentTabs(ctx context.Context, s *testing.State) {
 		if err := ui.LeftClick(chip.Finder)(ctx); err != nil {
 			s.Fatalf("Failed to click chip for %v: %v", chip.URL, err)
 		}
-		br, err := browserfixt.Connect(ctx, cr, bt)
+		br, brCleanUp, err := browserfixt.Connect(ctx, cr, bt)
 		if err != nil {
 			s.Fatalf("Failed to connect to active browser for %v: %v", chip.URL, err)
 		}
+		defer brCleanUp(ctx)
 		c, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL(chip.URL))
 		if err != nil {
 			s.Fatalf("Failed to find browser window for %v: %v", chip.URL, err)
