@@ -98,16 +98,18 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter
 		s.Fatal("Context timeout occurs before suspend block timeout")
 	}
 
-	tasks := []func(context.Context){
-		func(ctx context.Context) {
-			runContinuousStorageStress(ctx, "write_stress", s.DataPath("write_stress"), rw, testParam.TestDevice)
+	tasks := []func(context.Context) error{
+		func(ctx context.Context) error {
+			return runContinuousStorageStress(ctx, "write_stress", s.DataPath("write_stress"), rw, testParam.TestDevice)
 		},
-		func(ctx context.Context) {
-			runPeriodicPowerSuspend(ctx, testParam.SkipS0iXResidencyCheck)
+		func(ctx context.Context) error {
+			return runPeriodicPowerSuspend(ctx, testParam.SkipS0iXResidencyCheck)
 		},
 	}
 
-	runTasksInParallel(ctx, testParam.SuspendBlockTimeout, tasks)
+	if err := runTasksInParallel(ctx, testParam.SuspendBlockTimeout, tasks); err != nil {
+		s.Fatal("Failed while running suspend stress: ", err)
+	}
 }
 
 // trimTestBlock is a dispatcher function to start trim test on the boot device.
