@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a8364ee_af98e749",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525977
+      },
+      "writtenOn": "2022-07-14T16:23:13Z",
+      "side": 1,
+      "message": "Note for the future: this test (usb_hotplug_unplug_suspend_resume) will be re-added once the issue from the original CL is resolved: https://crrev.com/c/3587519/comments/470da326_a2d79a9e",
+      "revId": "504f9f9ea8e0d4796f30859033a43e4ed9d8bf55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
