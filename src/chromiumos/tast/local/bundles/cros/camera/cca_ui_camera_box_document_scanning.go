@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	dutcontrol "chromiumos/tast/common/camera/dut"
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/camera/cca"
@@ -43,6 +44,10 @@ func CCAUICameraBoxDocumentScanning(ctx context.Context, s *testing.State) {
 	if err := prepareChart(ctx, s.RequiredVar("chart"), s.DataPath("testing_rsa"), s.DataPath("document_scene.jpg")); err != nil {
 		s.Fatal("Failed to prepare chart: ", err)
 	}
+
+	brightnessVal := dutcontrol.CCADimBacklight(ctx)
+	defer dutcontrol.CCARestoreBacklight(ctx, brightnessVal)
+
 	app := s.FixtValue().(cca.FixtureData).App()
 	facing := s.Param().(cca.Facing)
 
@@ -84,4 +89,5 @@ func CCAUICameraBoxDocumentScanning(ctx context.Context, s *testing.State) {
 	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
 		s.Fatal("Failed to wait for corner indicator show up: ", err)
 	}
+	dutcontrol.CCARestoreBacklight(ctx, brightnessVal)
 }
