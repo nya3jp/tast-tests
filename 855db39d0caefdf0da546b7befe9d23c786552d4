@@ -754,6 +754,30 @@
       },
       "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e9074fa_88764bfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-14T03:11:52Z",
+      "side": 1,
+      "message": "Your DUT and device you are SSH\u0027ing into your cloudtop from need to be on the same network. Should just be a matter of setting up a reverse tunnel :)\n\nhttp://go/cros-cloudtop-dut",
+      "parentUuid": "9bb8099b_d5131ddd",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "855db39d0caefdf0da546b7befe9d23c786552d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
