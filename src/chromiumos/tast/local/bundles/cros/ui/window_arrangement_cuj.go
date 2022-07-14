@@ -37,7 +37,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of critical user journey for window arrangements",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
+		Attr:         []string{"group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars:         []string{"record"},
