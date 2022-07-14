@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9de3281b_c3bff78d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-14T10:01:26Z",
+      "side": 1,
+      "message": "nit: Use small letter as it is the package name \"policy\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "b4b6ef7903b201247900c98f89ff526beb788e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "09a68eb8_4056ad91",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-07-13T17:22:28Z",
       "side": 1,
       "message": "Kamil I hope it\u0027s okay with you to make you owner, if not let me know.\n",
+      "revId": "b4b6ef7903b201247900c98f89ff526beb788e96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b36f603_a28c1e18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-14T10:01:26Z",
+      "side": 1,
+      "message": "LGTM % minor nit.",
       "revId": "b4b6ef7903b201247900c98f89ff526beb788e96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
