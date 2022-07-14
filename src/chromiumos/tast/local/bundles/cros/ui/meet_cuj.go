@@ -90,7 +90,6 @@ func init() {
 		Vars: []string{
 			"mute",
 			"record",
-			"meeting_code",
 			"ui.MeetCUJ.doc",
 		},
 		VarDeps: []string{
@@ -403,50 +402,43 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	defer bc.Close()
 
 	var meetingCode string
-	customCode, codeOk := s.Var("meeting_code")
-	if codeOk {
-		meetingCode = customCode
-	} else {
-		func() {
-			sctx, cancel := context.WithTimeout(ctx, timeout)
-			defer cancel()
-			meetingCode, err = bc.CreateConference(sctx)
-			if err != nil {
-				s.Fatal("Failed to create a conference room: ", err)
-			}
-		}()
-		s.Log("Created a room with the code ", meetingCode)
-	}
+	func() {
+		sctx, cancel := context.WithTimeout(ctx, timeout)
+		defer cancel()
+		meetingCode, err = bc.CreateConference(sctx)
+		if err != nil {
+			s.Fatal("Failed to create a conference room: ", err)
+		}
+	}()
+	s.Log("Created a room with the code ", meetingCode)
 
 	sctx, cancel := context.WithTimeout(ctx, 90*time.Second)
 	defer cancel()
-	if !codeOk {
-		defer func(ctx context.Context) {
-			s.Log("Removing all bots from the call")
-			if _, _, err := bc.RemoveAllBots(ctx, meetingCode); err != nil {
-				s.Log("Failed to remove all bots: ", err)
-			}
-		}(closeCtx)
-		addBotsCount := meet.num
-		wait := 100 * time.Millisecond
-		for i := 0; i < 3; i++ {
-			// Exponential backoff. The wait time is 0.1s, 1s and 10s before each retry.
-			if err := testing.Sleep(ctx, wait); err != nil {
-				s.Errorf("Failed to sleep for %v: %v", wait, err)
-			}
-			// Add 30 minutes to the bot duration, to ensure that the bots stay long
-			// enough for the test to get info from chrome://webrtc-internals.
-			botList, numFailures, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+30*time.Minute, meet.botsOptions...)
-			if err != nil {
-				s.Fatalf("Failed to create %d bots: %v", addBotsCount, err)
-			}
-			s.Logf("%d bots started, %d bots failed", len(botList), numFailures)
-			if numFailures == 0 {
-				break
-			}
-			addBotsCount -= len(botList)
-			wait *= 10
+	defer func(ctx context.Context) {
+		s.Log("Removing all bots from the call")
+		if _, _, err := bc.RemoveAllBots(ctx, meetingCode); err != nil {
+			s.Log("Failed to remove all bots: ", err)
 		}
+	}(closeCtx)
+	addBotsCount := meet.num
+	wait := 100 * time.Millisecond
+	for i := 0; i < 3; i++ {
+		// Exponential backoff. The wait time is 0.1s, 1s and 10s before each retry.
+		if err := testing.Sleep(ctx, wait); err != nil {
+			s.Errorf("Failed to sleep for %v: %v", wait, err)
+		}
+		// Add 30 minutes to the bot duration, to ensure that the bots stay long
+		// enough for the test to get info from chrome://webrtc-internals.
+		botList, numFailures, err := bc.AddBots(sctx, meetingCode, addBotsCount, meetTimeout+30*time.Minute, meet.botsOptions...)
+		if err != nil {
+			s.Fatalf("Failed to create %d bots: %v", addBotsCount, err)
+		}
+		s.Logf("%d bots started, %d bots failed", len(botList), numFailures)
+		if numFailures == 0 {
+			break
+		}
+		addBotsCount -= len(botList)
+		wait *= 10
 	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
