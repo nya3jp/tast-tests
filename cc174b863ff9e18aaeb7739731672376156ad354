@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee5b1bf4_8712aca1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-14T01:57:46Z",
+      "side": 1,
+      "message": "nit: simply inject the sleep here:\n\nreturn func(ctx context.Context) error {\n\n    if err :\u003d testing.Sleep(ctx, 50*time.Millisecond); err !\u003d nil{\n        return errors.Wrap(err, \"failed to sleep\")\n    }\n\n    return its.pc. WaitForExprFailOnErrWithTimeout...\n}",
+      "range": {
+        "startLine": 354,
+        "startChar": 2,
+        "endLine": 354,
+        "endChar": 8
+      },
+      "revId": "cc174b863ff9e18aaeb7739731672376156ad354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
