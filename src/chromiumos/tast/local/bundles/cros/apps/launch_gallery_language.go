@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/apps/fixture"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -34,11 +34,11 @@ func init() {
 		HardwareDeps: hwdep.D(pre.AppsStableModels),
 		Params: []testing.Param{
 			{
-				Fixture: "chromeLoggedInForEAInJP",
+				Fixture: fixture.LoggedInJP,
 			},
 			{
 				Name:              "lacros",
-				Fixture:           "lacrosForEAInJP",
+				Fixture:           fixture.LacrosLoggedInJP,
 				ExtraSoftwareDeps: []string{"lacros_stable"},
 			},
 		},
@@ -52,11 +52,7 @@ func LaunchGalleryLanguage(ctx context.Context, s *testing.State) {
 		openImageButtonName = "画像を開く"
 	)
 
-	cr := s.FixtValue().(*chrome.Chrome)
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 

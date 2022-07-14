@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/testing"
 )
@@ -230,41 +229,6 @@ func init() {
 				chrome.LacrosExtraArgs("--variations-server-url=https://clients4.google.com/chrome-variations/seed"))).Opts()
 		}),
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-
-	// lacrosForEA is a fixture to bring up Lacros as a primary browser
-	// from the rootfs partition by default.
-	// It pre-installs essential apps.
-	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosForEA",
-		Desc:     "Logged into a user session with Lacros for essential apps",
-		Contacts: []string{"alvinjia@google.com", "shengjun@chromium.org"},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			return NewConfig(KeepAlive(true), Mode(lacros.LacrosPrimary), EnableWebAppInstall()).Opts()
-		}),
-		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
-		ResetTimeout:    chrome.ResetTimeout,
-		TearDownTimeout: chrome.ResetTimeout,
-	})
-
-	// lacrosForEAInJP is a fixture to bring up Lacros as a primary browser
-	// from the rootfs partition by default and it sets the device language
-	// to Japanese.
-	// It pre-installs essential apps.
-	testing.AddFixture(&testing.Fixture{
-		Name:     "lacrosForEAInJP",
-		Desc:     "Logged into a user session with Lacros for essential apps in Japanese language",
-		Contacts: []string{"alvinjia@google.com", "shengjun@chromium.org"},
-		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
-			lacrosOpts, err := NewConfig(KeepAlive(true), Mode(lacros.LacrosPrimary), EnableWebAppInstall()).Opts()
-			if err != nil {
-				return nil, err
-			}
-			return append([]config.Option{chrome.Region("jp")}, lacrosOpts...), nil
-		}),
-		SetUpTimeout:    chrome.LoginTimeout + 1*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})

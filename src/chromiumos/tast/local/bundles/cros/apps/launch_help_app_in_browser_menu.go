@@ -7,6 +7,7 @@ package apps
 import (
 	"context"
 
+	"chromiumos/tast/local/bundles/cros/apps/fixture"
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome"
@@ -29,7 +30,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Fixture:      "chromeLoggedInForEA",
+		Fixture:      fixture.LoggedIn,
 		Params: []testing.Param{
 			{
 				Name:              "stable",
@@ -45,12 +46,9 @@ func init() {
 
 // LaunchHelpAppInBrowserMenu verifies launching Help app in chrome browser three dot menu.
 func LaunchHelpAppInBrowserMenu(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(fixture.FixtData).Chrome
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	conn, err := cr.NewConn(ctx, chrome.BlankURL)
