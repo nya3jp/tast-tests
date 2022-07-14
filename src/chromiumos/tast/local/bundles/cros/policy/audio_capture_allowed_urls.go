@@ -128,7 +128,7 @@ func AudioCaptureAllowedUrls(ctx context.Context, s *testing.State) {
 			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_dump_"+param.name)
 
 			ui := uiauto.New(tconn)
-			if err := ui.LeftClick(nodewith.Name("Record").Role(role.Button))(ctx); err != nil {
+			if err := ui.DoDefault(nodewith.Name("Record").Role(role.Button))(ctx); err != nil {
 				s.Fatal("Failed to click Record button: ", err)
 			}
 
