@@ -22,8 +22,6 @@ const (
 
 	// DefaultStressBlockTimeout is the duration of the stress sub-test.
 	DefaultStressBlockTimeout = 240 * time.Minute
-	// DefaultSlcStressBlockTimeout is the duration of the slc-stress sub-test.
-	DefaultSlcStressBlockTimeout = 240 * time.Minute
 	// DefaultRetentionBlockTimeout is the duration of the retention sub-test.
 	DefaultRetentionBlockTimeout = 20 * time.Minute
 	// DefaultSuspendBlockTimeout is the total duration of the suspend sub-test.
@@ -44,12 +42,6 @@ func SetupBenchmarks(ctx context.Context, s *testing.State, rw *FioResultWriter,
 	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("4k_read"))
 	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("16k_write"))
 	runFioStress(ctx, s, testConfig.WithPath(testParam.TestDevice).WithJob("16k_read"))
-
-	if testParam.IsSlcEnabled {
-		// Run tests to collect metrics for Slc device.
-		runFioStress(ctx, s, testConfig.WithPath(testParam.SlcDevice).WithJob("4k_write_qd4"))
-		runFioStress(ctx, s, testConfig.WithPath(testParam.SlcDevice).WithJob("4k_read_qd4"))
-	}
 }
 
 // soakTestBlock runs long, write-intensive storage stresses.
@@ -60,25 +52,11 @@ func soakTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter, t
 		ResultWriter: rw,
 	}
 
-	stressTasks := []func(context.Context){
-		func(ctx context.Context) {
-			runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.TestDevice).WithJob("64k_stress").WithDuration(testParam.StressBlockTimeout))
-			// NoVerify surf block to exercise device. Run once. Duration can be found in data/recovery
-			runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.TestDevice).WithJob("recovery"))
-			// Verify surfing block for performance evaluation. Run once. Duration can be found in data/surfing
-			runFioStress(ctx, s, testConfigVerify.WithPath(testParam.TestDevice).WithJob("surfing"))
-		},
-	}
-
-	if testParam.IsSlcEnabled {
-		stressTasks = append(stressTasks,
-			func(ctx context.Context) {
-				runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.SlcDevice).WithJob("4k_write").WithDuration(DefaultSlcStressBlockTimeout/2))
-				runFioStress(ctx, s, testConfigVerify.WithPath(testParam.SlcDevice).WithJob("4k_write").WithDuration(DefaultSlcStressBlockTimeout/2))
-			})
-	}
-
-	runTasksInParallel(ctx, 0, stressTasks)
+	runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.TestDevice).WithJob("64k_stress").WithDuration(testParam.StressBlockTimeout))
+	// NoVerify surf block to exercise device. Run once. Duration can be found in data/recovery
+	runFioStress(ctx, s, testConfigNoVerify.WithPath(testParam.TestDevice).WithJob("recovery"))
+	// Verify surfing block for performance evaluation. Run once. Duration can be found in data/surfing
+	runFioStress(ctx, s, testConfigVerify.WithPath(testParam.TestDevice).WithJob("surfing"))
 }
 
 // retentionTestBlock reads and then validates the same data after multiple short suspend cycles.
@@ -93,29 +71,7 @@ func retentionTestBlock(ctx context.Context, s *testing.State, rw *FioResultWrit
 		VerifyOnly: true,
 	}
 
-	writeTasks := []func(context.Context){
-		func(ctx context.Context) {
-			runFioStress(ctx, s, writeConfig.WithPath(testParam.TestDevice))
-		},
-	}
-	verifyTasks := []func(context.Context){
-		func(ctx context.Context) {
-			runFioStress(ctx, s, verifyConfig.WithPath(testParam.TestDevice))
-		},
-	}
-
-	if testParam.IsSlcEnabled {
-		writeTasks = append(writeTasks,
-			func(ctx context.Context) {
-				runFioStress(ctx, s, writeConfig.WithPath(testParam.SlcDevice))
-			})
-		verifyTasks = append(verifyTasks,
-			func(ctx context.Context) {
-				runFioStress(ctx, s, verifyConfig.WithPath(testParam.SlcDevice))
-			})
-	}
-
-	runTasksInParallel(ctx, 0, writeTasks)
+	runFioStress(ctx, s, writeConfig.WithPath(testParam.TestDevice))
 
 	// Run Suspend repeatedly until the timeout.
 	pollOptions := &testing.PollOptions{
@@ -130,7 +86,8 @@ func retentionTestBlock(ctx context.Context, s *testing.State, rw *FioResultWrit
 	}, pollOptions); err != nil && !errors.As(err, &context.DeadlineExceeded) {
 		s.Fatal("Failed running retention block: ", err)
 	}
-	runTasksInParallel(ctx, 0, verifyTasks)
+
+	runFioStress(ctx, s, verifyConfig.WithPath(testParam.TestDevice))
 }
 
 // suspendTestBlock triggers periodic power suspends while running disk
@@ -150,24 +107,12 @@ func suspendTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter
 		},
 	}
 
-	if testParam.IsSlcEnabled {
-		tasks = append(tasks,
-			func(ctx context.Context) {
-				runContinuousStorageStress(ctx, "4k_write", s.DataPath("4k_write"), rw, testParam.SlcDevice)
-			})
-	}
-
 	runTasksInParallel(ctx, testParam.SuspendBlockTimeout, tasks)
 }
 
-// trimTestBlock is a dispatcher function to start trim test on the boot device
-// and on the slc.
+// trimTestBlock is a dispatcher function to start trim test on the boot device.
 func trimTestBlock(ctx context.Context, s *testing.State, rw *FioResultWriter, testParam QualParam) {
 	trimTestBlockImpl(ctx, s, testParam.TestDevice, rw)
-
-	if testParam.IsSlcEnabled {
-		trimTestBlockImpl(ctx, s, testParam.SlcDevice, rw)
-	}
 }
 
 // trimTestBlockImpl performs data integrity trim test on an unmounted partition.

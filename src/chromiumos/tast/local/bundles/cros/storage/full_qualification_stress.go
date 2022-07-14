@@ -24,7 +24,7 @@ func init() {
 		Attr:         []string{"group:storage-qual"},
 		Data:         util.Configs,
 		SoftwareDeps: []string{"storage_wearout_detect"},
-		Vars:         []string{"tast_disk_size_gb", "tast_storage_slc_qual", "tast_stress_block_timeout", "tast_suspend_block_timeout", "tast_skip_setup_check", "tast_skip_s0ix_check", "tast_followup_qual"},
+		Vars:         []string{"tast_disk_size_gb", "tast_stress_block_timeout", "tast_suspend_block_timeout", "tast_skip_setup_check", "tast_skip_s0ix_check", "tast_followup_qual"},
 		Params: []testing.Param{{
 			Name:    "setup_benchmarks",
 			Val:     util.SetupBenchmarks,
@@ -57,20 +57,6 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 
 	testParam := util.QualParam{}
 	var err error
-	if val, ok := s.Var("tast_storage_slc_qual"); ok {
-		if testParam.IsSlcEnabled, err = strconv.ParseBool(val); err != nil {
-			s.Fatal("Cannot parse argumet 'storage.QuickUtil.slcQual' of type bool: ", err)
-		}
-		if testParam.IsSlcEnabled {
-			// Run tests to collect metrics for Slc device.
-			if testParam.SlcDevice, err = util.SlcDevice(ctx); err != nil {
-				s.Fatal("Failed to get slc device: ", err)
-			}
-			if err = util.Swapoff(ctx); err != nil {
-				s.Fatal("Failed to turn off the swap: ", err)
-			}
-		}
-	}
 
 	testParam.StressBlockTimeout = util.DefaultStressBlockTimeout
 	testParam.RetentionBlockTimeout = util.DefaultRetentionBlockTimeout
