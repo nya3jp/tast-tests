@@ -57,7 +57,7 @@ func LaunchFeedbackFromAboutChromeOS(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
-	// Opening OS Settings app.
+	// Open OS Settings app.
 	if err := apps.Launch(ctx, tconn, apps.Settings.ID); err != nil {
 		s.Fatal("Failed to launch Settings app: ", err)
 	}
@@ -66,24 +66,24 @@ func LaunchFeedbackFromAboutChromeOS(ctx context.Context, s *testing.State) {
 		s.Fatal("Settings app did not appear in shelf after launch: ", err)
 	}
 
-	// Clicking About ChromeOS tab.
+	// Click About ChromeOS tab.
 	aboutCrOSTab := nodewith.NameContaining("About ChromeOS").Role(role.StaticText)
 	if err := ui.DoDefault(aboutCrOSTab)(ctx); err != nil {
 		s.Fatal("Failed to click About ChromeOS tab: ", err)
 	}
 
-	// Clicking Report an issue button.
+	// Click Report an issue button.
 	reportButton := nodewith.NameContaining("Report an issue").Role(role.Link)
 	if err := ui.DoDefault(reportButton)(ctx); err != nil {
 		s.Fatal("Failed to click Report an issue button: ", err)
 	}
 
-	// Verifying Feedback app is launched.
+	// Verify Feedback app is launched.
 	if err = ash.WaitForApp(ctx, tconn, apps.Feedback.ID, time.Minute); err != nil {
 		s.Fatal("Could not find app in shelf after launch: ", err)
 	}
 
-	// Verifying essential elements exist.
+	// Verify essential elements exist.
 	issueDescriptionInput := nodewith.Role(role.TextField)
 	button := nodewith.Name("Continue").Role(role.Button)
 
@@ -94,7 +94,7 @@ func LaunchFeedbackFromAboutChromeOS(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find element: ", err)
 	}
 
-	// Verifying five default help content links exist.
+	// Verify five default help content links exist.
 	helpLink := nodewith.Role(role.Link).Ancestor(nodewith.Role(role.Iframe))
 	for i := 0; i < 5; i++ {
 		item := helpLink.Nth(i)

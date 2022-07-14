@@ -58,7 +58,7 @@ func LaunchFeedbackFromAltShiftI(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
-	// Setting up keyboard.
+	// Set up keyboard.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
@@ -66,12 +66,12 @@ func LaunchFeedbackFromAltShiftI(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		// Launching Feedback app with alt+shift+i.
+		// Launch Feedback app with alt+shift+i.
 		if err := kb.Accel(ctx, "Alt+Shift+I"); err != nil {
 			return errors.Wrap(err, "failed pressing alt+shift+i")
 		}
 
-		// Verifying Feedback app is launched.
+		// Verify Feedback app is launched.
 		if err = ash.WaitForApp(ctx, tconn, apps.Feedback.ID, 20*time.Second); err != nil {
 			return errors.Wrap(err, "could not find app in shelf after launch")
 		}
@@ -81,7 +81,7 @@ func LaunchFeedbackFromAltShiftI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed launching Feedback app: ", err)
 	}
 
-	// Verifying essential elements exist.
+	// Verify essential elements exist.
 	issueDescriptionInput := nodewith.Role(role.TextField)
 	button := nodewith.Name("Continue").Role(role.Button)
 
@@ -92,7 +92,7 @@ func LaunchFeedbackFromAltShiftI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find element: ", err)
 	}
 
-	// Verifying five default help content links exist.
+	// Verify five default help content links exist.
 	helpLink := nodewith.Role(role.Link).Ancestor(nodewith.Role(role.Iframe))
 	for i := 0; i < 5; i++ {
 		item := helpLink.Nth(i)

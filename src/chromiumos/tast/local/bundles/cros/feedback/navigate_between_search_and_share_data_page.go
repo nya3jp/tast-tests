@@ -56,13 +56,13 @@ func NavigateBetweenSearchAndShareDataPage(ctx context.Context, s *testing.State
 
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
-	// Launching feedback app and navigating to share data page.
+	// Launch feedback app and go to share data page.
 	feedbackRootNode, err := feedbackapp.LaunchAndGoToShareDataPage(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch feedback app and go to share data page: ", err)
 	}
 
-	// Verifying essential elements exist in the share data page.
+	// Verify essential elements exist in the share data page.
 	sendButton := nodewith.Name("Send").Role(role.Button).Ancestor(feedbackRootNode)
 	attachfilesTitle := nodewith.Name("Attach files").Role(role.StaticText).Ancestor(
 		feedbackRootNode)
@@ -79,13 +79,13 @@ func NavigateBetweenSearchAndShareDataPage(ctx context.Context, s *testing.State
 		s.Fatal("Failed to find element: ", err)
 	}
 
-	// Looking for back button and click.
+	// Find back button and click.
 	backButton := nodewith.Name("Back").Role(role.Button).Ancestor(feedbackRootNode)
 	if err := ui.DoDefault(backButton)(ctx); err != nil {
 		s.Fatal("Failed to click back button: ", err)
 	}
 
-	// Verifying the issue description input stores the text user entered previously.
+	// Verify the issue description input stores the text user entered previously.
 	issueDescription := nodewith.Name(feedbackapp.IssueText).Role(role.StaticText).Ancestor(
 		feedbackRootNode)
 	if err := ui.WaitUntilExists(issueDescription)(ctx); err != nil {
