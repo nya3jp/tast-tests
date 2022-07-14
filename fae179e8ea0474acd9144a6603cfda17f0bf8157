@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3b66f7f_35c3924b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/feedback/launch_feedback_from_power_button.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-14T23:04:43Z",
+      "side": 1,
+      "message": "nit: please also specify the `Timeout` field",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 30
+      },
+      "revId": "fae179e8ea0474acd9144a6603cfda17f0bf8157",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
