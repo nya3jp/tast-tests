@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03add6dc_6aacf778",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-07-14T18:54:46Z",
+      "side": 1,
+      "message": "One worry is that if we just let Meet do whatever it likes based on transient conditions like DUT thermals, we\u0027ll get inconsistent data. \n\nI\u0027m wondering if we should assert our expected resolution and discard results for lower resolutions? +Xiyuan for thoughts. What do people think?",
+      "revId": "ec3fa52529f7e4de0d08aeba4a34bee6c474cacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
