@@ -82,6 +82,12 @@ func (t *FrameDataTracker) Record(pv *perf.Values) {
 		pv.Append(jcMetric, float64(data.JankCount))
 	}
 
+	// FrameData collecting on the DUTs may fail (b/210185705) or return no data.
+	// Check if data is collected before recording it.
+	if t.dsData == nil {
+		return
+	}
+
 	pv.Set(perf.Metric{
 		Name:      t.prefix + "DisplayJankMetric",
 		Unit:      "percent",
