@@ -16,6 +16,46 @@
       "message": "Split the screenshot code from crrev/c/3760660 to here.",
       "revId": "6a1dcc325402aae8e22ee7cd393d5b8133e1052c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "518285be_68a3730d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-14T16:30:56Z",
+      "side": 1,
+      "message": "lgtm with nix `ctx` in `s.Log` call",
+      "revId": "6a1dcc325402aae8e22ee7cd393d5b8133e1052c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45a65608_70bbab55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-14T16:30:56Z",
+      "side": 1,
+      "message": "Do not pass `ctx` to `s.Log`. Just write:\n\t\ts.Log(\"Failed to take screenshot: \", err)",
+      "range": {
+        "startLine": 883,
+        "startChar": 8,
+        "endLine": 883,
+        "endChar": 11
+      },
+      "revId": "6a1dcc325402aae8e22ee7cd393d5b8133e1052c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
