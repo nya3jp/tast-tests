@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43c27825_2a9e9a58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-07-14T18:08:31Z",
+      "side": 1,
+      "message": "Can you run code formatter?\n\nI think some line is too long\n",
+      "revId": "ac260e3d50daf857ceb0e52a2c18d18b575f046d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
