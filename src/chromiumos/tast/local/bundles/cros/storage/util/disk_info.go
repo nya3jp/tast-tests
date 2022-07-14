@@ -51,22 +51,6 @@ func (d DiskInfo) MainDevice() (*Blockdevice, error) {
 	return bestMatch, nil
 }
 
-// SlcDevice returns the slc storage device from a list of available
-// devices. The method assumes at most two devices and returns the device
-// with the smallest size.
-func (d DiskInfo) SlcDevice() (*Blockdevice, error) {
-	if d.DeviceCount() < 2 {
-		return nil, errors.Errorf("no secondary devices present: %+v", d)
-	}
-	var bestMatch *Blockdevice
-	for _, device := range d.Blockdevices {
-		if bestMatch == nil || bestMatch.Size > device.Size {
-			bestMatch = device
-		}
-	}
-	return bestMatch, nil
-}
-
 // DeviceCount returns number of found valid block devices on the system.
 func (d DiskInfo) DeviceCount() int {
 	return len(d.Blockdevices)

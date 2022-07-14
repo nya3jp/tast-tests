@@ -18,8 +18,6 @@ import (
 
 // QualParam is the configuration of dual-qual functionality.
 type QualParam struct {
-	IsSlcEnabled           bool
-	SlcDevice              string
 	TestDevice             string
 	RetentionBlockTimeout  time.Duration
 	SuspendBlockTimeout    time.Duration
@@ -79,17 +77,4 @@ func SetupChecks(ctx context.Context, s *testing.State) {
 		s.Fatalf("Requested disk size %dGB doesn't correspond to to the actual size %dGB",
 			requestedSizeGb, actualSizeGb)
 	}
-}
-
-// SlcDevice returns an Slc device path for dual-namespace AVL.
-func SlcDevice(ctx context.Context) (string, error) {
-	info, err := ReadDiskInfo(ctx)
-	if err != nil {
-		return "", errors.Wrap(err, "failed reading disk info")
-	}
-	slc, err := info.SlcDevice()
-	if slc == nil {
-		return "", errors.Wrap(err, "dual qual is specified but SLC device is not present")
-	}
-	return filepath.Join("/dev/", slc.Name), nil
 }
