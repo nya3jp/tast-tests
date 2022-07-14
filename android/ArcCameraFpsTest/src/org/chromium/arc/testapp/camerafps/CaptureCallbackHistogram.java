@@ -128,7 +128,7 @@ class CaptureCallbackHistogram extends CaptureCallback {
             mLastTimeStampJava = timeStampJava;
         } else {
             // Convert nanoseconds to milliseconds.
-            int duration = (int) (timeStampJava - mLastTimeStampJava) / 1000000;
+            int duration = (int) ((timeStampJava - mLastTimeStampJava) / 1000000);
             mLastTimeStampJava = timeStampJava;
 
             synchronized(mHistogramJava) {

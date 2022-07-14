@@ -84,6 +84,8 @@ public class Camera2VideoFragment extends Fragment {
     private Handler mBackgroundHandler;
     // A semaphore to prevent the app from exiting before closing the camera.
     private Semaphore mCameraOpenCloseLock = new Semaphore(1);
+    // A latch which is used to wait for the previous capture session done.
+    private CountDownLatch mCaptureSessionLatch = null;
     // CaptureRequest builder for preview.
     private CaptureRequest.Builder mPreviewBuilder;
     // Surface for video recording.
@@ -399,7 +401,7 @@ public class Camera2VideoFragment extends Fragment {
                         }
                     };
             reader.setOnImageAvailableListener(readerListener, mBackgroundHandler);
-            mCameraDevice.createCaptureSession(
+            createCaptureSession(
                     Arrays.asList(reader.getSurface()),
                     new CameraCaptureSession.StateCallback() {
                         @Override
@@ -423,6 +425,32 @@ public class Camera2VideoFragment extends Fragment {
             return filename;
         } catch (CameraAccessException e) {
             throw new RuntimeException("No Camera access", e);
+        }
+    }
+
+    private void createCaptureSession(final List<Surface> outputs,
+                final CameraCaptureSession.StateCallback callback,
+                final Handler handler) {
+        try {
+            if (mCaptureSessionLatch != null) {
+                mCaptureSessionLatch.await();
+            }
+            mCaptureSessionLatch = new CountDownLatch(1);
+            mCameraDevice.createCaptureSession(outputs, new CameraCaptureSession.StateCallback() {
+                @Override
+                public void onConfigured(CameraCaptureSession session) {
+                    callback.onConfigured(session);
+                    mCaptureSessionLatch.countDown();
+                }
+
+                @Override
+                public void onConfigureFailed(CameraCaptureSession session) {
+                    callback.onConfigureFailed(session);
+                    mCaptureSessionLatch.countDown();
+                }
+            }, handler);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -555,7 +583,7 @@ public class Camera2VideoFragment extends Fragment {
             Surface previewSurface = new Surface(texture);
             mPreviewBuilder.addTarget(previewSurface);
 
-            mCameraDevice.createCaptureSession(
+            createCaptureSession(
                     Arrays.asList(previewSurface),
                     new CameraCaptureSession.StateCallback() {
                         @Override
@@ -587,8 +615,6 @@ public class Camera2VideoFragment extends Fragment {
     private void updatePreview() {
         try {
             mPreviewBuilder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO);
-            HandlerThread thread = new HandlerThread("CameraPreview");
-            thread.start();
             mPreviewSession.setRepeatingRequest(
                     mPreviewBuilder.build(),
                     ((CameraActivity) getActivity()).getHistogram(),
@@ -599,11 +625,16 @@ public class Camera2VideoFragment extends Fragment {
         }
     }
 
-    private void closePreviewSession() {
-        if (mPreviewSession != null) {
-            mPreviewSession.close();
-            mPreviewSession = null;
-        }
+    private void closePreviewSession() throws InterruptedException {
+        mBackgroundHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (mPreviewSession != null) {
+                    mPreviewSession.close();
+                    mPreviewSession = null;
+                }
+            }
+        });
     }
 
     // Configures the necessary Matrix transformation to `mTextureView`.
@@ -695,7 +726,7 @@ public class Camera2VideoFragment extends Fragment {
 
             // Start a capture session
             // Once the session starts, we can start recording
-            mCameraDevice.createCaptureSession(
+            createCaptureSession(
                     surfaces,
                     new CameraCaptureSession.StateCallback() {
 
