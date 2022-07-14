@@ -39,6 +39,30 @@
       },
       "revId": "0df96ef6f62919ca49d56badd30ee5d4bc22a9f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "025880b5_68aa2245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2022-07-14T01:28:11Z",
+      "side": 1,
+      "message": "Yep fair enough, I\u0027ve moved the delay to its.WaitForFieldToBeActive as requested.\n\nRegarding the re-implementation of WaitForFieldToBeActive, definitely looks cleaner but from what I can see from the implementation of uiauto.WaitUntilExists, it still utilises a polling operation which would not solve the issue outlined in this CL. \n\nBut I agree your new implementation looks cleaner!",
+      "parentUuid": "37169759_8980373a",
+      "range": {
+        "startLine": 417,
+        "startChar": 6,
+        "endLine": 417,
+        "endChar": 32
+      },
+      "revId": "0df96ef6f62919ca49d56badd30ee5d4bc22a9f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
