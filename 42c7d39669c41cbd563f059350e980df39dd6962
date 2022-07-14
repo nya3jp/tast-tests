@@ -16,6 +16,24 @@
       "message": "we can do this part in clamshell mode too.",
       "revId": "42c7d39669c41cbd563f059350e980df39dd6962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d7ab68_d7cf8533",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1536953
+      },
+      "writtenOn": "2022-07-14T21:44:37Z",
+      "side": 1,
+      "message": "As in this check is sufficient and should replace the existing tabFinder that\u0027s used in clamshell mode, or it should be added as an additional check?",
+      "parentUuid": "6ba720b0_519ad338",
+      "revId": "42c7d39669c41cbd563f059350e980df39dd6962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
