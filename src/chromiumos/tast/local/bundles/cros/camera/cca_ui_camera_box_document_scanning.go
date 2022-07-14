@@ -24,7 +24,7 @@ func init() {
 		SoftwareDeps: []string{"camera_app", "chrome", "ondevice_document_scanner", caps.BuiltinOrVividCamera},
 		Data:         []string{"testing_rsa", "document_scene.jpg"},
 		Vars:         []string{"chart"},
-		Fixture:      "ccaLaunched",
+		Fixture:      "ccaLaunchedInCameraBox",
 		Params: []testing.Param{{
 			Name:      "back",
 			ExtraAttr: []string{"camerabox_facing_back"},
@@ -43,6 +43,7 @@ func CCAUICameraBoxDocumentScanning(ctx context.Context, s *testing.State) {
 	if err := prepareChart(ctx, s.RequiredVar("chart"), s.DataPath("testing_rsa"), s.DataPath("document_scene.jpg")); err != nil {
 		s.Fatal("Failed to prepare chart: ", err)
 	}
+
 	app := s.FixtValue().(cca.FixtureData).App()
 	facing := s.Param().(cca.Facing)
 
