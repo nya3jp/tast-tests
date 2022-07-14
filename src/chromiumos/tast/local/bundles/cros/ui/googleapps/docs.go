@@ -46,7 +46,7 @@ func RenameDoc(tconn *chrome.TestConn, kb *input.KeyboardEventWriter, title stri
 	renameTextbox := nodewith.Name("Rename").ClassName("docs-title-input").Ancestor(docWebArea).Editable().Focusable()
 	return ui.Retry(5, uiauto.NamedCombine("rename document",
 		ui.WaitUntilExists(docWebArea),
-		ui.DoDefaultUntil(renameTextbox, ui.WithTimeout(5*time.Second).WaitUntilExists(renameTextbox.State("focused", true))),
+		ui.LeftClickUntil(renameTextbox, ui.WithTimeout(5*time.Second).WaitUntilExists(renameTextbox.State("focused", true))),
 		kb.AccelAction("Ctrl+A"),
 		kb.TypeAction(title),
 		waitForFieldTextToBe(tconn, renameTextbox, title),
