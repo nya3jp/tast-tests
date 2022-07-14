@@ -9,9 +9,14 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/testing"
 )
@@ -98,7 +103,25 @@ func FilesAppWatch(ctx context.Context, s *testing.State) {
 		s.Fatal("Create file failed: ", err)
 	}
 	defer cont.RemoveAll(cleanupCtx, testFileName2)
-	if err := files.WithTimeout(10 * time.Second).WaitForFile(testFileName2)(ctx); err != nil {
+
+	if err := checkFileExistsWithRefresh(ctx, tconn, files, testFileName2); err != nil {
 		s.Fatal("Waiting for file2.txt failed: ", err)
 	}
+}
+
+func checkFileExistsWithRefresh(ctx context.Context, tconn *chrome.TestConn, filesApp *filesapp.FilesApp, fileName string) error {
+	refresh := nodewith.Name("Refresh").Role(role.Button).Ancestor(filesapp.WindowFinder(apps.Files.ID))
+	if err := uiauto.New(tconn).LeftClickUntil(refresh, filesApp.FileExists(fileName))(ctx); err != nil {
+		// Sometimes refresh does not work. Close and reopen Files app instead.
+		testing.ContextLogf(ctx, "Failed to find the new file: %s, try to relaunch Files app", err)
+		filesApp, err := filesapp.Relaunch(ctx, tconn, filesApp)
+		if err != nil {
+			return errors.Wrap(err, "failed to relaunch Files app")
+		}
+		if err := filesApp.OpenLinuxFiles()(ctx); err != nil {
+			return errors.Wrap(err, "failed to open Linux files")
+		}
+		return filesApp.FileExists(fileName)(ctx)
+	}
+	return nil
 }
