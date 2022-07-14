@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f1e4e9a_91d91fcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-14T22:34:46Z",
+      "side": 1,
+      "message": "@ricardoq, can you take another look from Tast owners pov?",
+      "revId": "80e9d7f52bdc1831128ea05a436d09ee1cbd0035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
