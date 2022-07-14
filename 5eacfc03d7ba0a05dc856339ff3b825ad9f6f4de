@@ -194,6 +194,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e45688c_24bb8483",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-14T10:55:35Z",
+      "side": 1,
+      "message": "nit: End the comment with .\n\nThe same for all the comments below.",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5838ae51_db32747c",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
         "patchSetId": 5
@@ -223,6 +240,23 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "5838ae51_db32747c",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5365da2_46a3234b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-14T10:55:35Z",
+      "side": 1,
+      "message": "Add what file is being copied to the DUT.",
       "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -334,6 +368,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98872ed9_bcda380b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-14T10:55:35Z",
+      "side": 1,
+      "message": "If I read it right, at this point the app should be already opening - caused by the audio command.\nIf yes, then the message may be misleading. What about something like:\nWaiting for the Setting app to be opened.\n?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e39119e_cac06558",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_chameleon.go",
         "patchSetId": 5
@@ -433,6 +490,40 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "27f9866e_fcbbf27b",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed4a0689_602b6b78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-14T10:55:35Z",
+      "side": 1,
+      "message": "Please add . at the end of line.",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "486c3801_ce7b9977",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-14T10:55:35Z",
+      "side": 1,
+      "message": "Similar as for the other test.",
       "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
