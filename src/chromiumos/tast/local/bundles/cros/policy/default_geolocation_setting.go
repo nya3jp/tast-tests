@@ -138,7 +138,7 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 			}
 			defer closeBrowser(cleanupCtx)
 
-			defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
+			defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree_"+param.name)
 
 			// Open a website.
 			conn, err := br.NewConn(ctx, server.URL+"/default_geolocation_setting_index.html")
@@ -171,7 +171,7 @@ func DefaultGeolocationSetting(ctx context.Context, s *testing.State) {
 				// won't be registered otherwise.
 				testing.Sleep(ctx, time.Second)
 
-				if err := ui.LeftClickUntil(allowButton, ui.Gone(allowButton))(ctx); err != nil {
+				if err := ui.DoDefaultUntil(allowButton, ui.Gone(allowButton))(ctx); err != nil {
 					s.Fatal("Failed to click the Allow button: ", err)
 				}
 
