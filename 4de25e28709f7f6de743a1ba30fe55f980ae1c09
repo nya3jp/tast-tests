@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c35daa6_ba64b6be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-14T21:23:04Z",
+      "side": 1,
+      "message": "This needs to be updated.",
+      "range": {
+        "startLine": 88,
+        "startChar": 44,
+        "endLine": 88,
+        "endChar": 50
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19cbbe29_c0873bf7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-14T21:23:04Z",
+      "side": 1,
+      "message": "Please put this before the comma.",
+      "range": {
+        "startLine": 125,
+        "startChar": 110,
+        "endLine": 125,
+        "endChar": 123
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e63028af_26dfab1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-14T21:23:04Z",
+      "side": 1,
+      "message": "nit: I think it would probably improve readability to use string literal `\"2windows\"` here.",
+      "range": {
+        "startLine": 135,
+        "startChar": 49,
+        "endLine": 135,
+        "endChar": 67
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16813198_6064c73a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-14T21:23:04Z",
+      "side": 1,
+      "message": "Please put this before the comma.",
+      "range": {
+        "startLine": 135,
+        "startChar": 118,
+        "endLine": 135,
+        "endChar": 131
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd6ebdb8_2c135651",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-14T21:23:04Z",
+      "side": 1,
+      "message": "This should be:\n\t\t\t\ts.Fatal(\"Test case \\\"SplitView-2windows\\\" failed: \", err)",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 64
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c11cd4ef_a9922951",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-14T21:23:04Z",
+      "side": 1,
+      "message": "Please put this before the comma.",
+      "range": {
+        "startLine": 156,
+        "startChar": 113,
+        "endLine": 156,
+        "endChar": 126
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4581f28_fd8af230",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-14T21:23:04Z",
+      "side": 1,
+      "message": "This needs a code comment. See:\nhttps://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 15
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
