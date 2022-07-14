@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ffb0eac_c3ad4a51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-14T21:40:51Z",
+      "side": 1,
+      "message": "The test results already include the outbound resolution, so I think this CL is ready for that plan.",
+      "parentUuid": "663a9634_304f81cd",
+      "revId": "ec3fa52529f7e4de0d08aeba4a34bee6c474cacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03e55cc3_0edd7b80",
@@ -49,6 +67,24 @@
       "writtenOn": "2022-07-14T19:59:29Z",
       "side": 1,
       "message": "nit: Could we add `meet.num - 1` bots so that spotlight bot is counted into `meet.num`? So that we don\u0027t need to manually adjust count wher `meet.num` is used.",
+      "revId": "ec3fa52529f7e4de0d08aeba4a34bee6c474cacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef64a1cb_dc20d08c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-14T21:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03e55cc3_0edd7b80",
       "revId": "ec3fa52529f7e4de0d08aeba4a34bee6c474cacc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
