@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 )
 
@@ -88,12 +89,14 @@ func launchGedit(ctx context.Context, keyboard *input.KeyboardEventWriter, tconn
 	}
 
 	ui := uiauto.New(tconn)
+	ud := uidetection.NewDefault(tconn)
 	appWindow := nodewith.NameRegex(regexp.MustCompile(`.* - gedit`)).Role(role.Window).First()
 	const crostiniRestartTimeout = 2 * time.Minute
 	return uiauto.Combine("click and close Gedit",
 		// Gedit window takes a lot of time to appear because it has to restart Crostini.
 		ui.WithTimeout(crostiniRestartTimeout).WaitUntilExists(appWindow),
-
+		// Indicator of Gedit being launched.
+		ud.WaitUntilExists(uidetection.Word("Open").WithinA11yNode(appWindow)),
 		// Focus on the Gedit window.
 		ui.LeftClick(appWindow),
 
