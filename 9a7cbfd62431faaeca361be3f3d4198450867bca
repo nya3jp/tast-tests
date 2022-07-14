@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "771da834_8d063e5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-14T00:26:57Z",
+      "side": 1,
+      "message": "1. I couldn\u0027t find the definition of crosbolt_arc_perf_qual\n\n2. Please run tast unit tests: fast_build.sh -T\n   Then add\nTEST\u003dtast unit test passed.\n\n3. Please manual list the three tests with the new attribute and make sure they show up. Then add\nTEST\u003dtast list -build\u003dtrue \u003cdut\u003e \u0027(crosbolt_arc_perf_qual)\u0027\n\nThanks.",
+      "revId": "9a7cbfd62431faaeca361be3f3d4198450867bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0746ecbb_2a68798b",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
         "patchSetId": 3
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "I don\u0027t have a strong opinion but maybe perf_qual is ok because\n1) crrev.com/c/3748553 got +2.\n2) We already have `qual` suite such as infra_qual and memory_qual.",
       "parentUuid": "0746ecbb_2a68798b",
+      "range": {
+        "startLine": 48,
+        "startChar": 65,
+        "endLine": 48,
+        "endChar": 87
+      },
+      "revId": "9a7cbfd62431faaeca361be3f3d4198450867bca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb3c9384_97fa66b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/app_loading_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-14T00:26:57Z",
+      "side": 1,
+      "message": "Where is crosbolt_arc_perf_qual defined? I could not find it in attr.go and I could not find it in your Cq-Depend.",
+      "parentUuid": "b5a5a1db_8d77e812",
       "range": {
         "startLine": 48,
         "startChar": 65,
