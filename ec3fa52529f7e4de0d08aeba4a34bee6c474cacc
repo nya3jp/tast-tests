@@ -16,6 +16,41 @@
       "message": "One worry is that if we just let Meet do whatever it likes based on transient conditions like DUT thermals, we\u0027ll get inconsistent data. \n\nI\u0027m wondering if we should assert our expected resolution and discard results for lower resolutions? +Xiyuan for thoughts. What do people think?",
       "revId": "ec3fa52529f7e4de0d08aeba4a34bee6c474cacc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "663a9634_304f81cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T19:59:29Z",
+      "side": 1,
+      "message": "Makes sense.\n\nNot sure how bots in lab would behave (I hope our cpu wait would help). Maybe we add a bool to test results to indicate whether high resolution is used or not. Then  choose our next step based on the ratio of good cases/bad cases.",
+      "parentUuid": "03add6dc_6aacf778",
+      "revId": "ec3fa52529f7e4de0d08aeba4a34bee6c474cacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e55cc3_0edd7b80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T19:59:29Z",
+      "side": 1,
+      "message": "nit: Could we add `meet.num - 1` bots so that spotlight bot is counted into `meet.num`? So that we don\u0027t need to manually adjust count wher `meet.num` is used.",
+      "revId": "ec3fa52529f7e4de0d08aeba4a34bee6c474cacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
