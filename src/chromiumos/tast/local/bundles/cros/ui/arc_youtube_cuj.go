@@ -28,7 +28,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Measures the performance of critical user journey for the YouTube ARC app",
 		Contacts:     []string{"amusbach@chromium.org", "chromeos-perfmetrics-eng@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
+		Attr:         []string{"group:cuj"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "loggedInToCUJUser",
 		Timeout:      14 * time.Minute,

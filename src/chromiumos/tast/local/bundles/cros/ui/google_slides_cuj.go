@@ -29,7 +29,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the total performance of critical user journey for Google Slides",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
+		Attr:         []string{"group:cuj"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      15 * time.Minute,

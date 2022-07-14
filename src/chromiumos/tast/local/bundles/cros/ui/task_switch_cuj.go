@@ -44,7 +44,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of tab-switching CUJ",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild", "group:cuj"},
+		Attr:         []string{"group:cuj"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      8 * time.Minute,
