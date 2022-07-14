@@ -105,6 +105,24 @@
       "parentUuid": "22b49d97_487d1b5c",
       "revId": "fe7b258caaa6b80a3b388f3f5697a19c0c4a51ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "462ecce4_748acea6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-07-14T17:33:37Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll abandon the CL for now to remove it from everyone\u0027s queue until the platform stabilizes.",
+      "parentUuid": "23be2e64_3f4f15d0",
+      "revId": "fe7b258caaa6b80a3b388f3f5697a19c0c4a51ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
