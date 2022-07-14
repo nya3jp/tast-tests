@@ -31,21 +31,18 @@ func init() {
 				Val: [][]string{
 					{"platform", "name"},
 				},
-				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name: "ec",
 				Val: [][]string{
 					{"ec", "info"},
 				},
-				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name: "memory",
 				Val: [][]string{
 					{"memory", "spd", "print", "all"},
 				},
-				ExtraAttr: []string{"informational"},
 			},
 		},
 	})
