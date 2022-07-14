@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9fc9c28d_339f5a4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-07-14T03:59:01Z",
+      "side": 1,
+      "message": "will add reference, CL:3691675",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbaeb24f_cf36a1f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-07-14T03:59:01Z",
+      "side": 1,
+      "message": "What about renaming the test to something that includes \"encrypted\" + \"archive\" or \"zip\"? (mount is not specific to archives)",
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ae61eaba_ac9d9710",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
         "patchSetId": 1
@@ -14,6 +54,30 @@
       "writtenOn": "2022-06-17T00:15:11Z",
       "side": 1,
       "message": "You probably don\u0027t need this at all anymore. Just use `chromeLoggedIn` fixture instead. This was used before IIRC to flip the flags, using `chromeLoggedIn` will give you a bit more speed.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9b9ee6c_ba4cf46a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-07-14T03:59:01Z",
+      "side": 1,
+      "message": "As mentioned in another comment, Running the test in SWA or SWA + legacy is probably better than legacy alone, WDYT? For now I changed it so that it\u0027s run in SWA only.",
+      "parentUuid": "ae61eaba_ac9d9710",
       "range": {
         "startLine": 72,
         "startChar": 1,
@@ -41,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87b93eb3_af1c2dfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-07-14T03:59:01Z",
+      "side": 1,
+      "message": "Is it a suggestion to remove the line? I removed it.",
+      "parentUuid": "dee819a6_20b2d4b4",
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f0f0b0a_3229f84f",
@@ -54,6 +136,30 @@
       "writtenOn": "2022-06-17T00:15:11Z",
       "side": 1,
       "message": "The more I\u0027m reading this the more I\u0027m unsure this needs to be a `testing.Poll`. This will basically retry if the returned error is not nil. But there is nothing in the body of this that suggests any action that would make the outcome any different.\n\nThis would usually be used in the case you want to repeatedly do something until a condition is met, but you\u0027re just waiting for a dialog box to open? Once the box opens there\u0027s not closing it or anything so the next try will just fail again and again until timeout. Maybe remove the `testing.Poll` and make the timeout on line 131 be 15s instead.",
+      "range": {
+        "startLine": 127,
+        "startChar": 11,
+        "endLine": 127,
+        "endChar": 23
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00bc7ad6_e277ceed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-07-14T03:59:01Z",
+      "side": 1,
+      "message": "I think that the reason why I was doing testing.Poll here was to avoid a race condition where, we press enter to validate the password through the password dialog, and we then ask to find the next password dialog, but the test checks the old dialog instead because it was not dismissed quickly enough.",
+      "parentUuid": "8f0f0b0a_3229f84f",
       "range": {
         "startLine": 127,
         "startChar": 11,
@@ -89,6 +195,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3767d1e4_c6b61906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-07-14T03:59:01Z",
+      "side": 1,
+      "message": "See comment above. I think it is possible to just be checking the wrong dialog, meaning that we want to try again.",
+      "parentUuid": "c19ea7a0_ded47fc4",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 67
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7efa685_a4f3a23a",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
         "patchSetId": 1
@@ -112,6 +242,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "979ef322_53860616",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-07-14T03:59:01Z",
+      "side": 1,
+      "message": "This is checking the breadcrumbs, I ran the test in SWA and this works fine. However you\u0027re right, all the archives have a \"Texts\" folder, which we use just below, so better just waiting for it in the file list.\n\nAlso, should we run the test in SWA only? Both SWA and legacy? At this point, legacy only is probably not the best option.",
+      "parentUuid": "e7efa685_a4f3a23a",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 74
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "40c499c3_253e6e2d",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
         "patchSetId": 1
@@ -123,6 +277,30 @@
       "writtenOn": "2022-06-17T00:15:11Z",
       "side": 1,
       "message": "Can you just use `files.WaitForFile(zipContentDirectoryLabel)` here?",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d06d347d_8f2665d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-07-14T03:59:01Z",
+      "side": 1,
+      "message": "Yes, and `WaitUntilFileGone` too, which allows us to put all of it in the same `combine`.",
+      "parentUuid": "40c499c3_253e6e2d",
       "range": {
         "startLine": 178,
         "startChar": 1,
@@ -158,6 +336,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c7055910_bde43ac3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-07-14T03:59:01Z",
+      "side": 1,
+      "message": "Right, it can be a TODO for another CL, it would be shared between this test and zipMount.\nOther TODO, we can also rename zipMount to archiveMount since the test is not ZIP only.",
+      "parentUuid": "adf1058a_8aa0916f",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 2
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31d02f03_4f3103d1",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
         "patchSetId": 1
@@ -169,6 +371,30 @@
       "writtenOn": "2022-06-17T00:15:11Z",
       "side": 1,
       "message": "nit: what\u0027s the purpose of this bool? can you use this and set to false once processed instead of delete?",
+      "range": {
+        "startLine": 217,
+        "startChar": 38,
+        "endLine": 217,
+        "endChar": 42
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "697f388b_d9f53cbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-07-14T03:59:01Z",
+      "side": 1,
+      "message": "Right, well, Go has maps but not Sets, so the simplest to me was to create a map with bools, and then there can be:\n- an archive for which we still expect a password dialog: true if its password dialog is expected, false otherwise... although in the end that\u0027s not what I do, I just set it to true 😊\n- an archive for which we don\u0027t expect any more password dialog: its name shouldn\u0027t be in the map.\nAnd the second thing is, the statement to access a value in the map:\n`if _, exists :\u003d processedZipFiles[n.Name]; exists {`\nBasically, the `exists` boolean tells us whether the element is in the map, and the `_` is the actual value.. and I don\u0027t know what to name this variable haha, it would also be `exists`, the problem with having a map that holds 2 informations at once when we just need one like a set would.",
+      "parentUuid": "31d02f03_4f3103d1",
       "range": {
         "startLine": 217,
         "startChar": 38,
@@ -202,6 +428,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fea406c6_10e1097e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-07-14T03:59:01Z",
+      "side": 1,
+      "message": "What I was thinking is (might be wrong), the other `err` are defined just for the scope of their `if` statements, while `err1` is defined within the scope of the function, so I wanted to avoid confusions around that.\n\nHowever I ran the test with just `err` and it works fine, changed.",
+      "parentUuid": "c0b0d4a8_204b9e6a",
+      "range": {
+        "startLine": 223,
+        "startChar": 19,
+        "endLine": 223,
+        "endChar": 23
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "012da195_b4ffadb7",
@@ -225,6 +475,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "520f0a85_c7c17f8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-07-14T03:59:01Z",
+      "side": 1,
+      "message": "Yes done",
+      "parentUuid": "012da195_b4ffadb7",
+      "range": {
+        "startLine": 237,
+        "startChar": 7,
+        "endLine": 237,
+        "endChar": 11
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f847c1e_33590f76",
@@ -238,6 +512,30 @@
       "writtenOn": "2022-06-17T00:15:11Z",
       "side": 1,
       "message": "nit: there is also an `AccelAction` that you can use to put into a `uiauto.Combine` to join things together and make them more readable.",
+      "range": {
+        "startLine": 277,
+        "startChar": 14,
+        "endLine": 277,
+        "endChar": 19
+      },
+      "revId": "828caba58452c19dc0023e37a7389e52422e755d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b397d84_fa196877",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/mount_multiple.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1362995
+      },
+      "writtenOn": "2022-07-14T03:59:01Z",
+      "side": 1,
+      "message": "Right, this code already got old!\nWould you recommend to also adapt waitUntilPasswordDialogExists so that it has the formation of an Action? I can add a patchset to simplify all this.",
+      "parentUuid": "7f847c1e_33590f76",
       "range": {
         "startLine": 277,
         "startChar": 14,
