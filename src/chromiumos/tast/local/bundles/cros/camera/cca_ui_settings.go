@@ -116,10 +116,11 @@ func testHelp(ctx context.Context, cr *chrome.Chrome, bt browser.Type, app *cca.
 	if err := app.Click(ctx, cca.HelpButton); err != nil {
 		return errors.Wrap(err, "failed to click help button")
 	}
-	br, err := browserfixt.Connect(ctx, cr, bt)
+	br, brCleanUp, err := browserfixt.Connect(ctx, cr, bt)
 	if err != nil {
 		return errors.Wrap(err, "failed to connect to browser")
 	}
+	defer brCleanUp(ctx)
 	matcher := func(t *target.Info) bool {
 		return strings.Contains(t.URL, "support.google.com") && t.Type == "page"
 	}

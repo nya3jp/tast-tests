@@ -78,9 +78,11 @@ var (
 const (
 	// kioskStartingLog is reported by chrome once the kiosk mode is starting.
 	kioskStartingLog = "Starting kiosk mode"
+	// kioskReadyToLaunchLog is reported by chrome once the kiosk mode is ready to launch.
+	kioskReadyToLaunchLog = "Kiosk app is ready to launch."
 	// kioskLaunchSucceededLog is reported by chrome once the kiosk launch is succeeded.
 	kioskLaunchSucceededLog = "Kiosk launch succeeded"
-	// kioskClosingSplashScreenLog is reported by chtome once the splash screen is gone.
+	// kioskClosingSplashScreenLog is reported by chrome once the splash screen is gone.
 	kioskClosingSplashScreenLog = "App window created, closing splash screen."
 )
 
@@ -129,25 +131,17 @@ func (k *Kiosk) Close(ctx context.Context) (retErr error) {
 }
 
 // ConfirmKioskStarted uses reader for looking for logs that confirm Kiosk
-// mode starting and also successful launch of Kiosk.
+// mode starting, ready for launch, and successful launch of Kiosk.
 // reader Reader instance should be processing logs filtered for Chrome only.
 func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
-	// Check that Kiosk starts successfully.
-	testing.ContextLog(ctx, "Waiting for Kiosk mode start")
-
 	const (
 		// logScanTimeout is a timeout for log messages indicating Kiosk startup
 		// and successful launch to be present. It is set to over a minute as Kiosk
 		// mode launch varies depending on device. crbug.com/1222136
-		logScanTimeout = 90 * time.Second
+		logScanTimeout = 60 * time.Second
 	)
-
-	if _, err := reader.Wait(ctx, logScanTimeout,
-		func(e *syslog.Entry) bool {
-			return strings.Contains(e.Content, kioskStartingLog)
-		},
-	); err != nil {
-		return errors.Wrap(err, "failed to verify starting of Kiosk mode")
+	if err := confirmKioskInitialized(ctx, reader); err != nil {
+		return errors.Wrap(err, "failed to verify starting sequence of Kiosk mode")
 	}
 
 	testing.ContextLog(ctx, "Waiting for successful Kiosk mode launch")
@@ -157,6 +151,34 @@ func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 		},
 	); err != nil {
 		return errors.Wrap(err, "failed to verify successful launch of Kiosk mode")
+	}
+
+	return nil
+}
+
+// confirmKioskInitialized uses reader for looking for logs that confirm Kiosk
+// mode starting and ready for launch.
+func confirmKioskInitialized(ctx context.Context, reader *syslog.Reader) error {
+	testing.ContextLog(ctx, "Waiting for Kiosk mode start")
+	const (
+		logScanTimeout = 30 * time.Second
+	)
+	// Wait for kioskStartingLog to be present in logs.
+	if _, err := reader.Wait(ctx, logScanTimeout,
+		func(e *syslog.Entry) bool {
+			return strings.Contains(e.Content, kioskStartingLog)
+		},
+	); err != nil {
+		return errors.Wrap(err, "failed to verify starting of Kiosk mode")
+	}
+
+	// Wait for kioskReadyToLaunchLog to be present in logs.
+	if _, err := reader.Wait(ctx, logScanTimeout,
+		func(e *syslog.Entry) bool {
+			return strings.Contains(e.Content, kioskReadyToLaunchLog)
+		},
+	); err != nil {
+		return errors.Wrap(err, "failed to verify Kiosk being ready for launch")
 	}
 
 	return nil
@@ -278,12 +300,28 @@ func New(ctx context.Context, fdms *fakedms.FakeDMS, opts ...Option) (*Kiosk, *c
 			return nil, nil, errors.Wrap(err, "Chrome restart failed")
 		}
 
-		if err := ConfirmKioskStarted(ctx, reader); err != nil {
-			if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{cfg.m.DeviceLocalAccounts}); err != nil {
-				testing.ContextLog(ctx, "Could not serve and refresh policies. If kioskmode.AutoLaunch() option was used it may impact next test : ", err)
+		if !cfg.m.SkipSuccessfulLaunchCheck {
+			// Library waits for Kiosk start sequence to start then it checks
+			// that Kiosk is ready for launch, and finally it waits for Kiosk
+			// to be launched.
+			if err := ConfirmKioskStarted(ctx, reader); err != nil {
+				if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{cfg.m.DeviceLocalAccounts}); err != nil {
+					testing.ContextLog(ctx, "Could not serve and refresh policies. If kioskmode.AutoLaunch() option was used it may impact next test: ", err)
+				}
+				cr.Close(ctx)
+				return nil, nil, errors.Wrap(err, "there was a problem while checking chrome logs for Kiosk related entries")
 			}
-			cr.Close(ctx)
-			return nil, nil, errors.Wrap(err, "there was a problem while checking chrome logs for Kiosk related entries")
+		} else {
+			// If a test does not want to wait for Kiosk to be launched the
+			// library will still make sure that Kiosk start sequence started
+			// and Kiosk is ready for launch.
+			if err := confirmKioskInitialized(ctx, reader); err != nil {
+				if err := policyutil.ServeAndRefresh(ctx, fdms, cr, []policy.Policy{cfg.m.DeviceLocalAccounts}); err != nil {
+					testing.ContextLog(ctx, "Could not serve and refresh policies. If kioskmode.AutoLaunch() option was used it may impact next test: ", err)
+				}
+				cr.Close(ctx)
+				return nil, nil, errors.Wrap(err, "there was a problem while checking chrome logs for Kiosk startup")
+			}
 		}
 	} else {
 		opts := []chrome.Option{

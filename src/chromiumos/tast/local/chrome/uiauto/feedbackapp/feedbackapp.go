@@ -20,7 +20,7 @@ import (
 )
 
 // IssueText export is used to enter the issue description.
-const IssueText = "I am not able to connect to Bluetooth"
+const IssueText = "Test only - please ignore"
 
 // Launch starts the Feedback app via the default method.
 func Launch(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, error) {
@@ -76,6 +76,27 @@ func LaunchAndGoToShareDataPage(ctx context.Context, tconn *chrome.TestConn) (
 	button := nodewith.Name("Continue").Role(role.Button).Ancestor(feedbackRootNode)
 	if err := ui.DoDefault(button)(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to click continue button")
+	}
+
+	return feedbackRootNode, nil
+}
+
+// LaunchAndGoToConfirmationPage starts Feedback app via default method and navigate to
+// confirmation page. This function returns the feedback app root node and possible error.
+func LaunchAndGoToConfirmationPage(ctx context.Context, tconn *chrome.TestConn) (
+	*nodewith.Finder, error) {
+	// Launch Feedback app and navigate to share data page
+	feedbackRootNode, err := LaunchAndGoToShareDataPage(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to launch feedback app")
+	}
+
+	ui := uiauto.New(tconn)
+
+	// Find send button and submit the feedback.
+	sendButton := nodewith.Name("Send").Role(role.Button).Ancestor(feedbackRootNode)
+	if err := ui.DoDefault(sendButton)(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to click send button")
 	}
 
 	return feedbackRootNode, nil

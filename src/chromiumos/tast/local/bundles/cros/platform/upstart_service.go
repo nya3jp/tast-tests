@@ -61,12 +61,12 @@ func (*UpstartService) StopJob(ctx context.Context, request *platform.StopJobReq
 
 // EnableJob enables an upstart job that was previously disabled.
 func (*UpstartService) EnableJob(ctx context.Context, request *platform.EnableJobRequest) (*empty.Empty, error) {
-	return &empty.Empty{}, upstart.EnableJob(request.JobName)
+	return &empty.Empty{}, upstart.EnableJob(ctx, request.JobName)
 }
 
 // DisableJob disables an upstart job, which takes effect on the next reboot.
 func (*UpstartService) DisableJob(ctx context.Context, request *platform.DisableJobRequest) (*empty.Empty, error) {
-	return &empty.Empty{}, upstart.DisableJob(request.JobName)
+	return &empty.Empty{}, upstart.DisableJob(ctx, request.JobName)
 }
 
 // IsJobEnabled checks if the given upstart job is enabled.

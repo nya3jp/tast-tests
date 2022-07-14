@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -22,7 +23,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks KeyCharacterMap working in non-US layouts",
 		Contacts:     []string{"yhanada@chromium.org", "arc-framework+tast@google.com"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "arcBooted",
 		Timeout:      3 * time.Minute,
@@ -92,6 +93,19 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 			s.Error("Failed to set the default input method: ", err)
 		}
 	}(cleanupCtx)
+
+	// Wait for the activity to have focus.
+	if err := ash.WaitForCondition(ctx, tconn, func(window *ash.Window) bool {
+		return window.ARCPackageName == act.PackageName() &&
+			window.IsVisible && window.HasFocus && window.IsActive
+	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+		s.Fatal("Failed to wait for the app to be ready: ", err)
+	}
+
+	// Wait for the View inflated.
+	if err := d.Object(ui.ID(fieldID)).WaitForExists(ctx, 10*time.Second); err != nil {
+		s.Fatal("Failed to wait for the app to render: ", err)
+	}
 
 	for _, tc := range []struct {
 		name     string

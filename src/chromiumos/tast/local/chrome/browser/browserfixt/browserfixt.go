@@ -133,22 +133,27 @@ func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *lacrosfixt.Co
 	}
 }
 
-// Connect connects to a running browser instance.
-func Connect(ctx context.Context, cr *chrome.Chrome, bt browser.Type) (*browser.Browser, error) {
+// Connect connects to a running browser instance. It returns a closure for
+// freeing resources when the connection is no longer needed (note that the
+// closure does not close the browser).
+func Connect(ctx context.Context, cr *chrome.Chrome, bt browser.Type) (*browser.Browser, func(ctx context.Context), error) {
 	switch bt {
 	case browser.TypeAsh:
-		return cr.Browser(), nil
+		return cr.Browser(), func(context.Context) {}, nil
 	case browser.TypeLacros:
 		tconn, err := cr.TestAPIConn(ctx)
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to connect to ash-chrome test API")
+			return nil, nil, errors.Wrap(err, "failed to connect to ash-chrome test API")
 		}
 		l, err := lacros.Connect(ctx, tconn)
 		if err != nil {
-			return nil, errors.Wrap(err, "failed to connect to lacros-chrome")
+			return nil, nil, errors.Wrap(err, "failed to connect to lacros-chrome")
 		}
-		return l.Browser(), nil
+		cleanUp := func(ctx context.Context) {
+			l.CloseResources(ctx) // Ignore error.
+		}
+		return l.Browser(), cleanUp, nil
 	default:
-		return nil, errors.Errorf("unrecognized Chrome type %s", string(bt))
+		return nil, nil, errors.Errorf("unrecognized Chrome type %s", string(bt))
 	}
 }

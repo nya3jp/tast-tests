@@ -75,3 +75,15 @@ func CustomDirectoryAPIID(directoryAPIID string) Option {
 		return nil
 	}
 }
+
+// SkipSuccessfulLaunchCheck when used the kiosk library won't wait for
+// successful launch message - indicating Kiosk is up. Instead it will only
+// wait for Kiosk start sequence and it being ready to launch.
+// Use if you want to interact with Kiosk splashscreen view e.g. for bailing
+// out.
+func SkipSuccessfulLaunchCheck() Option {
+	return func(cfg *MutableConfig) error {
+		cfg.SkipSuccessfulLaunchCheck = true
+		return nil
+	}
+}

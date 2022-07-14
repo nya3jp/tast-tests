@@ -296,11 +296,17 @@ func trimTestBlockImpl(ctx context.Context, s *testing.State, trimPath string, r
 			testing.ContextLog(ctx, "Expected values for trimmed data not reported")
 		} else if dlfeat == "1" {
 			expectTrimZero = true
+			testing.ContextLog(ctx, "Expecting read zero after trim for NVMe")
 		} else if dlfeat == "2" {
 			expectTrimOne = true
+			testing.ContextLog(ctx, "Expecting read one after trim for NVMe")
 		} else {
 			testing.ContextLog(ctx, "Expected values for trimmed data not specified")
 		}
+	}
+	if IsUFS(trimPath) {
+		expectTrimZero = true
+		testing.ContextLog(ctx, "Expecting read zero after trim for UFS")
 	}
 
 	if expectTrimZero && trimVerifyZero < trimVerifyCount {

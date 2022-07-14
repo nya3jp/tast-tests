@@ -5,17 +5,14 @@
 package util
 
 import (
-	"archive/tar"
-	"compress/gzip"
 	"context"
 	"crypto/rsa"
 	"crypto/x509"
 	"encoding/json"
-	"io"
 	"io/ioutil"
 	"math/rand"
 	"os"
-	"path/filepath"
+	"strings"
 
 	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/common/hwsec"
@@ -76,107 +73,52 @@ func (config *CrossVersionLoginConfig) AddVaultKeyData(ctx context.Context, cryp
 	return nil
 }
 
-func decompressData(src string) error {
-	r, err := os.Open(src)
+func runCmdOrFailWithOut(cmd *testexec.Cmd) error {
+	out, err := cmd.CombinedOutput()
 	if err != nil {
-		return errors.Wrapf(err, "failed to open compressed data %q", src)
-	}
-	defer r.Close()
-
-	gr, err := gzip.NewReader(r)
-	if err != nil {
-		return errors.Wrap(err, "failed to create gzip reader")
-	}
-	defer gr.Close()
-
-	tr := tar.NewReader(gr)
-	for {
-		hdr, err := tr.Next()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			return errors.Wrap(err, "failed to read compressed data")
-		}
-		switch hdr.Typeflag {
-		case tar.TypeDir:
-			if err := os.MkdirAll(hdr.Name, 0777); err != nil {
-				return errors.Wrapf(err, "failed to create directory %q", hdr.Name)
-			}
-		case tar.TypeReg:
-			dir := filepath.Dir(hdr.Name)
-			if err := os.MkdirAll(dir, 0755); err != nil {
-				return errors.Wrapf(err, "failed to create directory %q", dir)
-			}
-			f, err := os.OpenFile(hdr.Name, os.O_CREATE|os.O_TRUNC|os.O_WRONLY, os.FileMode(hdr.Mode))
-			if err != nil {
-				return errors.Wrapf(err, "failed to create file %q", hdr.Name)
-			}
-			defer f.Close()
-			if _, err = io.Copy(f, tr); err != nil {
-				return errors.Wrapf(err, "failed to decompress %q", hdr.Name)
-			}
-		}
+		// Return programs's output on failures. Avoid line breaks in error
+		// messages, to keep the Tast logs readable.
+		outFlat := strings.Replace(string(out), "\n", " ", -1)
+		return errors.Wrap(err, outFlat)
 	}
 	return nil
 }
 
-func compressData(dst string, paths []string) error {
-	w, err := os.Create(dst)
-	if err != nil {
-		return errors.Wrapf(err, "failed to create file %q", dst)
-	}
-	defer w.Close()
-	gw := gzip.NewWriter(w)
-	defer gw.Close()
-	tw := tar.NewWriter(gw)
-	defer tw.Close()
-
-	for _, path := range paths {
-		err := filepath.Walk(path, func(fn string, info os.FileInfo, err error) error {
-			if err != nil {
-				return errors.Wrapf(err, "failed to walk %q", fn)
-			}
-			// Ignore mount directories since we could not migrate them.
-			if info.IsDir() && info.Name() == "mount" {
-				return filepath.SkipDir
-			}
-			if !info.Mode().IsRegular() {
-				return nil
-			}
-			if err := archiveFile(tw, fn, info); err != nil {
-				return errors.Wrapf(err, "failed to archive file %q", fn)
-			}
-			return nil
-		})
-		if err != nil {
-			return err
-		}
-	}
-	return nil
+func decompressData(ctx context.Context, src string) error {
+	// Use the "tar" program as it takes care of recursive unpacking,
+	// preserving ownership, permissions and SELinux attributes.
+	cmd := testexec.CommandContext(ctx, "/bin/tar",
+		"--extract",              // extract files from an archive
+		"--gzip",                 // filter the archive through gunzip
+		"--preserve-permissions", // extract file permissions
+		"--same-owner",           // extract file ownership
+		"--file",                 // read from the file specified in the next argument
+		src)
+	// Set the work directory for "tar" at "/", so that it unpacks files
+	// at correct locations.
+	cmd.Dir = "/"
+	return runCmdOrFailWithOut(cmd)
 }
 
-func archiveFile(tw *tar.Writer, fn string, info os.FileInfo) error {
-	f, err := os.Open(fn)
-	if err != nil {
-		return errors.Wrap(err, "failed to open file")
+func compressData(ctx context.Context, dst string, paths, ignorePaths []string) error {
+	// Use the "tar" program as it takes care of recursive packing,
+	// preserving ownership, permissions and SELinux attributes.
+	args := append([]string{
+		"--acls",    // save the ACLs to the archive
+		"--create",  // create a new archive
+		"--gzip",    // filter the archive through gzip
+		"--selinux", // save the SELinux context to the archive
+		"--xattrs",  // save the user/root xattrs to the archive
+		"--file",    // write to the file specified in the next argument
+		dst})
+	for _, p := range ignorePaths {
+		// Exclude the specified patterns from archiving.
+		args = append(args, "--exclude", p)
 	}
-	defer f.Close()
-
-	hdr, err := tar.FileInfoHeader(info, info.Name())
-	if err != nil {
-		return errors.Wrap(err, "failed to generate file header")
-	}
-	// Use the full path instead of basename.
-	hdr.Name = fn
-
-	if err := tw.WriteHeader(hdr); err != nil {
-		return errors.Wrap(err, "failed to write header")
-	}
-	if _, err := io.Copy(tw, f); err != nil {
-		return errors.Wrap(err, "failed to copy file to archive")
-	}
-	return nil
+	// Specify the input paths to archive.
+	args = append(args, paths...)
+	cmd := testexec.CommandContext(ctx, "/bin/tar", args...)
+	return runCmdOrFailWithOut(cmd)
 }
 
 // NewChallengeAuthCrossVersionLoginConfig creates cross-version login config from challenge auth config and rsa key
@@ -196,11 +138,17 @@ func CreateCrossVersionLoginData(ctx context.Context, daemonController *hwsec.Da
 	}
 	defer ensureHwsecDaemons(ctx, daemonController)
 
-	files := []string{
+	paths := []string{
 		"/mnt/stateful_partition/unencrypted/tpm2-simulator/NVChip",
 		"/home/.shadow",
 	}
-	if err := compressData(archivePath, files); err != nil {
+	// Skip packing the "mount" directories, since the file systems it's
+	// used for don't allow taking snapshots. E.g., ext4 fscrypt complains
+	// "Required key not available" when trying to read encrypted files.
+	ignorePaths := []string{
+		"/home/.shadow/*/mount",
+	}
+	if err := compressData(ctx, archivePath, paths, ignorePaths); err != nil {
 		return errors.Wrap(err, "failed to compress the cryptohome data")
 	}
 	return nil
@@ -218,11 +166,11 @@ func LoadCrossVersionLoginData(ctx context.Context, daemonController *hwsec.Daem
 		return errors.Wrap(err, "failed to remove old data")
 	}
 
-	if err := decompressData(archivePath); err != nil {
+	if err := decompressData(ctx, archivePath); err != nil {
 		return errors.Wrap(err, "failed to decompress the cryptohome data")
 	}
 
-	// decompressData do not restore selinux attributes. Running `restorecon` should do the trick.
+	// Run `restorecon` to make sure SELinux attributes are correct after the decompression.
 	if err := testexec.CommandContext(ctx, "restorecon", "-r", "/home/.shadow").Run(); err != nil {
 		return errors.Wrap(err, "failed to restore selinux attributes")
 	}

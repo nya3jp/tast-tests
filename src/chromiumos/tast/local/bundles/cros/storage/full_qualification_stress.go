@@ -82,6 +82,10 @@ func FullQualificationStress(ctx context.Context, s *testing.State) {
 		s.Fatal("Cannot set free root partition as test device: ", err)
 	}
 
+	if !util.IsEMMC(testParam.TestDevice) && !util.IsNVME(testParam.TestDevice) && !util.IsUFS(testParam.TestDevice) {
+		s.Fatalf("Cannot determine storage type of %q: %v", testParam.TestDevice, err)
+	}
+
 	if val, ok := s.Var("tast_suspend_block_timeout"); ok {
 		if testParam.SuspendBlockTimeout, err = time.ParseDuration(val); err != nil {
 			s.Fatal("Cannot parse argument 'tast_suspend_block_timeout' of type Duration: ", err)

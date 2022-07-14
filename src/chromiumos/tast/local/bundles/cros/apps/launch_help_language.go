@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/apps/fixture"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -32,7 +32,7 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(pre.AppsStableModels),
-		Fixture:      "chromeLoggedInForEAInJP",
+		Fixture:      fixture.LoggedInJP,
 	})
 }
 
@@ -43,11 +43,7 @@ func LaunchHelpLanguage(ctx context.Context, s *testing.State) {
 		helpCategoryName = "新機能"
 	)
 
-	cr := s.FixtValue().(*chrome.Chrome)
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 

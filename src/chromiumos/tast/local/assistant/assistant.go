@@ -87,7 +87,7 @@ func SendTextQuery(ctx context.Context, tconn *chrome.TestConn, query string) (Q
 // SendTextQueryViaUI sends a text query via launcher.
 // Comparing with SendTextQuery, this one does not wait an Assistant response.
 func SendTextQueryViaUI(ctx context.Context, tconn *chrome.TestConn, query string, accel Accelerator) error {
-	// Open Assistant UI
+	// Open Assistant UI.
 	if err := ToggleUIWithHotkey(ctx, tconn, accel); err != nil {
 		return errors.Wrap(err, "failed to toggle Assistant UI with hotkey")
 	}
@@ -97,7 +97,24 @@ func SendTextQueryViaUI(ctx context.Context, tconn *chrome.TestConn, query strin
 		return errors.Wrap(err, "failed to wait AssistantDialogPlate")
 	}
 
-	// Type query
+	// In tablet mode, default input mode is voice. Press AssistantButton to change it to text.
+	tabletModeEnabled, err := ash.TabletModeEnabled(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get tablet mode status")
+	}
+
+	if tabletModeEnabled {
+		if err := uiauto.New(tconn).LeftClick(nodewith.HasClass("AssistantButton"))(ctx); err != nil {
+			return errors.Wrap(err, "failed to click AssistantButton to switch to text query mode")
+		}
+	}
+
+	// Text filed can be animating/not focused state. Wait until it gets focused before start typing a query.
+	if err := uiauto.New(tconn).EnsureFocused(nodewith.HasClass("AssistantTextfield"))(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait AssistantTextfield getting focused to type a query")
+	}
+
+	// Type query.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to create a KeyboardEventWriter")

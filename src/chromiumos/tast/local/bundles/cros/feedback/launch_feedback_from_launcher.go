@@ -58,25 +58,25 @@ func LaunchFeedbackFromLauncher(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
-	// Setting up keyboard.
+	// Set up keyboard.
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to find keyboard: ", err)
 	}
 	defer kb.Close()
 
-	// Launching Feedback app from launcher.
+	// Launch Feedback app from launcher.
 	if err := launcher.SearchAndLaunchWithQuery(
 		tconn, kb, "feedback", apps.Feedback.Name)(ctx); err != nil {
 		s.Fatal("Failed to search and launch app: ", err)
 	}
 
-	// Verifying Feedback app is launched.
+	// Verify Feedback app is launched.
 	if err = ash.WaitForApp(ctx, tconn, apps.Feedback.ID, time.Minute); err != nil {
 		s.Fatal("Could not find app in shelf after launch: ", err)
 	}
 
-	// Verifying essential elements exist.
+	// Verify essential elements exist.
 	issueDescriptionInput := nodewith.Role(role.TextField)
 	button := nodewith.Name("Continue").Role(role.Button)
 
@@ -87,7 +87,7 @@ func LaunchFeedbackFromLauncher(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find element: ", err)
 	}
 
-	// Verifying five default help content links exist.
+	// Verify five default help content links exist.
 	helpLink := nodewith.Role(role.Link).Ancestor(nodewith.Role(role.Iframe))
 	for i := 0; i < 5; i++ {
 		item := helpLink.Nth(i)

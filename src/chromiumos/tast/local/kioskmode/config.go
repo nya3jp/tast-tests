@@ -41,6 +41,10 @@ type MutableConfig struct {
 	// CustomDirectoryAPIID holds a custom directory_api_id string, aka device id,
 	// to be set in the policy blob.
 	CustomDirectoryAPIID *string
+	// SkipSuccessfulLaunchCheck when set to true the library won't wait for
+	// the successful launch message before returning but will only wait for
+	// Kiosk start sequence and it being ready to launch.
+	SkipSuccessfulLaunchCheck bool
 }
 
 // NewConfig creates new configuration.

@@ -65,6 +65,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/meta"
 	_ "chromiumos/tast/local/bundles/cros/mgs"
 	_ "chromiumos/tast/local/bundles/cros/mlservice"
+	_ "chromiumos/tast/local/bundles/cros/mojo"
 	_ "chromiumos/tast/local/bundles/cros/multivm"
 	_ "chromiumos/tast/local/bundles/cros/nacl"
 	_ "chromiumos/tast/local/bundles/cros/nearbyshare"

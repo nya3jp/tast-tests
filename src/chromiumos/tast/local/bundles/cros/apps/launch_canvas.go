@@ -11,8 +11,8 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/bundles/cros/apps/fixture"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -36,16 +36,16 @@ func init() {
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Params: []testing.Param{{
 			Name:              "stable",
-			Fixture:           "chromeLoggedInForEA",
+			Fixture:           fixture.LoggedIn,
 			ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 		}, {
 			Name:              "unstable",
-			Fixture:           "chromeLoggedInForEA",
+			Fixture:           fixture.LoggedIn,
 			ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "lacros",
-			Fixture:           "lacrosForEA",
+			Fixture:           fixture.LacrosLoggedIn,
 			ExtraSoftwareDeps: []string{"lacros"},
 			ExtraAttr:         []string{"informational"},
 			ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
@@ -55,11 +55,7 @@ func init() {
 
 // LaunchCanvas verifies launching Canvas after OOBE
 func LaunchCanvas(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 
 	cleanupCtx := ctx
 	// Use a shortened context for test operations to reserve time for cleanup.

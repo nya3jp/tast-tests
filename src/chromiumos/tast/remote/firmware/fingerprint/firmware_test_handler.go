@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/remote/sysutil"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/services/cros/platform"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
@@ -49,6 +50,51 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		}
 	}()
 
+	t.fpBoard, err = Board(ctx, t.d)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get fingerprint board")
+	}
+
+	t.buildFwFile, err = FirmwarePath(ctx, t.d, t.fpBoard)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get build firmware file path")
+	}
+
+	if err := ValidateBuildFwFile(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
+		return nil, errors.Wrap(err, "failed to validate build firmware file")
+	}
+
+	t.needsRebootAfterFlashing, err = NeedsRebootAfterFlashing(ctx, t.d)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to determine if reboot is needed")
+	}
+
+	// Disable rootfs verification if necessary.
+	if t.needsRebootAfterFlashing {
+		// Since MakeRootfsWritable will reboot the device, we must call
+		// RPCClose/RPCDial before/after calling MakeRootfsWritable.
+		if err := t.d.RPCClose(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to close rpc")
+		}
+		// Rootfs must be writable in order to disable the upstart job.
+		if err := sysutil.MakeRootfsWritable(ctx, t.d.DUT(), t.d.RPCHint()); err != nil {
+			return nil, errors.Wrap(err, "failed to make rootfs writable")
+		}
+		if err := t.d.RPCDial(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to redial rpc")
+		}
+	} else {
+		// If we're not on a device that needs to be rebooted, the rootfs should not
+		// be writable.
+		rootfsIsWritable, err := sysutil.IsRootfsWritable(ctx, t.d.RPC())
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to check if rootfs is writable")
+		}
+		if rootfsIsWritable {
+			testing.ContextLog(ctx, "WARNING: The rootfs is writable")
+		}
+	}
+
 	t.daemonState, err = stopDaemons(ctx, t.UpstartService(), []string{
 		biodUpstartJobName,
 		// TODO(b/183123775): Remove when bug is fixed.
@@ -70,41 +116,9 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		return nil, err
 	}
 
-	t.fpBoard, err = Board(ctx, t.d)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get fingerprint board")
-	}
-
-	t.buildFwFile, err = FirmwarePath(ctx, t.d, t.fpBoard)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to get build firmware file path")
-	}
-
-	if err := ValidateBuildFwFile(ctx, t.d, t.fpBoard, t.buildFwFile); err != nil {
-		return nil, errors.Wrap(err, "failed to validate build firmware file")
-	}
-
-	t.needsRebootAfterFlashing, err = NeedsRebootAfterFlashing(ctx, t.d)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to determine if reboot is needed")
-	}
-
 	t.cleanupTime = timeForCleanup
 
 	if t.needsRebootAfterFlashing {
-		// Since MakeRootfsWritable will reboot the device, we must call
-		// RPCClose/RPCDial before/after calling MakeRootfsWritable.
-		if err := t.d.RPCClose(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed to close rpc")
-		}
-		// Rootfs must be writable in order to disable the upstart job
-		if err := sysutil.MakeRootfsWritable(ctx, t.d.DUT(), t.d.RPCHint()); err != nil {
-			return nil, errors.Wrap(err, "failed to make rootfs writable")
-		}
-		if err := t.d.RPCDial(ctx); err != nil {
-			return nil, errors.Wrap(err, "failed to redial rpc")
-		}
-
 		// Disable biod upstart job so that it doesn't interfere with the test when
 		// we reboot.
 		upstartService := t.UpstartService()
@@ -138,16 +152,6 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 
 		// Account for the additional time that rebooting adds.
 		t.cleanupTime += 3 * time.Minute
-	} else {
-		// If we're not on a device that needs to be rebooted, the rootfs should not
-		// be writable.
-		rootfsIsWritable, err := sysutil.IsRootfsWritable(ctx, t.d.RPC())
-		if err != nil {
-			return nil, errors.Wrap(err, "failed to check if rootfs is writable")
-		}
-		if rootfsIsWritable {
-			testing.ContextLog(ctx, "WARNING: The rootfs is writable")
-		}
 	}
 
 	t.dutTempDir, err = t.DutfsClient().TempDir(ctx, "", dutTempPathPattern)
@@ -369,12 +373,28 @@ func isFPUpdaterEnabled(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
 func enableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
 	fs := dutfs.NewClient(d.RPC().Conn)
 	testing.ContextLog(ctx, "Enabling the fingerprint updater")
-	return fs.Remove(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile))
+	disableFpUpdaterPath := filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile)
+	if err := fs.Remove(ctx, disableFpUpdaterPath); err != nil {
+		return errors.Wrapf(err, "failed to remove %q", disableFpUpdaterPath)
+	}
+	// Sync filesystem to make sure that FP updater is enabled correctly.
+	if err := d.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to sync DUT")
+	}
+	return nil
 }
 
 // disableFPUpdater disables the fingerprint updater if it is enabled.
 func disableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
 	fs := dutfs.NewClient(d.RPC().Conn)
 	testing.ContextLog(ctx, "Disabling the fingerprint updater")
-	return fs.WriteFile(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile), nil, 0)
+	disableFpUpdaterPath := filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile)
+	if err := fs.WriteFile(ctx, disableFpUpdaterPath, nil, 0); err != nil {
+		return errors.Wrapf(err, "failed to create %q", disableFpUpdaterPath)
+	}
+	// Sync filesystem to make sure that FP updater is disabled correctly.
+	if err := d.Conn().CommandContext(ctx, "sync").Run(ssh.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to sync DUT")
+	}
+	return nil
 }

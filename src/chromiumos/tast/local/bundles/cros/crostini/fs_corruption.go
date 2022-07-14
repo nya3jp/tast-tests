@@ -53,7 +53,7 @@ func init() {
 		Contacts: []string{
 			// Crostini
 			"sidereal@google.com",
-			"cros-containers-dev@google.com",
+			"clumptini@google.com",
 			// Telemetry
 			"mutexlox@google.com",
 			"cros-telemetry@google.com",

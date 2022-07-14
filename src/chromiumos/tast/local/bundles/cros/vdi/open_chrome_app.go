@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/local/vdi/fixtures"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -31,6 +32,9 @@ func init() {
 		// TODO(b/211600718): Create a separate group not to run tests in parallel.
 		Attr:         []string{},
 		SoftwareDeps: []string{"chrome"},
+		// For now limit execution to few models.
+		// TODO (b/238736164): Crete dedicated suite.
+		HardwareDeps: hwdep.D(hwdep.Model("foob360", "helios", "eve", "kohaku", "morphius")),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{

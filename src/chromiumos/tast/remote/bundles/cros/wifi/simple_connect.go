@@ -130,7 +130,6 @@ func init() {
 						ap.VHTChWidth(ap.VHTChWidth20Or40),
 					},
 				}},
-				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
 				// Verifies that DUT can connect to an open 802.11ac network on channel 48 with a channel width of 40MHz.
 				Name: "80211acvht40",
@@ -140,7 +139,6 @@ func init() {
 						ap.VHTChWidth(ap.VHTChWidth20Or40),
 					},
 				}},
-				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
 				// Verifies that DUT can connect to an open 802.11ac network on 5GHz channel 36 with center channel of 42 and channel width of 80MHz.
 				Name: "80211acvht80mixed",
@@ -160,7 +158,6 @@ func init() {
 						ap.VHTCaps(ap.VHTCapSGI80), ap.VHTCenterChannel(155), ap.VHTChWidth(ap.VHTChWidth80),
 					},
 				}},
-				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
 				// Verifies that DUT can connect to a hidden network on 2.4GHz and 5GHz channels.
 				Name: "hidden",
@@ -376,7 +373,6 @@ func init() {
 						wpa.Ciphers(wpa.CipherTKIP, wpa.CipherCCMP),
 					),
 				}},
-				ExtraHardwareDeps: hwdep.D(hwdep.Wifi80211ac()),
 			}, {
 				// Verifies that DUT can connect to a protected network whose WPA passphrase can be pure unicode, mixed unicode and ASCII, and all the punctuations.
 				Name: "wpaoddpassphrase",

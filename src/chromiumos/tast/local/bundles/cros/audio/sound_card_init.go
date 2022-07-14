@@ -27,7 +27,7 @@ func init() {
 		// b/221241958: Skip helios as it is an old project before sound_card_init.
 		HardwareDeps: hwdep.D(hwdep.SmartAmp(), hwdep.SkipOnModel("atlas", "nocturne", "volteer2", "lindar", "lillipup", "helios")),
 		Contacts:     []string{"judyhsiao@chromium.org", "cychiang@chromium.org"},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      1 * time.Minute,
 		Params: []testing.Param{
 			{

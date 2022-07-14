@@ -34,7 +34,7 @@ func init() {
 		Func:         DiskIOPerf,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests Crostini Disk IO Performance",
-		Contacts:     []string{"cylee@chromium.org", "cros-containers-dev@google.com"},
+		Contacts:     []string{"cylee@chromium.org", "clumptini@google.com"},
 		// TODO(crbug.com/1124920): Test is disabled until it can be fixed
 		// Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		Data:         fioFiles(),
@@ -96,14 +96,16 @@ type logFunc func(title string, content []byte) error
 // jobFile is the .ini file to be used by the fio command. The job file may contain variables which
 // can be substituted by environment variables passed to fio command. For example, if the .ini file has lines like:
 //
-//   [fio_rand_write]
-//   filename=${FILENAME}
-//   size=${FILESIZE}
-//   bs=${BLOCKSIZE}
-//   ...
+//	[fio_rand_write]
+//	filename=${FILENAME}
+//	size=${FILESIZE}
+//	bs=${BLOCKSIZE}
+//	...
 //
 // An example fio command could be like
-//     FILESIZE=1G FILENAME=fio_test_data BLOCKSIZE=4m fio fio_seq_write --output-format=json
+//
+//	FILESIZE=1G FILENAME=fio_test_data BLOCKSIZE=4m fio fio_seq_write --output-format=json
+//
 // settings are fio parameters to be passed via the environment variables.
 func runFIO(ctx context.Context, re runEnv, jobFile string, settings fioSettings, writeError logFunc) (avgRead, avgWrite float64, err error) {
 	envArgs := []string{

@@ -190,6 +190,7 @@ func (yt *YouTubeMusic) SkipPrompts(ctx context.Context) error {
 		{yt.Device.Object(ui.Text("NO THANKS")), "NO THANKS", false},
 		{yt.Device.Object(ui.Description("NO THANKS")), "NO THANKS", false},
 		{yt.Device.Object(ui.Description("Close")), "Close", false},
+		{yt.Device.Object(ui.Text("NOT NOW")), "NOT NOW", false},
 	}
 
 	// The occuring of the prompts is random. Instead of waiting a longer time for each

@@ -26,7 +26,7 @@ func init() {
 		Func:         ShareMovies,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test sharing Play files > Movies with Crostini",
-		Contacts:     []string{"jinrongwu@google.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"alvinjia@google.com", "clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{

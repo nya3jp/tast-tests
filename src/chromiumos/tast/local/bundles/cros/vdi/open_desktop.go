@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/local/vdi/fixtures"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type desktopData struct {
@@ -38,6 +39,9 @@ func init() {
 		// TODO(crbug.com/1293793): Add cleanup for kiosk and add its params.
 		Attr:         []string{},
 		SoftwareDeps: []string{"chrome"},
+		// For now limit execution to few models.
+		// TODO (b/238736164): Crete dedicated suite.
+		HardwareDeps: hwdep.D(hwdep.Model("foob360", "helios", "eve", "kohaku", "morphius")),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{

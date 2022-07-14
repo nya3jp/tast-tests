@@ -21,7 +21,7 @@ func init() {
 		Func:         VimCompile,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Crostini performance test which compiles vim",
-		Contacts:     []string{"sushma.venkatesh.reddy@intel.com", "cros-containers-dev@google.com"},
+		Contacts:     []string{"sushma.venkatesh.reddy@intel.com", "clumptini@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		HardwareDeps: crostini.CrostiniMinDiskSize,

@@ -78,7 +78,7 @@ func triggerFilePicker(ctx context.Context, conn *chrome.Conn, ui *uiauto.Contex
 		// window.showSaveFilePicker(). We cannot use conn.Eval() for this,
 		// because opening the file picker must be triggered by a user gesture for
 		// security reasons.
-		if err := ui.LeftClick(nodewith.Role(role.Link).Name(filePicker))(ctx); err != nil {
+		if err := ui.DoDefault(nodewith.Role(role.Link).Name(filePicker))(ctx); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to click link to open the save file picker"))
 		}
 

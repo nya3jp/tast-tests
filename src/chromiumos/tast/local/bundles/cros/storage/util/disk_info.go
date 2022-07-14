@@ -120,6 +120,23 @@ func IsNVME(testPath string) bool {
 	return strings.Contains(testPath, "nvme")
 }
 
+// IsUFS returns whether the device is a UFS device.
+func IsUFS(testPath string) bool {
+	if !strings.Contains(testPath, "/dev/sd") {
+		return false
+	}
+
+	// Extract "sdX" part out of the testPath.
+	dev := strings.Split(testPath, "/")[2][0:3]
+
+	// UFS device should have a unit descriptor directory in sysfs.
+	target := "/sys/block/" + dev + "/device/unit_descriptor"
+	if _, err := os.Stat(target); os.IsNotExist(err) {
+		return false
+	}
+	return true
+}
+
 // GetNVMEIdNSFeature returns the feature value for the NVMe disk using
 // nvme id-ns.
 func GetNVMEIdNSFeature(ctx context.Context, diskPath, feature string) (string, error) {

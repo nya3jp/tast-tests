@@ -121,19 +121,21 @@ func AppGeditFilesharing(ctx context.Context, s *testing.State) {
 	}
 	defer filesApp.Close(cleanupCtx)
 
-	// Open tmp file with Gedit.
-	err = uiauto.Combine("open tmp file with Gedit",
-		filesApp.OpenDownloads(),
-		filesApp.ClickContextMenuItemRegex(tmpFilename, filesapp.OpenWith, geditContextMenuItem),
-	)(ctx)
-	if err != nil {
-		s.Fatal("Failed to open tmp file in the Downloads folder: ", err)
-	}
-
 	geditWindow := nodewith.NameContaining(tmpFilename).Role(role.Window).First()
 	filesAppShelfButton := nodewith.Name(apps.Files.Name).ClassName("ash/ShelfAppButton")
 	ui := uiauto.New(tconn)
 	ud := uidetection.NewDefault(tconn)
+
+	// Open tmp file with Gedit.
+	err = uiauto.Combine("open tmp file with Gedit",
+		filesApp.OpenDownloads(),
+		filesApp.ClickContextMenuItemRegex(tmpFilename, filesapp.OpenWith, geditContextMenuItem),
+		ui.WaitUntilExists(geditWindow),
+		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("text string", " ")).WithinA11yNode(geditWindow)),
+	)(ctx)
+	if err != nil {
+		s.Fatal("Failed to open tmp file in the Downloads folder: ", err)
+	}
 
 	// Launch terminal so we can run commands in the container.
 	terminalApp, err := terminalapp.Launch(ctx, tconn)

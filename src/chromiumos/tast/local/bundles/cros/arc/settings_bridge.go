@@ -60,7 +60,6 @@ func init() {
 			Name:              "unstable",
 			Val:               unstableSettingsBridgeParam,
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"informational"},
 		}, {
 			Name:              "vm",
 			Val:               stableSettingsBridgeParam,
@@ -69,7 +68,6 @@ func init() {
 			Name:              "vm_unstable",
 			Val:               unstableSettingsBridgeParam,
 			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraAttr:         []string{"informational"},
 		}},
 	})
 }
