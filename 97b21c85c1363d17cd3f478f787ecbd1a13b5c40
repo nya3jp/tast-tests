@@ -16,6 +16,69 @@
       "message": "@Ben: Friendly ping. Thanks.",
       "revId": "97b21c85c1363d17cd3f478f787ecbd1a13b5c40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3e9b34d_59aaada6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-14T22:58:30Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "97b21c85c1363d17cd3f478f787ecbd1a13b5c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22bdeb3f_b5e009b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-14T22:58:30Z",
+      "side": 1,
+      "message": "Can you use the absolute location here?",
+      "range": {
+        "startLine": 90,
+        "startChar": 38,
+        "endLine": 90,
+        "endChar": 41
+      },
+      "revId": "97b21c85c1363d17cd3f478f787ecbd1a13b5c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf216b77_94a5cac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-14T22:58:30Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 120,
+        "startChar": 38,
+        "endLine": 120,
+        "endChar": 41
+      },
+      "revId": "97b21c85c1363d17cd3f478f787ecbd1a13b5c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
