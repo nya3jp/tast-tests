@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf1a27a_55322963",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-07-14T11:15:13Z",
+      "side": 1,
+      "message": "For golang based tast test, all tests will access chart via this library:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/camera/chart/chart.go;l\u003d1?q\u003d%20chart.go\u0026sq\u003d\n\nMaybe you can add it as utility function inside.\n\nFor python based CTS, looks like you can add this step in |DUTFixture| in:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/labpack/files/server/cros/camerabox_utils.py;l\u003d1?q\u003dcamerabox_utils",
+      "parentUuid": "87a4492f_7963626e",
+      "revId": "44da0bb432b69f38337c9928b7e6f91f12dd0e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "072a19af_617475f3",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "072a19af_617475f3",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 51
+      },
+      "revId": "44da0bb432b69f38337c9928b7e6f91f12dd0e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f495d687_01c01705",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/hal3_remote.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1271173
+      },
+      "writtenOn": "2022-07-14T11:15:13Z",
+      "side": 1,
+      "message": "No, I mean the defer clean up code should happend immediately after change brightness like:\n```\nBrightnessVal :\u003d camerabox.DimBacklight(ctx, d)\ndefer camerabox.RestoreBacklight(ctx, d, BrightnessVal)\n```\n\nThis ensure the clean up will be executed if any failure happen after the line with defer code.",
+      "parentUuid": "e9dc79ae_c82170d3",
       "range": {
         "startLine": 118,
         "startChar": 1,
