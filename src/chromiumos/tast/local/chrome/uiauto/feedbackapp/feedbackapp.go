@@ -20,7 +20,7 @@ import (
 )
 
 // IssueText export is used to enter the issue description.
-const IssueText = "I am not able to connect to Bluetooth"
+const IssueText = "Test only - please ignore"
 
 // Launch starts the Feedback app via the default method.
 func Launch(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, error) {
