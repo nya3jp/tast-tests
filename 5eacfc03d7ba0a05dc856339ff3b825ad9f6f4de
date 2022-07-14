@@ -511,6 +511,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "904ab847_9086f66d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/open_settings_audio_local.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-14T11:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed4a0689_602b6b78",
+      "revId": "5eacfc03d7ba0a05dc856339ff3b825ad9f6f4de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "486c3801_ce7b9977",
