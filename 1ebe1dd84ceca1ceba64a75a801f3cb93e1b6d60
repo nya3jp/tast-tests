@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b87defc_bf23f2a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-14T19:52:11Z",
+      "side": 1,
+      "message": "To be more consistent with other launcher tests.\n\nMy main reasoning is that this is running one test in two different pieces of UI (fullscreen launcher in tablet mode vs bubble launcher in clamshell), as opposed to running different test cases in the same UI, so having params seems more natural.",
+      "parentUuid": "33b354fa_0d13e15e",
+      "revId": "1ebe1dd84ceca1ceba64a75a801f3cb93e1b6d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "56f4dec8_2ce9d69d",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
         "patchSetId": 12
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-14T17:55:46Z",
       "side": 1,
       "message": "nit: launcher",
+      "range": {
+        "startLine": 140,
+        "startChar": 63,
+        "endLine": 140,
+        "endChar": 71
+      },
+      "revId": "1ebe1dd84ceca1ceba64a75a801f3cb93e1b6d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb2e048d_c1abeeb0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-14T19:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56f4dec8_2ce9d69d",
       "range": {
         "startLine": 140,
         "startChar": 63,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67a04e26_c1c8cc25",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-14T19:52:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "041ad5c6_9ff7b41f",
+      "revId": "1ebe1dd84ceca1ceba64a75a801f3cb93e1b6d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73920592_1967fa89",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-07-14T17:55:46Z",
       "side": 1,
       "message": "If this returns an error, it is dropped. Is that OK? (Is there any reason we actually want to return the error from the following call given that the defer statement will likely just drop that one anyway?)",
+      "revId": "1ebe1dd84ceca1ceba64a75a801f3cb93e1b6d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca1349f_7d157010",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-14T19:52:11Z",
+      "side": 1,
+      "message": "yes, it is - main reason was to make the method consistent with the result of EnsureTabletMode (so the method can return the tablet mode cleanup function directly) - not relevant now that we return the cleanup method on success only.",
+      "parentUuid": "73920592_1967fa89",
       "revId": "1ebe1dd84ceca1ceba64a75a801f3cb93e1b6d60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
