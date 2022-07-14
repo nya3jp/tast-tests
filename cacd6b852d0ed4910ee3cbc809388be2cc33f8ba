@@ -16,6 +16,23 @@
       "message": "Could you explain how CL:3764001 breaks it?",
       "revId": "cacd6b852d0ed4910ee3cbc809388be2cc33f8ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54d76906_06b82d94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T21:57:11Z",
+      "side": 1,
+      "message": "This is no longer relevant that we have switched to use account pool instead of one account.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go;rcl\u003d1f2351fe8dd51eeb7cd6f5f31ff716542a348353;l\u003d303",
+      "revId": "cacd6b852d0ed4910ee3cbc809388be2cc33f8ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
