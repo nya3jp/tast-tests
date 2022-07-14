@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54df2ccf_1fc0221f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T18:25:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1f8ac22_5a78ed91",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "036ea6ceee3dfab81feb8cec5b0b76b80f6f0786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a82767b_7181b32f",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-13T23:31:36Z",
       "side": 1,
       "message": "This should be `ui.OverviewPerf*` (ending in `*`) so that all three variants are run.",
+      "range": {
+        "startLine": 13,
+        "startChar": 19,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "036ea6ceee3dfab81feb8cec5b0b76b80f6f0786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4003cd18_0a82b272",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T18:25:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a82767b_7181b32f",
       "range": {
         "startLine": 13,
         "startChar": 19,
@@ -66,6 +114,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a8bd7a0f_e3349e8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T18:25:22Z",
+      "side": 1,
+      "message": "Done with minor changes:\n- Changed test failure `s.Error` to `s.Fatal`\n- Passing `s *testing.State` to `doTestCase` because of `runner.RunMultiple` needs it",
+      "parentUuid": "3f62654c_3f41c768",
+      "revId": "036ea6ceee3dfab81feb8cec5b0b76b80f6f0786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de6327f0_339b12fd",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
         "patchSetId": 1
@@ -77,6 +143,30 @@
       "writtenOn": "2022-07-13T23:31:36Z",
       "side": 1,
       "message": "Then you need to run `power.TurnOnDisplay` even more often than this, right?",
+      "range": {
+        "startLine": 191,
+        "startChar": 22,
+        "endLine": 192,
+        "endChar": 72
+      },
+      "revId": "036ea6ceee3dfab81feb8cec5b0b76b80f6f0786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc1a7483_aa484e06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T18:25:22Z",
+      "side": 1,
+      "message": "We need to run it (or simulate some inputs) every 7 min to keep the display on. Running it on every iteration is fine since the iterations take less than 7 min.",
+      "parentUuid": "de6327f0_339b12fd",
       "range": {
         "startLine": 191,
         "startChar": 22,
