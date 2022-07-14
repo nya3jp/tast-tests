@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "972b0e1d_3f9af2d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-07-14T04:16:39Z",
+      "side": 1,
+      "message": "I tried this CL; but test failed:\n\ntast run -var\u003dutils.WWCBIP\u003d192.168.86.217 -var\u003dDockingID\u003d1912901 -var\u003d1stExtDispID\u003d2007901 -var\u003d2ndExtDispID\u003d2007902 -var\u003dEthernetID\u003dJ45SW01 192.168.86.34 wwcb.Dock2PersistentSettings\n\nTwo external monitors were used:\n1stExtDispID\u003d2007901  HP Monitor (E273d)\n2ndExtDispID\u003d2007902  Lenovo T32P-20 32 Inch 2020\n\n\n2022-07-14T04:06:40.513635Z [04:06:40.819] Error at dock2_persistent_settings.go:116: Failed to execute step3 : failed to verify display properly: context deadline exceeded; last error follows: failed to get correct number of display; got 2, want 3\n2022-07-14T04:06:40.513804Z [04:06:40.819] Stack trace:\nFailed to execute step3\n\tat chromiumos/tast/local/bundles/cros/wwcb.Dock2PersistentSettings (dock2_persistent_settings.go:116)\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func3.1 (run.go:824)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n\tat runtime.goexit (asm_arm.s:824)\nfailed to verify display properly\n\tat chromiumos/tast/local/bundles/cros/wwcb.dock2PersistentSettingsStep3 (dock2_persistent_settings.go:157)\n\tat chromiumos/tast/local/bundles/cros/wwcb.Dock2PersistentSettings (dock2_persistent_settings.go:115)\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func3.1 (run.go:824)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n\tat runtime.goexit (asm_arm.s:824)\ncontext deadline exceeded; last error follows\n\tat chromiumos/tast/internal/testingutil.Poll (poll.go:87)\n\tat chromiumos/tast/testing.Poll (util.go:43)\n\tat chromiumos/tast/local/bundles/cros/wwcb/utils.VerifyDisplayProperly (wwcb_verify.go:151)\n\tat chromiumos/tast/local/bundles/cros/wwcb.dock2PersistentSettingsStep3 (dock2_persistent_settings.go:156)\n\tat chromiumos/tast/local/bundles/cros/wwcb.Dock2PersistentSettings (dock2_persistent_settings.go:115)\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func3.1 (run.go:824)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n\tat runtime.goexit (asm_arm.s:824)\nfailed to get correct number of display; got 2, want 3\n\tat chromiumos/tast/local/bundles/cros/wwcb/utils.VerifyDisplayProperly.func1 (wwcb_verify.go:157)\n\tat chromiumos/tast/internal/testingutil.Poll (poll.go:64)\n\tat chromiumos/tast/testing.Poll (util.go:43)\n\tat chromiumos/tast/local/bundles/cros/wwcb/utils.VerifyDisplayProperly (wwcb_verify.go:151)\n\tat chromiumos/tast/local/bundles/cros/wwcb.dock2PersistentSettingsStep3 (dock2_persistent_settings.go:156)\n\tat chromiumos/tast/local/bundles/cros/wwcb.Dock2PersistentSettings (dock2_persistent_settings.go:115)\n\tat chromiumos/tast/internal/planner.runTestWithConfig.func3.1 (run.go:824)\n\tat chromiumos/tast/internal/usercode.SafeCall.func2 (usercode.go:112)\n\t...\n\n\nAfter the test, there were 3 windows were showing, including the built-in one.\n",
+      "revId": "fba14b50876c21323ae66b958fee32e89cd91a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
