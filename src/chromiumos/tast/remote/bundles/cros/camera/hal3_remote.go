@@ -100,6 +100,7 @@ func HAL3Remote(ctx context.Context, s *testing.State) {
 	if err := camerabox.LogTestScene(ctx, d, runTestRequest.Facing, s.OutDir()); err != nil {
 		s.Error("Failed to take a photo of test scene: ", err)
 	}
+	brightness_val := camerabox.DimBacklight(ctx, d)
 
 	// Connect to the gRPC server on the DUT.
 	cl, err := rpc.Dial(ctx, d, s.RPCHint())
@@ -114,6 +115,7 @@ func HAL3Remote(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Remote call RunTest() failed: ", err)
 	}
+	camerabox.RestoreBacklight(ctx, d, brightness_val)
 
 	// Check test result.
 	switch response.Result {

@@ -7,6 +7,7 @@ package camerabox
 
 import (
 	"context"
+	"fmt"
 	"path/filepath"
 	"strings"
 	"time"
@@ -69,4 +70,30 @@ func LogTestScene(ctx context.Context, d *dut.DUT, facing pb.Facing, outdir stri
 		return errors.Wrap(err, "failed to clean up scene log file from DUT")
 	}
 	return nil
+}
+
+func DimBacklight(ctx context.Context, d *dut.DUT) (str string) {
+	brightness := 1
+	original_val, err := d.Conn().CommandContext(ctx, "backlight_tool", "--get_brightness_percent").Output()
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get brightness_percent")
+	}
+	brightness_val := string(original_val)
+	testing.ContextLog(ctx, "becker Save original brightness level of % :", brightness_val)
+	brightnessArg := fmt.Sprintf("--set_brightness_percent=%d", brightness)
+	err = d.Conn().CommandContext(ctx, "backlight_tool", brightnessArg).Run()
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get brightness")
+	}
+	return brightness_val
+}
+
+func RestoreBacklight(ctx context.Context, d *dut.DUT, original_brightness string) {
+	//brightness := 50
+	testing.ContextLog(ctx, "becker RestoreBacklight to original %:", original_brightness)
+	brightnessArg := fmt.Sprintf("--set_brightness_percent=%s", original_brightness)
+	err := d.Conn().CommandContext(ctx, "backlight_tool", brightnessArg).Run()
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to store back brightness", err)
+	}
 }
