@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33b354fa_0d13e15e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/app_drag_and_drop.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-14T17:55:46Z",
+      "side": 1,
+      "message": "Any reason we switched this test from a table-driven test to params?",
+      "revId": "1ebe1dd84ceca1ceba64a75a801f3cb93e1b6d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56f4dec8_2ce9d69d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-14T17:55:46Z",
+      "side": 1,
+      "message": "nit: launcher",
+      "range": {
+        "startLine": 140,
+        "startChar": 63,
+        "endLine": 140,
+        "endChar": 71
+      },
+      "revId": "1ebe1dd84ceca1ceba64a75a801f3cb93e1b6d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041ad5c6_9ff7b41f",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-14T17:55:46Z",
+      "side": 1,
+      "message": "I believe standard practice is to have the function clean up after itself if it errors out, and you only defer the cleanup function if the call was successful.\n\nIn this case this would look like deferring something that calls the cleanup functions, but then setting the identifiers those cleanup functions are bound to to nil when we\u0027re about to return success and instead returning them back to the user.",
+      "revId": "1ebe1dd84ceca1ceba64a75a801f3cb93e1b6d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73920592_1967fa89",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-14T17:55:46Z",
+      "side": 1,
+      "message": "If this returns an error, it is dropped. Is that OK? (Is there any reason we actually want to return the error from the following call given that the defer statement will likely just drop that one anyway?)",
+      "revId": "1ebe1dd84ceca1ceba64a75a801f3cb93e1b6d60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
