@@ -33,6 +33,23 @@
       "message": "Hi Eric,\n\nI am looking for the OWNERS approval.\n\nPTAL!",
       "revId": "2b026e286cd229f0be6d9d3fa7e35b23bdd2e148",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d31493_3dd83e48",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-14T17:15:36Z",
+      "side": 1,
+      "message": "I almost feel like this would be a little easier to read if it were split into two loops, and then we could `continue` early when we don\u0027t find the UI nodes we\u0027re looking for (i.e. at L293 or L305, using the standard `err !\u003d nil` check).\n\nIt would also allow us to skip some walking of the UI tree; e.g. in the case that we don\u0027t find the account row, we don\u0027t need to bother looking for the child row.\n\nUltimately up to you, though.",
+      "revId": "2b026e286cd229f0be6d9d3fa7e35b23bdd2e148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
