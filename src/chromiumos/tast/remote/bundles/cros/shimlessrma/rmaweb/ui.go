@@ -48,7 +48,7 @@ const (
 	timeInSecondToLoadPage         = 30
 	timeInSecondToEnableButton     = 5
 	longTimeInSecondToEnableButton = 60
-	firmwareInstallationTime       = 120 * time.Second
+	firmwareInstallationTime       = 240 * time.Second
 )
 
 // UIHelper holds the resources required to communicate with Shimless RMA App.
