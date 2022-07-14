@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/common/camera/chart"
+	dutcontrol "chromiumos/tast/common/camera/dut"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
@@ -42,6 +43,19 @@ const (
 )
 
 func init() {
+	testing.AddFixture(&testing.Fixture{
+		Name:            "ccaLaunchedInCameraBox",
+		Desc:            "Launched CCA in a Camera Box",
+		Contacts:        []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
+		Data:            []string{"cca_ui.js"},
+		Impl:            &fixture{launchCCAInCameraBox: true, launchCCA: true},
+		SetUpTimeout:    setUpTimeout,
+		ResetTimeout:    testBridgeSetUpTimeout,
+		PreTestTimeout:  ccaSetUpTimeout,
+		PostTestTimeout: ccaTearDownTimeout,
+		TearDownTimeout: tearDownTimeout,
+	})
+
 	testing.AddFixture(&testing.Fixture{
 		Name:            "ccaLaunched",
 		Desc:            "Launched CCA",
@@ -223,25 +237,27 @@ type FixtureData struct {
 }
 
 type fixture struct {
-	cr          *chrome.Chrome
-	arc         *arc.ARC
-	tb          *testutil.TestBridge
-	app         *App
-	outDir      string
-	chart       *chart.Chart
-	cameraScene string
+	cr            *chrome.Chrome
+	arc           *arc.ARC
+	tb            *testutil.TestBridge
+	app           *App
+	outDir        string
+	chart         *chart.Chart
+	cameraScene   string
+	brightnessVal string
 
-	lacros           bool
-	scriptPaths      []string
-	fakeCamera       bool
-	fakeScene        bool
-	arcBooted        bool
-	launchCCA        bool
-	bypassPermission bool
-	forceClamshell   bool
-	guestMode        bool
-	debugParams      DebugParams
-	features         []feature
+	lacros               bool
+	scriptPaths          []string
+	fakeCamera           bool
+	fakeScene            bool
+	arcBooted            bool
+	launchCCA            bool
+	bypassPermission     bool
+	forceClamshell       bool
+	guestMode            bool
+	launchCCAInCameraBox bool
+	debugParams          DebugParams
+	features             []feature
 }
 
 func (f *fixture) cameraType() testutil.UseCameraType {
@@ -326,6 +342,16 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 		}()
 	}
 
+	f.brightnessVal, err = dutcontrol.CCADimBacklight(ctx)
+	if err != nil {
+		s.Fatal("Failed to set brightness: ", err)
+	}
+	defer func() {
+		if !success {
+			dutcontrol.CCARestoreBacklight(ctx, f.brightnessVal)
+		}
+	}()
+
 	tb, err := testutil.NewTestBridge(ctx, cr, f.cameraType())
 	if err != nil {
 		s.Fatal("Failed to construct test bridge: ", err)
@@ -368,7 +394,9 @@ func (f *fixture) TearDown(ctx context.Context, s *testing.FixtState) {
 		s.Error("Failed to tear down Chrome: ", err)
 	}
 	f.cr = nil
-
+	if err := dutcontrol.CCARestoreBacklight(ctx, f.brightnessVal); err != nil {
+		s.Fatal("Restore Backlight failed: ", err)
+	}
 	if f.cameraScene != "" {
 		if err := os.RemoveAll(f.cameraScene); err != nil {
 			s.Error("Failed to remove camera scene: ", err)
