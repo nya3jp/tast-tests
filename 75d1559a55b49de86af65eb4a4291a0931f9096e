@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a445cd9_5b16109e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1536953
+      },
+      "writtenOn": "2022-07-14T21:40:07Z",
+      "side": 1,
+      "message": "Sounds good - removed the list of tab titles.",
+      "parentUuid": "1ca47451_18899049",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 14
+      },
+      "revId": "75d1559a55b49de86af65eb4a4291a0931f9096e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52ba82a2_18c24334",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-13T21:09:40Z",
       "side": 1,
       "message": "we can add subtests as test param, which would allow us to skip this call (it should be done by tast framework by default)\n\nsomething like:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/uninstall_app.go;drc\u003d563dfa1204da9e636f02aaf3c313e01cee1294c5;l\u003d60\n\n\notherwise, looks good",
+      "revId": "75d1559a55b49de86af65eb4a4291a0931f9096e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dcc0270_83c3c486",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1536953
+      },
+      "writtenOn": "2022-07-14T21:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52ba82a2_18c24334",
       "revId": "75d1559a55b49de86af65eb4a4291a0931f9096e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
