@@ -17,6 +17,7 @@ import android.os.SystemClock;
 
 import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -128,7 +129,8 @@ class CaptureCallbackHistogram extends CaptureCallback {
             mLastTimeStampJava = timeStampJava;
         } else {
             // Convert nanoseconds to milliseconds.
-            int duration = (int) (timeStampJava - mLastTimeStampJava) / 1000000;
+            int duration = (int) TimeUnit.MILLISECONDS.convert(
+                timeStampJava - mLastTimeStampJava, TimeUnit.NANOSECONDS);
             mLastTimeStampJava = timeStampJava;
 
             synchronized(mHistogramJava) {
@@ -156,12 +158,13 @@ class CaptureCallbackHistogram extends CaptureCallback {
                 return;
             }
             // Convert nanoseconds to milliseconds.
-            long duration = (timeStampSensor - mLastTimeStampSensor) / 1000000L;
+            int duration = (int) TimeUnit.MILLISECONDS.convert(
+                timeStampSensor - mLastTimeStampSensor, TimeUnit.NANOSECONDS);
             mLastTimeStampSensor = timeStampSensor;
 
             synchronized(mHistogramSensor) {
                 if (duration < HISTOGRAM_MAX - 1) {
-                    mHistogramSensor[(int) duration]++;
+                    mHistogramSensor[duration]++;
                 } else {
                     mHistogramSensor[HISTOGRAM_MAX - 1]++;
                 }
@@ -193,7 +196,8 @@ class CaptureCallbackHistogram extends CaptureCallback {
         // TODO(b/160650453): Latency histogram values on ARCVM will be shifted by fixed offset
         // until host-guest timestamp issues are resolved.
         synchronized(mPipelineLatencyHistogram) {
-            long latency = (timeStampJava - timeStampSensor) / 1000000;
+            long latency = TimeUnit.MILLISECONDS.convert(
+                timeStampJava - timeStampSensor, TimeUnit.NANOSECONDS);
             if (!mPipelineLatencyHistogram.containsKey(latency)) {
                 mPipelineLatencyHistogram.put(latency, 1);
             } else {
