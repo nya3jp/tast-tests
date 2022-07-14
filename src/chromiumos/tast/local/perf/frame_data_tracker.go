@@ -82,6 +82,10 @@ func (t *FrameDataTracker) Record(pv *perf.Values) {
 		pv.Append(jcMetric, float64(data.JankCount))
 	}
 
+	if t.dsData == nil {
+		return
+	}
+
 	pv.Set(perf.Metric{
 		Name:      t.prefix + "DisplayJankMetric",
 		Unit:      "percent",

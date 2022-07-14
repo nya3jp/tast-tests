@@ -166,6 +166,8 @@ type Recorder struct {
 	batteryInfoTracker *perfSrc.BatteryInfoTracker
 	memInfoTracker     *perfSrc.MemoryInfoTracker
 	loginEventRecorder *perfSrc.LoginEventRecorder
+
+	options RecorderOptions
 }
 
 // RecorderOptions contains options to control the recorder setup.
@@ -182,11 +184,13 @@ type RecorderOptions struct {
 	DoNotChangeDPTF      bool
 	DoNotChangeAudio     bool
 	DoNotChangeBluetooth bool
+	// SkipFrameDataCollectErr indicates whether to skip the errors caused by collecting Frame Data.
+	SkipFrameDataCollectErr bool
 }
 
 var performanceCUJDischargeThreshold = 55.0
 
-// NewPerformanceCUJOptions indicates the power test settings for performance CUJs run by partners.
+// NewPerformanceCUJOptions indicates the power test settings for SPERA performance CUJs run by partners.
 func NewPerformanceCUJOptions() RecorderOptions {
 	return RecorderOptions{
 		DischargeThreshold: &performanceCUJDischargeThreshold,
@@ -195,6 +199,8 @@ func NewPerformanceCUJOptions() RecorderOptions {
 		DoNotChangePowerd:  true,
 		DoNotChangeDPTF:    true,
 		DoNotChangeAudio:   true,
+
+		SkipFrameDataCollectErr: true,
 	}
 }
 
@@ -260,7 +266,7 @@ func NewRecorderWithTestConn(ctx context.Context, tconn *chrome.TestConn, cr *ch
 	if tconn == nil {
 		return nil, errors.New("tconn must never be nil")
 	}
-	r := &Recorder{cr: cr, tconn: tconn}
+	r := &Recorder{cr: cr, tconn: tconn, options: options}
 
 	powerTestOptions := setup.PowerTestOptions{
 		// The default for the following options is to disable these setting.
@@ -665,7 +671,9 @@ func (r *Recorder) Record(ctx context.Context, pv *perf.Values) error {
 	var stopErr error
 	if err := r.frameDataTracker.Stop(ctx, r.tconn); err != nil {
 		testing.ContextLog(ctx, "Failed to stop FrameDataTracker: ", err)
-		stopErr = errors.Wrap(err, "failed to stop FrameDataTracker")
+		if !r.options.SkipFrameDataCollectErr {
+			stopErr = errors.Wrap(err, "failed to stop FrameDataTracker")
+		}
 	}
 
 	if err := r.zramInfoTracker.Stop(ctx); err != nil {
