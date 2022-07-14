@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/apps/cursive"
-	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/bundles/cros/apps/fixture"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -49,7 +49,7 @@ func init() {
 			"gabpalado@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromeLoggedInForEA",
+		Fixture:      fixture.LoggedIn,
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		HardwareDeps: hwdep.D(hwdep.Model(cursiveEnabledModels...)),
@@ -58,11 +58,8 @@ func init() {
 }
 
 func CursiveSmoke(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
+	cr := s.FixtValue().(fixture.FixtData).Chrome
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)

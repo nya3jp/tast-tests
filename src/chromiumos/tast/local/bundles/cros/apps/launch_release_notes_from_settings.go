@@ -10,9 +10,9 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/apps/fixture"
 	"chromiumos/tast/local/bundles/cros/apps/helpapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
-	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -33,7 +33,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Fixture:      "chromeLoggedInForEA",
+		Fixture:      fixture.LoggedIn,
 		Params: []testing.Param{
 			{
 				Name:              "stable",
@@ -49,16 +49,12 @@ func init() {
 
 // LaunchReleaseNotesFromSettings verifies launching Help app at the release notes page from ChromeOS settings.
 func LaunchReleaseNotesFromSettings(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
+	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	ui := uiauto.New(tconn)
