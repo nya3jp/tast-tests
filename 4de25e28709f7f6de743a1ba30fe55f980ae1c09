@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f62c4987_60915934",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T21:51:05Z",
+      "side": 1,
+      "message": "Done Removed `2 or 8` as that is impl details.",
+      "parentUuid": "0c35daa6_ba64b6be",
+      "range": {
+        "startLine": 88,
+        "startChar": 44,
+        "endLine": 88,
+        "endChar": 50
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19cbbe29_c0873bf7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-14T21:23:04Z",
       "side": 1,
       "message": "Please put this before the comma.",
+      "range": {
+        "startLine": 125,
+        "startChar": 110,
+        "endLine": 125,
+        "endChar": 123
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51335d35_0b35f255",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T21:51:05Z",
+      "side": 1,
+      "message": "Done. There is a bug with `gofmt` that is keeps moving the comment after comma if it is at the end of line. I have move the histogram name up to make `gofmt` leave it alone.",
+      "parentUuid": "19cbbe29_c0873bf7",
       "range": {
         "startLine": 125,
         "startChar": 110,
@@ -93,6 +141,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee289aaa_77d79349",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T21:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e63028af_26dfab1d",
+      "range": {
+        "startLine": 135,
+        "startChar": 49,
+        "endLine": 135,
+        "endChar": 67
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a79dd5aa_49e9ec14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T21:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16813198_6064c73a",
+      "range": {
+        "startLine": 135,
+        "startChar": 118,
+        "endLine": 135,
+        "endChar": 131
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd6ebdb8_2c135651",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-07-14T21:23:04Z",
       "side": 1,
       "message": "This should be:\n\t\t\t\ts.Fatal(\"Test case \\\"SplitView-2windows\\\" failed: \", err)",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 64
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c663434b_3894b76c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T21:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd6ebdb8_2c135651",
       "range": {
         "startLine": 140,
         "startChar": 0,
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf2a820_d0808688",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T21:51:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c11cd4ef_a9922951",
+      "range": {
+        "startLine": 156,
+        "startChar": 113,
+        "endLine": 156,
+        "endChar": 126
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4581f28_fd8af230",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-07-14T21:23:04Z",
       "side": 1,
       "message": "This needs a code comment. See:\nhttps://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 170,
+        "startChar": 5,
+        "endLine": 170,
+        "endChar": 15
+      },
+      "revId": "4de25e28709f7f6de743a1ba30fe55f980ae1c09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa7d42a_fefa7db1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-14T21:51:05Z",
+      "side": 1,
+      "message": "Comments added. I thought it is okay to have no comments since it is not exported and obvious of what it is dong.",
+      "parentUuid": "e4581f28_fd8af230",
       "range": {
         "startLine": 170,
         "startChar": 5,
