@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b019b7_f2c3240e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-07-14T17:21:03Z",
+      "side": 1,
+      "message": "don\u0027t think we need \u0027potential\u0027",
+      "range": {
+        "startLine": 880,
+        "startChar": 59,
+        "endLine": 880,
+        "endChar": 68
+      },
+      "revId": "0ce255224a219dc6182ee4f4f0ee5f28c4c9e3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c59c56_257cd6ad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-07-14T17:21:03Z",
+      "side": 1,
+      "message": "meet_screenshot might be nicer for people browsing stainless unfamiliar with this code",
+      "range": {
+        "startLine": 881,
+        "startChar": 46,
+        "endLine": 881,
+        "endChar": 50
+      },
+      "revId": "0ce255224a219dc6182ee4f4f0ee5f28c4c9e3ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
