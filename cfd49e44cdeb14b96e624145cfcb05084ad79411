@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05a53b3f_d17b6fc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-07-14T14:55:56Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "cfd49e44cdeb14b96e624145cfcb05084ad79411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4356c37b_fbf2890b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/storage/full_qualification_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-07-14T14:55:56Z",
+      "side": 1,
+      "message": "nit: use %v, we usually don\u0027t put errors into quotes.",
+      "range": {
+        "startLine": 86,
+        "startChar": 50,
+        "endLine": 86,
+        "endChar": 51
+      },
+      "revId": "cfd49e44cdeb14b96e624145cfcb05084ad79411",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
