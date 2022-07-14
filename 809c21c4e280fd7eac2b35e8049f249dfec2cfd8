@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea3b02e4_44080326",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-14T17:59:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c16af38_81f4739c",
+      "revId": "809c21c4e280fd7eac2b35e8049f249dfec2cfd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1855470a_9579ea52",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-13T14:26:09Z",
       "side": 1,
       "message": "I think we should report an error, if only either one is specified. WDYT?",
+      "revId": "809c21c4e280fd7eac2b35e8049f249dfec2cfd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46f22676_c112f0b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/startup_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-14T17:59:04Z",
+      "side": 1,
+      "message": "Yes. But I actually modified this entire snip to use `chrome.Creds` instead as you suggested. It\u0027s supposed to be much cleaner now.\n\nDone.",
+      "parentUuid": "1855470a_9579ea52",
       "revId": "809c21c4e280fd7eac2b35e8049f249dfec2cfd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
