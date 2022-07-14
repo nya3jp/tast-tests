@@ -70,6 +70,30 @@
       },
       "revId": "cc174b863ff9e18aaeb7739731672376156ad354",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e89dd8f4_a3e6fb2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1371705
+      },
+      "writtenOn": "2022-07-14T02:34:42Z",
+      "side": 1,
+      "message": "Yeah that\u0027s exactly right Alvin, the order is important and we should WaitForExpr before the sleep. We want to ensure that we give the input method enough time to fully activate AFTER an input has been focused.",
+      "parentUuid": "2b4f14d8_78080f04",
+      "range": {
+        "startLine": 354,
+        "startChar": 2,
+        "endLine": 354,
+        "endChar": 8
+      },
+      "revId": "cc174b863ff9e18aaeb7739731672376156ad354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
