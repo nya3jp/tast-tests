@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53678540_a3de6b0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-14T23:19:33Z",
+      "side": 1,
+      "message": "nit: extend timeout, there\u0027s no reason to limit this to 5 seconds. Something like 30 seconds is fine.",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3270ccd2_f08456a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-14T23:19:33Z",
+      "side": 1,
+      "message": "nit: let\u0027s make this 30 seconds",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
