@@ -84,6 +84,8 @@ public class Camera2VideoFragment extends Fragment {
     private Handler mBackgroundHandler;
     // A semaphore to prevent the app from exiting before closing the camera.
     private Semaphore mCameraOpenCloseLock = new Semaphore(1);
+    // A semaphore to prevent race when touching capture session.
+    private Semaphore mCaptureSessionLock = new Semaphore(1);
     // CaptureRequest builder for preview.
     private CaptureRequest.Builder mPreviewBuilder;
     // Surface for video recording.
@@ -560,8 +562,15 @@ public class Camera2VideoFragment extends Fragment {
                     new CameraCaptureSession.StateCallback() {
                         @Override
                         public void onConfigured(CameraCaptureSession cameraCaptureSession) {
-                            mPreviewSession = cameraCaptureSession;
-                            updatePreview();
+                            try {
+                                mCaptureSessionLock.acquire();
+                                mPreviewSession = cameraCaptureSession;
+                                updatePreview();
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            } finally {
+                                mCaptureSessionLock.release();
+                            }
                             if (mCameraOpenCloseLock.availablePermits() == 0) {
                                 mCameraOpenCloseLock.release();
                             }
@@ -599,10 +608,15 @@ public class Camera2VideoFragment extends Fragment {
         }
     }
 
-    private void closePreviewSession() {
-        if (mPreviewSession != null) {
-            mPreviewSession.close();
-            mPreviewSession = null;
+    private void closePreviewSession() throws InterruptedException {
+        try {
+            mCaptureSessionLock.acquire();
+            if (mPreviewSession != null) {
+                mPreviewSession.close();
+                mPreviewSession = null;
+            }
+        } finally {
+            mCaptureSessionLock.release();
         }
     }
 
@@ -701,8 +715,15 @@ public class Camera2VideoFragment extends Fragment {
 
                         @Override
                         public void onConfigured(CameraCaptureSession cameraCaptureSession) {
-                            mPreviewSession = cameraCaptureSession;
-                            updatePreview();
+                            try {
+                                mCaptureSessionLock.acquire();
+                                mPreviewSession = cameraCaptureSession;
+                                updatePreview();
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            } finally {
+                                mCaptureSessionLock.release();
+                            }
                             getActivity()
                                     .runOnUiThread(
                                             new Runnable() {
