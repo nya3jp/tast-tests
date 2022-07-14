@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1101e027_a7c3d4cf",
+        "filename": "src/chromiumos/tast/local/graphics/perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-14T17:41:26Z",
+      "side": 1,
+      "message": "Actually this is probably not the best way to write this error, because it will look like this:\n`error running mali_stats: this is the command output on stderr: this is the return value of maliStatsCmd.Run()`\nMaybe this way would be better:\n\t\t\treturn nil, 0, errors.Wrapf(err, \"error running mali_stats (%s)\", stderr)",
+      "range": {
+        "startLine": 217,
+        "startChar": 18,
+        "endLine": 217,
+        "endChar": 75
+      },
+      "revId": "523c97192ce2984d0ca2faad65ef952810249f71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
