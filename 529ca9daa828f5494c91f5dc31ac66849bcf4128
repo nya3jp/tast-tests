@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2572671c_ecb516bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-14T14:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ff21a2_fc03c064",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 7
+      },
+      "revId": "529ca9daa828f5494c91f5dc31ac66849bcf4128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a205a7c_2d4f28ca",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-14T11:46:36Z",
       "side": 1,
       "message": "You should add lacros as a dependency as well.",
+      "range": {
+        "startLine": 64,
+        "startChar": 26,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "529ca9daa828f5494c91f5dc31ac66849bcf4128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e69d35_f7d29423",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-14T14:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a205a7c_2d4f28ca",
       "range": {
         "startLine": 64,
         "startChar": 26,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64b0d666_a36a0311",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-14T14:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "041f75ad_dfa73271",
+      "range": {
+        "startLine": 138,
+        "startChar": 37,
+        "endLine": 138,
+        "endChar": 39
+      },
+      "revId": "529ca9daa828f5494c91f5dc31ac66849bcf4128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30ae3908_9bbe795b",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ccd4aa3_76226a90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-14T14:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ae3908_9bbe795b",
+      "range": {
+        "startLine": 180,
+        "startChar": 16,
+        "endLine": 180,
+        "endChar": 34
+      },
+      "revId": "529ca9daa828f5494c91f5dc31ac66849bcf4128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f274313_1bad4d33",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-07-14T11:46:36Z",
       "side": 1,
       "message": "Same recommendation as with `syncButton`.",
+      "range": {
+        "startLine": 192,
+        "startChar": 30,
+        "endLine": 192,
+        "endChar": 49
+      },
+      "revId": "529ca9daa828f5494c91f5dc31ac66849bcf4128",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ef5a6f_e388b380",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/lacros_main_profile_login.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-14T14:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f274313_1bad4d33",
       "range": {
         "startLine": 192,
         "startChar": 30,
