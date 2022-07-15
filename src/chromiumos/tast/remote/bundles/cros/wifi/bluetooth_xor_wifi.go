@@ -58,7 +58,7 @@ func BluetoothXorWifi(ctx context.Context, s *testing.State) {
 			s.Error("Could not enable WiFi: ", err)
 		}
 	}(ctx)
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 11*time.Second)
 	defer cancel()
 
 	// Initialize TestFixture Options.
