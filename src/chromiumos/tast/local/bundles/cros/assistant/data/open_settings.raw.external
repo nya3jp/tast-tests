@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromeos-test-assets-private/tast/crosint/assistant/open_settings_20220701.raw",
+  "size": 3673536,
+  "sha256sum": "43bc585ea73ba2ee34bbe2a7b06af86821903fcfa0e1d812900afe86145a1f76"
+}
