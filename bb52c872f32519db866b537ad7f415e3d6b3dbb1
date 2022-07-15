@@ -16,6 +16,24 @@
       "message": "@amusbach: PTAL at the last patchset. Does this enum I\u0027ve added conform to the style guides?\nThanks!",
       "revId": "bb52c872f32519db866b537ad7f415e3d6b3dbb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ad73b4c_0355ab43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-15T16:51:17Z",
+      "side": 1,
+      "message": "Like this:\n\t// VaultFSType indicates the type of the file system used for the user vault.\n\ttype VaultFSType int\n\n\tconst (\n\t\t// NoVaultFS represents the absence of the user vault in the snapshot.\n\t\tNoVaultFS VaultFSType \u003d iota\n\t\t// ECRYPTFSVaultFS represents the usage of eCryptfs for the user vault.\n\t\tECRYPTFSVaultFS\n\t)\n\n\t// CrossVersionLoginConfig contains the information for cross-version login\n\ttype CrossVersionLoginConfig struct {\n\t\tAuthConfig     hwsec.AuthConfig\n\t\tRsaKey         *rsa.PrivateKey\n\t\tKeyLabel       string\n\t\tExtraVaultKeys []VaultKeyInfo\n\t\tVaultFSType    VaultFSType\n\t}",
+      "parentUuid": "a290e4b5_36000496",
+      "revId": "bb52c872f32519db866b537ad7f415e3d6b3dbb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
