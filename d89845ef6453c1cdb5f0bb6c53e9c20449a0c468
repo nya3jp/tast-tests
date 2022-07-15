@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "900f8171_266f22fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-15T02:17:45Z",
+      "side": 1,
+      "message": "Almost lgtm, thanks for polishing the code!",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97958ef2_abd8428f",
@@ -48,6 +65,52 @@
       "writtenOn": "2022-07-14T23:59:22Z",
       "side": 1,
       "message": "We need to shorten the ctx used below and use the original for cleanup. Here\u0027s an example:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go;l\u003d54?q\u003dcleanupCtx\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fbundles%2Fcros%2Fnetwork%2F",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "819344c7_4cda01b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-15T02:17:45Z",
+      "side": 1,
+      "message": "nit: check err after this",
+      "range": {
+        "startLine": 69,
+        "startChar": 13,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d241e6c_778f147f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-15T02:17:45Z",
+      "side": 1,
+      "message": "It seems to me that nameServer is only used in the following branches, so how about:\n```\nif nameServer, err :\u003d waitForShillNameServer(ctx, svc); err !\u003d nil {\n  ...\n} else if (nameServer !\u003d ifaceAddrs.IPv4Addr.String()) {\n  ...\n}\n(Similar with what Steven suggested below)",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 11
+      },
       "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -156,6 +219,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "393c9e45_74d0f817",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-15T02:17:45Z",
+      "side": 1,
+      "message": "Sorry I should mention this earlier:\nyou can use `config.GetIPProperties()` to get an `IPProperties` struct, which can simplify the code.",
+      "range": {
+        "startLine": 114,
+        "startChar": 19,
+        "endLine": 114,
+        "endChar": 32
+      },
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baff896c_de89a6af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-15T02:17:45Z",
+      "side": 1,
+      "message": "nit: Since we only return the first nameserver of IPv4 config here, I think it\u0027s worth to mention this behavior in the comment for this function.",
+      "range": {
+        "startLine": 133,
+        "startChar": 10,
+        "endLine": 133,
+        "endChar": 20
+      },
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f7682cc_df6472c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
         "patchSetId": 15
@@ -167,6 +276,29 @@
       "writtenOn": "2022-07-14T23:59:22Z",
       "side": 1,
       "message": "nit: Just \"no nameserver\"",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea1b286c_195cb67d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-15T02:17:45Z",
+      "side": 1,
+      "message": "nit: combine lines: `if err :\u003d ...; err !\u003d nil {}`",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 15
+      },
       "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -254,6 +386,52 @@
       "side": 1,
       "message": "+ combine lines.",
       "parentUuid": "3270ccd2_f08456a9",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0acde3b_6f76404e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-15T02:17:45Z",
+      "side": 1,
+      "message": "I suppose if resolveHostToIP is not empty and resolvedHost is empty, resolvedHostToIP will be resolved to gateway -- it\u0027s worth mentioning this behavior here and the comment in virtualnet.go.\n\nNot a suggestion for this patch: we may want to use the functional options pattern here in the future as we want to control more options for dnsmasq.",
+      "range": {
+        "startLine": 57,
+        "startChar": 39,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "731490f2_f26f345a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-15T02:17:45Z",
+      "side": 1,
+      "message": "nit: Although go does not have limitation on line length, but let\u0027s make it consistent at least in the same comment.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
       "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
