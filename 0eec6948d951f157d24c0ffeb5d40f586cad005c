@@ -131,6 +131,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a013dc27_4b846738",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-07-15T18:46:01Z",
+      "side": 1,
+      "message": "*unresolve the comment*",
+      "parentUuid": "8702b07e_3c026e9f",
+      "revId": "0eec6948d951f157d24c0ffeb5d40f586cad005c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb7f161b_8491dbc9",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
         "patchSetId": 5
