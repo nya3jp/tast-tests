@@ -67,6 +67,7 @@ func AppInfoFiles(ctx context.Context, s *testing.State) {
 	readTxt := nodewith.Name(read).Role(role.StaticText).Ancestor(settings)
 	storeTxt := nodewith.Name(store).Role(role.StaticText).Ancestor(settings)
 	wallpaperTxt := nodewith.Name(wallpaper).Role(role.StaticText).Ancestor(settings)
+	launcherApp := launcher.AppItemViewFinder(apps.Files.Name).First()
 
 	ui := uiauto.New(tconn)
 	checkMenuAndSettings := func() uiauto.Action {
@@ -105,7 +106,8 @@ func AppInfoFiles(ctx context.Context, s *testing.State) {
 		}
 		defer kb.Close()
 		if err := uiauto.Combine("check context menu of Files app on app list",
-			launcher.SearchAndRightClick(tconn, kb, apps.Files.Name, apps.Files.Name),
+			launcher.Open(tconn),
+			ui.RightClick(launcherApp),
 			checkMenuAndSettings())(ctx); err != nil {
 			s.Fatal("Failed to check app info for Files app: ", err)
 		}
