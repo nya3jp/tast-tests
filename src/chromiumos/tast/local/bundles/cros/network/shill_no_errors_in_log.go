@@ -145,7 +145,7 @@ func ShillNoErrorsInLog(ctx context.Context, s *testing.State) {
 				msgs[n] = e.Message
 			}
 		}
-		msg := strings.Join(msgs, ", ")
+		msg := strings.Join(msgs, ",\n")
 		if msglines != len(unexpected) {
 			s.Fatalf("Unexpected error lines, %v/%v: %v", msglines, len(unexpected), msg)
 		} else {
