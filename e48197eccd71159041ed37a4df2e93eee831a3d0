@@ -86,6 +86,24 @@
       "parentUuid": "a47ff875_808a4a4b",
       "revId": "e48197eccd71159041ed37a4df2e93eee831a3d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fae39e39_8c2025bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-15T22:47:48Z",
+      "side": 1,
+      "message": "You are correct, shortening the context shortens the timeout to leave time for cleanup.\n\nHowever, since \u0027defer\u0027 calls are executed when a function returns, it is more clear / correct to shorten the context passed to the function for cleanup within the function, rather than using the \"outer\" cleanup context from the calling function. (Hopefully that all makes sense :-) ).\n\nAnyway, what you did here is correct and looks great, thanks!",
+      "parentUuid": "66c0f4f2_68f1ef89",
+      "revId": "e48197eccd71159041ed37a4df2e93eee831a3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
