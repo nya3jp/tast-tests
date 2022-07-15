@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1cc9e0d3_2dd03499",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-07-15T17:34:59Z",
+      "side": 1,
+      "message": "I get that but the only difference between the two fixtures i mentioned is one calls ashNoNudgesExtraArg() and the other doesn\u0027t. You added the Dsp flag to the assistantBase so I\u0027m guessing that works.",
+      "parentUuid": "1048b332_d5a54a1f",
+      "range": {
+        "startLine": 144,
+        "startChar": 9,
+        "endLine": 144,
+        "endChar": 33
+      },
+      "revId": "43f8d31b4fd9932f0f93a5abd69a50b971c683e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f661d954_1eac9973",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/data/open_settings.raw.external",
         "patchSetId": 9
