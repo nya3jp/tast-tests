@@ -73,26 +73,27 @@ func presentApps(ctx context.Context, tconn *chrome.TestConn, uiHandler cuj.UIAc
 		return uiauto.NamedAction("switch tab to "+tabName, act)
 	}
 	switchTabIfNeeded := func(ctx context.Context) error {
-		// Some DUTs will switch to application tab when sharing screen.
-		// If there is no auto-switch, switch the tab to the application page.
 		appName := string(application)
-		appWebArea := nodewith.NameContaining(appName).Role(role.RootWebArea)
-		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(appWebArea)(ctx); err == nil {
-			testing.ContextLogf(ctx, "Already on the %s app page", application)
+		if !extendedDisplay {
+			// Some DUTs will switch to application tab when sharing screen.
+			// If there is no auto-switch, switch the tab to the application page.
+			appWebArea := nodewith.NameContaining(appName).Role(role.RootWebArea)
+			if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(appWebArea)(ctx); err == nil {
+				testing.ContextLogf(ctx, "Already on the %s app page", application)
+			}
+			// Check whether current window is expected or not.
+			// If it stays on the expected window, there is no need to switch tab.
+			w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
+				return w.IsActive && w.IsFrameVisible
+			})
+			if err != nil {
+				return errors.Wrap(err, "failed to get current active window")
+			}
+			if strings.Contains(w.Title, appName) {
+				testing.ContextLogf(ctx, "Current chrome window is %s, no need to switch tab", w.Title)
+				return nil
+			}
 		}
-		// Check whether current window is expected or not.
-		// If it stays on the expected window, there is no need to switch tab.
-		w, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool {
-			return w.IsActive && w.IsFrameVisible
-		})
-		if err != nil {
-			return errors.Wrap(err, "failed to get current active window")
-		}
-		if strings.Contains(w.Title, appName) {
-			testing.ContextLogf(ctx, "Current chrome window is %s, no need to switch tab", w.Title)
-			return nil
-		}
-
 		return switchToTab(appName)(ctx)
 	}
 	switch application {
