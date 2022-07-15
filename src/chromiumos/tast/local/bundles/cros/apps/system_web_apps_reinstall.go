@@ -51,29 +51,37 @@ func SystemWebAppsReinstall(ctx context.Context, s *testing.State) {
 		cr, tconn, err := createChrome(ctx)
 		if err != nil {
 			return errors.Wrap(err, "failed to create Chrome instance")
+
 		}
 
-		// Schedule a sign out, prepare for the next login.
-		defer func(ctx context.Context, tconn *chrome.TestConn) {
-			if err := quicksettings.SignOut(ctx, tconn); err != nil {
-				s.Fatal("Failed to sign-out: ", err)
-			}
-		}(cleanupCtx, tconn)
+		var didSignOut bool
+		defer func() {
+			cleanup(cleanupCtx, didSignOut, tconn)
+		}()
 
 		// Create a test file for confidence check during second chrome session.
 		testFilePath, err := testFilePath(ctx, cr)
 		if err != nil {
 			return errors.Wrap(err, "failed to get test file path")
 		}
-		if err = ioutil.WriteFile(testFilePath, testFileContent, 0644); err != nil {
+		if err := ioutil.WriteFile(testFilePath, testFileContent, 0644); err != nil {
 			return errors.Wrap(err, "failed to create test file for confidence check")
 		}
 
-		return checkAppsInstalled(ctx, tconn)
+		if err := checkAppsInstalled(ctx, tconn); err != nil {
+			return errors.Wrap(err, "apps aren't installed")
+		}
+
+		if err := quicksettings.SignOut(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to sign out")
+		}
+
+		didSignOut = true
+		return nil
 	}()
 
 	if err != nil {
-		s.Fatal("Failed to run first Chrome session: ", err)
+		s.Fatal("Ran into a failure during first Chrome session (system web apps fresh install): ", err)
 	}
 
 	// Second session: keep state and trigger reinstall.
@@ -87,12 +95,10 @@ func SystemWebAppsReinstall(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to create Chrome instance")
 		}
 
-		// Sign out to restore state. This test don't use fixture, and need to cleanup after itself.
-		defer func(ctx context.Context, tconn *chrome.TestConn, s *testing.State) {
-			if err := quicksettings.SignOut(ctx, tconn); err != nil {
-				s.Fatal("Failed to sign-out: ", err)
-			}
-		}(cleanupCtx, tconn, s)
+		var didSignOut bool
+		defer func() {
+			cleanup(cleanupCtx, didSignOut, tconn)
+		}()
 
 		// Confidence check: confirm the state is persisted.
 		testFilePath, err := testFilePath(ctx, cr)
@@ -111,11 +117,20 @@ func SystemWebAppsReinstall(ctx context.Context, s *testing.State) {
 			return errors.Errorf("failed to pass confidence check, content differs, want %v, got: %v", testFileContent, b)
 		}
 
-		return checkAppsInstalled(ctx, tconn)
+		if err := checkAppsInstalled(ctx, tconn); err != nil {
+			return errors.Wrap(err, "apps aren't installed")
+		}
+
+		if err := quicksettings.SignOut(ctx, tconn); err != nil {
+			return errors.Wrap(err, "failed to sign out")
+		}
+
+		didSignOut = true
+		return nil
 	}()
 
 	if err != nil {
-		s.Fatal("Failed to run second Chrome session: ", err)
+		s.Fatal("Ran into a failure during second Chrome session (system web apps reinstall): ", err)
 	}
 }
 
@@ -172,4 +187,19 @@ func testFilePath(ctx context.Context, cr *chrome.Chrome) (string, error) {
 	}
 
 	return filepath.Join(downloadsPath, "system-web-apps-reinstall-confidence-check"), nil
+}
+
+// cleanup signs out if the test hasn't already done so.
+// Note, this function shouldn't call s.Fatal() or s.FailNow() because doing so will "hide" the real error occurred during the test.
+func cleanup(ctx context.Context, didSignOut bool, tconn *chrome.TestConn) {
+	if didSignOut {
+		return
+	}
+
+	if cleanupErr := quicksettings.SignOut(ctx, tconn); cleanupErr != nil {
+		testing.ContextLog(ctx, "Failed to sign out during cleanup: ", cleanupErr)
+		if !didSignOut {
+			testing.ContextLog(ctx, "The above error is likely caused by an error occurred in test body")
+		}
+	}
 }
