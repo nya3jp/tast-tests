@@ -25,7 +25,7 @@ func init() {
 		Contacts:     []string{"yawano@google.com", "assistive-eng@google.com"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Fixture:      "assistant",
-		Timeout:      3 * time.Minute,
+		Timeout:      10 * time.Second,
 		Params: []testing.Param{
 			{
 				Name:              "assistant_key",
@@ -52,12 +52,14 @@ func Hotkey(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create test API connection: ", err)
 	}
 
-	assistantUI := nodewith.HasClass("AssistantPageView")
-	action.Combine("Press hotkey and confirm that it toggles Assistant UI visibility",
+	assistantUI := nodewith.HasClass("AssistantDialogPlate")
+	if err := action.Combine("Press hotkey and confirm that it toggles Assistant UI visibility",
 		uiauto.New(tconn).WaitUntilGone(assistantUI),
 		func(ctx context.Context) error { return assistant.ToggleUIWithHotkey(ctx, tconn, accel) },
 		uiauto.New(tconn).WaitUntilExists(assistantUI),
 		func(ctx context.Context) error { return assistant.ToggleUIWithHotkey(ctx, tconn, accel) },
 		uiauto.New(tconn).WaitUntilGone(assistantUI),
-	)
+	)(ctx); err != nil {
+		s.Fatal("Failed to toggle Assistant UI with a hotkey: ", err)
+	}
 }
