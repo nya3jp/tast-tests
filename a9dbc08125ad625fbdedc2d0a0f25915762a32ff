@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03689af0_03b61690",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175549
+      },
+      "writtenOn": "2022-07-15T20:50:07Z",
+      "side": 1,
+      "message": "lgtm, adding some notes but they are not really blocking, thanks Renuga!",
+      "revId": "a9dbc08125ad625fbdedc2d0a0f25915762a32ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c1ba12_dd8062ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1175549
+      },
+      "writtenOn": "2022-07-15T20:50:07Z",
+      "side": 1,
+      "message": "nit: thanks for adding a limit, is there a recommendation for an initial value here? I\u0027ll agree on keeping a bigger value even if we think slow duts may struggle\n\n(I was not able to figure out what was a good starter value as our tests use a variety of timeouts but I\u0027m not sure how tuned they are https://source.chromium.org/search?q\u003d%22Timeout:%22\u0026ss\u003dchromiumos%2Fchromiumos%2Fcodesearch:src%2Fplatform%2Ftast-tests%2Fsrc%2Fchromiumos%2Ftast%2Flocal%2Fbundles%2Fcros%2Farc%2F)",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "a9dbc08125ad625fbdedc2d0a0f25915762a32ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d37e279e_c3326fc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1175549
+      },
+      "writtenOn": "2022-07-15T20:50:07Z",
+      "side": 1,
+      "message": "qq: is this the wording we are using for other tests already? (I\u0027m guessing this is not the only test we want to modify), I was wondering if this should be named \"lacros_p\" instead, in a similar fashion as we have \"android_p\" and \"android_vm\". wdyt?",
+      "range": {
+        "startLine": 37,
+        "startChar": 23,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "a9dbc08125ad625fbdedc2d0a0f25915762a32ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
