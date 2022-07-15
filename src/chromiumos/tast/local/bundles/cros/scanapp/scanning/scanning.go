@@ -503,11 +503,13 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 	}
 
 	// Launch the Scan app, configure the settings, and perform scans.
+	s.Log("Launching Scan app")
 	app, err := scanapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch app: ", err)
 	}
 
+	s.Log("Expanding settings panel")
 	if err := app.ClickMoreSettings()(ctx); err != nil {
 		s.Fatal("Failed to expand More settings: ", err)
 	}
@@ -533,6 +535,7 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 				s.Fatal("Failed to close notifications: ", err)
 			}
 
+			s.Log("Starting scan")
 			if err := uiauto.Combine("scan",
 				app.SetScanSettings(settings),
 				app.Scan(),
@@ -541,6 +544,7 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 				s.Fatal("Failed to perform scan: ", err)
 			}
 
+			s.Log("Looking for scanned output")
 			scan, err := GetScan(defaultScanPattern)
 			if err != nil {
 				s.Fatal("Failed to find scan: ", err)
@@ -554,17 +558,11 @@ func RunAppSettingsTests(ctx context.Context, s *testing.State, cr *chrome.Chrom
 					s.Error("Unable to preserve scanned file output: ", err)
 				}
 			}
+
+			s.Log("Finished subtest ", test.Name)
 		})
 	}
-
-	// Intentionally stop the printer early to trigger shutdown in
-	// ippusb_bridge. Without this, cleanup may have to wait for other processes
-	// to finish using the printer (e.g. CUPS background probing).
-	//
-	// TODO(b/210134772): Investigate if this remains necessary.
-	if err := printer.Stop(cleanupCtx); err != nil {
-		s.Error("Failed to stop printer: ", err)
-	}
+	s.Log("Finished all subtests")
 }
 
 // RunHardwareTests tests that the scan app can select each of the options
