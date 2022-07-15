@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6851e96_729bddf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-07-15T11:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4416801_99d91eb7",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 1
+      },
+      "revId": "5ed1b7980b2caf2664d69a139d57a1c781832844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29de8b02_63549384",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-15T07:25:12Z",
       "side": 1,
       "message": "I think we could leave 10 seconds here. Timeout here is for the waiting on the UI changes. Should be reasonably small.",
+      "range": {
+        "startLine": 84,
+        "startChar": 37,
+        "endLine": 84,
+        "endChar": 39
+      },
+      "revId": "5ed1b7980b2caf2664d69a139d57a1c781832844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1432d7a0_fcdde690",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-07-15T11:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29de8b02_63549384",
       "range": {
         "startLine": 84,
         "startChar": 37,
