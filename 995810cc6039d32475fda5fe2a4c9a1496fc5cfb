@@ -16,6 +16,29 @@
       "message": "Please have a look, thank you.",
       "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d68f0a1c_8e19491c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock3_usb_charging.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-07-15T07:35:35Z",
+      "side": 1,
+      "message": "Before you connect the dock to the charging source, you need to issue servo not charging the dut.  Since all duts are connected to via servo in the lab.\n\nOtherwise, the dut is always charging by servo (default) or by the dock.",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
