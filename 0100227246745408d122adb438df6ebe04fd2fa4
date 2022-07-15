@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03434fd0_ee7002cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-07-15T11:48:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31148f55_6685e27a",
+      "range": {
+        "startLine": 143,
+        "startChar": 92,
+        "endLine": 143,
+        "endChar": 98
+      },
+      "revId": "0100227246745408d122adb438df6ebe04fd2fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd3cb7de_d72e1360",
