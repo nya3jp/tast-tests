@@ -16,6 +16,75 @@
       "message": "tast-owners: PTAL",
       "revId": "49d10344056c51385895a0893a9bc9de94dd68bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d7726bc_0070a6f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-15T15:14:27Z",
+      "side": 1,
+      "message": "defer func() {\n  cleanup(cleanupCtx, didSignOut, tconn)\n}()\nshould work.",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 52
+      },
+      "revId": "49d10344056c51385895a0893a9bc9de94dd68bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "027cae8b_f5a43840",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-15T15:14:27Z",
+      "side": 1,
+      "message": "you do not need this, as it is covered by didSignOut.",
+      "range": {
+        "startLine": 200,
+        "startChar": 76,
+        "endLine": 200,
+        "endChar": 95
+      },
+      "revId": "49d10344056c51385895a0893a9bc9de94dd68bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31b81fca_09aa105c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-15T15:14:27Z",
+      "side": 1,
+      "message": "could you keep using just \"bool\" not a ptr? (pls find my comment above, too).",
+      "range": {
+        "startLine": 200,
+        "startChar": 34,
+        "endLine": 200,
+        "endChar": 50
+      },
+      "revId": "49d10344056c51385895a0893a9bc9de94dd68bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
