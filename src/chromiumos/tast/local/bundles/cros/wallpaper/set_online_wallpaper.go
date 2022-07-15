@@ -40,7 +40,7 @@ func SetOnlineWallpaper(ctx context.Context, s *testing.State) {
 		firstCollection  = "Cityscapes"
 		firstImage       = "J. Paul Getty Museum, Los Angeles Photo by Victor Cheng"
 		secondCollection = "Imaginary"
-		secondImage      = "The Savanna's Band Digital Art by Leo Natsume"
+		secondImage      = "Birthday Memento Digital Art by Leo Natsume"
 	)
 
 	cr := s.FixtValue().(*chrome.Chrome)
