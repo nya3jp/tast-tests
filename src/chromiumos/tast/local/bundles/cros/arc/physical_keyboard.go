@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
@@ -15,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -24,6 +26,7 @@ type pkTestState struct {
 	a     *arc.ARC
 	d     *ui.Device
 	kb    *input.KeyboardEventWriter
+	name  string
 }
 
 // pkTestParams represents the name of the test and the function to call.
@@ -73,7 +76,7 @@ func init() {
 	})
 }
 
-func testTextField(ctx context.Context, st pkTestState, s *testing.State, activity, keystrokes, expectedResult string) error {
+func testTextField(ctx context.Context, st pkTestState, s *testing.State, activity, keystrokes, expectedResult string) (retErr error) {
 	const (
 		pkg      = "org.chromium.arc.testapp.keyboard"
 		fieldID  = pkg + ":id/text"
@@ -99,6 +102,23 @@ func testTextField(ctx context.Context, st pkTestState, s *testing.State, activi
 	if err := d.Object(ui.ID(fieldID), ui.Text(initText)).WaitForExists(ctx, 30*time.Second); err != nil {
 		return errors.Wrap(err, "failed to find field")
 	}
+
+	defer func() {
+		// Only take screenshot when error happened.
+		if retErr == nil {
+			return
+		}
+
+		cr := s.FixtValue().(*arc.PreData).Chrome
+		screenshotFilename := "screenshot-" + st.name + ".png"
+		path := filepath.Join(s.OutDir(), screenshotFilename)
+		if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+			// Take screenshot failure is not part of test error, add this error to testing state directly
+			s.Error("Failed to capture screenshot: ", err)
+		} else {
+			testing.ContextLogf(ctx, "Saved screenshot to %s", screenshotFilename)
+		}
+	}()
 
 	field := d.Object(ui.ID(fieldID))
 	if err := field.Click(ctx); err != nil {
@@ -190,8 +210,8 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	testState := pkTestState{tconn, a, d, kb}
 	for _, test := range s.Param().([]pkTestParams) {
+		testState := pkTestState{tconn, a, d, kb, test.name}
 		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
 			test.fn(ctx, testState, s)
 		})
