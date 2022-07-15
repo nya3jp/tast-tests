@@ -22,7 +22,7 @@ func init() {
 		Func:         TouchInput,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies touch input in various window states on Android",
-		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework+tast@google.com"},
+		Contacts:     []string{"yhanada@chromium.org", "hirokisato@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		HardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.InternalDisplay()),
 		SoftwareDeps: []string{"chrome", "android_vm"},
