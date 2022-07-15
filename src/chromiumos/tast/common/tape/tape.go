@@ -13,6 +13,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"time"
 
 	"golang.org/x/oauth2"
@@ -49,17 +50,31 @@ func createTokenSource(ctx context.Context, credsJSON []byte) (oauth2.TokenSourc
 // NewClient creates a http client which provides the necessary oauth token to authenticate with the TAPE
 // GCP from the service account credentials in credsJSON.
 func NewClient(ctx context.Context, credsJSON []byte) (*client, error) {
-	// Return the Oauth client using the credentials.
+	// Check if token content was written to the DUT and should be used.
+	if _, err := os.Stat(dutTokenFilePath); err == nil {
+		tokenBytes, err := os.ReadFile(dutTokenFilePath)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to read token content")
+		}
+
+		var tokenContent oauth2.Token
+		if err := json.Unmarshal(tokenBytes, &tokenContent); err != nil {
+			return nil, errors.Wrap(err, "failed to unmarshal token content")
+		}
+		return &client{
+			httpClient: oauth2.NewClient(ctx, oauth2.StaticTokenSource(&tokenContent)),
+		}, nil
+	}
+
+	// Return the Oauth client using the supplied credentials.
 	ts, err := createTokenSource(ctx, credsJSON)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create token")
+		return nil, errors.Wrap(err, "failed to create token from json")
 	}
 
-	client := &client{
+	return &client{
 		httpClient: oauth2.NewClient(ctx, ts),
-	}
-
-	return client, nil
+	}, nil
 }
 
 // sendRequestWithTimeout makes a call to the specified REST endpoint of TAPE with the given http method and payload.
