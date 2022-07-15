@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f094f89b_b8ce7ee6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T21:53:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "685b249c_e70cbc1b",
+      "revId": "e48197eccd71159041ed37a4df2e93eee831a3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a47ff875_808a4a4b",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-15T21:17:30Z",
       "side": 1,
       "message": "Sorry for my confusion before. Since this is a separate function, we should go ahead and use a separate cleanupCtx here. i.e. shorten the ctx passed into this function instead of passing in the cleanup context. (It\u0027s fine to use the same cleanup context within a function, but a bit confusing to pass it around).",
+      "revId": "e48197eccd71159041ed37a4df2e93eee831a3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66c0f4f2_68f1ef89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T21:53:52Z",
+      "side": 1,
+      "message": "Thank you, I didn\u0027t really understand the purpose of shortening `ctx` (I assumed shorten `ctx` is to ensure that it leaves enough time for `CleanUp()` to call). Now I shorten `ctx` in different function seperately and delete `clean` struct type.",
+      "parentUuid": "a47ff875_808a4a4b",
       "revId": "e48197eccd71159041ed37a4df2e93eee831a3d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
