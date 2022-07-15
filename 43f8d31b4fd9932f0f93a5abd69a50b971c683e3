@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1048b332_d5a54a1f",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-15T01:16:50Z",
+      "side": 1,
+      "message": "Since ultimately there is only 1 chrome.new call executed from one of the fixtures, layers of fixtures are not fully composable when it comes to adding more options to chrome . So that leads to some similar base fixtures (and duplication) that are starting chrome with slightly different options.",
+      "parentUuid": "c91dcc59_95c6ad3d",
+      "range": {
+        "startLine": 144,
+        "startChar": 9,
+        "endLine": 144,
+        "endChar": 33
+      },
+      "revId": "43f8d31b4fd9932f0f93a5abd69a50b971c683e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f661d954_1eac9973",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-07-15T00:02:35Z",
       "side": 1,
       "message": "why do we have an external file and a file checked into the codebase?",
+      "range": {
+        "startLine": 2,
+        "startChar": 90,
+        "endLine": 2,
+        "endChar": 91
+      },
+      "revId": "43f8d31b4fd9932f0f93a5abd69a50b971c683e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a1d22d_e78f5549",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/data/open_settings.raw.external",
+        "patchSetId": 9
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1496803
+      },
+      "writtenOn": "2022-07-15T01:16:50Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "f661d954_1eac9973",
       "range": {
         "startLine": 2,
         "startChar": 90,
