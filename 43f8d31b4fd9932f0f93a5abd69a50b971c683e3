@@ -16,6 +16,69 @@
       "message": "Thanks Kamil!",
       "revId": "43f8d31b4fd9932f0f93a5abd69a50b971c683e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b9545c_22235999",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-07-15T00:02:35Z",
+      "side": 1,
+      "message": "Super cool to see this come together! ",
+      "revId": "43f8d31b4fd9932f0f93a5abd69a50b971c683e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c91dcc59_95c6ad3d",
+        "filename": "src/chromiumos/tast/local/assistant/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-07-15T00:02:35Z",
+      "side": 1,
+      "message": "This fixture is almost identical to assistantBase. Can we use the same fixture?",
+      "range": {
+        "startLine": 144,
+        "startChar": 9,
+        "endLine": 144,
+        "endChar": 33
+      },
+      "revId": "43f8d31b4fd9932f0f93a5abd69a50b971c683e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f661d954_1eac9973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/data/open_settings.raw.external",
+        "patchSetId": 9
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-07-15T00:02:35Z",
+      "side": 1,
+      "message": "why do we have an external file and a file checked into the codebase?",
+      "range": {
+        "startLine": 2,
+        "startChar": 90,
+        "endLine": 2,
+        "endChar": 91
+      },
+      "revId": "43f8d31b4fd9932f0f93a5abd69a50b971c683e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
