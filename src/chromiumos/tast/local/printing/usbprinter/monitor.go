@@ -12,20 +12,25 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/testing"
 )
 
 // waitEvent monitors USB events using udevadm and waits to see if a USB event
 // with action occurs for a device with vendor ID vid and product ID pid.
+// Writes the process id of the child process to onPidReady once udevadm is ready for
+// events, or closes onPidReady without writing anything if an error occurs.
 // Returns nil if a matching event is found.
-func waitEvent(ctx context.Context, action string, devInfo DevInfo) error {
+func waitEvent(ctx context.Context, action string, devInfo DevInfo, onPidReady chan<- int) error {
 	cmd := testexec.CommandContext(ctx, "stdbuf", "-o0", "udevadm", "monitor",
 		"--subsystem-match=usb", "--property", "--udev")
 
 	p, err := cmd.StdoutPipe()
 	if err != nil {
+		close(onPidReady)
 		return err
 	}
 	if err := cmd.Start(); err != nil {
+		close(onPidReady)
 		return err
 	}
 
@@ -41,17 +46,27 @@ func waitEvent(ctx context.Context, action string, devInfo DevInfo) error {
 	matchAction := "ACTION=" + action
 	var sb strings.Builder
 	rd := bufio.NewReader(p)
+	notified := false
 	for {
 		if ctx.Err() != nil {
+			close(onPidReady)
 			return errors.Wrap(ctx.Err(), "didn't get udev event")
 		}
 		text, err := rd.ReadString('\n')
 		if err != nil {
+			close(onPidReady)
 			return errors.Wrap(err, "failed to read output from pipe")
 		}
 		if text != "\n" {
 			sb.WriteString(text)
 			continue
+		}
+		// Once we read the first blank line of output from udevadm, pass its PID
+		// along to the caller to tell them udevadm is ready to receive events.
+		if !notified {
+			onPidReady <- cmd.Cmd.Process.Pid
+			close(onPidReady)
+			notified = true
 		}
 		// If we read an empty line, it means that we have reached the end of
 		// the chunk. Check the contents of the chunk to see if it matches the
@@ -65,6 +80,23 @@ func waitEvent(ctx context.Context, action string, devInfo DevInfo) error {
 		// Reset if there was no match found on the previous chunk.
 		sb.Reset()
 	}
+}
+
+// startUdevMonitor launches udevadm in a goroutine and waits until the child
+// process emits headers indicating it is ready to receive events.  The returned
+// channel can be read from to wait for an event that matches action and devInfo.
+func startUdevMonitor(ctx context.Context, action string, devInfo DevInfo) (<-chan error, error) {
+	udevPid := make(chan int, 1)
+	udevCh := make(chan error, 1)
+	go func() {
+		udevCh <- waitEvent(ctx, action, devInfo, udevPid)
+	}()
+	pid, ok := <-udevPid
+	if !ok {
+		return nil, errors.Wrap(ctx.Err(), "didn't get udevadm PID")
+	}
+	testing.ContextLogf(ctx, "udevadm with PID %d is ready", pid)
+	return udevCh, nil
 }
 
 // waitLaunch scans r, which contains output from virtual-usb-printer, for the
