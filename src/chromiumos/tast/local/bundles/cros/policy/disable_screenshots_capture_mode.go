@@ -29,7 +29,6 @@ func init() {
 		Desc:         "Behavior of the DisableScreenshots policy, check whether screenshot can be taken from capture mode in quick settings",
 		Contacts: []string{
 			"poromov@google.com", // Policy owner
-			"lamzin@google.com",  // Migrated to Tast
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
