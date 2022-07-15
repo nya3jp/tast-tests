@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
@@ -15,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -24,6 +26,7 @@ type pkTestState struct {
 	a     *arc.ARC
 	d     *ui.Device
 	kb    *input.KeyboardEventWriter
+	name  string
 }
 
 // pkTestParams represents the name of the test and the function to call.
@@ -84,6 +87,7 @@ func testTextField(ctx context.Context, st pkTestState, s *testing.State, activi
 	tconn := st.tconn
 	d := st.d
 	kb := st.kb
+	testName := st.name
 
 	act, err := arc.NewActivity(a, pkg, activity)
 	if err != nil {
@@ -102,21 +106,26 @@ func testTextField(ctx context.Context, st pkTestState, s *testing.State, activi
 
 	field := d.Object(ui.ID(fieldID))
 	if err := field.Click(ctx); err != nil {
+		PhysicalKeyboardTakeScreenshot(ctx, s, testName)
 		return errors.Wrap(err, "failed to click field")
 	}
 	if err := field.SetText(ctx, ""); err != nil {
+		PhysicalKeyboardTakeScreenshot(ctx, s, testName)
 		return errors.Wrap(err, "failed to empty field")
 	}
 
 	if err := d.Object(ui.ID(fieldID), ui.Focused(true)).WaitForExists(ctx, 30*time.Second); err != nil {
+		PhysicalKeyboardTakeScreenshot(ctx, s, testName)
 		return errors.Wrap(err, "failed to focus on field")
 	}
 
 	if err := kb.Type(ctx, keystrokes); err != nil {
+		PhysicalKeyboardTakeScreenshot(ctx, s, testName)
 		return errors.Wrapf(err, "failed to type %q", keystrokes)
 	}
 
 	if err := d.Object(ui.ID(fieldID)).WaitForText(ctx, expectedResult, 30*time.Second); err != nil {
+		PhysicalKeyboardTakeScreenshot(ctx, s, testName)
 		return errors.Wrap(err, "failed to wait for text")
 	}
 
@@ -190,10 +199,22 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	testState := pkTestState{tconn, a, d, kb}
 	for _, test := range s.Param().([]pkTestParams) {
+		testState := pkTestState{tconn, a, d, kb, test.name}
 		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
 			test.fn(ctx, testState, s)
 		})
+	}
+}
+
+func PhysicalKeyboardTakeScreenshot(ctx context.Context, s *testing.State, testName string) {
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	screenshotFilename := "screenshot-" + testName + ".png"
+	path := filepath.Join(s.OutDir(), screenshotFilename)
+	if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+		// Take screenshot is not part of test error, add this error to testing state directly
+		s.Error("Failed to capture screenshot: ", err)
+	} else {
+		testing.ContextLogf(ctx, "Saved screenshot to %s", screenshotFilename)
 	}
 }

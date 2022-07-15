@@ -6,6 +6,8 @@ package arc
 
 import (
 	"context"
+	"fmt"
+	"path/filepath"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
@@ -13,6 +15,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
 
@@ -144,15 +147,30 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 				}(ctx)
 			}
 
-			for _, v := range tc.mappings {
+			for i, v := range tc.mappings {
+				KCMTakeScreenshot(ctx, s, fmt.Sprintf("%s_%d", tc.name, i))
 				if err := kb.Accel(ctx, v.in); err != nil {
+					KCMTakeScreenshot(ctx, s, tc.name)
 					s.Fatal("Failed to type: ", err)
 				}
 
 				if err := d.Object(ui.ID(fieldID), ui.Text(v.out)).WaitForExists(ctx, 10*time.Second); err != nil {
+					KCMTakeScreenshot(ctx, s, fmt.Sprintf("%s_%d", tc.name, i))
 					s.Errorf("Failed to find field %q after typing %q: %v", v.in, v.out, err)
 				}
 			}
 		})
+	}
+}
+
+func KCMTakeScreenshot(ctx context.Context, s *testing.State, testName string) {
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	screenshotFilename := "screenshot-" + testName + ".png"
+	path := filepath.Join(s.OutDir(), screenshotFilename)
+	if err := screenshot.CaptureChrome(ctx, cr, path); err != nil {
+		// Take screenshot is not part of test error, add this error to testing state directly
+		s.Error("Failed to capture screenshot: ", err)
+	} else {
+		testing.ContextLogf(ctx, "Saved screenshot to %s", screenshotFilename)
 	}
 }
