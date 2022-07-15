@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e607a95f_fa8397d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-15T08:28:22Z",
+      "side": 1,
+      "message": "Oops, wrong bug Id.\nThis CL is related to b/238846980 instead.",
+      "revId": "ad139a5b0373e03205216d1d857a49eeba728ff4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
