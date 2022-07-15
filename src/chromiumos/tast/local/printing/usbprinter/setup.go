@@ -346,12 +346,13 @@ func (p *Printer) Stop(ctx context.Context) error {
 		p.cmd = nil
 	}()
 
-	var udevCh chan error
+	var udevCh <-chan error
 	if p.expectUdevEventOnStop {
-		udevCh = make(chan error, 1)
-		go func() {
-			udevCh <- waitEvent(ctx, "remove", p.DevInfo)
-		}()
+		var err error
+		udevCh, err = startUdevMonitor(ctx, "remove", p.DevInfo)
+		if err != nil {
+			return err
+		}
 	}
 
 	if err := terminatePrinterProcess(ctx, p.cmd); err != nil {
@@ -361,7 +362,7 @@ func (p *Printer) Stop(ctx context.Context) error {
 	if p.expectUdevEventOnStop {
 		// Wait for a signal from udevadm to say the device was successfully
 		// detached.
-		testing.ContextLog(ctx, "Waiting for udev event")
+		testing.ContextLog(ctx, "Waiting for udev remove event")
 		select {
 		case err := <-udevCh:
 			if err != nil {
@@ -380,10 +381,10 @@ func (p *Printer) Stop(ctx context.Context) error {
 // system. Returns nil if the device was attached successfully.
 func attachUSBIPDevice(ctx context.Context, devInfo DevInfo) error {
 	// Begin waiting for udev event.
-	udevCh := make(chan error, 1)
-	go func() {
-		udevCh <- waitEvent(ctx, "add", devInfo)
-	}()
+	udevCh, err := startUdevMonitor(ctx, "add", devInfo)
+	if err != nil {
+		return err
+	}
 
 	// Attach the virtual printer to the system using the "usbip attach" command.
 	testing.ContextLog(ctx, "Attaching virtual printer")
@@ -395,7 +396,7 @@ func attachUSBIPDevice(ctx context.Context, devInfo DevInfo) error {
 
 	// Wait for a signal from udevadm to see if the device was successfully
 	// attached.
-	testing.ContextLog(ctx, "Waiting for udev event")
+	testing.ContextLog(ctx, "Waiting for udev add event")
 	select {
 	case err := <-udevCh:
 		if err != nil {
