@@ -53,6 +53,8 @@ const (
 	cameraRegexCapture     = "(" + startVideoRegexCapture + "|" + stopVideoRegexCapture + ")"
 )
 
+var zoomWebArea = nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
+
 // Join joins a new conference room.
 func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) error {
 	ui := conf.ui
@@ -173,7 +175,6 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 	}
 
 	joinButton := nodewith.Name("Join").Role(role.Button)
-	webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
 	video := nodewith.Role(role.Video)
 	joinFromYourBrowser := nodewith.Name("Join from Your Browser").Role(role.StaticText)
 	// There are two types of cookie accept dialogs: "ACCEPT COOKIES" and "ACCEPT ALL COOKIES".
@@ -198,7 +199,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		clickJoinButton,
 		// Use 1 minute timeout value because it may take longer to wait for page loading,
 		// especially for some low end DUTs.
-		ui.WithTimeout(longUITimeout).WaitUntilExists(webArea),
+		ui.WithTimeout(longUITimeout).WaitUntilExists(zoomWebArea),
 		// Sometimes participants number caught at the beginning is wrong, it will be correct after a while.
 		// Add retry to get the correct participants number.
 		ui.WithInterval(time.Second).Retry(10, checkParticipantsNum),
@@ -386,9 +387,8 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 	)
 	ui := conf.ui
 	changeBackground := func(backgroundOption string) error {
-		webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
-		settingsButton := nodewith.Name("Settings").Role(role.Button).Ancestor(webArea)
-		settingsWindow := nodewith.Name("settings dialog window").Role(role.Application).Ancestor(webArea)
+		settingsButton := nodewith.Name("Settings").Role(role.Button).Ancestor(zoomWebArea)
+		settingsWindow := nodewith.Name("settings dialog window").Role(role.Application).Ancestor(zoomWebArea)
 		backgroundTab := nodewith.Name("Background").Role(role.Tab).Ancestor(settingsWindow)
 		backgroundItem := nodewith.NameContaining(backgroundOption).Role(role.ListBoxOption).Ancestor(settingsWindow)
 		closeButton := nodewith.Role(role.Button).HasClass("settings-dialog__close").Ancestor(settingsWindow)
@@ -404,8 +404,8 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 					))
 			} else {
 				// If the screen width is not enough, the settings button will be moved to more options.
-				moreOptions := nodewith.Name("More meeting control").Ancestor(webArea)
-				moreSettingsButton := nodewith.Name("Settings").Role(role.MenuItem).Ancestor(webArea)
+				moreOptions := nodewith.Name("More meeting control").Ancestor(zoomWebArea)
+				moreSettingsButton := nodewith.Name("Settings").Role(role.MenuItem).Ancestor(zoomWebArea)
 				actions = append(actions,
 					uiauto.NamedAction("click more option", ui.LeftClick(moreOptions)),
 					uiauto.NamedAction("click settings menu item", ui.LeftClick(moreSettingsButton)),
@@ -420,18 +420,18 @@ func (conf *ZoomConference) BackgroundChange(ctx context.Context) error {
 		return uiauto.NamedCombine("change background to "+backgroundOption,
 			ui.Retry(3, openBackgroundPanel), // Open "Background" panel.
 			// Some low end DUTs need more time to load the background settings.
-			ui.WithTimeout(longUITimeout).LeftClickUntil(backgroundItem,
+			ui.WithTimeout(longUITimeout).DoDefaultUntil(backgroundItem,
 				ui.WithTimeout(shortUITimeout).WaitUntilExists(backgroundItem.Focused())),
 			// After applying the new background, give it 3 seconds to load the new background before closing the settings.
 			uiauto.Sleep(shortUITimeout),
 			ui.LeftClick(closeButton), // Close "Background" panel.
 			takeScreenshot(conf.cr, conf.outDir, fmt.Sprintf("change-background-to-background-%q", backgroundOption)),
 			// Double click to enter full screen.
-			doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Zoom", true),
+			doFullScreenAction(conf.tconn, ui.DoubleClick(zoomWebArea), "Zoom", true),
 			// After applying new background, give it 5 seconds for viewing before applying next one.
 			uiauto.Sleep(viewingTime),
 			// Double click to exit full screen.
-			doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), "Zoom", false),
+			doFullScreenAction(conf.tconn, ui.DoubleClick(zoomWebArea), "Zoom", false),
 		)(ctx)
 	}
 	if err := conf.uiHandler.SwitchToChromeTabByName("Zoom")(ctx); err != nil {
@@ -473,7 +473,7 @@ func (conf *ZoomConference) Presenting(ctx context.Context, application googleAp
 			ui.LeftClick(presenMode),
 			ui.LeftClick(presentTab),
 			ui.LeftClick(shareButton),
-			ui.WaitUntilExists(stopSharing),
+			ui.WithTimeout(mediumUITimeout).WaitUntilExists(stopSharing),
 		)(ctx)
 	}
 
@@ -500,8 +500,7 @@ var _ Conference = (*ZoomConference)(nil)
 // showInterface moves mouse or taps in web area in order to make the menu interface reappear.
 func (conf *ZoomConference) showInterface(ctx context.Context) error {
 	ui := conf.ui
-	webArea := nodewith.NameContaining("Zoom Meeting").Role(role.RootWebArea)
-	information := nodewith.Name("Meeting information").Role(role.Button).Ancestor(webArea)
+	information := nodewith.Name("Meeting information").Role(role.Button).Ancestor(zoomWebArea)
 
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		if err := ui.Exists(information)(ctx); err == nil {
@@ -510,19 +509,19 @@ func (conf *ZoomConference) showInterface(ctx context.Context) error {
 
 		if conf.tabletMode {
 			testing.ContextLog(ctx, "Tap web area to show interface")
-			if err := conf.uiHandler.Click(webArea)(ctx); err != nil {
+			if err := conf.uiHandler.Click(zoomWebArea)(ctx); err != nil {
 				return errors.Wrap(err, "failed to click the web area")
 			}
 		} else {
 			testing.ContextLog(ctx, "Mouse move to show interface")
-			webAreaInfo, err := ui.Info(ctx, webArea)
+			webAreaInfo, err := ui.Info(ctx, zoomWebArea)
 			if err != nil {
 				return err
 			}
 			if err := mouse.Move(conf.tconn, webAreaInfo.Location.TopLeft(), 200*time.Millisecond)(ctx); err != nil {
 				return errors.Wrap(err, "failed to move mouse to top left corner of the web area")
 			}
-			if err := ui.MouseMoveTo(webArea, 200*time.Millisecond)(ctx); err != nil {
+			if err := ui.MouseMoveTo(zoomWebArea, 200*time.Millisecond)(ctx); err != nil {
 				return errors.Wrap(err, "failed to move mouse to the center of the web area")
 			}
 		}
