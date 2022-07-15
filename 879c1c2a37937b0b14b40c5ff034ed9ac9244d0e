@@ -34,6 +34,46 @@
       "parentUuid": "374ba64f_4e3a9e49",
       "revId": "879c1c2a37937b0b14b40c5ff034ed9ac9244d0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9513f60_86332e53",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/attach_file.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-15T13:14:40Z",
+      "side": 1,
+      "message": "nit: Please add . at the end of the comment.",
+      "revId": "879c1c2a37937b0b14b40c5ff034ed9ac9244d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c176d2c8_a8727ebe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/attach_file.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-15T13:14:40Z",
+      "side": 1,
+      "message": "You could possibly use here the full name as it is known to the test.\nSimilarly below the piece about uploading pdf.\n\nReasoning: When tests start there is no guarantee that previous tests cleaned the  Downloads folder. Using the full names you would be more explicit with the test.\n\nWDYT?",
+      "range": {
+        "startLine": 113,
+        "startChar": 24,
+        "endLine": 113,
+        "endChar": 46
+      },
+      "revId": "879c1c2a37937b0b14b40c5ff034ed9ac9244d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
