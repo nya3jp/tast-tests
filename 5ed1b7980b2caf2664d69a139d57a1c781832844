@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29de8b02_63549384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-07-15T07:25:12Z",
+      "side": 1,
+      "message": "I think we could leave 10 seconds here. Timeout here is for the waiting on the UI changes. Should be reasonably small.",
+      "range": {
+        "startLine": 84,
+        "startChar": 37,
+        "endLine": 84,
+        "endChar": 39
+      },
+      "revId": "5ed1b7980b2caf2664d69a139d57a1c781832844",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
