@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3cdb1e4_0dd6e8fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-07-15T08:46:01Z",
+      "side": 1,
+      "message": "thanks for making this!",
+      "revId": "855c5847ddd585dd6bce0c4022c25b4c9a3ad6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb5a1ae9_569c6a7f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-07-15T08:46:01Z",
+      "side": 1,
+      "message": "I think we don\u0027t need screenshot in these two cases.\n\n* We want only want to take a screenshot on failure.\n* kb.Accel failure is not a ui-related failure.\n\nWhat do you think?",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 153,
+        "endChar": 22
+      },
+      "revId": "855c5847ddd585dd6bce0c4022c25b4c9a3ad6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a5e2d61_50cdf727",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-07-15T08:46:01Z",
+      "side": 1,
+      "message": "In go, functions that starts from capital letter is public. This should be \"kcmTakeScreenshot\"",
+      "revId": "855c5847ddd585dd6bce0c4022c25b4c9a3ad6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a15563_8c1944d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-07-15T08:46:01Z",
+      "side": 1,
+      "message": "We can put defer function there, and check the return value of error is nil or not to decide to take a screenshot. Checking the return value is done by using Golang\u0027s \"named return value\". In short, you can change the function signature to `func testTextField(...) (retErr error) {`",
+      "revId": "855c5847ddd585dd6bce0c4022c25b4c9a3ad6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5251607b_8130bbe0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-07-15T08:46:01Z",
+      "side": 1,
+      "message": "ditto, `physicalKeyboardTakeScreenshot` (maybe we don\u0027t even need function if we use defer)",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 35
+      },
+      "revId": "855c5847ddd585dd6bce0c4022c25b4c9a3ad6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
