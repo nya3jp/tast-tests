@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2b5cf47_e02a4995",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-15T13:19:05Z",
+      "side": 1,
+      "message": "Start the CL message with the package name:\nkiosk: Fix flakiness of AutoLoginBailout test",
+      "revId": "74f19f5efa2704895d8bb8c2841b5faa48c73356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c58df1d_f1c7a0e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kiosk/auto_login_bailout.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-15T13:19:05Z",
+      "side": 1,
+      "message": "Line break at 80 chars.",
+      "revId": "74f19f5efa2704895d8bb8c2841b5faa48c73356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
