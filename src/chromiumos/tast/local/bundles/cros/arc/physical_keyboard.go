@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -24,6 +25,7 @@ type pkTestState struct {
 	a     *arc.ARC
 	d     *ui.Device
 	kb    *input.KeyboardEventWriter
+	name  string
 }
 
 // pkTestParams represents the name of the test and the function to call.
@@ -73,13 +75,14 @@ func init() {
 	})
 }
 
-func testTextField(ctx context.Context, st pkTestState, s *testing.State, activity, keystrokes, expectedResult string) error {
+func testTextField(ctx context.Context, st pkTestState, s *testing.State, activity, keystrokes, expectedResult string) (retErr error) {
 	const (
 		pkg      = "org.chromium.arc.testapp.keyboard"
 		fieldID  = pkg + ":id/text"
 		initText = "hello"
 	)
 
+	cr := s.FixtValue().(*arc.PreData).Chrome
 	a := st.a
 	tconn := st.tconn
 	d := st.d
@@ -99,6 +102,8 @@ func testTextField(ctx context.Context, st pkTestState, s *testing.State, activi
 	if err := d.Object(ui.ID(fieldID), ui.Text(initText)).WaitForExists(ctx, 30*time.Second); err != nil {
 		return errors.Wrap(err, "failed to find field")
 	}
+
+	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), func() bool { return retErr != nil }, cr, "ui_tree_"+st.name)
 
 	field := d.Object(ui.ID(fieldID))
 	if err := field.Click(ctx); err != nil {
@@ -190,8 +195,8 @@ func PhysicalKeyboard(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	testState := pkTestState{tconn, a, d, kb}
 	for _, test := range s.Param().([]pkTestParams) {
+		testState := pkTestState{tconn, a, d, kb, test.name}
 		s.Run(ctx, test.name, func(ctx context.Context, s *testing.State) {
 			test.fn(ctx, testState, s)
 		})
