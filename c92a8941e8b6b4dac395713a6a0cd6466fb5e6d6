@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c600861c_8151b46e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/mojo/service_manager_policy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000169
+      },
+      "writtenOn": "2022-07-15T04:07:14Z",
+      "side": 1,
+      "message": "Please add a comment to describe why you\u0027re using log_level\u003d1",
+      "revId": "c92a8941e8b6b4dac395713a6a0cd6466fb5e6d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
