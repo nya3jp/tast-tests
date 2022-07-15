@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/arc/gio"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/uidetection"
@@ -51,7 +52,7 @@ func InputOverlayDisplay(ctx context.Context, s *testing.State) {
 		ui := uiauto.New(params.TestConn).WithTimeout(time.Minute)
 		// Start up ACUITI.
 		uda := uidetection.NewDefault(params.TestConn).WithOptions(uidetection.Retries(3)).WithScreenshotStrategy(uidetection.ImmediateScreenshot).WithTimeout(time.Minute)
-
+		defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, params.TestConn)
 		// CUJ: Hide game overlay.
 		s.Log("Display CUJ #1: hide game overlay")
 		if err := uiauto.Combine("hide game overlay",
@@ -60,9 +61,9 @@ func InputOverlayDisplay(ctx context.Context, s *testing.State) {
 			// Open game controls.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
 			// Tap bottom menu switch.
-			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-switch.png")).Below(uidetection.Word("Edit"))),
+			ui.LeftClick(nodewith.Name("Show key mapping").HasClass("ToggleButton")),
 			// Exit out of menu.
-			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-close.png")).Below(uidetection.Word("BUTTON"))),
+			ui.LeftClick(nodewith.Name("Close game controls").HasClass("ImageButton")),
 			// Poll UI elements no longer exist, but overlay is still responsive.
 			ui.Gone(nodewith.Name("m").HasClass("LabelButtonLabel")),
 			gio.TapOverlayButton(kb, "m", &params, gio.TopTap),
@@ -89,9 +90,9 @@ func InputOverlayDisplay(ctx context.Context, s *testing.State) {
 			// Open game controls.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
 			// Tap top menu switch.
-			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-switch.png")).Above(uidetection.Word("Edit"))),
+			ui.LeftClick(nodewith.Name("Game controls").HasClass("ToggleButton")),
 			// Exit out of menu.
-			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu-close.png")).Below(uidetection.Word("BUTTON"))),
+			ui.LeftClick(nodewith.Name("Close game controls").HasClass("ImageButton")),
 			// Poll UI elements no longer exist, and overlay is unresponsive.
 			ui.Gone(nodewith.Name("m").HasClass("LabelButtonLabel")),
 			not(gio.TapOverlayButton(kb, "m", &params, gio.TopTap)),
