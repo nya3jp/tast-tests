@@ -37,32 +37,36 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"shill", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0},                     // b/210893108
 		{"shill", "dbus_properties_proxy.cc", ".*GetAll failed on org.freedesktop.ModemManager1.*", 0}, // b/215373366
 		// {"shill", "device_info.cc", ".*Add Link message for.*does not have .*", 0},                                             // b/208654528
-		{"shill", "device_info.cc", ".*Add link message does not have IFLA_ADDRESS, link: rmnet_ipa0, Technology: ethernet.*", 0}, // b/208654528
-		{"shill", "dns_client.cc", ".*No valid DNS server addresses.*", 0},                                                        // b/211000413
-		{"shill", "eap_listener.cc", ".*Could not bind socket to interface: No such device.*", 0},                                 // Test lab only
-		{"shill", "eap_listener.cc", ".*Could not open EAP listener socket.*", 0},                                                 // Test lab only
-		{"shill", "ethernet.cc", ".*cannot disable \\[18\\] tx-tcp-ecn-segmentation.*", 0},                                        // Test lab only
-		{"shill", "ethernet.cc", ".*OnSetInterfaceMacResponse received response with error Cannot assign requested address.*", 0}, // Test lab only
-		{"shill", "http_request.cc", ".*Failed to start DNS client.*", 0},                                                         // b/211000413
+		{"shill", "device_info.cc", ".*Add link message does not have IFLA_ADDRESS, link: rmnet_ipa0, Technology: ethernet.*", 0},                                                                                                       // b/208654528
+		{"shill", "dns_client.cc", ".*No valid DNS server addresses.*", 0},                                                                                                                                                              // b/211000413
+		{"shill", "eap_listener.cc", ".*Could not bind socket to interface: No such device.*", 0},                                                                                                                                       // Test lab only
+		{"shill", "eap_listener.cc", ".*Could not open EAP listener socket.*", 0},                                                                                                                                                       // Test lab only
+		{"shill", "ethernet.cc", ".*cannot disable \\[18\\] tx-tcp-ecn-segmentation.*", 0},                                                                                                                                              // Test lab only
+		{"shill", "ethernet.cc", ".*OnSetInterfaceMacResponse received response with error Cannot assign requested address.*", 0},                                                                                                       // Test lab only
+		{"shill", "http_request.cc", ".*Failed to start DNS client.*", 0},                                                                                                                                                               // b/211000413
+		{"dnsproxyd", "object_proxy.cc", ".*Failed to call method: org.chromium.flimflam.Manager.ClearDNSProxyAddresses.*org.freedesktop.DBus.Error.UnknownMethod: Method.*ClearDNSProxyAddresses.*", 0},                                // b/239574927
+		{"dnsproxyd", "object_proxy.cc", ".*Failed to call method: org.chromium.flimflam.Manager.GetProperties.*org.freedesktop.DBus.Error.ServiceUnknown: The name org.chromium.flimflam was not provided by any .service files.*", 0}, // b/239574927
+		{"dnsproxyd", "client.cc", ".*Unable to get shill Manager properties.*", 0},                                                                                                                                                     // b/239574927
 		// {"shill", "netlink_manager.cc", ".*Unexpected auxiliary message type: 0.*", 0},                                        // b/211004192
-		{"shill", "object_proxy.cc", ".*Failed to call method: fi.w1.wpa_supplicant1.CreateInterface.*", 0},           // b/215373366
-		{"shill", "object_proxy.cc", ".*Failed to call method: fi.w1.wpa_supplicant1.Interface.Scan.*", 0},            // b/215373366
-		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.PatchPanel.GetTrafficCounters.*", 0},      // b/215373366
-		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.PowerManager.ChangeWifiRegDomain.*", 0},   // b/220197073, Test lab only
-		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.dhcpcd.Release.*", 0},                     // b/215373366
-		{"shill", "object_proxy.cc", ".*Failed to call method: org.freedesktop.DBus.Properties.GetAll.*", 0},          // b/215373366
-		{"shill", "power_manager_proxy.cc", ".*Failed to change reg domain: org.freedesktop.DBus.Error.NoReply.*", 0}, // b/220197073, Test lab only
-		{"shill", "portal_detector.cc", ".*HTTP probe failed to start.*", 0},                                          // b/213611282
-		{"shill", "rtnl_handler.cc", ".*Cannot assign requested address.*", 0},                                        // b/213612672
-		{"shill", "rtnl_handler.cc", ".*sequence.*received error 3 \\(No such process\\).*", 0},                       // b/213612672
-		{"shill", "upstart_proxy.cc", ".*Error.AlreadyStarted Job is already running: shill-event", 0},                // b/213930243
+		{"shill", "netlink_manager.cc", ".*OnNetlinkMessageError.*Device or resource busy.*", 0},                 // b/239582086
+		{"shill", "object_proxy.cc", ".*Failed to call method: fi.w1.wpa_supplicant1.CreateInterface.*", 0},      // b/215373366
+		{"shill", "object_proxy.cc", ".*Failed to call method: fi.w1.wpa_supplicant1.Interface.Scan.*", 0},       // b/215373366
+		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.PatchPanel.GetTrafficCounters.*", 0}, // b/215373366
+		// {"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.PowerManager.ChangeWifiRegDomain.*", 0},   // b/220197073, Test lab only
+		{"shill", "object_proxy.cc", ".*Failed to call method: org.chromium.dhcpcd.Release.*", 0},            // b/215373366
+		{"shill", "object_proxy.cc", ".*Failed to call method: org.freedesktop.DBus.Properties.GetAll.*", 0}, // b/215373366
+		// {"shill", "power_manager_proxy.cc", ".*Failed to change reg domain: org.freedesktop.DBus.Error.NoReply.*", 0}, // b/220197073, Test lab only
+		{"shill", "portal_detector.cc", ".*HTTP probe failed to start.*", 0}, // b/213611282
+		// {"shill", "rtnl_handler.cc", ".*Cannot assign requested address.*", 0},                                        // b/213612672
+		// {"shill", "rtnl_handler.cc", ".*sequence.*received error 3 \\(No such process\\).*", 0},                       // b/213612672
+		{"shill", "upstart_proxy.cc", ".*Error.AlreadyStarted Job is already running: shill-event", 0}, // b/213930243
 		// Need to try to get more info about these:
 		// {"shill", "unknown", ".*", 0},
-		{"shill", "userdb_utils.cc", ".*Unable to find user pluginvm.*", 0}, // b/213922333
+		// {"shill", "userdb_utils.cc", ".*Unable to find user pluginvm.*", 0}, // b/213922333
 		// 'modem in failed state' errors are handled in shill. Because they are DBus errors, suppressing them is difficult:
 		{"shill", "utils.cc", ".*AddDBusError.*org.freedesktop.ModemManager1.Error.Core.WrongState, Message=modem in failed state", 0},
-		{"shill", "wifi.cc", ".*does not support MAC address randomization.*", 0},        // b/208652858
-		{"shill", "wifi.cc", ".*Unsupported NL80211_ATTR_REG_ALPHA2 attribute: 99.*", 0}, // b/217761687
+		// {"shill", "wifi.cc", ".*does not support MAC address randomization.*", 0},        // b/208652858
+		// {"shill", "wifi.cc", ".*Unsupported NL80211_ATTR_REG_ALPHA2 attribute: 99.*", 0}, // b/217761687
 		{"wpa_supplicant", "", ".*Could not set interface wlan0 flags \\(UP\\): Input\\/output error.*", 0},
 		{"wpa_supplicant", "", ".*nl80211: Could not set interface 'wlan0' UP.*", 0},
 		{"wpa_supplicant", "", ".*Permission denied.*", 0},
