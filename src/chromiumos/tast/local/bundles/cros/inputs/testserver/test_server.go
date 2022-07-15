@@ -171,6 +171,21 @@ func (inputField InputField) Finder() *nodewith.Finder {
 	return nodewith.Ancestor(pageRootFinder).Name(string(inputField))
 }
 
+// LaunchServer launches the server that serves e14s-test page.
+func LaunchServer(ctx context.Context) (server *httptest.Server, err error) {
+	// URL path needs to be in the allowlist to enable some features.
+	// https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/ash/input_method/assistive_suggester.cc.
+	const urlPath = "e14s-test"
+	testing.ContextLog(ctx, "Start a local server to test inputs")
+
+	newServer := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Add("Content-Type", "text/html")
+		io.WriteString(w, html)
+	}))
+
+	return newServer, nil
+}
+
 // Launch launches a local web server to serve inputs testing on different type of input fields.
 // It then opens a Chrome browser window in normal mode to visit the test page.
 func Launch(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn) (*InputsTestServer, error) {
