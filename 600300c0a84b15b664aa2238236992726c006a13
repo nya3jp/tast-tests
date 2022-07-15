@@ -34,6 +34,24 @@
       "parentUuid": "9f5fe0c7_7ee94087",
       "revId": "600300c0a84b15b664aa2238236992726c006a13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a88ab5a_f74917ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-15T13:47:04Z",
+      "side": 1,
+      "message": "After an offline discussion, updated to this to an enum.",
+      "parentUuid": "34aa3378_171d37df",
+      "revId": "600300c0a84b15b664aa2238236992726c006a13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
