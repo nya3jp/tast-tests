@@ -121,6 +121,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ec8e3908_3c4fa771",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1409038
+      },
+      "writtenOn": "2022-07-15T16:26:14Z",
+      "side": 1,
+      "message": "Fixed. Thanks for catching this!",
+      "parentUuid": "5ddc3573_1611a3e5",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "f85416a38d7b8f5a77ab5eaab66743b43e5811bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7d985322_7005beac",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
