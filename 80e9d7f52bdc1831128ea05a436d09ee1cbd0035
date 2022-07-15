@@ -16,6 +16,46 @@
       "message": "@ricardoq, can you take another look from Tast owners pov?",
       "revId": "80e9d7f52bdc1831128ea05a436d09ee1cbd0035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc0f449_c5e89e59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-15T16:12:46Z",
+      "side": 1,
+      "message": "+2 % see comment",
+      "revId": "80e9d7f52bdc1831128ea05a436d09ee1cbd0035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "017700a1_008c2bc1",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-15T16:12:46Z",
+      "side": 1,
+      "message": "here and below: I\u0027d return an error, similar to L67",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 16
+      },
+      "revId": "80e9d7f52bdc1831128ea05a436d09ee1cbd0035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
