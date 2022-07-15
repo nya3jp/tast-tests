@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ddc3573_1611a3e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-15T16:20:18Z",
+      "side": 1,
+      "message": "I see this fixed in Patchset 3, but back to `TEST\u003dTEST\u003d` in Patchset 4. Be aware that `repo upload` will upload the commit message from your local branch and clobber changes that you made through Gerrit UI. To get around this, I delete my local branch and download my own CL to a new local branch.",
+      "parentUuid": "9e8e6c0c_eb071b1a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "f85416a38d7b8f5a77ab5eaab66743b43e5811bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7d985322_7005beac",
