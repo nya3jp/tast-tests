@@ -33,6 +33,29 @@
       "message": "This is not equivalent code, the error from this would be ignored by the IfSuccessThen\n\nIf this change is desired, please update the commit description to make the change in behaviour clear.",
       "revId": "16bceabef5ebaf27e93de2ea1405172eb061c644",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "022defb1_2647ad64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/gesture_navigation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-07-15T07:32:05Z",
+      "side": 1,
+      "message": "should we just skip to the navigation flow with the test api test? It would make test more robust",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "16bceabef5ebaf27e93de2ea1405172eb061c644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
