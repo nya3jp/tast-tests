@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e0ec9e0_bb87bf60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-15T00:32:54Z",
+      "side": 1,
+      "message": "Is there a difference between bugs that appear locally vs in the test lab? Should I treat them the same in the sense that I:\n1. Add them to the list of AllowedEntries\n2. File bugs for them\n\nJust want to make sure that my understanding is clear.",
+      "revId": "43f7b393b3ac5a83a1f322b3461979956c54a328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d152a1_09c099e1",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-15T00:32:54Z",
+      "side": 1,
+      "message": "For all of these added, my assumption is that I need to file bugs for these. I have not done this yet so I am leaving this comment here until I update it accordingly",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 78
+      },
+      "revId": "43f7b393b3ac5a83a1f322b3461979956c54a328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
