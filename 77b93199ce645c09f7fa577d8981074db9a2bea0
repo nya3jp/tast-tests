@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "697ab449_368bf80a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-15T22:23:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b18cb773_3295662a",
+      "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6a47477_84028204",
@@ -141,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73fa1c5c_6d4169fc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_state_transitions_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-15T22:23:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fa000e3_4351360b",
+      "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18f6d91a_842b1456",
@@ -154,6 +190,24 @@
       "writtenOn": "2022-07-11T23:35:47Z",
       "side": 1,
       "message": "Doesn\u0027t have to be in this cl, but we might want to consider having our own setup function that works like here[1], so we don\u0027t have to rely on lacros.Setup to setup Ash? It seems confusing, since it could look like to someone who has never seen the implementation of lacros.Setup that we wastefully setup Lacros for ash tests. \n https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go;l\u003d378",
+      "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a96d5b5_38e90a86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_state_transitions_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-15T22:23:01Z",
+      "side": 1,
+      "message": "Discussed outside Gerrit.",
+      "parentUuid": "18f6d91a_842b1456",
       "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -175,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a54cff63_2a083744",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_state_transitions_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-15T22:23:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a804b04_b5435c15",
+      "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a64ee13b_9c2b4175",
@@ -188,6 +260,24 @@
       "writtenOn": "2022-07-11T23:35:47Z",
       "side": 1,
       "message": "Should we also be collecting the common metrics? (Using `recorder.AddCommonMetrics`)?",
+      "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "018b36c7_65eea622",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_state_transitions_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-15T22:23:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a64ee13b_9c2b4175",
       "revId": "77b93199ce645c09f7fa577d8981074db9a2bea0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
