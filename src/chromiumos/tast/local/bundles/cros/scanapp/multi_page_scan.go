@@ -206,13 +206,4 @@ func MultiPageScan(ctx context.Context, s *testing.State) {
 			}
 		})
 	}
-
-	// Intentionally stop the printer early to trigger shutdown in
-	// ippusb_bridge. Without this, cleanup may have to wait for other processes
-	// to finish using the printer (e.g. CUPS background probing).
-	//
-	// TODO(b/210134772): Investigate if this remains necessary.
-	if err := printer.Stop(cleanupCtx); err != nil {
-		s.Error("Failed to stop printer: ", err)
-	}
 }

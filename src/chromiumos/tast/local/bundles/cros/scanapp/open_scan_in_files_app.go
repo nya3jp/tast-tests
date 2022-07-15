@@ -114,6 +114,7 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 
 	// Launch the Scan app, configure the settings, perform a scan, and open the
 	// scan in the Files app.
+	s.Log("Launching Scan app")
 	app, err := scanapp.Launch(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to launch app: ", err)
@@ -129,6 +130,7 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close notifications: ", err)
 	}
 
+	s.Log("Starting scan")
 	scanSettings := settings
 	scanSettings.Scanner = printer.VisibleName
 	if err := uiauto.Combine("scan",
@@ -153,20 +155,12 @@ func OpenScanInFilesApp(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get Files app: ", err)
 	}
 
+	s.Logf("Searching for %s in Files app: ", file)
 	if err := f.WaitForFile(file)(ctx); err != nil {
 		s.Fatal("Failed to find scan in Files app: ", err)
 	}
 
 	if err := f.Close(ctx); err != nil {
 		s.Fatal("Failed to close Files app: ", err)
-	}
-
-	// Intentionally stop the printer early to trigger shutdown in
-	// ippusb_bridge. Without this, cleanup may have to wait for other processes
-	// to finish using the printer (e.g. CUPS background probing).
-	//
-	// TODO(b/210134772): Investigate if this remains necessary.
-	if err := printer.Stop(cleanupCtx); err != nil {
-		s.Error("Failed to stop printer: ", err)
 	}
 }
