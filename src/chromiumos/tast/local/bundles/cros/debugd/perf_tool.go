@@ -11,6 +11,7 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"strconv"
 	"sync"
 	"time"
@@ -29,12 +30,13 @@ type testCase struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PerfTool,
-		Desc: "Tests D-Bus methods related to PerfTool",
+		Func: PerfTool, LacrosStatus: testing.LacrosVariantUnknown, Desc: "Tests D-Bus methods related to PerfTool",
 		Contacts: []string{
 			"shantuo@google.com",
 			"cwp-team@google.com",
 		},
+		SoftwareDeps: []string{"chrome"},
+		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{{
 			Name: "cycles",
 			Val: testCase{
@@ -89,6 +91,8 @@ func PerfTool(ctx context.Context, s *testing.State) {
 		testConsecutiveCalls(ctx, s, dbgd)
 		testConcurrentCalls(ctx, s, dbgd)
 		testStopEarly(ctx, s, dbgd)
+		testSurviveUICrash(ctx, s, dbgd)
+		testRestoreCPUIdle(ctx, s, dbgd)
 	}
 }
 
@@ -263,6 +267,90 @@ func testStopEarly(ctx context.Context, s *testing.State, d *debugd.Debugd) {
 			}
 		}
 		checkPerfData(s, buf.Bytes())
+	})
+}
+
+func testSurviveUICrash(ctx context.Context, s *testing.State, d *debugd.Debugd) {
+	s.Run(ctx, "testSurviveUICrash", func(ctx context.Context, s *testing.State) {
+		tc := s.Param().(testCase)
+		if tc.disableCPUIdle {
+			time.AfterFunc(time.Second, func() {
+				if err := checkCPUIdleDisabled(true); err != nil {
+					s.Error("CPU Idle state not disabled during ETM collection: ", err)
+				}
+				cmd := exec.Command("stop", "ui")
+				err := cmd.Run()
+				s.Log("stop ui returned: ", err)
+			})
+		}
+
+		output, sessionID, err := getPerfOutput(ctx, s, d, tc, defaultDuration)
+		if err != nil {
+			s.Fatal("Failed to call GetPerfOutputV2: ", err)
+		}
+		defer output.Close()
+
+		s.Log("Session ID: ", sessionID)
+		var buf bytes.Buffer
+		if _, err := io.Copy(&buf, output); err != nil {
+			s.Fatal("Failed to read perf output: ", err)
+		}
+		// Wait 1 second to avoid race.
+		testing.Sleep(ctx, time.Second)
+		if tc.disableCPUIdle {
+			if err := checkCPUIdleDisabled(false); err != nil {
+				s.Error("CPU Idle state not restored after perf collection: ", err)
+			}
+		}
+		checkPerfData(s, buf.Bytes())
+	})
+}
+
+func testRestoreCPUIdle(ctx context.Context, s *testing.State, d *debugd.Debugd) {
+	debugdPID := func() []byte {
+		grepcmd := exec.Command("pgrep", "debugd")
+		b, _ := grepcmd.Output()
+		return bytes.TrimSpace(b)
+	}
+	killDebugd := func() []byte {
+		b := debugdPID()
+		killcmd := exec.Command("kill", "-9", string(b))
+		if err := killcmd.Run(); err != nil {
+			s.Fatalf("Failed to kill debugd (%s), abort: %v", string(b), err)
+		}
+		return b
+	}
+	s.Run(ctx, "testRestoreCPUIdle", func(ctx context.Context, s *testing.State) {
+		tc := s.Param().(testCase)
+		if !tc.disableCPUIdle {
+			s.Log("Skipped, test case does not disable cpuidle states")
+			return
+		}
+		var old []byte
+		time.AfterFunc(time.Second, func() {
+			if err := checkCPUIdleDisabled(true); err != nil {
+				s.Error("CPU Idle state not disabled as intended: ", err)
+			}
+			old = killDebugd()
+		})
+
+		output, _, err := getPerfOutput(ctx, s, d, tc, defaultDuration)
+		if err != nil {
+			s.Fatal("Failed to call GetPerfOutputV2: ", err)
+		}
+		io.Copy(io.Discard, output)
+		output.Close()
+
+		for {
+			testing.Sleep(ctx, time.Second)
+			if new := debugdPID(); bytes.Compare(new, old) != 0 {
+				s.Logf("Old debugd process %s is killed, a new one %s just respawned", string(old), string(new))
+				break
+			}
+		}
+		if err := checkCPUIdleDisabled(false); err != nil {
+			s.Error("CPU Idle state not restored after perf collection: ", err)
+		}
 	})
 }
 
