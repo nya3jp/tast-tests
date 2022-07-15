@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f649bfba_5ec69e2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "To allow other tests to specify the host (such as the `ShillCaptivePortalHTTP` test specifies to resolve www.gstatic.com), I just used `#` as the default value for `resolvedHost` and moved this statement into the dnsmasq.go file.",
+      "parentUuid": "97958ef2_abd8428f",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48ead5e5_03529aff",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d7965f8_a8701506",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Thanks for the reference information.",
+      "parentUuid": "48ead5e5_03529aff",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "819344c7_4cda01b1",
@@ -82,6 +118,30 @@
       "writtenOn": "2022-07-15T02:17:45Z",
       "side": 1,
       "message": "nit: check err after this",
+      "range": {
+        "startLine": 69,
+        "startChar": 13,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30abb824_6ff94abf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "819344c7_4cda01b1",
       "range": {
         "startLine": 69,
         "startChar": 13,
@@ -115,6 +175,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6c3c751_297e0b09",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d241e6c_778f147f",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 11
+      },
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ee042d3_ffeabd73",
@@ -128,6 +212,24 @@
       "writtenOn": "2022-07-14T23:59:22Z",
       "side": 1,
       "message": "nit: s/ but want/, want/",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41c4dcac_82eb9fea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ee042d3_ffeabd73",
       "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +251,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f75235_a60f4f28",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15436a56_ffe17abf",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec43f315_6840c481",
@@ -162,6 +282,24 @@
       "writtenOn": "2022-07-14T23:59:22Z",
       "side": 1,
       "message": "Combine lines:\nif err :\u003d ...; err !\u003d nil {",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c56491_d17622cc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec43f315_6840c481",
       "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -183,6 +321,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9daea0e_0f8b0ae3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Thanks for the guide, this implementation is really clearer.",
+      "parentUuid": "ca461184_a36b1e2f",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "671a7112_7f91a514",
@@ -196,6 +352,24 @@
       "writtenOn": "2022-07-14T23:59:22Z",
       "side": 1,
       "message": "nit: Combine lines, golang allows lines \u003e 80 characters and I think that will be a little more clear.",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd67992_5513c686",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "671a7112_7f91a514",
       "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -240,6 +414,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffe601c0_7d855456",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Ah, last time I only used `GetIpConfigs()` in the Service package to get IPConfigs. Didn\u0027t notice that `GetProperties()` can also be replaced by `GetIpPorperties()`. Thanks for the reminder",
+      "parentUuid": "393c9e45_74d0f817",
+      "range": {
+        "startLine": 114,
+        "startChar": 19,
+        "endLine": 114,
+        "endChar": 32
+      },
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6305df3c_55a5de29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "290dd147_0e279436",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baff896c_de89a6af",
@@ -253,6 +469,30 @@
       "writtenOn": "2022-07-15T02:17:45Z",
       "side": 1,
       "message": "nit: Since we only return the first nameserver of IPv4 config here, I think it\u0027s worth to mention this behavior in the comment for this function.",
+      "range": {
+        "startLine": 133,
+        "startChar": 10,
+        "endLine": 133,
+        "endChar": 20
+      },
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "273b3492_cb556e8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "You are right. I have added some comments to explain this behavior.",
+      "parentUuid": "baff896c_de89a6af",
       "range": {
         "startLine": 133,
         "startChar": 10,
@@ -280,6 +520,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1142ccae_0ccfe9ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f7682cc_df6472c7",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea1b286c_195cb67d",
@@ -303,6 +561,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f2d4d2e_99304b4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea1b286c_195cb67d",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 15
+      },
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d782d5c8_42bdc5f2",
@@ -316,6 +598,24 @@
       "writtenOn": "2022-07-14T23:59:22Z",
       "side": 1,
       "message": "Shorten ctx and pass cleanupCtx to the deferred func.",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd246a6f_955e08c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d782d5c8_42bdc5f2",
       "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -355,6 +655,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc2c45c0_b2772daa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Thank you for your information, it has been corrected.",
+      "parentUuid": "0e8bca09_9a9c491d",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3270ccd2_f08456a9",
@@ -390,6 +708,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7acb6da6_54ccf367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23b99b0f_262f349e",
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0acde3b_6f76404e",
@@ -413,6 +749,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b499d72_6990137e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "I have added comments to `EnvOptions` in virtualnet.go file. And added the explanation of each parameter in `New` function in dnsmasq.go file.",
+      "parentUuid": "e0acde3b_6f76404e",
+      "range": {
+        "startLine": 57,
+        "startChar": 39,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "731490f2_f26f345a",
@@ -426,6 +786,30 @@
       "writtenOn": "2022-07-15T02:17:45Z",
       "side": 1,
       "message": "nit: Although go does not have limitation on line length, but let\u0027s make it consistent at least in the same comment.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "d89845ef6453c1cdb5f0bb6c53e9c20449a0c468",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bfb93f5_69c943ec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-15T20:43:55Z",
+      "side": 1,
+      "message": "Thanks for reminding me of this detail!",
+      "parentUuid": "731490f2_f26f345a",
       "range": {
         "startLine": 58,
         "startChar": 0,
