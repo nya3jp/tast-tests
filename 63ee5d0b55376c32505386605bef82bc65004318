@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da3080f3_a4c6a42a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-07-15T22:51:09Z",
+      "side": 1,
+      "message": "Same reason as above.",
+      "parentUuid": "5901eb3c_dce30c73",
+      "revId": "63ee5d0b55376c32505386605bef82bc65004318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b952c8a_d9810db3",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-07-15T20:39:20Z",
       "side": 1,
       "message": "nit: \"Behavior of the UserAvatarImage policy when the PersonalizationHub flag is enabled: ...\"",
+      "range": {
+        "startLine": 30,
+        "startChar": 17,
+        "endLine": 30,
+        "endChar": 59
+      },
+      "revId": "63ee5d0b55376c32505386605bef82bc65004318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d202001_10ee75c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image_pers_hub.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-07-15T22:51:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b952c8a_d9810db3",
       "range": {
         "startLine": 30,
         "startChar": 17,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe26ecb2_3ee04750",
+        "filename": "src/chromiumos/tast/local/policyutil/fixtures/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-07-15T22:51:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "836fffa4_6d1e8111",
+      "range": {
+        "startLine": 39,
+        "startChar": 61,
+        "endLine": 39,
+        "endChar": 103
+      },
+      "revId": "63ee5d0b55376c32505386605bef82bc65004318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72b8cf6e_d90b0a52",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-07-15T20:39:20Z",
       "side": 1,
       "message": "this change seems not relevant to the CL\u0027s purpose. WDYT about doing that in another CL?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 0
+      },
+      "revId": "63ee5d0b55376c32505386605bef82bc65004318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f945e573_122de23f",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-07-15T22:51:09Z",
+      "side": 1,
+      "message": "This function is referenced by both test files. I pulled it into policyutil package because inter-file references are forbidden.",
+      "parentUuid": "72b8cf6e_d90b0a52",
       "range": {
         "startLine": 82,
         "startChar": 0,
