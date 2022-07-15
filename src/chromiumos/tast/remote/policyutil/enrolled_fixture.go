@@ -95,8 +95,9 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		s.Fatalf("Invalid output when running command over SSH: got %q; want %q", string(out), "1")
 	}
 
-	if err := checkVPDState(ctx, s.DUT()); err != nil {
-		s.Fatal("VPD broken, skipping enrollment: ", err)
+	vpdError := checkVPDState(ctx, s.DUT())
+	if vpdError != nil {
+		s.Log("VPD broken, trying to enroll anyway: ", vpdError)
 	}
 
 	if err := EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
@@ -147,6 +148,10 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		FakedmsDir: e.fdmsDir,
 		SkipLogin:  true,
 	}); err != nil {
+		if vpdError != nil {
+			s.Error("VPD broken, likely cause of enrollment failure: ", err)
+		}
+
 		s.Fatal("Failed to enroll using Chrome: ", err)
 	}
 
