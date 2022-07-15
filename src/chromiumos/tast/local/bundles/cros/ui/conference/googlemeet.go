@@ -139,10 +139,9 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		noEffectAndBlurHeading := nodewith.NameContaining(noEffectText).Role(role.Heading)
 		turnOffButton := nodewith.NameContaining(turnOffBackground).Role(role.ToggleButton)
 		backgroundButton := nodewith.Name(blurBackground).Role(role.ToggleButton)
-		webArea := nodewith.NameContaining(meetTitle).Role(role.RootWebArea)
 		selectAFileDialog := nodewith.Name("Select a file to open").ClassName("ExtensionViewViews")
 		closeDialog := nodewith.Name(closeText).Role(role.Button).Ancestor(selectAFileDialog)
-		closeButton := nodewith.Name(closeText).Role(role.Button).Ancestor(webArea)
+		closeButton := nodewith.Name(closeText).Role(role.Button).Ancestor(meetWebArea)
 		return uiauto.NamedCombine("change background to blur",
 			ui.LeftClick(changeBackgroundButton), // Open "Background" panel.
 			ui.WithTimeout(longUITimeout).WaitUntilExists(noEffectAndBlurRegion),
@@ -311,7 +310,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		nextUI := nodewith.NameRegex(regexp.MustCompile("(Join now|Ask to join|Email or phone)")).First()
 		if err := uiauto.NamedCombine("select meet account: "+meetAccount,
 			ui.WaitUntilExists(meetAccountText),
-			ui.WithTimeout(longUITimeout).LeftClickUntil(meetAccountText, ui.WaitUntilExists(nextUI)),
+			ui.WithTimeout(longUITimeout).DoDefaultUntil(meetAccountText, ui.WaitUntilExists(nextUI)),
 		)(ctx); err != nil {
 			return errors.Wrapf(err, "failed to switch account to %s", meetAccount)
 		}
@@ -483,15 +482,22 @@ func (conf *GoogleMeetConference) TypingInChat(ctx context.Context) error {
 		message    = "Hello! How are you?"
 	)
 	chatButton := nodewith.Name("Chat with everyone").Role(role.ToggleButton)
-	chatTextField := nodewith.Name("Send a message to everyone").Role(role.TextField)
+	chatTextButton := nodewith.NameContaining("Send a message to everyone").Role(role.Button)
+	chatTextField := nodewith.NameContaining("Send a message to everyone").Role(role.TextField)
 	messageText := nodewith.NameContaining(message).Role(role.StaticText).First()
+	messageInChatTextField := nodewith.NameContaining(message).Role(role.StaticText).Ancestor(chatTextField)
+	enterText := conf.ui.Retry(retryTimes, uiauto.NamedCombine("enter text",
+		conf.ui.DoDefaultUntil(chatTextButton, conf.ui.WithTimeout(shortUITimeout).WaitUntilExists(chatTextField.Editable().Focused())),
+		conf.kb.TypeAction(message),
+		conf.ui.WithTimeout(shortUITimeout).WaitUntilExists(messageInChatTextField),
+		conf.kb.AccelAction("enter"),
+	))
 	return uiauto.NamedAction(actionName, conf.ui.Retry(retryTimes, uiauto.Combine(actionName,
+		conf.ui.LeftClick(meetWebArea),
 		conf.ui.DoDefault(chatButton),
 		// Some low end DUTs need very long time to load chat window in 49 tiles.
-		conf.ui.WithTimeout(2*time.Minute).WaitUntilExists(chatTextField),
-		conf.ui.WithTimeout(2*time.Minute).LeftClickUntil(chatTextField, conf.ui.WaitUntilExists(chatTextField.Focused())),
-		conf.kb.TypeAction(message),
-		conf.kb.AccelAction("enter"),
+		conf.ui.WithTimeout(2*time.Minute).WaitUntilExists(chatTextField.Focusable()),
+		enterText,
 		conf.ui.WithTimeout(longUITimeout).WaitUntilExists(messageText),
 		uiauto.Sleep(viewingTime), // After typing, wait 5 seconds for viewing.
 		conf.ui.DoDefault(chatButton),
@@ -517,8 +523,7 @@ func (conf *GoogleMeetConference) SetLayoutMin(ctx context.Context) error {
 
 // getGrids returns the current tiled grids.
 func (conf *GoogleMeetConference) getGrids(ctx context.Context) (grids []uiauto.NodeInfo, err error) {
-	webArea := nodewith.NameContaining(meetTitle).Role(role.RootWebArea)
-	grid := nodewith.Role(role.Video).Ancestor(webArea)
+	grid := nodewith.Role(role.Video).Ancestor(meetWebArea)
 	grids, err = conf.ui.NodesInfo(ctx, grid)
 	if err != nil {
 		return grids, errors.Wrap(err, "failed to find grids")
@@ -574,8 +579,7 @@ func (conf *GoogleMeetConference) changeLayout(mode string) action.Action {
 		changeLayoutPanel := nodewith.Name("Change layout").Role(role.Dialog)
 		openLayout := ui.Retry(retryTimes, uiauto.NamedCombine("open layout",
 			ui.WithTimeout(mediumUITimeout).DoDefaultUntil(moreOptions, ui.WaitUntilExists(changeLayoutItem)),
-			ui.RetryUntil(ui.WithTimeout(shortUITimeout).FocusAndWait(changeLayoutItem), ui.Exists(changeLayoutItem.Focused())),
-			uiauto.NamedAction("click change layout item", ui.LeftClick(changeLayoutItem)),
+			uiauto.NamedAction("click change layout item", ui.DoDefault(changeLayoutItem)),
 			uiauto.NamedAction("wait for change layout panel", ui.WithTimeout(longUITimeout).WaitUntilExists(changeLayoutPanel)),
 		))
 
@@ -646,8 +650,8 @@ func (conf *GoogleMeetConference) changeLayout(mode string) action.Action {
 			conf.closeNotifDialog(),
 			openLayout,
 			uiauto.NamedAction("click layout "+mode,
-				ui.WithTimeout(mediumUITimeout).LeftClickUntil(modeNode,
-					ui.WithTimeout(shortUITimeout).Exists(modeNode.Focused()))),
+				ui.WithTimeout(mediumUITimeout).DoDefaultUntil(modeNode,
+					ui.WithTimeout(shortUITimeout).WaitUntilExists(modeNode.Focused()))),
 			setTiles(mode),
 			uiauto.NamedAction("press esc to close layout panel", conf.kb.AccelAction("esc")),
 			ui.Retry(5, checkTiledGrids(mode)),
@@ -675,20 +679,20 @@ func (conf *GoogleMeetConference) BackgroundChange(ctx context.Context) error {
 		// The old version shows "Change background", the new version shows "Apply visual effects".
 		changeBackground := nodewith.NameRegex(regexp.MustCompile("(Apply visual effects|Change background)")).Role(role.MenuItem)
 		backgroundButton := nodewith.NameContaining(background).Role(role.ToggleButton)
-		webArea := nodewith.NameContaining(meetTitle).Role(role.RootWebArea)
-		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(webArea)
+		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(meetWebArea)
 		return uiauto.NamedCombine(fmt.Sprintf("change background to %s and enter full screen", background),
 			ui.Retry(retryTimes, cuj.ExpandMenu(conf.tconn, moreOptions, menu, 433)),
 			ui.LeftClick(changeBackground), // Open "Background" panel.
-			ui.WithTimeout(mediumUITimeout).LeftClick(backgroundButton),
+			ui.WithTimeout(mediumUITimeout).DoDefaultUntil(backgroundButton,
+				ui.WithTimeout(shortUITimeout).WaitUntilExists(backgroundButton.Focused())),
 			ui.LeftClick(closeButton), // Close "Background" panel.
 			takeScreenshot(conf.cr, conf.outDir, "change-background-to-"+background),
 			// Double click to enter full screen.
-			doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), meetTitle, true),
+			doFullScreenAction(conf.tconn, ui.DoubleClick(meetWebArea), meetTitle, true),
 			// After applying new background, give it 5 seconds for viewing before applying next one.
 			uiauto.Sleep(viewingTime),
 			// Double click to exit full screen.
-			doFullScreenAction(conf.tconn, ui.DoubleClick(webArea), meetTitle, false),
+			doFullScreenAction(conf.tconn, ui.DoubleClick(meetWebArea), meetTitle, false),
 		)
 	}
 
@@ -747,8 +751,8 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 			return nil
 		}
 
-		menu := nodewith.Name("Presentation options").Role(role.Menu).Ancestor(meetWebArea)
-		presentNowButton := nodewith.Name("Present now").Role(role.PopUpButton).Ancestor(meetWebArea)
+		menu := nodewith.Name("Presentation options").Role(role.Menu)
+		presentNowButton := nodewith.Name("Present now").Role(role.PopUpButton)
 		presentMode := nodewith.NameContaining("A tab").Role(role.MenuItem)
 		presentTab := nodewith.ClassName("AXVirtualView").Role(role.Cell).Name(appTabName)
 		presentingButton := nodewith.NameContaining("presenting").Role(role.PopUpButton)
@@ -770,15 +774,15 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 				return errors.New("Another participant is presenting now")
 			}, &testing.PollOptions{Timeout: longUITimeout})
 		}
-
-		testing.ContextLog(ctx, "Share screen")
-		return ui.Retry(retryTimes, uiauto.Combine("share screen",
-			switchToTab(meetTitle),
+		if err := switchToTab(meetTitle)(ctx); err != nil {
+			return err
+		}
+		return ui.Retry(retryTimes, uiauto.NamedCombine("share screen",
 			checkPresentNowButton,
 			cuj.ExpandMenu(conf.tconn, presentNowButton, menu, 113),
 			ui.LeftClick(presentMode),
-			ui.LeftClick(presentTab),
-			ui.LeftClickUntil(shareButton, ui.Gone(shareButton)),
+			ui.LeftClickUntil(presentTab, ui.WithTimeout(shortUITimeout).WaitUntilExists(presentTab.Focused())),
+			ui.LeftClickUntil(shareButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(shareButton)),
 			closeAlertDialog,
 			ui.WithTimeout(longUITimeout).WaitUntilExists(stopSharing),
 		))(ctx)
@@ -793,7 +797,7 @@ func (conf *GoogleMeetConference) Presenting(ctx context.Context, application go
 		return uiauto.NamedCombine("stop presenting",
 			switchToTab(meetTitle),
 			closeAlertDialog,
-			ui.LeftClickUntil(stopPresentingButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(stopPresentingButton)),
+			ui.DoDefaultUntil(stopPresentingButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(stopPresentingButton)),
 		)(ctx)
 	}
 

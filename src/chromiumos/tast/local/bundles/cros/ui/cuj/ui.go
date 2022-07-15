@@ -415,7 +415,7 @@ func ExpandMenu(tconn *chrome.TestConn, button, menu *nodewith.Finder, height in
 	ui := uiauto.New(tconn)
 	startTime := time.Now()
 	return func(ctx context.Context) error {
-		if err := ui.LeftClick(button)(ctx); err != nil {
+		if err := ui.DoDefault(button)(ctx); err != nil {
 			return errors.Wrap(err, "failed to click button")
 		}
 		return testing.Poll(ctx, func(ctx context.Context) error {
