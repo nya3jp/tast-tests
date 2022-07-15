@@ -33,6 +33,7 @@ const (
 	CrossystemParamMainfwType         CrossystemParam = "mainfw_type"
 	CrossystemParamWpswCur            CrossystemParam = "wpsw_cur"
 	CrossystemParamRecoveryReason     CrossystemParam = "recovery_reason"
+	CrossystemParamTriedFWB           CrossystemParam = "tried_fwb"
 )
 
 var (
