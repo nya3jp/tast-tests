@@ -6,12 +6,14 @@ package arc
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/ime"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -144,12 +146,13 @@ func KeyCharacterMap(ctx context.Context, s *testing.State) {
 				}(ctx)
 			}
 
-			for _, v := range tc.mappings {
+			for i, v := range tc.mappings {
 				if err := kb.Accel(ctx, v.in); err != nil {
 					s.Fatal("Failed to type: ", err)
 				}
 
 				if err := d.Object(ui.ID(fieldID), ui.Text(v.out)).WaitForExists(ctx, 10*time.Second); err != nil {
+					faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), func() bool { return true }, cr, fmt.Sprintf("ui_root_%s_%d", tc.name, i))
 					s.Errorf("Failed to find field %q after typing %q: %v", v.in, v.out, err)
 				}
 			}
