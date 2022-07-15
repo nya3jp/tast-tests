@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87aa0d44_0a1852b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-15T16:03:42Z",
+      "side": 1,
+      "message": "huge nit: remove \u0027s\u0027",
+      "range": {
+        "startLine": 41,
+        "startChar": 65,
+        "endLine": 41,
+        "endChar": 67
+      },
+      "revId": "4a1656b3a82f22f50e7e661a856d2cd479e1fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74d1d85c_fbc30983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-15T16:03:42Z",
+      "side": 1,
+      "message": "nit: Ids -\u003e IDs\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#initialisms",
+      "range": {
+        "startLine": 49,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "4a1656b3a82f22f50e7e661a856d2cd479e1fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b92a97_318f78e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-15T16:03:42Z",
+      "side": 1,
+      "message": "Add docstring for non-trivial functions\n\ne.g: not clear what it returns\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#doc-comments",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 19
+      },
+      "revId": "4a1656b3a82f22f50e7e661a856d2cd479e1fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a9b956_4fb1e8e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-15T16:03:42Z",
+      "side": 1,
+      "message": "what if len(values) \u003c\u003d 1... should it report an error?",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "4a1656b3a82f22f50e7e661a856d2cd479e1fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dcb0439_698692b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-15T16:03:42Z",
+      "side": 1,
+      "message": "nit: Arc -\u003e ARC\n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#initialisms\n\n(there are tests that are using \"Arc\", but that is not the correct name)",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 8
+      },
+      "revId": "4a1656b3a82f22f50e7e661a856d2cd479e1fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a8415e_6274d216",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-15T16:03:42Z",
+      "side": 1,
+      "message": "ditto above: Ids -\u003e IDs",
+      "range": {
+        "startLine": 113,
+        "startChar": 12,
+        "endLine": 113,
+        "endChar": 15
+      },
+      "revId": "4a1656b3a82f22f50e7e661a856d2cd479e1fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e9bf00_e90c3101",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-15T16:03:42Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 117,
+        "startChar": 9,
+        "endLine": 117,
+        "endChar": 12
+      },
+      "revId": "4a1656b3a82f22f50e7e661a856d2cd479e1fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44101eb4_66d674d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-15T16:03:42Z",
+      "side": 1,
+      "message": "nit: ditto above, (similar fo L150): Add docstring",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 14
+      },
+      "revId": "4a1656b3a82f22f50e7e661a856d2cd479e1fc95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
