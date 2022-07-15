@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c28e236_1c4af333",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-15T00:47:41Z",
+      "side": 1,
+      "message": "Yes, we should add an issue for these (it can probably just be one bug for now).",
+      "parentUuid": "62d152a1_09c099e1",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 78
+      },
+      "revId": "43f7b393b3ac5a83a1f322b3461979956c54a328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3627ee91_22643ee8",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
         "patchSetId": 1
