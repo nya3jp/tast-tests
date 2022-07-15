@@ -6,6 +6,7 @@ package cellular
 
 import (
 	"context"
+	"strings"
 
 	"chromiumos/tast/common/mmconst"
 	"chromiumos/tast/common/shillconst"
@@ -76,7 +77,7 @@ func ShillCellularValidateOwnnumber(ctx context.Context, s *testing.State) {
 	s.Logf("OwnNumber on shill device: %s", deviceOwnNumber)
 
 	// Ensure Shill Device OwnNumber and ModemManager OwnNumber match.
-	if deviceOwnNumber != modemOwnNumber {
+	if !strings.Contains(modemOwnNumber, deviceOwnNumber) {
 		s.Fatalf("Shill Device OwnNumber does not match modem, got %q, want %q", deviceOwnNumber, modemOwnNumber)
 	}
 
