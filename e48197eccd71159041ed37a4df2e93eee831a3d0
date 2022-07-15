@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace51746_0733c746",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-15T21:17:30Z",
+      "side": 1,
+      "message": "Generally looks good, just one note.\n",
+      "revId": "e48197eccd71159041ed37a4df2e93eee831a3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "685b249c_e70cbc1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-15T21:17:30Z",
+      "side": 1,
+      "message": "Was there a particular reason for the extra struct wrapper here? It seems a bit confusing to me.",
+      "revId": "e48197eccd71159041ed37a4df2e93eee831a3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47ff875_808a4a4b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-15T21:17:30Z",
+      "side": 1,
+      "message": "Sorry for my confusion before. Since this is a separate function, we should go ahead and use a separate cleanupCtx here. i.e. shorten the ctx passed into this function instead of passing in the cleanup context. (It\u0027s fine to use the same cleanup context within a function, but a bit confusing to pass it around).",
+      "revId": "e48197eccd71159041ed37a4df2e93eee831a3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
