@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d369f4d_1e78cab6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-07-15T17:30:43Z",
+      "side": 1,
+      "message": "update commit message too",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "0eec6948d951f157d24c0ffeb5d40f586cad005c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f013736_dfa6ef52",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
