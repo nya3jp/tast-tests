@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f013736_dfa6ef52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-07-15T08:16:06Z",
+      "side": 1,
+      "message": "If you keep both tests in this CL, please add the other test",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "0eec6948d951f157d24c0ffeb5d40f586cad005c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ed9b4265_060d6580",
@@ -14,6 +37,69 @@
       "writtenOn": "2022-07-14T21:30:58Z",
       "side": 1,
       "message": "Please take another look. Thanks!",
+      "revId": "0eec6948d951f157d24c0ffeb5d40f586cad005c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8702b07e_3c026e9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-07-15T08:16:06Z",
+      "side": 1,
+      "message": "Overall it looks good, however, I suggest splitting the CL into two CLs as follows:\n1. Keep the existing test as is (with its file name user_avatar_image.go) and only remove the Fixture ChromePolicyLoggedInWithoutPersonalizationHub.\n2. Create a new test (e.g. user_avatar_image_pers_hub.go) and put the new logic in there.\n\nThis should reduce the affected LoC and make it easier to track the history of existing file (History tab in codesearch).",
+      "revId": "0eec6948d951f157d24c0ffeb5d40f586cad005c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7f161b_8491dbc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-07-15T08:16:06Z",
+      "side": 1,
+      "message": "since the logic is completely different. I suggest you remove me and put yourself \"// Test author\"",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 22
+      },
+      "revId": "0eec6948d951f157d24c0ffeb5d40f586cad005c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b616bbe7_5bf1a7f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-07-15T08:16:06Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 4
+      },
       "revId": "0eec6948d951f157d24c0ffeb5d40f586cad005c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
