@@ -19,7 +19,7 @@ func init() {
 		Func:         DefaultDisplayDensity,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that the default density is calculated correctly for various boards",
-		Contacts:     []string{"prabirmsp@chromium.org", "arc-framework+tast@google.com"},
+		Contacts:     []string{"takise@chromium.org", "arc-framework+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"android_vm", "chrome"},
 		Timeout:      4 * time.Minute,
