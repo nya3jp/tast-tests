@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/mafredri/cdp/protocol/target"
+
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome/browser"
@@ -33,24 +34,21 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 			Val:               browser.TypeAsh,
 			Fixture:           "arcBooted",
-		},{
+		}, {
 			Name:              "lacros",
-			ExtraSoftwareDeps: []string{"android_p","lacros"},
+			ExtraSoftwareDeps: []string{"android_p", "lacros"},
 			Val:               browser.TypeLacros,
 			Fixture:           "lacrosWithArcBooted",
-
-		},{
+		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
 			Val:               browser.TypeAsh,
 			Fixture:           "arcBooted",
-
-		},{
+		}, {
 			Name:              "lacros_vm",
-			ExtraSoftwareDeps: []string{"android_vm","lacros"},
+			ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 			Val:               browser.TypeLacros,
 			Fixture:           "lacrosWithArcBooted",
-
 		}},
 	})
 }
@@ -90,10 +88,11 @@ func IntentForward(ctx context.Context, s *testing.State) {
 			return
 		}
 
-		br, err := browserfixt.Connect(ctx, cr, bt)
+		br, brCleanUp, err := browserfixt.Connect(ctx, cr, bt)
 		if err != nil {
 			s.Error(err, "failed to connect to browser")
 		}
+		defer brCleanUp(ctx)
 		urlMatcher := func(t *target.Info) bool {
 			matched, _ := regexp.MatchString(url, t.URL)
 			return matched
