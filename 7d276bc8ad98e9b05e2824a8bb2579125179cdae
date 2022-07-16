@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e52751cc_89ab495a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-16T14:57:51Z",
+      "side": 1,
+      "message": "There are failures in Commit Queue here - presumably, a merge conflict with CL:3761655:\n\n    tast-remote-tests-cros-0.0.2-r11576: # chromiumos/tast/local/bundles/cros/arc\n    tast-remote-tests-cros-0.0.2-r11576: src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go:93:14: assignment mismatch: 2 variables but browserfixt.Connect returns 3 values\n    tast-remote-tests-cros-0.0.2-r11576: # chromiumos/tast/local/bundles/cros/arc\n    tast-remote-tests-cros-0.0.2-r11576: vet: src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go:93:14: cannot initialize 2 variables with 3 values",
+      "revId": "7d276bc8ad98e9b05e2824a8bb2579125179cdae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
