@@ -50,6 +50,24 @@
       "message": "Andrezj, is this still active , I see that FGsec feature CLs are being actively reviewed, let me know once this is active.",
       "revId": "b1ad88b3de60e0ef8bf6137c6ee8a8f7a00677d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e8fe0e_d7b8fed6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1496163
+      },
+      "writtenOn": "2022-07-16T14:28:34Z",
+      "side": 1,
+      "message": "It is now in a dormant state - it will be resumed when we finally move past initial phase where we will be adding functional changes (this is currently being discussed).  Feel free to drop from this CL if it annoys you to have it on your review list ;)",
+      "parentUuid": "26b6422c_5e5a5b14",
+      "revId": "b1ad88b3de60e0ef8bf6137c6ee8a8f7a00677d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
