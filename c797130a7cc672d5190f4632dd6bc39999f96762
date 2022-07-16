@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e203783d_d7bbc218",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/monitor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-07-16T00:35:25Z",
+      "side": 1,
+      "message": "If we hit this error (or on line 52) before we write to the ready channel, won\u0027t the `startUdevMonitor` deadlock waiting for the ready channel?  Could we move the `close(ready)` to just before these return values - would that fix things?",
+      "revId": "c797130a7cc672d5190f4632dd6bc39999f96762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16a0a1e4_68d949d7",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/monitor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-07-16T00:35:25Z",
+      "side": 1,
+      "message": "If we return one of these errors before we write to the ready channel, won\u0027t the",
+      "revId": "c797130a7cc672d5190f4632dd6bc39999f96762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
