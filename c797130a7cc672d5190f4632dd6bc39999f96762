@@ -33,6 +33,24 @@
       "message": "If we return one of these errors before we write to the ready channel, won\u0027t the",
       "revId": "c797130a7cc672d5190f4632dd6bc39999f96762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6dfc573_cae0ce30",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/monitor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-07-16T00:37:29Z",
+      "side": 1,
+      "message": "oops - ignore this comment - sorry",
+      "parentUuid": "16a0a1e4_68d949d7",
+      "revId": "c797130a7cc672d5190f4632dd6bc39999f96762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
