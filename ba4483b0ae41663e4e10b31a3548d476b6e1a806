@@ -16,6 +16,23 @@
       "message": "PTAL - The CL to fix the broken tree (due to the merge conflict) and presubmit errors.",
       "revId": "ba4483b0ae41663e4e10b31a3548d476b6e1a806",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d93b6101_cee6624d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-16T15:16:55Z",
+      "side": 1,
+      "message": "+sheriff: josephsussman@, PTAL. Example CQ failure: https://ci.chromium.org/ui/p/chromeos/builders/cq/amd64-generic-cq/b8808475758810509041/overview\n\n    tast-remote-tests-cros-0.0.2-r11576: # chromiumos/tast/local/bundles/cros/arc\n    tast-remote-tests-cros-0.0.2-r11576: src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go:93:14: assignment mismatch: 2 variables but browserfixt.Connect returns 3 values\n    tast-remote-tests-cros-0.0.2-r11576: # chromiumos/tast/local/bundles/cros/arc\n    tast-remote-tests-cros-0.0.2-r11576: vet: src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go:93:14: cannot initialize 2 variables with 3 values",
+      "revId": "ba4483b0ae41663e4e10b31a3548d476b6e1a806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
