@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6c22ec5_c52fb920",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-16T15:10:16Z",
+      "side": 1,
+      "message": "Also presubmits complain in a few places, like this, that the file is not properly formatted.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 5
+      },
+      "revId": "7d276bc8ad98e9b05e2824a8bb2579125179cdae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e52751cc_89ab495a",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/intent_forward.go",
         "patchSetId": 4
