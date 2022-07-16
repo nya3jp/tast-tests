@@ -1791,6 +1791,24 @@
       "parentUuid": "5ae78fb0_b86381d0",
       "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ec7cc6a_afdef50e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-16T04:59:13Z",
+      "side": 1,
+      "message": "I have already flashed the latest image to my DUT and changed the `shillconst.ServicePropertyPriority` to `shillconst.ServicePropertyEphemeralPriority`.",
+      "parentUuid": "b7e1478b_7a104f68",
+      "revId": "f7cafcdd9932b35a03d5ac1c364f773f082240c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

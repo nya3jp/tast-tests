@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "870d061e_94db9240",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-16T04:59:13Z",
+      "side": 1,
+      "message": "This property is already used by chromiumos/tast/local/bundles/cros/network/shill_veth.go, so I kept this property here.",
+      "parentUuid": "1e102ab5_78f926d7",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 46
+      },
+      "revId": "81323e80616d402a0ed454b8f30693861d2a61c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51f3766a_32c9ba07",
