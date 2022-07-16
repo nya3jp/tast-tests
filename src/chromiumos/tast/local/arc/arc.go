@@ -371,7 +371,7 @@ func newWithSyslogReaderAndTimeout(ctx context.Context, outDir string, reader *s
 	}()
 
 	// This property is set by ArcAppLauncher when it receives BOOT_COMPLETED.
-	const arcBootProp = "ro.arc.boot_completed"
+	const arcBootProp = "ro.vendor.arc.boot_completed"
 	if err := waitProp(ctx, arcBootProp, "1", reportTiming); err != nil {
 		return nil, diagnose(logcatPath, errors.Wrapf(err, "%s not set", arcBootProp))
 	}
@@ -422,7 +422,7 @@ func (a *ARC) WaitIntentHelper(ctx context.Context) error {
 	defer cancel()
 
 	testing.ContextLog(ctx, "Waiting for ArcIntentHelper")
-	const prop = "ro.arc.intent_helper.ready"
+	const prop = "ro.vendor.arc.intent_helper.ready"
 	if err := waitProp(ctx, prop, "1", reportTiming); err != nil {
 		return errors.Wrapf(err, "property %s not set", prop)
 	}
@@ -614,14 +614,14 @@ func WaitAndroidInit(ctx context.Context, reader *syslog.Reader) error {
 	}
 
 	// Wait for property set by Android init in early stages. For P, wait for net.tcp.default_init_rwnd.
-	// For R and later, wait for ro.arc.on_boot which is set while bertha device is on boot.
-	// TODO(b/185198563): Replace net.tcp.default_init_rwnd with ro.arc.on_boot completely.
+	// For R and later, wait for ro.vendor.arc.on_boot which is set while bertha device is on boot.
+	// TODO(b/185198563): Replace net.tcp.default_init_rwnd with ro.vendor.arc.on_boot completely.
 	isVMEnabled, err := VMEnabled()
 	if err != nil {
 		return err
 	}
 
-	var prop = "ro.arc.on_boot"
+	var prop = "ro.vendor.arc.on_boot"
 	var value = "1"
 	if !isVMEnabled {
 		prop = "net.tcp.default_init_rwnd"
@@ -672,9 +672,18 @@ func waitProp(ctx context.Context, name, value string, tm timingMode) error {
 		defer st.End()
 	}
 
-	const loop = `while [ "$(/system/bin/getprop "$1")" != "$2" ]; do sleep 0.1; done`
+	// TODO(b/237255015): HACK Remove legacy_name alternative when all ARC
+	// branches are using the correctly-namespaced properties.
+	legacyNameHack := strings.Replace(name, "ro.vendor.arc.", "ro.arc.", 1)
+	const loop = `
+while [ "$(/system/bin/getprop "$1")" != "$2" ] &&
+      [ "$(/system/bin/getprop "$3")" != "$2" ]
+do
+	sleep 0.1
+done`
+
 	return testing.Poll(ctx, func(ctx context.Context) error {
-		return BootstrapCommand(ctx, "/system/bin/sh", "-c", loop, "-", name, value).Run()
+		return BootstrapCommand(ctx, "/system/bin/sh", "-c", loop, "-", name, value, legacyNameHack).Run()
 	}, &testing.PollOptions{Interval: time.Second})
 }
 
