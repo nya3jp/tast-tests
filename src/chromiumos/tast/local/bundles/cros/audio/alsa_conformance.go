@@ -36,7 +36,8 @@ func init() {
 		// TODO(b/239385850) : remove "redrix" when b/239385850 is fixed.
 		// TODO(b/239409160) : remove "gimble" when b/239409160 is fixed.
 		// TODO(b/239412705) : remove "primus" when b/239412705 is fixed.
-		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone(), hwdep.SkipOnModel("chronicler", "nautilus", "nautiluslte", "soraka", "karma", "beetley", "redrix", "gimble", "primus")),
+		// TODO(b/239412769) : remove "anahera" when b/239412769 is fixed.
+		HardwareDeps: hwdep.D(hwdep.Speaker(), hwdep.Microphone(), hwdep.SkipOnModel("chronicler", "nautilus", "nautiluslte", "soraka", "karma", "beetley", "redrix", "gimble", "primus","anahera")),
 		Timeout:      10 * time.Minute,
 	})
 }
