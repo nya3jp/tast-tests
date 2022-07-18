@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c158a85_62cdf7b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-18T05:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3876e4c5_9548a768",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 37
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd3ee079_f3c1780b",
@@ -94,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf1e7dfb_eaf8ec48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-18T05:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0163f80_15fcd1b9",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb4457fb_508ca728",
@@ -117,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee40f2a_55b950e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-18T05:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb4457fb_508ca728",
+      "range": {
+        "startLine": 115,
+        "startChar": 19,
+        "endLine": 115,
+        "endChar": 22
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a924f203_d9c573a3",
@@ -130,6 +202,30 @@
       "writtenOn": "2022-07-18T04:42:47Z",
       "side": 1,
       "message": "better to include this in the `uiauto.Combine` below.",
+      "range": {
+        "startLine": 137,
+        "startChar": 14,
+        "endLine": 137,
+        "endChar": 29
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce9f1797_a419d4d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-18T05:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a924f203_d9c573a3",
       "range": {
         "startLine": 137,
         "startChar": 14,
@@ -257,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "764c5bb7_9fe698ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-18T05:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "293a04e1_8e090c3a",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 18
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0655010_e8391cf1",
@@ -282,6 +402,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6642b6ee_f15aabac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-18T05:03:29Z",
+      "side": 1,
+      "message": "I thought that returning the InputTestServer might be misleading to future users since a lot of the helper functions require the .pc variable to be set.\n\nSince I wasn\u0027t able to get the browser for kiosk sessions the .pc variable can\u0027t be set properly, and would cause errors for most of the InputTestServer function calls.",
+      "parentUuid": "f0655010_e8391cf1",
+      "range": {
+        "startLine": 175,
+        "startChar": 40,
+        "endLine": 175,
+        "endChar": 63
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b611b49_50d7f343",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
         "patchSetId": 5
@@ -293,6 +437,30 @@
       "writtenOn": "2022-07-18T04:42:47Z",
       "side": 1,
       "message": "you don\u0027t need this here.",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 0
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b60404f_169c379f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-18T05:03:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b611b49_50d7f343",
       "range": {
         "startLine": 185,
         "startChar": 1,
