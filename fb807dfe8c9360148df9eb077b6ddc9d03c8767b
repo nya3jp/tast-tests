@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ac5bdc5_eb9e999d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-18T06:12:45Z",
+      "side": 1,
+      "message": "LGTM. Final approval should be owned by Tast reviewers ?",
+      "revId": "fb807dfe8c9360148df9eb077b6ddc9d03c8767b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d968f958_ee595ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-18T06:12:45Z",
+      "side": 1,
+      "message": "I am surprised there isn\u0027t already some utility package to wrap this behind a single function.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "fb807dfe8c9360148df9eb077b6ddc9d03c8767b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "323acb87_172101e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-18T06:12:45Z",
+      "side": 1,
+      "message": "nit: \"a\"",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 44
+      },
+      "revId": "fb807dfe8c9360148df9eb077b6ddc9d03c8767b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9e87b0_40ea8557",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-18T06:12:45Z",
+      "side": 1,
+      "message": "We should specify which one: \"the gateway of the virtualnet Env created with these EnvOptions.\n\nWe should also specify if we resolve the query to the IPv4 or IPv6 address of the gateway, or both. Here this happens to be always the IPv4 address set statically in the DHCP range.",
+      "range": {
+        "startLine": 48,
+        "startChar": 67,
+        "endLine": 48,
+        "endChar": 74
+      },
+      "revId": "fb807dfe8c9360148df9eb077b6ddc9d03c8767b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efb7eb52_11c54304",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-18T06:12:45Z",
+      "side": 1,
+      "message": "We should maybe start setting these options directly on the dnsmasq struct.",
+      "range": {
+        "startLine": 80,
+        "startChar": 35,
+        "endLine": 80,
+        "endChar": 102
+      },
+      "revId": "fb807dfe8c9360148df9eb077b6ddc9d03c8767b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
