@@ -6,6 +6,7 @@ package wificell
 
 import (
 	"context"
+	"fmt"
 	"math/rand"
 	"net"
 	"strconv"
@@ -54,6 +55,9 @@ const pingLossThreshold float64 = 20
 // The allowed packets loss percentage for the arping command.
 const arpingLossThreshold float64 = 30
 
+// The amount of time to wait before reconnecting after a router reboot.
+const routerPostRebootWaitTime = 2 * time.Minute
+
 // TODO(b/232150137): Using a different subnet than other ip addrs in Tast.
 // Move all hardcoded ip addresses to one file to avoid collision.
 const (
@@ -68,9 +72,11 @@ type TFOption func(*TestFixture)
 // Format: hostname[:port]
 func TFRouter(targets ...string) TFOption {
 	return func(tf *TestFixture) {
-		tf.routers = make([]routerData, len(targets))
+		tf.routers = make([]*routerData, len(targets))
 		for i := range targets {
-			tf.routers[i].target = targets[i]
+			tf.routers[i] = &routerData{
+				target: targets[i],
+			}
 		}
 	}
 }
@@ -210,7 +216,7 @@ type DutIdx int
 type TestFixture struct {
 	duts       []*dutData
 	hostUsers  map[string]string
-	routers    []routerData
+	routers    []*routerData
 	routerType support.RouterType
 	pcapType   support.RouterType
 
@@ -254,7 +260,6 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string, re
 	// Assumption is, that the key will be shared between DUTs.
 	sopt.KeyDir = tf.duts[DefaultDUT].dut.KeyDir()
 	sopt.KeyFile = tf.duts[DefaultDUT].dut.KeyFile()
-	sopt.ConnectTimeout = 10 * time.Second
 
 	var conn *ssh.Conn
 
@@ -275,7 +280,7 @@ func (tf *TestFixture) connectCompanion(ctx context.Context, hostname string, re
 		}
 		return err
 	}, &testing.PollOptions{
-		Timeout: time.Minute,
+		Timeout: 5 * time.Minute,
 	}); err != nil {
 		return nil, err
 	}
@@ -388,10 +393,10 @@ func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *tes
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to synthesize default router name")
 		}
-		tf.routers = append(tf.routers, routerData{target: name})
+		tf.routers = append(tf.routers, &routerData{target: name})
 	}
 	for i := range tf.routers {
-		rt := &tf.routers[i]
+		rt := tf.routers[i]
 		testing.ContextLogf(ctx, "Adding router %s", rt.target)
 		routerHost, err := tf.connectCompanion(ctx, rt.target, true /* allow retry */)
 		if err != nil {
@@ -561,7 +566,7 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	// Check if one of routers was used in dual-purpose (router&pcap) mode.
 	if tf.pcap != nil {
 		for i := range tf.routers {
-			rt := &tf.routers[i]
+			rt := tf.routers[i]
 			if tf.pcap == rt.object {
 				// Don't close it, it will be closed while handling routers.
 				tf.pcap = nil
@@ -582,7 +587,7 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 	}
 	// Close all created routers.
 	for i := range tf.routers {
-		router := &tf.routers[i]
+		router := tf.routers[i]
 		if router.object != nil {
 			if err := router.object.Close(ctx); err != nil {
 				wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to close rotuer %s", router.target))
@@ -622,12 +627,75 @@ func (tf *TestFixture) Close(ctx context.Context) error {
 // Reinit reinitialize the TestFixture. This can be used in precondition or between
 // testcases to guarantee a cleaner state.
 func (tf *TestFixture) Reinit(ctx context.Context) error {
-	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	ctx, t := timing.Start(ctx, "Reinit")
+	defer t.End()
+	ctx, cancel := context.WithTimeout(ctx, 11*time.Minute)
 	defer cancel()
 
 	if _, err := tf.WifiClient().ReinitTestState(ctx, &empty.Empty{}); err != nil {
 		return errors.Wrap(err, "failed to reinit DUT")
 	}
+
+	if err := tf.DeconfigAllAPs(ctx); err != nil {
+		return errors.Wrap(err, "failed to deconfig all APs")
+	}
+
+	// Reboot all OpenWrt routers and reconnect to them.
+	for _, rd := range tf.routers {
+		if rd.object.RouterType() != support.OpenWrtT {
+			continue
+		}
+		if err := tf.rebootRouter(ctx, rd); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func (tf *TestFixture) rebootRouter(ctx context.Context, rd *routerData) error {
+	ctx, t := timing.Start(ctx, "rebootRouter_"+rd.object.RouterType().String())
+	defer t.End()
+	routerName := rd.object.RouterName()
+	routerType := rd.object.RouterType()
+	routerMsgName := fmt.Sprintf("%s router %q", routerType.String(), routerName)
+
+	// Close and reboot router.
+	testing.ContextLogf(ctx, "Preparing %s for reboot", routerMsgName)
+	if err := rd.object.Close(ctx); err != nil {
+		testing.ContextLogf(ctx, "Failed to close %s before reboot, err: %v", routerMsgName, err)
+	}
+	testing.ContextLogf(ctx, "Rebooting %s", routerMsgName)
+	if err := rd.object.StartReboot(ctx); err != nil {
+		return errors.Wrapf(err, "failed to reboot %s", routerMsgName)
+	}
+	_ = rd.host.Close(ctx)
+	rd.host = nil
+	rd.object = nil
+
+	// Wait for router reboot to complete and for the router to be ready for use.
+	// Currently, there's no reliable way to identify router state is stabilized
+	// enough to run tests, so as a short term work around, just Sleep for fixed
+	// amount of time which is considered long enough to stabilize the reboot.
+	// TODO(b/239583375): Replace this simple wait with a more optimized process.
+	testing.ContextLogf(ctx, "Waiting %s before trying to reconnect to %s", routerPostRebootWaitTime, routerMsgName)
+	if err := testing.Sleep(ctx, routerPostRebootWaitTime); err != nil {
+		return errors.Wrapf(err, "failed to wait for %s after rebooting %s", routerPostRebootWaitTime, routerMsgName)
+	}
+
+	// Reconnect to router and create a new router controller.
+	testing.ContextLogf(ctx, "Reconnecting to %s", routerMsgName)
+	if routerHost, err := tf.connectCompanion(ctx, rd.target, true); err != nil {
+		return errors.Wrapf(err, "failed to reconnect to %s after reboot", routerMsgName)
+	} else {
+		rd.host = routerHost
+	}
+	testing.ContextLogf(ctx, "Reconnected to %s", routerMsgName)
+	if routerObject, err := newRouter(ctx, ctx, rd.host, routerName, routerType); err != nil {
+		return errors.Wrapf(err, "failed to recreate %s", routerMsgName)
+	} else {
+		rd.object = routerObject
+	}
+	testing.ContextLogf(ctx, "Reconnected to %s with new router controller after reboot", routerMsgName)
 	return nil
 }
 
