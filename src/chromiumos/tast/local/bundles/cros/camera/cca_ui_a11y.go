@@ -6,6 +6,8 @@ package camera
 
 import (
 	"context"
+	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
@@ -70,49 +72,75 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	cvconn, err := a11y.NewChromeVoxConn(ctx, cr)
+	visited := make(map[string]bool)
+	tab := []string{"Tab"}
+	ctrlAltZ := []string{"Ctrl+Alt+z"}
+
+	err = a11y.PressKeys(ctx, sm, ctrlAltZ)
 	if err != nil {
-		s.Fatal("Failed to connect to the ChromeVox background page: ", err)
-	}
-	defer cvconn.Close()
-
-	expectedSpeeches1 := []a11y.SpeechExpectation{
-		a11y.NewRegexExpectation("ChromeVox spoken feedback is ready"),
-		a11y.NewRegexExpectation("Mirror preview"),
-		a11y.NewRegexExpectation("Grid"),
-		a11y.NewRegexExpectation("Timer duration"),
-		a11y.NewRegexExpectation("Take photo"),
+		s.Fatal("Failed to press keys: ", err)
 	}
 
-	for i := 0; i < len(expectedSpeeches1); i++ {
-		if err := moveAroundByKeyboard(ctx, sm, []a11y.SpeechExpectation{expectedSpeeches1[i]}); err != nil {
-			s.Fatal("Failed to check all functions: ", err)
+	fnodename, err := app.ReturnFocusedElementName(ctx)
+	if err != nil {
+		s.Fatal("Failed to get a focused node: ", err)
+	}
+
+	err = matchSpeeches(ctx, sm, fnodename, s)
+	if err != nil {
+		s.Fatal("Failed to match speeches: ", err)
+	}
+
+	visited[fnodename] = true
+
+	for true {
+
+		err = a11y.PressKeys(ctx, sm, tab)
+		if err != nil {
+			s.Fatal("Failed to press keys: ", err)
 		}
-	}
 
-	if err := takePictureByKeyboard(ctx, sm, app); err != nil {
-		s.Fatal("Failed to take a picture: ", err)
-	}
+		fnodename, err := app.ReturnFocusedElementName(ctx)
+		if err != nil {
+			s.Fatal("Failed to get a focused node: ", err)
+		}
 
-	expectedSpeeches2 := []a11y.SpeechExpectation{
-		a11y.NewRegexExpectation("Switch to next camera"),
-		a11y.NewRegexExpectation("Switch to take photo"),
-		a11y.NewRegexExpectation("Go to Gallery"),
-		a11y.NewRegexExpectation("Settings"),
-	}
+		if visited[fnodename] {
+			break
+		}
 
-	for i := 0; i < len(expectedSpeeches2); i++ {
-		if err := moveAroundByKeyboard(ctx, sm, []a11y.SpeechExpectation{expectedSpeeches2[i]}); err != nil {
-			s.Fatal("Failed to check all functions: ", err)
+		err = matchSpeeches(ctx, sm, fnodename, s)
+		if err != nil {
+			s.Fatal("Failed to match speeches: ", err)
+		}
+
+		visited[fnodename] = true
+
+		if fnodename == "Take photo" {
+			if err := takePictureByKeyboard(ctx, sm, app); err != nil {
+				s.Fatal("Failed to take a picture: ", err)
+			}
 		}
 	}
 }
 
-func moveAroundByKeyboard(ctx context.Context, sm *a11y.SpeechMonitor, expectedSpeech []a11y.SpeechExpectation) error {
-	tab := []string{"Tab"}
-	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, tab, expectedSpeech); err != nil {
-		return errors.Wrap(err, "failed to speak expected speech")
+func matchSpeeches(ctx context.Context, sm *a11y.SpeechMonitor, fnodename string, s *testing.State) error {
+	fnodename = strings.Replace(fnodename, "+", "plus", -1)
+
+	spoken, err := sm.ReturnSpeeches(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to consume")
 	}
+
+	matched, err := regexp.MatchString(fnodename, spoken)
+	if err != nil {
+		return errors.Wrap(err, "failed to match strings")
+	}
+
+	if !matched {
+		return errors.New("failed to speak expected speeches")
+	}
+
 	return nil
 }
 

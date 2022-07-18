@@ -1573,6 +1573,17 @@ func (a *App) EnsureTabletModeEnabled(ctx context.Context, enabled bool) (func(c
 	return cleanupAll, nil
 }
 
+// ReturnFocusedElementName returns a focused element's name from aria-label.
+func (a *App) ReturnFocusedElementName(ctx context.Context) (string, error) {
+	var fnodename string
+
+	if err := a.conn.Eval(ctx, "document.activeElement.ariaLabel", &fnodename); err != nil {
+		return "", err
+	}
+
+	return fnodename, nil
+}
+
 // Focus sets focus on CCA App window.
 func (a *App) Focus(ctx context.Context) error {
 	return a.conn.Eval(ctx, "Tast.focusWindow()", nil)
