@@ -8,9 +8,14 @@ import (
 	"context"
 	"fmt"
 	"regexp"
+	"strconv"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/network/ip"
+	"chromiumos/tast/common/shillconst"
+	"chromiumos/tast/common/wifi/security"
+	"chromiumos/tast/common/wifi/security/wep"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
@@ -96,6 +101,33 @@ func RemoveDevicesWithPrefix(ctx context.Context, ipr *ip.Runner, prefix string)
 		}
 	}
 	return nil
+}
+
+// HostapdSecurityConfigIsWEP returns true if the hostapd security configuration
+// uses WEP.
+func HostapdSecurityConfigIsWEP(secConf security.Config) (bool, error) {
+	if secConf == nil {
+		return false, nil
+	}
+	if secConf.Class() == shillconst.SecurityWEP {
+		return true, nil
+	}
+	hostapdConfig, err := secConf.HostapdConfig()
+	if err != nil {
+		return false, errors.Wrap(err, "failed to build hostapd conf for security config")
+	}
+	if authAlgsStr, hasAuthAlgs := hostapdConfig["auth_algs"]; hasAuthAlgs {
+		authAlgs, err := strconv.Atoi(authAlgsStr)
+		if err == nil && (authAlgs == int(wep.AuthAlgoOpen) || authAlgs == int(wep.AuthAlgoShared)) {
+			return true, nil
+		}
+	}
+	for configOptionName := range hostapdConfig {
+		if strings.Contains(configOptionName, "wep") {
+			return true, nil
+		}
+	}
+	return false, nil
 }
 
 // TearDownRedundantInterfaces tears down all the interfaces except those in linkList.
