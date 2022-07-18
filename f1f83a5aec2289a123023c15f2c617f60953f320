@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b99ac1c4_ed6dfd55",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-18T04:49:31Z",
+      "side": 1,
+      "message": "Sorry I had some issues trying to upload a patchset that fixes the descriptions. Fixed.",
+      "parentUuid": "bd3ee079_f3c1780b",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0163f80_15fcd1b9",
@@ -139,6 +163,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a92fa88_2f9b9736",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-18T04:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2881d1f1_50607bdc",
+      "range": {
+        "startLine": 141,
+        "startChar": 54,
+        "endLine": 141,
+        "endChar": 63
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0cfc814_8e64c79e",
@@ -152,6 +200,30 @@
       "writtenOn": "2022-07-18T04:42:47Z",
       "side": 1,
       "message": "`its.ClickFieldAndWaitForActive(inputField)`",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 37
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33f14633_12ab7982",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-18T04:49:31Z",
+      "side": 1,
+      "message": "I don\u0027t have access to the \"its\" here, since we are only using the server. The functions create an \"its\" requires getting the browser instance to work, which I wasn\u0027t able to do in kiosk mode for some reason.",
+      "parentUuid": "a0cfc814_8e64c79e",
       "range": {
         "startLine": 144,
         "startChar": 3,
