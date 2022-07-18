@@ -46,7 +46,7 @@ func init() {
 		Vars:         []string{"servo"},
 		Data: []string{"nocturne_fp_v2.0.3266-99b5e2c98_20201214.bin",
 			"nami_fp_v2.0.3266-99b5e2c98_20201214.bin",
-			"bloonchipper_v2.0.4277-9f652bb3_20210401.bin",
+			"bloonchipper_v2.0.14206-ad46faf_20220718.bin",
 			"dartmonkey_v2.0.2887-311310808_20201214.bin"},
 	})
 }
@@ -59,7 +59,7 @@ func getOldFirmwarePath(s *testing.State, fpBoard fingerprint.FPBoardName) (stri
 	case fingerprint.FPBoardNameNami:
 		return s.DataPath("nami_fp_v2.0.3266-99b5e2c98_20201214.bin"), nil
 	case fingerprint.FPBoardNameBloonchipper:
-		return s.DataPath("bloonchipper_v2.0.4277-9f652bb3_20210401.bin"), nil
+		return s.DataPath("bloonchipper_v2.0.14206-ad46faf_20220718.bin"), nil
 	case fingerprint.FPBoardNameDartmonkey:
 		return s.DataPath("dartmonkey_v2.0.2887-311310808_20201214.bin"), nil
 	default:
