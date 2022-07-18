@@ -59,12 +59,8 @@ func SetOnlineWallpaperChild(ctx context.Context, s *testing.State) {
 	// time to wait for nodes to load.
 	ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
-	// Family link notification will appear after logging in, it will interfere with the test if we start at the same time.
-	// Close the notification after it appears, then check if the notification is already gone before starting the test.
-	if _, err := ash.WaitForNotification(ctx, tconn, 20*time.Second, ash.WaitIDContains(notificationID)); err != nil {
-		s.Fatal("Failed to wait for family link notification: ", err)
-	}
-
+	// If family link notification appear after logging in, it will interfere with the test if we start at the same time.
+	// Close the notification if it appears, then check if the notification is already gone before starting the test.
 	if err := ash.CloseNotifications(ctx, tconn); err != nil {
 		s.Fatal("Failed to close all notifications: ", err)
 	}
