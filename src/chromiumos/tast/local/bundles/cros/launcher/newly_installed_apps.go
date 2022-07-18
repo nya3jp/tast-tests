@@ -6,16 +6,15 @@ package launcher
 
 import (
 	"context"
-	"io/ioutil"
-	"os"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/cws"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -27,9 +26,21 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type newlyInstalledAppType int
+
+type newlyInstalledAppsTestCase struct {
+	appID        string
+	appName      string
+	appType      newlyInstalledAppType
+	isTabletMode bool
+}
+
 const (
-	appName                     = "fake app 0"
-	appIconFileName             = "app_list_sort_smoke_white.png"
+	newlyInstalledFakeApp newlyInstalledAppType = iota
+	newlyInstalledCwsApp
+)
+
+const (
 	minNewInstallDotPixelsCount = 16
 	newInstallDescription       = "New install"
 )
@@ -46,16 +57,27 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Data:         []string{appIconFileName},
 		Params: []testing.Param{
 			{
-				Name: "clamshell_mode",
-				Val:  launcher.TestCase{TabletMode: false},
+				Name: "cws_clamshell_mode",
+				Val: newlyInstalledAppsTestCase{
+					appID:        "mljpablpddhocfbnokacjggdbmafjnon",
+					appName:      "Wicked Good Unarchiver",
+					appType:      newlyInstalledCwsApp,
+					isTabletMode: false,
+				},
+				Fixture: "chromeLoggedInWithGaiaProductivityLauncher",
 			},
 			{
-				Name:              "tablet_mode",
-				Val:               launcher.TestCase{TabletMode: true},
+				Name: "cws_tablet_mode",
+				Val: newlyInstalledAppsTestCase{
+					appID:        "mljpablpddhocfbnokacjggdbmafjnon",
+					appName:      "Wicked Good Unarchiver",
+					appType:      newlyInstalledCwsApp,
+					isTabletMode: true,
+				},
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
+				Fixture:           "chromeLoggedInWithGaiaProductivityLauncher",
 			},
 		},
 	})
@@ -63,39 +85,28 @@ func init() {
 
 // NewlyInstalledApps checks that newly installed apps are marked as such in launcher.
 func NewlyInstalledApps(ctx context.Context, s *testing.State) {
-	tc := s.Param().(launcher.TestCase)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tc := s.Param().(newlyInstalledAppsTestCase)
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
-
-	extDirBase, err := ioutil.TempDir("", "launcher_NewlyInstalledApps")
-	if err != nil {
-		s.Fatal("Failed to create a temporary directory: ", err)
-	}
-	defer os.RemoveAll(extDirBase)
-
-	iconBytes, err := launcher.ReadImageBytesFromFilePath(s.DataPath(appIconFileName))
-	if err != nil {
-		s.Fatal("Failed to read icon byte data: ", err)
-	}
-	opts, err := ash.GeneratePrepareFakeAppsWithIconDataOptions(extDirBase, []string{appName}, [][]byte{iconBytes})
-	if err != nil {
-		s.Fatal("Failed to create a fake app: ", err)
-	}
-
-	cr, err := chrome.New(ctx, append(opts, chrome.EnableFeatures("ProductivityLauncher"))...)
-	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
-	}
-	defer cr.Close(ctx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tc.TabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
+	if tc.appType == newlyInstalledCwsApp {
+		if err := cws.InstallApp(ctx, cr, tconn, cws.App{
+			Name: tc.appName,
+			URL:  "https://chrome.google.com/webstore/detail/wicked-good-unarchiver/" + tc.appID,
+		}); err != nil {
+			s.Fatal("Unable to install cws app: ", err)
+		}
+	}
+
+	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, tc.isTabletMode, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
@@ -103,27 +114,37 @@ func NewlyInstalledApps(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
-	view := appItemViewNode(tc.TabletMode)
+	view := appItemViewNode(tc.appName, tc.isTabletMode)
+
 	if isNewInstall, err := isInNewInstallState(ctx, cr, tconn, view); err != nil {
-		s.Fatal("Unable to compute new install state state: ", err)
+		s.Fatal("Unable to compute new install state: ", err)
 	} else if !isNewInstall {
 		s.Fatalf("Unexpected new install state before launching the app; got %t, want %t", isNewInstall, true)
 	}
+	if err := launcher.HideLauncher(tconn, !tc.isTabletMode)(ctx); err != nil {
+		s.Fatal("Failed to hide launcher: ", err)
+	}
 
-	if err := launcher.LaunchApp(tconn, appName)(ctx); err != nil {
+	if err := launcher.LaunchAndWaitForAppOpen(tconn, apps.App{ID: tc.appID, Name: tc.appName})(ctx); err != nil {
 		s.Fatal("Unable to launch the app: ", err)
 	}
 
-	launcher.OpenProductivityLauncher(ctx, tconn, tc.TabletMode)
+	if err := launcher.OpenProductivityLauncher(ctx, tconn, tc.isTabletMode); err != nil {
+		s.Fatal("Failed to open launcher: ", err)
+	}
 	if isNewInstall, err := isInNewInstallState(ctx, cr, tconn, view); err != nil {
-		s.Fatal("Unable to compute new install state state: ", err)
+		s.Fatal("Unable to compute new install state: ", err)
 	} else if isNewInstall {
 		s.Fatalf("Unexpected new install state after launching the app; got %t, want %t", isNewInstall, false)
 	}
+
+	if err := launcher.UninstallsAppUsingContextMenu(ctx, tconn, view); err != nil {
+		s.Fatal("Failed to uninstall the app: ", err)
+	}
 }
 
-// appItemViewNode finds the "fake app 0" node ignoring the recent apps section.
-func appItemViewNode(tabletMode bool) *nodewith.Finder {
+// appItemViewNode finds the app node ignoring the recent apps section.
+func appItemViewNode(appName string, tabletMode bool) *nodewith.Finder {
 	var ancestorNode *nodewith.Finder
 	if tabletMode {
 		ancestorNode = nodewith.ClassName(launcher.PagedAppsGridViewClass)
