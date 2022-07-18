@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "933b2c43_a5d5a5e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_kiosk_typing.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-18T05:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "102b642f_aca3074b",
+      "range": {
+        "startLine": 61,
+        "startChar": 9,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "33eba8a6dea05400ab34c292c5854291dff9b064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfab82b6_0060b56a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-18T05:34:07Z",
       "side": 1,
       "message": "worng message?",
+      "range": {
+        "startLine": 153,
+        "startChar": 30,
+        "endLine": 153,
+        "endChar": 40
+      },
+      "revId": "33eba8a6dea05400ab34c292c5854291dff9b064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d0fe52f_854a4d1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_kiosk_typing.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-18T05:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfab82b6_0060b56a",
       "range": {
         "startLine": 153,
         "startChar": 30,
