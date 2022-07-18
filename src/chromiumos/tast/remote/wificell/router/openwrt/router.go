@@ -47,6 +47,7 @@ type Router struct {
 	nextBridgeID     int
 	nextVethID       int
 	closed           bool
+	workDirPath      string
 }
 
 // activeServices keeps a record of what services have been started and not yet
@@ -78,6 +79,7 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		phys:           make(map[int]*iw.Phy),
 		activeServices: activeServices{},
 		closed:         false,
+		workDirPath:    common.BuildWorkingDirPath(),
 	}
 	r.im = common.NewRouterIfaceManager(r, r.iwr)
 
@@ -278,7 +280,7 @@ func (r *Router) StartReboot(ctx context.Context) error {
 
 // workDir returns the directory to place temporary files on router.
 func (r *Router) workDir() string {
-	return common.WorkingDir
+	return r.workDirPath
 }
 
 // CollectLogs dumps collected syslogd logs to a file.
