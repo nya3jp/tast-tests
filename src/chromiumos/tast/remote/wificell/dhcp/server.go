@@ -171,23 +171,24 @@ func (d *Server) Close(ctx context.Context) error {
 	defer st.End()
 
 	testing.ContextLog(ctx, "Stopping dnsmasq")
+	configPath := d.confPath()
 	if d.cmd != nil {
 		d.cmd.Abort()
 		// TODO(crbug.com/1030635): Abort might not work, use pkill to ensure the daemon is killed.
-		d.host.CommandContext(ctx, "pkill", "-f", fmt.Sprintf("^%s.*%s", dnsmasqCmd, d.confPath())).Run()
+		_ = d.host.CommandContext(ctx, "pkill", "-f", fmt.Sprintf("^%s.*%s", dnsmasqCmd, configPath)).Run()
 
 		// Skip the error in Wait as the process is aborted and always has error in wait.
-		d.cmd.Wait()
+		_ = d.cmd.Wait()
 		d.cmd = nil
 	}
 	if d.stdoutFile != nil {
-		d.stdoutFile.Close()
+		_ = d.stdoutFile.Close()
 	}
 	if d.stderrFile != nil {
-		d.stderrFile.Close()
+		_ = d.stderrFile.Close()
 	}
-	if err := d.host.CommandContext(ctx, "rm", d.confPath()).Run(); err != nil {
-		return errors.Wrap(err, "failed to remove config")
+	if err := d.host.CommandContext(ctx, "rm", configPath).Run(); err != nil {
+		return errors.Wrapf(err, "failed to remove dhcp config at %q", configPath)
 	}
 	return nil
 }
