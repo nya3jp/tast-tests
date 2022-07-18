@@ -139,88 +139,89 @@ func RunTestCases(ctx context.Context, s *testing.State, param TestCase) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	// Perform cleanup.
-	if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
-		s.Fatal("Failed to clean up: ", err)
-	}
-
-	// Update policies.
-	if err := policyutil.ServeAndVerify(ctx, fdms, cr, param.Policies); err != nil {
-		s.Fatal("Failed to update policies: ", err)
-	}
-
-	myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
-	if err != nil {
-		s.Fatal("Failed to retrieve users MyFiles path: ", err)
-	}
-
-	// Cleanup the file _after_ the browser has been closed, to be sure that
-	// the browser is not still in the process of writing the file.
-	filePath := path.Join(myFilesPath, "test-file")
-	if param.WantFileSystemAccess && param.Method == Write {
-		defer os.Remove(filePath)
-	}
-
-	// Setup browser based on the browser type.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
-	if err != nil {
-		s.Fatal("Failed to open the browser: ", err)
-	}
-	defer closeBrowser(cleanupCtx)
-
-	conn, err := br.NewConn(ctx, param.URL)
-	if err != nil {
-		s.Fatal("Failed to open website: ", err)
-	}
-	defer conn.Close()
-	defer conn.CloseTarget(cleanupCtx)
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, param.Name)
-
-	// Connect to Test API to use it with the UI library.
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to create Test API connection: ", err)
-	}
-
-	ui := uiauto.New(tconn)
-
-	switch param.Method {
-	case Write:
-		if err := triggerFilePicker(ctx, conn, ui, SaveFileDialog, SaveFilePicker); err != nil {
-			s.Fatal("Failed to trigger file picker: ", err)
+	s.Run(ctx, param.Name, func(ctx context.Context, s *testing.State) {
+		// Perform cleanup.
+		if err := policyutil.ResetChrome(ctx, fdms, cr); err != nil {
+			s.Fatal("Failed to clean up: ", err)
 		}
-		// At this point, the file picker has either opened, or failed to open with an error.
 
-		if param.WantFileSystemAccess {
-			if err := ui.LeftClick(nodewith.Role(role.Button).Name("Save"))(ctx); err != nil {
-				s.Fatal("Failed to save file using save file picker: ", err)
-			}
-
-			if err := checkFileContent(ctx, filePath); err != nil {
-				s.Fatal("Failed to check file content: ", err)
-			}
-		} else {
-			if err := ui.EnsureGoneFor(nodewith.Role(role.Dialog).Name(SaveFileDialog).HasClass("RootView"), shortTimeout)(ctx); err != nil {
-				s.Error("Save file picker opened unexpectedly")
-			}
+		// Update policies.
+		if err := policyutil.ServeAndVerify(ctx, fdms, cr, param.Policies); err != nil {
+			s.Fatal("Failed to update policies: ", err)
 		}
-	case Read:
-		if err := triggerFilePicker(ctx, conn, ui, OpenFileDialog, OpenFilePicker); err != nil {
-			s.Fatal("Failed to trigger file picker: ", err)
-		}
-		// At this point, the file picker has either opened, or failed to open with an error.
 
-		if param.WantFileSystemAccess {
-			if err := ui.WaitUntilExists(nodewith.Role(role.Dialog).Name(OpenFileDialog).HasClass("RootView"))(ctx); err != nil {
-				s.Fatal("Failed to wait until `select a file to open` dialog is opened: ", err)
-			}
-		} else {
-			if err := ui.EnsureGoneFor(nodewith.Role(role.Dialog).Name(OpenFileDialog).HasClass("RootView"), shortTimeout)(ctx); err != nil {
-				s.Error("Open file picker opened unexpectedly")
-			}
+		myFilesPath, err := cryptohome.MyFilesPath(ctx, cr.NormalizedUser())
+		if err != nil {
+			s.Fatal("Failed to retrieve users MyFiles path: ", err)
 		}
-	default:
-		s.Error("Unexpected method: ", param.Method)
-	}
 
+		// Cleanup the file _after_ the browser has been closed, to be sure that
+		// the browser is not still in the process of writing the file.
+		filePath := path.Join(myFilesPath, "test-file")
+		if param.WantFileSystemAccess && param.Method == Write {
+			defer os.Remove(filePath)
+		}
+
+		// Setup browser based on the browser type.
+		br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
+		if err != nil {
+			s.Fatal("Failed to open the browser: ", err)
+		}
+		defer closeBrowser(cleanupCtx)
+
+		conn, err := br.NewConn(ctx, param.URL)
+		if err != nil {
+			s.Fatal("Failed to open website: ", err)
+		}
+		defer conn.Close()
+		defer conn.CloseTarget(cleanupCtx)
+		defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, param.Name)
+
+		// Connect to Test API to use it with the UI library.
+		tconn, err := cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to create Test API connection: ", err)
+		}
+
+		ui := uiauto.New(tconn)
+
+		switch param.Method {
+		case Write:
+			if err := triggerFilePicker(ctx, conn, ui, SaveFileDialog, SaveFilePicker); err != nil {
+				s.Fatal("Failed to trigger file picker: ", err)
+			}
+			// At this point, the file picker has either opened, or failed to open with an error.
+
+			if param.WantFileSystemAccess {
+				if err := ui.LeftClick(nodewith.Role(role.Button).Name("Save"))(ctx); err != nil {
+					s.Fatal("Failed to save file using save file picker: ", err)
+				}
+
+				if err := checkFileContent(ctx, filePath); err != nil {
+					s.Fatal("Failed to check file content: ", err)
+				}
+			} else {
+				if err := ui.EnsureGoneFor(nodewith.Role(role.Dialog).Name(SaveFileDialog).HasClass("RootView"), shortTimeout)(ctx); err != nil {
+					s.Error("Save file picker opened unexpectedly")
+				}
+			}
+		case Read:
+			if err := triggerFilePicker(ctx, conn, ui, OpenFileDialog, OpenFilePicker); err != nil {
+				s.Fatal("Failed to trigger file picker: ", err)
+			}
+			// At this point, the file picker has either opened, or failed to open with an error.
+
+			if param.WantFileSystemAccess {
+				if err := ui.WaitUntilExists(nodewith.Role(role.Dialog).Name(OpenFileDialog).HasClass("RootView"))(ctx); err != nil {
+					s.Fatal("Failed to wait until `select a file to open` dialog is opened: ", err)
+				}
+			} else {
+				if err := ui.EnsureGoneFor(nodewith.Role(role.Dialog).Name(OpenFileDialog).HasClass("RootView"), shortTimeout)(ctx); err != nil {
+					s.Error("Open file picker opened unexpectedly")
+				}
+			}
+		default:
+			s.Error("Unexpected method: ", param.Method)
+		}
+	})
 }
