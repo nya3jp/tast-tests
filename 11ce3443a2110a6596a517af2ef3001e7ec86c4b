@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6840fdc_eef65fb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-18T09:26:22Z",
+      "side": 1,
+      "message": "nit: If the don\u0027t use |diff| then we can use the simpler cmp.Equal. Alternatively, print |diff|.",
+      "revId": "11ce3443a2110a6596a517af2ef3001e7ec86c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
