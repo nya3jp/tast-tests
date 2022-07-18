@@ -6,6 +6,7 @@ package camera
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
@@ -14,8 +15,7 @@ import (
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/camera/cca"
-	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/testing"
 )
 
@@ -27,11 +27,12 @@ func init() {
 		Contacts:     []string{"dorahkim@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
-		Fixture:      "ccaTestBridgeReady",
+		Fixture:      "ccaLaunched",
 	})
 }
 
 func CCAUIA11y(ctx context.Context, s *testing.State) {
+	app := s.FixtValue().(cca.FixtureData).App()
 	cr := s.FixtValue().(cca.FixtureData).Chrome
 
 	// Shorten deadline to leave time for cleanup.
@@ -71,42 +72,57 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 		}
 	}()
 
+	ctrlAltZ := []string{"Ctrl+Alt+z"}
+	expectedSpeech := []a11y.SpeechExpectation{a11y.NewRegexExpectation("ChromeVox spoken feedback is ready")}
+	// Use the speech monitor to ensure that the spoken announcement was given.
+	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, ctrlAltZ, expectedSpeech); err != nil {
+		s.Fatal("Failed to verify Chromevox toggled on: ", err)
+	}
+
 	cvconn, err := a11y.NewChromeVoxConn(ctx, cr)
 	if err != nil {
 		s.Fatal("Failed to connect to the ChromeVox background page: ", err)
 	}
 	defer cvconn.Close()
 
-	// Wait for ChromeVox to focus the root web area.
-	rootWebArea := nodewith.Role(role.RootWebArea).First()
-	if err = cvconn.WaitForFocusedNode(ctx, tconn, rootWebArea); err != nil {
-		s.Error("Failed to wait for initial ChromeVox focus: ", err)
-	}
-
-	startApp := s.FixtValue().(cca.FixtureData).StartApp
-	stopApp := s.FixtValue().(cca.FixtureData).StopApp
-	app, err := startApp(ctx)
-	if err != nil {
-		s.Fatal("Failed to open CCA: ", err)
-	}
-	defer func(cleanupCtx context.Context) {
-		if err := stopApp(cleanupCtx, s.HasError()); err != nil {
-			s.Fatal("Failed to close CCA: ", err)
-		}
-	}(ctxCleanup)
-
+	visited := make(map[string]bool)
 	tab := []string{"Tab"}
-	expectedSpeech := []a11y.SpeechExpectation{a11y.NewRegexExpectation("Take photo")}
-	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, tab, expectedSpeech); err != nil {
-		s.Fatal("Failed to focus on the shutter button")
-	}
 
-	if err := takePictureByKeyboard(ctx, sm, s, app); err != nil {
-		s.Fatal("Failed to take a Picture: ", err)
+	for true {
+
+		exp, err := a11y.PressKeysAndReturnSpeeches(ctx, sm, tab)
+		if err != nil {
+			s.Fatal("Failed to consume: ", err)
+		}
+
+		fnode, err := cvconn.FocusedNode(ctx, tconn)
+		if err != nil {
+			s.Fatal("Failed to get a focused node: ", err)
+		}
+
+		fnodename := (uiauto.NodeInfo)(*fnode).Name
+		matched, err := regexp.MatchString(fnodename, exp)
+		if err != nil {
+			s.Fatal("Failed to match strings: ", err)
+		}
+
+		if visited[fnodename] {
+			break
+		} else if !matched {
+			s.Fatal("Failed to speak expected speeches")
+		} else {
+			visited[fnodename] = true
+		}
+
+		if fnodename == "Take photo" {
+			if err := takePictureByKeyboard(ctx, sm, app); err != nil {
+				s.Fatal("Failed to take a picture: ", err)
+			}
+		}
 	}
 }
 
-func takePictureByKeyboard(ctx context.Context, sm *a11y.SpeechMonitor, s *testing.State, app *cca.App) error {
+func takePictureByKeyboard(ctx context.Context, sm *a11y.SpeechMonitor, app *cca.App) error {
 	dir, err := app.SavedDir(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get result saved directory")
@@ -119,12 +135,12 @@ func takePictureByKeyboard(ctx context.Context, sm *a11y.SpeechMonitor, s *testi
 		return errors.Wrap(err, "failed to press the shutter button")
 	}
 
-	if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, start); err != nil {
-		return errors.Wrap(err, "cannot find captured result file")
-	}
-
 	if err := app.WaitForState(ctx, "taking", false); err != nil {
 		return errors.Wrap(err, "shutter is not ended")
+	}
+
+	if _, err := app.WaitForFileSaved(ctx, dir, cca.PhotoPattern, start); err != nil {
+		return errors.Wrap(err, "cannot find captured result file")
 	}
 
 	return nil

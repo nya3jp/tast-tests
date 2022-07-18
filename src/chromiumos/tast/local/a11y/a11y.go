@@ -103,8 +103,8 @@ func NewChromeVoxConn(ctx context.Context, c *chrome.Chrome) (*ChromeVoxConn, er
 	return &ChromeVoxConn{extConn}, nil
 }
 
-// focusedNode returns the currently focused node of ChromeVox.
-func (cv *ChromeVoxConn) focusedNode(ctx context.Context, tconn *chrome.TestConn) (*uiauto.NodeInfo, error) {
+// FocusedNode returns the currently focused node of ChromeVox.
+func (cv *ChromeVoxConn) FocusedNode(ctx context.Context, tconn *chrome.TestConn) (*uiauto.NodeInfo, error) {
 	rangeIsValid := false
 	if err := cv.Eval(ctx, "!!ChromeVoxState.instance.getCurrentRange()", &rangeIsValid); err != nil {
 		return nil, errors.Wrap(err, "failed to check for current range")
@@ -132,7 +132,7 @@ func (cv *ChromeVoxConn) WaitForFocusedNode(ctx context.Context, tconn *chrome.T
 	ui := uiauto.New(tconn)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		focused, err := cv.focusedNode(ctx, tconn)
+		focused, err := cv.FocusedNode(ctx, tconn)
 		if err != nil {
 			return testing.PollBreak(err)
 		}
@@ -499,6 +499,59 @@ func (sm *SpeechMonitor) Consume(ctx context.Context, expectations []SpeechExpec
 	}
 
 	return nil
+}
+
+// returnSpeeches returns string which is spoken by the TTS engine. It also
+// consumes all utterances accumulated in TTS extension's background page.
+func (sm *SpeechMonitor) returnSpeeches(ctx context.Context) (string, error) {
+	var actual string
+	// In assumption of "*" not being used in any speech
+	expectations := []SpeechExpectation{NewRegexExpectation("*")}
+
+	for _, exp := range expectations {
+		// Use a poll to allow time for each utterance to be spoken.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			var utteranceData UtteranceData
+			if err := sm.conn.Eval(ctx, "testUtterances.shift()", &utteranceData); err != nil {
+				return errors.Wrap(err, "couldn't assign utterance to value of testUtterances.shift() (testUtterances is likely empty)")
+			}
+
+			actual += utteranceData.Utterance
+			if err := exp.matches(utteranceData); err != nil {
+				return errors.Wrap(err, "expected utterance/pattern hasn't been matched yet")
+			}
+
+			return nil
+		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+			return actual, nil
+		}
+	}
+
+	return actual, nil
+}
+
+// PressKeysAndReturnSpeeches presses keys and returns the string which was
+// were spoken by the TTS engine.
+func PressKeysAndReturnSpeeches(ctx context.Context, sm *SpeechMonitor, keySequence []string) (string, error) {
+	// Open a connection to the keyboard.
+	ew, err := input.Keyboard(ctx)
+	if err != nil {
+		return "", errors.Wrap(err, "error with creating EventWriter from keyboard")
+	}
+	defer ew.Close()
+
+	for _, keys := range keySequence {
+		if err := ew.Accel(ctx, keys); err != nil {
+			return "", errors.Wrapf(err, "error when pressing the keys: %s", keys)
+		}
+	}
+
+	s, err := sm.returnSpeeches(ctx)
+	if err != nil {
+		return s, errors.Wrapf(err, "error when consuming expectations after pressing keys: %q", keySequence)
+	}
+
+	return s, nil
 }
 
 // PressKeysAndConsumeExpectations presses keys and ensures that the expectations
