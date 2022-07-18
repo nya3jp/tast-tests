@@ -6,6 +6,7 @@ package camera
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
@@ -14,6 +15,7 @@ import (
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/audio/crastestclient"
 	"chromiumos/tast/local/camera/cca"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -70,50 +72,51 @@ func CCAUIA11y(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	cvconn, err := a11y.NewChromeVoxConn(ctx, cr)
+	visited := make(map[string]bool)
+	tab := "Tab"
+	ctrlAltZ := "Ctrl+Alt+z"
+
+	ew, err := input.Keyboard(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect to the ChromeVox background page: ", err)
+		s.Fatal("Failed to create EventWriter from keyboard")
 	}
-	defer cvconn.Close()
+	defer ew.Close()
 
-	expectedSpeeches1 := []a11y.SpeechExpectation{
-		a11y.NewRegexExpectation("ChromeVox spoken feedback is ready"),
-		a11y.NewRegexExpectation("Mirror preview"),
-		a11y.NewRegexExpectation("Grid"),
-		a11y.NewRegexExpectation("Timer duration"),
-		a11y.NewRegexExpectation("Take photo"),
+	if err = ew.Accel(ctx, ctrlAltZ); err != nil {
+		s.Fatal("Failed to press Ctrl+Alt+Z keys")
 	}
 
-	for i := 0; i < len(expectedSpeeches1); i++ {
-		if err := moveAroundByKeyboard(ctx, sm, []a11y.SpeechExpectation{expectedSpeeches1[i]}); err != nil {
-			s.Fatal("Failed to check all functions: ", err)
+	for true {
+		arialabel, err := app.ReturnFocusedElementAriaLabel(ctx)
+		if err != nil {
+			s.Fatal("Failed to get a focused node: ", err)
+		}
+
+		if visited[arialabel] {
+			break
+		}
+
+		// There is a case of speaking "+" as "plus" like below.
+		// expected: Document scanning now available. Search + Left arrow to access.
+		// spoken: Document scanning now available. Search plus Left arrow to access.
+		arialabel = strings.Replace(arialabel, "+", "plus", -1)
+
+		if err = sm.Consume(ctx, []a11y.SpeechExpectation{a11y.NewRegexExpectation(arialabel)}); err != nil {
+			s.Fatal("Failed to match speeches: ", err)
+		}
+
+		visited[arialabel] = true
+
+		if arialabel == "Take photo" {
+			if err := takePictureByKeyboard(ctx, sm, app); err != nil {
+				s.Fatal("Failed to take a picture: ", err)
+			}
+		}
+
+		if err = ew.Accel(ctx, tab); err != nil {
+			s.Fatal("Failed to press tab key")
 		}
 	}
-
-	if err := takePictureByKeyboard(ctx, sm, app); err != nil {
-		s.Fatal("Failed to take a picture: ", err)
-	}
-
-	expectedSpeeches2 := []a11y.SpeechExpectation{
-		a11y.NewRegexExpectation("Switch to next camera"),
-		a11y.NewRegexExpectation("Switch to take photo"),
-		a11y.NewRegexExpectation("Go to Gallery"),
-		a11y.NewRegexExpectation("Settings"),
-	}
-
-	for i := 0; i < len(expectedSpeeches2); i++ {
-		if err := moveAroundByKeyboard(ctx, sm, []a11y.SpeechExpectation{expectedSpeeches2[i]}); err != nil {
-			s.Fatal("Failed to check all functions: ", err)
-		}
-	}
-}
-
-func moveAroundByKeyboard(ctx context.Context, sm *a11y.SpeechMonitor, expectedSpeech []a11y.SpeechExpectation) error {
-	tab := []string{"Tab"}
-	if err := a11y.PressKeysAndConsumeExpectations(ctx, sm, tab, expectedSpeech); err != nil {
-		return errors.Wrap(err, "failed to speak expected speech")
-	}
-	return nil
 }
 
 func takePictureByKeyboard(ctx context.Context, sm *a11y.SpeechMonitor, app *cca.App) error {
