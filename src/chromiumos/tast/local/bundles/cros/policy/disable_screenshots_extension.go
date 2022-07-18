@@ -41,7 +41,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Behavior of the DisableScreenshots policy, check whether screenshot can be taken by chrome.tabs.captureVisibleTab extensions API",
 		Contacts: []string{
-			"lamzin@google.com", // Test port author
+			"pomorov@google.com", // Policy owner
+			"lamzin@google.com",  // Migrated to Tast
 			"chromeos-commercial-remote-management@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
