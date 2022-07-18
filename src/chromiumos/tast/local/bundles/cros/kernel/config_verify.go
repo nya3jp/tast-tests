@@ -224,6 +224,8 @@ func newKernelConfigCheck(ver *sysutil.KernelVersion, arch string) *kernelConfig
 	optional := []string{
 		// OVERLAY_FS is needed in moblab images, and allowed to exist in general. https://crbug.com/990741#c9
 		"OVERLAY_FS",
+		// EFIVAR_FS is needed in reven images.
+		"EFIVAR_FS",
 	}
 	missing := []string{
 		// Never going to optimize to this CPU.
