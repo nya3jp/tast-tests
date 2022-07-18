@@ -72,15 +72,7 @@ func CollectLogs(ctx context.Context, r support.Router, logCollectors map[string
 		if err := collector.Dump(f); err != nil {
 			testing.ContextLogf(ctx, "Failed to dump %q logs, err: %v", src, err)
 			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to dump %q logs", src))
-			continue
 		}
-		absDstPath, err := filepath.Abs(f.Name())
-		if err != nil {
-			testing.ContextLogf(ctx, "Failed to get absolute file path of destination log file %q, err: %v", dst, err)
-			wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrapf(err, "failed to get absolute file path of destination log file %q", src))
-			continue
-		}
-		testing.ContextLogf(ctx, "Dumped captured router %q logs from %q to local chroot file %q", r.RouterName(), src, absDstPath)
 	}
 	return firstErr
 }
@@ -101,12 +93,6 @@ func CollectSyslogdLogs(ctx context.Context, r support.Router, logCollector *log
 	if err := logCollector.Dump(f); err != nil {
 		return errors.Wrapf(err, "failed to dump syslogd logs to %q", dstFilePath)
 	}
-	// Log path to log file.
-	absDstPath, err := filepath.Abs(f.Name())
-	if err != nil {
-		return errors.Wrapf(err, "failed to get absolute file path of destination log file %q", dstFilePath)
-	}
-	testing.ContextLogf(ctx, "Dumped captured router %q syslogd logs to local chroot file %q", r.RouterName(), absDstPath)
 	return nil
 }
 
