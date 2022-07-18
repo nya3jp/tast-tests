@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1533e8d9_e258052d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/open_scan_in_files_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-18T15:38:14Z",
+      "side": 1,
+      "message": "Removed this one.  I think the other added lines here are consistent with that guidance.",
+      "parentUuid": "2084ed6d_f8cb80b3",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 37
+      },
+      "revId": "cb3f6a1e9f3316ef951b1536f4ad42e1c185ba0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9640cc0e_5c990b47",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86c8c31_bba90f15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-18T15:38:14Z",
+      "side": 1,
+      "message": "I also thought the framework logged messages for the end of tests, but it turns out that it only logs the end of the top-level test.  It does log the beginning of sub-tests, but not the end.",
+      "parentUuid": "9640cc0e_5c990b47",
+      "range": {
+        "startLine": 562,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 40
+      },
+      "revId": "cb3f6a1e9f3316ef951b1536f4ad42e1c185ba0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5255638f_b6ef4cd6",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-07-18T13:20:47Z",
       "side": 1,
       "message": "same: redundant",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 31
+      },
+      "revId": "cb3f6a1e9f3316ef951b1536f4ad42e1c185ba0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e0fe0ef_a4a20aa1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/scanapp/scanning/scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-18T15:38:14Z",
+      "side": 1,
+      "message": "The \"end of test\" message from the framework comes after all the defer blocks have been run.  Since we have significant logic running in the defer stack, this helps demarcate the end of the real test from the cleanup.  I added a TODO to remove this once the test is stabilized.",
+      "parentUuid": "5255638f_b6ef4cd6",
       "range": {
         "startLine": 565,
         "startChar": 0,
