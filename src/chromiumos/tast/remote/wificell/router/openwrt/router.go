@@ -46,6 +46,7 @@ type Router struct {
 	activeServices   activeServices
 	nextBridgeID     int
 	nextVethID       int
+	closed           bool
 }
 
 // activeServices keeps a record of what services have been started and not yet
@@ -76,6 +77,7 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		uci:            uci.NewRemoteRunner(host),
 		phys:           make(map[int]*iw.Phy),
 		activeServices: activeServices{},
+		closed:         false,
 	}
 	r.im = common.NewRouterIfaceManager(r, r.iwr)
 
@@ -158,6 +160,9 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 
 // Close cleans the resource used by Router.
 func (r *Router) Close(ctx context.Context) error {
+	if r.closed {
+		return errors.Errorf("router controller for router %s router %q already closed", r.RouterType().String(), r.RouterName())
+	}
 	ctx, st := timing.Start(ctx, "router.Close")
 	defer st.End()
 
@@ -219,6 +224,7 @@ func (r *Router) Close(ctx context.Context) error {
 	}
 
 	testing.ContextLogf(ctx, "Closed OpenWrt router controller for router %q", r.name)
+	r.closed = true
 	return firstErr
 }
 
@@ -255,6 +261,19 @@ func (r *Router) RouterType() support.RouterType {
 // RouterName returns the name of the managed router device.
 func (r *Router) RouterName() string {
 	return r.name
+}
+
+// StartReboot initiates a reboot of the router host.
+//
+// Close must be called prior to StartReboot, not after.
+//
+// This Router instance will be unable to interact with the host after calling
+// this, as the connection to the host will be severed. To use this host
+// again, create a new Router instance with a new connection after the host is
+// fully rebooted.
+func (r *Router) StartReboot(ctx context.Context) error {
+	_ = r.host.CommandContext(ctx, "reboot").Run()
+	return nil
 }
 
 // workDir returns the directory to place temporary files on router.
