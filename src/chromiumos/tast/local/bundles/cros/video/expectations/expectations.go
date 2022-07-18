@@ -1,0 +1,338 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+// Package expectations provides tools for generating expectations file paths
+// and a definition of a test expectation structure. An expectations file is
+// used to modify test behavior, like documenting a known, triaged failing
+// test as "expected to fail" or "skip". The file matches particular DUT types,
+// via the model, build variant, board, or platform.
+package expectations
+
+import (
+	"context"
+	"fmt"
+	"os"
+	"regexp"
+	"runtime"
+	"strings"
+
+	"gopkg.in/yaml.v2"
+
+	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/crosconfig"
+	"chromiumos/tast/lsbrelease"
+	"chromiumos/tast/testing"
+)
+
+const expectationsDirectory = "/usr/local/graphics/expectations"
+
+// expectationsFileType contains the DUT attribute that is matched when opening a test
+// expectations file. Each type has a different naming convention.
+type expectationsFileType string
+
+const (
+	// modelFile files have the format "model-<DUT model>.yml"
+	modelFile expectationsFileType = "model"
+	// buildBoardFile files have the format "buildboard-<DUT build>.yml"
+	buildBoardFile expectationsFileType = "buildboard"
+	// boardFile files have the format "board-<DUT board>.yml". board is derived
+	// from the DUT build variant and omits suffixes like "-kernelnext" or "64"
+	boardFile expectationsFileType = "board"
+	// gpuChipsetFile files have the format "chipset-<DUT GPU chipset>.yml"
+	// where the chipset is determined by /usr/local/graphics/hardware_probe
+	gpuChipsetFile expectationsFileType = "chipset"
+	// PlatformFile files have the format "platform-<DUT platform>.yml"
+	platformFile expectationsFileType = "platform"
+)
+
+const expectationsFileExtension = "yml"
+
+// convertBuildToBoard returns the board string from a build string.
+// ChromeOS build strings begin with the board type and possibly contain a
+// suffix for the build variant. I.e. `-kernelnext` or `64`.
+// Examples:
+// | build string       | board string |
+// |--------------------|--------------|
+// | trogdor            | trogdor      |
+// | trogdor-kernelnext | trogdor      |
+// | trogdor64          | trogdor      |
+func convertBuildToBoard(variant string) string {
+	re := regexp.MustCompile(`^[a-zA-Z]+`)
+	return re.FindString(variant)
+}
+
+// generateTestExpectationsFilename generates a test expectations
+// file name using the specified directory location. Probes the device model,
+// board, or platform to generate the file name.
+func generateTestExpectationsFilename(ctx context.Context, testExpectationDirectory string, fileType expectationsFileType) (string, error) {
+	var err error
+	var name string
+
+	switch fileType {
+	case modelFile:
+		name, err = crosconfig.Get(ctx, "/", "name")
+		if err != nil {
+			return name, errors.Wrap(err, "unable to find model")
+		}
+	case boardFile, buildBoardFile:
+		var ok bool
+		lsbValues, err := lsbrelease.Load()
+		if err != nil {
+			return name, errors.Wrap(err, "failed to get lsb-release info")
+		}
+		name, ok = lsbValues[lsbrelease.Board]
+		if !ok {
+			return name, errors.New("unable to find board")
+		}
+		if fileType == boardFile {
+			name = convertBuildToBoard(name)
+		}
+	case gpuChipsetFile:
+		stdout, _, err := testexec.CommandContext(ctx, "/usr/local/graphics/hardware_probe").SeparatedOutput(testexec.DumpLogOnError)
+		if err != nil {
+			return name, errors.Wrap(err, "failed to get GPU chipset")
+		}
+		name = strings.TrimSpace(string(stdout))
+	case platformFile:
+		name, err = crosconfig.Get(ctx, "/identity", "platform-name")
+		if err != nil {
+			return name, errors.Wrap(err, "unable to find platform")
+		}
+	default:
+		return name, errors.Errorf("invalid expectation type: %s", fileType)
+	}
+	return fmt.Sprintf("%s/%s-%s.%s", testExpectationDirectory, fileType, name, expectationsFileExtension), err
+}
+
+// getTestExpectationsDirectory generates the test expectations directory from
+// a test name. For example, tast.video.PlatformDecoding will return the path
+// /usr/local/graphics/expectations/tast/video/PlatformDecoding/.
+func getTestExpectationsDirectory(testName string) string {
+	// Tast test names are never more than 3 deep:
+	// <test package>.<test name> or
+	// <test package>.<test name>.<test case>
+	// Use only the test package and test name, not the test case to build
+	// the test expectations directory name.
+	testNameSlice := strings.Split(testName, ".")
+
+	directory := fmt.Sprintf("%s/tast", expectationsDirectory)
+	if len(testNameSlice) > 0 {
+		directory += "/" + testNameSlice[0]
+	}
+	if len(testNameSlice) > 1 {
+		directory += "/" + testNameSlice[1]
+	}
+	return directory
+}
+
+// Type describes the expected test behavior.
+type Type string
+
+const (
+	// ExpectPass is the default behavior - the decoder produces accurate
+	// MD5 checksums and exits with code 0. This is only used internally.
+	// Do not use this type within an expectations file.
+	ExpectPass Type = "PASS"
+	// ExpectFailure behavior is that the decoder will produce the wrong MD5
+	// checksums or have non-zero exit code
+	ExpectFailure Type = "FAILURE"
+	// ExpectSkip behavior tells the test to skip a test case. This should
+	// only be used for test cases that leave a DUT in invalid state.
+	ExpectSkip Type = "SKIP"
+)
+
+// Expectation data describes the expected behavior for a particular test case.
+// Ticket should be provided for readability and logging.
+// Comments and SinceBuild are informational.
+type Expectation struct {
+	Expectation Type            `yaml:"expectation"`
+	Tickets     []string        `yaml:"tickets"`
+	Comments    string          `yaml:"comments"`
+	SinceBuild  string          `yaml:"since_build"`
+	ctx         context.Context // For logging
+	hasError    bool            // For manufacturing an error if the expectation type is ExpectFail
+}
+
+// getExpectationYamlErrors returns nil if there are no errors with the YAML
+// specification of the expectation. It checks the value of the Expectation
+// field. This is only run on structures that have been successfully
+// unmarshalled.
+func getExpectationYamlErrors(e Expectation) error {
+	// Validate the expectation type
+	if e.Expectation == ExpectPass {
+		return errors.New("Expectations file must not specify PASS")
+	}
+	if e.Expectation == "" {
+		return errors.New("Expectations file must specify a non-empty expectation field")
+	}
+	return nil
+}
+
+// GetTestExpectationWithDirectory opens an existing test expectations file
+// based on the device model, board, or platform. Looks in
+// testExpectationsDirectory for test expectations files.
+func GetTestExpectationWithDirectory(ctx context.Context, s *testing.State, testExpectationsDirectory string) (Expectation, error) {
+	expectPass := Expectation{ExpectPass, make([]string, 0), "", "", ctx, false}
+	// Try the following file names:
+	// 1. base_directory/model-<model>.yml
+	// 2. base_directory/buildboard-<buildboard>.yml
+	// 3. base_directory/board-<board>.yml
+	// 4. base_directory/chipset-<gpu chipset>.yml
+	// 5. base_directory/platform-<platform>.yml
+	// The contents of the first of these files will be returned. If more
+	// than one matching file exists, only the first will be used.
+	for _, fileType := range []expectationsFileType{modelFile, buildBoardFile, boardFile, gpuChipsetFile, platformFile} {
+		filename, err := generateTestExpectationsFilename(ctx, testExpectationsDirectory, fileType)
+		if err != nil {
+			return expectPass, errors.Wrap(err, "failed to generate test expectations file name")
+		}
+		contents, err := os.ReadFile(filename)
+		if err == nil {
+			testing.ContextLogf(ctx, "Found %s-based expectations file at %s", fileType, filename)
+			var expectation Expectation
+			if s.Param() != nil {
+				// The test is parameterized. I.e. tast.<package>.<test name>.<test case>
+				// For parameterized tests, the YAML structure contains a map of the test
+				// name to an expectation. For example:
+				//
+				// <package>.<test name>.<test case>:
+				//   expectation: FAILURE|SKIP
+				//   tickets:
+				//   - "b/12345"
+				//   - "crbug/67890"
+				//   comments: "The test has an expectation for the following reason: ..."
+				//   sinceBuild: "R100-14526.89.0"
+				//
+				// If there is no key for the test, then it is expected to pass.
+				expectations := make(map[string]Expectation)
+				err = yaml.Unmarshal(contents, &expectations)
+				if err != nil {
+					return expectPass, errors.Wrap(err, "unable to parse expectations file")
+				}
+				var ok bool
+				expectation, ok = expectations[s.TestName()]
+				if !ok {
+					return expectPass, nil
+				}
+			} else {
+				// The test is not parameterized. I.e. tast.<package>.<test name>
+				// The file contains only one Expectation.
+				var expectation Expectation
+				err = yaml.Unmarshal(contents, expectation)
+				if err != nil {
+					return expectPass, errors.Wrap(err, "unable to parse expectations file")
+				}
+			}
+			expectation.ctx = ctx
+			return expectation, getExpectationYamlErrors(expectation)
+		}
+	}
+
+	return expectPass, nil
+}
+
+// GetTestExpectation opens an existing test expectations file based on the
+// device model, board, or platform. Uses the default directory naming scheme.
+func GetTestExpectation(ctx context.Context, s *testing.State) (Expectation, error) {
+	return GetTestExpectationWithDirectory(ctx, s, getTestExpectationsDirectory(s.TestName()))
+}
+
+// Error is an expectation aware wrapper over testing.State.Error. If the
+// test is expected to fail, then the error is demoted to a log.
+func (e *Expectation) Error(s *testing.State, args ...interface{}) {
+	e.hasError = true
+	switch e.Expectation {
+	case ExpectPass:
+		s.Error(args...)
+	case ExpectFailure:
+		testing.ContextLog(e.ctx, append([]interface{}{"Expected error:"}, args...))
+	case ExpectSkip:
+		s.Fatalf("Expectations file error - test code should not run for %s tests", ExpectSkip)
+	}
+}
+
+// Errorf is an expectation aware wrapper over testing.State.Errorf. If the
+// test is expected to fail, then the error is demoted to a log.
+func (e *Expectation) Errorf(s *testing.State, format string, args ...interface{}) {
+	e.hasError = true
+	switch e.Expectation {
+	case ExpectPass:
+		s.Errorf(format, args...)
+	case ExpectFailure:
+		testing.ContextLogf(e.ctx, "Expected error: "+format, args...)
+	case ExpectSkip:
+		s.Fatalf("Expectations file error - test code should not run for %s tests", ExpectSkip)
+	}
+}
+
+// Fatal is an expectation aware wrapper over testing.State.Fatal. If the
+// test is expected to fail, then the fatal error is demoted to a log, but
+// the test still stops.
+func (e *Expectation) Fatal(s *testing.State, args ...interface{}) {
+	e.hasError = true
+	switch e.Expectation {
+	case ExpectPass:
+		s.Fatal(args...)
+	case ExpectFailure:
+		testing.ContextLog(e.ctx, append([]interface{}{"Expected error:"}, args...))
+		runtime.Goexit()
+		//} else if len(args) == 2 {
+		//	testing.ContextLogf(e.ctx, "Expected error: %v: %v", args[0], args[1])
+		//}
+	case ExpectSkip:
+		s.Fatalf("Expectations file error - test code should not run for %s tests", ExpectSkip)
+	}
+}
+
+// Fatalf is an expectation aware wrapper over testing.State.Fatalf. If the
+// test is expected to fail, then the fatal error is demoted to a log, but
+// the test still stops.
+func (e *Expectation) Fatalf(s *testing.State, format string, args ...interface{}) {
+	e.hasError = true
+	switch e.Expectation {
+	case ExpectPass:
+		s.Fatalf(format, args...)
+	case ExpectFailure:
+		testing.ContextLogf(e.ctx, "Expected error: "+format, args...)
+		runtime.Goexit()
+	case ExpectSkip:
+		s.Fatalf("Expectations file error - test code should not run for %s tests", ExpectSkip)
+	}
+}
+
+func (e *Expectation) makeTicketsString(prefixSingular, prefixPlural string) string {
+	ticketString := ""
+	for idx, ticket := range e.Tickets {
+		if idx == 0 {
+			if len(e.Tickets) > 1 {
+				ticketString = prefixPlural
+			} else {
+				ticketString = prefixSingular
+			}
+		} else {
+			ticketString = ticketString + ", "
+		}
+		ticketString = ticketString + ticket
+	}
+	return ticketString
+}
+
+// FailForMissingErrors will cause the test case to fail if there was no error,
+// but the expectation was to fail. Calling this should be deferred by a test.
+func (e *Expectation) FailForMissingErrors(s *testing.State) {
+	if e.Expectation == ExpectFailure && !e.hasError {
+		ticketString := e.makeTicketsString(". See ticket ", ". See tickets ")
+		s.Errorf("Test case passed despite expectation of %s%s", e.Expectation, ticketString)
+	}
+}
+
+// HandleSkip will cause the test to exit if the expectation is ExpectSkip.
+func (e *Expectation) HandleSkip() {
+	if e.Expectation == ExpectSkip {
+		ticketString := e.makeTicketsString(". See ticket ", ". See tickets ")
+		testing.ContextLogf(e.ctx, "Skipping test due to test expectations file%s", ticketString)
+		runtime.Goexit()
+	}
+}
