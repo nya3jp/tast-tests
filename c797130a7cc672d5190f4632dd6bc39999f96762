@@ -51,6 +51,24 @@
       "parentUuid": "16a0a1e4_68d949d7",
       "revId": "c797130a7cc672d5190f4632dd6bc39999f96762",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0027f6_9481594d",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/monitor.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-18T14:18:15Z",
+      "side": 1,
+      "message": "Good point.  I added calls to close the `ready` channel before each of the early returns.  This should cause the receiver to get !ok on the other side and bail.",
+      "parentUuid": "e203783d_d7bbc218",
+      "revId": "c797130a7cc672d5190f4632dd6bc39999f96762",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
