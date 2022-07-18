@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d917a97_cc31e1f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-18T16:38:03Z",
+      "side": 1,
+      "message": "Updated bug number in the commit message.",
+      "revId": "1309cd546bd0ecf021b5137c11ef5a2aeedb336f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
