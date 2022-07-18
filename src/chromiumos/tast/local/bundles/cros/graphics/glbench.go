@@ -56,7 +56,7 @@ func init() {
 				Val:               config{config: &glbench.CrostiniConfig{}},
 			}, {
 				Name:              "crostini_hasty_stable",
-				ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
+				ExtraAttr:         []string{"group:graphics", "graphics_perbuild"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
 				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -65,7 +65,7 @@ func init() {
 				Val:               config{config: &glbench.CrostiniConfig{Hasty: true}},
 			}, {
 				Name:              "crostini_hasty_unstable",
-				ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
+				ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "informational"},
 				ExtraData:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
 				ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host", "dlc"},
 				ExtraHardwareDeps: crostini.CrostiniUnstable,

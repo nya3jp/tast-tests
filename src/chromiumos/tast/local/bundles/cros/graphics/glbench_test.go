@@ -46,7 +46,7 @@ func TestGlBenchParams(t *testing.T) {
 			Timeout:           5 * time.Minute,
 			Val:               `config{config: &glbench.CrostiniConfig{Hasty: true}}`,
 			ExtraSoftwareDeps: []string{"chrome", "crosvm_gpu", "vm_host"},
-			ExtraAttr:         []string{"group:graphics", "graphics_perbuild", "group:mainline", "informational"},
+			ExtraAttr:         []string{"group:graphics", "graphics_perbuild"},
 			MinimalSet:        true,
 		}})
 
