@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df9e5e8b_232f433a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-18T20:49:41Z",
+      "side": 1,
+      "message": "nit: I\u0027d consider adding another param - cws_clamshell_mode, and cws_tablet_mode, especially if we test arc apps at some point (in which case we\u0027d need extra steps to enable ARC, so we may want to use differently set up user session for tests)",
+      "range": {
+        "startLine": 65,
+        "startChar": 13,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "129acdd0d4b29d5e3f2d88c3a23d079c8ce8a2e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
