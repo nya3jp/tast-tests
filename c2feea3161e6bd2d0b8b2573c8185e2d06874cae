@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f448a2b6_1bc9a104",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-18T10:05:58Z",
+      "side": 1,
+      "message": "Let\u0027s wait till crostini team figuring out what\u0027s the best way to deal with their unstable tests.",
+      "revId": "c2feea3161e6bd2d0b8b2573c8185e2d06874cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eced9c4c_773efb7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/graphics/glbench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-18T10:05:58Z",
+      "side": 1,
+      "message": "crostini.MakeTestParamsFromList adds informational attributes to unstable automatically. This breaks the unit test of the tast.",
+      "range": {
+        "startLine": 68,
+        "startChar": 72,
+        "endLine": 68,
+        "endChar": 85
+      },
+      "revId": "c2feea3161e6bd2d0b8b2573c8185e2d06874cae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
