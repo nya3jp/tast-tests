@@ -111,7 +111,11 @@ func init() {
 			"xiyuan@chromium.org",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl:            &loggedInToCUJUserFixture{keepState: true, webUITabStrip: true, bt: browser.TypeAsh},
+		Impl: &loggedInToCUJUserFixture{
+			keepState:       true,
+			chromeExtraOpts: []chrome.Option{chrome.EnableFeatures("WebUITabStrip")},
+			bt:              browser.TypeAsh,
+		},
 		Parent:          "cpuIdleForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -139,7 +143,14 @@ func init() {
 			"xliu@cienet.com",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl:            &loggedInToCUJUserFixture{keepState: true, webUITabStrip: true, bt: browser.TypeLacros},
+		Impl: &loggedInToCUJUserFixture{
+			keepState: true,
+			chromeExtraOpts: []chrome.Option{
+				chrome.EnableFeatures("WebUITabStrip"),
+				chrome.LacrosEnableFeatures("WebUITabStrip"),
+			},
+			bt: browser.TypeLacros,
+		},
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: resetTimeout,
@@ -152,7 +163,9 @@ func init() {
 			"alston.huang@cienet.com",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl:            &loggedInToCUJUserFixture{webUITabStrip: true},
+		Impl: &loggedInToCUJUserFixture{
+			chromeExtraOpts: []chrome.Option{chrome.EnableFeatures("WebUITabStrip")},
+		},
 		Parent:          "cpuIdleForEnrolledCUJ",
 		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + chrome.GAIALoginTimeout + optin.OptinTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -168,7 +181,13 @@ func init() {
 			"jane.yang@cienet.com",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl:            &loggedInToCUJUserFixture{webUITabStrip: true, bt: browser.TypeLacros},
+		Impl: &loggedInToCUJUserFixture{
+			chromeExtraOpts: []chrome.Option{
+				chrome.EnableFeatures("WebUITabStrip"),
+				chrome.LacrosEnableFeatures("WebUITabStrip"),
+			},
+			bt: browser.TypeLacros,
+		},
 		Parent:          "cpuIdleForEnrolledCUJ",
 		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + chrome.GAIALoginTimeout + optin.OptinTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -284,9 +303,7 @@ type loggedInToCUJUserFixture struct {
 	origRunningPkgs map[string]struct{}
 	logMarker       *logsaver.Marker
 	keepState       bool
-	// webUITabStrip indicates whether we should run new chrome UI under tablet mode.
-	// Remove this flag when new UI becomes default.
-	webUITabStrip bool
+	chromeExtraOpts []chrome.Option
 	// bt describes what type of browser this fixture should use
 	bt                browser.Type
 	useEnterprisePool bool
@@ -307,15 +324,10 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 		if f.keepState {
 			opts = append(opts, chrome.KeepState())
 		}
-		if f.webUITabStrip {
-			opts = append(opts, chrome.EnableFeatures("WebUITabStrip"))
-		}
+		opts = append(opts, f.chromeExtraOpts...)
 
 		var err error
 		if f.bt == browser.TypeLacros {
-			if f.webUITabStrip {
-				opts = append(opts, chrome.LacrosEnableFeatures("WebUITabStrip"))
-			}
 			opts, err = lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary),
 				lacrosfixt.ChromeOptions(opts...)).Opts()
 			if err != nil {
