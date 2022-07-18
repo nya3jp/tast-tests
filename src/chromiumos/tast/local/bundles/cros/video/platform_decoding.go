@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/local/bundles/cros/video/expectations"
 	"chromiumos/tast/local/media/logging"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -2704,6 +2705,12 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 	}
 	defer vl.Close()
 
+	expectation, err := expectations.GetTestExpectation(ctx, s)
+	if err != nil {
+		s.Fatal("Failed to load test expectation: ", err)
+	}
+	defer expectation.HandleFinalExpectation(s)
+
 	// Creates temporary md5 checksum log file
 	f, err := os.CreateTemp("", "frame_checksums.*.md5")
 	if err != nil {
@@ -2739,12 +2746,12 @@ func PlatformDecoding(ctx context.Context, s *testing.State) {
 
 		if err != nil {
 			output := append(stdout, stderr...)
-			testing.ContextLogf(ctx, "%v failed unexpectedly: %s", exec, string(output))
+			testing.ContextLogf(ctx, "%v failed : %s", exec, string(output))
 			errorMessage := fmt.Sprintf("%v failed unexpectedly on %s: ", exec, filename)
 			if stopOnFailure {
-				s.Fatal(errorMessage, err)
+				expectation.Fatal(s, errorMessage, err)
 			}
-			s.Error(errorMessage, err)
+			expectation.Error(s, errorMessage, err)
 		}
 		// TODO(jchinlee): Investigate saving failing frames.
 	}
