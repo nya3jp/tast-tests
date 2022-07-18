@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74e6aaeb_b044e7b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373635
+      },
+      "writtenOn": "2022-07-18T09:42:28Z",
+      "side": 1,
+      "message": "LGTM. Thanks for doing the changes, Jerry!",
+      "revId": "6c5bb84ee7658e28e0b8016d228f52d1ea00404b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
