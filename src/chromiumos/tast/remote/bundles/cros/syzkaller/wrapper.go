@@ -52,6 +52,8 @@ var boardArchMapping = map[string]string{
 	// syzkaller binaries built for trogdor and strongbad are 32 bit.
 	"trogdor":   "arm",
 	"strongbad": "arm",
+	// syzkaller binaries built for kukui are 64 bit.
+	"kukui": "arm64",
 }
 
 // dutConfig represents information related to the DUT configuration;
