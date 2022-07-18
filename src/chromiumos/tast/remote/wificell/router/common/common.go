@@ -6,6 +6,7 @@ package common
 
 import (
 	"context"
+	"fmt"
 	"regexp"
 	"time"
 
@@ -27,6 +28,18 @@ const (
 // RouterCloseContextDuration is a shorter context.Context duration is used for
 // running things before Router.Close to reserve time for it to run.
 const RouterCloseContextDuration = 5 * time.Second
+
+// TimestampFileFormat is the time format used for timestamps in generated
+// file names and folder names.
+const TimestampFileFormat = "20060102-150405"
+
+// BuildWorkingDirPath creates a working directory path based on the current
+// time and base WorkingDir. All temporary files shall be placed within this
+// directory during the life of the router controller instance. The time-based
+// subdirectory under WorkingDir separates different instances' temporary files.
+func BuildWorkingDirPath() string {
+	return fmt.Sprintf("%s/%s/", WorkingDir, time.Now().Format(TimestampFileFormat))
+}
 
 // HostFileContentsMatch checks if the file at remoteFilePath on the remote
 // host exists and that its contents match using the regex string matchRegex.
