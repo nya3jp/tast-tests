@@ -16,6 +16,24 @@
       "message": "Can you run code formatter?\n\nI think some line is too long\n",
       "revId": "ac260e3d50daf857ceb0e52a2c18d18b575f046d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56fffe17_7ea134ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-18T13:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43c27825_2a9e9a58",
+      "revId": "ac260e3d50daf857ceb0e52a2c18d18b575f046d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
