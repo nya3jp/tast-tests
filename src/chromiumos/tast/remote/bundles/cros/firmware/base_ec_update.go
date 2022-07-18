@@ -23,6 +23,7 @@ import (
 
 	"chromiumos/tast/common/servo"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/firmware"
@@ -43,10 +44,11 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.firmware.UtilsService"},
 		HardwareDeps: hwdep.D(
-			hwdep.Model("kakadu"),
+			hwdep.Model("kakadu", "katsu", "homestar", "mrbland", "wormdingler", "quackingstick"),
 			hwdep.ChromeEC(),
 		),
 		Fixture: fixture.DevModeGBB,
+		Timeout: 15 * time.Minute,
 	})
 }
 
@@ -66,9 +68,12 @@ type modifiedFileDir struct {
 
 func BaseECUpdate(ctx context.Context, s *testing.State) {
 	// To-do:
-	// Currently at the experimental stage, this test is set up to run on Kukuki(Kakadu).
 	// Our goal would be to expand to a wider range of DUTs, as defined in the following map:
 	// https://chromium.googlesource.com/chromiumos/platform2/+/HEAD/hammerd/hammertests/#prepare-host-and-dut
+	// We noticed that Soraka and Nocturne don't have product-id, vendor-id, and usb-path,
+	// which are the required params used in flashing the base ec bin file. Also, on Coachz
+	// and Krane, even though the base ec version changed, the notification window did not
+	// appear. We'll need to do some more research on these models.
 	h := s.FixtValue().(*fixture.Value).Helper
 
 	if err := h.RequireServo(ctx); err != nil {
@@ -119,6 +124,32 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to modify base-ec: ", err)
 	}
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
+	defer cancel()
+
+	// In case the detachable base did not update successfully, warm reset DUT
+	// at the end of the test to ensure that the base ec would be restored.
+	requiredReboot := true
+	defer func(ctx context.Context, reboot *bool) {
+		if *reboot {
+			// One of the previous steps in flashing base ec was probably
+			// unsuccessful, which might leave base ec unresponsive.
+			s.Log("Rebooting DUT to recover base ec")
+			h.CloseRPCConnection(ctx)
+			if err := h.Servo.SetPowerState(ctx, servo.PowerStateWarmReset); err != nil {
+				s.Fatal("Failed to reboot DUT by servo: ", err)
+			}
+			s.Log("Waiting for DUT to power ON")
+			waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
+			defer cancelWaitConnect()
+
+			if err := s.DUT().WaitConnect(waitConnectCtx); err != nil {
+				s.Fatal("Failed to reconnect to DUT: ", err)
+			}
+		}
+	}(cleanupCtx, &requiredReboot)
+
 	s.Log("Flashing an old image to detachable-base ec")
 	if err := flashAnOldImgToDetachableBaseEC(ctx, dut, crosCfgRes, fileDir.onHost); err != nil {
 		s.Fatal("Failed to flash base ec to an old version: ", err)
@@ -149,6 +180,8 @@ func BaseECUpdate(ctx context.Context, s *testing.State) {
 	if err := s.DUT().WaitConnect(waitConnectCtx); err != nil {
 		s.Fatal("Failed to reconnect to DUT: ", err)
 	}
+
+	requiredReboot = false
 
 	s.Log("Saving the base ec firmware version after reboot ")
 	newBaseEC, err := getBaseECInfo(ctx, dut, crosCfgRes.ProductId)
