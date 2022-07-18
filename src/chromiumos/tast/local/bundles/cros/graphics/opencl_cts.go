@@ -1347,8 +1347,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_basic",
 					args:         "astype",
-					expectedPass: false,
-					buganizer:    "b/227134903",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -8539,8 +8538,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_0",
-					expectedPass: false,
-					buganizer:    "b/227133190",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -8549,8 +8547,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_1",
-					expectedPass: false,
-					buganizer:    "b/227133190",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -8559,8 +8556,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_2",
-					expectedPass: false,
-					buganizer:    "b/227133190",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -8569,8 +8565,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_contractions",
 					args:         "contractions_float_3",
-					expectedPass: false,
-					buganizer:    "b/227133190",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -9672,8 +9667,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "roundTrip -w",
-					expectedPass: false,
-					buganizer:    "b/227136713",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -9682,8 +9676,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vloada_half -w",
-					expectedPass: false,
-					buganizer:    "b/227136713",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -9692,8 +9685,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vload_half -w",
-					expectedPass: false,
-					buganizer:    "b/227136713",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -9702,8 +9694,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstorea_half_rte -w",
-					expectedPass: false,
-					buganizer:    "b/227136713",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -9742,8 +9733,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstorea_half -w",
-					expectedPass: false,
-					buganizer:    "b/227136713",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -9752,8 +9742,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstore_half_rte -w",
-					expectedPass: false,
-					buganizer:    "b/227136713",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
@@ -9792,8 +9781,7 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_half",
 					args:         "vstore_half -w",
-					expectedPass: false,
-					buganizer:    "b/227136713",
+					expectedPass: true,
 				},
 				Timeout: 1 * time.Minute,
 			},
