@@ -102,8 +102,6 @@ func PutFiles(ctx context.Context, host *ssh.Conn, files map[string]string) (int
 		}
 	}
 
-	testing.ContextLogf(ctx, "Copying %d files to remote host", len(srcFilesQueue))
-
 	// Make any needed directories on host
 	dstDirs := make([]string, 0)
 	for dstDir := range dstDirSet {
@@ -118,8 +116,6 @@ func PutFiles(ctx context.Context, host *ssh.Conn, files map[string]string) (int
 		dst := absoluteFiles[src]
 		var data []byte
 		var err error
-
-		testing.ContextLogf(ctx, "Copying local file %q to remote file %q", src, dst)
 
 		// Read local file contents
 		if data, err = ioutil.ReadFile(src); err != nil {
@@ -212,7 +208,5 @@ func GetSingleFile(ctx context.Context, host *ssh.Conn, srcRemoteFilePath, dstLo
 	if err := catCmd.Wait(); err != nil {
 		return errors.Wrapf(err, "failed to wait for remote command 'cat %q' to complete", dstLocalFilePath)
 	}
-
-	testing.ContextLogf(ctx, "Copied remote file %q to local file %q", srcRemoteFilePath, dstLocalFilePath)
 	return nil
 }
