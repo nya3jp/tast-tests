@@ -55,6 +55,15 @@ var EnglishUSWithInternationalKeyboard = InputMethod{
 	VoiceLanguage:       LanguageEn,
 }
 
+// EnglishUSWithExtendedKeyboard represents the input method of English (US) with Extended keyboard.
+var EnglishUSWithExtendedKeyboard = InputMethod{
+	Name:                "English (US) with Extended keyboard",
+	ID:                  "xkb:us:altgr-intl:eng",
+	ShortLabel:          "INTL",
+	HandwritingLanguage: LanguageEn,
+	VoiceLanguage:       LanguageEn,
+}
+
 // EnglishUK represents the input method of English (UK).
 var EnglishUK = InputMethod{
 	Name:                "English (UK)",
@@ -392,6 +401,7 @@ var Urdu = InputMethod{
 var inputMethods = []InputMethod{
 	EnglishUS,
 	EnglishUSWithInternationalKeyboard,
+	EnglishUSWithExtendedKeyboard,
 	EnglishUK,
 	EnglishSouthAfrica,
 	SpanishSpain,
