@@ -62,16 +62,16 @@ func init() {
 			"pwang@chromium.org",
 			"chromeos-gfx@google.com",
 		},
-		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"no_qemu"},
 		Params: []testing.Param{
 			{
 				Name:              "",
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(dpPlusModels...)),
+				ExtraAttr:         []string{"group:mainline"},
 			}, {
 				Name:              "bad_bios",
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(dpPlusModels...)),
-				ExtraAttr:         []string{"informational"},
+				ExtraAttr:         []string{"group:graphics", "graphics_nightly"},
 			},
 		},
 	})
