@@ -16,6 +16,69 @@
       "message": "PTAL. Thank you!",
       "revId": "1c3c7e3748201e6f8ca003e0bb20fc55818e78d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91360b20_497b05e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-18T06:39:17Z",
+      "side": 1,
+      "message": "Please fix the test first, and try the promotion again after 20 more passing builds.",
+      "revId": "1c3c7e3748201e6f8ca003e0bb20fc55818e78d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f16300a_ff622206",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-18T06:39:17Z",
+      "side": 1,
+      "message": "Why do you need a longer timeout? I am asking because long tests should not be in the CQ.",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "1c3c7e3748201e6f8ca003e0bb20fc55818e78d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1f28a18_7498fdf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-18T06:39:17Z",
+      "side": 1,
+      "message": "This function returns an action. An action has to be called, and the returning error should be handled. Right now the test does not check anything.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "1c3c7e3748201e6f8ca003e0bb20fc55818e78d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
