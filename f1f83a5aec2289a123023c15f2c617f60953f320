@@ -330,6 +330,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e385c7fa_c0123086",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T05:15:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "33f14633_12ab7982",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 37
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "293a04e1_8e090c3a",
@@ -414,6 +438,30 @@
       "side": 1,
       "message": "I thought that returning the InputTestServer might be misleading to future users since a lot of the helper functions require the .pc variable to be set.\n\nSince I wasn\u0027t able to get the browser for kiosk sessions the .pc variable can\u0027t be set properly, and would cause errors for most of the InputTestServer function calls.",
       "parentUuid": "f0655010_e8391cf1",
+      "range": {
+        "startLine": 175,
+        "startChar": 40,
+        "endLine": 175,
+        "endChar": 63
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e3212d_57045306",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T05:15:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6642b6ee_f15aabac",
       "range": {
         "startLine": 175,
         "startChar": 40,

@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc0ac1a_9974abd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T05:15:16Z",
+      "side": 1,
+      "message": "Hi Kamil, PTAL at the use of the kiosk fixture.",
+      "revId": "d39fe9656357a768eb07fa61641a8039036c1908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34f68f1_f5f024bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T05:15:16Z",
+      "side": 1,
+      "message": "the function is actually not returning any error, you don\u0027t need this return value.",
+      "range": {
+        "startLine": 175,
+        "startChar": 63,
+        "endLine": 175,
+        "endChar": 74
+      },
+      "revId": "d39fe9656357a768eb07fa61641a8039036c1908",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
