@@ -106,7 +106,7 @@ func init() {
 				cam:         true,
 				browserType: browser.TypeAsh,
 			},
-			Fixture: "loggedInToCUJUser",
+			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
 			Name:      "lacros_2p",
 			Timeout:   defaultTestTimeout,
@@ -117,7 +117,7 @@ func init() {
 				cam:         true,
 				browserType: browser.TypeLacros,
 			},
-			Fixture:           "loggedInToCUJUserLacros",
+			Fixture:           "loggedInToCUJUserWithWebRTCEventLoggingLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			Name:      "4p",
@@ -129,7 +129,7 @@ func init() {
 				cam:         true,
 				browserType: browser.TypeAsh,
 			},
-			Fixture: "loggedInToCUJUser",
+			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
 			// Small meeting.
 			Name:      "4p_present_notes_split",
@@ -144,7 +144,7 @@ func init() {
 				cam:         true,
 				browserType: browser.TypeAsh,
 			},
-			Fixture: "loggedInToCUJUser",
+			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
 			// Big meeting.
 			Name:      "16p",
@@ -156,7 +156,7 @@ func init() {
 				cam:         true,
 				browserType: browser.TypeAsh,
 			},
-			Fixture: "loggedInToCUJUser",
+			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
 			// Even bigger meeting.
 			Name:      "49p",
@@ -168,7 +168,7 @@ func init() {
 				cam:         true,
 				browserType: browser.TypeAsh,
 			},
-			Fixture: "loggedInToCUJUser",
+			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
 			// Big meeting with tracing.
 			Name:      "16p_trace",
@@ -181,7 +181,7 @@ func init() {
 				browserType: browser.TypeAsh,
 				tracing:     true,
 			},
-			Fixture: "loggedInToCUJUser",
+			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
 			// Validation test for big meeting.
 			Name:    "16p_validation",
@@ -193,7 +193,7 @@ func init() {
 				browserType: browser.TypeAsh,
 				validation:  true,
 			},
-			Fixture: "loggedInToCUJUser",
+			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
 			// Big meeting with notes.
 			Name:    "16p_notes",
@@ -206,7 +206,7 @@ func init() {
 				cam:         true,
 				browserType: browser.TypeAsh,
 			},
-			Fixture: "loggedInToCUJUser",
+			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
 			// 16p with jamboard test.
 			Name:    "16p_jamboard",
@@ -219,7 +219,7 @@ func init() {
 				cam:         true,
 				browserType: browser.TypeAsh,
 			},
-			Fixture: "loggedInToCUJUser",
+			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
 			// Lacros 4p
 			Name:      "lacros_4p",
@@ -231,7 +231,7 @@ func init() {
 				cam:         true,
 				browserType: browser.TypeLacros,
 			},
-			Fixture:           "loggedInToCUJUserLacros",
+			Fixture:           "loggedInToCUJUserWithWebRTCEventLoggingLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			// 49p with vp8 video codec.
@@ -244,7 +244,7 @@ func init() {
 				browserType: browser.TypeAsh,
 				botsOptions: []bond.AddBotsOption{bond.WithVP9(false, false)},
 			},
-			Fixture: "loggedInToCUJUser",
+			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
 			// Lacros variation of 16p test
 			Name:      "lacros_16p",
@@ -256,7 +256,7 @@ func init() {
 				cam:         true,
 				browserType: browser.TypeLacros,
 			},
-			Fixture:           "loggedInToCUJUserLacros",
+			Fixture:           "loggedInToCUJUserWithWebRTCEventLoggingLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			// Lacros variation of 16p trace test
@@ -269,7 +269,7 @@ func init() {
 				browserType: browser.TypeLacros,
 				tracing:     true,
 			},
-			Fixture:           "loggedInToCUJUserLacros",
+			Fixture:           "loggedInToCUJUserWithWebRTCEventLoggingLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			// Long meeting to catch slow performance degradation.
@@ -282,7 +282,7 @@ func init() {
 				duration:    30 * time.Minute,
 				browserType: browser.TypeAsh,
 			},
-			Fixture: "loggedInToCUJUser",
+			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
 			// Lacros 4p with presenting and notes split
 			Name:      "lacros_4p_present_notes_split",
@@ -297,7 +297,7 @@ func init() {
 				cam:         true,
 				browserType: browser.TypeLacros,
 			},
-			Fixture:           "loggedInToCUJUserLacros",
+			Fixture:           "loggedInToCUJUserWithWebRTCEventLoggingLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 		}},
 	})

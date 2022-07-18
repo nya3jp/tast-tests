@@ -6,6 +6,8 @@ package cuj
 
 import (
 	"context"
+	"io"
+	"os"
 	"path/filepath"
 	"time"
 
@@ -38,6 +40,9 @@ const (
 	CPUStablizationTimeout = CPUCoolDownTimeout + CPUIdleTimeout
 
 	resetTimeout = 30 * time.Second
+
+	webRTCEventLogCommandFlag = "--webrtc-event-logging=/tmp"
+	webRTCEventLogFilePattern = "/tmp/event_log_*.log"
 )
 
 func init() {
@@ -195,6 +200,40 @@ func init() {
 		Vars: []string{
 			"ui.cujAccountPool",
 		},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "loggedInToCUJUserWithWebRTCEventLogging",
+		Desc: "CUJ test fixture with WebRTC event logging",
+		Contacts: []string{
+			"amusbach@chromium.org",
+			"chromeos-perfmetrics-eng@google.com",
+		},
+		Impl: &loggedInToCUJUserFixture{
+			chromeExtraOpts: []chrome.Option{chrome.ExtraArgs(webRTCEventLogCommandFlag)},
+			bt:              browser.TypeAsh,
+		},
+		Parent:          "prepareForCUJ",
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		Vars:            []string{"ui.cujAccountPool"},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "loggedInToCUJUserWithWebRTCEventLoggingLacros",
+		Desc: "Lacros variation of loggedInToCUJUserWithWebRTCEventLogging",
+		Contacts: []string{
+			"amusbach@chromium.org",
+			"chromeos-perfmetrics-eng@google.com",
+		},
+		Impl: &loggedInToCUJUserFixture{
+			chromeExtraOpts: []chrome.Option{chrome.LacrosExtraArgs(webRTCEventLogCommandFlag)},
+			bt:              browser.TypeLacros,
+		},
+		Parent:          "cpuIdleForCUJ",
+		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		Vars:            []string{"ui.cujAccountPool"},
 	})
 }
 
@@ -497,6 +536,20 @@ func (f *loggedInToCUJUserFixture) PreTest(ctx context.Context, s *testing.FixtT
 	} else {
 		s.Log("Failed to start the log saver: ", err)
 	}
+
+	webRTCLogs, err := filepath.Glob(webRTCEventLogFilePattern)
+	if err != nil {
+		s.Log("Failed to check for WebRTC event log files before test: ", err)
+	}
+	if len(webRTCLogs) == 0 {
+		return
+	}
+	s.Log("Deleting WebRTC event log files found in /tmp before test: ", webRTCLogs)
+	for _, filename := range webRTCLogs {
+		if err := os.Remove(filename); err != nil {
+			s.Logf("Failed to delete %q: %s", filename, err)
+		}
+	}
 }
 
 func (f *loggedInToCUJUserFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
@@ -506,4 +559,41 @@ func (f *loggedInToCUJUserFixture) PostTest(ctx context.Context, s *testing.Fixt
 		}
 		f.logMarker = nil
 	}
+
+	webRTCLogs, err := filepath.Glob(webRTCEventLogFilePattern)
+	if err != nil {
+		s.Log("Failed to check for WebRTC event log files after test: ", err)
+	}
+	if len(webRTCLogs) == 0 {
+		return
+	}
+	s.Log("Gathering WebRTC event log files: ", webRTCLogs)
+	for _, filename := range webRTCLogs {
+		outFile := filepath.Join(s.OutDir(), filepath.Base(filename))
+		if err := copyFileForTestResults(filename, outFile); err != nil {
+			s.Logf("Failed to copy %q to %q: %s", filename, outFile, err)
+		}
+		if err := os.Remove(filename); err != nil {
+			s.Logf("Failed to delete %q: %s", filename, err)
+		}
+	}
+}
+
+// copyFileForTestResults copies a file. The destination file must not already exist. The
+// created copy has file permissions 0644 regardless of the file permissions of the original.
+func copyFileForTestResults(srcPath, dstPath string) error {
+	src, err := os.Open(srcPath)
+	if err != nil {
+		return err
+	}
+	defer src.Close()
+
+	dst, err := os.OpenFile(dstPath, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0644)
+	if err != nil {
+		return err
+	}
+	defer dst.Close()
+
+	_, err = io.Copy(dst, src)
+	return err
 }
