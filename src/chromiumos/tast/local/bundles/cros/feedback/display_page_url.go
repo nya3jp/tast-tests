@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/feedbackapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -59,13 +58,6 @@ func DisplayPageURL(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn).WithTimeout(20 * time.Second)
 
-	// Set up keyboard.
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to find keyboard: ", err)
-	}
-	defer kb.Close()
-
 	// Open chrome browser.
 	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
 		s.Fatal("Failed to launch chrome app: ", err)
@@ -75,17 +67,6 @@ func DisplayPageURL(ctx context.Context, s *testing.State) {
 		s.Fatal("Chrome app did not appear in shelf after launch: ", err)
 	}
 
-	url := "www.google.com"
-
-	// Enter url.
-	if err := kb.Type(ctx, url); err != nil {
-		s.Fatal("Failed to enter url: ", err)
-	}
-
-	if err := kb.Accel(ctx, "Enter"); err != nil {
-		s.Fatal("Failed to enter: ", err)
-	}
-
 	// Launch feedback app and go to share data page.
 	feedbackRootNode, err := feedbackapp.LaunchAndGoToShareDataPage(ctx, tconn)
 	if err != nil {
@@ -93,7 +74,7 @@ func DisplayPageURL(ctx context.Context, s *testing.State) {
 	}
 
 	// Verify url text exists.
-	urlText := nodewith.NameContaining(url).Role(role.StaticText).Ancestor(feedbackRootNode)
+	urlText := nodewith.NameContaining("chrome://newtab/").Role(role.StaticText).Ancestor(feedbackRootNode)
 	if err := ui.WaitUntilExists(urlText)(ctx); err != nil {
 		s.Fatal("Failed to find element: ", err)
 	}
