@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3876e4c5_9548a768",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T04:42:47Z",
+      "side": 1,
+      "message": "suggest to rename the file name to `physical_keyboard_kiosk_typing.go` and the function name accordingly.",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 37
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3ee079_f3c1780b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T04:42:47Z",
+      "side": 1,
+      "message": "the description seems incorrect",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0163f80_15fcd1b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T04:42:47Z",
+      "side": 1,
+      "message": "you may remove this. All tests are using ash by default.",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb4457fb_508ca728",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T04:42:47Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 115,
+        "startChar": 19,
+        "endLine": 115,
+        "endChar": 22
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a924f203_d9c573a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T04:42:47Z",
+      "side": 1,
+      "message": "better to include this in the `uiauto.Combine` below.",
+      "range": {
+        "startLine": 137,
+        "startChar": 14,
+        "endLine": 137,
+        "endChar": 29
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2881d1f1_50607bdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T04:42:47Z",
+      "side": 1,
+      "message": "wrong name?",
+      "range": {
+        "startLine": 141,
+        "startChar": 54,
+        "endLine": 141,
+        "endChar": 63
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0cfc814_8e64c79e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T04:42:47Z",
+      "side": 1,
+      "message": "`its.ClickFieldAndWaitForActive(inputField)`",
+      "range": {
+        "startLine": 144,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 37
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "293a04e1_8e090c3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/kiosk_physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T04:42:47Z",
+      "side": 1,
+      "message": "remove this",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 18
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0655010_e8391cf1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T04:42:47Z",
+      "side": 1,
+      "message": "you can still return `*InputsTestServer`, and expose the server field. So you can still use other helper functions for free.",
+      "range": {
+        "startLine": 175,
+        "startChar": 40,
+        "endLine": 175,
+        "endChar": 63
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b611b49_50d7f343",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/testserver/test_server.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-18T04:42:47Z",
+      "side": 1,
+      "message": "you don\u0027t need this here.",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 0
+      },
+      "revId": "f1f83a5aec2289a123023c15f2c617f60953f320",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
