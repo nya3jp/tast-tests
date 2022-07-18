@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f8913a_b60b4a6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-18T20:38:47Z",
+      "side": 1,
+      "message": "You are right. This issue has been discussed before. Since this action was inconsistent in the loacl test environment and the remote test environment before, the logic was extracted separately.\n\nHowever, because I use testing.ContextOutDir() to get a directory now, the behavior of local and remote tests becomes the same. I can move those statements into the `~/chromiumos/tast/common/network/tcpdump /runner.go`. I plan to create another commit to refactor this part, separate from the modification of DNS test.",
+      "parentUuid": "d968f958_ee595ad9",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 2
+      },
+      "revId": "fb807dfe8c9360148df9eb077b6ddc9d03c8767b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "323acb87_172101e2",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-18T06:12:45Z",
       "side": 1,
       "message": "nit: \"a\"",
+      "range": {
+        "startLine": 43,
+        "startChar": 42,
+        "endLine": 43,
+        "endChar": 44
+      },
+      "revId": "fb807dfe8c9360148df9eb077b6ddc9d03c8767b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5360a2e4_4812ecda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-18T20:38:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "323acb87_172101e2",
       "range": {
         "startLine": 43,
         "startChar": 42,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c8f7b0_acdc35e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-18T20:38:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea9e87b0_40ea8557",
+      "range": {
+        "startLine": 48,
+        "startChar": 67,
+        "endLine": 48,
+        "endChar": 74
+      },
+      "revId": "fb807dfe8c9360148df9eb077b6ddc9d03c8767b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efb7eb52_11c54304",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-07-18T06:12:45Z",
       "side": 1,
       "message": "We should maybe start setting these options directly on the dnsmasq struct.",
+      "range": {
+        "startLine": 80,
+        "startChar": 35,
+        "endLine": 80,
+        "endChar": 102
+      },
+      "revId": "fb807dfe8c9360148df9eb077b6ddc9d03c8767b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6161afc_5eab48ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-18T20:38:47Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not sure what you mean. The `dnsmasq` struct is private and the settings are encapsulated in virtualnet.go. Most `dnsmasq` struct fields should be set in `New()` of dnsmasq.go. \nDo you mean that I should change the `dnsmasq` struct to be public and set the fields in virtualnet.go or even shill_captive_protal_dns.go? I assume this change is to not want the parameter pass from shill_captive_protal_dns.go to virtualnet.go to dnsmasq.go?",
+      "parentUuid": "efb7eb52_11c54304",
       "range": {
         "startLine": 80,
         "startChar": 35,
