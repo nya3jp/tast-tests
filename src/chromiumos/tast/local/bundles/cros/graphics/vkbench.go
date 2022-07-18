@@ -27,18 +27,17 @@ func init() {
 			"chromeos-gfx@google.com",
 		},
 		SoftwareDeps: []string{"no_qemu", "vulkan"},
+		Attr:         []string{"group:graphics", "graphics_nightly"},
 		Params: []testing.Param{{
-			Name:      "",
-			Val:       vkConfig{config: &vkbench.CrosConfig{}},
-			ExtraAttr: []string{"group:mainline", "informational", "group:graphics", "graphics_nightly"},
-			Fixture:   "graphicsNoChrome",
-			Timeout:   10 * time.Minute,
+			Name:    "",
+			Val:     vkConfig{config: &vkbench.CrosConfig{}},
+			Fixture: "graphicsNoChrome",
+			Timeout: 10 * time.Minute,
 		}, {
-			Name:      "hasty",
-			Val:       vkConfig{config: &vkbench.CrosConfig{Hasty: true}},
-			ExtraAttr: []string{"group:mainline", "informational"},
-			Fixture:   "graphicsNoChrome",
-			Timeout:   5 * time.Minute,
+			Name:    "hasty",
+			Val:     vkConfig{config: &vkbench.CrosConfig{Hasty: true}},
+			Fixture: "graphicsNoChrome",
+			Timeout: 5 * time.Minute,
 		}},
 	})
 }
