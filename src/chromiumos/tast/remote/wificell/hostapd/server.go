@@ -78,8 +78,8 @@ func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir strin
 	ctx, st := timing.Start(ctx, "hostapd.StartServer")
 	defer st.End()
 
-	// Copying the struct config, because hostapd is keeing a *Config pointer from the caller.
-	// That could cause a problem if the caller assuems it's read-only.
+	// Copying the struct config, because hostapd is keeping a *Config pointer from the caller.
+	// That could cause a problem if the caller assumes it's read-only.
 	hostapdConfigCopy := *config
 
 	s := &Server{
@@ -273,25 +273,26 @@ func (s *Server) Close(ctx context.Context) error {
 	defer st.End()
 
 	testing.ContextLog(ctx, "Stopping hostapd")
+	configPath := s.confPathServer()
 	if s.cmd != nil {
 		s.cmd.Abort()
 		// TODO(crbug.com/1030635): Abort might not work, use pkill to ensure the daemon is killed.
-		s.host.CommandContext(ctx, "pkill", "-f", fmt.Sprintf("^%s.*%s", hostapdCmd, s.confPathServer())).Run()
+		_ = s.host.CommandContext(ctx, "pkill", "-f", fmt.Sprintf("^%s.*%s", hostapdCmd, configPath)).Run()
 
 		// Skip the error in Wait as the process is aborted and always has error in wait.
-		s.cmd.Wait()
+		_ = s.cmd.Wait()
 		s.cmd = nil
 	}
 	// Wait the bg routine to end before closing files.
 	s.wg.Wait()
 	if s.stdoutFile != nil {
-		s.stdoutFile.Close()
+		_ = s.stdoutFile.Close()
 	}
 	if s.stderrFile != nil {
-		s.stderrFile.Close()
+		_ = s.stderrFile.Close()
 	}
-	if err := s.host.CommandContext(ctx, "rm", s.confPathServer()).Run(); err != nil {
-		return errors.Wrap(err, "failed to remove config")
+	if err := s.host.CommandContext(ctx, "rm", configPath).Run(); err != nil {
+		return errors.Wrapf(err, "failed to remove hostapd config at %q", configPath)
 	}
 	return nil
 }
