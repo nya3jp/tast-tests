@@ -75,6 +75,15 @@ type Router interface {
 	RouterName() string
 	// RouterType returns the router type.
 	RouterType() RouterType
+	// StartReboot initiates a reboot of the router host.
+	//
+	// Close must be called prior to StartReboot, not after.
+	//
+	// This Router instance will be unable to interact with the host after calling
+	// this, as the connection to the host will be severed. To use this host
+	// again, create a new Router instance with a new connection after the host is
+	// fully rebooted.
+	StartReboot(ctx context.Context) error
 }
 
 // Logs shall be implemented if the router supports log collection.
