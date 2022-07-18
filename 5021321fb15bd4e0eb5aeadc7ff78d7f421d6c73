@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e2d6b8_5a53fe4a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wallpaper/set_online_wallpaper_child.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-18T22:15:29Z",
+      "side": 0,
+      "message": "What\u0027s the condition that family link notification would appear? Or just simply making the wait unfatal? \nWithout the wait, CloseNotification might run before the notifications pop up.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 9
+      },
+      "revId": "5021321fb15bd4e0eb5aeadc7ff78d7f421d6c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
