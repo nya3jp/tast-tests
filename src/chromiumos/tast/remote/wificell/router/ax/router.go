@@ -47,6 +47,13 @@ func (r *Router) RouterType() support.RouterType {
 	return r.routerType
 }
 
+// StartReboot initiates a reboot of the router host.
+//
+// This method is not supported for AX routers.
+func (r *Router) StartReboot(ctx context.Context) error {
+	return errors.Errorf("method StartReboot not supported for %s routers", r.routerType.String())
+}
+
 // stageRouterParam changes the router configuration in memory. The actual router configuration does not take effect until restartWirelessService is invoked which pulls the configuration from memory.
 func (r *Router) stageRouterParam(ctx context.Context, band RadioEnum, key NVRAMKeyEnum, value string) error {
 	return r.host.CommandContext(ctx, "/bin/nvram", "set", fmt.Sprintf("%s_%s=%s", band, key, value)).Run()

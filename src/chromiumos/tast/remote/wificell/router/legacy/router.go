@@ -186,6 +186,13 @@ func (r *Router) RouterName() string {
 	return r.name
 }
 
+// StartReboot initiates a reboot of the router host.
+//
+// This method is not supported for Legacy routers.
+func (r *Router) StartReboot(ctx context.Context) error {
+	return errors.Errorf("method StartReboot not supported for %s routers", r.routerType.String())
+}
+
 // setupWifiPhys fills r.phys and enables their antennas.
 func (r *Router) setupWifiPhys(ctx context.Context) error {
 	ctx, st := timing.Start(ctx, "setupWifiPhys")
