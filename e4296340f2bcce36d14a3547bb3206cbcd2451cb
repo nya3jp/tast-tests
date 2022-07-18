@@ -16,6 +16,24 @@
       "message": "After some searching I found go-cmp that seems to provide a slightly more elegant way of implementing this: https://github.com/google/go-cmp. It has stuff like cmp.Equal(), cmpopts.SortSlices().\n\nA random example in the existing code: https://source.chromium.org/chromium/chromiumos/platform/tast/+/main:src/chromiumos/tast/internal/testing/test_instance_test.go;l\u003d224-225;drc\u003d5c1f755dc6c38e18263b051d99b5b10c06559036",
       "revId": "e4296340f2bcce36d14a3547bb3206cbcd2451cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e6bdf54_6580334a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-07-18T04:35:15Z",
+      "side": 1,
+      "message": "Done. Thanks for the example.",
+      "parentUuid": "ffe3c68f_ae12aabf",
+      "revId": "e4296340f2bcce36d14a3547bb3206cbcd2451cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
