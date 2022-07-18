@@ -14,7 +14,6 @@ import (
 
 	"chromiumos/tast/common/network/ip"
 	"chromiumos/tast/common/network/iw"
-	"chromiumos/tast/common/wifi/security/wep"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	remoteIp "chromiumos/tast/remote/network/ip"
@@ -375,13 +374,10 @@ func (r *Router) StartHostapd(ctx context.Context, name string, conf *hostapd.Co
 	}
 
 	// Fail fast if WEP is configured since it is hard to deduce from logs.
-	if securityConf, err := conf.SecurityConfig.HostapdConfig(); err != nil {
-		return nil, errors.Wrap(err, "failed to build hostapd conf for security config")
-	} else if authAlgsStr, hasAuthAlgs := securityConf["auth_algs"]; hasAuthAlgs {
-		authAlgs, err := strconv.Atoi(authAlgsStr)
-		if err == nil && (authAlgs == int(wep.AuthAlgoOpen) || authAlgs == int(wep.AuthAlgoShared)) {
-			return nil, errors.Wrap(err, "WEP security is not supported on OpenWrt routers")
-		}
+	if isWEP, err := common.HostapdSecurityConfigIsWEP(conf.SecurityConfig); err != nil {
+		return nil, errors.Wrap(err, "failed to check if hostapd security config uses wep")
+	} else if isWEP {
+		return nil, errors.Wrap(err, "WEP security is not supported on OpenWrt routers")
 	}
 
 	nd, err := r.netDev(ctx, conf.Channel, iw.IfTypeManaged)
