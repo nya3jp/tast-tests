@@ -24,7 +24,6 @@ import (
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/remote/wificell/router/common"
 	"chromiumos/tast/remote/wificell/router/common/support"
-	"chromiumos/tast/remote/wificell/router/openwrt/uci"
 	"chromiumos/tast/remote/wificell/wifiutil"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
@@ -39,7 +38,6 @@ type Router struct {
 	syslogdCollector *log.SyslogdCollector
 	iwr              *remoteIw.Runner
 	ipr              *remoteIp.Runner
-	uci              *uci.Runner
 	phys             map[int]*iw.Phy // map from phy idx to iw.Phy.
 	im               *common.IfaceManager
 	activeServices   activeServices
@@ -58,11 +56,6 @@ type activeServices struct {
 	rawCapture []*pcap.Capturer
 }
 
-var uciConfigsModified = []string{
-	uci.ConfigWireless,
-	uci.ConfigDHCP,
-}
-
 // NewRouter prepares initial test AP state (e.g., initializing wiphy/wdev).
 // ctx is the deadline for the step and daemonCtx is the lifetime for background
 // daemons.
@@ -74,7 +67,6 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 		routerType:     support.OpenWrtT,
 		iwr:            remoteIw.NewRemoteRunner(host),
 		ipr:            remoteIp.NewRemoteRunner(host),
-		uci:            uci.NewRemoteRunner(host),
 		phys:           make(map[int]*iw.Phy),
 		activeServices: activeServices{},
 		closed:         false,
@@ -117,12 +109,6 @@ func NewRouter(ctx, daemonCtx context.Context, host *ssh.Conn, name string) (*Ro
 	}
 	if err := r.host.CommandContext(shortCtx, "mkdir", "-p", r.workDir()).Run(); err != nil {
 		err = errors.Wrapf(err, "failed to create workdir %q", r.workDir())
-		closeBeforeErrorReturn(err)
-		return nil, err
-	}
-
-	if err := uci.ResetConfigs(shortCtx, r.uci, false, uciConfigsModified...); err != nil {
-		err = errors.Wrap(err, "failed to reset uci configs")
 		closeBeforeErrorReturn(err)
 		return nil, err
 	}
@@ -200,15 +186,6 @@ func (r *Router) Close(ctx context.Context) error {
 	}
 	if err := common.RemoveAllVethIfaces(ctx, r.ipr); err != nil {
 		wifiutil.CollectFirstErr(ctx, &firstErr, err)
-	}
-
-	// Reset modified uci configs back to their previous states.
-	if err := uci.ResetConfigs(ctx, r.uci, true, uciConfigsModified...); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to restore uci configs from backups"))
-	}
-	// Reload services to use backed up configs.
-	if err := uci.ReloadConfigServices(ctx, r.uci, uciConfigsModified...); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to reload configs using backup configs"))
 	}
 
 	// Clean working dir.
@@ -339,29 +316,8 @@ func (r *Router) setupWifiPhys(ctx context.Context) error {
 			return errors.Wrapf(err, "invalid phy idx %s", string(phyIDBytes))
 		}
 		r.phys[phyID] = p
-
-		uciWifiDeviceSection := r.phyIDToUciWifiDeviceSection(phyID)
-
-		// Enable device.
-		if err := r.uci.Set(ctx, uci.ConfigWireless, uciWifiDeviceSection, "disabled", "0"); err != nil {
-			return errors.Wrapf(err, "failed to set disabled to 0 for %s", p.Name)
-		}
-
-		// Set the corresponding UCI wifi-device to use US for the regulatory domain.
-		if err := r.uci.Set(ctx, uci.ConfigWireless, uciWifiDeviceSection, "country", "US"); err != nil {
-			return errors.Wrapf(err, "failed to set regulatory domain to US for %s", p.Name)
-		}
-	}
-
-	// Save changes to wireless devices.
-	if err := uci.CommitAndReloadConfig(ctx, r.uci, uci.ConfigWireless); err != nil {
-		err = errors.Wrap(err, "failed to update wireless config")
 	}
 	return nil
-}
-
-func (r *Router) phyIDToUciWifiDeviceSection(phyID int) string {
-	return fmt.Sprintf("@wifi-device[%d]", phyID)
 }
 
 // StartHostapd starts the hostapd server.
