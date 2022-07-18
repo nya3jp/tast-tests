@@ -40,7 +40,7 @@ func init() {
 			"jinrongwu@google.com",
 			"chromeos-apps-foundation-team@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Data:         []string{cpTextFileName, cpZipFileName, cpVideoFileName, cpPngFileName},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
