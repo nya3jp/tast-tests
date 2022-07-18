@@ -33,6 +33,9 @@ const (
 	tearDownTimeout = 5 * time.Minute
 	resetTimeout    = 10 * time.Second
 	postTestTimeout = 5 * time.Second
+
+	// Give time to reboot all routers.
+	preTestTimeout = 11 * time.Minute
 )
 
 func init() {
@@ -45,6 +48,7 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesNone),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
@@ -59,6 +63,7 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesCapture),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
@@ -73,6 +78,7 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesCapture | TFFeaturesRouterAsCapture),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
@@ -87,6 +93,7 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesRouters),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
@@ -101,6 +108,7 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesRouters | TFFeaturesAttenuator),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
@@ -115,6 +123,7 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesEnroll),
 		SetUpTimeout:    10 * time.Minute,
 		ResetTimeout:    resetTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: 8 * time.Minute,
 		ServiceDeps:     []string{TFServiceName, "tast.cros.policy.PolicyService"},
@@ -129,6 +138,7 @@ func init() {
 		Impl:            newTastFixture(TFFeaturesCompanionDUT),
 		SetUpTimeout:    setUpTimeout,
 		ResetTimeout:    resetTimeout,
+		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: tearDownTimeout,
 		ServiceDeps:     []string{TFServiceName},
@@ -437,14 +447,13 @@ func (f *tastFixtureImpl) Reset(ctx context.Context) error {
 	if _, err := f.tf.WifiClient().HealthCheck(ctx, &empty.Empty{}); err != nil {
 		wifiutil.CollectFirstErr(ctx, &firstErr, err)
 	}
-	if err := f.tf.Reinit(ctx); err != nil {
-		wifiutil.CollectFirstErr(ctx, &firstErr, err)
-	}
 	return firstErr
 }
 
 func (f *tastFixtureImpl) PreTest(ctx context.Context, s *testing.FixtTestState) {
-	// Nothing to do here for now.
+	if err := f.tf.Reinit(ctx); err != nil {
+		s.Fatal("Failed to reinit test fixture, err: ", err)
+	}
 }
 
 func (f *tastFixtureImpl) PostTest(ctx context.Context, s *testing.FixtTestState) {
