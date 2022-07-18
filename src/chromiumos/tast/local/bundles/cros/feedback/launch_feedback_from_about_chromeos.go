@@ -23,7 +23,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LaunchFeedbackFromAboutChromeOS,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Feedback app can be launched via About ChromeOS -> Report an issue",
+		Desc:         "Feedback app can be launched via About ChromeOS -> Send feedback",
 		Contacts: []string{
 			"zhangwenyu@google.com",
 			"xiangdongkong@google.com",
@@ -34,7 +34,7 @@ func init() {
 	})
 }
 
-// LaunchFeedbackFromAboutChromeOS verifies launching Feedback app via report an issue
+// LaunchFeedbackFromAboutChromeOS verifies launching Feedback app via Send feedback
 // from About ChromeOS in the OS Settings.
 func LaunchFeedbackFromAboutChromeOS(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
@@ -72,10 +72,10 @@ func LaunchFeedbackFromAboutChromeOS(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click About ChromeOS tab: ", err)
 	}
 
-	// Click Report an issue button.
-	reportButton := nodewith.NameContaining("Report an issue").Role(role.Link)
+	// Click Send feedback button.
+	reportButton := nodewith.NameContaining("Send feedback").Role(role.Link)
 	if err := ui.DoDefault(reportButton)(ctx); err != nil {
-		s.Fatal("Failed to click Report an issue button: ", err)
+		s.Fatal("Failed to click Send feedback button: ", err)
 	}
 
 	// Verify Feedback app is launched.
