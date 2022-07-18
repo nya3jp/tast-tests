@@ -103,7 +103,7 @@ func CollectSyslogdLogs(ctx context.Context, r support.Router, logCollector *log
 // Example result: "20220523-122753_syslogd_pre_setup"
 func buildLogFilename(nameParts ...string) string {
 	// Build timestamp prefix.
-	timestamp := time.Now().Format("20060102-150405")
+	timestamp := time.Now().Format(TimestampFileFormat)
 	// Join and sanitize name parts.
 	name := strings.Join(nameParts, "_")
 	name = regexp.MustCompile("\\W").ReplaceAllString(name, "_")
