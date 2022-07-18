@@ -384,7 +384,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to launch lacros: ", err)
 		}
-		defer l.Close(ctx)
+		defer l.Close(closeCtx)
 		cs = l
 
 		if bTconn, err = l.TestAPIConn(ctx); err != nil {
@@ -525,7 +525,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeOnError(closeCtx, s.OutDir(), s.HasError, tconn)
 
 	// Expand the Create Dump section of chrome://webrtc-internals. We will not need it
 	// until after the meeting, but we can expand the section much faster now while
@@ -584,7 +584,7 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 			if err := display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate90); err != nil {
 				s.Fatal("Failed to rotate display: ", err)
 			}
-			defer display.SetDisplayRotationSync(ctx, tconn, info.ID, display.Rotate0)
+			defer display.SetDisplayRotationSync(closeCtx, tconn, info.ID, display.Rotate0)
 		}
 		pc, err = pointer.NewTouch(ctx, tconn)
 		if err != nil {
