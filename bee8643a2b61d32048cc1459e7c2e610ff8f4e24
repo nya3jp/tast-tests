@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10c28aa_3d1c8518",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-19T14:13:20Z",
+      "side": 1,
+      "message": "could you clarify what\u0027s the goal?\n\nIn general it is not recommended to mix stdout and stderr, specifically you\u0027re parsing it.\nI need to know more about your purpose to make a concrete alternative suggestion, though.",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "bee8643a2b61d32048cc1459e7c2e610ff8f4e24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e13bd72d_9144a08c",
