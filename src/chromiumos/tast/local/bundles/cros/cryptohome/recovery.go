@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -27,8 +28,19 @@ func init() {
 			"anastasiian@chromium.org",
 			"cryptohome-core@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"tpm"},
+		Params: []testing.Param{
+			{
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("gooey")),
+			},
+			// TODO(b/195385797): Move this to critical when the bug is fixed.
+			{
+				Name:              "informational",
+				ExtraAttr:         []string{"informational"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Model("gooey")),
+			},
+		},
 	})
 }
 
