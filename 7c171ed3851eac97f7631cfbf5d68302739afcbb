@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccfd4d8e_fce3a802",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T22:00:35Z",
+      "side": 1,
+      "message": "Use `ui.WaitUntilGone(zoomNode)` instead.",
+      "range": {
+        "startLine": 639,
+        "startChar": 2,
+        "endLine": 639,
+        "endChar": 29
+      },
+      "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3cc612a_a3bd8c46",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 3
@@ -55,6 +78,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c0b8416_8ede4bce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T22:00:35Z",
+      "side": 1,
+      "message": "`existingZoomNode` and `zoomNode` are the same finder and do not need to be two different variables. The node will change, but the finder only contains the information to look for the node that has the `ZoomView` class.",
+      "range": {
+        "startLine": 646,
+        "startChar": 1,
+        "endLine": 646,
+        "endChar": 17
+      },
+      "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a350b34c_035bf4a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T22:00:35Z",
+      "side": 1,
+      "message": "You can remove this when you use my above suggestion to use `WaitUntilGone` instead of `Sleep`.",
+      "range": {
+        "startLine": 647,
+        "startChar": 0,
+        "endLine": 650,
+        "endChar": 2
+      },
+      "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ab28be9_1cd0beda",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 3
@@ -84,6 +153,29 @@
       "side": 1,
       "message": "I did some research with Alex yesterday, we didn\u0027t find anything in the autotestPrivate api exposed related to zoom. If we were to do something zoom related, we\u0027d probably have to update `SetWhitelistedPref`[1] to allow us to clear `kPartitionPerHostZoomLevels` (which stores zoom preferences per website).\n\nThere\u0027s a `settings.SetDefaultZoom`[2] that I believe the WM team uses, but it\u0027ll change the zoom for all websites in the test, which doesn\u0027t seem like what we\u0027re going for.\n\nSince zooming on MeetCUJ seems more like a hack than anything, not sure if the functionality is something that would be used on other tests. To get 49p working, this might be the best current solution, but I can assign myself a bug to research creating a direct autotestPrivate or settings call to update the zoom for us.\n\n[1]https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.cc;l\u003d499 \n[2]https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/settings/settings.go;l\u003d52",
       "parentUuid": "4ab28be9_1cd0beda",
+      "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a02a2c4f_5cf2366d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T22:00:35Z",
+      "side": 1,
+      "message": "nit: `browser zoom`",
+      "range": {
+        "startLine": 923,
+        "startChar": 25,
+        "endLine": 923,
+        "endChar": 29
+      },
       "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
