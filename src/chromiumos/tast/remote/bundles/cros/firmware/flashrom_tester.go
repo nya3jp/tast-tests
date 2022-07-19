@@ -65,7 +65,12 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 	if err := cmd.Start(); err != nil {
 		s.Fatal("Start() failed: ", err)
 	}
-	defer cmd.Wait()
+
+	defer func() {
+		if err := cmd.Wait(); err != nil {
+			s.Error("flashrom_tester failed: ", err)
+		}
+	}()
 
 	// Write newline because the tester expects a key press
 	s.Log("Starting tester")
@@ -109,5 +114,8 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 				s.Fatal("WriteString() failed: ", err)
 			}
 		}
+	}
+	if err := stdoutSc.Err(); err != nil {
+		s.Fatal("Reading standard output failed: ", err)
 	}
 }
