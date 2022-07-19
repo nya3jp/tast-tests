@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f75e0d_7537c7b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-07-19T23:12:01Z",
+      "side": 1,
+      "message": "Running iterations and derived metrics is basically what ui/perfutil is for.\nMy understanding is that it\u0027s not available in lacros/ due to dependency constraints, but maybe we want to move perfutil/ to some shared location.\n\nAnd you will not need to make your metrics multiple-value just to make them through the histogram pipeline and calculate average later.\n\nEliot, WDYT?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "9e64f91dfd08cabb66d91f26fefeeb6808b9f85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c7c1874_3f4d3444",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-07-19T23:12:01Z",
+      "side": 1,
+      "message": "You may not need these suffixes anymore as you now have Lacros/Ash test variants.",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 61
+      },
+      "revId": "9e64f91dfd08cabb66d91f26fefeeb6808b9f85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
