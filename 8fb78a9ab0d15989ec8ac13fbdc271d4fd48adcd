@@ -70,6 +70,30 @@
       },
       "revId": "8fb78a9ab0d15989ec8ac13fbdc271d4fd48adcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e78ad4_cc42c2da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-07-19T05:51:33Z",
+      "side": 1,
+      "message": "I see.\n\nI will check code changes then update dock3 \u0026 4, also do the same thing on following CLs.",
+      "parentUuid": "e9578252_9650be7c",
+      "range": {
+        "startLine": 194,
+        "startChar": 17,
+        "endLine": 194,
+        "endChar": 28
+      },
+      "revId": "8fb78a9ab0d15989ec8ac13fbdc271d4fd48adcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
