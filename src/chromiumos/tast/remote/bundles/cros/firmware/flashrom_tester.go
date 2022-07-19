@@ -39,6 +39,12 @@ func init() {
 		Timeout:      45 * time.Minute,
 		Params: []testing.Param{
 			{
+				Val:     "--flashrom_binary=/usr/sbin/flashrom",
+				Fixture: fixture.NormalMode,
+			},
+			{
+				Name:    "libflashrom",
+				Val:     "--libflashrom",
 				Fixture: fixture.NormalMode,
 			},
 		},
@@ -52,7 +58,8 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 
-	cmd := h.DUT.Conn().CommandContext(ctx, "flashrom_tester", "--debug", "--flashrom_binary", "/usr/sbin/flashrom", "host")
+	backendChoiceArg := s.Param().(string)
+	cmd := h.DUT.Conn().CommandContext(ctx, "flashrom_tester", "--debug", backendChoiceArg, "host")
 
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
