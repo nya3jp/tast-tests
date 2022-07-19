@@ -46,6 +46,30 @@
       },
       "revId": "8fb78a9ab0d15989ec8ac13fbdc271d4fd48adcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9578252_9650be7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock4_usb_audio.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-07-19T03:44:35Z",
+      "side": 1,
+      "message": "Got it, since dock2 has not been checked in ye and these will be out of sync. \n\nIt might be better to have both changes in each cls and resolve the conflict at check-in time.  So CLs don\u0027t have to depend each other.",
+      "parentUuid": "6a409a28_349e8ad4",
+      "range": {
+        "startLine": 194,
+        "startChar": 17,
+        "endLine": 194,
+        "endChar": 28
+      },
+      "revId": "8fb78a9ab0d15989ec8ac13fbdc271d4fd48adcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
