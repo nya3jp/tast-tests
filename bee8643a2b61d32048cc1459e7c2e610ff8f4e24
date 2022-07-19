@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e13bd72d_9144a08c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-07-19T07:17:04Z",
+      "side": 1,
+      "message": "Im not sure if exec was redirecting stderr to /dev/null, or if some other part of tast was doing that. but the stderr was not coming through anyway. ",
+      "revId": "bee8643a2b61d32048cc1459e7c2e610ff8f4e24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
