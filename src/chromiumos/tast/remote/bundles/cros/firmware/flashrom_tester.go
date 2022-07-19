@@ -62,6 +62,8 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 	}
 	stdoutSc := bufio.NewScanner(stdout)
 
+	cmd.Stderr = cmd.Stdout
+
 	if err := cmd.Start(); err != nil {
 		s.Fatal("Start() failed: ", err)
 	}
