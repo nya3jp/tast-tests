@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e6a92e_5a420e9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-19T22:45:31Z",
+      "side": 1,
+      "message": "Note that there are other combinations of results that will be classified as shillconst.ServiceStatePortalSuspected (for instance, HTTPS succeeds but HTTP is blocked) so you may have variants of this case in the future.",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "bd50e8790bcc333eccf8ba60b14df7daf0726a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
