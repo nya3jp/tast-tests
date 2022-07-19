@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cce0a5e_3ceb37b4",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-19T16:55:27Z",
+      "side": 1,
+      "message": "Please don\u0027t leave commented out code. Either delete it or uncomment it.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 0
+      },
+      "revId": "07b8045e2078b958fe1f61244d60b7230cf00062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8772f31_08824c51",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-19T16:55:27Z",
+      "side": 1,
+      "message": "If this is the rule, should you check r.closed here in this function? Or just call Close yourself here instead of making the caller do it.",
+      "range": {
+        "startLine": 268,
+        "startChar": 3,
+        "endLine": 268,
+        "endChar": 56
+      },
+      "revId": "07b8045e2078b958fe1f61244d60b7230cf00062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
