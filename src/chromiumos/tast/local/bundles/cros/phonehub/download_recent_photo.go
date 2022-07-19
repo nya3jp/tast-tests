@@ -89,7 +89,7 @@ func DownloadRecentPhoto(ctx context.Context, s *testing.State) {
 	if err := waitUntilDownloadComplete(ctx, crosPhotoFilePath, sourceFileSizeBytes); err != nil {
 		s.Fatal("Photo download cannot be completed: ", err)
 	}
-	if err := comparePhotoHashes(ctx, photoName, androidDevice); err != nil {
+	if err := comparePhotoHashes(ctx, crosPhotoFilePath, androidDevice); err != nil {
 		s.Fatal("Failed to verify hash of the downloaded photo: ", err)
 	}
 
