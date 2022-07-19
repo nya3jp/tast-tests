@@ -554,7 +554,7 @@ func AuthenticateAuthSessionWithChallengeCredential(ctx context.Context, usernam
 }
 
 // UpdateUserCredentialWithAuthSession authenticates an existing user via auth session API.
-func UpdateUserCredentialWithAuthSession(ctx context.Context, username, oldPassword, newPassword string, isEphemeral, isKioskUser bool) (string, error) {
+func UpdateUserCredentialWithAuthSession(ctx context.Context, username, oldSecret, newSecret, keyLabel string, isEphemeral, isKioskUser bool) (string, error) {
 	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 
@@ -566,12 +566,12 @@ func UpdateUserCredentialWithAuthSession(ctx context.Context, username, oldPassw
 
 	// Authenticate the same AuthSession using authSessionID.
 	// If we cannot authenticate, do not proceed with mount and unmount.
-	if err := cryptohome.AuthenticateAuthSession(ctx, oldPassword, "fake_label", authSessionID, isKioskUser); err != nil {
+	if err := cryptohome.AuthenticateAuthSession(ctx, oldSecret, keyLabel, authSessionID, isKioskUser); err != nil {
 		return "", errors.Wrap(err, "failed to authenticate with AuthSession")
 	}
 
 	// UpdateCredential with the same AuthSession using authSessionID.
-	if err := cryptohome.UpdateCredentialWithAuthSession(ctx, newPassword, authSessionID, isKioskUser); err != nil {
+	if err := cryptohome.UpdateCredentialWithAuthSession(ctx, newSecret, keyLabel, authSessionID, isKioskUser); err != nil {
 		return "", errors.Wrap(err, "failed to update credential with AuthSession")
 	}
 
@@ -623,6 +623,30 @@ func TestLockScreen(ctx context.Context, userName, userPassword, wrongPassword, 
 	}
 	if accepted {
 		return errors.New("wrong password check returned true despite an error")
+	}
+
+	return nil
+}
+
+// TestLockScreenPin tests that wrong PIN is not verified and correct PIN is verified on lock screen.
+func TestLockScreenPin(ctx context.Context, userName, secret, wrongSecret, keyLabel string, client *hwsec.CryptohomeClient) error {
+	cmdRunner := hwseclocal.NewCmdRunner()
+	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
+
+	accepted, err := cryptohome.CheckVault(ctx, keyLabel, hwsec.NewPassAuthConfig(userName, secret))
+	if err != nil {
+		return errors.Wrap(err, "unexpected error during unlock with correct pin")
+	}
+	if !accepted {
+		return errors.New("correct pin rejected during unlock")
+	}
+
+	accepted, err = cryptohome.CheckVault(ctx, keyLabel, hwsec.NewPassAuthConfig(userName, wrongSecret))
+	if err == nil {
+		return errors.Wrap(err, "wrong pin check succeeded when it shouldn't")
+	}
+	if accepted {
+		return errors.New("wrong pin check returned true despite an error")
 	}
 
 	return nil
