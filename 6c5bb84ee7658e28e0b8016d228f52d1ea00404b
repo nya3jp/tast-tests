@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ba80b0f_646e6e89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image_pers_hub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-07-19T22:38:15Z",
+      "side": 1,
+      "message": "In the personalization hub frontend implementation, we use a special class name `tast-*` for DOM elements that are hard to select from the UI tree in tast tests.\n\nhttps://source.chromium.org/search?q\u003dtast-\u0026sq\u003d\u0026ss\u003dchromium%2Fchromium%2Fsrc:ash%2Fwebui%2Fpersonalization_app%2F",
+      "parentUuid": "d435012f_9e356d31",
+      "range": {
+        "startLine": 106,
+        "startChar": 81,
+        "endLine": 106,
+        "endChar": 98
+      },
+      "revId": "6c5bb84ee7658e28e0b8016d228f52d1ea00404b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "110b70f5_f07760c6",
@@ -89,6 +113,24 @@
       "writtenOn": "2022-07-19T10:35:39Z",
       "side": 1,
       "message": "nit: New line not needed.",
+      "revId": "6c5bb84ee7658e28e0b8016d228f52d1ea00404b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97712834_f406c736",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image_pers_hub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-07-19T22:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "110b70f5_f07760c6",
       "revId": "6c5bb84ee7658e28e0b8016d228f52d1ea00404b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +152,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a2e13c_a48ccc93",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image_pers_hub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-07-19T22:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "046a258b_6bca2de8",
+      "revId": "6c5bb84ee7658e28e0b8016d228f52d1ea00404b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c717cc21_b3176e36",
@@ -123,6 +183,24 @@
       "writtenOn": "2022-07-19T10:35:39Z",
       "side": 1,
       "message": "I am not sure this package is the best place for that function. Don\u0027t know where else to put it though.",
+      "revId": "6c5bb84ee7658e28e0b8016d228f52d1ea00404b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa64151f_862e128f",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-07-19T22:38:15Z",
+      "side": 1,
+      "message": "Done. `local/personalization` should be a good place since this test is dependent on personalization hub.",
+      "parentUuid": "c717cc21_b3176e36",
       "revId": "6c5bb84ee7658e28e0b8016d228f52d1ea00404b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
