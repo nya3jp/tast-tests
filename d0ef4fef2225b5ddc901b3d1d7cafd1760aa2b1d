@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab632222_bb1b69a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-19T22:03:11Z",
+      "side": 1,
+      "message": "I have resolved now a few simpler comments you pointed throughout the code and also the third point you mentioned here (to run Lacros and Ash separately) by adding different test variants. I believe that the second point you mentioned also is not valid anymore, due that each browser now would run as a separate variant.\n\nI think the most important issue to address now is point one. One possible way is to reboot DUT in between the tests is to do something similar to what we recently did with StartupPerf (https://crrev.com/c/3737291) and build a separate remote test that runs DocsCUJ. Wdyt?\n\nIn terms of organization, I\u0027m a bit worried that by squashing all these changes in one single CL it will make your review more difficult. So let me know if you rather want me breaking down this entire CL in a chain or if continuing in this direction is fine.\n\nThis was a really great review, Eliot. Thank you very much!",
+      "parentUuid": "45a6a4f7_802ec862",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e53e0ce_6dac09a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
         "patchSetId": 1
@@ -65,6 +83,24 @@
       "writtenOn": "2022-06-10T02:24:22Z",
       "side": 1,
       "message": "How was this value chosen? Can you add a comment?",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d7ecebc_bb7646ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-19T22:03:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e53e0ce_6dac09a0",
       "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ff918b2_6d21704c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-19T22:03:11Z",
+      "side": 1,
+      "message": "no reason. It\u0027s fixed now.",
+      "parentUuid": "a574c440_d5361172",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "197440de_3e3fee7d",
@@ -103,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99aed588_334d8811",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-19T22:03:11Z",
+      "side": 1,
+      "message": "I don\u0027t think there are other tests doing this. I shamelessly can\u0027t remember why I\u0027ve used this snip here but I see some references of this here:\nhttps://source.chromium.org/chromium/chromiumos/platform/tast-tests/+/HEAD:src/chromiumos/tast/local/bundles/cros/ui/perfutil/values.go;l\u003d95\n\nIt would be interesting to know indeed whether Crosbolt would work like that. In any case, I removed those lines now, so the variant field will report the default value (\"summary\"). But let me know please if you want me digging further about this!",
+      "parentUuid": "197440de_3e3fee7d",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33dcc830_2bc49411",
@@ -116,6 +188,24 @@
       "writtenOn": "2022-06-10T02:24:22Z",
       "side": 1,
       "message": "It\u0027s often useful to record the Bessel corrected standard deviation, and also the first run value, e.g.\n\nash.*.first, ash.*.stddev",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "575f5026_a59162c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-19T22:03:11Z",
+      "side": 1,
+      "message": "yes! Variance is definitely important. I added a note now to do that next. Thank you.",
+      "parentUuid": "33dcc830_2bc49411",
       "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
