@@ -52,6 +52,8 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 		// Start up ACUITI.
 		uda := uidetection.NewDefault(params.TestConn).WithOptions(uidetection.Retries(3)).WithTimeout(time.Minute)
 
+		editButton := nodewith.Name("Edit").HasClass("PillButton")
+
 		// CUJ: Attempts to change binding to illegal keys.
 		s.Log("Editor CUJ #1: key mappings changed to illegal keys")
 		if err := uiauto.Combine("mappings changed to illegal keys",
@@ -59,7 +61,7 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 			ui.LeftClick(nodewith.Name("Got it").HasClass("LabelButtonLabel")),
 			// Open game controls.
 			ui.LeftClick(nodewith.Name("Game controls").HasClass("ImageButton")),
-			uda.Tap(uidetection.Word("Edit")),
+			ui.LeftClick(editButton),
 			// Change mapping of "w" to "ESC" (NOTE: "w" key is used because, unlike the
 			// "n" key, the associated on-screen error messages have no overlapping text,
 			// and thus it has the highest chance of success with text detection).
@@ -90,7 +92,7 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("cancel changed mapping",
 			// Open game controls.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
-			uda.Tap(uidetection.Word("Edit")),
+			ui.LeftClick(editButton),
 			// Change mapping of "n" to "l".
 			ui.LeftClick(nodewith.Name("n").HasClass("LabelButtonLabel")),
 			kb.TypeAction("l"),
@@ -110,7 +112,7 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("mapping unbound",
 			// Open game controls.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
-			uda.Tap(uidetection.Word("Edit")),
+			ui.LeftClick(editButton),
 			// Change mapping of "n" to "m"
 			ui.LeftClick(nodewith.Name("w").HasClass("LabelButtonLabel")),
 			kb.TypeAction("g"),
@@ -128,7 +130,7 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("mapping unbound",
 			// Open game controls.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
-			uda.Tap(uidetection.Word("Edit")),
+			ui.LeftClick(editButton),
 			// Change mapping of "n" to "m"
 			ui.LeftClick(nodewith.Name("n").HasClass("LabelButtonLabel")),
 			kb.TypeAction("m"),
