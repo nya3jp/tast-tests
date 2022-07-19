@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c065f3b1_022f9d9e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_extension_state.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-07-19T06:36:42Z",
+      "side": 1,
+      "message": "I see, that makes sense.",
+      "parentUuid": "83e178b9_5ed9934b",
+      "revId": "2dcafc513d3dc677a50a6e3c6441acb09e499e2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b91f9f4_76c26918",
