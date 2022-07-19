@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df713585_fc4cd5db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-19T22:37:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccfd4d8e_fce3a802",
+      "range": {
+        "startLine": 639,
+        "startChar": 2,
+        "endLine": 639,
+        "endChar": 29
+      },
+      "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3cc612a_a3bd8c46",
@@ -99,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43963740_63de1bba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-19T22:37:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c0b8416_8ede4bce",
+      "range": {
+        "startLine": 646,
+        "startChar": 1,
+        "endLine": 646,
+        "endChar": 17
+      },
+      "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a350b34c_035bf4a0",
@@ -112,6 +160,30 @@
       "writtenOn": "2022-07-19T22:00:35Z",
       "side": 1,
       "message": "You can remove this when you use my above suggestion to use `WaitUntilGone` instead of `Sleep`.",
+      "range": {
+        "startLine": 647,
+        "startChar": 0,
+        "endLine": 650,
+        "endChar": 2
+      },
+      "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87fc6655_2861f204",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-19T22:37:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a350b34c_035bf4a0",
       "range": {
         "startLine": 647,
         "startChar": 0,
@@ -170,6 +242,30 @@
       "writtenOn": "2022-07-19T22:00:35Z",
       "side": 1,
       "message": "nit: `browser zoom`",
+      "range": {
+        "startLine": 923,
+        "startChar": 25,
+        "endLine": 923,
+        "endChar": 29
+      },
+      "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eff089cc_007dd886",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-19T22:37:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a02a2c4f_5cf2366d",
       "range": {
         "startLine": 923,
         "startChar": 25,
