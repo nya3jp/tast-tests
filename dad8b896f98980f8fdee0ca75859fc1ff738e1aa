@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b536a1d_dd26cfda",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-07-19T04:37:40Z",
+      "side": 1,
+      "message": "question: It seems that this is called in the main thread, so this blocks the main thread. Is this expected?",
+      "revId": "dad8b896f98980f8fdee0ca75859fc1ff738e1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83e14b2c_cbbcb6f8",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-07-19T04:37:40Z",
+      "side": 1,
+      "message": "nit: `TimeUnit.MILLISECONDS.convert(timeStampJava - mLastTimeStampJava, TimeUnit.NANOSECONDS)`",
+      "range": {
+        "startLine": 131,
+        "startChar": 27,
+        "endLine": 131,
+        "endChar": 82
+      },
+      "revId": "dad8b896f98980f8fdee0ca75859fc1ff738e1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
