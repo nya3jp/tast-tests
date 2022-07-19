@@ -363,6 +363,11 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 
 	// Sets the display zoom factor to minimum, to ensure that all
 	// meeting participants' video can be shown simultaneously.
+	// The display zoom should be done before the Meet window is
+	// opened, to prevent visual oddities on some devices. We also
+	// zoom out on the browser after the Meet window is opened,
+	// because on some boards the display zoom is not enough to
+	// show all of the participants.
 	info, err := display.GetPrimaryInfo(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get the primary display info: ", err)
@@ -627,6 +632,43 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to grant permissions: ", err)
 	}
 
+	s.Log("Resetting zoom to 100%")
+	if err := uiauto.Combine(
+		"reset zoom and sleep",
+		kw.AccelAction("Ctrl+0"),
+		action.Sleep(2*time.Second),
+	)(ctx); err != nil {
+		s.Fatal("Failed to press Ctrl+0 to reset the zoom: ", err)
+	}
+
+	// Verify that resetting the zoom succeeded by checking for the existence
+	// of the magnifying glass in the browser.
+	existingZoomNode := nodewith.HasClass("ZoomView")
+	existingZoomInfo, err := ui.Info(ctx, existingZoomNode)
+	if err == nil {
+		s.Fatalf("Failed to reset the browser zoom, found existing zoom: %q", existingZoomInfo.Name)
+	}
+
+	// Zoom out on the browser to maximize the number of visible video
+	// feeds. This needs to be done before the final layout mode has been set,
+	// so that Meet can properly recalculate how many inbound videos should
+	// be visible. Pressing Ctrl+Minus 3 times results in the zoom going from
+	// 100% -> 90% -> 80% -> 75%.
+	if err := inputsimulations.RepeatKeyPress(ctx, kw, "Ctrl+-", 3*time.Second, 3); err != nil {
+		s.Fatal("Failed to repeatedly press Ctrl+Minus to zoom out: ", err)
+	}
+
+	// Verify that we zoomed correctly.
+	zoomNode := nodewith.HasClass("ZoomView")
+	zoomInfo, err := ui.Info(ctx, zoomNode)
+	if err != nil {
+		s.Fatal("Failed to find the current browser zoom: ", err)
+	}
+	if zoomInfo.Name != "Zoom: 75%" {
+		s.Fatalf(`Unexpected zoom value: got %s; want "Zoom: 75%%"`, zoomInfo.Name)
+	}
+	s.Log("Zoomed browser window to 75%")
+
 	var collaborationRE *regexp.Regexp
 	if meet.docs {
 		docsURL := defaultDocsURL
@@ -873,6 +915,12 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	screenshotFile := filepath.Join(s.OutDir(), "meet_screenshot.png")
 	if err := screenshot.CaptureChrome(ctx, cr, screenshotFile); err != nil {
 		s.Log("Failed to take screenshot: ", err)
+	}
+
+	// Reset the zoom, because the browser retains the zoom between each
+	// test variant run.
+	if err := kw.Accel(ctx, "Ctrl+0"); err != nil {
+		s.Log("Failed to reset zoom to 100%")
 	}
 
 	// Report WebRTC metrics for video streams.
