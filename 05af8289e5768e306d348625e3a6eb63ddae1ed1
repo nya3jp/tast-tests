@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "476d4490_20491af7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-19T05:02:47Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm for tast with nit",
+      "revId": "05af8289e5768e306d348625e3a6eb63ddae1ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc74e1be_12f3e850",
+        "filename": "src/chromiumos/tast/common/network/tcpdump/runner.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-19T05:02:47Z",
+      "side": 1,
+      "message": "nit: maybe just `return r.cmd.Output(ctx, \"tcpdump\", args...)`",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 16
+      },
+      "revId": "05af8289e5768e306d348625e3a6eb63ddae1ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23acc4a9_85615cd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-19T05:02:47Z",
+      "side": 1,
+      "message": "Add `\"group:mainline\", \"informational\"` if this test should be a mainline test\nAlso see go/tast-attr",
+      "range": {
+        "startLine": 30,
+        "startChar": 20,
+        "endLine": 30,
+        "endChar": 22
+      },
+      "revId": "05af8289e5768e306d348625e3a6eb63ddae1ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfb706b0_f6129b7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-19T05:02:47Z",
+      "side": 1,
+      "message": "nit: For naming, I think `Stderr` instead of `StdErr` is more common (also `Stdout` below).",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "05af8289e5768e306d348625e3a6eb63ddae1ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8905b1b0_73c43573",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-19T05:02:47Z",
+      "side": 1,
+      "message": "nit: maybe use testing.ContextLog here just for the consistency with L54",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "05af8289e5768e306d348625e3a6eb63ddae1ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a4126d5_71964ac0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-19T05:02:47Z",
+      "side": 1,
+      "message": "nit: You can unnest the following code block by\n```\nif ip \u003d\u003d nil || ip.To4() \u003d\u003d nil {\n  continue\n}\n```",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 35
+      },
+      "revId": "05af8289e5768e306d348625e3a6eb63ddae1ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1186a4d6_ee887650",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-19T05:02:47Z",
+      "side": 1,
+      "message": "nit: returns\nI would write this sentence as: \"In this test, IPConfig for IPv4 should contain only one name server so we return that name server here\"",
+      "range": {
+        "startLine": 123,
+        "startChar": 11,
+        "endLine": 123,
+        "endChar": 17
+      },
+      "revId": "05af8289e5768e306d348625e3a6eb63ddae1ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23282453_5b2b179d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-19T05:02:47Z",
+      "side": 1,
+      "message": "nit: \"for filename\"\n(\"the path under dir\" is not clear)",
+      "range": {
+        "startLine": 174,
+        "startChar": 46,
+        "endLine": 174,
+        "endChar": 67
+      },
+      "revId": "05af8289e5768e306d348625e3a6eb63ddae1ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
