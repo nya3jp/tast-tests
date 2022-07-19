@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28731a75_47e4ed50",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-19T13:55:49Z",
+      "side": 1,
+      "message": "so instead this should be reduced?",
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb24ea6_d27c459e",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-19T13:55:49Z",
+      "side": 1,
+      "message": "instead of sleep, can we poll the condition that reconncting can be done?",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 673,
+        "endChar": 2
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba7bd96_bec51b27",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-19T13:55:49Z",
+      "side": 1,
+      "message": "if newRouter fails, rd.host and rd.object holds inconsistent data.\nCan we avoid such cases?",
+      "range": {
+        "startLine": 676,
+        "startChar": 1,
+        "endLine": 685,
+        "endChar": 101
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
