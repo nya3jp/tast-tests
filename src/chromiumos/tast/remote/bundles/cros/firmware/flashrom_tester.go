@@ -22,6 +22,7 @@ import (
 var (
 	enableWPPrompt  = "Prompt for hardware WP able"
 	disableWPPrompt = "Prompt for hardware WP disable"
+	continuePrompt  = "Press any key to continue"
 
 	subtestResultPrefix = "<+>"
 	subtestPass         = "Pass"
@@ -97,12 +98,6 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	// Write newline because the tester expects a key press
-	s.Log("Starting tester")
-	if _, err := io.WriteString(stdin, "\n"); err != nil {
-		s.Fatal("WriteString() failed: ", err)
-	}
-
 	for stdoutSc.Scan() {
 		text := stdoutSc.Text()
 		// Find output lines that contain a non-passing subtest result
@@ -130,7 +125,8 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 			if err := h.Servo.SetFWWPState(ctx, targetWPState); err != nil {
 				s.Fatalf("Failed to %s WP: %v", wpStr, err)
 			}
-
+		}
+		if strings.Contains(text, continuePrompt) {
 			// Write newline because the tester expects a key press
 			s.Log("Continuing test")
 			if _, err := io.WriteString(stdin, "\n"); err != nil {
