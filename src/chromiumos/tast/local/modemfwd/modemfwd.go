@@ -118,7 +118,7 @@ func parseUpdateFirmwareCompletedSignal(sig *dbus.Signal) (UpdateFirmwareComplet
 // or until an error is logged.
 func StartAndWaitForQuiescence(ctx context.Context) error {
 	startJob := func(ctx context.Context) error {
-		err := upstart.StartJob(ctx, JobName)
+		err := upstart.StartJob(ctx, JobName, upstart.WithArg("DEBUG_MODE", "true"))
 		if err != nil {
 			return errors.Wrapf(err, "failed to start %q", JobName)
 		}
