@@ -94,6 +94,30 @@
       },
       "revId": "8955c96c481b85c52f45d8605f4358250996615f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d054e64b_66355e13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-07-19T23:25:38Z",
+      "side": 1,
+      "message": "How are we gonna use these logs? I feel like 20MB for each test might be adding a lot to the storage but I think it\u0027s fine for now.",
+      "parentUuid": "bb32886b_e0c2d1b4",
+      "range": {
+        "startLine": 1028,
+        "startChar": 5,
+        "endLine": 1028,
+        "endChar": 24
+      },
+      "revId": "8955c96c481b85c52f45d8605f4358250996615f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
