@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a7d9ad_058188ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-19T17:47:02Z",
+      "side": 1,
+      "message": "nit: Maybe it\u0027s best to reference https://w3c.github.io/mediacapture-screen-share/#dom-displaycapturesurfacetype since that has the values.",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 92
+      },
+      "revId": "d591b92a0d0652ffedf99fa42f821ff756f7d393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "069e84e7_19d4eb8d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-19T17:47:02Z",
+      "side": 1,
+      "message": "nit: Copy the documentation from peer_connection.go.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 90
+      },
+      "revId": "d591b92a0d0652ffedf99fa42f821ff756f7d393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e6dcca4_286f7f72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-19T17:47:02Z",
+      "side": 1,
+      "message": "nit: Update:\n\n```\n  // waitForPeerConnectionStabilized waits up to maxStreamWarmUp for one of the\n  // following:\n  //\n  // - If dmType is empty (i.e., we\u0027re capturing user media), it waits for the\n  //   transmitted resolution to reach streamWidth x streamHeight.\n  //\n  // - If dmType is non-empty (i.e., we\u0027re capturing display media), it waits for\n  //   the transmitted width to reach streamWidth or for the transmitted height to \n  //   reach streamHeight.\n  //\n  // Returns error on failure or timeout.\n```",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 80
+      },
+      "revId": "d591b92a0d0652ffedf99fa42f821ff756f7d393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa56475_1612c3d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-19T17:47:02Z",
+      "side": 1,
+      "message": "nit:\n\n```\n  // In the case of screen capture (i.e. the source is non-camera), the original \n  // source may not be 16:9, so we can\u0027t expect the tx stream dimensions to be\n  // exactly equal to streamWidth x streamHeight. However, we can expect either the\n  // tx stream width or height to match streamWidth or streamHeight respectively\n  // because the screen capture will be scaled to match one of the dimensions and\n  // keep the original aspect ratio.\n```",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 166,
+        "endChar": 138
+      },
+      "revId": "d591b92a0d0652ffedf99fa42f821ff756f7d393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b06ae4e8_b6d55e77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-19T17:47:02Z",
+      "side": 1,
+      "message": "nit: I\u0027d prefer for you to separate this into two different `if`s so that you can output a better error message for each situation:\n\n```\n  if (dmType \u003d\u003d \"\" \u0026\u0026\n      (txm.FrameHeight !\u003d streamHeight || txm.FrameWidth !\u003d streamWidth))) {\n      return errors.Errorf(\"still waiting for tx resolution to reach %dx%d,\n          current: %.0fx%.0f\",\n          streamWidth, streamHeight, txm.FrameWidth, txm.FrameHeight)\n  }\n  if (dmType !\u003d \"\" \u0026\u0026\n      (txm.FrameHeight !\u003d streamHeight \u0026\u0026 txm.FrameWidth !\u003d streamWidth))) {\n      return errors.Errorf(\"still waiting for tx width to reach %d or tx height to\n          reach %d, current: %.0fx%.0f\",\n          streamWidth, streamHeight, txm.FrameWidth, txm.FrameHeight)\n  }\n```",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 3
+      },
+      "revId": "d591b92a0d0652ffedf99fa42f821ff756f7d393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46a55620_a2412887",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-19T17:47:02Z",
+      "side": 1,
+      "message": "nit: Document:\n\n```\n  // If non-empty, the media to send through the RTC connection will be obtained \n  // using getDisplayMedia() and the value corresponds to the surface type. If\n  // empty, the media to send will be obtained using getUserMedia().\n```",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 49
+      },
+      "revId": "d591b92a0d0652ffedf99fa42f821ff756f7d393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee1a0d4a_bb204515",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-19T17:47:02Z",
+      "side": 1,
+      "message": "nit: I\u0027d suggest you name these variants something like:\n\n  vp9_capture_monitor\n  vp9_capture_window\n  vp9_capture_tab\n\nOr\n\n  vp9_get_display_media_monitor\n  vp9_get_display_media_window\n  vp9_get_display_media_tab\n\nThat way, it\u0027s easy to filter in Stainless all the variants that have to do with getDisplayMedia().",
+      "range": {
+        "startLine": 142,
+        "startChar": 23,
+        "endLine": 142,
+        "endChar": 34
+      },
+      "revId": "d591b92a0d0652ffedf99fa42f821ff756f7d393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40d206b5_54b2ab3f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/rtc_peer_connection.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-19T17:47:02Z",
+      "side": 1,
+      "message": "The bug mentions that we always want to use VP8 encoding. Is there a reason that changed?",
+      "range": {
+        "startLine": 144,
+        "startChar": 36,
+        "endLine": 144,
+        "endChar": 47
+      },
+      "revId": "d591b92a0d0652ffedf99fa42f821ff756f7d393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
