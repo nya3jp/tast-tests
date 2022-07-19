@@ -28,7 +28,7 @@ func init() {
 		Timeout:      20 * time.Second,
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(
 			// Skip this test on devices without a firmware-variant value.
-			"drallion", "nautiluslte", "sarien",
+			"drallion", "nautilus", "sarien",
 		)),
 	})
 }
