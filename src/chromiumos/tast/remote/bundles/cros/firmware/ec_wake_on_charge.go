@@ -30,6 +30,13 @@ type retriableErr struct {
 	*errors.E
 }
 
+type debugInformation struct {
+	servoConnectionType string
+	servoType           string
+	hasMicroOrC2D2      bool
+	hasCCD              bool
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         ECWakeOnCharge,
@@ -103,9 +110,11 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 
-	hasMicroOrC2D2, err := h.Servo.PreferDebugHeader(ctx)
-	if err != nil {
-		s.Fatal("PreferDebugHeader: ", err)
+	// At start of test, save some information that may
+	// be useful for debugging.
+	var checkedInfo debugInformation
+	if err := checkInformation(ctx, h, &checkedInfo); err != nil {
+		s.Fatal("Unable to log information at start of test: ", err)
 	}
 
 	checkCCDTestlab := func(ctx context.Context) error {
@@ -137,16 +146,7 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 	}
 
 	openCCD := func(ctx context.Context) error {
-		// For debugging purposes, explicitly log servo type.
-		servoType, err := h.Servo.GetServoType(ctx)
-		if err != nil {
-			return errors.Wrap(err, "failed to find servo type")
-		}
-		s.Logf("Servo type: %s", servoType)
-
-		if hasCCD, err := h.Servo.HasCCD(ctx); err != nil {
-			return errors.Wrap(err, "while checking if servo has a CCD connection")
-		} else if hasCCD {
+		if checkedInfo.hasCCD {
 			// Running 'ccd testlab open' would likely not work if it was not enabled.
 			// But, if CCD was locked, testlab mode couldn't be enabled, and the
 			// console output would print 'access denied'. For debugging purposes,
@@ -168,14 +168,6 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 		return nil
 	}
 	setPowerSupply := func(ctx context.Context, connectPower, hasHibernated bool) error {
-		// For debugging purposes, explicitly log servo connection type. Servo might report that it has
-		// control over pd role even for Type-A. Logging this information would clarify on whether other
-		// failures occur because the pd role wasn't switched in the first place with a type A connection.
-		if connectionType, err := h.Servo.GetString(ctx, "root.dut_connection_type"); err != nil {
-			s.Log("Unable to read servo connection type: ", err)
-		} else {
-			s.Logf("Servo connection type: %s", connectionType)
-		}
 		if connectPower {
 			// Connect power supply.
 			if err := h.SetDUTPower(ctx, true); err != nil {
@@ -200,11 +192,13 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 					return err
 				}
 				// For debugging purposes, log the ccd state again for reference.
-				valAfterOpenCCD, err := h.Servo.GetString(ctx, servo.GSCCCDLevel)
-				if err != nil {
-					return errors.Wrap(err, "failed to get gsc_ccd_level")
+				if checkedInfo.hasCCD {
+					valAfterOpenCCD, err := h.Servo.GetString(ctx, servo.GSCCCDLevel)
+					if err != nil {
+						return errors.Wrap(err, "failed to get gsc_ccd_level")
+					}
+					s.Logf("CCD state: %s", valAfterOpenCCD)
 				}
-				s.Logf("CCD state: %s", valAfterOpenCCD)
 			}
 
 			// Sleep briefly to ensure that CCD has fully opened.
@@ -311,12 +305,12 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			case <-done:
 				break monitorServo
 			default:
-				if err = testing.Sleep(ctx, time.Second); err != nil {
+				if err := testing.Sleep(ctx, time.Second); err != nil {
 					s.Error("Failed to sleep while monitoring servo: ", err)
 				}
-				if _, err = h.Servo.Echo(ctx, "ping"); err != nil {
+				if _, err := h.Servo.Echo(ctx, "ping"); err != nil {
 					s.Log("Failed to ping servo, reconnecting: ", err)
-					err = h.ServoProxy.Reconnect(ctx)
+					err := h.ServoProxy.Reconnect(ctx)
 					if err != nil {
 						s.Error("Failed to connect to servo: ", err)
 					}
@@ -381,14 +375,14 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to sleep: ", err)
 		}
 
-		if (tc.lidOpen == "yes" || hasMicroOrC2D2) && h.Config.Hibernate {
+		if (tc.lidOpen == "yes" || checkedInfo.hasMicroOrC2D2) && h.Config.Hibernate {
 			// Hibernate DUT
 			if tc.lidOpen == "no" {
 				// In cases where lid is closed, and there's a servo_micro or C2D2 connection,
 				// use console command to hibernate. Using keyboard presses might trigger DUT
 				// to wake, as well as interrupt lid emulation.
 				s.Log("Putting DUT in hibernation with EC console command")
-				if err = h.Servo.ECHibernate(ctx, servo.UseConsole); err != nil {
+				if err := h.Servo.ECHibernate(ctx, servo.UseConsole); err != nil {
 					s.Fatal("Failed to hibernate: ", err)
 				}
 			} else {
@@ -427,9 +421,9 @@ func ECWakeOnCharge(ctx context.Context, s *testing.State) {
 					}
 				}
 				s.Log("Putting DUT in hibernation with key presses")
-				if err = h.Servo.ECHibernate(ctx, servo.UseKeyboard); err != nil {
+				if err := h.Servo.ECHibernate(ctx, servo.UseKeyboard); err != nil {
 					s.Logf("Failed to hibernate: %v. Retry with using EC console command to hibernate", err)
-					if err = h.Servo.ECHibernate(ctx, servo.UseConsole); err != nil {
+					if err := h.Servo.ECHibernate(ctx, servo.UseConsole); err != nil {
 						s.Fatal("Failed to hibernate: ", err)
 					}
 				}
@@ -563,5 +557,28 @@ func bootDUTIntoS0(ctx context.Context, h *firmware.Helper) error {
 	if err := h.WaitForPowerStates(ctx, firmware.PowerStateInterval, 1*time.Minute, "S0"); err != nil {
 		return errors.Wrap(err, "unable to get power state at S0")
 	}
+	return nil
+}
+
+func checkInformation(ctx context.Context, h *firmware.Helper, info *debugInformation) error {
+	var wantInfo = []string{"hasMicroOrC2D2", "hasCCD", "servoType", "servoConnectionType"}
+	for _, val := range wantInfo {
+		var err error
+		switch val {
+		case "hasMicroOrC2D2":
+			info.hasMicroOrC2D2, err = h.Servo.PreferDebugHeader(ctx)
+		case "hasCCD":
+			info.hasCCD, err = h.Servo.HasCCD(ctx)
+		case "servoType":
+			info.servoType, err = h.Servo.GetServoType(ctx)
+		case "servoConnectionType":
+			info.servoConnectionType, err = h.Servo.GetString(ctx, "root.dut_connection_type")
+		}
+		if err != nil {
+			return errors.Wrapf(err, "failed to check for %s", val)
+		}
+	}
+	testing.ContextLogf(ctx, "DUT has micro or c2d2: %t, has CCD: %t, servo type: %s, servo connection type: %s",
+		info.hasMicroOrC2D2, info.hasCCD, info.servoType, info.servoConnectionType)
 	return nil
 }
