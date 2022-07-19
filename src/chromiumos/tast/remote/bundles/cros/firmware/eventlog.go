@@ -93,7 +93,7 @@ func init() {
 				Fixture:           fixture.DevModeGBB,
 				Val: eventLogParams{
 					resetType:         firmware.WarmReset,
-					requiredEventSets: [][]string{{`System boot`, `Chrome ?OS Developer Mode`}},
+					requiredEventSets: [][]string{{`System boot`, `Chrome ?OS Developer Mode|boot_mode=Developer`}},
 					prohibitedEvents:  `Recovery Mode|Sleep| Wake`,
 				},
 			},
@@ -105,7 +105,7 @@ func init() {
 				Fixture:           fixture.DevModeGBB,
 				Val: eventLogParams{
 					resetType:         firmware.WarmReset,
-					requiredEventSets: [][]string{{`System boot`, `Chrome ?OS Developer Mode`}},
+					requiredEventSets: [][]string{{`System boot`, `Chrome ?OS Developer Mode|boot_mode=Developer`}},
 					prohibitedEvents:  `Recovery Mode|Sleep| Wake`,
 					allowedEvents:     `^ACPI Wake \| Deep S5$`,
 				},
@@ -117,7 +117,7 @@ func init() {
 				Fixture:   fixture.NormalMode,
 				Val: eventLogParams{
 					bootToMode:        fwCommon.BootModeRecovery,
-					requiredEventSets: [][]string{{`System boot`, `Chrome ?OS Recovery Mode \| Recovery Button`}},
+					requiredEventSets: [][]string{{`System boot`, `Chrome ?OS Recovery Mode \| Recovery Button|boot_mode=Manual recovery`}},
 					prohibitedEvents:  `Developer Mode|Sleep|FW Wake|ACPI Wake \| S3`,
 				},
 				Timeout: 60 * time.Minute,
