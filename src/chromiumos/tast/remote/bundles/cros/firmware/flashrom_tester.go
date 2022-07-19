@@ -8,6 +8,8 @@ import (
 	"bufio"
 	"context"
 	"io"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -56,12 +58,35 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 		s.Fatal("StdinPipe() failed: ", err)
 	}
 
-	stdout, err := cmd.StdoutPipe()
+	stdoutPipe, err := cmd.StdoutPipe()
 	if err != nil {
 		s.Fatal("StdoutPipe() failed: ", err)
 	}
+	// duplicate cmd stdout to a log file and a scanner
+	stdoutFile, err := os.Create(filepath.Join(s.OutDir(), "flashrom_tester_stdout.txt"))
+	if err != nil {
+		s.Fatal("os.Open failed: ", err)
+	}
+	defer func() {
+		if err := stdoutFile.Close(); err != nil {
+			s.Error("flashrom_tester failed to close stdout: ", err)
+		}
+	}()
+	stdout := io.TeeReader(stdoutPipe, stdoutFile)
 	stdoutSc := bufio.NewScanner(stdout)
 
+	stderrFile, err := os.Create(filepath.Join(s.OutDir(), "flashrom_tester_stderr.txt"))
+	if err != nil {
+		s.Fatal("os.Open failed: ", err)
+	}
+	defer func() {
+		if err := stderrFile.Close(); err != nil {
+			s.Error("Failed to close stderr: ", err)
+		}
+	}()
+	cmd.Stderr = stderrFile
+
+	s.Log("Starting flashrom_tester")
 	if err := cmd.Start(); err != nil {
 		s.Fatal("Start() failed: ", err)
 	}
@@ -80,8 +105,6 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 
 	for stdoutSc.Scan() {
 		text := stdoutSc.Text()
-		s.Logf("Tester output: %s", text)
-
 		// Find output lines that contain a non-passing subtest result
 		// Example subtest results:
 		//    <+> Lock_top_quad test: Pass
