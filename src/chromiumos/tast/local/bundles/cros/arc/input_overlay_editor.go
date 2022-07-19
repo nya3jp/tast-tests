@@ -59,7 +59,7 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 			ui.LeftClick(nodewith.Name("Got it").HasClass("LabelButtonLabel")),
 			// Open game controls.
 			ui.LeftClick(nodewith.Name("Game controls").HasClass("ImageButton")),
-			uda.Tap(uidetection.Word("Edit")),
+			ui.LeftClick(nodewith.Name("Edit").HasClass("PillButton")),
 			// Change mapping of "w" to "ESC" (NOTE: "w" key is used because, unlike the
 			// "n" key, the associated on-screen error messages have no overlapping text,
 			// and thus it has the highest chance of success with text detection).
@@ -90,7 +90,7 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("cancel changed mapping",
 			// Open game controls.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
-			uda.Tap(uidetection.Word("Edit")),
+			ui.LeftClick(nodewith.Name("Edit").HasClass("PillButton")),
 			// Change mapping of "n" to "l".
 			ui.LeftClick(nodewith.Name("n").HasClass("LabelButtonLabel")),
 			kb.TypeAction("l"),
@@ -110,7 +110,7 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("mapping unbound",
 			// Open game controls.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
-			uda.Tap(uidetection.Word("Edit")),
+			ui.LeftClick(nodewith.Name("Edit").HasClass("PillButton")),
 			// Change mapping of "n" to "m"
 			ui.LeftClick(nodewith.Name("w").HasClass("LabelButtonLabel")),
 			kb.TypeAction("g"),
@@ -128,7 +128,7 @@ func InputOverlayEditor(ctx context.Context, s *testing.State) {
 		if err := uiauto.Combine("mapping unbound",
 			// Open game controls.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
-			uda.Tap(uidetection.Word("Edit")),
+			ui.LeftClick(nodewith.Name("Edit").HasClass("PillButton")),
 			// Change mapping of "n" to "m"
 			ui.LeftClick(nodewith.Name("n").HasClass("LabelButtonLabel")),
 			kb.TypeAction("m"),
