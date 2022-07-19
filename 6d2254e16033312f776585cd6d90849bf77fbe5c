@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04242c13_b457af5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-19T16:49:28Z",
+      "side": 1,
+      "message": "Thanks for the tip Ryan! This approach seems OK locally, we\u0027ll see how it is once we can run it in the lab. If we run into any issues then we can take a look at using that runtime switch instead of disabling ethernet.",
+      "parentUuid": "85922bff_17a6f503",
+      "revId": "6d2254e16033312f776585cd6d90849bf77fbe5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c075b13_53e221ba",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-07-12T19:11:35Z",
       "side": 1,
       "message": "wifi",
+      "range": {
+        "startLine": 75,
+        "startChar": 29,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "6d2254e16033312f776585cd6d90849bf77fbe5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdce7487_de074383",
+        "filename": "src/chromiumos/tast/local/bundles/cros/instanttether/basic.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-19T16:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c075b13_53e221ba",
       "range": {
         "startLine": 75,
         "startChar": 29,
