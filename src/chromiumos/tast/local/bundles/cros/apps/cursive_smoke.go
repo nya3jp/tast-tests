@@ -105,7 +105,8 @@ func CursiveSmoke(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click install button: ", err)
 	}
 
-	if err := ash.WaitForChromeAppInstalled(ctx, tconn, apps.Cursive.ID, 2*time.Minute); err != nil {
+	cursiveAppID, err := ash.WaitForChromeAppByNameInstalled(ctx, tconn, apps.Cursive.Name, 2*time.Minute)
+	if err != nil {
 		s.Fatal("Failed to wait for installed app: ", err)
 	}
 
@@ -116,12 +117,12 @@ func CursiveSmoke(ctx context.Context, s *testing.State) {
 	}
 
 	// Validate Cursive can be launched from shelf.
-	if err := apps.Launch(ctx, tconn, apps.Cursive.ID); err != nil {
+	if err := apps.Launch(ctx, tconn, cursiveAppID); err != nil {
 		s.Fatal("Failed to launch Cursive: ", err)
 	}
 
-	if err := ash.WaitForApp(ctx, tconn, apps.Cursive.ID, time.Minute); err != nil {
-		s.Fatalf("Fail to wait for %s by app id %s: %v", apps.Cursive.Name, apps.Cursive.ID, err)
+	if err := ash.WaitForApp(ctx, tconn, cursiveAppID, time.Minute); err != nil {
+		s.Fatalf("Fail to wait for %s by app id %s: %v", apps.Cursive.Name, cursiveAppID, err)
 	}
 
 	if err := cursive.WaitForAppRendered(tconn)(ctx); err != nil {
