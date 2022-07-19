@@ -16,6 +16,24 @@
       "message": "rm?",
       "revId": "3771ff9dc0896167834fdc53dbd3294cb2385395",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98764a36_f4045df5",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-19T18:54:06Z",
+      "side": 0,
+      "message": "rm which part?\n\nAlso this block wasn\u0027t supposed to be commented in an earlier commit, it was just supposed to be deleted here. I\u0027ve updated the chain to reflect this.",
+      "parentUuid": "add542df_47cf496c",
+      "revId": "3771ff9dc0896167834fdc53dbd3294cb2385395",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
