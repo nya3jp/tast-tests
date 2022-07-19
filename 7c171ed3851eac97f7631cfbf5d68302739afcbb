@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3401e06_6db8359f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-19T19:47:14Z",
+      "side": 1,
+      "message": "Agreed. But unless we do some major wiring to expose zoom controls by our test api, this might be the easiest way to get 49p up and running. However, to make it more resilient, I could change the following:\n```\nif zoomInfo.Name !\u003d \"Zoom: 75%\" {\n\ts.Fatalf(`Unexpected zoom value: got %s; want \"Zoom: 75%%\"`, zoomInfo.Name)\n}\n```\n\nto \n\n```\nif !zoomInfo.Name.Contains(\"75\") {\n\ts.Fatalf(`Unexpected zoom value: got %s; want \"Zoom: 75%%\"`, zoomInfo.Name)\n}\n```\n\nThis might help us if they change the naming, capitalization, or spacing of `Zoom: 75%`",
+      "parentUuid": "b3cc612a_a3bd8c46",
+      "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ab28be9_1cd0beda",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 3
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-19T18:57:00Z",
       "side": 1,
       "message": "Wonder if we should pull this zoom stuff out to a separate utility function. Also wondering if we should introduce autotestPrivate apis to do this rather than relying on UI. This will break if any modifications are made to zoom behavior (for example, the step sizes change), or the ZoomView class gets renamed, etc. It\u0027s fine for now.",
+      "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "906d65a9_1483783c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-19T19:47:14Z",
+      "side": 1,
+      "message": "I did some research with Alex yesterday, we didn\u0027t find anything in the autotestPrivate api exposed related to zoom. If we were to do something zoom related, we\u0027d probably have to update `SetWhitelistedPref`[1] to allow us to clear `kPartitionPerHostZoomLevels` (which stores zoom preferences per website).\n\nThere\u0027s a `settings.SetDefaultZoom`[2] that I believe the WM team uses, but it\u0027ll change the zoom for all websites in the test, which doesn\u0027t seem like what we\u0027re going for.\n\nSince zooming on MeetCUJ seems more like a hack than anything, not sure if the functionality is something that would be used on other tests. To get 49p working, this might be the best current solution, but I can assign myself a bug to research creating a direct autotestPrivate or settings call to update the zoom for us.\n\n[1]https://source.chromium.org/chromium/chromium/src/+/main:chrome/browser/chromeos/extensions/autotest_private/autotest_private_api.cc;l\u003d499 \n[2]https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/settings/settings.go;l\u003d52",
+      "parentUuid": "4ab28be9_1cd0beda",
       "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
