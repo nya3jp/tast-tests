@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -30,6 +31,12 @@ func init() {
 	})
 }
 
+const (
+	testFile                              = "file"
+	testFileContent                       = "content"
+	cryptohomeErrorAuthorizationKeyFailed = 3
+)
+
 func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 	const (
 		userName        = "foo@bar.baz"
@@ -37,10 +44,13 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 		updatedPassword = "updatedsecret"
 		wrongPassword   = "wrongPassword"
 		keyLabel        = "fake_label"
-		testFile        = "file"
-		testFileContent = "content"
+		userPin         = "123456"
+		updatedPin      = "098765"
+		pinLabel        = "pin"
+		wrongPin        = "000000"
 	)
 
+	// Step 0: Setup.
 	ctxForCleanUp := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -66,85 +76,193 @@ func UpdateCredentialAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
+	// Step 1: Create a user with password. At this point the user only has one credential configured.
 	if err := cryptohome.CreateUserWithAuthSession(ctx, userName, userPassword, keyLabel, false); err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}
 	defer cryptohome.RemoveVault(ctxForCleanUp, userName)
 
-	// Mount the vault for the first time.
+	// Step 2: Mount the user vault for the first time. Authenticate with AuthSession first, and then use the same AuthSession for preparing the vault.
 	authSessionID, err := cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, keyLabel, false, false)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
-	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
 	if err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
 		s.Fatal("Failed to prepare persistent vault: ", err)
 	}
 	defer client.UnmountAll(ctxForCleanUp)
 
-	if err := client.PreparePersistentVault(ctx, authSessionID, false); err == nil {
-		s.Fatal("Secondary prepare attempt for the same user should fail, but succeeded")
-	}
-
-	// Write a test file to verify persistence.
+	// Step 3: Verify that the newly created mount exists.
+	// Write a test file to verify persistence later.
 	userPath, err := cryptohome.UserPath(ctx, userName)
 	if err != nil {
 		s.Fatal("Failed to get user vault path: ", err)
 	}
 
+	// Step 4: Write a file to check for persistence. This file will read later to see if we mounted the same vault prior to updating credentials.
 	filePath := filepath.Join(userPath, testFile)
 	if err := ioutil.WriteFile(filePath, []byte(testFileContent), 0644); err != nil {
 		s.Fatal("Failed to write a file to the vault: ", err)
 	}
 
+	// Step 5: Add Pin credentials for the user. After this the user has a password and a pin configured to mount.
+	if err = client.AddPinCredentialsWithAuthSession(ctx, pinLabel, userPin, authSessionID); err != nil {
+		s.Fatal("Failed to add pin as a credential: ", err)
+	}
+	client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
+
+	// Step 6: Check we can use lock screen with password. This also checks if wrong password attempt fails.
 	if err := cryptohome.TestLockScreen(ctx, userName, userPassword, wrongPassword, keyLabel, client); err != nil {
 		s.Fatal("Failed to check lock screen with initial password: ", err)
 	}
 
-	// Update credential for the user.
-	authSessionID, err = cryptohome.UpdateUserCredentialWithAuthSession(ctx, userName, userPassword, updatedPassword, false, false)
+	// Step 7: Check we can use lock screen with pin. This also checks if wrong pin attempt fails.
+	if err := cryptohome.TestLockScreenPin(ctx, userName, userPin, wrongPin, pinLabel, client); err != nil {
+		s.Fatal("Failed to check lock screen with initial pin: ", err)
+	}
+
+	// Step 8: Update password credential for the user.
+	authSessionID, err = cryptohome.UpdateUserCredentialWithAuthSession(ctx, userName, userPassword, updatedPassword, keyLabel, false, false)
 	if err != nil {
 		s.Fatal("Failed to update credential: ", err)
 	}
-	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
+	client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	if err := cryptohome.TestLockScreen(ctx, userName, updatedPassword, userPassword, keyLabel, client); err != nil {
-		s.Fatal("Failed to check lock screen after changing password: ", err)
-	}
-
-	// Unmount and mount again.
+	// Step 9: Unmount everything. We will remount with the updated password credentials.
 	if err := client.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	// Authenticate again with old credential. This operation should now fail.
-	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, userPassword, keyLabel, false, false)
-	if err == nil {
-		s.Fatal("Authenticate with old credentials succeeded when it should have failed")
-	}
-	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
-
-	// Authenticate again with new credential.
-	authSessionID, err = cryptohome.AuthenticateWithAuthSession(ctx, userName, updatedPassword, keyLabel, false, false)
+	// Step 10: Authenticate with old and then new credential -- both for password keysets. One will expectedly fail and the other will not.
+	// Note: the correct password now is the updated password.
+	authSessionID, err = loginWithCorrectAndIncorrectCredentials(ctx, client, userName, userPassword, updatedPassword, keyLabel /*is_pin*/, false)
 	if err != nil {
-		s.Fatal("Failed to authenticate persistent user with new credential: ", err)
-	}
-	defer client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
-
-	if err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
-		s.Fatal("Failed to prepare persistent vault with new credential: ", err)
+		s.Fatal("Could not successfully login with appropriate credentials: ", err)
 	}
 
-	// Verify that file is still there.
-	if content, err := ioutil.ReadFile(filePath); err != nil {
-		s.Fatal("Failed to read back test file: ", err)
-	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
+	// Step 11: Following successful auth, ensure that the file we created earlier still exists.
+	if err := mountAndVerifyFilePersistence(ctx, client, filePath, authSessionID); err != nil {
+		s.Fatal("Failed to verify file persistence: ", err)
 	}
+	client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
 
-	// Ensure we still pass unlock screen
+	// Step 12: Ensure we still pass unlock screen with passwords.
 	if err := cryptohome.TestLockScreen(ctx, userName, updatedPassword, userPassword, keyLabel, client); err != nil {
 		s.Fatal("Failed to check lock screen after re-login: ", err)
 	}
+
+	// Step 13: Authenticate with a correct and an incorrect pin credential. One will expectedly fail and the other will not.
+	authSessionID, err = loginWithCorrectAndIncorrectCredentials(ctx, client, userName, wrongPin, userPin, pinLabel /*is_pin*/, true)
+	if err != nil {
+		s.Fatal("Could not successfully login with appropriate credentials:: ", err)
+	}
+
+	// Step 14: Following successful auth, ensure that the file we created earlier still exists.
+	if err := mountAndVerifyFilePersistence(ctx, client, filePath, authSessionID); err != nil {
+		s.Fatal("Failed to verify file persistence: ", err)
+	}
+	client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
+
+	// Step 15: Ensure we still pass unlock screen with pin.
+	if err := cryptohome.TestLockScreenPin(ctx, userName, userPin, wrongPin, pinLabel, client); err != nil {
+		s.Fatal("Failed to check lock screen after re-login: ", err)
+	}
+
+	// Step 16: Update pin credential for the user.
+	authSessionID, err = cryptohome.UpdateUserCredentialWithAuthSession(ctx, userName, userPin, updatedPin, pinLabel, false, false)
+	if err != nil {
+		s.Fatal("Failed to update credential: ", err)
+	}
+	client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
+
+	// Step 17: Authenticate with old and then new credential -- both for password keysets. One will expectedly fail and the other will not.
+	// Note: the correct password is the updatedPassword.
+	authSessionID, err = loginWithCorrectAndIncorrectCredentials(ctx, client, userName, userPassword, updatedPassword, keyLabel /*is_pin*/, false)
+	if err != nil {
+		s.Fatal("Could not successfully login with appropriate credentials: ", err)
+	}
+
+	// Step 18: Following successful auth, ensure that the file we created earlier still exists.
+	if err := mountAndVerifyFilePersistence(ctx, client, filePath, authSessionID); err != nil {
+		s.Fatal("Failed to verify file persistence: ", err)
+	}
+	client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
+
+	// Step 19: Ensure we still pass unlock screen with passwords.
+	if err := cryptohome.TestLockScreen(ctx, userName, updatedPassword, userPassword, keyLabel, client); err != nil {
+		s.Fatal("Failed to check lock screen after re-login: ", err)
+	}
+
+	// Step 20: Authenticate with a correct and an incorrect pin credential. One will expectedly fail and the other will not.
+	// Note: the correct pin now is the updatedPin.
+	authSessionID, err = loginWithCorrectAndIncorrectCredentials(ctx, client, userName, userPin, updatedPin, pinLabel /*is_pin*/, true)
+	if err != nil {
+		s.Fatal("Could not successfully login with appropriate credentials:: ", err)
+	}
+
+	// Step 21: Following successful auth, ensure that the file we created earlier still exists.
+	if err := mountAndVerifyFilePersistence(ctx, client, filePath, authSessionID); err != nil {
+		s.Fatal("Failed to verify file persistence: ", err)
+	}
+	client.InvalidateAuthSession(ctxForCleanUp, authSessionID)
+
+	// Step 22: Ensure we still pass unlock screen with pin.
+	if err := cryptohome.TestLockScreenPin(ctx, userName, updatedPin, userPin, pinLabel, client); err != nil {
+		s.Fatal("Failed to check lock screen after re-login: ", err)
+	}
+}
+
+func loginWithCorrectAndIncorrectCredentials(ctx context.Context, client *hwsec.CryptohomeClient, userName, wrongSecret, secret, keyLabel string, isPin bool) (string, error) {
+	// Start an Auth session and get an authSessionID.
+	authSessionID, err := client.StartAuthSession(ctx, userName /*isEphemeral*/, false)
+	if err != nil {
+		return authSessionID, errors.Wrap(err, "failed to start Auth session")
+	}
+
+	// Attempt the incorrect credential first
+	if isPin {
+		err = client.AuthenticatePinWithAuthSession(ctx, wrongSecret, keyLabel, authSessionID)
+	} else {
+		err = client.AuthenticateAuthSession(ctx, wrongSecret, keyLabel, authSessionID /*isKioskUser*/, false)
+	}
+
+	if err == nil {
+		return authSessionID, errors.Wrap(err, "authenticate with incorrect credentials succeeded when it should not have")
+	}
+
+	var exitErr *hwsec.CmdExitError
+	if !errors.As(err, &exitErr) {
+		return authSessionID, errors.Wrap(err, "unexpected error, want *hwsec.CmdExitError")
+	}
+
+	if exitErr.ExitCode != cryptohomeErrorAuthorizationKeyFailed {
+		return authSessionID, errors.Wrap(err, "authenticate with incorrect credentials failed but with unexpected error")
+	}
+
+	// Attempt the correct credential.
+	if isPin {
+		err = client.AuthenticatePinWithAuthSession(ctx, secret, keyLabel, authSessionID)
+	} else {
+		err = client.AuthenticateAuthSession(ctx, secret, keyLabel, authSessionID /*isKioskUser*/, false)
+	}
+
+	return authSessionID, err
+}
+
+func mountAndVerifyFilePersistence(ctx context.Context, client *hwsec.CryptohomeClient, filePath, authSessionID string) error {
+	// Write a test file to verify persistence.
+	if err := client.PreparePersistentVault(ctx, authSessionID, false); err != nil {
+		return errors.Wrap(err, "failed to prepare persistent vault with given credential")
+	}
+	defer client.UnmountAll(ctx)
+
+	// Verify that file is still there.
+	if content, err := ioutil.ReadFile(filePath); err != nil {
+		return errors.Wrap(err, "failed to read back test file")
+	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
+		return errors.Wrap(err, "incorrect tests file content")
+	}
+
+	return nil
 }
