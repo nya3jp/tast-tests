@@ -39,6 +39,30 @@
       },
       "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3252628_664404bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock3_usb_charging.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-07-19T03:21:34Z",
+      "side": 1,
+      "message": "Hi Frank,\n\nIn my original hardware connection, there is no power source for Chromebook. The whole hardware connection is just using dock, and I was wrong about that, Chromebook should have power source.\n\nAfter I discussed with our team, and we have a proposal that Chromebook might use ip power instead of using servo. If we use ip power as source, we can control Chromebook\u0027s power in script, then problem might be solved.\n\nPlease let me know this is ok? Thanks.",
+      "parentUuid": "d68f0a1c_8e19491c",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
