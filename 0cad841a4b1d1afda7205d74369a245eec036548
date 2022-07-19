@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd1d6b22_17f9fee7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dev_mode_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-19T18:55:55Z",
+      "side": 1,
+      "message": "Since this is stressing the dev mode, we should probably use fixture.DevMode instead of DevModeGBB.",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "0cad841a4b1d1afda7205d74369a245eec036548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
