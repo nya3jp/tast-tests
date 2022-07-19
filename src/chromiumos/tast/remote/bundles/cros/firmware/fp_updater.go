@@ -86,7 +86,26 @@ func flashOldRWFirmware(ctx context.Context, s *testing.State, d *rpcdut.RPCDUT)
 		return errors.Wrap(err, "failed to send old firmware to DUT")
 	}
 
-	return fingerprint.FlashRWFirmware(ctx, d, oldFirmwarePathOnDut)
+	if err := fingerprint.FlashRWFirmware(ctx, d, oldFirmwarePathOnDut); err != nil {
+		return errors.Wrap(err, "failed to flash RW firmware")
+	}
+
+	// Check if FPMCU is running flashed RW.
+	buildRWVersion, err := fingerprint.GetBuildRWFirmwareVersion(ctx, d, oldFirmwarePathOnDut)
+	if err != nil {
+		return errors.Wrap(err, "failed to query build RW version")
+	}
+
+	runningRWVersion, err := fingerprint.RunningRWVersion(ctx, d)
+	if err != nil {
+		return errors.Wrap(err, "failed to query running RW version")
+	}
+
+	if runningRWVersion != buildRWVersion {
+		return errors.Errorf("FPMCU is running incorrect RW version. Running %s, want %s", runningRWVersion, buildRWVersion)
+	}
+
+	return nil
 }
 
 func FpUpdater(ctx context.Context, s *testing.State) {
