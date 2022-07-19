@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a20a8d2_b8087458",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-19T18:29:53Z",
+      "side": 1,
+      "message": "Thanks so much for everyone\u0027s reviews! Regarding the refactoring part, I might create a new commit to handle it.",
+      "revId": "6cb1de5caa2c8f94dc575bfc172445228786375f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
