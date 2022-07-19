@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7761c8e4_40a9017f",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-19T05:14:25Z",
+      "side": 1,
+      "message": "I think it should be okay. Since for the usage of this test app, we don\u0027t want to serve any other requests if the previous one is still processing. Although blocking UI thread for a long time might lead to ANR, it is considered unexpected and the test should fail anyways.",
+      "parentUuid": "0b536a1d_dd26cfda",
+      "revId": "dad8b896f98980f8fdee0ca75859fc1ff738e1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83e14b2c_cbbcb6f8",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-19T04:37:40Z",
       "side": 1,
       "message": "nit: `TimeUnit.MILLISECONDS.convert(timeStampJava - mLastTimeStampJava, TimeUnit.NANOSECONDS)`",
+      "range": {
+        "startLine": 131,
+        "startChar": 27,
+        "endLine": 131,
+        "endChar": 82
+      },
+      "revId": "dad8b896f98980f8fdee0ca75859fc1ff738e1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66890987_3b204302",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CaptureCallbackHistogram.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-19T05:14:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83e14b2c_cbbcb6f8",
       "range": {
         "startLine": 131,
         "startChar": 27,
