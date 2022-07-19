@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "753ad3e7_8711bf0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-07-19T02:24:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8abcc46d_41920d18",
+      "range": {
+        "startLine": 265,
+        "startChar": 28,
+        "endLine": 265,
+        "endChar": 32
+      },
+      "revId": "017c8bbf601615e0d4d94ca2fc1f36bf42038442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab82db00_b73e79e2",
@@ -77,6 +101,54 @@
       "writtenOn": "2022-07-18T08:28:07Z",
       "side": 1,
       "message": "nit: launching",
+      "range": {
+        "startLine": 266,
+        "startChar": 71,
+        "endLine": 266,
+        "endChar": 77
+      },
+      "revId": "017c8bbf601615e0d4d94ca2fc1f36bf42038442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e66319ec_db74fdad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-07-19T02:24:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab82db00_b73e79e2",
+      "range": {
+        "startLine": 266,
+        "startChar": 52,
+        "endLine": 266,
+        "endChar": 56
+      },
+      "revId": "017c8bbf601615e0d4d94ca2fc1f36bf42038442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eece951_a3b89b84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/ui_action_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1520007
+      },
+      "writtenOn": "2022-07-19T02:24:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3311c807_1e3731b9",
       "range": {
         "startLine": 266,
         "startChar": 71,
