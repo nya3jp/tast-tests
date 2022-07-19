@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d494d17d_d4c59033",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-07-19T23:23:44Z",
+      "side": 1,
+      "message": "Yes the goal is to log the subprocess stderr to the tast log. The subprocess was failing for me but I was getting no messages, I\u0027m not sure if the stderr was being discarded or going somewhere else. \n\nTo avoid mixing, I could make another goroutine reading stderr and `s.Logf`-ing each line?",
+      "parentUuid": "c10c28aa_3d1c8518",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "bee8643a2b61d32048cc1459e7c2e610ff8f4e24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e13bd72d_9144a08c",
