@@ -30,7 +30,7 @@ func init() {
 			"rzakarian@google.com",
 			"cros-reporting-team@google.com",
 		},
-		Attr:         []string{"group:dpanel-end2end"},
+		Attr:         []string{"group:dpanel-end2end", "group:enterprise-reporting"},
 		SoftwareDeps: []string{"reboot", "chrome"},
 		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService"},
 		Timeout:      7 * time.Minute,
