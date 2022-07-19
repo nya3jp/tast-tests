@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "987f5af4_bb3a7289",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-19T11:51:59Z",
+      "side": 1,
+      "message": "It looks like it happens during password auth factor addition, the same error is in https://tastboard.corp.google.com/test/cryptohome.UserSecretStash\n\nThe error is https://paste.googleplex.com/5926808642912256 - \"No available auth block for creation\" - it looks like none of these options [1] matched in GetAuthBlockTypeForCreation\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/cryptohome/auth_blocks/auth_block_utility_impl.cc;l\u003d281-297;drc\u003da2e7f8fe46aa63d8f0e8841585ca6ae29710049f",
+      "parentUuid": "d8a255ce_abc731aa",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "4d344658c6499b5591cf2bee457584078584dde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a497383_9beb9d7b",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery.go",
         "patchSetId": 1
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-19T11:39:14Z",
       "side": 1,
       "message": "nit: Let\u0027s add a TODO that points to the bug.",
+      "revId": "4d344658c6499b5591cf2bee457584078584dde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f286dd76_aa5fa5c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-19T11:51:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a497383_9beb9d7b",
       "revId": "4d344658c6499b5591cf2bee457584078584dde2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
