@@ -81,7 +81,7 @@ func (f *cellularFixture) PostTest(ctx context.Context, s *testing.FixtTestState
 
 func (f *cellularFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	if f.modemfwdStopped {
-		err := upstart.EnsureJobRunning(ctx, modemfwdJobName)
+		err := upstart.EnsureJobRunning(ctx, modemfwdJobName, upstart.WithArg("DEBUG_MODE", "true"))
 		if err != nil {
 			s.Fatalf("Failed to start %q: %s", modemfwdJobName, err)
 		}
