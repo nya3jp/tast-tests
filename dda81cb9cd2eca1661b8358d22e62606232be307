@@ -212,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a1909b_64bea5ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/bootup_times.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T16:08:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f23db894_aa83a448",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 3
+      },
+      "revId": "dda81cb9cd2eca1661b8358d22e62606232be307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ed5162f_4871baf3",
