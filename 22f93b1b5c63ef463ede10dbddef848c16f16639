@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68c34157_2eb2ce87",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-07-19T22:57:54Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "25dadc04_eed7835f",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 18
+      },
+      "revId": "22f93b1b5c63ef463ede10dbddef848c16f16639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68bd6378_31478f7f",
         "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
         "patchSetId": 4
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-19T22:34:39Z",
       "side": 1,
       "message": "How can test controller determine if the router has been booted up? Do you need a wait check here and return when router is up or time out?",
+      "revId": "22f93b1b5c63ef463ede10dbddef848c16f16639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bad61094_619cdccf",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1373754
+      },
+      "writtenOn": "2022-07-19T22:57:54Z",
+      "side": 1,
+      "message": "IIUC, I think @Jared is only starting the reboot process here and in the next CL the function `rebootRouter` should wait for the router to start again.\n\nI am curious, why do we need to reboot the router between tests? Is there an existing issue? I think having a fixed sleep time then trying to reconnect will be flaky. Also, this will increase the runtime of the tests significantly.",
+      "parentUuid": "68bd6378_31478f7f",
       "revId": "22f93b1b5c63ef463ede10dbddef848c16f16639",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
