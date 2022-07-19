@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4bc155c_27b8d65c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_body_ab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-07-19T11:45:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c09a7f49_d9b505ec",
+      "revId": "07d62cce440ec51c89cd03f3fbebfcf3c6eb10ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f4dc77d_cf15aac6",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a85d3a2_a05652b9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_body_ab.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-07-19T11:45:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f4dc77d_cf15aac6",
+      "revId": "07d62cce440ec51c89cd03f3fbebfcf3c6eb10ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4ae90cb_eb96ecc7",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-07-13T17:01:49Z",
       "side": 1,
       "message": "nit: Are those ContextLog necessary in this function? I think error message in are uniques enough to tell you where it failed.",
+      "revId": "07d62cce440ec51c89cd03f3fbebfcf3c6eb10ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebd262c6_8c3eb20e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/utils/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-07-19T11:45:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4ae90cb_eb96ecc7",
       "revId": "07d62cce440ec51c89cd03f3fbebfcf3c6eb10ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
