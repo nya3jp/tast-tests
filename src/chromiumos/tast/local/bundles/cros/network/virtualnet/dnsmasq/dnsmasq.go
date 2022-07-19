@@ -27,7 +27,9 @@ interface={{.ifname}}
 dhcp-range={{.pool_start}},{{.pool_end}},{{.netmask}},12h
 dhcp-option=option:netmask,{{.netmask}}
 dhcp-option=option:router,{{.gateway}}
+{{if .address}}
 address={{.address}}
+{{end}}
 {{if .dns}}
 dhcp-option=option:dns-server,{{.dns}}
 {{end}}
