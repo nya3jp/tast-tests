@@ -38,7 +38,7 @@ func init() {
 		Timeout:      30 * time.Minute,
 		Params: []testing.Param{
 			{
-				Fixture: fixture.NormalMode,
+				Fixture: fixture.DevModeGBB,
 			},
 		},
 	})
@@ -51,7 +51,7 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 
-	cmd := h.DUT.Conn().CommandContext(ctx, "flashrom_tester", "--debug", "/usr/sbin/flashrom", "host")
+	cmd := h.DUT.Conn().CommandContext(ctx, "/usr/bin/flashrom_tester", ":lib:", "host", "--debug")
 
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
