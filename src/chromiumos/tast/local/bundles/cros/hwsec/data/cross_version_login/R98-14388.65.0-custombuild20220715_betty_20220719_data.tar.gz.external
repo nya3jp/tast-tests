@@ -1,0 +1,5 @@
+{
+  "url": "gs://chromiumos-test-assets-public/tast/cros/hwsec/cross_version_login/R98-14388.65.0-custombuild20220715_betty_20220719_data.tar.gz",
+  "size": 5338136,
+  "sha256sum": "841337155128d1b126b35f42e449078ab65c1b117e90de75416d9ab2395d884e"
+}
