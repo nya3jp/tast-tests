@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acccccd1_a60b7f4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-19T02:46:02Z",
+      "side": 1,
+      "message": "\u003e \"retrive\" is a possible misspelling of \"retrieve\".\n\nPlease fix.",
+      "parentUuid": "5821aea3_d58bee18",
+      "range": {
+        "startLine": 11,
+        "startChar": 55,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "28a78f252ed2a118772150661b452536280c648d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
