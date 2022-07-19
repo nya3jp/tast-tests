@@ -1,0 +1,266 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9b92873_8772b518",
+        "filename": "src/chromiumos/tast/remote/network/iperf/firewall_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "nit: I think it\u0027s a bit more consistent style wise to check if the error exists and return it then, so something like:\n\n```\nif err :\u003d firewall.ExecuteCommand(ctx, f.conn, rules...); err !\u003d nil {\n    return err  // or wrap it with something, etc.\n}\n\nf.rules \u003d append(f.rules, rules[1:])\nreturn nil\n```",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3edb50_f83c4e26",
+        "filename": "src/chromiumos/tast/remote/network/iperf/firewall_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "Any reason not to just have one error, and `errors.Wrap` it with whatever new errors we get here? Otherwise users will have to parse the `[]error` themselves to display error messages and it might get a little awkward to use.\n\nThe `errors` package we use in Tast has slightly separate behavior than the regular golang errors package as it doesn\u0027t drop errors when wrapping nil[1].\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/61efdba282345cc17d04551e6a84b02072d9bf01/src/chromiumos/tast/errors/errors.go#130",
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f52d289c_dd8432a7",
+        "filename": "src/chromiumos/tast/remote/network/iperf/firewall_helper.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "ditto re: should we just replace this with wrapping?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 1
+      },
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ebcce85_266d618e",
+        "filename": "src/chromiumos/tast/remote/network/iperf/remote_client.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "nit: golang style doesn\u0027t have line length limits, so this should all be on one line",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada594f7_00eb5e86",
+        "filename": "src/chromiumos/tast/remote/network/iperf/remote_server.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "as said in the firewall_helper file, it might be better to wrap errors here.",
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82d03add_d9d8e087",
+        "filename": "src/chromiumos/tast/remote/network/iperf/result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "do we not want to report any of these errors?",
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5653b88_8b9373b6",
+        "filename": "src/chromiumos/tast/remote/network/iperf/result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "ditto re: reporting this error",
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ca7c608_b41e583b",
+        "filename": "src/chromiumos/tast/remote/network/iperf/result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "we should add the expected/actual counts here to aid debugging, like:\n\n```\nerrors.Errorf(\"missing data: got %v lines, want %v\", count, expectedCount)\n```",
+      "range": {
+        "startLine": 84,
+        "startChar": 14,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f78728ad_03b3e059",
+        "filename": "src/chromiumos/tast/remote/network/iperf/result.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "I don\u0027t think it is common practice to return sentinel values for things like this. Any reason we can\u0027t return (float64, error) and return a more specific error value?",
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87268d25_7c059e3d",
+        "filename": "src/chromiumos/tast/remote/network/iperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "Might want to log the current retry number and maximum retries here too",
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "862d4ea7_ca806963",
+        "filename": "src/chromiumos/tast/remote/network/iperf/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "I assume this doesn\u0027t return an error when there is no running iperf server?",
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f89eb3_d43301b6",
+        "filename": "src/chromiumos/tast/remote/network/iperf/session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "`continue` after this and then you can unindent the `else` block.",
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "577a4728_cdad3893",
+        "filename": "src/chromiumos/tast/remote/network/iperf/session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "Invert this condition and `continue` instead, and you can unindent the rest of this loop body",
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f77250_34940f30",
+        "filename": "src/chromiumos/tast/remote/network/iperf/session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-19T21:30:40Z",
+      "side": 1,
+      "message": "We don\u0027t check if we\u0027re still above maxStandardDeviation. Is that fine?",
+      "revId": "ee86f083ba9e3d0bcbd33fb0ed98772a5a2e86f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
