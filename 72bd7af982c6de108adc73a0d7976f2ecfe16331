@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6e233fa_70b74681",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-19T21:20:30Z",
+      "side": 1,
+      "message": "Style LGTM % nits, please wait for a review from Maksim.",
+      "revId": "72bd7af982c6de108adc73a0d7976f2ecfe16331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b78f71cd_b72ef3f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-19T21:20:30Z",
+      "side": 1,
+      "message": "nit: if this applies to the next boolean, add it after the comma\n\nSame below",
+      "range": {
+        "startLine": 139,
+        "startChar": 127,
+        "endLine": 139,
+        "endChar": 133
+      },
+      "revId": "72bd7af982c6de108adc73a0d7976f2ecfe16331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4cd795a_d7fe73f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-19T21:20:30Z",
+      "side": 1,
+      "message": "nit: Same as above, add it after the comma",
+      "range": {
+        "startLine": 218,
+        "startChar": 63,
+        "endLine": 218,
+        "endChar": 74
+      },
+      "revId": "72bd7af982c6de108adc73a0d7976f2ecfe16331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d361302_1bfaf6d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-19T21:20:30Z",
+      "side": 1,
+      "message": "Can you explain what this function is testing.\n\nIf the test file is written at the beginning, it should always be present.",
+      "revId": "72bd7af982c6de108adc73a0d7976f2ecfe16331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83a98bf9_23dfe211",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-19T21:20:30Z",
+      "side": 1,
+      "message": "nit: this is not clear",
+      "range": {
+        "startLine": 638,
+        "startChar": 34,
+        "endLine": 638,
+        "endChar": 54
+      },
+      "revId": "72bd7af982c6de108adc73a0d7976f2ecfe16331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
