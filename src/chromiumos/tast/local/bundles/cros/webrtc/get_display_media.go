@@ -37,6 +37,10 @@ func init() {
 			Name:    "window",
 			Val:     "window",
 			Fixture: "chromeWindowCapture",
+		}, {
+			Name:    "tab",
+			Val:     "browser",
+			Fixture: "chromeTabCapture",
 		}},
 	})
 }
