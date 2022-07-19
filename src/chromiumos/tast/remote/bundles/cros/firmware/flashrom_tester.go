@@ -97,12 +97,6 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 		}
 	}()
 
-	// Write newline because the tester expects a key press
-	s.Log("Starting tester")
-	if _, err := io.WriteString(stdin, "\n"); err != nil {
-		s.Fatal("WriteString() failed: ", err)
-	}
-
 	for stdoutSc.Scan() {
 		text := stdoutSc.Text()
 		// Find output lines that contain a non-passing subtest result
@@ -130,7 +124,8 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 			if err := h.Servo.SetFWWPState(ctx, targetWPState); err != nil {
 				s.Fatalf("Failed to %s WP: %v", wpStr, err)
 			}
-
+		}
+		if strings.Contains(text, "Press any key to continue") {
 			// Write newline because the tester expects a key press
 			s.Log("Continuing test")
 			if _, err := io.WriteString(stdin, "\n"); err != nil {
