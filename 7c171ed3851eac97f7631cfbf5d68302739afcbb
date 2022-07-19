@@ -16,6 +16,40 @@
       "message": "This change should fix the zoom issue that I just reverted. Please review, thank you!",
       "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3cc612a_a3bd8c46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-07-19T18:57:00Z",
+      "side": 1,
+      "message": "This stuff is a bit sketch",
+      "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ab28be9_1cd0beda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-07-19T18:57:00Z",
+      "side": 1,
+      "message": "Wonder if we should pull this zoom stuff out to a separate utility function. Also wondering if we should introduce autotestPrivate apis to do this rather than relying on UI. This will break if any modifications are made to zoom behavior (for example, the step sizes change), or the ZoomView class gets renamed, etc. It\u0027s fine for now.",
+      "revId": "7c171ed3851eac97f7631cfbf5d68302739afcbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
