@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c432f74_395d4d18",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-19T08:06:24Z",
+      "side": 1,
+      "message": "the default timeout for `WaitUntil*` calls are 15 second. so I don\u0027t think it is good to limit the timeout to 10 seconds. I suggest to use the default timeout for the tests by removing this line.",
+      "parentUuid": "36ccf3c0_f7d71254",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "1c3c7e3748201e6f8ca003e0bb20fc55818e78d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1f28a18_7498fdf8",
         "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey.go",
         "patchSetId": 1
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "Thank you for catching this! Fixed it.",
       "parentUuid": "c1f28a18_7498fdf8",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "1c3c7e3748201e6f8ca003e0bb20fc55818e78d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fae3345_c414810a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-19T08:06:24Z",
+      "side": 1,
+      "message": "I was looking into the test because I had an issue with a different test that on a specific model it cannot press the search key. So I was interested how does this test do it.\nSo it was luck 😊",
+      "parentUuid": "a4b1060c_4d9c6e17",
       "range": {
         "startLine": 56,
         "startChar": 1,
