@@ -142,6 +142,30 @@
       },
       "revId": "31c0b3cb872a60061cfd3124055853b3f9920033",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f536ef_40040f17",
+        "filename": "src/chromiumos/tast/local/chrome/option.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-19T13:00:23Z",
+      "side": 1,
+      "message": "\u003e \u003e I do not want to make changes that conflict with it, though.\n\u003e This can\u0027t possibly conflict with other code, as since the return type is a string, the only thing the user can do with it is to print the diff out to the user, or confirm whether the diff is empty. They can\u0027t do something like check if two specific members are equal, or anything that involves caring about the actual underlying struct.\n\u003e \n\nThe key here is what\u0027re exposed conceptually. Not just a type.\nThis is the point you and I haven\u0027t made agreement, IIUC.\n\n\u003e \u003e you are exposing the config internals via OptionsDiff\u0027s return value, ...right...?\n\u003e I\u0027d say no. It is \"exposed\" in the sense of you can see a string corresponding to the diff between two configs, but I think that\u0027s perfectly reasonable. \n\nSorry, I couldn\u0027t come up with your thoughts. Actually, this is what I requested to remove, so just saying \"perfectly resonable\" does not work. Clarification?\n\n\u003e Consider how this function will be used, and also consider that the config members pretty clearly map to options:\n\u003e \n\u003e diff, _ :\u003d OptionsDiff(codeUnderTest(), []Option{options.ExtraArg(\"--my-flag\")})\n\u003e if diff !\u003d \u0027\u0027 {\n\u003e  t.Errorf(\"Options mismatch (-got +want):\\n%s\", diff)\n\u003e }\n\u003e \n\u003e If this fails, you would get an error message along the lines of\n\u003e Options mismatch (-got +want):\n\u003e + ExtraArgs: --my-flag\n\u003e \n\nYes, this exposes the internal struct.\n\n\u003e IMO, this is extremely clear what failed, is unable to break code when it changes, as it doesn\u0027t provide access to the underlying config for a program (only in a way that can be read by a human), and the MutableConfig usually has a pretty simple 1-1 mapping with options.\n\u003e \n\u003e If you still don\u0027t want this, I can replace the string diff with a bool indicating whether they\u0027re the same object, but IMO, this is pretty stupid as it\u0027s the same thing, just with less debugging information available to the test writer.\n\nbefore making the decision, could you clarify what is the semantics of equality without mentioning internal details, incl commandline flags?\nSome of the values are actually overwritten, so \"the diff between two sets of options\" is misleading.\n\nFurther discussing over gerrit may be inefficient. Feel free to schedule a VC if you\u0027d like.",
+      "parentUuid": "15224567_18bf6051",
+      "range": {
+        "startLine": 515,
+        "startChar": 38,
+        "endLine": 515,
+        "endChar": 44
+      },
+      "revId": "31c0b3cb872a60061cfd3124055853b3f9920033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
