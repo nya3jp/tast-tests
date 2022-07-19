@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cda9b4f_8b449308",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425417
+      },
+      "writtenOn": "2022-07-19T15:07:33Z",
+      "side": 1,
+      "message": "I thought Andrew\u0027s idea was to sideload a file into /var/cache/shill and ensure that it always connects to amari. This CL does not seem to sideload any files, maybe I am missing something.",
+      "revId": "c6bf1c7a595754aacba04c9c8cce488bf6d5e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
