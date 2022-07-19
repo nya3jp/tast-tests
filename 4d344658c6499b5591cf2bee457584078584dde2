@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d802cb6_c449b6ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-19T12:09:25Z",
+      "side": 1,
+      "message": "OK, and I suppose it\u0027s caused by TPM unavailability (because in all other cases we always have auth blocks to choose from).\n\nThat\u0027s fine if it was a random flake that didn\u0027t recur so far, but I believe we\u0027re supposed to wait for 20 successive builds without flakes before enabling the test.",
+      "parentUuid": "987f5af4_bb3a7289",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 66
+      },
+      "revId": "4d344658c6499b5591cf2bee457584078584dde2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5a497383_9beb9d7b",
         "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery.go",
         "patchSetId": 1
