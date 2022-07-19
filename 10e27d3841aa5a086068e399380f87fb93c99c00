@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e1c2440_ea9d83d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-19T07:58:03Z",
+      "side": 1,
+      "message": "Start CL message with package name:\ninputs: Adding Physical ...",
+      "revId": "10e27d3841aa5a086068e399380f87fb93c99c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcbb3adc_cb5f9e14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-19T07:58:03Z",
+      "side": 1,
+      "message": "I guess you ran the test added here. Please add:\ntast run \u003cip\u003e inputs.PhysicalKeyboardKioskTyping",
+      "revId": "10e27d3841aa5a086068e399380f87fb93c99c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "47162e58_8f239ff8",
@@ -14,6 +48,75 @@
       "writtenOn": "2022-07-19T03:05:55Z",
       "side": 1,
       "message": "defer to Kamil\u0027s review for kiosk fixture usage.",
+      "revId": "10e27d3841aa5a086068e399380f87fb93c99c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47898f16_19bb0c24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_kiosk_typing.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-19T07:58:03Z",
+      "side": 1,
+      "message": "Is that necessary for the test? I don\u0027t see that being used anywhere in the test.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 4
+      },
+      "revId": "10e27d3841aa5a086068e399380f87fb93c99c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5608563f_8382afc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_kiosk_typing.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-19T07:58:03Z",
+      "side": 1,
+      "message": "Since the passed value for each test is ime.EnglishUS. I would actually pass chrome.Option to the tests as in e.g.:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/kiosk/launch_with_device_ephemeral_users_enabled.go;l\u003d33\n\n\nIf you needed to parameterize the test by more data you could define a test struct to be passed as parameters (at line 43 and 49) containing:\ntype testData struct{\nime.EnglishUS\nchrome.Option\n}\n\nand then pass specifics into tests.\nWDYT?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "10e27d3841aa5a086068e399380f87fb93c99c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "272f65ab_585204a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_kiosk_typing.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-19T07:58:03Z",
+      "side": 1,
+      "message": "Does this start Kiosk mode?\n\nSince you defined local account config here I assume you want to run one of them. I am guessing that you want to start the app with ID webKioskAccountID.\nIf that is the case then for AutoLaunch use that ID.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 60
+      },
       "revId": "10e27d3841aa5a086068e399380f87fb93c99c00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
