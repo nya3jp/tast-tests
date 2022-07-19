@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8defa387_bd339c11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T23:35:38Z",
+      "side": 1,
+      "message": "The zoom indicator will usually not be there in the first place, so it will not actually `disappear`. How about: `be absent`",
+      "range": {
+        "startLine": 638,
+        "startChar": 45,
+        "endLine": 638,
+        "endChar": 54
+      },
+      "revId": "c8656d71f69e48715fd8476f585ca76493df5f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96166168_c70a8dbd",
+        "filename": "src/chromiumos/tast/local/cpu/cooldown.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T23:35:38Z",
+      "side": 1,
+      "message": "What is this change for?",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 21
+      },
+      "revId": "c8656d71f69e48715fd8476f585ca76493df5f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7166792a_814ec855",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T23:35:38Z",
+      "side": 1,
+      "message": "What is this change for?",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 44
+      },
+      "revId": "c8656d71f69e48715fd8476f585ca76493df5f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
