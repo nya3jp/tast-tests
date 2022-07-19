@@ -16,6 +16,23 @@
       "message": "Updated bug number in the commit message.",
       "revId": "1309cd546bd0ecf021b5137c11ef5a2aeedb336f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8a15e6d_02c96538",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-19T05:34:32Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm",
+      "revId": "1309cd546bd0ecf021b5137c11ef5a2aeedb336f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
