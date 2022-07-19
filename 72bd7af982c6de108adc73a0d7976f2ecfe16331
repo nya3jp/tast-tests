@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18e92a9_643c286d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-19T21:40:28Z",
+      "side": 1,
+      "message": "Gofmt always pulls it back, let me apply it after false",
+      "parentUuid": "b78f71cd_b72ef3f4",
+      "range": {
+        "startLine": 139,
+        "startChar": 127,
+        "endLine": 139,
+        "endChar": 133
+      },
+      "revId": "72bd7af982c6de108adc73a0d7976f2ecfe16331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4cd795a_d7fe73f4",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab8265d4_aae17ae5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-19T21:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4cd795a_d7fe73f4",
+      "range": {
+        "startLine": 218,
+        "startChar": 63,
+        "endLine": 218,
+        "endChar": 74
+      },
+      "revId": "72bd7af982c6de108adc73a0d7976f2ecfe16331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d361302_1bfaf6d4",
@@ -77,6 +125,24 @@
       "writtenOn": "2022-07-19T21:20:30Z",
       "side": 1,
       "message": "Can you explain what this function is testing.\n\nIf the test file is written at the beginning, it should always be present.",
+      "revId": "72bd7af982c6de108adc73a0d7976f2ecfe16331",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7e0b781_37224432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-19T21:40:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d361302_1bfaf6d4",
       "revId": "72bd7af982c6de108adc73a0d7976f2ecfe16331",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
