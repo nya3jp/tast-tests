@@ -16,6 +16,40 @@
       "message": "I don\u0027t see anything wrong with it.",
       "revId": "a07eddf3c4f7ee21d76c0e0c26eee21cf7ecfaa1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b55faac_b1df505a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-07-19T03:09:40Z",
+      "side": 1,
+      "message": "android/ lgtm",
+      "revId": "a07eddf3c4f7ee21d76c0e0c26eee21cf7ecfaa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc4056aa_1d7ecdd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/print.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-07-19T03:09:40Z",
+      "side": 1,
+      "message": "nit: I would add \"d.Object(..).WaitForExists\" before clicking the object to reduce the possible cause of flakiness.",
+      "revId": "a07eddf3c4f7ee21d76c0e0c26eee21cf7ecfaa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
