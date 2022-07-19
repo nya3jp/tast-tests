@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a01bde9_5f307170",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-19T09:31:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e1c2440_ea9d83d8",
+      "revId": "10e27d3841aa5a086068e399380f87fb93c99c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcbb3adc_cb5f9e14",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-19T07:58:03Z",
       "side": 1,
       "message": "I guess you ran the test added here. Please add:\ntast run \u003cip\u003e inputs.PhysicalKeyboardKioskTyping",
+      "revId": "10e27d3841aa5a086068e399380f87fb93c99c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6116c332_a0566957",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-19T09:31:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcbb3adc_cb5f9e14",
       "revId": "10e27d3841aa5a086068e399380f87fb93c99c00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee511dc_08349d81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_kiosk_typing.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-19T09:31:49Z",
+      "side": 1,
+      "message": "Its not necessary, i\u0027ve removed it.",
+      "parentUuid": "47898f16_19bb0c24",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 4
+      },
+      "revId": "10e27d3841aa5a086068e399380f87fb93c99c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5608563f_8382afc1",
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a47ed8_98338d78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_kiosk_typing.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-19T09:31:49Z",
+      "side": 1,
+      "message": "the ime.English being set as a val wasn\u0027t intentional since it isn\u0027t being used. However, I think it makes sense to set chrome option as a val like in the example. I\u0027ve done so in the latest patch.",
+      "parentUuid": "5608563f_8382afc1",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "10e27d3841aa5a086068e399380f87fb93c99c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "272f65ab_585204a9",
@@ -111,6 +195,30 @@
       "writtenOn": "2022-07-19T07:58:03Z",
       "side": 1,
       "message": "Does this start Kiosk mode?\n\nSince you defined local account config here I assume you want to run one of them. I am guessing that you want to start the app with ID webKioskAccountID.\nIf that is the case then for AutoLaunch use that ID.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 60
+      },
+      "revId": "10e27d3841aa5a086068e399380f87fb93c99c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "189acccd_0edd024d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_kiosk_typing.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-19T09:31:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "272f65ab_585204a9",
       "range": {
         "startLine": 104,
         "startChar": 0,
