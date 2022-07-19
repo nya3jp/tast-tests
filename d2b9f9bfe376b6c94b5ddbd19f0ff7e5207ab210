@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc8f9243_c0ed3b2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T23:08:30Z",
+      "side": 1,
+      "message": "Update this description. I would not describe `ui.WaitUntilGone(zoomNode)` as a sleep. In fact, most of the time, `ui.WaitUntilGone(zoomNode)` will return immediately because there will be no magnifying glass in the first place.",
+      "range": {
+        "startLine": 638,
+        "startChar": 2,
+        "endLine": 638,
+        "endChar": 24
+      },
+      "revId": "d2b9f9bfe376b6c94b5ddbd19f0ff7e5207ab210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a8f2dd_d89780e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T23:08:30Z",
+      "side": 1,
+      "message": "`across test variants.`",
+      "range": {
+        "startLine": 912,
+        "startChar": 65,
+        "endLine": 913,
+        "endChar": 21
+      },
+      "revId": "d2b9f9bfe376b6c94b5ddbd19f0ff7e5207ab210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
