@@ -2572,6 +2572,7 @@ func hevcdecodeVAAPIargs(ctx context.Context, filename string) []string {
 		// vpxdec is used to compute reference hashes, and outputs only those for
 		// visible frames
 		"--visible",
+		"--h265",
 	}
 }
 
