@@ -33,6 +33,80 @@
       "message": "Re kamilszarek@: \"I don\u0027t think that this function belongs to policyutil package.\":\n\nWhat do you think of `chromiumos/tast/common/policy/policy.go`?",
       "revId": "6c5bb84ee7658e28e0b8016d228f52d1ea00404b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d435012f_9e356d31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image_pers_hub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-19T10:35:39Z",
+      "side": 1,
+      "message": "I am just curious. Is there a class in the UI tree that refers to Tast? Or is it a coincidence?",
+      "range": {
+        "startLine": 106,
+        "startChar": 81,
+        "endLine": 106,
+        "endChar": 98
+      },
+      "revId": "6c5bb84ee7658e28e0b8016d228f52d1ea00404b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "110b70f5_f07760c6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image_pers_hub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-19T10:35:39Z",
+      "side": 1,
+      "message": "nit: New line not needed.",
+      "revId": "6c5bb84ee7658e28e0b8016d228f52d1ea00404b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "046a258b_6bca2de8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/user_avatar_image_pers_hub.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-19T10:35:39Z",
+      "side": 1,
+      "message": "Perhaps add a comment why this is done that way.",
+      "revId": "6c5bb84ee7658e28e0b8016d228f52d1ea00404b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c717cc21_b3176e36",
+        "filename": "src/chromiumos/tast/local/policyutil/policyutil.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-19T10:35:39Z",
+      "side": 1,
+      "message": "I am not sure this package is the best place for that function. Don\u0027t know where else to put it though.",
+      "revId": "6c5bb84ee7658e28e0b8016d228f52d1ea00404b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
