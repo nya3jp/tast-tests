@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8239115_dee2b982",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Hello Jun, Thanks for the detailed review! I addressed some of your comments and added some questions for the others. PTAL. Thanks again!",
+      "revId": "9b5a1ad16dec8cd9a57d4cad27d93e65e7ae0ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

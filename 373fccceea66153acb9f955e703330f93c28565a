@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0d4f4e5d_5ae1ce9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cddd6835_b3fe51f2",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f1559fad_f7c0a126",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51adda7c_a63732a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a3615b2_a456d03d",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 115
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04e4cbbd_e8dfdbd7",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-07-13T00:12:52Z",
       "side": 1,
       "message": "nit: please use space to surround \"/\"",
+      "range": {
+        "startLine": 79,
+        "startChar": 37,
+        "endLine": 79,
+        "endChar": 38
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "556253ec_02e5009e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04e4cbbd_e8dfdbd7",
       "range": {
         "startLine": 79,
         "startChar": 37,
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72f1ccd0_ccffc40a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6f3480b_066f4c52",
+      "range": {
+        "startLine": 81,
+        "startChar": 15,
+        "endLine": 81,
+        "endChar": 18
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40fefcd8_5a881032",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-07-13T00:12:52Z",
       "side": 1,
       "message": "nit: include error message.",
+      "range": {
+        "startLine": 93,
+        "startChar": 30,
+        "endLine": 93,
+        "endChar": 38
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1eee6ac2_0c991b7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40fefcd8_5a881032",
       "range": {
         "startLine": 93,
         "startChar": 30,
@@ -158,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec22f29c_1fdc8ac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "There isn\u0027t an instant crash without this function call, but it would be safer to have this. The main reason is because calling this function makes sure the fake app that is used in this test is correctly installed.",
+      "parentUuid": "b3100f76_efaefdae",
+      "range": {
+        "startLine": 101,
+        "startChar": 20,
+        "endLine": 101,
+        "endChar": 45
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b58a44b4_d816529f",
         "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
         "patchSetId": 5
@@ -169,6 +313,30 @@
       "writtenOn": "2022-07-13T00:12:52Z",
       "side": 1,
       "message": "This variable is no longer used. Can you simply set fakeApp :\u003d nodewith.NameContaining(\"fake app\").Ancestor(appsGridView).First()",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 16
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f8fc2ad_e416feb1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b58a44b4_d816529f",
       "range": {
         "startLine": 108,
         "startChar": 8,
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09f6e605_c08a4f66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d6e912f_a42f8ec5",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 27
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bf0602f_35a629a7",
@@ -215,6 +407,30 @@
       "writtenOn": "2022-07-13T00:12:52Z",
       "side": 1,
       "message": "please do not omit the error message.",
+      "range": {
+        "startLine": 118,
+        "startChar": 36,
+        "endLine": 118,
+        "endChar": 42
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71b4d2da_c0aa45e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bf0602f_35a629a7",
       "range": {
         "startLine": 118,
         "startChar": 36,
@@ -248,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95137f98_d18311af",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Done. Use WaitForAnyWindowWithTitle() to wait for the window.",
+      "parentUuid": "fc0b8ee3_ec55c17e",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1411e1ac_3d89b55f",
@@ -261,6 +501,30 @@
       "writtenOn": "2022-07-13T00:12:52Z",
       "side": 1,
       "message": "please do not omit the error message.",
+      "range": {
+        "startLine": 130,
+        "startChar": 30,
+        "endLine": 130,
+        "endChar": 38
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48932b85_b489fb9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1411e1ac_3d89b55f",
       "range": {
         "startLine": 130,
         "startChar": 30,
@@ -294,6 +558,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa55a57_b077e56a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cb8a3b6_42861f64",
+      "range": {
+        "startLine": 169,
+        "startChar": 36,
+        "endLine": 169,
+        "endChar": 42
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0760bd2_29280f25",
@@ -317,6 +605,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47783e8_3c9efa7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0760bd2_29280f25",
+      "range": {
+        "startLine": 183,
+        "startChar": 68,
+        "endLine": 183,
+        "endChar": 70
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35611b6c_c1fb278b",
@@ -330,6 +642,30 @@
       "writtenOn": "2022-07-13T00:12:52Z",
       "side": 1,
       "message": "Use DoDefault instead of LeftClick if it works. It is more stable and suggested for LaCrOS as well.",
+      "range": {
+        "startLine": 198,
+        "startChar": 14,
+        "endLine": 198,
+        "endChar": 23
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7abddd5_bd1e1c21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "It didn\u0027t work as using DoDefault doesn\u0027t update the title of the window name in the menu items of the shelf icon.",
+      "parentUuid": "35611b6c_c1fb278b",
       "range": {
         "startLine": 198,
         "startChar": 14,
@@ -388,6 +724,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a14e0f73_2576caa2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "I didn\u0027t find any function or member in ui that has access to chrome.TestConn. afaik functions mostly use tconn as input. Would you mind pointing which function you refer to?",
+      "parentUuid": "faa70fac_50f64fe6",
+      "range": {
+        "startLine": 217,
+        "startChar": 36,
+        "endLine": 217,
+        "endChar": 58
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0968e6fc_102bfc77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee92599a_7125a571",
+      "range": {
+        "startLine": 217,
+        "startChar": 5,
+        "endLine": 217,
+        "endChar": 14
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c520e99_d51fa840",
         "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
         "patchSetId": 5
@@ -411,6 +795,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fa997e8_dd155f1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "The reason I updated the newInstanceMenuItem later is because this function doesn\u0027t assume the default new instance type. The line \"ui.WaitUntilExists(newInstanceMenuItem),\" just wants to make sure the correct context menu is opened. The implementation above will return error if we want to set the new instance type to tab but the current one is \"New window\".",
+      "parentUuid": "2c520e99_d51fa840",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 0
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e959bac_ec4bd04c",
         "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
         "patchSetId": 5
@@ -422,6 +830,30 @@
       "writtenOn": "2022-07-13T00:12:52Z",
       "side": 1,
       "message": "Test cases are assumed / guaranteed to run in a clean state. I do not think it is a good practice to do fail-\u003eset-\u003eretry. It can hide issues from the default function.",
+      "range": {
+        "startLine": 265,
+        "startChar": 5,
+        "endLine": 265,
+        "endChar": 19
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff24d748_950bfdf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-19T21:35:00Z",
+      "side": 1,
+      "message": "Nothing edited yet.\nIIUC, what you meant is that assuming the context menu is opened at the start of the function is not a good practice, which I agree with that. This function is only called once in openAppFromLauncherAs, so I was considering moving the whole function back inside. However, the code became long and harder to read. WDYT about this?",
+      "parentUuid": "6e959bac_ec4bd04c",
       "range": {
         "startLine": 265,
         "startChar": 5,
