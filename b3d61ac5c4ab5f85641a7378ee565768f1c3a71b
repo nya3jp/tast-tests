@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b18b134_1c0cf43b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-19T17:00:26Z",
+      "side": 1,
+      "message": "LGTM % question.",
+      "revId": "b3d61ac5c4ab5f85641a7378ee565768f1c3a71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
