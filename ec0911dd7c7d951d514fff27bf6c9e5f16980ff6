@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ef791dd_2ca3fc09",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-19T18:52:58Z",
+      "side": 1,
+      "message": "Possibly, though I\u0027m not sure what to reduce it to. Before this the reboot was not there and I\u0027m not sure how much time it takes for the `tf.WifiClient().ReinitTestState` call to complete. Though, 10s is not really that much time and unless it becomes a problem later I think we should be fine leaving it as-is. If you disagree let me know and I can look more into it to find a more appropriate timeout.",
+      "parentUuid": "28731a75_47e4ed50",
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edb24ea6_d27c459e",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb2749b7_b5e4f804",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-19T18:52:58Z",
+      "side": 1,
+      "message": "Unfortunately I have not yet found a reliable metric on these routers that can be checked to see if they are fully rebooted. I did poll originally for just ssh connectivity (which took about 45s-1m) but it didn\u0027t seem as reliable as what I have here. I do think this can be optimized, but I\u0027d rather handle that as a separate issue as with the timeout I have set now, an arbitrary 2m, my test results have remained consistent. Prior to the reboot it varied a lot and each time it was hard to decipher the problem (some were driver bugs, but other issues existed too we did not want to deal with fixing).\n\nI do want to optimize this down if possible as 2m per test is a long time so I\u0027ve created https://buganizer.corp.google.com/issues/239583375 to track that work.",
+      "parentUuid": "edb24ea6_d27c459e",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 673,
+        "endChar": 2
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eba7bd96_bec51b27",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-07-19T13:55:49Z",
       "side": 1,
       "message": "if newRouter fails, rd.host and rd.object holds inconsistent data.\nCan we avoid such cases?",
+      "range": {
+        "startLine": 676,
+        "startChar": 1,
+        "endLine": 685,
+        "endChar": 101
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8382a88_5cb56af5",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-19T18:52:58Z",
+      "side": 1,
+      "message": "I don\u0027t think we really can, as the ssh connection used by the previous router controller instance is already closed so it would not work either. I did actually try replacing the ssh connection within the same router controller instance first, but that proved to be more complex and error prone than simply recreating the instance.\n\nThat error should stop the testing though, and it does the same thing if it failed the first time the router was created. If the router controller fails to initialize then we can\u0027t continue the test.",
+      "parentUuid": "eba7bd96_bec51b27",
       "range": {
         "startLine": 676,
         "startChar": 1,
