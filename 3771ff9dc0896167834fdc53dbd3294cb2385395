@@ -39,6 +39,30 @@
       },
       "revId": "3771ff9dc0896167834fdc53dbd3294cb2385395",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ed9dc4_ddd78499",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-19T18:53:56Z",
+      "side": 1,
+      "message": "No, if there was an error here it\u0027s due to an unknown, non-integer `auth_algs` value and we are only looking for hostapd config values that we are _certain_ to be for WEP. It isn\u0027t accounting for every possible value of `auth_algs`, just numerical ones that match known WEP values. Also, if it\u0027s not an integer then we know that it isn\u0027t one of the known WEP integer values.",
+      "parentUuid": "5bcaa93c_10d0df91",
+      "range": {
+        "startLine": 119,
+        "startChar": 5,
+        "endLine": 119,
+        "endChar": 8
+      },
+      "revId": "3771ff9dc0896167834fdc53dbd3294cb2385395",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
