@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcc2ee89_9b702087",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-07-19T19:11:16Z",
+      "side": 1,
+      "message": "nit: that doesn\u0027t really show that the CL does what it\u0027s supposed to do. Is there a test case that used to fail and no longer fails?",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 7
+      },
+      "revId": "0249f1d5ef7aa7aa426618329098134fb09c3055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04e38459_5974a3b0",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-07-19T19:11:16Z",
+      "side": 1,
+      "message": "nit: can you explain why it is actually unique? Is there a guarantee that we don\u0027t run this twice within 1 second?",
+      "range": {
+        "startLine": 36,
+        "startChar": 39,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "0249f1d5ef7aa7aa426618329098134fb09c3055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
