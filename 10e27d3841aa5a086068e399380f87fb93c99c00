@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47162e58_8f239ff8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-19T03:05:55Z",
+      "side": 1,
+      "message": "defer to Kamil\u0027s review for kiosk fixture usage.",
+      "revId": "10e27d3841aa5a086068e399380f87fb93c99c00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
