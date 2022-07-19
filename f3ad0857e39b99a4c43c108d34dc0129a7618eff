@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80886811_e21e85bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-19T18:19:02Z",
+      "side": 1,
+      "message": "`tcpdump` is the name of the command line packet analyzer. I think it\u0027s better to follow its original naming rule.",
+      "parentUuid": "291224e3_b41c550d",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "f3ad0857e39b99a4c43c108d34dc0129a7618eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fb986a8_60816eb8",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-19T18:05:30Z",
       "side": 1,
       "message": "nit: usually these 2 lines follow line 151",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 0
+      },
+      "revId": "f3ad0857e39b99a4c43c108d34dc0129a7618eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4b3b2d_c891f02c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_dns.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-19T18:19:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fb986a8_60816eb8",
       "range": {
         "startLine": 155,
         "startChar": 0,

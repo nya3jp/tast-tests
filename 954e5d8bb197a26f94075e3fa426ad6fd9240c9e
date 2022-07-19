@@ -16,6 +16,24 @@
       "message": "nit: do you need to remove this line?",
       "revId": "954e5d8bb197a26f94075e3fa426ad6fd9240c9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa42727b_45cf1999",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/dnsmasq/dnsmasq.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1544882
+      },
+      "writtenOn": "2022-07-19T18:19:02Z",
+      "side": 0,
+      "message": "I restored it. Thank you for your review.",
+      "parentUuid": "7023af11_83f56ac7",
+      "revId": "954e5d8bb197a26f94075e3fa426ad6fd9240c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
