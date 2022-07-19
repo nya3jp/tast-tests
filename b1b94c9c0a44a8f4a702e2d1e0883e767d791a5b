@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dba6a762_67224303",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-07-19T08:05:46Z",
+      "side": 1,
+      "message": "Do we need to create number of addBotsCount? Or any number of bots less than addBotsCount is okay? Please leave comment.",
+      "revId": "b1b94c9c0a44a8f4a702e2d1e0883e767d791a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfd8bd80_7a13774f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-07-19T08:05:46Z",
+      "side": 1,
+      "message": "Curious why don\u0027t we need to keep botList?",
+      "revId": "b1b94c9c0a44a8f4a702e2d1e0883e767d791a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b60c69_a3426700",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-07-19T08:05:46Z",
+      "side": 1,
+      "message": "How about moving the comment at line 434 after line 437 and move this line after the comment: \n```\nif err :\u003d .... {\n  ...\n}\n// Exponential backoff. The wait time is 0.1s, 1s and 10s before each retry.\nwait *\u003d 10\n```",
+      "revId": "b1b94c9c0a44a8f4a702e2d1e0883e767d791a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "513d3a94_b1b636e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-07-19T08:05:46Z",
+      "side": 1,
+      "message": "How about:\n\nExpect to see a user is logged in in login status",
+      "range": {
+        "startLine": 778,
+        "startChar": 12,
+        "endLine": 778,
+        "endChar": 70
+      },
+      "revId": "b1b94c9c0a44a8f4a702e2d1e0883e767d791a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
