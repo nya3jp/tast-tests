@@ -16,6 +16,24 @@
       "message": "I can still see some failures on the page. Can you confirm they are not test related issues? I am a bit worried some devices such as Chromebase and kernelnext failures caused by `no such device`",
       "revId": "9626de85e4b94cb3d1015302b31d155413ecdbff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38f02c17_06e403d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-07-19T03:55:42Z",
+      "side": 1,
+      "message": "There is a fix for `no such device` that landed in R105-14962.0.0 seen here https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3744531\n\nFor the failures on tastboard:\n- kaisa and atlas-kernelnext both succeeded for versions R105-14962.0.0 and onwards. \n- landia\u0027s failure looks more like a infra issue and unrelated to the test. The test succeeds when manually testing on crossk-chromeos8-row1-rack14-host29 with R105-14983.0.0.\n- zork-kernelnext (ezkinil)\u0027s failure is also before R105-14962.0.0. The test succeds when manually testing on crossk-chromeos2-row1-rack4-host10 with R105-14984.0.0.",
+      "parentUuid": "e751270e_c4570d03",
+      "revId": "9626de85e4b94cb3d1015302b31d155413ecdbff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
