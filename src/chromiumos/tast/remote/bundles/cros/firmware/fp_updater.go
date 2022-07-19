@@ -14,7 +14,7 @@ import (
 
 	empty "github.com/golang/protobuf/ptypes/empty"
 
-	"chromiumos/tast/common/servo"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/firmware/fingerprint"
@@ -40,9 +40,10 @@ func init() {
 			"chromeos-fingerprint@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
+		Timeout:      7 * time.Minute,
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
-		ServiceDeps:  []string{"tast.cros.firmware.FpUpdaterService", dutfs.ServiceName},
+		ServiceDeps:  []string{"tast.cros.firmware.FpUpdaterService", "tast.cros.platform.UpstartService", dutfs.ServiceName},
 		Vars:         []string{"servo"},
 		Data: []string{"nocturne_fp_v2.0.3266-99b5e2c98_20201214.bin",
 			"nami_fp_v2.0.3266-99b5e2c98_20201214.bin",
@@ -99,37 +100,29 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 	if !ok {
 		servoSpec = ""
 	}
-	pxy, err := servo.NewProxy(ctx, servoSpec, d.KeyFile(), d.KeyDir())
+	// Set SW write protect to true to enable RDP1 and HW write protect to true.
+	t, err := fingerprint.NewFirmwareTest(ctx, d, servoSpec, s.OutDir(), true /*HW protect*/, true /*SW protect*/)
 	if err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
+		s.Fatal("Failed to create new firmware test: ", err)
 	}
-	defer pxy.Close(ctx)
-
-	needsReboot, err := fingerprint.NeedsRebootAfterFlashing(ctx, d)
-	if err != nil {
-		s.Fatal("Failed to determine whether reboot is needed: ", err)
-	}
-
+	cleanupCtx := ctx
 	defer func() {
-		if err := fingerprint.ReimageFPMCU(ctx, d, pxy, needsReboot); err != nil {
-			s.Error("Failed to flash original firmware: ", err)
+		if err := t.Close(cleanupCtx); err != nil {
+			s.Fatal("Failed to clean up: ", err)
 		}
 	}()
+	ctx, cancel := ctxutil.Shorten(ctx, t.CleanupTime())
+	defer cancel()
 
-	fpBoard, err := fingerprint.Board(ctx, d)
+	// If FP updater disabled, enable it.
+	fpUpdaterEnabled, err := fingerprint.IsFPUpdaterEnabled(ctx, d)
 	if err != nil {
-		s.Fatal("Failed to get fingerprint board: ", err)
+		s.Fatal("Failed to check FP updater state: ", err)
 	}
-
-	buildFWFile, err := fingerprint.FirmwarePath(ctx, d, fpBoard)
-	if err != nil {
-		s.Fatal("Failed to get build firmware file path: ", err)
-	}
-
-	// InitializeKnownState enables HW write protect so that we are testing
-	// the same configuration as the end user.
-	if err := fingerprint.InitializeKnownState(ctx, d, s.OutDir(), pxy, fpBoard, buildFWFile, needsReboot); err != nil {
-		s.Fatal("Initialization failed: ", err)
+	if !fpUpdaterEnabled {
+		if err := fingerprint.EnableFPUpdater(ctx, d); err != nil {
+			s.Fatal("Failed to enable FP updater: ", err)
+		}
 	}
 
 	testing.ContextLog(ctx, "Flashing outdated FP firmware")
@@ -179,7 +172,7 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 		s.Fatal("Updater did not succeed, please check output dir")
 	}
 
-	buildRWVersion, err := fingerprint.GetBuildRWFirmwareVersion(ctx, d, buildFWFile)
+	buildRWVersion, err := fingerprint.GetBuildRWFirmwareVersion(ctx, d, t.BuildFwFile())
 	if err != nil {
 		s.Fatal("Failed to query build RW version: ", err)
 	}

@@ -137,14 +137,14 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 		}()
 
 		// Disable FP updater so that it doesn't interfere with the test when we reboot.
-		if err := disableFPUpdater(ctx, t.d); err != nil {
+		if err := DisableFPUpdater(ctx, t.d); err != nil {
 			return nil, errors.Wrap(err, "failed to disable updater")
 		}
 		// Enable FP updater when this function is going to return an error.
 		defer func() {
 			if initError != nil {
 				testing.ContextLog(ctx, "NewFirmwareTest failed, let's re-enable FP updater")
-				if err := enableFPUpdater(ctx, d); err != nil {
+				if err := EnableFPUpdater(ctx, d); err != nil {
 					testing.ContextLog(ctx, "Failed to re-enable FP updater")
 				}
 			}
@@ -199,9 +199,9 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 		}
 
 		// If FP updater disabled, re-enable it
-		fpUpdaterEnabled, err := isFPUpdaterEnabled(ctx, t.d)
+		fpUpdaterEnabled, err := IsFPUpdaterEnabled(ctx, t.d)
 		if err == nil && !fpUpdaterEnabled {
-			if err := enableFPUpdater(ctx, t.d); err != nil && firstErr == nil {
+			if err := EnableFPUpdater(ctx, t.d); err != nil && firstErr == nil {
 				firstErr = err
 			}
 		} else if err != nil && firstErr == nil {
@@ -362,15 +362,15 @@ func restoreDaemons(ctx context.Context, upstartService platform.UpstartServiceC
 	return firstErr
 }
 
-// isFPUpdaterEnabled returns true if the fingerprint updater is enabled.
-func isFPUpdaterEnabled(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
+// IsFPUpdaterEnabled returns true if the fingerprint updater is enabled.
+func IsFPUpdaterEnabled(ctx context.Context, d *rpcdut.RPCDUT) (bool, error) {
 	fs := dutfs.NewClient(d.RPC().Conn)
 	disabled, err := fs.Exists(ctx, filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile))
 	return !disabled, err
 }
 
-// enableFPUpdater enables the fingerprint updater if it is disabled.
-func enableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
+// EnableFPUpdater enables the fingerprint updater if it is disabled.
+func EnableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
 	fs := dutfs.NewClient(d.RPC().Conn)
 	testing.ContextLog(ctx, "Enabling the fingerprint updater")
 	disableFpUpdaterPath := filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile)
@@ -384,8 +384,8 @@ func enableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
 	return nil
 }
 
-// disableFPUpdater disables the fingerprint updater if it is enabled.
-func disableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
+// DisableFPUpdater disables the fingerprint updater if it is enabled.
+func DisableFPUpdater(ctx context.Context, d *rpcdut.RPCDUT) error {
 	fs := dutfs.NewClient(d.RPC().Conn)
 	testing.ContextLog(ctx, "Disabling the fingerprint updater")
 	disableFpUpdaterPath := filepath.Join(fingerprintFirmwarePathBase, disableFpUpdaterFile)
