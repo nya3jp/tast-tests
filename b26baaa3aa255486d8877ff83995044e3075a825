@@ -16,6 +16,86 @@
       "message": "thanks for working on this!",
       "revId": "b26baaa3aa255486d8877ff83995044e3075a825",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a84f6d73_d27c3564",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-19T10:01:40Z",
+      "side": 1,
+      "message": "Alternatively you can use `faillog.DumpUITreeWithScreenshotOnError()` instead.\nand if there are any error, not just for this one, it\u0027ll take a screenshot (example https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/policy/virtual_keyboard.go;l\u003d325?q\u003dDumpUITreeWithScreenshotOnError\u0026ss\u003dpiper%2FGoogle%2Fchromeos_public)",
+      "revId": "b26baaa3aa255486d8877ff83995044e3075a825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8515398_b4955a43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-19T10:01:40Z",
+      "side": 1,
+      "message": "nit: add a comment describing what this function is doing.",
+      "revId": "b26baaa3aa255486d8877ff83995044e3075a825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cd5b883_625a5f41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-19T10:01:40Z",
+      "side": 1,
+      "message": "it\u0027s better to avoid passing `testing.State` in a function, return `error` instead.\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_review_comments.md#state",
+      "range": {
+        "startLine": 164,
+        "startChar": 44,
+        "endLine": 164,
+        "endChar": 60
+      },
+      "revId": "b26baaa3aa255486d8877ff83995044e3075a825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ba5da35_f9dfdc5c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-19T10:01:40Z",
+      "side": 1,
+      "message": "Alternatively use\n```\ndefer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, \"ui_tree_\"+st.name)\n```",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 4
+      },
+      "revId": "b26baaa3aa255486d8877ff83995044e3075a825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
