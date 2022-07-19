@@ -91,3 +91,22 @@ func parseConnSpec(c string) (host string, port int, err error) {
 
 	return "", 0, errors.Errorf("got invalid connection spec %q", c)
 }
+
+// ResetBluetoothRef calls the Chameleon method with the same name.
+func (ch *Chameleon) ResetBluetoothRef(ctx context.Context) error {
+	return ch.xmlrpc.Run(ctx, xmlrpc.NewCall("ResetBluetoothRef"))
+}
+
+// DisableBluetoothRef calls the Chameleon method with the same name.
+func (ch *Chameleon) DisableBluetoothRef(ctx context.Context) error {
+	return ch.xmlrpc.Run(ctx, xmlrpc.NewCall("DisableBluetoothRef"))
+}
+
+// IsBluetoothRefDisabled calls the Chameleon method with the same name.
+func (ch *Chameleon) IsBluetoothRefDisabled(ctx context.Context) (bool, error) {
+	var disabled bool
+	if err := ch.xmlrpc.Run(ctx, xmlrpc.NewCall("IsBluetoothRefDisabled"), &disabled); err != nil {
+		return false, err
+	}
+	return disabled, nil
+}
