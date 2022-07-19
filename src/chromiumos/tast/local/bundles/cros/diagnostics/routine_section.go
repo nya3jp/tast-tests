@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
@@ -28,6 +29,7 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Timeout:      10 * time.Minute,
 	})
 }
 
@@ -69,9 +71,11 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Starting CPU test routine")
 
-	// TODO(crbug/1174688): Detect this through a routine process instead of relying on the UI.
-	if err := ui.WithTimeout(time.Minute).WaitUntilExists(diagnosticsapp.DxProgressBadge.Ancestor(dxRootnode).First())(ctx); err != nil {
-		s.Fatal("Could not verify test routine has started: ", err)
+	cpuTestExecPath := "/usr/bin/stressapptest"
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return testexec.CommandContext(ctx, "pidof", "-s", cpuTestExecPath).Run()
+	}, nil); err != nil {
+		s.Errorf("Could not find %s: %v", cpuTestExecPath, err)
 	}
 
 	if err := ui.WithTimeout(5 * time.Minute).WaitUntilExists(diagnosticsapp.DxPassedBadge.Ancestor(dxRootnode).First())(ctx); err != nil {
@@ -83,7 +87,7 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("click Cancel",
 		ui.WithTimeout(20*time.Second).WaitUntilExists(cancelBtn),
 		ui.MakeVisible(cancelBtn),
-		ui.WithPollOpts(pollOpts).LeftClick(cancelBtn),
+		ui.LeftClickUntil(cancelBtn, ui.Gone(cancelBtn)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to click cancel button: ", err)
 	}
