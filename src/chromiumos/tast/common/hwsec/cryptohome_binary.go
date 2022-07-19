@@ -318,12 +318,12 @@ func (c *cryptohomeBinary) authenticateRecoveryAuthFactor(ctx context.Context, a
 
 // updateCredentialWithAuthSession calls "cryptohome --action=update_credential".
 // password is ignored if publicMount is set to true.
-func (c *cryptohomeBinary) updateCredentialWithAuthSession(ctx context.Context, password, authSessionID string, publicMount bool) ([]byte, error) {
+func (c *cryptohomeBinary) updateCredentialWithAuthSession(ctx context.Context, password, keyLabel, authSessionID string, publicMount bool) ([]byte, error) {
 	args := []string{"--action=update_credential", "--auth_session_id=" + authSessionID}
 	if publicMount {
 		args = append(args, "--public_mount", "--key_label=public_mount")
 	} else {
-		args = append(args, "--password="+password, "--key_label=fake_label")
+		args = append(args, "--password="+password, "--key_label="+keyLabel)
 	}
 	return c.call(ctx, args...)
 }
