@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "088e597c_70bcb165",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-19T18:52:47Z",
+      "side": 1,
+      "message": "Ah I must have missed this when I was splitting up my work into different CLs. This is deleted in a [later CL](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3771032/3?usp\u003drelated-change) in this same chain (that will be merged together). I meant to uncomment it here and then remove it in that CL.\n\nI\u0027ve updated this to not change this block so that it can be deleted later as intended.",
+      "parentUuid": "3cce0a5e_3ceb37b4",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 0
+      },
+      "revId": "07b8045e2078b958fe1f61244d60b7230cf00062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8772f31_08824c51",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-19T16:55:27Z",
       "side": 1,
       "message": "If this is the rule, should you check r.closed here in this function? Or just call Close yourself here instead of making the caller do it.",
+      "range": {
+        "startLine": 268,
+        "startChar": 3,
+        "endLine": 268,
+        "endChar": 56
+      },
+      "revId": "07b8045e2078b958fe1f61244d60b7230cf00062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8783b3f1_8b7b97fe",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-19T18:52:47Z",
+      "side": 1,
+      "message": "Restarting the router will make it unable to Close properly, but we don\u0027t necessarily want to just close right before the reboot because that also breaks the ssh connection. I\u0027d like to leave this call to Close to be managed by the caller so that steps can be taken between Close and StartReboot with the ssh connection, such as gracefully closing it. This is done in the [next CL](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3771027/3?usp\u003drelated-change).",
+      "parentUuid": "a8772f31_08824c51",
       "range": {
         "startLine": 268,
         "startChar": 3,
