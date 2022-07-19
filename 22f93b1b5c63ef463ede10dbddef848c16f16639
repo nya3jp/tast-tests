@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25dadc04_eed7835f",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-19T22:34:39Z",
+      "side": 1,
+      "message": "Nit: Dup comments. Maybe only leave the first line here?",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 18
+      },
+      "revId": "22f93b1b5c63ef463ede10dbddef848c16f16639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68bd6378_31478f7f",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-19T22:34:39Z",
+      "side": 1,
+      "message": "How can test controller determine if the router has been booted up? Do you need a wait check here and return when router is up or time out?",
+      "revId": "22f93b1b5c63ef463ede10dbddef848c16f16639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
