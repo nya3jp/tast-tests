@@ -45,7 +45,7 @@ func BluetoothXorWifi(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to connect rpc: ", err)
 		}
 		defer r.Close(ctx)
-		ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
 		// Enable Bluetooth device.
 		btClient := network.NewBluetoothServiceClient(r.Conn)
