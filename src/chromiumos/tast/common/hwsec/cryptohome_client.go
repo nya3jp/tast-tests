@@ -873,8 +873,8 @@ func (u *CryptohomeClient) AuthenticateChallengeCredentialWithAuthSession(ctx co
 
 // UpdateCredentialWithAuthSession updated a credential using an AuthSession with a given authSessionID.
 // password is ignored if publicMount is set to true.
-func (u *CryptohomeClient) UpdateCredentialWithAuthSession(ctx context.Context, password, authSessionID string, publicMount bool) error {
-	_, err := u.binary.updateCredentialWithAuthSession(ctx, password, authSessionID, publicMount)
+func (u *CryptohomeClient) UpdateCredentialWithAuthSession(ctx context.Context, password, keyLabel, authSessionID string, publicMount bool) error {
+	_, err := u.binary.updateCredentialWithAuthSession(ctx, password, keyLabel, authSessionID, publicMount)
 	return err
 }
 
