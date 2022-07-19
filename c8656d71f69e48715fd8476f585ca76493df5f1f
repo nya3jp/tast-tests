@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5263a8ae_c097f9bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-19T23:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8defa387_bd339c11",
+      "range": {
+        "startLine": 638,
+        "startChar": 45,
+        "endLine": 638,
+        "endChar": 54
+      },
+      "revId": "c8656d71f69e48715fd8476f585ca76493df5f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96166168_c70a8dbd",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1878fdc5_ce2a35bd",
+        "filename": "src/chromiumos/tast/local/cpu/cooldown.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-19T23:40:42Z",
+      "side": 1,
+      "message": "So sorry, these changes were from some conflict with switching branches while testing another change. Didn\u0027t even notice they were there. Removed.",
+      "parentUuid": "96166168_c70a8dbd",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 21
+      },
+      "revId": "c8656d71f69e48715fd8476f585ca76493df5f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7166792a_814ec855",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-19T23:35:38Z",
       "side": 1,
       "message": "What is this change for?",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 44
+      },
+      "revId": "c8656d71f69e48715fd8476f585ca76493df5f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b5bfce_cc18546d",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-19T23:40:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7166792a_814ec855",
       "range": {
         "startLine": 267,
         "startChar": 0,
