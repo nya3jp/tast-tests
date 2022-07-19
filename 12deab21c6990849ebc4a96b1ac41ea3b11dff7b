@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ac49bc9_e1cd3d1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_extension_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-07-19T02:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3895afa_8fe3db83",
+      "range": {
+        "startLine": 86,
+        "startChar": 48,
+        "endLine": 86,
+        "endChar": 64
+      },
+      "revId": "12deab21c6990849ebc4a96b1ac41ea3b11dff7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68870507_4547e08c",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-07-15T15:05:58Z",
       "side": 1,
       "message": "could you define a constant to share the path?",
+      "revId": "12deab21c6990849ebc4a96b1ac41ea3b11dff7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03da0e3c_b2ff1bf3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_extension_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-07-19T02:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68870507_4547e08c",
       "revId": "12deab21c6990849ebc4a96b1ac41ea3b11dff7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1472b371_9c80d9ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_extension_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-07-19T02:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e3db166_92d5ac20",
+      "revId": "12deab21c6990849ebc4a96b1ac41ea3b11dff7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7e49607_eb0d9bd4",
@@ -88,6 +148,24 @@
       "writtenOn": "2022-07-15T15:05:58Z",
       "side": 1,
       "message": "could you include err?",
+      "revId": "12deab21c6990849ebc4a96b1ac41ea3b11dff7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b706c3c3_c7370cc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_extension_state.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-07-19T02:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7e49607_eb0d9bd4",
       "revId": "12deab21c6990849ebc4a96b1ac41ea3b11dff7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
