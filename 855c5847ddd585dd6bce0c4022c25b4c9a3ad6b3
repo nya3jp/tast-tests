@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc769cc7_4fadfa33",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-07-19T05:22:03Z",
+      "side": 1,
+      "message": "Oops the first one was added for testing purpose and I forgot to remove it. Agree on the second one as well",
+      "parentUuid": "cb5a1ae9_569c6a7f",
+      "range": {
+        "startLine": 151,
+        "startChar": 4,
+        "endLine": 153,
+        "endChar": 22
+      },
+      "revId": "855c5847ddd585dd6bce0c4022c25b4c9a3ad6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a5e2d61_50cdf727",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-07-15T08:46:01Z",
       "side": 1,
       "message": "In go, functions that starts from capital letter is public. This should be \"kcmTakeScreenshot\"",
+      "revId": "855c5847ddd585dd6bce0c4022c25b4c9a3ad6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "681985fb_31b6b20f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-07-19T05:22:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a5e2d61_50cdf727",
       "revId": "855c5847ddd585dd6bce0c4022c25b4c9a3ad6b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ec3eadb_0a1ad446",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-07-19T05:22:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4a15563_8c1944d9",
+      "revId": "855c5847ddd585dd6bce0c4022c25b4c9a3ad6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5251607b_8130bbe0",
@@ -88,6 +148,30 @@
       "writtenOn": "2022-07-15T08:46:01Z",
       "side": 1,
       "message": "ditto, `physicalKeyboardTakeScreenshot` (maybe we don\u0027t even need function if we use defer)",
+      "range": {
+        "startLine": 210,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 35
+      },
+      "revId": "855c5847ddd585dd6bce0c4022c25b4c9a3ad6b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "544362f7_0196274c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-07-19T05:22:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5251607b_8130bbe0",
       "range": {
         "startLine": 210,
         "startChar": 5,
