@@ -52,6 +52,24 @@
       "parentUuid": "b0d7ab68_d7cf8533",
       "revId": "42c7d39669c41cbd563f059350e980df39dd6962",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "499d0f8a_9d1cb96e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/open_tab_search.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1536953
+      },
+      "writtenOn": "2022-07-19T17:53:16Z",
+      "side": 1,
+      "message": "Sounds good; I added the active window check for both clamshell and tablet mode.",
+      "parentUuid": "22ae917a_598b1952",
+      "revId": "42c7d39669c41cbd563f059350e980df39dd6962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
