@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "357398d0_b29bd8d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-19T13:39:22Z",
+      "side": 1,
+      "message": "one remaining style fix request.",
+      "revId": "3eff0ff2619c6e93d63cc8cd58af7d78bcd8249c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19d8565b_2265061d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-19T13:39:22Z",
+      "side": 1,
+      "message": "could you revert this part and ...",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "3eff0ff2619c6e93d63cc8cd58af7d78bcd8249c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbfea07f_0c457938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-19T13:39:22Z",
+      "side": 1,
+      "message": "this patter etc. (ditto for below) for consistent styles?\n\ni.e. could you keep\n  return errors.Wrap(err, ...)",
+      "revId": "3eff0ff2619c6e93d63cc8cd58af7d78bcd8249c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba180d70_0a76a7de",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-19T13:39:22Z",
+      "side": 1,
+      "message": "same.",
+      "revId": "3eff0ff2619c6e93d63cc8cd58af7d78bcd8249c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
