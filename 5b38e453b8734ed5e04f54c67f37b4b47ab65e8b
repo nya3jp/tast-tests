@@ -33,6 +33,24 @@
       "message": "Since the test was essentially never really running, the \"informational\" tag cannot be removed at this point",
       "revId": "5b38e453b8734ed5e04f54c67f37b4b47ab65e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77375cbe_9ec35df2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/hotkey.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-07-19T00:02:32Z",
+      "side": 1,
+      "message": "Thank you. I forgot to add informational tag back.",
+      "parentUuid": "53fe34ea_424623df",
+      "revId": "5b38e453b8734ed5e04f54c67f37b4b47ab65e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
