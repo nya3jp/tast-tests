@@ -6,7 +6,9 @@ package power
 
 import (
 	"context"
-	"io/ioutil"
+	"crypto/sha256"
+	"io"
+	"os"
 	"path"
 	"strings"
 
@@ -15,6 +17,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/sysutil"
 	"chromiumos/tast/services/cros/power"
 	"chromiumos/tast/testing"
@@ -90,18 +93,82 @@ func (u *USBService) USBMountPaths(ctx context.Context, req *empty.Empty) (*powe
 	return &power.MountPathResponse{MountPaths: MountPaths}, nil
 }
 
-// GenerateTestFile generates a new temporary test file for testing.
+// GenerateTestFile generates a new temporary test file for testing, with
+// provided filename and filesize.
 func (u *USBService) GenerateTestFile(ctx context.Context, req *power.TestFileRequest) (*power.TestFileResponse, error) {
-	sourcePath, err := ioutil.TempDir("", "temp")
+	if u.cr == nil {
+		return nil, errors.New("Chrome not available")
+	}
+
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, u.cr.NormalizedUser())
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to create temp directory")
+		return nil, errors.Wrap(err, "failed to retrieve users Downloads path")
 	}
 
 	// Source file path.
-	sourceFilePath := path.Join(sourcePath, req.FileName)
+	sourceFilePath := path.Join(downloadsPath, req.FileName)
 
-	if err := ioutil.WriteFile(sourceFilePath, []byte("test"), 0644); err != nil {
-		return nil, errors.Wrap(err, "failed to create test file in tempdir")
+	// Create a file with size.
+	file, err := os.Create(sourceFilePath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create file")
+	}
+	if req.FileSize == 0 {
+		req.FileSize = 1024
+	}
+	if err := file.Truncate(int64(req.FileSize)); err != nil {
+		return nil, errors.Wrapf(err, "failed to truncate file with size %d", req.FileSize)
 	}
 	return &power.TestFileResponse{Path: sourceFilePath}, nil
+}
+
+// FileChecksum checks the checksum for the input file.
+func (u *USBService) FileChecksum(ctx context.Context, req *power.TestFileRequest) (*power.TestFileResponse, error) {
+	file, err := os.Open(req.Path)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open files")
+	}
+	defer file.Close()
+	h := sha256.New()
+	if _, err := io.Copy(h, file); err != nil {
+		return nil, errors.Wrap(err, "failed to calculate the hash of the files")
+	}
+	return &power.TestFileResponse{FileChecksumValue: h.Sum(nil)}, nil
+}
+
+// CopyFile performs copying of file from given source to destination.
+func (u *USBService) CopyFile(ctx context.Context, req *power.TestFileRequest) (*empty.Empty, error) {
+	sourceFileStat, err := os.Stat(req.SourceFilePath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get file info")
+	}
+
+	if !sourceFileStat.Mode().IsRegular() {
+		return nil, errors.Errorf("%s is not a regular file", req.SourceFilePath)
+	}
+
+	source, err := os.Open(req.SourceFilePath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to open file")
+	}
+	defer source.Close()
+
+	destination, err := os.Create(req.DestinationFilePath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create file")
+	}
+	defer destination.Close()
+
+	if _, err := io.Copy(destination, source); err != nil {
+		return nil, errors.Wrap(err, "failed to copy")
+	}
+	return &empty.Empty{}, nil
+}
+
+// RemoveFile will removes given path file.
+func (u *USBService) RemoveFile(ctx context.Context, req *power.TestFileRequest) (*empty.Empty, error) {
+	if err := os.Remove(req.Path); err != nil {
+		return nil, errors.Wrap(err, "failed to remove file")
+	}
+	return &empty.Empty{}, nil
 }

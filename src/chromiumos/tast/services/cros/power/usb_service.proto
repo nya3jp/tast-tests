@@ -25,8 +25,18 @@ service USBService {
   // USBMountPaths returns the mount paths for USB.
   rpc USBMountPaths (google.protobuf.Empty) returns (MountPathResponse) {}
 
-  // GenerateTestFile generates a new temporary test file for testing.
+  // GenerateTestFile generates a new temporary test file for testing, with
+  // provided filename and filesize.
   rpc GenerateTestFile (TestFileRequest) returns (TestFileResponse) {}
+
+  // FileChecksum checks the checksum for the input file.
+  rpc FileChecksum(TestFileRequest) returns (TestFileResponse) {}
+
+  // CopyFile performs copying of file from given source to destination.
+  rpc CopyFile(TestFileRequest) returns (google.protobuf.Empty) {}
+
+  // RemoveFile will removes given path file.
+  rpc RemoveFile(TestFileRequest) returns (google.protobuf.Empty) {}
 }
 
 message MountPathResponse {
@@ -35,8 +45,13 @@ message MountPathResponse {
 
 message TestFileRequest{
   string FileName = 1;
+  string SourceFilePath = 2;
+  string DestinationFilePath = 3;
+  int64 FileSize = 4;
+  string Path = 5;
 }
 
 message TestFileResponse{
   string Path = 1;
+  bytes FileChecksumValue = 2;
 }
