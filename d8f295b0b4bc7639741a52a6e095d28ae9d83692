@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abcf9f80_dc7644e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-19T16:13:23Z",
+      "side": 1,
+      "message": "As I refactored the tape package I needed to make a couple of changes to the CL.\nPlease check if the changes also work on your local machine.",
+      "revId": "d8f295b0b4bc7639741a52a6e095d28ae9d83692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
