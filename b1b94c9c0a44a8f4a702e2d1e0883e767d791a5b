@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd7b4aab_698c0af4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T22:24:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dba6a762_67224303",
+      "revId": "b1b94c9c0a44a8f4a702e2d1e0883e767d791a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfd8bd80_7a13774f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-19T08:05:46Z",
       "side": 1,
       "message": "Curious why don\u0027t we need to keep botList?",
+      "revId": "b1b94c9c0a44a8f4a702e2d1e0883e767d791a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1365f6f_9988f422",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T22:24:25Z",
+      "side": 1,
+      "message": "`botList` would be useful for giving directions to individual bots, but we do not need such fine-grained control over these bots. The arguments to `bc.AddBots` here direct the bots to stay in the Meet call for a maximum duration of `meetTimeout+30*time.Minute`, and to follow additional directions in `meet.botsOptions`. In cleanup, the bots will all respond to `bc.RemoveAllBots(ctx, meetingCode)`.",
+      "parentUuid": "cfd8bd80_7a13774f",
       "revId": "b1b94c9c0a44a8f4a702e2d1e0883e767d791a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f0fe50d_2853e114",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T22:24:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4b60c69_a3426700",
+      "revId": "b1b94c9c0a44a8f4a702e2d1e0883e767d791a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "513d3a94_b1b636e4",
@@ -65,6 +119,30 @@
       "writtenOn": "2022-07-19T08:05:46Z",
       "side": 1,
       "message": "How about:\n\nExpect to see a user is logged in in login status",
+      "range": {
+        "startLine": 778,
+        "startChar": 12,
+        "endLine": 778,
+        "endChar": 70
+      },
+      "revId": "b1b94c9c0a44a8f4a702e2d1e0883e767d791a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddd2d836_4e54730b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-19T22:24:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "513d3a94_b1b636e4",
       "range": {
         "startLine": 778,
         "startChar": 12,
