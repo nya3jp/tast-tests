@@ -302,6 +302,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87262a7d_3b83cad5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-19T23:59:02Z",
+      "side": 1,
+      "message": "I mean you do not need to wait for all launcher apps installed, you only need to wait for the fakeapp. Does this help? http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/shelf.go?l\u003d448",
+      "parentUuid": "ec22f29c_1fdc8ac1",
+      "range": {
+        "startLine": 101,
+        "startChar": 20,
+        "endLine": 101,
+        "endChar": 45
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b58a44b4_d816529f",
         "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
         "patchSetId": 5
@@ -676,6 +700,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fa04f89_dd5639e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-19T23:59:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a7abddd5_bd1e1c21",
+      "range": {
+        "startLine": 198,
+        "startChar": 14,
+        "endLine": 198,
+        "endChar": 23
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faa70fac_50f64fe6",
@@ -770,6 +818,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf26f1d3_31da5b0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-19T23:59:02Z",
+      "side": 1,
+      "message": "eh, my bad. I was talking about ui :\u003d uiauto.New(tconn), however the tconn is not exposed.",
+      "parentUuid": "a14e0f73_2576caa2",
+      "range": {
+        "startLine": 217,
+        "startChar": 36,
+        "endLine": 217,
+        "endChar": 58
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c520e99_d51fa840",
@@ -817,6 +889,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a17d6fa_78b87b86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-19T23:59:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3fa997e8_dd155f1b",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 0
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e959bac_ec4bd04c",
@@ -854,6 +950,30 @@
       "side": 1,
       "message": "Nothing edited yet.\nIIUC, what you meant is that assuming the context menu is opened at the start of the function is not a good practice, which I agree with that. This function is only called once in openAppFromLauncherAs, so I was considering moving the whole function back inside. However, the code became long and harder to read. WDYT about this?",
       "parentUuid": "6e959bac_ec4bd04c",
+      "range": {
+        "startLine": 265,
+        "startChar": 5,
+        "endLine": 265,
+        "endChar": 19
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25e8af37_f0a9ed4f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-19T23:59:02Z",
+      "side": 1,
+      "message": "My point is at the caller part. \"If the current app launch type is different from the target one, update it.\" In theory, this should not happen during the test. Anyway, considering I am not that much familiar with the business logic. It is okay.\n\nif !isMenuItemFound {\n\tif err :\u003d setLaunchAppAs(ctx, tconn, newInstanceMenuItem, instanceType); err !\u003d nil {\n\treturn err\n        }",
+      "parentUuid": "ff24d748_950bfdf3",
       "range": {
         "startLine": 265,
         "startChar": 5,
