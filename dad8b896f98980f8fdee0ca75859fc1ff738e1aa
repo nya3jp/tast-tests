@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3b7190_25416d80",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-07-19T05:18:24Z",
+      "side": 1,
+      "message": "Got it, thanks for the explanation!",
+      "parentUuid": "7761c8e4_40a9017f",
+      "revId": "dad8b896f98980f8fdee0ca75859fc1ff738e1aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83e14b2c_cbbcb6f8",
