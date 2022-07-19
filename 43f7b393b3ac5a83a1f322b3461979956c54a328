@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b88adb_30be5327",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-19T18:15:57Z",
+      "side": 1,
+      "message": "Thank you for this, removed.",
+      "parentUuid": "45002bda_ff59426a",
+      "revId": "43f7b393b3ac5a83a1f322b3461979956c54a328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62d152a1_09c099e1",
@@ -82,6 +100,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3edbac79_19c0245e",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-19T18:15:57Z",
+      "side": 1,
+      "message": "Added bug for this, done.",
+      "parentUuid": "2c28e236_1c4af333",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 78
+      },
+      "revId": "43f7b393b3ac5a83a1f322b3461979956c54a328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3627ee91_22643ee8",
@@ -95,6 +137,24 @@
       "writtenOn": "2022-07-15T00:46:52Z",
       "side": 1,
       "message": "The , instead of a newline is intentional here so that the lines (which are limited to 3 in line 136) show up in the stainless summary. It is possible that they will also show up with a newline, but I\u0027m not certain they will. We can experiment, but it\u0027s been helpful to have multiple lines visible there.",
+      "revId": "43f7b393b3ac5a83a1f322b3461979956c54a328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0d4afae_905f4ad8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_no_errors_in_log.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-19T18:15:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3627ee91_22643ee8",
       "revId": "43f7b393b3ac5a83a1f322b3461979956c54a328",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
