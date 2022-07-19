@@ -16,6 +16,23 @@
       "message": "Thank you for all your help :) ",
       "revId": "98df943a5267216a343070d83e805753cbf47e37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb9291c8_c002b2da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/diagnostics_app_save_session_log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-07-19T07:07:27Z",
+      "side": 1,
+      "message": "Can you use a fixture instead? Fixture: \"chromeLoggedIn\"\n\nPre is kinda deprecated IIUC",
+      "revId": "98df943a5267216a343070d83e805753cbf47e37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
