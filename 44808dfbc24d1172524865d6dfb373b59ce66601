@@ -69,6 +69,24 @@
       "parentUuid": "3d18a52f_a8d5927d",
       "revId": "44808dfbc24d1172524865d6dfb373b59ce66601",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "332ad0d6_f525fd58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:50:45Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform2/+/3774529\n\nwill update the description to add cq-depend",
+      "parentUuid": "e4afa33e_3f2f6878",
+      "revId": "44808dfbc24d1172524865d6dfb373b59ce66601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
