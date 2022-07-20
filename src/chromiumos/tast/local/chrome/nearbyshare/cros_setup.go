@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/crossdevice"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -111,6 +112,13 @@ func GetCrosAttributes(ctx context.Context, tconn *chrome.TestConn, displayName,
 	} else {
 		return nil, errors.Errorf("undefined visibility: %v", visibility)
 	}
+
+	// Get user's Downloads path.
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, username)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get user's Download path")
+	}
+	nearbyAttrs.DownloadsPath = downloadsPath
 
 	return &nearbyAttrs, nil
 }

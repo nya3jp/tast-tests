@@ -53,6 +53,7 @@ type NearbyService struct {
 	dataUsage       nearbycommon.DataUsage
 	visibility      nearbycommon.Visibility
 	btsnoopCmd      *testexec.Cmd
+	downloadsPath   string
 }
 
 // NewChromeLogin logs into Chrome with Nearby Share flags enabled.
@@ -89,6 +90,11 @@ func (n *NearbyService) NewChromeLogin(ctx context.Context, req *nearbyservice.C
 		return nil, err
 	}
 	n.cr = cr
+	n.downloadsPath, err = cryptohome.DownloadsPath(ctx, n.cr.NormalizedUser())
+	if err != nil {
+		testing.ContextLog(ctx, "Failed to get user's Downloads path")
+		return nil, err
+	}
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to get a connection to the Test Extension")
@@ -105,7 +111,7 @@ func (n *NearbyService) CloseChrome(ctx context.Context, req *empty.Empty) (*emp
 		testing.ContextLog(ctx, "Chrome not available")
 		return nil, errors.New("Chrome not available")
 	}
-	os.RemoveAll(nearbycommon.SendDir)
+	os.RemoveAll(filepath.Join(n.downloadsPath, nearbycommon.SendFolderName))
 	if n.senderSurface != nil {
 		if err := n.senderSurface.Close(ctx); err != nil {
 			testing.ContextLog(ctx, "Closing SendSurface failed: ", err)
@@ -232,7 +238,7 @@ func (n *NearbyService) PrepareFiles(ctx context.Context, req *nearbyservice.CrO
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
-	filenames, err := nearbytestutils.ExtractCrosTestFiles(ctx, req.FileName)
+	filenames, err := nearbytestutils.ExtractCrosTestFiles(ctx, req.FileName, n.downloadsPath)
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to extract test files")
 		return nil, err
@@ -253,7 +259,7 @@ func (n *NearbyService) StartSend(ctx context.Context, req *nearbyservice.CrOSSe
 	// Get the full paths of the test files to pass to chrome://nearby.
 	var testFiles []string
 	for _, f := range req.FileNames {
-		testFiles = append(testFiles, filepath.Join(nearbycommon.SendDir, f))
+		testFiles = append(testFiles, filepath.Join(n.downloadsPath, nearbycommon.SendFolderName, f))
 	}
 	sender, err := nearbyshare.StartSendFiles(ctx, n.cr, testFiles)
 	if err != nil {

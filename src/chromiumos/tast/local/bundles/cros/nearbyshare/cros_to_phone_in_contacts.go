@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/nearbyshare/nearbyfixture"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -75,18 +76,25 @@ func CrosToPhoneInContacts(ctx context.Context, s *testing.State) {
 	androidDevice := s.FixtValue().(*nearbyfixture.FixtData).AndroidDevice
 	androidDisplayName := s.FixtValue().(*nearbyfixture.FixtData).AndroidDeviceName
 
-	// Extract the test file(s) to nearbytestutils.SendDir.
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Downloads path: ", err)
+	}
+
+	// Extract the test file(s) to ~/MyFiles/Downloads/nearby_test_files.
 	testData := s.Param().(nearbycommon.TestData)
 	testDataZip := s.DataPath(testData.Filename)
-	filenames, err := nearbytestutils.ExtractCrosTestFiles(ctx, testDataZip)
+	filenames, err := nearbytestutils.ExtractCrosTestFiles(ctx, testDataZip, downloadsPath)
 	if err != nil {
 		s.Fatal("Failed to extract test data files: ", err)
 	}
 
+	sendDir := filepath.Join(downloadsPath, nearbycommon.SendFolderName)
+
 	// Get the full paths of the test files to pass to chrome://nearby.
 	var testFiles []string
 	for _, f := range filenames {
-		testFiles = append(testFiles, filepath.Join(nearbycommon.SendDir, f))
+		testFiles = append(testFiles, filepath.Join(sendDir, f))
 	}
 
 	s.Log("Starting in-contacts receiving on the Android device")
@@ -148,7 +156,7 @@ func CrosToPhoneInContacts(ctx context.Context, s *testing.State) {
 	shareCompleted = true
 
 	// Hash the file on both sides and confirm they match. Android receives shares in its default downloads directory.
-	if err := nearbytestutils.FileHashComparison(ctx, filenames, nearbycommon.SendDir, android.DownloadDir, androidDevice); err != nil {
+	if err := nearbytestutils.FileHashComparison(ctx, filenames, sendDir, android.DownloadDir, androidDevice); err != nil {
 		s.Fatal("Failed file hash comparison: ", err)
 	}
 	s.Log("Share completed and file hashes match on both sides")
