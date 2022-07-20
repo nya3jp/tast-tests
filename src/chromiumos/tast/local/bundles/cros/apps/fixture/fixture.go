@@ -10,7 +10,9 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
@@ -27,14 +29,28 @@ const (
 
 // List of fixture names for Essential Apps.
 const (
-	LoggedIn         = "loggedIn"
-	LoggedInJP       = "loggedInJP"
-	LoggedInGuest    = "loggedInGuest"
-	LacrosLoggedIn   = "lacrosLoggedIn"
-	LacrosLoggedInJP = "lacrosLoggedInJP"
+	ArcBootedWithMediaAppPhotosIntegrationImageFeatureFlag = "arcBootedWithMediaAppPhotosIntegrationImageFeatureFlag"
+	LoggedIn                                               = "loggedIn"
+	LoggedInJP                                             = "loggedInJP"
+	LoggedInGuest                                          = "loggedInGuest"
+	LacrosLoggedIn                                         = "lacrosLoggedIn"
+	LacrosLoggedInJP                                       = "lacrosLoggedInJP"
 )
 
 func init() {
+	testing.AddFixture(&testing.Fixture{
+		Name:     ArcBootedWithMediaAppPhotosIntegrationImageFeatureFlag,
+		Desc:     "ARC is booted with the MediaAppPhotosIntegrationImage feature flag enabled",
+		Contacts: []string{"bugsnash@chromium.org", "shengjun@google.com"},
+		Impl: arc.NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("MediaAppPhotosIntegrationImage")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + arc.BootTimeout + ui.StartTimeout,
+		ResetTimeout:    arc.ResetTimeout,
+		PostTestTimeout: arc.PostTestTimeout,
+		TearDownTimeout: arc.ResetTimeout,
+	})
+
 	testing.AddFixture(&testing.Fixture{
 		Name:            LoggedIn,
 		Desc:            "Logged into a user session for essential apps",
