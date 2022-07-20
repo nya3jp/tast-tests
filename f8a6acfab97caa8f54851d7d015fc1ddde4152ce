@@ -16,6 +16,40 @@
       "message": "Hey Sammie!\n\nCan I get a review for this tast test?",
       "revId": "f8a6acfab97caa8f54851d7d015fc1ddde4152ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "873ca5d1_a8d3566d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_combine_desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-07-20T22:10:24Z",
+      "side": 1,
+      "message": "is ARC window required for this test? Think combining regular and ARC windows more or less works the same. If thats the case, removing the ARC bits would make this test simpler and faster and probably less flaky.",
+      "revId": "f8a6acfab97caa8f54851d7d015fc1ddde4152ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea22b898_b7af7251",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_combine_desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1160212
+      },
+      "writtenOn": "2022-07-20T22:10:24Z",
+      "side": 1,
+      "message": "do we want to also check number of desks?",
+      "revId": "f8a6acfab97caa8f54851d7d015fc1ddde4152ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
