@@ -324,6 +324,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bb96055_2e0b5ed1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-20T19:50:44Z",
+      "side": 1,
+      "message": "Done. Thanks for the help!",
+      "parentUuid": "87262a7d_3b83cad5",
+      "range": {
+        "startLine": 101,
+        "startChar": 20,
+        "endLine": 101,
+        "endChar": 45
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b58a44b4_d816529f",
@@ -974,6 +998,30 @@
       "side": 1,
       "message": "My point is at the caller part. \"If the current app launch type is different from the target one, update it.\" In theory, this should not happen during the test. Anyway, considering I am not that much familiar with the business logic. It is okay.\n\nif !isMenuItemFound {\n\tif err :\u003d setLaunchAppAs(ctx, tconn, newInstanceMenuItem, instanceType); err !\u003d nil {\n\treturn err\n        }",
       "parentUuid": "ff24d748_950bfdf3",
+      "range": {
+        "startLine": 265,
+        "startChar": 5,
+        "endLine": 265,
+        "endChar": 19
+      },
+      "revId": "373fccceea66153acb9f955e703330f93c28565a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a4067d6_88c98163",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/app_window_on_shelf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1427116
+      },
+      "writtenOn": "2022-07-20T19:50:44Z",
+      "side": 1,
+      "message": "The caller of this function is also a utility function and is called in several parts. To make sure the correct instance type is called, some extra steps (setLaunchAppAs) are needed to be called.",
+      "parentUuid": "25e8af37_f0a9ed4f",
       "range": {
         "startLine": 265,
         "startChar": 5,
