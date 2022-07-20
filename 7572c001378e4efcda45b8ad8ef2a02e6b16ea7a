@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5b7a6f0_8260b9ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/cr50_dev_mode.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-20T21:53:58Z",
+      "side": 1,
+      "message": "This is a very simple test, but I\u0027d rather add it to firmware_unstable first, then when you see green results in stainless, switch to firmware_cr50.",
+      "range": {
+        "startLine": 24,
+        "startChar": 44,
+        "endLine": 24,
+        "endChar": 73
+      },
+      "revId": "7572c001378e4efcda45b8ad8ef2a02e6b16ea7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
