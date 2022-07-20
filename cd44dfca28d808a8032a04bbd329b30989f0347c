@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "295ec1b7_cac81609",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_ro_bootability_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-20T16:13:49Z",
+      "side": 1,
+      "message": "firmware_experimental runs in the faft_experimental pool, which only has one dut in it.  I actually think this test deserves it\u0027s own suite.  \n\nAdd a new file to third_party/autotest/files/test_suites/control.your_suite_name, then add a control file to third_party/autotest/files/server/site_tests/tast/control.firmware-some_name.\n\nThat file just needs to specify a test_expr for tast, which can be a new attribute as you described, or it can be a specific test name.\n\nThen to schedule it in the lab add a new rule to src/config-internal/test/suite_scheduler/configs/firmware/other.star to run your suite. I don\u0027t think we need a new pool faft_test should be fine. I just don\u0027t want to mix this test into the other ones, so that after it runs the lab will do a repair on the DUT.",
+      "parentUuid": "486b6f27_0d1b40ea",
+      "range": {
+        "startLine": 60,
+        "startChar": 43,
+        "endLine": 60,
+        "endChar": 62
+      },
+      "revId": "cd44dfca28d808a8032a04bbd329b30989f0347c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09229984_acc7ecba",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_ro_bootability_performance.go",
         "patchSetId": 1
