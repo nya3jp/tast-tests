@@ -296,13 +296,6 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 			return act.Stop(ctx, tconn)
 		},
 	), &retErr)
-	// Use Alt+] to snap the ARC app on the right.
-	if err := kw.AccelAction("Alt+]")(ctx); err != nil {
-		return errors.Wrap(err, "failed to press Alt+] to snap the ARC app on the right")
-	}
-	if err := ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateRightSnapped); err != nil {
-		return errors.Wrap(err, "failed to wait for ARC app to be snapped on right")
-	}
 	// Wait until the video is playing, or at least the app is
 	// idle and not showing the message "Can't play this video."
 	if err := d.WaitForIdle(ctx, time.Minute); err != nil {
@@ -314,6 +307,13 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 		androidui.ClassName("android.widget.TextView"),
 	).WaitUntilGone(ctx, time.Minute); err != nil {
 		return errors.Wrap(err, "failed to wait for \"Can't play this video.\" message to be absent")
+	}
+	// Use Alt+] to snap the ARC app on the right.
+	if err := kw.AccelAction("Alt+]")(ctx); err != nil {
+		return errors.Wrap(err, "failed to press Alt+] to snap the ARC app on the right")
+	}
+	if err := ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateRightSnapped); err != nil {
+		return errors.Wrap(err, "failed to wait for ARC app to be snapped on right")
 	}
 	// Use multiresize on the two snapped windows.
 	testing.ContextLog(ctx, "Multiresizing a snapped browser window and a snapped ARC window")
