@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "671aadd1_aec2aea4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-07-20T08:42:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "454ce29c_b7740974",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 77
+      },
+      "revId": "15715dbde955ef6d644e3cad33c8e13b9c376c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "10443067_693f4c19",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-20T08:36:21Z",
       "side": 1,
       "message": "s.HasError",
+      "range": {
+        "startLine": 106,
+        "startChar": 64,
+        "endLine": 106,
+        "endChar": 100
+      },
+      "revId": "15715dbde955ef6d644e3cad33c8e13b9c376c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27fb5fbd_a88a3184",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-07-20T08:42:31Z",
+      "side": 1,
+      "message": "We can\u0027t actually use s.HasError on this since errors are only returned and not added to State yet.",
+      "parentUuid": "12f58e11_c84dc637",
       "range": {
         "startLine": 106,
         "startChar": 64,
