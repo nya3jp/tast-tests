@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94089333_c2295340",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-20T00:11:42Z",
+      "side": 1,
+      "message": "Dropped fake app test.",
+      "parentUuid": "23fc2ed8_9e4ad147",
+      "revId": "3651e37bc7bbe05e3a1380be50c11216dcb2111a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "379f4303_5a3ff91b",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-19T23:56:15Z",
       "side": 1,
       "message": "I\u0027m not a big fan of having different expectations on whether chrome session is shared for these tests.\nI\u0027d either use fixtures in all tests, or use chrome.New in all tests [1].\n\n[1]`chrome.New(ctx, chrome.GAIALoginPool(s.RequiredVar(\"ui.gaiaPoolDefault\")))` should log in using real gaia afaik",
+      "revId": "3651e37bc7bbe05e3a1380be50c11216dcb2111a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "189e6443_6d7e78ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1541440
+      },
+      "writtenOn": "2022-07-20T00:11:42Z",
+      "side": 1,
+      "message": "Ack (dropped fake app test, and cws test uses a fixture).",
+      "parentUuid": "379f4303_5a3ff91b",
       "revId": "3651e37bc7bbe05e3a1380be50c11216dcb2111a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
