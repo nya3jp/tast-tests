@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45edab65_8dc47676",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-20T00:13:58Z",
+      "side": 1,
+      "message": "There isn\u0027t a test case that used to fail, I made this change so that it was easier to debug when I was trying to figure out errors that were seemingly file-related with the snapshot version of OpenWrt that we are not using in the lab yet.\n\nI did verify in my testing that the working directory is created as expected with the timestamp name by sshing into the router while the test was ongoing and looking for it before the test completed and deleted it.",
+      "parentUuid": "bcc2ee89_9b702087",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 7
+      },
+      "revId": "0249f1d5ef7aa7aa426618329098134fb09c3055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04e38459_5974a3b0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-19T19:11:16Z",
       "side": 1,
       "message": "nit: can you explain why it is actually unique? Is there a guarantee that we don\u0027t run this twice within 1 second?",
+      "range": {
+        "startLine": 36,
+        "startChar": 39,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "0249f1d5ef7aa7aa426618329098134fb09c3055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8b567ce_10d9327f",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-20T00:13:58Z",
+      "side": 1,
+      "message": "This is only ran when a router instance is created, and the created path refers to a path to be used on the router itself. Instances for different routers will never collide even if they have the same working directory path since they are different devices.\n\nInstances for the same router should not exist at the same time very long in a valid tast run, with the primary case of that being when the router is rebooted, which can take a few minutes. When this does happen, the called to BuildUniqueWorkingDirPath will be minutes apart and it would be likely statistically impossible for it to happen in the same second. \n\nIn any case, if somehow it _did_ happen, that just means the functionality would reflect what it was prior to this CL, as it was previously just using the same static directory.\n\nFor what it is worth, this is the same timestamp format that Tast itself uses to determine the output folder name of the test results.",
+      "parentUuid": "04e38459_5974a3b0",
       "range": {
         "startLine": 36,
         "startChar": 39,
