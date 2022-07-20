@@ -37,7 +37,7 @@ steps {
             attributes {
               name: "printer-uri"
               type: URI
-              string_values { string_values { value: "ipp://04a9_04d2/ipp/print" } }
+              string_values { string_values { value: "ipp://18d1_505e/ipp/print" } }
             }
             attributes {
               name: "requested-attributes"
@@ -112,7 +112,7 @@ steps {
             attributes {
               name: "printer-uri"
               type: URI
-              string_values { string_values { value: "ipp://04a9_04d2/ipp/print" } }
+              string_values { string_values { value: "ipp://18d1_505e/ipp/print" } }
             }
             attributes {
               name: "document-format"
@@ -150,7 +150,7 @@ steps {
             attributes {
               name: "printer-uri"
               type: URI
-              string_values { string_values { value: "ipp://04a9_04d2/ipp/print" } }
+              string_values { string_values { value: "ipp://18d1_505e/ipp/print" } }
             }
           }
         }
