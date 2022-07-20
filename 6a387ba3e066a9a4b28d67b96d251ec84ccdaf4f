@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b92e8e_97770505",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/ethernet_speed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-20T04:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9a5052d_5e8b7832",
+      "range": {
+        "startLine": 100,
+        "startChar": 31,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "6a387ba3e066a9a4b28d67b96d251ec84ccdaf4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e7315a8_1dcc23d3",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3824e61f_b245e5c8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/network/ethernet_speed.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-20T04:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e7315a8_1dcc23d3",
+      "range": {
+        "startLine": 113,
+        "startChar": 35,
+        "endLine": 113,
+        "endChar": 38
+      },
+      "revId": "6a387ba3e066a9a4b28d67b96d251ec84ccdaf4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fd9f8f2_b1106fe7",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-20T04:18:59Z",
       "side": 1,
       "message": "`Copyright 2022 The ChromiumOS Authors.` should be the right words now.",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "6a387ba3e066a9a4b28d67b96d251ec84ccdaf4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "570332bd_e6acaeb3",
+        "filename": "src/chromiumos/tast/services/cros/network/ethernet_service.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-20T04:25:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fd9f8f2_b1106fe7",
       "range": {
         "startLine": 1,
         "startChar": 3,
