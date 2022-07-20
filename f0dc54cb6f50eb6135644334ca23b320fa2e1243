@@ -16,6 +16,23 @@
       "message": "This is likely going to cause a lot of conflicts so I\u0027m going to wait for all the ongoing work on the package to be landed and redo this. Uploading it now just so that I can upload the depending patches (for preemptive review).",
       "revId": "f0dc54cb6f50eb6135644334ca23b320fa2e1243",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efe46909_3a027d42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1356183
+      },
+      "writtenOn": "2022-07-20T02:14:20Z",
+      "side": 1,
+      "message": "Hi Michael and Ting-Hao, I\u0027m planning to move the routing and virtualnet package from network test subpackages to shared packages so that they can be reused in non-network tests.\n\nI know it\u0027s going to cause a lot of conflict with your current work on the packages so I think I\u0027ll wait for your patches to be merged first. It would be nice if you could ping me when you\u0027ve finished your work on these packages so I can start moving those. Thanks!",
+      "revId": "f0dc54cb6f50eb6135644334ca23b320fa2e1243",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
