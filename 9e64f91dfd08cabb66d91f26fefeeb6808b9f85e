@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1396834_d2c075d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-07-20T01:52:54Z",
+      "side": 1,
+      "message": "What\u0027s the blocker for RunMultiple for lacros? I think I see it used e.g. here https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go;l\u003d222;drc\u003d312f6351ad78d93635231ca1dd6d3ef9de72f7d8 which has a lacros variation.\n\nIt does seem like it could be useful here.",
+      "parentUuid": "69f75e0d_7537c7b2",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "9e64f91dfd08cabb66d91f26fefeeb6808b9f85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c7c1874_3f4d3444",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
         "patchSetId": 3

@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6322501_dc595920",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-07-20T01:52:54Z",
+      "side": 1,
+      "message": "Thanks!\n\nKeep in mind if you separate the variations now you can\u0027t really directly compare values on the same build in crosbolt, since the different variations may run on different instances of the same SKU.\n\nAt the moment I\u0027m fine with it all in one CL.\n\nW.R.T. cold boot, you could also make a separate variation later that does a reboot.",
+      "parentUuid": "ab632222_bb1b69a7",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e53e0ce_6dac09a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
         "patchSetId": 1
