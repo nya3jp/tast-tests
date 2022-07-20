@@ -16,6 +16,40 @@
       "message": "Looks good.\n\nCC\u0027ing Hardik as apparently he\u0027ss working on a similar kind of test (CL:3774798). His CL is about the \"old\" API, still we might want to standardize on the testing approach, or even make the test parameterizable.",
       "revId": "eb61e604acaf6f08d5e0a13c34d88d7b280eb48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff979989_58b3db31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T15:40:27Z",
+      "side": 1,
+      "message": "since this is a function, return error",
+      "revId": "eb61e604acaf6f08d5e0a13c34d88d7b280eb48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e23496c_ff160581",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T15:40:27Z",
+      "side": 1,
+      "message": "let us catch errors here from the function",
+      "revId": "eb61e604acaf6f08d5e0a13c34d88d7b280eb48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
