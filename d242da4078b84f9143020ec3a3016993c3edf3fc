@@ -16,6 +16,24 @@
       "message": "defer client.UnmountAll(ctxForCleanup)",
       "revId": "d242da4078b84f9143020ec3a3016993c3edf3fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38baf450_9dec2da6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-20T15:53:25Z",
+      "side": 1,
+      "message": "I call this on L92 (for cleanup at the end of the test). And unmount for test execution is done on L111.",
+      "parentUuid": "631791a6_26b41948",
+      "revId": "d242da4078b84f9143020ec3a3016993c3edf3fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

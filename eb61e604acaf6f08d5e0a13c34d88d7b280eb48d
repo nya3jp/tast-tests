@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8892cb6_95021949",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-20T15:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff979989_58b3db31",
+      "revId": "eb61e604acaf6f08d5e0a13c34d88d7b280eb48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e23496c_ff160581",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-20T15:40:27Z",
       "side": 1,
       "message": "let us catch errors here from the function",
+      "revId": "eb61e604acaf6f08d5e0a13c34d88d7b280eb48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "901d3842_20c93653",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-20T15:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e23496c_ff160581",
       "revId": "eb61e604acaf6f08d5e0a13c34d88d7b280eb48d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
