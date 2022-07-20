@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8a95a5_38eb9720",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-20T14:49:01Z",
+      "side": 1,
+      "message": "Looks good.\n\nCC\u0027ing Hardik as apparently he\u0027ss working on a similar kind of test (CL:3774798). His CL is about the \"old\" API, still we might want to standardize on the testing approach, or even make the test parameterizable.",
+      "revId": "eb61e604acaf6f08d5e0a13c34d88d7b280eb48d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
