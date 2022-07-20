@@ -16,6 +16,24 @@
       "message": "How much time does it take to run the test? Would it be too much as a critical test?",
       "revId": "c6d0f548cedf1e9986e5478ed4e3210ffed9260e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f3db13_14f22c70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-20T10:44:50Z",
+      "side": 1,
+      "message": "About 10 minutes in my test.\n\nIf this becomes too long, we can think about splitting the test into two parts: a smaller part for CQ and a full one for postsubmit.",
+      "parentUuid": "4b870197_768f9252",
+      "revId": "c6d0f548cedf1e9986e5478ed4e3210ffed9260e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
