@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "486b6f27_0d1b40ea",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_ro_bootability_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-07-20T09:25:22Z",
+      "side": 1,
+      "message": "We saw that under \"/src/chromiumos/tast/internal/testing/attr.go\", various suite names relevant to firmware are defined. We\u0027re wondering if we could add to this list a new suite called \"firmware_trial\", and add some devices to its pool. Or, would \"firmware_experimental\" be a good starting place, since we\u0027re only constraining the test to run on one DUT (zork.vilboz)",
+      "parentUuid": "4cb76025_a55acbb7",
+      "range": {
+        "startLine": 60,
+        "startChar": 43,
+        "endLine": 60,
+        "endChar": 62
+      },
+      "revId": "cd44dfca28d808a8032a04bbd329b30989f0347c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09229984_acc7ecba",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_ro_bootability_performance.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-06-27T22:31:27Z",
       "side": 1,
       "message": "Is dev mode required here? In general if we don\u0027t care about the mode, I prefer NormalMode.",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 31
+      },
+      "revId": "cd44dfca28d808a8032a04bbd329b30989f0347c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a9265e4_0295f360",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_ro_bootability_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-07-20T09:25:22Z",
+      "side": 1,
+      "message": "This is not defined by the test requirements. It was changed to NormalMode. \nThank you.",
+      "parentUuid": "09229984_acc7ecba",
       "range": {
         "startLine": 65,
         "startChar": 16,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fc8ffcb_5daef979",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_ro_bootability_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-07-20T09:25:22Z",
+      "side": 1,
+      "message": "Sure, thank you. The required changes ware performed.",
+      "parentUuid": "ee720f77_dcd98b48",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 2
+      },
+      "revId": "cd44dfca28d808a8032a04bbd329b30989f0347c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71792dad_017e7e02",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-06-27T22:31:27Z",
       "side": 1,
       "message": "This will probably only work when running locally. In the lab I don\u0027t think it will. Please see if you can use testing.State.CloudStorage instead.",
+      "range": {
+        "startLine": 322,
+        "startChar": 13,
+        "endLine": 322,
+        "endChar": 36
+      },
+      "revId": "cd44dfca28d808a8032a04bbd329b30989f0347c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "077c374e_4108cce1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_ro_bootability_performance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-07-20T09:25:22Z",
+      "side": 1,
+      "message": "The biggest problem at this point is that we don\u0027t know the complete path to the file we need to download. Therefore we build it by listing all the options available in the path: `gs://chromeos-image-archive/board-firmware/` and we parse for the one that matches the firmware ID we require. \n\nPatch 2 will try to run `gsutil` to verify if it works on the lab. In case it doesn\u0027t, it will then search on a predefined slice with the required complete paths. Currently constrained to zork-vilboz just for proof of concept. But it is not a long-term approach. \n\nInternal attempts to list files from google storage were successful on a public bucket. In order to implement it and test it on \u0027chromeos-image-archive\u0027, we will required some additional permissions on \u0027chromeos-bot\u0027 project. If given the complete path, testing.State.CloudStorage was successful in staging the file and downloading it.",
+      "parentUuid": "71792dad_017e7e02",
       "range": {
         "startLine": 322,
         "startChar": 13,
