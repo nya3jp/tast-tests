@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "454ce29c_b7740974",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-20T08:36:21Z",
+      "side": 1,
+      "message": "minor nit: commit messages should start with the package name (if the files are from the same package) or the lowest common package name for files from different packages.\n\nyou can use this example:\n\narc: Take screenshot on failures\n\nTake screenshot on failure for PhysicalKeyboard and KeyCharacterMap tast test.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 77
+      },
+      "revId": "15715dbde955ef6d644e3cad33c8e13b9c376c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10443067_693f4c19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-20T08:36:21Z",
+      "side": 1,
+      "message": "LGTM% nits",
+      "revId": "15715dbde955ef6d644e3cad33c8e13b9c376c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f58e11_c84dc637",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-20T08:36:21Z",
+      "side": 1,
+      "message": "s.HasError",
+      "range": {
+        "startLine": 106,
+        "startChar": 64,
+        "endLine": 106,
+        "endChar": 100
+      },
+      "revId": "15715dbde955ef6d644e3cad33c8e13b9c376c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
