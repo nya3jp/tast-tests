@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "462ad4e0_30725e24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_extension_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-20T05:36:34Z",
+      "side": 1,
+      "message": "could you also check an error here?",
+      "revId": "8d45a0de412b8802af786377dc6487120095377d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
