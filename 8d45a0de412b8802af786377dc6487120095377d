@@ -16,6 +16,24 @@
       "message": "could you also check an error here?",
       "revId": "8d45a0de412b8802af786377dc6487120095377d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "206f53ec_e946e5fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_extension_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-07-20T06:11:22Z",
+      "side": 1,
+      "message": "Because this function is called without any argument passed, so there is not much we can do to directly check if there was an error. (and probably it is assumed that it always succeeds?) https://developer.chrome.com/docs/extensions/reference/storage/\n\nI think calling `chrome.storage.sync.get()` and checking the value is an explicit way of doing error checking.",
+      "parentUuid": "462ad4e0_30725e24",
+      "revId": "8d45a0de412b8802af786377dc6487120095377d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
