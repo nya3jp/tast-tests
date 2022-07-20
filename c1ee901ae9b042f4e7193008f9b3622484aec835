@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d27927d5_1a8d42b8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/try_fw_b.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-07-20T08:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19bb3f33_2c133669",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 2
+      },
+      "revId": "c1ee901ae9b042f4e7193008f9b3622484aec835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6011a255_0413d7c1",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-07-19T14:32:31Z",
       "side": 1,
       "message": "do you want to record finalFWVer here, too?",
+      "revId": "c1ee901ae9b042f4e7193008f9b3622484aec835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1deec17_92ad4cd7",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/try_fw_b.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-07-20T08:51:08Z",
+      "side": 1,
+      "message": "Rather, I do not see the point of adding this variable here, since the error refers to the reading of the current version itself, not what was read.",
+      "parentUuid": "6011a255_0413d7c1",
       "revId": "c1ee901ae9b042f4e7193008f9b3622484aec835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
