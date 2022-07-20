@@ -43,16 +43,16 @@ func UnzipTestFiles(ctx context.Context, zipPath string) (filenames []string, te
 	return filenames, tempDir, nil
 }
 
-// ExtractCrosTestFiles prepares test files to send from a CrOS device. The test files will be staged in SendDir,
+// ExtractCrosTestFiles prepares test files to send from a CrOS device. The test files will be staged in ~/MyFiles/Downloads/nearby_test_files,
 // which is a subdirectory of the current user's download directory. Callers should defer removing the test files to clean up after tests.
-func ExtractCrosTestFiles(ctx context.Context, zipPath string) ([]string, error) {
+func ExtractCrosTestFiles(ctx context.Context, zipPath, downloadsPath string) ([]string, error) {
 	filenames, tempDir, err := UnzipTestFiles(ctx, zipPath)
 	if err != nil {
 		return filenames, err
 	}
 	defer os.RemoveAll(tempDir)
 
-	targetPath := nearbycommon.SendDir
+	targetPath := filepath.Join(downloadsPath, nearbycommon.SendFolderName)
 
 	// Delete and remake the target directory to ensure there are no existing files.
 	if err := os.RemoveAll(targetPath); err != nil {
@@ -151,14 +151,14 @@ func HashFiles(ctx context.Context, filenames []string, fileDir string) ([]strin
 }
 
 // ClearCrOSDownloads clears the Downloads folder (where incoming shares are received).
-func ClearCrOSDownloads(ctx context.Context) error {
-	files, err := ioutil.ReadDir(nearbycommon.DownloadPath)
+func ClearCrOSDownloads(ctx context.Context, downloadsPath string) error {
+	files, err := ioutil.ReadDir(downloadsPath)
 	if err != nil {
 		return errors.Wrap(err, "failed to retrieve Downloads folder contents")
 	}
 
 	for _, f := range files {
-		if err := os.RemoveAll(filepath.Join(nearbycommon.DownloadPath, f.Name())); err != nil {
+		if err := os.RemoveAll(filepath.Join(downloadsPath, f.Name())); err != nil {
 			return errors.Wrapf(err, "failed to remove %v from Downloads", f.Name())
 		}
 	}
