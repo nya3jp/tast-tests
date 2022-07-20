@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa34756e_5847cd71",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/flash_using_servo_v4.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-20T04:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3077d608_6f7fa0ed",
+      "revId": "15ff35f71ac8a02021139e783986f2833a203c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "152b7d18_463a0368",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-05T13:10:22Z",
       "side": 1,
       "message": "nit: maybe rephrase to \"Servo must be v4\"? for me personally \"Failed: \" does not sound well",
+      "range": {
+        "startLine": 63,
+        "startChar": 11,
+        "endLine": 63,
+        "endChar": 34
+      },
+      "revId": "15ff35f71ac8a02021139e783986f2833a203c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3541655e_9cbb5396",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/flash_using_servo_v4.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-20T04:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "152b7d18_463a0368",
       "range": {
         "startLine": 63,
         "startChar": 11,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0a81302_7abb588d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/flash_using_servo_v4.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-20T04:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bb7c177_cd3c6a8a",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 3
+      },
+      "revId": "15ff35f71ac8a02021139e783986f2833a203c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7864d1b3_4690f9a9",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-07-05T13:10:22Z",
       "side": 1,
       "message": "nit: return error?",
+      "range": {
+        "startLine": 142,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 15
+      },
+      "revId": "15ff35f71ac8a02021139e783986f2833a203c40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "944ec800_5cb95acc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/platform/flash_using_servo_v4.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-20T04:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7864d1b3_4690f9a9",
       "range": {
         "startLine": 142,
         "startChar": 12,
