@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48604ea7_86610460",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/data/perfetto/camera_config.pbtxt",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-20T05:41:45Z",
+      "side": 1,
+      "message": "Originally I just gave it a big enough size to ensure no data is dropped.\nAnd since the test won\u0027t run for a long time, the buffer size is not necessary to be that big.\nFrom my testing on my DUT (soraka), the trace file is around 500-600 KB.\nAs a result, I think maybe changing them to 4096 for each is enough.",
+      "parentUuid": "7d3909de_6485d341",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 18
+      },
+      "revId": "1b600f297baed5bc17d4185ed30743ed7dd9b68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7671d30_16caf518",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-19T16:55:56Z",
       "side": 1,
       "message": "Do we still need to upload the new external data files if we are using this? If so, is there a canonical one that we can symlink to?",
+      "revId": "1b600f297baed5bc17d4185ed30743ed7dd9b68c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d6e1dbc_60007e12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-20T05:41:45Z",
+      "side": 1,
+      "message": "I think we can reuse the ones in \"src/chromiumos/tast/local/tracing/data\". Thanks for reminding.",
+      "parentUuid": "c7671d30_16caf518",
       "revId": "1b600f297baed5bc17d4185ed30743ed7dd9b68c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
