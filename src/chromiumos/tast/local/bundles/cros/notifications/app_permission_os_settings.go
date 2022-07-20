@@ -20,11 +20,12 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: AppPermissionOsSettings,
-		Desc: "Checks the App Notification permission toggle functionality",
+		Func:         AppPermissionOsSettings,
+		LacrosStatus: testing.LacrosVariantUnknown,
+		Desc:         "Checks the App Notification permission toggle functionality",
 		Contacts: []string{
-			"cros-connectivity@google.com",
-			"hsuregan@google.com",
+			"cros-status-area-eng@google.com",
+			"newcomer@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},

@@ -27,8 +27,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks the Do Not Disturb toggle in the OS Settings Notifications subpage",
 		Contacts: []string{
-			"hsuregan@google.com",
-			"cros-connectivity@google.com",
+			"cros-status-area-eng@google.com",
+			"newcomer@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
