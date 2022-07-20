@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -289,9 +290,12 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	}
 	f.btsnoopCmd = nil
 
-	// Clear test files from both devices.
-	if err := nearbytestutils.ClearCrOSDownloads(ctx); err != nil {
-		s.Error("Failed to clear contents of the CrOS downloads folder: ", err)
+	if downloadsPath, err := cryptohome.DownloadsPath(ctx, f.cr.NormalizedUser()); err != nil {
+		s.Error("Failed to get user's Downloads path: ", err)
+	} else {
+		if err := nearbytestutils.ClearCrOSDownloads(ctx, downloadsPath); err != nil {
+			s.Error("Failed to clear contents of the CrOS downloads folder: ", err)
+		}
 	}
 	if err := f.androidDevice.ClearDownloads(ctx); err != nil {
 		s.Error("Failed to clear contents of the Android downloads folder: ", err)

@@ -151,13 +151,15 @@ func CrosToCrosHighVis(ctx context.Context, s *testing.State) {
 	// Repeat the file hash check for a few seconds, as we have no indicator on the CrOS side for when the received file has been completely written.
 	// TODO(crbug/1173190): Remove polling when we can confirm the transfer status with public test functions.
 	s.Log("Comparing file hashes for all transferred files on both DUTs")
+	senderSendDir := filepath.Join(s.FixtValue().(*remotenearby.FixtData).SenderDownloadsPath, nearbycommon.SendFolderName)
+	receiverDownloadsPath := s.FixtValue().(*remotenearby.FixtData).ReceiverDownloadsPath
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		senderFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbycommon.SendDir}
+		senderFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: senderSendDir}
 		senderFileRes, err := sender.FilesHashes(ctx, senderFileReq)
 		if err != nil {
 			return errors.Wrap(err, "failed to get file hashes on DUT1 (Sender)")
 		}
-		receiverFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbycommon.DownloadPath}
+		receiverFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: receiverDownloadsPath}
 		receiverFileRes, err := receiver.FilesHashes(ctx, receiverFileReq)
 		if err != nil {
 			return errors.Wrap(err, "failed to get file hashes on DUT2 (Receiver)")

@@ -291,11 +291,13 @@ type nearbyShareFixture struct {
 
 // FixtData holds information made available to tests that specify this Fixture.
 type FixtData struct {
-	RemoteFilePath      string
-	SenderDisplayName   string
-	ReceiverDisplayName string
-	Sender              nearbyservice.NearbyShareServiceClient
-	Receiver            nearbyservice.NearbyShareServiceClient
+	RemoteFilePath        string
+	SenderDisplayName     string
+	ReceiverDisplayName   string
+	Sender                nearbyservice.NearbyShareServiceClient
+	SenderDownloadsPath   string
+	Receiver              nearbyservice.NearbyShareServiceClient
+	ReceiverDownloadsPath string
 }
 
 // Setup logs in, enables Nearby Share and moves test files to Sender DUT.
@@ -406,13 +408,14 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		s.Fatal("Failed to format device metadata for logging: ", err)
 	}
 	f.attributes = crosLog
-
 	return &FixtData{
-		RemoteFilePath:      f.remoteFilePath,
-		Sender:              f.sender,
-		Receiver:            f.receiver,
-		SenderDisplayName:   senderDisplayName,
-		ReceiverDisplayName: receiverDisplayName,
+		RemoteFilePath:        f.remoteFilePath,
+		Sender:                f.sender,
+		SenderDownloadsPath:   attributes.Sender.DownloadsPath,
+		ReceiverDownloadsPath: attributes.Receiver.DownloadsPath,
+		Receiver:              f.receiver,
+		SenderDisplayName:     senderDisplayName,
+		ReceiverDisplayName:   receiverDisplayName,
 	}
 }
 
