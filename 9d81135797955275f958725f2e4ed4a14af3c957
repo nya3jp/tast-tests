@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a876c924_0cf821b7",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-20T04:06:34Z",
+      "side": 1,
+      "message": "optional: Normally we use \nhttps://pkg.go.dev/path/filepath#Join\nfor file path concatenation. I note that won\u0027t give you the trailing slash here.\n\n(If you use this type of path concatenation everywhere, you might not need a trailing slash, but not sure how feasible that is. Hence \u0027optional\u0027.)",
+      "revId": "9d81135797955275f958725f2e4ed4a14af3c957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
