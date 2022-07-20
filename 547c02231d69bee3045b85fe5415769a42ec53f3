@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac858d9_23646f70",
+        "filename": "src/chromiumos/tast/local/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-07-20T00:40:52Z",
+      "side": 1,
+      "message": "In the event of a partial success where some peers are connected to but others fail, do you want to do some cleanup?",
+      "revId": "547c02231d69bee3045b85fe5415769a42ec53f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54c18858_92a6221c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/test_connect_to_btpeers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1450817
+      },
+      "writtenOn": "2022-07-20T00:40:52Z",
+      "side": 1,
+      "message": "Please add a comment explaining why you don\u0027t need to ResetBluetoothRef for all btpeers, just the first one.",
+      "revId": "547c02231d69bee3045b85fe5415769a42ec53f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
