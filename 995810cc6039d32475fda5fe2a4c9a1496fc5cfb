@@ -111,6 +111,30 @@
       },
       "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7bdd9fe_add0847f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock3_usb_charging.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-07-20T03:09:52Z",
+      "side": 1,
+      "message": "Here is the util:\nhttps://chromium.googlesource.com/chromiumos/third_party/autotest/+/HEAD/client/cros/power/force_discharge_utils.py\n\nHere is the test that use that:\nhttps://chromium.googlesource.com/chromiumos/third_party/autotest/+/master/client/site_tests/power_LoadTest/",
+      "parentUuid": "23a31f0f_0bce29b0",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
