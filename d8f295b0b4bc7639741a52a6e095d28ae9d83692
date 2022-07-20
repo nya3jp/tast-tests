@@ -52,6 +52,24 @@
       "parentUuid": "8e2957ce_97a3086b",
       "revId": "d8f295b0b4bc7639741a52a6e095d28ae9d83692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39bc409_137144ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-20T16:21:46Z",
+      "side": 1,
+      "message": "Tried running the test again and got further along, now stuck on enrollment part where I get this error \"Google couldn\u0027t verify this account belongs to you\".\n\nIt could be that the folks that converted this account to OTA messed up (wouldn\u0027t be the first time) and instead of making it Infinite made it 24 hours. Just filed a request for them to check b/239699981.",
+      "parentUuid": "087d00cb_fd217926",
+      "revId": "d8f295b0b4bc7639741a52a6e095d28ae9d83692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
