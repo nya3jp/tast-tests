@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -12,7 +12,8 @@ import (
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/apps/fixture"
+	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/bundles/cros/apps/galleryapp"
 	"chromiumos/tast/local/bundles/cros/apps/pre"
 	"chromiumos/tast/local/chrome/ash"
@@ -22,54 +23,73 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/uidetection"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         LaunchGallery,
+		Func:         LaunchImageInPhotosFromGallery,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Launch Gallery APP on opening supported files",
+		Desc:         "From the Gallery app, launch an opened image in the Photos app",
 		Contacts: []string{
 			"backlight-swe@google.com",
+			"bugsnash@chromium.org",
 			"shengjun@chromium.org",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{galleryapp.TestFile},
 		Params: []testing.Param{
 			{
 				Name:              "stable",
-				Fixture:           fixture.LoggedIn,
+				Fixture:           "arcBootedWithGalleryPhotosImageFeature",
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"android_p"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			}, {
 				Name:              "unstable",
-				Fixture:           fixture.LoggedIn,
+				Fixture:           "arcBootedWithGalleryPhotosImageFeature",
 				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"android_p"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsUnstableModels),
 			}, {
-				Name:              "lacros",
-				Fixture:           fixture.LacrosLoggedIn,
-				ExtraSoftwareDeps: []string{"lacros_stable"},
+				// todo: fix 'missing SoftwareDeps: android_vm'
+				Name:    "lacros",
+				Fixture: "lacrosWithArcBooted",
+				// todo: change fixture to below when i've got it working in lacros
+				// Fixture:           "lacrosWithArcBootedAndGalleryPhotosImageFeature",
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"android_vm", "lacros"},
 				ExtraHardwareDeps: hwdep.D(pre.AppsStableModels),
 			},
 		},
 	})
 }
 
-// LaunchGallery verifies launching Gallery on opening supported files.
-func LaunchGallery(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(fixture.FixtData).Chrome
-	tconn := s.FixtValue().(fixture.FixtData).TestAPIConn
+// LaunchImageInPhotosFromGallery verifies launching Photos from Gallery on an open image file.
+func LaunchImageInPhotosFromGallery(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(*arc.PreData).Chrome
+	a := s.FixtValue().(*arc.PreData).ARC
+	d := s.FixtValue().(*arc.PreData).UIDevice
+
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	ui := uiauto.New(tconn).WithInterval(time.Second)
-	//TODO(crbug/1146196) Remove retry after Downloads mounting issue fixed.
-	// Setup the test image.
+	s.Log("Install Photos app")
+	const photosAppPkgName = "com.google.android.apps.photos"
+	if err := playstore.InstallOrUpdateAppAndClose(ctx, tconn, a, d, photosAppPkgName, &playstore.Options{TryLimit: -1}); err != nil {
+		s.Fatal("Failed to install Photos app: ", err)
+	}
 
+	// Setup the test image.
+	ui := uiauto.New(tconn).WithInterval(time.Second)
 	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
 	if err != nil {
 		s.Fatal("Failed to get user's Download path: ", err)
@@ -77,8 +97,9 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 	// Use the test name to unique name the local test image file.
 	// Otherwise the following tests sharing the same Chrome session might have name conflicts.
 	// e.g. http://b/198381192.
-	localFile := "launch_gallery" + galleryapp.TestFile
+	localFile := "launch_image_in_photos_from_gallery" + galleryapp.TestFile
 	localFileLocation := filepath.Join(downloadsPath, localFile)
+	// TODO(crbug/1146196) Remove retry after Downloads mounting issue fixed.
 	if err := ui.Retry(10, func(context.Context) error {
 		return fsutil.CopyFile(s.DataPath(galleryapp.TestFile), localFileLocation)
 	})(ctx); err != nil {
@@ -114,9 +135,32 @@ func LaunchGallery(ctx context.Context, s *testing.State) {
 
 	s.Log("Wait for Gallery app rendering")
 	// Use image section to verify Gallery App rendering.
-	ui = uiauto.New(tconn).WithTimeout(time.Minute)
-	imageElementFinder := nodewith.Role(role.Image).Name(localFile).Ancestor(galleryapp.RootFinder)
-	if err := ui.WaitUntilExists(imageElementFinder)(ctx); err != nil {
-		s.Fatal("Failed to render Gallery: ", err)
+	ui = uiauto.New(tconn)
+
+	s.Log("Click `Lighting filters` button")
+	annotationButton := nodewith.Role(role.ToggleButton).Name(`Lighting filters`).Ancestor(galleryapp.RootFinder)
+	if err := ui.LeftClick(annotationButton)(ctx); err != nil {
+		s.Fatal("Failed to click `Lighting filters` button: ", err)
+	}
+
+	s.Log("Click `More tools in Photos` button")
+	photosButton := nodewith.Role(role.Button).Name(`More tools in Photos`).Ancestor(galleryapp.RootFinder)
+	if err := ui.LeftClick(photosButton)(ctx); err != nil {
+		s.Fatal("Failed to click `More tools in Photos` button: ", err)
+	}
+
+	s.Log("Wait for Photos shown in shelf")
+	if err := ash.WaitForApp(ctx, tconn, apps.Photos.ID, time.Minute); err != nil {
+		s.Fatal("Failed to check Photos in shelf: ", err)
+	}
+
+	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute)
+
+	if err := uiauto.NamedCombine("reach main page of Photos app",
+		ud.LeftClick(uidetection.Word("ALLOW")),
+		ud.LeftClick(uidetection.TextBlock([]string{"Got", "it"})),
+		ud.WaitUntilExists(uidetection.CustomIcon(s.DataPath(galleryapp.TestFile))),
+	)(ctx); err != nil {
+		s.Fatal("Failed to verify the test image opened in Photos: ", err)
 	}
 }

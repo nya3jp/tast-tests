@@ -10,7 +10,9 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
@@ -27,11 +29,13 @@ const (
 
 // List of fixture names for Essential Apps.
 const (
-	LoggedIn         = "loggedIn"
-	LoggedInJP       = "loggedInJP"
-	LoggedInGuest    = "loggedInGuest"
-	LacrosLoggedIn   = "lacrosLoggedIn"
-	LacrosLoggedInJP = "lacrosLoggedInJP"
+	LoggedIn                                        = "loggedIn"
+	LoggedInJP                                      = "loggedInJP"
+	LoggedInGuest                                   = "loggedInGuest"
+	ArcBootedWithGalleryPhotosImageFeature          = "arcBootedWithGalleryPhotosImageFeature"
+	LacrosLoggedIn                                  = "lacrosLoggedIn"
+	LacrosLoggedInJP                                = "lacrosLoggedInJP"
+	LacrosWithArcBootedAndGalleryPhotosImageFeature = "lacrosWithArcBootedAndGalleryPhotosImageFeature"
 )
 
 func init() {
@@ -71,6 +75,19 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
+	testing.AddFixture(&testing.Fixture{
+		Name:     ArcBootedWithGalleryPhotosImageFeature,
+		Desc:     "ARC is booted with the MediaAppPhotosIntegrationImage feature flag enabled",
+		Contacts: []string{"bugsnash@chromium.org", "shengjun@google.com"},
+		Impl: arc.NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("MediaAppPhotosIntegrationImage")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + arc.BootTimeout + ui.StartTimeout,
+		ResetTimeout:    arc.ResetTimeout,
+		PostTestTimeout: arc.PostTestTimeout,
+		TearDownTimeout: arc.ResetTimeout,
+	})
+
 	// LacrosLoggedIn is a fixture to bring up Lacros as a primary browser
 	// from the rootfs partition by default.
 	// It pre-installs essential apps.
@@ -100,6 +117,20 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout + time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     LacrosWithArcBootedAndGalleryPhotosImageFeature,
+		Desc:     "Lacros Chrome from a pre-built image with ARC booted and the MediaAppPhotosIntegrationImage feature flag enabled",
+		Contacts: []string{"bugsnash@chromium.org", "shengjun@chromium.org"},
+		// todo: make this lacros
+		Impl: arc.NewArcBootedFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.EnableFeatures("MediaAppPhotosIntegrationImage")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + arc.BootTimeout + ui.StartTimeout,
+		ResetTimeout:    arc.ResetTimeout,
+		PostTestTimeout: arc.PostTestTimeout,
+		TearDownTimeout: arc.ResetTimeout,
 	})
 }
 
