@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a8e91c_fbae042f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-20T23:02:29Z",
+      "side": 1,
+      "message": "lgtm with nits",
+      "revId": "b0a0d8ee908bae57c5e6f92ca04766a7a3e413d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4736aaca_f7388ac1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/cuj/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-20T23:02:29Z",
+      "side": 1,
+      "message": "nit: comma",
+      "range": {
+        "startLine": 100,
+        "startChar": 75,
+        "endLine": 100,
+        "endChar": 76
+      },
+      "revId": "b0a0d8ee908bae57c5e6f92ca04766a7a3e413d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd119e12_c21fa6fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-20T23:02:29Z",
+      "side": 1,
+      "message": "nit: I think this comment is meant to be a complete description of the test variant. Please either write something like `// Big meeting with enterprise account.` or just remove this comment.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 18
+      },
+      "revId": "b0a0d8ee908bae57c5e6f92ca04766a7a3e413d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
