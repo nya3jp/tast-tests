@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d83145bd_4ce30207",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-20T05:28:00Z",
+      "side": 1,
+      "message": "Oh I misread that resetTimeout was 10 mins.\n\nThus, this CL adds 10+ mins for each test, which sounds too huge.\nDo you have any estimation of total testing time added by this CL?\nAny chance to reduce the cost?",
+      "parentUuid": "5ef791dd_2ca3fc09",
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "edb24ea6_d27c459e",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -85,6 +103,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef315521_ed5681cb",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-20T05:28:00Z",
+      "side": 1,
+      "message": "45s for each test and 2m for each test have a huge gap.\nIf you work on it immediately after this CL is landed as P0 and prioritize it to any other work, landing this CL would be fine in the sense to prioritize the fix of the current issue for very short term.\nHowever, otherwise this code costs a lot to the infra, and keeping that does not sound like an option to me. Thoughts?",
+      "parentUuid": "cb2749b7_b5e4f804",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 673,
+        "endChar": 2
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eba7bd96_bec51b27",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -120,6 +162,30 @@
       "side": 1,
       "message": "I don\u0027t think we really can, as the ssh connection used by the previous router controller instance is already closed so it would not work either. I did actually try replacing the ssh connection within the same router controller instance first, but that proved to be more complex and error prone than simply recreating the instance.\n\nThat error should stop the testing though, and it does the same thing if it failed the first time the router was created. If the router controller fails to initialize then we can\u0027t continue the test.",
       "parentUuid": "eba7bd96_bec51b27",
+      "range": {
+        "startLine": 676,
+        "startChar": 1,
+        "endLine": 685,
+        "endChar": 101
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7195bad0_6ad6550d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-20T05:28:00Z",
+      "side": 1,
+      "message": "Could you invalidate (e.g. assign nil) object and host at least on closing?\nThen, you can hold host/object on local var first, then assign them to the member of rd when both succeeds, or discard it.\n\nif err :\u003d rd.object.Close(...); err !\u003d nil {\n  ...\n}\nif err :\u003d rd.object.StartReboot(...); err !\u003d nil {\n  ...\n}\nrd.host.Close(...)\n\n// Invalidate rd.object/host here.\n\n// Wait for the condition that reboot completed.\n\nhost, err :\u003d tf.connectCompanion(...)\nif err !\u003d nil {\n  return ...\n}\nobj, err :\u003d newRouter(...)\nif err !\u003d nil {\n  // teardown host ...\n  return ...\n}\nrd.host \u003d host\nrd.object \u003d object\n\nreturn ...",
+      "parentUuid": "b8382a88_5cb56af5",
       "range": {
         "startLine": 676,
         "startChar": 1,
