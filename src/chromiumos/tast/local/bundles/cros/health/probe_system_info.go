@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The Chromium OS Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -6,13 +6,17 @@ package health
 
 import (
 	"context"
-	"path/filepath"
-	"regexp"
+	"os"
+	"path"
+	"strconv"
 	"strings"
 
-	"chromiumos/tast/local/crosconfig"
+	"github.com/google/go-cmp/cmp"
+
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/health/utils"
 	"chromiumos/tast/local/croshealthd"
-	"chromiumos/tast/local/csv"
+	"chromiumos/tast/local/jsontypes"
 	"chromiumos/tast/lsbrelease"
 	"chromiumos/tast/testing"
 )
@@ -30,94 +34,248 @@ func init() {
 }
 
 func ProbeSystemInfo(ctx context.Context, s *testing.State) {
-	const (
-		// Location of cached VPD R/O contents.
-		cachedVpdRoPath = "/sys/firmware/vpd/ro/"
-		// Location of cached VPD R/W contents.
-		cachedVpdRwPath = "/sys/firmware/vpd/rw/"
-		// CrosConfig cros_healthd cached VPD path.
-		crosHealthdCachedVpdPath = "/cros-healthd/cached-vpd"
-		// CrosConfig SKU number property.
-		skuNumberProperty = "has-sku-number"
-		// CrosConfig root path.
-		rootPath = "/"
-		// CrosConfig name property.
-		nameProperty = "name"
-
-		// CrosConfig branding path.
-		brandingPath = "/branding"
-		// CrosConfig marketing name property.
-		marketingNameProperty = "marketing-name"
-
-		// Location of DMI contents.
-		dmiPath = "/sys/class/dmi/id/"
-	)
-
-	var (
-		firstPowerDatePath  = filepath.Join(cachedVpdRwPath, "ActivateDate")
-		manufactureDatePath = filepath.Join(cachedVpdRoPath, "mfg_date")
-		skuNumberPath       = filepath.Join(cachedVpdRoPath, "sku_number")
-		serialNumberPath    = filepath.Join(cachedVpdRoPath, "serial_number")
-
-		biosVersionPath  = filepath.Join(dmiPath, "bios_version")
-		boardNamePath    = filepath.Join(dmiPath, "board_name")
-		boardVersionPath = filepath.Join(dmiPath, "board_version")
-		chassisTypePath  = filepath.Join(dmiPath, "chassis_type")
-
-		firstPowerDateRegex  = regexp.MustCompile("[0-9]{4}-[0-9]{2}")
-		manufactureDateRegex = regexp.MustCompile("[0-9]{4}-[0-9]{2}-[0-9]{2}")
-	)
-
-	// Sanitize the marketing name value to remove commas. This matches the
-	// behavior of the telem tool. For example
-	// "Acer Chromebook Spin 11 (CP311-H1, CP311-1HN)" ->
-	// "Acer Chromebook Spin 11 (CP311-H1/CP311-1HN)"
-	// TODO(crbug/1135261): Remove these explicit values checks from the test
-	marketingNameRaw, err := crosconfig.Get(ctx, brandingPath, marketingNameProperty)
-	if err != nil && !crosconfig.IsNotFound(err) {
-		s.Fatal("Unable to get marketing name from cros_config: ", err)
-	}
-	marketingName := strings.ReplaceAll(marketingNameRaw, ", ", "/")
-
-	lsbValues, err := lsbrelease.Load()
-	if err != nil {
-		s.Fatal("Failed to get lsb-release info: ", err)
-	}
-	versionComponents := []string{
-		lsbValues[lsbrelease.Milestone],
-		lsbValues[lsbrelease.BuildNumber],
-		lsbValues[lsbrelease.PatchNumber],
-	}
-	osVersion := strings.Join(versionComponents, ".")
-	osReleaseChannel := lsbValues[lsbrelease.ReleaseTrack]
-
 	params := croshealthd.TelemParams{Category: croshealthd.TelemCategorySystem}
-	records, err := croshealthd.RunAndParseTelem(ctx, params, s.OutDir())
-	if err != nil {
-		s.Fatal("Failed to get system info: ", err)
+	var g systemInfo
+	if err := croshealthd.RunAndParseJSONTelem(ctx, params, s.OutDir(), &g); err != nil {
+		s.Fatal("Failed to get system info telemetry info: ", err)
 	}
+	e, err := expectedSystemInfo(ctx)
+	if err != nil {
+		s.Fatal("Failed to get expected system info: ", err)
+	}
+	if d := cmp.Diff(e, g); d != "" {
+		s.Fatal("SystemInfo validation failed (-expected + got): ", d)
+	}
+}
 
-	err = csv.ValidateCSV(records,
-		csv.Rows(2),
-		csv.ColumnWithDefault("first_power_date", croshealthd.NotApplicable, csv.EqualToFileContent(firstPowerDatePath),
-			csv.MatchRegex(firstPowerDateRegex)),
-		csv.ColumnWithDefault("manufacture_date", croshealthd.NotApplicable, csv.EqualToFileContent(manufactureDatePath),
-			csv.MatchRegex(manufactureDateRegex)),
-		csv.ColumnWithDefault("product_sku_number", croshealthd.NotApplicable, csv.EqualToFileIfCrosConfigProp(ctx, crosHealthdCachedVpdPath,
-			skuNumberProperty, skuNumberPath)),
-		csv.ColumnWithDefault("product_serial_number", croshealthd.NotApplicable, csv.EqualToFileContent(serialNumberPath)),
-		csv.ColumnWithDefault("marketing_name", croshealthd.NotApplicable, csv.MatchValue(marketingName)),
-		csv.ColumnWithDefault("bios_version", croshealthd.NotApplicable, csv.EqualToFileContent(biosVersionPath)),
-		csv.ColumnWithDefault("board_name", croshealthd.NotApplicable, csv.EqualToFileContent(boardNamePath)),
-		csv.ColumnWithDefault("board_version", croshealthd.NotApplicable, csv.EqualToFileContent(boardVersionPath)),
-		csv.ColumnWithDefault("chassis_type", croshealthd.NotApplicable, csv.EqualToFileContent(chassisTypePath)),
-		csv.ColumnWithDefault("product_name", croshealthd.NotApplicable, csv.EqualToCrosConfigProp(ctx, rootPath,
-			nameProperty)),
-		csv.Column("os_version", csv.MatchValue(osVersion)),
-		csv.Column("os_channel", csv.MatchValue(osReleaseChannel)),
+type osVersion struct {
+	ReleaseMilestone string `json:"release_milestone"`
+	BuildNumber      string `json:"build_number"`
+	PatchNumber      string `json:"patch_number"`
+	ReleaseChannel   string `json:"release_channel"`
+}
+
+type osInfo struct {
+	CodeName      string    `json:"code_name"`
+	MarketingName *string   `json:"marketing_name"`
+	OsVersion     osVersion `json:"os_version"`
+	BootMode      string    `json:"boot_mode"`
+	OemName       *string   `json:"oem_name"`
+}
+
+type vpdInfo struct {
+	SerialNumber *string `json:"serial_number"`
+	Region       *string `json:"region"`
+	MfgDate      *string `json:"mfg_date"`
+	ActivateDate *string `json:"activate_date"`
+	SkuNumber    *string `json:"sku_number"`
+	ModelName    *string `json:"model_name"`
+}
+
+type dmiInfo struct {
+	BiosVendor     *string           `json:"bios_vendor"`
+	BiosVersion    *string           `json:"bios_version"`
+	BoardName      *string           `json:"board_name"`
+	BoardVender    *string           `json:"board_vendor"`
+	BoardVersion   *string           `json:"board_version"`
+	ChassisVendor  *string           `json:"chassis_vendor"`
+	ChassisType    *jsontypes.Uint64 `json:"chassis_type"`
+	ProductFamily  *string           `json:"product_family"`
+	ProductName    *string           `json:"product_name"`
+	ProductVersion *string           `json:"product_version"`
+	SysVendor      *string           `json:"sys_vendor"`
+}
+
+type systemInfo struct {
+	OsInfo  osInfo   `json:"os_info"`
+	VpdInfo *vpdInfo `json:"vpd_info"`
+	DmiInfo *dmiInfo `json:"dmi_info"`
+}
+
+func expectedOsVersion(ctx context.Context) (osVersion, error) {
+	lsb, err := lsbrelease.Load()
+	if err != nil {
+		return osVersion{}, errors.Wrap(err, "failed to get lsb-release info")
+	}
+	return osVersion{
+		ReleaseMilestone: lsb[lsbrelease.Milestone],
+		BuildNumber:      lsb[lsbrelease.BuildNumber],
+		PatchNumber:      lsb[lsbrelease.PatchNumber],
+		ReleaseChannel:   lsb[lsbrelease.ReleaseTrack],
+	}, nil
+}
+
+func expectedBootMode() (string, error) {
+	v, err := utils.ReadStringFile("/proc/cmdline")
+	if err != nil {
+		return "", err
+	}
+	modeStr := map[string]bool{
+		"cros_secure": true,
+		"cros_efi":    true,
+		"cros_legacy": true,
+	}
+	var r []string
+	for _, s := range strings.Fields(v) {
+		if modeStr[s] {
+			r = append(r, s)
+			modeStr[s] = false // Only add each type once.
+		}
+	}
+	if len(r) == 0 {
+		return "", errors.Errorf("BootMode is not in /proc/cmdline: %v", v)
+	}
+	if len(r) >= 2 {
+		return "", errors.Errorf("too many BootMode in /proc/cmdline, got %v, /proc/cmdline: %v", r, v)
+	}
+	return r[0], nil
+}
+
+func expectedOsInfo(ctx context.Context) (osInfo, error) {
+	const (
+		cfgCodeName      = "/name"
+		cfgMarketingName = "/branding/marketing-name"
+		cfgOemName       = "/branding/oem-name"
 	)
-
-	if err != nil {
-		s.Error("Failed to validate CSV output: ", err)
+	var r osInfo
+	var err error
+	if r.CodeName, err = utils.GetCrosConfig(ctx, cfgCodeName); err != nil {
+		return r, err
 	}
+	if r.MarketingName, err = utils.GetOptionalCrosConfig(ctx, cfgMarketingName); err != nil {
+		return r, err
+	}
+	if r.OemName, err = utils.GetOptionalCrosConfig(ctx, cfgOemName); err != nil {
+		return r, err
+	}
+	if r.OsVersion, err = expectedOsVersion(ctx); err != nil {
+		return r, err
+	}
+	if r.BootMode, err = expectedBootMode(); err != nil {
+		return r, err
+	}
+	return r, nil
+}
+
+func expectedSkuNumber(ctx context.Context, fpath string) (*string, error) {
+	const (
+		cfgSkuNumber = "/cros-healthd/cached-vpd/has-sku-number"
+	)
+	c, err := utils.IsCrosConfigTrue(ctx, cfgSkuNumber)
+	if err != nil {
+		return nil, err
+	}
+	if !c {
+		return nil, nil
+	}
+	e, err := utils.ReadStringFile(fpath)
+	if err != nil {
+		return nil, errors.Wrap(err, "this board must have sku_number, but failed to get")
+	}
+	return &e, nil
+}
+
+func expectedVpdInfo(ctx context.Context) (*vpdInfo, error) {
+	const (
+		vpd = "/sys/firmware/vpd"
+		ro  = "/sys/firmware/vpd/ro/"
+		rw  = "/sys/firmware/vpd/rw/"
+	)
+	if _, err := os.Stat(vpd); os.IsNotExist(err) {
+		return nil, nil
+	}
+	var r vpdInfo
+	var err error
+	if r.ActivateDate, err = utils.ReadOptionalStringFile(path.Join(rw, "ActivateDate")); err != nil {
+		return nil, err
+	}
+	if r.MfgDate, err = utils.ReadOptionalStringFile(path.Join(ro, "mfg_date")); err != nil {
+		return nil, err
+	}
+	if r.ModelName, err = utils.ReadOptionalStringFile(path.Join(ro, "model_name")); err != nil {
+		return nil, err
+	}
+	if r.Region, err = utils.ReadOptionalStringFile(path.Join(ro, "region")); err != nil {
+		return nil, err
+	}
+	if r.SerialNumber, err = utils.ReadOptionalStringFile(path.Join(ro, "serial_number")); err != nil {
+		return nil, err
+	}
+	if r.SkuNumber, err = expectedSkuNumber(ctx, path.Join(ro, "sku_number")); err != nil {
+		return nil, err
+	}
+	return &r, nil
+}
+
+func expectedChassisType(fpath string) (*jsontypes.Uint64, error) {
+	v, err := utils.ReadOptionalStringFile(fpath)
+	if v == nil {
+		return nil, err
+	}
+	i, err := strconv.Atoi(*v)
+	if err != nil {
+		return nil, err
+	}
+	r := jsontypes.Uint64(i)
+	return &r, nil
+}
+
+func expectedDmiInfo(ctx context.Context) (*dmiInfo, error) {
+	const (
+		dmi = "/sys/class/dmi/id"
+	)
+	if _, err := os.Stat(dmi); os.IsNotExist(err) {
+		return nil, nil
+	}
+	var r dmiInfo
+	var err error
+	if r.BiosVendor, err = utils.ReadOptionalStringFile(path.Join(dmi, "bios_vendor")); err != nil {
+		return nil, err
+	}
+	if r.BiosVersion, err = utils.ReadOptionalStringFile(path.Join(dmi, "bios_version")); err != nil {
+		return nil, err
+	}
+	if r.BoardName, err = utils.ReadOptionalStringFile(path.Join(dmi, "board_name")); err != nil {
+		return nil, err
+	}
+	if r.BoardVender, err = utils.ReadOptionalStringFile(path.Join(dmi, "board_vendor")); err != nil {
+		return nil, err
+	}
+	if r.BoardVersion, err = utils.ReadOptionalStringFile(path.Join(dmi, "board_version")); err != nil {
+		return nil, err
+	}
+	if r.ChassisVendor, err = utils.ReadOptionalStringFile(path.Join(dmi, "chassis_vendor")); err != nil {
+		return nil, err
+	}
+	if r.ChassisType, err = expectedChassisType(path.Join(dmi, "chassis_type")); err != nil {
+		return nil, err
+	}
+	if r.ProductFamily, err = utils.ReadOptionalStringFile(path.Join(dmi, "product_family")); err != nil {
+		return nil, err
+	}
+	if r.ProductName, err = utils.ReadOptionalStringFile(path.Join(dmi, "product_name")); err != nil {
+		return nil, err
+	}
+	if r.ProductVersion, err = utils.ReadOptionalStringFile(path.Join(dmi, "product_version")); err != nil {
+		return nil, err
+	}
+	if r.SysVendor, err = utils.ReadOptionalStringFile(path.Join(dmi, "sys_vendor")); err != nil {
+		return nil, err
+	}
+	return &r, nil
+}
+
+func expectedSystemInfo(ctx context.Context) (systemInfo, error) {
+	var r systemInfo
+	var err error
+	if r.OsInfo, err = expectedOsInfo(ctx); err != nil {
+		return r, err
+	}
+	if r.VpdInfo, err = expectedVpdInfo(ctx); err != nil {
+		return r, err
+	}
+	if r.DmiInfo, err = expectedDmiInfo(ctx); err != nil {
+		return r, err
+	}
+	return r, nil
 }
