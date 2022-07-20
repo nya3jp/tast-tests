@@ -22,6 +22,30 @@
       },
       "revId": "0cad841a4b1d1afda7205d74369a245eec036548",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95346814_908dd702",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/dev_mode_stress.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-07-20T21:09:31Z",
+      "side": 1,
+      "message": "Changed to fixture.DevMode. The original test allowed gbb force but I agree using ficture.DevMode is a better test.",
+      "parentUuid": "bd1d6b22_17f9fee7",
+      "range": {
+        "startLine": 30,
+        "startChar": 16,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "0cad841a4b1d1afda7205d74369a245eec036548",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
