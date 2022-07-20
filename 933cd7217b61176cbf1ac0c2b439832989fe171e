@@ -107,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79848d37_02d290f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-20T21:25:02Z",
+      "side": 1,
+      "message": "It generates diagnostic packet and event recording, useful for debugging WebRTC calls. I recently landed CL:3771023 which adds this functionality to all MeetCUJ test variants, and so if you are adding more MeetCUJ test variants, they should include the functionality too. I personally would do it in this CL, but if you prefer to do it in a followup, that is okay.",
+      "parentUuid": "bcafbcfa_e9af4cb3",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 41
+      },
+      "revId": "933cd7217b61176cbf1ac0c2b439832989fe171e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4f31b49_6916cee4",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
         "patchSetId": 4
