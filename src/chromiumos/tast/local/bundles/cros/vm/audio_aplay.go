@@ -31,12 +31,13 @@ type audioAplayParams struct {
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AudioAplay,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check that playback devices are listed correctly",
 		Contacts:     []string{"pteerapong@google.com", "chromeos-audio-bugs@google.com", "crosvm-core@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{runAudioAplay},
 		Timeout:      3 * time.Minute,
-		SoftwareDeps: []string{"vm_host", "dlc"},
+		SoftwareDeps: []string{"vm_host", "chrome", "dlc"},
 		Fixture:      "vmDLC",
 		Params: []testing.Param{
 			{

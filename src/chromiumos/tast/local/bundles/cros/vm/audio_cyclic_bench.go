@@ -82,11 +82,12 @@ const runCyclicTest string = "run-cyclic-test.sh"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AudioCyclicBench,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Benchmarks for scheduling latency with cyclictest binary",
 		Contacts:     []string{"eddyhsu@chromium.org", "paulhsia@chromium.org", "cychiang@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{runCyclicTest},
-		SoftwareDeps: []string{"cras", "vm_host", "dlc"},
+		SoftwareDeps: []string{"cras", "vm_host", "chrome", "dlc"},
 		Timeout:      6 * time.Minute,
 		Fixture:      "vmDLC",
 		Params: []testing.Param{

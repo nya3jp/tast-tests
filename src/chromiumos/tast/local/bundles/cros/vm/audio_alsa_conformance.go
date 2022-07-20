@@ -28,12 +28,13 @@ const runAlsaConformanceTest string = "run-alsa-conformance-test.sh"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AudioAlsaConformance,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests different audio devices in crosvm with alsa conformance test",
 		Contacts:     []string{"woodychow@google.com", "paulhsia@google.com", "chromeos-audio-bugs@google.com", "crosvm-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{runAlsaConformanceTest},
 		Timeout:      12 * time.Minute,
-		SoftwareDeps: []string{"vm_host", "dlc"},
+		SoftwareDeps: []string{"vm_host", "chrome", "dlc"},
 		Fixture:      "vmDLC",
 		Params: []testing.Param{{
 			Name: "virtio_null_snd",

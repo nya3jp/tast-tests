@@ -24,7 +24,7 @@ const (
 //
 //	testing.AddTest(&testing.Test{
 //		...
-//		SoftwareDeps: []string{"vm_host", "dlc"},
+//		SoftwareDeps: []string{"vm_host", "chrome", "dlc"},
 //		Fixture: "vmDLC",
 //	})
 //
@@ -38,6 +38,7 @@ func init() {
 			"woodychow@google.com",
 			"crosvm-core@google.com",
 		},
+		Parent:          "chromeLoggedIn",
 		Impl:            &dlcFixture{},
 		SetUpTimeout:    30 * time.Second,
 		ResetTimeout:    5 * time.Second,
