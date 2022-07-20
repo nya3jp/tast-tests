@@ -22,6 +22,30 @@
       },
       "revId": "bd50e8790bcc333eccf8ba60b14df7daf0726a37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9c99abb_6dbfd09b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-20T19:00:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34e6a92e_5a420e9b",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 26
+      },
+      "revId": "bd50e8790bcc333eccf8ba60b14df7daf0726a37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
