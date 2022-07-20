@@ -101,6 +101,9 @@ type FixtData struct {
 	// CrOSDeviceName is the CrOS device name configured for Nearby Share.
 	CrOSDeviceName string
 
+	// CrOSDownloadsPath is the location of the user's downloads directory (e.g. ~/MyFiles/Downloads).
+	CrOSDownloadsPath string
+
 	// AndroidDevice is an object for interacting with the connected Android device's Snippet Library.
 	AndroidDevice *nearbysnippet.AndroidNearbyDevice
 
@@ -190,6 +193,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		Chrome:            cr,
 		TestConn:          tconn,
 		CrOSDeviceName:    crosDisplayName,
+		CrOSDownloadsPath: crosAttributes.DownloadsPath,
 		AndroidDevice:     androidDevice,
 		AndroidDeviceName: androidDeviceName,
 		ARC:               s.ParentValue().(*FixtData).ARC,
@@ -289,10 +293,10 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	}
 	f.btsnoopCmd = nil
 
-	// Clear test files from both devices.
-	if err := nearbytestutils.ClearCrOSDownloads(ctx); err != nil {
+	if err := nearbytestutils.ClearCrOSDownloads(ctx, f.crosAttributes.DownloadsPath); err != nil {
 		s.Error("Failed to clear contents of the CrOS downloads folder: ", err)
 	}
+
 	if err := f.androidDevice.ClearDownloads(ctx); err != nil {
 		s.Error("Failed to clear contents of the Android downloads folder: ", err)
 	}

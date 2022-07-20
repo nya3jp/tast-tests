@@ -133,12 +133,14 @@ func CrosToCrosInContacts(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Comparing file hashes for all transferred files on both DUTs")
-	senderFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbycommon.SendDir}
+	senderSendDir := s.FixtValue().(*remotenearby.FixtData).SenderSendPath
+	senderFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: senderSendDir}
 	senderFileRes, err := sender.FilesHashes(ctx, senderFileReq)
 	if err != nil {
 		s.Fatal("Failed to get file hashes on DUT1 (Sender): ", err)
 	}
-	receiverFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: nearbycommon.DownloadPath}
+	receiverDownloadsPath := s.FixtValue().(*remotenearby.FixtData).ReceiverDownloadsPath
+	receiverFileReq := &nearbyservice.CrOSFileHashRequest{FileNames: fileNames.FileNames, FileDir: receiverDownloadsPath}
 	receiverFileRes, err := receiver.FilesHashes(ctx, receiverFileReq)
 	if err != nil {
 		s.Fatal("Failed to get file hashes on DUT2 (Receiver): ", err)
