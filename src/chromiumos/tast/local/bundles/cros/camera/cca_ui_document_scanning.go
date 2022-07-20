@@ -256,6 +256,14 @@ func testFixCropArea(ctx context.Context, app *cca.App, cr *chrome.Chrome) error
 		return errors.Wrap(err, "failed to enter document mode")
 	}
 
+	err := app.WaitForVisibleState(ctx, cca.DocumentDialogButton, true)
+	// TODO(b/239642965): Remove this check. Document dialog will always show after the fixes for b/238403258.
+	if err == nil {
+		if err := app.Click(ctx, cca.DocumentDialogButton); err != nil {
+			return errors.Wrap(err, "failed to click the document dialog button")
+		}
+	}
+
 	if err := app.ClickShutter(ctx); err != nil {
 		return errors.Wrap(err, "failed to click the shutter button")
 	}
