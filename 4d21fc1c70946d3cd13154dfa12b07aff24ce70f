@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afc8361d_8c75a5b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-20T11:05:14Z",
+      "side": 1,
+      "message": "Had to add this call (which I originally published as part of CL:3775213) after rebasing on top of Ching-Kang\u0027s CL:3737146: it\u0027s not possible to remove a mounted vault.",
+      "revId": "4d21fc1c70946d3cd13154dfa12b07aff24ce70f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
