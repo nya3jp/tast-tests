@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa456a3_f28b52ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_combine_desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1522032
+      },
+      "writtenOn": "2022-07-20T23:12:22Z",
+      "side": 1,
+      "message": "I guess it\u0027s not required here. Just wanted to do something along the lines of what we did for the CloseAll tests. I can remove the ARC bits.",
+      "parentUuid": "873ca5d1_a8d3566d",
+      "revId": "f8a6acfab97caa8f54851d7d015fc1ddde4152ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea22b898_b7af7251",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-20T22:10:24Z",
       "side": 1,
       "message": "do we want to also check number of desks?",
+      "revId": "f8a6acfab97caa8f54851d7d015fc1ddde4152ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a70318ce_a6e2d00c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_combine_desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1522032
+      },
+      "writtenOn": "2022-07-20T23:12:22Z",
+      "side": 1,
+      "message": "Added TODO as discussed offline because AutotestDesksApi currently does not have a function accessible in Tast to count desks.",
+      "parentUuid": "ea22b898_b7af7251",
       "revId": "f8a6acfab97caa8f54851d7d015fc1ddde4152ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
