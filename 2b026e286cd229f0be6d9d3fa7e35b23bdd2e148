@@ -86,6 +86,24 @@
       "parentUuid": "de636529_ff39bf51",
       "revId": "2b026e286cd229f0be6d9d3fa7e35b23bdd2e148",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c6376b5_28c901cd",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-07-20T19:39:40Z",
+      "side": 1,
+      "message": "Partially this is why I did a larger rework. profileNodes has 2 LayoutTableRows now (only 2 of them are in the profile section). Previously there was 6 rows coming from different sections to iterate over.",
+      "parentUuid": "af1ab468_fc0512ca",
+      "revId": "2b026e286cd229f0be6d9d3fa7e35b23bdd2e148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
