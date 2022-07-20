@@ -16,6 +16,115 @@
       "message": "So now that the telemetry experiment changes for the test domain have landed, I was able to successfully run this test! https://meet.google.com/nid-kide-ram was the meeting if anyone wanted to look at the backend metrics. I was going to go through and add some more test accounts, but then I think we can land this CL.",
       "revId": "933cd7217b61176cbf1ac0c2b439832989fe171e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac1bb4c1_1ea7c75c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-20T20:49:24Z",
+      "side": 1,
+      "message": "Can we have a `16p_enterprise` variant (maybe instead of a `4p_enterprise` variant)? I think video quality can be reduced when video streams are smaller because 16 of them have to fit into a grid. I think it would be valuable to see the relationship between that and enterprise accounts.",
+      "revId": "933cd7217b61176cbf1ac0c2b439832989fe171e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f1deb54_2b96bc54",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-20T20:49:24Z",
+      "side": 1,
+      "message": "`meetLayoutTiled`",
+      "range": {
+        "startLine": 116,
+        "startChar": 17,
+        "endLine": 116,
+        "endChar": 31
+      },
+      "revId": "933cd7217b61176cbf1ac0c2b439832989fe171e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961b7d65_7e7feff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-20T20:49:24Z",
+      "side": 1,
+      "message": "Please create a fixture that combines the functionality of `\"loggedInToCUJUserEnterprise\"` and `\"loggedInToCUJUserWithWebRTCEventLogging\"`. It should be just a matter of writing this:\n\t\tImpl:            \u0026loggedInToCUJUserFixture{\n\t\t\tchromeExtraOpts: []chrome.Option{chrome.ExtraArgs(webRTCEventLogCommandFlag)},\n\t\t\tbt: browser.TypeAsh,\n\t\t\tuseEnterprisePool: true,\n\t\t},",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 41
+      },
+      "revId": "933cd7217b61176cbf1ac0c2b439832989fe171e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f31b49_6916cee4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-20T20:49:24Z",
+      "side": 1,
+      "message": "`meetLayoutTiled`",
+      "range": {
+        "startLine": 150,
+        "startChar": 17,
+        "endLine": 150,
+        "endChar": 31
+      },
+      "revId": "933cd7217b61176cbf1ac0c2b439832989fe171e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f16ebf_daa0fedf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-20T20:49:24Z",
+      "side": 1,
+      "message": "`\"loggedInToCUJUserEnterpriseWithWebRTCEventLogging\"` (see my code review comment on the `2p_enterprise` variant)",
+      "range": {
+        "startLine": 154,
+        "startChar": 12,
+        "endLine": 154,
+        "endChar": 41
+      },
+      "revId": "933cd7217b61176cbf1ac0c2b439832989fe171e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
