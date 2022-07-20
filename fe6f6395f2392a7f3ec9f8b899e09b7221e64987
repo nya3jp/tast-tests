@@ -16,6 +16,23 @@
       "message": "LGTM from audio perspective, add tast-owners for readability review",
       "revId": "fe6f6395f2392a7f3ec9f8b899e09b7221e64987",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f344914_4790a9f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-20T22:55:55Z",
+      "side": 1,
+      "message": "LGTM. Thanks!",
+      "revId": "fe6f6395f2392a7f3ec9f8b899e09b7221e64987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
