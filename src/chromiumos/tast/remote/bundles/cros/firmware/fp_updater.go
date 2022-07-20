@@ -149,11 +149,15 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to flash outdated RW firmware: ", err)
 	}
 
-	testing.ContextLog(ctx, "Invoking fp updater")
-	// The updater issues a reboot after update so don't expect response.
-	if err := d.Conn().CommandContext(ctx, "bio_fw_updater").Start(); err != nil {
-		s.Fatal("Failed to execute bio_fw_updater: ", err)
+	testing.ContextLog(ctx, "Rebooting DUT to invoke fp updater")
+	// On some DUTs (e.g. hatch) we can connect to DUT between update and
+	// reboot after update. That's the reason we can't call d.Reboot()
+	// here. Let's issue 'reboot' command and connect to DUT after 60
+	// seconds.
+	if err := d.Conn().CommandContext(ctx, "reboot").Start(); err != nil {
+		s.Fatal("Failed to execute 'reboot' on DUT: ", err)
 	}
+
 	s.Log("Waiting for update and reboot")
 	testing.Sleep(ctx, 60*time.Second)
 
@@ -187,7 +191,10 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 		s.Error("Failed to write previous updater log to file: ", err)
 	}
 
-	if !strings.Contains(latest, successString) {
+	// DUT reboots after FPMCU firmware update, so the previous file
+	// contains log from update. The latest file should contain information
+	// that update is not necessary.
+	if !strings.Contains(previous, successString) {
 		s.Fatal("Updater did not succeed, please check output dir")
 	}
 
