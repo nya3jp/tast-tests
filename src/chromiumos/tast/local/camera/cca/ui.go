@@ -148,6 +148,8 @@ var (
 	// DocumentCornerOverlay is the overlay that CCA used to draw document corners on.
 	DocumentCornerOverlay = UIComponent{"document corner overlay", []string{
 		"#preview-document-corner-overlay"}}
+	// DocumentDialogButton is the confirmation button of new feature dialog for document mode.
+	DocumentDialogButton = UIComponent{"document feature dialog button", []string{"#view-document-mode-dialog button[i18n-text=document_mode_dialog_got_it]"}}
 
 	// GifRecordingOption is the radio button to toggle gif recording option.
 	GifRecordingOption = UIComponent{"gif recording button", []string{
