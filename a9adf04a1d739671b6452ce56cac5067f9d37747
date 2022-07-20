@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c804621d_b93ce64c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-20T00:44:45Z",
+      "side": 1,
+      "message": "let\u0027s add defer call to uninstall the app (so the app gets uninstalled even if the test fails)\n\nmaybe something like https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go;drc\u003d63760ac8005acdcdc91a20c2fa7468584ad74d8f;l\u003d161\n\nother than that lgtm",
+      "revId": "a9adf04a1d739671b6452ce56cac5067f9d37747",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
