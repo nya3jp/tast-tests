@@ -36,9 +36,14 @@ func init() {
 		SoftwareDeps: []string{"vm_host", "dlc"},
 		Fixture:      "vmDLC",
 		Params: []testing.Param{{
+			Name: "virtio_null_snd",
+			Val: audioutils.Config{
+				CrosvmArgs: []string{"--virtio-snd", "capture=false,backend=null"},
+			},
+		}, {
 			Name: "virtio_cras_snd",
 			Val: audioutils.Config{
-				CrosvmArgs: []string{"--cras-snd", "capture=true,socket_type=legacy"},
+				CrosvmArgs: []string{"--virtio-snd", "capture=true,backend=cras,socket_type=legacy"},
 			},
 		}, {
 			Name: "vhost_user_cras",
