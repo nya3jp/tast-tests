@@ -50,7 +50,6 @@ const (
 	TelemCategoryStatefulPartition TelemCategory = "stateful_partition"
 	TelemCategoryStorage           TelemCategory = "storage"
 	TelemCategorySystem            TelemCategory = "system"
-	TelemCategorySystem2           TelemCategory = "system2"
 	TelemCategoryTimezone          TelemCategory = "timezone"
 	TelemCategoryAudioHardware     TelemCategory = "audio_hardware"
 )
@@ -109,8 +108,9 @@ func RunAndParseTelem(ctx context.Context, params TelemParams, outDir string) ([
 
 // RunAndParseJSONTelem runs RunTelem and parses the JSON output.
 // Example:
-//   var result certainStruct
-//   err := RunAndParseJSONTelem(_, _, _, &result)
+//
+//	var result certainStruct
+//	err := RunAndParseJSONTelem(_, _, _, &result)
 func RunAndParseJSONTelem(ctx context.Context, params TelemParams, outDir string, result interface{}) error {
 	b, err := RunTelem(ctx, params, outDir)
 	if err != nil {
