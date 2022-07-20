@@ -14,6 +14,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/shutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -21,14 +22,15 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func: PerfETM,
-		Desc: "Verify ETM functionality with the perf tool",
+		Func:         PerfETM,
+		LacrosStatus: testing.LacrosVariantUnneeded,
+		Desc:         "Verify ETM functionality with the perf tool",
 		Contacts: []string{
 			"denik@chromium.org",
 			"c-compiler-chrome@google.com",
 		},
 		// CoreSight/ETM is the Arm technology.
-		SoftwareDeps: []string{"arm"},
+		SoftwareDeps: []string{"arm", "chrome"},
 		// ETM is the optional HW implemented only on Qualcomm SoCs
 		HardwareDeps: hwdep.D(hwdep.Platform("trogdor", "herobrine")),
 		Attr:         []string{"group:mainline", "informational"},
@@ -63,7 +65,7 @@ func testSettingETMStrobingConfiguration(ctx context.Context, s *testing.State) 
 		{
 			name:  "period",
 			path:  "/sys/kernel/config/cs-syscfg/features/strobing/params/period/value",
-			value: "0x800",
+			value: "0x4000",
 		},
 		{
 			name:  "window",
@@ -214,18 +216,29 @@ func testPerfETMPerThread(ctx context.Context, s *testing.State) {
 
 // testPerfETMSystemWide records ETM trace in system-wide mode and verifies the raw dump.
 func testPerfETMSystemWide(ctx context.Context, s *testing.State) {
-	perfData := filepath.Join(s.OutDir(), "system-wide-perf.data")
-	perfCommand := []string{"record", "-e", "cs_etm/autofdo/uk", "-N", "-o", perfData, "-a", "--"}
-	tracedCommand := []string{"top", "-b", "-n10", "-d0.1"}
-	fullPerfCommand := append(perfCommand, tracedCommand...)
-	kernelDSO := "/proc/kcore"
+	cr, err := chrome.New(ctx)
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+	defer cr.Close(ctx)
 
-	// Test ETM profile collection.
-	cmd := testexec.CommandContext(ctx, "perf", fullPerfCommand...)
-	err := cmd.Run(testexec.DumpLogOnError)
+	// Test ETM profiling of Chrome.
+	perfData := filepath.Join(s.OutDir(), "system-wide-perf.data")
+	perfCommand := []string{"record", "-e", "cs_etm/autofdo/uk", "-N", "-o", perfData, "-a", "--", "sleep", "1"}
+	cmd := testexec.CommandContext(ctx, "perf", perfCommand...)
+	// Launch perf but don't wait.
+	err = cmd.Start()
 	if err != nil {
 		s.Fatalf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
 	}
+	// Open search result page
+	conn, err := cr.NewConn(ctx, "https://google.com/search?q=Google")
+	if err != nil {
+		s.Fatal("Failed to create new Chrome connection: ", err)
+	}
+	defer conn.Close()
+	// Wait unti perf completes.
+	err = cmd.Wait(testexec.DumpLogOnError)
 
 	// Test ETM data in the raw profile dump.
 	cmd = testexec.CommandContext(ctx, "perf", "report", "-D", "-i", perfData)
@@ -240,13 +253,15 @@ func testPerfETMSystemWide(ctx context.Context, s *testing.State) {
 
 	// Test ETM trace decoding and sample synthesis.
 	perfInjectData := filepath.Join(s.OutDir(), "system-wide-perf-inject.data")
-	cmd = testexec.CommandContext(ctx, "perf", "inject", "--itrace=Zi1024il", "--strip", "-i", perfData, "-o", perfInjectData)
+	// Don't use timeless decoding (itrace=Z) when UI is On.
+	cmd = testexec.CommandContext(ctx, "perf", "inject", "--itrace=i1024il", "--strip", "-i", perfData, "-o", perfInjectData)
 	err = cmd.Run(testexec.DumpLogOnError)
 	if err != nil {
 		s.Fatalf("%s failed: %v", shutil.EscapeSlice(cmd.Args), err)
 	}
 
 	// Test ETM data in the profile with synthesized branch samples.
+	kernelDSO := "/proc/kcore"
 	cmd = testexec.CommandContext(ctx, "perf", "report", "-D", "-i", perfInjectData)
 	out, err = cmd.Output(testexec.DumpLogOnError)
 	if err != nil {
@@ -254,9 +269,8 @@ func testPerfETMSystemWide(ctx context.Context, s *testing.State) {
 	}
 	s.Log("Verifying Last Branch samples in system-wide mode")
 	// Verify samples from the traced command.
-	if err = verifyLastBranchSamples(string(out), tracedCommand[0], ""); err != nil {
-		// TODO(b/225407997): Replace with Errorf when fixed.
-		s.Logf("Failed but forgiven. Last branch sample verification failed for %q command: %v", tracedCommand[0], err)
+	if err = verifyLastBranchSamples(string(out), "chrome", ""); err != nil {
+		s.Errorf("Failed but forgiven. Last branch sample verification failed for %q command: %v", "chrome", err)
 	}
 	// Verify samples from the kernel dso.
 	if err = verifyLastBranchSamples(string(out), "", kernelDSO); err != nil {
