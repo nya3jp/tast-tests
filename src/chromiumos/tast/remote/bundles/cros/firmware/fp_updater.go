@@ -109,7 +109,7 @@ func flashOldRWFirmware(ctx context.Context, s *testing.State, d *rpcdut.RPCDUT)
 }
 
 func FpUpdater(ctx context.Context, s *testing.State) {
-	d, err := rpcdut.NewRPCDUT(ctx, s.DUT(), s.RPCHint(), "cros")
+	d, err := rpcdut.NewRPCDUT(ctx, s.DUT(), s.RPCHint(), "cros", rpcdut.OptionWaitForFWUpdates)
 	if err != nil {
 		s.Fatal("Failed to connect RPCDUT: ", err)
 	}
@@ -149,17 +149,9 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to flash outdated RW firmware: ", err)
 	}
 
-	testing.ContextLog(ctx, "Invoking fp updater")
-	// The updater issues a reboot after update so don't expect response.
-	if err := d.Conn().CommandContext(ctx, "bio_fw_updater").Start(); err != nil {
-		s.Fatal("Failed to execute bio_fw_updater: ", err)
-	}
-	s.Log("Waiting for update and reboot")
-	testing.Sleep(ctx, 60*time.Second)
-
-	s.Log("Reconnecting to DUT")
-	if err := d.Connect(ctx); err != nil {
-		s.Fatal("Failed to connect to DUT: ", err)
+	testing.ContextLog(ctx, "Rebooting DUT to invoke fp updater")
+	if err := d.Reboot(ctx); err != nil {
+		s.Fatal("Failed to reboot DUT: ", err)
 	}
 
 	fpUpdaterService := firmware.NewFpUpdaterServiceClient(d.RPC().Conn)
@@ -187,7 +179,10 @@ func FpUpdater(ctx context.Context, s *testing.State) {
 		s.Error("Failed to write previous updater log to file: ", err)
 	}
 
-	if !strings.Contains(latest, successString) {
+	// DUT reboots after FPMCU firmware update, so the previous file
+	// contains log from update. The latest file should contain information
+	// that update is not necessary.
+	if !strings.Contains(previous, successString) {
 		s.Fatal("Updater did not succeed, please check output dir")
 	}
 
