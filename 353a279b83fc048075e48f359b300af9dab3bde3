@@ -33,6 +33,24 @@
       "message": "Nit: Could you pull this out into a variable so you can just change one place to change all of them.",
       "revId": "353a279b83fc048075e48f359b300af9dab3bde3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cf29249_607082c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/input_overlay_editor.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-07-20T18:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99411e33_878968ef",
+      "revId": "353a279b83fc048075e48f359b300af9dab3bde3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
