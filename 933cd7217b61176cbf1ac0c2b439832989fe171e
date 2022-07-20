@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "723cad66_918edc59",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-07-20T19:38:06Z",
+      "side": 1,
+      "message": "So now that the telemetry experiment changes for the test domain have landed, I was able to successfully run this test! https://meet.google.com/nid-kide-ram was the meeting if anyone wanted to look at the backend metrics. I was going to go through and add some more test accounts, but then I think we can land this CL.",
+      "revId": "933cd7217b61176cbf1ac0c2b439832989fe171e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
