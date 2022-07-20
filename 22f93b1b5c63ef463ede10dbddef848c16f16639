@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4b98cff_94a9a7dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-20T00:38:31Z",
+      "side": 1,
+      "message": "LGTM. Thanks!",
+      "revId": "22f93b1b5c63ef463ede10dbddef848c16f16639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25dadc04_eed7835f",
@@ -121,6 +138,24 @@
       "side": 1,
       "message": "Currently I have not found a reliable way determine if a reboot has completed, so a wait is used. This is handled in the [next CL](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3771027/4?usp\u003drelated-change) outside of the Router implementation because only the test fixture has the ability to recreate the ssh connection. Also, I\u0027ve created b:239583375 to look into optimizing this.\n\nWe wanted to avoid having to reboot the router between tests but these OpenWrt routers\u0027 drivers just did not prove to be stable enough when we make a bunch of changes to their wireless configs like we do in our tests. We already ran into one driver issue that was really hard to figure out and likely there are and will be others. Instead of fixing every random router bug with OpenWrt routers, we opted for the tried and true way of ensuring a router is in a good, fresh state: rebooting. It works, and works consistently, after a reboot, which is not something we\u0027ve been able to accomplish reliably by other reset/reinit process. At the end of the day, we aren\u0027t trying to test routers but just use them for testing duts, so a reboot allows us to lessen the impact of router bugs and stay focused on the dut.",
       "parentUuid": "bad61094_619cdccf",
+      "revId": "22f93b1b5c63ef463ede10dbddef848c16f16639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d987e519_32ba7e99",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-07-20T00:38:31Z",
+      "side": 1,
+      "message": "Thanks for the explanation.",
+      "parentUuid": "1daf4d28_933749ec",
       "revId": "22f93b1b5c63ef463ede10dbddef848c16f16639",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
