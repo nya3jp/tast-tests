@@ -177,6 +177,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "567da3ed_583224d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-07-20T22:39:29Z",
+      "side": 1,
+      "message": "Done. Also verified that `/tmp/event_log_20220720_1628_158_3.log` kept increasing in size while the test was running.",
+      "parentUuid": "89deeabb_bae89334",
+      "range": {
+        "startLine": 120,
+        "startChar": 12,
+        "endLine": 120,
+        "endChar": 41
+      },
+      "revId": "933cd7217b61176cbf1ac0c2b439832989fe171e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4f31b49_6916cee4",
