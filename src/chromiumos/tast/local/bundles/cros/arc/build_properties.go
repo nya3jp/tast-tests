@@ -221,12 +221,18 @@ func BuildProperties(ctx context.Context, s *testing.State) {
 	partitions := []string{"system", "system_ext", "product", "odm", "vendor", "bootimage"}
 	allProperties := getAllPropertiesMap()
 	propertiesMatcher := createPropertiesMatcher(s, allProperties, partitions, getProperty)
+	// To simplify maintaince ARC will mutate only the highest priority property and start to
+	// not keep properties in sync across different partitions. See go/arc-lemmy for details.
+	unsyncedProperties := map[string]bool{"ro.product.cpu.abilist": true, "ro.product.cpu.abilist32": true, "ro.product.cpu.abilist64": true}
 
 	// Starting R, the images have ro.[property.]{system,system_ext,product,odm,vendor,bootimage}.*
 	// properties by default to allow vendors to customize the values. ARC doesn't need the
 	// customization and uses the same value for all of them. This verifies that all properties
 	// share the same value. On P, the images have only ro.{system,vendor,bootimage} ones.
 	for property := range allProperties {
+		if unsyncedProperties[property] {
+			continue
+		}
 		if prefix := "ro.build."; strings.HasPrefix(property, prefix) {
 			// Verify that ro.build.X has the same value as ro.<partition>.build.X.
 			propertiesMatcher(property, prefix, "ro.%s.build.")
