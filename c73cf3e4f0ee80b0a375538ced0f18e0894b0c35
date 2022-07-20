@@ -34,6 +34,24 @@
       "parentUuid": "6143edb3_8f8d7b2c",
       "revId": "c73cf3e4f0ee80b0a375538ced0f18e0894b0c35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1222dded_d5c90057",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-20T17:47:41Z",
+      "side": 1,
+      "message": "If we\u0027re forcing the test dark-light mode in the test either way, we can test both cases.\nThough, after further thought, it may be better/simpler to just make logic that finds dot pixels work both for dark and light mode - I guess we don\u0027t really care about difference in color between dark and light mode here, as much as that we can find a dot.",
+      "parentUuid": "6056cf92_83d2ad71",
+      "revId": "c73cf3e4f0ee80b0a375538ced0f18e0894b0c35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
