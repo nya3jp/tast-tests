@@ -7,6 +7,8 @@ package ui
 import (
 	"context"
 	"fmt"
+	"path/filepath"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -79,40 +81,51 @@ func KeyboardBinding(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
+	screenRecorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create ScreenRecorder: ", err)
+	}
+
+	if err := screenRecorder.Start(ctx, tconn); err != nil {
+		s.Log("Failed to start ScreenRecorder: ", err)
+	}
+	defer uiauto.ScreenRecorderStopSaveRelease(cleanupCtx, screenRecorder, filepath.Join(s.OutDir(), "record.webm"))
+
+	// Ensure tablet mode is disabled. This test case requires DUT to stay in clamshell mode
+	// in order to perform keyboard shortcuts and window operations.
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to ensure tablet mode is disabled: ", err)
+	}
+	defer cleanup(cleanupCtx)
+
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to open the keyboard: ", err)
 	}
 	defer kb.Close()
 
-	settings, err := ossettings.Launch(ctx, tconn)
+	res := &keyboardBindingTestResources{
+		tconn: tconn,
+		ui:    uiauto.New(tconn),
+		kb:    kb,
+	}
+
+	// Open Settings and go to "Keyboard" page.
+	keyboardLinkNode := nodewith.HasClass("cr-title-text").Name("Keyboard").Role(role.Heading)
+	res.settings, err = ossettings.LaunchAtPageURL(ctx, tconn, cr, "keyboard-overlay", res.ui.Exists(keyboardLinkNode))
 	if err != nil {
 		s.Fatal("Failed to launch OS settings: ", err)
 	}
-	defer settings.Close(cleanupCtx)
 	defer func(ctx context.Context) {
 		faillog.SaveScreenshotOnError(ctx, cr, s.OutDir(), s.HasError)
 		faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+		res.settings.Close(ctx)
 	}(cleanupCtx)
-
-	ui := uiauto.New(tconn)
-
-	res := &keyboardBindingTestResources{
-		tconn:    tconn,
-		ui:       ui,
-		kb:       kb,
-		settings: settings,
-	}
-
-	// Go to "Keyboard" page.
-	keyboardLinkNode := nodewith.HasClass("cr-title-text").Name("Keyboard").Role(role.Heading)
-	if err := settings.NavigateToPageURL(ctx, cr, "keyboard-overlay", ui.Exists(keyboardLinkNode)); err != nil {
-		s.Fatal("Failed to open 'Keyboard settings' page: ", err)
-	}
 
 	// The key name and function name of "Search"/"Launcher" will display differently across different models,
 	// need to obtain them in advance.
-	searchKey, searchFunctionVerifier, err := obtainSearchKeyAndFunction(ctx, ui)
+	searchKey, searchFunctionVerifier, err := obtainSearchKeyAndFunction(ctx, res.ui)
 	if err != nil {
 		s.Fatal("Failed to obtain search key and function: ", err)
 	}
@@ -147,7 +160,11 @@ func KeyboardBinding(ctx context.Context, s *testing.State) {
 				if err := f.setup(ctx); err != nil {
 					s.Fatal("Failed to setup for binding test: ", err)
 				}
-				defer f.cleanup(cleanupCtx)
+				defer func(ctx context.Context) {
+					if err := f.cleanup(ctx); err != nil {
+						s.Logf("Failed to cleanup after binding test of verifying key %q is bind with function %q: %v", k.name, f.functionName(), err)
+					}
+				}(cleanupCtx)
 
 				if err := f.accel(ctx); err != nil {
 					s.Fatal("Failed to accel: ", err)
@@ -157,7 +174,7 @@ func KeyboardBinding(ctx context.Context, s *testing.State) {
 				defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, uiDump)
 
 				if err := f.verify(ctx); err != nil {
-					s.Fatalf("Failed verify key %q is bind with function %q: %v", k.name, f.functionName(), err)
+					s.Fatalf("Failed to verify key %q is bind with function %q: %v", k.name, f.functionName(), err)
 				}
 			})
 
@@ -171,26 +188,26 @@ func KeyboardBinding(ctx context.Context, s *testing.State) {
 // obtainSearchKeyAndFunction obtains the corresponding key name and function name of "Search"/"Launcher".
 // The key name and function name of "Search"/"Launcher" will display differently across different models.
 func obtainSearchKeyAndFunction(ctx context.Context, ui *uiauto.Context) (*key, func(*keyboardBindingTestResources, string) *searchFunctionVerifier, error) {
-	options := nodewith.HasClass("md-select").Role(role.PopUpButton)
-	infos, err := ui.NodesInfo(ctx, options)
-	if err != nil {
-		return nil, nil, errors.Wrap(err, "failed to get nodes' information of key binding options")
+	nameRegex := regexp.MustCompile(fmt.Sprintf(`^(%s|%s)$`, searchKey, searchKey))
+	option := nodewith.NameRegex(nameRegex).HasClass("md-select").Role(role.PopUpButton)
+
+	if err := ui.WaitUntilExists(option)(ctx); err != nil {
+		return nil, nil, errors.Wrap(err, "failed to find key with name 'Search' or 'Launcher'")
 	}
 
-	// We obtains all appeared keys on the screen and use for-loop to go through them.
-	// "Search" and "Launcher" are the same key but with different names, only one of them will appear depending on different models.
-	for _, info := range infos {
-		switch info.Name {
-		case string(searchKey):
-			return newSearchKey(), newSearchFunctionVerifier, nil
-		case string(launcherKey):
-			return newLauncherKey(), newLauncherFunctionVerifier, nil
-		default:
-			// Other keys are fixed and not this function concerns, no need to return *key and *searchFunctionVerifier accordingly.
-			continue
-		}
+	info, err := ui.Info(ctx, option)
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to get info of key with name 'Search' or 'Launcher'")
 	}
-	return nil, nil, errors.Wrap(err, "failed to identify the key name and function name of 'Launcher'")
+
+	switch info.Name {
+	case string(searchKey):
+		return newSearchKey(), newSearchFunctionVerifier, nil
+	case string(launcherKey):
+		return newLauncherKey(), newLauncherFunctionVerifier, nil
+	default:
+		return nil, nil, errors.Errorf("unexpected name: %q", info.Name)
+	}
 }
 
 // setKeybinding sets the key binding of the key to the specified option.
