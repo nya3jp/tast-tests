@@ -24,12 +24,13 @@ const runPjdfstest string = "run-pjdfstest.sh"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Virtiofs,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that the crosvm virtio-fs device works correctly",
 		Contacts:     []string{"crosvm-core@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{runPjdfstest},
 		Timeout:      20 * time.Minute,
-		SoftwareDeps: []string{"vm_host", "dlc"},
+		SoftwareDeps: []string{"vm_host", "chrome", "dlc"},
 		Fixture:      "vmDLC",
 	})
 }

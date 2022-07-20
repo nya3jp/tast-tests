@@ -31,12 +31,13 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AudioLoopbackLatency,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Measures loopback latency of different audio devices in crosvm",
 		Contacts:     []string{"woodychow@google.com", "paulhsia@google.com", "chromeos-audio-bugs@google.com", "crosvm-core@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{runLoopbackLatency},
 		Timeout:      8 * time.Minute,
-		SoftwareDeps: []string{"vm_host", "dlc"},
+		SoftwareDeps: []string{"vm_host", "chrome", "dlc"},
 		Fixture:      "vmDLC",
 		Params: []testing.Param{{
 			Name: "virtio_cras_snd",
