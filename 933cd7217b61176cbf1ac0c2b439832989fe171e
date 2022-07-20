@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a6139d1_7454fcf5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-07-20T22:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac1bb4c1_1ea7c75c",
+      "revId": "933cd7217b61176cbf1ac0c2b439832989fe171e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f1deb54_2b96bc54",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-07-20T20:49:24Z",
       "side": 1,
       "message": "`meetLayoutTiled`",
+      "range": {
+        "startLine": 116,
+        "startChar": 17,
+        "endLine": 116,
+        "endChar": 31
+      },
+      "revId": "933cd7217b61176cbf1ac0c2b439832989fe171e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1b92a15_1c954a0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-07-20T22:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f1deb54_2b96bc54",
       "range": {
         "startLine": 116,
         "startChar": 17,
@@ -224,6 +266,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97d83a02_7d084848",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-07-20T22:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4f31b49_6916cee4",
+      "range": {
+        "startLine": 150,
+        "startChar": 17,
+        "endLine": 150,
+        "endChar": 31
+      },
+      "revId": "933cd7217b61176cbf1ac0c2b439832989fe171e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93f16ebf_daa0fedf",
@@ -237,6 +303,30 @@
       "writtenOn": "2022-07-20T20:49:24Z",
       "side": 1,
       "message": "`\"loggedInToCUJUserEnterpriseWithWebRTCEventLogging\"` (see my code review comment on the `2p_enterprise` variant)",
+      "range": {
+        "startLine": 154,
+        "startChar": 12,
+        "endLine": 154,
+        "endChar": 41
+      },
+      "revId": "933cd7217b61176cbf1ac0c2b439832989fe171e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b56a5ee0_eaebbab9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-07-20T22:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93f16ebf_daa0fedf",
       "range": {
         "startLine": 154,
         "startChar": 12,
