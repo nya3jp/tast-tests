@@ -40,9 +40,18 @@ func init() {
 		Fixture:      "vmDLC",
 		Params: []testing.Param{
 			{
+				Name: "virtio_null_snd",
+				Val: audioAplayParams{
+					crosvmArgs:               []string{"--virtio-snd", "capture=true,backend=null"},
+					expectedCardNames:        []string{"VirtIO SoundCard"},
+					expectedDeviceNames:      []string{"VirtIO PCM 0"},
+					expectedStreamsPerDevice: 1,
+				},
+			},
+			{
 				Name: "virtio_cras_snd",
 				Val: audioAplayParams{
-					crosvmArgs:               []string{"--cras-snd", "capture=true,socket_type=legacy"},
+					crosvmArgs:               []string{"--virtio-snd", "capture=true,backend=cras,socket_type=legacy"},
 					expectedCardNames:        []string{"VirtIO SoundCard"},
 					expectedDeviceNames:      []string{"VirtIO PCM 0"},
 					expectedStreamsPerDevice: 1,
@@ -51,7 +60,7 @@ func init() {
 			{
 				Name: "virtio_cras_snd_3_devices_4_streams",
 				Val: audioAplayParams{
-					crosvmArgs:               []string{"--cras-snd", "capture=true,socket_type=legacy,num_output_devices=3,num_output_streams=4"},
+					crosvmArgs:               []string{"--virtio-snd", "capture=true,backend=cras,socket_type=legacy,num_output_devices=3,num_output_streams=4"},
 					expectedCardNames:        []string{"VirtIO SoundCard", "VirtIO SoundCard", "VirtIO SoundCard"},
 					expectedDeviceNames:      []string{"VirtIO PCM 0", "VirtIO PCM 1", "VirtIO PCM 2"},
 					expectedStreamsPerDevice: 4,
@@ -60,7 +69,7 @@ func init() {
 			{
 				Name: "virtio_cras_snd_1_device_3_streams",
 				Val: audioAplayParams{
-					crosvmArgs:               []string{"--cras-snd", "capture=true,socket_type=legacy,num_output_streams=3"},
+					crosvmArgs:               []string{"--virtio-snd", "capture=true,backend=cras,socket_type=legacy,num_output_streams=3"},
 					expectedCardNames:        []string{"VirtIO SoundCard"},
 					expectedDeviceNames:      []string{"VirtIO PCM 0"},
 					expectedStreamsPerDevice: 3,
@@ -69,7 +78,7 @@ func init() {
 			{
 				Name: "virtio_cras_snd_3_devices_1_stream",
 				Val: audioAplayParams{
-					crosvmArgs:               []string{"--cras-snd", "capture=true,socket_type=legacy,num_output_devices=3"},
+					crosvmArgs:               []string{"--virtio-snd", "capture=true,backend=cras,socket_type=legacy,num_output_devices=3"},
 					expectedCardNames:        []string{"VirtIO SoundCard", "VirtIO SoundCard", "VirtIO SoundCard"},
 					expectedDeviceNames:      []string{"VirtIO PCM 0", "VirtIO PCM 1", "VirtIO PCM 2"},
 					expectedStreamsPerDevice: 1,
