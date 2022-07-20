@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "905273a2_394347d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-07-20T05:47:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ec4243d_2771ef79",
+      "range": {
+        "startLine": 199,
+        "startChar": 4,
+        "endLine": 199,
+        "endChar": 14
+      },
+      "revId": "2cd38277096a922549d22dca335cf434800ecede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4266f8d_42a54966",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-20T05:38:22Z",
       "side": 1,
       "message": "this condition is always satisfied. Could you remove this?",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 201,
+        "endChar": 18
+      },
+      "revId": "2cd38277096a922549d22dca335cf434800ecede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b304c4d0_21ae98f2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-07-20T05:47:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4266f8d_42a54966",
       "range": {
         "startLine": 201,
         "startChar": 2,

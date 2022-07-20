@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb55bcd9_aa29a87d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-07-20T05:47:39Z",
+      "side": 1,
+      "message": "Thanks for the super detailed review hidehiko san!",
+      "revId": "6b178b894e0482863d1fc3a9671ed2adc15e66e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
