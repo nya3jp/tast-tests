@@ -16,6 +16,24 @@
       "message": "This test is not a new test but newly starting to use chrome.\nCan you check whether a Lacros variant of the test is required or not?\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#verify-need-for-lacros-variant\n\u003e New tests should never be set to ‘LacrosVariantUnknown’. Either the Lacros variant of the test should be added, or value set to ‘LacrosVariantUnneeded’.",
       "revId": "076873f4ada045479ef7f4c806d6dd95399a5d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c00094_1a1ed572",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/perf_etm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1347075
+      },
+      "writtenOn": "2022-07-20T16:03:01Z",
+      "side": 1,
+      "message": "Thanks! Fixed (there are no plans for profiling Lacros).",
+      "parentUuid": "e9f7803f_271f654c",
+      "revId": "076873f4ada045479ef7f4c806d6dd95399a5d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
