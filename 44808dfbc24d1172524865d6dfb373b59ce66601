@@ -51,6 +51,24 @@
       "message": "Is this ready to review? (You verified -1 this)",
       "revId": "44808dfbc24d1172524865d6dfb373b59ce66601",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be76912_ceb38b54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:49:45Z",
+      "side": 1,
+      "message": "this is ready for review, just not submit",
+      "parentUuid": "3d18a52f_a8d5927d",
+      "revId": "44808dfbc24d1172524865d6dfb373b59ce66601",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
