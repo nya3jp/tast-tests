@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42b50a0f_8dadba71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-20T20:30:01Z",
+      "side": 1,
+      "message": "Thank you for pointing this out, Alexander! ui/perfutil looks very interesting indeed.\n\nBut before I jump and try to code it, do you know whether perfutil assumes that all performance values need to be in the kind of Histograms? That\u0027s what I understood by glancing at it. \n\nIf that\u0027s the case, then I\u0027m not sure if we want to invest time to convert DocsCUJ to it right now, because DocsCUJ main metric is `visibleLoadTime`, which is very simply recorded by measuring an amount of time elapsed in Tast\u0027s side.\n\nI\u0027m marking this issue as resolved for now, but feel free to open it again if that\u0027s the case please.",
+      "parentUuid": "c1396834_d2c075d0",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "9e64f91dfd08cabb66d91f26fefeeb6808b9f85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c7c1874_3f4d3444",
@@ -61,6 +85,30 @@
       "writtenOn": "2022-07-19T23:12:01Z",
       "side": 1,
       "message": "You may not need these suffixes anymore as you now have Lacros/Ash test variants.",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 61
+      },
+      "revId": "9e64f91dfd08cabb66d91f26fefeeb6808b9f85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2882c57_cd6576e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-20T20:30:01Z",
+      "side": 1,
+      "message": "This comment became invalid now I think because I change to use a single variant that test both type of browsers.",
+      "parentUuid": "6c7c1874_3f4d3444",
       "range": {
         "startLine": 118,
         "startChar": 3,

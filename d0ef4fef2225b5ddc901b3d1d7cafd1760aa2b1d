@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c7f6931_2a812d73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-20T20:30:01Z",
+      "side": 1,
+      "message": "\u003e Keep in mind if you separate the variations now you can\u0027t really directly compare values on the same build in crosbolt, since the different variations may run on different instances of the same SKU.\n\nAh, this was something I was completely missing!\n\nI understood that comparing the behavior between ash and lacros is very important here. That said, I just did the necessary changes in this latest patchset towards using one variation and loop through the test using the same type of browser. PTAL.\n\n\n\u003e W.R.T. cold boot, you could also make a separate variation later that does a reboot.\n\nJust to make sure I understood you correctly: by a \"separate variation\" you mean a variant inside this actual (local) test? I don\u0027t see how it is possible to reboot a local test, so I don\u0027t think this is possible. My suggestion earlier was to create another test (e.g. meta.ColdbootDocsCUJ), which would be a remote test instead and then reboots would be possible.",
+      "parentUuid": "d6322501_dc595920",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e53e0ce_6dac09a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
         "patchSetId": 1
