@@ -96,6 +96,7 @@ func waitForWindowBoundsCondition(ctx context.Context, tconn *chrome.TestConn, p
 
 	return nil
 }
+
 func testDragCaptionToSnapLeftRight(ctx context.Context, tconn *chrome.TestConn, d *ui.Device, pc pointer.Context, displayInfo *display.Info, leftAct, rightAct *arc.Activity) error {
 	if err := wm.DragCaptionToSnap(ctx, tconn, pc, displayInfo, leftAct, true /* primary */); err != nil {
 		return errors.Wrap(err, "failed to drag window's caption and snap to left")
@@ -127,6 +128,72 @@ func testDragCaptionToUnsnapLeftRight(ctx context.Context, tconn *chrome.TestCon
 	}
 	if err := wm.WaitForArcAndAshWindowState(ctx, tconn, d, rightAct, arc.WindowStateNormal); err != nil {
 		return errors.Wrap(err, "failed to wait until window state changes to unsnapped")
+	}
+
+	return nil
+}
+
+// testRestorePreDragSnapBoundsAfterClosingWindow tests after snapping, closing and re-opening the
+// window, the bounds can be restored to the bounds before drag start
+func testRestorePreDragSnapBoundsAfterClosingWindow(ctx, cleanupCtx context.Context, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, pc pointer.Context, displayInfo *display.Info, leftAct, rightAct *arc.Activity) error {
+	rightWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, rightAct.PackageName())
+	if err != nil {
+		return errors.Wrap(err, "failed to get right window")
+	}
+	preSnapRightWindowBounds := rightWindow.BoundsInRoot
+	leftWindow, err := ash.GetARCAppWindowInfo(ctx, tconn, leftAct.PackageName())
+	if err != nil {
+		return errors.Wrap(err, "failed to get left window")
+	}
+	preSnapLeftWindowBounds := leftWindow.BoundsInRoot
+
+	if err := testDragCaptionToSnapLeftRight(ctx, tconn, d, pc, displayInfo, leftAct, rightAct); err != nil {
+		return errors.Wrap(err, "failed to drag windows' caption to snap")
+	}
+
+	// Close both windows
+	if err := rightAct.Stop(cleanupCtx, tconn); err != nil {
+		return errors.Wrap(err, "error stopping right activity")
+	}
+	if err := leftAct.Stop(cleanupCtx, tconn); err != nil {
+		return errors.Wrap(err, "error stopping left activity")
+	}
+	rightAct.Close()
+	leftAct.Close()
+
+	// Re-open both windows
+	for _, app := range []struct {
+		act          **arc.Activity
+		pkgName      string
+		activityName string
+	}{
+		{&rightAct, wm.Pkg24, wm.ResizableUnspecifiedActivity},
+		{&leftAct, wm.Pkg24InPhoneSizeList, wm.ResizableUnspecifiedActivity},
+	} {
+		act, err := arc.NewActivity(a, app.pkgName, app.activityName)
+		if err != nil {
+			return errors.Wrapf(err, "failed to create a new activity (%s)", app.pkgName)
+		}
+		if err := act.StartWithDefaultOptions(ctx, tconn); err != nil {
+			return errors.Wrapf(err, "failed to start the activity (%s)", app.pkgName)
+		}
+
+		*app.act = act
+		if err := ash.WaitForVisible(ctx, tconn, app.pkgName); err != nil {
+			return errors.Wrapf(err, "failed to wait for visible app (%s)", app.pkgName)
+		}
+	}
+
+	rightWindow, err = ash.GetARCAppWindowInfo(ctx, tconn, rightAct.PackageName())
+	if err != nil {
+		return errors.Wrap(err, "failed to get right window")
+	}
+	leftWindow, err = ash.GetARCAppWindowInfo(ctx, tconn, leftAct.PackageName())
+	if err != nil {
+		return errors.Wrap(err, "failed to get left window")
+	}
+	if preSnapRightWindowBounds != rightWindow.BoundsInRoot || preSnapLeftWindowBounds != leftWindow.BoundsInRoot {
+		return errors.Errorf("Bounds changed after snapping, closing and re-opening. Right window: before(%v), after(%v). Left window: before(%v), after(%v)", preSnapRightWindowBounds, rightWindow.BoundsInRoot, preSnapLeftWindowBounds, leftWindow.BoundsInRoot)
 	}
 
 	return nil
@@ -399,6 +466,10 @@ func SplitView(ctx context.Context, s *testing.State) {
 		}
 		if err := testDragCaptionToUnsnapLeftRight(ctx, tconn, d, pc, displayInfo, leftAct, rightAct); err != nil {
 			s.Fatal("Failed to drag windows' caption to unsnap: ", err)
+		}
+
+		if err := testRestorePreDragSnapBoundsAfterClosingWindow(ctx, cleanupCtx, tconn, a, d, pc, displayInfo, leftAct, rightAct); err != nil {
+			s.Fatal("Failed to restore pre-snap bounds after dragging windows' caption to snap: ", err)
 		}
 
 		if err := testSnapLeftRightViaKeyboardShortcut(ctx, tconn, d, leftAct, rightAct); err != nil {
