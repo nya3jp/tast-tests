@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce91e375_aa0c40b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-07-20T04:31:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a84f6d73_d27c3564",
+      "revId": "b26baaa3aa255486d8877ff83995044e3075a825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8515398_b4955a43",
@@ -75,6 +93,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e84b3733_5d483e37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-07-20T04:31:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9cd5b883_625a5f41",
+      "range": {
+        "startLine": 164,
+        "startChar": 44,
+        "endLine": 164,
+        "endChar": 60
+      },
+      "revId": "b26baaa3aa255486d8877ff83995044e3075a825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f2527e3_7f0e0da9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/key_character_map.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-07-20T04:31:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f8515398_b4955a43",
+      "revId": "b26baaa3aa255486d8877ff83995044e3075a825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ba5da35_f9dfdc5c",
@@ -88,6 +148,30 @@
       "writtenOn": "2022-07-19T10:01:40Z",
       "side": 1,
       "message": "Alternatively use\n```\ndefer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, \"ui_tree_\"+st.name)\n```",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 4
+      },
+      "revId": "b26baaa3aa255486d8877ff83995044e3075a825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7ade37_5a8d5c36",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/physical_keyboard.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-07-20T04:31:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ba5da35_f9dfdc5c",
       "range": {
         "startLine": 106,
         "startChar": 0,
