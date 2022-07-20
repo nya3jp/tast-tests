@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6612c344_b25793ab",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_body_ab.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-07-20T20:06:26Z",
+      "side": 1,
+      "message": "Add a shortened context for this defer so it always runs even if the test fails so the fw always gets restored. There\u0027s an example of this in software_sync.go line 83:86 and a few other tests.",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 15
+      },
+      "revId": "bd03eddb350a6174f20f7d3f967c277bd8b6fb93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
