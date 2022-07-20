@@ -24,6 +24,47 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85bb4c8e_c47d8435",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c625c4f0_50e4b35d",
+      "range": {
+        "startLine": 12,
+        "startChar": 35,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "713614ab_f8d5d4b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:56:23Z",
+      "side": 1,
+      "message": "thanks betul\n",
+      "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfffb20f_f2485ece",
@@ -37,6 +78,30 @@
       "writtenOn": "2022-07-20T20:36:36Z",
       "side": 1,
       "message": "Verify that the newly created mount exists by checking the user path.",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 55
+      },
+      "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c27ede_46c7e4c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfffb20f_f2485ece",
       "range": {
         "startLine": 97,
         "startChar": 12,
@@ -70,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "394ac559_951cf876",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdefdcda_6a9a7a56",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 50
+      },
+      "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f1d31ac_1bc9df03",
@@ -83,6 +172,30 @@
       "writtenOn": "2022-07-20T20:36:36Z",
       "side": 1,
       "message": "defer InvalidateAuthSession, if the previous defer from line 79 is not added back for some reason.",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 2
+      },
+      "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81cef505_cc702d1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f1d31ac_1bc9df03",
       "range": {
         "startLine": 143,
         "startChar": 1,
@@ -110,6 +223,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "723e65d5_9ae7a897",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:56:23Z",
+      "side": 1,
+      "message": "taken care of in mountAndVerifyFilePersistence",
+      "parentUuid": "23c97eb0_d1bf5968",
+      "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3214ba2_7d2f69ba",
@@ -127,6 +258,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb292cd_b6d2f63d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3214ba2_7d2f69ba",
+      "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85094b34_05c7624a",
@@ -140,6 +289,24 @@
       "writtenOn": "2022-07-20T20:36:36Z",
       "side": 1,
       "message": "client.UnmountAll(ctx)",
+      "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "953ceff2_0a5fd6d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85094b34_05c7624a",
       "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -167,6 +334,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72bd7abf_ca115029",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:56:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c331724d_a92b3196",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 196,
+        "endChar": 2
+      },
+      "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fd8a11e_5c8efd07",
@@ -184,6 +375,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fa359e7_5852e67d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fd8a11e_5c8efd07",
+      "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56e58c17_b098f5db",
@@ -197,6 +406,24 @@
       "writtenOn": "2022-07-20T20:36:36Z",
       "side": 1,
       "message": "client.UnmountAll(ctx)",
+      "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de9f0fff_6c848470",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:56:23Z",
+      "side": 1,
+      "message": "defer takes care of the last one",
+      "parentUuid": "56e58c17_b098f5db",
       "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -224,6 +451,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "512ef666_1fd44e92",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:56:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6da8af5f_48430970",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 29
+      },
+      "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96ce99dc_13c4bad7",
@@ -237,6 +488,30 @@
       "writtenOn": "2022-07-20T20:36:36Z",
       "side": 1,
       "message": "tests that wrong PIN is not verified and correct PIN is verified on lock screen, or something like this would be a clearer explanation",
+      "range": {
+        "startLine": 631,
+        "startChar": 21,
+        "endLine": 631,
+        "endChar": 48
+      },
+      "revId": "4fac45c54c44566665c1ea5e949de4650ad1166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "937358f1_8b928a92",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-20T20:56:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96ce99dc_13c4bad7",
       "range": {
         "startLine": 631,
         "startChar": 21,
