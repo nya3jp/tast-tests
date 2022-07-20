@@ -103,11 +103,8 @@ type WiFiTestData struct {
 	SecurityType    SecurityType
 }
 
-// DownloadPath is the downloads directory on CrOS.
-const DownloadPath = "/home/chronos/user/Downloads/"
-
-// SendDir is the staging directory for test files when sending from CrOS.
-const SendDir = DownloadPath + "nearby_test_files"
+// SendFolderName is the staging folder name for test files when sending from CrOS.
+const SendFolderName = "nearby_test_files"
 
 // CrosAttributes contains information about the CrOS device that are relevant to Nearby Share.
 type CrosAttributes struct {
@@ -115,6 +112,7 @@ type CrosAttributes struct {
 	DisplayName     string
 	DataUsage       string
 	Visibility      string
+	DownloadsPath   string
 }
 
 // DataUsage represents Nearby Share data usage setting values.
