@@ -34,6 +34,9 @@ func NewContext(cr *chrome.Chrome, tconn *chrome.TestConn) *GalleryContext {
 	}
 }
 
+// TestFile is the filename of an image file for testing.
+const TestFile = "gear_wheels_4000x3000_20200624.jpg"
+
 // RootFinder is the finder of Gallery app root window.
 var RootFinder = nodewith.NameStartingWith(apps.Gallery.Name).HasClass("BrowserFrame")
 
