@@ -10,7 +10,9 @@ import (
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
@@ -27,11 +29,12 @@ const (
 
 // List of fixture names for Essential Apps.
 const (
-	LoggedIn         = "loggedIn"
-	LoggedInJP       = "loggedInJP"
-	LoggedInGuest    = "loggedInGuest"
-	LacrosLoggedIn   = "lacrosLoggedIn"
-	LacrosLoggedInJP = "lacrosLoggedInJP"
+	LoggedIn                               = "loggedIn"
+	LoggedInJP                             = "loggedInJP"
+	LoggedInGuest                          = "loggedInGuest"
+	ArcBootedWithGalleryPhotosImageFeature = "arcBootedWithGalleryPhotosImageFeature"
+	LacrosLoggedIn                         = "lacrosLoggedIn"
+	LacrosLoggedInJP                       = "lacrosLoggedInJP"
 )
 
 func init() {
@@ -69,6 +72,23 @@ func init() {
 		SetUpTimeout:    chrome.LoginTimeout,
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     ArcBootedWithGalleryPhotosImageFeature,
+		Desc:     "ARC is booted with the MediaAppPhotosIntegrationImage feature flag enabled",
+		Contacts: []string{"bugsnash@chromium.org", "shengjun@google.com"},
+		Vars:     []string{"ui.gaiaPoolDefault"},
+		Impl: arc.NewArcBootedWithPlayStoreFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.EnableFeatures("MediaAppPhotosIntegrationImage"),
+				chrome.ExtraArgs(arc.DisableSyncFlags()...),
+				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault"))}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + arc.BootTimeout + ui.StartTimeout,
+		ResetTimeout:    arc.ResetTimeout,
+		PostTestTimeout: arc.PostTestTimeout,
+		TearDownTimeout: arc.ResetTimeout,
 	})
 
 	// LacrosLoggedIn is a fixture to bring up Lacros as a primary browser
