@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b04cf2eb_166c1283",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-07-20T04:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19d8565b_2265061d",
+      "range": {
+        "startLine": 46,
+        "startChar": 15,
+        "endLine": 46,
+        "endChar": 26
+      },
+      "revId": "3eff0ff2619c6e93d63cc8cd58af7d78bcd8249c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbfea07f_0c457938",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb83b9bf_ed2103ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-07-20T04:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbfea07f_0c457938",
+      "revId": "3eff0ff2619c6e93d63cc8cd58af7d78bcd8249c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba180d70_0a76a7de",
@@ -71,6 +113,24 @@
       "writtenOn": "2022-07-19T13:39:22Z",
       "side": 1,
       "message": "same.",
+      "revId": "3eff0ff2619c6e93d63cc8cd58af7d78bcd8249c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a0a35d8_ae4070ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/system_web_apps_reinstall.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-07-20T04:00:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba180d70_0a76a7de",
       "revId": "3eff0ff2619c6e93d63cc8cd58af7d78bcd8249c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
