@@ -268,56 +268,87 @@ func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, 
 	ui := uiauto.New(tconn).WithTimeout(time.Minute)
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return err != nil }, cr, "ui_tree")
 
-	// Parse family link internals page.
+	// Parse family link internals table into sections.
 	testing.ContextLog(ctx, "Parsing family link internals page")
-	rows := nodewith.Role(role.LayoutTableRow).Ancestor(nodewith.Role(role.WebView))
-	if err := ui.WaitUntilExists(rows.First())(ctx); err != nil {
-		return errors.Wrap(err, "could not load family link user internals table")
+	sectionsContainers := nodewith.Role(role.GenericContainer).Ancestor(nodewith.Role(role.WebView))
+	if err := ui.WaitUntilExists(sectionsContainers.First())(ctx); err != nil {
+		return errors.Wrap(err, "failed to parse family link user internals table")
 	}
-	nodes, err := ui.NodesInfo(ctx, rows)
+	sectionsNodes, err := ui.NodesInfo(ctx, sectionsContainers)
 	if err != nil {
-		return errors.Wrap(err, "failed to retrieve nodes info for rows")
+		return errors.Wrap(err, "failed to retrieve nodes info for table sections")
 	}
-	foundIsChild := false
-	foundEmail := false
-	// Family link user internals has a table with unnamed rows containing labels
-	// and values. To find the correct rows, we must iterate through all rows, check
-	// that it contains a cell with the label we are looking for, and check that the
-	// row also contains the correct value. It is expected for the labels of interest
-	// to only occur once in the table.
-	for i := range nodes {
-		row := rows.Nth(i)
-		// If this is the row labeled "Account", check value matches user email.
+
+	// Find profile section in the table. Profile section contains information to verify further.
+	testing.ContextLog(ctx, "Looking for profile section")
+	index := -1
+	for i := range sectionsNodes {
+		container := sectionsContainers.Nth(i)
+		profileSection := nodewith.Role(role.Heading).Name("Profile").Ancestor(container)
+		if err := ui.Exists(profileSection)(ctx); err == nil {
+			testing.ContextLog(ctx, "Found profile section at index:", i)
+			index = i
+			break
+		}
+	}
+
+	if index == -1 {
+		return errors.Wrap(err, "profile section not found")
+	}
+
+	// Parse table rows in the profile section.
+	testing.ContextLog(ctx, "Parsing profile section rows")
+	profileRows := nodewith.Role(role.LayoutTableRow).Ancestor(sectionsContainers.Nth(index))
+	if err := ui.WaitUntilExists(profileRows.First())(ctx); err != nil {
+		return errors.Wrap(err, "failed to parse profile rows")
+	}
+	profileNodes, err := ui.NodesInfo(ctx, profileRows)
+	if err != nil {
+		return errors.Wrap(err, "failed to retrieve nodes info for profile rows")
+	}
+
+	// Find account email row and verify that the email value.
+	testing.ContextLog(ctx, "Verifying account email row")
+	emailVerified := false
+	for i := range profileNodes {
+		row := profileRows.Nth(i)
 		accountCell := nodewith.Role(role.LayoutTableCell).Name("Account").Ancestor(row)
-		emailValueCell := nodewith.Role(role.LayoutTableCell).Name(strings.ToLower(email)).Ancestor(row)
 		if err := ui.Exists(accountCell)(ctx); err == nil {
-			if foundEmail {
-				return errors.New("account row should only occur once")
+			emailCell := nodewith.Role(role.LayoutTableCell).Name(strings.ToLower(email)).Ancestor(row)
+			if err := ui.Exists(emailCell)(ctx); err != nil {
+				return errors.Wrapf(err, "user with email %s is not logged into browser", email)
 			}
-			foundEmail = true
-			if valueErr := ui.Exists(emailValueCell)(ctx); valueErr != nil {
-				return errors.Wrapf(valueErr, "user with email %s is not logged into browser", email)
-			}
+			testing.ContextLog(ctx, "Verified user logged into browser")
+			emailVerified = true
+			break
 		}
-		// If this is the row labeled "Child", check value is true.
+	}
+
+	if !emailVerified {
+		return errors.Wrap(err, "account email row not found")
+	}
+
+	// Find child status row and verify that user is recognized as child.
+	testing.ContextLog(ctx, "Verifying child status row")
+	childStatusVerified := false
+	for i := range profileNodes {
+		row := profileRows.Nth(i)
 		childCell := nodewith.Role(role.LayoutTableCell).Name("Child").Ancestor(row)
-		trueCell := nodewith.Role(role.LayoutTableCell).Name("true").Ancestor(row)
 		if err := ui.Exists(childCell)(ctx); err == nil {
-			if foundIsChild {
-				return errors.New("child row should only occur once")
+			boolCell := nodewith.Role(role.LayoutTableCell).Name("true").Ancestor(row)
+			if err := ui.Exists(boolCell)(ctx); err != nil {
+				return errors.Wrap(err, "user not recognized as child")
 			}
-			foundIsChild = true
-			if valueErr := ui.Exists(trueCell)(ctx); valueErr != nil {
-				return errors.Wrap(valueErr, "browser has incorrectly detected the user is not a child")
-			}
+			testing.ContextLog(ctx, "Verified user recognized as child")
+			childStatusVerified = true
+			break
 		}
 	}
-	if !foundIsChild {
-		return errors.New("could not find child row in family link user internals table")
+
+	if !childStatusVerified {
+		return errors.Wrap(err, "child status row not found")
 	}
-	if !foundEmail {
-		return errors.New("could not find account row in family link user internals table")
-	}
+
 	return nil
 }
 
