@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4feedb46_a887e27b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-20T04:24:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da94da7b_f567f563",
+      "range": {
+        "startLine": 33,
+        "startChar": 59,
+        "endLine": 33,
+        "endChar": 64
+      },
+      "revId": "314d9b1d366be1067932e2679b93bff23054b56d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "111334af_cf89d7d7",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ac1b449_c8aefe47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-20T04:24:57Z",
+      "side": 1,
+      "message": "I reused the existing intents in ArcCameraFpsTest and ACTION_GET_CAMERA_IDS returns the result in this format.\n\nIt seems that intent is not currently used by any other tests. As a result, we can further refactor it to a better format if we want.",
+      "parentUuid": "111334af_cf89d7d7",
+      "revId": "314d9b1d366be1067932e2679b93bff23054b56d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5d3a315_bdcf6fe6",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
         "patchSetId": 5
@@ -54,6 +96,24 @@
       "writtenOn": "2022-07-19T08:59:33Z",
       "side": 1,
       "message": "Should we log the camera id after switching the camera so it\u0027s easier to know what\u0027s wrong if the test failed?",
+      "revId": "314d9b1d366be1067932e2679b93bff23054b56d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2c5167e_ba8f7dc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-20T04:24:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5d3a315_bdcf6fe6",
       "revId": "314d9b1d366be1067932e2679b93bff23054b56d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
