@@ -16,6 +16,23 @@
       "message": "Im giving CQ but in case some ",
       "revId": "7d274f62eb7a44bfc978f7b6a8e4a99a1d3983ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ff4b7ff_32cd9f48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395927
+      },
+      "writtenOn": "2022-07-21T17:09:46Z",
+      "side": 1,
+      "message": "Seems we need OWNERS +2",
+      "revId": "7d274f62eb7a44bfc978f7b6a8e4a99a1d3983ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
