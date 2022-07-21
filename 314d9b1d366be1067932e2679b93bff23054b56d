@@ -101,6 +101,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df60493_d90e3dc0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-21T05:42:40Z",
+      "side": 1,
+      "message": "Thanks. Added a TODO. I\u0027ll upload a follow-up CL to fix it.",
+      "parentUuid": "3f9ac481_2ca91eb3",
+      "revId": "314d9b1d366be1067932e2679b93bff23054b56d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5d3a315_bdcf6fe6",
