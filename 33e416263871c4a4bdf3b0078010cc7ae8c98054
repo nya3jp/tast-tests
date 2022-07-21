@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e55791a8_9539ef67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1215107
+      },
+      "writtenOn": "2022-07-21T03:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84a258e1_2bee5279",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "33e416263871c4a4bdf3b0078010cc7ae8c98054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d712af7_431818e5",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-21T02:45:46Z",
       "side": 1,
       "message": "you can use `tast run -checktestdeps\u003dfalse ...` to skip the dependency check.",
+      "range": {
+        "startLine": 14,
+        "startChar": 48,
+        "endLine": 14,
+        "endChar": 129
+      },
+      "revId": "33e416263871c4a4bdf3b0078010cc7ae8c98054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e4997e5_c65c715d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1215107
+      },
+      "writtenOn": "2022-07-21T03:40:19Z",
+      "side": 1,
+      "message": "thank you!",
+      "parentUuid": "9d712af7_431818e5",
       "range": {
         "startLine": 14,
         "startChar": 48,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "757cd8bd_62b4d9e2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1215107
+      },
+      "writtenOn": "2022-07-21T03:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c63802a_2fbf5be0",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 20
+      },
+      "revId": "33e416263871c4a4bdf3b0078010cc7ae8c98054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a29cc61_e0d229aa",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-07-21T02:45:46Z",
       "side": 1,
       "message": "nit: \"Android Photos app\"",
+      "range": {
+        "startLine": 39,
+        "startChar": 69,
+        "endLine": 39,
+        "endChar": 79
+      },
+      "revId": "33e416263871c4a4bdf3b0078010cc7ae8c98054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e5eb86_1dd03f96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1215107
+      },
+      "writtenOn": "2022-07-21T03:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a29cc61_e0d229aa",
       "range": {
         "startLine": 39,
         "startChar": 69,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0762469_637a05b4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1215107
+      },
+      "writtenOn": "2022-07-21T03:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ac4621e_f5a60282",
+      "range": {
+        "startLine": 78,
+        "startChar": 33,
+        "endLine": 78,
+        "endChar": 36
+      },
+      "revId": "33e416263871c4a4bdf3b0078010cc7ae8c98054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f4203f4_5f01f7d1",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-07-21T02:45:46Z",
       "side": 1,
       "message": "[here and other places] you probably don\u0027t need these logs. see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 42
+      },
+      "revId": "33e416263871c4a4bdf3b0078010cc7ae8c98054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbece901_f24eaebd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1215107
+      },
+      "writtenOn": "2022-07-21T03:40:19Z",
+      "side": 1,
+      "message": "Done, replaced with code comments",
+      "parentUuid": "4f4203f4_5f01f7d1",
       "range": {
         "startLine": 107,
         "startChar": 1,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6600edbb_ae3e06a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1215107
+      },
+      "writtenOn": "2022-07-21T03:40:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd8b4b5e_6f647a4e",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 116,
+        "endChar": 2
+      },
+      "revId": "33e416263871c4a4bdf3b0078010cc7ae8c98054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd7c0cb8_7966ccc4",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-07-21T02:45:46Z",
       "side": 1,
       "message": "you don\u0027t need to define this twice.\n\nIn line 98, if you want to use 1 second interval, you can just use `ui.WithInverval().Retry`",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 23
+      },
+      "revId": "33e416263871c4a4bdf3b0078010cc7ae8c98054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "312146d3_dbe485cb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1215107
+      },
+      "writtenOn": "2022-07-21T03:40:19Z",
+      "side": 1,
+      "message": "oops looks like this code was changed at some point and was missing the check that the gallery app was rendering. this new definition was supposed to be to change the timeout from 1 second to 1 minute.",
+      "parentUuid": "fd7c0cb8_7966ccc4",
       "range": {
         "startLine": 133,
         "startChar": 1,
