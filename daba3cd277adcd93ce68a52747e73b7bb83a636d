@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "418f55e3_d59cc90c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-21T01:18:30Z",
+      "side": 1,
+      "message": "Looks good from a tast perspective, but please also get +1/+2 from a teammate.",
+      "revId": "daba3cd277adcd93ce68a52747e73b7bb83a636d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
