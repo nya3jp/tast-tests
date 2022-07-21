@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9439462_48560645",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-07-21T06:45:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1548750_fb1caced",
+      "range": {
+        "startLine": 520,
+        "startChar": 3,
+        "endLine": 520,
+        "endChar": 36
+      },
+      "revId": "e3844bd807e0a112289da1600723c1a9309bef22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef3532d7_7f9184f3",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-18T09:59:23Z",
       "side": 1,
       "message": "Can we decouple pressing key and returning speeches so that we can do things like:\n\n```\n(pseudo codes)\n\nfor true {\n  fnode :\u003d GetFocusNode()\n  fnodename :\u003d GetName(fnode)\n  if visited[fnodename] {\n    break\n  }\n  \n  speeches :\u003d GetSpeeches()\n  if !speeches.Contains(fnodename) {\n    // ...\n  }\n  \n  PressTab()\n}\n```",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 2
+      },
+      "revId": "e3844bd807e0a112289da1600723c1a9309bef22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a8c6aec_e2d4f4e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-07-21T06:45:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef3532d7_7f9184f3",
       "range": {
         "startLine": 91,
         "startChar": 1,
