@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ef9234_112868d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/kiosk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-21T08:38:08Z",
+      "side": 1,
+      "message": "Move definitions to https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/fixture/kiosk.go",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "386035635a22ba3f33be8419aa59d4cbd8f651f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2facf25d_5352bf9b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_kiosk_typing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-21T08:38:08Z",
+      "side": 1,
+      "message": "I suggest implementing interface chrome.HasChrome and retrieving Chrome using the call.\nExample of implementation in a fixture\u0027s return type:\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/kioskmode/fixtures/kiosk.go;l\u003d89\n\nExample usage in a test: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/kiosk/no_system_ui.go;l\u003d50",
+      "range": {
+        "startLine": 53,
+        "startChar": 22,
+        "endLine": 53,
+        "endChar": 49
+      },
+      "revId": "386035635a22ba3f33be8419aa59d4cbd8f651f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
