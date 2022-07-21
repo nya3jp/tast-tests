@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5801c534_a2756c42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-21T21:53:49Z",
+      "side": 1,
+      "message": "Yes, I verified on an asuka board that without the zoom, the test fails, and with the zoom, this test succeeds.",
+      "parentUuid": "8f32a311_d38f4fa2",
+      "revId": "6459ad533215c62ffc0327575d521c63a8062b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4c6f86c_1dc659c5",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-21T20:41:31Z",
       "side": 1,
       "message": "`\t\t\tExtraSoftwareDeps: []string{\"lacros\"},`",
+      "revId": "6459ad533215c62ffc0327575d521c63a8062b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7284ee10_6cc095e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-21T21:53:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4c6f86c_1dc659c5",
       "revId": "6459ad533215c62ffc0327575d521c63a8062b81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
