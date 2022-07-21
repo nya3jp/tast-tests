@@ -24,6 +24,10 @@ const (
 	KioskNonVK = "kioskNonVK"
 	// KioskNonVK is the fixture for physical keyboard in Kiosk mode for lacros.
 	LacrosKioskNonVK = "lacrosKioskNonVK"
+	// KioskNonVK is the fixture for virtual keyboard in Kiosk mode for ash.
+	KioskVK = "kioskVK"
+	// KioskNonVK is the fixture for virtual keyboard in Kiosk mode for lacros.
+	LacrosKioskVK = "lacrosKioskVK"
 )
 
 func init() {
@@ -49,6 +53,36 @@ func init() {
 		},
 		Impl: &inputsKioskFixture{
 			extraOpts: []chrome.Option{chrome.ExtraArgs("--enable-features=LacrosSupport,WebKioskEnableLacros", "--lacros-availability-ignore")},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Parent:          fixture.FakeDMSEnrolled,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: KioskVK,
+		Desc: "Fixture should be used to test physical keyboard typing in kiosk mode (lacros chrome) with e14s-test page loaded",
+		Contacts: []string{
+			"jhtin@chromium.org",
+			"alt-modalities-stability@google.com",
+		},
+		Impl: &inputsKioskFixture{
+			extraOpts: []chrome.Option{chrome.VKEnabled()},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		Parent:          fixture.FakeDMSEnrolled,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosKioskVK,
+		Desc: "Fixture should be used to test physical keyboard typing in kiosk mode (lacros chrome) with e14s-test page loaded",
+		Contacts: []string{
+			"jhtin@chromium.org",
+			"alt-modalities-stability@google.com",
+		},
+		Impl: &inputsKioskFixture{
+			extraOpts: []chrome.Option{chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view", "--enable-features=LacrosSupport,WebKioskEnableLacros", "--lacros-availability-ignore")},
 		},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
@@ -125,7 +159,7 @@ func (k *inputsKioskFixture) TearDown(ctx context.Context, s *testing.FixtState)
 		s.Log("There was an error while closing Kiosk: ", err)
 	}
 
-	testserver.Close()
+	k.testserver.Close()
 	k.cr = nil
 }
 
@@ -138,6 +172,7 @@ func (k *inputsKioskFixture) Reset(ctx context.Context) error {
 		return err
 	}
 	k.cr = cr
+	return nil
 }
 
 func (k *inputsKioskFixture) PreTest(ctx context.Context, s *testing.FixtTestState)  {}
