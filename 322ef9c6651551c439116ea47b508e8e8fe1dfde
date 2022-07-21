@@ -56,6 +56,30 @@
       },
       "revId": "322ef9c6651551c439116ea47b508e8e8fe1dfde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee4c3b3_95cf3d4b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-21T15:50:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bf9a672_5c128097",
+      "range": {
+        "startLine": 203,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 19
+      },
+      "revId": "322ef9c6651551c439116ea47b508e8e8fe1dfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
