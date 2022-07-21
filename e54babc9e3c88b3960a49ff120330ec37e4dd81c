@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f3b693_cb48e4be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_kiosk_typing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-21T23:54:39Z",
+      "side": 1,
+      "message": "remove this as well?",
+      "range": {
+        "startLine": 41,
+        "startChar": 42,
+        "endLine": 41,
+        "endChar": 68
+      },
+      "revId": "e54babc9e3c88b3960a49ff120330ec37e4dd81c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
