@@ -50,6 +50,22 @@ func EnsureTPMAndSystemStateAreResetRemote(ctx context.Context, d *dut.DUT) erro
 	return nil
 }
 
+// ResetDeviceToFactoryStateForZTE calls to do factory reset.
+func ResetDeviceToFactoryStateForZTE(ctx context.Context, d *dut.DUT) error {
+	r := hwsec.NewCmdRunner(d)
+
+	helper, err := hwsec.NewHelper(r, d)
+	if err != nil {
+		return errors.Wrap(err, "helper creation error")
+	}
+
+	if err := helper.ResetDeviceToFactoryStateForZTE(ctx); err != nil {
+		return errors.Wrap(err, "failed to reset system")
+	}
+
+	return nil
+}
+
 // EnsureTPMAndSystemStateAreReset calls EnsureTPMAndSystemStateAreResetLocal and if that fails, EnsureTPMAndSystemStateAreResetRemote.
 // This avoids reboots as much as possible.
 func EnsureTPMAndSystemStateAreReset(ctx context.Context, d *dut.DUT, hint *testing.RPCHint) error {

@@ -131,6 +131,26 @@ func (c *PolicyService) GAIAEnrollUsingChrome(ctx context.Context, req *ppb.GAIA
 	return &empty.Empty{}, nil
 }
 
+// GAIAZTEEnrollUsingChrome enrolls the device using dmserver.
+func (c *PolicyService) GAIAZTEEnrollUsingChrome(ctx context.Context, req *ppb.GAIAZTEEnrollUsingChromeRequest) (*empty.Empty, error) {
+	testing.ContextLogf(ctx, "ZTE Enrolling using Chrome with dmserver: %s", string(req.DmserverURL))
+
+	cr, err := chrome.New(
+		ctx,
+		chrome.GAIAZTEEnterpriseEnroll(),
+		chrome.KeepState(),
+		chrome.NoLogin(),
+		chrome.DMSPolicy(req.DmserverURL),
+	)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start chrome")
+	}
+
+	c.chrome = cr
+
+	return &empty.Empty{}, nil
+}
+
 func (c *PolicyService) GAIAEnrollForReporting(ctx context.Context, req *ppb.GAIAEnrollForReportingRequest) (*empty.Empty, error) {
 	testing.ContextLogf(ctx, "Enrolling using Chrome for reporting with username: %s, dmserver: %s", string(req.Username), string(req.DmserverUrl))
 

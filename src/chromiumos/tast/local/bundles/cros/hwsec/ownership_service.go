@@ -61,3 +61,19 @@ func (*OwnershipService) EnsureTPMAndSystemStateAreReset(ctx context.Context, re
 
 	return &empty.Empty{}, nil
 }
+
+func (*OwnershipService) ResetDeviceToFactoryStateForZTE(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	testing.ContextLog(ctx, "Resetting device to factory state")
+
+	cmdRunner := hwseclocal.NewCmdRunner()
+	helper, err := hwseclocal.NewHelper(cmdRunner)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create local helper")
+	}
+
+	if err := helper.ResetDeviceToFactoryStateForZTE(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to reset device to factory state")
+	}
+
+	return &empty.Empty{}, nil
+}
