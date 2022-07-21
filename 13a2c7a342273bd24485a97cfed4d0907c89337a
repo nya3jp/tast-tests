@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ab9e242_327502d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/get_user_media_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-07-21T16:34:21Z",
+      "side": 1,
+      "message": "`value` should be lowercase",
+      "range": {
+        "startLine": 93,
+        "startChar": 29,
+        "endLine": 93,
+        "endChar": 34
+      },
+      "revId": "13a2c7a342273bd24485a97cfed4d0907c89337a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
