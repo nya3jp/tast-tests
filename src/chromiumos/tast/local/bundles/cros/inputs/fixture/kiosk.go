@@ -8,12 +8,16 @@ package fixture
 import (
 	"context"
 	"net/http/httptest"
+	"path/filepath"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/inputs/inputactions"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/kioskmode"
 	"chromiumos/tast/testing"
 )
@@ -24,6 +28,10 @@ const (
 	KioskNonVK = "kioskNonVK"
 	// KioskNonVK is the fixture for physical keyboard in Kiosk mode for lacros.
 	LacrosKioskNonVK = "lacrosKioskNonVK"
+	// KioskNonVK is the fixture for virtual keyboard in Kiosk mode for ash.
+	KioskVK = "kioskVK"
+	// KioskNonVK is the fixture for virtual keyboard in Kiosk mode for lacros.
+	LacrosKioskVK = "lacrosKioskVK"
 )
 
 func init() {
@@ -36,8 +44,8 @@ func init() {
 		},
 		Impl:            &inputsKioskFixture{},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
 		Parent:          fixture.FakeDMSEnrolled,
 	})
 	testing.AddFixture(&testing.Fixture{
@@ -51,8 +59,38 @@ func init() {
 			extraOpts: []chrome.Option{chrome.ExtraArgs("--enable-features=LacrosSupport,WebKioskEnableLacros", "--lacros-availability-ignore")},
 		},
 		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
-		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		Parent:          fixture.FakeDMSEnrolled,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: KioskVK,
+		Desc: "Fixture should be used to test virtual keyboard typing in kiosk mode (ash chrome) with e14s-test page loaded",
+		Contacts: []string{
+			"jhtin@chromium.org",
+			"alt-modalities-stability@google.com",
+		},
+		Impl: &inputsKioskFixture{
+			extraOpts: []chrome.Option{chrome.VKEnabled()},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		Parent:          fixture.FakeDMSEnrolled,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosKioskVK,
+		Desc: "Fixture should be used to test virtual keyboard typing in kiosk mode (lacros chrome) with e14s-test page loaded",
+		Contacts: []string{
+			"jhtin@chromium.org",
+			"alt-modalities-stability@google.com",
+		},
+		Impl: &inputsKioskFixture{
+			extraOpts: []chrome.Option{chrome.VKEnabled(), chrome.ExtraArgs("--force-tablet-mode=touch_view", "--enable-features=LacrosSupport,WebKioskEnableLacros", "--lacros-availability-ignore")},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
 		Parent:          fixture.FakeDMSEnrolled,
 	})
 }
@@ -62,11 +100,15 @@ type inputsKioskFixture struct {
 	testserver *httptest.Server
 	kiosk      *kioskmode.Kiosk
 	extraOpts  []chrome.Option
+	tconn      *chrome.TestConn
+	uc         *useractions.UserContext
 }
 
 // InputsKioskFixtData is the data returned by kiosk fixture SetUp and passed to tests.
 type InputsKioskFixtData struct {
-	chrome *chrome.Chrome
+	chrome      *chrome.Chrome
+	TestAPIConn *chrome.TestConn
+	UserContext *useractions.UserContext
 }
 
 // Chrome implements the HasChrome interface.
@@ -83,13 +125,13 @@ func (k *inputsKioskFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		s.Fatal("Parent is not a fakeDMSEnrolled fixture")
 	}
 	// Launches the server for e14s-test page.
-	server := testserver.LaunchServer(ctx)
+	k.testserver = testserver.LaunchServer(ctx)
 
 	// Creating a kiosk mode configuration that will launch an app that points to the e14s-test page.
 	webKioskAccountID := "arbitrary_id_web_kiosk_1@managedchrome.com"
 	webKioskAccountType := policy.AccountTypeKioskWebApp
 	webKioskTitle := "TastKioskModeSetByPolicyE14sPage"
-	webKioskURL := server.URL + "/e14s-test"
+	webKioskURL := k.testserver.URL + "/e14s-test"
 	webKioskPolicy := policy.DeviceLocalAccountInfo{
 		AccountID:   &webKioskAccountID,
 		AccountType: &webKioskAccountType,
@@ -115,12 +157,22 @@ func (k *inputsKioskFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	if err != nil {
 		s.Fatal("Failed to start Chrome in Kiosk mode: ", err)
 	}
+	k.cr = cr
+	k.kiosk = kiosk
+
+	k.tconn, err = k.cr.TestAPIConn(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get test API connection")
+	}
+
+	uc, err := inputactions.NewInputsUserContextWithoutState(ctx, "", s.OutDir(), k.cr, k.tconn, nil)
+	if err != nil {
+		return errors.Wrap(err, "failed to create new inputs user context")
+	}
+	k.uc = uc
 
 	chrome.Lock()
-	k.kiosk = kiosk
-	k.cr = cr
-	k.testserver = server
-	return InputsKioskFixtData{k.cr}
+	return InputsKioskFixtData{k.cr, k.tconn, k.uc}
 }
 
 func (k *inputsKioskFixture) TearDown(ctx context.Context, s *testing.FixtState) {
@@ -135,19 +187,24 @@ func (k *inputsKioskFixture) TearDown(ctx context.Context, s *testing.FixtState)
 
 	k.testserver.Close()
 	k.cr = nil
+	k.tconn = nil
 }
 
 func (k *inputsKioskFixture) Reset(ctx context.Context) error {
-	// Restarts the kiosk app to reset the state.
-	cr, err := k.kiosk.RestartChromeWithOptions(
-		ctx,
-		k.extraOpts...)
-	if err != nil {
-		return err
+	if err := k.tconn.Eval(ctx, "chrome.tabs.reload()", nil); err != nil {
+		return errors.Wrap(err, "failed to run chrome.tabs.reload()")
 	}
-	k.cr = cr
+
+	if err := k.tconn.WaitForExpr(ctx, "document.readyState == 'complete'"); err != nil {
+		return errors.Wrap(err, "document did not load after reload")
+	}
 	return nil
 }
 
-func (k *inputsKioskFixture) PreTest(ctx context.Context, s *testing.FixtTestState)  {}
+func (k *inputsKioskFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	// filepath.Base(s.OutDir()) returns the test name.
+	// TODO(b/235164130) use s.TestName once it is available.
+	k.uc.SetTestName(filepath.Base(s.OutDir()))
+}
+
 func (k *inputsKioskFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {}
