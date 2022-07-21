@@ -239,6 +239,30 @@
       },
       "revId": "b6112e9e2a4b597784696d9b071510b291ddd3d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a3433e_3ca17649",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-21T10:51:55Z",
+      "side": 1,
+      "message": "AFAIK tast wants test declaration as explicit as possible, eg. listing all data files it may need in advance. Test metadata should be fixed in build time as it also serves as an interface outside of tast.\n\nBTW, \"testing.AddTest() should take a pointer of a testing.Test composite literal.\"\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration",
+      "parentUuid": "8cfbdf27_7e0847ea",
+      "range": {
+        "startLine": 49,
+        "startChar": 54,
+        "endLine": 49,
+        "endChar": 78
+      },
+      "revId": "b6112e9e2a4b597784696d9b071510b291ddd3d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
