@@ -16,6 +16,24 @@
       "message": "Code LGTM. (Do I have to +1 or +2 here?)\n\nDo you think, we need to wait a bit to see if the other CLs will stick (as in, not being reverted)?",
       "revId": "dd13bb17986822211e2cc4b5a65a7a6aa6f60a96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b780222a_1039f5ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-21T02:16:23Z",
+      "side": 1,
+      "message": "Yup +2. I might wait till tomorrow to land then 👍",
+      "parentUuid": "1cb46fb5_84962267",
+      "revId": "dd13bb17986822211e2cc4b5a65a7a6aa6f60a96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
