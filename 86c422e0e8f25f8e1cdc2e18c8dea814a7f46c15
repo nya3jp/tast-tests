@@ -16,6 +16,121 @@
       "message": "LGTM",
       "revId": "86c422e0e8f25f8e1cdc2e18c8dea814a7f46c15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2db486d_dc5c1a56",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-21T15:45:17Z",
+      "side": 1,
+      "message": "nit: \"...ensure cryptohomed is running\"?",
+      "range": {
+        "startLine": 61,
+        "startChar": 11,
+        "endLine": 61,
+        "endChar": 39
+      },
+      "revId": "86c422e0e8f25f8e1cdc2e18c8dea814a7f46c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "660041fc_56955b31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-21T15:45:17Z",
+      "side": 1,
+      "message": "this should go on the other side of the comma, next to the `false`",
+      "range": {
+        "startLine": 81,
+        "startChar": 61,
+        "endLine": 81,
+        "endChar": 75
+      },
+      "revId": "86c422e0e8f25f8e1cdc2e18c8dea814a7f46c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44ec5044_f824d226",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-21T15:45:17Z",
+      "side": 1,
+      "message": "this should go on the other side of the comma, next to the `false`",
+      "range": {
+        "startLine": 89,
+        "startChar": 60,
+        "endLine": 89,
+        "endChar": 73
+      },
+      "revId": "86c422e0e8f25f8e1cdc2e18c8dea814a7f46c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "854e5a78_6c203617",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-21T15:45:17Z",
+      "side": 1,
+      "message": "this should go on the other side of the comma, next to the `false`",
+      "range": {
+        "startLine": 116,
+        "startChar": 61,
+        "endLine": 116,
+        "endChar": 75
+      },
+      "revId": "86c422e0e8f25f8e1cdc2e18c8dea814a7f46c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a8139ec_c64c4708",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/add_remove_pin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-21T15:45:17Z",
+      "side": 1,
+      "message": "this should go on the other side of the comma, next to the `false`",
+      "range": {
+        "startLine": 123,
+        "startChar": 61,
+        "endLine": 123,
+        "endChar": 74
+      },
+      "revId": "86c422e0e8f25f8e1cdc2e18c8dea814a7f46c15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
