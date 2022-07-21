@@ -8,10 +8,8 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/common/fixture"
-	"chromiumos/tast/common/policy"
-	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/local/bundles/cros/inputs/fixture"
 	"chromiumos/tast/local/bundles/cros/inputs/inputactions"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
@@ -21,7 +19,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
-	"chromiumos/tast/local/kioskmode"
 	"chromiumos/tast/testing"
 )
 
@@ -37,15 +34,13 @@ func init() {
 		Timeout:      2 * time.Minute,
 		Params: []testing.Param{
 			{
-				Fixture:   fixture.KioskAutoLaunchCleanup,
+				Fixture:   fixture.KioskNonVK,
 				ExtraAttr: []string{"informational", "group:input-tools-upstream"},
-				Val:       chrome.ExtraArgs(""),
 			},
 			{
 				Name:      "lacros",
-				Fixture:   fixture.KioskAutoLaunchCleanup,
+				Fixture:   fixture.LacrosKioskNonVK,
 				ExtraAttr: []string{"informational", "group:input-tools-upstream"},
-				Val:       chrome.ExtraArgs("--enable-features=LacrosSupport,WebKioskEnableLacros", "--lacros-availability-ignore"),
 			},
 		},
 	})
@@ -56,45 +51,7 @@ func PhysicalKeyboardKioskTyping(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
 
-	// Launches the server for e14s-test page.
-	server := testserver.LaunchServer(ctx)
-	defer server.Close()
-
-	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
-
-	// Creating a kiosk mode configuration that will launch an app that points to the e14s-test page.
-	webKioskAccountID := "arbitrary_id_web_kiosk_1@managedchrome.com"
-	webKioskAccountType := policy.AccountTypeKioskWebApp
-	webKioskTitle := "TastKioskModeSetByPolicyE14sPage"
-	webKioskURL := server.URL + "/e14s-test"
-	webKioskPolicy := policy.DeviceLocalAccountInfo{
-		AccountID:   &webKioskAccountID,
-		AccountType: &webKioskAccountType,
-		WebKioskAppInfo: &policy.WebKioskAppInfo{
-			Url:     &webKioskURL,
-			Title:   &webKioskTitle,
-			IconUrl: &webKioskURL,
-		}}
-
-	localAccountsConfiguration := &policy.DeviceLocalAccounts{
-		Val: []policy.DeviceLocalAccountInfo{
-			webKioskPolicy,
-		},
-	}
-
-	chromeOptions := s.Param().(chrome.Option)
-	kiosk, cr, err := kioskmode.New(
-		ctx,
-		fdms,
-		kioskmode.AutoLaunch(webKioskAccountID),
-		kioskmode.CustomLocalAccounts(localAccountsConfiguration),
-		kioskmode.ExtraChromeOptions(chromeOptions),
-	)
-	if err != nil {
-		s.Fatal("Failed to start Chrome in Kiosk mode: ", err)
-	}
-	defer kiosk.Close(cleanupCtx)
-
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	tconn, err := cr.TestAPIConn(ctx)
