@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12eb6d68_386452e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-21T00:26:00Z",
+      "side": 1,
+      "message": "Bumped this to 10 minutes - apparently we don\u0027t fit into 5 minutes already with the current set of sub-tests.\n\nAssuming it\u0027s fine to proceed to CQ+2, given that the follow-up CL that bumps this even further (up to 15 minutes) was LGTM\u0027ed by tast-owners@.",
+      "revId": "a863449d5994b36e2d0732874b01b1eada1bb80d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
