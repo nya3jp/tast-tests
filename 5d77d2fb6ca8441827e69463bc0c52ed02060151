@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71cf7eb3_ed87a973",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-07-21T17:42:14Z",
+      "side": 1,
+      "message": "This can probably just be a contextlog; we don\u0027t want to silence the actual underlying error.",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 21
+      },
+      "revId": "5d77d2fb6ca8441827e69463bc0c52ed02060151",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
