@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1bbcd33_59828751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-07-21T17:23:33Z",
+      "side": 1,
+      "message": "These functions can fail; please check their return values.\n\nAlso, they could be combined; something like:\n\n```\nif err :\u003d crash.MoveFilesToOut(ctx, outDir, append(logFiles, metaFiles)...); err !\u003d nil {\n  // ...\n}\n```",
+      "range": {
+        "startLine": 146,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 49
+      },
+      "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a12dce56_f040ee66",
         "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
         "patchSetId": 9
@@ -31,6 +54,29 @@
       "writtenOn": "2022-07-21T16:27:59Z",
       "side": 1,
       "message": "nit: lowercase, and this could follow the form:\n\n\"did not find line in metadata file: expected %q\"",
+      "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4532f7a1_324b1384",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-07-21T17:23:33Z",
+      "side": 1,
+      "message": "Here, too",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 49
+      },
       "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
