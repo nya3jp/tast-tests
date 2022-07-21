@@ -58,7 +58,6 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		"--redirect-libassistant-logging",            // Redirect libassistant logging to /var/log/chrome/.
 		"--no-first-run",                             // Prevent showing up offer pages, e.g. google.com/chromebooks.
 		"--cros-region=" + cfg.Region(),              // Force the region.
-		"--cros-regions-mode=hide",                   // Ignore default values in VPD.
 		"--enable-oobe-test-api",                     // Enable OOBE helper functions for authentication.
 		"--disable-hid-detection-on-oobe",            // Skip OOBE check for keyboard/mouse on chromeboxes/chromebases.
 		"--force-hwid-check-result-for-test=success", // Forcefully ignore incorrect hardware IDs on devices.
@@ -100,9 +99,14 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 				"*auto_enrollment_controller*=1"}, ","))
 	}
 
-	if cfg.LoginMode() != config.GAIALogin && cfg.EnrollMode() != config.GAIAEnroll {
-		args = append(args, "--disable-gaia-services")
-	}
+	testing.ContextLog(ctx, "RUBEN")
+	testing.ContextLogf(ctx, "config.GAIALogin %s", config.GAIALogin)
+	testing.ContextLogf(ctx, "config.GAIAEnroll %s", config.GAIAEnroll)
+	testing.ContextLogf(ctx, "config.GAIAZTEEnroll %s", config.GAIAZTEEnroll)
+
+	//if (cfg.LoginMode() != config.GAIALogin && cfg.EnrollMode() != config.GAIAEnroll) || (cfg.LoginMode() != config.GAIALogin && cfg.EnrollMode() != config.GAIAZTEEnroll) {
+	//	args = append(args, "--disable-gaia-services")
+	//}
 
 	// Enable verbose logging on gaia_auth_fetcher to help debug some login failures. See crbug.com/1166530
 	if cfg.LoginMode() == config.GAIALogin {

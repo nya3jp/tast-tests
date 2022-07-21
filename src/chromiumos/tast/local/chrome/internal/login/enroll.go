@@ -32,16 +32,16 @@ const maxGAIAEnterpriseEnrollmentRetries = 3
 // succeed.
 const gaiaEnterpriseEnrollmentTimeout = 3 * time.Minute
 
-//  domainRe is a regex used to obtain the domain (without top level domain)
-//  out of an email string.
-//  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome] and
-//  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2]
+// domainRe is a regex used to obtain the domain (without top level domain)
+// out of an email string.
+// e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome] and
+// ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2]
 var domainRe = regexp.MustCompile(`^[^@]+@([^@]+)\.[^.@]*$`)
 
-//  fullDomainRe is a regex used to obtain the full domain (with top level
-//  domain) out of an email string.
-//  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome.com] and
-//  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2.com]
+// fullDomainRe is a regex used to obtain the full domain (with top level
+// domain) out of an email string.
+// e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome.com] and
+// ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2.com]
 var fullDomainRe = regexp.MustCompile(`^[^@]+@([^@]+)$`)
 
 // userDomain will return the "domain" section (without top level domain) of
@@ -269,6 +269,90 @@ func performGAIAEnrollment(ctx context.Context, cfg *config.Config, sess *driver
 		return errors.Wrap(sess.Watcher().ReplaceErr(err), "could not enroll")
 	}
 
+	return nil
+}
+
+// performGAIAZTEEnrollment enrolls the test device using the OOBE screen.
+func performGAIAZTEEnrollment(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
+	ctx, st := timing.Start(ctx, "zteenroll")
+	defer st.End()
+
+	conn, err := WaitForOOBEConnection(ctx, sess)
+	if err != nil {
+		return errors.Wrap(err, "could not find OOBE connection")
+	}
+
+	//conn, err := WaitForOOBEConnection(ctx, sess)
+	//if err != nil {
+	//	return errors.Wrap(err, "could not find OOBE connection for enrollment")
+	//}
+	//defer conn.Close()
+	testing.ContextLog(ctx, "Found OOBE screen")
+
+	// Enterprise enrollment requires Internet connectivity.
+	// this doesn't always appear, maybe do try / except on this one
+	//if err := shill.WaitForOnline(ctx); err != nil {
+	//	return errors.Wrap(err, "no Internet connectivity, cannot perform GAIA enrollment")
+	//}
+
+	//if err := waitForEnrollmentLoginScreen(ctx, cfg, sess); err != nil {
+	//	return errors.Wrap(sess.Watcher().ReplaceErr(err), "could not zte enroll")
+	//}
+
+	//if err := conn.Call(ctx, nil, "OobeAPI.skipToLoginForTesting"); err != nil {
+	//	return err
+	//}
+
+	//if err := conn.WaitForExpr(ctx, "OobeAPI.screens.GaiaScreen.isReadyForTesting()"); err != nil {
+	//	return errors.Wrap(err, "failed to wait for the OOBE Gaia sign in screen")
+	//}
+
+	//if err := conn.Call(ctx, nil, "Oobe.switchToEnterpriseEnrollmentForTesting"); err != nil {
+	//	return err
+	//}
+	//if err := conn.WaitForExpr(ctx, "OobeAPI.screens.WelcomeScreen.clickNext()"); err != nil {
+	//	return errors.Wrap(err, "failed to wait for welcome screen next button")
+	//}
+	//testing.ContextLog(ctx, "Found welcome screen click next button")
+
+	if err := conn.WaitForExpr(ctx, "OobeAPI.screens.WelcomeScreen.isVisible()"); err != nil {
+		//return errors.Wrap(err, "failed to wait for welcome screen next button")
+	}
+
+	testing.ContextLog(ctx, "Saw Welcome Screen")
+	testing.Sleep(ctx, 5*time.Second)
+
+	if err := conn.Eval(ctx, "OobeAPI.screens.WelcomeScreen.clickNext()", nil); err != nil {
+		//return err
+	}
+	testing.ContextLog(ctx, "Clicked Next")
+
+	testing.Sleep(ctx, 5*time.Second)
+
+	/*
+		if err := conn.WaitForExpr(ctx, "OobeAPI.screens.EulaScreen.isVisible()"); err != nil {
+			return errors.Wrap(err, "failed to wait for the EULA screen")
+		}
+		testing.ContextLog(ctx, "Saw Eula screen")
+
+		if err := conn.WaitForExpr(ctx, "OobeAPI.screens.EulaScreen.nextButton.isEnabled()"); err != nil {
+			return errors.Wrap(err, "failed to wait for the EULA screen")
+		}
+		testing.ContextLog(ctx, "Saw Eula next button")
+		testing.Sleep(ctx, 5*time.Second)
+
+		if err := conn.Eval(ctx, "OobeAPI.screens.EulaScreen.clickNext()", nil); err != nil {
+			return err
+		}
+		testing.ContextLog(ctx, "Clicked next on Eula screen")
+	*/
+	//testing.Sleep(ctx, 5*time.Second)
+
+	mt := matchTargetDomains(ctx, sess, "zte-test-automation.chrome-onboard.com", "zte-test-automation.chrome-onboard.com")
+	if _, err := waitForSingleGAIAWebView(ctx, sess, mt, 45*time.Second); err != nil {
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "failed to find the enterprise sign-in GAIA webview")
+	}
+	defer conn.Close()
 	return nil
 }
 
