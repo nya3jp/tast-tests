@@ -16,6 +16,46 @@
       "message": "LGTM.",
       "revId": "322ef9c6651551c439116ea47b508e8e8fe1dfde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "760b0380_74b1d97e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-21T13:52:36Z",
+      "side": 1,
+      "message": "still LGTM",
+      "revId": "322ef9c6651551c439116ea47b508e8e8fe1dfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bf9a672_5c128097",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/anqp.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-07-21T13:52:36Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 203,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 19
+      },
+      "revId": "322ef9c6651551c439116ea47b508e8e8fe1dfde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
