@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "36b9063a_7136e609",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-21T14:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f484cc7e_a75e1793",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "ae9c3167eca9d2f6eb67425d9e1a3e6a0ecbb877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "162a55b3_3aedb9a8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -110,6 +134,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1939a991_1b7ad9bb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-21T14:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa416fb8_09e0c92f",
+      "range": {
+        "startLine": 100,
+        "startChar": 108,
+        "endLine": 100,
+        "endChar": 151
+      },
+      "revId": "ae9c3167eca9d2f6eb67425d9e1a3e6a0ecbb877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3a2b7ea_bf9a122d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-21T14:20:32Z",
+      "side": 1,
+      "message": "Yes, but as an account manager without accounts doesn\u0027t make sense it seemed better to have it like this to make the usage more comfortable.",
+      "parentUuid": "3f98c887_3174e27e",
+      "range": {
+        "startLine": 100,
+        "startChar": 30,
+        "endLine": 100,
+        "endChar": 66
+      },
+      "revId": "ae9c3167eca9d2f6eb67425d9e1a3e6a0ecbb877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afacf000_575788df",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-21T14:20:32Z",
+      "side": 1,
+      "message": "Good point, I like the custom type idea.",
+      "parentUuid": "de0a32b5_f63dc9af",
+      "range": {
+        "startLine": 100,
+        "startChar": 82,
+        "endLine": 100,
+        "endChar": 90
+      },
+      "revId": "ae9c3167eca9d2f6eb67425d9e1a3e6a0ecbb877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70405816_ac5a6122",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-07-20T11:35:15Z",
       "side": 1,
       "message": "minor nit: ID",
+      "range": {
+        "startLine": 119,
+        "startChar": 19,
+        "endLine": 119,
+        "endChar": 21
+      },
+      "revId": "ae9c3167eca9d2f6eb67425d9e1a3e6a0ecbb877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd8f6f0_edd6b640",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-21T14:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70405816_ac5a6122",
       "range": {
         "startLine": 119,
         "startChar": 19,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd7061f_8cd744b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-21T14:20:32Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "e5a815cd_252fd3a7",
+      "range": {
+        "startLine": 120,
+        "startChar": 25,
+        "endLine": 120,
+        "endChar": 36
+      },
+      "revId": "ae9c3167eca9d2f6eb67425d9e1a3e6a0ecbb877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0334f8e_3a3c12c2",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-07-20T11:35:15Z",
       "side": 1,
       "message": "This should follow immediately after the call that does the provisioning.",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 34
+      },
+      "revId": "ae9c3167eca9d2f6eb67425d9e1a3e6a0ecbb877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "114f42fb_f74f0dd5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_kiosk_enrollment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-21T14:20:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0334f8e_3a3c12c2",
       "range": {
         "startLine": 126,
         "startChar": 1,
