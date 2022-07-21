@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba6c04cc_dfee1435",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-21T04:44:01Z",
+      "side": 1,
+      "message": "LGTM % final nits. Thanks!",
+      "revId": "eeda93cd1166f21555bf60d0bc84c3be9b1cd2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c6a7a65_de8a986f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-21T04:44:01Z",
+      "side": 1,
+      "message": "nit: Looks like the JS code can\u0027t currently do screen capture with Simulcast or SVC. How about having a condition similar to ln. 64 to detect that just in case somebody tries to add a variant like that? Maybe\n\n```\n  if displayMediaType !\u003d \"\" \u0026\u0026 (simulcast || svc !\u003d \"\") {\n    return errors.New(\"Screen capture can\u0027t be used with simulcast or SVC\")\n  }\n```",
+      "revId": "eeda93cd1166f21555bf60d0bc84c3be9b1cd2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "095c225e_a0fd2001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-21T04:44:01Z",
+      "side": 1,
+      "message": "nit: Replace with\n\n```\n// If non-empty, the media to send through the RTC connection will be obtained\n// using getDisplayMedia() and the value corresponds to the surface type. If\n// empty, the media to send will be obtained using getUserMedia().\n```",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 87
+      },
+      "revId": "eeda93cd1166f21555bf60d0bc84c3be9b1cd2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "987a75fb_7fc1d585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-21T04:44:01Z",
+      "side": 1,
+      "message": "nit: Indentation seems off. I wonder if you\u0027re allowed to use spaces for indentation inside comments.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "eeda93cd1166f21555bf60d0bc84c3be9b1cd2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a9f197c_5a54a7d6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-21T04:44:01Z",
+      "side": 1,
+      "message": "nit: Remove `a`.",
+      "range": {
+        "startLine": 184,
+        "startChar": 75,
+        "endLine": 184,
+        "endChar": 76
+      },
+      "revId": "eeda93cd1166f21555bf60d0bc84c3be9b1cd2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
