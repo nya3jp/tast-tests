@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c86ef555_495a6b00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-21T16:49:03Z",
+      "side": 1,
+      "message": "nit: We could drop this and keep on `FIXED` line.",
+      "revId": "d305b50e831c4ab6e80000247fbbe4980e666a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5addd50d_657cb3b7",
@@ -14,6 +31,40 @@
       "writtenOn": "2022-07-21T11:12:45Z",
       "side": 1,
       "message": "Please review.",
+      "revId": "d305b50e831c4ab6e80000247fbbe4980e666a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a4536c_7074a1a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-21T16:49:03Z",
+      "side": 1,
+      "message": "lgtm ",
+      "revId": "d305b50e831c4ab6e80000247fbbe4980e666a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4409b6fa_6d6567b3",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-21T16:49:03Z",
+      "side": 1,
+      "message": "FYI, since we don\u0027t reboot device, this would be a same for all tests running on the DUT. `BootTime.Firmware` is probably also like this.",
       "revId": "d305b50e831c4ab6e80000247fbbe4980e666a34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
