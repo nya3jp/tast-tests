@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdbba564_b1e159ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_credential_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-21T00:59:50Z",
+      "side": 1,
+      "message": "Although golang doesn\u0027t have strict line length requirements, it is still recommended to keep comments \u003c80 lines: go/go-style/decisions#comment-line-length. Can you wrap this comment and the comments further down the file?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 99
+      },
+      "revId": "46b4bbd7f2d48abc88d87813686ddbbc9e79aefd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2665d93_da39f896",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_credential_auth_session.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-21T00:59:50Z",
+      "side": 1,
+      "message": "This comment is confusing, the first sentence seems to imply login with pin should succeed, but the second says it should fail. How about `Attempt to login with removed pin. This should fail`?",
+      "range": {
+        "startLine": 159,
+        "startChar": 13,
+        "endLine": 159,
+        "endChar": 62
+      },
+      "revId": "46b4bbd7f2d48abc88d87813686ddbbc9e79aefd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
