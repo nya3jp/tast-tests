@@ -98,6 +98,24 @@
       "parentUuid": "6011a255_0413d7c1",
       "revId": "c1ee901ae9b042f4e7193008f9b3622484aec835",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a95c8e6_e7aa4068",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/try_fw_b.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-21T10:07:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a1deec17_92ad4cd7",
+      "revId": "c1ee901ae9b042f4e7193008f9b3622484aec835",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
