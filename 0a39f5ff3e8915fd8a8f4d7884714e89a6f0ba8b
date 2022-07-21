@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ba1de9_caa607df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-21T09:28:10Z",
+      "side": 1,
+      "message": "nit: double spaces",
+      "range": {
+        "startLine": 7,
+        "startChar": 44,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "0a39f5ff3e8915fd8a8f4d7884714e89a6f0ba8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2b1ef52_468db277",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-21T09:28:10Z",
+      "side": 1,
+      "message": "nit: * works for test pattern.\nTEST\u003dtast run [DUT] inputs.VirtualKeyboardKioskTyping*",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 64
+      },
+      "revId": "0a39f5ff3e8915fd8a8f4d7884714e89a6f0ba8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb785e0_77e689d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/kiosk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-21T09:28:10Z",
+      "side": 1,
+      "message": "nit: virtual",
+      "range": {
+        "startLine": 64,
+        "startChar": 40,
+        "endLine": 64,
+        "endChar": 48
+      },
+      "revId": "0a39f5ff3e8915fd8a8f4d7884714e89a6f0ba8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00167045_d66508d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/kiosk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-21T09:28:10Z",
+      "side": 1,
+      "message": "ash",
+      "range": {
+        "startLine": 64,
+        "startChar": 80,
+        "endLine": 64,
+        "endChar": 86
+      },
+      "revId": "0a39f5ff3e8915fd8a8f4d7884714e89a6f0ba8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6890fc8d_02dcaab7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/kiosk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-21T09:28:10Z",
+      "side": 1,
+      "message": "nit: virtual",
+      "range": {
+        "startLine": 79,
+        "startChar": 40,
+        "endLine": 79,
+        "endChar": 48
+      },
+      "revId": "0a39f5ff3e8915fd8a8f4d7884714e89a6f0ba8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219c2979_2a51b6e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-21T09:28:10Z",
+      "side": 1,
+      "message": "it is a common attr atm, please move it to Attr above.",
+      "range": {
+        "startLine": 38,
+        "startChar": 25,
+        "endLine": 38,
+        "endChar": 38
+      },
+      "revId": "0a39f5ff3e8915fd8a8f4d7884714e89a6f0ba8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ecb561_568f4f35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-21T09:28:10Z",
+      "side": 1,
+      "message": "Any tests in this group will run in Inputs related tests and block code submit. I would suggest not to add it until it is stable enough.",
+      "range": {
+        "startLine": 38,
+        "startChar": 42,
+        "endLine": 38,
+        "endChar": 68
+      },
+      "revId": "0a39f5ff3e8915fd8a8f4d7884714e89a6f0ba8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96e4949a_74dc6a0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_typing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-21T09:28:10Z",
+      "side": 1,
+      "message": "Kiosk mode is not reflected in this user action, so it is not distinguishable to other VK typing tests. Perhaps name it as \"VK typing in Kiosk mode\"?",
+      "range": {
+        "startLine": 74,
+        "startChar": 18,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "0a39f5ff3e8915fd8a8f4d7884714e89a6f0ba8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
