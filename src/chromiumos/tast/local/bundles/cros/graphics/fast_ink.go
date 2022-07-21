@@ -19,7 +19,9 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -281,6 +283,10 @@ func FastInk(ctx context.Context, s *testing.State) {
 		if err := webutil.WaitForQuiescence(ctx, conn, 10*time.Second); err != nil {
 			s.Fatal("Failed to wait for d-canvas/main.html to achieve quiescence: ", err)
 		}
+	}
+
+	if err := uiauto.New(tconn).WaitUntilGone(nodewith.HasClass("ash/message_center/MessagePopup"))(ctx); err != nil {
+		s.Fatal("Failed to wait for an absence of popups (such as the one about tablet gestures): ", err)
 	}
 
 	ws, err := ash.GetAllWindows(ctx, tconn)
