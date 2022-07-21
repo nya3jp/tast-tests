@@ -392,6 +392,30 @@
       },
       "revId": "33e416263871c4a4bdf3b0078010cc7ae8c98054",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab4e1e5_12a6eb7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-21T03:59:37Z",
+      "side": 1,
+      "message": "do you need the 1-min timeout for all the following actions? if not, it is better to explicit use `WithTimeout(...)` only for the action that needes it.",
+      "parentUuid": "312146d3_dbe485cb",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 23
+      },
+      "revId": "33e416263871c4a4bdf3b0078010cc7ae8c98054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

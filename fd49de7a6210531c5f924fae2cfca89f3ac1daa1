@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689e11de_c5d7a471",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-21T03:59:37Z",
+      "side": 1,
+      "message": "rename the external data file to `happy_halloween.png.external` see https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#external-data-files, you don\u0027t need the date here.",
+      "revId": "fd49de7a6210531c5f924fae2cfca89f3ac1daa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74c13d7a_aa685b2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-21T03:59:37Z",
+      "side": 1,
+      "message": "I am assuming this is where you need the 1-min timeout?",
+      "range": {
+        "startLine": 138,
+        "startChar": 14,
+        "endLine": 138,
+        "endChar": 29
+      },
+      "revId": "fd49de7a6210531c5f924fae2cfca89f3ac1daa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
