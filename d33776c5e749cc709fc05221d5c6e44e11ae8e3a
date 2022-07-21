@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18b81c30_880218a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-07-21T02:48:26Z",
+      "side": 1,
+      "message": "We have a lot timeouts now, please define global variables for these timeouts.\nIt will easier to modify and maintain.\n\nWe can set \nAUDIO_TIMEOUT\nETHERNET_TIMEOUT\nDISPLAY_TIMEOUT\nPOWER_TIMEOUT\n\netc.  I think we should also put these wwcb_constants.go or other ways.\nSee details:\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Runtime-variables",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "d33776c5e749cc709fc05221d5c6e44e11ae8e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
