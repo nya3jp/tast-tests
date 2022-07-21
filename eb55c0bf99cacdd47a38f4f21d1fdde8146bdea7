@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c0a5456_a0b50cdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1526353
+      },
+      "writtenOn": "2022-07-21T17:35:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1bbcd33_59828751",
+      "range": {
+        "startLine": 146,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 49
+      },
+      "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a12dce56_f040ee66",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-07-21T16:27:59Z",
       "side": 1,
       "message": "nit: lowercase, and this could follow the form:\n\n\"did not find line in metadata file: expected %q\"",
+      "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "259c8300_50d1fd11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1526353
+      },
+      "writtenOn": "2022-07-21T17:35:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a12dce56_f040ee66",
       "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71fee6e_f99cf1c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1526353
+      },
+      "writtenOn": "2022-07-21T17:35:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4532f7a1_324b1384",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 49
+      },
+      "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e33e91f1_3386328a",
@@ -98,6 +164,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb7b9c63_5b772fe1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1526353
+      },
+      "writtenOn": "2022-07-21T17:35:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e33e91f1_3386328a",
+      "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce501b43_34791b46",
@@ -111,6 +195,24 @@
       "writtenOn": "2022-07-21T16:27:59Z",
       "side": 1,
       "message": "nit: \"process did not end with the proper exit code: got: %v; expected: %v\"?",
+      "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fd5541c_611a2996",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1526353
+      },
+      "writtenOn": "2022-07-21T17:35:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce501b43_34791b46",
       "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
