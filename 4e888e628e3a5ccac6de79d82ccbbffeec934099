@@ -16,6 +16,75 @@
       "message": "Thank you for reviewing!",
       "revId": "4e888e628e3a5ccac6de79d82ccbbffeec934099",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee31c3b1_0e8a361e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-21T15:40:56Z",
+      "side": 1,
+      "message": "These names would be shared across all files within peerconnection. Instead of using a name that easily collides, how about CaptureMonitor, CaptureWindow, CaptureTab?",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 8
+      },
+      "revId": "4e888e628e3a5ccac6de79d82ccbbffeec934099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae91d1ba_3971a5a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-21T15:40:56Z",
+      "side": 1,
+      "message": "Optional. This requires the caller to know the underlying type of DisplayMediaType. \nI\u0027d recommend defining CaptureNone DisplayMediaType \u003d \"\". Then you can virtualized the underlying string representation.",
+      "range": {
+        "startLine": 161,
+        "startChar": 18,
+        "endLine": 161,
+        "endChar": 23
+      },
+      "revId": "4e888e628e3a5ccac6de79d82ccbbffeec934099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b480e056_32752fb2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-21T15:40:56Z",
+      "side": 1,
+      "message": "We should make it consistant, either use dmType or displayMediaType.",
+      "range": {
+        "startLine": 304,
+        "startChar": 199,
+        "endLine": 304,
+        "endChar": 215
+      },
+      "revId": "4e888e628e3a5ccac6de79d82ccbbffeec934099",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
