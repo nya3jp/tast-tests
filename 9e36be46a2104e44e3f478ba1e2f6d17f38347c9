@@ -16,6 +16,24 @@
       "message": "delete this empty line",
       "revId": "9e36be46a2104e44e3f478ba1e2f6d17f38347c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b37d20_1a46e918",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/kiosk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-21T07:07:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc986f0c_45e49644",
+      "revId": "9e36be46a2104e44e3f478ba1e2f6d17f38347c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
