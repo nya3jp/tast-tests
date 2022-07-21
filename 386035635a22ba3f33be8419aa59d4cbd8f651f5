@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42168819_6727b30d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-21T08:39:07Z",
+      "side": 1,
+      "message": "Thanks for the follow up CL that introduces fixtures 👍",
+      "revId": "386035635a22ba3f33be8419aa59d4cbd8f651f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3ef9234_112868d7",
