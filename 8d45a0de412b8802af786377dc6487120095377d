@@ -34,6 +34,24 @@
       "parentUuid": "462ad4e0_30725e24",
       "revId": "8d45a0de412b8802af786377dc6487120095377d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c2e4de_9f14fad2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_extension_state.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-21T10:05:45Z",
+      "side": 1,
+      "message": "https://developer.chrome.com/docs/extensions/reference/runtime/#property-lastError\n\nI thought this is away to check errors? Could you take a look?",
+      "parentUuid": "206f53ec_e946e5fb",
+      "revId": "8d45a0de412b8802af786377dc6487120095377d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
