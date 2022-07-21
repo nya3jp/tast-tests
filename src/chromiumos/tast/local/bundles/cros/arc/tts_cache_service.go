@@ -103,12 +103,16 @@ func (c *TTSCacheService) Generate(ctx context.Context, request *arcpb.TTSCacheR
 		return nil, errors.Wrap(err, "failed waiting for TTS engine to load")
 	}
 
-	const ttsCacheReadProp = "ro.arc.tts.initialized_from_cache"
-	propVal, getPropErr := a.GetProp(ctx, ttsCacheReadProp)
-	if getPropErr != nil {
-		return nil, errors.Wrapf(getPropErr, "failed to get prop %q", ttsCacheReadProp)
+	// TODO(b/237255015): Remove check of the non-namespaced (ro.arc...) property
+	// once Android is setting the properly-namespaced property (ro.vendor.arc...)
+	const ttsCacheReadProp1 = "ro.vendor.arc.tts.initialized_from_cache"
+	const ttsCacheReadProp2 = "ro.arc.tts.initialized_from_cache"
+	propVal1, err1 := a.GetProp(ctx, ttsCacheReadProp1)
+	propVal2, err2 := a.GetProp(ctx, ttsCacheReadProp2)
+	if err1 != nil && err2 != nil {
+		return nil, errors.Wrapf(err1, "failed to get prop %q and %q", ttsCacheReadProp1, ttsCacheReadProp2)
 	}
-	initializedFromCache := propVal == "1"
+	initializedFromCache := (err1 == nil && propVal1 == "1") || (err2 == nil && propVal2 == "1")
 
 	return &arcpb.TTSCacheResponse{
 		TargetDir:                     targetDir,
