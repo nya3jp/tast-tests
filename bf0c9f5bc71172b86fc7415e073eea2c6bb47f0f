@@ -33,6 +33,23 @@
       "message": "Looks good in general, but I only took a very quick look. On our side Jason has the most experience with iperf based performance tests and can provider better feedback.",
       "revId": "bf0c9f5bc71172b86fc7415e073eea2c6bb47f0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df51c7f_e120c77b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-21T18:41:59Z",
+      "side": 1,
+      "message": "Defer to Kevin to confirm that this meets our (wifi) needs.",
+      "revId": "bf0c9f5bc71172b86fc7415e073eea2c6bb47f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
