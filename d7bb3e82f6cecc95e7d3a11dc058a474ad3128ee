@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f02c378_7d4b5d8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-07-21T07:23:22Z",
+      "side": 1,
+      "message": "Hmm, there seem to have been some regressions unrelated to the URI issue:\n1) `failed to setup an adb device` since ~14969.0.0, and\n2) `Failed to push file to MTP` since ~14975.0.0.\n\nGiven that the latter error happens only when adb is successfully set up, adb setup issue was somehow fixed in ~14975.0.0, and ToT is suffering from an issue in `adb push`.\n\n/var/log/messages in a failing run suggests it failed to execute `adb \u003cDEVICE\u003e root`, and due to this `adb push` failed with Permission denied. Currently I have no clear idea what\u0027s happening there. This issue should probably be tracked in b/238376181 too (or possibly in a separate bug).\n\nAt the moment I guess you can test this CL with an older CrOS image.",
+      "parentUuid": "007324f9_0e0318dc",
+      "revId": "d7bb3e82f6cecc95e7d3a11dc058a474ad3128ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62c8ee98_66fb117c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -49,6 +67,24 @@
       "writtenOn": "2022-07-21T06:49:58Z",
       "side": 1,
       "message": "youkichihosoi@, can you review this? I\u0027d normally send this to rnanjappan@ (based on who recently touched mtp.go) but they\u0027re OOO for some weeks and you\u0027re listed on b/238376181.",
+      "revId": "d7bb3e82f6cecc95e7d3a11dc058a474ad3128ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cac840d4_9eea39e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394308
+      },
+      "writtenOn": "2022-07-21T07:23:22Z",
+      "side": 1,
+      "message": "Sure. Thanks for the CL!",
+      "parentUuid": "62c8ee98_66fb117c",
       "revId": "d7bb3e82f6cecc95e7d3a11dc058a474ad3128ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
