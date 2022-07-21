@@ -6,7 +6,6 @@ package conference
 
 import (
 	"context"
-	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -129,73 +128,7 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		if !toBlur {
 			return nil
 		}
-
-		const (
-			noEffectText = "No effect & blur"
-			closeText    = "Close"
-		)
-		changeBackgroundButton := nodewith.Name("Apply visual effects").Role(role.Button)
-		noEffectAndBlurRegion := nodewith.NameContaining(noEffectText).Role(role.Region)
-		noEffectAndBlurHeading := nodewith.NameContaining(noEffectText).Role(role.Heading)
-		turnOffButton := nodewith.NameContaining(turnOffBackground).Role(role.ToggleButton)
-		backgroundButton := nodewith.Name(blurBackground).Role(role.ToggleButton)
-		selectAFileDialog := nodewith.Name("Select a file to open").ClassName("ExtensionViewViews")
-		closeDialog := nodewith.Name(closeText).Role(role.Button).Ancestor(selectAFileDialog)
-		closeButton := nodewith.Name(closeText).Role(role.Button).Ancestor(meetWebArea)
-		return uiauto.NamedCombine("change background to blur",
-			ui.LeftClick(changeBackgroundButton), // Open "Background" panel.
-			ui.WithTimeout(longUITimeout).WaitUntilExists(noEffectAndBlurRegion),
-			ui.LeftClick(noEffectAndBlurHeading),
-			// Turn off effect to avoid clicking the blur button to turn off the effect.
-			cuj.ExpandMenu(conf.tconn, turnOffButton, noEffectAndBlurRegion, 100),
-			ui.LeftClick(backgroundButton),
-			ui.WaitUntilExists(backgroundButton.Focused()),
-			takeScreenshot(conf.cr, conf.outDir, "change-background-to-blur"),
-			ui.LeftClick(closeButton), // Close "Background" panel.
-			// Some DUT performance is too poor, clicking the turn off button will trigger "Upload a background image".
-			// If the dialog "select a file to open" is opened, close it.
-			uiauto.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(selectAFileDialog), ui.LeftClick(closeDialog)),
-		)(ctx)
-	}
-
-	joinConf := func(ctx context.Context) error {
-		joinButton := nodewith.NameRegex(regexp.MustCompile("(Join now|Ask to join)")).Role(role.Button)
-		joinNowButton := nodewith.Name("Join now").Role(role.Button)
-		homeScreenLink := nodewith.Name("Return to home screen").Role(role.Link)
-		// Some low-end devices need more time to wait "Join now" button animation loading.
-		waitJoinNowButtonStable := func(ctx context.Context) error {
-			joinForAudioButton := nodewith.Name("Join and use a phone for audio").Role(role.Button)
-			return testing.Poll(ctx, func(ctx context.Context) error {
-				joinForAudioLocation, err := ui.Location(ctx, joinForAudioButton)
-				if err != nil {
-					// No need to compare if joinForAudioButton doesn't exist. Return nil here.
-					return nil
-				}
-				joinNowLocation, err := ui.Location(ctx, joinNowButton)
-				if err != nil {
-					return errors.Wrap(err, "failed to get location of the join now button")
-				}
-				joinNowButtonHeight := joinNowLocation.CenterY()
-				joinForAudioButtonHeight := joinForAudioLocation.CenterY()
-				testing.ContextLogf(ctx, "Check that the join now button (%d) should be lower than the join for audio button (%d)", joinNowButtonHeight, joinForAudioButtonHeight)
-				if joinNowButtonHeight >= joinForAudioButtonHeight {
-					return errors.Wrap(err, "the 'Join now' button is not on the correct location")
-				}
-				return nil
-			}, &testing.PollOptions{Timeout: shortUITimeout})
-		}
-
-		startTime := time.Now()
-		if err := ui.WithTimeout(longUITimeout).WaitUntilExists(joinButton)(ctx); err != nil {
-			return errors.Wrapf(err, "failed to wait for the join button within %v", longUITimeout)
-		}
-
-		testing.ContextLogf(ctx, "The join button took %v to appear", time.Now().Sub(startTime))
-		return uiauto.NamedCombine("join conference",
-			waitJoinNowButtonStable,
-			ui.RetryUntil(ui.DoDefault(joinButton), ui.WithTimeout(shortUITimeout).WaitUntilGone(joinButton)),
-			ui.WithTimeout(longUITimeout).WaitUntilGone(homeScreenLink),
-		)(ctx)
+		return conf.changeBackgroundOnJoinPage(blurBackground)(ctx)
 	}
 
 	// enterAccount enter account email and password.
@@ -326,6 +259,74 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		return nil
 	}
 
+	joinConf := func(ctx context.Context) error {
+		// Scenarios for entering google meet room:
+		// 1. If automatically enter the meeting room, change background to blur after joining the meet room.
+		// 2. If there is a "Join now" button, click it.
+		// 3. If there is no "Join now" button, check whether is expected meet account.
+		//    - If it's expected meet account, click "Ask for join" button.
+		//	  - If it's not, switch to expected meet account then click "Join now" or "Ask to join" button.
+		autoJoinMeeting := func(ctx context.Context) error {
+			testing.ContextLog(ctx, "Joined Meet automatically")
+			if !toBlur {
+				return nil
+			}
+			return conf.changeBackgroundOnMeetingPage(blurBackground)(ctx)
+		}
+		homeLink := nodewith.Name("Return to home screen").Role(role.Link)
+		if err := ui.WithTimeout(shortUITimeout).WaitUntilGone(homeLink)(ctx); err == nil {
+			return autoJoinMeeting(ctx)
+		}
+
+		targetMeetAccount := nodewith.Name(conf.account).Role(role.StaticText)
+		joinNowButton := nodewith.Name("Join now").Role(role.Button)
+		// If there is no "Join now" button and no expected account, switch to expected google meet account.
+		if ui.Gone(joinNowButton)(ctx) == nil && ui.Gone(targetMeetAccount)(ctx) == nil {
+			if err := switchUser(ctx); err != nil {
+				return err
+			}
+			if err := ui.WithTimeout(shortUITimeout).WaitUntilGone(homeLink)(ctx); err == nil {
+				return autoJoinMeeting(ctx)
+			}
+		}
+		joinButton := nodewith.NameRegex(regexp.MustCompile("(Join now|Ask to join)")).Role(role.Button)
+		// Some low-end devices need more time to wait "Join now" button animation loading.
+		waitJoinNowButtonStable := func(ctx context.Context) error {
+			joinForAudioButton := nodewith.Name("Join and use a phone for audio").Role(role.Button)
+			return testing.Poll(ctx, func(ctx context.Context) error {
+				joinForAudioLocation, err := ui.Location(ctx, joinForAudioButton)
+				if err != nil {
+					// No need to compare if joinForAudioButton doesn't exist. Return nil here.
+					return nil
+				}
+				joinNowLocation, err := ui.Location(ctx, joinNowButton)
+				if err != nil {
+					return errors.Wrap(err, "failed to get location of the join now button")
+				}
+				joinNowButtonHeight := joinNowLocation.CenterY()
+				joinForAudioButtonHeight := joinForAudioLocation.CenterY()
+				testing.ContextLogf(ctx, "Check that the join now button (%d) should be lower than the join for audio button (%d)", joinNowButtonHeight, joinForAudioButtonHeight)
+				if joinNowButtonHeight >= joinForAudioButtonHeight {
+					return errors.Wrap(err, "the 'Join now' button is not on the correct location")
+				}
+				return nil
+			}, &testing.PollOptions{Timeout: shortUITimeout})
+		}
+
+		startTime := time.Now()
+		if err := ui.WithTimeout(longUITimeout).WaitUntilExists(joinButton)(ctx); err != nil {
+			return errors.Wrapf(err, "failed to wait for the join button within %v", longUITimeout)
+		}
+
+		testing.ContextLogf(ctx, "The join button took %v to appear", time.Now().Sub(startTime))
+		return uiauto.NamedCombine("join conference",
+			changeBackgroundToBlur,
+			waitJoinNowButtonStable,
+			ui.RetryUntil(ui.DoDefault(joinButton), ui.WithTimeout(shortUITimeout).WaitUntilGone(joinButton)),
+			ui.WithTimeout(longUITimeout).WaitUntilGone(homeLink),
+		)(ctx)
+	}
+
 	// Checks the number of participants in the conference that
 	// for different tiers testing would ask for different size.
 	checkParticipantsNum := func(ctx context.Context) error {
@@ -361,14 +362,10 @@ func (conf *GoogleMeetConference) Join(ctx context.Context, room string, toBlur 
 		return nil
 	}
 
-	targetMeetAccount := nodewith.Name(conf.account).Role(role.StaticText)
 	return uiauto.Combine("join conference",
 		openConference,
 		allowPerm,
 		switchWindow,
-		// Check if the login account is the one for google meet. If not, switch to google meet account.
-		uiauto.IfSuccessThen(ui.Gone(targetMeetAccount), switchUser),
-		changeBackgroundToBlur,
 		joinConf,
 		ui.WithTimeout(longUITimeout).WaitUntilExists(meetWebArea),
 		// Sometimes participants number caught at the beginning is wrong, it will be correct after a while.
@@ -661,51 +658,86 @@ func (conf *GoogleMeetConference) changeLayout(mode string) action.Action {
 
 // BackgroundChange will sequentially change the background to blur, sky picture and turn off background effects.
 func (conf *GoogleMeetConference) BackgroundChange(ctx context.Context) error {
-	ui := conf.ui
-
 	pinToMainScreen := func(ctx context.Context) error {
 		pinBtn := nodewith.NameContaining("Pin yourself").Role(role.Button)
-		if err := ui.WaitUntilExists(pinBtn)(ctx); err != nil {
+		if err := conf.ui.WaitUntilExists(pinBtn)(ctx); err != nil {
 			// If there are no participants in the room, the pin button will not be displayed.
 			return ParticipantError(errors.Wrap(err, "failed to find the button to pin to main screen; other participants might have left"))
 		}
-		return uiauto.NamedAction("to pin to main screen", ui.LeftClick(pinBtn))(ctx)
+		return uiauto.NamedAction("to pin to main screen", conf.ui.LeftClick(pinBtn))(ctx)
 	}
-
-	changeBackground := func(background string) action.Action {
-		moreOptions := nodewith.Name("More options").Role(role.PopUpButton)
-		menu := nodewith.Name("Call options").Role(role.Menu)
-		// There are two different versions of ui for different accounts to change the background.
-		// The old version shows "Change background", the new version shows "Apply visual effects".
-		changeBackground := nodewith.NameRegex(regexp.MustCompile("(Apply visual effects|Change background)")).Role(role.MenuItem)
-		backgroundButton := nodewith.NameContaining(background).Role(role.ToggleButton)
-		closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(meetWebArea)
-		return uiauto.NamedCombine(fmt.Sprintf("change background to %s and enter full screen", background),
-			ui.Retry(retryTimes, cuj.ExpandMenu(conf.tconn, moreOptions, menu, 433)),
-			ui.LeftClick(changeBackground), // Open "Background" panel.
-			ui.WithTimeout(mediumUITimeout).DoDefaultUntil(backgroundButton,
-				ui.WithTimeout(shortUITimeout).WaitUntilExists(backgroundButton.Focused())),
-			ui.LeftClick(closeButton), // Close "Background" panel.
-			takeScreenshot(conf.cr, conf.outDir, "change-background-to-"+background),
+	changeBackgroundAndEnterFullScreen := func(background string) action.Action {
+		return uiauto.NamedCombine("change background and enter full screen",
+			conf.changeBackgroundOnMeetingPage(background),
 			// Double click to enter full screen.
-			doFullScreenAction(conf.tconn, ui.DoubleClick(meetWebArea), meetTitle, true),
+			doFullScreenAction(conf.tconn, conf.ui.DoubleClick(meetWebArea), meetTitle, true),
 			// After applying new background, give it 5 seconds for viewing before applying next one.
 			uiauto.Sleep(viewingTime),
 			// Double click to exit full screen.
-			doFullScreenAction(conf.tconn, ui.DoubleClick(meetWebArea), meetTitle, false),
+			doFullScreenAction(conf.tconn, conf.ui.DoubleClick(meetWebArea), meetTitle, false),
 		)
 	}
 
 	if err := uiauto.Combine("pin to main screen and change background",
 		conf.uiHandler.SwitchToChromeTabByName(meetTitle),
 		pinToMainScreen,
-		changeBackground(staticBackground),
-		changeBackground(dynamicBackground),
-		changeBackground(blurBackground),
+		changeBackgroundAndEnterFullScreen(staticBackground),
+		changeBackgroundAndEnterFullScreen(dynamicBackground),
+		changeBackgroundAndEnterFullScreen(blurBackground),
 	)(ctx); err != nil {
 		return CheckSignedOutError(ctx, conf.tconn, err)
 	}
 	return nil
+}
+
+func (conf *GoogleMeetConference) changeBackgroundOnMeetingPage(background string) action.Action {
+	moreOptions := nodewith.Name("More options").Role(role.PopUpButton)
+	turnOffButton := nodewith.NameContaining(turnOffBackground).Role(role.ToggleButton)
+	// There are two different versions of ui for different accounts to change the background.
+	// The old version shows "Change background", the new version shows "Apply visual effects".
+	changeBackgroundItem := nodewith.NameRegex(regexp.MustCompile("(Apply visual effects|Change background)")).Role(role.MenuItem)
+	backgroundButton := nodewith.NameContaining(background).Role(role.ToggleButton).Focusable()
+	closeButton := nodewith.Name("Close").Role(role.Button).Ancestor(meetWebArea)
+	return uiauto.NamedCombine("change background to "+background,
+		conf.ui.WithTimeout(mediumUITimeout).DoDefaultUntil(moreOptions, conf.ui.WaitUntilExists(changeBackgroundItem)),
+		conf.ui.DoDefault(changeBackgroundItem), // Open "Background" panel.
+		// Repeated clicking on the same background will turn off the effect.
+		// Turn off effect at the beggining to avoid this.
+		conf.ui.WithTimeout(mediumUITimeout).DoDefault(turnOffButton),
+		conf.ui.DoDefault(backgroundButton),
+		conf.ui.LeftClick(closeButton), // Close "Background" panel.
+		takeScreenshot(conf.cr, conf.outDir, "change-background-to-"+background),
+	)
+}
+
+func (conf *GoogleMeetConference) changeBackgroundOnJoinPage(background string) action.Action {
+	const (
+		noEffectText = "No effect & blur"
+		closeText    = "Close"
+	)
+	ui := uiauto.New(conf.tconn)
+	changeBackgroundButton := nodewith.Name("Apply visual effects").Role(role.Button)
+	noEffectAndBlurRegion := nodewith.NameContaining(noEffectText).Role(role.Region)
+	noEffectAndBlurHeading := nodewith.NameContaining(noEffectText).Role(role.Heading)
+	turnOffButton := nodewith.NameContaining(turnOffBackground).Role(role.ToggleButton)
+	backgroundButton := nodewith.Name(background).Role(role.ToggleButton)
+	selectAFileDialog := nodewith.Name("Select a file to open").ClassName("ExtensionViewViews")
+	closeDialog := nodewith.Name(closeText).Role(role.Button).Ancestor(selectAFileDialog)
+	closeButton := nodewith.Name(closeText).Role(role.Button).Ancestor(meetWebArea)
+	return uiauto.NamedCombine("change background to "+background,
+		ui.LeftClick(changeBackgroundButton), // Open "Background" panel.
+		ui.WithTimeout(longUITimeout).WaitUntilExists(noEffectAndBlurRegion),
+		ui.LeftClick(noEffectAndBlurHeading),
+		// Turn off effect to avoid clicking the blur button to turn off the effect.
+		cuj.ExpandMenu(conf.tconn, turnOffButton, noEffectAndBlurRegion, 100),
+		ui.LeftClick(backgroundButton),
+		ui.WaitUntilExists(backgroundButton.Focused()),
+		takeScreenshot(conf.cr, conf.outDir, "change-background-to-"+background),
+		ui.LeftClick(closeButton), // Close "Background" panel.
+		// Some DUT performance is too poor, clicking the turn off button will trigger "Upload a background image".
+		// If the dialog "select a file to open" is opened, close it.
+		uiauto.IfSuccessThen(ui.WithTimeout(shortUITimeout).WaitUntilExists(selectAFileDialog), ui.LeftClick(closeDialog)),
+	)
 }
 
 // Presenting creates Google Slides and Google Docs, shares screen and presents
