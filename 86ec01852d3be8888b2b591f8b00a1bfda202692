@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb66ea8_bacf709a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-21T17:47:49Z",
+      "side": 1,
+      "message": "tast-wise: +2 (see comment about the comment)\n\nwait for +2 from someone from your team.",
+      "revId": "86ec01852d3be8888b2b591f8b00a1bfda202692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bdc70a0_a10406bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-21T17:47:49Z",
+      "side": 1,
+      "message": "not clear what do you mean by \"we can\"... followed by \"That\u0027s the reason we can\u0027t call reboot\".\n\nDo you mean that we are actually connecting to the DUT? (as opposed that \u0027we can connect to the DUT\u0027).",
+      "range": {
+        "startLine": 153,
+        "startChar": 29,
+        "endLine": 153,
+        "endChar": 37
+      },
+      "revId": "86ec01852d3be8888b2b591f8b00a1bfda202692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c68ad3a_c91d4ad3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-21T17:47:49Z",
+      "side": 1,
+      "message": "to be address in another CL: This con be improved... perhaps with a Poll...\n\nwhat if the DUT takes longer than 60 seconds? or what if it takes less (we are wasting lab time) ?",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "86ec01852d3be8888b2b591f8b00a1bfda202692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
