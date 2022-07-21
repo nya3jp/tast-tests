@@ -75,6 +75,30 @@
       },
       "revId": "b3d61ac5c4ab5f85641a7378ee565768f1c3a71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92366d1e_a466e556",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-07-21T02:01:36Z",
+      "side": 1,
+      "message": "This needs to be used also for loopback_peerconnection.html [1].\nI set \"test\" because it seems to be a reasonably common name as a tilte of the test page.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/webrtc/data/loopback_peerconnection.html;l\u003d3;drc\u003da742e40d50175be7074f41c2248841a76bdebfee",
+      "parentUuid": "c03824d5_432c4b07",
+      "range": {
+        "startLine": 346,
+        "startChar": 64,
+        "endLine": 346,
+        "endChar": 68
+      },
+      "revId": "b3d61ac5c4ab5f85641a7378ee565768f1c3a71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
