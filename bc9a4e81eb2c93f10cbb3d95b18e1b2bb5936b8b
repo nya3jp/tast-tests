@@ -63,6 +63,30 @@
       },
       "revId": "bc9a4e81eb2c93f10cbb3d95b18e1b2bb5936b8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17bf535b_e861511e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-21T09:12:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a9a8c78_12523708",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "bc9a4e81eb2c93f10cbb3d95b18e1b2bb5936b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
