@@ -72,8 +72,20 @@ func LaunchImageInPhotosFromGallery(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
 	defer cancel()
+
+	// This test inherits a parent fixture from ARC++ where screen recorder is not available.
+	recorder, err := uiauto.NewScreenRecorder(ctx, tconn)
+	if err != nil {
+		s.Log("Failed to create screen recorder: ", err)
+	} else {
+		if recorder.Start(ctx, tconn); err != nil {
+			s.Log("Failed to start screen recorder: ", err)
+		} else {
+			defer recorder.StopAndSaveOnError(cleanupCtx, filepath.Join(s.OutDir(), "record.webm"), s.HasError)
+		}
+	}
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
