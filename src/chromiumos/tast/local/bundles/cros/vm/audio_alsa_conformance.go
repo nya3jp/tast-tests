@@ -30,7 +30,7 @@ func init() {
 		Func:         AudioAlsaConformance,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests different audio devices in crosvm with alsa conformance test",
-		Contacts:     []string{"woodychow@google.com", "paulhsia@google.com", "chromeos-audio-bugs@google.com", "crosvm-core@google.com"},
+		Contacts:     []string{"paulhsia@google.com", "normanbt@chromium.org", "chromeos-audio-bugs@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{runAlsaConformanceTest},
 		Timeout:      12 * time.Minute,
