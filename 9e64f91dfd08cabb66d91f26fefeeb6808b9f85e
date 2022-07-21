@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8371c338_84d3d96d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-07-21T06:05:03Z",
+      "side": 1,
+      "message": "\u003e What\u0027s the blocker for RunMultiple for lacros? I think I see it used e.g. here https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/launcher_animation_perf.go;l\u003d222 which has a lacros variation\n\nThe issue is that perfutil is under bundles/cros/ui so launcher_animation_perf.go in the same directory could use it.\n\nBut bundles/cros/lacros cannot include bundles/cros/ui/perfutil because of the presubmit failures. See https://crrev.com/c/3543108/1#message-5de0d888233ff442a09fd97c20ee77bb9180641f . As a result we had to move perfutil/recorder.go to the common component here: \nhttps://crrev.com/c/3574165 to allow its use from bundles/cros/lacros.",
+      "parentUuid": "42b50a0f_8dadba71",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "9e64f91dfd08cabb66d91f26fefeeb6808b9f85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c7c1874_3f4d3444",
