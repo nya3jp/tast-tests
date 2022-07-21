@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33b4797_56e694ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/set_up.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-07-21T18:11:23Z",
+      "side": 1,
+      "message": "Yes, they are needed. A device with a TPM is required because Demo Mode uses Zero Touch enrollment for enterprise enrollment, which requires a real TPM. \n\nWithout the other two dependencies, we would skip the ARC ToS screen, which is only shown on chrome-branded builds when the device is ARC-capable. I _think_ \"arc\" and \"chrome_internal\" are the right dependencies to specify here, but LMK if others would be more correct.",
+      "parentUuid": "cf91bc13_d7b1c74f",
+      "range": {
+        "startLine": 30,
+        "startChar": 35,
+        "endLine": 30,
+        "endChar": 66
+      },
+      "revId": "dfb703fada835d266d579bae4e728ffc6fb6ffbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "851c95e5_5dbd69a9",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e72cd0_88dd3556",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/set_up.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-07-21T18:11:23Z",
+      "side": 1,
+      "message": "Done, added findAndClickButton method to deduplicate 3 of the button clicks. The EULA agreement and network screens are somewhat special cases that can\u0027t be duduplicated yet, but hopefully will be with the larger effort of sharing logic amongst OOBE tests.",
+      "parentUuid": "851c95e5_5dbd69a9",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 2
+      },
+      "revId": "dfb703fada835d266d579bae4e728ffc6fb6ffbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1195582_4ea7622c",
@@ -77,6 +125,24 @@
       "writtenOn": "2022-05-10T06:18:22Z",
       "side": 1,
       "message": "TODO(crbug.com/1291153)",
+      "revId": "dfb703fada835d266d579bae4e728ffc6fb6ffbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6695bfc7_571e4173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/set_up.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-07-21T18:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1195582_4ea7622c",
       "revId": "dfb703fada835d266d579bae4e728ffc6fb6ffbe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
