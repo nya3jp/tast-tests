@@ -16,6 +16,24 @@
       "message": "Do you have a plan to move the whole app lib out to src/chromiumos/tast/local/chrome/googleapps? So more teams can benefit from your contribution.",
       "revId": "b34796ecff59a67e5ea30f8895da6ace28bedf75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead9e897_e8106b8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1527578
+      },
+      "writtenOn": "2022-07-21T09:18:34Z",
+      "side": 1,
+      "message": "Yes, I will create a new cl to change this.\nThanks for your advice!",
+      "parentUuid": "4413a85e_35bedc14",
+      "revId": "b34796ecff59a67e5ea30f8895da6ace28bedf75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
