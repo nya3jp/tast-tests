@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b6358f9_654c220f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-07-21T05:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c6a7a65_de8a986f",
+      "revId": "eeda93cd1166f21555bf60d0bc84c3be9b1cd2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "095c225e_a0fd2001",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-07-21T04:44:01Z",
       "side": 1,
       "message": "nit: Replace with\n\n```\n// If non-empty, the media to send through the RTC connection will be obtained\n// using getDisplayMedia() and the value corresponds to the surface type. If\n// empty, the media to send will be obtained using getUserMedia().\n```",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 87
+      },
+      "revId": "eeda93cd1166f21555bf60d0bc84c3be9b1cd2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a472fc8c_6604e9b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-07-21T05:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "095c225e_a0fd2001",
       "range": {
         "startLine": 57,
         "startChar": 1,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "122a3c18_ad7e48f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-07-21T05:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "987a75fb_7fc1d585",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 22
+      },
+      "revId": "eeda93cd1166f21555bf60d0bc84c3be9b1cd2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a9f197c_5a54a7d6",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-07-21T04:44:01Z",
       "side": 1,
       "message": "nit: Remove `a`.",
+      "range": {
+        "startLine": 184,
+        "startChar": 75,
+        "endLine": 184,
+        "endChar": 76
+      },
+      "revId": "eeda93cd1166f21555bf60d0bc84c3be9b1cd2b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23cfc57c_4d002eec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/webrtc/peerconnection/peer_connection_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-07-21T05:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a9f197c_5a54a7d6",
       "range": {
         "startLine": 184,
         "startChar": 75,
