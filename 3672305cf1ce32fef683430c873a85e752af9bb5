@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a3e5b7_94ad3481",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-21T19:21:42Z",
+      "side": 1,
+      "message": "Eliot, can you PTAL and stamp your CR in case everything is alright? Thank you.",
+      "revId": "3672305cf1ce32fef683430c873a85e752af9bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

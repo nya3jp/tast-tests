@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38e1c1b9_7f5fbb5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-21T19:21:42Z",
+      "side": 1,
+      "message": "Alright, cool. I just uploaded for review the ColdbootDocsCUJ CL now belonging to this CL\u0027s chain. I\u0027m marking the issue discussed in this thread as resolved therefore.\n\nThank you very much again!",
+      "parentUuid": "24a3e513_491ada69",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e53e0ce_6dac09a0",
