@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb09e7e8_5ad6a5cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-21T09:15:07Z",
+      "side": 1,
+      "message": "Since we have a plan to move CUJ tests to separate directory, can we start from new tests?",
+      "revId": "9d9638ff55556a0b0ccf86e538413250c8ca1e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
