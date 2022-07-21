@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1801948d_c82396b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-21T09:57:51Z",
+      "side": 1,
+      "message": "Is it OK to do it in this test, or should I create a new one? The new one would have the same content as recovery.go but with removal at the end ",
+      "revId": "57b28cbccedbe0c318182b1f9bdca2eabb2b421d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
