@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "007324f9_0e0318dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-07-21T06:49:58Z",
+      "side": 1,
+      "message": "I don\u0027t actually know how to run ARC tests (that presumably expect a specific device to be attached). For me, running this on my local DUT fails with \"arc.MTP [ FAIL ] [Fixture failure] mtpWithAndroid: Failed to setup an adb device: failed to list adb devices: context deadline exceeded; last error follows: no device satisfies the condition\".\n\nI assume there\u0027s some configuration I\u0027d need to do to run this on some dedicated ARC test lab somewhere (and the device that this tast test was previously hard-coding the Vendor+Model pair for). It\u0027s probably easier if you can patch in this small CL and run it yourself, if you want to check that the tast test now passes??",
+      "revId": "d7bb3e82f6cecc95e7d3a11dc058a474ad3128ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c8ee98_66fb117c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1237531
+      },
+      "writtenOn": "2022-07-21T06:49:58Z",
+      "side": 1,
+      "message": "youkichihosoi@, can you review this? I\u0027d normally send this to rnanjappan@ (based on who recently touched mtp.go) but they\u0027re OOO for some weeks and you\u0027re listed on b/238376181.",
+      "revId": "d7bb3e82f6cecc95e7d3a11dc058a474ad3128ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
