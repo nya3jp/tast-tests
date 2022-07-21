@@ -90,6 +90,18 @@ func AshCommonMetricConfigs() []MetricConfig {
 		NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness.TransitionToShownHotseat"),
 		NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness.TransitionToExtendedHotseat"),
 		NewSmoothnessMetricConfig("Ash.HotseatTransition.AnimationSmoothness.TransitionToHiddenHotseat"),
+		NewCustomMetricConfig("BootTime.Authenticate", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("BootTime.Chrome", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("BootTime.Firmware", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("BootTime.Kernel", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("BootTime.Login2", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("BootTime.LoginNewUser", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("BootTime.System", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("BootTime.Total2", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("ShutdownTime.BrowserDeleted", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("ShutdownTime.Logout", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("ShutdownTime.Restart", "ms", perf.SmallerIsBetter),
+		NewCustomMetricConfig("ShutdownTime.UIMessageLoopEnded", "ms", perf.SmallerIsBetter),
 	}
 }
 
