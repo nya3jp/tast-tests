@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f9ac481_2ca91eb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001886
+      },
+      "writtenOn": "2022-07-21T05:10:25Z",
+      "side": 1,
+      "message": "Yes I would prefer to use a common format like JSON here. Not meant to block this CL though, I am ok with a TODO here.",
+      "parentUuid": "2ac1b449_c8aefe47",
+      "revId": "314d9b1d366be1067932e2679b93bff23054b56d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5d3a315_bdcf6fe6",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/arc_camera_app.go",
         "patchSetId": 5
