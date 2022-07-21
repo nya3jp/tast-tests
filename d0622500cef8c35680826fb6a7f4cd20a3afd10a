@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b4a8b68_889b1cfc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-21T04:23:24Z",
+      "side": 1,
+      "message": "consider combining these three actions with `uiauto.Combine`",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 56
+      },
+      "revId": "d0622500cef8c35680826fb6a7f4cd20a3afd10a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
