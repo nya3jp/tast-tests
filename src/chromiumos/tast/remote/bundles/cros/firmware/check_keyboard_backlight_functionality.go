@@ -112,6 +112,22 @@ func CheckKeyboardBacklightFunctionality(ctx context.Context, s *testing.State) 
 		s.Log("Unexpected output when checking on gpio: ", err)
 	}
 
+	s.Log("Checking for available led paths")
+	ledPaths := "/sys/class/leds"
+	out, err := s.DUT().Conn().CommandContext(ctx, "ls", ledPaths).Output()
+	if err != nil {
+		s.Log("Could not list '/sys/class/leds': ", err)
+	} else {
+		var paths []string
+		for _, val := range strings.Split(string(out), "\n") {
+			if val == "" {
+				continue
+			}
+			paths = append(paths, strings.TrimSpace(val))
+		}
+		s.Logf("Found %s", paths)
+	}
+
 	initValue, err := checkInitKBBacklight(ctx, h)
 	if err != nil {
 		s.Fatal("Failed to check initial keybaord backlight value: ", err)
