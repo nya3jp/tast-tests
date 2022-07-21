@@ -192,7 +192,7 @@ func OverviewCloseAll(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find CloseAll toast: ", err)
 	}
 
-	// Theres should still be 0 windows since all windows are closed.
+	// There should still be 0 windows since all windows are closed.
 	ws, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to count windows: ", err)
@@ -204,5 +204,15 @@ func OverviewCloseAll(ctx context.Context, s *testing.State) {
 		}
 
 		s.Fatalf("Unexpected number of windows: got %v, want 0", len(ws))
+	}
+
+	// There should be only one desk remaining.
+	dc, err := ash.GetDeskCount(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to count desks: ", err)
+	}
+
+	if dc != 1 {
+		s.Fatalf("Unexpected number of desks: got %v, want 1", dc)
 	}
 }

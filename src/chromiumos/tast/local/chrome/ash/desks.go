@@ -102,8 +102,22 @@ func ActivateAdjacentDesksToTargetIndex(ctx context.Context, tconn *chrome.TestC
 	return nil
 }
 
+// GetDeskCount asks Ash's DesksController to give it the number of desks that
+// are currently open.
+// This call will fail if the returned desk count is 0, which should never
+// happen.
+func GetDeskCount(ctx context.Context, tconn *chrome.TestConn) (int, error) {
+	count := 0
+	if err := tconn.Call(ctx, &count, "tast.promisify(chrome.autotestPrivate.getDeskCount)"); err != nil {
+		return count, err
+	}
+	if count == 0 {
+		return count, errors.New("failed to get desk count")
+	}
+	return count, nil
+}
+
 // FindDeskMiniViews returns a list of DeskMiniView nodes.
-// TODO(crbug/1251558): use autotest api to get the number of desks instead.
 func FindDeskMiniViews(ctx context.Context, ac *uiauto.Context) ([]uiauto.NodeInfo, error) {
 	deskMiniViews := nodewith.ClassName("DeskMiniView")
 	deskMiniViewsInfo, err := ac.NodesInfo(ctx, deskMiniViews)

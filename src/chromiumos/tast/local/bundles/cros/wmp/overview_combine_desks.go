@@ -176,6 +176,13 @@ func OverviewCombineDesks(ctx context.Context, s *testing.State) {
 		s.Fatalf("Unexpected number of windows: got %v, want 2", len(ws))
 	}
 
-	// TODO(crbug.com/1251558): Make `AutoTestDesksApi::GetDeskCount()` callable in Tast
-	// to make desks countable after removing desk.
+	// There should be only one desk remaining.
+	dc, err := ash.GetDeskCount(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to count desks: ", err)
+	}
+
+	if dc != 1 {
+		s.Fatalf("Unexpected number of desks: got %v, want 1", dc)
+	}
 }

@@ -199,6 +199,16 @@ func OverviewCloseAllUndo(ctx context.Context, s *testing.State) {
 		}
 	}
 
+	// There should be one desk at this point.
+	dc, err := ash.GetDeskCount(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to count desks: ", err)
+	}
+
+	if dc != 1 {
+		s.Fatalf("Unexpected number of desks: got %v, want 1", dc)
+	}
+
 	// Finds the "Undo" button on the CloseAll toast.
 	undoButton := nodewith.ClassName("PillButton").Name("Undo")
 
@@ -219,5 +229,15 @@ func OverviewCloseAllUndo(ctx context.Context, s *testing.State) {
 
 	if wc != 3 {
 		s.Fatalf("Unexpected number of windows: got %v, want 0", wc)
+	}
+
+	// There should be two desks remaining.
+	dc, err = ash.GetDeskCount(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to count desks: ", err)
+	}
+
+	if dc != 2 {
+		s.Fatalf("Unexpected number of desks: got %v, want 2", dc)
 	}
 }
