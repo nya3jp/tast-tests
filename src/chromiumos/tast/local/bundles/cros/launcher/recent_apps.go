@@ -41,18 +41,17 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		Params: []testing.Param{
 			{
 				Name:              "androidp_clamshell",
 				Val:               initParams{TabletMode: false, BootWithArc: true},
-				Fixture:           "arcBootedWithProductivityLauncher",
 				ExtraSoftwareDeps: []string{"android_p"},
 				Timeout:           chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 			},
 			{
 				Name:              "androidp_tablet",
 				Val:               initParams{TabletMode: true, BootWithArc: true},
-				Fixture:           "arcBootedWithProductivityLauncher",
 				ExtraSoftwareDeps: []string{"android_p"},
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				Timeout:           chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
@@ -60,14 +59,12 @@ func init() {
 			{
 				Name:              "androidvm_clamshell",
 				Val:               initParams{TabletMode: false, BootWithArc: true},
-				Fixture:           "arcBootedWithProductivityLauncher",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				Timeout:           chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 			},
 			{
 				Name:              "androidvm_tablet",
 				Val:               initParams{TabletMode: true, BootWithArc: true},
-				Fixture:           "arcBootedWithProductivityLauncher",
 				ExtraSoftwareDeps: []string{"android_vm"},
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				Timeout:           chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
@@ -75,13 +72,11 @@ func init() {
 			{
 				Name:    "cws_clamshell",
 				Val:     initParams{TabletMode: false, BootWithArc: false},
-				Fixture: "chromeLoggedInWithGaiaProductivityLauncher",
 				Timeout: 3*time.Minute + cws.InstallationTimeout,
 			},
 			{
 				Name:              "cws_tablet",
 				Val:               initParams{TabletMode: true, BootWithArc: false},
-				Fixture:           "chromeLoggedInWithGaiaProductivityLauncher",
 				ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 				Timeout:           3*time.Minute + cws.InstallationTimeout,
 			}},
@@ -97,13 +92,26 @@ func RecentApps(ctx context.Context, s *testing.State) {
 	tabletMode := testCase.TabletMode
 	arcBoot := testCase.BootWithArc
 
-	var cr *chrome.Chrome
-
-	if arcBoot {
-		cr = s.FixtValue().(*arc.PreData).Chrome
-	} else {
-		cr = s.FixtValue().(*chrome.Chrome)
+	opts := []chrome.Option{
+		chrome.EnableFeatures("ProductivityLauncher"),
 	}
+
+	// Previous tests may depend on launching an app.
+	// If an app is launched frequently enough in previous tests, it could be bumped up as recent app.
+	// Create a new chrome session for each test to ensure a clean state for recent apps.
+	if arcBoot {
+		opts = append(opts, chrome.ARCEnabled())
+		opts = append(opts, chrome.UnRestrictARCCPU())
+	} else {
+		// GAIA login is required to use Chrome Web Store.
+		opts = append(opts, chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
+	}
+
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		s.Fatal("Chrome login failed: ", err)
+	}
+	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -139,7 +147,13 @@ func RecentApps(ctx context.Context, s *testing.State) {
 	if arcBoot {
 		// Install a mock Android app.
 		const apk = "ArcInstallAppWithAppListSortedTest.apk"
-		a := s.FixtValue().(*arc.PreData).ARC
+
+		a, err := arc.New(ctx, s.OutDir())
+		if err != nil {
+			s.Fatal("Failed to start ARC: ", err)
+		}
+		defer a.Close(cleanupCtx)
+
 		if err := a.Install(ctx, arc.APKPath(apk)); err != nil {
 			s.Fatal("Failed installing app: ", err)
 		}
@@ -207,12 +221,18 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		s.Fatalf("App %s never opened: %v", appName, err)
 	}
 
-	// ARC Apps need to wait for the window to finish initialization after they show in the
-	// shelf.
+	// Wait for the window to finish initialization after they show in the shelf.
+
+	var windowName string
+
 	if arcBoot {
-		if err := ui.WaitUntilExists(nodewith.Role(role.Window).NameContaining("InstallAppWith").ClassName("RootView"))(ctx); err != nil {
-			s.Fatal("Failed to wait for app window: ", err)
-		}
+		windowName = "InstallAppWith"
+	} else {
+		windowName = "Google Wallpaper"
+	}
+
+	if err := ui.WaitUntilExists(nodewith.Role(role.Window).NameContaining(windowName).ClassName("RootView"))(ctx); err != nil {
+		s.Fatal("Failed to wait for app window: ", err)
 	}
 
 	if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
