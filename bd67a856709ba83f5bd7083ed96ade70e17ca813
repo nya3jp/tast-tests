@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb68a09_40977acc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-21T15:45:40Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "bd67a856709ba83f5bd7083ed96ade70e17ca813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee302db8_ac6caccc",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_enrollment.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-21T15:45:40Z",
+      "side": 1,
+      "message": "Maybe move it into a separate function, so you can add an error message if any of the deprovisioning steps have failed. Right now if the `GetDeviceID` fails, it won\u0027t be clear from the messages that the deprovisioning is not done.",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 3
+      },
+      "revId": "bd67a856709ba83f5bd7083ed96ade70e17ca813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
