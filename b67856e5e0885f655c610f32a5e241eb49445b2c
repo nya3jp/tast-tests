@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ac4ee5a_b623f8dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-21T20:58:31Z",
+      "side": 1,
+      "message": "No, it exits when the context reports that it is done. Additionally, the way that the ml-service that we replace works is that it will start on demand. If it\u0027s not running, dbus will start it.",
+      "parentUuid": "a213fbd0_98b1020c",
+      "revId": "b67856e5e0885f655c610f32a5e241eb49445b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7b46701_43b80934",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
         "patchSetId": 3
