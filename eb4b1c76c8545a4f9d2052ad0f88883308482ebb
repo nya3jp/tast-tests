@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8983752e_9b2ce887",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/diagnosticsapp/diagnosticsapp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1513257
+      },
+      "writtenOn": "2022-07-21T17:57:06Z",
+      "side": 1,
+      "message": "I\u0027m using `IfSuccessfulThen` instead of `IfNodeExists` as when testing `IfNodeExists` would incorrectly return false despite using polling and other mechanisms to test for node.",
+      "range": {
+        "startLine": 184,
+        "startChar": 29,
+        "endLine": 184,
+        "endChar": 30
+      },
+      "revId": "eb4b1c76c8545a4f9d2052ad0f88883308482ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
