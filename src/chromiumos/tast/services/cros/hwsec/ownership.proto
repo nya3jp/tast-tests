@@ -14,4 +14,5 @@ option go_package = "chromiumos/tast/services/cros/hwsec";
 service OwnershipService {
 	rpc EnsureTPMIsReset(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 	rpc EnsureTPMAndSystemStateAreReset(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+	rpc ResetDeviceToFactoryStateForZTE(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }

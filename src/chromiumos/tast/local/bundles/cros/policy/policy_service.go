@@ -22,6 +22,10 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/policyutil/externaldata"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/syslog"
@@ -127,6 +131,76 @@ func (c *PolicyService) GAIAEnrollUsingChrome(ctx context.Context, req *ppb.GAIA
 	}
 
 	c.chrome = cr
+
+	return &empty.Empty{}, nil
+}
+
+// GAIAZTEEnrollUsingChrome enrolls the device using dmserver.
+func (c *PolicyService) GAIAZTEEnrollUsingChrome(ctx context.Context, req *ppb.GAIAZTEEnrollUsingChromeRequest) (*empty.Empty, error) {
+	testing.ContextLogf(ctx, "ZTE Enrolling using Chrome with dmserver: %s", string(req.DmserverURL))
+
+	/*
+		cr, err := chrome.New(
+			ctx,
+			chrome.GAIAZTEEnterpriseEnroll(),
+			chrome.KeepState(),
+			chrome.NoLogin(),
+			chrome.DMSPolicy(req.DmserverURL),
+			chrome.ExtraArgs("--enable-features=OobeConsolidatedConsent"),
+		)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to start chrome")
+		}
+	*/
+
+	cr, err := chrome.New(
+		ctx,
+		chrome.KeepState(),
+		chrome.NoLogin(),
+		chrome.KeepEnrollment(),
+		chrome.DMSPolicy(req.DmserverURL),
+		chrome.LoadSigninProfileExtension(req.ManifestKey),
+		chrome.ExtraArgs("--enable-features=OobeConsolidatedConsent"),
+	)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start chrome")
+	}
+	testing.ContextLog(ctx, "Created chrome")
+
+	c.chrome = cr
+
+	return &empty.Empty{}, nil
+}
+
+// GAIAZTEEnrollClickThrough enrolls the device using dmserver.
+func (c *PolicyService) GAIAZTEEnrollClickThrough(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
+	//testing.ContextLogf(ctx, "ZTE Enrolling using Chrome with dmserver: %s", string(req.DmserverURL))
+
+	testing.ContextLog(ctx, "Waiting for connection")
+	oobeConn, err := c.chrome.WaitForOOBEConnection(ctx)
+	if err != nil {
+		errors.Wrap(err, "failed to create OOBE connection")
+	}
+	defer oobeConn.Close()
+
+	tconn, err := c.chrome.SigninProfileTestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create test API connection")
+	}
+	ui := uiauto.New(tconn).WithTimeout(10 * time.Second)
+
+	testing.ContextLog(ctx, "Waiting for the welcome screen")
+	if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.WelcomeScreen.isVisible()"); err != nil {
+		errors.Wrap(err, "failed to wait for first screen")
+	}
+
+	focusedButton := nodewith.State(state.Focused, true).Role(role.Button)
+	if err := uiauto.Combine("click next on the welcome screen",
+		ui.WaitUntilExists(focusedButton),
+		ui.LeftClick(focusedButton),
+	)(ctx); err != nil {
+		errors.Wrap(err, "failed to click for first screen")
+	}
 
 	return &empty.Empty{}, nil
 }

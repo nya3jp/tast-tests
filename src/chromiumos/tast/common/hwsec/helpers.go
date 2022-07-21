@@ -431,6 +431,28 @@ func (h *CmdTPMClearHelper) EnsureTPMAndSystemStateAreReset(ctx context.Context)
 	return h.ensureTPMIsReset(ctx, true)
 }
 
+// ResetDeviceToFactoryStateForZTE calls to reset device to factory.
+func (h *CmdTPMClearHelper) ResetDeviceToFactoryStateForZTE(ctx context.Context) error {
+	if err := h.daemonController.WaitForAllDBusServices(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for hwsec D-Bus services to be ready")
+	}
+	//return h.ensureTPMIsReset(ctx, true)
+	//vpd -d check_enrollment -i RW_VPD
+	/*
+		if _, err := h.cmdRunner.Run(ctx, "vpd", "-d", "check_enrollment", "-i", "RW_VPD"); err != nil {
+			testing.ContextLog(ctx, "Failed to remove check_enrollment in vpd: ", err)
+		}
+	*/
+	if _, err := h.cmdRunner.Run(ctx, "cd", "/"); err != nil {
+		testing.ContextLog(ctx, "Moved over to /: ", err)
+	}
+
+	if _, err := h.cmdRunner.Run(ctx, "./reset-device", "--factory"); err != nil {
+		testing.ContextLog(ctx, "Moved over to /: ", err)
+	}
+	return nil
+}
+
 // EnableUserSecretStash enables the UserSecretStash experiment by creating a
 // flag file that's checked by cryptohomed.
 func (h *CmdTPMClearHelper) EnableUserSecretStash(ctx context.Context) (func() error, error) {
