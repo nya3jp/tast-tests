@@ -124,6 +124,24 @@
       "parentUuid": "1042c3ec_ac6745af",
       "revId": "fba14b50876c21323ae66b958fee32e89cd91a7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8182ed56_b17b44c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-07-21T05:37:59Z",
+      "side": 1,
+      "message": "I already check logs.\nThey all have same error on step 5.\n\nAnd I did lots tests to see how test failed.\nI got one failed after 20 tests.\nYou can see the file named \"20220720-145259 failed\".\nPlease see here:\nhttps://drive.google.com/drive/u/1/folders/12_Bb-OpdmDZYUXatilKyPMmcYh1bVQRZ\n\nIn my failure test, it also failed on step 5.\nAnd as my observation, Chromebook was freezed and not respond any action, screen was black.",
+      "parentUuid": "1ea64659_9adbc44f",
+      "revId": "fba14b50876c21323ae66b958fee32e89cd91a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
