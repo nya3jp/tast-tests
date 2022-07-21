@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c278422b_59c52665",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-21T20:59:41Z",
+      "side": 1,
+      "message": "Do you have an example? I basically copied this format from another test.",
+      "parentUuid": "796d57d5_80cac99b",
+      "revId": "b67856e5e0885f655c610f32a5e241eb49445b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a213fbd0_98b1020c",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
         "patchSetId": 3
