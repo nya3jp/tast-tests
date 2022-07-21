@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4c9bda5_1d175d7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324089
+      },
+      "writtenOn": "2022-07-21T06:33:44Z",
+      "side": 1,
+      "message": "Thanks Derek for doing this",
+      "revId": "bc9a4e81eb2c93f10cbb3d95b18e1b2bb5936b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3cffeef_fb8d2e9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1324089
+      },
+      "writtenOn": "2022-07-21T06:33:44Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with go / tast tests so couldn\u0027t review this. \nOne question: For the notification to appear, the battery must be less than 80% right? From what I see in the code I couldn\u0027t see it. Am I missing something?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "bc9a4e81eb2c93f10cbb3d95b18e1b2bb5936b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
