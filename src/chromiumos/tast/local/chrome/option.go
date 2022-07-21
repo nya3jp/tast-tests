@@ -286,6 +286,17 @@ func GAIAEnterpriseEnroll(creds Creds) Option {
 	}
 }
 
+// GAIAZTEEnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
+// Enrollment before login.
+func GAIAZTEEnterpriseEnroll() Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.EnrollMode = config.GAIAZTEEnroll
+		//cfg.EnrollMode = config.GAIAEnroll
+		//cfg.LoginMode = config.GAIALogin
+		return nil
+	}
+}
+
 // FakeEnterpriseEnroll returns an Option that can be passed to New to enable Enterprise
 // Enrollment with a fake local device management server before login.
 func FakeEnterpriseEnroll(creds Creds) Option {
