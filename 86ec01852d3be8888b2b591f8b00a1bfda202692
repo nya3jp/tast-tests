@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bccb12e_18b53e45",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-21T23:34:03Z",
+      "side": 1,
+      "message": "Update flow consists of the following steps:\n1. The test reboots the device.\n2. During boot, `bio_fw_updater` is called and it updates FP firmware. After update `bio_fw_updater` schedules reboot.\n3. When all devices are updated (it could also be touchpad for example) the DUT reboots.\n4. DUT boots to the login screen.\n\nSo there are actually 2 reboots. The problem is that we can connect to the device before the second reboot (After all devices are updated, but before reboot). If I call `d.Reboot()` it could return before the second reboot, so the connection will eventually be broken.\n\nI wrote \"we can\" because it hugely depends on the board, DHCP server, servo, etc. For example, on Zork the test connects to DUT always after the second reboot but on the hatch it connects before that.",
+      "parentUuid": "4bdc70a0_a10406bd",
+      "range": {
+        "startLine": 153,
+        "startChar": 29,
+        "endLine": 153,
+        "endChar": 37
+      },
+      "revId": "86ec01852d3be8888b2b591f8b00a1bfda202692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c68ad3a_c91d4ad3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-21T17:47:49Z",
       "side": 1,
       "message": "to be address in another CL: This con be improved... perhaps with a Poll...\n\nwhat if the DUT takes longer than 60 seconds? or what if it takes less (we are wasting lab time) ?",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "86ec01852d3be8888b2b591f8b00a1bfda202692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea05dca_9fe4144b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-21T23:34:03Z",
+      "side": 1,
+      "message": "I really tried to use `Poll` (that was my first idea), but it needs to take into account DUT behaviour from the comment above. I was thinking about polling for e.g. 10 seconds if DUT is reachable, if it\u0027s not reachable then I could use `WaitConnect`.\n\nMaybe you have some better idea to implement it?",
+      "parentUuid": "7c68ad3a_c91d4ad3",
       "range": {
         "startLine": 161,
         "startChar": 1,
