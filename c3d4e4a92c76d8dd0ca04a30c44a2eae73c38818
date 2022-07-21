@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc19e50_8b7ac5d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-21T05:01:11Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "c3d4e4a92c76d8dd0ca04a30c44a2eae73c38818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b260a0f_4a198c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-21T05:01:11Z",
+      "side": 1,
+      "message": "nit: this ExtraAttr is redundant. It is already in the Attr. Sorry, I think I added it above.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 49
+      },
+      "revId": "c3d4e4a92c76d8dd0ca04a30c44a2eae73c38818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fee138c_d68115e6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-21T05:01:11Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 58,
+        "startChar": 33,
+        "endLine": 58,
+        "endChar": 46
+      },
+      "revId": "c3d4e4a92c76d8dd0ca04a30c44a2eae73c38818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
