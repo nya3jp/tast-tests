@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a568a74_2b05feeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_credential_auth_session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-07-21T17:51:09Z",
+      "side": 1,
+      "message": "defer InvalidateAuthSession",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 2
+      },
+      "revId": "80f888c419cda7cfd4a062a63dc8060bae10ab1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4807b354_afc5c310",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_credential_auth_session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-07-21T17:51:09Z",
+      "side": 1,
+      "message": "This should be ctx",
+      "range": {
+        "startLine": 114,
+        "startChar": 30,
+        "endLine": 114,
+        "endChar": 43
+      },
+      "revId": "80f888c419cda7cfd4a062a63dc8060bae10ab1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4dd6542_ac844752",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_credential_auth_session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-07-21T17:51:09Z",
+      "side": 1,
+      "message": "Please update the comment",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 83
+      },
+      "revId": "80f888c419cda7cfd4a062a63dc8060bae10ab1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ee1b75_6de294d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_credential_auth_session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-07-21T17:51:09Z",
+      "side": 1,
+      "message": "move this comment to line 174",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 73
+      },
+      "revId": "80f888c419cda7cfd4a062a63dc8060bae10ab1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3571e39_888a0412",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_credential_auth_session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-07-21T17:51:09Z",
+      "side": 1,
+      "message": "ctxForCleanup",
+      "range": {
+        "startLine": 173,
+        "startChar": 39,
+        "endLine": 173,
+        "endChar": 40
+      },
+      "revId": "80f888c419cda7cfd4a062a63dc8060bae10ab1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8df1733e_17ab2ecc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_credential_auth_session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-07-21T17:51:09Z",
+      "side": 1,
+      "message": "code is shifted I think and missing the check for the previous error.\nAlso please defer invalidateAuthSession after the error check",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 4
+      },
+      "revId": "80f888c419cda7cfd4a062a63dc8060bae10ab1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18fc46f9_f33d7a6c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_credential_auth_session.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-07-21T17:51:09Z",
+      "side": 1,
+      "message": "ctxForCleanup",
+      "range": {
+        "startLine": 186,
+        "startChar": 25,
+        "endLine": 186,
+        "endChar": 28
+      },
+      "revId": "80f888c419cda7cfd4a062a63dc8060bae10ab1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
