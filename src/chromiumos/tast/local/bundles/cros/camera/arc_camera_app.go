@@ -6,8 +6,9 @@ package camera
 
 import (
 	"context"
+	"encoding/json"
 	"path/filepath"
-	"strings"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/media/caps"
@@ -44,28 +45,6 @@ func init() {
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Fixture:      "arcBootedRestricted",
 	})
-}
-
-// parseCameraIDs parses a raw string returned by ArcCameraFpsApp via
-// ACTION_GET_CAMERA_IDS intent and returns a string array which contains the
-// camera IDs with the same order as they are in the raw string.
-func parseCameraIDs(ctx context.Context, raw string) []string {
-	// Format: [0: {CamId0}, 1: {CamId1}, ]. Example: [0: 0, 1: 1, ].
-	// TODO(b/238846980): Change to use a common format such as JSON.
-	pairs := strings.Split(raw[1:len(raw)-1], ", ")
-	var ids []string
-	for _, pair := range pairs {
-		if len(pair) == 0 {
-			continue
-		}
-		values := strings.Split(pair, ": ")
-		if len(values) <= 1 {
-			testing.ContextLogf(ctx, "Unrecognized pair string: %v. Ignore it", pair)
-			continue
-		}
-		ids = append(ids, values[1])
-	}
-	return ids
 }
 
 func ARCCameraApp(ctx context.Context, s *testing.State) {
@@ -123,10 +102,14 @@ func ARCCameraApp(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Failed to get camera ids: ", err)
 			}
-			cameraIDs := parseCameraIDs(ctx, rawCameraIds)
+
+			var cameraIDs []int
+			if err := json.Unmarshal([]byte(rawCameraIds), &cameraIDs); err != nil {
+				s.Fatalf("Failed to parse camera ids from %v: %v", rawCameraIds, err)
+			}
 
 			for _, id := range cameraIDs {
-				if _, err := a.BroadcastIntent(ctx, intentSetCameraID, "--ei", "id", id); err != nil {
+				if _, err := a.BroadcastIntent(ctx, intentSetCameraID, "--ei", "id", strconv.Itoa(id)); err != nil {
 					s.Fatalf("Failed to switch to camera: %v, %v", id, err)
 				}
 				testing.ContextLog(ctx, "Switch to camera ", id)

@@ -55,6 +55,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
+import org.json.JSONArray;
+
 public class Camera2VideoFragment extends Fragment {
 
     private static final String TAG = "ArcCameraFpsTest";
@@ -273,16 +275,11 @@ public class Camera2VideoFragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
-        for (int i = 0; i < ids.length; i++) {
-            sb.append(i);
-            sb.append(": ");
-            sb.append(ids[i]);
-            sb.append(", ");
+        JSONArray jsonArr = new JSONArray();
+        for (String id : ids) {
+            jsonArr.put(Integer.parseInt(id));
         }
-        sb.append("]");
-        return sb.toString();
+        return jsonArr.toString();
     }
 
     public String getSnapshotResolutions() {
