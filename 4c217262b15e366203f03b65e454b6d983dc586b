@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eea4fd4d_8915a199",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-21T01:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3743ff7f_380d6ec3",
+      "revId": "4c217262b15e366203f03b65e454b6d983dc586b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51ec993a_fbbc9647",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-21T01:13:21Z",
       "side": 1,
       "message": "Not for this CL, but we should introduce a common helper for this at some point... There are already 15-20 cryptohome/hwsec tests that repeat these two chunks of code (writing a file and then checking it later).",
+      "revId": "4c217262b15e366203f03b65e454b6d983dc586b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfb20f88_7f2fd698",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-21T01:26:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "51ec993a_fbbc9647",
       "revId": "4c217262b15e366203f03b65e454b6d983dc586b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f22fd9_7b3b8c1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-21T01:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b17888_b2ca46ac",
+      "revId": "4c217262b15e366203f03b65e454b6d983dc586b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c50e13cf_753b44d9",
@@ -65,6 +119,30 @@
       "writtenOn": "2022-07-21T01:13:21Z",
       "side": 1,
       "message": "nit: |ctxForCleanUp|",
+      "range": {
+        "startLine": 150,
+        "startChar": 25,
+        "endLine": 150,
+        "endChar": 28
+      },
+      "revId": "4c217262b15e366203f03b65e454b6d983dc586b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e2e770_51e8cb6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-21T01:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c50e13cf_753b44d9",
       "range": {
         "startLine": 150,
         "startChar": 25,
@@ -98,6 +176,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc0b4401_41185f07",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-21T01:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8da2c000_c7753a1a",
+      "range": {
+        "startLine": 159,
+        "startChar": 40,
+        "endLine": 159,
+        "endChar": 51
+      },
+      "revId": "4c217262b15e366203f03b65e454b6d983dc586b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec40e4f8_61cf2276",
@@ -111,6 +213,30 @@
       "writtenOn": "2022-07-21T01:13:21Z",
       "side": 1,
       "message": "nit: Typo (extra colon).",
+      "range": {
+        "startLine": 165,
+        "startChar": 68,
+        "endLine": 165,
+        "endChar": 70
+      },
+      "revId": "4c217262b15e366203f03b65e454b6d983dc586b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79f91137_7cc1b9d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-21T01:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec40e4f8_61cf2276",
       "range": {
         "startLine": 165,
         "startChar": 68,
@@ -144,6 +270,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5ed30fc_8fc33661",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-21T01:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b1a498d_e53cd06e",
+      "range": {
+        "startLine": 220,
+        "startChar": 69,
+        "endLine": 220,
+        "endChar": 70
+      },
+      "revId": "4c217262b15e366203f03b65e454b6d983dc586b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a42f074f_19393e7b",
@@ -167,6 +317,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce4d8c8_9744aad1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/update_credential_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-21T01:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a42f074f_19393e7b",
+      "range": {
+        "startLine": 225,
+        "startChar": 11,
+        "endLine": 225,
+        "endChar": 44
+      },
+      "revId": "4c217262b15e366203f03b65e454b6d983dc586b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95a71f1d_432b4844",
@@ -180,6 +354,30 @@
       "writtenOn": "2022-07-21T01:13:21Z",
       "side": 1,
       "message": "nit: |err| is nil here, so no need to attach it to the error.",
+      "range": {
+        "startLine": 646,
+        "startChar": 16,
+        "endLine": 646,
+        "endChar": 24
+      },
+      "revId": "4c217262b15e366203f03b65e454b6d983dc586b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e758d2_baf83b4e",
+        "filename": "src/chromiumos/tast/local/cryptohome/cryptohome.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1355769
+      },
+      "writtenOn": "2022-07-21T01:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95a71f1d_432b4844",
       "range": {
         "startLine": 646,
         "startChar": 16,
