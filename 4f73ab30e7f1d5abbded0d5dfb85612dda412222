@@ -46,6 +46,30 @@
       },
       "revId": "4f73ab30e7f1d5abbded0d5dfb85612dda412222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aca8e06_69e382ce",
+        "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-21T09:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1643e656_fb793b87",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 2
+      },
+      "revId": "4f73ab30e7f1d5abbded0d5dfb85612dda412222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
