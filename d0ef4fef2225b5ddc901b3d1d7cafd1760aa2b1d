@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24a3e513_491ada69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-07-21T02:26:32Z",
+      "side": 1,
+      "message": "\u003e I understood that comparing the behavior between ash and lacros is very important here. That said, I just did the necessary changes in this latest patchset towards using one variation and loop through the test using the same type of browser. PTAL.\n\nWe also have a bunch of tests that do it in separate variations, so just a thing to be aware of. I think it\u0027s not necessarily wrong to put them in separate variations, it just changes the ways you can use the data.\n\n\u003e My suggestion earlier was to create another test (e.g. meta.ColdbootDocsCUJ), which would be a remote test instead and then reboots would be possible.\n\nSorry, yes, I meant a separate test like ColdbootDocsCUJ.",
+      "parentUuid": "3c7f6931_2a812d73",
+      "revId": "d0ef4fef2225b5ddc901b3d1d7cafd1760aa2b1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e53e0ce_6dac09a0",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
         "patchSetId": 1
