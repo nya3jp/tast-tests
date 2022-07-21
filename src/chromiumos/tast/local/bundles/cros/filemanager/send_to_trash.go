@@ -41,9 +41,11 @@ func init() {
 			"drivefs",
 		},
 		Attr: []string{
-			"group:drivefs-cq",
-			"group:mainline",
-			"informational",
+			// TODO(b/239769339): Re-enable these tests once Drive is supported. We
+			// can more reliably test local trash scenarios as browser tests.
+			// "group:drivefs-cq",
+			// "group:mainline",
+			// "informational",
 		},
 		Fixture: "driveFsStartedTrashEnabled",
 	})
