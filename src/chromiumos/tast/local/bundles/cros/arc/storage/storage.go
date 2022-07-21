@@ -44,7 +44,12 @@ const (
 // Expectation is used for validating app label contents.
 type Expectation struct {
 	LabelID string
-	Value   string
+	// Predicate returns whether the actual value is valid. It can be nil, in
+	// which case the implied validation condition is "actual == Value".
+	Predicate func(actual string) bool
+	// Value is the expected value (when Predicate is nil). This field is
+	// ignored if Predicate is non-nil.
+	Value string
 }
 
 // TestConfig stores the details of the directory under test and misc test configurations.
@@ -210,8 +215,14 @@ func validateLabel(ctx context.Context, d *androidui.Device, expectation Expecta
 		return errors.Wrapf(err, "failed to get text from the label id %s", expectation.LabelID)
 	}
 
-	if actual != expectation.Value {
-		return errors.Errorf("unexpected value in label %s: got %q, want %q", expectation.LabelID, actual, expectation.Value)
+	if expectation.Predicate != nil {
+		if !expectation.Predicate(actual) {
+			return errors.Errorf("unexpected value in label %s: got %q", expectation.LabelID, actual)
+		}
+	} else {
+		if actual != expectation.Value {
+			return errors.Errorf("unexpected value in label %s: got %q, want %q", expectation.LabelID, actual, expectation.Value)
+		}
 	}
 
 	testing.ContextLogf(ctx, "Label content of %s = %s", expectation.LabelID, actual)
