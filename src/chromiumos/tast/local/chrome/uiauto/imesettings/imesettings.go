@@ -27,6 +27,7 @@ var defaultPollOpts = testing.PollOptions{Timeout: 10 * time.Second, Interval: 1
 
 var addInputMethodButton = nodewith.Name("Add input methods").Role(role.Button)
 var searchInputMethodField = nodewith.Name("Search by language or input name").Role(role.SearchBox)
+var deleteWordButton = nodewith.Name("Delete word").HasClass("icon-clear").Role(role.Button)
 
 // settingOption represents an IME setting item shown in OS Settings.
 type settingOption string
@@ -38,6 +39,7 @@ const (
 	ShowInputOptionsInShelf settingOption = "Show input options in the shelf"
 	KoreanKeyboardLayout    settingOption = "Korean keyboard layout"
 	VKAutoCorrection        settingOption = "Auto-correction"
+	SpellingGrammarCheck    settingOption = "Spelling and grammar check"
 )
 
 // IMESettings is a wrapper around the settings app used to control the inputs settings page.
@@ -124,6 +126,37 @@ func (i *IMESettings) ToggleGlideTyping(cr *chrome.Chrome, expected bool) uiauto
 // ToggleAutoCap clicks the 'Auto-capitalization' toggle button to enable/disable the setting.
 func (i *IMESettings) ToggleAutoCap(cr *chrome.Chrome, expected bool) uiauto.Action {
 	return i.SetToggleOption(cr, string(AutoCapitalization), expected)
+}
+
+// SetSpellingAndGrammarCheck clicks the 'spelling and grammar check' toggle button to enable/disable the setting.
+func (i *IMESettings) SetSpellingAndGrammarCheck(cr *chrome.Chrome, expected bool) uiauto.Action {
+	return i.SetToggleOption(cr, string(SpellingGrammarCheck), expected)
+}
+
+// AddCustomizedSpellCheck adds customized word to spelling check dictionary.
+func (i *IMESettings) AddCustomizedSpellCheck(cr *chrome.Chrome, kb *input.KeyboardEventWriter, word string) uiauto.Action {
+	addWordsTextField := nodewith.Name("Add words you want spell check to skip").Role(role.TextField)
+	return func(ctx context.Context) error {
+		if err := i.NavigateToPageURL(ctx, cr, "osLanguages/editDictionary", i.WaitUntilExists(addWordsTextField)); err != nil {
+			return errors.Wrap(err, "failed to navigate to customize spell check page")
+		}
+
+		return uiauto.Combine("add word into customize spell check",
+			i.FocusAndWait(addWordsTextField),
+			kb.TypeAction(word),
+			i.LeftClick(nodewith.Name("Add word").Role(role.Button)),
+			// The added word doesn't have a name related to the word.
+			// Verify that the word is added by checking the node named `Delete word` exists.
+			i.WaitUntilExists(deleteWordButton),
+		)(ctx)
+	}
+
+}
+
+// RemoveCustomizedSpellCheck removes customized word from spelling check dictionary by clicking
+// the `Delete word` node until the node gone to make sure the word is removed.
+func (i *IMESettings) RemoveCustomizedSpellCheck() uiauto.Action {
+	return i.LeftClickUntil(deleteWordButton, i.Gone(deleteWordButton))
 }
 
 // ChangeKoreanKeyboardLayout sets the Korean keyboard layout to a specific value.
