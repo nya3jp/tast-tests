@@ -6,6 +6,7 @@ package inputs
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -16,16 +17,16 @@ import (
 	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/chrome/uiauto/vkb"
 	"chromiumos/tast/local/chrome/useractions"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         PhysicalKeyboardKioskTyping,
+		Func:         VirtualKeyboardKioskTyping,
 		LacrosStatus: testing.LacrosVariantExists,
-		Desc:         "Checks that user can type on physical keyboard in kiosk mode",
+		Desc:         "Checks that user can type in virtual keyboard in kiosk mode",
 		Contacts:     []string{"jhtin@chromium.org", "essential-inputs-team@google.com"},
 		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
@@ -33,54 +34,51 @@ func init() {
 		Timeout:      2 * time.Minute,
 		Params: []testing.Param{
 			{
-				Fixture:   fixture.KioskNonVK,
+				Fixture:   fixture.KioskVK,
 				ExtraAttr: []string{"informational"},
 			},
 			{
 				Name:      "lacros",
-				Fixture:   fixture.LacrosKioskNonVK,
+				Fixture:   fixture.LacrosKioskVK,
 				ExtraAttr: []string{"informational"},
 			},
 		},
 	})
 }
 
-func PhysicalKeyboardKioskTyping(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
-	tconn := s.FixtValue().(fixture.InputsKioskFixtData).TestAPIConn
-	uc := s.FixtValue().(fixture.InputsKioskFixtData).UserContext
-
+func VirtualKeyboardKioskTyping(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
 
-	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	tconn := s.FixtValue().(fixture.InputsKioskFixtData).TestAPIConn
+	uc := s.FixtValue().(fixture.InputsKioskFixtData).UserContext
 
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to get keyboard: ", err)
-	}
-	defer keyboard.Close()
+	vkbCtx := vkb.NewContext(cr, tconn)
+	defer vkbCtx.HideVirtualKeyboard()(cleanupCtx)
+
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	ui := uiauto.New(tconn)
 	inputField := testserver.TextAreaInputField
 
-	actionName := "PK find inputfield and type"
+	actionName := "VK typing in inputfield in Kiosk mode"
 	if err := uiauto.UserAction(actionName,
 		uiauto.Combine(actionName,
 			ui.WaitUntilExists(inputField.Finder()),
 			ui.MakeVisible(inputField.Finder()),
-			ui.LeftClick(inputField.Finder()),
-			keyboard.TypeAction("abcdefghijklmnopqrstuvwxyz01234! ABCDEFGHIJKLMNOPQRSTUVWXYZ01234!"),
-			util.WaitForFieldTextToBe(tconn, inputField.Finder(), "abcdefghijklmnopqrstuvwxyz01234! ABCDEFGHIJKLMNOPQRSTUVWXYZ01234!"),
+			vkbCtx.ClickUntilVKShown(inputField.Finder()),
+			vkbCtx.TapKeysIgnoringCase(strings.Split("abcdefghijklmnopqrstuvwxyz", "")),
+			util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), "abcdefghijklmnopqrstuvwxyz"),
 		),
 		uc,
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
-				useractions.AttributeFeature: useractions.FeaturePKTyping,
+				useractions.AttributeFeature: useractions.FeatureVKTyping,
 			},
 		},
 	)(ctx); err != nil {
-		s.Fatal("Failed to validate typing output: ", err)
+		s.Fatal("Failed to validate VK typing: ", err)
 	}
 }
