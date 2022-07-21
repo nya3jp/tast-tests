@@ -170,6 +170,17 @@ func init() {
 			},
 			Fixture: "loggedInToCUJUserWithWebRTCEventLogging",
 		}, {
+			Name:      "lacros_49p",
+			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
+			Val: meetTest{
+				num:         48,
+				layout:      meetLayoutTiled,
+				cam:         true,
+				browserType: browser.TypeLacros,
+			},
+			Fixture: "loggedInToCUJUserWithWebRTCEventLoggingLacros",
+		}, {
 			// Big meeting with tracing.
 			Name:      "16p_trace",
 			Timeout:   defaultTestTimeout + 20*time.Minute,
