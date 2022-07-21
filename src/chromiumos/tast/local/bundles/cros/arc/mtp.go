@@ -6,6 +6,7 @@ package arc
 
 import (
 	"context"
+	"strings"
 	"time"
 
 	"chromiumos/tast/local/arc"
@@ -15,9 +16,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// mtpURI contains vendor / model id of the Android device under test.
+// mtpURIPrefix is the expected prefix of the Content URI for the Android
+// device under test. The full URI would contain the device's serial number,
+// which would be different for different devices.
 const (
-	mtpURI = "content://org.chromium.arc.chromecontentprovider/externalfile%3Afileman-mtp-mtp%253AVendorModelVolumeStorage%253A6353%253A20194%253A%253A65537%2FDownload%2F"
+	mtpURIPrefix = "content://org.chromium.arc.chromecontentprovider/externalfile%3Afileman-mtp-mtp"
 )
 
 // arc.Mtp / arc.Mtp.vm tast tests depend on the use of actual Android device in the lab.
@@ -74,7 +77,10 @@ func MTP(ctx context.Context, s *testing.State) {
 		SubDirectories: []string{"Download"}, FileName: "storage.txt"}
 	expectations := []storage.Expectation{
 		{LabelID: storage.ActionID, Value: storage.ExpectedAction},
-		{LabelID: storage.URIID, Value: mtpURI + config.FileName},
+		{LabelID: storage.URIID, Predicate: func(actual string) bool {
+			return strings.HasPrefix(actual, mtpURIPrefix) &&
+				strings.HasSuffix(actual, "%2FDownload%2Fstorage.txt")
+		}},
 		{LabelID: storage.FileContentID, Value: storage.ExpectedFileContent}}
 
 	storage.TestOpenWithAndroidApp(ctx, s, a, cr, d, config, expectations)
