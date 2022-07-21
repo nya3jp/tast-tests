@@ -35,8 +35,8 @@ func init() {
 		Name: "vmDLC",
 		Desc: "Vm dlc is available",
 		Contacts: []string{
-			"woodychow@google.com",
-			"crosvm-core@google.com",
+			"keiichiw@chromium.org",
+			"cros-virt-devices-guests@google.com",
 		},
 		Parent:          "chromeLoggedIn",
 		Impl:            &dlcFixture{},

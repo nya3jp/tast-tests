@@ -33,7 +33,7 @@ func init() {
 		Func:         AudioLoopbackLatency,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Measures loopback latency of different audio devices in crosvm",
-		Contacts:     []string{"woodychow@google.com", "paulhsia@google.com", "chromeos-audio-bugs@google.com", "crosvm-core@google.com"},
+		Contacts:     []string{"paulhsia@google.com", "normanbt@chromium.org", "chromeos-audio-bugs@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		Data:         []string{runLoopbackLatency},
 		Timeout:      8 * time.Minute,
