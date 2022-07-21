@@ -16,6 +16,23 @@
       "message": "Please review, thank you!",
       "revId": "6459ad533215c62ffc0327575d521c63a8062b81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f32a311_d38f4fa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-07-21T18:29:05Z",
+      "side": 1,
+      "message": "Were you able to verify that this runs on a smaller resolution screen as well? ",
+      "revId": "6459ad533215c62ffc0327575d521c63a8062b81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
