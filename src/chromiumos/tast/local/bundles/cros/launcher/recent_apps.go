@@ -18,7 +18,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -158,7 +157,7 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		if err := cwsapp.install(ctx); err != nil {
 			s.Fatal("Failed to install an app from Chrome Web Store: ", err)
 		}
-		defer uninstallAppViaSettings(ctx, cr, tconn, appName, appID)
+		defer uninstallApp(ctx, cr, tconn, tabletMode, cwsapp.name, cwsapp.id)
 
 		appName = cwsapp.name
 		appID = cwsapp.id
@@ -224,6 +223,8 @@ func RecentApps(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to confirm recent apps order: ", err)
 	}
 
+	s.Fatal("Intentional: ")
+
 	// When uninstalled, the app should disappear from recent apps.
 	if err := launcher.UninstallsAppUsingContextMenu(ctx, tconn, newApp); err != nil {
 		s.Fatalf("Failed to uninstall %s(%s): %v", appName, appID, err)
@@ -284,8 +285,8 @@ func (c *cwsApp) install(ctx context.Context) error {
 	return cws.InstallApp(ctx, c.cr, c.tconn, *c.app)
 }
 
-// uninstallAppViaSettings uninstalls the an app via ossettings.
-func uninstallAppViaSettings(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, name, id string) error {
+// uninstallApp uninstalls the an app via context menu.
+func uninstallApp(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, tabletMode bool, name, id string) error {
 	isInstalled, err := ash.ChromeAppInstalled(ctx, tconn, id)
 	if err != nil {
 		return errors.Wrap(err, "failed to check app's existance")
@@ -296,12 +297,24 @@ func uninstallAppViaSettings(ctx context.Context, cr *chrome.Chrome, tconn *chro
 		return nil
 	}
 
-	defer func() {
-		settings := ossettings.New(tconn)
-		settings.Close(ctx)
-	}()
 	testing.ContextLogf(ctx, "Uninstall app: %q", name)
-	return ossettings.UninstallApp(ctx, tconn, cr, name, id)
+
+	ui := uiauto.New(tconn)
+	var appsGrid *nodewith.Finder
+	if tabletMode {
+		appsGrid = nodewith.ClassName(launcher.PagedAppsGridViewClass)
+	} else {
+		appsGrid = nodewith.ClassName(launcher.BubbleAppsGridViewClass)
+	}
+	if err := ui.Exists(appsGrid)(ctx); err != nil {
+		if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
+			return errors.Wrap(err, "failed to open launcher")
+		}
+	}
+
+	app := nodewith.NameContaining(name).Ancestor(appsGrid).First()
+
+	return launcher.UninstallsAppUsingContextMenu(ctx, tconn, app)
 }
 
 // uninstallArcApp attempts to uninstall an app with the ARC suite if it is installed.
