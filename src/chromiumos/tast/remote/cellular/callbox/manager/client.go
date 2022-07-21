@@ -7,6 +7,7 @@ package manager
 import (
 	"bytes"
 	"context"
+	"encoding/json"
 	"io"
 	"net/http"
 	"net/url"
@@ -61,9 +62,8 @@ func (s CallboxManagerClient) sendRequest(ctx context.Context, method, pathFromB
 	return resp, nil
 }
 
-func (s CallboxManagerClient) sendJSONPost(ctx context.Context, pathFromBaseURL string, queryParams map[string]string, requestBody RequestBody) (*http.Response, error) {
-	// Marshal json
-	jsonBody, err := requestBody.Marshall()
+func (s CallboxManagerClient) sendJSONPost(ctx context.Context, pathFromBaseURL string, queryParams map[string]string, requestBody interface{}) (*http.Response, error) {
+	jsonBody, err := json.Marshal(requestBody)
 	if err != nil {
 		return nil, errors.Wrapf(err, "failed to marshal requestBody to json: %v", requestBody)
 	}
@@ -72,6 +72,36 @@ func (s CallboxManagerClient) sendJSONPost(ctx context.Context, pathFromBaseURL 
 	}
 	testing.ContextLogf(ctx, "CallboxManager %s %q queryParams=%q json=%q", http.MethodPost, pathFromBaseURL, queryParams, jsonBody)
 	return s.sendRequest(ctx, http.MethodPost, pathFromBaseURL, bytes.NewReader(jsonBody), queryParams, headers)
+}
+
+func (s CallboxManagerClient) sendJSONGet(ctx context.Context, pathFromBaseURL string, queryParams map[string]string, requestBody interface{}) (*http.Response, error) {
+	jsonBody, err := json.Marshal(requestBody)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to marshal requestBody to json: %v", requestBody)
+	}
+	headers := map[string]string{
+		"Content-Type": "application/json",
+	}
+
+	resp, err := s.sendRequest(ctx, http.MethodGet, pathFromBaseURL, bytes.NewReader(jsonBody), queryParams, headers)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to send request to CallboxManager: %s %q queryParams=%q json=%q", http.MethodGet, pathFromBaseURL, queryParams, jsonBody)
+	}
+
+	return resp, nil
+}
+
+func unmarshalResponse(resp *http.Response, res interface{}) error {
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return errors.Wrap(err, "failed to read response body")
+	}
+
+	if err := json.Unmarshal(body, &res); err != nil {
+		return errors.Wrap(err, "failed to unmarshal callbox manager response")
+	}
+
+	return nil
 }
 
 // ConfigureCallbox configures a callbox using the settings specified in the requestBody.
@@ -111,4 +141,107 @@ func (s CallboxManagerClient) SendSms(ctx context.Context, requestBody *SendSmsR
 	}
 	_, err := s.sendJSONPost(ctx, "/sms", nil, requestBody)
 	return err
+}
+
+// ConfigureIperf configures an Iperf measurement on the callbox.
+//
+// Before calling this method, configure the callbox with ConfigureCallbox.
+func (s CallboxManagerClient) ConfigureIperf(ctx context.Context, requestBody *ConfigureIperfRequestBody) error {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+	_, err := s.sendJSONPost(ctx, "/iperf/config", nil, requestBody)
+	return err
+}
+
+// StartIperf starts an Iperf measurement on the callbox with the current configuration.
+//
+// Before calling this method, configure the callbox with ConfigureCallbox.
+func (s CallboxManagerClient) StartIperf(ctx context.Context, requestBody *StartIperfRequestBody) error {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+	_, err := s.sendJSONPost(ctx, "/iperf/start", nil, requestBody)
+	return err
+}
+
+// StopIperf stops any current Iperf measurement on the callbox.
+//
+// Before calling this method, configure the callbox with ConfigureCallbox.
+func (s CallboxManagerClient) StopIperf(ctx context.Context, requestBody *StopIperfRequestBody) error {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+	_, err := s.sendJSONPost(ctx, "/iperf/stop", nil, requestBody)
+	return err
+}
+
+// CloseIperf stops any current Iperf measurement on the callbox and releases any resources held open.
+//
+// Before calling this method, configure the callbox with ConfigureCallbox.
+func (s CallboxManagerClient) CloseIperf(ctx context.Context, requestBody *CloseIperfRequestBody) error {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+	_, err := s.sendJSONPost(ctx, "/iperf/close", nil, requestBody)
+	return err
+}
+
+// FetchIperfResult fetches the current result from the Iperf measurement on the callbox, invalid results are set to nil.
+//
+// Before calling this method, configure the callbox with ConfigureCallbox.
+func (s CallboxManagerClient) FetchIperfResult(ctx context.Context, requestBody *FetchIperfResultRequestBody) (*FetchIperfResultResponseBody, error) {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+
+	resp, err := s.sendJSONGet(ctx, "/iperf/fetch/result", nil, requestBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var res FetchIperfResultResponseBody
+	if err := unmarshalResponse(resp, &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}
+
+// FetchIperfIP fetches the Iperf measurement (DAU) IP address.
+func (s CallboxManagerClient) FetchIperfIP(ctx context.Context, requestBody *FetchIperfIPRequestBody) (*FetchIperfIPResponseBody, error) {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+
+	resp, err := s.sendJSONGet(ctx, "/iperf/fetch/ip", nil, requestBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var res FetchIperfIPResponseBody
+	if err := unmarshalResponse(resp, &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
+}
+
+// FetchMaxThroughput fetches the maximum achievable throughput of the callbox given its current configuration (im Mbit/s).
+func (s CallboxManagerClient) FetchMaxThroughput(ctx context.Context, requestBody *FetchMaxThroughputRequestBody) (*FetchMaxThroughputResponseBody, error) {
+	if requestBody.Callbox == "" {
+		requestBody.Callbox = s.defaultCallbox
+	}
+
+	resp, err := s.sendJSONGet(ctx, "/config/fetch/maxthroughput", nil, requestBody)
+	if err != nil {
+		return nil, err
+	}
+
+	var res FetchMaxThroughputResponseBody
+	if err := unmarshalResponse(resp, &res); err != nil {
+		return nil, err
+	}
+
+	return &res, nil
 }
