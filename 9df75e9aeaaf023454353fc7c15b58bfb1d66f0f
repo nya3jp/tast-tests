@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2ce558_300f63bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-21T10:31:01Z",
+      "side": 1,
+      "message": "The name is confusing to me as I assume isXXX is a query instead of a config.\nLet\u0027s stick with tabletMode. WDYT?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 1
+      },
+      "revId": "9df75e9aeaaf023454353fc7c15b58bfb1d66f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2fa0b2d_42bec595",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-21T10:31:01Z",
+      "side": 1,
+      "message": "Seems newlyInstalledFakeApp is not used in the code?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "9df75e9aeaaf023454353fc7c15b58bfb1d66f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "142a6018_50883bfd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-21T10:31:01Z",
+      "side": 1,
+      "message": "Optional, I\u0027d move the declaration up to line 32 so that it is closer to the type declaration.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "9df75e9aeaaf023454353fc7c15b58bfb1d66f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a61fd44d_740d5063",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/newly_installed_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-21T10:31:01Z",
+      "side": 1,
+      "message": "The appName is changed, \"fake app 0\"-\u003e\"Wicked Good Unarchiver\". Can you comment it in your commit message as well?",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 12
+      },
+      "revId": "9df75e9aeaaf023454353fc7c15b58bfb1d66f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
