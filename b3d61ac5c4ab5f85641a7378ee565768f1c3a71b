@@ -99,6 +99,30 @@
       },
       "revId": "b3d61ac5c4ab5f85641a7378ee565768f1c3a71b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a43fc717_4374dc21",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1282737
+      },
+      "writtenOn": "2022-07-21T02:04:52Z",
+      "side": 1,
+      "message": "Ah ok. I thought that you had to specify the full title of the html.",
+      "parentUuid": "92366d1e_a466e556",
+      "range": {
+        "startLine": 346,
+        "startChar": 64,
+        "endLine": 346,
+        "endChar": 68
+      },
+      "revId": "b3d61ac5c4ab5f85641a7378ee565768f1c3a71b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
