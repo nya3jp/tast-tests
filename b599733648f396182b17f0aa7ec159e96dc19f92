@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91d3112a_1a13cba0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-21T23:58:06Z",
+      "side": 1,
+      "message": "I could not find a better way at this moment. I think the implementation is ok. However, I want you to add a new unit test in https://source.corp.google.com/chromeos_public/src/platform/tast/src/chromiumos/tast/internal/planner/run_test.go to make sure the new API return the expected value.\n",
+      "revId": "b599733648f396182b17f0aa7ec159e96dc19f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
