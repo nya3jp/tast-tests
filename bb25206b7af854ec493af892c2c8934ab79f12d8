@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0efddc58_962dbe52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_credential_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-07-21T19:26:39Z",
+      "side": 1,
+      "message": "ctxForCleanup",
+      "range": {
+        "startLine": 145,
+        "startChar": 36,
+        "endLine": 145,
+        "endChar": 39
+      },
+      "revId": "bb25206b7af854ec493af892c2c8934ab79f12d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a824ea_d65de0e4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_credential_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-07-21T19:26:39Z",
+      "side": 1,
+      "message": "not needed, since authentication is expected to fail",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 55
+      },
+      "revId": "bb25206b7af854ec493af892c2c8934ab79f12d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d13779af_be0b4320",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/remove_credential_auth_session.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-07-21T19:26:39Z",
+      "side": 1,
+      "message": "ctxForCleanup",
+      "range": {
+        "startLine": 185,
+        "startChar": 36,
+        "endLine": 185,
+        "endChar": 39
+      },
+      "revId": "bb25206b7af854ec493af892c2c8934ab79f12d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
