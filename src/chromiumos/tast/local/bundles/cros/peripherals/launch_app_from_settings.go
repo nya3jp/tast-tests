@@ -34,7 +34,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Peripherals app can be found and launched from the settings",
 		Contacts: []string{
-			"joonbug@chromium.org",
+			"ashleydp@google.com",
+			"zentaro@google.com",
 			"cros-peripherals@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
