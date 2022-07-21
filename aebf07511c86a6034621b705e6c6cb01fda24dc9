@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7fbbd340_9464e889",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-07-21T12:52:30Z",
+      "side": 1,
+      "message": "I hope I understood your intention.",
+      "parentUuid": "1383926b_f31bfb9d",
+      "range": {
+        "startLine": 519,
+        "startChar": 2,
+        "endLine": 519,
+        "endChar": 33
+      },
+      "revId": "aebf07511c86a6034621b705e6c6cb01fda24dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f748acd6_6eed5c51",
         "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-21T07:26:43Z",
       "side": 1,
       "message": "We might also want to make sure that `fnodename` is not empty if we assume to have `aria-label` for all focusable elements.",
+      "revId": "aebf07511c86a6034621b705e6c6cb01fda24dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c66a755_34e87ead",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-07-21T12:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f748acd6_6eed5c51",
       "revId": "aebf07511c86a6034621b705e6c6cb01fda24dc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2022-07-21T07:26:43Z",
       "side": 1,
       "message": "I think some calls are still redundant.\nCan we simplify the logic here to:\n\n\n```\nerr \u003d a11y.PressKeys(ctx, sm, ctrlAltZ)\nif err !\u003d nil {\n\ts.Fatal(\"Failed to press keys: \", err)\n}\n\nfor true {\n\tfnodename, err :\u003d app.ReturnFocusedElementName(ctx)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to get a focused node: \", err)\n\t}\n\n\tif visited[fnodename] {\n\t\tbreak\n\t}\n\n\terr \u003d matchSpeeches(ctx, sm, fnodename, s)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to match speeches: \", err)\n\t}\n\n\tvisited[fnodename] \u003d true\n\n\tif fnodename \u003d\u003d \"Take photo\" {\n\t\tif err :\u003d takePictureByKeyboard(ctx, sm, app); err !\u003d nil {\n\t\t\ts.Fatal(\"Failed to take a picture: \", err)\n\t\t}\n\t}\n\n\terr \u003d a11y.PressKeys(ctx, sm, tab)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to press keys: \", err)\n\t}\n}\n\n```",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 27
+      },
+      "revId": "aebf07511c86a6034621b705e6c6cb01fda24dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9abb4b03_d760e34b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-07-21T12:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd6c73a7_1e6eecb8",
       "range": {
         "startLine": 84,
         "startChar": 1,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e38798_7e536feb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-07-21T12:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0250312e_6bd69c3e",
+      "range": {
+        "startLine": 127,
+        "startChar": 64,
+        "endLine": 127,
+        "endChar": 73
+      },
+      "revId": "aebf07511c86a6034621b705e6c6cb01fda24dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21e56f6b_f8cf4616",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-07-21T07:26:43Z",
       "side": 1,
       "message": "nit: Add some comments here or wrap it with a method to let future reader understand why we need such replacement easily",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 56
+      },
+      "revId": "aebf07511c86a6034621b705e6c6cb01fda24dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1637161f_1d3c1d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-07-21T12:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21e56f6b_f8cf4616",
       "range": {
         "startLine": 128,
         "startChar": 1,
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "149ed2a8_894e8e51",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-07-21T12:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be998e8f_97dcc39f",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 2
+      },
+      "revId": "aebf07511c86a6034621b705e6c6cb01fda24dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbaf8889_32b9919e",
@@ -146,6 +284,30 @@
       "writtenOn": "2022-07-21T07:26:43Z",
       "side": 1,
       "message": "Should we rename it to something like `ReturnFocusedElementAriaLabel` to make it more precise?",
+      "range": {
+        "startLine": 1577,
+        "startChar": 14,
+        "endLine": 1577,
+        "endChar": 38
+      },
+      "revId": "aebf07511c86a6034621b705e6c6cb01fda24dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e51ed2eb_7660efb5",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1531047
+      },
+      "writtenOn": "2022-07-21T12:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbaf8889_32b9919e",
       "range": {
         "startLine": 1577,
         "startChar": 14,
