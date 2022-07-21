@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e89ede09_b0f5d948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003168
+      },
+      "writtenOn": "2022-07-21T20:48:48Z",
+      "side": 1,
+      "message": "\u003e If that\u0027s the case, then I\u0027m not sure if we want to invest time to convert\n\u003e DocsCUJ to it right now, because DocsCUJ main metric is  visibleLoadTime ,\n\u003e which is very simply recorded by measuring an amount of time elapsed in\n\u003e Tast\u0027s side.\n\nI see that you are creating metrics manually below:\n```\nperf.Metric{\n\t\tName:      \"docs.load\",\n\t\tUnit:      \"seconds\",\n\t\tDirection: perf.SmallerIsBetter,\n\t\tMultiple:  true,\n\t},\n```\nso it should not be a big issue.\n\n\nI would not insist on migrating this test to perfutil now (because one would need to move perfutil/run.go a few levels above first). But it is more of a question to Eliot as a tast owner that we might want to make perfutil shared too.\n\nHere use of perfutil could let us use one less local function (i.e. old pv.MergeWithSuffix instead of new appendPerfValues).",
+      "parentUuid": "8371c338_84d3d96d",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "9e64f91dfd08cabb66d91f26fefeeb6808b9f85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c7c1874_3f4d3444",
