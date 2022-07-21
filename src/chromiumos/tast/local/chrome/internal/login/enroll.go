@@ -32,16 +32,16 @@ const maxGAIAEnterpriseEnrollmentRetries = 3
 // succeed.
 const gaiaEnterpriseEnrollmentTimeout = 3 * time.Minute
 
-//  domainRe is a regex used to obtain the domain (without top level domain)
-//  out of an email string.
-//  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome] and
-//  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2]
+// domainRe is a regex used to obtain the domain (without top level domain)
+// out of an email string.
+// e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome] and
+// ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2]
 var domainRe = regexp.MustCompile(`^[^@]+@([^@]+)\.[^.@]*$`)
 
-//  fullDomainRe is a regex used to obtain the full domain (with top level
-//  domain) out of an email string.
-//  e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome.com] and
-//  ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2.com]
+// fullDomainRe is a regex used to obtain the full domain (with top level
+// domain) out of an email string.
+// e.g. a@managedchrome.com -> [a@managedchrome.com managedchrome.com] and
+// ex2@domainp1.domainp2.com -> [ex2@domainp1.domainp2.com domainp1.domainp2.com]
 var fullDomainRe = regexp.MustCompile(`^[^@]+@([^@]+)$`)
 
 // userDomain will return the "domain" section (without top level domain) of
@@ -267,6 +267,29 @@ func performGAIAEnrollment(ctx context.Context, cfg *config.Config, sess *driver
 
 	if err := waitForEnrollmentLoginScreen(ctx, cfg, sess); err != nil {
 		return errors.Wrap(sess.Watcher().ReplaceErr(err), "could not enroll")
+	}
+
+	return nil
+}
+
+// performGAIAZTEEnrollment enrolls the test device using the OOBE screen.
+func performGAIAZTEEnrollment(ctx context.Context, cfg *config.Config, sess *driver.Session) error {
+	ctx, st := timing.Start(ctx, "zteenroll")
+	defer st.End()
+
+	conn, err := WaitForOOBEConnection(ctx, sess)
+	if err != nil {
+		return errors.Wrap(err, "could not find OOBE connection for enrollment")
+	}
+	defer conn.Close()
+
+	// Enterprise enrollment requires Internet connectivity.
+	if err := shill.WaitForOnline(ctx); err != nil {
+		return errors.Wrap(err, "no Internet connectivity, cannot perform GAIA enrollment")
+	}
+
+	if err := waitForEnrollmentLoginScreen(ctx, cfg, sess); err != nil {
+		return errors.Wrap(sess.Watcher().ReplaceErr(err), "could not zte enroll")
 	}
 
 	return nil
