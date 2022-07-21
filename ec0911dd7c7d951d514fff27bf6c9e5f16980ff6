@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ecc22f_15cf4067",
+        "filename": "src/chromiumos/tast/remote/wificell/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-21T18:50:25Z",
+      "side": 1,
+      "message": "I believe this is answered in my other comment as the reset timeout seems fine for now (please correct me if I misunderstood that).",
+      "parentUuid": "d83145bd_4ce30207",
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edb24ea6_d27c459e",
@@ -125,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb008f21_d8a57fc5",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-21T18:50:25Z",
+      "side": 1,
+      "message": "Yeah it\u0027s not that I like this solution, it\u0027s just that currently it\u0027s the only thing we\u0027ve got to make OpenWrt reliably stable right now. We went through a lot of other attempts to make the OpenWrt routers more stable between tests without rebooting, but they did not reliably work so this is where we are now. This will only affect OpenWrt router testbeds, which are currently only deployed in dev labs. It will not affect our current Gale (\"Legacy\") routers.\n\nThis is also a similar solution to other OpenWrt router testing. For example, I believe Android tests actually re-image the OpenWrt router each time between tests in addition to rebooting it. I haven\u0027t seen the need for us to make it that granular (we create our test images differently) but it is more evidence that the reboot is likely a necessity.\n\nThe cost vs. benefit analysis is more of a question of do we fix all of the routers we will test with (the point of OpenWrt is to open that up), which is expensive in work time and mostly out of our control, or do we allow these wifi tests to take longer, which is expensive in infra processing time. For now, at least in our OpenWrt testing, we are leaning towards rebooting.\n\nFor the 45s-2m gap, that is to be optimized with b:239583375, which IMO would be a blocker prior to widespread rollout of OpenWrt in the lab. We just aren\u0027t there yet, we are focusing on functionality support right now.",
+      "parentUuid": "ef315521_ed5681cb",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 673,
+        "endChar": 2
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eba7bd96_bec51b27",
@@ -186,6 +228,30 @@
       "side": 1,
       "message": "Could you invalidate (e.g. assign nil) object and host at least on closing?\nThen, you can hold host/object on local var first, then assign them to the member of rd when both succeeds, or discard it.\n\nif err :\u003d rd.object.Close(...); err !\u003d nil {\n  ...\n}\nif err :\u003d rd.object.StartReboot(...); err !\u003d nil {\n  ...\n}\nrd.host.Close(...)\n\n// Invalidate rd.object/host here.\n\n// Wait for the condition that reboot completed.\n\nhost, err :\u003d tf.connectCompanion(...)\nif err !\u003d nil {\n  return ...\n}\nobj, err :\u003d newRouter(...)\nif err !\u003d nil {\n  // teardown host ...\n  return ...\n}\nrd.host \u003d host\nrd.object \u003d object\n\nreturn ...",
       "parentUuid": "b8382a88_5cb56af5",
+      "range": {
+        "startLine": 676,
+        "startChar": 1,
+        "endLine": 685,
+        "endChar": 101
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8c33c33_298f8a54",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-21T18:50:25Z",
+      "side": 1,
+      "message": "I would actually rather prefer to keep the instances alive so that we don\u0027t have to check for nil everywhere before using rd.object and rd.host (it would be a substantial refactor). That way, if they are used after the reboot but before they are overwitten, which would only happen in error cleanup anyways, the user would get a nicer error message saying that connection has already been closed rather than a NPE panic that would not have error handling around it.",
+      "parentUuid": "7195bad0_6ad6550d",
       "range": {
         "startLine": 676,
         "startChar": 1,
