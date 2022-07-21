@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a02cb2d_6fdb1a83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-07-21T16:27:59Z",
+      "side": 1,
+      "message": "few nits but otherwise looks fine",
+      "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a12dce56_f040ee66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-07-21T16:27:59Z",
+      "side": 1,
+      "message": "nit: lowercase, and this could follow the form:\n\n\"did not find line in metadata file: expected %q\"",
+      "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e33e91f1_3386328a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-07-21T16:27:59Z",
+      "side": 1,
+      "message": "same as above comment",
+      "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce501b43_34791b46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/oom_event.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-07-21T16:27:59Z",
+      "side": 1,
+      "message": "nit: \"process did not end with the proper exit code: got: %v; expected: %v\"?",
+      "revId": "eb55c0bf99cacdd47a38f4f21d1fdde8146bdea7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
