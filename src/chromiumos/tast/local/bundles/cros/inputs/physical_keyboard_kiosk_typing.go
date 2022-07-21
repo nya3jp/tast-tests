@@ -38,13 +38,13 @@ func init() {
 		Params: []testing.Param{
 			{
 				Fixture:   fixture.KioskAutoLaunchCleanup,
-				ExtraAttr: []string{"informational", "group:input-tools-upstream"},
+				ExtraAttr: []string{"informational"},
 				Val:       chrome.ExtraArgs(""),
 			},
 			{
 				Name:      "lacros",
 				Fixture:   fixture.KioskAutoLaunchCleanup,
-				ExtraAttr: []string{"informational", "group:input-tools-upstream"},
+				ExtraAttr: []string{"informational"},
 				Val:       chrome.ExtraArgs("--enable-features=LacrosSupport,WebKioskEnableLacros", "--lacros-availability-ignore"),
 			},
 		},
