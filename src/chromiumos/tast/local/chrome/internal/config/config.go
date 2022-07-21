@@ -51,9 +51,10 @@ type EnrollMode int
 
 // Valid values for EnrollMode.
 const (
-	NoEnroll   EnrollMode = iota // do not enroll device
-	FakeEnroll                   // enroll with a fake, local device management server
-	GAIAEnroll                   // real network based enrollment using a real, live device management server
+	NoEnroll      EnrollMode = iota // do not enroll device
+	FakeEnroll                      // enroll with a fake, local device management server
+	GAIAEnroll                      // real network based enrollment using a real, live device management server
+	GAIAZTEEnroll                   // real network based ZTE enrollment using a real, live device management server
 )
 
 // AuthType describes the type of authentication to be used in GAIA.
