@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeccdf39_9b1d3f2a",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-07-21T19:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2bc99a0_aefb6642",
+      "revId": "fe8c563d257907808608ca192f6e5f14a63d0a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56266b47_6ff848da",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9683cf9_c29193a1",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-07-21T19:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56266b47_6ff848da",
+      "revId": "fe8c563d257907808608ca192f6e5f14a63d0a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3e71d06_19f29198",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-07-21T15:38:33Z",
       "side": 1,
       "message": "ditto",
+      "revId": "fe8c563d257907808608ca192f6e5f14a63d0a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00edc491_6351f86c",
+        "filename": "src/chromiumos/tast/local/chrome/familylink/familylink.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1248360
+      },
+      "writtenOn": "2022-07-21T19:52:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3e71d06_19f29198",
       "revId": "fe8c563d257907808608ca192f6e5f14a63d0a7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
