@@ -39,6 +39,30 @@
       },
       "revId": "2e5d855458db1c6d26100c92c4bc2f4be69271ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c554c6_b074cb59",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-21T10:17:48Z",
+      "side": 1,
+      "message": "You are right. Removed the line.",
+      "parentUuid": "f8ed9e96_6bc282eb",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 69
+      },
+      "revId": "2e5d855458db1c6d26100c92c4bc2f4be69271ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
