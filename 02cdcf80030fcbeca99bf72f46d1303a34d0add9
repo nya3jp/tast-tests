@@ -51,6 +51,24 @@
       "parentUuid": "11e6dab8_3f0aaa66",
       "revId": "02cdcf80030fcbeca99bf72f46d1303a34d0add9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ebf937_3eaeac30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-07-22T16:29:28Z",
+      "side": 1,
+      "message": "if we don\u0027t launch lacros at all, it\u0027s likely that there won\u0027t be any difference between the ash/lacros versions? \n\nAs far as I can tell, the back story is that there\u0027s an idle perf power test that\u0027s useful for measuring arc power drain. This works because arc is always active, even when no arc apps are running. I don\u0027t believe lacros works this way (there might be some work to pre-launch lacros, but not sure).\n\nhttps://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/arc/power_idle_perf.go\n\nCan you verify that lacros is not running during this test? Maybe we should consider launching an empty browser window?",
+      "parentUuid": "17021ce6_71fe53e2",
+      "revId": "02cdcf80030fcbeca99bf72f46d1303a34d0add9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
