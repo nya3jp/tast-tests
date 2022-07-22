@@ -75,15 +75,11 @@ type Connections struct {
 	// ARC holds resources related to the ARC session.
 	ARC *arc.ARC
 
-	// ARCUI interacts with the ARC UI Automator server.
-	ARCUI *ui.Device
+	// StartARCApp starts the ARC app.
+	StartARCApp action.Action
 
-	// ArcVideoActivity is an ARC activity that plays a video, looped.
-	// If you minimize it, it plays the video in PIP.
-	ArcVideoActivity *arc.Activity
-
-	// WithTestVideo provides the test video URI to ArcVideoActivity.
-	WithTestVideo arc.ActivityStartOption
+	// StopARCApp stops the ARC app.
+	StopARCApp action.Action
 }
 
 // DragPoints holds three points, to signify a drag from the first point
@@ -159,22 +155,21 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		connection.ARC = s.FixtValue().(*arc.PreData).ARC
 	}
 
-	var err error
-	connection.ARCUI, err = connection.ARC.NewUIDevice(ctx)
+	arcUI, err := connection.ARC.NewUIDevice(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to initialize ARC UI automator")
 	}
-	cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, connection.ARCUI.Close)
+	cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, arcUI.Close)
 
 	if err := connection.ARC.Install(ctx, arc.APKPath("ArcPipVideoTest.apk")); err != nil {
 		return nil, errors.Wrap(err, "failed to install ARC app")
 	}
-	connection.ArcVideoActivity, err = arc.NewActivity(connection.ARC, pkgName, ".VideoActivity")
+	act, err := arc.NewActivity(connection.ARC, pkgName, ".VideoActivity")
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to create ARC activity")
 	}
 	cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, func(ctx context.Context) error {
-		connection.ArcVideoActivity.Close()
+		act.Close()
 		return nil
 	})
 
@@ -200,7 +195,39 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 	cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, func(ctx context.Context) error {
 		return connection.ARC.RemoveReverseTCP(ctx, androidPort)
 	})
-	connection.WithTestVideo = arc.WithExtraString("video_uri", fmt.Sprintf("http://localhost:%d/shaka_720.webm", androidPort))
+
+	withTestVideo := arc.WithExtraString("video_uri", fmt.Sprintf("http://localhost:%d/shaka_720.webm", androidPort))
+	cantPlayThisVideo := arcUI.Object(
+		ui.Text("Can't play this video."),
+		ui.PackageName(pkgName),
+		ui.ClassName("android.widget.TextView"),
+	)
+	connection.StartARCApp = func(ctx context.Context) (retErr error) {
+		if err := act.Start(ctx, connection.TestConn, withTestVideo); err != nil {
+			return err
+		}
+		defer func(ctx context.Context) {
+			if retErr == nil {
+				return
+			}
+			if err := act.Stop(ctx, connection.TestConn); err != nil {
+				testing.ContextLog(ctx, "Failed to stop ARC app after failing to start it: ", err)
+			}
+		}(ctx)
+		// Wait until the video is playing, or at least the app is
+		// idle and not showing the message "Can't play this video."
+		if err := arcUI.WaitForIdle(ctx, time.Minute); err != nil {
+			return errors.Wrap(err, "failed to wait for ARC app to be idle")
+		}
+		if err := cantPlayThisVideo.WaitUntilGone(ctx, time.Minute); err != nil {
+			return errors.Wrap(err, "failed to wait for \"Can't play this video.\" message to be absent")
+		}
+		return nil
+	}
+
+	connection.StopARCApp = func(ctx context.Context) error {
+		return act.Stop(ctx, connection.TestConn)
+	}
 
 	connection.TestConn, err = connection.Chrome.TestAPIConn(ctx)
 	if err != nil {
@@ -219,11 +246,12 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 
 // cleanUp is used to execute a given cleanup action and report
 // the resulting error if it is not nil. The intended usage is:
-// func Example(ctx, closeCtx context.Context) (retErr error) {
-//   ...
-//   defer cleanUp(closeCtx, action.Named("description of cleanup action", cleanup), &retErr)
-//   ...
-// }
+//
+//	func Example(ctx, closeCtx context.Context) (retErr error) {
+//	  ...
+//	  defer cleanUp(closeCtx, action.Named("description of cleanup action", cleanup), &retErr)
+//	  ...
+//	}
 func cleanUp(ctx context.Context, cleanup action.Action, retErr *error) {
 	if err := cleanup(ctx); err != nil {
 		if *retErr == nil {
