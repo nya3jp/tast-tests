@@ -653,3 +653,11 @@ func (m *Manager) EnablePortalDetection(ctx context.Context) error {
 	}
 	return nil
 }
+
+// DisablePortalDetection disables portal detection for all technologies.
+func (m *Manager) DisablePortalDetection(ctx context.Context) error {
+	if err := m.SetProperty(ctx, shillconst.ProfilePropertyCheckPortalList, ""); err != nil {
+		return errors.Wrap(err, "failed to disable portal detection")
+	}
+	return nil
+}
