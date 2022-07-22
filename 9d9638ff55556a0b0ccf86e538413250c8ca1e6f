@@ -34,6 +34,24 @@
       "parentUuid": "eb09e7e8_5ad6a5cd",
       "revId": "9d9638ff55556a0b0ccf86e538413250c8ca1e6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f45c3394_86439465",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-07-22T02:51:12Z",
+      "side": 1,
+      "message": "Hi Jun, Alex once mentioned this topic with us and we did some assessment of separating spera from UI package. I\u0027ll initiating a discussion offline. We can hold off the review for this CL. Can you mark it as WIP, Jane?",
+      "parentUuid": "e04dda4b_f37521cc",
+      "revId": "9d9638ff55556a0b0ccf86e538413250c8ca1e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
