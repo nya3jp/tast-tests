@@ -123,6 +123,24 @@
       "parentUuid": "e84dd674_dbc8f964",
       "revId": "3fe6dc48f271fee6f25c9ee2f45f113e76fefb91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e10f914c_b38c3fd5",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-22T07:45:59Z",
+      "side": 1,
+      "message": "And btw, they also implicitly assume that the camera id is integer in ACTION_SET_CAMERA_ID [1]. As a result, if we want to handle camera id as string, we also need to modify the logic here.\n\n[1]: https://source.corp.google.com/chromeos_public/src/platform/tast-tests/android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/CameraActivity.java;rcl\u003d25b9a99103cd275ef0ef353b60c0ac1c52c7263c;l\u003d199",
+      "parentUuid": "e84dd674_dbc8f964",
+      "revId": "3fe6dc48f271fee6f25c9ee2f45f113e76fefb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
