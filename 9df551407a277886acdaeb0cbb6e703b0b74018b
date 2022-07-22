@@ -16,6 +16,75 @@
       "message": "PTAL!",
       "revId": "9df551407a277886acdaeb0cbb6e703b0b74018b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa12b24b_78fc49f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/auth_error.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-07-22T08:58:35Z",
+      "side": 1,
+      "message": "Owned by LURS (go/lurs-test-automation).",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "9df551407a277886acdaeb0cbb6e703b0b74018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e4bebe2_de35127f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-07-22T08:58:35Z",
+      "side": 1,
+      "message": "Owned by LURS (go/lurs-test-automation).",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "9df551407a277886acdaeb0cbb6e703b0b74018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84f8a6f1_f61c288b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1528608
+      },
+      "writtenOn": "2022-07-22T08:58:35Z",
+      "side": 1,
+      "message": "Owned by LURS (go/lurs-test-automation).",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "9df551407a277886acdaeb0cbb6e703b0b74018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
