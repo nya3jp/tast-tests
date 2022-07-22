@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/bundles/cros/inputs/data"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -298,6 +299,14 @@ func LaunchBrowserWithHTML(ctx context.Context, browserType browser.Type, cr *ch
 			}
 		}
 	}()
+
+	activeWindow, err := ash.GetActiveWindow(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get active window")
+	}
+	if err := ash.SetWindowStateAndWait(ctx, tconn, activeWindow.ID, ash.WindowStateMaximized); err != nil {
+		return nil, errors.Wrap(err, "failed to maximize Chrome window")
+	}
 
 	if err := webutil.WaitForQuiescence(ctx, pc, 10*time.Second); err != nil {
 		return nil, errors.Wrap(err, "failed to load test page")
