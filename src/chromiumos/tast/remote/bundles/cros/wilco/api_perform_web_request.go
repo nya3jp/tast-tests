@@ -23,7 +23,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         APIPerformWebRequest,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test sending PerformWebRequest to the Wilco DTC Support Daemon",
 		Contacts: []string{
 			"vsavu@google.com",  // Test author

@@ -24,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         APIHandleMessageFromUI,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test sending a message from a Chromium extension to the Wilco DTC VM",
 		Contacts: []string{
 			"vsavu@google.com",  // Test author
