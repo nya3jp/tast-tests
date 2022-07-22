@@ -70,6 +70,30 @@
       },
       "revId": "bd03eddb350a6174f20f7d3f967c277bd8b6fb93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1eabb26_6cf3cd84",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/corrupt_both_fw_body_ab.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1537237
+      },
+      "writtenOn": "2022-07-22T14:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "400735a2_ebcd722a",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 15
+      },
+      "revId": "bd03eddb350a6174f20f7d3f967c277bd8b6fb93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
