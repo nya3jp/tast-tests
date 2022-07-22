@@ -33,6 +33,23 @@
       "message": "`signout.go` and `auth_error.go` lgtm.",
       "revId": "e152364234f68023b3c404adae19dbcbc650d442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "459e9d37_cc4d3c52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1367914
+      },
+      "writtenOn": "2022-07-22T15:22:15Z",
+      "side": 1,
+      "message": "lgtm",
+      "revId": "e152364234f68023b3c404adae19dbcbc650d442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
