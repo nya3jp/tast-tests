@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36eb63ae_7e852b9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-07-22T06:47:25Z",
+      "side": 1,
+      "message": "Thanks for the pointers. Anything in particular to look out for?",
+      "parentUuid": "af70b984_b17e92e6",
+      "revId": "fd82beeb7c14d3301514e2e9e04a4a53e2e0e1f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d59b5f71_f228c1ec",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/mine.go",
         "patchSetId": 1
