@@ -16,6 +16,69 @@
       "message": "Thanks for your help setting this up locally! I ran all teh remote tests and they all passed. I did have trouble running the local tests though as they required a device which the lab DUTs were showing:\n```\n[Fixture failure] nearbyShareAndroidSetup: Failed to set up an adb device: failed to list adb devices after multiple attempts: context deadline exceeded; last error follows: no device satisfies the condition\n```\nI\u0027m wondering if this is expected or if I\u0027ve introduced an error. Sending for your review if you can see anything obvious.",
       "revId": "f74a286348368f23b7170dabc0fc53088155ff4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16982387_d75804db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-22T00:39:27Z",
+      "side": 1,
+      "message": "LGTM with a minor nit about resolving the downloads path during fixture SetUp instead of from individual tests. Thanks for updating these Ben!",
+      "revId": "f74a286348368f23b7170dabc0fc53088155ff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e586d4b_e12c9ccd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-22T00:39:27Z",
+      "side": 1,
+      "message": "similar to the comment below, can we stick this in the fixture? since we have to reference it in multiple tests anyways",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "f74a286348368f23b7170dabc0fc53088155ff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da15872_885c0328",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_to_cros_background_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-22T00:39:27Z",
+      "side": 1,
+      "message": "nit: since we repeat these `filepath.Join` calls throughout the tests, can we do it in advance within the fixture to keep things cleaner here?",
+      "range": {
+        "startLine": 99,
+        "startChar": 18,
+        "endLine": 99,
+        "endChar": 120
+      },
+      "revId": "f74a286348368f23b7170dabc0fc53088155ff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
