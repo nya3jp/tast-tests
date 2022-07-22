@@ -146,7 +146,7 @@ func init() {
 // RTCPeerConnectionPerf opens a WebRTC loopback page that loops a given capture stream to measure decode time and CPU usage.
 func RTCPeerConnectionPerf(ctx context.Context, s *testing.State) {
 	testOpt := s.Param().(peerconnection.RTCTestOptions)
-	if err := peerconnection.RunDecodePerf(ctx, s.FixtValue().(*chrome.Chrome), s.DataFileSystem(), s.OutDir(), testOpt); err != nil {
+	if err := peerconnection.RunRTCPeerConnectionPerf(ctx, s.FixtValue().(*chrome.Chrome), s.DataFileSystem(), s.OutDir(), testOpt); err != nil {
 		s.Error("Failed to measure performance: ", err)
 	}
 }

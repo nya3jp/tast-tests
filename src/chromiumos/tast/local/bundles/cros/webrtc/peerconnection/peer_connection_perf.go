@@ -297,11 +297,11 @@ func measureRTCStats(ctx context.Context, conn *chrome.Conn, displayMediaType Di
 	return nil
 }
 
-// decodePerf opens a WebRTC Loopback connection and streams while collecting
+// peerconnectionPerf opens a WebRTC Loopback connection and streams while collecting
 // statistics. If videoGridDimension is larger than 1, then the real time <video>
 // is plugged into a videoGridDimension x videoGridDimension grid with copies
 // of videoURL being played, similar to a mosaic video call.
-func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL string, verifyHWDecoding, verifyHWEncoding VerifyHWAcceleratorMode, videoGridDimension int, videoURL, svc, outDir string, displayMediaType DisplayMediaType, p *perf.Values) error {
+func peerconnectionPerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL string, verifyHWDecoding, verifyHWEncoding VerifyHWAcceleratorMode, videoGridDimension int, videoURL, svc, outDir string, displayMediaType DisplayMediaType, p *perf.Values) error {
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
@@ -395,9 +395,9 @@ func decodePerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL str
 	return nil
 }
 
-// RunDecodePerf starts a Chrome instance (with or without hardware video decoder),
+// RunRTCPeerConnectionPerf starts a Chrome instance (with or without hardware video decoder and encoder),
 // opens a WebRTC loopback page and collects performance measures in p.
-func RunDecodePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir string, opts RTCTestOptions) error {
+func RunRTCPeerConnectionPerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileSystem, outDir string, opts RTCTestOptions) error {
 	// Time reserved for cleanup.
 	const cleanupTime = 5 * time.Second
 
@@ -420,7 +420,7 @@ func RunDecodePerf(ctx context.Context, cr *chrome.Chrome, fileSystem http.FileS
 		videoGridURL = server.URL + "/" + opts.videoGridFile
 	}
 	p := perf.NewValues()
-	if err := decodePerf(ctx, cr, opts.profile, loopbackURL, opts.verifyHWDecoding, opts.verifyHWEncoding,
+	if err := peerconnectionPerf(ctx, cr, opts.profile, loopbackURL, opts.verifyHWDecoding, opts.verifyHWEncoding,
 		opts.videoGridDimension, videoGridURL, opts.svc, outDir, opts.displayMediaType, p); err != nil {
 		return err
 	}
