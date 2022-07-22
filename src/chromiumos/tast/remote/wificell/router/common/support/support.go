@@ -116,6 +116,7 @@ type Hostapd interface {
 // DHCP shall be implemented if the router supports DHCP configuration.
 type DHCP interface {
 	Router
+	EnableDNS(ctx context.Context, port int, nameServers []string, resolvedHost string, resolveHostToIP net.IP)
 	// StartDHCP starts the DHCP server and configures the server IP.
 	StartDHCP(ctx context.Context, name, iface string, ipStart, ipEnd, serverIP, broadcastIP net.IP, mask net.IPMask) (*dhcp.Server, error)
 	// StopDHCP stops the DHCP server and flushes the interface.

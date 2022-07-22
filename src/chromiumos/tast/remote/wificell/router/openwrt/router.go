@@ -46,6 +46,7 @@ type Router struct {
 	activeServices   activeServices
 	nextBridgeID     int
 	nextVethID       int
+	dnsOpt           dhcp.DNSOption
 }
 
 // activeServices keeps a record of what services have been started and not yet
@@ -511,6 +512,14 @@ func (r *Router) ReconfigureHostapd(ctx context.Context, hs *hostapd.Server, con
 	return hs, nil
 }
 
+// EnableDNS enables the DNS functionality and it should be called before StartDHCP().
+func (r *Router) EnableDNS(ctx context.Context, port int, nameServers []string, resolvedHost string, resolveHostToIP net.IP) {
+	r.dnsOpt.Port = port
+	r.dnsOpt.NameServers = nameServers
+	r.dnsOpt.ResolvedHost = resolvedHost
+	r.dnsOpt.ResolveHostToIP = resolveHostToIP
+}
+
 // StartDHCP starts the DHCP server and configures the server IP.
 func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipEnd, serverIP, broadcastIP net.IP, mask net.IPMask) (_ *dhcp.Server, retErr error) {
 	ctx, st := timing.Start(ctx, "router.StartDHCP")
@@ -532,7 +541,7 @@ func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipE
 	}(ctx)
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
-	ds, err := dhcp.StartServer(ctx, r.host, name, iface, r.workDir(), ipStart, ipEnd)
+	ds, err := dhcp.StartServer(ctx, r.host, name, iface, r.workDir(), ipStart, ipEnd, r.dnsOpt)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start DHCP server")
 	}
