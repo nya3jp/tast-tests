@@ -20,7 +20,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies ARC++ hardware decode acceleration by running the c2_e2e_test APK",
 		Contacts:     []string{"chromeos-arc-video-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:arc-video"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      4 * time.Minute,
