@@ -13,6 +13,8 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/action"
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -34,7 +36,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 		Data:         []string{"bear-320x240.h264.mp4"},
 		Fixture:      "gpuWatchDog",
-		Timeout:      4 * time.Minute,
+		Timeout:      5 * time.Minute,
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
@@ -76,7 +78,8 @@ func PIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed installing app: ", err)
 	}
 
-	act, err := arc.NewActivity(a, "org.chromium.arc.testapp.pictureinpicturevideo", ".VideoActivity")
+	const pkgName = "org.chromium.arc.testapp.pictureinpicturevideo"
+	act, err := arc.NewActivity(a, pkgName, ".VideoActivity")
 	if err != nil {
 		s.Fatal("Failed to create activity: ", err)
 	}
@@ -101,28 +104,58 @@ func PIPRoundedCornersUnderlay(ctx context.Context, s *testing.State) {
 	}
 	defer a.RemoveReverseTCP(ctx, androidPort)
 
-	if err := act.Start(ctx, tconn, arc.WithExtraString("video_uri", fmt.Sprintf("http://localhost:%d/bear-320x240.h264.mp4", androidPort))); err != nil {
-		s.Fatal("Failed to start app: ", err)
+	withVideo := arc.WithExtraString("video_uri", fmt.Sprintf("http://localhost:%d/bear-320x240.h264.mp4", androidPort))
+	cantPlayThisVideo := d.Object(
+		ui.Text("Can't play this video."),
+		ui.PackageName(pkgName),
+		ui.ClassName("android.widget.TextView"),
+	)
+	pollOpts := &testing.PollOptions{Timeout: 10 * time.Second}
+	if err := action.Retry(3, func(ctx context.Context) (retErr error) {
+		if err := act.Start(ctx, tconn, withVideo); err != nil {
+			return errors.Wrap(err, "failed to start app")
+		}
+		defer func(ctx context.Context) {
+			if retErr == nil {
+				return
+			}
+			if err := act.Stop(cleanupCtx, tconn); err != nil {
+				s.Log("Failed to stop ARC app after failing to start it: ", err)
+			}
+		}(ctx)
+
+		// Wait until the video is playing, or at least the app is
+		// idle and not showing the message "Can't play this video."
+		if err := d.WaitForIdle(ctx, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for ARC app to be idle (before minimizing)")
+		}
+		if err := cantPlayThisVideo.WaitUntilGone(ctx, 10*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for \"Can't play this video.\" message to be absent")
+		}
+
+		// The test activity enters PIP mode in onUserLeaveHint().
+		if err := act.SetWindowState(ctx, tconn, arc.WindowStateMinimized); err != nil {
+			return errors.Wrap(err, "failed to minimize app")
+		}
+
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			if _, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.State == ash.WindowStatePIP }); err != nil {
+				return errors.Wrap(err, "the PIP window hasn't been created yet")
+			}
+			return nil
+		}, pollOpts); err != nil {
+			return errors.Wrap(err, "failed to wait for PIP window")
+		}
+
+		if err := d.WaitForIdle(ctx, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to wait for ARC app to be idle (as PIP)")
+		}
+
+		return nil
+	}, 0)(ctx); err != nil {
+		s.Fatal("Failed to create ARC PIP window: ", err)
 	}
 	defer act.Stop(cleanupCtx, tconn)
-
-	// The test activity enters PIP mode in onUserLeaveHint().
-	if err := act.SetWindowState(ctx, tconn, arc.WindowStateMinimized); err != nil {
-		s.Fatal("Failed to minimize app: ", err)
-	}
-
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		if _, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.State == ash.WindowStatePIP }); err != nil {
-			return errors.Wrap(err, "the PIP window hasn't been created yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Fatal("Failed to wait for PIP window: ", err)
-	}
-
-	if err := d.WaitForIdle(ctx, 5*time.Second); err != nil {
-		s.Fatal("Failed to wait for app to idle: ", err)
-	}
 
 	hists, err := metrics.Run(ctx, tconn, func(ctx context.Context) error {
 		if err := testing.Sleep(ctx, time.Second); err != nil {
