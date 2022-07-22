@@ -139,7 +139,7 @@ var expectedWLANDriver = map[wlan.DeviceID]map[string]string{
 		"5.15": "wireless/realtek/rtw88/rtw88_8822ce.ko",
 	},
 	wlan.Realtek8852APCIE: {
-		"5.10": "wireless/realtek/rtw89/rtw89_pci.ko",
+		"5.10": "wireless/realtek/rtw89/rtw89_8852ae.ko",
 	},
 	wlan.Realtek8852CPCIE: {
 		"5.10": "wireless/realtek/rtw89/rtw89_8852ce.ko",
@@ -259,10 +259,6 @@ func Driver(ctx context.Context, s *testing.State) {
 	moduleName := filepath.Base(path)
 
 	if got, want := moduleName+".ko", filepath.Base(expectedPath); got != want {
-		// TODO(b/235298690): Remove this extra check once the rtw89 driver update lands in 5.10 kernel
-		// and update the expectedWLANDriver map.
-		if (devInfo.ID != wlan.Realtek8852APCIE) || (baseRevision != "5.10") || (moduleName != "rtw89_8852ae") {
-			s.Errorf("Module name is %s, want %s", got, want)
-		}
+		s.Errorf("Module name is %s, want %s", got, want)
 	}
 }
