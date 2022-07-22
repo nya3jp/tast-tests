@@ -37,7 +37,7 @@ func init() {
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420,
 			},
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_p", caps.HWEncodeH264},
 		}, {
@@ -57,7 +57,7 @@ func init() {
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420,
 			},
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeH264},
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform(video.EncoderBlocklistVM...)),
@@ -78,7 +78,7 @@ func init() {
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420,
 			},
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP8},
 			ExtraHardwareDeps: hwdep.D(
@@ -101,7 +101,7 @@ func init() {
 				Params:      video.Crowd1080P,
 				PixelFormat: videotype.I420,
 			},
-			ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraData:         []string{video.Crowd1080P.Name},
 			ExtraSoftwareDeps: []string{"android_vm", caps.HWEncodeVP9},
 			ExtraHardwareDeps: hwdep.D(
