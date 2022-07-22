@@ -297,12 +297,12 @@ func (f *Finder) locationPx(ctx context.Context, uda *Context, scaleFactor float
 
 	switch uda.screenshotStrategy {
 	case StableScreenshot:
-		imagePng, err = takeStableScreenshot(ctx, uda.tconn, uda.pollOpts, boundingBox)
+		imagePng, err = takeStableScreenshot(ctx, uda.tconn, uda.pollOpts)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to take stable screenshot")
 		}
 	case ImmediateScreenshot:
-		imagePng, err = takeScreenshot(ctx, uda.tconn, boundingBox)
+		imagePng, err = takeScreenshot(ctx, uda.tconn)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to take screenshot")
 		}
@@ -328,14 +328,19 @@ func (f *Finder) locationPx(ctx context.Context, uda *Context, scaleFactor float
 		if f.exactMatch && !strings.EqualFold(location.GetText(), f.desc) {
 			continue
 		}
+		rect := coords.NewRectLTRB(
+			int(location.GetLeft()),
+			int(location.GetTop()),
+			int(location.GetRight()),
+			int(location.GetBottom()))
+		if !boundingBox.Contains(rect) {
+			// Not within constraints.
+			continue
+		}
 		locations = append(
 			locations,
 			Location{
-				Rect: coords.NewRectLTRB(
-					boundingBox.Left+int(location.GetLeft()),
-					boundingBox.Top+int(location.GetTop()),
-					boundingBox.Left+int(location.GetRight()),
-					boundingBox.Top+int(location.GetBottom())),
+				Rect: rect,
 				Text: location.GetText(),
 			})
 	}

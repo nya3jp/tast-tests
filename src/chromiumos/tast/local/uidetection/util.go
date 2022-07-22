@@ -8,7 +8,6 @@ import (
 	"bytes"
 	"context"
 	"image"
-	"image/draw"
 	"image/png"
 	"io/ioutil"
 	"os"
@@ -17,7 +16,6 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 )
@@ -49,30 +47,15 @@ func readImage(imgFile string) ([]byte, error) {
 	return imgBuf.Bytes(), nil
 }
 
-func crop(img image.Image, boundingBox coords.Rect) (image.Image, error) {
-	bounds := img.Bounds().Intersect(image.Rect(boundingBox.Left, boundingBox.Top, boundingBox.Right(), boundingBox.Bottom()))
-	cropped := image.NewRGBA(bounds)
-	draw.Draw(cropped, bounds, img, bounds.Min, draw.Src)
-	if cropped.Bounds().Empty() {
-		return nil, errors.New(ErrEmptyBoundingBox)
-	}
-	return cropped, nil
-}
-
 // takeScreenshot takes a screentshot in PNG format and reads it to []byte.
-func takeScreenshot(ctx context.Context, tconn *chrome.TestConn, boundingBox coords.Rect) ([]byte, error) {
-	uncropped, err := screenshot.CaptureChromeImageWithTestAPI(ctx, tconn)
+func takeScreenshot(ctx context.Context, tconn *chrome.TestConn) ([]byte, error) {
+	img, err := screenshot.CaptureChromeImageWithTestAPI(ctx, tconn)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to take the screenshot")
 	}
 
-	cropped, err := crop(uncropped, boundingBox)
-	if err != nil {
-		return nil, err
-	}
-
 	imgBuf := new(bytes.Buffer)
-	if err := png.Encode(imgBuf, cropped); err != nil {
+	if err := png.Encode(imgBuf, img); err != nil {
 		return nil, errors.Wrap(err, "failed to write the PNG image into byte buffer")
 	}
 
@@ -80,20 +63,16 @@ func takeScreenshot(ctx context.Context, tconn *chrome.TestConn, boundingBox coo
 }
 
 // takeStableScreenshot takes a stable screenshot that doesn't changed between two pollings.
-func takeStableScreenshot(ctx context.Context, tconn *chrome.TestConn, pollOpts testing.PollOptions, boundingBox coords.Rect) ([]byte, error) {
+func takeStableScreenshot(ctx context.Context, tconn *chrome.TestConn, pollOpts testing.PollOptions) ([]byte, error) {
 	var currentScreen image.Image
 	var lastScreen image.Image
 	start := time.Now()
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var err error
 		lastScreen = currentScreen
-		uncropped, err := screenshot.CaptureChromeImageWithTestAPI(ctx, tconn)
+		currentScreen, err := screenshot.CaptureChromeImageWithTestAPI(ctx, tconn)
 		if err != nil {
 			return errors.Wrap(err, "failed to take immediate screenshot")
-		}
-		currentScreen, err = crop(uncropped, boundingBox)
-		if err != nil {
-			return err
 		}
 		if err = equal(currentScreen, lastScreen); err != nil {
 			return errors.Wrapf(err, "screen has not stopped changing after %s, perhaps increase timeout or use immediate-screenshot strategy", time.Since(start))
