@@ -10,62 +10,110 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cuj"
+	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
 
-type tracingMode bool
+type testType string
 
 const (
-	tracingOn    tracingMode = true
-	tracingOff   tracingMode = false
-	idleDuration             = 30 * time.Second
+	testTypeARC    testType = "arc"
+	testTypeAsh    testType = "ash"
+	testTypeLacros testType = "lacros"
 )
+
+const (
+	idleDuration   = 30 * time.Second
+	emptyWindowURL = "chrome://newtab"
+)
+
+type idlePerfTest struct {
+	tracing  bool
+	testType testType
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         IdlePerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the CPU usage while the desktop is idle",
 		Contacts:     []string{"xiyuan@chromium.org", "yichenz@chromium.org", "chromeos-perfmetrics-eng@google.com"},
 		Attr:         []string{"group:cuj"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{cujrecorder.SystemTraceConfigFile},
 		Timeout:      cuj.CPUStablizationTimeout + idleDuration,
-		Pre:          arc.Booted(),
+
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
-			Val:               tracingOff,
+			Val:               idlePerfTest{testType: testTypeARC},
+			Pre:               arc.Booted(),
 		}, {
 			Name:              "trace",
 			ExtraSoftwareDeps: []string{"android_p"},
-			Val:               tracingOn,
+			Val:               idlePerfTest{testType: testTypeARC, tracing: true},
+			Pre:               arc.Booted(),
 		}, {
 			Name:              "arcvm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Val:               tracingOff,
+			Val:               idlePerfTest{testType: testTypeARC},
+			Pre:               arc.Booted(),
 		}, {
 			Name:              "arcvm_trace",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			Val:               tracingOn,
+			Val:               idlePerfTest{testType: testTypeARC, tracing: true},
+			Pre:               arc.Booted(),
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               idlePerfTest{testType: testTypeLacros},
+			Fixture:           "loggedInToCUJUserLacros",
+		}, {
+			Name:              "lacros_trace",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               idlePerfTest{testType: testTypeLacros, tracing: true},
+			Fixture:           "loggedInToCUJUserLacros",
+		}, {
+			Name:    "ash",
+			Val:     idlePerfTest{testType: testTypeAsh},
+			Fixture: "loggedInToCUJUser",
+		}, {
+			Name:    "ash_trace",
+			Val:     idlePerfTest{testType: testTypeAsh, tracing: true},
+			Fixture: "loggedInToCUJUser",
 		}},
 	})
 }
 
 func IdlePerf(ctx context.Context, s *testing.State) {
-	tracing := s.Param().(tracingMode)
+	idleTest := s.Param().(idlePerfTest)
 
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.PreValue().(arc.PreData).Chrome
-	a := s.PreValue().(arc.PreData).ARC
+	var cr *chrome.Chrome
+	var a *arc.ARC
+	var tconn *chrome.TestConn
+	if idleTest.testType == testTypeARC {
+		cr = s.PreValue().(arc.PreData).Chrome
+		a = s.PreValue().(arc.PreData).ARC
+	} else {
+		cr = s.FixtValue().(chrome.HasChrome).Chrome()
+
+		var err error
+		tconn, err = cr.TestAPIConn(ctx)
+		if err != nil {
+			s.Fatal("Failed to connect to the test API connection: ", err)
+		}
+	}
 
 	// Wait for cpu to stabilize before test.
 	if err := cpu.WaitUntilStabilized(ctx, cuj.CPUCoolDownConfig()); err != nil {
@@ -90,11 +138,30 @@ func IdlePerf(ctx context.Context, s *testing.State) {
 			s.Error("Failed to stop recorder: ", err)
 		}
 	}()
-	if tracing {
+	if idleTest.tracing {
 		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
 	}
 
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
+		if idleTest.testType != testTypeARC {
+			// Sleep to get the baseline idle state without any browser open.
+			if err := testing.Sleep(ctx, 10*time.Second); err != nil {
+				return errors.Wrap(err, "failed to sleep")
+			}
+
+			// Open a New Tab window.
+			switch idleTest.testType {
+			case testTypeAsh:
+				if _, err := cr.NewConn(ctx, emptyWindowURL); err != nil {
+					return errors.Wrapf(err, "failed to open %s for Ash", emptyWindowURL)
+				}
+			case testTypeLacros:
+				if _, err := lacros.LaunchWithURL(ctx, tconn, emptyWindowURL); err != nil {
+					return errors.Wrapf(err, "failed to open %s for Lacros", emptyWindowURL)
+				}
+			}
+		}
+
 		s.Log("Just wait for ", idleDuration, " to check the load of idle status")
 		return testing.Sleep(ctx, idleDuration)
 	}); err != nil {
