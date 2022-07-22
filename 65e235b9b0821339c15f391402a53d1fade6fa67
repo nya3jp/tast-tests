@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c92f7ef8_eb82454a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-22T18:16:32Z",
+      "side": 1,
+      "message": "I have two comments. Please take a look. Thanks.",
+      "revId": "65e235b9b0821339c15f391402a53d1fade6fa67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f91da4a_82d9948b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-22T18:16:32Z",
+      "side": 1,
+      "message": "Can both Boards and ExcludeBoards be non-empty? If so, please add a comment on it.",
+      "revId": "65e235b9b0821339c15f391402a53d1fade6fa67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "311984ca_be73df5e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/syzkaller/wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-22T18:16:32Z",
+      "side": 1,
+      "message": "If I understand correctly, len(config.Boards) \u003e 0 and len(config.ExcludeBoards) \u003e 0 should never happen. I would suggest you to add a check and return error so that users can catch the issue in manual testing. This is ONLY a suggestion. It is ok not to do the check.\n\nAlso, I think the expression is hard to understand. It took me a while to understand. I think it will be clearer this way.\n\n```\nok :\u003d !contains(config.ExcludeBoards, board)\nif len(config.Board) \u003e 0 {\n    ok \u003d contains(config.Boards, board)\n}\nif ok {\n   ...\n}\n```",
+      "revId": "65e235b9b0821339c15f391402a53d1fade6fa67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
