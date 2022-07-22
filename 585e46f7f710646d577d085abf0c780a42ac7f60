@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d8a76b6_3dbdb803",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-22T11:48:06Z",
+      "side": 1,
+      "message": "Could you clarify when/why?\nMaybe in the code comment?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "585e46f7f710646d577d085abf0c780a42ac7f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3d03c6c9_749918fe",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-07-21T22:26:27Z",
       "side": 1,
       "message": "lgtm\n\nThanks.",
+      "revId": "585e46f7f710646d577d085abf0c780a42ac7f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd6843f5_d5d14219",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-22T11:48:06Z",
+      "side": 1,
+      "message": "the direction lg",
       "revId": "585e46f7f710646d577d085abf0c780a42ac7f60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
