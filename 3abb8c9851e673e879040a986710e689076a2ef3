@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b2caf29_41379f8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-22T09:30:08Z",
+      "side": 1,
+      "message": "looks like the fix in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3778840 has been submitted.",
+      "revId": "3abb8c9851e673e879040a986710e689076a2ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
