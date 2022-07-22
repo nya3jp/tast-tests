@@ -17,6 +17,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Smoke test that clicks through OOBE",
 		Contacts: []string{
+			"bohdanty@google.com",
+			"rrsilva@google.com",
 			"chromeos-sw-engprod@google.com",
 			"cros-oac@google.com",
 		},

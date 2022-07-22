@@ -30,7 +30,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks cryptohome password change flow",
 		Contacts: []string{
-			"rsorokin@google.com",
+			"anastasiian@google.com",
+			"bohdanty@google.com",
 			"cros-oac@google.com",
 			"chromeos-sw-engprod@google.com",
 		},
