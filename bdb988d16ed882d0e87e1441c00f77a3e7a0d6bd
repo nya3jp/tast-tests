@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebdee3e6_a72456cb",
+        "filename": "src/chromiumos/tast/common/tape/authentication_helper.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-22T09:25:57Z",
+      "side": 1,
+      "message": "\u003e \"requets\" is a possible misspelling of \"requests\".\n\nPlease fix.",
+      "parentUuid": "1f696bef_76cfc137",
+      "range": {
+        "startLine": 47,
+        "startChar": 15,
+        "endLine": 47,
+        "endChar": 22
+      },
+      "revId": "bdb988d16ed882d0e87e1441c00f77a3e7a0d6bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
