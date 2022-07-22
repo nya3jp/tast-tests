@@ -175,6 +175,30 @@
       },
       "revId": "86ec01852d3be8888b2b591f8b00a1bfda202692",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3958fbbb_e8616504",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-22T17:06:52Z",
+      "side": 1,
+      "message": "Yes! The following [file](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/init/upstart/boot-update-firmware.conf;l\u003d140-141;drc\u003d90da8f5ad54dc5f0534a26038a626cc09182dbe5) is created when DUT needs second reboot.\n\nThanks for the advice!",
+      "parentUuid": "e14fd1a8_fc62f24a",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "86ec01852d3be8888b2b591f8b00a1bfda202692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
