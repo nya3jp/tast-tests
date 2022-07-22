@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1c31b0c_fa521064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-22T06:28:23Z",
+      "side": 1,
+      "message": "Changed the code which does cleanup per a request on the prior CL to allow the caller to stop the service before the context is done if they want.",
+      "parentUuid": "2ac4ee5a_b623f8dc",
+      "revId": "b67856e5e0885f655c610f32a5e241eb49445b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7b46701_43b80934",
@@ -84,6 +102,30 @@
       "writtenOn": "2022-07-21T18:08:19Z",
       "side": 1,
       "message": "You should just be able to Fatal with the err we get from testing.Poll here, it will already contain the reason we failed",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 3
+      },
+      "revId": "b67856e5e0885f655c610f32a5e241eb49445b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5432ba01_fe19e2fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-22T06:28:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7b46701_43b80934",
       "range": {
         "startLine": 233,
         "startChar": 0,
