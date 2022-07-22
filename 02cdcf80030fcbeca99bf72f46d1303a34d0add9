@@ -69,6 +69,24 @@
       "parentUuid": "17021ce6_71fe53e2",
       "revId": "02cdcf80030fcbeca99bf72f46d1303a34d0add9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81563cf9_5775d227",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-22T16:44:38Z",
+      "side": 1,
+      "message": "If we don\u0027t open lacros/ash, it would be really surprising to see any power differences. I only added ash because I thought it seemed arbitrary to just add a lacros baseline. \n\nI didn\u0027t know that ARC is always running though, which makes simply installing Ash/Lacros not really make too much sense. I can verify that lacros isn\u0027t running in the test -- no background processes show up in task manager either. \n\nOpening an empty browser seems reasonable to me, and could at least give a meaningful difference between Ash/Lacros.",
+      "parentUuid": "c4ebf937_3eaeac30",
+      "revId": "02cdcf80030fcbeca99bf72f46d1303a34d0add9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
