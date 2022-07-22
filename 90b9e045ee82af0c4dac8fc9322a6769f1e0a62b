@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2628539_b7bf9728",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-22T16:02:02Z",
+      "side": 1,
+      "message": "nit: Remove `tast-tests:` and just have `arc:`",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "90b9e045ee82af0c4dac8fc9322a6769f1e0a62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bba6d73_ce6db39a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-22T16:02:02Z",
+      "side": 1,
+      "message": "Capitalize as `Update`. See: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "90b9e045ee82af0c4dac8fc9322a6769f1e0a62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c71e8f5_d054bd7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-22T16:02:02Z",
+      "side": 1,
+      "message": "nit: This implies that the CL adds chromeos-video-eng@google.com. In other words, it\u0027s not instead of the individual maintainers; it\u0027s instead of combinations of chromeos-video-eng@google.com and individual maintainers. Here is a suggestion: \"Remove all individual maintainers from ARC video tests contacts, leaving only chromeos-video-eng@google.com.\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "90b9e045ee82af0c4dac8fc9322a6769f1e0a62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d4c4a3_e49f6a34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-22T16:02:02Z",
+      "side": 1,
+      "message": "Wrap the body text to 72 characters. See: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "90b9e045ee82af0c4dac8fc9322a6769f1e0a62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c78f927_36e43755",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-22T16:02:02Z",
+      "side": 1,
+      "message": "`TEST\u003d../tast/fast_build.sh -T`\n\nI know it is a simple change but that command runs quickly so I think you should at least do that.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "90b9e045ee82af0c4dac8fc9322a6769f1e0a62b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
