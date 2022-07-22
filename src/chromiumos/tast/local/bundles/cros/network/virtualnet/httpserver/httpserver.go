@@ -71,7 +71,6 @@ func (h *httpserver) Start(ctx context.Context, env *env.Env) (retErr error) {
 		errChannel <- nil
 		h.server.Serve(ln)
 	}()
-
 	return <-errChannel
 }
 
