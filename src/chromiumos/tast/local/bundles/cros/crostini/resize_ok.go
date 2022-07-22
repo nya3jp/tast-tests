@@ -69,11 +69,11 @@ func ResizeOk(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Linux Settings: ", err)
 	}
 
-	if err := uiauto.StartRecordFromKB(ctx, tconn, keyboard); err != nil {
+	if err := uiauto.StartRecordFromKB(ctx, tconn, keyboard, pre.DownloadsPath); err != nil {
 		s.Log("Failed to start recording: ", err)
 	}
 
-	defer uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, s.HasError, s.OutDir())
+	defer uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, s.HasError, s.OutDir(), pre.DownloadsPath)
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 

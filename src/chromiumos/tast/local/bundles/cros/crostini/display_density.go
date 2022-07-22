@@ -113,11 +113,11 @@ func DisplayDensity(ctx context.Context, s *testing.State) {
 		highDensity
 	)
 
-	if err := uiauto.StartRecordFromKB(ctx, tconn, keyboard); err != nil {
+	if err := uiauto.StartRecordFromKB(ctx, tconn, keyboard, pre.DownloadsPath); err != nil {
 		s.Log("Failed to start recording from keyboard: ", err)
 	}
 
-	defer uiauto.StopRecordFromKBAndSaveOnError(cleanupCtx, tconn, s.HasError, s.OutDir())
+	defer uiauto.StopRecordFromKBAndSaveOnError(cleanupCtx, tconn, s.HasError, s.OutDir(), pre.DownloadsPath)
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
 	demoWindowSize := func(densityConfiguration density) (coords.Size, error) {

@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	cui "chromiumos/tast/local/crostini/ui"
 	"chromiumos/tast/local/crostini/ui/terminalapp"
+	"chromiumos/tast/local/cryptohome"
 	dlcutil "chromiumos/tast/local/dlc"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
@@ -274,6 +275,7 @@ type FixtureData struct {
 	PostData      *PostTestData
 	StartupValues *perf.Values
 	Screendiffer  *Screendiffer
+	DownloadsPath string
 }
 
 var preTestDataBuster = &preTestData{
@@ -371,7 +373,21 @@ func (f *crostiniFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Failed to reset chrome's state: ", err)
 	}
 
-	return FixtureData{f.cr, f.tconn, f.cont, f.kb, f.postData, f.values, nil}
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, f.cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Downloads path: ", err)
+	}
+
+	return FixtureData{
+		Chrome:        f.cr,
+		Tconn:         f.tconn,
+		Cont:          f.cont,
+		KB:            f.kb,
+		PostData:      f.postData,
+		StartupValues: f.values,
+		Screendiffer:  nil,
+		DownloadsPath: downloadsPath,
+	}
 }
 
 func (f *crostiniFixture) TearDown(ctx context.Context, s *testing.FixtState) {

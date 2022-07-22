@@ -27,6 +27,7 @@ import (
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/logsaver"
 	"chromiumos/tast/testing"
@@ -165,6 +166,7 @@ type crossdeviceFixture struct {
 	saveScreenRecording               bool
 	lockFixture                       bool
 	logcatStartTime                   adb.LogcatTimestamp
+	downloadsPath                     string
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -343,6 +345,12 @@ func (f *crossdeviceFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 	}
 	f.crosAttributes = crosAttributes
 
+	// Get the user's Download path for saving screen recordings.
+	f.downloadsPath, err = cryptohome.DownloadsPath(ctx, f.cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Downloads path: ", err)
+	}
+
 	// Lock chrome after all Setup is complete so we don't block other fixtures.
 	if f.lockFixture {
 		chrome.Lock()
@@ -410,7 +418,7 @@ func (f *crossdeviceFixture) PreTest(ctx context.Context, s *testing.FixtTestSta
 			}
 			f.kb = kb
 		}
-		if err := uiauto.StartRecordFromKB(ctx, f.tconn, f.kb); err != nil {
+		if err := uiauto.StartRecordFromKB(ctx, f.tconn, f.kb, f.downloadsPath); err != nil {
 			s.Fatal("Failed to start screen recording on CrOS: ", err)
 		}
 
@@ -469,9 +477,9 @@ func (f *crossdeviceFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 		if err := ui.Exists(uiauto.ScreenRecordStopButton)(ctx); err != nil {
 			// Smart Lock tests automatically stop the screen recording when they lock the screen.
 			// The screen recording should still exist though.
-			crosRecordErr = uiauto.SaveRecordFromKBOnError(ctx, f.tconn, s.HasError, s.OutDir())
+			crosRecordErr = uiauto.SaveRecordFromKBOnError(ctx, f.tconn, s.HasError, s.OutDir(), f.downloadsPath)
 		} else {
-			crosRecordErr = uiauto.StopRecordFromKBAndSaveOnError(ctx, f.tconn, s.HasError, s.OutDir())
+			crosRecordErr = uiauto.StopRecordFromKBAndSaveOnError(ctx, f.tconn, s.HasError, s.OutDir(), f.downloadsPath)
 		}
 		if crosRecordErr != nil {
 			s.Fatal("Failed to save CrOS screen recording: ", crosRecordErr)
