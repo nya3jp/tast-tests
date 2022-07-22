@@ -29,7 +29,12 @@ func init() {
 		Func:         Pin,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test pin enrollment, pin unlock and pin login",
-		Contacts:     []string{"rsorokin@google.com", "chromeos-sw-engprod@google.com", "cros-oac@google.com"},
+		Contacts: []string{
+			"anastasiian@google.com",
+			"bohdanty@google.com",
+			"chromeos-sw-engprod@google.com",
+			"cros-oac@google.com",
+		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
