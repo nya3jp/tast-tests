@@ -29,7 +29,7 @@ func init() {
 		Func:         VideoEncodeAccel,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies ARC++ and ARCVM hardware encode acceleration by running the arcvideoencoder_test binary",
-		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"chromeos-arc-video-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome"},
