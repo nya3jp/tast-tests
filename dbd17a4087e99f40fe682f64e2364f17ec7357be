@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1713f0b_db94dd11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-22T20:51:43Z",
+      "side": 1,
+      "message": "LGTM. (may still need +2 from tast owners) Thanks for adding the lacros variant!",
+      "revId": "dbd17a4087e99f40fe682f64e2364f17ec7357be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e3d7f8c_af29cb9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/html_reload.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-22T20:51:43Z",
+      "side": 1,
+      "message": "LacrosVariantExists now that this CL adds a lacros variant",
+      "range": {
+        "startLine": 36,
+        "startChar": 24,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "dbd17a4087e99f40fe682f64e2364f17ec7357be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
