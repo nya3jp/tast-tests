@@ -2,8 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package httpserver provides the utils to run an httpserver inside a
-// virtualnet.Env.
+// Package httpserver provides the utils to run an httpserver on the remote router.
 package httpserver
 
 import (
@@ -11,10 +10,6 @@ import (
 	"fmt"
 	"net"
 	"net/http"
-	"os"
-
-	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/network/virtualnet/env"
 )
 
 // Paths in chroot.
@@ -23,11 +18,11 @@ const (
 	redirectURL = "http://www.foo.com"
 )
 
-type httpserver struct {
+// Httpserver handles http server and its listening port.
+type Httpserver struct {
 	// port is the port that the HTTP server will listen and serve on.
 	port   string
 	server *http.Server
-	env    *env.Env
 }
 
 // Handler creates the object to handle the response for the HTTP server.
@@ -42,23 +37,17 @@ func (h *Handler) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 // Env.StartServer(), its lifetime will be managed by the Env object. The
 // httpserver will only respond with 302 redirects. Port will be the port the
 // HTTP server listens and serves on.
-func New(port string) *httpserver {
-	return &httpserver{port: port}
+func New(port string) *Httpserver {
+	return &Httpserver{port: port}
 }
 
-// Start starts the HTTP server in a separate process. The HTTP server listens on
-// any IPv4 and IPv6 address within the namespace.
-func (h *httpserver) Start(ctx context.Context, env *env.Env) (retErr error) {
-	h.env = env
+// StartOnRouter starts the HTTP server in a separate process and on a remote Router.
+// The HTTP server listens on any IPv4 and IPv6 address within the namespace.
+func (h *Httpserver) StartOnRouter(ctx context.Context) (retErr error) {
 	h.server = &http.Server{Addr: fmt.Sprintf(":%v", h.port), Handler: &Handler{}}
+
 	errChannel := make(chan error)
 	go func() {
-		cleanup, err := h.env.EnterNetNS(ctx)
-		if err != nil {
-			errChannel <- errors.Wrapf(err, "failed to enter the associated netns %s", h.env.NetNSName)
-			return
-		}
-		defer cleanup()
 		ln, err := net.Listen("tcp", h.server.Addr)
 		if err != nil {
 			errChannel <- err
@@ -67,16 +56,12 @@ func (h *httpserver) Start(ctx context.Context, env *env.Env) (retErr error) {
 		errChannel <- nil
 		h.server.Serve(ln)
 	}()
+
 	return <-errChannel
 }
 
 // Stop terminates the process running the HTTP server.
-func (h *httpserver) Stop(ctx context.Context) error {
+func (h *Httpserver) Stop(ctx context.Context) error {
 	h.server.Shutdown(ctx)
 	return nil
-}
-
-// WriteLogs writes logs into |f|.
-func (h *httpserver) WriteLogs(ctx context.Context, f *os.File) error {
-	return h.env.ReadAndWriteLogIfExists(h.env.ChrootPath(logPath), f)
 }

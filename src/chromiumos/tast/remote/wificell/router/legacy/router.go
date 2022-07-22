@@ -59,6 +59,7 @@ type Router struct {
 	iwr           *iw.Runner
 	ipr           *ip.Runner
 	logCollectors map[string]*log.Collector // map from log path to its collector.
+	dnsOpt        dhcp.DNSOption
 }
 
 // NewRouter prepares initial test AP state (e.g., initializing wiphy/wdev).
@@ -487,6 +488,14 @@ func (r *Router) ReconfigureHostapd(ctx context.Context, hs *hostapd.Server, con
 	return r.startHostapdOnIface(ctx, iface, name, conf)
 }
 
+// EnableDNS enables the DNS functionality and it should be called before StartDHCP().
+func (r *Router) EnableDNS(ctx context.Context, port int, nameServers []string, resolvedHost string, resolveHostToIP net.IP) {
+	r.dnsOpt.Port = port
+	r.dnsOpt.NameServers = nameServers
+	r.dnsOpt.ResolvedHost = resolvedHost
+	r.dnsOpt.ResolveHostToIP = resolveHostToIP
+}
+
 // StartDHCP starts the DHCP server and configures the server IP.
 func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipEnd, serverIP, broadcastIP net.IP, mask net.IPMask) (_ *dhcp.Server, retErr error) {
 	ctx, st := timing.Start(ctx, "router.StartDHCP")
@@ -508,7 +517,7 @@ func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipE
 	}(ctx)
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
-	ds, err := dhcp.StartServer(ctx, r.host, name, iface, r.workDir(), ipStart, ipEnd)
+	ds, err := dhcp.StartServer(ctx, r.host, name, iface, r.workDir(), ipStart, ipEnd, r.dnsOpt)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start DHCP server")
 	}
