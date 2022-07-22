@@ -180,6 +180,11 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Cannot press 'Enter': ", err)
 	}
 
+	// Exit and reenter library page.
+	if err := ash.ExitAndReenterLibrary(ctx, ac, tconn); err != nil {
+		s.Fatal("Failed to exit and reenter library page: ", err)
+	}
+
 	// Verify that there are two saved desks.
 	savedDeskViewInfo, err := ash.FindSavedDesks(ctx, ac)
 	if err != nil {
