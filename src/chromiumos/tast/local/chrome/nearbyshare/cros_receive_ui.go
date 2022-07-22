@@ -128,3 +128,20 @@ func WaitForReceivingCompleteNotification(ctx context.Context, tconn *chrome.Tes
 	}
 	return nil
 }
+
+// OpenWiFiNetworkListNotification opens the Known Network List from the successful transfer notification.
+func OpenWiFiNetworkListNotification(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration) error {
+	if _, err := ash.WaitForNotification(ctx, tconn, timeout,
+		ash.WaitTitleContains("Nearby Share"),
+		ash.WaitMessageContains("saved from"),
+	); err != nil {
+		return errors.Wrap(err, "failed to wait for Wi-Fi networks notification")
+	}
+
+	ui := uiauto.New(tconn)
+	btn := nodewith.Role(role.Button).NameRegex(regexp.MustCompile("(?i)Open in Wi-Fi networks")).Ancestor(nodewith.Role(role.AlertDialog))
+	if err := ui.LeftClick(btn)(ctx); err != nil {
+		return errors.Wrap(err, "failed to click Wi-Fi networks notification's button")
+	}
+	return nil
+}
