@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c9750a_a4e291a9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-22T13:58:40Z",
+      "side": 1,
+      "message": "if os.Create() faile, they won\u0027t be closed.\ndefer needs to be split and put just after os.Create()\u0027s error check for each.",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "64622ffe588409be89f0e222ddb4e4c5ff018db6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
