@@ -87,6 +87,20 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
+	// TOOD(b/233238923): Remove when passthrough is enabled by default.
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInWith100FakeAppsPassthroughCmdDecoder",
+		Desc:     "Logged into a user session with 100 fake apps and the passthrough command decoder enabled",
+		Contacts: []string{"hob@chromium.org"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{EnableFeatures("DefaultPassthroughCommandDecoder")}, nil
+		}),
+		Parent:          "install100Apps",
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
 	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInWith100FakeAppsDoubleBufferingAndLegacyLauncher",
 		Desc:     "Logged into a user session with 100 fake apps with productivity launcher disabled and double buffer compositing",
