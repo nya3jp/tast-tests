@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c761f6e9_6e201567",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-22T07:06:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "404f7fa9_3c3e18a7",
+      "revId": "59de8a27c1cafd85c154de4039e1ccc6dbe8a1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9539a69f_4cb287b1",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2022-07-21T08:26:53Z",
       "side": 1,
       "message": "3 minutes are necessary for all the clean ups? I just want to confirm that it was put here with some thoughts about it.",
+      "range": {
+        "startLine": 69,
+        "startChar": 37,
+        "endLine": 69,
+        "endChar": 50
+      },
+      "revId": "59de8a27c1cafd85c154de4039e1ccc6dbe8a1eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f080459_58f7b54e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/intel/usb_typea_storage_functionality.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-22T07:06:10Z",
+      "side": 1,
+      "message": "Yes, powercontrol.PowerOntoDUT() has a polling of 2mins. So we are passing cleanupCtx  \u003e 2mins.",
+      "parentUuid": "15c752d7_5ea62c4b",
       "range": {
         "startLine": 69,
         "startChar": 37,
