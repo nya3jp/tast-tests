@@ -87,6 +87,24 @@
       "parentUuid": "962f14d3_af64a4d8",
       "revId": "3fe6dc48f271fee6f25c9ee2f45f113e76fefb91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84dd674_dbc8f964",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-22T07:42:00Z",
+      "side": 1,
+      "message": "For example, let\u0027s assume we use string format to represent camera id. So the JSON string will be like the following on Android side:\n`[\"0\", \"1\", \"foo\"]`\n\nBut from my testing, without escaping, the string I got from the Tast side is:\n`[`\n\nSo it seems that the double quote character should be escaped to be properly passed from Android to Tast via the adb.",
+      "parentUuid": "a4bf1097_8d33f6ff",
+      "revId": "3fe6dc48f271fee6f25c9ee2f45f113e76fefb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
