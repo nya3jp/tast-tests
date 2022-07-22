@@ -39,7 +39,12 @@ func init() {
 		Func:         Signout,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test signout from the lock screen",
-		Contacts:     []string{"rsorokin@google.com", "chromeos-sw-engprod@google.com", "cros-oac@google.com"},
+		Contacts: []string{
+			"anastasiian@google.com",
+			"mbid@google.com",
+			"chromeos-sw-engprod@google.com",
+			"cros-oac@google.com",
+		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
