@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9f17344_73b645e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-22T15:01:25Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests\n\nI think that this is a good candidate for a table-driven test because we\u0027re not pulling in other stuff in the params (i.e. the video decoding tests use params because they also have to use different video files for each subtest, etc.)",
+      "parentUuid": "c278422b_59c52665",
+      "revId": "b67856e5e0885f655c610f32a5e241eb49445b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a213fbd0_98b1020c",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
         "patchSetId": 3
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "Changed the code which does cleanup per a request on the prior CL to allow the caller to stop the service before the context is done if they want.",
       "parentUuid": "2ac4ee5a_b623f8dc",
+      "revId": "b67856e5e0885f655c610f32a5e241eb49445b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b04ca59a_a446a77b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-22T15:01:25Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "d1c31b0c_fa521064",
       "revId": "b67856e5e0885f655c610f32a5e241eb49445b2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
