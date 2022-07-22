@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/http"
 	"chromiumos/tast/remote/wificell/pcap"
 )
 
@@ -122,13 +123,23 @@ type Hostapd interface {
 	ReconfigureHostapd(ctx context.Context, hs *hostapd.Server, conf *hostapd.Config) (*hostapd.Server, error)
 }
 
-// DHCP shall be implemented if the router supports DHCP configuration.
+// DHCP shall be implemented if the router supports DHCP configuration. If DNS functionality is
+// not required, set dnsOpt to nil.
 type DHCP interface {
 	Router
 	// StartDHCP starts the DHCP server and configures the server IP.
-	StartDHCP(ctx context.Context, name, iface string, ipStart, ipEnd, serverIP, broadcastIP net.IP, mask net.IPMask) (*dhcp.Server, error)
+	StartDHCP(ctx context.Context, name, iface string, ipStart, ipEnd, serverIP, broadcastIP net.IP, mask net.IPMask, dnsOpt *dhcp.DNSOption) (*dhcp.Server, error)
 	// StopDHCP stops the DHCP server and flushes the interface.
 	StopDHCP(ctx context.Context, ds *dhcp.Server) error
+}
+
+// HTTP shall be implemented if the router supports HTTP configuration.
+type HTTP interface {
+	Router
+	// StartHTTP starts the HTTP server.
+	StartHTTP(ctx context.Context, name, iface, redirectAddr, httpScriptPath string, port, statusCode int) (_ *http.Server, retErr error)
+	// StopHTTP stops the HTTP server.
+	StopHTTP(ctx context.Context, httpServer *http.Server) error
 }
 
 // FrameSender shall be implemented if the router can send management frames.
