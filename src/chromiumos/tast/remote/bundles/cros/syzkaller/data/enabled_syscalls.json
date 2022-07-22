@@ -8,7 +8,8 @@
 			"mprotect",
 			"clock_gettime",
 			"socket$nl_generic",
-			"fork",
+			"syz_clone",
+			"syz_clone3",
 			"getpid",
 			"gettid",
 			"geteuid",
@@ -658,6 +659,7 @@
 	},
 	{
 		"driver": "drm(CONFIG_DRM)",
+		"exclude_boards": ["kukui"],
 		"syscalls": [
 			"syz_open_dev$dri",
 			"syz_open_dev$dricontrol",
@@ -788,6 +790,7 @@
 	},
 	{
 		"driver": "virtio-net(CONFIG_VIRTIO_NET)",
+		"exclude_boards": ["kukui"],
 		"syscalls": [
 			"openat$vnet",
 			"openat$vsock",
