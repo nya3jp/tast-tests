@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/common/testexec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/dumputil"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet"
@@ -83,14 +84,17 @@ func NewTestEnv() *testEnv {
 // SetUp configures shill and brings up the base network.
 func (e *testEnv) SetUp(ctx context.Context) error {
 	success := false
-	defer func() {
+	defer func(ctx context.Context) {
 		if success {
 			return
 		}
 		if err := e.TearDown(ctx); err != nil {
 			testing.ContextLog(ctx, "Failed to tear down routing test env: ", err)
 		}
-	}()
+	}(ctx)
+
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
 
 	var err error
 	e.Manager, err = shill.NewManager(ctx)

@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -414,6 +415,14 @@ func (e *Env) makeChroot(ctx context.Context) error {
 
 // makeNetNS prepares the veth pair and netns.
 func (e *Env) makeNetNS(ctx context.Context) error {
+	// Try to remove the leftover netns from the last test run if there is any.
+	// This command will fail if the netns does not exist, which is also expected.
+	if err := testexec.CommandContext(ctx, "ip", "netns", "del", e.NetNSName).Run(); err != nil {
+		if _, ok := err.(*exec.ExitError); !ok {
+			return errors.Wrapf(err, "failed to delete leftover namespace %s", e.NetNSName)
+		}
+	}
+
 	// Create new namespace.
 	if err := testexec.CommandContext(ctx, "ip", "netns", "add", e.NetNSName).Run(); err != nil {
 		return errors.Wrapf(err, "failed to add the namespace %s", e.NetNSName)
