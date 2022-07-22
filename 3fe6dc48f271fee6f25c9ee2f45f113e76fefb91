@@ -105,6 +105,24 @@
       "parentUuid": "a4bf1097_8d33f6ff",
       "revId": "3fe6dc48f271fee6f25c9ee2f45f113e76fefb91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77ed8942_18388c40",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-07-22T07:45:11Z",
+      "side": 1,
+      "message": "Likely because of the data is parsed from shell output which is itself delimited by double quotes: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/android/adb/commands.go;l\u003d79;rcl\u003d4744b3f9d59d654da464e237bc1cfa68a499904c",
+      "parentUuid": "e84dd674_dbc8f964",
+      "revId": "3fe6dc48f271fee6f25c9ee2f45f113e76fefb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
