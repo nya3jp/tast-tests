@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "e152364234f68023b3c404adae19dbcbc650d442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7bb8c7_c58e10b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447863
+      },
+      "writtenOn": "2022-07-22T10:49:26Z",
+      "side": 1,
+      "message": "`signout.go` and `auth_error.go` lgtm.",
+      "revId": "e152364234f68023b3c404adae19dbcbc650d442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
