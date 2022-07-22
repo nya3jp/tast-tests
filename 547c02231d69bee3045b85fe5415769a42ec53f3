@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97cc7228_738e8f23",
+        "filename": "src/chromiumos/tast/local/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-07-22T21:34:23Z",
+      "side": 1,
+      "message": "Quick drive by comment :) since this method is unrelated to these Bluetooth fixtures, could we instead create a new file in the `bluetooth` package [1] and add this method in there? I think this might be especially nice since it will allow us to have a file dedicated to all things peer-related. WDYT?\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bluetooth/",
+      "revId": "547c02231d69bee3045b85fe5415769a42ec53f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aac858d9_23646f70",
         "filename": "src/chromiumos/tast/local/bluetooth/fixture.go",
         "patchSetId": 1
