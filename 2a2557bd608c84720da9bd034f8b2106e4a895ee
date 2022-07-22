@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41fa53f6_77606251",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-22T06:57:10Z",
+      "side": 1,
+      "message": "Since you don\u0027t need to call it externally after the new patch set, I think you can change them back to `focusedNode`",
+      "range": {
+        "startLine": 108,
+        "startChar": 25,
+        "endLine": 108,
+        "endChar": 36
+      },
+      "revId": "2a2557bd608c84720da9bd034f8b2106e4a895ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8d46d3_610d8acc",
+        "filename": "src/chromiumos/tast/local/a11y/a11y.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-22T06:57:10Z",
+      "side": 1,
+      "message": "It does not actually need SpeechMonitor, you could move this method to cca_ui_a11y.go instead.",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 543,
+        "endChar": 0
+      },
+      "revId": "2a2557bd608c84720da9bd034f8b2106e4a895ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ffd4f2f_7c4522a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-22T06:57:10Z",
+      "side": 1,
+      "message": "nit: Remove this tab",
+      "range": {
+        "startLine": 117,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 13
+      },
+      "revId": "2a2557bd608c84720da9bd034f8b2106e4a895ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "908a77d1_d901934c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-22T06:57:10Z",
+      "side": 1,
+      "message": "I think these lines can be replaced by:\n\n```\nreturn sm.Consume(\n    ctx, []a11y.SpeechExpectation{a11y.NewRegexExpectation(expected)})\n```",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "2a2557bd608c84720da9bd034f8b2106e4a895ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
