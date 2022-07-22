@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448cd8c6_e7e76b70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-22T12:07:02Z",
+      "side": 1,
+      "message": "nit: For the future - compilation would suffice 😊",
+      "revId": "8c7180bc4870d40b009d980078333fcc045fed3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56813cbf_13d20acc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/peripherals/launch_app_from_accelerator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-22T12:07:02Z",
+      "side": 1,
+      "message": "Any of these could be contacted or there is a primary person (a test owner) and a secondary one?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "8c7180bc4870d40b009d980078333fcc045fed3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
