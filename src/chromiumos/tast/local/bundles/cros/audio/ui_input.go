@@ -189,8 +189,8 @@ func testInputGain(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 
 	// Calculate the expected linear gain between the representative gains in decibel for the low and high
 	// slider value according to cras/README.dbus-api:
-	//         linearly maps [0, 50] to range [-40dB, 0dB] and [50, 100] to [0dB, 20dB]
-	lowGainDB := float64(rmsValues[0].sliderVal)*40.0/50.0 - 40.0
+	//         linearly maps [0, 50] to range [-20dB, 0dB] and [50, 100] to [0dB, 20dB]
+	lowGainDB := float64(rmsValues[0].sliderVal)*20.0/50.0 - 20.0
 	highGainDB := float64(rmsValues[1].sliderVal-50) * 20.0 / 50.0
 	expectedGainLinear := math.Pow(10.0, (highGainDB-lowGainDB)/20.0)
 	s.Logf("Expected gain = %.4f", expectedGainLinear)
