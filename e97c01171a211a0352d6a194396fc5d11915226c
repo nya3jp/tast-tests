@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f717ca_76ac1cdd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/youtube_kids.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-07-22T19:54:52Z",
+      "side": 1,
+      "message": "nit: any reason to use testing.ContextLog rather than s.Log? If not, switch calls to testing.ContextLog in this test to s.Log to be consistent.",
+      "revId": "e97c01171a211a0352d6a194396fc5d11915226c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3adc9da2_0281d36c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/youtube_kids.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-07-22T19:54:52Z",
+      "side": 1,
+      "message": "nit: here and below the `click` portion of the variable names can be eliminated. click is the action you\u0027re performing but the selector is just to an element, i.e.\n\n`oneButton`, `nineButton`, etc.",
+      "revId": "e97c01171a211a0352d6a194396fc5d11915226c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1f34a2b_54e34d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/youtube_kids.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-07-22T19:54:52Z",
+      "side": 1,
+      "message": "The selector was already defined above so you can call `.Click` again without redefining the selector here.",
+      "revId": "e97c01171a211a0352d6a194396fc5d11915226c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
