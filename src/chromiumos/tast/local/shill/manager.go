@@ -648,8 +648,29 @@ func (m *Manager) SetDNSProxyDOHProviders(ctx context.Context, url string, ns []
 // as a shill reset will remove the default profile which makes it so no technologies
 // are enabled for portal detection.
 func (m *Manager) EnablePortalDetection(ctx context.Context) error {
-	if err := m.SetProperty(ctx, shillconst.ProfilePropertyCheckPortalList, shillconst.PortalDetectorDefaultCheckPortalList); err != nil {
-		return errors.Wrapf(err, "failed to enable portal detection on %q", shillconst.PortalDetectorDefaultCheckPortalList)
+	return m.SetPortalDetection(ctx, shillconst.PortalDetectorDefaultCheckPortalList)
+}
+
+// DisablePortalDetection disables portal detection for all technologies.
+func (m *Manager) DisablePortalDetection(ctx context.Context) error {
+	return m.SetPortalDetection(ctx, "")
+}
+
+// SetPortalDetection enables portal detection for the technologies in the cpList.
+func (m *Manager) SetPortalDetection(ctx context.Context, cpList string) error {
+	if err := m.SetProperty(ctx, shillconst.ProfilePropertyCheckPortalList, cpList); err != nil {
+		return errors.Wrapf(err, "failed to set portal detection on %q", cpList)
 	}
 	return nil
+}
+
+// GetPortalDetection returns the portal detection technologies.
+func (m *Manager) GetPortalDetection(ctx context.Context) (string, error) {
+	if properties, err := m.GetProperties(ctx); err != nil {
+		return "", err
+	} else if list, err := properties.GetString(shillconst.ProfilePropertyCheckPortalList); err != nil {
+		return "", err
+	} else {
+		return list, nil
+	}
 }

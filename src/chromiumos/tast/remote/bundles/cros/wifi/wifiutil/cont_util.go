@@ -302,7 +302,7 @@ func ContinuityTestInitialSetup(ctx context.Context, s *testing.State, tf *wific
 	})
 
 	s.Logf("Starting the DHCP server on %s, serverIP=%s", ct.br[0], serverIP)
-	ct.dserv, err = ct.r.StartDHCP(ctx, ap0Name, ct.br[0], startIP, endIP, serverIP, broadcastIP, mask)
+	ct.dserv, err = ct.r.StartDHCP(ctx, ap0Name, ct.br[0], startIP, endIP, serverIP, broadcastIP, mask, nil)
 	if err != nil {
 		s.Fatal("Failed to start the DHCP server: ", err)
 	}
