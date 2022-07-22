@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
@@ -65,11 +66,14 @@ func LaunchSystemWebAppsFromURL(ctx context.Context, s *testing.State) {
 	}
 	defer kb.Close()
 
-	if err := uiauto.StartRecordFromKB(ctx, tconn, kb); err != nil {
-		s.Log("Failed to start recording: ", err)
+	if downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser()); err != nil {
+		s.Fatal("Failed to get user's Downloads path: ", err)
+	} else {
+		if err := uiauto.StartRecordFromKB(ctx, tconn, kb, downloadsPath); err != nil {
+			s.Log("Failed to start recording: ", err)
+		}
+		defer uiauto.StopRecordFromKBAndSaveOnError(cleanupCtx, tconn, s.HasError, s.OutDir(), downloadsPath)
 	}
-
-	defer uiauto.StopRecordFromKBAndSaveOnError(cleanupCtx, tconn, s.HasError, s.OutDir())
 
 	testAppInternalNames := map[string]struct{}{
 		// Link capture, stand alone app.

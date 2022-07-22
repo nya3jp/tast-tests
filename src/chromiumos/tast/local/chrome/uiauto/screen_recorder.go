@@ -364,21 +364,20 @@ func RecordScreen(ctx context.Context, s testingState, tconn *chrome.TestConn, f
 //     }
 //
 //     defer uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, s.HasError, s.OutDir())
-func StartRecordFromKB(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter) error {
+func StartRecordFromKB(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, downloadsPath string) error {
 	screenRecordBtn := nodewith.Name("Screen record").Role(role.ToggleButton)
 	fullScreenBtn := nodewith.Name("Record full screen").Role(role.ToggleButton)
 	desktop := nodewith.Role(role.Window).First()
 	ui := New(tconn)
 
-	const downloads = "/home/chronos/user/Downloads/"
-	files, err := ioutil.ReadDir(downloads)
+	files, err := ioutil.ReadDir(downloadsPath)
 	if err != nil {
 		return errors.Wrap(err, "failed to read files from Downloads")
 	}
 	expectNumber := len(files) + 1
 	checkRecordFile := func(ctx context.Context) error {
 		return testing.Poll(ctx, func(ctx context.Context) error {
-			files, err = ioutil.ReadDir(downloads)
+			files, err = ioutil.ReadDir(downloadsPath)
 			if err != nil {
 				return errors.Wrap(err, "failed to read files from Downloads")
 			}
@@ -400,7 +399,7 @@ func StartRecordFromKB(ctx context.Context, tconn *chrome.TestConn, kb *input.Ke
 // StopRecordFromKBAndSaveOnError stops the record started by StartRecordFromKB.
 // If there is error, it copies the record file to the target dir .
 // It also removes the record file from Downloads for cleanup.
-func StopRecordFromKBAndSaveOnError(ctx context.Context, tconn *chrome.TestConn, hasError func() bool, dir string) error {
+func StopRecordFromKBAndSaveOnError(ctx context.Context, tconn *chrome.TestConn, hasError func() bool, dir, downloadsPath string) error {
 	recordResult := nodewith.Name("Screen recording completed").Role(role.Alert)
 	ui := New(tconn)
 	if err := Combine("stop record",
@@ -410,7 +409,7 @@ func StopRecordFromKBAndSaveOnError(ctx context.Context, tconn *chrome.TestConn,
 		return err
 	}
 
-	return SaveRecordFromKBOnError(ctx, tconn, hasError, dir)
+	return SaveRecordFromKBOnError(ctx, tconn, hasError, dir, downloadsPath)
 }
 
 // ScreenRecordStopButton is the button to stop recording the screen.
@@ -418,14 +417,13 @@ var ScreenRecordStopButton = nodewith.Name("Stop screen recording").Role(role.Bu
 
 // SaveRecordFromKBOnError saves the recording from StartRecordFromKB.
 // This can be used without StopRecordFromKBAndSaveOnError if the screen recording was stopped automatically (i.e. if the screen was locked).
-func SaveRecordFromKBOnError(ctx context.Context, tconn *chrome.TestConn, hasError func() bool, dir string) error {
-	const downloads = "/home/chronos/user/Downloads/"
-	files, err := ioutil.ReadDir(downloads)
+func SaveRecordFromKBOnError(ctx context.Context, tconn *chrome.TestConn, hasError func() bool, dir, downloadsPath string) error {
+	files, err := ioutil.ReadDir(downloadsPath)
 	if err != nil {
 		return errors.Wrap(err, "failed to read files from Downloads")
 	}
 	for _, f := range files {
-		path := filepath.Join(downloads, f.Name())
+		path := filepath.Join(downloadsPath, f.Name())
 		if strings.HasSuffix(f.Name(), ".webm") {
 			defer os.RemoveAll(path)
 			if hasError() {
