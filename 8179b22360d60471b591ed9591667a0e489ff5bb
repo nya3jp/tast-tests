@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b794ee67_bc0fd95a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-22T03:38:33Z",
+      "side": 1,
+      "message": "NOTE: Ran directly affected tests in this CL and all pass\n```\n2022-07-22T03:13:16.840626Z crostini.DisplayDensity.wayland_bullseye_stable   [ PASS ] \n2022-07-22T03:13:16.840626Z crostini.DisplayDensity.x11_bullseye_stable       [ PASS ] \n2022-07-22T03:13:16.840626Z crostini.ResizeOk.bullseye_stable                 [ PASS ] \n2022-07-22T03:13:16.840626Z crostini.DisplayDensity.wayland_buster_stable     [ PASS ] \n2022-07-22T03:13:16.840626Z crostini.DisplayDensity.x11_buster_stable         [ PASS ] \n2022-07-22T03:13:16.840626Z crostini.ResizeOk.buster_stable                   [ PASS ] \n2022-07-22T03:13:16.840626Z apps.LaunchSystemWebAppsFromURL                   [ PASS ]\n```",
+      "revId": "8179b22360d60471b591ed9591667a0e489ff5bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
