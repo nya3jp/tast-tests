@@ -139,6 +139,11 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to save current desk as 'Saved Desk 1' of type 'SaveAndRecall': ", err)
 	}
 
+	// Exit and reenter library page.
+	if err := ash.ExitAndReenterOverview(ctx, ac, tconn); err != nil {
+		s.Fatal("Failed to exit and reenter library page: ", err)
+	}
+
 	// Verify saved desk.
 	if err := ash.VerifySavedDesk(ctx, ac, []string{"Template 1", "Saved Desk 1"}); err != nil {
 		s.Fatal("Failed to verify saved desk: ", err)
