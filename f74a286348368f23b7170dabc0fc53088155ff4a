@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "369d63e0_1633cd10",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/cros_to_phone_high_vis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-22T02:05:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e586d4b_e12c9ccd",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "f74a286348368f23b7170dabc0fc53088155ff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9da15872_885c0328",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-07-22T00:39:27Z",
       "side": 1,
       "message": "nit: since we repeat these `filepath.Join` calls throughout the tests, can we do it in advance within the fixture to keep things cleaner here?",
+      "range": {
+        "startLine": 99,
+        "startChar": 18,
+        "endLine": 99,
+        "endChar": 120
+      },
+      "revId": "f74a286348368f23b7170dabc0fc53088155ff4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c3dc75_392c06d2",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_to_cros_background_scanning.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-22T02:05:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9da15872_885c0328",
       "range": {
         "startLine": 99,
         "startChar": 18,
