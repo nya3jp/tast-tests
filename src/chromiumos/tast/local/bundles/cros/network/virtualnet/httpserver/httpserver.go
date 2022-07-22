@@ -51,7 +51,6 @@ func New(port string) *httpserver {
 func (h *httpserver) Start(ctx context.Context, env *env.Env) (retErr error) {
 	h.env = env
 	h.server = &http.Server{Addr: fmt.Sprintf(":%v", h.port), Handler: &Handler{}}
-
 	errChannel := make(chan error)
 	go func() {
 		cleanup, err := h.env.EnterNetNS(ctx)
@@ -68,7 +67,6 @@ func (h *httpserver) Start(ctx context.Context, env *env.Env) (retErr error) {
 		errChannel <- nil
 		h.server.Serve(ln)
 	}()
-
 	return <-errChannel
 }
 

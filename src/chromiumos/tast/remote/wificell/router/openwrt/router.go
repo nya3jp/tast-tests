@@ -21,6 +21,7 @@ import (
 	remoteIw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/http"
 	"chromiumos/tast/remote/wificell/log"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/remote/wificell/router/common"
@@ -46,6 +47,7 @@ type Router struct {
 	activeServices   activeServices
 	nextBridgeID     int
 	nextVethID       int
+	dnsOpt           dhcp.DNSOption
 }
 
 // activeServices keeps a record of what services have been started and not yet
@@ -511,6 +513,17 @@ func (r *Router) ReconfigureHostapd(ctx context.Context, hs *hostapd.Server, con
 	return hs, nil
 }
 
+// EnableDNS should be called before StartDHCP() and enables the DNS functionality. It supports
+// resolving resolvedHost to resolveHostToIP. If resolvedHost is an empty string, it matches any
+// domain in dnsmasq configuration. port is set for DNS listening. nameServers contains the DNS
+// server list which will be broadcasted by DHCP.
+func (r *Router) EnableDNS(ctx context.Context, port int, nameServers []string, resolvedHost string, resolveHostToIP net.IP) {
+	r.dnsOpt.Port = port
+	r.dnsOpt.NameServers = nameServers
+	r.dnsOpt.ResolvedHost = resolvedHost
+	r.dnsOpt.ResolveHostToIP = resolveHostToIP
+}
+
 // StartDHCP starts the DHCP server and configures the server IP.
 func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipEnd, serverIP, broadcastIP net.IP, mask net.IPMask) (_ *dhcp.Server, retErr error) {
 	ctx, st := timing.Start(ctx, "router.StartDHCP")
@@ -532,7 +545,7 @@ func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipE
 	}(ctx)
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
-	ds, err := dhcp.StartServer(ctx, r.host, name, iface, r.workDir(), ipStart, ipEnd)
+	ds, err := dhcp.StartServer(ctx, r.host, name, iface, r.workDir(), ipStart, ipEnd, r.dnsOpt)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start DHCP server")
 	}
@@ -558,6 +571,24 @@ func (r *Router) StopDHCP(ctx context.Context, ds *dhcp.Server) error {
 			r.activeServices.dhcp = active
 			break
 		}
+	}
+	return firstErr
+}
+
+// StartHTTP starts the HTTP server.
+func (r *Router) StartHTTP(ctx context.Context, name, iface, port, statusCode, redirectAddr string) (_ *http.Server, retErr error) {
+	httpServer, err := http.StartServer(ctx, r.host, name, iface, r.workDir(), port, statusCode, redirectAddr)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to start HTTP server")
+	}
+	return httpServer, nil
+}
+
+// StopHTTP stops the HTTP server.
+func (r *Router) StopHTTP(ctx context.Context, httpServer *http.Server) error {
+	var firstErr error
+	if err := httpServer.Close(ctx); err != nil {
+		wifiutil.CollectFirstErr(ctx, &firstErr, errors.Wrap(err, "failed to stop http server"))
 	}
 	return firstErr
 }

@@ -11,6 +11,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/http"
 	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/testing"
@@ -52,8 +53,9 @@ type APIface struct {
 	iface     string
 	subnetIdx byte
 
-	hostapd *hostapd.Server
-	dhcpd   *dhcp.Server
+	hostapd    *hostapd.Server
+	dhcpd      *dhcp.Server
+	httpServer *http.Server
 
 	stopped bool // true if Stop() is called. Used to avoid Stop() being called twice.
 }
@@ -99,7 +101,7 @@ func (h *APIface) ServerSubnet() *net.IPNet {
 // StartAPIface starts the service.
 // After started, the caller should call h.Stop() at the end, and use the shortened ctx
 // (provided by h.ReserveForStop()) before h.Stop() to reserve time for h.Stop() to run.
-func StartAPIface(ctx context.Context, r router.Base, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
+func StartAPIface(ctx context.Context, r router.Base, name string, conf *hostapd.Config, enableDNS, enableHTTP bool) (_ *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "StartAPIface")
 	defer st.End()
 
@@ -138,10 +140,21 @@ func StartAPIface(ctx context.Context, r router.Base, name string, conf *hostapd
 		}
 	}()
 
+	if enableDNS {
+		h.router.EnableDNS(ctx, 53, []string{}, "", h.ServerIP())
+	}
 	h.dhcpd, err = h.router.StartDHCP(ctx, name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask())
 	if err != nil {
 		return nil, err
 	}
+
+	if enableHTTP {
+		h.httpServer, err = h.router.StartHTTP(ctx, name, h.iface, "80", "302", "http://example.com/")
+		if err != nil {
+			return nil, err
+		}
+	}
+
 	return &h, nil
 }
 
@@ -160,6 +173,12 @@ func (h *APIface) ReserveForStop(ctx context.Context) (context.Context, context.
 	}
 	if h.dhcpd != nil {
 		ctx, cancel = h.dhcpd.ReserveForClose(ctx)
+		if firstCancel == nil {
+			firstCancel = cancel
+		}
+	}
+	if h.httpServer != nil {
+		ctx, cancel = h.httpServer.ReserveForClose(ctx)
 		if firstCancel == nil {
 			firstCancel = cancel
 		}
@@ -187,6 +206,13 @@ func (h *APIface) Stop(ctx context.Context) error {
 	if h.dhcpd != nil {
 		if err := h.router.StopHostapd(ctx, h.hostapd); err != nil {
 			retErr = errors.Wrapf(retErr, "failed to stop hostapd, err=%s", err.Error())
+		}
+	}
+
+	// Stop HTTP server
+	if h.httpServer != nil {
+		if err := h.router.StopHTTP(ctx, h.httpServer); err != nil {
+			retErr = errors.Wrapf(retErr, "failed to stop http server, err=%s", err.Error())
 		}
 	}
 
