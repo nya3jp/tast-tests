@@ -688,16 +688,16 @@ func (tf *TestFixture) rebootRouter(ctx context.Context, rd *routerData) error {
 
 	// Reconnect to router and create a new router controller.
 	testing.ContextLogf(ctx, "Reconnecting to %s", routerMsgName)
-	if routerHost, err := tf.connectCompanion(ctx, rd.target, true); err != nil {
-		return errors.Wrapf(err, "failed to reconnect to %s after reboot", routerMsgName)
-	} else {
+	if routerHost, err := tf.connectCompanion(ctx, rd.target, true); err == nil {
 		rd.host = routerHost
+	} else {
+		return errors.Wrapf(err, "failed to reconnect to %s after reboot", routerMsgName)
 	}
 	testing.ContextLogf(ctx, "Reconnected to %s", routerMsgName)
-	if routerObject, err := newRouter(ctx, ctx, rd.host, routerName, routerType); err != nil {
-		return errors.Wrapf(err, "failed to recreate %s", routerMsgName)
-	} else {
+	if routerObject, err := newRouter(ctx, ctx, rd.host, routerName, routerType); err == nil {
 		rd.object = routerObject
+	} else {
+		return errors.Wrapf(err, "failed to recreate %s", routerMsgName)
 	}
 	testing.ContextLogf(ctx, "Reconnected to %s with new router controller after reboot", routerMsgName)
 	return nil
@@ -713,7 +713,7 @@ func (tf *TestFixture) UniqueAPName() string {
 
 // ConfigureAPOnRouterID is an extended version of ConfigureAP, allowing to choose router
 // to establish the AP on.
-func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
+func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory, enableDNS, enableHTTP bool, httpScriptPath string) (ret *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "tf.ConfigureAP")
 	defer st.End()
 	r := tf.routers[idx].object
@@ -757,7 +757,7 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 		}()
 	}
 
-	ap, err := StartAPIface(ctx, r, name, config)
+	ap, err := StartAPIface(ctx, r, name, httpScriptPath, config, enableDNS, enableHTTP)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start APIface")
 	}
@@ -774,7 +774,7 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 // Note that after getting an APIface, ap, the caller should defer tf.DeconfigAP(ctx, ap) and
 // use tf.ReserveForClose(ctx, ap) to reserve time for the deferred call.
 func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
-	return tf.ConfigureAPOnRouterID(ctx, 0, ops, fac)
+	return tf.ConfigureAPOnRouterID(ctx, 0, ops, fac, false, false, "")
 }
 
 // ReserveForDeconfigAP returns a shorter ctx and cancel function for tf.DeconfigAP().
@@ -1314,6 +1314,12 @@ func DefaultOpenNetworkAPOptions() []hostapd.Option {
 // DefaultOpenNetworkAP configures the router to provide an 802.11n open wifi.
 func (tf *TestFixture) DefaultOpenNetworkAP(ctx context.Context) (*APIface, error) {
 	return tf.ConfigureAP(ctx, DefaultOpenNetworkAPOptions(), nil)
+}
+
+// DefaultOpenNetworkAPwithDNSHTTP configures the router to provide an 802.11n open wifi and
+// enables DNS server and HTTP server on router.
+func (tf *TestFixture) DefaultOpenNetworkAPwithDNSHTTP(ctx context.Context, httpScriptPath string) (*APIface, error) {
+	return tf.ConfigureAPOnRouterID(ctx, 0, DefaultOpenNetworkAPOptions(), nil, true, true, httpScriptPath)
 }
 
 // ClientInterface is a backwards-compatible version of DUTClientInterface. Deprecated.

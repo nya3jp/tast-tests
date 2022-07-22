@@ -191,10 +191,10 @@ func (s *ShillService) TearDown(ctx context.Context, _ *empty.Empty) (*empty.Emp
 
 	var retErr error
 	if err := s.cleanProfiles(ctx, m); err != nil {
-		retErr = errors.Wrapf(retErr, "cleanProfiles failed: %s", err)
+		retErr = errors.Wrap(err, "cleanProfiles failed")
 	}
 	if err := s.removeWifiEntries(ctx, m); err != nil {
-		retErr = errors.Wrapf(retErr, "removeWifiEntries failed: %s", err)
+		retErr = errors.Wrap(err, "removeWifiEntries failed")
 	}
 	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
 		testing.ContextLog(ctx, "Failed to start ui: ", err)
@@ -3034,4 +3034,37 @@ func (s *ShillService) stopDHCPServer(ctx context.Context) error {
 	}
 
 	return nil
+}
+
+// SetCaptivePortalList sets the CheckPortalList property value.
+func (s *ShillService) SetCaptivePortalList(ctx context.Context, request *wifi.SetCaptivePortalListRequest) (*empty.Empty, error) {
+	ctx, cancel := reserveForReturn(ctx)
+	defer cancel()
+
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Manager object")
+	}
+
+	if err := manager.SetPortalDetection(ctx, request.CaptivePortalList); err != nil {
+		return nil, err
+	}
+	return &empty.Empty{}, nil
+}
+
+// GetCaptivePortalList returns the CheckPortalList manager property value.
+func (s *ShillService) GetCaptivePortalList(ctx context.Context, _ *empty.Empty) (*wifi.GetCaptivePortalListResponse, error) {
+	ctx, cancel := reserveForReturn(ctx)
+	defer cancel()
+
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create a shill manager")
+	}
+
+	var list string
+	if list, err = manager.GetPortalDetection(ctx); err != nil {
+		return nil, err
+	}
+	return &wifi.GetCaptivePortalListResponse{CaptivePortalList: list}, nil
 }
