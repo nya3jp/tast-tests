@@ -20,7 +20,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies ARCVM hardware decode acceleration using a media::VideoDecoder by running the c2_e2e_test APK (see go/arcvm-vd)",
 		Contacts:     []string{"chromeos-arc-video-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:arc-video"},
 		Data:         []string{c2e2etest.X86ApkName, c2e2etest.ArmApkName},
 		SoftwareDeps: []string{"chrome", "android_vm"},
 		Fixture:      "arcBootedWithVideoLoggingVD",
