@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b7d781a_289e2c24",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/auth_error.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-07-22T10:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa12b24b_78fc49f1",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "9df551407a277886acdaeb0cbb6e703b0b74018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e4bebe2_de35127f",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1237549c_25a59e89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/change_password.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-07-22T10:28:36Z",
+      "side": 1,
+      "message": "This test involves webui, so let\u0027s co-own it :)",
+      "parentUuid": "8e4bebe2_de35127f",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "9df551407a277886acdaeb0cbb6e703b0b74018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84f8a6f1_f61c288b",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-07-22T08:58:35Z",
       "side": 1,
       "message": "Owned by LURS (go/lurs-test-automation).",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "9df551407a277886acdaeb0cbb6e703b0b74018b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e58acc5b_9f39e874",
+        "filename": "src/chromiumos/tast/local/bundles/cros/login/pin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-07-22T10:28:36Z",
+      "side": 1,
+      "message": "This test involves webui, so let\u0027s co-own it :)",
+      "parentUuid": "84f8a6f1_f61c288b",
       "range": {
         "startLine": 33,
         "startChar": 0,
