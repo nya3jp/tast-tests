@@ -325,6 +325,19 @@ func (cli *WifiClient) SetWifiEnabled(ctx context.Context, enabled bool) error {
 	return err
 }
 
+// SetCaptivePortalList sets the CheckPortalList property value.
+func (cli *WifiClient) SetCaptivePortalList(ctx context.Context, captivePortalList string) error {
+	req := &wifi.SetCaptivePortalListRequest{CaptivePortalList: captivePortalList}
+	_, err := cli.ShillServiceClient.SetCaptivePortalList(ctx, req)
+	return err
+}
+
+// GetCaptivePortalList returns the CheckPortalList manager property value.
+func (cli *WifiClient) GetCaptivePortalList(ctx context.Context) (string, error) {
+	res, err := cli.ShillServiceClient.GetCaptivePortalList(ctx, &empty.Empty{})
+	return res.CaptivePortalList, err
+}
+
 // TurnOffBgscan turns off the DUT's background scan, and returns a shortened ctx and a restoring function.
 func (cli *WifiClient) TurnOffBgscan(ctx context.Context) (context.Context, func() error, error) {
 	ctxForRestoreBgConfig := ctx

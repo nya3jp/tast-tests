@@ -484,8 +484,9 @@ func (r *Router) ReconfigureHostapd(ctx context.Context, hs *hostapd.Server, con
 	return hs, nil
 }
 
-// StartDHCP starts the DHCP server and configures the server IP.
-func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipEnd, serverIP, broadcastIP net.IP, mask net.IPMask) (_ *dhcp.Server, retErr error) {
+// StartDHCP starts the DHCP server and configures the server IP. If DNS functionality is
+// not required, set dnsOpt to nil.
+func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipEnd, serverIP, broadcastIP net.IP, mask net.IPMask, dnsOpt *dhcp.DNSOption) (_ *dhcp.Server, retErr error) {
 	ctx, st := timing.Start(ctx, "router.StartDHCP")
 	defer st.End()
 
@@ -505,7 +506,7 @@ func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipE
 	}(ctx)
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
-	ds, err := dhcp.StartServer(ctx, r.host, name, iface, r.workDir(), ipStart, ipEnd)
+	ds, err := dhcp.StartServer(ctx, r.host, name, iface, r.workDir(), ipStart, ipEnd, dnsOpt)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start DHCP server")
 	}

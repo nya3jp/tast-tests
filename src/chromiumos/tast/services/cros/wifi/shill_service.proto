@@ -196,6 +196,12 @@ service ShillService {
   // Note that it sends back an empty response first to notify the caller that
   // the D-Bus watcher is ready.
   rpc WatchDarkResume(google.protobuf.Empty) returns (stream WatchDarkResumeResponse) {}
+
+  // SetCaptivePortalList sets the CheckPortalList property value.
+  rpc SetCaptivePortalList(SetCaptivePortalListRequest) returns (google.protobuf.Empty) {}
+
+  // GetCaptivePortalList returns the CheckPortalList manager property value.
+  rpc GetCaptivePortalList(google.protobuf.Empty) returns (GetCaptivePortalListResponse) {}
 }
 
 message ConnectRequest {
@@ -445,6 +451,14 @@ message GetWifiEnabledResponse{
 
 message SetWifiEnabledRequest{
     bool enabled = 1;
+}
+
+message SetCaptivePortalListRequest{
+    string captivePortalList = 1;
+}
+
+message GetCaptivePortalListResponse{
+    string captivePortalList = 1;
 }
 
 message WaitForBSSIDRequest {

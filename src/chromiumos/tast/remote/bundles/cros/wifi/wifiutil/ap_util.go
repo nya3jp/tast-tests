@@ -22,7 +22,7 @@ func ConfigureAP(ctx context.Context, s *testing.State, apParams []hostapd.Optio
 
 	tf := s.FixtValue().(*wificell.TestFixture)
 
-	ap, err := tf.ConfigureAPOnRouterID(ctx, routerIdx, apParams, secConfFac)
+	ap, err := tf.ConfigureAPOnRouterID(ctx, routerIdx, apParams, secConfFac, false, false, "")
 	if err != nil {
 		s.Fatalf("Failed to configure AP%d, err: %s", routerIdx, err)
 	}
