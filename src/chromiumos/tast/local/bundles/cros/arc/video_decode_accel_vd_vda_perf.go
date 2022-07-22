@@ -22,7 +22,7 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VideoDecodeAccelVDVDAPerf,
 		Desc:         "Measures performance of hardware decode acceleration performance using media::VideoDecoder through the VDA interface, by running the video_decode_accelerator_perf_tests binary (see go/vd-migration)",
-		Contacts:     []string{"dstaessens@chromium.org", "chromeos-video-eng@google.com"},
+		Contacts:     []string{"chromeos-arc-video-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"arc", "chrome", "video_decoder_direct"},
 		LacrosStatus: testing.LacrosVariantUnneeded,
