@@ -56,6 +56,30 @@
       },
       "revId": "545144e6866ecdc0f8f97edf52e21abc415e2581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2e4e030_4b0e47bd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-22T05:48:19Z",
+      "side": 1,
+      "message": "I proposed just using `reboot` here [patch](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3776984).",
+      "parentUuid": "ba28f35a_f7cb5528",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 69
+      },
+      "revId": "545144e6866ecdc0f8f97edf52e21abc415e2581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
