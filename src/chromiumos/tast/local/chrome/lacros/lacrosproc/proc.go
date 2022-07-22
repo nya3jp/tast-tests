@@ -34,7 +34,7 @@ const (
 const (
 	rootfsLacrosExecPath   = "/run/lacros/chrome"
 	statefulLacrosExecPath = "/run/imageloader/lacros-*/*/chrome"
-	deployedLacrosExecPath = "/usr/local/lacros-chrome"
+	deployedLacrosExecPath = "/usr/local/lacros-chrome/chrome"
 )
 
 // Root returns the Process instance of the root lacros-chrome process.

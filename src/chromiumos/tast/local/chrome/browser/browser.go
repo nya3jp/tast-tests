@@ -136,6 +136,31 @@ func (b *Browser) ReloadActiveTab(ctx context.Context) error {
 	return nil
 }
 
+type Tab struct {
+	ID     int    `json:"ID"`
+	Index  int    `json:"index"`
+	Title  string `json:"title"`
+	URL    string `json:"url"`
+	Active bool   `json:"active"`
+}
+
+// Tabs returns all browser tabs.
+// TODO(neis): Use this in the ui/cuj tests.
+func (b *Browser) Tabs(ctx context.Context) ([]Tab, error) {
+	tconn, err := b.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Test API connection")
+	}
+	var tabs []Tab
+	if err := tconn.Eval(ctx, `(async () => {
+		const tabs = await tast.promisify(chrome.tabs.query)({currentWindow: true});
+		return tabs;
+	})()`, &tabs); err != nil {
+		return nil, err
+	}
+	return tabs, nil
+}
+
 // CloseWithURL finds all targets with the given url, closes them, and waits
 // until they are closed. Note that if this closes all lacros pages, lacros will
 // exit, and we won't be able to verify closing was done successfully.

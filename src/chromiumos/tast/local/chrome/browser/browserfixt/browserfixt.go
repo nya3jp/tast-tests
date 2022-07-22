@@ -85,6 +85,23 @@ func SetUpWithURL(ctx context.Context, cr *chrome.Chrome, bt browser.Type, url s
 	}
 }
 
+func NewChrome(ctx context.Context, bt browser.Type, cfg *lacrosfixt.Config, opts ...chrome.Option) (*chrome.Chrome, error) {
+	var lacrosOpts []chrome.Option
+	if bt == browser.TypeLacros {
+		var err error
+		lacrosOpts, err = cfg.Opts()
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to compute Lacros options")
+		}
+	}
+	opts = append(opts, lacrosOpts...)
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to restart Chrome")
+	}
+	return cr, nil
+}
+
 // SetUpWithNewChrome returns a Browser instance along with a new Chrome instance created.
 // This is useful when no fixture is used but the new chrome needs to be instantiated in test for a fresh UI restart between tests.
 // It also returns a closure to be called in order to close the browser instance.
