@@ -43,6 +43,11 @@ func init() {
 			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
 			Timeout:           20 * time.Minute,
+		}, {
+			Name:    "passthrough",
+			Val:     browser.TypeAsh,
+			Fixture: "chromeLoggedInWith100FakeAppsPassthroughCmdDecoder",
+			Timeout: 14 * time.Minute,
 		}},
 		Data: []string{"animation.html", "animation.js"},
 	})
