@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8284497_2ba66832",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-22T16:32:24Z",
+      "side": 1,
+      "message": "nit: merge these two lines\n```\nif err :\u003d pressKeys(ctx, ctrlAltZ); err !\u003d nil {\n  ...\n}\n```",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 16
+      },
+      "revId": "7760e92ca0a16229ff584603e11d8660cdf235e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea9f173d_d4d4f091",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-22T16:32:24Z",
+      "side": 1,
+      "message": "Will this function be used to press a \"sequence\" of keys? I suppose in this patch we always only press one?\nIf so, how about remove this function and inline the ew.Accel() calls?",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 117,
+        "endChar": 14
+      },
+      "revId": "7760e92ca0a16229ff584603e11d8660cdf235e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "980432fb_2ce88a15",
+        "filename": "src/chromiumos/tast/local/camera/cca/cca.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1576,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-22T16:32:24Z",
+      "side": 1,
+      "message": "Just a question: should this be \"returns the aria-label of the focused element\"?",
+      "range": {
+        "startLine": 1576,
+        "startChar": 32,
+        "endLine": 1576,
+        "endChar": 82
+      },
+      "revId": "7760e92ca0a16229ff584603e11d8660cdf235e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
