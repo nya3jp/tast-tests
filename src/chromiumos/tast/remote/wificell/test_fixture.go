@@ -713,7 +713,7 @@ func (tf *TestFixture) UniqueAPName() string {
 
 // ConfigureAPOnRouterID is an extended version of ConfigureAP, allowing to choose router
 // to establish the AP on.
-func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
+func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops []hostapd.Option, fac security.ConfigFactory, enableDNS, enableHTTP bool, httpScriptPath string) (ret *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "tf.ConfigureAP")
 	defer st.End()
 	r := tf.routers[idx].object
@@ -757,7 +757,7 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 		}()
 	}
 
-	ap, err := StartAPIface(ctx, r, name, config)
+	ap, err := StartAPIface(ctx, r, name, httpScriptPath, config, enableDNS, enableHTTP)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start APIface")
 	}
@@ -774,7 +774,7 @@ func (tf *TestFixture) ConfigureAPOnRouterID(ctx context.Context, idx int, ops [
 // Note that after getting an APIface, ap, the caller should defer tf.DeconfigAP(ctx, ap) and
 // use tf.ReserveForClose(ctx, ap) to reserve time for the deferred call.
 func (tf *TestFixture) ConfigureAP(ctx context.Context, ops []hostapd.Option, fac security.ConfigFactory) (ret *APIface, retErr error) {
-	return tf.ConfigureAPOnRouterID(ctx, 0, ops, fac)
+	return tf.ConfigureAPOnRouterID(ctx, 0, ops, fac, false, false, "")
 }
 
 // ReserveForDeconfigAP returns a shorter ctx and cancel function for tf.DeconfigAP().
@@ -1314,6 +1314,12 @@ func DefaultOpenNetworkAPOptions() []hostapd.Option {
 // DefaultOpenNetworkAP configures the router to provide an 802.11n open wifi.
 func (tf *TestFixture) DefaultOpenNetworkAP(ctx context.Context) (*APIface, error) {
 	return tf.ConfigureAP(ctx, DefaultOpenNetworkAPOptions(), nil)
+}
+
+// DefaultOpenNetworkAPwithDNSHTTP configures the router to provide an 802.11n open wifi and
+// enables DNS server and HTTP server on router.
+func (tf *TestFixture) DefaultOpenNetworkAPwithDNSHTTP(ctx context.Context, httpScriptPath string) (*APIface, error) {
+	return tf.ConfigureAPOnRouterID(ctx, 0, DefaultOpenNetworkAPOptions(), nil, true, true, httpScriptPath)
 }
 
 // ClientInterface is a backwards-compatible version of DUTClientInterface. Deprecated.

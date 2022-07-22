@@ -253,7 +253,7 @@ func RoamFT(ctx context.Context, s *testing.State) {
 			mask        = net.IPv4Mask(255, 255, 255, 0)
 		)
 		s.Logf("Starting the DHCP server on %s, serverIP=%s", br[0], serverIP)
-		ds, err := router.StartDHCP(ctx, ap0Name, br[0], startIP, endIP, serverIP, broadcastIP, mask)
+		ds, err := router.StartDHCP(ctx, ap0Name, br[0], startIP, endIP, serverIP, broadcastIP, mask, nil)
 		if err != nil {
 			s.Fatal("Failed to start the DHCP server: ", err)
 		}
