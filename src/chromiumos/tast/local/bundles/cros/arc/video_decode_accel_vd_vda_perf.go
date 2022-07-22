@@ -23,7 +23,7 @@ func init() {
 		Func:         VideoDecodeAccelVDVDAPerf,
 		Desc:         "Measures performance of hardware decode acceleration performance using media::VideoDecoder through the VDA interface, by running the video_decode_accelerator_perf_tests binary (see go/vd-migration)",
 		Contacts:     []string{"chromeos-arc-video-eng@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		Attr:         []string{"group:arc-video"},
 		SoftwareDeps: []string{"arc", "chrome", "video_decoder_direct"},
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Fixture:      "graphicsNoChrome",
