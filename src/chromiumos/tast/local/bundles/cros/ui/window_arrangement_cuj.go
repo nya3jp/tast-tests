@@ -268,11 +268,11 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 	var f func(ctx context.Context) error
 	if !tabletMode {
 		f = func(ctx context.Context) error {
-			return windowarrangementcuj.RunClamShell(ctx, closeCtx, conns.TestConn, ui, pc, conns.ARCUI, conns.ArcVideoActivity, conns.WithTestVideo)
+			return windowarrangementcuj.RunClamShell(ctx, closeCtx, conns.TestConn, ui, pc, conns.StartARCApp, conns.StopARCApp)
 		}
 	} else {
 		f = func(ctx context.Context) error {
-			return windowarrangementcuj.RunTablet(ctx, closeCtx, conns.TestConn, ui, pc, conns.ARCUI, conns.ArcVideoActivity, conns.WithTestVideo)
+			return windowarrangementcuj.RunTablet(ctx, closeCtx, conns.TestConn, ui, pc, conns.StartARCApp, conns.StopARCApp)
 		}
 	}
 

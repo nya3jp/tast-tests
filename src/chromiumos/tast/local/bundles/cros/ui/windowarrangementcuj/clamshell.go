@@ -9,9 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/action"
-	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -58,7 +56,7 @@ func multiresize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context
 // RunClamShell runs window arrangement cuj for clamshell. We test performance
 // for resizing window, dragging window, maximizing window, minimizing window
 // and split view resizing.
-func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, d *androidui.Device, act *arc.Activity, withTestVideo arc.ActivityStartOption) (retErr error) {
+func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, startARCApp, stopARCApp action.Action) (retErr error) {
 	const (
 		timeout  = 10 * time.Second
 		duration = 2 * time.Second
@@ -293,27 +291,10 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	splitViewDragPoints[2].X -= 343
 
 	// Start the ARC app.
-	if err := act.Start(ctx, tconn, withTestVideo); err != nil {
+	if err := action.Retry(3, startARCApp, 0)(ctx); err != nil {
 		return errors.Wrap(err, "failed to start ARC app")
 	}
-	defer cleanUp(closeCtx, action.Named(
-		"close the ARC app",
-		func(ctx context.Context) error {
-			return act.Stop(ctx, tconn)
-		},
-	), &retErr)
-	// Wait until the video is playing, or at least the app is
-	// idle and not showing the message "Can't play this video."
-	if err := d.WaitForIdle(ctx, time.Minute); err != nil {
-		return errors.Wrap(err, "failed to wait for ARC app to be idle")
-	}
-	if err := d.Object(
-		androidui.Text("Can't play this video."),
-		androidui.PackageName("org.chromium.arc.testapp.pictureinpicturevideo"),
-		androidui.ClassName("android.widget.TextView"),
-	).WaitUntilGone(ctx, time.Minute); err != nil {
-		return errors.Wrap(err, "failed to wait for \"Can't play this video.\" message to be absent")
-	}
+	defer cleanUp(closeCtx, action.Named("close the ARC app", stopARCApp), &retErr)
 	// Use Alt+] to snap the ARC app on the right.
 	if err := kw.AccelAction("Alt+]")(ctx); err != nil {
 		return errors.Wrap(err, "failed to press Alt+] to snap the ARC app on the right")

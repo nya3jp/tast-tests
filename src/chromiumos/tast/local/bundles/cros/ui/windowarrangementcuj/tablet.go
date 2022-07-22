@@ -9,9 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/common/action"
-	androidui "chromiumos/tast/common/android/ui"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
@@ -98,7 +96,7 @@ func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *ui
 // RunTablet runs window arrangement cuj for tablet. Since windows are always
 // maximized in tablet mode, we only test performance for tab dragging and split
 // view resizing.
-func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, d *androidui.Device, act *arc.Activity, withTestVideo arc.ActivityStartOption) (retErr error) {
+func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, startARCApp, stopARCApp action.Action) (retErr error) {
 	const (
 		timeout           = 10 * time.Second
 		duration          = 2 * time.Second
@@ -202,15 +200,10 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	splitViewDragPoints[2].X -= 346
 
 	// Start the ARC app.
-	if err := act.Start(ctx, tconn, withTestVideo); err != nil {
+	if err := action.Retry(3, startARCApp, 0)(ctx); err != nil {
 		return errors.Wrap(err, "failed to start ARC app")
 	}
-	defer cleanUp(closeCtx, action.Named(
-		"close the ARC app",
-		func(ctx context.Context) error {
-			return act.Stop(ctx, tconn)
-		},
-	), &retErr)
+	defer cleanUp(closeCtx, action.Named("close the ARC app", stopARCApp), &retErr)
 	// The ARC app will be automatically snapped because split view mode is active.
 	if err := ash.WaitForARCAppWindowState(ctx, tconn, pkgName, ash.WindowStateLeftSnapped); err != nil {
 		return errors.Wrap(err, "failed to wait for ARC app to be snapped on left")
@@ -226,19 +219,6 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	// Wait for location-change events to be completed.
 	if err := ui.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait for location-change events to be completed")
-	}
-
-	// Wait until the video is playing, or at least the app is
-	// idle and not showing the message "Can't play this video."
-	if err := d.WaitForIdle(ctx, time.Minute); err != nil {
-		return errors.Wrap(err, "failed to wait for ARC app to be idle")
-	}
-	if err := d.Object(
-		androidui.Text("Can't play this video."),
-		androidui.PackageName("org.chromium.arc.testapp.pictureinpicturevideo"),
-		androidui.ClassName("android.widget.TextView"),
-	).WaitUntilGone(ctx, time.Minute); err != nil {
-		return errors.Wrap(err, "failed to wait for \"Can't play this video.\" message to be absent")
 	}
 
 	// Exercise split view resize functionality.
