@@ -16,6 +16,24 @@
       "message": "could you close the files after the start?",
       "revId": "3a0461f491bf962e358aa4bdc1bacf4b1696f63f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c18e6e_25e09a39",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-07-22T04:28:08Z",
+      "side": 1,
+      "message": "stderr could be closed after start, but it seems OK to close them all together after wait",
+      "parentUuid": "b45911d7_17b46702",
+      "revId": "3a0461f491bf962e358aa4bdc1bacf4b1696f63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
