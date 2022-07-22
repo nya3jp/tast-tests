@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d93a7c3a_d6e34ce5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-07-22T22:57:11Z",
+      "side": 1,
+      "message": "Thanks for the review. Added comments in the code.",
+      "parentUuid": "8d8a76b6_3dbdb803",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "585e46f7f710646d577d085abf0c780a42ac7f60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3d03c6c9_749918fe",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
