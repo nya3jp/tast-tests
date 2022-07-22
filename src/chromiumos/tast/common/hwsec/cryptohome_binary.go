@@ -304,6 +304,12 @@ func (c *cryptohomeBinary) authenticateAuthFactor(ctx context.Context, authSessi
 	return c.call(ctx, args...)
 }
 
+// removeAuthFactor calls "cryptohome --action=remove_auth_factor".
+func (c *cryptohomeBinary) removeAuthFactor(ctx context.Context, authSessionID, label string) ([]byte, error) {
+	args := []string{"--action=remove_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label}
+	return c.call(ctx, args...)
+}
+
 // authenticatePinAuthFactor calls "cryptohome --action=authenticate_auth_factor --pin=<pin>".
 func (c *cryptohomeBinary) authenticatePinAuthFactor(ctx context.Context, authSessionID, label, pin string) ([]byte, error) {
 	args := []string{"--action=authenticate_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label, "--pin=" + pin}

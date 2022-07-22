@@ -884,6 +884,12 @@ func (u *CryptohomeClient) AuthenticateAuthFactor(ctx context.Context, authSessi
 	return err
 }
 
+// RemoveAuthFactor removes an auth factor with provided label.
+func (u *CryptohomeClient) RemoveAuthFactor(ctx context.Context, authSessionID, label string) error {
+	_, err := u.binary.removeAuthFactor(ctx, authSessionID, label)
+	return err
+}
+
 // AuthenticatePinAuthFactor authenticates an AuthSession with a given authSessionID via pin.
 func (u *CryptohomeClient) AuthenticatePinAuthFactor(ctx context.Context, authSessionID, label, pin string) error {
 	_, err := u.binary.authenticatePinAuthFactor(ctx, authSessionID, label, pin)
