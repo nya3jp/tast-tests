@@ -25,10 +25,14 @@ import (
 )
 
 const (
+	// syzkallerRunDuration represents the overall run duration of the fuzzer.
 	syzkallerRunDuration = 30 * time.Minute
 
-	// GCS bucket for syzkaller artifacts.
+	// gsURL points to the GCS bucket for syzkaller artifacts.
 	gsURL = "gs://syzkaller-ctp-corpus"
+
+	// syzUnknownEnabled is an error string to look out for in the fuzzer run logs.
+	syzUnknownEnabled = "unknown enabled syscall"
 )
 
 // A global runtime variable to indicate the test is running locally.
@@ -324,6 +328,20 @@ func Wrapper(ctx context.Context, s *testing.State) {
 
 	if pCmd != nil {
 		done <- true
+	}
+
+	logs, err := ioutil.ReadFile(logFile.Name())
+	if err != nil {
+		s.Fatalf("Unable to read logfile at [%v]: %v", logFile.Name(), err)
+	}
+	var unknown []string
+	for _, line := range strings.Split(string(logs), "\n") {
+		if strings.Contains(line, syzUnknownEnabled) {
+			unknown = append(unknown, line)
+		}
+	}
+	if len(unknown) != 0 {
+		s.Fatal("Unsupported enabled syscall[s] found: ", unknown)
 	}
 
 	// Copy the syzkaller stdout/stderr logfile and the working directory
