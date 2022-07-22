@@ -206,6 +206,30 @@
       },
       "revId": "0249f1d5ef7aa7aa426618329098134fb09c3055",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4a419cb_00fc4d15",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-07-22T21:52:38Z",
+      "side": 1,
+      "message": "Thanks! How about the second bullet point? As-is the comment is explaining what the code is doing, not why it\u0027s there http://go/comments-codelab#dont-comment-the-obvious",
+      "parentUuid": "7120d263_6d39ddb2",
+      "range": {
+        "startLine": 36,
+        "startChar": 39,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "0249f1d5ef7aa7aa426618329098134fb09c3055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
