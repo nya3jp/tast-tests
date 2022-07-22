@@ -58,8 +58,8 @@ func init() {
 
 func PhysicalKeyboardGrammarCheck(ctx context.Context, s *testing.State) {
 	const (
-		inputText    = "They is student."
-		expectedText = "They are students."
+		inputText    = "They is student. "
+		expectedText = "They are students. "
 	)
 
 	cr := s.FixtValue().(fixture.FixtData).Chrome
