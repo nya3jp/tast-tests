@@ -16,6 +16,24 @@
       "message": "optional: Normally we use \nhttps://pkg.go.dev/path/filepath#Join\nfor file path concatenation. I note that won\u0027t give you the trailing slash here.\n\n(If you use this type of path concatenation everywhere, you might not need a trailing slash, but not sure how feasible that is. Hence \u0027optional\u0027.)",
       "revId": "9d81135797955275f958725f2e4ed4a14af3c957",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a78eac_91852dfa",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-22T20:49:55Z",
+      "side": 1,
+      "message": "While I would prefer to use this, the `filepath.Join` functions and like functions rely on the OS running the program to determine the separator (e.g. `\\` vs. `/`) and this path will be used on the router OS, not the OS running tast, and will always be `/`. Thus, `filepath.Join` could use the wrong separator on the router if the OS running tast uses `\\`.\n\nOtherwise it\u0027s just a regular `strings.Join` call pretty much. It\u0027s easier to read as a string format call than that as a result IMO, so I\u0027d like to leave it as-is.",
+      "parentUuid": "a876c924_0cf821b7",
+      "revId": "9d81135797955275f958725f2e4ed4a14af3c957",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "03a8c108_89c0b93f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-22T20:49:55Z",
+      "side": 1,
+      "message": "Added it to the test line.",
+      "parentUuid": "a1383117_c25c4ecf",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 7
+      },
+      "revId": "0249f1d5ef7aa7aa426618329098134fb09c3055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "84e9ccd4_d70b2629",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "That sounds perfectly reasonable. Can you:\n- remove \"unique\" from the name of the method since the path is not actually guaranteed to be unique\n- put the explanation in a comment (can be a bit shorter)\n\nThanks!",
       "parentUuid": "b8b567ce_10d9327f",
+      "range": {
+        "startLine": 36,
+        "startChar": 39,
+        "endLine": 36,
+        "endChar": 45
+      },
+      "revId": "0249f1d5ef7aa7aa426618329098134fb09c3055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7120d263_6d39ddb2",
+        "filename": "src/chromiumos/tast/remote/wificell/router/common/common.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-22T20:49:55Z",
+      "side": 1,
+      "message": "I removed references to \"unique\".",
+      "parentUuid": "81bf959b_737fe894",
       "range": {
         "startLine": 36,
         "startChar": 39,
