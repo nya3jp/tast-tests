@@ -58,8 +58,8 @@ func init() {
 
 func PhysicalKeyboardGrammarCheck(ctx context.Context, s *testing.State) {
 	const (
-		inputText    = "They is student."
-		expectedText = "They are students."
+		inputText    = "They is student. "
+		expectedText = "They are students. "
 	)
 
 	cr := s.FixtValue().(fixture.FixtData).Chrome
@@ -94,6 +94,7 @@ func PhysicalKeyboardGrammarCheck(ctx context.Context, s *testing.State) {
 	clickOffsets := [2]int{10, -10}
 	i := 0
 	validateAction := uiauto.Combine("accept grammar check suggestion",
+		// keyboard.AccelAction("Alt+="),
 		its.Clear(inputField),
 		its.ClickFieldAndWaitForActive(inputField),
 		keyboard.TypeAction(inputText),
@@ -106,6 +107,7 @@ func PhysicalKeyboardGrammarCheck(ctx context.Context, s *testing.State) {
 				if err != nil {
 					return errors.Wrap(err, "failed to get sentence location")
 				}
+				s.Log("sentence location: ", sentenceTextLoc)
 				// If the cursor is already in the middle of wrong sentence,
 				// clicking the same location will not trigger grammar window.
 				// Using 2 locations to click alternatively.
