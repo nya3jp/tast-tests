@@ -51,6 +51,24 @@
       "parentUuid": "4fbdec27_67421b4a",
       "revId": "3fe6dc48f271fee6f25c9ee2f45f113e76fefb91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "962f14d3_af64a4d8",
+        "filename": "android/ArcCameraFpsTest/src/org/chromium/arc/testapp/camerafps/Camera2VideoFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1290370
+      },
+      "writtenOn": "2022-07-22T06:20:32Z",
+      "side": 1,
+      "message": "I converting the id into integer here to avoid extra handling for double quotes characters in the string. If we want to pass it in string form with JSON format, we might need to escape the string ourselves and also handle it on the call site.\n\nI just tried plugging in a \"Logitech HD Webcam B910\" and the camera id is \"2\".\n\nAnd I thought using integer should be okay since we don\u0027t test external cameras in our tests and all the lab devices do not have external camera connected IIRC.",
+      "parentUuid": "1293484a_18efc268",
+      "revId": "3fe6dc48f271fee6f25c9ee2f45f113e76fefb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
