@@ -88,31 +88,6 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInWith100FakeAppsSkiaRenderer",
-		Desc:     "Logged into a user session with 100 fake apps",
-		Contacts: []string{"mukai@chromium.org"},
-		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{EnableFeatures("UseSkiaRenderer")}, nil
-		}),
-		Parent:          "install100Apps",
-		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    ResetTimeout,
-		TearDownTimeout: ResetTimeout,
-	})
-	testing.AddFixture(&testing.Fixture{
-		Name:     "chromeLoggedInWith100FakeAppsSkiaRendererAndLegacyLauncher",
-		Desc:     "Logged into a user session with 100 fake apps with productivity launcher disabled",
-		Contacts: []string{"tbarzic@chromium.org"},
-		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{EnableFeatures("UseSkiaRenderer"), DisableFeatures("ProductivityLauncher")}, nil
-		}),
-		Parent:          "install100Apps",
-		SetUpTimeout:    LoginTimeout,
-		ResetTimeout:    ResetTimeout,
-		TearDownTimeout: ResetTimeout,
-	})
-
-	testing.AddFixture(&testing.Fixture{
 		Name:     "chromeLoggedInWith100FakeAppsDoubleBufferingAndLegacyLauncher",
 		Desc:     "Logged into a user session with 100 fake apps with productivity launcher disabled and double buffer compositing",
 		Contacts: []string{"yjliu@chromium.org", "tbarzic@chromium.org"},
