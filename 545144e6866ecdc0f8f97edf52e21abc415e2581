@@ -16,6 +16,46 @@
       "message": "+2 for Tast Review",
       "revId": "545144e6866ecdc0f8f97edf52e21abc415e2581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "251a4380_54cbba73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-07-22T00:33:17Z",
+      "side": 1,
+      "message": "I think this makes sense, since we will eventually need additional tests for bio_fw_updater that exercise RO update, when WP is disabled, and other situations.",
+      "revId": "545144e6866ecdc0f8f97edf52e21abc415e2581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba28f35a_f7cb5528",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-07-22T00:33:17Z",
+      "side": 1,
+      "message": "Hmm, bio_fw_updater itself doesn\u0027t issue a reboot, so there may be some other issue being masked if that DUT reconnect is actually necessary.",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 134,
+        "endChar": 69
+      },
+      "revId": "545144e6866ecdc0f8f97edf52e21abc415e2581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
