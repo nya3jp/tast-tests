@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0b97b00b_90cd9850",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-07-22T17:24:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ca98036_910c46ec",
+      "revId": "ad9dc09801e36f3bbd485f9cf5cbfbbeb4cf1ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2dd4c555_38eb4b7c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -53,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a18cf60_8bf10f26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-07-22T17:24:41Z",
+      "side": 1,
+      "message": "I\u0027m assuming that\u0027s an \"additive\" addition, not replace. Correct me if I\u0027m wrong.",
+      "parentUuid": "f54f6c8f_a0caa5bd",
+      "revId": "ad9dc09801e36f3bbd485f9cf5cbfbbeb4cf1ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6ea0dad_e8885fd8",
@@ -76,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "affc55aa_201a59b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/audio_alsa_conformance.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-07-22T17:24:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6ea0dad_e8885fd8",
+      "range": {
+        "startLine": 33,
+        "startChar": 82,
+        "endLine": 33,
+        "endChar": 106
+      },
+      "revId": "ad9dc09801e36f3bbd485f9cf5cbfbbeb4cf1ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d94a4a5_87eaef8d",
@@ -89,6 +149,30 @@
       "writtenOn": "2022-07-22T10:27:55Z",
       "side": 1,
       "message": "Can you replace crosvm-core@google.com with cros-virt-devices-guests@google.com, which is my current team?",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "ad9dc09801e36f3bbd485f9cf5cbfbbeb4cf1ded",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e92470_6fc7d064",
+        "filename": "src/chromiumos/tast/local/bundles/cros/vm/dlc/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-07-22T17:24:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d94a4a5_87eaef8d",
       "range": {
         "startLine": 39,
         "startChar": 3,
