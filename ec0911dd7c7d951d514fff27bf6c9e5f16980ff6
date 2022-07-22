@@ -191,6 +191,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c035bf94_2c77e97d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-22T20:49:28Z",
+      "side": 1,
+      "message": "I\u0027ll add a TODO for that bug, but this is *not* a blocker for using this fixture nor writing tests that use it. This only effects wificells that have OpenWrt routers, which we have none of in the general test pool. We only have them in our dev wificells and they are not yet approved to replace those in the pool, nor will they be without b:239583375 being addressed. Without this change we have no reliable way to even use OpenWrt routers, so it\u0027s necessary to include for our continued development of OpenWrt router support.\n\nThis test fixture is handles all router types, including OpenWrt but also Gale (Legacy) and Asus AX routers. However, rebooting is limited to just OpenWrt routers and Gale and Asus AX routers will not be notably affected by this change.\n\nAs far as estimation goes, it\u0027s approximately 2m more per test/subtest. But again, this is only a for OpenWrt wificells so the general pool\u0027s time will not be affected.",
+      "parentUuid": "3ef85923_9565369d",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 673,
+        "endChar": 2
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eba7bd96_bec51b27",
@@ -300,6 +324,30 @@
       "side": 1,
       "message": "Crashing early is much better than running wrongly.\nSpecifically, this is the test, so crash cost is smaller than investing cost after running the program wrongly.",
       "parentUuid": "c8c33c33_298f8a54",
+      "range": {
+        "startLine": 676,
+        "startChar": 1,
+        "endLine": 685,
+        "endChar": 101
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ebf3c4a_c43f79ef",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-22T20:49:28Z",
+      "side": 1,
+      "message": "Okay you\u0027ve sold me lol. I\u0027ve done as suggested.\n\nI did keep the new host instance even if the router instance creation fails though, as that is still a valid thing to have separate from the router instance.",
+      "parentUuid": "6b522549_300875fe",
       "range": {
         "startLine": 676,
         "startChar": 1,
