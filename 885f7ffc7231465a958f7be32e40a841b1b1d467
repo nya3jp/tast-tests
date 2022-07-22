@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c93dbde4_e76f5215",
+        "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-22T06:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c39fe0d_2b04379e",
+      "revId": "885f7ffc7231465a958f7be32e40a841b1b1d467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "274f7ed3_e2266317",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-21T12:02:34Z",
       "side": 1,
       "message": "Instead, could you return an object of fake adaptive charging ml service instance, and let callers controll the lifetime?",
+      "range": {
+        "startLine": 33,
+        "startChar": 62,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "885f7ffc7231465a958f7be32e40a841b1b1d467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ee8ef0b_48ca7a0e",
+        "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-22T06:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "274f7ed3_e2266317",
       "range": {
         "startLine": 33,
         "startChar": 62,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4f3af79_d36fbaaa",
+        "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-22T06:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cf531e0_e4abe6e2",
+      "range": {
+        "startLine": 49,
+        "startChar": 20,
+        "endLine": 49,
+        "endChar": 117
+      },
+      "revId": "885f7ffc7231465a958f7be32e40a841b1b1d467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dac245ad_f85152b2",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5584b7b6_8ef91fb4",
+        "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-22T06:28:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dac245ad_f85152b2",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 20
+      },
+      "revId": "885f7ffc7231465a958f7be32e40a841b1b1d467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "892b1dac_74fafa95",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-07-21T12:02:34Z",
       "side": 1,
       "message": "clar: should we restore?\nIf not needed, could you comment?",
+      "revId": "885f7ffc7231465a958f7be32e40a841b1b1d467",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de06b9ee_85a688d8",
+        "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-22T06:28:27Z",
+      "side": 1,
+      "message": "Added comment explaining why we don\u0027t need to restore.",
+      "parentUuid": "892b1dac_74fafa95",
       "revId": "885f7ffc7231465a958f7be32e40a841b1b1d467",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
