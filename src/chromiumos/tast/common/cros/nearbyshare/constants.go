@@ -38,6 +38,9 @@ const AdditionalTestTime = 30 * time.Second
 // and then for the receiver to detect the incoming share from the sender.
 const DetectionTimeout = 2*DetectShareTargetTimeout + AdditionalTestTime
 
+// WiFiNotificationTimeout is the test timeout for the Wi-Fi configuration notification to appear in Wi-Fi Credentials sharing tests.
+const WiFiNotificationTimeout = 5 * time.Second
+
 // ChromeLog is the filename of the Chrome log that is saved for each test.
 const ChromeLog = "nearby_chrome"
 
