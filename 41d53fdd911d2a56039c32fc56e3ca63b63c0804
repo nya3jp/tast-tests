@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61c362c3_b79e7d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-07-22T01:30:50Z",
+      "side": 1,
+      "message": "Hi Frank \u0026 Suhas,\nPlease have a look here,\nI just upload changed utils file here as we discussed in meeting.\nThank you.",
+      "revId": "41d53fdd911d2a56039c32fc56e3ca63b63c0804",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
