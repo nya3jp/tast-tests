@@ -178,10 +178,10 @@ func (s *ShillService) TearDown(ctx context.Context, _ *empty.Empty) (*empty.Emp
 
 	var retErr error
 	if err := s.cleanProfiles(ctx, m); err != nil {
-		retErr = errors.Wrapf(retErr, "cleanProfiles failed: %s", err)
+		retErr = errors.Wrap(err, "cleanProfiles failed")
 	}
 	if err := s.removeWifiEntries(ctx, m); err != nil {
-		retErr = errors.Wrapf(retErr, "removeWifiEntries failed: %s", err)
+		retErr = errors.Wrap(err, "removeWifiEntries failed")
 	}
 	if err := upstart.EnsureJobRunning(ctx, "ui"); err != nil {
 		testing.ContextLog(ctx, "Failed to start ui: ", err)
@@ -2885,4 +2885,27 @@ func (s *ShillService) WatchDarkResume(_ *empty.Empty, sender wifi.ShillService_
 			return errors.Errorf("unexpected signal name: %s", signalName)
 		}
 	}
+}
+
+// SetPortalDetectionEnabled persistently enables/disables PortalDection via shill.
+func (s *ShillService) SetPortalDetectionEnabled(ctx context.Context, request *wifi.SetPortalDectionEnabledRequest) (*empty.Empty, error) {
+	ctx, cancel := reserveForReturn(ctx)
+	defer cancel()
+
+	manager, err := shill.NewManager(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Manager object")
+	}
+
+	if request.Enabled {
+		if err := manager.SetProperty(ctx, shillconst.ProfilePropertyCheckPortalList, shillconst.PortalDetectorDefaultCheckPortalList); err != nil {
+			return nil, errors.Wrapf(err, "failed to enable portal detection on %q", shillconst.PortalDetectorDefaultCheckPortalList)
+		}
+		return &empty.Empty{}, nil
+	}
+
+	if err := manager.SetProperty(ctx, shillconst.ProfilePropertyCheckPortalList, ""); err != nil {
+		return nil, errors.Wrap(err, "failed to disable portal detection")
+	}
+	return &empty.Empty{}, nil
 }
