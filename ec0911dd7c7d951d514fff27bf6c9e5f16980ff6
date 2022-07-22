@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ef85923_9565369d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-22T14:18:07Z",
+      "side": 1,
+      "message": "Do you have resource estimation? How many minutes will you add by this change? And eventually reduced to some?\n\n\u003e b:239583375\n\nOk, so this is the blocker to add any other tests. Then I think this is P1.\nAlso, could you add TODOs to fixtures commenting that no more tests should use this fixture unless the bug is resolved?",
+      "parentUuid": "cb008f21_d8a57fc5",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 673,
+        "endChar": 2
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eba7bd96_bec51b27",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3
@@ -252,6 +276,30 @@
       "side": 1,
       "message": "I would actually rather prefer to keep the instances alive so that we don\u0027t have to check for nil everywhere before using rd.object and rd.host (it would be a substantial refactor). That way, if they are used after the reboot but before they are overwitten, which would only happen in error cleanup anyways, the user would get a nicer error message saying that connection has already been closed rather than a NPE panic that would not have error handling around it.",
       "parentUuid": "7195bad0_6ad6550d",
+      "range": {
+        "startLine": 676,
+        "startChar": 1,
+        "endLine": 685,
+        "endChar": 101
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b522549_300875fe",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-22T14:18:07Z",
+      "side": 1,
+      "message": "Crashing early is much better than running wrongly.\nSpecifically, this is the test, so crash cost is smaller than investing cost after running the program wrongly.",
+      "parentUuid": "c8c33c33_298f8a54",
       "range": {
         "startLine": 676,
         "startChar": 1,
