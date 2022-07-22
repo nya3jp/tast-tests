@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae727da_73155fbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1433868
+      },
+      "writtenOn": "2022-07-22T18:44:24Z",
+      "side": 1,
+      "message": "Thanks for putting this on my radar! It seems like this provides the same functionality as initialize_bt_peers in Autotest [1], which is great progress! I don\u0027t think there are any other methods to add to the XMLRPC client class at this time.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/autotest/files/server/hosts/cros_host.py;l\u003d485;drc\u003df82df7efa22867570cb3bdad2ec3d689847c1f22",
+      "revId": "547c02231d69bee3045b85fe5415769a42ec53f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aac858d9_23646f70",
