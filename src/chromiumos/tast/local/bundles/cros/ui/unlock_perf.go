@@ -40,6 +40,10 @@ func init() {
 			Val:               browser.TypeLacros,
 			Fixture:           "lacros",
 			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			Name:    "passthrough",
+			Val:     browser.TypeAsh,
+			Fixture: "chromeLoggedInWith100FakeAppsPassthroughCmdDecoder",
 		}},
 		Data: []string{"animation.html", "animation.js"},
 	})
