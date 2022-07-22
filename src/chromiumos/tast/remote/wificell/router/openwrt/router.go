@@ -20,6 +20,7 @@ import (
 	remoteIw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/http"
 	"chromiumos/tast/remote/wificell/log"
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/remote/wificell/router/common"
@@ -484,8 +485,9 @@ func (r *Router) ReconfigureHostapd(ctx context.Context, hs *hostapd.Server, con
 	return hs, nil
 }
 
-// StartDHCP starts the DHCP server and configures the server IP.
-func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipEnd, serverIP, broadcastIP net.IP, mask net.IPMask) (_ *dhcp.Server, retErr error) {
+// StartDHCP starts the DHCP server and configures the server IP. If DNS functionality is
+// not required, set dnsOpt to nil.
+func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipEnd, serverIP, broadcastIP net.IP, mask net.IPMask, dnsOpt *dhcp.DNSOption) (_ *dhcp.Server, retErr error) {
 	ctx, st := timing.Start(ctx, "router.StartDHCP")
 	defer st.End()
 
@@ -505,7 +507,7 @@ func (r *Router) StartDHCP(ctx context.Context, name, iface string, ipStart, ipE
 	}(ctx)
 	ctx, cancel := ctxutil.Shorten(ctx, time.Second)
 	defer cancel()
-	ds, err := dhcp.StartServer(ctx, r.host, name, iface, r.workDir(), ipStart, ipEnd)
+	ds, err := dhcp.StartServer(ctx, r.host, name, iface, r.workDir(), ipStart, ipEnd, dnsOpt)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start DHCP server")
 	}
@@ -533,6 +535,18 @@ func (r *Router) StopDHCP(ctx context.Context, ds *dhcp.Server) error {
 		}
 	}
 	return firstErr
+}
+
+// StartHTTP starts the HTTP server.
+// TODO(b/242864063): Test and implement the functionality of HTTP server in openwrt router.
+func (r *Router) StartHTTP(ctx context.Context, name, iface, redirectAddr string, port, statusCode int) (_ *http.Server, retErr error) {
+	return nil, nil
+}
+
+// StopHTTP stops the HTTP server.
+// TODO(b/242864063): Test and implement the functionality of HTTP server in openwrt router.
+func (r *Router) StopHTTP(ctx context.Context, httpServer *http.Server) error {
+	return nil
 }
 
 // StartCapture starts a packet capturer.

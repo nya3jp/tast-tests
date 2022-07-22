@@ -202,6 +202,15 @@ service ShillService {
 
   // StopTethering attempts to stop the tethering session.
   rpc StopTethering(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // SetPortalDetectionEnabled persistently enables/disables PortalDection via shill.
+  rpc SetPortalDetectionEnabled(SetPortalDetectionEnabledRequest) returns (google.protobuf.Empty) {}
+
+  // SetCaptivePortalList sets the CheckPortalList property value.
+  rpc SetCaptivePortalList(SetCaptivePortalListRequest) returns (google.protobuf.Empty) {}
+
+  // GetCaptivePortalList returns the CheckPortalList manager property value.
+  rpc GetCaptivePortalList(google.protobuf.Empty) returns (GetCaptivePortalListResponse) {}
 }
 
 message ConnectRequest {
@@ -451,6 +460,18 @@ message GetWifiEnabledResponse{
 
 message SetWifiEnabledRequest{
     bool enabled = 1;
+}
+
+message SetPortalDetectionEnabledRequest{
+    bool enabled = 1;
+}
+
+message SetCaptivePortalListRequest{
+    string captivePortalList = 1;
+}
+
+message GetCaptivePortalListResponse{
+    string captivePortalList = 1;
 }
 
 message WaitForBSSIDRequest {
