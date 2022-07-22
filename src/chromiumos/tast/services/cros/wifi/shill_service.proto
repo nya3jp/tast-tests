@@ -126,6 +126,9 @@ service ShillService {
   // SetWifiEnabled persistently enables/disables Wifi via shill.
   rpc SetWifiEnabled(SetWifiEnabledRequest) returns (google.protobuf.Empty) {}
 
+  // SetPortalDetectionEnabled persistently enables/disables PortalDection via shill.
+  rpc SetPortalDetectionEnabled(SetPortalDectionEnabledRequest) returns (google.protobuf.Empty) {}
+
   // WaitForBSSID waits for a specific BSSID to be found.
   rpc WaitForBSSID (WaitForBSSIDRequest) returns (google.protobuf.Empty) {}
 
@@ -444,6 +447,10 @@ message GetWifiEnabledResponse{
 }
 
 message SetWifiEnabledRequest{
+    bool enabled = 1;
+}
+
+message SetPortalDectionEnabledRequest{
     bool enabled = 1;
 }
 

@@ -325,6 +325,13 @@ func (cli *WifiClient) SetWifiEnabled(ctx context.Context, enabled bool) error {
 	return err
 }
 
+// SetPortalDetectionEnabled persistently enables/disables PortalDection via shill.
+func (cli *WifiClient) SetPortalDetectionEnabled(ctx context.Context, enabled bool) error {
+	req := &wifi.SetPortalDectionEnabledRequest{Enabled: enabled}
+	_, err := cli.ShillServiceClient.SetPortalDetectionEnabled(ctx, req)
+	return err
+}
+
 // TurnOffBgscan turns off the DUT's background scan, and returns a shortened ctx and a restoring function.
 func (cli *WifiClient) TurnOffBgscan(ctx context.Context) (context.Context, func() error, error) {
 	ctxForRestoreBgConfig := ctx
