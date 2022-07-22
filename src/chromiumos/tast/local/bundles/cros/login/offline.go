@@ -22,7 +22,12 @@ func init() {
 		Func:         Offline,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test that user can sign in when device offline ",
-		Contacts:     []string{"rsorokin@google.com", "chromeos-sw-engprod@google.com", "cros-oac@google.com"},
+		Contacts: []string{
+			"bohdanty@google.com",
+			"rrsilva@google.com",
+			"chromeos-sw-engprod@google.com",
+			"cros-oac@google.com",
+		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline"},
 		VarDeps:      []string{"ui.signinProfileTestExtensionManifestKey"},
