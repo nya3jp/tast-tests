@@ -52,8 +52,7 @@ var boardArchMapping = map[string]string{
 	// syzkaller binaries built for trogdor and strongbad are 32 bit.
 	"trogdor":   "arm",
 	"strongbad": "arm",
-	// syzkaller binaries built for kukui are 64 bit.
-	"kukui": "arm64",
+	"kukui":     "arm",
 }
 
 // dutConfig represents information related to the DUT configuration;
@@ -88,8 +87,12 @@ type syzkallerConfig struct {
 type fuzzEnvConfig struct {
 	// Driver or subsystem.
 	Driver string `json:"driver"`
-	// If `boards` is not specified, run on all boards.
+	// Boards specifies the boards to run a set of syscalls on. Boards can
+	// be empty.
 	Boards []string `json:"boards"`
+	// ExcludeBoards specifies boards on which to not fuzz certain syscalls. ExcludeBoards
+	// can be empty.
+	ExcludeBoards []string `json:"exclude_boards"`
 	// Startup commands specific to this subsystem.
 	StartupCmds []string `json:"startup_cmds"`
 	// Syscalls belonging to the driver or subsystem.
@@ -448,7 +451,16 @@ func loadEnabledSyscalls(fpath, board string) (drivers, enabledSyscalls []string
 
 	scriptContents = startupScriptContents
 	for _, config := range feconfig {
-		if len(config.Boards) == 0 || contains(config.Boards, board) {
+		if len(config.Boards) > 0 && len(config.ExcludeBoards) > 0 {
+			return nil, nil, "", errors.Errorf("non-empty Boards and ExcludeBoards found for [%v]", config.Driver)
+		}
+		// Enable syscalls of a driver if |Boards| contains the DUT board.
+		// Enable syscalls of a driver if |Boards| is empty, and the DUT board is not present in |ExcludeBoards|.
+		ok := !contains(config.ExcludeBoards, board)
+		if len(config.Boards) > 0 {
+			ok = contains(config.Boards, board)
+		}
+		if ok {
 			enabledSyscalls = append(enabledSyscalls, config.Syscalls...)
 			drivers = append(drivers, config.Driver)
 			scriptContents = scriptContents + strings.Join(config.StartupCmds, "\n") + "\n"
