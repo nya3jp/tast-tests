@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f80adeb_39111bd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-22T16:54:32Z",
+      "side": 1,
+      "message": "tast-wise SLGM (see comments / wait for +2 from team mate)",
+      "revId": "86ec01852d3be8888b2b591f8b00a1bfda202692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bdc70a0_a10406bd",
@@ -67,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8dea550_dc13475a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-22T16:54:32Z",
+      "side": 1,
+      "message": "Thanks for the info.\nIn case it is not documented already on the file, it would be good to add those comments somewhere in the file. Could be useful for future maintainers.",
+      "parentUuid": "1bccb12e_18b53e45",
+      "range": {
+        "startLine": 153,
+        "startChar": 29,
+        "endLine": 153,
+        "endChar": 37
+      },
+      "revId": "86ec01852d3be8888b2b591f8b00a1bfda202692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7c68ad3a_c91d4ad3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
         "patchSetId": 3
@@ -102,6 +143,30 @@
       "side": 1,
       "message": "I really tried to use `Poll` (that was my first idea), but it needs to take into account DUT behaviour from the comment above. I was thinking about polling for e.g. 10 seconds if DUT is reachable, if it\u0027s not reachable then I could use `WaitConnect`.\n\nMaybe you have some better idea to implement it?",
       "parentUuid": "7c68ad3a_c91d4ad3",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "86ec01852d3be8888b2b591f8b00a1bfda202692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e14fd1a8_fc62f24a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-22T16:54:32Z",
+      "side": 1,
+      "message": "yes, tricky.\n\nperhaps to check for the existence of a file or something like that.\n\ne.g:\nwhen it is being updated (after the 1st reboot), you add a script that creates a file.. you place that script in the scripts-that-get-run when the machine boots (?)\n\nso, on the second reboot, that file will be created.\nand you only have to check to see whether that file exists (?)",
+      "parentUuid": "6ea05dca_9fe4144b",
       "range": {
         "startLine": 161,
         "startChar": 1,
