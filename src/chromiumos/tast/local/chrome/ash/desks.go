@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
 )
@@ -148,10 +149,15 @@ func SaveCurrentDesk(ctx context.Context, ac *uiauto.Context, savedDeskType Save
 	if err := kb.Type(ctx, savedDeskName); err != nil {
 		return errors.Wrapf(err, "cannot type %q: ", savedDeskName)
 	}
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		errors.Wrap(err, "failed to wait for typing animation to be completed")
+	}
 	if err := kb.Accel(ctx, "Enter"); err != nil {
 		return errors.Wrap(err, "cannot press 'Enter'")
 	}
-
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		errors.Wrap(err, "failed to wait for exit name nudge animation to be completed")
+	}
 	return nil
 }
 
@@ -313,6 +319,27 @@ func DeleteAllSavedDesks(ctx context.Context, ac *uiauto.Context, tconn *chrome.
 		)(ctx); err != nil {
 			return errors.Wrapf(err, "fail to delete saved desk at position %v", i+1)
 		}
+	}
+
+	return nil
+}
+
+// ExitAndReenterOverview exits and reenters the overview mode.
+func ExitAndReenterOverview(ctx context.Context, ac *uiauto.Context, tconn *chrome.TestConn) error {
+	if err := SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+		return errors.Wrap(err, "failed to exit overview mode")
+	}
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for overview animation to be completed")
+	}
+	if err := SetOverviewModeAndWait(ctx, tconn, true); err != nil {
+		return errors.Wrap(err, "failed to enter overview mode")
+	}
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for overview animation to be completed")
+	}
+	if err := EnterLibraryPage(ctx, ac); err != nil {
+		return errors.Wrap(err, "failed to enter library page")
 	}
 
 	return nil
