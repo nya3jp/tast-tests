@@ -98,7 +98,7 @@ func Save(ctx context.Context, tconn *chrome.TestConn) {
 }
 
 // StopRecordAndSaveOnError stops the screen record and saves it under lacros faillog dir if the hasError closure returns true and there is a record started.
-func StopRecordAndSaveOnError(ctx context.Context, tconn *chrome.TestConn, hasRecordStarted bool, hasError func() bool) {
+func StopRecordAndSaveOnError(ctx context.Context, tconn *chrome.TestConn, hasRecordStarted bool, downloadsPath string, hasError func() bool) {
 	if hasRecordStarted {
 		out, ok := testing.ContextOutDir(ctx)
 		if !ok {
@@ -109,7 +109,7 @@ func StopRecordAndSaveOnError(ctx context.Context, tconn *chrome.TestConn, hasRe
 		if _, err := os.Stat(dir); os.IsNotExist(err) {
 			os.MkdirAll(dir, 0755)
 		}
-		uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, hasError, dir)
+		uiauto.StopRecordFromKBAndSaveOnError(ctx, tconn, hasError, dir, downloadsPath)
 	}
 }
 
@@ -118,14 +118,14 @@ func StopRecordAndSaveOnError(ctx context.Context, tconn *chrome.TestConn, hasRe
 // The caller should also call StopRecordFromKB to stop the screen recorder,
 // and save the record file.
 // For more, see https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/src/chromiumos/tast/local/chrome/uiauto/screen_recorder.go
-func StartRecord(ctx context.Context, tconn *chrome.TestConn) error {
+func StartRecord(ctx context.Context, tconn *chrome.TestConn, downloadsPath string) error {
 	// Start a screen recording for troubleshooting a failure in launching Lacros.
 	kb, err := input.VirtualKeyboard(ctx)
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to setup keyboard for screen recording: ", err)
 		return err
 	}
-	if err := uiauto.StartRecordFromKB(ctx, tconn, kb); err != nil {
+	if err := uiauto.StartRecordFromKB(ctx, tconn, kb, downloadsPath); err != nil {
 		testing.ContextLog(ctx, "Failed to start screen recording on DUT: ", err)
 		return err
 	}
