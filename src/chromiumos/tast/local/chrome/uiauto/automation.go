@@ -465,6 +465,33 @@ func (ac *Context) IsNodeFound(ctx context.Context, finder *nodewith.Finder) (bo
 	return true, nil
 }
 
+// BoundsForRange returns the location of the text within the node specified by startIndex and endIndex, inclusively.
+// The bounds are clipped to ancestors.
+// Refer to https://developer.chrome.com/docs/extensions/reference/automation/#type-AutomationNode.
+func (ac *Context) BoundsForRange(ctx context.Context, finder *nodewith.Finder, startIndex, endIndex int) (*coords.Rect, error) {
+	if err := ac.WaitForLocation(finder)(ctx); err != nil {
+		return nil, err
+	}
+
+	q, err := finder.GenerateQuery()
+	if err != nil {
+		return nil, err
+	}
+	query := fmt.Sprintf(`
+		(async () => {
+			%s
+			let bounds;
+			node.boundsForRange(%d, %d, (res) => {bounds = res;});
+			return bounds;
+		})()
+	`, q, startIndex, endIndex)
+	var out *coords.Rect
+	err = testing.Poll(ctx, func(ctx context.Context) error {
+		return ac.tconn.Eval(ctx, query, &out)
+	}, &ac.pollOpts)
+	return out, err
+}
+
 // WaitUntilExists returns a function that waits until the node found by the input finder exists.
 func (ac *Context) WaitUntilExists(finder *nodewith.Finder) Action {
 	return func(ctx context.Context) error {
