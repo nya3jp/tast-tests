@@ -52,8 +52,7 @@ var boardArchMapping = map[string]string{
 	// syzkaller binaries built for trogdor and strongbad are 32 bit.
 	"trogdor":   "arm",
 	"strongbad": "arm",
-	// syzkaller binaries built for kukui are 64 bit.
-	"kukui": "arm64",
+	"kukui":     "arm",
 }
 
 // dutConfig represents information related to the DUT configuration;
@@ -90,6 +89,8 @@ type fuzzEnvConfig struct {
 	Driver string `json:"driver"`
 	// If `boards` is not specified, run on all boards.
 	Boards []string `json:"boards"`
+	// ExcludeBoards specifies boards on which to not fuzz certain syscalls.
+	ExcludeBoards []string `json:"exclude_boards"`
 	// Startup commands specific to this subsystem.
 	StartupCmds []string `json:"startup_cmds"`
 	// Syscalls belonging to the driver or subsystem.
@@ -448,7 +449,7 @@ func loadEnabledSyscalls(fpath, board string) (drivers, enabledSyscalls []string
 
 	scriptContents = startupScriptContents
 	for _, config := range feconfig {
-		if len(config.Boards) == 0 || contains(config.Boards, board) {
+		if len(config.Boards) == 0 && !contains(config.ExcludeBoards, board) || contains(config.Boards, board) {
 			enabledSyscalls = append(enabledSyscalls, config.Syscalls...)
 			drivers = append(drivers, config.Driver)
 			scriptContents = scriptContents + strings.Join(config.StartupCmds, "\n") + "\n"
