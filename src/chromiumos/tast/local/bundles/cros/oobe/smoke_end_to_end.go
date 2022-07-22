@@ -51,7 +51,7 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 		chrome.DontSkipOOBEAfterLogin(),
 		// TODO(https://crbug.com/1328790): Enable the OobeConsolidatedConsent feature.
 		// TODO(https://crbug.com/1335879): Enable the EnableOobeThemeSelection feature.
-		chrome.DisableFeatures("OobeConsolidatedConsent", "EnableOobeThemeSelection"),
+		chrome.DisableFeatures("OobeConsolidatedConsent"),
 		chrome.DeferLogin(),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
@@ -243,6 +243,25 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 		skipButton := nodewith.Role(role.Button).Name(assistantSkipButton)
 		if err := ui.LeftClickUntil(skipButton, ui.Gone(skipButton))(ctx); err != nil {
 			s.Fatal("Failed to click assistant skip button: ", err)
+		}
+	}
+
+	shouldSkipThemeSelection := false
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.ThemeSelectionScreen.shouldSkip()", &shouldSkipThemeSelection); err != nil {
+		s.Fatal("Failed to evaluate whether to skip theme selection screen: ", err)
+	}
+
+	if shouldSkipThemeSelection {
+		s.Log("Skipping theme selection screen")
+	} else {
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.ThemeSelectionScreen.isVisible()"); err != nil {
+			s.Fatal("Failed to wait for the theme selection screen to be visible: ", err)
+		}
+		if err := uiauto.Combine("click next on the theme selection screen",
+			ui.WaitUntilExists(focusedButton),
+			ui.LeftClick(focusedButton),
+		)(ctx); err != nil {
+			s.Fatal("Failed to continue on the theme selection screen: ", err)
 		}
 	}
 
