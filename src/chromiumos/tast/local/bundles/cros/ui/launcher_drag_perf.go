@@ -42,9 +42,6 @@ func init() {
 		Params: []testing.Param{{
 			Fixture: "chromeLoggedInWith100FakeAppsLegacyLauncher",
 		}, {
-			Name:    "skia_renderer",
-			Fixture: "chromeLoggedInWith100FakeAppsSkiaRendererAndLegacyLauncher",
-		}, {
 			Name:    "double_buffer_compositing",
 			Fixture: "chromeLoggedInWith100FakeAppsDoubleBufferingAndLegacyLauncher",
 		}},

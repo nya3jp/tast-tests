@@ -36,10 +36,6 @@ func init() {
 			Val:     browser.TypeAsh,
 			Fixture: "chromeLoggedIn",
 		}, {
-			Name:    "skia_renderer",
-			Val:     browser.TypeAsh,
-			Fixture: "chromeLoggedInWith100FakeAppsSkiaRenderer",
-		}, {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
 			Fixture:           "lacros",

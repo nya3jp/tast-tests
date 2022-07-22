@@ -38,11 +38,6 @@ func init() {
 			Fixture: "chromeLoggedIn",
 			Timeout: 14 * time.Minute,
 		}, {
-			Name:    "skia_renderer",
-			Val:     browser.TypeAsh,
-			Fixture: "chromeLoggedInWith100FakeAppsSkiaRenderer",
-			Timeout: 14 * time.Minute,
-		}, {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
 			Fixture:           "lacros",
