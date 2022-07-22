@@ -30,19 +30,19 @@ func init() {
 		Params: []testing.Param{{
 			Name:              "h264",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps.h264"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
 			Name:              "vp8",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps.vp8"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
 		}, {
 			Name:              "vp9",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps.vp9"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		}, {
@@ -54,37 +54,37 @@ func init() {
 		}, {
 			Name:              "hevc",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps.hevc"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
 			ExtraData:         []string{"test-25fps.hevc", "test-25fps.hevc.json"},
 		}, {
 			Name:              "hevc_10bit",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps.hevc10"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC10BPP},
 			ExtraData:         []string{"test-25fps.hevc10", "test-25fps.hevc10.json"},
 		}, {
 			Name:              "h264_resolution_switch",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "switch_1080p_720p_240frames.h264"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"switch_1080p_720p_240frames.h264", "switch_1080p_720p_240frames.h264.json"},
 		}, {
 			Name:              "vp8_resolution_switch",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "resolution_change_500frames.vp8.ivf"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         []string{"resolution_change_500frames.vp8.ivf", "resolution_change_500frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp9_resolution_switch",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "resolution_change_500frames.vp9.ivf"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"resolution_change_500frames.vp9.ivf", "resolution_change_500frames.vp9.ivf.json"},
 		}, {
 			Name:              "hevc_resolution_switch",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "switch_1080p_720p_240frames.hevc"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
 			ExtraData:         []string{"switch_1080p_720p_240frames.hevc", "switch_1080p_720p_240frames.hevc.json"},
 		}, {
@@ -92,14 +92,14 @@ func init() {
 			// https://android.googlesource.com/platform/cts/+/HEAD/tests/tests/media/res/raw/vp90_2_17_show_existing_frame.vp9
 			Name:              "vp9_show_existing_frame",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "vda_smoke-vp90_2_17_show_existing_frame.vp9"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"vda_smoke-vp90_2_17_show_existing_frame.vp9", "vda_smoke-vp90_2_17_show_existing_frame.vp9.json"},
 		}, {
 			// H264 stream in which a profile changes from Baseline to Main.
 			Name:              "h264_profile_change",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps_basemain.h264"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"test-25fps_basemain.h264", "test-25fps_basemain.h264.json"},
 		}, {
@@ -108,55 +108,55 @@ func init() {
 			// The structure is used in Hangouts Meet. go/vp9-svc-hangouts for detail.
 			Name:              "vp9_keyframe_spatial_layers",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "keyframe_spatial_layers_180p_360p.vp9.ivf"},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "vaapi"},
 			ExtraData:         []string{"keyframe_spatial_layers_180p_360p.vp9.ivf", "keyframe_spatial_layers_180p_360p.vp9.ivf.json"},
 		}, {
 			Name:              "h264_linear_output",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps.h264", useLinearOutput: true},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"test-25fps.h264", "test-25fps.h264.json"},
 		}, {
 			Name:              "vp8_linear_output",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps.vp8", useLinearOutput: true},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         []string{"test-25fps.vp8", "test-25fps.vp8.json"},
 		}, {
 			Name:              "vp9_linear_output",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps.vp9", useLinearOutput: true},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"test-25fps.vp9", "test-25fps.vp9.json"},
 		}, {
 			Name:              "hevc_linear_output",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps.hevc", useLinearOutput: true},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
 			ExtraData:         []string{"test-25fps.hevc", "test-25fps.hevc.json"},
 		}, {
 			Name:              "h264_resolution_switch_linear_output",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "switch_1080p_720p_240frames.h264", useLinearOutput: true},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"switch_1080p_720p_240frames.h264", "switch_1080p_720p_240frames.h264.json"},
 		}, {
 			Name:              "vp8_resolution_switch_linear_output",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "resolution_change_500frames.vp8.ivf", useLinearOutput: true},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8},
 			ExtraData:         []string{"resolution_change_500frames.vp8.ivf", "resolution_change_500frames.vp8.ivf.json"},
 		}, {
 			Name:              "vp9_resolution_switch_linear_output",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "resolution_change_500frames.vp9.ivf", useLinearOutput: true},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"resolution_change_500frames.vp9.ivf", "resolution_change_500frames.vp9.ivf.json"},
 		}, {
 			Name:              "hevc_resolution_switch_linear_output",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "switch_1080p_720p_240frames.hevc", useLinearOutput: true},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeHEVC},
 			ExtraData:         []string{"switch_1080p_720p_240frames.hevc", "switch_1080p_720p_240frames.hevc.json"},
 		}, {
@@ -164,14 +164,14 @@ func init() {
 			// https://android.googlesource.com/platform/cts/+/HEAD/tests/tests/media/res/raw/vp90_2_17_show_existing_frame.vp9
 			Name:              "vp9_show_existing_frame_linear_output",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "vda_smoke-vp90_2_17_show_existing_frame.vp9", useLinearOutput: true},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraData:         []string{"vda_smoke-vp90_2_17_show_existing_frame.vp9", "vda_smoke-vp90_2_17_show_existing_frame.vp9.json"},
 		}, {
 			// H264 stream in which a profile changes from Baseline to Main.
 			Name:              "h264_profile_change_linear_output",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "test-25fps_basemain.h264", useLinearOutput: true},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264},
 			ExtraData:         []string{"test-25fps_basemain.h264", "test-25fps_basemain.h264.json"},
 		}, {
@@ -180,7 +180,7 @@ func init() {
 			// The structure is used in Hangouts Meet. go/vp9-svc-hangouts for detail.
 			Name:              "vp9_keyframe_spatial_layers_linear_output",
 			Val:               videoDecodeAccelVDVDATestParam{dataPath: "keyframe_spatial_layers_180p_360p.vp9.ivf", useLinearOutput: true},
-			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraAttr:         []string{"group:arc-video"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, "vaapi"},
 			ExtraData:         []string{"keyframe_spatial_layers_180p_360p.vp9.ivf", "keyframe_spatial_layers_180p_360p.vp9.ivf.json"},
 		}},
