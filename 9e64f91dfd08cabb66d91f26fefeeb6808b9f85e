@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa4b46c_98d7cf3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-07-22T01:13:32Z",
+      "side": 1,
+      "message": "Looks like we would just have to move it out of bundles into shared code (like what you\u0027ve done for perfutil/recorder.go). It seems pretty reasonable to me to move it. WDYT?",
+      "parentUuid": "e89ede09_b0f5d948",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "9e64f91dfd08cabb66d91f26fefeeb6808b9f85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c7c1874_3f4d3444",
