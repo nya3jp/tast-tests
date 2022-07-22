@@ -7,10 +7,12 @@ package wificell
 import (
 	"context"
 	"net"
+	"net/http"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/wificell/dhcp"
 	"chromiumos/tast/remote/wificell/hostapd"
+	httpServer "chromiumos/tast/remote/wificell/http"
 	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/remote/wificell/wifiutil"
@@ -42,7 +44,15 @@ func freeSubnetIdx(i byte) {
 type supportedRouter interface {
 	support.Hostapd
 	support.DHCP
+	support.HTTP
 }
+
+const (
+	dnsPort         = 53
+	httpPort        = 80
+	httpStatusCode  = http.StatusFound
+	httpRedirectURL = "http://example.com/"
+)
 
 // APIface is the handle object of an instance of hostapd service managed by a router.
 // It is comprised of a hostapd and a dhcpd. The DHCP server is assigned with the subnet
@@ -53,8 +63,9 @@ type APIface struct {
 	iface     string
 	subnetIdx byte
 
-	hostapd *hostapd.Server
-	dhcpd   *dhcp.Server
+	hostapd    *hostapd.Server
+	dhcpd      *dhcp.Server
+	httpServer *httpServer.Server
 
 	stopped bool // true if Stop() is called. Used to avoid Stop() being called twice.
 }
@@ -100,7 +111,7 @@ func (h *APIface) ServerSubnet() *net.IPNet {
 // StartAPIface starts the service.
 // After started, the caller should call h.Stop() at the end, and use the shortened ctx
 // (provided by h.ReserveForStop()) before h.Stop() to reserve time for h.Stop() to run.
-func StartAPIface(ctx context.Context, r router.Base, name string, conf *hostapd.Config) (_ *APIface, retErr error) {
+func StartAPIface(ctx context.Context, r router.Base, name, httpScriptPath string, conf *hostapd.Config, enableDNS, enableHTTP bool) (_ *APIface, retErr error) {
 	ctx, st := timing.Start(ctx, "StartAPIface")
 	defer st.End()
 
@@ -139,10 +150,27 @@ func StartAPIface(ctx context.Context, r router.Base, name string, conf *hostapd
 		}
 	}()
 
-	h.dhcpd, err = h.router.StartDHCP(ctx, name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask())
+	var dnsOpt *dhcp.DNSOption
+	if enableDNS {
+		dnsOpt = new(dhcp.DNSOption)
+		dnsOpt.Port = dnsPort
+		dnsOpt.NameServers = []string{}
+		dnsOpt.ResolvedHost = ""
+		dnsOpt.ResolveHostToIP = h.ServerIP()
+	}
+
+	h.dhcpd, err = h.router.StartDHCP(ctx, name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask(), dnsOpt)
 	if err != nil {
 		return nil, err
 	}
+
+	if enableHTTP {
+		h.httpServer, err = h.router.StartHTTP(ctx, name, h.iface, httpRedirectURL, httpScriptPath, httpPort, httpStatusCode)
+		if err != nil {
+			return nil, err
+		}
+	}
+
 	return &h, nil
 }
 
@@ -161,6 +189,12 @@ func (h *APIface) ReserveForStop(ctx context.Context) (context.Context, context.
 	}
 	if h.dhcpd != nil {
 		ctx, cancel = h.dhcpd.ReserveForClose(ctx)
+		if firstCancel == nil {
+			firstCancel = cancel
+		}
+	}
+	if h.httpServer != nil {
+		ctx, cancel = h.httpServer.ReserveForClose(ctx)
 		if firstCancel == nil {
 			firstCancel = cancel
 		}
@@ -188,6 +222,13 @@ func (h *APIface) Stop(ctx context.Context) error {
 	if h.hostapd != nil {
 		if err := h.router.StopHostapd(ctx, h.hostapd); err != nil {
 			wifiutil.CollectFirstErr(ctx, &retErr, errors.Wrap(err, "failed to stop hostapd"))
+		}
+	}
+
+	// Stop HTTP server
+	if h.httpServer != nil {
+		if err := h.router.StopHTTP(ctx, h.httpServer); err != nil {
+			retErr = errors.Wrapf(retErr, "failed to stop http server, err=%s", err.Error())
 		}
 	}
 
@@ -229,7 +270,7 @@ func (h *APIface) ChangeSubnetIdx(ctx context.Context) (retErr error) {
 	}()
 	testing.ContextLogf(ctx, "changing AP subnet index from %d to %d", oldIdx, newIdx)
 
-	h.dhcpd, err = h.router.StartDHCP(ctx, h.name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask())
+	h.dhcpd, err = h.router.StartDHCP(ctx, h.name, h.iface, h.subnetIP(1), h.subnetIP(128), h.ServerIP(), h.broadcastIP(), h.mask(), nil)
 	if err != nil {
 		return errors.Wrap(err, "failed to start dhcp server")
 	}
