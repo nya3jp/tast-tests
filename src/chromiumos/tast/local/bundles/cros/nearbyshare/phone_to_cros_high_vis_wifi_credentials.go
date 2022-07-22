@@ -120,12 +120,17 @@ func PhoneToCrosHighVisWifiCredentials(ctx context.Context, s *testing.State) {
 		shillconst.ServicePropertyVisible:     true,
 	}
 
+	s.Log("Opening known Wi-Fi networks from notification")
+	if err := nearbyshare.OpenWiFiNetworkListNotification(ctx, tconn, androidDisplayName, testWiFi, nearbycommon.WiFiNotificationTimeout); err != nil {
+		s.Fatal("Failed to open known Wi-Fi networks from notification")
+	}
+
 	manager, err := shill.NewManager(ctx)
 	if err != nil {
 		s.Fatal("Failed to create a shill manager: ", err)
 	}
 
-	service, err := manager.FindMatchingService(ctx, props)
+	service, err := manager.WaitForServiceProperties(ctx, props, testData.TransferTimeout)
 	if err != nil {
 		s.Fatal("Failed to find the Wi-Fi network: ", err)
 	}
