@@ -6,11 +6,14 @@
 package dhcp
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"html/template"
 	"net"
 	"os"
 	"path"
+	"strconv"
 	"strings"
 	"time"
 
@@ -26,6 +29,20 @@ import (
 const (
 	dnsmasqCmd    = "dnsmasq"
 	dhcpLeaseFile = "dhcpd.leases"
+	confTemplate  = `
+port={{.port}}
+bind-interfaces
+log-dhcp
+dhcp-range={{.ipStart}},{{.ipEnd}}
+interface={{.iface}}
+dhcp-leasefile={{.leasefile}}
+no-resolv
+no-hosts
+address={{.address}}
+{{if .nameServers}}
+dhcp-option=option:dns-server,{{.nameServers}}
+{{end}}
+`
 )
 
 // KillAll kills all running dhcp server on host, useful for environment setup/cleanup.
@@ -53,10 +70,19 @@ type Server struct {
 	workDir string
 	ipStart net.IP
 	ipEnd   net.IP
+	dnsOpt  DNSOption
 
 	cmd        *ssh.Cmd
 	stdoutFile *os.File
 	stderrFile *os.File
+}
+
+// DNSOption handles parameters to enable the DNS server.
+type DNSOption struct {
+	Port            int
+	NameServers     []string
+	ResolvedHost    string
+	ResolveHostToIP net.IP
 }
 
 // StartServer creates and runs a DHCP server on iface of the given host with settings specified in conf.
@@ -65,7 +91,7 @@ type Server struct {
 // ipStart, ipEnd specifies the leasable range for this dhcp server to offer.
 // After getting a Server instance, d, the caller should call d.Close() at the end, and use the
 // shortened ctx (provided by d.ReserveForClose()) before d.Close() to reserve time for it to run.
-func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, ipStart, ipEnd net.IP) (*Server, error) {
+func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir string, ipStart, ipEnd net.IP, opt DNSOption) (*Server, error) {
 	ctx, st := timing.Start(ctx, "dhcp.StartServer")
 	defer st.End()
 
@@ -76,6 +102,7 @@ func StartServer(ctx context.Context, host *ssh.Conn, name, iface, workDir strin
 		workDir: workDir,
 		ipStart: ipStart,
 		ipEnd:   ipEnd,
+		dnsOpt:  opt,
 	}
 	if err := s.start(ctx); err != nil {
 		return nil, err
@@ -120,18 +147,37 @@ func (d *Server) start(fullCtx context.Context) (err error) {
 	ctx, cancel := d.ReserveForClose(fullCtx)
 	defer cancel()
 
-	conf := fmt.Sprintf(strings.Join([]string{
-		"port=0", // Disables DNS server.
-		"bind-interfaces",
-		"log-dhcp",
-		"dhcp-range=%s,%s",
-		"interface=%s",
-		"dhcp-leasefile=%s",
-	}, "\n"), d.ipStart.String(), d.ipEnd.String(), d.iface, d.leasePath())
-	if err := linuxssh.WriteFile(ctx, d.host, d.confPath(), []byte(conf), 0644); err != nil {
-		return errors.Wrap(err, "failed to write config")
+	var resolvedIP, resolvedHost string
+
+	if d.dnsOpt.ResolveHostToIP == nil {
+		resolvedIP = ""
+	} else {
+		resolvedIP = d.dnsOpt.ResolveHostToIP.String()
 	}
 
+	if d.dnsOpt.ResolvedHost == "" {
+		resolvedHost = "#"
+	}
+
+	// Prepare config file.
+	confVals := map[string]string{
+		"port":      strconv.Itoa(d.dnsOpt.Port),
+		"iface":     d.iface,
+		"ipStart":   d.ipStart.String(),
+		"ipEnd":     d.ipEnd.String(),
+		"leasefile": d.leasePath(),
+		"address":   fmt.Sprintf("/%s/%s", resolvedHost, resolvedIP),
+	}
+
+	if len(d.dnsOpt.NameServers) > 0 {
+		confVals["nameServers"] = strings.Join(d.dnsOpt.NameServers, ",")
+	}
+
+	b := &bytes.Buffer{}
+	template.Must(template.New("").Parse(confTemplate)).Execute(b, confVals)
+	if err := linuxssh.WriteFile(ctx, d.host, d.confPath(), []byte(b.String()), 0644); err != nil {
+		return errors.Wrap(err, "failed to write config")
+	}
 	testing.ContextLogf(ctx, "Starting dnsmasq %s on interface %s", d.name, d.iface)
 	// TODO(crbug.com/1030635): though it is better to use --conf-file=- so that it
 	// can write conf to stdin without file i/o. However, we need the conf filename
