@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9166f809_082caa90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-23T01:43:14Z",
+      "side": 1,
+      "message": "Passed in 20+ runs https://tastboard.corp.google.com/test/mlservice.WebHandwritingRecognition.lacros\nexcept for one false alarm on R105-14973.0.0 dedede (landia) that turns out to be irrelevant to this test (see the faillog at https://screenshot.googleplex.com/7puPRkTPrbdbuUV)\n\nNo deterministic failure on Stainless either:\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2022-07-10\u0026last_date\u003d2022-07-23\u0026suite\u003d%5E%5CS\u0026test\u003d%5Etast.mlservice.WebHandwritingRecognition.lacros\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dtrue\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dtrue\u0026exclude_non_production\u003dtrue\u0026exclude_non_critical\u003dfalse",
+      "revId": "2dfe82b4c3edffa0183684c67b6851f03e629216",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
