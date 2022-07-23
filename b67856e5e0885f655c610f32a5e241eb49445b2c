@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3162fc8_478d9818",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-07-23T04:18:28Z",
+      "side": 1,
+      "message": "+1 for not using parameterized tests. Based on the doc,\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#parameterized-tests\nThe difference between the test is not \"slight\" difference but that of the test scenarios, IMHO. So parameterized tests may not be a best fit.\n\nIf the two tests test different scenarios, it would be simpler to just have 2 separate test main files, quoting out the common initialization as a helper function.\n\nIIUC table-driven test in this case implies running the 2 functions sequentially and skipping some of the initialization procedure in this function. Is it OK for the purpose of this test?",
+      "parentUuid": "f9f17344_73b645e8",
+      "revId": "b67856e5e0885f655c610f32a5e241eb49445b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a213fbd0_98b1020c",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
         "patchSetId": 3
