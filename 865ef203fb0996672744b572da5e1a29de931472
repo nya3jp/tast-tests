@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e089af_69dc086f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-23T11:59:13Z",
+      "side": 1,
+      "message": "I had to increase the timeout to 20 minutes after trying the CL on trybots (seems that they are like 1.5x slower than the workstation).\n\nkyleshima@: Is this OK? The test only runs on VMs, so we don\u0027t increase the workload on real DUTs.",
+      "revId": "865ef203fb0996672744b572da5e1a29de931472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
