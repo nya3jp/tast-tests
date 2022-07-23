@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d479615e_5e0224b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-23T01:45:56Z",
+      "side": 1,
+      "message": "Passed in the 20+ runs https://tastboard.corp.google.com/test/platform.PerfettoChromeConsumer.lacros except for one false alarm that turns out to be irrelevant to this test (see the faillog https://screenshot.googleplex.com/7puPRkTPrbdbuUV)",
+      "revId": "29c59aee0a8d68df6d94bee79ac27911725e91a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
