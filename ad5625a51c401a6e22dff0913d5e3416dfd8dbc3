@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b69f73_da4dfd8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-25T16:44:46Z",
+      "side": 1,
+      "message": "Can you add TODO to test file so that we won\u0027t forget to remove them?",
+      "range": {
+        "startLine": 14,
+        "startChar": 19,
+        "endLine": 14,
+        "endChar": 39
+      },
+      "revId": "ad5625a51c401a6e22dff0913d5e3416dfd8dbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "700197ad_d2065b73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-25T16:44:46Z",
+      "side": 1,
+      "message": "LGTM % adding TODO",
+      "revId": "ad5625a51c401a6e22dff0913d5e3416dfd8dbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
