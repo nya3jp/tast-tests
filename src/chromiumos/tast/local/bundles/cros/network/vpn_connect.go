@@ -26,7 +26,11 @@ func init() {
 		Desc:     "Ensure that we can connect to a VPN",
 		Contacts: []string{"jiejiang@google.com", "cros-networking@google.com"},
 		Attr:     []string{"group:mainline", "informational"},
-		Fixture:  "vpnShillReset",
+		// Note that this test does not involve Chrome by intention, but for VPN
+		// services with certificates, Chrome may change the cert properties of them
+		// proactively, and thus we need Chrome is logged-in as the same user with
+		// our fake TPM. Also see b/192425378#comment5.
+		Fixture: "vpnShillResetWithChromeLoggedIn",
 		Params: []testing.Param{{
 			Name: "ikev2_psk",
 			Val: vpnTestParams{
