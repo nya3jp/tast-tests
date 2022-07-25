@@ -24,7 +24,7 @@ func init() {
 			"evanbenn@chromium.org", // Test author
 			"chromeos-hps-swe@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"hps"},
 		Params: []testing.Param{{
 			ExtraHardwareDeps: hwdep.D(hwdep.HPS()),
