@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b257f3_bf81fa52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/kiosk.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-25T03:01:59Z",
+      "side": 1,
+      "message": "you need to update the testName of `uc` in `PreTest`, see https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go;l\u003d548\n\nand set the PreTestTimeout",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 10
+      },
+      "revId": "0bedbab44c4f6208340bb3c34c206bdfd3f19d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
