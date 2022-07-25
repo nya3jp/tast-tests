@@ -85,6 +85,23 @@
       "message": "Tao, do you agree with deleting this test?",
       "revId": "3962a3fea5bf8f7841516388ee99d79fe11ae581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c6542e2_a43d6cb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-25T00:10:13Z",
+      "side": 1,
+      "message": "Who should +2 this CL?",
+      "revId": "3962a3fea5bf8f7841516388ee99d79fe11ae581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
