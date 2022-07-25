@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67598b2b_53dc225b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 37
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-07-25T22:47:41Z",
+      "side": 1,
+      "message": "Do you mean `-U`?\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go;l\u003d456-461;drc\u003d6d42bc7237928eb052cc7dde26881c33a09762d6",
+      "range": {
+        "startLine": 10,
+        "startChar": 60,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "62ef81fb1937cd81df3738d273ed833b8175077f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be075817_6828b7eb",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-07-25T22:47:41Z",
+      "side": 1,
+      "message": "This only has the ability to remove SW WP.\nMaybe the argument should be `removeSWWP`, instead?",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 2
+      },
+      "revId": "62ef81fb1937cd81df3738d273ed833b8175077f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
