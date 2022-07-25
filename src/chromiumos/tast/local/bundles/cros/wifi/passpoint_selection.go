@@ -51,8 +51,8 @@ func init() {
 				Val: selectionTest{
 					credentials: []*passpoint.Credentials{
 						{
-							Domain: passpoint.BlueDomain,
-							Auth:   passpoint.AuthTTLS,
+							Domains: []string{passpoint.BlueDomain},
+							Auth:    passpoint.AuthTTLS,
 						},
 					},
 					aps: []passpoint.AccessPoint{
@@ -71,7 +71,7 @@ func init() {
 				Val: selectionTest{
 					credentials: []*passpoint.Credentials{
 						{
-							Domain:  passpoint.BlueDomain,
+							Domains: []string{passpoint.BlueDomain},
 							HomeOIs: []uint64{passpoint.HomeOI},
 							Auth:    passpoint.AuthTTLS,
 						},
@@ -92,7 +92,7 @@ func init() {
 				Val: selectionTest{
 					credentials: []*passpoint.Credentials{
 						{
-							Domain:          passpoint.BlueDomain,
+							Domains:         []string{passpoint.BlueDomain},
 							RequiredHomeOIs: []uint64{passpoint.HomeOI},
 							Auth:            passpoint.AuthTTLS,
 						},
@@ -118,8 +118,8 @@ func init() {
 				Val: selectionTest{
 					credentials: []*passpoint.Credentials{
 						{
-							Domain: passpoint.BlueDomain,
-							Auth:   passpoint.AuthTTLS,
+							Domains: []string{passpoint.BlueDomain},
+							Auth:    passpoint.AuthTTLS,
 						},
 					},
 					aps: []passpoint.AccessPoint{
@@ -138,7 +138,7 @@ func init() {
 				Val: selectionTest{
 					credentials: []*passpoint.Credentials{
 						{
-							Domain:     passpoint.BlueDomain,
+							Domains:    []string{passpoint.BlueDomain},
 							HomeOIs:    []uint64{passpoint.HomeOI},
 							RoamingOIs: []uint64{passpoint.RoamingOI1},
 							Auth:       passpoint.AuthTTLS,
@@ -160,7 +160,7 @@ func init() {
 				Val: selectionTest{
 					credentials: []*passpoint.Credentials{
 						{
-							Domain:     passpoint.BlueDomain,
+							Domains:    []string{passpoint.BlueDomain},
 							HomeOIs:    []uint64{passpoint.HomeOI},
 							RoamingOIs: []uint64{passpoint.RoamingOI1},
 							Auth:       passpoint.AuthTTLS,
@@ -188,8 +188,8 @@ func init() {
 				Val: selectionTest{
 					credentials: []*passpoint.Credentials{
 						{
-							Domain: passpoint.BlueDomain,
-							Auth:   passpoint.AuthTTLS,
+							Domains: []string{passpoint.BlueDomain},
+							Auth:    passpoint.AuthTTLS,
 						},
 					},
 					aps: []passpoint.AccessPoint{
@@ -214,11 +214,11 @@ func init() {
 				Val: selectionTest{
 					credentials: []*passpoint.Credentials{
 						{
-							Domain:  passpoint.BlueDomain,
+							Domains: []string{passpoint.BlueDomain},
 							HomeOIs: []uint64{passpoint.HomeOI},
 							Auth:    passpoint.AuthTTLS,
 						}, {
-							Domain:  passpoint.RedDomain,
+							Domains: []string{passpoint.RedDomain},
 							HomeOIs: []uint64{passpoint.HomeOI},
 							Auth:    passpoint.AuthTTLS,
 						},
@@ -239,12 +239,12 @@ func init() {
 				Val: selectionTest{
 					credentials: []*passpoint.Credentials{
 						{
-							Domain:     passpoint.GreenDomain,
+							Domains:    []string{passpoint.GreenDomain},
 							HomeOIs:    []uint64{passpoint.RoamingOI1},
 							RoamingOIs: []uint64{passpoint.HomeOI},
 							Auth:       passpoint.AuthTTLS,
 						}, {
-							Domain:     passpoint.RedDomain,
+							Domains:    []string{passpoint.RedDomain},
 							HomeOIs:    []uint64{passpoint.RoamingOI2},
 							RoamingOIs: []uint64{passpoint.HomeOI},
 							Auth:       passpoint.AuthTTLS,
@@ -266,11 +266,11 @@ func init() {
 				Val: selectionTest{
 					credentials: []*passpoint.Credentials{
 						{
-							Domain:  passpoint.BlueDomain,
+							Domains: []string{passpoint.BlueDomain},
 							HomeOIs: []uint64{passpoint.HomeOI},
 							Auth:    passpoint.AuthTTLS,
 						}, {
-							Domain:     passpoint.RedDomain,
+							Domains:    []string{passpoint.RedDomain},
 							HomeOIs:    []uint64{passpoint.RoamingOI2},
 							RoamingOIs: []uint64{passpoint.RoamingOI1},
 							Auth:       passpoint.AuthTTLS,
@@ -292,6 +292,27 @@ func init() {
 						},
 					},
 					expectedSSID: "passpoint-blue",
+				},
+			}, {
+				Name: "home_with_two_domains",
+				Val: selectionTest{
+					credentials: []*passpoint.Credentials{
+						{
+							Domains: []string{passpoint.BlueDomain, passpoint.RedDomain},
+							HomeOIs: []uint64{passpoint.HomeOI},
+							Auth:    passpoint.AuthTTLS,
+						},
+					},
+					aps: []passpoint.AccessPoint{
+						{
+							SSID:              "passpoint-red",
+							Domain:            passpoint.RedDomain,
+							Realms:            []string{passpoint.RedDomain, passpoint.BlueDomain},
+							RoamingConsortium: passpoint.RoamingOI1,
+							Auth:              passpoint.AuthTTLS,
+						},
+					},
+					expectedSSID: "passpoint-red",
 				},
 			},
 		},

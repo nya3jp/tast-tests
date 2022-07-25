@@ -44,8 +44,10 @@ const (
 
 // Credentials represents a set of Passpoint credentials with selection criteria.
 type Credentials struct {
-	// Domain represents the domain of the service provider.
-	Domain string
+	// Domains represents the domains of the compatible service providers.
+	// The first domain is the FQDN of the provider, the others (if any)
+	// are the FQDNs of partner service providers.
+	Domains []string
 	// HomeOIs is a list of organisation identifiers (OI).
 	HomeOIs []uint64
 	// RequiredHomeOIs is a list of required organisation identifiers.
@@ -56,6 +58,24 @@ type Credentials struct {
 	Auth
 }
 
+// FQDN returns the fully qualified domain name of the service provider.
+// The first domain of the pc.Domains list is considered to be the FQDN
+// that identifies the service provider (ARC follows the same logic).
+func (pc *Credentials) FQDN() string {
+	if len(pc.Domains) == 0 {
+		return ""
+	}
+	return pc.Domains[0]
+}
+
+// OtherHomePartners returns the list compatible partners' domains.
+func (pc *Credentials) OtherHomePartners() []string {
+	if len(pc.Domains) < 2 {
+		return []string{}
+	}
+	return pc.Domains[1:]
+}
+
 // ToShillProperties converts the set of credentials to a map for credentials D-Bus
 // properties. ToShillProperties only supports EAP-TTLS authentication.
 func (pc *Credentials) ToShillProperties() (map[string]interface{}, error) {
@@ -64,8 +84,8 @@ func (pc *Credentials) ToShillProperties() (map[string]interface{}, error) {
 	}
 
 	props := map[string]interface{}{
-		shillconst.PasspointCredentialsPropertyDomains:            []string{pc.Domain},
-		shillconst.PasspointCredentialsPropertyRealm:              pc.Domain,
+		shillconst.PasspointCredentialsPropertyDomains:            pc.Domains,
+		shillconst.PasspointCredentialsPropertyRealm:              pc.FQDN(),
 		shillconst.PasspointCredentialsPropertyMeteredOverride:    false,
 		shillconst.PasspointCredentialsPropertyAndroidPackageName: testPackageName,
 		shillconst.ServicePropertyEAPMethod:                       "TTLS",
@@ -202,6 +222,25 @@ func (pc *Credentials) preparePPSMOHomeSP() string {
         </Node>`, strings.Join(roamingOiValues, ","))
 	}
 
+	// Create other home partners node.
+	var otherHomePartners string
+	if len(pc.OtherHomePartners()) > 0 {
+		var nodes []string
+		for i, partner := range pc.OtherHomePartners() {
+			nodes = append(nodes, fmt.Sprintf(`          <Node>
+            <NodeName>x%d</NodeName>
+            <Node>
+              <NodeName>FQDN</NodeName>
+              <Value>%s</Value>
+            </Node>
+          </Node>
+`, i+1, partner))
+		}
+		otherHomePartners = fmt.Sprintf(`        <Node>
+          <NodeName>OtherHomePartners</NodeName>
+%s        </Node>`, strings.Join(nodes, ""))
+	}
+
 	// Combine the OI(s) into a Home SP node.
 	return fmt.Sprintf(`      <Node>
         <NodeName>HomeSP</NodeName>
@@ -215,7 +254,8 @@ func (pc *Credentials) preparePPSMOHomeSP() string {
         </Node>
 %s
 %s
-      </Node>`, pc.Domain, homeOis, roamingOis)
+%s
+      </Node>`, pc.FQDN(), homeOis, roamingOis, otherHomePartners)
 }
 
 // preparePPSMOCred creates an OMA-DM PerProviderSubscription-MO XML Credential node based on the set of Passpoint credentials.
@@ -243,7 +283,7 @@ func (pc *Credentials) preparePPSMOCred() (string, error) {
             <Value>%s</Value>
           </Node>
         </Node>
-      </Node>`, pc.Domain, fingerprint), nil
+      </Node>`, pc.FQDN(), fingerprint), nil
 	case AuthTTLS:
 		return fmt.Sprintf(`      <Node>
       <NodeName>Credential</NodeName>
@@ -277,7 +317,7 @@ func (pc *Credentials) preparePPSMOCred() (string, error) {
           </Node>
         </Node>
       </Node>
-    </Node>`, pc.Domain, testUser, base64.StdEncoding.EncodeToString([]byte(testPassword))), nil
+    </Node>`, pc.FQDN(), testUser, base64.StdEncoding.EncodeToString([]byte(testPassword))), nil
 	default:
 		return "", errors.Errorf("unsupported authentication method: %v", pc.Auth)
 	}
