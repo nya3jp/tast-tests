@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b684285a_ba0fb412",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-07-25T21:15:13Z",
+      "side": 1,
+      "message": "Thanks for this!",
+      "revId": "0a9c3e59ca7c07c3d68ff05d79517d2ef2145a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8bc77dc_7b65c432",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_space_constrained.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-07-25T21:15:13Z",
+      "side": 1,
+      "message": "This will work, but it\u0027s kind of weird because all the defers build up over the loops and then get run at once when the function ends. It might be better to split this loop body into a new function.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "0a9c3e59ca7c07c3d68ff05d79517d2ef2145a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a409484_a73d327a",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-07-25T21:15:13Z",
+      "side": 1,
+      "message": "Remove this comment",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 75
+      },
+      "revId": "0a9c3e59ca7c07c3d68ff05d79517d2ef2145a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b18f18_dbc798a3",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-07-25T21:15:13Z",
+      "side": 1,
+      "message": "I notice we have both Resize and ResizeDisk that take the same parameters and it\u0027s not clear what the difference is meant to be. Can they be combined?",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 51
+      },
+      "revId": "0a9c3e59ca7c07c3d68ff05d79517d2ef2145a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
