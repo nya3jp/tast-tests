@@ -51,7 +51,7 @@ func init() {
 				Name: "home_to_home",
 				Val: roamingTest{
 					credentials: &passpoint.Credentials{
-						Domain:  passpoint.BlueDomain,
+						Domains: []string{passpoint.BlueDomain},
 						HomeOIs: []uint64{passpoint.HomeOI},
 						Auth:    passpoint.AuthTTLS,
 					},
@@ -75,7 +75,7 @@ func init() {
 				Name: "roaming_to_home",
 				Val: roamingTest{
 					credentials: &passpoint.Credentials{
-						Domain:     passpoint.BlueDomain,
+						Domains:    []string{passpoint.BlueDomain},
 						HomeOIs:    []uint64{passpoint.HomeOI},
 						RoamingOIs: []uint64{passpoint.RoamingOI1, passpoint.RoamingOI2},
 						Auth:       passpoint.AuthTTLS,
@@ -100,7 +100,7 @@ func init() {
 				Name: "home_to_roaming",
 				Val: roamingTest{
 					credentials: &passpoint.Credentials{
-						Domain:     passpoint.BlueDomain,
+						Domains:    []string{passpoint.BlueDomain},
 						HomeOIs:    []uint64{passpoint.HomeOI},
 						RoamingOIs: []uint64{passpoint.RoamingOI1, passpoint.RoamingOI2},
 						Auth:       passpoint.AuthTTLS,
@@ -125,7 +125,7 @@ func init() {
 				Name: "roaming_to_roaming",
 				Val: roamingTest{
 					credentials: &passpoint.Credentials{
-						Domain:     passpoint.BlueDomain,
+						Domains:    []string{passpoint.BlueDomain},
 						HomeOIs:    []uint64{passpoint.HomeOI},
 						RoamingOIs: []uint64{passpoint.RoamingOI1, passpoint.RoamingOI2},
 						Auth:       passpoint.AuthTTLS,
