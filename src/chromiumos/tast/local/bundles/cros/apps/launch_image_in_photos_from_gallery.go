@@ -162,7 +162,7 @@ func LaunchImageInPhotosFromGallery(ctx context.Context, s *testing.State) {
 	if err := uiauto.NamedCombine("reach main page of Photos app",
 		ud.LeftClick(uidetection.Word("ALLOW")),
 		ud.LeftClick(uidetection.TextBlock([]string{"Got", "it"})),
-		ud.WaitUntilExists(uidetection.TextBlock([]string{"HAPPY", "HALLOWEEN"})),
+		ud.WaitUntilExists(uidetection.Word("HALLOWEEN")),
 	)(ctx); err != nil {
 		s.Fatal("Failed to verify the test image opened in Photos: ", err)
 	}
