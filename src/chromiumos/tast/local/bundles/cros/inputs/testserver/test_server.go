@@ -73,7 +73,7 @@ const (
 const html = `<!DOCTYPE html>
 <meta charset="utf-8">
 <title>E14s test page</title>
-<pre>No autocomplete</pre>
+<pre aria-label="textAreaNoCorrectionInputFieldHeader">No autocomplete</pre>
 <textarea aria-label="textArea disabled autocomplete, autocorrect, autocapitalize" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width: 100%"></textarea>
 <br /><br />
 <pre>&lt;<b>textarea</b> rows="7"&gt;&lt;/textarea&gt;</pre>
