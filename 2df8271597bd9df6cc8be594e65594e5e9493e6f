@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "108fb0ba_e80e356b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/its/its.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-07-25T07:32:02Z",
+      "side": 1,
+      "message": "This is from \"diff\" origin message , use \"git diff\" instead",
+      "parentUuid": "c0819183_5903e830",
+      "revId": "2df8271597bd9df6cc8be594e65594e5e9493e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52c1faf8_3585f6d5",
         "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/its/its.patch",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-21T10:36:58Z",
       "side": 1,
       "message": "nit: Use some meaningful logging message here for the output, and adding a TODO comment link to the bug for removing this in the future once the bug is resolved.",
+      "revId": "2df8271597bd9df6cc8be594e65594e5e9493e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc7eb467_adb07868",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/its/its.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-07-25T07:32:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52c1faf8_3585f6d5",
       "revId": "2df8271597bd9df6cc8be594e65594e5e9493e6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2022-07-21T10:36:58Z",
       "side": 1,
       "message": "qq: why do we need this?",
+      "revId": "2df8271597bd9df6cc8be594e65594e5e9493e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf23bd9d_e5cc54e5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/its/its.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-07-25T07:32:02Z",
+      "side": 1,
+      "message": "This is from origin one , not added new code\nimport matplotlib is also android ITS original script",
+      "parentUuid": "a5f3aaba_ba06d5b1",
       "revId": "2df8271597bd9df6cc8be594e65594e5e9493e6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
