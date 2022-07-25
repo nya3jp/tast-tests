@@ -239,6 +239,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e967135c_14da6d5b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-25T17:57:19Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean, this test fixture is used only with wificells as those are the only ones with routers set up for this and all wificells use this fixture for testing. Everything in this file is for wificells.",
+      "parentUuid": "e4f4721c_7e8cde1b",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 673,
+        "endChar": 2
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eba7bd96_bec51b27",

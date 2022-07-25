@@ -39,6 +39,30 @@
       },
       "revId": "d014b08370e9af22605c0c2f5fe0730fa30ef45f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf73947f_ca36de7f",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-25T17:57:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c94e6e35_e048f28c",
+      "range": {
+        "startLine": 675,
+        "startChar": 1,
+        "endLine": 675,
+        "endChar": 78
+      },
+      "revId": "d014b08370e9af22605c0c2f5fe0730fa30ef45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
