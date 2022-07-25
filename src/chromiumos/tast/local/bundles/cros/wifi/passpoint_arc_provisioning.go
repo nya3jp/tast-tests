@@ -64,7 +64,7 @@ func PasspointARCProvisioning(ctx context.Context, s *testing.State) {
 				Auth:              passpoint.AuthTTLS,
 			},
 			creds: passpoint.Credentials{
-				Domain:  fqdn,
+				Domains: []string{fqdn},
 				HomeOIs: []uint64{passpoint.HomeOI},
 				Auth:    passpoint.AuthTTLS,
 			},
@@ -79,7 +79,7 @@ func PasspointARCProvisioning(ctx context.Context, s *testing.State) {
 				Auth:              passpoint.AuthTTLS,
 			},
 			creds: passpoint.Credentials{
-				Domain:     fqdn,
+				Domains:    []string{fqdn},
 				HomeOIs:    []uint64{passpoint.HomeOI},
 				RoamingOIs: []uint64{passpoint.RoamingOI1},
 				Auth:       passpoint.AuthTTLS,
@@ -95,7 +95,7 @@ func PasspointARCProvisioning(ctx context.Context, s *testing.State) {
 				Auth:              passpoint.AuthTLS,
 			},
 			creds: passpoint.Credentials{
-				Domain:  fqdn,
+				Domains: []string{fqdn},
 				HomeOIs: []uint64{passpoint.HomeOI},
 				Auth:    passpoint.AuthTLS,
 			},
@@ -110,7 +110,7 @@ func PasspointARCProvisioning(ctx context.Context, s *testing.State) {
 				Auth:              passpoint.AuthTLS,
 			},
 			creds: passpoint.Credentials{
-				Domain:     fqdn,
+				Domains:    []string{fqdn},
 				HomeOIs:    []uint64{passpoint.HomeOI},
 				RoamingOIs: []uint64{passpoint.RoamingOI1},
 				Auth:       passpoint.AuthTLS,
@@ -184,7 +184,7 @@ func runARCProvisioningTestCase(ctx context.Context, s *testing.State, m *shill.
 		if removed {
 			return
 		}
-		a.Command(ctx, "cmd", "wifi", "remove-passpoint-config", tc.creds.Domain).Run(testexec.DumpLogOnError)
+		a.Command(ctx, "cmd", "wifi", "remove-passpoint-config", tc.creds.FQDN()).Run(testexec.DumpLogOnError)
 	}(cleanupCtx)
 
 	// Trigger a scan.
@@ -199,7 +199,7 @@ func runARCProvisioningTestCase(ctx context.Context, s *testing.State, m *shill.
 
 	// Remove Passpoint credentials from ARC.
 	removed = true
-	if err := a.Command(ctx, "cmd", "wifi", "remove-passpoint-config", tc.creds.Domain).Run(testexec.DumpLogOnError); err != nil {
+	if err := a.Command(ctx, "cmd", "wifi", "remove-passpoint-config", tc.creds.FQDN()).Run(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to remove Passpoint config from ARC")
 	}
 
