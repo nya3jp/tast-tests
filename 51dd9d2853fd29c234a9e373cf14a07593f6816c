@@ -22,6 +22,30 @@
       },
       "revId": "51dd9d2853fd29c234a9e373cf14a07593f6816c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1babdb21_2eaaac58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_high_vis_wifi_credentials.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1520982
+      },
+      "writtenOn": "2022-07-25T16:55:58Z",
+      "side": 1,
+      "message": "Nice catch, thanks.",
+      "parentUuid": "35cbb835_3c44fbf2",
+      "range": {
+        "startLine": 123,
+        "startChar": 42,
+        "endLine": 123,
+        "endChar": 54
+      },
+      "revId": "51dd9d2853fd29c234a9e373cf14a07593f6816c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
