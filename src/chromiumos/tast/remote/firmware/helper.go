@@ -776,6 +776,7 @@ func (h *Helper) SetDUTPower(ctx context.Context, powerOn bool) error {
 	}
 	// Try rpm client
 	if h.powerunitHostname != "" {
+		testing.ContextLogf(ctx, "Creating rpm client %s", h.powerunitHostname)
 		if err := h.RequireRPM(ctx); err != nil {
 			return err
 		}
@@ -783,6 +784,7 @@ func (h *Helper) SetDUTPower(ctx context.Context, powerOn bool) error {
 		if powerOn {
 			powerState = rpm.On
 		}
+		testing.ContextLog(ctx, "Setting power via rpm")
 		if ok, err := h.RPM.SetPower(ctx, powerState); err != nil {
 			return errors.Wrap(err, "set power via rpm")
 		} else if !ok {

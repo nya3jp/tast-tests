@@ -200,6 +200,11 @@ func BatteryCharging(ctx context.Context, s *testing.State) {
 			s.Logf("Line power %s", ac)
 		}
 
+		s.Log("Checking ec charger state")
+		if err := checkECChgState(ctx, h); err != nil {
+			s.Fatal("Failed to query ec chgstate: ", err)
+		}
+
 		// For debugging purposes, also log information from the base file that
 		// 'power_supply_info' derives battery state from.
 		batteryBaseFile, err := checkBatteryFromBaseFile(ctx, h)
@@ -313,4 +318,41 @@ func checkBatteryFromBaseFile(ctx context.Context, h *firmware.Helper) (string, 
 	}
 	testing.ContextLogf(ctx, "Battery state from base file: %s", batteryBaseFile)
 	return batteryBaseFile, nil
+}
+
+// checkECChgState sends command 'chgstate' to the ec and prints returned output,
+// when the listed regular expressions are matched.
+func checkECChgState(ctx context.Context, h *firmware.Helper) error {
+	// Regular expressions to check for battery and charger state.
+	var (
+		reAC                       = `ac = (\S*)`
+		reState                    = `state = (\S*)`
+		reBatteryIsCharging        = `batt_is_charging = (\S*)`
+		reBatterySeemsDead         = `battery\S*dead = (\S*)`
+		reBatterySeemsDisconnected = `battery\S*disconnected = (\S*)`
+		reBatteryRemoved           = `battery\S*removed = (\S*)`
+	)
+	if err := h.Servo.RunECCommand(ctx, "chan 0"); err != nil {
+		return errors.Wrap(err, "failed to send 'chan 0' to EC")
+	}
+	defer func() error {
+		if err := h.Servo.RunECCommand(ctx, "chan 0xffffffff"); err != nil {
+			return errors.Wrap(err, "failed to send 'chan 0xffffffff' to EC")
+		}
+		return nil
+	}()
+	chgstateOutput, err := h.Servo.RunECCommandGetOutput(ctx, "chgstate", []string{`.*\ndebug output = .+\n`})
+	if err != nil {
+		return err
+	}
+	regs := []*regexp.Regexp{regexp.MustCompile(reAC), regexp.MustCompile(reState), regexp.MustCompile(reBatteryIsCharging),
+		regexp.MustCompile(reBatterySeemsDead), regexp.MustCompile(reBatterySeemsDisconnected), regexp.MustCompile(reBatteryRemoved)}
+	var chgStateInfo []string
+	for _, v := range regs {
+		if match := v.FindStringSubmatch(chgstateOutput[0][0]); match != nil {
+			chgStateInfo = append(chgStateInfo, match[0])
+		}
+	}
+	testing.ContextLog(ctx, chgStateInfo)
+	return nil
 }
