@@ -217,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e4f4721c_7e8cde1b",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-25T14:22:19Z",
+      "side": 1,
+      "message": "OK, could you add the comment that this shouldn\u0027t be used except wificells, just to clarify any code readers?",
+      "parentUuid": "c035bf94_2c77e97d",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 673,
+        "endChar": 2
+      },
+      "revId": "ec0911dd7c7d951d514fff27bf6c9e5f16980ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eba7bd96_bec51b27",
         "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
         "patchSetId": 3

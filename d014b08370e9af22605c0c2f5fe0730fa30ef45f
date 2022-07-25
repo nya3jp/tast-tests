@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13c21771_1015dd0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-25T14:22:19Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "d014b08370e9af22605c0c2f5fe0730fa30ef45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94e6e35_e048f28c",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-25T14:22:19Z",
+      "side": 1,
+      "message": "nit: maybe a bit more background will be appreciated.\n\n// Wait for router reboot ...\n// Currently, there\u0027s no reliable way to identify router state is stabilized enough to run tests, so as a short term work around, just Sleep for fixed amount of time which is considered long enough to stabilize the reboot.\n// TODO(...): ...",
+      "range": {
+        "startLine": 675,
+        "startChar": 1,
+        "endLine": 675,
+        "endChar": 78
+      },
+      "revId": "d014b08370e9af22605c0c2f5fe0730fa30ef45f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
