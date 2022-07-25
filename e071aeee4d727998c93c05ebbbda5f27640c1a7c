@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2d62e9a_18ff4af8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-25T22:59:13Z",
+      "side": 1,
+      "message": "example.com might be better, just to make it perfectly clear that you are using a fake website. foo.com is a real site (not a good site, but real).\n\nexample.com does resolve, but it is a reserved hostname by ARIN, and will always be a fake site.",
+      "range": {
+        "startLine": 26,
+        "startChar": 27,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "e071aeee4d727998c93c05ebbbda5f27640c1a7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
