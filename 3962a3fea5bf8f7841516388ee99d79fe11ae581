@@ -102,6 +102,23 @@
       "message": "Who should +2 this CL?",
       "revId": "3962a3fea5bf8f7841516388ee99d79fe11ae581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90797fa6_bed5bd0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000172
+      },
+      "writtenOn": "2022-07-25T00:16:47Z",
+      "side": 1,
+      "message": "Looks like there\u0027s not much attention. Let\u0027s just remove it",
+      "revId": "3962a3fea5bf8f7841516388ee99d79fe11ae581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
