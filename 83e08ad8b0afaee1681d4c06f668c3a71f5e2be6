@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23789ece_4bd6eb04",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-25T03:30:23Z",
+      "side": 1,
+      "message": "Not leaving row error message, it will be raw error message together with your suggestion (i.e., try using inlineText role).\n\nStaticText may or may not work, but there are still some other roles like labelText. Since you are providing the informative hints in case of errors, the user doesn\u0027t need to do their investigation if inlineText works for them.\n\nConsidering the following two scenarios, limiting the usage in Tast is actually bad:\n1, Assume the user is using a node role other than inlineText, and it is compatible with `boundForRange`. The expected behavior is that the user should not encounter any error, but your code here returns an error during the flight check. \n\n2, The API `boundForRange` might be improved to be compatible with more node roles. This could happen without any notice of the Tast method. Similar to 1, many WAI behaviors will be treated as errors.\n\nUnless you are sure (i.e. has a reference to the original API) that `inlineText` is the only option, I think returning whatever the original API returns is the way to do it, and providing informative logs in errors is as helpful as hard-limiting the usage, without jeopardizing the flexibility.",
+      "parentUuid": "f0f754da_f3995198",
+      "range": {
+        "startLine": 484,
+        "startChar": 21,
+        "endLine": 484,
+        "endChar": 34
+      },
+      "revId": "83e08ad8b0afaee1681d4c06f668c3a71f5e2be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2ea4c34_4331b679",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
         "patchSetId": 1
