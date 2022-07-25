@@ -67,6 +67,24 @@
       "message": "LGTM, but please run tast unit test: fast_build.sh -T\n\nThen, add this line to the commit log\nTEST\u003dtast unit test passed.\n",
       "revId": "e152364234f68023b3c404adae19dbcbc650d442",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eca6b30f_0147b7eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-07-25T08:35:37Z",
+      "side": 1,
+      "message": "done, thanks",
+      "parentUuid": "cdebd4d7_04d956c2",
+      "revId": "e152364234f68023b3c404adae19dbcbc650d442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
