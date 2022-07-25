@@ -29,7 +29,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Captures startup metrics for Lacros after cold booting the system",
 		Contacts:     []string{"tvignatti@igalia.com", "lacros-team@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		Vars:         []string{"meta.ColdbootStartupPerf.iterations"},
@@ -50,8 +50,8 @@ func coldbootStartupPerfOnce(ctx context.Context, s *testing.State, i, iteration
 	s.Logf("Running iteration %d/%d", i+1, iterations)
 	d := s.DUT()
 
-	// TODO(tvignatti): Find a way to get rid of CTRL+D trick "OS verification is OFF" every time
-	// it boots.
+	// TODO(https://crbug.com/1346752): Find a way to get rid of CTRL+D trick "OS verification is
+	// OFF" every time it boots.
 	s.Log("Rebooting DUT")
 	if err := d.Reboot(ctx); err != nil {
 		s.Fatal("Failed to reboot DUT: ", err)
