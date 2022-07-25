@@ -62,6 +62,20 @@ func init() {
 				Timeout:           15 * time.Minute,
 			},
 			{
+				Name:              "betty",
+				ExtraSoftwareDeps: []string{"android_p", "qemu"},
+				Val:               withRetries,
+				Timeout:           10 * time.Minute,
+				ExtraAttr:         []string{"informational"},
+			},
+			{
+				Name:              "vm_betty",
+				ExtraSoftwareDeps: []string{"android_vm", "qemu"},
+				Val:               withRetries,
+				Timeout:           10 * time.Minute,
+				ExtraAttr:         []string{"informational"},
+			},
+			{
 				Name:              "unstable",
 				ExtraSoftwareDeps: []string{"android_p"},
 				Val:               withoutRetries,
