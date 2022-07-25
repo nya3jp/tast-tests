@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/disk"
+	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/vm"
 	"chromiumos/tast/testing"
 )
 
@@ -78,34 +80,41 @@ func ResizeSpaceConstrained(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatalf("Failed to parse disk size string %s: %v", currSizeStr, err)
 	}
-	const fillPath = "/home/user/"
+
 	for _, tBytes := range targetDiskSizeBytes {
-		freeSpace, err := disk.FreeSpace(fillPath)
-		if err != nil {
-			s.Fatalf("Failed to read free space in %s: %v", fillPath, err)
-		}
-		if freeSpace < tBytes {
-			s.Logf("Not enough free space to run test. Have %v, need %v", freeSpace, tBytes)
-			continue
-		}
-		fillFile, err := disk.FillUntil(fillPath, tBytes)
-		if err != nil {
-			s.Fatal("Failed to fill disk space: ", err)
-		}
-
-		s.Logf("Resizing from %v to %v", currSizeBytes, tBytes)
-		sizeOnSlider, sizeInCont, err := st.Resize(ctx, keyboard, tBytes, currSizeBytes)
-		if err != nil {
-			s.Fatal("Failed to resize back to the default value: ", err)
-		}
-		if err := st.VerifyResizeResults(ctx, cont, sizeOnSlider, sizeInCont); err != nil {
-			s.Fatal("Failed to verify resize results: ", err)
-		}
-
+		testResize(ctx, s, cont, keyboard, st, currSizeBytes, tBytes)
 		currSizeBytes = tBytes
+	}
+}
+
+func testResize(ctx context.Context, s *testing.State, cont *vm.Container, keyboard *input.KeyboardEventWriter, st *settings.Settings, currSizeBytes, targetSizeBytes uint64) error {
+	const fillPath = "/home/user/"
+	freeSpace, err := disk.FreeSpace(fillPath)
+	if err != nil {
+		s.Fatalf("Failed to read free space in %s: %v", fillPath, err)
+	}
+	if freeSpace < targetSizeBytes {
+		s.Logf("Not enough free space to run test. Have %v, need %v", freeSpace, targetSizeBytes)
+		return nil
+	}
+	fillFile, err := disk.FillUntil(fillPath, targetSizeBytes)
+	if err != nil {
+		s.Fatal("Failed to fill disk space: ", err)
+	}
+	// Defer removing the files in case of errors.
+	defer func() {
 		if err = os.Remove(fillFile); err != nil {
 			s.Fatalf("Failed to remove fill file %s: %v", fillFile, err)
 		}
-	}
+	}()
 
+	s.Logf("Resizing from %v to %v", currSizeBytes, targetSizeBytes)
+	sizeOnSlider, sizeInCont, err := st.Resize(ctx, keyboard, targetSizeBytes)
+	if err != nil {
+		s.Fatal("Failed to resize back to the default value: ", err)
+	}
+	if err := st.VerifyResizeResults(ctx, cont, sizeOnSlider, sizeInCont); err != nil {
+		s.Fatal("Failed to verify resize results: ", err)
+	}
+	return nil
 }
