@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d63d61_a26859e0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1541577
+      },
+      "writtenOn": "2022-07-25T19:36:02Z",
+      "side": 1,
+      "message": "did moving /tmp to this list not work?\nDo we not care about the FIFOAccess for \u0027/tmp\u0027 anymore?",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 21
+      },
+      "revId": "18d1efffd6a0710bf3d26319361bf00eb1836eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
