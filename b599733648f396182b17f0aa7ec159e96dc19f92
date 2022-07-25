@@ -34,6 +34,46 @@
       "parentUuid": "91d3112a_1a13cba0",
       "revId": "b599733648f396182b17f0aa7ec159e96dc19f92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82f4ff95_feae94bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-25T22:52:43Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "b599733648f396182b17f0aa7ec159e96dc19f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b880438_6ef34aff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-25T22:52:43Z",
+      "side": 1,
+      "message": "Could you also remove this comment?",
+      "range": {
+        "startLine": 546,
+        "startChar": 1,
+        "endLine": 547,
+        "endChar": 58
+      },
+      "revId": "b599733648f396182b17f0aa7ec159e96dc19f92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
