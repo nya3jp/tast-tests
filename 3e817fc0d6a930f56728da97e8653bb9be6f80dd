@@ -242,6 +242,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e8b55e_d9888e35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/demomode/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1465072
+      },
+      "writtenOn": "2022-07-25T20:47:18Z",
+      "side": 1,
+      "message": "Resolving so I can submit :)",
+      "parentUuid": "506ec651_626dbf63",
+      "range": {
+        "startLine": 32,
+        "startChar": 16,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "3e817fc0d6a930f56728da97e8653bb9be6f80dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4efa3b3d_0b0a209f",
