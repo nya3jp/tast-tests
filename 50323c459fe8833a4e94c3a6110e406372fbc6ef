@@ -16,6 +16,29 @@
       "message": "Thanks for improving the test reliability!",
       "revId": "50323c459fe8833a4e94c3a6110e406372fbc6ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a9f049d_66eb063c",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-25T01:52:50Z",
+      "side": 1,
+      "message": "Is this missing a return statement?",
+      "range": {
+        "startLine": 330,
+        "startChar": 1,
+        "endLine": 330,
+        "endChar": 2
+      },
+      "revId": "50323c459fe8833a4e94c3a6110e406372fbc6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
