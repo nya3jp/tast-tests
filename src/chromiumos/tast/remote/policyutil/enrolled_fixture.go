@@ -26,13 +26,15 @@ import (
 	"chromiumos/tast/testing"
 )
 
+const enrollmentRunTimeout = 8 * time.Minute
+
 func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:            fixture.Enrolled,
 		Desc:            "Fixture providing enrollment",
 		Contacts:        []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl:            &enrolledFixt{},
-		SetUpTimeout:    8 * time.Minute,
+		SetUpTimeout:    3 * enrollmentRunTimeout,
 		TearDownTimeout: 5 * time.Minute,
 		ResetTimeout:    15 * time.Second,
 		ServiceDeps:     []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService"},
@@ -100,10 +102,6 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		s.Log("VPD broken, trying to enroll anyway: ", vpdError)
 	}
 
-	if err := EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
-		s.Fatal("Failed to reset TPM: ", err)
-	}
-
 	ok := false
 	defer func() {
 		if !ok {
@@ -122,41 +120,70 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 
 	pc := ps.NewPolicyServiceClient(cl.Conn)
 
-	// TODO(crbug.com/1187473): use a temporary directory.
-	e.fdmsDir = fakedms.EnrollmentFakeDMSDir
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		s.Log("Attempting enrollment")
 
-	if _, err := pc.CreateFakeDMSDir(ctx, &ps.CreateFakeDMSDirRequest{
-		Path: e.fdmsDir,
-	}); err != nil {
-		s.Fatal("Failed to create temporary directory for FakeDMS: ", err)
-	}
+		ctx, cancel := context.WithTimeout(ctx, enrollmentRunTimeout)
+		defer cancel()
 
-	// Always dump the logs.
-	defer func() {
-		if err := linuxssh.GetFile(ctx, s.DUT().Conn(), fakedms.EnrollmentFakeDMSDir, filepath.Join(s.OutDir(), "EnrollmentFakeDMSDir"), linuxssh.PreserveSymlinks); err != nil {
-			s.Log("Failed to dump: ", err)
-		}
-	}()
-
-	pJSON, err := json.Marshal(policy.NewBlob())
-	if err != nil {
-		s.Fatal("Failed to serialize policies: ", err)
-	}
-
-	if _, err := pc.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
-		PolicyJson: pJSON,
-		FakedmsDir: e.fdmsDir,
-		SkipLogin:  true,
-	}); err != nil {
-		if vpdError != nil {
-			s.Error("VPD broken, likely cause of enrollment failure: ", err)
+		if err := EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
+			return errors.Wrap(err, "failed to reset TPM")
 		}
 
-		s.Fatal("Failed to enroll using Chrome: ", err)
-	}
+		// TODO(crbug.com/1187473): use a temporary directory.
+		e.fdmsDir = fakedms.EnrollmentFakeDMSDir
 
-	if _, err := pc.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Failed to stop Chrome: ", err)
+		if _, err := pc.CreateFakeDMSDir(ctx, &ps.CreateFakeDMSDirRequest{
+			Path: e.fdmsDir,
+		}); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to create FakeDMS directory"))
+		}
+
+		enrollOK := false
+
+		defer func() {
+			if !enrollOK {
+				if _, err := pc.RemoveFakeDMSDir(ctx, &ps.RemoveFakeDMSDirRequest{
+					Path: e.fdmsDir,
+				}); err != nil {
+					s.Error("Failed to remove FakeDMS directory: ", err)
+				}
+			}
+		}()
+
+		// Always dump the logs.
+		defer func() {
+			if err := linuxssh.GetFile(ctx, s.DUT().Conn(), fakedms.EnrollmentFakeDMSDir, filepath.Join(s.OutDir(), "EnrollmentFakeDMSDir"), linuxssh.PreserveSymlinks); err != nil {
+				s.Log("Failed to dump: ", err)
+			}
+		}()
+
+		pJSON, err := json.Marshal(policy.NewBlob())
+		if err != nil {
+			return testing.PollBreak(err)
+		}
+
+		if _, err := pc.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
+			PolicyJson: pJSON,
+			FakedmsDir: e.fdmsDir,
+			SkipLogin:  true,
+		}); err != nil {
+			if vpdError != nil {
+				return testing.PollBreak(errors.Wrap(err, "VPD broken, likely cause of enrollment failure"))
+			}
+
+			return errors.Wrap(err, "failed to enroll using Chrome")
+		}
+
+		if _, err := pc.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
+			return errors.Wrap(err, "failed to stop Chrome and FakeDMS")
+		}
+
+		enrollOK = true
+
+		return nil
+	}, &testing.PollOptions{Timeout: 3 * enrollmentRunTimeout}); err != nil {
+		s.Fatal("Failed to enroll with retries: ", err)
 	}
 
 	ok = true
