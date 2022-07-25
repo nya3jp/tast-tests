@@ -27,6 +27,17 @@ const (
 	SaveAndRecall
 )
 
+// WindowMovementDirection enum describes the movement of windows between desks
+// relative to the desk's position on the desks bar.
+type WindowMovementDirection string
+
+const (
+	// Right represents moving windows to the desk on the right in the desk bar.
+	Right WindowMovementDirection = "Right"
+	// Left represents moving windows to the desk on the left in the desk bar.
+	Left WindowMovementDirection = "Left"
+)
+
 // CreateNewDesk requests Ash to create a new Virtual Desk which would fail if
 // the maximum number of desks have been reached.
 func CreateNewDesk(ctx context.Context, tconn *chrome.TestConn) error {
@@ -126,6 +137,41 @@ func FindDeskMiniViews(ctx context.Context, ac *uiauto.Context) ([]uiauto.NodeIn
 		return nil, errors.Wrap(err, "failed to find all desk mini views")
 	}
 	return deskMiniViewsInfo, nil
+}
+
+// MoveActiveWindowToAdjacentDesk moves the active window at the time of call
+// to the right or the left desk (as indicated by `direction`) and then waits
+// for the window movement animation to complete.
+func MoveActiveWindowToAdjacentDesk(ctx context.Context, tconn *chrome.TestConn, direction WindowMovementDirection) error {
+	// If we are moving windows to the left, then we will want to use the left
+	// bracket "[" in our shortcut call, otherwise if we are moving right we will
+	// use the right bracker "]" instead.
+	bracket := "["
+
+	if direction == Right {
+		bracket = "]"
+	}
+
+	// We save the active window to a variable here so that we can access its ID
+	// to wait for its animation when it is being moved.
+	activeWindow, err := GetActiveWindow(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get active window")
+	}
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create keyboard")
+	}
+	defer kb.Close()
+
+	if err := kb.Accel(ctx, "Search+Shift+"+bracket); err != nil {
+		return errors.Wrapf(err, "failed to move active window to %s desk", direction)
+	}
+
+	return WaitForCondition(ctx, tconn, func(window *Window) bool {
+		return window.ID == activeWindow.ID && !window.OnActiveDesk && !window.IsAnimating
+	}, defaultPollOptions)
 }
 
 // SaveCurrentDesk saves the current desk as `kTemplate` or `kSaveAndRecall`.
