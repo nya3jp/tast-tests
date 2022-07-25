@@ -92,9 +92,11 @@ func ResizeSpaceConstrained(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to fill disk space: ", err)
 		}
+		// Defer removing the files in case of errors.
+		defer os.Remove(fillFile)
 
 		s.Logf("Resizing from %v to %v", currSizeBytes, tBytes)
-		sizeOnSlider, sizeInCont, err := st.Resize(ctx, keyboard, tBytes, currSizeBytes)
+		sizeOnSlider, sizeInCont, err := st.Resize(ctx, keyboard, tBytes)
 		if err != nil {
 			s.Fatal("Failed to resize back to the default value: ", err)
 		}
