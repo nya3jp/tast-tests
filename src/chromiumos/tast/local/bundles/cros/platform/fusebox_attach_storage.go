@@ -47,7 +47,8 @@ func FuseboxAttachStorage(ctx context.Context, s *testing.State) {
 	defer w.Close(cleanupCtx)
 
 	const source = "fusebox://fusebox-storage-test"
-	if err := cd.Mount(ctx, source, "fusebox", nil /* options */); err != nil {
+	options := []string{"--debug"}
+	if err := cd.Mount(ctx, source, "fusebox", options); err != nil {
 		s.Fatal("CrosDisks Mount failed: ", err)
 	}
 	defer cd.Unmount(cleanupCtx, source, nil /* options */)
@@ -66,6 +67,14 @@ func FuseboxAttachStorage(ctx context.Context, s *testing.State) {
 	_, dbusObj, err := dbusutil.Connect(ctx, dbusName, dbusPath)
 	if err != nil {
 		s.Fatal("Failed to connect to fusebox service: ", err)
+	}
+
+	// Test D-Bus: call daemon D-Bus TestIsAlive method.
+	const method = dbusInterface + ".TestIsAlive"
+	var alive bool = false
+	err = dbusObj.CallWithContext(ctx, method, 0).Store(&alive)
+	if err != nil || !alive {
+		s.Fatalf("TestIsAlive failed: %v alive %v", err, alive)
 	}
 
 	// Attach storage device to the mount point.
