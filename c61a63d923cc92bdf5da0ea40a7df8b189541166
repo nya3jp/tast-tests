@@ -109,6 +109,30 @@
       },
       "revId": "c61a63d923cc92bdf5da0ea40a7df8b189541166",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09cfa5a9_eba87ff3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-25T23:26:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "068fb0f0_13f73a28",
+      "range": {
+        "startLine": 613,
+        "startChar": 31,
+        "endLine": 613,
+        "endChar": 50
+      },
+      "revId": "c61a63d923cc92bdf5da0ea40a7df8b189541166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
