@@ -16,6 +16,23 @@
       "message": "Passed in the 20+ runs https://tastboard.corp.google.com/test/platform.PerfettoChromeConsumer.lacros except for one false alarm that turns out to be irrelevant to this test (see the faillog https://screenshot.googleplex.com/7puPRkTPrbdbuUV)",
       "revId": "29c59aee0a8d68df6d94bee79ac27911725e91a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08b050d6_fedb060b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-25T19:10:49Z",
+      "side": 1,
+      "message": "Thanks for the review. If it doesn\u0027t pass on VMs upon a CQ dry run, I\u0027ll be updating this CL to exclude VMs until stabilized later.",
+      "revId": "29c59aee0a8d68df6d94bee79ac27911725e91a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
