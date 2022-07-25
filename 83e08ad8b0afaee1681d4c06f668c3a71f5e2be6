@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27bb0dd7_21a9fa85",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-25T01:57:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc2a2579_48c71d70",
+      "range": {
+        "startLine": 472,
+        "startChar": 107,
+        "endLine": 472,
+        "endChar": 118
+      },
+      "revId": "83e08ad8b0afaee1681d4c06f668c3a71f5e2be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32b6134f_320121ee",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-25T01:37:41Z",
       "side": 1,
       "message": "in case of errors, returning `nil` makes more sense.",
+      "range": {
+        "startLine": 474,
+        "startChar": 9,
+        "endLine": 474,
+        "endChar": 22
+      },
+      "revId": "83e08ad8b0afaee1681d4c06f668c3a71f5e2be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9256f4cc_9cc89b73",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-25T01:57:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32b6134f_320121ee",
       "range": {
         "startLine": 474,
         "startChar": 9,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c46442e9_2a714489",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-25T01:57:40Z",
+      "side": 1,
+      "message": "Tested with BoundsForRange(ctx, inputField.Finder(), 0, 2), the js returns undefined. Have to explicitly call BoundsForRange(ctx, nodewith.Role(role.InlineTextBox).Ancestor(inputField.Finder()), 0, 2)\n\nTo avoid readers get confused how to use the function, hard limit the usage should be better.",
+      "parentUuid": "605a5500_0604e738",
+      "range": {
+        "startLine": 484,
+        "startChar": 21,
+        "endLine": 484,
+        "endChar": 34
+      },
+      "revId": "83e08ad8b0afaee1681d4c06f668c3a71f5e2be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2ea4c34_4331b679",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-25T01:37:41Z",
       "side": 1,
       "message": "adding an error field to the res struct looks weird, could you just throw an error with `throw`?",
+      "range": {
+        "startLine": 485,
+        "startChar": 4,
+        "endLine": 485,
+        "endChar": 81
+      },
+      "revId": "83e08ad8b0afaee1681d4c06f668c3a71f5e2be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06fd3119_a098daee",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-25T01:57:40Z",
+      "side": 1,
+      "message": "Ye, I implemented the function in a new approach. LGTY?",
+      "parentUuid": "e2ea4c34_4331b679",
       "range": {
         "startLine": 485,
         "startChar": 4,
