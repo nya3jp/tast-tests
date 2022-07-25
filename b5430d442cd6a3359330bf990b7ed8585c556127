@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "09ad192b_03dbebd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-25T22:45:28Z",
+      "side": 1,
+      "message": "The purpose of calling stressapptest is to make the battery discharge faster. If you don\u0027t care about the battery getting to a lower charge percentage then remove it.  In other tests, we use it to make sure we can get the charge percent below \"full\".",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 33,
+        "endChar": 27
+      },
+      "revId": "b5430d442cd6a3359330bf990b7ed8585c556127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6ddcb698_35c58105",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-07-22T19:58:23Z",
       "side": 1,
       "message": "PTAL, I had to refactor the FWUPD tests a bit.",
+      "revId": "b5430d442cd6a3359330bf990b7ed8585c556127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60fd5a0f_996f8310",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-25T22:45:28Z",
+      "side": 1,
+      "message": "LGTM, pending the other comments.",
       "revId": "b5430d442cd6a3359330bf990b7ed8585c556127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -76,6 +116,29 @@
         "startChar": 2,
         "endLine": 76,
         "endChar": 3
+      },
+      "revId": "b5430d442cd6a3359330bf990b7ed8585c556127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e727a176_64a02ccf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd_inhibit_suspend.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-25T22:45:28Z",
+      "side": 1,
+      "message": "The cleanup function returns err and you don\u0027t check it.",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 15
       },
       "revId": "b5430d442cd6a3359330bf990b7ed8585c556127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
