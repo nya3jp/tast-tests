@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8adcdcc_55faa4f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-25T21:21:51Z",
+      "side": 1,
+      "message": "I think we can discuss about that. For this change, let\u0027s stick with h264.",
+      "parentUuid": "f46ced0f_08748c3b",
+      "revId": "9044f903c010c927704485512f7b1695bf61f529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ed13933_a213c74e",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-25T20:49:25Z",
       "side": 1,
       "message": "We already had one before?",
+      "revId": "9044f903c010c927704485512f7b1695bf61f529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10f514b8_ecf66c95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-25T21:21:51Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "2ed13933_a213c74e",
       "revId": "9044f903c010c927704485512f7b1695bf61f529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -65,6 +101,24 @@
       "writtenOn": "2022-07-25T20:49:25Z",
       "side": 1,
       "message": "nit: what does \"NB\" mean?",
+      "revId": "9044f903c010c927704485512f7b1695bf61f529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2ed971f_677069df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-07-25T21:21:51Z",
+      "side": 1,
+      "message": "Good catch. Updated the comment.\n\nI think it is a latin word.\nhttps://www.vocabulary.com/dictionary/NB",
+      "parentUuid": "bf193977_49d3f88c",
       "revId": "9044f903c010c927704485512f7b1695bf61f529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
