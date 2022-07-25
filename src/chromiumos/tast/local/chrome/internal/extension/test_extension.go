@@ -144,6 +144,7 @@ func writeTestExtension(dir, key, extraBgJs, clientID string) (id string, err er
     "tts",
     "usersPrivate",
     "power",
+    "virtualKeyboard",
     "wallpaper"
   ],
   "automation": {
