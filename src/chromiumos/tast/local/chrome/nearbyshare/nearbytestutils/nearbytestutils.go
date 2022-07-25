@@ -18,7 +18,9 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
+	"chromiumos/tast/local/cryptohome"
 )
 
 // UnzipTestFiles extracts test data files to a temporary directory. Returns an array of base filenames and the name of the temporary dir.
@@ -45,13 +47,17 @@ func UnzipTestFiles(ctx context.Context, zipPath string) (filenames []string, te
 
 // ExtractCrosTestFiles prepares test files to send from a CrOS device. The test files will be staged in ~/MyFiles/Downloads/nearby_test_files,
 // which is a subdirectory of the current user's download directory. Callers should defer removing the test files to clean up after tests.
-func ExtractCrosTestFiles(ctx context.Context, zipPath, downloadsPath string) ([]string, error) {
+func ExtractCrosTestFiles(ctx context.Context, cr *chrome.Chrome, zipPath string) ([]string, error) {
 	filenames, tempDir, err := UnzipTestFiles(ctx, zipPath)
 	if err != nil {
 		return filenames, err
 	}
 	defer os.RemoveAll(tempDir)
 
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get the current user's download path")
+	}
 	targetPath := filepath.Join(downloadsPath, nearbycommon.SendFolderName)
 
 	// Delete and remake the target directory to ensure there are no existing files.

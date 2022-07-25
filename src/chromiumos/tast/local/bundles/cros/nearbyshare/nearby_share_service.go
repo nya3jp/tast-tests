@@ -238,7 +238,7 @@ func (n *NearbyService) PrepareFiles(ctx context.Context, req *nearbyservice.CrO
 	if n.cr == nil {
 		return nil, errors.New("Chrome not available")
 	}
-	filenames, err := nearbytestutils.ExtractCrosTestFiles(ctx, req.FileName, n.downloadsPath)
+	filenames, err := nearbytestutils.ExtractCrosTestFiles(ctx, n.cr, req.FileName)
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to extract test files")
 		return nil, err
