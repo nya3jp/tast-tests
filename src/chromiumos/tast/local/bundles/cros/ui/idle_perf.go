@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/arc"
-	"chromiumos/tast/local/bundles/cros/ui/cuj"
+	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui/cujrecorder"

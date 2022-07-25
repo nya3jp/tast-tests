@@ -15,9 +15,9 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
-	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )

@@ -8,9 +8,9 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/ui/cuj"
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui/cujrecorder"
