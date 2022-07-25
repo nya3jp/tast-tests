@@ -85,7 +85,7 @@ func StatefulPartitionHardening(ctx context.Context, s *testing.State) {
 		"/var",
 	}
 
-	var allowedLocations = []string{
+	var symlinkBlocked = []string{
 		"/tmp",
 	}
 
@@ -98,7 +98,7 @@ func StatefulPartitionHardening(ctx context.Context, s *testing.State) {
 
 	// We also need to make sure that the restrictions apply to subdirectories, unless they are
 	// treated specially (like the symlinkExceptions).
-	for _, locs := range []*[]string{&blockedLocations, &allowedLocations, &symlinkExceptions} {
+	for _, locs := range []*[]string{&blockedLocations, &symlinkBlocked, &symlinkExceptions} {
 		for _, loc := range *locs {
 			path, err := ioutil.TempDir(loc, "tast.security.StatefulPartitionHardening.")
 			if err != nil {
@@ -115,10 +115,9 @@ func StatefulPartitionHardening(ctx context.Context, s *testing.State) {
 		expectFIFOAccess(loc, false)
 	}
 
-	for _, loc := range allowedLocations {
-		s.Log("Checking that symlinks and FIFOs are allowed in ", loc)
-		expectSymlinkAccess(loc, true)
-		expectFIFOAccess(loc, true)
+	for _, loc := range symlinkBlocked {
+		s.Log("Checking that symlinks are blocked in ", loc)
+		expectSymlinkAccess(loc, false)
 	}
 
 	for _, loc := range symlinkExceptions {
