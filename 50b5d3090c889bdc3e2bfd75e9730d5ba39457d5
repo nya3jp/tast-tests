@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36852aaf_5f3d889a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-07-25T23:06:10Z",
+      "side": 1,
+      "message": "Thanks for the quick fix Kyle!",
+      "revId": "50b5d3090c889bdc3e2bfd75e9730d5ba39457d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
