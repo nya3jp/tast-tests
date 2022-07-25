@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0f754da_f3995198",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-25T03:01:55Z",
+      "side": 1,
+      "message": "According to https://chromium.googlesource.com/chromium/src.git/+/HEAD/docs/accessibility/overview.md#text-bounding-boxes\n\nThe char offset information only exists on InlineTextBox. StaticText and other text nodes are broken down to InlineTextBox in my understanding. I reckon limiting the usage is better than leave the raw error message to users to do their own investigation.",
+      "parentUuid": "ead0e8f6_22eab33c",
+      "range": {
+        "startLine": 484,
+        "startChar": 21,
+        "endLine": 484,
+        "endChar": 34
+      },
+      "revId": "83e08ad8b0afaee1681d4c06f668c3a71f5e2be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2ea4c34_4331b679",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
         "patchSetId": 1
