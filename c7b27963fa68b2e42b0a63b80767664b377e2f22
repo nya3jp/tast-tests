@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92aa7b06_7f4789a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-07-25T22:19:28Z",
+      "side": 1,
+      "message": "aka do test pre-initialization stuff in the same order in all tests, and add some DEBUG to the platform.FuseBoxAttachStorage test. NB platform.Fusebox test already has DEBUG by default.\n\nBot versions of these tests are all green. This CL to help better diagnose the VM versions of these tests.\n\nPTAL",
+      "revId": "c7b27963fa68b2e42b0a63b80767664b377e2f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
