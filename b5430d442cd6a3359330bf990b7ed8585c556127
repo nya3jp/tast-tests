@@ -16,6 +16,69 @@
       "message": "PTAL, I had to refactor the FWUPD tests a bit.",
       "revId": "b5430d442cd6a3359330bf990b7ed8585c556127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e1e680_c356bed0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-25T10:14:03Z",
+      "side": 1,
+      "message": "could you check error?",
+      "revId": "b5430d442cd6a3359330bf990b7ed8585c556127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6323355a_c0570275",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-25T10:14:03Z",
+      "side": 1,
+      "message": "how about moving this to L34?\nIt should work in any case?",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 5
+      },
+      "revId": "b5430d442cd6a3359330bf990b7ed8585c556127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "070623e4_c1d6200f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-25T10:14:03Z",
+      "side": 1,
+      "message": "In theory, err should be checked first.\n\ndischarging, err :\u003d regexp.Match(...)\nif err !\u003d nil {\n  // if err is critical so we should stop polling, testing.PollBreak().\n  // otherwise, return here, so that it will be retried.\n  return ...\n}\nif charge \u003d\u003d discharging {\n  // run stressapptest.\n}\nreturn nil\n\nBTW, clarification (maybe off topic of this CL, though). Is it expected to run PowerManager.GetBatteryState again, when stressapptest fails?\nIt looks not very straightforward, so nice to add some comment.",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "b5430d442cd6a3359330bf990b7ed8585c556127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
