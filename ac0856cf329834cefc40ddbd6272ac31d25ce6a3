@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2856485d_e9676a78",
+        "filename": "src/chromiumos/tast/remote/dutfs/dutfs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-07-25T20:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6b79d17_3243ebb5",
+      "range": {
+        "startLine": 152,
+        "startChar": 57,
+        "endLine": 152,
+        "endChar": 68
+      },
+      "revId": "ac0856cf329834cefc40ddbd6272ac31d25ce6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b0482e2_6de93e97",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-02T21:39:43Z",
       "side": 1,
       "message": "Where does the default get set? I don\u0027t think I see a default in [os.Mkdir](https://pkg.go.dev/os#Mkdir), so maybe it\u0027s not necessary.",
+      "range": {
+        "startLine": 104,
+        "startChar": 37,
+        "endLine": 104,
+        "endChar": 53
+      },
+      "revId": "ac0856cf329834cefc40ddbd6272ac31d25ce6a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ed770f_a50c0293",
+        "filename": "src/chromiumos/tast/services/cros/baserpc/file_system.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2022-07-25T20:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0482e2_6de93e97",
       "range": {
         "startLine": 104,
         "startChar": 37,
