@@ -16,6 +16,40 @@
       "message": "Bugs added in buganizer for corresponding changes. Removed errors that do not exist anymore",
       "revId": "d1f7ccf988412b9ae2464e44e9cd2828176ace74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1c1b74_bccbfa87",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-25T18:52:02Z",
+      "side": 1,
+      "message": "Maybe simplify these, e.g. \"\".*Failed to call method:.*flimflam.Manager.ClearDNSProxyAddresses.*\" should suffice. That will make the bug comments less awkwardly spaced. (Alternatively we can also put bug comments on the line above).",
+      "revId": "d1f7ccf988412b9ae2464e44e9cd2828176ace74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba4e0ca7_95e4337d",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-25T18:52:02Z",
+      "side": 1,
+      "message": "We should add a TODO above these to remove them once verified in the lab (and separately we can remove \".*Unexpected auxiliary message type: 0.*\").",
+      "revId": "d1f7ccf988412b9ae2464e44e9cd2828176ace74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
