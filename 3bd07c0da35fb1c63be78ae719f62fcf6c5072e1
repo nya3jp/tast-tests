@@ -104,6 +104,30 @@
       },
       "revId": "3bd07c0da35fb1c63be78ae719f62fcf6c5072e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c23dc40_0b21b26a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-07-25T05:52:15Z",
+      "side": 1,
+      "message": "Yes, no need for three.",
+      "parentUuid": "3a8f9357_7b2721b2",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "3bd07c0da35fb1c63be78ae719f62fcf6c5072e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
