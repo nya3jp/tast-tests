@@ -339,7 +339,7 @@ func VerifyUserSignedIntoBrowserAsChild(ctx context.Context, cr *chrome.Chrome, 
 		if err := ui.Exists(childCell)(ctx); err != nil {
 			continue
 		}
-		boolCell := nodewith.Role(role.LayoutTableCell).Name("false").Ancestor(row)
+		boolCell := nodewith.Role(role.LayoutTableCell).Name("true").Ancestor(row)
 		if err := ui.Exists(boolCell)(ctx); err != nil {
 			return errors.Wrap(err, "user not recognized as child")
 		}
