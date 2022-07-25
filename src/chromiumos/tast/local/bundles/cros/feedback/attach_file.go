@@ -110,8 +110,7 @@ func AttachFile(ctx context.Context, s *testing.State) {
 	// Open Downloads dir and select the png file to upload.
 	if err := uiauto.Combine("Open Downloads dir and select PNG file",
 		ui.LeftClick(nodewith.Name("Downloads").Role(role.TreeItem)),
-		ui.LeftClick(nodewith.NameContaining(pngFile).Role(role.StaticText).Ancestor(
-			nodewith.Role(role.ListBox)).First()),
+		ui.LeftClick(nodewith.NameContaining(pngFile).Role(role.StaticText).First()),
 		ui.LeftClick(nodewith.Name("Open").Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open Downloads dir and select PNG file: ", err)
@@ -134,8 +133,7 @@ func AttachFile(ctx context.Context, s *testing.State) {
 	// Upload pdf file.
 	if err := uiauto.Combine("Open Downloads dir and select pdf file",
 		ui.LeftClick(nodewith.Name("Downloads").Role(role.TreeItem)),
-		ui.LeftClick(nodewith.NameContaining(pdfFile).Role(role.StaticText).Ancestor(
-			nodewith.Role(role.ListBox)).First()),
+		ui.LeftClick(nodewith.NameContaining(pdfFile).Role(role.StaticText).First()),
 		ui.LeftClick(nodewith.Name("Open").Role(role.Button)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to open Downloads dir and select pdf file: ", err)
