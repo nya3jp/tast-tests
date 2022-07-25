@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb0453c_e23d6e99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2022-07-25T00:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d779c7fb_56591491",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 97,
+        "endChar": 35
+      },
+      "revId": "e781073841050b2a10e2d68fda37644105e755db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e764a420_c76778a6",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-22T05:28:03Z",
       "side": 1,
       "message": "Is this still required?",
+      "range": {
+        "startLine": 110,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 49
+      },
+      "revId": "e781073841050b2a10e2d68fda37644105e755db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa8d0a4f_1e878755",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_grammar_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1383016
+      },
+      "writtenOn": "2022-07-25T00:57:49Z",
+      "side": 1,
+      "message": "nope, removed now.",
+      "parentUuid": "e764a420_c76778a6",
       "range": {
         "startLine": 110,
         "startChar": 4,
