@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2118e57a_d869f5b0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-25T02:33:31Z",
+      "side": 1,
+      "message": "Using named result parameters here is inappropriate.\n```\nDon\u0027t name result parameters in order to avoid declaring a variable inside the function. This practice results in unnecessary API verbosity at the cost of minor implementation brevity.\n```\n-http://go/go-style/decisions#named-result-parameters",
+      "range": {
+        "startLine": 472,
+        "startChar": 107,
+        "endLine": 472,
+        "endChar": 134
+      },
+      "revId": "09e2bd5177e6a5485d7046c159dde71895c4963c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

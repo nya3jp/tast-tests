@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ead0e8f6_22eab33c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-25T02:33:31Z",
+      "side": 1,
+      "message": "This restriction is misleading to users that it sounds like an issue of the API while it is not.\n\nInstead of adding the restriction, how about returning the error with informative logs, something like:\n```\n\"boundsForRange returns undefined. Possibly the node is not a text role, considering explicitly using node with text-based roles, i.e., role.InlineTextBox, role.StaticText, etc.\"\n```\n\nI think the API should work for many other text-based roles as well.",
+      "parentUuid": "c46442e9_2a714489",
+      "range": {
+        "startLine": 484,
+        "startChar": 21,
+        "endLine": 484,
+        "endChar": 34
+      },
+      "revId": "83e08ad8b0afaee1681d4c06f668c3a71f5e2be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2ea4c34_4331b679",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
         "patchSetId": 1
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Ye, I implemented the function in a new approach. LGTY?",
       "parentUuid": "e2ea4c34_4331b679",
+      "range": {
+        "startLine": 485,
+        "startChar": 4,
+        "endLine": 485,
+        "endChar": 81
+      },
+      "revId": "83e08ad8b0afaee1681d4c06f668c3a71f5e2be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d73e0d8_8dbd81e0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-25T02:33:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "06fd3119_a098daee",
       "range": {
         "startLine": 485,
         "startChar": 4,
