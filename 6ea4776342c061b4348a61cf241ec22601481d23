@@ -16,6 +16,69 @@
       "message": "shadow reviewer lgtm for tast",
       "revId": "6ea4776342c061b4348a61cf241ec22601481d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd7894e8_2748f2f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-25T08:27:48Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "6ea4776342c061b4348a61cf241ec22601481d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1efbe2ce_a6475d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-25T08:27:48Z",
+      "side": 1,
+      "message": "\"Ctrl+Alt+Z keys\"\nto make it clear and different from the other errors.",
+      "range": {
+        "startLine": 86,
+        "startChar": 31,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "6ea4776342c061b4348a61cf241ec22601481d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcf9929b_2ab0981f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_a11y.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-25T08:27:48Z",
+      "side": 1,
+      "message": "tab key",
+      "range": {
+        "startLine": 117,
+        "startChar": 32,
+        "endLine": 117,
+        "endChar": 36
+      },
+      "revId": "6ea4776342c061b4348a61cf241ec22601481d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
