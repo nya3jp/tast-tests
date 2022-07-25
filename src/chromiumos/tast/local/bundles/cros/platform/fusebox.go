@@ -58,12 +58,6 @@ func Fusebox(ctx context.Context, s *testing.State) {
 		s.Fatal("CrosDisks MountCompleted event failed: ", err)
 	}
 
-	// Test FUSE request: stat(2) fake file entry "hello".
-	hello := filepath.Join(m.MountPath, "hello")
-	if _, err := os.Stat(hello); err != nil {
-		s.Fatal("Failed stat(2): ", err)
-	}
-
 	// Connect to the fusebox daemon D-Bus interface.
 	const (
 		dbusName      = "org.chromium.FuseBoxReverseService"
@@ -75,11 +69,17 @@ func Fusebox(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to fusebox service: ", err)
 	}
 
-	// Test D-Bus request: call fusebox daemon D-Bus method.
+	// Test D-Bus: call fusebox daemon D-Bus TestIsAlive method.
 	const method = dbusInterface + ".TestIsAlive"
-	var result bool = false
-	err = dbusObj.CallWithContext(ctx, method, 0).Store(&result)
-	if err != nil || !result {
-		s.Fatalf("TestIsAlive failed: %v error %v", err, result)
+	var alive bool = false
+	err = dbusObj.CallWithContext(ctx, method, 0).Store(&alive)
+	if err != nil || !alive {
+		s.Fatalf("TestIsAlive failed: %v alive %v", err, alive)
+	}
+
+	// Test FUSE request: stat(2) fake file entry "hello".
+	hello := filepath.Join(m.MountPath, "hello")
+	if _, err := os.Stat(hello); err != nil {
+		s.Fatal("Failed stat(2): ", err)
 	}
 }
