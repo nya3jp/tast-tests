@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38f5016f_b4c0a63f",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-25T19:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f1c1b74_bccbfa87",
+      "revId": "d1f7ccf988412b9ae2464e44e9cd2828176ace74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba4e0ca7_95e4337d",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-25T18:52:02Z",
       "side": 1,
       "message": "We should add a TODO above these to remove them once verified in the lab (and separately we can remove \".*Unexpected auxiliary message type: 0.*\").",
+      "revId": "d1f7ccf988412b9ae2464e44e9cd2828176ace74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbefabfa_154ac1d5",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-25T19:44:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba4e0ca7_95e4337d",
       "revId": "d1f7ccf988412b9ae2464e44e9cd2828176ace74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
