@@ -22,6 +22,30 @@
       },
       "revId": "0bedbab44c4f6208340bb3c34c206bdfd3f19d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7dd4530_b1169558",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/fixture/kiosk.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-25T03:44:01Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "e9b257f3_bf81fa52",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 10
+      },
+      "revId": "0bedbab44c4f6208340bb3c34c206bdfd3f19d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
