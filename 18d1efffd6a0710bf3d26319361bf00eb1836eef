@@ -46,6 +46,30 @@
       },
       "revId": "18d1efffd6a0710bf3d26319361bf00eb1836eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e9991ad_183cd3c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/stateful_partition_hardening.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1548167
+      },
+      "writtenOn": "2022-07-25T22:30:43Z",
+      "side": 1,
+      "message": "I tried that and it did not work. Thats why I just changed the test.",
+      "parentUuid": "88d63d61_a26859e0",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 21
+      },
+      "revId": "18d1efffd6a0710bf3d26319361bf00eb1836eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
