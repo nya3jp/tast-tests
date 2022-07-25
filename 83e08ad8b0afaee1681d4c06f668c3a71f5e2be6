@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc2a2579_48c71d70",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-25T01:37:41Z",
+      "side": 1,
+      "message": "It is better to use pointer to be consistent with other methods like `Location`",
+      "range": {
+        "startLine": 472,
+        "startChar": 107,
+        "endLine": 472,
+        "endChar": 118
+      },
+      "revId": "83e08ad8b0afaee1681d4c06f668c3a71f5e2be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b6134f_320121ee",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-25T01:37:41Z",
+      "side": 1,
+      "message": "in case of errors, returning `nil` makes more sense.",
+      "range": {
+        "startLine": 474,
+        "startChar": 9,
+        "endLine": 474,
+        "endChar": 22
+      },
+      "revId": "83e08ad8b0afaee1681d4c06f668c3a71f5e2be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "605a5500_0604e738",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-25T01:37:41Z",
+      "side": 1,
+      "message": "why the function only works with `inlineTextBox`? I didn\u0027t find the restriction in https://developer.chrome.com/docs/extensions/reference/automation/#type-AutomationNode",
+      "range": {
+        "startLine": 484,
+        "startChar": 21,
+        "endLine": 484,
+        "endChar": 34
+      },
+      "revId": "83e08ad8b0afaee1681d4c06f668c3a71f5e2be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2ea4c34_4331b679",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-25T01:37:41Z",
+      "side": 1,
+      "message": "adding an error field to the res struct looks weird, could you just throw an error with `throw`?",
+      "range": {
+        "startLine": 485,
+        "startChar": 4,
+        "endLine": 485,
+        "endChar": 81
+      },
+      "revId": "83e08ad8b0afaee1681d4c06f668c3a71f5e2be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
