@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/accountmanager"
 	"chromiumos/tast/local/chrome/browser"
@@ -114,6 +115,7 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 	if err := accountmanager.AddAccount(ctx, tconn, username, password); err != nil {
 		s.Fatal("Failed to add a secondary Account: ", err)
 	}
+	accountAddedStart := time.Now()
 
 	// Make sure that the settings page is focused again.
 	if err := ui.WaitUntilExists(addAccountButton)(ctx); err != nil {
@@ -125,17 +127,23 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to find More actions button: ", err)
 	}
 
+	// Check that account is present in ARC.
+	s.Log("Verifying that account is present in ARC")
+	if err := accountmanager.OpenARCAccountsInARCSettings(ctx, tconn, arcDevice); err != nil {
+		s.Fatal("Failed to open ARC accounts list: ", err)
+	}
+	arcCheckStart := time.Now()
+	// Note: the method will return as soon as account appears in ARC.
+	if err := accountmanager.CheckIsAccountPresentInARC(ctx, tconn, arcDevice, username, true /*expectedPresentInArc*/); err != nil {
+		s.Fatal("Failed to check that account is present in ARC: ", err)
+	}
+	saveARCAccountAdditionTime(time.Since(arcCheckStart), time.Since(accountAddedStart), s)
+
 	// Check that account is present in OGB.
 	s.Log("Verifying that account is present in OGB")
 	secondaryAccountListItem := nodewith.NameContaining(username).Role(role.Link)
 	if err := accountmanager.CheckOneGoogleBar(ctx, tconn, br, ui.WaitUntilExists(secondaryAccountListItem)); err != nil {
 		s.Fatal("Failed to check that account is present in OGB: ", err)
-	}
-
-	// Check that account is present in ARC.
-	s.Log("Verifying that account is present in ARC")
-	if err := accountmanager.CheckIsAccountPresentInARCAction(tconn, arcDevice, username, true /*expectedPresentInArc*/)(ctx); err != nil {
-		s.Fatal("Failed to check that account is present in ARC: ", err)
 	}
 
 	if err := accountmanager.RemoveAccountFromOSSettings(ctx, tconn, cr, username); err != nil {
@@ -156,5 +164,32 @@ func AddAccountOSSettings(ctx context.Context, s *testing.State) {
 	s.Log("Verifying that account is not present in ARC")
 	if err := accountmanager.CheckIsAccountPresentInARCAction(tconn, arcDevice, username, false /*expectedPresentInArc*/)(ctx); err != nil {
 		s.Fatal("Failed to check that account is NOT present in ARC: ", err)
+	}
+}
+
+// saveARCAccountAdditionTime saves ARC account addition duration metrics.
+// `duration` is the elapsed time since ARC account list was opened and until
+// the account appeared in the list.
+// `totalDuration` is the total elapsed time since account was added and until
+// the account appeared in the ARC account list. This equals to `duration` +
+// the time needed to open ARC Settings and navigating to ARC account list.
+func saveARCAccountAdditionTime(duration, totalDuration time.Duration, s *testing.State) {
+	pv := perf.NewValues()
+	pv.Set(perf.Metric{
+		Name:      "AddAccountOSSettings.ARCAccountAdditionTime",
+		Unit:      "seconds",
+		Direction: perf.SmallerIsBetter,
+	}, float64(duration.Seconds()))
+	pv.Set(perf.Metric{
+		Name:      "AddAccountOSSettings.ARCTotalAccountAdditionTime",
+		Unit:      "seconds",
+		Direction: perf.SmallerIsBetter,
+	}, float64(totalDuration.Seconds()))
+
+	s.Log("AddAccountOSSettings.ARCAccountAdditionTime: ", duration.Seconds())
+	s.Log("AddAccountOSSettings.ARCTotalAccountAdditionTime: ", totalDuration.Seconds())
+
+	if err := pv.Save(s.OutDir()); err != nil {
+		s.Error("Failed saving perf data: ", err)
 	}
 }
