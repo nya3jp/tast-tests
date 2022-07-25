@@ -16,6 +16,9 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -29,7 +32,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OverviewCloseAllUndo,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks the action to close all windows and desks can be canceled",
 		Contacts: []string{
 			"yzd@chromium.org",
@@ -39,8 +42,15 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_vm"},
-		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
-		VarDeps:      []string{"ui.gaiaPoolDefault"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Val:               browser.TypeLacros,
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
 
@@ -50,7 +60,8 @@ func OverviewCloseAllUndo(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx,
+	bt := s.Param().(browser.Type)
+	cr, _, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.EnableFeatures("DesksCloseAll"),
 		chrome.ARCSupported(),
@@ -59,6 +70,7 @@ func OverviewCloseAllUndo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -112,7 +124,7 @@ func OverviewCloseAllUndo(ctx context.Context, s *testing.State) {
 	desk2Name := "BusyDesk"
 	if err := uiauto.Combine(
 		"create a new desk by clicking new desk button",
-		ac.LeftClick(newDeskButton),
+		ac.DoDefault(newDeskButton),
 		// The focus on the new desk should be on the desk name field.
 		ac.WaitUntilExists(desk2NameView.Focused()),
 		kb.TypeAction(desk2Name),
@@ -126,13 +138,29 @@ func OverviewCloseAllUndo(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to exit overview mode: ", err)
 	}
 
+	// If we are in lacros-chrome, then browserfixt.SetUp has already opened a
+	// blank browser window in the first desk. In that case, we want to move the
+	// already-existing browser window over to the second desk with a keyboard
+	// shortcut and wait for the window to finish moving.
+	if bt == browser.TypeLacros {
+		if err := ash.MoveActiveWindowToAdjacentDesk(ctx, tconn, true); err != nil {
+			s.Fatal("Failed to move lacros window to desk 2: ", err)
+		}
+	}
+
 	// Activates the second desk and launch app windows on it.
 	if err := ash.ActivateDeskAtIndex(ctx, tconn, 1); err != nil {
 		s.Fatal("Failed to activate desk 2: ", err)
 	}
 
-	// Opens PlayStore, Chrome and Files.
+	// Opens PlayStore, Chrome and Files. As mentioned above, if we are in
+	// lacros-chrome we will already have a chrome window, so if that is the case
+	// then we can skip opening another browser window.
 	for _, app := range []apps.App{apps.PlayStore, apps.Chrome, apps.Files} {
+		if bt == browser.TypeLacros && app == apps.Chrome {
+			continue
+		}
+
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to open %s: %v", app.Name, err)
 		}
@@ -189,14 +217,12 @@ func OverviewCloseAllUndo(ctx context.Context, s *testing.State) {
 	}
 
 	// There should be 0 visible windows since all windows are closed.
-	ws, err := ash.GetAllWindows(ctx, tconn)
+	wc, err := ash.CountVisibleWindows(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to count windows: ", err)
 	}
-	for _, window := range ws {
-		if window.IsVisible {
-			s.Fatal("Found unexpected visible windows: ", window)
-		}
+	if wc != 0 {
+		s.Fatalf("Unexpected number of visible windows: got %v, want 0", wc)
 	}
 
 	// There should be one desk at this point.
@@ -215,20 +241,20 @@ func OverviewCloseAllUndo(ctx context.Context, s *testing.State) {
 	// Clicks on the "Undo" button in the toast and waits for the toast to disappear.
 	if err := uiauto.Combine(
 		"Click on 'Undo' to dismiss the toast",
-		ac.LeftClick(undoButton),
+		ac.DoDefault(undoButton),
 		ac.WaitUntilGone(nodewith.ClassName("ToastOverlay")),
 	)(ctx); err != nil {
 		s.Fatal("Failed to dismiss the CloseAll toast: ", err)
 	}
 
 	// There should still be 3 windows since "Close All" action was canceled.
-	wc, err := ash.CountVisibleWindows(ctx, tconn)
+	wc, err = ash.CountVisibleWindows(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to count windows: ", err)
 	}
 
 	if wc != 3 {
-		s.Fatalf("Unexpected number of windows: got %v, want 0", wc)
+		s.Fatalf("Unexpected number of windows: got %v, want 3", wc)
 	}
 
 	// There should be two desks remaining.

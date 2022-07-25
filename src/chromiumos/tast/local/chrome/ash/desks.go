@@ -128,6 +128,42 @@ func FindDeskMiniViews(ctx context.Context, ac *uiauto.Context) ([]uiauto.NodeIn
 	return deskMiniViewsInfo, nil
 }
 
+// MoveActiveWindowToAdjacentDesk moves the active window at the time of call
+// to the right or the left desk (as indicated by `right`) and then waits for
+// the window movement animation to complete.
+func MoveActiveWindowToAdjacentDesk(ctx context.Context, tconn *chrome.TestConn, right bool) error {
+	// If `right` is false, then we want to use the let bracket and print "left"
+	// as the desired direction of window movement if we encountar an error.
+	bracket := "["
+	direction := "left"
+
+	if right {
+		bracket = "]"
+		direction = "right"
+	}
+
+	// We save the active window to a variable here so that we can access its ID
+	// to wait for its animation when it is being moved.
+	activeWindow, err := GetActiveWindow(ctx, tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get active window")
+	}
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to create keyboard")
+	}
+	defer kb.Close()
+
+	if err := kb.Accel(ctx, "Search+Shift+"+bracket); err != nil {
+		return errors.Wrapf(err, "failed to move active window to %s desk", direction)
+	}
+
+	return WaitForCondition(ctx, tconn, func(window *Window) bool {
+		return window.ID == activeWindow.ID && !window.OnActiveDesk && !window.IsAnimating
+	}, defaultPollOptions)
+}
+
 // SaveCurrentDesk saves the current desk as `kTemplate` or `kSaveAndRecall`.
 // This assumes overview grid is live now.
 // TODO(yongshun): Check if in overview mode and error out early if not.
