@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7d426d65_dd560852",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-07-25T23:14:53Z",
+      "side": 1,
+      "message": "I guess I\u0027m not sure if it matters for fwupd. I left it in.",
+      "parentUuid": "09ad192b_03dbebd6",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 33,
+        "endChar": 27
+      },
+      "revId": "b5430d442cd6a3359330bf990b7ed8585c556127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6ddcb698_35c58105",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -75,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98c0ccd2_dfb68baa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-07-25T23:14:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2e1e680_c356bed0",
+      "revId": "b5430d442cd6a3359330bf990b7ed8585c556127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6323355a_c0570275",
@@ -98,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "795425e6_8aa04d8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-07-25T23:14:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6323355a_c0570275",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 5
+      },
+      "revId": "b5430d442cd6a3359330bf990b7ed8585c556127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "070623e4_c1d6200f",
@@ -111,6 +177,30 @@
       "writtenOn": "2022-07-25T10:14:03Z",
       "side": 1,
       "message": "In theory, err should be checked first.\n\ndischarging, err :\u003d regexp.Match(...)\nif err !\u003d nil {\n  // if err is critical so we should stop polling, testing.PollBreak().\n  // otherwise, return here, so that it will be retried.\n  return ...\n}\nif charge \u003d\u003d discharging {\n  // run stressapptest.\n}\nreturn nil\n\nBTW, clarification (maybe off topic of this CL, though). Is it expected to run PowerManager.GetBatteryState again, when stressapptest fails?\nIt looks not very straightforward, so nice to add some comment.",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 76,
+        "endChar": 3
+      },
+      "revId": "b5430d442cd6a3359330bf990b7ed8585c556127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ddbf559_7ca90916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd/util.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-07-25T23:14:53Z",
+      "side": 1,
+      "message": "I agree, the logic was very hard to follow. I\u0027ve rewritten it. I hope it\u0027s a bit easier to read.",
+      "parentUuid": "070623e4_c1d6200f",
       "range": {
         "startLine": 68,
         "startChar": 2,

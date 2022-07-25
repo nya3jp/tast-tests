@@ -33,6 +33,24 @@
       "message": "Daniel,\nIt looks like with this change `firmware.FwupdPowerdUpdateCheck.no_acpower` is blocking forever (or I guess 60 minutes).\n\nCan you take a look? I\u0027m not sure why we can\u0027t use `SetBatteryDischarge` and `ReadBatteryStatus` directly.",
       "revId": "1e79ddb16c0a963d0fceed742a27b8444016f344",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baf0d9ab_9b967e85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-07-25T23:14:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec5c665f_e86fabb9",
+      "revId": "1e79ddb16c0a963d0fceed742a27b8444016f344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
