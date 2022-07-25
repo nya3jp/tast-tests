@@ -25,7 +25,7 @@ func resizeDisk(ctx context.Context, pre *crostini.PreData, sizeBytes uint64) er
 
 	if sizeBytes > 0 {
 		testing.ContextLogf(ctx, "Resizing VM disk to %d bytes", sizeBytes)
-		if err := settingsApp.ResizeDisk(ctx, pre.Keyboard, sizeBytes, true); err != nil {
+		if _, _, err := settingsApp.Resize(ctx, pre.Keyboard, sizeBytes); err != nil {
 			return errors.Wrap(err, "failed to resize VM disk")
 		}
 	}

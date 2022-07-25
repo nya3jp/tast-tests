@@ -241,7 +241,7 @@ func DiskIOPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to open Linux settings: ", err)
 	}
-	if err := settingsApp.ResizeDisk(ctx, kb, 16*settings.SizeGB, true); err != nil {
+	if _, _, err := settingsApp.Resize(ctx, kb, 16*settings.SizeGB); err != nil {
 		s.Fatal("Failed to resize VM disk: ", err)
 	}
 
