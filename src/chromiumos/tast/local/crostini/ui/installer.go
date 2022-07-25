@@ -90,7 +90,7 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftM
 	}
 	defer kb.Close()
 
-	defaultSize, err := settings.GetDiskSize(ctx, p.tconn, slider)
+	defaultSize, _, _, err := settings.SliderDiskSizes(ctx, p.tconn, slider)
 	if err != nil {
 		return 0, errors.Wrap(err, "failed to get the initial disk size")
 	}
@@ -100,7 +100,7 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftM
 	if defaultSize > minDiskSize {
 		// To make sure that the final disk size is equal or larger than the minDiskSize,
 		// move the slider to the left of minDiskSize first.
-		minimumSize, err := settings.ChangeDiskSize(ctx, p.tconn, kb, slider, false, minDiskSize)
+		minimumSize, err := settings.ChangeDiskSize(ctx, p.tconn, kb, slider, minDiskSize)
 		if err != nil {
 			return 0, errors.Wrap(err, "failed to move the disk slider to the left")
 		}
@@ -115,7 +115,7 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftM
 		}
 	}
 
-	size, err := settings.ChangeDiskSize(ctx, p.tconn, kb, slider, true, minDiskSize)
+	size, err := settings.ChangeDiskSize(ctx, p.tconn, kb, slider, minDiskSize)
 	if size < minDiskSize {
 		if IsSoftMinimum {
 			testing.ContextLogf(ctx, "The maximum disk size %v < the target disk size %v, using the maximum disk size %v", size, minDiskSize, size)

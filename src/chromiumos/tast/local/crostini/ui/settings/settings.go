@@ -362,34 +362,31 @@ func (s *Settings) GetDiskSize(ctx context.Context) (string, error) {
 	return nodeInfo.Name, nil
 }
 
-// ResizeDisk resizes the VM disk to approximately targetSize via the settings app.
-// If growing the VM disk, set increase to true, otherwise set it to false.
-func (s *Settings) ResizeDisk(ctx context.Context, kb *input.KeyboardEventWriter, targetSize uint64, increase bool) error {
-	if err := uiauto.Combine("open resize dialog and focus on slider",
-		s.ui.LeftClick(resizeButton),
-		s.ui.FocusAndWait(ResizeDiskDialog.Slider))(ctx); err != nil {
-		return err
-	}
-
-	if _, err := ChangeDiskSize(ctx, s.tconn, kb, ResizeDiskDialog.Slider, increase, targetSize); err != nil {
-		return errors.Wrap(err, "failed to resize disk")
-	}
-
-	return uiauto.Combine("click button Resize and wait resize dialog gone",
-		s.ui.LeftClick(ResizeDiskDialog.Resize),
-		// TODO (crbug/1232877): remove this line when crbug/1232877 is resolved.
-		s.tconn.ResetAutomation,
-		s.ui.WaitUntilGone(ResizeDiskDialog.Self),
-	)(ctx)
-}
-
-// GetDiskSize returns the current size based on the disk size slider text.
-func GetDiskSize(ctx context.Context, tconn *chrome.TestConn, slider *nodewith.Finder) (uint64, error) {
-	nodeInfo, err := uiauto.New(tconn).Info(ctx, nodewith.Role(role.StaticText).Ancestor(slider))
+// SliderDiskSizes returns the current size, maximum size and minimal size on the slider.
+func SliderDiskSizes(ctx context.Context, tconn *chrome.TestConn, slider *nodewith.Finder) (curSize, maxSize, minSize uint64, err error) {
+	sliderNode, err := uiauto.New(tconn).Info(ctx, ResizeDiskDialog.Slider)
 	if err != nil {
-		return 0, errors.Wrap(err, "error getting disk size setting")
+		return 0, 0, 0, errors.Wrap(err, "error getting slider node info")
 	}
-	return ParseDiskSize(nodeInfo.Name)
+
+	// Get the current size.
+	curSize, err = ParseDiskSize(sliderNode.HTMLAttributes["aria-valuenow"])
+	if err != nil {
+		return 0, 0, 0, errors.Wrap(err, "failed to retrieve the current disk size")
+	}
+
+	// Get the maximum size.
+	maxSize, err = ParseDiskSize(sliderNode.HTMLAttributes["aria-valuemax"])
+	if err != nil {
+		return 0, 0, 0, errors.Wrap(err, "failed to retrieve the maximum disk size")
+	}
+
+	// Get the minimum size.
+	minSize, err = ParseDiskSize(sliderNode.HTMLAttributes["aria-valuemin"])
+	if err != nil {
+		return 0, 0, 0, errors.Wrap(err, "failed to retrieve the minimum disk size")
+	}
+	return curSize, maxSize, minSize, nil
 }
 
 // ParseDiskSize parses disk size from a string like "xx.x GB" to a uint64 value in bytes.
@@ -421,43 +418,29 @@ func ParseDiskSize(sizeString string) (uint64, error) {
 // The method will return if it reaches the target or the end of the slider.
 // The real size might not be exactly equal to the target because the increment changes depending on the range.
 // FocusAndWait(slider) should be called before calling this method.
-func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slider *nodewith.Finder, increase bool, targetDiskSize uint64) (uint64, error) {
+func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.KeyboardEventWriter, slider *nodewith.Finder, targetDiskSize uint64) (uint64, error) {
+	curSize, maxSize, minSize, err := SliderDiskSizes(ctx, tconn, slider)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get disk size")
+	}
+
+	if targetDiskSize > maxSize || targetDiskSize < minSize {
+		return 0, errors.Wrapf(err, "invalid target size %d, outside of range [%d, %d]", targetDiskSize, minSize, maxSize)
+	}
+
+	increase := curSize < targetDiskSize
+
 	direction := "right"
 	if !increase {
 		direction = "left"
 	}
 
-	size, err := GetDiskSize(ctx, tconn, slider)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to get disk size")
-	}
-
-	for {
-		// Check whether it has reached the target.
-		if (increase && size >= targetDiskSize) || (!increase && size <= targetDiskSize) {
-			testing.ContextLog(ctx, "ChangeDiskSize reached the target")
-			return size, nil
-		}
-
-		// Move slider.
-		// TODO(crbug/1236914): remove the second move once the bug is resolved.
-		if err := uiauto.Combine("move the slider",
-			kb.AccelAction(direction),
-			kb.AccelAction(direction))(ctx); err != nil {
+	for ; (increase && curSize < targetDiskSize) || (!increase && curSize > targetDiskSize); curSize, _, _, err = SliderDiskSizes(ctx, tconn, slider) {
+		if kb.AccelAction(direction)(ctx); err != nil {
 			return 0, errors.Wrapf(err, "failed to move slider to %s", direction)
 		}
-
-		// Check whether it has reached the end.
-		newSize, err := GetDiskSize(ctx, tconn, slider)
-		if err != nil {
-			return 0, errors.Wrap(err, "failed to get disk size")
-		}
-		if size == newSize {
-			testing.ContextLog(ctx, "ChangeDiskSize reached the End")
-			return size, nil
-		}
-		size = newSize
 	}
+	return curSize, nil
 }
 
 // GetCurAndTargetDiskSize gets the current disk size and calculates a target disk size to resize.
@@ -469,24 +452,12 @@ func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.
 	}
 
 	// Get current size.
-	curSize, err = GetDiskSize(ctx, s.tconn, ResizeDiskDialog.Slider)
+	curSize, maxSize, minSize, err := SliderDiskSizes(ctx, s.tconn, ResizeDiskDialog.Slider)
 	if err != nil {
-		return 0, 0, errors.Wrap(err, "failed to get initial disk size")
+		return 0, 0, errors.Wrap(err, "failed to get initial disk sizes")
 	}
 
-	// Get the maximum size.
-	maxSize, err := ChangeDiskSize(ctx, s.tconn, keyboard, ResizeDiskDialog.Slider, true, 500*SizeGB)
-	if err != nil {
-		return 0, 0, errors.Wrap(err, "failed to resize to the maximum disk size")
-	}
-	testing.ContextLogf(ctx, "The max size is: %d", maxSize)
-
-	// Get the minimum size.
-	minSize, err := ChangeDiskSize(ctx, s.tconn, keyboard, ResizeDiskDialog.Slider, false, 0)
-	if err != nil {
-		return 0, 0, errors.Wrap(err, "failed to resize to the minimum disk size")
-	}
-	testing.ContextLogf(ctx, "The min size is: %d", minSize)
+	testing.ContextLogf(ctx, "The cursize, maxSize and minSize are: %d, %d, %d", curSize, maxSize, minSize)
 
 	targetSize = minSize + (maxSize-minSize)/2
 	if targetSize == curSize {
@@ -507,7 +478,7 @@ func (s *Settings) GetCurAndTargetDiskSize(ctx context.Context, keyboard *input.
 
 // Resize changes the disk size to the target size.
 // It returns the size on the slider as string and the result size as uint64.
-func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWriter, curSize, targetSize uint64) (string, uint64, error) {
+func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWriter, targetSize uint64) (string, uint64, error) {
 	if err := uiauto.Combine("launch resize dialog and focus on the slider",
 		s.ClickChange(),
 		// TODO (crbug/1232877): remove this line when crbug/1232877 is resolved.
@@ -517,7 +488,7 @@ func (s *Settings) Resize(ctx context.Context, keyboard *input.KeyboardEventWrit
 	}
 
 	// Resize to the target size.
-	size, err := ChangeDiskSize(ctx, s.tconn, keyboard, ResizeDiskDialog.Slider, targetSize > curSize, targetSize)
+	size, err := ChangeDiskSize(ctx, s.tconn, keyboard, ResizeDiskDialog.Slider, targetSize)
 	if err != nil {
 		return "", 0, errors.Wrapf(err, "failed to resize to %d: ", targetSize)
 	}
