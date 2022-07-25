@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db3a597d_d28e8090",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-07-25T02:20:55Z",
+      "side": 1,
+      "message": "LGTM for networking-side use cases. Looks nice!",
+      "revId": "45ebbd2a4dabb01c5f4cfae34be305d4df1ca0e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
