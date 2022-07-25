@@ -468,6 +468,8 @@ func (ac *Context) IsNodeFound(ctx context.Context, finder *nodewith.Finder) (bo
 // BoundsForRange returns the location of the text within the node specified by startIndex and endIndex, inclusively.
 // The bounds are clipped to ancestors.
 // Refer to https://developer.chrome.com/docs/extensions/reference/automation/#type-AutomationNode.
+// Note: This function only works on node with role "inlineTextBox" according to the API implementation.
+// http://cs/eureka_internal/chromium/src/extensions/renderer/api/automation/automation_internal_custom_bindings.cc?l=995
 func (ac *Context) BoundsForRange(ctx context.Context, finder *nodewith.Finder, startIndex, endIndex int) (*coords.Rect, error) {
 	if err := ac.WaitForLocation(finder)(ctx); err != nil {
 		return nil, err
@@ -480,16 +482,22 @@ func (ac *Context) BoundsForRange(ctx context.Context, finder *nodewith.Finder, 
 	query := fmt.Sprintf(`
 		(async () => {
 			%s
+			if(node.role !== "inlineTextBox"){
+				throw new Error("BoundsForRange only works on node with Role inlineTextBox.");
+			}
 			let bounds;
 			node.boundsForRange(%d, %d, (res) => {bounds = res;});
 			return bounds;
 		})()
 	`, q, startIndex, endIndex)
-	var out *coords.Rect
-	err = testing.Poll(ctx, func(ctx context.Context) error {
+
+	var out coords.Rect
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		return ac.tconn.Eval(ctx, query, &out)
-	}, &ac.pollOpts)
-	return out, err
+	}, &ac.pollOpts); err != nil {
+		return nil, err
+	}
+	return &out, nil
 }
 
 // WaitUntilExists returns a function that waits until the node found by the input finder exists.
