@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f45a17de_5bbcea78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-25T20:44:53Z",
+      "side": 1,
+      "message": "It\u0027s probably ideal to run the two tests sequentially, since it will avoid the time for discharging (or in some cases charging) at the start of the test. This will save probably 10-15 minutes of machine time per run of the test (more if we add more test cases).",
+      "parentUuid": "c3162fc8_478d9818",
+      "revId": "b67856e5e0885f655c610f32a5e241eb49445b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a213fbd0_98b1020c",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
         "patchSetId": 3
