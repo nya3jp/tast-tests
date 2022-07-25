@@ -24,6 +24,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b04c52f_da0232cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-25T02:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4170cf28_e0a3e023",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 97
+      },
+      "revId": "0a1b39fc0b81ba4b340d75a08b55657c17305905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fde0e4f_919be1a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-25T02:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4170cf28_e0a3e023",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 97
+      },
+      "revId": "0a1b39fc0b81ba4b340d75a08b55657c17305905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c04199f7_0c16c065",
@@ -37,6 +85,30 @@
       "writtenOn": "2022-07-21T23:12:32Z",
       "side": 1,
       "message": "this will be commonly used, consider retrieving it from the fixture data.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "0a1b39fc0b81ba4b340d75a08b55657c17305905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "298c2222_e9551f34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-25T02:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c04199f7_0c16c065",
       "range": {
         "startLine": 58,
         "startChar": 1,
@@ -70,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f1f63cf_7df49077",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-25T02:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "319faa84_7352de48",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "0a1b39fc0b81ba4b340d75a08b55657c17305905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0311495a_c525a723",
@@ -83,6 +179,30 @@
       "writtenOn": "2022-07-21T23:12:32Z",
       "side": 1,
       "message": "cleanupCtx",
+      "range": {
+        "startLine": 69,
+        "startChar": 36,
+        "endLine": 69,
+        "endChar": 39
+      },
+      "revId": "0a1b39fc0b81ba4b340d75a08b55657c17305905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5f5b160_33de4f57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_typing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-25T02:55:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0311495a_c525a723",
       "range": {
         "startLine": 69,
         "startChar": 36,
