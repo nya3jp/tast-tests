@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46ced0f_08748c3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-07-25T20:49:25Z",
+      "side": 1,
+      "message": "are we doing it also for av1?",
+      "revId": "9044f903c010c927704485512f7b1695bf61f529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed13933_a213c74e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-07-25T20:49:25Z",
+      "side": 1,
+      "message": "We already had one before?",
+      "revId": "9044f903c010c927704485512f7b1695bf61f529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4364e587_6a92177f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-07-25T20:49:25Z",
+      "side": 1,
+      "message": "LGTM. I recommend to get review from Jao-ke as well though.",
+      "revId": "9044f903c010c927704485512f7b1695bf61f529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf193977_49d3f88c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-07-25T20:49:25Z",
+      "side": 1,
+      "message": "nit: what does \"NB\" mean?",
+      "revId": "9044f903c010c927704485512f7b1695bf61f529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
