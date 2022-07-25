@@ -69,6 +69,24 @@
       "parentUuid": "de6395f7_e919b1bc",
       "revId": "b5e5baff9627d724ffa85bc8d3368f0051fa478e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b34cb5c4_f04c5467",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2022-07-25T17:45:40Z",
+      "side": 1,
+      "message": "Tast is first class. I think it would be good to land this.\n\nSometimes people send me tast results and they\u0027re difficult to debug since they don\u0027t capture the uart output unless they\u0027re run with the autotest wrapper. The DEBUG log includes everything I\u0027d need to get the console output, so I think it\u0027d be good if we could download that file as a part of tast.",
+      "parentUuid": "a7ce73aa_143b2171",
+      "revId": "b5e5baff9627d724ffa85bc8d3368f0051fa478e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
