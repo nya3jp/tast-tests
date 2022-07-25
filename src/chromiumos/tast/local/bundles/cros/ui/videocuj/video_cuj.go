@@ -14,7 +14,6 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/playstore"
 	"chromiumos/tast/local/chrome"
@@ -127,12 +126,6 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 
 	testing.ContextLogf(ctx, "Run app appName: %s tabletMode: %t, extendedDisplay: %t", appName, tabletMode, extendedDisplay)
 
-	if appName == YoutubeApp {
-		if err := installYoutubeApp(ctx, tconn, a); err != nil {
-			return errors.Wrapf(err, "failed to install %s", youtubePkg)
-		}
-	}
-
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, tconn)
 	if err != nil {
 		return errors.Wrap(err, "failed to create TabCrashChecker")
@@ -194,6 +187,12 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 			d.Close(ctx)
 		}
 	}(cleanupDeviceCtx)
+
+	if appName == YoutubeApp {
+		if err := playstore.InstallOrUpdateAppAndClose(ctx, tconn, a, d, youtubePkg, &playstore.Options{TryLimit: -1}); err != nil {
+			return errors.Wrapf(err, "failed to install %s", youtubePkg)
+		}
+	}
 
 	openGmailWeb := func(ctx context.Context) (*chrome.Conn, error) {
 		// If there's a lacros browser, bring it to active.
@@ -428,26 +427,4 @@ func moveYTWebWindow(ctx context.Context, tconn *chrome.TestConn, testRes TestRe
 		testRes.UIHandler.SwitchWindow(),
 		cuj.SwitchWindowToDisplay(ctx, tconn, testRes.Kb, false), // Move to internal display.
 	)(ctx)
-}
-
-func installYoutubeApp(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC) error {
-	cleanupCtx := ctx
-	ctx, cancel := context.WithTimeout(ctx, 3*time.Minute)
-	defer cancel()
-
-	device, err := a.NewUIDevice(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to set up ARC device")
-	}
-	defer device.Close(cleanupCtx)
-
-	installErr := playstore.InstallOrUpdateApp(ctx, a, device, youtubePkg, &playstore.Options{TryLimit: -1})
-
-	if err := apps.Close(cleanupCtx, tconn, apps.PlayStore.ID); err != nil {
-		// Leaving PlayStore open will impact the logic of detecting fullscreen
-		// mode in this test case. We fail the test if this happens.
-		return errors.Wrap(err, "failed to close Play Store")
-	}
-
-	return installErr
 }
