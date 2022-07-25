@@ -68,6 +68,14 @@ func FuseboxAttachStorage(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to fusebox service: ", err)
 	}
 
+	// Test D-Bus: call daemon D-Bus TestIsAlive method.
+	const method = dbusInterface + ".TestIsAlive"
+	var alive bool = false
+	err = dbusObj.CallWithContext(ctx, method, 0).Store(&alive)
+	if err != nil || !alive {
+		s.Fatalf("TestIsAlive failed: %v alive %v", err, alive)
+	}
+
 	// Attach storage device to the mount point.
 	const attach = dbusInterface + ".AttachStorage"
 	const device = "mtp filesystem:url ro"
