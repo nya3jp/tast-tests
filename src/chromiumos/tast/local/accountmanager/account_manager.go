@@ -236,60 +236,68 @@ func openOGB(ctx context.Context, tconn *chrome.TestConn, timeout time.Duration)
 	return nil
 }
 
-// CheckIsAccountPresentInARCAction returns an action that checks whether account is present in ARC depending on expectedPresentInARC parameter.
+// CheckIsAccountPresentInARCAction returns an action that checks whether account
+// is present in ARC depending on expectedPresentInARC parameter.
 func CheckIsAccountPresentInARCAction(tconn *chrome.TestConn, d *androidui.Device, accountName string, expectedPresentInARC bool) action.Action {
 	return func(ctx context.Context) error {
-		const (
-			// Note: it may take long time for account to be propagated to ARC.
-			// When increasing this timeout, consider inceasing timeout of the tests which call this method.
-			arcAccountCheckTimeout = time.Minute
-			scrollClassName        = "android.widget.ScrollView"
-			textViewClassName      = "android.widget.TextView"
-		)
-
-		if err := apps.Launch(ctx, tconn, apps.AndroidSettings.ID); err != nil {
-			return errors.Wrap(err, "failed to launch AndroidSettings")
+		if err := OpenARCAccountsInARCSettings(ctx, tconn, d); err != nil {
+			return err
 		}
-
-		// Scroll until Accounts is visible.
-		scrollLayout := d.Object(androidui.ClassName(scrollClassName),
-			androidui.Scrollable(true))
-		accounts := d.Object(androidui.ClassName("android.widget.TextView"),
-			androidui.TextMatches("(?i)Accounts"), androidui.Enabled(true))
-		if err := scrollLayout.WaitForExists(ctx, DefaultUITimeout); err == nil {
-			scrollLayout.ScrollTo(ctx, accounts)
-		}
-		if err := accounts.Click(ctx); err != nil {
-			return errors.Wrap(err, "failed to click Accounts in ARC settings")
-		}
-
-		account := d.Object(androidui.ClassName("android.widget.TextView"),
-			androidui.TextMatches(accountName), androidui.Enabled(true))
-
-		accountExists := false
-		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if err := scrollLayout.WaitForExists(ctx, 10*time.Second); err == nil {
-				scrollLayout.ScrollTo(ctx, account)
-			}
-			if err := account.Exists(ctx); err == nil {
-				accountExists = true
-				if expectedPresentInARC {
-					// The account exists and is expected to exist => success.
-					return nil
-				}
-				return testing.PollBreak(errors.New("the account is present, but expected to be gone"))
-			}
-			return errors.New("continue polling")
-		}, &testing.PollOptions{Timeout: arcAccountCheckTimeout, Interval: 2 * time.Second}); err != nil {
-			testing.ContextLog(ctx, "Finished polling with result: ", accountExists)
-		}
-
-		if expectedPresentInARC != accountExists {
-			return errors.Errorf("failed to check if account is present in ARC, expected %t, got %t", expectedPresentInARC, accountExists)
-		}
-
-		return nil
+		return CheckIsAccountPresentInARC(ctx, tconn, d, accountName, expectedPresentInARC)
 	}
+}
+
+// CheckIsAccountPresentInARC checks whether account is present in ARC depending
+// on expectedPresentInARC parameter. The ARC accounts page should be already open.
+func CheckIsAccountPresentInARC(ctx context.Context, tconn *chrome.TestConn, d *androidui.Device, accountName string, expectedPresentInARC bool) error {
+	const (
+		// Note: it may take long time for account to be propagated to ARC.
+		// When increasing this timeout, consider increasing timeout of the tests which call this method.
+		arcAccountCheckTimeout = time.Minute
+		scrollClassName        = "android.widget.ScrollView"
+	)
+
+	account := d.Object(androidui.ClassName("android.widget.TextView"),
+		androidui.TextMatches(accountName), androidui.Enabled(true))
+
+	err := account.WaitForExists(ctx, arcAccountCheckTimeout)
+	if err == nil && !expectedPresentInARC {
+		return errors.New("the account is present, but expected to be gone")
+	} else if err != nil && expectedPresentInARC {
+		return errors.Wrap(err, "failed to wait for account present")
+	}
+
+	return nil
+}
+
+// OpenARCAccountsInARCSettings opens ARC account list page in ARC Settings.
+func OpenARCAccountsInARCSettings(ctx context.Context, tconn *chrome.TestConn, d *androidui.Device) error {
+	const scrollClassName = "android.widget.ScrollView"
+
+	if err := apps.Launch(ctx, tconn, apps.AndroidSettings.ID); err != nil {
+		return errors.Wrap(err, "failed to launch AndroidSettings")
+	}
+
+	// Scroll until Accounts is visible.
+	scrollLayout := d.Object(androidui.ClassName(scrollClassName),
+		androidui.Scrollable(true))
+	accounts := d.Object(androidui.ClassName("android.widget.TextView"),
+		androidui.TextMatches("(?i)Accounts"), androidui.Enabled(true))
+	if err := scrollLayout.WaitForExists(ctx, DefaultUITimeout); err == nil {
+		if scrollErr := scrollLayout.ScrollTo(ctx, accounts); scrollErr != nil {
+			return errors.Wrap(scrollErr, "failed to scroll to accounts button")
+		}
+	}
+	if err := accounts.Click(ctx); err != nil {
+		return errors.Wrap(err, "failed to click Accounts in ARC settings")
+	}
+	// Confirm the accounts page was opened.
+	accountsLabel := d.Object(androidui.ClassName("android.widget.TextView"),
+		androidui.TextMatches("(?i)Accounts for owner"))
+	if err := accountsLabel.WaitForExists(ctx, DefaultUITimeout); err != nil {
+		return errors.Wrap(err, "failed to open Accounts in ARC settings")
+	}
+	return nil
 }
 
 // RemoveAccountFromOSSettings removes a secondary account with provided email from OS Settings.
