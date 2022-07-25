@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db932857_bf8018fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-25T20:11:16Z",
+      "side": 1,
+      "message": "you probably want this after other defer calls that may impact UI state.\n\n(e.g. so it gets called before we remove the test file during cleanup)",
+      "revId": "adec03b869252ff0b3b4e85614ced839d7c45884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
