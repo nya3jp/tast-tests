@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be62ebee_9bc48825",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/keyboard_binding.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1370239
+      },
+      "writtenOn": "2022-07-25T04:36:18Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be launcherKey?",
+      "range": {
+        "startLine": 191,
+        "startChar": 69,
+        "endLine": 191,
+        "endChar": 78
+      },
+      "revId": "26f0c2f379aa0bb381058068e8daea0b577c92de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
