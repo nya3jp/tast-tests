@@ -86,6 +86,24 @@
       "parentUuid": "ba4e0ca7_95e4337d",
       "revId": "d1f7ccf988412b9ae2464e44e9cd2828176ace74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc1d7a8c_c088f285",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-25T19:45:25Z",
+      "side": 1,
+      "message": "I added a comment at the top of the list to remove the commented out entries once verified in lab",
+      "parentUuid": "cbefabfa_154ac1d5",
+      "revId": "d1f7ccf988412b9ae2464e44e9cd2828176ace74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
