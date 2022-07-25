@@ -102,10 +102,11 @@ func (t *CrostiniLifecycleUnit) StillAlive(ctx context.Context) bool {
 }
 
 // NewCrostiniLifecycleUnit creates a helper to allocate memory inside Crostini.
-//  id            - A debug ID for logging.
-//  allocateBytes - mow much memory to allocate.
-//  ratio         - the compression ratio of allocated memory.
-//  limit         - if not nil, wait for Limit after allocation.
+//
+//	id            - A debug ID for logging.
+//	allocateBytes - mow much memory to allocate.
+//	ratio         - the compression ratio of allocated memory.
+//	limit         - if not nil, wait for Limit after allocation.
 func NewCrostiniLifecycleUnit(cont *vm.Container, id int, allocateMiB int64, ratio float64, limit memory.Limit) *CrostiniLifecycleUnit {
 	var cmd *testexec.Cmd
 	return &CrostiniLifecycleUnit{cont, id, allocateMiB, ratio, limit, cmd}
@@ -188,10 +189,11 @@ func (t *CrostiniLifecycleTask) NeedVM() bool {
 }
 
 // NewCrostiniLifecycleTask creates a helper to allocate memory inside Crostini.
-//  id            - A debug ID for logging.
-//  allocateBytes - mow much memory to allocate.
-//  ratio         - the compression ratio of allocated memory.
-//  limit         - if not nil, wait for Limit after allocation.
+//
+//	id            - A debug ID for logging.
+//	allocateBytes - mow much memory to allocate.
+//	ratio         - the compression ratio of allocated memory.
+//	limit         - if not nil, wait for Limit after allocation.
 func NewCrostiniLifecycleTask(cont *vm.Container, id int, allocateMiB int64, ratio float64, limit memory.Limit) *CrostiniLifecycleTask {
 	return &CrostiniLifecycleTask{*NewCrostiniLifecycleUnit(cont, id, allocateMiB, ratio, limit)}
 }
@@ -200,7 +202,7 @@ func NewCrostiniLifecycleTask(cont *vm.Container, id int, allocateMiB int64, rat
 // specific.
 const crostiniLifecycleName = "lifecycle"
 
-const crostiniLifecyclePath = "/usr/local/libexec/tast/helpers/local/cros/multivm.Lifecycle.crostini"
+const crostiniLifecyclePath = "/usr/local/libexec/tast/helpers/local/cros/multivm.Lifecycle.allocate"
 
 func containerCrostiniLifecyclePath(ctx context.Context, cont *vm.Container) (string, error) {
 	username, err := cont.GetUsername(ctx)
