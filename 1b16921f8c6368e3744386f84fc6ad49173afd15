@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a22c135_ab6e17b6",
+        "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-25T20:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1038942d_cbf47189",
+      "revId": "1b16921f8c6368e3744386f84fc6ad49173afd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8678b7d1_7d5fdeda",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "998e4462_e8e059a7",
+        "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-25T20:48:40Z",
+      "side": 1,
+      "message": "So everything until `intro` is defined?",
+      "parentUuid": "8678b7d1_7d5fdeda",
+      "revId": "1b16921f8c6368e3744386f84fc6ad49173afd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2daec519_18fd1cb9",
         "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
         "patchSetId": 4
@@ -48,6 +84,30 @@
       "writtenOn": "2022-07-22T14:07:56Z",
       "side": 1,
       "message": "so what is this for...?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "1b16921f8c6368e3744386f84fc6ad49173afd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f0ef68_03768134",
+        "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-25T20:48:40Z",
+      "side": 1,
+      "message": "This is just to stop the service when we\u0027re finished. \u003c-f.done is triggered by StopService (allowing the caller to control the lifetime, as requested).",
+      "parentUuid": "2daec519_18fd1cb9",
       "range": {
         "startLine": 143,
         "startChar": 0,
