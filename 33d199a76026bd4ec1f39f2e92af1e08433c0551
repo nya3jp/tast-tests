@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "814f2c5a_5db89789",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-07-25T18:26:06Z",
+      "side": 1,
+      "message": "I did no see the library CL. Could you please check in that one first?",
+      "revId": "33d199a76026bd4ec1f39f2e92af1e08433c0551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
