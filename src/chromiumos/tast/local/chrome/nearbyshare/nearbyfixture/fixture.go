@@ -23,6 +23,7 @@ import (
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbysnippet"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/syslog"
 	"chromiumos/tast/testing"
 )
@@ -104,6 +105,9 @@ type FixtData struct {
 	// CrOSDownloadsPath is the location of the user's downloads directory (e.g. ~/MyFiles/Downloads).
 	CrOSDownloadsPath string
 
+	// CrOSSendPath is the location where files for outgoing shares are stored (e.g. ~/MyFiles/Downloads/nearby_test_files)
+	CrOSSendPath string
+
 	// AndroidDevice is an object for interacting with the connected Android device's Snippet Library.
 	AndroidDevice *nearbysnippet.AndroidNearbyDevice
 
@@ -180,12 +184,19 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		}
 	}
 
+	// Get the CrOS downloads path for the signed in user.
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		s.Fatal("Failed to get user's Downloads path: ", err)
+	}
+
 	// Store CrOS test metadata for reporting.
 	crosAttributes, err := nearbyshare.GetCrosAttributes(ctx, tconn, crosDisplayName, crosUsername, f.crosDataUsage, f.crosVisibility)
 	if err != nil {
 		s.Fatal("Failed to get CrOS attributes for reporting: ", err)
 	}
 	f.crosAttributes = crosAttributes
+	f.crosAttributes.DownloadsPath = downloadsPath
 
 	f.cr = cr
 	f.androidDevice = androidDevice
@@ -194,6 +205,7 @@ func (f *nearbyShareFixture) SetUp(ctx context.Context, s *testing.FixtState) in
 		TestConn:          tconn,
 		CrOSDeviceName:    crosDisplayName,
 		CrOSDownloadsPath: crosAttributes.DownloadsPath,
+		CrOSSendPath:      filepath.Join(crosAttributes.DownloadsPath, nearbycommon.SendFolderName),
 		AndroidDevice:     androidDevice,
 		AndroidDeviceName: androidDeviceName,
 		ARC:               s.ParentValue().(*FixtData).ARC,
