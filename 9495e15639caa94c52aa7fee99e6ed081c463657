@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d890fc33_f3cf0538",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-07-25T18:25:48Z",
+      "side": 1,
+      "message": "Thanks. FWIW it\u0027s poor practice to CQ+2 before review comments have been addressed or proposed fixes have been reviewed",
+      "revId": "9495e15639caa94c52aa7fee99e6ed081c463657",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
