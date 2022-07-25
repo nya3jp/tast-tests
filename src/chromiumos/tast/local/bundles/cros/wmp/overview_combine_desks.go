@@ -11,8 +11,12 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -26,7 +30,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OverviewCombineDesks,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that desks can be combined",
 		Contacts: []string{
 			"benbecker@chromium.org",
@@ -36,8 +40,15 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Timeout:      chrome.GAIALoginTimeout + 120*time.Second,
-		VarDeps:      []string{"ui.gaiaPoolDefault"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Val:               browser.TypeLacros,
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
+		Timeout: chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
+		VarDeps: []string{"ui.gaiaPoolDefault"},
 	})
 }
 
@@ -47,13 +58,15 @@ func OverviewCombineDesks(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx,
+	bt := s.Param().(browser.Type)
+	cr, _, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.EnableFeatures("DesksCloseAll"))
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -105,13 +118,29 @@ func OverviewCombineDesks(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to exit overview mode: ", err)
 	}
 
+	// If we are in lacros-chrome, then browserfixt.SetUp has already opened a
+	// blank browser window in the first desk. In that case, we want to move the
+	// already-existing browser window over to the second desk with a keyboard
+	// shortcut and wait for the window to finish moving.
+	if bt == browser.TypeLacros {
+		if err := ash.MoveActiveWindowToAdjacentDesk(ctx, tconn, ash.Right); err != nil {
+			s.Fatal("Failed to move lacros window to desk 2: ", err)
+		}
+	}
+
 	// Activates the second desk and launch app windows on it.
 	if err := ash.ActivateDeskAtIndex(ctx, tconn, 1); err != nil {
 		s.Fatal("Failed to activate desk 2: ", err)
 	}
 
-	// Opens Chrome and Files.
+	// Opens Chrome and Files. As mentioned above, if we are in lacros-chrome we
+	// will already have a chrome window, so if that is the case then we can skip
+	// opening another browser window.
 	for _, app := range []apps.App{apps.Chrome, apps.Files} {
+		if bt == browser.TypeLacros && app == apps.Chrome {
+			continue
+		}
+
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to open %s: %v", app.Name, err)
 		}
