@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -127,20 +128,16 @@ func (vlc *Vlc) Install(ctx context.Context, cr *chrome.Chrome) error {
 	if err != nil {
 		return errors.Wrap(err, "failed to retrieve users Downloads path")
 	}
+	apkPath := filepath.Join(downloadsPath, apkName)
+	// Defer call remove apk file in advance to make sure the apk will be deleted.
+	defer os.Remove(apkPath)
 
 	chromeui := uiauto.New(vlc.app.Tconn)
-	dialog := nodewith.NameContaining(fmt.Sprintf("keep %s anyway?", apkName)).Role(role.AlertDialog)
-	keepBtn := nodewith.Role(role.Button).Name("KEEP").Ancestor(dialog)
-	showInFolder := nodewith.Role(role.Button).Name("SHOW IN FOLDER").HasClass("MdTextButton")
-	apkPath := filepath.Join(downloadsPath, apkName)
-	if err := uiauto.Combine("download and keep apk",
-		chromeui.WithTimeout(3*time.Minute).WaitUntilExists(keepBtn),
-		chromeui.LeftClick(keepBtn),
-		chromeui.WaitUntilExists(showInFolder),
-	)(ctx); err != nil {
+	showInFolder := nodewith.Role(role.Button).NameRegex(regexp.MustCompile("(?i)SHOW IN FOLDER"))
+	// When downloading apk file finishes, the notitfication, "Show in folder", will prompt.
+	if err := chromeui.WithTimeout(3 * time.Minute).WaitUntilExists(showInFolder)(ctx); err != nil {
 		return err
 	}
-	defer os.Remove(apkPath)
 
 	return vlc.app.ARC.Install(ctx, apkPath, adb.InstallOptionGrantPermissions)
 }
