@@ -156,9 +156,12 @@ int main(int argc, char *argv[]) {
   set_oom_score_adj(oom_score_done);
 
   // Wait forever.
-  if (0 > pause()) {
+  if(getchar() == EOF){
+    // If getchar() gets EOF, that means an error.
     perror("failed to pause\n");
     exit(EXIT_FAILURE);
-  }
+  };
+
+  // If any other input is sent, exits the program.
   return 0;
 }

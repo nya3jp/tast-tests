@@ -61,7 +61,7 @@ executable("kernel.PerfCallgraph.graph") {
   ]
 }
 
-executable("multivm.Lifecycle.crostini") {
+executable("multivm.Lifecycle.allocate") {
   cflags = [
     "-g",
   ]
@@ -69,7 +69,7 @@ executable("multivm.Lifecycle.crostini") {
     "-static",  # So we can run inside Crostini without worrying about libraries.
   ]
   sources = [
-    "multivm.Lifecycle.crostini.c",
+    "multivm.Lifecycle.allocate.c",
   ]
 }
 
@@ -193,7 +193,7 @@ group("all") {
   if (!(use.asan || use.msan || use.ubsan)) {
     deps += [
       ":arc.Suspend.readclocks",
-      ":multivm.Lifecycle.crostini",
+      ":multivm.Lifecycle.allocate",
       ":security.Minijail.staticbashexec",
     ]
   }
