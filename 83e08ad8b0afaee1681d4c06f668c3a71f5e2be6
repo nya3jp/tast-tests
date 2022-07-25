@@ -214,6 +214,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba0d528_6d492a51",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/automation.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-25T06:18:56Z",
+      "side": 1,
+      "message": "As discussed offline. This function only works on inlineText. I have added it in comment to clarify.",
+      "parentUuid": "23789ece_4bd6eb04",
+      "range": {
+        "startLine": 484,
+        "startChar": 21,
+        "endLine": 484,
+        "endChar": 34
+      },
+      "revId": "83e08ad8b0afaee1681d4c06f668c3a71f5e2be6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2ea4c34_4331b679",
