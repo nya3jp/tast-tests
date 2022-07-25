@@ -609,7 +609,8 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer meetConn.Close()
 
-	meetRE := regexp.MustCompile(`\bMeet\b`)
+	// Match window titles `Google Meet` and `meet.google.com`.
+	meetRE := regexp.MustCompile(`\bMeet\b|\bmeet\.\b`)
 	meetWindow, err := ash.FindOnlyWindow(ctx, tconn, func(w *ash.Window) bool { return meetRE.MatchString(w.Title) })
 	if err != nil {
 		s.Fatal("Failed to find the Meet window: ", err)
