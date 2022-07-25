@@ -33,6 +33,23 @@
       "message": "ping, let me know if you can\u0027t review this for some reason and I should ask someone else.",
       "revId": "7145eec564b462248ea52d8cb1fd6c9f2e1ff10b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07bdf83a_8b379aa0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108259
+      },
+      "writtenOn": "2022-07-25T01:46:28Z",
+      "side": 1,
+      "message": "ptal",
+      "revId": "7145eec564b462248ea52d8cb1fd6c9f2e1ff10b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
