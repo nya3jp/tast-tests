@@ -14,6 +14,9 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -27,7 +30,7 @@ const liveCaptionToggleName = "Live Caption"
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         LiveCaption,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks live caption works",
 		Contacts: []string{
 			"alanlxl@chromium.org",
@@ -37,6 +40,14 @@ func init() {
 		Timeout:      5 * time.Minute,
 		SoftwareDeps: []string{"chrome", "ondevice_speech"},
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
+			Val:               browser.TypeLacros,
+		}},
 		Data: []string{
 			"live_caption.html",
 			"voice_en_hello.wav",
@@ -53,16 +64,16 @@ func LiveCaption(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	// Launch chrome.
-	cr, err := chrome.New(
-		ctx,
+	// Launch browser.
+	bt := s.Param().(browser.Type)
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(),
 		chrome.ExtraArgs("--autoplay-policy=no-user-gesture-required"), // Allow media autoplay.
-		chrome.EnableFeatures("OnDeviceSpeechRecognition"),
-	)
+		chrome.EnableFeatures("OnDeviceSpeechRecognition"))
 	if err != nil {
 		s.Fatal("Failed to start chrome: ", err)
 	}
 	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -89,7 +100,7 @@ func LiveCaption(ctx context.Context, s *testing.State) {
 	}
 
 	// Open the test page and play the audio.
-	conn, err := cr.NewConn(ctx, server.URL+"/live_caption.html")
+	conn, err := br.NewConn(ctx, server.URL+"/live_caption.html")
 	if err != nil {
 		s.Fatal("Failed to open test web page: ", err)
 	}
@@ -112,6 +123,7 @@ func LiveCaption(ctx context.Context, s *testing.State) {
 		// Not use uiauto.Combine because we want to distinguish between "timeout" and "content is wrong".
 		// Because liveCaptionBubble exists only when live caption emits content, if the expected
 		// liveCaptionContent doesn't show, we know there's wrong content.
+		// TODO: Confirm live caption is enabled for lacros. otherwise, lacros variant test will fail here.
 		if err := ui.WaitUntilExists(liveCaptionBubble)(ctx); err != nil {
 			return errors.Wrap(err, "failed to wait for live caption bubble to show")
 		}
