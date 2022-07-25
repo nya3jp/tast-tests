@@ -22,6 +22,30 @@
       },
       "revId": "64622ffe588409be89f0e222ddb4e4c5ff018db6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c63161a8_8a5a7eb3",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-07-25T03:39:28Z",
+      "side": 1,
+      "message": "Thank you, Done.\n\nI tried to close stderrFile immediately after cmd.Start, which should be fine. However I get an error from cmd.Wait in that case - something tries to write to the stderrFile: \n\n`2022-07-25T02:39:16.955195Z firmware.FlashromTester [ FAIL ] flashrom_tester failed: write /tmp/tast/results/20220725-122857/tast_out.20220725-122857.187366583/firmware.FlashromTester/flashrom_tester_stderr.txt: file already closed`\n\nThis might be a bug in testexec.go, but I could not see it and deferring a little is fine for my objectives. More likely it is a bug in my understanding of something!",
+      "parentUuid": "e7c9750a_a4e291a9",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "64622ffe588409be89f0e222ddb4e4c5ff018db6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
