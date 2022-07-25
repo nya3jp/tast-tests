@@ -1349,7 +1349,7 @@ func init() {
 					args:         "astype",
 					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_async_copy_global_to_local",
@@ -12626,10 +12626,9 @@ func init() {
 				Val: oclctsTest{
 					executable:   "test_relationals",
 					args:         "shuffle_array_cast",
-					expectedPass: false,
-					buganizer:    "b/227136136",
+					expectedPass: true,
 				},
-				Timeout: 1 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "relationals_shuffle_built_in_dual_input",
