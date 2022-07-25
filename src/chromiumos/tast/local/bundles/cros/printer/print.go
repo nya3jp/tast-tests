@@ -33,7 +33,6 @@ func init() {
 		Contacts:     []string{"gavinwill@google.com", "cros-peripherals@google.com"},
 		Attr: []string{
 			"group:mainline",
-			"informational",
 			"group:paper-io",
 			"paper-io_printing",
 		},
