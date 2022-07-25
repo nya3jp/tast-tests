@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48491844_914cd584",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-25T13:11:46Z",
+      "side": 1,
+      "message": "LGTM with style fix.",
+      "revId": "50342ab6443af1de5370a9a5d12e263f66f2e04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b140f09c_a5974845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/tts_cache_service.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-25T13:11:46Z",
+      "side": 1,
+      "message": "could you not to access returned value on error?\nSo maybe\ninitializedFromCache :\u003d\n  (err1 \u003d\u003d nil \u0026\u0026 propVal1 \u003d\u003d \"1\") || (err2 \u003d\u003d nil \u0026\u0026 propVal2 \u003d\u003d \"1\")",
+      "range": {
+        "startLine": 115,
+        "startChar": 25,
+        "endLine": 115,
+        "endChar": 59
+      },
+      "revId": "50342ab6443af1de5370a9a5d12e263f66f2e04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
