@@ -71,7 +71,7 @@ func ResizeSpaceConstrained(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open Linux Settings: ", err)
 	}
 	const GB uint64 = 1 << 30
-	targetDiskSizeBytes := []uint64{20 * GB, 10 * GB, 5 * GB, 1 * GB, 5 * GB, 10 * GB}
+	targetDiskSizeBytes := []uint64{20 * GB, 10 * GB, 5 * GB, 10 * GB}
 	currSizeStr, err := st.GetDiskSize(ctx)
 	if err != nil {
 		s.Fatal("Failed to get current disk size: ", err)
