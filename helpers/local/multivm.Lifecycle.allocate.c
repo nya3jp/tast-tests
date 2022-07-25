@@ -156,9 +156,9 @@ int main(int argc, char *argv[]) {
   set_oom_score_adj(oom_score_done);
 
   // Wait forever.
-  if (0 > pause()) {
-    perror("failed to pause\n");
-    exit(EXIT_FAILURE);
-  }
-  return 0;
+  getchar();
+
+  // If anything is returned from getchar(), just exit.
+  perror("failed to pause\n");
+  exit(EXIT_FAILURE);
 }
