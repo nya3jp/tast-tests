@@ -104,6 +104,24 @@
       "parentUuid": "cbefabfa_154ac1d5",
       "revId": "d1f7ccf988412b9ae2464e44e9cd2828176ace74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90ab50a4_158692b4",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-25T19:52:13Z",
+      "side": 1,
+      "message": "Ack. Could you file a bug, or at least make a note to follow up on that (say, in a week)? Thanks!",
+      "parentUuid": "fc1d7a8c_c088f285",
+      "revId": "d1f7ccf988412b9ae2464e44e9cd2828176ace74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
