@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5330e89c_9f153429",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-07-26T08:56:50Z",
+      "side": 1,
+      "message": "LGTM, thanks!",
+      "revId": "7fc8960577081a976d03c44c70ab4711021de374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e2eca77_e7c9ed6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1346383
+      },
+      "writtenOn": "2022-07-26T08:56:50Z",
+      "side": 1,
+      "message": "rm probably?",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 10
+      },
+      "revId": "7fc8960577081a976d03c44c70ab4711021de374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
