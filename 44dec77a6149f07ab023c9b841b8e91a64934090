@@ -16,6 +16,24 @@
       "message": "Do we expect this to always be true, or are you using this because there\u0027s no good way to add a dependency on the kernel version in the Test struct?\n\nIIUC we want each test to eventually be promotable to critical, which can\u0027t happen if this test is designed to fatal error on some models.",
       "revId": "44dec77a6149f07ab023c9b841b8e91a64934090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4da00d8_daa793d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/cpuidle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-07-26T16:52:38Z",
+      "side": 1,
+      "message": "The \u0027cpuidle_teo\u0027 dependency is supposed to cover this, and the runtime check is just a backup. I don\u0027t expect this test to run on any system where this check will fail.\n\nNow that you\u0027re highlighting it though, I remembered my initial assumption was 5.4, but then I realized this works on 4.19 too. I need to fix this particular line.",
+      "parentUuid": "8a9b4689_3ffd4919",
+      "revId": "44dec77a6149f07ab023c9b841b8e91a64934090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
