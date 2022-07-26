@@ -39,7 +39,7 @@ type TestFileParams struct {
 
 // ScanningTimeOut describes the typical time out for a scan.
 const (
-	ScanningTimeOut time.Duration = 2 * time.Minute
+	ScanningTimeOut time.Duration = time.Minute
 )
 
 // GetTestFileParams returns the list of parameters for the files that should be tested.
@@ -186,17 +186,20 @@ func WaitForDeepScanningVerdict(ctx context.Context, dconnSafebrowsing *browser.
 			}
 			// We check if the last entry is not empty to check whether there is an actual answer.
 			innerHTML = table.rows[table.rows.length - 1].cells[1].innerHTML;
-			if (innerHTML.includes("status")) {
+			if (innerHTML.includes("status") || innerHTML.includes("FILE_ENCRYPTED")) {
 				return "";
 			}
 			if (innerHTML.includes("TIMEOUT")) {
-				return "TIMEOUT detected";
+				return "TIMEOUT detected in row.";
 			}
 			if (innerHTML.includes("FAILED_TO_GET_TOKEN")) {
-				return "FAILED_TO_GET_TOKEN detected";
+				return "FAILED_TO_GET_TOKEN detected in row.";
 			}
 			if (innerHTML.includes("UNKNOWN")) {
-				return "UNKNOWN detected";
+				return "UNKNOWN detected in row.";
+			}
+			if (table.innerHTML.includes("UNKNOWN")) {
+				return "UNKNOWN detected in table.";
 			}
 			throw "Scanning not yet complete";
 			})()`, &failureReason); err != nil {
