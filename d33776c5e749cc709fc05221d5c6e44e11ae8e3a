@@ -46,6 +46,30 @@
       },
       "revId": "d33776c5e749cc709fc05221d5c6e44e11ae8e3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1312b79b_56b64983",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-07-26T09:09:25Z",
+      "side": 1,
+      "message": "Please follow this link, I upload to here.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3780745",
+      "parentUuid": "b7dcf1b6_0312b39e",
+      "range": {
+        "startLine": 57,
+        "startChar": 25,
+        "endLine": 57,
+        "endChar": 50
+      },
+      "revId": "d33776c5e749cc709fc05221d5c6e44e11ae8e3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
