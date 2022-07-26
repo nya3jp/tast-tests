@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1f269c6_72b1cda4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-26T13:58:56Z",
+      "side": 1,
+      "message": "accountmanager?\nthis file is in the `tast` repo not `tast-tests`",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "ea24965e045c96a94800eed9c87790d2c1fdd9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ecfb940_d0e7f5fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-26T13:58:56Z",
+      "side": 1,
+      "message": "LGTM % minor nit",
+      "revId": "ea24965e045c96a94800eed9c87790d2c1fdd9fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
