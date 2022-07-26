@@ -12,7 +12,7 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/metrics"
@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cpu"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -130,7 +131,7 @@ func BubbleLauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// This aligns with ui.LauncherAnimationPerf for the legacy launcher.
 	name := "0windows"
 	runner := perfutil.NewRunner(cr.Browser())
-	runner.RunMultiple(ctx, s, name,
+	runner.RunMultiple(ctx, uiperf.Run(s.Run), name,
 		perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			return openAndCloseLauncher(ctx, tconn, ui)
 		}, openHistogramName, closeHistogramName),
@@ -157,7 +158,7 @@ func BubbleLauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// Run the the flow again with 2 browser windows open.
 	// This aligns with ui.LauncherAnimationPerf for the legacy launcher.
 	name = "2windows"
-	runner.RunMultiple(ctx, s, name,
+	runner.RunMultiple(ctx, uiperf.Run(s.Run), name,
 		perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			return openAndCloseLauncher(ctx, tconn, ui)
 		}, openHistogramName, closeHistogramName),
