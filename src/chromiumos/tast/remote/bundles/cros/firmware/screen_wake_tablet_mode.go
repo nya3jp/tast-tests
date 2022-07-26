@@ -7,6 +7,7 @@ package firmware
 import (
 	"bufio"
 	"context"
+	"fmt"
 	"regexp"
 	"strings"
 	"time"
@@ -84,11 +85,9 @@ type screenWakeTabletModeArgs struct {
 // detected by evtest when DUT was in tablet mode.
 var convertibleKeyboardScanned = []string{
 	"akemi",
-	"boten",
 	"delbin",
 	"dragonair",
 	"eldrid",
-	"storo360",
 	"jinlon",
 	"helios",
 	"kled",
@@ -103,6 +102,7 @@ var convertibleKeyboardScanned = []string{
 	"ezkinil",
 	"kohaku",
 	"voxel",
+	"blooguard",
 }
 
 func init() {
@@ -483,6 +483,30 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 			}
 			return nil
 		case screenWakeByScreenTouch:
+			// According to Stainless, creating a touchscreen event writer always failed
+			// on octopus[sparky360], and returned on error: invalid screen size (0,0).
+			// Add some logs to check if the information relevant to touchscreen bounds exists.
+			var touchScreenBounds = map[string]*regexp.Regexp{
+				"max_height": regexp.MustCompile(`ID_INPUT_HEIGHT_MM=\S*`),
+				"max_width":  regexp.MustCompile(`ID_INPUT_WIDTH_MM=\S*`),
+			}
+			var bounds []string
+			touchscreenInfo, err := h.DUT.Conn().CommandContext(ctx, "udevadm", "info", "--export-db").Output()
+			if err != nil {
+				s.Log("Unable to export the content of udev database: ", err)
+			} else {
+				for k, v := range touchScreenBounds {
+					if match := v.FindSubmatch(touchscreenInfo); match != nil {
+						bounds = append(bounds, fmt.Sprintf("%s:%s", k, strings.TrimSpace(string(match[0]))))
+					}
+				}
+			}
+			if bounds == nil {
+				s.Log("Missing information about touchscreen's bounds")
+			} else {
+				s.Logf("Found touchscreen bounds: %s", bounds)
+			}
+
 			// Emulate the action of tapping on a touch screen.
 			if _, err := touchscreen.TouchscreenTap(ctx, &empty.Empty{}); err != nil {
 				return errors.Wrap(err, "error in performing a tap on the touch screen")
@@ -694,6 +718,11 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		if err := h.Servo.RunECCommand(ctx, "chan 0"); err != nil {
 			s.Fatal("Failed to send 'chan 0' to EC: ", err)
 		}
+		defer func() {
+			if err := h.Servo.RunECCommand(ctx, "chan 0xffffffff"); err != nil {
+				s.Fatal("Failed to send 'chan 0xffffffff' to EC: ", err)
+			}
+		}()
 
 		keyboardStateOut, err := h.Servo.RunECCommandGetOutput(ctx, "ksstate", []string{`Keyboard scan disable mask:(\s+\w+)`})
 		if err != nil {
@@ -701,10 +730,6 @@ func ScreenWakeTabletMode(ctx context.Context, s *testing.State) {
 		}
 		keyboardStateStr := keyboardStateOut[0][1]
 		s.Logf("Keyboard scan disable mask value:%s", keyboardStateStr)
-
-		if err := h.Servo.RunECCommand(ctx, "chan 0xffffffff"); err != nil {
-			s.Fatal("Failed to send 'chan 0xffffffff' to EC: ", err)
-		}
 
 		// Emulate pressing a keyboard key.
 		if err := h.Servo.ECPressKey(ctx, "<enter>"); err != nil {
