@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98c70393_b08eee01",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-07-26T08:32:04Z",
+      "side": 1,
+      "message": "Is this where we\u0027re timing out? The comment on line 156 says `terminalApp.RestartCrostini` restarts Crostini, not just shuts it down, so Crostini should already be running by this point?",
+      "revId": "d379df2b0a952db2cfceddaed6f57e59293ebeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
