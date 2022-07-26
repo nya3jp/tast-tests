@@ -45,8 +45,10 @@ func PrintUSB(ctx context.Context, s *testing.State) {
 			usbprinter.WithDescriptors("usb_printer.json"),
 			usbprinter.WithRecordPath(recordPath),
 		},
-		recordPath,
 		s.DataPath("print_usb_ps.ppd.gz"),
-		s.DataPath("print_usb_to_print.pdf"),
-		s.DataPath("print_usb_golden.ps"))
+		usbprintertests.PrintJobSetup{
+			PrintedFile: recordPath,
+			ToPrint:     s.DataPath("print_usb_to_print.pdf"),
+			GoldenFile:  s.DataPath("print_usb_golden.ps"),
+		})
 }
