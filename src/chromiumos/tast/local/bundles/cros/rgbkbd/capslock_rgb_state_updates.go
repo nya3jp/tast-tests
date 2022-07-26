@@ -10,13 +10,11 @@ import (
 	"log"
 	"time"
 
-	"github.com/godbus/dbus/v5"
-
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/dbusutil"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/rgbkbd"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
@@ -39,13 +37,8 @@ func init() {
 // the RGB backlight.
 func CapslockRgbStateUpdates(ctx context.Context, s *testing.State) {
 	const (
-		dbusName             = "org.chromium.Rgbkbd"
-		dbusPath             = "/org/chromium/Rgbkbd"
-		dbusInterface        = "org.chromium.Rgbkbd"
-		dbusMethod           = "SetTestingMode"
 		individualKey uint32 = 1
-
-		job = "rgbkbd"
+		job                  = "rgbkbd"
 	)
 
 	cleanupCtx := ctx
@@ -69,13 +62,13 @@ func CapslockRgbStateUpdates(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to start %s: %v", job, err)
 	}
 
-	_, obj, err := dbusutil.Connect(ctx, dbusName, dbus.ObjectPath(dbusPath))
+	rgbkbd, err := rgbkbd.NewRgbkbd(ctx)
 	if err != nil {
 		s.Fatalf("Failed to connect to %s: %v", dbusName, err)
 	}
 
-	if err := obj.CallWithContext(ctx, dbusInterface+"."+
-		dbusMethod, 0, true, individualKey).Err; err != nil {
+	err := rgbkbd.SetTestingMode(ctx)
+	if err != nil {
 		s.Error("Failed to set testing mode: ", err)
 	}
 
