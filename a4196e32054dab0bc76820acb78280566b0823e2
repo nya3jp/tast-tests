@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dace440_ded71282",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-26T14:07:14Z",
+      "side": 1,
+      "message": "Question: How do we add it to the blob? Should we use MarshalJSON to write it to the blob since it\u0027s `json:\"-\"`?",
+      "range": {
+        "startLine": 162,
+        "startChar": 16,
+        "endLine": 162,
+        "endChar": 34
+      },
+      "revId": "a4196e32054dab0bc76820acb78280566b0823e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97eee33d_03bdb268",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/extension_policy/manifest.json",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-26T14:07:14Z",
+      "side": 1,
+      "message": "nit: format this file, it has extra spaces",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 3
+      },
+      "revId": "a4196e32054dab0bc76820acb78280566b0823e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
