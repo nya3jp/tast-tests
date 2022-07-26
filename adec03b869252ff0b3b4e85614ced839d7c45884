@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02dc3712_f930070b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2022-07-26T21:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d479e86_55597646",
+      "range": {
+        "startLine": 35,
+        "startChar": 24,
+        "endLine": 35,
+        "endChar": 43
+      },
+      "revId": "adec03b869252ff0b3b4e85614ced839d7c45884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40c074e7_44b9e8af",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-26T16:24:03Z",
       "side": 1,
       "message": "I believe, when functional, the integration is only supported on Android R+ :)",
+      "range": {
+        "startLine": 44,
+        "startChar": 36,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "adec03b869252ff0b3b4e85614ced839d7c45884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4790f39_796a6598",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2022-07-26T21:48:54Z",
+      "side": 1,
+      "message": "Gotcha, my device doesn\u0027t support Android R+ apparently. So I\u0027ll set this to `android_vm` and we should be good then?",
+      "parentUuid": "40c074e7_44b9e8af",
       "range": {
         "startLine": 44,
         "startChar": 36,
@@ -81,6 +129,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d908fe_a75227e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2022-07-26T21:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db932857_bf8018fa",
+      "revId": "adec03b869252ff0b3b4e85614ced839d7c45884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "990c35f3_3ec9f290",
@@ -94,6 +160,30 @@
       "writtenOn": "2022-07-26T16:24:03Z",
       "side": 1,
       "message": "nit: prior to",
+      "range": {
+        "startLine": 97,
+        "startChar": 35,
+        "endLine": 97,
+        "endChar": 40
+      },
+      "revId": "adec03b869252ff0b3b4e85614ced839d7c45884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0f610ef_5dcf5ee9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2022-07-26T21:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "990c35f3_3ec9f290",
       "range": {
         "startLine": 97,
         "startChar": 35,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f450d12_35dc8de6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2022-07-26T21:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df363b07_3ef47334",
+      "range": {
+        "startLine": 117,
+        "startChar": 35,
+        "endLine": 117,
+        "endChar": 44
+      },
+      "revId": "adec03b869252ff0b3b4e85614ced839d7c45884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c661c16_67addefb",
@@ -140,6 +254,30 @@
       "writtenOn": "2022-07-26T16:24:03Z",
       "side": 1,
       "message": "I\u0027m a bit worried that this test might flake/fail with changes to the Chrome app because of the first run onboarding steps. Not necessary for this CL, but I wonder if it might be better to just whip up our own test app to initiate a download on launch. Example of a test app w/ usage:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3635252",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "adec03b869252ff0b3b4e85614ced839d7c45884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18017770_dfc2a9d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2022-07-26T21:48:54Z",
+      "side": 1,
+      "message": "You\u0027re just trying to force me to write Java. Well played.\n\nFiled a bug at crbug/1347600 to track this.",
+      "parentUuid": "0c661c16_67addefb",
       "range": {
         "startLine": 144,
         "startChar": 1,
