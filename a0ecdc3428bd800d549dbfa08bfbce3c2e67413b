@@ -22,6 +22,30 @@
       },
       "revId": "a0ecdc3428bd800d549dbfa08bfbce3c2e67413b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a206407b_90db2680",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-26T10:59:05Z",
+      "side": 1,
+      "message": "Thanks for the clarification, reworded it.",
+      "parentUuid": "0871d2aa_07ca5454",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "a0ecdc3428bd800d549dbfa08bfbce3c2e67413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
