@@ -28,11 +28,12 @@ import (
 )
 
 const (
-	installationTimeout   = 15 * time.Minute
-	checkContainerTimeout = time.Minute
-	preTestTimeout        = 30 * time.Second
-	postTestTimeout       = 30 * time.Second
-	uninstallationTimeout = 2 * time.Minute
+	installationTimeout    = 15 * time.Minute
+	checkContainerTimeout  = time.Minute
+	preTestTimeout         = 30 * time.Second
+	postTestTimeout        = 30 * time.Second
+	uninstallationTimeout  = 2 * time.Minute
+	restartCrostiniTimeout = time.Minute
 )
 
 func init() {
