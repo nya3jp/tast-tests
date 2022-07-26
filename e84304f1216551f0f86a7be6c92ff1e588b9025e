@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38a2aaa9_341ca78c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-26T09:18:37Z",
+      "side": 1,
+      "message": "Could you describe the alternatives (e.g. calling `mkdir` using `CommandContext`)? Could you provide information on why this change is necessary?\n\n`file_system.pb.go` is automatically generated. Could you provide a command used to generate the file?",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "e84304f1216551f0f86a7be6c92ff1e588b9025e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
