@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ab935ec_b1361490",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_restrict_features.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-07-26T05:50:39Z",
+      "side": 1,
+      "message": "nit: this could be fragile if we change the UI class names. Is there a better alternative? Otherwise this is ok.",
+      "range": {
+        "startLine": 94,
+        "startChar": 45,
+        "endLine": 94,
+        "endChar": 60
+      },
+      "revId": "cea965df71c28d09c28deca4e6bd4c8f6b7549a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87206f05_6b2d5364",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_restrict_features.go",
         "patchSetId": 5
@@ -18,6 +41,29 @@
         "startLine": 98,
         "startChar": 54,
         "endLine": 98,
+        "endChar": 56
+      },
+      "revId": "cea965df71c28d09c28deca4e6bd4c8f6b7549a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b952ed54_a290d3a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_restrict_features.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-07-26T05:50:39Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 103,
+        "startChar": 20,
+        "endLine": 103,
         "endChar": 56
       },
       "revId": "cea965df71c28d09c28deca4e6bd4c8f6b7549a9",
