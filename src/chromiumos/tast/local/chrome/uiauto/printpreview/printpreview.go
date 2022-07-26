@@ -75,7 +75,7 @@ func SelectPrinter(ctx context.Context, tconn *chrome.TestConn, printerName stri
 	}
 
 	// Find and select the printer.
-	printer := nodewith.Name(printerName).Role(role.Cell)
+	printer := nodewith.Name(printerName).Role(role.StaticText).First()
 	if err := uiauto.Combine("find and click printer",
 		ui.WithTimeout(10*time.Second).WaitUntilExists(printer),
 		ui.LeftClick(printer),
