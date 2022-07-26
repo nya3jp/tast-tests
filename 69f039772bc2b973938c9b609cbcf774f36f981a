@@ -22,6 +22,30 @@
       },
       "revId": "69f039772bc2b973938c9b609cbcf774f36f981a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70bbea7f_366bf1c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1527578
+      },
+      "writtenOn": "2022-07-26T03:51:00Z",
+      "side": 1,
+      "message": "No, I have tried this before.\nIf it doesn\u0027t wait for animating, it will cause the wrong coordinate to be clicked.\nI think currently ui.DoDefault may have solved this problem. \nBut not sure if it will change back to ui.LeftClick in the future.",
+      "parentUuid": "f8dd5869_42add05e",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 314,
+        "endChar": 3
+      },
+      "revId": "69f039772bc2b973938c9b609cbcf774f36f981a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
