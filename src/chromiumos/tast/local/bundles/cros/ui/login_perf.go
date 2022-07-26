@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -27,6 +27,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
@@ -369,7 +370,7 @@ func LoginPerf(ctx context.Context, s *testing.State) {
 				allHistograms := []string{ensureWorkVisibleHistogram, ensureWorkVisibleLowResHistogram}
 				allHistograms = append(allHistograms, heuristicsHistograms...)
 
-				r.RunMultiple(ctx, s,
+				r.RunMultiple(ctx, uiperf.Run(s.Run),
 					fmt.Sprintf("%dwindows%s", currentWindows, suffix),
 					func(ctx context.Context) ([]*metrics.Histogram, error) {
 						var err error
