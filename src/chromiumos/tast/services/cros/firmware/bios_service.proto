@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -105,7 +105,7 @@ message GBBFlagsState {
 }
 
 // FWSectionInfo represents the programmer, and section of a firmware section.
-// The Path in a request refers to an optional temp dir to save an image to. 
+// The Path in a request refers to an optional temp dir to save an image to.
 // The Path in a response refers to the exact location of the image file.
 message FWSectionInfo {
   string Path = 1;

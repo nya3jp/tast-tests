@@ -1,4 +1,4 @@
-// Copyright 2022 The ChromiumOS Authors.
+// Copyright 2022 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -86,7 +86,7 @@ func CorruptFWSig(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Backup firmware signature")
-	FWSignBkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: sectionVariant, Programmer: pb.Programmer_BIOSProgrammer})
+	FWSignBkp, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{Section: sectionVariant, Programmer: pb.Programmer_BIOSProgrammer})
 	if err != nil {
 		s.Fatal("Failed to backup current FW Sign region: ", err)
 	}
@@ -153,7 +153,7 @@ func CorruptFWSig(ctx context.Context, s *testing.State) {
 	}()
 
 	s.Log("Corrupt Firmware Sign")
-	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.CorruptSection{Section: sectionVariant, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
+	if _, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.FWSectionInfo{Section: sectionVariant, Programmer: pb.Programmer_BIOSProgrammer}); err != nil {
 		s.Fatalf("Failed to corrupt Firmware Sign %s section: %v", fwVariant, err)
 	}
 
