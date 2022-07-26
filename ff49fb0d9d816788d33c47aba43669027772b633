@@ -39,6 +39,30 @@
       },
       "revId": "ff49fb0d9d816788d33c47aba43669027772b633",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15efc512_a4de2366",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-07-26T05:46:51Z",
+      "side": 1,
+      "message": "Problem is https://crbug.com/1329684#c28 fusebox daemon is denied D-BUS ownership of its own D-BUS interface.  \n\nThat\u0027s not right. Something else in a VM test, we think a Chrome test, has left the fusebox daemon running.  And c.f. the stainless results for these tests:\n\nhttps://tastboard.corp.google.com/test/platform.FuseboxAttachStorage\nhttps://tastboard.corp.google.com/test/platform.Fusebox\n\nAll-green on stainless.  Problem seems specific to VM tests and stainless does not show VM test results at this time.",
+      "parentUuid": "d273b6ee_bd7725a6",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "ff49fb0d9d816788d33c47aba43669027772b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
