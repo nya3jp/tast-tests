@@ -69,6 +69,76 @@
       },
       "revId": "62ef81fb1937cd81df3738d273ed833b8175077f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb30484_02aec41b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-26T08:26:42Z",
+      "side": 1,
+      "message": "+1 for `removeSWWP`",
+      "parentUuid": "d3e055d2_4e2c0e8b",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 2
+      },
+      "revId": "62ef81fb1937cd81df3738d273ed833b8175077f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8421a1d7_5311f8bc",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-26T08:26:42Z",
+      "side": 1,
+      "message": "Is this change related to the patch?",
+      "range": {
+        "startLine": 185,
+        "startChar": 10,
+        "endLine": 185,
+        "endChar": 15
+      },
+      "revId": "62ef81fb1937cd81df3738d273ed833b8175077f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10e34889_611b89f6",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-26T08:26:42Z",
+      "side": 1,
+      "message": "Is this change related to the patch?",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 1
+      },
+      "revId": "62ef81fb1937cd81df3738d273ed833b8175077f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
