@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4fd935f_708af7d3",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-26T10:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd15c86d_1e62d5ef",
+      "range": {
+        "startLine": 246,
+        "startChar": 2,
+        "endLine": 249,
+        "endChar": 12
+      },
+      "revId": "9f91225d29547178d682310e5d5ab44b2c994385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a25b3fa_28863771",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-07T00:58:48Z",
       "side": 1,
       "message": "nit: Please do not omit any error handling.",
+      "range": {
+        "startLine": 271,
+        "startChar": 16,
+        "endLine": 271,
+        "endChar": 24
+      },
+      "revId": "9f91225d29547178d682310e5d5ab44b2c994385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52482c10_a7aeb125",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-26T10:26:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3a25b3fa_28863771",
       "range": {
         "startLine": 271,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8030182a_c74360a5",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-26T10:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d4d4828_ed05672e",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 43
+      },
+      "revId": "9f91225d29547178d682310e5d5ab44b2c994385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9594a425_86c710e8",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-07T00:58:48Z",
       "side": 1,
       "message": "nit: The function name is not meaningful enough. How about OpenARCAccountsInARCSettings",
+      "range": {
+        "startLine": 294,
+        "startChar": 5,
+        "endLine": 294,
+        "endChar": 20
+      },
+      "revId": "9f91225d29547178d682310e5d5ab44b2c994385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27159a2a_34d8653f",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-26T10:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9594a425_86c710e8",
       "range": {
         "startLine": 294,
         "startChar": 5,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e038e279_94dc33a4",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-26T10:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb498d75_4a39bdf3",
+      "range": {
+        "startLine": 307,
+        "startChar": 15,
+        "endLine": 307,
+        "endChar": 23
+      },
+      "revId": "9f91225d29547178d682310e5d5ab44b2c994385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af7b378b_eefc32be",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-07-07T00:58:48Z",
       "side": 1,
       "message": "It would be nice to have an assertion to make sure the action is completed successfully.",
+      "range": {
+        "startLine": 313,
+        "startChar": 1,
+        "endLine": 313,
+        "endChar": 11
+      },
+      "revId": "9f91225d29547178d682310e5d5ab44b2c994385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd53584a_f8eb9c45",
+        "filename": "src/chromiumos/tast/local/accountmanager/account_manager.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-26T10:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af7b378b_eefc32be",
       "range": {
         "startLine": 313,
         "startChar": 1,
