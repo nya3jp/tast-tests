@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0871d2aa_07ca5454",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1309946
+      },
+      "writtenOn": "2022-07-26T09:23:35Z",
+      "side": 1,
+      "message": "I assume by this you mean that 1 GB is below the minimum size? I think that will be true on all devices.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "a0ecdc3428bd800d549dbfa08bfbce3c2e67413b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
