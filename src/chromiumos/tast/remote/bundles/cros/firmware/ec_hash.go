@@ -9,11 +9,9 @@ import (
 	"regexp"
 	"time"
 
-	pb "chromiumos/tast/services/cros/firmware"
-
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware/fixture"
-
+	pb "chromiumos/tast/services/cros/firmware"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -48,7 +46,7 @@ func ECHash(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Backing up current EC_RW region for safety")
-	ecPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{
+	ecPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{
 		Programmer: pb.Programmer_ECProgrammer,
 		Section:    pb.ImageSection_ECRWImageSection,
 	})
@@ -75,7 +73,7 @@ func ECHash(ctx context.Context, s *testing.State) {
 
 		s.Log("Restoring EC image")
 		if err := h.EnsureDUTBooted(ctx); err != nil {
-			s.Fatal("Failed to ensure the DUT is booted!")
+			s.Fatal("Failed to ensure the DUT is booted")
 		}
 		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, ecPath); err != nil {
 			s.Error("Failed to restore EC image: ", err)
@@ -123,10 +121,10 @@ func ECHash(ctx context.Context, s *testing.State) {
 	s.Log("Invalidated EC hash is: ", invalidatedECHash)
 
 	if invalidatedECHash == initialECHash {
-		s.Fatal("Invalidated EC hash is equal to initial EC hash!")
+		s.Fatal("Invalidated EC hash is equal to initial EC hash")
 	}
 
-	s.Log("Warm rebooting DUT to recalculate EC hash with AP...")
+	s.Log("Warm rebooting DUT to recalculate EC hash with AP")
 	h.CloseRPCConnection(ctx)
 	if err := h.DUT.Reboot(ctx); err != nil {
 		s.Fatal("Failed rebooting DUT: ", err)
@@ -145,11 +143,11 @@ func ECHash(ctx context.Context, s *testing.State) {
 	s.Log("After a reboot, current EC hash is: ", newECHash)
 
 	if invalidatedECHash == newECHash {
-		s.Fatal("New EC hash is equal to invalidated EC hash!")
+		s.Fatal("New EC hash is equal to invalidated EC hash")
 	}
 
 	if initialECHash != newECHash {
-		s.Fatal("New EC hash does not match initial EC hash!")
+		s.Fatal("New EC hash does not match initial EC hash")
 	}
 
 	s.Log("Current EC hash matches initial EC hash")
