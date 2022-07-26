@@ -45,6 +45,30 @@
       },
       "revId": "62ef81fb1937cd81df3738d273ed833b8175077f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e055d2_4e2c0e8b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-07-26T00:03:44Z",
+      "side": 1,
+      "message": "Or, we can just add comment in function header that says `enableSWWP` can only remove SW WP.",
+      "parentUuid": "be075817_6828b7eb",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 2
+      },
+      "revId": "62ef81fb1937cd81df3738d273ed833b8175077f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
