@@ -60,7 +60,7 @@ func (rd *RPCDUT) RPCDial(ctx context.Context) error {
 
 // RPCClose closes the rpc connection if one existed.
 func (rd *RPCDUT) RPCClose(ctx context.Context) error {
-	if rd == nil {
+	if rd == nil || rd.cl == nil {
 		return nil
 	}
 	testing.ContextLog(ctx, "Closing RPC connection")
