@@ -143,7 +143,7 @@ func parseNumBetweenMarkers(s, leftMarker, rightMarker string) (int64, error) {
 // The raw `dumpsys meminfo` text is additionally written to a file
 // for debug purposes - provided that outdir is not empty.
 func GetDumpsysMeminfoMetrics(ctx context.Context, a *arc.ARC, outdir, suffix string) (*VMSummary, error) {
-	meminfo, err := a.Command(ctx, "dumpsys", "meminfo").Output()
+	meminfo, err := a.Command(ctx, "dumpsys", "-t", "60", "meminfo").Output()
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to run \"dumpsys meminfo\"")
 	}
