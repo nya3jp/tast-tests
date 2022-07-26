@@ -8,11 +8,13 @@ import (
 	"context"
 	"os"
 	"path/filepath"
+	"syscall"
 	"time"
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crosdisks"
 	"chromiumos/tast/local/dbusutil"
+	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/testing"
 )
 
@@ -33,6 +35,17 @@ func Fusebox(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
+
+	terminateDaemonIfNeeded := func(daemon string) {
+		if proc, err := procutil.FindUnique(procutil.ByExe(daemon)); err == nil {
+			testing.ContextLog(ctx, "Terminating existing daemon")
+			if err = proc.SendSignal(syscall.SIGTERM); err != nil {
+				testing.ContextLog(ctx, "Failed to terminate daemon: ", err)
+			}
+		}
+	}
+
+	terminateDaemonIfNeeded("/usr/bin/fusebox")
 
 	cd, err := crosdisks.New(ctx)
 	if err != nil {
