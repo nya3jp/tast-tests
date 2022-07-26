@@ -11,12 +11,13 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/notification"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -137,7 +138,7 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 
 	// Create 12 notifications (3 groups of 4 different notifications) with 3 ARC notifications if applicable,
 	// close them all via either the ClearAll button or one at a time, and record performance metrics.
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, uiperf.Run(s.Run), cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		ids := make([]string, n*len(notificationTypes))
 		for i := 0; i <= n-1; i++ {
 			for idx, t := range notificationTypes {

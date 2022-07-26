@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -123,7 +124,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 			ash.WindowStateMaximized,
 			ash.WindowStateNormal}
 	}
-	r.RunMultiple(ctx, s, "window-state", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	r.RunMultiple(ctx, uiperf.Run(s.Run), "window-state", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		for i, newState := range states {
 			if err := ash.SetWindowStateAndWait(ctx, tconn, ws[0].ID, newState); err != nil {
 				return errors.Wrapf(err, "failed to set window state at step %d", i)
@@ -151,7 +152,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		coords.NewPoint(bounds.Right(), center.Y),
 		coords.NewPoint(center.X, bounds.Top),
 	}
-	r.RunMultiple(ctx, s, "drag-maximized-window", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	r.RunMultiple(ctx, uiperf.Run(s.Run), "drag-maximized-window", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := mouse.Move(tconn, points[0], 0)(ctx); err != nil {
 			return errors.Wrap(err, "failed to move to the start position")
 		}
@@ -195,7 +196,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get the keyboard: ", err)
 	}
 	defer kw.Close()
-	r.RunMultiple(ctx, s, "alt-tab", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) (err error) {
+	r.RunMultiple(ctx, uiperf.Run(s.Run), "alt-tab", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) (err error) {
 		pressed := false
 		defer func() {
 			if pressed {
@@ -244,7 +245,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to turn window %d into normal: %v", w.ID, err)
 		}
 	}
-	r.RunMultiple(ctx, s, "overview", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	r.RunMultiple(ctx, uiperf.Run(s.Run), "overview", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 			return errors.Wrap(err, "failed to enter into the overview mode")
 		}
@@ -260,7 +261,7 @@ func WindowControl(ctx context.Context, s *testing.State) {
 	s.Log("Step 5: window resizes")
 	// Assumes the window is already in normal state for the preparation of the
 	// previous step.  Also assumes the ws[0] is the topmost window.
-	r.RunMultiple(ctx, s, "resize", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	r.RunMultiple(ctx, uiperf.Run(s.Run), "resize", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		var w *ash.Window
 		if err := ash.WaitForCondition(ctx, tconn, func(window *ash.Window) bool {
 			if ws[0].ID == window.ID && window.State == ash.WindowStateNormal && window.OverviewInfo == nil && !window.IsAnimating {
