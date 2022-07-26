@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26165b57_b14c8e54",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_consecutive_lid_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-07-26T18:18:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f764388_d404ac59",
+      "range": {
+        "startLine": 82,
+        "startChar": 29,
+        "endLine": 82,
+        "endChar": 36
+      },
+      "revId": "f9c096c29c1525e85c9e6126dbb927fae0d9ccf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df0262b2_df4beee3",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-07-12T15:50:55Z",
       "side": 1,
       "message": "Standard structure for this type of message is: `Initial boot ID does not match boot ID after lid switch: got %s; want %s`",
+      "revId": "f9c096c29c1525e85c9e6126dbb927fae0d9ccf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "600cc8d4_2ce5b3f8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_consecutive_lid_switch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-07-26T18:18:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df0262b2_df4beee3",
       "revId": "f9c096c29c1525e85c9e6126dbb927fae0d9ccf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

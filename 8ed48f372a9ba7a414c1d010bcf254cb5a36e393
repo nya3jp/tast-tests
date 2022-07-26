@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1487bec5_f53f8c4b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_consecutive_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-07-26T18:18:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9891c5b_5da3c985",
+      "revId": "8ed48f372a9ba7a414c1d010bcf254cb5a36e393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30943c3f_1f538d92",
@@ -91,6 +109,30 @@
       "side": 1,
       "message": "Woah, right. Removed it accidentally when was fixing Chrome login, but added it again now.",
       "parentUuid": "30943c3f_1f538d92",
+      "range": {
+        "startLine": 35,
+        "startChar": 45,
+        "endLine": 36,
+        "endChar": 21
+      },
+      "revId": "8ed48f372a9ba7a414c1d010bcf254cb5a36e393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de9dd889_9375c52e",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_consecutive_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-07-26T18:18:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e796916f_d46e5eab",
       "range": {
         "startLine": 35,
         "startChar": 45,
@@ -162,6 +204,30 @@
       "side": 1,
       "message": "Not aware of any simpler way, might be a good idea to capture the \"why\" in a comment (i.e. something like \"Need to login, because on the login screen the DUT goes off with the lid closed, whereas the intent is to exercise suspend.\")",
       "parentUuid": "84ee11b6_e376a06b",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 69
+      },
+      "revId": "8ed48f372a9ba7a414c1d010bcf254cb5a36e393",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92e09c1f_c078e9fb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_consecutive_lid_switch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-07-26T18:18:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d11bb9f_6bf14e14",
       "range": {
         "startLine": 64,
         "startChar": 1,
