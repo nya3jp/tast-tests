@@ -14,11 +14,12 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -231,7 +232,7 @@ func doTestCase(
 		return errors.Wrap(err, "failed to wait")
 	}
 
-	runner.RunMultiple(ctx, s, fullDescription,
+	runner.RunMultiple(ctx, fullDescription, uiperf.Run(s,
 		perfutil.RunAndWaitAll(tconn,
 			func(ctx context.Context) error {
 				if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
@@ -243,7 +244,7 @@ func doTestCase(
 				return nil
 			},
 			histograms...,
-		),
+		)),
 		perfutil.StoreAll(perf.BiggerIsBetter, "percent", windowsDescription))
 
 	return nil

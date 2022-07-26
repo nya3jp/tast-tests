@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/notification"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -20,6 +20,7 @@ import (
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -172,7 +173,7 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 	// Create 12 notifications (3 groups of 4 different notifications) with 3 ARC notifications if applicable,
 	// close them all via either the ClearAll button or one at a time, and record performance metrics.
 	// Note that ash-chrome (cr and atconn) is passed in to take traces and metrics from ash-chrome.
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(atconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(atconn, func(ctx context.Context) error {
 		ids := make([]string, n*len(notificationTypes))
 		for i := 0; i <= n-1; i++ {
 			for idx, t := range notificationTypes {
@@ -298,7 +299,7 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	},
-		histogramName),
+		histogramName)),
 		perfutil.StoreAllWithHeuristics(""))
 
 	if err := pv.Save(ctx, s.OutDir()); err != nil {

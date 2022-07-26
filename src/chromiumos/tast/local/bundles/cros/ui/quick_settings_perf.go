@@ -11,12 +11,13 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/notification"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -110,7 +111,7 @@ func QuickSettingsPerf(ctx context.Context, s *testing.State) {
 
 	// This includes toggle the Status Area button to record input latency of showing Quick Settings/notification centre
 	// and toggle the collapsed state of the system tray to record animation smoothness.
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.Run(s, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := uiauto.Combine(
 			"open the uber tray, collapse and expand it, then close it",
 			ac.LeftClick(statusArea),
@@ -129,7 +130,7 @@ func QuickSettingsPerf(ctx context.Context, s *testing.State) {
 		"Ash.StatusAreaShowBubble.PresentationTime",
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToCollapsed",
 		"ChromeOS.SystemTray.AnimationSmoothness.TransitionToExpanded",
-		"Ash.Window.AnimationSmoothness.Hide"),
+		"Ash.Window.AnimationSmoothness.Hide")),
 		perfutil.StoreAllWithHeuristics(""))
 
 	if err := pv.Save(ctx, s.OutDir()); err != nil {
