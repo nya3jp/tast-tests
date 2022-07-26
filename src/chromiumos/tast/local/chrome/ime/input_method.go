@@ -442,6 +442,9 @@ var inputMethods = []InputMethod{
 	Urdu,
 }
 
+// ErrInputNotDefined indicates that the input method has not been defined.
+var ErrInputNotDefined = errors.New("IME code has not been defined")
+
 // ActiveInputMethod returns the active input method via Chrome API.
 func ActiveInputMethod(ctx context.Context, tconn *chrome.TestConn) (*InputMethod, error) {
 	fullyQualifiedIMEID, err := CurrentInputMethod(ctx, tconn)
@@ -483,7 +486,7 @@ func FindInputMethodByFullyQualifiedIMEID(ctx context.Context, tconn *chrome.Tes
 			return &im, nil
 		}
 	}
-	return nil, errors.Errorf("failed to find input method by IME Code %q", fullyQualifiedIMEID)
+	return nil, errors.Wrapf(ErrInputNotDefined, "failed to find input method by IME Code %q", fullyQualifiedIMEID)
 }
 
 // FullyQualifiedIMEID returns the fully qualified IME id constructed by IMEPrefix + IME ID.
