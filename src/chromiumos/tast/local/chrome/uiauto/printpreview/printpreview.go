@@ -8,6 +8,7 @@ package printpreview
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"chromiumos/tast/errors"
@@ -199,5 +200,36 @@ func ExpandMoreSettings(ctx context.Context, tconn *chrome.TestConn) error {
 	)(ctx); err != nil {
 		return err
 	}
+	return nil
+}
+
+// SetDropdown selects a dropdown menu and changes its selected option to the
+// desired value.
+func SetDropdown(ctx context.Context, tconn *chrome.TestConn, name, value string) error {
+	ui := uiauto.New(tconn)
+	dropdown := nodewith.Name(name).Role(role.PopUpButton)
+	option := nodewith.Name(value).Role(role.ListBoxOption)
+
+	if err := uiauto.Combine(fmt.Sprintf("find and click dropdown '%s'", name),
+		ui.WithTimeout(10*time.Second).WaitUntilExists(dropdown),
+		ui.WithTimeout(10*time.Second).WaitForLocation(dropdown),
+		ui.EnsureFocused(dropdown),
+		ui.LeftClick(dropdown),
+	)(ctx); err != nil {
+		return err
+	}
+
+	// Dropdown options can extend past the boundaries of the main window, and
+	// ui.LeftClick() won't be able to click on any options that do. So
+	// instead, use ui.DoDefault() to select the option and then click on the
+	// dropdown box again to re-collapse it.
+	if err := uiauto.Combine(fmt.Sprintf("select dropdown option '%s'", value),
+		ui.WithTimeout(10*time.Second).WaitUntilExists(option),
+		ui.DoDefault(option),
+		ui.LeftClick(dropdown),
+	)(ctx); err != nil {
+		return err
+	}
+
 	return nil
 }
