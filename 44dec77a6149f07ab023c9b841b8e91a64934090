@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a9b4689_3ffd4919",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/cpuidle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-07-26T02:00:00Z",
+      "side": 1,
+      "message": "Do we expect this to always be true, or are you using this because there\u0027s no good way to add a dependency on the kernel version in the Test struct?\n\nIIUC we want each test to eventually be promotable to critical, which can\u0027t happen if this test is designed to fatal error on some models.",
+      "revId": "44dec77a6149f07ab023c9b841b8e91a64934090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
