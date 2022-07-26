@@ -180,6 +180,21 @@ func NewFirmwareTest(ctx context.Context, d *rpcdut.RPCDUT, servoSpec, outDir st
 // original image and state.
 func (t *FirmwareTest) Close(ctx context.Context) error {
 	testing.ContextLog(ctx, "Tearing down")
+
+	// Always close servo connection no matter what happens.
+	defer t.servo.Close(ctx)
+
+	// The test can fail when DUT is disconnected (e.g. context timeout
+	// while reconnecting to DUT). In this case we should attempt to connect
+	// to the DUT. When connecting fails, we shouldn't proceed because
+	// without healthy connection there is nothing we can do.
+	if !t.d.RPCConnected(ctx) {
+		testing.ContextLog(ctx, "Reconnecting to the DUT")
+		if err := t.d.Connect(ctx); err != nil {
+			return errors.Wrap(err, "failed to connect to DUT")
+		}
+	}
+
 	var firstErr error
 
 	if err := ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing); err != nil {
@@ -223,8 +238,6 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	if err := restoreDaemons(ctx, t.UpstartService(), t.daemonState); err != nil && firstErr == nil {
 		firstErr = err
 	}
-
-	t.servo.Close(ctx)
 
 	return firstErr
 }
