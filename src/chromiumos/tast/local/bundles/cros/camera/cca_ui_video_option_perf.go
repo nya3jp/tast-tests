@@ -24,7 +24,7 @@ func init() {
 		Func:         CCAUIVideoOptionPerf,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Record video with different video option on CCA, measure UI performance including CPU usage",
-		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"chuhsuan@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Timeout:      20 * time.Minute,

@@ -27,7 +27,7 @@ func init() {
 		Func:         CCAUIStress,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Opens CCA and stress testing common functions randomly",
-		Contacts:     []string{"shik@chromium.org", "inker@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"shik@chromium.org", "pihsun@chromium.org", "chromeos-camera-eng@google.com"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Vars: []string{
 			// Number of iterations to test.

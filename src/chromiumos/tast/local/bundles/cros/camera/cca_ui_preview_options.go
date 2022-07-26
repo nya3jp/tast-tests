@@ -19,7 +19,7 @@ func init() {
 		Func:         CCAUIPreviewOptions,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Opens CCA and verifies the use cases of preview options like mirror",
-		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"chuhsuan@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Fixture:      "ccaTestBridgeReady",

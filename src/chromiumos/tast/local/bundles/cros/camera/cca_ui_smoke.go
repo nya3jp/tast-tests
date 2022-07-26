@@ -26,7 +26,7 @@ func init() {
 		Func:         CCAUISmoke,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Smoke test for Chrome Camera App",
-		Contacts:     []string{"inker@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"pihsun@chromium.org", "shik@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "group:camera-libcamera"},
 		SoftwareDeps: []string{"camera_app", "chrome"},
 		Params: []testing.Param{{
