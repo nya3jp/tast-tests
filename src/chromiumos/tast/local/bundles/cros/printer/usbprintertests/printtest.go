@@ -25,13 +25,22 @@ func usbPrinterURI(ctx context.Context, devInfo usbprinter.DevInfo) string {
 	return fmt.Sprintf("usb://%s/%s", devInfo.VID, devInfo.PID)
 }
 
+// PrintJobSetup describes a file to print, where to find the output, and what
+// the output should look like.
+type PrintJobSetup struct {
+	PrinterName string
+	ToPrint     string
+	PrintedFile string
+	GoldenFile  string
+}
+
 // RunPrintTest executes a test for the virtual USB printer defined by the
 // given arguments. This tests that the printer is able to be configured, and
 // produces the expected output at record when a print job is issued.
 // toPrint and golden specify the paths to the file to be printed and the
 // expected printer output.
 func RunPrintTest(ctx context.Context, s *testing.State,
-	opts []usbprinter.Option, record, ppd, toPrint, golden string) {
+	opts []usbprinter.Option, ppd string, job PrintJobSetup) {
 
 	if err := printer.ResetCups(ctx); err != nil {
 		s.Fatal("Failed to reset cupsd: ", err)
@@ -46,7 +55,7 @@ func RunPrintTest(ctx context.Context, s *testing.State,
 			s.Error("Failed to stop virtual printer: ", err)
 		}
 		// Remove the recorded file. Ignore errors if the path doesn't exist.
-		if err := os.Remove(record); err != nil && !os.IsNotExist(err) {
+		if err := os.Remove(job.PrintedFile); err != nil && !os.IsNotExist(err) {
 			s.Error("Failed to remove file: ", err)
 		}
 	}(ctx)
@@ -64,33 +73,44 @@ func RunPrintTest(ctx context.Context, s *testing.State,
 	}
 	s.Log("Printer configured with name: ", foundPrinterName)
 
-	job, err := lp.CupsStartPrintJob(ctx, foundPrinterName, toPrint)
+	RunPrintJob(ctx, s, PrintJobSetup{
+		PrinterName: foundPrinterName,
+		ToPrint:     job.ToPrint,
+		PrintedFile: job.PrintedFile,
+		GoldenFile:  job.GoldenFile})
+}
+
+// RunPrintJob sends toPrint to the printer called printerName.  After the job
+// has completed, it reads the output from printedFile and compares it to
+// goldenFile.
+func RunPrintJob(ctx context.Context, s *testing.State, job PrintJobSetup) {
+	jobID, err := lp.CupsStartPrintJob(ctx, job.PrinterName, job.ToPrint)
 	if err != nil {
 		s.Fatal("Failed to start printer: ", err)
 	}
 
-	s.Logf("Waiting for %s to complete", job)
+	s.Logf("Waiting for %s to complete", jobID)
 	if err = testing.Poll(ctx, func(ctx context.Context) error {
-		if done, err := lp.JobCompleted(ctx, foundPrinterName, job); err != nil {
+		if done, err := lp.JobCompleted(ctx, job.PrinterName, jobID); err != nil {
 			return err
 		} else if !done {
-			return errors.Errorf("job %s is not done yet", job)
+			return errors.Errorf("job %s is not done yet", jobID)
 		}
-		testing.ContextLogf(ctx, "Job %s is complete", job)
+		testing.ContextLogf(ctx, "Job %s is complete", jobID)
 		return nil
 	}, nil); err != nil {
 		s.Fatal("Print job didn't complete: ", err)
 	}
-	goldenData, err := ioutil.ReadFile(golden)
+	goldenData, err := ioutil.ReadFile(job.GoldenFile)
 	if err != nil {
 		s.Fatal("Failed to read golden file: ", err)
 	}
-	output, err := ioutil.ReadFile(record)
+	output, err := ioutil.ReadFile(job.PrintedFile)
 	if err != nil {
 		s.Fatal("Failed to read output file: ", err)
 	}
 	if document.CleanContents(string(goldenData)) != document.CleanContents(string(output)) {
-		outFile := filepath.Base(golden)
+		outFile := filepath.Base(job.GoldenFile)
 		outPath := filepath.Join(s.OutDir(), outFile)
 		if err := ioutil.WriteFile(outPath, output, 0644); err != nil {
 			s.Error("Failed to dump output: ", err)
