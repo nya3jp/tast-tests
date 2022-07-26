@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/accountmanager"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/lacros"
@@ -142,12 +143,16 @@ func AddProfileNoAccount(ctx context.Context, s *testing.State) {
 
 	// Find all profiles in the profile picker (labels have format "Open X profile").
 	profileButton := nodewith.NameRegex(regexp.MustCompile("Open .* profile")).Role(role.Button).Ancestor(chooseProfileRoot)
-	profiles, err := ui.NodesInfo(ctx, profileButton)
-	if err != nil {
-		s.Fatal("Failed to get profile info: ", err)
-	}
-
-	if len(profiles) != 2 {
-		s.Fatalf("Unexpected number of profiles: got %q, want %q", len(profiles), 2)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		profiles, err := ui.NodesInfo(ctx, profileButton)
+		if err != nil {
+			return errors.Wrap(err, "failed to get profile info")
+		}
+		if len(profiles) != 2 {
+			return errors.Errorf("unexpected number of profiles: got %d, want %d", len(profiles), 2)
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 1 * time.Second, Timeout: 10 * time.Second}); err != nil {
+		s.Fatal("Failed to find all profiles: ", err)
 	}
 }
