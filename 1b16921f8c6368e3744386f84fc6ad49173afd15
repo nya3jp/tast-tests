@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90fca0de_1e8cb393",
+        "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-26T14:08:50Z",
+      "side": 1,
+      "message": "IIUC\u003c dbus handlers are called on another goroutine?",
+      "parentUuid": "3b31a6f2_2698017e",
+      "revId": "1b16921f8c6368e3744386f84fc6ad49173afd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2daec519_18fd1cb9",
         "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
         "patchSetId": 4
