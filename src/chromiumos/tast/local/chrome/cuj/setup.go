@@ -30,10 +30,15 @@ func InitializeSetting(ctx context.Context, tconn *chrome.TestConn) (action.Acti
 	inputMethod := ime.EnglishUS
 	currentInputMethod, err := ime.ActiveInputMethod(ctx, tconn)
 	if err != nil {
-		return nil, err
+		if !errors.Is(err, ime.ErrInputNotDefined) {
+			return nil, err
+		}
+		testing.ContextLog(ctx, "Failed to get active input method: ", err)
+	} else {
+		testing.ContextLog(ctx, "Current input method: ", currentInputMethod.Name)
 	}
-	if equal := currentInputMethod.Equal(inputMethod); !equal {
-		testing.ContextLogf(ctx, "Current input method: %q; Set current input method to: %q", currentInputMethod, inputMethod)
+	if currentInputMethod == nil || !currentInputMethod.Equal(inputMethod) {
+		testing.ContextLogf(ctx, "Install and activate %q input method", inputMethod.Name)
 		if err := inputMethod.InstallAndActivate(tconn)(ctx); err != nil {
 			return nil, err
 		}
