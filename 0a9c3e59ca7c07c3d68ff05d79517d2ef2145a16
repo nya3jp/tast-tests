@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b1c07cf_764985b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/resize_space_constrained.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-26T01:30:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8bc77dc_7b65c432",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "0a9c3e59ca7c07c3d68ff05d79517d2ef2145a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a409484_a73d327a",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6594e871_edba6e6b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-26T01:30:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a409484_a73d327a",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 75
+      },
+      "revId": "0a9c3e59ca7c07c3d68ff05d79517d2ef2145a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0b18f18_dbc798a3",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-07-25T21:15:13Z",
       "side": 1,
       "message": "I notice we have both Resize and ResizeDisk that take the same parameters and it\u0027s not clear what the difference is meant to be. Can they be combined?",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 51
+      },
+      "revId": "0a9c3e59ca7c07c3d68ff05d79517d2ef2145a16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58a7950e_234de25b",
+        "filename": "src/chromiumos/tast/local/crostini/ui/settings/settings.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-26T01:30:03Z",
+      "side": 1,
+      "message": "Thanks for pointing that out! I have deleted the `ResizeDisk` function.",
+      "parentUuid": "e0b18f18_dbc798a3",
       "range": {
         "startLine": 500,
         "startChar": 0,
