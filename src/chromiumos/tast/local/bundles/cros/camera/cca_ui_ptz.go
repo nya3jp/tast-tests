@@ -123,15 +123,15 @@ var (
 func (ctrl *ptzControl) testToggle(ctx context.Context, app *cca.App) error {
 	pRect, err := findPattern(ctx, app)
 	if err != nil {
-		return errors.Wrapf(err, "failed to find pattern before clicking %v: %v", ctrl.ui.Name, err)
+		return errors.Wrapf(err, "failed to find pattern before clicking %v", ctrl.ui.Name)
 	}
 	if err := app.ClickPTZButton(ctx, *ctrl.ui); err != nil {
-		return errors.Wrapf(err, "failed to click: %v", err)
+		return errors.Wrap(err, "failed to click")
 	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		rect, err := findPattern(ctx, app)
 		if err != nil {
-			return errors.Wrapf(err, "failed to find pattern after clicking %v: %v", ctrl.ui.Name, err)
+			return errors.Wrapf(err, "failed to find pattern after clicking %v", ctrl.ui.Name)
 		}
 		result, err := ctrl.testFunc(pRect, rect)
 		if err != nil {
@@ -142,7 +142,7 @@ func (ctrl *ptzControl) testToggle(ctx context.Context, app *cca.App) error {
 		}
 		return errors.Errorf("failed on testing UI with region before %v ; after %v", pRect, rect)
 	}, &testing.PollOptions{Interval: time.Second}); err != nil {
-		return errors.Wrapf(err, "failed to run %v test func: %v", ctrl.ui.Name, err)
+		return errors.Wrapf(err, "failed to run %v test func", ctrl.ui.Name)
 	}
 	return nil
 }
