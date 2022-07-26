@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa78d917_9b2d996c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-26T01:33:59Z",
+      "side": 1,
+      "message": "We may add more sub-functions in the future, so I\u0027ll just write it as table-driven for now.",
+      "parentUuid": "673c044b_d88be716",
+      "revId": "b67856e5e0885f655c610f32a5e241eb49445b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a213fbd0_98b1020c",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
         "patchSetId": 3

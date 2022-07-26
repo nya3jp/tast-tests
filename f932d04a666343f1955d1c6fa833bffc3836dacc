@@ -16,6 +16,24 @@
       "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-subpackages\n\nIf we make this test do both testChargeNow and testSettings in one test, I think it\u0027s better to revise these functions not to take *testing.State but instead return an error and let the caller report to testing.State, for the information hiding. Same for pollUntilBatterySustainingState.",
       "revId": "f932d04a666343f1955d1c6fa833bffc3836dacc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1ea6c18_cabbeb2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-26T01:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aded9f1_21eaeebe",
+      "revId": "f932d04a666343f1955d1c6fa833bffc3836dacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
