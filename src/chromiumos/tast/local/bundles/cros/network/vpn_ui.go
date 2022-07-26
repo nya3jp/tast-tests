@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/bundles/cros/network/routing"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -93,6 +94,15 @@ func VPNUI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open the OS settings page: ", err)
 	}
 	defer conn.Close()
+
+	testing.ContextLog(ctx, "Setting keyboard layout to English (US)")
+	imePrefix, err := ime.Prefix(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get the ime prefix: ", err)
+	}
+	if err := ime.AddAndSetInputMethod(ctx, tconn, imePrefix+ime.EnglishUS.ID); err != nil {
+		s.Fatal("Failed to set keyboard to en-US: ", err)
+	}
 
 	ew, err := input.Keyboard(ctx)
 	if err != nil {
