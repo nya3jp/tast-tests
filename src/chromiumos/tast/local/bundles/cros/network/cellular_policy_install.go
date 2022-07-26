@@ -9,7 +9,6 @@ import (
 	"regexp"
 	"time"
 
-	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/hermesconst"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
@@ -38,7 +37,7 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_test_esim"},
-		Fixture:      fixture.FakeDMSEnrolled,
+		Fixture:      "cellularWithFakeDMSEnrolled",
 		Timeout:      9 * time.Minute,
 	})
 }
@@ -59,21 +58,26 @@ var removeButton = nodewith.NameStartingWith("Remove eSIM profile").Role(role.Bu
 var renameMenu = nodewith.Name("Rename Profile").Role(role.MenuItem)
 
 func CellularPolicyInstall(ctx context.Context, s *testing.State) {
-	// Remove any existing profile on test euicc
 	euicc, slot, err := hermes.GetEUICC(ctx, true)
 	if err != nil {
 		s.Fatal("Failed to get test euicc: ", err)
 	}
 
+	// Remove any existing profiles on test euicc
 	if err := euicc.DBusObject.Call(ctx, hermesconst.EuiccMethodResetMemory, 1).Err; err != nil {
 		s.Fatal("Failed to reset test euicc: ", err)
 	}
 	s.Log("Reset test euicc completed")
 
+	if err := euicc.DBusObject.Call(ctx, hermesconst.EuiccMethodUseTestCerts, true).Err; err != nil {
+		s.Fatal("Failed to set use test cert on eUICC: ", err)
+	}
+	s.Log("Set to use test cert on euicc cmpleted")
+
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	chromeOpts := []chrome.Option{
-		chrome.EnableFeatures("ESimPolicy", "UseStorkSmdsServerAddress"),
+		chrome.EnableFeatures("UseStorkSmdsServerAddress"),
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.KeepEnrollment(),
