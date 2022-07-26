@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9672449a_f455e609",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-07-26T23:27:14Z",
+      "side": 1,
+      "message": "Please rename www_constant.go to www_constants.go",
+      "revId": "92e21095063d11c3fe0593cc540a129511fd1560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d023ef8_cadfcf47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-07-26T23:27:14Z",
+      "side": 1,
+      "message": "Could you use variables from www_constrant.go?",
+      "range": {
+        "startLine": 278,
+        "startChar": 28,
+        "endLine": 278,
+        "endChar": 29
+      },
+      "revId": "92e21095063d11c3fe0593cc540a129511fd1560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
