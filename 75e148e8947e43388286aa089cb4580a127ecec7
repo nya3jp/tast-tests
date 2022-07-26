@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf5a9660_b769b9a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-07-26T11:58:41Z",
+      "side": 1,
+      "message": "Fix for https://tastboard.corp.google.com/test/policy.AutofillCreditCardEnabled.lacros and ",
+      "revId": "75e148e8947e43388286aa089cb4580a127ecec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
