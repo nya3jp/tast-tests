@@ -9,9 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/metrics"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/testing"
 )
 
@@ -39,8 +40,8 @@ func OobePerf(ctx context.Context, s *testing.State) {
 		histogramName = "OOBE.WebUI.LoadTime.FirstRun"
 	)
 	r := perfutil.NewRunner(nil)
-	r.RunMultiple(ctx, s, "OobePerf",
-		func(ctx context.Context) ([]*metrics.Histogram, error) {
+	uiperf.RunMultiple(ctx, r, s.Run, "OobePerf",
+		func(ctx context.Context, name string) ([]*metrics.Histogram, error) {
 			// Load OOBE Welcome Screen (first OOBE screen). Test extension is required to fetch histograms.
 			cr, err := chrome.New(ctx, chrome.NoLogin(), chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")))
 			if err != nil {

@@ -9,9 +9,10 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -85,7 +86,7 @@ func TabletTransitionPerf(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to set the window (%d): %v", windows[0].ID, err)
 	}
 
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.RunAndWaitAll(s.Run, tconn, func(ctx context.Context) error {
 		if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
 			return errors.Wrap(err, "failed to enable tablet mode")
 		}

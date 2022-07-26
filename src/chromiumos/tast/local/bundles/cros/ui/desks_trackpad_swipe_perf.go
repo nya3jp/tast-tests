@@ -10,10 +10,11 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -76,7 +77,7 @@ func DesksTrackpadSwipePerf(ctx context.Context, s *testing.State) {
 
 	w := tpw.Width()
 	h := tpw.Height()
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, cr.Browser(), uiperf.RunAndWaitAll(s.Run, tconn, func(ctx context.Context) error {
 		// Do a horizontal four-finger swipe across the entire width of the trackpad.
 		// The fingers are positioned at 1/8, 3/8, 5/8, and 7/8 of the trackpad height.
 		if err := tw.Swipe(ctx, 0, h/8, w-1, h/8, 0, h/4, 4, time.Second); err != nil {

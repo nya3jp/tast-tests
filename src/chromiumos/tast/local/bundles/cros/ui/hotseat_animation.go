@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -183,7 +184,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 			shownHomeButtonHistogram,
 			shownWidgetHistogram)
 	}
-	runner.RunMultiple(ctx, s, "WindowCreation", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	uiperf.RunMultiple(ctx, runner, s.Run, "WindowCreation", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		sctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancel()
 
@@ -263,7 +264,7 @@ func HotseatAnimation(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to generate touch coord converter")
 	}
 
-	runner.RunMultiple(ctx, s, "", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	uiperf.RunMultiple(ctx, runner, s.Run, "", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}

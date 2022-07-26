@@ -12,13 +12,14 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -114,7 +115,7 @@ func WindowCyclePerf(ctx context.Context, s *testing.State) {
 		numExistingWindows = numWindows
 
 		suffix := fmt.Sprintf("%dwindows", numWindows)
-		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAny(tconn, func(ctx context.Context) error {
+		uiperf.RunMultiple(ctx, runner, s.Run, suffix, perfutil.RunAndWaitAny(tconn, func(ctx context.Context) error {
 			// Create a shorter context to ensure the time to release the alt-key.
 			sctx, cancel := ctxutil.Shorten(ctx, 500*time.Millisecond)
 			defer cancel()
