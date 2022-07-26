@@ -107,7 +107,15 @@ func (f *crostiniAppsFixture) PreTest(ctx context.Context, s *testing.FixtTestSt
 	screendiffConfig := screenshot.Config{
 		DefaultOptions: screenshot.Options{
 			SkipWindowResize: true,
-			WindowState:      defaultWindowState},
+			WindowState:      defaultWindowState,
+			// Config fuzzy_max_different_pixels and fuzzy_pixel_delta_threshold
+			// to help reduce the number of untriaged images, see go/goldctl for
+			// parameter details.
+			// Set these two parameters to allow 100-pixel difference with each
+			// pixel being able differ to any degree.
+			MaxDifferentPixels:  100,
+			PixelDeltaThreshold: 255 * 4,
+		},
 		SkipDpiNormalization: true,
 	}
 	differ, err := screenshot.NewDifferFromChrome(ctx, f.screenDiffer.state, f.cr, screendiffConfig)
