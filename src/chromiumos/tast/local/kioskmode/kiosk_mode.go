@@ -134,18 +134,15 @@ func (k *Kiosk) Close(ctx context.Context) (retErr error) {
 // mode starting, ready for launch, and successful launch of Kiosk.
 // reader Reader instance should be processing logs filtered for Chrome only.
 func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
-	const (
-		// logScanTimeout is a timeout for log messages indicating Kiosk startup
-		// and successful launch to be present. It is set to over a minute as Kiosk
-		// mode launch varies depending on device. crbug.com/1222136
-		logScanTimeout = 60 * time.Second
-	)
 	if err := confirmKioskInitialized(ctx, reader); err != nil {
 		return errors.Wrap(err, "failed to verify starting sequence of Kiosk mode")
 	}
 
 	testing.ContextLog(ctx, "Waiting for successful Kiosk mode launch")
-	if _, err := reader.Wait(ctx, logScanTimeout,
+	// Wait for kioskLaunchSucceededLog to be present in logs. Used timeout
+	// accommodates for launching up from the moment all data for its launch
+	// is available.
+	if _, err := reader.Wait(ctx, 60*time.Second,
 		func(e *syslog.Entry) bool {
 			return strings.Contains(e.Content, kioskLaunchSucceededLog)
 		},
@@ -160,11 +157,9 @@ func ConfirmKioskStarted(ctx context.Context, reader *syslog.Reader) error {
 // mode starting and ready for launch.
 func confirmKioskInitialized(ctx context.Context, reader *syslog.Reader) error {
 	testing.ContextLog(ctx, "Waiting for Kiosk mode start")
-	const (
-		logScanTimeout = 30 * time.Second
-	)
-	// Wait for kioskStartingLog to be present in logs.
-	if _, err := reader.Wait(ctx, logScanTimeout,
+	// Wait for kioskStartingLog to be present in logs. Used timeout should be
+	// rather short as this kicks off the Kiosk right away.
+	if _, err := reader.Wait(ctx, 30*time.Second,
 		func(e *syslog.Entry) bool {
 			return strings.Contains(e.Content, kioskStartingLog)
 		},
@@ -172,8 +167,10 @@ func confirmKioskInitialized(ctx context.Context, reader *syslog.Reader) error {
 		return errors.Wrap(err, "failed to verify starting of Kiosk mode")
 	}
 
-	// Wait for kioskReadyToLaunchLog to be present in logs.
-	if _, err := reader.Wait(ctx, logScanTimeout,
+	// Wait for kioskReadyToLaunchLog to be present in logs. Used timeout needs
+	// to accommodate downloading apps, and extensions. It should be kept over
+	// one minute.
+	if _, err := reader.Wait(ctx, 90*time.Second,
 		func(e *syslog.Entry) bool {
 			return strings.Contains(e.Content, kioskReadyToLaunchLog)
 		},
