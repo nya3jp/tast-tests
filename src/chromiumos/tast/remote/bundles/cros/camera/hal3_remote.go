@@ -21,7 +21,7 @@ func init() {
 		Func:         HAL3Remote,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies camera HAL3 interface function on remote DUT",
-		Contacts:     []string{"inker@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"beckerh@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:camerabox"},
 		SoftwareDeps: []string{"arc", "arc_camera3", caps.BuiltinCamera},
 		ServiceDeps:  []string{"tast.cros.camerabox.HAL3Service"},
