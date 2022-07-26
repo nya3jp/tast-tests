@@ -186,8 +186,10 @@ func (v *vpnDialogConfigger) inputTextField(ctx context.Context, name, value str
 }
 
 func (v *vpnDialogConfigger) selectListOption(ctx context.Context, name, value string) error {
+	btn := nodewith.Name(name).Role(role.PopUpButton)
 	return uiauto.Combine("Select "+name,
-		v.ui.LeftClick(nodewith.Name(name).Role(role.PopUpButton)),
+		v.ui.MakeVisible(btn),
+		v.ui.LeftClick(btn),
 		v.ui.LeftClick(nodewith.Name(value).Role(role.ListBoxOption)),
 	)(ctx)
 }
@@ -304,7 +306,7 @@ func (v *vpnDialogConfigger) configOpenVPN(ctx context.Context) error {
 	// Server CA is selected by default. Only need to select user cert.
 	certName := "chromelab-wifi-testbed-root.mtv.google.com [chromelab-wifi-testbed-client.mtv.google.com]"
 	if err := v.selectListOption(ctx, "User certificate", certName); err != nil {
-		return errors.Wrap(err, "failed to select VPN type")
+		return errors.Wrap(err, "failed to select user certificate")
 	}
 	return nil
 }
