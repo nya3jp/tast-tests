@@ -9,6 +9,7 @@ import (
 	"os"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/crostini"
 	"chromiumos/tast/local/crostini/ui/settings"
 	"chromiumos/tast/local/disk"
@@ -65,13 +66,17 @@ func ResizeSpaceConstrained(ctx context.Context, s *testing.State) {
 	keyboard := pre.KB
 	cont := pre.Cont
 
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
+	defer cancel()
+
 	// Open the Linux settings.
 	st, err := settings.OpenLinuxSettings(ctx, tconn, cr)
 	if err != nil {
 		s.Fatal("Failed to open Linux Settings: ", err)
 	}
 	const GB uint64 = 1 << 30
-	targetDiskSizeBytes := []uint64{20 * GB, 10 * GB, 5 * GB, 1 * GB, 5 * GB, 10 * GB}
+	targetDiskSizeBytes := []uint64{20 * GB, 10 * GB, 5 * GB, 10 * GB}
 	currSizeStr, err := st.GetDiskSize(ctx)
 	if err != nil {
 		s.Fatal("Failed to get current disk size: ", err)
@@ -80,6 +85,13 @@ func ResizeSpaceConstrained(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatalf("Failed to parse disk size string %s: %v", currSizeStr, err)
 	}
+
+	defer func(ctx context.Context, targetSize uint64) {
+		s.Logf("back to original size: %d", targetSize)
+		if _, _, err := st.Resize(ctx, keyboard, targetSize); err != nil {
+			s.Logf("Failed to resize to the original disk size: %d", targetSize)
+		}
+	}(cleanupCtx, currSizeBytes)
 
 	for _, tBytes := range targetDiskSizeBytes {
 		testResize(ctx, s, cont, keyboard, st, currSizeBytes, tBytes)
