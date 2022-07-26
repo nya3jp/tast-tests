@@ -22,7 +22,7 @@ func init() {
 		Func:         CCAUIPerf,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Opens CCA and measures the UI performance including CPU and power usage",
-		Contacts:     []string{"wtlee@chromium.org", "inker@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},

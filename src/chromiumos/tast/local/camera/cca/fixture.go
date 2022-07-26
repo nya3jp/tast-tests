@@ -152,7 +152,7 @@ func init() {
 	testing.AddFixture(&testing.Fixture{
 		Name:     "ccaTestBridgeReadyForDocumentManualCrop",
 		Desc:     "Set up test bridge for CCA and chrome for testing document manual crop",
-		Contacts: []string{"inker@chromium.org"},
+		Contacts: []string{"chuhsuan@chromium.org"},
 		Data:     []string{"cca_ui.js"},
 		Impl: &fixture{
 			fakeCamera: true,
