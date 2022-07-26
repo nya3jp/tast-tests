@@ -16,6 +16,24 @@
       "message": "Could you specify the whole command line so people can copy-paste if they want? (usually using ${BOARD} or ${DUT} if those are needed)",
       "revId": "3050a7d910a8f7caf3f65e109ace248939dcefb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21f24873_80fcca93",
+        "filename": "helpers/local/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-07-26T04:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf28baf8_3798d5e2",
+      "revId": "3050a7d910a8f7caf3f65e109ace248939dcefb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
