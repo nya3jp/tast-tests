@@ -16,6 +16,24 @@
       "message": "I had to increase the timeout to 20 minutes after trying the CL on trybots (seems that they are like 1.5x slower than the workstation).\n\nkyleshima@: Is this OK? The test only runs on VMs, so we don\u0027t increase the workload on real DUTs.",
       "revId": "865ef203fb0996672744b572da5e1a29de931472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ee90cb_8801b1d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1390967
+      },
+      "writtenOn": "2022-07-26T00:58:47Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure, I don\u0027t think I\u0027ve seen a critical test with such a long timeout. Let me add some reviewers from the Tast framework side to weigh in.\n\n+jessemcguire +seewaifu are there any restrictions or guidelines for maximum time for CQ tests? Would the right move here be to split this up into additional subtests with lower timeouts, or is this fine?",
+      "parentUuid": "74e089af_69dc086f",
+      "revId": "865ef203fb0996672744b572da5e1a29de931472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
