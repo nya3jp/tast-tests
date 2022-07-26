@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8e354a9_7d21fa91",
+        "filename": "src/chromiumos/tast/local/policyutil/verify.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-26T12:06:36Z",
+      "side": 1,
+      "message": "Formatter does not like the existing comment.",
+      "revId": "4d652cf1dd1f5bd9396c33720474161f431758a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
