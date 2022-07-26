@@ -62,19 +62,16 @@ func init() {
 		Fixture:      "arcBooted",
 		Params: []testing.Param{{
 			Val:               standardizedtestutil.GetClamshellTest(runStandardizedKeyboardKeysTest),
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
 			Name:              "tablet_mode",
 			Val:               standardizedtestutil.GetTabletTest(runStandardizedKeyboardKeysTest),
 			ExtraSoftwareDeps: []string{"android_p"},
-			ExtraAttr:         []string{"informational"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.TabletHardwareDep),
 		}, {
 			Name:              "vm",
 			Val:               standardizedtestutil.GetClamshellTest(runStandardizedKeyboardKeysTest),
-			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			ExtraHardwareDeps: hwdep.D(standardizedtestutil.ClamshellHardwareDep),
 		}, {
