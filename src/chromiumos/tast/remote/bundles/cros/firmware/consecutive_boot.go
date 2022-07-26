@@ -133,6 +133,22 @@ func ConsecutiveBoot(ctx context.Context, s *testing.State) {
 		hasCustomCmd = true
 	}
 
+	getTime := func(ctx context.Context) (int64, error) {
+		result, err := h.Servo.RunECCommandGetOutput(ctx, "gettime", []string{`Time:\s+0x(\S+)\s`})
+		if err != nil {
+			return 0, errors.Wrap(err, "failed to get ec time")
+		}
+		time, err := strconv.ParseInt(result[0][1], 16, 64)
+		if err != nil {
+			return 0, errors.Wrap(err, "could not parse")
+		}
+		return time, nil
+	}
+	priorECTime, err := getTime(ctx)
+	if err != nil {
+		s.Fatal("Failed to read EC clock: ", err)
+	}
+
 	s.Log("Verifying boot mode is ", testArgs.bootMode)
 	if err := verifyBootMode(testArgs.bootMode); err != nil {
 		s.Fatal("Failed boot mode check: ", err)
@@ -146,11 +162,6 @@ func ConsecutiveBoot(ctx context.Context, s *testing.State) {
 	for i := 0; i < numIters; i++ {
 		s.Logf("Running iteration %d out of %d ", i+1, numIters)
 		shutdownFunc()
-
-		s.Logf("Sleep for %s so shutdown completes", h.Config.Shutdown)
-		if err := testing.Sleep(ctx, h.Config.Shutdown); err != nil {
-			s.Fatal("Failed to sleep waiting for shutdown: ", err)
-		}
 
 		s.Log("Check for G3 powerstate")
 		if err := h.WaitForPowerStates(ctx, 1*time.Second, 30*time.Second, "G3"); err != nil {
@@ -187,6 +198,15 @@ func ConsecutiveBoot(ctx context.Context, s *testing.State) {
 			s.Fatal("Unexpectedly got same boot id over reboot")
 		}
 		bootID = newBootID
+
+		ecTime, err := getTime(ctx)
+		if err != nil {
+			s.Fatal("Failed to read EC clock: ", err)
+		}
+		if ecTime < priorECTime {
+			s.Fatalf("EC reboot detected. Clock was %v but now is %v", priorECTime, ecTime)
+		}
+		priorECTime = ecTime
 
 		if hasCustomCmd {
 			s.Logf("Running provided custom command %q after reboot #%d", customCmd, i+1)
