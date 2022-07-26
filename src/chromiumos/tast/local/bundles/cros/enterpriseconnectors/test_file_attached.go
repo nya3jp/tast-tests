@@ -328,13 +328,15 @@ func testFileAttachedForBrowserAndFile(
 		s.Fatal("Failed to verify whether file was correctly attached or blocked: ", err)
 	}
 
-	if testParams.ScansEnabled && !params.IsUnscannable {
+	if testParams.ScansEnabled {
 		// If scans are enabled and the content isn't unscannable, we check the deep scanning verdict.
 		if err := helpers.WaitForDeepScanningVerdict(ctx, dconnSafebrowsing, helpers.ScanningTimeOut); err != nil {
 			s.Fatal("Failed to wait for deep scanning verdict: ", err)
 		}
-		if err := helpers.VerifyDeepScanningVerdict(ctx, dconnSafebrowsing, params.IsBad); err != nil {
-			s.Fatal("Failed to verify deep scanning verdict: ", err)
+		if !params.IsUnscannable {
+			if err := helpers.VerifyDeepScanningVerdict(ctx, dconnSafebrowsing, params.IsBad); err != nil {
+				s.Fatal("Failed to verify deep scanning verdict: ", err)
+			}
 		}
 	}
 
