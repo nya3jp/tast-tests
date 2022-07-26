@@ -9,7 +9,6 @@ import (
 	"regexp"
 	"time"
 
-	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/hermesconst"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
@@ -38,13 +37,10 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_test_esim"},
-		Fixture:      fixture.FakeDMSEnrolled,
+		Fixture:      "cellularWithFakeDMSEnrolled",
 		Timeout:      9 * time.Minute,
 	})
 }
-
-// testProfileDetailButton is the finder for the "Test Profile" detail subpage arrow button in the mobile data page UI.
-var testProfileDetailButton = nodewith.NameStartingWith("Test Profile").Role(role.Button)
 
 // tridots is the finder for the "More actions" button UI in cellular detail page.
 var tridots = nodewith.Name("More actions").Role(role.Button)
@@ -59,21 +55,30 @@ var removeButton = nodewith.NameStartingWith("Remove eSIM profile").Role(role.Bu
 var renameMenu = nodewith.Name("Rename Profile").Role(role.MenuItem)
 
 func CellularPolicyInstall(ctx context.Context, s *testing.State) {
-	// Remove any existing profile on test euicc
+	s.Log("Wait for Chrome auto refresh profile list done")
+	if err := testing.Sleep(ctx, 30*time.Second); err != nil {
+		s.Fatal("Failed to wait for 30 seconds: ", err)
+	}
 	euicc, slot, err := hermes.GetEUICC(ctx, true)
 	if err != nil {
 		s.Fatal("Failed to get test euicc: ", err)
 	}
 
+	// Remove any existing profiles on test euicc
 	if err := euicc.DBusObject.Call(ctx, hermesconst.EuiccMethodResetMemory, 1).Err; err != nil {
 		s.Fatal("Failed to reset test euicc: ", err)
 	}
 	s.Log("Reset test euicc completed")
 
+	if err := euicc.DBusObject.Call(ctx, hermesconst.EuiccMethodUseTestCerts, true).Err; err != nil {
+		s.Fatal("Failed to set use test cert on eUICC: ", err)
+	}
+	s.Log("Set to use test cert on euicc completed")
+
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
 	// Start a Chrome instance that will fetch policies from the FakeDMS.
 	chromeOpts := []chrome.Option{
-		chrome.EnableFeatures("ESimPolicy", "UseStorkSmdsServerAddress"),
+		chrome.EnableFeatures("UseStorkSmdsServerAddress"),
 		chrome.FakeLogin(chrome.Creds{User: fixtures.Username, Pass: fixtures.Password}),
 		chrome.DMSPolicy(fdms.URL),
 		chrome.KeepEnrollment(),
@@ -159,12 +164,14 @@ func CellularPolicyInstall(ctx context.Context, s *testing.State) {
 func verifyTestESimProfileNotModifiable(ctx context.Context, tconn *chrome.TestConn) error {
 	ui := uiauto.New(tconn).WithTimeout(3 * time.Second)
 
-	managedTestProfile := nodewith.NameRegex(regexp.MustCompile("^Network [0-9] of [0-9], Test Profile.*Managed by your Administrator.*")).Role(role.Button)
+	managedTestProfile := nodewith.NameRegex(regexp.MustCompile("^Network [0-9] of [0-9],.*Managed by your Administrator.*"))
+	// testProfileDetailButton is the finder for the "Test Profile" detail subpage arrow button in the mobile data page UI.
+	var testProfileDetailButton = nodewith.ClassName("subpage-arrow").Role(role.Button).Ancestor(managedTestProfile.First())
 	if err := ui.WithTimeout(time.Minute).WaitUntilExists(managedTestProfile)(ctx); err != nil {
 		return errors.Wrap(err, "failed to find the newly installed test profile as a managed profile")
 	}
 
-	if err := ui.WithTimeout(150 * time.Second).LeftClick(testProfileDetailButton)(ctx); err != nil {
+	if err := ui.WithTimeout(3 * time.Minute).LeftClick(testProfileDetailButton)(ctx); err != nil {
 		return errors.Wrap(err, "failed to left click Test Profile detail button")
 	}
 
