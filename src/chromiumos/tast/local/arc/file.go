@@ -95,12 +95,12 @@ func PkgFileSize(ctx context.Context, user, pkg, filename string) (int64, error)
 // It is caller's responsibility to remove all the contents in the directory
 // after its use. One of the typical use cases will be as follows:
 //
-//   tmpdir, err := a.MktempDir(ctx)
-//   if err != nil {
-//     ... // error handling
-//   }
-//   defer a.RemoveAll(tmpdir)
-//   ... // Main code using tmpdir.
+//	tmpdir, err := a.TempDir(ctx)
+//	if err != nil {
+//	  ... // error handling
+//	}
+//	defer a.RemoveAll(ctx, tmpdir)
+//	... // Main code using tmpdir.
 func (a *ARC) TempDir(ctx context.Context) (string, error) {
 	return a.device.TempDir(ctx)
 }
