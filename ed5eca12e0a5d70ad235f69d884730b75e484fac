@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc907b3_f36ff72b",
+        "filename": "helpers/local/multivm.Lifecycle.allocate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-07-26T03:28:28Z",
+      "side": 1,
+      "message": "It\u0027s possible a test would want to exit cleanly by sending input. Can we return without an error if getchar returns input?",
+      "revId": "ed5eca12e0a5d70ad235f69d884730b75e484fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
