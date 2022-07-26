@@ -235,7 +235,7 @@ func checkFilesharingWorksAfterRestart(
 	err = uiauto.Combine("open downloads folder, open text file with Gedit, validate contents",
 		filesApp.OpenDownloads(),
 		filesApp.ClickContextMenuItemRegex(tmpFilename, filesapp.OpenWith, geditContextMenuItem),
-		ui.WaitUntilExists(geditWindow),
+		ui.WithTimeout(2*time.Minute).WaitUntilExists(geditWindow),
 		ud.WaitUntilExists(uidetection.TextBlock(strings.Split("text string", " ")).WithinA11yNode(geditWindow)),
 	)(ctx)
 	if err != nil {
