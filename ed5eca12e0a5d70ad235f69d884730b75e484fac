@@ -34,6 +34,24 @@
       "parentUuid": "1bc907b3_f36ff72b",
       "revId": "ed5eca12e0a5d70ad235f69d884730b75e484fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc744520_af360a7b",
+        "filename": "helpers/local/multivm.Lifecycle.allocate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-07-26T06:17:33Z",
+      "side": 1,
+      "message": "Yes, if getchar fails, we should log an error and the program should return EXIT_FAILURE",
+      "parentUuid": "a16bb748_305769f8",
+      "revId": "ed5eca12e0a5d70ad235f69d884730b75e484fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
