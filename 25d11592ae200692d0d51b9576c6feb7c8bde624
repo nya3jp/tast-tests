@@ -16,6 +16,24 @@
       "message": "I missed this the first time around, but I think we should be including a `MinStorage` hardware dep [1] here to ensure there is enough space to extract the ZIP\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/testing/hwdep/hwdep.go;l\u003d1169-1185;drc\u003d6922a070b4304bd3ebaede92588a015942a9f113",
       "revId": "25d11592ae200692d0d51b9576c6feb7c8bde624",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e678365_79011899",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-07-26T02:11:49Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary. The ZIP is mounted, and the big file in the mounted ZIP is read by the test code (ensuring that it can be completely and correctly be read). But the uncompressed 6GB file is never stored on the disk.",
+      "parentUuid": "720818d9_ec6b1066",
+      "revId": "25d11592ae200692d0d51b9576c6feb7c8bde624",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
