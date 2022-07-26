@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -33,12 +34,13 @@ func init() {
 
 func Recovery(ctx context.Context, s *testing.State) {
 	const (
-		userName        = "foo@bar.baz"
-		userPassword    = "secret"
-		passwordLabel   = "online-password"
-		recoveryLabel   = "test-recovery"
-		testFile        = "file"
-		testFileContent = "content"
+		userName                   = "foo@bar.baz"
+		userPassword               = "secret"
+		passwordLabel              = "online-password"
+		recoveryLabel              = "test-recovery"
+		testFile                   = "file"
+		testFileContent            = "content"
+		cryptohomeErrorKeyNotFound = 15
 	)
 
 	ctxForCleanUp := ctx
@@ -161,5 +163,21 @@ func Recovery(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read back test file: ", err)
 	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
 		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
+	}
+
+	// Remove the recovery auth factor.
+	if err := client.RemoveAuthFactor(ctx, authSessionID, recoveryLabel); err != nil {
+		s.Fatal("Failed to remove recovery auth factor: ", err)
+	}
+
+	// Authentication should fail now.
+	err = client.AuthenticateRecoveryAuthFactor(ctx, authSessionID, recoveryLabel, epoch, response)
+	var exitErr *hwsec.CmdExitError
+	if !errors.As(err, &exitErr) {
+		s.Fatalf("Unexpected error in authentication after factor removal: got %q; want *hwsec.CmdExitError", err)
+	}
+	if exitErr.ExitCode != cryptohomeErrorKeyNotFound {
+		s.Fatalf("Unexpected exit code in authentication after factor removal: got %d; want %d",
+			exitErr.ExitCode, cryptohomeErrorKeyNotFound)
 	}
 }
