@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8cc4542_fc966ea1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_text_editing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-07-26T00:20:49Z",
+      "side": 1,
+      "message": "nit: as discussed offline, for someone reading the code, it seems like there\u0027s something special about textAreaNoCorrectionInputFieldHeader, but actually we can click anywhere that is \"outside\".",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "294298dbc3daf39e6ee3fbbf69c20687c1ca99d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
