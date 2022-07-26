@@ -83,6 +83,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fed57dc_a9f8aa7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-26T21:58:37Z",
+      "side": 1,
+      "message": "empty check?",
+      "revId": "7fc8960577081a976d03c44c70ab4711021de374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e2eca77_e7c9ed6f",
         "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_arc_provisioning.go",
         "patchSetId": 1
