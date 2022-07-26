@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -127,7 +128,7 @@ func DragMaximizedWindowPerf(ctx context.Context, s *testing.State) {
 	// Return to the caption center, this will trigger a remaximize animation.
 	points = append(points, points[0])
 
-	pv := perfutil.RunMultiple(ctx, s, br, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := uiperf.RunMultiple(ctx, cr.Browser(), s.Run, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Move the mouse to caption and press down.
 		if err := mouse.Move(tconn, points[0], 10*time.Millisecond)(ctx); err != nil {
 			return errors.Wrap(err, "failed to move to caption")

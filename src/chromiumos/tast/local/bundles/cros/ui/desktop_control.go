@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -144,7 +145,7 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 	// - Open by pressing the Search key
 	// - Close by pressing the Search key again
 	s.Log("Open and close the bubble launcher")
-	r.RunMultiple(ctx, s, "launcher", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	r.RunMultiple(ctx, uiperf.Run(s.Run), "launcher", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Take a snapshot of the open launcher smoothness histogram.
 		histo, err := metrics.GetHistogram(ctx, tconn, openLauncherSmoothnessHistogram)
 		if err != nil {
@@ -194,7 +195,7 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 	// - click the collapse button again to expand the quick settings
 	// - close the quick settings
 	s.Log("Shrink and expand the quick settings")
-	r.RunMultiple(ctx, s, "quick-settings", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	r.RunMultiple(ctx, uiperf.Run(s.Run), "quick-settings", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// The option to be used for StableLeftClick and WaitLocationStable. Also,
 		// it uses a longer interval (default interval is 100msecs), as the location
 		// update may not happen very quickly.
