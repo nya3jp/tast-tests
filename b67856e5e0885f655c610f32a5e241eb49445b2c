@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "673c044b_d88be716",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-07-26T00:39:46Z",
+      "side": 1,
+      "message": "Thanks for explanation. If the both require to begin from the certain range of battery charge, doing in one test sounds better for test efficiency. I think table-driven test is optional at the moment because just calling 2 functions sequentially would be simple enough, like\n\n// common initialization here, including battery charging/discharging\n\nif err :\u003d testSettings(.....); err !\u003d nil {\n  s.Error(....)\n}\n\n// do some necessary re-initialization here, if any\n\nif err :\u003d testChargeNow(.....); err !\u003d nil {\n  s.Error(....)\n}",
+      "parentUuid": "f45a17de_5bbcea78",
+      "revId": "b67856e5e0885f655c610f32a5e241eb49445b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a213fbd0_98b1020c",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/adaptive_charging.go",
         "patchSetId": 3
