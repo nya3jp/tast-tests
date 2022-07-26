@@ -6,6 +6,7 @@ package crostini
 
 import (
 	"context"
+	"regexp"
 	"time"
 
 	"chromiumos/tast/local/chrome/vmc"
@@ -80,8 +81,14 @@ func RemoveOk(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to run 'vmc list': ", err)
 	}
 
-	const expectedResult = "Total Size (bytes): 0\n"
-	if string(result) != expectedResult {
-		s.Fatalf("Failed to verify the result of 'vmc list', got %s, want %s", string(result), expectedResult)
+	r := regexp.MustCompile(`(?m)^([a-z]+) \([0-9a-z, ]+\)$`)
+	matchSlice := r.FindAllSubmatch(result, -1)
+	var vms []string
+	for _, match := range matchSlice {
+		if string(match[1]) == "termina" {
+			s.Fatal("termina still present in 'vmc list': ", string(result))
+		}
+		vms = append(vms, string(match[1]))
 	}
+	s.Log("Found following VMs after uninstall: ", vms)
 }
