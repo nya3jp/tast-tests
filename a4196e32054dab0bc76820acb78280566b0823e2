@@ -69,6 +69,30 @@
       },
       "revId": "a4196e32054dab0bc76820acb78280566b0823e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21cffc31_003c8c25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/data/extension_policy/manifest.json",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-26T14:55:46Z",
+      "side": 1,
+      "message": "Copy pasted from autotest, fixed now.",
+      "parentUuid": "97eee33d_03bdb268",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 3
+      },
+      "revId": "a4196e32054dab0bc76820acb78280566b0823e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
