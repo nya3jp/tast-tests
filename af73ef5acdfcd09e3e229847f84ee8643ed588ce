@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd51300b_0767ac87",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-07-26T02:59:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce3216f9_434aef33",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 37
+      },
+      "revId": "af73ef5acdfcd09e3e229847f84ee8643ed588ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "088d5f8c_b87bf55d",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-07-25T13:27:02Z",
       "side": 1,
       "message": "ditto. (L87)",
+      "revId": "af73ef5acdfcd09e3e229847f84ee8643ed588ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "184f7482_ac470623",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-07-26T02:59:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "088d5f8c_b87bf55d",
       "revId": "af73ef5acdfcd09e3e229847f84ee8643ed588ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
