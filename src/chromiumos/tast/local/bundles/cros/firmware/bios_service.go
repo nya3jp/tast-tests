@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"os"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
@@ -29,13 +30,13 @@ type BiosService struct {
 	s *testing.ServiceState
 }
 
-// programmerEnumToProgrammer maps the enum from FWBackUpSection to a bios FlashromProgramer.
+// programmerEnumToProgrammer maps the enum from FWSectionInfo to a bios FlashromProgramer.
 var programmerEnumToProgrammer = map[pb.Programmer]bios.FlashromProgrammer{
 	pb.Programmer_BIOSProgrammer: bios.HostProgrammer,
 	pb.Programmer_ECProgrammer:   bios.ECProgrammer,
 }
 
-// sectionEnumToSection maps the enum from FWBackUpSection to a bios ImageSection.
+// sectionEnumToSection maps the enum from FWSectionInfo to a bios ImageSection.
 var sectionEnumToSection = map[pb.ImageSection]bios.ImageSection{
 	pb.ImageSection_BOOTSTUBImageSection:         bios.BOOTSTUBImageSection,
 	pb.ImageSection_COREBOOTImageSection:         bios.COREBOOTImageSection,
@@ -60,17 +61,17 @@ var updateModeEnumtoMode = map[pb.UpdateMode]bios.FirmwareUpdateMode{
 }
 
 // BackupImageSection dumps the image region into temporary file locally and returns its path.
-func (*BiosService) BackupImageSection(ctx context.Context, req *pb.FWBackUpSection) (*pb.FWBackUpInfo, error) {
-	path, err := bios.NewImageToFile(ctx, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
+func (*BiosService) BackupImageSection(ctx context.Context, req *pb.FWSectionInfo) (*pb.FWSectionInfo, error) {
+	path, err := bios.NewImageToFile(ctx, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer], req.Path)
 	if err != nil {
 		return nil, errors.Wrapf(err, "could not backup %s region with programmer %s", sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
 	}
-	return &pb.FWBackUpInfo{Path: path, Section: req.Section, Programmer: req.Programmer}, nil
+	return &pb.FWSectionInfo{Path: path, Section: req.Section, Programmer: req.Programmer}, nil
 }
 
 // RestoreImageSection restores image region from temporary file locally and restores fw with it.
-func (bs *BiosService) RestoreImageSection(ctx context.Context, req *pb.FWBackUpInfo) (*empty.Empty, error) {
-	if err := bios.WriteImageFromSingleSectionFile(ctx, req.Path, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer]); err != nil {
+func (bs *BiosService) RestoreImageSection(ctx context.Context, req *pb.FWSectionInfo) (*empty.Empty, error) {
+	if err := bios.WriteImageFromMultiSectionFile(ctx, req.Path, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer]); err != nil {
 		return nil, errors.Wrapf(err, "could not restore %s region with programmer %s from path %s", sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer], req.Path)
 	}
 	return &empty.Empty{}, nil
@@ -113,10 +114,10 @@ func (bs *BiosService) SetAPSoftwareWriteProtect(ctx context.Context, req *pb.WP
 		WPRangeLength: -1,
 		WPSection:     bios.EmptyImageSection,
 	}
-	if req.WPRangeStart != -1 && req.WPRangeLength != -1 {
-		args.WPRangeStart = req.WPRangeStart
-		args.WPRangeLength = req.WPRangeLength
-	} else if sectionEnumToSection[req.WPSection] != bios.EmptyImageSection {
+	if req.WPRange != nil {
+		args.WPRangeStart = req.WPRange.Start
+		args.WPRangeLength = req.WPRange.Length
+	} else if req.WPSection != pb.ImageSection_EmptyImageSection {
 		args.WPSection = sectionEnumToSection[req.WPSection]
 	}
 	if err := bios.SetAPSoftwareWriteProtect(ctx, req.Enable, args); err != nil {
@@ -126,23 +127,41 @@ func (bs *BiosService) SetAPSoftwareWriteProtect(ctx context.Context, req *pb.WP
 }
 
 // CorruptFWSection writes garbage over part of the specified firmware section.
-func (bs *BiosService) CorruptFWSection(ctx context.Context, req *pb.CorruptSection) (*empty.Empty, error) {
-	img, err := bios.NewImage(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), programmerEnumToProgrammer[req.Programmer])
+// Provide a dir to save corrupted image in the request, else temp image file will be cleaned up.
+func (bs *BiosService) CorruptFWSection(ctx context.Context, req *pb.FWSectionInfo) (*pb.FWSectionInfo, error) {
+	img, err := bios.NewImage(ctx, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
 	if err != nil {
 		return nil, errors.Wrap(err, "could not read firmware")
 	}
 	for i, v := range img.Data {
 		img.Data[i] = (v + 1) & 0xff
 	}
-	err = img.WriteFlashrom(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), programmerEnumToProgrammer[req.Programmer])
+
+	// Save copy of corrupted data to file before writing.
+	corruptedImg, err := img.WriteImageToFile(ctx, sectionEnumToSection[req.Section], req.Path)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed writing image contents to file")
+	}
+	// Delete temporary image file if saving not requested with req.Path.
+	if req.Path == "" {
+		defer os.Remove(corruptedImg)
+	}
+
+	// Write corrupted image with flashrom.
+	err = bios.WriteImageFromMultiSectionFile(ctx, corruptedImg, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
 	if err != nil {
 		return nil, errors.Wrap(err, "could not write firmware")
 	}
-	return &empty.Empty{}, nil
+
+	// Return path to corrupted fw file if save path provided.
+	if req.Path == "" {
+		return &pb.FWSectionInfo{Section: req.Section, Programmer: req.Programmer}, nil
+	}
+	return &pb.FWSectionInfo{Path: corruptedImg, Section: req.Section, Programmer: req.Programmer}, nil
 }
 
 // WriteImageFromMultiSectionFile writes the provided multi section file in the specified section.
-func (bs *BiosService) WriteImageFromMultiSectionFile(ctx context.Context, req *pb.FWBackUpInfo) (*empty.Empty, error) {
+func (bs *BiosService) WriteImageFromMultiSectionFile(ctx context.Context, req *pb.FWSectionInfo) (*empty.Empty, error) {
 	if err := bios.WriteImageFromMultiSectionFile(ctx, req.Path, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer]); err != nil {
 		return nil, errors.Wrapf(err, "could not write %s region with programmer %s from path %s", sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer], req.Path)
 	}
