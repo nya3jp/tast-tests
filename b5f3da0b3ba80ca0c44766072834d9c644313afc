@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17013793_7df17d77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1536938
+      },
+      "writtenOn": "2022-07-26T00:07:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63655eaf_fa89846f",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 56
+      },
+      "revId": "b5f3da0b3ba80ca0c44766072834d9c644313afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97a333fc_2ffbe7a9",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-25T12:04:36Z",
       "side": 1,
       "message": "I feel this is too general and not detailed enough to understand what it is testing.",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "b5f3da0b3ba80ca0c44766072834d9c644313afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c8a8e3_69fc65b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_editing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1536938
+      },
+      "writtenOn": "2022-07-26T00:07:03Z",
+      "side": 1,
+      "message": "Hmm maybe VirtualKeyboardTextEditing? Or maybe something which mentions how it focuses/unfocuses the text field and moves the cursor around? I\u0027m not sure how I could name it without making the test name too long... do you have any particular suggestions?",
+      "parentUuid": "97a333fc_2ffbe7a9",
       "range": {
         "startLine": 31,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "722a69cd_9e953733",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_editing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1536938
+      },
+      "writtenOn": "2022-07-26T00:07:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4d67cb3_70142193",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 46
+      },
+      "revId": "b5f3da0b3ba80ca0c44766072834d9c644313afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86577a3f_0bae0d54",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-25T12:04:36Z",
       "side": 1,
       "message": "this function is repeated a few times. You can define an embedded function like:\n\nclickRightBound :\u003d func(rightIndex int) uiauto.Action {\n    return func(ctx context.Context) error{\n        textBounds, err :\u003d ui.BoundsForRange(ctx, textFinder, 0, rightIndex)\n        if err !\u003d nil {\n\t    return errors.Wrap(err, \"failed to get text location\")\n\t}\n\treturn ui.MouseClickAtLocation(0, textBounds.RightCenter())(ctx)\n    }\n}\n\nthen you can chain everything together: \n    vkbCtx.TapKey(\"space\"),\n    clickRightBound(8),\n    vkbCtx.TapKeys([]string{\"i\", \"h\"}),",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 4
+      },
+      "revId": "b5f3da0b3ba80ca0c44766072834d9c644313afc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae1af269_b334a7a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_editing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1536938
+      },
+      "writtenOn": "2022-07-26T00:07:03Z",
+      "side": 1,
+      "message": "I had been wondering how to do something like this! Looks much better now, thanks!",
+      "parentUuid": "86577a3f_0bae0d54",
       "range": {
         "startLine": 126,
         "startChar": 2,
