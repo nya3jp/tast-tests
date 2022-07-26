@@ -16,6 +16,24 @@
       "message": "Shall we wait until the Fixture Failure issue (b/238567263) is resolved?",
       "revId": "db5703be512fcd74dfe357f1c2351975657f9178",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c74aa4_d71bccc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543263
+      },
+      "writtenOn": "2022-07-26T10:44:27Z",
+      "side": 1,
+      "message": "Hi, the issue seems to be resolved. We also found that this test is flaky on some models due to a memory issue (b/171808591), so we decided to skip those models for now.\n\nPlease take a look, thanks!",
+      "parentUuid": "f1763872_e64edcd2",
+      "revId": "db5703be512fcd74dfe357f1c2351975657f9178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
