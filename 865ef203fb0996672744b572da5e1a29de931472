@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf625410_c52a0622",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-26T16:01:15Z",
+      "side": 1,
+      "message": "Please also run the tast unit test: fast_build.sh -T\nThen add this line to the commmit log\n\nTEST\u003dtast unit test passed.\n\nThanks.\n",
+      "revId": "865ef203fb0996672744b572da5e1a29de931472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74e089af_69dc086f",
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "I\u0027m not quite sure, I don\u0027t think I\u0027ve seen a critical test with such a long timeout. Let me add some reviewers from the Tast framework side to weigh in.\n\n+jessemcguire +seewaifu are there any restrictions or guidelines for maximum time for CQ tests? Would the right move here be to split this up into additional subtests with lower timeouts, or is this fine?",
       "parentUuid": "74e089af_69dc086f",
+      "revId": "865ef203fb0996672744b572da5e1a29de931472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e945772b_c3bb8655",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-07-26T16:01:15Z",
+      "side": 1,
+      "message": "I have saw one stress test with 8 hours timeout. However, I think it will be helpful to add a comment on how the 20-minute timeout was determined. Based on observation or based on calculation? Also, is the 20-minute timeout uniform across all parameterized tests? If it is not, I think will be better to specify it inside the Param.",
+      "parentUuid": "a8ee90cb_8801b1d7",
       "revId": "865ef203fb0996672744b572da5e1a29de931472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
