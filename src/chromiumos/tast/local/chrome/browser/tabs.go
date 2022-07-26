@@ -8,6 +8,7 @@ package browser
 
 import (
 	"context"
+	"fmt"
 
 	"chromiumos/tast/errors"
 )
@@ -86,4 +87,32 @@ func ReplaceCurrentTabsWithSingleNewTab(ctx context.Context, tconn *TestConn) er
 		return errors.Wrap(err, "failed to close other browser tabs")
 	}
 	return nil
+}
+
+// GetTabByTitle gets a single tab that has a tab title that
+// matches |title|. It returns an error if there is not exactly 1 tab
+// that meets the criterion. The browser is given via |tconn|.
+func GetTabByTitle(ctx context.Context, tconn *TestConn, title string) (*Tab, error) {
+	var tabs []Tab
+	if err := tconn.Eval(ctx, fmt.Sprintf(`(async () => {
+		return await tast.promisify(chrome.tabs.query)({title: %q})
+	})()`, title), &tabs); err != nil {
+		return nil, errors.Wrapf(err, "failed to search for tabs with title %q", title)
+	}
+
+	if len(tabs) != 1 {
+		return nil, errors.Errorf("unexpected number of tabs with title %q; found %d, expected 1", title, len(tabs))
+	}
+	return &tabs[0], nil
+}
+
+// CloseTabByTitle finds a tab with title |title| and closes
+// that tab. If there are multiple tabs with that title, it returns
+// an error. The browser is given via |tconn|.
+func CloseTabByTitle(ctx context.Context, tconn *TestConn, title string) error {
+	tab, err := GetTabByTitle(ctx, tconn, title)
+	if err != nil {
+		return err
+	}
+	return CloseTabsByID(ctx, tconn, []int{tab.ID})
 }
