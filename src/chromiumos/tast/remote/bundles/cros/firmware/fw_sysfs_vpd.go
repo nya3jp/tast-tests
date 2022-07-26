@@ -14,9 +14,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware/fixture"
-
 	pb "chromiumos/tast/services/cros/firmware"
-
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -59,7 +57,7 @@ func FWSysfsVPD(ctx context.Context, s *testing.State) {
 
 	// Check for FW version and fail if it's below 8846
 	// See b:156407743 for details.
-	s.Log("Checking for FW version...")
+	s.Log("Checking for FW version")
 	fwidOut, err := h.DUT.Conn().CommandContext(ctx, "crossystem", "fwid").Output()
 	if err != nil {
 		s.Fatal("Failed to check firmware version: ", err)
@@ -77,7 +75,7 @@ func FWSysfsVPD(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Backing up current RW_VPD region for safety")
-	rwvpdPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{
+	rwvpdPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{
 		Programmer: pb.Programmer_BIOSProgrammer,
 		Section:    pb.ImageSection_RWVPDImageSection,
 	})
@@ -87,7 +85,7 @@ func FWSysfsVPD(ctx context.Context, s *testing.State) {
 	s.Log("RW_VPD region backup is stored at: ", rwvpdPath.Path)
 
 	s.Log("Backing up current RO_VPD region for safety")
-	rovpdPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{
+	rovpdPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWSectionInfo{
 		Programmer: pb.Programmer_BIOSProgrammer,
 		Section:    pb.ImageSection_ROVPDImageSection,
 	})
@@ -113,7 +111,7 @@ func FWSysfsVPD(ctx context.Context, s *testing.State) {
 		}
 
 		if err := h.EnsureDUTBooted(ctx); err != nil {
-			s.Fatal("Failed to ensure the DUT is booted!")
+			s.Fatal("Failed to ensure the DUT is booted")
 		}
 
 		s.Log("Restoring RW_VPD image")
@@ -155,8 +153,8 @@ func FWSysfsVPD(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to read current RW_VPD value: ", err)
 	}
 
-	s.Logf("Current RO_VPD values: \n%s\n", string(currentVPDROout))
-	s.Logf("Current RW_VPD values: \n%s\n", string(currentVPDRWout))
+	s.Log("Current RO_VPD values: ", string(currentVPDROout))
+	s.Log("Current RW_VPD values: ", string(currentVPDRWout))
 
 	s.Log("RW_TEST value: ", rwSectionString)
 	s.Log("RO_TEST value: ", roSectionString)
