@@ -48,6 +48,9 @@ type Options struct {
 	// Specifically, this is dr + dg + db (the sum of the difference in	each channel).
 	PixelDeltaThreshold int
 
+	// The maximum allowed different pixels.
+	MaxDifferentPixels int
+
 	// WindowState contains the window state to set the test to. If the window
 	// state is normal, then the window size will need to be explicitly specified.
 	WindowState ash.WindowStateType
@@ -90,10 +93,13 @@ func (o *Options) FillDefaults(d Options) {
 	if o.PixelDeltaThreshold == 0 {
 		o.PixelDeltaThreshold = d.PixelDeltaThreshold
 	}
+	if o.MaxDifferentPixels == 0 {
+		o.MaxDifferentPixels = d.MaxDifferentPixels
+	}
 	if o.WindowWidthDP == 0 {
 		o.WindowWidthDP = d.WindowWidthDP
 	}
-	if o.PixelDeltaThreshold == 0 {
+	if o.WindowHeightDP == 0 {
 		o.WindowHeightDP = d.WindowHeightDP
 	}
 	if o.WindowBorderWidthDP == 0 {
