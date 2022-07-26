@@ -140,6 +140,24 @@
       "message": "No critical failures in the last 2 weeks http://shortn/_k8RlQQnby0, I think we should land this",
       "revId": "fe7b258caaa6b80a3b388f3f5697a19c0c4a51ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6410426e_4000a96c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2022-07-26T16:37:12Z",
+      "side": 1,
+      "message": "Resolving since the test hasn\u0027t failed lately",
+      "parentUuid": "462ecce4_748acea6",
+      "revId": "fe7b258caaa6b80a3b388f3f5697a19c0c4a51ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
