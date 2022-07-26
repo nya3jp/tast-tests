@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f1a076_97c153e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/paste.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-07-26T23:18:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea6e3092_4cd14ea9",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 68
+      },
+      "revId": "2c2883c009d7aea559455976f60063de089a0756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "738ca54d_72cee399",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-26T16:07:00Z",
       "side": 1,
       "message": "Is this clicking the center point of the menu? Could this fail to paste the expected item if the reused session already contains clipboard history items?",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 40
+      },
+      "revId": "2c2883c009d7aea559455976f60063de089a0756",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b98566_3ac0acce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/clipboardhistory/paste.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-07-26T23:18:46Z",
+      "side": 1,
+      "message": "Not sure what I was doing wrong before, but I figured out how to get the node for a menu item rather than the whole menu. This should address your very valid concern :-)",
+      "parentUuid": "738ca54d_72cee399",
       "range": {
         "startLine": 192,
         "startChar": 0,
