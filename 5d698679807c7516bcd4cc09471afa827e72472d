@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77196e39_75516010",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-26T10:08:08Z",
+      "side": 1,
+      "message": "Fixed in new patch.",
+      "parentUuid": "8de8c1c4_9701d46e",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "5d698679807c7516bcd4cc09471afa827e72472d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8277ec97_604c3edc",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-26T07:01:08Z",
       "side": 1,
       "message": "I don\u0027t understand the purpose of this function. Do we want to check if those files are\n- existing or not?\n- readable?\n\nAnd if it\u0027s not readable, why does it indicate an error?",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "5d698679807c7516bcd4cc09471afa827e72472d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c347eed7_02361802",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-26T10:08:08Z",
+      "side": 1,
+      "message": "Also separated this function into two. Initial idea is to check if the files exist \u0026 readable. Error will show \"open {path}: no such file or directory\" if the file doesn\u0027t exist.\n\nHowever, if `cros-health-tool` can retrieve process info in the first place, I\u0027m thinking if this additional validation is redundant and can be removed.",
+      "parentUuid": "8277ec97_604c3edc",
       "range": {
         "startLine": 92,
         "startChar": 5,
