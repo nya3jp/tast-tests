@@ -20,29 +20,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-type settingsBridgeParam struct {
-	accessibilityFeatures []a11y.Feature
-	runProxySync          bool
-}
-
-var stableSettingsBridgeParam = settingsBridgeParam{
-	accessibilityFeatures: []a11y.Feature{
-		a11y.SpokenFeedback,
-	},
-	runProxySync: true,
-}
-
-var unstableSettingsBridgeParam = settingsBridgeParam{
-	accessibilityFeatures: []a11y.Feature{
-		a11y.SwitchAccess,
-		a11y.SelectToSpeak,
-		a11y.FocusHighlight,
-		a11y.ScreenMagnifier,
-		a11y.DockedMagnifier,
-	},
-	runProxySync: false,
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SettingsBridge,
@@ -54,19 +31,9 @@ func init() {
 		Fixture:      "arcBootedWithoutUIAutomator",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
-			Val:               stableSettingsBridgeParam,
-			ExtraSoftwareDeps: []string{"android_p"},
-		}, {
-			Name:              "unstable",
-			Val:               unstableSettingsBridgeParam,
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
-			Val:               stableSettingsBridgeParam,
-			ExtraSoftwareDeps: []string{"android_vm"},
-		}, {
-			Name:              "vm_unstable",
-			Val:               unstableSettingsBridgeParam,
 			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
@@ -189,7 +156,7 @@ func getAndroidProxy(ctx context.Context, a *arc.ARC, proxyString string) (strin
 
 // testProxySync runs the test to ensure that proxy settings are
 // synchronized between Chrome and Android.
-func testProxySync(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC) error {
+func testProxySync(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC) {
 	for _, tc := range []proxySettingsTestCase{{
 		name: "Direct",
 		config: chromeproxy.ProxyConfig{
@@ -236,7 +203,6 @@ func testProxySync(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 			}
 		})
 	}
-	return nil
 }
 
 // checkProxySettings checks that current Android proxy settings match with expected values.
@@ -290,7 +256,6 @@ func runProxyTest(ctx context.Context, tconn *chrome.TestConn, a *arc.ARC, p pro
 }
 
 func SettingsBridge(ctx context.Context, s *testing.State) {
-	param := s.Param().(settingsBridgeParam)
 	d := s.FixtValue().(*arc.PreData)
 	a := d.ARC
 	cr := d.Chrome
@@ -305,12 +270,18 @@ func SettingsBridge(ctx context.Context, s *testing.State) {
 	}
 
 	// Run accessibility test.
-	if err := testAccessibilitySync(ctx, tconn, a, param.accessibilityFeatures); err != nil {
+	accessibilityFeatures := []a11y.Feature{
+		a11y.SpokenFeedback,
+		a11y.SwitchAccess,
+		a11y.SelectToSpeak,
+		a11y.FocusHighlight,
+		a11y.ScreenMagnifier,
+		a11y.DockedMagnifier,
+	}
+	if err := testAccessibilitySync(ctx, tconn, a, accessibilityFeatures); err != nil {
 		s.Error("Failed to sync accessibility: ", err)
 	}
 
 	// Run proxy settings test.
-	if param.runProxySync {
-		testProxySync(ctx, s, tconn, a)
-	}
+	testProxySync(ctx, s, tconn, a)
 }
