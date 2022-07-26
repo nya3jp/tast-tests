@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/touch"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
 
@@ -52,6 +53,12 @@ func BubbleScroll(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
+
+	// Some models (e.g. magister) don't synthesize touch events when the
+	// display is turned off. Ensure the display is on.
+	if err := power.TurnOnDisplay(ctx); err != nil {
+		s.Fatal("Failed to turn on display: ", err)
+	}
 
 	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, false /*tabletMode*/, true /*productivityLauncher*/, true /*stabilizeAppCount*/)
 	if err != nil {
