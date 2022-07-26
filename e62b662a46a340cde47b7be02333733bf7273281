@@ -33,6 +33,23 @@
       "message": "lgtm\n\nHopefully it fixes the problem. And I don\u0027t have the owner power though.",
       "revId": "e62b662a46a340cde47b7be02333733bf7273281",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "883420a8_9a5ec949",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-07-26T23:09:12Z",
+      "side": 1,
+      "message": "tast-owners, please take a look.",
+      "revId": "e62b662a46a340cde47b7be02333733bf7273281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
