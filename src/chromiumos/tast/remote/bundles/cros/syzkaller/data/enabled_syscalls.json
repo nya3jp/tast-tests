@@ -659,7 +659,6 @@
 	},
 	{
 		"driver": "drm(CONFIG_DRM)",
-		"exclude_boards": ["kukui"],
 		"syscalls": [
 			"syz_open_dev$dri",
 			"syz_open_dev$dricontrol",
@@ -743,7 +742,13 @@
 			"ioctl$DRM_IOCTL_MODE_CREATE_DUMB",
 			"ioctl$DRM_IOCTL_MODE_MAP_DUMB",
 			"ioctl$DRM_IOCTL_MODE_DESTROY_DUMB",
-			"ioctl$DRM_IOCTL_MODE_ATOMIC",
+			"ioctl$DRM_IOCTL_MODE_ATOMIC"
+		]
+	},
+	{
+		"driver": "drm_syncobj(CONFIG_DRM)",
+		"boards": ["trogdor", "strongbad"],
+		"syscalls": [
 			"ioctl$DRM_IOCTL_SYNCOBJ_CREATE",
 			"ioctl$DRM_IOCTL_SYNCOBJ_DESTROY",
 			"ioctl$DRM_IOCTL_SYNCOBJ_HANDLE_TO_FD",
@@ -802,10 +807,6 @@
 			"socket$vsock_stream",
 			"socket$vsock_dgram",
 			"accept4$vsock_stream",
-			"setsockopt$SO_VM_SOCKETS_BUFFER_SIZE",
-			"setsockopt$SO_VM_SOCKETS_BUFFER_MAX_SIZE",
-			"setsockopt$SO_VM_SOCKETS_BUFFER_MIN_SIZE",
-			"setsockopt$SO_VM_SOCKETS_CONNECT_TIMEOUT",
 			"write$vhost_msg",
 			"write$vhost_msg_v2",
 			"ioctl$VHOST_VSOCK_SET_GUEST_CID",
@@ -828,6 +829,16 @@
 			"ioctl$VHOST_SET_VRING_ENDIAN",
 			"ioctl$VHOST_GET_VRING_ENDIAN",
 			"ioctl$VHOST_SET_VRING_BUSYLOOP_TIMEOUT"
+		]
+	},
+	{
+		"driver": "virtio-net-vmsockets(CONFIG_VIRTIO_NET)",
+		"exclude_boards": ["octopus", "kukui", "dedede"],
+		"syscalls": [
+			"setsockopt$SO_VM_SOCKETS_BUFFER_SIZE",
+			"setsockopt$SO_VM_SOCKETS_BUFFER_MAX_SIZE",
+			"setsockopt$SO_VM_SOCKETS_BUFFER_MIN_SIZE",
+			"setsockopt$SO_VM_SOCKETS_CONNECT_TIMEOUT"
 		]
 	},
 	{
