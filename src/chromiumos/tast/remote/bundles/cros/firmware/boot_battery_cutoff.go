@@ -241,8 +241,7 @@ func BootBatteryCutoff(ctx context.Context, s *testing.State) {
 			case "host":
 				bs := pb.NewBiosServiceClient(h.RPCClient.Conn)
 				if _, err := bs.SetAPSoftwareWriteProtect(ctx, &pb.WPRequest{
-					Enable:    true,
-					WPSection: pb.ImageSection_APWPROImageSection,
+					Enable: true,
 				}); err != nil {
 					s.Fatal("Failed to enable AP write protection: ", err)
 				}

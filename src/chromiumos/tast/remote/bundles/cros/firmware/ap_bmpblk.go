@@ -32,7 +32,7 @@ func init() {
 	})
 }
 
-//APBmpblk inspects coreboot contents for indicators of bitmap block configuration.  See https://chromium.googlesource.com/chromiumos/platform/bmpblk for more context.
+// APBmpblk inspects coreboot contents for indicators of bitmap block configuration.  See https://chromium.googlesource.com/chromiumos/platform/bmpblk for more context.
 func APBmpblk(ctx context.Context, s *testing.State) {
 	const validityIndicator string = "romstage"
 	const applicabilityIndicator string = "vbgfx.bin"
@@ -45,14 +45,14 @@ func APBmpblk(ctx context.Context, s *testing.State) {
 	}
 	bs := h.BiosServiceClient
 
-	coreboot, err := bs.BackupImageSection(ctx, &pb.FWBackUpSection{
+	coreboot, err := bs.BackupImageSection(ctx, &pb.FWSectionInfo{
 		Programmer: pb.Programmer_BIOSProgrammer,
 		Section:    pb.ImageSection_COREBOOTImageSection,
 	})
 	region := bios.COREBOOTImageSection
 	if err != nil {
 		s.Log("Failed to backup the COREBOOT region.  Older devices may store coreboot in a region named BOOT_STUB: ", err)
-		coreboot, err = bs.BackupImageSection(ctx, &pb.FWBackUpSection{
+		coreboot, err = bs.BackupImageSection(ctx, &pb.FWSectionInfo{
 			Programmer: pb.Programmer_BIOSProgrammer,
 			Section:    pb.ImageSection_BOOTSTUBImageSection,
 		})
