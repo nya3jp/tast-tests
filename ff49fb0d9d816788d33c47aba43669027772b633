@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "329ca18b_55e7b99c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-07-26T04:46:46Z",
+      "side": 1,
+      "message": "cka",
+      "revId": "ff49fb0d9d816788d33c47aba43669027772b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d273b6ee_bd7725a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/fusebox.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1109754
+      },
+      "writtenOn": "2022-07-26T04:46:46Z",
+      "side": 1,
+      "message": "FYI: we might move this to its own go package one day. Might not get time to do it this week though.\n\nAnyho first step: let\u0027s see if it actually works and fixes the VM problem first.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "ff49fb0d9d816788d33c47aba43669027772b633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
