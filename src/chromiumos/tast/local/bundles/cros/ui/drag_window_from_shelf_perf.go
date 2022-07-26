@@ -8,11 +8,11 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -78,7 +78,7 @@ func DragWindowFromShelfPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open browser windows: ", err)
 	}
 
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, perfutil.SubtestRun(s.Run), cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.DragToShowOverview(ctx, tsw, stw, tconn); err != nil {
 			return errors.Wrap(err, "failed to drag from bottom of the screen to show overview")
 		}

@@ -12,10 +12,10 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -81,7 +81,7 @@ func ScreenRotationPerf(ctx context.Context, s *testing.State) {
 		}
 
 		suffix := fmt.Sprintf("%dwindows", windows)
-		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+		runner.RunMultiple(ctx, perfutil.SubtestRun(s.Run), suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			for _, rotation := range []display.RotationAngle{display.Rotate90, display.Rotate180, display.Rotate270, display.Rotate0} {
 				if err := display.SetDisplayRotationSync(ctx, tconn, dispInfo.ID, rotation); err != nil {
 					return errors.Wrap(err, "failed to rotate display")

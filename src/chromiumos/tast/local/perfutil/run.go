@@ -123,6 +123,47 @@ func (r *Runner) Values() *Values {
 	return r.pv
 }
 
+// RunFunc is testing s.Run signature. This is for information hiding, to pass only s.Run instead
+// using the whole 'testing.State' here.
+// TODO(tvignatti): this needs to go away from here.
+type RunFunc func(context.Context, string, func(context.Context, *testing.State)) bool
+
+// RunSimpleFunc is testing s.Run signature. This is for information hiding, to pass only s.Run
+// instead using the whole 'testing.State' here.
+type RunSimpleFunc func(context.Context, string, *Values, bool) bool
+
+// SubtestRun is a utility function to create ScenarioFunc which conducts
+// f with metrics.RunAndWaitAll.
+// TODO(tvignatti): this needs to go away from here.
+func SubtestRun(run RunFunc) RunSimpleFunc {
+	return func(ctx context.Context, name string, pv *Values, isTracing bool) bool {
+		run(ctx, name, func(context.Context, *testing.State) {
+
+		})
+		return true
+	}
+}
+
+// SubtestScenario is a utility function to create ScenarioFunc which conducts
+// f with metrics.RunAndWaitAll.
+func SubtestScenario(ctx context.Context, scenario ScenarioFunc) []*metrics.Histogram {
+	hists, err := scenario(ctx)
+	if err != nil {
+		errors.Wrap(err, "failed to run the test scenario")
+		return nil
+	}
+	return hists
+}
+
+// SubtestStore is a utility function to create ScenarioFunc which conducts
+// f with metrics.RunAndWaitAll.
+func SubtestStore(ctx context.Context, store StoreFunc, hists []*metrics.Histogram, pv *Values) {
+	if err := store(ctx, pv, hists); err != nil {
+		errors.Wrap(err, "failed to store the histogram data")
+		return
+	}
+}
+
 // RunMultiple runs scenario multiple times and store the data through store
 // function. It invokes scenario+store 10 times, and then invokes scenario only
 // with tracing enabled. If one of the runs fails, it quits immediately and
@@ -130,21 +171,14 @@ func (r *Runner) Values() *Values {
 // for calling scenario/store function and the prefix for the trace data file.
 // The name can be empty, in which case the runner uses default prefix values.
 // Returns false when it has an error.
-func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string, scenario ScenarioFunc, store StoreFunc) bool {
+func (r *Runner) RunMultiple(ctx context.Context, run RunSimpleFunc, name string, scenario ScenarioFunc, store StoreFunc) bool {
 	runPrefix := name
 	if name == "" {
 		runPrefix = "run"
 	}
 	for i := 0; i < r.Runs; i++ {
-		if !s.Run(ctx, fmt.Sprintf("%s-%d", runPrefix, i), func(ctx context.Context, s *testing.State) {
-			hists, err := scenario(ctx)
-			if err != nil {
-				s.Fatal("Failed to run the test scenario: ", err)
-			}
-			if err = store(ctx, r.pv, hists); err != nil {
-				s.Fatal("Failed to store the histogram data: ", err)
-			}
-		}) {
+		if !run(ctx, fmt.Sprintf("%s-%d", runPrefix, i), r.pv, false) {
+			// errors.Wrap(err, "failed running subtest")
 			return false
 		}
 	}
@@ -159,44 +193,54 @@ func (r *Runner) RunMultiple(ctx context.Context, s *testing.State, name string,
 	}
 
 	defer r.br.StopTracing(ctx)
-	return s.Run(ctx, fmt.Sprintf("%s-tracing", runPrefix), func(ctx context.Context, s *testing.State) {
-		sctx, cancel := ctxutil.Shorten(ctx, traceCleanupDuration)
-		defer cancel()
-		// At this time, systrace causes kernel crash on dedede devices. Because of
-		// that and data points from systrace isn't actually helpful to most of
-		// UI tests, disable systraces for the time being.
-		// TODO(https://crbug.com/1162385, b/177636800): enable it.
-		if err := r.br.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}, browser.DisableSystrace()); err != nil {
-			s.Log("Failed to start tracing: ", err)
-			return
-		}
-		if _, err := scenario(sctx); err != nil {
-			s.Error("Failed to run the test scenario: ", err)
-		}
-		tr, err := r.br.StopTracing(ctx)
-		if err != nil {
-			s.Log("Failed to stop tracing: ", err)
-			return
-		}
-		if tr == nil || len(tr.Packet) == 0 {
-			s.Log("No trace data is collected")
-			return
-		}
-		filename := "trace.data.gz"
-		if name != "" {
-			filename = name + "-" + filename
-		}
-		if err := chrome.SaveTraceToFile(ctx, tr, filepath.Join(s.OutDir(), filename)); err != nil {
-			s.Log("Failed to save trace to file: ", err)
-			return
-		}
-	})
+	sctx, cancel := ctxutil.Shorten(ctx, traceCleanupDuration)
+	defer cancel()
+	// At this time, systrace causes kernel crash on dedede devices. Because of
+	// that and data points from systrace isn't actually helpful to most of
+	// UI tests, disable systraces for the time being.
+	// TODO(https://crbug.com/1162385, b/177636800): enable it.
+	if err := r.br.StartTracing(sctx, []string{"benchmark", "cc", "gpu", "input", "toplevel", "ui", "views", "viz"}, browser.DisableSystrace()); err != nil {
+		errors.Wrap(err, "failed to start tracing")
+		return false
+	}
+
+	if !run(ctx, fmt.Sprintf("%s-tracing", runPrefix), r.pv, true) {
+		// errors.Wrap(err, "failed running subtest")
+		return false
+	}
+
+	tr, err := r.br.StopTracing(ctx)
+	if err != nil {
+		errors.Wrap(err, "failed to stop tracing")
+		return false
+	}
+	if tr == nil || len(tr.Packet) == 0 {
+		errors.Wrap(err, "no trace data is collected")
+		return false
+	}
+	filename := "trace.data.gz"
+	if name != "" {
+		filename = name + "-" + filename
+	}
+
+	outdir, ok := testing.ContextOutDir(ctx)
+	if !ok {
+		errors.Wrap(err, "failed to get name of the output directory")
+		return false
+	}
+
+	if err := chrome.SaveTraceToFile(ctx, tr, filepath.Join(outdir, filename)); err != nil {
+		errors.Wrap(err, "failed to save trace to file")
+		return false
+	}
+
+	return true
 }
 
 // RunMultiple is a utility to create a new runner, conduct runs multiple times,
 // and returns the recorded values.
-func RunMultiple(ctx context.Context, s *testing.State, br *browser.Browser, scenario ScenarioFunc, store StoreFunc) *Values {
+func RunMultiple(ctx context.Context, run RunSimpleFunc, br *browser.Browser, scenario ScenarioFunc, store StoreFunc) *Values {
 	r := NewRunner(br)
-	r.RunMultiple(ctx, s, "", scenario, store)
+	r.RunMultiple(ctx, run, "", scenario, store)
 	return r.Values()
 }

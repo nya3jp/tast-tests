@@ -7,10 +7,10 @@ package ui
 import (
 	"context"
 
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -59,7 +59,7 @@ func SnapPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to obtain the window list: ", err)
 	}
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, perfutil.SubtestRun(s.Run), cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Snap the window to the left.
 		if err := ash.SetWindowStateAndWait(ctx, tconn, window.ID, ash.WindowStateLeftSnapped); err != nil {
 			return err

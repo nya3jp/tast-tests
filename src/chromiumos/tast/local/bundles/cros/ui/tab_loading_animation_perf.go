@@ -10,9 +10,9 @@ import (
 	"net/http/httptest"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -56,7 +56,7 @@ func TabLoadingAnimationPerf(ctx context.Context, s *testing.State) {
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
 
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, perfutil.SubtestRun(s.Run), cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		conn, err := cr.NewConn(ctx, server.URL+"/tab_loading_test.html")
 		if err != nil {
 			s.Fatal("Failed to open a testing page: ", err)

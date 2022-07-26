@@ -12,13 +12,13 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 )
@@ -128,7 +128,7 @@ func UnlockPerf(ctx context.Context, s *testing.State) {
 				suffix = ".ClamshellMode"
 			}
 
-			r.RunMultiple(ctx, s, fmt.Sprintf("%dwindows%s", currentWindows, suffix), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+			r.RunMultiple(ctx, perfutil.SubtestRun(s.Run), fmt.Sprintf("%dwindows%s", currentWindows, suffix), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 				// Lock screen
 				const accel = "Search+L"
 				if err := kb.Accel(ctx, accel); err != nil {

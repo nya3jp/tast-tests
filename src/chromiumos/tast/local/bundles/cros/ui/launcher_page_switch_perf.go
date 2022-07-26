@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"chromiumos/tast/common/action"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -19,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -165,7 +165,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	// go back, clicking the last one to long-jump, clicking the first one again
 	// to long-jump back to the original page.
 	s.Log("Starting the scroll by click")
-	runner.RunMultiple(ctx, s, "click", perfutil.RunAndWaitAll(tconn, action.Combine(
+	runner.RunMultiple(ctx, perfutil.SubtestRun(s.Run), "click", perfutil.RunAndWaitAll(tconn, action.Combine(
 		"switch page by buttons",
 		clickPageButtonAndWait(1),
 		clickPageButtonAndWait(0),
@@ -216,7 +216,7 @@ func LauncherPageSwitchPerf(ctx context.Context, s *testing.State) {
 	dragDownStart := coords.NewPoint(dragUpStart.X, appsGridLocation.Top+1)
 	dragDownEnd := coords.NewPoint(dragDownStart.X, dragDownStart.Y+appsGridLocation.Height)
 
-	runner.RunMultiple(ctx, s, "drag", perfutil.RunAndWaitAll(tconn, action.Combine(
+	runner.RunMultiple(ctx, perfutil.SubtestRun(s.Run), "drag", perfutil.RunAndWaitAll(tconn, action.Combine(
 		"launcher page drag",
 		// Drag-up operation.
 		ac.WaitForEvent(pageSwitcher, event.Alert, pc.Drag(dragUpStart, pc.DragTo(dragUpEnd, dragDuration))),

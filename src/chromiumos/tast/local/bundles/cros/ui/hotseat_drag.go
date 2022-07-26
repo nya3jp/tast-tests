@@ -9,11 +9,11 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -73,7 +73,7 @@ func HotseatDrag(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to open browser windows: ", err)
 	}
 
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, perfutil.SubtestRun(s.Run), cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		ws, err := ash.GetAllWindows(ctx, tconn)
 		if err != nil || len(ws) == 0 {
 			s.Fatal("Failed to obtain the window list: ", err)

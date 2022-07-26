@@ -9,11 +9,11 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui"
 	"chromiumos/tast/testing"
@@ -84,7 +84,7 @@ func OverviewScrollPerf(ctx context.Context, s *testing.State) {
 	}
 	defer ash.SetOverviewModeAndWait(ctx, tconn, false)
 
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := perfutil.RunMultiple(ctx, perfutil.SubtestRun(s.Run), cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		// Scroll from the top right of the screen to the top middle (1/4 of the
 		// screen width). The destination position should match with the next swipe
 		// to make the same amount of scrolling.
