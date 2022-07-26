@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f22825ee_b47038ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd/util.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-26T14:15:01Z",
+      "side": 1,
+      "message": "Maybe it\u0027s nice to comment explicitly.\n\nQQ: if \"!charge \u0026\u0026 !dischaging\" case, does following stressapptest help to set state discharging? Could you clarify in the comment?",
+      "revId": "4dceac12a08cac76f64982b4bedafb5861aefdab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
