@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de8c1c4_9701d46e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-07-26T07:01:08Z",
+      "side": 1,
+      "message": "Is it possible to wrap this into a function? So we can pass \"comm\", \"ppid\", \"pgid\" and corresponding info.xyz to it for verification.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 2
+      },
+      "revId": "5d698679807c7516bcd4cc09471afa827e72472d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8277ec97_604c3edc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-07-26T07:01:08Z",
+      "side": 1,
+      "message": "I don\u0027t understand the purpose of this function. Do we want to check if those files are\n- existing or not?\n- readable?\n\nAnd if it\u0027s not readable, why does it indicate an error?",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "5d698679807c7516bcd4cc09471afa827e72472d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
