@@ -16,6 +16,69 @@
       "message": "Hi Yanzhu!\n\nCan I get an owner review for this CL as well?",
       "revId": "299c7a19cce058e839f5f54f631124fa9c90b334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2beeaed4_3a0278ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-07-26T18:43:39Z",
+      "side": 1,
+      "message": "LGTM % comment below.",
+      "revId": "299c7a19cce058e839f5f54f631124fa9c90b334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c71e1a0_5968d372",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-07-26T18:43:39Z",
+      "side": 1,
+      "message": "nit: should we consider adding another case where lacros and ash chrome browser co-exists?",
+      "range": {
+        "startLine": 50,
+        "startChar": 22,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "299c7a19cce058e839f5f54f631124fa9c90b334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9442dffa_eb8e8835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-07-26T18:43:39Z",
+      "side": 1,
+      "message": "Is this \"blank lacros browser window\" a consistent behavior for all users and will stay here for the long term? IF this behavior is only temporary, we might want to detect the presence of such browser window first.",
+      "range": {
+        "startLine": 142,
+        "startChar": 37,
+        "endLine": 143,
+        "endChar": 24
+      },
+      "revId": "299c7a19cce058e839f5f54f631124fa9c90b334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
