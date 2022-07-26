@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f071f851_6ec09d2a",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-07-26T09:37:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b2100df_9ad51668",
+      "range": {
+        "startLine": 375,
+        "startChar": 4,
+        "endLine": 375,
+        "endChar": 8
+      },
+      "revId": "fdc7c85b47f8ddbf971876efa7883c9163a89c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d358f060_2ff5dbee",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-06-28T20:30:07Z",
       "side": 1,
       "message": "I think that --wp-range always means to protect the range. I.e. --wp-disable --wp-range\u003d0,100 would still enable write protect for the range [0,100).\n\nWhich would imply that we should always pass wp-range 0,0 when disabling.  I may be wrong about this, but I think it is the case.",
+      "range": {
+        "startLine": 416,
+        "startChar": 2,
+        "endLine": 416,
+        "endChar": 66
+      },
+      "revId": "fdc7c85b47f8ddbf971876efa7883c9163a89c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ce8230a_e742dc2a",
+        "filename": "src/chromiumos/tast/common/firmware/bios/image.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-07-26T09:37:24Z",
+      "side": 1,
+      "message": "This is the case yes. Updated it accordingly.",
+      "parentUuid": "d358f060_2ff5dbee",
       "range": {
         "startLine": 416,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "101f53c9_8a6eefc2",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-07-26T09:37:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "605c02f2_c45dd44a",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 27
+      },
+      "revId": "fdc7c85b47f8ddbf971876efa7883c9163a89c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6531ef7a_44fe9ee4",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-06-28T20:30:07Z",
       "side": 1,
       "message": "Document to pass EmptyImageSection to skip this value.  Proto3 always uses 0 as the default for ints and enums.",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 29
+      },
+      "revId": "fdc7c85b47f8ddbf971876efa7883c9163a89c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0b757f9_2f621be1",
+        "filename": "src/chromiumos/tast/services/cros/firmware/bios_service.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1427718
+      },
+      "writtenOn": "2022-07-26T09:37:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6531ef7a_44fe9ee4",
       "range": {
         "startLine": 130,
         "startChar": 2,
