@@ -47,8 +47,10 @@ func PrintIPPUSB(ctx context.Context, s *testing.State) {
 			usbprinter.WithRecordPath(recordPath),
 			usbprinter.WaitUntilConfigured(),
 		},
-		recordPath,
-		"",
-		s.DataPath("print_ippusb_to_print.pdf"),
-		s.DataPath("print_ippusb_golden.pdf"))
+		"", // PPD
+		usbprintertests.PrintJobSetup{
+			PrintedFile: recordPath,
+			ToPrint:     s.DataPath("print_ippusb_to_print.pdf"),
+			GoldenFile:  s.DataPath("print_ippusb_golden.pdf"),
+		})
 }
