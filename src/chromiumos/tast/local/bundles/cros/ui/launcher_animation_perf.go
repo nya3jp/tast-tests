@@ -13,12 +13,13 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -215,7 +216,7 @@ func LauncherAnimationPerf(ctx context.Context, s *testing.State) {
 					"Apps.StateTransition.AnimationSmoothness.Close.ClamshellMode",
 				}
 
-				runner.RunMultiple(ctx, s, fmt.Sprintf("%s.%dwindows", suffix, numWindows), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+				runner.RunMultiple(ctx, uiperf.Run(s.Run), fmt.Sprintf("%s.%dwindows", suffix, numWindows), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 					return runLauncherAnimation(ctx, tconn, kb, at)
 				}, histograms...),
 					perfutil.StoreAll(perf.BiggerIsBetter, "percent", fmt.Sprintf("%dwindows", numWindows)))

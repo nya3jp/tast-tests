@@ -121,6 +121,11 @@ func (b *Browser) StopTracing(ctx context.Context) (*perfetto_proto.Trace, error
 	return b.sess.StopTracing(ctx)
 }
 
+// IsTracing returns actually whether tracing has started.
+func (b *Browser) IsTracing() bool {
+	return b.sess.TracingStarted()
+}
+
 // ReloadActiveTab reloads the active tab.
 func (b *Browser) ReloadActiveTab(ctx context.Context) error {
 	tconn, err := b.TestAPIConn(ctx)
