@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1996d6c0_c310a3b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-07-26T22:32:08Z",
+      "side": 1,
+      "message": "xiyuan, please take a look. If this fixes my test in the lab, I\u0027ll add the power.TurnOnDisplay() call to some other tests with similar failures.",
+      "revId": "e62b662a46a340cde47b7be02333733bf7273281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
