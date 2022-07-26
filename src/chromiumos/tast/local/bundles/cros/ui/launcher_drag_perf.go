@@ -13,13 +13,14 @@ import (
 
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -167,7 +168,7 @@ func LauncherDragPerf(ctx context.Context, s *testing.State) {
 		currentWindows = windows
 
 		suffix := fmt.Sprintf("%dwindows", currentWindows)
-		runner.RunMultiple(ctx, s, suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+		runner.RunMultiple(ctx, uiperf.Run(s.Run), suffix, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 			// Drag from the bottom to the top; this should expand the app-list to
 			// fullscreen.
 			if err := mouse.Drag(tconn, bottom, top, time.Second)(ctx); err != nil {

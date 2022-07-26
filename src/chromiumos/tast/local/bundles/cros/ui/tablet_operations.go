@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/screenshot"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -173,7 +174,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 			s.Fatalf("Failed to set window %d state to normal: %v", w.ID, err)
 		}
 	}
-	r.RunMultiple(ctx, s, "tablet-mode", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	r.RunMultiple(ctx, uiperf.Run(s.Run), "tablet-mode", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := ash.SetTabletModeEnabled(ctx, tconn, true); err != nil {
 			return errors.Wrap(err, "failed to enable tablet mode")
 		}
@@ -240,7 +241,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 	// release the finger; this will switch the screen to the app-list. Then
 	// tap the Chrome icon in the hotseat to re-activate the window.
 	s.Log("2. swipe up to minimize the window")
-	r.RunMultiple(ctx, s, "hotseat-revealing", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) (err error) {
+	r.RunMultiple(ctx, uiperf.Run(s.Run), "hotseat-revealing", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) (err error) {
 		defer func() {
 			if err != nil {
 				if captureErr := screenshot.CaptureChrome(closeCtx, cr, filepath.Join(s.OutDir(), "hotseat-failure.png")); captureErr != nil {
@@ -311,7 +312,7 @@ func TabletOperations(ctx context.Context, s *testing.State) {
 	// - move the split-view divider to the right edge of the screen
 	// - then wait for it to end the split-view
 	s.Log("3. swipe to overview, enter splitview, and resize")
-	r.RunMultiple(ctx, s, "overview-splitview", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) (err error) {
+	r.RunMultiple(ctx, uiperf.Run(s.Run), "overview-splitview", perfutil.RunAndWaitAll(tconn, func(ctx context.Context) (err error) {
 		if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 			return errors.Wrap(err, "failed to enter into overview with gesture")
 		}
