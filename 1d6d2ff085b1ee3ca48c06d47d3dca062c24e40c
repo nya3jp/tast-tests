@@ -47,6 +47,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edcca3ee_c29184f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-26T01:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "493f9048_492d0694",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "1d6d2ff085b1ee3ca48c06d47d3dca062c24e40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42d0e2fd_aec93119",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-26T01:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5b1bcdb_2f6ce5ec",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "1d6d2ff085b1ee3ca48c06d47d3dca062c24e40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6972937_97fbc18a",
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f0edb6_2e1a0938",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-26T01:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6972937_97fbc18a",
+      "range": {
+        "startLine": 10,
+        "startChar": 18,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "1d6d2ff085b1ee3ca48c06d47d3dca062c24e40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "461c0306_d6f6433a",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-25T18:58:40Z",
       "side": 1,
       "message": "nit: capitalized as `Remove`",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "1d6d2ff085b1ee3ca48c06d47d3dca062c24e40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e487f3d_27734c68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-26T01:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "461c0306_d6f6433a",
       "range": {
         "startLine": 11,
         "startChar": 2,
@@ -141,6 +237,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a8fc3581_b28ae1bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-26T01:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b67934f6_e3b7ad60",
+      "range": {
+        "startLine": 12,
+        "startChar": 25,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "1d6d2ff085b1ee3ca48c06d47d3dca062c24e40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcb1fc5f_7bb1d215",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-26T01:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e310ec55_4b4006c1",
+      "range": {
+        "startLine": 12,
+        "startChar": 47,
+        "endLine": 12,
+        "endChar": 54
+      },
+      "revId": "1d6d2ff085b1ee3ca48c06d47d3dca062c24e40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3e76bd2f_4e08a001",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -169,6 +313,30 @@
       "writtenOn": "2022-07-25T18:58:40Z",
       "side": 1,
       "message": "nit: simpler as follows:\n\tsuccess :\u003d false\n\tdefer func(ctx context.Context) {\n\t\tif success {\n\t\t\treturn\n\t\t}\n\t\tif err :\u003d e.TearDown(ctx); err !\u003d nil {\n\t\t\ttesting.ContextLog(ctx, \"Failed to tear down routing test env: \", err)\n\t\t}\n\t}(ctx)\n\n\tctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\n\tdefer cancel()",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 14
+      },
+      "revId": "1d6d2ff085b1ee3ca48c06d47d3dca062c24e40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2933711d_7249d528",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-26T01:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "687c1cea_909333fe",
       "range": {
         "startLine": 86,
         "startChar": 0,
