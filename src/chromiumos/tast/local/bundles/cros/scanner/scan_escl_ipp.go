@@ -18,10 +18,10 @@ import (
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/scanner/lorgnette"
 	"chromiumos/tast/local/printing/cups"
 	"chromiumos/tast/local/printing/ippusbbridge"
 	"chromiumos/tast/local/printing/usbprinter"
+	"chromiumos/tast/local/scanner/lorgnette"
 	"chromiumos/tast/testing"
 )
 
