@@ -22,6 +22,30 @@
       },
       "revId": "dcaab7d2f25ab33392108b367efe040b7855c440",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c6bf35b_bf900016",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_text_editing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-26T00:52:53Z",
+      "side": 1,
+      "message": "BoundsForRange function only works on InlineTextBox node 😞",
+      "parentUuid": "4f005b2c_94a02891",
+      "range": {
+        "startLine": 87,
+        "startChar": 20,
+        "endLine": 87,
+        "endChar": 83
+      },
+      "revId": "dcaab7d2f25ab33392108b367efe040b7855c440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
