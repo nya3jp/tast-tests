@@ -11,6 +11,8 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/hermes"
 	"chromiumos/tast/local/upstart"
@@ -32,23 +34,57 @@ func init() {
 		PreTestTimeout:  1 * time.Second,
 		PostTestTimeout: 1 * time.Second,
 		TearDownTimeout: 5 * time.Second,
-		Impl:            NewCellularFixture(),
+		Impl:            &cellularFixture{modemfwdStopped: false},
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: "cellularWithFakeDMSEnrolled",
+		Desc: "Cellular tests are safe to run and also get a fake DMS up running so that can be used for managed eSIM profile test",
+		Contacts: []string{
+			"jiajunzhang@google.com",
+			"chromeos-cellular-team@google.com",
+		},
+		SetUpTimeout:    3 * time.Minute,
+		ResetTimeout:    1 * time.Second,
+		PreTestTimeout:  1 * time.Second,
+		PostTestTimeout: 1 * time.Second,
+		TearDownTimeout: 5 * time.Second,
+		Impl:            &cellularFixture{modemfwdStopped: false, useFakeDMS: true},
+		Parent:          fixture.FakeDMSEnrolled,
 	})
 }
 
 // cellularFixture implements testing.FixtureImpl.
 type cellularFixture struct {
 	modemfwdStopped bool
+	useFakeDMS      bool
+	// fdms is the already running DMS server from the parent fixture.
+	fdms *fakedms.FakeDMS
 }
 
-func NewCellularFixture() *cellularFixture {
-	return &cellularFixture{modemfwdStopped: false}
+// FixtData holds information made available to tests that specify this fixture.
+type FixtData struct {
+	fdms *fakedms.FakeDMS
+}
+
+// FakeDMS implements the HasFakeDMS interface.
+func (f FixtData) FakeDMS() *fakedms.FakeDMS {
+	if f.fdms == nil {
+		panic("FakeDMS is called with nil fakeDMS instance")
+	}
+	return f.fdms
 }
 
 const modemfwdJobName = "modemfwd"
 const hermesJobName = "hermes"
 
 func (f *cellularFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	if f.useFakeDMS {
+		fdms, ok := s.ParentValue().(*fakedms.FakeDMS)
+		if !ok {
+			s.Fatal("Parent is not a fakeDMSEnrolled fixture")
+		}
+		f.fdms = fdms
+	}
 
 	// Give some time for cellular daemons to perform any modem operations. Stopping them via upstart might leave the modem in a bad state.
 	ensureUptime(ctx, s, 2*time.Minute)
@@ -63,14 +99,14 @@ func (f *cellularFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Logf("%q not running", modemfwdJobName)
 	}
 	if !upstart.JobExists(ctx, hermesJobName) {
-		return nil
+		return &FixtData{f.fdms}
 	}
 	// Hermes is usually idle 2 minutes after boot, so go on with the test even if we cannot be sure.
 	if err := hermes.WaitForHermesIdle(ctx, 30*time.Second); err != nil {
 		s.Logf("Could not confirm if Hermes is idle: %s", err)
 	}
 
-	return nil
+	return &FixtData{f.fdms}
 }
 
 func (f *cellularFixture) Reset(ctx context.Context) error { return nil }
