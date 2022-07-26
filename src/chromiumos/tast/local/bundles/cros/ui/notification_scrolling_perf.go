@@ -11,13 +11,14 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/notification"
-	"chromiumos/tast/local/bundles/cros/ui/perfutil"
+	uiperf "chromiumos/tast/local/bundles/cros/ui/perf"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -147,7 +148,7 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 	statusArea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
 	messageCenter := nodewith.ClassName("UnifiedMessageCenterView")
 
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	pv := uiperf.RunMultiple(ctx, cr.Browser(), s.Run, perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
 		if err := uiauto.Combine(
 			"open the uber tray, scroll up and down the notification list, then close it",
 			ac.LeftClick(statusArea),
