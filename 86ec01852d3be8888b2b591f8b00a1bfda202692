@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8defcc5_033409e6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-26T19:07:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8dea550_dc13475a",
+      "range": {
+        "startLine": 153,
+        "startChar": 29,
+        "endLine": 153,
+        "endChar": 37
+      },
+      "revId": "86ec01852d3be8888b2b591f8b00a1bfda202692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c68ad3a_c91d4ad3",
@@ -191,6 +215,30 @@
       "side": 1,
       "message": "Yes! The following [file](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/init/upstart/boot-update-firmware.conf;l\u003d140-141;drc\u003d90da8f5ad54dc5f0534a26038a626cc09182dbe5) is created when DUT needs second reboot.\n\nThanks for the advice!",
       "parentUuid": "e14fd1a8_fc62f24a",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "86ec01852d3be8888b2b591f8b00a1bfda202692",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20b31269_702e1d86",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fp_updater.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-26T19:07:58Z",
+      "side": 1,
+      "message": "I implemented polling https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3788174. Actually it\u0027s not checking if the file exists. Let\u0027s move discussion to that patch.",
+      "parentUuid": "3958fbbb_e8616504",
       "range": {
         "startLine": 161,
         "startChar": 1,
