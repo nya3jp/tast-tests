@@ -70,6 +70,30 @@
       },
       "revId": "69f039772bc2b973938c9b609cbcf774f36f981a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f5db956_a1ab33db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference/googlemeet.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1527578
+      },
+      "writtenOn": "2022-07-26T04:10:50Z",
+      "side": 1,
+      "message": "Now using ui.DoDefault but I didn\u0027t remove waitJoinNowButtonStable.\nIf it is removed, it might be better to test it again.\nCan I create another cl to do this change?",
+      "parentUuid": "f0d123c9_6f9ebafe",
+      "range": {
+        "startLine": 293,
+        "startChar": 2,
+        "endLine": 314,
+        "endChar": 3
+      },
+      "revId": "69f039772bc2b973938c9b609cbcf774f36f981a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
