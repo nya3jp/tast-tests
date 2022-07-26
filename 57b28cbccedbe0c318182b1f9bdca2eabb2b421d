@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7091a317_73f924ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-26T14:07:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "028d7d00_a406bec1",
+      "range": {
+        "startLine": 170,
+        "startChar": 21,
+        "endLine": 170,
+        "endChar": 43
+      },
+      "revId": "57b28cbccedbe0c318182b1f9bdca2eabb2b421d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "631bab12_8f5e1fab",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-25T11:31:51Z",
       "side": 1,
       "message": "nit: Add more information into the error log, so that it\u0027s easy to understand what exactly failed in the logs (like \"Unexpected error in authentication after factor removal\").\n\nDitto for the log in the next line.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 28
+      },
+      "revId": "57b28cbccedbe0c318182b1f9bdca2eabb2b421d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "289ab853_83dc4d85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-26T14:07:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "631bab12_8f5e1fab",
       "range": {
         "startLine": 177,
         "startChar": 0,
