@@ -5,38 +5,25 @@
 package firmware
 
 import (
-	"bufio"
 	"context"
-	"io"
-	"strings"
+	"os"
+	"path/filepath"
 	"time"
 
-	"chromiumos/tast/common/servo"
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/testing"
-	"chromiumos/tast/testing/hwdep"
-)
-
-var (
-	enableWPPrompt  = "Prompt for hardware WP able"
-	disableWPPrompt = "Prompt for hardware WP disable"
-
-	subtestResultPrefix = "<+>"
-	subtestPass         = "Pass"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         FlashromTester,
-		Desc:         "Tast wrapper that runs flashrom_tester",
-		Contacts:     []string{"nartemiev@google.com", "cros-flashrom-team@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
-		SoftwareDeps: []string{"crossystem", "flashrom"},
-		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		Timeout:      30 * time.Minute,
+		Func:     FlashromTester,
+		Desc:     "Tast wrapper that runs flashrom_tester",
+		Contacts: []string{"nartemiev@google.com", "cros-flashrom-team@google.com"},
+		Attr:     []string{"group:mainline", "informational"},
+		Timeout:  30 * time.Minute,
 		Params: []testing.Param{
 			{
-				Fixture: fixture.NormalMode,
+				Fixture: fixture.DevModeGBB,
 			},
 		},
 	})
@@ -44,70 +31,38 @@ func init() {
 
 func FlashromTester(ctx context.Context, s *testing.State) {
 	h := s.FixtValue().(*fixture.Value).Helper
+	cmd := h.DUT.Conn().CommandContext(ctx, "/bin/bash", "-c", "echo stdout; echo stderr 1>&2")
 
-	if err := h.RequireServo(ctx); err != nil {
-		s.Fatal("Failed to connect to servo: ", err)
-	}
+	// this kind of exec works:
+	// cmd := testexec.CommandContext(ctx, "/bin/bash", "-c", "echo stdout; echo stderr 1>&2")
 
-	cmd := h.DUT.Conn().CommandContext(ctx, "flashrom_tester", "/usr/sbin/flashrom", "host")
-
-	stdin, err := cmd.StdinPipe()
+	stderrFile, err := os.Create(filepath.Join(s.OutDir(), "flashrom_tester_stderr.txt"))
 	if err != nil {
-		s.Fatal("StdinPipe() failed: ", err)
+		s.Fatal("os.Open failed: ", err)
 	}
+	cmd.Stderr = stderrFile
 
-	stdout, err := cmd.StdoutPipe()
-	if err != nil {
-		s.Fatal("StdoutPipe() failed: ", err)
-	}
-	stdoutSc := bufio.NewScanner(stdout)
-
+	s.Log("Starting flashrom_tester")
 	if err := cmd.Start(); err != nil {
 		s.Fatal("Start() failed: ", err)
 	}
-	defer cmd.Wait()
 
-	// Write newline because the tester expects a key press
-	s.Log("Starting tester")
-	if _, err := io.WriteString(stdin, "\n"); err != nil {
-		s.Fatal("WriteString() failed: ", err)
-	}
-
-	for stdoutSc.Scan() {
-		text := stdoutSc.Text()
-		s.Logf("Tester output: %s", text)
-
-		// Find output lines that contain a non-passing subtest result
-		// Example subtest results:
-		//    <+> Lock_top_quad test: Pass
-		//    <+> Lock_bottom_quad test: Fail
-		if strings.Contains(text, subtestResultPrefix) && !strings.Contains(text, subtestPass) {
-			s.Error(text)
-		}
-
-		// Change HWWP when prompted by the tester
-		changeWP := false
-		targetWPState := servo.FWWPStateOff
-		wpStr := "disable"
-		if strings.Contains(text, disableWPPrompt) {
-			changeWP = true
-		} else if strings.Contains(text, enableWPPrompt) {
-			changeWP = true
-			targetWPState = servo.FWWPStateOn
-			wpStr = "enable"
-		}
-		if changeWP {
-			s.Logf("Handling prompt to %s WP", wpStr)
-
-			if err := h.Servo.SetFWWPState(ctx, targetWPState); err != nil {
-				s.Fatalf("Failed to %s WP: %v", wpStr, err)
-			}
-
-			// Write newline because the tester expects a key press
-			s.Log("Continuing test")
-			if _, err := io.WriteString(stdin, "\n"); err != nil {
-				s.Fatal("WriteString() failed: ", err)
-			}
+	closer := func() {
+		if err := stderrFile.Close(); err != nil {
+			s.Error("Failed to close stderr: ", err)
 		}
 	}
+
+	if true {
+		closer()
+	} else {
+		// deferring the close works, even though we already forked
+		defer closer()
+	}
+
+	defer func() {
+		if err := cmd.Wait(); err != nil {
+			s.Error("flashrom_tester failed: ", err)
+		}
+	}()
 }
