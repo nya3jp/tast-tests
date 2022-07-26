@@ -16,6 +16,23 @@
       "message": "xiyuan, please take a look. If this fixes my test in the lab, I\u0027ll add the power.TurnOnDisplay() call to some other tests with similar failures.",
       "revId": "e62b662a46a340cde47b7be02333733bf7273281",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "623823ca_dc43a6ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-07-26T22:49:33Z",
+      "side": 1,
+      "message": "lgtm\n\nHopefully it fixes the problem. And I don\u0027t have the owner power though.",
+      "revId": "e62b662a46a340cde47b7be02333733bf7273281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
