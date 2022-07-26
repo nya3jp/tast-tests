@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "283a426f_229066db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-26T09:42:16Z",
+      "side": 1,
+      "message": "If FPMCU is running firmware with a version other than stored in rootfs, `bio_fw_updater` will perform update after reboot (e.g. to get TPM seed).\n\nI\u0027m not convinced if this is a good way to initialise FPMCU with firmware other than used in production. How about flashing FPMCU firmware from the test (like FpUpdater does)?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "20bb66e5c01d70075c46e5f345f58f3929f0567d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "988ddd9c_96193819",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-26T09:42:16Z",
+      "side": 1,
+      "message": "Max 72 columns per line.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 175
+      },
+      "revId": "20bb66e5c01d70075c46e5f345f58f3929f0567d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e161e2ac_e051c174",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-26T09:42:16Z",
+      "side": 1,
+      "message": "I think it\u0027s okay to have both strings in the structure.",
+      "range": {
+        "startLine": 64,
+        "startChar": 2,
+        "endLine": 64,
+        "endChar": 15
+      },
+      "revId": "20bb66e5c01d70075c46e5f345f58f3929f0567d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
