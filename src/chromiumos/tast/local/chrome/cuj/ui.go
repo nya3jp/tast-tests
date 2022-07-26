@@ -157,6 +157,34 @@ func GetBrowserTabs(ctx context.Context, tconn *chrome.TestConn) ([]Tab, error) 
 	return tabs, nil
 }
 
+// GetBrowserTabByTitle gets a single tab that has a tab title that
+// matches |title|. It returns an error if there is not exactly 1 tab
+// that meets the criterion. |tconn| is the browser test connection.
+func GetBrowserTabByTitle(ctx context.Context, tconn *chrome.TestConn, title string) (*Tab, error) {
+	var tabs []Tab
+	if err := tconn.Eval(ctx, fmt.Sprintf(`(async () => {
+		return await tast.promisify(chrome.tabs.query)({title: %q})
+	})()`, title), &tabs); err != nil {
+		return nil, errors.Wrapf(err, "failed to search for tabs with title %q", title)
+	}
+
+	if len(tabs) != 1 {
+		return nil, errors.Errorf("unexpected number of tabs with title %q; found %d, expected 1", title, len(tabs))
+	}
+	return &tabs[0], nil
+}
+
+// CloseBrowserTabByTitle finds a tab with title |title| and closes
+// that tab. If there are multiple tabs with that title, it returns
+// an error. |tconn| is the browser test connection.
+func CloseBrowserTabByTitle(ctx context.Context, tconn *chrome.TestConn, title string) error {
+	tab, err := GetBrowserTabByTitle(ctx, tconn, title)
+	if err != nil {
+		return err
+	}
+	return CloseBrowserTabsByID(ctx, tconn, []int{tab.ID})
+}
+
 // CloseBrowserTabsByID closes browser tabs by ID through chrome.tabs API.
 func CloseBrowserTabsByID(ctx context.Context, tconn *chrome.TestConn, tabIDs []int) error {
 	str := "["
