@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71734903_6b601f21",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_restrict_features.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-26T02:16:06Z",
+      "side": 1,
+      "message": "nit: API",
+      "range": {
+        "startLine": 30,
+        "startChar": 74,
+        "endLine": 30,
+        "endChar": 77
+      },
+      "revId": "bc3a11ab886c788b08cac0ec859a52c1090d4c72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b3440f1_147072b8",
         "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_restrict_features.go",
         "patchSetId": 4
