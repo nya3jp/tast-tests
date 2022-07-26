@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11292da3_3dc5ed28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-26T18:11:04Z",
+      "side": 1,
+      "message": "No period. See:\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Commit-messages",
+      "range": {
+        "startLine": 7,
+        "startChar": 48,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "7a720b566d9969883c7cff06aac65d04f3899daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0654ad95_b8feb95d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-26T18:11:04Z",
+      "side": 1,
+      "message": "comma",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "7a720b566d9969883c7cff06aac65d04f3899daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bdbaf49_cf63b5ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-26T18:11:04Z",
+      "side": 1,
+      "message": "nix line ending",
+      "revId": "7a720b566d9969883c7cff06aac65d04f3899daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11f1410a_80b42c3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-26T18:11:04Z",
+      "side": 1,
+      "message": "It seems like there is more to this CL than what the commit message talks about: it also fixes a bug where there are supposedly ash variants and lacros variants but actually they each test both ash and lacros. I think that should be a separate bug report on Monorail, fixed by a separate CL.",
+      "revId": "7a720b566d9969883c7cff06aac65d04f3899daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a980db0_29fd5c43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/enterpriseconnectors/helpers/helpers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-26T18:11:04Z",
+      "side": 1,
+      "message": "Please make it just this single line:\n`const ScanningTimeOut \u003d time.Minute`",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "7a720b566d9969883c7cff06aac65d04f3899daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
