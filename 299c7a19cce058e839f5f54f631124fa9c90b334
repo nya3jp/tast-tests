@@ -37,6 +37,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "07c1b869_ecec7b26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1522032
+      },
+      "writtenOn": "2022-07-26T21:39:47Z",
+      "side": 1,
+      "message": "Thanks for the review Yanzhu!\n\nAdding tast-owners@google.com for further review",
+      "revId": "299c7a19cce058e839f5f54f631124fa9c90b334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9c71e1a0_5968d372",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
         "patchSetId": 2
@@ -48,6 +65,30 @@
       "writtenOn": "2022-07-26T18:43:39Z",
       "side": 1,
       "message": "nit: should we consider adding another case where lacros and ash chrome browser co-exists?",
+      "range": {
+        "startLine": 50,
+        "startChar": 22,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "299c7a19cce058e839f5f54f631124fa9c90b334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47036bee_e40c39f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1522032
+      },
+      "writtenOn": "2022-07-26T21:39:47Z",
+      "side": 1,
+      "message": "That would most likely be unnecessary. EngProd is just encouraging for there to be a lacros variant for tasts on features that interact with the browser. If we do a test of side-by-side, I don\u0027t think that it would yield any more information than what we get when running them separately. https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#:~:text\u003dIf%20a%20test%20utilizing,value%20set%20to%20%E2%80%98LacrosVariantUnneeded%E2%80%99.",
+      "parentUuid": "9c71e1a0_5968d372",
       "range": {
         "startLine": 50,
         "startChar": 22,
@@ -71,6 +112,30 @@
       "writtenOn": "2022-07-26T18:43:39Z",
       "side": 1,
       "message": "Is this \"blank lacros browser window\" a consistent behavior for all users and will stay here for the long term? IF this behavior is only temporary, we might want to detect the presence of such browser window first.",
+      "range": {
+        "startLine": 142,
+        "startChar": 37,
+        "endLine": 143,
+        "endChar": 24
+      },
+      "revId": "299c7a19cce058e839f5f54f631124fa9c90b334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d96a891c_8fd1c19a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_close_all.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1522032
+      },
+      "writtenOn": "2022-07-26T21:39:47Z",
+      "side": 1,
+      "message": "This is a consistent and expected behavior whenever browserfixt.SetUp is used and is not a bug according to go/lacros-tast-porting.",
+      "parentUuid": "9442dffa_eb8e8835",
       "range": {
         "startLine": 142,
         "startChar": 37,
