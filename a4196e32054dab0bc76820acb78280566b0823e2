@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3818a9bc_d7534cb5",
+        "filename": "src/chromiumos/tast/common/policy/policy_blob.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-26T14:35:13Z",
+      "side": 1,
+      "message": "See WriteExtensionPolicies in FakeDMS. Extension policy data is external data.",
+      "parentUuid": "5dace440_ded71282",
+      "range": {
+        "startLine": 162,
+        "startChar": 16,
+        "endLine": 162,
+        "endChar": 34
+      },
+      "revId": "a4196e32054dab0bc76820acb78280566b0823e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97eee33d_03bdb268",
