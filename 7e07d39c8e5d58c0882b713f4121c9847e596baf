@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e938585_dd6996f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2022-07-26T20:57:03Z",
+      "side": 1,
+      "message": "Currently this just validates that the returned string is all ASCII. I am experimenting to see if there is anything else we can reliably test in both VMs and hardware. ",
+      "revId": "7e07d39c8e5d58c0882b713f4121c9847e596baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
