@@ -17,7 +17,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verify that manatee detection is accurate",
 		Contacts:     []string{"psoberoi@google.com", "manateam@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		Params: []testing.Param{{
 			Name:              "without_manatee",
 			ExtraSoftwareDeps: []string{"no_manatee"},
