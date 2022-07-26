@@ -19,7 +19,7 @@ service BiosService {
   // SetAPSoftwareWriteProtect sets the software AP write protect.
   rpc SetAPSoftwareWriteProtect (WPRequest) returns (google.protobuf.Empty) {}
   // CorruptFWSection writes garbage bytes to the entire section specified.
-  rpc CorruptFWSection (CorruptSection) returns (google.protobuf.Empty) {}
+  rpc CorruptFWSection (CorruptSection) returns (FWBackUpInfo) {}
   // BackupImageSection backs up the current fw region locally and returns its path.
   rpc BackupImageSection (FWBackUpSection) returns (FWBackUpInfo) {}
   // RestoreImageSection restores the fw region from path.
@@ -126,10 +126,11 @@ message FirmwareUpdateModeRequest {
 }
 
 // WPRequest provides args for enabling/disabling software write protect.
-// Provide either (WPsection) OR (range start AND range length) OR (neither).
+// You must provide WPsection range start and range length if enable is true,
+// either default values listed below or custom values if desired. 
 message WPRequest {
   bool Enable = 1;
-  sint64 WPRangeStart = 2;     // Pass -1 for WPRangeStart/Length to skip setting these values. 
-  sint64 WPRangeLength = 3;
+  sint64 WPRangeStart = 2;     // Pass -1 for WPRangeStart to skip setting this value. 
+  sint64 WPRangeLength = 3;    // Pass -1 for WPRangeLength to skip setting this value.
   ImageSection WPSection = 4;  // Pass EmptyImageSection to skip setting this value.
 }

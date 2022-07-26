@@ -70,7 +70,7 @@ func (*BiosService) BackupImageSection(ctx context.Context, req *pb.FWBackUpSect
 
 // RestoreImageSection restores image region from temporary file locally and restores fw with it.
 func (bs *BiosService) RestoreImageSection(ctx context.Context, req *pb.FWBackUpInfo) (*empty.Empty, error) {
-	if err := bios.WriteImageFromSingleSectionFile(ctx, req.Path, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer]); err != nil {
+	if err := bios.WriteImageFromMultiSectionFile(ctx, req.Path, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer]); err != nil {
 		return nil, errors.Wrapf(err, "could not restore %s region with programmer %s from path %s", sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer], req.Path)
 	}
 	return &empty.Empty{}, nil
@@ -116,7 +116,7 @@ func (bs *BiosService) SetAPSoftwareWriteProtect(ctx context.Context, req *pb.WP
 	if req.WPRangeStart != -1 && req.WPRangeLength != -1 {
 		args.WPRangeStart = req.WPRangeStart
 		args.WPRangeLength = req.WPRangeLength
-	} else if sectionEnumToSection[req.WPSection] != bios.EmptyImageSection {
+	} else if req.WPSection != pb.ImageSection_EmptyImageSection {
 		args.WPSection = sectionEnumToSection[req.WPSection]
 	}
 	if err := bios.SetAPSoftwareWriteProtect(ctx, req.Enable, args); err != nil {
@@ -126,19 +126,28 @@ func (bs *BiosService) SetAPSoftwareWriteProtect(ctx context.Context, req *pb.WP
 }
 
 // CorruptFWSection writes garbage over part of the specified firmware section.
-func (bs *BiosService) CorruptFWSection(ctx context.Context, req *pb.CorruptSection) (*empty.Empty, error) {
-	img, err := bios.NewImage(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), programmerEnumToProgrammer[req.Programmer])
+func (bs *BiosService) CorruptFWSection(ctx context.Context, req *pb.CorruptSection) (*pb.FWBackUpInfo, error) {
+	img, err := bios.NewImage(ctx, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
 	if err != nil {
 		return nil, errors.Wrap(err, "could not read firmware")
 	}
 	for i, v := range img.Data {
 		img.Data[i] = (v + 1) & 0xff
 	}
-	err = img.WriteFlashrom(ctx, bios.ImageSection(sectionEnumToSection[req.Section]), programmerEnumToProgrammer[req.Programmer])
+
+	// Save copy of corrupted data to file before writing.
+	corruptedImg, err := img.WriteImageToFile(ctx, sectionEnumToSection[req.Section])
+	if err != nil {
+		return nil, errors.Wrap(err, "failed writing image contents to file")
+	}
+
+	err = bios.WriteImageFromMultiSectionFile(ctx, corruptedImg, sectionEnumToSection[req.Section], programmerEnumToProgrammer[req.Programmer])
 	if err != nil {
 		return nil, errors.Wrap(err, "could not write firmware")
 	}
-	return &empty.Empty{}, nil
+
+	// Return corrupted fw as a usable file
+	return &pb.FWBackUpInfo{Path: corruptedImg, Section: req.Section, Programmer: req.Programmer}, nil
 }
 
 // WriteImageFromMultiSectionFile writes the provided multi section file in the specified section.

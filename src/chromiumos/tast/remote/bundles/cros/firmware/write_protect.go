@@ -43,7 +43,7 @@ func init() {
 		SoftwareDeps: []string{"crossystem", "flashrom"},
 		ServiceDeps:  []string{"tast.cros.firmware.BiosService"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
-		Timeout:      20 * time.Minute,
+		Timeout:      45 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name:    "dev_mode_with_mode_aware_reboot",
@@ -93,9 +93,14 @@ const (
 	targetEC   wpTarget = "ec"
 )
 
-var flashromTargets = map[wpTarget]string{
-	targetBIOS: "host",
-	targetEC:   "ec",
+var wpTargetToProg = map[wpTarget]pb.Programmer{
+	targetBIOS: pb.Programmer_BIOSProgrammer,
+	targetEC:   pb.Programmer_ECProgrammer,
+}
+
+var wpTargetToRegion = map[wpTarget]pb.ImageSection{
+	targetBIOS: pb.ImageSection_APWPROImageSection,
+	targetEC:   pb.ImageSection_ECRWImageSection,
 }
 
 var tmpDirPath = filepath.Join("/", "mnt", "stateful_partition", fmt.Sprintf("flashrom_%d", time.Now().Unix()))
@@ -106,51 +111,79 @@ func WriteProtect(ctx context.Context, s *testing.State) {
 	if err := h.RequireServo(ctx); err != nil {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
+
+	cleanupContext := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Minute)
+	defer cancel()
+
 	if err := h.RequireBiosServiceClient(ctx); err != nil {
 		s.Fatal("Requiring BiosServiceClient: ", err)
 	}
 
 	// Back up EC_RW.
 	s.Log("Back up current EC_RW region")
-	ecrwPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{Section: pb.ImageSection_ECRWImageSection, Programmer: pb.Programmer_ECProgrammer})
+	ecrwPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{
+		Section:    pb.ImageSection_ECRWImageSection,
+		Programmer: pb.Programmer_ECProgrammer,
+	})
 	if err != nil {
 		s.Fatal("Failed to backup current EC_RW region: ", err)
 	}
 	s.Log("EC_RW region backup is stored at: ", ecrwPath.Path)
-
-	s.Log("Create temp dir in DUT")
-	if _, err = h.DUT.Conn().CommandContext(ctx, "mkdir", "-p", tmpDirPath).Output(ssh.DumpLogOnError); err != nil {
-		s.Fatal("Failed to create temp dir: ", err)
-	}
-
-	cleanupContext := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Minute)
-	defer cancel()
 	defer func(ctx context.Context) {
-		s.Log("Reset write protect to false")
-		if err := setWriteProtect(ctx, h, targetEC, false); err != nil {
-			s.Fatal("Failed to set FW write protect state: ", err)
-		}
-
-		// Require again here since reboots in test cause nil pointer errors otherwise.
-		if err := h.RequireBiosServiceClient(ctx); err != nil {
-			s.Fatal("Requiring BiosServiceClient: ", err)
-		}
-
-		// Restore EC_RW.
-		s.Log("Restore EC_RW region with backup from: ", ecrwPath.Path)
-		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, ecrwPath); err != nil {
-			s.Fatal("Failed to restore EC_RW image: ", err)
-		}
-
 		s.Log("Delete EC backup")
 		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", ecrwPath.Path).Output(ssh.DumpLogOnError); err != nil {
 			s.Fatal("Failed to delete ec backup: ", err)
 		}
-		// Clean up temp directory.
+	}(cleanupContext)
+
+	s.Log("Back up current AP WP_RO region")
+	wproPath, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{
+		Section:    pb.ImageSection_APWPROImageSection,
+		Programmer: pb.Programmer_BIOSProgrammer,
+	})
+	if err != nil {
+		s.Fatal("Failed to backup current WP_RO region: ", err)
+	}
+	s.Log("WP_RO region backup is stored at: ", wproPath.Path)
+	defer func(ctx context.Context) {
+		s.Log("Delete AP backup")
+		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", wproPath.Path).Output(ssh.DumpLogOnError); err != nil {
+			s.Fatal("Failed to delete ap backup: ", err)
+		}
+	}(cleanupContext)
+
+	s.Log("Create temp dir in DUT")
+	if _, err := h.DUT.Conn().CommandContext(ctx, "mkdir", "-p", tmpDirPath).Output(ssh.DumpLogOnError); err != nil {
+		s.Fatal("Failed to create temp dir: ", err)
+	}
+	// Clean up temp directory.
+	defer func(ctx context.Context) {
 		s.Log("Delete temp dir and contained files from DUT")
 		if _, err := h.DUT.Conn().CommandContext(ctx, "rm", "-r", tmpDirPath).Output(ssh.DumpLogOnError); err != nil {
 			s.Fatal("Failed to delete temp dir: ", err)
+		}
+	}(cleanupContext)
+
+	// Restore EC fw.
+	defer func(ctx context.Context) {
+		s.Log("Reset write protect to false")
+		if err := setWriteProtect(ctx, h, targetEC, false); err != nil {
+			s.Fatal("Failed to set ec write protect state: ", err)
+		}
+		if err := setWriteProtect(ctx, h, targetBIOS, false); err != nil {
+			s.Fatal("Failed to set ap write protect state: ", err)
+		}
+		if err := h.RequireBiosServiceClient(ctx); err != nil {
+			s.Fatal("Requiring BiosServiceClient: ", err)
+		}
+		s.Log("Restore EC_RW region with backup from: ", ecrwPath.Path)
+		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, ecrwPath); err != nil {
+			s.Fatal("Failed to restore EC_RW image: ", err)
+		}
+		s.Log("Restore AP WP_RO region with backup from: ", wproPath.Path)
+		if _, err := h.BiosServiceClient.RestoreImageSection(ctx, wproPath); err != nil {
+			s.Fatal("Failed to restore WP_RO image: ", err)
 		}
 	}(cleanupContext)
 
@@ -188,13 +221,13 @@ func testWPOverReboot(ctx context.Context, h *firmware.Helper, target wpTarget, 
 		rebootMethod = "mode aware reboot"
 		rebootFunc = performModeAwareReboot
 	case rebootWithShutdownCmd:
-		rebootMethod = "mode aware reboot"
+		rebootMethod = "shutdown cmd"
 		rebootFunc = performRebootWithShutdownCmd
 	case rebootWithRebootCmd:
-		rebootMethod = "mode aware reboot"
+		rebootMethod = "reboot cmd"
 		rebootFunc = performRebootWithRebootCmd
 	case rebootWithPowerBtn:
-		rebootMethod = "mode aware reboot"
+		rebootMethod = "power button press"
 		rebootFunc = performRebootWithPowerBtn
 	}
 
@@ -231,9 +264,13 @@ func performRebootWithRebootCmd(ctx context.Context, h *firmware.Helper) error {
 		return errors.Wrap(err, "failed to reboot DUT")
 	}
 
+	if err := h.RequireConfig(ctx); err != nil {
+		return errors.Wrap(err, "failed to require configs")
+	}
+
 	testing.ContextLog(ctx, "Sleep, wait for DUT to reboot")
-	if err := testing.Sleep(ctx, rebootTimeout); err != nil {
-		return errors.Wrapf(err, "failed to sleep for %s after initiating reboot", rebootTimeout)
+	if err := testing.Sleep(ctx, 2*h.Config.Shutdown); err != nil {
+		return errors.Wrapf(err, "failed to sleep for %s after initiating reboot", 2*h.Config.Shutdown)
 	}
 
 	testing.ContextLog(ctx, "Check for S0 powerstate")
@@ -249,9 +286,13 @@ func performRebootWithShutdownCmd(ctx context.Context, h *firmware.Helper) error
 		return errors.Wrap(err, "failed to shut down DUT")
 	}
 
+	if err := h.RequireConfig(ctx); err != nil {
+		return errors.Wrap(err, "failed to require configs")
+	}
+
 	testing.ContextLog(ctx, "Sleep, wait for DUT to shutdown")
-	if err := testing.Sleep(ctx, shutdownTimeout); err != nil {
-		return errors.Wrapf(err, "failed to sleep for %s after initiating shutdown", shutdownTimeout)
+	if err := testing.Sleep(ctx, h.Config.Shutdown); err != nil {
+		return errors.Wrapf(err, "failed to sleep for %s after initiating shutdown", h.Config.Shutdown)
 	}
 
 	testing.ContextLog(ctx, "Check for G3 or S5 powerstate")
@@ -260,7 +301,7 @@ func performRebootWithShutdownCmd(ctx context.Context, h *firmware.Helper) error
 	}
 
 	testing.ContextLog(ctx, "Power DUT back on with short press of the power button")
-	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOn)); err != nil {
 		return errors.Wrap(err, "failed to power on DUT with short press of the power button")
 	}
 
@@ -272,13 +313,17 @@ func performRebootWithShutdownCmd(ctx context.Context, h *firmware.Helper) error
 }
 
 func performRebootWithPowerBtn(ctx context.Context, h *firmware.Helper) error {
+	if err := h.RequireConfig(ctx); err != nil {
+		return errors.Wrap(err, "failed to require configs")
+	}
+
 	testing.ContextLog(ctx, "Power DUT off with long press of the power button")
-	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurLongPress); err != nil {
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
 		return errors.Wrap(err, "failed to power on DUT with short press of the power button")
 	}
 
 	testing.ContextLog(ctx, "Sleep, wait for DUT to power off")
-	if err := testing.Sleep(ctx, rebootTimeout); err != nil {
+	if err := testing.Sleep(ctx, h.Config.Shutdown); err != nil {
 		return errors.Wrapf(err, "failed to sleep for %s after pressing powerbutton", rebootTimeout)
 	}
 
@@ -288,7 +333,7 @@ func performRebootWithPowerBtn(ctx context.Context, h *firmware.Helper) error {
 	}
 
 	testing.ContextLog(ctx, "Power DUT back on with short press of the power button")
-	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurPress); err != nil {
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOn)); err != nil {
 		return errors.Wrap(err, "failed to power on DUT with short press of the power button")
 	}
 
@@ -300,118 +345,47 @@ func performRebootWithPowerBtn(ctx context.Context, h *firmware.Helper) error {
 }
 
 func testReadWrite(ctx context.Context, h *firmware.Helper, target wpTarget) error {
-	// Current firmware image as read from flash.
-	roBefore := filepath.Join(tmpDirPath, fmt.Sprintf("%s_ro_before.bin", target))
-	// Current firmware image with modification to test writing.
-	roTest := filepath.Join(tmpDirPath, fmt.Sprintf("%s_ro_test.bin", target))
-	// Firmware as read after writing flash.
-	roAfter := filepath.Join(tmpDirPath, fmt.Sprintf("%s_ro_after.bin", target))
 
 	testing.ContextLog(ctx, "Enable Write Protect")
 	if err := setWriteProtect(ctx, h, target, true); err != nil {
 		return errors.Wrap(err, "failed to set FW write protect state")
 	}
 
-	testing.ContextLogf(ctx, "Save current fw image to %q in DUT", roBefore)
-	out, err := h.DUT.Conn().CommandContext(ctx, "flashrom", "-p", flashromTargets[target], "-r", "-i", fmt.Sprintf("WP_RO:%s", roBefore)).CombinedOutput(ssh.DumpLogOnError)
+	if err := h.RequireBiosServiceClient(ctx); err != nil {
+		return errors.Wrap(err, "failed to connect to the bios service on the DUT")
+	}
+
+	testing.ContextLog(ctx, "Read current fw image")
+	roBefore, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{
+		Section:    wpTargetToRegion[target],
+		Programmer: wpTargetToProg[target],
+	})
 	if err != nil {
-		return errors.Wrap(err, "failed to run command flashrom")
-	} else if match := reFlashromSuccess.FindSubmatch(out); match == nil {
-		return errors.Errorf("flashrom did not produce sucess message: %s", string(out))
+		return errors.Wrap(err, "failed to save current fw image")
 	}
 
-	testing.ContextLog(ctx, "Checking fmap")
-	out, err = h.DUT.Conn().CommandContext(ctx, "dump_fmap", "-p", roBefore).CombinedOutput(ssh.DumpLogOnError)
-	if err != nil {
-		return errors.Wrap(err, "failed to dump fmap")
-	}
-
-	// Format for the dumped fmap is "Name offset size".
-	wproMatch := reWPROfmap.FindSubmatch(out)
-	if wproMatch == nil {
-		return errors.New("didn't find WP_RO in fmap")
-	}
-	wproOffset, err := strconv.Atoi(string(wproMatch[1]))
-	if err != nil {
-		return errors.Wrap(err, "failed to get WP_RO offset as integer")
-	}
-
-	if rofridMatch := reROFRIDfmap.FindSubmatch(out); rofridMatch != nil {
-		rofridOffset, err := strconv.Atoi(string(rofridMatch[1]))
-		if err != nil {
-			return errors.Wrap(err, "failed to get offset int for RO_FRID")
-		}
-
-		rofridSize, err := strconv.Atoi(string(rofridMatch[2]))
-		if err != nil {
-			return errors.Wrap(err, "failed to get size int for RO_FRID")
-		}
-
-		if _, err := h.DUT.Conn().CommandContext(ctx, "cp", roBefore, roTest).CombinedOutput(ssh.DumpLogOnError); err != nil {
-			return errors.Wrapf(err, "failed to copy %q to %q", roBefore, roTest)
-		}
-
-		dd1Args := []string{
-			fmt.Sprintf("if=%s", roTest), "bs=1",
-			fmt.Sprintf("count=%d", rofridSize),
-			fmt.Sprintf("skip=%d", rofridOffset-wproOffset),
-		}
-		trArgs := []string{`"[a-zA-Z]"`, `"[A-Za-z]"`}
-		dd2Args := []string{
-			fmt.Sprintf("of=%s", roTest), "bs=1",
-			fmt.Sprintf("count=%d", rofridSize),
-			fmt.Sprintf("seek=%d", rofridOffset-wproOffset), "conv=notrunc",
-		}
-		dd1Cmd := h.DUT.Conn().CommandContext(ctx, "dd", dd1Args...)
-		trCmd := h.DUT.Conn().CommandContext(ctx, "tr", trArgs...)
-		dd2Cmd := h.DUT.Conn().CommandContext(ctx, "dd", dd2Args...)
-		trCmd.Stdin, _ = dd1Cmd.StdoutPipe()
-		dd2Cmd.Stdin, _ = trCmd.StdoutPipe()
-		if err := dd2Cmd.Start(); err != nil {
-			return errors.Wrap(err, "failed to start second dd cmd")
-		}
-		if err := trCmd.Start(); err != nil {
-			return errors.Wrap(err, "failed to start tr cmd")
-		}
-		if err := dd1Cmd.Run(); err != nil {
-			return errors.Wrap(err, "failed to run first dd cmd")
-		}
-		if err := trCmd.Wait(); err != nil {
-			return errors.Wrap(err, "failed to wait for tr cmd to complete")
-		}
-		if err := dd2Cmd.Wait(); err != nil {
-			return errors.Wrap(err, "failed to wait for second dd cmd to complete")
-		}
-	} else {
-		return errors.New("could not find RO_FRID in fmap")
-	}
-
-	testing.ContextLog(ctx, "Attempt to write fw with wp enabled")
-	out, err = h.DUT.Conn().CommandContext(ctx, "flashrom", "-p", flashromTargets[target], "-w", "-i", fmt.Sprintf("WP_RO:%s", roTest)).CombinedOutput(ssh.DumpLogOnError)
-	// We expect an error, so err shouldn't be nil, but neither should out. If out is nil, then the error is from an unrelated source.
-	if out == nil {
-		return errors.New("flashrom command did not produce any output")
-	} else if match := reFlashromFail.FindSubmatch(out); match == nil {
-		return errors.Errorf("flashrom did not produce failure message when trying to write: %s", string(out))
+	testing.ContextLog(ctx, "Attempt to overwrite fw with write protect enabled")
+	roTest, err := h.BiosServiceClient.CorruptFWSection(ctx, &pb.CorruptSection{
+		Section:    wpTargetToRegion[target],
+		Programmer: wpTargetToProg[target],
+	})
+	if err == nil {
+		errors.Wrap(err, "expected flashrom write to fail since wp is enabled")
 	}
 
 	testing.ContextLog(ctx, "Read fw, make sure write didn't succeed with wp enabled")
-	out, err = h.DUT.Conn().CommandContext(ctx, "flashrom", "-p", flashromTargets[target], "-r", "-i", fmt.Sprintf("WP_RO:%s", roAfter)).CombinedOutput(ssh.DumpLogOnError)
+	roAfter, err := h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{
+		Section:    wpTargetToRegion[target],
+		Programmer: wpTargetToProg[target],
+	})
 	if err != nil {
-		return errors.Wrap(err, "failed to run command flashrom")
-	} else if match := reFlashromSuccess.FindSubmatch(out); match == nil {
-		return errors.Errorf("flashrom did not produce success message when trying to read: %s", string(out))
+		return errors.Wrap(err, "failed to save current fw image")
 	}
 
-	if err := performModeAwareReboot(ctx, h); err != nil {
-		return errors.Wrap(err, "failed to do a mode aware reboot")
-	}
-
-	out, err = h.DUT.Conn().CommandContext(ctx, "cmp", roBefore, roAfter).CombinedOutput(ssh.DumpLogOnError)
-	if err != nil {
-		return errors.Wrapf(err, "failed to compare %q and %q using 'cmp'", roBefore, roAfter)
+	if out, err := h.DUT.Conn().CommandContext(ctx, "cmp", roBefore.Path, roAfter.Path).CombinedOutput(ssh.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to compare %q and %q using 'cmp'", roBefore.Path, roAfter.Path)
 	} else if string(out) != "" {
-		return errors.Wrapf(err, "files %q and %q were not identical, so either write protect or read failed", roBefore, roAfter)
+		return errors.Wrapf(err, "files %q and %q were not identical, so either write protect or read failed", roBefore.Path, roAfter.Path)
 	}
 
 	testing.ContextLog(ctx, "Disable Write Protect")
@@ -419,27 +393,37 @@ func testReadWrite(ctx context.Context, h *firmware.Helper, target wpTarget) err
 		return errors.Wrap(err, "failed to set FW write protect state")
 	}
 
-	testing.ContextLog(ctx, "Attempt to write fw with write protect disabled")
-	out, err = h.DUT.Conn().CommandContext(ctx, "flashrom", "-p", flashromTargets[target], "-w", "-i", fmt.Sprintf("WP_RO:%s", roTest)).CombinedOutput(ssh.DumpLogOnError)
+	if err := h.RequireBiosServiceClient(ctx); err != nil {
+		return errors.Wrap(err, "failed to connect to the bios service on the DUT")
+	}
+
+	testing.ContextLog(ctx, "Attempt to overwrite fw with write protect disabled")
+	roTest, err = h.BiosServiceClient.CorruptFWSection(ctx, &pb.CorruptSection{
+		Section:    wpTargetToRegion[target],
+		Programmer: wpTargetToProg[target],
+	})
 	if err != nil {
-		return errors.Wrap(err, "failed to run command flashrom")
-	} else if match := reFlashromSuccess.FindSubmatch(out); match == nil {
-		return errors.Errorf("flashrom did not produce success message when trying to write: %s", string(out))
+		errors.Wrap(err, "failed to corrupt current fw image with write protect disabled")
 	}
 
 	testing.ContextLog(ctx, "Read fw, make sure write succeeded with wp disabled")
-	out, err = h.DUT.Conn().CommandContext(ctx, "flashrom", "-p", flashromTargets[target], "-r", "-i", fmt.Sprintf("WP_RO:%s", roAfter)).CombinedOutput(ssh.DumpLogOnError)
+	roAfter, err = h.BiosServiceClient.BackupImageSection(ctx, &pb.FWBackUpSection{
+		Section:    wpTargetToRegion[target],
+		Programmer: wpTargetToProg[target],
+	})
 	if err != nil {
-		return errors.Wrap(err, "failed to run command flashrom")
-	} else if match := reFlashromSuccess.FindSubmatch(out); match == nil {
-		return errors.Errorf("flashrom did not produce success message when trying to read: %s", string(out))
+		return errors.Wrap(err, "failed to save current fw image")
 	}
 
-	out, err = h.DUT.Conn().CommandContext(ctx, "cmp", roTest, roAfter).CombinedOutput(ssh.DumpLogOnError)
-	if err != nil {
-		return errors.Wrapf(err, "failed to compare %q and %q using 'cmp'", roTest, roAfter)
+	if out, err := h.DUT.Conn().CommandContext(ctx, "cmp", roTest.Path, roAfter.Path).CombinedOutput(ssh.DumpLogOnError); err != nil {
+		return errors.Wrapf(err, "failed to compare %q and %q using 'cmp'", roTest.Path, roAfter.Path)
 	} else if string(out) != "" {
-		return errors.Errorf("Files %q and %q were not identical", roTest, roAfter)
+		return errors.Errorf("Files %q and %q were not identical", roTest.Path, roAfter.Path)
+	}
+
+	testing.ContextLog(ctx, "Restore original fw backup from: ", roBefore.Path)
+	if _, err := h.BiosServiceClient.RestoreImageSection(ctx, roBefore); err != nil {
+		return errors.Wrap(err, "failed to restore fw image")
 	}
 	return nil
 }
@@ -454,27 +438,27 @@ func setWriteProtect(ctx context.Context, h *firmware.Helper, target wpTarget, e
 
 	if target == targetBIOS {
 		// Disable hardware wp for now so flashrom cmd can run.
+		if err := h.Servo.RunECCommand(ctx, "flashwp disable"); err != nil {
+			return errors.Wrap(err, "failed to disable flashwp")
+		}
 		if err := h.Servo.SetFWWPState(ctx, servo.FWWPStateOff); err != nil {
 			return errors.Wrap(err, "failed to disable firmware write protect")
 		}
 
-		// This file will get removed when tmpDirPath is removed.
-		tmpImagePath := filepath.Join(tmpDirPath, "tmp_file.bin")
-		flashromArgs := []string{
-			"-p", flashromTargets[target],
-			"-i", fmt.Sprintf("WP_RO:%s", tmpImagePath),
-			"--wp-region", "WP_RO",
-			fmt.Sprintf("--wp-%s", enableStr),
+		if err := h.RequireBiosServiceClient(ctx); err != nil {
+			return errors.Wrap(err, "failed to connect to the bios service on the DUT")
 		}
-		out, err := h.DUT.Conn().CommandContext(ctx, "flashrom", flashromArgs...).Output(ssh.DumpLogOnError)
-		if err != nil {
-			return errors.Wrapf(err, "failed run flashrom cmd: %s", string(out))
-		} else if match := reFlashromSuccess.FindSubmatch(out); match == nil {
-			return errors.Errorf("flashrom did not produce success message when trying to write: %s", string(out))
+		if _, err := h.BiosServiceClient.SetAPSoftwareWriteProtect(ctx, &pb.WPRequest{
+			Enable: enable,
+		}); err != nil {
+			return errors.Wrapf(err, "failed to %s AP write protection", enableStr)
 		}
 
 		if err := h.Servo.SetFWWPState(ctx, fwwpState); err != nil {
 			return errors.Wrapf(err, "failed to %s firmware write protect", enableStr)
+		}
+		if err := h.Servo.RunECCommand(ctx, fmt.Sprintf("flashwp %s", enableStr)); err != nil {
+			return errors.Wrap(err, "failed to disable flashwp")
 		}
 
 	} else {
@@ -507,17 +491,17 @@ func performModeAwareReboot(ctx context.Context, h *firmware.Helper) error {
 		return errors.Wrap(err, "failed to create mode switcher")
 	}
 	testing.ContextLog(ctx, "Performing mode aware reboot")
-	return ms.ModeAwareReboot(ctx, firmware.ColdReset)
+	return ms.ModeAwareReboot(ctx, firmware.WarmReset)
 }
 
 func checkCrossystem(ctx context.Context, h *firmware.Helper, expectedWpsw int) error {
-	r := reporters.New(h.DUT)
 	testing.ContextLog(ctx, "Check crossystem for write protect state param")
-	paramMap, err := r.Crossystem(ctx, reporters.CrossystemParamWpswCur)
+	r := reporters.New(h.DUT)
+	currWpswStr, err := r.CrossystemParam(ctx, reporters.CrossystemParamWpswCur)
 	if err != nil {
-		return errors.Wrapf(err, "failed to get crossystem %v value", reporters.CrossystemParamWpswCur)
+		return errors.Wrap(err, "failed to get crossystem wpsw value value")
 	}
-	currWpsw, err := strconv.Atoi(paramMap[reporters.CrossystemParamWpswCur])
+	currWpsw, err := strconv.Atoi(currWpswStr)
 	if err != nil {
 		return errors.Wrap(err, "failed to convert crossystem wpsw value to integer value")
 	}
