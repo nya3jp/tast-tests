@@ -103,6 +103,9 @@ const (
 	// CheckToNoGoodScreen checks that DUT will not boot from an invalid USB,
 	// but instead boot to the NOGOOD screen.
 	CheckToNoGoodScreen ModeSwitchOption = iota
+
+	// CheckToNormConfirmed causes DUT to stay at the to_norm_confirmed screen.
+	CheckToNormConfirmed ModeSwitchOption = iota
 )
 
 // msOptsContain determines whether a slice of ModeSwitchOptions contains a specific Option.
@@ -188,9 +191,12 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 
 	switch toMode {
 	case fwCommon.BootModeNormal:
-		testing.ContextLog(ctx, "Disabling dev requst")
-		if err := h.DUT.Conn().CommandContext(ctx, "crossystem", "disable_dev_request=1").Run(ssh.DumpLogOnError); err != nil {
-			return errors.Wrap(err, "sending disable dev request")
+		// Skip disabling dev request if CheckToNormConfirmed is required.
+		if !msOptsContain(opts, CheckToNormConfirmed) {
+			testing.ContextLog(ctx, "Disabling dev requst")
+			if err := h.DUT.Conn().CommandContext(ctx, "crossystem", "disable_dev_request=1").Run(ssh.DumpLogOnError); err != nil {
+				return errors.Wrap(err, "sending disable dev request")
+			}
 		}
 		if err := ms.PowerOff(ctx); err != nil {
 			return errors.Wrap(err, "powering off DUT")
@@ -206,8 +212,12 @@ func (ms ModeSwitcher) RebootToMode(ctx context.Context, toMode fwCommon.BootMod
 			return err
 		}
 		if fromMode != fwCommon.BootModeNormal {
-			if err := ms.fwScreenToNormalMode(ctx); err != nil {
+			if err := ms.fwScreenToNormalMode(ctx, opts...); err != nil {
 				return errors.Wrap(err, "moving from firmware screen to normal mode")
+			}
+			if msOptsContain(opts, CheckToNormConfirmed) {
+				testing.ContextLog(ctx, "Exiting RebootToMode to stay at the to_norm_confirmed screen")
+				return nil
 			}
 		} else {
 			// Reconnect to the DUT.
@@ -566,7 +576,7 @@ func (ms *ModeSwitcher) ModeAwareReboot(ctx context.Context, resetType ResetType
 // fwScreenToNormalMode moves the DUT from the firmware bootup screen to Normal mode.
 // This should be called immediately after powering on.
 // The actual behavior depends on the ModeSwitcherType.
-func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context) error {
+func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context, opts ...ModeSwitchOption) error {
 	h := ms.Helper
 	if err := h.RequireServo(ctx); err != nil {
 		return errors.Wrap(err, "requiring servo")
@@ -626,6 +636,7 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context) error {
 			// 5. Sleep for [KeypressDelay] seconds to confirm keypress.
 			// 6. Wait until the TO_NORM screen appears.
 			// 7. Press power to select Confirm Enabling Verified Boot.
+			// 8. If CheckToNormConfirmed, exit polling to stay at the to_norm_confirmed screen.
 			if err := h.Servo.SetInt(ctx, servo.VolumeUpHold, 100); err != nil {
 				return errors.Wrap(err, "changing menu selection to 'Enable Root Verification'")
 			}
@@ -640,6 +651,10 @@ func (ms *ModeSwitcher) fwScreenToNormalMode(ctx context.Context) error {
 			}
 			if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurTab); err != nil {
 				return errors.Wrap(err, "selecting menu option 'Confirm Enabling Verified Boot'")
+			}
+			if msOptsContain(opts, CheckToNormConfirmed) {
+				testing.ContextLog(ctx, "Exiting poll to stay at the to_norm_confirmed screen")
+				return nil
 			}
 		default:
 			return errors.Errorf("unsupported ModeSwitcherType %s for fwScreenToNormalMode", h.Config.ModeSwitcherType)
