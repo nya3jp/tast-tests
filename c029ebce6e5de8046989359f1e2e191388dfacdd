@@ -16,6 +16,52 @@
       "message": "PTAL.",
       "revId": "c029ebce6e5de8046989359f1e2e191388dfacdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6cb7978_4b7263d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-07-26T21:19:02Z",
+      "side": 1,
+      "message": "I can\u0027t see this battery state logging anywhere in the results-chart.json",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 17
+      },
+      "revId": "c029ebce6e5de8046989359f1e2e191388dfacdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c9f2fd6_436803cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-07-26T21:19:02Z",
+      "side": 1,
+      "message": "Are you gonna do this in this CL or next CL?",
+      "range": {
+        "startLine": 331,
+        "startChar": 1,
+        "endLine": 331,
+        "endChar": 72
+      },
+      "revId": "c029ebce6e5de8046989359f1e2e191388dfacdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
