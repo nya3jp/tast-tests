@@ -22,6 +22,30 @@
       },
       "revId": "294298dbc3daf39e6ee3fbbf69c20687c1ca99d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69908f19_ed74057d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_text_editing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1536938
+      },
+      "writtenOn": "2022-07-26T00:44:16Z",
+      "side": 1,
+      "message": "Modified test so that it clicks and types into another text field instead of clicking the input field header.",
+      "parentUuid": "d8cc4542_fc966ea1",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "294298dbc3daf39e6ee3fbbf69c20687c1ca99d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
