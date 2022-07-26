@@ -7,6 +7,7 @@ package sysutil
 
 import (
 	"bytes"
+	"fmt"
 	"os/user"
 	"strconv"
 	"strings"
@@ -114,6 +115,10 @@ func (v *KernelVersion) IsOrLater(major, minor int) bool {
 // IsOrLess returns true if the kernel version is at most major.minor else false.
 func (v *KernelVersion) IsOrLess(major, minor int) bool {
 	return v.major < major || v.major == major && v.minor <= minor
+}
+
+func (v *KernelVersion) String() string {
+	return fmt.Sprintf("v%d.%d", v.major, v.minor)
 }
 
 // KernelVersionAndArch reads the Linux kernel version and arch of the system.
