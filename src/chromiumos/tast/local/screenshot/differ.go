@@ -343,6 +343,10 @@ func (d *differ) Diff(ctx context.Context, name string, finder *nodewith.Finder,
 		// Experimental results seem to show that several boards are off by a single color in some channels,
 		// probably due to floating-point arithmetic. Since it's basically invisible to the end-user, ignore it.
 		PixelDeltaThreshold: 3,
+		// Fuzzy matcher is a bit weird. Instead of "no more than <max different pixels> with difference of more than <delta>",
+		// it means "no more than <max different pixels> differing, and no individual pixel has more than <delta> difference."
+		// If we want to accept an image with all pixels off by one, this needs to be at least the number of pixels in the image.
+		MaxDifferentPixels: 999999999,
 		// By default, retry once to ensure the screen hasn't  changed, and fail if it has changed.
 		Retries: 1,
 		// Pick a random interval so that we don't happen to always be in sync with
@@ -517,10 +521,7 @@ func (d *differ) capture(ctx context.Context, screenshotName string, finder *nod
 		// Note: image matching algorithm and parameters should be fed as optional keys, not in keys.json,
 		// despite the fact that it doesn't depend on any additional data here.
 		"--add-test-optional-key", "image_matching_algorithm:fuzzy",
-		// Fuzzy matcher is a bit weird. Instead of "no more than <max different pixels> with difference of more than <delta>",
-		// it means "no more than <max different pixels> differing, and no individual pixel has more than <delta> difference."
-		// If we want to accept an image with all pixels off by one, this needs to be at least the number of pixels in the image.
-		"--add-test-optional-key", "fuzzy_max_different_pixels:999999999",
+		"--add-test-optional-key", fmt.Sprintf("fuzzy_max_different_pixels:%d", options.MaxDifferentPixels),
 		"--add-test-optional-key", fmt.Sprintf("fuzzy_pixel_delta_threshold:%d", options.PixelDeltaThreshold),
 
 		"--add-test-optional-key", fmt.Sprintf("cropped_resolution:%dx%d", boundsPx.Width, boundsPx.Height),
