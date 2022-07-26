@@ -138,7 +138,7 @@ func GetBrowserStartTime(ctx context.Context, tconn *chrome.TestConn,
 func GetBrowserTabs(ctx context.Context, tconn *chrome.TestConn) ([]Tab, error) {
 	var tabs []Tab
 	if err := tconn.Eval(ctx, `(async () => {
-		const tabs = await tast.promisify(chrome.tabs.query)({currentWindow: true});
+		const tabs = await tast.promisify(chrome.tabs.query)({});
 		return tabs;
 	})()`, &tabs); err != nil {
 		return nil, err
