@@ -8,11 +8,22 @@ package rpcdut
 
 import (
 	"context"
+	"strings"
+	"time"
 
 	"chromiumos/tast/dut"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
+)
+
+// Option type is used to customise RPCDUT behaviour.
+type Option int
+
+// Flags that can be passed to NewRPCDUT method.
+const (
+	OptionWaitForFWUpdates Option = iota
 )
 
 // RPCDUT extends dut.DUT to maintain an additional RPC connection.
@@ -34,11 +45,16 @@ type RPCDUT struct {
 	h          *testing.RPCHint
 	bundleName string
 	cl         *rpc.Client
+	opts       map[Option]bool
 }
 
 // NewRPCDUT creates a new RPCDUT with a dialed rpc connection.
-func NewRPCDUT(ctx context.Context, d *dut.DUT, h *testing.RPCHint, bundleName string) (*RPCDUT, error) {
-	rd := &RPCDUT{d: d, h: h, bundleName: bundleName}
+func NewRPCDUT(ctx context.Context, d *dut.DUT, h *testing.RPCHint, bundleName string, opts ...Option) (*RPCDUT, error) {
+	rd := &RPCDUT{d: d, h: h, bundleName: bundleName, opts: make(map[Option]bool)}
+
+	for _, opt := range opts {
+		rd.opts[opt] = true
+	}
 
 	if err := rd.RPCDial(ctx); err != nil {
 		return nil, err
@@ -97,6 +113,55 @@ func (rd *RPCDUT) Close(ctx context.Context) error {
 	return rd.RPCClose(ctx)
 }
 
+// waitUntilUpdateComplete is responsible for ensure that firmware update
+// process is completed and DUT is not going to reboot.
+//
+// On some DUTs (e.g. hatch) we can connect to DUT between update and
+// reboot after update. We can detect that case by checking
+// 'boot-update-firmware' and 'reboot' service.
+// - if 'boot-update-firmware' service is not in start/running state
+//   then we connected to DUT before or during update.
+// - if 'reboot' service is not in stop/waiting state after
+//   'boot-update-firmware' finished then reboot was requested (to be
+//   precise, when runlevel is changed to 6, 'reboot' service state is
+//   changed to start/starting). Please note that there is no race condition
+//   between 'boot-update-firmware' finishing and 'reboot' starting because
+//   the state of 'reboot' service is changed during the pre-start of
+//   'boot-update-firmware'.
+func (rd *RPCDUT) waitUntilUpdateComplete(ctx context.Context) error {
+	return testing.Poll(ctx, func(ctx context.Context) error {
+		// Use short timeout to avoid block on SSH operations taking
+		// long time (e.g. DUT reboot or network issues).
+		ctx, cancel := context.WithTimeout(ctx, 3*time.Second)
+		defer cancel()
+
+		if !rd.d.Connected(ctx) {
+			if err := rd.d.WaitConnect(ctx); err != nil {
+				return errors.Wrap(err, "failed to connect to DUT")
+			}
+		}
+
+		// We are not using UpstartService here because it requires RPC
+		// connection which introduces overhead.
+		var services = []struct {
+			name, state string
+		}{
+			{"boot-update-firmware", "start/running"},
+			{"reboot", "stop/waiting"},
+		}
+		for _, service := range services {
+			output, err := rd.d.Conn().CommandContext(ctx, "initctl", "status", service.name).Output()
+			if err != nil {
+				return errors.Wrapf(err, "failed to check %q service status", service.name)
+			}
+			if !strings.Contains(string(output), service.state) {
+				return errors.Errorf("service %q is not in %q state", service.name, service.state)
+			}
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 2 * time.Second, Timeout: 90 * time.Second})
+}
+
 // Reboot the dut and then reestablish the rpc connection.
 //
 // The tast gRPC connection relies on the dut.DUT's existing ssh connection.
@@ -113,6 +178,12 @@ func (rd *RPCDUT) Reboot(ctx context.Context) error {
 	}
 	if err := rd.d.Reboot(ctx); err != nil {
 		return err
+	}
+	if rd.opts[OptionWaitForFWUpdates] {
+		testing.ContextLog(ctx, "Wait for firmware update to finish")
+		if err := rd.waitUntilUpdateComplete(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for update complete")
+		}
 	}
 	if err := rd.RPCDial(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to reopen rpc connection after reboot: ", err)
