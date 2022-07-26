@@ -144,6 +144,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bec69119_bb7cda8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-26T19:47:11Z",
+      "side": 1,
+      "message": "I tried some experiments on moving ui/perfutil up a few layers to src/chromiumos/tast/local/perfutil.\n\nOne problem I noticed is that we\u0027d need to implement `RunMultiple` without relying on `s.Run`. This issue indeed is shown up in my experiment by pre-submit script, which complains with \"\u0027testing.State\u0027 should not be used in support packages, except for precondition implementation\".\n\nAny thoughts?",
+      "parentUuid": "0aa4b46c_98d7cf3a",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "9e64f91dfd08cabb66d91f26fefeeb6808b9f85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c7c1874_3f4d3444",
