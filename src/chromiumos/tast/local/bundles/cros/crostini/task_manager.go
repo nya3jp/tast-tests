@@ -63,7 +63,7 @@ func TaskManager(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
 	tastkManager := nodewith.Name("Task Manager").ClassName("TaskManagerView").First()
-	crostiniEntry := nodewith.Name("Linux Virtual Machine: termina").Ancestor(tastkManager)
+	crostiniEntry := nodewith.Name("Linux Virtual Machine: termina").Ancestor(tastkManager).Onscreen()
 	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("open Task Manager and look for Crostini",
 		// Press Search + Esc to launch task manager
