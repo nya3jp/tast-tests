@@ -81,7 +81,7 @@ func init() {
 		Vars:     []string{"ui.gaiaPoolDefault"},
 		Impl: arc.NewArcBootedWithPlayStoreFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return []chrome.Option{
-				chrome.EnableFeatures("MediaAppPhotosIntegrationImage"),
+				chrome.EnableFeatures("MediaAppPhotosIntegrationImage:minPhotosVersionForImage/1.0"),
 				chrome.ExtraArgs(arc.DisableSyncFlags()...),
 				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault"))}, nil
 		}),
