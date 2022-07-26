@@ -16,6 +16,24 @@
       "message": "It\u0027s possible a test would want to exit cleanly by sending input. Can we return without an error if getchar returns input?",
       "revId": "ed5eca12e0a5d70ad235f69d884730b75e484fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a16bb748_305769f8",
+        "filename": "helpers/local/multivm.Lifecycle.allocate.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-07-26T03:34:06Z",
+      "side": 1,
+      "message": "Fixed. Do we need to care about any unusual return value like -1 in pause() ?",
+      "parentUuid": "1bc907b3_f36ff72b",
+      "revId": "ed5eca12e0a5d70ad235f69d884730b75e484fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
