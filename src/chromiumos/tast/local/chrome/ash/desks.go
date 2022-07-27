@@ -42,12 +42,6 @@ func CreateNewDesk(ctx context.Context, tconn *chrome.TestConn) error {
 
 // CleanUpDesks removes all but one desk.
 func CleanUpDesks(ctx context.Context, tconn *chrome.TestConn) error {
-	// Ensure not in overview, to work around https://crbug.com/1309220.
-	// TODO(https://crbug.com/1309220): Remove this when the bug is fixed.
-	if err := SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-		return errors.Wrap(err, "failed to ensure not in overview")
-	}
-
 	// To remove all but one desk, we invoke chrome.autotestPrivate.removeActiveDesk
 	// repeatedly until it returns false. It is guaranteed to return true as long as
 	// there is more than one desk (see DesksController::CanRemoveDesks in chromium).
