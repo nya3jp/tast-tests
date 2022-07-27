@@ -127,6 +127,9 @@ func (v *mgsFixtureState) SetUp(ctx context.Context, s *testing.FixtState) inter
 	pinPolicy := policy.PinnedLauncherApps{Val: []string{
 		v.vdiApplicationToStart.ID,
 	}}
+	// Using this policy will present a suggestion for logging out to be showed
+	// when we close all the windows in PostTest.
+	supressLoggingOutDialog := policy.SuggestLogoutAfterClosingLastWindow{Val: false}
 
 	mgs, cr, err := mgs.New(ctx,
 		fdms,
@@ -135,6 +138,7 @@ func (v *mgsFixtureState) SetUp(ctx context.Context, s *testing.FixtState) inter
 		mgs.AddPublicAccountPolicies(vdiAccountID, []policy.Policy{
 			&installPolicy,
 			&pinPolicy,
+			&supressLoggingOutDialog,
 		}),
 	)
 	if err != nil {
@@ -206,6 +210,10 @@ func (v *mgsFixtureState) SetUp(ctx context.Context, s *testing.FixtState) inter
 }
 
 func (v *mgsFixtureState) TearDown(ctx context.Context, s *testing.FixtState) {
+	if err := v.vdiConnector.Logout(ctx); err != nil {
+		s.Error("Couldn't logout from the VDI application: ", err)
+	}
+
 	v.keyboard.Close()
 	chrome.Unlock()
 
@@ -250,6 +258,36 @@ func (v *mgsFixtureState) Reset(ctx context.Context) error {
 func (v *mgsFixtureState) PreTest(ctx context.Context, s *testing.FixtTestState) {}
 func (v *mgsFixtureState) PostTest(ctx context.Context, s *testing.FixtTestState) {
 	tconn, err := v.cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get all open windows: ", err)
+	}
+	for _, w := range ws {
+		if err := w.CloseWindow(ctx, tconn); err != nil {
+			s.Logf("Warning: Failed to close window (%+v): %v", w, err)
+		}
+	}
+
+	testing.ContextLog(ctx, "VDI: Restarting VDI app")
+	if err := apps.Launch(ctx, tconn, v.vdiApplicationToStart.ID); err != nil {
+		s.Fatal("Failed to launch vdi app: ", err)
+	}
+	if err := ash.WaitForApp(ctx, tconn, v.vdiApplicationToStart.ID, time.Minute); err != nil {
+		s.Fatal("The VDI app did not appear in shelf after launch: ", err)
+	}
+
+	if err := v.vdiConnector.LoginAfterRestart(ctx); err != nil {
+		s.Fatal("Couldn't log in after restart: ", err)
+	}
+
+	if err := v.vdiConnector.WaitForMainScreenVisible(ctx); err != nil {
+		s.Fatal("VDI main screen was not present: ", err)
+	}
+
 	if err != nil {
 		s.Fatal("Failed to create TestAPI connection: ", err)
 	}
