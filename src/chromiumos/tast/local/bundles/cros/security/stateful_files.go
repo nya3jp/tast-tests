@@ -81,6 +81,7 @@ func StatefulFiles(ctx context.Context, s *testing.State) {
 		chk.NewPattern(chk.Tree("encrypted/var/lib/chaps/database"), chk.Users("chaps"), chk.Groups("chronos-access"), chk.NotMode(027)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/dhcpcd"), chk.Users("dhcp"), chk.Groups("dhcp"), chk.NotMode(022)),
 		chk.NewPattern(chk.Path("encrypted/var/lib/gentoo"), chk.Users("root"), chk.NotMode(022), chk.SkipChildren()),
+		chk.NewPattern(chk.Tree("encrypted/var/lib/hpsd"), chk.Users("hpsd"), chk.Groups("hpsd"), chk.NotMode(022)),
 		chk.NewPattern(chk.Tree("encrypted/var/lib/imageloader"), chk.Users("imageloaderd"), chk.Groups("imageloaderd"), chk.NotMode(022)),
 		// TODO(chromium:1197973): Re-add permissions checks for /var/lib/metrics
 		chk.NewPattern(chk.Tree("encrypted/var/lib/metrics"), chk.SkipChildren()),
