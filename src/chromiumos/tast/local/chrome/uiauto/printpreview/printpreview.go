@@ -56,7 +56,7 @@ func Print(ctx context.Context, tconn *chrome.TestConn) error {
 // the given printerName.
 func SelectPrinter(ctx context.Context, tconn *chrome.TestConn, printerName string) error {
 	// Find and expand the destination list.
-	dataList := nodewith.Name("Destination Save as PDF").Role(role.PopUpButton)
+	dataList := nodewith.NameStartingWith("Destination ").Role(role.PopUpButton)
 	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("find and click destination list",
 		ui.WithTimeout(10*time.Second).WaitUntilExists(dataList),
@@ -70,6 +70,16 @@ func SelectPrinter(ctx context.Context, tconn *chrome.TestConn, printerName stri
 	if err := uiauto.Combine("find and click See more... menu item",
 		ui.WithTimeout(10*time.Second).WaitUntilExists(seeMore),
 		ui.LeftClick(seeMore),
+	)(ctx); err != nil {
+		return err
+	}
+
+	// Click outside the search box to make sure the onscreen keyboard doesn't cover
+	// the printer we want to click.
+	title := nodewith.Name("Select a destination").Role(role.StaticText)
+	if err := uiauto.Combine("move focus out of search box",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(title),
+		ui.LeftClick(title),
 	)(ctx); err != nil {
 		return err
 	}
