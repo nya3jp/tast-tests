@@ -8,8 +8,8 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/cros/ui/setup"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/ui/setup"
 	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
