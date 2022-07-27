@@ -161,6 +161,24 @@
       "message": "can we have a utility to do this and share across tests?",
       "revId": "299c7a19cce058e839f5f54f631124fa9c90b334",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2355b9fe_8079f9cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_combine_desks.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1522032
+      },
+      "writtenOn": "2022-07-27T21:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2e1683d_b37a91dd",
+      "revId": "299c7a19cce058e839f5f54f631124fa9c90b334",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
