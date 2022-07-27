@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dc9262e_5692c22a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-07-27T21:32:39Z",
+      "side": 1,
+      "message": "LGTM % typo -- assuming merge conflict is trivial to resolve.",
+      "revId": "aeccd2b0bc1912c7cb76d79cc5adf9e1a555c147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b2773c5_f73f3026",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-07-27T21:32:39Z",
+      "side": 1,
+      "message": "hardware",
+      "range": {
+        "startLine": 505,
+        "startChar": 35,
+        "endLine": 505,
+        "endChar": 44
+      },
+      "revId": "aeccd2b0bc1912c7cb76d79cc5adf9e1a555c147",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
