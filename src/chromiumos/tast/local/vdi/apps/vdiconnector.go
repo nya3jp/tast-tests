@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/uidetection"
@@ -27,9 +28,11 @@ type VDILoginConfig struct {
 // VDIInt is an interface for VDI application providing common way to connect
 // to VDI application and other shared functionality.
 type VDIInt interface {
-	Init(s *testing.FixtState, d *uidetection.Context)
-	Login(ctx context.Context, k *input.KeyboardEventWriter, cfg *VDILoginConfig) error
+	Init(s *testing.FixtState, tconn *chrome.TestConn, d *uidetection.Context, k *input.KeyboardEventWriter)
+	Login(ctx context.Context, cfg *VDILoginConfig) error
+	Logout(ctx context.Context) error
+	LoginAfterRestart(ctx context.Context) error
 	WaitForMainScreenVisible(ctx context.Context) error
-	SearchAndOpenApplication(ctx context.Context, k *input.KeyboardEventWriter, appName string, checkIfOpened func(context.Context) error) uiauto.Action
-	ResetSearch(ctx context.Context, k *input.KeyboardEventWriter) error
+	SearchAndOpenApplication(ctx context.Context, appName string, checkIfOpened func(context.Context) error) uiauto.Action
+	ResetSearch(ctx context.Context) error
 }
