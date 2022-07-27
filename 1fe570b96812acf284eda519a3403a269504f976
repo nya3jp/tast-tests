@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92b170ff_af91248f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_input_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-07-27T16:15:41Z",
+      "side": 1,
+      "message": "Does this need to be implemented before promoting this test to mainline?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "1fe570b96812acf284eda519a3403a269504f976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
