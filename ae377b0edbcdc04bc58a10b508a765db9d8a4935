@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf6d36f_d3f910f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-27T06:14:41Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm for tast",
+      "revId": "ae377b0edbcdc04bc58a10b508a765db9d8a4935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df37cae5_51bdc764",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-27T06:14:41Z",
+      "side": 1,
+      "message": "nit: \"compares got with its output\"",
+      "range": {
+        "startLine": 56,
+        "startChar": 48,
+        "endLine": 56,
+        "endChar": 82
+      },
+      "revId": "ae377b0edbcdc04bc58a10b508a765db9d8a4935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97db96a5_e876a8b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-27T06:14:41Z",
+      "side": 1,
+      "message": "nit: maybe put this variable before `command` given the current function name",
+      "range": {
+        "startLine": 57,
+        "startChar": 60,
+        "endLine": 57,
+        "endChar": 63
+      },
+      "revId": "ae377b0edbcdc04bc58a10b508a765db9d8a4935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
