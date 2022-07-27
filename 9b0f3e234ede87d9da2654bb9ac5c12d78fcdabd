@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208f3d3b_3bd67ce7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-27T18:50:38Z",
+      "side": 1,
+      "message": "I wonder if we could add a test Android app that does the download (in which case we could skip chrome \"first run\" steps)",
+      "revId": "9b0f3e234ede87d9da2654bb9ac5c12d78fcdabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
