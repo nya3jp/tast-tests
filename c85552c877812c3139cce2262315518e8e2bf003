@@ -270,6 +270,30 @@
       },
       "revId": "c85552c877812c3139cce2262315518e8e2bf003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f78f3abc_46d088f8",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-07-27T19:34:25Z",
+      "side": 1,
+      "message": "If memory serves, much like its contents, the advanced settings dialog doesn\u0027t have proper accessibility info, so I wasn\u0027t able to set up a finder that unambiguously matches it. But I\u0027m going to take another look to make sure that\u0027s not possible.",
+      "parentUuid": "f76cc1a9_53a4abf1",
+      "range": {
+        "startLine": 341,
+        "startChar": 39,
+        "endLine": 341,
+        "endChar": 64
+      },
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
