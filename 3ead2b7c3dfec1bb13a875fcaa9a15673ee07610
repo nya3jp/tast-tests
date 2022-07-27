@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e39d39a_4ab2e7a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/idle.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-07-27T23:11:06Z",
+      "side": 1,
+      "message": "Probably better to say \"system\" instead for total system power.\n\nThe \"energyrate\" will get question that it is energy rate of what.",
+      "range": {
+        "startLine": 105,
+        "startChar": 24,
+        "endLine": 105,
+        "endChar": 34
+      },
+      "revId": "3ead2b7c3dfec1bb13a875fcaa9a15673ee07610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c617e9f4_2e584762",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/idle.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-07-27T23:11:06Z",
+      "side": 1,
+      "message": "smaller is better",
+      "range": {
+        "startLine": 107,
+        "startChar": 19,
+        "endLine": 107,
+        "endChar": 33
+      },
+      "revId": "3ead2b7c3dfec1bb13a875fcaa9a15673ee07610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51003388_c80638d4",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/idle.go",
         "patchSetId": 5
