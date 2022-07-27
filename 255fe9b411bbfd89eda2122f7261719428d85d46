@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "def8ce91_693440b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-27T19:40:25Z",
+      "side": 1,
+      "message": "Hi Alexander,\n\nI got this test to work before adding all the TAPE stuff and it passed: https://paste.googleplex.com/5675768475549696\n\nThen I went ahead and added TAPE, similarly to how I saw it done for gaia_enrollment and now the test doesn\u0027t work: https://paste.googleplex.com/5950152931016704\n\nThere are some TAPE issues like: \"Failed to create an account manager and lease an account.\" you can see more in the logs.\n\nAm I doing something wrong or is it not setup yet for this domain on the backend?\n\nThanks!",
+      "revId": "255fe9b411bbfd89eda2122f7261719428d85d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
