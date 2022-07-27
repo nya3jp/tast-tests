@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7f0346_c12ac7dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-27T03:03:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b979b877_3fc5ed76",
+      "range": {
+        "startLine": 57,
+        "startChar": 42,
+        "endLine": 57,
+        "endChar": 59
+      },
+      "revId": "1188f179f23fe8d2bf7feedbc7bcb2ef876c343d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2dacaf5_90792769",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "735cd768_e059c854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-27T03:03:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2dacaf5_90792769",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "1188f179f23fe8d2bf7feedbc7bcb2ef876c343d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8764e9f_1a639e58",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-07-27T02:48:44Z",
       "side": 1,
       "message": "Add a blank line above.",
+      "revId": "1188f179f23fe8d2bf7feedbc7bcb2ef876c343d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c773e2c0_b6143a35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-27T03:03:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8764e9f_1a639e58",
       "revId": "1188f179f23fe8d2bf7feedbc7bcb2ef876c343d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
