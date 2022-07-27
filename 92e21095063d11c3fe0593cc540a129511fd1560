@@ -39,6 +39,30 @@
       },
       "revId": "92e21095063d11c3fe0593cc540a129511fd1560",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cfb8ead_ad8d056e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-07-27T02:16:14Z",
+      "side": 1,
+      "message": "Ok, I just create WindowTimeout for it and rename filename.\nCuz, I think that function is specific for verifying window.\n\nIf this is not correct, let me know. Thank you.",
+      "parentUuid": "3d023ef8_cadfcf47",
+      "range": {
+        "startLine": 278,
+        "startChar": 28,
+        "endLine": 278,
+        "endChar": 29
+      },
+      "revId": "92e21095063d11c3fe0593cc540a129511fd1560",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
