@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed9dee2_dab6f038",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-27T10:13:24Z",
+      "side": 1,
+      "message": "nit: Finish comments with . (dot).\n\nSame below.",
+      "revId": "1a96391b007c536e50fd2c10098bbce4fb260343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35a1aa92_661e3f75",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-27T10:13:24Z",
+      "side": 1,
+      "message": "What does CCA stand for?",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "1a96391b007c536e50fd2c10098bbce4fb260343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5913920_ab9eef7f",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-27T10:13:24Z",
+      "side": 1,
+      "message": "Since the package is dutcontrol don\u0027t use reference to DUT in the function name. You will end up with calls like:\ndutcontrol.DUTDimBacklight(...)\n\nSource: https://go.dev/blog/package-names section \"Naming package contents\",",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "1a96391b007c536e50fd2c10098bbce4fb260343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fada39f5_9f2d1e0e",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-27T10:13:24Z",
+      "side": 1,
+      "message": "Don\u0027t you want to log the error if that fails? I am not sure if that could affect other tests on the DUT as most likely TearDown will be called too.",
+      "range": {
+        "startLine": 351,
+        "startChar": 3,
+        "endLine": 351,
+        "endChar": 55
+      },
+      "revId": "1a96391b007c536e50fd2c10098bbce4fb260343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
