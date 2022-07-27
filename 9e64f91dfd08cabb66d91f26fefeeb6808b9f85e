@@ -192,6 +192,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9013f5e_ab7e6dbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/docs_cuj.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-07-27T15:06:00Z",
+      "side": 1,
+      "message": "Follow up here please: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3787331",
+      "parentUuid": "4a2a5690_56dc1ef1",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "9e64f91dfd08cabb66d91f26fefeeb6808b9f85e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c7c1874_3f4d3444",
