@@ -34,6 +34,23 @@
       "parentUuid": "814f2c5a_5db89789",
       "revId": "33d199a76026bd4ec1f39f2e92af1e08433c0551",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "515d514a_fba85fef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock2_persistent_settings.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-07-27T21:04:26Z",
+      "side": 1,
+      "message": "New line",
+      "revId": "33d199a76026bd4ec1f39f2e92af1e08433c0551",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
