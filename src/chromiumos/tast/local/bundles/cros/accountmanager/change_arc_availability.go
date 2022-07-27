@@ -37,14 +37,17 @@ func init() {
 			Fixture:           "loggedInToChromeAndArcWithLacros",
 			Val:               browser.TypeLacros,
 		}},
-		VarDeps: []string{"accountmanager.username2", "accountmanager.password2"},
+		VarDeps: []string{
+			"accountmanager.ChangeARCAvailability.username",
+			"accountmanager.ChangeARCAvailability.password",
+		},
 		Timeout: 8 * time.Minute,
 	})
 }
 
 func ChangeARCAvailability(ctx context.Context, s *testing.State) {
-	username := s.RequiredVar("accountmanager.username2")
-	password := s.RequiredVar("accountmanager.password2")
+	username := s.RequiredVar("accountmanager.ChangeARCAvailability.username")
+	password := s.RequiredVar("accountmanager.ChangeARCAvailability.password")
 
 	// Reserve one minute for various cleanup.
 	cleanupCtx := ctx
