@@ -56,8 +56,9 @@ func Print(ctx context.Context, tconn *chrome.TestConn) error {
 // SelectPrinter interacts with Chrome print preview to select the printer with
 // the given printerName.
 func SelectPrinter(ctx context.Context, tconn *chrome.TestConn, printerName string) error {
-	// Find and expand the destination list.
-	dataList := nodewith.Name("Destination Save as PDF").Role(role.PopUpButton)
+	// Find and expand the destination list.  The exact name may change based on which
+	// printer was previously selected, but it will always start with "Destination ".
+	dataList := nodewith.NameStartingWith("Destination ").Role(role.PopUpButton)
 	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("find and click destination list",
 		ui.WithTimeout(10*time.Second).WaitUntilExists(dataList),
