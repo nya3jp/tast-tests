@@ -1,0 +1,464 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "287f7ac7_a19d78ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "I think this is just unnecessarily complicated. The usage of the value in the `if` statement is easier to understand if you just use `bool` directly.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 1
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b33c25ce_12512839",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "nit: single line:\n\tconst mouseMoveDuration \u003d 3 * time.Second",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 2
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5574cb3a_0bbcd12d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "I would inline this because it is only used once.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20da2a53_35059639",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "Check this `error`.",
+      "range": {
+        "startLine": 69,
+        "startChar": 5,
+        "endLine": 69,
+        "endChar": 8
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14c0317f_f446dbd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "`Ensure`",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 11
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e64d7b_15356695",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "nit: nix the word `into`",
+      "range": {
+        "startLine": 79,
+        "startChar": 28,
+        "endLine": 79,
+        "endChar": 32
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4babbf5_076978ce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "`Ensure`",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 11
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d85c0d3_c792c745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "`GetInternalInfo`",
+      "range": {
+        "startLine": 88,
+        "startChar": 23,
+        "endLine": 88,
+        "endChar": 37
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a632e4_dcc3e971",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "nit: I would put all this just before the call to `recorder.Run`. That just seems like a more logical way to organize the code. I don\u0027t see why this should be way up here.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 2
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16426c4d_5d6d5006",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "optional nit: I would inline this because it is only used once.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 3
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec8d253f_42a4900f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "`cleanupCtx`",
+      "range": {
+        "startLine": 115,
+        "startChar": 18,
+        "endLine": 115,
+        "endChar": 21
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9953a08_8d550785",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "Check this `error`.",
+      "range": {
+        "startLine": 116,
+        "startChar": 12,
+        "endLine": 116,
+        "endChar": 15
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29c427a2_8ce6ab88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "`the periphery`",
+      "range": {
+        "startLine": 137,
+        "startChar": 29,
+        "endLine": 137,
+        "endChar": 33
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a5e45d_2416d8d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "This is a motion across the top of the display. Could it result in maximizing the window because in general, you can maximize a window by dragging to the top?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 57
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dac04b02_2d7ad87c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "nit: `the`",
+      "range": {
+        "startLine": 155,
+        "startChar": 17,
+        "endLine": 155,
+        "endChar": 18
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "684a2954_7add0ff1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "nit: `periphery`",
+      "range": {
+        "startLine": 162,
+        "startChar": 33,
+        "endLine": 162,
+        "endChar": 37
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34a31e9b_d1f9ca64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "`the internal`",
+      "range": {
+        "startLine": 162,
+        "startChar": 40,
+        "endLine": 162,
+        "endChar": 41
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ef85525_7df24409",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "`move`",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 10
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c0a9d9_611aacc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "The first drag has ended at the top right corner, so the mouse is already there but now it is supposed to take three seconds to get there. I guess that it will look like just pausing for three seconds. Maybe just remove this line of code.",
+      "range": {
+        "startLine": 163,
+        "startChar": 3,
+        "endLine": 163,
+        "endChar": 66
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57528f2a_68de9994",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-27T03:04:12Z",
+      "side": 1,
+      "message": "`:\u003d`",
+      "range": {
+        "startLine": 181,
+        "startChar": 8,
+        "endLine": 181,
+        "endChar": 9
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
