@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7c684ab_267348f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/brother_hl_l2395dw_series_descriptor.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T17:23:50Z",
+      "side": 1,
+      "message": "These look like they correspond to the printers in our BLD lab.  Should they be generated from the real test lab printers instead?",
+      "revId": "9185792b24f426087ec1021e2bb37072c9f5ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f141ad52_d9c241be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T17:23:50Z",
+      "side": 1,
+      "message": "This should be project-bolton@google.com",
+      "revId": "9185792b24f426087ec1021e2bb37072c9f5ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72558691_51c21286",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T17:23:50Z",
+      "side": 1,
+      "message": "It shouldn\u0027t be necessary to save the printer before using it in print preview.  Why not just find the intended printer in the \"more destinations\" dialog instead?",
+      "revId": "9185792b24f426087ec1021e2bb37072c9f5ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e266c48e_6116ed8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T17:23:50Z",
+      "side": 1,
+      "message": "Does this fail if the button is disabled?  Should there be an explicit check for the enabled state after focusing?",
+      "revId": "9185792b24f426087ec1021e2bb37072c9f5ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
