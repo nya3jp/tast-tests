@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58bea567_6127f02b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T14:39:06Z",
+      "side": 1,
+      "message": "Does this need to constrain the ListBoxOption to be a descendant of the dropdown?  Otherwise what happens if two dropdowns happen to contain an option with the same text?",
+      "revId": "cc1093b716c657ab67f4c6d61b8e160a45a92644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21be3940_8b64b4d2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T14:39:06Z",
+      "side": 1,
+      "message": "This is manipulating two controls in quick succession.  Does it need any kind of synchronization to make sure the option is finished clicking before clicking the dropdown?",
+      "revId": "cc1093b716c657ab67f4c6d61b8e160a45a92644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
