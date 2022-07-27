@@ -167,7 +167,7 @@ func expectOverrideAllowedForURL(ctx context.Context, br *browser.Browser, tconn
 	if err := uiauto.Combine("click advanced",
 		ui.WaitUntilExists(advancedButton),
 		ui.FocusAndWait(advancedButton),
-		ui.LeftClick(advancedButton),
+		ui.DoDefault(advancedButton),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to click advanced button")
 	}
