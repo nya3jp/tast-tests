@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5cf7152_6845f191",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-27T10:51:23Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "73d8dca9dd1b33f1e3efafccd26d02584ab06ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9cbbdf6_badb0bcb",
@@ -36,6 +53,29 @@
         "startChar": 1,
         "endLine": 20,
         "endChar": 42
+      },
+      "revId": "73d8dca9dd1b33f1e3efafccd26d02584ab06ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6466b00_7d9181de",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_minimum_version.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-27T10:51:23Z",
+      "side": 1,
+      "message": "Should we change that too to policyClient as the scope is not that small either?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 3
       },
       "revId": "73d8dca9dd1b33f1e3efafccd26d02584ab06ed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
