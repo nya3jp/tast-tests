@@ -16,6 +16,24 @@
       "message": "Please run tast unit test: fast_build.sh -T\n\nThen add this line to the commmit log.\n\nTEST\u003dtast unit test passed.",
       "revId": "b6f5327cd78716961f611d71b4652e87d8bb902b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc0fee8d_3df8174d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2022-07-27T09:39:53Z",
+      "side": 1,
+      "message": "I just ran `fast_build.sh -T` from the tast repo and adjusted the commit message. Thanks for pointing that out: I am not sure I would have thought to do that.",
+      "parentUuid": "ea5e0225_25721d37",
+      "revId": "b6f5327cd78716961f611d71b4652e87d8bb902b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
