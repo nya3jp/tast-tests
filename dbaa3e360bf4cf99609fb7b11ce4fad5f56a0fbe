@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9043c128_3d830029",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-07-27T18:09:22Z",
+      "side": 1,
+      "message": "Hrmm\n```\n2022-07-27T01:54:07.859858Z [01:54:07.243] Setting battery to discharge. Current capacity: 100% (53.46Wh), Shutdown cutoff: 4%, Expected maximum discharge during test: 20%\n2022-07-27T01:56:07.807603Z [01:56:07.249] Resetting battery discharge to normal. Discharge during test: 0% (0Wh)\n2022-07-27T01:56:07.813859Z [01:56:07.258] Error at fwupd_powerd_update_check.go:54: Failed to set charging state: battery polling was unsuccessful: context deadline exceeded; last error follows: powerd has not registered a battery state change\n```\n\nIt looks like it set the discharge, but then immediately reset it.",
+      "revId": "dbaa3e360bf4cf99609fb7b11ce4fad5f56a0fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5699c3f0_c6f0bc27",
