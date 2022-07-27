@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dac25b1e_c8b6a0e4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/its/its.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-07-27T07:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "108fb0ba_e80e356b",
+      "revId": "2df8271597bd9df6cc8be594e65594e5e9493e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52c1faf8_3585f6d5",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "This is from origin one , not added new code\nimport matplotlib is also android ITS original script",
       "parentUuid": "a5f3aaba_ba06d5b1",
+      "revId": "2df8271597bd9df6cc8be594e65594e5e9493e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53b17c50_02d0fbdf",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/camera/data/its/its.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-07-27T07:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf23bd9d_e5cc54e5",
       "revId": "2df8271597bd9df6cc8be594e65594e5e9493e6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
