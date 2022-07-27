@@ -55,6 +55,25 @@ func CheckClipboardBubble(ctx context.Context, ui *uiauto.Context, url string) e
 	return nil
 }
 
+// GetClipboardWarnBubble gets the clipboard warn bubble if it exists.
+func GetClipboardWarnBubble(ctx context.Context, ui *uiauto.Context, url string) (*nodewith.Finder, error) {
+	// Message name - IDS_POLICY_DLP_CLIPBOARD_WARN_ON_PASTE
+	bubbleClass := nodewith.ClassName("ClipboardWarnBubble")
+	cancelButton := nodewith.Name("Cancel").Role(role.Button).Ancestor(bubbleClass)
+	pasteButton := nodewith.Name("Paste anyway").Role(role.Button).Ancestor(bubbleClass)
+	message := "Pasting from " + url + " to this location is not recommended by administrator policy. Learn more"
+	bubble := nodewith.Name(message).Role(role.StaticText).Ancestor(bubbleClass)
+
+	if err := uiauto.Combine("find bubble ",
+		ui.WaitUntilExists(cancelButton),
+		ui.WaitUntilExists(pasteButton),
+		ui.WaitUntilExists(bubble))(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to check for notification bubble's existence")
+	}
+
+	return bubbleClass, nil
+}
+
 // GetClipboardContent retrieves the current clipboard content.
 func GetClipboardContent(ctx context.Context, tconn *chrome.TestConn) (string, error) {
 	var clipData string
