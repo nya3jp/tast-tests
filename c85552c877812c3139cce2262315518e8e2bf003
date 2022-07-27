@@ -59,6 +59,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e88ae5c_40d59126",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T19:27:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b92d2bae_8d88ac60",
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26722e5c_96edd113",
@@ -108,6 +126,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61c760f1_49f392a2",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T19:27:30Z",
+      "side": 1,
+      "message": "This should be the template for a new printing bug: https://b.corp.google.com/issues/new?component\u003d167231\u0026template\u003d1022161",
+      "parentUuid": "97f9c57d_3086f789",
+      "range": {
+        "startLine": 301,
+        "startChar": 66,
+        "endLine": 302,
+        "endChar": 29
+      },
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0908350_edc78256",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
         "patchSetId": 1
@@ -137,6 +179,24 @@
       "side": 1,
       "message": "They should be equivalent as long as the dropdown is visible on the screen. Which it should be, since we\u0027ve already focused on the dropdown, which scrolls the window if needed to make it visible.\n\nThe other CL doesn\u0027t press Enter because it would require that function to get the keyboard, and a useless line is written to the log every time we call input.Keyboard(ctx). This function is able to use the Enter press with no side effects since it has to use the keyboard for the search box anyway.\n\nI don\u0027t think there\u0027s any reason that SetAdvancedSetting() can\u0027t or shouldn\u0027t just use the left click, though. I can easily change it to make it match SetDropdown().",
       "parentUuid": "c0908350_edc78256",
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f494f7_9b3de0f0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T19:27:30Z",
+      "side": 1,
+      "message": "Since this is doing nearly the same thing as SetDropdown, would it make sense to refactor out a setDropdownInternal that takes the two finders as parameters?  Then SetDropdown could become a small wrapper and this could reuse the shared code.",
+      "parentUuid": "f7fadcf9_a2110907",
       "revId": "c85552c877812c3139cce2262315518e8e2bf003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -178,6 +238,30 @@
       "side": 1,
       "message": "I think at some point I ran into a different, inactive \"Apply\" button somewhere in the accessibility tree, and it had to be disambiguated? Everything seems to be fine now with it removed, so I\u0027m not sure whether it\u0027s actually needed.",
       "parentUuid": "dd15f617_4d00a314",
+      "range": {
+        "startLine": 341,
+        "startChar": 39,
+        "endLine": 341,
+        "endChar": 64
+      },
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76cc1a9_53a4abf1",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T19:27:30Z",
+      "side": 1,
+      "message": "That does seem like a pretty generic name, so I can see why it might have a conflict.  What about attaching an Ancestor() call to make sure you\u0027re getting the Apply button inside the advanced dialog?",
+      "parentUuid": "5b4d92de_f1668925",
       "range": {
         "startLine": 341,
         "startChar": 39,
