@@ -143,6 +143,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34b6e34c_b8bbc1d6",
+        "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-27T00:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db833fc5_9d027c9e",
+      "revId": "1b16921f8c6368e3744386f84fc6ad49173afd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2daec519_18fd1cb9",
@@ -180,6 +198,30 @@
       "side": 1,
       "message": "This is just to stop the service when we\u0027re finished. \u003c-f.done is triggered by StopService (allowing the caller to control the lifetime, as requested).",
       "parentUuid": "2daec519_18fd1cb9",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 2
+      },
+      "revId": "1b16921f8c6368e3744386f84fc6ad49173afd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "054c3ffc_b21091b6",
+        "filename": "src/chromiumos/tast/local/mlservice/fake_adaptive_charging_ml_service.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2022-07-27T00:00:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4f0ef68_03768134",
       "range": {
         "startLine": 143,
         "startChar": 0,
