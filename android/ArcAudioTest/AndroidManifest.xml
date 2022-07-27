@@ -48,6 +48,14 @@
                 <category android:name="android.intent.category.CATEGORY_DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:label="@string/title_activity_test_output_sine"
+            android:name=".TestOutputSineActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.TEST_SINE" />
+                <category android:name="android.intent.category.CATEGORY_DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
