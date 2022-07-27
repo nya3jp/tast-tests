@@ -312,7 +312,7 @@ func SwitchWindowToDisplay(ctx context.Context, tconn *chrome.TestConn, kb *inpu
 			// Root window on built-in display.
 			expectedRootWindow = nodewith.ClassName("RootWindow-0").Role(role.Window)
 		}
-		currentWindow := nodewith.Name(w.Title).Role(role.Window)
+		currentWindow := nodewith.NameContaining(w.Title).Role(role.Window)
 		expectedWindow := currentWindow.Ancestor(expectedRootWindow).First()
 		if err := ui.Exists(expectedWindow)(ctx); err != nil {
 			testing.ContextLog(ctx, "Expected window not found: ", err)
