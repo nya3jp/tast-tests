@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b92d2bae_8d88ac60",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-07-27T19:03:27Z",
+      "side": 1,
+      "message": "Yes, the process of focusing on an element includes scrolling the window to make it visible.",
+      "parentUuid": "e63d4b79_323f83d7",
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26722e5c_96edd113",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
         "patchSetId": 1
@@ -54,6 +72,30 @@
       "writtenOn": "2022-07-27T16:35:55Z",
       "side": 1,
       "message": "This seems like a potential accessibility issue in general.  Could you file a bug for us to review adding proper attributes?",
+      "range": {
+        "startLine": 301,
+        "startChar": 66,
+        "endLine": 302,
+        "endChar": 29
+      },
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97f9c57d_3086f789",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-07-27T19:03:27Z",
+      "side": 1,
+      "message": "I can, but I haven\u0027t filed a bug before, so I don\u0027t know how to do it.",
+      "parentUuid": "26722e5c_96edd113",
       "range": {
         "startLine": 301,
         "startChar": 66,
@@ -83,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7fadcf9_a2110907",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-07-27T19:03:27Z",
+      "side": 1,
+      "message": "They should be equivalent as long as the dropdown is visible on the screen. Which it should be, since we\u0027ve already focused on the dropdown, which scrolls the window if needed to make it visible.\n\nThe other CL doesn\u0027t press Enter because it would require that function to get the keyboard, and a useless line is written to the log every time we call input.Keyboard(ctx). This function is able to use the Enter press with no side effects since it has to use the keyboard for the search box anyway.\n\nI don\u0027t think there\u0027s any reason that SetAdvancedSetting() can\u0027t or shouldn\u0027t just use the left click, though. I can easily change it to make it match SetDropdown().",
+      "parentUuid": "c0908350_edc78256",
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dd15f617_4d00a314",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
         "patchSetId": 1
@@ -94,6 +154,30 @@
       "writtenOn": "2022-07-27T16:35:55Z",
       "side": 1,
       "message": "Is this needed?  Most of the other finders seem to get what they need with just a name and role.",
+      "range": {
+        "startLine": 341,
+        "startChar": 39,
+        "endLine": 341,
+        "endChar": 64
+      },
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b4d92de_f1668925",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-07-27T19:03:27Z",
+      "side": 1,
+      "message": "I think at some point I ran into a different, inactive \"Apply\" button somewhere in the accessibility tree, and it had to be disambiguated? Everything seems to be fine now with it removed, so I\u0027m not sure whether it\u0027s actually needed.",
+      "parentUuid": "dd15f617_4d00a314",
       "range": {
         "startLine": 341,
         "startChar": 39,
