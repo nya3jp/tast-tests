@@ -114,6 +114,7 @@ func SandboxedServices(ctx context.Context, s *testing.State) {
 		{"arc_camera_service", "arc-camera", "arc-camera", restrictCaps},
 		{"arc-obb-mounter", "root", "root", pidNS | mntNS},
 		{"cdm-oemcrypto", "cdm-oemcrypto", "cdm-oemcrypto", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
+		{"cdm-oemcrypto-wv14", "cdm-oemcrypto", "cdm-oemcrypto", pidNS | mntNS | restrictCaps | noNewPrivs | seccomp},
 		{"udevadm", "root", "root", 0},
 		{"usb_bouncer", "root", "root", 0},
 		{"brcm_patchram_plus", "root", "root", 0},          // runs on some veyron boards

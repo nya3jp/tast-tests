@@ -6,9 +6,11 @@ package video
 
 import (
 	"context"
+	"os"
 	"path/filepath"
 	"time"
 
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/gtest"
 	"chromiumos/tast/testing"
 )
@@ -34,14 +36,40 @@ func init() {
 	})
 }
 
+func createGTest(logdir, testExec string) *gtest.GTest {
+	return gtest.New(
+		testExec,
+		gtest.Logfile(filepath.Join(logdir, testExec+".log")),
+		gtest.Filter("-*Huge*"),
+	)
+}
+
 func CDMOEMCrypto(ctx context.Context, s *testing.State) {
+	// This is a marker file to indicate the FW version is incompatible with the
+	// binary. Clear this if present before we start so we know it was created
+	// from this test run and not left over from something else before.
+	const fwInvalidMarkerFile = "/var/lib/oemcrypto/wv16_fw_version_invalid"
+	if err := os.Remove(fwInvalidMarkerFile); err != nil && !errors.Is(err, os.ErrNotExist) {
+		s.Fatal("Failed to remove FW mismatch indicator: ", err)
+	}
+
 	testExec := s.Param().(string)
 	logdir := filepath.Join(s.OutDir(), "gtest")
 	s.Log("Running ", testExec)
-	if _, err := gtest.New(testExec,
-		gtest.Logfile(filepath.Join(logdir, testExec+".log")),
-		gtest.Filter("-*Huge*"),
-	).Run(ctx); err != nil {
-		s.Errorf("%s failed: %v", testExec, err)
+	_, gTestErr := createGTest(logdir, testExec).Run(ctx)
+	// Check if the marker file is there to indicate FW version incompatibility
+	// on Intel and then invoke the WV14 variant instead.
+	if _, statErr := os.Stat(fwInvalidMarkerFile); statErr == nil {
+		s.Log("Found indicator for FW mismatch, running WV14 variant")
+		if err := os.Remove(fwInvalidMarkerFile); err != nil {
+			s.Fatal("Failed to remove FW mismatch indicator: ", err)
+		}
+		testExec += "-wv14"
+		_, gTestErr = createGTest(logdir, testExec).Run(ctx)
+	} else if !errors.Is(statErr, os.ErrNotExist) {
+		s.Fatal("Failed to check FW mismatch indicator: ", statErr)
+	}
+	if gTestErr != nil {
+		s.Errorf("%s failed: %v", testExec, gTestErr)
 	}
 }
