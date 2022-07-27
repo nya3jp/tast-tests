@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12e17127_5aaa9a2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-27T17:18:09Z",
+      "side": 1,
+      "message": "I think that \"android_vm\" supports both android P and R but that\u0027s probably good enough for now. Once we see some boards going green we can make the necessary changes to target only R+ :)",
+      "parentUuid": "c4790f39_796a6598",
+      "range": {
+        "startLine": 44,
+        "startChar": 36,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "adec03b869252ff0b3b4e85614ced839d7c45884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db932857_bf8018fa",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
         "patchSetId": 3
@@ -278,6 +302,30 @@
       "side": 1,
       "message": "You\u0027re just trying to force me to write Java. Well played.\n\nFiled a bug at crbug/1347600 to track this.",
       "parentUuid": "0c661c16_67addefb",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "adec03b869252ff0b3b4e85614ced839d7c45884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afde9802_c118c30f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-27T17:18:09Z",
+      "side": 1,
+      "message": "Why write Java when you can write Javascript and transpile it to Java? j/k :)",
+      "parentUuid": "18017770_dfc2a9d0",
       "range": {
         "startLine": 144,
         "startChar": 1,
