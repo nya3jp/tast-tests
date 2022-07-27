@@ -52,7 +52,7 @@ func init() {
 		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + vdiApps.VDILoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		PostTestTimeout: 15 * time.Second,
+		PostTestTimeout: 60 * time.Second,
 		Data:            citrix.CitrixData,
 	})
 
@@ -85,7 +85,7 @@ func init() {
 		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + vdiApps.VDILoginTimeout,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
-		PostTestTimeout: 15 * time.Second,
+		PostTestTimeout: 60 * time.Second,
 		Data:            vmware.VmwareData,
 	})
 }
@@ -94,6 +94,8 @@ type fixtureState struct {
 	// cr is a connection to an already-started Chrome instance that loads
 	// policies from FakeDMS.
 	cr *chrome.Chrome
+	// keyboard is a reference to keyboard to be release in the TearDown.
+	keyboard *input.KeyboardEventWriter
 	// vdiApplicationToStart is the VDI application that is launched.
 	vdiApplicationToStart apps.App
 	// vdiConnector
@@ -202,22 +204,22 @@ func (v *fixtureState) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		s.Fatal("The VDI app did not appear in shelf after launch: ", err)
 	}
 
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get a keyboard")
+	}
+	// Keep it fo closing.
+	v.keyboard = kb
+
 	detector := uidetection.New(tconn,
 		s.RequiredVar("uidetection.key_type"),
 		s.RequiredVar("uidetection.key"),
 		s.RequiredVar("uidetection.server"),
 	).WithScreenshotStrategy(uidetection.ImmediateScreenshot)
-	v.vdiConnector.Init(s, detector)
-
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to get a keyboard")
-	}
-	defer kb.Close()
+	v.vdiConnector.Init(s, tconn, detector, kb)
 
 	if err := v.vdiConnector.Login(
 		ctx,
-		kb,
 		&vdiApps.VDILoginConfig{
 			Server:   s.RequiredVar(v.vdiServerKey),
 			Username: s.RequiredVar(v.vdiUsernameKey),
@@ -236,6 +238,12 @@ func (v *fixtureState) SetUp(ctx context.Context, s *testing.FixtState) interfac
 }
 
 func (v *fixtureState) TearDown(ctx context.Context, s *testing.FixtState) {
+	if err := v.vdiConnector.Logout(ctx); err != nil {
+		s.Error("Couldn't logout from the VDI application: ", err)
+	}
+
+	v.keyboard.Close()
+
 	chrome.Unlock()
 
 	if v.cr == nil {
@@ -255,13 +263,39 @@ func (v *fixtureState) Reset(ctx context.Context) error {
 		return errors.Wrap(err, "existing Chrome connection is unusable")
 	}
 
-	// Check the main VDI screen is on.
-	if err := v.vdiConnector.WaitForMainScreenVisible(ctx); err != nil {
-		return errors.Wrap(err, "VDi main screen was not present")
-	}
-
 	return nil
 }
 
-func (v *fixtureState) PreTest(ctx context.Context, s *testing.FixtTestState)  {}
-func (v *fixtureState) PostTest(ctx context.Context, s *testing.FixtTestState) {}
+func (v *fixtureState) PreTest(ctx context.Context, s *testing.FixtTestState) {}
+func (v *fixtureState) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	tconn, err := v.cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
+	ws, err := ash.GetAllWindows(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to get all open windows: ", err)
+	}
+	for _, w := range ws {
+		if err := w.CloseWindow(ctx, tconn); err != nil {
+			s.Logf("Warning: Failed to close window (%+v): %v", w, err)
+		}
+	}
+
+	testing.ContextLog(ctx, "VDI: Restarting VDI app")
+	if err := apps.Launch(ctx, tconn, v.vdiApplicationToStart.ID); err != nil {
+		s.Fatal("Failed to launch vdi app: ", err)
+	}
+	if err := ash.WaitForApp(ctx, tconn, v.vdiApplicationToStart.ID, time.Minute); err != nil {
+		s.Fatal("The VDI app did not appear in shelf after launch: ", err)
+	}
+
+	if err := v.vdiConnector.LoginAfterRestart(ctx); err != nil {
+		s.Fatal("Couldn't log in after restart: ", err)
+	}
+
+	if err := v.vdiConnector.WaitForMainScreenVisible(ctx); err != nil {
+		s.Fatal("VDI main screen was not present: ", err)
+	}
+}
