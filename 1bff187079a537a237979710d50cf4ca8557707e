@@ -16,6 +16,24 @@
       "message": "What does this do?  Does a checkbox move when you click it?",
       "revId": "1bff187079a537a237979710d50cf4ca8557707e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c11a60cc_b49adb3d",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-07-27T19:06:54Z",
+      "side": 1,
+      "message": "It prevents the race condition that would otherwise happen if we checked the state of the checkbox before the left click is processed.",
+      "parentUuid": "2b394b4f_95421fbd",
+      "revId": "1bff187079a537a237979710d50cf4ca8557707e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
