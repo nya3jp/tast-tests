@@ -34,6 +34,24 @@
       "parentUuid": "98c70393_b08eee01",
       "revId": "d379df2b0a952db2cfceddaed6f57e59293ebeab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a349ff21_436de649",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-07-27T03:42:52Z",
+      "side": 1,
+      "message": "2 minutes just to launch gedit is a really long time, I wonder what\u0027s going on? Still bumping timeout to avoid failure here SGTM.",
+      "parentUuid": "daaef2f3_e99b5141",
+      "revId": "d379df2b0a952db2cfceddaed6f57e59293ebeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
