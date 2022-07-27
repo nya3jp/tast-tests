@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "255aab7d_44fe1d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-07-27T22:10:14Z",
+      "side": 1,
+      "message": "I still think we shouldn\u0027t remove this. Any detailed PIN test would require the basic add and authenticate operations that are covered in this test. But this test is still helpful in addressing whether there is any issue with these operations.\nCurrently this test is passing because there isn\u0027t any issue with the AuthFactor APIs or adding and authenticating with Vk PIN ur USS PIN\nhttps://tastboard.corp.google.com/test/cryptohome.UserSecretStashAddPin\nHowever Pinweaver test is failing because there is a problem with the PIN lock/unlock\nhttps://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dPinweaver\u0026dep\u003d\u0026attr\u003d",
+      "revId": "c50f69976090720db19546030248fa3e685c7911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
