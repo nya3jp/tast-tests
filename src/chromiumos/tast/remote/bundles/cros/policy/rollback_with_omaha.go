@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
 	aupb "chromiumos/tast/services/cros/autoupdate"
-	ppb "chromiumos/tast/services/cros/policy"
+	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -90,7 +90,7 @@ func RollbackWithOmaha(ctx context.Context, s *testing.State) {
 		defer cl.Close(cleanupCtx)
 
 		// Create clients.
-		policyClient := ppb.NewPolicyServiceClient(cl.Conn)
+		policyClient := pspb.NewPolicyServiceClient(cl.Conn)
 		updateClient := aupb.NewUpdateServiceClient(cl.Conn)
 
 		// Create an empty /mnt/stateful_partition/etc/lsb-release if it doesn't
@@ -116,7 +116,7 @@ func RollbackWithOmaha(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to serialize policies: ", err)
 		}
 
-		if _, err := policyClient.EnrollUsingChrome(ctx, &ppb.EnrollUsingChromeRequest{
+		if _, err := policyClient.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
 			PolicyJson: pJSON,
 		}); err != nil {
 			s.Fatal("Failed to enroll using chrome: ", err)
@@ -142,7 +142,7 @@ func RollbackWithOmaha(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to serialize policies: ", err)
 		}
-		if _, err := policyClient.UpdatePolicies(ctx, &ppb.UpdatePoliciesRequest{
+		if _, err := policyClient.UpdatePolicies(ctx, &pspb.UpdatePoliciesRequest{
 			PolicyJson: pJSON,
 		}); err != nil {
 			s.Fatal("Failed to enroll using chrome: ", err)

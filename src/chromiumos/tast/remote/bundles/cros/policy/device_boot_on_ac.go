@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
 	ps "chromiumos/tast/services/cros/policy"
+	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
 
@@ -116,7 +117,7 @@ func DeviceBootOnAC(ctx context.Context, s *testing.State) {
 			}
 			defer cl.Close(ctx)
 
-			pc := ps.NewPolicyServiceClient(cl.Conn)
+			pc := pspb.NewPolicyServiceClient(cl.Conn)
 			pb := policy.NewBlob()
 			pb.AddPolicy(tc.policy)
 
