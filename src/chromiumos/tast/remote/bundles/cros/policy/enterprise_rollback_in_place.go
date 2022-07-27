@@ -31,6 +31,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"reboot", "chrome"},
 		ServiceDeps: []string{
+			"tast.cros.hwsec.OwnershipService",
 			"tast.cros.autoupdate.RollbackService",
 		},
 		Timeout: 10 * time.Minute,
@@ -57,13 +58,13 @@ func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 			s.Error("Failed to remove rollback data: ", err)
 		}
 
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
-			s.Error("Failed to reset TPM after test: ", err)
+		if err := simulatePowerwashWithoutReboot(ctx, s.DUT(), s.RPCHint()); err != nil {
+			s.Error("Failed to simulate powerwash after test: ", err)
 		}
 	}(cleanupCtx)
 
-	if err := resetTPM(ctx, s.DUT()); err != nil {
-		s.Fatal("Failed to reset TPM before test: ", err)
+	if err := simulatePowerwashWithoutReboot(ctx, s.DUT(), s.RPCHint()); err != nil {
+		s.Fatal("Failed to simulate powerwash before test: ", err)
 	}
 	networksInfo, err := configureNetworks(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
@@ -79,9 +80,9 @@ func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 	}
 
 	// Ineffective reset is ok here as the device steps through oobe automatically
-	// which initiates retaking of TPM ownership.
-	if err := resetTPM(ctx, s.DUT()); err != nil && !errors.Is(err, hwsec.ErrIneffectiveReset) {
-		s.Fatal("Failed to reset TPM to fake an enterprise rollback: ", err)
+	s.Log("Simulating powerwash and rebooting the DUT to fake rollback")
+	if err := simulatePowerwashAndReboot(ctx, s.DUT()); err != nil && !errors.Is(err, hwsec.ErrIneffectiveReset) {
+		s.Fatal("Failed to simulate powerwash and reboot to fake an enterprise rollback: ", err)
 	}
 
 	if err := ensureSensitiveDataIsNotLogged(ctx, s.DUT(), sensitive); err != nil {
@@ -93,7 +94,13 @@ func EnterpriseRollbackInPlace(ctx context.Context, s *testing.State) {
 	}
 }
 
-func resetTPM(ctx context.Context, dut *dut.DUT) error {
+// TODO(b/240247079): Move functions to a helper common for rollback.
+
+func simulatePowerwashWithoutReboot(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
+	return policyutil.EnsureTPMAndSystemStateAreReset(ctx, dut, rpcHint)
+}
+
+func simulatePowerwashAndReboot(ctx context.Context, dut *dut.DUT) error {
 	return policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, dut)
 }
 

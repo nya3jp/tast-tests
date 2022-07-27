@@ -43,6 +43,7 @@ func init() {
 			"tast.cros.autoupdate.NebraskaService",
 			"tast.cros.autoupdate.RollbackService",
 			"tast.cros.autoupdate.UpdateService",
+			"tast.cros.hwsec.OwnershipService",
 		},
 		Timeout: updateutil.UpdateTimeout + 12*time.Minute,
 		Params: []testing.Param{{
@@ -121,8 +122,8 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 			s.Error("Failed to remove rollback data: ", err)
 		}
 
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
-			s.Error("Failed to reset TPM after test: ", err)
+		if err := simulatePowerwashWithoutReboot(ctx, s.DUT(), s.RPCHint()); err != nil {
+			s.Error("Failed to simulate powerwash after test: ", err)
 		}
 
 		// Check the image version. Roll back if it's not the original one or image
@@ -155,8 +156,8 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
-		s.Fatal("Failed to reset TPM: ", err)
+	if err := simulatePowerwashWithoutReboot(ctx, s.DUT(), s.RPCHint()); err != nil {
+		s.Fatal("Failed to simulate powerwash before test: ", err)
 	}
 
 	networksInfo, err := configureNetworks(ctx, s.DUT(), s.RPCHint())
@@ -199,11 +200,10 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to update DUT to image for %q from GS: %v", builderPath, err)
 	}
 
-	// Reboot the DUT and reset TPM.
 	// Ineffective reset is expected because rollback initiates TPM ownership.
-	s.Log("Rebooting the DUT and resetting TPM to fake rollback")
-	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil && !errors.Is(err, hwsec.ErrIneffectiveReset) {
-		s.Fatal("Failed to reset TPM and reboot into rollback image: ", err)
+	s.Log("Simulating powerwash and rebooting the DUT to fake rollback")
+	if err := simulatePowerwashAndReboot(ctx, s.DUT()); err != nil && !errors.Is(err, hwsec.ErrIneffectiveReset) {
+		s.Fatal("Failed to simulate powerwash and reboot into rollback image: ", err)
 	}
 
 	// Check the image version.
@@ -242,6 +242,16 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 			s.Log(verifyResponse.VerificationDetails)
 		}
 	}
+}
+
+// TODO(b/240247079): Move functions to a helper common for rollback.
+
+func simulatePowerwashWithoutReboot(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
+	return policyutil.EnsureTPMAndSystemStateAreReset(ctx, dut, rpcHint)
+}
+
+func simulatePowerwashAndReboot(ctx context.Context, dut *dut.DUT) error {
+	return policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, dut)
 }
 
 // configureNetworks sets up the networks supported by rollback.
