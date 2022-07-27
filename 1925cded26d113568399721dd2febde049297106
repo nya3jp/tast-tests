@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ddbb508_d142be89",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T14:31:43Z",
+      "side": 1,
+      "message": "What happens if More Settings is already expanded?  Would this close it again?  If the goal is to always expand, this should probably have logic to avoid that.  If the goal is simply to click it, maybe rename the function to be more clear?",
+      "revId": "1925cded26d113568399721dd2febde049297106",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
