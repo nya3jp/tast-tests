@@ -52,6 +52,24 @@
       "parentUuid": "daaef2f3_e99b5141",
       "revId": "d379df2b0a952db2cfceddaed6f57e59293ebeab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d138f306_fdf23b1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/app_gedit_filesharing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-27T04:33:33Z",
+      "side": 1,
+      "message": "Created https://b.corp.google.com/issues/240366940 to track the test discrepancy between Chrome builder and ChromeOS builder.",
+      "parentUuid": "a349ff21_436de649",
+      "revId": "d379df2b0a952db2cfceddaed6f57e59293ebeab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
