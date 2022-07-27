@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef17015_e2fd1bf6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-27T13:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e010b38_73f21c32",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 10
+      },
+      "revId": "7fc8960577081a976d03c44c70ab4711021de374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "797db0c3_2bb7da5f",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-07-26T13:23:52Z",
       "side": 1,
       "message": "We should maybe explain why we pick the first one here.",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 71
+      },
+      "revId": "7fc8960577081a976d03c44c70ab4711021de374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ed4a852_32e3f883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-27T13:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "797db0c3_2bb7da5f",
       "range": {
         "startLine": 59,
         "startChar": 3,
@@ -98,6 +146,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2f378f3_d65286bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-27T13:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fed57dc_a9f8aa7d",
+      "revId": "7fc8960577081a976d03c44c70ab4711021de374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e2eca77_e7c9ed6f",
@@ -111,6 +177,30 @@
       "writtenOn": "2022-07-26T08:56:50Z",
       "side": 1,
       "message": "rm probably?",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 10
+      },
+      "revId": "7fc8960577081a976d03c44c70ab4711021de374",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ae1eef4_4c124883",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint_arc_provisioning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-27T13:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e2eca77_e7c9ed6f",
       "range": {
         "startLine": 187,
         "startChar": 0,
