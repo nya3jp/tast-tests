@@ -135,6 +135,30 @@
       },
       "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "888babcd_566a25a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock3_usb_charging.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-07-27T02:29:02Z",
+      "side": 1,
+      "message": "Hi Frank,\nHave you seen this kind error before?\nPlease follow this link.\nhttps://docs.google.com/document/d/1aH_AI8XuymxIQVby1KGlhPNp5rVdGke5wlkJTBmBsUc/edit#",
+      "parentUuid": "f7bdd9fe_add0847f",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
