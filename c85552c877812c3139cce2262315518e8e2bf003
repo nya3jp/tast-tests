@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16402595_d70b45c5",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T16:35:55Z",
+      "side": 1,
+      "message": "Not that \"advanced settings for\" is likely to be a subtring of anything, but this could probably also be NameStartingWith.",
+      "range": {
+        "startLine": 278,
+        "startChar": 35,
+        "endLine": 278,
+        "endChar": 49
+      },
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e63d4b79_323f83d7",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T16:35:55Z",
+      "side": 1,
+      "message": "The comment above says \"make visible\", but this is EnsureFocused.  Are these the same?",
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26722e5c_96edd113",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T16:35:55Z",
+      "side": 1,
+      "message": "This seems like a potential accessibility issue in general.  Could you file a bug for us to review adding proper attributes?",
+      "range": {
+        "startLine": 301,
+        "startChar": 66,
+        "endLine": 302,
+        "endChar": 29
+      },
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0908350_edc78256",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T16:35:55Z",
+      "side": 1,
+      "message": "In an earlier CL in this chain, you selected the item by clicking the dropdown again.  Is that the same as pressing enter?  Should they both use whichever mechanism is more robust if they\u0027re equivalent?",
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd15f617_4d00a314",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T16:35:55Z",
+      "side": 1,
+      "message": "Is this needed?  Most of the other finders seem to get what they need with just a name and role.",
+      "range": {
+        "startLine": 341,
+        "startChar": 39,
+        "endLine": 341,
+        "endChar": 64
+      },
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
