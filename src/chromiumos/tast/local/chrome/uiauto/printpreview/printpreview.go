@@ -57,7 +57,7 @@ func Print(ctx context.Context, tconn *chrome.TestConn) error {
 // the given printerName.
 func SelectPrinter(ctx context.Context, tconn *chrome.TestConn, printerName string) error {
 	// Find and expand the destination list.
-	dataList := nodewith.Name("Destination Save as PDF").Role(role.PopUpButton)
+	dataList := nodewith.NameStartingWith("Destination ").Role(role.PopUpButton)
 	ui := uiauto.New(tconn)
 	if err := uiauto.Combine("find and click destination list",
 		ui.WithTimeout(10*time.Second).WaitUntilExists(dataList),
