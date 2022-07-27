@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package usb provides USB util functions for health tast.
-package usb
+// Package usbutil provides USB utility functions for checking device information.
+package usbutil
 
 import (
 	"bufio"
@@ -253,8 +253,8 @@ func deviceFirmwareVersion(ctx context.Context, vendorID, prodID, serial string)
 	return nil, err
 }
 
-// ExpectedDevices returns expected USB devices, sorted by VendorID+ProdID.
-func ExpectedDevices(ctx context.Context) ([]Device, error) {
+// AttachedDevices returns attached USB devices, sorted by the fields of Device.
+func AttachedDevices(ctx context.Context) ([]Device, error) {
 	// Reference: https://www.kernel.org/doc/html/v4.12/driver-api/usb/usb.html#sys-kernel-debug-usb-devices-output-format
 
 	// E.g. T:  Bus=02 Lev=00 Prnt=00 Port=00 Cnt=00 Dev#=  1 Spd=10000 MxCh= 4
