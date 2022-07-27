@@ -43,6 +43,7 @@ func init() {
 			"tast.cros.autoupdate.NebraskaService",
 			"tast.cros.autoupdate.RollbackService",
 			"tast.cros.autoupdate.UpdateService",
+			"tast.cros.hwsec.OwnershipService",
 		},
 		Timeout: updateutil.UpdateTimeout + 12*time.Minute,
 		Params: []testing.Param{{
@@ -121,7 +122,7 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 			s.Error("Failed to remove rollback data: ", err)
 		}
 
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+		if err := resetTPM(ctx, s.DUT(), s.RPCHint()); err != nil {
 			s.Error("Failed to reset TPM after test: ", err)
 		}
 
@@ -155,8 +156,9 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 		}
 	}(cleanupCtx)
 
-	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
-		s.Fatal("Failed to reset TPM: ", err)
+	// Reset TPM before the test. No need to reboot.
+	if err := resetTPM(ctx, s.DUT(), s.RPCHint()); err != nil {
+		s.Fatal("Failed to reset TPM before test: ", err)
 	}
 
 	networksInfo, err := configureNetworks(ctx, s.DUT(), s.RPCHint())
@@ -201,8 +203,8 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 
 	// Reboot the DUT and reset TPM.
 	// Ineffective reset is expected because rollback initiates TPM ownership.
-	s.Log("Rebooting the DUT and resetting TPM to fake rollback")
-	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil && !errors.Is(err, hwsec.ErrIneffectiveReset) {
+	s.Log("Resetting TPM and rebooting the DUT to fake rollback")
+	if err := resetTPMAndReboot(ctx, s.DUT()); err != nil && !errors.Is(err, hwsec.ErrIneffectiveReset) {
 		s.Fatal("Failed to reset TPM and reboot into rollback image: ", err)
 	}
 
@@ -242,6 +244,16 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 			s.Log(verifyResponse.VerificationDetails)
 		}
 	}
+}
+
+// TODO(b/240247079): Move functions to a helper common for rollback.
+
+func resetTPM(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
+	return policyutil.EnsureTPMAndSystemStateAreReset(ctx, dut, rpcHint)
+}
+
+func resetTPMAndReboot(ctx context.Context, dut *dut.DUT) error {
+	return policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, dut)
 }
 
 // configureNetworks sets up the networks supported by rollback.
