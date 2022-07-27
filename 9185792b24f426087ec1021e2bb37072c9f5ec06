@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d3ea09c_d985fc3e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/brother_hl_l2395dw_series_descriptor.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T19:15:55Z",
+      "side": 1,
+      "message": "These tests will run in the hardware lab somewhere.  The printers available there correspond to the json files in https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/scanapp/data/ .  Please check in with kalin@ about how to get access to generate matching files.",
+      "parentUuid": "a4623961_483b8840",
+      "revId": "9185792b24f426087ec1021e2bb37072c9f5ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f141ad52_d9c241be",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
         "patchSetId": 1
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "It\u0027s not saving any printers. We need something for the printer to print, so I just had it print the Printing page of the settings since that\u0027s what the printer.Print test prints.",
       "parentUuid": "72558691_51c21286",
+      "revId": "9185792b24f426087ec1021e2bb37072c9f5ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4202b21d_383d467f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T19:15:55Z",
+      "side": 1,
+      "message": "Got it.  I think the description of the action below is misleading then.\n\nSeparately, if you just need something to print, why not just open chrome://newtab?  That would simplify the setup a bit if the test doesn\u0027t need anything from the settings page.",
+      "parentUuid": "c0f72d56_8a44fad7",
       "revId": "9185792b24f426087ec1021e2bb37072c9f5ec06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
