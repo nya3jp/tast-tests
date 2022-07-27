@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e81fe010_14395aab",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_restrict_features.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-27T01:48:30Z",
+      "side": 1,
+      "message": "I checked for a more specific autocorrect word (Students). At the end of the test I also checked if you can still type, so it should confirm that the buttons didn\u0027t work if someone changes the class names for some of these windows.",
+      "parentUuid": "6ab935ec_b1361490",
+      "range": {
+        "startLine": 94,
+        "startChar": 45,
+        "endLine": 94,
+        "endChar": 60
+      },
+      "revId": "cea965df71c28d09c28deca4e6bd4c8f6b7549a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87206f05_6b2d5364",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c3d4edb_72e6a2dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_restrict_features.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-27T01:48:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87206f05_6b2d5364",
+      "range": {
+        "startLine": 98,
+        "startChar": 54,
+        "endLine": 98,
+        "endChar": 56
+      },
+      "revId": "cea965df71c28d09c28deca4e6bd4c8f6b7549a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b952ed54_a290d3a5",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-26T05:50:39Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 103,
+        "startChar": 20,
+        "endLine": 103,
+        "endChar": 56
+      },
+      "revId": "cea965df71c28d09c28deca4e6bd4c8f6b7549a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ac0816_da381318",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_kiosk_restrict_features.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-07-27T01:48:30Z",
+      "side": 1,
+      "message": "Didn\u0027t change this, but the typing test action after this step should make sure that this test still confirms the voice view didn\u0027t show up.",
+      "parentUuid": "b952ed54_a290d3a5",
       "range": {
         "startLine": 103,
         "startChar": 20,
