@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07df0a9e_9cf7cc6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/perf_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1518132
+      },
+      "writtenOn": "2022-07-27T20:58:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fcf1668_473f15b9",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 3
+      },
+      "revId": "d4bbcfbcd2c1b6c1e91067bff8390fe3b3b7f918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b876495_4b1bd5b1",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-18T15:46:03Z",
       "side": 1,
       "message": "nit: just `cmd` should be fine here, we don\u0027t need to avoid collision/shadowing with `killcmd` below",
+      "range": {
+        "startLine": 311,
+        "startChar": 2,
+        "endLine": 311,
+        "endChar": 9
+      },
+      "revId": "d4bbcfbcd2c1b6c1e91067bff8390fe3b3b7f918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d28f2c9_8c513ba2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/perf_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1518132
+      },
+      "writtenOn": "2022-07-27T20:58:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b876495_4b1bd5b1",
       "range": {
         "startLine": 311,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc0a3f7e_b53e65cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/perf_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1518132
+      },
+      "writtenOn": "2022-07-27T20:58:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4aafbd5_794df150",
+      "range": {
+        "startLine": 317,
+        "startChar": 2,
+        "endLine": 317,
+        "endChar": 9
+      },
+      "revId": "d4bbcfbcd2c1b6c1e91067bff8390fe3b3b7f918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12d7eafa_91e9b208",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-18T15:46:03Z",
       "side": 1,
       "message": "Use testing.Poll for this.",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 3
+      },
+      "revId": "d4bbcfbcd2c1b6c1e91067bff8390fe3b3b7f918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef9c6eab_3204c091",
+        "filename": "src/chromiumos/tast/local/bundles/cros/debugd/perf_tool.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1518132
+      },
+      "writtenOn": "2022-07-27T20:58:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12d7eafa_91e9b208",
       "range": {
         "startLine": 344,
         "startChar": 0,
