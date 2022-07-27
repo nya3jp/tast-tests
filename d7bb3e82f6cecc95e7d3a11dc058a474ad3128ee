@@ -104,6 +104,24 @@
       "message": "gabormagda@, can you review for OWNERS?",
       "revId": "d7bb3e82f6cecc95e7d3a11dc058a474ad3128ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70c9758e_90b725ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-27T06:14:29Z",
+      "side": 1,
+      "message": "Please use Tast owners to request a review. I am OOO, so I am requesting a new reviewer.",
+      "parentUuid": "44606cda_33d462be",
+      "revId": "d7bb3e82f6cecc95e7d3a11dc058a474ad3128ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
