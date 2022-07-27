@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d36401c6_748247dd",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-27T01:07:09Z",
+      "side": 1,
+      "message": "nit: although golang doesn\u0027t have strict line limits, it\u0027s still recommended to keep comments to \u003c80 characters\n\ngo/go-style/decisions#comment-line-length",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 74
+      },
+      "revId": "dc1624fba0c5dafcbf8dc6fda25a6e8aab693231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
