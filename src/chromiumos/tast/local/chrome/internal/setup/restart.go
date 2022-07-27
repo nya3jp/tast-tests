@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome/internal/config"
 	"chromiumos/tast/local/chrome/internal/driver"
-	"chromiumos/tast/local/chrome/internal/extension"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
@@ -30,7 +29,7 @@ var obfuscatedUsernameRegexp = regexp.MustCompile(`^[\da-f]{40}$`)
 
 // RestartChromeForTesting restarts the ui job, asks session_manager to enable Chrome testing,
 // and waits for Chrome to listen on its debugging port.
-func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *extension.Files) error {
+func RestartChromeForTesting(ctx context.Context, cfg *config.Config, extArgs, lacrosExtArgs []string) error {
 	ctx, st := timing.Start(ctx, "restart")
 	defer st.End()
 
@@ -115,7 +114,7 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 		args = append(args, "--skip-force-online-signin-for-testing")
 	}
 
-	args = append(args, exts.ChromeArgs()...)
+	args = append(args, extArgs...)
 	if cfg.PolicyEnabled() {
 		args = append(args, "--profile-requires-policy=true")
 	} else {
@@ -203,6 +202,9 @@ func RestartChromeForTesting(ctx context.Context, cfg *config.Config, exts *exte
 	}
 	if as := cfg.LacrosExtraArgs(); len(as) != 0 {
 		largs = append(largs, as...)
+	}
+	if len(lacrosExtArgs) != 0 {
+		largs = append(largs, lacrosExtArgs...)
 	}
 	if len(largs) != 0 {
 		args = append(args, "--lacros-chrome-additional-args="+strings.Join(largs, "####"))
