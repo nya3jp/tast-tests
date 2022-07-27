@@ -12,8 +12,8 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
-	ps "chromiumos/tast/services/cros/policy"
-	ts "chromiumos/tast/services/cros/tape"
+	pspb "chromiumos/tast/services/cros/policy"
+	tspb "chromiumos/tast/services/cros/tape"
 	"chromiumos/tast/testing"
 )
 
@@ -85,7 +85,7 @@ func GAIAEnrollment(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(cleanupCtx)
 
-	pc := ps.NewPolicyServiceClient(cl.Conn)
+	pc := pspb.NewPolicyServiceClient(cl.Conn)
 
 	tapeClient, err := tape.NewClient(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)))
 	if err != nil {
@@ -99,7 +99,7 @@ func GAIAEnrollment(ctx context.Context, s *testing.State) {
 	}
 	defer accManager.CleanUp(cleanupCtx)
 
-	if _, err := pc.GAIAEnrollUsingChrome(ctx, &ps.GAIAEnrollUsingChromeRequest{
+	if _, err := pc.GAIAEnrollUsingChrome(ctx, &pspb.GAIAEnrollUsingChromeRequest{
 		Username:    acc.Username,
 		Password:    acc.Password,
 		DmserverURL: dmServerURL,
@@ -107,9 +107,9 @@ func GAIAEnrollment(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enroll using chrome: ", err)
 	}
 
-	tapeService := ts.NewServiceClient(cl.Conn)
+	tapeService := tspb.NewServiceClient(cl.Conn)
 	// Get the device id of the DUT to deprovision it at the end of the test.
-	res, err := tapeService.GetDeviceID(ctx, &ts.GetDeviceIDRequest{CustomerID: acc.CustomerID})
+	res, err := tapeService.GetDeviceID(ctx, &tspb.GetDeviceIDRequest{CustomerID: acc.CustomerID})
 	if err != nil {
 		s.Fatal("Failed to get the deviceID: ", err)
 	}
