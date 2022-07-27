@@ -8,11 +8,11 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/common/cros/ui/setup"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
 	et "chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj"
-	"chromiumos/tast/local/bundles/cros/ui/setup"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"

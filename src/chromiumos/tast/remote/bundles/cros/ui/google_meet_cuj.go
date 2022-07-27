@@ -9,11 +9,13 @@ import (
 	"strconv"
 	"time"
 
+	"chromiumos/tast/common/cros/ui/setup"
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/remote/bundles/cros/ui/conference"
 	"chromiumos/tast/rpc"
 	pb "chromiumos/tast/services/cros/ui"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -46,6 +48,15 @@ func init() {
 					IsLacros: true,
 				},
 			}, {
+				Name:              "basic_two_crosbolt",
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: conference.TestParameters{
+					Tier: "basic",
+					Size: conference.TwoRoomSize,
+				},
+			}, {
 				Name:    "basic_small",
 				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
@@ -60,6 +71,15 @@ func init() {
 					Tier:     "basic",
 					Size:     conference.SmallRoomSize,
 					IsLacros: true,
+				},
+			}, {
+				Name:              "basic_small_crosbolt",
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: conference.TestParameters{
+					Tier: "basic",
+					Size: conference.SmallRoomSize,
 				},
 			}, {
 				Name:    "basic_large",
@@ -78,6 +98,15 @@ func init() {
 					IsLacros: true,
 				},
 			}, {
+				Name:              "basic_large_crosbolt",
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: conference.TestParameters{
+					Tier: "basic",
+					Size: conference.LargeRoomSize,
+				},
+			}, {
 				Name:    "basic_class",
 				Timeout: time.Minute*50 + conference.CPUIdleTimeout,
 				Val: conference.TestParameters{
@@ -92,6 +121,15 @@ func init() {
 					Tier:     "basic",
 					Size:     conference.ClassRoomSize,
 					IsLacros: true,
+				},
+			}, {
+				Name:              "basic_class_crosbolt",
+				Timeout:           time.Minute*50 + conference.CPUIdleTimeout,
+				ExtraAttr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
+				Val: conference.TestParameters{
+					Tier: "basic",
+					Size: conference.ClassRoomSize,
 				},
 			}, {
 				Name:    "plus_large",
