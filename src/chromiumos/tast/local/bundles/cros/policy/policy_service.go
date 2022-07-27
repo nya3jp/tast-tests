@@ -18,10 +18,12 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/externaldata"
 	"chromiumos/tast/local/session"
 	"chromiumos/tast/local/syslog"
@@ -53,6 +55,25 @@ type PolicyService struct { // NOLINT
 	chromeReader   *syslog.ChromeReader
 
 	eds *externaldata.Server
+}
+
+func (c *PolicyService) VerifyPolicyStatus(ctx context.Context, req *ppb.VerifyPolicyStatusRequest) (*empty.Empty, error) {
+	testing.ContextLog(ctx, "Verifying the policy is set to correct status")
+	tconn, err := c.chrome.TestAPIConn(ctx)
+	if err != nil {
+		errors.Wrap(err, "create test API connection")
+	}
+
+	var pJSON []policy.Policy
+	if err := json.Unmarshal(req.PolicyBlob, &pJSON); err != nil {
+		errors.Wrap(err, "failed to unmarshal")
+	}
+
+	if err := policyutil.Verify(ctx, tconn, pJSON); err != nil {
+		errors.Wrap(err, "failed to verify policies")
+	}
+
+	return &empty.Empty{}, nil
 }
 
 // StartNewChromeReader starts new syslog reader. When using this make sure to always call a function at the end
