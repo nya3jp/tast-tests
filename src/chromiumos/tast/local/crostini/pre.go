@@ -32,87 +32,27 @@ import (
 	"chromiumos/tast/timing"
 )
 
-// UnstableModels is list of models that are too flaky for the CQ. Use the standard tast
-// criteria at go/tast-add-test to judge whether it should be on the CQ.
+// UnstableModels is list of models on which the Crostini tests are flaky.
+// Use the guide at go/crostini-unstable-devices for when to add a device.
 var UnstableModels = []string{
-	// Platform auron
-	"paine", // crbug.com/1072877
-	"yuna",  // crbug.com/1072877
-	// Platform bob
-	"bob",
-	// Platform buddy
-	"buddy",
 	// Platform coral
 	"astronaut",
 	"blacktip360",
 	"blacktiplte",
-	"bruce",
 	"lava",
 	"nasher",
-	// Platform elm
-	"elm",
-	// Platform edgar
-	"edgar",
-	// Platform fiss-moblab
-	"wukong",
 	// Platform fizz
 	"jax",
-	// Platform gandof
-	"gandof", // crbug.com/1072877
-	// Platform grunt
-	"aleena",
-	"barla",
-	"careena",
-	"treeya",
-	// Platform guado
-	"guado", // crbug.com/1072877
-	// Platform hana
-	"hana",
 	// Platform kevin
 	"kevin", // crbug.com/1140145
 	// Platform kukui
 	"krane",
-	// Platform lulu
-	"lulu", // crbug.com/1072877
 	// Platform nocturne
 	"nocturne",
-	// Platform octopus
-	"ampton",
-	"apel",
-	"bloog",
-	"bluebird",
-	"droid",
-	"fleex",
-	"foob",
-	"garg",
-	"laser14",
-	"mimrock",
-	"phaser360",
-	"sparky",
-	"vorticon",
-	"vortininja",
 	// Platform reef
 	"basking",
 	"electro",
-	// Platform sarien
-	"arcada",
-	// Platform samus
-	"samus", // crbug.com/1072877
-	// Platform strago
-	"banon",
-	"celes",
-	"cyan",
-	"relm",
-	"terra",
-	"wizpig", // crbug.com/1156411
-	"ultima",
-	"kefka",
-	"reks",
-	// Platform tidus
-	"tidus", // crbug.com/1072877
 	// Platform trogdor
-	"lazor",
-	"limozeen",
 	"pompom",
 	// http://b/233817342
 	"lars",
