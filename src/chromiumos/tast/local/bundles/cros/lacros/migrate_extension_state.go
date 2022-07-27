@@ -75,7 +75,7 @@ func MigrateExtensionState(ctx context.Context, s *testing.State) {
 	}
 
 	opts := s.Param().([]lacrosfixt.Option)
-	opts = append(opts, lacrosfixt.UnpackedExtension(extDir))
+	opts = append(opts, lacrosfixt.ChromeOptions(chrome.LacrosUnpackedExtension(extDir)))
 	cr, err := migrate.Run(ctx, opts)
 	if err != nil {
 		s.Fatal("Failed to migrate profile: ", err)

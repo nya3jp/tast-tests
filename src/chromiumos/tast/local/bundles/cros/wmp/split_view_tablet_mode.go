@@ -29,7 +29,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SplitViewTabletMode,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "In tablet mode, checks split view works properly",
 		Contacts: []string{
 			"cattalyya@chromium.org",

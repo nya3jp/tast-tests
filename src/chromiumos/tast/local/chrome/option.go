@@ -433,6 +433,14 @@ func UnpackedExtension(dir string) Option {
 	}
 }
 
+// LacrosUnpackedExtension is similar to UnpackedExtension, but for lacros-chrome.
+func LacrosUnpackedExtension(dir string) Option {
+	return func(cfg *config.MutableConfig) error {
+		cfg.LacrosExtraExtDirs = append(cfg.LacrosExtraExtDirs, dir)
+		return nil
+	}
+}
+
 // LoadSigninProfileExtension loads the test extension which is allowed to run in the signin profile context.
 // Private manifest key should be passed (see ui.SigninProfileExtension for details).
 func LoadSigninProfileExtension(key string) Option {
