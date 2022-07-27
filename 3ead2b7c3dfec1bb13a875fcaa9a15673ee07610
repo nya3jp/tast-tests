@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51003388_c80638d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/idle.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-07-27T21:08:27Z",
+      "side": 1,
+      "message": "This produce integer number\n\n[0-9.]",
+      "range": {
+        "startLine": 118,
+        "startChar": 54,
+        "endLine": 118,
+        "endChar": 59
+      },
+      "revId": "3ead2b7c3dfec1bb13a875fcaa9a15673ee07610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7be27cd6_9944a427",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/idle.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-07-27T21:08:27Z",
+      "side": 1,
+      "message": "(lower priority) \nYou want to enter fullscreen mode for the browser.\n\nIn tauto, this will cause cursor blinking in URL bar if the browser is not in fullscreen mode. But in tast I saw about:blank highlight so this is probably fine.",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 2
+      },
+      "revId": "3ead2b7c3dfec1bb13a875fcaa9a15673ee07610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a31194cd_aad028c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/idle.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-07-27T21:08:27Z",
+      "side": 1,
+      "message": "You probably also want to turn off BT here. the default is probably on.",
+      "range": {
+        "startLine": 295,
+        "startChar": 1,
+        "endLine": 295,
+        "endChar": 2
+      },
+      "revId": "3ead2b7c3dfec1bb13a875fcaa9a15673ee07610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
