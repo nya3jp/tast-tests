@@ -16,6 +16,57 @@
       "message": "+stevenjb@ for cros/cellular/fixture.go",
       "revId": "b0d5b9617f34f9b8b9ee0f7ce29d1ec2d73c1e28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb6022f_b619f138",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-27T19:57:58Z",
+      "side": 1,
+      "message": "nit: passive tense and simplify, e.g.: \"Cellular tests are safe to run and a fake DMS (for managed eSIM profiles) is running\"",
+      "revId": "b0d5b9617f34f9b8b9ee0f7ce29d1ec2d73c1e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e583965a_43e0f6c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-27T19:57:58Z",
+      "side": 1,
+      "message": "Is this needed? It looks like it can just be a local in SetUp?",
+      "revId": "b0d5b9617f34f9b8b9ee0f7ce29d1ec2d73c1e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "661c6ed4_dc8e19d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-27T19:57:58Z",
+      "side": 1,
+      "message": "For clarity maybe name this |fd| since |f| refers to cellularFixture in the rest of this file.",
+      "revId": "b0d5b9617f34f9b8b9ee0f7ce29d1ec2d73c1e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
