@@ -51,6 +51,13 @@ func init() {
 				useLegacyAddAPIForPin: false,
 			},
 		}, {
+			Name: "pin_weaver_with_auth_factor_with_uss",
+			Val: pinWeaverWithAuthAPIParam{
+				useUserSecretStash:    true,
+				useAuthFactor:         true,
+				useLegacyAddAPIForPin: false,
+			},
+		}, {
 			Name: "pin_weaver_with_auth_session",
 			Val: pinWeaverWithAuthAPIParam{
 				useUserSecretStash:    false,
@@ -65,11 +72,11 @@ func init() {
 				useLegacyAddAPIForPin: true,
 			},
 		}, {
-			Name: "pin_weaver_with_auth_factor_with_uss",
+			Name: "pin_weaver_with_auth_session_uss",
 			Val: pinWeaverWithAuthAPIParam{
 				useUserSecretStash:    true,
-				useAuthFactor:         true,
-				useLegacyAddAPIForPin: false,
+				useAuthFactor:         false,
+				useLegacyAddAPIForPin: true,
 			},
 		}},
 	})
@@ -128,7 +135,7 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
-	if userParam.useAuthFactor {
+	if userParam.useUserSecretStash {
 		// Enable the UserSecretStash experiment for the duration of the test by
 		// creating a flag file that's checked by cryptohomed.
 		cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
