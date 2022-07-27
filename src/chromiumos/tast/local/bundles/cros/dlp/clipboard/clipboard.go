@@ -9,6 +9,7 @@ package clipboard
 import (
 	"context"
 	"strings"
+	"time"
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
@@ -55,6 +56,25 @@ func CheckClipboardBubble(ctx context.Context, ui *uiauto.Context, url string) e
 	return nil
 }
 
+// WarnBubble gets the clipboard warn bubble if it exists.
+func WarnBubble(ctx context.Context, ui *uiauto.Context, url string) (*nodewith.Finder, error) {
+	// Message name - IDS_POLICY_DLP_CLIPBOARD_WARN_ON_PASTE
+	bubbleClass := nodewith.ClassName("ClipboardWarnBubble")
+	cancelButton := nodewith.Name("Cancel").Role(role.Button).Ancestor(bubbleClass)
+	pasteButton := nodewith.Name("Paste anyway").Role(role.Button).Ancestor(bubbleClass)
+	message := "Pasting from " + url + " to this location is not recommended by administrator policy. Learn more"
+	bubble := nodewith.Name(message).Role(role.StaticText).Ancestor(bubbleClass)
+
+	if err := uiauto.Combine("find bubble ",
+		ui.WaitUntilExists(cancelButton),
+		ui.WaitUntilExists(pasteButton),
+		ui.WaitUntilExists(bubble))(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to check for notification bubble's existence")
+	}
+
+	return bubbleClass, nil
+}
+
 // GetClipboardContent retrieves the current clipboard content.
 func GetClipboardContent(ctx context.Context, tconn *chrome.TestConn) (string, error) {
 	var clipData string
@@ -64,8 +84,7 @@ func GetClipboardContent(ctx context.Context, tconn *chrome.TestConn) (string, e
 	return clipData, nil
 }
 
-// CheckPastedContent checks if a certain string appears in the search box.
-func CheckPastedContent(ctx context.Context, ui *uiauto.Context, content string) error {
+func checkNumWordsAndRetrieveContentNode(ctx context.Context, ui *uiauto.Context, content string) (*nodewith.Finder, error) {
 	// Slicing the string to get the first 10 words or less in a single line.
 	// Since pasted string in search box will be in single line format.
 	words := strings.Fields(content)
@@ -73,15 +92,35 @@ func CheckPastedContent(ctx context.Context, ui *uiauto.Context, content string)
 	if numSampleWords > CheckWordsMax {
 		numSampleWords = CheckWordsMax
 	} else if numSampleWords < CheckWordsMin {
-		return errors.New("sample text has too few words")
+		return nil, errors.New("sample text has too few words")
 	}
 	content = strings.Join(words[:numSampleWords], " ")
 
 	contentNode := nodewith.NameStartingWith(content).Role(role.InlineTextBox).State(state.Editable, true).First()
 
+	return contentNode, nil
+}
+
+// CheckPastedContent checks if a certain string appears in the search box.
+func CheckPastedContent(ctx context.Context, ui *uiauto.Context, content string) error {
+	contentNode, err := checkNumWordsAndRetrieveContentNode(ctx, ui, content)
+	if err != nil {
+		return err
+	}
 	if err := ui.WaitUntilExists(contentNode)(ctx); err != nil {
 		return errors.Wrap(err, "failed to check for pasted content")
 	}
+	return nil
+}
 
+// CheckContentIsNotPasted checks that a certain strings do not appear in the search box
+func CheckContentIsNotPasted(ctx context.Context, ui *uiauto.Context, content string) error {
+	contentNode, err := checkNumWordsAndRetrieveContentNode(ctx, ui, content)
+	if err != nil {
+		return err
+	}
+	if err := ui.EnsureGoneFor(contentNode, 5*time.Second)(ctx); err != nil {
+		return errors.Wrap(err, "failed to check for pasted content")
+	}
 	return nil
 }
