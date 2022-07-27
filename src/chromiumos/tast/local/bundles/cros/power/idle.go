@@ -115,7 +115,7 @@ func (b *batteryState) Start(_ context.Context) error {
 	return nil
 }
 
-var fieldRe = regexp.MustCompile(`  ([a-zA-Z() ]+):\s+(\d+)`)
+var fieldRe = regexp.MustCompile(`  ([a-zA-Z() ]+):\s+([0-9.]+)`)
 
 func (b *batteryState) Snapshot(ctx context.Context, pv *perf.Values) error {
 	out, err := testexec.CommandContext(ctx, "power_supply_info").Output(testexec.DumpLogOnError)
