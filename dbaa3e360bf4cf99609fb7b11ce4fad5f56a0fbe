@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7df4e421_a96412a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-07-27T17:56:20Z",
+      "side": 1,
+      "message": "Hrmm, so `FwupdPowerdUpdateCheck.no_acpower` failed on brya. I wonder if the removal of `stresstestapp` caused that? Going to CQ +1 to see if it flakes.",
+      "revId": "dbaa3e360bf4cf99609fb7b11ce4fad5f56a0fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5699c3f0_c6f0bc27",
