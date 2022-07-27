@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/uidetection"
@@ -20,19 +21,22 @@ const uiDetectionTimeout = 45 * time.Second
 
 // Connector structure used for performing operation on Citrix app.
 type Connector struct {
-	ApplicationID string
-	dataPath      func(string) string
-	detector      *uidetection.Context
+	dataPath func(string) string
+	detector *uidetection.Context
+	tconn    *chrome.TestConn
+	keyboard *input.KeyboardEventWriter
 }
 
 // Init initializes state of the connector.
-func (c *Connector) Init(s *testing.FixtState, d *uidetection.Context) {
+func (c *Connector) Init(s *testing.FixtState, tconn *chrome.TestConn, d *uidetection.Context, k *input.KeyboardEventWriter) {
 	c.dataPath = s.DataPath
 	c.detector = d
+	c.tconn = tconn
+	c.keyboard = k
 }
 
 // Login connects to the server and logs in using information provided in config.
-func (c *Connector) Login(ctx context.Context, k *input.KeyboardEventWriter, cfg *apps.VDILoginConfig) error {
+func (c *Connector) Login(ctx context.Context, cfg *apps.VDILoginConfig) error {
 	testing.ContextLog(ctx, "Citrix: logging in")
 
 	if err := c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.Word("https://URL"))(ctx); err != nil {
@@ -41,9 +45,9 @@ func (c *Connector) Login(ctx context.Context, k *input.KeyboardEventWriter, cfg
 
 	testing.ContextLog(ctx, "Citrix: entering server url")
 	if err := uiauto.Combine("enter citrix server url, connect and wait for next screen",
-		k.AccelAction("Tab"), // Enter server test box.
-		k.TypeAction(cfg.Server),
-		k.AccelAction("Enter"), // Connect to the server.
+		c.keyboard.AccelAction("Tab"), // Enter server test box.
+		c.keyboard.TypeAction(cfg.Server),
+		c.keyboard.AccelAction("Enter"), // Connect to the server.
 		c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.TextBlock([]string{"User", "name"})),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed entering server url")
@@ -51,15 +55,40 @@ func (c *Connector) Login(ctx context.Context, k *input.KeyboardEventWriter, cfg
 
 	testing.ContextLog(ctx, "Citrix: entering username and password")
 	if err := uiauto.Combine("enter username and password and connect login",
-		k.TypeAction(cfg.Username),
-		k.AccelAction("Tab"),
-		k.TypeAction(cfg.Password),
-		k.AccelAction("Tab"),
-		k.AccelAction("Enter"),
+		c.keyboard.TypeAction(cfg.Username),
+		c.keyboard.AccelAction("Tab"),
+		c.keyboard.TypeAction(cfg.Password),
+		c.keyboard.AccelAction("Tab"),
+		c.keyboard.AccelAction("Enter"),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed entering username or password")
 	}
 
+	return nil
+}
+
+// Logout logs out user. Can be called when Citrix logged-in main screen is
+// visible.
+func (c *Connector) Logout(ctx context.Context) error {
+	testing.ContextLog(ctx, "Citrix: logging out")
+	if err := uiauto.Combine("log out from the Citrix",
+		c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.TextBlock([]string{"Citrix", "Workspace"})),
+		c.detector.LeftClick(uidetection.TextBlock([]string{"Citrix", "Workspace"})), // By clicking, focus on the first UI element.
+		c.detector.LeftClick(uidetection.Word("C").ExactMatch()),                     // Click on the user icon.
+		c.detector.LeftClick(uidetection.TextBlock([]string{"Log", "Out"})),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to log out")
+	}
+
+	return nil
+}
+
+// LoginAfterRestart handles special case when application does not cache the
+// session and requires login after app restarts.
+func (c *Connector) LoginAfterRestart(ctx context.Context) error {
+	// Do nothing since Citrix session is cached by the app and login is not
+	// needed.
+	testing.ContextLog(ctx, "Citrix: already logged in")
 	return nil
 }
 
@@ -77,20 +106,20 @@ func (c *Connector) WaitForMainScreenVisible(ctx context.Context) error {
 // Citrix, runs checkIfOpened function to ensure app opened. Before calling
 // make sure main Citrix screen is visible by calling
 // WaitForMainScreenVisible(). Call ResetSearch() to clean the search state.
-func (c *Connector) SearchAndOpenApplication(ctx context.Context, k *input.KeyboardEventWriter, appName string, checkIfOpened func(context.Context) error) uiauto.Action {
+func (c *Connector) SearchAndOpenApplication(ctx context.Context, appName string, checkIfOpened func(context.Context) error) uiauto.Action {
 	return func(ctx context.Context) error {
 		testing.ContextLogf(ctx, "Citrix: opening app %s", appName)
 		return uiauto.Combine("open application "+appName+" in Citrix",
 			// kamilszarek@: I tried using uidetector clicking on test block
 			// "Search Workspace" and it wound click it but focus does not
 			// go on the search field.
-			k.AccelAction("Tab"),
-			k.AccelAction("Tab"),
-			k.AccelAction("Tab"),   // Go to the search field.
-			k.AccelAction("Enter"), // Move focus to the search field.
-			k.TypeAction(appName),
-			k.AccelAction("Down"),  // Go to the first result.
-			k.AccelAction("Enter"), // Open the app.
+			c.keyboard.AccelAction("Tab"),
+			c.keyboard.AccelAction("Tab"),
+			c.keyboard.AccelAction("Tab"),   // Go to the search field.
+			c.keyboard.AccelAction("Enter"), // Move focus to the search field.
+			c.keyboard.TypeAction(appName),
+			c.keyboard.AccelAction("Down"),  // Go to the first result.
+			c.keyboard.AccelAction("Enter"), // Open the app.
 			checkIfOpened,
 		)(ctx)
 	}
@@ -98,7 +127,7 @@ func (c *Connector) SearchAndOpenApplication(ctx context.Context, k *input.Keybo
 
 // ResetSearch cleans search field. Call only when search was triggered by
 // SearchAndOpenApplication().
-func (c *Connector) ResetSearch(ctx context.Context, k *input.KeyboardEventWriter) error {
+func (c *Connector) ResetSearch(ctx context.Context) error {
 	testing.ContextLog(ctx, "Citrix: cleaning search")
 	// Check that result was actually triggered.
 	if err := c.detector.WithTimeout(uiDetectionTimeout).WaitUntilExists(uidetection.TextBlock([]string{"See", "more", "results"}))(ctx); err != nil {
@@ -107,9 +136,7 @@ func (c *Connector) ResetSearch(ctx context.Context, k *input.KeyboardEventWrite
 	// Citrix, after executed search and the app was opened and then closed
 	// keeps the search result overlay on with focus on it.
 	if err := uiauto.Combine("clearing search results",
-		k.AccelAction("Ctrl+a"),    // Select search phrase,
-		k.AccelAction("Backspace"), // Clear the selection.
-		k.AccelAction("Esc"),       // Return to the Citrix view.
+		c.keyboard.AccelAction("Esc"), // Return to the Citrix view.
 	)(ctx); err != nil {
 		return errors.Wrap(err, "couldn't clear the search results")
 	}
