@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47c8241d_29028e6d",
+        "filename": "src/chromiumos/tast/local/chrome/ash/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-27T18:13:02Z",
+      "side": 1,
+      "message": "will add install100LacrosApps fixture in a follow up patch",
+      "range": {
+        "startLine": 40,
+        "startChar": 20,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "revId": "5e71c2b14c47b1fb492784d861e8c3db613a431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c452d92c_602a1897",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-27T18:13:02Z",
+      "side": 1,
+      "message": "will remove in a follow up patch",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 0
+      },
+      "revId": "5e71c2b14c47b1fb492784d861e8c3db613a431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2337389e_dcc87bf0",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-27T18:13:02Z",
+      "side": 1,
+      "message": "will remove when lacrosfixt.UnpackedExtension could be safely deleted.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "5e71c2b14c47b1fb492784d861e8c3db613a431a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
