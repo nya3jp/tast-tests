@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e094ee07_24483127",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-07-27T00:16:07Z",
+      "side": 1,
+      "message": "some goma error, retrying.",
+      "revId": "71aeee02e98b4d7b7c37089fa7366d88c3c91b96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
