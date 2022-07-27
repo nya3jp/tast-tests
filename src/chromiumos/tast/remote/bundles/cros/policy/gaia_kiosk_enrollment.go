@@ -14,8 +14,8 @@ import (
 	"chromiumos/tast/remote/gaiaenrollment"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
-	ks "chromiumos/tast/services/cros/kiosk"
-	ps "chromiumos/tast/services/cros/policy"
+	kspb "chromiumos/tast/services/cros/kiosk"
+	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
 
@@ -75,13 +75,13 @@ func GAIAKioskEnrollment(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(cleanupCtx)
 
-	pc := ps.NewPolicyServiceClient(cl.Conn)
-	kc := ks.NewKioskServiceClient(cl.Conn)
+	pc := pspb.NewPolicyServiceClient(cl.Conn)
+	kc := kspb.NewKioskServiceClient(cl.Conn)
 
 	kioskErr := make(chan error)
 	checkKioskStarted := func() {
 		kioskErr <- func() error {
-			if _, err := kc.ConfirmKioskStarted(ctx, &ks.ConfirmKioskStartedRequest{}); err != nil {
+			if _, err := kc.ConfirmKioskStarted(ctx, &kspb.ConfirmKioskStartedRequest{}); err != nil {
 				return errors.Wrap(err, "failed to start kiosk mode")
 			}
 			return nil
@@ -103,7 +103,7 @@ func GAIAKioskEnrollment(ctx context.Context, s *testing.State) {
 	}
 	defer accManager.CleanUp(cleanupCtx)
 
-	if _, err := pc.GAIAEnrollUsingChrome(ctx, &ps.GAIAEnrollUsingChromeRequest{
+	if _, err := pc.GAIAEnrollUsingChrome(ctx, &pspb.GAIAEnrollUsingChromeRequest{
 		Username:    acc.Username,
 		Password:    acc.Password,
 		DmserverURL: dmServerURL,

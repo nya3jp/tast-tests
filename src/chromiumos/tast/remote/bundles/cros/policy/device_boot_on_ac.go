@@ -17,7 +17,7 @@ import (
 	"chromiumos/tast/remote/bundles/cros/policy/dututils"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
-	ps "chromiumos/tast/services/cros/policy"
+	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
 
@@ -116,7 +116,7 @@ func DeviceBootOnAC(ctx context.Context, s *testing.State) {
 			}
 			defer cl.Close(ctx)
 
-			pc := ps.NewPolicyServiceClient(cl.Conn)
+			pc := pspb.NewPolicyServiceClient(cl.Conn)
 			pb := policy.NewBlob()
 			pb.AddPolicy(tc.policy)
 
@@ -125,7 +125,7 @@ func DeviceBootOnAC(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to serialize policies: ", err)
 			}
 
-			if _, err := pc.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
+			if _, err := pc.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
 				PolicyJson: pJSON,
 			}); err != nil {
 				s.Fatal("Failed to enroll using chrome: ", err)

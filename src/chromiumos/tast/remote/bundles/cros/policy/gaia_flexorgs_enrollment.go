@@ -11,7 +11,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
-	ps "chromiumos/tast/services/cros/policy"
+	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
 
@@ -76,9 +76,9 @@ func GAIAFlexorgsEnrollment(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	pc := ps.NewPolicyServiceClient(cl.Conn)
+	pc := pspb.NewPolicyServiceClient(cl.Conn)
 
-	if _, err := pc.GAIAEnrollUsingChrome(ctx, &ps.GAIAEnrollUsingChromeRequest{
+	if _, err := pc.GAIAEnrollUsingChrome(ctx, &pspb.GAIAEnrollUsingChromeRequest{
 		Username:    username,
 		Password:    password,
 		DmserverURL: dmServerURL,
