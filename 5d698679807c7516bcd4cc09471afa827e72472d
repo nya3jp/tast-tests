@@ -117,6 +117,30 @@
       },
       "revId": "5d698679807c7516bcd4cc09471afa827e72472d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03599e7b_0bffcfd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-27T02:09:14Z",
+      "side": 1,
+      "message": "Done. Removed this function in new patch, also removed `readFileHelper` function.",
+      "parentUuid": "4ef019ef_6a0b8bc2",
+      "range": {
+        "startLine": 92,
+        "startChar": 5,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "5d698679807c7516bcd4cc09471afa827e72472d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

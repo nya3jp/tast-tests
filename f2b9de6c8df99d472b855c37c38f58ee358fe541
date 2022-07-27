@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40cf1fe5_c240f7a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-27T02:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03f7c2c5_71a61448",
+      "range": {
+        "startLine": 57,
+        "startChar": 39,
+        "endLine": 57,
+        "endChar": 46
+      },
+      "revId": "f2b9de6c8df99d472b855c37c38f58ee358fe541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2714de83_1f09c223",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c353e4c_386c7307",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-27T02:09:14Z",
+      "side": 1,
+      "message": "Done. Fixed in new patch.",
+      "parentUuid": "2714de83_1f09c223",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 42
+      },
+      "revId": "f2b9de6c8df99d472b855c37c38f58ee358fe541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "610d0ad2_aa33f7f5",
@@ -60,6 +108,24 @@
       "writtenOn": "2022-07-26T10:52:44Z",
       "side": 1,
       "message": "Comments should be complete sentences.",
+      "revId": "f2b9de6c8df99d472b855c37c38f58ee358fe541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb647b52_65b88f0c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-27T02:09:14Z",
+      "side": 1,
+      "message": "Ack. Function removed because `validareProcFile` is not needed.",
+      "parentUuid": "610d0ad2_aa33f7f5",
       "revId": "f2b9de6c8df99d472b855c37c38f58ee358fe541",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
