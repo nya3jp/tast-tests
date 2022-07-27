@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
-	ps "chromiumos/tast/services/cros/policy"
+	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
 
@@ -55,7 +55,7 @@ func DeviceMinimumVersion(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	pc := ps.NewPolicyServiceClient(cl.Conn)
+	pc := pspb.NewPolicyServiceClient(cl.Conn)
 
 	// Start with empty policy and set policy value after logging into the session so that
 	// the user can be force logged out as per policy behavior.
@@ -65,7 +65,7 @@ func DeviceMinimumVersion(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to serialize empty policies: ", err)
 	}
 
-	if _, err := pc.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
+	if _, err := pc.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
 		PolicyJson: emptyJSON,
 	}); err != nil {
 		s.Fatal("Failed to enroll using chrome: ", err)
@@ -89,7 +89,7 @@ func DeviceMinimumVersion(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to serialize policies: ", err)
 	}
-	pc.UpdatePolicies(ctx, &ps.UpdatePoliciesRequest{
+	pc.UpdatePolicies(ctx, &pspb.UpdatePoliciesRequest{
 		PolicyJson: minimumVersionJSON,
 	})
 
@@ -97,7 +97,7 @@ func DeviceMinimumVersion(ctx context.Context, s *testing.State) {
 		s.Fatal(err, "failed to close policy service chrome instance")
 	}
 
-	dmvc := ps.NewDeviceMinimumVersionServiceClient(cl.Conn)
+	dmvc := pspb.NewDeviceMinimumVersionServiceClient(cl.Conn)
 
 	if _, err = dmvc.TestUpdateRequiredScreenIsVisible(ctx, &empty.Empty{}); err != nil {
 		s.Error("Failed to verify DeviceMinimumVersion policy behavior: ", err)

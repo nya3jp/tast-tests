@@ -15,7 +15,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
-	ps "chromiumos/tast/services/cros/policy"
+	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/testing"
 )
 
@@ -60,9 +60,9 @@ func Enrollment(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to serialize policies: ", err)
 	}
 
-	pc := ps.NewPolicyServiceClient(cl.Conn)
+	pc := pspb.NewPolicyServiceClient(cl.Conn)
 
-	if _, err := pc.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
+	if _, err := pc.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
 		PolicyJson: pJSON,
 	}); err != nil {
 		s.Fatal("Failed to enroll using chrome: ", err)

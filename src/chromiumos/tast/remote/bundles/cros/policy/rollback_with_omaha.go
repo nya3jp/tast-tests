@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/rpc"
 	aupb "chromiumos/tast/services/cros/autoupdate"
-	ppb "chromiumos/tast/services/cros/policy"
+	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
@@ -43,16 +43,20 @@ func init() {
 
 // RollbackWithOmaha test must be provided the source and target image versions.
 // The source version should be a full version string. The target can be
-// just a prefix. Furthermore, test should be started with
-//   -var=policy.RollbackWithOmaha.confirm=ICanRollbackMyDUT
+//
+//		st a prefix. Furthermore, test should be started with
+//
+//	  -var=policy.RollbackWithOmaha.confirm=ICanRollbackMyDUT
+//
 // to avoid accidental execution of the test.
 //
 // For example, to run a rollback from M96 to M94:
-// tast run
-//   -var=policy.RollbackWithOmaha.confirm=ICanRollbackMyDUT
-//   -var=policy.RollbackWithOmaha.sourceVersion=14244.0.0
-//   -var=policy.RollbackWithOmaha.targetVersion=14092.
-//   <ip> policy.RollbackWithOmaha
+//
+//		st run
+//		-var=policy.RollbackWithOmaha.confirm=ICanRollbackMyDUT
+//		-var=policy.RollbackWithOmaha.sourceVersion=14244.0.0
+//		-var=policy.RollbackWithOmaha.targetVersion=14092.
+//	  <ip> policy.RollbackWithOmaha
 func RollbackWithOmaha(ctx context.Context, s *testing.State) {
 	if s.RequiredVar("policy.RollbackWithOmaha.confirm") != "ICanRollbackMyDUT" {
 		s.Log("You should only run this example test if you have manual access to your DUT")
@@ -90,7 +94,7 @@ func RollbackWithOmaha(ctx context.Context, s *testing.State) {
 		defer cl.Close(cleanupCtx)
 
 		// Create clients.
-		policyClient := ppb.NewPolicyServiceClient(cl.Conn)
+		policyClient := pspb.NewPolicyServiceClient(cl.Conn)
 		updateClient := aupb.NewUpdateServiceClient(cl.Conn)
 
 		// Create an empty /mnt/stateful_partition/etc/lsb-release if it doesn't
@@ -116,7 +120,7 @@ func RollbackWithOmaha(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to serialize policies: ", err)
 		}
 
-		if _, err := policyClient.EnrollUsingChrome(ctx, &ppb.EnrollUsingChromeRequest{
+		if _, err := policyClient.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
 			PolicyJson: pJSON,
 		}); err != nil {
 			s.Fatal("Failed to enroll using chrome: ", err)
@@ -142,7 +146,7 @@ func RollbackWithOmaha(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to serialize policies: ", err)
 		}
-		if _, err := policyClient.UpdatePolicies(ctx, &ppb.UpdatePoliciesRequest{
+		if _, err := policyClient.UpdatePolicies(ctx, &pspb.UpdatePoliciesRequest{
 			PolicyJson: pJSON,
 		}); err != nil {
 			s.Fatal("Failed to enroll using chrome: ", err)
