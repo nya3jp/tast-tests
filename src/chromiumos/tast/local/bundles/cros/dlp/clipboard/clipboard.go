@@ -10,6 +10,7 @@ import (
 	"context"
 	"strings"
 
+	"chromiumos/tast/common/policy"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -55,6 +56,25 @@ func CheckClipboardBubble(ctx context.Context, ui *uiauto.Context, url string) e
 	return nil
 }
 
+// WarnBubble gets the clipboard warn bubble if it exists.
+func WarnBubble(ctx context.Context, ui *uiauto.Context, url string) (*nodewith.Finder, error) {
+	// Message name - IDS_POLICY_DLP_CLIPBOARD_WARN_ON_PASTE
+	bubbleClass := nodewith.ClassName("ClipboardWarnBubble")
+	cancelButton := nodewith.Name("Cancel").Role(role.Button).Ancestor(bubbleClass)
+	pasteButton := nodewith.Name("Paste anyway").Role(role.Button).Ancestor(bubbleClass)
+	message := "Pasting from " + url + " to this location is not recommended by administrator policy. Learn more"
+	bubble := nodewith.Name(message).Role(role.StaticText).Ancestor(bubbleClass)
+
+	if err := uiauto.Combine("find bubble ",
+		ui.WaitUntilExists(cancelButton),
+		ui.WaitUntilExists(pasteButton),
+		ui.WaitUntilExists(bubble))(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to check for notification bubble's existence")
+	}
+
+	return bubbleClass, nil
+}
+
 // GetClipboardContent retrieves the current clipboard content.
 func GetClipboardContent(ctx context.Context, tconn *chrome.TestConn) (string, error) {
 	var clipData string
@@ -84,4 +104,62 @@ func CheckPastedContent(ctx context.Context, ui *uiauto.Context, content string)
 	}
 
 	return nil
+}
+
+// WarnPolicy returns a clipboard dlp policy warning when clipboard content is copied and pasted from source to destination.
+func WarnPolicy(source, destination string) []policy.Policy {
+	return []policy.Policy{&policy.DataLeakPreventionRulesList{
+		Val: []*policy.DataLeakPreventionRulesListValue{
+			{
+				Name:        "Warn about copy and paste of confidential content in restricted destination",
+				Description: "User should be warned when coping and pasting confidential content in restricted destination",
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
+					Urls: []string{
+						source,
+					},
+				},
+				Destinations: &policy.DataLeakPreventionRulesListValueDestinations{
+					Urls: []string{
+						destination,
+					},
+				},
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
+					{
+						Class: "CLIPBOARD",
+						Level: "WARN",
+					},
+				},
+			},
+		},
+	},
+	}
+}
+
+// BlockPolicy returns a clipboard dlp policy warning when clipboard content is copied and pasted from source to destination.
+func BlockPolicy(source, destination string) []policy.Policy {
+	return []policy.Policy{&policy.DataLeakPreventionRulesList{
+		Val: []*policy.DataLeakPreventionRulesListValue{
+			{
+				Name:        "Disable copy and paste of confidential content in restricted destination",
+				Description: "User should not be able to copy and paste confidential content in restricted destination",
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
+					Urls: []string{
+						source,
+					},
+				},
+				Destinations: &policy.DataLeakPreventionRulesListValueDestinations{
+					Urls: []string{
+						destination,
+					},
+				},
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
+					{
+						Class: "CLIPBOARD",
+						Level: "BLOCK",
+					},
+				},
+			},
+		},
+	},
+	}
 }
