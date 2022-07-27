@@ -23,10 +23,11 @@ const TastChromeOptionsJSVar = "tastChromeOptions"
 // Files manages local files of extensions to be installed to Chrome for
 // testing.
 type Files struct {
-	user         *testExtension
-	signin       *testExtension
-	guest        GuestModeLogin
-	extraExtDirs []string
+	user               *testExtension
+	signin             *testExtension
+	guest              GuestModeLogin
+	extraExtDirs       []string
+	lacrosExtraExtDirs []string
 }
 
 // GuestModeLogin maintains whether the session is a guest session or not.
@@ -89,28 +90,37 @@ func PrepareExtensions(destDir string, cfg *config.Config, guestMode GuestModeLo
 		}
 	}
 
-	// Prepare extra extensions.
+	// Prepare extra extensions for both ash-chrome and lacros.chrome.
 	var copiedExtraExtDirs []string
-	for i, src := range cfg.ExtraExtDirs() {
-		manifest := filepath.Join(src, "manifest.json")
-		if _, err = os.Stat(manifest); err != nil {
-			return nil, errors.Wrap(err, "missing extension manifest")
+	var copiedLacrosExtraExtDirs []string
+	for _, param := range []struct {
+		copiedExtDirs *[]string
+		extDirs       []string
+	}{
+		{&copiedExtraExtDirs, cfg.ExtraExtDirs()},
+		{&copiedLacrosExtraExtDirs, cfg.LacrosExtraExtDirs()},
+	} {
+		for i, src := range param.extDirs {
+			manifest := filepath.Join(src, "manifest.json")
+			if _, err = os.Stat(manifest); err != nil {
+				return nil, errors.Wrap(err, "missing extension manifest")
+			}
+			dst := filepath.Join(destDir, fmt.Sprintf("extra.%d", i))
+			if err := copyDir(src, dst); err != nil {
+				return nil, err
+			}
+			if err := ChownContentsToChrome(dst); err != nil {
+				return nil, err
+			}
+			*param.copiedExtDirs = append(*param.copiedExtDirs, dst)
 		}
-		dst := filepath.Join(destDir, fmt.Sprintf("extra.%d", i))
-		if err := copyDir(src, dst); err != nil {
-			return nil, err
-		}
-		if err := ChownContentsToChrome(dst); err != nil {
-			return nil, err
-		}
-		copiedExtraExtDirs = append(copiedExtraExtDirs, dst)
 	}
-
 	return &Files{
-		user:         user,
-		signin:       signin,
-		extraExtDirs: copiedExtraExtDirs,
-		guest:        guestMode,
+		user:               user,
+		signin:             signin,
+		extraExtDirs:       copiedExtraExtDirs,
+		lacrosExtraExtDirs: copiedLacrosExtraExtDirs,
+		guest:              guestMode,
 	}, nil
 }
 
@@ -163,6 +173,18 @@ func (f *Files) ChromeArgs() []string {
 		args = append(args, "--allowlisted-extension-id="+f.user.ID())
 	}
 	return args
+}
+
+// LacrosExtArgs returns a list of args needed to pass to a lacros instance to enable the test extension.
+// TODO: Make it handle sign-in profile or guest mode when needed.
+func (f *Files) LacrosExtArgs() []string {
+	extDirs := append([]string{f.user.Dir()}, f.lacrosExtraExtDirs...)
+	return []string{
+		"--remote-debugging-port=0",                      // Let Chrome choose its own debugging port.
+		"--enable-experimental-extension-apis",           // Allow Chrome to use the Chrome Automation API.
+		"--allowlisted-extension-id=" + TestExtensionID,  // Whitelists the test extension to access all Chrome APIs.
+		"--load-extension=" + strings.Join(extDirs, ","), // Load extensions.
+	}
 }
 
 // copyDir copies a directory recursively.
