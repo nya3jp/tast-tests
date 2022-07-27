@@ -64,18 +64,17 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftM
 	radioGroup := nodewith.Role(role.RadioGroup).Ancestor(InstallWindow)
 	customStaticText := nodewith.Name("Custom").Role(role.StaticText).Ancestor(radioGroup)
 	slider := nodewith.Role(role.Slider).Ancestor(InstallWindow)
+	ui := uiauto.New(p.tconn)
 
 	// Hide virtual keyboard if it appears.
 	// vkb.HideVirtualKeyboard invokes Chrome API to force hide virtual keyboard.
-	vkbCtx := vkb.NewContext(nil, p.tconn)
-	if shown, err := vkbCtx.IsShown(ctx); err != nil && shown {
-		if err := vkbCtx.HideVirtualKeyboard()(ctx); err != nil {
+	if err := ui.WithTimeout(time.Second).WaitUntilExists(vkb.NodeFinder.First())(ctx); err == nil {
+		if err := vkb.NewContext(nil, p.tconn).HideVirtualKeyboard()(ctx); err != nil {
 			return 0, errors.Wrap(err, "failed to hide virtual keyboard")
 		}
 
 	}
 
-	ui := uiauto.New(p.tconn)
 	if err := uiauto.Combine("click radio custom and display slider",
 		ui.LeftClick(customStaticText),
 		ui.FocusAndWait(slider))(ctx); err != nil {
