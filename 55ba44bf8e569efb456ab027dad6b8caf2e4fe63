@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0941a6a_06eddcf9",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T14:29:59Z",
+      "side": 1,
+      "message": "Does this risk picking up any other instances of the printer name?  Should it be constrained to be inside the grid or anything to avoid that?",
+      "range": {
+        "startLine": 78,
+        "startChar": 49,
+        "endLine": 78,
+        "endChar": 59
+      },
+      "revId": "55ba44bf8e569efb456ab027dad6b8caf2e4fe63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
