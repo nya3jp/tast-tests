@@ -168,6 +168,7 @@ func ProcessesTestInternal(ctx context.Context, s *testing.State, testSelector [
 				{exe, "/usr/sbin/avahi-daemon", matchRegexp, "cros_avahi_daemon", zeroProcs, ""},
 				{exe, "/usr/sbin/bootlockboxd", matchRegexp, "cros_bootlockboxd", zeroProcs, ""},
 				{exe, "/usr/sbin/cdm-oemcrypto", matchRegexp, "cros_cdm_oemcrypto", zeroProcs, ""},
+				{exe, "/usr/sbin/cdm-oemcrypto-wv14", matchRegexp, "cros_cdm_oemcrypto", zeroProcs, ""},
 				{exe, "/usr/sbin/cecservice", matchRegexp, "cros_cecservice", zeroProcs, ""},
 				{exe, "/usr/sbin/chapsd", matchRegexp, "cros_chapsd", zeroProcs, ""},
 				{exe, "/usr/sbin/conntrackd", matchRegexp, "cros_conntrackd", zeroProcs, ""},
