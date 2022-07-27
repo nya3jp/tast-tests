@@ -108,35 +108,8 @@ func init() {
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
 			Val: cpuInfoTestParams{
-				checkVulnerability:     false,
-				checkVirtualization:    false,
-				checkCPUVirtualization: false,
-			},
-		}, {
-			Name: "vulnerability",
-			// TODO(b/231537546): Promote to critical once tests are stable.
-			ExtraAttr: []string{"informational"},
-			Val: cpuInfoTestParams{
 				checkVulnerability:     true,
-				checkVirtualization:    false,
-				checkCPUVirtualization: false,
-			},
-		}, {
-			Name: "virtualization",
-			// TODO(b/231537546): Promote to critical once tests are stable.
-			ExtraAttr: []string{"informational"},
-			Val: cpuInfoTestParams{
-				checkVulnerability:     false,
 				checkVirtualization:    true,
-				checkCPUVirtualization: false,
-			},
-		}, {
-			Name: "cpu_virtualization",
-			// TODO(b/231537546): Promote to critical once tests are stable.
-			ExtraAttr: []string{"informational"},
-			Val: cpuInfoTestParams{
-				checkVulnerability:     false,
-				checkVirtualization:    false,
 				checkCPUVirtualization: true,
 			},
 		}},
