@@ -16,6 +16,24 @@
       "message": "let me know when merge approval is granted",
       "revId": "b4e5e16515767eef5c71d965768ff162c5a911cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8630e05e_0ee74476",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-07-27T00:55:49Z",
+      "side": 1,
+      "message": "Merge approval(b/238033358) is granted.",
+      "parentUuid": "f4d3cf75_12af1a78",
+      "revId": "b4e5e16515767eef5c71d965768ff162c5a911cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
