@@ -80,7 +80,7 @@ func GAIAEnrollment(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(cleanupCtx)
 
-	pc := pspb.NewPolicyServiceClient(cl.Conn)
+	policyClient := pspb.NewPolicyServiceClient(cl.Conn)
 
 	tapeClient, err := tape.NewClient(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)))
 	if err != nil {
@@ -95,7 +95,7 @@ func GAIAEnrollment(ctx context.Context, s *testing.State) {
 	}
 	defer accManager.CleanUp(cleanupCtx)
 
-	if _, err := pc.GAIAEnrollUsingChrome(ctx, &pspb.GAIAEnrollUsingChromeRequest{
+	if _, err := policyClient.GAIAEnrollUsingChrome(ctx, &pspb.GAIAEnrollUsingChromeRequest{
 		Username:    acc.Username,
 		Password:    acc.Password,
 		DmserverURL: dmServerURL,

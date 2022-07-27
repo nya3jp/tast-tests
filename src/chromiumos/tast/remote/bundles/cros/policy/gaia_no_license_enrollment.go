@@ -78,13 +78,13 @@ func GAIANoLicenseEnrollment(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	pc := pspb.NewPolicyServiceClient(cl.Conn)
+	policyClient := pspb.NewPolicyServiceClient(cl.Conn)
 
-	if _, err := pc.StartNewChromeReader(ctx, &empty.Empty{}); err != nil {
+	if _, err := policyClient.StartNewChromeReader(ctx, &empty.Empty{}); err != nil {
 		s.Fatal("Failed to initialize syslog reader: ", err)
 	}
 
-	if _, err := pc.GAIAEnrollUsingChrome(ctx, &pspb.GAIAEnrollUsingChromeRequest{
+	if _, err := policyClient.GAIAEnrollUsingChrome(ctx, &pspb.GAIAEnrollUsingChromeRequest{
 		Username:    username,
 		Password:    password,
 		DmserverURL: dmServerURL,
@@ -92,7 +92,7 @@ func GAIANoLicenseEnrollment(ctx context.Context, s *testing.State) {
 		s.Fatal("Enrollment was successful and it shouldn't have been: ", err)
 	}
 
-	if _, err := pc.WaitForEnrollmentError(ctx, &empty.Empty{}); err != nil {
+	if _, err := policyClient.WaitForEnrollmentError(ctx, &empty.Empty{}); err != nil {
 		s.Error("Failed to get error message: ", err)
 	}
 

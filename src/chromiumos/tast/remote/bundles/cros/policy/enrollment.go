@@ -60,12 +60,12 @@ func Enrollment(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to serialize policies: ", err)
 	}
 
-	pc := pspb.NewPolicyServiceClient(cl.Conn)
+	policyClient := pspb.NewPolicyServiceClient(cl.Conn)
 
-	if _, err := pc.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
+	if _, err := policyClient.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
 		PolicyJson: pJSON,
 	}); err != nil {
 		s.Fatal("Failed to enroll using chrome: ", err)
 	}
-	defer pc.StopChromeAndFakeDMS(ctx, &empty.Empty{})
+	defer policyClient.StopChromeAndFakeDMS(ctx, &empty.Empty{})
 }

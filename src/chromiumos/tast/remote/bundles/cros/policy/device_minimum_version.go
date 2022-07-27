@@ -55,7 +55,7 @@ func DeviceMinimumVersion(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	pc := pspb.NewPolicyServiceClient(cl.Conn)
+	policyClient := pspb.NewPolicyServiceClient(cl.Conn)
 
 	// Start with empty policy and set policy value after logging into the session so that
 	// the user can be force logged out as per policy behavior.
@@ -65,7 +65,7 @@ func DeviceMinimumVersion(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to serialize empty policies: ", err)
 	}
 
-	if _, err := pc.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
+	if _, err := policyClient.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
 		PolicyJson: emptyJSON,
 	}); err != nil {
 		s.Fatal("Failed to enroll using chrome: ", err)
@@ -89,11 +89,11 @@ func DeviceMinimumVersion(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to serialize policies: ", err)
 	}
-	pc.UpdatePolicies(ctx, &pspb.UpdatePoliciesRequest{
+	policyClient.UpdatePolicies(ctx, &pspb.UpdatePoliciesRequest{
 		PolicyJson: minimumVersionJSON,
 	})
 
-	if _, err = pc.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
+	if _, err = policyClient.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
 		s.Fatal(err, "failed to close policy service chrome instance")
 	}
 

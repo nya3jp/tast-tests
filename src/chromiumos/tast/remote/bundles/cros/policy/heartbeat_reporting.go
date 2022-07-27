@@ -89,10 +89,10 @@ func HeartbeatReporting(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	pc := ps.NewPolicyServiceClient(cl.Conn)
+	policyClient := ps.NewPolicyServiceClient(cl.Conn)
 
 	testStartTime := time.Now()
-	if _, err := pc.GAIAEnrollForReporting(ctx, &ps.GAIAEnrollForReportingRequest{
+	if _, err := policyClient.GAIAEnrollForReporting(ctx, &ps.GAIAEnrollForReportingRequest{
 		Username:           user,
 		Password:           pass,
 		DmserverUrl:        reportingutil.DmServerURL,
@@ -102,7 +102,7 @@ func HeartbeatReporting(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to enroll using chrome: ", err)
 	}
 
-	c, err := pc.ClientID(ctx, &empty.Empty{})
+	c, err := policyClient.ClientID(ctx, &empty.Empty{})
 	if err != nil {
 		s.Fatalf("Failed to grab client ID from device: %v:", err)
 	}

@@ -76,9 +76,9 @@ func GAIAFlexorgsEnrollment(ctx context.Context, s *testing.State) {
 	}
 	defer cl.Close(ctx)
 
-	pc := pspb.NewPolicyServiceClient(cl.Conn)
+	policyClient := pspb.NewPolicyServiceClient(cl.Conn)
 
-	if _, err := pc.GAIAEnrollUsingChrome(ctx, &pspb.GAIAEnrollUsingChromeRequest{
+	if _, err := policyClient.GAIAEnrollUsingChrome(ctx, &pspb.GAIAEnrollUsingChromeRequest{
 		Username:    username,
 		Password:    password,
 		DmserverURL: dmServerURL,

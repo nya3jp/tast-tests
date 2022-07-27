@@ -122,7 +122,7 @@ func DeviceUSBPowershare(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 			}
 
-			pc := pspb.NewPolicyServiceClient(cl.Conn)
+			policyClient := pspb.NewPolicyServiceClient(cl.Conn)
 			pb := policy.NewBlob()
 			pb.AddPolicy(tc.policy)
 
@@ -131,7 +131,7 @@ func DeviceUSBPowershare(ctx context.Context, s *testing.State) {
 				s.Fatal("Error while marshalling policies to JSON: ", err)
 			}
 
-			if _, err := pc.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
+			if _, err := policyClient.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
 				PolicyJson: pJSON,
 			}); err != nil {
 				s.Fatal("Failed to enroll using chrome: ", err)
