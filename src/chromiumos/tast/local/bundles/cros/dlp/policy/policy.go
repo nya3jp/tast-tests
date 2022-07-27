@@ -72,3 +72,61 @@ func PopulateDLPPolicyForClipboard(source, destination string) []policy.Policy {
 func StandardDLPPolicyForClipboard() []policy.Policy {
 	return PopulateDLPPolicyForClipboard("example.com", "google.com")
 }
+
+// ClipboardWarnPolicy returns a clipboard dlp policy warning when clipboard content is copied and pasted from source to destination.
+func ClipboardWarnPolicy(source, destination string) []policy.Policy {
+	return []policy.Policy{&policy.DataLeakPreventionRulesList{
+		Val: []*policy.DataLeakPreventionRulesListValue{
+			{
+				Name:        "Warn about copy and paste of confidential content in restricted destination",
+				Description: "User should be warned when coping and pasting confidential content in restricted destination",
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
+					Urls: []string{
+						source,
+					},
+				},
+				Destinations: &policy.DataLeakPreventionRulesListValueDestinations{
+					Urls: []string{
+						destination,
+					},
+				},
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
+					{
+						Class: "CLIPBOARD",
+						Level: "WARN",
+					},
+				},
+			},
+		},
+	},
+	}
+}
+
+// ClipboardBlockPolicy returns a clipboard dlp policy warning when clipboard content is copied and pasted from source to destination.
+func ClipboardBlockPolicy(source, destination string) []policy.Policy {
+	return []policy.Policy{&policy.DataLeakPreventionRulesList{
+		Val: []*policy.DataLeakPreventionRulesListValue{
+			{
+				Name:        "Disable copy and paste of confidential content in restricted destination",
+				Description: "User should not be able to copy and paste confidential content in restricted destination",
+				Sources: &policy.DataLeakPreventionRulesListValueSources{
+					Urls: []string{
+						source,
+					},
+				},
+				Destinations: &policy.DataLeakPreventionRulesListValueDestinations{
+					Urls: []string{
+						destination,
+					},
+				},
+				Restrictions: []*policy.DataLeakPreventionRulesListValueRestrictions{
+					{
+						Class: "CLIPBOARD",
+						Level: "BLOCK",
+					},
+				},
+			},
+		},
+	},
+	}
+}
