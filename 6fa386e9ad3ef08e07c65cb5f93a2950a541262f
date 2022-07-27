@@ -22,6 +22,30 @@
       },
       "revId": "6fa386e9ad3ef08e07c65cb5f93a2950a541262f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48069d71_aea390eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-27T07:26:16Z",
+      "side": 1,
+      "message": "Will show an error and blocking repo upload when running hook scripts during repo upload so I didn\u0027t include the type. Error message shown below. \n\n`src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go:57:56: When two or more consecutive named function parameters share a type, you can omit the type from all but the last`",
+      "parentUuid": "851819ae_4096e45a",
+      "range": {
+        "startLine": 57,
+        "startChar": 51,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "6fa386e9ad3ef08e07c65cb5f93a2950a541262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
