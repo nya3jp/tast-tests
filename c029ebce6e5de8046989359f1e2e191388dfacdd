@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25998fbe_e9ddc81d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-27T15:11:20Z",
+      "side": 1,
+      "message": "Sorry, there was bugs. Fixed at latest PS.",
+      "parentUuid": "e6cb7978_4b7263d4",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 17
+      },
+      "revId": "c029ebce6e5de8046989359f1e2e191388dfacdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c9f2fd6_436803cd",
         "filename": "src/chromiumos/tast/local/bundles/cros/power/idle.go",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-26T21:19:02Z",
       "side": 1,
       "message": "Are you gonna do this in this CL or next CL?",
+      "range": {
+        "startLine": 331,
+        "startChar": 1,
+        "endLine": 331,
+        "endChar": 72
+      },
+      "revId": "c029ebce6e5de8046989359f1e2e191388dfacdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48be4b36_decf5a8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/idle.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-27T15:11:20Z",
+      "side": 1,
+      "message": "In the following CL, at least.\n(If this is not immediate need, I\u0027d like to chat a bit more details with you how to move forward here).",
+      "parentUuid": "4c9f2fd6_436803cd",
       "range": {
         "startLine": 331,
         "startChar": 1,
