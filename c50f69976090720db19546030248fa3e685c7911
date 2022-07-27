@@ -16,6 +16,24 @@
       "message": "I still think we shouldn\u0027t remove this. Any detailed PIN test would require the basic add and authenticate operations that are covered in this test. But this test is still helpful in addressing whether there is any issue with these operations.\nCurrently this test is passing because there isn\u0027t any issue with the AuthFactor APIs or adding and authenticating with Vk PIN ur USS PIN\nhttps://tastboard.corp.google.com/test/cryptohome.UserSecretStashAddPin\nHowever Pinweaver test is failing because there is a problem with the PIN lock/unlock\nhttps://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dPinweaver\u0026dep\u003d\u0026attr\u003d",
       "revId": "c50f69976090720db19546030248fa3e685c7911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a0db57c_ed9197e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-07-27T22:22:08Z",
+      "side": 1,
+      "message": "Well the pinweaver test is failing because the extra check it does in the auth factor case (to see if the PIN is actually disabled) doesn\u0027t currently work. This UserSecretStashAddPin version passes because it\u0027s basically just doing what the authsesson-only test cases are doing.\n\nFWIW I also sent https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3789027 which is a patch which I believe improves the those pin tests to better break out those cases, in particular it added a non-authfactor case that enables USS (which passes).",
+      "parentUuid": "255aab7d_44fe1d12",
+      "revId": "c50f69976090720db19546030248fa3e685c7911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
