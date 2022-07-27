@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5153c16_d53d387a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/content_selection_and_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-27T23:07:04Z",
+      "side": 1,
+      "message": "We have tests that verify pin/unpin of downloads. It\u0027s only one at a time but should be possible to modify it to support pin/unpin of multiple:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/holdingspace/download.go;l\u003d57-61",
+      "range": {
+        "startLine": 51,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "fda95c6bd5c786c35cc256e73ab85ff8ddb655e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33b32682_cb53ae3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/content_selection_and_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-07-27T23:07:04Z",
+      "side": 1,
+      "message": "We don\u0027t currently have a test which launches one or more downloads, but it should probably be written as a parameterization of holdingspace.Download.* for consistency:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/holdingspace/download.go",
+      "range": {
+        "startLine": 51,
+        "startChar": 38,
+        "endLine": 51,
+        "endChar": 76
+      },
+      "revId": "fda95c6bd5c786c35cc256e73ab85ff8ddb655e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
