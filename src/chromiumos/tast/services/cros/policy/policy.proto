@@ -12,6 +12,7 @@ option go_package = "chromiumos/tast/services/cros/policy";
 
 // Policy provides functions to perform enrollment.
 service PolicyService {
+  rpc VerifyPolicyStatus(VerifyPolicyStatusRequest) returns (google.protobuf.Empty) {}
   rpc StartNewChromeReader(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc WaitForEnrollmentError(google.protobuf.Empty) returns (google.protobuf.Empty) {}
   rpc EnrollUsingChrome(EnrollUsingChromeRequest) returns (google.protobuf.Empty) {}
@@ -49,6 +50,10 @@ service PolicyService {
 
   // Grabs Client ID for the session
   rpc ClientID(google.protobuf.Empty) returns (ClientIdResponse) {}
+}
+
+  message VerifyPolicyStatusRequest {
+  bytes policy_blob = 1;
 }
 
 message EnrollUsingChromeRequest {
