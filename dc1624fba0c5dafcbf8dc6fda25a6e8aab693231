@@ -22,6 +22,30 @@
       },
       "revId": "dc1624fba0c5dafcbf8dc6fda25a6e8aab693231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75a1b43_b2762571",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-07-27T09:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d36401c6_748247dd",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 74
+      },
+      "revId": "dc1624fba0c5dafcbf8dc6fda25a6e8aab693231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
