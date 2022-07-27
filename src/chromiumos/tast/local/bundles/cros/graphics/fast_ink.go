@@ -182,8 +182,8 @@ func init() {
 				wStates: []ash.WindowStateType{
 					ash.WindowStateNormal,
 					ash.WindowStateLeftSnapped,
-					ash.WindowStateRightSnapped,
 					ash.WindowStateMaximized,
+					ash.WindowStateRightSnapped,
 					ash.WindowStateFullscreen,
 				}},
 		}, {
@@ -199,8 +199,8 @@ func init() {
 					display.Rotate180,
 				},
 				wStates: []ash.WindowStateType{
-					ash.WindowStateMaximized,
 					ash.WindowStateLeftSnapped,
+					ash.WindowStateMaximized,
 					ash.WindowStateRightSnapped,
 					ash.WindowStateFullscreen,
 				}},
