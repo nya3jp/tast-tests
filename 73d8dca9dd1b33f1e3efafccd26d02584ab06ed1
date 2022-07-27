@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d11917f4_867ace15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-07-27T08:20:36Z",
+      "side": 1,
+      "message": "Looks good except for removing that one line.",
+      "revId": "73d8dca9dd1b33f1e3efafccd26d02584ab06ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9cbbdf6_badb0bcb",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/device_boot_on_ac.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-07-27T08:20:36Z",
+      "side": 1,
+      "message": "Delete",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "73d8dca9dd1b33f1e3efafccd26d02584ab06ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
