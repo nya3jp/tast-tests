@@ -34,6 +34,24 @@
       "parentUuid": "2b394b4f_95421fbd",
       "revId": "1bff187079a537a237979710d50cf4ca8557707e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3769d740_8e816021",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-07-27T19:36:46Z",
+      "side": 1,
+      "message": "Do you know why?  Unless the location is changing, it seems like all this does is wait for a couple of iterations of the event loop.  Can we more explicitly wait for the state to change?",
+      "parentUuid": "c11a60cc_b49adb3d",
+      "revId": "1bff187079a537a237979710d50cf4ca8557707e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
