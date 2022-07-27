@@ -34,7 +34,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks that if Chrome crashes before crashpad is initialized, the user collector collects the crash",
 		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "crashpad"},
 		Timeout:      upstart.UIRestartTimeout + chromeCrashEarlyCleanupTimeout + time.Minute,
 	})
