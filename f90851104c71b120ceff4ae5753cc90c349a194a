@@ -16,6 +16,190 @@
       "message": "I am moving myself to CC and adding a new Tast reviewer as I am OOO for some time.",
       "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d65b6a00_e2076260",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-27T16:57:00Z",
+      "side": 1,
+      "message": "add comment, like:\n\nUsed to match the RO/RW versions reported by EC Tool, as declared here: https://source.corp.google.com/chromeos_public/src/platform/ec/util/ectool.c  (or use the public link)",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c229a214_175bdba4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-27T16:57:00Z",
+      "side": 1,
+      "message": "nit: const\n\n    const disableECSoftwareSync \u003d \"0x200\"",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 22
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "262ae1d6_f9023176",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-27T16:57:00Z",
+      "side": 1,
+      "message": "nit: print the versions. use want/got. e.g:\n\n    \"Failed to verify EC versions, versions should be the same, got %s\u003d%s (RO), %s\u003d%s (RW)\"",
+      "range": {
+        "startLine": 132,
+        "startChar": 116,
+        "endLine": 132,
+        "endChar": 126
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7254fa69_90e1891d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-27T16:57:00Z",
+      "side": 1,
+      "message": "ditto above",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 20
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f1ade52_1f2c7ad5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-27T16:57:00Z",
+      "side": 1,
+      "message": "ditto above, use const",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 21
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919146a8_64b8122b",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-27T16:57:00Z",
+      "side": 1,
+      "message": "nit: ditto, print version values",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 16
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85d1b9a_69919eca",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-27T16:57:00Z",
+      "side": 1,
+      "message": "this function is just calling `set_gbb_flags.sh`... so perhaps a better name could be `setGBBFlags`.\n\n\nor, if you prefer to have a enable/disable, you can call it:\n\n    setSoftwareSyncEnabled(ctx, h, enabled bool) error {\n       // based on \"enabled\" you pass the correct GBB flags\n    }\n    \n    \nTake into account that there is already a function called `SetGBBFlags()` in file src/chromiumos/tast/common/firmware/gbb_flags.go  ... perhaps you can reuse it",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 30
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dbed1b2_61dab284",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/disable_enable_ec_sw_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-27T16:57:00Z",
+      "side": 1,
+      "message": "reRWVersion",
+      "range": {
+        "startLine": 198,
+        "startChar": 89,
+        "endLine": 198,
+        "endChar": 100
+      },
+      "revId": "f90851104c71b120ceff4ae5753cc90c349a194a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
