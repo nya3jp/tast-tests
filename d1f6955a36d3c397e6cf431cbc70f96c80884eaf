@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71b40814_16916b48",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-27T04:23:16Z",
+      "side": 1,
+      "message": "nit: Should this be `BytesRead`?",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 9
+      },
+      "revId": "d1f6955a36d3c397e6cf431cbc70f96c80884eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4ea8be3_9b1fe1f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-27T04:23:16Z",
+      "side": 1,
+      "message": "It looks to me a little unusual to pass in `got`.\nHow about make this function just return the `want` value, and do the comparison inside `validateProcessInfo`?\nOr perhaps have a better name for this function (e.g., `compareValueWithPsOutput`)?",
+      "range": {
+        "startLine": 57,
+        "startChar": 51,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "d1f6955a36d3c397e6cf431cbc70f96c80884eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba314232_9ec480e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-27T04:23:16Z",
+      "side": 1,
+      "message": "nit: perhaps just merge these two lines: \n```\nif want, err :\u003d ...; if err !\u003d nil {\n  ...\n} else if ... {\n  ...\n}\n```\nnow that `want` is only used in the error flow.",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "d1f6955a36d3c397e6cf431cbc70f96c80884eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6846de51_770bb9d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-27T04:23:16Z",
+      "side": 1,
+      "message": "It would be clearer to include the field name (\"comm\" or \"Name\" or whatever makes sense here) in the err msg, other than just the got and want values.",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "d1f6955a36d3c397e6cf431cbc70f96c80884eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
