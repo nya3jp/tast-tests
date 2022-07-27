@@ -154,19 +154,6 @@ func TestDownload(ctx context.Context, s *testing.State) {
 		s.Fatal("Policy is set, but shouldn't be")
 	}
 
-	testDownloadForBrowser(ctx, s, downloadsPath, browser.TypeLacros)
-	testDownloadForBrowser(ctx, s, downloadsPath, browser.TypeAsh)
-}
-
-func testDownloadForBrowser(ctx context.Context, s *testing.State, downloadsPath string, browserType browser.Type) {
-	testParams := s.Param().(helpers.TestParams)
-
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
-	}
-
 	// Setup test HTTP server.
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
 	defer server.Close()
@@ -176,7 +163,7 @@ func testDownloadForBrowser(ctx context.Context, s *testing.State, downloadsPath
 	defer cancel()
 
 	// Create Browser.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, browserType)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, testParams.BrowserType)
 	if err != nil {
 		s.Fatal("Failed to open the browser: ", err)
 	}
