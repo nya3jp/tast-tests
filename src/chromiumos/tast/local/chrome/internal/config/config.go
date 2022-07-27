@@ -242,6 +242,11 @@ func (c *Config) LacrosDisableFeatures() []string {
 // ExtraExtDirs returns directories containing extra unpacked extensions to load.
 func (c *Config) ExtraExtDirs() []string { return append([]string(nil), c.m.ExtraExtDirs...) }
 
+// LacrosExtraExtDirs returns directories containing extra Lacros unpacked extensions to load.
+func (c *Config) LacrosExtraExtDirs() []string {
+	return append([]string(nil), c.m.LacrosExtraExtDirs...)
+}
+
 // SigninExtKey returns a private key for the sign-in profile test extension.
 func (c *Config) SigninExtKey() string { return c.m.SigninExtKey }
 
@@ -322,6 +327,7 @@ type MutableConfig struct {
 	DisableFeatures                 []string   `reuse_match:"true"`
 	LacrosDisableFeatures           []string   `reuse_match:"true"`
 	ExtraExtDirs                    []string   `reuse_match:"customized"`
+	LacrosExtraExtDirs              []string   `reuse_match:"customized"`
 	SigninExtKey                    string     `reuse_match:"customized"`
 	SkipForceOnlineSignInForTesting bool       `reuse_match:"true"`
 	RemoveNotification              bool       `reuse_match:"true"`

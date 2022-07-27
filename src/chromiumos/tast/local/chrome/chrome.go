@@ -86,6 +86,8 @@ const (
 	persistentDir = "/usr/local/tmp/tast/chrome_session"
 	// extensionsDir is the directory for all chrome session extensions.
 	extensionsDir = persistentDir + "/extensions"
+	// lacrosExtensionsDir is the directory for browser extensions.
+	lacrosExtensionsDir = persistentDir + "/lacros_extensions"
 )
 
 // locked is set to true while a precondition is active to prevent tests from calling New or Chrome.Close.
@@ -286,16 +288,21 @@ func New(ctx context.Context, opts ...Option) (c *Chrome, retErr error) {
 		return nil, err
 	}
 
+	// Prepare extensions.
 	guestModeLogin := extension.GuestModeDisabled
 	if cfg.LoginMode() == config.GuestLogin {
 		guestModeLogin = extension.GuestModeEnabled
 	}
 	exts, err := extension.PrepareExtensions(extensionsDir, cfg, guestModeLogin)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to prepare extensions")
+		return nil, errors.Wrap(err, "failed to prepare extensions for ash-chrome")
+	}
+	lacrosExts, err := extension.PrepareExtensions(lacrosExtensionsDir, cfg, guestModeLogin)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to prepare extensions for lacros-chrome")
 	}
 
-	if err := setup.RestartChromeForTesting(ctx, cfg, exts); err != nil {
+	if err := setup.RestartChromeForTesting(ctx, cfg, exts.ChromeArgs(), lacrosExts.LacrosArgs()); err != nil {
 		return nil, errors.Wrap(err, "failed to restart chrome for testing")
 	}
 
