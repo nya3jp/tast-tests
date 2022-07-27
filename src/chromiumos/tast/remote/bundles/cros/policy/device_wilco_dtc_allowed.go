@@ -77,8 +77,8 @@ func DeviceWilcoDtcAllowed(ctx context.Context, s *testing.State) {
 			}
 			defer cl.Close(ctx)
 
-			wc := wilco.NewWilcoServiceClient(cl.Conn)
-			pc := ps.NewPolicyServiceClient(cl.Conn)
+			wilcoClient := wilco.NewWilcoServiceClient(cl.Conn)
+			policyClient := ps.NewPolicyServiceClient(cl.Conn)
 
 			pb := policy.NewBlob()
 			pb.AddPolicy(&param.p)
@@ -91,14 +91,14 @@ func DeviceWilcoDtcAllowed(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to serialize policies: ", err)
 			}
 
-			if _, err := pc.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
+			if _, err := policyClient.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
 				PolicyJson: pJSON,
 			}); err != nil {
 				s.Fatal("Failed to enroll using chrome: ", err)
 			}
-			defer pc.StopChromeAndFakeDMS(ctx, &empty.Empty{})
+			defer policyClient.StopChromeAndFakeDMS(ctx, &empty.Empty{})
 
-			if status, err := wc.GetStatus(ctx, &empty.Empty{}); err != nil {
+			if status, err := wilcoClient.GetStatus(ctx, &empty.Empty{}); err != nil {
 				s.Fatal("Could not get running status: ", err)
 			} else if running := status.WilcoDtcSupportdPid != 0; running != param.p.Val {
 				s.Errorf("Unexpected Wilco DTC Supportd running state: got %t; want %t", running, param.p.Val)

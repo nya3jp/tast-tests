@@ -116,7 +116,7 @@ func DeviceBootOnAC(ctx context.Context, s *testing.State) {
 			}
 			defer cl.Close(ctx)
 
-			pc := pspb.NewPolicyServiceClient(cl.Conn)
+			policyClient := pspb.NewPolicyServiceClient(cl.Conn)
 			pb := policy.NewBlob()
 			pb.AddPolicy(tc.policy)
 
@@ -125,7 +125,7 @@ func DeviceBootOnAC(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to serialize policies: ", err)
 			}
 
-			if _, err := pc.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
+			if _, err := policyClient.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
 				PolicyJson: pJSON,
 			}); err != nil {
 				s.Fatal("Failed to enroll using chrome: ", err)
