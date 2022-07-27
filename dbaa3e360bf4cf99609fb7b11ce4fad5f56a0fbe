@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5699c3f0_c6f0bc27",
+        "filename": "src/chromiumos/tast/local/bundles/cros/firmware/fwupd/util.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-27T03:27:36Z",
+      "side": 1,
+      "message": "nit/style: could you swap the condition so that we can keep \"early return on error\", as along with your removal of stressapptest execution we no longer need to run the complex code at L79.",
+      "range": {
+        "startLine": 76,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 71
+      },
+      "revId": "dbaa3e360bf4cf99609fb7b11ce4fad5f56a0fbe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
