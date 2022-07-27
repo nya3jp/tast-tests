@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c37b2ec_214efeca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-27T05:55:39Z",
+      "side": 1,
+      "message": "Yes, fixed in new patch.",
+      "parentUuid": "71b40814_16916b48",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 9
+      },
+      "revId": "d1f6955a36d3c397e6cf431cbc70f96c80884eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4ea8be3_9b1fe1f9",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-27T04:23:16Z",
       "side": 1,
       "message": "It looks to me a little unusual to pass in `got`.\nHow about make this function just return the `want` value, and do the comparison inside `validateProcessInfo`?\nOr perhaps have a better name for this function (e.g., `compareValueWithPsOutput`)?",
+      "range": {
+        "startLine": 57,
+        "startChar": 51,
+        "endLine": 57,
+        "endChar": 54
+      },
+      "revId": "d1f6955a36d3c397e6cf431cbc70f96c80884eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c4a4dcc_752e9fbf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-27T05:55:39Z",
+      "side": 1,
+      "message": "Fixed function name to `comparValueWithPsOutput` since this was the original idea of this function. (as shown in comments `// runs ps command and compares results with cros_healthd.`)\n\nAlso agree that a better naming would be clearer. Thanks for suggesting.",
+      "parentUuid": "f4ea8be3_9b1fe1f9",
       "range": {
         "startLine": 57,
         "startChar": 51,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a3b0f52_42d78e68",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-27T05:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba314232_9ec480e3",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 16
+      },
+      "revId": "d1f6955a36d3c397e6cf431cbc70f96c80884eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6846de51_770bb9d9",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-07-27T04:23:16Z",
       "side": 1,
       "message": "It would be clearer to include the field name (\"comm\" or \"Name\" or whatever makes sense here) in the err msg, other than just the got and want values.",
+      "range": {
+        "startLine": 71,
+        "startChar": 9,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "d1f6955a36d3c397e6cf431cbc70f96c80884eaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81a5c86a_6a476664",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-27T05:55:39Z",
+      "side": 1,
+      "message": "Fixed. Will show `Failed to validate process info data: name: value doesn\u0027t match: got not_init; want init` as the error message if the two name values aren\u0027t aligned.",
+      "parentUuid": "6846de51_770bb9d9",
       "range": {
         "startLine": 71,
         "startChar": 9,
