@@ -98,12 +98,6 @@ func OpenDesktop(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to get a keyboard")
-	}
-	defer kb.Close()
-
 	isOpened := func(ctx context.Context) error {
 		if err := uidetector.WithTimeout(60 * time.Second).WaitUntilExists(uidetection.CustomIcon(s.DataPath("toolbar_buttons_icon.png")))(ctx); err != nil {
 			return errors.Wrap(err, "failed waiting for the toolbar buttons icon to appear")
@@ -115,9 +109,15 @@ func OpenDesktop(ctx context.Context, s *testing.State) {
 	desktopToOpen := s.Param().(desktopData).DesktopName
 	keysToOpenRunDialog := s.Param().(desktopData).RunDialogKeys
 
-	if err := vdi.SearchAndOpenApplication(ctx, kb, desktopToOpen, isOpened)(ctx); err != nil {
+	if err := vdi.SearchAndOpenApplication(ctx, desktopToOpen, isOpened)(ctx); err != nil {
 		s.Fatalf("Failed to open %v app: %v", desktopToOpen, err)
 	}
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get a keyboard")
+	}
+	defer kb.Close()
 
 	// Move focus on Windows desktop.
 	if err := kb.Accel(ctx, "Tab"); err != nil {
@@ -142,7 +142,7 @@ func OpenDesktop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close the active window: ", err)
 	}
 
-	if err := vdi.ResetSearch(ctx, kb); err != nil {
+	if err := vdi.ResetSearch(ctx); err != nil {
 		s.Fatal("Was not able to reset search results: ", err)
 	}
 }

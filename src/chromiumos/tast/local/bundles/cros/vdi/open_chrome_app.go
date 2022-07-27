@@ -107,13 +107,7 @@ func OpenChromeApp(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Failed to get a keyboard")
-	}
-	defer kb.Close()
-
-	if err := vdi.SearchAndOpenApplication(ctx, kb, appToOpen, isOpened)(ctx); err != nil {
+	if err := vdi.SearchAndOpenApplication(ctx, appToOpen, isOpened)(ctx); err != nil {
 		s.Fatalf("Failed to open %v app: %v", appToOpen, err)
 	}
 
@@ -123,6 +117,13 @@ func OpenChromeApp(ctx context.Context, s *testing.State) {
 			s.Error("Could not click on the opened new Tab. It may affect clean up: ", err)
 		}
 	}
+
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		s.Fatal("Failed to get a keyboard")
+	}
+	defer kb.Close()
+
 	// Move focus on Chrome.
 	if err := kb.Accel(ctx, "Tab"); err != nil {
 		s.Fatal("Failed to execute Tab command: ", err)
@@ -131,7 +132,7 @@ func OpenChromeApp(ctx context.Context, s *testing.State) {
 	if err := kb.Accel(ctx, "Ctrl+Shift+w"); err != nil {
 		s.Fatal("Failed to execute Ctrl+Shift+w command: ", err)
 	}
-	if err := vdi.ResetSearch(ctx, kb); err != nil {
+	if err := vdi.ResetSearch(ctx); err != nil {
 		s.Fatal("Was not able to reset search results: ", err)
 	}
 }
