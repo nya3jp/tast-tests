@@ -69,6 +69,24 @@
       "parentUuid": "a8ee90cb_8801b1d7",
       "revId": "865ef203fb0996672744b572da5e1a29de931472",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b9cc3f6_4177c24a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/cross_version_login.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-27T09:57:50Z",
+      "side": 1,
+      "message": "Done - Specified different timeouts (20 minutes, 10 minutes and 3 minutes) for different subtests. The values are found empirically, as written in the commit description.",
+      "parentUuid": "e945772b_c3bb8655",
+      "revId": "865ef203fb0996672744b572da5e1a29de931472",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
