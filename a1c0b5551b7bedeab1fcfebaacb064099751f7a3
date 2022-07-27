@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "480277b3_af59277c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537217
+      },
+      "writtenOn": "2022-07-27T20:00:19Z",
+      "side": 1,
+      "message": "Test looks good to me. Requesting to add additional tests.",
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "287f7ac7_a19d78ff",
@@ -319,6 +336,23 @@
         "endLine": 143,
         "endChar": 57
       },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25eb6206_378475c9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1537217
+      },
+      "writtenOn": "2022-07-27T20:00:19Z",
+      "side": 1,
+      "message": "I believe all these scenarios are being performed with only window on the display.\n\nWe could benefit with also measuring performance when having multiple windows displayed(not minimized) on the display for the following cases:\n1. Going into and out of overview mode.\n2. Dragging a window.\n\nAs discussed in the chat, it would be great if we can add tests that run all the actions with more windows. Maybe ~4 and ~9 (do we have a number on the average number of windows our user usually have open)?",
       "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
