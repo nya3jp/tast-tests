@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package usb
+package usbutil
 
 import (
 	"context"
@@ -228,7 +228,7 @@ func ptr(s string) *string {
 	return &s
 }
 
-func TestExpectedDevices(t *testing.T) {
+func TestGetDevices(t *testing.T) {
 	readFile = func(fpath string) ([]byte, error) {
 		s, ok := files[fpath]
 		if !ok {
@@ -245,9 +245,9 @@ func TestExpectedDevices(t *testing.T) {
 		return []byte(s), nil
 	}
 
-	g, err := ExpectedDevices(context.Background())
+	g, err := GetDevices(context.Background())
 	if err != nil {
-		t.Fatal("Failed to run ExpectedDevices:", err)
+		t.Fatal("Failed to run GetDevices:", err)
 	}
 	e := []Device{
 		Device{

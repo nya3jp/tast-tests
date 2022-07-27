@@ -18,10 +18,10 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/health/pci"
 	"chromiumos/tast/local/bundles/cros/health/types"
-	"chromiumos/tast/local/bundles/cros/health/usb"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/typecutils"
+	"chromiumos/tast/local/usbutil"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -217,11 +217,11 @@ func validatePCIDevices(ctx context.Context, devs []types.BusDevice, checkProgIf
 // validateUSBDevices validates the USB devices with the expected USB
 // devices extracted by the "usb-devices" and the "lsusb" commands.
 func validateUSBDevices(ctx context.Context, devs []types.BusDevice) error {
-	var got []usb.Device
+	var got []usbutil.Device
 	for _, d := range devs {
 		udIn := d.BusInfo.USBBusInfo
 		// TODO:(b/199683963): Validation of types.BusDevice.DeviceClass is skipped.
-		udOut := usb.Device{
+		udOut := usbutil.Device{
 			VendorID:    fmt.Sprintf("%04x", udIn.VendorID),
 			ProdID:      fmt.Sprintf("%04x", udIn.ProductID),
 			VendorName:  d.VendorName,
@@ -231,7 +231,7 @@ func validateUSBDevices(ctx context.Context, devs []types.BusDevice) error {
 			Protocol:    fmt.Sprintf("%02x", udIn.ProtocolID),
 		}
 		for _, ifc := range udIn.Interfaces {
-			udOut.Interfaces = append(udOut.Interfaces, usb.Interface{
+			udOut.Interfaces = append(udOut.Interfaces, usbutil.Interface{
 				InterfaceNumber: ifc.InterfaceNumber,
 				Class:           fmt.Sprintf("%02x", ifc.ClassID),
 				SubClass:        fmt.Sprintf("%02x", ifc.SubClassID),
@@ -240,15 +240,15 @@ func validateUSBDevices(ctx context.Context, devs []types.BusDevice) error {
 			})
 		}
 		if udIn.FwupdFirmwareVersionInfo != nil {
-			udOut.FwupdFirmwareVersionInfo = &usb.FwupdFirmwareVersionInfo{
+			udOut.FwupdFirmwareVersionInfo = &usbutil.FwupdFirmwareVersionInfo{
 				Version:       udIn.FwupdFirmwareVersionInfo.Version,
 				VersionFormat: udIn.FwupdFirmwareVersionInfo.VersionFormat,
 			}
 		}
 		got = append(got, udOut)
 	}
-	usb.Sort(got)
-	exp, err := usb.ExpectedDevices(ctx)
+	usbutil.Sort(got)
+	exp, err := usbutil.GetDevices(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to get expected devices")
 	}
