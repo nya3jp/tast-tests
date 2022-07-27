@@ -24,6 +24,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 type basicLayoutSubTests int
@@ -47,6 +48,9 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		// TODO(b/200064362): Remove HardwareDeps when the bug is fixed.
+		// Battery icon will be missing on ARM-based DUTs, hence, we use hwdep to exclude those DUTs for now.
+		HardwareDeps: hwdep.D(hwdep.X86()),
 		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{
 			{
@@ -60,11 +64,12 @@ func init() {
 }
 
 type basicLayoutTestResources struct {
-	cr    *chrome.Chrome
-	tconn *chrome.TestConn
-	ui    *uiauto.Context
-	pc    pointer.Context
-	btn   *nodewith.Finder
+	cr     *chrome.Chrome
+	tconn  *chrome.TestConn
+	ui     *uiauto.Context
+	pc     pointer.Context
+	btn    *nodewith.Finder
+	outDir string
 }
 
 // BasicLayout verifies that the basic components in Quick Settings are existed.
@@ -105,11 +110,12 @@ func BasicLayout(ctx context.Context, s *testing.State) {
 	}()
 
 	resources := &basicLayoutTestResources{
-		cr:    cr,
-		tconn: tconn,
-		ui:    ui,
-		pc:    pc,
-		btn:   nodewith.Role(role.Button),
+		cr:     cr,
+		tconn:  tconn,
+		ui:     ui,
+		pc:     pc,
+		btn:    nodewith.Role(role.Button),
+		outDir: s.OutDir(),
 	}
 
 	s.Log("Enable accessibility and keyboard quick settings")
@@ -283,14 +289,15 @@ func checkSliders(ctx context.Context, res *basicLayoutTestResources) error {
 }
 
 // enableAccessAndKeyboard enables accessibility and keyboard quick settings.
-func enableAccessAndKeyboard(ctx context.Context, res *basicLayoutTestResources) error {
+func enableAccessAndKeyboard(ctx context.Context, res *basicLayoutTestResources) (retErr error) {
 	setting, err := ossettings.LaunchAtPageURL(ctx, res.tconn, res.cr, "osAccessibility", func(context.Context) error { return nil })
 	if err != nil {
 		return errors.Wrap(err, "failed to open setting page")
 	}
 	defer setting.Close(ctx)
+	defer faillog.DumpUITreeOnErrorToFile(ctx, res.outDir, func() bool { return retErr != nil }, res.tconn, "ui_dump_enable_access_and_keyboard")
 
-	optionName := "Always show accessibility options in the system menu"
+	optionName := "Show accessibility options in Quick Settings"
 	if err := uiauto.Combine("add input methods",
 		res.ui.WaitUntilExists(nodewith.Name(optionName).Role(role.ToggleButton)),
 		setting.SetToggleOption(res.cr, optionName, true),
