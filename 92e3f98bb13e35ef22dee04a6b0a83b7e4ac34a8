@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f0cf71c_31a7ed0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-07-27T14:05:23Z",
+      "side": 1,
+      "message": "Kamil: Add Cq-depend to other CLs.",
+      "revId": "92e3f98bb13e35ef22dee04a6b0a83b7e4ac34a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
