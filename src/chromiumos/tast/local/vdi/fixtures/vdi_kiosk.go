@@ -94,6 +94,8 @@ type kioskFixtureState struct {
 	// kiosk is a reference to a kiosk sessions providing a clean way to tear
 	// down the session.
 	kiosk *kioskmode.Kiosk
+	// keyboard is a reference to keyboard to be release in the TearDown.
+	keyboard *input.KeyboardEventWriter
 	// vdiApplicationToStart is the VDI application that is launched.
 	vdiApplicationToStart apps.App
 	// VdiApplication
@@ -162,21 +164,21 @@ func (v *kioskFixtureState) SetUp(ctx context.Context, s *testing.FixtState) int
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	detector := uidetection.New(tconn,
-		s.RequiredVar("uidetection.key_type"),
-		s.RequiredVar("uidetection.key"),
-		s.RequiredVar("uidetection.server"))
-	v.vdiConnector.Init(s, detector)
-
 	kb, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get a keyboard")
 	}
-	defer kb.Close()
+	// Keep it fo closing.
+	v.keyboard = kb
+
+	detector := uidetection.New(tconn,
+		s.RequiredVar("uidetection.key_type"),
+		s.RequiredVar("uidetection.key"),
+		s.RequiredVar("uidetection.server"))
+	v.vdiConnector.Init(s, tconn, detector, kb)
 
 	if err := v.vdiConnector.Login(
 		ctx,
-		kb,
 		&vdiApps.VDILoginConfig{
 			Server:   s.RequiredVar(v.vdiServerKey),
 			Username: s.RequiredVar(v.vdiUsernameKey),
@@ -194,6 +196,7 @@ func (v *kioskFixtureState) SetUp(ctx context.Context, s *testing.FixtState) int
 }
 
 func (v *kioskFixtureState) TearDown(ctx context.Context, s *testing.FixtState) {
+	v.keyboard.Close()
 	chrome.Unlock()
 
 	if v.cr == nil {
