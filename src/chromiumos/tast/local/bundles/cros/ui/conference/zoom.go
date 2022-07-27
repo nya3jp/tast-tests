@@ -66,9 +66,18 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		}
 		defer conn.Close()
 
-		if err := webutil.WaitForQuiescence(ctx, conn, longUITimeout); err != nil {
-			return errors.Wrapf(err, "failed to wait for %q to be loaded and achieve quiescence", room)
+		if err := webutil.WaitForQuiescence(ctx, conn, mediumUITimeout); err != nil {
+			// Occasionally, there is a timeout when loading the Zoom website on Lacros, but the page actually
+			// has display elements. So print the error message instead of return error.
+			testing.ContextLogf(ctx, "Failed to wait for %q to be loaded and achieve quiescence: %q", room, err)
 		}
+
+		zoomMainWebArea := nodewith.NameContaining("Zoom").Role(role.RootWebArea)
+		zoomMainPage := nodewith.NameRegex(regexp.MustCompile("(MY ACCOUNT|SIGN IN)")).Role(role.Link).Ancestor(zoomMainWebArea)
+		if err := ui.WithTimeout(mediumUITimeout).WaitUntilExists(zoomMainPage)(ctx); err != nil {
+			return errors.Wrap(err, "failed to load the zoom website")
+		}
+
 		// Maximize the zoom window to show all the browser UI elements for precise clicking.
 		if !conf.tabletMode {
 			// Find the zoom browser window.
@@ -84,7 +93,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 			}
 		}
 
-		if err := ui.WithTimeout(shortUITimeout).WaitUntilExists(nodewith.Name("MY ACCOUNT").Role(role.Link))(ctx); err != nil {
+		if err := ui.Exists(nodewith.Name("MY ACCOUNT").Role(role.Link))(ctx); err != nil {
 			testing.ContextLog(ctx, "Start to sign in")
 			if err := conn.Navigate(ctx, cuj.ZoomSignInURL); err != nil {
 				return err
