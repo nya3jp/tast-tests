@@ -140,13 +140,13 @@ func waitForHistoryEntry(ctx context.Context, ui *uiauto.Context, br *browser.Br
 	}
 	defer conn.Close()
 	alphabetLink := nodewith.Name(titleOfAlphabetPage).Role(role.Link)
-	if allowReload {
-		err = ui.RetryUntil(br.ReloadActiveTab, ui.Exists(alphabetLink))(ctx)
-	} else {
-		err = ui.WaitUntilExists(alphabetLink)(ctx)
+	err = ui.WaitUntilExists(alphabetLink)(ctx)
+	if err != nil && allowReload {
+		// Reload and try again with a longer timeout.
+		err = uiauto.Combine("find Alphabet history entry", br.ReloadActiveTab, ui.WithTimeout(30*time.Second).WaitUntilExists(alphabetLink))(ctx)
 	}
 	if err != nil {
-		return errors.Wrap(err, "failed to find Alphabet history entry")
+		return err
 	}
 	if err := conn.CloseTarget(ctx); err != nil {
 		return errors.Wrap(err, "failed to close target")
