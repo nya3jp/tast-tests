@@ -7,58 +7,30 @@ package lacrosproc
 
 import (
 	"context"
-	"path/filepath"
 	"strings"
 
 	"github.com/shirou/gopsutil/v3/process"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/internal/chromeproc"
+	"chromiumos/tast/local/chrome/lacros/lacrosinfo"
 	"chromiumos/tast/local/procutil"
 	"chromiumos/tast/testing"
 )
 
-// LacrosLocation specifies how lacros has been deployed,
-// since this effects the location of the binary.
-type LacrosLocation int
-
-const (
-	// Rootfs lacros location.
-	Rootfs LacrosLocation = iota
-	// Stateful lacros location.
-	Stateful
-	// Deployed lacros location (e.g. via deploy_chrome.py).
-	Deployed
-)
-
-const (
-	rootfsLacrosExecPath   = "/run/lacros/chrome"
-	statefulLacrosExecPath = "/run/imageloader/lacros-*/*/chrome"
-	deployedLacrosExecPath = "/usr/local/lacros-chrome"
-)
-
 // Root returns the Process instance of the root lacros-chrome process.
-// For LacrosLocation Stateful, an error will be returned if multiple
-// executables have been found.
-func Root(t LacrosLocation) (*process.Process, error) {
-	switch t {
-	case Rootfs:
-		return chromeproc.Root(rootfsLacrosExecPath)
-	case Stateful:
-		matches, err := filepath.Glob(statefulLacrosExecPath)
-		if err != nil {
-			return nil, err
-		}
-
-		if len(matches) != 1 {
-			return nil, errors.Errorf("found %d lacros executables, expected 1. Pattern: %s", len(matches), statefulLacrosExecPath)
-		}
-
-		return chromeproc.Root(matches[0])
-	case Deployed:
-		return chromeproc.Root(deployedLacrosExecPath)
+// tconn is a connection to ash-chrome. If no process can be found, an error is
+// returned.
+func Root(ctx context.Context, tconn *chrome.TestConn) (*process.Process, error) {
+	info, err := lacrosinfo.Snapshot(ctx, tconn)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to retrieve lacrosinfo")
 	}
-	return nil, errors.Errorf("unknown lacros type %d", t)
+	if len(info.LacrosPath) == 0 {
+		return nil, errors.Wrap(err, "lacros is not running (received empty LacrosPath)")
+	}
+	return chromeproc.Root(info.LacrosPath + "/chrome")
 }
 
 // ProcsFromPath returns the pids of all processes with a given path in their

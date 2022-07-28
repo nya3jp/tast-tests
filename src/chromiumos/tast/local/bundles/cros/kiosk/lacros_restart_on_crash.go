@@ -70,9 +70,14 @@ func LacrosRestartOnCrash(ctx context.Context, s *testing.State) {
 	}
 	defer chromeReader.Close()
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to create Test API connection: ", err)
+	}
+
 	// Kill lacros using SIGSEGV signal to simulate a browser crash.
 	s.Log("Killing lacros")
-	proc, err := lacrosproc.Root(lacrosproc.Rootfs)
+	proc, err := lacrosproc.Root(ctx, tconn)
 	if err != nil {
 		s.Fatal("Failed to get lacros proc: ", err)
 	}
