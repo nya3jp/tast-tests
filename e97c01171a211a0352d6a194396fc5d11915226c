@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6c0da41_20738c66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/youtube_kids.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-07-28T00:16:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b7f717ca_76ac1cdd",
+      "revId": "e97c01171a211a0352d6a194396fc5d11915226c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3adc9da2_0281d36c",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b438b0_8ea86682",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/youtube_kids.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-07-28T00:16:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3adc9da2_0281d36c",
+      "revId": "e97c01171a211a0352d6a194396fc5d11915226c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1f34a2b_54e34d57",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-07-22T19:54:52Z",
       "side": 1,
       "message": "The selector was already defined above so you can call `.Click` again without redefining the selector here.",
+      "revId": "e97c01171a211a0352d6a194396fc5d11915226c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a324bd8b_b2246381",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/youtube_kids.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-07-28T00:16:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a1f34a2b_54e34d57",
       "revId": "e97c01171a211a0352d6a194396fc5d11915226c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
