@@ -80,6 +80,13 @@ func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
 		testing.ContextLog(ctx, "ADB root access not available; operations requiring root access will be skipped")
 		rooted = false
 	}
+
+	// Wait for the device one more time in case it takes a while
+	// to become available again after restarting ADB with root access.
+	if err := adbDevice.WaitForState(ctx, adb.StateDevice, 30*time.Second); err != nil {
+		return nil, false, errors.Wrap(err, "wait for state failed")
+	}
+
 	return adbDevice, rooted, nil
 
 }
