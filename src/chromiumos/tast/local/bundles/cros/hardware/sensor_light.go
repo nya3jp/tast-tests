@@ -16,8 +16,7 @@ func init() {
 		Func: SensorLight,
 		Desc: "Tests that ambient light sensor can be read and give valid data",
 		Contacts: []string{
-			"henryhsu@chromium.com", // ChromeOS sensors point of contact
-			"gwendal@chromium.com",
+			"gwendal@chromium.com", // ChromeOS sensors point of contact
 			"chromeos-sensors-eng@google.com",
 		},
 		Attr: []string{"group:mainline", "informational"},
