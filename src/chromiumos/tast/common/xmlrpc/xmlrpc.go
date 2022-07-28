@@ -516,3 +516,8 @@ func (r *XMLRpc) Run(ctx context.Context, cl Call, out ...interface{}) error {
 	}
 	return nil
 }
+
+// CallBuilder creates a new CallBuilder instance that uses this XMLRpc client.
+func (r *XMLRpc) CallBuilder() *CallBuilder {
+	return NewCallBuilder(r)
+}

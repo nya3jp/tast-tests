@@ -467,7 +467,7 @@ type audioBoxFixture struct {
 // AudioBoxFixtData is fixture data of assistant fixture with chameleon support.
 type AudioBoxFixtData struct {
 	FixtData
-	Chameleon         *chameleon.Chameleon
+	Chameleon         chameleon.Chameleond
 	ChameleonHostname string
 	ChameleonPort     int
 	ChameleonSSHPort  int
@@ -507,7 +507,7 @@ func (f *audioBoxFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 	// Connect to chameleon with retries.
 	err = action.Retry(5, func(ctx context.Context) error {
 		s.Logf("Connect to Chameleon:%s", chameleonAddr)
-		audioBoxFixtData.Chameleon, err = chameleon.New(ctx, chameleonAddr)
+		audioBoxFixtData.Chameleon, err = chameleon.NewChameleond(ctx, chameleonAddr)
 		return err
 	}, time.Second)(ctx)
 
@@ -515,8 +515,8 @@ func (f *audioBoxFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Failed to connect to chameleon board: ", err)
 	}
 
-	if hasAudioSupport, err := audioBoxFixtData.Chameleon.HasAudioSupport(ctx, chameleon.LineOut); !hasAudioSupport || err != nil {
-		s.Fatalf("Chameleon has no audio support for %v: %v", chameleon.LineOut, err)
+	if hasAudioSupport, err := audioBoxFixtData.Chameleon.HasAudioSupport(ctx, chameleon.PortAnalogAudioLineOut); !hasAudioSupport || err != nil {
+		s.Fatalf("Chameleon has no audio support for %v: %v", chameleon.PortAnalogAudioLineOut, err)
 	}
 	f.audioBoxFixtData = &audioBoxFixtData
 
@@ -524,11 +524,9 @@ func (f *audioBoxFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 }
 
 func (f *audioBoxFixture) TearDown(ctx context.Context, s *testing.FixtState) {
-	if f.audioBoxFixtData.Chameleon != nil {
-		f.audioBoxFixtData.Chameleon.Close(ctx)
-	}
 
 }
+
 func (f *audioBoxFixture) Reset(ctx context.Context) error {
 	return nil
 }
@@ -536,7 +534,9 @@ func (f *audioBoxFixture) Reset(ctx context.Context) error {
 func (f *audioBoxFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
 	// Reset Chameleon to ensure a consistent state for testing.
 	if f.audioBoxFixtData.Chameleon != nil {
-		f.audioBoxFixtData.Chameleon.Reset(ctx)
+		if err := f.audioBoxFixtData.Chameleon.Reset(ctx); err != nil {
+			s.Fatal("Failed to reset Chameleon: ", err)
+		}
 	}
 }
 
