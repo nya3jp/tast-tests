@@ -19,7 +19,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks HW decoding is used for MJPEG in GetUserMedia()",
 		Contacts: []string{
-			"mojahsu@chromium.org",
+			"kamesan@chromium.org",
 			"mcasas@chromium.org", // Test author.
 			"chromeos-camera-eng@google.com",
 		},

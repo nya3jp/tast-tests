@@ -27,7 +27,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures the battery drain during camera recording at 30 FPS",
 		Contacts: []string{
-			"mojahsu@chromium.org",
+			"wtlee@chromium.org",
 			"chromeos-camera-eng@google.com",
 			"arcvm-eng@google.com",
 		},

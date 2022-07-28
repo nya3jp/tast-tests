@@ -20,7 +20,7 @@ func init() {
 		Func:         GCAStillCapture,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests still capture with GoogleCameraArc (GCA)",
-		Contacts:     []string{"mojahsu@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{gca.Apk},
