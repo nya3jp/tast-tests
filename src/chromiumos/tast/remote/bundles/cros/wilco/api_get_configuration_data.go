@@ -33,8 +33,12 @@ func init() {
 		},
 		Attr:         []string{"group:enrollment"},
 		SoftwareDeps: []string{"reboot", "vm_host", "wilco", "chrome"},
-		ServiceDeps:  []string{"tast.cros.wilco.WilcoService", "tast.cros.policy.PolicyService"},
-		Timeout:      7 * time.Minute,
+		ServiceDeps: []string{
+			"tast.cros.hwsec.OwnershipService",
+			"tast.cros.policy.PolicyService",
+			"tast.cros.wilco.WilcoService",
+		},
+		Timeout: 7 * time.Minute,
 	})
 }
 
@@ -42,12 +46,12 @@ func APIGetConfigurationData(ctx context.Context, s *testing.State) {
 	const configData = `{"test": 1}`
 	const newConfigData = `{"test": 2}`
 
-	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
 	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 			s.Error("Failed to reset TPM: ", err)
 		}
 	}(ctx)
