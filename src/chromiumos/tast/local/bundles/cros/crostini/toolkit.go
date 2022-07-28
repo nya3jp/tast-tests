@@ -200,7 +200,6 @@ func init() {
 				},
 			}, {
 				Name:              "tkinter_buster_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{"toolkit_tkinter_demo.py"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
@@ -228,7 +227,6 @@ func init() {
 				},
 			}, {
 				Name:              "tkinter_bullseye_stable",
-				ExtraAttr:         []string{"informational"},
 				ExtraData:         []string{"toolkit_tkinter_demo.py"},
 				ExtraSoftwareDeps: []string{"dlc"},
 				ExtraHardwareDeps: crostini.CrostiniStable,
