@@ -8,7 +8,9 @@ package browserfixt
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
@@ -43,10 +45,17 @@ func SetUp(ctx context.Context, cr *chrome.Chrome, bt browser.Type) (*browser.Br
 	}
 }
 
-// SetUpWithURL is a combination of SetUp and NewConn that avoids an extra
-// blank tab in the case of Lacros. The caller is responsible for closing the
-// returned connection via its Close() method prior to calling the returned
-// closure.
+// SetUpWithURL can be thought of as a combination of SetUp and NewConn that
+// avoids the extra blank tab in the case of Lacros. The caller is responsible
+// for closing the returned connection via its Close() method prior to calling
+// the returned closure.
+// NOTE: Since SetUpWithURL is implemented with the help of NewConnForTarget,
+// the given url must match exactly the URL that Chrome ends up associating
+// with the tab. For example, you must use "chrome://version/" instead of
+// "chrome://version" and "https://www.google.com" instead of
+// "http://google.com". Since it's not always clear what the exact required URL
+// is, SetUpWithURL prints the URLs of the current tabs if it can't find the
+// requested one.
 func SetUpWithURL(ctx context.Context, cr *chrome.Chrome, bt browser.Type, url string) (*chrome.Conn, *browser.Browser, func(ctx context.Context), error) {
 	switch bt {
 	case browser.TypeAsh:
@@ -66,13 +75,23 @@ func SetUpWithURL(ctx context.Context, cr *chrome.Chrome, bt browser.Type, url s
 		if err != nil {
 			return nil, nil, nil, errors.Wrap(err, "failed to launch lacros-chrome")
 		}
+
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+		defer cancel()
+
 		conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetURL(url))
 		if err != nil {
-			if err := l.Close(ctx); err != nil {
-				testing.ContextLog(ctx, "Failed to close lacros-chrome: ", err)
+			tabs, anotherErr := l.Browser().CurrentTabs(cleanupCtx)
+			if anotherErr != nil {
+				testing.ContextLog(cleanupCtx, "Failed to retrieve tabs: ", anotherErr)
 			}
-			return nil, nil, nil, errors.Wrap(err, "failed to connect to lacros-chrome")
+			if err := l.Close(cleanupCtx); err != nil {
+				testing.ContextLog(cleanupCtx, "Failed to close lacros-chrome: ", err)
+			}
+			return nil, nil, nil, errors.Wrapf(err, "failed to connect to lacros-chrome tab with URL %s (found tabs: %v)", url, tabs)
 		}
+
 		closeLacros := func(ctx context.Context) {
 			if err := l.Close(ctx); err != nil {
 				testing.ContextLog(ctx, "Failed to close lacros-chrome: ", err)
