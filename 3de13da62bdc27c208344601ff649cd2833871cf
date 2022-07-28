@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f287e91d_3d2ac0ec",
+        "filename": "src/chromiumos/tast/local/bluetooth/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:50:11Z",
+      "side": 1,
+      "message": "Done, I just missed those. I also renamed `TastVars` to `BTPeerTastVars` to localize it.",
+      "parentUuid": "abcabe09_ad16820d",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "3de13da62bdc27c208344601ff649cd2833871cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "501a7373_a2197fb7",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-07-28T02:17:31Z",
       "side": 1,
       "message": "Please add an explicit test timeout",
+      "revId": "3de13da62bdc27c208344601ff649cd2833871cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b99c6155_5078e78b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/test_connect_to_btpeers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:50:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "501a7373_a2197fb7",
       "revId": "3de13da62bdc27c208344601ff649cd2833871cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
