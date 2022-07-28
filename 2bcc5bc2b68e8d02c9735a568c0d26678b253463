@@ -87,6 +87,24 @@
       "message": "ping lamzin@ for owners review",
       "revId": "2bcc5bc2b68e8d02c9735a568c0d26678b253463",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e693a8_76ce0315",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-07-28T16:52:14Z",
+      "side": 1,
+      "message": "ping",
+      "parentUuid": "27fee91d_b511fece",
+      "revId": "2bcc5bc2b68e8d02c9735a568c0d26678b253463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
