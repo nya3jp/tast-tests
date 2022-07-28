@@ -16,6 +16,46 @@
       "message": "Hi Eliot,\n\nThis is how far I went. But I still couldn\u0027t figure how to hide `testing.State` on these following places:\n\n        src/chromiumos/tast/local/perfutil/run.go:143:74: \u0027testing.State\u0027 should not be used in support packages, except for precondition implementation\n        src/chromiumos/tast/local/perfutil/run.go:166:78: \u0027testing.State\u0027 should not be used in support packages, except for precondition implementation\n\nWDYT? Thank you very much.",
       "revId": "837dea5737ee8ad461b26adaa4fefd10b39057c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "812a9379_5590f6e0",
+        "filename": "src/chromiumos/tast/local/perfutil/run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-07-28T01:21:19Z",
+      "side": 1,
+      "message": "remove this",
+      "range": {
+        "startLine": 143,
+        "startChar": 73,
+        "endLine": 143,
+        "endChar": 87
+      },
+      "revId": "837dea5737ee8ad461b26adaa4fefd10b39057c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c1f9d8_3081a367",
+        "filename": "src/chromiumos/tast/local/perfutil/run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-07-28T01:21:19Z",
+      "side": 1,
+      "message": "Would need to return this (this just creates an error object) and make the function return bool, error",
+      "revId": "837dea5737ee8ad461b26adaa4fefd10b39057c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
