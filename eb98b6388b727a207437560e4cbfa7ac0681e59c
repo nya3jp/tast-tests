@@ -33,6 +33,24 @@
       "message": "nit: also link the bug here",
       "revId": "eb98b6388b727a207437560e4cbfa7ac0681e59c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e5b7c80_21534519",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-07-28T10:45:25Z",
+      "side": 1,
+      "message": "The bug for this change?",
+      "parentUuid": "6c5b3b28_d8ddf156",
+      "revId": "eb98b6388b727a207437560e4cbfa7ac0681e59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
