@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cd6dcbd_83ba503e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-28T23:37:08Z",
+      "side": 1,
+      "message": "Here is an idea: write the test variants each on a single line, like this:\n\t\tParams: []testing.Param{\n\t\t\t{Name: \"rounded_display_on\", Val: true},\n\t\t\t{Name: \"rounded_display_off\", Val: false},\n\t\t},",
+      "parentUuid": "287f7ac7_a19d78ff",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 1
+      },
+      "revId": "a1c0b5551b7bedeab1fcfebaacb064099751f7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b33c25ce_12512839",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
         "patchSetId": 2
