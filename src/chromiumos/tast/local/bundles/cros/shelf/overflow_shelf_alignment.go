@@ -13,7 +13,10 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/testing"
@@ -22,12 +25,13 @@ import (
 type overflowShelfSmokeTestType struct {
 	isRTL      bool // If true, the system UI is adapted to right-to-left languages.
 	tabletMode bool
+	bt         browser.Type
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OverflowShelfAlignment,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Verifies the overflow shelf by changing the shelf alignment",
 		Contacts: []string{
 			"andrewxu@chromium.org",
@@ -42,34 +46,70 @@ func init() {
 			Val: overflowShelfSmokeTestType{
 				isRTL:      false,
 				tabletMode: false,
+				bt:         browser.TypeAsh,
 			},
-			Fixture: "chromeLoggedInWith100FakeApps",
-		},
-			{
-				Name: "clamshell_mode_rtl",
-				Val: overflowShelfSmokeTestType{
-					isRTL:      true,
-					tabletMode: false,
-				},
-				Fixture: "install100Apps",
+			Fixture: "install100Apps",
+		}, {
+			Name: "clamshell_mode_rtl",
+			Val: overflowShelfSmokeTestType{
+				isRTL:      true,
+				tabletMode: false,
+				bt:         browser.TypeAsh,
 			},
-			{
-				Name: "tablet_mode_ltr",
-				Val: overflowShelfSmokeTestType{
-					isRTL:      false,
-					tabletMode: true,
-				},
-				Fixture: "chromeLoggedInWith100FakeApps",
+			Fixture: "install100Apps",
+		}, {
+			Name: "tablet_mode_ltr",
+			Val: overflowShelfSmokeTestType{
+				isRTL:      false,
+				tabletMode: true,
+				bt:         browser.TypeAsh,
 			},
-			{
-				Name: "tablet_mode_rtl",
-				Val: overflowShelfSmokeTestType{
-					isRTL:      true,
-					tabletMode: true,
-				},
-				Fixture: "install100Apps",
+			Fixture: "install100Apps",
+		}, {
+			Name: "tablet_mode_rtl",
+			Val: overflowShelfSmokeTestType{
+				isRTL:      true,
+				tabletMode: true,
+				bt:         browser.TypeAsh,
 			},
-		},
+			Fixture: "install100Apps",
+		}, {
+			Name: "clamshell_mode_ltr_lacros",
+			Val: overflowShelfSmokeTestType{
+				isRTL:      false,
+				tabletMode: false,
+				bt:         browser.TypeLacros,
+			},
+			Fixture:           "install100LacrosApps",
+			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			Name: "clamshell_mode_rtl_lacros",
+			Val: overflowShelfSmokeTestType{
+				isRTL:      true,
+				tabletMode: false,
+				bt:         browser.TypeLacros,
+			},
+			Fixture:           "install100LacrosApps",
+			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			Name: "tablet_mode_ltr_lacros",
+			Val: overflowShelfSmokeTestType{
+				isRTL:      false,
+				tabletMode: true,
+				bt:         browser.TypeLacros,
+			},
+			Fixture:           "install100LacrosApps",
+			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			Name: "tablet_mode_rtl_lacros",
+			Val: overflowShelfSmokeTestType{
+				isRTL:      true,
+				tabletMode: true,
+				bt:         browser.TypeLacros,
+			},
+			Fixture:           "install100LacrosApps",
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 	})
 }
 
@@ -77,30 +117,31 @@ func init() {
 // shelf that hides excess icons and scroll buttons show to make them accessible,
 // under different shelf alignments.
 func OverflowShelfAlignment(ctx context.Context, s *testing.State) {
+	// Reserve a few seconds for various cleanup.
+	cleanUpCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	testType := s.Param().(overflowShelfSmokeTestType)
 	isRTL := testType.isRTL
+	bt := testType.bt
 
-	var cr *chrome.Chrome
+	// Set up browser.
+	opts := s.FixtValue().([]chrome.Option)
 	if isRTL {
-		var err error
-		opts := s.FixtValue().([]chrome.Option)
 		opts = append(opts, chrome.ExtraArgs("--force-ui-direction=rtl"))
-		cr, err = chrome.New(ctx, opts...)
-		if err != nil {
-			s.Fatal("Failed to start chrome with rtl: ", err)
-		}
-	} else {
-		cr = s.FixtValue().(*chrome.Chrome)
 	}
+	cr, _, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), opts...)
+	if err != nil {
+		s.Fatalf("Failed to start chrome (rtl? %v): %v", isRTL, err)
+	}
+	defer cr.Close(cleanUpCtx)
+	defer closeBrowser(cleanUpCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
-
-	cleanUpCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
 
 	isInTablet := testType.tabletMode
 	originallyEnabled, err := ash.TabletModeEnabled(ctx, tconn)
@@ -150,7 +191,7 @@ func OverflowShelfAlignment(ctx context.Context, s *testing.State) {
 	}
 
 	// Get the expected browser.
-	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
 	if err != nil {
 		s.Fatal("Could not find the Chrome app: ", err)
 	}
@@ -159,7 +200,7 @@ func OverflowShelfAlignment(ctx context.Context, s *testing.State) {
 
 	// Unpin all apps except the browser.
 	for _, item := range items {
-		if item.AppID != chromeApp.ID {
+		if item.AppID != browserApp.ID {
 			itemsToUnpin = append(itemsToUnpin, item.AppID)
 		}
 	}
