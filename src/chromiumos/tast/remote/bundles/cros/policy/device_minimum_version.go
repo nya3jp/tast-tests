@@ -30,14 +30,18 @@ func init() {
 		},
 		Attr:         []string{"group:enrollment"},
 		SoftwareDeps: []string{"chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.policy.DeviceMinimumVersionService"},
-		Timeout:      7 * time.Minute,
+		ServiceDeps: []string{
+			"tast.cros.hwsec.OwnershipService",
+			"tast.cros.policy.DeviceMinimumVersionService",
+			"tast.cros.policy.PolicyService",
+		},
+		Timeout: 7 * time.Minute,
 	})
 }
 
 func DeviceMinimumVersion(ctx context.Context, s *testing.State) {
 	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 			s.Error("Failed to reset TPM: ", err)
 		}
 	}(ctx)
@@ -45,7 +49,7 @@ func DeviceMinimumVersion(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
 	defer cancel()
 
-	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
