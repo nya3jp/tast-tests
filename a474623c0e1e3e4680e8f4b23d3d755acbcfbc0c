@@ -16,6 +16,24 @@
       "message": "https://ci.chromium.org/p/chromeos/builders/vmtest/amd64-generic-direct-tast-vm shows SUCCESS in the most recent few builds. Do we still need to revert it?",
       "revId": "a474623c0e1e3e4680e8f4b23d3d755acbcfbc0c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b77e0ef5_72ea49b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2022-07-28T22:49:32Z",
+      "side": 1,
+      "message": "Yes it reproduced in at least one of the most recent M104 release builds:\nhttps://ci.chromium.org/ui/p/chromeos/builders/general/LegacyRelease/b8807438896088150017/overview",
+      "parentUuid": "46495604_4f204d09",
+      "revId": "a474623c0e1e3e4680e8f4b23d3d755acbcfbc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
