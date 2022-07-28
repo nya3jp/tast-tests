@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c052c6c_5bef2212",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1433868
+      },
+      "writtenOn": "2022-07-28T16:29:54Z",
+      "side": 1,
+      "message": "Thanks for adding in more API support and testing it thoroughly!",
+      "revId": "3de13da62bdc27c208344601ff649cd2833871cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "501a7373_a2197fb7",
