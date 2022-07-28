@@ -50,7 +50,6 @@ func TestToolkitParams(t *testing.T) {
 			UseFixture: true,
 		}, {
 			Name:      "tkinter",
-			ExtraAttr: []string{"informational"}, /* b/200056776 */
 			ExtraData: []string{"toolkit_tkinter_demo.py"},
 			Val: `toolkitConfig{
 				data:    "toolkit_tkinter_demo.py",

@@ -22,8 +22,8 @@ func init() {
 		Func:         Restart,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests that we can shut down and restart crostini (where the VM image is a build artifact)",
-		Contacts:     []string{"hollingum@chromium.org", "clumptini@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Contacts:     []string{"clumptini+oncall@google.com"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Vars:         []string{"crostini.Restart.numRestarts"},
 		Params: []testing.Param{
