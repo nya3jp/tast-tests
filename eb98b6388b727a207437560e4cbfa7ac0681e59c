@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99671730_3f914741",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-07-28T12:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04d0d274_2f473908",
+      "revId": "eb98b6388b727a207437560e4cbfa7ac0681e59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c5b3b28_d8ddf156",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "The bug for adding reboot logic to the helper itself.",
       "parentUuid": "6e5b7c80_21534519",
+      "revId": "eb98b6388b727a207437560e4cbfa7ac0681e59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeacb4c5_be4eb553",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-07-28T12:09:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b8ca4f8_50378a7d",
       "revId": "eb98b6388b727a207437560e4cbfa7ac0681e59c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
