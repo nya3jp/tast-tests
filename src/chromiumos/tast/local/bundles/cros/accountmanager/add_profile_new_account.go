@@ -85,9 +85,9 @@ func AddProfileNewAccount(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine("click a button to add a profile",
 		ui.WaitUntilExists(profileToolbarButton),
-		ui.LeftClick(profileToolbarButton),
+		ui.DoDefault(profileToolbarButton),
 		ui.WaitUntilExists(addProfileButton),
-		ui.LeftClick(addProfileButton),
+		ui.DoDefault(addProfileButton),
 	)(ctx); err != nil {
 		s.Fatal("Failed to click a button to add a profile: ", err)
 	}
@@ -97,7 +97,7 @@ func AddProfileNewAccount(ctx context.Context, s *testing.State) {
 	addButton := nodewith.Name("Add").Role(role.Button).Focusable().Ancestor(chooseProfileRoot)
 	if err := ui.Exists(addButton)(ctx); err == nil {
 		// If we get profile chooser screen - click "Add".
-		if err1 := ui.LeftClick(addButton)(ctx); err1 != nil {
+		if err1 := ui.DoDefault(addButton)(ctx); err1 != nil {
 			s.Fatal("Failed to click a button to add a profile: ", err1)
 		}
 	}
@@ -110,8 +110,8 @@ func AddProfileNewAccount(ctx context.Context, s *testing.State) {
 	addAccountButton := nodewith.Name("Use another account").Role(role.Button).Focusable().Ancestor(chooseAccountRoot)
 	if err := uiauto.Combine("click on nextButton",
 		ui.WaitUntilExists(nextButton),
-		ui.WithInterval(time.Second).LeftClickUntil(nextButton, ui.Exists(addAccountButton)),
-		ui.WithInterval(time.Second).LeftClickUntil(addAccountButton, ui.Exists(addAccountDialog)),
+		ui.WithInterval(time.Second).DoDefaultUntil(nextButton, ui.Exists(addAccountButton)),
+		ui.WithInterval(time.Second).DoDefaultUntil(addAccountButton, ui.Exists(addAccountDialog)),
 	)(ctx); err != nil {
 		s.Fatal("Failed to click on nextButton: ", err)
 	}
@@ -126,7 +126,7 @@ func AddProfileNewAccount(ctx context.Context, s *testing.State) {
 	yesButton := nodewith.Name("Yes, I'm in").Role(role.Button).Focusable().Ancestor(syncProfileRoot)
 	if err := uiauto.Combine("click on yesButton",
 		ui.WaitUntilExists(yesButton),
-		ui.LeftClick(yesButton),
+		ui.DoDefault(yesButton),
 	)(ctx); err != nil {
 		s.Fatal("Failed to click on yesButton: ", err)
 	}
@@ -144,7 +144,7 @@ func AddProfileNewAccount(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("check that the new profile belongs to the correct account",
 		ui.WaitUntilExists(newProfileWindow),
 		ui.WaitUntilExists(profileToolbarButton.Ancestor(newProfileWindow)),
-		ui.LeftClick(profileToolbarButton.Ancestor(newProfileWindow)),
+		ui.DoDefault(profileToolbarButton.Ancestor(newProfileWindow)),
 		// The menu should contain the username of the secondary account.
 		ui.WaitUntilExists(nodewith.NameStartingWith("Accounts and sync").NameContaining(username).Role(role.Menu)),
 	)(ctx); err != nil {
