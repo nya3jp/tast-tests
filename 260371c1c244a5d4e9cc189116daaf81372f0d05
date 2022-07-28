@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b4d385_e355b849",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108324
+      },
+      "writtenOn": "2022-07-28T23:21:23Z",
+      "side": 1,
+      "message": "Adding a few folks from cros-connectivity team to help with CL review.",
+      "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
