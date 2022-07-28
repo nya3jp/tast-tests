@@ -271,7 +271,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 				faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return retErr != nil }, cr, "ui_dump")
 				if appName == YoutubeWeb && bt == browser.TypeLacros {
 					// For lacros, leave a new tab to keep the browser alive for further testing.
-					if err := cuj.KeepNewTab(ctx, bTconn); err != nil {
+					if err := browser.CloseTabsKeepNewTab(ctx, bTconn); err != nil {
 						testing.ContextLog(ctx, "Failed to keep new tab: ", err)
 					}
 				} else {
@@ -304,7 +304,7 @@ func Run(ctx context.Context, resources TestResources, param TestParams) error {
 				// Leave a new tab to keep the browser alive for further testing.
 				defer func() {
 					gConn.Close()
-					if err := cuj.KeepNewTab(ctx, bTconn); err != nil {
+					if err := browser.CloseTabsKeepNewTab(ctx, bTconn); err != nil {
 						testing.ContextLog(ctx, "Failed to keep new tab: ", err)
 					}
 				}()
