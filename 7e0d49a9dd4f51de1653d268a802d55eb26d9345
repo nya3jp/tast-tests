@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "525ccb87_900deb33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-28T20:11:04Z",
+      "side": 1,
+      "message": "Hugo and Jeremy,\nI accidentally overwrote this commit with a commit later in my chain. I have since fixed the issue, but unfortunately will need another CR+2. If you look between patchset 11 and 15, you will see that I updated the |redirecturl| to be what Jeremy suggested, along with removing an unused field. Sorry for the inconvenience!",
+      "revId": "7e0d49a9dd4f51de1653d268a802d55eb26d9345",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
