@@ -79,6 +79,9 @@ const (
 	// NewTabURL is the URL corresponding to the chrome://newtab/ page.
 	NewTabURL = "chrome://newtab/"
 
+	// VersionURL is the URL corresponding to the chrome://version/ page.
+	VersionURL = "chrome://version/"
+
 	// persistentDir is a directory to save files that should persist even
 	// after Tast finishes. For instance, we save test extensions here so
 	// that Chrome does not malfunction on post-test manual inspection.
