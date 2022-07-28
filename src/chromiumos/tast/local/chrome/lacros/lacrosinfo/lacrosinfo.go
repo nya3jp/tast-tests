@@ -11,13 +11,20 @@ import (
 	"chromiumos/tast/local/chrome"
 )
 
+// LacrosState represents the state of Lacros. See BrowserManager::State in Chromium's browser_manager.h.
+type LacrosState string
+
+// LacrosState values. To be extended on demand.
+const (
+	LacrosStateStopped LacrosState = "Stopped"
+)
+
 // Info represents the format returned from autotestPrivate.getLacrosInfo.
 type Info struct {
-	// True iff lacros is running.  Note that this information is a snapshot at a
-	// particular time. That is, even if the info says lacros is running, it
-	// doesn't necessarily mean lacros is still running at any particular time.
-	Running bool `json:"isRunning"`
-	// True iff lacros has keep-alive enabled..  Note that this information is a
+	// The state Lacros is in.  Note that this information is a snapshot at a
+	// particular time and may thus be outdated already.
+	State LacrosState `json:"state"`
+	// True iff lacros has keep-alive enabled.  Note that this information is a
 	// snapshot at a particular time.
 	KeepAlive bool `json:"isKeepAlive"`
 	// Contains the path to the lacros directory - this is where lacros will be
