@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ac3b280_fceaf1fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-28T23:29:04Z",
+      "side": 1,
+      "message": "`\u003cDUT\u003e`",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "02cdcf80030fcbeca99bf72f46d1303a34d0add9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "697196cb_89f1362f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-28T23:29:04Z",
+      "side": 1,
+      "message": "Remove this `.` so that `ui.IdlePerf` (the variant with empty `Name`) is included.",
+      "range": {
+        "startLine": 10,
+        "startChar": 25,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "02cdcf80030fcbeca99bf72f46d1303a34d0add9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "559e97e6_9f328f74",
