@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b31996c8_93e6dd45",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-07-28T02:50:16Z",
+      "side": 1,
+      "message": "Should it be false? as pin_weaver_with_auth_session\u0027s useLegacyAddAPIForPin is false.",
+      "revId": "be72f37f45608db2e96dbb0c032def8fdabef889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
