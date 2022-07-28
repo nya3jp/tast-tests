@@ -178,3 +178,26 @@ func (b *Browser) CloseWithURL(ctx context.Context, url string) error {
 	return nil
 
 }
+
+// Tab represents a browser tab as obtained from the chrome.tabs API.
+// See https://developer.chrome.com/docs/extensions/reference/tabs/#type-Tab
+type Tab struct {
+	ID     int    `json:"ID"`
+	Index  int    `json:"index"`
+	Title  string `json:"title"`
+	URL    string `json:"url"`
+	Active bool   `json:"active"`
+}
+
+// Tabs returns all browser tabs.
+func (b *Browser) Tabs(ctx context.Context) ([]Tab, error) {
+	tconn, err := b.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Test API connection")
+	}
+	var tabs []Tab
+	if err := tconn.Eval(ctx, "tast.promisify(chrome.tabs.query)({currentWindow: true})", &tabs); err != nil {
+		return nil, err
+	}
+	return tabs, nil
+}
