@@ -51,6 +51,24 @@
       "parentUuid": "6c5b3b28_d8ddf156",
       "revId": "eb98b6388b727a207437560e4cbfa7ac0681e59c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b8ca4f8_50378a7d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/enterprise_rollback_in_place.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-28T10:58:34Z",
+      "side": 1,
+      "message": "The bug for adding reboot logic to the helper itself.",
+      "parentUuid": "6e5b7c80_21534519",
+      "revId": "eb98b6388b727a207437560e4cbfa7ac0681e59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
