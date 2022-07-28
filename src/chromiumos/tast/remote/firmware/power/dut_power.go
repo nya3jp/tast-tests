@@ -20,11 +20,12 @@ import (
 )
 
 const (
-	dutPowerCmd       = "dut-power"
-	dutPowerOutputDir = "/tmp/dut-power-output"
-	dutPowerTmpPrefix = "dut-power-results"
-	ecSummary         = "ec_summary.json"
-	onboardSummary    = "onboard.accum_summary.json"
+	dutPowerCmd         = "dut-power"
+	dutPowerOutputDir   = "/tmp/dut-power-output"
+	dutPowerTmpPrefix   = "dut-power-results"
+	ecSummary           = "ec_summary.json"
+	onboardAccumSummary = "onboard.accum_summary.json"
+	onboardSummary      = "onboard_summary.json"
 )
 
 // DutPowerContext manages power measurements taken through dut-power
@@ -67,20 +68,28 @@ func (p *DutPowerContext) Measure(duration time.Duration) (Results, error) {
 		return nil, errors.New(e)
 	}
 
-	// Try to use measurements from on-board sensors first
-	onboardRemotePath := path.Join(dutPowerOutputDir, onboardSummary)
-	onboardLocalPath := path.Join(dutPowerLocalDir, onboardSummary)
-	contents, err := p.readRemoteFile(onboardRemotePath, onboardLocalPath)
-	if err != nil {
-		// See if we can fall back to any EC measurements
-		oldErr := err
-		ecRemotePath := path.Join(dutPowerOutputDir, ecSummary)
-		ecLocalPath := path.Join(dutPowerLocalDir, ecSummary)
-		contents, err = p.readRemoteFile(ecRemotePath, ecLocalPath)
-		if err != nil {
-			e := fmt.Sprintf("failed to read onboard and ec measurements: %s, %s", oldErr, err)
-			return nil, errors.New(e)
+	// Prioritize attempt to use the onboard summaries first then fall back to the EC
+	// The accumulator summary may not be present in certain cases, e.g.
+	// short measurement times
+	logPaths := []string{
+		onboardAccumSummary,
+		onboardSummary,
+		ecSummary,
+	}
+
+	var contents = []byte{}
+	for i := 0; i < len(logPaths); i++ {
+		remotePath := path.Join(dutPowerOutputDir, logPaths[i])
+		localPath := path.Join(dutPowerLocalDir, logPaths[i])
+		contents, err = p.readRemoteFile(remotePath, localPath)
+
+		if err == nil {
+			break
 		}
+	}
+
+	if err != nil {
+		return nil, errors.New("failed to read measurement logs")
 	}
 
 	measurements := make(map[string]measurement)
