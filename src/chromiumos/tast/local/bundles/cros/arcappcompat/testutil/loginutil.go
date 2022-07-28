@@ -210,3 +210,18 @@ func enterPassword(ctx context.Context, s *testing.State, tconn *chrome.TestConn
 	}
 	s.Log("Entered password")
 }
+
+// ClickUntilFocused func click on specified element until it is focused.
+func ClickUntilFocused(ctx context.Context, s *testing.State, tconn *chrome.TestConn, a *arc.ARC, d *ui.Device, checkElement *ui.Object) {
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if uiElementIsFocused, err := checkElement.IsFocused(ctx); err != nil {
+			return errors.New("Ui element field not focused yet")
+		} else if !uiElementIsFocused {
+			checkElement.Click(ctx)
+			return errors.New("Ui element field not focused yet")
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: ShortUITimeout}); err != nil {
+		s.Fatal("Failed to focus Ui element: ", err)
+	}
+}
