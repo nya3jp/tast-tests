@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35084ae9_f202b834",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-07-28T10:11:25Z",
+      "side": 1,
+      "message": "\u003e \"keybord\" is a possible misspelling of \"keyboard\".\n\nPlease fix.",
+      "parentUuid": "b6321cf7_43eebbd1",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "97fd6e2e7af94efb67c9b4670f66b717c3ddcb32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
