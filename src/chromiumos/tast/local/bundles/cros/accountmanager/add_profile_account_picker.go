@@ -75,7 +75,7 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 	moreActionsButton := nodewith.Name("More actions, " + username).Role(role.Button)
 	if err := uiauto.Combine("add a secondary account in OS Settings",
 		accountmanager.OpenAccountManagerSettingsAction(tconn, cr),
-		ui.LeftClick(addAccountButton),
+		ui.DoDefault(addAccountButton),
 		func(ctx context.Context) error {
 			return accountmanager.AddAccount(ctx, tconn, username, password)
 		},
@@ -113,26 +113,26 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("add a profile",
 		uiauto.Combine("click a button to add a profile",
 			ui.WaitUntilExists(profileToolbarButton),
-			ui.LeftClick(profileToolbarButton),
+			ui.DoDefault(profileToolbarButton),
 			ui.WaitUntilExists(addProfileButton),
-			ui.LeftClick(addProfileButton),
+			ui.DoDefault(addProfileButton),
 			func(ctx context.Context) error {
 				// If we get profile chooser screen - click "Add".
 				if err := ui.Exists(addButton)(ctx); err == nil {
-					return ui.LeftClick(addButton)(ctx)
+					return ui.DoDefault(addButton)(ctx)
 				}
 				return nil
 			},
 		),
 		uiauto.Combine("click next and pick an account",
 			ui.WaitUntilExists(nextButton),
-			ui.WithInterval(time.Second).LeftClickUntil(nextButton, ui.Exists(accountPicker)),
+			ui.WithInterval(time.Second).DoDefaultUntil(nextButton, ui.Exists(accountPicker)),
 			ui.WaitUntilExists(accountEntry),
-			ui.LeftClick(accountEntry),
+			ui.DoDefault(accountEntry),
 		),
 		uiauto.Combine("accept sync",
 			ui.WaitUntilExists(yesButton),
-			ui.LeftClick(yesButton),
+			ui.DoDefault(yesButton),
 		),
 	)(ctx); err != nil {
 		s.Fatal("Failed to create a new profile for secondary account: ", err)
@@ -151,7 +151,7 @@ func AddProfileAccountPicker(ctx context.Context, s *testing.State) {
 	if err := uiauto.Combine("check that the new profile belongs to the correct account",
 		ui.WaitUntilExists(newProfileWindow),
 		ui.WaitUntilExists(profileToolbarButton.Ancestor(newProfileWindow)),
-		ui.LeftClick(profileToolbarButton.Ancestor(newProfileWindow)),
+		ui.DoDefault(profileToolbarButton.Ancestor(newProfileWindow)),
 		// The menu should contain the username of the secondary account.
 		ui.WaitUntilExists(nodewith.NameStartingWith("Accounts and sync").NameContaining(username).Role(role.Menu)),
 	)(ctx); err != nil {
