@@ -50,7 +50,7 @@ func toMIMECodec(codec videotype.Codec) string {
 	switch codec {
 	case videotype.H264:
 		// H.264 Baseline Level 3.1.
-		return "avc1.42001E"
+		return "avc1.42001F"
 	case videotype.VP8:
 		return "vp8"
 	case videotype.VP9:
