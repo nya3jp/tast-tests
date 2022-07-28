@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34e6ae4a_e5e9064a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1363051
+      },
+      "writtenOn": "2022-07-28T01:58:52Z",
+      "side": 1,
+      "message": "+2 from a tast perspective, but please wait for +1/+2 from a teammate with context on this change before submitting.",
+      "revId": "0561e97b3bbd286a1263b2be81b013720dce9231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
