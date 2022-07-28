@@ -84,7 +84,7 @@ func (l *Lacros) Close(ctx context.Context) error {
 
 	info, err := lacrosinfo.Snapshot(ctx, l.ctconn)
 	if err != nil {
-		return testing.PollBreak(errors.Wrap(err, "failed to get lacros info"))
+		return errors.Wrap(err, "failed to get lacros info")
 	}
 
 	var sessErr error
@@ -104,8 +104,8 @@ func (l *Lacros) Close(ctx context.Context) error {
 	}
 
 	// If keep-alive is on, then if there was an error closing targets we would
-	// have returned it. If keepalive is false, then we will expect lacros to not
-	// be running soon if the error was due to CloseTarget trying to run on a
+	// have returned it. If keep-alive is off, then we will expect lacros to be
+	// stopped soon if the error was due to CloseTarget trying to run on a
 	// closed browser. So, poll to make sure lacros actually closes.
 	if !info.KeepAlive {
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -113,12 +113,12 @@ func (l *Lacros) Close(ctx context.Context) error {
 			if err != nil {
 				return testing.PollBreak(errors.Wrap(err, "failed to get lacros info"))
 			}
-			if info.Running {
-				return errors.Wrap(err, "lacros still running")
+			if info.State != lacrosinfo.LacrosStateStopped {
+				return errors.Wrap(err, "lacros not yet stopped")
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-			return errors.Wrap(sessErr, "lacros unexpectedly still running")
+			return errors.Wrap(sessErr, "lacros unexpectedly not yet stopped")
 		}
 	}
 
