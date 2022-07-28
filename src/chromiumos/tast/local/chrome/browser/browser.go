@@ -178,3 +178,12 @@ func (b *Browser) CloseWithURL(ctx context.Context, url string) error {
 	return nil
 
 }
+
+// Tabs returns all browser tabs.
+func (b *Browser) Tabs(ctx context.Context) ([]Tab, error) {
+	tconn, err := b.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Test API connection")
+	}
+	return Tabs(ctx, tconn)
+}
