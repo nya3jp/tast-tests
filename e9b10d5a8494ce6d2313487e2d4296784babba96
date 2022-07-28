@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1746a4_a0867299",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-28T20:16:59Z",
+      "side": 1,
+      "message": "Based on b/239482025, I changed the CL to now open a blank browser window while idling for Ash/Lacros. Please review the change, thank you!",
+      "revId": "e9b10d5a8494ce6d2313487e2d4296784babba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
