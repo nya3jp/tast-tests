@@ -29,16 +29,6 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// Tab holds information obtained from the chrome.tabs API.
-// See https://developer.chrome.com/docs/extensions/reference/tabs/#type-Tab
-type Tab struct {
-	ID     int    `json:"ID"`
-	Index  int    `json:"index"`
-	Title  string `json:"title"`
-	URL    string `json:"url"`
-	Active bool   `json:"active"`
-}
-
 // CloseAllWindows closes all currently open windows by iterating over
 // the shelf icons and calling apps.closeApp on each one.
 func CloseAllWindows(ctx context.Context, tconn *chrome.TestConn) error {
@@ -135,8 +125,8 @@ func GetBrowserStartTime(ctx context.Context, tconn *chrome.TestConn,
 }
 
 // GetBrowserTabs gets all browser tabs through chrome.tabs API.
-func GetBrowserTabs(ctx context.Context, tconn *chrome.TestConn) ([]Tab, error) {
-	var tabs []Tab
+func GetBrowserTabs(ctx context.Context, tconn *chrome.TestConn) ([]browser.Tab, error) {
+	var tabs []browser.Tab
 	if err := tconn.Eval(ctx, `(async () => {
 		const tabs = await tast.promisify(chrome.tabs.query)({currentWindow: true});
 		return tabs;
