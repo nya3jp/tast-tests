@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afddf342_8062922f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-07-28T20:47:30Z",
+      "side": 1,
+      "message": "Still LGTM!",
+      "revId": "5ff4f63060e2a49102319d5b0b8b6bede547d6c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29394f77_37367236",
+        "filename": "src/chromiumos/tast/local/media/pre/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-07-28T20:47:30Z",
+      "side": 1,
+      "message": "This looks like the wrong bug for VBR.",
+      "range": {
+        "startLine": 523,
+        "startChar": 11,
+        "endLine": 523,
+        "endChar": 20
+      },
+      "revId": "5ff4f63060e2a49102319d5b0b8b6bede547d6c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
