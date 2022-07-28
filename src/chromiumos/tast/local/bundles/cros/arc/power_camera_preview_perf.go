@@ -31,7 +31,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures the battery drain and camera statistics (e.g., dropped frames) during camera preview at 30/60 FPS",
 		Contacts: []string{
-			"mojahsu@chromium.org",
+			"wtlee@chromium.org",
 			"chromeos-camera-eng@google.com",
 			"arcvm-eng@google.com",
 		},

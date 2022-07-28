@@ -26,7 +26,7 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnknown,
 		Desc:         "Measures extra camera metrics such as open/close time and snapshot time",
 		Contacts: []string{
-			"mojahsu@chromium.org",
+			"wtlee@chromium.org",
 			"chromeos-camera-eng@google.com",
 			"arcvm-eng@google.com",
 		},

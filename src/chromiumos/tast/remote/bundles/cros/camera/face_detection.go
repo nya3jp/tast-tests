@@ -21,7 +21,7 @@ func init() {
 		Func:         FaceDetection,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies face detection",
-		Contacts:     []string{"mojahsu@chromium.org", "chromeos-camera-eng@google.com"},
+		Contacts:     []string{"beckerh@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:camerabox"},
 		SoftwareDeps: []string{"arc", "arc_camera3", caps.BuiltinUSBCamera},
 		ServiceDeps:  []string{"tast.cros.camerabox.HAL3Service"},
