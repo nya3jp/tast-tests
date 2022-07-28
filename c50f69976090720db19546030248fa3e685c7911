@@ -52,6 +52,24 @@
       "parentUuid": "3a0db57c_ed9197e1",
       "revId": "c50f69976090720db19546030248fa3e685c7911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f60ba8e9_00cdf657",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-07-28T21:11:55Z",
+      "side": 1,
+      "message": "So you want test case that just does the initial steps of setting up a pin, and then stops and doesn\u0027t do anything else to exercise things like lockout? I can some value in that, but it still probably makes more sense to add that as a parameter to the other pin test, rather than having a completely separate test.",
+      "parentUuid": "00050c12_b3cae794",
+      "revId": "c50f69976090720db19546030248fa3e685c7911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
