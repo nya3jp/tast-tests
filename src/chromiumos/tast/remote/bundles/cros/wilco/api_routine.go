@@ -36,8 +36,12 @@ func init() {
 		},
 		Attr:         []string{"group:enrollment"},
 		SoftwareDeps: []string{"reboot", "vm_host", "wilco", "chrome"},
-		ServiceDeps:  []string{"tast.cros.wilco.WilcoService", "tast.cros.policy.PolicyService"},
-		Timeout:      10 * time.Minute,
+		ServiceDeps: []string{
+			"tast.cros.hwsec.OwnershipService",
+			"tast.cros.policy.PolicyService",
+			"tast.cros.wilco.WilcoService",
+		},
+		Timeout: 10 * time.Minute,
 	})
 }
 
@@ -45,7 +49,7 @@ func init() {
 // TODO(b/189457904): remove once wilco.APIRoutineEnrolled will be stable enough.
 func APIRoutine(ctx context.Context, s *testing.State) {
 	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 			s.Error("Failed to reset TPM: ", err)
 		}
 	}(ctx)
@@ -53,7 +57,7 @@ func APIRoutine(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
 	defer cancel()
 
-	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
