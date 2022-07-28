@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0225cfbf_6f196633",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-28T17:35:58Z",
+      "side": 1,
+      "message": "I\u0027d be more explicit about the reasons for this - e.g. mention that the order of apps in recent apps section can change depending on app launches, so if an app is launched frequently in preceding tests, it may unexpectedly be bumped up to the from of recent apps section.",
+      "revId": "8cd6753d891bda54b902890db043ac68268a8a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ad1c73_1e58e81e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000232
+      },
+      "writtenOn": "2022-07-28T17:35:58Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 153,
+        "startChar": 16,
+        "endLine": 153,
+        "endChar": 19
+      },
+      "revId": "8cd6753d891bda54b902890db043ac68268a8a62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
