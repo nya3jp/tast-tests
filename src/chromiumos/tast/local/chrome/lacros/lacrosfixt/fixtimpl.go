@@ -93,16 +93,17 @@ func init() {
 		TearDownTimeout: chrome.ResetTimeout,
 	})
 
-	// lacrosWith100FakeApps is the same as lacros but
-	// creates 100 fake apps that are shown in the ash-chrome launcher.
+	// lacrosWith100FakeApps is the same as the "lacros" fixture but
+	// creates 100 fake apps for lacros that are shown in the OS launcher.
+	// TODO(crbug.com/1309565): Remove this fixture if no longer used in any tests.
 	testing.AddFixture(&testing.Fixture{
 		Name:     "lacrosWith100FakeApps",
-		Desc:     "Lacros Chrome from a pre-built image with 100 fake apps installed",
+		Desc:     "Lacros Chrome from a pre-built image with 100 fake apps installed for lacros",
 		Contacts: []string{"hidehiko@chromium.org", "edcourtney@chromium.org"},
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return NewConfig().Opts()
 		}),
-		Parent:          "install100Apps",
+		Parent:          "install100LacrosApps",
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
@@ -117,7 +118,7 @@ func init() {
 		Impl: chrome.NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
 			return NewConfig(ChromeOptions(chrome.DisableFeatures("ProductivityLauncher"))).Opts()
 		}),
-		Parent:          "install100Apps",
+		Parent:          "install100LacrosApps",
 		SetUpTimeout:    chrome.LoginTimeout + 7*time.Minute,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
