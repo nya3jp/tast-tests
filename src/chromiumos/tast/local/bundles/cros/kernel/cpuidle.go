@@ -41,9 +41,17 @@ func Cpuidle(ctx context.Context, s *testing.State) {
 		s.Fatal("Unexpected kernel version: ", ver)
 	}
 
-	data, err := os.ReadFile("/sys/devices/system/cpu/cpuidle/current_governor")
+	// Pre-kernel-v5.8, current_governor and current_governor_ro were
+	// mutually exclusive.
+	data, err := os.ReadFile("/sys/devices/system/cpu/cpuidle/current_governor_ro")
 	if err != nil {
-		s.Fatal("Failed to read cpuidle governor: ", err)
+		if !os.IsNotExist(err) {
+			s.Fatal("Failed to read cpuidle current_governor_ro: ", err)
+		}
+		data, err = os.ReadFile("/sys/devices/system/cpu/cpuidle/current_governor")
+		if err != nil {
+			s.Fatal("Failed to read cpuidle current_governor: ", err)
+		}
 	}
 	governor := strings.TrimSpace(string(data))
 
