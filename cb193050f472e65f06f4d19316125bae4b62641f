@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84f505de_551d8c08",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode/accel_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-07-28T01:54:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb312d70_90396e81",
+      "range": {
+        "startLine": 50,
+        "startChar": 23,
+        "endLine": 50,
+        "endChar": 24
+      },
+      "revId": "cb193050f472e65f06f4d19316125bae4b62641f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b6eb446_e9513977",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-27T21:40:57Z",
       "side": 1,
       "message": "Is there a reason why these variants (and the corresponding existing ones) are missing `ExtraAttr`?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 4
+      },
+      "revId": "cb193050f472e65f06f4d19316125bae4b62641f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d362073b_509c93bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/encode_accel_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1196199
+      },
+      "writtenOn": "2022-07-28T01:54:17Z",
+      "side": 1,
+      "message": "Ah, this is not intended.\nMissing ExtraAttr is derived from missing h264_720p_l1*.\nI need to fix this.",
+      "parentUuid": "1b6eb446_e9513977",
       "range": {
         "startLine": 101,
         "startChar": 0,
