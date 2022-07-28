@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0042d894_6e53b949",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-28T22:58:00Z",
+      "side": 1,
+      "message": "nit: I feel it is useful to link a bug that explains this tricky edge cases with examples in detail so that people can follow this.\n\nJust from your examples in another doc:\nPassing \"http://google.com\" will successfully get the Google page loaded, validation will then fail because the URL actually becomes \"https://www.google.com/\"\nSimilarly for \"chrome://version\", which ends up as  \"chrome://version/\", so you must use the latter.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "f87545a7_d7b98d9f",
