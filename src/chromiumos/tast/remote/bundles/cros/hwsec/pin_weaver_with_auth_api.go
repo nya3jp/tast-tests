@@ -128,7 +128,7 @@ func PINWeaverWithAuthAPI(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
-	if userParam.useAuthFactor {
+	if userParam.useUserSecretStash {
 		// Enable the UserSecretStash experiment for the duration of the test by
 		// creating a flag file that's checked by cryptohomed.
 		cleanupUSSExperiment, err := helper.EnableUserSecretStash(ctx)
