@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b167b2f5_cafae6f5",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/write_protect.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2022-07-28T15:53:55Z",
+      "side": 1,
+      "message": "All these files need deleted also. This might be much simpler if you could pass the temp dir to the function, then all the backups would go in one place and the temp dir delete will clean them all up.",
+      "range": {
+        "startLine": 365,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 2
+      },
+      "revId": "b9d82a6fd3ff917f33c9b6fa46e4976474a64d26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
