@@ -30,8 +30,12 @@ func init() {
 		},
 		Attr:         []string{"group:dpanel-end2end"},
 		SoftwareDeps: []string{"reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.tape.Service"},
-		Timeout:      gaiaEnrollmentTimeout,
+		ServiceDeps: []string{
+			"tast.cros.hwsec.OwnershipService",
+			"tast.cros.policy.PolicyService",
+			"tast.cros.tape.Service",
+		},
+		Timeout: gaiaEnrollmentTimeout,
 		Params: []testing.Param{
 			{
 				Name: "autopush",
@@ -65,12 +69,12 @@ func GAIAEnrollment(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 			s.Error("Failed to reset TPM after test: ", err)
 		}
 	}(cleanupCtx)
 
-	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
