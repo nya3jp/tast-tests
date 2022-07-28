@@ -163,7 +163,7 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer cleanupSetting(cleanupSettingsCtx)
 
-	defer cuj.CloseBrowserTabs(ctx, tconn)
+	defer browser.CloseAllTabs(ctx, tconn)
 
 	outDir := s.OutDir()
 	credentials := strings.Split(s.RequiredVar("ui.cujAccountPool"), ":")

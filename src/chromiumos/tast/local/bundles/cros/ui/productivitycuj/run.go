@@ -72,7 +72,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, app ProductivityApp, tier cuj.T
 		return errors.Wrap(err, "failed to add metrics to recorder")
 	}
 
-	defer cuj.CloseBrowserTabs(ctx, tconn)
+	defer browser.CloseAllTabs(ctx, tconn)
 
 	// Shorten the context to clean up the files created in the test case.
 	cleanUpResourceCtx := ctx

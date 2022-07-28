@@ -178,3 +178,12 @@ func (b *Browser) CloseWithURL(ctx context.Context, url string) error {
 	return nil
 
 }
+
+// CurrentTabs returns the tabs of the current window.
+func (b *Browser) CurrentTabs(ctx context.Context) ([]Tab, error) {
+	tconn, err := b.TestAPIConn(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create Test API connection")
+	}
+	return CurrentTabs(ctx, tconn)
+}
