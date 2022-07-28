@@ -77,7 +77,14 @@ const (
 	BlankURL = "about:blank"
 
 	// NewTabURL is the URL corresponding to the chrome://newtab/ page.
+	// NOTE: A trailing slash is added to the URL in case that it could be passed over to NewConnForTarget.
+	// The given URL must match exactly what Chrome ends up associating with the tab.
+	// For example, "chrome://newtab/" gets loaded in the tab instead of "chrome://newtab".
 	NewTabURL = "chrome://newtab/"
+
+	// VersionURL is the URL corresponding to the chrome://version/ page.
+	// NOTE: A trailing slash is added to the URL in case that it could be passed over to NewConnForTarget.
+	VersionURL = "chrome://version/"
 
 	// persistentDir is a directory to save files that should persist even
 	// after Tast finishes. For instance, we save test extensions here so
