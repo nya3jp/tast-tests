@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54b096b5_cfefeb93",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-07-28T09:52:13Z",
+      "side": 1,
+      "message": "This is unfortunately still misleading\n\nCurrently the reboot is done unconditionally (via clear_tpm_owner_request):\nhttps://osscs.corp.google.com/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/hwsec/tpm_clearer.go;l\u003d48?q\u003dfile:tast%20ClearTPM\n\nThat was not always the case and might not be in the future as well. Previously it did not reset an unowned TPM.",
+      "range": {
+        "startLine": 253,
+        "startChar": 5,
+        "endLine": 253,
+        "endChar": 31
+      },
+      "revId": "c679261034a433be54b20e062fdae8b7803c47eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
