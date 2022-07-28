@@ -16,6 +16,24 @@
       "message": "It is just a question: Will it simplier to use uiauto.Combine?",
       "revId": "d1428e798cfdb192e4cfbab87ba4de2b9e48cd64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99dcba82_c28ba4d2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vp9_video_decoder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-28T11:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3412b065_16d76ed6",
+      "revId": "d1428e798cfdb192e4cfbab87ba4de2b9e48cd64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
