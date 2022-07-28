@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a63f47f_9d63e43c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-07-28T14:56:10Z",
+      "side": 1,
+      "message": "I guess this means it doesn\u0027t test anything useful then, so I\u0027ll just strip down the change to fixing the use-uss flag.",
+      "parentUuid": "d6979d97_b4e0ba32",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "be72f37f45608db2e96dbb0c032def8fdabef889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b31996c8_93e6dd45",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-07-28T02:50:16Z",
       "side": 1,
       "message": "Should it be false? as pin_weaver_with_auth_session\u0027s useLegacyAddAPIForPin is false.",
+      "revId": "be72f37f45608db2e96dbb0c032def8fdabef889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "688b405c_fa254033",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1546868
+      },
+      "writtenOn": "2022-07-28T14:56:10Z",
+      "side": 1,
+      "message": "Obsoleted, I reduced the scope of the CL since it seems like the new case added provides no actual useful coverage.",
+      "parentUuid": "b31996c8_93e6dd45",
       "revId": "be72f37f45608db2e96dbb0c032def8fdabef889",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
