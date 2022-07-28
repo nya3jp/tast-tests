@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abcabe09_ad16820d",
+        "filename": "src/chromiumos/tast/local/bluetooth/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-07-28T18:27:12Z",
+      "side": 1,
+      "message": "Nit: Could we move these into `btpeers.go` as well? :)",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "3de13da62bdc27c208344601ff649cd2833871cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "501a7373_a2197fb7",
         "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/test_connect_to_btpeers.go",
         "patchSetId": 2
