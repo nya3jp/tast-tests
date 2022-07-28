@@ -157,7 +157,6 @@ func Mtab(ctx context.Context, s *testing.State) {
 	ignoredTypes := []string{
 		"ecryptfs",
 		"nsfs", // kernel filesystem used with namespaces
-		"proc", // TODO(crbug.com/1204115): Re-enable "proc" testing once 3.18 kernels are out.
 	}
 
 	// Returns true if s appears in vals.
