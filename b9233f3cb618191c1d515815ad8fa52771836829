@@ -3,6 +3,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "adbf4fc9_622e9279",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-07-28T08:06:59Z",
+      "side": 1,
+      "message": "nit: These lines are too long",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "b9233f3cb618191c1d515815ad8fa52771836829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72d3710c_7245b0aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-07-28T08:06:59Z",
+      "side": 1,
+      "message": "Thanks! Looks good to me apart from renaming that function Victor mentioned.",
+      "revId": "b9233f3cb618191c1d515815ad8fa52771836829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a16bb6c2_0a4be281",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-07-28T08:06:59Z",
+      "side": 1,
+      "message": "nit: Not sure if we need that comment. That there\u0027s no reboot could e.g. also be part of the function name. If you want to keep it around maybe also add it to line 125 for consistency.",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 49
+      },
+      "revId": "b9233f3cb618191c1d515815ad8fa52771836829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f9642fa_8a4a5eb3",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
         "patchSetId": 1
@@ -43,6 +106,53 @@
         "startChar": 5,
         "endLine": 251,
         "endChar": 13
+      },
+      "revId": "b9233f3cb618191c1d515815ad8fa52771836829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0936c5e_27f963a0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-07-28T08:06:59Z",
+      "side": 1,
+      "message": "No Go reviewer, but I\u0027d be slightly in favor of having helper functions for these kind of calls:\n- Resetting system state and TPM is not part of what we\u0027re testing, it\u0027s just something we have to run in order for the test to work.\n- Having a helper function allows you to shorten/change the naming to the information that\u0027s relevant for the test.",
+      "parentUuid": "8b2891be_0bea4404",
+      "range": {
+        "startLine": 251,
+        "startChar": 5,
+        "endLine": 251,
+        "endChar": 13
+      },
+      "revId": "b9233f3cb618191c1d515815ad8fa52771836829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28455fd_d1f6317d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-07-28T08:06:59Z",
+      "side": 1,
+      "message": "Here having helper functions nice because it adds the information of reboot, which we would otherwise have to add in a comment.",
+      "range": {
+        "startLine": 255,
+        "startChar": 5,
+        "endLine": 255,
+        "endChar": 22
       },
       "revId": "b9233f3cb618191c1d515815ad8fa52771836829",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
