@@ -8,10 +8,19 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bluetooth"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/testing"
 )
+
+// BTPeersVar is the name of the tast var that specifies a comma-separated
+// list of btpeer host addresses.
+const BTPeersVar = "btpeers"
+
+// TastVars are variables that BT fixtures may have. Can be used in fixture
+// vars or test vars.
+var TastVars = []string{
+	BTPeersVar,
+}
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -69,7 +78,7 @@ type chromeLoggedInWithBluetoothEnabled struct {
 }
 
 func (*chromeLoggedInWithBluetoothEnabled) Reset(ctx context.Context) error {
-	if err := bluetooth.Enable(ctx); err != nil {
+	if err := Enable(ctx); err != nil {
 		return errors.Wrap(err, "failed to enable Bluetooth")
 	}
 	return nil
@@ -82,14 +91,14 @@ func (*chromeLoggedInWithBluetoothEnabled) PostTest(ctx context.Context, s *test
 }
 
 func (*chromeLoggedInWithBluetoothEnabled) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	if err := bluetooth.Enable(ctx); err != nil {
+	if err := Enable(ctx); err != nil {
 		s.Fatal("Failed to enable Bluetooth: ", err)
 	}
 	return s.ParentValue()
 }
 
 func (*chromeLoggedInWithBluetoothEnabled) TearDown(ctx context.Context, s *testing.FixtState) {
-	if err := bluetooth.Enable(ctx); err != nil {
+	if err := Enable(ctx); err != nil {
 		s.Fatal("Failed to enable Bluetooth: ", err)
 	}
 }
