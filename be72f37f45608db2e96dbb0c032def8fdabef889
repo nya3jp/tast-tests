@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6979d97_b4e0ba32",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1344767
+      },
+      "writtenOn": "2022-07-28T07:20:14Z",
+      "side": 1,
+      "message": "there isn\u0027t any use case where USS is enabled with the legacy APIs. USS can only be used with the AuthFactor APIs",
+      "range": {
+        "startLine": 77,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "be72f37f45608db2e96dbb0c032def8fdabef889",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b31996c8_93e6dd45",
         "filename": "src/chromiumos/tast/remote/bundles/cros/hwsec/pin_weaver_with_auth_api.go",
         "patchSetId": 2
