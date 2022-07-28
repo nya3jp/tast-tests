@@ -144,17 +144,22 @@ func NewChallengeAuthCrossVersionLoginConfig(authConfig *hwsec.AuthConfig, keyLa
 	return config
 }
 
-// CreateCrossVersionLoginData creates the compressed file of data that is used in cross-version login test.
-func CreateCrossVersionLoginData(ctx context.Context, daemonController *hwsec.DaemonController, archivePath string) error {
-	if err := stopHwsecDaemons(ctx, daemonController); err != nil {
+// SaveLoginData creates the compressed file of login data:
+// - /home/.shadow
+// - /home/chronos
+// - /mnt/stateful_partition/unencrypted/tpm2-simulator/NVChip (if includeTmp is set to true).
+func SaveLoginData(ctx context.Context, daemonController *hwsec.DaemonController, archivePath string, includeTmp bool) error {
+	if err := stopHwsecDaemons(ctx, daemonController, includeTmp); err != nil {
 		return err
 	}
-	defer ensureHwsecDaemons(ctx, daemonController)
+	defer ensureHwsecDaemons(ctx, daemonController, includeTmp)
 
 	paths := []string{
-		"/mnt/stateful_partition/unencrypted/tpm2-simulator/NVChip",
 		"/home/.shadow",
 		"/home/chronos",
+	}
+	if includeTmp {
+		paths = append(paths, "/mnt/stateful_partition/unencrypted/tpm2-simulator/NVChip")
 	}
 	// Skip packing the "mount" directories, since the file systems it's
 	// used for don't allow taking snapshots. E.g., ext4 fscrypt complains
@@ -186,12 +191,12 @@ func removeAllChildren(dirPath string) error {
 	return firstErr
 }
 
-// LoadCrossVersionLoginData loads the data that is used in cross-version login test.
-func LoadCrossVersionLoginData(ctx context.Context, daemonController *hwsec.DaemonController, archivePath string) error {
-	if err := stopHwsecDaemons(ctx, daemonController); err != nil {
+// LoadLoginData loads the login data from compressed file.
+func LoadLoginData(ctx context.Context, daemonController *hwsec.DaemonController, archivePath string, includeTmp bool) error {
+	if err := stopHwsecDaemons(ctx, daemonController, includeTmp); err != nil {
 		return err
 	}
-	defer ensureHwsecDaemons(ctx, daemonController)
+	defer ensureHwsecDaemons(ctx, daemonController, includeTmp)
 
 	// Remove the `/home/.shadow` first to prevent any unexpected file remaining.
 	if err := os.RemoveAll("/home/.shadow"); err != nil {
@@ -213,7 +218,7 @@ func LoadCrossVersionLoginData(ctx context.Context, daemonController *hwsec.Daem
 	return nil
 }
 
-func stopHwsecDaemons(ctx context.Context, daemonController *hwsec.DaemonController) error {
+func stopHwsecDaemons(ctx context.Context, daemonController *hwsec.DaemonController, includeTmp bool) error {
 	if err := daemonController.TryStop(ctx, hwsec.UIDaemon); err != nil {
 		return errors.Wrap(err, "failed to try to stop UI")
 	}
@@ -223,15 +228,19 @@ func stopHwsecDaemons(ctx context.Context, daemonController *hwsec.DaemonControl
 	if err := daemonController.TryStopDaemons(ctx, hwsec.LowLevelTPMDaemons); err != nil {
 		return errors.Wrap(err, "failed to try to stop low-level TPM daemons")
 	}
-	if err := daemonController.TryStop(ctx, hwsec.TPM2SimulatorDaemon); err != nil {
-		return errors.Wrap(err, "failed to try to stop tpm2-simulator")
+	if includeTmp {
+		if err := daemonController.TryStop(ctx, hwsec.TPM2SimulatorDaemon); err != nil {
+			return errors.Wrap(err, "failed to try to stop tpm2-simulator")
+		}
 	}
 	return nil
 }
 
-func ensureHwsecDaemons(ctx context.Context, daemonController *hwsec.DaemonController) {
-	if err := daemonController.Ensure(ctx, hwsec.TPM2SimulatorDaemon); err != nil {
-		testing.ContextLog(ctx, "Failed to ensure tpm2-simulator: ", err)
+func ensureHwsecDaemons(ctx context.Context, daemonController *hwsec.DaemonController, includeTmp bool) {
+	if includeTmp {
+		if err := daemonController.Ensure(ctx, hwsec.TPM2SimulatorDaemon); err != nil {
+			testing.ContextLog(ctx, "Failed to ensure tpm2-simulator: ", err)
+		}
 	}
 	if err := daemonController.EnsureDaemons(ctx, hwsec.LowLevelTPMDaemons); err != nil {
 		testing.ContextLog(ctx, "Failed to ensure low-level TPM daemons: ", err)
@@ -415,7 +424,7 @@ func PrepareCrossVersionLoginData(ctx context.Context, lf LogFunc, cryptohome *h
 	// Note that if the format of either CrossVersionLoginConfigData or CrossVersionLoginConfig is changed,
 	// the hwsec.CrossVersionLogin should be modified and the generated data should be regenerated.
 	// Create compressed data for mocking the login data in this version, which will be used in hwsec.CrossVersionLogin.
-	if err := CreateCrossVersionLoginData(ctx, daemonController, dataPath); err != nil {
+	if err := SaveLoginData(ctx, daemonController, dataPath, true /*includeTmp*/); err != nil {
 		return errors.Wrap(err, "failed to create cross-version-login data")
 	}
 	// Create JSON file of CrossVersionLoginConfig object in order to record which login method we needed to test in hwsec.CrossVersionLogin.
