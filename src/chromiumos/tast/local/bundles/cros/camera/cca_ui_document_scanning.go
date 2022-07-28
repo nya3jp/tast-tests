@@ -27,7 +27,7 @@ func init() {
 		Desc:         "Verifies that CCA can take a photo for document and generate the document file via file VCD",
 		Contacts:     []string{"wtlee@chromium.org", "chromeos-camera-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational", "group:camera-libcamera", "group:ml_service", "ml_service_ondevice_document_scanner"},
-		SoftwareDeps: []string{"camera_app", "chrome", "ondevice_document_scanner", caps.BuiltinOrVividCamera},
+		SoftwareDeps: []string{"camera_app", "chrome", "ondevice_document_scanner_rootfs_or_dlc", caps.BuiltinOrVividCamera},
 		Data:         []string{"document_3264x2448.mjpeg"},
 		Params: []testing.Param{{
 			Fixture: "ccaTestBridgeReadyWithFakeCamera",
