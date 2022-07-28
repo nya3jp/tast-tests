@@ -102,7 +102,7 @@ func crosvmCmd(ctx context.Context, kernelPath, kernelLogPath string, kernelArgs
 		kernelPath)
 
 	// Add the shell process id to the control group
-	cmdStr := []string{"mkdir -p ", filepath.Dir(cgroupPath), "&& echo $$ >", cgroupPath, "&&"}
+	cmdStr := []string{"echo $$ >", cgroupPath, "&&"}
 	// Set the rtprio limit of the shell process to unlimited.
 	cmdStr = append(cmdStr, "prlimit", "--pid", "$$", "--rtprio=unlimited", "&&")
 	cmdStr = append(cmdStr, crosvmArgs...)
