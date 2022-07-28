@@ -31,8 +31,12 @@ const (
 	powerConsumptionKeyAlt = "ppvar_bat_q"
 
 	varDuration = "duration"
+	varNoGsc    = "no_gsc"
 
 	reconnectTimeout = 20 * time.Second
+
+	gsc1V8Rail = "pp1800_gsc_z1"
+	gsc3V3Rail = "pp3300_gsc_z1"
 )
 
 func init() {
@@ -46,7 +50,7 @@ func init() {
 		Attr:    []string{"group:firmware"},
 		Fixture: fixture.NormalMode,
 		Timeout: defaultDuration + 5*time.Minute, // Ensure we have enough time for test setup/teardown
-		Vars:    []string{varDuration},           // Duration is in seconds
+		Vars:    []string{varDuration, varNoGsc}, // Duration is in seconds
 		Params: []testing.Param{{
 			Name: "s0ix",
 			Val:  suspend.StateS0ix,
@@ -69,6 +73,15 @@ func SuspendConsumption(ctx context.Context, s *testing.State) {
 		}
 
 		duration = time.Duration(seconds) * time.Second
+	}
+
+	noGsc := true
+	if v, ok := s.Var(varNoGsc); ok {
+		var err error = nil
+		noGsc, err = strconv.ParseBool(v)
+		if err != nil {
+			s.Fatalf("Failed to parse %s from string %s", varNoGsc, v)
+		}
 	}
 
 	// Can't exceed defaultDuration because the test will timeout
@@ -134,6 +147,24 @@ func SuspendConsumption(ctx context.Context, s *testing.State) {
 
 	if consumption == 0.0 || consumption < 0.0 {
 		s.Fatalf("Invalid system power consumption of %f", consumption)
+	}
+
+	if noGsc {
+		// Communication between any onboard power sensors goes through the GSC
+		// The GSC is generally asleep during suspend so its consumption should be
+		// nearly zero
+
+		gscRails := []string{
+			gsc1V8Rail,
+			gsc3V3Rail,
+		}
+
+		for i := 0; i < len(gscRails); i++ {
+			if gscConsumption, exists := results.GetMean(gscRails[i]); exists {
+				s.Logf("Subtracting %q consumption of %f mW", gscRails[i], gscConsumption)
+				consumption -= gscConsumption
+			}
+		}
 	}
 
 	// The requirements are formulated in terms of days of battery life
