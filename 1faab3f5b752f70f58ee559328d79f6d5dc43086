@@ -34,6 +34,24 @@
       "parentUuid": "76f6a33f_687d527f",
       "revId": "1faab3f5b752f70f58ee559328d79f6d5dc43086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35bb85b4_add3c6bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-28T06:43:16Z",
+      "side": 1,
+      "message": "Tast is different from autotest. Therefore I believe this change is still needed.",
+      "parentUuid": "96a810fb_9f59a75a",
+      "revId": "1faab3f5b752f70f58ee559328d79f6d5dc43086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
