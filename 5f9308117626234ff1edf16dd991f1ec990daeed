@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ca9e1104_69c469b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-07-28T01:59:24Z",
+      "side": 1,
+      "message": "If there was an error closing pages, then it would be ignored. So, lacros could be left running (not in a terminating state).\n\nThis poll converted those ignored closing page errors into actual errors, so lacros wouldn\u0027t be left running into the next test.\n\nNote that we have to ignore errors closing pages because closing the last page can error on waiting for the ack, since lacros exists. It\u0027s non trivial to fix this in the library.",
+      "parentUuid": "26279d1f_91d50f50",
+      "revId": "5f9308117626234ff1edf16dd991f1ec990daeed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d060ad46_6a39a4d6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
