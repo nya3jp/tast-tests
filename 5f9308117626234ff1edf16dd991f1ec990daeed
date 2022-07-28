@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "53d3e913_977e5160",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-07-28T02:06:04Z",
+      "side": 1,
+      "message": "I see, this was about catching errors that weren\u0027t caught before and might have caused trouble later on. Thanks for the explanation.",
+      "parentUuid": "a73d76f4_cc66d265",
+      "revId": "5f9308117626234ff1edf16dd991f1ec990daeed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d060ad46_6a39a4d6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
