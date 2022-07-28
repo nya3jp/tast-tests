@@ -46,6 +46,30 @@
       },
       "revId": "c679261034a433be54b20e062fdae8b7803c47eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc1e413_ded13da0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-07-28T10:34:49Z",
+      "side": 1,
+      "message": "Discussed offline. I have added a comment clarifying that we rely on the helper method to always reboot the device and if something changes we need to update it. I havent created a bug because I think it will make sense to create it when this happens and we need to do the change. Otherwise, it will be in a backlog for a long time and unassigned. Imo the comment should be enough",
+      "parentUuid": "863a159a_6f7809ee",
+      "range": {
+        "startLine": 253,
+        "startChar": 5,
+        "endLine": 253,
+        "endChar": 31
+      },
+      "revId": "c679261034a433be54b20e062fdae8b7803c47eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

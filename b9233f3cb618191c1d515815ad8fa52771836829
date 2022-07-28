@@ -209,6 +209,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "55227600_2db15185",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-07-28T10:34:49Z",
+      "side": 1,
+      "message": "Discussed offline",
+      "parentUuid": "b7dad9f6_1a0786b2",
+      "range": {
+        "startLine": 251,
+        "startChar": 5,
+        "endLine": 251,
+        "endChar": 13
+      },
+      "revId": "b9233f3cb618191c1d515815ad8fa52771836829",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d28455fd_d1f6317d",
         "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
         "patchSetId": 1
