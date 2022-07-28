@@ -34,8 +34,11 @@ func init() {
 		},
 		Attr:         []string{"group:dpanel-end2end"},
 		SoftwareDeps: []string{"reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService"},
-		Timeout:      7 * time.Minute,
+		ServiceDeps: []string{
+			"tast.cros.hwsec.OwnershipService",
+			"tast.cros.policy.PolicyService",
+		},
+		Timeout: 7 * time.Minute,
 		Params: []testing.Param{
 			{
 				Name: "autopush",
@@ -60,7 +63,7 @@ func GAIANoLicenseEnrollment(ctx context.Context, s *testing.State) {
 	dmServerURL := param.dmserver
 
 	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 			s.Error("Failed to reset TPM after test: ", err)
 		}
 	}(ctx)
@@ -68,7 +71,7 @@ func GAIANoLicenseEnrollment(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 3*time.Minute)
 	defer cancel()
 
-	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
