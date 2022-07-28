@@ -140,10 +140,10 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, cr *chrome
 	if err != nil {
 		return "", errors.Wrap(err, "failed to create test API connection")
 	}
-	closeTabsFunc := cuj.CloseBrowserTabs
+	closeTabsFunc := browser.CloseAllTabs
 	if app.isLacros {
 		// For lacros-Chrome, it should leave a new tab to keep the Chrome process alive.
-		closeTabsFunc = cuj.KeepNewTab
+		closeTabsFunc = browser.ReplaceCurrentTabsWithSingleNewTab
 	}
 	connExcel, err = app.br.NewConn(ctx, sampleSheetURL)
 	if err != nil {
@@ -466,7 +466,7 @@ func (app *MicrosoftWebOffice) maybeCloseOneDriveTab(tabName string) action.Acti
 		if err != nil {
 			return errors.Wrap(err, "failed to create test API connection")
 		}
-		tabs, err := cuj.GetBrowserTabs(ctx, bTconn)
+		tabs, err := browser.CurrentTabs(ctx, bTconn)
 		if err != nil {
 			return err
 		}
@@ -483,7 +483,7 @@ func (app *MicrosoftWebOffice) maybeCloseOneDriveTab(tabName string) action.Acti
 			testing.ContextLogf(ctx, "Cannot find the tab name containing %q or %q", tabName, oneDriveTab)
 			return nil
 		}
-		return cuj.CloseBrowserTabsByID(ctx, bTconn, []int{tabID})
+		return browser.CloseTabsByID(ctx, bTconn, []int{tabID})
 	}
 }
 

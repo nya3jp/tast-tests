@@ -9,7 +9,6 @@ import (
 	"context"
 	"fmt"
 	"regexp"
-	"strconv"
 	"strings"
 	"time"
 
@@ -29,16 +28,6 @@ import (
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
-
-// Tab holds information obtained from the chrome.tabs API.
-// See https://developer.chrome.com/docs/extensions/reference/tabs/#type-Tab
-type Tab struct {
-	ID     int    `json:"ID"`
-	Index  int    `json:"index"`
-	Title  string `json:"title"`
-	URL    string `json:"url"`
-	Active bool   `json:"active"`
-}
 
 // CloseAllWindows closes all currently open windows by iterating over
 // the shelf icons and calling apps.closeApp on each one.
@@ -117,7 +106,7 @@ func GetBrowserStartTime(ctx context.Context, tconn *chrome.TestConn,
 
 	// If it's ash-Chrome, we will close all existing tabs so the test case will start with a
 	// clean Chrome.
-	closeTabsFunc := CloseBrowserTabs
+	closeTabsFunc := browser.CloseAllTabs
 	bTconn := tconn
 	if bt == browser.TypeLacros {
 		// Connect to lacros-Chrome started from UI.
@@ -131,7 +120,7 @@ func GetBrowserStartTime(ctx context.Context, tconn *chrome.TestConn,
 		}
 		// For lacros-Chrome, we will close all existing tabs but leave a new tab to keep the Chrome
 		// process alive.
-		closeTabsFunc = KeepNewTab
+		closeTabsFunc = browser.ReplaceCurrentTabsWithSingleNewTab
 	}
 
 	// Depending on the settings, Chrome might open all left-off pages automatically from last session.
@@ -143,72 +132,6 @@ func GetBrowserStartTime(ctx context.Context, tconn *chrome.TestConn,
 	}
 
 	return l, browserStartTime, nil
-}
-
-// GetBrowserTabs gets all browser tabs through chrome.tabs API.
-func GetBrowserTabs(ctx context.Context, tconn *chrome.TestConn) ([]Tab, error) {
-	var tabs []Tab
-	if err := tconn.Eval(ctx, `(async () => {
-		const tabs = await tast.promisify(chrome.tabs.query)({});
-		return tabs;
-	})()`, &tabs); err != nil {
-		return nil, err
-	}
-	return tabs, nil
-}
-
-// CloseBrowserTabsByID closes browser tabs by ID through chrome.tabs API.
-func CloseBrowserTabsByID(ctx context.Context, tconn *chrome.TestConn, tabIDs []int) error {
-	str := "["
-	for i, id := range tabIDs {
-		str += strconv.Itoa(id)
-		if i != len(tabIDs)-1 {
-			str += ", "
-		}
-	}
-	str += "]"
-	return tconn.Eval(ctx, fmt.Sprintf(`(async () => {
-		await tast.promisify(chrome.tabs.remove)(%s);
-	})()`, str), nil)
-}
-
-// CloseBrowserTabs closes all browser tabs through chrome.tabs API.
-func CloseBrowserTabs(ctx context.Context, tconn *chrome.TestConn) error {
-	return tconn.Eval(ctx, `(async () => {
-		const tabs = await tast.promisify(chrome.tabs.query)({});
-		await tast.promisify(chrome.tabs.remove)(tabs.filter((tab) => tab.id).map((tab) => tab.id));
-	})()`, nil)
-}
-
-// KeepNewTab closes all other browser tabs and leave only one new tab.
-// Leaving a new tab is critical to keep lacros-Chrome process running.
-// See crbug.com/1268743 for the chrome arg --disable-lacros-keep-alive.
-func KeepNewTab(ctx context.Context, tconn *chrome.TestConn) error {
-	tabs, err := GetBrowserTabs(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get browser tabs")
-	}
-	if len(tabs) == 0 {
-		return errors.New("browser has no tabs")
-	}
-	newTab := "chrome://newtab/"
-	if len(tabs) == 1 && tabs[0].URL == newTab {
-		return nil
-	}
-	// Just simply reate a new tab and close all other tabs.
-	if err := tconn.Eval(ctx, `(async () => {
-		await tast.promisify(chrome.tabs.create)({});
-	})()`, nil); err != nil {
-		return errors.Wrap(err, "failed to create new tab")
-	}
-	var tabsToClose []int
-	for _, t := range tabs {
-		tabsToClose = append(tabsToClose, t.ID)
-	}
-	if err := CloseBrowserTabsByID(ctx, tconn, tabsToClose); err != nil {
-		return errors.Wrap(err, "failed to close other browser tabs")
-	}
-	return nil
 }
 
 // CloseChrome closes Chrome browser application properly.
