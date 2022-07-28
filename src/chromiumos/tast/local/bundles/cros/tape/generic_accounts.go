@@ -21,7 +21,8 @@ func init() {
 		Contacts:     []string{"davidwelling@google.com", "alexanderhartl@google.com", "arc-engprod@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		Timeout:      5 * time.Minute,
-		VarDeps:      []string{tape2.LocalRefreshTokenVar, tape2.AuthenticationConfigJSONVar},
+		Vars:         []string{tape2.LocalRefreshTokenVar},
+		VarDeps:      []string{tape2.AuthenticationConfigJSONVar},
 		// TODO(b/240322950): Remove the remote fixture requirement at some point.
 		Fixture: "tapeRemoteBase",
 		// Limit to eve. This test does not need to run on more than one device.
