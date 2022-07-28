@@ -85,7 +85,8 @@ func DeviceMinimumVersionNotifications(ctx context.Context, s *testing.State) {
 	}
 	defer conn.Close()
 
-	if err := conn.WaitForExprFailOnErr(ctx, "document.querySelector('management-ui').$$('.eol-section') && !document.querySelector('management-ui').$$('.eol-section[hidden]')"); err != nil {
+	script := "document.querySelector('management-ui').shadowRoot.querySelector('.eol-section') && !document.querySelector('management-ui').shadowRoot.querySelector('.eol-section[hidden]')"
+	if err := conn.WaitForExprFailOnErr(ctx, script); err != nil {
 		s.Error("Failed to verify update required end-of-life banner on management page: ", err)
 	}
 }
