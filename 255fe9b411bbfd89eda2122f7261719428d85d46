@@ -16,6 +16,110 @@
       "message": "Hi Alexander,\n\nI got this test to work before adding all the TAPE stuff and it passed: https://paste.googleplex.com/5675768475549696\n\nThen I went ahead and added TAPE, similarly to how I saw it done for gaia_enrollment and now the test doesn\u0027t work: https://paste.googleplex.com/5950152931016704\n\nThere are some TAPE issues like: \"Failed to create an account manager and lease an account.\" you can see more in the logs.\n\nAm I doing something wrong or is it not setup yet for this domain on the backend?\n\nThanks!",
       "revId": "255fe9b411bbfd89eda2122f7261719428d85d46",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97067965_ec487ade",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-28T09:17:32Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "255fe9b411bbfd89eda2122f7261719428d85d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77be0ffd_3dbd2139",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-28T09:17:32Z",
+      "side": 1,
+      "message": "That was my mistake, seems I forgot to add the account in TAPE.",
+      "parentUuid": "def8ce91_693440b7",
+      "revId": "255fe9b411bbfd89eda2122f7261719428d85d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec18a8bb_d7fec5b6",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_bytebot_enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-28T09:17:32Z",
+      "side": 1,
+      "message": "pspb to follow the style guide for protobuf imports. See also here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3788101",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "255fe9b411bbfd89eda2122f7261719428d85d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0ebd032_7cd58c66",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_bytebot_enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-28T09:17:32Z",
+      "side": 1,
+      "message": "This can be removed.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "revId": "255fe9b411bbfd89eda2122f7261719428d85d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ff037e5_e2e6eb05",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_bytebot_enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-28T09:17:32Z",
+      "side": 1,
+      "message": "policyClient to follow the style guide for variable naming. See also here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3789368",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 3
+      },
+      "revId": "255fe9b411bbfd89eda2122f7261719428d85d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
