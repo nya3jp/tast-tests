@@ -30,7 +30,6 @@ func init() {
 		Contacts: []string{
 			"kamesan@chromium.org",
 			"shik@chromium.org",
-			"henryhsu@chromium.org",
 			"chromeos-camera-eng@google.com",
 		},
 		Timeout: 10 * time.Minute,
