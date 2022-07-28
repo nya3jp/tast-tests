@@ -599,10 +599,10 @@ func LaunchApp(tconn *chrome.TestConn, appName string) uiauto.Action {
 }
 
 // PinAppToShelf return a function that pins an app from the expanded launcher to shelf.
+// It assumes that launcher UI is already opened before it is called.
 func PinAppToShelf(tconn *chrome.TestConn, app apps.App, container *nodewith.Finder) uiauto.Action {
 	ui := uiauto.New(tconn)
 	return uiauto.Combine(fmt.Sprintf("PinAppToShelf(%+q)", app),
-		OpenExpandedView(tconn),
 		ui.FocusAndWait(AppItemViewFinder(app.Name).Ancestor(container)),
 		ui.RightClick(AppItemViewFinder(app.Name).Ancestor(container)),
 		ui.LeftClick(nodewith.Name("Pin to shelf").ClassName("MenuItemView")),
