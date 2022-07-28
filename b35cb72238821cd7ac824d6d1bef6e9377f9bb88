@@ -51,6 +51,24 @@
       "parentUuid": "c3bc51ff_fd6c3c21",
       "revId": "b35cb72238821cd7ac824d6d1bef6e9377f9bb88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b179e7ec_03973ea9",
+        "filename": "src/chromiumos/tast/local/ui/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-07-28T23:59:41Z",
+      "side": 1,
+      "message": "Sure we can move lacros.VersionURL later, but it would be good to use it here already.",
+      "parentUuid": "93c131f1_6be116b3",
+      "revId": "b35cb72238821cd7ac824d6d1bef6e9377f9bb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
