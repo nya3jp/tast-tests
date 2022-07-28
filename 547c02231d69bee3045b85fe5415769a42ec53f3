@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "983932c4_cb3de3c4",
+        "filename": "src/chromiumos/tast/local/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T01:06:19Z",
+      "side": 1,
+      "message": "Good idea, done.",
+      "parentUuid": "97cc7228_738e8f23",
+      "revId": "547c02231d69bee3045b85fe5415769a42ec53f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aac858d9_23646f70",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d53ae58_fa719aad",
+        "filename": "src/chromiumos/tast/local/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T01:06:19Z",
+      "side": 1,
+      "message": "There isn\u0027t really any need to do so since it\u0027s not required to close these \"connections\" (I use that term loosely since there is no connection kept alive, it just confirms it can connect to it). There isn\u0027t anything to cleanup that isn\u0027t handled by normal garbage collection when the function returns.",
+      "parentUuid": "aac858d9_23646f70",
+      "revId": "547c02231d69bee3045b85fe5415769a42ec53f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54c18858_92a6221c",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-07-20T00:40:52Z",
       "side": 1,
       "message": "Please add a comment explaining why you don\u0027t need to ResetBluetoothRef for all btpeers, just the first one.",
+      "revId": "547c02231d69bee3045b85fe5415769a42ec53f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa058abe_cc0a7f50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/test_connect_to_btpeers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T01:06:19Z",
+      "side": 1,
+      "message": "This was just a sample test, I\u0027m just trying to demonstrate how to do it. I\u0027ll add another line to do it on the other one though. I primarily kept it at two peers to show how you could connect to multiple, and to test that logic.",
+      "parentUuid": "54c18858_92a6221c",
       "revId": "547c02231d69bee3045b85fe5415769a42ec53f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
