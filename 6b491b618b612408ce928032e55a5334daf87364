@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5be8c8ca_3daedf29",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickanswers/definition_with_non_english_words.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-07-28T20:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d367dd08_b30765fb",
+      "revId": "6b491b618b612408ce928032e55a5334daf87364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9fcec84_b9a52cf6",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-07-28T16:00:51Z",
       "side": 1,
       "message": "Please use the more common table-driven test format for this testing structure for readability:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests",
+      "revId": "6b491b618b612408ce928032e55a5334daf87364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba056b74_39162ad6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/quickanswers/definition_with_non_english_words.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-07-28T20:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9fcec84_b9a52cf6",
       "revId": "6b491b618b612408ce928032e55a5334daf87364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
