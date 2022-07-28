@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "209e27d8_07040cec",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3acb8b15_b3ec06ab",
+      "range": {
+        "startLine": 44,
+        "startChar": 39,
+        "endLine": 44,
+        "endChar": 47
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "078dc6a5_f3206ff6",
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16768326_f1a9956e",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "078dc6a5_f3206ff6",
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90be4a26_c639b543",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-07-28T03:05:12Z",
       "side": 1,
       "message": "go/go-style/decisions#getters\nFunction and method names should not use a Get or get prefix, unless the underlying concept uses the word \"get\" (e.g. an HTTP GET).\n\nDitto for other uses.",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 8
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b4eaa06_6d8ca981",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90be4a26_c639b543",
       "range": {
         "startLine": 75,
         "startChar": 5,
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f779f9ac_5d8e9746",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "Many of these XMLRPC method names don\u0027t match the Go style, but I\u0027d prefer to keep them as-is so that they match the Chameleond Python interfaces.",
+      "parentUuid": "b52e8111_22c4f106",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 4
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecfecdf0_5f2e95b3",
@@ -117,6 +207,30 @@
       "writtenOn": "2022-07-28T03:05:12Z",
       "side": 1,
       "message": "VGA should be capitalized\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 400,
+        "endChar": 7
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf300d7_fbcda44f",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "This function name is set this way to match the Python interface, I\u0027d like to keep it as such for ease of understanding.",
+      "parentUuid": "ecfecdf0_5f2e95b3",
       "range": {
         "startLine": 400,
         "startChar": 4,
@@ -150,6 +264,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "279e2f05_5617a9c8",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "This function name is set this way to match the Python interface, I\u0027d like to keep it as such for ease of understanding.",
+      "parentUuid": "9ceca29e_7f2ca702",
+      "range": {
+        "startLine": 408,
+        "startChar": 7,
+        "endLine": 408,
+        "endChar": 11
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0c828a3_33bb142b",
@@ -163,6 +301,30 @@
       "writtenOn": "2022-07-28T03:05:12Z",
       "side": 1,
       "message": "Ditto here and in other uses below",
+      "range": {
+        "startLine": 412,
+        "startChar": 8,
+        "endLine": 412,
+        "endChar": 12
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5552816e_3ca05fdd",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "This function name is set this way to match the Python interface, I\u0027d like to keep it as such for ease of understanding.",
+      "parentUuid": "a0c828a3_33bb142b",
       "range": {
         "startLine": 412,
         "startChar": 8,
@@ -196,6 +358,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afe8f029_c4f1cbca",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "This function name is set this way to match the Python interface, I\u0027d like to keep it as such for ease of understanding.",
+      "parentUuid": "fbf519c5_c04815aa",
+      "range": {
+        "startLine": 416,
+        "startChar": 4,
+        "endLine": 416,
+        "endChar": 7
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71048838_d3a7cd69",
@@ -209,6 +395,30 @@
       "writtenOn": "2022-07-28T03:05:12Z",
       "side": 1,
       "message": "HPD looks like an initialism. It should be capitalized here and in other uses below.\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 439,
+        "startChar": 5,
+        "endLine": 439,
+        "endChar": 8
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc3f6269_31c0f9a2",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "This function name is set this way to match the Python interface, I\u0027d like to keep it as such for ease of understanding.",
+      "parentUuid": "71048838_d3a7cd69",
       "range": {
         "startLine": 439,
         "startChar": 5,
@@ -242,6 +452,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9f9c7a5_d39444c4",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e33f4f0_d11a0bae",
+      "range": {
+        "startLine": 870,
+        "startChar": 60,
+        "endLine": 870,
+        "endChar": 68
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19b2ea9d_ee27c699",
@@ -255,6 +489,30 @@
       "writtenOn": "2022-07-28T03:05:12Z",
       "side": 1,
       "message": "Ditto: ToString() -\u003e String()",
+      "range": {
+        "startLine": 876,
+        "startChar": 63,
+        "endLine": 876,
+        "endChar": 71
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3317c9d6_a529a34f",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19b2ea9d_ee27c699",
       "range": {
         "startLine": 876,
         "startChar": 63,
@@ -288,6 +546,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cfea389_efda9ec5",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "This function name is set this way to match the Python interface, I\u0027d like to keep it as such for ease of understanding.",
+      "parentUuid": "6fe4bb5d_acce088a",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 4
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ea718eb_f1c8cdf0",
@@ -305,6 +587,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a6d177e_525547c0",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "This function name is set this way to match the Python interface, I\u0027d like to keep it as such for ease of understanding.",
+      "parentUuid": "1ea718eb_f1c8cdf0",
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bf2ec28_6380a624",
@@ -318,6 +618,30 @@
       "writtenOn": "2022-07-28T03:05:12Z",
       "side": 1,
       "message": "optional: Ditto re: Getters\ngo/go-style/decisions#getters",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44b1800a_79a70e1e",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_kit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "This function name is set this way to match the Python interface, I\u0027d like to keep it as such for ease of understanding.",
+      "parentUuid": "4bf2ec28_6380a624",
       "range": {
         "startLine": 25,
         "startChar": 1,
@@ -351,6 +675,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7e8ac3d_5a2d9f55",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/flow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "This function name is set this way to match the Python interface, I\u0027d like to keep it as such for ease of understanding.",
+      "parentUuid": "8ae8d235_12c9bcfe",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 4
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d25cd7c4_d462934d",
@@ -364,6 +712,30 @@
       "writtenOn": "2022-07-28T03:05:12Z",
       "side": 1,
       "message": "This method should not be called ToString(). The idiomatic go interface is called Stringer and the method name should be just String().\nhttps://go.dev/tour/methods/17",
+      "range": {
+        "startLine": 154,
+        "startChar": 25,
+        "endLine": 154,
+        "endChar": 33
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "597cd16d_57d9e304",
+        "filename": "src/chromiumos/tast/common/chameleon/ids.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d25cd7c4_d462934d",
       "range": {
         "startLine": 154,
         "startChar": 25,
@@ -397,6 +769,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5cf6dd_7a54efbb",
+        "filename": "src/chromiumos/tast/common/chameleon/ids.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "774f4186_84956dc4",
+      "range": {
+        "startLine": 278,
+        "startChar": 29,
+        "endLine": 278,
+        "endChar": 37
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a10a52ed_27ba6da6",
@@ -420,6 +816,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2656cd67_7e15afa8",
+        "filename": "src/chromiumos/tast/common/chameleon/ids.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a10a52ed_27ba6da6",
+      "range": {
+        "startLine": 320,
+        "startChar": 28,
+        "endLine": 320,
+        "endChar": 36
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e55f3501_3a36efdf",
@@ -433,6 +853,30 @@
       "writtenOn": "2022-07-28T03:05:12Z",
       "side": 1,
       "message": "This method should not be called ToString(). The idiomatic go interface is called Stringer and the method name should be just String().\nhttps://go.dev/tour/methods/17",
+      "range": {
+        "startLine": 345,
+        "startChar": 25,
+        "endLine": 345,
+        "endChar": 33
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c45cb76a_74c15c19",
+        "filename": "src/chromiumos/tast/common/chameleon/ids.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T18:41:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e55f3501_3a36efdf",
       "range": {
         "startLine": 345,
         "startChar": 25,
