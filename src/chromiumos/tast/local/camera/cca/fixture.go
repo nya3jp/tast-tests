@@ -258,6 +258,11 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	for _, f := range f.features {
 		chromeOpts = append(chromeOpts, chrome.EnableFeatures(string(f)))
 	}
+
+	// Always enable doc scan DLC flag for testing.
+	// TODO(b/226262670): Remove this line once the doc scan DLC is completely enabled.
+	chromeOpts = append(chromeOpts, chrome.EnableFeatures("CameraAppDocScanDlc"))
+
 	if f.fakeCamera {
 		chromeOpts = append(chromeOpts, chrome.ExtraArgs(
 			// The default fps of fake device is 20, but CCA requires fps >= 24.
