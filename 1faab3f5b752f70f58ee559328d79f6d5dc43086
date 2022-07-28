@@ -52,6 +52,24 @@
       "parentUuid": "96a810fb_9f59a75a",
       "revId": "1faab3f5b752f70f58ee559328d79f6d5dc43086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad6590f0_515b6501",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-07-28T08:49:04Z",
+      "side": 1,
+      "message": "\u003e Tast is different from autotest. Therefore I believe this change is still needed.\n\nThanks for the pointer, restored it back now.",
+      "parentUuid": "35bb85b4_add3c6bf",
+      "revId": "1faab3f5b752f70f58ee559328d79f6d5dc43086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
