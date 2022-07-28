@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a41889_45c5f458",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-28T18:42:57Z",
+      "side": 1,
+      "message": "Needs quick advice: Does this condition make sense for here or any future use?\nPractically speaking, this extra line could be removed since the lacros extension args set at L302 would get ignored for ash-chrome but work only for lacros-chrome.",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 25
+      },
+      "revId": "c2d7389bd761f3c7ff4b37b2635d94e48edf9749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b14ffb7_46ca053d",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-28T18:42:57Z",
+      "side": 1,
+      "message": "This is mostly copied from the existing code. Btw, I just added this TODO as I found `ChromeArgs` (L162-177) used for ash-chrome implements more conditions that LacrosExtArgs haven\u0027t. Please let me know if this makes sense for lacros, otherwise I can remove it.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 66
+      },
+      "revId": "c2d7389bd761f3c7ff4b37b2635d94e48edf9749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
