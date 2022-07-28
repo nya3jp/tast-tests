@@ -1,0 +1,446 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0d8c619_5ef5a999",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "Looks good overall. A few mechanical style issues.",
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3acb8b15_b3ec06ab",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "This method should not be called ToString(), the idiomatic go interface is called Stringer and the method name is just String().\nhttps://go.dev/tour/methods/17",
+      "range": {
+        "startLine": 44,
+        "startChar": 39,
+        "endLine": 44,
+        "endChar": 47
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "078dc6a5_f3206ff6",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90be4a26_c639b543",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "go/go-style/decisions#getters\nFunction and method names should not use a Get or get prefix, unless the underlying concept uses the word \"get\" (e.g. an HTTP GET).\n\nDitto for other uses.",
+      "range": {
+        "startLine": 75,
+        "startChar": 5,
+        "endLine": 75,
+        "endChar": 8
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b52e8111_22c4f106",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "optional: go/go-style/decisions#getters\n\nMethods starting with Get... are not idiomatic go. Unless we need to keep the same method names, prefer to drop the Get...\n\nDitto for other Get...() methods below.\n\nMarking optional as there may be a case to keep the interface close to the remote Python class if users are familiar with it.",
+      "range": {
+        "startLine": 230,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 4
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecfecdf0_5f2e95b3",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "VGA should be capitalized\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 400,
+        "endChar": 7
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ceca29e_7f2ca702",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "Edid looks like an initialism. It should be capitalized\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 408,
+        "startChar": 7,
+        "endLine": 408,
+        "endChar": 11
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c828a3_33bb142b",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "Ditto here and in other uses below",
+      "range": {
+        "startLine": 412,
+        "startChar": 8,
+        "endLine": 412,
+        "endChar": 12
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbf519c5_c04815aa",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "DDC looks like an initialism. It should be capitalized here and in other uses.\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 416,
+        "startChar": 4,
+        "endLine": 416,
+        "endChar": 7
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71048838_d3a7cd69",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "HPD looks like an initialism. It should be capitalized here and in other uses below.\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "range": {
+        "startLine": 439,
+        "startChar": 5,
+        "endLine": 439,
+        "endChar": 8
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e33f4f0_d11a0bae",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "Ditto: ToString() -\u003e String()",
+      "range": {
+        "startLine": 870,
+        "startChar": 60,
+        "endLine": 870,
+        "endChar": 68
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b2ea9d_ee27c699",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "Ditto: ToString() -\u003e String()",
+      "range": {
+        "startLine": 876,
+        "startChar": 63,
+        "endLine": 876,
+        "endChar": 71
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fe4bb5d_acce088a",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "Ditto re: Getters\ngo/go-style/decisions#getters",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 4
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ea718eb_f1c8cdf0",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_audio.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "nit: SCPToDUT\nhttps://github.com/golang/go/wiki/CodeReviewComments#initialisms",
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bf2ec28_6380a624",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_kit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "optional: Ditto re: Getters\ngo/go-style/decisions#getters",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae8d235_12c9bcfe",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/flow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "optional: Ditto re: Getters\ngo/go-style/decisions#getters",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 4
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d25cd7c4_d462934d",
+        "filename": "src/chromiumos/tast/common/chameleon/ids.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "This method should not be called ToString(). The idiomatic go interface is called Stringer and the method name should be just String().\nhttps://go.dev/tour/methods/17",
+      "range": {
+        "startLine": 154,
+        "startChar": 25,
+        "endLine": 154,
+        "endChar": 33
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "774f4186_84956dc4",
+        "filename": "src/chromiumos/tast/common/chameleon/ids.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "This method should not be called ToString(). The idiomatic go interface is called Stringer and the method name should be just String().\nhttps://go.dev/tour/methods/17",
+      "range": {
+        "startLine": 278,
+        "startChar": 29,
+        "endLine": 278,
+        "endChar": 37
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a10a52ed_27ba6da6",
+        "filename": "src/chromiumos/tast/common/chameleon/ids.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "This method should not be called ToString(). The idiomatic go interface is called Stringer and the method name should be just String().\nhttps://go.dev/tour/methods/17",
+      "range": {
+        "startLine": 320,
+        "startChar": 28,
+        "endLine": 320,
+        "endChar": 36
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e55f3501_3a36efdf",
+        "filename": "src/chromiumos/tast/common/chameleon/ids.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-28T03:05:12Z",
+      "side": 1,
+      "message": "This method should not be called ToString(). The idiomatic go interface is called Stringer and the method name should be just String().\nhttps://go.dev/tour/methods/17",
+      "range": {
+        "startLine": 345,
+        "startChar": 25,
+        "endLine": 345,
+        "endChar": 33
+      },
+      "revId": "525fa4fde6499f7941b49ceba93b9fd68d7e481e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
