@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e90bcc_d7a0251a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-07-28T12:37:40Z",
+      "side": 1,
+      "message": "Hi, @rzakarian I added you as reviewer as an owner of the gaia tests. I am unsure how to verify those 3 tests because they fail when I run them (even before the change). I have tried different versions and boards, so if you have any tips please let me know. `policy.Enrollment` passes as expected, so the change should also work for the gaia tests.",
+      "revId": "6f745810ebaf69f39deb2bf58448991108c8b401",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
