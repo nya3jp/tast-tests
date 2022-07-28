@@ -33,6 +33,24 @@
       "message": "Alternatively,\nconst PerftestURL \u003d lacros.VersionURL\n\nActually I think we should move the VersionURL constant to the chrome package, next to BlankURL etc.:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/chrome.go;drc\u003d7525d8bc956acf0b3f3b1c61f071f9149b451070;l\u003d77",
       "revId": "b35cb72238821cd7ac824d6d1bef6e9377f9bb88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c131f1_6be116b3",
+        "filename": "src/chromiumos/tast/local/ui/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-28T23:57:03Z",
+      "side": 1,
+      "message": "Yea, moving to chrome sounds good as it\u0027s a chrome:// URL. Would we do it at a later time if it\u0027s not critical?",
+      "parentUuid": "c3bc51ff_fd6c3c21",
+      "revId": "b35cb72238821cd7ac824d6d1bef6e9377f9bb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
