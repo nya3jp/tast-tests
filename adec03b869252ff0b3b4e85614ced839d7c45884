@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16929f8b_acb4ea58",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2022-07-28T20:48:37Z",
+      "side": 1,
+      "message": "Yeah I saw that there isn\u0027t an option for \"android_r\" alone at the moment. Sounds good.",
+      "parentUuid": "12e17127_5aaa9a2e",
+      "range": {
+        "startLine": 44,
+        "startChar": 36,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "adec03b869252ff0b3b4e85614ced839d7c45884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db932857_bf8018fa",
