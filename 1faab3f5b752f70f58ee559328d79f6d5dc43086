@@ -70,6 +70,52 @@
       "parentUuid": "35bb85b4_add3c6bf",
       "revId": "1faab3f5b752f70f58ee559328d79f6d5dc43086",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2560795_4ec975d8",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-28T08:54:18Z",
+      "side": 1,
+      "message": "Should this be a single string?",
+      "range": {
+        "startLine": 96,
+        "startChar": 80,
+        "endLine": 96,
+        "endChar": 105
+      },
+      "revId": "1faab3f5b752f70f58ee559328d79f6d5dc43086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be29d08c_886e3562",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-28T08:54:18Z",
+      "side": 1,
+      "message": "I\u0027m not 100% sure, but this test case looks like we should only allow manual recovery here.",
+      "range": {
+        "startLine": 120,
+        "startChar": 132,
+        "endLine": 120,
+        "endChar": 145
+      },
+      "revId": "1faab3f5b752f70f58ee559328d79f6d5dc43086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
