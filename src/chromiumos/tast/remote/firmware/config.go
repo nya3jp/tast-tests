@@ -96,6 +96,7 @@ type Config struct {
 	RawKeypressDelay                 float64 `json:"keypress_delay"`
 	RawSerialFirmwareBootDelay       float64 `json:"serial_firmware_boot_delay"`
 	RawShutdown                      float64 `json:"shutdown"`
+	RawShutdownTimeout               float64 `json:"shutdown_timeout"`
 	RawSoftwareSyncUpdate            float64 `json:"software_sync_update"`
 	RawUSBPlug                       float64 `json:"usb_plug"`
 
@@ -108,9 +109,15 @@ type Config struct {
 	HoldPwrButtonPowerOn          time.Duration
 	KeypressDelay                 time.Duration
 	SerialFirmwareBootDelay       time.Duration
-	Shutdown                      time.Duration
-	SoftwareSyncUpdate            time.Duration
-	USBPlug                       time.Duration
+	// Shutdown is supposed to be the time the DUT takes to power off.
+	//
+	// Deprecated: Do not use this, just wait for G3/S5 power states instead.
+	Shutdown time.Duration
+	// ShutdownTimeout is the max time a DUT might take to power off. Use this when verifying that a DUT did not power off.
+	// I.e. Make sure that after ShutdownTimeout the power state is still S0 or ssh is working, depending on the circumstance.
+	ShutdownTimeout    time.Duration
+	SoftwareSyncUpdate time.Duration
+	USBPlug            time.Duration
 
 	// Instructions for updating AP firmware over servo
 	APFlashCCDProgrammer   string   `json:"ap_flash_ccd_programmer"`
@@ -211,6 +218,7 @@ func NewConfig(cfgFilepath, board, model string) (*Config, error) {
 	cfg.KeypressDelay = toSeconds(cfg.RawKeypressDelay)
 	cfg.SerialFirmwareBootDelay = toSeconds(cfg.RawSerialFirmwareBootDelay)
 	cfg.Shutdown = toSeconds(cfg.RawShutdown)
+	cfg.ShutdownTimeout = toSeconds(cfg.RawShutdownTimeout)
 	cfg.SoftwareSyncUpdate = toSeconds(cfg.RawSoftwareSyncUpdate)
 	cfg.USBPlug = toSeconds(cfg.RawUSBPlug)
 
