@@ -62,7 +62,7 @@ func init() {
 	})
 }
 
-func collectMetrics(ctx context.Context, sess *tracing.Session, paths metricsPath) error {
+func collectMetrics(ctx context.Context, pv *perf.Values, sess *tracing.Session, paths metricsPath) error {
 	// Transfer trace file to output directory.
 	defer os.Rename(sess.TraceResultFile.Name(), paths.trace)
 
@@ -86,7 +86,6 @@ func collectMetrics(ctx context.Context, sess *tracing.Session, paths metricsPat
 		return errors.Wrap(err, "mismatched amount of columns")
 	}
 
-	pv := perf.NewValues()
 	for i := 0; i < len(names); i++ {
 		value, err := strconv.ParseFloat(values[i], 64)
 		if err != nil {
@@ -120,13 +119,18 @@ func GetUserMediaPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to start tracing: ", err)
 	}
+
+	p := perf.NewValues()
 	paths := metricsPath{
 		trace:     s.OutDir() + "/trace.pb",
 		processor: s.DataPath(tracing.TraceProcessor()),
 		query:     s.DataPath("perfetto/camera_query.sql"),
 		outputDir: s.OutDir()}
 	defer func(cleanupCtx context.Context) {
-		if err := collectMetrics(cleanupCtx, sess, paths); err != nil {
+		if s.HasError() {
+			return
+		}
+		if err := collectMetrics(cleanupCtx, p, sess, paths); err != nil {
 			s.Fatal("Failed to collect metrics: ", err)
 		}
 	}(cleanupCtx)
@@ -155,10 +159,6 @@ func GetUserMediaPerf(ctx context.Context, s *testing.State) {
 
 	if !s.HasError() {
 		// Set and upload frame statistics below.
-		p := perf.NewValues()
 		results.SetPerf(p)
-		if err := p.Save(s.OutDir()); err != nil {
-			s.Error("Failed saving perf data: ", err)
-		}
 	}
 }
