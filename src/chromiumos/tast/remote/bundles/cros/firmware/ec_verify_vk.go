@@ -6,6 +6,7 @@ package firmware
 
 import (
 	"context"
+	"path/filepath"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/empty"
@@ -43,7 +44,7 @@ func init() {
 		// TODO(b/200305355): Add back to firmware_unstable when this test passes.
 		Attr:         []string{"group:firmware", "firmware_detachable"},
 		SoftwareDeps: []string{"chrome"},
-		ServiceDeps:  []string{"tast.cros.browser.ChromeService", "tast.cros.ui.CheckVirtualKeyboardService", "tast.cros.firmware.UtilsService"},
+		ServiceDeps:  []string{"tast.cros.ui.ScreenRecorderService", "tast.cros.browser.ChromeService", "tast.cros.ui.CheckVirtualKeyboardService", "tast.cros.firmware.UtilsService"},
 		Fixture:      fixture.NormalMode,
 		HardwareDeps: hwdep.D(hwdep.ChromeEC(), hwdep.TouchScreen()),
 		Params: []testing.Param{{
@@ -115,6 +116,24 @@ func ECVerifyVK(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to login: ", err)
 	}
 	defer chromeService.Close(ctx, &empty.Empty{})
+
+	s.Log("Screen recorder started")
+	filePath := filepath.Join(s.OutDir(), "ecVerifyVK.webm")
+	startRequest := pb.StartRequest{
+		FileName: filePath,
+	}
+	screenRecorder := pb.NewScreenRecorderServiceClient(h.RPCClient.Conn)
+	if _, err := screenRecorder.Start(ctx, &startRequest); err != nil {
+		s.Fatal("Failed to start recording: ", err)
+	}
+	defer func() {
+		res, err := screenRecorder.Stop(ctx, &empty.Empty{})
+		if err != nil {
+			s.Log("Unable to save the recording: ", err)
+		} else {
+			s.Logf("Screen recording saved to %s", res.FileName)
+		}
+	}()
 
 	vkService := pb.NewCheckVirtualKeyboardServiceClient(h.RPCClient.Conn)
 	ecTool := firmware.NewECTool(s.DUT(), firmware.ECToolNameMain)
