@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "627e9de8_d52f8517",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-28T23:50:38Z",
+      "side": 1,
+      "message": "Rebased to main and made adjustments based off of changed made in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3741526. I confirmed with jonfan@ that it was best to refactor that work to use this newer API and so I added those changes to this CL.",
+      "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
