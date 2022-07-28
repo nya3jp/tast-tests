@@ -12,6 +12,8 @@ import (
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -24,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DesktopControl,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check if the performance around desktop UI components is good enough; see also go/cros-ui-perftests-cq#heading=h.fwfk0yg3teo1",
 		Contacts: []string{
 			"newcomer@chromium.org",
@@ -33,7 +35,6 @@ func init() {
 			"mukai@chromium.org", // Tast author
 		},
 		Attr:         []string{"group:mainline"},
-		Fixture:      "chromeLoggedIn",
 		SoftwareDeps: []string{"chrome", "no_chrome_dcheck"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Params: []testing.Param{
@@ -41,12 +42,32 @@ func init() {
 				// TODO(crbug.com/1337389): remove "informational" once the issue is fixed.
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(perfutil.UnstableModels...)),
+				Fixture:           "chromeLoggedIn",
+				Val:               browser.TypeAsh,
 			},
 			// TODO(crbug.com/1163981): remove "unstable" once we see stability on all platforms.
 			{
 				Name:              "unstable",
 				ExtraAttr:         []string{"informational"},
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(perfutil.UnstableModels...)),
+				Fixture:           "chromeLoggedIn",
+				Val:               browser.TypeAsh,
+			},
+			{
+				Name:              "lacros",
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(perfutil.UnstableModels...)),
+				Fixture:           "lacros",
+				Val:               browser.TypeLacros,
+			},
+			{
+				Name:              "lacros_unstable",
+				ExtraAttr:         []string{"informational"},
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraHardwareDeps: hwdep.D(hwdep.Model(perfutil.UnstableModels...)),
+				Fixture:           "lacros",
+				Val:               browser.TypeLacros,
 			},
 		},
 	})
@@ -64,7 +85,15 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 	)
 	// When custom expectation value needs to be set, modify expects here.
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	const url = chrome.BlankURL
+	conn1, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, s.Param().(browser.Type), url)
+	if err != nil {
+		s.Fatal("Failed to open the browser: ", err)
+	}
+	defer closeBrowser(ctx)
+	defer conn1.Close()
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to get the connection to the test API: ", err)
@@ -78,9 +107,12 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	if err := ash.CreateWindows(ctx, tconn, cr, "", 2); err != nil {
+	// Open one extra new window.
+	conn2, err := br.NewConn(ctx, url, browser.WithNewWindow())
+	if err != nil {
 		s.Fatal("Failed to create new windows: ", err)
 	}
+	defer conn2.Close()
 
 	// This test assumes shelf visibility, setting the shelf behavior explicitly.
 	info, err := display.GetPrimaryInfo(ctx, tconn)
@@ -104,7 +136,7 @@ func DesktopControl(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set all windows as normal state: ", err)
 	}
 
-	r := perfutil.NewRunner(cr.Browser())
+	r := perfutil.NewRunner(br)
 	r.Runs = 3
 	r.RunTracing = false
 
