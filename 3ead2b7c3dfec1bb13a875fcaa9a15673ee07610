@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec19c577_8bbc5e63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/power/idle.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2022-07-28T18:07:10Z",
+      "side": 1,
+      "message": "What I mean is the actual fullscreen, i.e. full white on the screen with no url bar.\n\nBut this is enough for now.",
+      "parentUuid": "0649a8aa_dacfb710",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 2
+      },
+      "revId": "3ead2b7c3dfec1bb13a875fcaa9a15673ee07610",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a31194cd_aad028c5",
