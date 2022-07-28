@@ -413,8 +413,8 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 		// To avoid false positive cases, delay for checking on the power states.
 		// Without this delay, if DUT turns down after 2~3 seconds, checking on
 		// the power state during shutdown might still return S0.
-		s.Logf("Sleeping for %v before checking on the power state", h.Config.Shutdown)
-		if err := testing.Sleep(ctx, h.Config.Shutdown); err != nil {
+		s.Logf("Sleeping for %v before checking on the power state", h.Config.ShutdownTimeout)
+		if err := testing.Sleep(ctx, h.Config.ShutdownTimeout); err != nil {
 			s.Fatal("Failed to sleep: ", err)
 		}
 
