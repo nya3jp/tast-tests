@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "612e0997_d04cde5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-29T15:53:31Z",
+      "side": 1,
+      "message": "I\u0027m still not very familiar with Go but overall this LGTM. I had one minor suggestion and a question about whether 30 seconds was long enough to guarantee reboot is complete but neither is a blocking issue.",
+      "revId": "e9b9bdfcece60034dae692f9b7324ab1506bbab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9c17cd3_54aeaf7d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-29T15:53:31Z",
+      "side": 1,
+      "message": "It might be nice to move this logic into a separate function (maybe named `ConnectAfterReboot`? `WaitUntilRebootComplete`?) to keep the `Reboot` function simple and easy to read.",
+      "revId": "e9b9bdfcece60034dae692f9b7324ab1506bbab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "094f0390_5e4f829d",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-29T15:53:31Z",
+      "side": 1,
+      "message": "I assume that 30 seconds is always be long enough, right?",
+      "range": {
+        "startLine": 160,
+        "startChar": 61,
+        "endLine": 160,
+        "endChar": 77
+      },
+      "revId": "e9b9bdfcece60034dae692f9b7324ab1506bbab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
