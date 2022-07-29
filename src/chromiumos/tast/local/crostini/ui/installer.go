@@ -58,9 +58,10 @@ func New(tconn *chrome.TestConn) *Installer {
 }
 
 // SetDiskSize uses the slider on the Installer options pane to set the disk
-// size to the smallest slider increment larger than the specified disk size.
-// If minDiskSize is smaller than the possible minimum disk size, disk size will be the smallest size.
-func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftMinimum bool) (uint64, error) {
+// size to the specified disk size.
+// If targetSize is smaller/greater than the possible minimum/maximum size, use
+// the extremum size if IsSoftExtremum=true, or return an error otherwise.
+func (p *Installer) SetDiskSize(ctx context.Context, targetSize uint64, IsSoftExtremum bool) (uint64, error) {
 	radioGroup := nodewith.Role(role.RadioGroup).Ancestor(InstallWindow)
 	customStaticText := nodewith.Name("Custom").Role(role.StaticText).Ancestor(radioGroup)
 	slider := nodewith.Role(role.Slider).Ancestor(InstallWindow)
@@ -81,6 +82,26 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftM
 		return 0, err
 	}
 
+	defaultSize, maxSize, minSize, err := settings.SliderDiskSizes(ctx, p.tconn, slider)
+	if err != nil {
+		return 0, errors.Wrap(err, "failed to get the initial disk size")
+	}
+	if defaultSize == targetSize {
+		return targetSize, nil
+	}
+	if targetSize > maxSize {
+		if !IsSoftExtremum {
+			return 0, errors.Errorf("Target size %d is greater than the possible maximum %d, consider set IsSoftExtremum=0 to use the posible maximum", targetSize, maxSize)
+		}
+		targetSize = maxSize
+	}
+	if targetSize < minSize {
+		if !IsSoftExtremum {
+			return 0, errors.Errorf("Target size %d is smaller than the possible minimum %d, consider set IsSoftExtremum=0 to use the posible minimum", targetSize, minSize)
+		}
+		targetSize = minSize
+	}
+
 	// Use keyboard to manipulate the slider rather than writing
 	// custom mouse code to click on exact locations on the slider.
 	kb, err := input.Keyboard(ctx)
@@ -88,41 +109,7 @@ func (p *Installer) SetDiskSize(ctx context.Context, minDiskSize uint64, IsSoftM
 		return 0, errors.Wrap(err, "error in SetDiskSize: error opening keyboard")
 	}
 	defer kb.Close()
-
-	defaultSize, _, _, err := settings.SliderDiskSizes(ctx, p.tconn, slider)
-	if err != nil {
-		return 0, errors.Wrap(err, "failed to get the initial disk size")
-	}
-	if defaultSize == minDiskSize {
-		return minDiskSize, nil
-	}
-	if defaultSize > minDiskSize {
-		// To make sure that the final disk size is equal or larger than the minDiskSize,
-		// move the slider to the left of minDiskSize first.
-		minimumSize, err := settings.ChangeDiskSize(ctx, p.tconn, kb, slider, minDiskSize)
-		if err != nil {
-			return 0, errors.Wrap(err, "failed to move the disk slider to the left")
-		}
-		if minimumSize == minDiskSize {
-			return minDiskSize, nil
-		}
-		if minimumSize > minDiskSize {
-			testing.ContextLogf(ctx,
-				"The target disk size %v is smaller than the minimum disk size, using the minimum disk size %v",
-				minDiskSize, minimumSize)
-			return minimumSize, nil
-		}
-	}
-
-	size, err := settings.ChangeDiskSize(ctx, p.tconn, kb, slider, minDiskSize)
-	if size < minDiskSize {
-		if IsSoftMinimum {
-			testing.ContextLogf(ctx, "The maximum disk size %v < the target disk size %v, using the maximum disk size %v", size, minDiskSize, size)
-			return size, nil
-		}
-		return 0, errors.Errorf("could not set disk size to larger than %v", size)
-	}
-	return size, nil
+	return settings.ChangeDiskSize(ctx, p.tconn, kb, slider, targetSize)
 }
 
 // checkErrorMessage checks to see if an error message is currently displayed in the
