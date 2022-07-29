@@ -16,6 +16,23 @@
       "message": "LGTM for tast review.",
       "revId": "eb6f4136519e3f6f15708520a4630713caf1a8c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d85c8891_b8da852a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1401350
+      },
+      "writtenOn": "2022-07-29T07:30:14Z",
+      "side": 1,
+      "message": "The Lacros tests should work with LeftClick as well now. Can you check if the test passes without this change? I think the fix is included in all builds that were created this week.",
+      "revId": "eb6f4136519e3f6f15708520a4630713caf1a8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
