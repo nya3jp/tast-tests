@@ -34,7 +34,10 @@ func init() {
 		SoftwareDeps: []string{"wilco", "chrome"},
 		Timeout:      30 * time.Minute,
 		Attr:         []string{"group:wilco_bve"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService"},
+		ServiceDeps: []string{
+			"tast.cros.hwsec.OwnershipService",
+			"tast.cros.policy.PolicyService",
+		},
 		// Var "servo" is a ServoV4 Type-C device paired with a Servo Micro via the micro USB port.
 		// Servo Micro as usual gets connected to the DUT motherboard debug header and the other cable with
 		// a USB-C head is attached to the DUT type C port. Note: both cables must be connected to the DUT.
@@ -74,8 +77,8 @@ func DeviceBootOnAC(ctx context.Context, s *testing.State) {
 		if err := dututils.EnsureDUTIsOn(ctx, d, pxy.Servo()); err != nil {
 			s.Error("Failed to ensure DUT is powered on: ", err)
 		}
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, d); err != nil {
-			s.Error("Failed to reset TPM: ", err)
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, d, s.RPCHint()); err != nil {
+			s.Error("Failed to reset TPM after test: ", err)
 		}
 	}(cleanupCtx)
 
@@ -106,7 +109,7 @@ func DeviceBootOnAC(ctx context.Context, s *testing.State) {
 			ctx, cancel := ctxutil.Shorten(ctx, 2*time.Minute)
 			defer cancel()
 
-			if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, d); err != nil {
+			if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, d, s.RPCHint()); err != nil {
 				s.Fatal("Failed to reset TPM: ", err)
 			}
 
