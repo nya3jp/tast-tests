@@ -51,7 +51,7 @@ func FlashromTester(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to servo: ", err)
 	}
 
-	cmd := h.DUT.Conn().CommandContext(ctx, "flashrom_tester", "/usr/sbin/flashrom", "host")
+	cmd := h.DUT.Conn().CommandContext(ctx, "flashrom_tester", "--debug", "/usr/sbin/flashrom", "host")
 
 	stdin, err := cmd.StdinPipe()
 	if err != nil {
