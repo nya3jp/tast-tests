@@ -28,24 +28,27 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Check that overscroll is performed correctly when showing VK",
 		Contacts:     []string{"mehrab@chromium.org", "essential-inputs-team@google.com"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SoftwareDeps: []string{"chrome", "google_virtual_keyboard"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.EnglishUS}),
 		HardwareDeps: hwdep.D(pre.InputsStableModels),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Name:    "tablet",
-				Fixture: fixture.TabletVK,
+				Name:      "tablet",
+				Fixture:   fixture.TabletVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
-				Name:    "clamshell",
-				Fixture: fixture.ClamshellVK,
+				Name:      "clamshell",
+				Fixture:   fixture.ClamshellVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
 			},
 			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosTabletVK,
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
