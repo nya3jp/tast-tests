@@ -46,6 +46,30 @@
       },
       "revId": "87fb76e630ea570c00ad05a425fd540db4fab3e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94aef2a_ce2bf8ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/tablet_operations.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-29T02:23:24Z",
+      "side": 1,
+      "message": "Thanks for the snippet that makes more sense. I\u0027ll be posting a new patch soon after local testing. I think what Georg pointed out is right.\n\n```\ndefer closeBrowser(closeCtx)\ndefer conn.Close()\n...\n```",
+      "parentUuid": "ec23ac40_d3754513",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 29
+      },
+      "revId": "87fb76e630ea570c00ad05a425fd540db4fab3e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
