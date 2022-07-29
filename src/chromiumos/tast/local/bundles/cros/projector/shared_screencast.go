@@ -23,15 +23,26 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SharedScreencast,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Opens a shared screencast in viewer mode",
 		Contacts:     []string{"tobyhuang@chromium.org", "cros-projector+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      5 * time.Minute,
-		Fixture:      "projectorLogin",
 		VarDeps: []string{
 			"projector.sharedScreencastLink",
+		},
+		Params: []testing.Param{
+			{
+				Fixture: "projectorLogin",
+				Val:     browser.TypeAsh,
+			},
+			{
+				Name:              "lacros",
+				Fixture:           "lacrosProjectorLogin",
+				ExtraSoftwareDeps: []string{"lacros"},
+				Val:               browser.TypeLacros,
+			},
 		},
 	})
 }
@@ -49,8 +60,7 @@ func SharedScreencast(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(ctxForCleanUp, s.OutDir(), s.HasError, tconn)
 
 	// Set up browser.
-	// TODO(b/229633861): Also test URL handling in Lacros browser.
-	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, browser.TypeAsh)
+	br, closeBrowser, err := browserfixt.SetUp(ctx, cr, s.Param().(browser.Type))
 	if err != nil {
 		s.Fatal("Failed to set up browser: ", err)
 	}
