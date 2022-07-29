@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/crypto/certificate"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/network/chroot"
+	"chromiumos/tast/local/network/virtualnet/env"
 	"chromiumos/tast/testing"
 )
 
@@ -327,8 +328,8 @@ const (
 	wgServerListenPort       = "12345"
 	wgSecondServerPrivateKey = "MKLi0UPHP09PwZDH0EPVd2mMTeGi98NDR8dfkzPuQHs="
 	wgSecondServerPublicKey  = "wJXMGS2jhLPy4x75yev7oh92OwjHFcSWio4U/pWLYzg="
-	wgSecondServerOverlayIP  = "192.168.100.1"
-	wgSecondServerAllowedIPs = "192.168.100.0/24"
+	wgSecondServerOverlayIP  = "10.14.16.1"
+	wgSecondServerAllowedIPs = "10.14.0.0/16"
 	wgSecondServerListenPort = "54321"
 	wgPresharedKey           = "LqgZ5/qyT8J8nr25n9IEcUi+vOBkd3sphGn1ClhkHw0="
 	wgConfigFile             = "tmp/wg.conf"
@@ -358,8 +359,8 @@ type Server struct {
 }
 
 // StartL2TPIPsecServer starts a L2TP/IPsec server.
-func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, underlayIPIsOverlayIP bool) (*Server, error) {
-	chro := chroot.NewNetworkChroot()
+func StartL2TPIPsecServer(ctx context.Context, env *env.Env, authType string, ipsecUseXauth, underlayIPIsOverlayIP bool) (*Server, error) {
+	chro := chroot.NewNetworkChroot(env)
 	server := &Server{
 		netChroot:    chro,
 		stopCommands: [][]string{},
@@ -430,8 +431,8 @@ func StartL2TPIPsecServer(ctx context.Context, authType string, ipsecUseXauth, u
 }
 
 // StartIKEv2Server starts an IKEv2 server.
-func StartIKEv2Server(ctx context.Context, authType string) (*Server, error) {
-	chro := chroot.NewNetworkChroot()
+func StartIKEv2Server(ctx context.Context, env *env.Env, authType string) (*Server, error) {
+	chro := chroot.NewNetworkChroot(env)
 	server := &Server{
 		netChroot:    chro,
 		stopCommands: [][]string{{"/bin/ip", "link", "del", "xfrm1"}},
@@ -498,8 +499,8 @@ func StartIKEv2Server(ctx context.Context, authType string) (*Server, error) {
 }
 
 // StartOpenVPNServer starts an OpenVPN server.
-func StartOpenVPNServer(ctx context.Context, useUserPassword, useTLSAuth bool) (*Server, error) {
-	chro := chroot.NewNetworkChroot()
+func StartOpenVPNServer(ctx context.Context, env *env.Env, useUserPassword, useTLSAuth bool) (*Server, error) {
+	chro := chroot.NewNetworkChroot(env)
 	server := &Server{
 		netChroot:    chro,
 		stopCommands: [][]string{},
@@ -547,8 +548,8 @@ func StartOpenVPNServer(ctx context.Context, useUserPassword, useTLSAuth bool) (
 }
 
 // StartWireGuardServer starts a WireGuard server.
-func StartWireGuardServer(ctx context.Context, clientPublicKey string, usePSK, isSecondServer bool) (*Server, error) {
-	chro := chroot.NewNetworkChroot()
+func StartWireGuardServer(ctx context.Context, env *env.Env, clientPublicKey string, usePSK, isSecondServer bool) (*Server, error) {
+	chro := chroot.NewNetworkChroot(env)
 	server := &Server{
 		netChroot:    chro,
 		stopCommands: [][]string{{"/bin/ip", "link", "del", "wg1"}},
@@ -581,9 +582,9 @@ func StartWireGuardServer(ctx context.Context, clientPublicKey string, usePSK, i
 	chro.AddStartupCommand("ip addr add dev wg1 " + server.OverlayIP)
 	chro.AddStartupCommand("ip link set dev wg1 up")
 	if isSecondServer {
-		chro.AddStartupCommand("ip route add " + wgSecondServerAllowedIPs + " dev wg1")
+		chro.AddStartupCommand("ip route add " + wgClientOverlayIP + " dev wg1")
 	} else {
-		chro.AddStartupCommand("ip route add " + wgServerAllowedIPs + " dev wg1")
+		chro.AddStartupCommand("ip route add " + wgClientOverlayIP + " dev wg1")
 	}
 
 	var err error

@@ -8,11 +8,8 @@ package chroot
 import (
 	"bytes"
 	"context"
-	"encoding/binary"
 	"fmt"
-	"io"
 	"io/ioutil"
-	"net"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -21,31 +18,19 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	patchpanel "chromiumos/tast/local/network/patchpanel_client"
+	"chromiumos/tast/local/network/virtualnet/env"
+	"chromiumos/tast/testing"
 )
-
-// Subset of bindRootDirectories that should be mounted writable.
-var bindRootWritableDirectories = []string{"dev/pts"}
-
-// Directories we'll bind mount when we want to bridge DBus namespaces.
-// Includes directories containing the system bus socket and machine ID.
-var dbusBridgeDirectories = []string{"run/dbus/", "var/lib/dbus/"}
-
-var rootSymlinks = [][]string{{"var/run", "/run"}, {"var/lock", "/run/lock"}}
 
 // NetworkChroot wraps the chroot variables.
 type NetworkChroot struct {
-	netBindRootDirectories []string
 	netRootDirectories     []string
-	netCopiedConfigFiles   []string
 	netConfigFileTemplates map[string]string
 	netConfigFileValues    map[string]interface{}
-	netTempDir             string
-	netJailArgs            []string
-	netnsLifelineFD        *os.File
-	netnsName              string
 	startupCmd             *testexec.Cmd
 	NetEnv                 []string
+
+	virtualNetEnv *env.Env
 }
 
 const (
@@ -57,167 +42,63 @@ const (
 )
 
 // NewNetworkChroot creates a new chroot object.
-func NewNetworkChroot() *NetworkChroot {
+func NewNetworkChroot(virtualNetEnv *env.Env) *NetworkChroot {
 	return &NetworkChroot{
-		netBindRootDirectories: []string{"bin", "dev", "dev/pts", "lib", "lib32", "lib64", "proc", "sbin", "sys", "usr", "usr/local"},
-		netRootDirectories:     []string{"etc", "etc/ssl", "tmp", "var", "var/log", "run", "run/lock"},
-		netCopiedConfigFiles:   []string{"etc/ld.so.cache"},
 		netConfigFileTemplates: map[string]string{startup: startupTemplate},
 		netConfigFileValues:    map[string]interface{}{"startup_log": startupLog},
+		virtualNetEnv:          virtualNetEnv,
 	}
 }
 
 // Startup creates the chroot, calls patchpanel API to create a netns, starts
 // user processes and returns the IPv4 address inside this netns.
 func (n *NetworkChroot) Startup(ctx context.Context) (string, error) {
-	pc, err := patchpanel.New(ctx)
+	success := false
+	defer func() {
+		if success {
+			return
+		}
+		if err := n.Shutdown(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to clean up NetworkChroot on setup failure: ", err)
+		}
+	}()
+
+	addrs, err := n.virtualNetEnv.GetVethInAddrs(ctx)
 	if err != nil {
-		return "", errors.Wrap(err, "failed to create patchpanel client")
+		return "", errors.Wrap(err, "failed to get addrs from base env")
+	}
+	netnsIP := addrs.IPv4Addr.String()
+
+	for _, rootdir := range n.netRootDirectories {
+		if err := os.Mkdir(n.virtualNetEnv.ChrootPath(rootdir), os.ModePerm); err != nil {
+			return "", errors.Wrapf(err, "failed to create root dir %s inside chroot", rootdir)
+		}
 	}
 
-	// -1 indicates we want a new netns instead of naming a netns associated with a
-	// process. We do not need to communicate outside the DUT in the VPN tests so
-	// the other parameters do not matter.
-	fd, resp, err := pc.ConnectNamespace(ctx, -1, "", false)
-	if err != nil {
-		return "", errors.Wrap(err, "failed to call ConnectNamespace")
-	}
-	b := make([]byte, 4)
-	binary.LittleEndian.PutUint32(b, uint32(resp.PeerIpv4Address))
-	netnsIP := net.IP(b).String()
 	n.netConfigFileValues["netns_ip"] = netnsIP
-	n.netnsLifelineFD = fd
-	n.netnsName = resp.NetnsName
-
-	if err := n.makeChroot(ctx); err != nil {
-		return "", errors.Wrap(err, "failed making the chroot")
-	}
-
 	if err := n.writeConfigs(); err != nil {
 		return "", errors.Wrap(err, "failed writing the configs")
 	}
 
-	cmdArgs := append(n.netJailArgs, "/bin/bash", filepath.Join("/", startup), "&")
-	ipArgs := []string{"netns", "exec", n.netnsName, "/sbin/minijail0", "-C", n.netTempDir}
-	ipArgs = append(ipArgs, cmdArgs...)
-	n.startupCmd = testexec.CommandContext(ctx, "ip", ipArgs...)
+	n.startupCmd = n.virtualNetEnv.CreateCommand(ctx, "/bin/bash", filepath.Join("/", startup))
 	n.startupCmd.Env = append(os.Environ(), n.NetEnv...)
 	if err := n.startupCmd.Start(); err != nil {
 		return "", errors.Wrap(err, "failed to run minijail")
 	}
 
+	success = true
 	return netnsIP, nil
 }
 
-// Shutdown remove the chroot filesystem in which the VPN server was running.
+// Shutdown stops the cmds running by this object.
 func (n *NetworkChroot) Shutdown(ctx context.Context) error {
-	// Delete the network namespace.
-	if n.netnsLifelineFD != nil {
-		n.netnsLifelineFD.Close()
-	}
-
 	// Wait for the startup command finishing. Kill it at first just in case if it is still running.
 	if n.startupCmd != nil {
 		n.startupCmd.Kill()
 		n.startupCmd.Wait()
 	}
 
-	// Remove the chroot filesystem.
-	if _, err := testexec.CommandContext(ctx, "rm", "-rf", "--one-file-system", n.netTempDir).Output(); err != nil {
-		return errors.Wrap(err, "failed removing chroot filesystem in which the VPN server was running")
-	}
-
 	return nil
-}
-
-// makeChroot make a chroot filesystem.
-func (n *NetworkChroot) makeChroot(ctx context.Context) error {
-	temp, err := testexec.CommandContext(ctx, "mktemp", "-d", "/usr/local/tmp/chroot.XXXXXXXXX").Output()
-	if err != nil {
-		return errors.Wrap(err, "failed making temp directory: /usr/local/tmp/chroot.XXXXXXXXX")
-	}
-	n.netTempDir = strings.TrimSuffix(string(temp), "\n")
-	if err := testexec.CommandContext(ctx, "chmod", "go+rX", n.netTempDir).Run(); err != nil {
-		return errors.Wrapf(err, "failed to change mode to go+rX for the temp directory: %s", n.netTempDir)
-	}
-
-	// Make the root directories for the chroot.
-	for _, rootdir := range n.netRootDirectories {
-		if err := os.Mkdir(n.chrootPath(rootdir), os.ModePerm); err != nil {
-			return errors.Wrap(err, "failed making the directory /run/shill")
-		}
-	}
-	var srcPath string
-	var dstPath string
-	// Make the bind root driectories for the chroot.
-	for _, rootdir := range n.netBindRootDirectories {
-		srcPath = filepath.Join("/", rootdir)
-		dstPath = n.chrootPath(rootdir)
-		if _, err := os.Stat(srcPath); os.IsNotExist(err) {
-			continue
-		}
-		if isLink(srcPath) {
-			linkPath, err := os.Readlink(srcPath)
-			if err != nil {
-				return errors.Wrapf(err, "failed to readlink: %v", srcPath)
-			}
-			if err := os.Symlink(linkPath, dstPath); err != nil {
-				return errors.Wrapf(err, "failed to Symlink %s to %s", linkPath, dstPath)
-			}
-		} else {
-			if err := os.MkdirAll(dstPath, 0777); err != nil {
-				return errors.Wrapf(err, "failed creating the directory: %s", dstPath)
-			}
-			mountArg := srcPath + "," + srcPath
-			for _, dir := range bindRootWritableDirectories {
-				if dir == rootdir {
-					mountArg = mountArg + ",1"
-				}
-			}
-			n.netJailArgs = append(n.netJailArgs, "-b", mountArg)
-		}
-	}
-
-	for _, configFile := range n.netCopiedConfigFiles {
-		srcPath = filepath.Join("/", configFile)
-		dstPath = n.chrootPath(configFile)
-		if _, err := os.Stat(srcPath); !os.IsNotExist(err) {
-			copyFile(srcPath, dstPath)
-		}
-	}
-	for _, path := range rootSymlinks {
-		srcPath = path[0]
-		targetPath := path[1]
-		linkPath := n.chrootPath(srcPath)
-		if err := os.Symlink(targetPath, linkPath); err != nil {
-			return errors.Wrapf(err, "failed to Symlink %s to %s", targetPath, linkPath)
-		}
-	}
-
-	return nil
-}
-
-// chrootPath returns the the path within the chroot for |path|.
-func (n *NetworkChroot) chrootPath(path string) string {
-	return filepath.Join(n.netTempDir, strings.TrimLeft(path, "/"))
-}
-
-// isLink returns path is a symbolic link.
-func isLink(path string) bool {
-	if !assureExists(path) {
-		return false
-	}
-
-	fileInfoStat, err := os.Lstat(path)
-	if err != nil {
-		return false
-	}
-
-	if fileInfoStat.Mode()&os.ModeSymlink != os.ModeSymlink {
-		return false
-	}
-
-	return true
 }
 
 // assureExists asserts that |path| exists.
@@ -228,33 +109,12 @@ func assureExists(path string) bool {
 	return true
 }
 
-// copyFile copies file from source to destination.
-func copyFile(srcFile, dstFile string) error {
-	source, err := os.Open(srcFile)
-	if err != nil {
-		return err
-	}
-	defer source.Close()
-
-	destination, err := os.Create(dstFile)
-	if err != nil {
-		return err
-	}
-	defer destination.Close()
-
-	_, err = io.Copy(destination, source)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
 // writeConfigs write config files.
 func (n *NetworkChroot) writeConfigs() error {
 	for configFile, fileTemplate := range n.netConfigFileTemplates {
 		b := &bytes.Buffer{}
 		template.Must(template.New("").Parse(fileTemplate)).Execute(b, n.netConfigFileValues)
-		err := ioutil.WriteFile(n.chrootPath(configFile), []byte(b.String()), 0644)
+		err := ioutil.WriteFile(n.virtualNetEnv.ChrootPath(configFile), []byte(b.String()), 0644)
 		if err != nil {
 			return err
 		}
@@ -265,12 +125,7 @@ func (n *NetworkChroot) writeConfigs() error {
 // RunChroot runs a command in a chroot, within the network namespace associated
 // with this chroot.
 func (n *NetworkChroot) RunChroot(ctx context.Context, args []string) error {
-	minijailArgs := []string{"/sbin/minijail0", "-C", n.netTempDir}
-	ipArgs := []string{"netns", "exec", n.netnsName}
-	ipArgs = append(ipArgs, minijailArgs...)
-	ipArgs = append(ipArgs, n.netJailArgs...)
-	ipArgs = append(ipArgs, args...)
-	output, err := testexec.CommandContext(ctx, "ip", ipArgs...).CombinedOutput()
+	output, err := n.virtualNetEnv.CreateCommand(ctx, args...).CombinedOutput()
 	o := string(output)
 	if err != nil {
 		return errors.Wrapf(err, "failed to run command inside the chroot: %s", o)
@@ -280,7 +135,7 @@ func (n *NetworkChroot) RunChroot(ctx context.Context, args []string) error {
 
 // getPidFile returns the integer contents of |pid_file| in the chroot.
 func (n *NetworkChroot) getPidFile(pidFile string, missingOk bool) (int, error) {
-	chrootPidFile := n.chrootPath(pidFile)
+	chrootPidFile := n.virtualNetEnv.ChrootPath(pidFile)
 	content, err := ioutil.ReadFile(chrootPidFile)
 	if err != nil {
 		if !missingOk || !errors.Is(err, os.ErrNotExist) {
@@ -328,11 +183,6 @@ func (n *NetworkChroot) AddConfigValues(values map[string]interface{}) {
 	}
 }
 
-// AddCopiedConfigFiles add |files| to the set to be copied to the chroot.
-func (n *NetworkChroot) AddCopiedConfigFiles(files []string) {
-	n.netCopiedConfigFiles = append(n.netCopiedConfigFiles, files...)
-}
-
 // AddRootDirectories add |directories| to the set created within the chroot.
 func (n *NetworkChroot) AddRootDirectories(directories []string) {
 	n.netRootDirectories = append(n.netRootDirectories, directories...)
@@ -352,7 +202,7 @@ func (n *NetworkChroot) GetLogContents(ctx context.Context, logFilePaths []strin
 
 	headArgs := []string{"-10000"}
 	for _, log := range logFilePaths {
-		path := n.chrootPath(log)
+		path := n.virtualNetEnv.ChrootPath(log)
 		if assureExists(path) {
 			headArgs = append(headArgs, path)
 		} else {
@@ -373,9 +223,4 @@ func (n *NetworkChroot) GetLogContents(ctx context.Context, logFilePaths []strin
 		return contents, errors.Errorf("files %v do not exist", missingPaths)
 	}
 	return contents, nil
-}
-
-// BridgeDbusNamespaces make the system DBus daemon visible inside the chroot.
-func (n *NetworkChroot) BridgeDbusNamespaces() {
-	n.netBindRootDirectories = append(n.netBindRootDirectories, dbusBridgeDirectories...)
 }
