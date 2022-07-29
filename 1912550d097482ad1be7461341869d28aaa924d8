@@ -16,6 +16,24 @@
       "message": "Hi, this update allows the tests to run faster when resetting the TPM and avoid flakiness that sometimes comes with rebooting the device. \n\nThe only test affected by this change should be wifi.PolicyBasic as it is the only one using wificellFixtEnrolled. I have not been able to test it because I am unsure how to provide the router, would you please be able to verify everything is ok? Thanks!",
       "revId": "1912550d097482ad1be7461341869d28aaa924d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c29e028_e88148e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-07-29T13:31:32Z",
+      "side": 1,
+      "message": "Update: I figured it out and ran the test. It works :)",
+      "parentUuid": "897c1ba7_96e4d1ed",
+      "revId": "1912550d097482ad1be7461341869d28aaa924d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
