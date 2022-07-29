@@ -170,7 +170,7 @@ func SystemPeripheralsFunctionalityCheck(ctx context.Context, s *testing.State) 
 // sdCardDetection performs SD card detection validation.
 func sdCardDetection(ctx context.Context, dut *dut.DUT) error {
 	const sdMmcSpecFile = "/sys/kernel/debug/mmc0/ios"
-	sdCardSpecRe := regexp.MustCompile(`timing spec:.[1-9]+.\(sd.*`)
+	sdCardSpecRe := regexp.MustCompile(`timing spec:.[0-9]+.\((?:sd|mmc).*`)
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		isSDCardConnected := sdCardConnected(ctx, dut)
 		if !isSDCardConnected {
