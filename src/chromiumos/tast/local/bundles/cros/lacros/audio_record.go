@@ -23,10 +23,17 @@ func init() {
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests basic audio recording on lacros",
 		Contacts:     []string{"yuhsuan@chromium.org", "lacros-team@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      "lacrosAudio",
 		Timeout:      7 * time.Minute, // A lenient limit for launching Lacros Chrome.
+		Params: []testing.Param{{
+			ExtraSoftwareDeps: []string{"lacros_stable"},
+		}, {
+			Name:              "unstable",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros_unstable"},
+		}},
 	})
 }
 
