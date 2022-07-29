@@ -16,6 +16,41 @@
       "message": "I believe it\u0027s recommended that such performance tests have a single variant that runs both browsers, such that the numbers for ash and the numbers for lacros can be meaningfully compared.",
       "revId": "a0afbd75cb379be977b27b800aae9ada2e29c63f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67086702_beb4c863",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-29T00:09:59Z",
+      "side": 1,
+      "message": "http://source/search?q\u003dgroup:crosbolt%20lacrosvariantexists shows lacros variants have already been added to tens of crosbold tests.\nPlease let me know whether to keep a single variant (splitting a lacros version to a new file)",
+      "parentUuid": "c4e43cb4_b74077e7",
+      "revId": "a0afbd75cb379be977b27b800aae9ada2e29c63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00ece461_1fa18a5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-29T00:09:59Z",
+      "side": 1,
+      "message": "c",
+      "revId": "a0afbd75cb379be977b27b800aae9ada2e29c63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
