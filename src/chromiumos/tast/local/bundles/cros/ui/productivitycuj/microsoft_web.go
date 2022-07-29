@@ -189,19 +189,27 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, cr *chrome
 			}
 			return nil
 		}
-		copyAll := uiauto.NamedCombine("copy all data",
-			app.selectBox("A1"),
+		selectAll := uiauto.Combine("select all",
 			app.kb.AccelAction("Ctrl+A"),
 			uiauto.Sleep(dataWaitTime), // Given time to select all data.
 			app.kb.AccelAction("Ctrl+C"),
 			uiauto.Sleep(dataWaitTime), // Given time to copy data.
-			uiauto.IfFailThen(checkCopiedData, app.selectRangeWithGoTo),
+		)
+		copyAll := uiauto.NamedCombine("copy all data",
+			app.selectBox("A1"),
+			selectAll,
+			uiauto.IfFailThen(checkCopiedData, uiauto.Combine("select range with Go To",
+				app.selectRangeWithGoTo,
+				app.kb.TypeAction("A1"),
+				app.kb.AccelAction("Enter"),
+				selectAll,
+			)),
 		)
 		return uiauto.Combine("copy from existing spreadsheet",
 			app.openBlankDocument(excel),
 			app.uiHdl.SwitchToChromeTabByName(excelTab),
 			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(canvas),
-			app.ui.Retry(retryTimes, copyAll),
+			copyAll,
 		)(ctx)
 	}
 
@@ -877,8 +885,6 @@ func (app *MicrosoftWebOffice) searchSampleSheet(ctx context.Context) error {
 
 // openFindAndSelect opens "Find & Select".
 func (app *MicrosoftWebOffice) openFindAndSelect(ctx context.Context) error {
-	testing.ContextLog(ctx, `Opening "Find & Select"`)
-
 	findAndSelectButton := nodewith.Name("Find & Select").Role(role.PopUpButton)
 	moreOptions := nodewith.Name("More Options").Role(role.Group)
 	moreOptionsMenu := nodewith.Name("More Options").Role(role.Menu)
@@ -893,10 +899,10 @@ func (app *MicrosoftWebOffice) openFindAndSelect(ctx context.Context) error {
 		return err
 	}
 	if found {
-		return app.uiHdl.Click(findAndSelectButton)(ctx)
+		return uiauto.NamedAction("click Find & Select", app.uiHdl.Click(findAndSelectButton))(ctx)
 	}
 
-	return uiauto.Combine("click more options",
+	return uiauto.NamedCombine("click more options",
 		app.uiHdl.Click(moreOptions),
 		app.uiHdl.Click(findAndSelectItem),
 	)(ctx)
@@ -913,8 +919,6 @@ func (app *MicrosoftWebOffice) selectRangeWithNameBox(ctx context.Context) error
 
 // selectRangeWithGoTo selects the range by opening "Go to" box since the tapping response is different with clicking.
 func (app *MicrosoftWebOffice) selectRangeWithGoTo(ctx context.Context) error {
-	testing.ContextLog(ctx, `Selecting range by open "Go to"`)
-
 	rangeText := nodewith.Name("Range:").Role(role.TextField).Editable()
 	rangeTextFocused := rangeText.Focused()
 	// Pressing Ctrl+G will open the "Go To" box.
@@ -927,7 +931,7 @@ func (app *MicrosoftWebOffice) selectRangeWithGoTo(ctx context.Context) error {
 		goToMenuItem := nodewith.Name("Go to").Role(role.MenuItem)
 		goToDialog := nodewith.Name("Go to").Role(role.Dialog)
 		okButton := nodewith.Name("OK").Role(role.Button).Ancestor(goToDialog)
-		if err := uiauto.Combine(`open "Go To" with panel`,
+		if err := uiauto.NamedCombine(`open "Go To" with panel`,
 			app.uiHdl.ClickUntil(home, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(homeTabPanel)),
 			app.openFindAndSelect,
 			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(goToMenuItem), app.uiHdl.Click(goToMenuItem)),
