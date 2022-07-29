@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4e43cb4_b74077e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-07-29T00:03:10Z",
+      "side": 1,
+      "message": "I believe it\u0027s recommended that such performance tests have a single variant that runs both browsers, such that the numbers for ash and the numbers for lacros can be meaningfully compared.",
+      "revId": "a0afbd75cb379be977b27b800aae9ada2e29c63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
