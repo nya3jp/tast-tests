@@ -6,11 +6,14 @@ package network
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/network/vpn"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/network/routing"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
@@ -43,11 +46,20 @@ func VPNPolicy(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create shill manager proxy: ", err)
 	}
 
-	server, err := vpn.StartL2TPIPsecServer(ctx, vpn.AuthTypePSK, false, false)
+	cleanupCtx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	routingEnv := routing.NewTestEnvWithoutResetProfile()
+	if err := routingEnv.SetUp(ctx); err != nil {
+		s.Fatal("Failed to set up routing env: ", err)
+	}
+	defer routingEnv.TearDown(cleanupCtx)
+
+	server, err := vpn.StartL2TPIPsecServer(ctx, routingEnv.BaseRouter, vpn.AuthTypePSK, false, false)
 	if err != nil {
 		s.Fatal("Failed to start VPN server: ", err)
 	}
-	defer server.Exit(ctx)
+	defer server.Exit(cleanupCtx)
 
 	testing.ContextLog(ctx, "VPN server started as ", server.UnderlayIP)
 
