@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/remote/wificell/dutcfg"
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/router/common"
 	"chromiumos/tast/services/cros/wifi"
 	"chromiumos/tast/testing"
 )
@@ -140,7 +141,7 @@ func FunctionalAfterCSA(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to close frame sender: ", err)
 			}
 		}(ctx)
-		ctx, cancel = router.ReserveForCloseFrameSender(ctx)
+		ctx, cancel = ctxutil.Shorten(ctx, common.RouterCloseFrameSenderDuration)
 		defer cancel()
 		if err := sender.Send(ctx, framesender.TypeChannelSwitch, alternateChannel); err != nil {
 			s.Fatal("Failed to send channel switch frame: ", err)

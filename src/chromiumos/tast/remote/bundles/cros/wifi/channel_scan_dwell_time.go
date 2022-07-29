@@ -26,6 +26,7 @@ import (
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/pcap"
+	"chromiumos/tast/remote/wificell/router/common"
 	"chromiumos/tast/testing"
 )
 
@@ -171,7 +172,7 @@ func ChannelScanDwellTime(ctx context.Context, s *testing.State) {
 			s.Log("Starting frame sender on ", ap.Interface())
 			s.Log("SSID Prefix: ", ssidPrefix)
 			cleanupCtx := ctx
-			ctx, cancel = router.ReserveForCloseFrameSender(ctx)
+			ctx, cancel = ctxutil.Shorten(ctx, common.RouterCloseFrameSenderDuration)
 			defer cancel()
 			sender, err := router.NewFrameSender(ctx, ap.Interface())
 			if err != nil {

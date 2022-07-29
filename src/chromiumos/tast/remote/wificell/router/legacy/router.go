@@ -245,15 +245,16 @@ func (r *Router) setupWifiPhys(ctx context.Context) error {
 //
 // Symptoms of a slow RNG: hostapd complains with:
 //
-//   WPA: Not enough entropy in random pool to proceed - reject first
-//   4-way handshake
+//	WPA: Not enough entropy in random pool to proceed - reject first
+//	4-way handshake
 //
 // Ref:
 // https://chromium.googlesource.com/chromiumos/third_party/hostap/+/7ea51f728bb7/src/ap/wpa_auth.c#1854
 //
 // Linux devices may have RNG parameters at
 // /sys/class/misc/hw_random/rng_{available,current}. See:
-//   https://www.kernel.org/doc/Documentation/hw_random.txt
+//
+//	https://www.kernel.org/doc/Documentation/hw_random.txt
 func (r *Router) configureRNG(ctx context.Context) error {
 	const rngAvailPath = "/sys/class/misc/hw_random/rng_available"
 	const rngCurrentPath = "/sys/class/misc/hw_random/rng_current"
@@ -629,7 +630,7 @@ func (r *Router) StopRawCapturer(ctx context.Context, capturer *pcap.Capturer) e
 	return capturer.Close(ctx)
 }
 
-// NewFrameSender creates a frame sender object.
+// NewFrameSender creates a new framesender.Sender object.
 func (r *Router) NewFrameSender(ctx context.Context, iface string) (ret *framesender.Sender, retErr error) {
 	nd, err := r.monitorOnInterface(ctx, iface)
 	if err != nil {
@@ -649,14 +650,6 @@ func (r *Router) NewFrameSender(ctx context.Context, iface string) (ret *framese
 		return nil, err
 	}
 	return framesender.New(r.host, nd.IfName, r.workDir()), nil
-}
-
-// ReserveForCloseFrameSender returns a shortened ctx with cancel function.
-// The shortened ctx is used for running things before r.CloseFrameSender() to reserve
-// time for it to run.
-func (r *Router) ReserveForCloseFrameSender(ctx context.Context) (context.Context, context.CancelFunc) {
-	// FrameSender don't need close, but we still need some time for freeing interface.
-	return ctxutil.Shorten(ctx, 2*time.Second)
 }
 
 // CloseFrameSender closes frame sender and releases related resources.

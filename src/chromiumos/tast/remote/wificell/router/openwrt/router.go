@@ -19,6 +19,7 @@ import (
 	remoteIp "chromiumos/tast/remote/network/ip"
 	remoteIw "chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell/dhcp"
+	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
 	"chromiumos/tast/remote/wificell/log"
 	"chromiumos/tast/remote/wificell/pcap"
@@ -713,4 +714,60 @@ func HostIsOpenWrtRouter(ctx context.Context, host *ssh.Conn) (bool, error) {
 		return false, errors.Wrapf(err, "failed to check if remote file %q contents match %q", deviceInfoPath, deviceInfoMatchIfOpenWrt)
 	}
 	return matches, nil
+}
+
+// NewFrameSender creates a new framesender.Sender object.
+func (r *Router) NewFrameSender(ctx context.Context, iface string) (ret *framesender.Sender, retErr error) {
+	nd, err := r.monitorOnInterface(ctx, iface)
+	if err != nil {
+		return nil, err
+	}
+	r.im.SetBusy(nd.IfName)
+	defer func() {
+		if retErr != nil {
+			r.im.SetAvailable(nd.IfName)
+		}
+	}()
+
+	if err := r.cloneMAC(ctx, nd.IfName, iface); err != nil {
+		return nil, errors.Wrap(err, "failed to clone MAC")
+	}
+	if err := r.ipr.SetLinkUp(ctx, nd.IfName); err != nil {
+		return nil, err
+	}
+	return framesender.New(r.host, nd.IfName, r.workDir()), nil
+}
+
+// CloseFrameSender closes frame sender and releases related resources.
+func (r *Router) CloseFrameSender(ctx context.Context, s *framesender.Sender) error {
+	err := r.ipr.SetLinkDown(ctx, s.Interface())
+	r.im.SetAvailable(s.Interface())
+	return err
+}
+
+// monitorOnInterface finds an available monitor type interface on the same phy as a
+// busy interface with name=iface.
+func (r *Router) monitorOnInterface(ctx context.Context, iface string) (*iw.NetDev, error) {
+	var ndev *iw.NetDev
+	// Find phy ID of iface.
+	for name, nd := range r.im.Busy {
+		if name == iface {
+			ndev = nd
+			break
+		}
+	}
+	if ndev == nil {
+		return nil, errors.Errorf("cannot find busy interface %s", iface)
+	}
+	phyID := ndev.PhyNum
+	return r.netDevWithPhyID(ctx, phyID, iw.IfTypeMonitor)
+}
+
+// cloneMAC clones the MAC address of src to dst.
+func (r *Router) cloneMAC(ctx context.Context, dst, src string) error {
+	mac, err := r.ipr.MAC(ctx, src)
+	if err != nil {
+		return err
+	}
+	return r.ipr.SetMAC(ctx, dst, mac)
 }
