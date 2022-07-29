@@ -25,14 +25,16 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// testEnv contains all the variables used in a routing test. In each routing
+// TestEnv contains all the variables used in a routing test. In each routing
 // test, two networks (interfaces managed by shill) will be used: the base
 // network and the test network. The base network has a fixed configuration, and
 // it is mainly for isolating the test from physical networks (it always has a
 // higher priority than any physical Ethernet) and used in some verifications.
 // The test network is configured according to the needs in a test and used to
 // simulate different network environments.
-type testEnv struct {
+type TestEnv struct {
+	// resetProfile indicates whether a test profile is pushed during setup.
+	resetProfile   bool
 	popTestProfile func()
 
 	// Manager wraps the Manager D-Bus object in shill.
@@ -76,13 +78,19 @@ const (
 	DHCPExtraTimeout = DHCPTimeout + time.Second
 )
 
-// NewTestEnv creates a new testEnv object for routing tests.
-func NewTestEnv() *testEnv {
-	return &testEnv{Pool: subnet.NewPool()}
+// NewTestEnv creates a new TestEnv object for routing tests.
+func NewTestEnv() *TestEnv {
+	return &TestEnv{resetProfile: true, Pool: subnet.NewPool()}
+}
+
+// NewTestEnvWithoutResetProfile creates a new TestEnv object for routing tests,
+// without resetting profile.
+func NewTestEnvWithoutResetProfile() *TestEnv {
+	return &TestEnv{resetProfile: false, Pool: subnet.NewPool()}
 }
 
 // SetUp configures shill and brings up the base network.
-func (e *testEnv) SetUp(ctx context.Context) error {
+func (e *TestEnv) SetUp(ctx context.Context) error {
 	// Reserve some time for cleanup on failures. This function will start some
 	// processes which are supposed to be kept running so do not defer the
 	// cancel() here.
@@ -105,17 +113,19 @@ func (e *testEnv) SetUp(ctx context.Context) error {
 		return errors.Wrap(err, "failed to create manager proxy")
 	}
 
-	if err = e.Manager.PopAllUserProfiles(ctx); err != nil {
-		return errors.Wrap(err, "failed to pop all user profile in shill")
-	}
+	if e.resetProfile {
+		if err := e.Manager.PopAllUserProfiles(ctx); err != nil {
+			return errors.Wrap(err, "failed to pop all user profile in shill")
+		}
 
-	// Push a test profile to guarantee that all changes related to shill
-	// profile will be undone:
-	// 1) after the test if the test ends normally;
-	// 2) when restarting shill if a crash happened in the test.
-	e.popTestProfile, err = e.Manager.PushTestProfile(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to push test profile in shill")
+		// Push a test profile to guarantee that all changes related to shill
+		// profile will be undone:
+		// 1) after the test if the test ends normally;
+		// 2) when restarting shill if a crash happened in the test.
+		e.popTestProfile, err = e.Manager.PushTestProfile(ctx)
+		if err != nil {
+			return errors.Wrap(err, "failed to push test profile in shill")
+		}
 	}
 
 	testing.ContextLog(ctx, "Disabling portal detection on ethernet")
@@ -157,7 +167,7 @@ func (e *testEnv) SetUp(ctx context.Context) error {
 }
 
 // CreateNetworkEnvForTest creates the test network.
-func (e *testEnv) CreateNetworkEnvForTest(ctx context.Context, opts virtualnet.EnvOptions) error {
+func (e *TestEnv) CreateNetworkEnvForTest(ctx context.Context, opts virtualnet.EnvOptions) error {
 	var err error
 	e.TestService, e.TestRouter, e.TestServer, err = virtualnet.CreateRouterServerEnv(ctx, e.Manager, e.Pool, opts)
 	if err != nil {
@@ -167,12 +177,12 @@ func (e *testEnv) CreateNetworkEnvForTest(ctx context.Context, opts virtualnet.E
 }
 
 // WaitForServiceOnline waits for a shill Service becoming Online.
-func (e *testEnv) WaitForServiceOnline(ctx context.Context, svc *shill.Service) error {
+func (e *TestEnv) WaitForServiceOnline(ctx context.Context, svc *shill.Service) error {
 	return svc.WaitForProperty(ctx, shillconst.ServicePropertyState, shillconst.ServiceStateOnline, 10*time.Second)
 }
 
 // TearDown tears down the routing test environment.
-func (e *testEnv) TearDown(ctx context.Context) error {
+func (e *TestEnv) TearDown(ctx context.Context) error {
 	var lastErr error
 
 	for _, netEnv := range []*env.Env{e.BaseRouter, e.BaseServer, e.TestRouter, e.TestServer} {
@@ -329,12 +339,12 @@ type VerifyOptions struct {
 }
 
 // VerifyBaseNetwork verifies the routing setup for the base network.
-func (e *testEnv) VerifyBaseNetwork(ctx context.Context, opts VerifyOptions) []error {
+func (e *TestEnv) VerifyBaseNetwork(ctx context.Context, opts VerifyOptions) []error {
 	return verifyNetworkConnectivity(ctx, e.BaseRouter, e.BaseServer, opts)
 }
 
 // VerifyTestNetwork verifies the routing setup for the test network.
-func (e *testEnv) VerifyTestNetwork(ctx context.Context, opts VerifyOptions) []error {
+func (e *TestEnv) VerifyTestNetwork(ctx context.Context, opts VerifyOptions) []error {
 	return verifyNetworkConnectivity(ctx, e.TestRouter, e.TestServer, opts)
 }
 
