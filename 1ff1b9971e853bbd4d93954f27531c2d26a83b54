@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81eb703d_fdfff638",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-07-29T01:26:58Z",
+      "side": 1,
+      "message": "Yeah I was wondering about that too and I don\u0027t fully understand it.\n\nHere is the meaning of \"current window\":\nhttps://developer.chrome.com/docs/extensions/reference/windows/#the-current-window\n\n\"The current window is the window that contains the code that is currently executing. It\u0027s important to realize that this can be different from the topmost or focused window.\"\n\nSo in our case it\u0027s the window in which the TestAPI extension is running? Does that make sense?",
+      "parentUuid": "3ab95f62_259f038d",
+      "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d930a800_3b644021",
         "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
         "patchSetId": 3
@@ -119,6 +137,30 @@
       "writtenOn": "2022-07-29T01:20:21Z",
       "side": 1,
       "message": "nit/optional: tabsErr may be clearer?",
+      "range": {
+        "startLine": 85,
+        "startChar": 9,
+        "endLine": 85,
+        "endChar": 19
+      },
+      "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "130df568_1388c4f2",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-07-29T01:26:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d930a800_3b644021",
       "range": {
         "startLine": 85,
         "startChar": 9,
@@ -142,6 +184,24 @@
       "writtenOn": "2022-07-29T01:20:21Z",
       "side": 1,
       "message": "tabs should be be touched on error.",
+      "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d0d789_8865f9ff",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-07-29T01:26:58Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "b6e4c544_f6f934a2",
       "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
