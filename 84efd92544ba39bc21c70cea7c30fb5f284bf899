@@ -224,6 +224,30 @@
       },
       "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db3be33_daee23cc",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-29T22:11:39Z",
+      "side": 1,
+      "message": "Yeah I can do that on Monday.\n\nIs there documentation available on the expected way to use port ids? It seems pretty integral to the system since a lot of the base endpoints require them.",
+      "parentUuid": "786074a2_9ccf7275",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
