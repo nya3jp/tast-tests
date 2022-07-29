@@ -16,6 +16,70 @@
       "message": "Are we still waiting for a review from Kevin?",
       "revId": "38f8f8689fb5b96f6b186b8bc1e3a9aed4df819c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bbf7197_5d4ba7ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-07-29T21:19:12Z",
+      "side": 1,
+      "message": "Oops, I didn\u0027t catch that I had been moved from CC to reviewer. Taking a look now.",
+      "parentUuid": "1117c4c1_2c0eb5cb",
+      "revId": "38f8f8689fb5b96f6b186b8bc1e3a9aed4df819c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4edfbd84_345f2dca",
+        "filename": "src/chromiumos/tast/remote/network/iperf/remote_client.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-07-29T21:19:12Z",
+      "side": 1,
+      "message": "Did you consider whether iperf3 may be preferable for cellular tests? We are stuck using iperf2 on WiFi due to some hardware constraints with our routers, but iperf3 is generally better supported and more robust, so it would be worth considering if iperf3 is better for celullar.",
+      "range": {
+        "startLine": 35,
+        "startChar": 47,
+        "endLine": 35,
+        "endChar": 52
+      },
+      "revId": "38f8f8689fb5b96f6b186b8bc1e3a9aed4df819c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a6bfd7_7957cf71",
+        "filename": "src/chromiumos/tast/remote/network/iperf/remote_client.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-07-29T21:19:12Z",
+      "side": 1,
+      "message": "Why start the iperf client before configuring the firewall?",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "38f8f8689fb5b96f6b186b8bc1e3a9aed4df819c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
