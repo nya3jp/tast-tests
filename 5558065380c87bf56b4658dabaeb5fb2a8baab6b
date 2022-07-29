@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47948e63_f8b71108",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1215107
+      },
+      "writtenOn": "2022-07-29T03:32:13Z",
+      "side": 1,
+      "message": "nit: s/allowButtonFinder/allowButton? I think it reads better as \u0027WaitUntilExists(allowButton)\u0027 and \u0027LeftClick(allowButton)\u0027",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 18
+      },
+      "revId": "5558065380c87bf56b4658dabaeb5fb2a8baab6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
