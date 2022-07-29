@@ -19,15 +19,24 @@ import (
 // MemoryStressUnit creates a Chrome tab that allocates memory like the
 // platform.MemoryStressBasic test.
 type MemoryStressUnit struct {
-	url      string
-	conn     *chrome.Conn
-	cooldown time.Duration
+	url        string
+	conn       *chrome.Conn
+	cooldown   time.Duration
+	background bool
 }
 
 // Run creates a Chrome tab that allocates memory, then waits for the provided
 // cooldown.
 func (st *MemoryStressUnit) Run(ctx context.Context, cr *chrome.Chrome) error {
-	conn, err := cr.NewConn(ctx, st.url)
+	var conn *chrome.Conn
+	var err error
+
+	if st.background {
+		conn, err = cr.NewBackgroundConn(ctx, st.url)
+	} else {
+		conn, err = cr.NewConn(ctx, st.url)
+	}
+
 	if err != nil {
 		return errors.New("failed to open MemoryStressUnit page")
 	}
@@ -96,7 +105,7 @@ func FillChromeOSMemory(ctx context.Context, dataFileSystem http.FileSystem, cr 
 	}
 	for i := 0; ; i++ {
 		const tabOpenCooldown = 2 * time.Second
-		unit := server.NewMemoryStressUnit(unitMiB, ratio, tabOpenCooldown)
+		unit := server.NewMemoryStressUnit(unitMiB, ratio, tabOpenCooldown, false)
 		units = append(units, unit)
 		if err := unit.Run(ctx, cr); err != nil {
 			return cleanup, errors.Wrapf(err, "failed to run MemoryStressUnit %q", unit.url)
@@ -171,13 +180,15 @@ func NewMemoryStressServer(dataFileSystem http.FileSystem) *MemoryStressServer {
 // allocMiB - The amount of memory the tab will allocate.
 // ratio    - How compressible the allocated memory will be.
 // cooldown - How long to wait after allocating before returning.
-func (s *MemoryStressServer) NewMemoryStressUnit(allocMiB int, ratio float32, cooldown time.Duration) *MemoryStressUnit {
+// background - if true the tab is opened as a background tab.
+func (s *MemoryStressServer) NewMemoryStressUnit(allocMiB int, ratio float32, cooldown time.Duration, background bool) *MemoryStressUnit {
 	url := fmt.Sprintf("%s/%s?alloc=%d&ratio=%.3f&id=%d", s.server.URL, AllocPageFilename, allocMiB, ratio, s.nextID)
 	s.nextID++
 	return &MemoryStressUnit{
-		url:      url,
-		conn:     nil,
-		cooldown: cooldown,
+		url:        url,
+		conn:       nil,
+		cooldown:   cooldown,
+		background: background,
 	}
 }
 
@@ -186,7 +197,7 @@ func (s *MemoryStressServer) NewMemoryStressUnit(allocMiB int, ratio float32, co
 // ratio    - How compressible the allocated memory will be.
 // cooldown - How long to wait after allocating before returning.
 func (s *MemoryStressServer) NewMemoryStressTask(allocMiB int, ratio float32, cooldown time.Duration) *MemoryStressTask {
-	return &MemoryStressTask{*s.NewMemoryStressUnit(allocMiB, ratio, cooldown)}
+	return &MemoryStressTask{*s.NewMemoryStressUnit(allocMiB, ratio, cooldown, false)}
 }
 
 // Close shuts down the http server.
