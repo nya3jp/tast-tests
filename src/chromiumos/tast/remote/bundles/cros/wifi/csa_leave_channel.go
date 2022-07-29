@@ -75,7 +75,7 @@ func CSALeaveChannel(ctx context.Context, s *testing.State) {
 
 	apOps := []hostapd.Option{
 		hostapd.Mode(hostapd.Mode80211nMixed),
-		hostapd.Channel(64),
+		hostapd.Channel(48),
 		hostapd.HTCaps(hostapd.HTCapHT20),
 	}
 	ap, err := tf.ConfigureAP(ctx, apOps, nil)

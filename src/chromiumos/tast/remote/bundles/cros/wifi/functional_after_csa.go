@@ -55,7 +55,7 @@ func FunctionalAfterCSA(ctx context.Context, s *testing.State) {
 	const numRounds = 5
 
 	var (
-		primaryChannel   = 64
+		primaryChannel   = 48
 		alternateChannel = 36
 	)
 

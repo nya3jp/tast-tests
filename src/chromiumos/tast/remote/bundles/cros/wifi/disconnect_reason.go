@@ -115,7 +115,7 @@ func DisconnectReason(ctx context.Context, s *testing.State) {
 	}
 
 	const (
-		initialChannel   = 64
+		initialChannel   = 48
 		alternateChannel = 1
 		maxRetry         = 5
 	)
