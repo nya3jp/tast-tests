@@ -46,6 +46,30 @@
       },
       "revId": "549bf684e32cc00dc922faa0d322ab916e82518d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aed601b_c34003f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/input_method_shelf_inputs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-07-29T05:51:02Z",
+      "side": 1,
+      "message": "Thanks for the information. I need to consider it a bit more on hwdep.Keyboard().\n\nFor some devices such as ChromeBox, ChromeBase and VMs. We do want to use virtual device to run PK tests.",
+      "parentUuid": "68464120_c91ba48f",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 84
+      },
+      "revId": "549bf684e32cc00dc922faa0d322ab916e82518d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
