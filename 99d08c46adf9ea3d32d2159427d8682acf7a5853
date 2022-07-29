@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d914783e_69eb8d6b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/launcher/recent_apps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-07-29T08:16:49Z",
+      "side": 1,
+      "message": "bumped",
+      "range": {
+        "startLine": 100,
+        "startChar": 75,
+        "endLine": 100,
+        "endChar": 82
+      },
+      "revId": "99d08c46adf9ea3d32d2159427d8682acf7a5853",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
