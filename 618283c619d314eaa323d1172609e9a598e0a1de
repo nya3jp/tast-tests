@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec64ee90_10bbfeb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-07-29T02:52:17Z",
+      "side": 1,
+      "message": "I think you could migrate this file to tast/local/hwsec/, so that it could be used for your test.",
+      "parentUuid": "3bb33aef_80179b03",
+      "revId": "618283c619d314eaa323d1172609e9a598e0a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7461161_0fdfeb3c",
         "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
         "patchSetId": 1
