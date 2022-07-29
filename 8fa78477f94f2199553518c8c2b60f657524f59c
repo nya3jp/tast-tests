@@ -16,6 +16,24 @@
       "message": "I don\u0027t read Go so I don\u0027t exactly know what this does, but it looks like it means that all these events need to appear separately (first System boot, then Chrome OS Developer Mode). In that case, you can\u0027t just add this as a third event, you need to put it into the regex of the second event, e.g. `Chrome ?OS Developer Mode|boot_mode\u003dDeveloper`.",
       "revId": "8fa78477f94f2199553518c8c2b60f657524f59c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3efdc85_b5396405",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2022-07-29T02:41:10Z",
+      "side": 1,
+      "message": "I\u0027d suggest running the test on devices with and without the new strings to make sure we don\u0027t break anything.",
+      "parentUuid": "e3380b93_19cced3d",
+      "revId": "8fa78477f94f2199553518c8c2b60f657524f59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
