@@ -104,6 +104,30 @@
       },
       "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "920c214d_282624ae",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-29T21:45:52Z",
+      "side": 1,
+      "message": "So what do you want us to use in tests that are trying to use a specific type of port then...?\n\nAre these IDs not consistent? \nhttps://source.corp.google.com/chromeos_public/src/platform/chameleon/chameleond/utils/ids.py",
+      "parentUuid": "61c08047_9402c6a5",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
