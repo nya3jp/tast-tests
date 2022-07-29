@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "205ce250_e4df48c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-07-29T20:45:12Z",
+      "side": 1,
+      "message": "It looks ok. But honestly switching to using the generator doesn\u0027t make things easier to read or maintain. I am conflicted about that part.",
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "695c0319_6661c907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-07-29T20:45:12Z",
+      "side": 1,
+      "message": "I find it very unfortunate that this is not caps.HWDecodeAV1 anymore, as now the intent is not obvious.",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 72
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66ddc37d_5079a5eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-07-29T20:45:12Z",
+      "side": 1,
+      "message": "This also became hard to read.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64203953_880c5b80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-07-29T20:45:12Z",
+      "side": 1,
+      "message": "Good.",
+      "range": {
+        "startLine": 303,
+        "startChar": 5,
+        "endLine": 303,
+        "endChar": 56
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4bcae07_611a6aae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-07-29T20:45:12Z",
+      "side": 1,
+      "message": "Good.",
+      "range": {
+        "startLine": 347,
+        "startChar": 4,
+        "endLine": 347,
+        "endChar": 58
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae44c50_3ba26e94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-07-29T20:45:12Z",
+      "side": 1,
+      "message": "This is hard to read. No underscores here?",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 341,
+        "endChar": 23
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e44f54_2664bd39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-07-29T20:45:12Z",
+      "side": 1,
+      "message": "Here now we have all the tests.",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 40
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f18cdde7_6ff1e3fe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-07-29T20:45:12Z",
+      "side": 1,
+      "message": "//Attr: perBuildAttrs",
+      "range": {
+        "startLine": 511,
+        "startChar": 5,
+        "endLine": 511,
+        "endChar": 63
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da78584d_e31e33b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1000221
+      },
+      "writtenOn": "2022-07-29T20:45:12Z",
+      "side": 1,
+      "message": "Is it possible to escape these parameters so that they don\u0027t get evaluated?",
+      "range": {
+        "startLine": 561,
+        "startChar": 17,
+        "endLine": 561,
+        "endChar": 29
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
