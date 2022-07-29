@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e3272b_9c65aeb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-29T18:03:55Z",
+      "side": 1,
+      "message": "I could see this functionality potentially being used in other tast tests across chromeOS. Thoughts on if this should be in its own separate package, maybe under common or local? If so, I will probably do it in another CL for simplicity.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 1
+      },
+      "revId": "a1132a1f2a72f18fd2b085a0e34578b812a0264c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd37083d_00c8596b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-07-29T18:03:55Z",
+      "side": 1,
+      "message": "I needed to add this as I was running into a scenario where the interface on the global netns was not being removed. It only happened in my parameterized tast test. This fix works for my tast test and had no effect on others.",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 3
+      },
+      "revId": "a1132a1f2a72f18fd2b085a0e34578b812a0264c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
