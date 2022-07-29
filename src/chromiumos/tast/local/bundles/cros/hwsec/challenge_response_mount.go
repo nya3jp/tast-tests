@@ -37,8 +37,8 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 		testUser    = "cryptohome_test@chromium.org"
 		keyLabel    = "testkey"
 		keySizeBits = 2048
-		keyAlg      = cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1
 	)
+	keyAlgs := []cpb.ChallengeSignatureAlgorithm{cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1}
 
 	cmdRunner := hwseclocal.NewCmdRunner()
 
@@ -77,14 +77,15 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 	defer dbusConn.ReleaseName(dbusName)
 
 	keyDelegate, err := util.NewCryptohomeKeyDelegate(
-		s.Logf, dbusConn, testUser, keyAlg, rsaKey, pubKeySPKIDER)
+		s.Logf, dbusConn, testUser, keyAlgs, rsaKey, pubKeySPKIDER)
 	if err != nil {
 		s.Fatal("Failed to export D-Bus key delegate: ", err)
 	}
 	defer keyDelegate.Close()
 
 	// Create the challenge-response protected cryptohome.
-	if err := utility.MountVault(ctx, keyLabel, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg), true, hwsec.NewVaultConfig()); err != nil {
+	authConfig := hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlgs)
+	if err := utility.MountVault(ctx, keyLabel, authConfig, true, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to create cryptohome: ", err)
 	}
 	if keyDelegate.ChallengeCallCnt == 0 {
@@ -93,7 +94,7 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 
 	// Authenticate while the cryptohome is still mounted (modeling the case of
 	// the user unlocking the device from the Lock Screen).
-	if _, err := utility.CheckVault(ctx, keyLabel, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg)); err != nil {
+	if _, err := utility.CheckVault(ctx, keyLabel, authConfig); err != nil {
 		s.Fatal("Failed to check the key for the mounted cryptohome: ", err)
 	}
 
@@ -103,7 +104,7 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 
 	// Mount the existing challenge-response protected cryptohome.
 	keyDelegate.ChallengeCallCnt = 0
-	if err := utility.MountVault(ctx, keyLabel, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg), false, hwsec.NewVaultConfig()); err != nil {
+	if err := utility.MountVault(ctx, keyLabel, authConfig, false, hwsec.NewVaultConfig()); err != nil {
 		s.Fatal("Failed to mount existing cryptohome: ", err)
 	}
 	if keyDelegate.ChallengeCallCnt == 0 {

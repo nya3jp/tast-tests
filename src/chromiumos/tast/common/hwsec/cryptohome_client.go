@@ -284,9 +284,9 @@ type AuthConfig struct {
 	// Used only when AuthType is ChallengeAuth
 	ChallengeSPKI []byte
 
-	// ChallengeAlg is the cryptographic algorithm to use when
+	// ChallengeAlgs is the list of cryptographic algorithms to use for challenge response.
 	// Used only when AuthType is ChallengeAuth
-	ChallengeAlg cpb.ChallengeSignatureAlgorithm
+	ChallengeAlgs []cpb.ChallengeSignatureAlgorithm
 }
 
 // NewPassAuthConfig creates an AuthConfig for Password Authentication.
@@ -299,14 +299,14 @@ func NewPassAuthConfig(username, password string) *AuthConfig {
 }
 
 // NewChallengeAuthConfig creates an AuthConfig for Challenge-Response Authentication.
-func NewChallengeAuthConfig(username, keyDelegateName, keyDelegatePath string, challengeSPKI []byte, challengeAlg cpb.ChallengeSignatureAlgorithm) *AuthConfig {
+func NewChallengeAuthConfig(username, keyDelegateName, keyDelegatePath string, challengeSPKI []byte, challengeAlgs []cpb.ChallengeSignatureAlgorithm) *AuthConfig {
 	config := &AuthConfig{}
 	config.AuthType = ChallengeAuth
 	config.Username = username
 	config.KeyDelegateName = keyDelegateName
 	config.KeyDelegatePath = keyDelegatePath
 	config.ChallengeSPKI = challengeSPKI
-	config.ChallengeAlg = challengeAlg
+	config.ChallengeAlgs = challengeAlgs
 	return config
 }
 
@@ -316,7 +316,11 @@ func authConfigToExtraFlags(config *AuthConfig) []string {
 	if config.AuthType == PassAuth {
 		extraFlags = append(extraFlags, "--password="+config.Password)
 	} else if config.AuthType == ChallengeAuth {
-		extraFlags = append(extraFlags, "--challenge_alg="+config.ChallengeAlg.String())
+		var algs = []string{}
+		for _, a := range config.ChallengeAlgs {
+			algs = append(algs, a.String())
+		}
+		extraFlags = append(extraFlags, "--challenge_alg="+strings.Join(algs, ","))
 		extraFlags = append(extraFlags, "--challenge_spki="+hex.EncodeToString(config.ChallengeSPKI))
 		extraFlags = append(extraFlags, "--key_delegate_name="+config.KeyDelegateName)
 		extraFlags = append(extraFlags, "--key_delegate_path="+config.KeyDelegatePath)
