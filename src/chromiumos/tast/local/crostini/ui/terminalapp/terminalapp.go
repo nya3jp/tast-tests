@@ -27,6 +27,15 @@ import (
 
 const uiTimeout = 15 * time.Second
 
+// LaunchTerminalTimeout is the timeout for launching Terminal. It normally
+// takes a few seconds after running Crostini. However, on some devices
+// launching Terminal when restarting Crostini is unexpectedly slow, which
+// may take longer than one minute (e.g., see b/240366940).
+// Note: This is NOT the expected time to launch Terminal, but a relaxation
+// for extreme cases to avoid test failures due to the timeout.
+// The performance issue will be tracked in future performance testing.
+const LaunchTerminalTimeout = 2 * time.Minute
+
 var (
 	linuxLink           = nodewith.Name("penguin").Role(role.Link)
 	linuxTab            = nodewith.NameContaining("@penguin: ").Role(role.Window).ClassName("BrowserFrame")
@@ -78,7 +87,7 @@ func Find(ctx context.Context, tconn *chrome.TestConn) (*TerminalApp, error) {
 			return err
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+	}, &testing.PollOptions{Timeout: LaunchTerminalTimeout}); err != nil {
 		return nil, errors.Wrap(err, "failed to find the Terminal App window")
 	}
 
