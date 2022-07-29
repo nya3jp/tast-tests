@@ -227,6 +227,30 @@
       },
       "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ae7498_d646d7f5",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-07-29T01:28:36Z",
+      "side": 1,
+      "message": "I had tried that but it required so many changes to the cuj tests that I gave up (since the callsites currently don\u0027t have the browser available, only the tconn). Moreover, there are several other functions here using chrome.tabs API.",
+      "parentUuid": "9d9c450b_3c59396c",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 1
+      },
+      "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
