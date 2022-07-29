@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/testing"
 )
 
@@ -37,6 +38,12 @@ func New(tconn *chrome.TestConn, url, playerSelector string, playerFinder *nodew
 	}
 }
 
+// GetURL returns the URL of video page.
+func (v *Video) GetURL() string { return v.url }
+
+// GetConn returns the connection to video page.
+func (v *Video) GetConn() *chrome.Conn { return v.conn }
+
 // Open opens a video page with provided URL.
 func (v *Video) Open(ctx context.Context, br *browser.Browser) (retErr error) {
 	if v.conn != nil {
@@ -57,6 +64,12 @@ func (v *Video) Open(ctx context.Context, br *browser.Browser) (retErr error) {
 			v.conn.Close()
 		}
 	}(cleanupCtx)
+
+	const timeout = time.Minute
+
+	if err := webutil.WaitForQuiescence(ctx, v.conn, timeout); err != nil {
+		return errors.Wrapf(err, "failed for wait for web page to achieve quiescence within %v", timeout)
+	}
 
 	if err := v.WaitUntilVideoReady(ctx); err != nil {
 		return errors.Wrap(err, "failed to wait until video is ready")
