@@ -22,6 +22,30 @@
       },
       "revId": "27aba3571b5cc794102b8ffff620f5cb4ff25346",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2469b8ad_4458eb56",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-29T01:21:39Z",
+      "side": 1,
+      "message": "I\u0027ll probably leave it to Georg who can explain it better than me. If you have a crbug for this and yours https://crrev.com/c/3790689, I can easily link it here. WDYT?",
+      "parentUuid": "3f852044_0a336293",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "27aba3571b5cc794102b8ffff620f5cb4ff25346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
