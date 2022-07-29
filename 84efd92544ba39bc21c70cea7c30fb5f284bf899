@@ -80,6 +80,30 @@
       },
       "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61c08047_9402c6a5",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-07-29T21:40:53Z",
+      "side": 1,
+      "message": "I don\u0027t think there is unfortunatelly. GetConnectorType returns just an arbitrary string.\n\nThe only expectation so far I\u0027ve discovered has been https://b.corp.google.com/issues/233676810\n\nThe comment there even used to say \"human readable\".",
+      "parentUuid": "a68e8ddf_6d0a601f",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
