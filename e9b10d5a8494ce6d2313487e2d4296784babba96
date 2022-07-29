@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3155436a_b0876ca3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-29T17:30:46Z",
+      "side": 1,
+      "message": "Just use the `\"chromeLoggedIn\"` fixture for Ash, and the `\"lacros\"` fixture for Lacros.",
+      "parentUuid": "e436cf75_fd006914",
+      "range": {
+        "startLine": 85,
+        "startChar": 12,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "e9b10d5a8494ce6d2313487e2d4296784babba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d28d57fe_ec9275ef",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
         "patchSetId": 2
@@ -125,6 +149,30 @@
       "writtenOn": "2022-07-28T23:29:04Z",
       "side": 1,
       "message": "I suggest using `browserfixt.SetUpWithURL`.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 4
+      },
+      "revId": "e9b10d5a8494ce6d2313487e2d4296784babba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e6d1aa5_833e7ce2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-29T17:30:46Z",
+      "side": 1,
+      "message": "I suggest writing code that looks like the `browserfixt.SetUpWithURL` example here:\nhttps://docs.google.com/document/d/1MtkFEB5t5bWHLht_g7qk3oSq6EvAjyN_n-zWvQU9CiA/edit?resourcekey\u003d0-MFe2_R4LkfwXgHUZVUJzOQ#bookmark\u003did.oqcve93xlx54",
+      "parentUuid": "d28d57fe_ec9275ef",
       "range": {
         "startLine": 152,
         "startChar": 0,
