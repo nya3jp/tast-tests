@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0c98c80_ea99505f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-07-29T09:34:57Z",
+      "side": 1,
+      "message": "Question from shadow reviewer: how do we know that failure is a false alarm?",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "6aee867f454064322f13fa33476ca4f1a2d76e2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
