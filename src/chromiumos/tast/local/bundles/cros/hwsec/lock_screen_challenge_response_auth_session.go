@@ -123,10 +123,11 @@ func lockScreenLogin(ctx context.Context, s *testing.State, isEphemeral bool) {
 		defer client.RemoveVault(ctx, ownerUser)
 	}
 
-	if err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, isEphemeral, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg)); err != nil {
+	cleanup, err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, isEphemeral, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg))
+	if err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}
-	defer client.UnmountAndRemoveVault(ctx, testUser)
+	defer cleanup(ctx)
 
 	// Authenticate while the cryptohome is still mounted (modeling the case of
 	// the user unlocking the device from the Lock Screen).

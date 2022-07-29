@@ -99,10 +99,11 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
-	if err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, false /*isEphemeral*/, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg)); err != nil {
+	cleanup, err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, false /*isEphemeral*/, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg))
+	if err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}
-	defer client.UnmountAll(ctx)
+	defer cleanup(ctx)
 
 	// Write a test file to verify persistence.
 	userPath, err := cryptohome.UserPath(ctx, testUser)
