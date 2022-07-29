@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b39bf1_7c94412a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-29T18:30:11Z",
+      "side": 1,
+      "message": "This needs to be `\u003d` instead of `:\u003d`. If you use `:\u003d` then you are creating a new variable that will go out of scope immediately, and then the code below will check the error from the WV16 test run.",
+      "range": {
+        "startLine": 68,
+        "startChar": 14,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "620d0bf9df3db5c161634e5ca3611105b824b087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fb35c01_d5eb2a02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-29T18:30:11Z",
+      "side": 1,
+      "message": "`statErr`",
+      "range": {
+        "startLine": 70,
+        "startChar": 53,
+        "endLine": 70,
+        "endChar": 56
+      },
+      "revId": "620d0bf9df3db5c161634e5ca3611105b824b087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e11de5a9_a9249587",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-29T18:30:11Z",
+      "side": 1,
+      "message": "`gTestErr`",
+      "range": {
+        "startLine": 73,
+        "startChar": 38,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "620d0bf9df3db5c161634e5ca3611105b824b087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
