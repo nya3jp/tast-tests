@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "08fff180_4c89be5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-29T17:32:12Z",
+      "side": 1,
+      "message": "See: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "parentUuid": "871dfb89_6f7e65ed",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 10
+      },
+      "revId": "e29141c103f85fad9934c06662e3f61dd4f7181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db87cf06_8bcbb7be",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
         "patchSetId": 2
@@ -106,6 +130,30 @@
       "writtenOn": "2022-07-29T17:18:55Z",
       "side": 1,
       "message": "Please check the returned `error`.",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 56,
+        "endChar": 12
+      },
+      "revId": "e29141c103f85fad9934c06662e3f61dd4f7181c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f99de76b_58499c0b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/cdm_oemcrypto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-29T17:32:12Z",
+      "side": 1,
+      "message": "See: https://github.com/golang/go/wiki/CodeReviewComments#handle-errors",
+      "parentUuid": "a37d7b04_8f144ff1",
       "range": {
         "startLine": 56,
         "startChar": 3,
