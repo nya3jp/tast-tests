@@ -32,8 +32,11 @@ func init() {
 		},
 		Attr:         []string{"group:wilco_bve"},
 		SoftwareDeps: []string{"chrome", "wilco"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService"},
-		Timeout:      20 * time.Minute,
+		ServiceDeps: []string{
+			"tast.cros.hwsec.OwnershipService",
+			"tast.cros.policy.PolicyService",
+		},
+		Timeout: 20 * time.Minute,
 		// Var "servo" is a ServoV4 Type-A device paired with a Servo Micro via the micro USB port.
 		// Servo Micro as usual gets connected to the DUT motherboard debug header and the other cable
 		// with a USB-A head is attached to the DUT type A port having a lightning bolt or a battery icon.
@@ -63,8 +66,8 @@ func DeviceUSBPowershare(ctx context.Context, s *testing.State) {
 		if err := dututils.EnsureDUTIsOn(ctx, d, pxy.Servo()); err != nil {
 			s.Error("Failed to ensure DUT is powered on: ", err)
 		}
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, d); err != nil {
-			s.Error("Failed to reset TPM: ", err)
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, d, s.RPCHint()); err != nil {
+			s.Error("Failed to reset TPM after test: ", err)
 		}
 	}(cleanupCtx)
 
@@ -113,7 +116,7 @@ func DeviceUSBPowershare(ctx context.Context, s *testing.State) {
 			ctx, cancel := ctxutil.Shorten(ctx, 2*time.Minute)
 			defer cancel()
 
-			if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, d); err != nil {
+			if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, d, s.RPCHint()); err != nil {
 				s.Error("Failed to clear TPM: ", err)
 			}
 
