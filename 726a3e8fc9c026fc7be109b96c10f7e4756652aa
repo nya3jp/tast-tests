@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ae2a78_c236d322",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1518728
+      },
+      "writtenOn": "2022-07-29T11:15:27Z",
+      "side": 1,
+      "message": "Hello Jeremy. \n\nPlease have a look to these new functions that might be helpful for opening CCD. \n\nThank you in advance. ",
+      "revId": "726a3e8fc9c026fc7be109b96c10f7e4756652aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
