@@ -14,7 +14,6 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/video"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
@@ -22,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/media/webmedia"
 	"chromiumos/tast/testing"
 )
 
@@ -173,7 +173,7 @@ type videoPlayer struct {
 	browserRoot  *nodewith.Finder
 	playerFinder *nodewith.Finder
 
-	*video.Video
+	*webmedia.Video
 	ui *uiauto.Context
 }
 
@@ -187,7 +187,7 @@ func newVideoPlayer(tconn *chrome.TestConn, url string) *videoPlayer {
 	return &videoPlayer{
 		browserRoot:  browserRoot,
 		playerFinder: playerFinder,
-		Video:        video.New(tconn, url, playerSelector, playerFinder),
+		Video:        webmedia.New(tconn, url, playerSelector, playerFinder),
 		ui:           uiauto.New(tconn),
 	}
 }
