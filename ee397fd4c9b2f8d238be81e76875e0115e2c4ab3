@@ -16,6 +16,24 @@
       "message": "I\u0027ve addressed the function naming comments for function names that are not governed by the Chameleond XMLRPC interface. For those that call XMLRPC methods I\u0027d prefer to keep them identical so that they may be easily understood and their python counterparts may be looked up with less confusion.",
       "revId": "ee397fd4c9b2f8d238be81e76875e0115e2c4ab3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b85bf84_2e705bc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-07-29T03:10:42Z",
+      "side": 1,
+      "message": "Acknowleged.",
+      "parentUuid": "c7f74124_5231023d",
+      "revId": "ee397fd4c9b2f8d238be81e76875e0115e2c4ab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
