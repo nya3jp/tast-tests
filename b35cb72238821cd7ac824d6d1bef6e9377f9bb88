@@ -69,6 +69,24 @@
       "parentUuid": "93c131f1_6be116b3",
       "revId": "b35cb72238821cd7ac824d6d1bef6e9377f9bb88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d23d338_166ca235",
+        "filename": "src/chromiumos/tast/local/ui/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-29T00:43:45Z",
+      "side": 1,
+      "message": "Ideally we should probably find a new home for the VersionURL under like /tast/common/chrome/const.go, so that it could be referenced by both local|remote tests|fixtures. I just realized the link above is just for local and lacros.VersionURL in the common.\n\nIf this sounds okay, I can create /tast/common/chrome/const.go and add chrome.VersionURL there and get PerftestURL to use it in this CL, then change other code to use it in a follow up.",
+      "parentUuid": "b179e7ec_03973ea9",
+      "revId": "b35cb72238821cd7ac824d6d1bef6e9377f9bb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
