@@ -37,6 +37,12 @@ func New(tconn *chrome.TestConn, url, playerSelector string, playerFinder *nodew
 	}
 }
 
+// GetURL returns the URL of video page.
+func (v *Video) GetURL() string { return v.url }
+
+// GetConn returns the connection to video page.
+func (v *Video) GetConn() *chrome.Conn { return v.conn }
+
 // Open opens a video page with provided URL.
 func (v *Video) Open(ctx context.Context, br *browser.Browser) (retErr error) {
 	if v.conn != nil {
