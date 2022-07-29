@@ -16,6 +16,23 @@
       "message": "tast-owners: ptal",
       "revId": "8053b52d63ce013d53550adb0c0a5a20e16a7576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c93c27_7b70ab5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1378025
+      },
+      "writtenOn": "2022-07-29T07:01:24Z",
+      "side": 1,
+      "message": "I\u0027ll hold off this a bit, seems reven-vm\u0027s failure needs further safe-guarding in this test.\n\nI have a draft CL in progress.",
+      "revId": "8053b52d63ce013d53550adb0c0a5a20e16a7576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
