@@ -17,7 +17,7 @@ const (
 	Crosprqa4Com                          = "crosprqa4_com"
 	DefaultManaged                        = "default_managed"
 	Enrollment                            = "enrollment"
-	EnrollmentKiosk                       = "enrollment_kiosk"
+	ZTETestAutomation                     = "zte-test-automation"
 )
 
 // PoolIds for unmanaged owned test accounts.
