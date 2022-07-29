@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad7990b2_d6ec6a47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-29T08:20:48Z",
+      "side": 1,
+      "message": "Done. Replaced with gopsutil package.",
+      "parentUuid": "5a2d102c_f65334a7",
+      "range": {
+        "startLine": 58,
+        "startChar": 31,
+        "endLine": 58,
+        "endChar": 32
+      },
+      "revId": "6fa386e9ad3ef08e07c65cb5f93a2950a541262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29049903_cf27a8ac",
@@ -84,6 +108,30 @@
       "writtenOn": "2022-07-27T15:16:01Z",
       "side": 1,
       "message": "could you use descriptive message? Ditto for below.",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 31
+      },
+      "revId": "6fa386e9ad3ef08e07c65cb5f93a2950a541262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65624258_c54527c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-29T08:20:48Z",
+      "side": 1,
+      "message": "Current full error message for compare failure is `Failed to validate process info data: name: value doesn\u0027t match: got not_init; want init`. \n\n\"name\" is the field name in the original json display, and will be replaced to other field names such as \"parent_process_id\" in other scenarios.\n\nIs this descriptive enough when displaying the error? Or maybe there\u0027s a better suggestion? Thanks:)",
+      "parentUuid": "29049903_cf27a8ac",
       "range": {
         "startLine": 70,
         "startChar": 27,
@@ -111,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9de51ca7_3aa735be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-29T08:20:48Z",
+      "side": 1,
+      "message": "Done. Added error checking for casting jsontype.",
+      "parentUuid": "6b05bd6a_c3231805",
+      "revId": "6fa386e9ad3ef08e07c65cb5f93a2950a541262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1233bdc_c4271425",
@@ -124,6 +190,24 @@
       "writtenOn": "2022-07-27T15:16:01Z",
       "side": 1,
       "message": "ditto",
+      "revId": "6fa386e9ad3ef08e07c65cb5f93a2950a541262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e06fe00_4a665116",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-07-29T08:20:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c1233bdc_c4271425",
       "revId": "6fa386e9ad3ef08e07c65cb5f93a2950a541262f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
