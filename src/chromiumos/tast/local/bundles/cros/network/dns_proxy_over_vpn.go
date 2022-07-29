@@ -30,7 +30,9 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Ensure that DNS proxies are working correctly over VPN",
 		Contacts:     []string{"jasongustaman@google.com", "garrick@google.com", "cros-networking@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		// TODO(jasongustaman): Disable the tests temporarily before we set up DNS
+		// and DoH servers properly in virtualnet.Env.
+		Attr:         []string{},
 		SoftwareDeps: []string{"chrome", "vm_host", "arc", "dlc", "no_kernel_upstream"},
 		Data:         []string{crostini.GetContainerMetadataArtifact("buster", false), crostini.GetContainerRootfsArtifact("buster", false)},
 		Pre:          multivm.ArcCrostiniStartedWithDNSProxy(),

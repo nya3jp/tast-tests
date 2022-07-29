@@ -17,6 +17,7 @@ import (
 	"chromiumos/tast/common/pkcs11/netcertstore"
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/network/routing"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
@@ -83,6 +84,8 @@ const (
 
 // Connection represents a VPN connection can be used in the test.
 type Connection struct {
+	routingEnv *routing.TestEnv
+
 	Server       *Server
 	SecondServer *Server
 
@@ -215,18 +218,31 @@ func (c *Connection) Cleanup(ctx context.Context) error {
 		}
 	}
 
+	// Stops routing env.
+	if c.routingEnv != nil {
+		if err := c.routingEnv.TearDown(ctx); err != nil {
+			testing.ContextLog(ctx, "Failed to stop routing env: ", err)
+			lastErr = err
+		}
+	}
+
 	return lastErr
 }
 
 func (c *Connection) startServer(ctx context.Context) error {
+	c.routingEnv = routing.NewTestEnvWithoutResetProfile()
+	if err := c.routingEnv.SetUp(ctx); err != nil {
+		return errors.Wrap(err, "failed to setup routing env")
+	}
+
 	var err error
 	switch c.config.Type {
 	case TypeIKEv2:
-		c.Server, err = StartIKEv2Server(ctx, c.config.AuthType)
+		c.Server, err = StartIKEv2Server(ctx, c.routingEnv.BaseRouter, c.config.AuthType)
 	case TypeL2TPIPsec, TypeL2TPIPsecStroke, TypeL2TPIPsecSwanctl:
-		c.Server, err = StartL2TPIPsecServer(ctx, c.config.AuthType, c.config.IPsecUseXauth, c.config.UnderlayIPIsOverlayIP)
+		c.Server, err = StartL2TPIPsecServer(ctx, c.routingEnv.BaseRouter, c.config.AuthType, c.config.IPsecUseXauth, c.config.UnderlayIPIsOverlayIP)
 	case TypeOpenVPN:
-		c.Server, err = StartOpenVPNServer(ctx, c.config.OpenVPNUseUserPassword, c.config.OpenVPNTLSAuth)
+		c.Server, err = StartOpenVPNServer(ctx, c.routingEnv.BaseRouter, c.config.OpenVPNUseUserPassword, c.config.OpenVPNTLSAuth)
 	case TypeWireGuard:
 		clientKey := wgClientPublicKey
 		if c.config.WGAutoGenKey {
@@ -234,10 +250,10 @@ func (c *Connection) startServer(ctx context.Context) error {
 				return errors.Wrap(err, "failed to get public key")
 			}
 		}
-		c.Server, err = StartWireGuardServer(ctx, clientKey, c.config.AuthType == AuthTypePSK, false /*isSecondServer*/)
+		c.Server, err = StartWireGuardServer(ctx, c.routingEnv.BaseRouter, clientKey, c.config.AuthType == AuthTypePSK, false /*isSecondServer*/)
 		if err == nil && c.config.WGTwoPeers {
 			// Always sets preshared key for the second peer.
-			c.SecondServer, err = StartWireGuardServer(ctx, clientKey, true /*usePSK*/, true /*isSecondServer*/)
+			c.SecondServer, err = StartWireGuardServer(ctx, c.routingEnv.BaseServer, clientKey, true /*usePSK*/, true /*isSecondServer*/)
 		}
 	default:
 		return errors.Errorf("unexpected VPN type %s", c.config.Type)
