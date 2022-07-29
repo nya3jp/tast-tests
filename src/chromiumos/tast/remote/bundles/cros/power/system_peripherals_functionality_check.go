@@ -170,7 +170,7 @@ func SystemPeripheralsFunctionalityCheck(ctx context.Context, s *testing.State) 
 // sdCardDetection performs SD card detection validation.
 func sdCardDetection(ctx context.Context, dut *dut.DUT) error {
 	const sdMmcSpecFile = "/sys/kernel/debug/mmc0/ios"
-	sdCardSpecRe := regexp.MustCompile(`timing spec:.[1-9]+.\(sd.*`)
+	sdCardSpecRe := regexp.MustCompile(`timing spec:.[0-9]+.\((?:sd|mmc).*`)
 	return testing.Poll(ctx, func(ctx context.Context) error {
 		isSDCardConnected := sdCardConnected(ctx, dut)
 		if !isSDCardConnected {
@@ -214,8 +214,8 @@ func usbStorageDevicesDetection(ctx context.Context, dut *dut.DUT) error {
 // detected or not.
 func connectedPeripheralsDetection(ctx context.Context, dut *dut.DUT) error {
 	var (
-		connectorInfoRe   = regexp.MustCompile(`.*: connectors:\n.\s+\[CONNECTOR:\d+:[HDMI]+.*`)
-		connectedStatusRe = regexp.MustCompile(`\[CONNECTOR:\d+:HDMI.*status: connected`)
+		nativeHDMIRe      = regexp.MustCompile(`\[CONNECTOR:\d+:HDMI.*status: connected`)
+		typeCHDMIRe = regexp.MustCompile(`Type: HDMI`)
 	)
 	if err := usbStorageDevicesDetection(ctx, dut); err != nil {
 		return errors.Wrap(err, "failed to detect connected USB storage devices")
@@ -224,9 +224,12 @@ func connectedPeripheralsDetection(ctx context.Context, dut *dut.DUT) error {
 		return errors.Wrap(err, "failed to detect connected SD Card")
 	}
 	numberOfDisplays := 1
-	displayInfoPatterns := []*regexp.Regexp{connectorInfoRe, connectedStatusRe}
-	if err := usbutils.ExternalDisplayDetectionForRemote(ctx, dut, numberOfDisplays, displayInfoPatterns); err != nil {
-		return errors.Wrap(err, "failed to detect external HDMI display")
+	nativeDisplayInfoPatterns := []*regexp.Regexp{nativeHDMIRe}
+	typeCDisplayInfoPatterns := []*regexp.Regexp{typeCHDMIRe}
+	if err := usbutils.ExternalDisplayDetectionForRemote(ctx, dut, numberOfDisplays, nativeDisplayInfoPatterns); err != nil {
+		if err := usbutils.ExternalDisplayDetectionForRemote(ctx, dut, numberOfDisplays, typeCDisplayInfoPatterns); err != nil {
+			return errors.Wrap(err, "failed to detect external HDMI display")
+		}
 	}
 	return nil
 }
