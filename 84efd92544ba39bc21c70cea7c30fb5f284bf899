@@ -248,6 +248,30 @@
       },
       "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f32af2ae_6c0f9f83",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-07-29T22:24:34Z",
+      "side": 1,
+      "message": "\u003e Is there documentation available on the expected way to use port ids? It seems pretty integral to the system since a lot of the base endpoints require them.\n\nJust chameleond/interface.py. Consider port_id an opaque handle number, not a standard that has to be shared between server and client. I should be able to `random.randint(0, 1000)` them at chameleond bootup.\n\nAll ports that v3 has (including the upcoming audio ones) can be exhausively enumerated and disambiguated with the API methods I listed above without relying on a pre-shared port_id convention.\n\nSuch port_id lists do change and now we have a mismatch between server and client.\n\n\n```\n% ssh cros@chromeos15-row15-metro1-host15-chameleon.cros.corp.google.com -i ~/cros/src/third_party/chromiumos-overlay/chromeos-base/chromeos-ssh-testkeys/files/testing_rsa -L 9992:localhost:9992\n...\n\n% python client/test_server.py --chameleon_host localhost\n2022-07-29 15:22:41,508:INFO:Connected to http://localhost:9992 with MAC address 20:b0:f7:05:36:3a\n2022-07-29 15:22:41,508:INFO:In interactive shell, p is the proxy to chameleond server\n2022-07-29 15:22:42,319:INFO:\n      Port 0 is DP.\n      Port 1 is DP.\n      Port 2 is HDMI.\n      Port 3 is HDMI.\n      E.g.\n      p.Plug(3) to plug HDMI.\n      p.Unplug(3) to unplug HDMI.\nPython 3.10.5 (main, Jun  8 2022, 09:26:22) [GCC 11.3.0] on linux\nType \"help\", \"copyright\", \"credits\" or \"license\" for more information.\n(InteractiveConsole)\n```",
+      "parentUuid": "2db3be33_daee23cc",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
