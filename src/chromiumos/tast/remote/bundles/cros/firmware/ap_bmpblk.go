@@ -47,21 +47,18 @@ func APBmpblk(ctx context.Context, s *testing.State) {
 
 	coreboot, err := bs.BackupImageSection(ctx, &pb.FWBackUpSection{
 		Programmer: pb.Programmer_BIOSProgrammer,
-		Section:    pb.ImageSection_COREBOOTImageSection,
+		Section:    pb.ImageSection_EmptyImageSection,
 	})
+	s.Log("A portion of the firmware ROM containing Coreboot is stored at: ", coreboot.Path)
+
+	layout, err := h.DUT.Conn().CommandContext(ctx, "cbfstool", coreboot.Path, "layout").Output()
+	layouts := string(layout)
+
 	region := bios.COREBOOTImageSection
-	if err != nil {
-		s.Log("Failed to backup the COREBOOT region.  Older devices may store coreboot in a region named BOOT_STUB: ", err)
-		coreboot, err = bs.BackupImageSection(ctx, &pb.FWBackUpSection{
-			Programmer: pb.Programmer_BIOSProgrammer,
-			Section:    pb.ImageSection_BOOTSTUBImageSection,
-		})
-		if err != nil {
-			s.Fatal("Failed to backup the BOOT_STUB region")
-		}
+	// Older devices may stay coreboot in a region named BOOT_STUB, instead of COREBOOT.
+	if strings.Contains(layouts, "BOOT_STUB") {
 		region = bios.BOOTSTUBImageSection
 	}
-	s.Log("A portion of the firmware ROM containing Coreboot is stored at: ", coreboot.Path)
 
 	out, err := h.DUT.Conn().CommandContext(ctx, "cbfstool", coreboot.Path, "print", "-r", string(region)).Output()
 	if err != nil {
