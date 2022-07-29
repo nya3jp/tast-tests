@@ -33,7 +33,7 @@ const (
 	preTestTimeout         = 30 * time.Second
 	postTestTimeout        = 30 * time.Second
 	uninstallationTimeout  = 2 * time.Minute
-	restartCrostiniTimeout = time.Minute
+	restartCrostiniTimeout = 30*time.Second + terminalapp.LaunchTerminalTimeout
 )
 
 func init() {
