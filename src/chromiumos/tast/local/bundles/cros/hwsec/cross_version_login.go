@@ -293,7 +293,7 @@ func prepareChallengeAuth(ctx context.Context, lf util.LogFunc, config *util.Cro
 		return nil, errors.Wrap(err, "failed to request the well-known D-Bus name")
 	}
 	keyDelegate, err := util.NewCryptohomeKeyDelegate(
-		lf, dbusConn, username, authConfig.ChallengeAlg, rsaKey, authConfig.ChallengeSPKI)
+		lf, dbusConn, username, authConfig.ChallengeAlgs, rsaKey, authConfig.ChallengeSPKI)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to export D-Bus key delegate")
 	}

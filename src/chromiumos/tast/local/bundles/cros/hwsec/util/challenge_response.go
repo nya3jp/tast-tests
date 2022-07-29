@@ -30,7 +30,7 @@ type CryptohomeKeyDelegate struct {
 	DBusPath         string
 	DBusIface        string
 	User             string
-	KeyAlg           cpb.ChallengeSignatureAlgorithm
+	KeyAlgs          []cpb.ChallengeSignatureAlgorithm
 	RsaKey           *rsa.PrivateKey
 	PubKeySPKIDER    []byte
 	ChallengeCallCnt int
@@ -44,7 +44,7 @@ func (d *CryptohomeKeyDelegate) ChallengeKey(
 	marshChallResp []byte, error *dbus.Error) {
 	d.ChallengeCallCnt++
 	localMarshChallResp, err := handleChallengeKey(
-		d.User, d.KeyAlg, d.RsaKey, d.PubKeySPKIDER, marshAccountID, marshChallReq)
+		d.User, d.KeyAlgs, d.RsaKey, d.PubKeySPKIDER, marshAccountID, marshChallReq)
 	if err != nil {
 		d.Lf("ChallengeKey handler failed: %s", err)
 		return nil, dbus.MakeFailedError(err)
@@ -56,14 +56,14 @@ func (d *CryptohomeKeyDelegate) ChallengeKey(
 // D-Bus service running on the given bus.
 func NewCryptohomeKeyDelegate(
 	lf LogFunc, dbusConn *dbus.Conn, testUser string,
-	keyAlg cpb.ChallengeSignatureAlgorithm, rsaKey *rsa.PrivateKey,
+	keyAlgs []cpb.ChallengeSignatureAlgorithm, rsaKey *rsa.PrivateKey,
 	pubKeySPKIDER []byte) (*CryptohomeKeyDelegate, error) {
 	const (
 		dbusPath  = "/org/chromium/CryptohomeKeyDelegate"
 		dbusIface = "org.chromium.CryptohomeKeyDelegateInterface"
 	)
 	keyDelegate := CryptohomeKeyDelegate{
-		lf, dbusConn, dbusPath, dbusIface, testUser, keyAlg, rsaKey, pubKeySPKIDER,
+		lf, dbusConn, dbusPath, dbusIface, testUser, keyAlgs, rsaKey, pubKeySPKIDER,
 		0 /* ChallengeCallCnt */}
 	if err := dbusConn.Export(&keyDelegate, dbusPath, dbusIface); err != nil {
 		return nil, err
@@ -76,9 +76,18 @@ func (d *CryptohomeKeyDelegate) Close() {
 	d.DBusConn.Export(nil, dbus.ObjectPath(d.DBusPath), d.DBusIface)
 }
 
+func isExpectedKeyAlg(alg cpb.ChallengeSignatureAlgorithm, expectedAlgs []cpb.ChallengeSignatureAlgorithm) bool {
+	for _, candidate := range expectedAlgs {
+		if candidate == alg {
+			return true
+		}
+	}
+	return false
+}
+
 // handleChallengeKey is the actual implementation of the ChallengeKey D-Bus.
 func handleChallengeKey(
-	testUser string, keyAlg cpb.ChallengeSignatureAlgorithm,
+	testUser string, keyAlgs []cpb.ChallengeSignatureAlgorithm,
 	rsaKey *rsa.PrivateKey, pubKeySPKIDER, marshAccountID, marshChallReq []byte) (
 	marshChallResp []byte, err error) {
 	var accountID cpb.AccountIdentifier
@@ -112,9 +121,9 @@ func handleChallengeKey(
 			sigReqData.PublicKeySpkiDer)
 	}
 	if sigReqData.SignatureAlgorithm == nil ||
-		*sigReqData.SignatureAlgorithm != keyAlg {
-		return nil, errors.Errorf("wrong signature_algorithm: expected %s, got %s", keyAlg,
-			sigReqData.SignatureAlgorithm)
+		!isExpectedKeyAlg(*sigReqData.SignatureAlgorithm, keyAlgs) {
+		return nil, errors.Errorf("wrong signature_algorithm: expected one of %s, got %s",
+			keyAlgs, sigReqData.SignatureAlgorithm)
 	}
 	dataToSignHash := sha1.Sum(sigReqData.DataToSign)
 	sig, err := rsa.SignPKCS1v15(nil, rsaKey, crypto.SHA1, dataToSignHash[:])

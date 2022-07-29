@@ -54,8 +54,8 @@ func lockScreenLogin(ctx context.Context, s *testing.State, isEphemeral bool) {
 		testFile        = "file"
 		testFileContent = "content"
 		keySizeBits     = 2048
-		keyAlg          = cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1
 	)
+	keyAlgs := []cpb.ChallengeSignatureAlgorithm{cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1}
 
 	// Initialize the underlying KeyDelegate for challenge.
 	cmdRunner := hwseclocal.NewCmdRunner()
@@ -95,7 +95,7 @@ func lockScreenLogin(ctx context.Context, s *testing.State, isEphemeral bool) {
 	defer dbusConn.ReleaseName(dbusName)
 
 	keyDelegate, err := util.NewCryptohomeKeyDelegate(
-		s.Logf, dbusConn, testUser, keyAlg, rsaKey, pubKeySPKIDER)
+		s.Logf, dbusConn, testUser, keyAlgs, rsaKey, pubKeySPKIDER)
 	if err != nil {
 		s.Fatal("Failed to export D-Bus key delegate: ", err)
 	}
@@ -123,7 +123,8 @@ func lockScreenLogin(ctx context.Context, s *testing.State, isEphemeral bool) {
 		defer client.RemoveVault(ctx, ownerUser)
 	}
 
-	if err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, isEphemeral, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg)); err != nil {
+	authConfig := hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlgs)
+	if err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, isEphemeral, authConfig); err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}
 	defer client.UnmountAndRemoveVault(ctx, testUser)
@@ -131,7 +132,7 @@ func lockScreenLogin(ctx context.Context, s *testing.State, isEphemeral bool) {
 	// Authenticate while the cryptohome is still mounted (modeling the case of
 	// the user unlocking the device from the Lock Screen).
 	// In this case the check should succeed.
-	_, err = utility.CheckVault(ctx, keyLabel, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg))
+	_, err = utility.CheckVault(ctx, keyLabel, authConfig)
 	// Verify.
 	if err != nil {
 		s.Fatal("Failed to check the key for the mounted cryptohome: ", err)
@@ -140,7 +141,7 @@ func lockScreenLogin(ctx context.Context, s *testing.State, isEphemeral bool) {
 	// "Corrput" key check request by intentionally providing wrong user.
 	// In this case the check should fail.
 	corruptedUsername := "corrputed_testUser"
-	_, err = utility.CheckVault(ctx, keyLabel, hwsec.NewChallengeAuthConfig(corruptedUsername, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg))
+	_, err = utility.CheckVault(ctx, keyLabel, hwsec.NewChallengeAuthConfig(corruptedUsername, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlgs))
 	// Verify.
 	if err == nil {
 		s.Fatal("Failure expected, but key check succeeded with wrong credentials: ", err)
