@@ -152,6 +152,30 @@
       },
       "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b8b2583_422bbbc7",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-07-29T22:02:07Z",
+      "side": 1,
+      "message": "`ids.py` is only used for v2. I think it has organically grown (eg: everything past `PortUSBAudioOut PortID \u003d 8`) into what it is now and non-video users have started using it more and more.\n\n`chameleond/interface.py` specifies much less than that and that\u0027s what I\u0027ve developed v3 to target, especially since a lot of those ports in `ids.py` were not applicable or the wrong abstraction. The enabled tests (http://go/chameleon-v3-stainless) have been happy enough with that.\n\nThe client should be able to do everything it needs with `GetSupported{Ports,Inputs,Outputs}`, `Has{Audio,Video}Support` \u0026 `GetConnectorType` (to disambiguate closely related ports). It\u0027s possible that we\u0027re missing a few bluetooth `Has*Support` type functions, but I\u0027m not familiar with the bluetooth architecture.",
+      "parentUuid": "920c214d_282624ae",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
