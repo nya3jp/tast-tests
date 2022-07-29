@@ -569,6 +569,7 @@ type JSObject = driver.JSObject
 // from the specified URL is opened. You can assume that the page loading has
 // been finished when this function returns.
 func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*Conn, error) {
+	opts = append(opts, cdputil.WithBackground())
 	return c.sess.NewConn(ctx, url, opts...)
 }
 
