@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61bb71cf_928326c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-29T15:42:16Z",
+      "side": 1,
+      "message": "I still don\u0027t know much Go so the two biggest things I was looking for are listed below and, as best as I can tell, they are both handled properly.\n1. the reboot method blocks and establishes a new connection before returning\n2. reboot error conditions are being properly handled\n",
+      "revId": "33b7e4c2cf78c68ecce67aed0ad283de57624378",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
