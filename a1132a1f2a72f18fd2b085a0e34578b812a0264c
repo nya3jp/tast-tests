@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e317a967_01d5d0b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-07-29T22:12:32Z",
+      "side": 1,
+      "message": "It could be useful in common in case we need to do this for remote tests. Also, could you maybe leave some comments explaining how this all works?",
+      "parentUuid": "13e3272b_9c65aeb5",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 1
+      },
+      "revId": "a1132a1f2a72f18fd2b085a0e34578b812a0264c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd37083d_00c8596b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
         "patchSetId": 10
