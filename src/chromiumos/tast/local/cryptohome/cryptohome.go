@@ -459,12 +459,10 @@ func CreateUserAuthSessionWithChallengeCredential(ctx context.Context, username 
 		if err := cryptohome.PrepareEphemeralVault(ctx, authSessionID); err != nil {
 			return errors.Wrap(err, "failed to prepare ephemeral vault")
 		}
-		defer cryptohome.RemoveVault(ctx, username)
 	} else { // Persistent AuthSession
 		if err := cryptohome.CreatePersistentUser(ctx, authSessionID); err != nil {
 			return errors.Wrap(err, "failed to create persistent user")
 		}
-		defer cryptohome.RemoveVault(ctx, username)
 
 		if err := cryptohome.PreparePersistentVault(ctx, authSessionID, false); err != nil {
 			return errors.Wrap(err, "failed to prepare persistent vault")

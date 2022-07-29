@@ -102,6 +102,7 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 	if err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, false /*isEphemeral*/, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg)); err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}
+	defer cryptohome.RemoveVault(ctx, testUser)
 	defer client.UnmountAll(ctx)
 
 	// Write a test file to verify persistence.
