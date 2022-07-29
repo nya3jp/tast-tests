@@ -601,6 +601,12 @@ func (c *Chrome) NewConn(ctx context.Context, url string, opts ...cdputil.Create
 	return c.sess.NewConn(ctx, url, opts...)
 }
 
+// NewBackgroundConn returns NewConn with cdputil.WithBAckground() option specified.
+func (c *Chrome) NewBackgroundConn(ctx context.Context, url string, opts ...cdputil.CreateTargetOption) (*Conn, error) {
+	opts = append(opts, cdputil.WithBackground())
+	return c.NewConn(ctx, url, opts...)
+}
+
 // Target describes a DevTools target.
 type Target = driver.Target
 
