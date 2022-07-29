@@ -16,6 +16,7 @@ const (
 	DefaultManaged                        = "default_managed"
 	Enrollment                            = "enrollment"
 	EnrollmentSaml                        = "enrollment_saml"
+	ZTETestAutomation                     = "zte-test-automation"
 )
 
 // PoolIds for unmanaged owned test accounts.
