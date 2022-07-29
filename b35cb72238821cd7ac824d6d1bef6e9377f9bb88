@@ -87,6 +87,24 @@
       "parentUuid": "b179e7ec_03973ea9",
       "revId": "b35cb72238821cd7ac824d6d1bef6e9377f9bb88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6930f56d_cd58ecb2",
+        "filename": "src/chromiumos/tast/local/ui/constants.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-29T01:13:51Z",
+      "side": 1,
+      "message": "I believe we are just fine with this last patch that has added the VersionURL constant to the local chrome package since the version page is not being referenced by any remote tests yet. We can come back when any remote tests happen to need it at a later time. Thanks, marking as resolved.",
+      "parentUuid": "9d23d338_166ca235",
+      "revId": "b35cb72238821cd7ac824d6d1bef6e9377f9bb88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
