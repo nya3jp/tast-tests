@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b3af823_7ad56f7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-29T17:43:52Z",
+      "side": 1,
+      "message": "Thanks Yu-Hsuan, +1 to the idea of promoting the tests to a subset of the targets known to be stable first, then iterate over to expand them.",
+      "revId": "27a2d95950a17d31ca9e4ff6c3e9217e22bb5826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
