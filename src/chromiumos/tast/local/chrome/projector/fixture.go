@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -20,10 +21,8 @@ import (
 const resetTimeout = 30 * time.Second
 
 // NewProjectorFixture creates a new implementation of the Projector fixture.
-func NewProjectorFixture(opts ...chrome.Option) testing.FixtureImpl {
-	return &projectorFixture{
-		opts: opts,
-	}
+func NewProjectorFixture(fOpts chrome.OptionsCallback) testing.FixtureImpl {
+	return &projectorFixture{fOpts: fOpts}
 }
 
 func init() {
@@ -31,7 +30,32 @@ func init() {
 		Name:     "projectorLogin",
 		Desc:     "Regular user login with Projector feature flag enabled",
 		Contacts: []string{"tobyhuang@chromium.org", "cros-projector@google.com"},
-		Impl:     NewProjectorFixture(chrome.EnableFeatures("Projector, ProjectorAppDebug, ProjectorAnnotator, ProjectorTutorialVideoView")),
+		Impl: NewProjectorFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{
+				chrome.EnableFeatures("Projector, ProjectorAppDebug, ProjectorAnnotator, ProjectorTutorialVideoView"),
+				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+			}, nil
+		}),
+		Vars: []string{
+			"ui.gaiaPoolDefault",
+		},
+		SetUpTimeout:    chrome.GAIALoginTimeout + time.Minute,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: resetTimeout,
+		PreTestTimeout:  resetTimeout,
+		PostTestTimeout: resetTimeout,
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "lacrosProjectorLogin",
+		Desc:     "Regular user login to lacros with Projector feature flag enabled",
+		Contacts: []string{"hyungtaekim@chromium.org", "cros-projector@google.com"},
+		Impl: NewProjectorFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(
+				chrome.EnableFeatures("Projector, ProjectorAppDebug, ProjectorAnnotator, ProjectorTutorialVideoView"),
+				chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
+			)).Opts()
+		}),
 		Vars: []string{
 			"ui.gaiaPoolDefault",
 		},
@@ -44,8 +68,8 @@ func init() {
 }
 
 type projectorFixture struct {
-	cr   *chrome.Chrome
-	opts []chrome.Option
+	cr    *chrome.Chrome
+	fOpts chrome.OptionsCallback
 }
 
 // FixtData holds information made available to tests that specify this Fixture.
@@ -57,8 +81,11 @@ type FixtData struct {
 }
 
 func (f *projectorFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	f.opts = append(f.opts, chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")))
-	cr, err := chrome.New(ctx, f.opts...)
+	opts, err := f.fOpts(ctx, s)
+	if err != nil {
+		s.Fatal("Failed to obtain Chrome options: ", err)
+	}
+	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
