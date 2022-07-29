@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb15e38_917b2a75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-07-29T11:57:13Z",
+      "side": 1,
+      "message": "The code is terrible, but it at least work on environments with multivm.Lifecycle.allocate.\n\nRun\n```\ntast run $DUT multivm.MemoryAllocationCanaryHealthPerf.${CANARY}_${ALLOC_TARGET}\n\n```\n\nwhere\nCANARY :\u003d app | tab\nTARGET :\u003d host | arc\n\nSeveral things to note:\n\n1. The current implementation is waiting for the allocation to be done. 250 MiB allocation takes quite long time so I removed other lines to explicitly sleep.\n2. The result seems quite stable. Within the few runs, the maximum difference was only one allocator for all the combinations\n3. Iterations do not work because I didn\u0027t have enough time to figure out how to reactivate the dead chrome.\n4. tab_arc does not work. The allocation process in ARC seems to be killed before the background tab.\n5. Each MemoryAllocationUnit needs to keep stdin of the process otherwise the process exits with getchar(). That might be affecting the existing LifeCycle test.\n6. If each process allocates too little memory, eventually one of them is killed with \"too many open files\".\n\n",
+      "revId": "eb86606c88ece6035d9eb4c294a00f63fef8e457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
