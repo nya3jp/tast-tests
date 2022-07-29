@@ -6,7 +6,8 @@ package assistant
 
 import (
 	"context"
-	"strings"
+	"fmt"
+	"regexp"
 	"time"
 
 	"github.com/shirou/gopsutil/v3/process"
@@ -43,16 +44,20 @@ func init() {
 	})
 }
 
-type processNotFoundError struct{}
+const audioDecoderUtilProcName = "ash.assistant.mojom.AssistantAudioDecoderFactory"
 
-func (e *processNotFoundError) Error() string {
-	return "Assistant Audio Decoder utility process not found"
+type audioDecoderUtilProcNotFoundError struct {
+	utilProcNames []string
 }
 
-type processFoundError struct{}
+func (e *audioDecoderUtilProcNotFoundError) Error() string {
+	return fmt.Sprintf("%s not found in: %v", audioDecoderUtilProcName, e.utilProcNames)
+}
 
-func (e *processFoundError) Error() string {
-	return "Assistant Audio Decoder utility process found"
+type audioDecoderUtilProcFoundError struct{}
+
+func (e *audioDecoderUtilProcFoundError) Error() string {
+	return fmt.Sprintf("%s found", audioDecoderUtilProcName)
 }
 
 func findAudioDecoderUtilityProcess() (*process.Process, error) {
@@ -61,24 +66,38 @@ func findAudioDecoderUtilityProcess() (*process.Process, error) {
 		return nil, errors.Wrap(err, "failed to get utility processes")
 	}
 
+	re := regexp.MustCompile(` --?utility-sub-type=([\w\.]+)(?: |$)`)
+
+	// Store utility process names for generating an error message.
+	var utilProcNames []string
 	for _, proc := range procs {
 		cmdline, err := proc.Cmdline()
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to get cmdline")
 		}
-		if strings.Contains(cmdline, " --utility-sub-type=chromeos.assistant.mojom.AssistantAudioDecoderFactory") {
+
+		matches := re.FindStringSubmatch(cmdline)
+		if len(matches) < 2 {
+			continue
+		}
+
+		procName := matches[1]
+		utilProcNames = append(utilProcNames, procName)
+
+		if procName == audioDecoderUtilProcName {
 			return proc, nil
 		}
 	}
-	return nil, &processNotFoundError{}
+	return nil,
+		&audioDecoderUtilProcNotFoundError{utilProcNames: utilProcNames}
 }
 
 func expectNoAudioDecoderUtilityProcess() error {
 	_, err := findAudioDecoderUtilityProcess()
-	if _, ok := err.(*processNotFoundError); ok {
+	if _, ok := err.(*audioDecoderUtilProcNotFoundError); ok {
 		return nil
 	} else if err == nil {
-		return &processFoundError{}
+		return &audioDecoderUtilProcFoundError{}
 	}
 	return err
 }
