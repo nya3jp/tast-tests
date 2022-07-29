@@ -6,20 +6,12 @@ package autoupdate
 
 import (
 	"context"
-	"fmt"
-	"strconv"
 	"time"
 
 	"chromiumos/tast/common/fixture"
-	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/dut"
-	"chromiumos/tast/errors"
-	"chromiumos/tast/lsbrelease"
-	"chromiumos/tast/remote/policyutil"
+	"chromiumos/tast/remote/rollback"
 	"chromiumos/tast/remote/updateutil"
-	"chromiumos/tast/rpc"
-	aupb "chromiumos/tast/services/cros/autoupdate"
 	"chromiumos/tast/testing"
 )
 
@@ -70,41 +62,10 @@ func init() {
 // functionality that depend on the enrollment of the device should be not be
 // added to this test.
 func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
-	paygen := s.FixtValue().(updateutil.WithPaygen).Paygen()
-
-	lsbContent := map[string]string{
-		lsbrelease.Board:     "",
-		lsbrelease.Version:   "",
-		lsbrelease.Milestone: "",
-	}
-
-	err := updateutil.FillFromLSBRelease(ctx, s.DUT(), s.RPCHint(), lsbContent)
+	deviceInfo, err := rollback.GetDeviceInfo(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
-		s.Fatal("Failed to get all the required information from lsb-release: ", err)
+		s.Fatal("Failed to get device information: ", err)
 	}
-
-	board := lsbContent[lsbrelease.Board]
-	originalVersion := lsbContent[lsbrelease.Version]
-
-	milestoneN, err := strconv.Atoi(lsbContent[lsbrelease.Milestone])
-	if err != nil {
-		s.Fatalf("Failed to convert milestone to integer %s: %v", lsbContent[lsbrelease.Milestone], err)
-	}
-
-	// The target milestone depends on the parameter of the test.
-	param := s.Param().(testParam)
-	milestoneM := milestoneN - param.previousVersionTarget // Target milestone.
-
-	// Find the latest release for milestone M.
-	filtered := paygen.FilterBoard(board).FilterDeltaType("OMAHA").FilterMilestone(milestoneM)
-	latest, err := filtered.FindLatest()
-	if err != nil {
-		// Unreleased boards are filtered with auto_update_stable, so there should
-		// be an available image.
-		s.Fatalf("Failed to find the latest release for milestone %d and board %s: %v", milestoneM, board, err)
-	}
-
-	rollbackVersion := latest.ChromeOSVersion
 
 	// Make sure to clear the TPM, go back to the original image, and remove all
 	// remains that may be left by a faulty rollback.
@@ -112,166 +73,58 @@ func EnterpriseRollbackPreviousVersion(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 4*time.Minute)
 	defer cancel()
 	defer func(ctx context.Context) {
-		s.DUT().Conn().CommandContext(ctx, "stop", "oobe_config_save").Run()
-
-		if err := s.DUT().Conn().CommandContext(ctx, "rm", "-f", "/mnt/stateful_partition/.save_rollback_data").Run(); err != nil {
-			s.Error("Failed to remove data save flag: ", err)
+		if err := rollback.ClearRollbackAndSystemData(ctx, s.DUT(), s.RPCHint()); err != nil {
+			s.Error("Failed to clean rollback data after test: ", err)
 		}
 
-		if err := s.DUT().Conn().CommandContext(ctx, "rm", "-f", "/mnt/stateful_partition/rollback_data").Run(); err != nil {
-			s.Error("Failed to remove rollback data: ", err)
-		}
-
-		if err := simulatePowerwash(ctx, s.DUT(), s.RPCHint()); err != nil {
-			s.Error("Failed to simulate powerwash after test: ", err)
-		}
-
-		// Check the image version. Roll back if it's not the original one or image
-		// version can't be read.
-		version, err := updateutil.ImageVersion(ctx, s.DUT(), s.RPCHint())
-		if err != nil {
-			s.Error("Failed to read DUT image version: ", err)
-		}
-
-		if version != originalVersion {
-			s.Log("Restoring the original device image")
-			if err := s.DUT().Conn().CommandContext(ctx, "update_engine_client", "--rollback", "--nopowerwash", "--follow").Run(); err != nil {
-				s.Error("Failed to rollback the DUT: ", err)
-			}
-		}
-
-		s.Log("Rebooting the DUT after the rollback")
-		if err := s.DUT().Reboot(ctx); err != nil {
-			s.Fatal("Failed to reboot the DUT after rollback: ", err)
-		}
-
-		// Verify (non-enterprise) rollback.
-		version, err = updateutil.ImageVersion(ctx, s.DUT(), s.RPCHint())
-		if err != nil {
-			s.Error("Failed to read DUT image version: ", err)
-		}
-		s.Logf("The DUT image version after the rollback is %s", version)
-		if version != originalVersion {
-			s.Errorf("Image version is not the original after the restoration; got %s, want %s", version, originalVersion)
+		if err := rollback.RestoreOriginalImage(ctx, s.DUT(), s.RPCHint(), deviceInfo.Version); err != nil {
+			s.Error("Failed to restore original image after test: ", err)
 		}
 	}(cleanupCtx)
 
-	if err := simulatePowerwash(ctx, s.DUT(), s.RPCHint()); err != nil {
+	// The target milestone depends on the parameter of the test.
+	// Before going through any setup for the test we want to be sure that there
+	// is a release for the target milestone.
+	param := s.Param().(testParam)
+	targetMilestone := deviceInfo.Milestone - param.previousVersionTarget // Target milestone.
+
+	// Find the latest release for milestone M.
+	paygen := s.FixtValue().(updateutil.WithPaygen).Paygen()
+	filtered := paygen.FilterBoard(deviceInfo.Board).FilterDeltaType("OMAHA").FilterMilestone(targetMilestone)
+	latest, err := filtered.FindLatest()
+	if err != nil {
+		// Unreleased boards are filtered with auto_update_stable, so there should
+		// be an available image.
+		s.Fatalf("Failed to find the latest release for milestone %d and board %s: %v", targetMilestone, deviceInfo.Board, err)
+	}
+
+	// There is an image available for the target milestone; testing rollback.
+	if err := rollback.SimulatePowerwash(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to simulate powerwash before test: ", err)
 	}
 
-	networksInfo, err := configureNetworks(ctx, s.DUT(), s.RPCHint())
+	networksInfo, err := rollback.ConfigureNetworks(ctx, s.DUT(), s.RPCHint())
 	if err != nil {
 		s.Fatal("Failed to configure networks: ", err)
 	}
 
-	// The .save_rollback_data flag would have been left by the update_engine on
-	// an end-to-end rollback. We don't use update_engine. Place it manually.
-	if err := s.DUT().Conn().CommandContext(ctx, "touch",
-		"/mnt/stateful_partition/.save_rollback_data").Run(); err != nil {
-		s.Fatal("Failed to write rollback data save file: ", err)
-	}
-
-	// oobe_config_save would be started on shutdown but we need to fake
-	// powerwash and call it now.
-	if err := s.DUT().Conn().CommandContext(ctx, "start", "oobe_config_save").Run(); err != nil {
-		s.Fatal("Failed to run oobe_config_save: ", err)
-	}
-
-	// The following two commands would be done by clobber_state during powerwash.
-	if err := s.DUT().Conn().CommandContext(ctx, "sh", "-c",
-		`cat /var/lib/oobe_config_save/data_for_pstore > /dev/pmsg0`).Run(); err != nil {
-		s.Fatal("Failed to read rollback key: ", err)
-	}
-	// Adds a newline to pstore.
-	if err := s.DUT().Conn().CommandContext(ctx, "sh", "-c", `echo >> /dev/pmsg0`).Run(); err != nil {
-		s.Fatal("Failed to add newline after rollback key: ", err)
-	}
-
-	// Stopping ui early to prevent accidental reboots in the middle of TPM clear.
-	// If you stop the ui while an update is pending, the device restarts.
-	if err := s.DUT().Conn().CommandContext(ctx, "stop", "ui").Run(); err != nil {
-		s.Fatal("Failed to stop ui: ", err)
-	}
-
-	s.Logf("Starting update from %s to %s", originalVersion, rollbackVersion)
-	builderPath := fmt.Sprintf("%s-release/R%d-%s", board, milestoneM, rollbackVersion)
-	if err := updateutil.UpdateFromGS(ctx, s.DUT(), s.OutDir(), s.RPCHint(), builderPath); err != nil {
-		s.Fatalf("Failed to update DUT to image for %q from GS: %v", builderPath, err)
-	}
-
-	// Ineffective reset is expected because rollback initiates TPM ownership.
-	s.Log("Simulating powerwash and rebooting the DUT to fake rollback")
-	if err := simulatePowerwashAndReboot(ctx, s.DUT()); err != nil && !errors.Is(err, hwsec.ErrIneffectiveReset) {
-		s.Fatal("Failed to simulate powerwash and reboot into rollback image: ", err)
-	}
-
-	// Check the image version.
-	version, err := updateutil.ImageVersion(ctx, s.DUT(), s.RPCHint())
+	sensitive, err := rollback.SaveRollbackData(ctx, s.DUT())
 	if err != nil {
-		s.Fatal("Failed to read DUT image version after the update: ", err)
+		s.Fatal("Failed to save rollback data: ", err)
 	}
-	s.Logf("The DUT image version after the update is %s", version)
-	if version != rollbackVersion {
-		if version == originalVersion {
-			s.Fatal("The image version did not change after the update")
-		}
-		s.Errorf("Unexpected image version after the update; got %s, want %s", version, rollbackVersion)
+
+	rollbackVersion := latest.ChromeOSVersion
+	s.Logf("Starting update from %s to %s", deviceInfo.Version, rollbackVersion)
+	if err := rollback.ToPreviousVersion(ctx, s.DUT(), s.RPCHint(), s.OutDir(), deviceInfo.Board, targetMilestone, rollbackVersion); err != nil {
+		s.Fatal("Failed to rollback to previous version: ", err)
+	}
+
+	if err := rollback.CheckImageVersion(ctx, s.DUT(), s.RPCHint(), rollbackVersion, deviceInfo.Version); err != nil {
+		s.Fatal("Failed to verify image after rollback: ", err)
 	}
 
 	// Check rollback data preservation.
-	client, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	if err := rollback.VerifyRollbackData(ctx, s.DUT(), s.RPCHint(), networksInfo, sensitive); err != nil {
+		s.Fatal("Failed to verify rollback: ", err)
 	}
-	defer client.Close(ctx)
-
-	rollbackService := aupb.NewRollbackServiceClient(client.Conn)
-	verifyResponse, err := rollbackService.VerifyRollback(ctx, &aupb.VerifyRollbackRequest{Networks: networksInfo})
-	if err != nil {
-		s.Fatal("Failed to verify rollback on client: ", err)
-	}
-	if !verifyResponse.Successful {
-		s.Errorf("Rollback was not successful: %s", verifyResponse.VerificationDetails)
-	} else {
-		// On any milestone <100 Chrome was not ready to be tested yet, so it is not
-		// possible to carry out all verification steps and they are skipped. The
-		// verification is considered successful but if details are provided by the
-		// service, they the should be logged.
-		if verifyResponse.VerificationDetails != "" {
-			s.Log(verifyResponse.VerificationDetails)
-		}
-	}
-}
-
-// TODO(b/240247079): Move functions to a helper common for rollback.
-
-func simulatePowerwash(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) error {
-	return policyutil.EnsureTPMAndSystemStateAreReset(ctx, dut, rpcHint)
-}
-
-// simulatePowerwashAndReboot relies on the helper method to always reboot apart
-// from doing the powerwash. If the internal functionality of
-// EnsureTPMAndSystemStateAreResetRemote changes in the future and does not
-// reboot the device, we will need to add reboot logic here for rollback to
-// happen. See b/240541326.
-func simulatePowerwashAndReboot(ctx context.Context, dut *dut.DUT) error {
-	return policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, dut)
-}
-
-// configureNetworks sets up the networks supported by rollback.
-func configureNetworks(ctx context.Context, dut *dut.DUT, rpcHint *testing.RPCHint) ([]*aupb.NetworkInformation, error) {
-	client, err := rpc.Dial(ctx, dut, rpcHint)
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to connect to the RPC service on the DUT")
-	}
-	defer client.Close(ctx)
-
-	// Configure networks to check preservation across rollback.
-	rollbackService := aupb.NewRollbackServiceClient(client.Conn)
-	response, err := rollbackService.SetUpNetworks(ctx, &aupb.SetUpNetworksRequest{})
-	if err != nil {
-		return nil, errors.Wrap(err, "failed to configure networks on client")
-	}
-	return response.Networks, nil
 }
