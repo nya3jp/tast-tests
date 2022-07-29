@@ -450,11 +450,11 @@ func (e *Env) makeNetNS(ctx context.Context) error {
 
 	// Veth pair will be removed together with netns, so no explicit cleanup is
 	// needed here.
-	if err := testexec.CommandContext(ctx, "ip", "link",
+	if o, err := testexec.CommandContext(ctx, "ip", "link",
 		"add", e.VethOutName, "type", "veth",
 		"peer", e.VethInName, "netns", e.NetNSName,
-	).Run(); err != nil {
-		return errors.Wrap(err, "failed to setup veth")
+	).CombinedOutput(); err != nil {
+		return errors.Wrapf(err, "failed to setup veth, %s", string(o))
 	}
 
 	if err := e.RunWithoutChroot(ctx, "ip", "link", "set", e.VethInName, "up"); err != nil {
