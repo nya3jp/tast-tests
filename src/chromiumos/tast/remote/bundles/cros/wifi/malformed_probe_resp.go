@@ -9,12 +9,14 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/ip"
 	"chromiumos/tast/remote/network/iw"
 	"chromiumos/tast/remote/wificell"
 	"chromiumos/tast/remote/wificell/framesender"
 	"chromiumos/tast/remote/wificell/hostapd"
+	"chromiumos/tast/remote/wificell/router/common"
 	"chromiumos/tast/testing"
 )
 
@@ -108,7 +110,7 @@ func MalformedProbeResp(ctx context.Context, s *testing.State) {
 			s.Error("Failed to close frame sender: ", err)
 		}
 	}(ctx)
-	ctx, cancel = router.ReserveForCloseFrameSender(ctx)
+	ctx, cancel = ctxutil.Shorten(ctx, common.RouterCloseFrameSenderDuration)
 	defer cancel()
 
 	// Set up background frame sender sending malformed probe response.

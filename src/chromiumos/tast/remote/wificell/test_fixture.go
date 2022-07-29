@@ -38,6 +38,7 @@ import (
 	"chromiumos/tast/remote/wificell/pcap"
 	"chromiumos/tast/remote/wificell/router"
 	"chromiumos/tast/remote/wificell/router/ax"
+	"chromiumos/tast/remote/wificell/router/common"
 	"chromiumos/tast/remote/wificell/router/common/support"
 	"chromiumos/tast/remote/wificell/router/legacy"
 	"chromiumos/tast/remote/wificell/router/openwrt"
@@ -319,12 +320,13 @@ func (tf *TestFixture) resetNetCertStore(ctx context.Context, dutIdx DutIdx) err
 // daemonCtx is for the spawned daemons.
 // Noted that if routerHostname is empty, it uses the default router hostname based on the DUT's hostname.
 // After the caller gets the TestFixture instance, it should reserve time for Close() the TestFixture:
-//   tf, err := NewTestFixture(ctx, ...)
-//   if err != nil {...}
-//   defer tf.Close(ctx)
-//   ctx, cancel := tf.ReserveForClose(ctx)
-//   defer cancel()
-//   ...
+//
+//	tf, err := NewTestFixture(ctx, ...)
+//	if err != nil {...}
+//	defer tf.Close(ctx)
+//	ctx, cancel := tf.ReserveForClose(ctx)
+//	defer cancel()
+//	...
 func NewTestFixture(fullCtx, daemonCtx context.Context, d *dut.DUT, rpcHint *testing.RPCHint, ops ...TFOption) (ret *TestFixture, retErr error) {
 	fullCtx, st := timing.Start(fullCtx, "NewTestFixture")
 	defer st.End()
@@ -684,17 +686,17 @@ func (tf *TestFixture) rebootRouter(ctx context.Context, rd *routerData) error {
 
 	// Reconnect to router and create a new router controller.
 	testing.ContextLogf(ctx, "Reconnecting to %s", routerMsgName)
-	if routerHost, err := tf.connectCompanion(ctx, rd.target, true); err != nil {
+	routerHost, err := tf.connectCompanion(ctx, rd.target, true)
+	if err != nil {
 		return errors.Wrapf(err, "failed to reconnect to %s after reboot", routerMsgName)
-	} else {
-		rd.host = routerHost
 	}
+	rd.host = routerHost
 	testing.ContextLogf(ctx, "Reconnected to %s", routerMsgName)
-	if routerObject, err := newRouter(ctx, ctx, rd.host, routerName, routerType); err != nil {
+	routerObject, err := newRouter(ctx, ctx, rd.host, routerName, routerType)
+	if err != nil {
 		return errors.Wrapf(err, "failed to recreate %s", routerMsgName)
-	} else {
-		rd.object = routerObject
 	}
+	rd.object = routerObject
 	testing.ContextLogf(ctx, "Reconnected to %s with new router controller after reboot", routerMsgName)
 	return nil
 }
@@ -1401,7 +1403,7 @@ func (tf *TestFixture) SendChannelSwitchAnnouncement(ctx context.Context, dutIdx
 	if !ok {
 		return errors.Errorf("router type %q does not support FrameSender", tf.Router().RouterType().String())
 	}
-	ctx, cancel := r.ReserveForCloseFrameSender(ctx)
+	ctx, cancel := ctxutil.Shorten(ctx, common.RouterCloseFrameSenderDuration)
 	defer cancel()
 	sender, err := r.NewFrameSender(ctx, ap.Interface())
 	if err != nil {
