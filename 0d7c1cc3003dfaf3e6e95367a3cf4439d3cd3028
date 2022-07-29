@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d8e24ab_98dac9a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-07-29T23:04:19Z",
+      "side": 1,
+      "message": "Thanks for working on this! It\u0027s cool to add test coverage for web app URL link handling in Lacros.",
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "231de043_fd40d94c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-07-29T23:04:19Z",
+      "side": 1,
+      "message": "Running the projector.SharedScreencast.lacros test locally failed for me with this error message [1].\n\nWhat\u0027s happening: the purpose of ReloadActiveTab() is to launch the Projector app. When the app launches, the browser window closes (WAI) and the app window opens. Because Projector is a system web app (SWA), the app browser window is always Ash Chrome. ReloadActiveTab() [2] waits for the ready state to equal complete after reloading the app. In the Ash variant, the app sets the ready state to complete after the app loads. However, in the Lacros variant, there\u0027s a mismatch between the browser type (Lacros) and the SWA type (Ash), so the ready state never becomes complete and the test times out.\n\nHow should we fix this?\n\n[1] https://paste.googleplex.com/5722368468058112\n[2] https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/browser/browser.go;l\u003d125?q\u003dreloadactivetab",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
