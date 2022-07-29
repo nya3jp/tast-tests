@@ -16,6 +16,23 @@
       "message": "Hi, @rbock added you in cc FYI about this change as author of APIGetStatefulPartitionAvailableCapacity. I have verified the test still passes with the change. This update allows the test to run faster and avoid flakiness that comes with rebooting the device.",
       "revId": "7ed1c68130685179ce9f515f4269dec78a793524",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77cf530c_945e048b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-07-29T07:50:35Z",
+      "side": 1,
+      "message": "Thanks, submitting this!",
+      "revId": "7ed1c68130685179ce9f515f4269dec78a793524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
