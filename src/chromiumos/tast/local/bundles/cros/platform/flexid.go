@@ -21,7 +21,7 @@ func init() {
 			"chromeos-flex-eng@google.com",
 		},
 		SoftwareDeps: []string{"flex_id"},
-		Attr:         []string{"group:mainline", "informational"},
+		Attr:         []string{"group:mainline"},
 	})
 }
 
