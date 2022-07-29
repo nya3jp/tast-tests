@@ -200,7 +200,7 @@ func OpenLinuxInstallerAndClickNext(ctx context.Context, tconn *chrome.TestConn,
 
 	if err := ui.WaitUntilExists(DevelopersButton)(ctx); err == nil {
 		// Linux has been installed already, uninstall it.
-		if err := ui.LeftClick(DevelopersButton)(ctx); err != nil {
+		if err := ui.LeftClickUntil(DevelopersButton, ui.WithTimeout(shortUITimeout).WaitUntilExists(removeLinuxButton))(ctx); err != nil {
 			return errors.Wrap(err, "failed to go to linux subpage")
 		}
 
