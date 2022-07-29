@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "234721be_699401dc",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-07-29T04:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bed9dee2_dab6f038",
+      "revId": "1a96391b007c536e50fd2c10098bbce4fb260343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35a1aa92_661e3f75",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-27T10:13:24Z",
       "side": 1,
       "message": "What does CCA stand for?",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 8
+      },
+      "revId": "1a96391b007c536e50fd2c10098bbce4fb260343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca7cd04_d1e90bbf",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-07-29T04:14:39Z",
+      "side": 1,
+      "message": "CCA is the abbreviation of Chrome Camera Application",
+      "parentUuid": "35a1aa92_661e3f75",
       "range": {
         "startLine": 34,
         "startChar": 5,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5076fdcb_b85a5bfa",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-07-29T04:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5913920_ab9eef7f",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "1a96391b007c536e50fd2c10098bbce4fb260343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fada39f5_9f2d1e0e",
@@ -77,6 +143,30 @@
       "writtenOn": "2022-07-27T10:13:24Z",
       "side": 1,
       "message": "Don\u0027t you want to log the error if that fails? I am not sure if that could affect other tests on the DUT as most likely TearDown will be called too.",
+      "range": {
+        "startLine": 351,
+        "startChar": 3,
+        "endLine": 351,
+        "endChar": 55
+      },
+      "revId": "1a96391b007c536e50fd2c10098bbce4fb260343",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44348669_0d0724b3",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1548766
+      },
+      "writtenOn": "2022-07-29T04:14:39Z",
+      "side": 1,
+      "message": "It already log the error in \n\nf.brightnessVal, err \u003d dutcontrol.CCADimBacklight(ctx)\n\tif err !\u003d nil {\n\t\ts.Fatal(\"Failed to set brightness: \", err)\n\t}\n\ndefer function will restore back to original backlight level",
+      "parentUuid": "fada39f5_9f2d1e0e",
       "range": {
         "startLine": 351,
         "startChar": 3,
