@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9109c666_72974ff5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-29T16:27:46Z",
+      "side": 1,
+      "message": "I still say this would look better with each test variant on a single line, thus:\n\t\tParams: []testing.Param{\n\t\t\t{Name: \"rounded_display_on\", Val: true},\n\t\t\t{Name: \"rounded_display_off\", Val: false},\n\t\t},",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 5
+      },
+      "revId": "6320d8bb11c222682ecdd6b78fe1110cc3e2a065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6826afe1_964bb4b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-29T16:27:46Z",
+      "side": 1,
+      "message": "`internal`",
+      "range": {
+        "startLine": 83,
+        "startChar": 30,
+        "endLine": 83,
+        "endChar": 37
+      },
+      "revId": "6320d8bb11c222682ecdd6b78fe1110cc3e2a065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d75c9537_9aa85a1f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-29T16:27:46Z",
+      "side": 1,
+      "message": "`:\u003d`",
+      "range": {
+        "startLine": 85,
+        "startChar": 9,
+        "endLine": 85,
+        "endChar": 10
+      },
+      "revId": "6320d8bb11c222682ecdd6b78fe1110cc3e2a065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "614c1669_0ba8dea0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-29T16:27:46Z",
+      "side": 1,
+      "message": "s.Log(\"Display bounds: \", displayBounds)",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 34
+      },
+      "revId": "6320d8bb11c222682ecdd6b78fe1110cc3e2a065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0628b615_6ec2ebd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-29T16:27:46Z",
+      "side": 1,
+      "message": "`:\u003d`",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 174,
+        "endChar": 9
+      },
+      "revId": "6320d8bb11c222682ecdd6b78fe1110cc3e2a065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
