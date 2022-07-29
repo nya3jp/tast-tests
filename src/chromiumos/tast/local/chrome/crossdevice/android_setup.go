@@ -17,6 +17,7 @@ import (
 
 	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/android/ui"
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	localadb "chromiumos/tast/local/android/adb"
 	"chromiumos/tast/testing"
@@ -245,6 +246,12 @@ func ConfigureDevice(ctx context.Context, d *adb.Device, rooted bool) error {
 	if err := d.PressKeyCode(ctx, strconv.Itoa(int(ui.KEYCODE_POWER))); err != nil {
 		return errors.Wrap(err, "failed to turn off the screen")
 	}
+
+	// Disable crash dialogs to prevent them from obscuring the UI.
+	if err := d.ShellCommand(ctx, "settings", "put", "global", "hide_error_dialogs", "1").Run(testexec.DumpLogOnError); err != nil {
+		return errors.Wrap(err, "failed to disable crash dialogs")
+	}
+
 	// Clear logcat so that logs start from this point on.
 	clearLogcat := false
 	// TODO(b/207520262): Remove when we have Android support in skylab for configuring phone.

@@ -21,8 +21,11 @@ import (
 	"chromiumos/tast/testing"
 )
 
+// DCIMPath is the path to the DCIM directory on Android.
+const DCIMPath = "/sdcard/DCIM"
+
 // AndroidPhotosPath is the directory where photos taken on the device can be located.
-const AndroidPhotosPath = "/sdcard/DCIM/Camera"
+var AndroidPhotosPath = filepath.Join(DCIMPath, "Camera")
 
 // AndroidDevice represents an Android device that's been paired with the Chromebook (i.e. from the "Connected devices" section of OS settings).
 // Android control is achieved by making RPCs to the Multidevice Snippet running on the Android device, or by using ADB commands directly.
@@ -313,6 +316,24 @@ func (c *AndroidDevice) TakePhoto(ctx context.Context) (string, error) {
 // GetMostRecentPhoto returns the file name of the most recent photo taken on the device.
 // Returns an empty string if there's no photo on the device.
 func (c *AndroidDevice) GetMostRecentPhoto(ctx context.Context) (string, error) {
+	// Sometimes the Camera folder may not exist, so check that first.
+	contents, err := c.Device.ListContents(ctx, DCIMPath)
+	if err != nil {
+		return "", errors.Wrapf(err, "failed to list contents of %s", DCIMPath)
+	}
+
+	photosPathExists := false
+	for _, f := range contents {
+		if filepath.Join(DCIMPath, f) == AndroidPhotosPath {
+			photosPathExists = true
+		}
+	}
+
+	// If the photos path doesn't exist, there is no recent photo. It will be created when a photo is next taken.
+	if !photosPathExists {
+		return "", nil
+	}
+
 	photos, err := c.Device.ListContents(ctx, AndroidPhotosPath)
 	if err != nil {
 		return "", errors.Wrapf(err, "failed to list files under %s", AndroidPhotosPath)
