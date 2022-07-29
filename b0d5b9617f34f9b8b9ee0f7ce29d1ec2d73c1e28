@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe383ca4_f5a67b70",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2022-07-29T18:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0eb6022f_b619f138",
+      "revId": "b0d5b9617f34f9b8b9ee0f7ce29d1ec2d73c1e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e583965a_43e0f6c5",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "185dd44c_41c5e041",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2022-07-29T18:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e583965a_43e0f6c5",
+      "revId": "b0d5b9617f34f9b8b9ee0f7ce29d1ec2d73c1e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "661c6ed4_dc8e19d2",
@@ -65,6 +101,24 @@
       "writtenOn": "2022-07-27T19:57:58Z",
       "side": 1,
       "message": "For clarity maybe name this |fd| since |f| refers to cellularFixture in the rest of this file.",
+      "revId": "b0d5b9617f34f9b8b9ee0f7ce29d1ec2d73c1e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cab17c5_92b8ef81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cellular/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1516042
+      },
+      "writtenOn": "2022-07-29T18:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "661c6ed4_dc8e19d2",
       "revId": "b0d5b9617f34f9b8b9ee0f7ce29d1ec2d73c1e28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
