@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "704eb544_e11b3215",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132740
+      },
+      "writtenOn": "2022-07-29T15:13:11Z",
+      "side": 1,
+      "message": "Changed one LeftClick to DoDefault in https.go, seems it was missed on a past change.",
+      "revId": "e0bb4d8de733cd80bc0ee5fe95379ad93ea1eb1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
