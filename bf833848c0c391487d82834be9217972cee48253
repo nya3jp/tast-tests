@@ -33,6 +33,24 @@
       "message": "What\u0027s the intention of the if-statement? \nI guess you want to fallback to read cpuidle/current_governor if cupidle/current_governor_ro does not exist. If so, it should be:\n```\nif err !\u003d nil {\n  if os.IsNotExist(err) {\n       // read current_governor\n  } else {\n    // The file exists, but fail to read for some reason.\n    s.Fatal(\"Failed to read cpuidle current_governor_ro: \", err)\n  }\n}\n```\n\nRefer to: os.IsExist(err) vs os.IsNotExist(err)\n https://gist.github.com/mastef/05f46d3ab2f5ed6a6787",
       "revId": "bf833848c0c391487d82834be9217972cee48253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12e6aeb5_6927eba3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/cpuidle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2022-07-29T17:02:25Z",
+      "side": 1,
+      "message": "You got me; I was making something like that error, mixing up \"! does exist\" with \"does not exist\". And even then, it wasn\u0027t quite right.\n\nAs the CL description says, everyone should have \u0027current_governor_ro\u0027 today, so I don\u0027t actually get to this error scenario.\n\nFixed now, thanks.",
+      "parentUuid": "81014fa1_a8e8af72",
+      "revId": "bf833848c0c391487d82834be9217972cee48253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
