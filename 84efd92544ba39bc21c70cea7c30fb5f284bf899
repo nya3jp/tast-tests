@@ -16,6 +16,29 @@
       "message": "Rebased to main and made adjustments based off of changed made in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3741526. I confirmed with jonfan@ that it was best to refactor that work to use this newer API and so I added those changes to this CL.",
       "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "603dd97d_a863671d",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-07-29T00:37:30Z",
+      "side": 1,
+      "message": "Please don\u0027t hardcode these. There is nothing in the xmlrpc API that says these are constant.\n\nWhat the users should do is call GetSupported{Ports,Inputs,Outputs} to get a list of allowed ids, then GetConnectorType, HasAudioSupport, HasVideoSupport on each of them.\n\nI make no guarantees that for chameleon v3 these IDs are stable or correct, in fact it\u0027s already wrong due to `PortID \u003d 3` being a second HDMI port..",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
