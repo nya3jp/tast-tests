@@ -176,6 +176,30 @@
       },
       "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9df907cf_e445750e",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-07-29T22:04:49Z",
+      "side": 1,
+      "message": "Since this ID list is currently already in there, this CL now just renames them with a prefix, I\u0027d like to move the work to using something else out into a separate CL and keep this as-is for now. The focus of this CL is just to enable calling the XMLRPC endpoints, it does not control how to call them.",
+      "parentUuid": "6b8b2583_422bbbc7",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
