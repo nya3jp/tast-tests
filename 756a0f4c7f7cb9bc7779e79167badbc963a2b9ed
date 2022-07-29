@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b2cda1_7f1f9e73",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-29T06:57:46Z",
+      "side": 1,
+      "message": "\u003e \"furture\" is a possible misspelling of \"future\".\n\nPlease fix.",
+      "parentUuid": "54553272_5bfc0e18",
+      "range": {
+        "startLine": 36,
+        "startChar": 44,
+        "endLine": 36,
+        "endChar": 51
+      },
+      "revId": "756a0f4c7f7cb9bc7779e79167badbc963a2b9ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
