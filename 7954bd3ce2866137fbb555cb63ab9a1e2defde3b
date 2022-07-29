@@ -16,6 +16,24 @@
       "message": "optional: how about returning a cleanup function value, besides an error, from CreateuserAuthSessionWithChallengeCredential?",
       "revId": "7954bd3ce2866137fbb555cb63ab9a1e2defde3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "974a5775_ccf1e1f1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/challenge_response_auth_session.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-29T15:29:47Z",
+      "side": 1,
+      "message": "Thanks for the tip. What\u0027s the best way to do this? AFAIK, usually it\u0027s recommended to do the cleanup using a special `ctxForCleanup` that\u0027s subtracted from `ctx` in advance. So would I have to pass `ctxForCleanup` to the function, like that?\n\n    func CreateUserAuthSessionWithChallengeCredential(ctx, ctxForCleanup context.Context, ...) (func(), error) {",
+      "parentUuid": "afc610f1_08b79721",
+      "revId": "7954bd3ce2866137fbb555cb63ab9a1e2defde3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
