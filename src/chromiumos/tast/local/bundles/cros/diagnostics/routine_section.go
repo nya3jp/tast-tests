@@ -8,6 +8,7 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/local/bundles/cros/diagnostics/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
@@ -44,6 +45,10 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	if err := util.EnsureCrosHealthdRunning(ctx); err != nil {
+		s.Fatal("Failed to ensure cros healthd running: ", err)
+	}
 
 	dxRootnode, err := diagnosticsapp.Launch(ctx, tconn)
 	if err != nil {
