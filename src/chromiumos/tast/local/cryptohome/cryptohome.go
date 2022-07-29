@@ -444,39 +444,47 @@ func CreateUserWithAuthSession(ctx context.Context, username, password, keyLabel
 }
 
 // CreateUserAuthSessionWithChallengeCredential creates a persistent user via auth session API.
-func CreateUserAuthSessionWithChallengeCredential(ctx context.Context, username string, isEphemeral bool, authConfig *hwsec.AuthConfig) error {
+func CreateUserAuthSessionWithChallengeCredential(ctx context.Context, username string, isEphemeral bool, authConfig *hwsec.AuthConfig) (func(ctx context.Context) error, error) {
 	cmdRunner := hwseclocal.NewCmdRunner()
 	cryptohome := hwsec.NewCryptohomeClient(cmdRunner)
 
 	// Start an Auth session and get an authSessionID.
 	authSessionID, err := cryptohome.StartAuthSession(ctx, username /*ephemeral=*/, isEphemeral)
 	if err != nil {
-		return errors.Wrap(err, "failed to start Auth session")
+		return nil, errors.Wrap(err, "failed to start Auth session")
 	}
 	defer cryptohome.InvalidateAuthSession(ctx, authSessionID)
 	testing.ContextLog(ctx, "Auth session ID: ", authSessionID)
+
+	cleanup := func(ctx context.Context) error {
+		if err := cryptohome.UnmountAndRemoveVault(ctx, username); err != nil {
+			return errors.Wrap(err, "failed to remove and unmount vault")
+		}
+		return nil
+	}
+
 	if isEphemeral { // Ephemeral AuthSession
 		if err := cryptohome.PrepareEphemeralVault(ctx, authSessionID); err != nil {
-			return errors.Wrap(err, "failed to prepare ephemeral vault")
+			return nil, errors.Wrap(err, "failed to prepare ephemeral vault")
 		}
-		defer cryptohome.RemoveVault(ctx, username)
 	} else { // Persistent AuthSession
 		if err := cryptohome.CreatePersistentUser(ctx, authSessionID); err != nil {
-			return errors.Wrap(err, "failed to create persistent user")
+			return nil, errors.Wrap(err, "failed to create persistent user")
 		}
-		defer cryptohome.RemoveVault(ctx, username)
 
 		if err := cryptohome.PreparePersistentVault(ctx, authSessionID, false); err != nil {
-			return errors.Wrap(err, "failed to prepare persistent vault")
+			cleanup(ctx)
+			return nil, errors.Wrap(err, "failed to prepare persistent vault")
 		}
 	}
 
 	if err := cryptohome.AddChallengeCredentialsWithAuthSession(ctx, username, authSessionID, authConfig); err != nil {
-		return errors.Wrap(err, "failed to add credentials with AuthSession")
+		cleanup(ctx)
+		return nil, errors.Wrap(err, "failed to add credentials with AuthSession")
 	}
 	testing.ContextLog(ctx, "Added credentials successfully")
 
-	return nil
+	return cleanup, nil
 }
 
 // CreateAndMountUserWithAuthSession creates a persistent user via auth session API.
