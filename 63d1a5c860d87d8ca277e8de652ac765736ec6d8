@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa1c933_f5e1282a",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-07-29T07:13:41Z",
+      "side": 1,
+      "message": "Why decrease the timeout for restarting, it\u0027s not needed because the slowness was always from terminal launch slowness?",
+      "range": {
+        "startLine": 36,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "63d1a5c860d87d8ca277e8de652ac765736ec6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3515192_4a563e18",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-07-29T07:13:41Z",
+      "side": 1,
+      "message": "Nit: you probably mean \"e.g.\"? E.g. means for example (as in, this is one example of many) whereas i.e. means \"that is\" (as in, another way of saying the same thing).",
+      "range": {
+        "startLine": 33,
+        "startChar": 36,
+        "endLine": 33,
+        "endChar": 40
+      },
+      "revId": "63d1a5c860d87d8ca277e8de652ac765736ec6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
