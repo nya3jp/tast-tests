@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d25ef9d_fe3d880b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/rounded_display_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-07-29T22:08:10Z",
+      "side": 1,
+      "message": "I think that the following makes it easier to see what every curly bracket is for:\n\t\tParams: []testing.Param{\n\t\t\t{Name: \"rounded_display_on\", Val: true},\n\t\t\t{Name: \"rounded_display_off\", Val: false},\n\t\t},",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 5
+      },
+      "revId": "b3c3e17fddd944b697066baf130ef0161f8f1272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
