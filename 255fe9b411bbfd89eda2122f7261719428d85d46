@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb624879_f057a5ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-29T19:12:05Z",
+      "side": 1,
+      "message": "Got confirmation that infinite flow is enabled for this account: https://b.corp.google.com/issues/239733416#comment12. I believe that is correct because when I was working on this test for a couple of days the password never changed. Either way I changed the password again, ran the test, same issue \"password was recently changed\". When I try to login manually I\u0027m able to login.\n\nI ran the test and when getting errors with password on enrollment and login screens I entered the password manually and the test succeeded: https://paste.googleplex.com/6641175862706176. The new password is here: https://paste.googleplex.com/5515195418935296.\n\nMaybe TAPE needs sometime to get the updated password and that\u0027s why it\u0027s still trying to use the previous password?\n\nAt this point I don\u0027t think the issue is with the test, let me try to submit it anyway and see if maybe it\u0027ll just start to work.",
+      "parentUuid": "fcaa0cc0_b5c4fd21",
+      "revId": "255fe9b411bbfd89eda2122f7261719428d85d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec18a8bb_d7fec5b6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_bytebot_enrollment.go",
         "patchSetId": 1
