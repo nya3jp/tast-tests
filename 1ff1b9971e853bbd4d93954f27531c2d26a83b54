@@ -87,6 +87,86 @@
       "message": "PTAL",
       "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ab95f62_259f038d",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browser.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-29T01:20:21Z",
+      "side": 1,
+      "message": "the explanation is not accurate? It is fetching currentWindow, but not all?",
+      "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d930a800_3b644021",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-29T01:20:21Z",
+      "side": 1,
+      "message": "nit/optional: tabsErr may be clearer?",
+      "range": {
+        "startLine": 85,
+        "startChar": 9,
+        "endLine": 85,
+        "endChar": 19
+      },
+      "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e4c544_f6f934a2",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-29T01:20:21Z",
+      "side": 1,
+      "message": "tabs should be be touched on error.",
+      "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d9c450b_3c59396c",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/ui.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-07-29T01:20:21Z",
+      "side": 1,
+      "message": "can we merge this into browser.Tabs ?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 1
+      },
+      "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
