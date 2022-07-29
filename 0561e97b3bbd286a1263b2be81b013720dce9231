@@ -16,6 +16,40 @@
       "message": "+2 from a tast perspective, but please wait for +1/+2 from a teammate with context on this change before submitting.",
       "revId": "0561e97b3bbd286a1263b2be81b013720dce9231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d3f7182_dda41043",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-29T16:12:58Z",
+      "side": 1,
+      "message": "One minor suggestion but nothing blocking.",
+      "revId": "0561e97b3bbd286a1263b2be81b013720dce9231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3f95d53_6ccab1b4",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-07-29T16:12:58Z",
+      "side": 1,
+      "message": "This block of code seems like it would be useful in other places and might be worth abstracting out to a separate function (`EnsureConnected`?).",
+      "revId": "0561e97b3bbd286a1263b2be81b013720dce9231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
