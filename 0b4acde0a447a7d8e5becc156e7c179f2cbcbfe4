@@ -33,6 +33,138 @@
       "message": "+2 for audio testing logic.",
       "revId": "0b4acde0a447a7d8e5becc156e7c179f2cbcbfe4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d19a46ec_eb999328",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-29T16:41:25Z",
+      "side": 1,
+      "message": "tast-wise: +2 % nits",
+      "revId": "0b4acde0a447a7d8e5becc156e7c179f2cbcbfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f733e80e_a4093d8d",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/TestOutputSineActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-29T16:41:25Z",
+      "side": 1,
+      "message": "nit: test?",
+      "range": {
+        "startLine": 16,
+        "startChar": 55,
+        "endLine": 16,
+        "endChar": 59
+      },
+      "revId": "0b4acde0a447a7d8e5becc156e7c179f2cbcbfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "072f7d04_778754ae",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/TestOutputSineActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-29T16:41:25Z",
+      "side": 1,
+      "message": "nit: add a docstring for this function",
+      "range": {
+        "startLine": 33,
+        "startChar": 16,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "0b4acde0a447a7d8e5becc156e7c179f2cbcbfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db34747_876a59d9",
+        "filename": "android/ArcAudioTest/src/org/chromium/arc/testapp/arcaudiotest/TestOutputSineActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-29T16:41:25Z",
+      "side": 1,
+      "message": "if this condition gets triggered, my guess is that this message won\u0027t be seen.\n\nand might be better to take a more \"dramatic\" approach, like aborting the app.",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "0b4acde0a447a7d8e5becc156e7c179f2cbcbfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "232361c2_685d6d50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_loopback_correctness.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-29T16:41:25Z",
+      "side": 1,
+      "message": "see comment below",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 28
+      },
+      "revId": "0b4acde0a447a7d8e5becc156e7c179f2cbcbfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04049e7e_b231b6dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_loopback_correctness.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-07-29T16:41:25Z",
+      "side": 1,
+      "message": "nit: what about using `math.Abs`? e.g:\n\n    if math.Abs(expectedFreq - outputFreq) \u003e freqTolerance",
+      "range": {
+        "startLine": 312,
+        "startChar": 5,
+        "endLine": 312,
+        "endChar": 38
+      },
+      "revId": "0b4acde0a447a7d8e5becc156e7c179f2cbcbfe4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
