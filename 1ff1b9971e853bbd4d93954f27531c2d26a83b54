@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3c189ff6_d3927aa1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-29T00:02:08Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "db7b2dce_5dd02326",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "1ff1b9971e853bbd4d93954f27531c2d26a83b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f87545a7_d7b98d9f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
