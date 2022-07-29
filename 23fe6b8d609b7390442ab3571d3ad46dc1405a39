@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8040978_81e66391",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-29T22:15:03Z",
+      "side": 1,
+      "message": "It might make sense to also make this part of a \u0027certs\u0027 or \u0027credentials\u0027 package, maybe under local/bundles/cros/network?",
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

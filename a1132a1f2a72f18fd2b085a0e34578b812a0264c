@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5ef5264_0e5496e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-07-29T22:15:03Z",
+      "side": 1,
+      "message": "I was thinking the same thing myself. Even if we don\u0027t end up using it elsewhere, it would be nice to remove some of the added dependencies to this test.",
+      "parentUuid": "13e3272b_9c65aeb5",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 1
+      },
+      "revId": "a1132a1f2a72f18fd2b085a0e34578b812a0264c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd37083d_00c8596b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
         "patchSetId": 10
