@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff145f2_4e839ca5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/data/playback.js",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-29T05:01:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc03f0b0_af60873f",
+      "revId": "783c2c70c184f479c665a5620cb9e62f71963b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c57b558a_c60eccdf",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-27T03:12:20Z",
       "side": 1,
       "message": "Please add an explicit timeout",
+      "revId": "783c2c70c184f479c665a5620cb9e62f71963b43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "646183cf_728b0474",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/vp8_video_decoder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-07-29T05:01:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c57b558a_c60eccdf",
       "revId": "783c2c70c184f479c665a5620cb9e62f71963b43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
