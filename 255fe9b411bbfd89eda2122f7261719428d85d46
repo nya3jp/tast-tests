@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3983948f_734e1c67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-29T17:18:52Z",
+      "side": 1,
+      "message": "Unfortunately it still doesn\u0027t work but I get a different error now. Before I would get TAPE errors, now it gets stuck during OOBE. It goes past the screen where you enter the email and gets stuck on the password screen saying \"the password was recently changed\".\nI thought maybe I should go ahead and change it again in rhea/ but that didn\u0027t do anything. \nAny ideas what it could be?",
+      "parentUuid": "77be0ffd_3dbd2139",
+      "revId": "255fe9b411bbfd89eda2122f7261719428d85d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec18a8bb_d7fec5b6",
         "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_bytebot_enrollment.go",
         "patchSetId": 1
@@ -66,6 +84,30 @@
       "writtenOn": "2022-07-28T09:17:32Z",
       "side": 1,
       "message": "pspb to follow the style guide for protobuf imports. See also here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3788101",
+      "range": {
+        "startLine": 18,
+        "startChar": 1,
+        "endLine": 18,
+        "endChar": 3
+      },
+      "revId": "255fe9b411bbfd89eda2122f7261719428d85d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d3cc1d2_1a6229dd",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_bytebot_enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-29T17:18:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec18a8bb_d7fec5b6",
       "range": {
         "startLine": 18,
         "startChar": 1,
@@ -99,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a2f294c_ae89bd74",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_bytebot_enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-29T17:18:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0ebd032_7cd58c66",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 1
+      },
+      "revId": "255fe9b411bbfd89eda2122f7261719428d85d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ff037e5_e2e6eb05",
@@ -112,6 +178,30 @@
       "writtenOn": "2022-07-28T09:17:32Z",
       "side": 1,
       "message": "policyClient to follow the style guide for variable naming. See also here:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3789368",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 3
+      },
+      "revId": "255fe9b411bbfd89eda2122f7261719428d85d46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11553687_37854640",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/gaia_bytebot_enrollment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1313155
+      },
+      "writtenOn": "2022-07-29T17:18:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ff037e5_e2e6eb05",
       "range": {
         "startLine": 82,
         "startChar": 1,
