@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47fada41_6a2226f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-07-29T13:03:37Z",
+      "side": 1,
+      "message": "(I realized I needed to also update the cross_version_login configs as they have dumps of the AuthConfig struct I changed.)",
+      "revId": "9926e384e5c4d61b92efcf428dd143f761318f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
