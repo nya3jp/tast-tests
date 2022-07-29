@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcea3b88_7a5c8f5e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-29T17:05:55Z",
+      "side": 1,
+      "message": "I think that\u0027s better.",
+      "parentUuid": "32ada473_f5c18e72",
+      "range": {
+        "startLine": 34,
+        "startChar": 19,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "e9b10d5a8494ce6d2313487e2d4296784babba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc94f6ee_b1495d78",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-28T23:29:04Z",
       "side": 1,
       "message": "This fixture involves a lot of ARC setup (and so does `\"loggedInToCUJUserLacros\"`). See lines 396-469 here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/chrome/cuj/fixture.go;drc\u003d7525d8bc956acf0b3f3b1c61f071f9149b451070;l\u003d396\n\nIn the first place, without your CL, the test uses `arc.Booted()` mostly just to measure the performance overhead of ARC being booted. These fixtures not only boot ARC, but also opt in to the Play Store, and I think it will start installing a lot of apps automatically. All of this has performance implications. So what exactly is the intended performance measurement?",
+      "range": {
+        "startLine": 85,
+        "startChar": 12,
+        "endLine": 85,
+        "endChar": 31
+      },
+      "revId": "e9b10d5a8494ce6d2313487e2d4296784babba96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e436cf75_fd006914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-07-29T17:05:55Z",
+      "side": 1,
+      "message": "I think we wanted a way to measure memory and cpu usage while idling with the simplest possible Lacros or Ash load (similar to how the test originally tested idling with the simplest possible ARC load).\n\nIs there some way to load lacros/ash without ARC setup? Like if there is a lighter way to open lacros/ash than loggedInToCUJUser?",
+      "parentUuid": "fc94f6ee_b1495d78",
       "range": {
         "startLine": 85,
         "startChar": 12,
