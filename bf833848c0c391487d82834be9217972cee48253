@@ -16,6 +16,23 @@
       "message": "currently plenty of systems are failing because of this. many will now fail because they are x86 systems using teo...but that\u0027s progress!",
       "revId": "bf833848c0c391487d82834be9217972cee48253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81014fa1_a8e8af72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/cpuidle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-07-29T06:59:08Z",
+      "side": 1,
+      "message": "What\u0027s the intention of the if-statement? \nI guess you want to fallback to read cpuidle/current_governor if cupidle/current_governor_ro does not exist. If so, it should be:\n```\nif err !\u003d nil {\n  if os.IsNotExist(err) {\n       // read current_governor\n  } else {\n    // The file exists, but fail to read for some reason.\n    s.Fatal(\"Failed to read cpuidle current_governor_ro: \", err)\n  }\n}\n```\n\nRefer to: os.IsExist(err) vs os.IsNotExist(err)\n https://gist.github.com/mastef/05f46d3ab2f5ed6a6787",
+      "revId": "bf833848c0c391487d82834be9217972cee48253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
