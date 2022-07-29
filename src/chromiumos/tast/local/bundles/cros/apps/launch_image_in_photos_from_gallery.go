@@ -159,8 +159,12 @@ func LaunchImageInPhotosFromGallery(ctx context.Context, s *testing.State) {
 
 	// Wait for image to appear in Photos app
 	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute)
+	allowButton := uidetection.Word("ALLOW")
 	if err := uiauto.NamedCombine("reach main page of Photos app",
-		ud.LeftClick(uidetection.Word("ALLOW")),
+		uiauto.IfSuccessThen(
+			ud.WithTimeout(5*time.Second).WaitUntilExists(allowButton),
+			ud.LeftClick(allowButton),
+		),
 		ud.LeftClick(uidetection.TextBlock([]string{"Got", "it"})),
 		ud.WaitUntilExists(uidetection.Word("HALLOWEEN")),
 	)(ctx); err != nil {
