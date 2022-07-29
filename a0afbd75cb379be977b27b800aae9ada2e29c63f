@@ -87,6 +87,47 @@
       "parentUuid": "3b180a80_954a4074",
       "revId": "a0afbd75cb379be977b27b800aae9ada2e29c63f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc54087c_bfc083ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-07-29T00:38:15Z",
+      "side": 1,
+      "message": "I think either method is fine, to be honest. It depends on what you want to measure. For example, the GpuCUJ tests run it first on ash then on lacros so we can compare the results on a single build. If you don\u0027t need to compare them on a single build (comparing over time is fine) then I think this is okay.\n\nFWIW the other perf tests in ui/ work like this.",
+      "parentUuid": "75405402_6f8dc859",
+      "revId": "a0afbd75cb379be977b27b800aae9ada2e29c63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e2a31fb_3408ff40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_maximized_window_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-07-29T00:38:15Z",
+      "side": 1,
+      "message": "Can this go back into a constant? numWindows - 1",
+      "range": {
+        "startLine": 81,
+        "startChar": 50,
+        "endLine": 81,
+        "endChar": 51
+      },
+      "revId": "a0afbd75cb379be977b27b800aae9ada2e29c63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
