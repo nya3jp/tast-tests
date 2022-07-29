@@ -33,6 +33,24 @@
       "message": "Right/Left sounds too generic, and we use prefix to avoid conflict.\nWindowMovementDirectionRight, WindowMovementDirectionLeft.",
       "revId": "e072d78075bde60402be5e6dbd511cab096bee54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "025aed33_22468bc1",
+        "filename": "src/chromiumos/tast/local/chrome/ash/desks.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1522032
+      },
+      "writtenOn": "2022-07-29T16:12:14Z",
+      "side": 1,
+      "message": "Ah yeah that makes a lot of sense. Adding that in the next patchset",
+      "parentUuid": "099ae362_2c2182a5",
+      "revId": "e072d78075bde60402be5e6dbd511cab096bee54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
