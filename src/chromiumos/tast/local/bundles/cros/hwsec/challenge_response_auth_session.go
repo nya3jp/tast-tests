@@ -44,8 +44,8 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 		testFile        = "file"
 		testFileContent = "content"
 		keySizeBits     = 2048
-		keyAlg          = cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1
 	)
+	keyAlgs := []cpb.ChallengeSignatureAlgorithm{cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1}
 
 	// Initialize the underlying KeyDelegate for challenge.
 	cmdRunner := hwseclocal.NewCmdRunner()
@@ -84,7 +84,7 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 	defer dbusConn.ReleaseName(dbusName)
 
 	keyDelegate, err := util.NewCryptohomeKeyDelegate(
-		s.Logf, dbusConn, testUser, keyAlg, rsaKey, pubKeySPKIDER)
+		s.Logf, dbusConn, testUser, keyAlgs, rsaKey, pubKeySPKIDER)
 	if err != nil {
 		s.Fatal("Failed to export D-Bus key delegate: ", err)
 	}
@@ -99,7 +99,8 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to remove old vault for preparation: ", err)
 	}
 
-	if err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, false /*isEphemeral*/, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg)); err != nil {
+	authConfig := hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlgs)
+	if err := cryptohome.CreateUserAuthSessionWithChallengeCredential(ctx, testUser, false /*isEphemeral*/, authConfig); err != nil {
 		s.Fatal("Failed to create the user: ", err)
 	}
 	defer client.UnmountAll(ctx)
@@ -122,7 +123,7 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 
 	// Reauthenticate and remount the specific vault.
 	// Remount should succeed.
-	authSessionID, err := cryptohome.AuthenticateAuthSessionWithChallengeCredential(ctx, testUser, false /*isEphemeral*/, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg))
+	authSessionID, err := cryptohome.AuthenticateAuthSessionWithChallengeCredential(ctx, testUser, false /*isEphemeral*/, authConfig)
 	if err != nil {
 		s.Fatal("Failed to authenticate persistent user: ", err)
 	}
@@ -147,7 +148,7 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 	// Remount should fail.
 	// Failure occurs because of manually "corrputed" requestedUser
 	requestedUser := "corrputed_testUser"
-	_, err = cryptohome.AuthenticateAuthSessionWithChallengeCredential(ctx, requestedUser, false /*isEphemeral*/, hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg))
+	_, err = cryptohome.AuthenticateAuthSessionWithChallengeCredential(ctx, requestedUser, false /*isEphemeral*/, authConfig)
 	if err == nil {
 		s.Fatal("Authentication with wrong credentials is expected to fail but succeeded: ", err)
 	}

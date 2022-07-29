@@ -250,8 +250,8 @@ func createChallengeResponseData(ctx context.Context, lf LogFunc, cryptohome *hw
 		testUser    = "challenge_response_test@chromium.org"
 		keyLabel    = "challenge_response_key_label"
 		keySizeBits = 2048
-		keyAlg      = cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1
 	)
+	keyAlgs := []cpb.ChallengeSignatureAlgorithm{cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1}
 	randReader := rand.New(rand.NewSource(0 /* seed */))
 	rsaKey, err := rsa.GenerateKey(randReader, keySizeBits)
 	if err != nil {
@@ -272,13 +272,13 @@ func createChallengeResponseData(ctx context.Context, lf LogFunc, cryptohome *hw
 	defer dbusConn.ReleaseName(dbusName)
 
 	keyDelegate, err := NewCryptohomeKeyDelegate(
-		lf, dbusConn, testUser, keyAlg, rsaKey, pubKeySPKIDER)
+		lf, dbusConn, testUser, keyAlgs, rsaKey, pubKeySPKIDER)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to export D-Bus key delegate")
 	}
 	defer keyDelegate.Close()
 
-	authConfig := hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlg)
+	authConfig := hwsec.NewChallengeAuthConfig(testUser, dbusName, keyDelegate.DBusPath, pubKeySPKIDER, keyAlgs)
 	// Enforce the usage of ecryptfs, so that we can take a usable snapshot of encrypted files.
 	vaultConfig := hwsec.NewVaultConfig()
 	vaultConfig.Ecryptfs = true
