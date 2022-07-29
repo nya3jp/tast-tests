@@ -200,6 +200,30 @@
       },
       "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "786074a2_9ccf7275",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-07-29T22:08:42Z",
+      "side": 1,
+      "message": "Perhaps make a bug to remove them and add it as a comment here in this CL so future readers know they\u0027re about to do something wrong by relying on them.",
+      "parentUuid": "9df907cf_e445750e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
