@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1ebeb57_7973f9bf",
+        "filename": "src/chromiumos/tast/local/crostini/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-29T07:51:06Z",
+      "side": 1,
+      "message": "Yes, out of four operations (shutting down Crostini, launching Terminal, connecting to container and closing Terminal [1]), launching Terminal is always where the slowness comes from. 30 seconds should be sufficient for the other three operations and there has been no timeout failures during these operations.\n\n[1]https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/tast-tests/src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go;l\u003d234",
+      "parentUuid": "0fa1c933_f5e1282a",
+      "range": {
+        "startLine": 36,
+        "startChar": 26,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "63d1a5c860d87d8ca277e8de652ac765736ec6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3515192_4a563e18",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-07-29T07:13:41Z",
       "side": 1,
       "message": "Nit: you probably mean \"e.g.\"? E.g. means for example (as in, this is one example of many) whereas i.e. means \"that is\" (as in, another way of saying the same thing).",
+      "range": {
+        "startLine": 33,
+        "startChar": 36,
+        "endLine": 33,
+        "endChar": 40
+      },
+      "revId": "63d1a5c860d87d8ca277e8de652ac765736ec6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f876cb5_49b62650",
+        "filename": "src/chromiumos/tast/local/crostini/ui/terminalapp/terminalapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-07-29T07:51:06Z",
+      "side": 1,
+      "message": "Reworded. Thanks for the clarification!",
+      "parentUuid": "e3515192_4a563e18",
       "range": {
         "startLine": 33,
         "startChar": 36,
