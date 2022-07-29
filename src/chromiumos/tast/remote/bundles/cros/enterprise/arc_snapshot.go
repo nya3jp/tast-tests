@@ -30,8 +30,12 @@ func init() {
 			"pbond@chromium.org", // Test author
 			"arc-commercial@google.com",
 		},
-		Attr:         []string{"group:arc-data-snapshot"},
-		ServiceDeps:  []string{"tast.cros.enterprise.ArcSnapshotService", "tast.cros.tape.Service"},
+		Attr: []string{"group:arc-data-snapshot"},
+		ServiceDeps: []string{
+			"tast.cros.enterprise.ArcSnapshotService",
+			"tast.cros.hwsec.OwnershipService",
+			"tast.cros.tape.Service",
+		},
 		SoftwareDeps: []string{"chrome", "reboot", "arc", "tpm2", "amd64"},
 		Timeout:      arcSnapshotTestTimeout,
 		VarDeps: []string{
@@ -50,13 +54,13 @@ func ArcSnapshot(ctx context.Context, s *testing.State) {
 
 	packages := strings.Split(s.RequiredVar("enterprise.ArcSnapshot.packages"), ",")
 
-	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+	if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
 
 	defer func(ctx context.Context) {
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
-			s.Error("Failed to reset TPM: ", err)
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
+			s.Error("Failed to reset TPM after test: ", err)
 		}
 	}(cleanupCtx)
 
