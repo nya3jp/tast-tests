@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5213245_c9eeeb2a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-29T08:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f224730e_2adc849e",
+      "revId": "efa674c3ddd2e97edbd650cfefe825c772dde28e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "455d5bb4_da1f81c5",
@@ -75,6 +93,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c38118_43468ba9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-29T08:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fb936f7_6aea9bf8",
+      "range": {
+        "startLine": 226,
+        "startChar": 6,
+        "endLine": 226,
+        "endChar": 28
+      },
+      "revId": "efa674c3ddd2e97edbd650cfefe825c772dde28e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "352407cc_0fe3cef5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-29T08:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "455d5bb4_da1f81c5",
+      "revId": "efa674c3ddd2e97edbd650cfefe825c772dde28e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "907de5e5_75d4428c",
@@ -88,6 +148,30 @@
       "writtenOn": "2022-07-29T02:15:33Z",
       "side": 1,
       "message": "the renaming to nodes can help avoiding typo like this, IMO.",
+      "range": {
+        "startLine": 239,
+        "startChar": 20,
+        "endLine": 239,
+        "endChar": 37
+      },
+      "revId": "efa674c3ddd2e97edbd650cfefe825c772dde28e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dedc3a5f_5fc6edce",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/passpoint/credentials.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1428748
+      },
+      "writtenOn": "2022-07-29T08:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "907de5e5_75d4428c",
       "range": {
         "startLine": 239,
         "startChar": 20,
