@@ -126,8 +126,12 @@ func init() {
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
 		TearDownTimeout: 8 * time.Minute,
-		ServiceDeps:     []string{TFServiceName, "tast.cros.policy.PolicyService"},
-		Vars:            []string{"router", "pcap", "routertype", "pcaptype"},
+		ServiceDeps: []string{
+			TFServiceName,
+			"tast.cros.hwsec.OwnershipService",
+			"tast.cros.policy.PolicyService",
+		},
+		Vars: []string{"router", "pcap", "routertype", "pcaptype"},
 	})
 	testing.AddFixture(&testing.Fixture{
 		Name: "wificellFixtCompanionDut",
@@ -288,7 +292,7 @@ func (f *tastFixtureImpl) enrollChrome(ctx context.Context, s *testing.FixtState
 func (f *tastFixtureImpl) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	if f.features&TFFeaturesEnroll != 0 {
 		// Do this before NewTestFixture as DUT might be rebooted which will break tf.rpc.
-		if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
+		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 			s.Fatal("Failed to reset TPM: ", err)
 		}
 	}
@@ -419,7 +423,7 @@ func (f *tastFixtureImpl) TearDown(ctx context.Context, s *testing.FixtState) {
 			}
 
 			// Reset DUT TPM and system state to leave it in a good state post test.
-			if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, d.dut); err != nil {
+			if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, d.dut, s.RPCHint()); err != nil {
 				s.Error("Failed to reset TPM: ", err)
 			}
 		}
