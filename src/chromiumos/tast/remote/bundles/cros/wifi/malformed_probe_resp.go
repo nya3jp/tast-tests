@@ -123,7 +123,9 @@ func MalformedProbeResp(ctx context.Context, s *testing.State) {
 		// length of remaining payload) and OUI=00:1a:11 which is Google.
 		framesender.ProbeRespFooter([]byte("\xdd\xb7\x00\x1a\x11\x01\x01\x02\x03")),
 	}
-	sender.Start(ctx, framesender.TypeProbeResponse, ap.Config().Channel, fsOps...)
+	if err = sender.Start(ctx, framesender.TypeProbeResponse, ap.Config().Channel, fsOps...); err != nil {
+		s.Error("sender failed: ", err)
+	}
 	defer func(ctx context.Context) {
 		if err := sender.Stop(ctx); err != nil {
 			s.Error("Failed to stop frame sender: ", err)
