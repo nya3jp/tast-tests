@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39236184_f27a18d0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_off.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-07-29T13:55:02Z",
+      "side": 1,
+      "message": "I think the `err` will contain the name of the combined action so I think this means this log line will repeat itself.",
+      "revId": "db50298a47496f0281d74d601f3da5adf4e7b576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
