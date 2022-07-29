@@ -28,16 +28,19 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "diagnosticsPrep",
 	})
 }
 
 // RenderApp verifies launching an app from the launcher.
 func RenderApp(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("DiagnosticsApp"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx) // Close our own chrome instance
+	// cr, err := chrome.New(ctx, chrome.EnableFeatures("DiagnosticsApp"))
+	// if err != nil {
+	// 	s.Fatal("Failed to start Chrome: ", err)
+	// }
+	// defer cr.Close(ctx) // Close our own chrome instance
+
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -52,6 +55,7 @@ func RenderApp(ctx context.Context, s *testing.State) {
 
 	// Verify cpu chart is drawn
 	ui := uiauto.New(tconn)
+
 	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(diagnosticsapp.DxCPUChart.Ancestor(dxRootnode).First())(ctx); err != nil {
 		s.Fatal("Failed to find CPU chart: ", err)
 	}
