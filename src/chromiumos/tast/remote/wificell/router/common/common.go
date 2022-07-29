@@ -34,6 +34,10 @@ const (
 // running things before Router.Close to reserve time for it to run.
 const RouterCloseContextDuration = 5 * time.Second
 
+// RouterCloseFrameSenderDuration is a shortened ctx used for running things
+// before r.CloseFrameSender() to reserve time for it to run.
+const RouterCloseFrameSenderDuration = 2 * time.Second
+
 // TimestampFileFormat is the time format used for timestamps in generated
 // file names and folder names.
 const TimestampFileFormat = "20060102-150405"

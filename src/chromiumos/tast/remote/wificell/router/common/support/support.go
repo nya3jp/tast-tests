@@ -138,8 +138,6 @@ type FrameSender interface {
 	CloseFrameSender(ctx context.Context, s *framesender.Sender) error
 	// NewFrameSender creates a frame sender object.
 	NewFrameSender(ctx context.Context, iface string) (*framesender.Sender, error)
-	// ReserveForCloseFrameSender returns a shortened ctx with cancel function.
-	ReserveForCloseFrameSender(ctx context.Context) (context.Context, context.CancelFunc)
 }
 
 // IfaceManipulation shall be implemented if the router can modify its iface configuration.
