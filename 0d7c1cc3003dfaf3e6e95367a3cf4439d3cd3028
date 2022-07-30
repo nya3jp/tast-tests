@@ -39,6 +39,30 @@
       },
       "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfc09fc2_d9fcbf83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-07-30T02:07:57Z",
+      "side": 1,
+      "message": "Thanks Toby for all the useful info! \nBtw, this change doesn\u0027t fail for me with the latest build in \u0027lacrosprimary\u0027 mode and is working fine for both ash and lacros variants without crash.\n\n+Georg, do you have any thoughts on ReloadActiveTab? (found your name in git blame)",
+      "parentUuid": "231de043_fd40d94c",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
