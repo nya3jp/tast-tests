@@ -6,10 +6,14 @@ package shelf
 
 import (
 	"context"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/ui"
@@ -20,12 +24,13 @@ import (
 type autoHideTestType struct {
 	tabletMode bool
 	underRTL   bool // If true, the system UI is adapted to right-to-left languages.
+	bt         browser.Type
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AutoHideSmoke,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests shelf autohide behavior",
 		Contacts: []string{
 			"yulunwu@chromium.org",
@@ -40,55 +45,103 @@ func init() {
 			Val: autoHideTestType{
 				tabletMode: false,
 				underRTL:   false,
+				bt:         browser.TypeAsh,
 			},
-		},
-			{
-				Name: "clamshell_mode_rtl",
-				Val: autoHideTestType{
-					tabletMode: false,
-					underRTL:   true,
-				},
+		}, {
+			Name: "clamshell_mode_rtl",
+			Val: autoHideTestType{
+				tabletMode: false,
+				underRTL:   true,
+				bt:         browser.TypeAsh,
 			},
-			{
-				Name: "tablet_mode",
-				Val: autoHideTestType{
-					tabletMode: true,
-					underRTL:   false,
-				},
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen()),
+		}, {
+			Name: "tablet_mode",
+			Val: autoHideTestType{
+				tabletMode: true,
+				underRTL:   false,
+				bt:         browser.TypeAsh,
 			},
-			{
-				Name: "tablet_mode_rtl",
-				Val: autoHideTestType{
-					tabletMode: true,
-					underRTL:   true,
-				},
-				ExtraAttr:         []string{"informational"},
-				ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen()),
+			ExtraAttr:         []string{"informational"},
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen()),
+		}, {
+			Name: "tablet_mode_rtl",
+			Val: autoHideTestType{
+				tabletMode: true,
+				underRTL:   true,
+				bt:         browser.TypeAsh,
 			},
-		},
+			ExtraAttr:         []string{"informational"},
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen()),
+		}, {
+			Name: "clamshell_mode_lacros",
+			Val: autoHideTestType{
+				tabletMode: false,
+				underRTL:   false,
+				bt:         browser.TypeLacros,
+			},
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			Name: "clamshell_mode_rtl_lacros",
+			Val: autoHideTestType{
+				tabletMode: false,
+				underRTL:   true,
+				bt:         browser.TypeLacros,
+			},
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}, {
+			Name: "tablet_mode_lacros",
+			Val: autoHideTestType{
+				tabletMode: true,
+				underRTL:   false,
+				bt:         browser.TypeLacros,
+			},
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen()),
+		}, {
+			Name: "tablet_mode_rtl_lacros",
+			Val: autoHideTestType{
+				tabletMode: true,
+				underRTL:   true,
+				bt:         browser.TypeLacros,
+			},
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen()),
+		}},
 	})
 }
 
 // AutoHideSmoke tests basic shelf features.
 func AutoHideSmoke(ctx context.Context, s *testing.State) {
+	// Reserve some time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
 	testType := s.Param().(autoHideTestType)
 	isUnderRTL := testType.underRTL
+	bt := testType.bt
 
-	var cr *chrome.Chrome
+	// Enable the browser based on the given type.
+	var opts []chrome.Option
 	var err error
 	if isUnderRTL {
-		cr, err = chrome.New(ctx, []chrome.Option{chrome.ExtraArgs("--force-ui-direction=rtl")}...)
+		opts = append(opts, chrome.ExtraArgs("--force-ui-direction=rtl"))
+	}
+	if bt == browser.TypeLacros {
+		opts, err = lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
 		if err != nil {
-			s.Fatal("Failed to start chrome with rtl: ", err)
-		}
-	} else {
-		cr, err = chrome.New(ctx)
-		if err != nil {
-			s.Fatal("Failed to start chrome: ", err)
+			s.Fatal("Failed to get lacros options: ", err)
 		}
 	}
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		s.Fatalf("Failed to start chrome (rtl? %v): %v", isUnderRTL, err)
+	}
+	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -107,7 +160,7 @@ func AutoHideSmoke(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to enter clamshell mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
 	if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfShownClamShell); err != nil {
 		s.Fatal("Failed to show clamshell shelf: ", err)
@@ -204,7 +257,7 @@ func AutoHideSmoke(ctx context.Context, s *testing.State) {
 		if err != nil {
 			s.Fatal("Failed to enter tablet mode: ", err)
 		}
-		defer cleanup(ctx)
+		defer cleanup(cleanupCtx)
 
 		if err := ash.WaitForHotseatAnimatingToIdealState(ctx, tconn, ash.ShelfHidden); err != nil {
 			s.Fatal("Shelf failed to autohide when entering tablet mode: ", err)
