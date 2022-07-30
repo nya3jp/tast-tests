@@ -8,11 +8,15 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -32,36 +36,61 @@ const (
 	pointerTouch
 )
 
+type pointerTestParam struct {
+	pt pointerTypeParam
+	bt browser.Type
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DragTabInTabletPerf,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the presentation time of dragging a tab in tablet mode",
 		Contacts:     []string{"yichenz@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Timeout:      5 * time.Minute,
+		Timeout:      8 * time.Minute,
 		Params: []testing.Param{{
-			Val: pointerMouse,
+			Val: pointerTestParam{pt: pointerMouse, bt: browser.TypeAsh},
 		}, {
 			Name: "touch",
-			Val:  pointerTouch,
+			Val:  pointerTestParam{pt: pointerTouch, bt: browser.TypeAsh},
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               pointerTestParam{pt: pointerMouse, bt: browser.TypeLacros},
+		}, {
+			Name:              "touch_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               pointerTestParam{pt: pointerTouch, bt: browser.TypeLacros},
 		}},
 	})
 }
 
 func DragTabInTabletPerf(ctx context.Context, s *testing.State) {
+	// Reserve a few seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(cleanupCtx, 10*time.Second)
+	defer cancel()
+
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration"))
+	// Set up the browser. Open the first window now, then the second one later.
+	const numWindows = 2
+	const url = ui.PerftestURL
+	bt := s.Param().(pointerTestParam).bt
+	conn, cr, br, closeBrowser, err := browserfixt.SetUpWithNewChromeAtURL(ctx, bt, url, lacrosfixt.NewConfig(),
+		chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration"))
 	if err != nil {
-		s.Fatal("Failed to init: ", err)
+		s.Fatal("Failed to open the browser: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
+	defer conn.Close()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -72,10 +101,11 @@ func DragTabInTabletPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
-	for i := 0; i < 2; i++ {
-		conn, err := cr.NewConn(ctx, ui.PerftestURL)
+	// Open the rest of the windows.
+	for i := 1; i < numWindows; i++ {
+		conn, err := br.NewConn(ctx, url)
 		if err != nil {
 			s.Fatalf("Failed to open %d-th tab: %v", i, err)
 		}
@@ -89,7 +119,7 @@ func DragTabInTabletPerf(ctx context.Context, s *testing.State) {
 	ac := uiauto.New(tconn)
 
 	var pc pointer.Context
-	pt := s.Param().(pointerTypeParam)
+	pt := s.Param().(pointerTestParam).pt
 	if pt == pointerTouch {
 		pc, err = pointer.NewTouch(ctx, tconn)
 		if err != nil {
