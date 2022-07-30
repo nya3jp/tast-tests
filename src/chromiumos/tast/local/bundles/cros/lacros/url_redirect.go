@@ -29,17 +29,19 @@ import (
 type openLocation int
 
 const (
-	openInLacros openLocation = iota
-	openInAsh
+	openInLacros openLocation = iota // Opens in Lacros and not in Ash.
+	openInLacrosAs404                // Navigates to a 404 in Lacros.
+	openInAsh                        // Opens in Ash as application.
 )
 
 type urlRedirectParams struct {
   mode          openLocation
 	url           string
-	backLink      bool
-	appIdInAsh    string
 	appTitleInAsh string
 }
+
+// This test is not testing all available URLs (go/lacros-url-redirect-links),
+// but rather a random selection of URL's.
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -51,39 +53,82 @@ func init() {
 		Fixture:      "lacros",
 		Timeout:      60 * time.Minute,
 		Params: []testing.Param{{
-			// Normal URL opens in Lacros (test works)
-			Name: "browser_flags",
-			Val:  urlRedirectParams{mode: openInLacros,
-				                      url: "chrome://flags/",
-														  backLink: true},
-		}, {
-	    // os:// URL opening in Ash (test waits for ever)
-			Name: "system_flags",
-			Val:  urlRedirectParams{mode: openInAsh,
-	                            url: "os://flags/",
-															appTitleInAsh: "ChromeOS-URLs",
-														  backLink: true},
-		}, {
-	    // Normal URL opens in Lacros (test works)
-			Name: "browser_version",
-			Val:  urlRedirectParams{mode: openInLacros,
-				                      url: "chrome://version/",
-													 	  backLink: true},
-		}, {
-	    // os:// URL opening in Ash (test waits for ever)
-//			Name: "system_version",
-//			Val:  urlRedirectParams{mode: openInAsh,
-//	                            url: "os://version/",
-//															backLink: true},
-//	  }, {
-	    // os:// URL should open an app on Ash side (test passes)
-			Name: "crosh",
-			Val:  urlRedirectParams{mode: openInAsh,
-				                      url: "chrome-untrusted://crosh/",
-															appTitleInAsh: "crosh",
-															backLink: false,
-														  appIdInAsh: "behllobkkfkfnphdnhnkndlbkcpglgmj"},
-		},
+/* TODO: Uncomment
+			// chrome:// URL opens in Lacros
+				Name: "browser_components",
+				Val:  urlRedirectParams{mode: openInLacros,
+																url: "chrome://components/"},
+			}, {
+				Name: "browser_credits",
+				Val:  urlRedirectParams{mode: openInLacros,
+																url: "chrome://credits/"},
+			}, {
+				Name: "browser_flags",
+				Val:  urlRedirectParams{mode: openInLacros,
+																url: "chrome://flags/"},
+			}, {
+				Name: "browser_version",
+				Val:  urlRedirectParams{mode: openInLacros,
+																url: "chrome://version/"},
+			}, {
+*/
+				Name: "browser_settings",
+				Val:  urlRedirectParams{mode: openInLacros,
+																url: "chrome://settings/"},
+			}, {
+				// chrome:// URL's not opening in Lacros or Ash
+				Name: "no_lacros_sys_internals",
+				Val:  urlRedirectParams{mode: openInLacrosAs404,
+																url: "chrome://sys-internals/"},
+/* TODO: Uncomment
+			}, {
+				// os:// URL opening in Ash
+				Name: "ash_credits",
+				Val:  urlRedirectParams{mode: openInAsh,
+																url: "os://credits/",
+																appTitleInAsh: "ChromeOS-URLs - Credits"},
+			}, {
+				Name: "system_chrome_os_settings",
+				Val:  urlRedirectParams{mode: openInAsh,
+																url: "chrome://os-settings/",
+																appTitleInAsh: "Settings"},
+			}, {
+				Name: "system_components",
+				Val:  urlRedirectParams{mode: openInAsh,
+																url: "os://components/",
+																appTitleInAsh: "ChromeOS-URLs"},
+			}, {
+				Name: "system_credits",
+				Val:  urlRedirectParams{mode: openInAsh,
+																url: "chrome://os-credits/",
+																appTitleInAsh: "ChromeOS-URLs - Credits"},
+			}, {
+				Name: "system_flags",
+				Val:  urlRedirectParams{mode: openInAsh,
+																url: "os://flags/",
+																appTitleInAsh: "ChromeOS-URLs"},
+			}, {
+				Name: "system_internals",
+				Val:  urlRedirectParams{mode: openInAsh,
+																url: "os://sys-internals/",
+																appTitleInAsh: "ChromeOS-URLs - System Internals"},
+			}, {
+				Name: "system_settings",
+				Val:  urlRedirectParams{mode: openInAsh,
+																url: "os://settings/",
+																appTitleInAsh: "Settings"},
+			}, {
+				Name: "system_version",
+				Val:  urlRedirectParams{mode: openInAsh,
+																url: "os://version/",
+																appTitleInAsh: "ChromeOS-URLs - About Version"},
+			}, { // os:// URL should open an app on Ash side
+				Name: "crosh",
+				Val:  urlRedirectParams{mode: openInAsh,
+																url: "chrome-untrusted://crosh/",
+																appTitleInAsh: "crosh"},
+*/
+			},
 	  },
 	})
 }
@@ -146,40 +191,21 @@ func UrlRedirect(ctx context.Context, s *testing.State) {
   if params.mode == openInAsh {
     s.Log("Testing that it got opened in Ash and not in Lacros - ", params.url)
 		// ash_browser := s.FixtValue().(lacrosfixt.FixtValue).Chrome()
-s.Log("Waiting for app...")
 		// Wait for application to appear on the Ash side.
-		// TODO: I think this does not work!!
     if err := ash.WaitForCondition(ctx, tconnAsh, func (w *ash.Window) bool {
 			  appWindow = w
 				return true},
 		  &testing.PollOptions{Timeout: time.Minute, Interval: time.Second}); err != nil {
-s.Log("oopsie ", err)
 				s.Fatal("Waiting for app failed with error: ", err)
 		}
-s.Log("Waited and something has happened")
-
-		// TODO: Remove - only left here to see the result.
-		testing.Sleep(ctx, 5 * time.Second)
 
 	  // Check Lacros side: If there is a tab, it should not show the (valid) URL.
-s.Log("Waited additional 5s's")
 
 		// Make sure that the current URL from Lacros is not the URL we navigated to.
 		targets, err := lacros_browser.FindTargets(ctx, matcher)
-
 		if err != nil {
-s.Log("Error enumerating ", err)
 			s.Fatal("Error when findingmatching Lacros window!")
 		}
-s.Log("Targets: ", len(targets))
-if len(targets) > 0 {
-s.Log("URL[0]: ", targets[0].URL)
-s.Log("Attached[0] " , targets[0].Attached)
-if len(targets) > 1 {
-s.Log("URL[1]: ", targets[1].URL)
-s.Log("Attached[1] " , targets[1].Attached)
-}
-}
 		if len(targets) != 0 && targets[0].URL != params.url && targets[0].Attached {
 			s.Fatal("Lacros should not navigate to this url!", params.url)
 		}
@@ -188,18 +214,31 @@ s.Log("Attached[1] " , targets[1].Attached)
 
 		// Make sure we have only one window.
 		windows, title := GetNumberOfAshWindows(ctx, tconnAsh, s)
-s.Log("Number of Ash windows & title=(", windows, ", ", title, ")")
-		if windows != 1 {
-			s.Fatal("There should be only exactly one Ash window!")
+    if windows != 1 || title != params.appTitleInAsh {
+			// Seen that the title was not updated at the time the window showed.
+			testing.Sleep(ctx, time.Second / 2)
+			windows, title := GetNumberOfAshWindows(ctx, tconnAsh, s)
+			if windows != 1 {
+				s.Fatal("There should be only exactly one Ash window! (is:", windows, ")")
+			}
+			if title != params.appTitleInAsh {
+				s.Fatal("This is not the correct app type! title=", title, " should be=", params.appTitleInAsh)
+  		}
 		}
-    if title != params.appTitleInAsh {
-			s.Fatal("This is not the correct app type! title=", title, " should be=", params.appTitleInAsh)
-		}
-		// Check the AppId is correct.
-		// Note: Currently not populated by framework.
+		// The passed AppID from the framework is not populated. Otherwise we could
+		// test for that.
     // if appWindow.FullRestoreWindowAppID != params.appIdInAsh {
 		//	s.Fatal("This is not the correct app!")
 		//}
+	} else if params.mode == openInLacrosAs404 {
+    s.Log("Testing if opened in Lacros but prodces error - ", params.url)
+		// Wait for navigation to finish.
+		// Make sure that the current URL from Lacros is not the URL we navigated to.
+		conn, err := lacros_browser.NewConnForTarget(ctx, matcher)
+
+		if err == nil || conn != nil {
+			s.Fatal("The navigation for " + params.url + " should have failed!")
+		}
 
 	} else {
     s.Log("Testing if opened correctly in Lacros and not in Ash - ", params.url)
@@ -223,7 +262,9 @@ s.Log("Number of Ash windows & title=(", windows, ", ", title, ")")
 		if err != nil {
 			s.Fatal("Error when findingmatching Lacros window!")
 		}
+
 		s.Log("InLacros:all= ", fmt.Sprintf("%+v\n", targets[0]))
+
 		if !targets[0].Attached {
 		  s.Fatal("Navigation failed to: ", params.url)
 		}
@@ -231,26 +272,6 @@ s.Log("Number of Ash windows & title=(", windows, ", ", title, ")")
 		  s.Fatal("Incorrect navigation to ", params.url)
 		}
 	}
-
-/* If we want to check clicking the back link we should add this...
-  if params.backLink {
-		// Click the backink...
-		if err := s.FixtValue().(lacrosfixt.FixtValue).TestAPIConn().Call(ctx, nil, `async () => {
-			const win = await tast.promisify(chrome.windows.getLastFocused)();
-			await tast.promisify(chrome.windows.update)(win.id, {width: 800, height:600, state:"normal"});
-		}`); err != nil {
-			s.Fatal("Backlink couldn't be clicked: ", err)
-		}
-
-		// Now do the same test as above - only the other direction.
-		if params.mode == openInAsh {
-      ..
-		}
-
-		// Last but not least we might want to check that only a single instance
-		// will be opened.
-	}
-*/
 
   if appWindow != nil {
 		err := appWindow.CloseWindow(ctx, tconnAsh)
@@ -267,18 +288,6 @@ s.Log("Number of Ash windows & title=(", windows, ", ", title, ")")
 // of lacros-chrome, with a single tab open to about:blank, then, navigates the
 // blank tab to the given url.
 func navigateSingleTabToURLInLacros(ctx context.Context, url string, l *lacros.Lacros, tconnLacros *chrome.TestConn, keyboard *input.KeyboardEventWriter, s *testing.State) error {
-/*
-	// Open a new tab and navigate to url.
-	conn, err := l.NewConnForTarget(ctx, chrome.MatchTargetURL("about:blank"))
-	if err != nil {
-		return errors.Wrap(err, "failed to find an about:blank tab")
-	}
-	defer conn.Close()
-	if err := conn.Navigate(ctx, url); err != nil {
-		return errors.Wrapf(err, "failed to navigate to %q", url)
-	}
-*/
-
   ctxWithTimeout, cancel := context.WithTimeout(ctx, 30*time.Second)
   defer cancel()
 
@@ -289,6 +298,9 @@ func navigateSingleTabToURLInLacros(ctx context.Context, url string, l *lacros.L
 	}
 	defer conn.Close()
 
+	// We cannot use "conn.Navigate(ctx, url)" here, as that does not use the
+	// omnibox navigation which should be used to get re-routed. As such we have
+	// to enter the navigation into the omnibox to navigate.
 	ui := uiauto.New(tconnLacros)
 	omniboxFinder := nodewith.Name("Address and search bar").Role(role.TextField)
 	if err := uiauto.Combine("open target "+ url,
@@ -298,6 +310,11 @@ func navigateSingleTabToURLInLacros(ctx context.Context, url string, l *lacros.L
 		keyboard.AccelAction("Enter"))(ctxWithTimeout); err != nil {
 			return err
 	}
+
+	// As the navigation was done indirectly, we didn't get any navigation failure
+	// and have to figure that now out separately.
+
+  // TODO: Determine if the navigation was a success or if it failed.
 
 	return nil
 }
@@ -314,20 +331,10 @@ func GetNumberOfAshWindows(ctx context.Context, tconnAsh *chrome.TestConn, s *te
 	ashWindows := 0
   for i := 0; i < len(win); i+=1 {
 		if win[i].Name == "BrowserFrame" {
-s.Log("Win found with Title ", title)
 			title = win[i].Title
 			ashWindows++
 		}
 	}
 
-if len(win) >= 3 {
-s.Log("GetNumberOfAshWindows: ", fmt.Sprintf("\n1: %+v\n2: %+v\n3: %+v\n", win[0], win[1], win[2]))
-}else if len(win) >= 2 {
-s.Log("GetNumberOfAshWindows: ", fmt.Sprintf("\n1: %+v\n2: %+v\n", win[0], win[1]))
-}else if len(win) >= 1 {
-s.Log("GetNumberOfAshWindows: ", fmt.Sprintf("\n1: %+v\n", win[0]))
-} else {
-s.Log("GetNumberOfAshWindows: 0")
-}
 	return ashWindows, title
 }
