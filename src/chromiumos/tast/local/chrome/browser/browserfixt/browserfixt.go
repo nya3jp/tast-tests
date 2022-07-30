@@ -18,7 +18,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// SetUp returns a Browser instance for a given fixture value and browser type.
+// SetUp returns a Browser instance for a given browser type and an existing ash-chrome instance.
 // It also returns a closure to be called in order to close the browser instance,
 // after which the instance should not be used any further.
 func SetUp(ctx context.Context, cr *chrome.Chrome, bt browser.Type) (*browser.Browser, func(ctx context.Context), error) {
@@ -43,8 +43,8 @@ func SetUp(ctx context.Context, cr *chrome.Chrome, bt browser.Type) (*browser.Br
 	}
 }
 
-// SetUpWithURL is a combination of SetUp and NewConn that avoids an extra
-// blank tab in the case of Lacros. The caller is responsible for closing the
+// SetUpWithURL is a combination of SetUp and NewConn that avoids an extra default
+// tab page in the case of Lacros. The caller is responsible for closing the
 // returned connection via its Close() method prior to calling the returned
 // closure.
 func SetUpWithURL(ctx context.Context, cr *chrome.Chrome, bt browser.Type, url string) (*chrome.Conn, *browser.Browser, func(ctx context.Context), error) {
@@ -85,12 +85,14 @@ func SetUpWithURL(ctx context.Context, cr *chrome.Chrome, bt browser.Type, url s
 	}
 }
 
-// SetUpWithNewChrome returns a Browser instance along with a new Chrome instance created.
-// This is useful when no fixture is used but the new chrome needs to be instantiated in test for a fresh UI restart between tests.
+// SetUpWithNewChrome returns a Browser instance and a new ash-chrome instance as well.
+// This is useful when tests would like to call chrome.New for restarting ash-chrome and also launch Lacros.
 // It also returns a closure to be called in order to close the browser instance.
-// The caller is responsible for calling the closure first, then Close() on the chrome instance for deferred cleanup.
-// LacrosConfig is the configurations to be set to enable Lacros for use by tests.
-// For convenience, DefaultLacrosConfig().WithVar(s) could be passed in when rootfs-lacros is needed as a primary browser unless specified with the runtime var.
+// The caller is responsible for calling the closure first, then Close() on the chrome instance for cleanup.
+//
+// NOTE: It opens an extra default tab page for Lacros, but not for ash-chrome.
+// If the tests don't expect it to happen, you can use SetUpWithNewChromeAtURL instead
+// to open a new window upon the setup consistently for both browser types.
 func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *lacrosfixt.Config, opts ...chrome.Option) (*chrome.Chrome, *browser.Browser, func(ctx context.Context), error) {
 	switch bt {
 	case browser.TypeAsh:
@@ -131,6 +133,40 @@ func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *lacrosfixt.Co
 	default:
 		return nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
 	}
+}
+
+// SetUpWithNewChromeAtURL is a combination of chrome.New and SetUpWithURL to avoid
+// an extra default tab page in the case of Lacros.
+// The caller is responsible for calling conn.Close(), the returned closure and cr.Close() in order for cleanups.
+func SetUpWithNewChromeAtURL(ctx context.Context, bt browser.Type, url string, cfg *lacrosfixt.Config, opts ...chrome.Option) (*browser.Conn, *chrome.Chrome, *browser.Browser, func(ctx context.Context), error) {
+	var cr *chrome.Chrome
+	var err error
+	// Create an ash-chrome instance.
+	switch bt {
+	case browser.TypeAsh:
+		cr, err = chrome.New(ctx, opts...)
+		if err != nil {
+			return nil, nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome")
+		}
+	case browser.TypeLacros:
+		lacrosOpts, err := cfg.Opts()
+		if err != nil {
+			return nil, nil, nil, nil, errors.Wrap(err, "failed to get default options")
+		}
+		opts = append(opts, lacrosOpts...)
+		cr, err = chrome.New(ctx, opts...)
+		if err != nil {
+			return nil, nil, nil, nil, errors.Wrap(err, "failed to connect to ash-chrome")
+		}
+	default:
+		return nil, nil, nil, nil, errors.Errorf("unrecognized browser type %s", string(bt))
+	}
+	// Set up the browser with a given URL.
+	conn, br, closeBrowser, err := SetUpWithURL(ctx, cr, bt, url)
+	if err != nil {
+		return nil, nil, nil, nil, errors.Wrap(err, "failed to set up browser")
+	}
+	return conn, cr, br, closeBrowser, nil
 }
 
 // Connect connects to a running browser instance. It returns a closure for
