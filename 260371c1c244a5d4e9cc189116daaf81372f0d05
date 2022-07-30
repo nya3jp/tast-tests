@@ -16,6 +16,24 @@
       "message": "Adding a few folks from cros-connectivity team to help with CL review.",
       "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f6c02d3_28d9d2f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001529
+      },
+      "writtenOn": "2022-07-30T00:15:12Z",
+      "side": 1,
+      "message": "Hi Harpreet, would you mind narrowing down this review list? Let\u0027s stick with Pavol and Regan for this one. Thanks!",
+      "parentUuid": "e3b4d385_e355b849",
+      "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
