@@ -11,10 +11,14 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -29,7 +33,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         BubbleLauncherAnimationPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures animation smoothness of bubble launcher animations",
 		Contacts: []string{
 			"cros-system-ui-eng@google.com",
@@ -40,8 +44,17 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_nightly"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      3 * time.Minute,
-		Fixture:      "chromeLoggedInWith100FakeAppsProductivityLauncher",
 		Data:         []string{"animation.html", "animation.js"},
+		Params: []testing.Param{{
+			Fixture: "install100Apps",
+			Val:     browser.TypeAsh,
+		}, {
+			Name: "lacros",
+			// TODO(crbug.com/1309565): Use "install100LacrosApps" for lacros extension when ready.
+			Fixture:           "install100Apps",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -79,12 +92,35 @@ func openAndCloseLauncher(ctx context.Context, tconn *chrome.TestConn, ui *uiaut
 }
 
 func BubbleLauncherAnimationPerf(ctx context.Context, s *testing.State) {
+	// Reserve a few seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(cleanupCtx, 10*time.Second)
+	defer cancel()
+
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.FixtValue().(chrome.HasChrome).Chrome()
+	// Set up the browser without opening a new window yet.
+	bt := s.Param().(browser.Type)
+	// Options for fake apps.
+	opts := s.FixtValue().([]chrome.Option)
+	// Options copied from the "chromeLoggedInWith100FakeAppsProductivityLauncher" fixture.
+	opts = append(opts, chrome.EnableFeatures("ProductivityLauncher"), chrome.DisableFeatures("LauncherAppSort"))
+	if bt == browser.TypeLacros {
+		var err error
+		opts, err = lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
+		if err != nil {
+			s.Fatal("Failed to get lacros options: ", err)
+		}
+	}
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		s.Fatal("Failed to start chrome: ", err)
+	}
+	defer cr.Close(cleanupCtx)
+
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
@@ -96,7 +132,7 @@ func BubbleLauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure in clamshell mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
 	// Run an http server to serve the test contents for accessing from the browser.
 	server := httptest.NewServer(http.FileServer(s.DataFileSystem()))
@@ -129,6 +165,8 @@ func BubbleLauncherAnimationPerf(ctx context.Context, s *testing.State) {
 	// Run the launcher open/close flow with no browser windows open.
 	// This aligns with ui.LauncherAnimationPerf for the legacy launcher.
 	name := "0windows"
+	// Note that the test needs to take traces in ash-chrome, and grab the metrics from ash-chrome.
+	// So, ash-chrome (cr) should be used for perfutil.NewRunner and ash test APIs (tconn) for RunAndWaitAll here in this test.
 	runner := perfutil.NewRunner(cr.Browser())
 	runner.RunMultiple(ctx, s, name,
 		perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
@@ -137,7 +175,16 @@ func BubbleLauncherAnimationPerf(ctx context.Context, s *testing.State) {
 		perfutil.StoreAll(perf.BiggerIsBetter, "percent", name))
 
 	// Open 2 browser windows with web contents playing an animation.
-	if err := ash.CreateWindows(ctx, tconn, cr, url, 2); err != nil {
+	const numWindows = 2
+	// Open a first window using browserfixt to get a Browser instance.
+	conn, br, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, bt, url)
+	if err != nil {
+		s.Fatal("Failed to open chrome: ", err)
+	}
+	defer closeBrowser(cleanupCtx)
+	defer conn.Close()
+	// Then open the rest of the windows alongside the one already opened.
+	if err := ash.CreateWindows(ctx, tconn, br, url, numWindows-1); err != nil {
 		s.Fatal("Failed to create browser windows: ", err)
 	}
 	// Maximize all windows to ensure a consistent state.
