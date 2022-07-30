@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f45df07c_fb089b69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479707
+      },
+      "writtenOn": "2022-07-30T14:08:08Z",
+      "side": 1,
+      "message": "@ddmail, you appear to be the only person in the intersection of {\"Contacts\" on this test} and {OWNERS for this file}. Thanks for reviewing!",
+      "revId": "75d4f068c2e4aacdc4e7f7bec84bbfca8a467b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
