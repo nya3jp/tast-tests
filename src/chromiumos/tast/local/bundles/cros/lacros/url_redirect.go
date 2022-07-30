@@ -236,6 +236,11 @@ func UrlRedirect(ctx context.Context, s *testing.State) {
 		// Make sure that the current URL from Lacros is not the URL we navigated to.
 		conn, err := lacros_browser.NewConnForTarget(ctx, matcher)
 
+		// As the navigation was done indirectly, we didn't get any navigation failure
+		// and have to figure that now out separately.
+
+		// TODO: Determine if the navigation was a success or if it failed.
+
 		if err == nil || conn != nil {
 			s.Fatal("The navigation for " + params.url + " should have failed!")
 		}
@@ -245,6 +250,11 @@ func UrlRedirect(ctx context.Context, s *testing.State) {
 		// Wait for navigation to finish.
 		// Make sure that the current URL from Lacros is not the URL we navigated to.
 		conn, err := lacros_browser.NewConnForTarget(ctx, matcher)
+
+		// As the navigation was done indirectly, we didn't get any navigation failure
+		// and have to figure that now out separately.
+
+		// TODO: Determine if the navigation was a success or if it failed.
 
 		if err != nil {
 			s.Fatal("Error when findingmatching Lacros window!")
@@ -310,12 +320,6 @@ func navigateSingleTabToURLInLacros(ctx context.Context, url string, l *lacros.L
 		keyboard.AccelAction("Enter"))(ctxWithTimeout); err != nil {
 			return err
 	}
-
-	// As the navigation was done indirectly, we didn't get any navigation failure
-	// and have to figure that now out separately.
-
-  // TODO: Determine if the navigation was a success or if it failed.
-
 	return nil
 }
 
