@@ -51,6 +51,24 @@
       "message": "The tests are still consistently failing on some kernelnext boards (though this may be expected) and have flakes on other boards like `elm` or `hana`.\n\nNormally the tests need 20+ consecutive passes to be promoted, see https://chrome-internal.googlesource.com/chromeos/chromeos-admin/+/HEAD/doc/tast_add_test.md#step-4_remove-attribute-to-make-it-run-on-infra",
       "revId": "0a9c6dfa8aa482a5c06b14c5829d8df67b6041f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bbb1d1e_95052d94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1534417
+      },
+      "writtenOn": "2022-07-30T04:05:44Z",
+      "side": 1,
+      "message": "Hmm all of failing ones (including elm / hana) seems to be coming from old builds (the fix was only landed in 15005). kernelnext board fails on most other tests as well so that\u0027s somewhat expected.\n\nBut yeah we can keep this open for now.",
+      "parentUuid": "5329687f_1fd4a3d0",
+      "revId": "0a9c6dfa8aa482a5c06b14c5829d8df67b6041f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
