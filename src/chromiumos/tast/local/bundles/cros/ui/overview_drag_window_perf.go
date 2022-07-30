@@ -10,10 +10,13 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -37,39 +40,75 @@ type dragTest struct {
 	dt dragType // Type of the drag to run.
 	l  string   // Label for the metric name.
 	df dragFunc // Function to run the drag test.
+	bt browser.Type
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OverviewDragWindowPerf,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the presentation time of window dragging in overview in tablet mode",
 		Contacts:     []string{"xiyuan@chromium.org", "mukai@chromium.org", "chromeos-wmp@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-		Fixture:      "chromeLoggedIn",
 		Timeout:      4 * time.Minute,
 		Params: []testing.Param{{
-			Name: "normal_drag",
+			Name:    "normal_drag",
+			Fixture: "chromeLoggedIn",
 			Val: dragTest{
 				dt: dragTypeNormal,
 				l:  "NormalDrag",
 				df: normalDrag,
+				bt: browser.TypeAsh,
 			},
 		}, {
-			Name: "drag_to_snap",
+			Name:    "drag_to_snap",
+			Fixture: "chromeLoggedIn",
 			Val: dragTest{
 				dt: dragTypeSnap,
 				l:  "DragToSnap",
 				df: dragToSnap,
+				bt: browser.TypeAsh,
 			},
 		}, {
-			Name: "drag_to_close",
+			Name:    "drag_to_close",
+			Fixture: "chromeLoggedIn",
 			Val: dragTest{
 				dt: dragTypeClose,
 				l:  "DragToClose",
 				df: dragToClose,
+				bt: browser.TypeAsh,
+			},
+		}, {
+			Name:              "normal_drag_lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"chrome"},
+			Val: dragTest{
+				dt: dragTypeSnap,
+				l:  "DragToSnap",
+				df: dragToSnap,
+				bt: browser.TypeLacros,
+			},
+		}, {
+			Name:              "drag_to_snap_lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"chrome"},
+			Val: dragTest{
+				dt: dragTypeSnap,
+				l:  "DragToSnap",
+				df: dragToSnap,
+				bt: browser.TypeLacros,
+			},
+		}, {
+			Name:              "drag_to_close_lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"chrome"},
+			Val: dragTest{
+				dt: dragTypeClose,
+				l:  "DragToClose",
+				df: dragToClose,
+				bt: browser.TypeLacros,
 			},
 		}},
 	})
@@ -281,12 +320,17 @@ func dragToClose(ctx context.Context, tsw *input.TouchscreenEventWriter,
 }
 
 func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
+	// Reserve a few seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(cleanupCtx, 10*time.Second)
+	defer cancel()
+
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -297,7 +341,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to ensure in tablet mode: ", err)
 	}
-	defer cleanup(ctx)
+	defer cleanup(cleanupCtx)
 
 	tsw, err := input.Touchscreen(ctx)
 	if err != nil {
@@ -320,14 +364,30 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 
 	const histName = "Ash.Overview.WindowDrag.PresentationTime.TabletMode"
 
+	// Note that the test needs to take traces in ash-chrome, and grab the metrics from ash-chrome.
+	// So, ash-chrome (cr) should be used for perfutil.NewRunner and ash test APIs (tconn) for RunAndWaitAll here in this test.
 	runner := perfutil.NewRunner(cr.Browser())
 	drag := s.Param().(dragTest)
 
 	defer ash.SetOverviewModeAndWait(ctx, tconn, false)
+	var br *browser.Browser
+	const url = ui.PerftestURL
 	currentWindows := 0
 	// Run the test cases with different number of browser windows.
 	for _, windows := range []int{2, 8} {
-		if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, windows-currentWindows); err != nil {
+		// Open a first window using browserfixt to get a Browser instance, then use the browser instance for other windows.
+		if currentWindows == 0 {
+			var conn *browser.Conn
+			var closeBrowser func(ctx context.Context)
+			conn, br, closeBrowser, err = browserfixt.SetUpWithURL(ctx, cr, drag.bt, url)
+			if err != nil {
+				s.Fatal("Failed to open chrome: ", err)
+			}
+			defer closeBrowser(cleanupCtx)
+			defer conn.Close()
+			currentWindows++
+		}
+		if err := ash.CreateWindows(ctx, tconn, br, url, windows-currentWindows); err != nil {
 			s.Fatal("Failed to open windows: ", err)
 		}
 		currentWindows = windows
@@ -350,7 +410,7 @@ func OverviewDragWindowPerf(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to clearSnap: ", err)
 				}
 			case dragTypeClose:
-				if err := ash.CreateWindows(ctx, tconn, cr, ui.PerftestURL, 1); err != nil {
+				if err := ash.CreateWindows(ctx, tconn, br, url, 1); err != nil {
 					return errors.Wrap(err, "failed to create windows")
 				}
 				if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
