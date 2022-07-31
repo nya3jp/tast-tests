@@ -33,6 +33,24 @@
       "message": "The Lacros tests should work with LeftClick as well now. Can you check if the test passes without this change? I think the fix is included in all builds that were created this week.",
       "revId": "eb6f4136519e3f6f15708520a4630713caf1a8c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e08841_edcdb178",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-31T15:54:30Z",
+      "side": 1,
+      "message": "The tests are consistently failing now https://tastboard.corp.google.com/test/accountmanager.AddProfileNewAccount and this CL seems to fix the issue for me (Lacros 106.0.5213.0)",
+      "parentUuid": "d85c8891_b8da852a",
+      "revId": "eb6f4136519e3f6f15708520a4630713caf1a8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
