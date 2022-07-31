@@ -45,9 +45,28 @@ func InstallApp(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn
 		installed = nodewith.Role(role.Button).NameRegex(regexp.MustCompile(`(Remove from Chrome|Launch app)`)).First()
 		add       = nodewith.Role(role.Button).Name(`Add to Chrome`).First()
 		confirm   = nodewith.Role(role.Button).NameRegex(regexp.MustCompile(`Add (app|extension)`))
-
-		ui = uiauto.New(tconn)
+		emailRE   = regexp.MustCompile(`^[-.+\w]+@([-.+\w]+?\.)+[-.+\w]+$`)
+		account   = nodewith.Role(role.PopUpButton).NameRegex(emailRE)
 	)
+	ui := uiauto.New(tconn)
+
+	// Check if the account has been added to Chrome Web Store page.
+	// There might be a timing issue that the account has been added to Lacros profile but not yet propagated to the web page
+	// due to different ways of looking up the credentials. Browser uses OAuth, the web reads cookies instead.
+	// If this happens, it fails to load the app page with the account. See crbug.com/1322246 for details.
+	// To get around it for recovery it gives a retry by reloading the page to the app page URL.
+	// TODO(crbug.com/1375314): Figure out how to avoid this timing issue in product, rather than in tests.
+	if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(account)(ctx); err != nil {
+		if err := br.ReloadActiveTab(ctx); err != nil {
+			return errors.Wrap(err, "failed to reload page")
+		}
+		if err := cws.Navigate(ctx, app.URL); err != nil {
+			return errors.Wrapf(err, "failed to navigate page: %v", app.URL)
+		}
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(account)(ctx); err != nil {
+			return errors.Wrap(err, "failed to wait for account to be added")
+		}
+	}
 
 	// Click the add button at most once to prevent triggering
 	// weird UI behaviors in Chrome Web Store.
