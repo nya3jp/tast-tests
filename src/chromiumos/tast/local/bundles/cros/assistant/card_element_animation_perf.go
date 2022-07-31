@@ -9,11 +9,14 @@ import (
 	"time"
 
 	"chromiumos/tast/common/perf"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/assistant"
 	"chromiumos/tast/local/bundles/cros/assistant/assistantutils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/metrics"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -23,6 +26,11 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type testParam struct {
+	accel assistant.Accelerator
+	bt    browser.Type
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         CardElementAnimationPerf,
@@ -31,19 +39,29 @@ func init() {
 		Contacts:     []string{"cowmoo@chromium.org", "xiaohuic@chromium.org"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Fixture:      "assistantPerf",
-		Params: []testing.Param{
-			{
-				Name:              "assistant_key",
-				Val:               assistant.AccelAssistantKey,
-				ExtraHardwareDeps: hwdep.D(hwdep.AssistantKey()),
-			},
-			{
-				Name:              "search_plus_a",
-				Val:               assistant.AccelSearchPlusA,
-				ExtraHardwareDeps: hwdep.D(hwdep.NoAssistantKey()),
-			},
-		},
+		Params: []testing.Param{{
+			Name:              "assistant_key",
+			Val:               testParam{accel: assistant.AccelAssistantKey, bt: browser.TypeAsh},
+			ExtraHardwareDeps: hwdep.D(hwdep.AssistantKey()),
+			Fixture:           "assistantPerf",
+		}, {
+			Name:              "search_plus_a",
+			Val:               testParam{accel: assistant.AccelSearchPlusA, bt: browser.TypeAsh},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoAssistantKey()),
+			Fixture:           "assistantPerf",
+		}, {
+			Name:              "assistant_key_lacros",
+			Val:               testParam{accel: assistant.AccelAssistantKey, bt: browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraHardwareDeps: hwdep.D(hwdep.AssistantKey()),
+			Fixture:           "assistantLacrosPerf",
+		}, {
+			Name:              "search_plus_a_lacros",
+			Val:               testParam{accel: assistant.AccelSearchPlusA, bt: browser.TypeLacros},
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraHardwareDeps: hwdep.D(hwdep.NoAssistantKey()),
+			Fixture:           "assistantLacrosPerf",
+		}},
 	})
 }
 
@@ -52,7 +70,13 @@ func init() {
 // the performance of expanding the launcher from peeking to half height when
 // a card is displayed.
 func CardElementAnimationPerf(ctx context.Context, s *testing.State) {
-	accel := s.Param().(assistant.Accelerator)
+	// Reserve a few seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(cleanupCtx, 10*time.Second)
+	defer cancel()
+
+	accel := s.Param().(testParam).accel
+	bt := s.Param().(testParam).bt
 
 	fixtData := s.FixtValue().(*assistant.FixtData)
 	cr := fixtData.Chrome
@@ -66,12 +90,18 @@ func CardElementAnimationPerf(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to disable better onboarding: ", err)
 	}
 
-	ui := uiauto.New(tconn)
+	// Connect to the running browser process to get the browser instance.
+	br, brCleanUp, err := browserfixt.Connect(ctx, cr, bt)
+	if err != nil {
+		s.Error(err, "failed to connect to browser")
+	}
+	defer brCleanUp(cleanupCtx)
 
+	ui := uiauto.New(tconn)
 	pv := perf.NewValues()
 	for nWindows := 0; nWindows < 3; nWindows++ {
 		if nWindows > 0 {
-			if err := ash.CreateWindows(ctx, tconn, cr, uiconsts.PerftestURL, 1); err != nil {
+			if err := ash.CreateWindows(ctx, tconn, br, uiconsts.PerftestURL, 1); err != nil {
 				s.Fatal("Failed to create a new browser window: ", err)
 			}
 		}
