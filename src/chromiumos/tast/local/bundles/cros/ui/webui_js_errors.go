@@ -14,6 +14,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
@@ -22,11 +25,19 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WebUIJSErrors,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that Chrome's WebUI JavaScript Error Reporting works on ChromeOS",
 		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -214,18 +225,21 @@ func WebUIJSErrors(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	const vModuleFlags = "--vmodule=chrome_js_error_report_processor=3,web_ui_impl=3,web_ui_main_frame_observer=3,webui_js_error_ui=3"
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("SendWebUIJavaScriptErrorReports"), chrome.ExtraArgs(vModuleFlags))
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, s.Param().(browser.Type), lacrosfixt.NewConfig(),
+		chrome.EnableFeatures("SendWebUIJavaScriptErrorReports"),
+		chrome.ExtraArgs(vModuleFlags))
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
 	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	if err := crash.SetUpCrashTest(ctx, crash.WithMockConsent()); err != nil {
 		s.Fatal("SetUpCrashTest failed: ", err)
 	}
 	defer crash.TearDownCrashTest(cleanupCtx)
 
-	conn, err := cr.NewConn(ctx, "chrome://webuijserror")
+	conn, err := br.NewConn(ctx, "chrome://webuijserror")
 	if err != nil {
 		s.Fatal("Chrome navigation failed: ", err)
 	}
