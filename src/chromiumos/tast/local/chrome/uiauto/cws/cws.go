@@ -45,9 +45,26 @@ func InstallApp(ctx context.Context, br *browser.Browser, tconn *chrome.TestConn
 		installed = nodewith.Role(role.Button).NameRegex(regexp.MustCompile(`(Remove from Chrome|Launch app)`)).First()
 		add       = nodewith.Role(role.Button).Name(`Add to Chrome`).First()
 		confirm   = nodewith.Role(role.Button).NameRegex(regexp.MustCompile(`Add (app|extension)`))
-
-		ui = uiauto.New(tconn)
+		account   = nodewith.Role(role.PopUpButton).NameContaining(`@gmail.com`)
 	)
+	ui := uiauto.New(tconn)
+
+	// Check if the account has been added to Chrome Web Store. If not, it may fail to load the app page with the account.
+	// For recovery it reloads the page and navigates to the app page again.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if err := ui.WithTimeout(5 * time.Second).WaitUntilExists(account)(ctx); err == nil {
+			return nil
+		}
+		if err := br.ReloadActiveTab(ctx); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to reload page"))
+		}
+		if err := cws.Navigate(ctx, app.URL); err != nil {
+			return testing.PollBreak(errors.Wrapf(err, "failed to navigate page: %v", app.URL))
+		}
+		return errors.New("still checking account")
+	}, &testing.PollOptions{Interval: 20 * time.Second, Timeout: 1 * time.Minute}); err != nil {
+		return errors.Wrap(err, "failed to wait for account to be added")
+	}
 
 	// Click the add button at most once to prevent triggering
 	// weird UI behaviors in Chrome Web Store.

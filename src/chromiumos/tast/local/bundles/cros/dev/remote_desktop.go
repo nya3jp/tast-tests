@@ -8,10 +8,15 @@ import (
 	"context"
 	"strconv"
 	"strings"
+	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto/crd"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -33,7 +38,7 @@ func init() {
 	// <username> and <password> are the credentials of the test GAIA account.
 	testing.AddTest(&testing.Test{
 		Func:         RemoteDesktop,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Connect to Chrome Remote Desktop for working remotely",
 		Contacts:     []string{"shik@chromium.org", "tast-users@chromium.org"},
 		SoftwareDeps: []string{"chrome"},
@@ -48,6 +53,7 @@ func init() {
 		Params: []testing.Param{{
 			// For running manually.
 			Name: "",
+			Val:  browser.TypeAsh,
 		}, {
 			// For automated testing.
 			Name: "test",
@@ -58,6 +64,19 @@ func init() {
 			// with a periodic pattern. The model list is handcrafted to cover various platforms.
 			ExtraHardwareDeps: hwdep.D(hwdep.Model("atlas", "careena", "dru", "eve", "kohaku",
 				"krane", "nocturne")),
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}, {
+			// For automated testing.
+			Name:              "test_lacros",
+			ExtraAttr:         []string{"group:mainline", "informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraHardwareDeps: hwdep.D(hwdep.Model("atlas", "careena", "dru", "eve", "kohaku",
+				"krane", "nocturne")),
+			Val: browser.TypeLacros,
 		}},
 	})
 }
@@ -126,6 +145,11 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 	// TODO(shik): The button names only work in English locale, and adding
 	// "lang=en-US" for Chrome does not work.
 
+	// Reserve a few seconds for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(cleanupCtx, 10*time.Second)
+	defer cancel()
+
 	vars := getVars(s)
 	var opts []chrome.Option
 
@@ -148,7 +172,8 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 		opts = append(opts, chrome.ExtraArgs(vars.extraArgs...))
 	}
 
-	cr, err := chrome.New(ctx, opts...)
+	// Set up the browser.
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, s.Param().(browser.Type), lacrosfixt.NewConfig(), opts...)
 	if err != nil {
 		// In case of authentication error, provide a more informative message to the user.
 		if strings.Contains(err.Error(), "chrome.Auth") {
@@ -159,13 +184,14 @@ func RemoteDesktop(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(ctx)
+	defer closeBrowser(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
 
-	if err := crd.Launch(ctx, cr.Browser(), tconn); err != nil {
+	if err := crd.Launch(ctx, br, tconn); err != nil {
 		s.Fatal("Failed to Launch: ", err)
 	}
 
