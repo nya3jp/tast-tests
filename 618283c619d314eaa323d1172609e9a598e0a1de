@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c516d36d_e9db8fc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-31T16:34:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec64ee90_10bbfeb5",
+      "revId": "618283c619d314eaa323d1172609e9a598e0a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7461161_0fdfeb3c",
@@ -49,6 +67,30 @@
       "writtenOn": "2022-07-29T01:49:23Z",
       "side": 1,
       "message": "I think it should be \"includeTpm\".",
+      "range": {
+        "startLine": 151,
+        "startChar": 102,
+        "endLine": 151,
+        "endChar": 112
+      },
+      "revId": "618283c619d314eaa323d1172609e9a598e0a1de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb9abbd1_de324ccb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/hwsec/util/cross_version_login_data.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-07-31T16:34:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7461161_0fdfeb3c",
       "range": {
         "startLine": 151,
         "startChar": 102,
