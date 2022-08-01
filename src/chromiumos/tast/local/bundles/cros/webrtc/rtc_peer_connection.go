@@ -144,6 +144,7 @@ func init() {
 		}, {
 			Name:              "vp8_capture_monitor",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8", displayMediaType: peerconnection.CaptureMonitor},
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
 			Fixture:           "chromeScreenCapture",
 		}, {

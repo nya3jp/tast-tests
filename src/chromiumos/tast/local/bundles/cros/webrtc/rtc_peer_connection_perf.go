@@ -64,6 +64,7 @@ func init() {
 		}, {
 			Name:              "vp8_hw_capture_monitor",
 			Val:               peerconnection.MakeCaptureTestOptions("VP8", peerconnection.CaptureMonitor),
+			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8},
 			Fixture:           "chromeScreenCapture",
 		}, {
