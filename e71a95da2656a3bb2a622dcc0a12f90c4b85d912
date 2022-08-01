@@ -16,6 +16,24 @@
       "message": "There\u0027s one potential issue here - we don\u0027t know whether the auth failed because the AuthFactor was really revoked, or just because we\u0027re somehow setting up the recovery incorrectly.\n\nWe could address this by making the test follow the pattern: (1) preparation, (2) checking the recovery succeeds, (3) taking snapshot and opting out, (4) checking the recovery fails. If we call the same function on steps \"2\" and \"4\", we can be sure the test is really testing what we wanted it to.",
       "revId": "e71a95da2656a3bb2a622dcc0a12f90c4b85d912",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6805d25_da9a3cc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/recovery_opt_out.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-08-01T10:07:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2617029_e7b90f2a",
+      "revId": "e71a95da2656a3bb2a622dcc0a12f90c4b85d912",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
