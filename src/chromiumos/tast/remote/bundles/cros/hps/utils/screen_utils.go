@@ -45,35 +45,60 @@ func GetBrightness(ctx context.Context, conn *ssh.Conn) (float64, error) {
 	return value, nil
 }
 
-// PollForDim is to see if the screen will dim during a designated amount of time
-func PollForDim(ctx context.Context, brightness float64, timeout time.Duration, checkForDark bool, conn *ssh.Conn) error {
-	counter := 0
+// PollForBrightnessChange will poll until screen brightness differs from |initialBrightness| or the |timeout| occurs, whichever comes first.
+func PollForBrightnessChange(ctx context.Context, initialBrightness float64, timeout time.Duration, conn *ssh.Conn) error {
+	testing.ContextLog(ctx, "Polling for brightness change: ", timeout.Seconds(), "s")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		autodimBrightness, err := GetBrightness(ctx, conn)
-		counter++
+		currentBrightness, err := GetBrightness(ctx, conn)
 
 		if err != nil {
 			return err
 		}
-		if autodimBrightness >= brightness {
-			return errors.Errorf("Auto dim failed. Before human presence: %f, After human presence: %f", brightness, autodimBrightness)
-		}
-		if autodimBrightness == 0 {
-			if !checkForDark {
-				return errors.New("Screen goes dark unexpectedly")
-			}
-			return nil
-		}
-
-		if autodimBrightness < brightness && autodimBrightness != 0 && !checkForDark {
+		if currentBrightness != initialBrightness {
 			return nil
 		}
 		return errors.New("Brightness not changed")
 	}, &testing.PollOptions{
 		Interval: 1 * time.Second,
+		Timeout:  timeout,
+	}); err != nil {
+		return errors.Wrap(err, "error during polling")
+	}
+	return nil
+}
+
+func pollForDimHelper(initialBrightness, currentBrightness float64, checkForDark bool) error {
+	if currentBrightness >= initialBrightness {
+		return errors.Errorf("Auto dim failed. Before human presence: %f, After human presence: %f", initialBrightness, currentBrightness)
+	}
+	if currentBrightness == 0 {
+		if !checkForDark {
+			return errors.New("Screen went dark unexpectedly")
+		}
+		return nil
+	}
+
+	if currentBrightness < initialBrightness && currentBrightness != 0 && !checkForDark {
+		return nil
+	}
+	return errors.New("Brightness not changed")
+}
+
+// PollForDim is to see if the screen will dim during a designated amount of time.
+// Will poll for slightly longer than specified to allow for some slack.
+func PollForDim(ctx context.Context, initialBrightness float64, timeout time.Duration, checkForDark bool, conn *ssh.Conn) error {
+	testing.ContextLog(ctx, "Polling for quick dim: ", timeout.Seconds(), "s")
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		currentBrightness, err := GetBrightness(ctx, conn)
+		if err != nil {
+			return err
+		}
+		return pollForDimHelper(initialBrightness, currentBrightness, checkForDark)
+	}, &testing.PollOptions{
+		Interval: 1 * time.Second,
 		Timeout:  timeout + 3*time.Second,
 	}); err != nil {
-		return errors.Wrap(err, "unexpected brightness change")
+		return errors.Wrap(err, "error during polling")
 	}
 	return nil
 }
