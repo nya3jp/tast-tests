@@ -439,6 +439,9 @@ func ChangeDiskSize(ctx context.Context, tconn *chrome.TestConn, kb *input.Keybo
 		if kb.AccelAction(direction)(ctx); err != nil {
 			return 0, errors.Wrapf(err, "failed to move slider to %s", direction)
 		}
+		if tconn.ResetAutomation(ctx); err != nil {
+			return 0, errors.Wrap(err, "failed to call ResetAutomation to refresh the accessibility tree")
+		}
 	}
 	return curSize, nil
 }
