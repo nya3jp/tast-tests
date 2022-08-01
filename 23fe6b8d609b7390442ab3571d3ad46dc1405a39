@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2d27d939_b3a8c63b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-01T00:15:18Z",
+      "side": 1,
+      "message": "Needs a different error msg",
+      "range": {
+        "startLine": 152,
+        "startChar": 28,
+        "endLine": 152,
+        "endChar": 48
+      },
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f3de69d_5fef00b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-01T00:15:18Z",
+      "side": 1,
+      "message": "HTTPS is the protocol here, the server can do both at the same time (and/or any other protocol) so here we should say: \"server is using HTTPS\".",
+      "range": {
+        "startLine": 31,
+        "startChar": 36,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08d4c0ed_61842d0d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-01T00:15:18Z",
+      "side": 1,
+      "message": "is this the private key of the server \"client\" certificate ?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3024ecf_b3672074",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-01T00:15:18Z",
+      "side": 1,
+      "message": "nit: use \"serve\". The wording \"listen for\" here would refer to the listening part i.e accepting a TCP connection on |port|. HTTPS vs HTTP comes into the picture after the TCP connection that the server is listening for has been established.",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 67
+      },
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8040978_81e66391",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
         "patchSetId": 11
@@ -14,6 +106,52 @@
       "writtenOn": "2022-07-29T22:15:03Z",
       "side": 1,
       "message": "It might make sense to also make this part of a \u0027certs\u0027 or \u0027credentials\u0027 package, maybe under local/bundles/cros/network?",
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdae34ac_cf8f2545",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-01T00:15:18Z",
+      "side": 1,
+      "message": "So I assume that at this point we cannot put the error in errChannel anymore since the consumer of that channel needs to finish error checking before the serving actually start ?\n\nSo if we cannot put|err| in |errChannel|, we should process it here (at least with a log).",
+      "range": {
+        "startLine": 89,
+        "startChar": 3,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b78c84c4_cf55abdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-01T00:15:18Z",
+      "side": 1,
+      "message": "One problem here is that you cannot use the same function for serving both HTTP and HTTPS since apparently the go httpserver has two different functions.\n\nI think it would be clearer to have separate HTTPServerResponseHandler and HTTPSServerResponseHandler variables, which will also work nicely when you will need to interact with both probes at the same time later on.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 74
+      },
       "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -93,6 +93,30 @@
       },
       "revId": "a1132a1f2a72f18fd2b085a0e34578b812a0264c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a09718_7e218869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-01T00:15:18Z",
+      "side": 1,
+      "message": "\u003e I needed to add this as I was running into a scenario where the interface on the global netns was not being removed. \n\nWhat about the namespace where the other veth interface of the veth pair is ? Was that namespace correctly removed ? Jie can confirm what the teardown process should do but normally I would not expect that interface to still be around so there might be some other error going on there.\n\nFor instance if you create a netns and add a veth pair across the current netns and that netns:\n  ip netns add bar\n  ip link add foo_left0 type veth peer foo_right0 netns bar\n  ip link show foo_left0\n    31: foo_left0@if2: ...\nthen deleting the netns deletes the interface in the current netns as well:\n  ip netns delete bar\n  ip link show foo_left0\n    Device \"foo_left0\" does not exist.",
+      "parentUuid": "fd37083d_00c8596b",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 3
+      },
+      "revId": "a1132a1f2a72f18fd2b085a0e34578b812a0264c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
