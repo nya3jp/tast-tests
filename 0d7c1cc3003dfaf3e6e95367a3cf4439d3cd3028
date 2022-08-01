@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bb75ade_d839ff42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-01T16:57:55Z",
+      "side": 1,
+      "message": "Hi Georg, that variable lives here [1]. If the test is not finding it, then you are probably not running a Google-internal branded build?\n\n[1] https://source.corp.google.com/chromeos_internal/src/platform/tast-tests-private/vars/projector.yaml;l\u003d1?q\u003df:projector.yaml",
+      "parentUuid": "7551dea0_f3992fbf",
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9d8e24ab_98dac9a2",
@@ -31,6 +49,40 @@
       "writtenOn": "2022-07-29T23:04:19Z",
       "side": 1,
       "message": "Thanks for working on this! It\u0027s cool to add test coverage for web app URL link handling in Lacros.",
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56c26e47_cc26346a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-01T16:57:55Z",
+      "side": 1,
+      "message": "LGTM % others.",
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07367293_b452076a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-01T16:57:55Z",
+      "side": 1,
+      "message": "Please remove this TODO.",
       "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
