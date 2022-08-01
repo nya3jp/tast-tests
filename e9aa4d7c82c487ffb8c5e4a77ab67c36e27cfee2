@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a225580_0e184001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-01T12:38:34Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "ae80f061_95f7acbc",
+      "range": {
+        "startLine": 89,
+        "startChar": 51,
+        "endLine": 89,
+        "endChar": 91
+      },
+      "revId": "e9aa4d7c82c487ffb8c5e4a77ab67c36e27cfee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6578cd7_dea87b84",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-07-27T17:00:33Z",
       "side": 1,
       "message": "nit: could be verifying appear and dismiss?",
+      "range": {
+        "startLine": 233,
+        "startChar": 32,
+        "endLine": 233,
+        "endChar": 54
+      },
+      "revId": "e9aa4d7c82c487ffb8c5e4a77ab67c36e27cfee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2fa0991_8bf4510c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-01T12:38:34Z",
+      "side": 1,
+      "message": "The error message has been refined.",
+      "parentUuid": "b6578cd7_dea87b84",
       "range": {
         "startLine": 233,
         "startChar": 32,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aeef3fd_c06acba6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-01T12:38:34Z",
+      "side": 1,
+      "message": "Fixed by adding an extra faillog.",
+      "parentUuid": "9c5abab6_c503c72f",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 4
+      },
+      "revId": "e9aa4d7c82c487ffb8c5e4a77ab67c36e27cfee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1046bce_d06ece44",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-07-27T17:00:33Z",
       "side": 1,
       "message": "Is this needed? Seems like it may be fragile",
+      "range": {
+        "startLine": 300,
+        "startChar": 40,
+        "endLine": 300,
+        "endChar": 63
+      },
+      "revId": "e9aa4d7c82c487ffb8c5e4a77ab67c36e27cfee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c9ec64b_7c3dce40",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-01T12:38:34Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "a1046bce_d06ece44",
       "range": {
         "startLine": 300,
         "startChar": 40,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45fd0633_21ba8865",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-01T12:38:34Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "4f35a1e8_d6084709",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 361,
+        "endChar": 11
+      },
+      "revId": "e9aa4d7c82c487ffb8c5e4a77ab67c36e27cfee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab33d43e_61f9dfca",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-07-27T17:00:33Z",
       "side": 1,
       "message": "This doesn\u0027t seem to be verifying that a notification is shown or that it autohides? This test suite probably shouldn\u0027t have any holding space related logic, other than enabling/disabling notification suppression via flag.",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 1
+      },
+      "revId": "e9aa4d7c82c487ffb8c5e4a77ab67c36e27cfee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec427c09_72377775",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-01T12:38:34Z",
+      "side": 1,
+      "message": "We removed all unnecessary operations except the part to cancel downloading.\nCancel downloading to proceed other tests is needed due to download a big file is unlikely to be finished during test, extra comments are added to further explain this.",
+      "parentUuid": "ab33d43e_61f9dfca",
       "range": {
         "startLine": 364,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b594c0ca_78a5a45b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-01T12:38:34Z",
+      "side": 1,
+      "message": "We removed all unnecessary operations except the part to cancel downloading.\nCancel downloading to proceed other tests is needed due to download a big file is unlikely to be finished during test, extra comments are added to further explain this.",
+      "parentUuid": "656fe3d3_bc616724",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 8
+      },
+      "revId": "e9aa4d7c82c487ffb8c5e4a77ab67c36e27cfee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3b5d0b4_ea05660c",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-07-27T17:00:33Z",
       "side": 1,
       "message": "Clicking the nth of something seems fragile. What is it that we are clicking?",
+      "range": {
+        "startLine": 446,
+        "startChar": 13,
+        "endLine": 446,
+        "endChar": 127
+      },
+      "revId": "e9aa4d7c82c487ffb8c5e4a77ab67c36e27cfee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1724bf77_ee973592",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-01T12:38:34Z",
+      "side": 1,
+      "message": "The links on that page are all identical on the UI tree.\nExtra comments are added to explain it.\nAlso, we added an extra verification step to earlier distinguish if the page has changed.",
+      "parentUuid": "b3b5d0b4_ea05660c",
       "range": {
         "startLine": 446,
         "startChar": 13,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a4753c_73425060",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-01T12:38:34Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "e3e7e6cc_a5b8f85d",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 11
+      },
+      "revId": "e9aa4d7c82c487ffb8c5e4a77ab67c36e27cfee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60183575_5205ea94",
@@ -248,6 +464,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75eae0c8_d7421059",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-01T12:38:34Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "60183575_5205ea94",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 1
+      },
+      "revId": "e9aa4d7c82c487ffb8c5e4a77ab67c36e27cfee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66a05396_fdf698d4",
@@ -261,6 +501,30 @@
       "writtenOn": "2022-07-27T17:00:33Z",
       "side": 1,
       "message": "Same as above",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 11
+      },
+      "revId": "e9aa4d7c82c487ffb8c5e4a77ab67c36e27cfee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7d45936_e3409799",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-01T12:38:34Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "66a05396_fdf698d4",
       "range": {
         "startLine": 501,
         "startChar": 0,
