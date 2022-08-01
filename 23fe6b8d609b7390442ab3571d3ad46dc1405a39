@@ -255,6 +255,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9598bab2_bcbb2d57",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-01T22:30:58Z",
+      "side": 1,
+      "message": "See this comment: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3760786/comments/13e3272b_9c65aeb5",
+      "parentUuid": "d8040978_81e66391",
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdae34ac_cf8f2545",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
         "patchSetId": 11

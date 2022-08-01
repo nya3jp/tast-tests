@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "03d5b283_7c8dfe12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-01T22:30:58Z",
+      "side": 1,
+      "message": "I added comments, split up the functions, and moved it all under the httpserver package. This is temporary as I do agree that it should be somewhere else for other tast test, but unsure where. Once we have a location nailed down, I will try to do that in this CL.\n\nI would like to keep all the functionality together if possible. I like stevens idea to make a new package called \u0027certs\u0027 under local/bundles/cros/network. Unsure if this functionality will be used remotely for now, which is why I think local/ is a better place for it. But then again, I am not entirely familiar with writing remote tests. LMK what yall think.",
+      "parentUuid": "a5ef5264_0e5496e9",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 1
+      },
+      "revId": "a1132a1f2a72f18fd2b085a0e34578b812a0264c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd37083d_00c8596b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
         "patchSetId": 10
