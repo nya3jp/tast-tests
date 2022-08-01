@@ -30,7 +30,7 @@ func init() {
 		Contacts:     []string{"hidehiko@chromium.org", "tvignatti@igalia.com", "lacros-team@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "lacros"},
-		Timeout:      chrome.GAIALoginTimeout + 10*time.Minute,
+		Timeout:      chrome.GAIALoginTimeout + 20*time.Minute,
 		Params: []testing.Param{{
 			Val: []browser.Type{browser.TypeLacros, browser.TypeAsh},
 		}, {
