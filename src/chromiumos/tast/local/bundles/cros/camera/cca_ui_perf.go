@@ -26,7 +26,7 @@ func init() {
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"camera_app", "chrome", caps.BuiltinOrVividCamera},
 		Data:         []string{"cca_ui.js"},
-		Timeout:      10 * time.Minute,
+		Timeout:      11 * time.Minute,
 		Fixture:      "ccaTestBridgeReady",
 	})
 }
@@ -34,7 +34,7 @@ func init() {
 // CCAUIPerf measure cold/warm start time of CCA and also measure its
 // performance through some UI operations.
 func CCAUIPerf(ctx context.Context, s *testing.State) {
-	const defaultTimeout = 90 * time.Second
+	const defaultTimeout = 120 * time.Second
 	perfData := cca.NewPerfData()
 	resetChrome := s.FixtValue().(cca.FixtureData).ResetChrome
 
