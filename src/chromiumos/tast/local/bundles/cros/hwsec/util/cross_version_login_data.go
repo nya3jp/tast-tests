@@ -251,7 +251,15 @@ func createChallengeResponseData(ctx context.Context, lf LogFunc, cryptohome *hw
 		keyLabel    = "challenge_response_key_label"
 		keySizeBits = 2048
 	)
-	keyAlgs := []cpb.ChallengeSignatureAlgorithm{cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1}
+	// Enable all RSASSA algorithms, with SHA-1 at the top, as most real-world
+	// smart cards support all of them.
+	keyAlgs := []cpb.ChallengeSignatureAlgorithm{
+		cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1,
+		cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA256,
+		cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA384,
+		cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA512,
+	}
+
 	randReader := rand.New(rand.NewSource(0 /* seed */))
 	rsaKey, err := rsa.GenerateKey(randReader, keySizeBits)
 	if err != nil {
