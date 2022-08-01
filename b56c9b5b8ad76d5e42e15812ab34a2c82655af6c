@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a715f4c_478a5c83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-08-01T00:12:53Z",
+      "side": 1,
+      "message": "What is the size of the artifact? Running on grunt with the library at SPEW verbosity I am getting \u003e100MB. I\u0027m not sure what size is palatable to infra. I think --debug does not run at SPEW so its probably fine anyway. ",
+      "revId": "b56c9b5b8ad76d5e42e15812ab34a2c82655af6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
