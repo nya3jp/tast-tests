@@ -31,12 +31,28 @@ const (
 	PerformanceModePowerSaving
 )
 
+// ChannelConfig equals to AudioFormat::CHANNEL definition
+type ChannelConfig uint64
+
+const (
+	// ChannelConfigOutStereo equals to AudioFormat::CHANNEL_OUT_STEREO
+	ChannelConfigOutStereo ChannelConfig = 12
+	// ChannelConfigOutQuad equals to AudioFormat::CHANNEL_OUT_QUAD
+	ChannelConfigOutQuad ChannelConfig = 204
+	// ChannelConfigOut5Point1 equals to AudioFormat::CHANNEL_OUT_5POINT1
+	ChannelConfigOut5Point1 ChannelConfig = 252
+	// ChannelConfigOut7Point1Surround equals to AudioFormat::CHANNEL_OUT_7POINT1_SURROUND
+	ChannelConfigOut7Point1Surround ChannelConfig = 6396
+)
+
 // TestParameters holds the ARC audio tast parameters.
 type TestParameters struct {
 	Permission           string
 	Class                string
 	PerformanceMode      PerformanceMode
 	BatteryDischargeMode setup.BatteryDischargeMode
+	SampleRate           uint64
+	ChannelConfig        ChannelConfig
 }
 
 const (
