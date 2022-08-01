@@ -1,7 +1,8 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+// Package quickcheckcuj contains quick check CUJ test cases scenario.
 package quickcheckcuj
 
 import (
@@ -27,7 +28,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
-	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -75,8 +75,8 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 
 	// Check and prepare wifi.
 	performWifi := true
-	ssid, ok1 := s.Var("ui.QuickCheckCUJ2_wifissid")
-	wpwd, ok2 := s.Var("ui.QuickCheckCUJ2_wifipassword")
+	ssid, ok1 := s.Var("spera.QuickCheckCUJ2_wifissid")
+	wpwd, ok2 := s.Var("spera.QuickCheckCUJ2_wifipassword")
 	if !ok1 || !ok2 {
 		performWifi = false
 		s.Log("Either WiFi SSID or password is not provided, and WiFi procedure will be skipped")
@@ -179,11 +179,8 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 
 	if pauseMode == Lock {
 		// Lock the screen before recording the test.
-		// To improve the stability, try keyboard shortcuts first, then try from UI.
 		if err := LockScreen(ctx, tconn); err != nil {
-			if err := quicksettings.LockScreen(ctx, tconn); err != nil {
-				s.Fatal("Failed to lock screen: ", err)
-			}
+			s.Fatal("Failed to lock screen: ", err)
 		}
 
 		defer func(ctx context.Context) {
