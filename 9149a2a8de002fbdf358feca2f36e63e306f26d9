@@ -16,6 +16,144 @@
       "message": "Thanks!",
       "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc907349_e935a153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-01T13:53:36Z",
+      "side": 1,
+      "message": "nit: Don\u0027t use Get prefixes\n\nhttps://go.dev/doc/effective_go#Getters",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61c55f89_797e519e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-01T13:53:36Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 8
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40edb4ac_04097f2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-01T13:53:36Z",
+      "side": 1,
+      "message": "since you are changing test a lot, maybe make all of them informational?",
+      "range": {
+        "startLine": 53,
+        "startChar": 26,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f226226_33e8001f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-01T13:53:36Z",
+      "side": 1,
+      "message": "nit: maybe use switch instead?",
+      "range": {
+        "startLine": 158,
+        "startChar": 5,
+        "endLine": 158,
+        "endChar": 47
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37382475_0bacfcbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-01T13:53:36Z",
+      "side": 1,
+      "message": "move it to a separate variable",
+      "range": {
+        "startLine": 160,
+        "startChar": 11,
+        "endLine": 160,
+        "endChar": 42
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "649d9cd1_8e727f69",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-01T13:53:36Z",
+      "side": 1,
+      "message": "what if pastedError !\u003d nil but !copyAllowed?",
+      "range": {
+        "startLine": 275,
+        "startChar": 51,
+        "endLine": 275,
+        "endChar": 69
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
