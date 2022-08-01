@@ -16,6 +16,24 @@
       "message": "nit: probably want to update the `.external` file names to have `_` as well.",
       "revId": "612253a5602b2fae0e64d3b83272b5d8f163afa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78d66f4c_d5a94575",
+        "filename": "src/chromiumos/tast/local/bundles/cros/platform/data/100,000 Files.7z.external",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1345446
+      },
+      "writtenOn": "2022-08-01T05:26:31Z",
+      "side": 1,
+      "message": "I\u0027ll try that if this patch doesn\u0027t work.",
+      "parentUuid": "91eec771_5a4d5c28",
+      "revId": "612253a5602b2fae0e64d3b83272b5d8f163afa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
