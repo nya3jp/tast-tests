@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "730845f5_2fb5f025",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-01T16:44:30Z",
+      "side": 1,
+      "message": "I have rewritten this. Let me know if it is still not clear.",
+      "parentUuid": "9f746d2c_6c08076b",
+      "range": {
+        "startLine": 9,
+        "startChar": 53,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "eb87da7eb3480c69219abb040db8b072078ac2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4dc8abe2_4abe685f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
