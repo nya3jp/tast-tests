@@ -31,83 +31,83 @@ func init() {
 		// TODO(crbug.com/1029548): Add more variations here, e.g. vp8.
 		Params: []testing.Param{{
 			Name:    "av1_sw",
-			Val:     peerconnection.MakeSWTestOptions("AV1"),
+			Val:     peerconnection.MakeSWTestOptions("AV1", 1280, 720),
 			Fixture: "chromeVideoWithFakeWebcamAndNoHwAcceleration",
 		}, {
 			Name:              "h264_hw",
-			Val:               peerconnection.MakeTestOptions("H264"),
+			Val:               peerconnection.MakeTestOptions("H264", 1280, 720),
 			ExtraSoftwareDeps: []string{caps.HWDecodeH264, caps.HWEncodeH264, "proprietary_codecs"},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "h264_sw",
-			Val:               peerconnection.MakeSWTestOptions("H264"),
+			Val:               peerconnection.MakeSWTestOptions("H264", 1280, 720),
 			ExtraSoftwareDeps: []string{"proprietary_codecs"},
 			Fixture:           "chromeVideoWithFakeWebcamAndNoHwAcceleration",
 		}, {
 			Name:              "vp8_hw",
-			Val:               peerconnection.MakeTestOptions("VP8"),
+			Val:               peerconnection.MakeTestOptions("VP8", 1280, 720),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:    "vp8_sw",
-			Val:     peerconnection.MakeSWTestOptions("VP8"),
+			Val:     peerconnection.MakeSWTestOptions("VP8", 1280, 720),
 			Fixture: "chromeVideoWithFakeWebcamAndNoHwAcceleration",
 		}, {
 			Name:              "vp9_hw",
-			Val:               peerconnection.MakeTestOptions("VP9"),
+			Val:               peerconnection.MakeTestOptions("VP9", 1280, 720),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:    "vp9_sw",
-			Val:     peerconnection.MakeSWTestOptions("VP9"),
+			Val:     peerconnection.MakeSWTestOptions("VP9", 1280, 720),
 			Fixture: "chromeVideoWithFakeWebcamAndNoHwAcceleration",
 		}, {
 			Name:              "vp8_hw_capture_monitor",
-			Val:               peerconnection.MakeCaptureTestOptions("VP8", peerconnection.CaptureMonitor),
+			Val:               peerconnection.MakeCaptureTestOptions("VP8", 1280, 720, peerconnection.CaptureMonitor),
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8},
 			Fixture:           "chromeScreenCapture",
 		}, {
 			Name:              "vp8_hw_capture_window",
-			Val:               peerconnection.MakeCaptureTestOptions("VP8", peerconnection.CaptureWindow),
+			Val:               peerconnection.MakeCaptureTestOptions("VP8", 1280, 720, peerconnection.CaptureWindow),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8},
 			Fixture:           "chromeWindowCapture",
 		}, {
 			Name:              "vp8_hw_capture_tab",
-			Val:               peerconnection.MakeCaptureTestOptions("VP8", peerconnection.CaptureTab),
+			Val:               peerconnection.MakeCaptureTestOptions("VP8", 1280, 720, peerconnection.CaptureTab),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP8, caps.HWEncodeVP8},
 			Fixture:           "chromeTabCapture",
 		}, {
 			// This is a 2 temporal layers test, via the (experimental) API.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
 			Name:              "vp9_hw_svc_l1t2",
-			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", "L1T2"),
+			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", 1280, 720, "L1T2"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
 		}, {
 			// This is a 3 temporal layers test, via the (experimental) API.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
 			Name:              "vp9_hw_svc_l1t3",
-			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", "L1T3"),
+			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", 1280, 720, "L1T3"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
 			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
 		}, {
 			// This is a 3 spatial layers, 3 temporal layers (each) k-SVC test, via the (experimental) API.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
 			Name:              "vp9_hw_svc_l3t3_key",
-			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", "L3T3_KEY"),
+			Val:               peerconnection.MakeTestOptionsWithSVC("VP9", 1280, 720, "L3T3_KEY"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWEncoding()),
 			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
 		}, {
 			Name:              "vp8_hw_multi_vp9_3x3",
-			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP8", 3, "tulip2-320x180.vp9.webm"),
+			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP8", 1280, 720, 3, "tulip2-320x180.vp9.webm"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWDecodeVP8, caps.HWEncodeVP8},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "vp8_hw_multi_vp9_4x4",
-			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP8", 4, "tulip2-320x180.vp9.webm"),
+			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP8", 1280, 720, 4, "tulip2-320x180.vp9.webm"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWDecodeVP8, caps.HWEncodeVP8},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			Fixture:           "chromeVideoWithFakeWebcam",
@@ -115,25 +115,25 @@ func init() {
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnPlatform("trogdor")),
 		}, {
 			Name:              "vp9_hw_multi_vp9_3x3",
-			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP9", 3, "tulip2-320x180.vp9.webm"),
+			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP9", 1280, 720, 3, "tulip2-320x180.vp9.webm"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			Fixture:           "chromeVideoWithFakeWebcam",
 		}, {
 			Name:              "vp8_hw_multi_vp9_3x3_global_vaapi_lock_disabled",
-			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP8", 3, "tulip2-320x180.vp9.webm"),
+			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP8", 1280, 720, 3, "tulip2-320x180.vp9.webm"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWDecodeVP8, caps.HWEncodeVP8, "thread_safe_libva_backend"},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			Fixture:           "chromeVideoWithFakeWebcamAndGlobalVaapiLockDisabled",
 		}, {
 			Name:              "vp8_hw_multi_vp9_4x4_global_vaapi_lock_disabled",
-			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP8", 4, "tulip2-320x180.vp9.webm"),
+			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP8", 1280, 720, 4, "tulip2-320x180.vp9.webm"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWDecodeVP8, caps.HWEncodeVP8, "thread_safe_libva_backend"},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			Fixture:           "chromeVideoWithFakeWebcamAndGlobalVaapiLockDisabled",
 		}, {
 			Name:              "vp9_hw_multi_vp9_3x3_global_vaapi_lock_disabled",
-			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP9", 3, "tulip2-320x180.vp9.webm"),
+			Val:               peerconnection.MakeTestOptionsWithVideoGrid("VP9", 1280, 720, 3, "tulip2-320x180.vp9.webm"),
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9, caps.HWEncodeVP9, "thread_safe_libva_backend"},
 			ExtraData:         []string{"tulip2-320x180.vp9.webm"},
 			Fixture:           "chromeVideoWithFakeWebcamAndGlobalVaapiLockDisabled",
