@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -36,28 +36,28 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 		defaultMeetRetryTimeout  = 40 * time.Minute
 		defaultMeetRetryInterval = 2 * time.Minute
 	)
-	meetAccount, ok := s.Var("ui.meet_account")
+	meetAccount, ok := s.Var("spera.meet_account")
 	if !ok {
-		return GoogleMeetConfig{}, errors.New("failed to get variable ui.meet_account")
+		return GoogleMeetConfig{}, errors.New("failed to get variable spera.meet_account")
 	}
 	// Convert to lower case because user account is case-insensitive and shown as lower case in CrOS.
 	meetAccount = strings.ToLower(meetAccount)
-	meetPassword, ok := s.Var("ui.meet_password")
+	meetPassword, ok := s.Var("spera.meet_password")
 	if !ok {
-		return GoogleMeetConfig{}, errors.New("failed to get variable ui.meet_password")
+		return GoogleMeetConfig{}, errors.New("failed to get variable spera.meet_password")
 	}
 
 	var bondEnabled bool
-	bondEnabledStr, ok := s.Var("ui.GoogleMeetCUJ.bond_enabled")
+	bondEnabledStr, ok := s.Var("spera.GoogleMeetCUJ.bond_enabled")
 	if ok && bondEnabledStr == "true" {
 		bondEnabled = true
 	} else {
 		bondEnabled = false
 	}
-	bondCreds, ok := s.Var("ui.GoogleMeetCUJ.bond_key")
+	bondCreds, ok := s.Var("spera.GoogleMeetCUJ.bond_key")
 	if !ok || len(bondCreds) < 1 {
 		if bondEnabled {
-			return GoogleMeetConfig{}, errors.New("bond API is enabled via ui.GoogleMeetCUJ.bond_enabled but ui.GoogleMeetCUJ.bond_key is not set")
+			return GoogleMeetConfig{}, errors.New("bond API is enabled via spera.GoogleMeetCUJ.bond_enabled but spera.GoogleMeetCUJ.bond_key is not set")
 		}
 		bondCreds = ""
 	}
@@ -65,17 +65,17 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 	var urlVar, urlSeondaryVar string
 	switch roomSize {
 	case SmallRoomSize:
-		urlVar = "ui.meet_url_small"
-		urlSeondaryVar = "ui.meet_url_small_secondary"
+		urlVar = "spera.meet_url_small"
+		urlSeondaryVar = "spera.meet_url_small_secondary"
 	case LargeRoomSize:
-		urlVar = "ui.meet_url_large"
-		urlSeondaryVar = "ui.meet_url_large_secondary"
+		urlVar = "spera.meet_url_large"
+		urlSeondaryVar = "spera.meet_url_large_secondary"
 	case ClassRoomSize:
-		urlVar = "ui.meet_url_class"
-		urlSeondaryVar = "ui.meet_url_class_secondary"
+		urlVar = "spera.meet_url_class"
+		urlSeondaryVar = "spera.meet_url_class_secondary"
 	default:
-		urlVar = "ui.meet_url_two"
-		urlSeondaryVar = "ui.meet_url_two_secondary"
+		urlVar = "spera.meet_url_two"
+		urlSeondaryVar = "spera.meet_url_two_secondary"
 	}
 	varToURLs := func(varName, generalVarName string) []string {
 		var urls []string
@@ -96,12 +96,12 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 		}
 		return urls
 	}
-	meetURLs := varToURLs(urlVar, "ui.meet_url")
+	meetURLs := varToURLs(urlVar, "spera.meet_url")
 	if len(meetURLs) == 0 && bondCreds == "" {
 		// Primary meet URL is mandatory.
 		return GoogleMeetConfig{}, errors.New("neither valid primary meet URLs nor BOND credentials are given")
 	}
-	meetSecURLs := varToURLs(urlSeondaryVar, "ui.meet_url_secondary")
+	meetSecURLs := varToURLs(urlSeondaryVar, "spera.meet_url_secondary")
 	// Shuffle the URLs so different tests can try different URLs with random order.
 	rand.Seed(time.Now().UnixNano())
 	rand.Shuffle(len(meetURLs), func(i, j int) { meetURLs[i], meetURLs[j] = meetURLs[j], meetURLs[i] })
@@ -123,11 +123,11 @@ func GetGoogleMeetConfig(ctx context.Context, s *testing.ServiceState, roomSize 
 
 		return time.Duration(val) * time.Minute, nil
 	}
-	meetRetryTimeout, err := varToDuration("ui.meet_url_retry_timeout", defaultMeetRetryTimeout)
+	meetRetryTimeout, err := varToDuration("spera.meet_url_retry_timeout", defaultMeetRetryTimeout)
 	if err != nil {
 		return GoogleMeetConfig{}, errors.Wrapf(err, "failed to parse %q to time duration", defaultMeetRetryTimeout)
 	}
-	meetRetryInterval, err := varToDuration("ui.meet_url_retry_interval", defaultMeetRetryInterval)
+	meetRetryInterval, err := varToDuration("spera.meet_url_retry_interval", defaultMeetRetryInterval)
 	if err != nil {
 		return GoogleMeetConfig{}, errors.Wrapf(err, "failed to parse %q to time duration", defaultMeetRetryInterval)
 	}

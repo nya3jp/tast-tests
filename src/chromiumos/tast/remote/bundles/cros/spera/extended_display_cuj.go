@@ -1,8 +1,8 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
@@ -10,9 +10,9 @@ import (
 	"time"
 
 	"chromiumos/tast/common/chameleon"
-	"chromiumos/tast/remote/bundles/cros/ui/conference"
+	"chromiumos/tast/remote/bundles/cros/spera/conference"
 	"chromiumos/tast/rpc"
-	pb "chromiumos/tast/services/cros/ui"
+	pb "chromiumos/tast/services/cros/spera"
 	"chromiumos/tast/testing"
 )
 
@@ -21,15 +21,14 @@ func init() {
 		Func:         ExtendedDisplayCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test video entertainment with extended display",
-		Contacts:     []string{"vlin@cienet.com", "cienet-development@googlegroups.com"},
+		Contacts:     []string{"jane.yang@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		ServiceDeps: []string{
-			"tast.cros.ui.ConferenceService",
+			"tast.cros.spera.ConferenceService2",
 		},
 		Vars: []string{
-			"ui.chameleon_addr",         // Only needed when using chameleon board as extended display.
-			"ui.chameleon_display_port", // The port connected as extended display. Default is 3.
-
+			"spera.chameleon_addr",         // Only needed when using chameleon board as extended display.
+			"spera.chameleon_display_port", // The port connected as extended display. Default is 3.
 		},
 		Data: []string{conference.CameraVideo},
 		Params: []testing.Param{
@@ -80,7 +79,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer dut.Conn().CommandContext(ctx, "rm", remoteCameraVideoPath).Run()
 
-	if chameleonAddr, ok := s.Var("ui.chameleon_addr"); ok {
+	if chameleonAddr, ok := s.Var("spera.chameleon_addr"); ok {
 		// Use chameleon board as extended display. Make sure chameleon is connected.
 		che, err := chameleon.New(ctx, chameleonAddr)
 		if err != nil {
@@ -89,7 +88,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 		defer che.Close(ctx)
 
 		portID := 3 // Use default port 3 for display.
-		if port, ok := s.Var("ui.chameleon_display_port"); ok {
+		if port, ok := s.Var("spera.chameleon_display_port"); ok {
 			portID, err = strconv.Atoi(port)
 			if err != nil {
 				s.Fatalf("Failed to parse chameleon display port %q: %v", port, err)
@@ -110,7 +109,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	client := pb.NewConferenceServiceClient(c.Conn)
+	client := pb.NewConferenceService2Client(c.Conn)
 
 	if _, err := client.RunGoogleMeetScenario(ctx, &pb.MeetScenarioRequest{
 		Tier:            param.Tier,

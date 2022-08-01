@@ -1,8 +1,8 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
@@ -22,7 +22,7 @@ import (
 	"chromiumos/tast/common/bond"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/conference"
+	"chromiumos/tast/local/bundles/cros/spera/conference"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -32,51 +32,51 @@ import (
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/input"
-	pb "chromiumos/tast/services/cros/ui"
+	pb "chromiumos/tast/services/cros/spera"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddService(&testing.Service{
 		Register: func(srv *grpc.Server, s *testing.ServiceState) {
-			pb.RegisterConferenceServiceServer(srv, &ConferenceService{s: s})
+			pb.RegisterConferenceService2Server(srv, &ConferenceService{s: s})
 		},
 		Vars: []string{
 			// mode is optional. Expecting "tablet" or "clamshell".
-			"ui.cuj_mode",
+			"spera.cuj_mode",
 			// CrOS login credentials.
 			"ui.cujAccountPool",
 			// Credentials used to join Google Meet. It might be different with CrOS login credentials.
-			"ui.meet_account",
-			"ui.meet_password",
+			"spera.meet_account",
+			"spera.meet_password",
 			// Credentials for BOND API.
-			"ui.GoogleMeetCUJ.bond_enabled",
-			"ui.GoogleMeetCUJ.bond_key",
+			"spera.GoogleMeetCUJ.bond_enabled",
+			"spera.GoogleMeetCUJ.bond_key",
 
 			// Static Google meet rooms with different participant number have been created.
-			// They have different URLs. ui.meet_url can be used to run a specific subtest but
-			// assigning urls to different vars will be easier when running with ui.GoogleMeetCUJ.*.
+			// They have different URLs. spera.meet_url can be used to run a specific subtest but
+			// assigning urls to different vars will be easier when running with spera.GoogleMeetCUJ.*.
 			// Each of the folliwng vars can be assigned with mutiple URLs, seperated by comma.
 			// Test can retry another url if one fails.
 			// - Primary URLs: use these URLs first.
-			"ui.meet_url",
-			"ui.meet_url_two",
-			"ui.meet_url_small",
-			"ui.meet_url_large",
-			"ui.meet_url_class",
+			"spera.meet_url",
+			"spera.meet_url_two",
+			"spera.meet_url_small",
+			"spera.meet_url_large",
+			"spera.meet_url_class",
 			// - Secondary URLs: only used when primary ones fail.
-			"ui.meet_url_secondary",
-			"ui.meet_url_two_secondary",
-			"ui.meet_url_small_secondary",
-			"ui.meet_url_large_secondary",
-			"ui.meet_url_class_secondary",
+			"spera.meet_url_secondary",
+			"spera.meet_url_two_secondary",
+			"spera.meet_url_small_secondary",
+			"spera.meet_url_large_secondary",
+			"spera.meet_url_class_secondary",
 
 			// The total timeout and inteval when trying different URLs if one fails.
-			"ui.meet_url_retry_timeout",
-			"ui.meet_url_retry_interval",
+			"spera.meet_url_retry_timeout",
+			"spera.meet_url_retry_interval",
 			// Zoom meet bot server address.
-			"ui.zoom_bot_server",
-			"ui.zoom_bot_token",
+			"spera.zoom_bot_server",
+			"spera.zoom_bot_token",
 		},
 	})
 }
@@ -170,7 +170,7 @@ func (s *ConferenceService) RunGoogleMeetScenario(ctx context.Context, req *pb.M
 		cleanupCtx := ctx
 		ctx, cancelTablet := ctxutil.Shorten(ctx, 5*time.Second)
 		defer cancelTablet()
-		if mode, ok := s.s.Var("ui.cuj_mode"); ok {
+		if mode, ok := s.s.Var("spera.cuj_mode"); ok {
 			tabletMode = mode == "tablet"
 			cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 			if err != nil {
@@ -396,14 +396,14 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	if !ok {
 		return nil, errors.New("failed to get variable ui.cujAccountPool")
 	}
-	host, ok := s.s.Var("ui.zoom_bot_server")
+	host, ok := s.s.Var("spera.zoom_bot_server")
 	if !ok {
-		return nil, errors.New("failed to get variable ui.zoom_bot_server")
+		return nil, errors.New("failed to get variable spera.zoom_bot_server")
 	}
 
-	sessionToken, ok := s.s.Var("ui.zoom_bot_token")
+	sessionToken, ok := s.s.Var("spera.zoom_bot_token")
 	if !ok {
-		return nil, errors.New("failed to get variable ui.zoom_bot_token")
+		return nil, errors.New("failed to get variable spera.zoom_bot_token")
 	}
 
 	testing.ContextLog(ctx, "Start zoom meet scenario")
@@ -430,7 +430,7 @@ func (s *ConferenceService) RunZoomScenario(ctx context.Context, req *pb.MeetSce
 	cleanupCtx := ctx
 	ctx, cancelTablet := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancelTablet()
-	if mode, ok := s.s.Var("ui.cuj_mode"); ok {
+	if mode, ok := s.s.Var("spera.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
 		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 		if err != nil {
