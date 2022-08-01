@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/cryptohome"
+	"chromiumos/tast/local/session"
 	"chromiumos/tast/testing"
 )
 
@@ -37,6 +38,11 @@ func init() {
 	})
 }
 
+// Time for Chrome to sign-out. Include time for quick settings to show, click "sign-out" button, and Chrome shutdown.
+// Note, session manager will kill Chrome process if it doesn't exist within 3 seconds.
+// Here we allow a few more seconds for quicks settings UI to show up.
+const signoutTimeout = 10 * time.Second
+
 // SystemWebAppsReinstall tests that system web apps can be reinstalled (i.e. don't crash Chrome).
 func SystemWebAppsReinstall(ctx context.Context, s *testing.State) {
 	testFileContent := make([]byte, 8)
@@ -45,7 +51,7 @@ func SystemWebAppsReinstall(ctx context.Context, s *testing.State) {
 	// First session: fresh install.
 	err := func() error {
 		cleanupCtx := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		ctx, cancel := ctxutil.Shorten(ctx, signoutTimeout)
 		defer cancel()
 
 		cr, tconn, err := createChrome(ctx)
@@ -72,7 +78,7 @@ func SystemWebAppsReinstall(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "apps aren't installed")
 		}
 
-		if err := quicksettings.SignOut(ctx, tconn); err != nil {
+		if err := signOut(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to sign out")
 		}
 
@@ -87,7 +93,7 @@ func SystemWebAppsReinstall(ctx context.Context, s *testing.State) {
 	// Second session: keep state and trigger reinstall.
 	err = func() error {
 		cleanupCtx := ctx
-		ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+		ctx, cancel := ctxutil.Shorten(ctx, signoutTimeout)
 		defer cancel()
 
 		cr, tconn, err := createChrome(ctx, chrome.KeepState(), chrome.EnableFeatures("AlwaysReinstallSystemWebApps"))
@@ -121,7 +127,7 @@ func SystemWebAppsReinstall(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "apps aren't installed")
 		}
 
-		if err := quicksettings.SignOut(ctx, tconn); err != nil {
+		if err := signOut(ctx, tconn); err != nil {
 			return errors.Wrap(err, "failed to sign out")
 		}
 
@@ -189,15 +195,43 @@ func testFilePath(ctx context.Context, cr *chrome.Chrome) (string, error) {
 	return filepath.Join(downloadsPath, "system-web-apps-reinstall-confidence-check"), nil
 }
 
-// cleanup signs out if the test hasn't already done so.
+// cleanup tries to gracefully sign-out if the test hasn't already done so.
 // Note, this function shouldn't call s.Fatal() or s.FailNow() because doing so will "hide" the real error occurred during the test.
 func cleanup(ctx context.Context, didSignOut bool, tconn *chrome.TestConn) {
 	if didSignOut {
 		return
 	}
-
-	if err := quicksettings.SignOut(ctx, tconn); err != nil {
+	if err := signOut(ctx, tconn); err != nil {
 		testing.ContextLog(ctx, "Failed to sign out during cleanup: ", err)
 		testing.ContextLog(ctx, "The above error is likely caused by an error occurred in test body")
 	}
+}
+
+// signOut uses quick settings to sign out the current session using `tconn`, and wait until the session has actually stopped.
+func signOut(ctx context.Context, tconn *chrome.TestConn) error {
+	ctx, cancel := context.WithTimeout(ctx, signoutTimeout)
+	defer cancel()
+
+	sm, err := session.NewSessionManager(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to connect to SessionManager")
+	}
+
+	sw, err := sm.WatchSessionStateChanged(ctx, "stopped")
+	if err != nil {
+		return errors.Wrap(err, "failed to watch for session state change D-Bus signal")
+	}
+	defer sw.Close(ctx)
+
+	if err := quicksettings.SignOut(ctx, tconn); err != nil {
+		return errors.Wrap(err, "failed to sign out with quick settings")
+	}
+
+	select {
+	case <-sw.Signals:
+		testing.ContextLog(ctx, "Session stopped")
+	case <-ctx.Done():
+		return errors.New("Timed out waiting for session state signal")
+	}
+	return nil
 }
