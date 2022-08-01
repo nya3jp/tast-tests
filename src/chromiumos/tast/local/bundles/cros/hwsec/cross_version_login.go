@@ -468,7 +468,7 @@ func testVersion(ctx context.Context, lf util.LogFunc, cryptohome *hwsec.Cryptoh
 		return errors.Wrap(err, "failed to read json")
 	}
 
-	if err := util.LoadCrossVersionLoginData(ctx, daemonController, dataPath); err != nil {
+	if err := hwseclocal.LoadLoginData(ctx, daemonController, dataPath, true /*includeTpm*/); err != nil {
 		return errors.Wrap(err, "failed to load login data")
 	}
 	for _, config := range configList {
@@ -508,11 +508,11 @@ func CrossVersionLogin(ctx context.Context, s *testing.State) {
 	defer os.RemoveAll(tmpDir)
 	// Creates backup data to recover state later.
 	backupPath := filepath.Join(tmpDir, "backup_data.tar.xz")
-	if err := util.CreateCrossVersionLoginData(ctx, daemonController, backupPath); err != nil {
+	if err := hwseclocal.SaveLoginData(ctx, daemonController, backupPath, true /*includeTpm*/); err != nil {
 		s.Fatal("Failed to backup login data: ", err)
 	}
 	defer func() {
-		if err := util.LoadCrossVersionLoginData(ctx, daemonController, backupPath); err != nil {
+		if err := hwseclocal.LoadLoginData(ctx, daemonController, backupPath, true /*includeTpm*/); err != nil {
 			s.Fatal("Failed to load login data: ", err)
 		}
 	}()
