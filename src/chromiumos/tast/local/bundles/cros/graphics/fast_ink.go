@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -10,6 +10,7 @@ import (
 	"net/http/httptest"
 	"time"
 
+	"chromiumos/tast/common/android/ui"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
@@ -27,7 +28,10 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-const fastInkAPK = "LowLatencyStylusDemoGPU_20210423.apk"
+const (
+	fastInkAPK     = "LowLatencyStylusDemo_20220801.apk"
+	fastInkPkgName = "dev.chromeos.lowlatencystylusdemo"
+)
 
 type fastInkTestParams struct {
 	// arc is true for testing Fast Ink in the LowLatencyStylusDemoGPU
@@ -247,11 +251,17 @@ func FastInk(ctx context.Context, s *testing.State) {
 
 	if params.arc {
 		a := s.FixtValue().(*arc.PreData).ARC
+		d, err := a.NewUIDevice(ctx)
+		if err != nil {
+			s.Fatal("Failed to initialize UI Automator: ", err)
+		}
+		defer d.Close(cleanupCtx)
+
 		if err := a.Install(ctx, s.DataPath(fastInkAPK)); err != nil {
 			s.Fatal("Failed installing app: ", err)
 		}
 
-		act, err := arc.NewActivity(a, "dev.chromeos.lowlatencystylusdemogpu", ".MainActivity")
+		act, err := arc.NewActivity(a, fastInkPkgName, ".MainActivity")
 		if err != nil {
 			s.Fatal("Failed to create new activity: ", err)
 		}
@@ -261,6 +271,18 @@ func FastInk(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to start activity: ", err)
 		}
 		defer act.Stop(cleanupCtx, tconn)
+
+		gpuDemoButton := d.Object(
+			ui.Text("LOW-LATENCY DEMO (GPU DRIVEN)"),
+			ui.PackageName(fastInkPkgName),
+			ui.ClassName("android.widget.Button"),
+		)
+		if err := gpuDemoButton.WaitForExists(ctx, 10*time.Second); err != nil {
+			s.Fatal("Failed to wait for GPU-driven demo button: ", err)
+		}
+		if err := gpuDemoButton.Click(ctx); err != nil {
+			s.Fatal("Failed to click GPU-driven demo button: ", err)
+		}
 	} else {
 		if !params.tablet {
 			// Move the mouse to the center of the work area. Otherwise,
