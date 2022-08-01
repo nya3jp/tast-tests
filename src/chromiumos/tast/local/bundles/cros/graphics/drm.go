@@ -174,8 +174,10 @@ func init() {
 			Val:               []string{"linear_bo_test"},
 			Timeout:           30 * time.Second,
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-			ExtraSoftwareDeps: []string{"no_qemu"},
-			ExtraAttr:         []string{"group:mainline"},
+			ExtraSoftwareDeps: []string{"no_qemu",
+				// TODO(b:237052709): Reenable when i915 issue is fixed.
+				"no_manatee"},
+			ExtraAttr: []string{"group:mainline"},
 		}, {
 			Name:              "mapped_access_perf_test",
 			Val:               []string{"mapped_access_perf_test"},
@@ -195,8 +197,10 @@ func init() {
 			Val:               []string{"null_platform_test"},
 			Timeout:           30 * time.Second,
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-			ExtraSoftwareDeps: []string{"no_qemu"},
-			ExtraAttr:         []string{"group:mainline"},
+			ExtraSoftwareDeps: []string{"no_qemu",
+				// TODO(b:237052709): Reenable when i915 issue is fixed.
+				"no_manatee"},
+			ExtraAttr: []string{"group:mainline"},
 		}, {
 			Name:    "swrast_test",
 			Val:     []string{"swrast_test"},
