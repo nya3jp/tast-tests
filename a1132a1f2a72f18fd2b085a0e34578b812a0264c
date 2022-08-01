@@ -117,6 +117,30 @@
       },
       "revId": "a1132a1f2a72f18fd2b085a0e34578b812a0264c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b92d594_c07570c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-01T01:53:51Z",
+      "side": 1,
+      "message": "Sorry I just noticed this comment.\n\nTheoretically, the veth should be removed automatically once the netns which contains it is deleted (\"When a namespace is freed, the veth(4) devices that it contains are destroyed\" [1]), as Hugo mentioned.\n\nActually I encountered the same behavior when I was trying to use this for VPNConnect tests. It seems to me that veth may keep existing for 1 ~ 2 seconds in my case after removing the netns, so I use a poll in my patch [2].\n\nYou can use the code in [2] to verify if this is the case here. I\u0027m fine with the code in this patch (delete veth explicitly) since it seems not harmful (except for that this cmd may fail if there is only netns but no veth, which could happen on the failure path in SetUp()), or feel free to use the code in my patch (I\u0027m not going to submit that soon). \n\n\n[1] https://man7.org/linux/man-pages/man7/network_namespaces.7.html\n[2] https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3801887/1/src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+      "parentUuid": "b8a09718_7e218869",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 3
+      },
+      "revId": "a1132a1f2a72f18fd2b085a0e34578b812a0264c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
