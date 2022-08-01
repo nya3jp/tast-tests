@@ -119,43 +119,79 @@ type chromeTab struct {
 	currentPattern int          // the index of current page's corresponding content pattern within pageInfo
 }
 
-func (tab *chromeTab) searchElementWithPatternAndClick(ctx context.Context, pattern string) error {
+var (
+	errHTMLelementNotFound = errors.New("failed to find HTML element on page")
+	errNotClickAndNavigate = errors.New("has not clicked HTML link and navigate")
+)
+
+func (tab *chromeTab) searchElementWithPatternAndClick(ctx context.Context, patterns []string) (int, error) {
 	if err := tab.conn.Eval(ctx, "window.location.href", &tab.url); err != nil {
-		return errors.Wrap(err, "failed to get URL")
+		return 0, errors.Wrap(err, "failed to get URL")
 	}
 	testing.ContextLogf(ctx, "Current URL: %q", tab.url)
 
+	const (
+		statusDone            = -1
+		statusElementNotFound = -2
+	)
+
+	links := `'` + strings.Join(patterns, `', '`) + `'`
 	script := fmt.Sprintf(`() => {
 		if (window.location.href !== '%s') {
-			return true
+			return %d;
 		}
-		const pattern = '%s';
-		const name = "a[href*='" + pattern + "']";
-		const els = document.querySelectorAll(name);
-		if (els.length > 0) els[0].click();
-		return false;
-	}`, tab.url, pattern)
+		const elements = [%s];
+		for (let i = 0; i < elements.length; i++) {
+			const pattern = elements[i];
+			const name = "a[href*='" + pattern + "']";
+			const els = document.querySelectorAll(name);
+			if (els.length === 0) {
+				continue;
+			} else {
+				els[0].click();
+				return i;
+			}
+		}
+		return %d;
+	}`, tab.url, statusDone, links, statusElementNotFound)
 
+	pattern := ""
+	foundPatternIndex := 0
 	timeout := 90 * time.Second
+	numberOfRetryForJsError := 5
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		done := false
-		if err := tab.conn.Call(ctx, &done, script); err != nil {
-			return testing.PollBreak(errors.Wrap(err, "failed to execute JavaScript query to click HTML link to navigate"))
+		status := 0
+		if err := tab.conn.Call(ctx, &status, script); err != nil {
+			// [cienet private] retry JS script evaluation for error 211
+			if numberOfRetryForJsError <= 0 {
+				return testing.PollBreak(errors.Wrap(err, "failed to execute JavaScript query to click HTML link to navigate"))
+			}
+			testing.ContextLog(ctx, "Retry JavaScript query on error")
+			numberOfRetryForJsError--
 		}
-		if !done {
-			return errors.New("has not clicked HTML link and navigate")
+		if status == statusElementNotFound {
+			return testing.PollBreak(errHTMLelementNotFound)
 		}
+		if status == statusDone {
+			return errNotClickAndNavigate
+		}
+		// When "status" is greater than or equal to 0, returns an integer representing the index of the element that can be found.
+		if status > 0 {
+			testing.ContextLog(ctx, "Missing patterns: ", patterns[0:status])
+		}
+		foundPatternIndex = status
+		pattern = patterns[foundPatternIndex]
 		return nil
-	}, &testing.PollOptions{Timeout: timeout, Interval: time.Second}); err != nil {
-		return errors.Wrapf(err, "failed to click HTML element and navigate within %v", timeout)
+	}, &testing.PollOptions{Timeout: timeout, Interval: 100 * time.Millisecond}); err != nil {
+		return 0, errors.Wrapf(err, "failed to click HTML element and navigate within %v", timeout)
 	}
 	if err := tab.conn.Eval(ctx, "window.location.href", &tab.url); err != nil {
-		return errors.Wrap(err, "failed to get URL")
+		return 0, errors.Wrap(err, "failed to get URL")
 	}
 	testing.ContextLogf(ctx, "HTML element clicked [%s], page navigates to: %q", pattern, tab.url)
 	tab.url = strings.TrimSuffix(tab.url, "/")
 
-	return nil
+	return foundPatternIndex, nil
 }
 
 func (tab *chromeTab) clickAnchor(ctx context.Context, timeout time.Duration, tconn *chrome.TestConn) error {
@@ -165,7 +201,8 @@ func (tab *chromeTab) clickAnchor(ctx context.Context, timeout time.Duration, tc
 	)
 	p := tab.currentPattern
 	pn := p + 1
-	if pn == len(tab.pageInfo.contentPatterns) {
+	numPatterns := len(tab.pageInfo.contentPatterns)
+	if pn == numPatterns {
 		pn = 0
 	}
 
@@ -187,9 +224,9 @@ func (tab *chromeTab) clickAnchor(ctx context.Context, timeout time.Duration, tc
 	}
 	testing.ContextLog(ctx, "Got LCP2 histogram: ", h1)
 
-	pattern := tab.pageInfo.contentPatterns[pn]
-	testing.ContextLogf(ctx, "Click link and navigate from %q to %q", tab.pageInfo.contentPatterns[p], pattern)
-	if err := tab.searchElementWithPatternAndClick(ctx, pattern); err != nil {
+	patternsToFind := append(tab.pageInfo.contentPatterns[pn:numPatterns], tab.pageInfo.contentPatterns[0:p]...)
+	foundPatternIndex, err := tab.searchElementWithPatternAndClick(ctx, patternsToFind)
+	if err != nil {
 		// Check whether the failure to search and click pattern was due to issues on the content site.
 		if contentSiteErr := contentSiteUnavailable(ctx, tconn); contentSiteErr != nil {
 			return errors.Wrapf(contentSiteErr, "failed to show content on page %s", tab.url)
@@ -205,7 +242,7 @@ func (tab *chromeTab) clickAnchor(ctx context.Context, timeout time.Duration, tc
 		testing.ContextLog(ctx, "Got LCP2 histogram update: ", h2)
 	}
 
-	tab.currentPattern = pn
+	tab.currentPattern = (pn + foundPatternIndex) % numPatterns
 	return nil
 }
 
@@ -303,15 +340,17 @@ var allTargets = []struct {
 	{cuj.RedditAppleURL, newPageInfo(Plus, reddit, `/r/apple/hot/`, `/r/apple/new/`)},
 	{cuj.RedditBrooklynURL, newPageInfo(Premium, reddit, `/r/brooklynninenine/hot/`, `/r/brooklynninenine/new/`)},
 
-	{cuj.MediumBusinessURL, newPageInfo(Basic, medium, `/business`, `/entrepreneurship`)},
-	{cuj.MediumStartupURL, newPageInfo(Basic, medium, `/startup`, `/leadership`)},
-	{cuj.MediumWorkURL, newPageInfo(Plus, medium, `/work`, `/productivity`)},
-	{cuj.MediumSoftwareURL, newPageInfo(Premium, medium, `/software-engineering`, `/programming`)},
-	{cuj.MediumAIURL, newPageInfo(Premium, medium, `/artificial-intelligence`, `/technology`)},
+	// Since "Medium" sites change content frequently, add an alternate tag link pattern.
+	{cuj.MediumBusinessURL, newPageInfo(Basic, medium, `/business`, `/entrepreneurship`, `/money`)},
+	{cuj.MediumStartupURL, newPageInfo(Basic, medium, `/startup`, `/technology`, `/leadership`)},
+	{cuj.MediumWorkURL, newPageInfo(Plus, medium, `/work`, `/productivity`, `/careers`)},
+	{cuj.MediumSoftwareURL, newPageInfo(Premium, medium, `/software-engineering`, `/programming`, `/coding`)},
+	{cuj.MediumAIURL, newPageInfo(Premium, medium, `/artificial-intelligence`, `/technology`, `/ai`)},
 
-	{cuj.YahooUsURL, newPageInfo(Basic, yahooNews, `/us/`, `/politics/`)},
-	{cuj.YahooWorldURL, newPageInfo(Basic, yahooNews, `/world/`, `/health/`)},
-	{cuj.YahooScienceURL, newPageInfo(Plus, yahooNews, `/science/`, `/originals/`)},
+	// Since "Yahoo" sites change content frequently, add an alternate tag link pattern.
+	{cuj.YahooUsURL, newPageInfo(Basic, yahooNews, `/us/`, `/politics/`, `/world/`)},
+	{cuj.YahooWorldURL, newPageInfo(Basic, yahooNews, `/world/`, `/coronavirus/`, `/health/`)},
+	{cuj.YahooScienceURL, newPageInfo(Plus, yahooNews, `/science/`, `/originals/`, `/us/`)},
 	{cuj.YahooFinanaceWatchlistURL, newPageInfo(Premium, yahooFinance, `/watchlists/`, `/news/`)},
 
 	{cuj.CnnWorldURL, newPageInfo(Plus, cnn, `/world`, `/africa`)},
