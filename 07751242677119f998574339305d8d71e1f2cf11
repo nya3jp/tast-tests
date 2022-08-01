@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "753724a1_e6a1c5b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nearbyshare/phone_to_cros_background_scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-08-01T20:14:33Z",
+      "side": 1,
+      "message": "hana, krane, and kevin don\u0027t support bg scanning so not running on them",
+      "range": {
+        "startLine": 49,
+        "startChar": 101,
+        "endLine": 49,
+        "endChar": 105
+      },
+      "revId": "07751242677119f998574339305d8d71e1f2cf11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "839aac43_9de92eaa",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_to_cros_background_scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1118689
+      },
+      "writtenOn": "2022-08-01T20:14:33Z",
+      "side": 1,
+      "message": "Adding atlas because atlas | cherry is failing 100%\n\nbrya | hana is failing 100% so adding brya/gimble to stop running it \n\nguybrush | kevin is failing 100% so adding guybrush/nipperkin to stop running it \n\npuff | kukui is failing 100% so adding puff/wyvern to stop running it",
+      "range": {
+        "startLine": 40,
+        "startChar": 77,
+        "endLine": 40,
+        "endChar": 82
+      },
+      "revId": "07751242677119f998574339305d8d71e1f2cf11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
