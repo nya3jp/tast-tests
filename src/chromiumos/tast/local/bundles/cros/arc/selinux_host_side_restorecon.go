@@ -36,7 +36,7 @@ func init() {
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			ExtraSoftwareDeps: []string{"android_vm", "no_virtio_blk_data"},
 		}},
 		Timeout: 12 * time.Minute,
 		VarDeps: []string{"ui.gaiaPoolDefault"},
