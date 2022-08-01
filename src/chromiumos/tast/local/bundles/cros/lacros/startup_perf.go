@@ -323,6 +323,8 @@ func performRegularLogin(ctx context.Context, browserType browser.Type, creds ch
 		chrome.DisableFeatures("ChromeWhatsNewUI"),
 		chrome.EnableRestoreTabs(),
 		chrome.GAIALogin(creds),
+		// Keep profile sync from overwriting the 'Always restore' setting.
+		chrome.ExtraArgs("--disable-sync"),
 		chrome.KeepState()}
 
 	if browserType == browser.TypeLacros {
