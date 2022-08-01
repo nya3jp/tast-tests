@@ -35,8 +35,13 @@ func init() {
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			Name: "vm",
+			ExtraSoftwareDeps: []string{
+				"android_vm",
+				// Skip the test when ARCVM virtio-blk /data is enabled.
+				// ARC's /data directory is encapsulated in a disk image when it is enabled.
+				"no_arcvm_virtio_blk_data",
+			},
 		}},
 		Timeout: 12 * time.Minute,
 		VarDeps: []string{"ui.gaiaPoolDefault"},
