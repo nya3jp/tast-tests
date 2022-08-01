@@ -6,7 +6,7 @@
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.chromium.arc.testapp.quotaprojectid">
-
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
     <application
         android:label="ARC quota project ID test"
         android:theme="@android:style/Theme.Material.Light">

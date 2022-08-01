@@ -7,11 +7,14 @@
 package org.chromium.arc.testapp.quotaprojectid;
 
 import android.app.Activity;
+import android.app.usage.StorageStatsManager;
 import android.content.ContentValues;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Process;
+import android.os.storage.StorageManager;
 import android.provider.MediaStore;
 import android.util.Log;
 
@@ -34,6 +37,15 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        StorageStatsManager stats = getSystemService(StorageStatsManager.class);
+
+        try {
+            Log.e(TAG, "hoge: " + stats.queryExternalStatsForUser(StorageManager.UUID_DEFAULT,
+                      Process.myUserHandle()).getImageBytes());
+        } catch (IOException e) {
+            Log.e(TAG, "hoge: " + e);
+        }
 
         // Prepare PNG image data.
         Bitmap bitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
@@ -62,8 +74,23 @@ public class MainActivity extends Activity {
         // Save the data in the primary external volume.
         writeToMediaStore(MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY),
                 png);
+
+        try {
+            Log.e(TAG, "hoge: " + stats.queryExternalStatsForUser(StorageManager.UUID_DEFAULT,
+                      Process.myUserHandle()).getImageBytes());
+        } catch (IOException e) {
+            Log.e(TAG, "hoge: " + e);
+        }
+
         writeToMediaStore(MediaStore.Downloads.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY),
                 png);
+
+        try {
+            Log.e(TAG, "hoge: " + stats.queryExternalStatsForUser(StorageManager.UUID_DEFAULT,
+                      Process.myUserHandle()).getImageBytes());
+        } catch (IOException e) {
+            Log.e(TAG, "hoge: " + e);
+        }
     }
 
     void writeToMediaStore(Uri mediaTableUri, byte[] data) {
