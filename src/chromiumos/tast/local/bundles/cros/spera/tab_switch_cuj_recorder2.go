@@ -2,13 +2,13 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
+	"chromiumos/tast/local/bundles/cros/spera/tabswitchcuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/wpr"
@@ -37,10 +37,10 @@ func init() {
 			},
 		},
 		Vars: []string{
-			"ui.cuj_mute",
+			"spera.cuj_mute",
 			// The following vars are only used by remote mode.
-			"ui.wpr_http_addr",
-			"ui.wpr_https_addr",
+			"spera.wpr_http_addr",
+			"spera.wpr_https_addr",
 		},
 	})
 }

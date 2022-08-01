@@ -1,8 +1,8 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
@@ -10,7 +10,7 @@ import (
 
 	"chromiumos/tast/common/cros/ui/setup"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/ui/tabswitchcuj"
+	"chromiumos/tast/local/bundles/cros/spera/tabswitchcuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -34,8 +34,8 @@ func init() {
 		Contacts:     []string{"abergman@google.com", "tclaiborne@chromium.org", "xliu@cienet.com", "alfredyu@cienet.com"},
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{
-			"ui.cuj_mute",
-			"ui.cuj_mode", // Expecting "tablet" or "clamshell".
+			"spera.cuj_mute",
+			"spera.cuj_mode", // Expecting "tablet" or "clamshell".
 			// WPR addresses are only required when running with WPR Proxy.
 			"ui.wpr_http_addr",
 			"ui.wpr_https_addr",
@@ -147,7 +147,7 @@ func TabSwitchCUJ2(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	var tabletMode bool
-	if mode, ok := s.Var("ui.cuj_mode"); ok {
+	if mode, ok := s.Var("spera.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
 		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 		if err != nil {

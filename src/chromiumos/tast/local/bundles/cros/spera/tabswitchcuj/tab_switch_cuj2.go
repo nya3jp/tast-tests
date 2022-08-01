@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -478,7 +478,7 @@ func Run2(ctx context.Context, s *testing.State, cr *chrome.Chrome, caseLevel Le
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	if _, ok := s.Var("ui.cuj_mute"); ok {
+	if _, ok := s.Var("spera.cuj_mute"); ok {
 		if err := crastestclient.Mute(ctx); err != nil {
 			s.Fatal("Failed to mute: ", err)
 		}
@@ -682,7 +682,7 @@ func tabSwitchAction(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestC
 			// After tab switching, the current focused tab should be active again so
 			// reconnect should succeed.
 			if err := tab.reconnect(ctx, cr); err != nil {
-				return errors.Wrap(err, "cdp connection is invalid and failed to reconnrct")
+				return errors.Wrap(err, "cdp connection is invalid and failed to reconnect")
 			}
 
 			timeStart := time.Now()
