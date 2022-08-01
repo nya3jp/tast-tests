@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77f1b366_e7388dfb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-08-01T14:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc907349_e935a153",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 8
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61c55f89_797e519e",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-01T13:53:36Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 110,
+        "startChar": 5,
+        "endLine": 110,
+        "endChar": 8
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f3e483_66148cea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-08-01T14:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61c55f89_797e519e",
       "range": {
         "startLine": 110,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "054bb1af_9bc6246b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-08-01T14:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40edb4ac_04097f2b",
+      "range": {
+        "startLine": 53,
+        "startChar": 26,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f226226_33e8001f",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-08-01T13:53:36Z",
       "side": 1,
       "message": "nit: maybe use switch instead?",
+      "range": {
+        "startLine": 158,
+        "startChar": 5,
+        "endLine": 158,
+        "endChar": 47
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e50fc35a_1d09d8e7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-08-01T14:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f226226_33e8001f",
       "range": {
         "startLine": 158,
         "startChar": 5,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9da630f6_bdcab38e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-08-01T14:50:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37382475_0bacfcbd",
+      "range": {
+        "startLine": 160,
+        "startChar": 11,
+        "endLine": 160,
+        "endChar": 42
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "649d9cd1_8e727f69",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-08-01T13:53:36Z",
       "side": 1,
       "message": "what if pastedError !\u003d nil but !copyAllowed?",
+      "range": {
+        "startLine": 275,
+        "startChar": 51,
+        "endLine": 275,
+        "endChar": 69
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ada8ecd_12589e8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-08-01T14:50:04Z",
+      "side": 1,
+      "message": "Actually `clipboard.CheckPastedContent()` returns an error if a `contentNode` with `copiedString` text is not found. So I think `!copyAllowed \u0026\u0026 pastedError !\u003d nil` is a valid case that should not trigger any error.",
+      "parentUuid": "649d9cd1_8e727f69",
       "range": {
         "startLine": 275,
         "startChar": 51,
