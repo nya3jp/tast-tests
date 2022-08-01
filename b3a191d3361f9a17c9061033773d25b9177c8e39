@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef0e8be_505c53a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-08-01T03:49:33Z",
+      "side": 1,
+      "message": "How often does it poll?",
+      "revId": "b3a191d3361f9a17c9061033773d25b9177c8e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
