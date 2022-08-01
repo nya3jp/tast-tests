@@ -104,7 +104,8 @@ func VirtualKeyboardChangeInput(ctx context.Context, s *testing.State) {
 
 	inputField := testserver.TextAreaInputField
 	inputMethodOption := vkb.NodeFinder.Name(inputMethod.Name).Role(role.StaticText)
-	vkLanguageMenuFinder := vkb.KeyFinder.Name("open keyboard menu")
+	// String is changing to uppercase, so allow either o.
+	vkLanguageMenuFinder := vkb.KeyFinder.NameRegex("[oO]pen keyboard menu")
 
 	validateAction := uiauto.Combine("verify changing input method on virtual keyboard",
 		// Switch IME using virtual keyboard language menu.
