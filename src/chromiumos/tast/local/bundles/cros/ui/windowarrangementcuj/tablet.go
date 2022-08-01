@@ -30,7 +30,7 @@ import (
 // 3. Drag the divider.
 // 4. Drag the overview window to the second desk.
 // 5. Drag the divider.
-func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, splitViewDragPoints DragPoints, enterOverview action.Action) error {
+func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, enterOverview action.Action, splitViewDragPoints ...coords.Point) error {
 	const (
 		slow              = 2 * time.Second
 		moderatePace      = time.Second
@@ -39,7 +39,7 @@ func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *ui
 
 	// 1. Drag the divider.
 	testing.ContextLog(ctx, "Dragging the divider between two snapped windows")
-	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
+	if err := dragAndRestore(ctx, tconn, pc, slow, splitViewDragPoints...); err != nil {
 		return errors.Wrap(err, "failed to drag divider between two snapped windows")
 	}
 
@@ -50,7 +50,7 @@ func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *ui
 
 	// 3. Drag the divider.
 	testing.ContextLog(ctx, "Dragging the divider between an overview window and a snapped window")
-	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
+	if err := dragAndRestore(ctx, tconn, pc, slow, splitViewDragPoints...); err != nil {
 		return errors.Wrap(err, "failed to drag divider between overview window and snapped window")
 	}
 
@@ -86,7 +86,7 @@ func exerciseSplitViewResize(ctx context.Context, tconn *chrome.TestConn, ui *ui
 
 	// 5. Drag the divider.
 	testing.ContextLog(ctx, "Dragging the divider between an empty overview grid and a snapped window")
-	if err := Drag(ctx, tconn, pc, splitViewDragPoints, slow); err != nil {
+	if err := dragAndRestore(ctx, tconn, pc, slow, splitViewDragPoints...); err != nil {
 		return errors.Wrap(err, "failed to drag divider between empty overview grid and snapped window")
 	}
 
@@ -109,7 +109,7 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 		return errors.Wrap(err, "failed to get the primary display info")
 	}
 
-	splitViewDragPoints := DragPoints{
+	splitViewDragPoints := []coords.Point{
 		info.WorkArea.CenterPoint(),
 		coords.NewPoint(info.WorkArea.Left+info.WorkArea.Width/4, info.WorkArea.CenterY()),
 		coords.NewPoint(info.WorkArea.Left+info.WorkArea.Width-1, info.WorkArea.CenterY()),
@@ -185,7 +185,7 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	}
 	enterOverview := kw.AccelAction(topRow.SelectTask)
 	// Exercise split view resize functionality.
-	if err := exerciseSplitViewResize(ctx, tconn, ui, pc, splitViewDragPoints, enterOverview); err != nil {
+	if err := exerciseSplitViewResize(ctx, tconn, ui, pc, enterOverview, splitViewDragPoints...); err != nil {
 		return errors.Wrap(err, "failed to exercise split view resize functionality with two browser windows")
 	}
 
@@ -222,7 +222,7 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 	}
 
 	// Exercise split view resize functionality.
-	if err := exerciseSplitViewResize(ctx, tconn, ui, pc, splitViewDragPoints, enterOverview); err != nil {
+	if err := exerciseSplitViewResize(ctx, tconn, ui, pc, enterOverview, splitViewDragPoints...); err != nil {
 		return errors.Wrap(err, "failed to exercise split view resize functionality with an ARC window and a browser window")
 	}
 
