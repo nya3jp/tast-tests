@@ -3,6 +3,92 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7f62fe1_96dc0530",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-01T14:16:22Z",
+      "side": 1,
+      "message": "nit: Start the CL message with the package name.",
+      "revId": "9b0f3e234ede87d9da2654bb9ac5c12d78fcdabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc87c62a_b5e26367",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-01T14:16:22Z",
+      "side": 1,
+      "message": "I suggest shortening context so there will be time left to perform clean ups.\n\nHere is an example of holding 5 sec for clean up:\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()",
+      "range": {
+        "startLine": 84,
+        "startChar": 25,
+        "endLine": 84,
+        "endChar": 28
+      },
+      "revId": "9b0f3e234ede87d9da2654bb9ac5c12d78fcdabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23ff9976_012cb75e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-01T14:16:22Z",
+      "side": 1,
+      "message": "You could use faillog.DumpUITreeWithScreenshotOnError() instead.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 69
+      },
+      "revId": "9b0f3e234ede87d9da2654bb9ac5c12d78fcdabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88eddc22_4eab786d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-01T14:16:22Z",
+      "side": 1,
+      "message": "Set custom timeout to the test as this is exceeds the default value.",
+      "range": {
+        "startLine": 160,
+        "startChar": 42,
+        "endLine": 160,
+        "endChar": 59
+      },
+      "revId": "9b0f3e234ede87d9da2654bb9ac5c12d78fcdabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "208f3d3b_3bd67ce7",
         "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
         "patchSetId": 4
