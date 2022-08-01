@@ -109,7 +109,7 @@ func DebianUpgradeAlert(ctx context.Context, s *testing.State) {
 		s.Log("Cleanup: shut down crostini completed")
 	}(cleanupCtx)
 
-	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+	defer faillog.DumpUITreeWithScreenshotOnError(cleanupCtx, s.OutDir(), s.HasError, cr, "ui_tree")
 
 	// Rename the os-release symlink to keep it as backup. Symlink is preserved.
 	if err := cont.Command(ctx, "sudo", "mv", releaseFilePath, releaseFileBackupPath).Run(testexec.DumpLogOnError); err != nil {
@@ -144,13 +144,16 @@ func DebianUpgradeAlert(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click Terminal Home Linux: ", err)
 	}
 
-	// Reset automation to refresh the ui tree as ui tree can lag
-	// behind the display causing the test to fail incorrectly.
-	if err := tconn.ResetAutomation(ctx); err != nil {
-		s.Log("Error resetting automation for the UI tree - next step may timeout and cause test to fail: ", err)
-	}
-	// Container startup can take time hence the long timeout.
-	if err := ui.WithTimeout(30 * time.Second).WaitUntilExists(continueButton)(ctx); err != nil {
+	if err := testing.Poll(
+		ctx,
+		uiauto.Combine("Find the upgrade alert",
+			// Reset automation to refresh the UI tree as UI tree can lag
+			// behind the display causing the test to fail incorrectly.
+			tconn.ResetAutomation,
+			ui.WithTimeout(time.Second).WaitUntilExists(continueButton),
+		),
+		&testing.PollOptions{Timeout: terminalapp.LaunchTerminalTimeout},
+	); err != nil {
 		s.Fatal("Failed to find the upgrade alert before timeout: ", err)
 	}
 
