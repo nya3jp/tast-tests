@@ -14,14 +14,13 @@ import (
 	"math/rand"
 	"os"
 	"path"
-	"strings"
 
 	cpb "chromiumos/system_api/cryptohome_proto"
 	"chromiumos/tast/common/hwsec"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/dbusutil"
+	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
 )
 
@@ -86,54 +85,6 @@ func (config *CrossVersionLoginConfig) AddVaultKeyData(ctx context.Context, cryp
 	return nil
 }
 
-func runCmdOrFailWithOut(cmd *testexec.Cmd) error {
-	out, err := cmd.CombinedOutput()
-	if err != nil {
-		// Return programs's output on failures. Avoid line breaks in error
-		// messages, to keep the Tast logs readable.
-		outFlat := strings.Replace(string(out), "\n", " ", -1)
-		return errors.Wrap(err, outFlat)
-	}
-	return nil
-}
-
-func decompressData(ctx context.Context, src string) error {
-	// Use the "tar" program as it takes care of recursive unpacking,
-	// preserving ownership, permissions and SELinux attributes.
-	cmd := testexec.CommandContext(ctx, "/bin/tar",
-		"--extract",              // extract files from an archive
-		"--gzip",                 // filter the archive through gunzip
-		"--preserve-permissions", // extract file permissions
-		"--same-owner",           // extract file ownership
-		"--file",                 // read from the file specified in the next argument
-		src)
-	// Set the work directory for "tar" at "/", so that it unpacks files
-	// at correct locations.
-	cmd.Dir = "/"
-	return runCmdOrFailWithOut(cmd)
-}
-
-func compressData(ctx context.Context, dst string, paths, ignorePaths []string) error {
-	// Use the "tar" program as it takes care of recursive packing,
-	// preserving ownership, permissions and SELinux attributes.
-	args := append([]string{
-		"--acls",    // save the ACLs to the archive
-		"--create",  // create a new archive
-		"--gzip",    // filter the archive through gzip
-		"--selinux", // save the SELinux context to the archive
-		"--xattrs",  // save the user/root xattrs to the archive
-		"--file",    // write to the file specified in the next argument
-		dst})
-	for _, p := range ignorePaths {
-		// Exclude the specified patterns from archiving.
-		args = append(args, "--exclude", p)
-	}
-	// Specify the input paths to archive.
-	args = append(args, paths...)
-	cmd := testexec.CommandContext(ctx, "/bin/tar", args...)
-	return runCmdOrFailWithOut(cmd)
-}
-
 // NewChallengeAuthCrossVersionLoginConfig creates cross-version login config from challenge auth config and rsa key
 func NewChallengeAuthCrossVersionLoginConfig(authConfig *hwsec.AuthConfig, keyLabel string, rsaKey *rsa.PrivateKey) *CrossVersionLoginConfig {
 	config := &CrossVersionLoginConfig{
@@ -142,30 +93,6 @@ func NewChallengeAuthCrossVersionLoginConfig(authConfig *hwsec.AuthConfig, keyLa
 		RsaKey:     rsaKey,
 	}
 	return config
-}
-
-// CreateCrossVersionLoginData creates the compressed file of data that is used in cross-version login test.
-func CreateCrossVersionLoginData(ctx context.Context, daemonController *hwsec.DaemonController, archivePath string) error {
-	if err := stopHwsecDaemons(ctx, daemonController); err != nil {
-		return err
-	}
-	defer ensureHwsecDaemons(ctx, daemonController)
-
-	paths := []string{
-		"/mnt/stateful_partition/unencrypted/tpm2-simulator/NVChip",
-		"/home/.shadow",
-		"/home/chronos",
-	}
-	// Skip packing the "mount" directories, since the file systems it's
-	// used for don't allow taking snapshots. E.g., ext4 fscrypt complains
-	// "Required key not available" when trying to read encrypted files.
-	ignorePaths := []string{
-		"/home/.shadow/*/mount",
-	}
-	if err := compressData(ctx, archivePath, paths, ignorePaths); err != nil {
-		return errors.Wrap(err, "failed to compress the cryptohome data")
-	}
-	return nil
 }
 
 // removeAllChildren deletes all files and folders from the specified directory.
@@ -184,64 +111,6 @@ func removeAllChildren(dirPath string) error {
 		}
 	}
 	return firstErr
-}
-
-// LoadCrossVersionLoginData loads the data that is used in cross-version login test.
-func LoadCrossVersionLoginData(ctx context.Context, daemonController *hwsec.DaemonController, archivePath string) error {
-	if err := stopHwsecDaemons(ctx, daemonController); err != nil {
-		return err
-	}
-	defer ensureHwsecDaemons(ctx, daemonController)
-
-	// Remove the `/home/.shadow` first to prevent any unexpected file remaining.
-	if err := os.RemoveAll("/home/.shadow"); err != nil {
-		return errors.Wrap(err, "failed to remove old /home/.shadow data")
-	}
-	// Clean up `/home/chronos` as well (note that deleting this directory itself would fail).
-	if err := removeAllChildren("/home/chronos"); err != nil {
-		return errors.Wrap(err, "failed to remove old /home/chronos data")
-	}
-
-	if err := decompressData(ctx, archivePath); err != nil {
-		return errors.Wrap(err, "failed to decompress the cryptohome data")
-	}
-
-	// Run `restorecon` to make sure SELinux attributes are correct after the decompression.
-	if err := testexec.CommandContext(ctx, "restorecon", "-r", "/home/.shadow").Run(); err != nil {
-		return errors.Wrap(err, "failed to restore selinux attributes")
-	}
-	return nil
-}
-
-func stopHwsecDaemons(ctx context.Context, daemonController *hwsec.DaemonController) error {
-	if err := daemonController.TryStop(ctx, hwsec.UIDaemon); err != nil {
-		return errors.Wrap(err, "failed to try to stop UI")
-	}
-	if err := daemonController.TryStopDaemons(ctx, hwsec.HighLevelTPMDaemons); err != nil {
-		return errors.Wrap(err, "failed to try to stop high-level TPM daemons")
-	}
-	if err := daemonController.TryStopDaemons(ctx, hwsec.LowLevelTPMDaemons); err != nil {
-		return errors.Wrap(err, "failed to try to stop low-level TPM daemons")
-	}
-	if err := daemonController.TryStop(ctx, hwsec.TPM2SimulatorDaemon); err != nil {
-		return errors.Wrap(err, "failed to try to stop tpm2-simulator")
-	}
-	return nil
-}
-
-func ensureHwsecDaemons(ctx context.Context, daemonController *hwsec.DaemonController) {
-	if err := daemonController.Ensure(ctx, hwsec.TPM2SimulatorDaemon); err != nil {
-		testing.ContextLog(ctx, "Failed to ensure tpm2-simulator: ", err)
-	}
-	if err := daemonController.EnsureDaemons(ctx, hwsec.LowLevelTPMDaemons); err != nil {
-		testing.ContextLog(ctx, "Failed to ensure low-level TPM daemons: ", err)
-	}
-	if err := daemonController.EnsureDaemons(ctx, hwsec.HighLevelTPMDaemons); err != nil {
-		testing.ContextLog(ctx, "Failed to ensure high-level TPM daemons: ", err)
-	}
-	if err := daemonController.Ensure(ctx, hwsec.UIDaemon); err != nil {
-		testing.ContextLog(ctx, "Failed to ensure UI: ", err)
-	}
 }
 
 func createChallengeResponseData(ctx context.Context, lf LogFunc, cryptohome *hwsec.CryptohomeClient) (*CrossVersionLoginConfig, error) {
@@ -415,7 +284,7 @@ func PrepareCrossVersionLoginData(ctx context.Context, lf LogFunc, cryptohome *h
 	// Note that if the format of either CrossVersionLoginConfigData or CrossVersionLoginConfig is changed,
 	// the hwsec.CrossVersionLogin should be modified and the generated data should be regenerated.
 	// Create compressed data for mocking the login data in this version, which will be used in hwsec.CrossVersionLogin.
-	if err := CreateCrossVersionLoginData(ctx, daemonController, dataPath); err != nil {
+	if err := hwseclocal.SaveLoginData(ctx, daemonController, dataPath, true /*includeTpm*/); err != nil {
 		return errors.Wrap(err, "failed to create cross-version-login data")
 	}
 	// Create JSON file of CrossVersionLoginConfig object in order to record which login method we needed to test in hwsec.CrossVersionLogin.
