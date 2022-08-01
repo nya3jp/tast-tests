@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4466992a_7dbfad1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-01T13:27:32Z",
+      "side": 1,
+      "message": "Go often prefers verbose but simple way.\n\nif name, err :\u003d p.Name(); err !\u003d nil {\n    return errors.Errorf(...)\n} else if info.Name !\u003d name {\n    return errors.New(\"unexpected name; got %s, want %s\", info.Name, name)\n}",
+      "parentUuid": "65624258_c54527c8",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 31
+      },
+      "revId": "6fa386e9ad3ef08e07c65cb5f93a2950a541262f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b05bd6a_c3231805",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
         "patchSetId": 9
