@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fe9ccd6_2cb6da54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1454332
+      },
+      "writtenOn": "2022-08-01T04:52:58Z",
+      "side": 1,
+      "message": "Haven\u0027t actually verified that it works (can\u0027t `repo sync`), and will update the unittest with actual error strings to document the existing behaviour.",
+      "revId": "c2bc11a3806be141b95d852f263388b0a23a6054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
