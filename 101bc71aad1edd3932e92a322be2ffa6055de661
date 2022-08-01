@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a2a4869_2c1b192e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-01T20:39:51Z",
+      "side": 1,
+      "message": "I agree that it is harder to read meta data in chrome_stack_decoder_verification.go as we have so many data files declared and gerrit auto breaks the line.\n\nHowever, I think this is what tast like[1] and it is done in multiple places already e.g. PlatformEncoding. There\u0027s also a discussion about using function in Data field in early 2022[2].\n\n\n[1] https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#test-registration\n[2] https://groups.google.com/a/google.com/g/tast-reviewers/c/Wvsk6L2yikk/m/rPMJnrIjEgAJ?utm_medium\u003demail\u0026utm_source\u003dfooter",
+      "parentUuid": "205ce250_e4df48c3",
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "695c0319_6661c907",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-07-29T20:45:12Z",
       "side": 1,
       "message": "I find it very unfortunate that this is not caps.HWDecodeAV1 anymore, as now the intent is not obvious.",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 72
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "511ec31f_2b74c7aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-01T20:39:51Z",
+      "side": 1,
+      "message": "Then we should change the capability name.",
+      "parentUuid": "695c0319_6661c907",
       "range": {
         "startLine": 41,
         "startChar": 32,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4ccc8ce0_0d73d3b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-01T20:39:51Z",
+      "side": 1,
+      "message": "Total agree. We have so many Data files.",
+      "parentUuid": "66ddc37d_5079a5eb",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "64203953_880c5b80",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification.go",
         "patchSetId": 2
@@ -77,6 +143,30 @@
       "writtenOn": "2022-07-29T20:45:12Z",
       "side": 1,
       "message": "Good.",
+      "range": {
+        "startLine": 303,
+        "startChar": 5,
+        "endLine": 303,
+        "endChar": 56
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bc7ca9a_f8b41b04",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-01T20:39:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64203953_880c5b80",
       "range": {
         "startLine": 303,
         "startChar": 5,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a80422c1_f53b6d80",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-01T20:39:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4bcae07_611a6aae",
+      "range": {
+        "startLine": 347,
+        "startChar": 4,
+        "endLine": 347,
+        "endChar": 58
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ae44c50_3ba26e94",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-07-29T20:45:12Z",
       "side": 1,
       "message": "This is hard to read. No underscores here?",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 341,
+        "endChar": 23
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70321165_3acf47f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-01T20:39:51Z",
+      "side": 1,
+      "message": "This is what the original variable is named. I just moved the location.",
+      "parentUuid": "5ae44c50_3ba26e94",
       "range": {
         "startLine": 341,
         "startChar": 4,
@@ -192,6 +330,30 @@
       "writtenOn": "2022-07-29T20:45:12Z",
       "side": 1,
       "message": "Is it possible to escape these parameters so that they don\u0027t get evaluated?",
+      "range": {
+        "startLine": 561,
+        "startChar": 17,
+        "endLine": 561,
+        "endChar": 29
+      },
+      "revId": "101bc71aad1edd3932e92a322be2ffa6055de661",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ace3c5_d57cbbda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/chrome_stack_decoder_verification_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-01T20:39:51Z",
+      "side": 1,
+      "message": "If we switch to string, then the evaluation is done in later in test file. \nWe lost the type check though. Do you want me to do it?",
+      "parentUuid": "da78584d_e31e33b6",
       "range": {
         "startLine": 561,
         "startChar": 17,
