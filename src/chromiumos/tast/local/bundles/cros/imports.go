@@ -54,6 +54,7 @@ import (
 	_ "chromiumos/tast/local/bundles/cros/hwsec"
 	_ "chromiumos/tast/local/bundles/cros/inputs"
 	_ "chromiumos/tast/local/bundles/cros/instanttether"
+	_ "chromiumos/tast/local/bundles/cros/intel"
 	_ "chromiumos/tast/local/bundles/cros/kerberos"
 	_ "chromiumos/tast/local/bundles/cros/kernel"
 	_ "chromiumos/tast/local/bundles/cros/kiosk"
