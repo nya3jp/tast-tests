@@ -14,4 +14,6 @@
     <string name="title_activity_test_aec">Recording With AEC</string>
     <!--  Title of PlaybackPerformanceActivity [CHAR LIMIT=32] -->
     <string name="title_activity_test_perf_playback">Playback Performance Testing</string>
+    <!--  Title of TestOutputSineActivity [CHAR LIMIT=32] -->
+    <string name="title_activity_test_output_sine">Playback Sine</string>
 </resources>
