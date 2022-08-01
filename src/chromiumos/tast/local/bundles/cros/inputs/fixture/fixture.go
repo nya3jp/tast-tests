@@ -46,6 +46,7 @@ const (
 	TabletVKInGuest                    = "tabletVKInGuest"
 	TabletVKWithAssistAutocorrect      = "tabletVKWithAssistAutocorrect"
 	TabletVKWithMultipasteSuggestion   = "tabletVKWithMultipasteSuggestion"
+	TabletVKWithMultitouch             = "tabletVKWithMultitouch"
 	// Lacros fixtures.
 	LacrosAnyVK                              = "lacrosAnyVK"
 	LacrosAnyVKInGuest                       = "lacrosAnyVKInGuest"
@@ -59,6 +60,7 @@ const (
 	LacrosTabletVKInGuest                    = "lacrosTabletVKInGuest"
 	LacrosTabletVKWithAssistAutocorrect      = "lacrosTabletVKWithAssistAutocorrect"
 	LacrosTabletVKWithMultipasteSuggestion   = "lacrosTabletVKWithMultipasteSuggestion"
+	LacrosTabletVKWithMultitouch             = "lacrosTabletVKWithMultitouch"
 )
 
 func init() {
@@ -272,6 +274,20 @@ func init() {
 		ResetTimeout:    resetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
 	})
+	testing.AddFixture(&testing.Fixture{
+		Name: TabletVKWithMultitouch,
+		Desc: "Tablet mode with VK and multitouch enabled",
+		Contacts: []string{
+			"michellegc@google.com",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(tabletMode, true, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=VirtualKeyboardMultitouch")),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
 
 	//--------------Lacros Fixtures--------------------------------------------
 	testing.AddFixture(&testing.Fixture{
@@ -448,6 +464,20 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, chrome.GuestLogin()),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosTabletVKWithMultitouch,
+		Desc: "Lacros variant: tablet mode with VK and multitouch enabled",
+		Contacts: []string{
+			"michellegc@google.com",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(tabletMode, true, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=VirtualKeyboardMultitouch")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
