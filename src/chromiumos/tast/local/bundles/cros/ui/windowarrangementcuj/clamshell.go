@@ -26,13 +26,13 @@ import (
 	"chromiumos/tast/testing"
 )
 
-// multiresize summons a multiresizer and drags it like Drag, but with all
+// multiresize summons a multiresizer and drags it like drag, but with all
 // drag points adjusted for the location of the multiresizer.
-func multiresize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, dragPoints DragPoints, duration time.Duration) error {
+func multiresize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context, pc pointer.Context, points dragPoints, duration time.Duration) error {
 	if err := action.Combine(
 		"hover mouse where windows meet",
-		mouse.Move(tconn, dragPoints[0].Sub(coords.NewPoint(10, 10)), 0),
-		mouse.Move(tconn, dragPoints[0], duration),
+		mouse.Move(tconn, points[0].Sub(coords.NewPoint(10, 10)), 0),
+		mouse.Move(tconn, points[0], duration),
 	)(ctx); err != nil {
 		return errors.Wrap(err, "failed to summon multiresizer")
 	}
@@ -42,13 +42,13 @@ func multiresize(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context
 		return errors.Wrap(err, "failed to get the multiresizer location")
 	}
 
-	offset := multiresizerBounds.CenterPoint().Sub(dragPoints[0])
-	var multiresizeDragPoints DragPoints
-	for i, p := range dragPoints {
+	offset := multiresizerBounds.CenterPoint().Sub(points[0])
+	var multiresizeDragPoints dragPoints
+	for i, p := range points {
 		multiresizeDragPoints[i] = p.Add(offset)
 	}
 
-	if err := Drag(ctx, tconn, pc, multiresizeDragPoints, duration); err != nil {
+	if err := drag(ctx, tconn, pc, multiresizeDragPoints, duration); err != nil {
 		return errors.Wrap(err, "failed to drag multiresizer")
 	}
 
@@ -90,7 +90,7 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 		return errors.Wrap(err, "failed to get the primary display info")
 	}
 
-	splitViewDragPoints := DragPoints{
+	splitViewDragPoints := dragPoints{
 		info.WorkArea.CenterPoint(),
 		coords.NewPoint(info.WorkArea.Left+info.WorkArea.Width/4, info.WorkArea.CenterY()),
 		coords.NewPoint(info.WorkArea.Left+info.WorkArea.Width-1, info.WorkArea.CenterY()),
@@ -247,7 +247,7 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	}
 	// Drag divider.
 	testing.ContextLog(ctx, "Dragging the divider between a snapped browser window and an overview window")
-	if err := Drag(ctx, tconn, pc, splitViewDragPoints, duration); err != nil {
+	if err := drag(ctx, tconn, pc, splitViewDragPoints, duration); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 	// Drag the second window to another desk to obtain an empty overview grid.
@@ -272,7 +272,7 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	}
 	// Drag divider.
 	testing.ContextLog(ctx, "Dragging the divider between a snapped browser window and an empty overview grid")
-	if err := Drag(ctx, tconn, pc, splitViewDragPoints, duration); err != nil {
+	if err := drag(ctx, tconn, pc, splitViewDragPoints, duration); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 
@@ -342,7 +342,7 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	}
 	// Drag divider.
 	testing.ContextLog(ctx, "Dragging the divider between a snapped ARC window and an overview window")
-	if err := Drag(ctx, tconn, pc, splitViewDragPoints, duration); err != nil {
+	if err := drag(ctx, tconn, pc, splitViewDragPoints, duration); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 	// Drag the remaining browser window to another desk to obtain an empty overview grid.
@@ -360,7 +360,7 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	}
 	// Drag divider.
 	testing.ContextLog(ctx, "Dragging the divider between a snapped ARC window and an empty overview grid")
-	if err := Drag(ctx, tconn, pc, splitViewDragPoints, duration); err != nil {
+	if err := drag(ctx, tconn, pc, splitViewDragPoints, duration); err != nil {
 		return errors.Wrap(err, dividerDragError)
 	}
 

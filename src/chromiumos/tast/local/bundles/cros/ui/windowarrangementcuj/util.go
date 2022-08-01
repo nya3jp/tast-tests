@@ -86,9 +86,9 @@ type Connections struct {
 	WithTestVideo arc.ActivityStartOption
 }
 
-// DragPoints holds three points, to signify a drag from the first point
+// dragPoints holds three points, to signify a drag from the first point
 // to the second point, then the third point, and back to the first point.
-type DragPoints [3]coords.Point
+type dragPoints [3]coords.Point
 
 // SetupChrome creates ash-chrome or lacros-chrome based on test parameters.
 func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections, error) {
@@ -219,11 +219,12 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 
 // cleanUp is used to execute a given cleanup action and report
 // the resulting error if it is not nil. The intended usage is:
-// func Example(ctx, closeCtx context.Context) (retErr error) {
-//   ...
-//   defer cleanUp(closeCtx, action.Named("description of cleanup action", cleanup), &retErr)
-//   ...
-// }
+//
+//	func Example(ctx, closeCtx context.Context) (retErr error) {
+//	  ...
+//	  defer cleanUp(closeCtx, action.Named("description of cleanup action", cleanup), &retErr)
+//	  ...
+//	}
 func cleanUp(ctx context.Context, cleanup action.Action, retErr *error) {
 	if err := cleanup(ctx); err != nil {
 		if *retErr == nil {
@@ -277,8 +278,8 @@ func combineTabs(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context
 	return nil
 }
 
-// Drag does the specified drag based on the documentation of DragPoints.
-func Drag(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, p DragPoints, duration time.Duration) error {
+// drag does the specified drag based on the documentation of dragPoints.
+func drag(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, p dragPoints, duration time.Duration) error {
 	initialBoundsMap := make(map[int]coords.Rect)
 	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
 		initialBoundsMap[w.ID] = w.BoundsInRoot
