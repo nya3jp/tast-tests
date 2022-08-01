@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f14c4676_a3750ec4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-01T23:19:29Z",
+      "side": 1,
+      "message": "LGTM % nit\n\nAlso you might want to consider adding test cases for the other theme styles, if it makes sense, in the following format:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#table_driven-tests",
+      "revId": "0abcf50f6ab2a260c111ccb839dcd02305a8d087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7304fdd7_c3e2e63e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-01T23:19:29Z",
+      "side": 1,
+      "message": "nitL: Capitalize the error message string",
+      "revId": "0abcf50f6ab2a260c111ccb839dcd02305a8d087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5ac3b3_97e3f0c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-01T23:19:29Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "0abcf50f6ab2a260c111ccb839dcd02305a8d087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
