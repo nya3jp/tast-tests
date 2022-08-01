@@ -28,16 +28,13 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
+		Fixture:      "diagnosticsPrep",
 	})
 }
 
 // RoutineSection verifies routine section functionality.
 func RoutineSection(ctx context.Context, s *testing.State) {
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("DiagnosticsApp"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(ctx) // Close our own chrome instance
+	cr := s.FixtValue().(*chrome.Chrome)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
