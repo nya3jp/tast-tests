@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/ui/imageeditingcuj"
+	"chromiumos/tast/local/bundles/cros/spera/imageeditingcuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -27,12 +27,12 @@ func init() {
 		Func:         EDUImageEditingCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of editing photos on the web",
-		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com"},
+		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Data:         []string{testImage},
 		Vars: []string{
-			"ui.cuj_mode", // Optional. Expecting "tablet" or "clamshell".
+			"spera.cuj_mode", // Optional. Expecting "tablet" or "clamshell".
 		},
 		Params: []testing.Param{
 			{
@@ -66,7 +66,7 @@ func EDUImageEditingCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	var tabletMode bool
-	if mode, ok := s.Var("ui.cuj_mode"); ok {
+	if mode, ok := s.Var("spera.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
 		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 		if err != nil {
