@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "312d51fa_7e1bac76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/khanacademy_kids.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-01T16:48:31Z",
+      "side": 1,
+      "message": "Sleeps are generally discouraged, couldn\u0027t this be replaced with a `WaitUntilExists` on the Sign In block?",
+      "revId": "b29394b410cbd2c48a69825a426b93a61d4ef15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aa18c05_0c6db943",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/khanacademy_kids.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-01T16:48:31Z",
+      "side": 1,
+      "message": "Wasn\u0027t the selector already defined above?",
+      "revId": "b29394b410cbd2c48a69825a426b93a61d4ef15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89803742_f22e91d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/khanacademy_kids.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-01T16:48:31Z",
+      "side": 1,
+      "message": "nit: pull out this functionality into a `clickUntilFocused(...)` function since you\u0027re using it multiple times?",
+      "revId": "b29394b410cbd2c48a69825a426b93a61d4ef15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
