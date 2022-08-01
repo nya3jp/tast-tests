@@ -11,9 +11,9 @@ import android.util.Log;
 public class SamplePlayerThread extends Thread {
 
     long mDurationMillis;
-    private SamplePlayerBytes mPlayer;
+    private SamplePlayerBase mPlayer;
 
-    SamplePlayerThread(SamplePlayerBytes player, long duration_millis) {
+    SamplePlayerThread(SamplePlayerBase player, long duration_millis) {
         this.mDurationMillis = duration_millis;
         this.mPlayer = player;
     }
