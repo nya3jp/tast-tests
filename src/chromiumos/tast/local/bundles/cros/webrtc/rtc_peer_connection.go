@@ -115,7 +115,7 @@ func init() {
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWDecoderUsed, profile: "VP9", svc: "L3T3_KEY"},
 			ExtraSoftwareDeps: []string{caps.HWDecodeVP9},
 			ExtraHardwareDeps: hwdep.D(hwdep.SupportsVP9KSVCHWDecoding()),
-			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabledAndHWVP9SVCDecoding",
+			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
 		}, {
 			Name:              "h264_enc",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "H264"},
@@ -163,14 +163,14 @@ func init() {
 			Name:              "vp8_enc_svc_l1t2",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8", svc: "L1T2"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabledWithHWVp8TemporalLayerEncoding",
+			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
 		}, {
 			// This is an encoding test of 3 temporal layers test, via the (experimental) API.
 			// See https://www.w3.org/TR/webrtc-svc/#scalabilitymodes for SVC identifiers.
 			Name:              "vp8_enc_svc_l1t3",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP8", svc: "L1T3"},
 			ExtraSoftwareDeps: []string{caps.HWEncodeVP8},
-			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabledWithHWVp8TemporalLayerEncoding",
+			Fixture:           "chromeVideoWithFakeWebcamAndSVCEnabled",
 		}, {
 			Name:              "vp9_enc",
 			Val:               rtcTest{verifyMode: peerconnection.VerifyHWEncoderUsed, profile: "VP9"},
