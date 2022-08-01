@@ -16,6 +16,40 @@
       "message": "Thanks Yu-Hsuan, +1 to the idea of promoting the tests to a subset of the targets known to be stable first, then iterate over to expand them.",
       "revId": "27a2d95950a17d31ca9e4ff6c3e9217e22bb5826",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cbfbf77_c0470df4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-01T13:30:26Z",
+      "side": 1,
+      "message": "(oops sorry, misoperated)",
+      "revId": "27a2d95950a17d31ca9e4ff6c3e9217e22bb5826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6757a38f_d44b42bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-01T13:30:26Z",
+      "side": 1,
+      "message": "could you keep unstable variations?",
+      "revId": "27a2d95950a17d31ca9e4ff6c3e9217e22bb5826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
