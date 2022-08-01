@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53b26dc8_a828f78f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-01T15:53:03Z",
+      "side": 1,
+      "message": "nit: The CL title is a bit misleading as it only tests the failure of the removal.",
+      "revId": "91f78f6bda31617797593644bfb372695a0346cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5cb0644_eacdfb8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-01T15:53:03Z",
+      "side": 1,
+      "message": "nit: Add \" after removal attempt\", to make the message different from above. Also if it fails some day, this will act as a quick hint towards which exactly kind of assertion failed.",
+      "range": {
+        "startLine": 155,
+        "startChar": 11,
+        "endLine": 155,
+        "endChar": 47
+      },
+      "revId": "91f78f6bda31617797593644bfb372695a0346cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
