@@ -13,6 +13,7 @@ import (
 
 	"chromiumos/tast/common/hwsec"
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/cryptohome"
 	hwseclocal "chromiumos/tast/local/hwsec"
 	"chromiumos/tast/testing"
@@ -32,11 +33,12 @@ func init() {
 
 func UserSecretStash(ctx context.Context, s *testing.State) {
 	const (
-		userName        = "foo@bar.baz"
-		userPassword    = "secret"
-		passwordLabel   = "online-password"
-		testFile        = "file"
-		testFileContent = "content"
+		userName                          = "foo@bar.baz"
+		userPassword                      = "secret"
+		passwordLabel                     = "online-password"
+		testFile                          = "file"
+		testFileContent                   = "content"
+		cryptohomeRemoveCredentialsFailed = 54
 	)
 
 	ctxForCleanUp := ctx
@@ -101,27 +103,55 @@ func UserSecretStash(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create persistent user: ", err)
 	}
 
+	authenticateWithPassword := func() error {
+		// Authenticate a new auth session via the auth factor and mount the user.
+		authSessionID, err = client.StartAuthSession(ctx, userName, false /*ephemeral*/)
+		if err != nil {
+			return errors.Wrap(err, "failed to start auth session for re-mounting")
+		}
+		if err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
+			return errors.Wrap(err, "failed to authenticate with auth session")
+		}
+		if err := client.PreparePersistentVault(ctx, authSessionID, false /*ephemeral*/); err != nil {
+			return errors.Wrap(err, "failed to prepare persistent vault")
+		}
+
+		// Verify that the test file is still there.
+		if content, err := ioutil.ReadFile(filePath); err != nil {
+			return errors.Wrap(err, "failed to read back test file")
+		} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
+			return errors.Errorf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
+		}
+		return nil
+	}
+
 	// Unmount the user.
 	if err := client.UnmountAll(ctx); err != nil {
 		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
 	}
 
-	// Authenticate a new auth session via the auth factor and mount the user.
-	authSessionID, err = client.StartAuthSession(ctx, userName /*ephemeral=*/, false)
-	if err != nil {
-		s.Fatal("Failed to start auth session for re-mounting: ", err)
-	}
-	if err := client.AuthenticateAuthFactor(ctx, authSessionID, passwordLabel, userPassword); err != nil {
-		s.Fatal("Failed to authenticate with auth session: ", err)
-	}
-	if err := client.PreparePersistentVault(ctx, authSessionID /*ecryptfs=*/, false); err != nil {
-		s.Fatal("Failed to prepare persistent vault: ", err)
+	// Successfully authenticate with password.
+	if err := authenticateWithPassword(); err != nil {
+		s.Fatal("Failed to authenticate with password: ", err)
 	}
 
-	// Verify that the test file is still there.
-	if content, err := ioutil.ReadFile(filePath); err != nil {
-		s.Fatal("Failed to read back test file: ", err)
-	} else if bytes.Compare(content, []byte(testFileContent)) != 0 {
-		s.Fatalf("Incorrect tests file content. got: %q, want: %q", content, testFileContent)
+	// Try to remove the (only) password auth factor, which hould fail.
+	err = client.RemoveAuthFactor(ctx, authSessionID, passwordLabel)
+	var exitErr *hwsec.CmdExitError
+	if !errors.As(err, &exitErr) {
+		s.Fatalf("Unexpected error for auth factor removal: got %q; want *hwsec.CmdExitError", err)
+	}
+	if exitErr.ExitCode != cryptohomeRemoveCredentialsFailed {
+		s.Fatalf("Unexpected exit code for auth factor removal: got %d; want %d", exitErr.ExitCode, cryptohomeRemoveCredentialsFailed)
+	}
+
+	// Unmount the user.
+	if err := client.UnmountAll(ctx); err != nil {
+		s.Fatal("Failed to unmount vaults for re-mounting: ", err)
+	}
+
+	// Successfully authenticate with password.
+	if err := authenticateWithPassword(); err != nil {
+		s.Fatal("Failed to authenticate with password after removal attempt: ", err)
 	}
 }
