@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/edu3dmodelingcuj/tinkercad"
+	"chromiumos/tast/local/bundles/cros/spera/edu3dmodelingcuj/tinkercad"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
