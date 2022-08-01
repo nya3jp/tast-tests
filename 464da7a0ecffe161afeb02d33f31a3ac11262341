@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db3f06c5_e8fb531b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-01T23:38:24Z",
+      "side": 1,
+      "message": "nit: Tast tests don\u0027t need a comment for the main function, since there\u0027s already a description in the `init()` statement",
+      "revId": "464da7a0ecffe161afeb02d33f31a3ac11262341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78230e74_76eb83c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-01T23:38:24Z",
+      "side": 1,
+      "message": "nit: Go comments need to be full sentences with periods at the end:\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#comment-sentences",
+      "revId": "464da7a0ecffe161afeb02d33f31a3ac11262341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fb6852b_ca51dc82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-01T23:38:24Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "464da7a0ecffe161afeb02d33f31a3ac11262341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
