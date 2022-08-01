@@ -1,0 +1,27 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.spera;
+
+option go_package = "chromiumos/tast/services/cros/spera";
+
+import "google/protobuf/empty.proto";
+
+// ConferenceService2 provides RPC methods to run conference-related operations
+// TODO: There can't be duplicate service names, so temporarily add a number.
+// The number will be deleted after deleting the old service.
+service ConferenceService2 {
+  rpc RunGoogleMeetScenario(MeetScenarioRequest) returns (google.protobuf.Empty);
+  rpc RunZoomScenario(MeetScenarioRequest) returns (google.protobuf.Empty);
+}
+
+message MeetScenarioRequest {
+  string tier = 1;
+  int64 room_size = 2;
+  bool extended_display = 3;
+  string camera_video_path = 4;
+  bool isLacros = 5;
+}
