@@ -29,15 +29,16 @@ func init() {
 		Attr:         []string{"group:cuj"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{cujrecorder.SystemTraceConfigFile},
-		Timeout:      2 * time.Hour,
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
+			Timeout: 15 * time.Minute,
 		}, {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           "loggedInToCUJUserLacros",
+			Timeout:           20 * time.Minute,
 		}},
 	})
 }
