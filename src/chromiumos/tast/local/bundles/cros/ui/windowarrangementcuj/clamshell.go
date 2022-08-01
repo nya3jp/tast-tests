@@ -101,18 +101,8 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	upperLeftPt := coords.NewPoint(bounds.Left, bounds.Top)
 	middlePt := coords.NewPoint(bounds.Left+bounds.Width/2, bounds.Top+bounds.Height/2)
 	testing.ContextLog(ctx, "Resizing the browser window")
-	if err := pc.Drag(upperLeftPt, pc.DragTo(middlePt, duration))(ctx); err != nil {
-		return errors.Wrap(err, "failed to resize browser window from the upper left to the middle")
-	}
-
-	browserWin, err = ash.GetWindow(ctx, tconn, browserWinID)
-	if err != nil {
-		return errors.Wrap(err, "failed to get browser window info")
-	}
-	bounds = browserWin.BoundsInRoot
-	newUpperLeftPt := coords.NewPoint(bounds.Left, bounds.Top)
-	if err := pc.Drag(newUpperLeftPt, pc.DragTo(upperLeftPt, duration))(ctx); err != nil {
-		return errors.Wrap(err, "failed to resize browser window back from the middle")
+	if err := dragAndRestore(ctx, tconn, pc, duration, upperLeftPt, middlePt); err != nil {
+		return errors.Wrap(err, "failed to resize browser window from the upper left to the middle and back")
 	}
 
 	// Drag window.
@@ -123,11 +113,8 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	}
 	tabStripGapPt := coords.NewPoint(newTabButtonRect.Right()+10, newTabButtonRect.Top)
 	testing.ContextLog(ctx, "Dragging the browser window")
-	if err := pc.Drag(tabStripGapPt, pc.DragTo(middlePt, duration))(ctx); err != nil {
-		return errors.Wrap(err, "failed to drag browser window from the tab strip point to the middle")
-	}
-	if err := pc.Drag(middlePt, pc.DragTo(tabStripGapPt, duration))(ctx); err != nil {
-		return errors.Wrap(err, "failed to drag browser window back from the middle")
+	if err := dragAndRestore(ctx, tconn, pc, duration, tabStripGapPt, middlePt); err != nil {
+		return errors.Wrap(err, "failed to drag browser window from the tab strip point to the middle and back")
 	}
 
 	// Maximize window and then minimize and restore it.
