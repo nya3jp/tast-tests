@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b86cd5e_ee2e1b0a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-01T00:18:07Z",
+      "side": 1,
+      "message": "This could almost be moved into the httpserver package such that if the server is configured to do ServeTLS, this CA setup would also happen.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d27d939_b3a8c63b",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
         "patchSetId": 11
