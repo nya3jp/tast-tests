@@ -2,14 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/ui/videoeditingcuj"
+	"chromiumos/tast/local/bundles/cros/spera/videoeditingcuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -19,7 +19,6 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		// TODO (b/242590511): Deprecated after moving all performance cuj test cases to chromiumos/tast/local/bundles/cros/spera directory.
 		Func:         EDUVideoEditingCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of editing video on the web",
@@ -27,7 +26,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{
 			// Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
-			"ui.cuj_mode",
+			"spera.cuj_mode",
 		},
 		Params: []testing.Param{
 			{
@@ -60,7 +59,7 @@ func EDUVideoEditingCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	var tabletMode bool
-	if mode, ok := s.Var("ui.cuj_mode"); ok {
+	if mode, ok := s.Var("spera.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
 		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 		if err != nil {
