@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f62d3f5_09479790",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-01T22:09:33Z",
+      "side": 1,
+      "message": "I don\u0027t see where other struct types are passed as value, it should all be pass and return by reference (or array pointer) for structs. Perhaps you were looking at the custom string/int types, which are fine by value.",
+      "parentUuid": "5df7b794_746baa6a",
+      "revId": "32d0224eac6afd102c556209e67bc93e450c9e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cef45ef_adf09631",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32ec0b15_78438daa",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_audio.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-01T22:09:33Z",
+      "side": 1,
+      "message": "As noted in the comment of the function, this is a typo within Chameleon. It is kept here to remain consistent with the API.",
+      "parentUuid": "3cef45ef_adf09631",
+      "revId": "32d0224eac6afd102c556209e67bc93e450c9e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dae27cde_209728e6",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-08-01T19:42:02Z",
       "side": 1,
       "message": "Typo?",
+      "revId": "32d0224eac6afd102c556209e67bc93e450c9e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd91ec3_e85436ee",
+        "filename": "src/chromiumos/tast/common/chameleon/devices/common/bluetooth/peripheral_audio.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-01T22:09:33Z",
+      "side": 1,
+      "message": "See comment.",
+      "parentUuid": "dae27cde_209728e6",
       "revId": "32d0224eac6afd102c556209e67bc93e450c9e39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
