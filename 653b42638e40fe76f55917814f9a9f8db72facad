@@ -33,6 +33,29 @@
       "message": "Thanks!",
       "revId": "653b42638e40fe76f55917814f9a9f8db72facad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd265c9d_ddcecd74",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-08-01T08:17:10Z",
+      "side": 1,
+      "message": "Please add a short comment. How about:\n// Skip the test when ARCVM virtio-blk /data is enabled. ARC\u0027s /data directory is encapsulated in a disk image when it is enabled.",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 73
+      },
+      "revId": "653b42638e40fe76f55917814f9a9f8db72facad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
