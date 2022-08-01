@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-//go:generate protoc -I . --go_out=plugins=grpc:../../../../.. conference_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. screenlock_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. check_power_menu_service.proto
 //go:generate protoc -I . --go_out=plugins=grpc:../../../../.. check_virtual_keyboard_service.proto
