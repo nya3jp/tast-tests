@@ -1,8 +1,8 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
@@ -11,9 +11,9 @@ import (
 
 	"chromiumos/tast/common/media/caps"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/remote/bundles/cros/ui/conference"
+	"chromiumos/tast/remote/bundles/cros/spera/conference"
 	"chromiumos/tast/rpc"
-	pb "chromiumos/tast/services/cros/ui"
+	pb "chromiumos/tast/services/cros/spera"
 	"chromiumos/tast/testing"
 )
 
@@ -25,10 +25,10 @@ func init() {
 		Contacts:     []string{"jane.yang@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome", caps.BuiltinOrVividCamera},
 		ServiceDeps: []string{
-			"tast.cros.ui.ConferenceService",
+			"tast.cros.spera.ConferenceService2",
 		},
 		Data: []string{conference.CameraVideo},
-		Vars: []string{"ui.use_real_camera"},
+		Vars: []string{"spera.use_real_camera"},
 		Params: []testing.Param{
 			{
 				Name:    "basic_two",
@@ -163,10 +163,10 @@ func ZoomConfCUJ(ctx context.Context, s *testing.State) {
 	defer c.Close(cleanupCtx)
 	var remoteCameraVideoPath string
 	var useRealCamera bool // Default is false.
-	if val, ok := s.Var("ui.use_real_camera"); ok {
+	if val, ok := s.Var("spera.use_real_camera"); ok {
 		useRealCamera, err = strconv.ParseBool(val)
 		if err != nil {
-			s.Fatal("Unable to convert ui.use_real_camera var to bool: ", err)
+			s.Fatal("Unable to convert spera.use_real_camera var to bool: ", err)
 		}
 	}
 	// Use fake camera by default.
@@ -178,7 +178,7 @@ func ZoomConfCUJ(ctx context.Context, s *testing.State) {
 		defer dut.Conn().CommandContext(ctx, "rm", remoteCameraVideoPath).Run()
 	}
 
-	client := pb.NewConferenceServiceClient(c.Conn)
+	client := pb.NewConferenceService2Client(c.Conn)
 	if _, err := client.RunZoomScenario(ctx, &pb.MeetScenarioRequest{
 		Tier:            param.Tier,
 		RoomSize:        int64(param.Size),

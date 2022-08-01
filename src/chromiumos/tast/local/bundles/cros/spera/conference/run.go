@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -40,6 +40,7 @@ func Run(ctx context.Context, cr *chrome.Chrome, conf Conference, prepare Prepar
 		return err
 	}
 	defer cleanup(cleanUpCtx)
+
 	// Dump the UI tree to the service/faillog subdirectory.
 	// Don't dump directly into outDir
 	// because it might be overridden by the test faillog after pulled back to remote server.
