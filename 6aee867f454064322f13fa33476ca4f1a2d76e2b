@@ -22,6 +22,23 @@
       },
       "revId": "6aee867f454064322f13fa33476ca4f1a2d76e2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4a48a55_c00ecb38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-01T13:11:36Z",
+      "side": 1,
+      "message": "this drops the test run from VM etc. so make it difficult to stabilized?\nHow about adding parameterized test for unstable ones?",
+      "revId": "6aee867f454064322f13fa33476ca4f1a2d76e2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
