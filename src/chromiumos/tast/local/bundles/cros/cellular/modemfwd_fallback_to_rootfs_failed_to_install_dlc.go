@@ -34,6 +34,8 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.SkipOnPlatform(
 			// List of existing cellular boards in which we never want to run this test.
 			"coral", "dedede", "drallion", "hatch", "nautilus", "octopus", "sarien", "zork",
+			// Disable on brya until b/231903139 is fixed.
+			"brya",
 			// List of boards which have their FW in DLCs, but no longer have them in the rootfs.
 			// When the FWs are removed from the rootfs, add that board to the list to skip this test.
 			// "guybrush"
