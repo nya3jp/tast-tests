@@ -22,6 +22,30 @@
       },
       "revId": "5cc1a91bc027338ee23b88195b741fc883cae976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a1ebe3_50645ab2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1541210
+      },
+      "writtenOn": "2022-08-01T08:46:19Z",
+      "side": 1,
+      "message": "Sounds good, thanks!",
+      "parentUuid": "d424c80e_c174185f",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "5cc1a91bc027338ee23b88195b741fc883cae976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
