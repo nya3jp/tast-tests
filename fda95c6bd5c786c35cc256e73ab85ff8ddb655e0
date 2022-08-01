@@ -45,6 +45,54 @@
       },
       "revId": "fda95c6bd5c786c35cc256e73ab85ff8ddb655e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c84e2fb_7e49d1cf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/content_selection_and_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-01T12:05:10Z",
+      "side": 1,
+      "message": "Done, adding pin, unpin, select and launch single/multi-files tests into `holdingspace.Download`.",
+      "parentUuid": "33b32682_cb53ae3a",
+      "range": {
+        "startLine": 51,
+        "startChar": 38,
+        "endLine": 51,
+        "endChar": 76
+      },
+      "revId": "fda95c6bd5c786c35cc256e73ab85ff8ddb655e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf47a744_702130d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/content_selection_and_launch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-01T12:05:10Z",
+      "side": 1,
+      "message": "Done, modified the `holdingspace.Download` to make it support pin/unpin of multiple files.",
+      "parentUuid": "e5153c16_d53d387a",
+      "range": {
+        "startLine": 51,
+        "startChar": 26,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "fda95c6bd5c786c35cc256e73ab85ff8ddb655e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
