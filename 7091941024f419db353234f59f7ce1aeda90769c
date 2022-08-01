@@ -16,6 +16,29 @@
       "message": "+andrewxu for test owner\u0027s review\n+hidehiko for lacros tast owner\u0027s review",
       "revId": "7091941024f419db353234f59f7ce1aeda90769c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "169a55a7_f0f5766f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/verify_shelf_alignment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-01T13:02:25Z",
+      "side": 1,
+      "message": "nit/style: let\u0027s avoid using getter prefix. \"underRTL\".\nOr rather, could you introduce an enum-like type, so that it\u0027d be slightly more readable than true/false.",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "7091941024f419db353234f59f7ce1aeda90769c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
