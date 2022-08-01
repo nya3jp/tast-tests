@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
@@ -32,6 +33,16 @@ var (
 	videoPlayer = nodewith.NameStartingWith("YouTube Video Player").Role(role.GenericContainer)
 	video       = nodewith.Role(role.Video).Ancestor(videoPlayer)
 	videoButton = nodewith.Role(role.Button).Ancestor(videoPlayer).NameRegex(regexp.MustCompile("^(Pause|Play).*"))
+)
+
+// CastAction indicates the cast state.
+type CastAction uint8
+
+const (
+	// CastStart starts casting the display.
+	CastStart CastAction = iota
+	// CastStop stops casting the display.
+	CastStop
 )
 
 // YtWeb defines the struct related to youtube web.
@@ -124,8 +135,23 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		return errors.Wrap(err, "failed to click 'Skip Ad' button")
 	}
 
-	switchQuality := func(resolution string) error {
-		testing.ContextLog(ctx, "Switch audio quality to ", resolution)
+	if err := y.SwitchQuality(y.video.Quality)(ctx); err != nil {
+		return errors.Wrapf(err, "failed to switch resolution to %s", y.video.Quality)
+	}
+
+	y.ytWinID, err = getWindowID(ctx, y.tconn)
+	if err != nil {
+		return errors.Wrap(err, "failed to get window ID")
+	}
+
+	// Ensure the video is playing.
+	return uiauto.IfFailThen(y.IsPlaying(), y.Play())(ctx)
+}
+
+// SwitchQuality switches youtube quality.
+func (y *YtWeb) SwitchQuality(resolution string) uiauto.Action {
+	return func(ctx context.Context) error {
+		testing.ContextLog(ctx, "Switch video quality to ", resolution)
 		settings := nodewith.Name("Settings").Role(role.PopUpButton).Ancestor(videoPlayer)
 		quality := nodewith.NameStartingWith("Quality").Role(role.MenuItem).Ancestor(videoPlayer)
 
@@ -177,18 +203,6 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		// Keep the video playing anyway when switch the quality is finished.
 		return uiauto.IfFailThen(y.IsPlaying(), y.Play())(ctx)
 	}
-
-	if err := switchQuality(y.video.Quality); err != nil {
-		return errors.Wrapf(err, "failed to switch resolution to %s", y.video.Quality)
-	}
-
-	y.ytWinID, err = getWindowID(ctx, y.tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to get window ID")
-	}
-
-	// Ensure the video is playing.
-	return uiauto.IfFailThen(y.IsPlaying(), y.Play())(ctx)
 }
 
 // EnterFullscreen switches youtube video to fullscreen.
@@ -325,6 +339,50 @@ func (y *YtWeb) Play() uiauto.Action {
 func (y *YtWeb) Pause() uiauto.Action {
 	return uiauto.IfSuccessThen(y.IsPlaying(), uiauto.NamedCombine("pause video",
 		y.ui.WithTimeout(longUITimeout).RetryUntil(y.kb.TypeAction("k"), y.IsPaused())))
+}
+
+// Cast casts YouTube video to a specified screen connected to ADT-3.
+func (y *YtWeb) Cast(action CastAction, castAccessCode string) uiauto.Action {
+	accessCodeTextField := nodewith.Name("Type the access code to start casting").Role(role.TextField).Editable()
+	incorrectPasswordText := nodewith.Name("You've entered an incorrect access code. Try again.").Role(role.StaticText)
+
+	enterCastCode := uiauto.NamedCombine("enter the access code",
+		y.kb.TypeAction(castAccessCode),
+		y.kb.AccelAction("Enter"),
+	)
+
+	if action == CastStart {
+		return uiauto.NamedCombine("start casting the video",
+			quicksettings.StartCast(y.tconn),
+			y.ui.WaitUntilExists(accessCodeTextField),
+			enterCastCode,
+			uiauto.IfSuccessThen(y.ui.WithTimeout(shortUITimeout).WaitUntilExists(incorrectPasswordText),
+				uiauto.Combine("input access code again",
+					y.kb.AccelAction("Ctrl+A"),
+					y.kb.AccelAction("Backspace"),
+					enterCastCode,
+				),
+			),
+			uiauto.Sleep(5*time.Second), // Give the video some time to play on the cast screen.
+		)
+	}
+
+	return uiauto.NamedAction("stop casting the video", quicksettings.StopCast(y.tconn))
+}
+
+// ResetCastStauts resets the cast settings if the YouTube video is already casting.
+func (y *YtWeb) ResetCastStauts() uiauto.Action {
+	youtubeWindow := nodewith.NameContaining("YouTube").Role(role.Window).HasClass("Widget")
+	customizeChromeButton := nodewith.Name("Chrome").Role(role.PopUpButton).Ancestor(youtubeWindow)
+	subMenu := nodewith.Role(role.Menu).HasClass("SubmenuView")
+	castOption := nodewith.Name("Cast…").Role(role.MenuItem).Ancestor(subMenu)
+	castDialog := nodewith.NameStartingWith("Cast").Role(role.AlertDialog).Ancestor(youtubeWindow)
+	availableButton := nodewith.NameContaining("Available").Role(role.Button).Ancestor(castDialog).First()
+	return uiauto.NamedCombine("reset to available",
+		y.uiHdl.Click(customizeChromeButton),
+		y.uiHdl.Click(castOption),
+		uiauto.IfSuccessThen(y.ui.WithTimeout(shortUITimeout).WaitUntilExists(availableButton), y.uiHdl.Click(availableButton)),
+	)
 }
 
 const (
