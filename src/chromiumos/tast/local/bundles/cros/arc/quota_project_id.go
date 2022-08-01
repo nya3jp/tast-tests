@@ -12,6 +12,7 @@ import (
 	"strings"
 	"syscall"
 
+	"chromiumos/tast/common/android/adb"
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/cryptohome"
@@ -65,7 +66,7 @@ func QuotaProjectID(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Installing " + apkName)
-	if err := a.Install(ctx, arc.APKPath(apkName)); err != nil {
+	if err := a.Install(ctx, arc.APKPath(apkName), adb.InstallOptionGrantPermissions); err != nil {
 		s.Fatal("Failed to install the APK: ", err)
 	}
 
