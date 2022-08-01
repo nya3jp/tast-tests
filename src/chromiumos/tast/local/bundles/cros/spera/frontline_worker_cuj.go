@@ -1,19 +1,18 @@
-// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/ui/frontlineworkercuj"
+	"chromiumos/tast/local/bundles/cros/spera/frontlineworkercuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -31,18 +30,18 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		// TODO (b/242590511): Deprecated after moving all performance cuj test cases to chromiumos/tast/local/bundles/cros/spera directory.
 		Func:         FrontlineWorkerCUJ,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Measures the performance of Frontline Worker CUJ",
-		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com"},
+		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Fixture:      fixture.ManagedGuestSessionWithExtensions,
 		Vars: []string{
-			"ui.cujAccountPool", // Required. It is necessary to have account to use Google Sheets.
-			"ui.sampleSheetURL", // Required. The URL of sample Google Sheet. It will be copied to create a new one to perform tests on.
-			"ui.cuj_mode",       // Optional. Expecting "tablet" or "clamshell".
+			"spera.username",       // Required. It is necessary to have account to use Google Sheets.
+			"spera.password",       // Required. It is necessary to have account to use Google Sheets.
+			"spera.sampleSheetURL", // Required. The URL of sample Google Sheet. It will be copied to create a new one to perform tests on.
+			"spera.cuj_mode",       // Optional. Expecting "tablet" or "clamshell".
 		},
 		Params: []testing.Param{
 			{
@@ -88,9 +87,9 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	loginTime := s.FixtValue().(*mgs.FixtData).LoginTime()
 	workload := s.Param().(frontlineWorkerParam).Workload
 
-	sampleSheetURL, ok := s.Var("ui.sampleSheetURL")
+	sampleSheetURL, ok := s.Var("spera.sampleSheetURL")
 	if !ok {
-		s.Fatal("Require variable ui.sampleSheetURL is not provided")
+		s.Fatal("Require variable spera.sampleSheetURL is not provided")
 	}
 
 	tconn, err := cr.TestAPIConn(ctx)
@@ -105,7 +104,7 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	var tabletMode bool
-	if mode, ok := s.Var("ui.cuj_mode"); ok {
+	if mode, ok := s.Var("spera.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
 		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 		if err != nil {
@@ -167,8 +166,7 @@ func FrontlineWorkerCUJ(ctx context.Context, s *testing.State) {
 	defer browser.CloseAllTabs(ctx, tconn)
 
 	outDir := s.OutDir()
-	credentials := strings.Split(s.RequiredVar("ui.cujAccountPool"), ":")
-	account, password := credentials[0], credentials[1]
+	account, password := s.RequiredVar("spera.username"), s.RequiredVar("spera.password")
 
 	googleChatPWA := frontlineworkercuj.NewGoogleChat(ctx, cr, tconn, ui, uiHdl, kb)
 	googleSheets := frontlineworkercuj.NewGoogleSheets(ctx, cr, tconn, ui, uiHdl, kb, account, password)
