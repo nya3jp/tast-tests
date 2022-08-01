@@ -37,7 +37,7 @@ func init() {
 				// TODO(b/225966067): Replace with companion DUT HWDep for background scanning.
 				// The intention here is to skip on the companion (receiver) device. However it currently is only possible to skip on the primary DUT (sender),
 				// so as a workaround we skip on sender that is paired with the receiver we want to skip on.
-				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("arcada", "arcada_signed", "kindred", "treeya", "treeya360", "barla", "dumo", "soraka")),
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("arcada", "arcada_signed", "atlas", "barla", "dumo", "gimble", "kindred", "nipperkin", "soraka", "treeya", "treeya360", "wyvern")),
 				ExtraHardwareDepsForAll: map[string]hwdep.Deps{
 					// Companion DUT 1 dependency.
 					"cd1": hwdep.D(hwdep.SkipOnModel("tomato")),
