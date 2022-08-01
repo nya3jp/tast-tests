@@ -256,6 +256,14 @@ func parseVars(s *testing.State) spVars {
 	}
 }
 
+func loginOpts(creds chrome.Creds) []chrome.Option {
+	return []chrome.Option{
+		chrome.GAIALogin(creds),
+		// Keep profile sync from overwriting the 'Always restore' setting.
+		chrome.ExtraArgs("--disable-sync"),
+	}
+}
+
 // performInitialLogin does the initial UI session login and opens a very particular browser
 // (Lacros or Ash-Chrome) window. This function intentionally leaves this particular window opened,
 // so the next UI session (see performRegularLogin) will restore it in order to record all the
@@ -269,7 +277,7 @@ func performInitialLogin(ctx context.Context, browserType browser.Type, creds ch
 	// the session to proper restore later during performRegularLogin. As a short term workaround
 	// we're closing Lacros resources using CloseResources fn instead, though ideally we want to
 	// use SetUpWithNewChrome close closure when it's properly implemented.
-	cr, br, _, err := browserfixt.SetUpWithNewChrome(ctx, browserType, cfg, chrome.GAIALogin(creds))
+	cr, br, _, err := browserfixt.SetUpWithNewChrome(ctx, browserType, cfg, loginOpts(creds)...)
 	if err != nil {
 		return errors.Wrapf(err, "failed to connect to %v browser", browserType)
 	}
@@ -322,8 +330,8 @@ func performRegularLogin(ctx context.Context, browserType browser.Type, creds ch
 		// Disable whats-new page. See crbug.com/1271436.
 		chrome.DisableFeatures("ChromeWhatsNewUI"),
 		chrome.EnableRestoreTabs(),
-		chrome.GAIALogin(creds),
 		chrome.KeepState()}
+	opts = append(opts, loginOpts(creds)...)
 
 	if browserType == browser.TypeLacros {
 		defaultOpts, err := cfg.Opts()
