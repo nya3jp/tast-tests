@@ -41,7 +41,11 @@ func init() {
 				},
 				ExtraData:         []string{"small_jpg.zip"},
 				Timeout:           nearbycommon.DetectionTimeout + nearbycommon.SmallFileTransferTimeout,
+<<<<<<< HEAD   (7d1c1b Add more box details for crossdevice login.)
 				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("babymega", "barla", "blooglet", "dumo", "fennel", "soraka", "treeya", "treeya360")),
+=======
+				ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("babymega", "barla", "blooglet", "dumo", "fennel", "hana", "kevin", "krane", "soraka", "tomato", "treeya", "treeya360")),
+>>>>>>> CHANGE (acbc64 Update bg scanning boards.)
 			},
 		},
 	})
