@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
@@ -30,16 +30,15 @@ type videoCUJParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		// TODO (b/242590511): Deprecated after moving all performance cuj test cases to chromiumos/tast/local/bundles/cros/spera directory.
 		Func:         VideoCUJ2,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the smoothess of switch between full screen YouTube video and another browser window",
-		Contacts:     []string{"tim.chang@cienet.com", "cienet-development@googlegroups.com"},
+		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
-			"ui.cuj_mode", // Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
-			"ui.checkPIP",
+			"spera.cuj_mode", // Optional. Expecting "tablet" or "clamshell". Other values will be be taken as "clamshell".
+			"spera.checkPIP",
 		},
 		Params: []testing.Param{
 			{
@@ -181,14 +180,14 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	var checkPIP bool
-	if v, ok := s.Var("ui.checkPIP"); ok {
+	if v, ok := s.Var("spera.checkPIP"); ok {
 		checkPIP, err = strconv.ParseBool(v)
 		if err != nil {
 			s.Fatalf("Failed to parse ui.checkPIP value %v: %v", v, err)
 		}
 	}
 	var tabletMode bool
-	if mode, ok := s.Var("ui.cuj_mode"); ok {
+	if mode, ok := s.Var("spera.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
 		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 		if err != nil {
