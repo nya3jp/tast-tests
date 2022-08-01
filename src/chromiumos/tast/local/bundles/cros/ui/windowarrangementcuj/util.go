@@ -86,10 +86,6 @@ type Connections struct {
 	WithTestVideo arc.ActivityStartOption
 }
 
-// DragPoints holds three points, to signify a drag from the first point
-// to the second point, then the third point, and back to the first point.
-type DragPoints [3]coords.Point
-
 // SetupChrome creates ash-chrome or lacros-chrome based on test parameters.
 func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections, error) {
 	testParam := s.Param().(TestParam)
@@ -219,11 +215,12 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 
 // cleanUp is used to execute a given cleanup action and report
 // the resulting error if it is not nil. The intended usage is:
-// func Example(ctx, closeCtx context.Context) (retErr error) {
-//   ...
-//   defer cleanUp(closeCtx, action.Named("description of cleanup action", cleanup), &retErr)
-//   ...
-// }
+//
+//	func Example(ctx, closeCtx context.Context) (retErr error) {
+//	  ...
+//	  defer cleanUp(closeCtx, action.Named("description of cleanup action", cleanup), &retErr)
+//	  ...
+//	}
 func cleanUp(ctx context.Context, cleanup action.Action, retErr *error) {
 	if err := cleanup(ctx); err != nil {
 		if *retErr == nil {
@@ -277,8 +274,13 @@ func combineTabs(ctx context.Context, tconn *chrome.TestConn, ui *uiauto.Context
 	return nil
 }
 
-// Drag does the specified drag based on the documentation of DragPoints.
-func Drag(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, p DragPoints, duration time.Duration) error {
+// drag performs a drag beginning at the first given point, proceeding
+// through the others in order, and ending back at the first given point.
+func drag(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, duration time.Duration, p ...coords.Point) error {
+	if len(p) < 2 {
+		return errors.Errorf("expected at least two drag points, got %v", p)
+	}
+
 	initialBoundsMap := make(map[int]coords.Rect)
 	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
 		initialBoundsMap[w.ID] = w.BoundsInRoot
@@ -300,24 +302,23 @@ func Drag(ctx context.Context, tconn *chrome.TestConn, pc pointer.Context, p Dra
 	}
 	verifyBoundsTimeout := &testing.PollOptions{Timeout: 10 * time.Second}
 
-	if err := pc.Drag(
-		p[0],
-		pc.DragTo(p[1], duration),
-		pc.DragTo(p[2], duration),
-		pc.DragTo(p[0], duration),
-		func(ctx context.Context) error {
-			// When you are moving/resizing a window, its bounds can take a moment
-			// to update after the pointer moves. We need to wait for the expected
-			// final window bounds before ending the drag. The final bounds should
-			// match the initial bounds because the drag begins and ends at p[0].
-			// If the drag does not move/resize any windows, this code is okay as
-			// the final bounds should match the initial bounds in that case too.
-			if err := testing.Poll(ctx, verifyBounds, verifyBoundsTimeout); err != nil {
-				testing.ContextLog(ctx, "Warning: Failed to wait for expected window bounds before ending drag (see https://crbug.com/1297297): ", err)
-			}
-			return nil
-		},
-	)(ctx); err != nil {
+	var dragSteps []uiauto.Action
+	for i := 1; i < len(p); i++ {
+		dragSteps = append(dragSteps, pc.DragTo(p[i], duration))
+	}
+	dragSteps = append(dragSteps, pc.DragTo(p[0], duration), func(ctx context.Context) error {
+		// When you are moving/resizing a window, its bounds can take a moment
+		// to update after the pointer moves. We need to wait for the expected
+		// final window bounds before ending the drag. The final bounds should
+		// match the initial bounds because the drag begins and ends at p[0].
+		// If the drag does not move/resize any windows, this code is okay as
+		// the final bounds should match the initial bounds in that case too.
+		if err := testing.Poll(ctx, verifyBounds, verifyBoundsTimeout); err != nil {
+			testing.ContextLog(ctx, "Warning: Failed to wait for expected window bounds before ending drag (see https://crbug.com/1297297): ", err)
+		}
+		return nil
+	})
+	if err := pc.Drag(p[0], dragSteps...)(ctx); err != nil {
 		return errors.Wrap(err, "failed to drag")
 	}
 
