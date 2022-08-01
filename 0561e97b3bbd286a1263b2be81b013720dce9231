@@ -50,6 +50,24 @@
       "message": "This block of code seems like it would be useful in other places and might be worth abstracting out to a separate function (`EnsureConnected`?).",
       "revId": "0561e97b3bbd286a1263b2be81b013720dce9231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa949cda_b2979994",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-01T09:02:52Z",
+      "side": 1,
+      "message": "Hm. When I look at `!t.d.Connected(ctx) || t.d.RPC() \u003d\u003d nil` I immediately know that code under \u0027if\u0027 executes when DUT is not connected or there is no RPC connection.\n\nIf I look at `!EnsureConnected(ctx)`, it\u0027s not clear for me what `EnsureConnected` really does. I need to check the implementation.\n\nI would like to know what other people think about it.",
+      "parentUuid": "a3f95d53_6ccab1b4",
+      "revId": "0561e97b3bbd286a1263b2be81b013720dce9231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
