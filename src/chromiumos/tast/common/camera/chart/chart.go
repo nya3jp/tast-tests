@@ -261,6 +261,24 @@ func (c *Chart) Display(ctx context.Context, namePath NamePath) error {
 	return nil
 }
 
+// DisableScreenDimming kills powerd to disable screen dimming.
+func (c *Chart) DisableScreenDimming(ctx context.Context) error {
+	cmd := fmt.Sprintf(`initctl stop powerd`, namePath, c.fifo)
+	if err := c.conn.CommandContext(ctx, "bash", "-c", cmd).Run(); err != nil {
+		return errors.Wrap(err, "failed to disable screen dimming")
+	}
+	return nil
+}
+
+// EnableScreenDimming starts powerd to enable screen dimming.
+func (c *Chart) EnableScreenDimming(ctx context.Context) error {
+	cmd := fmt.Sprintf(`initctl start powerd`, namePath, c.fifo)
+	if err := c.conn.CommandContext(ctx, "bash", "-c", cmd).Run(); err != nil {
+		return errors.Wrap(err, "failed to enable screen dimming")
+	}
+	return nil
+}
+
 // SetDisplayLevel sets the display level ranged [0.0, 100.0].
 func (c *Chart) SetDisplayLevel(ctx context.Context, lv float32) error {
 	cmd := fmt.Sprintf(`echo '{"display_level": %.1f}' > %s`, lv, c.fifo)

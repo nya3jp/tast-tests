@@ -87,7 +87,7 @@ func pollForDimHelper(initialBrightness, currentBrightness float64, checkForDark
 // PollForDim is to see if the screen will dim during a designated amount of time.
 // Will poll for slightly longer than specified to allow for some slack.
 func PollForDim(ctx context.Context, initialBrightness float64, timeout time.Duration, checkForDark bool, conn *ssh.Conn) error {
-	testing.ContextLog(ctx, "Polling for quick dim: ", timeout.Seconds(), "s")
+	testing.ContextLog(ctx, "Polling for quick dim: ", timeout.Seconds(), "s. Deadline: ", ctx.Deadline()[0])
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		currentBrightness, err := GetBrightness(ctx, conn)
 		if err != nil {
@@ -105,5 +105,6 @@ func PollForDim(ctx context.Context, initialBrightness float64, timeout time.Dur
 
 // WaitWithDelay return a 3s duration object
 func WaitWithDelay(ctx context.Context, timeLength time.Duration) {
+	testing.ContextLog(ctx, "Waiting for: ", timeLength.Seconds(), "s. Deadline: ", ctx.Deadline()[0])
 	testing.Sleep(ctx, 3*time.Second+timeLength)
 }

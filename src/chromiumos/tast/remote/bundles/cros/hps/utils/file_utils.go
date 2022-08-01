@@ -50,6 +50,11 @@ func SetupDisplay(ctx context.Context, s *testing.State) (map[string]chart.NameP
 		return make(map[string]chart.NamePath), &chart.Chart{}, errors.Wrap(err, "failed to send the files")
 	}
 
+	err := c.DisableScreenDimming()
+	if err != nil {
+		return err
+	}
+
 	pathsMap := map[string]chart.NamePath{
 		ZeroPresence: hostPaths[0],
 		OnePresence:  hostPaths[1],
