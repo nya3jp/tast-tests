@@ -215,8 +215,8 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	if err != nil {
 		return errors.Wrap(err, "failed to obtain the top-row layout")
 	}
-	enterOverview := kw.AccelAction(topRow.SelectTask)
-	if err := enterOverview(ctx); err != nil {
+	toggleOverview := kw.AccelAction(topRow.SelectTask)
+	if err := toggleOverview(ctx); err != nil {
 		return errors.Wrap(err, "failed to enter overview mode")
 	}
 	// Create a second virtual desk.
@@ -321,7 +321,7 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 		return errors.Wrap(err, dividerDragError)
 	}
 	// Enter the overview mode.
-	if err := enterOverview(ctx); err != nil {
+	if err := toggleOverview(ctx); err != nil {
 		return errors.Wrap(err, "failed to enter overview mode")
 	}
 	// Wait for location-change events to be completed.
@@ -362,6 +362,11 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	testing.ContextLog(ctx, "Dragging the divider between a snapped ARC window and an empty overview grid")
 	if err := Drag(ctx, tconn, pc, splitViewDragPoints, duration); err != nil {
 		return errors.Wrap(err, dividerDragError)
+	}
+
+	// Exit the overview mode.
+	if err := toggleOverview(ctx); err != nil {
+		return errors.Wrap(err, "failed to exit overview mode")
 	}
 
 	return nil
