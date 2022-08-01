@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fae09d92_8e5f0967",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520127
+      },
+      "writtenOn": "2022-08-01T14:00:40Z",
+      "side": 1,
+      "message": "Ah very interesting, Georg! Do you think --disable-sync is need also for `apps.FullRestoreAlwaysRestore`? We don\u0027t wait for the CPU cool down AFAIU but we started to iterate that test as well recently.\n\nThank you adding me in this discussion loop.\n\n",
+      "revId": "5d0c2bff0eeed7b0aa72e8b770cfa905f8172437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
