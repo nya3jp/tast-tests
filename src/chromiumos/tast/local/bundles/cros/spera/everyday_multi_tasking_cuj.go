@@ -1,8 +1,8 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
@@ -12,7 +12,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
-	et "chromiumos/tast/local/bundles/cros/ui/everydaymultitaskingcuj"
+	et "chromiumos/tast/local/bundles/cros/spera/everydaymultitaskingcuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -32,7 +32,6 @@ type multiTaskingParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		// TODO (b/242590511): Deprecated after moving all performance cuj test cases to chromiumos/tast/local/bundles/cros/spera directory.
 		Func:         EverydayMultiTaskingCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the performance of everyday multi-tasking CUJ",
@@ -40,9 +39,9 @@ func init() {
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
-			"ui.cuj_mute",      // Optional. Mute the DUT during the test.
-			"ui.cuj_mode",      // Optional. Expecting "tablet" or "clamshell".
-			"ui.bt_devicename", // Required for Bluetooth subtests.
+			"spera.cuj_mute",      // Optional. Mute the DUT during the test.
+			"spera.cuj_mode",      // Optional. Expecting "tablet" or "clamshell".
+			"spera.bt_devicename", // Required for Bluetooth subtests.
 		},
 		Data: []string{"cca_ui.js"},
 		Params: []testing.Param{
@@ -237,7 +236,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	if _, ok := s.Var("ui.cuj_mute"); ok {
+	if _, ok := s.Var("spera.cuj_mute"); ok {
 		if err := crastestclient.Mute(ctx); err != nil {
 			s.Fatal("Failed to mute audio: ", err)
 		}
@@ -251,7 +250,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 
 	if enableBT {
 		testing.ContextLog(ctx, "Start to connect bluetooth")
-		deviceName := s.RequiredVar("ui.bt_devicename")
+		deviceName := s.RequiredVar("spera.bt_devicename")
 		if err := bluetooth.ConnectDevice(ctx, deviceName); err != nil {
 			s.Fatal("Failed to connect bluetooth: ", err)
 		}
@@ -309,7 +308,7 @@ func EverydayMultiTaskingCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	var tabletMode bool
-	if mode, ok := s.Var("ui.cuj_mode"); ok {
+	if mode, ok := s.Var("spera.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
 		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 		if err != nil {
