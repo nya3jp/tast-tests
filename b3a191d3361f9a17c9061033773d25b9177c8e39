@@ -16,6 +16,24 @@
       "message": "How often does it poll?",
       "revId": "b3a191d3361f9a17c9061033773d25b9177c8e39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfa65595_55a87923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/debian_upgrade_alert.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-01T04:26:13Z",
+      "side": 1,
+      "message": "The default interval is 300ms, and it waits one second for each poll as in `ui.WithTimeout(time.Second).WaitUntilExists(continueButton)`.",
+      "parentUuid": "8ef0e8be_505c53a6",
+      "revId": "b3a191d3361f9a17c9061033773d25b9177c8e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
