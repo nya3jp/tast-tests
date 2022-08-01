@@ -116,9 +116,12 @@ func ModemFWManifestInstallation(ctx context.Context, s *testing.State) {
 	// Ensure the test restores the modemfwd state.
 	defer cleanUp(cleanupCtx, s)
 
+	// Ensure we do a full flash at least once.
+	useModemsFwInfo := false
 	for _, carrierID := range carrierIDs {
 		s.Logf("Force flashing for device %q and uuid %q", deviceID, carrierID)
-		options := map[string]interface{}{"carrier_uuid": carrierID, "use_modems_fw_info": true}
+		options := map[string]interface{}{"carrier_uuid": carrierID, "use_modems_fw_info": useModemsFwInfo}
+		useModemsFwInfo = true
 		if err := m.ForceFlash(ctx, deviceID, options); err != nil {
 			s.Fatal("Failed to flash fw: ", err)
 		}
