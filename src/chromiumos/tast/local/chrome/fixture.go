@@ -241,6 +241,18 @@ func init() {
 		ResetTimeout:    ResetTimeout,
 		TearDownTimeout: ResetTimeout,
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "chromeLoggedInDisableFirmwareUpdaterApp",
+		Desc:     "Logged into a user session with FirmwareUpdaterApp disabled",
+		Contacts: []string{"chromeos-perfmetrics-eng@google.com"},
+		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
+			return []Option{DisableFeatures("FirmwareUpdaterApp")}, nil
+		}),
+		SetUpTimeout:    LoginTimeout,
+		ResetTimeout:    ResetTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
 }
 
 // OptionsCallback is the function used to set up the fixture by returning Chrome options.
