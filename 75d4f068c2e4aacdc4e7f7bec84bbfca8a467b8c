@@ -33,6 +33,23 @@
       "message": "Next time, please add tast-owners@ to automatically assign tast reviewers.\n\nLGTM for style but please wait for domain expert for review.",
       "revId": "75d4f068c2e4aacdc4e7f7bec84bbfca8a467b8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49334ae7_da9dd32f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479707
+      },
+      "writtenOn": "2022-08-01T19:32:47Z",
+      "side": 1,
+      "message": "Adding @betuls, since I think this wants security review and she\u0027s reviewed the other security CLs for this.",
+      "revId": "75d4f068c2e4aacdc4e7f7bec84bbfca8a467b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
