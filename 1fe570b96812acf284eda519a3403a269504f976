@@ -22,6 +22,30 @@
       },
       "revId": "1fe570b96812acf284eda519a3403a269504f976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a4eb954_0cc42421",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_input_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-08-01T04:15:54Z",
+      "side": 1,
+      "message": "No because that will be another subtest which will be promoted separately.",
+      "parentUuid": "92b170ff_af91248f",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "1fe570b96812acf284eda519a3403a269504f976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
