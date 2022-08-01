@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc36abba_3d4f44e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-08-01T18:22:10Z",
+      "side": 1,
+      "message": "LGTM with nit",
+      "revId": "fb72ab3c0af7331c8f1adcfb866d1107fa37b4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef22c73_8f327916",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-08-01T18:22:10Z",
+      "side": 1,
+      "message": "You can drop this feature. It doesn\u0027t exist anymore in Chrome. I\u0027ll file a bug for myself to remove it from the fixture.",
+      "range": {
+        "startLine": 110,
+        "startChar": 67,
+        "endLine": 110,
+        "endChar": 98
+      },
+      "revId": "fb72ab3c0af7331c8f1adcfb866d1107fa37b4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89510571_b9192ebf",
