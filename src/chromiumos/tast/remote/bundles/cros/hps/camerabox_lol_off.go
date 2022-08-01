@@ -114,7 +114,7 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 		s.Fatal("Error when getting brightness: ", err)
 	}
 	if newBrightness != brightness {
-		s.Fatal("Unexpected brightness change")
+		s.Fatal("Unexpected brightness change: was: ", brightness, ", new: ", newBrightness)
 	}
 
 	// It should not lock after quick dim delay.
@@ -124,6 +124,6 @@ func CameraboxLoLOff(ctx context.Context, s *testing.State) {
 		s.Fatal("Error when getting brightness: ", err)
 	}
 	if newBrightness != brightness {
-		s.Fatal("Unexpected brightness change")
+		s.Fatal("Unexpected brightness change: was: ", brightness, ", new: ", newBrightness)
 	}
 }
