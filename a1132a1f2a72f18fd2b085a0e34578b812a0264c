@@ -141,6 +141,30 @@
       },
       "revId": "a1132a1f2a72f18fd2b085a0e34578b812a0264c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9faee6b_14054b34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-01T22:11:59Z",
+      "side": 1,
+      "message": "\u003e It seems to me that veth may keep existing for 1 ~ 2 seconds in my case after removing the netns, so I use a poll in my patch [2].\n\nAh I see. good catch. From my tests, I am seeing something similar. I will add your patch to my CL.",
+      "parentUuid": "2b92d594_c07570c8",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 3
+      },
+      "revId": "a1132a1f2a72f18fd2b085a0e34578b812a0264c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

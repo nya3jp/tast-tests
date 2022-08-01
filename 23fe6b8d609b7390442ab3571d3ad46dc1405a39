@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "843e8eec_8f9925a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-01T22:11:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b86cd5e_ee2e1b0a",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 2
+      },
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d27d939_b3a8c63b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-01T00:15:18Z",
       "side": 1,
       "message": "Needs a different error msg",
+      "range": {
+        "startLine": 152,
+        "startChar": 28,
+        "endLine": 152,
+        "endChar": 48
+      },
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0675512_a530bb11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/env/env.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-01T22:11:59Z",
+      "side": 1,
+      "message": "This has been removed.",
+      "parentUuid": "2d27d939_b3a8c63b",
       "range": {
         "startLine": 152,
         "startChar": 28,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d821befc_959b80d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-01T22:11:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f3de69d_5fef00b1",
+      "range": {
+        "startLine": 31,
+        "startChar": 36,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08d4c0ed_61842d0d",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b564103b_0bcfe8f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-01T22:11:59Z",
+      "side": 1,
+      "message": "This has been removed, now we have a boolean |serveTLS|.",
+      "parentUuid": "08d4c0ed_61842d0d",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3024ecf_b3672074",
@@ -106,6 +202,30 @@
       "writtenOn": "2022-08-01T00:15:18Z",
       "side": 1,
       "message": "nit: use \"serve\". The wording \"listen for\" here would refer to the listening part i.e accepting a TCP connection on |port|. HTTPS vs HTTP comes into the picture after the TCP connection that the server is listening for has been established.",
+      "range": {
+        "startLine": 52,
+        "startChar": 56,
+        "endLine": 52,
+        "endChar": 67
+      },
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f8d67d7_56f13e7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-01T22:11:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3024ecf_b3672074",
       "range": {
         "startLine": 52,
         "startChar": 56,
@@ -156,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9504bb40_13e160a5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-01T22:11:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdae34ac_cf8f2545",
+      "range": {
+        "startLine": 89,
+        "startChar": 3,
+        "endLine": 89,
+        "endChar": 6
+      },
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b78c84c4_cf55abdc",
@@ -169,6 +313,30 @@
       "writtenOn": "2022-08-01T00:15:18Z",
       "side": 1,
       "message": "One problem here is that you cannot use the same function for serving both HTTP and HTTPS since apparently the go httpserver has two different functions.\n\nI think it would be clearer to have separate HTTPServerResponseHandler and HTTPSServerResponseHandler variables, which will also work nicely when you will need to interact with both probes at the same time later on.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 74
+      },
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef7c7412_bebd6909",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-01T22:11:59Z",
+      "side": 1,
+      "message": "Great idea, that makes alot of sense. Thank you!",
+      "parentUuid": "b78c84c4_cf55abdc",
       "range": {
         "startLine": 43,
         "startChar": 0,
