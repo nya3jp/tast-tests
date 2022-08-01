@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66e29f59_c59774d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2022-08-01T10:00:59Z",
+      "side": 1,
+      "message": "I verified that the test was executed properly in the `reven-vmtest-direct-tast-vm` build associated with this CL:\nhttps://ci.chromium.org/ui/p/chromeos/builders/vmtest/reven-vmtest-direct-tast-vm/b8807261146107737633/overview\nI also verified that the test was skipped for the `amdd64-generic-direct-tast-vm` build:\nhttps://ci.chromium.org/ui/p/chromeos/builders/vmtest/amd64-generic-direct-tast-vm/b8807261146107737681/overview",
+      "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
