@@ -1,8 +1,8 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
@@ -11,7 +11,7 @@ import (
 
 	"chromiumos/tast/common/cros/ui/setup"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/ui/quickcheckcuj"
+	"chromiumos/tast/local/bundles/cros/spera/quickcheckcuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -29,18 +29,17 @@ type quickCheckParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		// TODO (b/242590511): Deprecated after moving all performance cuj test cases to chromiumos/tast/local/bundles/cros/spera directory.
 		Func:         QuickCheckCUJ2,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the system performance after login or wakeup by checking common apps",
-		Contacts:     []string{"xliu@cienet.com", "hc.tsai@cienet.com", "alfredyu@cienet.com"},
+		Contacts:     []string{"xliu@cienet.com", "alston.huang@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome", "arc", "wifi"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
-			"ui.cuj_mode",                 // Optional. Expecting "tablet" or "clamshell".
-			"ui.QuickCheckCUJ2_wait_time", // Optional. Given time for the system to stablize in seconds.
-			"ui.QuickCheckCUJ2_wifissid",
-			"ui.QuickCheckCUJ2_wifipassword",
+			"spera.cuj_mode",                 // Optional. Expecting "tablet" or "clamshell".
+			"spera.QuickCheckCUJ2_wait_time", // Optional. Given time for the system to stablize in seconds.
+			"spera.QuickCheckCUJ2_wifissid",
+			"spera.QuickCheckCUJ2_wifipassword",
 		},
 		Params: []testing.Param{
 			{
@@ -108,15 +107,15 @@ func init() {
 func QuickCheckCUJ2(ctx context.Context, s *testing.State) {
 	// The system may be unstable after login, causing suspending DUT operations to fail on some models.
 	// Therefore, use a variable to control the startup delay time and find out the estimated time required by the model.
-	// See b/234115114 for details.
-	if wt, ok := s.Var("ui.QuickCheckCUJ2_wait_time"); ok {
+	// See b:234115114 for details.
+	if wt, ok := s.Var("spera.QuickCheckCUJ2_wait_time"); ok {
 		waitTime, err := strconv.Atoi(wt)
 		if err != nil {
-			s.Fatal("Failed to convert the ui.QuickCheckCUJ2_wait_time to integer: ", err)
+			s.Fatal("Failed to convert the spera.QuickCheckCUJ2_wait_time to integer")
 		}
 		s.Logf("Given %d seconds for the system to stablize", waitTime)
 		if err := testing.Sleep(ctx, time.Duration(waitTime)*time.Second); err != nil {
-			s.Fatalf("Failed to sleep for %d seconds: %v", waitTime, err)
+			s.Fatalf("Failed to sleep for %d seconds", waitTime)
 		}
 	}
 
@@ -132,7 +131,7 @@ func QuickCheckCUJ2(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	var tabletMode bool
-	if mode, ok := s.Var("ui.cuj_mode"); ok {
+	if mode, ok := s.Var("spera.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
 		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 		if err != nil {
