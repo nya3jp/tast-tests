@@ -125,7 +125,7 @@ func RecentFilesAppear(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to open the directory: ", err)
 			}
 
-			if err := editImage(ctx, tconn, files, testImage); err != nil {
+			if err := editImage(ctx, cr, tconn, files, testImage, s.OutDir()); err != nil {
 				s.Fatal("Failed to edit the file: ", err)
 			}
 
@@ -169,7 +169,7 @@ func prepareFile(ctx context.Context, ui *uiauto.Context, files *filesapp.FilesA
 	)(ctx)
 }
 
-func editImage(ctx context.Context, tconn *chrome.TestConn, files *filesapp.FilesApp, filename string) error {
+func editImage(ctx context.Context, cr *chrome.Chrome, tconn *chrome.TestConn, files *filesapp.FilesApp, filename, outDir string) (retErr error) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
@@ -185,6 +185,7 @@ func editImage(ctx context.Context, tconn *chrome.TestConn, files *filesapp.File
 		return err
 	}
 	defer func(ctx context.Context) {
+		faillog.DumpUITreeWithScreenshotOnError(ctx, outDir, func() bool { return retErr != nil }, cr, "ui_Gallery")
 		if err := apps.Close(ctx, tconn, apps.Gallery.ID); err != nil {
 			testing.ContextLog(ctx, "Failed to close gallery: ", err)
 		}
@@ -195,7 +196,7 @@ func editImage(ctx context.Context, tconn *chrome.TestConn, files *filesapp.File
 
 	return uiauto.Combine("edit image in Gallery",
 		ui.LeftClick(nodewith.Name("Crop & rotate").Role(role.ToggleButton)),
-		ui.LeftClick(nodewith.Name("16:9").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("Ratio 16 by 9").Role(role.RadioButton)),
 		ui.LeftClick(nodewith.Name("Done").Role(role.Button)),
 		ui.LeftClick(saveBtn),
 		ui.WaitUntilGone(saveBtn),
