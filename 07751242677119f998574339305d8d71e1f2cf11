@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0bf0812_e216619b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-08-01T23:24:36Z",
+      "side": 1,
+      "message": "LGTM if we add \"fennel\" to the exclusion list for the CrosToCrosBackgroundScanning tests. If we want to switch to excluding based on companion DUT I can take another look.\n\nHere\u0027s my full list of pairs for reference:\n\nAtlas / Atlas, yes  \u003c-\u003e  Atlas / Atlas, yes\nCherry / Tomato, no  \u003c-\u003e  Atlas / Atlas, yes\nHana /  Hana, no  \u003c-\u003e  Brya / Gimble, yes\nJacuzzi / Fennel, no  \u003c-\u003e  Jacuzzi / Fennel, no\nKevin / Kevin, no  \u003c-\u003e  Guybrush / Nipperkin, yes ??\nOctopus / Blooglet, no  \u003c-\u003e  Hatch / Kindred, yes\nPuff / Wyvern, yes  \u003c-\u003e  Kukui / Krane, no\nSarien / Arcada (arcada_signed), yes  \u003c-\u003e  Coral / Babymega, no\nScarlet / Dumo, no  \u003c-\u003e  Grunt / Treeya (treeya360), no\nSoraka / Soraka, no  \u003c-\u003e  Grunt / Barla, no\nStrongbad / CoachZ, yes  \u003c-\u003e  Octopus / Vortininja, yes\nVolteer / Voxel, yes  \u003c-\u003e  Zork / Woomax, yes\n",
+      "revId": "07751242677119f998574339305d8d71e1f2cf11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "753724a1_e6a1c5b1",
@@ -37,6 +54,30 @@
       "writtenOn": "2022-08-01T20:14:33Z",
       "side": 1,
       "message": "Adding atlas because atlas | cherry is failing 100%\n\nbrya | hana is failing 100% so adding brya/gimble to stop running it \n\nguybrush | kevin is failing 100% so adding guybrush/nipperkin to stop running it \n\npuff | kukui is failing 100% so adding puff/wyvern to stop running it",
+      "range": {
+        "startLine": 40,
+        "startChar": 77,
+        "endLine": 40,
+        "endChar": 82
+      },
+      "revId": "07751242677119f998574339305d8d71e1f2cf11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aac6dd74_585d82b1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/nearbyshare/cros_to_cros_background_scanning.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1415512
+      },
+      "writtenOn": "2022-08-01T23:24:36Z",
+      "side": 1,
+      "message": "We need to add \"fennel\" here.",
+      "parentUuid": "839aac43_9de92eaa",
       "range": {
         "startLine": 40,
         "startChar": 77,
