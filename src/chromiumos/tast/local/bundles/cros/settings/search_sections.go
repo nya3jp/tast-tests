@@ -169,7 +169,7 @@ func searchDetail(st settingsSearchType) []settingsSearchDetail {
 				keyword:            "onscreen",
 				expectedResult:     `On-screen keyboard`,
 				expectedResultRole: role.GenericContainer,
-				deepLinkingSection: "Enable on-screen keyboard",
+				deepLinkingSection: "On-screen keyboard",
 			}, {
 				keyword:            "Night light",
 				expectedResult:     `Night Light`,
@@ -179,7 +179,7 @@ func searchDetail(st settingsSearchType) []settingsSearchDetail {
 				keyword:            "high contrast",
 				expectedResult:     `High contrast mode`,
 				expectedResultRole: role.GenericContainer,
-				deepLinkingSection: `Use high contrast mode`,
+				deepLinkingSection: `Color inversion`,
 			},
 		}
 	default:
