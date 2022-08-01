@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "213d12f5_277daf9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_simultaneous.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1400377
+      },
+      "writtenOn": "2022-08-01T18:44:10Z",
+      "side": 1,
+      "message": "Jun, thanks for the comment. Hi Alex @abergman@google.com, do you mind we adding you to the MTBF test case contact list? Or could you propose a contact person here?",
+      "parentUuid": "a17e9c4e_0e69b225",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "92fe473dd2afe3e254da9f7d61caf5e8f09999a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39e46e5d_e80e0fe4",
         "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_simultaneous.go",
         "patchSetId": 2
