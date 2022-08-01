@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "456e80de_2d3ae647",
+        "filename": "src/chromiumos/tast/local/perfutil/run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-01T13:06:39Z",
+      "side": 1,
+      "message": "Can we change the thinking way here?\nRun is a function, taking ctx, the name, so that it can do whatever needed.\nE.g., scenario and store can be a part of \"run\" function, I think.",
+      "parentUuid": "79396d09_fc89990c",
+      "range": {
+        "startLine": 143,
+        "startChar": 73,
+        "endLine": 143,
+        "endChar": 87
+      },
+      "revId": "837dea5737ee8ad461b26adaa4fefd10b39057c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5c1f9d8_3081a367",
         "filename": "src/chromiumos/tast/local/perfutil/run.go",
         "patchSetId": 3
