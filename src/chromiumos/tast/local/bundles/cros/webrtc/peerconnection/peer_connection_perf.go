@@ -24,10 +24,6 @@ import (
 )
 
 const (
-	// MediaStream's width and height utilized around this test.
-	streamWidth  = 1280
-	streamHeight = 720
-
 	// Before taking any measurements, we need to wait for the RTCPeerConnection
 	// to ramp up the CPU adaptation; until then, the transmitted resolution may
 	// be smaller than the one expected.
@@ -49,6 +45,8 @@ type RTCTestOptions struct {
 	verifyHWDecoding   VerifyHWAcceleratorMode // Whether to verify or not that hardware decoding is used.
 	verifyHWEncoding   VerifyHWAcceleratorMode // Whether to verify or not that hardware encoding is used.
 	profile            string                  // Codec to try, e.g. VP8, VP9.
+	streamWidth        int                     // Width of video to be sent in the peerconnection.
+	streamHeight       int                     // Height of video to be sent in the peerconnection.
 	videoGridDimension int                     // Dimension of the grid in which to embed the RTCPeerConnection <video>.
 	videoGridFile      string                  // Name of the video file to fill up the grid with, if needed.
 	// ScalableVideoCodec "scalabilityMode" identifier.
@@ -60,13 +58,15 @@ type RTCTestOptions struct {
 	displayMediaType DisplayMediaType
 }
 
-// MakeTestOptions creates RTCTestoptions for profile and with HW
-// Encoding/Decoding enabled.
-func MakeTestOptions(profile string) RTCTestOptions {
+// MakeTestOptions creates RTCTestoptions for profile, width and height and with
+// HW Encoding/Decoding enabled.
+func MakeTestOptions(profile string, width, height int) RTCTestOptions {
 	return RTCTestOptions{
 		verifyHWDecoding:   VerifyHWDecoderUsed,
 		verifyHWEncoding:   VerifyHWEncoderUsed,
 		profile:            profile,
+		streamWidth:        width,
+		streamHeight:       height,
 		videoGridDimension: 1,
 		videoGridFile:      "",
 		svc:                "",
@@ -74,13 +74,15 @@ func MakeTestOptions(profile string) RTCTestOptions {
 	}
 }
 
-// MakeSWTestOptions creates RTCTestoptions for profile and with HW
-// Encoding/Decoding disabled.
-func MakeSWTestOptions(profile string) RTCTestOptions {
+// MakeSWTestOptions creates RTCTestoptions for profile, width and height and
+// with HW Encoding/Decoding disabled.
+func MakeSWTestOptions(profile string, width, height int) RTCTestOptions {
 	return RTCTestOptions{
 		verifyHWDecoding:   VerifySWDecoderUsed,
 		verifyHWEncoding:   VerifySWEncoderUsed,
 		profile:            profile,
+		streamWidth:        width,
+		streamHeight:       height,
 		videoGridDimension: 1,
 		videoGridFile:      "",
 		svc:                "",
@@ -88,13 +90,15 @@ func MakeSWTestOptions(profile string) RTCTestOptions {
 	}
 }
 
-// MakeTestOptionsWithSVC creates RTCTestoptions for profile, with HW
+// MakeTestOptionsWithSVC creates RTCTestoptions for profile, width and height with HW
 // Encoding/Decoding enabled and with a layer structure as per svc definition.
-func MakeTestOptionsWithSVC(profile, svc string) RTCTestOptions {
+func MakeTestOptionsWithSVC(profile string, width, height int, svc string) RTCTestOptions {
 	return RTCTestOptions{
 		verifyHWDecoding:   VerifyHWDecoderUsed,
 		verifyHWEncoding:   VerifyHWEncoderUsed,
 		profile:            profile,
+		streamWidth:        width,
+		streamHeight:       height,
 		videoGridDimension: 1,
 		videoGridFile:      "",
 		svc:                svc,
@@ -102,14 +106,16 @@ func MakeTestOptionsWithSVC(profile, svc string) RTCTestOptions {
 	}
 }
 
-// MakeTestOptionsWithVideoGrid creates RTCTestoptions for profile, with HW
+// MakeTestOptionsWithVideoGrid creates RTCTestoptions for profile, width and height with HW
 // Encoding/Decoding enabled and embedding the RTCPeerConnection in a grid of
 // videoGridDimension x videoGridDimension videoGridFiles.
-func MakeTestOptionsWithVideoGrid(profile string, videoGridDimension int, videoGridFile string) RTCTestOptions {
+func MakeTestOptionsWithVideoGrid(profile string, width, height, videoGridDimension int, videoGridFile string) RTCTestOptions {
 	return RTCTestOptions{
 		verifyHWDecoding:   VerifyHWDecoderUsed,
 		verifyHWEncoding:   VerifyHWEncoderUsed,
 		profile:            profile,
+		streamWidth:        width,
+		streamHeight:       height,
 		videoGridDimension: videoGridDimension,
 		videoGridFile:      videoGridFile,
 		svc:                "",
@@ -117,13 +123,15 @@ func MakeTestOptionsWithVideoGrid(profile string, videoGridDimension int, videoG
 	}
 }
 
-// MakeCaptureTestOptions creates RTCTestoptions for profile and displayMediaType
+// MakeCaptureTestOptions creates RTCTestoptions for profile, width, height and displayMediaType
 // and with HW Encoding/Decoding enabled.
-func MakeCaptureTestOptions(profile string, displayMediaType DisplayMediaType) RTCTestOptions {
+func MakeCaptureTestOptions(profile string, width, height int, displayMediaType DisplayMediaType) RTCTestOptions {
 	return RTCTestOptions{
 		verifyHWDecoding:   VerifyHWDecoderUsed,
 		verifyHWEncoding:   VerifyHWEncoderUsed,
 		profile:            profile,
+		streamWidth:        width,
+		streamHeight:       height,
 		videoGridDimension: 1,
 		videoGridFile:      "",
 		svc:                "",
@@ -166,7 +174,7 @@ type rxMeas struct {
 // reach streamHeight.
 //
 // Returns error on failure or timeout.
-func waitForPeerConnectionStabilized(ctx context.Context, conn *chrome.Conn, displayMediaType DisplayMediaType) error {
+func waitForPeerConnectionStabilized(ctx context.Context, conn *chrome.Conn, streamWidth, streamHeight int, displayMediaType DisplayMediaType) error {
 	testing.ContextLogf(ctx, "Waiting at most %v seconds for tx resolution rampup, target %dx%d", maxStreamWarmUp, streamWidth, streamHeight)
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		var txm txMeas
@@ -179,11 +187,11 @@ func waitForPeerConnectionStabilized(ctx context.Context, conn *chrome.Conn, dis
 		// tx stream width or height to match streamWidth or streamHeight respectively
 		// because the screen capture will be scaled to match one of the dimensions and
 		// keep the original aspect ratio.
-		if displayMediaType == "" && (txm.FrameHeight != streamHeight || txm.FrameWidth != streamWidth) {
+		if displayMediaType == "" && (int(txm.FrameHeight) != streamHeight || int(txm.FrameWidth) != streamWidth) {
 			return errors.Errorf("still waiting for tx resolution to reach %dx%d, current: %.0fx%.0f",
 				streamWidth, streamHeight, txm.FrameWidth, txm.FrameHeight)
 		}
-		if displayMediaType != "" && txm.FrameHeight != streamHeight && txm.FrameWidth != streamWidth {
+		if displayMediaType != "" && int(txm.FrameHeight) != streamHeight && int(txm.FrameWidth) != streamWidth {
 			return errors.Errorf("still waiting for tx width to reach %d or tx height to reach %d, current: %.0fx%.0f",
 				streamWidth, streamHeight, txm.FrameWidth, txm.FrameHeight)
 		}
@@ -196,8 +204,8 @@ func waitForPeerConnectionStabilized(ctx context.Context, conn *chrome.Conn, dis
 
 // measureRTCStats parses the WebRTC Tx and Rx Stats, and stores them into p.
 // See https://www.w3.org/TR/webrtc-stats/#stats-dictionaries for more info.
-func measureRTCStats(ctx context.Context, conn *chrome.Conn, displayMediaType DisplayMediaType, p *perf.Values) error {
-	if err := waitForPeerConnectionStabilized(ctx, conn, displayMediaType); err != nil {
+func measureRTCStats(ctx context.Context, conn *chrome.Conn, streamWidth, streamHeight int, displayMediaType DisplayMediaType, p *perf.Values) error {
+	if err := waitForPeerConnectionStabilized(ctx, conn, streamWidth, streamHeight, displayMediaType); err != nil {
 		return err
 	}
 
@@ -301,7 +309,7 @@ func measureRTCStats(ctx context.Context, conn *chrome.Conn, displayMediaType Di
 // statistics. If videoGridDimension is larger than 1, then the real time <video>
 // is plugged into a videoGridDimension x videoGridDimension grid with copies
 // of videoURL being played, similar to a mosaic video call.
-func peerconnectionPerf(ctx context.Context, cr *chrome.Chrome, profile, loopbackURL string, verifyHWDecoding, verifyHWEncoding VerifyHWAcceleratorMode, videoGridDimension int, videoURL, svc, outDir string, displayMediaType DisplayMediaType, p *perf.Values) error {
+func peerconnectionPerf(ctx context.Context, cr *chrome.Chrome, loopbackURL, videoURL, outDir string, opts RTCTestOptions, p *perf.Values) error {
 	if err := cpu.WaitUntilIdle(ctx); err != nil {
 		return errors.Wrap(err, "failed waiting for CPU to become idle")
 	}
@@ -323,33 +331,33 @@ func peerconnectionPerf(ctx context.Context, cr *chrome.Chrome, profile, loopbac
 		return errors.Wrap(err, "timed out waiting for page loading")
 	}
 
-	if err := conn.Call(ctx, nil, "start", profile, false, svc, displayMediaType, streamWidth, streamHeight); err != nil {
+	if err := conn.Call(ctx, nil, "start", opts.profile, false, opts.svc, opts.displayMediaType, opts.streamWidth, opts.streamHeight); err != nil {
 		return errors.Wrap(err, "establishing connection")
 	}
 
 	hwDecoderUsed := checkForCodecImplementation(ctx, conn, VerifyHWDecoderUsed, false /*isSimulcast*/) == nil
-	if verifyHWDecoding == VerifyHWDecoderUsed && !hwDecoderUsed {
+	if opts.verifyHWDecoding == VerifyHWDecoderUsed && !hwDecoderUsed {
 		return errors.New("hardware decode accelerator wasn't used")
 	}
-	if verifyHWDecoding == VerifySWDecoderUsed && hwDecoderUsed {
+	if opts.verifyHWDecoding == VerifySWDecoderUsed && hwDecoderUsed {
 		return errors.New("software decode wasn't used")
 	}
 
 	hwEncoderUsed := checkForCodecImplementation(ctx, conn, VerifyHWEncoderUsed, false /*isSimulcast*/) == nil
-	if verifyHWEncoding == VerifyHWEncoderUsed && !hwEncoderUsed {
+	if opts.verifyHWEncoding == VerifyHWEncoderUsed && !hwEncoderUsed {
 		return errors.New("hardware encode accelerator wasn't used")
 	}
-	if verifyHWEncoding == VerifySWEncoderUsed && hwEncoderUsed {
+	if opts.verifyHWEncoding == VerifySWEncoderUsed && hwEncoderUsed {
 		return errors.New("software encode wasn't used")
 	}
 
-	if videoGridDimension > 1 {
-		if err := conn.Call(ctx, nil, "makeVideoGrid", videoGridDimension, videoURL); err != nil {
+	if opts.videoGridDimension > 1 {
+		if err := conn.Call(ctx, nil, "makeVideoGrid", opts.videoGridDimension, videoURL); err != nil {
 			return errors.Wrap(err, "javascript error")
 		}
 	}
 
-	if err := measureRTCStats(shortCtx, conn, displayMediaType, p); err != nil {
+	if err := measureRTCStats(shortCtx, conn, opts.streamWidth, opts.streamHeight, opts.displayMediaType, p); err != nil {
 		return errors.Wrap(err, "failed to measure")
 	}
 
@@ -420,8 +428,7 @@ func RunRTCPeerConnectionPerf(ctx context.Context, cr *chrome.Chrome, fileSystem
 		videoGridURL = server.URL + "/" + opts.videoGridFile
 	}
 	p := perf.NewValues()
-	if err := peerconnectionPerf(ctx, cr, opts.profile, loopbackURL, opts.verifyHWDecoding, opts.verifyHWEncoding,
-		opts.videoGridDimension, videoGridURL, opts.svc, outDir, opts.displayMediaType, p); err != nil {
+	if err := peerconnectionPerf(ctx, cr, loopbackURL, videoGridURL, outDir, opts, p); err != nil {
 		return err
 	}
 
