@@ -31,6 +31,7 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
+		// TODO (b/242590511): Deprecated after moving all performance cuj test cases to chromiumos/tast/local/bundles/cros/spera directory.
 		Func:         QuickCheckCUJ,
 		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures the smoothess of screen unlock and open an gmail thread",
