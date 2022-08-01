@@ -51,6 +51,24 @@
       "parentUuid": "81014fa1_a8e8af72",
       "revId": "bf833848c0c391487d82834be9217972cee48253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b60c9d8_d179d923",
+        "filename": "src/chromiumos/tast/local/bundles/cros/kernel/cpuidle.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-01T03:51:35Z",
+      "side": 1,
+      "message": "My pleasure to help.",
+      "parentUuid": "12e6aeb5_6927eba3",
+      "revId": "bf833848c0c391487d82834be9217972cee48253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
