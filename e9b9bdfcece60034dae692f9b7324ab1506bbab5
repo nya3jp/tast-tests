@@ -56,6 +56,30 @@
       },
       "revId": "e9b9bdfcece60034dae692f9b7324ab1506bbab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ad52fcf_53464625",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-01T07:57:57Z",
+      "side": 1,
+      "message": "I think so. I tested that on all boards I have.",
+      "parentUuid": "094f0390_5e4f829d",
+      "range": {
+        "startLine": 160,
+        "startChar": 61,
+        "endLine": 160,
+        "endChar": 77
+      },
+      "revId": "e9b9bdfcece60034dae692f9b7324ab1506bbab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
