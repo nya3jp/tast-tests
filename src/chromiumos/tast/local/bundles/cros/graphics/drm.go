@@ -174,7 +174,7 @@ func init() {
 			Val:               []string{"linear_bo_test"},
 			Timeout:           30 * time.Second,
 			ExtraHardwareDeps: hwdep.D(hwdep.InternalDisplay()),
-			ExtraSoftwareDeps: []string{"no_qemu"},
+			ExtraSoftwareDeps: []string{"no_qemu", "no_manatee"},
 			ExtraAttr:         []string{"group:mainline"},
 		}, {
 			Name:              "mapped_access_perf_test",
