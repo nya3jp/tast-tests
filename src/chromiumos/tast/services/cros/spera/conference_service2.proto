@@ -1,17 +1,19 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
 syntax = "proto3";
 
-package tast.cros.ui;
+package tast.cros.spera;
 
-option go_package = "chromiumos/tast/services/cros/ui";
+option go_package = "chromiumos/tast/services/cros/spera";
 
 import "google/protobuf/empty.proto";
 
-// ConferenceService provides RPC methods to run conference-related operations
-service ConferenceService {
+// ConferenceService2 provides RPC methods to run conference-related operations
+// TODO: There can't be duplicate service names, so temporarily add a number.
+// The number will be deleted after deleting the old service.
+service ConferenceService2 {
   rpc RunGoogleMeetScenario(MeetScenarioRequest) returns (google.protobuf.Empty);
   rpc RunZoomScenario(MeetScenarioRequest) returns (google.protobuf.Empty);
 }
