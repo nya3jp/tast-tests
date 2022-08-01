@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d424c80e_c174185f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/selinux_host_side_restorecon.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1256179
+      },
+      "writtenOn": "2022-08-01T08:39:58Z",
+      "side": 1,
+      "message": "nit: There is no 80-char line limit for Go. I think you can just append the 3rd line to the 2nd line.\n\nhttps://g3doc.corp.google.com/go/g3doc/style/guide.md?cl\u003dhead#line-length",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "5cc1a91bc027338ee23b88195b741fc883cae976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
