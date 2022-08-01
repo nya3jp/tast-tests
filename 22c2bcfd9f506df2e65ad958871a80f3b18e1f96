@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d39aceb_02b80c2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-01T05:53:04Z",
+      "side": 1,
+      "message": "Lots of clean",
+      "revId": "22c2bcfd9f506df2e65ad958871a80f3b18e1f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f7a4df_c55fd74b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-01T05:53:04Z",
+      "side": 1,
+      "message": "Put the Canary creation in a helper just like you did for the allocators.",
+      "revId": "22c2bcfd9f506df2e65ad958871a80f3b18e1f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca9f203d_cecc0aef",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_allocation_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-01T05:53:04Z",
+      "side": 1,
+      "message": "If we make the ARC specific setup and cleanup routines global, I think the only difference between HostMemoryAllocationManager and ArcMemoryAllocationManager is the code to create the textexec.Cmd. So I think we can get rid of all the duplicate code if we pass a `func (allocateMiB int64, ratio float64)` that does the command creation to a combined `NewAllocationManager`.",
+      "revId": "22c2bcfd9f506df2e65ad958871a80f3b18e1f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6ff7741_6912c3f8",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_allocation_unit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-01T05:53:04Z",
+      "side": 1,
+      "message": "Change the references to Crostini",
+      "revId": "22c2bcfd9f506df2e65ad958871a80f3b18e1f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

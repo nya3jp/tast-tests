@@ -16,6 +16,24 @@
       "message": "The code is terrible, but it at least work on environments with multivm.Lifecycle.allocate.\n\nRun\n```\ntast run $DUT multivm.MemoryAllocationCanaryHealthPerf.${CANARY}_${ALLOC_TARGET}\n\n```\n\nwhere\nCANARY :\u003d app | tab\nTARGET :\u003d host | arc\n\nSeveral things to note:\n\n1. The current implementation is waiting for the allocation to be done. 250 MiB allocation takes quite long time so I removed other lines to explicitly sleep.\n2. The result seems quite stable. Within the few runs, the maximum difference was only one allocator for all the combinations\n3. Iterations do not work because I didn\u0027t have enough time to figure out how to reactivate the dead chrome.\n4. tab_arc does not work. The allocation process in ARC seems to be killed before the background tab.\n5. Each MemoryAllocationUnit needs to keep stdin of the process otherwise the process exits with getchar(). That might be affecting the existing LifeCycle test.\n6. If each process allocates too little memory, eventually one of them is killed with \"too many open files\".\n\n",
       "revId": "eb86606c88ece6035d9eb4c294a00f63fef8e457",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d37c4b0_26566df0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368712
+      },
+      "writtenOn": "2022-08-01T05:53:04Z",
+      "side": 1,
+      "message": "1. Oh, if this is too slow, then that might be a problem. How long is quite a long time? How much is each process allocating? Is it the allocation that\u0027s slow, or the creating all the different processes.\n2. Nice!\n3. I think we\u0027d just make a new one. But we might need to manually kill the old one via the [https://developer.chrome.com/docs/extensions/reference/tabs/] API.\n4. That\u0027s expected, even if we fill up ARCVM, there should still be a bit of memory left for ChromeOS.\n5. good catch, it was pause() until recently. I don\u0027t see any new failures though, and I think the latest ones would include that change [https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dtest\u0026col\u003dbuild\u0026first_date\u003d2022-07-26\u0026last_date\u003d2022-08-01\u0026test\u003d%5Etast%5C.multivm%5C.Lifecycle%5C.crostini$\u0026exclude_cts\u003dtrue\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse]\n6. About how many processes do we have to create to run into this? Hopefully thousands?",
+      "parentUuid": "8bb15e38_917b2a75",
+      "revId": "eb86606c88ece6035d9eb4c294a00f63fef8e457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
