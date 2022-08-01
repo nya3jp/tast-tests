@@ -16,6 +16,23 @@
       "message": "@ddmail, you appear to be the only person in the intersection of {\"Contacts\" on this test} and {OWNERS for this file}. Thanks for reviewing!",
       "revId": "75d4f068c2e4aacdc4e7f7bec84bbfca8a467b8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49603d47_59e76964",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-01T16:18:18Z",
+      "side": 1,
+      "message": "Next time, please add tast-owners@ to automatically assign tast reviewers.\n\nLGTM for style but please wait for domain expert for review.",
+      "revId": "75d4f068c2e4aacdc4e7f7bec84bbfca8a467b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
