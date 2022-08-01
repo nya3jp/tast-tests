@@ -32,6 +32,22 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"tpm"},
+		Params: []testing.Param{
+			{
+				Name: "rsassa_sha1",
+				Val: []cpb.ChallengeSignatureAlgorithm{
+					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1,
+				},
+			},
+			{
+				Name: "rsassa_all",
+				Val: []cpb.ChallengeSignatureAlgorithm{
+					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1,
+					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA256,
+					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA384,
+					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA512,
+				},
+			}},
 	})
 }
 
@@ -45,7 +61,7 @@ func ChallengeResponseAuthSession(ctx context.Context, s *testing.State) {
 		testFileContent = "content"
 		keySizeBits     = 2048
 	)
-	keyAlgs := []cpb.ChallengeSignatureAlgorithm{cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1}
+	keyAlgs := s.Param().([]cpb.ChallengeSignatureAlgorithm)
 
 	// Initialize the underlying KeyDelegate for challenge.
 	cmdRunner := hwseclocal.NewCmdRunner()

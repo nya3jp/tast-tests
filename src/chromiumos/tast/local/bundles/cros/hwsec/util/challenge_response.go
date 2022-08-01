@@ -7,7 +7,6 @@ package util
 import (
 	"crypto"
 	"crypto/rsa"
-	"crypto/sha1"
 	"reflect"
 
 	"github.com/godbus/dbus/v5"
@@ -125,8 +124,10 @@ func handleChallengeKey(
 		return nil, errors.Errorf("wrong signature_algorithm: expected one of %s, got %s",
 			keyAlgs, sigReqData.SignatureAlgorithm)
 	}
-	dataToSignHash := sha1.Sum(sigReqData.DataToSign)
-	sig, err := rsa.SignPKCS1v15(nil, rsaKey, crypto.SHA1, dataToSignHash[:])
+	hashFunction, err := getHashFunction(*sigReqData.SignatureAlgorithm)
+	hash := hashFunction.New()
+	hash.Write(sigReqData.DataToSign)
+	sig, err := rsa.SignPKCS1v15(nil, rsaKey, hashFunction, hash.Sum(nil))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed generating signature")
 	}
@@ -140,4 +141,19 @@ func handleChallengeKey(
 		return nil, errors.Wrap(err, "failed marshaling KeyChallengeResponse")
 	}
 	return localMarshChallResp, nil
+}
+
+// getHashFunction returns the hash function to be used for the given challenge algorithm.
+func getHashFunction(keyAlg cpb.ChallengeSignatureAlgorithm) (crypto.Hash, error) {
+	switch keyAlg {
+	case cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1:
+		return crypto.SHA1, nil
+	case cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA256:
+		return crypto.SHA256, nil
+	case cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA384:
+		return crypto.SHA384, nil
+	case cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA512:
+		return crypto.SHA512, nil
+	}
+	return crypto.SHA1, errors.Errorf("unexpected key algorithm %v", keyAlg)
 }

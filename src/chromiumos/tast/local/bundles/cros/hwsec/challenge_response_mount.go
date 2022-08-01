@@ -28,6 +28,22 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"tpm"},
+		Params: []testing.Param{
+			{
+				Name: "rsassa_sha1",
+				Val: []cpb.ChallengeSignatureAlgorithm{
+					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1,
+				},
+			},
+			{
+				Name: "rsassa_all",
+				Val: []cpb.ChallengeSignatureAlgorithm{
+					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1,
+					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA256,
+					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA384,
+					cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA512,
+				},
+			}},
 	})
 }
 
@@ -38,7 +54,7 @@ func ChallengeResponseMount(ctx context.Context, s *testing.State) {
 		keyLabel    = "testkey"
 		keySizeBits = 2048
 	)
-	keyAlgs := []cpb.ChallengeSignatureAlgorithm{cpb.ChallengeSignatureAlgorithm_CHALLENGE_RSASSA_PKCS1_V1_5_SHA1}
+	keyAlgs := s.Param().([]cpb.ChallengeSignatureAlgorithm)
 
 	cmdRunner := hwseclocal.NewCmdRunner()
 
