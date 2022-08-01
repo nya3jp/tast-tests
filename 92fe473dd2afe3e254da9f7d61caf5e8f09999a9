@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f4e784_79a7f4d3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_simultaneous.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-01T01:37:29Z",
+      "side": 1,
+      "message": "Please add a TODO bug if LaCrOS needed.",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "92fe473dd2afe3e254da9f7d61caf5e8f09999a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a17e9c4e_0e69b225",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_simultaneous.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-01T01:37:29Z",
+      "side": 1,
+      "message": "Add a googler contact here. Probably abergman?",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "92fe473dd2afe3e254da9f7d61caf5e8f09999a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e46e5d_e80e0fe4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_simultaneous.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-01T01:37:29Z",
+      "side": 1,
+      "message": "Can you confirm this test is running in mainline?",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "92fe473dd2afe3e254da9f7d61caf5e8f09999a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6be9afa_435c4184",
+        "filename": "src/chromiumos/tast/local/media/webmedia/vimeo/vimeo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-01T01:37:29Z",
+      "side": 1,
+      "message": "The default timeout is 15s. I feel it should use relative short UI timeout.",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "92fe473dd2afe3e254da9f7d61caf5e8f09999a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e9841f0_268a110f",
+        "filename": "src/chromiumos/tast/local/media/webmedia/youtube/youtube.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-01T01:37:29Z",
+      "side": 1,
+      "message": "does this need to be 1 min?",
+      "range": {
+        "startLine": 106,
+        "startChar": 39,
+        "endLine": 106,
+        "endChar": 45
+      },
+      "revId": "92fe473dd2afe3e254da9f7d61caf5e8f09999a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
