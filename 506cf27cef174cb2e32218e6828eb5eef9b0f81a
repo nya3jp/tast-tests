@@ -16,6 +16,69 @@
       "message": "Thanks for the review, I have addressed the comments :)",
       "revId": "506cf27cef174cb2e32218e6828eb5eef9b0f81a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8946383d_195716d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-08-02T13:58:30Z",
+      "side": 1,
+      "message": "oops, sorry for the spelling mistake",
+      "revId": "506cf27cef174cb2e32218e6828eb5eef9b0f81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9537b69_187052c0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-08-02T13:58:30Z",
+      "side": 1,
+      "message": "Sorry just realized we also don\u0027t seem to need these + paygen above for the cleanup. Move below cleanup?",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "506cf27cef174cb2e32218e6828eb5eef9b0f81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e5e6466_3362cf82",
+        "filename": "src/chromiumos/tast/remote/rollback/rollback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-08-02T13:58:30Z",
+      "side": 1,
+      "message": "Maybe return a pointer to avoid having to initialize an empty struct?",
+      "range": {
+        "startLine": 48,
+        "startChar": 81,
+        "endLine": 48,
+        "endChar": 91
+      },
+      "revId": "506cf27cef174cb2e32218e6828eb5eef9b0f81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

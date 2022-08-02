@@ -377,6 +377,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0110161_95620ec2",
+        "filename": "src/chromiumos/tast/remote/rollbackutil/rollback_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1400492
+      },
+      "writtenOn": "2022-08-02T13:58:30Z",
+      "side": 1,
+      "message": "ah sorry I didn\u0027t know that.",
+      "parentUuid": "90d9de5d_9814fc17",
+      "range": {
+        "startLine": 132,
+        "startChar": 103,
+        "endLine": 132,
+        "endChar": 106
+      },
+      "revId": "8c8144781c26471b1636b616b16a0a641cde1054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "912e150a_b3410078",
