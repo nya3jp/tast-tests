@@ -22,6 +22,30 @@
       },
       "revId": "77c596c3dc970932f8ebb28e7b14a3a53fd38aee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7342dfca_f164ebec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/auto_hide_smoke.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-02T20:18:54Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3af11a6f_21994d37",
+      "range": {
+        "startLine": 134,
+        "startChar": 41,
+        "endLine": 134,
+        "endChar": 43
+      },
+      "revId": "77c596c3dc970932f8ebb28e7b14a3a53fd38aee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
