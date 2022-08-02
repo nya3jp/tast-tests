@@ -124,6 +124,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1af01d46_7f7dab93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-02T22:00:32Z",
+      "side": 1,
+      "message": "ready for another round of the review.",
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07367293_b452076a",
@@ -137,6 +154,24 @@
       "writtenOn": "2022-08-01T16:57:55Z",
       "side": 1,
       "message": "Please remove this TODO.",
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b1f6b4_d9fb69bd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-02T22:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07367293_b452076a",
       "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -259,6 +294,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c39cd267_991398ca",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-02T22:00:32Z",
+      "side": 1,
+      "message": "Yes, initially implemented in that way that takes []chrome.Option as an arg, then moved to using `OptionsCallback` in the latest patch just for consistency with the standard fixtures like `chrome.NewLoggedInFixture` that takes `OptionsCallback` instead. Please let me know if there is any handy way to do this.",
+      "parentUuid": "e936e0cd_9905c85c",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "218d35fd_24695a4a",
@@ -272,6 +331,30 @@
       "writtenOn": "2022-08-01T13:16:29Z",
       "side": 1,
       "message": "So, this should be passed to fOpts to pass lacros.NewConfig() ?",
+      "range": {
+        "startLine": 86,
+        "startChar": 21,
+        "endLine": 86,
+        "endChar": 77
+      },
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9521f2df_9acc82b7",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-02T22:00:32Z",
+      "side": 1,
+      "message": "Done. Thanks for the catch,",
+      "parentUuid": "218d35fd_24695a4a",
       "range": {
         "startLine": 86,
         "startChar": 21,

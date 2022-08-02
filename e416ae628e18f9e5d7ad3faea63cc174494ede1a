@@ -63,6 +63,30 @@
       },
       "revId": "e416ae628e18f9e5d7ad3faea63cc174494ede1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05b1d360_e9f9909d",
+        "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-02T22:00:32Z",
+      "side": 1,
+      "message": "This is a dup to another comment that is now resolved in the latest patch. Marking as resolved.",
+      "parentUuid": "f262ee95_117a2437",
+      "range": {
+        "startLine": 27,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 130
+      },
+      "revId": "e416ae628e18f9e5d7ad3faea63cc174494ede1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
