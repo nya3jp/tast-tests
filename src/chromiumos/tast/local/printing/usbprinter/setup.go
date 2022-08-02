@@ -113,6 +113,18 @@ func WithOutputLogDirectory(directory string) Option {
 	}
 }
 
+// WithHTTPLogDirectory sets the HTTP log directory.
+func WithHTTPLogDirectory(directory string) Option {
+	return func(o *config) error {
+		if !path.IsAbs(directory) {
+			return errors.Errorf("HTTP log directory (%q) is not an absolute path",
+				directory)
+		}
+		o.args = append(o.args, "--http_header_output_dir="+directory)
+		return nil
+	}
+}
+
 // WithRecordPath sets the document output path.
 func WithRecordPath(record string) Option {
 	return func(o *config) error {
