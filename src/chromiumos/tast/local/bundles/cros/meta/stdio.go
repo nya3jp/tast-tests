@@ -15,7 +15,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:     Stdio,
-		Desc:     "Ensures that accessing stdin/stdout does not harm test execution",
+		Desc:     "Ensures that accessing stdin/stdout does not harm test execution.",
 		Contacts: []string{"nya@chromium.org", "tast-owners@google.com"},
 		Attr:     []string{"group:mainline", "group:meta"},
 	})
