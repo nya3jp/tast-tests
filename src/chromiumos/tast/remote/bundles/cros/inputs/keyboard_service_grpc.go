@@ -28,7 +28,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         KeyboardServiceGRPC,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Check basic functionality of KeyboardService",
 		Contacts:     []string{"jonfan@google.com", "chromeos-sw-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
