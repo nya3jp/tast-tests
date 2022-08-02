@@ -143,7 +143,10 @@ func AddRemovePin(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to add and authenticate with pin authfactor: ", err)
 	}
 
-	// Remove the pin auth factor.
+	if _, err := client.CheckVault(ctx, pinLabel, hwsec.NewPassAuthConfig(userName, userPin)); err != nil {
+		s.Fatal("CheckVault failed for pin: ", err)
+	}
+
 	if err := client.RemoveAuthFactor(ctx, authSessionID, pinLabel); err != nil {
 		s.Fatal("Failed to create persistent user: ", err)
 	}
