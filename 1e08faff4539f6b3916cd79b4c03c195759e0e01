@@ -33,6 +33,40 @@
       "message": "shadow reviewer lgtm for tast",
       "revId": "1e08faff4539f6b3916cd79b4c03c195759e0e01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf949d4c_a14d4129",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/resize_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-02T09:13:38Z",
+      "side": 1,
+      "message": "question:\nIs this cleanup needed always, or can be covered by Chrome cleanup or chrome.New()?\nI wondered if we need to take care of the case where ctx is timed out after this line.",
+      "revId": "1e08faff4539f6b3916cd79b4c03c195759e0e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64d7a079_09dc455b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/resize_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-02T09:13:38Z",
+      "side": 1,
+      "message": "[nit, optional]\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#When-to-log\nSomething like \"waiting for the window of App %q to be shown\" might be more consistent.",
+      "revId": "1e08faff4539f6b3916cd79b4c03c195759e0e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
