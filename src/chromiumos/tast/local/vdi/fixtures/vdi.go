@@ -9,6 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/tape"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -21,6 +23,9 @@ import (
 	"chromiumos/tast/local/vdi/apps/vmware"
 	"chromiumos/tast/testing"
 )
+
+// CitrixUsernamePrefix is the prefix before username (i.e. cros-citrix\user_1).
+const CitrixUsernamePrefix = "cros-citrix\\"
 
 func init() {
 	testing.AddFixture(&testing.Fixture{
@@ -36,15 +41,13 @@ func init() {
 			usernameKey:           "vdi.ota_citrix_username",
 			passwordKey:           "vdi.ota_citrix_password",
 			vdiServerKey:          "vdi.citrix_url",
-			vdiUsernameKey:        "vdi.citrix_username",
-			vdiPasswordKey:        "vdi.citrix_password",
+			useTape:               true,
 		},
 		Vars: []string{
+			tape.ServiceAccountVar,
 			"vdi.ota_citrix_username",
 			"vdi.ota_citrix_password",
 			"vdi.citrix_url",
-			"vdi.citrix_username",
-			"vdi.citrix_password",
 			"uidetection.key_type",
 			"uidetection.key",
 			"uidetection.server",
@@ -71,6 +74,7 @@ func init() {
 			vdiServerKey:          "vdi.vmware_url",
 			vdiUsernameKey:        "vdi.vmware_username",
 			vdiPasswordKey:        "vdi.vmware_password",
+			useTape:               false,
 		},
 		Vars: []string{
 			"vdi.ota_vmware_username",
@@ -111,6 +115,10 @@ type fixtureState struct {
 	vdiUsernameKey string
 	// vdiPasswordKey is a key to retrieve VDI user password.
 	vdiPasswordKey string
+	// useTape is a flag to use Tape for leasing a vdi account.
+	useTape bool
+	// tapeAccountManager is used for cleaning up Tape.
+	tapeAccountManager *tape.GenericAccountManager
 }
 
 // FixtureData is the type returned by vdi related fixtures. It holds the vdi
@@ -162,11 +170,29 @@ type IsInKioskMode interface {
 }
 
 func (v *fixtureState) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	username := s.RequiredVar(v.usernameKey)
-	password := s.RequiredVar(v.passwordKey)
+	var vdiUsername, vdiPassword string
+
+	otaUsername := s.RequiredVar(v.usernameKey)
+	otaPassword := s.RequiredVar(v.passwordKey)
+	vdiServer := s.RequiredVar(v.vdiServerKey)
+
+	if v.useTape {
+		// TODO(b/242841251): Refactor leasing tape accounts.
+		// Create an account manager and lease a vdi test account for the specified timeout as there are several sets in the scope of this fixture.
+		accHelper, acc, err := tape.NewGenericAccountManager(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)), tape.WithTimeout(30*60), tape.WithPoolID(tape.Citrix))
+		if err != nil {
+			s.Fatal("Failed to create an account manager and lease a Citrix account: ", err)
+		}
+		v.tapeAccountManager = accHelper
+		vdiUsername = CitrixUsernamePrefix + acc.Username
+		vdiPassword = acc.Password
+	} else {
+		vdiUsername = s.RequiredVar(v.vdiUsernameKey)
+		vdiPassword = s.RequiredVar(v.vdiPasswordKey)
+	}
 
 	cr, err := chrome.New(ctx,
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.GAIALogin(chrome.Creds{User: otaUsername, Pass: otaPassword}),
 		chrome.ProdPolicy(),
 	)
 	if err != nil {
@@ -221,9 +247,9 @@ func (v *fixtureState) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	if err := v.vdiConnector.Login(
 		ctx,
 		&vdiApps.VDILoginConfig{
-			Server:   s.RequiredVar(v.vdiServerKey),
-			Username: s.RequiredVar(v.vdiUsernameKey),
-			Password: s.RequiredVar(v.vdiPasswordKey),
+			Server:   vdiServer,
+			Username: vdiUsername,
+			Password: vdiPassword,
 		}); err != nil {
 		s.Fatal("Was not able to login to the VDI application: ", err)
 	}
@@ -238,6 +264,15 @@ func (v *fixtureState) SetUp(ctx context.Context, s *testing.FixtState) interfac
 }
 
 func (v *fixtureState) TearDown(ctx context.Context, s *testing.FixtState) {
+	// Use a shortened context to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
+	defer cancel()
+
+	if v.useTape {
+		v.tapeAccountManager.CleanUp(cleanupCtx)
+	}
+
 	if err := v.vdiConnector.Logout(ctx); err != nil {
 		s.Error("Couldn't logout from the VDI application: ", err)
 	}
