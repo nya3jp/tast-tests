@@ -50,6 +50,24 @@
       "message": "could you keep unstable variations?",
       "revId": "27a2d95950a17d31ca9e4ff6c3e9217e22bb5826",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8bab98_037c9caa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_pinned_stream.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2022-08-02T10:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6757a38f_d44b42bc",
+      "revId": "27a2d95950a17d31ca9e4ff6c3e9217e22bb5826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
