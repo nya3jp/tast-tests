@@ -31,6 +31,7 @@ const (
 var (
 	videoPlayer = nodewith.NameStartingWith("YouTube Video Player").Role(role.GenericContainer)
 	video       = nodewith.Role(role.Video).Ancestor(videoPlayer)
+	videoButton = nodewith.Role(role.Button).Ancestor(videoPlayer).NameRegex(regexp.MustCompile("^(Pause|Play).*"))
 )
 
 // YtWeb defines the struct related to youtube web.
@@ -70,7 +71,11 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 	if err != nil {
 		return errors.Wrap(err, "failed to open youtube tab")
 	}
-
+	// Lacros will focus on the search bar after navigating, press Enter to make sure the focus is on the webarea.
+	searchBar := nodewith.Role(role.TextField).Name("Address and search bar").Focused()
+	if err := uiauto.IfSuccessThen(y.ui.Exists(searchBar), y.kb.AccelAction("Enter"))(ctx); err != nil {
+		return err
+	}
 	if err := webutil.WaitForYoutubeVideo(ctx, y.ytConn, 0); err != nil {
 		return errors.Wrap(err, "failed to wait for video element")
 	}
@@ -96,6 +101,15 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 
 	if err := clearNotificationPrompts(ctx, y.ui); err != nil {
 		return errors.Wrap(err, "failed to clear notification prompts")
+	}
+
+	// Use keyboard to play/pause video and ensure PageLoad.PaintTiming.NavigationToLargestContentfulPaint2
+	// can be generated correctly. See b/240998447.
+	if err := uiauto.Combine("pause and play with keyboard",
+		y.Pause(),
+		y.Play(),
+	)(ctx); err != nil {
+		return errors.Wrap(err, "failed to pause and play before switching quality")
 	}
 
 	// Default expected display is main display.
@@ -124,9 +138,6 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		// Dut to the different response time of different DUTs, we need to combine these actions in Poll() to
 		// make quality switch works reliably.
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if err := y.ui.DoDefault(videoPlayer)(ctx); err != nil {
-				return errors.Wrap(err, "failed to click YouTube Video Player to bring up settings panel")
-			}
 			// If an ad is playing, skip it before proceeding.
 			if err := y.SkipAd()(ctx); err != nil {
 				return errors.Wrap(err, "failed to click 'Skip Ad' button")
@@ -163,13 +174,8 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 			return errors.Wrap(err, "failed to wait for Youtube ready state")
 		}
 
-		// Clicked the center of video player to show setting panel might pause the video.
-		// (mouse-click will, but touch-tap won't)
-		// Here let the video keep playing anyway when switch the quality is finished.
-		if err := y.ui.WithTimeout(longUITimeout).RetryUntil(y.Play(), y.IsPlaying())(ctx); err != nil {
-			return errors.Wrap(err, "failed to verify video is playing")
-		}
-		return nil
+		// Keep the video playing anyway when switch the quality is finished.
+		return uiauto.IfFailThen(y.IsPlaying(), y.Play())(ctx)
 	}
 
 	if err := switchQuality(y.video.Quality); err != nil {
@@ -181,7 +187,8 @@ func (y *YtWeb) OpenAndPlayVideo(ctx context.Context) (err error) {
 		return errors.Wrap(err, "failed to get window ID")
 	}
 
-	return nil
+	// Ensure the video is playing.
+	return uiauto.IfFailThen(y.IsPlaying(), y.Play())(ctx)
 }
 
 // EnterFullscreen switches youtube video to fullscreen.
@@ -298,45 +305,26 @@ func (y *YtWeb) RestoreWindow(ctx context.Context) error {
 
 // PauseAndPlayVideo verifies video playback on youtube web.
 func (y *YtWeb) PauseAndPlayVideo(ctx context.Context) error {
-	testing.ContextLog(ctx, "Pause and play video")
-
-	// The video should be playing at this point. However, we'll double check to make sure
-	// as we have seen a few cases where the video became paused automatically.
-	if err := y.Play()(ctx); err != nil {
-		return errors.Wrap(err, "failed to play the video")
-	}
-
-	return uiauto.Combine("check the playing status of youtube video",
+	return uiauto.NamedCombine("pause and play video",
 		y.SkipAd(),
+		// The video should be playing at this point. However, we'll double check to make sure
+		// as we have seen a few cases where the video became paused automatically.
+		uiauto.IfFailThen(y.IsPlaying(), y.Play()),
 		y.Pause(),
 		y.Play(),
 	)(ctx)
 }
 
-// Play plays the video by clicking the video itself. If the video has already started playing, the function does nothing.
+// Play returns a function to play the video.
 func (y *YtWeb) Play() uiauto.Action {
-	return func(ctx context.Context) error {
-		if err := y.IsPlaying()(ctx); err != nil {
-			return uiauto.NamedCombine("play video",
-				y.ui.MouseMoveTo(video, mouseMoveDuration),
-				y.ui.DoDefault(video),
-			)(ctx)
-		}
-		return nil
-	}
+	return uiauto.IfSuccessThen(y.IsPaused(), uiauto.NamedCombine("play video",
+		y.ui.WithTimeout(longUITimeout).RetryUntil(y.kb.TypeAction("k"), y.IsPlaying())))
 }
 
-// Pause pauses the video by clicking the video itself.
+// Pause returns a function to pause the video.
 func (y *YtWeb) Pause() uiauto.Action {
-	return func(ctx context.Context) error {
-		if err := y.IsPaused()(ctx); err != nil {
-			return uiauto.NamedCombine("pause video",
-				y.ui.MouseMoveTo(video, mouseMoveDuration),
-				y.ui.DoDefault(video),
-			)(ctx)
-		}
-		return nil
-	}
+	return uiauto.IfSuccessThen(y.IsPlaying(), uiauto.NamedCombine("pause video",
+		y.ui.WithTimeout(longUITimeout).RetryUntil(y.kb.TypeAction("k"), y.IsPaused())))
 }
 
 const (
@@ -356,13 +344,15 @@ func (y *YtWeb) getPlayButtonTitle(ctx context.Context) (result string, err erro
 func (y *YtWeb) IsPlaying() uiauto.Action {
 	return func(ctx context.Context) error {
 		return testing.Poll(ctx, func(ctx context.Context) error {
-			if title, err := y.getPlayButtonTitle(ctx); err != nil {
+			title, err := y.getPlayButtonTitle(ctx)
+			if err != nil {
 				return err
-			} else if title == pauseButton {
-				testing.ContextLog(ctx, "Verify youtube is playing")
+			}
+			if title == pauseButton {
+				testing.ContextLog(ctx, "Youtube is playing")
 				return nil
 			}
-			return errors.New("youtube is not playing")
+			return errors.Errorf("youtube is not playing; got (%s)", title)
 		}, &testing.PollOptions{Timeout: 10 * time.Second})
 	}
 }
@@ -371,13 +361,15 @@ func (y *YtWeb) IsPlaying() uiauto.Action {
 func (y *YtWeb) IsPaused() uiauto.Action {
 	return func(ctx context.Context) error {
 		return testing.Poll(ctx, func(ctx context.Context) error {
-			if title, err := y.getPlayButtonTitle(ctx); err != nil {
+			title, err := y.getPlayButtonTitle(ctx)
+			if err != nil {
 				return err
-			} else if title == playButton {
-				testing.ContextLog(ctx, "Verify youtube is paused")
+			}
+			if title == playButton {
+				testing.ContextLog(ctx, "Youtube is paused")
 				return nil
 			}
-			return errors.New("youtube is not paused")
+			return errors.Errorf("youtube is not paused; got (%s)", title)
 		}, &testing.PollOptions{Timeout: 10 * time.Second})
 	}
 }
