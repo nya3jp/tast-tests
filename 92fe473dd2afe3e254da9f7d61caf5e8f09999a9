@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a1ff2da_b41e400a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_simultaneous.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-02T01:36:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01f4e784_79a7f4d3",
+      "range": {
+        "startLine": 27,
+        "startChar": 24,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "92fe473dd2afe3e254da9f7d61caf5e8f09999a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a17e9c4e_0e69b225",
@@ -94,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da48e54_17d075a4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/playback_simultaneous.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-02T01:36:02Z",
+      "side": 1,
+      "message": "Sorry for the mishandling, MTBF tests are not included in mainline or crosbolt for now.",
+      "parentUuid": "39e46e5d_e80e0fe4",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "92fe473dd2afe3e254da9f7d61caf5e8f09999a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6be9afa_435c4184",
@@ -117,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d802e471_5605e6be",
+        "filename": "src/chromiumos/tast/local/media/webmedia/vimeo/vimeo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-02T01:36:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6be9afa_435c4184",
+      "range": {
+        "startLine": 46,
+        "startChar": 14,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "92fe473dd2afe3e254da9f7d61caf5e8f09999a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e9841f0_268a110f",
@@ -130,6 +202,30 @@
       "writtenOn": "2022-08-01T01:37:29Z",
       "side": 1,
       "message": "does this need to be 1 min?",
+      "range": {
+        "startLine": 106,
+        "startChar": 39,
+        "endLine": 106,
+        "endChar": 45
+      },
+      "revId": "92fe473dd2afe3e254da9f7d61caf5e8f09999a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b425bdf_b338ad72",
+        "filename": "src/chromiumos/tast/local/media/webmedia/youtube/youtube.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-02T01:36:02Z",
+      "side": 1,
+      "message": "Reduce timeout to 30s and add extra comments.",
+      "parentUuid": "2e9841f0_268a110f",
       "range": {
         "startLine": 106,
         "startChar": 39,
