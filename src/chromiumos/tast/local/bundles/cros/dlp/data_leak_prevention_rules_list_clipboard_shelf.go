@@ -160,44 +160,12 @@ func DataLeakPreventionRulesListClipboardShelf(ctx context.Context, s *testing.S
 				s.Fatal("Failed to parse blocked server url: ", err)
 			}
 
-			s.Log("Right clicking shelf box")
-			if err := rightClickShelfbox(ctx, tconn, parsedSourceURL.Hostname(), param.wantAllowed); err != nil {
-				s.Error("Failed to right click shelf box: ", err)
-			}
-
 			s.Log("Pasting content in shelf box")
 			if err := pasteShelfbox(ctx, tconn, keyboard, parsedSourceURL.Hostname(), param.wantAllowed); err != nil {
 				s.Error("Failed to paste content in shelf box: ", err)
 			}
 		})
 	}
-}
-
-func rightClickShelfbox(ctx context.Context, tconn *chrome.TestConn, url string, wantAllowed bool) error {
-	ui := uiauto.New(tconn)
-
-	searchNode := nodewith.ClassName("SearchBoxView").First()
-	if err := uiauto.Combine("Right clickshelf box",
-		ui.LeftClick(searchNode),
-		ui.RightClick(searchNode))(ctx); err != nil {
-		return errors.Wrap(err, "failed to right click shelf box")
-	}
-
-	err := clipboard.CheckGreyPasteNode(ctx, ui)
-	if err != nil && !wantAllowed {
-		return err
-	}
-	if err == nil && wantAllowed {
-		return errors.New("Paste node found greyed, expected focusable")
-	}
-
-	err = clipboard.CheckClipboardBubble(ctx, ui, url)
-	// Clipboard DLP bubble is never expected on right click.
-	if err == nil {
-		return errors.New("Notification found, expected none")
-	}
-
-	return nil
 }
 
 func pasteShelfbox(ctx context.Context, tconn *chrome.TestConn, keyboard *input.KeyboardEventWriter, url string, wantAllowed bool) error {
