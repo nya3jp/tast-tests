@@ -22,6 +22,30 @@
       },
       "revId": "0a896070827d174a925eca5e23b7494287b57cb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e25ccd_a1bb6d78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/cryptohome/user_secret_stash.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-08-02T08:08:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "199cbc07_afa5da1e",
+      "range": {
+        "startLine": 123,
+        "startChar": 25,
+        "endLine": 123,
+        "endChar": 26
+      },
+      "revId": "0a896070827d174a925eca5e23b7494287b57cb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
