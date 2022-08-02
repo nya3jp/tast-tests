@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ab31eb_c157725b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Hi Shuo-Peng Liao,\nI done all of them,\nAnd also update comments on dock1 and other utils file for more regular English sentence and ending period.\n\nFunction wasn\u0027t be changed. And I also do same tests. And all passed. Please check here.\nhttps://drive.google.com/drive/u/2/folders/1bYD2Nf47TdKJLJmRcYGb_ktT2vflp_ED",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

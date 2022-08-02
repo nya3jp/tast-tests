@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca243c3_220be7fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cb7cbb9_09c883d1",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0aaf73c_4e30bc38",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a7bf09a_b4bd512b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0aaf73c_4e30bc38",
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c48f90f_1f4fac9c",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-07-28T05:21:50Z",
       "side": 1,
       "message": "Why do we need this?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "806b80c8_2a5304f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c48f90f_1f4fac9c",
       "range": {
         "startLine": 12,
         "startChar": 0,
@@ -127,6 +193,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee21d342_95e23a86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1664b49_0acc8d6e",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03afcbd1_37ec133e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb1990ab_f91fb7a7",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "932ee182_d085ff31",
@@ -140,6 +254,24 @@
       "writtenOn": "2022-07-28T05:21:50Z",
       "side": 1,
       "message": "Ending period.",
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3155cef2_9a01f8b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "932ee182_d085ff31",
       "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +293,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d06835d8_8007cfc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_constants.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc6dc9d6_53e77fa5",
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49de9577_c1c3b0a0",
@@ -174,6 +324,24 @@
       "writtenOn": "2022-07-28T05:21:50Z",
       "side": 1,
       "message": "Find\nand ending period.\n\nA comment is a regular English sentence. Please follow English grammar.\n\nSame below for the updated comments.",
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e1c141b_5ec02ae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49de9577_c1c3b0a0",
       "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -201,6 +369,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4327775a_628e3302",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a3a931_bf0655ac",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 23
+      },
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fab41e2c_4f8511e3",
@@ -218,6 +410,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36b5e7d0_3e951a89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fab41e2c_4f8511e3",
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "854818da_8dc47367",
@@ -231,6 +441,24 @@
       "writtenOn": "2022-07-28T05:21:50Z",
       "side": 1,
       "message": "Instead of converting wantState to bool, we may assign extAudioState as either IsConnect os IsDisconnect.\n\nAlso, mixing the use of state and status confuses reader. Please avoid.",
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58b8fb5b_fd71de1d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done.\n\nUse isConnect instead.\nAlso remove ConnectState.",
+      "parentUuid": "854818da_8dc47367",
       "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -258,6 +486,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8ba9d3_b67c2b8a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97d033e7_e9902511",
+      "range": {
+        "startLine": 54,
+        "startChar": 25,
+        "endLine": 54,
+        "endChar": 64
+      },
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a747015d_41ac071d",
@@ -275,6 +527,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3071f22d_6761e734",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a747015d_41ac071d",
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0840ec3d_8d075587",
@@ -288,6 +558,24 @@
       "writtenOn": "2022-07-28T05:21:50Z",
       "side": 1,
       "message": "May follow VerifyPowerStatus()\u0027s method:\n```\nvar wantEthOperState  string\nif wantState {\n  wantEthOperState \u003d \"UP\"\n} else {\n  wantEthOperState \u003d \"DOWN\"\n}\n```\n\nSo that you don\u0027t dup the logic of returning error when state is unexpected.",
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69c5f08f_45339c84",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0840ec3d_8d075587",
       "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -332,6 +620,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6597cad3_084e661d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98591c8a_5b99d03c",
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e669b6_7ef3f43f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "453583c5_51094710",
+      "range": {
+        "startLine": 78,
+        "startChar": 61,
+        "endLine": 78,
+        "endChar": 63
+      },
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d51152c4_9bb509f8",
@@ -345,6 +675,24 @@
       "writtenOn": "2022-07-28T05:21:50Z",
       "side": 1,
       "message": "DOWN",
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f818b069_8d952a19",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d51152c4_9bb509f8",
       "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -395,6 +743,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d110e7de_4ea67966",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f94b0e2b_033c735a",
+      "range": {
+        "startLine": 112,
+        "startChar": 25,
+        "endLine": 112,
+        "endChar": 31
+      },
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4588055_fddfdfc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2671281d_0c79d021",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 24
+      },
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7ef25fb_72eec0c1",
@@ -408,6 +804,30 @@
       "writtenOn": "2022-07-28T05:21:50Z",
       "side": 1,
       "message": "Use ... .",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 6
+      },
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45d7b0d1_ac418e63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7ef25fb_72eec0c1",
       "range": {
         "startLine": 113,
         "startChar": 3,
@@ -441,6 +861,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "465e9d5e_7837c63a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79ac6577_82b8fd81",
+      "range": {
+        "startLine": 114,
+        "startChar": 72,
+        "endLine": 114,
+        "endChar": 76
+      },
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "721c3eff_cea67b74",
@@ -454,6 +898,30 @@
       "writtenOn": "2022-07-28T05:21:50Z",
       "side": 1,
       "message": "Need this?",
+      "range": {
+        "startLine": 121,
+        "startChar": 83,
+        "endLine": 121,
+        "endChar": 103
+      },
+      "revId": "4fa8fd29437e6b06faa83cf8fa37453625d555f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9b05373_38e5f7f3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_verify.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-02T07:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "721c3eff_cea67b74",
       "range": {
         "startLine": 121,
         "startChar": 83,
