@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d96708ef_a13dc602",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-02T18:01:45Z",
+      "side": 1,
+      "message": "I just want to make sure the cleanup is done correctly when the test failed. If I read the code correctly, the test will only get out of overview mode if there are no errors in the tests. I think it may be better to do the cleanup in a defer function. Thanks.",
+      "revId": "428ded932e541a8274d3edce86e964685c7e955f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2d9ea21_1e7df822",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
         "patchSetId": 1
