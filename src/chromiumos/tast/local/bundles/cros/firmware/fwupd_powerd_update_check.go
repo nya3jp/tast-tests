@@ -50,14 +50,11 @@ func init() {
 func FwupdPowerdUpdateCheck(ctx context.Context, s *testing.State) {
 	charge := s.Param().(bool)
 
-	if cleanup, err := fwupd.SetFwupdChargingState(ctx, charge); err != nil {
+	if !charge {
+		defer fwupd.SetFwupdChargingState(ctx, !charge)
+	}
+	if err := fwupd.SetFwupdChargingState(ctx, charge); err != nil {
 		s.Fatal("Failed to set charging state: ", err)
-	} else {
-		defer func() {
-			if err := cleanup(ctx); err != nil {
-				s.Fatal("Failed to cleanup: ", err)
-			}
-		}()
 	}
 
 	// This command runs an update on a fake device to see how fwupd behaves.

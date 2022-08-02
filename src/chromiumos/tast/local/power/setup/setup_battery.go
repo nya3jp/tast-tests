@@ -20,12 +20,12 @@ type chargeControlState struct {
 }
 
 var (
-	ccDontCharge = chargeControlState{"dontcharge", "Override port set to -2"}
-	ccOff        = chargeControlState{"off", "Override port set to -1"}
+	ccDischarge = chargeControlState{"discharge", "Charge state machine force discharge."}
+	ccNormal    = chargeControlState{"normal", "Charge state machine is in normal mode."}
 )
 
 func setChargeControl(ctx context.Context, s chargeControlState) error {
-	stdout, stderr, err := testexec.CommandContext(ctx, "ectool", "chargeoverride", s.state).SeparatedOutput(testexec.DumpLogOnError)
+	stdout, stderr, err := testexec.CommandContext(ctx, "ectool", "chargecontrol", s.state).SeparatedOutput(testexec.DumpLogOnError)
 	if err != nil {
 		return errors.Wrapf(err, "unable to set battery charge to %s, got error %s", s.state, string(stderr))
 	}
@@ -68,7 +68,7 @@ func SetBatteryDischarge(ctx context.Context, expectedMaxCapacityDischarge float
 		return nil, errors.Errorf("battery percent %.2f is too low to start discharging", capacity)
 	}
 
-	if err := setChargeControl(ctx, ccDontCharge); err != nil {
+	if err := setChargeControl(ctx, ccDischarge); err != nil {
 		return nil, err
 	}
 
@@ -87,11 +87,6 @@ func SetBatteryDischarge(ctx context.Context, expectedMaxCapacityDischarge float
 		// wasn't set before the test because leaving the device disharging
 		// could cause a device to shut down.
 		testing.ContextLog(ctx, "Resetting battery discharge to normal. Discharge during test: ", dischargePercent, "% (", dischargeWh, "Wh)")
-		return setChargeControl(ctx, ccOff)
+		return setChargeControl(ctx, ccNormal)
 	}, nil
-}
-
-// AllowBatteryCharging will re-enable AC power and allow the battery to charge.
-func AllowBatteryCharging(ctx context.Context) error {
-	return setChargeControl(ctx, ccOff)
 }
