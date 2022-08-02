@@ -20,5 +20,5 @@ func init() {
 }
 
 func Pass(ctx context.Context, s *testing.State) {
-	// No errors means the test passed.
+	// No errors means the test passed..
 }
