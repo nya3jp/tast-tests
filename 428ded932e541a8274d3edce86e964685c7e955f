@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61544a0b_57f3f34b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-02T16:35:04Z",
+      "side": 1,
+      "message": "I have two questions. Also, please run Tast unit test: fast_build.sh -T\n\nThen, add this line to the commit log\n\nTEST\u003dtast unit test passed.\n\nThanks.\n",
+      "revId": "428ded932e541a8274d3edce86e964685c7e955f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2d9ea21_1e7df822",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-02T16:35:04Z",
+      "side": 1,
+      "message": "Do you need to check if you are already in overview mode first? Or it is impossible to be in overview mode before this stage?",
+      "revId": "428ded932e541a8274d3edce86e964685c7e955f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39921b09_f239b688",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-02T16:35:04Z",
+      "side": 1,
+      "message": "How do you ensure you are in overview mode before this line?",
+      "revId": "428ded932e541a8274d3edce86e964685c7e955f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
