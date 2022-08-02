@@ -140,6 +140,15 @@ const (
 	DRMTraceCategoryDRMRes                    = 0x200
 )
 
+// PaperDebugCategories is a bitmask used as an argument to the PaperDebugSetCategories method.
+type PaperDebugCategories uint32
+
+// This must match the PaperDebugCategories flags defined in org.chromium.debugd.xml.
+const (
+	PaperDebugCategoryPrinting PaperDebugCategories = 0x1
+	PaperDebugCategoryScanning PaperDebugCategories = 0x2
+)
+
 // Debugd is used to interact with the debugd process over D-Bus.
 // For detailed spec of each D-Bus method, please find
 // src/platform2/debugd/dbus_bindings/org.chromium.debugd.xml
@@ -278,6 +287,14 @@ func (d *Debugd) GetPerfOutputV2(ctx context.Context, quipperArgs []string, disa
 func (d *Debugd) StopPerf(ctx context.Context, sessionID uint64) error {
 	if err := d.call(ctx, "StopPerf", sessionID).Err; err != nil {
 		return errors.Wrap(err, "failed to call StopPerf")
+	}
+	return nil
+}
+
+// PaperDebugSetCategories calls debugd's PaperDebugSetCategories D-Bus method.
+func (d *Debugd) PaperDebugSetCategories(ctx context.Context, categories PaperDebugCategories) (err error) {
+	if err := d.call(ctx, "PaperDebugSetCategories", uint32(categories)).Err; err != nil {
+		return errors.Wrap(err, "failed to call PaperDebugSetCategories")
 	}
 	return nil
 }
