@@ -30,9 +30,8 @@ func init() {
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
 		},
-		Attr: []string{"group:mainline", "group:wificell", "wificell_func"},
-		// TODO(b/149247291): remove the elm/hana 3.18 dependency once elm/hana upreved kernel to 4.19 or above.
-		SoftwareDeps: []string{"wifi", "shill-wifi", "no_elm_hana_3_18"},
+		Attr:         []string{"group:mainline", "group:wificell", "wificell_func"},
+		SoftwareDeps: []string{"wifi", "shill-wifi"},
 	})
 }
 
