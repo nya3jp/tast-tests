@@ -13,7 +13,11 @@ import (
 	"strconv"
 	"time"
 
+	grpc "google.golang.org/grpc"
+
+	"chromiumos/tast/common/tape"
 	"chromiumos/tast/errors"
+	ts "chromiumos/tast/services/cros/tape"
 	"chromiumos/tast/testing"
 )
 
@@ -142,4 +146,23 @@ func LookupEvents(ctx context.Context, reportingServerURL, obfuscatedCustomerID,
 		return nil, errors.Wrap(err, "failed to unmarshal response")
 	}
 	return resData.Event, nil
+}
+
+// Deprovision deprovisions the DUT. This should be used after the test is over.
+func Deprovision(ctx context.Context, cc grpc.ClientConnInterface, serviceAccountVar []byte, customerID string) error {
+	tapeClient, err := tape.NewClient(ctx, serviceAccountVar)
+	if err != nil {
+		return errors.Wrap(err, "failed to create tape client")
+	}
+
+	tapeService := ts.NewServiceClient(cc)
+	// Get the device id of the DUT to deprovision it at the end of the test.
+	res, err := tapeService.GetDeviceID(ctx, &ts.GetDeviceIDRequest{CustomerID: "C" + customerID})
+	if err != nil {
+		return errors.Wrap(err, "failed to get the deviceID")
+	}
+
+	if err = tapeClient.Deprovision(ctx, res.DeviceID, customerID); err != nil {
+		return errors.Wrap(err, "failed to deprovision device")
+	}
 }

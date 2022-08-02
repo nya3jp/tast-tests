@@ -12,6 +12,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes/empty"
 
+	"chromiumos/tast/common/tape"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/policyutil"
 	"chromiumos/tast/remote/reportingutil"
@@ -32,13 +33,14 @@ func init() {
 		},
 		Attr:         []string{"group:dpanel-end2end", "group:enterprise-reporting"},
 		SoftwareDeps: []string{"reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService"},
+		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService", "tast.cros.tape.Service"},
 		Timeout:      7 * time.Minute,
 		VarDeps: []string{
 			"policy.HeartbeatReporting.user_name",
 			"policy.HeartbeatReporting.password",
 			reportingutil.ManagedChromeCustomerIDPath,
 			reportingutil.EventsAPIKeyPath,
+			tape.ServiceAccountVar,
 		},
 	})
 }
@@ -72,6 +74,7 @@ func HeartbeatReporting(ctx context.Context, s *testing.State) {
 	pass := s.RequiredVar("policy.HeartbeatReporting.password")
 	cID := s.RequiredVar(reportingutil.ManagedChromeCustomerIDPath)
 	APIKey := s.RequiredVar(reportingutil.EventsAPIKeyPath)
+	sa := []byte(s.RequiredVar(tape.ServiceAccountVar))
 
 	defer func(ctx context.Context) {
 		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
@@ -88,6 +91,7 @@ func HeartbeatReporting(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 	defer cl.Close(ctx)
+	defer reportingutil.Deprovision(ctx, cl.Conn, s, sa, cID)
 
 	policyClient := ps.NewPolicyServiceClient(cl.Conn)
 
