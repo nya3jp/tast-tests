@@ -16,6 +16,23 @@
       "message": "PTAL thanks! This currently blocks betty-arc-r-tast-gce in CQ.",
       "revId": "86dee709e70ae6152cd8208ee0e58954a1dbd6ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9e1e7ac_c94b1a01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1145774
+      },
+      "writtenOn": "2022-08-02T14:33:04Z",
+      "side": 1,
+      "message": "The test looks very flaky on betty-pi-arc as well... All other boards are passing. Let me chump this CL to fix the immediate issue.\n\n+US sheriff FYI, you may need to update broken_before_map after this change gets snapshot-ed. This disables a broken test on board `betty-arc-r`.",
+      "revId": "86dee709e70ae6152cd8208ee0e58954a1dbd6ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
