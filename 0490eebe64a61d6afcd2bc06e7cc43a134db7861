@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0326b5e5_4ea03edb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-02T05:02:48Z",
+      "side": 1,
+      "message": "Hi Jon, Alvin and myself can only review the CL from tast owner perspective. Please find someone in your team who is familiar with the business, to review it as well.\n\nI have moved to Alvin to CC. @alvinjia, please feel free to continue if you already started review.",
+      "revId": "0490eebe64a61d6afcd2bc06e7cc43a134db7861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
