@@ -51,7 +51,9 @@ func DumpNetworkInfo(ctx context.Context, filename string) error {
 	// Dumps iptables.
 	for _, iptablesCmd := range []string{"iptables", "ip6tables"} {
 		for _, table := range []string{"filter", "nat", "mangle"} {
-			if err := runCmdAndLog(iptablesCmd, "-L", "-x", "-v", "-t", table); err != nil {
+			// `-n` for avoid reverse DNS lookups since DNS service may not be
+			// available in the test environment.
+			if err := runCmdAndLog(iptablesCmd, "-L", "-x", "-v", "-t", table, "-n", "-w", "3"); err != nil {
 				testing.ContextLog(ctx, "Failed to run and log iptables: ", err)
 				lastErr = err
 			}
