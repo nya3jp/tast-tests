@@ -29,9 +29,9 @@ func init() {
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"fwupd"},
 		HardwareDeps: hwdep.D(
-			hwdep.Battery(),               // Test doesn't run on ChromeOS devices without a battery.
-			hwdep.ChromeEC(),              // Test requires Chrome EC to set battery to discharge via ectool.
-			hwdep.SkipOnPlatform("celes"), // Platform does not register a discharge within timeout.
+			hwdep.Battery(),  // Test doesn't run on ChromeOS devices without a battery.
+			hwdep.ChromeEC(), // Test requires Chrome EC to set battery to discharge via ectool.
+			hwdep.SkipOnPlatform("celes", "jacuzzi", "asurada"), // Platform does not register a discharge within timeout.
 		),
 		Timeout: fwupd.ChargingStateTimeout + 1*time.Minute,
 		Params: []testing.Param{
