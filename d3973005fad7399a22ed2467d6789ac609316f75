@@ -16,6 +16,24 @@
       "message": "Awesome!\n\nJust curious: do you know why this issue only happens in the test chrome session? I failed to reproduce this with manual login.",
       "revId": "d3973005fad7399a22ed2467d6789ac609316f75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21fea91c_a8c4d79c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186968
+      },
+      "writtenOn": "2022-08-02T03:06:29Z",
+      "side": 1,
+      "message": "No wouldn\u0027t expect that to make any difference.  When you do manual login, are you closing FilesApp after the first test while it is still showing LinuxFiles?",
+      "parentUuid": "e67041c6_afdb9eb9",
+      "revId": "d3973005fad7399a22ed2467d6789ac609316f75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
