@@ -51,6 +51,24 @@
       "parentUuid": "84f2a522_3deb42f0",
       "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3eff5c4_0e4d3dcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2022-08-02T12:55:02Z",
+      "side": 1,
+      "message": "Here is a Stainless query that shows the test running (and being skipped) several times on amd64-generic, betty-pi-arc and novato, then running (and passing) on reven-vmtest:\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-07-27\u0026last_date\u003d2022-08-02\u0026test\u003dplatform.FlexID\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse",
+      "parentUuid": "00044ead_ccd1af9c",
+      "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
