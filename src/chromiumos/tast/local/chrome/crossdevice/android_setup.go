@@ -84,6 +84,15 @@ func AdbSetup(ctx context.Context) (*adb.Device, bool, error) {
 
 	// Wait for the device one more time in case it takes a while
 	// to become available again after restarting ADB with root access.
+	// If the phone was previously connected with ADB-over-wifi and the
+	// `adb root` command resulted in the ADB server restarting, we need
+	// to reconnect to the phone.
+	if rooted && PhoneIP.Value() != "" {
+		adbDevice, err = AdbOverWifi(ctx)
+		if err != nil {
+			return nil, false, errors.Wrap(err, "failed to connect to adb over wifi device")
+		}
+	}
 	if err := adbDevice.WaitForState(ctx, adb.StateDevice, 30*time.Second); err != nil {
 		return nil, false, errors.Wrap(err, "wait for state failed")
 	}
