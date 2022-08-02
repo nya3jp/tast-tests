@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/errors"
+	pciutil "chromiumos/tast/local/bundles/cros/policy/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/policyutil"
 	"chromiumos/tast/local/policyutil/fixtures"
@@ -30,6 +31,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      fixture.FakeDMSEnrolled,
+		SearchFlags:  pciutil.PCISearchFlags(pciutil.Verified),
 	})
 }
 func DeviceOffHours(ctx context.Context, s *testing.State) {

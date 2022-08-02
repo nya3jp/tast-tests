@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	filesystemreadwrite "chromiumos/tast/local/bundles/cros/policy/file_system_read_write"
+	pciutil "chromiumos/tast/local/bundles/cros/policy/util"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/testing"
 )
@@ -42,7 +43,8 @@ func init() {
 			Fixture:           fixture.LacrosPolicyLoggedIn,
 			Val:               browser.TypeLacros,
 		}},
-		Data: []string{readGuardSettingTestHTML},
+		Data:        []string{readGuardSettingTestHTML},
+		SearchFlags: pciutil.PCISearchFlags(pciutil.UIVerified),
 	})
 }
 

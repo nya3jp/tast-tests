@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
 	"chromiumos/tast/local/apps"
+	pciutil "chromiumos/tast/local/bundles/cros/policy/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -33,6 +34,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
 		Fixture:      fixture.ChromePolicyLoggedIn,
+		SearchFlags:  pciutil.PCISearchFlags(pciutil.UIVerified),
 	})
 }
 
