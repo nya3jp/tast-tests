@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7760fc8a_91d98095",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T14:33:14Z",
+      "side": 1,
+      "message": "Done :)",
+      "parentUuid": "d9537b69_187052c0",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 2
+      },
+      "revId": "506cf27cef174cb2e32218e6828eb5eef9b0f81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e5e6466_3362cf82",
@@ -76,6 +100,78 @@
         "startChar": 81,
         "endLine": 48,
         "endChar": 91
+      },
+      "revId": "506cf27cef174cb2e32218e6828eb5eef9b0f81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a45d31_b2b5cba8",
+        "filename": "src/chromiumos/tast/remote/rollback/rollback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T14:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e5e6466_3362cf82",
+      "range": {
+        "startLine": 48,
+        "startChar": 81,
+        "endLine": 48,
+        "endChar": 91
+      },
+      "revId": "506cf27cef174cb2e32218e6828eb5eef9b0f81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3732333d_a5f1bddc",
+        "filename": "src/chromiumos/tast/remote/rollback/rollback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T14:33:14Z",
+      "side": 1,
+      "message": "\u003e \"accidently\" is a possible misspelling of \"accidentally\".\n\nPlease fix.",
+      "parentUuid": "8396634c_fec0ad8a",
+      "range": {
+        "startLine": 95,
+        "startChar": 62,
+        "endLine": 95,
+        "endChar": 72
+      },
+      "revId": "506cf27cef174cb2e32218e6828eb5eef9b0f81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b346920_f6a6d76e",
+        "filename": "src/chromiumos/tast/remote/rollback/rollback.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T14:33:14Z",
+      "side": 1,
+      "message": "\u003e \"accidently\" is a possible misspelling of \"accidentally\".\n\nPlease fix.",
+      "parentUuid": "7a66152c_8c564b3a",
+      "range": {
+        "startLine": 169,
+        "startChar": 58,
+        "endLine": 169,
+        "endChar": 68
       },
       "revId": "506cf27cef174cb2e32218e6828eb5eef9b0f81a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
