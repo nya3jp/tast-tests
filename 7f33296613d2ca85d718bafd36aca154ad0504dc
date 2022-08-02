@@ -22,6 +22,30 @@
       },
       "revId": "7f33296613d2ca85d718bafd36aca154ad0504dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f55a0f_cb380438",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/clamshell.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-02T22:31:49Z",
+      "side": 0,
+      "message": "With this CL, it is checked on lines 217-224 of util.go.",
+      "parentUuid": "4d16386b_8f0f1ba5",
+      "range": {
+        "startLine": 299,
+        "startChar": 4,
+        "endLine": 299,
+        "endChar": 35
+      },
+      "revId": "7f33296613d2ca85d718bafd36aca154ad0504dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
