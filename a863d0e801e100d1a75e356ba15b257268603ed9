@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ac9b57_c9c9c41e",
+        "filename": "src/chromiumos/tast/local/printing/lp/cups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-02T23:16:14Z",
+      "side": 1,
+      "message": "Please update the comment to mention what is expected to be passed in options.",
+      "revId": "a863d0e801e100d1a75e356ba15b257268603ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

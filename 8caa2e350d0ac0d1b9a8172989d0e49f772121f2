@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfe575a1_9078fc69",
+        "filename": "src/chromiumos/tast/local/printing/lp/cups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-02T23:16:14Z",
+      "side": 0,
+      "message": "Did you remove this on purpose?",
+      "revId": "8caa2e350d0ac0d1b9a8172989d0e49f772121f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
