@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8269781e_7bf88c49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530527
+      },
+      "writtenOn": "2022-08-02T09:43:24Z",
+      "side": 1,
+      "message": "No particular concerns about fwupd. Defer to chungsheng.",
+      "revId": "24f9c280a02289a859a322a0d31930f11ae3f7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fd7d7d3_92ed058e",
