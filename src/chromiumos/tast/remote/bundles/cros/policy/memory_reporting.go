@@ -13,6 +13,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/tape"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/dutfs"
 	"chromiumos/tast/remote/policyutil"
@@ -45,7 +46,7 @@ func init() {
 		},
 		Attr:         []string{"group:dpanel-end2end", "group:enterprise-reporting"},
 		SoftwareDeps: []string{"reboot", "chrome"},
-		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService"},
+		ServiceDeps:  []string{"tast.cros.policy.PolicyService", "tast.cros.hwsec.OwnershipService", "tast.cros.tape.Service"},
 		Timeout:      7 * time.Minute,
 		Params: []testing.Param{
 			{
@@ -83,6 +84,7 @@ func init() {
 			reportingutil.ReportingPoliciesDisabledPassword,
 			reportingutil.ManagedChromeCustomerIDPath,
 			reportingutil.EventsAPIKeyPath,
+			tape.ServiceAccountVar,
 		},
 	})
 }
@@ -159,13 +161,13 @@ func MemoryReporting(ctx context.Context, s *testing.State) {
 	pass := s.RequiredVar(param.passwordPath)
 	cID := s.RequiredVar(reportingutil.ManagedChromeCustomerIDPath)
 	APIKey := s.RequiredVar(reportingutil.EventsAPIKeyPath)
+	sa := []byte(s.RequiredVar(tape.ServiceAccountVar))
 
 	defer func(ctx context.Context) {
 		if err := policyutil.EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 			s.Error("Failed to reset TPM after test: ", err)
 		}
 	}(ctx)
-
 	if err := policyutil.EnsureTPMAndSystemStateAreResetRemote(ctx, s.DUT()); err != nil {
 		s.Fatal("Failed to reset TPM: ", err)
 	}
@@ -175,6 +177,7 @@ func MemoryReporting(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
 	}
 	defer cl.Close(ctx)
+	defer reportingutil.Deprovision(ctx, cl.Conn, s, sa, cID)
 
 	if param.vProSpecific {
 		if su, err := vProSupported(ctx, cl.Conn); err != nil {
