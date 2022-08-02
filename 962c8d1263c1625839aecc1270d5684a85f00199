@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40004993_744b4318",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-02T16:58:32Z",
+      "side": 1,
+      "message": "I think your chroot is very outdated. Did you do an update_chroot or set board after you did \"repo sync\" and \"git pull --rebase\"?\n\nAnyway,you can clean up your chroot later. You can go ahead to do CQ+2. The CQ should catch any unit test issue. However, please don\u0027t ask shreiff for a chump unless you make sure all the unit tests passed.",
+      "parentUuid": "2fa75b17_6f9f8421",
+      "revId": "962c8d1263c1625839aecc1270d5684a85f00199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "998c00d6_75eea561",
         "filename": "src/chromiumos/tast/local/hwsec/login_data.go",
         "patchSetId": 5
