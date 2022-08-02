@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcafb3d8_83805237",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-02T19:21:56Z",
+      "side": 1,
+      "message": "That would defeat the primary purpose of this function: to wait for the expected window bounds before ending the drag. Those expected window bounds are equal to the initial window bounds, assuming that the drag is a loop.",
+      "parentUuid": "a00f8fc6_cab21e46",
+      "range": {
+        "startLine": 278,
+        "startChar": 36,
+        "endLine": 278,
+        "endChar": 72
+      },
+      "revId": "bbd86f2653cd38724f9e51115b12bd0c64207600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eefdec3e_240908f8",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-02T18:50:40Z",
       "side": 1,
       "message": "len(p)?",
+      "range": {
+        "startLine": 281,
+        "startChar": 68,
+        "endLine": 281,
+        "endChar": 69
+      },
+      "revId": "bbd86f2653cd38724f9e51115b12bd0c64207600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80032dd4_6f58a106",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-02T19:21:56Z",
+      "side": 1,
+      "message": "`p` is more information which I think might as well be included. If there is 1 point, then the error might as well give that point.",
+      "parentUuid": "eefdec3e_240908f8",
       "range": {
         "startLine": 281,
         "startChar": 68,
