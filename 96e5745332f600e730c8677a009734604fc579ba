@@ -16,6 +16,98 @@
       "message": "PTAL",
       "revId": "96e5745332f600e730c8677a009734604fc579ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7163375_5e82f460",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-02T13:36:54Z",
+      "side": 1,
+      "message": "We need to lease the account for a longer time. I would say 30 minutes or so.",
+      "range": {
+        "startLine": 181,
+        "startChar": 124,
+        "endLine": 181,
+        "endChar": 126
+      },
+      "revId": "96e5745332f600e730c8677a009734604fc579ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2116c27_c80cc8ea",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-02T13:36:54Z",
+      "side": 1,
+      "message": "nit: Capital C.",
+      "range": {
+        "startLine": 183,
+        "startChar": 60,
+        "endLine": 183,
+        "endChar": 61
+      },
+      "revId": "96e5745332f600e730c8677a009734604fc579ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58e6e148_f20c72a8",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-02T13:36:54Z",
+      "side": 1,
+      "message": "That defer I believe has to happen in the TearDown().",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 185,
+        "endChar": 37
+      },
+      "revId": "96e5745332f600e730c8677a009734604fc579ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34f02f1b_88a92af0",
+        "filename": "src/chromiumos/tast/local/vdi/fixtures/vdi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-02T13:36:54Z",
+      "side": 1,
+      "message": "Let\u0027s extract that as a constant. I am thinking whether we should use that as a secret but I don\u0027t have an opinion yet.",
+      "range": {
+        "startLine": 187,
+        "startChar": 17,
+        "endLine": 187,
+        "endChar": 30
+      },
+      "revId": "96e5745332f600e730c8677a009734604fc579ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
