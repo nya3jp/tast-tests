@@ -32,33 +32,35 @@ const (
 
 // List of fixture names for inputs.
 const (
-	AnyVK                              = "anyVK"
-	AnyVKInGuest                       = "anyVKInGuest"
-	ClamshellVK                        = "clamshellVK"
-	ClamshellVKRestart                 = "clamshellVKRestart"
-	ClamshellVKWithAssistAutocorrect   = "clamshellVKWithAssistAutocorrect"
-	ClamshellNonVK                     = "clamshellNonVK"
-	ClamshellNonVKInGuest              = "clamshellNonVKInGuest"
-	ClamshellNonVKWithMultiwordSuggest = "clamshellNonVKWithMultiwordSuggest"
-	ClamshellNonVKWithGrammarCheck     = "clamshellNonVKWithGrammarCheck"
-	TabletVK                           = "tabletVK"
-	TabletVKRestart                    = "tabletVKRestart"
-	TabletVKInGuest                    = "tabletVKInGuest"
-	TabletVKWithAssistAutocorrect      = "tabletVKWithAssistAutocorrect"
-	TabletVKWithMultipasteSuggestion   = "tabletVKWithMultipasteSuggestion"
+	AnyVK                                     = "anyVK"
+	AnyVKInGuest                              = "anyVKInGuest"
+	ClamshellVK                               = "clamshellVK"
+	ClamshellVKRestart                        = "clamshellVKRestart"
+	ClamshellVKWithAssistAutocorrect          = "clamshellVKWithAssistAutocorrect"
+	ClamshellNonVKWithDiacriticsOnPKLongpress = "clamshellWithDiacriticsOnPKLongpress"
+	ClamshellNonVK                            = "clamshellNonVK"
+	ClamshellNonVKInGuest                     = "clamshellNonVKInGuest"
+	ClamshellNonVKWithMultiwordSuggest        = "clamshellNonVKWithMultiwordSuggest"
+	ClamshellNonVKWithGrammarCheck            = "clamshellNonVKWithGrammarCheck"
+	TabletVK                                  = "tabletVK"
+	TabletVKRestart                           = "tabletVKRestart"
+	TabletVKInGuest                           = "tabletVKInGuest"
+	TabletVKWithAssistAutocorrect             = "tabletVKWithAssistAutocorrect"
+	TabletVKWithMultipasteSuggestion          = "tabletVKWithMultipasteSuggestion"
 	// Lacros fixtures.
-	LacrosAnyVK                              = "lacrosAnyVK"
-	LacrosAnyVKInGuest                       = "lacrosAnyVKInGuest"
-	LacrosClamshellVK                        = "lacrosClamshellVK"
-	LacrosClamshellVKWithAssistAutocorrect   = "lacrosClamshellVKWithAssistAutocorrect"
-	LacrosClamshellNonVK                     = "lacrosClamshellNonVK"
-	LacrosClamshellNonVKInGuest              = "lacrosClamshellNonVKInGuest"
-	LacrosClamshellNonVKWithMultiwordSuggest = "lacrosClamshellNonVKWithMultiwordSuggest"
-	LacrosClamshellNonVKWithGrammarCheck     = "lacrosClamshellNonVKWithGrammarCheck"
-	LacrosTabletVK                           = "lacrosTabletVK"
-	LacrosTabletVKInGuest                    = "lacrosTabletVKInGuest"
-	LacrosTabletVKWithAssistAutocorrect      = "lacrosTabletVKWithAssistAutocorrect"
-	LacrosTabletVKWithMultipasteSuggestion   = "lacrosTabletVKWithMultipasteSuggestion"
+	LacrosAnyVK                                     = "lacrosAnyVK"
+	LacrosAnyVKInGuest                              = "lacrosAnyVKInGuest"
+	LacrosClamshellVK                               = "lacrosClamshellVK"
+	LacrosClamshellVKWithAssistAutocorrect          = "lacrosClamshellVKWithAssistAutocorrect"
+	LacrosClamshellNonVK                            = "lacrosClamshellNonVK"
+	LacrosClamshellNonVKInGuest                     = "lacrosClamshellNonVKInGuest"
+	LacrosClamshellNonVKWithMultiwordSuggest        = "lacrosClamshellNonVKWithMultiwordSuggest"
+	LacrosClamshellNonVKWithGrammarCheck            = "lacrosClamshellNonVKWithGrammarCheck"
+	LacrosClamshellNonVKWithDiacriticsOnPKLongpress = "lacrosClamshellWithDiacriticsOnPKLongpress"
+	LacrosTabletVK                                  = "lacrosTabletVK"
+	LacrosTabletVKInGuest                           = "lacrosTabletVKInGuest"
+	LacrosTabletVKWithAssistAutocorrect             = "lacrosTabletVKWithAssistAutocorrect"
+	LacrosTabletVKWithMultipasteSuggestion          = "lacrosTabletVKWithMultipasteSuggestion"
 )
 
 func init() {
@@ -176,6 +178,20 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=OnDeviceGrammarCheck")),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: ClamshellNonVKWithDiacriticsOnPKLongpress,
+		Desc: "Clamshell mode with diacritics",
+		Contacts: []string{
+			"jhtin@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeAsh, chrome.ExtraArgs("--enable-features=DiacriticsOnPhysicalKeyboardLongpress")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
@@ -373,6 +389,21 @@ func init() {
 			"essential-inputs-team@google.com",
 		},
 		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=OnDeviceGrammarCheck")),
+		SetUpTimeout:    chrome.LoginTimeout,
+		PreTestTimeout:  preTestTimeout,
+		PostTestTimeout: postTestTimeout,
+		ResetTimeout:    resetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+	})
+	testing.AddFixture(&testing.Fixture{
+		Name: LacrosClamshellNonVKWithDiacriticsOnPKLongpress,
+		Desc: "Lacros variant: clamshell mode with VK disabled and grammar check",
+		Contacts: []string{
+			"alvinjia@google.com",
+			"shengjun@chromium.org",
+			"essential-inputs-team@google.com",
+		},
+		Impl:            inputsFixture(clamshellMode, false, false, browser.TypeLacros, chrome.ExtraArgs("--enable-features=DiacriticsOnPhysicalKeyboardLongpress")),
 		SetUpTimeout:    chrome.LoginTimeout,
 		PreTestTimeout:  preTestTimeout,
 		PostTestTimeout: postTestTimeout,
