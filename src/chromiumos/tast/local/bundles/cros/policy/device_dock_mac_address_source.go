@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
+	pciutil "chromiumos/tast/local/bundles/cros/policy/util"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/network"
 	"chromiumos/tast/local/policyutil"
@@ -68,6 +69,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(hwdep.Model(noEthernetModels...)),
 			},
 		},
+		SearchFlags: pciutil.PCISearchFlags(pciutil.OSVerified),
 	})
 }
 
