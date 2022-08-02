@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5a61b7f_e34d9d95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-02T01:49:58Z",
+      "side": 1,
+      "message": "Hi Toby,\n\nwhich args.gn are you talking about? I have this set for my Chromium builds but those have nothing to do with Tast. I\u0027m running Tast inside the cros_sdk.",
+      "parentUuid": "56b740d4_9ffad84e",
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9d8e24ab_98dac9a2",
