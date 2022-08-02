@@ -272,6 +272,30 @@
       },
       "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e58626_70142eb2",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-02T19:31:02Z",
+      "side": 1,
+      "message": "I created b:241132806 to track this issue. I\u0027m going to leave this CL as-is without a TODO since I\u0027m just going to do it now and add it to the same chain.",
+      "parentUuid": "f32af2ae_6c0f9f83",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
