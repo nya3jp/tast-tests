@@ -16,6 +16,154 @@
       "message": "Thank you for the suggestion ",
       "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ac1991a_69a189f3",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-02T08:55:06Z",
+      "side": 1,
+      "message": "const",
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ae816dc_977db83d",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-02T08:55:06Z",
+      "side": 1,
+      "message": "For consistency with other code, use the function name as a part of the sentence or remove it.\nFor example:\n- DoDimBacklight is the execution logic of dimming backlight.\n- Executes a command to dim the backlight.",
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a6f65dd_e50fb433",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-02T08:55:06Z",
+      "side": 1,
+      "message": "Does this need to be an exporeted function?\n(I think yes especially if we move the callers outside this package.)",
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e013b27_fafd99a8",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-02T08:55:06Z",
+      "side": 1,
+      "message": "nit: \"for tast test\" might be redundant because this file is in tast directory.\nHow about removing this or \"while doing camera tests\"?",
+      "range": {
+        "startLine": 45,
+        "startChar": 67,
+        "endLine": 45,
+        "endChar": 80
+      },
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17750b31_52c6f2c2",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-02T08:55:06Z",
+      "side": 1,
+      "message": "Is this used?",
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac6600ba_c116173d",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-02T08:55:06Z",
+      "side": 1,
+      "message": "Can this be moved to tast/local/* ?\nBecause I guess this is only used by local tests.",
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4b34a04_2c136bda",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-02T08:55:06Z",
+      "side": 1,
+      "message": "Is this used by a remote test?",
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1517db3b_23f82bc0",
+        "filename": "src/chromiumos/tast/local/camera/cca/fixture.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-02T08:55:06Z",
+      "side": 1,
+      "message": "nit:\nif err :\u003d dutcontrol.CCA..... ; err !\u003d nil {",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 398,
+        "endChar": 16
+      },
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
