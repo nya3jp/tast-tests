@@ -11,6 +11,8 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/common/tape"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -37,13 +39,11 @@ func init() {
 			vdiApplicationToStart: apps.Citrix,
 			vdiConnector:          &citrix.Connector{},
 			vdiServerKey:          "vdi.citrix_url",
-			vdiUsernameKey:        "vdi.citrix_username",
-			vdiPasswordKey:        "vdi.citrix_password",
+			useTape:               true,
 		},
 		Vars: []string{
+			tape.ServiceAccountVar,
 			"vdi.citrix_url",
-			"vdi.citrix_username",
-			"vdi.citrix_password",
 			"uidetection.key_type",
 			"uidetection.key",
 			"uidetection.server",
@@ -69,6 +69,7 @@ func init() {
 			vdiServerKey:          "vdi.vmware_url",
 			vdiUsernameKey:        "vdi.vmware_username",
 			vdiPasswordKey:        "vdi.vmware_password",
+			useTape:               false,
 		},
 		Vars: []string{
 			"vdi.vmware_url",
@@ -111,6 +112,10 @@ type kioskFixtureState struct {
 	// cleaning policies preventing Kiosk from autostart - since
 	// kioskmode.AutoLaunch() is used.
 	accountsConfiguration policy.DeviceLocalAccounts
+	// useTape is a flag to use Tape for leasing a vdi account.
+	useTape bool
+	// tapeAccountManager is used for cleaning up Tape.
+	tapeAccountManager *tape.GenericAccountManager
 }
 
 func (v *kioskFixtureState) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -141,7 +146,7 @@ func (v *kioskFixtureState) SetUp(ctx context.Context, s *testing.FixtState) int
 		kioskmode.AutoLaunch(vdiAccountID),
 	)
 	if err != nil {
-		s.Error("Failed to start Chrome in kiosk mode: ", err)
+		s.Fatal("Failed to start Chrome in kiosk mode: ", err)
 	}
 
 	ok = false
@@ -177,12 +182,29 @@ func (v *kioskFixtureState) SetUp(ctx context.Context, s *testing.FixtState) int
 		s.RequiredVar("uidetection.server"))
 	v.vdiConnector.Init(s, tconn, detector, kb)
 
+	var vdiUsername, vdiPassword string
+	vdiServer := s.RequiredVar(v.vdiServerKey)
+
+	if v.useTape {
+		// Create an account manager and lease a vdi test account for the specified timeout as there are several sets in the scope of this fixture.
+		accHelper, acc, err := tape.NewGenericAccountManager(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)), tape.WithTimeout(30*60), tape.WithPoolID(tape.Citrix))
+		if err != nil {
+			s.Fatal("Failed to create an account manager and lease a Citrix account: ", err)
+		}
+		v.tapeAccountManager = accHelper
+		vdiUsername = CitrixUsernamePrefix + acc.Username
+		vdiPassword = acc.Password
+	} else {
+		vdiUsername = s.RequiredVar(v.vdiUsernameKey)
+		vdiPassword = s.RequiredVar(v.vdiPasswordKey)
+	}
+
 	if err := v.vdiConnector.Login(
 		ctx,
 		&vdiApps.VDILoginConfig{
-			Server:   s.RequiredVar(v.vdiServerKey),
-			Username: s.RequiredVar(v.vdiUsernameKey),
-			Password: s.RequiredVar(v.vdiPasswordKey),
+			Server:   vdiServer,
+			Username: vdiUsername,
+			Password: vdiPassword,
 		}); err != nil {
 		s.Fatal("Was not able to login to the VDI application: ", err)
 	}
@@ -196,6 +218,15 @@ func (v *kioskFixtureState) SetUp(ctx context.Context, s *testing.FixtState) int
 }
 
 func (v *kioskFixtureState) TearDown(ctx context.Context, s *testing.FixtState) {
+	// Use a shortened context to reserve time for cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
+	defer cancel()
+
+	if v.useTape {
+		v.tapeAccountManager.CleanUp(cleanupCtx)
+	}
+
 	v.keyboard.Close()
 	chrome.Unlock()
 
