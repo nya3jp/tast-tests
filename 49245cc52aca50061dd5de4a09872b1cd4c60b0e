@@ -16,6 +16,74 @@
       "message": "Created another CL for moving the cert functionality to another package.",
       "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da48b339_e294b100",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-08-02T22:10:14Z",
+      "side": 1,
+      "message": "This probably merits a little more documentation, e.g. describe what steps InstallCerts performs and any notes as to why/how that might not be obvious from the code.",
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a21bec69_5dd5daa7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-08-02T22:10:14Z",
+      "side": 1,
+      "message": "nit: s/for/that can be used by a/ ?\nAlso, maybe InstallTestCerts? Normally I would consider \u0027test\u0027 redundant, but I think that it might make it clear that these are specifically test certificates and not something else?",
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc382bc2_2563b42c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-08-02T22:10:14Z",
+      "side": 1,
+      "message": "tiny nit: All one line for a single reasonable length sentence.",
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df82941d_04654c7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-08-02T22:10:14Z",
+      "side": 1,
+      "message": "It seems like this should be done in InstallCerts since it apples to both Server and SSL Certs?",
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
