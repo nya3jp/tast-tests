@@ -73,11 +73,14 @@ func CupsRemovePrinter(ctx context.Context, printerName string) error {
 	return d.CupsRemovePrinter(ctx, printerName)
 }
 
-// CupsStartPrintJob starts a new print job for the file toPrint. Returns the
-// ID of the newly created job if successful.
-func CupsStartPrintJob(ctx context.Context, printerName, toPrint string) (job string, err error) {
+// CupsStartPrintJob starts a new print job for the file toPrint. This function
+// adds '-d printerName' and the name of the file as args to the lp command.  If
+// the user wants any additional args to the lp command, they need to get
+// populated in options.  Returns the ID of the newly created job if successful.
+func CupsStartPrintJob(ctx context.Context, printerName, toPrint string, options ...string) (job string, err error) {
 	testing.ContextLog(ctx, "Starting print job")
-	output, err := testexec.CommandContext(ctx, "lp", "-d", printerName, "--", toPrint).Output(testexec.DumpLogOnError)
+	options = append(options, "-d", printerName, "--", toPrint)
+	output, err := testexec.CommandContext(ctx, "lp", options...).Output(testexec.DumpLogOnError)
 	if err != nil {
 		return "", err
 	}
