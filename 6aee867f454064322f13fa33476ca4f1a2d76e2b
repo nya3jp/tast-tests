@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cd41d94_5a20df61",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-08-02T04:30:29Z",
+      "side": 1,
+      "message": "The commit message is modified to fit the actual situation better.",
+      "parentUuid": "b2432c68_485a97c4",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "6aee867f454064322f13fa33476ca4f1a2d76e2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4a48a55_c00ecb38",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "Yes that would be helpful.\nBased on the error messages, several of the failures triggered by this test also happen in other LaCrOS tests. Some of the mentioned LaCrOS tests are also marked as critical.\nCurrently, I\u0027m planning to modify the SoftwareDeps and add different parameters bsed on these critical LaCrOS tests.",
       "parentUuid": "c4a48a55_c00ecb38",
+      "revId": "6aee867f454064322f13fa33476ca4f1a2d76e2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bcbb63c_e1bf2297",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/audio_record.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1547337
+      },
+      "writtenOn": "2022-08-02T04:30:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd4c75bb_79b70c5a",
       "revId": "6aee867f454064322f13fa33476ca4f1a2d76e2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
