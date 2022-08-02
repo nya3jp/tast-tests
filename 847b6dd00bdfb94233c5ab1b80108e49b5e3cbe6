@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb4852c_3ef94e5d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/policy/memory_reporting.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-02T05:30:45Z",
+      "side": 1,
+      "message": "Maybe 90 seconds instead?",
+      "revId": "847b6dd00bdfb94233c5ab1b80108e49b5e3cbe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
