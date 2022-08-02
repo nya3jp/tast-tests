@@ -33,6 +33,24 @@
       "message": "nit: could you add a brief comment where \"-1\" comes from?",
       "revId": "8b61e7e7b6f8204fdd2ec2fb1090d56f06f557ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3663ecc3_735f4202",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/window_control.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-02T20:39:42Z",
+      "side": 1,
+      "message": "Done. Thanks for the catch.",
+      "parentUuid": "4b645821_22301d3a",
+      "revId": "8b61e7e7b6f8204fdd2ec2fb1090d56f06f557ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
