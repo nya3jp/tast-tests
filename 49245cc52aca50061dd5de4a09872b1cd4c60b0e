@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "361d044c_6daa2c79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-02T23:57:24Z",
+      "side": 1,
+      "message": "We should also clarify this install additional certificate authorities for allowing clients on the DUTs to verify the authenticity of test certs used by test or fake servers set up in a tast test or test fixture. And that this is completely unrelated to client certs.",
+      "parentUuid": "da48b339_e294b100",
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a21bec69_5dd5daa7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
         "patchSetId": 1
@@ -54,6 +72,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b351b5de_b5c17333",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-02T23:57:24Z",
+      "side": 1,
+      "message": "\u003e maybe InstallTestCerts\n\nI would double check with pmarko@ for the exact correct technical name, but since we are setting both a) a cert to be shown by the test server to the DUT and b) the CA(s) to validate that cert, we could say \"InstallTestServerCertChain\".",
+      "parentUuid": "a21bec69_5dd5daa7",
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "647a9d16_638a82c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-02T23:57:24Z",
+      "side": 1,
+      "message": "nit: also print |certDirectory| in the error msg.",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc382bc2_2563b42c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
         "patchSetId": 1
@@ -65,6 +124,52 @@
       "writtenOn": "2022-08-02T22:10:14Z",
       "side": 1,
       "message": "tiny nit: All one line for a single reasonable length sentence.",
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401f489d_a9171f5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-02T23:57:24Z",
+      "side": 1,
+      "message": "nit: also print |tmpCrtPath| in the error msg.",
+      "range": {
+        "startLine": 55,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 56
+      },
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c39c3f8d_ef6b3b7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1238096
+      },
+      "writtenOn": "2022-08-02T23:57:24Z",
+      "side": 1,
+      "message": "nit: also print mount content and target in error msg.",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 48
+      },
       "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
