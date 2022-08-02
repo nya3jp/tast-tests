@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85022872_fd2b8dec",
+        "filename": "src/chromiumos/tast/local/bundles/cros/rgbkbd/capslock_rgb_state_updates.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-08-02T16:34:14Z",
+      "side": 1,
+      "message": "If we do nothing to set kb backlight color before calling chrome then it is random what color it will be on startup as it takes the User\u0027s wallpaper. I think we need something to manually set it otherwise we have no way to know what to expect.\n\nI guess we could figure it out by looking at logs and seeing what color was set first, but that seems like too much of a headache.",
+      "range": {
+        "startLine": 66,
+        "startChar": 12,
+        "endLine": 66,
+        "endChar": 22
+      },
+      "revId": "daec32fc55108a33712a7a7fec69917ff14fa061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69356253_3d6bed1c",
+        "filename": "src/chromiumos/tast/local/rgbkbd/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-08-02T16:34:14Z",
+      "side": 1,
+      "message": "we can also just change this function to be AreLastLogLinesEqual and it would figure out how many lines to take from expected based on size of actual.\n\nThis means the actual tast test code would just call AreLastLogLinesEqual() and it doesnt have to deal with GetRemainingLog or any other function",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "daec32fc55108a33712a7a7fec69917ff14fa061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a537d97_ab5ebe9d",
+        "filename": "src/chromiumos/tast/local/rgbkbd/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-08-02T16:34:14Z",
+      "side": 1,
+      "message": "Maybe change to GetLastNLines(log string, num int) so we can use with a different usecase in the future",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "daec32fc55108a33712a7a7fec69917ff14fa061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
