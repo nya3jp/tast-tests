@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b04cee3f_74055bae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/idle_perf.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-02T00:50:03Z",
+      "side": 1,
+      "message": "Didn\u0027t know about iota -- done.",
+      "parentUuid": "b9ea3b1f_e259686c",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "a4f8ba877b07f89876977b407850813f4bdb3aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ade68b5_d5583dd3",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-01T17:34:25Z",
       "side": 1,
       "message": "Please add `\"chromeos-perfmetrics-eng@google.com\"` because you will not be on the team forever.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 45
+      },
+      "revId": "a4f8ba877b07f89876977b407850813f4bdb3aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f67f818_ddcf0853",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-02T00:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ade68b5_d5583dd3",
       "range": {
         "startLine": 248,
         "startChar": 0,
