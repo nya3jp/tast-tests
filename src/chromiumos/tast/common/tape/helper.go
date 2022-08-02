@@ -60,14 +60,15 @@ func getClient(ctx context.Context, opts ...ClientOption) (*client, error) {
 	return client, nil
 }
 
-type genericAccountManager struct {
+// GenericAccountManager holds the client and the generic accounts data.
+type GenericAccountManager struct {
 	client   *client
 	Accounts []*GenericAccount
 }
 
 // NewGenericAccountManager leases a generic account, stores it in a genericAccountManager struct and returns both. It requires
 // a credsJSON byte array with the credentials of a service account to create a tape client for the genericAccountManager.
-func NewGenericAccountManager(ctx context.Context, credsJSON []byte, opts ...RequestAccountOption) (*genericAccountManager, *GenericAccount, error) {
+func NewGenericAccountManager(ctx context.Context, credsJSON []byte, opts ...RequestAccountOption) (*GenericAccountManager, *GenericAccount, error) {
 	client, err := NewClient(ctx, credsJSON)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to create tape client")
@@ -78,8 +79,8 @@ func NewGenericAccountManager(ctx context.Context, credsJSON []byte, opts ...Req
 
 // NewGenericAccountManagerFromClient leases a generic account, stores it in a genericAccountManager struct and returns both. It requires
 // a tape client to assign it to the genericAccountManager.
-func NewGenericAccountManagerFromClient(ctx context.Context, client *client, opts ...RequestAccountOption) (*genericAccountManager, *GenericAccount, error) {
-	manager := &genericAccountManager{
+func NewGenericAccountManagerFromClient(ctx context.Context, client *client, opts ...RequestAccountOption) (*GenericAccountManager, *GenericAccount, error) {
+	manager := &GenericAccountManager{
 		client: client,
 	}
 
@@ -91,7 +92,7 @@ func NewGenericAccountManagerFromClient(ctx context.Context, client *client, opt
 }
 
 // RequestAccount leases a generic account, stores it in the genericAccountManager and returns it.
-func (ah *genericAccountManager) RequestAccount(ctx context.Context, opts ...RequestAccountOption) (*GenericAccount, error) {
+func (ah *GenericAccountManager) RequestAccount(ctx context.Context, opts ...RequestAccountOption) (*GenericAccount, error) {
 	account, err := ah.client.RequestGenericAccount(ctx, opts...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to request owned test account")
@@ -103,7 +104,7 @@ func (ah *genericAccountManager) RequestAccount(ctx context.Context, opts ...Req
 }
 
 // CleanUp releases all generic accounts that are stored in the genericAccountManager.
-func (ah *genericAccountManager) CleanUp(ctx context.Context) error {
+func (ah *GenericAccountManager) CleanUp(ctx context.Context) error {
 	var combinedErrors error
 	for _, account := range ah.Accounts {
 		err := ah.client.ReleaseGenericAccount(ctx, account)
