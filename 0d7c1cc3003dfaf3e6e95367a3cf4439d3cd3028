@@ -172,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3362c0c6_b84f609b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-02T03:22:27Z",
+      "side": 1,
+      "message": "I can\u0027t reproduce the issue.\n\nHere\u0027s what I\u0027m observing: br.NewConn opens a second Lacros window. That window shows some error saying the Screencast app is needed to watch something. The subsequent br.ReloadActiveTab has the effect of opening said Screencast app.",
+      "parentUuid": "bfc09fc2_d9fcbf83",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e936e0cd_9905c85c",
         "filename": "src/chromiumos/tast/local/chrome/projector/fixture.go",
         "patchSetId": 2
