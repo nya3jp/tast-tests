@@ -70,6 +70,24 @@
       "parentUuid": "a13a1bdc_abaa9a69",
       "revId": "8fa78477f94f2199553518c8c2b60f657524f59c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e22bddd8_d87ff0f1",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/eventlog.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1532003
+      },
+      "writtenOn": "2022-08-02T07:07:52Z",
+      "side": 1,
+      "message": "\u003e \u003e \u003e I\u0027d suggest running the test on devices with and without the new strings to make sure we don\u0027t break anything.\n\u003e \u003e \n\u003e \u003e I agree with Julius that we need to have OR.\n\u003e \u003e \n\u003e \u003e regarding running `tast`, i executed the test but due to some infrastructure reason it is failing for me. May be you can me to check once if any issue with the test result after picking this CL.\n\u003e \n\u003e @Jeremy: do you think the `requiredEventSets` is good now and we can land the CL?\n\n@YP: going ahead with this CL.",
+      "parentUuid": "8ed3b368_a68b4434",
+      "revId": "8fa78477f94f2199553518c8c2b60f657524f59c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
