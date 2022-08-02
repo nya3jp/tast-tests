@@ -93,6 +93,30 @@
       },
       "revId": "a4f8ba877b07f89876977b407850813f4bdb3aa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef6d9718_2780d1ce",
+        "filename": "src/chromiumos/tast/local/chrome/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-02T15:50:47Z",
+      "side": 1,
+      "message": "However, please list yourself first. As the creator of the fixture, you will have the greatest familiarity with it. You should generally be the first point of contact about it.\n\t\tContacts: []string{\"ramsaroop@google.com\", \"chromeos-perfmetrics-eng@google.com\"},",
+      "parentUuid": "3f67f818_ddcf0853",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 45
+      },
+      "revId": "a4f8ba877b07f89876977b407850813f4bdb3aa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
