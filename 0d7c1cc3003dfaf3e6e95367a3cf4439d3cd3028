@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6502f22_430e2944",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-02T04:55:38Z",
+      "side": 1,
+      "message": "I normally run Tast tests on a physical device or in a VM using a command like \"tast run -buildbundle\u003dcros localhost:9222 projector.SharedScreencast\". So the Chrome build deployed to the device or VM should be branded.",
+      "parentUuid": "c5a61b7f_e34d9d95",
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9d8e24ab_98dac9a2",
@@ -184,6 +202,30 @@
       "side": 1,
       "message": "I can\u0027t reproduce the issue.\n\nHere\u0027s what I\u0027m observing: br.NewConn opens a second Lacros window. That window shows some error saying the Screencast app is needed to watch something. The subsequent br.ReloadActiveTab has the effect of opening said Screencast app.",
       "parentUuid": "bfc09fc2_d9fcbf83",
+      "range": {
+        "startLine": 77,
+        "startChar": 14,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "0d7c1cc3003dfaf3e6e95367a3cf4439d3cd3028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfc108ba_82fcf619",
+        "filename": "src/chromiumos/tast/local/bundles/cros/projector/shared_screencast.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1351120
+      },
+      "writtenOn": "2022-08-02T04:55:38Z",
+      "side": 1,
+      "message": "Ack. It seems like the test passes fine then. I probably have something messed up with my Lacros setup because I\u0027m not used to running Tast tests with Lacros.",
+      "parentUuid": "3362c0c6_b84f609b",
       "range": {
         "startLine": 77,
         "startChar": 14,
