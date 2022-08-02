@@ -58,7 +58,7 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 	for _, param := range []struct {
 		name            string
 		wantChecked     checked.Checked         // wantChecked is the expected existence of the a11y button.
-		wantRestriction restriction.Restriction // wantRestriction is the wanted restriction state of the toggle button for the "Always show accessibility options in the system menu" option.
+		wantRestriction restriction.Restriction // wantRestriction is the wanted restriction state of the toggle button for the "Show accessibility options in Quick Settings" option.
 		policy          *policy.ShowAccessibilityOptionsInSystemTrayMenu
 	}{
 		{
@@ -97,7 +97,7 @@ func ShowAccessibilityOptionsInSystemTrayMenu(ctx context.Context, s *testing.St
 			if err := policyutil.OSSettingsPage(ctx, cr, "osAccessibility").
 				SelectNode(ctx, nodewith.
 					Role(role.ToggleButton).
-					Name("Always show accessibility options in the system menu")).
+					Name("Show accessibility options in Quick Settings")).
 				Restriction(param.wantRestriction).
 				Checked(param.wantChecked).
 				Verify(); err != nil {
