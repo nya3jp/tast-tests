@@ -34,7 +34,7 @@ func init() {
 		// Skip this test on Rockchip devices: they don't provide DRM.
 		// "gru" is the platform name for e.g. scarlet.
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays(), hwdep.SkipOnPlatform("bob", "gru", "kevin", "fievel", "tiger")),
-		SoftwareDeps: []string{"chrome", "graphics_debugfs"},
+		SoftwareDeps: []string{"chrome"},
 		Data:         []string{"video.html", "playback.js"},
 		Params: []testing.Param{{
 			Name:              "av1_hw",
