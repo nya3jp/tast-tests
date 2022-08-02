@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "479df10b_83be4f5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-02T13:54:55Z",
+      "side": 1,
+      "message": "If you want the Tast Owners list to assign a Tast reviewer, you should add it to reviewers, not CC.",
+      "revId": "15c80ea767a960109087ede88f8f0b664cf3e9b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
