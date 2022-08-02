@@ -866,6 +866,22 @@ func (ac *Context) MouseMoveTo(finder *nodewith.Finder, duration time.Duration) 
 	}
 }
 
+// MouseHover which is similar to MouseMoveTo returns a function moving the mouse to the certer
+// point of the given node. However, it starts from the left center point of the node to ensure
+// the mouse has actually been moved.
+func (ac *Context) MouseHover(finder *nodewith.Finder, duration time.Duration) Action {
+	return func(ctx context.Context) error {
+		location, err := ac.Location(ctx, finder)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get location of %v", finder)
+		}
+		return Combine("move mouse from left to center",
+			mouse.Move(ac.tconn, location.LeftCenter(), 0),
+			mouse.Move(ac.tconn, location.CenterPoint(), duration),
+		)(ctx)
+	}
+}
+
 // Sleep returns a function sleeping given time duration.
 func Sleep(d time.Duration) Action {
 	return func(ctx context.Context) error {
