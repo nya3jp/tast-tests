@@ -219,6 +219,12 @@ func RunClamShell(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uia
 	if err := enterOverview(ctx); err != nil {
 		return errors.Wrap(err, "failed to enter overview mode")
 	}
+	defer cleanUp(closeCtx, action.Named(
+		"ensure not in overview",
+		func(ctx context.Context) error {
+			return ash.SetOverviewModeAndWait(ctx, tconn, false)
+		},
+	), &retErr)
 	// Create a second virtual desk.
 	if err := ash.CreateNewDesk(ctx, tconn); err != nil {
 		return errors.Wrap(err, "failed to create a new desk")
