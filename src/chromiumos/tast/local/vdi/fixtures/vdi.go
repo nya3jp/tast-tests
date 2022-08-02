@@ -9,6 +9,8 @@ import (
 	"time"
 
 	"chromiumos/tast/common/fixture"
+	"chromiumos/tast/common/tape"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
@@ -36,15 +38,13 @@ func init() {
 			usernameKey:           "vdi.ota_citrix_username",
 			passwordKey:           "vdi.ota_citrix_password",
 			vdiServerKey:          "vdi.citrix_url",
-			vdiUsernameKey:        "vdi.citrix_username",
-			vdiPasswordKey:        "vdi.citrix_password",
+			useTape:               true,
 		},
 		Vars: []string{
+			tape.ServiceAccountVar,
 			"vdi.ota_citrix_username",
 			"vdi.ota_citrix_password",
 			"vdi.citrix_url",
-			"vdi.citrix_username",
-			"vdi.citrix_password",
 			"uidetection.key_type",
 			"uidetection.key",
 			"uidetection.server",
@@ -71,6 +71,7 @@ func init() {
 			vdiServerKey:          "vdi.vmware_url",
 			vdiUsernameKey:        "vdi.vmware_username",
 			vdiPasswordKey:        "vdi.vmware_password",
+			useTape:               false,
 		},
 		Vars: []string{
 			"vdi.ota_vmware_username",
@@ -111,6 +112,8 @@ type fixtureState struct {
 	vdiUsernameKey string
 	// vdiPasswordKey is a key to retrieve VDI user password.
 	vdiPasswordKey string
+	// useTape is a flag to use Tape for leasing a vdi account.
+	useTape bool
 }
 
 // FixtureData is the type returned by vdi related fixtures. It holds the vdi
@@ -162,11 +165,34 @@ type IsInKioskMode interface {
 }
 
 func (v *fixtureState) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
-	username := s.RequiredVar(v.usernameKey)
-	password := s.RequiredVar(v.passwordKey)
+	var vdiUsername, vdiPassword string
+
+	otaUsername := s.RequiredVar(v.usernameKey)
+	otaPassword := s.RequiredVar(v.passwordKey)
+	vdiServer := s.RequiredVar(v.vdiServerKey)
+
+	if v.useTape {
+		// Use a shortened context to reserve time for cleanup.
+		cleanupCtx := ctx
+		ctx, cancel := ctxutil.Shorten(ctx, 1*time.Minute)
+		defer cancel()
+
+		// Create an account manager and lease a vdi test account for 60 seconds.
+		accHelper, acc, err := tape.NewGenericAccountManager(ctx, []byte(s.RequiredVar(tape.ServiceAccountVar)), tape.WithTimeout(60), tape.WithPoolID(tape.Citrix))
+		if err != nil {
+			s.Fatal("Failed to create an account manager and lease a citrix account: ", err)
+		}
+		defer accHelper.CleanUp(cleanupCtx)
+
+		vdiUsername = "cros-citrix\\" + acc.Username
+		vdiPassword = acc.Password
+	} else {
+		vdiUsername = s.RequiredVar(v.vdiUsernameKey)
+		vdiPassword = s.RequiredVar(v.vdiPasswordKey)
+	}
 
 	cr, err := chrome.New(ctx,
-		chrome.GAIALogin(chrome.Creds{User: username, Pass: password}),
+		chrome.GAIALogin(chrome.Creds{User: otaUsername, Pass: otaPassword}),
 		chrome.ProdPolicy(),
 	)
 	if err != nil {
@@ -221,9 +247,9 @@ func (v *fixtureState) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	if err := v.vdiConnector.Login(
 		ctx,
 		&vdiApps.VDILoginConfig{
-			Server:   s.RequiredVar(v.vdiServerKey),
-			Username: s.RequiredVar(v.vdiUsernameKey),
-			Password: s.RequiredVar(v.vdiPasswordKey),
+			Server:   vdiServer,
+			Username: vdiUsername,
+			Password: vdiPassword,
 		}); err != nil {
 		s.Fatal("Was not able to login to the VDI application: ", err)
 	}
