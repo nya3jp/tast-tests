@@ -70,4 +70,5 @@ const (
 	FeatureMultiwordSuggestion string = "Multiword Suggestion"
 	FeatureAutoCorrection      string = "Auto-Correction"
 	FeatureAutoCapitalization  string = "Auto-Capitalization"
+	FeatureLongpressDiacritics string = "Longpress Diacritics"
 )
