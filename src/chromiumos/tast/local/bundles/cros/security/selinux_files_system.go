@@ -92,6 +92,7 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 			"/sys/kernel/debug",
 			// we don't have anything special of conntrack files than others. conntrack slab cache changes when connections established or closes, and may cause flakiness.
 			"/sys/kernel/slab/nf_conntrack_.*",
+			"/sys/kernel/tracing",
 		}, gpuDevices...))},
 		{Path: "/sys/fs/cgroup", Context: "cgroup", Recursive: true, Filter: selinux.IgnorePathButNotContents("/sys/fs/cgroup")},
 		{Path: "/sys/fs/cgroup", Context: "tmpfs"},
@@ -105,6 +106,8 @@ func SELinuxFilesSystem(ctx context.Context, s *testing.State) {
 		{Path: "/sys/kernel/debug/tracing/trace_marker", Context: "debugfs_trace_marker", IgnoreErrors: true},
 		{Path: "/sys/kernel/debug/sync", Context: "debugfs_sync", IgnoreErrors: true},
 		{Path: "/sys/kernel/debug/sync/info", Context: "debugfs_sync", IgnoreErrors: true},
+		{Path: "/sys/kernel/tracing", Context: "debugfs_tracing"},
+		{Path: "/sys/kernel/tracing/trace_marker", Context: "debugfs_trace_marker", IgnoreErrors: true},
 		{Path: "/usr/bin", Context: "cros_coreutils_exec", Recursive: true, Filter: selinux.InvertFilterSkipFile(selinux.SkipCoreutilsFile)},
 		{Path: "/usr/bin/anomaly_detector", Context: "cros_anomaly_detector_exec"},
 		{Path: "/usr/bin/btadapterd", Context: "cros_btadapterd_exec", IgnoreErrors: true},
