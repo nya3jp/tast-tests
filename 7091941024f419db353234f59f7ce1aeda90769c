@@ -39,6 +39,30 @@
       },
       "revId": "7091941024f419db353234f59f7ce1aeda90769c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bef4eb6_8f65ea59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/shelf/verify_shelf_alignment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-02T20:26:25Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. Btw, it\u0027s just copied from the existing code and I found that \"isUnderRTL\" (or \"isRTL\") has been used in many places across the shelf.* tests.\nI\u0027ll probably need to leave it up to the test owner for a follow up (+andrewxu@) after this migration CL. Does it sound okay so we can get some migration coverage for now? Let me know if you need a crbug for this.",
+      "parentUuid": "169a55a7_f0f5766f",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "7091941024f419db353234f59f7ce1aeda90769c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
