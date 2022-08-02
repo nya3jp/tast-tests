@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d7c9556_2abc4eae",
+        "filename": "src/chromiumos/tast/remote/network/iperf/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-02T15:55:40Z",
+      "side": 1,
+      "message": "yes, I forgot to mention that BitRate is also used in the results.go for the Throughput and StdDeviation. Some of the callbox routines return throughput values in bit/s and others in Mbit/s so it was more explicit to use a dedicated type than having to keep track of what the units are.",
+      "parentUuid": "6ff8a43f_67d1cd4c",
+      "revId": "5376f06e859c8ccaff7cd331f600ae6c2be6bd31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b5c639a_8278fbb4",
         "filename": "src/chromiumos/tast/remote/network/iperf/config.go",
         "patchSetId": 9
@@ -65,6 +83,30 @@
       "writtenOn": "2022-08-02T13:42:50Z",
       "side": 1,
       "message": "This symbol won\u0027t be exported outside of the package because it doesn\u0027t start with a capital letter. Is that OK?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 4
+      },
+      "revId": "5376f06e859c8ccaff7cd331f600ae6c2be6bd31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da10bf01_102083a9",
+        "filename": "src/chromiumos/tast/remote/network/iperf/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-02T15:55:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b5c639a_8278fbb4",
       "range": {
         "startLine": 33,
         "startChar": 0,
