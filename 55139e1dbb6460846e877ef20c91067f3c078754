@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac521cda_6660c8a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302660
+      },
+      "writtenOn": "2022-08-02T02:51:29Z",
+      "side": 1,
+      "message": "Thanks Judy and Yi!",
+      "revId": "55139e1dbb6460846e877ef20c91067f3c078754",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
