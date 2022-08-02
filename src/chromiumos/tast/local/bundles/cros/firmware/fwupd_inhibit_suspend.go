@@ -26,7 +26,7 @@ func init() {
 			"binarynewts@google.org",    // Test Author
 			"chromeos-fwupd@google.com", // CrOS FWUPD
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"fwupd"},
 		HardwareDeps: hwdep.D(
 			hwdep.Battery(),  // Test doesn't run on ChromeOS devices without a battery.
