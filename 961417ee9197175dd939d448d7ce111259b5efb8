@@ -33,6 +33,24 @@
       "message": "Looks like it has never run on infra before? https://tastboard.corp.google.com/test/platform.FlexID",
       "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00044ead_ccd1af9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2022-08-02T12:39:52Z",
+      "side": 1,
+      "message": "In a previous comment I mentioned how the test ran in the `reven-vmtest-direct-tast-vm` and other tast-running builders associated with this CL.\n\nI provided links to some relevant builds. The test will not appear on tastboard until it is marked in such a way that it runs in infra somewhere other than this CL.",
+      "parentUuid": "84f2a522_3deb42f0",
+      "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
