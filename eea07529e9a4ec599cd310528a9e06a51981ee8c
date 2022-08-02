@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "337ab1f9_392988f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1163674
+      },
+      "writtenOn": "2022-08-02T15:59:54Z",
+      "side": 1,
+      "message": "+Eric Caruso, PTAL! 😊",
+      "revId": "eea07529e9a4ec599cd310528a9e06a51981ee8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
