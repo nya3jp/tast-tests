@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35bcd325_1243f63b",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-02T21:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fd7d7d3_92ed058e",
+      "range": {
+        "startLine": 256,
+        "startChar": 59,
+        "endLine": 256,
+        "endChar": 74
+      },
+      "revId": "24f9c280a02289a859a322a0d31930f11ae3f7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fcd3a38_917ca33d",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-08-02T07:52:45Z",
       "side": 1,
       "message": "Maybe rename to `GetDevices`? `ExpectedDevices` sounds not a general naming.",
+      "range": {
+        "startLine": 257,
+        "startChar": 5,
+        "endLine": 257,
+        "endChar": 20
+      },
+      "revId": "24f9c280a02289a859a322a0d31930f11ae3f7fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a20c11a_56ef80aa",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-02T21:27:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fcd3a38_917ca33d",
       "range": {
         "startLine": 257,
         "startChar": 5,
