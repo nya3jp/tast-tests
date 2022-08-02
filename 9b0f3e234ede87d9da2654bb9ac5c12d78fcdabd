@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a9dc49_946db958",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2022-08-02T17:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc87c62a_b5e26367",
+      "range": {
+        "startLine": 84,
+        "startChar": 25,
+        "endLine": 84,
+        "endChar": 28
+      },
+      "revId": "9b0f3e234ede87d9da2654bb9ac5c12d78fcdabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23ff9976_012cb75e",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "932dbdb7_66107d5b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2022-08-02T17:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ff9976_012cb75e",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 69
+      },
+      "revId": "9b0f3e234ede87d9da2654bb9ac5c12d78fcdabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88eddc22_4eab786d",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-08-01T14:16:22Z",
       "side": 1,
       "message": "Set custom timeout to the test as this is exceeds the default value.",
+      "range": {
+        "startLine": 160,
+        "startChar": 42,
+        "endLine": 160,
+        "endChar": 59
+      },
+      "revId": "9b0f3e234ede87d9da2654bb9ac5c12d78fcdabd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1188279c_8364d767",
+        "filename": "src/chromiumos/tast/local/bundles/cros/holdingspace/arc_download.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1451892
+      },
+      "writtenOn": "2022-08-02T17:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88eddc22_4eab786d",
       "range": {
         "startLine": 160,
         "startChar": 42,
