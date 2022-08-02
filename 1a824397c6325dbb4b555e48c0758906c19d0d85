@@ -16,6 +16,23 @@
       "message": "Hi, this update allows the tests to run faster when resetting the TPM and avoid flakiness that sometimes comes with rebooting the device. I have run the tests but both are currently failing even before the update, so I have not been able to verify they pass.",
       "revId": "1a824397c6325dbb4b555e48c0758906c19d0d85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52248b46_d678bcb7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T08:12:54Z",
+      "side": 1,
+      "message": "Submitting this, thanks!",
+      "revId": "1a824397c6325dbb4b555e48c0758906c19d0d85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
