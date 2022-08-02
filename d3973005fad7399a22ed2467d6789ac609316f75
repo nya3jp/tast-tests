@@ -70,6 +70,24 @@
       "parentUuid": "93fbffd3_bd7b9381",
       "revId": "d3973005fad7399a22ed2467d6789ac609316f75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f3f364d_1934191b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-02T05:15:50Z",
+      "side": 1,
+      "message": "Ah, makes sense.\n\nJust checked, looks like that Tast is using the old version: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/HEAD:src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/config/config.go;l\u003d368",
+      "parentUuid": "71eb94ad_3faafd2c",
+      "revId": "d3973005fad7399a22ed2467d6789ac609316f75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
