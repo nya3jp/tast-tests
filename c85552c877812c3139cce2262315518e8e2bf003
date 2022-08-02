@@ -294,6 +294,30 @@
       },
       "revId": "c85552c877812c3139cce2262315518e8e2bf003",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dd5c94a_49939010",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-02T18:51:43Z",
+      "side": 1,
+      "message": "Managed to isolate the Advanced Settings dialog by searching for a dialog whose ancestor is the print dialog. So for the next version of this CL, I\u0027ve changed the Apply button finder to look for an \"Apply\" button whose ancestor is the advanced settings dialog.\n\nAs a bonus, the same technique can be used to find the \"Search settings\" field, so SetAdvancedSetting() no longer depends on the search box being focused by default when the advanced settings window is opened.",
+      "parentUuid": "f78f3abc_46d088f8",
+      "range": {
+        "startLine": 341,
+        "startChar": 39,
+        "endLine": 341,
+        "endChar": 64
+      },
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
