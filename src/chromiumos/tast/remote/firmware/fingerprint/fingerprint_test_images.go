@@ -6,7 +6,6 @@ package fingerprint
 
 import (
 	"context"
-	"crypto/rand"
 	"encoding/binary"
 	"io/ioutil"
 	"os"
@@ -347,13 +346,14 @@ func (f *firmwareImageGenerator) CorruptFirstByte(ctx context.Context) (string, 
 		return "", errors.Wrap(err, "failed to get FMAP info for EC_RW")
 	}
 
-	randByte := make([]byte, 1)
-	if _, err := rand.Read(randByte); err != nil {
-		return "", errors.Wrap(err, "failed to generate random value")
+	byteToCorrupt := make([]byte, 1)
+	if err := readFileAtOffset(corruptFilePath, byteToCorrupt, int64(rwSection.Offset)+100); err != nil {
+		return "", errors.Wrap(err, "failed to read byte")
 	}
 
-	if err := writeFileAtOffset(corruptFilePath, randByte, int64(rwSection.Offset)+100); err != nil {
-		return "", errors.Wrap(err, "failed to write corrupt first byte")
+	byteToCorrupt[0]++
+	if err := writeFileAtOffset(corruptFilePath, byteToCorrupt, int64(rwSection.Offset)+100); err != nil {
+		return "", errors.Wrap(err, "failed to write corrupted byte")
 	}
 
 	return corruptFilePath, nil
@@ -371,8 +371,14 @@ func (f *firmwareImageGenerator) CorruptLastByte(ctx context.Context) (string, e
 		return "", errors.Wrap(err, "failed to get FMAP info for SIG_RW")
 	}
 
-	if err := writeFileAtOffset(corruptFilePath, []byte{0}, int64(rwSection.Offset)-100); err != nil {
-		return "", errors.Wrap(err, "failed to write corrupt first byte")
+	byteToCorrupt := make([]byte, 1)
+	if err := readFileAtOffset(corruptFilePath, byteToCorrupt, int64(rwSection.Offset)-100); err != nil {
+		return "", errors.Wrap(err, "failed to read byte")
+	}
+
+	byteToCorrupt[0]++
+	if err := writeFileAtOffset(corruptFilePath, byteToCorrupt, int64(rwSection.Offset)-100); err != nil {
+		return "", errors.Wrap(err, "failed to write corrupted byte")
 	}
 
 	return corruptFilePath, nil
