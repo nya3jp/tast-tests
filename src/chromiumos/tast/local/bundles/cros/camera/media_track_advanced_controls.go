@@ -736,7 +736,7 @@ func verifyControl(ctx context.Context, s *testing.State, conn *chrome.Conn, con
 		origValue = control.getValue(&settings)
 		err = applyMediaTrackConstraints(ctx, conn, control.getConstraints(&value))
 		if err != nil {
-			if isValid || !strings.Contains(err.Error(), "out of range") {
+			if isValid || !strings.Contains(err.Error(), "OverconstrainedError") {
 				s.Fatal("Can't apply constraints: ", err)
 			}
 		}
