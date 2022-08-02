@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8081d449_c5d3b48a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-02T11:36:59Z",
+      "side": 1,
+      "message": "Start CL message with\npolicy:",
+      "revId": "362d10f3df031fd7737e035019c74ef4a7d7519f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a3d9be_2d667503",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-02T11:36:59Z",
+      "side": 1,
+      "message": "Line break at 72 chars.",
+      "revId": "362d10f3df031fd7737e035019c74ef4a7d7519f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0810abed_b2b67312",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-02T11:36:59Z",
+      "side": 1,
+      "message": "We could also create a bug explaining what this introduce and what the usage going to be.",
+      "revId": "362d10f3df031fd7737e035019c74ef4a7d7519f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a92a103b_12e85b8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-02T11:36:59Z",
+      "side": 1,
+      "message": "Compilation would be essential.",
+      "revId": "362d10f3df031fd7737e035019c74ef4a7d7519f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f487e8a1_1c3c8b11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/util/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-02T11:36:59Z",
+      "side": 1,
+      "message": "Line break at 80 chars.",
+      "revId": "362d10f3df031fd7737e035019c74ef4a7d7519f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
