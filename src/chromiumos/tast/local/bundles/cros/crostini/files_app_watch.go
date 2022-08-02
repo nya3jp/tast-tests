@@ -107,4 +107,8 @@ func FilesAppWatch(ctx context.Context, s *testing.State) {
 	if err := files.WithTimeout(10 * time.Second).WaitForFile(testFileName2)(ctx); err != nil {
 		s.Fatal("Waiting for file2.txt failed: ", err)
 	}
+	// Select back to Downloads to remove the linux watcher.
+	if err := files.OpenDownloads()(ctx); err != nil {
+		s.Fatal("Failed to open Downloads to remove Linux watcher: ", err)
+	}
 }
