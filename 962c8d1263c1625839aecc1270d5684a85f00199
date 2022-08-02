@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fa75b17_6f9f8421",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-08-02T16:47:02Z",
+      "side": 1,
+      "message": "If I run `fast_build.sh -T` on ToT (without my CL) I get this https://paste.googleplex.com/6410550882861056\n\nI never run it before so I\u0027m not sure what is expected output, maybe something is wrong with my setup?",
+      "parentUuid": "dbb4d568_bc24effd",
+      "revId": "962c8d1263c1625839aecc1270d5684a85f00199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "998c00d6_75eea561",
         "filename": "src/chromiumos/tast/local/hwsec/login_data.go",
         "patchSetId": 5
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-02T15:02:18Z",
       "side": 1,
       "message": "nit: \n\n```\nif !includeTpm {\n    return nil\n}\n```",
+      "revId": "962c8d1263c1625839aecc1270d5684a85f00199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f264b193_3e4cef24",
+        "filename": "src/chromiumos/tast/local/hwsec/login_data.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1349779
+      },
+      "writtenOn": "2022-08-02T16:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "998c00d6_75eea561",
       "revId": "962c8d1263c1625839aecc1270d5684a85f00199",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
