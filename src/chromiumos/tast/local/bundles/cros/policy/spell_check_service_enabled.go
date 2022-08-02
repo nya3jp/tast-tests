@@ -139,7 +139,7 @@ func SpellCheckServiceEnabled(ctx context.Context, s *testing.State) {
 
 			if param.wantRestriction == restriction.Disabled {
 				// Check for the enterprise icon.
-				if err := policyutil.SettingsPage(ctx, cr, br, "syncSetup").
+				if err := policyutil.OSSettingsPage(ctx, cr, "osSyncSetup").
 					SelectNode(ctx, nodewith.
 						Role(role.Image).
 						NameStartingWith("Enhanced spell check")).
