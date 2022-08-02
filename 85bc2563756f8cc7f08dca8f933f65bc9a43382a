@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f868b116_dd08dd86",
+        "filename": "src/chromiumos/tast/local/bundles/cros/rgbkbd/capslock_rgb_state_updates.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2022-08-02T23:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44b1e880_fdf47c7f",
+      "range": {
+        "startLine": 106,
+        "startChar": 26,
+        "endLine": 106,
+        "endChar": 46
+      },
+      "revId": "85bc2563756f8cc7f08dca8f933f65bc9a43382a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f96a28c4_519128d7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-02T23:08:12Z",
       "side": 1,
       "message": "I think on creation of a new chrome process, it resets capslock state to off, so I dont think we need to reset it manually",
+      "range": {
+        "startLine": 60,
+        "startChar": 17,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "85bc2563756f8cc7f08dca8f933f65bc9a43382a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d54d107_ffc23e95",
+        "filename": "src/chromiumos/tast/local/rgbkbd/rgbkbd.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2022-08-02T23:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f96a28c4_519128d7",
       "range": {
         "startLine": 60,
         "startChar": 17,
