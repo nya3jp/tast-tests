@@ -271,6 +271,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbab715b_53afc7d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-02T19:10:50Z",
+      "side": 1,
+      "message": "Resolving this as I made another CL. If conversation would want to continue, lets keep it together in the other comment section.",
+      "parentUuid": "9598bab2_bcbb2d57",
+      "revId": "23fe6b8d609b7390442ab3571d3ad46dc1405a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdae34ac_cf8f2545",
