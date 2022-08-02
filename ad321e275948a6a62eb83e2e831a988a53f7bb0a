@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca07aaa_ae77827a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-02T09:02:26Z",
+      "side": 1,
+      "message": "policy:\n\nnit: Start with the package name. \"tast:\" would be fine if there were changes to the framework in the CL. \"tast-tests:\" would be fine too if there were multiple change to various tests 😊",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "ad321e275948a6a62eb83e2e831a988a53f7bb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c0933246_d115352e",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-08-02T08:44:20Z",
       "side": 1,
       "message": "Hi, PTAL, one-line fix for a tast test.",
+      "revId": "ad321e275948a6a62eb83e2e831a988a53f7bb0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c937b3b_78af0f78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1459973
+      },
+      "writtenOn": "2022-08-02T09:02:26Z",
+      "side": 1,
+      "message": "LGTM % nit.",
       "revId": "ad321e275948a6a62eb83e2e831a988a53f7bb0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
