@@ -14,24 +14,20 @@ import (
 	"os"
 
 	"chromiumos/tast/common/crypto/certificate"
-	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/bundles/cros/network/certs"
 	"chromiumos/tast/local/bundles/cros/network/virtualnet/env"
 	"chromiumos/tast/testing"
 )
 
-// Paths in chroot.
+// Path in chroot.
 const (
 	logPath = "/tmp/httpServer.log"
 )
 
-// Paths in root.
+// Path in root to bind mount to for cert validation
 const (
-	tmpCrtPath    = "/tmp/test_certs"
-	serverKeyPath = tmpCrtPath + "/server_key.key"
-	serverCrtPath = tmpCrtPath + "/server_cert.crt"
-	caCrtPath     = tmpCrtPath + "/ca_cert.pem"
-	sslCrtPath    = "/etc/ssl/certs"
+	sslCrtPath = "/etc/ssl/certs"
 )
 
 type httpserver struct {
@@ -85,15 +81,15 @@ func (h *httpserver) Start(ctx context.Context, env *env.Env) (retErr error) {
 			return
 		}
 		if h.serveTLS {
-			if err := installCerts(ctx, certificate.TestCert3()); err != nil {
-				uninstallCerts(ctx)
+			if err := certs.InstallTestCerts(ctx, certificate.TestCert3(), sslCrtPath); err != nil {
+				certs.UninstallTestCerts(ctx, sslCrtPath)
 				errChannel <- err
 				return
 			}
-			defer uninstallCerts(ctx)
+			defer certs.UninstallTestCerts(ctx, sslCrtPath)
 			errChannel <- nil
-			if err := h.server.ServeTLS(ln, serverCrtPath, serverKeyPath); err != http.ErrServerClosed {
-				testing.ContextLogf(ctx, "ServeTLS failed to start with err: %q", err)
+			if err := h.server.ServeTLS(ln, certs.GetTestServerCertFilePath(), certs.GetTestServerKeyFilePath()); err != http.ErrServerClosed {
+				testing.ContextLog(ctx, "ServeTLS failed to start with err: ", err)
 			}
 		} else {
 			errChannel <- nil
@@ -113,73 +109,4 @@ func (h *httpserver) Stop(ctx context.Context) error {
 // WriteLogs writes logs into |f|.
 func (h *httpserver) WriteLogs(ctx context.Context, f *os.File) error {
 	return h.env.ReadAndWriteLogIfExists(h.env.ChrootPath(logPath), f)
-}
-
-// installCerts installs and writes certs for HTTPS server. In order to use symlinks
-// in tmp, tmp must be remounted to allow symlinks. uninstallCerts() will restore
-// tmp directory to previous state
-func installCerts(ctx context.Context, certs certificate.CertStore) error {
-	if err := testexec.CommandContext(ctx, "mount", "-F", "tmpfs", "-o", "remount,noexec,nosuid,nodev", "/tmp").Run(); err != nil {
-		return errors.Wrap(err, "failed change mount options on tmp to allow symlinks")
-	}
-
-	testing.ContextLog(ctx, "Installing CA certs to tmp directory for TLS validation")
-	if err := installSSLCerts(ctx, certs.CACred.Cert); err != nil {
-		return errors.Wrap(err, "failed to set up temp CA certs")
-	}
-
-	testing.ContextLog(ctx, "Writing server certs to tmp directory")
-	if err := writeServerCerts(ctx, certs.ServerCred); err != nil {
-		return errors.Wrap(err, "failed to write temp server certs")
-	}
-	return nil
-}
-
-// writeServerCerts writes the server certificate and the server private key to a
-// tmp directory for use in ServeTLS().
-func writeServerCerts(ctx context.Context, serverCreds certificate.Credential) error {
-	if err := os.WriteFile(serverCrtPath, []byte(serverCreds.Cert), 0644); err != nil {
-		return errors.Wrap(err, "failed to write server cert")
-	}
-	if err := os.WriteFile(serverKeyPath, []byte(serverCreds.PrivateKey), 0644); err != nil {
-		return errors.Wrap(err, "failed to write server private key")
-	}
-	return nil
-}
-
-// installSSLCerts writes the ca |cert| to a tmp directory, rehashes the directory,
-// and then mounts the tmp directory to '/etc/ssl/certs'. After this is called, the
-// default certs in '/etc/ssl/certs' are hidden. uninstallCerts() will remove the mount
-// and make the default certs visible again.
-func installSSLCerts(ctx context.Context, cert string) error {
-	if err := testexec.CommandContext(ctx, "mkdir", tmpCrtPath).Run(); err != nil {
-		return errors.Wrap(err, "failed to make tmp directory")
-	}
-
-	if err := os.WriteFile(caCrtPath, []byte(cert), 0644); err != nil {
-		return errors.Wrap(err, "failed to write ca cert")
-	}
-
-	if err := testexec.CommandContext(ctx, "c_rehash", tmpCrtPath).Run(); err != nil {
-		return errors.Wrap(err, "failed to rehash tmp cert directory")
-	}
-
-	if err := testexec.CommandContext(ctx, "mount", "-o", "bind", tmpCrtPath, sslCrtPath).Run(); err != nil {
-		return errors.Wrap(err, "failed to bind mount")
-	}
-	return nil
-}
-
-// uninstallCerts unmounts '/etc/ssl/certs' and deletes the tmp directory that contained
-// the CA cert, server cert, and server private key.
-func uninstallCerts(ctx context.Context) {
-	if err := testexec.CommandContext(ctx, "umount", sslCrtPath).Run(); err != nil {
-		testing.ContextLog(ctx, "Failed to unmount bind: ", err)
-	}
-	if err := testexec.CommandContext(ctx, "rm", "-rf", tmpCrtPath).Run(); err != nil {
-		testing.ContextLog(ctx, "Failed to delete tmp directory: ", err)
-	}
-	if err := testexec.CommandContext(ctx, "mount", "-F", "tmpfs", "-o", "remount,noexec,nosuid,nodev,nosymfollow", "/tmp").Run(); err != nil {
-		testing.ContextLog(ctx, "Failed change mount options on tmp back to default by not allowing symlinks: ", err)
-	}
 }
