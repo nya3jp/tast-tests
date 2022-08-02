@@ -20,6 +20,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b311d32_9bc501b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-02T05:47:43Z",
+      "side": 1,
+      "message": "nit: newline before",
+      "revId": "464da7a0ecffe161afeb02d33f31a3ac11262341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219d911b_ae2cbcea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-02T05:47:43Z",
+      "side": 1,
+      "message": "Use a longer name. Maybe arc and rename the import to arcpkg.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "464da7a0ecffe161afeb02d33f31a3ac11262341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "322abc96_1d6260b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dynamic_color.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-02T05:47:43Z",
+      "side": 1,
+      "message": "nit: move to the top",
+      "revId": "464da7a0ecffe161afeb02d33f31a3ac11262341",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78230e74_76eb83c2",
         "filename": "src/chromiumos/tast/local/bundles/cros/arc/standardizedtestutil/testutil.go",
         "patchSetId": 18
