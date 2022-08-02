@@ -40,8 +40,9 @@ func init() {
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name:              "vm",
-			ExtraSoftwareDeps: []string{"android_vm"},
+			Name: "vm",
+			// TODO(b/241035143): Fix the test on betty-arc-r.
+			ExtraSoftwareDeps: []string{"android_vm", "no_qemu"},
 		}},
 	})
 }
