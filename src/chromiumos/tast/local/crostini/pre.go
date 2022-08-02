@@ -35,6 +35,10 @@ import (
 // UnstableModels is list of models on which the Crostini tests are flaky.
 // Use the guide at go/crostini-unstable-devices for when to add a device.
 var UnstableModels = []string{
+	// b/241027994
+	"wizpig",
+	"cyan",
+	"edgar",
 	// Platform coral
 	"astronaut",
 	"blacktip360",
