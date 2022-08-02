@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24bb968e_cb505ade",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T13:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd7adb41_61c1fb43",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 42
+      },
+      "revId": "8c8144781c26471b1636b616b16a0a641cde1054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a804697_528619a4",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-02T09:41:57Z",
       "side": 1,
       "message": "I always find names like \"util\" don\u0027t contain much information. Any reason we can\u0027t simply call it \"rollback\"? You can always rename the package while importing to \"rollbackpkg\" if there\u0027s any import name clashes.",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 20
+      },
+      "revId": "8c8144781c26471b1636b616b16a0a641cde1054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97e1b56c_8b96ae66",
+        "filename": "src/chromiumos/tast/remote/rollbackutil/doc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T13:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a804697_528619a4",
       "range": {
         "startLine": 6,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f275859a_00dd98ec",
+        "filename": "src/chromiumos/tast/remote/rollbackutil/rollback_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T13:36:04Z",
+      "side": 1,
+      "message": "Good point, I did that, thanks for the suggestion :)",
+      "parentUuid": "210a14cc_dca95de5",
+      "range": {
+        "startLine": 40,
+        "startChar": 80,
+        "endLine": 40,
+        "endChar": 108
+      },
+      "revId": "8c8144781c26471b1636b616b16a0a641cde1054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46b80dad_472f0a09",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-02T09:41:57Z",
       "side": 1,
       "message": "\"is not accidently logged anywhere during rollback.\"",
+      "range": {
+        "startLine": 81,
+        "startChar": 55,
+        "endLine": 82,
+        "endChar": 12
+      },
+      "revId": "8c8144781c26471b1636b616b16a0a641cde1054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a727e62_418faddf",
+        "filename": "src/chromiumos/tast/remote/rollbackutil/rollback_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T13:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46b80dad_472f0a09",
       "range": {
         "startLine": 81,
         "startChar": 55,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74b61d40_826991b3",
+        "filename": "src/chromiumos/tast/remote/rollbackutil/rollback_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T13:36:04Z",
+      "side": 1,
+      "message": "Discussed offline. I have updated the method to do the whole rollback process instead.",
+      "parentUuid": "83819dbf_8eaf6243",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 2
+      },
+      "revId": "8c8144781c26471b1636b616b16a0a641cde1054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccc69dd1_efc13054",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-08-02T09:41:57Z",
       "side": 1,
       "message": "missing return? Good job Go for not giving you a warning here.",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 4
+      },
+      "revId": "8c8144781c26471b1636b616b16a0a641cde1054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34eafb0b_45db96a6",
+        "filename": "src/chromiumos/tast/remote/rollbackutil/rollback_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T13:36:04Z",
+      "side": 1,
+      "message": "ooops, good catch, thanks!",
+      "parentUuid": "ccc69dd1_efc13054",
       "range": {
         "startLine": 124,
         "startChar": 2,
@@ -187,6 +331,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90d9de5d_9814fc17",
+        "filename": "src/chromiumos/tast/remote/rollbackutil/rollback_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T13:36:04Z",
+      "side": 1,
+      "message": "In go, if more than one consecutive parameter has the same type, it is possible (and it seems also recommended; lint complained when uploading the CL) to only specify the type to the last one.",
+      "parentUuid": "8152a595_9640cc08",
+      "range": {
+        "startLine": 132,
+        "startChar": 103,
+        "endLine": 132,
+        "endChar": 106
+      },
+      "revId": "8c8144781c26471b1636b616b16a0a641cde1054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1af8244_33550b4c",
+        "filename": "src/chromiumos/tast/remote/rollbackutil/rollback_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T13:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0df8e38a_2e2979fc",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 29
+      },
+      "revId": "8c8144781c26471b1636b616b16a0a641cde1054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "912e150a_b3410078",
         "filename": "src/chromiumos/tast/remote/rollbackutil/rollback_util.go",
         "patchSetId": 1
@@ -198,6 +390,30 @@
       "writtenOn": "2022-08-02T09:41:57Z",
       "side": 1,
       "message": "was not accidently logged during rollback",
+      "range": {
+        "startLine": 148,
+        "startChar": 50,
+        "endLine": 149,
+        "endChar": 11
+      },
+      "revId": "8c8144781c26471b1636b616b16a0a641cde1054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "479e85ed_fcae40b0",
+        "filename": "src/chromiumos/tast/remote/rollbackutil/rollback_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T13:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "912e150a_b3410078",
       "range": {
         "startLine": 148,
         "startChar": 50,
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb85c39f_0b4ffda3",
+        "filename": "src/chromiumos/tast/remote/rollbackutil/rollback_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T13:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60683151_f412e47b",
+      "range": {
+        "startLine": 150,
+        "startChar": 45,
+        "endLine": 150,
+        "endChar": 80
+      },
+      "revId": "8c8144781c26471b1636b616b16a0a641cde1054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01209b3a_a3e89d2f",
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ede0c24_588f606b",
+        "filename": "src/chromiumos/tast/remote/rollbackutil/rollback_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T13:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01209b3a_a3e89d2f",
+      "range": {
+        "startLine": 187,
+        "startChar": 22,
+        "endLine": 187,
+        "endChar": 34
+      },
+      "revId": "8c8144781c26471b1636b616b16a0a641cde1054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77759670_94f96405",
@@ -267,6 +531,30 @@
       "writtenOn": "2022-08-02T09:41:57Z",
       "side": 1,
       "message": "No because stop will give you an error if it\u0027s not running. And that thing not running is just fine.\n\nI think I remember I tried to check at some point whether it was running and only stop if it is running, but it was nontrivial as well, so I just left it as it is.",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 63
+      },
+      "revId": "8c8144781c26471b1636b616b16a0a641cde1054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d2cd8f_5707e687",
+        "filename": "src/chromiumos/tast/remote/rollbackutil/rollback_util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-02T13:36:04Z",
+      "side": 1,
+      "message": "Got it, thanks for clarifying! :)",
+      "parentUuid": "77759670_94f96405",
       "range": {
         "startLine": 188,
         "startChar": 1,
