@@ -30,15 +30,14 @@ func init() {
 		Desc:         "Checks SELinux labels specifically for the data dir in android-data",
 		Contacts:     []string{"vraheja@chromium.org", "chromeos-security@google.com"},
 		SoftwareDeps: []string{"selinux", "chrome"},
-		Attr:         []string{"group:mainline"},
 		Pre:          arc.Booted(),
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
 			Name:              "vm",
 			ExtraSoftwareDeps: []string{"android_vm"},
-			ExtraAttr:         []string{"informational"},
 		}},
+		Attr:    []string{"group:mainline"},
 		Timeout: 5 * time.Minute,
 	})
 }
