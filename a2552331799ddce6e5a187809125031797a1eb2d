@@ -1,6 +1,63 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e06cd4fd_5000c6a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "Please elaborate more on what topics the CL updates. How about:\n\ndocking: Fix comments in wwcb/utils and wwcb/dock1",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e857d367_a335b9b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "Fix comments in wwcb/utils and wwcb/dock1_persistent_settings.go to align with Go-style. \n\n\n(Note that commit message should be correct in English.)",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3cfb962_e5edf9c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "Also add ... .",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "51ab31eb_c157725b",
@@ -14,6 +71,348 @@
       "writtenOn": "2022-08-02T07:17:35Z",
       "side": 1,
       "message": "Hi Shuo-Peng Liao,\nI done all of them,\nAnd also update comments on dock1 and other utils file for more regular English sentence and ending period.\n\nFunction wasn\u0027t be changed. And I also do same tests. And all passed. Please check here.\nhttps://drive.google.com/drive/u/2/folders/1bYD2Nf47TdKJLJmRcYGb_ktT2vflp_ED",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8538d7fd_483a6350",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "Chrome",
+      "range": {
+        "startLine": 115,
+        "startChar": 22,
+        "endLine": 115,
+        "endChar": 28
+      },
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "285b50f3_5442cd34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "Step\n\nBe consistent. Same below",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 115,
+        "endChar": 8
+      },
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1770536_0397d52a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "I think the two comments are not needed.",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d028f8_60a48e0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "This is redundant.",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56202070_fdeb99e1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "The function name is self-explanatory.",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43885047_a4ae59a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "Same here. Remove the comment.",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "531620c8_eb67fb37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "Same here. Remove the comment.",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb4186e7_8c96e4f6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "Same here. Remove the comment.",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92afdfe7_0920a45e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock1_persistent_settings.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "Same here. Remove the two comment.",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d17273_90785891",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_cursor.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "// If we send mouse events too frequently, the dragging may become unsmoothly and the window might not be moved to the designated location.",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "303ee652_896f4df6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "ensures",
+      "range": {
+        "startLine": 49,
+        "startChar": 26,
+        "endLine": 49,
+        "endChar": 32
+      },
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f32ef26d_989ef2bc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "the given",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f45401_b65e6888",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_display_info.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "// Expect the display is primary. Return err after poll timeout.",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098f7f6d_fb05bfc9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "uses the",
+      "range": {
+        "startLine": 28,
+        "startChar": 23,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b166a53_e9d9ea6d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "Set up\n\nSame below.",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 9
+      },
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cd24fb5_0e490c83",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "The code is trivial. Remove the comment. Please make judgements to remove trivial comments.",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c9e2db_68eac585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/chromebook_window.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "The code is trivial. Remove the comment. Please make judgements to remove trivial comments.",
+      "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d76badb4_643edb66",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/utils/wwcb_api.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-03T07:26:05Z",
+      "side": 1,
+      "message": "an API",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 12
+      },
       "revId": "a2552331799ddce6e5a187809125031797a1eb2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
