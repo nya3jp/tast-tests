@@ -46,6 +46,30 @@
       },
       "revId": "0fb288d893ff9b3aa254485dc586159eba4cc606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41873274_20d782bf",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-03T03:59:19Z",
+      "side": 1,
+      "message": "I think it\u0027s fine for lacros not to run if we have zero windows open for this test. After all, that is what we are aiming for eventually, and it can happen even with keepalive on IIUC.",
+      "parentUuid": "fa06f065_1a1cde5a",
+      "range": {
+        "startLine": 114,
+        "startChar": 35,
+        "endLine": 114,
+        "endChar": 61
+      },
+      "revId": "0fb288d893ff9b3aa254485dc586159eba4cc606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
