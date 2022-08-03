@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2163fa2a_07c0e377",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T06:18:39Z",
+      "side": 1,
+      "message": "Done adding the comment. Thanks so much for your explaining and pointing out for the fix!",
+      "parentUuid": "f8d45f7e_fc22145f",
+      "revId": "0fb288d893ff9b3aa254485dc586159eba4cc606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ea35072_a89c32c2",
@@ -102,6 +120,24 @@
       "writtenOn": "2022-08-03T04:30:43Z",
       "side": 1,
       "message": "Same for these other usages of perfutil which take a tconn that they grab metrics from.",
+      "revId": "0fb288d893ff9b3aa254485dc586159eba4cc606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01ae170_c4888cd9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T06:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ea35072_a89c32c2",
       "revId": "0fb288d893ff9b3aa254485dc586159eba4cc606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
