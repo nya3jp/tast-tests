@@ -16,6 +16,29 @@
       "message": "+tast-owners@ directly since this patch is only related to specific features. Thanks!",
       "revId": "ad49043ab281a510ff66b73cea2a36b1f14eed56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fffbd33a_1b07e27e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-03T04:30:33Z",
+      "side": 1,
+      "message": "This will not reserve anytime from ctx. The suggested solution is as below:\n\ncleanupCtx :\u003d ctx\nctx, cancel :\u003d ctxutil.Shorten(ctx, 5*time.Second)\ndefer cancel()\n\n...\n\ndefer func(ctx context.Context) {\n    if retErr !\u003d nil {\n        dumpNetworkInfoAfterPingFailure(ctx)\n    }\n}(cleanupCtx)",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 45
+      },
+      "revId": "ad49043ab281a510ff66b73cea2a36b1f14eed56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
