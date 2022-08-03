@@ -27,6 +27,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/lockscreen"
+	"chromiumos/tast/local/chrome/uiauto/quicksettings"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -178,8 +179,11 @@ func Run(ctx context.Context, s *testing.State, cr *chrome.Chrome, pauseMode Pau
 
 	if pauseMode == Lock {
 		// Lock the screen before recording the test.
+		// To improve the stability, try keyboard shortcuts first, then try from UI.
 		if err := LockScreen(ctx, tconn); err != nil {
-			s.Fatal("Failed to lock screen: ", err)
+			if err := quicksettings.LockScreen(ctx, tconn); err != nil {
+				s.Fatal("Failed to lock screen: ", err)
+			}
 		}
 
 		defer func(ctx context.Context) {
