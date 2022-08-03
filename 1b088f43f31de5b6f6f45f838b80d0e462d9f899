@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0348725_1e07f5b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T18:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24626c12_84e6412f",
+      "revId": "1b088f43f31de5b6f6f45f838b80d0e462d9f899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33169c64_4687dc2c",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-02T23:17:39Z",
       "side": 1,
       "message": "nit: HTTP",
+      "range": {
+        "startLine": 116,
+        "startChar": 33,
+        "endLine": 116,
+        "endChar": 37
+      },
+      "revId": "1b088f43f31de5b6f6f45f838b80d0e462d9f899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "934011a9_a491c261",
+        "filename": "src/chromiumos/tast/local/printing/usbprinter/setup.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T18:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33169c64_4687dc2c",
       "range": {
         "startLine": 116,
         "startChar": 33,
