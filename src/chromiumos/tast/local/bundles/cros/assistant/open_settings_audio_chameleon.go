@@ -81,7 +81,11 @@ func OpenSettingsAudioChameleon(ctx context.Context, s *testing.State) {
 	}()
 
 	s.Log("Play audio to trigger assistant features")
-	if err := chameleond.StartPlayingAudio(ctx, chameleon.PortAnalogAudioLineOut, dstFileName, chameleon.SupportedAudioDataFormat); err != nil {
+	analogAudioLineOutPortID, err := chameleond.FetchSupportedPortIDByType(ctx, chameleon.PortTypeAnalogAudioLineOut, 0)
+	if err != nil {
+		s.Fatal("Failed to get port id of audio line out port: ", err)
+	}
+	if err := chameleond.StartPlayingAudio(ctx, analogAudioLineOutPortID, dstFileName, chameleon.SupportedAudioDataFormat); err != nil {
 		s.Fatal("Failed when calling StartPlayingAudio: ", err)
 	}
 
