@@ -96,7 +96,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
+		Vars:    []string{"arcappcompat.gaiaPoolDefault", "testutil.suite"},
 		VarDeps: []string{"arcappcompat.Showtime.emailid", "arcappcompat.Showtime.password"},
 	})
 }
@@ -108,8 +108,13 @@ func Showtime(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.showtime.standalone"
 		appActivity = "com.showtime.showtimeanytime.activities.IntroActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForShowtime verifies Showtime is logged in and

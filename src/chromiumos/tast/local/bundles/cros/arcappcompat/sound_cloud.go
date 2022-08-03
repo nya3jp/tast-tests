@@ -85,6 +85,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
+		Vars:    []string{"testutil.suite"},
 		VarDeps: []string{"arcappcompat.username", "arcappcompat.password",
 			"arcappcompat.SoundCloud.emailid", "arcappcompat.SoundCloud.password"},
 	})
@@ -97,8 +98,13 @@ func SoundCloud(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.soundcloud.android"
 		appActivity = ".launcher.LauncherActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForSoundCloud verifies SoundCloud is logged in and

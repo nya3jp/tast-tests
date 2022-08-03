@@ -84,7 +84,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
+		Vars:    []string{"arcappcompat.gaiaPoolDefault", "testutil.suite"},
 		VarDeps: []string{"arcappcompat.Turbotax.emailid", "arcappcompat.Turbotax.password"},
 	})
 }
@@ -96,8 +96,13 @@ func Turbotax(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.intuit.turbotax.mobile"
 		appActivity = "com.intuit.turbotaxuniversal.startup.activity.StartUpActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForTurbotax verifies Turbotax is logged in and

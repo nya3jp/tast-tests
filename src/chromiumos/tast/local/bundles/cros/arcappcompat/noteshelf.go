@@ -82,6 +82,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeForNoteshelf,
 		}},
 		Timeout: 10 * time.Minute,
+		Vars:    []string{"testutil.suite"},
 		VarDeps: []string{"arcappcompat.Noteshelf.username", "arcappcompat.Noteshelf.password"},
 	})
 }
@@ -93,8 +94,13 @@ func Noteshelf(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.fluidtouch.noteshelf2"
 		appActivity = "com.fluidtouch.noteshelf.commons.ui.FTSplashScreenActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForNoteshelf verifies Noteshelf is launched and

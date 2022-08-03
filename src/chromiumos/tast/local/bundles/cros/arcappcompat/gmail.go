@@ -40,7 +40,8 @@ func init() {
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForGmail,
-				CommonTests: testutil.ClamshellSmokeTests,
+				SmokeTests:  testutil.ClamshellSmokeTests,
+				CommonTests: testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -51,7 +52,8 @@ func init() {
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForGmail,
-				CommonTests: testutil.TouchviewSmokeTests,
+				SmokeTests:  testutil.TouchviewSmokeTests,
+				CommonTests: testutil.TouchviewCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -62,7 +64,8 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForGmail,
-				CommonTests: testutil.ClamshellSmokeTests,
+				SmokeTests:  testutil.ClamshellSmokeTests,
+				CommonTests: testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -73,7 +76,8 @@ func init() {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForGmail,
-				CommonTests: testutil.TouchviewSmokeTests,
+				SmokeTests:  testutil.TouchviewSmokeTests,
+				CommonTests: testutil.TouchviewCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -82,7 +86,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
 		Timeout: 30 * time.Minute,
-		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
+		Vars:    []string{"arcappcompat.gaiaPoolDefault", "testutil.suite"},
 	})
 }
 
@@ -94,8 +98,13 @@ func Gmail(ctx context.Context, s *testing.State) {
 		appActivity = ".ConversationListActivityGmail"
 	)
 
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForGmail verifies Gmail is logged in and
