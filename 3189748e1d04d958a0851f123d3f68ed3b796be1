@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a24c06a_9aa0aa61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T18:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3795498_f86eaf03",
+      "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b5305b7_85b78f70",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-08-02T23:13:48Z",
       "side": 1,
       "message": "It doesn\u0027t look like this test actually interacts with Chrome.  If it doesn\u0027t, you can change this to virtualUsbPrinterModulesLoaded and remove the chrome dep above.  You might not need the custom timeout any more either.",
+      "range": {
+        "startLine": 41,
+        "startChar": 17,
+        "endLine": 41,
+        "endChar": 65
+      },
+      "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6ecdda5_0b9984db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T18:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b5305b7_85b78f70",
       "range": {
         "startLine": 41,
         "startChar": 17,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c365e20_d49bd6d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T18:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59ef6888_197b96e9",
+      "range": {
+        "startLine": 62,
+        "startChar": 37,
+        "endLine": 62,
+        "endChar": 41
+      },
+      "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "545c0fa0_4b207441",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-08-02T23:13:48Z",
       "side": 1,
       "message": "Does removing the directory cause any problems with virtual-usb-printer holding open file handles or similar?  It seems like it would be safer to just remove the contents instead of the whole directory.",
+      "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9803bb21_fee54001",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T18:09:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it causes problems to remove the dir... Good point - I\u0027ll loop over the files and remove each one individually.",
+      "parentUuid": "545c0fa0_4b207441",
       "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c8eca84_17dd05fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T18:09:00Z",
+      "side": 1,
+      "message": "It does not - I\u0027ll remove that file and just use an existing one.",
+      "parentUuid": "e8de523c_af374fcf",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 36
+      },
+      "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5872588_4c756fbd",
@@ -117,6 +225,24 @@
       "writtenOn": "2022-08-02T23:13:48Z",
       "side": 1,
       "message": "This is a failure to enumerate the files, not a failure to read, right?",
+      "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71893c85_143bd77e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T18:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5872588_4c756fbd",
       "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +264,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c772a01_c1226258",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T18:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc38ad16_341a2f90",
+      "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7111a01_b20b6c33",
@@ -155,6 +299,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4691b0_bc00f4e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T18:09:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure.  I\u0027ll compare bytes to be safe.",
+      "parentUuid": "d7111a01_b20b6c33",
+      "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a429a522_4fefe498",
@@ -168,6 +330,24 @@
       "writtenOn": "2022-08-02T23:13:48Z",
       "side": 1,
       "message": "Does this need a colon somewhere (\"Authorization: \" maybe)?",
+      "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c83671ef_24e4c078",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T18:09:00Z",
+      "side": 1,
+      "message": "Yes, now that I updated the virtual-usb-printer to output with a colon.",
+      "parentUuid": "a429a522_4fefe498",
       "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
