@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4df3643f_a8fa355e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/auto_framing_e2e.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2022-08-03T14:45:15Z",
+      "side": 1,
+      "message": "Can we add some Chrome histogram and check the histogram instead? Checking log patterns can be fragile. The histogram can also be used to help us understand how users use the feature in the field and/or the performance of the pipeline.\n\nAs a reference here\u0027s what we did in HDRnet: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/camera/features/hdrnet/hdrnet_stream_manipulator.cc;drc\u003d6c8a2966b8c6c0943d95b42161f7c01756f205f5;l\u003d1180",
+      "range": {
+        "startLine": 77,
+        "startChar": 22,
+        "endLine": 100,
+        "endChar": 2
+      },
+      "revId": "47b2f3f99de3982f3bfce9ac2f2cf089372618d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
