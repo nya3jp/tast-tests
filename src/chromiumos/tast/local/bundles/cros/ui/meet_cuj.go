@@ -976,36 +976,35 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	// Report WebRTC metrics for video streams.
-	type histInfo struct {
+	infoByName := map[string]struct {
 		unit      string
 		direction perf.Direction
 		outbound  bool
-	}
-	infoByName := map[string]histInfo{
-		"WebRTC.Video.BandwidthLimitedResolutionInPercent":             histInfo{"percent", perf.SmallerIsBetter, true},
-		"WebRTC.Video.BandwidthLimitedResolutionsDisabled":             histInfo{"count", perf.SmallerIsBetter, true},
-		"WebRTC.Video.CpuLimitedResolutionInPercent":                   histInfo{"percent", perf.SmallerIsBetter, true},
-		"WebRTC.Video.DecodedFramesPerSecond":                          histInfo{"fps", perf.BiggerIsBetter, false},
-		"WebRTC.Video.DroppedFrames.Capturer":                          histInfo{"count", perf.SmallerIsBetter, true},
-		"WebRTC.Video.DroppedFrames.Encoder":                           histInfo{"count", perf.SmallerIsBetter, true},
-		"WebRTC.Video.DroppedFrames.EncoderQueue":                      histInfo{"count", perf.SmallerIsBetter, true},
-		"WebRTC.Video.DroppedFrames.Ratelimiter":                       histInfo{"count", perf.SmallerIsBetter, true},
-		"WebRTC.Video.DroppedFrames.Receiver":                          histInfo{"count", perf.SmallerIsBetter, false},
-		"WebRTC.Video.InputFramesPerSecond":                            histInfo{"fps", perf.BiggerIsBetter, true},
-		"WebRTC.Video.NumberResolutionDownswitchesPerMinute":           histInfo{"count_per_minute", perf.SmallerIsBetter, false},
-		"WebRTC.Video.QualityLimitedResolutionDownscales":              histInfo{"count", perf.SmallerIsBetter, true},
-		"WebRTC.Video.QualityLimitedResolutionInPercent":               histInfo{"percent", perf.SmallerIsBetter, true},
-		"WebRTC.Video.RenderFramesPerSecond":                           histInfo{"fps", perf.BiggerIsBetter, false},
-		"WebRTC.Video.Screenshare.BandwidthLimitedResolutionInPercent": histInfo{"percent", perf.SmallerIsBetter, true},
-		"WebRTC.Video.Screenshare.BandwidthLimitedResolutionsDisabled": histInfo{"count", perf.SmallerIsBetter, true},
-		"WebRTC.Video.Screenshare.InputFramesPerSecond":                histInfo{"fps", perf.BiggerIsBetter, true},
-		"WebRTC.Video.Screenshare.QualityLimitedResolutionDownscales":  histInfo{"count", perf.SmallerIsBetter, true},
-		"WebRTC.Video.Screenshare.QualityLimitedResolutionInPercent":   histInfo{"percent", perf.SmallerIsBetter, true},
-		"WebRTC.Video.Screenshare.SentFramesPerSecond":                 histInfo{"fps", perf.BiggerIsBetter, true},
-		"WebRTC.Video.Screenshare.SentToInputFpsRatioPercent":          histInfo{"percent", perf.BiggerIsBetter, true},
-		"WebRTC.Video.SentFramesPerSecond":                             histInfo{"fps", perf.BiggerIsBetter, true},
-		"WebRTC.Video.SentToInputFpsRatioPercent":                      histInfo{"percent", perf.BiggerIsBetter, true},
-		"WebRTC.Video.TimeInHdPercentage":                              histInfo{"percent", perf.BiggerIsBetter, false},
+	}{
+		"WebRTC.Video.BandwidthLimitedResolutionInPercent":             {"percent", perf.SmallerIsBetter, true},
+		"WebRTC.Video.BandwidthLimitedResolutionsDisabled":             {"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.CpuLimitedResolutionInPercent":                   {"percent", perf.SmallerIsBetter, true},
+		"WebRTC.Video.DecodedFramesPerSecond":                          {"fps", perf.BiggerIsBetter, false},
+		"WebRTC.Video.DroppedFrames.Capturer":                          {"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.DroppedFrames.Encoder":                           {"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.DroppedFrames.EncoderQueue":                      {"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.DroppedFrames.Ratelimiter":                       {"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.DroppedFrames.Receiver":                          {"count", perf.SmallerIsBetter, false},
+		"WebRTC.Video.InputFramesPerSecond":                            {"fps", perf.BiggerIsBetter, true},
+		"WebRTC.Video.NumberResolutionDownswitchesPerMinute":           {"count_per_minute", perf.SmallerIsBetter, false},
+		"WebRTC.Video.QualityLimitedResolutionDownscales":              {"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.QualityLimitedResolutionInPercent":               {"percent", perf.SmallerIsBetter, true},
+		"WebRTC.Video.RenderFramesPerSecond":                           {"fps", perf.BiggerIsBetter, false},
+		"WebRTC.Video.Screenshare.BandwidthLimitedResolutionInPercent": {"percent", perf.SmallerIsBetter, true},
+		"WebRTC.Video.Screenshare.BandwidthLimitedResolutionsDisabled": {"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.Screenshare.InputFramesPerSecond":                {"fps", perf.BiggerIsBetter, true},
+		"WebRTC.Video.Screenshare.QualityLimitedResolutionDownscales":  {"count", perf.SmallerIsBetter, true},
+		"WebRTC.Video.Screenshare.QualityLimitedResolutionInPercent":   {"percent", perf.SmallerIsBetter, true},
+		"WebRTC.Video.Screenshare.SentFramesPerSecond":                 {"fps", perf.BiggerIsBetter, true},
+		"WebRTC.Video.Screenshare.SentToInputFpsRatioPercent":          {"percent", perf.BiggerIsBetter, true},
+		"WebRTC.Video.SentFramesPerSecond":                             {"fps", perf.BiggerIsBetter, true},
+		"WebRTC.Video.SentToInputFpsRatioPercent":                      {"percent", perf.BiggerIsBetter, true},
+		"WebRTC.Video.TimeInHdPercentage":                              {"percent", perf.BiggerIsBetter, false},
 	}
 	var names []string
 	for name := range infoByName {
