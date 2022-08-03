@@ -94,6 +94,30 @@
       },
       "revId": "1fe570b96812acf284eda519a3403a269504f976",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207ce6c2_833d98b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_input_info.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1366047
+      },
+      "writtenOn": "2022-08-03T07:27:56Z",
+      "side": 1,
+      "message": "The latest news is that the design was been postponed (and might be canceled in the worst case), so we won\u0027t get input device node id from Chrome at least in 2022.\n\nMaybe we can remove this comment since it won\u0027t happen in visible future...",
+      "parentUuid": "d522f319_33874aeb",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 15
+      },
+      "revId": "1fe570b96812acf284eda519a3403a269504f976",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ],
   "submitRequirementResults": [
