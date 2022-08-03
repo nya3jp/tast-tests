@@ -105,6 +105,41 @@
       "parentUuid": "a73faa76_41468f07",
       "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a147d8ce_7efe1198",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-03T17:44:47Z",
+      "side": 1,
+      "message": "I am ok to go ahead with this one, but please don\u0027t chump this CL. I will leave it to Eliot to decide if it is ok. Thanks.",
+      "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec5e2b88_d4229d7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-03T17:44:47Z",
+      "side": 1,
+      "message": "It is fine with me to go ahead with one due to circumstance. However, please make sure this CL will be chumped. It should go through the normal CQ+2 process. Thanks.",
+      "parentUuid": "a6700b7d_a329af69",
+      "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
