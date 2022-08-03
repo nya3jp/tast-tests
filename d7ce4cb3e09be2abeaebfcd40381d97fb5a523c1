@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c8c7eb51_9cefb1b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002374
+      },
+      "writtenOn": "2022-08-03T19:28:17Z",
+      "side": 1,
+      "message": "+ OWNERS for approval.",
+      "revId": "d7ce4cb3e09be2abeaebfcd40381d97fb5a523c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f9b59955_bf0dfb9a",
         "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
         "patchSetId": 2
