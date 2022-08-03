@@ -51,7 +51,7 @@ func init() {
 				Fixture:           fixture.LacrosTabletVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				ExtraSoftwareDeps: []string{"lacros"},
-				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraAttr:         []string{"informational"},
 			},
 		},
 	})
