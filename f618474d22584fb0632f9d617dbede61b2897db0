@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b43e9483_7fdde26a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T03:55:14Z",
+      "side": 1,
+      "message": "To me it sounds natural to have a set of these APIs below depending on what tests expect:\n\nTo get a br from an existing cr:\n1a) `SetUp` - w/ no window for ash, 1 open window for lacros\n1b) `SetUpWithURL` - w/ 1 open window for both browsers\n\nTo get a br and a cr from chrome.New:\n2a) `SetUpWithNewChrome` - w/ no window for ash, 1 open window for lacros\n2b) `SetUpWithNewChromeAtURL` - w/ 1 open window for both browsers (new in this CL)\n\nI see the link is about the case 1a).",
+      "parentUuid": "abd56a0e_b5d89f86",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "301298c8_1bb0a400",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "390f84f9_edd6cb78",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T03:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "301298c8_1bb0a400",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fadd8f13_f725ed72",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-08-03T00:49:07Z",
       "side": 1,
       "message": "So if conn.Close fails we won\u0027t call cr.Close and closeBrowser. Not sure if this is a real problem but it doesn\u0027t feel right.",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b9f05cb_9a8b6b2d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T03:55:14Z",
+      "side": 1,
+      "message": "Done. Right, it doesn\u0027t feel right. Moved for a deferred cleanup.",
+      "parentUuid": "fadd8f13_f725ed72",
       "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b667e14_276c2032",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T03:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5470cdb8_662aa5e8",
+      "range": {
+        "startLine": 128,
+        "startChar": 45,
+        "endLine": 128,
+        "endChar": 48
+      },
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3043a51d_a3c96cad",
@@ -88,6 +166,24 @@
       "writtenOn": "2022-08-03T00:49:07Z",
       "side": 1,
       "message": "This doesn\u0027t match what the code does. The code checks that there are 2 windows of the current browser type.",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "462e4fa9_5188a01a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T03:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3043a51d_a3c96cad",
       "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +205,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27020399_17c8edc5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T03:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4e8f15e_749fd18c",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a19e122_9023b7f8",
@@ -126,6 +240,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47f3a335_776a620b",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T03:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a19e122_9023b7f8",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "044a5ea0_dc35bef1",
@@ -139,6 +271,24 @@
       "writtenOn": "2022-08-03T00:49:07Z",
       "side": 1,
       "message": "... when tests would like to call chrome.New ... and also launch Lacros.",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66b1cf1_09b1b32d",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T03:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "044a5ea0_dc35bef1",
       "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -174,6 +324,24 @@
       "side": 1,
       "message": "We should not use keepalive here.",
       "parentUuid": "48a3094e_caee2b75",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf00b8bc_1e2ec668",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T03:55:14Z",
+      "side": 1,
+      "message": "Removed. Now that I heard that keepalive is like a stop solution that would eventually be removed, it doesn\u0027t need to explicitly be called out.",
+      "parentUuid": "81a85abe_f0a29a45",
       "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
