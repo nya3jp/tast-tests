@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "301298c8_1bb0a400",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-03T00:49:07Z",
+      "side": 1,
+      "message": "Please move that down to right before the verification code.",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fadd8f13_f725ed72",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-03T00:49:07Z",
+      "side": 1,
+      "message": "So if conn.Close fails we won\u0027t call cr.Close and closeBrowser. Not sure if this is a real problem but it doesn\u0027t feel right.",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5470cdb8_662aa5e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-03T00:49:07Z",
+      "side": 1,
+      "message": "version page",
+      "range": {
+        "startLine": 128,
+        "startChar": 45,
+        "endLine": 128,
+        "endChar": 48
+      },
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3043a51d_a3c96cad",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-03T00:49:07Z",
+      "side": 1,
+      "message": "This doesn\u0027t match what the code does. The code checks that there are 2 windows of the current browser type.",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e8f15e_749fd18c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-03T00:49:07Z",
+      "side": 1,
+      "message": "Please use ash.BrowserTypeMatch(bt).",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a19e122_9023b7f8",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-03T00:49:07Z",
+      "side": 1,
+      "message": "Nit: ... and an existing ash-chrome instance.",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "044a5ea0_dc35bef1",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-03T00:49:07Z",
+      "side": 1,
+      "message": "... when tests would like to call chrome.New ... and also launch Lacros.",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a3094e_caee2b75",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-03T00:49:07Z",
+      "side": 1,
+      "message": "I\u0027d prefer not to endorse making tests rely on KeepAlive.",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
