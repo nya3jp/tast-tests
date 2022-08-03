@@ -298,6 +298,30 @@
       },
       "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aaaf570_e7ec9a99",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-03T16:17:45Z",
+      "side": 1,
+      "message": "there might be some error that you don\u0027t expect. For example context deadline exceeded",
+      "parentUuid": "5ada8ecd_12589e8c",
+      "range": {
+        "startLine": 275,
+        "startChar": 51,
+        "endLine": 275,
+        "endChar": 69
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
