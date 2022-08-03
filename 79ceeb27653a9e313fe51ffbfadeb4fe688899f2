@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dc5f0569_f044c9c1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T18:36:41Z",
+      "side": 1,
+      "message": "Ack. Thanks for the comment.\nI\u0027m a bit leaning towards keeping it this way as I see this could be a pattern for those tests that just need lacros enabled without using it in the first place.\nIt helps keep the same testing path as ash-chrome without extra opening/closing a window for lacros, and be able to get a br instance right before when it is needed at L187. Marking as resolved for now.",
+      "parentUuid": "74341bf8_1ea5637d",
+      "revId": "79ceeb27653a9e313fe51ffbfadeb4fe688899f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b6600123_1012ce7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
         "patchSetId": 7
