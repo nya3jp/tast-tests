@@ -136,6 +136,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa04394f_d57b128b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T21:31:55Z",
+      "side": 1,
+      "message": "Thanks - I think I have this fixed now.  I use the cleanupCtx in the defer method and the regular ctx in the normal test flow.",
+      "parentUuid": "b65bb174_241350f0",
+      "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59ef6888_197b96e9",
