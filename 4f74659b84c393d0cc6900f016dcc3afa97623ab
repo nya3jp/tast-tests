@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86d84f51_0ad909bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1250529
+      },
+      "writtenOn": "2022-08-03T23:55:00Z",
+      "side": 1,
+      "message": "LGTM. Thank your for adding Lacros support! ",
+      "revId": "4f74659b84c393d0cc6900f016dcc3afa97623ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
