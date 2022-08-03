@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe52662_e9cd7cf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T18:42:24Z",
+      "side": 1,
+      "message": "To follow up on https://crrev.com/c/3788856, you can check out this example of tast test that requires lacros apps from extensions. This will simplify the use of extensions for lacros.",
+      "revId": "76081cd7cba878356bf48657780b9ba7fe302cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
