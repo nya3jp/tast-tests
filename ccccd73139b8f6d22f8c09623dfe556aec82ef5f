@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2845824_29c10920",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-08-03T07:55:09Z",
+      "side": 1,
+      "message": "Hi Hidehiko, no new patch is uploaded this time. But some questions to clarify before fixing the code. Thanks!",
+      "revId": "ccccd73139b8f6d22f8c09623dfe556aec82ef5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8691f32_e7750255",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-08-01T13:27:32Z",
       "side": 1,
       "message": "so looks redundant. ppid can be compared with info.ParentProcessID directory?",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 2
+      },
+      "revId": "ccccd73139b8f6d22f8c09623dfe556aec82ef5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7516a74c_a7c75159",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_process_info.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-08-03T07:55:09Z",
+      "side": 1,
+      "message": "info.ParentProcessID has type `jsontypes.Uint32` which can\u0027t be compared directly with ppid (type `int32`).",
+      "parentUuid": "b8691f32_e7750255",
       "range": {
         "startLine": 75,
         "startChar": 8,
