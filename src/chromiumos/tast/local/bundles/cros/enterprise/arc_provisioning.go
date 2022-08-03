@@ -286,7 +286,7 @@ func ensurePlayStoreNotEmpty(ctx context.Context, tconn *chrome.TestConn, cr *ch
 
 	defer faillog.SaveScreenshotToFileOnError(ctx, cr, outDir, func() bool {
 		return retErr != nil
-	}, fmt.Sprintf("play_store_%d.png", runID))
+	}, fmt.Sprintf("play_store_%d", runID))
 
 	if err := launchAssetBrowserActivity(ctx, tconn, a); err != nil {
 		return err
