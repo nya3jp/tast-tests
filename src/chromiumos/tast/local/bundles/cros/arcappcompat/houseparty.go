@@ -72,6 +72,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
+		Vars:    []string{"testutil.suite"},
 		VarDeps: []string{"arcappcompat.username", "arcappcompat.password",
 			"arcappcompat.Houseparty.emailid", "arcappcompat.Houseparty.password"},
 	})
@@ -84,8 +85,14 @@ func Houseparty(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.herzick.houseparty"
 		appActivity = "com.lifeonair.houseparty.ui.routing.RoutingActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+	s.Log("suiteInfo: ", suiteInfo)
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForHouseparty verifies Houseparty is logged in and
