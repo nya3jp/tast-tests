@@ -12,6 +12,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
@@ -531,6 +532,12 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 		return errors.Wrapf(err, "validate usb key at %q", usbdev)
 	}
 	testing.ContextLogf(ctx, "Output from fdisk -l %q: %s", usbdev, fdiskOutput)
+
+	// Following ChromiumOS Developer Guide, USB size should be bigger than 8GB:
+	// https://chromium.googlesource.com/chromiumos/docs/+/HEAD/developer_guide.md#put-your-image-on-a-usb-disk
+	if err := checkUSBStorage(ctx, string(fdiskOutput), 8); err != nil {
+		return errors.Wrap(err, "failed to verify usb storage")
+	}
 	testing.ContextLog(ctx, "Checking ChromeOS image name on usbkey")
 	mountPath := fmt.Sprintf("/media/servo_usb/%d", h.ServoProxy.GetPort())
 	// Unmount whatever might be mounted.
@@ -637,6 +644,24 @@ func (h *Helper) SetupUSBKey(ctx context.Context, cloudStorage *testing.CloudSto
 		return errors.Wrapf(err, "failed to flash os image %q to USB %q", testImageURL, usbdev)
 	}
 	testing.ContextLogf(ctx, "Successfully flashed %q from %q", usbdev, testImageURL)
+	return nil
+}
+
+func checkUSBStorage(ctx context.Context, usbInfo string, minimalSize float64) error {
+	regexpUSBInfo := regexp.MustCompile(`\w+\D+(\w+\D\w+) GiB`)
+	match := regexpUSBInfo.FindStringSubmatch(string(usbInfo))
+	if match[0] == "" {
+		return errors.New("no regexp match found")
+	}
+	usbSizeInString := strings.TrimSpace(match[1])
+	usbSizeInFloat, err := strconv.ParseFloat(usbSizeInString, 64)
+	if err != nil {
+		return errors.Wrap(err, "cannot convert the format of usb size into a floating-point number")
+	}
+
+	if usbSizeInFloat < minimalSize {
+		return errors.Errorf("USB storage is too small: current usb is %v GiB, but should be 8 GiB or bigger", usbSizeInFloat)
+	}
 	return nil
 }
 
