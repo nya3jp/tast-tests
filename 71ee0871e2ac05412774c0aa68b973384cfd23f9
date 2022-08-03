@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61559ded_31f60bb8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_description_is_required_error_message.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-03T15:44:20Z",
+      "side": 1,
+      "message": "Test name usually doesn\u0027t start with \"Verify\". Maybe try:  \"ShowMissingDescriptionError\".",
+      "revId": "71ee0871e2ac05412774c0aa68b973384cfd23f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9305a486_3c7f1642",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_description_is_required_error_message.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-03T15:44:20Z",
+      "side": 1,
+      "message": "Update the description here.",
+      "revId": "71ee0871e2ac05412774c0aa68b973384cfd23f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2417db5_eab57791",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_description_is_required_error_message.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-03T15:44:20Z",
+      "side": 1,
+      "message": "No need to check `WaitUntilExists` before `DoDefault`. \ne.g. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/feedback/submit_feedback_and_close_app.go;l\u003d65-69",
+      "revId": "71ee0871e2ac05412774c0aa68b973384cfd23f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "022087c9_74b3273f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_description_is_required_error_message.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-03T15:44:20Z",
+      "side": 1,
+      "message": "`description` sounds like the issue description user enters. Maybe name it as `missingDescriptionError`.",
+      "revId": "71ee0871e2ac05412774c0aa68b973384cfd23f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
