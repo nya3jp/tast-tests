@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "289c94ea_10b1d689",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_description_is_required_error_message.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-03T18:06:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61559ded_31f60bb8",
+      "revId": "71ee0871e2ac05412774c0aa68b973384cfd23f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9305a486_3c7f1642",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-03T15:44:20Z",
       "side": 1,
       "message": "Update the description here.",
+      "revId": "71ee0871e2ac05412774c0aa68b973384cfd23f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "812153cb_4716798f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_description_is_required_error_message.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-03T18:06:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9305a486_3c7f1642",
       "revId": "71ee0871e2ac05412774c0aa68b973384cfd23f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ebedb7f_768c820d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_description_is_required_error_message.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-03T18:06:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2417db5_eab57791",
+      "revId": "71ee0871e2ac05412774c0aa68b973384cfd23f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "022087c9_74b3273f",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-08-03T15:44:20Z",
       "side": 1,
       "message": "`description` sounds like the issue description user enters. Maybe name it as `missingDescriptionError`.",
+      "revId": "71ee0871e2ac05412774c0aa68b973384cfd23f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08853c72_b3941547",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/verify_description_is_required_error_message.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-03T18:06:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "022087c9_74b3273f",
       "revId": "71ee0871e2ac05412774c0aa68b973384cfd23f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
