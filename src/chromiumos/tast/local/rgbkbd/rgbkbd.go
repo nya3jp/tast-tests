@@ -20,6 +20,7 @@ const (
 	dbusInterface            = "org.chromium.Rgbkbd"
 	setTestingMode           = "SetTestingMode"
 	setStaticBackgroundColor = "SetStaticBackgroundColor"
+	setRainbowMode           = "SetRainbowMode"
 )
 
 // Rgbkbd is used to interact with the rgbkbd process over D-Bus.
@@ -67,6 +68,14 @@ func ResetRgbkbdState(ctx context.Context, rgbkbd *Rgbkbd) error {
 	err := rgbkbd.SetStaticBackgroundColor(ctx, 255, 255, 210)
 	if err != nil {
 		return errors.Wrap(err, "Call to ResetRgbkbdState failed")
+	}
+	return nil
+}
+
+// SetRainbowMode changes the keyboard backlight color to a rainbow pattern.
+func (c *Rgbkbd) SetRainbowMode(ctx context.Context) error {
+	if err := c.call(ctx, setRainbowMode).Err; err != nil {
+		return errors.Wrap(err, "failed to call method SetRainbowMode")
 	}
 	return nil
 }
