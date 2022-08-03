@@ -160,12 +160,3 @@ func AnyChromeCommonMetricConfigs() []MetricConfig {
 		NewSmoothnessMetricConfig("Ash.Window.AnimationSmoothness.Hide"),
 	}
 }
-
-// DeprecatedMetricConfigs returns metrics which are required to be collected
-// by CUJ tests.
-//
-// Deprecated, use individual sets (AshCommonMetricConfigs(),
-// BrowserCommonMetricConfigs(), AnyChromeCommonMetricConfigs())
-func DeprecatedMetricConfigs() []MetricConfig {
-	return append(append(append([]MetricConfig{}, AshCommonMetricConfigs()...), BrowserCommonMetricConfigs()...), AnyChromeCommonMetricConfigs()...)
-}
