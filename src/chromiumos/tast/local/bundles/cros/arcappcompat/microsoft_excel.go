@@ -84,7 +84,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
+		Vars:    []string{"arcappcompat.gaiaPoolDefault", "testutil.suite"},
 		VarDeps: []string{"arcappcompat.MicrosoftExcel.emailid", "arcappcompat.MicrosoftExcel.password"},
 	})
 }
@@ -96,8 +96,14 @@ func MicrosoftExcel(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.microsoft.office.excel"
 		appActivity = "com.microsoft.office.apphost.LaunchActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+	s.Log("suiteInfo: ", suiteInfo)
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForMicrosoftExcel verifies MicrosoftExcel is logged in and

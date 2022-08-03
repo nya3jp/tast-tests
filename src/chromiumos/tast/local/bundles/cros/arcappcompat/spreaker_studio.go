@@ -84,7 +84,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
+		Vars:    []string{"arcappcompat.gaiaPoolDefault", "testutil.suite"},
 		VarDeps: []string{"arcappcompat.SpreakerStudio.emailid", "arcappcompat.SpreakerStudio.password"},
 	})
 }
@@ -96,8 +96,14 @@ func SpreakerStudio(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.spreaker.android.studio"
 		appActivity = ".MainActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+	s.Log("suiteInfo: ", suiteInfo)
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForSpreakerStudio verifies SpreakerStudio is logged in and

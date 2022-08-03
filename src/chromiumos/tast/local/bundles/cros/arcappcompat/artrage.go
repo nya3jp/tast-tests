@@ -82,6 +82,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeForArtrage,
 		}},
 		Timeout: 10 * time.Minute,
+		Vars:    []string{"testutil.suite"},
 		VarDeps: []string{"arcappcompat.Artrage.username", "arcappcompat.Artrage.password"},
 	})
 }
@@ -93,8 +94,14 @@ func Artrage(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.ambientdesign.artrage.playstore"
 		appActivity = "com.ambientdesign.artrage.MainActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+	s.Log("suiteInfo: ", suiteInfo)
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForArtrage verifies Artrage is logged in and

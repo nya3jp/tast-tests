@@ -40,7 +40,8 @@ func init() {
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForAdobeAcrobatReader,
-				CommonTests: testutil.ClamshellSmokeTests,
+				SmokeTests:  testutil.ClamshellSmokeTests,
+				CommonTests: testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -51,7 +52,8 @@ func init() {
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForAdobeAcrobatReader,
-				CommonTests: testutil.TouchviewSmokeTests,
+				SmokeTests:  testutil.TouchviewSmokeTests,
+				CommonTests: testutil.TouchviewCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -62,7 +64,8 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForAdobeAcrobatReader,
-				CommonTests: testutil.ClamshellSmokeTests,
+				SmokeTests:  testutil.ClamshellSmokeTests,
+				CommonTests: testutil.ClamshellCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -73,7 +76,8 @@ func init() {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForAdobeAcrobatReader,
-				CommonTests: testutil.TouchviewSmokeTests,
+				SmokeTests:  testutil.TouchviewSmokeTests,
+				CommonTests: testutil.TouchviewCommonTests,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
@@ -82,6 +86,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 30 * time.Minute,
+		Vars:    []string{"testutil.suite"},
 		VarDeps: []string{"arcappcompat.username", "arcappcompat.password"},
 	})
 }
@@ -93,8 +98,14 @@ func AdobeAcrobatReader(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.adobe.reader"
 		appActivity = ".AdobeReader"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+	s.Log("suiteInfo: ", suiteInfo)
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForAdobeAcrobatReader verify app is logged in and

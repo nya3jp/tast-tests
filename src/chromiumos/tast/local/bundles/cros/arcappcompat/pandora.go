@@ -97,7 +97,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
 		Timeout: 20 * time.Minute,
-		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
+		Vars:    []string{"arcappcompat.gaiaPoolDefault", "testutil.suite"},
 		VarDeps: []string{"arcappcompat.Pandora.emailid", "arcappcompat.Pandora.password"},
 	})
 }
@@ -109,8 +109,14 @@ func Pandora(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.pandora.android"
 		appActivity = ".LauncherActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+	s.Log("suiteInfo: ", suiteInfo)
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForPandora verifies Pandora is logged in and

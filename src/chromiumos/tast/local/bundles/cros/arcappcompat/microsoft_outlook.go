@@ -87,7 +87,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
+		Vars:    []string{"arcappcompat.gaiaPoolDefault", "testutil.suite"},
 		VarDeps: []string{"arcappcompat.MicrosoftOutlook.emailid", "arcappcompat.MicrosoftOutlook.password"},
 	})
 }
@@ -99,8 +99,14 @@ func MicrosoftOutlook(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.microsoft.office.outlook"
 		appActivity = ".MainActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+	s.Log("suiteInfo: ", suiteInfo)
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForMicrosoftOutlook verifies MicrosoftOutlook is logged in and
