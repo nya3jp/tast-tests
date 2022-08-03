@@ -68,3 +68,16 @@ func lastNLines(log string, num int) (remainingLog []string, err error) {
 	remainingLog = split[len(split)-num:]
 	return remainingLog, nil
 }
+
+// RainbowModeCount returns the number of 'SetKeyColor' logs written when rainbow mode is called.
+func RainbowModeCount(log string) (int, error) {
+	splitLog := splitLog(log)
+	// Every rainbow mode struct starts with this entry.
+	const rainbowModeStart = "RGB::SetKeyColor - 1"
+	for i, line := range splitLog {
+		if strings.Contains(line, rainbowModeStart) {
+			return len(splitLog) - i, nil
+		}
+	}
+	return -1, errors.New("failed to get rainbow mode count")
+}
