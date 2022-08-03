@@ -55,25 +55,33 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 	defer cancel()
 
 	bt := s.Param().(browser.Type)
-	var cr *chrome.Chrome
-	var l *lacros.Lacros
-	var cs ash.ConnSource
-	switch bt {
-	case browser.TypeAsh:
-		cr = s.FixtValue().(chrome.HasChrome).Chrome()
-		cs = cr
-	case browser.TypeLacros:
-		var err error
-		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros)
-		if err != nil {
-			s.Fatal("Failed to initialize test: ", err)
-		}
-		defer lacros.CloseLacros(cleanupCtx, l)
-	}
+
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	var cs ash.ConnSource
+	var bTconn *chrome.TestConn
+	var l *lacros.Lacros
+	switch bt {
+	case browser.TypeLacros:
+		// Launch lacros.
+		var err error
+		if l, err = lacros.Launch(ctx, tconn); err != nil {
+			s.Fatal("Failed to launch lacros: ", err)
+		}
+		defer l.Close(cleanupCtx)
+		cs = l
+
+		if bTconn, err = l.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get lacros TestAPIConn: ", err)
+		}
+	case browser.TypeAsh:
+		cs = cr
+		bTconn = tconn
 	}
 
 	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
@@ -130,9 +138,12 @@ func DesksCUJ(ctx context.Context, s *testing.State) {
 		cujrecorder.NewCustomMetricConfig("Ash.Desks.AnimationLatency.DeskActivation", "ms", perf.SmallerIsBetter),
 		cujrecorder.NewSmoothnessMetricConfig("Ash.Desks.AnimationSmoothness.DeskActivation"),
 	}
-	configs = append(configs, cujrecorder.DeprecatedMetricConfigs()...)
 	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, configs...); err != nil {
 		s.Fatal("Failed to add recorded metrics: ", err)
+	}
+
+	if err := recorder.AddCommonMetrics(tconn, bTconn); err != nil {
+		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
 
 	recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
