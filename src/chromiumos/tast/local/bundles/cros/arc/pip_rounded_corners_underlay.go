@@ -32,7 +32,8 @@ func init() {
 		Desc:         "Verifies that ARC++ PIP rounded corners are implemented with a hardware underlay",
 		Contacts:     []string{"amusbach@chromium.org", "oshima@chromium.org", "chromeos-perf@google.com"},
 		Attr:         []string{"group:mainline"},
-		SoftwareDeps: []string{"chrome", "proprietary_codecs"},
+		// Video playback doesn't work well on VM boards.
+		SoftwareDeps: []string{"chrome", "no_qemu", "proprietary_codecs"},
 		HardwareDeps: hwdep.D(hwdep.SupportsNV12Overlays()),
 		Data:         []string{"bear-320x240.h264.mp4"},
 		Fixture:      "gpuWatchDog",
@@ -40,9 +41,8 @@ func init() {
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}, {
-			Name: "vm",
-			// TODO(b/241035143): Fix the test on betty-arc-r.
-			ExtraSoftwareDeps: []string{"android_vm", "no_qemu"},
+			Name:              "vm",
+			ExtraSoftwareDeps: []string{"android_vm"},
 		}},
 	})
 }
