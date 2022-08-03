@@ -523,9 +523,4 @@ func (f *nearbyShareFixture) PostTest(ctx context.Context, s *testing.FixtTestSt
 	if _, err := f.receiver.ClearTransferredFiles(ctx, &empty.Empty{}); err != nil {
 		s.Error("Failed to clear transferred files from the Downloads folder on the receiver: ", err)
 	}
-
-	// b/228377059: re-enable bluetooth on the sender, in case it was not successfully re-enabled in a test.
-	if _, err := f.sender.EnableBluetooth(ctx, &empty.Empty{}); err != nil {
-		s.Fatal("Failed to enable bluetooth on the sender: ", err)
-	}
 }
