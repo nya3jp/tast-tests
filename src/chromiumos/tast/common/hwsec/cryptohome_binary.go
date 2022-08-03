@@ -328,6 +328,13 @@ func (c *cryptohomeBinary) authenticateRecoveryAuthFactor(ctx context.Context, a
 	return c.call(ctx, args...)
 }
 
+// authenticateSmartCardAuthFactor calls "cryptohome --action=authenticate_auth_factor --challenge_response_algo=<algorithm>".
+func (c *cryptohomeBinary) authenticateSmartCardAuthFactor(ctx context.Context, authSessionID, label string, extraFlags []string) ([]byte, error) {
+	args := []string{"--action=authenticate_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label}
+	args = append(args, extraFlags...)
+	return c.call(ctx, args...)
+}
+
 // updateCredentialWithAuthSession calls "cryptohome --action=update_credential".
 // password is ignored if publicMount is set to true.
 func (c *cryptohomeBinary) updateCredentialWithAuthSession(ctx context.Context, password, keyLabel, authSessionID string, publicMount bool) ([]byte, error) {
@@ -399,6 +406,14 @@ func (c *cryptohomeBinary) updateAuthFactor(ctx context.Context, authSessionID, 
 		"--key_label=" + label,
 		"--new_key_label=" + newKeyLabel,
 		"--password=" + password}
+	return c.call(ctx, args...)
+}
+
+// addSmartCardAuthFactor calls "cryptohome --action=add_auth_factor --challnge_response_algorithm=<algo>
+// --challenge_spki=<spki> --key_delegate_name=<key_delegate_name>".
+func (c *cryptohomeBinary) addSmartCardAuthFactor(ctx context.Context, authSessionID, label string, extraFlags []string) ([]byte, error) {
+	args := []string{"--action=add_auth_factor", "--auth_session_id=" + authSessionID, "--key_label=" + label}
+	args = append(args, extraFlags...)
 	return c.call(ctx, args...)
 }
 
