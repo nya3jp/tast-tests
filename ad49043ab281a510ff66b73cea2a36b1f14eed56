@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a339e5_1d6f5207",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-03T03:48:19Z",
+      "side": 1,
+      "message": "+tast-owners@ directly since this patch is only related to specific features. Thanks!",
+      "revId": "ad49043ab281a510ff66b73cea2a36b1f14eed56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
