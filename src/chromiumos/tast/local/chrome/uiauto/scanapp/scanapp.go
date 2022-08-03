@@ -228,13 +228,14 @@ func (s *ScanApp) SetScanSettings(settings ScanSettings) uiauto.Action {
 	return uiauto.Combine("SetScanSettings", steps...)
 }
 
-// Scan returns a function that performs a scan by clicking the scan button.
+// Scan returns a function that performs a scan by clicking the scan button, 
+// and timeout in 2 minutes.
 func (s *ScanApp) Scan() uiauto.Action {
 	return uiauto.Combine("scan",
 		s.LeftClick(scanButtonFinder),
 		// Wait until the done button is displayed to verify the scan completed
 		// successfully.
-		s.WaitUntilExists(doneButtonFinder),
+		s.WithTimeout(2*time.Minute).WaitUntilExists(doneButtonFinder),
 	)
 }
 
