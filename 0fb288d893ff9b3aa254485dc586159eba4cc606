@@ -22,6 +22,30 @@
       },
       "revId": "0fb288d893ff9b3aa254485dc586159eba4cc606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa06f065_1a1cde5a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T03:51:51Z",
+      "side": 1,
+      "message": "Now that I understand that keepalive is like a stop gap that will eventually be removed, I have a question:\n\nIs there any way to simulate the same scenario for lacros as we did for ash-chrome?The test measures animation smoothness with (1) no window open and (2) two windows open.\nBut, I don\u0027t see how (1) could be verified without the \u0027keepalive\u0027 as the browser struct can\u0027t be retrieved without any lacros process running.\nPlease let me know if there is a way to get around or to modify the test scenarios to avoid this situation.",
+      "parentUuid": "69a40da0_4f1c8a71",
+      "range": {
+        "startLine": 114,
+        "startChar": 35,
+        "endLine": 114,
+        "endChar": 61
+      },
+      "revId": "0fb288d893ff9b3aa254485dc586159eba4cc606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
