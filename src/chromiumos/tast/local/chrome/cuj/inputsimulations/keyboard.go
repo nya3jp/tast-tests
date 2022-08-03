@@ -45,12 +45,3 @@ func RepeatKeyHold(ctx context.Context, kw *input.KeyboardEventWriter, key strin
 		),
 	)(ctx)
 }
-
-func runActionFor(ctx context.Context, minDuration time.Duration, a action.Action) error {
-	for endTime := time.Now().Add(minDuration); time.Now().Before(endTime); {
-		if err := a(ctx); err != nil {
-			return err
-		}
-	}
-	return nil
-}
