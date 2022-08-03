@@ -51,48 +51,52 @@ func init() {
 		// TODO (b/190409688) : Remove hwdep.SkipOnModel once the solution is found.
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel(skipOnNoBackCameraModels...)),
 		Params: []testing.Param{{
-			Name: "clamshell_mode",
+			Name: "clamshell_mode_default",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForPaypal,
 				CommonTests:      testutil.ClamshellCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForPaypal,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
 		}, {
-			Name: "tablet_mode",
+			Name: "tablet_mode_default",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForPaypal,
 				CommonTests:      testutil.TouchviewCommonTests,
 				AppSpecificTests: touchviewAppSpecificTestsForPaypal,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}, {
-			Name: "vm_clamshell_mode",
+			Name: "vm_clamshell_mode_default",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForPaypal,
 				CommonTests:      testutil.ClamshellCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForPaypal,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedUsingTestAccountPool,
 		}, {
-			Name: "vm_tablet_mode",
+			Name: "vm_tablet_mode_default",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForPaypal,
 				CommonTests:      testutil.TouchviewCommonTests,
 				AppSpecificTests: touchviewAppSpecificTestsForPaypal,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
