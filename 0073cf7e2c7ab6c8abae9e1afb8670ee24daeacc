@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed4c2f1d_054e4bb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-03T01:47:14Z",
+      "side": 1,
+      "message": "slgm. I haven\u0027t reviewed the functionality, just the Tast style so you might want to get a review from a domain expert here.",
+      "revId": "0073cf7e2c7ab6c8abae9e1afb8670ee24daeacc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
