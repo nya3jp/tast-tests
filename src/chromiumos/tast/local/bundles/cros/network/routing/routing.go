@@ -93,8 +93,8 @@ func (e *testEnv) SetUp(ctx context.Context) error {
 		}
 	}(ctx)
 
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
+	// Reserve some time for cleanup on failures.
+	ctx, _ = ctxutil.Shorten(ctx, 5*time.Second)
 
 	var err error
 	e.Manager, err = shill.NewManager(ctx)
