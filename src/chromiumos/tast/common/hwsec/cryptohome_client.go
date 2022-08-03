@@ -906,6 +906,12 @@ func (u *CryptohomeClient) AuthenticateRecoveryAuthFactor(ctx context.Context, a
 	return err
 }
 
+// AuthenticateSmartCardAuthFactor authenticates an AuthSession with a given authSessionID via smart card.
+func (u *CryptohomeClient) AuthenticateSmartCardAuthFactor(ctx context.Context, authSessionID, label, algo string) error {
+	_, err := u.binary.authenticateSmartCardAuthFactor(ctx, authSessionID, label, algo)
+	return err
+}
+
 // AddCredentialsWithAuthSession creates the credentials for the user with given password.
 // password is ignored if publicMount is set to true.
 func (u *CryptohomeClient) AddCredentialsWithAuthSession(ctx context.Context, user, password, keyLabel, authSessionID string, publicMount bool) error {
@@ -942,6 +948,12 @@ func (u *CryptohomeClient) AddPinAuthFactor(ctx context.Context, authSessionID, 
 // AddRecoveryAuthFactor creates a recovery auth factor for the user.
 func (u *CryptohomeClient) AddRecoveryAuthFactor(ctx context.Context, authSessionID, label, mediatorPubKeyHex string) error {
 	_, err := u.binary.addRecoveryAuthFactor(ctx, authSessionID, label, mediatorPubKeyHex)
+	return err
+}
+
+// AddSmartCardAuthFactor creates an auth factor for the user with given smart card.
+func (u *CryptohomeClient) AddSmartCardAuthFactor(ctx context.Context, authSessionID, label, algo string) error {
+	_, err := u.binary.addPinAuthFactor(ctx, authSessionID, label, algo)
 	return err
 }
 
