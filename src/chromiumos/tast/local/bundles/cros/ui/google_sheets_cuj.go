@@ -27,18 +27,6 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
-type scrollType string
-
-const (
-	scrollTypeSwipe   scrollType = "Swipe"
-	scrollTypeDownKey scrollType = "DownKey"
-)
-
-type sheetsTestParams = struct {
-	browserType browser.Type // Ash Chrome browser or Lacros.
-	scroll      scrollType   // Whether to scroll with the trackpad or down arrow.
-}
-
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GoogleSheetsCUJ,
@@ -50,34 +38,13 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      13 * time.Minute,
 		Params: []testing.Param{{
-			Val: sheetsTestParams{
-				browserType: browser.TypeAsh,
-				scroll:      scrollTypeSwipe,
-			},
+			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
 		}, {
-			Name: "lacros",
-			Val: sheetsTestParams{
-				browserType: browser.TypeLacros,
-				scroll:      scrollTypeSwipe,
-			},
+			Name:              "lacros",
+			Val:               browser.TypeLacros,
 			Fixture:           "loggedInToCUJUserLacros",
 			ExtraSoftwareDeps: []string{"lacros"},
-		}, {
-			Name: "lacros_keyboard_scroll",
-			Val: sheetsTestParams{
-				browserType: browser.TypeLacros,
-				scroll:      scrollTypeDownKey,
-			},
-			Fixture:           "loggedInToCUJUserLacros",
-			ExtraSoftwareDeps: []string{"lacros"},
-		}, {
-			Name: "keyboard_scroll",
-			Val: sheetsTestParams{
-				browserType: browser.TypeAsh,
-				scroll:      scrollTypeDownKey,
-			},
-			Fixture: "loggedInToCUJUser",
 		}},
 	})
 }
@@ -94,15 +61,15 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	params := s.Param().(sheetsTestParams)
+	bt := s.Param().(browser.Type)
 
 	var cs ash.ConnSource
 	var cr *chrome.Chrome
-
-	if params.browserType == browser.TypeAsh {
+	switch bt {
+	case browser.TypeAsh:
 		cr = s.FixtValue().(chrome.HasChrome).Chrome()
 		cs = cr
-	} else {
+	case browser.TypeLacros:
 		var err error
 		var l *lacros.Lacros
 		cr, l, cs, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros)
@@ -123,7 +90,7 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to detect it is in tablet-mode or not: ", err)
 	}
 	if inTabletMode {
-		// If it is in tablet mode, ensure it it in landscape orientation.
+		// If it is in tablet mode, ensure it is in landscape orientation.
 		orientation, err := display.GetOrientation(ctx, tconn)
 		if err != nil {
 			s.Fatal("Failed to get display orientation: ", err)
@@ -173,6 +140,12 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer kw.Close()
 
+	// Create a virtual mouse.
+	mw, err := input.Mouse(ctx)
+	if err != nil {
+		s.Fatal("Failed to create a mouse: ", err)
+	}
+
 	if err := recorder.Run(ctx, func(ctx context.Context) error {
 		// Open Google Sheets file.
 		sheetConn, err := cs.NewConn(ctx, sheetURL, browser.WithNewWindow())
@@ -190,17 +163,20 @@ func GoogleSheetsCUJ(ctx context.Context, s *testing.State) {
 		}
 
 		s.Logf("Scrolling down the Google Sheets file for %d minutes", int(scrollTimeout.Minutes()))
-		switch params.scroll {
-		case scrollTypeSwipe:
-			s.Log("Using trackpad")
-			if err := inputsimulations.ScrollDownFor(ctx, tpw, tw, 500*time.Millisecond, scrollTimeout); err != nil {
-				return errors.Wrap(err, "failed to scroll with trackpad")
-			}
-		case scrollTypeDownKey:
-			s.Log("Using down arrow")
-			if err := inputsimulations.RepeatKeyPressFor(ctx, kw, "Down", 500*time.Millisecond, scrollTimeout); err != nil {
-				return errors.Wrap(err, "failed to scroll with down arrow key")
-			}
+
+		s.Log("Using scroll wheel")
+		if err := inputsimulations.ScrollMouseDownFor(ctx, mw, 200*time.Millisecond, scrollTimeout/3); err != nil {
+			return errors.Wrap(err, "failed to scroll with scroll wheel")
+		}
+
+		s.Log("Using trackpad")
+		if err := inputsimulations.ScrollDownFor(ctx, tpw, tw, 500*time.Millisecond, scrollTimeout/3); err != nil {
+			return errors.Wrap(err, "failed to scroll with trackpad")
+		}
+
+		s.Log("Using down arrow")
+		if err := inputsimulations.RepeatKeyPressFor(ctx, kw, "Down", 500*time.Millisecond, scrollTimeout/3); err != nil {
+			return errors.Wrap(err, "failed to scroll with down arrow key")
 		}
 
 		var scrollTop int
