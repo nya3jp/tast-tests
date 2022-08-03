@@ -9,11 +9,13 @@ import (
 	"math"
 	"time"
 
+	"chromiumos/tast/common/action"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -70,4 +72,17 @@ func MoveMouseFor(ctx context.Context, tconn *chrome.TestConn, duration time.Dur
 			}
 		}
 	}
+}
+
+// ScrollMouseDownFor rolls the scroll wheel for |duration|, with a |delay|
+// between ticks.
+func ScrollMouseDownFor(ctx context.Context, mw *input.MouseEventWriter, delay, duration time.Duration) error {
+	if err := runActionFor(ctx, duration, action.Combine(
+		"scroll down and sleep",
+		func(ctx context.Context) error { return mw.ScrollDown() },
+		action.Sleep(delay),
+	)); err != nil {
+		return errors.Wrap(err, "failed to scroll down repeatedly")
+	}
+	return nil
 }
