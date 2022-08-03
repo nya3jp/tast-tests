@@ -33,6 +33,24 @@
       "message": "If clicking a button actually makes a configuration change, it sounds like a framework bug. Could you file a bug and assign to me? (I had a similar bug recently and fixed in crrev/c/3752273, but this is probably different)",
       "revId": "e995fe7e0a1b9ae9d5c39f0ed4968c0843b1bba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a54ec823_487404e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-03T02:15:10Z",
+      "side": 1,
+      "message": "I\u0027m not positive if the dropdown button itself triggers the config event, but the timing consistently lines up.  Could it be a latent previous event that gets committed when the dropdown is opened?  I created b/241177462 with some additional details.",
+      "parentUuid": "2ad9a341_d1f78e2c",
+      "revId": "e995fe7e0a1b9ae9d5c39f0ed4968c0843b1bba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
