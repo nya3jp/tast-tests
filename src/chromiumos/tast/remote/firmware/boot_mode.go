@@ -28,10 +28,10 @@ const (
 	offTimeout = 3 * time.Minute
 
 	// PowerStateTimeout is the timeout to wait for the DUT reach a powerstate.
-	PowerStateTimeout = 20 * time.Second
+	PowerStateTimeout = 60 * time.Second
 
 	// PowerStateInterval is the interval to wait before polling DUT powerstate.
-	PowerStateInterval = 250 * time.Millisecond
+	PowerStateInterval = 1 * time.Second
 
 	// reconnectTimeout is the timeout to wait to reconnect to the DUT after rebooting.
 	reconnectTimeout = 5 * time.Minute
