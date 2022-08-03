@@ -102,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9da9b900_4be428a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T19:41:53Z",
+      "side": 1,
+      "message": "Do you mean I want all three lines?  And then below where I am using ctx, I want to use cleanupCtx instead?  I was following add_usb_printer.go test which doesn\u0027t have any of these.  I guess I don\u0027t know exactly what the shorten does.  Creates a new context with a shorter timeout?",
+      "parentUuid": "166b31da_9037268d",
+      "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59ef6888_197b96e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
         "patchSetId": 1
