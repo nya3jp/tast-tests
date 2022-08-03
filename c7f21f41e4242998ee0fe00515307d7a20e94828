@@ -16,6 +16,23 @@
       "message": "Dear Tast Owners, please let me know what you think, thanks. For context, here is a related tast-side change: https://chromium-review.googlesource.com/c/chromiumos/platform/tast/+/3802717",
       "revId": "c7f21f41e4242998ee0fe00515307d7a20e94828",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e09c7310_78d31b9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1548342
+      },
+      "writtenOn": "2022-08-03T12:01:16Z",
+      "side": 1,
+      "message": "http://b/241035143 covers the betty-pi-arc-direct-tast-vm failure",
+      "revId": "c7f21f41e4242998ee0fe00515307d7a20e94828",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
