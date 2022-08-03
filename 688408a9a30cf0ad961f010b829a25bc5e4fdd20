@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22d9cc8e_2099590e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/apps/launch_image_in_photos_from_gallery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-03T02:07:28Z",
+      "side": 1,
+      "message": "Hi reviewers, 5s timeout is also required, because ud interaction takes relatively longer time to detect UI.",
+      "range": {
+        "startLine": 173,
+        "startChar": 19,
+        "endLine": 173,
+        "endChar": 32
+      },
+      "revId": "688408a9a30cf0ad961f010b829a25bc5e4fdd20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
