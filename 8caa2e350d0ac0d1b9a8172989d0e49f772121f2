@@ -16,6 +16,24 @@
       "message": "Did you remove this on purpose?",
       "revId": "8caa2e350d0ac0d1b9a8172989d0e49f772121f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b94f9f0_69ff0830",
+        "filename": "src/chromiumos/tast/local/printing/lp/cups.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T18:09:20Z",
+      "side": 0,
+      "message": "I did not... Added it back in.  Thanks!",
+      "parentUuid": "dfe575a1_9078fc69",
+      "revId": "8caa2e350d0ac0d1b9a8172989d0e49f772121f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
