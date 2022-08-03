@@ -39,6 +39,30 @@
       },
       "revId": "ad49043ab281a510ff66b73cea2a36b1f14eed56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1745bfaf_1a1f3602",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-03T06:30:48Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! A few questions:\n\n1) Maybe I missed something but I suppose that the current code actually reserve some time from ctx, since ctx in the defer func on L87 is not captured, the longer ctx will be used there and shorter ctx will be used outside that defer func. \n\nI\u0027m happy to change to the cleanupCtx style (actually I prefer that), but I got a suggestion from another tast-reviewer to change the code to the current way in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3780752/comment/687c1cea_909333fe/\n\nDo we have a preference here?\n\n2) Is `defer cancel()` a must? We don\u0027t really want to cancel the ctx here as the reason mentioned in the commit msg.",
+      "parentUuid": "fffbd33a_1b07e27e",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 45
+      },
+      "revId": "ad49043ab281a510ff66b73cea2a36b1f14eed56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
