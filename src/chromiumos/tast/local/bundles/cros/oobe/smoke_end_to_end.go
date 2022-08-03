@@ -123,24 +123,14 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 		s.Log("Skipping the EULA screen")
 	} else {
 		s.Log("Waiting for the EULA screen")
-		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EulaScreen.isVisible()"); err != nil {
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.EulaScreen.isReadyForTesting()"); err != nil {
 			s.Fatal("Failed to wait for the eula screen to be visible: ", err)
 		}
-		eulaWebview := nodewith.State(state.Focused, true).Role(role.Iframe)
-		if err := ui.WaitUntilExists(eulaWebview)(ctx); err != nil {
-			s.Fatal("Failed to wait for the eula screen to be visible: ", err)
-		}
-		var eulaNextButton string
-		if err := oobeConn.Eval(ctx, "OobeAPI.screens.EulaScreen.getNextButtonName()", &eulaNextButton); err != nil {
-			s.Fatal("Failed to get eula next button name: ", err)
-		}
-		eulaScreenNextButton := nodewith.Role(role.Button).Name(eulaNextButton)
-		if err := uiauto.Combine("click next on the EULA screen",
-			// Button is not focused on the screen. We focus the webview with EULA by default.
-			ui.WaitUntilExists(eulaScreenNextButton.State(state.Focused, false)),
-			ui.LeftClickUntil(eulaScreenNextButton, ui.Gone(eulaScreenNextButton)),
+		if err := uiauto.Combine("Click next on EULA screen",
+			ui.WaitUntilExists(focusedButton),
+			ui.LeftClick(focusedButton),
 		)(ctx); err != nil {
-			s.Fatal("Failed to click accept eula button: ", err)
+			s.Fatal("Failed to click EULA screen next button: ", err)
 		}
 	}
 
