@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d8c221_bdaed751",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_longpress_diacritics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-08-03T04:19:33Z",
+      "side": 1,
+      "message": "nit: do we need constants for these? they\u0027re only used once so maybe we can just inline them.",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "b0efe2bb68b2a838dc12fea702fe88de4478da1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
