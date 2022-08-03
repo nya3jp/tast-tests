@@ -23,6 +23,30 @@
       },
       "revId": "4c5ab75464c4cb3795f6d7e37e8394d99ff9147d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7100cb8_506dcd6d",
+        "filename": "src/chromiumos/tast/local/printing/lp/cups.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-03T21:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14d5bf21_9c0a4317",
+      "range": {
+        "startLine": 79,
+        "startChar": 16,
+        "endLine": 79,
+        "endChar": 22
+      },
+      "revId": "4c5ab75464c4cb3795f6d7e37e8394d99ff9147d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
