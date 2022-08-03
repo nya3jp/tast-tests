@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7c53fde_e9e6c749",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-08-03T23:53:07Z",
+      "side": 1,
+      "message": "Please correct me if I\u0027m missing something, but I feel like the way it is currently written is the best way to write it.\n\nI cannot do something like \n```\n\tif nd, err :\u003d r.monitorOnInterface(ctx, iface); err !\u003d nil {\n\t\treturn nil, err\n\t}\n```\nbecause `nd` is out of scope outside the inline and is not used inside the return and fail at compile time.\n\nI also cannot do\n\n```\n\tvar nd *iw.NetDev\n\tif nd, err :\u003d r.monitorOnInterface(ctx, iface); err !\u003d nil {\n\t\treturn nil, err\n\t}\n```\nbecause even though `nd` would be updated, it\u0027s not used in the inner function and would fail at compile time because of that reason.\n\nDo you mind sharing what you envisioned for the inline pattern? Thanks!",
+      "parentUuid": "aeacd578_b4d23358",
+      "range": {
+        "startLine": 722,
+        "startChar": 0,
+        "endLine": 724,
+        "endChar": 2
+      },
+      "revId": "7758c4b3a02b8d1e5cb8f179778aa358e62af960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5063eb1_8dc4795c",
         "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-03T19:06:04Z",
       "side": 1,
       "message": "Is this one-line function really necessary? Could we just use the ctxutil inline?",
+      "range": {
+        "startLine": 744,
+        "startChar": 17,
+        "endLine": 744,
+        "endChar": 43
+      },
+      "revId": "7758c4b3a02b8d1e5cb8f179778aa358e62af960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd68f607_1e25851c",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-08-03T23:53:07Z",
+      "side": 1,
+      "message": "This is one of those cases where I think the tradeoff for indirection is worth it over inlining the call in the test. \n\nWe have 4 tests that will need their contexts shortened for the framesender service. The framesender binary itself can be killed, but we want to reserve time for the interface (as specified in the comment). Instead of replicating this comment in every single test that requires the inline, I think it\u0027s more efficient to have the discussion put into 1 place.\n\nWDYT?",
+      "parentUuid": "c5063eb1_8dc4795c",
       "range": {
         "startLine": 744,
         "startChar": 17,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd61addd_914137e8",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-08-03T23:53:07Z",
+      "side": 1,
+      "message": "Done. I have rectified this in the legacy router as well.",
+      "parentUuid": "b5575f98_3a9c1305",
+      "range": {
+        "startLine": 745,
+        "startChar": 4,
+        "endLine": 745,
+        "endChar": 32
+      },
+      "revId": "7758c4b3a02b8d1e5cb8f179778aa358e62af960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ffe20d8_e118d21d",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-03T19:06:04Z",
       "side": 1,
       "message": "Nit: inline err check.",
+      "range": {
+        "startLine": 777,
+        "startChar": 1,
+        "endLine": 779,
+        "endChar": 2
+      },
+      "revId": "7758c4b3a02b8d1e5cb8f179778aa358e62af960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b2c5b7d_28847c33",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-08-03T23:53:07Z",
+      "side": 1,
+      "message": "Please see above comment.",
+      "parentUuid": "5ffe20d8_e118d21d",
       "range": {
         "startLine": 777,
         "startChar": 1,
