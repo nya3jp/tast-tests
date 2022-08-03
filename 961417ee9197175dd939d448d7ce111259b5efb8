@@ -69,6 +69,24 @@
       "parentUuid": "00044ead_ccd1af9c",
       "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a73faa76_41468f07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-03T01:20:12Z",
+      "side": 1,
+      "message": "Thanks for the links. It\u0027s surprising to me that it doesn\u0027t run given it was marked as mainline (mainline + informational should be sufficient iiuc). Do you know why it is not running?\n\nIn general, we want ~20 passing runs on CI before we make something critical. What\u0027s the reason for wanting to promote a test to critical that doesn\u0027t currently run in CI?",
+      "parentUuid": "f3eff5c4_0e4d3dcd",
+      "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
