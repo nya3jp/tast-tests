@@ -129,9 +129,14 @@ func KeyboardBinding(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to obtain search key and function: ", err)
 	}
+	s.Logf("The Search key name on the DUT is %q", searchKey.name)
 
 	for _, k := range []*key{
-		searchKey,
+		// TODO(b/241180458): Unblock 'searchKey' after the issue is solved.
+		// Changing binding function for the key "Search" might not work properly as expected
+		// on some DUT models(e.g., dewatt, nipperkin, dragonair, etc.)
+
+		// searchKey,
 		newCtrlKey(),
 		newAltKey(),
 		newEscapeKey(),
@@ -188,7 +193,7 @@ func KeyboardBinding(ctx context.Context, s *testing.State) {
 // obtainSearchKeyAndFunction obtains the corresponding key name and function name of "Search"/"Launcher".
 // The key name and function name of "Search"/"Launcher" will display differently across different models.
 func obtainSearchKeyAndFunction(ctx context.Context, ui *uiauto.Context) (*key, func(*keyboardBindingTestResources, string) *searchFunctionVerifier, error) {
-	nameRegex := regexp.MustCompile(fmt.Sprintf(`^(%s|%s)$`, searchKey, searchKey))
+	nameRegex := regexp.MustCompile(fmt.Sprintf(`^(%s|%s)$`, searchKey, launcherKey))
 	option := nodewith.NameRegex(nameRegex).HasClass("md-select").Role(role.PopUpButton)
 
 	if err := ui.WaitUntilExists(option)(ctx); err != nil {
