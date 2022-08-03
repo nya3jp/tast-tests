@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8c55368_2e10d747",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-03T19:30:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "361d044c_6daa2c79",
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a21bec69_5dd5daa7",
@@ -90,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbcab9ba_6f197cac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-03T19:30:26Z",
+      "side": 1,
+      "message": "I like the name InstallTestCerts, since there is both the server and ca that need to be installed. I changed the name of the install function for server and ca to be `writeTestServerCertAndPrivateKey()` and `installTestCertificateAuthorityCert()` respectively to provide more clarity. LMK what yall think",
+      "parentUuid": "b351b5de_b5c17333",
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "647a9d16_638a82c5",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
         "patchSetId": 1
@@ -101,6 +137,30 @@
       "writtenOn": "2022-08-02T23:57:24Z",
       "side": 1,
       "message": "nit: also print |certDirectory| in the error msg.",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7715121_0db769ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-03T19:30:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "647a9d16_638a82c5",
       "range": {
         "startLine": 29,
         "startChar": 26,
@@ -128,6 +188,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65491305_fc812cbd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-03T19:30:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc382bc2_2563b42c",
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "401f489d_a9171f5f",
@@ -141,6 +219,30 @@
       "writtenOn": "2022-08-02T23:57:24Z",
       "side": 1,
       "message": "nit: also print |tmpCrtPath| in the error msg.",
+      "range": {
+        "startLine": 55,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 56
+      },
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34cae579_b6a8fc7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-03T19:30:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "401f489d_a9171f5f",
       "range": {
         "startLine": 55,
         "startChar": 27,
@@ -174,6 +276,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6386f05b_eeb1dba8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-03T19:30:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c39c3f8d_ef6b3b7c",
+      "range": {
+        "startLine": 67,
+        "startChar": 26,
+        "endLine": 67,
+        "endChar": 48
+      },
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df82941d_04654c7b",
@@ -187,6 +313,24 @@
       "writtenOn": "2022-08-02T22:10:14Z",
       "side": 1,
       "message": "It seems like this should be done in InstallCerts since it apples to both Server and SSL Certs?",
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e23579_9b999dd0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-03T19:30:26Z",
+      "side": 1,
+      "message": "Ah I think you pointed out a good bug to me. Technically, only the ca cert needs to be bound and rehashed, but since I also put the server credentials in the same directory, they are also being bound. I put them in separate file paths now so it is clear they are separate.",
+      "parentUuid": "df82941d_04654c7b",
       "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
