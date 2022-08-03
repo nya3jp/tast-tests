@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b65bb174_241350f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-03T21:00:13Z",
+      "side": 1,
+      "message": "Yeah, the pattern uses the shorter context for the main logic and reserves those last few seconds for cleanup tasks.  There\u0027s more info here: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#reserve-time-for-clean_up-task\n\nIf the other test isn\u0027t using the cleanup pattern, we should probably fix that test as well (in a separate CL).",
+      "parentUuid": "9da9b900_4be428a9",
+      "revId": "3189748e1d04d958a0851f123d3f68ed3b796be1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59ef6888_197b96e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
         "patchSetId": 1
