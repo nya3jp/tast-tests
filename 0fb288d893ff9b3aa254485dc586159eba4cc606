@@ -70,6 +70,40 @@
       },
       "revId": "0fb288d893ff9b3aa254485dc586159eba4cc606",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d45f7e_fc22145f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-03T04:30:43Z",
+      "side": 1,
+      "message": "Looks like this browser br is only used for taking traces. IMO we should change perfutil to take an interface for starting and stopping tracing. For now, please write a comment about why we picked ash or lacros br here (and in other CLs)",
+      "revId": "0fb288d893ff9b3aa254485dc586159eba4cc606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea35072_a89c32c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-03T04:30:43Z",
+      "side": 1,
+      "message": "Same for these other usages of perfutil which take a tconn that they grab metrics from.",
+      "revId": "0fb288d893ff9b3aa254485dc586159eba4cc606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
