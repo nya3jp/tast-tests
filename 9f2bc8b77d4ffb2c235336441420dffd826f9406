@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f29b9e_169e19b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-08-03T07:54:32Z",
+      "side": 1,
+      "message": "LGTM besides comment about bounds checking",
+      "revId": "9f2bc8b77d4ffb2c235336441420dffd826f9406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34c9293c_6a796c9a",
+        "filename": "src/chromiumos/tast/local/rgbkbd/util.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1543968
+      },
+      "writtenOn": "2022-08-03T07:54:32Z",
+      "side": 1,
+      "message": "We should add a check on len(split) \u003c num here. I can imagine a case where a tast test fails due to len(split) \u003c num, but it will be difficult to debug as the error will be reported as an array bounds issue.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 23
+      },
+      "revId": "9f2bc8b77d4ffb2c235336441420dffd826f9406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
