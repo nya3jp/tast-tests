@@ -64,7 +64,9 @@ func (tc *TPMClearer) PreClearTPM(ctx context.Context) error {
 	return nil
 }
 
-// ClearTPM soft clears the TPM.
+// ClearTPM soft clears the TPM. This method is not a full reset of the TPM and
+// cleans the state files based on the list assigned to SystemStateFiles in
+// tast/common/hwsec/tpm_clearer.go. Extend this list if needed.
 func (tc *TPMClearer) ClearTPM(ctx context.Context) error {
 	// Using soft clear to clear the TPM
 	if _, err := tc.cmdRunner.Run(ctx, "tpm_softclear"); err != nil {
