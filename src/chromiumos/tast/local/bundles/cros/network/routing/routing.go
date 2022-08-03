@@ -93,8 +93,8 @@ func (e *testEnv) SetUp(ctx context.Context) error {
 		}
 	}(ctx)
 
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
+	// Reserve some time for cleanup on failures.
+	ctx, _ = ctxutil.Shorten(ctx, 5*time.Second)
 
 	var err error
 	e.Manager, err = shill.NewManager(ctx)
@@ -215,11 +215,14 @@ func expectPingSuccess(ctx context.Context, addr, user string) error {
 // and returns nil if ping succeeds. |timeout|=0 means only ping once and
 // return. Dumps the current network info on failure.
 func ExpectPingSuccessWithTimeout(ctx context.Context, addr, user string, timeout time.Duration) (retErr error) {
-	defer func() {
+	defer func(ctx context.Context) {
 		if retErr != nil {
 			dumpNetworkInfoAfterPingFailure(ctx)
 		}
-	}()
+	}(ctx)
+
+	// Reserve some time for dumping info on failures.
+	ctx, _ = ctxutil.Shorten(ctx, 2*time.Second)
 
 	if timeout == 0 {
 		return expectPingSuccess(ctx, addr, user)
