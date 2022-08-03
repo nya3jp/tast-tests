@@ -16,6 +16,24 @@
       "message": "Please add that tconn must be an Ash connection (I assume).",
       "revId": "89add3ee9d49659d480fd553f098be17cea79436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6041f25_2dced97b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T01:01:12Z",
+      "side": 1,
+      "message": "Done adding a comment to make it clear. Thanks,",
+      "parentUuid": "d8dfcd54_3b916d35",
+      "revId": "89add3ee9d49659d480fd553f098be17cea79436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
