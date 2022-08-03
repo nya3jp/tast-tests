@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "05d451c0_b3c140ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T21:19:26Z",
+      "side": 1,
+      "message": "nit: `gather` instead of `measure`",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "8534b1d9a0e94f71a02159cadb31547e2ac141b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4f13bf28_baac8d8f",
@@ -14,6 +37,144 @@
       "writtenOn": "2022-08-03T20:46:58Z",
       "side": 1,
       "message": "Please review, thanks! ",
+      "revId": "8534b1d9a0e94f71a02159cadb31547e2ac141b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ccae76_6b588c60",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T21:19:26Z",
+      "side": 1,
+      "message": "Should this be `bTconn`?",
+      "range": {
+        "startLine": 84,
+        "startChar": 44,
+        "endLine": 84,
+        "endChar": 49
+      },
+      "revId": "8534b1d9a0e94f71a02159cadb31547e2ac141b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21de9571_19030132",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T21:19:26Z",
+      "side": 1,
+      "message": "Should this be `bTconn`?",
+      "range": {
+        "startLine": 109,
+        "startChar": 44,
+        "endLine": 109,
+        "endChar": 49
+      },
+      "revId": "8534b1d9a0e94f71a02159cadb31547e2ac141b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "329d030f_5a26f28b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T21:19:26Z",
+      "side": 1,
+      "message": "Inline this.",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "8534b1d9a0e94f71a02159cadb31547e2ac141b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3b26611_2d182c2e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T21:19:26Z",
+      "side": 1,
+      "message": "To be consistent with the below usage of `TestAPIConn`, this should be written thusly:\n\t\tif l, err \u003d lacros.Launch(ctx, tconn); err !\u003d nil {\nAnother option is to rewrite the `TestAPIConn` usage the other way. I have no strong preference, but please be consistent one way or the other.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "8534b1d9a0e94f71a02159cadb31547e2ac141b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf26503_ad5b83b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_slides_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T21:19:26Z",
+      "side": 1,
+      "message": "nit: Let\u0027s make it `common metrics` just to be consistent with the other tests.",
+      "range": {
+        "startLine": 95,
+        "startChar": 25,
+        "endLine": 95,
+        "endChar": 32
+      },
+      "revId": "8534b1d9a0e94f71a02159cadb31547e2ac141b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc7bcad_8f814d50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/meet_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T21:19:26Z",
+      "side": 1,
+      "message": "Just write it this way:\n\tif err :\u003d recorder.AddCollectedMetrics(bTconn, meet.browserType,\n\t\tcujrecorder.NewCustomMetricConfig(\"Cras.MissedCallbackFrequencyInput\", \"millisecond\", perf.SmallerIsBetter),\n\t\tcujrecorder.NewCustomMetricConfig(\"Cras.MissedCallbackFrequencyOutput\", \"millisecond\", perf.SmallerIsBetter),\n\t); err !\u003d nil {",
+      "range": {
+        "startLine": 540,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 91
+      },
       "revId": "8534b1d9a0e94f71a02159cadb31547e2ac141b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
