@@ -49,7 +49,7 @@ func init() {
 				Name:              "lacros",
 				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
 				Fixture:           fixture.LacrosTabletVKWithMultipasteSuggestion,
-				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraAttr:         []string{"informational"},
 				ExtraSoftwareDeps: []string{"lacros"},
 			},
 		},
