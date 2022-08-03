@@ -16,6 +16,178 @@
       "message": "Please review, thank you!",
       "revId": "4980c4cd84c5b05e9a42df5110eb70313cc1fa8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bdd3586_ed71bba6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T18:28:56Z",
+      "side": 1,
+      "message": "Inline this.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 31
+      },
+      "revId": "4980c4cd84c5b05e9a42df5110eb70313cc1fa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98ce435c_a91d192b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T18:28:56Z",
+      "side": 1,
+      "message": "optional nit: In general, I avoid touching lines of code just to fix minor typos like that, because `git blame` (as in the Blame layer on Code Search) will be less helpful when it points to CLs that do this.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 68
+      },
+      "revId": "4980c4cd84c5b05e9a42df5110eb70313cc1fa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387d413f_54833687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T18:28:56Z",
+      "side": 1,
+      "message": "`\tdefer mw.Close()`",
+      "revId": "4980c4cd84c5b05e9a42df5110eb70313cc1fa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b31c31_6e9de244",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T18:28:56Z",
+      "side": 1,
+      "message": "nit:\n\t\tconst scrollTimeoutEachWay \u003d scrollTimeout/3",
+      "revId": "4980c4cd84c5b05e9a42df5110eb70313cc1fa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f80759e1_cbe6ad73",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T18:28:56Z",
+      "side": 1,
+      "message": "optional nit: `trackpad gestures`\n\nThis would be more specific. The trackpad could also be used to scroll by clicking the arrows at the ends of a scrollbar, or by dragging the thumb, but those things are not what you mean; you mean using trackpad gestures.",
+      "range": {
+        "startLine": 172,
+        "startChar": 15,
+        "endLine": 172,
+        "endChar": 23
+      },
+      "revId": "4980c4cd84c5b05e9a42df5110eb70313cc1fa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37f4d199_4286677d",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/mouse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T18:28:56Z",
+      "side": 1,
+      "message": "`// ScrollMouseDownFor rolls the scroll wheel for |duration|, with a |delay| between ticks.`",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 15
+      },
+      "revId": "4980c4cd84c5b05e9a42df5110eb70313cc1fa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9152e3d3_29bbe243",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/mouse.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T18:28:56Z",
+      "side": 1,
+      "message": "This name should only describe the part inside the `action.Combine` call. How about:\n`\"scroll down and sleep\"`",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "4980c4cd84c5b05e9a42df5110eb70313cc1fa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14401112_16a95532",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/inputsimulations/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T18:28:56Z",
+      "side": 1,
+      "message": "Please document it with a code comment. See: https://github.com/golang/go/wiki/CodeReviewComments#doc-comments",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 17
+      },
+      "revId": "4980c4cd84c5b05e9a42df5110eb70313cc1fa8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
