@@ -330,6 +330,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45cf7f92_51528e66",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-03T21:18:44Z",
+      "side": 1,
+      "message": "Oh and another thing about the PortType constants is that they are only used for comparing against the returns from GetConnectorType, case-insensitively and they are not passed to Chameleond itself. If a test writer uses the wrong one or for some reason the constant doesn\u0027t match, they will know immediately when they try to run their test and the error message will print out the what the actual GetConnectorType returns are within the mapping so they\u0027ll be able to figure out what the string should have been likely very quickly.",
+      "parentUuid": "56c67de1_25be0ba9",
+      "range": {
+        "startLine": 831,
+        "startChar": 8,
+        "endLine": 831,
+        "endChar": 30
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fd3e04e_5782d49b",
