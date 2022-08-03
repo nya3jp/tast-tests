@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e6ba34_d3a5e34f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-08-03T19:56:51Z",
+      "side": 1,
+      "message": "Yep, it\u0027s almost like we have 2 flavours of the API calls written by different people in the same project.",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39b9d9c0_5cb72022",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-08-03T19:56:51Z",
+      "side": 1,
+      "message": "I think a more appropriate place to do this fixup would be in chameleond itself for v2, otherwise we\u0027ll keep such hacks in every client forever.",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 42
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9af9f3a7_ea0eb692",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-08-03T19:56:51Z",
+      "side": 1,
+      "message": "Outdated",
+      "range": {
+        "startLine": 266,
+        "startChar": 4,
+        "endLine": 266,
+        "endChar": 22
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2282912_58c7d708",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-08-03T19:56:51Z",
+      "side": 1,
+      "message": "Wouldn\u0027t all of these results have the same type? why do you need a mapping then?",
+      "range": {
+        "startLine": 604,
+        "startChar": 72,
+        "endLine": 605,
+        "endChar": 27
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0cad8ed_454067eb",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-08-03T19:56:51Z",
+      "side": 1,
+      "message": "I\u0027m still hesistant on having this value add API on top of what XMLRPC already provides. If a test writer tells me (chameleon maintainer) that they\u0027re calling FetchSupportedPortIDsByType I\u0027ll have no idea what that does unless I start digging into this.\n\nWy can\u0027t the users (like in https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3807039/2/src/chromiumos/tast/local/assistant/fixture.go) just iterate through the GetSupportedOutputs and filter based on port type themselves on an adhock basis? It seems shorter to implement than what we have now in this CL.\n\nIsn\u0027t being explicit inside a test better than relying on middle API that doesn\u0027t match the original API?",
+      "range": {
+        "startLine": 607,
+        "startChar": 4,
+        "endLine": 607,
+        "endChar": 51
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67993c27_07c55a99",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-08-03T19:56:51Z",
+      "side": 1,
+      "message": "This seems superfluous, why can\u0027t the user of the api just call `output,err \u003d FetchSupportedPortIDsByType(PortType)` then get `output[index]`?",
+      "range": {
+        "startLine": 629,
+        "startChar": 1,
+        "endLine": 629,
+        "endChar": 27
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d04a898c_bac22f15",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-08-03T19:56:51Z",
+      "side": 1,
+      "message": "What happens if portTypeStr is something new that\u0027s not in our mapping?",
+      "range": {
+        "startLine": 831,
+        "startChar": 8,
+        "endLine": 831,
+        "endChar": 30
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fd3e04e_5782d49b",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-08-03T19:56:51Z",
+      "side": 1,
+      "message": "I\u0027m still a little hesitant about this.\n\nWe had an enum before representing all ports, but we still have a enum now representing types of ports.\n\nI\u0027ve had some discussions on https://b.corp.google.com/issues/241144328 about how to represent the many virtual ports on chameleon v3.\n\nSo far I think they would fit in {PortTypeDP,PortTypeHDMI}, but there are going to be duplicates that can only be disambiguated with new Has*Support APIs.",
+      "range": {
+        "startLine": 20,
+        "startChar": 23,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e9fb10_b456963f",
+        "filename": "src/chromiumos/tast/common/xmlrpc/call_builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2022-08-03T19:56:51Z",
+      "side": 1,
+      "message": "Is this related to the CL?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 58
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
