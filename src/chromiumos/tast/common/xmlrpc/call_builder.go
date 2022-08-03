@@ -6,6 +6,7 @@ package xmlrpc
 
 import (
 	"context"
+	"fmt"
 
 	"chromiumos/tast/errors"
 )
@@ -20,6 +21,9 @@ type RPCInterface interface {
 	// CallBuilder.Call method from the returned CallBuilder instance can be used
 	// to do so.
 	RPC(methodName string) *CallBuilder
+
+	// Host returns the host and port of the device this RPC sends requests to.
+	Host() string
 }
 
 // CommonRPCInterface is a base implementation of RPCInterface which can be
@@ -47,6 +51,11 @@ func NewCommonRPCInterface(xmlrpcClient *XMLRpc, methodNamePrefix string) *Commo
 // to do so.
 func (c *CommonRPCInterface) RPC(methodName string) *CallBuilder {
 	return c.XMLRPC.CallBuilder().Name(methodName).NamePrefix(c.XMLRPCMethodNamePrefix)
+}
+
+// Host returns the host and port of the device this RPC sends requests to.
+func (c *CommonRPCInterface) Host() string {
+	return fmt.Sprintf("%s:%d", c.XMLRPC.host, c.XMLRPC.port)
 }
 
 // CallBuilder is a utility for building and executing XMLRPC requests easily.
