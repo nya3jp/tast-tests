@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f26d5acf_a41e737a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/arc_youtube_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T22:40:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b262738d_2f12f38c",
+      "range": {
+        "startLine": 84,
+        "startChar": 44,
+        "endLine": 84,
+        "endChar": 49
+      },
+      "revId": "8534b1d9a0e94f71a02159cadb31547e2ac141b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21de9571_19030132",
@@ -159,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce92aed1_8952eb64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desk_templates_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T22:40:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ff8fd3e5_352bfde2",
+      "range": {
+        "startLine": 109,
+        "startChar": 44,
+        "endLine": 109,
+        "endChar": 49
+      },
+      "revId": "8534b1d9a0e94f71a02159cadb31547e2ac141b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "329d030f_5a26f28b",
@@ -196,6 +244,30 @@
       "side": 1,
       "message": "I didn\u0027t inline it here b/c we use it in two places: the following switch statement, and a few lines below that to determine if we should close the blank lacros tab.",
       "parentUuid": "329d030f_5a26f28b",
+      "range": {
+        "startLine": 56,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 3
+      },
+      "revId": "8534b1d9a0e94f71a02159cadb31547e2ac141b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d93bd8c1_2b0dc017",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/desks_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T22:40:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ee0ba58b_a383afd7",
       "range": {
         "startLine": 56,
         "startChar": 1,
