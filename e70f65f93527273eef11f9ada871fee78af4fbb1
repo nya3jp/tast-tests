@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ebe480_b913f73a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545012
+      },
+      "writtenOn": "2022-08-03T21:34:07Z",
+      "side": 1,
+      "message": "One question for you",
+      "revId": "e70f65f93527273eef11f9ada871fee78af4fbb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "830e03ae_c86cca2a",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/ap_bmpblk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1545012
+      },
+      "writtenOn": "2022-08-03T21:34:07Z",
+      "side": 1,
+      "message": "Is this a specific enough error message?  In other words, would this info be enough to debug the test?",
+      "revId": "e70f65f93527273eef11f9ada871fee78af4fbb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
