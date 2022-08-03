@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "f2d410458f9a5b5b1700600de452f85cdacb51ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d127d602_a8b7fa67",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-03T04:02:59Z",
+      "side": 1,
+      "message": "or features that currently depend on it (is there any other than app service?)",
+      "revId": "f2d410458f9a5b5b1700600de452f85cdacb51ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
