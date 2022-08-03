@@ -532,19 +532,19 @@ func MeetCUJ(ctx context.Context, s *testing.State) {
 		screenRecorder.Start(ctx, tconn)
 	}
 
-	configs := append(cujrecorder.DeprecatedMetricConfigs(),
-		cujrecorder.NewCustomMetricConfig(
-			"Cras.MissedCallbackFrequencyInput", "millisecond", perf.SmallerIsBetter),
-		cujrecorder.NewCustomMetricConfig(
-			"Cras.MissedCallbackFrequencyOutput", "millisecond", perf.SmallerIsBetter))
-
 	recorder, err := cujrecorder.NewRecorder(ctx, cr, nil, cujrecorder.RecorderOptions{})
 	if err != nil {
 		s.Fatal("Failed to create the recorder: ", err)
 	}
 
-	if err := recorder.AddCollectedMetrics(bTconn, meet.browserType, configs...); err != nil {
+	if err := recorder.AddCollectedMetrics(bTconn, meet.browserType,
+		cujrecorder.NewCustomMetricConfig("Cras.MissedCallbackFrequencyInput", "millisecond", perf.SmallerIsBetter),
+		cujrecorder.NewCustomMetricConfig("Cras.MissedCallbackFrequencyOutput", "millisecond", perf.SmallerIsBetter)); err != nil {
 		s.Fatal("Failed to add metrics to recorder: ", err)
+	}
+
+	if err := recorder.AddCommonMetrics(tconn, bTconn); err != nil {
+		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
 
 	if meet.tracing {

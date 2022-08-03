@@ -91,8 +91,8 @@ func GoogleSlidesCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer recorder.Close(closeCtx)
 
-	if err := recorder.AddCollectedMetrics(bTconn, bt, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
-		s.Fatal("Failed to add metrics to recorder: ", err)
+	if err := recorder.AddCommonMetrics(tconn, bTconn); err != nil {
+		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
 
 	// Create a virtual keyboard.
