@@ -168,6 +168,7 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	}
 
 	var cs ash.ConnSource
+	var bTconn *chrome.TestConn
 	if testParam.useLacros {
 		// Launch lacros.
 		l, err := lacros.Launch(ctx, tconn)
@@ -176,6 +177,9 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 		}
 		defer l.Close(ctx)
 		cs = l
+		if bTconn, err = l.TestAPIConn(ctx); err != nil {
+			s.Fatal("Failed to get lacros TestAPIConn: ", err)
+		}
 	} else {
 		cs = cr
 	}
@@ -405,8 +409,8 @@ func TaskSwitchCUJ(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to create a recorder: ", err)
 	}
-	if err := recorder.AddCollectedMetrics(tconn, browser.TypeAsh, cujrecorder.DeprecatedMetricConfigs()...); err != nil {
-		s.Fatal("Failed to add recorded metrics: ", err)
+	if err := recorder.AddCommonMetrics(tconn, bTconn); err != nil {
+		s.Fatal("Failed to add common metrics to recorder: ", err)
 	}
 	if testParam.tracing {
 		recorder.EnableTracing(s.OutDir(), s.DataPath(cujrecorder.SystemTraceConfigFile))
