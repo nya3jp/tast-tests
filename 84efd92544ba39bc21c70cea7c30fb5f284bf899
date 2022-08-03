@@ -296,6 +296,30 @@
       },
       "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "036044c9_a191ab19",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-03T01:12:06Z",
+      "side": 1,
+      "message": "This has been addressed in [CL-3807039](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3807039/1). Note that the commit message of that CL explains why we couldn\u0027t fully rely on this method for port identification. I\u0027ve added you to review that CL as well.",
+      "parentUuid": "d2e58626_70142eb2",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "84efd92544ba39bc21c70cea7c30fb5f284bf899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
