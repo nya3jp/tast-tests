@@ -16,6 +16,24 @@
       "message": "WIP with a pending issue (crbug.com/1309621). cc\u0027d yzd@ for confirmation.",
       "revId": "80c7db3df9eca8e9c7eb2ecc0d36cebcf96183c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7f95a52_47cf55e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T23:42:42Z",
+      "side": 1,
+      "message": "Now that the feature is implemented and testable, I\u0027ll mark this change active and work on it.",
+      "parentUuid": "d2d57d2c_c3f714b9",
+      "revId": "80c7db3df9eca8e9c7eb2ecc0d36cebcf96183c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
