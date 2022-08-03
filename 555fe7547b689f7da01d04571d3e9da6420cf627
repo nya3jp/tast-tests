@@ -33,6 +33,24 @@
       "message": "New line at end of sentence.",
       "revId": "555fe7547b689f7da01d04571d3e9da6420cf627",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f42628_e15a1c67",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-03T21:26:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "680e7bf8_1509d9ab",
+      "revId": "555fe7547b689f7da01d04571d3e9da6420cf627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
