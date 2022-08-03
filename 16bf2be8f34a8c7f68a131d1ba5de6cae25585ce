@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c481d406_ca438abb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-03T18:43:35Z",
+      "side": 1,
+      "message": "Don\u0027t we need to close Chrome if we hit this error?",
+      "revId": "16bf2be8f34a8c7f68a131d1ba5de6cae25585ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "427de9b8_531bd2b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/utils/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-03T18:43:35Z",
+      "side": 1,
+      "message": "any reason this needs to be `*statusResult` instead of `statusResult`?",
+      "range": {
+        "startLine": 105,
+        "startChar": 37,
+        "endLine": 105,
+        "endChar": 50
+      },
+      "revId": "16bf2be8f34a8c7f68a131d1ba5de6cae25585ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
