@@ -160,12 +160,25 @@ func LaunchImageInPhotosFromGallery(ctx context.Context, s *testing.State) {
 	// Wait for image to appear in Photos app
 	ud := uidetection.NewDefault(tconn).WithTimeout(time.Minute)
 	allowButton := uidetection.Word("ALLOW")
+	gotItButton := uidetection.TextBlock([]string{"Got", "it"})
+
+	// Only clear the prompt if it shows up within certain time.
+	// ARC++ might not be ready to receive CLICK during launch.
+	// Using retry to mitigate UI flakiness.
+	closeIfShown := func(finder *uidetection.Finder) uiauto.Action {
+		return uiauto.IfSuccessThen(
+			// Long timeout is required here as the Photos first launch is very slow.
+			ud.WithTimeout(10*time.Second).WaitUntilExists(finder),
+			uiauto.Retry(3, uiauto.Combine("click button and waits its gone",
+				ud.WithTimeout(5*time.Second).LeftClick(finder),
+				ud.WithTimeout(5*time.Second).WaitUntilGone(finder),
+			)),
+		)
+	}
+
 	if err := uiauto.NamedCombine("reach main page of Photos app",
-		uiauto.IfSuccessThen(
-			ud.WithTimeout(5*time.Second).WaitUntilExists(allowButton),
-			ud.LeftClick(allowButton),
-		),
-		ud.LeftClick(uidetection.TextBlock([]string{"Got", "it"})),
+		closeIfShown(allowButton),
+		closeIfShown(gotItButton),
 		ud.WaitUntilExists(uidetection.Word("HALLOWEEN")),
 	)(ctx); err != nil {
 		s.Fatal("Failed to verify the test image opened in Photos: ", err)
