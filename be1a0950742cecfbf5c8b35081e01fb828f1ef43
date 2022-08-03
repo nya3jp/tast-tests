@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5978c86_959f4bb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-03T22:08:02Z",
+      "side": 1,
+      "message": "LGTM % nits, thanks Austin! 👍",
+      "revId": "be1a0950742cecfbf5c8b35081e01fb828f1ef43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a7d3915_280192cd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_dss_offline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-03T22:08:02Z",
+      "side": 1,
+      "message": "Outside the scope of this test, so more a nit: Is there a better signal we can wait for then relaunching Files app? Also does this mean if a user launches Files app in this period they won\u0027t be able to access the offline toggle until they relaunch themselves? Is there some message we can watch for that we can enable whilst the window is open?",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 69
+      },
+      "revId": "be1a0950742cecfbf5c8b35081e01fb828f1ef43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf9b84a_88cd3f7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_dss_offline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-03T22:08:02Z",
+      "side": 1,
+      "message": "nit: Why do we need to get a new uiauto object? Can\u0027t we use `filesApp` here?",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 24
+      },
+      "revId": "be1a0950742cecfbf5c8b35081e01fb828f1ef43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
