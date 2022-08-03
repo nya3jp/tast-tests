@@ -87,6 +87,24 @@
       "parentUuid": "f3eff5c4_0e4d3dcd",
       "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6700b7d_a329af69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2022-08-03T17:27:56Z",
+      "side": 1,
+      "message": "Hey Elliot, thanks for pointing that out. I did not know about the ~20 passing runs requirement. The reven-vmtest board does not have an informational tast builder, but amd64-generic does:\nhttps://ci.chromium.org/p/chromeos/builders/vmtest/amd64-generic-tast-vm-informational\n\nIf we look at the most recent run, we can see the test was successfully skipped:\n```\n2022-08-03T04:33:35.273539Z Started test platform.FlexID\n2022-08-03T04:33:35.277826Z Skipped test platform.FlexID due to missing dependencies: missing SoftwareDeps: flex_id\n```\nI looked back 20 builds and that precedes the merge of http://crrev.com/c/3781253, which is the CL that added the test.\n\nUnless we add a new informational builder for reven-vmtest, the -direct-tast-vm builds associated with this CL are the best we can do to verify that the promotion will not create widespread breakage.\n\nIf merging this CL causes breakage, the sheriff will revert it. Shall we wait until amd64-generic-tast-vm-informational runs (and skips) the test 20 times? It may take several more days for that to happen.",
+      "parentUuid": "a73faa76_41468f07",
+      "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
