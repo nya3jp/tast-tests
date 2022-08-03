@@ -356,6 +356,30 @@
       },
       "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131ce5d1_f17b5d35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-08-03T20:17:37Z",
+      "side": 1,
+      "message": "I agree that when we move this functionality to a separate package, we should switch to this pattern, i.e. return the uninstall func from InstallTestCerts.",
+      "parentUuid": "10f7a5f2_154ccf47",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 19
+      },
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
