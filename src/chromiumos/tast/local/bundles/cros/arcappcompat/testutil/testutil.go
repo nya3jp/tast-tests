@@ -63,6 +63,7 @@ type TestParams struct {
 	LaunchTests      []TestCase
 	CommonTests      []TestCase
 	AppSpecificTests []TestCase
+	SmokeTests       []TestCase
 }
 
 // ClamshellCommonTests is a list of all tests common to all apps in clamshell mode.
@@ -111,7 +112,7 @@ var TouchviewSmokeTests = []TestCase{
 }
 
 // RunTestCases setups the device and runs all app compat test cases.
-func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity string, testCases TestParams) {
+func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity, suiteInfo string, testCases TestParams) {
 	// Step up chrome on Chromebook.
 	cr, tconn, a, appVer := setUpDevice(ctx, s, appPkgName, appActivity)
 
@@ -145,16 +146,30 @@ func RunTestCases(ctx context.Context, s *testing.State, appPkgName, appActivity
 	}
 	s.Log("Successfully tested launching and closing the app")
 
-	// AllTests will have LaunchTests, CommonTests and AppSpecificTests.
+	s.Log("Suite Details: ", suiteInfo)
 	var AllTests = []TestCase{}
-	for _, curTest := range testCases.LaunchTests {
-		AllTests = append(AllTests, curTest)
-	}
-	for _, curTest := range testCases.CommonTests {
-		AllTests = append(AllTests, curTest)
-	}
-	for _, curTest := range testCases.AppSpecificTests {
-		AllTests = append(AllTests, curTest)
+	// AllTests will have LaunchTests, SmokeTests, ReleaseTests, CommonTests and AppSpecificTests.
+	switch suiteInfo {
+	case "smoke":
+		for _, curTest := range testCases.LaunchTests {
+			AllTests = append(AllTests, curTest)
+		}
+		for _, curTest := range testCases.SmokeTests {
+			AllTests = append(AllTests, curTest)
+		}
+		for _, curTest := range testCases.AppSpecificTests {
+			AllTests = append(AllTests, curTest)
+		}
+	default:
+		for _, curTest := range testCases.LaunchTests {
+			AllTests = append(AllTests, curTest)
+		}
+		for _, curTest := range testCases.CommonTests {
+			AllTests = append(AllTests, curTest)
+		}
+		for _, curTest := range testCases.AppSpecificTests {
+			AllTests = append(AllTests, curTest)
+		}
 	}
 
 	// Run the different test cases.

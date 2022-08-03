@@ -82,7 +82,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
+		Vars:    []string{"arcappcompat.gaiaPoolDefault", "testutil.suite"},
 		VarDeps: []string{"arcappcompat.Bandlab.emailid", "arcappcompat.Bandlab.password"},
 	})
 }
@@ -94,8 +94,14 @@ func Bandlab(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.bandlab.bandlab"
 		appActivity = "com.bandlab.navigation.entry.NavigationActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+	s.Log("suiteInfo: ", suiteInfo)
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForBandlab verifies Bandlab is logged in and

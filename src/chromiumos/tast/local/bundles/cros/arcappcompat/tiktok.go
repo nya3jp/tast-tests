@@ -84,6 +84,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletMode,
 		}},
 		Timeout: 10 * time.Minute,
+		Vars:    []string{"testutil.suite"},
 		VarDeps: []string{"arcappcompat.username", "arcappcompat.password"},
 	})
 }
@@ -108,8 +109,14 @@ func Tiktok(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.zhiliaoapp.musically"
 		appActivity = "com.ss.android.ugc.aweme.splash.SplashActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+	s.Log("suiteInfo: ", suiteInfo)
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForTiktok verifies Tiktok is logged in and
