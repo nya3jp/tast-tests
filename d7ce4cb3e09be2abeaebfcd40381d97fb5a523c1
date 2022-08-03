@@ -16,6 +16,24 @@
       "message": "The slowest scanner in BLD takes 1m45s for 600 dpi, so this should be enough buffer.",
       "revId": "d7ce4cb3e09be2abeaebfcd40381d97fb5a523c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e26e21a_86ba781e",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1002374
+      },
+      "writtenOn": "2022-08-03T19:03:04Z",
+      "side": 1,
+      "message": "Good stuff. Thanks.",
+      "parentUuid": "f9b59955_bf0dfb9a",
+      "revId": "d7ce4cb3e09be2abeaebfcd40381d97fb5a523c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
