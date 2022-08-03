@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40b437fa_3d46b52a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2909,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-08-03T15:35:12Z",
+      "side": 1,
+      "message": "Shouldn\u0027t `StopSoftAP()` also be called?",
+      "revId": "d1efe5a171056e159b4ddfa54cff45cb986ca6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10be7b1d_cd71bdca",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2964,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-08-03T15:35:12Z",
+      "side": 1,
+      "message": "Use [ip.AddIP()](https://source.corp.google.com/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/common/network/ip/runner.go;l\u003d209;bpv\u003d1;bpt\u003d0).",
+      "revId": "d1efe5a171056e159b4ddfa54cff45cb986ca6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb1cee7b_70add1c0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2968,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-08-03T15:35:12Z",
+      "side": 1,
+      "message": "You could reuse package firewall (but probably need to move it to common).",
+      "revId": "d1efe5a171056e159b4ddfa54cff45cb986ca6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fb3a94e_7d4ac5c2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2982,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-08-03T15:35:12Z",
+      "side": 1,
+      "message": "I\u0027d really like to know if some of these operations finished with an error. Perhaps you could collect first error and return it.",
+      "revId": "d1efe5a171056e159b4ddfa54cff45cb986ca6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52c51e3d_c82977fb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2984,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-08-03T15:35:12Z",
+      "side": 1,
+      "message": "ip.DeleteIP()",
+      "revId": "d1efe5a171056e159b4ddfa54cff45cb986ca6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61de4a9f_35099fe4",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/wifi/sap_simple_connect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-08-03T15:35:12Z",
+      "side": 1,
+      "message": "This is unused.",
+      "revId": "d1efe5a171056e159b4ddfa54cff45cb986ca6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "510321cd_7ff6287d",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1445297
+      },
+      "writtenOn": "2022-08-03T15:35:12Z",
+      "side": 1,
+      "message": "Autoformatter is playing tricks for me, too.",
+      "revId": "d1efe5a171056e159b4ddfa54cff45cb986ca6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
