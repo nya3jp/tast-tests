@@ -215,6 +215,11 @@ func QuickCheckCUJ(ctx context.Context, s *testing.State) {
 			return errors.Wrap(err, "failed to sleep (bottom scroll position)")
 		}
 
+		// Navigate away to record PageLoad.PaintTiming.NavigationToLargestContentfulPaint2.
+		if err := conn.Navigate(ctx, "chrome://version"); err != nil {
+			return errors.Wrap(err, "failed to navigate to chrome://version")
+		}
+
 		return nil
 	}); err != nil {
 		s.Fatal("Failed to run the test scenario: ", err)
