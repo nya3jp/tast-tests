@@ -8,126 +8,183 @@ package chameleon
 // interface.
 const chameleondDefaultXMLRPCPort = 9992
 
-// PortID is an id of a chameleon port.
-type PortID int
+// PortType is the human-readable name of a chameleon port's connector type
+// name, as returned by Chameleond.GetConnectorType.
+//
+// For ease of use, known PortType values are included in this package as
+// constants prefixed with "PortType".
+type PortType string
 
 const (
-	// PortDP1 is the PortID for the first DisplayPort chameleon port.
-	PortDP1 PortID = 1
+	// PortTypeDP is the PortType for a DisplayPort chameleon port.
+	PortTypeDP PortType = "DP"
 
-	// PortDP2 is the PortID for the second DisplayPort chameleon port.
-	PortDP2 PortID = 2
+	// PortTypeHDMI is the PortType for an HDMI chameleon port.
+	PortTypeHDMI PortType = "HDMI"
 
-	// PortHDMI is the PortID for the HDMI chameleon port.
-	PortHDMI PortID = 3
+	// PortTypeVGA is the PortType for a VGA chameleon port.
+	PortTypeVGA PortType = "VGA"
 
-	// PortVGA is the PortID for the VGA chameleon port.
-	PortVGA PortID = 4
+	// PortTypeMIC is the PortType for a microphone chameleon port.
+	PortTypeMIC PortType = "Mic"
 
-	// PortMic is the PortID for the microphone chameleon port.
-	PortMic PortID = 5
-
-	// PortAnalogAudioLineIn is the PortID for the audio line-in chameleon port.
-	PortAnalogAudioLineIn PortID = 6
-
-	// PortAnalogAudioLineOut is the PortID for the audio line-out chameleon port.
-	PortAnalogAudioLineOut PortID = 7
-
-	// PortUSBAudioIn is the PortID for the USB audio-in chameleon port.
-	PortUSBAudioIn PortID = 8
-
-	// PortUSBAudioOut is the PortID for the USB audio-out chameleon port.
-	PortUSBAudioOut PortID = 9
-
-	// PortUSBKeyboard is the PortID for the keyboard chameleon port.
-	PortUSBKeyboard PortID = 10
-
-	// PortUSBTouch is the PortID for the USB touch chameleon port.
-	PortUSBTouch PortID = 11
-
-	// PortBluetoothHIDKeyboard is the PortID for the bluetooth HID keyboard
-	// chameleon port.
-	PortBluetoothHIDKeyboard PortID = 12
-
-	// PortBluetoothHIDGamepad is the PortID for the bluetooth HID gamepad
-	// chameleon port.
-	PortBluetoothHIDGamepad PortID = 13
-
-	// PortBluetoothHIDMouse is the PortID for the bluetooth HID mouse
-	// chameleon port.
-	PortBluetoothHIDMouse PortID = 14
-
-	// PortBluetoothHIDCombo is the PortID for the bluetooth HID combo
-	// chameleon port.
-	PortBluetoothHIDCombo PortID = 15
-
-	// PortBluetoothHIDJoystick is the PortID for the bluetooth HID joystick
-	// chameleon port.
-	PortBluetoothHIDJoystick PortID = 16
-
-	// PortAVSyncProbe is the PortID for the AV sync probe chameleon port.
-	PortAVSyncProbe PortID = 17
-
-	// PortAudioBoard is the PortID for the audio board chameleon port.
-	PortAudioBoard PortID = 18
-
-	// PortMotorBoard is the PortID for the motor board chameleon port.
-	PortMotorBoard PortID = 19
-
-	// PortBluetoothHOGKeyboard is the PortID for the bluetooth HOG keyboard
-	// chameleon port.
-	PortBluetoothHOGKeyboard PortID = 20
-
-	// PortBluetoothHOGGamepad is the PortID for the bluetooth HOG gamepad
-	// chameleon port.
-	PortBluetoothHOGGamepad PortID = 21
-
-	// PortBluetoothHOGMouse is the PortID for the bluetooth HOG mouse
-	// chameleon port.
-	PortBluetoothHOGMouse PortID = 22
-
-	// PortBluetoothHOGCombo is the PortID for the bluetooth HOG combo
-	// chameleon port.
-	PortBluetoothHOGCombo PortID = 23
-
-	// PortBluetoothHOGJoystick is the PortID for the bluetooth HOG joystick
-	// chameleon port.
-	PortBluetoothHOGJoystick PortID = 24
-
-	// PortUSBPrinter is the PortID for the USB printer chameleon port.
-	PortUSBPrinter PortID = 25
-
-	// PortBluetoothA2DPSink is the PortID for the bluetooth A2DP sink
-	// chameleon port.
-	PortBluetoothA2DPSink PortID = 26
-
-	// PortBLEMouse is the PortID for the bluetooth LE mouse chameleon port.
-	PortBLEMouse PortID = 27
-
-	// PortBLEKeyboard is the PortID for the bluetooth LE keyboard chameleon
+	// PortTypeAnalogAudioLineIn is the PortType for an audio line-in chameleon
 	// port.
-	PortBLEKeyboard PortID = 28
+	PortTypeAnalogAudioLineIn PortType = "LineIn"
 
-	// PortBluetoothBase is the PortID for the bluetooth base chameleon port.
-	PortBluetoothBase PortID = 29
-
-	// PortBluetoothTester is the PortID for the bluetooth tester chameleon port.
-	PortBluetoothTester PortID = 30
-
-	// PortBLEPhone is the PortID for the bluetooth LE phone chameleon port.
-	PortBLEPhone PortID = 31
-
-	// PortBluetoothAudio is the PortID for the bluetooth audio chameleon port.
-	PortBluetoothAudio PortID = 32
-
-	// PortBLEFastPair is the PortID for the bluetooth LE fast pair chameleon
+	// PortTypeAnalogAudioLineOut is the PortType for an audio line-out chameleon
 	// port.
-	PortBLEFastPair PortID = 33
+	PortTypeAnalogAudioLineOut PortType = "LineOut"
+
+	// PortTypeUSBAudioIn is the PortType for a USB audio-in chameleon port.
+	PortTypeUSBAudioIn PortType = "USBIn"
+
+	// PortTypeUSBAudioOut is the PortType for a USB audio-out chameleon port.
+	PortTypeUSBAudioOut PortType = "USBOut"
+
+	// PortTypeUSBKeyboard is the PortType for a USB keyboard chameleon port.
+	PortTypeUSBKeyboard PortType = "USBKeyboard"
+
+	// PortTypeUSBTouch is the PortType for a USB touch chameleon port.
+	PortTypeUSBTouch PortType = "USBTouch"
+
+	// PortTypeBluetoothHIDKeyboard is the PortType for a bluetooth HID keyboard
+	// chameleon port.
+	PortTypeBluetoothHIDKeyboard PortType = "bluetooth_hid_keyboard"
+
+	// PortTypeBluetoothHIDGamepad is the PortType for a bluetooth HID gamepad
+	// chameleon port.
+	PortTypeBluetoothHIDGamepad PortType = "bluetooth_hid_gamepad"
+
+	// PortTypeBluetoothHIDMouse is the PortType for a bluetooth HID mouse
+	// chameleon port.
+	PortTypeBluetoothHIDMouse PortType = "bluetooth_hid_mouse"
+
+	// PortTypeBluetoothHIDCombo is the PortType for a bluetooth HID combo
+	// chameleon port.
+	PortTypeBluetoothHIDCombo PortType = "bluetooth_hid_combo"
+
+	// PortTypeBluetoothHIDJoystick is the PortType for a bluetooth HID joystick
+	//chameleon port.
+	PortTypeBluetoothHIDJoystick PortType = "bluetooth_hid_joystick"
+
+	// PortTypeAVSyncProbe is the PortType for an AV sync probe chameleon port.
+	PortTypeAVSyncProbe PortType = "avsync_probe"
+
+	// PortTypeAudioBoard is the PortType for an audio board chameleon port.
+	PortTypeAudioBoard PortType = "audio_board"
+
+	// PortTypeMotorBoard is the PortType for a motor board chameleon port.
+	PortTypeMotorBoard PortType = "motor_board"
+
+	// PortTypeBluetoothHOGKeyboard is the PortType for a bluetooth HOG keyboard
+	// chameleon port.
+	PortTypeBluetoothHOGKeyboard PortType = "bluetooth_hog_keyboard"
+
+	// PortTypeBluetoothHOGGamepad is the PortType for a bluetooth HOG gamepad
+	// chameleon port.
+	PortTypeBluetoothHOGGamepad PortType = "bluetooth_hog_gamepad"
+
+	// PortTypeBluetoothHOGMouse is the PortType for a bluetooth HOG mouse
+	// chameleon port.
+	PortTypeBluetoothHOGMouse PortType = "bluetooth_hog_mouse"
+
+	// PortTypeBluetoothHOGCombo is the PortType for a bluetooth HOG combo
+	// chameleon port.
+	PortTypeBluetoothHOGCombo PortType = "bluetooth_hog_combo"
+
+	// PortTypeBluetoothHOGJoystick is the PortType for a bluetooth HOG joystick
+	// chameleon port.
+	PortTypeBluetoothHOGJoystick PortType = "bluetooth_hog_joystick"
+
+	// PortTypeUSBPrinter is the PortType for a USB printer chameleon port.
+	PortTypeUSBPrinter PortType = "usb_printer"
+
+	// PortTypeBluetoothA2DPSink is the PortType for a bluetooth A2DP sink
+	// chameleon port.
+	PortTypeBluetoothA2DPSink PortType = "bluetooth_a2dp_sink"
+
+	// PortTypeBLEMouse is the PortType for a bluetooth LE mouse chameleon port.
+	PortTypeBLEMouse PortType = "ble_mouse"
+
+	// PortTypeBLEKeyboard is the PortType for a bluetooth LE keyboard chameleon
+	// port.
+	PortTypeBLEKeyboard PortType = "ble_keyboard"
+
+	// PortTypeBluetoothBase is the PortType for a bluetooth base chameleon port.
+	PortTypeBluetoothBase PortType = "bluetooth_base"
+
+	// PortTypeBluetoothTester is the PortType for a bluetooth tester chameleon
+	// port.
+	PortTypeBluetoothTester PortType = "bluetooth_tester"
+
+	// PortTypeBLEPhone is the PortType for a bluetooth LE phone chameleon port.
+	PortTypeBLEPhone PortType = "ble_phone"
+
+	// PortTypeBluetoothAudio is the PortType for a bluetooth audio chameleon
+	// port.
+	PortTypeBluetoothAudio PortType = "bluetooth_audio"
+
+	// PortTypeBLEFastPair is the PortType for a bluetooth LE fast pair chameleon
+	// port.
+	PortTypeBLEFastPair PortType = "ble_fast_pair"
 )
+
+// String returns this PortType as a string.
+func (p PortType) String() string {
+	return string(p)
+}
+
+// PortID is an id of a chameleon port.
+type PortID int
 
 // Int returns this PortID as an int.
 func (p PortID) Int() int {
 	return int(p)
+}
+
+// chameleonV2PortIDToPortTypeMap is a backup map of PortID to PortType for
+// chameleon flows that do not correctly support the "GetConnectorType" XMLRPC
+// method.
+//
+// This is based on the static mapping used in chameleon V2, and is not
+// accurate for chameleon V3 devices. However, it is expected that all
+// chameleon V3 devices should support GetConnectorType for all PortID values so
+// this would not be used with a chameleon V3 device.
+var chameleonV2PortIDToPortTypeMap = map[PortID]PortType{
+	1:  PortTypeDP,
+	2:  PortTypeDP,
+	3:  PortTypeHDMI,
+	4:  PortTypeVGA,
+	5:  PortTypeMIC,
+	6:  PortTypeAnalogAudioLineIn,
+	7:  PortTypeAnalogAudioLineOut,
+	8:  PortTypeUSBAudioIn,
+	9:  PortTypeUSBAudioOut,
+	10: PortTypeUSBKeyboard,
+	11: PortTypeUSBTouch,
+	12: PortTypeBluetoothHIDKeyboard,
+	13: PortTypeBluetoothHIDGamepad,
+	14: PortTypeBluetoothHIDMouse,
+	15: PortTypeBluetoothHIDCombo,
+	16: PortTypeBluetoothHIDJoystick,
+	17: PortTypeAVSyncProbe,
+	18: PortTypeAudioBoard,
+	19: PortTypeMotorBoard,
+	20: PortTypeBluetoothHOGKeyboard,
+	21: PortTypeBluetoothHOGGamepad,
+	22: PortTypeBluetoothHOGMouse,
+	23: PortTypeBluetoothHOGCombo,
+	24: PortTypeBluetoothHOGJoystick,
+	25: PortTypeUSBPrinter,
+	26: PortTypeBluetoothA2DPSink,
+	27: PortTypeBLEMouse,
+	28: PortTypeBLEKeyboard,
+	29: PortTypeBluetoothBase,
+	30: PortTypeBluetoothTester,
+	31: PortTypeBLEPhone,
+	32: PortTypeBluetoothAudio,
+	33: PortTypeBLEFastPair,
 }
 
 // IntsToPortIDs returns an int array as a PortID array.
