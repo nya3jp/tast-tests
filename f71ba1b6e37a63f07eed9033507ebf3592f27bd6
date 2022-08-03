@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f77a76_c5bb6a94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T16:11:42Z",
+      "side": 1,
+      "message": "The failure on strongbad-cq doesn\u0027t seem to be related to this change, but b/241113064.\n",
+      "revId": "f71ba1b6e37a63f07eed9033507ebf3592f27bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
