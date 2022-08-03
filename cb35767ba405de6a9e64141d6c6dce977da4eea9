@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc8576a_cdc60038",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprintertests/printtest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-03T19:46:20Z",
+      "side": 1,
+      "message": "From my understanding of this CL, it looks like RunPrintTest() will ignore/overwrite the PrinterName field if a caller populates it, but RunPrintJob() requires the field to be populated by the caller. So these two functions take the same struct type as a parameter, but have different opinions about what its members mean. Wouldn\u0027t it be cleaner to take PrinterName out of this struct and make the printer name a separate parameter to RunPrintJob?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 12
+      },
+      "revId": "cb35767ba405de6a9e64141d6c6dce977da4eea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
