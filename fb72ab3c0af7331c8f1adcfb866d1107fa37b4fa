@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "173681a1_1c5485df",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T00:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ef22c73_8f327916",
+      "range": {
+        "startLine": 110,
+        "startChar": 67,
+        "endLine": 110,
+        "endChar": 98
+      },
+      "revId": "fb72ab3c0af7331c8f1adcfb866d1107fa37b4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89510571_b9192ebf",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-01T13:39:14Z",
       "side": 1,
       "message": "could you pass opts here?",
+      "range": {
+        "startLine": 113,
+        "startChar": 42,
+        "endLine": 113,
+        "endChar": 68
+      },
+      "revId": "fb72ab3c0af7331c8f1adcfb866d1107fa37b4fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c46d62_f88e532f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T00:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89510571_b9192ebf",
       "range": {
         "startLine": 113,
         "startChar": 42,
