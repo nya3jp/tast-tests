@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "42b2ce8d_56331f38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T15:50:06Z",
+      "side": 1,
+      "message": "nit: Remove the `*` and just refer to `arc.PIPRoundedCornersUnderlay`, because the `vm` variant is already disabled on VM boards.",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "7c827f32fd38f1ede9a81b26b439009d3a8a9245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0bcc9c49_f0e316b4",
@@ -49,6 +72,23 @@
       "side": 1,
       "message": "Sorry I had missed it, my bad.",
       "parentUuid": "f035651d_ab86b747",
+      "revId": "7c827f32fd38f1ede9a81b26b439009d3a8a9245",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e364e660_18a30c36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-03T15:50:06Z",
+      "side": 1,
+      "message": "lgtm with nit",
       "revId": "7c827f32fd38f1ede9a81b26b439009d3a8a9245",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
