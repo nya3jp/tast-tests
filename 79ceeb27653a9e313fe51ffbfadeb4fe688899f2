@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74341bf8_1ea5637d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-03T06:49:23Z",
+      "side": 1,
+      "message": "Note that you could also use browserfixt.SetUpWithNewChrome and just close the browser afterwards, instead of special casing the lacros options. Up to you if you want to do this",
+      "revId": "79ceeb27653a9e313fe51ffbfadeb4fe688899f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6600123_1012ce7d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-03T06:49:23Z",
+      "side": 1,
+      "message": "Not sure if it needs to take traces for ash-chrome, but I guess that would be more useful since that\u0027s what it\u0027s measuring the performance of.",
+      "revId": "79ceeb27653a9e313fe51ffbfadeb4fe688899f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
