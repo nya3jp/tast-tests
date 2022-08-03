@@ -16,6 +16,23 @@
       "message": "+2 for Tast Review",
       "revId": "e995fe7e0a1b9ae9d5c39f0ed4968c0843b1bba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad9a341_d1f78e2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355245
+      },
+      "writtenOn": "2022-08-03T00:29:34Z",
+      "side": 1,
+      "message": "If clicking a button actually makes a configuration change, it sounds like a framework bug. Could you file a bug and assign to me? (I had a similar bug recently and fixed in crrev/c/3752273, but this is probably different)",
+      "revId": "e995fe7e0a1b9ae9d5c39f0ed4968c0843b1bba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
