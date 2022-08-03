@@ -63,6 +63,30 @@
       },
       "revId": "63dcccd9c7284219037233dda3ecba3d2ffb73d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ad559b0_32705936",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/cws/cws.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T07:28:51Z",
+      "side": 1,
+      "message": "Let me resolve this comment as it seems to have been stale (for 5+ months) and log a new one if the problem exists.",
+      "parentUuid": "cd756364_5d484759",
+      "range": {
+        "startLine": 34,
+        "startChar": 110,
+        "endLine": 34,
+        "endChar": 132
+      },
+      "revId": "63dcccd9c7284219037233dda3ecba3d2ffb73d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
