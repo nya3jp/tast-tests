@@ -106,4 +106,5 @@ const (
 	SettingPodDarkTheme         SettingPod = "Toggle Dark theme"
 	SettingPodDarkThemeSettings SettingPod = "dark theme settings"
 	SettingPodCast              SettingPod = "cast"
+	SettingPodCameraFraming     SettingPod = "Camera framing"
 )
