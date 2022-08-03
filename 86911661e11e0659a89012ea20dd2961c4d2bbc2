@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbcc5d65_f6933222",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-03T22:38:32Z",
+      "side": 1,
+      "message": "The CQ failures may have been affected by an unrelated build issue (b/241113064) that is just fixed. I\u0027ll rebase it onto the ToT and rerun the CQ tests.",
+      "revId": "86911661e11e0659a89012ea20dd2961c4d2bbc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
