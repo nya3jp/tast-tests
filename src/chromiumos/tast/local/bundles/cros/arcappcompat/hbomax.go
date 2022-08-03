@@ -48,6 +48,58 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("eve")),
 		Params: []testing.Param{{
+			Name: "clamshell_mode_default",
+			Val: testutil.TestParams{
+				LaunchTests:      clamshellLaunchForHbomax,
+				CommonTests:      testutil.ClamshellCommonTests,
+				AppSpecificTests: clamshellAppSpecificTestsForHbomax,
+			},
+			ExtraAttr:         []string{"appcompat_default"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on tablet only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+			Pre:               pre.AppCompatBootedUsingTestAccountPool,
+		}, {
+			Name: "tablet_mode_default",
+			Val: testutil.TestParams{
+				LaunchTests:      touchviewLaunchForHbomax,
+				CommonTests:      testutil.TouchviewCommonTests,
+				AppSpecificTests: touchviewAppSpecificTestsForHbomax,
+			},
+			ExtraAttr:         []string{"appcompat_default"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on clamshell only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+		}, {
+			Name: "vm_clamshell_mode_default",
+			Val: testutil.TestParams{
+				LaunchTests:      clamshellLaunchForHbomax,
+				CommonTests:      testutil.ClamshellCommonTests,
+				AppSpecificTests: clamshellAppSpecificTestsForHbomax,
+			},
+			ExtraAttr:         []string{"appcompat_default"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on tablet only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
+			Pre:               pre.AppCompatBootedUsingTestAccountPool,
+		}, {
+			Name: "vm_tablet_mode_default",
+			Val: testutil.TestParams{
+				LaunchTests:      touchviewLaunchForHbomax,
+				CommonTests:      testutil.TouchviewCommonTests,
+				AppSpecificTests: touchviewAppSpecificTestsForHbomax,
+			},
+			ExtraAttr:         []string{"appcompat_default"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on clamshell only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
+		}, {
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForHbomax,
@@ -108,6 +160,7 @@ func Hbomax(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.hbo.hbonow"
 		appActivity = ".MainActivity"
 	)
+
 	testSet := s.Param().(testutil.TestParams)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
 }

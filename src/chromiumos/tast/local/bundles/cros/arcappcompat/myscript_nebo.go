@@ -38,44 +38,48 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.SkipOnModel("careena")),
 		Params: []testing.Param{{
-			Name: "clamshell_mode",
+			Name: "clamshell_mode_default",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForMyscriptNebo,
 				CommonTests: testutil.ClamshellCommonTests,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedForMyscriptNebo,
 		}, {
-			Name: "tablet_mode",
+			Name: "tablet_mode_default",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForMyscriptNebo,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeForMyscriptNebo,
 		}, {
-			Name: "vm_clamshell_mode",
+			Name: "vm_clamshell_mode_default",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForMyscriptNebo,
 				CommonTests: testutil.ClamshellCommonTests,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedForMyscriptNebo,
 		}, {
-			Name: "vm_tablet_mode",
+			Name: "vm_tablet_mode_default",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForMyscriptNebo,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.

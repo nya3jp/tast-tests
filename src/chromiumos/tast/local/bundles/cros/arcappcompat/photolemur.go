@@ -37,44 +37,48 @@ func init() {
 		Attr:         []string{"group:appcompat"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
-			Name: "clamshell_mode",
+			Name: "clamshell_mode_default",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForPhotolemur,
 				CommonTests: testutil.ClamshellCommonTests,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p", "no_arc_x86", "lacros"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedForPhotolemur,
 		}, {
-			Name: "tablet_mode",
+			Name: "tablet_mode_default",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForPhotolemur,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p", "no_arc_x86", "lacros"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
 			Pre:               pre.AppCompatBootedInTabletModeForPhotolemur,
 		}, {
-			Name: "vm_clamshell_mode",
+			Name: "vm_clamshell_mode_default",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForPhotolemur,
 				CommonTests: testutil.ClamshellCommonTests,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm", "no_arc_x86", "lacros"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
 			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel(testutil.TabletOnlyModels...)),
 			Pre:               pre.AppCompatBootedForPhotolemur,
 		}, {
-			Name: "vm_tablet_mode",
+			Name: "vm_tablet_mode_default",
 			Val: testutil.TestParams{
 				LaunchTests: touchviewLaunchForPhotolemur,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm", "no_arc_x86", "lacros"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.

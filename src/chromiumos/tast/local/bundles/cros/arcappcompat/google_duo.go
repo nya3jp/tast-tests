@@ -37,6 +37,54 @@ func init() {
 		Attr:         []string{"group:appcompat", "appcompat_smoke", "appcompat_top_apps"},
 		SoftwareDeps: []string{"chrome"},
 		Params: []testing.Param{{
+			Name: "clamshell_mode_default",
+			Val: testutil.TestParams{
+				LaunchTests: clamshellLaunchForGoogleDuo,
+				CommonTests: testutil.ClamshellCommonTests,
+			},
+			ExtraAttr:         []string{"appcompat_default"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on tablet only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("dru"), hwdep.SkipOnModel("krane")),
+			Pre:               pre.AppCompatBooted,
+		}, {
+			Name: "tablet_mode_default",
+			Val: testutil.TestParams{
+				LaunchTests: touchviewLaunchForGoogleDuo,
+				CommonTests: testutil.TouchviewCommonTests,
+			},
+			ExtraAttr:         []string{"appcompat_default"},
+			ExtraSoftwareDeps: []string{"android_p"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on clamshell only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			Pre:               pre.AppCompatBootedInTabletMode,
+		}, {
+			Name: "vm_clamshell_mode_default",
+			Val: testutil.TestParams{
+				LaunchTests: clamshellLaunchForGoogleDuo,
+				CommonTests: testutil.ClamshellCommonTests,
+			},
+			ExtraAttr:         []string{"appcompat_default"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on tablet only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.SkipOnModel("dru"), hwdep.SkipOnModel("krane")),
+			Pre:               pre.AppCompatBooted,
+		}, {
+			Name: "vm_tablet_mode_default",
+			Val: testutil.TestParams{
+				LaunchTests: touchviewLaunchForGoogleDuo,
+				CommonTests: testutil.TouchviewCommonTests,
+			},
+			ExtraAttr:         []string{"appcompat_default"},
+			ExtraSoftwareDeps: []string{"android_vm"},
+			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
+			// Skip on clamshell only models.
+			ExtraHardwareDeps: hwdep.D(hwdep.TouchScreen(), hwdep.SkipOnModel(testutil.ClamshellOnlyModels...)),
+			Pre:               pre.AppCompatBootedInTabletMode,
+		}, {
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests: clamshellLaunchForGoogleDuo,

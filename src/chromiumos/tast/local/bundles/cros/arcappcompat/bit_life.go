@@ -42,6 +42,7 @@ func init() {
 				LaunchTests: clamshellLaunchForBitLife,
 				CommonTests: testutil.ClamshellCommonTests,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
@@ -53,6 +54,7 @@ func init() {
 				LaunchTests: touchviewLaunchForBitLife,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_p"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
@@ -64,6 +66,7 @@ func init() {
 				LaunchTests: clamshellLaunchForBitLife,
 				CommonTests: testutil.ClamshellCommonTests,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on tablet only models.
@@ -75,6 +78,7 @@ func init() {
 				LaunchTests: touchviewLaunchForBitLife,
 				CommonTests: testutil.TouchviewCommonTests,
 			},
+			ExtraAttr:         []string{"appcompat_default"},
 			ExtraSoftwareDeps: []string{"android_vm"},
 			// TODO(b/189704585): Remove hwdep.SkipOnModel once the solution is found.
 			// Skip on clamshell only models.
