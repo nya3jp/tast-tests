@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5bc2130_4825c92b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-03T21:23:26Z",
+      "side": 1,
+      "message": "Done. Added close chrome.",
+      "parentUuid": "c481d406_ca438abb",
+      "revId": "16bf2be8f34a8c7f68a131d1ba5de6cae25585ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "427de9b8_531bd2b8",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-08-03T18:43:35Z",
       "side": 1,
       "message": "any reason this needs to be `*statusResult` instead of `statusResult`?",
+      "range": {
+        "startLine": 105,
+        "startChar": 37,
+        "endLine": 105,
+        "endChar": 50
+      },
+      "revId": "16bf2be8f34a8c7f68a131d1ba5de6cae25585ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0627e08_803ab493",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/utils/cros_healthd.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-03T21:23:26Z",
+      "side": 1,
+      "message": "Using `statusResult` without `*` will give a compile error of `cannot use nil as statusResult value in return statement` in line `109`, `135`, `143`.",
+      "parentUuid": "427de9b8_531bd2b8",
       "range": {
         "startLine": 105,
         "startChar": 37,
