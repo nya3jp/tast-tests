@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abd56a0e_b5d89f86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-03T01:54:50Z",
+      "side": 1,
+      "message": "See e.g. https://crsrc.org/o/src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/ui/overview_perf.go?q\u003df:ui%20f:tast%20overview%20perf for an example of how to do this without needing this new SetUpWithNewChromeAtURL function",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "301298c8_1bb0a400",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
         "patchSetId": 2
@@ -139,6 +156,24 @@
       "writtenOn": "2022-08-03T00:49:07Z",
       "side": 1,
       "message": "I\u0027d prefer not to endorse making tests rely on KeepAlive.",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81a85abe_f0a29a45",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-03T01:54:50Z",
+      "side": 1,
+      "message": "We should not use keepalive here.",
+      "parentUuid": "48a3094e_caee2b75",
       "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
