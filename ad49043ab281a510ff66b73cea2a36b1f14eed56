@@ -63,6 +63,30 @@
       },
       "revId": "ad49043ab281a510ff66b73cea2a36b1f14eed56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "608381ca_551f6528",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/routing/routing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-03T07:32:53Z",
+      "side": 1,
+      "message": "My bad. This code works, because `ctx, _ \u003d ctxutil.Shorten(ctx, 5*time.Second)` creates a new ctx and the old one was passed into the defer function registered earlier.\n\nHowever, it is not good for readability.\ncleanupCtx makes clearer that it has larger timeout, and should be used in any further defer functions if you do not want to create it for each cleanup.\n\n2. cancel is not a must, just a common practice. So I used to copy and paste it everywhere.",
+      "parentUuid": "1745bfaf_1a1f3602",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 45
+      },
+      "revId": "ad49043ab281a510ff66b73cea2a36b1f14eed56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
