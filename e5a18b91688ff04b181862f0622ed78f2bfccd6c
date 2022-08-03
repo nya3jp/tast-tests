@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c70d54_d213ff99",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-03T21:11:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "74e6ba34_d3a5e34f",
+      "range": {
+        "startLine": 22,
+        "startChar": 10,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39b9d9c0_5cb72022",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-03T19:56:51Z",
       "side": 1,
       "message": "I think a more appropriate place to do this fixup would be in chameleond itself for v2, otherwise we\u0027ll keep such hacks in every client forever.",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 24,
+        "endChar": 42
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22946210_c9b02065",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-03T21:11:40Z",
+      "side": 1,
+      "message": "I agree, but we need this client API usable ASAP. I\u0027m aiming to fork v2 and refactoring it for BT usage specifically so I\u0027ll be able to fix it then. For now, we\u0027re working with what we have available.",
+      "parentUuid": "39b9d9c0_5cb72022",
       "range": {
         "startLine": 23,
         "startChar": 17,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87a8620a_28b5845d",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-03T21:11:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9af9f3a7_ea0eb692",
+      "range": {
+        "startLine": 266,
+        "startChar": 4,
+        "endLine": 266,
+        "endChar": 22
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2282912_58c7d708",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-03T19:56:51Z",
       "side": 1,
       "message": "Wouldn\u0027t all of these results have the same type? why do you need a mapping then?",
+      "range": {
+        "startLine": 604,
+        "startChar": 72,
+        "endLine": 605,
+        "endChar": 27
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1986b6ac_409bbebd",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-03T21:11:40Z",
+      "side": 1,
+      "message": "Not sure I follow, each PortID can map to a different PortType. Testing have proven this to be true, and also I have it log the mapping to the context log when it is determined to make it easy to validate when debugging tests.",
+      "parentUuid": "a2282912_58c7d708",
       "range": {
         "startLine": 604,
         "startChar": 72,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d5515d_9177bd93",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-03T21:11:40Z",
+      "side": 1,
+      "message": "I see this functionality as integral enough to include in the base client API. The comment is there to prevent confusion, and every other method also notes whether it is one of the RPC methods as well.\n\nI don\u0027t want to force users to do the same logic over and over again. That\u0027s what functions are for, and having it here done correctly once with nice error handling is simply more efficient for the user.\n\nIMO the best solution is to have something like this directly within the Chameleon API, but that is currently not there so we have this. We can always update this later if that changes.",
+      "parentUuid": "e0cad8ed_454067eb",
+      "range": {
+        "startLine": 607,
+        "startChar": 4,
+        "endLine": 607,
+        "endChar": 51
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67993c27_07c55a99",
@@ -129,6 +249,30 @@
       "writtenOn": "2022-08-03T19:56:51Z",
       "side": 1,
       "message": "This seems superfluous, why can\u0027t the user of the api just call `output,err \u003d FetchSupportedPortIDsByType(PortType)` then get `output[index]`?",
+      "range": {
+        "startLine": 629,
+        "startChar": 1,
+        "endLine": 629,
+        "endChar": 27
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62e6c88_ae9021de",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-03T21:11:40Z",
+      "side": 1,
+      "message": "Look at the implementation. It adds extra error handling with a nice message. I\u0027ve already found this messaging to be helpful in my testing of different types of chameleond devices when trying to use ports that are not available on a device. Chameleond has really unhelpful and cryptic error messaging and where I can alleviate this pain client-side I\u0027ll do it.\n\nIt would be repetitive and unnecessary to make users do that ever time, so I made FetchSupportedPortIDByType to make it easier.",
+      "parentUuid": "67993c27_07c55a99",
       "range": {
         "startLine": 629,
         "startChar": 1,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56c67de1_25be0ba9",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-03T21:11:40Z",
+      "side": 1,
+      "message": "In Go there isn\u0027t enums directly it\u0027s more like a type shortcut. Any string can be made a PortType. The constants are technically just stored known values as separate variables and have no bearing on the usage of PortType itself.\n\nThe benefit of having a specific string type here though is to make it easier to track and type check when a PortType, whatever its actual string value, is required. In most cases one of the constants could be used when tests need to specify a type, making it clear to the user what options they should expect and not requiring the same string declaration everywhere.",
+      "parentUuid": "d04a898c_bac22f15",
+      "range": {
+        "startLine": 831,
+        "startChar": 8,
+        "endLine": 831,
+        "endChar": 30
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fd3e04e_5782d49b",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "571968ee_b94e7aa6",
+        "filename": "src/chromiumos/tast/common/chameleon/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-03T21:11:40Z",
+      "side": 1,
+      "message": "Unless you can provide me with a different option to identify ports or you can update Chameleon v2 and v3 to do this differently, this is the best option I\u0027ve seen thus far. Tests require usage of specific ports, so we have to have some way to specify them in a test. With these string constants we can use the API to identify the port id of the target port, and the port id is required for many API calls.\n\nThese are not manual tests that a user can choose a port based off of random string output during the test. We must have a predictable port identification method. These strings as they are cover all the results of GetConnectorType that I could find both in my testing and by reviewing the Chameleon codebase. In addition, the PortType type can accept any string so anything can really be used in a test (though I\u0027d prefer test writers just add more constants if one is missing).",
+      "parentUuid": "8fd3e04e_5782d49b",
+      "range": {
+        "startLine": 20,
+        "startChar": 23,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2e9fb10_b456963f",
@@ -198,6 +390,30 @@
       "writtenOn": "2022-08-03T19:56:51Z",
       "side": 1,
       "message": "Is this related to the CL?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 58
+      },
+      "revId": "e5a18b91688ff04b181862f0622ed78f2bfccd6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef40e616_e0ea8973",
+        "filename": "src/chromiumos/tast/common/xmlrpc/call_builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-03T21:11:40Z",
+      "side": 1,
+      "message": "I added it at the same time to allow easier error message writing in one of the functions. I didn\u0027t feel the need to separate it out as it was so small and I just created CallBuilder for this API in this same CL chain.",
+      "parentUuid": "b2e9fb10_b456963f",
       "range": {
         "startLine": 58,
         "startChar": 0,
