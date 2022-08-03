@@ -15,7 +15,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
-	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -121,12 +120,9 @@ func RecentFilesAppear(ctx context.Context, s *testing.State) {
 				s.Fatal("Failed to prepare test file: ", err)
 			}
 
-			if err := files.OpenDir(subtest.dirName, filesapp.FilesTitlePrefix+subtest.dirName)(ctx); err != nil {
-				s.Fatal("Failed to open the directory: ", err)
-			}
-
-			if err := editImage(ctx, tconn, files, testImage); err != nil {
-				s.Fatal("Failed to edit the file: ", err)
+			testing.ContextLog(ctx, "Change file modification date to the now time")
+			if err := changeFileTime(ctx, tconn, subtest.dirPath, testImage); err != nil {
+				s.Fatal("Failed to change the file modification date: ", err)
 			}
 
 			testing.ContextLog(ctx, "Refresh until file exists in Recent")
@@ -152,13 +148,15 @@ func RecentFilesAppear(ctx context.Context, s *testing.State) {
 	}
 }
 
+// prepareFile creates a new file and change its modification date to 1 year
+// ago, so it won't be appeared in the Recent view.
 func prepareFile(ctx context.Context, ui *uiauto.Context, files *filesapp.FilesApp, filename, folderPath string) error {
 	aYearBefore := time.Now().Local().AddDate(-1, 0, 0)
-	formatedTime := aYearBefore.Format("200601021504")
+	formattedTime := aYearBefore.Format("200601021504")
 
 	// Change the modified date to ensure the file is not shown in Recent tab.
 	filePath := filepath.Join(folderPath, filename)
-	if _, err := testexec.CommandContext(ctx, "touch", "-t", formatedTime, filePath).Output(testexec.DumpLogOnError); err != nil {
+	if _, err := testexec.CommandContext(ctx, "touch", "-t", formattedTime, filePath).Output(testexec.DumpLogOnError); err != nil {
 		return errors.Wrap(err, "failed to run command to change edit date")
 	}
 
@@ -169,37 +167,12 @@ func prepareFile(ctx context.Context, ui *uiauto.Context, files *filesapp.FilesA
 	)(ctx)
 }
 
-func editImage(ctx context.Context, tconn *chrome.TestConn, files *filesapp.FilesApp, filename string) error {
-	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
-	defer cancel()
-
-	ui := uiauto.New(tconn)
-	gallery := nodewith.NameStartingWith(apps.Gallery.Name).HasClass("BrowserFrame")
-	saveBtn := nodewith.Name("Save").Role(role.Button)
-
-	if err := uiauto.Combine("open image in Gallery",
-		files.OpenFile(filename),
-		ui.WaitUntilExists(gallery),
-	)(ctx); err != nil {
-		return err
-	}
-	defer func(ctx context.Context) {
-		if err := apps.Close(ctx, tconn, apps.Gallery.ID); err != nil {
-			testing.ContextLog(ctx, "Failed to close gallery: ", err)
-		}
-		if err := ui.WithTimeout(5 * time.Second).WaitUntilGone(gallery)(ctx); err != nil {
-			testing.ContextLog(ctx, "Failed to wait until gallery gone: ", err)
-		}
-	}(cleanupCtx)
-
-	return uiauto.Combine("edit image in Gallery",
-		ui.LeftClick(nodewith.Name("Crop & rotate").Role(role.ToggleButton)),
-		ui.LeftClick(nodewith.Name("16:9").Role(role.Button)),
-		ui.LeftClick(nodewith.Name("Done").Role(role.Button)),
-		ui.LeftClick(saveBtn),
-		ui.WaitUntilGone(saveBtn),
-	)(ctx)
+// changeFileTime updated the file modification date to the now time so it can
+// be appeared in the Recent view.
+func changeFileTime(ctx context.Context, tconn *chrome.TestConn, folderPath, filename string) error {
+	filePath := filepath.Join(folderPath, filename)
+	nowTime := time.Now().Local()
+	return os.Chtimes(filePath, nowTime, nowTime)
 }
 
 // refreshRecent refresh the recent page by switching between directories.
@@ -211,8 +184,8 @@ func refreshRecent(files *filesapp.FilesApp) uiauto.Action {
 }
 
 // goToRecentImages navigate to the recent image view by:
-//  * opening the Images menu when flag is off.
-//  * opening the Recent menu and clicking the Images filter button when flag is on.
+//   - opening the Images menu when flag is off.
+//   - opening the Recent menu and clicking the Images filter button when flag is on.
 func goToRecentImages(files *filesapp.FilesApp, isFlagOn bool) uiauto.Action {
 	if isFlagOn {
 		return uiauto.Combine("go to recent images by filter button",
