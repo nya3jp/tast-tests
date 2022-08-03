@@ -40,7 +40,7 @@ func ECPowerG3(ctx context.Context, s *testing.State) {
 	} else {
 		s.Log("Long press power button")
 		if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.DurLongPress); err != nil {
-			s.Fatal("Failed to power on DUT with long press of the power button: ", err)
+			s.Fatal("Failed to power off DUT with long press of the power button: ", err)
 		}
 	}
 
