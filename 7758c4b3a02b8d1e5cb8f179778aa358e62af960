@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeacd578_b4d23358",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-08-03T19:06:04Z",
+      "side": 1,
+      "message": "Nit: inline err check.",
+      "range": {
+        "startLine": 722,
+        "startChar": 0,
+        "endLine": 724,
+        "endChar": 2
+      },
+      "revId": "7758c4b3a02b8d1e5cb8f179778aa358e62af960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5063eb1_8dc4795c",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-08-03T19:06:04Z",
+      "side": 1,
+      "message": "Is this one-line function really necessary? Could we just use the ctxutil inline?",
+      "range": {
+        "startLine": 744,
+        "startChar": 17,
+        "endLine": 744,
+        "endChar": 43
+      },
+      "revId": "7758c4b3a02b8d1e5cb8f179778aa358e62af960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5575f98_3a9c1305",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-08-03T19:06:04Z",
+      "side": 1,
+      "message": "Nit: grammar.",
+      "range": {
+        "startLine": 745,
+        "startChar": 4,
+        "endLine": 745,
+        "endChar": 32
+      },
+      "revId": "7758c4b3a02b8d1e5cb8f179778aa358e62af960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ffe20d8_e118d21d",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1360284
+      },
+      "writtenOn": "2022-08-03T19:06:04Z",
+      "side": 1,
+      "message": "Nit: inline err check.",
+      "range": {
+        "startLine": 777,
+        "startChar": 1,
+        "endLine": 779,
+        "endChar": 2
+      },
+      "revId": "7758c4b3a02b8d1e5cb8f179778aa358e62af960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
