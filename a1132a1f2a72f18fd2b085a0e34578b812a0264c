@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ead2f97_6a060b59",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/shill_captive_portal_http.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-03T17:20:15Z",
+      "side": 1,
+      "message": "Resolving this as much of the conversation has moved to the next CL in the chain",
+      "parentUuid": "3be249e7_2531252b",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 1
+      },
+      "revId": "a1132a1f2a72f18fd2b085a0e34578b812a0264c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd37083d_00c8596b",
