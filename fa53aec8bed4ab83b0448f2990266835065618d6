@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1c43dc7_0ccb4fc3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_on.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-08-03T20:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76ecbe81_62670bd9",
+      "range": {
+        "startLine": 86,
+        "startChar": 52,
+        "endLine": 86,
+        "endChar": 69
+      },
+      "revId": "fa53aec8bed4ab83b0448f2990266835065618d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53121d19_9cf35a6e",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-08-03T18:48:27Z",
       "side": 1,
       "message": "This line is unnecessary as `cleanupCtx` will be immediately re-assigned in the next line",
+      "revId": "fa53aec8bed4ab83b0448f2990266835065618d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c97a98a_b323f8b6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_on.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-08-03T20:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53121d19_9cf35a6e",
       "revId": "fa53aec8bed4ab83b0448f2990266835065618d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5402e4ce_f5cb0d61",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_on.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-08-03T20:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eb0592b_6ee04488",
+      "revId": "fa53aec8bed4ab83b0448f2990266835065618d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0629804f_41a51f5f",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7060e2a2_73efcf63",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_on.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-08-03T20:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0629804f_41a51f5f",
+      "revId": "fa53aec8bed4ab83b0448f2990266835065618d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acb1bfdf_1150e8b7",
@@ -88,6 +166,30 @@
       "writtenOn": "2022-08-03T18:48:27Z",
       "side": 1,
       "message": "this will just get run immediately anyway, can\u0027t we just replace `ctx` with `cleanupCtx` and remove the deferred func wrapper?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 15
+      },
+      "revId": "fa53aec8bed4ab83b0448f2990266835065618d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08484c73_7e1d2020",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_on.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-08-03T20:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acb1bfdf_1150e8b7",
       "range": {
         "startLine": 169,
         "startChar": 0,
