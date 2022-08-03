@@ -82,7 +82,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
 		Timeout: 10 * time.Minute,
-		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
+		Vars:    []string{"arcappcompat.gaiaPoolDefault", "testutil.suite"},
 	})
 }
 
@@ -93,8 +93,14 @@ func OneTwoThreeNumbers(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.rvappstudios.numbers123.toddler.counting.tracing"
 		appActivity = "com.unity3d.player.UnityPlayerActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+	s.Log("suiteInfo: ", suiteInfo)
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForOneTwoThreeNumbers verifies OneTwoThreeNumbers reached main activity page of the app.

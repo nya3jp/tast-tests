@@ -54,7 +54,8 @@ func init() {
 			Name: "clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForAmazonPrimeVideo,
-				CommonTests:      testutil.ClamshellSmokeTests,
+				SmokeTests:       testutil.ClamshellSmokeTests,
+				CommonTests:      testutil.TouchviewCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForAmazonPrimeVideo,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -66,7 +67,8 @@ func init() {
 			Name: "tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForAmazonPrimeVideo,
-				CommonTests:      testutil.TouchviewSmokeTests,
+				SmokeTests:       testutil.TouchviewSmokeTests,
+				CommonTests:      testutil.TouchviewCommonTests,
 				AppSpecificTests: touchviewAppSpecificTestsForAmazonPrimeVideo,
 			},
 			ExtraSoftwareDeps: []string{"android_p"},
@@ -78,7 +80,8 @@ func init() {
 			Name: "vm_clamshell_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      clamshellLaunchForAmazonPrimeVideo,
-				CommonTests:      testutil.ClamshellSmokeTests,
+				SmokeTests:       testutil.ClamshellSmokeTests,
+				CommonTests:      testutil.ClamshellCommonTests,
 				AppSpecificTests: clamshellAppSpecificTestsForAmazonPrimeVideo,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -90,7 +93,8 @@ func init() {
 			Name: "vm_tablet_mode",
 			Val: testutil.TestParams{
 				LaunchTests:      touchviewLaunchForAmazonPrimeVideo,
-				CommonTests:      testutil.TouchviewSmokeTests,
+				SmokeTests:       testutil.TouchviewSmokeTests,
+				CommonTests:      testutil.TouchviewCommonTests,
 				AppSpecificTests: touchviewAppSpecificTestsForAmazonPrimeVideo,
 			},
 			ExtraSoftwareDeps: []string{"android_vm"},
@@ -100,7 +104,7 @@ func init() {
 			Pre:               pre.AppCompatBootedInTabletModeUsingTestAccountPool,
 		}},
 		Timeout: 30 * time.Minute,
-		Vars:    []string{"arcappcompat.gaiaPoolDefault"},
+		Vars:    []string{"arcappcompat.gaiaPoolDefault", "testutil.suite"},
 		VarDeps: []string{"arcappcompat.AmazonPrimeVideo.username", "arcappcompat.AmazonPrimeVideo.password"},
 	})
 }
@@ -112,8 +116,14 @@ func AmazonPrimeVideo(ctx context.Context, s *testing.State) {
 		appPkgName  = "com.amazon.avod.thirdpartyclient"
 		appActivity = ".LauncherActivity"
 	)
+	suiteInfo, err := s.Var("testutil.suite")
+	if err != true {
+		s.Log("Failed to get suiteInfo: ", err)
+	}
+	s.Log("suiteInfo: ", suiteInfo)
+
 	testSet := s.Param().(testutil.TestParams)
-	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
+	testutil.RunTestCases(ctx, s, appPkgName, appActivity, suiteInfo, testSet)
 }
 
 // launchAppForAmazonPrimeVideo verifies AmazonPrimeVideo is logged in and
