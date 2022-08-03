@@ -83,6 +83,12 @@ func NewTestEnv() *testEnv {
 
 // SetUp configures shill and brings up the base network.
 func (e *testEnv) SetUp(ctx context.Context) error {
+	// Reserve some time for cleanup on failures. This function will start some
+	// processes which are supposed to be kept running so do not defer the
+	// cancel() here.
+	cleanupCtx := ctx
+	ctx, _ = ctxutil.Shorten(ctx, 5*time.Second)
+
 	success := false
 	defer func(ctx context.Context) {
 		if success {
@@ -91,10 +97,7 @@ func (e *testEnv) SetUp(ctx context.Context) error {
 		if err := e.TearDown(ctx); err != nil {
 			testing.ContextLog(ctx, "Failed to tear down routing test env: ", err)
 		}
-	}(ctx)
-
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
-	defer cancel()
+	}(cleanupCtx)
 
 	var err error
 	e.Manager, err = shill.NewManager(ctx)
