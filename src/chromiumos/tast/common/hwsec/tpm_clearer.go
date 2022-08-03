@@ -35,6 +35,8 @@ var SystemStateFiles = []string{
 	"/var/lib/bootlockbox",
 	"/var/lib/chaps",
 	"/var/lib/cryptohome",
+	"/var/lib/oobe_config_restore",
+	"/var/lib/oobe_config_save",
 	"/var/lib/public_mount_salt",
 	"/var/lib/tpm_manager",
 	"/var/lib/tpm",
