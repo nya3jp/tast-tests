@@ -5,7 +5,9 @@
 package firmware
 
 import (
+	"bufio"
 	"context"
+	"fmt"
 	"regexp"
 	"strings"
 	"time"
@@ -18,6 +20,7 @@ import (
 	"chromiumos/tast/remote/firmware/fixture"
 	"chromiumos/tast/services/cros/graphics"
 	"chromiumos/tast/services/cros/ui"
+	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -339,6 +342,9 @@ func ECLaptopMode(ctx context.Context, s *testing.State) {
 			}
 			return nil
 		}, &testing.PollOptions{Timeout: 40 * time.Second, Interval: 2 * time.Second}); err != nil {
+			if err := validatePressOnPower(ctx, h, 1*time.Second); err != nil {
+				s.Log("Unable to validate press on power: ", err)
+			}
 			s.Fatal("Power menu was absent following a 1 second press on the power button: ", err)
 		}
 
@@ -476,5 +482,103 @@ func checkAndSetLaptopMode(ctx context.Context, h *firmware.Helper, action strin
 		}
 	}
 	testing.ContextLogf(ctx, "Current tabletmode status: %q", out[0][1])
+	return nil
+}
+
+// findPowerDeviceName returns the device name for DUT's power button.
+func findPowerDeviceName(ctx context.Context, h *firmware.Helper) (string, error) {
+	// When tested, different models may use different device names
+	// for their power button. Some use "Power Button", while others
+	// name it "cros_ec_buttons". Search for both names, and return
+	// one that exists.
+	namePatterns := fmt.Sprintf(`NAME=(\S+%s|\S+%s)\S`, "Power Button", "cros_ec_buttons")
+	findName := fmt.Sprintf("udevadm info --export-db | grep -E '%s'", namePatterns)
+	name, err := h.DUT.Conn().CommandContext(ctx, "bash", "-c", findName).Output(ssh.DumpLogOnError)
+	if err != nil {
+		return "", err
+	}
+	expMatch := regexp.MustCompile(`NAME=(?i)[^\n\r]*`)
+	foundMatch := expMatch.FindSubmatch(name)
+	if foundMatch == nil {
+		return "", errors.New("unable to find any match")
+	}
+	devName := strings.TrimLeft(string(foundMatch[0]), "NAME=")
+	return devName, nil
+}
+
+// scanPowerPress starts evtest to scan for power presses.
+func scanPowerPress(ctx context.Context, h *firmware.Helper, devName string) (*bufio.Scanner, error) {
+	// Search for device path from the udev database.
+	findDevPath := fmt.Sprintf("udevadm info --export-db | awk '/%s/,/DEVNAME/'", devName)
+	out, err := h.DUT.Conn().CommandContext(ctx, "bash", "-c", findDevPath).Output(ssh.DumpLogOnError)
+	if err != nil {
+		return nil, errors.Wrap(err, "unable to export the content of udev database")
+	}
+	expMatch := regexp.MustCompile(`DEVNAME=\S*`)
+	foundMatch := expMatch.FindSubmatch(out)
+	if foundMatch != nil {
+		testing.ContextLogf(ctx, "Found device path for power button: %s", string(foundMatch[0]))
+	}
+	devPath := strings.TrimLeft(string(foundMatch[0]), "DEVNAME=")
+	// Start evtest to scan for power presses.
+	cmd := h.DUT.Conn().CommandContext(ctx, "evtest", devPath)
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create stdout pipe")
+	}
+	if err := cmd.Start(); err != nil {
+		return nil, errors.Wrap(err, "failed to start scanner")
+	}
+	scanner := bufio.NewScanner(stdout)
+	return scanner, nil
+}
+
+// readPowerPress reads from the evtest scan and checks for any presses
+// detected on the power button.
+func readPowerPress(ctx context.Context, scanner *bufio.Scanner) error {
+	regex := `Event.*time.*code\s(\d*)\s\(` + `KEY_POWER` + `\)`
+	expMatch := regexp.MustCompile(regex)
+	const scanTimeout = 5 * time.Second
+	text := make(chan string)
+	go func() {
+		defer close(text)
+		for scanner.Scan() {
+			text <- scanner.Text()
+		}
+	}()
+	for {
+		select {
+		case <-time.After(scanTimeout):
+			return errors.New("Did not detect any power presses")
+		case out := <-text:
+			match := expMatch.FindStringSubmatch(out)
+			if len(match) > 0 {
+				testing.ContextLogf(ctx, "Detected power press: %s", match)
+				return nil
+			}
+		}
+	}
+}
+
+// validatePressOnPower checks that sending a press on power button via servo is a valid one.
+// Based on Stainless results, one error surfaced occasionally, in which power menu appeared to
+// be absent following a short press on the power button.
+func validatePressOnPower(ctx context.Context, h *firmware.Helper, pressDur time.Duration) error {
+	testing.ContextLog(ctx, "Checking if power presses are detectable")
+	devName, err := findPowerDeviceName(ctx, h)
+	if err != nil {
+		return errors.Wrap(err, "while looking for device name")
+	}
+	scanner, err := scanPowerPress(ctx, h, devName)
+	if err != nil {
+		return errors.Wrap(err, "unable to scan for power press")
+	}
+	testing.ContextLogf(ctx, "Pressing on power for %s seconds", servo.Dur(pressDur))
+	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(pressDur)); err != nil {
+		return errors.Wrap(err, "pressing power button")
+	}
+	if err := readPowerPress(ctx, scanner); err != nil {
+		return errors.Wrap(err, "reading for power press")
+	}
 	return nil
 }
