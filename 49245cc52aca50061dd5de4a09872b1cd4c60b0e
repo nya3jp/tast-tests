@@ -189,6 +189,29 @@
       "message": "It seems like this should be done in InstallCerts since it apples to both Server and SSL Certs?",
       "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f7a5f2_154ccf47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-03T01:07:14Z",
+      "side": 1,
+      "message": "It could be better to return this as a func can be deferred in InstallCerts() (or perhaps wrap some methods/getters in this file as a struct, then we don\u0027t need to pass certDirectory again), so that it\u0027s easier for users to remember to call this.",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 19
+      },
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
