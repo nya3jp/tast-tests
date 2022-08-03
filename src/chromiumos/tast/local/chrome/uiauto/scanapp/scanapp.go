@@ -234,7 +234,7 @@ func (s *ScanApp) Scan() uiauto.Action {
 		s.LeftClick(scanButtonFinder),
 		// Wait until the done button is displayed to verify the scan completed
 		// successfully.
-		s.WaitUntilExists(doneButtonFinder),
+		s.WithTimeout(2*time.Minute).WaitUntilExists(doneButtonFinder),
 	)
 }
 
