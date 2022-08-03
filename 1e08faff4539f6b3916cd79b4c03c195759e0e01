@@ -77,6 +77,48 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "764e224d_37822544",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/resize_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1523288
+      },
+      "writtenOn": "2022-08-03T04:11:10Z",
+      "side": 1,
+      "message": "That\u0027s a good suggestion! I now use `chrome.ExtraArgs(\"--force-tablet-mode\u003dclamshell\")` to handle clamshell mode issue.\n\nThanks.",
+      "parentUuid": "bf949d4c_a14d4129",
+      "revId": "1e08faff4539f6b3916cd79b4c03c195759e0e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1910c66a_baa723d1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/resize_window.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1523288
+      },
+      "writtenOn": "2022-08-03T04:11:10Z",
+      "side": 1,
+      "message": "This part of the code has been removed. Thanks",
+      "parentUuid": "d0981acc_391fe1a1",
+      "range": {
+        "startLine": 87,
+        "startChar": 32,
+        "endLine": 87,
+        "endChar": 35
+      },
+      "revId": "1e08faff4539f6b3916cd79b4c03c195759e0e01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "64d7a079_09dc455b",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/resize_window.go",
         "patchSetId": 1
