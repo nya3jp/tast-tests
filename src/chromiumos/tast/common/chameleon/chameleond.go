@@ -6,6 +6,7 @@ package chameleon
 
 import (
 	"context"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -262,8 +263,8 @@ type Chameleond interface {
 	ProbeOutputs(ctx context.Context) (outputPortsConnectedToDut []PortID, err error)
 
 	// GetConnectorType calls the Chameleond RPC method of the same name.
-	// Returns the string for the connector type.
-	GetConnectorType(ctx context.Context, portID PortID) (string, error)
+	// Returns the connector type string as a PortType.
+	GetConnectorType(ctx context.Context, portID PortID) (PortType, error)
 
 	// IsPlugged calls the Chameleond RPC method of the same name.
 	// Returns true if the port is emulated as plugged.
@@ -599,6 +600,33 @@ type Chameleond interface {
 	// PrinterDevice returns an RPC interface for making RPC calls to the
 	// chameleon printer device.
 	PrinterDevice() devices.ChameleonDevice
+
+	// FetchSupportedPortIDsByType returns all supported port ids (PortID) mapped
+	// by their connector type (PortType).
+	//
+	// This is not a direct Chameleond RPC method call, but does make calls to
+	// RPC methods to obtain this information.
+	//
+	// Supported PortID values are identified by the result of calling
+	// GetSupportedPorts and each PortType is identified by calling
+	// GetConnectorType on each PortID. Multiple PortID values may have the same
+	// PortType, so the values of the map are sorted PortID arrays.
+	FetchSupportedPortIDsByType(ctx context.Context) (map[PortType][]PortID, error)
+
+	// FetchSupportedPortTypes returns all the PortType values that this device
+	// supports.
+	//
+	// This is not a direct Chameleond RPC method call, but does make calls to
+	// RPC methods to obtain this information.
+	FetchSupportedPortTypes(ctx context.Context) ([]PortType, error)
+
+	// FetchSupportedPortIDByType returns the device-specific integer ID of the
+	// port with the given PortType and index. The PortType matching is
+	// case-insensitive.
+	//
+	// This is not a direct Chameleond RPC method call, but does make calls to
+	// RPC methods to obtain this information.
+	FetchSupportedPortIDByType(ctx context.Context, portType PortType, index int) (PortID, error)
 }
 
 // NewChameleond creates a new Chameleond object for communicating with a
@@ -663,6 +691,7 @@ type CommonChameleond struct {
 	bluetoothTesterDevice   devices.ChameleonDevice
 	motorBoardDevice        devices.ChameleonDevice
 	printerDevice           devices.ChameleonDevice
+	supportedPortIDsByType  map[PortType][]PortID
 }
 
 // NewCommonChameleond creates a new instance of CommonChameleond with all
@@ -684,6 +713,7 @@ func NewCommonChameleond(xmlrpcClient *xmlrpc.XMLRpc) *CommonChameleond {
 		bluetoothTesterDevice:   devices.NewCommonChameleonDevice(xmlrpcClient, "bluetooth_tester."),
 		motorBoardDevice:        devices.NewCommonChameleonDevice(xmlrpcClient, "motor_board."),
 		printerDevice:           devices.NewCommonChameleonDevice(xmlrpcClient, "printer."),
+		supportedPortIDsByType:  nil,
 	}
 }
 
@@ -780,8 +810,24 @@ func (c *CommonChameleond) ProbeOutputs(ctx context.Context) (outputPortsConnect
 
 // GetConnectorType calls the Chameleond RPC method of the same name.
 // This implements Chameleond.GetConnectorType, see that for more details.
-func (c *CommonChameleond) GetConnectorType(ctx context.Context, portID PortID) (string, error) {
-	return c.RPC("GetConnectorType").Args(portID.Int()).CallForString(ctx)
+//
+// Since some device flows, notably those for bluetooth ports, fail to return
+// a value for this RPC method, if the RPC call fails a backup PortID to
+// PortType map based on chameleon V2 values is used to provide a usable
+// PortType. While this is technically not a PortType known to the chameleon
+// device, it is one that can be used in FetchSupportedPortIDByType to get
+// the corresponding PortID later for use in RPC methods.
+func (c *CommonChameleond) GetConnectorType(ctx context.Context, portID PortID) (PortType, error) {
+	portTypeStr, err := c.RPC("GetConnectorType").Args(portID.Int()).CallForString(ctx)
+	if err != nil {
+		if portType, ok := chameleonV2PortIDToPortTypeMap[portID]; ok {
+			testing.ContextLogf(ctx, "Chameleond GetConnectorType call to device %q failed. Used legacy Chameleond V2 ID map to identify port %d as %q for client-side port id lookup",
+				c.Host(), portID, portType)
+			return portType, nil
+		}
+		return "", err
+	}
+	return PortType(portTypeStr), nil
 }
 
 // IsPlugged calls the Chameleond RPC method of the same name.
@@ -1320,4 +1366,98 @@ func (c *CommonChameleond) MotorBoardDevice() devices.ChameleonDevice {
 // chameleon printer device.
 func (c *CommonChameleond) PrinterDevice() devices.ChameleonDevice {
 	return c.printerDevice
+}
+
+// FetchSupportedPortIDsByType returns all supported port ids (PortID) mapped
+// by their connector type (PortType).
+//
+// This is not a direct Chameleond RPC method call, but does make calls to
+// RPC methods to obtain this information.
+//
+// Supported PortID values are identified by the result of calling
+// GetSupportedPorts and each PortType is identified by calling
+// GetConnectorType on each PortID. Multiple PortID values may have the same
+// PortType, so the values of the map are sorted PortID arrays.
+//
+// Results are cached the first time FetchSupportedPortIDsByType is called.
+// Subsequent calls will make no new RPC calls and simply return the same cached
+// map.
+func (c *CommonChameleond) FetchSupportedPortIDsByType(ctx context.Context) (map[PortType][]PortID, error) {
+	if c.supportedPortIDsByType != nil {
+		return c.supportedPortIDsByType, nil
+	}
+	// Get and sort supported port IDs.
+	supportedPortIDs, err := c.GetSupportedPorts(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get supported ports")
+	}
+	sort.Slice(supportedPortIDs, func(i, j int) bool {
+		return supportedPortIDs[i].Int() < supportedPortIDs[j].Int()
+	})
+	// Map each port ID to its type.
+	supportedPortIDsByType := make(map[PortType][]PortID)
+	for _, portID := range supportedPortIDs {
+		portType, err := c.GetConnectorType(ctx, portID)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to get port type of port with id %d", portID)
+		}
+		supportedPortIDsByType[portType] = append(supportedPortIDsByType[portType], portID)
+	}
+	c.supportedPortIDsByType = supportedPortIDsByType
+	testing.ContextLogf(ctx, "Cached Chameleond supported port ids by type for device %q as %v", c.Host(), c.supportedPortIDsByType)
+	return supportedPortIDsByType, nil
+}
+
+// FetchSupportedPortTypes returns a sorted list of all PortType values that
+// this device supports.
+//
+// This is not a direct Chameleond RPC method call, but does make calls to
+// RPC methods to obtain this information.
+func (c *CommonChameleond) FetchSupportedPortTypes(ctx context.Context) ([]PortType, error) {
+	supportedPortIDsByType, err := c.FetchSupportedPortIDsByType(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return c.collectSupportedPortTypes(supportedPortIDsByType), nil
+}
+
+func (c *CommonChameleond) collectSupportedPortTypes(supportedPortIDsByType map[PortType][]PortID) []PortType {
+	supportedPortTypes := make([]PortType, 0)
+	for portType := range supportedPortIDsByType {
+		supportedPortTypes = append(supportedPortTypes, portType)
+	}
+	sort.Slice(supportedPortTypes, func(i, j int) bool {
+		return supportedPortTypes[i].String() < supportedPortTypes[j].String()
+	})
+	return supportedPortTypes
+}
+
+// FetchSupportedPortIDByType returns the device-specific integer ID of the port with
+// the given PortType and index. The PortType matching is case-insensitive.
+//
+// This is not a direct Chameleond RPC method call, but does make calls to
+// RPC methods to obtain this information.
+func (c *CommonChameleond) FetchSupportedPortIDByType(ctx context.Context, portType PortType, index int) (PortID, error) {
+	supportedPortIDsByType, err := c.FetchSupportedPortIDsByType(ctx)
+	if err != nil {
+		return 0, err
+	}
+	supportedPortTypes := c.collectSupportedPortTypes(supportedPortIDsByType)
+	var matchingPortType PortType
+	for _, supportedPortType := range supportedPortTypes {
+		if strings.EqualFold(supportedPortType.String(), portType.String()) {
+			matchingPortType = supportedPortType
+			break
+		}
+	}
+	if matchingPortType == "" {
+		return 0, errors.Errorf("this device does not support ports of type %q; supported port types for this device are %v", portType, supportedPortTypes)
+	}
+	portIDs := supportedPortIDsByType[matchingPortType]
+	if index < 0 || index >= len(portIDs) {
+		return 0, errors.Errorf(
+			"invalid port index %d, this device supports %d ports of type %q so index values are of the range 0 to %d, inclusive",
+			index, len(portIDs), portType, len(portIDs)-1)
+	}
+	return portIDs[index], nil
 }

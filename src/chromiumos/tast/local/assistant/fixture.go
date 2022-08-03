@@ -515,8 +515,12 @@ func (f *audioBoxFixture) SetUp(ctx context.Context, s *testing.FixtState) inter
 		s.Fatal("Failed to connect to chameleon board: ", err)
 	}
 
-	if hasAudioSupport, err := audioBoxFixtData.Chameleon.HasAudioSupport(ctx, chameleon.PortAnalogAudioLineOut); !hasAudioSupport || err != nil {
-		s.Fatalf("Chameleon has no audio support for %v: %v", chameleon.PortAnalogAudioLineOut, err)
+	analogAudioLineOutPortID, err := audioBoxFixtData.Chameleon.FetchSupportedPortIDByType(ctx, chameleon.PortTypeAnalogAudioLineOut, 0)
+	if err != nil {
+		s.Fatal("Failed to get port id of audio line out port: ", err)
+	}
+	if hasAudioSupport, err := audioBoxFixtData.Chameleon.HasAudioSupport(ctx, analogAudioLineOutPortID); !hasAudioSupport || err != nil {
+		s.Fatalf("Chameleon has no audio support for %v: %v", analogAudioLineOutPortID, err)
 	}
 	f.audioBoxFixtData = &audioBoxFixtData
 
