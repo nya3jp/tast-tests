@@ -74,8 +74,8 @@ func DrivefsDssOffline(ctx context.Context, s *testing.State) {
 	driveFsClient := s.FixtValue().(*drivefs.FixtureData).DriveFs
 
 	uniqueSuffix := fmt.Sprintf("-%d-%d", time.Now().UnixNano(), rand.Intn(10000))
-	testDocFileName := fmt.Sprintf("doc-drivefs-%s", uniqueSuffix)
-	uniqueTestFolderName := fmt.Sprintf("DrivefsDssOffline-%s", uniqueSuffix)
+	testDocFileName := fmt.Sprintf("doc-drivefs%s", uniqueSuffix)
+	uniqueTestFolderName := fmt.Sprintf("DrivefsDssOffline%s", uniqueSuffix)
 
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 30*time.Second)
@@ -102,18 +102,36 @@ func DrivefsDssOffline(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to install the required extensions: ", err)
 	}
 
-	// Launch Files App directly to the directory containing the `testFilePath`.
-	filesApp, err := filesapp.LaunchSWAToPath(ctx, tconn, filepath.Dir(testFilePath))
-	if err != nil {
-		s.Fatalf("Failed to launch the Files App to path %q: %v", filepath.Dir(testFilePath), err)
+	var filesApp *filesapp.FilesApp
+	testFileNameWithExt := fmt.Sprintf("%s.gdoc", testDocFileName)
+	// There is a small period of time on startup where DriveFS can't pin Docs files, so repeatedly
+	// relaunch Files App until the Available offline toggle is enabled.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Launch Files App directly to the directory containing the `testFilePath`.
+		filesApp, err = filesapp.LaunchSWAToPath(ctx, tconn, filepath.Dir(testFilePath))
+		if err != nil {
+			return err
+		}
+		filesApp.WaitForFile(testFileNameWithExt)(ctx)
+		filesApp.SelectFile(testFileNameWithExt)(ctx)
+		nodeInfo, err := filesApp.Info(ctx, nodewith.Name("Available offline").Role(role.ToggleButton))
+		if err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to get the current status of the Available offline toggle"))
+		}
+		if _, disabled := nodeInfo.HTMLAttributes["disabled"]; disabled {
+			filesApp.Close(ctx)
+			return errors.New("the Available offline toggle is still disabled")
+		}
+		return nil
+	}, &testing.PollOptions{Interval: 500 * time.Millisecond}); err != nil {
+		s.Fatal("Failed to wait for the Available offline toggle to be enabled: ", err)
 	}
 
+	ui := uiauto.New(tconn)
 	// Try make the newly created Google doc available offline.
-	testFileNameWithExt := fmt.Sprintf("%s.gdoc", testDocFileName)
 	if err := uiauto.Combine(fmt.Sprintf("Make test file %q in Drive available offline", testFileNameWithExt),
-		filesApp.WaitForFile(testFileNameWithExt),
 		filesApp.ToggleAvailableOfflineForFile(testFileNameWithExt),
-		filesApp.LeftClick(nodewith.Name("Enable Offline").Role(role.Button)),
+		ui.LeftClick(nodewith.Name("Enable Offline").Role(role.Button)),
 		filesApp.SelectFile(testFileNameWithExt),
 	)(ctx); err != nil {
 		s.Fatalf("Failed to make test file %q in Drive available offline: %v", testFileNameWithExt, err)
@@ -133,7 +151,7 @@ func DrivefsDssOffline(ctx context.Context, s *testing.State) {
 		previousNodeInfo = currentNodeInfo
 		return errors.New("the Available offline toggle did not stabilize")
 	}, &testing.PollOptions{Interval: 500 * time.Millisecond}); err != nil {
-		s.Fatal("Failed to wait for the Available offline toggle to stabilize")
+		s.Fatal("Failed to wait for the Available offline toggle to stabilize: ", err)
 	}
 
 	if currentNodeInfo.Checked != checked.True {
