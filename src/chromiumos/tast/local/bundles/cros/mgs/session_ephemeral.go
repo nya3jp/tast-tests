@@ -34,7 +34,7 @@ func init() {
 }
 
 const accessibilityPage = "osAccessibility"
-const accessibilityOptions = "Always show accessibility options in the system menu"
+const accessibilityOptions = "Show accessibility options in Quick Settings"
 
 func SessionEphemeral(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
