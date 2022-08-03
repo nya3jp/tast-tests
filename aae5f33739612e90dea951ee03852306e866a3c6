@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f52f7d1_006d74d5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/show_missing_description_error_message.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-03T18:09:44Z",
+      "side": 1,
+      "message": "Make it concise so it fits in one line. e.g. \"Show error message when continuing without issue description\"",
+      "revId": "aae5f33739612e90dea951ee03852306e866a3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb7feeaf_d1fe262d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/show_missing_description_error_message.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-03T18:09:44Z",
+      "side": 1,
+      "message": "Wrap to a new line.",
+      "revId": "aae5f33739612e90dea951ee03852306e866a3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
