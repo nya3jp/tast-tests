@@ -22,6 +22,30 @@
       },
       "revId": "9a405591a8276b1de7501c35f816c15f1f495ede",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "485bbff3_cbeaca26",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/google_sheets_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-03T21:14:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12a8b6b3_bd2865b7",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 101
+      },
+      "revId": "9a405591a8276b1de7501c35f816c15f1f495ede",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
