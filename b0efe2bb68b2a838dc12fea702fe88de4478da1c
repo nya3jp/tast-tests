@@ -22,6 +22,30 @@
       },
       "revId": "b0efe2bb68b2a838dc12fea702fe88de4478da1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a039fab_62e01e37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_longpress_diacritics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-08-03T04:22:59Z",
+      "side": 1,
+      "message": "I found it quite hard to tell the difference between the two characters on my editor because the diacritic is basically a pixel. I thought this would improve readability.",
+      "parentUuid": "11d8c221_bdaed751",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 18
+      },
+      "revId": "b0efe2bb68b2a838dc12fea702fe88de4478da1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
