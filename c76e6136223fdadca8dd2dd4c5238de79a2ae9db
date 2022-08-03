@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ab9ba3_ecafde3b",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-03T20:11:01Z",
+      "side": 1,
+      "message": "Would it be possible to avoid the need for this workaround by simply calling ui.DoDefault(printer) instead of ui.LeftClick(printer) in the block below this?",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "c76e6136223fdadca8dd2dd4c5238de79a2ae9db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
