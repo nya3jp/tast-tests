@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dfbd561_84f85d7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-03T20:11:13Z",
+      "side": 1,
+      "message": "Pavol,\n\nThis test I added works with installing CA certs and server certs/keys. Wanted to add you to the cc to make sure this all looks appropriate. Let me know!",
+      "revId": "51dbdaf9e00afba84f4d58366404b4e4210a95fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bcadaec9_5b40c8b0",
