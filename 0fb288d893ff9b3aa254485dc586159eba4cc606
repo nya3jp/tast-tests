@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a40da0_4f1c8a71",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/bubble_launcher_animation_perf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-03T01:33:06Z",
+      "side": 1,
+      "message": "We should avoid using keepalive if it\u0027s not something that the test is directly wanting to test.",
+      "range": {
+        "startLine": 114,
+        "startChar": 35,
+        "endLine": 114,
+        "endChar": 61
+      },
+      "revId": "0fb288d893ff9b3aa254485dc586159eba4cc606",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
