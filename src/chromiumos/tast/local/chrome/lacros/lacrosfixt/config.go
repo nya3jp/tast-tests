@@ -43,6 +43,9 @@ func Mode(mode lacros.Mode) Option {
 }
 
 // KeepAlive returns an Option which sets lacros keep-alive to the desired value.
+// Do not use this unless you are explicitly testing the keep-alive feature.
+// For example, this should /not/ be used to get around lacros dying when
+// its final tab is closed.
 func KeepAlive(on bool) Option {
 	return func(c *Config) {
 		c.keepAlive = on
