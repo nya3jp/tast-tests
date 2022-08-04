@@ -47,7 +47,7 @@ const (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         GoogleDriveFiles,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Test a file on Google Drive will appear on top of the list in filesapp after edited",
 		Contacts: []string{
 			"vivian.tsai@cienet.com",
@@ -59,8 +59,16 @@ func init() {
 		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
 		Data:         []string{jpegFile, pngFile},
-		Fixture:      "driveFsStarted",
 		Timeout:      5*time.Minute + driveSyncTimeout*5, // There are 5 file edit actions in this test.
+		Params: []testing.Param{{
+			Val:     apps.Chrome.ID,
+			Fixture: "driveFsStarted",
+		}, {
+			Name:              "lacros",
+			Val:               apps.Lacros.ID,
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           "driveFsStartedLacros",
+		}},
 	})
 }
 
@@ -132,6 +140,7 @@ func GoogleDriveFiles(ctx context.Context, s *testing.State) {
 		kb:           kb,
 		ui:           uiauto.New(tconn),
 		folderName:   folderName,
+		browserAppID: s.Param().(string),
 	}
 
 	files := []string{gDocFileName + gDocFileExt, gSheetFileName + gSheetFileExt, gSlidesFileName + gSlidesFileExt}
@@ -262,6 +271,7 @@ type gDriveFilesTestResources struct {
 	kb           *input.KeyboardEventWriter
 	ui           *uiauto.Context
 	folderName   string
+	browserAppID string
 }
 
 type gDriveFileTest interface {
@@ -316,7 +326,7 @@ type gDocGSheetEditor struct {
 func newGDocEditor(name string, res *gDriveFilesTestResources) *gDocGSheetEditor {
 	return &gDocGSheetEditor{
 		fileSample: newSample(name+gDocFileExt, res),
-		rootWindow: nodewith.Role(role.Window).HasClass("BrowserRootView").NameStartingWith(fmt.Sprintf("%s - Google Docs", name)),
+		rootWindow: nodewith.Role(role.Window).HasClass("Widget").NameStartingWith(fmt.Sprintf("%s - Google Docs", name)),
 	}
 }
 
@@ -324,7 +334,7 @@ func newGDocEditor(name string, res *gDriveFilesTestResources) *gDocGSheetEditor
 func newGSheetEditor(name string, res *gDriveFilesTestResources) *gDocGSheetEditor {
 	return &gDocGSheetEditor{
 		fileSample: newSample(name+gSheetFileExt, res),
-		rootWindow: nodewith.Role(role.Window).HasClass("BrowserRootView").NameStartingWith(fmt.Sprintf("%s - Google Sheets", name)),
+		rootWindow: nodewith.Role(role.Window).HasClass("Widget").NameStartingWith(fmt.Sprintf("%s - Google Sheets", name)),
 	}
 }
 
@@ -343,7 +353,7 @@ func (editor *gDocGSheetEditor) edit(ctx context.Context) error {
 
 // close closes the window to edit the Google Sheets/Google Docs.
 func (editor *gDocGSheetEditor) close(ctx context.Context) error {
-	return apps.Close(ctx, editor.res.tconn, apps.Chrome.ID)
+	return apps.Close(ctx, editor.res.tconn, editor.res.browserAppID)
 }
 
 // gSlidesEditor represents the editor of a Google Slides file.
@@ -356,7 +366,7 @@ type gSlidesEditor struct {
 func newGSlides(name string, res *gDriveFilesTestResources) *gSlidesEditor {
 	return &gSlidesEditor{
 		fileSample: newSample(name+gSlidesFileExt, res),
-		rootWindow: nodewith.Role(role.Window).HasClass("BrowserRootView").NameStartingWith(fmt.Sprintf("%s - Google Slides", name)),
+		rootWindow: nodewith.Role(role.Window).HasClass("Widget").NameStartingWith(fmt.Sprintf("%s - Google Slides", name)),
 	}
 }
 
@@ -376,7 +386,7 @@ func (editor *gSlidesEditor) edit(ctx context.Context) error {
 
 // close closes the window to edit the Google Slides.
 func (editor *gSlidesEditor) close(ctx context.Context) error {
-	return apps.Close(ctx, editor.res.tconn, apps.Chrome.ID)
+	return apps.Close(ctx, editor.res.tconn, editor.res.browserAppID)
 }
 
 // imageEditor represents the editor of a image file.

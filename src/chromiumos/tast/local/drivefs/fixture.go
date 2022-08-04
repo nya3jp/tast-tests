@@ -13,6 +13,9 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/lacros"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/timing"
 )
@@ -30,7 +33,7 @@ func init() {
 		Name:            "driveFsStarted",
 		Desc:            "Ensures DriveFS is mounted and provides an authenticated Drive API Client",
 		Contacts:        []string{"benreich@chromium.org", "chromeos-files-syd@chromium.org"},
-		Impl:            &fixture{},
+		Impl:            &fixture{bt: browser.TypeAsh},
 		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupAndTearDownTimeout,
 		ResetTimeout:    driveFsSetupAndTearDownTimeout,
 		TearDownTimeout: time.Hour,
@@ -41,10 +44,27 @@ func init() {
 	})
 
 	testing.AddFixture(&testing.Fixture{
-		Name:            "driveFsStartedTrashEnabled",
-		Desc:            "Ensures DriveFS is mounted and provides an authenticated Drive API Client",
-		Contacts:        []string{"benreich@chromium.org", "chromeos-files-syd@chromium.org"},
-		Impl:            &fixture{chromeOptions: []chrome.Option{chrome.EnableFeatures("FilesTrash")}},
+		Name:            "driveFsStartedLacros",
+		Desc:            "Lacros variant of driveFsStarted",
+		Contacts:        []string{"amusbach@chromium.org", "chromeos-files-syd@chromium.org"},
+		Impl:            &fixture{bt: browser.TypeLacros},
+		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupAndTearDownTimeout,
+		ResetTimeout:    driveFsSetupAndTearDownTimeout,
+		TearDownTimeout: time.Hour,
+		Vars: []string{
+			"drivefs.accountPool",
+			"drivefs.extensionClientID",
+		},
+	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     "driveFsStartedTrashEnabled",
+		Desc:     "Ensures DriveFS is mounted and provides an authenticated Drive API Client",
+		Contacts: []string{"benreich@chromium.org", "chromeos-files-syd@chromium.org"},
+		Impl: &fixture{
+			chromeOptions: []chrome.Option{chrome.EnableFeatures("FilesTrash")},
+			bt:            browser.TypeAsh,
+		},
 		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupAndTearDownTimeout,
 		ResetTimeout:    driveFsSetupAndTearDownTimeout,
 		TearDownTimeout: chrome.ResetTimeout + driveFsSetupAndTearDownTimeout,
@@ -64,7 +84,7 @@ func init() {
 		}, drivefsOptions: map[string]string{
 			"switchblade":     "true",
 			"switchblade_dss": "true",
-		}},
+		}, bt: browser.TypeAsh},
 		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupAndTearDownTimeout,
 		ResetTimeout:    driveFsSetupAndTearDownTimeout,
 		TearDownTimeout: chrome.ResetTimeout + driveFsSetupAndTearDownTimeout,
@@ -82,7 +102,7 @@ func init() {
 			chrome.EnableFeatures("DriveFsChromeNetworking"),
 		}, drivefsOptions: map[string]string{
 			"use_cros_http_client": "true",
-		}},
+		}, bt: browser.TypeAsh},
 		SetUpTimeout:    chrome.LoginTimeout + driveFsSetupAndTearDownTimeout,
 		ResetTimeout:    driveFsSetupAndTearDownTimeout,
 		TearDownTimeout: chrome.ResetTimeout + driveFsSetupAndTearDownTimeout,
@@ -120,6 +140,7 @@ type fixture struct {
 	driveFs        *DriveFs
 	chromeOptions  []chrome.Option
 	drivefsOptions map[string]string
+	bt             browser.Type
 }
 
 func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -160,14 +181,27 @@ func (f *fixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
 	}()
 
 	func() {
+		opts := append(f.chromeOptions,
+			chrome.GAIALoginPool(s.RequiredVar("drivefs.accountPool")),
+			chrome.ExtraArgs("--get-access-token-for-test"),
+			chrome.ARCDisabled(),
+		)
+		if f.bt == browser.TypeLacros {
+			var err error
+			opts, err = lacrosfixt.NewConfig(
+				lacrosfixt.Mode(lacros.LacrosPrimary),
+				lacrosfixt.ChromeOptions(opts...),
+			).Opts()
+			if err != nil {
+				s.Fatal("Failed to get lacros options: ", err)
+			}
+		}
+
 		ctx, cancel := context.WithTimeout(ctx, chrome.LoginTimeout)
 		defer cancel()
 
 		var err error
-		f.cr, err = chrome.New(ctx, append(f.chromeOptions,
-			chrome.GAIALoginPool(s.RequiredVar("drivefs.accountPool")),
-			chrome.ExtraArgs("--get-access-token-for-test"),
-			chrome.ARCDisabled())...)
+		f.cr, err = chrome.New(ctx, opts...)
 		if err != nil {
 			s.Fatal("Failed to start Chrome: ", err)
 		}
