@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fa0c61a_325e4cd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-04T16:43:39Z",
+      "side": 1,
+      "message": "Hmmm, this might be the right place for this code, but maybe we could put this behind some optional Feature/Config flag given to NewRPCDUT()?\n\nIt could look like the following, where the default behavior is to not wait for firmware updates:\n\n```\ntype Option int\n\nconst (\n\tOptionWaitForFWUpdates Option \u003d iota\n)\n\nfunc NewRPCDUT(ctx context.Context /* some fields */, bundleName string, opts ...Option) (*RPCDUT, error) {\n\n\tfor _, opt :\u003d range opts {\n\t\trd.opts[opt] \u003d true\n\t}\n\n}\n```\n\nCheckout https://go.dev/play/p/Q76AJx13bjg",
+      "parentUuid": "f033d5af_15561e12",
+      "revId": "ef955fa75bdcbaed03d1f6e09eac59e20614647c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "994fd179_f8cf1031",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
         "patchSetId": 3
