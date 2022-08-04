@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cef1023f_401dc224",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2022-08-04T01:06:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db5350d7_17609ce8",
+      "range": {
+        "startLine": 14,
+        "startChar": 19,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "fef08763fa3920a1482e594fa6e7a41142a59211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18737566_a458e396",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-08-04T00:01:32Z",
       "side": 1,
       "message": "can\u0027t this be a static var? looking at line 18",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 48
+      },
+      "revId": "fef08763fa3920a1482e594fa6e7a41142a59211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f66ee7ee_e3870e4a",
+        "filename": "src/chromiumos/tast/local/rgbkbd/rgbkbd.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2022-08-04T01:06:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18737566_a458e396",
       "range": {
         "startLine": 53,
         "startChar": 24,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f00aefd_e6606281",
+        "filename": "src/chromiumos/tast/local/rgbkbd/util.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2022-08-04T01:06:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aa72b16_f4d79a77",
+      "range": {
+        "startLine": 19,
+        "startChar": 78,
+        "endLine": 19,
+        "endChar": 81
+      },
+      "revId": "fef08763fa3920a1482e594fa6e7a41142a59211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfb5d7f4_e3a39d56",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-08-04T00:01:32Z",
       "side": 1,
       "message": "Not technically logging anything, its just creating a string. Maybe CreateLog?",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "fef08763fa3920a1482e594fa6e7a41142a59211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2afaa8c_9b81c0a6",
+        "filename": "src/chromiumos/tast/local/rgbkbd/util.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1445142
+      },
+      "writtenOn": "2022-08-04T01:06:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfb5d7f4_e3a39d56",
       "range": {
         "startLine": 26,
         "startChar": 5,
