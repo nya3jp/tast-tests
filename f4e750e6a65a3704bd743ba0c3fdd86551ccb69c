@@ -16,6 +16,23 @@
       "message": "This is a real failure\n\nSuspect CL is already reverted in Chromium",
       "revId": "f4e750e6a65a3704bd743ba0c3fdd86551ccb69c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dc46740_87a98e19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1197444
+      },
+      "writtenOn": "2022-08-04T02:05:27Z",
+      "side": 1,
+      "message": "-2 as above, culprit is reverted",
+      "revId": "f4e750e6a65a3704bd743ba0c3fdd86551ccb69c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
