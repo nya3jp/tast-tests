@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eea20130_b57e4126",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/abc_kids.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1510282
+      },
+      "writtenOn": "2022-08-04T21:02:34Z",
+      "side": 1,
+      "message": "`RunTestCases` is already getting `s`. Can\u0027t this logic just live in there rather than be duplicated in all these tests?",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 32
+      },
+      "revId": "dbd174b26244865310ed44148cdc7e08a8f37493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
