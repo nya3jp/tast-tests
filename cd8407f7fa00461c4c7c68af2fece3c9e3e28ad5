@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff16cd21_f11d69e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2022-08-04T18:06:46Z",
+      "side": 1,
+      "message": "We no longer need this CL. We made the fwupd tests informational",
+      "revId": "cd8407f7fa00461c4c7c68af2fece3c9e3e28ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
