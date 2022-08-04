@@ -33,6 +33,23 @@
       "message": "Hi @tylergarrett, just a friendly pin in case you missed this CL. Thanks!",
       "revId": "874c9f6d09bba66f977d7e06ff2ed21388a4e1bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b399a156_7483b6a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1510182
+      },
+      "writtenOn": "2022-08-04T17:16:20Z",
+      "side": 1,
+      "message": "Hey sorry for missing this. Right now not rebooting the device for each test makes it very flaky. Essentially some behavior the test covers is rate limited and resetting the device reset the timer.",
+      "revId": "874c9f6d09bba66f977d7e06ff2ed21388a4e1bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
