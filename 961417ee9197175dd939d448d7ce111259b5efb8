@@ -140,6 +140,24 @@
       "parentUuid": "a6700b7d_a329af69",
       "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e8995b0_649bf48f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-04T05:07:07Z",
+      "side": 1,
+      "message": "Agree, correct me if I am wrong but it looks like the reason this doesn\u0027t run currently is because there is no informational builder for reven, but there is a critical one (so it will run if promoted)?\n\nIf so, I\u0027m fine to submit this as long as it goes through CQ.",
+      "parentUuid": "ec5e2b88_d4229d7d",
+      "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
