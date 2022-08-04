@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbb295ac_b9a1dd50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-04T05:51:12Z",
+      "side": 1,
+      "message": "Hmm. I really wanted to leave rpcdut generic, so that other could use it. Could be wrong, but there may be a use case where a user wants to connect to DUT as early as possible. This ensure that we can\u0027t connect until the boot-update-firmware finishes, which is moments before ui launches.\n\nI\u0027m good with adding this, but we may want to consider other mechanisms for this in our fingerprint specific codebase.",
+      "revId": "ef955fa75bdcbaed03d1f6e09eac59e20614647c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "994fd179_f8cf1031",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-04T05:51:12Z",
+      "side": 1,
+      "message": "\"before or during the update\"\n\nright?",
+      "range": {
+        "startLine": 110,
+        "startChar": 30,
+        "endLine": 110,
+        "endChar": 43
+      },
+      "revId": "ef955fa75bdcbaed03d1f6e09eac59e20614647c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2077246_ce70d68b",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-04T05:51:12Z",
+      "side": 1,
+      "message": "It might be important to note that:\n\nThere isn\u0027t a race condition between \"boot-update-firmware\" finishing and \"reboot\" starting because the state of \"reboot\" is changed during the pre-start of \"boot-update-firmware\".",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "ef955fa75bdcbaed03d1f6e09eac59e20614647c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

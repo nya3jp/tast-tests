@@ -98,6 +98,30 @@
       },
       "revId": "e9b9bdfcece60034dae692f9b7324ab1506bbab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "817d6830_36940e27",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2022-08-04T05:51:12Z",
+      "side": 1,
+      "message": "I believe update \"can\" take about a minute in certain situations, like when updating RO and RW on dartmonkey for dogfooders.\n\nUMA shows that more than 22% of users (mainly non-stable users) take about 38s for update. A few outliers take up to 76sec.",
+      "parentUuid": "1ad52fcf_53464625",
+      "range": {
+        "startLine": 160,
+        "startChar": 61,
+        "endLine": 160,
+        "endChar": 77
+      },
+      "revId": "e9b9bdfcece60034dae692f9b7324ab1506bbab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
