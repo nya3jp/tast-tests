@@ -60,6 +60,12 @@ func DumpNetworkInfo(ctx context.Context, filename string) error {
 		}
 	}
 
+	// Dumps ip-addr.
+	if err := runCmdAndLog("ip", "addr"); err != nil {
+		testing.ContextLog(ctx, "Failed to run and log ip-addr: ", err)
+		lastErr = err
+	}
+
 	// Dumps ip-rule.
 	for _, family := range []string{"-4", "-6"} {
 		if err := runCmdAndLog("ip", family, "rule"); err != nil {
