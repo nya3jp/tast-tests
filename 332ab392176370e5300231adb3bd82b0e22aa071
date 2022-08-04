@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8080ddbc_11cb1c51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-08-04T10:47:34Z",
+      "side": 1,
+      "message": "`firmware.FlashromTester: Move enter keypress check`",
+      "revId": "332ab392176370e5300231adb3bd82b0e22aa071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f51daa_249e63ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-08-04T10:47:34Z",
+      "side": 1,
+      "message": "BUG\u003db:240512896\nTEST\u003dfirmware.FlashromTester",
+      "revId": "332ab392176370e5300231adb3bd82b0e22aa071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "54212a63_6c1fd57c",
         "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
         "patchSetId": 1
