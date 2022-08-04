@@ -33,6 +33,24 @@
       "message": "I see you removed `cleanupCtx` entirely. If you want to reserve time for cleanup, the standard way to do this is listed here: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Reserve-time-for-clean_up-task\n\ni.e. you should assign the `ctx` given to you by the test framework to another name, then reassign `ctx` to the shortened version such that when `ctx` expires there is still some time left on the one you got from the test framework. Then the old `ctx` can be safely used in deferred cleanup functions, etc.",
       "revId": "4d7cfab089e9df34d144400d73fb3a63d1603ab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9eca5ad_cbb3a931",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310249
+      },
+      "writtenOn": "2022-08-04T21:32:15Z",
+      "side": 1,
+      "message": "Ack I\u0027ve utilized this for the possible cleanup of turning off the lock SIM setting.",
+      "parentUuid": "7cc26c9f_23f02def",
+      "revId": "4d7cfab089e9df34d144400d73fb3a63d1603ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
