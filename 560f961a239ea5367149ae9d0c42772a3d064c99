@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13d73dbc_34543b8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-08-04T23:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5945f68_186a7eac",
+      "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5bbb496_bc893d35",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-08-04T23:31:31Z",
       "side": 1,
       "message": "We need bug id here as well.",
+      "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cdfe458_dbc34d25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-08-04T23:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5bbb496_bc893d35",
       "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +139,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a6e7efa_ea27fb89",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2554,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-08-04T23:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22b6cbad_58bb8cc7",
+      "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a898c1c7_582a10a8",
@@ -116,6 +170,24 @@
       "writtenOn": "2022-08-04T23:31:31Z",
       "side": 1,
       "message": "Can we use name \"getVAAPIArgs\" as all of them are VAAPI?",
+      "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb510012_ec70a7a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2557,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-08-04T23:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a898c1c7_582a10a8",
       "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
