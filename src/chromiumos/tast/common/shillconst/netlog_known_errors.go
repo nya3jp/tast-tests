@@ -26,6 +26,7 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"ModemManager", "", ".*SIM is missing and SIM hot swap is configured, but ports are not opened.*", 0},
 		{"patchpaneld", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0},
 		{"patchpaneld", "manager.cc", ".*Invalid namespace name.*", 0},
+		{"patchpaneld", "ndproxy.cc", ".*failed to get interface name on interface.*No such device.*", 0}, // b/239574927
 		{"patchpaneld", "net_util.cc", ".*Invalid prefix length.*", 0},
 		{"patchpaneld", "network_monitor_service.cc", ".*Get device props failed.*", 0},
 		{"patchpaneld", "object_proxy.cc", ".*Failed to call method.*", 0},
@@ -66,7 +67,7 @@ func InitializeAllowedEntries() []AllowedEntry {
 		// {"shill", "userdb_utils.cc", ".*Unable to find user pluginvm.*", 0}, // b/213922333
 		// 'modem in failed state' errors are handled in shill. Because they are DBus errors, suppressing them is difficult:
 		{"shill", "utils.cc", ".*AddDBusError.*org.freedesktop.ModemManager1.Error.Core.WrongState, Message=modem in failed state", 0},
-		// {"shill", "wifi.cc", ".*does not support MAC address randomization.*", 0},        // b/208652858
+		{"shill", "wifi.cc", ".*does not support MAC address randomization.*", 0}, // b/239574927
 		// {"shill", "wifi.cc", ".*Unsupported NL80211_ATTR_REG_ALPHA2 attribute: 99.*", 0}, // b/217761687
 		{"wpa_supplicant", "", ".*Could not set interface wlan0 flags \\(UP\\): Input\\/output error.*", 0},
 		{"wpa_supplicant", "", ".*nl80211: Could not set interface 'wlan0' UP.*", 0},
