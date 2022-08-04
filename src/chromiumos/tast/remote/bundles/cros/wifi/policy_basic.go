@@ -31,7 +31,7 @@ var (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PolicyBasic,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that DUT can connect to the APs with device policy and per-user policy",
 		Contacts: []string{
 			"chromeos-wifi-champs@google.com", // WiFi oncall rotation; or http://b/new?component=893827
