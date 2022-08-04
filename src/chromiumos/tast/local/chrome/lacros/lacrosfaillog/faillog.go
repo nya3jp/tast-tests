@@ -87,6 +87,8 @@ func Save(ctx context.Context, tconn *chrome.TestConn) {
 	info, err := lacrosinfo.Snapshot(ctx, tconn)
 	if err != nil {
 		testing.ContextLog(ctx, "Failed to get lacros info: ", err)
+	} else if len(info.LacrosPath) == 0 {
+		testing.ContextLog(ctx, "Lacros is currently not mounted")
 	} else {
 		run(filepath.Join(dir, "lacros-ls.txt"), "ls", "-l", info.LacrosPath)
 	}
