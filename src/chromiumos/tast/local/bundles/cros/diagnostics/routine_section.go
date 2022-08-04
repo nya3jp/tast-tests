@@ -11,7 +11,6 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
-	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -34,22 +33,11 @@ func init() {
 
 // RoutineSection verifies routine section functionality.
 func RoutineSection(ctx context.Context, s *testing.State) {
-	cr := s.FixtValue().(*chrome.Chrome)
-
-	tconn, err := cr.TestAPIConn(ctx)
-	if err != nil {
-		s.Fatal("Failed to connect Test API: ", err)
-	}
-	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
-
-	dxRootnode, err := diagnosticsapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to launch diagnostics app: ", err)
-	}
+	tconn := s.FixtValue().(*chrome.TestConn)
 
 	// Find the first routine action button
 	ui := uiauto.New(tconn)
-	cpuButton := diagnosticsapp.DxCPUTestButton.Ancestor(dxRootnode).First()
+	cpuButton := diagnosticsapp.DxCPUTestButton.Ancestor(diagnosticsapp.DxRootNode).First()
 	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(cpuButton)(ctx); err != nil {
 		s.Fatal("Failed to find the cpu test routine button: ", err)
 	}
@@ -67,16 +55,16 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 	s.Log("Starting CPU test routine")
 
 	// TODO(crbug/1174688): Detect this through a routine process instead of relying on the UI.
-	if err := ui.WithTimeout(time.Minute).WaitUntilExists(diagnosticsapp.DxProgressBadge.Ancestor(dxRootnode).First())(ctx); err != nil {
+	if err := ui.WithTimeout(time.Minute).WaitUntilExists(diagnosticsapp.DxProgressBadge.Ancestor(diagnosticsapp.DxRootNode).First())(ctx); err != nil {
 		s.Fatal("Could not verify test routine has started: ", err)
 	}
 
-	if err := ui.WithTimeout(5 * time.Minute).WaitUntilExists(diagnosticsapp.DxPassedBadge.Ancestor(dxRootnode).First())(ctx); err != nil {
+	if err := ui.WithTimeout(5 * time.Minute).WaitUntilExists(diagnosticsapp.DxPassedBadge.Ancestor(diagnosticsapp.DxRootNode).First())(ctx); err != nil {
 		s.Fatal("Could not verify successful run of at least one CPU routine: ", err)
 	}
 
 	// Cancel the test after first routine succeeds
-	cancelBtn := diagnosticsapp.DxCancelTestButton.Ancestor(dxRootnode)
+	cancelBtn := diagnosticsapp.DxCancelTestButton.Ancestor(diagnosticsapp.DxRootNode)
 	if err := uiauto.Combine("click Cancel",
 		ui.WithTimeout(20*time.Second).WaitUntilExists(cancelBtn),
 		ui.MakeVisible(cancelBtn),
@@ -85,7 +73,7 @@ func RoutineSection(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click cancel button: ", err)
 	}
 
-	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(diagnosticsapp.DxCancelledBadge.Ancestor(dxRootnode).First())(ctx); err != nil {
+	if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(diagnosticsapp.DxCancelledBadge.Ancestor(diagnosticsapp.DxRootNode).First())(ctx); err != nil {
 		s.Fatal("Could not verify cancellation of routine: ", err)
 	}
 }

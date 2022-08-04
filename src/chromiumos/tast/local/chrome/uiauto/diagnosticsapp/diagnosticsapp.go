@@ -40,8 +40,8 @@ const (
 )
 
 var (
-	// diagnosticsRootNodeParams export is used to find the root node of diagnostics.
-	diagnosticsRootNodeParams = nodewith.Name(apps.Diagnostics.Name).Role(role.Window)
+	// DxRootNode export is used to find the root node of diagnostics.
+	DxRootNode = nodewith.Name(apps.Diagnostics.Name).Role(role.Window)
 
 	// DxLogButton export is used to find session log button.
 	DxLogButton = nodewith.ClassName("session-log-button").Role(role.Button)
@@ -105,8 +105,8 @@ var (
 // DiagnosticsRootNode returns the root ui node of Diagnotsics app.
 func DiagnosticsRootNode(ctx context.Context, tconn *chrome.TestConn) (*nodewith.Finder, error) {
 	ui := uiauto.New(tconn)
-	err := ui.WithTimeout(defaultTimeout).WaitUntilExists(diagnosticsRootNodeParams)(ctx)
-	return diagnosticsRootNodeParams, err
+	err := ui.WithTimeout(defaultTimeout).WaitUntilExists(DxRootNode)(ctx)
+	return DxRootNode, err
 }
 
 // Launch diagnostics via default method and finder and error.
