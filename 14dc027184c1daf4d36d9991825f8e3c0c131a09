@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6513bad_f172f906",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-04T01:46:39Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm for tast",
+      "revId": "14dc027184c1daf4d36d9991825f8e3c0c131a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "162a9eeb_c542aeb3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-04T01:46:39Z",
+      "side": 1,
+      "message": "Just to check, will there be any issue to run this if installCerts() succeeds partially? I guess the only side effect is we will have some logs for that?",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 18
+      },
+      "revId": "14dc027184c1daf4d36d9991825f8e3c0c131a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d12d942_f5109ad9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-04T01:46:39Z",
+      "side": 1,
+      "message": "I think it\u0027s worth a comment that uninstallCerts() needs to be called no matter whether this function succeeds or not. But since this function is an internal function and will be changed in the next patch, it should be fine now :)",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 59
+      },
+      "revId": "14dc027184c1daf4d36d9991825f8e3c0c131a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52b9eaf2_e316aed8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-04T01:46:39Z",
+      "side": 1,
+      "message": "nit: missing a period",
+      "range": {
+        "startLine": 120,
+        "startChar": 29,
+        "endLine": 120,
+        "endChar": 34
+      },
+      "revId": "14dc027184c1daf4d36d9991825f8e3c0c131a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5040af04_ff724c46",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-04T01:46:39Z",
+      "side": 1,
+      "message": "nit: \"server\"?",
+      "range": {
+        "startLine": 42,
+        "startChar": 67,
+        "endLine": 42,
+        "endChar": 73
+      },
+      "revId": "14dc027184c1daf4d36d9991825f8e3c0c131a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adc3e483_b6097947",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/virtualnet.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-04T01:46:39Z",
+      "side": 1,
+      "message": "nit: \"server\"?",
+      "range": {
+        "startLine": 46,
+        "startChar": 69,
+        "endLine": 46,
+        "endChar": 75
+      },
+      "revId": "14dc027184c1daf4d36d9991825f8e3c0c131a09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
