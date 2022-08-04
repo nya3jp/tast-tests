@@ -1,0 +1,26 @@
+// Copyright 2022 The Chromium OS Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.wifiservice;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/wifiservice";
+
+// WifiService allows remote WiFi setup through shill dbus interface.
+service WifiService {
+ 	rpc New (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+ 	rpc Close (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+ 	rpc ConnectWifi (WifiRequest) returns (google.protobuf.Empty) {}
+    rpc DownEth (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+    rpc UpEth (google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message WifiRequest {
+  string ssid = 1;
+  string password = 2;
+}
+
