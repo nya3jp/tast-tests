@@ -87,6 +87,30 @@
       },
       "revId": "9466f4696cde7ed0f664883e40e7865ce71932c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "281bbbe2_8c7b3f35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-08-04T05:46:56Z",
+      "side": 1,
+      "message": "Found it. It was the loading of settings which must have been running before the breaking test every time and which was loading other stuff as well. Removed that particular test and now it works.",
+      "parentUuid": "1bad420c_a11d4c34",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 1
+      },
+      "revId": "9466f4696cde7ed0f664883e40e7865ce71932c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
