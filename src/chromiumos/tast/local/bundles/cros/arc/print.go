@@ -6,7 +6,6 @@ package arc
 
 import (
 	"context"
-	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -150,8 +149,7 @@ func Print(ctx context.Context, s *testing.State) {
 
 	// Select printer.
 	s.Log("Selecting printer")
-	listEntry := fmt.Sprintf("%s %s", printerName, printerName)
-	if err := printpreview.SelectPrinter(ctx, tconn, listEntry); err != nil {
+	if err := printpreview.SelectPrinter(ctx, tconn, printerName); err != nil {
 		s.Fatal("Failed to select printer: ", err)
 	}
 

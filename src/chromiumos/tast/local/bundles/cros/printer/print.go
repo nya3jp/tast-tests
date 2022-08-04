@@ -90,7 +90,6 @@ func Print(ctx context.Context, s *testing.State) {
 	}
 
 	const printerName = "DavieV Virtual USB Printer (USB)"
-	const printerLabel = "DavieV Virtual USB Printer (USB) DavieV Virtual USB Printer (USB)"
 	savePrinterButton := nodewith.ClassName("save-printer-button").NameContaining(printerName).Ancestor(ossettings.WindowFinder)
 	editPrinterButton := nodewith.ClassName("icon-more-vert").Ancestor(ossettings.WindowFinder)
 	kb, err := input.Keyboard(ctx)
@@ -123,7 +122,7 @@ func Print(ctx context.Context, s *testing.State) {
 
 	// Select printer and click Print button.
 	s.Log("Selecting printer")
-	if err := printpreview.SelectPrinter(ctx, tconn, printerLabel); err != nil {
+	if err := printpreview.SelectPrinter(ctx, tconn, printerName); err != nil {
 		s.Fatal("Failed to select printer: ", err)
 	}
 
