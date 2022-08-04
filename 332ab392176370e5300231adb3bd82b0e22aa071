@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54212a63_6c1fd57c",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1408939
+      },
+      "writtenOn": "2022-08-04T05:49:28Z",
+      "side": 1,
+      "message": "Maybe add this to block of string consts on lines 22-28.",
+      "range": {
+        "startLine": 128,
+        "startChar": 28,
+        "endLine": 128,
+        "endChar": 55
+      },
+      "revId": "332ab392176370e5300231adb3bd82b0e22aa071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
