@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1efce602_f3fb92f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/simple_queries.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-08-04T21:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d5d9155_3fcd17b2",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 23
+      },
+      "revId": "653001d083e8c94376bb4b6b07df2424377d22e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a18dd6f_88968d0f",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-04T17:08:34Z",
       "side": 1,
       "message": "Arc SetUp/TearDown parts are cared by fixtures (i.e. IIUC those parts are excluded from timeout in tests). Can we go with the default timeout?",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 38
+      },
+      "revId": "653001d083e8c94376bb4b6b07df2424377d22e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e8c257d_1b5f1a50",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/simple_queries.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1211724
+      },
+      "writtenOn": "2022-08-04T21:26:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a18dd6f_88968d0f",
       "range": {
         "startLine": 38,
         "startChar": 3,
