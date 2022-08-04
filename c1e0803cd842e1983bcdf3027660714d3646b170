@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4edfc948_5c0a5744",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-04T08:44:22Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "c1e0803cd842e1983bcdf3027660714d3646b170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da74fc03_a5d468fc",
+        "filename": "src/chromiumos/tast/local/rgbkbd/util.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-04T08:44:22Z",
+      "side": 1,
+      "message": "make it a const\n\nyou already have 2 different files names",
+      "range": {
+        "startLine": 19,
+        "startChar": 51,
+        "endLine": 19,
+        "endChar": 81
+      },
+      "revId": "c1e0803cd842e1983bcdf3027660714d3646b170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d6ed1ee_502c07a1",
+        "filename": "src/chromiumos/tast/local/rgbkbd/util.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-04T08:44:22Z",
+      "side": 1,
+      "message": "nit: what about\n\n```\nExpected:\\n%v\\n\\nActual:\\n%v\\n\n```",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 50
+      },
+      "revId": "c1e0803cd842e1983bcdf3027660714d3646b170",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
