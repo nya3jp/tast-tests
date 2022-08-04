@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a419299_d4ed956e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/khanacademy_kids.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-04T23:37:51Z",
+      "side": 1,
+      "message": "ok. I will replace with \"WaitUntilExists\" on \"ok\" button since \"ok\" button appears first.",
+      "parentUuid": "312d51fa_7e1bac76",
+      "revId": "b29394b410cbd2c48a69825a426b93a61d4ef15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aa18c05_0c6db943",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0526ac2d_8a0a44c5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/khanacademy_kids.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-04T23:37:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8aa18c05_0c6db943",
+      "revId": "b29394b410cbd2c48a69825a426b93a61d4ef15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89803742_f22e91d5",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-08-01T16:48:31Z",
       "side": 1,
       "message": "nit: pull out this functionality into a `clickUntilFocused(...)` function since you\u0027re using it multiple times?",
+      "revId": "b29394b410cbd2c48a69825a426b93a61d4ef15a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "612c17b8_e6940e14",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/khanacademy_kids.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-04T23:37:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "89803742_f22e91d5",
       "revId": "b29394b410cbd2c48a69825a426b93a61d4ef15a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
