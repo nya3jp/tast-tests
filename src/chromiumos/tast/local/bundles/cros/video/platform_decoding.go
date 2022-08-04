@@ -2551,18 +2551,21 @@ func v4l2StatelessDecodeArgs(ctx context.Context, filename string) (command []st
 	return
 }
 
-//TODO(b/238630856): Refactor the following since many methods do the same thing.
-
-// av1decodeVAAPIargs provides the arguments to use with the AV1 decoding binary exe for vaapi.
-func av1decodeVAAPIargs(ctx context.Context, filename string) []string {
+// getVAAPIArgs provides the arguments to use with different decoding binary exes for vaapi.
+func getVAAPIArgs(ctx context.Context, filename, codec string) []string {
 	return []string{
 		"--video=" + filename,
-		"--codec=AV1",
+		"--codec=" + codec,
 		"--md5",
 		// aomdec is used to compute reference hashes, and outputs only those for
 		// visible frames
 		"--visible",
 	}
+}
+
+// av1decodeVAAPIargs provides the arguments to use with the AV1 decoding binary exe for vaapi.
+func av1decodeVAAPIargs(ctx context.Context, filename string) []string {
+	return getVAAPIArgs(ctx, filename, "AV1")
 }
 
 // hevcdecodeVAAPIargs provides the arguments to use with the HEVC decoding binary exe for vaapi.
@@ -2581,38 +2584,17 @@ func hevcdecodeVAAPIargs(ctx context.Context, filename string) []string {
 
 // vp9decodeVAAPIargs provides the arguments to use with the VP9 decoding binary exe for vaapi.
 func vp9decodeVAAPIargs(ctx context.Context, filename string) []string {
-	return []string{
-		"--video=" + filename,
-		"--codec=VP9",
-		"--md5",
-		// vpxdec is used to compute reference hashes, and outputs only those for
-		// visible frames
-		"--visible",
-	}
+	return getVAAPIArgs(ctx, filename, "VP9")
 }
 
 // vp8decodeVAAPIargs provides the arguments to use with the VP8 decoding binary exe for vaapi.
 func vp8decodeVAAPIargs(ctx context.Context, filename string) []string {
-	return []string{
-		"--video=" + filename,
-		"--codec=VP8",
-		"--md5",
-		// vpxdec is used to compute reference hashes, and outputs only those for
-		// visible frames
-		"--visible",
-	}
+	return getVAAPIArgs(ctx, filename, "VP8")
 }
 
 // h264decodeVAAPIargs provides the arguments to use with the H264 decoding binary exe for vaapi.
 func h264decodeVAAPIargs(ctx context.Context, filename string) []string {
-	return []string{
-		"--video=" + filename,
-		"--codec=H264",
-		"--md5",
-		// OpenH264 is used to compute reference hashes, and outputs only those for
-		// visible frames
-		"--visible",
-	}
+	return getVAAPIArgs(ctx, filename, "H264")
 }
 
 // ffmpegMD5VAAPIargs provides the arguments to use with ffmpeg for vaapi.
