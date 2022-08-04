@@ -16,6 +16,46 @@
       "message": "shadow reviewer lgtm for tast",
       "revId": "8abe9db66072102bf1019eddbc2abf96ba15ede8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c90bf383_b2882927",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-04T02:09:25Z",
+      "side": 1,
+      "message": "utility",
+      "range": {
+        "startLine": 5,
+        "startChar": 32,
+        "endLine": 5,
+        "endChar": 36
+      },
+      "revId": "8abe9db66072102bf1019eddbc2abf96ba15ede8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a099bb9_a49299e8",
+        "filename": "src/chromiumos/tast/local/usbutil/usb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-04T02:09:25Z",
+      "side": 1,
+      "message": "How about \"AttachedDevice\"?",
+      "revId": "8abe9db66072102bf1019eddbc2abf96ba15ede8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
