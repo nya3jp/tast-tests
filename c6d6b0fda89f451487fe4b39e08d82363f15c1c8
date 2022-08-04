@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e2518d0_879d8bc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-08-04T10:43:44Z",
+      "side": 1,
+      "message": "details\n\nBUG\u003d\nTEST\u003d",
+      "revId": "c6d6b0fda89f451487fe4b39e08d82363f15c1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0079f3f6_0dac2313",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-08-04T10:43:44Z",
+      "side": 1,
+      "message": "Looking forwards to this all coming together!",
+      "revId": "c6d6b0fda89f451487fe4b39e08d82363f15c1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df5d1002_291dbe1d",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1314079
+      },
+      "writtenOn": "2022-08-04T10:43:44Z",
+      "side": 1,
+      "message": "what is happening here?",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 31
+      },
+      "revId": "c6d6b0fda89f451487fe4b39e08d82363f15c1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
