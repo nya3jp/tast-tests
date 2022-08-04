@@ -48,6 +48,15 @@ func init() {
 			Val:               browser.TypeLacros,
 		}},
 		Data: []string{"default_geolocation_setting_index.html"},
+		SearchFlags: []*testing.StringPair{
+			&testing.StringPair{
+				Key:   "feature_id",
+				Value: "screenplay-99c2045c-6e0d-4011-8001-ad7e29216c7d",
+			},
+			&testing.StringPair{
+				Key:   "feature_id",
+				Value: "screenplay-1a9d7695-2c63-48ae-8c48-1245779fa399",
+			}},
 	})
 }
 
