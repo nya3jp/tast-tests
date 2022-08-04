@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4949a8_5f5b8eb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-04T05:36:17Z",
+      "side": 1,
+      "message": "What do you think about putting this under scanner/lorgnette instead of just lorgnette? It looks like we have some convention to keep them categorised like this, e.g. https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/android/\n\nAlso, if anything else from scanner needs to be pulled out later it can go there too",
+      "revId": "5352eea328a392c6bcd2b101d1adf2f0ebf7d80a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
