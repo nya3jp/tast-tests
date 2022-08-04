@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f033d5af_15561e12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-04T11:19:37Z",
+      "side": 1,
+      "message": "I can try moving it to firmware.FpUpdater as other tests don\u0027t have this problem. What do you think?",
+      "parentUuid": "dbb295ac_b9a1dd50",
+      "revId": "ef955fa75bdcbaed03d1f6e09eac59e20614647c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "994fd179_f8cf1031",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
         "patchSetId": 3
