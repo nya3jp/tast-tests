@@ -26,6 +26,7 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"ModemManager", "", ".*SIM is missing and SIM hot swap is configured, but ports are not opened.*", 0},
 		{"patchpaneld", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0},
 		{"patchpaneld", "manager.cc", ".*Invalid namespace name.*", 0},
+		{"patchpaneld", "ndproxy.cc", ".*failed to get interface name on interface.*No such device.*", 0}, // b/239574927
 		{"patchpaneld", "net_util.cc", ".*Invalid prefix length.*", 0},
 		{"patchpaneld", "network_monitor_service.cc", ".*Get device props failed.*", 0},
 		{"patchpaneld", "object_proxy.cc", ".*Failed to call method.*", 0},
@@ -37,6 +38,7 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"patchpaneld", "shill_client.cc", ".*Unknown interface name eth\\d.*", 0},
 		{"shill", "dbus_method_invoker.h", ".*CallMethodAndBlockWithTimeout.*", 0},                     // b/210893108
 		{"shill", "dbus_properties_proxy.cc", ".*GetAll failed on org.freedesktop.ModemManager1.*", 0}, // b/215373366
+		// b/215373366
 		// {"shill", "device_info.cc", ".*Add Link message for.*does not have .*", 0},                                             // b/208654528
 		{"shill", "device_info.cc", ".*Add link message does not have IFLA_ADDRESS, link: rmnet_ipa0, Technology: ethernet.*", 0}, // b/208654528
 		{"shill", "dns_client.cc", ".*No valid DNS server addresses.*", 0},                                                        // b/211000413
@@ -63,11 +65,9 @@ func InitializeAllowedEntries() []AllowedEntry {
 		{"shill", "upstart_proxy.cc", ".*Error.AlreadyStarted Job is already running: shill-event", 0}, // b/213930243
 		// Need to try to get more info about these:
 		// {"shill", "unknown", ".*", 0},
-		// {"shill", "userdb_utils.cc", ".*Unable to find user pluginvm.*", 0}, // b/213922333
 		// 'modem in failed state' errors are handled in shill. Because they are DBus errors, suppressing them is difficult:
 		{"shill", "utils.cc", ".*AddDBusError.*org.freedesktop.ModemManager1.Error.Core.WrongState, Message=modem in failed state", 0},
-		// {"shill", "wifi.cc", ".*does not support MAC address randomization.*", 0},        // b/208652858
-		// {"shill", "wifi.cc", ".*Unsupported NL80211_ATTR_REG_ALPHA2 attribute: 99.*", 0}, // b/217761687
+		{"shill", "wifi.cc", ".*This WiFi device does not support MAC address randomization.*", 0}, // b/239574927
 		{"wpa_supplicant", "", ".*Could not set interface wlan0 flags \\(UP\\): Input\\/output error.*", 0},
 		{"wpa_supplicant", "", ".*nl80211: Could not set interface 'wlan0' UP.*", 0},
 		{"wpa_supplicant", "", ".*Permission denied.*", 0},
