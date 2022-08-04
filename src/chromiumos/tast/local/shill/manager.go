@@ -266,6 +266,26 @@ func (m *Manager) RequestScan(ctx context.Context, technology Technology) error 
 	return m.Call(ctx, "RequestScan", string(technology)).Err
 }
 
+// RequestStationInfo requests a scan for the specified technology.
+func (m *Manager) RequestStationInfo(ctx context.Context) error {
+	return m.Call(ctx, "RequestStationInfo").Err
+}
+
+// RetrieveStationInfo requests a scan for the specified technology.
+func (m *Manager) RetrieveStationInfo(ctx context.Context) (map[string]string, error) {
+	var props map[string]interface{}
+	if err := m.Call(ctx, "RetrieveStationInfo").Store(&props); err != nil {
+		return nil, errors.Wrapf(err, "failed getting properties of %v", m)
+	}
+	p := dbusutil.NewProperties(props)
+	ans := map[string]string{}
+	for k := range props {
+		v, _ := p.GetUint32(k)
+		ans[k] = fmt.Sprintf("%d", v)
+	}
+	return ans, nil
+}
+
 // EnableTechnology enables a technology interface.
 func (m *Manager) EnableTechnology(ctx context.Context, technology Technology) error {
 	return m.Call(ctx, "EnableTechnology", string(technology)).Err

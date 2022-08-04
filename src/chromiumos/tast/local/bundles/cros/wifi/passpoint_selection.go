@@ -381,6 +381,22 @@ func PasspointSelection(ctx context.Context, s *testing.State) {
 	if err := passpoint.WaitForSTAAssociated(ctx, m, tc.clientIface, passpoint.STAAssociationTimeout); err != nil {
 		s.Fatal("Passpoint client not connected to access point: ", err)
 	}
+
+	if err := tc.manager.RequestStationInfo(ctx); err != nil {
+		s.Fatal("Passpoint client not RequestStationInfo: ", err)
+	}
+
+	testing.Sleep(ctx, 1000*time.Millisecond)
+	if p, err := tc.manager.RetrieveStationInfo(ctx); err != nil {
+		s.Fatal("Passpoint client not RequestStationInfo: ", err)
+	} else {
+		// txt, _ := p.GetString("PacketReceiveSuccesses")
+		// s.Logf("PacketReceiveSuccesses, %s", txt)
+		for k, v := range p {
+			s.Logf("%s: %s", k, v)
+		}
+	}
+
 }
 
 // prepareSelectionTest creates a test profile, reads the test parameters and delivers a test context.
