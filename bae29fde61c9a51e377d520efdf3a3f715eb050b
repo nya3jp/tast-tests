@@ -225,6 +225,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb3f1c9b_63d30cc2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T22:45:49Z",
+      "side": 1,
+      "message": "http://go/go-style/decisions#v is not a strict rule, but I found that a single-letter variable for common types like lacros has been widely used in our test codebase though.",
+      "parentUuid": "464b0fed_d043767e",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 31
+      },
+      "revId": "bae29fde61c9a51e377d520efdf3a3f715eb050b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e97875cf_4b05c643",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 5
@@ -236,6 +260,30 @@
       "writtenOn": "2022-08-04T18:42:57Z",
       "side": 1,
       "message": "Hidehiko, Eliot, can you please suggest the naming convention here? It would be good to have it documented in the guideline doc or code. AFAICT this is what I remembered last time:\n\n`ltconn` with \u0027l\u0027 for lacros\n`atconn` with \u0027a\u0027 for ash-chrome that could be used for new code.",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 12
+      },
+      "revId": "bae29fde61c9a51e377d520efdf3a3f715eb050b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb690915_4cb6b26e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T22:45:49Z",
+      "side": 1,
+      "message": "Btw, L160-163 could entirely be removed if there is no use of it (unless it needs to run some javascripts in lacros)",
+      "parentUuid": "e97875cf_4b05c643",
       "range": {
         "startLine": 156,
         "startChar": 1,

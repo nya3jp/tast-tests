@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a98807c5_8581bd1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T22:45:49Z",
+      "side": 1,
+      "message": "cleanupCtx",
+      "range": {
+        "startLine": 158,
+        "startChar": 27,
+        "endLine": 158,
+        "endChar": 30
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1eba7c2_4a9517e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T22:45:49Z",
+      "side": 1,
+      "message": "Not sure how important it is to record videos for every test run, but\nis it just fine to capture a screenshot with `defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)` only when it falls through?",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa890887_395df660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T22:45:49Z",
+      "side": 1,
+      "message": "chrome://newtab/",
+      "range": {
+        "startLine": 322,
+        "startChar": 54,
+        "endLine": 322,
+        "endChar": 65
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0dc97dd_58e98f02",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T22:45:49Z",
+      "side": 1,
+      "message": "tconn that is passed into `uiauto` should be from ash-chrome, not from lacros-chrome.\nrename to \u0027tconn\u0027 or \u0027atconn\u0027 when the naming convention is confirmed.",
+      "range": {
+        "startLine": 327,
+        "startChar": 87,
+        "endLine": 327,
+        "endChar": 98
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b71178e_0cb877ba",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T22:45:49Z",
+      "side": 1,
+      "message": "chrome.NewTabURL",
+      "range": {
+        "startLine": 332,
+        "startChar": 71,
+        "endLine": 332,
+        "endChar": 84
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a661ff56_5848208c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T22:45:49Z",
+      "side": 1,
+      "message": "new tab page",
+      "range": {
+        "startLine": 334,
+        "startChar": 45,
+        "endLine": 334,
+        "endChar": 60
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c71f01_48353f0e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T22:45:49Z",
+      "side": 1,
+      "message": "ditto: rename properly as it should be from ash-chrome.",
+      "range": {
+        "startLine": 341,
+        "startChar": 18,
+        "endLine": 341,
+        "endChar": 29
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
