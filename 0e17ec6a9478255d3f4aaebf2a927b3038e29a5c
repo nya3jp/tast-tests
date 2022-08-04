@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83c8b20_2ab8e8ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multitouch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-04T02:31:45Z",
+      "side": 1,
+      "message": "Please do not omit any potential error in the return.",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "0e17ec6a9478255d3f4aaebf2a927b3038e29a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10f77855_0a8f4026",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multitouch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-04T02:31:45Z",
+      "side": 1,
+      "message": "Can you add some comments here? I do not quite understand what it is used for",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 12
+      },
+      "revId": "0e17ec6a9478255d3f4aaebf2a927b3038e29a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "961f56eb_92ac1718",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multitouch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-04T02:31:45Z",
+      "side": 1,
+      "message": "It is suggested to break down this test a bit more. It covers unshift and submit on second tap. So it would be nice to test it as below:\n\ntouchAndHold(ZKeyFinder),\nmouseClickAndHold(XKeyFinder), // wrap it as below:\n// vkbCtx.ui.MouseMoveTo(XKeyFinder, 10*time.Millisecond),\n// mouse.Press(vkbCtx.tconn, mouse.LeftButton),\nutil.WaitForFieldTextToBe(tconn, inputField.Finder(), \"Z\"),\n// Assume VK is unshifted after second press. Using lowercase \"x\" to test.\nvkbCtx.WaitForKeysExist([]string{\"x\"})\nmouse.Release(vkbCtx.tconn, mouse.LeftButton),\nvkbCtx.TapKey(\"x\")\nutil.WaitForFieldTextToBe(tconn, inputField.Finder(), \"Zyx\"),\nreleaseTouch(),",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 42
+      },
+      "revId": "0e17ec6a9478255d3f4aaebf2a927b3038e29a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
