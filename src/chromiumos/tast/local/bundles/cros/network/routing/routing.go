@@ -199,7 +199,7 @@ func expectPingSuccess(ctx context.Context, addr, user string) error {
 	if err := deletePingEntriesInConntrack(ctx); err != nil {
 		return errors.Wrap(err, "failed to reset conntrack before pinging")
 	}
-	testing.ContextLog(ctx, "Start to ping ", addr)
+	testing.ContextLogf(ctx, "Start to ping %s as user %s", addr, user)
 	pr := localping.NewLocalRunner()
 	// Only ping once, continuous pings will be very likely to be affected by the
 	// connection pinging so it does not make sense. In the routing tests, all the
