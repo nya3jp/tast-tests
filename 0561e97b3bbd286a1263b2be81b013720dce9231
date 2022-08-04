@@ -122,6 +122,24 @@
       "parentUuid": "7c2e571e_9fcfbdfd",
       "revId": "0561e97b3bbd286a1263b2be81b013720dce9231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b78faa_f669f2e9",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-04T20:44:04Z",
+      "side": 1,
+      "message": "I will be at work tomorrow 😊",
+      "parentUuid": "ced74c6d_110551fb",
+      "revId": "0561e97b3bbd286a1263b2be81b013720dce9231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
