@@ -39,6 +39,30 @@
       },
       "revId": "9466f4696cde7ed0f664883e40e7865ce71932c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e3ff58_1718a21b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-08-04T02:42:58Z",
+      "side": 1,
+      "message": "Actually - tried also to use \"defer lacrosBrowser.Close(...)\"\n\nwith the same result.\n\nThe problem: I get randomly 2 about:blank tabs when the test runs. The funny thing is that the second thing is YouTube - which none of my tests opens.\n\n2022-08-04T02:26:41.620192Z [02:26:41.469] 2 targets matched while unique match was expected. Existing matching targets:\n2022-08-04T02:26:41.620309Z [02:26:41.469]   \u0026{TargetID:B88054A1491F45F58115D3FC3A3EB3C8 Type:other Title:YouTube TV - Watch \u0026 DVR Live Sports, Shows \u0026 News URL:about:blank Attached:false OpenerID:\u003cnil\u003e CanAccessOpener:false OpenerFrameID:\u003cnil\u003e BrowserContextID:0xc000b0e130}\n2022-08-04T02:26:41.620376Z [02:26:41.469]   \u0026{TargetID:72E3AD150232967A22D93A259F72899C Type:page Title:about:blank URL:about:blank Attached:false OpenerID:\u003cnil\u003e CanAccessOpener:false OpenerFrameID:\u003cnil\u003e BrowserContextID:0xc000b0e140}",
+      "parentUuid": "745c846e_d06470e9",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 1
+      },
+      "revId": "9466f4696cde7ed0f664883e40e7865ce71932c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
