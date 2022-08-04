@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db5350d7_17609ce8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-08-04T00:01:32Z",
+      "side": 1,
+      "message": "nit: sp",
+      "range": {
+        "startLine": 14,
+        "startChar": 19,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "fef08763fa3920a1482e594fa6e7a41142a59211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18737566_a458e396",
+        "filename": "src/chromiumos/tast/local/rgbkbd/rgbkbd.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-08-04T00:01:32Z",
+      "side": 1,
+      "message": "can\u0027t this be a static var? looking at line 18",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 48
+      },
+      "revId": "fef08763fa3920a1482e594fa6e7a41142a59211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aa72b16_f4d79a77",
+        "filename": "src/chromiumos/tast/local/rgbkbd/util.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-08-04T00:01:32Z",
+      "side": 1,
+      "message": "log",
+      "range": {
+        "startLine": 19,
+        "startChar": 78,
+        "endLine": 19,
+        "endChar": 81
+      },
+      "revId": "fef08763fa3920a1482e594fa6e7a41142a59211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfb5d7f4_e3a39d56",
+        "filename": "src/chromiumos/tast/local/rgbkbd/util.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1294854
+      },
+      "writtenOn": "2022-08-04T00:01:32Z",
+      "side": 1,
+      "message": "Not technically logging anything, its just creating a string. Maybe CreateLog?",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "fef08763fa3920a1482e594fa6e7a41142a59211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
