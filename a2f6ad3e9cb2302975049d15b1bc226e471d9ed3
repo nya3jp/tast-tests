@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f04f7b5_2b78e66b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/show_top_help_content_if_no_suggested_content.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-04T20:10:55Z",
+      "side": 1,
+      "message": "Move this string to a const and describe its purpose",
+      "revId": "a2f6ad3e9cb2302975049d15b1bc226e471d9ed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
