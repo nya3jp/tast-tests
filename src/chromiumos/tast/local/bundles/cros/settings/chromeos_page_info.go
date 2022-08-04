@@ -39,6 +39,14 @@ func init() {
 	})
 }
 
+type chromeOSPageInfo struct {
+	cr       *chrome.Chrome
+	tconn    *chrome.TestConn
+	ui       *uiauto.Context
+	settings *ossettings.OSSettings
+	chrome   apps.App
+}
+
 // ChromeOSPageInfo checks chromeOS version info and online help available to user.
 func ChromeOSPageInfo(ctx context.Context, s *testing.State) {
 	cr := s.FixtValue().(*chrome.Chrome)
@@ -62,6 +70,13 @@ func ChromeOSPageInfo(ctx context.Context, s *testing.State) {
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 	defer faillog.SaveScreenshotOnError(cleanupCtx, cr, s.OutDir(), s.HasError)
 
+	chrome, err := apps.ChromeOrChromium(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to find the chrome app: ", err)
+	}
+
+	resource := &chromeOSPageInfo{cr, tconn, ui, settings, chrome}
+
 	s.Log("Check ChromeOS version")
 	if err := checkVersion(settings)(ctx); err != nil {
 		s.Fatal("Failed to check ChromeOS version: ", err)
@@ -73,27 +88,27 @@ func ChromeOSPageInfo(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Check online help")
-	if err := checkOnlineHelp(ui, settings)(ctx); err != nil {
+	if err := checkOnlineHelp(resource)(ctx); err != nil {
 		s.Fatal("Failed to check online help: ", err)
 	}
 
 	s.Log("Check report issue")
-	if err := checkReportIssue(ui, settings)(ctx); err != nil {
+	if err := checkReportIssue(resource)(ctx); err != nil {
 		s.Fatal("Failed to check report issue: ", err)
 	}
 
 	s.Log("Check detailed build informations")
-	if err := checkDetail(ui, settings)(ctx); err != nil {
+	if err := checkDetail(resource)(ctx); err != nil {
 		s.Fatal("Failed to check detailed build informations: ", err)
 	}
 
 	s.Log("Check open source links")
-	if err := checkOpenSources(ui, cr, settings)(ctx); err != nil {
+	if err := checkOpenSources(resource)(ctx); err != nil {
 		s.Fatal("Failed to check open source links: ", err)
 	}
 
 	s.Log("Check term of services")
-	if err := checkTermsOfServiceLinks(ui, settings)(ctx); err != nil {
+	if err := checkTermsOfServiceLinks(resource)(ctx); err != nil {
 		s.Fatal("Failed to check term of services: ", err)
 	}
 }
@@ -106,39 +121,39 @@ func checkUpdate(settings *ossettings.OSSettings) uiauto.Action {
 	return settings.WaitUntilExists(ossettings.CheckUpdateBtn)
 }
 
-func checkOnlineHelp(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Action {
+func checkOnlineHelp(resource *chromeOSPageInfo) uiauto.Action {
 	helpRoot := nodewith.Name(apps.Help.Name).HasClass("BrowserFrame").Role(role.Window)
 	titleReg := regexp.MustCompile("Welcome to your (Chromebook|Chromebox|Chromebit|Chromebase|Chrome device)")
 
 	return uiauto.Combine("check get help",
-		settings.LaunchHelpApp(),
-		ui.WaitUntilExists(nodewith.NameRegex(titleReg).Role(role.StaticText).Ancestor(helpRoot)),
-		ui.LeftClick(nodewith.Name("Close").Ancestor(helpRoot)),
-		ui.WaitUntilGone(helpRoot),
+		resource.settings.LaunchHelpApp(),
+		resource.ui.WaitUntilExists(nodewith.NameRegex(titleReg).Role(role.StaticText).Ancestor(helpRoot)),
+		func(ctx context.Context) error { return apps.Close(ctx, resource.tconn, apps.Help.ID) },
+		resource.ui.WaitUntilGone(helpRoot),
 	)
 }
 
-func checkReportIssue(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Action {
+func checkReportIssue(resource *chromeOSPageInfo) uiauto.Action {
 	feedbackRoot := nodewith.Name("Send feedback to Google").HasClass("RootView")
 
 	return uiauto.Combine("check report issue",
-		settings.LeftClick(ossettings.ReportIssue),
-		ui.WaitUntilExists(feedbackRoot),
-		ui.LeftClick(nodewith.Name("Close").Ancestor(feedbackRoot)),
-		ui.WaitUntilGone(feedbackRoot),
+		resource.settings.LeftClick(ossettings.ReportIssue),
+		resource.ui.WaitUntilExists(feedbackRoot),
+		resource.ui.LeftClick(nodewith.Name("Close").Ancestor(feedbackRoot)),
+		resource.ui.WaitUntilGone(feedbackRoot),
 	)
 }
 
-func checkDetail(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Action {
+func checkDetail(resource *chromeOSPageInfo) uiauto.Action {
 	detailRoot := nodewith.Name("Chrome - About Version").HasClass("BrowserFrame").Role(role.Window)
 
 	// The "Additional Details" can be off-screen when the screen size is small.
 	// Focus before clicking to ensure it is on-screen.
 	return uiauto.Combine("click details",
-		settings.FocusAndWait(ossettings.AdditionalDetails),
-		settings.LeftClick(ossettings.AdditionalDetails),
+		resource.settings.FocusAndWait(ossettings.AdditionalDetails),
+		resource.settings.LeftClick(ossettings.AdditionalDetails),
 		func(ctx context.Context) error {
-			arr, err := ui.Info(ctx, ossettings.ChangeChannelBtn)
+			arr, err := resource.ui.Info(ctx, ossettings.ChangeChannelBtn)
 			if err != nil {
 				return err
 			}
@@ -147,23 +162,23 @@ func checkDetail(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Act
 			}
 			return nil
 		},
-		settings.LeftClick(ossettings.BuildDetailsBtn),
-		ui.WaitUntilExists(nodewith.Name("Platform").Role(role.StaticText).Ancestor(detailRoot)),
-		ui.LeftClick(nodewith.Name("Close").HasClass("FrameCaptionButton").Ancestor(detailRoot)),
-		ui.WaitUntilGone(detailRoot),
-		settings.LeftClick(ossettings.BackArrowBtn),
-		settings.WaitUntilGone(ossettings.BackArrowBtn),
+		resource.settings.LeftClick(ossettings.BuildDetailsBtn),
+		resource.ui.WaitUntilExists(nodewith.Name("Platform").Role(role.StaticText).Ancestor(detailRoot)),
+		func(ctx context.Context) error { return apps.Close(ctx, resource.tconn, resource.chrome.ID) },
+		resource.ui.WaitUntilGone(detailRoot),
+		resource.settings.LeftClick(ossettings.BackArrowBtn),
+		resource.settings.WaitUntilGone(ossettings.BackArrowBtn),
 	)
 }
 
-func checkOpenSources(ui *uiauto.Context, cr *chrome.Chrome, settings *ossettings.OSSettings) uiauto.Action {
+func checkOpenSources(resource *chromeOSPageInfo) uiauto.Action {
 	return func(ctx context.Context) error {
 		// Focus on the second link to ensure both links are on-screen.
-		if err := settings.FocusAndWait(ossettings.OpenSourceSoftwares.Nth(1))(ctx); err != nil {
+		if err := resource.settings.FocusAndWait(ossettings.OpenSourceSoftwares.Nth(1))(ctx); err != nil {
 			return errors.Wrap(err, "failed to focus on node")
 		}
 
-		infos, err := ui.NodesInfo(ctx, ossettings.OpenSourceSoftwares)
+		infos, err := resource.ui.NodesInfo(ctx, ossettings.OpenSourceSoftwares)
 		if err != nil {
 			return errors.Wrap(err, "failed to get opensource nodes info")
 		}
@@ -182,11 +197,11 @@ func checkOpenSources(ui *uiauto.Context, cr *chrome.Chrome, settings *ossetting
 			{node: ossettings.OpenSourceSoftwares.Nth(1), url: "chrome://os-credits/"},
 		} {
 			testing.ContextLogf(ctx, "Current opensourse link: %q", opensource.url)
-			if err := ui.LeftClick(opensource.node)(ctx); err != nil {
+			if err := resource.ui.LeftClick(opensource.node)(ctx); err != nil {
 				return errors.Wrap(err, "failed to click on opensource link")
 			}
 
-			conn, err := cr.NewConnForTarget(matchTargetCtx, chrome.MatchTargetURL(opensource.url))
+			conn, err := resource.cr.NewConnForTarget(matchTargetCtx, chrome.MatchTargetURL(opensource.url))
 			if err != nil {
 				return errors.Wrap(err, "failed to find expected page")
 			}
@@ -202,15 +217,15 @@ func checkOpenSources(ui *uiauto.Context, cr *chrome.Chrome, settings *ossetting
 	}
 }
 
-func checkTermsOfServiceLinks(ui *uiauto.Context, settings *ossettings.OSSettings) uiauto.Action {
+func checkTermsOfServiceLinks(resource *chromeOSPageInfo) uiauto.Action {
 	title := "Google Chrome and ChromeOS Additional Terms of Service"
 	termsRoot := nodewith.Name("Chrome - " + title).HasClass("BrowserFrame").Role(role.Window)
 	termsOfServiceTitle := nodewith.Name(title).Role(role.Heading).Ancestor(termsRoot)
 
 	return uiauto.Combine("click term of service",
-		settings.FocusAndWait(ossettings.TermsOfService),
-		settings.LeftClick(ossettings.TermsOfService),
-		ui.WaitUntilExists(termsOfServiceTitle),
-		ui.LeftClick(nodewith.Name("Close").HasClass("FrameCaptionButton").Ancestor(termsRoot)),
+		resource.settings.FocusAndWait(ossettings.TermsOfService),
+		resource.settings.LeftClick(ossettings.TermsOfService),
+		resource.ui.WaitUntilExists(termsOfServiceTitle),
+		func(ctx context.Context) error { return apps.Close(ctx, resource.tconn, resource.chrome.ID) },
 	)
 }
