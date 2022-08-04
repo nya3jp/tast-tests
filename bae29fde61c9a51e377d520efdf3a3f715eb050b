@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3c3d246_b2b722f0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-08-04T20:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "648521a9_034fba29",
+      "range": {
+        "startLine": 46,
+        "startChar": 24,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "bae29fde61c9a51e377d520efdf3a3f715eb050b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea87c33a_c0c9afab",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-08-04T18:42:57Z",
       "side": 1,
       "message": "Whoa, that\u0027s huge!\nHow long does it actually take to complete? If you want to run your test in continuous testing, it should probably be split into more pieces that could be run within 10-ish minutes.\nAnyone know about the timeout guidelines?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 33
+      },
+      "revId": "bae29fde61c9a51e377d520efdf3a3f715eb050b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e52ccb42_4585127a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-08-04T20:14:27Z",
+      "side": 1,
+      "message": "Yeah - about 10 minutes. I will set 15m to be sure.",
+      "parentUuid": "ea87c33a_c0c9afab",
       "range": {
         "startLine": 51,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d325b49f_95c00246",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-08-04T20:14:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2a35f87_fddd3ac8",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 63
+      },
+      "revId": "bae29fde61c9a51e377d520efdf3a3f715eb050b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "335536b7_a1b8b091",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-08-04T18:42:57Z",
       "side": 1,
       "message": "```\nl, err :\u003d lacros.Launch(ctx, tconnAsh)\nif err !\u003d nil {\n\ts.Fatal(\"Failed to launch lacros-chrome: \", err)\n}\ndefer l.Close(cleanupCtx)\n```",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 31
+      },
+      "revId": "bae29fde61c9a51e377d520efdf3a3f715eb050b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464b0fed_d043767e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-08-04T20:14:27Z",
+      "side": 1,
+      "message": "I left the name for now (I do not really like one letter variable names - unless that is how it is being done in GO?)",
+      "parentUuid": "335536b7_a1b8b091",
       "range": {
         "startLine": 150,
         "startChar": 0,
@@ -163,6 +259,30 @@
       "writtenOn": "2022-08-04T18:42:57Z",
       "side": 1,
       "message": "This is failing on the build check:\n\nurl_redirect.go:172:83: not enough arguments in call to `uiauto.StopRecordFromKBAndSaveOnError` that seems to need one more argument to pass.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 93
+      },
+      "revId": "bae29fde61c9a51e377d520efdf3a3f715eb050b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5a7bf42_e5bae565",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-08-04T20:14:27Z",
+      "side": 1,
+      "message": "Yeah - as was line 168 above. I did fix those already.",
+      "parentUuid": "c37bf797_43a89201",
       "range": {
         "startLine": 172,
         "startChar": 0,
