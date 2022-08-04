@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0e8fc4e_9fd40e30",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_dss_offline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1413373
+      },
+      "writtenOn": "2022-08-04T05:50:31Z",
+      "side": 1,
+      "message": "Got it. Thanks for explaining!",
+      "parentUuid": "86dfca96_a6d38792",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 69
+      },
+      "revId": "be1a0950742cecfbf5c8b35081e01fb828f1ef43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "daf9b84a_88cd3f7d",
