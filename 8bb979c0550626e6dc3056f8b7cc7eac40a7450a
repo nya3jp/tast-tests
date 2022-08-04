@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2706e26f_a7eac93e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-04T18:51:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a79d844c_969eb654",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 122
+      },
+      "revId": "8bb979c0550626e6dc3056f8b7cc7eac40a7450a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "93fc0084_0c5578d4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-04T18:00:49Z",
       "side": 1,
       "message": "Use `\"localhost:\"` so it chooses the local port automatically.\n\nWhen I made this originally I didn\u0027t realize it still required the `:` delimiter when not choosing a port to make this happen.",
+      "range": {
+        "startLine": 56,
+        "startChar": 64,
+        "endLine": 56,
+        "endChar": 80
+      },
+      "revId": "8bb979c0550626e6dc3056f8b7cc7eac40a7450a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfc26775_70a2687f",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/forwarded.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1541462
+      },
+      "writtenOn": "2022-08-04T18:51:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7135fd91_f4ae7546",
       "range": {
         "startLine": 56,
         "startChar": 64,
