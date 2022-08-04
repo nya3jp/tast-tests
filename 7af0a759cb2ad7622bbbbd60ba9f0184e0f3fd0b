@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca608dd_a5f22aa5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-04T01:54:04Z",
+      "side": 1,
+      "message": "`func(ctx context.Context)`, otherwise the ctx will be captured :)",
+      "range": {
+        "startLine": 80,
+        "startChar": 13,
+        "endLine": 80,
+        "endChar": 28
+      },
+      "revId": "7af0a759cb2ad7622bbbbd60ba9f0184e0f3fd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

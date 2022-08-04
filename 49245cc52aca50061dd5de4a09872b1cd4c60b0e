@@ -404,6 +404,30 @@
       },
       "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf0f4e80_3a8220d9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-04T01:54:04Z",
+      "side": 1,
+      "message": "Sorry I should mention this earlier: you probably want to do the cleanup when this function fails after switching to this pattern.\n\nOne pattern for this could be\n```\nsuccess :\u003d false\ncleanup :\u003d func(ctx context.Context) {\n  ...\n}\ndefer func() {\n  if !success {\n    cleanup(ctx)\n  }\n}()  // if the following execution can be timeout, we may pass in a cleanupCtx here\n\n...\n\nsuccess \u003d true\nreturn cleanup, nil\n\n```",
+      "parentUuid": "c3dd54de_00e69a29",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 19
+      },
+      "revId": "49245cc52aca50061dd5de4a09872b1cd4c60b0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
