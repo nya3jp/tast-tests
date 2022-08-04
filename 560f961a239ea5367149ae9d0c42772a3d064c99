@@ -1,6 +1,57 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5945f68_186a7eac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-08-04T23:31:31Z",
+      "side": 1,
+      "message": "We usually have some location of this code in front of this title. Please check recent CLs touching this file and add similar location to the tile.\n\nalso, usually no period in the end.",
+      "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5bbb496_bc893d35",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-08-04T23:31:31Z",
+      "side": 1,
+      "message": "We need bug id here as well.",
+      "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "198db06e_73356d22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-08-04T23:31:31Z",
+      "side": 1,
+      "message": "Did we actually run this test?\n\nIf so, which platform? Please also mention the platform here as well. \n\ne.g. tast -verbose run localhost:2222 video.PlatformDecoding.vaapi_av1 on asurada\n\nAlso can we attach the result in the bug?",
+      "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fd798ee9_ea377161",
@@ -31,6 +82,40 @@
       "writtenOn": "2022-08-04T23:16:35Z",
       "side": 1,
       "message": "This change is ready to review. PTAL. Thank you.",
+      "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b6cbad_58bb8cc7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2554,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-08-04T23:31:31Z",
+      "side": 1,
+      "message": "With this CL, we need to remove this comment.",
+      "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a898c1c7_582a10a8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2557,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-08-04T23:31:31Z",
+      "side": 1,
+      "message": "Can we use name \"getVAAPIArgs\" as all of them are VAAPI?",
       "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
