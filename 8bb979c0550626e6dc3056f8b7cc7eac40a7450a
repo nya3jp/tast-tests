@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a79d844c_969eb654",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-04T18:00:49Z",
+      "side": 1,
+      "message": "nit: Use imperative tense in commit messages\n\nsomething like\n```\ncallbox: Fix missing port in forwarding address\n\nThe callbox fixture is unable to establish a forwarded connection due to a missing port parameter in the address string. This change fixes that problem by including the port parameter.\n```\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#commit-messages\nhttps://cbea.ms/git-commit/#imperative",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 122
+      },
+      "revId": "8bb979c0550626e6dc3056f8b7cc7eac40a7450a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7135fd91_f4ae7546",
+        "filename": "src/chromiumos/tast/remote/cellular/callbox/manager/forwarded.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-04T18:00:49Z",
+      "side": 1,
+      "message": "Use `\"localhost:\"` so it chooses the local port automatically.\n\nWhen I made this originally I didn\u0027t realize it still required the `:` delimiter when not choosing a port to make this happen.",
+      "range": {
+        "startLine": 56,
+        "startChar": 64,
+        "endLine": 56,
+        "endChar": 80
+      },
+      "revId": "8bb979c0550626e6dc3056f8b7cc7eac40a7450a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
