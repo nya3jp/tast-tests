@@ -346,6 +346,30 @@
       },
       "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d8c6fc0_9eb0dfb5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-04T15:43:08Z",
+      "side": 1,
+      "message": "I think you are using the wrong function to verify that pasted content is not there.\n\nyour function will succeed only when pasted will be there. In case when pasting is blocked, the function should succeed only when pasted didn\u0027t appear during some period of time. That function should use ui.EnsureGoneFor instead of ui.WaitUntilExists",
+      "parentUuid": "7a319ba6_24890687",
+      "range": {
+        "startLine": 275,
+        "startChar": 51,
+        "endLine": 275,
+        "endChar": 69
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
