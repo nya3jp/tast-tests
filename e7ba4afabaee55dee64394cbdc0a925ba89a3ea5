@@ -16,6 +16,24 @@
       "message": "LGTM from a Tast perspective, but would recommend getting a review from someone more familiar with the contents of this test as well.",
       "revId": "e7ba4afabaee55dee64394cbdc0a925ba89a3ea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65d365ec_717539f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-04T00:04:31Z",
+      "side": 1,
+      "message": "Thanks. Yes, I\u0027ll wait for Thomas\u0027 review as well.",
+      "parentUuid": "9350ccd9_15f795e9",
+      "revId": "e7ba4afabaee55dee64394cbdc0a925ba89a3ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
