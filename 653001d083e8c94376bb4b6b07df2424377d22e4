@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7157861b_2ea27de3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-04T17:08:34Z",
+      "side": 1,
+      "message": "lgtm. Thank you!",
+      "revId": "653001d083e8c94376bb4b6b07df2424377d22e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d5d9155_3fcd17b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/simple_queries.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-04T17:08:34Z",
+      "side": 1,
+      "message": "optional nit: yawano@google.com. I\u0027m using @google.com one these days.",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 23
+      },
+      "revId": "653001d083e8c94376bb4b6b07df2424377d22e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a18dd6f_88968d0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/assistant/simple_queries.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-04T17:08:34Z",
+      "side": 1,
+      "message": "Arc SetUp/TearDown parts are cared by fixtures (i.e. IIUC those parts are excluded from timeout in tests). Can we go with the default timeout?",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 38
+      },
+      "revId": "653001d083e8c94376bb4b6b07df2424377d22e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
