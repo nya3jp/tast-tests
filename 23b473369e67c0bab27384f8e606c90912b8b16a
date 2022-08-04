@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ade5d0_b3513756",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1537587
+      },
+      "writtenOn": "2022-08-04T17:31:55Z",
+      "side": 1,
+      "message": "Hi Kikuchi San, Personalization Hub feature flag is enabled by default. Please take a look at this update. Thanks!",
+      "revId": "23b473369e67c0bab27384f8e606c90912b8b16a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
