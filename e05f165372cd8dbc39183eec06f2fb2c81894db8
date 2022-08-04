@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb1be90c_abd9fd67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-08-04T11:58:16Z",
+      "side": 1,
+      "message": "I ended up adding the `unsupported` case.",
+      "parentUuid": "56497b73_700b23ae",
+      "revId": "e05f165372cd8dbc39183eec06f2fb2c81894db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9417f848_4e587584",
