@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d8aa36b_4fac75d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-08-04T02:20:39Z",
+      "side": 1,
+      "message": "Hello!\n\nHere is now ... finally.\n\nA bit odd is that in the end I need an explicit sleep waiting to make sure that the Lacros window gets closed between tests (see comment).\n\nAny ideas are welcome - and thanks for the review!\n\nStefan",
+      "revId": "9466f4696cde7ed0f664883e40e7865ce71932c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "745c846e_d06470e9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1001410
+      },
+      "writtenOn": "2022-08-04T02:20:39Z",
+      "side": 1,
+      "message": "This one here is odd. An explicit sleep fixes the thing - if not I see sometimes that there is a Lacros window still open and I get 2. However - it was said that an explicit wait via poll is required. I have seen this still failing once in a while.\n\nAny ideas are highly welcome!",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 1
+      },
+      "revId": "9466f4696cde7ed0f664883e40e7865ce71932c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
