@@ -165,7 +165,7 @@ func expectOverrideAllowedForURL(ctx context.Context, br *browser.Browser, tconn
 	ui := uiauto.New(tconn)
 	advancedButton := nodewith.Name("Advanced").Role(role.Button)
 	if err := uiauto.Combine("click advanced",
-		ui.WaitUntilExists(advancedButton),
+		ui.WithTimeout(5*time.Second).WaitUntilExists(advancedButton),
 		ui.FocusAndWait(advancedButton),
 		ui.DoDefault(advancedButton),
 	)(ctx); err != nil {
