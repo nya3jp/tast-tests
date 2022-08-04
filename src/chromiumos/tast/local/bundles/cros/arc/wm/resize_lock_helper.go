@@ -761,14 +761,7 @@ func SetSolidWhiteWallpaper(ctx context.Context, ui *uiauto.Context) error {
 	defer mew.Close()
 
 	if err := wallpaper.OpenWallpaperPicker(ui)(ctx); err != nil {
-		// wallpaper.OpenWallpaperPicker currently doesn't support devices without Personalization Hub enabled, so try to open legacy one if it fails.
-		// TODO(b/233546001): Remove this workaround when Personalization Hub gets enabled by default.
-		if err := wallpaper.CloseWallpaperPicker()(ctx); err != nil {
-			return errors.Wrap(err, "failed to close wallpaper picker")
-		}
-		if err := openLegacyWallpaperPicker(ui)(ctx); err != nil {
-			return errors.Wrap(err, "failed to open wallpaper picker")
-		}
+		return errors.Wrap(err, "failed to open wallpaper picker")
 	}
 
 	// Move the cursor to the active photo container before scrolling.
