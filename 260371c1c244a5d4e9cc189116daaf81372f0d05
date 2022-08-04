@@ -51,6 +51,138 @@
       "message": "LGTM",
       "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21bb7760_1c83b7ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-04T14:48:07Z",
+      "side": 1,
+      "message": "A few questions, mostly for my understanding :) Thanks!",
+      "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba9f856_a81fddd1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-04T14:48:07Z",
+      "side": 1,
+      "message": "Is this some UI field, i.e. text box? If yes, can we mention which one it is (IIRC there are multiple proxy text boxes) and mention that it\u0027s a UI field in the comment?",
+      "range": {
+        "startLine": 75,
+        "startChar": 33,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a04568ae_2ebe212a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-04T14:48:07Z",
+      "side": 1,
+      "message": "JFYI it\u0027s IIUC a bit unusual to put a https:// prefix here, because the protocol that chorme will speak to a non-SOCKS proxy is always HTTP at the moment if configured through the UI.\n( https://chromium.googlesource.com/chromium/src/+/HEAD/net/docs/proxy.md#https-proxy-scheme )\n\nIf we use https://localhost just to have something different than \"localhost\" above, I guess this is fine :) but wasn\u0027t sure if that\u0027s intended.",
+      "range": {
+        "startLine": 88,
+        "startChar": 49,
+        "endLine": 88,
+        "endChar": 66
+      },
+      "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e36c9cc3_9b4fe1aa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-04T14:48:07Z",
+      "side": 1,
+      "message": "Can we change this to \"Creating user pod by signing in and out\" to match more exactly what it\u0027s doing (IIUC) ?",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 27
+      },
+      "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05344732_6f1abe39",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-04T14:48:07Z",
+      "side": 1,
+      "message": "It\u0027s a bit surprising that we execute both after each other - would you explain why? IIUC currently both are executed \"after logging in and then logging out\"\n\n( From their names I\u0027d have expected preparationAtLoginScreen to run *before* the signIn() call and preparationAfterLoggedIn to run probably after the signIn call but *before* the cr.Close(ctx) call. )\n\nIs this intended?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bf43f04_a4d983c7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-04T14:48:07Z",
+      "side": 1,
+      "message": "Instead of switch-casing on param.test.(type), can we add another field to the test case definition (e.g. another function)? It\u0027s a bit hacky for the test body to have to know which test variants exist and treat them differently.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 0
+      },
+      "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
