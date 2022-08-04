@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed15e81d_793b8d92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-04T20:46:14Z",
+      "side": 1,
+      "message": "Abandoning this as it was lost in the abyss and this change has already occurred: https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3764585",
+      "revId": "51584d6d3945710de74e99218eb7de833ebb0314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
