@@ -53,7 +53,7 @@ func newForwardedCallboxManager(ctx context.Context, config *forwardedCallboxMan
 	onFwdError := func(err error) {
 		testing.ContextLog(ctx, "Ssh forwarding error: ", err)
 	}
-	fcm.localPortForwarder, err = conn.ForwardLocalToRemote("tcp", "localhost", config.remoteCallboxManagerAddress, onFwdError)
+	fcm.localPortForwarder, err = conn.ForwardLocalToRemote("tcp", "localhost:2300", config.remoteCallboxManagerAddress, onFwdError)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to forward local port to remote callbox manager")
 	}
@@ -80,7 +80,7 @@ func (fcm *forwardedCallboxManager) LocalAddress() string {
 // Close closes the local port forward and the connection to the host.
 func (fcm *forwardedCallboxManager) Close(ctx context.Context) error {
 	var firstError error
-	if err := fcm.Close(ctx); err != nil {
+	if err := fcm.localPortForwarder.Close(); err != nil {
 		firstError = err
 	}
 	if err := fcm.host.Close(ctx); err != nil && firstError != nil {
