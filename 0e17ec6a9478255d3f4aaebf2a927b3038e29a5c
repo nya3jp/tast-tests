@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d827cfb_f9de91ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multitouch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1536938
+      },
+      "writtenOn": "2022-08-04T05:41:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b83c8b20_2ab8e8ef",
+      "range": {
+        "startLine": 118,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 17
+      },
+      "revId": "0e17ec6a9478255d3f4aaebf2a927b3038e29a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10f77855_0a8f4026",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e5b8eff_4c591102",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multitouch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1536938
+      },
+      "writtenOn": "2022-08-04T05:41:08Z",
+      "side": 1,
+      "message": "As discussed offline, have removed the adjustTouch part since it is already tested in a webdriver test.",
+      "parentUuid": "10f77855_0a8f4026",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 12
+      },
+      "revId": "0e17ec6a9478255d3f4aaebf2a927b3038e29a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "961f56eb_92ac1718",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-04T02:31:45Z",
       "side": 1,
       "message": "It is suggested to break down this test a bit more. It covers unshift and submit on second tap. So it would be nice to test it as below:\n\ntouchAndHold(ZKeyFinder),\nmouseClickAndHold(XKeyFinder), // wrap it as below:\n// vkbCtx.ui.MouseMoveTo(XKeyFinder, 10*time.Millisecond),\n// mouse.Press(vkbCtx.tconn, mouse.LeftButton),\nutil.WaitForFieldTextToBe(tconn, inputField.Finder(), \"Z\"),\n// Assume VK is unshifted after second press. Using lowercase \"x\" to test.\nvkbCtx.WaitForKeysExist([]string{\"x\"})\nmouse.Release(vkbCtx.tconn, mouse.LeftButton),\nvkbCtx.TapKey(\"x\")\nutil.WaitForFieldTextToBe(tconn, inputField.Finder(), \"Zyx\"),\nreleaseTouch(),",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 42
+      },
+      "revId": "0e17ec6a9478255d3f4aaebf2a927b3038e29a5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e03a2a44_3aaaa5bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multitouch.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1536938
+      },
+      "writtenOn": "2022-08-04T05:41:08Z",
+      "side": 1,
+      "message": "Have split TapKey into mouse press and release. Also changed the input field to the no correction input field to avoid different shift state cases. (As discussed offline, there is no need to test auto shift here since it is already tested elsewhere.)",
+      "parentUuid": "961f56eb_92ac1718",
       "range": {
         "startLine": 158,
         "startChar": 2,
