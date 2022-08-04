@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8d0939f_4cbd2981",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-04T08:24:04Z",
+      "side": 1,
+      "message": "LGTM % nit",
+      "revId": "9ae6e1d338274883051f0a5f03bc80bbf260227b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9fd8449_aa163d34",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/windowarrangementcuj/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-04T08:24:04Z",
+      "side": 1,
+      "message": "nit: can you give this a more meaningful name as the scope for it isn\u0027t that small.",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 2
+      },
+      "revId": "9ae6e1d338274883051f0a5f03bc80bbf260227b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
