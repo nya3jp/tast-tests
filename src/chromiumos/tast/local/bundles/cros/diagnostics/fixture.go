@@ -6,9 +6,12 @@ package diagnostics
 
 import (
 	"context"
+	"time"
 
 	"chromiumos/tast/local/bundles/cros/diagnostics/utils"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/uiauto/diagnosticsapp"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/testing"
 )
 
@@ -22,16 +25,22 @@ func init() {
 			"cros-peripherals@google.com", // team mailing list
 		},
 		Impl:            newDiagnosticsPrepFixture(),
-		SetUpTimeout:    chrome.LoginTimeout,
+		SetUpTimeout:    chrome.LoginTimeout + 15*time.second,
 		ResetTimeout:    chrome.ResetTimeout,
 		TearDownTimeout: chrome.ResetTimeout,
+		PreTestTimeout:  15 * time.Second,
+		PostTestTimeout: 5 * time.Second,
 	})
 }
+
+const appURL = "chrome://diagnostics/"
 
 // diagnosticsPrepFixture is a fixture to ensure relevant service is running
 // before diagnostics ui test.
 type diagnosticsPrepFixture struct {
-	cr *chrome.Chrome
+	api   *utils.MojoAPI
+	cr    *chrome.Chrome
+	tconn *chrome.TestConn
 }
 
 func newDiagnosticsPrepFixture() testing.FixtureImpl {
@@ -39,28 +48,42 @@ func newDiagnosticsPrepFixture() testing.FixtureImpl {
 }
 
 func (f *diagnosticsPrepFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
+	success := false
+
 	cr, err := chrome.New(ctx)
 	if err != nil {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
+	defer func() {
+		if !success {
+			cr.Close(ctx)
+		}
+	}()
 
 	if err := utils.EnsureCrosHealthdRunning(ctx); err != nil {
-		if closeChromeErr := cr.Close(ctx); closeChromeErr != nil {
-			s.Log("Failed to close Chrome connection: ", closeChromeErr)
-		}
-
 		s.Fatal("Failed to ensure cros healthd running: ", err)
 	}
 
+	tconn, err := cr.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect Test API: ", err)
+	}
+	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
+
+	success = true
 	f.cr = cr
-	return cr
+	f.tconn = tconn
+
+	return tconn
 }
 
 func (f *diagnosticsPrepFixture) TearDown(ctx context.Context, s *testing.FixtState) {
 	if err := f.cr.Close(ctx); err != nil {
-		s.Log("Failed to close Chrome connection: ", err)
+		s.Log("Failed to close Chrome: ", err)
 	}
+
 	f.cr = nil
+	f.tconn = nil
 }
 
 func (f *diagnosticsPrepFixture) Reset(ctx context.Context) error {
@@ -68,7 +91,46 @@ func (f *diagnosticsPrepFixture) Reset(ctx context.Context) error {
 }
 
 func (f *diagnosticsPrepFixture) PreTest(ctx context.Context, s *testing.FixtTestState) {
+	success := false
+
+	if _, err := diagnosticsapp.Launch(ctx, f.tconn); err != nil {
+		s.Fatal("Failed to launch diagnostics app: ", err)
+	}
+
+	conn, err := f.cr.NewConnForTarget(ctx, chrome.MatchTargetURL(appURL))
+	if err != nil {
+		s.Fatal("Failed to match the diagnostics chrome connection: ", err)
+	}
+
+	// Ensure mojo API is connected.
+	testing.Sleep(ctx, 5*time.Second)
+
+	api, err := utils.NewMojoAPI(ctx, conn)
+	if err != nil {
+		s.Fatal("Unable to get systemDataProvider mojo API: ", err)
+	}
+	defer func() {
+		if !success {
+			api.Release(ctx)
+		}
+	}()
+
+	if err := api.RunFetchSystemInfo(ctx); err != nil {
+		s.Fatal("Failed to fetch system info: ", err)
+	}
+
+	success = true
+	f.api = api
 }
 
 func (f *diagnosticsPrepFixture) PostTest(ctx context.Context, s *testing.FixtTestState) {
+	if err := diagnosticsapp.Close(ctx, f.tconn); err != nil {
+		s.Log("Failed to close diagnostics app: ", err)
+	}
+
+	if err := f.api.Release(ctx); err != nil {
+		s.Log("Error releasing systemDataProvider mojo API: ", err)
+	}
+
+	f.api = nil
 }
