@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86dfca96_a6d38792",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_dss_offline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2022-08-04T05:32:28Z",
+      "side": 1,
+      "message": "There\u0027s currently no signal propagated from DriveFS unfortunately. Adding it is a lot of plumbing, and I don\u0027t see it being especially easy.\n\nYeah, the user may notice this too on startup, but relaunching files app isn\u0027t needed - if they navigate away and back to Drive the toggle should enable (it\u0027s still not great though). I just relaunch it in the test because that\u0027s easier.",
+      "parentUuid": "4a7d3915_280192cd",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 69
+      },
+      "revId": "be1a0950742cecfbf5c8b35081e01fb828f1ef43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "daf9b84a_88cd3f7d",
         "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_dss_offline.go",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-03T22:08:02Z",
       "side": 1,
       "message": "nit: Why do we need to get a new uiauto object? Can\u0027t we use `filesApp` here?",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 24
+      },
+      "revId": "be1a0950742cecfbf5c8b35081e01fb828f1ef43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "236b537c_1afa1583",
+        "filename": "src/chromiumos/tast/local/bundles/cros/filemanager/drivefs_dss_offline.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1335848
+      },
+      "writtenOn": "2022-08-04T05:32:28Z",
+      "side": 1,
+      "message": "If I understand correctly, the Enable Offline button is part of a System Notification, whereas the filesApp object limits clicks to the Files App window.",
+      "parentUuid": "daf9b84a_88cd3f7d",
       "range": {
         "startLine": 130,
         "startChar": 1,
