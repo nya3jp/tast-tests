@@ -24,7 +24,7 @@ func init() {
 			"hesling@chromium.org",
 			"chromeos-fingerprint@google.com",
 		},
-		Attr:         []string{"group:mainline"},
+		Attr:         []string{"informational", "group:mainline"},
 		SoftwareDeps: []string{"biometrics_daemon"},
 		HardwareDeps: hwdep.D(hwdep.Fingerprint()),
 	})
