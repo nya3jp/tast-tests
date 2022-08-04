@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "390c1c1e_734ed9e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/autoupdate/enterprise_rollback_previous_version.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-04T10:21:27Z",
+      "side": 1,
+      "message": "Oops, I renamed the variable and forgot to remove that, thanks!",
+      "parentUuid": "d596a561_37a18b15",
+      "range": {
+        "startLine": 89,
+        "startChar": 71,
+        "endLine": 89,
+        "endChar": 91
+      },
+      "revId": "767fb867a91976b01b762f80e93e567bfa3b31f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de5b473c_011db19f",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f45e0e3f_9f6c9993",
+        "filename": "src/chromiumos/tast/remote/rollback/rollback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-04T10:21:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de5b473c_011db19f",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "767fb867a91976b01b762f80e93e567bfa3b31f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6108fe68_2e7f847e",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-08-03T16:55:12Z",
       "side": 1,
       "message": "nit: Drop Get prefix\nhttps://go.dev/doc/effective_go#Getters",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 8
+      },
+      "revId": "767fb867a91976b01b762f80e93e567bfa3b31f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e183b4_7add5705",
+        "filename": "src/chromiumos/tast/remote/rollback/rollback.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1529818
+      },
+      "writtenOn": "2022-08-04T10:21:27Z",
+      "side": 1,
+      "message": "Done, I had to rename the method so it did not conflict with the struct.",
+      "parentUuid": "6108fe68_2e7f847e",
       "range": {
         "startLine": 48,
         "startChar": 5,
