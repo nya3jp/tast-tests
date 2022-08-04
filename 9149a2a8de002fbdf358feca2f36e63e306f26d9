@@ -322,6 +322,30 @@
       },
       "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a319ba6_24890687",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-08-04T10:39:57Z",
+      "side": 1,
+      "message": "Hi Oleh, thanks for your comment. Please be aware I\u0027m new to these topics so I might say incorrect things.\nI\u0027m getting the error you are referring to (context deadline exceeded) every time a paste is blocked. I think that\u0027s because of how clipboard.CheckPastedContent has been designed. It searches for the pasted text and since it does not find it it returns with that error. This may be why also other tast tests involving clipboard do not perform the check you are suggesting.",
+      "parentUuid": "4aaaf570_e7ec9a99",
+      "range": {
+        "startLine": 275,
+        "startChar": 51,
+        "endLine": 275,
+        "endChar": 69
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
