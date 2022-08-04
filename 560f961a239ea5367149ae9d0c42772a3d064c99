@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd798ee9_ea377161",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-08-04T23:07:28Z",
+      "side": 1,
+      "message": "Hang, you think the CL is ready for review. \n\nYou can leave a comment like \"PTAL (Please take a look)\".\n\nAdding a reviewer means the same thing in my opinion, but it is still common to leave \"PTAL\" in Chromium/Chrome OS. Some reviewers will not start looking at it before \"PTAL\".",
+      "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
