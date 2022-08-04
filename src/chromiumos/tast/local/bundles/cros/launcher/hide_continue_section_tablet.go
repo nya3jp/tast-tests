@@ -43,7 +43,6 @@ func HideContinueSectionTablet(ctx context.Context, s *testing.State) {
 
 	opt := chrome.EnableFeatures(
 		"ProductivityLauncher",        // Enable productivity launcher
-		"ForceShowContinueSection",    // Add fake continue tasks
 		"LauncherHideContinueSection") // Enable the hide continue section menu item
 	cr, err := chrome.New(ctx, opt)
 	if err != nil {
@@ -55,11 +54,31 @@ func HideContinueSectionTablet(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeWithScreenshotOnError(ctx, s.OutDir(), s.HasError, cr, "ui_tree")
 
+	// Set up the launcher test. This enters tablet mode, which will show the
+	// sorting nudge.
 	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, true /*tabletMode*/, true /*productivityLauncher*/, false /*stabilizeAppCount*/)
 	if err != nil {
 		s.Fatal("Failed to set up launcher test case: ", err)
 	}
 	defer cleanup(cleanupCtx)
+
+	// Dismiss the sorting nudge.
+	if err := launcher.DismissSortNudgeIfExists(ctx, tconn); err != nil {
+		s.Fatal("Failed to dismiss sort nudge: ", err)
+	}
+
+	// Create temp files and open them via Files app to populate the continue section.
+	cleanupFiles, _, err := launcher.SetupContinueSectionFiles(
+		ctx, tconn, cr, true /* tabletMode */)
+	if err != nil {
+		s.Fatal("Failed to set up continue section: ", err)
+	}
+	defer cleanupFiles()
+
+	// Ensure launcher is visible.
+	if err := launcher.OpenProductivityLauncher(ctx, tconn, true /*tabletMode*/); err != nil {
+		s.Fatal("Failed to open launcher: ", err)
+	}
 
 	// Ensure continue section exists.
 	ui := uiauto.New(tconn)
