@@ -68,6 +68,24 @@
       "parentUuid": "a3f95d53_6ccab1b4",
       "revId": "0561e97b3bbd286a1263b2be81b013720dce9231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c41795_98ee2c82",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1529242
+      },
+      "writtenOn": "2022-08-04T19:49:13Z",
+      "side": 1,
+      "message": "Is the concern with the name (naming is hard!)? Maybe `ReconnectIfDisconnected` would be a better name? \n\n\u003e When I look at  !t.d.Connected(ctx) || t.d.RPC() \u003d\u003d nil  I immediately know that code under \u0027if\u0027 executes when DUT is not connected or there is no RPC connection.\n\u003e    \n\u003e If I look at  !EnsureConnected(ctx) , it\u0027s not clear for me what  EnsureConnected  really does. I need to check the implementation.\n\nI agree that this code is very clear, my (possibly unfounded) concern is that other places may require the general pattern of `if (!is_connected()) { do_reconnect(); }` and if it is done differently each time then it would be easy to introduce bugs (maybe by checking for `t.d.RPC() \u003d\u003d nil` but not `!t.d.Connected(ctx)`). The idea was to have a single function that would check if connected, and reconnect if needed so I wouldn\u0027t expect this to detract from readability. For example, the top of this function would look something like this:\n\n```\nfunc (t *FirmwareTest) Close(ctx context.Context) error {\n        testing.ContextLog(ctx, \"Tearing down\")\n        defer t.servo.Close(ctx)\n        ReconnectIfDisconnected(ctx)\n\n        var firstErr error\n\tif err :\u003d ReimageFPMCU(ctx, t.d, t.servo, t.needsRebootAfterFlashing); err !\u003d nil {\n\t\tfirstErr \u003d err\n\t}        \n        ...\n```\n\nAlso, I should note that this is a bit of a minor point and doesn\u0027t need to hold up the CL.",
+      "parentUuid": "aa949cda_b2979994",
+      "revId": "0561e97b3bbd286a1263b2be81b013720dce9231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
