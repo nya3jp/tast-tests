@@ -20,10 +20,26 @@ func init() {
 		Func:         SimpleQueries,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests Assistant basic functionality with simple queries",
-		Contacts:     []string{"meilinw@chromium.org", "xiaohuic@chromium.org", "assistive-eng@google.com", "chromeos-sw-engprod@google.com"},
+		Contacts: []string{
+			"yawano@google.com",
+			"updowndota@chromium.org",
+			"xiaohuic@chromium.org",
+			"assistive-eng@google.com",
+			"chromeos-sw-engprod@google.com",
+		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "chrome_internal"},
-		Fixture:      "assistant",
+		Params: []testing.Param{{
+			Fixture: "assistant",
+		}, {
+			Name:              "with_android_p",
+			Fixture:           "assistantWithArc",
+			ExtraSoftwareDeps: []string{"android_p"},
+		}, {
+			Name:              "with_android_vm",
+			Fixture:           "assistantWithArc",
+			ExtraSoftwareDeps: []string{"android_vm"},
+		}},
 	})
 }
 
