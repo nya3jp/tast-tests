@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56497b73_700b23ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-08-04T10:55:21Z",
+      "side": 1,
+      "message": "The routine response status would just be `unsupported` (see [here](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform2/diagnostics/cros_healthd/cros_healthd_routine_service.cc;l\u003d357-369) for reference). We could add that to the expected behaviour (at least cros_healhd was queried), but for now I don\u0027t know about a device in \"target_models\" that has no battery.",
+      "parentUuid": "0df6a715_b46b39df",
+      "revId": "e05f165372cd8dbc39183eec06f2fb2c81894db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9417f848_4e587584",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b0c12d_77708f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_battery_capacity_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-08-04T10:55:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9417f848_4e587584",
+      "range": {
+        "startLine": 87,
+        "startChar": 83,
+        "endLine": 87,
+        "endChar": 88
+      },
+      "revId": "e05f165372cd8dbc39183eec06f2fb2c81894db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bfaf533_d4740790",
@@ -71,6 +113,30 @@
       "writtenOn": "2022-08-04T08:51:59Z",
       "side": 1,
       "message": "nit: you can wrap string in `, so you don\u0027t need to use \\\"\n\n`Unexpected routine status: got %q; want \"passed\" or \"failed\"`",
+      "range": {
+        "startLine": 90,
+        "startChar": 11,
+        "endLine": 90,
+        "endChar": 77
+      },
+      "revId": "e05f165372cd8dbc39183eec06f2fb2c81894db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe96306f_54fc85ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_battery_capacity_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1543127
+      },
+      "writtenOn": "2022-08-04T10:55:21Z",
+      "side": 1,
+      "message": "Ah nice, didn\u0027t know that, that\u0027s handy!",
+      "parentUuid": "0bfaf533_d4740790",
       "range": {
         "startLine": 90,
         "startChar": 11,
