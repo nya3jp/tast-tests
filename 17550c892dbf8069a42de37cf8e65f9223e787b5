@@ -16,6 +16,24 @@
       "message": "nit/style:\nhttps://google.github.io/styleguide/jsguide.html#formatting-semicolons-are-required\n\ncould you add semicolons here, and all the below?\n(including resolve() just below, and the code in verifyExtensionStateOnLacros)",
       "revId": "17550c892dbf8069a42de37cf8e65f9223e787b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10647317_a8a2689f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/migrate_extension_state.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-08-04T06:58:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "420a01db_9dc157b4",
+      "revId": "17550c892dbf8069a42de37cf8e65f9223e787b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
