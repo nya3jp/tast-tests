@@ -153,8 +153,7 @@ func init() {
 					args:         "binary_create",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_binary_get",
@@ -163,8 +162,7 @@ func init() {
 					args:         "binary_get",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_bool_type",
@@ -173,8 +171,7 @@ func init() {
 					args:         "bool_type",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_buffer_properties_queries",
@@ -183,8 +180,7 @@ func init() {
 					args:         "buffer_properties_queries",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_clone_kernel",
@@ -193,8 +189,7 @@ func init() {
 					args:         "clone_kernel",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_2d_image_from_buffer",
@@ -203,8 +198,7 @@ func init() {
 					args:         "consistency_2d_image_from_buffer",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_3d_image_writes",
@@ -213,8 +207,7 @@ func init() {
 					args:         "consistency_3d_image_writes",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_depth_images",
@@ -223,8 +216,7 @@ func init() {
 					args:         "consistency_depth_images",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_device_and_host_timer",
@@ -233,8 +225,7 @@ func init() {
 					args:         "consistency_device_and_host_timer",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_device_enqueue",
@@ -243,8 +234,7 @@ func init() {
 					args:         "consistency_device_enqueue",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_il_programs",
@@ -253,8 +243,7 @@ func init() {
 					args:         "consistency_il_programs",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_memory_model",
@@ -263,8 +252,7 @@ func init() {
 					args:         "consistency_memory_model",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_non_uniform_work_group",
@@ -273,8 +261,7 @@ func init() {
 					args:         "consistency_non_uniform_work_group",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_pipes",
@@ -283,8 +270,7 @@ func init() {
 					args:         "consistency_pipes",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_prog_ctor_dtor",
@@ -293,8 +279,7 @@ func init() {
 					args:         "consistency_prog_ctor_dtor",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_progvar",
@@ -303,8 +288,7 @@ func init() {
 					args:         "consistency_progvar",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_read_write_images",
@@ -313,8 +297,7 @@ func init() {
 					args:         "consistency_read_write_images",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_subgroups",
@@ -323,8 +306,7 @@ func init() {
 					args:         "consistency_subgroups",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_consistency_svm",
@@ -333,8 +315,7 @@ func init() {
 					args:         "consistency_svm",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_context_destructor_callback",
@@ -343,8 +324,7 @@ func init() {
 					args:         "context_destructor_callback",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_create_context_from_type",
@@ -353,8 +333,7 @@ func init() {
 					args:         "create_context_from_type",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_create_kernels_in_program",
@@ -363,8 +342,7 @@ func init() {
 					args:         "create_kernels_in_program",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_enqueue_task",
@@ -373,8 +351,7 @@ func init() {
 					args:         "enqueue_task",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_execute_kernel_local_sizes",
@@ -383,8 +360,7 @@ func init() {
 					args:         "execute_kernel_local_sizes",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_buffer_info",
@@ -393,8 +369,7 @@ func init() {
 					args:         "get_buffer_info",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_command_queue_info_compatibility",
@@ -403,8 +378,7 @@ func init() {
 					args:         "get_command_queue_info_compatibility",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_command_queue_info",
@@ -413,8 +387,7 @@ func init() {
 					args:         "get_command_queue_info",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_context_info",
@@ -423,8 +396,7 @@ func init() {
 					args:         "get_context_info",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_device_info",
@@ -433,8 +405,7 @@ func init() {
 					args:         "get_device_info",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_image1d_array_info",
@@ -443,8 +414,7 @@ func init() {
 					args:         "get_image1d_array_info",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_image1d_info",
@@ -453,8 +423,7 @@ func init() {
 					args:         "get_image1d_info",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_image2d_array_info",
@@ -463,8 +432,7 @@ func init() {
 					args:         "get_image2d_array_info",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_image2d_info",
@@ -473,8 +441,7 @@ func init() {
 					args:         "get_image2d_info",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_image3d_info",
@@ -483,8 +450,7 @@ func init() {
 					args:         "get_image3d_info",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_kernel_arg_info_compatibility",
@@ -513,8 +479,7 @@ func init() {
 					args:         "get_kernel_info",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_platform_ids",
@@ -523,8 +488,7 @@ func init() {
 					args:         "get_platform_ids",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_platform_info",
@@ -533,8 +497,7 @@ func init() {
 					args:         "get_platform_info",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_program_info_kernel_names",
@@ -543,8 +506,7 @@ func init() {
 					args:         "get_program_info_kernel_names",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_sampler_info_compatibility",
@@ -553,8 +515,7 @@ func init() {
 					args:         "get_sampler_info_compatibility",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_get_sampler_info",
@@ -563,8 +524,7 @@ func init() {
 					args:         "get_sampler_info",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_image_properties_queries",
@@ -573,8 +533,7 @@ func init() {
 					args:         "image_properties_queries",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_kernel_arg_changes",
@@ -583,8 +542,7 @@ func init() {
 					args:         "kernel_arg_changes",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_kernel_arg_multi_setup_random",
@@ -593,8 +551,7 @@ func init() {
 					args:         "kernel_arg_multi_setup_random",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "api_kernel_global_constant",
@@ -603,8 +560,7 @@ func init() {
 					args:         "kernel_global_constant",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_kernel_private_memory_size",
@@ -613,8 +569,7 @@ func init() {
 					args:         "kernel_private_memory_size",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_kernel_required_group_size",
@@ -623,8 +578,7 @@ func init() {
 					args:         "kernel_required_group_size",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_load_single_kernel",
@@ -633,8 +587,7 @@ func init() {
 					args:         "load_single_kernel",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_load_two_kernels_in_one",
@@ -643,8 +596,7 @@ func init() {
 					args:         "load_two_kernels_in_one",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_load_two_kernels_manually",
@@ -653,8 +605,7 @@ func init() {
 					args:         "load_two_kernels_manually",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_load_two_kernels",
@@ -663,8 +614,7 @@ func init() {
 					args:         "load_two_kernels",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_mem_object_destructor_callback",
@@ -673,8 +623,7 @@ func init() {
 					args:         "mem_object_destructor_callback",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_data_type_align_size_alignment",
@@ -683,8 +632,7 @@ func init() {
 					args:         "min_data_type_align_size_alignment",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_image_formats",
@@ -693,8 +641,7 @@ func init() {
 					args:         "min_image_formats",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_address_bits",
@@ -703,8 +650,7 @@ func init() {
 					args:         "min_max_address_bits",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_compute_units",
@@ -713,8 +659,7 @@ func init() {
 					args:         "min_max_compute_units",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_constant_args",
@@ -723,8 +668,7 @@ func init() {
 					args:         "min_max_constant_args",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_constant_buffer_size",
@@ -733,8 +677,7 @@ func init() {
 					args:         "min_max_constant_buffer_size",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_device_version",
@@ -743,8 +686,7 @@ func init() {
 					args:         "min_max_device_version",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_double_fp_config",
@@ -753,8 +695,7 @@ func init() {
 					args:         "min_max_double_fp_config",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_execution_capabilities",
@@ -763,8 +704,7 @@ func init() {
 					args:         "min_max_execution_capabilities",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_2d_height",
@@ -773,8 +713,7 @@ func init() {
 					args:         "min_max_image_2d_height",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_2d_width",
@@ -783,8 +722,7 @@ func init() {
 					args:         "min_max_image_2d_width",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_3d_depth",
@@ -793,8 +731,7 @@ func init() {
 					args:         "min_max_image_3d_depth",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_3d_height",
@@ -803,8 +740,7 @@ func init() {
 					args:         "min_max_image_3d_height",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_3d_width",
@@ -813,8 +749,7 @@ func init() {
 					args:         "min_max_image_3d_width",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_array_size",
@@ -823,8 +758,7 @@ func init() {
 					args:         "min_max_image_array_size",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_image_buffer_size",
@@ -843,8 +777,7 @@ func init() {
 					args:         "min_max_kernel_preferred_work_group_size_multiple",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_language_version",
@@ -853,8 +786,7 @@ func init() {
 					args:         "min_max_language_version",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_local_mem_size",
@@ -863,8 +795,7 @@ func init() {
 					args:         "min_max_local_mem_size",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_mem_alloc_size",
@@ -873,8 +804,7 @@ func init() {
 					args:         "min_max_mem_alloc_size",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_parameter_size",
@@ -883,8 +813,7 @@ func init() {
 					args:         "min_max_parameter_size",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_queue_properties",
@@ -893,8 +822,7 @@ func init() {
 					args:         "min_max_queue_properties",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_read_image_args",
@@ -903,8 +831,7 @@ func init() {
 					args:         "min_max_read_image_args",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_samplers",
@@ -913,8 +840,7 @@ func init() {
 					args:         "min_max_samplers",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_single_fp_config",
@@ -923,8 +849,7 @@ func init() {
 					args:         "min_max_single_fp_config",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_thread_dimensions",
@@ -933,8 +858,7 @@ func init() {
 					args:         "min_max_thread_dimensions",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_work_group_size",
@@ -943,8 +867,7 @@ func init() {
 					args:         "min_max_work_group_size",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_work_items_sizes",
@@ -953,8 +876,7 @@ func init() {
 					args:         "min_max_work_items_sizes",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_min_max_write_image_args",
@@ -963,8 +885,7 @@ func init() {
 					args:         "min_max_write_image_args",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_native_kernel",
@@ -973,8 +894,7 @@ func init() {
 					args:         "native_kernel",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_null_buffer_arg",
@@ -993,8 +913,7 @@ func init() {
 					args:         "pipe_properties_queries",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_platform_extensions",
@@ -1003,8 +922,7 @@ func init() {
 					args:         "platform_extensions",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_queue_flush_on_release",
@@ -1013,8 +931,7 @@ func init() {
 					args:         "queue_flush_on_release",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_queue_hint",
@@ -1023,8 +940,7 @@ func init() {
 					args:         "queue_hint",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_queue_properties",
@@ -1033,8 +949,7 @@ func init() {
 					args:         "queue_properties",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_queue_properties_queries",
@@ -1043,8 +958,7 @@ func init() {
 					args:         "queue_properties_queries",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_release_during_execute",
@@ -1053,8 +967,7 @@ func init() {
 					args:         "release_during_execute",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_release_kernel_order",
@@ -1063,8 +976,7 @@ func init() {
 					args:         "release_kernel_order",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_repeated_setup_cleanup",
@@ -1073,8 +985,7 @@ func init() {
 					args:         "repeated_setup_cleanup",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "api_retain_mem_object_multiple",
@@ -1083,8 +994,7 @@ func init() {
 					args:         "retain_mem_object_multiple",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_retain_mem_object_set_kernel_arg",
@@ -1093,8 +1003,7 @@ func init() {
 					args:         "retain_mem_object_set_kernel_arg",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_retain_mem_object_single",
@@ -1103,8 +1012,7 @@ func init() {
 					args:         "retain_mem_object_single",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_retain_queue_multiple",
@@ -1113,8 +1021,7 @@ func init() {
 					args:         "retain_queue_multiple",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_retain_queue_single",
@@ -1123,8 +1030,7 @@ func init() {
 					args:         "retain_queue_single",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_set_kernel_arg_by_index",
@@ -1133,8 +1039,7 @@ func init() {
 					args:         "set_kernel_arg_by_index",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_set_kernel_arg_constant",
@@ -1143,8 +1048,7 @@ func init() {
 					args:         "set_kernel_arg_constant",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_set_kernel_arg_struct_array",
@@ -1153,8 +1057,7 @@ func init() {
 					args:         "set_kernel_arg_struct_array",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_sub_group_dispatch",
@@ -1163,8 +1066,7 @@ func init() {
 					args:         "sub_group_dispatch",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "api_zero_sized_enqueue",
@@ -1173,8 +1075,7 @@ func init() {
 					args:         "zero_sized_enqueue",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "atomics_atomic_add_index_bin",
@@ -1311,8 +1212,7 @@ func init() {
 					args:         "arraycopy",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_arrayimagecopy3d",
@@ -1339,8 +1239,7 @@ func init() {
 					args:         "arrayreadwrite",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_astype",
@@ -1359,8 +1258,7 @@ func init() {
 					expectedPass: true,
 					buganizer:    "b/227132303",
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_async_copy_local_to_global",
@@ -1370,8 +1268,7 @@ func init() {
 					expectedPass: true,
 					buganizer:    "b/227132303",
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_async_strided_copy_global_to_local",
@@ -1400,8 +1297,7 @@ func init() {
 					args:         "barrier",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_bufferreadwriterect",
@@ -1410,8 +1306,7 @@ func init() {
 					args:         "bufferreadwriterect",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_constant",
@@ -1420,8 +1315,7 @@ func init() {
 					args:         "constant",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_constant_source",
@@ -1430,8 +1324,7 @@ func init() {
 					args:         "constant_source",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_createkernelsinprogram",
@@ -1440,8 +1333,7 @@ func init() {
 					args:         "createkernelsinprogram",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_enqueued_local_size",
@@ -1450,8 +1342,7 @@ func init() {
 					args:         "enqueued_local_size",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_enqueue_map_buffer",
@@ -1460,8 +1351,7 @@ func init() {
 					args:         "enqueue_map_buffer",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_enqueue_map_image",
@@ -1470,8 +1360,7 @@ func init() {
 					args:         "enqueue_map_image",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_char",
@@ -1480,8 +1369,7 @@ func init() {
 					args:         "explicit_s2v_char",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_double",
@@ -1490,8 +1378,7 @@ func init() {
 					args:         "explicit_s2v_double",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_float",
@@ -1500,8 +1387,7 @@ func init() {
 					args:         "explicit_s2v_float",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_int",
@@ -1510,8 +1396,7 @@ func init() {
 					args:         "explicit_s2v_int",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_long",
@@ -1520,8 +1405,7 @@ func init() {
 					args:         "explicit_s2v_long",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_short",
@@ -1530,8 +1414,7 @@ func init() {
 					args:         "explicit_s2v_short",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_uchar",
@@ -1540,8 +1423,7 @@ func init() {
 					args:         "explicit_s2v_uchar",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_uint",
@@ -1550,8 +1432,7 @@ func init() {
 					args:         "explicit_s2v_uint",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_ulong",
@@ -1560,8 +1441,7 @@ func init() {
 					args:         "explicit_s2v_ulong",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_explicit_s2v_ushort",
@@ -1570,8 +1450,7 @@ func init() {
 					args:         "explicit_s2v_ushort",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_float2int",
@@ -1580,8 +1459,7 @@ func init() {
 					args:         "float2int",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_fpmath_float2",
@@ -1590,8 +1468,7 @@ func init() {
 					args:         "fpmath_float2",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_fpmath_float4",
@@ -1600,8 +1477,7 @@ func init() {
 					args:         "fpmath_float4",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_fpmath_float",
@@ -1610,8 +1486,7 @@ func init() {
 					args:         "fpmath_float",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_get_global_offset",
@@ -1620,8 +1495,7 @@ func init() {
 					args:         "get_global_offset",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_get_linear_ids",
@@ -1630,8 +1504,7 @@ func init() {
 					args:         "get_linear_ids",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_global_linear_id",
@@ -1640,8 +1513,7 @@ func init() {
 					args:         "global_linear_id",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_global_work_offsets",
@@ -1650,8 +1522,7 @@ func init() {
 					args:         "global_work_offsets",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_hiloeo",
@@ -1669,8 +1540,7 @@ func init() {
 					args:         "host_numeric_constants",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_hostptr",
@@ -1679,8 +1549,7 @@ func init() {
 					args:         "hostptr",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_if",
@@ -1689,8 +1558,7 @@ func init() {
 					args:         "if",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_imagearraycopy3d",
@@ -1717,8 +1585,7 @@ func init() {
 					args:         "imagecopy3d",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_imagecopy",
@@ -1727,8 +1594,7 @@ func init() {
 					args:         "imagecopy",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_imagedim_non_pow2",
@@ -1738,8 +1604,7 @@ func init() {
 					expectedPass: true,
 					buganizer:    "b/227132306",
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_imagedim_pow2",
@@ -1749,8 +1614,7 @@ func init() {
 					expectedPass: true,
 					buganizer:    "b/227132306",
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_image_multipass_float_coord",
@@ -1759,8 +1623,7 @@ func init() {
 					args:         "image_multipass_float_coord",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_image_multipass_integer_coord",
@@ -1769,8 +1632,7 @@ func init() {
 					args:         "image_multipass_integer_coord",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_imagenpot",
@@ -1779,8 +1641,7 @@ func init() {
 					args:         "imagenpot",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_image_param",
@@ -1789,8 +1650,7 @@ func init() {
 					args:         "image_param",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_image_r8",
@@ -1799,8 +1659,7 @@ func init() {
 					args:         "image_r8",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_imagerandomcopy",
@@ -1809,8 +1668,7 @@ func init() {
 					args:         "imagerandomcopy",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_imagereadwrite3d",
@@ -1819,8 +1677,7 @@ func init() {
 					args:         "imagereadwrite3d",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_imagereadwrite",
@@ -1829,8 +1686,7 @@ func init() {
 					args:         "imagereadwrite",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_int2float",
@@ -1839,8 +1695,7 @@ func init() {
 					args:         "int2float",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_intmath_int2",
@@ -1849,8 +1704,7 @@ func init() {
 					args:         "intmath_int2",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_intmath_int4",
@@ -1859,8 +1713,7 @@ func init() {
 					args:         "intmath_int4",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_intmath_int",
@@ -1869,8 +1722,7 @@ func init() {
 					args:         "intmath_int",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_intmath_long2",
@@ -1879,8 +1731,7 @@ func init() {
 					args:         "intmath_long2",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_intmath_long4",
@@ -1889,8 +1740,7 @@ func init() {
 					args:         "intmath_long4",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_intmath_long",
@@ -1899,8 +1749,7 @@ func init() {
 					args:         "intmath_long",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_kernel_call_kernel_function",
@@ -1919,8 +1768,7 @@ func init() {
 					args:         "kernel_limit_constants",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_kernel_memory_alignment_constant",
@@ -1969,8 +1817,7 @@ func init() {
 					args:         "kernel_numeric_constants",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_kernel_preprocessor_macros",
@@ -1979,8 +1826,7 @@ func init() {
 					args:         "kernel_preprocessor_macros",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_local_arg_def",
@@ -2009,8 +1855,7 @@ func init() {
 					args:         "local_kernel_scope",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_local_linear_id",
@@ -2019,8 +1864,7 @@ func init() {
 					args:         "local_linear_id",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_loop",
@@ -2029,8 +1873,7 @@ func init() {
 					args:         "loop",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_mri_multiple",
@@ -2039,8 +1882,7 @@ func init() {
 					args:         "mri_multiple",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_mri_one",
@@ -2049,8 +1891,7 @@ func init() {
 					args:         "mri_one",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_parameter_types",
@@ -2069,8 +1910,7 @@ func init() {
 					args:         "pointer_cast",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_prefetch",
@@ -2080,8 +1920,7 @@ func init() {
 					expectedPass: true,
 					buganizer:    "b/227132303",
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_progvar_func_scope",
@@ -2090,8 +1929,7 @@ func init() {
 					args:         "progvar_func_scope",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_progvar_prog_scope_init",
@@ -2100,8 +1938,7 @@ func init() {
 					args:         "progvar_prog_scope_init",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_progvar_prog_scope_misc",
@@ -2110,8 +1947,7 @@ func init() {
 					args:         "progvar_prog_scope_misc",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_progvar_prog_scope_uninit",
@@ -2120,8 +1956,7 @@ func init() {
 					args:         "progvar_prog_scope_uninit",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_readimage3d_fp32",
@@ -2130,8 +1965,7 @@ func init() {
 					args:         "readimage3d_fp32",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_readimage3d_int16",
@@ -2140,8 +1974,7 @@ func init() {
 					args:         "readimage3d_int16",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_readimage3d",
@@ -2150,8 +1983,7 @@ func init() {
 					args:         "readimage3d",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_readimage_fp32",
@@ -2160,8 +1992,7 @@ func init() {
 					args:         "readimage_fp32",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_readimage_int16",
@@ -2170,8 +2001,7 @@ func init() {
 					args:         "readimage_int16",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_readimage",
@@ -2180,8 +2010,7 @@ func init() {
 					args:         "readimage",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_rw_image_access_qualifier",
@@ -2190,8 +2019,7 @@ func init() {
 					args:         "rw_image_access_qualifier",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_simple_read_image_pitch",
@@ -2200,8 +2028,7 @@ func init() {
 					args:         "simple_read_image_pitch",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_simple_write_image_pitch",
@@ -2210,8 +2037,7 @@ func init() {
 					args:         "simple_write_image_pitch",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_sizeof",
@@ -2220,8 +2046,7 @@ func init() {
 					args:         "sizeof",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_vector_creation",
@@ -2230,8 +2055,7 @@ func init() {
 					args:         "vector_creation",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_vector_swizzle",
@@ -2249,8 +2073,7 @@ func init() {
 					args:         "vec_type_hint",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_vload_constant",
@@ -2259,8 +2082,7 @@ func init() {
 					args:         "vload_constant",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_vload_global",
@@ -2269,8 +2091,7 @@ func init() {
 					args:         "vload_global",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_vload_local",
@@ -2279,8 +2100,7 @@ func init() {
 					args:         "vload_local",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_vload_private",
@@ -2289,8 +2109,7 @@ func init() {
 					args:         "vload_private",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_vstore_global",
@@ -2299,8 +2118,7 @@ func init() {
 					args:         "vstore_global",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_vstore_local",
@@ -2309,8 +2127,7 @@ func init() {
 					args:         "vstore_local",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_vstore_private",
@@ -2319,8 +2136,7 @@ func init() {
 					args:         "vstore_private",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   10 * time.Minute,
+				Timeout: 10 * time.Minute,
 			},
 			{
 				Name: "basic_wg_barrier",
@@ -2329,8 +2145,7 @@ func init() {
 					args:         "wg_barrier",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_work_item_functions",
@@ -2339,8 +2154,7 @@ func init() {
 					args:         "work_item_functions",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_writeimage_fp32",
@@ -2349,8 +2163,7 @@ func init() {
 					args:         "writeimage_fp32",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_writeimage_int16",
@@ -2359,8 +2172,7 @@ func init() {
 					args:         "writeimage_int16",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "basic_writeimage",
@@ -2369,8 +2181,7 @@ func init() {
 					args:         "writeimage",
 					expectedPass: true,
 				},
-				ExtraAttr: []string{"graphics_nightly"},
-				Timeout:   1 * time.Minute,
+				Timeout: 1 * time.Minute,
 			},
 			{
 				Name: "bruteforce_acosh",
