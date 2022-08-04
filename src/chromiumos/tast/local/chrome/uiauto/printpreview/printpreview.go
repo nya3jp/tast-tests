@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
@@ -187,4 +188,33 @@ func WaitForPrintPreview(tconn *chrome.TestConn) uiauto.Action {
 		ui.WithTimeout(30*time.Second).WaitUntilGone(loadingPreviewText),
 		ui.Gone(printPreviewFailedText),
 	)
+}
+
+// ExpandMoreSettings expands the the "More settings" section of the print
+// settings window. Does nothing if the section is already expanded.
+func ExpandMoreSettings(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	moreSettingsButton := nodewith.Name("More settings").Role(role.Button)
+	advancedSettingsButton := nodewith.Name("Advanced settings").Role(role.Button)
+
+	// Check whether the "More settings" section is already expanded by
+	// checking whether the "Advanced settings" button is reachable. If it's
+	// already expanded, return without doing anything.
+	if alreadyExpanded, err := ui.IsNodeFound(ctx, advancedSettingsButton); err != nil {
+		return err
+	} else if alreadyExpanded {
+		return nil
+	}
+
+	// If the section isn't expanded yet, expand it by left clicking on the
+	// "More settings" button.
+	if err := uiauto.Combine("find and click more settings button",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(moreSettingsButton),
+		ui.EnsureFocused(moreSettingsButton),
+		ui.WaitForEvent(moreSettingsButton, event.Expanded, ui.DoDefault(moreSettingsButton)),
+	)(ctx); err != nil {
+		return err
+	}
+
+	return nil
 }
