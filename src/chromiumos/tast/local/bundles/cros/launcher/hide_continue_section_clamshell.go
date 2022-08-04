@@ -40,7 +40,6 @@ func HideContinueSectionClamshell(ctx context.Context, s *testing.State) {
 
 	opt := chrome.EnableFeatures(
 		"ProductivityLauncher",        // Enable clamshell bubble launcher
-		"ForceShowContinueSection",    // Add fake continue tasks
 		"LauncherHideContinueSection") // Enable the hide continue section button
 	cr, err := chrome.New(ctx, opt)
 	if err != nil {
@@ -50,6 +49,14 @@ func HideContinueSectionClamshell(ctx context.Context, s *testing.State) {
 	if err != nil {
 		s.Fatal("Failed to connect Test API: ", err)
 	}
+
+	// Create temp files and open them via Files app to populate the continue section.
+	cleanupFiles, _, err := launcher.SetupContinueSectionFiles(
+		ctx, tconn, cr, false /* tabletMode */)
+	if err != nil {
+		s.Fatal("Failed to set up continue section: ", err)
+	}
+	defer cleanupFiles()
 
 	// Bubble launcher requires clamshell mode.
 	cleanup, err := launcher.SetUpLauncherTest(ctx, tconn, false /*tabletMode*/, true /*productivityLauncher*/, false /*stabilizeAppCount*/)

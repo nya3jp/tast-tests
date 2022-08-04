@@ -11,7 +11,9 @@ import (
 	"fmt"
 	"image"
 	"image/png"
+	"io/ioutil"
 	"os"
+	"path/filepath"
 	"regexp"
 	"sort"
 	"strings"
@@ -23,11 +25,13 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
+	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/local/coords"
+	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
@@ -218,6 +222,95 @@ func SetUpLauncherTest(ctx context.Context, tconn *chrome.TestConn, tabletMode, 
 		ensureLauncherClosed(ctx)
 		cleanupTabletMode(ctx)
 	}, nil
+}
+
+// SetupContinueSectionFiles creates and opens enough files for the continue section
+// suggestions to show up. The files are created in the user's Downloads folder.
+// Returns:
+// - A function that deletes the temporary files
+// - A list of the file names (just the file name, not the full path)
+// - An error or nil.
+//
+// Expected usage:
+// cleanupFiles, testFileNames, err := launcher.SetupContinueSectionFiles(...)
+// if err != nil { ... }
+// defer cleanupFiles()
+func SetupContinueSectionFiles(ctx context.Context, tconn *chrome.TestConn,
+	cr *chrome.Chrome, tabletMode bool) (func(), []string, error) {
+	// Create enough fake files to show the continue section.
+	var numFiles int
+	if tabletMode {
+		numFiles = 2
+	} else {
+		numFiles = 3
+	}
+
+	// Create the files in the user's Downloads directory.
+	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	if err != nil {
+		return nil, nil, errors.Wrap(err, "failed to get user's Download path")
+	}
+	var testDocFileNames []string
+	var testDocFilePaths []string
+	for i := 0; i < numFiles; i++ {
+		testFileName := fmt.Sprintf("fake-file-%d.html", i)
+		testDocFileNames = append(testDocFileNames, testFileName)
+		// Create a test file.
+		filePath := filepath.Join(downloadsPath, testFileName)
+		fileContent := fmt.Sprintf("Test file %d", i)
+		if err := ioutil.WriteFile(filePath, []byte(fileContent), 0644); err != nil {
+			return nil, nil, errors.Wrapf(err, "failed to create file %d in Downloads", i)
+		}
+		testDocFilePaths = append(testDocFilePaths, filePath)
+	}
+
+	// Create a cleanup function. This can't be deferred because we need to
+	// return it to the caller (who might need to manipulate the files).
+	cleanupFiles := func() {
+		for _, path := range testDocFilePaths {
+			os.Remove(path)
+		}
+	}
+
+	// Launch the Files app.
+	filesApp, err := filesapp.Launch(ctx, tconn)
+	if err != nil {
+		cleanupFiles()
+		return nil, nil, errors.Wrap(err, "could not launch the Files App")
+	}
+	defer filesApp.Close(ctx)
+
+	// Files need to be opened for them to get picked up for the Continue Section.
+	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
+	for i, filePath := range testDocFileNames {
+		if err := uiauto.Combine("Open file",
+			filesApp.OpenDownloads(),
+			filesApp.OpenFile(filePath),
+		)(ctx); err != nil {
+			cleanupFiles()
+			return nil, nil,
+				errors.Wrapf(err, "failed open the file %d - %s", i, filePath)
+		}
+
+		if err := ash.WaitForApp(ctx, tconn, chromeApp.ID, 10*time.Second); err != nil {
+			cleanupFiles()
+			return nil, nil,
+				errors.Wrapf(err, "file %d - %s never opened", i, filePath)
+		}
+
+		if err := apps.Close(ctx, tconn, chromeApp.ID); err != nil {
+			cleanupFiles()
+			return nil, nil,
+				errors.Wrap(err, "failed to close browser")
+		}
+
+		if err := ash.WaitForAppClosed(ctx, tconn, chromeApp.ID); err != nil {
+			cleanupFiles()
+			return nil, nil,
+				errors.Wrap(err, "browser did not close successfully")
+		}
+	}
+	return cleanupFiles, testDocFileNames, nil
 }
 
 // CreateAppSearchFinder creates a finder for an app search result in the current launcher search UI.

@@ -7,10 +7,6 @@ package launcher
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
-	"math/rand"
-	"os"
-	"path/filepath"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -20,11 +16,8 @@ import (
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/cws"
-	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/cryptohome"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -87,66 +80,13 @@ func ShowContinueSection(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to dismiss sort nudge: ", err)
 	}
 
-	// Create enough fake files to show the continue section.
-	var numFiles int
-	if tabletMode {
-		numFiles = 2
-	} else {
-		numFiles = 3
-	}
-
-	downloadsPath, err := cryptohome.DownloadsPath(ctx, cr.NormalizedUser())
+	// Create temp files and open them via Files app to populate the continue section.
+	cleanupFiles, testFileNames, err := launcher.SetupContinueSectionFiles(
+		ctx, tconn, cr, tabletMode)
 	if err != nil {
-		s.Fatal("Failed to get user's Download path: ", err)
+		s.Fatal("Failed to set up continue section: ", err)
 	}
-	var testDocFileNames []string
-	for i := 0; i < numFiles; i++ {
-		testFileName := fmt.Sprintf("fake-file-%d-%d.html", time.Now().UnixNano(), rand.Intn(10000))
-		testDocFileNames = append(testDocFileNames, testFileName)
-		// Create a test file.
-		filePath := filepath.Join(downloadsPath, testFileName)
-		fileContent := fmt.Sprintf("Test file %d", i)
-		if err := ioutil.WriteFile(filePath, []byte(fileContent), 0644); err != nil {
-			s.Fatalf("Failed to create file %d in Downloads: %v", i, err)
-		}
-		defer os.Remove(filePath)
-	}
-
-	filesApp, err := filesapp.Launch(ctx, tconn)
-	if err != nil {
-		s.Fatal("Could not launch the Files App: ", err)
-	}
-	defer filesApp.Close(cleanupCtx)
-
-	keyboard, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Cannot create keyboard: ", err)
-	}
-	defer keyboard.Close()
-
-	// Files need to be opened for them to get picked up for the Continue Section.
-	chromeApp, err := apps.ChromeOrChromium(ctx, tconn)
-	for i, filePath := range testDocFileNames {
-		if err := uiauto.Combine("Open file",
-			filesApp.OpenDownloads(),
-			filesApp.OpenFile(filePath),
-		)(ctx); err != nil {
-			s.Fatalf("Failed open the file %d - %s: %v", i, filePath, err)
-		}
-
-		if err := ash.WaitForApp(ctx, tconn, chromeApp.ID, 10*time.Second); err != nil {
-			s.Fatalf("File %d - %s never opened: %v", i, filePath, err)
-		}
-
-		if err := apps.Close(ctx, tconn, chromeApp.ID); err != nil {
-			s.Fatal("Failed to close browser: ", err)
-		}
-
-		if err := ash.WaitForAppClosed(ctx, tconn, chromeApp.ID); err != nil {
-			s.Fatal("Browser did not close successfully: ", err)
-		}
-
-	}
+	defer cleanupFiles()
 
 	if err := launcher.OpenProductivityLauncher(ctx, tconn, tabletMode); err != nil {
 		s.Fatal("Failed to open launcher: ", err)
@@ -162,7 +102,7 @@ func ShowContinueSection(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to dismiss privacy notice: ", err)
 	}
 
-	for i, filePath := range testDocFileNames {
+	for i, filePath := range testFileNames {
 		// If the continue section is shown, then we don't need to try to re open the launcher.
 		fileContent := fmt.Sprintf("Test file %d", i)
 		if err := openFileFromContinueSection(ctx, tconn, tabletMode, filePath, fileContent); err != nil {
