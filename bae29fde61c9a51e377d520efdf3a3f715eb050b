@@ -296,6 +296,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae0bc6ce_1a8c8f16",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T23:41:54Z",
+      "side": 1,
+      "message": "should have been clearer. by L160-163 in the patchset #7 what I meant was that lines of code to get a tconn from lacros could be removed unless we need to call test APIs or javascripts in lacros, which I don\u0027t think is the case in this test.",
+      "parentUuid": "fb690915_4cb6b26e",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 12
+      },
+      "revId": "bae29fde61c9a51e377d520efdf3a3f715eb050b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c37bf797_43a89201",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 5

@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88e24d67_a6f41c82",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T23:41:54Z",
+      "side": 1,
+      "message": "if this prerequisite is not met, wouldn\u0027t you like to close all open windows here and go on testing rather than exiting here (likely subsequent parameterized tests may end up exiting here unless it\u0027s resolved as a part of setup)?",
+      "range": {
+        "startLine": 150,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 62
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a98807c5_8581bd1c",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 7
@@ -26,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d86b3acb_aef4da5f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T23:41:54Z",
+      "side": 1,
+      "message": "tconn should be from ash-chrome",
+      "range": {
+        "startLine": 175,
+        "startChar": 42,
+        "endLine": 175,
+        "endChar": 53
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1eba7c2_4a9517e9",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 7
@@ -42,6 +88,53 @@
         "startChar": 0,
         "endLine": 179,
         "endChar": 2
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e7d0cd_c401687d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T23:41:54Z",
+      "side": 1,
+      "message": "`DumpUITreeWithScreenshotOnError` w/ screenshot",
+      "parentUuid": "e1eba7c2_4a9517e9",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef8d261_7e6531c4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T23:41:54Z",
+      "side": 1,
+      "message": "```\nappWindow, err \u003d ash.WaitForAnyWindow(ctx, tconnAsh, ash.BrowserTypeMatch(browser.TypeAsh))\nif err !\u003d nil {\n\ts.Fatal(\"Waiting for app failed with error: \", err)\n}\n``` \nif you wait for a ash-chrome window?",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 3
       },
       "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -157,6 +250,29 @@
         "startChar": 18,
         "endLine": 341,
         "endChar": 29
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea27b0f_59f37ea9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-04T23:41:54Z",
+      "side": 1,
+      "message": "```\nws, err :\u003d ash.FindAllWindows(ctx, tconn, func(w *ash.Window) bool {\n\treturn w.Name \u003d\u003d \"BrowserFrame\"\n})\nreturn len(ws), ws[0].Title\n```\n\nsimilarly could also be applied to getNumberOfLacrosWindows below.",
+      "range": {
+        "startLine": 356,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 2
       },
       "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
