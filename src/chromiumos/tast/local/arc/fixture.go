@@ -60,6 +60,23 @@ func init() {
 		TearDownTimeout: ResetTimeout,
 	})
 
+	// arcBootedWithDarkMode is a fixture similar to arcBooted. The only difference from arcBooted is that Dark Light Mode is enabled.
+	testing.AddFixture(&testing.Fixture{
+		Name: "arcBootedWithDarkMode",
+		Desc: "ARC is booted with Dark Mode",
+		Contacts: []string{
+			"ttefera@google.com",
+			"arc-app-dev@google.com",
+		},
+		Impl: NewArcBootedWithDarkModeFixture(func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			return []chrome.Option{chrome.ARCEnabled(), chrome.UnRestrictARCCPU(), chrome.EnableFeatures("DarkLightMode")}, nil
+		}),
+		SetUpTimeout:    chrome.LoginTimeout + BootTimeout,
+		ResetTimeout:    ResetTimeout,
+		PostTestTimeout: PostTestTimeout,
+		TearDownTimeout: ResetTimeout,
+	})
+
 	// arcBootedWithDisableSyncFlags is a fixture similar to arcBooted. The only difference from arcBooted is that ARC content sync is disabled to avoid noise during power/performance measurements.
 	testing.AddFixture(&testing.Fixture{
 		Name: "arcBootedWithDisableSyncFlags",
@@ -422,6 +439,20 @@ func NewArcBootedWithoutUIAutomatorFixture(fOpts chrome.OptionsCallback) testing
 				return nil, err
 			}
 			return append(opts, chrome.ARCEnabled(), chrome.ExtraArgs("--disable-features=ArcResizeLock")), nil
+		},
+	}
+}
+
+// NewArcBootedWithDarkModeFixture is same as NewArcBootedFixture but enables Dark Light Mode.
+func NewArcBootedWithDarkModeFixture(fOpts chrome.OptionsCallback) testing.FixtureImpl {
+	return &bootedFixture{
+		enableUIAutomator: false,
+		fOpt: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+			opts, err := fOpts(ctx, s)
+			if err != nil {
+				return nil, err
+			}
+			return append(opts, chrome.ARCEnabled(), chrome.ExtraArgs("--disable-features=ArcResizeLock"), chrome.EnableFeatures("DarkLightMode")), nil
 		},
 	}
 }
