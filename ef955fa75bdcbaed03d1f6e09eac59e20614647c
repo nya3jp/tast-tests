@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cf08074d_1c7340d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-04T20:08:45Z",
+      "side": 1,
+      "message": "\u003e maybe we could put this behind some optional Feature/Config flag given to NewRPCDUT()?\n\nI like it 😊\n\n\u003e Just for example, it looks like the audio team is using RPCDUT\n\nGood to know. Thanks!",
+      "parentUuid": "5d16192f_c823699d",
+      "revId": "ef955fa75bdcbaed03d1f6e09eac59e20614647c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "994fd179_f8cf1031",
         "filename": "src/chromiumos/tast/remote/firmware/fingerprint/rpcdut/rpcdut.go",
         "patchSetId": 3
