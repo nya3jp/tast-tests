@@ -16,6 +16,69 @@
       "message": "Hi Oleh, can you PTAL?",
       "revId": "e05f165372cd8dbc39183eec06f2fb2c81894db8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0df6a715_b46b39df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-04T08:51:59Z",
+      "side": 1,
+      "message": "LGTM % nits\n\ninteresting how this routine will behave on devices without battery",
+      "revId": "e05f165372cd8dbc39183eec06f2fb2c81894db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9417f848_4e587584",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_battery_capacity_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-04T08:51:59Z",
+      "side": 1,
+      "message": "nit: do you mean \"failed\"?",
+      "range": {
+        "startLine": 87,
+        "startChar": 83,
+        "endLine": 87,
+        "endChar": 88
+      },
+      "revId": "e05f165372cd8dbc39183eec06f2fb2c81894db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bfaf533_d4740790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_battery_capacity_routine.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-04T08:51:59Z",
+      "side": 1,
+      "message": "nit: you can wrap string in `, so you don\u0027t need to use \\\"\n\n`Unexpected routine status: got %q; want \"passed\" or \"failed\"`",
+      "range": {
+        "startLine": 90,
+        "startChar": 11,
+        "endLine": 90,
+        "endChar": 77
+      },
+      "revId": "e05f165372cd8dbc39183eec06f2fb2c81894db8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
