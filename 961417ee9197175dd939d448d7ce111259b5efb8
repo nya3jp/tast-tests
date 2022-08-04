@@ -158,6 +158,24 @@
       "parentUuid": "ec5e2b88_d4229d7d",
       "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf1eb5db_5a3f3ba5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1501785
+      },
+      "writtenOn": "2022-08-04T12:19:31Z",
+      "side": 1,
+      "message": "That is correct: the reason it does not run currently is there is no informational tast postsubmit builder for reven. We used to have one but we removed it because we never looked at the output and it was fairly expensive to run, as many tests time out or fail.\n\nI created b/241370114 to consider adding an informational builder back for reven-vmtest. The style (recipes-based) has changed since we last had an informational builder (legacy), so perhaps having one will not be as disruptive as it used to be.\n\nW.r.t. passing CQ for this CL, it will be submitted without bypassing CQ: I will verify that both the reven-vmtest tast builder (and any other tast-running builders) behave as expected as well.",
+      "parentUuid": "1e8995b0_649bf48f",
+      "revId": "961417ee9197175dd939d448d7ce111259b5efb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
