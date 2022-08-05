@@ -105,20 +105,21 @@ func ChapsECPerf(ctx context.Context, s *testing.State) {
 	}
 
 	// Get the slot ID for the user vault.
+	username := util.FirstUsername
 	slot, err := utility.GetTokenForUser(ctx, util.FirstUsername)
 	if err != nil {
 		s.Fatal("Failed to get user token slot ID: ", err)
 	}
 
 	// Time the import operation for hw-backed keys.
-	importedHwKeys, importHwElapsed, err := util.ImportKeysAndMeasure(ctx, pkcs11Util, privECKeyPath, slot, "11", util.ImportHWTimes, false)
+	importedHwKeys, importHwElapsed, err := util.ImportKeysAndMeasure(ctx, pkcs11Util, privECKeyPath, slot, username, "11", util.ImportHWTimes, false)
 	if err != nil {
 		s.Fatal("Failed to import hardware backed keys: ", err)
 	}
 	// Note: We don't need to cleanup the imported keys here because it goes with the vault cleanup.
 
 	// Time the import operation for sw-backed keys.
-	importedSwKeys, importSwElapsed, err := util.ImportKeysAndMeasure(ctx, pkcs11Util, privECKeyPath, slot, "22", util.ImportSWTimes, true)
+	importedSwKeys, importSwElapsed, err := util.ImportKeysAndMeasure(ctx, pkcs11Util, privECKeyPath, slot, username, "22", util.ImportSWTimes, true)
 	if err != nil {
 		s.Fatal("Failed to import software backed keys: ", err)
 	}
