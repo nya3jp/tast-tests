@@ -71,6 +71,15 @@ func PinUnpinMediaPod(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
+	// This test plays music from two ARC++ apps to verify that there are two music display in media control.
+	// The media control will be dismissed once another fullscreen app has launched.
+	// Therefore, this test can only be conducted under clamshell mode.
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, false)
+	if err != nil {
+		s.Fatal("Failed to ensure in tablet mode: ", err)
+	}
+	defer cleanup(cleanupCtx)
+
 	var currentMediaName string
 	for appName, media := range map[string]*apputil.Media{
 		youtubemusic.AppName: apputil.NewMedia(ytMusicVideo, ytMusicSubtitle),
@@ -104,6 +113,8 @@ func PinUnpinMediaPod(ctx context.Context, s *testing.State) {
 		}
 		defer app.Close(cleanupCtx, cr, s.HasError, filepath.Join(s.OutDir(), appName))
 
+		// The media control will be dismissed once another fullscreen app has launched.
+		// Therefore, set window state to normal state is essential.
 		if _, err := ash.SetARCAppWindowStateAndWait(ctx, tconn, appPkgName, ash.WindowStateNormal); err != nil {
 			s.Fatalf("Failed to set %s window state to normal: %v", appPkgName, err)
 		}

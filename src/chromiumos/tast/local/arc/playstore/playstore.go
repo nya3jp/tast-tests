@@ -338,11 +338,17 @@ func InstallOrUpdateAppAndClose(ctx context.Context, tconn *chrome.TestConn, a *
 	if err != nil {
 		return err
 	}
-	if !installed {
-		return InstallApp(ctx, a, d, pkgName, opt)
+
+	var installOperation operation
+	if installed {
+		testing.ContextLog(ctx, "App has already been installed; check if an update is available")
+		installOperation = updateApp
+	} else {
+		testing.ContextLog(ctx, "App is not installed yet; check if an installation is available")
+		installOperation = installApp
 	}
-	testing.ContextLog(ctx, "App has already been installed; check if an update is available")
-	if err := installOrUpdate(ctx, a, d, pkgName, opt, updateApp); err != nil {
+
+	if err := installOrUpdate(ctx, a, d, pkgName, opt, installOperation); err != nil {
 		return err
 	}
 	return optin.ClosePlayStore(ctx, tconn)
