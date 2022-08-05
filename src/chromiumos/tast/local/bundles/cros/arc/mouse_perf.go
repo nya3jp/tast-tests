@@ -22,7 +22,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test ARC mouse system performance",
 		Contacts:     []string{"arc-performance@google.com", "wvk@google.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		// Disabled due to 100% failure rate (b/241575495)
+		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         inputlatency.AndroidData(),
 		Params: []testing.Param{{
