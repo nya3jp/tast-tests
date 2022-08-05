@@ -21,7 +21,7 @@ func init() {
 		Func:         AudioPlaybackConfigurations,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Tests different channel number on the container's audio (through alsa) using a pre-built crostini image",
-		Contacts:     []string{"judyhsiao@chromium.org", "cros-containers-dev@google.com", "chromeos-audio-bugs@google.com"},
+		Contacts:     []string{"judyhsiao@chromium.org", "clumptini+oncall@google.com", "chromeos-audio-bugs@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		HardwareDeps: hwdep.D(

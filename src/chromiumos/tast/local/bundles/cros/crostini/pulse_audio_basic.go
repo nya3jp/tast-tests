@@ -18,8 +18,8 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         PulseAudioBasic,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Runs a basic test on the container's pusleaudio service using a pre-built crostini image",
-		Contacts:     []string{"paulhsia@chromium.org", "cros-containers-dev@google.com", "chromeos-audio-bugs@google.com"},
+		Desc:         "Runs a basic test on the container's pulseaudio service using a pre-built crostini image",
+		Contacts:     []string{"paulhsia@chromium.org", "clumptini@google.com", "chromeos-audio-bugs@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host"},
 		Params: []testing.Param{
