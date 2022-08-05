@@ -20,6 +20,8 @@
 	},
 	"CurrentStableChrome": 103,
 	"NextStableChrome": 104,
+	"CurrentChromeOSLTC": 102,
 	"CurrentChromeOSLTS": 96,
 	"CurrentChromeOSLTSMinor": 73
   }
+
