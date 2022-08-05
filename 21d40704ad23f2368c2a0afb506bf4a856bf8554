@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6308ba3_6a2df514",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-05T09:06:16Z",
+      "side": 1,
+      "message": "LGTM % comments",
+      "revId": "21d40704ad23f2368c2a0afb506bf4a856bf8554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "239d577f_8328df7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-05T09:06:16Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "21d40704ad23f2368c2a0afb506bf4a856bf8554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47eaa4e5_d35fcc0f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-05T09:06:16Z",
+      "side": 1,
+      "message": "nit: same: remove blank line, these blocks come together\n\nsame in CheckContentIsNotPasted function",
+      "revId": "21d40704ad23f2368c2a0afb506bf4a856bf8554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ff8e4b_cc450f88",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/clipboard/clipboard.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-05T09:06:16Z",
+      "side": 1,
+      "message": "maybe put next 2 functions in this file?\nsrc/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/dlp/policy/policy.go",
+      "revId": "21d40704ad23f2368c2a0afb506bf4a856bf8554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
