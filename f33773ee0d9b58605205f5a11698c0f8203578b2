@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "f33773ee0d9b58605205f5a11698c0f8203578b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4682626c_60fd4171",
+        "filename": "src/chromiumos/tast/local/bundles/cros/autoupdate/rollback_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1001853
+      },
+      "writtenOn": "2022-08-05T16:27:10Z",
+      "side": 1,
+      "message": "I don\u0027t get it. milestoneVal is unused before line 154, where the original milestoneVal retrieval logic is just before line 154. I don\u0027t see a reason that we need to retrieve milestone before chrome starts. Do I miss anything?\n\nGiven the fact that it makes no harm retrieving milestoneVal in the beginning, I\u0027ll LGTM the CL.",
+      "revId": "f33773ee0d9b58605205f5a11698c0f8203578b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
