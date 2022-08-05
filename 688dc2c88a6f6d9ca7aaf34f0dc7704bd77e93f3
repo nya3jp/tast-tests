@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15fb7427_2296e3a2",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-05T16:12:07Z",
+      "side": 1,
+      "message": "Actually nvm, I misread this",
+      "parentUuid": "c390c8c1_386da47c",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 0
+      },
+      "revId": "688dc2c88a6f6d9ca7aaf34f0dc7704bd77e93f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b4bf10c_ff9e8821",
