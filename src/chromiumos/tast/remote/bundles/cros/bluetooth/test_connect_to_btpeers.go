@@ -8,7 +8,7 @@ import (
 	"context"
 	"time"
 
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/remote/bluetooth"
 	"chromiumos/tast/testing"
 )
 
@@ -16,30 +16,27 @@ func init() {
 	testing.AddTest(&testing.Test{
 		Func:         TestConnectToBTPeers,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Checks that a test can connect to btpeers and call a chameleond method",
+		Desc:         "Checks that a remote test can connect to btpeers and call a chameleond method",
 		Contacts: []string{
 			"jaredbennett@google.com",
 			"cros-connectivity@google.com",
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedInWithBluetoothEnabled",
-		Vars:         bluetooth.BTPeerTastVars,
-		Timeout:      time.Second * 30,
+		Fixture:      "chromeLoggedInWith2BTPeers",
+		Timeout:      time.Second * 15,
 	})
 }
 
-// TestConnectToBTPeers tests that a test can connect to btpeers and call a
-// chameleond method.
+// TestConnectToBTPeers tests that a remote test can connect to btpeers and call
+// a chameleond method.
 func TestConnectToBTPeers(ctx context.Context, s *testing.State) {
-	btpeers, err := bluetooth.ConnectToBTPeers(ctx, s.RequiredVar(bluetooth.BTPeersVar), 2)
-	if err != nil {
-		s.Fatal("Failed to connect to 2 btpeers: ", err)
-	}
-	if _, err := btpeers[0].GetMacAddress(ctx); err != nil {
+	fv := s.FixtValue().(*bluetooth.FixtValue)
+
+	if _, err := fv.BTPeers[0].GetMacAddress(ctx); err != nil {
 		s.Fatal("Failed to call chamleleond method 'GetMacAddress' on btpeer1: ", err)
 	}
-	if success, err := btpeers[1].BluetoothAudioDevice().Reboot(ctx); err != nil {
+	if success, err := fv.BTPeers[1].BluetoothAudioDevice().Reboot(ctx); err != nil {
 		s.Fatal("Failed to call chamleleond method 'Reboot' on btpeer2.BluetoothAudioDevice: ", err)
 	} else if !success {
 		s.Fatal("Call to chamleleond method 'Reboot' on btpeer2.BluetoothAudioDevice was processed but was unsuccessful")

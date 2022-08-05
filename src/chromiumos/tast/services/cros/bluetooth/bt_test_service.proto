@@ -1,0 +1,31 @@
+// Copyright 2022 The ChromiumOS Authors.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+syntax = "proto3";
+
+package tast.cros.bluetooth;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "chromiumos/tast/services/cros/bluetooth";
+
+// BTTestService allows bluetooth remote tests make calls to local,
+// bluetooth-specific functions necessary for testing bluetooth features.
+service BTTestService {
+  // ChromeNew logs into chrome. ChromeClose must be called later.
+  rpc ChromeNew(ChromeNewRequest) returns (google.protobuf.Empty) {}
+
+  // ChromeClose cleans up resources from ChromeNew.
+  rpc ChromeClose(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // EnableBluetoothAdapter powers on the bluetooth adapter.
+  rpc EnableBluetoothAdapter(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // DisableBluetoothAdapter powers off the bluetooth adapter.
+  rpc DisableBluetoothAdapter(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+}
+
+message ChromeNewRequest {
+  bool bluetoothRevampEnabled = 1;
+}
