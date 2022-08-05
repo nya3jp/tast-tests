@@ -33,6 +33,69 @@
       "message": "tast-owners, please take a look.",
       "revId": "720ffb36effa2afcbf008a9ff75d4373787c1bd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98eb12f5_46f5e409",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-05T03:41:47Z",
+      "side": 1,
+      "message": "+2 for Tast Review % comments",
+      "revId": "720ffb36effa2afcbf008a9ff75d4373787c1bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e044e9a_f4c48467",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-05T03:41:47Z",
+      "side": 1,
+      "message": "optional/nit: do we need both? If this really returns a nanosecond precision timestamp, the randomly generated number should not add anything.\n\nAlternatively, why not use the loop counter to name the files, to avoid all the non-determinism of RNGs and timestamps in the test?",
+      "range": {
+        "startLine": 257,
+        "startChar": 54,
+        "endLine": 257,
+        "endChar": 94
+      },
+      "revId": "720ffb36effa2afcbf008a9ff75d4373787c1bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a35aa15b_7873bd35",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-05T03:41:47Z",
+      "side": 1,
+      "message": "do you need to clean-up these files if this method fails between here and the return? (e.g. by calling your clean-up routine yourself if the method encounters an error from here on in)",
+      "range": {
+        "startLine": 264,
+        "startChar": 3,
+        "endLine": 265,
+        "endChar": 55
+      },
+      "revId": "720ffb36effa2afcbf008a9ff75d4373787c1bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
