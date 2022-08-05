@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd1e8a1_fe0ccdda",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-05T02:51:47Z",
+      "side": 1,
+      "message": "Removed along with the loop down below.",
+      "parentUuid": "32c621f3_809970ca",
+      "revId": "b4b96235a25da8c630952f0aaefff8527b8953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efb355b0_0a7610b7",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea2aa3cf_55d4cd7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-05T02:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efb355b0_0a7610b7",
+      "range": {
+        "startLine": 106,
+        "startChar": 25,
+        "endLine": 106,
+        "endChar": 32
+      },
+      "revId": "b4b96235a25da8c630952f0aaefff8527b8953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4feda80c_ecacf943",
@@ -54,6 +96,24 @@
       "writtenOn": "2022-08-05T00:01:40Z",
       "side": 1,
       "message": "How about just getting rid of numWindows and the loop (as you\u0027re doing only one iteration).",
+      "revId": "b4b96235a25da8c630952f0aaefff8527b8953a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "570cd773_536e01d8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-05T02:51:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4feda80c_ecacf943",
       "revId": "b4b96235a25da8c630952f0aaefff8527b8953a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
