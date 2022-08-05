@@ -18,89 +18,10 @@ flush_period_ms: 20000
 # Stops the tracing session after 300,000,000 bytes have been written.
 max_file_size_bytes: 300000000
 
-# Buffer 0: for process stats, system stats.
-buffers {
-    size_kb: 7168
-    fill_policy: RING_BUFFER
-}
-
-# Buffer 1: for ftrace.
-buffers {
-    size_kb: 7168
-    fill_policy: RING_BUFFER
-}
-
-# Buffer 2: for chromium trace and metadata.
+# Buffer 0: for chromium trace and metadata.
 buffers {
     size_kb: 14336
     fill_policy: RING_BUFFER
-}
-
-# Scheduling details.
-data_sources: {
-    config {
-        name: "linux.process_stats"
-        target_buffer: 0
-        process_stats_config {
-            scan_all_processes_on_start: true
-            proc_stats_poll_ms: 1000
-        }
-    }
-}
-
-# Coarse CPU usage counter, kernel meminfo and virtual memory stats.
-data_sources: {
-    config {
-        name: "linux.sys_stats"
-        target_buffer: 0
-        sys_stats_config {
-            meminfo_period_ms: 1000
-            vmstat_period_ms: 1000
-            stat_period_ms: 1000
-            stat_counters: STAT_CPU_TIMES
-            stat_counters: STAT_FORK_COUNT
-        }
-    }
-}
-
-# Ftrace.
-data_sources: {
-    config {
-        name: "linux.ftrace"
-        target_buffer: 1
-        ftrace_config {
-            # Enables symbol name resolution against /proc/kallsyms.
-            symbolize_ksyms: true
-
-            # Scheduling information & process tracking. Useful for:
-            # - what is happening on each CPU at each moment
-            # - why a thread was descheduled
-            # - parent/child relationships between processes and threads.
-            ftrace_events: "power/suspend_resume"
-            ftrace_events: "sched/sched_blocked_reason"
-            ftrace_events: "sched/sched_process_free"
-            ftrace_events: "sched/sched_switch"
-            ftrace_events: "task/task_newtask"
-            ftrace_events: "task/task_rename"
-
-            # User process page faults.
-            ftrace_events: "exceptions/page_fault_user"
-
-            # Wakeup info. Allows you to compute how long a task was
-            # blocked due to CPU contention.
-            ftrace_events: "sched/sched_waking"
-            ftrace_events: "sched/sched_wakeup_new"
-
-            # Cpu events.
-            ftrace_events: "power/cpu_frequency"
-            ftrace_events: "power/cpu_idle"
-
-            compact_sched {
-                # When enabled, specific high-volume events are encoded in a denser format than normal.
-                enabled: true
-            }
-        }
-    }
 }
 
 # Chrome trace events.
