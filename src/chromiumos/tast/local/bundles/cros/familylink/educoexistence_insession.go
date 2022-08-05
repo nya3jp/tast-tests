@@ -21,7 +21,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks if in-session EDU Coexistence flow is working",
 		Contacts:     []string{"tobyhuang@chromium.org", "cros-families-eng+test@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		// Disabled due to 100% failure rate (b/241575495)
+		// Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + 5*time.Minute,
 		VarDeps:      []string{"family.parentEmail", "family.parentPassword", "family.eduEmail", "family.eduPassword"},
