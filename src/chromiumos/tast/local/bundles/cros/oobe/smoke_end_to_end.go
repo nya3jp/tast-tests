@@ -52,8 +52,6 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 	options := []chrome.Option{
 		chrome.NoLogin(),
 		chrome.DontSkipOOBEAfterLogin(),
-		// TODO(https://crbug.com/1328790): Enable the OobeConsolidatedConsent feature.
-		chrome.DisableFeatures("OobeConsolidatedConsent"),
 		chrome.DeferLogin(),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.LoadSigninProfileExtension(s.RequiredVar("ui.signinProfileTestExtensionManifestKey")),
@@ -156,6 +154,40 @@ func SmokeEndToEnd(ctx context.Context, s *testing.State) {
 
 	if err := cr.ContinueLogin(ctx); err != nil {
 		s.Fatal("Failed to continue login: ", err)
+	}
+
+	shouldSkipConsolidatedConsentScreen := false
+	if err := oobeConn.Eval(ctx, "OobeAPI.screens.ConsolidatedConsentScreen.shouldSkip()", &shouldSkipConsolidatedConsentScreen); err != nil {
+		s.Fatal("Failed to evaluate whether to skip consolidated consent screen: ", err)
+	}
+
+	if shouldSkipConsolidatedConsentScreen {
+		s.Log("Skipping the consolidated consent screen")
+	} else {
+		s.Log("Waiting for the consolidated consent screen")
+		if err := oobeConn.WaitForExprFailOnErr(ctx, "OobeAPI.screens.ConsolidatedConsentScreen.isReadyForTesting()"); err != nil {
+			s.Fatal("Failed to wait for the consolidated consent screen to be visible: ", err)
+		}
+
+		isReadMoreButtonShown := false
+		if err := oobeConn.Eval(ctx, "OobeAPI.screens.ConsolidatedConsentScreen.isReadMoreButtonShown()", &isReadMoreButtonShown); err != nil {
+			s.Fatal("Failed to evaluate whether the read more button on the consolidated consent screen is shown: ", err)
+		}
+		if isReadMoreButtonShown {
+			if err := uiauto.Combine("Click read more button on the consolidated consent screen",
+				ui.WaitUntilExists(focusedButton),
+				ui.LeftClick(focusedButton),
+			)(ctx); err != nil {
+				s.Fatal("Failed to click the consolidated consent read more button: ", err)
+			}
+		}
+
+		if err := uiauto.Combine("Click accept on the consolidated consent screen",
+			ui.WaitUntilExists(focusedButton),
+			ui.LeftClick(focusedButton),
+		)(ctx); err != nil {
+			s.Fatal("Failed to click consolidated consent screen accept button: ", err)
+		}
 	}
 
 	s.Log("Waiting for the sync screen")
