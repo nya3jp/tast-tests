@@ -36,6 +36,9 @@ type Store struct {
 	// slot is the PKCS#11 slot in which this user slot is located.
 	slot int
 
+	// username is the user that owns the PKCS#11 slot.
+	username string
+
 	// label is the label of the PKCS#11 slot.
 	label string
 
@@ -147,7 +150,7 @@ func CreateStore(ctx context.Context, runner hwsec.CmdRunner) (result *Store, re
 		return nil, errors.Wrap(err, "failed to prepare scratchpad")
 	}
 
-	singletonStore = &Store{runner, chaps, cryptohome, startingID, slot, label, pin}
+	singletonStore = &Store{runner, chaps, cryptohome, startingID, slot, TestUsername, label, pin}
 	return singletonStore, nil
 }
 
@@ -209,7 +212,7 @@ func (s *Store) InstallCertKeyPair(ctx context.Context, key, certificate string)
 	identifier = s.NextID()
 
 	// Call chaps to import the key and cert.
-	if _, err := s.chaps.ImportPEMKeyAndCertBySlot(ctx, scratchpadPath, key, certificate, identifier, s.slot); err != nil {
+	if _, err := s.chaps.ImportPEMKeyAndCertBySlot(ctx, scratchpadPath, key, certificate, identifier, s.slot, s.username); err != nil {
 		return "", errors.Wrap(err, "failed to import")
 	}
 	return identifier, nil

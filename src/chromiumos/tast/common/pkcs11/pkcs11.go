@@ -100,6 +100,9 @@ type KeyInfo struct {
 	// The PKCS#11 token slot that holds this key.
 	slot int
 
+	// The PKCS#11 token slot is owned by this user.
+	username string
+
 	// The PKCS#11 Object ID of the key.
 	objID string
 
@@ -109,6 +112,19 @@ type KeyInfo struct {
 // DumpKeyInfo converts the information in the key into a human readable string for debugging purpose.
 func (p *Chaps) DumpKeyInfo(k *KeyInfo) string {
 	return fmt.Sprintf("Slot %d, ID %q, PubKey %q", k.slot, k.objID, k.pubKeyPath)
+}
+
+// UpdateKeySlot will update the given KeyInfo's slot to the current state known by cryptohomed.
+// This should be used if there's any reboot/mount/unmount since the key is last updated or created.
+func (p *Chaps) UpdateKeySlot(ctx context.Context, k *KeyInfo) error {
+	// Get the corresponding slot.
+	slot, err := p.utility.GetTokenForUser(ctx, k.username)
+	if err != nil {
+		return errors.Wrap(err, "failed to get slot")
+	}
+
+	k.slot = slot
+	return nil
 }
 
 // CreateECSoftwareKey create a key and insert it into the system token (if username is empty), or user token specified by username. The object will have an ID of objID, and the corresponding public key will be deposited in the scratchpad.
@@ -128,6 +144,7 @@ func (p *Chaps) CreateECSoftwareKey(ctx context.Context, scratchpadPath, usernam
 		certPath:    keyPrefix + "-cert.der",
 		objID:       objID,
 		slot:        slot,
+		username:    username,
 	}
 
 	// Note: This method calls openssl commands in order to ease debugging.
@@ -212,6 +229,7 @@ func (p *Chaps) CreateRSASoftwareKey(ctx context.Context, scratchpadPath, userna
 		certPath:    keyPrefix + "-cert.der",
 		objID:       objID,
 		slot:        slot,
+		username:    username,
 	}
 
 	// Note: This method calls openssl commands in order to ease debugging.
@@ -299,6 +317,7 @@ func (p *Chaps) CreateGeneratedKey(ctx context.Context, scratchpadPath, keyType,
 		certPath:    "", // No certs.
 		objID:       objID,
 		slot:        slot,
+		username:    username,
 	}
 
 	// Generate the key.
@@ -315,7 +334,7 @@ func (p *Chaps) CreateGeneratedKey(ctx context.Context, scratchpadPath, keyType,
 }
 
 // ImportPrivateKeyBySlot creates a key by importing it from existing DER format private key file specified by privKeyPath. The key will be inserted into the token specified by slot. The object will have an ID of objID.
-func (p *Chaps) ImportPrivateKeyBySlot(ctx context.Context, privKeyPath string, slot int, objID string, forceSoftwareBacked bool) (*KeyInfo, error) {
+func (p *Chaps) ImportPrivateKeyBySlot(ctx context.Context, privKeyPath string, slot int, username, objID string, forceSoftwareBacked bool) (*KeyInfo, error) {
 	// Import the private key into chaps.
 	args := []string{"--import", "--slot=" + strconv.Itoa(slot), "--path=" + privKeyPath, "--type=privkey", "--id=" + objID}
 	if forceSoftwareBacked {
@@ -332,6 +351,7 @@ func (p *Chaps) ImportPrivateKeyBySlot(ctx context.Context, privKeyPath string, 
 		certPath:    "",
 		objID:       objID,
 		slot:        slot,
+		username:    username,
 	}
 
 	return result, nil
@@ -339,7 +359,7 @@ func (p *Chaps) ImportPrivateKeyBySlot(ctx context.Context, privKeyPath string, 
 
 // ImportPEMKeyAndCertBySlot imports key and cert of PEM format to the token specified by slot.
 // The object will have an ID of objID. It is OK for either privKey or cert to be empty if they are not needed.
-func (p *Chaps) ImportPEMKeyAndCertBySlot(ctx context.Context, scratchpadPath, privKey, cert, objID string, slot int) (*KeyInfo, error) {
+func (p *Chaps) ImportPEMKeyAndCertBySlot(ctx context.Context, scratchpadPath, privKey, cert, objID string, slot int, username string) (*KeyInfo, error) {
 	if privKey == "" && cert == "" {
 		return nil, errors.New("nothing to import")
 	}
@@ -351,6 +371,7 @@ func (p *Chaps) ImportPEMKeyAndCertBySlot(ctx context.Context, scratchpadPath, p
 		certPath:    "", // Not needed by caller for now.
 		objID:       objID,
 		slot:        slot,
+		username:    username,
 	}
 
 	if privKey != "" {
