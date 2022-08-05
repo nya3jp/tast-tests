@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "23ca8035_ae324707",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-08-05T00:06:59Z",
+      "side": 1,
+      "message": "nit: The period missing in the end. Also need to describe what this CL is trying to do.",
+      "revId": "fb69a3cc8c557561ba2488a6ef327f8a31d2500e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1edbbc8c_860737d8",
