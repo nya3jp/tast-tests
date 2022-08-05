@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd5da5b2_248a0965",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/adobe_acrobat_reader.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-05T21:14:26Z",
+      "side": 1,
+      "message": "How about something like this?\n\nExtraAttr: []string{\"appcompat_clamshell_smoke\", \"appcompat_clamshell_common\"}\n\nWill it do what you want?",
+      "revId": "544863b2a9c3896482b8d41d54198b83cc067e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
