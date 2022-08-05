@@ -68,6 +68,19 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close the onboarding dialog: ", err)
 	}
 
+	// Even though we filter for devices with a microphone using
+	// the hardware deps above, the microphone could still be
+	// muted by a physical switch. This check ensures a microphone
+	// is available and not mutedd.
+	inputAvailable, err := projector.IsInputDeviceAvailable(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to check for input device availability: ", err)
+	}
+	if !inputAvailable {
+		// Pass the test and exit prematurely.
+		return
+	}
+
 	// UI action for refreshing the app until the element we're
 	// looking for exists.
 	refreshApp := projector.RefreshApp(ctx, tconn)

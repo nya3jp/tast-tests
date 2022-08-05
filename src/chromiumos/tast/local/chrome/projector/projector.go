@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -72,4 +73,18 @@ func VerifyNewScreencastButtonDisabled(ctx context.Context, tconn *chrome.TestCo
 		return errors.Wrapf(err, "new screencast button is not disabled with expected error: %s", tooltipText)
 	}
 	return nil
+}
+
+// IsInputDeviceAvailable returns true if the microphone is available
+// and not muted. This requirement is a prerequisite for launching the
+// new screencast creation flow.
+func IsInputDeviceAvailable(ctx context.Context, tconn *chrome.TestConn) (bool, error) {
+	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
+		testing.ContextLog(ctx, "Microphone is unavailable, verifying new screencast button is disabled")
+		if err = VerifyNewScreencastButtonDisabled(ctx, tconn, "Turn on microphone"); err != nil {
+			return false, errors.Wrap(err, "Microphone is unavailable, but new screencast button is enabled")
+		}
+		return false, nil
+	}
+	return true, nil
 }

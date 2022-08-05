@@ -12,7 +12,6 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/a11y"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome/projector"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -61,11 +60,11 @@ func NewScreencastButtonCondition(ctx context.Context, s *testing.State) {
 		return
 	}
 
-	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
-		s.Log("Microphone is unavailable, verifying new screencast button is disabled")
-		if err = projector.VerifyNewScreencastButtonDisabled(ctx, tconn, "Turn on microphone"); err != nil {
-			s.Fatal("Microphone is unavailable, but new screencast button is enabled: ", err)
-		}
+	inputAvailable, err := projector.IsInputDeviceAvailable(ctx, tconn)
+	if err != nil {
+		s.Fatal("Failed to check for input device availability: ", err)
+	}
+	if !inputAvailable {
 		// Pass the test and exit prematurely.
 		return
 	}
