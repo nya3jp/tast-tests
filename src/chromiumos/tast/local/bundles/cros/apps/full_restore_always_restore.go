@@ -125,14 +125,7 @@ func restoreBrowser(ctx context.Context, bt browser.Type, outDir string, hasErro
 		chrome.EnableRestoreTabs(),
 		chrome.KeepState()}
 
-	if bt == browser.TypeLacros {
-		var err error
-		opts, err = lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(opts...)).Opts()
-		if err != nil {
-			return errors.Wrap(err, "failed to get lacros options")
-		}
-	}
-	cr, err := chrome.New(ctx, opts...)
+	cr, err := browserfixt.NewChrome(ctx, bt, lacrosfixt.NewConfig(), opts...)
 	if err != nil {
 		return errors.Wrap(err, "failed to start Chrome")
 	}

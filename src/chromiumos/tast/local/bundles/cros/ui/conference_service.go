@@ -26,9 +26,9 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/display"
-	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/input"
@@ -116,15 +116,8 @@ func chromeArgsWithFileCameraInput(fileName string) []string {
 // including setting whether to use fake camera and lacros browser.
 func newConferenceChrome(ctx context.Context, accountPool, cameraVideoPath string, bt browser.Type) (cr *chrome.Chrome, err error) {
 	opts := confereceChromeOpts(accountPool, cameraVideoPath)
-	if bt == browser.TypeLacros {
-		lacrosOpts, err := lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosPrimary),
-			lacrosfixt.ChromeOptions(chrome.LacrosEnableFeatures("WebUITabStrip"))).Opts()
-		if err != nil {
-			return cr, err
-		}
-		opts = append(opts, lacrosOpts...)
-	}
-	cr, err = chrome.New(ctx, opts...)
+	lacrosCfg := lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chrome.LacrosEnableFeatures("WebUITabStrip")))
+	cr, err = browserfixt.NewChrome(ctx, bt, lacrosCfg, opts...)
 	if err != nil {
 		return cr, errors.Wrap(err, "failed to restart Chrome")
 	}
