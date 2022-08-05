@@ -73,6 +73,29 @@
       "message": "Can you match against the accept button?",
       "revId": "184f4376bc70203cfe61d6982b96d59407637018",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6792ed5c_4b669fd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1111144
+      },
+      "writtenOn": "2022-08-05T07:24:57Z",
+      "side": 1,
+      "message": "I think it might be a race here.\nui.WaitUntilExists(focusedButton),\nui.LeftClick(focusedButton),\nui.WaitUntilExists(focusedButton) \u003c- here it might still be the button we just clicked?",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 37
+      },
+      "revId": "184f4376bc70203cfe61d6982b96d59407637018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
