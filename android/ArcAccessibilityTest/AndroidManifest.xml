@@ -9,17 +9,29 @@
         android:minSdkVersion="28"
         android:targetSdkVersion="29" />
     <application>
-        <activity android:name=".MainActivity" android:exported="true" android:label="@string/main_activity_name">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/main_activity_name"
+            android:configChanges="keyboardHidden" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EditTextActivity" android:exported="true" android:label="@string/edit_text_activity_name">
+
+        <activity
+            android:name=".EditTextActivity"
+            android:exported="true"
+            android:label="@string/edit_text_activity_name"
+            android:configChanges="keyboardHidden" >
         </activity>
-        <activity android:name=".LiveRegionActivity" android:exported="true" android:label="@string/live_region_activity_name">
+
+        <activity
+            android:name=".LiveRegionActivity"
+            android:exported="true"
+            android:label="@string/live_region_activity_name"
+            android:configChanges="keyboardHidden" >
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
