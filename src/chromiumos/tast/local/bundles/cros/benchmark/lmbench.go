@@ -49,7 +49,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Execute LMBench to do benchmark testing and retrieve the results",
 		Contacts:     []string{"phuang@cienet.com", "xliu@cienet.com"},
-		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
+		// Disabled due to 100% failure rate (b/241575495)
+		// Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		Fixture:      setup.BenchmarkChromeFixture,
 		Timeout:      30 * time.Minute,
