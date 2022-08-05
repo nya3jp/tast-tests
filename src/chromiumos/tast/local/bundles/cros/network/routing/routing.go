@@ -408,7 +408,13 @@ func verifyNetworkConnectivity(ctx context.Context, router, server *env.Env, opt
 
 	for _, user := range []string{"root", "chronos"} {
 		for _, ip := range pingableAddrs {
-			if err := ExpectPingSuccessWithTimeout(ctx, ip.String(), user, 0); err != nil {
+			// When local subnet is reachable, we suppose that the routing setup
+			// should be finished, and thus ping should succeed directly here. But we
+			// observed that in some cases for IPv6, this ping will use the link-local
+			// address as its src ip, this seems like a transient issue during setup
+			// and should not affect users in the real world, and thus we still use
+			// opts.Timeout to retry ping here.
+			if err := ExpectPingSuccessWithTimeout(ctx, ip.String(), user, opts.Timeout); err != nil {
 				errs = append(errs, errors.Wrapf(err, "non-local address %v is not reachable as user %s", ip, user))
 			}
 		}
