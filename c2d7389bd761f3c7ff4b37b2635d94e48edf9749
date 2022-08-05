@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6fa127c_879aa53b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-08-05T05:33:34Z",
+      "side": 1,
+      "message": "Hi Hyung Tae,\n\nSorry for the late response. I was OOO for the past two weeks.\nI think what you are doing makes sense but I am not really a tast expert. I just made a quick fix to enable loading extensions to Lacros to write a test for my feature and that\u0027s it.\n\nI think a proper review should be done by Hidehiko or someone who\u0027s more familiar with Tast than I.\n\nThanks,\nYuta",
+      "revId": "c2d7389bd761f3c7ff4b37b2635d94e48edf9749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78a41889_45c5f458",
@@ -19,6 +36,76 @@
         "startChar": 0,
         "endLine": 301,
         "endChar": 25
+      },
+      "revId": "c2d7389bd761f3c7ff4b37b2635d94e48edf9749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b24c54c_af3f1172",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-08-05T05:33:34Z",
+      "side": 1,
+      "message": "I think you can drop this and remove cfg.LacrosEnabled() method.",
+      "parentUuid": "78a41889_45c5f458",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 25
+      },
+      "revId": "c2d7389bd761f3c7ff4b37b2635d94e48edf9749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08822330_725cb0b8",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-08-05T05:33:34Z",
+      "side": 1,
+      "message": "Just checking but is this safe? This changes what happens in extension.PrepareExtensions since you are passing cfg for Ash.",
+      "range": {
+        "startLine": 302,
+        "startChar": 70,
+        "endLine": 302,
+        "endChar": 73
+      },
+      "revId": "c2d7389bd761f3c7ff4b37b2635d94e48edf9749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e34097a4_61e8ec34",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1395698
+      },
+      "writtenOn": "2022-08-05T05:33:34Z",
+      "side": 1,
+      "message": "Lacros can be enabled not just by passing the `LacrosSupport` feature flag like via policy so I think there are other conditions that have to be checked.\n\nAlso if we make Lacros enabled by default (by modifying code in chromium) then this becomes incorrect.\n\nSince I see only one place where this is used, I don\u0027t know if we need this method.",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 31
       },
       "revId": "c2d7389bd761f3c7ff4b37b2635d94e48edf9749",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
