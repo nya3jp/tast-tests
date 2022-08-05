@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c3f005_b9e38e1c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-08-05T05:07:06Z",
+      "side": 1,
+      "message": "Why are two clumptini and two clumptini+oncall?",
+      "range": {
+        "startLine": 22,
+        "startChar": 51,
+        "endLine": 22,
+        "endChar": 60
+      },
+      "revId": "90910b15bdb97a02b8bc8043c4785caf67999d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
