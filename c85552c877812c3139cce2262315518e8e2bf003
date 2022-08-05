@@ -201,6 +201,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce2335b5_384c10f4",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-05T18:09:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6f494f7_9b3de0f0",
+      "revId": "c85552c877812c3139cce2262315518e8e2bf003",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd15f617_4d00a314",
