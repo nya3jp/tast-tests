@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c7b269d_6dd5a016",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-05T17:37:17Z",
+      "side": 1,
+      "message": "ListBoxOptions don\u0027t show up in the accessibility tree unless the dropdown they belong to is expanded, so it\u0027s not possible to match options belonging to other dropdowns.",
+      "parentUuid": "58bea567_6127f02b",
+      "revId": "cc1093b716c657ab67f4c6d61b8e160a45a92644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21be3940_8b64b4d2",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-07-27T14:39:06Z",
       "side": 1,
       "message": "This is manipulating two controls in quick succession.  Does it need any kind of synchronization to make sure the option is finished clicking before clicking the dropdown?",
+      "revId": "cc1093b716c657ab67f4c6d61b8e160a45a92644",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db77b70c_fcd77129",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-05T17:37:17Z",
+      "side": 1,
+      "message": "I haven\u0027t seen any synchronization issues with selecting dropdown options, but the new version collapses the dropdown with DoDefault() to be as safe as possible.",
+      "parentUuid": "21be3940_8b64b4d2",
       "revId": "cc1093b716c657ab67f4c6d61b8e160a45a92644",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
