@@ -126,6 +126,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4b7dc945_dd026595",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-08-05T16:59:52Z",
+      "side": 1,
+      "message": "I used a volteer board DUT. I added it to the commit message. Thanks Steve.",
+      "parentUuid": "d606a5f6_f035698d",
+      "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "fd798ee9_ea377161",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
