@@ -26,7 +26,8 @@ func init() {
 		ServiceDeps:  []string{"tast.cros.security.BootLockboxService"},
 		SoftwareDeps: []string{"chrome", "reboot"},
 		Vars:         []string{"servo"},
-		Attr:         []string{"group:mainline", "informational"},
+		// Disabled due to 100% failure rate (b/241575495)
+		// Attr:         []string{"group:mainline", "informational"},
 		Fixture:      fixture.NormalMode,
 	})
 }

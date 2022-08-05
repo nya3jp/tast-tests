@@ -42,7 +42,8 @@ func init() {
 		Desc:         "Verify whether virtual keyboard window is present during change in tablet mode",
 		Contacts:     []string{"cienet-firmware@cienet.corp-partner.google.com", "chromeos-firmware@google.com"},
 		// TODO(b/200305355): Add back to firmware_unstable when this test passes.
-		Attr:         []string{"group:firmware", "firmware_detachable"},
+		// Disabled due to 100% failure rate (b/241575495)
+		// Attr:         []string{"group:firmware", "firmware_detachable"},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.ui.ScreenRecorderService", "tast.cros.browser.ChromeService", "tast.cros.ui.CheckVirtualKeyboardService", "tast.cros.firmware.UtilsService"},
 		Fixture:      fixture.NormalMode,
