@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53cb9a59_c7093aef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-08-05T01:13:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8080ddbc_11cb1c51",
+      "revId": "332ab392176370e5300231adb3bd82b0e22aa071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5f51daa_249e63ab",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b28e090_cafe9bcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-08-05T01:13:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5f51daa_249e63ab",
+      "revId": "332ab392176370e5300231adb3bd82b0e22aa071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54212a63_6c1fd57c",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-08-04T05:49:28Z",
       "side": 1,
       "message": "Maybe add this to block of string consts on lines 22-28.",
+      "range": {
+        "startLine": 128,
+        "startChar": 28,
+        "endLine": 128,
+        "endChar": 55
+      },
+      "revId": "332ab392176370e5300231adb3bd82b0e22aa071",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf16c06b_1e6378ac",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/flashrom_tester.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1377969
+      },
+      "writtenOn": "2022-08-05T01:13:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54212a63_6c1fd57c",
       "range": {
         "startLine": 128,
         "startChar": 28,
