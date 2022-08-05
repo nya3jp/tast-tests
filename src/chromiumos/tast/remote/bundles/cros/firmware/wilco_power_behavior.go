@@ -44,6 +44,10 @@ func WilcoPowerBehavior(ctx context.Context, s *testing.State) {
 		s.Fatal("Unable to remove charger: ", err)
 	}
 
+	if err := h.Servo.WatchdogRemove(ctx, servo.WatchdogMain); err != nil {
+		s.Fatal("Failed to remove watchdog main: ", err)
+	}
+
 	s.Logf("Pressing power button for %s to put DUT in deep sleep", h.Config.HoldPwrButtonPowerOff)
 	if err := h.Servo.KeypressWithDuration(ctx, servo.PowerKey, servo.Dur(h.Config.HoldPwrButtonPowerOff)); err != nil {
 		s.Fatal("Failed to hold power button: ", err)
@@ -56,6 +60,17 @@ func WilcoPowerBehavior(ctx context.Context, s *testing.State) {
 	if err := d.WaitUnreachable(waitUnreachableCtx); err != nil {
 		s.Fatal("DUT did not power down: ", err)
 	}
+
+	// Increase timeout in getting response from cr50 uart.
+	if err := h.Servo.SetString(ctx, "cr50_uart_timeout", "10"); err != nil {
+		s.Fatal("Failed to set cr50 uart timeout: ", err)
+	}
+	defer func() {
+		s.Log("Restoring cr50 uart timeout to the default value of 3 seconds")
+		if err := h.Servo.SetString(ctx, "cr50_uart_timeout", "3"); err != nil {
+			s.Fatal("Failed to restore default cr50 uart timeout: ", err)
+		}
+	}()
 
 	s.Log("Verifying DUT's AP is off")
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
