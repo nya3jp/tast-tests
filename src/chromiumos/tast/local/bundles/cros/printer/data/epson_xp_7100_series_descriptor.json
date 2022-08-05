@@ -1,0 +1,37 @@
+{
+    "Name": "EPSON XP-7100 Series",
+    "RegularSettings": {
+        "Dropdowns": {
+            "Layout": {
+                "Values": ["Portrait", "Landscape"]
+            },
+            "Color": {
+                "Values": ["Black and white", "Color"]
+            },
+            "Paper size": {
+                "Values": ["A4", "om ta-4", "Index-4x6 (Postcard)", "5x7", "om t-2-l", "A6", "A5", "JIS B5", "JIS B6", "oe photo-l", "om tl", "Index-5x8", "Government-Letter", "om 4-x-7", "Hagaki (Postcard)", "om tpostcard", "Comm-10 (Envelope)", "Designated-Long", "C6 (Envelope)", "Letter", "Legal", "om 16-k"]
+            },
+            "Pages per sheet": {
+                "Values": ["1", "2", "4", "6", "9", "16"]
+            },
+            "Margins": {
+                "Values": ["Default", "None", "Minimum", "Custom"],
+                "Dependencies": {
+                    "Pages per sheet": "1"
+                }
+            }
+        },
+        "Checkboxes": {
+            "Print on both sides": {},
+            "Headers and footers": {},
+            "Background graphics": {}
+        }
+    },
+    "AdvancedSettings": {
+        "Input Tray": ["Auto", "cassette-1", "cassette-2", "Rear Tray"],
+        "Job sheets": ["None", "classified", "confidential", "form", "secret", "Standard", "topsecret", "unclassified"],
+        "Output bin": ["Face up"],
+        "Page delivery": ["reverse-order", "same-order"],
+        "Print quality": ["Normal"]
+    }
+}

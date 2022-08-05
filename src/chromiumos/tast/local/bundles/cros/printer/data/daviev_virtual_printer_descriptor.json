@@ -1,0 +1,33 @@
+{
+    "Name": "DavieV Virtual USB Printer (USB)",
+    "RegularSettings": {
+        "Dropdowns": {
+            "Layout": {
+                "Values": ["Portrait", "Landscape"]
+            },
+            "Paper size": {
+                "Values": ["A4", "A5", "JIS B5", "Letter", "om 140.79x215.9mm", "om 215.9x655.35mm", "na executive"]
+            },
+            "Pages per sheet": {
+                "Values": ["1", "2", "4", "6", "9", "16"]
+            },
+            "Margins": {
+                "Values": ["Default", "None", "Minimum", "Custom"],
+                "Dependencies": {
+                    "Pages per sheet": "1"
+                }
+            }
+        },
+        "Checkboxes": {
+            "Print on both sides": {},
+            "Headers and footers": {},
+            "Background graphics": {}
+        }
+    },
+    "AdvancedSettings": {
+        "Job sheets": ["None", "classified", "confidential", "form", "secret", "Standard", "topsecret", "unclassified"],
+        "Output bin": ["Face down"],
+        "Page delivery": ["reverse-order", "same-order"],
+        "Print quality": ["Normal"]
+    }
+}

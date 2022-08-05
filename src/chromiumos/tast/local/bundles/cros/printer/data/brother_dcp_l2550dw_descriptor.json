@@ -1,0 +1,37 @@
+{
+    "Name": "Brother DCP-L2550DW series",
+    "RegularSettings": {
+        "Dropdowns": {
+            "Layout": {
+                "Values": ["Portrait", "Landscape"]
+            },
+            "Paper size": {
+                "Values": ["Letter", "Legal", "na executive", "Foolscap", "A4", "A5", "A6", "Comm-10 (Envelope)", "na monarch", "Designated-Long", "C5 (Envelope)", "B5 (Envelope)", "JIS B5", "B6 (Envelope)", "JIS B6", "Index-4x6 (Postcard)", "Hagaki (Postcard)", "om double-postcard-rotated", "You4 (Envelope)", "om 195x270mm", "om 184x260mm", "Roc-16K", "om custom-1"]
+            },
+            "Pages per sheet": {
+                "Values": ["1", "2", "4", "6", "9", "16"]
+            },
+            "Margins": {
+                "Values": ["Default", "None", "Minimum", "Custom"],
+                "Dependencies": {
+                    "Pages per sheet": "1"
+                }
+            },
+            "Quality": {
+				"Values": ["300 dpi", "600 dpi", "2,400x600 dpi", "1,200 dpi"]
+            }
+        },
+        "Checkboxes": {
+            "Print on both sides": {},
+            "Headers and footers": {},
+            "Background graphics": {}
+        }
+    },
+    "AdvancedSettings": {
+        "Input Tray": ["Manual Slot", "Tray 1"],
+        "Job sheets": ["None", "classified", "confidential", "form", "secret", "Standard", "topsecret", "unclassified"],
+        "Output bin": ["Face down"],
+        "Page delivery": ["reverse-order", "same-order"],
+        "Print quality": ["Normal"]
+    }
+}
