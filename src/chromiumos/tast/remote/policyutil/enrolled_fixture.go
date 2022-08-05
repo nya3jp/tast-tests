@@ -21,7 +21,7 @@ import (
 	"chromiumos/tast/dut"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/rpc"
-	ps "chromiumos/tast/services/cros/policy"
+	pspb "chromiumos/tast/services/cros/policy"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
@@ -113,14 +113,6 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		}
 	}()
 
-	cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
-	if err != nil {
-		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-	}
-	defer cl.Close(ctx)
-
-	pc := ps.NewPolicyServiceClient(cl.Conn)
-
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		if out, err := s.DUT().Conn().CommandContext(ctx, "echo", "1").Output(ssh.DumpLogOnError); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to run connect over SSH"))
@@ -147,7 +139,15 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		// TODO(crbug.com/1187473): use a temporary directory.
 		e.fdmsDir = fakedms.EnrollmentFakeDMSDir
 
-		if _, err := pc.CreateFakeDMSDir(ctx, &ps.CreateFakeDMSDirRequest{
+		cl, err := rpc.Dial(ctx, s.DUT(), s.RPCHint())
+		if err != nil {
+			s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+		}
+		defer cl.Close(ctx)
+
+		policyClient := pspb.NewPolicyServiceClient(cl.Conn)
+
+		if _, err := policyClient.CreateFakeDMSDir(ctx, &pspb.CreateFakeDMSDirRequest{
 			Path: e.fdmsDir,
 		}); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to create FakeDMS directory"))
@@ -157,7 +157,7 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 
 		defer func() {
 			if !enrollOK {
-				if _, err := pc.RemoveFakeDMSDir(ctx, &ps.RemoveFakeDMSDirRequest{
+				if _, err := policyClient.RemoveFakeDMSDir(ctx, &pspb.RemoveFakeDMSDirRequest{
 					Path: e.fdmsDir,
 				}); err != nil {
 					s.Error("Failed to remove FakeDMS directory: ", err)
@@ -177,7 +177,7 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 			return testing.PollBreak(err)
 		}
 
-		if _, err := pc.EnrollUsingChrome(ctx, &ps.EnrollUsingChromeRequest{
+		if _, err := policyClient.EnrollUsingChrome(ctx, &pspb.EnrollUsingChromeRequest{
 			PolicyJson: pJSON,
 			FakedmsDir: e.fdmsDir,
 			SkipLogin:  true,
@@ -189,7 +189,7 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 			return errors.Wrap(err, "failed to enroll using Chrome")
 		}
 
-		if _, err := pc.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
+		if _, err := policyClient.StopChromeAndFakeDMS(ctx, &empty.Empty{}); err != nil {
 			return errors.Wrap(err, "failed to stop Chrome and FakeDMS")
 		}
 
@@ -216,9 +216,9 @@ func (e *enrolledFixt) TearDown(ctx context.Context, s *testing.FixtState) {
 	}
 	defer cl.Close(ctx)
 
-	pc := ps.NewPolicyServiceClient(cl.Conn)
+	pc := pspb.NewPolicyServiceClient(cl.Conn)
 
-	if _, err := pc.RemoveFakeDMSDir(ctx, &ps.RemoveFakeDMSDirRequest{
+	if _, err := pc.RemoveFakeDMSDir(ctx, &pspb.RemoveFakeDMSDirRequest{
 		Path: e.fdmsDir,
 	}); err != nil {
 		s.Fatal("Failed to remove temporary directory for FakeDMS: ", err)
