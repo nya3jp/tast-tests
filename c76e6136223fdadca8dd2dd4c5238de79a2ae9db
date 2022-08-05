@@ -22,6 +22,30 @@
       },
       "revId": "c76e6136223fdadca8dd2dd4c5238de79a2ae9db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "931b52bb_97c1c985",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-05T17:35:33Z",
+      "side": 1,
+      "message": "DoDefault does seem to work with the implementation here.  Before I change this, let\u0027s wait for crrev.com/c/3787089 to land since you\u0027re also changing the same interactions.",
+      "parentUuid": "a8ab9ba3_ecafde3b",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "c76e6136223fdadca8dd2dd4c5238de79a2ae9db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
