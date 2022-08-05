@@ -197,7 +197,7 @@ func WindowStateTransitionsCUJ(ctx context.Context, s *testing.State) {
 			}
 		}
 		return nil
-	}, 10*time.Minute); err != nil {
+	}, 10*time.Second); err != nil {
 		s.Fatal("Failed to conduct the performance measurement: ", err)
 	}
 
