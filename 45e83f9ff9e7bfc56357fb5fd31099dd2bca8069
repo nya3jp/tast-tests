@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aaabb32c_0191d679",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T15:46:06Z",
+      "side": 1,
+      "message": "nit/style: could you use godoc style comment?",
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78040715_d911e201",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 7
@@ -36,6 +53,52 @@
         "startChar": 1,
         "endLine": 31,
         "endChar": 10
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b31e32_6b5a4500",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T15:46:06Z",
+      "side": 1,
+      "message": "could you move to Desc?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e52ee9_38ec5938",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T15:46:06Z",
+      "side": 1,
+      "message": "nit: wins",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 4
       },
       "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -308,6 +371,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46f6e958_403651ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T15:46:06Z",
+      "side": 1,
+      "message": "it is recommended not to take testing.State as argument. DItto for below.",
+      "range": {
+        "startLine": 327,
+        "startChar": 154,
+        "endLine": 327,
+        "endChar": 170
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b71178e_0cb877ba",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 7
@@ -371,6 +457,23 @@
         "endLine": 341,
         "endChar": 29
       },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d44fa7_74222f13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T15:46:06Z",
+      "side": 1,
+      "message": "style; let\u0027s avoid using getter prefix, like get, is, has etc. Ditto for below.\nmaybe countAshWindows.\n\nBTW, could you include \"title\" in the method name?",
       "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

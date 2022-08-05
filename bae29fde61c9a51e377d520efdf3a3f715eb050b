@@ -320,6 +320,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f0bb43c2_534c17f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T15:46:06Z",
+      "side": 1,
+      "message": "ltconn, atconn is consistent currently, so I\u0027d recommend at least for now.\nThere\u0027s on-going discussion to change the naming policy, though.",
+      "parentUuid": "ae0bc6ce_1a8c8f16",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 12
+      },
+      "revId": "bae29fde61c9a51e377d520efdf3a3f715eb050b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c37bf797_43a89201",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 5
