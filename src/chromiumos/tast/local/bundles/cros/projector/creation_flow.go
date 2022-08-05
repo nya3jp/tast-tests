@@ -11,12 +11,14 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome/projector"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/role"
+	"chromiumos/tast/local/input/voice"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -43,6 +45,18 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(*projector.FixtData).TestConn
 
 	defer faillog.DumpUITreeOnError(ctxForCleanUp, s.OutDir(), s.HasError, tconn)
+
+	// Even though we filter for devices with a microphone using
+	// the hardware deps above, the microphone might still be
+	// unavailable. Turn on a fake microphone in this case.
+	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
+		// Setup CRAS Aloop for audio test.
+		cleanup, aloopErr := voice.EnableAloop(ctx, tconn)
+		if aloopErr != nil {
+			s.Fatal("Failed to enable aloop: ", aloopErr)
+		}
+		defer cleanup(ctxForCleanUp)
+	}
 
 	ui := uiauto.New(tconn).WithTimeout(2 * time.Minute)
 
