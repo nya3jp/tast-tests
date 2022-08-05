@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0146f31d_5ae94261",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-08-05T15:21:41Z",
+      "side": 1,
+      "message": "nit: @google.com is repeated twice",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "e485b77fd453f3f5c0e4eb5f5bc5fe22e1eea1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0adc949_df5d338f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-08-05T15:21:41Z",
+      "side": 1,
+      "message": "should we have a similar check for currentPin as well?",
+      "revId": "e485b77fd453f3f5c0e4eb5f5bc5fe22e1eea1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
