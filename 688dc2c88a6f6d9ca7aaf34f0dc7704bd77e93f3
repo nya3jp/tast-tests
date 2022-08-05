@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac14871_8ce118b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-05T15:09:43Z",
+      "side": 1,
+      "message": "Is there a possibility of race conditions here or does the Chrome operation only signal completion when ARC properties are also changed?",
+      "revId": "688dc2c88a6f6d9ca7aaf34f0dc7704bd77e93f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
