@@ -33,6 +33,137 @@
       "message": "Adding more people, that contributed to the previous reviews and asked for this change.",
       "revId": "41a61706dc2a55385d80badf06122cf4b9e37670",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee026f0b_a45feda2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T16:12:48Z",
+      "side": 1,
+      "message": "# Sorry for delay. back from OOO.\n\nLooks too huge CL to review at once. Could you split into smaller pieces?\nE.g., a few CLs of trivial parts, like introducing struct + simple renaming for each WifiDUT, WiFiHost, WiFiRouter (i.e. 3+ CLs), then non trivial code changes, like for each method extraction.\n",
+      "revId": "41a61706dc2a55385d80badf06122cf4b9e37670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e286effe_68b87d23",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T16:12:48Z",
+      "side": 1,
+      "message": "could you address :-)?",
+      "range": {
+        "startLine": 238,
+        "startChar": 21,
+        "endLine": 238,
+        "endChar": 38
+      },
+      "revId": "41a61706dc2a55385d80badf06122cf4b9e37670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "245d187a_f5d6fddd",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T16:12:48Z",
+      "side": 1,
+      "message": "could ou not to panic, but return error?",
+      "revId": "41a61706dc2a55385d80badf06122cf4b9e37670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ddb25b6_5ecb0542",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T16:12:48Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "41a61706dc2a55385d80badf06122cf4b9e37670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c4d210c_7fc0e804",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T16:12:48Z",
+      "side": 1,
+      "message": "I don\u0027t think name is valid if CompanionDeviceHostName returns error?",
+      "range": {
+        "startLine": 288,
+        "startChar": 3,
+        "endLine": 288,
+        "endChar": 22
+      },
+      "revId": "41a61706dc2a55385d80badf06122cf4b9e37670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36274079_a6daf3e0",
+        "filename": "src/chromiumos/tast/remote/wificell/wifi_dut.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T16:12:48Z",
+      "side": 1,
+      "message": "could you remove interface?\nI think you just need struct. Ditto for below.",
+      "revId": "41a61706dc2a55385d80badf06122cf4b9e37670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e962bc07_16ee25a7",
+        "filename": "src/chromiumos/tast/remote/wificell/wifi_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T16:12:48Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "41a61706dc2a55385d80badf06122cf4b9e37670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
