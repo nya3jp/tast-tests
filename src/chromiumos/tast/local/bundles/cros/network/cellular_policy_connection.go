@@ -6,9 +6,9 @@ package network
 
 import (
 	"context"
+	"regexp"
 	"time"
 
-	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/hermesconst"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
@@ -39,18 +39,13 @@ func init() {
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_prod_esim"},
-		Fixture:      fixture.FakeDMSEnrolled,
+		Fixture:      "cellularWithFakeDMSEnrolled",
 		Timeout:      9 * time.Minute,
 	})
 }
 
 const managedProfileName = "ManagedProfile"
 const unmanagedProfileName = "UnmanagedProfile"
-
-var managedNetwork = nodewith.NameContaining(managedProfileName).Role(role.Button).ClassName("layout horizontal center flex")
-var managedNetworkDetail = nodewith.ClassName("subpage-arrow").Role(role.Button).Ancestor(managedNetwork)
-var unmanagedNetwork = nodewith.NameContaining(unmanagedProfileName).Role(role.Button).ClassName("layout horizontal center flex")
-var unmanagedNetworkDetail = nodewith.ClassName("subpage-arrow").Role(role.Button).Ancestor(unmanagedNetwork)
 
 func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 	fdms := s.FixtValue().(fakedms.HasFakeDMS).FakeDMS()
@@ -129,20 +124,37 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 			}
 			ui := uiauto.New(tconn).WithTimeout(30 * time.Second)
 
-			managedNetworkWithBuildingIcon := nodewith.NameContaining("Managed by your Administrator").Role(role.Button).ClassName("layout horizontal center flex")
-			managedDetail := nodewith.ClassName("subpage-arrow").Role(role.Button).Ancestor(managedNetworkWithBuildingIcon)
+			managedNetworks := nodewith.NameRegex(regexp.MustCompile(".*ManagedProfile,.*Managed by your Administrator.*")).Role(role.GenericContainer)
+			infos, err := ui.NodesInfo(ctx, managedNetworks)
+			if err != nil {
+				s.Fatal("Failed to get nodes info: ", err)
+			}
 
-			if err := uiauto.Combine("connect, click on the managed cellular detail page, verify connected status, disconnect and go back",
+			managedNetworkWithBuildingIcon := managedNetworks.Nth(len(infos))
+			managedDetail := nodewith.NameContaining(managedProfileName).ClassName("subpage-arrow").Role(role.Button)
+
+			if err := uiauto.Combine("click to connect to the managed network and verify connected",
 				ui.LeftClick(managedNetworkWithBuildingIcon),
 				ui.WithTimeout(90*time.Second).LeftClick(managedDetail),
 				ui.WaitUntilExists(ossettings.ConnectedStatus),
-				ui.WithTimeout(time.Minute).WaitUntilExists(ossettings.RoamingToggle),
+			)(ctx); err != nil {
+				s.Fatal("Failed to click to connect to the managed network and verify connected: ", err)
+			}
+
+			if err := ui.WaitUntilExists(ossettings.RoamingToggle)(ctx); err != nil {
+				s.Log("Got back to the network subpage from the detail page")
+				if err := ui.LeftClick(managedDetail)(ctx); err != nil {
+					s.Fatal("Couldn't go to managed network detail page")
+				}
+			}
+
+			if err := uiauto.Combine("In the managed network detail page, disconnect and go back",
 				ui.EnsureGoneFor(ossettings.ConnectingStatus, 5*time.Second),
 				ui.LeftClick(ossettings.DisconnectButton),
 				ui.WaitUntilExists(ossettings.DisconnectedStatus),
 				ui.LeftClick(ossettings.BackArrowBtn),
 			)(ctx); err != nil {
-				s.Fatal("Failed to connect, click on the managed cellular detail page, verify connected status, disconnect and go back: ", err)
+				s.Fatal("Failed to disconnect and go back in the managed network detail page: ", err)
 			}
 
 			if param.allowOnlyPolicyCellularNetworks {
@@ -151,6 +163,9 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 					s.Fatal("Add cellular button is not disabled")
 				}
 			}
+
+			unmanagedNetwork := nodewith.NameContaining(unmanagedProfileName).Role(role.GenericContainer)
+			unmanagedNetworkDetail := nodewith.NameContaining(unmanagedProfileName).ClassName("subpage-arrow").Role(role.Button)
 
 			if param.allowOnlyPolicyCellularNetworks {
 				// Click on unmanaged cellular should not attempt to make a connection, and it should bring you to the detail page
@@ -162,16 +177,27 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 					s.Fatal("Failed to click on unmanaged network and verify it doesn't get connected: ", err)
 				}
 			} else {
-				if err := uiauto.Combine("go to detail page, connect and disconnect unmanaged cellular network",
-					ui.LeftClick(unmanagedNetwork),
-					ui.WithTimeout(90*time.Second).LeftClick(unmanagedNetworkDetail),
+				if err := uiauto.Combine("go to the unmanaged detail page, connect, and verify connected",
+					ui.LeftClick(unmanagedNetworkDetail),
+					ui.LeftClick(ossettings.ConnectButton),
 					ui.WaitUntilExists(ossettings.ConnectedStatus),
-					ui.WithTimeout(time.Minute).WaitUntilExists(ossettings.RoamingToggle),
+				)(ctx); err != nil {
+					s.Fatal("Failed to go to the unmanaged detail page, connect, and verify connected: ", err)
+				}
+
+				if err := ui.WaitUntilExists(ossettings.RoamingToggle)(ctx); err != nil {
+					s.Log("Got back to the network subpage from the detail page")
+					if err := ui.LeftClick(unmanagedNetworkDetail)(ctx); err != nil {
+						s.Fatal("Couldn't go to unmanaged network detail page")
+					}
+				}
+
+				if err := uiauto.Combine("In the unmanaged network detail page, disconnect and go back",
 					ui.EnsureGoneFor(ossettings.ConnectingStatus, 5*time.Second),
 					ui.LeftClick(ossettings.DisconnectButton),
 					ui.WaitUntilExists(ossettings.DisconnectedStatus),
 				)(ctx); err != nil {
-					s.Fatal("Failed to connect and disconnect unmanaged cellular network: ", err)
+					s.Fatal("Failed to disconnect and go back in the unmanaged network detail page: ", err)
 				}
 			}
 			if err := app.Close(ctx); err != nil {
@@ -185,26 +211,32 @@ func CellularPolicyConnection(ctx context.Context, s *testing.State) {
 			}
 
 			networkFeaturePodLabelButton := nodewith.ClassName("FeaturePodLabelButton").NameContaining("network list")
+			connectManagedNetwork := nodewith.ClassName("HoverHighlightView").NameStartingWith("Connect to " + managedProfileName)
 			connectUnmanagedNetwork := nodewith.ClassName("HoverHighlightView").NameStartingWith("Connect to " + unmanagedProfileName)
+			connectingToManagedNetwork := nodewith.ClassName("NetworkTrayView").NameStartingWith("Connecting to " + managedProfileName)
+			connectingToUnmanagedNetwork := nodewith.ClassName("NetworkTrayView").NameStartingWith("Connecting to " + unmanagedProfileName)
 			openUnmanagedNetwork := nodewith.ClassName("HoverHighlightView").NameStartingWith("Open settings for " + unmanagedProfileName)
 			disableImage := nodewith.NameStartingWith("This network is disabled by your administrator").Role(role.Image).Ancestor(connectUnmanagedNetwork)
 
-			if err := uiauto.Combine("Click unmanaged cellular in the network list",
+			if err := uiauto.Combine("Click managed network and unmanaged network from network list in quick setting",
 				ui.LeftClick(networkFeaturePodLabelButton),
+				ui.LeftClick(connectManagedNetwork),
+				ui.WithTimeout(time.Minute).WaitUntilGone(connectingToManagedNetwork),
 				ui.LeftClick(connectUnmanagedNetwork),
+				ui.WithTimeout(time.Minute).WaitUntilGone(connectingToUnmanagedNetwork),
 			)(ctx); err != nil {
-				s.Fatal("Failed to click on unmanaged network")
+				s.Fatal("Failed to click managed network and unmanaged network from network list in quick setting")
 			}
 
 			if param.allowOnlyPolicyCellularNetworks {
 				if err := uiauto.Combine("Verify unmanaged cellular network is not connected",
 					ui.WaitUntilExists(disableImage),
-					ui.EnsureGoneFor(openUnmanagedNetwork, 5*time.Second),
+					ui.EnsureGoneFor(openUnmanagedNetwork, 3*time.Second),
 				)(ctx); err != nil {
 					s.Fatal("Should not connect unmanaged network: ", err)
 				}
 			} else {
-				if err := ui.WithTimeout(20 * time.Second).WaitUntilExists(openUnmanagedNetwork)(ctx); err != nil {
+				if err := ui.WaitUntilExists(openUnmanagedNetwork)(ctx); err != nil {
 					s.Fatal("Failed to connect to unmanaged network: ", err)
 				}
 			}
