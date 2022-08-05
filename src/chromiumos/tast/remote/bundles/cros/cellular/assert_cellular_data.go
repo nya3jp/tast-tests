@@ -21,7 +21,8 @@ func init() {
 			"latware@google.com",
 			"chromeos-cellular-team@google.com",
 		},
-		Attr:         []string{"group:cellular", "cellular_callbox"},
+		// Disabled due to 100% failure rate (b/241575495)
+		//Attr:         []string{"group:cellular", "cellular_callbox"},
 		ServiceDeps:  []string{"tast.cros.example.ChromeService"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "callboxManagedFixture",

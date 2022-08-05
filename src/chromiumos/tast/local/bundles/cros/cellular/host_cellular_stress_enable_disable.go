@@ -21,7 +21,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that host has network connectivity via cellular interface",
 		Contacts:     []string{"madhavadas@google.com", "chromeos-cellular-team@google.com"},
-		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
+		// Disabled due to 100% failure rate (b/241575495)
+		// Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
 		Timeout:      4 * time.Minute,
 	})
 }

@@ -29,7 +29,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Verifies that MT SMS is received appears as notificatoin on UI",
 		Contacts:     []string{"srikanthkumar@google.com", "chromeos-cellular-team@google.com"},
-		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
+		// Disabled due to 100% failure rate (b/241575495)
+		// Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_active"},
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      10 * time.Minute,
 		Vars: []string{
