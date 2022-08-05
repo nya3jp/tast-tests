@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "991c38fc_ff76decb",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2022-08-05T20:29:21Z",
+      "side": 1,
+      "message": "AS b/b/239574927 is marked duplicate, isn\u0027t it better to use b/237298950?",
+      "range": {
+        "startLine": 29,
+        "startChar": 101,
+        "endLine": 29,
+        "endChar": 115
+      },
+      "revId": "dcd691785c604a7b756718f005842ff18bab411f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e99f38ce_ed61c355",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1524532
+      },
+      "writtenOn": "2022-08-05T20:29:21Z",
+      "side": 1,
+      "message": "Why did you change the bug from b/208652858 to b/239574927?",
+      "range": {
+        "startLine": 70,
+        "startChar": 77,
+        "endLine": 70,
+        "endChar": 91
+      },
+      "revId": "dcd691785c604a7b756718f005842ff18bab411f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
