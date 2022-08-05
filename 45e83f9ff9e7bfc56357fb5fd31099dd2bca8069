@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f1c9fd6_3669d4f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-05T03:21:30Z",
+      "side": 1,
+      "message": "Just a few comments for now, will revisit once tests are passing.",
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78040715_d911e201",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-05T03:21:30Z",
+      "side": 1,
+      "message": "How about openInAshAsApplication for clarity?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "88e24d67_a6f41c82",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 7
@@ -119,6 +159,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "682ca68d_d9c83e4c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-05T03:21:30Z",
+      "side": 1,
+      "message": "Please explain this special case.",
+      "range": {
+        "startLine": 190,
+        "startChar": 61,
+        "endLine": 190,
+        "endChar": 91
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4e73487_919e45c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-05T03:21:30Z",
+      "side": 1,
+      "message": "Why is this needed? All params.url values have a trailing slash.",
+      "range": {
+        "startLine": 190,
+        "startChar": 32,
+        "endLine": 190,
+        "endChar": 57
+      },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ef8d261_7e6531c4",
         "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
         "patchSetId": 7
@@ -136,6 +222,40 @@
         "endLine": 207,
         "endChar": 3
       },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5654434_41b6278c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-05T03:21:30Z",
+      "side": 1,
+      "message": "It\u0027s a bit strange that you\u0027re again fetching the window here after you have already captured it as \u0027appWindow\u0027 above.",
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f1778c5_5f9080e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-05T03:21:30Z",
+      "side": 1,
+      "message": "?",
       "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -274,6 +394,23 @@
         "endLine": 367,
         "endChar": 2
       },
+      "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c2c033b_75d2559c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/lacros/url_redirect.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-05T03:21:30Z",
+      "side": 1,
+      "message": "This probably applies to more than just Lacros windows.\nCan you do what ash.BrowserTypeMatch does instead?",
       "revId": "45e83f9ff9e7bfc56357fb5fd31099dd2bca8069",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
