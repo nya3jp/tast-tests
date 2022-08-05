@@ -65,13 +65,19 @@ type WrappedEncryptedData struct {
 
 // MetricData mirrors the metricData JSON field.
 type MetricData struct {
-	Time     string    `json:"timestampMs"`
-	InfoData *InfoData `json:"infoData"`
+	Time          string         `json:"timestampMs"`
+	InfoData      *InfoData      `json:"infoData"`
+	TelemetryData *TelemetryData `json:"telemetryData"`
 }
 
 // InfoData mirrors the infoData JSON field.
 type InfoData struct {
 	MemoryInfo *MemoryInfo `json:"memoryInfo"`
+}
+
+// TelemetryData mirrors the telemetryData JSON field.
+type TelemetryData struct {
+	AudioTelemetry *AudioTelemetry `json:"audioTelemetry"`
 }
 
 // MemoryInfo mirrors the memoryInfo JSON field.
@@ -82,9 +88,19 @@ type MemoryInfo struct {
 // TMEInfo mirrors the TMEInfo JSON field.
 type TMEInfo struct {
 	MemoryEncryptionState     string `json:"encryptionState"`
-	MaxKeys                   string `json:"maxKeys"`
-	KeyLength                 string `json:"keyLength"`
+	MaxKeys                   int64  `json:"maxKeys"`
+	KeyLength                 int64  `json:"keyLength"`
 	MemoryEncryptionAlgorithm string `json:"encryptionAlgorithm"`
+}
+
+// AudioTelemetry mirrors the audioTelemetry JSON field.
+type AudioTelemetry struct {
+	OutputMute       bool   `json:"outputMute"`
+	InputMute        bool   `json:"inputMute"`
+	OutputVolume     int32  `json:"outputVolume"`
+	OutputDeviceName string `json:"outputDeviceName"`
+	InputGain        int32  `json:"inputGain"`
+	InputDeviceName  string `json:"inputDeviceName"`
 }
 
 type inputEventsResponse struct {
