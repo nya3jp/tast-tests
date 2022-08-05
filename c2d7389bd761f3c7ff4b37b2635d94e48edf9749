@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5685f359_6db3aa12",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-05T07:23:58Z",
+      "side": 1,
+      "message": "Removed for the same reason. Thanks for your thought.",
+      "parentUuid": "2b24c54c_af3f1172",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 25
+      },
+      "revId": "c2d7389bd761f3c7ff4b37b2635d94e48edf9749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08822330_725cb0b8",
@@ -88,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac379eb3_03b0675f",
+        "filename": "src/chromiumos/tast/local/chrome/chrome.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-05T07:23:58Z",
+      "side": 1,
+      "message": "I think it is safe now that `extension.PrepareExtensions` is implemented in a way to support both browsers based on the passed `cfg` that includes both ash/lacros-chrome options. I have just added more descriptive comments to `PrepareExtensions`. PTAL.",
+      "parentUuid": "08822330_725cb0b8",
+      "range": {
+        "startLine": 302,
+        "startChar": 70,
+        "endLine": 302,
+        "endChar": 73
+      },
+      "revId": "c2d7389bd761f3c7ff4b37b2635d94e48edf9749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e34097a4_61e8ec34",
@@ -101,6 +149,30 @@
       "writtenOn": "2022-08-05T05:33:34Z",
       "side": 1,
       "message": "Lacros can be enabled not just by passing the `LacrosSupport` feature flag like via policy so I think there are other conditions that have to be checked.\n\nAlso if we make Lacros enabled by default (by modifying code in chromium) then this becomes incorrect.\n\nSince I see only one place where this is used, I don\u0027t know if we need this method.",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 31
+      },
+      "revId": "c2d7389bd761f3c7ff4b37b2635d94e48edf9749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc1f2711_7d4e31a4",
+        "filename": "src/chromiumos/tast/local/chrome/internal/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-05T07:23:58Z",
+      "side": 1,
+      "message": "You pointed it right. I\u0027ll remove it since it is not a reliable source to check if lacros is enabled. We can revisit this when needed with a better way of checking that (like https://crrev.com/c/3783852)",
+      "parentUuid": "e34097a4_61e8ec34",
       "range": {
         "startLine": 253,
         "startChar": 2,
