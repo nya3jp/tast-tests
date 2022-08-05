@@ -16,6 +16,24 @@
       "message": "This CL needs to wait \"after\" the Chrome side CL has been merged and upreved. ",
       "revId": "bca4795eb9bb7ecd63c31c37763480e264e9d8d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9548b643_07469a30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1529068
+      },
+      "writtenOn": "2022-08-05T02:43:42Z",
+      "side": 1,
+      "message": "crrev.com/c/3731273 has been merged",
+      "parentUuid": "9ff07441_4a324170",
+      "revId": "bca4795eb9bb7ecd63c31c37763480e264e9d8d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
