@@ -106,7 +106,7 @@ func init() {
 func Hbomax(ctx context.Context, s *testing.State) {
 	const (
 		appPkgName  = "com.hbo.hbonow"
-		appActivity = "com.hbo.go.LaunchActivity"
+		appActivity = ".MainActivity"
 	)
 	testSet := s.Param().(testutil.TestParams)
 	testutil.RunTestCases(ctx, s, appPkgName, appActivity, testSet)
