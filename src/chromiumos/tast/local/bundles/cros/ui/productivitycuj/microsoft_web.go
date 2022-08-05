@@ -56,7 +56,11 @@ const (
 	excel = "Excel workbook"
 )
 
-var homeTabPanel = nodewith.Name("Home").Role(role.TabPanel)
+var (
+	homeTabPanel = nodewith.Name("Home").Role(role.TabPanel)
+	excelWebArea = nodewith.Name("Excel").Role(role.RootWebArea)
+	canvas       = nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
+)
 
 // MicrosoftWebOffice implements the ProductivityApp interface.
 type MicrosoftWebOffice struct {
@@ -167,16 +171,14 @@ func (app *MicrosoftWebOffice) CreateSpreadsheet(ctx context.Context, cr *chrome
 	defer connOneDrive.Close()
 
 	if err = uiauto.NamedCombine("remove if the same file name exists",
-		app.clickNavigationItem(recent),
+		app.clickNavigationItem(myFiles),
 		app.switchToListView,
+		app.sortByModified,
 		app.removeSheet(sheetName),
 		app.clickNavigationItem(myFiles),
 	)(ctx); err != nil {
 		return "", errors.Wrap(err, "failed to check if the file already exists")
 	}
-
-	excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
-	canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
 
 	copyFromExistingSheet := func(ctx context.Context) error {
 		checkCopiedData := func(ctx context.Context) error {
@@ -268,8 +270,6 @@ func (app *MicrosoftWebOffice) MoveDataFromDocToSheet(ctx context.Context) error
 		return err
 	}
 
-	excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
-	canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
 	return uiauto.NamedCombine("switch to Microsoft Excel and paste the content into a cell of the spreadsheet",
 		app.uiHdl.SwitchToChromeTabByName(excelTab),
 		app.ui.WaitUntilExists(canvas),
@@ -411,7 +411,7 @@ func (app *MicrosoftWebOffice) Cleanup(ctx context.Context, sheetName string) er
 	defer conn.Close()
 	defer conn.CloseTarget(ctx)
 
-	if err := app.clickNavigationItem(recent)(ctx); err != nil {
+	if err := app.clickNavigationItem(myFiles)(ctx); err != nil {
 		return err
 	}
 
@@ -666,7 +666,7 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 	if err := webutil.WaitForQuiescence(ctx, conn, longerUIWaitTime); err != nil {
 		return nil, errors.Wrap(err, "failed to wait for microsoft page to finish loading")
 	}
-	if err := cuj.MaximizeBrowserWindow(ctx, app.tconn, app.tabletMode, "Microsoft"); err != nil {
+	if err := cuj.MaximizeBrowserWindow(ctx, app.tconn, app.tabletMode, "Chrome"); err != nil {
 		return nil, errors.Wrap(err, "failed to maximize the microsoft page")
 	}
 	appLauncher := nodewith.Name("App launcher").Role(role.PopUpButton).Collapsed()
@@ -674,11 +674,16 @@ func (app *MicrosoftWebOffice) openOneDrive(ctx context.Context) (*chrome.Conn, 
 	closeAppLauncher := nodewith.Name("Close the app launcher").Role(role.Button).Ancestor(appLauncherOpened)
 	oneDriveLink := nodewith.Name("OneDrive").Role(role.Link).Ancestor(appLauncherOpened)
 	goToOffice := nodewith.Name("Go to Office").Role(role.Link)
-	savePasswordWindow := nodewith.Name("Save password?").Role(role.Window)
-	closeSavePasswordWindow := nodewith.Name("Close").Role(role.Button).Ancestor(savePasswordWindow)
-	navigateToOneDrive := uiauto.Retry(retryTimes, func(ctx context.Context) error {
-		if err := uiauto.NamedCombine("navigate to OneDrive",
-			uiauto.IfSuccessThen(app.ui.Exists(closeSavePasswordWindow), app.uiHdl.Click(closeSavePasswordWindow)),
+	securityHeading := nodewith.Name("Is your security info still accurate?").Role(role.Heading)
+	looksGoodButton := nodewith.Name("Looks good!").Role(role.Button)
+	updatingRootWebArea := nodewith.Name("We're updating our terms").Role(role.RootWebArea).Focusable()
+	nextButton := nodewith.Name("Next").Role(role.Button).Ancestor(updatingRootWebArea)
+	// The "We're updating our terms" dialog may appears after sign in or after navigate to OneDrive.
+	// Check and skip the dialog before and after navigate to OneDrive.
+	navigateToOneDrive := uiauto.Retry(retryTimes, func(ctx context.Context) (err error) {
+		if err = uiauto.NamedCombine("navigate to OneDrive",
+			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(nextButton), app.uiHdl.Click(nextButton)),
+			uiauto.IfSuccessThen(app.ui.Exists(securityHeading), app.uiHdl.Click(looksGoodButton)),
 			app.ui.DoDefault(appLauncher),
 			app.ui.WaitUntilExists(closeAppLauncher),
 			app.ui.FocusAndWait(oneDriveLink),
@@ -752,8 +757,6 @@ func (app *MicrosoftWebOffice) openBlankDocument(service string) action.Action {
 
 		paragraph := nodewith.Role(role.Paragraph).Editable()
 		title := nodewith.Name("Click to add title").First()
-		excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
-		canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
 
 		// element defines the node to specify whether it navigates to the corresponding service page correctly.
 		element := map[string]*nodewith.Finder{
@@ -838,18 +841,51 @@ func (app *MicrosoftWebOffice) switchToListView(ctx context.Context) error {
 	return testing.Sleep(ctx, 2*time.Second)
 }
 
+// sortByModified sorts by date modified in descending order.
+func (app *MicrosoftWebOffice) sortByModified(ctx context.Context) error {
+	sort := nodewith.NameContaining("Sort").Role(role.MenuItem).First()
+	sortExpanded := sort.Expanded()
+	modified := nodewith.Name("Modified").Role(role.MenuItemCheckBox)
+	descending := nodewith.Name("Descending").Role(role.MenuItemCheckBox)
+	sortMenuExpand := app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(sortExpanded)
+
+	setCheckBoxChecked := func(nodeFinder *nodewith.Finder) uiauto.Action {
+		return func(ctx context.Context) error {
+			if err := uiauto.IfFailThen(app.ui.Exists(sortExpanded), app.uiHdl.Click(sort))(ctx); err != nil {
+				return err
+			}
+			node, err := app.ui.Info(ctx, nodeFinder)
+			if err != nil {
+				return err
+			}
+			if node.Checked == checked.True {
+				return nil
+			}
+			return app.uiHdl.Click(nodeFinder)(ctx)
+		}
+	}
+
+	return uiauto.Combine("sort by date modified in descending order",
+		setCheckBoxChecked(modified),
+		setCheckBoxChecked(descending),
+		uiauto.IfFailThen(sortMenuExpand, app.uiHdl.Click(sort)),
+		// Give the list some time to finish loading and ordering. Otherwise, we may encounter errors in the next operation.
+		uiauto.Sleep(2*time.Second),
+	)(ctx)
+}
+
 // searchSampleSheet searches for the existence of the sample spreadsheet.
 func (app *MicrosoftWebOffice) searchSampleSheet(ctx context.Context) error {
 
 	// Check if the sample file exists via searching box.
 	searchFromBox := func(ctx context.Context) error {
+		goToOneDrive := nodewith.Name("Go to OneDrive").Role(role.Button).First()
 		searchBox := nodewith.Name("Search box. Suggestions appear as you type.").Role(role.TextFieldWithComboBox)
 		suggestedFiles := nodewith.Name("Suggested files").Role(role.Group)
 		fileOption := fmt.Sprintf("Excel file result: .xlsx %v.xlsx ,", sheetName)
 		fileResult := nodewith.Name(fileOption).Role(role.ListBoxOption).Ancestor(suggestedFiles).First()
-		excelWebArea := nodewith.Name("Excel").Role(role.RootWebArea)
-		canvas := nodewith.Role(role.Canvas).Ancestor(excelWebArea).First()
 		return uiauto.NamedCombine("search through the box",
+			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(goToOneDrive), app.uiHdl.Click(goToOneDrive)),
 			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(searchBox),
 			app.uiHdl.Click(searchBox),
 			app.kb.TypeAction(sheetName),
@@ -859,25 +895,23 @@ func (app *MicrosoftWebOffice) searchSampleSheet(ctx context.Context) error {
 		)(ctx)
 	}
 
-	// Check if the sample file in the list of recently opened files.
-	searchFromRecent := func(ctx context.Context) error {
-		goToOneDrive := nodewith.Name("Go to OneDrive").Role(role.Button).First()
-		recentWebArea := nodewith.Name("Recent - OneDrive").Role(role.RootWebArea)
+	// Check if the sample file in the list of "My files".
+	searchFromMyFiles := func(ctx context.Context) error {
 		row := nodewith.NameContaining(sheetName).Role(role.Row).First()
 		link := nodewith.NameContaining(sheetName).Role(role.Link).Ancestor(row)
-		return uiauto.NamedCombine("search file from recently opened",
-			uiauto.IfSuccessThen(app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(goToOneDrive), app.uiHdl.Click(goToOneDrive)),
-			app.clickNavigationItem(recent),
-			app.ui.WaitUntilExists(recentWebArea),
+		return uiauto.NamedCombine("search file from my files",
+			app.clickNavigationItem(myFiles),
 			app.switchToListView,
+			app.sortByModified,
 			app.ui.DoDefaultUntil(link, app.ui.Gone(link)),
-			app.maybeCloseOneDriveTab(recentTab),
+			app.ui.WithTimeout(longerUIWaitTime).WaitUntilExists(canvas), // The excel page may takes long time to load.
+			app.maybeCloseOneDriveTab(myFilesTab),
 		)(ctx)
 	}
 
-	// Sometimes the search box node does not exist, try searching from "Recent".
-	if err := searchFromBox(ctx); err != nil {
-		return searchFromRecent(ctx)
+	// If the spreadsheet doesn't appear in "My files", try searching from the search box.
+	if err := searchFromMyFiles(ctx); err != nil {
+		return searchFromBox(ctx)
 	}
 
 	return nil
@@ -1082,7 +1116,7 @@ func (app *MicrosoftWebOffice) turnOnDictation(ctx context.Context) error {
 		row := nodewith.NameContaining(docsName).Role(role.Row).First()
 		link := nodewith.NameContaining(docsName).Role(role.Link).Ancestor(row)
 		return uiauto.Combine("reopen the document",
-			app.clickNavigationItem(recent),
+			app.clickNavigationItem(myFiles),
 			app.uiHdl.Click(link),
 		)(ctx)
 	}
@@ -1192,14 +1226,28 @@ func (app *MicrosoftWebOffice) renameDocument(fileName string) uiauto.Action {
 // removeDocument removes the document with the specified file name.
 func (app *MicrosoftWebOffice) removeDocument(fileName string) uiauto.Action {
 	row := nodewith.NameContaining(fileName).Role(role.Row).First()
-	checkBox := nodewith.NameContaining("Checkbox").Role(role.CheckBox).Ancestor(row)
+	checkBox := nodewith.Role(role.CheckBox).Ancestor(row)
 	complementary := nodewith.Role(role.Complementary).First()
 	commandBar := nodewith.NameContaining("Command bar").Role(role.MenuBar).Ancestor(complementary)
-	remove := nodewith.Name("Remove").Role(role.MenuItem).Ancestor(commandBar)
+	deleteItem := nodewith.Name("Delete").Role(role.MenuItem).Ancestor(commandBar)
+	deleteDialog := nodewith.Name("Delete?").Role(role.Dialog)
+	deleteButton := nodewith.Name("Delete").Role(role.Button).Ancestor(deleteDialog)
+	myFilesRootWebArea := nodewith.Name(myFilesTab).Role(role.RootWebArea)
+	deleteAlert := nodewith.Role(role.Alert).Ancestor(myFilesRootWebArea)
+	deleteAlertButton := nodewith.Name("Delete").Role(role.Button).Ancestor(deleteAlert)
 	return uiauto.NamedCombine("remove the document: "+fileName,
 		app.switchToListView,
 		app.ui.DoDefaultUntil(checkBox, app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(commandBar)),
-		app.uiHdl.Click(remove),
+		app.uiHdl.Click(deleteItem),
+		uiauto.IfSuccessThen(
+			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(deleteDialog),
+			app.uiHdl.Click(deleteButton),
+		),
+		// If the file is still open, the website will confirm the deletion again.
+		uiauto.IfSuccessThen(
+			app.ui.WithTimeout(defaultUIWaitTime).WaitUntilExists(deleteAlertButton),
+			app.uiHdl.Click(deleteAlertButton),
+		),
 	)
 }
 
