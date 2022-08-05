@@ -132,7 +132,7 @@ func init() {
 		Desc:     "Logged into a user session with 100 fake apps and productivity launcher",
 		Contacts: []string{"jamescook@chromium.org"},
 		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{EnableFeatures("ProductivityLauncher", "ProductivityLauncherAnimation"), DisableFeatures("LauncherAppSort")}, nil
+			return []Option{EnableFeatures("ProductivityLauncher"), DisableFeatures("LauncherAppSort")}, nil
 		}),
 		Parent:          "install100Apps",
 		SetUpTimeout:    LoginTimeout,
@@ -145,7 +145,7 @@ func init() {
 		Desc:     "Logged into a user session with 100 fake apps and productivity launcher",
 		Contacts: []string{"andrewxu@chromium.org"},
 		Impl: NewLoggedInFixture(func(ctx context.Context, s *testing.FixtState) ([]Option, error) {
-			return []Option{EnableFeatures("ProductivityLauncher", "ProductivityLauncherAnimation", "LauncherAppSort")}, nil
+			return []Option{EnableFeatures("ProductivityLauncher", "LauncherAppSort")}, nil
 		}),
 		Parent:          "install100Apps",
 		SetUpTimeout:    LoginTimeout,
