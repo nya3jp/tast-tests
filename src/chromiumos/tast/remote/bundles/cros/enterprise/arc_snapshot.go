@@ -30,7 +30,8 @@ func init() {
 			"pbond@chromium.org", // Test author
 			"arc-commercial@google.com",
 		},
-		Attr: []string{"group:arc-data-snapshot"},
+		// Disabled due to 100% failure rate (b/241575495)
+		// Attr: []string{"group:arc-data-snapshot"},
 		ServiceDeps: []string{
 			"tast.cros.enterprise.ArcSnapshotService",
 			"tast.cros.hwsec.OwnershipService",
