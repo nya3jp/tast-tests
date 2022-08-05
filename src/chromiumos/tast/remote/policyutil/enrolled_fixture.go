@@ -7,6 +7,7 @@ package policyutil
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"strings"
@@ -121,6 +122,12 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	pc := ps.NewPolicyServiceClient(cl.Conn)
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		if out, err := s.DUT().Conn().CommandContext(ctx, "echo", "1").Output(ssh.DumpLogOnError); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to run connect over SSH"))
+		} else if string(out) != "1\n" {
+			return testing.PollBreak(fmt.Errorf("invalid output when running command over SSH: got %q; want %q", string(out), "1"))
+		}
+
 		s.Log("Attempting enrollment")
 
 		ctx, cancel := context.WithTimeout(ctx, enrollmentRunTimeout)
@@ -128,6 +135,13 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 
 		if err := EnsureTPMAndSystemStateAreReset(ctx, s.DUT(), s.RPCHint()); err != nil {
 			return errors.Wrap(err, "failed to reset TPM")
+		}
+
+		// Check connection state after reboot.
+		if out, err := s.DUT().Conn().CommandContext(ctx, "echo", "1").Output(ssh.DumpLogOnError); err != nil {
+			return testing.PollBreak(errors.Wrap(err, "failed to run connect over SSH"))
+		} else if string(out) != "1\n" {
+			return testing.PollBreak(fmt.Errorf("invalid output when running command over SSH: got %q; want %q", string(out), "1"))
 		}
 
 		// TODO(crbug.com/1187473): use a temporary directory.
