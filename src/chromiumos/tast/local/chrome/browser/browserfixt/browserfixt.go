@@ -133,6 +133,26 @@ func SetUpWithNewChrome(ctx context.Context, bt browser.Type, cfg *lacrosfixt.Co
 	}
 }
 
+// NewChrome is basically SetUpWithNewChrome without the SetUp part.
+// It restarts Chrome with, depending on the browser type, either just the
+// given opts or the given opts plus those provided by the Lacros
+// configuration. This is useful for situations where the browser will be
+// launched via some UI interaction, for example.
+func NewChrome(ctx context.Context, bt browser.Type, cfg *lacrosfixt.Config, opts ...chrome.Option) (*chrome.Chrome, error) {
+	if bt == browser.TypeLacros {
+		lacrosOpts, err := cfg.Opts()
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to get Lacros options")
+		}
+		opts = append(opts, lacrosOpts...)
+	}
+	cr, err := chrome.New(ctx, opts...)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to restart Chrome")
+	}
+	return cr, nil
+}
+
 // Connect connects to a running browser instance. It returns a closure for
 // freeing resources when the connection is no longer needed (note that the
 // closure does not close the browser).
