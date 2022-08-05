@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7cd348f_97adc554",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/drag_tab_in_tablet_perf.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-05T02:58:34Z",
+      "side": 1,
+      "message": "This sounds like it\u0027s talking about the first tab still.\n\nHow about just \"Open the second tab.\" or \"Open the tab that will be dragged.\" (assuming this is what happens).",
+      "revId": "4468c5e435ae987bdd28e653328977f53fd1399c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
