@@ -22,6 +22,30 @@
       },
       "revId": "dbd174b26244865310ed44148cdc7e08a8f37493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be485c80_706360b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arcappcompat/abc_kids.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1287257
+      },
+      "writtenOn": "2022-08-05T20:59:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eea20130_b57e4126",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 32
+      },
+      "revId": "dbd174b26244865310ed44148cdc7e08a8f37493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
