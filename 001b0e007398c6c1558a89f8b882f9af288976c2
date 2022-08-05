@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2db516b_0de7a3c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T13:25:37Z",
+      "side": 1,
+      "message": "chatted with yuta offline, and we consenused we\u0027re ok with this direction at least for now.",
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd8da95c_43ad6d8d",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T13:25:37Z",
+      "side": 1,
+      "message": "if both ExtraExtDirs and LacrosExtraExtDirs are set, this will cause the name conflict?",
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596881e4_a6c6005a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T13:25:37Z",
+      "side": 1,
+      "message": "to be symmetric, AshArgs() maybe?",
+      "range": {
+        "startLine": 164,
+        "startChar": 16,
+        "endLine": 164,
+        "endChar": 26
+      },
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee7bd756_c6b314e7",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T13:25:37Z",
+      "side": 1,
+      "message": "these should be not a part of this function. They are independent from extensions installed by this module.",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 111
+      },
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06cd8150_4a84cbf3",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-05T13:25:37Z",
+      "side": 1,
+      "message": "could you merge the arguments in the caller?",
+      "range": {
+        "startLine": 32,
+        "startChar": 70,
+        "endLine": 32,
+        "endChar": 101
+      },
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
