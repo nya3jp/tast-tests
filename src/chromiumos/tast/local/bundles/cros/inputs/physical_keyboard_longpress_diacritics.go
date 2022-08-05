@@ -88,26 +88,63 @@ func PhysicalKeyboardLongpressDiacritics(ctx context.Context, s *testing.State) 
 	candidateWindowFinder := nodewith.HasClass("SuggestionWindowView").Role(role.Window)
 	suggestionCharFinder := nodewith.Name(diacritic).Ancestor(candidateWindowFinder).First()
 	ui := uiauto.New(tconn)
-	actionName := "PK longpress to insert diacritics"
-	if err := uiauto.UserAction(actionName,
-		uiauto.Combine(actionName,
-			its.ClickFieldAndWaitForActive(inputField),
-			// Simulate a held down key press.
-			kb.AccelPressAction(longpressKeyChar),
-			ui.WaitUntilExists(candidateWindowFinder),
-			kb.AccelReleaseAction(longpressKeyChar),
-			ui.LeftClick(suggestionCharFinder),
-			ui.WaitUntilGone(candidateWindowFinder),
-			its.ValidateResult(inputField, diacritic),
-		),
-		uc,
-		&useractions.UserActionCfg{
-			Attributes: map[string]string{
-				useractions.AttributeFeature: useractions.FeatureLongpressDiacritics,
-			},
+
+	testCases := []struct {
+		name     string
+		scenario string
+		// The action occur while suggestion window is open and should result in the window being closed.
+		actions      uiauto.Action
+		expectedText string
+	}{
+		{
+			name:         "left_click",
+			scenario:     "PK longpress and left click to insert diacritics",
+			actions:      ui.LeftClick(suggestionCharFinder),
+			expectedText: diacritic,
 		},
-	)(ctx); err != nil {
-		s.Fatal("Failed to validate diacritics on PK longpress: ", err)
+		{
+			name:     "right_arrow_enter",
+			scenario: "PK longpress and arrow key then enter to insert diacritics",
+			actions: uiauto.Combine("right arrow then enter",
+				kb.AccelAction("Right"),
+				kb.AccelAction("Enter"),
+			),
+			expectedText: diacritic,
+		},
+		{
+			name:         "number_key",
+			scenario:     "PK longpress and number key to insert diacritics",
+			actions:      kb.AccelAction("1"),
+			expectedText: diacritic,
+		},
+		{
+			name:         "esc_to_dismiss",
+			scenario:     "PK longpress and esc to dismiss",
+			actions:      kb.AccelAction("Esc"),
+			expectedText: longpressKeyChar,
+		},
 	}
 
+	for _, testcase := range testCases {
+		util.RunSubTest(ctx, s, cr, testcase.name, uiauto.UserAction(testcase.scenario,
+			uiauto.Combine(testcase.scenario,
+				its.Clear(inputField),
+				its.ClickFieldAndWaitForActive(inputField),
+				// Simulate a held down key until window appears.
+				kb.AccelPressAction(longpressKeyChar),
+				ui.WaitUntilExists(candidateWindowFinder),
+				kb.AccelReleaseAction(longpressKeyChar),
+				testcase.actions,
+				ui.WaitUntilGone(candidateWindowFinder),
+				its.ValidateResult(inputField, testcase.expectedText),
+			),
+			uc,
+			&useractions.UserActionCfg{
+				Attributes: map[string]string{
+					useractions.AttributeTestScenario: testcase.scenario,
+					useractions.AttributeFeature:      useractions.FeatureLongpressDiacritics,
+				},
+			},
+		))
+	}
 }
