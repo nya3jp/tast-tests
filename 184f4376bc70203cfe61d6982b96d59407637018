@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c1f774c_a1276c43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-08-05T08:30:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bac5d9bf_d3722a94",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 45
+      },
+      "revId": "184f4376bc70203cfe61d6982b96d59407637018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef027068_2157859d",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-08-05T06:28:14Z",
       "side": 1,
       "message": "Can you match against the read more button better?",
+      "revId": "184f4376bc70203cfe61d6982b96d59407637018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2cfe12_263674eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-08-05T08:30:56Z",
+      "side": 1,
+      "message": "I am following the pattern of behavior on other OOBE screens in this test.\nI believe we avoid matching against the actual text inside the buttons to avoid failures when strings are updated (+testing that the user can go through OOBE be clicking on the button focused be default)",
+      "parentUuid": "ef027068_2157859d",
       "revId": "184f4376bc70203cfe61d6982b96d59407637018",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +136,48 @@
         "endLine": 186,
         "endChar": 37
       },
+      "revId": "184f4376bc70203cfe61d6982b96d59407637018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abef01a6_1bdcd0ed",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-08-05T08:30:56Z",
+      "side": 1,
+      "message": "Good catch, thanks!\nAdded a waiter for the read more button to be hidden.",
+      "parentUuid": "6792ed5c_4b669fd4",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 37
+      },
+      "revId": "184f4376bc70203cfe61d6982b96d59407637018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b772451_c65c21ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1451097
+      },
+      "writtenOn": "2022-08-05T08:30:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a45895f9_3674cb7b",
       "revId": "184f4376bc70203cfe61d6982b96d59407637018",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
