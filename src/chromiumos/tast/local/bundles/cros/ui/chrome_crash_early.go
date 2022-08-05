@@ -20,9 +20,15 @@ import (
 )
 
 const (
-	// cleanupTimeout is the amount of time we reserve for cleanup. We want to
-	// leave time to restart session manager and get it back into a good state.
+	// chromeCrashEarlyCleanupTimeout is the amount of time we reserve for
+	// cleanup. We want to leave time to restart session manager and get it back
+	// into a good state.
 	chromeCrashEarlyCleanupTimeout = upstart.UIRestartTimeout
+
+	// chromeCrashEarlyCrashFileTimeout is the amount of time we wait for the
+	// crash files to appear. crash_reporter can take some time to collect info
+	// from the chrome binary; the default 15 seconds had led to flakes.
+	chromeCrashEarlyCrashFileTimeout = time.Minute
 
 	chromeCrashBaseName = `chrome\.\d{8}\.\d{6}\.\d+\.\d+`
 	chromeCrashMetaName = chromeCrashBaseName + `\.meta`
@@ -37,7 +43,7 @@ func init() {
 		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "crashpad"},
-		Timeout:      upstart.UIRestartTimeout + chromeCrashEarlyCleanupTimeout + time.Minute,
+		Timeout:      upstart.UIRestartTimeout + chromeCrashEarlyCleanupTimeout + chromeCrashEarlyCrashFileTimeout + time.Minute,
 	})
 }
 
@@ -102,7 +108,8 @@ func ChromeCrashEarly(ctx context.Context, s *testing.State) {
 	// /home/chronos/crash/.
 	if files, err := crash.WaitForCrashFiles(ctx, []string{crash.LocalCrashDir}, regexes,
 		crash.MetaString(earlyCrashSignature), crash.MetaString(earlyCrashSignature2),
-		crash.MetaString(expectedProductName), crash.MetaRegExp(expectedVersion)); err != nil {
+		crash.MetaString(expectedProductName), crash.MetaRegExp(expectedVersion),
+		crash.Timeout(chromeCrashEarlyCrashFileTimeout)); err != nil {
 		// Failure investigation: Sometimes, it looks like util::IsReallyTestImage
 		// is returning false and thus preventing mock consent from working. Copy
 		// the various lsb-release files used by util::IsReallyTestImage to the
