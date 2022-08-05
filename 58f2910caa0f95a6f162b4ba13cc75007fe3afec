@@ -16,6 +16,29 @@
       "message": "Thanks for the review!",
       "revId": "58f2910caa0f95a6f162b4ba13cc75007fe3afec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "047089e2_5f17a6ef",
+        "filename": "src/chromiumos/tast/local/bundles/cros/telemetryextension/api_battery_capacity_routine.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1306673
+      },
+      "writtenOn": "2022-08-05T08:44:52Z",
+      "side": 1,
+      "message": "nit: maybe replace it with Exists",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 43
+      },
+      "revId": "58f2910caa0f95a6f162b4ba13cc75007fe3afec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
