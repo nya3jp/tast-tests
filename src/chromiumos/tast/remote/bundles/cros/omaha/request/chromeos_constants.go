@@ -12,7 +12,7 @@ const (
 	InstallSourceScheduler = "scheduler"
 
 	OSVersion  = "Indy"
-	OSPlatform = "ChromeOS"
+	OSPlatform = "Chrome OS"
 
 	OmahaRequestURL = "https://tools.google.com/service/update2"
 

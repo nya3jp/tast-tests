@@ -22,7 +22,7 @@ func init() {
 		Contacts:     []string{"vsavu@google.com", "chromeos-commercial-remote-management@google.com"},
 		Impl:         &omahaFixture{},
 		SetUpTimeout: 20 * time.Second,
-		Data:         []string{"configuration.json"},
+		Data:         []string{"configuration.json", "pins.json"},
 	})
 }
 
@@ -31,8 +31,9 @@ type omahaFixture struct{}
 // FixtData is the data made available by the fixture for its tests.
 // Contains DUT parameters and the current configuration.
 type FixtData struct {
-	Device *Device
-	Config *Configuration
+	Device           *Device
+	Config           *Configuration
+	MinorVersionPins []MinorVersionPin
 }
 
 func (o *omahaFixture) SetUp(ctx context.Context, s *testing.FixtState) interface{} {
@@ -58,10 +59,25 @@ func (o *omahaFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		s.Error("Failed to dump 'configuration.json': ", err)
 	}
 
+	b, err = ioutil.ReadFile(s.DataPath("pins.json"))
+
+	// Load Minor Version Pins.
+	var pins []MinorVersionPin
+	if err := json.Unmarshal(b, &pins); err != nil {
+		s.Fatal("Failed to parse the pins: ", err)
+	}
+
+	file, err := json.MarshalIndent(pins, "", "  ")
+	if err != nil {
+		s.Fatal("Failed to marshall pins: ", err)
+	}
+	ioutil.WriteFile(filepath.Join(s.OutDir(), "pins.json"), file, 0644)
+
 	// Send everything to the tests.
 	return &FixtData{
-		Device: dut,
-		Config: &config,
+		Device:           dut,
+		Config:           &config,
+		MinorVersionPins: pins,
 	}
 }
 

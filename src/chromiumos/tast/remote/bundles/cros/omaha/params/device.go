@@ -18,6 +18,7 @@ import (
 // Device contains the device specific parameters used by update_engine.
 type Device struct {
 	Board       string
+	RawBoard    string
 	ProductID   string
 	MachineType string
 	HardwareID  string
@@ -47,13 +48,13 @@ func loadParamsFromDUT(ctx context.Context, d *dut.DUT) (*Device, error) {
 		return nil, errors.Wrap(err, "parsing lsbrelease contents")
 	}
 
-	board := ""
+	rawboard := ""
 	if tmp, ok := lsbMap[lsbrelease.Board]; ok {
-		board = tmp
+		rawboard = tmp
 	}
 
 	// Test images don't have the -signed suffix, add it here to simulate a normal image.
-	board = board + "-signed-omahatest"
+	board := rawboard + "-signed-omahatest"
 
 	productID := DefaultAppID
 	if tmp, ok := lsbMap[lsbrelease.ReleaseAppID]; ok {
@@ -79,6 +80,7 @@ func loadParamsFromDUT(ctx context.Context, d *dut.DUT) (*Device, error) {
 
 	return &Device{
 		Board:       board,
+		RawBoard : rawboard,
 		ProductID:   productID,
 		MachineType: machineType,
 		HardwareID:  hardwareID,
