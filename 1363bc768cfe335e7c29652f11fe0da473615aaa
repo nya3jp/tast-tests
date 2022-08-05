@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4d28c1b_c8848a06",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nacl/pnacl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-05T14:14:36Z",
+      "side": 1,
+      "message": "nit: Looks like these two lines are exactly the same in both cases, so can be moved out of the `switch`.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 68
+      },
+      "revId": "1363bc768cfe335e7c29652f11fe0da473615aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
