@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff140d26_d92fd0f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-05T06:28:14Z",
+      "side": 1,
+      "message": "LGTM for style, please wait for Roman to review",
+      "revId": "184f4376bc70203cfe61d6982b96d59407637018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bac5d9bf_d3722a94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-05T06:28:14Z",
+      "side": 1,
+      "message": "var shouldSkipConsolidatedConsentScreen bool",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 45
+      },
+      "revId": "184f4376bc70203cfe61d6982b96d59407637018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef027068_2157859d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-05T06:28:14Z",
+      "side": 1,
+      "message": "Can you match against the read more button better?",
+      "revId": "184f4376bc70203cfe61d6982b96d59407637018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a45895f9_3674cb7b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/oobe/smoke_end_to_end.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1368736
+      },
+      "writtenOn": "2022-08-05T06:28:14Z",
+      "side": 1,
+      "message": "Can you match against the accept button?",
+      "revId": "184f4376bc70203cfe61d6982b96d59407637018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
