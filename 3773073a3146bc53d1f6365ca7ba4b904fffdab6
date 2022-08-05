@@ -16,6 +16,52 @@
       "message": "Thank you Jie!",
       "revId": "3773073a3146bc53d1f6365ca7ba4b904fffdab6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dc6d283_3bac4dfe",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-05T00:52:39Z",
+      "side": 1,
+      "message": "nit: httpServer",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 15
+      },
+      "revId": "3773073a3146bc53d1f6365ca7ba4b904fffdab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97203a64_d9fcac76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-05T00:52:39Z",
+      "side": 1,
+      "message": "you may need to reserve time or the cleanup task",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "3773073a3146bc53d1f6365ca7ba4b904fffdab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
