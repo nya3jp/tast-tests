@@ -45,6 +45,30 @@
       },
       "revId": "dcd691785c604a7b756718f005842ff18bab411f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ff94092_a444262a",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000191
+      },
+      "writtenOn": "2022-08-05T20:33:29Z",
+      "side": 1,
+      "message": "The previous bug was for kNotSupported errors in general. MAC address randomization seemed to not be showing up so we kept it as an ERROR, but now it seems that it is. The new bug is to investigate that specifically.",
+      "parentUuid": "e99f38ce_ed61c355",
+      "range": {
+        "startLine": 70,
+        "startChar": 77,
+        "endLine": 70,
+        "endChar": 91
+      },
+      "revId": "dcd691785c604a7b756718f005842ff18bab411f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
