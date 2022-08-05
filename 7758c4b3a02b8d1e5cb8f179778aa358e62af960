@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4326896_6d83bd59",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-05T01:37:49Z",
+      "side": 1,
+      "message": "Agree, this looks fine to me as-is as nd is needed outside the scope of the if-statement.",
+      "parentUuid": "d7c53fde_e9e6c749",
+      "range": {
+        "startLine": 722,
+        "startChar": 0,
+        "endLine": 724,
+        "endChar": 2
+      },
+      "revId": "7758c4b3a02b8d1e5cb8f179778aa358e62af960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5063eb1_8dc4795c",
         "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
         "patchSetId": 2
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "This is one of those cases where I think the tradeoff for indirection is worth it over inlining the call in the test. \n\nWe have 4 tests that will need their contexts shortened for the framesender service. The framesender binary itself can be killed, but we want to reserve time for the interface (as specified in the comment). Instead of replicating this comment in every single test that requires the inline, I think it\u0027s more efficient to have the discussion put into 1 place.\n\nWDYT?",
       "parentUuid": "c5063eb1_8dc4795c",
+      "range": {
+        "startLine": 744,
+        "startChar": 17,
+        "endLine": 744,
+        "endChar": 43
+      },
+      "revId": "7758c4b3a02b8d1e5cb8f179778aa358e62af960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d9645cf_a75dcc93",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-05T01:37:49Z",
+      "side": 1,
+      "message": "Tast reviewer here. My suggestion would be to assign 2*time.Second to a constant, leave any discussion about its need against that constant, and put the ctxutil.Shorten inline.",
+      "parentUuid": "dd68f607_1e25851c",
       "range": {
         "startLine": 744,
         "startChar": 17,
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "Please see above comment.",
       "parentUuid": "5ffe20d8_e118d21d",
+      "range": {
+        "startLine": 777,
+        "startChar": 1,
+        "endLine": 779,
+        "endChar": 2
+      },
+      "revId": "7758c4b3a02b8d1e5cb8f179778aa358e62af960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a358ded_8aa8d183",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-05T01:37:49Z",
+      "side": 1,
+      "message": "As above, looks fine to me as-is.",
+      "parentUuid": "7b2c5b7d_28847c33",
       "range": {
         "startLine": 777,
         "startChar": 1,

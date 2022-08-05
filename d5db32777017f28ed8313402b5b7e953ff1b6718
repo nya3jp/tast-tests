@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "404b304d_70177a45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-05T01:37:49Z",
+      "side": 1,
+      "message": "+2 for Tast Review",
+      "revId": "d5db32777017f28ed8313402b5b7e953ff1b6718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc93e7ce_67791de3",
@@ -14,6 +31,30 @@
       "writtenOn": "2022-08-04T18:44:08Z",
       "side": 1,
       "message": "Should these returned err replaced with named return value `retErr`? Because the deferred clean up function relies on `retErr`, which reflects the states of setup. There are 6 occurrence in total.",
+      "range": {
+        "startLine": 732,
+        "startChar": 4,
+        "endLine": 732,
+        "endChar": 7
+      },
+      "revId": "d5db32777017f28ed8313402b5b7e953ff1b6718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb15833e_fdc88380",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1386944
+      },
+      "writtenOn": "2022-08-05T01:37:49Z",
+      "side": 1,
+      "message": "No, I think this is correct practice as-is.\n\nretErr will be assigned in the return statement whereupon the it will be accessible to the defer.",
+      "parentUuid": "fc93e7ce_67791de3",
       "range": {
         "startLine": 732,
         "startChar": 4,
