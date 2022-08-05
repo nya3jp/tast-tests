@@ -24,7 +24,7 @@ var (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         APIMemoryInfo,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests chrome.os.telemetry.getMemoryInfo Chrome Extension API function exposed to Telemetry Extension",
 		Contacts: []string{
 			"lamzin@google.com", // Test and Telemetry Extension author

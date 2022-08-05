@@ -22,7 +22,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         SerialNumberPermission,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests that Chrome extension can have options page and request additional serial number permission at runtime",
 		Contacts: []string{
 			"lamzin@google.com", // Test and Telemetry Extension author

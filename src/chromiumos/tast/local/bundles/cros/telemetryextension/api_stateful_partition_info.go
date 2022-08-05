@@ -19,7 +19,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         APIStatefulPartitionInfo,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests chrome.os.diagnostics.getStatefulPartitionInfo Chrome Extension API function exposed to Telemetry Extension",
 		Contacts: []string{
 			"bkersting@google.com", // Test author

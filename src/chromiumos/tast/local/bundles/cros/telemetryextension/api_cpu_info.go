@@ -18,7 +18,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         APICPUInfo,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests chrome.os.telemetry.getCpuInfo Chrome Extension API function exposed to Telemetry Extension",
 		Contacts: []string{
 			"lamzin@google.com",    // Test and Telemetry Extension author

@@ -16,7 +16,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         MessagePipe,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests message pipe functionality between PWA and Chrome extension",
 		Contacts: []string{
 			"lamzin@google.com", // Test and Telemetry Extension author
