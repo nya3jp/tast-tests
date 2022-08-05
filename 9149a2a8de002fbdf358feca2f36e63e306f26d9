@@ -370,6 +370,30 @@
       },
       "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "403f4735_87e2acf8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/dlp/data_leak_prevention_rules_list_clipboard.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1549114
+      },
+      "writtenOn": "2022-08-05T05:30:38Z",
+      "side": 1,
+      "message": "Ah, now I understand. I should have fixed it now. Let me know what you think. Thanks!",
+      "parentUuid": "3d8c6fc0_9eb0dfb5",
+      "range": {
+        "startLine": 275,
+        "startChar": 51,
+        "endLine": 275,
+        "endChar": 69
+      },
+      "revId": "9149a2a8de002fbdf358feca2f36e63e306f26d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
