@@ -40,3 +40,9 @@ func (d *Configuration) DumpToFile(path string) error {
 
 	return ioutil.WriteFile(path, file, 0644)
 }
+
+type MinorVersionPin struct {
+	Board    string   `json:"board_name"`
+	Selector int      `json:"selector"`
+	Versions []string `json:"chrome_os_versions"`
+}
