@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "118186d0_0d2c1fad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-08-05T00:05:54Z",
+      "side": 1,
+      "message": "We also recommend wrap into 72 chars so that title fits in one line. \n\nI can\u0027t find in the style guide. But this was what Miguel was suggesting. \n\nhttps://chromium.googlesource.com/chromium/src/+/HEAD/styleguide/c++/c++.md",
+      "revId": "fb69a3cc8c557561ba2488a6ef327f8a31d2500e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1edbbc8c_860737d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-08-05T00:05:54Z",
+      "side": 1,
+      "message": "Hang, thanks for the update!",
+      "revId": "fb69a3cc8c557561ba2488a6ef327f8a31d2500e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
