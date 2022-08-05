@@ -16,6 +16,103 @@
       "message": "Is there a possibility of race conditions here or does the Chrome operation only signal completion when ARC properties are also changed?",
       "revId": "688dc2c88a6f6d9ca7aaf34f0dc7704bd77e93f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c390c8c1_386da47c",
+        "filename": "src/chromiumos/tast/local/arc/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-05T16:09:16Z",
+      "side": 1,
+      "message": "You don\u0027t need both this and the fixture above, so you can delete this",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 0
+      },
+      "revId": "688dc2c88a6f6d9ca7aaf34f0dc7704bd77e93f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b4bf10c_ff9e8821",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dark_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-05T16:09:16Z",
+      "side": 1,
+      "message": "Get rid of this comment",
+      "revId": "688dc2c88a6f6d9ca7aaf34f0dc7704bd77e93f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6080a131_84a11afc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dark_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-05T16:09:16Z",
+      "side": 1,
+      "message": "Move this string to a const and comment about what its purpose is",
+      "range": {
+        "startLine": 70,
+        "startChar": 41,
+        "endLine": 70,
+        "endChar": 44
+      },
+      "revId": "688dc2c88a6f6d9ca7aaf34f0dc7704bd77e93f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51cce02_f1ecfd8b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dark_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-05T16:09:16Z",
+      "side": 1,
+      "message": "Use Errorf for formatting instead and capitalize:\n\n`s.Errorf(\"Night_mode wanted: 2 was %s\", string(output))`",
+      "revId": "688dc2c88a6f6d9ca7aaf34f0dc7704bd77e93f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a5749dd_b1ff5eb4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dark_mode.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-05T16:09:16Z",
+      "side": 1,
+      "message": "Add a comment to detail what this function is doing",
+      "revId": "688dc2c88a6f6d9ca7aaf34f0dc7704bd77e93f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
