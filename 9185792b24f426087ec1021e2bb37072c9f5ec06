@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "332613e6_fa1c13d7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/data/brother_hl_l2395dw_series_descriptor.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-05T17:29:31Z",
+      "side": 1,
+      "message": "New version uses the MTV test lab printers.",
+      "parentUuid": "508bb082_90ae9888",
+      "revId": "9185792b24f426087ec1021e2bb37072c9f5ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f141ad52_d9c241be",
@@ -85,6 +103,24 @@
       "writtenOn": "2022-07-27T17:23:50Z",
       "side": 1,
       "message": "This should be project-bolton@google.com",
+      "revId": "9185792b24f426087ec1021e2bb37072c9f5ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49383996_1d1bb612",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-05T17:29:31Z",
+      "side": 1,
+      "message": "Fixed in updated version.",
+      "parentUuid": "f141ad52_d9c241be",
       "revId": "9185792b24f426087ec1021e2bb37072c9f5ec06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -138,6 +174,24 @@
       "side": 1,
       "message": "Got it.  I think the description of the action below is misleading then.\n\nSeparately, if you just need something to print, why not just open chrome://newtab?  That would simplify the setup a bit if the test doesn\u0027t need anything from the settings page.",
       "parentUuid": "c0f72d56_8a44fad7",
+      "revId": "9185792b24f426087ec1021e2bb37072c9f5ec06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee198d51_e41d6906",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-05T17:29:31Z",
+      "side": 1,
+      "message": "New version fixes the description and uses chrome://newtab instead of the settings menu.",
+      "parentUuid": "4202b21d_383d467f",
       "revId": "9185792b24f426087ec1021e2bb37072c9f5ec06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
