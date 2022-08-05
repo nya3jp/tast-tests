@@ -204,6 +204,30 @@
       },
       "revId": "c2d7389bd761f3c7ff4b37b2635d94e48edf9749",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7601022_04092954",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-05T21:12:32Z",
+      "side": 1,
+      "message": "Merging this comment to another one related.",
+      "parentUuid": "6b14ffb7_46ca053d",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 66
+      },
+      "revId": "c2d7389bd761f3c7ff4b37b2635d94e48edf9749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

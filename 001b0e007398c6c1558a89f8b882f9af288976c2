@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3153a41d_e2b22fc2",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-05T21:12:32Z",
+      "side": 1,
+      "message": "I believe it is unlikely as long as PrepareExtensions takes different destDir args (and different extDirs from cfg) for each browser\nas defined at chrome/chrome.go in this CL:\n```\nextensionsDir \u003d persistentDir + \"/extensions\"\nlacrosExtensionsDir \u003d persistentDir + \"/lacros_extensions\"\n```\nPlease suggest if you think the problem would persist with this change.",
+      "parentUuid": "dd8da95c_43ad6d8d",
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "596881e4_a6c6005a",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-08-05T13:25:37Z",
       "side": 1,
       "message": "to be symmetric, AshArgs() maybe?",
+      "range": {
+        "startLine": 164,
+        "startChar": 16,
+        "endLine": 164,
+        "endChar": 26
+      },
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aeff8df_15479bfb",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-05T21:12:32Z",
+      "side": 1,
+      "message": "Just so you know this CL didn\u0027t touch that name at all, but I can change it if the new name is better. will do in a follow up.",
+      "parentUuid": "596881e4_a6c6005a",
       "range": {
         "startLine": 164,
         "startChar": 16,
@@ -83,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe166d9f_297bff9d",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-05T21:12:32Z",
+      "side": 1,
+      "message": "Can you please suggest what args have to be set here?\n\nThis is mostly just a copy of the existing code `ExtensionArgs` at lacrosfixt/config.go to avoid any regression from this refactoring.\nI also found it a bit inconsistent with AshArgs() that supports signin extensions and guestmode. Please advise what to set here. We can do it in this CL or in a follow up.",
+      "parentUuid": "ee7bd756_c6b314e7",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 111
+      },
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06cd8150_4a84cbf3",
         "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
         "patchSetId": 4
@@ -94,6 +160,30 @@
       "writtenOn": "2022-08-05T13:25:37Z",
       "side": 1,
       "message": "could you merge the arguments in the caller?",
+      "range": {
+        "startLine": 32,
+        "startChar": 70,
+        "endLine": 32,
+        "endChar": 101
+      },
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60fc1e71_70f70884",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-05T21:12:32Z",
+      "side": 1,
+      "message": "Not sure how to do it in that each browser keeps its own arg lists or extensions.Files separate and if it is necessary here. Any code snippet would be very helpful.",
+      "parentUuid": "06cd8150_4a84cbf3",
       "range": {
         "startLine": 32,
         "startChar": 70,
