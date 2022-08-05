@@ -340,6 +340,11 @@ func doRemoveKeyTurn(ctx context.Context, state *chapsStressState, pkcs11Util *p
 
 	// Select the key.
 	k := viableKeys[state.rand.Intn(len(viableKeys))]
+	// Update the slot information for the key, so it's up to date.
+	// Note that this is required because we mount and unmount.
+	if err := pkcs11Util.UpdateKeySlot(ctx, state.keys[k]); err != nil {
+		return errors.Wrap(err, "failed to update key slot info")
+	}
 
 	if err := pkcs11Util.DestroyKey(ctx, state.keys[k]); err != nil {
 		return errors.Wrap(err, "failed to destroy key in remove key turn")
@@ -374,6 +379,12 @@ func doSignKeyTurn(ctx context.Context, state *chapsStressState, pkcs11Util *pkc
 	// Select the key and number of times to sign.
 	k := viableKeys[state.rand.Intn(len(viableKeys))]
 	times := state.rand.Intn(maxSignTimes)
+
+	// Update the slot information for the key, so it's up to date.
+	// Note that this is required because we mount and unmount.
+	if err := pkcs11Util.UpdateKeySlot(ctx, state.keys[k]); err != nil {
+		return errors.Wrap(err, "failed to update key slot info")
+	}
 
 	for i := 0; i < times; i++ {
 		if err := pkcs11test.SignAndVerify(ctx, pkcs11Util, state.keys[k], f1, f2, &pkcs11.SHA256RSAPKCS); err != nil {
