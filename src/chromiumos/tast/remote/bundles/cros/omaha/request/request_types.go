@@ -23,9 +23,10 @@ type OS struct {
 type RequestUpdateCheck struct { // nolint
 	XMLName struct{} `xml:"updatecheck"`
 
-	TargetVersionPrefix string `xml:"targetversionprefix,omitempty,attr"`
-	RollbackAllowed     bool   `xml:"rollback_allowed,attr,omitempty"`
-	LTSTag              string `xml:"ltstag,omitempty,attr"`
+	TargetVersionPrefix   string `xml:"targetversionprefix,omitempty,attr"`
+	TargetVersionSelector string `xml:"targetversionselector,omitempty,attr"`
+	RollbackAllowed       bool   `xml:"rollback_allowed,attr,omitempty"`
+	LTSTag                string `xml:"ltstag,omitempty,attr"`
 }
 
 // Ping is part of an Omaha Request.
