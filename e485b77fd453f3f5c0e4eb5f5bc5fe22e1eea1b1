@@ -39,6 +39,23 @@
       "message": "should we have a similar check for currentPin as well?",
       "revId": "e485b77fd453f3f5c0e4eb5f5bc5fe22e1eea1b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "537d3bcb_ec3d0153",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_on.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-08-05T15:24:47Z",
+      "side": 1,
+      "message": "Should we also check if the sim lock setting has been disabled or not?",
+      "revId": "e485b77fd453f3f5c0e4eb5f5bc5fe22e1eea1b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
