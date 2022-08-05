@@ -22,6 +22,30 @@
       },
       "revId": "90910b15bdb97a02b8bc8043c4785caf67999d58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea289496_e048d245",
+        "filename": "src/chromiumos/tast/local/bundles/cros/crostini/pulse_audio_basic.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2022-08-05T05:07:41Z",
+      "side": 1,
+      "message": "Ah, clumptini@ for informational tests, clumptini+oncall for CQ tests.",
+      "parentUuid": "81c3f005_b9e38e1c",
+      "range": {
+        "startLine": 22,
+        "startChar": 51,
+        "endLine": 22,
+        "endChar": 60
+      },
+      "revId": "90910b15bdb97a02b8bc8043c4785caf67999d58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
