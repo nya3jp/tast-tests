@@ -16,6 +16,24 @@
       "message": "Can we remove the commented out lines separately to simplify the review?",
       "revId": "154dd75702d03c6407f65187ebe636bdb2cc4d0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b4a470_55fef355",
+        "filename": "src/chromiumos/tast/common/shillconst/netlog_known_errors.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-05T19:53:26Z",
+      "side": 0,
+      "message": "Good point, Done! There is another CL in the chain that removes the commented out lines.",
+      "parentUuid": "c8f3b602_8abca8c7",
+      "revId": "154dd75702d03c6407f65187ebe636bdb2cc4d0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
