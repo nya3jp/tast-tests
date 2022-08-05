@@ -83,6 +83,11 @@ func (rd *RPCDUT) RPC() *rpc.Client {
 	return rd.cl
 }
 
+// RPCConnected returns true if RPC connection is available.
+func (rd *RPCDUT) RPCConnected(ctx context.Context) bool {
+	return rd.d.Connected(ctx) && rd.cl != nil
+}
+
 // DUT returns the underlying DUT that does not manage the rpc connection.
 //
 // This is strictly for being able to call functions that do not accept RPCDUT.
