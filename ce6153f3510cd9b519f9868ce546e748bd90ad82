@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1851754d_0bb887fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1545162
+      },
+      "writtenOn": "2022-08-05T01:51:35Z",
+      "side": 1,
+      "message": "Hi Shuo-Peng Liao,\n\nI follow your comments, remove most reduntant comments.\nAnd also re-check again all files.\nPlease have a look. Thank you.",
+      "revId": "ce6153f3510cd9b519f9868ce546e748bd90ad82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
