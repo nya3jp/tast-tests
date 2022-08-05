@@ -88,11 +88,12 @@ func PhysicalKeyboardLongpressDiacritics(ctx context.Context, s *testing.State) 
 	candidateWindowFinder := nodewith.HasClass("SuggestionWindowView").Role(role.Window)
 	suggestionCharFinder := nodewith.Name(diacritic).Ancestor(candidateWindowFinder).First()
 	ui := uiauto.New(tconn)
-	actionName := "PK longpress to insert diacritics"
-	if err := uiauto.UserAction(actionName,
-		uiauto.Combine(actionName,
+
+	scenario := "PK longpress and left click to insert diacritics"
+	util.RunSubTest(ctx, s, cr, "left_click", uiauto.UserAction(scenario,
+		uiauto.Combine(scenario,
+			its.Clear(inputField),
 			its.ClickFieldAndWaitForActive(inputField),
-			// Simulate a held down key press.
 			kb.AccelPressAction(longpressKeyChar),
 			ui.WaitUntilExists(candidateWindowFinder),
 			kb.AccelReleaseAction(longpressKeyChar),
@@ -103,11 +104,73 @@ func PhysicalKeyboardLongpressDiacritics(ctx context.Context, s *testing.State) 
 		uc,
 		&useractions.UserActionCfg{
 			Attributes: map[string]string{
-				useractions.AttributeFeature: useractions.FeatureLongpressDiacritics,
+				useractions.AttributeTestScenario: scenario,
+				useractions.AttributeFeature:      useractions.FeatureLongpressDiacritics,
 			},
 		},
-	)(ctx); err != nil {
-		s.Fatal("Failed to validate diacritics on PK longpress: ", err)
-	}
+	))
 
+	scenario = "PK longpress and arrow key then enter to insert diacritics"
+	util.RunSubTest(ctx, s, cr, "right_arrow_enter", uiauto.UserAction(scenario,
+		uiauto.Combine(scenario,
+			its.Clear(inputField),
+			its.ClickFieldAndWaitForActive(inputField),
+			kb.AccelPressAction(longpressKeyChar),
+			ui.WaitUntilExists(candidateWindowFinder),
+			kb.AccelReleaseAction(longpressKeyChar),
+			kb.AccelAction("Right"),
+			kb.AccelAction("Enter"),
+			ui.WaitUntilGone(candidateWindowFinder),
+			its.ValidateResult(inputField, diacritic),
+		),
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeTestScenario: scenario,
+				useractions.AttributeFeature:      useractions.FeatureLongpressDiacritics,
+			},
+		},
+	))
+
+	scenario = "PK longpress and number key to insert diacritics"
+	util.RunSubTest(ctx, s, cr, "number_key", uiauto.UserAction(scenario,
+		uiauto.Combine(scenario,
+			its.Clear(inputField),
+			its.ClickFieldAndWaitForActive(inputField),
+			kb.AccelPressAction(longpressKeyChar),
+			ui.WaitUntilExists(candidateWindowFinder),
+			kb.AccelReleaseAction(longpressKeyChar),
+			kb.AccelAction("1"),
+			ui.WaitUntilGone(candidateWindowFinder),
+			its.ValidateResult(inputField, diacritic),
+		),
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeTestScenario: scenario,
+				useractions.AttributeFeature:      useractions.FeatureLongpressDiacritics,
+			},
+		},
+	))
+
+	scenario = "PK longpress and esc to dismiss"
+	util.RunSubTest(ctx, s, cr, "esc_dismiss", uiauto.UserAction(scenario,
+		uiauto.Combine(scenario,
+			its.Clear(inputField),
+			its.ClickFieldAndWaitForActive(inputField),
+			kb.AccelPressAction(longpressKeyChar),
+			ui.WaitUntilExists(candidateWindowFinder),
+			kb.AccelReleaseAction(longpressKeyChar),
+			kb.AccelAction("Esc"),
+			ui.WaitUntilGone(candidateWindowFinder),
+			its.ValidateResult(inputField, longpressKeyChar),
+		),
+		uc,
+		&useractions.UserActionCfg{
+			Attributes: map[string]string{
+				useractions.AttributeTestScenario: scenario,
+				useractions.AttributeFeature:      useractions.FeatureLongpressDiacritics,
+			},
+		},
+	))
 }
