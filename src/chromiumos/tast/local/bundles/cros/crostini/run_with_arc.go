@@ -18,7 +18,7 @@ func init() {
 		Func:         RunWithARC,
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Checks that ARC(VM) runs in parallel with Crostini",
-		Contacts:     []string{"niwa@chromium.org", "arcvm-eng@google.com"},
+		Contacts:     []string{"niwa@chromium.org", "arcvm-eng@google.com", "clumptini@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "vm_host", "arc"},
 		Params: []testing.Param{
