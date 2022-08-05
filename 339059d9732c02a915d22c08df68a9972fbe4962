@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee754c8b_21dd8112",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/virtual_keyboard_multipaste.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-05T07:03:07Z",
+      "side": 1,
+      "message": "I feel it should be better to test one by one. Considering the root cause might be a racing issue when VK is rendering, I assume retries on the first click should be enough. WDYT\n\nuiauto.RetrySilently(3, uiauto.Combine(\"click on multipaste items\",\n    vkbCtx.TapMultipasteItem(text1),\n    util.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), text1),\n),\nvkbCtx.TapMultipasteItem(text2),\nutil.WaitForFieldTextToBeIgnoringCase(tconn, inputField.Finder(), expectedText),\n))),",
+      "range": {
+        "startLine": 113,
+        "startChar": 3,
+        "endLine": 118,
+        "endChar": 7
+      },
+      "revId": "339059d9732c02a915d22c08df68a9972fbe4962",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
