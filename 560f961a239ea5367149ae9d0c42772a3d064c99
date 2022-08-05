@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d606a5f6_f035698d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1469347
+      },
+      "writtenOn": "2022-08-05T00:45:52Z",
+      "side": 1,
+      "message": "Looks great. What device is this? Seems to be AMD?\n\nPlease add it in the comment like \n\ne.g. tast -verbose run localhost:2222 video.PlatformDecoding.vaapi_av1 on asurada",
+      "parentUuid": "6f6a72c0_1be3a1de",
+      "revId": "560f961a239ea5367149ae9d0c42772a3d064c99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fd798ee9_ea377161",
