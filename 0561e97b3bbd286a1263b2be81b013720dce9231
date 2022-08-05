@@ -140,6 +140,24 @@
       "parentUuid": "ced74c6d_110551fb",
       "revId": "0561e97b3bbd286a1263b2be81b013720dce9231",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ec9639_ce2c7c44",
+        "filename": "src/chromiumos/tast/remote/firmware/fingerprint/firmware_test_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2022-08-05T10:07:23Z",
+      "side": 1,
+      "message": "Implemented `RPCConnected` [here](https://chromium-review.googlesource.com/c/chromiumos/platform/tast-tests/+/3811505)",
+      "parentUuid": "22b78faa_f669f2e9",
+      "revId": "0561e97b3bbd286a1263b2be81b013720dce9231",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
