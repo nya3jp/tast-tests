@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9429f36a_8d068703",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-05T18:05:54Z",
+      "side": 1,
+      "message": "How was this value chosen?  It seems pretty long if it applies to individual subtests.",
+      "revId": "43a7a6658fb9f46086d2868c2fb8059d22259faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddce2df9_2f450573",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-05T18:05:54Z",
+      "side": 1,
+      "message": "Does this need a new Chrome?  I think it can probably rely on the chromeLoggedIn fixture unless it needs a completely clean state.",
+      "revId": "43a7a6658fb9f46086d2868c2fb8059d22259faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dc6409c_4509fb35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-05T18:05:54Z",
+      "side": 1,
+      "message": "There should be a chrome.NewTabURL for this.",
+      "range": {
+        "startLine": 118,
+        "startChar": 30,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "43a7a6658fb9f46086d2868c2fb8059d22259faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe970163_7e8170f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-05T18:05:54Z",
+      "side": 1,
+      "message": "Error message doesn\u0027t match any more.",
+      "revId": "43a7a6658fb9f46086d2868c2fb8059d22259faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cf0c735_eea7db31",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-05T18:05:54Z",
+      "side": 1,
+      "message": "Could you stick the name that failed into the message?  That should make it a lot easier to debug if this ever triggers.",
+      "revId": "43a7a6658fb9f46086d2868c2fb8059d22259faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
