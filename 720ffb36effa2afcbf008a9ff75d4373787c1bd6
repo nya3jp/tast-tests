@@ -75,6 +75,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "120a5479_1e96fbaa",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-08-05T17:15:32Z",
+      "side": 1,
+      "message": "Good catch. Switched to loop counter. (If tast tests ran in parallel I would be worried about filename collisions, but they run sequentially, so hooray for simpler code!)",
+      "parentUuid": "8e044e9a_f4c48467",
+      "range": {
+        "startLine": 257,
+        "startChar": 54,
+        "endLine": 257,
+        "endChar": 94
+      },
+      "revId": "720ffb36effa2afcbf008a9ff75d4373787c1bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a35aa15b_7873bd35",
@@ -88,6 +112,30 @@
       "writtenOn": "2022-08-05T03:41:47Z",
       "side": 1,
       "message": "do you need to clean-up these files if this method fails between here and the return? (e.g. by calling your clean-up routine yourself if the method encounters an error from here on in)",
+      "range": {
+        "startLine": 264,
+        "startChar": 3,
+        "endLine": 265,
+        "endChar": 55
+      },
+      "revId": "720ffb36effa2afcbf008a9ff75d4373787c1bd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e140a3df_5f98c5e0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/launcher/launcher.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000045
+      },
+      "writtenOn": "2022-08-05T17:15:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a35aa15b_7873bd35",
       "range": {
         "startLine": 264,
         "startChar": 3,
