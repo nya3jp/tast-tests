@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
+	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/projector"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -46,6 +47,15 @@ func CreationFlow(ctx context.Context, s *testing.State) {
 	tconn := s.FixtValue().(*projector.FixtData).TestConn
 
 	defer faillog.DumpUITreeOnError(ctxForCleanUp, s.OutDir(), s.HasError, tconn)
+
+	// Even though we filter for devices with a microphone using
+	// the hardware deps above, the microphone could still be
+	// muted by a physical switch. This check ensures a microphone
+	// is available and not muted.
+	if err := audio.WaitForDevice(ctx, audio.InputStream); err != nil {
+		// Pass the test and exit prematurely.
+		return
+	}
 
 	ui := uiauto.New(tconn).WithTimeout(2 * time.Minute)
 
