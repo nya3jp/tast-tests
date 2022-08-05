@@ -52,6 +52,24 @@
       "parentUuid": "c11a60cc_b49adb3d",
       "revId": "1bff187079a537a237979710d50cf4ca8557707e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec485f7_016ceb79",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-05T17:41:48Z",
+      "side": 1,
+      "message": "I don\u0027t know why WaitForLocation() reliably prevented the race condition; it was probably just because it waited through a couple of iterations of the event loop. In the new version, I\u0027ve replaced that call with a more explicit solution: we wait for the checkbox to be focusable before trying to interact with it, and we wait for the \"checked state changed\" event before re-checking the state of the checkbox.",
+      "parentUuid": "3769d740_8e816021",
+      "revId": "1bff187079a537a237979710d50cf4ca8557707e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
