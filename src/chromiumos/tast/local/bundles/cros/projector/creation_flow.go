@@ -32,7 +32,7 @@ func init() {
 		Contacts:     []string{"tobyhuang@chromium.org", "cros-projector+tast@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "ondevice_speech"},
-		HardwareDeps: hwdep.D(hwdep.Microphone()),
+		HardwareDeps: hwdep.D(hwdep.Microphone(), hwdep.NoMicrophoneMuteSwitch()),
 		Timeout:      10 * time.Minute,
 		Fixture:      "projectorLogin",
 	})
