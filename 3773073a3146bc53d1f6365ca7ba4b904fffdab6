@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1a1fd5_68b238a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-05T19:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dc6d283_3bac4dfe",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 15
+      },
+      "revId": "3773073a3146bc53d1f6365ca7ba4b904fffdab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97203a64_d9fcac76",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-08-05T00:52:39Z",
       "side": 1,
       "message": "you may need to reserve time or the cleanup task",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "3773073a3146bc53d1f6365ca7ba4b904fffdab6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31edca7c_2ac125fa",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-05T19:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97203a64_d9fcac76",
       "range": {
         "startLine": 93,
         "startChar": 24,
