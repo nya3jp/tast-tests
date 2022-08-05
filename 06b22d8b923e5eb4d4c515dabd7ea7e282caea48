@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f49fd80f_7dfb1143",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-05T03:12:52Z",
+      "side": 1,
+      "message": "According to https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/code_reviews.md#summary, can you please have a team mate to review the CL?",
+      "revId": "06b22d8b923e5eb4d4c515dabd7ea7e282caea48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
