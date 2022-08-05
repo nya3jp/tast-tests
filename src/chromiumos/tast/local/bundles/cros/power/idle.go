@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/power"
@@ -206,18 +207,8 @@ func Idle(ctx context.Context, s *testing.State) {
 		// b/228256145 to avoid powerd restart.
 		chrome.DisableFeatures("FirmwareUpdaterApp"),
 	}
-	// For testing lacros, set up
-	if bt == browser.TypeLacros {
-		cfg := lacrosfixt.NewConfig(
-			lacrosfixt.Mode(lacros.LacrosOnly),
-			lacrosfixt.ChromeOptions(opts...))
-		var err error
-		opts, err = cfg.Opts()
-		if err != nil {
-			s.Fatal("Failed to preparing lacros launching: ", err)
-		}
-	}
-	cr, err := chrome.New(ctx, opts...)
+
+	cr, err := browserfixt.NewChrome(ctx, bt, lacrosfixt.NewConfig(lacrosfixt.Mode(lacros.LacrosOnly)), opts...)
 	if err != nil {
 		s.Fatal("Failed to login session: ", err)
 	}
