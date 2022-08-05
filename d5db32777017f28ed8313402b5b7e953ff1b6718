@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26ba6ba0_c6fb5be2",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-05T19:43:34Z",
+      "side": 1,
+      "message": "Personally I think the full \"FrameSender\" provides more context here for the function call within this Router, but perhaps it should say\n```\n// NewFrameSender creates a new framesender.Sender object.\n```\nto highlight the specific type name.",
+      "parentUuid": "1829286a_915e98e2",
+      "range": {
+        "startLine": 720,
+        "startChar": 68,
+        "endLine": 720,
+        "endChar": 71
+      },
+      "revId": "d5db32777017f28ed8313402b5b7e953ff1b6718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc93e7ce_67791de3",
         "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
         "patchSetId": 3
