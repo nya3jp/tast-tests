@@ -12,6 +12,9 @@ import (
 
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/testing"
 )
 
@@ -25,12 +28,21 @@ var extensionFiles = []string{
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Pnacl,
-		LacrosStatus: testing.LacrosVariantNeeded,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Tests running a PNaCl module",
 		Contacts:     []string{"emaxx@chromium.org", "nacl-eng@google.com"},
 		Data:         extensionFiles,
 		SoftwareDeps: []string{"chrome", "nacl"},
 		Attr:         []string{"group:mainline"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			ExtraAttr:         []string{"informational"},
+			Val:               browser.TypeLacros,
+		},
+		},
 	})
 }
 
@@ -53,15 +65,25 @@ func Pnacl(ctx context.Context, s *testing.State) {
 		s.Fatalf("Failed to compute extension ID for %v: %v", extDir, err)
 	}
 
-	cr, err := chrome.New(ctx, chrome.UnpackedExtension(extDir))
+	var extOpt chrome.Option
+	bt := s.Param().(browser.Type)
+	switch bt {
+	case browser.TypeLacros:
+		extOpt = chrome.LacrosUnpackedExtension(extDir)
+	case browser.TypeAsh:
+		extOpt = chrome.UnpackedExtension(extDir)
+	}
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), extOpt)
+
 	if err != nil {
 		s.Fatal("Chrome login failed: ", err)
 	}
+	defer closeBrowser(ctx)
 	defer cr.Close(ctx)
 
 	s.Log("Connecting to background page")
 	bgURL := chrome.ExtensionBackgroundPageURL(extID)
-	conn, err := cr.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
+	conn, err := br.NewConnForTarget(ctx, chrome.MatchTargetURL(bgURL))
 	if err != nil {
 		s.Fatalf("Failed to connect to background page at %v: %v", bgURL, err)
 	}
