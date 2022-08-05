@@ -69,6 +69,24 @@
       "message": "could you close chrome on error?",
       "revId": "5dd87fd380b1f6bdd44b923f66c41ff293eed6bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0884e477_fbfdac52",
+        "filename": "src/chromiumos/tast/local/chrome/browser/browserfixt/browserfixt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-05T16:57:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "774be974_4ba5512a",
+      "revId": "5dd87fd380b1f6bdd44b923f66c41ff293eed6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
