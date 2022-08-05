@@ -281,3 +281,79 @@ func SetCheckboxState(ctx context.Context, tconn *chrome.TestConn, name string, 
 
 	return nil
 }
+
+// OpenAdvancedSettings opens the advanced settings dialog.
+func OpenAdvancedSettings(ctx context.Context, tconn *chrome.TestConn) error {
+	// Wait for the "Advanced Settings" button, make the button visible, then
+	// click the button until the advanced settings menu has opened. We will know
+	// the advanced settings menu has opened when the “Advanced settings for” text
+	// exists.
+	advancedSettingsButton := nodewith.Name("Advanced settings").Role(role.Button)
+	advancedSettingsTitle := nodewith.NameStartingWith("Advanced settings for").Role(role.StaticText)
+	ui := uiauto.New(tconn)
+	if err := uiauto.Combine("open advanced settings dialog",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(advancedSettingsButton),
+		ui.EnsureFocused(advancedSettingsButton),
+		ui.DoDefault(advancedSettingsButton),
+		ui.WithTimeout(10*time.Second).WaitUntilExists(advancedSettingsTitle),
+	)(ctx); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// SetAdvancedSetting sets an option in the advanced settings dialog. Expects
+// that OpenAdvancedSettings() has already been called.
+func SetAdvancedSetting(ctx context.Context, tconn *chrome.TestConn, name, value string) error {
+	ui := uiauto.New(tconn)
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return err
+	}
+
+	// The individual dropdown menus in the advanced settings dialog have no
+	// distinguishing attributes that the nodewith module can pick up on, so
+	// instead use the search feature to isolate the desired dropdown menu.
+	printPreviewDialog := nodewith.Name("Print").HasClass("RootView")
+	advancedSettingsDialog := nodewith.Role(role.Dialog).Ancestor(printPreviewDialog)
+	searchSettings := nodewith.Name("Search settings").Role(role.SearchBox).Ancestor(advancedSettingsDialog)
+	dropdown := nodewith.HasClass("md-select").Ancestor(advancedSettingsDialog)
+	clearButton := nodewith.Name("Clear search").Role(role.Button).Ancestor(advancedSettingsDialog)
+
+	if err := uiauto.Combine("find dropdown and select option",
+		// Type in the search box so that the desired setting's dropdown is the only
+		// one visible. This will fail if the setting's name is contained in another
+		// setting's name.
+		ui.WithTimeout(10*time.Second).WaitUntilExists(searchSettings),
+		ui.EnsureFocused(searchSettings),
+		kb.TypeAction(name),
+		// Open the dropdown menu and select the desired option.
+		setDropdownInternal(ui, dropdown, value),
+		// Clear the search text so that this function can be called again.
+		ui.WithTimeout(10*time.Second).WaitUntilExists(clearButton),
+		ui.DoDefault(clearButton),
+	)(ctx); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// CloseAdvancedSettings closes the advanced settings dialog. Expects that
+// OpenAdvancedSettings() has already been called.
+func CloseAdvancedSettings(ctx context.Context, tconn *chrome.TestConn) error {
+	ui := uiauto.New(tconn)
+	printPreviewDialog := nodewith.Name("Print").HasClass("RootView")
+	advancedSettingsDialog := nodewith.Role(role.Dialog).Ancestor(printPreviewDialog)
+	applyButton := nodewith.Name("Apply").Role(role.Button).Ancestor(advancedSettingsDialog)
+
+	if err := uiauto.Combine("apply advanced settings and close dialog",
+		ui.WithTimeout(10*time.Second).WaitUntilExists(applyButton),
+		ui.DoDefault(applyButton),
+	)(ctx); err != nil {
+		return err
+	}
+
+	return nil
+}
