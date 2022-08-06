@@ -52,8 +52,8 @@ var (
 	defaultOptions = map[TestType][]iperf.ConfigOption{
 		TestTypeTCPRx: {iperf.TestTimeOption(defaultTime)},
 		TestTypeTCPTx: {iperf.TestTimeOption(defaultTime)},
-		TestTypeUDPRx: {iperf.TestTimeOption(defaultTime), iperf.PortCountOption(1)},
-		TestTypeUDPTx: {iperf.TestTimeOption(defaultTime), iperf.PortCountOption(1)},
+		TestTypeUDPRx: {iperf.TestTimeOption(defaultTime), iperf.PortCountOption(1), iperf.FetchServerResultsOption(true)},
+		TestTypeUDPTx: {iperf.TestTimeOption(defaultTime), iperf.PortCountOption(1), iperf.FetchServerResultsOption(true)},
 	}
 )
 
