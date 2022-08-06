@@ -18,6 +18,7 @@ import (
 type CallboxServer struct {
 	client  *manager.CallboxManagerClient
 	callbox string
+	poller  *serverResultPoller
 }
 
 // NewCallboxServer creates a CallboxServer for the given callbox.
@@ -25,6 +26,7 @@ func NewCallboxServer(callbox string, client *manager.CallboxManagerClient) (*Ca
 	return &CallboxServer{
 		client:  client,
 		callbox: callbox,
+		poller:  newServerResultPoller(callbox, client),
 	}, nil
 }
 
@@ -50,6 +52,8 @@ func (c *CallboxServer) Start(ctx context.Context, cfg *iperf.Config) error {
 		return errors.Wrap(err, "failed to start Iperf server on the callbox")
 	}
 
+	c.poller.start(ctx, cfg)
+
 	return nil
 }
 
@@ -65,14 +69,32 @@ func (c *CallboxServer) Close(ctx context.Context) {
 
 // Stop terminates any Iperf servers running on the remote machine.
 func (c *CallboxServer) Stop(ctx context.Context) error {
-	ctx, cancel := context.WithTimeout(ctx, commandTimeoutMargin)
+	stopCtx, cancel := context.WithTimeout(ctx, commandTimeoutMargin)
 	defer cancel()
 
-	if err := c.client.StopIperf(ctx, &manager.StopIperfRequestBody{Callbox: c.callbox}); err != nil {
-		return errors.Wrap(err, "failed to stop Iperf on the callbox")
+	var allErrors error
+	if err := c.client.StopIperf(stopCtx, &manager.StopIperfRequestBody{Callbox: c.callbox}); err != nil {
+		allErrors = errors.Wrapf(allErrors, "failed to stop iperf on the callbox: %v", err) // NOLINT
+	}
+
+	stopCtx, cancel = context.WithTimeout(ctx, commandTimeoutMargin)
+	defer cancel()
+
+	if err := c.poller.stop(stopCtx); err != nil {
+		allErrors = errors.Wrapf(allErrors, "failed to stop iperf server results poller: %v", err) // NOLINT
 	}
 
 	return nil
+}
+
+// FetchResult fetches the most recently available result from the callbox server.
+func (c *CallboxServer) FetchResult(ctx context.Context, config *iperf.Config) (*iperf.Result, error) {
+	results, err := c.poller.fetchResult(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to fetch results from poller ")
+	}
+
+	return results, nil
 }
 
 func newServerRequest(c *CallboxServer, config *iperf.Config) *manager.ConfigureIperfRequestBody {

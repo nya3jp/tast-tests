@@ -10,9 +10,11 @@ import (
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/cmd"
 	"chromiumos/tast/ssh"
+	"chromiumos/tast/ssh/linuxssh"
 	"chromiumos/tast/testing"
 )
 
@@ -22,6 +24,8 @@ type Server interface {
 	Start(ctx context.Context, config *Config) error
 	// Stop terminates the Iperf server instance.
 	Stop(ctx context.Context) error
+	// FetchResult fetches the most recent result from the Iperf server.
+	FetchResult(ctx context.Context, config *Config) (*Result, error)
 }
 
 // RemoteServer represents a remote host to launch an iperf server on.
@@ -29,6 +33,8 @@ type RemoteServer struct {
 	conn         *ssh.Conn
 	iperfPath    string
 	minijailPath string
+	shPath       string
+	tempFilePath string
 	fw           *firewallHelper
 }
 
@@ -44,10 +50,22 @@ func NewRemoteServer(ctx context.Context, conn *ssh.Conn) (*RemoteServer, error)
 		return nil, errors.Wrap(err, "failed to find minijail0 on host")
 	}
 
+	shPath, err := cmd.FindCmdPath(ctx, conn, "sh")
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to find sh on host")
+	}
+
+	tempPath, err := conn.CommandContext(ctx, "mktemp", "/tmp/iperf_XXX").Output()
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to create temp file on host")
+	}
+
 	return &RemoteServer{
 		conn:         conn,
 		iperfPath:    iperfPath,
 		minijailPath: minijailPath,
+		shPath:       shPath,
+		tempFilePath: strings.TrimSpace(string(tempPath)),
 		fw:           newFirewallHelper(conn),
 	}, nil
 }
@@ -55,19 +73,24 @@ func NewRemoteServer(ctx context.Context, conn *ssh.Conn) (*RemoteServer, error)
 // Start launches a new Iperf server instance on the remote machine.
 func (c *RemoteServer) Start(ctx context.Context, config *Config) error {
 	args := getServerArguments(config)
-	args = append([]string{c.iperfPath}, args...)
-	iperfCommand := fmt.Sprintf("%s %s", c.minijailPath, strings.Join(args, " "))
+	iperfCommand := fmt.Sprintf("%s %s > %s", c.iperfPath, strings.Join(args, " "), c.tempFilePath)
 	testing.ContextLog(ctx, "Starting iperf server")
-	testing.ContextLogf(ctx, "iperf server invocation: %s", iperfCommand)
+	testing.ContextLogf(ctx, "iperf server invocation: %s %s -c %s", c.minijailPath, c.shPath, iperfCommand)
 
 	if err := c.fw.open(ctx, config); err != nil {
 		return errors.Wrap(err, "failed to configure server firewall")
 	}
 
-	output, err := c.conn.CommandContext(ctx, c.minijailPath, args...).CombinedOutput()
-	if err != nil {
-		return errors.Wrapf(err, "failed to run Iperf client: %s", string(output))
+	cmd := c.conn.CommandContext(ctx, c.minijailPath, c.shPath, "-c", iperfCommand)
+	if err := cmd.Start(); err != nil {
+		return errors.Wrap(err, "failed to start Iperf server")
 	}
+
+	go func() {
+		if err := cmd.Wait(testexec.DumpLogOnError); err != nil {
+			testing.ContextLog(ctx, "Iperf server stopped unexpectedly: ", err)
+		}
+	}()
 
 	return nil
 }
@@ -76,6 +99,10 @@ func (c *RemoteServer) Start(ctx context.Context, config *Config) error {
 func (c *RemoteServer) Close(ctx context.Context) {
 	if err := c.Stop(ctx); err != nil {
 		testing.ContextLog(ctx, "Failed to stop Iperf, err: ", err)
+	}
+
+	if err := c.conn.CommandContext(ctx, "rm", c.tempFilePath); err != nil {
+		testing.ContextLog(ctx, "Failed to remove Iperf temp file on server host, err: ", err)
 	}
 }
 
@@ -96,13 +123,32 @@ func (c *RemoteServer) Stop(ctx context.Context) error {
 	return allErrors
 }
 
+// FetchResult fetches the most recent Iperf results from the remote machine.
+func (c *RemoteServer) FetchResult(ctx context.Context, config *Config) (*Result, error) {
+	ctx, cancel := context.WithTimeout(ctx, commandTimeoutMargin)
+	defer cancel()
+
+	content, err := linuxssh.ReadFile(ctx, c.conn, c.tempFilePath)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to fetch server output")
+	}
+
+	result, err := newResultFromOutput(ctx, string(content), config)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to parse server output")
+	}
+
+	return result, nil
+}
+
 func getServerArguments(config *Config) []string {
 	res := []string{
 		"-s",
+		"-x", "C",
+		"-y", "c",
 		"-B", config.ServerIP,
 		"-p", strconv.Itoa(config.Port),
 		"-w", strconv.Itoa(int(config.WindowSize)),
-		"-D",
 	}
 
 	if config.Protocol == ProtocolUDP {
