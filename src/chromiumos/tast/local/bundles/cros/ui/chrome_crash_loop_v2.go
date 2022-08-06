@@ -16,6 +16,7 @@ import (
 	"chromiumos/tast/local/crash"
 	"chromiumos/tast/local/debugd"
 	"chromiumos/tast/local/session"
+	"chromiumos/tast/local/upstart"
 	"chromiumos/tast/testing"
 )
 
@@ -33,7 +34,7 @@ func init() {
 		Contacts:     []string{"iby@chromium.org", "cros-telemetry@google.com"},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome", "memfd_create"},
-		Timeout:      2 * time.Minute,
+		Timeout:      2*time.Minute + 2*upstart.UIRestartTimeout,
 		Params: []testing.Param{{
 			Name: "breakpad",
 			Val: chromeCrashLoopV2Params{
@@ -92,9 +93,16 @@ func ChromeCrashLoopV2(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not stat ", chromecrash.TestModeSuccessfulFile, ": ", err)
 	}
 
-	// Give enough time for the debugd test mode switch back & other cleanup.
+	// Make sure debugd is running before we try to connect to it (in case some
+	// other test killed it).
+	if err := upstart.EnsureJobRunning(ctx, "debugd"); err != nil {
+		s.Fatal("Failed to ensure debugd was running: ", err)
+	}
+
+	// Give enough time for the debugd test mode switch back, the ui restart, &
+	// other cleanup.
 	cleanupCtx := ctx
-	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second+upstart.UIRestartTimeout)
 	defer cancel()
 
 	d, err := debugd.New(ctx)
@@ -136,20 +144,27 @@ func ChromeCrashLoopV2(ctx context.Context, s *testing.State) {
 	// crashes (until the too-many-restarts count is reached, and session_manager
 	// logs out and exits). However, after the call to EnableChromeTesting(), it
 	// will always restart it with with testing flag, so Chrome will always just
-	// crash again. Once the too-many-restarts count is reached, session_manager
-	// will exit and forget about the testing flags, so we don't need to do
-	// anything to undo the EnableChromeTesting call.
+	// crash again.
 	testing.ContextLog(ctx, "Switching Chrome to crash loop & waiting for test-success file")
 	extraArgs = append(extraArgs, "--crash-test")
 	if _, err := sm.EnableChromeTesting(ctx, true, extraArgs, []string{}); err != nil {
 		s.Fatal("Start-crash-looping-Chrome call failed: ", err)
 	}
+
+	// Session manager should exit once Chrome has crashed enough times. However,
+	// session manager may still be in the process of shutting down when the
+	// testing.Poll loop exits. Avoid messing up other tests by resetting
+	// session_manager.
+	defer upstart.RestartJob(cleanupCtx, "ui")
+
 	if err := testing.Poll(ctx, func(c context.Context) error {
 		_, err := os.Stat(chromecrash.TestModeSuccessfulFile)
 		return err
 	}, nil); err != nil {
 		s.Error("Test-successful file not found: ", err)
 	}
+
+	testing.ContextLog(ctx, "Success, cleaning up")
 
 	// Clean up success file at the end.
 	os.Remove(chromecrash.TestModeSuccessfulFile)
