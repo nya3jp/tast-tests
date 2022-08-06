@@ -59,15 +59,16 @@ const (
 
 // Config represents the configuration options for an iperf run.
 type Config struct {
-	Protocol      Protocol
-	Bidirectional bool
-	TestTime      time.Duration
-	MaxBandwidth  BitRate
-	WindowSize    ByteSize
-	Port          int
-	PortCount     int
-	ClientIP      string
-	ServerIP      string
+	Protocol           Protocol
+	Bidirectional      bool
+	TestTime           time.Duration
+	MaxBandwidth       BitRate
+	WindowSize         ByteSize
+	Port               int
+	PortCount          int
+	ClientIP           string
+	ServerIP           string
+	FetchServerResults bool
 }
 
 // ConfigOption represents a configuration option to be used in an Iperf run.
@@ -95,6 +96,14 @@ func NewConfig(protocol Protocol, clientIP, serverIP string, opts ...ConfigOptio
 	}
 
 	return res, nil
+}
+
+// FetchServerResultsOption sets if the test should fetch the iperf results from the server rather than the client.
+func FetchServerResultsOption(useServerResults bool) ConfigOption {
+	return func(config *Config) error {
+		config.FetchServerResults = useServerResults
+		return nil
+	}
 }
 
 // BidirectionalOption sets if the test should be bidirectional.
