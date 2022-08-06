@@ -21,7 +21,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Finalize,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test finalize process in factory toolkit",
 		Contacts:     []string{"menghuan@chromium.org", "chromeos-factory-eng@google.com"},
 		SoftwareDeps: append([]string{"reboot", "factory_flow"}, fixture.EnsureToolkitSoftwareDeps...),

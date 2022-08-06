@@ -17,7 +17,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         Toolkit,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Test if toolkit is running",
 		Contacts:     []string{"lschyi@google.com", "chromeos-factory-eng@google.com"},
 		Attr:         []string{"group:mainline", "informational"},
