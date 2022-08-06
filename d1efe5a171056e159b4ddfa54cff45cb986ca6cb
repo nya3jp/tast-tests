@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6640a2d_b9267f90",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2968,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-06T00:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb1cee7b_70add1c0",
+      "revId": "d1efe5a171056e159b4ddfa54cff45cb986ca6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fb3a94e_7d4ac5c2",
@@ -224,6 +242,24 @@
       "side": 1,
       "message": "Maybe we should keep this format so that others does not run into this everytime this file got changed.",
       "parentUuid": "510321cd_7ff6287d",
+      "revId": "d1efe5a171056e159b4ddfa54cff45cb986ca6cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adb20799_5d557681",
+        "filename": "src/chromiumos/tast/remote/wificell/test_fixture.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-06T00:42:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de7ec53f_1f4fd368",
       "revId": "d1efe5a171056e159b4ddfa54cff45cb986ca6cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
