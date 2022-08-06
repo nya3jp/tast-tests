@@ -9,10 +9,20 @@ import (
 	"fmt"
 	"strconv"
 
-	"chromiumos/tast/errors"
-	"chromiumos/tast/remote/network/cmd"
-	"chromiumos/tast/ssh"
+	"chromiumos/tast/common/network/cmd"
 )
+
+// Runner contains methods rely on running "iptables" command.
+type Runner struct {
+	cmd cmd.Runner
+}
+
+// NewRunner creates an ip command utility runner.
+func NewRunner(cmd cmd.Runner) *Runner {
+	return &Runner{
+		cmd: cmd,
+	}
+}
 
 // L4Proto is an enum type describing layer 4 protocol to filter.
 type L4Proto string
@@ -61,18 +71,13 @@ const (
 type RuleOption func(*[]string)
 
 // ExecuteCommand Adds/deletes an iptables rule.
-func ExecuteCommand(ctx context.Context, conn *ssh.Conn, ruleOpt ...RuleOption) error {
-	iptablesPath, err := cmd.FindCmdPath(ctx, conn, "iptables")
-	if err != nil {
-		return errors.Wrap(err, "failed to find command iptables")
-	}
-
+func (r *Runner) ExecuteCommand(ctx context.Context, ruleOpt ...RuleOption) error {
 	var commandArgs []string
 	for _, opt := range ruleOpt {
 		opt(&commandArgs)
 	}
 
-	return conn.CommandContext(ctx, iptablesPath, commandArgs...).Run()
+	return r.cmd.Run(ctx, "iptables", commandArgs...)
 }
 
 // OptionAppendRule appends a new rule to a given chain.
