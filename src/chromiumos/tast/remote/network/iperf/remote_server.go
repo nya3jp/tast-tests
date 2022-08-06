@@ -5,11 +5,13 @@
 package iperf
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"strconv"
 	"strings"
 
+	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/cmd"
 	"chromiumos/tast/ssh"
@@ -22,6 +24,8 @@ type Server interface {
 	Start(ctx context.Context, config *Config) error
 	// Stop terminates the Iperf server instance.
 	Stop(ctx context.Context) error
+	// FetchResult fetches the most recent result from the Iperf server after a run has been completed.
+	FetchResult(ctx context.Context, config *Config) (*Result, error)
 }
 
 // RemoteServer represents a remote host to launch an iperf server on.
@@ -30,6 +34,7 @@ type RemoteServer struct {
 	iperfPath    string
 	minijailPath string
 	fw           *firewallHelper
+	stdout       *bytes.Buffer
 }
 
 // NewRemoteServer creates an SSHServerHost from an existing ssh connection.
@@ -64,10 +69,21 @@ func (c *RemoteServer) Start(ctx context.Context, config *Config) error {
 		return errors.Wrap(err, "failed to configure server firewall")
 	}
 
-	output, err := c.conn.CommandContext(ctx, c.minijailPath, args...).CombinedOutput()
-	if err != nil {
-		return errors.Wrapf(err, "failed to run Iperf client: %s", string(output))
+	cmd := c.conn.CommandContext(ctx, c.minijailPath, args...)
+	c.stdout = new(bytes.Buffer)
+	cmd.Stdout = c.stdout
+
+	stderr := new(bytes.Buffer)
+	cmd.Stderr = stderr
+	if err := cmd.Start(); err != nil {
+		return errors.Wrap(err, "failed to start Iperf server")
 	}
+
+	go func() {
+		if err := cmd.Wait(testexec.DumpLogOnError); err != nil {
+			testing.ContextLogf(ctx, "Iperf server stopped unexpectedly %v: %q", err, stderr.String())
+		}
+	}()
 
 	return nil
 }
@@ -96,13 +112,31 @@ func (c *RemoteServer) Stop(ctx context.Context) error {
 	return allErrors
 }
 
+// FetchResult fetches the most recent Iperf results from the remote machine.
+func (c *RemoteServer) FetchResult(ctx context.Context, config *Config) (*Result, error) {
+	ctx, cancel := context.WithTimeout(ctx, commandTimeoutMargin)
+	defer cancel()
+
+	if c.stdout == nil {
+		return nil, errors.New("failed to fetch results, no server sessions found")
+	}
+
+	result, err := newResultFromOutput(ctx, c.stdout.String(), config)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to parse server output")
+	}
+
+	return result, nil
+}
+
 func getServerArguments(config *Config) []string {
 	res := []string{
 		"-s",
+		"-x", "C",
+		"-y", "c",
 		"-B", config.ServerIP,
 		"-p", strconv.Itoa(config.Port),
 		"-w", strconv.Itoa(int(config.WindowSize)),
-		"-D",
 	}
 
 	if config.Protocol == ProtocolUDP {
