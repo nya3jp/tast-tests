@@ -62,5 +62,12 @@ func (r *Runner) runSingle(ctx context.Context) (*Result, error) {
 		return nil, errors.Wrap(err, "failed to run Iperf client")
 	}
 
+	if r.config.FetchServerResults {
+		result, err = r.server.FetchResult(ctx, r.config)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed to fetch results from Iperf server")
+		}
+	}
+
 	return result, nil
 }
