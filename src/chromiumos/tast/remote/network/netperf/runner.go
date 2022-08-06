@@ -11,9 +11,10 @@ import (
 	"strings"
 	"time"
 
+	"chromiumos/tast/common/network/firewall"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/remote/network/cmd"
-	"chromiumos/tast/remote/network/firewall"
+	remote_firewall "chromiumos/tast/remote/network/firewall"
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
@@ -118,7 +119,8 @@ func (r *runner) stopNetserver(ctx context.Context) []error {
 	for _, fw := range firewallParams {
 		args := []firewall.RuleOption{firewall.OptionDeleteRule(firewall.InputChain)}
 		args = append(args, fw...)
-		err = firewall.ExecuteCommand(ctx, r.server.conn, args...)
+		firewallRunner := remote_firewall.NewRemoteRunner(r.server.conn)
+		err = firewallRunner.ExecuteCommand(ctx, args...)
 		collectError(ctx, &errors, err)
 	}
 	return errors
@@ -141,7 +143,8 @@ func (r *runner) startNetserver(ctx context.Context) error {
 	for _, fw := range firewallParams {
 		args := []firewall.RuleOption{firewall.OptionAppendRule(firewall.InputChain)}
 		args = append(args, fw...)
-		if err := firewall.ExecuteCommand(ctx, r.server.conn, args...); err != nil {
+		firewallRunner := remote_firewall.NewRemoteRunner(r.server.conn)
+		if err := firewallRunner.ExecuteCommand(ctx, args...); err != nil {
 			r.stopNetserver(ctx)
 			return errors.Wrap(err, "failed to reconfigure firewall")
 		}
