@@ -221,11 +221,11 @@ func startChrome(ctx context.Context, res *proxyRetainResource, isNoLogin, isKee
 // The Quick Settings can launch the current network setup page directly,
 // without knowing which wifi and / or ethernet is currently connecting, therefore, the OS Settings wasn't used.
 func launchProxySection(ctx context.Context, res *proxyRetainResource) (retErr error) {
-	if err := quicksettings.NavigateToNetworkDetailedView(ctx, res.tconn); err != nil {
+	if err := quicksettings.NavigateToNetworkDetailedView(ctx, res.tconn, false); err != nil {
 		return errors.Wrap(err, "failed to navigate to network detailed view")
 	}
 
-	if err := quicksettings.OpenNetworkSettings(ctx, res.tconn); err != nil {
+	if err := quicksettings.OpenNetworkSettings(ctx, res.tconn, false); err != nil {
 		return errors.Wrap(err, "failed to open network settings")
 	}
 	return nil
