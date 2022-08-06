@@ -103,6 +103,20 @@ func (wifi *WifiManager) Interface(ctx context.Context) (string, error) {
 	return ifaces[0], nil
 }
 
+// CheckWifiState checks that the current state of WiFi is the same as |status|.
+func (wifi *WifiManager) CheckWifiState(ctx context.Context, status bool) error {
+	exp, err := wifi.m.IsEnabled(ctx, TechnologyWifi)
+
+	if err != nil {
+		return errors.Wrap(err, "failed to check WiFi status")
+	}
+	if status != exp {
+		return errors.Errorf("failed to verify WiFi status, got %t, want %t", status, exp)
+	}
+
+	return nil
+}
+
 // Enable enables or disables the WiFi network according to the given enable flag.
 func (wifi *WifiManager) Enable(ctx context.Context, enable bool) error {
 	enabled, err := wifi.m.IsEnabled(ctx, TechnologyWifi)
