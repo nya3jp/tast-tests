@@ -22,6 +22,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"google.golang.org/grpc"
 
+	"chromiumos/tast/common/network/firewall"
 	"chromiumos/tast/common/network/ping"
 	"chromiumos/tast/common/network/protoutil"
 	"chromiumos/tast/common/shillconst"
@@ -29,7 +30,10 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/network"
+	"chromiumos/tast/local/network/cmd"
+	local_firewall "chromiumos/tast/local/network/firewall"
 	network_iface "chromiumos/tast/local/network/iface"
+	"chromiumos/tast/local/network/ip"
 	local_ping "chromiumos/tast/local/network/ping"
 	localwpacli "chromiumos/tast/local/network/wpacli"
 	"chromiumos/tast/local/power"
@@ -56,6 +60,15 @@ func init() {
 
 // wifiTestProfileName is the profile we create and use for WiFi tests.
 const wifiTestProfileName = "test"
+const softAPIPAddress string = "192.168.50.1"
+const dhcpPort = 67
+
+// dhcpFirewallParams is a set of parameters needed for unblocking DHCP traffic.
+var dhcpFirewallParams = []firewall.RuleOption{
+	firewall.OptionProto(firewall.L4ProtoUDP),
+	firewall.OptionDPort(dhcpPort),
+	firewall.OptionJumpTarget(firewall.TargetAccept),
+}
 
 // ShillService implements tast.cros.wifi.Shill gRPC service.
 type ShillService struct {
@@ -2885,4 +2898,124 @@ func (s *ShillService) WatchDarkResume(_ *empty.Empty, sender wifi.ShillService_
 			return errors.Errorf("unexpected signal name: %s", signalName)
 		}
 	}
+}
+
+// StartTethering attempts to start a tethering session.
+// This is the implementation of wifi.ShillService/StartTethering gRPC.
+func (s *ShillService) StartTethering(ctx context.Context, request *wifi.TetheringRequest) (*wifi.TetheringResponse, error) {
+	ctx, cancel := reserveForReturn(ctx)
+	defer cancel()
+
+	ctx, st := timing.Start(ctx, "wifi_service.StartTethering")
+	defer st.End()
+	testing.ContextLog(ctx, "Attempting to start tethering with config: ", request)
+
+	// TODO(b/235758932): Change to use Shill dbus call instead of wpa_supplicant when tethering support in Shill is ready.
+	channel, err := s.startSoftAP(ctx, request)
+	if err != nil {
+		localwpacli.NewLocalRunner().StopSoftAP(ctx)
+		return nil, errors.Wrap(err, "failed to start SoftAP")
+	}
+
+	if err := s.startDHCPServer(ctx); err != nil {
+		localwpacli.NewLocalRunner().StopSoftAP(ctx)
+		s.stopDHCPServer(ctx)
+		return nil, errors.Wrap(err, "failed to start DHCP server")
+	}
+
+	return &wifi.TetheringResponse{DownlinkTech: "WiFi", Channel: channel}, nil
+}
+
+// StopTethering attempts to stop the tethering session.
+// This is the implementation of wifi.ShillService/StopTethering gRPC.
+func (s *ShillService) StopTethering(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
+	ctx, cancel := reserveForReturn(ctx)
+	defer cancel()
+
+	ctx, st := timing.Start(ctx, "wifi_service.StopTethering")
+	defer st.End()
+	testing.ContextLog(ctx, "Attempting to stop the tethering session")
+
+	// TODO(b/235758932): Change to use Shill dbus call instead of wpa_supplicant when tethering support in Shill is ready.
+	if err := localwpacli.NewLocalRunner().StopSoftAP(ctx); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to stop soft AP in wpa_supplicant")
+	}
+
+	if err := s.stopDHCPServer(ctx); err != nil {
+		return &empty.Empty{}, errors.Wrap(err, "failed to stop DHCP server")
+	}
+
+	return &empty.Empty{}, nil
+}
+
+func (s *ShillService) startSoftAP(ctx context.Context, request *wifi.TetheringRequest) (uint32, error) {
+	var freq uint32 = 2437
+	var channel uint32 = 6
+	if request.Band == "5GHz" {
+		freq = 5180
+		channel = 36
+	}
+
+	key_mgmt := "NONE"
+	if request.Security == shillconst.SoftAPSecurityWPA2 {
+		key_mgmt = "WPA-PSK"
+	} else if request.Security == shillconst.SoftAPSecurityWPA3 {
+		key_mgmt = "SAE"
+	} else if request.Security == shillconst.SoftAPSecurityWPA2WPA3 {
+		key_mgmt = "WPA-PSK SAE"
+	}
+
+	if err := localwpacli.NewLocalRunner().StartSoftAP(ctx, freq, string(request.Ssid), key_mgmt, string(request.Psk)); err != nil {
+		return 0, errors.Wrap(err, "failed to start soft AP in wpa_supplicant")
+	}
+
+	return channel, nil
+}
+
+func (s *ShillService) startDHCPServer(ctx context.Context) error {
+	r := &cmd.LocalCmdRunner{}
+
+	_ = r.Run(ctx, "killall", "dnsmasq")
+
+	ipr := ip.NewLocalRunner()
+	if err := ipr.AddIP(ctx, "wlan0", net.ParseIP(softAPIPAddress), 24); err != nil {
+		return errors.Wrap(err, "failed to assign IPv4 address on wlan0")
+	}
+
+	firewallRunner := local_firewall.NewLocalRunner()
+	args := []firewall.RuleOption{firewall.OptionAppendRule(firewall.InputChain)}
+	args = append(args, dhcpFirewallParams...)
+	if err := firewallRunner.ExecuteCommand(ctx, args...); err != nil {
+		//if err := r.Run(ctx, "iptables", "-I", "INPUT", "-p", "udp", "-i", "wlan0", "--dport", "67", "-j", "ACCEPT"); err != nil {
+		return errors.Wrap(err, "failed to set DHCP iptable rule on wlan0")
+	}
+
+	if err := r.Run(ctx, "dnsmasq", "--interface=wlan0", "--port=0", "--dhcp-range=192.168.50.100,192.168.50.150,255.255.255.0,6h", "--dhcp-option=3,192.168.50.1"); err != nil {
+		return errors.Wrap(err, "failed to start dnsmasq on wlan0")
+	}
+
+	return nil
+}
+
+func (s *ShillService) stopDHCPServer(ctx context.Context) error {
+	r := &cmd.LocalCmdRunner{}
+
+	if err := r.Run(ctx, "killall", "dnsmasq"); err != nil {
+		return errors.Wrap(err, "failed to kill dnsmasq")
+	}
+
+	firewallRunner := local_firewall.NewLocalRunner()
+	args := []firewall.RuleOption{firewall.OptionDeleteRule(firewall.InputChain)}
+	args = append(args, dhcpFirewallParams...)
+	if err := firewallRunner.ExecuteCommand(ctx, args...); err != nil {
+		//if err := r.Run(ctx, "iptables", "-D", "INPUT", "-p", "udp", "-i", "wlan0", "--dport", "67", "-j", "ACCEPT"); err != nil {
+		return errors.Wrap(err, "failed to delete DHCP iptable rule on wlan0")
+	}
+
+	ipr := ip.NewLocalRunner()
+	if err := ipr.DeleteIP(ctx, "wlan0", net.ParseIP(softAPIPAddress), 24); err != nil {
+		return errors.Wrap(err, "failed to delete IPv4 address on wlan0")
+	}
+
+	return nil
 }
