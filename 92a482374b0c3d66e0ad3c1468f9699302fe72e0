@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b52d7b50_7b747364",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-06T00:41:31Z",
+      "side": 1,
+      "message": "I just took a quick scan. \n\nI will spend more time to review this CL next week.\n\nPlease address my current comments first.\n\nThanks.\n",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0e38c81_3b2dce6f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-06T00:41:31Z",
+      "side": 1,
+      "message": "```\nif cr, err :\u003d chrome.New(ctx, chromeOpts...); err !\u003d nil {\n    ...\n}\n```",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2fc884d_8a80e49d",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-06T00:41:31Z",
+      "side": 1,
+      "message": "In general, it is not recommended to have any logic in the init() of tast tests, services, and fixtures.",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a628854c_db9f7b2c",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-06T00:41:31Z",
+      "side": 1,
+      "message": "Why do you need to check?  setUpBTPeers and resetBTPeers should be able to handle  tf.features.BTPeerCount  \u003d\u003d 0, right?",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc689dde_b96bfc5c",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-06T00:41:31Z",
+      "side": 1,
+      "message": "```\nif_, err :\u003d tf.fv.BTS.EnableBluetoothAdapter(ctx, \u0026emptypb.Empty{}); err !\u003d nil {\n   ...\n}\n```",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55ca8082_e78d33ef",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-06T00:41:31Z",
+      "side": 1,
+      "message": "Should we continue to reset even if we get an error?",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9984756_7f8d462f",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-06T00:41:31Z",
+      "side": 1,
+      "message": "Should we continue to clean up even if we get an error?",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec0e2be_7a3ad552",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-06T00:41:31Z",
+      "side": 1,
+      "message": "How about :2222 and 127.0.0.1:2222?",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "662f513f_59313a7d",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-06T00:41:31Z",
+      "side": 1,
+      "message": "Can we guarantee 2201-N always available for use to use?",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28835107_403c541d",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-06T00:41:31Z",
+      "side": 1,
+      "message": "Should we reset the rest of the peers even if we encounter errors in the first one?",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fa68329_331885d9",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/test_connect_to_btpeers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-06T00:41:31Z",
+      "side": 1,
+      "message": "Do not need \"else\"? just \"if !success\"",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
