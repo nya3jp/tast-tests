@@ -34,6 +34,161 @@
       "parentUuid": "f49fd80f_7dfb1143",
       "revId": "06b22d8b923e5eb4d4c515dabd7ea7e282caea48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74fe7a26_a78f1585",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-07T23:25:26Z",
+      "side": 1,
+      "message": "Do you have plan to add more data in future? Otherwise it is no need to create this struct. You can simply set Val: true",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 1
+      },
+      "revId": "06b22d8b923e5eb4d4c515dabd7ea7e282caea48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f130e811_d7723264",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-07T23:25:26Z",
+      "side": 1,
+      "message": "Please do not omit error info from the log.",
+      "range": {
+        "startLine": 85,
+        "startChar": 36,
+        "endLine": 85,
+        "endChar": 42
+      },
+      "revId": "06b22d8b923e5eb4d4c515dabd7ea7e282caea48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b10ff36b_016f0dee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-07T23:25:26Z",
+      "side": 1,
+      "message": "This step sounds very fragile. I would suggest to add a follow up check to make sure the UI is selected / unselected as expected. I assume it is identical in A11y tree.",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "06b22d8b923e5eb4d4c515dabd7ea7e282caea48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d81bcc95_1abdf16f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-07T23:25:26Z",
+      "side": 1,
+      "message": "These two steps can be combined to save a couple of lines.\n\nif err :\u003d uiauto.Combine(\"text\", \n    ui.DoDefault(sendButton),\n    ui.WaitUntilExists(confirmationPageTitle),\n)(ctx) err !\u003d nil{\n}",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 2
+      },
+      "revId": "06b22d8b923e5eb4d4c515dabd7ea7e282caea48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f47e551d_d86fe076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-07T23:25:26Z",
+      "side": 1,
+      "message": "Hard sleep is never encouraged. Please use a polling to wait for file exists.",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 32
+      },
+      "revId": "06b22d8b923e5eb4d4c515dabd7ea7e282caea48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1800dec_01d05835",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-07T23:25:26Z",
+      "side": 1,
+      "message": "nit: Unexpected",
+      "range": {
+        "startLine": 165,
+        "startChar": 13,
+        "endLine": 165,
+        "endChar": 22
+      },
+      "revId": "06b22d8b923e5eb4d4c515dabd7ea7e282caea48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b194305_54541238",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-07T23:25:26Z",
+      "side": 1,
+      "message": "nit: remove empty line.",
+      "revId": "06b22d8b923e5eb4d4c515dabd7ea7e282caea48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
