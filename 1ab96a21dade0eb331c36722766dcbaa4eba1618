@@ -241,6 +241,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a4ce0a9_ede5b633",
+        "filename": "src/chromiumos/tast/common/network/wpacli/runner.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-07T22:16:06Z",
+      "side": 1,
+      "message": "It still need some refactor work before the local package can use `wpa_monitor` and it would digress from this CL and should be addressed in another CL later.\n\nFor example, `wpa_monitor` still [requires a SSH connection](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/network/wpacli/wpa_monitor.go;l\u003d223?q\u003dwpa_monitor\u0026ss\u003dchromiumos)\n\nA refactor is needed to combine the `CommandContext` in [testexec.go](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/testexec/testexec.go;l\u003d98?q\u003dtestexec.go\u0026ss\u003dchromiumos) and [exec_ctx.go](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast/src/chromiumos/tast/ssh/exec_ctx.go;l\u003d110?q\u003dexec_ctx.go\u0026ss\u003dchromiumos). Then use the returned Cmd as parameter to be used in [wpa_monitor](https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/common/network/wpacli/wpa_monitor.go;l\u003d223?q\u003dwpa_monitor\u0026ss\u003dchromiumos)\n\nThis refactor is a non-trivial effort. I will not address this with this CL. How do you think?",
+      "parentUuid": "16672641_6c4fde0c",
+      "revId": "1ab96a21dade0eb331c36722766dcbaa4eba1618",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "748e4ed7_906242bb",
