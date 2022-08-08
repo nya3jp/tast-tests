@@ -93,6 +93,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "74dfcccd_8b1a4c52",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-08T11:17:42Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "aba9f856_a81fddd1",
+      "range": {
+        "startLine": 75,
+        "startChar": 33,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a04568ae_2ebe212a",
@@ -116,6 +140,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a788ae57_d0d54185",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-08T11:17:42Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "a04568ae_2ebe212a",
+      "range": {
+        "startLine": 88,
+        "startChar": 49,
+        "endLine": 88,
+        "endChar": 66
+      },
+      "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e36c9cc3_9b4fe1aa",
@@ -129,6 +177,30 @@
       "writtenOn": "2022-08-04T14:48:07Z",
       "side": 1,
       "message": "Can we change this to \"Creating user pod by signing in and out\" to match more exactly what it\u0027s doing (IIUC) ?",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 27
+      },
+      "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "656155b6_9e2413bb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-08T11:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e36c9cc3_9b4fe1aa",
       "range": {
         "startLine": 116,
         "startChar": 0,
@@ -164,6 +236,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "744ffd05_83fed3c3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-08T11:17:42Z",
+      "side": 1,
+      "message": "Yes it is intended, sorry for the confusion, the `signIn` in PS#1 won\u0027t always do login since the `chrome.NoLogin()` is part of the configuration.\n\nThe function was renamed as `startChrome` and the docs were updated as well, hopefully it makes more sense now.",
+      "parentUuid": "05344732_6f1abe39",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7bf43f04_a4d983c7",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go",
         "patchSetId": 1
@@ -175,6 +271,30 @@
       "writtenOn": "2022-08-04T14:48:07Z",
       "side": 1,
       "message": "Instead of switch-casing on param.test.(type), can we add another field to the test case definition (e.g. another function)? It\u0027s a bit hacky for the test body to have to know which test variants exist and treat them differently.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 0
+      },
+      "revId": "260371c1c244a5d4e9cc189116daaf81372f0d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80557b10_0fc0c9a6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/proxy_retain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1477974
+      },
+      "writtenOn": "2022-08-08T11:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bf43f04_a4d983c7",
       "range": {
         "startLine": 136,
         "startChar": 0,
