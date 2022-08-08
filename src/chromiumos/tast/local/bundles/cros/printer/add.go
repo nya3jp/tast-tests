@@ -100,7 +100,6 @@ func init() {
 					Options:      []string{"media-source=by-pass-tray"},
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_media_source_bypass_golden.ps"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "media_source_bottom",
 				Val: &ippprint.Params{
@@ -110,7 +109,6 @@ func init() {
 					Options:      []string{"media-source=bottom"},
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_media_source_bottom_golden.ps"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "oki_tray4",
 				Val: &ippprint.Params{
@@ -120,7 +118,6 @@ func init() {
 					Options:      []string{"media-source=tray-4"},
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_oki.ppd.gz", "printer_add_oki_tray4_golden.ps"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "dymo_lw",
 				Val: &ippprint.Params{
@@ -187,7 +184,6 @@ func init() {
 					ExpectedFile: "printer_add_hp_printer_ljcolor_out.pcl",
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_hp_ljcolor.ppd.gz", "printer_add_hp_printer_ljcolor_out.pcl"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "hp_pwg_raster_color",
 				Val: &ippprint.Params{
@@ -213,7 +209,6 @@ func init() {
 					ExpectedFile: "printer_add_nec_golden.bin",
 				},
 				ExtraData: []string{"to_print.pdf", "printer_nec_npdl.ppd", "printer_add_nec_golden.bin"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "star",
 				Val: &ippprint.Params{
@@ -230,7 +225,6 @@ func init() {
 					ExpectedFile: "printer_add_star_printer_rastertostarm.bin",
 				},
 				ExtraData: []string{"to_print.pdf", "printer_add_star_printer_rastertostarm.ppd.gz", "printer_add_star_printer_rastertostarm.bin"},
-				ExtraAttr: []string{"informational"},
 			}, {
 				Name: "star_lm",
 				Val: &ippprint.Params{

@@ -27,22 +27,10 @@ func test(name, ppdFile, expectedFile string, options ...string) base {
 	return base{PrintFile: "to_print.pdf", Name: name, PPDFile: ppdFile, ExpectedFile: expectedFile, Options: options}
 }
 
-// iTest adds informational parametrized tests (one proxy, one regular)
-// that use "to_print.pdf" for printing.
-func iTest(name, ppdFile, expectedFile string, options ...string) base {
-	return base{ExtraAttr: []string{"informational"}, PrintFile: "to_print.pdf", Name: name, PPDFile: ppdFile, ExpectedFile: expectedFile, Options: options}
-}
-
 // test2 adds non-informational parametrized tests (one proxy, one regular)
 // that use "2page.pdf" for printing.
 func test2(name, ppdFile, expectedFile string, options ...string) base {
 	return base{PrintFile: "2page.pdf", Name: name, PPDFile: ppdFile, ExpectedFile: expectedFile, Options: options}
-}
-
-// iTest2 adds informational parametrized tests (one proxy, one regular)
-// that use "2page.pdf" for printing.
-func iTest2(name, ppdFile, expectedFile string, options ...string) base {
-	return base{ExtraAttr: []string{"informational"}, PrintFile: "2page.pdf", Name: name, PPDFile: ppdFile, ExpectedFile: expectedFile, Options: options}
 }
 
 func TestAddParams(t *testing.T) {
@@ -73,11 +61,11 @@ func TestAddParams(t *testing.T) {
 		test("lexmark_2400x600dpi", "printer_Lexmark.ppd", "printer_resolution_lexmark_2400x600dpi_golden.ps", ippprint.WithResolution("2400x600dpi")),
 
 		// Verify common media-source values by-pass-tray (Multipurpose) and bottom (Lower).
-		iTest("media_source_by_pass_tray", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_media_source_bypass_golden.ps", "media-source=by-pass-tray"),
-		iTest("media_source_bottom", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_media_source_bottom_golden.ps", "media-source=bottom"),
+		test("media_source_by_pass_tray", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_media_source_bypass_golden.ps", "media-source=by-pass-tray"),
+		test("media_source_bottom", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_media_source_bottom_golden.ps", "media-source=bottom"),
 
 		// Verify that the OKI PPD with Tray4 is handled correctly.
-		iTest("oki_tray4", "printer_add_oki.ppd.gz", "printer_add_oki_tray4_golden.ps", "media-source=tray-4"),
+		test("oki_tray4", "printer_add_oki.ppd.gz", "printer_add_oki_tray4_golden.ps", "media-source=tray-4"),
 
 		// Add
 		test("dymo_lw", "printer_add_dymo_printer_lw450.ppd", "printer_add_dymo_lw_printer_golden.bin"),
@@ -87,12 +75,12 @@ func TestAddParams(t *testing.T) {
 		test("epson_monochrome", "printer_EpsonGenericColorModel.ppd", "printer_add_epson_printer_monochrome_golden.bin", "print-color-mode=monochrome"),
 		test("generic", "printer_add_generic_printer_GenericPostScript.ppd.gz", "printer_add_generic_printer_golden.ps"),
 		test("hp_pclm", "printer_add_hp_printer_pclm.ppd.gz", "printer_add_hp_printer_pclm_out.pclm"),
-		iTest("hp_ljcolor", "printer_add_hp_ljcolor.ppd.gz", "printer_add_hp_printer_ljcolor_out.pcl"),
+		test("hp_ljcolor", "printer_add_hp_ljcolor.ppd.gz", "printer_add_hp_printer_ljcolor_out.pcl"),
 		test("hp_pwg_raster_color", "hp_ipp_everywhere.ppd", "printer_add_hp_ipp_everywhere_golden.pwg"),
 		test("hp_pwg_raster_monochrome", "hp_ipp_everywhere.ppd", "printer_add_hp_pwg_raster_monochrome_golden.pwg", "print-color-mode=monochrome"),
-		iTest("nec", "printer_nec_npdl.ppd", "printer_add_nec_golden.bin"),
+		test("nec", "printer_nec_npdl.ppd", "printer_add_nec_golden.bin"),
 		test("star", "printer_add_star_printer_rastertostar.ppd.gz", "printer_add_star_printer_rastertostar.bin"),
-		iTest("star_m", "printer_add_star_printer_rastertostarm.ppd.gz", "printer_add_star_printer_rastertostarm.bin"),
+		test("star_m", "printer_add_star_printer_rastertostarm.ppd.gz", "printer_add_star_printer_rastertostarm.bin"),
 		test("star_lm", "printer_add_star_printer_rastertostarlm.ppd.gz", "printer_add_star_printer_rastertostarlm.bin"),
 
 		// Pin print
