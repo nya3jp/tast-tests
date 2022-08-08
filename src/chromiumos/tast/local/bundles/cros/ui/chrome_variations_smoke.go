@@ -36,8 +36,8 @@ func init() {
 			"kyleshima@chromium.org", // Test author
 			"chromeos-sw-engprod@google.com",
 			// Variations owners. Refer to //base/metrics/OWNERS for the most up-to-date contacts.
-			"isherman@chromium.org",
-			"asvitkine@chromium.org",
+			"dalerogerson@google.com",
+			"nishantj@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
 		Attr:         []string{"group:mainline", "informational"},
