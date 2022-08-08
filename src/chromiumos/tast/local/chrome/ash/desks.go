@@ -400,3 +400,36 @@ func ExitAndReenterLibrary(ctx context.Context, ac *uiauto.Context, tconn *chrom
 
 	return nil
 }
+
+// RenameSavedDesksName clicks into the name view of the given saved desk and renames it to the passed in name value.
+// This assumes the library page is live now.
+func RenameSavedDesksName(ctx context.Context, ac *uiauto.Context, savedDeskPosition int, savedDeskName string) error {
+	savedDeskNameView := nodewith.ClassName("SavedDeskNameView")
+	// Define keyboard.
+	kb, err := input.Keyboard(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed create keyboard")
+	}
+	defer kb.Close()
+
+	if err != nil {
+		return errors.Wrap(err, "failed to find SavedDeskNameView")
+	}
+	if err := ac.LeftClick(savedDeskNameView.Nth(savedDeskPosition))(ctx); err != nil {
+		return errors.Wrapf(err, "failed to click on SavedDeskNameView at position %v", savedDeskPosition)
+	}
+	if err := kb.Type(ctx, savedDeskName); err != nil {
+		return errors.Wrapf(err, "cannot type %q: ", savedDeskName)
+	}
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for typing animation to be completed")
+	}
+	if err := kb.Accel(ctx, "Enter"); err != nil {
+		return errors.Wrap(err, "cannot press 'Enter'")
+	}
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		return errors.Wrap(err, "failed to wait for exit name nudge animation to be completed")
+	}
+
+	return nil
+}
