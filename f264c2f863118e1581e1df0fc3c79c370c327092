@@ -16,6 +16,23 @@
       "message": "Hello, please help me review this change. Thank you.",
       "revId": "f264c2f863118e1581e1df0fc3c79c370c327092",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "844ee0aa_1685a45f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391582
+      },
+      "writtenOn": "2022-08-08T04:17:51Z",
+      "side": 1,
+      "message": "nit: you might need to elaborate what this change fix in the commit messages.",
+      "revId": "f264c2f863118e1581e1df0fc3c79c370c327092",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
