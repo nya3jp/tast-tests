@@ -1,8 +1,8 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package ui
+package spera
 
 import (
 	"context"
@@ -30,17 +30,16 @@ type extendedDisplayCUJParam struct {
 
 func init() {
 	testing.AddTest(&testing.Test{
-		// TODO (b/242590511): Deprecated after moving all performance cuj test cases to chromiumos/tast/local/bundles/cros/spera directory.
 		Func:         ExtendedDisplayCUJ,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Test video entertainment with extended display",
 		Contacts:     []string{"vlin@cienet.com", "cienet-development@googlegroups.com"},
 		SoftwareDeps: []string{"chrome", "arc"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Vars: []string{
-			"ui.cuj_mode",               // Optional. Use "tablet" to force the tablet mode. Other values will be be taken as "clamshell".
-			"ui.chameleon_addr",         // Only needed when using chameleon board as extended display.
-			"ui.chameleon_display_port", // The port connected as extended display. Default is 3.
+			"spera.cuj_mode",               // Optional. Use "tablet" to force the tablet mode. Other values will be be taken as "clamshell".
+			"spera.chameleon_addr",         // Only needed when using chameleon board as extended display.
+			"spera.chameleon_display_port", // The port connected as extended display. Default is 3.
 		},
 		Params: []testing.Param{
 			{
@@ -79,7 +78,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	if chameleonAddr, ok := s.Var("ui.chameleon_addr"); ok {
+	if chameleonAddr, ok := s.Var("spera.chameleon_addr"); ok {
 		// Use chameleon board as extended display. Make sure chameleon is connected.
 		che, err := chameleon.New(ctx, chameleonAddr)
 		if err != nil {
@@ -88,7 +87,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 		defer che.Close(cleanupCtx)
 
 		portID := 3 // Use default port 3 for display.
-		if port, ok := s.Var("ui.chameleon_display_port"); ok {
+		if port, ok := s.Var("spera.chameleon_display_port"); ok {
 			portID, err = strconv.Atoi(port)
 			if err != nil {
 				s.Fatalf("Failed to parse chameleon display port %q: %v", port, err)
@@ -135,7 +134,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 	defer kb.Close()
 
 	var tabletMode bool
-	if mode, ok := s.Var("ui.cuj_mode"); ok {
+	if mode, ok := s.Var("spera.cuj_mode"); ok {
 		tabletMode = mode == "tablet"
 		cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, tabletMode)
 		if err != nil {
