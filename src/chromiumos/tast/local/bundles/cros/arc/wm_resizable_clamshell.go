@@ -1123,7 +1123,7 @@ func checkRestoreActivityToFullscreen(ctx context.Context, tconn *chrome.TestCon
 // leftClickDragCaptionButton function will simulate left click long press event on a caption button by button's name.
 func leftClickDragCaptionButton(ctx context.Context, tconn *chrome.TestConn, btnName string, toLeft bool) error {
 	ui := uiauto.New(tconn)
-	finder := nodewith.Name(btnName).ClassName("FrameCaptionButton")
+	finder := nodewith.Name(btnName).ClassName("FrameSizeButton")
 	captionBtn, err := ui.Info(ctx, finder)
 
 	if err != nil {
