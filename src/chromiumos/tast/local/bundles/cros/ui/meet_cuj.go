@@ -295,8 +295,9 @@ func init() {
 			ExtraSoftwareDeps: []string{"lacros"},
 		}, {
 			// 49p with vp8 video codec.
-			Name:    "49p_vp8",
-			Timeout: defaultTestTimeout,
+			Name:      "49p_vp8",
+			Timeout:   defaultTestTimeout,
+			ExtraAttr: []string{"group:cuj"},
 			Val: meetTest{
 				num:         48,
 				layout:      meetLayoutTiled,
