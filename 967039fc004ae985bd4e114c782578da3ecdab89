@@ -16,6 +16,24 @@
       "message": "Sorry, I think `s.Fatalf` is more appropriate here than `s.Errorf`",
       "revId": "967039fc004ae985bd4e114c782578da3ecdab89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0daa05ea_9825a745",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/dark_mode.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-08T20:32:57Z",
+      "side": 1,
+      "message": "They should have the same effect as this is the last statement in the test, but if you think there might be more added later and this should stop the test from proceeding in that case, then changing this now makes sense.",
+      "parentUuid": "b546d341_21cb6ea4",
+      "revId": "967039fc004ae985bd4e114c782578da3ecdab89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
