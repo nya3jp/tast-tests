@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -64,8 +65,31 @@ func VerifyWindowCount(ctx context.Context, tconn *chrome.TestConn, windowCount 
 	if err != nil {
 		return errors.Wrap(err, "failed to get all open windows")
 	}
+
 	if len(ws) != windowCount {
-		return errors.Wrapf(err, "found inconsistent number of window(s): got %v, want %v", len(ws), windowCount)
+		// TODO(b/241118477): Remove exiting out of the location access popup step once there is a more permanent fix to disable the popup. The popup is not captured by the UI tree, so it is unable to interact with it using uiauto libraries. In order to remove this popup window, we will need to input keyboard commands.
+		if len(ws) == windowCount+1 {
+			// We need to press the enter key twice. Once to get get the focus onto the popup window and once to confirm a choice to exit the window.
+			kb, err := input.Keyboard(ctx)
+			if err != nil {
+				return errors.Wrap(err, "cannot create keyboard")
+			}
+			defer kb.Close()
+			if err := kb.Accel(ctx, "Enter"); err != nil {
+				return errors.Wrap(err, "cannot press 'Enter'")
+			}
+			if err := kb.Accel(ctx, "Enter"); err != nil {
+				return errors.Wrap(err, "cannot press 'Enter'")
+			}
+		}
+		// Verify that there is now the correct number of windows.
+		wc, err := ash.GetAllWindows(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to get all open windows")
+		}
+		if len(wc) != windowCount {
+			return errors.Wrapf(err, "found inconsistent number of window(s): got %v, want %v", len(ws), windowCount)
+		}
 	}
 
 	return nil

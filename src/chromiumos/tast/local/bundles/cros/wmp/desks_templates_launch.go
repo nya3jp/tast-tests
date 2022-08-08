@@ -146,7 +146,14 @@ func DesksTemplatesLaunch(ctx context.Context, s *testing.State) {
 
 	// Verify saved desk.
 	if err := ash.VerifySavedDesk(ctx, ac, []string{"Template 1", "Saved Desk 1"}); err != nil {
-		s.Fatal("Failed to verify saved desk: ", err)
+		// Name change may have failed due to playstore unexpected causing us to exit the library page. Attempt to rename the saved desk again.
+		if err := ash.RenameSavedDesksName(ctx, ac, 1, "Saved Desk 1"); err != nil {
+			s.Fatal("Failed to rename saved desk: ", err)
+		}
+		// Try to verify the saved desk again.
+		if err := ash.VerifySavedDesk(ctx, ac, []string{"Template 1", "Saved Desk 1"}); err != nil {
+			s.Fatal("Failed to verify saved desk: ", err)
+		}
 	}
 
 	// Exit overview mode.
