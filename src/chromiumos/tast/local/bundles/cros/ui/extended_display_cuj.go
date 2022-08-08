@@ -11,13 +11,13 @@ import (
 
 	"chromiumos/tast/common/chameleon"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/mtbf/youtube"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -48,7 +48,7 @@ func init() {
 				Fixture: "loggedInAndKeepState",
 				Val: extendedDisplayCUJParam{
 					tier: cuj.Basic, // Extended display plus tier test uses basic tier test of video CUJ.
-					app:  videocuj.YoutubeWeb,
+					app:  youtube.YoutubeWeb,
 				},
 			}, {
 				Name:              "plus_lacros_video_youtube_web",
@@ -58,7 +58,7 @@ func init() {
 
 				Val: extendedDisplayCUJParam{
 					tier:        cuj.Basic, // Extended display plus tier test uses basic tier test of video CUJ.
-					app:         videocuj.YoutubeWeb,
+					app:         youtube.YoutubeWeb,
 					browserType: browser.TypeLacros,
 				},
 			},
@@ -167,7 +167,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 
 	param := s.Param().(extendedDisplayCUJParam)
 
-	testResources := videocuj.TestResources{
+	testResources := youtube.TestResources{
 		Cr:        cr,
 		Tconn:     tconn,
 		Bt:        p.browserType,
@@ -175,7 +175,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 		Kb:        kb,
 		UIHandler: uiHandler,
 	}
-	testParams := videocuj.TestParams{
+	testParams := youtube.TestParams{
 		Tier:            param.tier,
 		App:             param.app,
 		OutDir:          s.OutDir(),
@@ -183,7 +183,7 @@ func ExtendedDisplayCUJ(ctx context.Context, s *testing.State) {
 		ExtendedDisplay: true,
 	}
 
-	if err := videocuj.Run(ctx, testResources, testParams); err != nil {
+	if err := youtube.Run(ctx, testResources, testParams); err != nil {
 		s.Fatal("Failed to do video cuj testing: ", err)
 	}
 }

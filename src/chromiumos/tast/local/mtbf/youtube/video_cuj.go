@@ -1,9 +1,9 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2022 The ChromiumOS Authors.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-// Package videocuj contains the test code for VideoCUJ.
-package videocuj
+// Package youtube contains the test code for VideoCUJ.
+package youtube
 
 import (
 	"context"
