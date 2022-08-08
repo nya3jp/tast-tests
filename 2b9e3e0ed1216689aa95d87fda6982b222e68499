@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b718316_8ba2a6e5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-08T13:49:31Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#in-band-errors\n\nRecommended not to do so.",
+      "parentUuid": "9ff12d83_5b00a310",
+      "range": {
+        "startLine": 160,
+        "startChar": 59,
+        "endLine": 160,
+        "endChar": 60
+      },
+      "revId": "2b9e3e0ed1216689aa95d87fda6982b222e68499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70c4acea_e06ab600",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
         "patchSetId": 10
