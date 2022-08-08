@@ -66,6 +66,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48dea553_39ef1dd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-08-08T15:04:03Z",
+      "side": 1,
+      "message": "Yes, I think you are right.",
+      "parentUuid": "de981401_da8a6f50",
+      "revId": "f4545edfc85b15db6e9a52126d2330805eab453a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "679dc7a1_cad3bc70",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
         "patchSetId": 11
