@@ -6,28 +6,19 @@ package arc
 
 import (
 	"context"
-	"fmt"
-	"net/http"
-	"net/http/httptest"
-	"net/url"
 	"path/filepath"
-	"strconv"
 	"time"
 
-	"chromiumos/tast/common/action"
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
+	"chromiumos/tast/local/bundles/cros/arc/arcpipvideotest"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/browser/browserfixt"
-	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/webutil"
-	"chromiumos/tast/local/coords"
 	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/local/power"
@@ -132,16 +123,6 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to close notifications: ", err)
 	}
 
-	a := s.FixtValue().(*arc.PreData).ARC
-	if err := a.Install(ctx, arc.APKPath("ArcPipVideoTest.apk")); err != nil {
-		s.Fatal("Failed installing app: ", err)
-	}
-
-	info, err := display.GetPrimaryInfo(ctx, tconn)
-	if err != nil {
-		s.Fatal("Failed to get the primary display info: ", err)
-	}
-
 	kw, err := input.Keyboard(ctx)
 	if err != nil {
 		s.Fatal("Failed to get keyboard event writer: ", err)
@@ -157,96 +138,11 @@ func PIPEnergyAndPower(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for CPU to cool down: ", err)
 	}
 
-	act, err := arc.NewActivity(a, "org.chromium.arc.testapp.pictureinpicturevideo", ".VideoActivity")
+	cleanUp, err := arcpipvideotest.EstablishARCPIPVideo(ctx, tconn, s.FixtValue().(*arc.PreData).ARC, s.DataFileSystem(), params.bigPIP)
 	if err != nil {
-		s.Fatal("Failed to create activity: ", err)
+		s.Fatal("Failed to establish ARC PIP video: ", err)
 	}
-	defer act.Close()
-
-	srv := httptest.NewServer(http.FileServer(s.DataFileSystem()))
-	defer srv.Close()
-
-	srvURL, err := url.Parse(srv.URL)
-	if err != nil {
-		s.Fatal("Failed to parse test server URL: ", err)
-	}
-
-	hostPort, err := strconv.Atoi(srvURL.Port())
-	if err != nil {
-		s.Fatal("Failed to parse test server port: ", err)
-	}
-
-	androidPort, err := a.ReverseTCP(ctx, hostPort)
-	if err != nil {
-		s.Fatal("Failed to start reverse port forwarding: ", err)
-	}
-	defer a.RemoveReverseTCP(ctx, androidPort)
-
-	if err := act.Start(ctx, tconn, arc.WithExtraString("video_uri", fmt.Sprintf("http://localhost:%d/bear-320x240.h264.mp4", androidPort))); err != nil {
-		s.Fatal("Failed to start app: ", err)
-	}
-	defer act.Stop(cleanupCtx, tconn)
-
-	// The test activity enters PIP mode in onUserLeaveHint().
-	if err := act.SetWindowState(ctx, tconn, arc.WindowStateMinimized); err != nil {
-		s.Fatal("Failed to minimize app: ", err)
-	}
-
-	var pipWindow *ash.Window
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		var err error
-		pipWindow, err = ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.State == ash.WindowStatePIP })
-		if err != nil {
-			return errors.Wrap(err, "the PIP window hasn't been created yet")
-		}
-		return nil
-	}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
-		s.Fatal("Failed to wait for PIP window: ", err)
-	}
-
-	if params.bigPIP {
-		// To resize the PIP window as reliably as possible,
-		// use uiauto (not activity.ResizeWindow) and drag
-		// from the corner (not the ARC++ PIP resize handle).
-
-		// The resizing drag begins this far from the corner
-		// outward along each dimension. This offset ensures
-		// that we drag the corner and not the resize handle.
-		const pipCornerOffset = 5
-
-		if err := action.Combine(
-			"resize the PIP window",
-			mouse.Move(tconn, pipWindow.TargetBounds.TopLeft().Sub(coords.NewPoint(pipCornerOffset, pipCornerOffset)), 0),
-			mouse.Press(tconn, mouse.LeftButton),
-			mouse.Move(tconn, info.WorkArea.TopLeft(), time.Second),
-			mouse.Release(tconn, mouse.LeftButton),
-		)(ctx); err != nil {
-			// Ensure releasing the mouse button.
-			if err := mouse.Release(tconn, mouse.LeftButton)(cleanupCtx); err != nil {
-				s.Error("Failed to release the mouse button: ", err)
-			}
-			s.Fatal("Failed to resize the PIP window: ", err)
-		}
-
-		pipWindow, err = ash.GetWindow(ctx, tconn, pipWindow.ID)
-		if err != nil {
-			s.Fatal("PIP window gone after resize: ", err)
-		}
-
-		// For code maintainability, just check a relatively permissive expectation for the
-		// maximum size of the PIP window: it should be either strictly wider than 2/5 of
-		// the work area width, or strictly taller than 2/5 of the work area height.
-		if 5*pipWindow.TargetBounds.Width <= 2*info.WorkArea.Width && 5*pipWindow.TargetBounds.Height <= 2*info.WorkArea.Height {
-			s.Fatalf("Expected a bigger PIP window. Got a %v PIP window in a %v work area", pipWindow.TargetBounds.Size(), info.WorkArea.Size())
-		}
-	} else {
-		// For code maintainability, just check a relatively permissive expectation for the
-		// minimum size of the PIP window: it should be either strictly narrower than 3/10
-		// of the work area width, or strictly shorter than 3/10 of the work area height.
-		if 10*pipWindow.TargetBounds.Width >= 3*info.WorkArea.Width && 10*pipWindow.TargetBounds.Height >= 3*info.WorkArea.Height {
-			s.Fatalf("Expected a smaller PIP window. Got a %v PIP window in a %v work area", pipWindow.TargetBounds.Size(), info.WorkArea.Size())
-		}
-	}
+	defer cleanUp(cleanupCtx)
 
 	conn, err := br.NewConn(ctx, "chrome://settings")
 	if err != nil {
