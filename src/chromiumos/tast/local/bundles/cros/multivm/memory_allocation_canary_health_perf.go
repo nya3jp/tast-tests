@@ -14,7 +14,7 @@ import (
 
 type canaryHealthPerfParam struct {
 	allocationTarget memoryuser.AllocationTarget
-	canary           memoryuser.Canary
+	canary           memoryuser.CanaryType
 }
 
 func init() {
@@ -91,67 +91,32 @@ func MemoryAllocationCanaryHealthPerf(ctx context.Context, s *testing.State) {
 
 	iterations := 1
 	for i := 0; i < iterations; i++ {
-		if param.canary == memoryuser.Tab {
-			server := memoryuser.NewMemoryStressServer(s.DataFileSystem())
-
-			unit := server.NewMemoryStressUnit(50, 0.67, 2*time.Second)
-			unit.Run(ctx, pre.Chrome)
-
-			target := param.allocationTarget
-			allocationManager := memoryuser.NewMemoryAllocationManager(target, 250, 0.67, preARC)
-			allocationManager.Setup(ctx)
-
-			for true {
-				if !unit.StillAlive(ctx, pre.Chrome) {
-					s.Logf("Chrome tab died after %d MiB allocations", allocationManager.TotalAllocatedMiB())
-					allocatedMiB += allocationManager.TotalAllocatedMiB()
-					break
-				}
-				if id := allocationManager.DeadAllocator(); id >= 0 {
-					s.Fatalf("Allocator %d is killed before the canary", id)
-				}
-				if err := allocationManager.AddAllocator(ctx); err != nil {
-					s.Fatal("Failed to add an allocator: ", err)
-
-				}
-			}
-			unit.Close(ctx, pre.Chrome)
-			allocationManager.Cleanup(ctx)
-			server.Close()
-		} else if param.canary == memoryuser.App {
-			if err := memoryuser.InstallArcLifecycleTestApps(ctx, preARC, 1); err != nil {
-				s.Fatal("Failed to install the test app")
-			}
-
-			unit := memoryuser.NewArcLifecycleUnit(0, 50, 0.67, nil, true)
-			tconn, err := pre.Chrome.TestAPIConn(ctx)
-			if err != nil {
-				s.Fatal("creating test API connection failed: ", err)
-			}
-			unit.Run(ctx, preARC, tconn)
-			target := param.allocationTarget
-			allocationManager := memoryuser.NewMemoryAllocationManager(target, 250, 0.67, preARC)
-			allocationManager.Setup(ctx)
-			defer allocationManager.Cleanup(ctx)
-
-			for true {
-				if !unit.StillAlive(ctx, preARC) {
-					s.Logf("Test app died after %d MiB allocations", allocationManager.TotalAllocatedMiB())
-					allocatedMiB += allocationManager.TotalAllocatedMiB()
-					break
-				}
-				if id := allocationManager.DeadAllocator(); id >= 0 {
-					s.Fatalf("Allocator %d is killed before the canary", id)
-				}
-				if err := allocationManager.AddAllocator(ctx); err != nil {
-					s.Fatal("Failed to add an allocator: ", err)
-
-				}
-			}
-			unit.Close(ctx, preARC)
-			allocationManager.Cleanup(ctx)
+		canary, err := memoryuser.NewCanary(param.canary, ctx, 50, 0.67, s, pre.Chrome, preARC)
+		if err != nil {
+			s.Fatal("Failed to create the canary: ", err)
 		}
+		canary.Run(ctx)
 
+		target := param.allocationTarget
+		allocationManager := memoryuser.NewMemoryAllocationManager(target, 250, 0.67, preARC)
+		allocationManager.Setup(ctx)
+
+		for true {
+			if !canary.StillAlive(ctx) {
+				s.Logf("%s died after %d MiB allocations", canary.String(), allocationManager.TotalAllocatedMiB())
+				allocatedMiB += allocationManager.TotalAllocatedMiB()
+				break
+			}
+			if id := allocationManager.DeadAllocator(); id >= 0 {
+				s.Fatalf("Allocator %d is killed before the canary", id)
+			}
+			if err := allocationManager.AddAllocator(ctx); err != nil {
+				s.Fatal("Failed to add an allocator: ", err)
+
+			}
+		}
+		canary.Close(ctx)
+		allocationManager.Cleanup(ctx)
 	}
 
 	p := perf.NewValues()
