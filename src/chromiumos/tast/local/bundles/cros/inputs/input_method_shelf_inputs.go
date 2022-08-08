@@ -40,26 +40,29 @@ func init() {
 		Desc:         "Test input functions triggered from IME tray",
 		Contacts:     []string{"shengjun@chromium.org", "essential-inputs-team@google.com"},
 		SoftwareDeps: []string{"chrome", "chrome_internal", "google_virtual_keyboard"},
-		Attr:         []string{"group:mainline", "group:input-tools", "informational"},
+		Attr:         []string{"group:mainline", "group:input-tools"},
 		SearchFlags:  util.IMESearchFlags([]ime.InputMethod{ime.DefaultInputMethod}),
 		Data:         data.ExtractExternalFiles(testMessages, []ime.InputMethod{ime.DefaultInputMethod}),
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Fixture:           fixture.ClamshellNonVK,
-				ExtraAttr:         []string{"group:input-tools-upstream"},
-				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				Fixture:   fixture.ClamshellNonVK,
+				ExtraAttr: []string{"group:input-tools-upstream"},
+				// TODO(b/238408718): Enable test on kodama once b/238408718 solved.
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels, hwdep.SkipOnModel("kodama")),
 			},
 			{
 				Name:              "informational",
 				Fixture:           fixture.ClamshellNonVK,
 				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
+				ExtraAttr:         []string{"informational"},
 			},
 			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosClamshellNonVK,
-				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels, hwdep.SkipOnModel("kodama")),
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"group:input-tools-upstream"},
 			},
 		},
 	})
