@@ -113,6 +113,14 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	}()
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Make sure we have enough time to perform enrollment.
+		// This helps differentiate real issues from timeout hitting different components.
+		if deadline, ok := ctx.Deadline(); !ok {
+			return testing.PollBreak(errors.Errorf("missing deadline for context %v", ctx))
+		} else if diff := deadline.Sub(time.Now()); diff < enrollmentRunTimeout {
+			return testing.PollBreak(errors.New("not enought time to perform setup and enrollment"))
+		}
+
 		if out, err := s.DUT().Conn().CommandContext(ctx, "echo", "1").Output(ssh.DumpLogOnError); err != nil {
 			return testing.PollBreak(errors.Wrap(err, "failed to run connect over SSH"))
 		} else if string(out) != "1\n" {
@@ -199,7 +207,7 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		enrollOK = true
 
 		return nil
-	}, &testing.PollOptions{Timeout: 3 * enrollmentRunTimeout}); err != nil {
+	}, &testing.PollOptions{Timeout: 3*enrollmentRunTimeout + 15*time.Second}); err != nil {
 		s.Fatal("Failed to enroll with retries: ", err)
 	}
 
