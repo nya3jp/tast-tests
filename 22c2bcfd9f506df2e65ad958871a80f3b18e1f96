@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71dc7606_23917aeb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/multivm/memory_allocation_canary_health_perf.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-08T08:28:27Z",
+      "side": 1,
+      "message": "Fixed.I wrapped the canary with an interface. It did not work for the memory allocation units but I think it is reasonable in this case because the `Run`, `Close` of each underlying unit takes slightly different arguments.",
+      "parentUuid": "90f7a4df_c55fd74b",
+      "revId": "22c2bcfd9f506df2e65ad958871a80f3b18e1f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca9f203d_cecc0aef",
