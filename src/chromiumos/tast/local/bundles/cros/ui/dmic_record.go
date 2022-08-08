@@ -15,13 +15,13 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/cryptohome"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/mtbf/youtube"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -70,7 +70,7 @@ func DMICRecord(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	var videoSource = videocuj.VideoSrc{
+	var videoSource = youtube.VideoSrc{
 		URL:     "https://www.youtube.com/watch?v=LXb3EKWsInQ",
 		Title:   "COSTA RICA IN 4K 60fps HDR (ULTRA HD)",
 		Quality: "1080p60",
@@ -78,7 +78,7 @@ func DMICRecord(ctx context.Context, s *testing.State) {
 
 	ui := uiauto.New(tconn)
 	// Create an instance of YtWeb to perform actions on youtube web.
-	ytbWeb := videocuj.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
+	ytbWeb := youtube.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
 	defer ytbWeb.Close(cleanupCtx)
 
 	if err := ytbWeb.OpenAndPlayVideo(ctx); err != nil {

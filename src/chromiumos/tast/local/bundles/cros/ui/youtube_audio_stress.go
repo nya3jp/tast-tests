@@ -12,11 +12,11 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/mtbf/youtube"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -127,13 +127,13 @@ func YoutubeAudioStress(ctx context.Context, s *testing.State) {
 	}
 	defer uiHandler.Close()
 
-	var videoSource = videocuj.VideoSrc{
+	var videoSource = youtube.VideoSrc{
 		URL:     "https://www.youtube.com/watch?v=g3PWYH1P7Oo",
 		Title:   "12 Hours Of Tropical Coral Reef Fishes At Monterey Bay Aquarium | Littoral Relaxocean - YouTube",
 		Quality: "1080p60",
 	}
 	// Create an instance of YtWeb to perform actions on youtube web.
-	ytbWeb := videocuj.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
+	ytbWeb := youtube.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
 	defer ytbWeb.Close(cleanupCtx)
 
 	if err := ytbWeb.OpenAndPlayVideo(ctx); err != nil {

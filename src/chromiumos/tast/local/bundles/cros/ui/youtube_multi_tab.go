@@ -11,11 +11,11 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/mtbf/youtube"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -41,7 +41,7 @@ func YoutubeMultiTab(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 
-	var videoSource = videocuj.VideoSrc{
+	var videoSource = youtube.VideoSrc{
 		URL:     "https://www.youtube.com/watch?v=LXb3EKWsInQ",
 		Title:   "COSTA RICA IN 4K 60fps HDR (ULTRA HD)",
 		Quality: "1080p60",
@@ -107,9 +107,9 @@ func YoutubeMultiTab(ctx context.Context, s *testing.State) {
 	defer uiHandler.Close()
 
 	extendedDisplay := false
-	var videoApps []*videocuj.YtWeb
+	var videoApps []*youtube.YtWeb
 	for tabIdx := 0; tabIdx < 10; tabIdx++ {
-		videoApp := videocuj.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
+		videoApp := youtube.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
 		defer videoApp.Close(cleanupCtx)
 
 		if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
