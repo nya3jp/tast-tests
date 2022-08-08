@@ -77,10 +77,14 @@ func CxxCrash(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Waiting for crash files to become present")
-	// Wait files like sh.20200420.204845.12345.664107.dmp in crash.UserCrashDir
+	// Wait files like sh.20200420.204845.12345.664107.dmp in the daemon-store directory.
+	crashDirs, err := crash.GetDaemonStoreCrashDirs(ctx)
+	if err != nil {
+		s.Fatal("Couldn't get daemon store dirs: ", err)
+	}
 	const stem = `sh\.\d{8}\.\d{6}\.\d+\.\d+`
 	metaFileName := stem + crash.MetadataExt
-	files, err := crash.WaitForCrashFiles(ctx, []string{crash.UserCrashDir}, []string{
+	files, err := crash.WaitForCrashFiles(ctx, crashDirs, []string{
 		stem + crash.MinidumpExt, metaFileName,
 	})
 	if err != nil {
