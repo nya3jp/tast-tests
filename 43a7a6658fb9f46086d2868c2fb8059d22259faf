@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f875e525_32f84831",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-08T17:19:52Z",
+      "side": 1,
+      "message": "Here\u0027s the general documentation on fixtures: https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#fixtures\n\nYou can take a look at the scanning hardware tests for a more concrete example: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/scanapp/hardware_all_combinations.go;l\u003d63;drc\u003d4cc0c2d61ff7397430fa7aacf76729fb0498be8c",
+      "parentUuid": "4f4e18da_b1ffead2",
+      "revId": "43a7a6658fb9f46086d2868c2fb8059d22259faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dc6409c_4509fb35",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
         "patchSetId": 2
