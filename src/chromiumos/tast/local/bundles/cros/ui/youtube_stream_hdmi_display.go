@@ -17,7 +17,6 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/audio"
-	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cuj"
@@ -29,6 +28,7 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/cswitch"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/mtbf/youtube"
 	"chromiumos/tast/local/typecutils"
 	"chromiumos/tast/testing"
 )
@@ -73,7 +73,7 @@ func YoutubeStreamHDMIDisplay(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get initial brightness: ", err)
 	}
 
-	var videoSource = videocuj.VideoSrc{
+	var videoSource = youtube.VideoSrc{
 		URL:     "https://www.youtube.com/watch?v=LXb3EKWsInQ",
 		Title:   "COSTA RICA IN 4K 60fps HDR (ULTRA HD)",
 		Quality: "1440p60",
@@ -151,7 +151,7 @@ func YoutubeStreamHDMIDisplay(ctx context.Context, s *testing.State) {
 	}
 	defer uiHandler.Close()
 
-	videoApp := videocuj.NewYtWeb(cr.Browser(), tconn, kb, videoSource, true, cui, uiHandler)
+	videoApp := youtube.NewYtWeb(cr.Browser(), tconn, kb, videoSource, true, cui, uiHandler)
 	if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
 		s.Fatalf("Failed to open %s: %v", videoSource.URL, err)
 	}

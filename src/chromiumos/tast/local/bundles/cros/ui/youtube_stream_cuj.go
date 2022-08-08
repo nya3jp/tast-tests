@@ -11,12 +11,12 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/mtbf/youtube"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
@@ -34,28 +34,28 @@ func init() {
 		Fixture:      "loggedInAndKeepState",
 		Params: []testing.Param{{
 			Name: "1080p30",
-			Val: videocuj.VideoSrc{
+			Val: youtube.VideoSrc{
 				URL:     "https://www.youtube.com/watch?v=Zv11L-ZfrSg",
 				Title:   "Ultimate Wild Animals Collection in 8K ULTRA HD / 8K TV",
 				Quality: "1080p",
 			},
 		}, {
 			Name: "1080p60",
-			Val: videocuj.VideoSrc{
+			Val: youtube.VideoSrc{
 				URL:     "https://www.youtube.com/watch?v=LXb3EKWsInQ",
 				Title:   "COSTA RICA IN 4K 60fps HDR (ULTRA HD)",
 				Quality: "1080p60",
 			},
 		}, {
 			Name: "1440p30",
-			Val: videocuj.VideoSrc{
+			Val: youtube.VideoSrc{
 				URL:     "https://www.youtube.com/watch?v=Zv11L-ZfrSg",
 				Title:   "Ultimate Wild Animals Collection in 8K ULTRA HD / 8K TV",
 				Quality: "1440p",
 			},
 		}, {
 			Name: "1440p60",
-			Val: videocuj.VideoSrc{
+			Val: youtube.VideoSrc{
 				URL:     "https://www.youtube.com/watch?v=LXb3EKWsInQ",
 				Title:   "COSTA RICA IN 4K 60fps HDR (ULTRA HD)",
 				Quality: "1440p60",
@@ -71,7 +71,7 @@ func YoutubeStreamCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to turn on display: ", err)
 	}
 	expectedAudioNode := "INTERNAL_SPEAKER"
-	var videoSource = s.Param().(videocuj.VideoSrc)
+	var videoSource = s.Param().(youtube.VideoSrc)
 
 	// Give 5 seconds to cleanup other resources.
 	cleanupCtx := ctx
@@ -125,7 +125,7 @@ func YoutubeStreamCUJ(ctx context.Context, s *testing.State) {
 	defer uiHandler.Close()
 
 	extendedDisplay := false
-	videoApp := videocuj.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
+	videoApp := youtube.NewYtWeb(cr.Browser(), tconn, kb, videoSource, extendedDisplay, ui, uiHandler)
 
 	if err := videoApp.OpenAndPlayVideo(ctx); err != nil {
 		s.Fatalf("Failed to open %s: %v", videoSource.URL, err)

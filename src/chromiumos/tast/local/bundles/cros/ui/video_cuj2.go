@@ -11,13 +11,13 @@ import (
 
 	"chromiumos/tast/common/cros/ui/setup"
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bundles/cros/ui/videocuj"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/input"
+	"chromiumos/tast/local/mtbf/youtube"
 	"chromiumos/tast/testing"
 	"chromiumos/tast/testing/hwdep"
 )
@@ -47,7 +47,7 @@ func init() {
 				Timeout: 12 * time.Minute,
 				Val: videoCUJParam{
 					tier: cuj.Basic,
-					app:  videocuj.YoutubeWeb,
+					app:  youtube.YoutubeWeb,
 				},
 			}, {
 				Name:              "basic_lacros_youtube_web",
@@ -56,7 +56,7 @@ func init() {
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: videoCUJParam{
 					tier:        cuj.Basic,
-					app:         videocuj.YoutubeWeb,
+					app:         youtube.YoutubeWeb,
 					browserType: browser.TypeLacros,
 				},
 			}, {
@@ -67,7 +67,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: videoCUJParam{
 					tier: cuj.Basic,
-					app:  videocuj.YoutubeWeb,
+					app:  youtube.YoutubeWeb,
 				},
 			}, {
 				Name:    "premium_youtube_web",
@@ -75,7 +75,7 @@ func init() {
 				Timeout: 12 * time.Minute,
 				Val: videoCUJParam{
 					tier: cuj.Premium,
-					app:  videocuj.YoutubeWeb,
+					app:  youtube.YoutubeWeb,
 				},
 			}, {
 				Name:              "premium_lacros_youtube_web",
@@ -84,7 +84,7 @@ func init() {
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: videoCUJParam{
 					tier:        cuj.Premium,
-					app:         videocuj.YoutubeWeb,
+					app:         youtube.YoutubeWeb,
 					browserType: browser.TypeLacros,
 				},
 			}, {
@@ -95,7 +95,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: videoCUJParam{
 					tier: cuj.Plus,
-					app:  videocuj.YoutubeWeb,
+					app:  youtube.YoutubeWeb,
 				},
 			}, {
 				Name:    "basic_youtube_app",
@@ -103,7 +103,7 @@ func init() {
 				Timeout: 10 * time.Minute,
 				Val: videoCUJParam{
 					tier: cuj.Basic,
-					app:  videocuj.YoutubeApp,
+					app:  youtube.YoutubeApp,
 				},
 			}, {
 				Name:              "basic_lacros_youtube_app",
@@ -112,7 +112,7 @@ func init() {
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: videoCUJParam{
 					tier:        cuj.Basic,
-					app:         videocuj.YoutubeApp,
+					app:         youtube.YoutubeApp,
 					browserType: browser.TypeLacros,
 				},
 			}, {
@@ -123,7 +123,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: videoCUJParam{
 					tier: cuj.Basic,
-					app:  videocuj.YoutubeApp,
+					app:  youtube.YoutubeApp,
 				},
 			}, {
 				Name:    "premium_youtube_app",
@@ -131,7 +131,7 @@ func init() {
 				Timeout: 10 * time.Minute,
 				Val: videoCUJParam{
 					tier: cuj.Premium,
-					app:  videocuj.YoutubeApp,
+					app:  youtube.YoutubeApp,
 				},
 			}, {
 				Name:              "premium_lacros_youtube_app",
@@ -140,7 +140,7 @@ func init() {
 				ExtraSoftwareDeps: []string{"lacros"},
 				Val: videoCUJParam{
 					tier:        cuj.Premium,
-					app:         videocuj.YoutubeApp,
+					app:         youtube.YoutubeApp,
 					browserType: browser.TypeLacros,
 				},
 			}, {
@@ -151,7 +151,7 @@ func init() {
 				ExtraHardwareDeps: hwdep.D(setup.PerfCUJDevices()),
 				Val: videoCUJParam{
 					tier: cuj.Plus,
-					app:  videocuj.YoutubeApp,
+					app:  youtube.YoutubeApp,
 				},
 			},
 		},
@@ -219,7 +219,7 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 	}
 	defer uiHandler.Close()
 
-	testResources := videocuj.TestResources{
+	testResources := youtube.TestResources{
 		Cr:        cr,
 		Tconn:     tconn,
 		Bt:        p.browserType,
@@ -229,7 +229,7 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 	}
 
 	videoCUJParams := s.Param().(videoCUJParam)
-	testParams := videocuj.TestParams{
+	testParams := youtube.TestParams{
 		Tier:            videoCUJParams.tier,
 		App:             videoCUJParams.app,
 		OutDir:          s.OutDir(),
@@ -238,7 +238,7 @@ func VideoCUJ2(ctx context.Context, s *testing.State) {
 		CheckPIP:        checkPIP,
 	}
 
-	if err := videocuj.Run(ctx, testResources, testParams); err != nil {
+	if err := youtube.Run(ctx, testResources, testParams); err != nil {
 		s.Fatal("Failed to run video cuj test: ", err)
 	}
 }
