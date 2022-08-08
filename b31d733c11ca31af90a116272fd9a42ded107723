@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "009f0ea9_1dff5a75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-08T19:37:08Z",
+      "side": 1,
+      "message": "Can I get a LGTM again? I removed one test (wmp.DesksTemplatesBasic) that turns to be flaky and needs more work to fix in a follow up, but this test (wmp.DesksTemplatesLaunch) looks stable. Thanks,",
+      "revId": "b31d733c11ca31af90a116272fd9a42ded107723",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
