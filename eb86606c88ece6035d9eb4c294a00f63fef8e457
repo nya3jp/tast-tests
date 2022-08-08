@@ -34,6 +34,24 @@
       "parentUuid": "8bb15e38_917b2a75",
       "revId": "eb86606c88ece6035d9eb4c294a00f63fef8e457",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a9a42e_93ebd3e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-08T04:22:02Z",
+      "side": 1,
+      "message": "1. I measured the time it takes to create one process \u0026 allocate the memory (I repeated it and took average with my eyes)\n\n250MB:\nin Guest: 1.6s\nin Host: 360ms\n\n25MB:\nin Guest: 160ms\nin Host : 36s\n\nThe time is proportional to the amount of memory so I think the bottleneck is the allocation time. I\u0027m now using 250MB for the problem in 6.\n\n5. Hmm weird, I thought it should fail...\n\n6. In my device, the default limit for opened files are\n\n```\nlocalhost ~ # ulimit -aS\nopen files                          (-n) 1024\n```\nHowever, the test fails after 334 files opened (maybe a lot of other files are opened by the system?)\n\nThe limit defined in the Kernel config is:\n\n```\nlocalhost ~ # ulimit -aH\nopen files                          (-n) 4096\n```\n\nMaybe we can increase the limit temporarily with a command at the start of the test and set it back to the default at the clean up. Personally I feel that is too much... How do you think?\n\nI\u0027m also wondering if there is a way to \"deceive\" the process (the system does not manage the fd anymore but the process thinks the fd is opened by someone). If that is possible it is the best because we do not send anything to stdin explicitly. Do you know any way to realize it?",
+      "parentUuid": "1d37c4b0_26566df0",
+      "revId": "eb86606c88ece6035d9eb4c294a00f63fef8e457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

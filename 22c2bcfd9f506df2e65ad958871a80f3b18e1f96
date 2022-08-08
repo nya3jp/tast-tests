@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af9fba10_f202fd53",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_allocation_manager.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-08T04:22:02Z",
+      "side": 1,
+      "message": "I updated the code and removed the duplicated parts as you have mentioned. However, I didn\u0027t change the external interface of the `MemoryAllocationManager` much and just gave `target` and `a *arc.ARC` to the `MemoryAllocationManager` and let it do different setup/cleanup/command creation with its internal value. I thought it was useful for the users of the structure that they could forget what was the target of the memory allocation. However, I\u0027m willing to follow further advice about that design.",
+      "parentUuid": "ca9f203d_cecc0aef",
+      "revId": "22c2bcfd9f506df2e65ad958871a80f3b18e1f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6ff7741_6912c3f8",
@@ -83,6 +101,24 @@
       "writtenOn": "2022-08-01T05:53:04Z",
       "side": 1,
       "message": "Change the references to Crostini",
+      "revId": "22c2bcfd9f506df2e65ad958871a80f3b18e1f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6a8cc7a_0833d25f",
+        "filename": "src/chromiumos/tast/local/memory/memoryuser/memory_allocation_unit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1543862
+      },
+      "writtenOn": "2022-08-08T04:22:02Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "b6ff7741_6912c3f8",
       "revId": "22c2bcfd9f506df2e65ad958871a80f3b18e1f96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
