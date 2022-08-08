@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "facf1d43_d1dd37a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-08T16:57:33Z",
+      "side": 1,
+      "message": "I don\u0027t get why do we need 5 seconds exactly?\nIs this something required before calling `utils.NewMojoAPI()`?\nCannot we keep polling till it\u0027s connected somehow?",
+      "revId": "8837f44deef77b3a9d579f4997c321739ee217d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87b77806_796f10dc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/render_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-08T16:57:33Z",
+      "side": 1,
+      "message": "minor nit: comments should end with `.` at the end.\nThe same for lines `45` and `61`",
+      "revId": "8837f44deef77b3a9d579f4997c321739ee217d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c61651_6aa6df17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-08T16:57:33Z",
+      "side": 1,
+      "message": "minor nit: comments should end with `.` at the end.\nthe same for lines `45` and `70`",
+      "revId": "8837f44deef77b3a9d579f4997c321739ee217d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
