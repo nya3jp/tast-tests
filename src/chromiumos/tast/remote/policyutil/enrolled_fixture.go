@@ -159,7 +159,11 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 				if _, err := policyClient.RemoveFakeDMSDir(ctx, &pspb.RemoveFakeDMSDirRequest{
 					Path: e.fdmsDir,
 				}); err != nil {
-					s.Error("Failed to remove FakeDMS directory: ", err)
+					if ctx.Err() != nil {
+						s.Error("Failed to remove FakeDMS directory: ", err)
+					} else {
+						s.Log("Failed to remove FakeDMS directory: ", err)
+					}
 				}
 			}
 		}()
