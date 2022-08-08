@@ -22,6 +22,30 @@
       },
       "revId": "285c0bbf47c14a0f8be16761cd0b7372db0cf49b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61dbc47f_1bdb810c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-08-08T03:10:37Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "1c7ffc74_56954fd8",
+      "range": {
+        "startLine": 100,
+        "startChar": 7,
+        "endLine": 100,
+        "endChar": 10
+      },
+      "revId": "285c0bbf47c14a0f8be16761cd0b7372db0cf49b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
