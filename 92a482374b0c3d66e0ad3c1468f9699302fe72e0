@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9824640e_6f7290b2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "Our style checks prevent else statements after a return and I need to use `cr`, so I\u0027d have to do the error check last which seems like worse Golang style. Our presubmit style error message says to just split it out like I have it:\n\nIf I do\n```\nif cr, err :\u003d chrome.New(ctx, chromeOpts...); err !\u003d nil {\n\t\treturn nil, errors.Wrap(err, \"failed to create new Chrome\")\n\t} else {\n\t\tbts.cr \u003d cr\n\t}\n```\nI get this error in presubmit check:\n\n```\n[FAILED] chromiumos/platform/tast-tests: tast_lint                           \n    Hook script \"../tast-tests/tools/run_lint.sh -commit\u003d${PRESUBMIT_COMMIT}\" failed with code 1:\n      Following errors should be modified by yourself:\n        src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go:47:9: if block ends with a return statement, so drop this else and outdent its block (move short variable declaration to its own line if necessary)\n      \n        Refer the following documents for details:\n         https://golang.org/wiki/CodeReviewComments#indent-error-flow\n```\n\nSo I\u0027ll leave it as-is to match the style requirement.",
+      "parentUuid": "c0e38c81_3b2dce6f",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2fc884d_8a80e49d",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-08-06T00:41:31Z",
       "side": 1,
       "message": "In general, it is not recommended to have any logic in the init() of tast tests, services, and fixtures.",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d912540c_bce12e0a",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "I had it like that originally but it seems like a lot of repeated code. While I don\u0027t like repeated code, I can see the benefit of keeping it like that. I\u0027ve updated it.",
+      "parentUuid": "c2fc884d_8a80e49d",
       "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15cfd29d_d330ae49",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "Hmm I guess I don\u0027t, I\u0027ve removed it. I put it there for more of a logic time saver but it\u0027s so negligible it\u0027s probably better just to not have it and reduce the need for this check each time.",
+      "parentUuid": "a628854c_db9f7b2c",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ec76950_4b98939a",
@@ -99,6 +153,30 @@
       "writtenOn": "2022-08-08T11:22:53Z",
       "side": 1,
       "message": "nit: use the same cases with the comment above",
+      "range": {
+        "startLine": 148,
+        "startChar": 32,
+        "endLine": 148,
+        "endChar": 39
+      },
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd9d7de2_0ac647da",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "Usually `btpeers` is all lowercase across our systems, and I only have it uppercase for function and variable naming guidelines. I\u0027ve updated the error message above this one to use `btpeers` instead of `BTPeers` and left this one as-is.",
+      "parentUuid": "3ec76950_4b98939a",
       "range": {
         "startLine": 148,
         "startChar": 32,
@@ -132,6 +210,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9554821c_ff386c89",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "Since there is the struct declaration in the function call I thought it was a bit large to have within the if statement itself originally. I\u0027ve updated it to keep with the go-style like this.",
+      "parentUuid": "6f2186d6_2e640870",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 16
+      },
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "955014d5_a701ae93",
@@ -145,6 +247,30 @@
       "writtenOn": "2022-08-08T11:22:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 3
+      },
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b04726_3a584802",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "955014d5_a701ae93",
       "range": {
         "startLine": 171,
         "startChar": 2,
@@ -172,6 +298,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7786405_a1ce5a83",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc689dde_b96bfc5c",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55ca8082_e78d33ef",
@@ -189,6 +333,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a573f53_01bc07f9",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "It\u0027s not necessary since if Reset fails it will then move on to TearDown and SetUp, which will preform more heavy-weight environment resets.\n\n\nFrom FixtureImpl:\n```\n\t// If Reset returns a non-nil error, the framework tears down and re-sets up the fixture to\n\t// recover. To be accurate, the following methods are called in order:\n\t//  - Descendant fixtures\u0027 TearDown in ascending order\n\t//  - This fixture\u0027s TearDown\n\t//  - This fixture\u0027s SetUp\n\t//  - Descendant fixtures\u0027 SetUp in descending order\n```",
+      "parentUuid": "55ca8082_e78d33ef",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9984756_7f8d462f",
@@ -202,6 +364,24 @@
       "writtenOn": "2022-08-06T00:41:31Z",
       "side": 1,
       "message": "Should we continue to clean up even if we get an error?",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f01c5d_03734548",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "While I said no for Reset, I agree that it\u0027s more necessary in TearDown so I\u0027ve updated it to do so.",
+      "parentUuid": "a9984756_7f8d462f",
       "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -229,6 +409,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d80da2bd_c2a24d4f",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "Technically I meant \"Return\" as a synonym to reset in this case, but I can understand how that may be interpreted differently so I\u0027ve changed it to reset.",
+      "parentUuid": "7d441509_18f62e03",
+      "range": {
+        "startLine": 234,
+        "startChar": 4,
+        "endLine": 234,
+        "endChar": 10
+      },
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eec0e2be_7a3ad552",
@@ -242,6 +446,24 @@
       "writtenOn": "2022-08-06T00:41:31Z",
       "side": 1,
       "message": "How about :2222 and 127.0.0.1:2222?",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2de0d9c_3e9bc1d6",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "I added `\"\"` and `\"127.0.0.1\"` checks to account for this. Port doesn\u0027t matter here.",
+      "parentUuid": "eec0e2be_7a3ad552",
       "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -263,6 +485,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba73f7a_b6b6feab",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "No but it doesn\u0027t matter, this is just to create a realistic example in the error message. I expect people to use `labtunnel` to create these tunnels and that starts at `2200` (dut usually takes `2200` so I started at `2201`). Any allowed local port can be used really.",
+      "parentUuid": "662f513f_59313a7d",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28835107_403c541d",
@@ -280,6 +520,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "145a770c_9d7b975c",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "It doesn\u0027t hurt. I\u0027ve updated it to just return the first error but still try to reset all of them.",
+      "parentUuid": "28835107_403c541d",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fa68329_331885d9",
@@ -293,6 +551,24 @@
       "writtenOn": "2022-08-06T00:41:31Z",
       "side": 1,
       "message": "Do not need \"else\"? just \"if !success\"",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b5effd_0190fc24",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/bluetooth/test_connect_to_btpeers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:43Z",
+      "side": 1,
+      "message": "We need `!success` because the Reboot Chameleond method can still be a successful XMLRPC call (`err \u003d\u003d nil`) but return `false`, indicating that the Reboot failed. \n\nAt least, that\u0027s what it does for most of these methods and what I thought it did for Reboot. I took another look at the Chameleond source and it looks like Reset never returns anything so I\u0027ve updated the new client API to not return bool and removed this additional check.",
+      "parentUuid": "8fa68329_331885d9",
       "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
