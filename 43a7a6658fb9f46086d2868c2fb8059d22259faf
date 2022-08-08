@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77bf89fb_390edcc4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-08T16:29:13Z",
+      "side": 1,
+      "message": "It was chosen as a value long enough that none of the BLD lab printers would time out on it. I think the test runs a bit faster now than it used to, but there can be a lot of paper sizes and advanced settings. The latter has an especially high time cost, since for each available value of each advanced setting, we have to open the advanced settings dialog, type in the search box, change the setting, and then close the advanced settings dialog so we can check the state of the Print button.",
+      "parentUuid": "9429f36a_8d068703",
+      "revId": "43a7a6658fb9f46086d2868c2fb8059d22259faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddce2df9_2f450573",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
         "patchSetId": 2
@@ -77,6 +95,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3a3246f_75c49007",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-08T16:29:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fe970163_7e8170f7",
+      "revId": "43a7a6658fb9f46086d2868c2fb8059d22259faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cf0c735_eea7db31",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
         "patchSetId": 2
@@ -88,6 +124,24 @@
       "writtenOn": "2022-08-05T18:05:54Z",
       "side": 1,
       "message": "Could you stick the name that failed into the message?  That should make it a lot easier to debug if this ever triggers.",
+      "revId": "43a7a6658fb9f46086d2868c2fb8059d22259faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c39de587_ee7e8790",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-08T16:29:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1cf0c735_eea7db31",
       "revId": "43a7a6658fb9f46086d2868c2fb8059d22259faf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
