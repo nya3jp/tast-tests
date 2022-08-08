@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2aec5f49_b1077ed4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-08T16:52:39Z",
+      "side": 1,
+      "message": "chrome.New() + SetUpWithURL + lacros.Config.Opts() conditionally for lacros as you see there, which I believe is considered the browser setup that we would like `browserfixt` as a layer to encapsulate. There are at least two tests in my queue that this could be useful for.",
+      "parentUuid": "1bbda3ab_ef618146",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "301298c8_1bb0a400",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
         "patchSetId": 2
