@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad093c9_da6c3660",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-08T15:01:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f603856c_80a73dc9",
+      "revId": "4927b10cd8bd3840cd0139aa94ff3b6bb3271b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3195af4c_347932c7",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-08-05T16:31:36Z",
       "side": 1,
       "message": "nit: comments should end with . at the end.",
+      "revId": "4927b10cd8bd3840cd0139aa94ff3b6bb3271b09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d58a7253_882eddc1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/oauth_token.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1545249
+      },
+      "writtenOn": "2022-08-08T15:01:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3195af4c_347932c7",
       "revId": "4927b10cd8bd3840cd0139aa94ff3b6bb3271b09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
