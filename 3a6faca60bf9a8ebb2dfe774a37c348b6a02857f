@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae52f271_68ce0bd3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-08T12:25:36Z",
+      "side": 1,
+      "message": "nit: I\u0027d write \"for installation of trusted certification authorities for tests, and for using server certificates issued by such a trusted test authority\".",
+      "range": {
+        "startLine": 5,
+        "startChar": 40,
+        "endLine": 5,
+        "endChar": 64
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b76f06_fac83487",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-08T12:25:36Z",
+      "side": 1,
+      "message": "WDYT about \"to regard test certs as trusted\" ? Or to \"successfully verify\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 71
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb0cc832_052dc7eb",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-08T12:25:36Z",
+      "side": 1,
+      "message": "IMO it\u0027d be a good thing to mention here (maybe even in a Warning: ) that while this is active, the default set of trusted CAs is not active, so HTTPS communication to publicly-trusted web hosts will not be possible\n\n(unless we copy the default trust store into the tmp dir before remounting)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f065fa1c_68f8030a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-08T12:25:36Z",
+      "side": 1,
+      "message": "WDYT about calling this servercerts or something like that to make it explicit that it\u0027s about (trusted) certificates for our self-rolled test servers, and not about e.g. client certificates?",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 13
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7452b4f_a90072f9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-08T12:25:36Z",
+      "side": 1,
+      "message": "It will also remove the mount to |certDirectory|, right?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c43c370b_cec55d7c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-08T12:25:36Z",
+      "side": 1,
+      "message": "WDYT:\n\ncertDirectory is the directory of the default trust store (contains CA certificates of authorities trusted by default)",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 55
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5796c982_30118b8e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-08T12:25:36Z",
+      "side": 1,
+      "message": "Out of interest: Could we mount our own tmpfs instance somewhere else instead of remounting the \"existing tmpfs /tmp\"?",
+      "range": {
+        "startLine": 59,
+        "startChar": 37,
+        "endLine": 59,
+        "endChar": 76
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
