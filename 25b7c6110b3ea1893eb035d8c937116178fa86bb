@@ -46,6 +46,30 @@
       },
       "revId": "25b7c6110b3ea1893eb035d8c937116178fa86bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "068c4383_5d81c0b8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-08T23:15:45Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "92fcb5b7_3efb0a38",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 3
+      },
+      "revId": "25b7c6110b3ea1893eb035d8c937116178fa86bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
