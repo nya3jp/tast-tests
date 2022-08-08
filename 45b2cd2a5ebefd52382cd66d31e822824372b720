@@ -51,6 +51,24 @@
       "parentUuid": "1f7f4695_de6554b1",
       "revId": "45b2cd2a5ebefd52382cd66d31e822824372b720",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "071fe388_329ffec6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1455229
+      },
+      "writtenOn": "2022-08-08T08:30:32Z",
+      "side": 1,
+      "message": "Conference cuj doesn\u0027t depend on LacrosOnly or LacrosPrimary.\nBoth can be applied without problems.\nBut cuj\u0027s cases all use LacrosPrimary.\nUsing LacrosPrimary is for consistency.",
+      "parentUuid": "ffcfa173_7007dab3",
+      "revId": "45b2cd2a5ebefd52382cd66d31e822824372b720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
