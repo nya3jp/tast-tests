@@ -10,6 +10,7 @@ import (
 
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/bundles/cros/inputs/fixture"
+	"chromiumos/tast/local/bundles/cros/inputs/pre"
 	"chromiumos/tast/local/bundles/cros/inputs/testserver"
 	"chromiumos/tast/local/bundles/cros/inputs/util"
 	"chromiumos/tast/local/chrome/ime"
@@ -20,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/useractions"
 	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
 func init() {
@@ -34,12 +36,27 @@ func init() {
 		Timeout:      5 * time.Minute,
 		Params: []testing.Param{
 			{
-				Fixture: fixture.ClamshellNonVKWithMultiwordSuggest,
+				Fixture:           fixture.ClamshellNonVKWithMultiwordSuggest,
+				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+			},
+			{
+				Name:              "informational",
+				Fixture:           fixture.ClamshellNonVKWithMultiwordSuggest,
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			},
 			{
 				Name:              "lacros",
 				Fixture:           fixture.LacrosClamshellNonVKWithMultiwordSuggest,
 				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraAttr:         []string{"group:input-tools-upstream"},
+				ExtraHardwareDeps: hwdep.D(pre.InputsStableModels),
+			},
+			{
+				Name:              "lacros_informational",
+				Fixture:           fixture.LacrosClamshellNonVKWithMultiwordSuggest,
+				ExtraSoftwareDeps: []string{"lacros"},
+				ExtraHardwareDeps: hwdep.D(pre.InputsUnstableModels),
 			},
 		},
 	})
