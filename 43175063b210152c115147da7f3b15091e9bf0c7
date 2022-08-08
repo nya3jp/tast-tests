@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a27f045_73f63625",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-08T18:06:07Z",
+      "side": 1,
+      "message": "Changed to using the new browserfixt.NewChrome() + SetUpWithURL.",
+      "revId": "43175063b210152c115147da7f3b15091e9bf0c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
