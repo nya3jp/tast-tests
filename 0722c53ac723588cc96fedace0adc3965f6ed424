@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "773e411d_f2398e5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-08T05:20:18Z",
+      "side": 1,
+      "message": "lgtm with nits",
+      "revId": "0722c53ac723588cc96fedace0adc3965f6ed424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "083cd9f8_24d45a17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/gamingproxycuj/cros_video.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-08T05:20:18Z",
+      "side": 1,
+      "message": "\u0027Get\u0027 is not a legal prefix in Go.",
+      "range": {
+        "startLine": 126,
+        "startChar": 20,
+        "endLine": 126,
+        "endChar": 33
+      },
+      "revId": "0722c53ac723588cc96fedace0adc3965f6ed424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90415d7d_ed2b41b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/spera/gamingproxycuj/run.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-08T05:20:18Z",
+      "side": 1,
+      "message": "do you mean \"3 times\" or \"15 minutes\"?",
+      "range": {
+        "startLine": 245,
+        "startChar": 24,
+        "endLine": 245,
+        "endChar": 33
+      },
+      "revId": "0722c53ac723588cc96fedace0adc3965f6ed424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
