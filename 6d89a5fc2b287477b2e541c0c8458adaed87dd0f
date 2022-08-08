@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d510a63_ce3fbc61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1530777
+      },
+      "writtenOn": "2022-08-08T22:05:21Z",
+      "side": 1,
+      "message": "Minor update removing a return bool from PeripheralKit.Reset",
+      "revId": "6d89a5fc2b287477b2e541c0c8458adaed87dd0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
