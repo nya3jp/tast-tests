@@ -51,7 +51,7 @@ func init() {
 				tabletMode: false,
 				tabTitle:   "Google",
 				browserConfigs: []browserConfig{{
-					tabURLs:   []string{"about:blank", "chrome:version", "https://www.google.com", "chrome:system"},
+					tabURLs:   []string{"about:blank", "chrome:version", "https://www.google.com", "chrome:credits"},
 					minimized: false,
 				},
 				},
@@ -64,7 +64,7 @@ func init() {
 				tabletMode: true,
 				tabTitle:   "Google",
 				browserConfigs: []browserConfig{{
-					tabURLs:   []string{"about:blank", "chrome:version", "https://www.google.com", "chrome:system"},
+					tabURLs:   []string{"about:blank", "chrome:version", "https://www.google.com", "chrome:credits"},
 					minimized: false,
 				},
 				},
@@ -76,7 +76,7 @@ func init() {
 				tabletMode: false,
 				tabTitle:   "Google",
 				browserConfigs: []browserConfig{{
-					tabURLs:   []string{"about:blank", "chrome:version", "https://www.google.com", "chrome:system"},
+					tabURLs:   []string{"about:blank", "chrome:version", "https://www.google.com", "chrome:credits"},
 					minimized: true,
 				},
 				},
@@ -89,7 +89,7 @@ func init() {
 				tabletMode: true,
 				tabTitle:   "Google",
 				browserConfigs: []browserConfig{{
-					tabURLs:   []string{"about:blank", "chrome:version", "https://www.google.com", "chrome:system"},
+					tabURLs:   []string{"about:blank", "chrome:version", "https://www.google.com", "chrome:credits"},
 					minimized: true,
 				},
 				},
@@ -101,7 +101,7 @@ func init() {
 				tabletMode: false,
 				tabTitle:   "About Version",
 				browserConfigs: []browserConfig{{
-					tabURLs:   []string{"about:blank", "chrome:system"},
+					tabURLs:   []string{"about:blank", "chrome:credits"},
 					minimized: false,
 				}, {
 					tabURLs:   []string{"chrome:version", "https://www.google.com"},
@@ -117,7 +117,7 @@ func init() {
 				tabletMode: true,
 				tabTitle:   "About Version",
 				browserConfigs: []browserConfig{{
-					tabURLs:   []string{"about:blank", "chrome:system"},
+					tabURLs:   []string{"about:blank", "chrome:credits"},
 					minimized: false,
 				}, {
 					tabURLs:   []string{"chrome:version", "https://www.google.com"},
@@ -132,7 +132,7 @@ func init() {
 				tabletMode: false,
 				tabTitle:   "About Version",
 				browserConfigs: []browserConfig{{
-					tabURLs:   []string{"about:blank", "chrome:system"},
+					tabURLs:   []string{"about:blank", "chrome:credits"},
 					minimized: false,
 				}, {
 					tabURLs:   []string{"chrome:version", "https://www.google.com"},
@@ -148,7 +148,7 @@ func init() {
 				tabletMode: true,
 				tabTitle:   "About Version",
 				browserConfigs: []browserConfig{{
-					tabURLs:   []string{"about:blank", "chrome:system"},
+					tabURLs:   []string{"about:blank", "chrome:credits"},
 					minimized: false,
 				}, {
 					tabURLs:   []string{"chrome:version", "https://www.google.com"},
