@@ -22,6 +22,30 @@
       },
       "revId": "7939504785a3d2f8cc2d66e215f3149c5594f2a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29b675c_52e02778",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_longpress_diacritics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1532972
+      },
+      "writtenOn": "2022-08-08T04:59:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "084e19d5_36c9b9c0",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 70
+      },
+      "revId": "7939504785a3d2f8cc2d66e215f3149c5594f2a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
