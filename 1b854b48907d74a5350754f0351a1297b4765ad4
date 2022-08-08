@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "274c1f44_1d8c6b34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-08T14:23:09Z",
+      "side": 1,
+      "message": "If I understand correctly, the purpose of this is to split the ProxyAdd tests to promote them separately.  Given b/240307209#comment16 I think we could hold off on this and promote them all together instead.",
+      "revId": "1b854b48907d74a5350754f0351a1297b4765ad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
