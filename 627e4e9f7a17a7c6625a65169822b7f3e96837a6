@@ -16,6 +16,54 @@
       "message": "pmarko: cert logic\nalexanderhartl: tast, go \nThanks! ",
       "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc28c4a3_f461f5b1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-08-08T12:56:21Z",
+      "side": 1,
+      "message": "\u003e \"webiste\" is a possible misspelling of \"website\".\n\nWill fix.",
+      "parentUuid": "5a73a816_05e57643",
+      "range": {
+        "startLine": 232,
+        "startChar": 32,
+        "endLine": 232,
+        "endChar": 39
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85a41739_1fb3ba96",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-08-08T12:56:21Z",
+      "side": 1,
+      "message": "\u003e \"propogate\" is a possible misspelling of \"propagate\".\n\nWill fix.",
+      "parentUuid": "68bdb4db_86b79858",
+      "range": {
+        "startLine": 273,
+        "startChar": 56,
+        "endLine": 273,
+        "endChar": 65
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
