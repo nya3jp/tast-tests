@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "582a9dba_57aecc6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549388
+      },
+      "writtenOn": "2022-08-08T08:00:39Z",
+      "side": 1,
+      "message": "Thanks for feedback and suggestions. New modifications updated in new patch.",
+      "revId": "886fca3498685ebb7d896b81f44c7366fec071cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
