@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43a795d3_89791988",
+        "filename": "src/chromiumos/tast/local/bundles/cros/inputs/physical_keyboard_multiword_suggestion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1508900
+      },
+      "writtenOn": "2022-08-08T04:14:35Z",
+      "side": 1,
+      "message": "do we really need a `lacros informational` variant?\n\nIMO, if a test is failing because of lacros, it could be caught by lacros tests on stable devices. If the test is failing because of the feature on a specific device, it should be caught by ash informational tests. I am not sure if there could be a bug that only happen with lacros on unstable devices.",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 57
+      },
+      "revId": "1f90301d51e8c10330435e86bacf03644679a749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
