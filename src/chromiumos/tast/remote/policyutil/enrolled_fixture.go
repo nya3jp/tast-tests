@@ -8,7 +8,10 @@ import (
 	"context"
 	"encoding/json"
 	"io/ioutil"
+	"os"
+	"path"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"time"
 
@@ -112,6 +115,7 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		}
 	}()
 
+	tries := 0
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
 		// Make sure we have enough time to perform enrollment.
 		// This helps differentiate real issues from timeout hitting different components.
@@ -127,7 +131,8 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 			return testing.PollBreak(errors.Errorf("invalid output when running command over SSH: got %q; want %q", string(out), "1"))
 		}
 
-		s.Log("Attempting enrollment")
+		tries = tries + 1
+		s.Logf("Attempting enrollment, try %d", tries)
 
 		ctx, cancel := context.WithTimeout(ctx, enrollmentRunTimeout)
 		defer cancel()
@@ -177,11 +182,33 @@ func (e *enrolledFixt) SetUp(ctx context.Context, s *testing.FixtState) interfac
 		}()
 
 		// Always dump the logs.
-		defer func() {
-			if err := linuxssh.GetFile(ctx, s.DUT().Conn(), fakedms.EnrollmentFakeDMSDir, filepath.Join(s.OutDir(), "EnrollmentFakeDMSDir"), linuxssh.PreserveSymlinks); err != nil {
-				s.Log("Failed to dump: ", err)
+		defer func(ctx context.Context) {
+			triesStr := strconv.Itoa(tries)
+
+			attemptDir := path.Join(s.OutDir(), "Attempt_"+triesStr)
+
+			if err := os.Mkdir(attemptDir, 0777); err != nil {
+				s.Log("Failed to create attempt dir: ", err)
 			}
-		}()
+
+			chromeDir := path.Join(attemptDir, "Chrome")
+			if err := os.Mkdir(chromeDir, 0777); err != nil {
+				s.Log("Failed to create Chrome dir: ", err)
+			}
+
+			if err := linuxssh.GetFile(ctx, s.DUT().Conn(), "/var/log/chrome/chrome", filepath.Join(chromeDir, "chrome.log"), linuxssh.DereferenceSymlinks); err != nil {
+				s.Log("Failed to dump Chrome log: ", err)
+			}
+
+			fdmsDir := path.Join(attemptDir, "FakeDMS")
+			if err := os.Mkdir(fdmsDir, 0777); err != nil {
+				s.Log("Failed to create FakeDMS dir: ", err)
+			}
+
+			if err := linuxssh.GetFile(ctx, s.DUT().Conn(), e.fdmsDir, fdmsDir, linuxssh.DereferenceSymlinks); err != nil {
+				s.Log("Failed to dump FakeDMS dir: ", err)
+			}
+		}(ctx)
 
 		pJSON, err := json.Marshal(policy.NewBlob())
 		if err != nil {
