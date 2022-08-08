@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef0eefe_bc8cbae9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-08T05:51:22Z",
+      "side": 1,
+      "message": "nit: double space.",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "37018e9e9fe2598318041d74b332b631021f3fe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5b010e73_955cb470",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-08-08T05:45:20Z",
       "side": 1,
       "message": "+ shengjun@ and davidwelling@ as owners, Can you pls take a look?",
+      "revId": "37018e9e9fe2598318041d74b332b631021f3fe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efcc08cf_b861a63a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-08T05:51:22Z",
+      "side": 1,
+      "message": "LGTM % nits",
       "revId": "37018e9e9fe2598318041d74b332b631021f3fe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
