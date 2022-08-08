@@ -197,6 +197,18 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		ui.MakeVisible(joinButton),
 		ui.LeftClickUntil(joinButton, ui.WithTimeout(shortUITimeout).WaitUntilGone(joinButton)),
 	))
+	waitForZoomPageToLoad := func(ctx context.Context) error {
+		// Use 1 minute timeout value because it may take longer to wait for page loading,
+		// especially for some low end DUTs.
+		if err := ui.WithTimeout(longUITimeout).WaitUntilExists(zoomWebArea)(ctx); err != nil {
+			noPermissionText := nodewith.Name("No permission. (200)").Role(role.StaticText)
+			if ui.Exists(noPermissionText)(ctx) == nil {
+				return errors.Wrap(err, `the "No Permission" problem is displayed, zoom account may require re-registration`)
+			}
+			return err
+		}
+		return nil
+	}
 	return uiauto.NamedCombine("join conference",
 		openZoomAndSignIn,
 		ui.WaitUntilExists(joinFromYourBrowser),
@@ -207,9 +219,7 @@ func (conf *ZoomConference) Join(ctx context.Context, room string, toBlur bool) 
 		ui.WaitUntilExists(video),
 		allowPerm,
 		clickJoinButton,
-		// Use 1 minute timeout value because it may take longer to wait for page loading,
-		// especially for some low end DUTs.
-		ui.WithTimeout(longUITimeout).WaitUntilExists(zoomWebArea),
+		waitForZoomPageToLoad,
 		// Sometimes participants number caught at the beginning is wrong, it will be correct after a while.
 		// Add retry to get the correct participants number.
 		ui.WithInterval(time.Second).Retry(10, checkParticipantsNum),
