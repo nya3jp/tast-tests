@@ -237,9 +237,9 @@ func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEv
 	return state, nil
 }
 
-// SetWindowStateAndWait requests a WMEvent to make the window for the id to be
-// in the targetState, and wait for the window animations when it happens. It
-// returns an error when it can't be in the target state. It will return nil
+// SetWindowStateAndWait changes the state of the window and waits until it
+// becomes visible in the given state and the animation is done. It returns
+// an error when it can't be in the target state. It will return nil
 // when the window is already in the target state.
 func SetWindowStateAndWait(ctx context.Context, tconn *chrome.TestConn, id int, targetState WindowStateType) error {
 	gotState, err := SetWindowState(ctx, tconn, id, stateToWmTypes[targetState], true /* waitForStateChange */)
@@ -249,8 +249,10 @@ func SetWindowStateAndWait(ctx context.Context, tconn *chrome.TestConn, id int, 
 	if gotState != targetState {
 		return errors.Errorf("failed to set the window state: got %v want %v", gotState, targetState)
 	}
-	if err = WaitWindowFinishAnimating(ctx, tconn, id); err != nil {
-		return errors.Wrap(err, "failed to wait for the window animation")
+	if err := WaitForCondition(ctx, tconn, func(window *Window) bool {
+		return window.State == targetState && window.ID == id && window.IsVisible && !window.IsAnimating
+	}, defaultPollOptions); err != nil {
+		return errors.Wrapf(err, "failed to wait to set window state to: %v", targetState)
 	}
 	return nil
 }
