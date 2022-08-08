@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90212cf0_dde808b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-08T11:22:53Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm in general, except for the comments by seewaifu@\nMaybe get the review from a feature expert at first?",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0e38c81_3b2dce6f",
@@ -71,6 +88,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ec76950_4b98939a",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-08T11:22:53Z",
+      "side": 1,
+      "message": "nit: use the same cases with the comment above",
+      "range": {
+        "startLine": 148,
+        "startChar": 32,
+        "endLine": 148,
+        "endChar": 39
+      },
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f2186d6_2e640870",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-08T11:22:53Z",
+      "side": 1,
+      "message": "nit: \n```\nif _, err :\u003d ...; err !\u003d nil {\n  ...\n}\n```",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 16
+      },
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "955014d5_a701ae93",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-08T11:22:53Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 3
+      },
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc689dde_b96bfc5c",
         "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
         "patchSetId": 1
@@ -116,6 +202,29 @@
       "writtenOn": "2022-08-06T00:41:31Z",
       "side": 1,
       "message": "Should we continue to clean up even if we get an error?",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d441509_18f62e03",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-08T11:22:53Z",
+      "side": 1,
+      "message": "nit: reset?",
+      "range": {
+        "startLine": 234,
+        "startChar": 4,
+        "endLine": 234,
+        "endChar": 10
+      },
       "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
