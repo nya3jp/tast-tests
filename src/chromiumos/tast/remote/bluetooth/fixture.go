@@ -186,6 +186,9 @@ func (tf *fixture) Reset(ctx context.Context) (retErr error) {
 		if err != nil {
 			return errors.Wrap(err, "failed to enable bluetooth adapter on DUT")
 		}
+		if _, err := tf.fv.BTS.DisconnectAllDevices(ctx, &emptypb.Empty{}); err != nil {
+			return errors.Wrap(err, "failed to disconnected all bluetooth devices")
+		}
 	}
 	if err := tf.resetBTPeers(ctx); err != nil {
 		return errors.Wrap(err, "failed to reset all btpeers")

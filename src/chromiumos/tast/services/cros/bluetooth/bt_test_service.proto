@@ -24,8 +24,25 @@ service BTTestService {
 
   // DisableBluetoothAdapter powers off the bluetooth adapter.
   rpc DisableBluetoothAdapter(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+
+  // PairAndConnectDevice pairs and connects to the specified Device.
+  rpc PairAndConnectDevice(PairAndConnectDeviceRequest) returns (google.protobuf.Empty) {}
+
+  // DisconnectAllDevices disconnects all connected bluetooth devices.
+  rpc DisconnectAllDevices(google.protobuf.Empty) returns (google.protobuf.Empty) {}
 }
 
 message ChromeNewRequest {
   bool bluetoothRevampEnabled = 1;
 }
+
+message Device {
+  string macAddress = 1;
+  string alias = 2;
+}
+
+message PairAndConnectDeviceRequest {
+  Device device = 1;
+}
+
+
