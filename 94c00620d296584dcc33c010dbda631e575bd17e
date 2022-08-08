@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "811e988a_0aac1948",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/virtualnet/httpserver/httpserver.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-08T02:44:27Z",
+      "side": 1,
+      "message": "I suppose this does not work as what we want -- h.server.ServeTLS() below is a blocking call and does not take ctx as a parameter. It actually relies on when Stop() is called, and thus if the ctx here has already expired when it is called, this cleanup will not be done. So perhaps we should move the uninstallCerts() back to Stop() (sorry for the inconsistent comments!), or perhaps alvinjia@ has some better suggestions here?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 17
+      },
+      "revId": "94c00620d296584dcc33c010dbda631e575bd17e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
