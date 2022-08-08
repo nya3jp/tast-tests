@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9da9c1ce_257f8f11",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-08T07:12:53Z",
+      "side": 1,
+      "message": "style: OS, OEM, SKU etc. (all capital letters for acronyms).",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 3
+      },
+      "revId": "2b9e3e0ed1216689aa95d87fda6982b222e68499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa307e56_eb30d9e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-08T07:12:53Z",
+      "side": 1,
+      "message": "could you document what\u0027s \"fpath\" ?",
+      "revId": "2b9e3e0ed1216689aa95d87fda6982b222e68499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91efee7_e8097b12",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-08T07:12:53Z",
+      "side": 1,
+      "message": "why it\u0027s a pointer...?",
+      "range": {
+        "startLine": 160,
+        "startChar": 59,
+        "endLine": 160,
+        "endChar": 60
+      },
+      "revId": "2b9e3e0ed1216689aa95d87fda6982b222e68499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70c4acea_e06ab600",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-08T07:12:53Z",
+      "side": 1,
+      "message": "nit:\n\nconst cfgSKUNumber \u003d \"...\"",
+      "revId": "2b9e3e0ed1216689aa95d87fda6982b222e68499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
