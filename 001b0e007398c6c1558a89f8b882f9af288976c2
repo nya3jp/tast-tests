@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ebf5faf_e9288bf6",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-08T18:58:44Z",
+      "side": 1,
+      "message": "I may not fully be getting how to move this forward.\nMy assumption is that users should technically be able to set extensions for both browsers based on `ExtraExtDirs` and `LacrosExtraExtDirs` passed in when necessary for test scenarios (although it is not common)\nBut, if it\u0027s not the case, can you please give a snippet of what it should be like so I can follow along?\n\nGoing off a bit, since this CL gets large and touches many places that are likely to be conflicted over time, I was wondering if we can get the core part of this in then fill up any gaps in a follow up. Please suggest.",
+      "parentUuid": "bf2f6375_244b0e65",
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "596881e4_a6c6005a",
         "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
         "patchSetId": 4
@@ -179,6 +197,30 @@
       "side": 1,
       "message": "I think we want --load-extension\u003d only.\nCan others be kept in lacros\u0027s default flag set?",
       "parentUuid": "fe166d9f_297bff9d",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 111
+      },
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce95a19f_d76dd0f0",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-08T18:58:44Z",
+      "side": 1,
+      "message": "Sure. To be consistent with ash-chrome `--remote-debugging-port\u003d0` and `--enable-experimental-extension-apis` are moved to lacros default flags, while `--allowlisted-extension-id` and `--load-extension` are kept here. PTAL.",
+      "parentUuid": "e3616013_2039fbae",
       "range": {
         "startLine": 186,
         "startChar": 2,
