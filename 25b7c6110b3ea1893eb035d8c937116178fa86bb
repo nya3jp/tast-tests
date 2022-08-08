@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a288d3a0_7ba139ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-08T04:48:11Z",
+      "side": 1,
+      "message": "I do not understand why keyboard shortcuts first? Seems the error is completely ignored, it does not have any value here.",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 3
+      },
+      "revId": "25b7c6110b3ea1893eb035d8c937116178fa86bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
