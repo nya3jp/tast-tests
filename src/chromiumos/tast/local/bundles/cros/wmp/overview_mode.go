@@ -15,6 +15,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -25,7 +26,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         OverviewMode,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that overview mode works correctly",
 		Contacts: []string{
 			"yichenz@chromium.org",
@@ -34,7 +35,15 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -44,7 +53,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -58,19 +67,32 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
 
+	// Ensure there is no window open before test starts.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to ensure no window is open: ", err)
+	}
+
 	ac := uiauto.New(tconn)
 
-	for _, app := range []apps.App{apps.Files, apps.Chrome} {
+	bt := s.Param().(browser.Type)
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
+	if err != nil {
+		s.Fatal("Could not find browser app info: ", err)
+	}
+	for _, app := range []apps.App{apps.Files, browserApp} {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to launch %s: %s", app.Name, err)
 		}
 		if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 			s.Fatalf("%s did not appear in shelf after launch: %s", app.Name, err)
 		}
+		if err := ash.WaitForAppWindow(ctx, tconn, app.ID); err != nil {
+			s.Fatalf("%s did not become visible: %s", app.Name, err)
+		}
 	}
-	// Set Chrome window's state to maximaized and Files window's state to normal.
+	// Set Chrome window's state to maximized and Files window's state to normal.
 	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
-		if isChromeWindow(w) {
+		if ash.BrowserTypeMatch(bt)(w) {
 			return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateMaximized)
 		}
 		if strings.Contains(w.Title, "Files") {
@@ -93,7 +115,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 				return testing.PollBreak(animationError)
 			}
 			for _, window := range ws {
-				if isChromeWindow(window) && !window.IsAnimating {
+				if ash.BrowserTypeMatch(bt)(window) && !window.IsAnimating {
 					animationError = errors.New("chrome window is not animating")
 					return animationError
 				}
@@ -115,7 +137,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 	}
 
 	// Clicking the close button in overview should close the window.
-	chromeOverviewItemView := nodewith.NameRegex(regexp.MustCompile("New Tab(.*?)")).ClassName("OverviewItemView")
+	chromeOverviewItemView := nodewith.NameRegex(regexp.MustCompile(".*New Tab")).ClassName("OverviewItemView")
 	closeChromeButton := nodewith.ClassName("CloseButton").Ancestor(chromeOverviewItemView)
 	if err := ac.LeftClick(closeChromeButton)(ctx); err != nil {
 		s.Fatal("Failed to close chrome window: ", err)
@@ -130,11 +152,7 @@ func OverviewMode(ctx context.Context, s *testing.State) {
 	if len(ws) != 1 {
 		s.Fatalf("Expected 1 window, got %v window(s)", len(ws))
 	}
-	if isChromeWindow(ws[0]) {
+	if ash.BrowserTypeMatch(bt)(ws[0]) {
 		s.Fatal("Chrome window still exists after closing it in overview")
 	}
-}
-
-func isChromeWindow(w *ash.Window) bool {
-	return strings.Contains(w.Title, "Chrome") || strings.Contains(w.Title, "Chromium")
 }
