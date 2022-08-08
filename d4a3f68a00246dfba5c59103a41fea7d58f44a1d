@@ -45,6 +45,30 @@
       },
       "revId": "d4a3f68a00246dfba5c59103a41fea7d58f44a1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c96de47f_42b5e284",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2566,
+      "author": {
+        "id": 1551017
+      },
+      "writtenOn": "2022-08-08T21:36:45Z",
+      "side": 1,
+      "message": "I kept these functions to not replace all the functions parameters for all the tests declared from line 49-2439 and potentially breaking the workflow of the tests. But if you think it\u0027s a better approach to not keep them, I can delete these functions and have the getVAAPIArgs function in their places instead. Please let me know. \nThank you.",
+      "parentUuid": "f4a2dbaf_3f0db18d",
+      "range": {
+        "startLine": 2566,
+        "startChar": 5,
+        "endLine": 2566,
+        "endChar": 23
+      },
+      "revId": "d4a3f68a00246dfba5c59103a41fea7d58f44a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
