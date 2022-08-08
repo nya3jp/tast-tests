@@ -182,7 +182,7 @@ func (t *FirmwareTest) Close(ctx context.Context) error {
 	testing.ContextLog(ctx, "Tearing down")
 	var firstErr error
 
-	if err := ReimageFPMCU(ctx, t.DUT(), t.Servo(), t.NeedsRebootAfterFlashing()); err != nil {
+	if err := t.ReimageFPMCU(ctx); err != nil {
 		firstErr = err
 	}
 
@@ -277,6 +277,11 @@ func (t *FirmwareTest) DUTTempDir() string {
 // FPBoard gets the fingerprint board name.
 func (t *FirmwareTest) FPBoard() FPBoardName {
 	return t.fpBoard
+}
+
+// ReimageFPMCU flashes the FPMCU, initializes entropy, and sets the TPM seed.
+func (t *FirmwareTest) ReimageFPMCU(ctx context.Context) error {
+	return ReimageFPMCU(ctx, t.DUT(), t.Servo(), t.NeedsRebootAfterFlashing())
 }
 
 type daemonState struct {
