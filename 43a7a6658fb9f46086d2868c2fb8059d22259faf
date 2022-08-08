@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f4e18da_b1ffead2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-08T16:45:12Z",
+      "side": 1,
+      "message": "How would I do that? I don\u0027t know anything about the chromeLoggedIn fixture or how to use it.",
+      "parentUuid": "ddce2df9_2f450573",
+      "revId": "43a7a6658fb9f46086d2868c2fb8059d22259faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dc6409c_4509fb35",
         "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
         "patchSetId": 2
@@ -66,6 +84,30 @@
       "writtenOn": "2022-08-05T18:05:54Z",
       "side": 1,
       "message": "There should be a chrome.NewTabURL for this.",
+      "range": {
+        "startLine": 118,
+        "startChar": 30,
+        "endLine": 118,
+        "endChar": 47
+      },
+      "revId": "43a7a6658fb9f46086d2868c2fb8059d22259faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ab3aa8_0f3ac541",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/print_combinations.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-08T16:45:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9dc6409c_4509fb35",
       "range": {
         "startLine": 118,
         "startChar": 30,
