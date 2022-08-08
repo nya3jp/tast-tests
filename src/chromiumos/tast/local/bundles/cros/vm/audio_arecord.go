@@ -87,6 +87,15 @@ func init() {
 			},
 
 			{
+				Name: "vhost_user_null",
+				Val: audioArecordParams{
+					vhostUserArgs:            []string{"snd", "--config", "capture=true,backend=null,socket_type=legacy"},
+					expectedCardNames:        []string{"VirtIO SoundCard"},
+					expectedDeviceNames:      []string{"VirtIO PCM 0"},
+					expectedStreamsPerDevice: 1,
+				},
+			},
+			{
 				Name: "vhost_user_cras",
 				Val: audioArecordParams{
 					vhostUserArgs:            []string{"snd", "--config", "capture=true,backend=cras,socket_type=legacy"},

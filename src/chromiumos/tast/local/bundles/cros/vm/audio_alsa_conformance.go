@@ -47,6 +47,11 @@ func init() {
 				CrosvmArgs: []string{"--virtio-snd", "capture=true,backend=cras,socket_type=legacy"},
 			},
 		}, {
+			Name: "vhost_user_null",
+			Val: audioutils.Config{
+				VhostUserArgs: []string{"snd", "--config", "capture=true,backend=null,socket_type=legacy"},
+			},
+		}, {
 			Name: "vhost_user_cras",
 			Val: audioutils.Config{
 				VhostUserArgs: []string{"snd", "--config", "capture=true,backend=cras,socket_type=legacy"},
