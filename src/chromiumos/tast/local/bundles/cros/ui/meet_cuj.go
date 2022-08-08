@@ -1199,7 +1199,7 @@ func reportWebRTCInternals(pv *perf.Values, dump []byte, numBots int, present bo
 		var member void
 		type stringSet map[string]void
 		// Unlike byDirection["Outbound"], |outboundStreamIDs| will include every outbound
-		// stream, even if the stream has none of the statistics in |unit|.
+		// stream, even if the stream has none of the statistics in |statMetric|.
 		outboundStreamIDs := make(stringSet)
 		// |inactiveStreamIDs| are for IDs with zero frames sent/received.
 		inactiveStreamIDs := map[string]stringSet{
