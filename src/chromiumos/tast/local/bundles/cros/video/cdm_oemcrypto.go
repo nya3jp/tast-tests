@@ -24,7 +24,7 @@ func init() {
 			"chromeos-gfx-video@google.com",
 		},
 		SoftwareDeps: []string{"protected_content"},
-		Timeout:      15 * time.Minute,
+		Timeout:      20 * time.Minute,
 		Attr:         []string{"group:graphics", "graphics_video", "graphics_nightly"},
 		Params: []testing.Param{{
 			Name: "ce_cdm",
