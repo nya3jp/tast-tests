@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b7211b8_7ba829a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-08T17:30:58Z",
+      "side": 1,
+      "message": "Now that I\u0027ve just seen a new NewChrome added to browserfixt (https://crrev.com/c/3811102), so NewChrome() + SetUpWithURL() can do the same as what this change does. If that\u0027s what you meant, it is no longer needed.",
+      "parentUuid": "2aec5f49_b1077ed4",
+      "revId": "f618474d22584fb0632f9d617dbede61b2897db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "301298c8_1bb0a400",
         "filename": "src/chromiumos/tast/local/bundles/cros/example/browser_with_new_chrome.go",
         "patchSetId": 2
