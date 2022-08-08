@@ -267,6 +267,10 @@ func (c *PolicyService) EnrollUsingChrome(ctx context.Context, req *ppb.EnrollUs
 	opts = append(opts, chrome.ExtraArgs(req.ExtraArgs))
 	opts = append(opts, chrome.EnableLoginVerboseLogs())
 
+	// Make sure chrome.New does not take too long.
+	ctx, cancel := context.WithTimeout(ctx, chrome.EnrollmentAndLoginTimeout)
+	defer cancel()
+
 	cr, err := chrome.New(ctx, opts...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to start chrome")
