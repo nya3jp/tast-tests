@@ -22,6 +22,30 @@
       },
       "revId": "25b7c6110b3ea1893eb035d8c937116178fa86bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92fcb5b7_3efb0a38",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/quickcheckcuj/quick_check_cuj.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1510908
+      },
+      "writtenOn": "2022-08-08T07:56:35Z",
+      "side": 1,
+      "message": "According to the b:240884914, Xibin and Willis had discussed that using keyboard to lock the screen is more robust[#comment2](https://partnerissuetracker.corp.google.com/issues/240884914#comment2). The case will try to lock the screen from the UI only if keyboard unlock using the API doesn\u0027t work.",
+      "parentUuid": "a288d3a0_7ba139ea",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 187,
+        "endChar": 3
+      },
+      "revId": "25b7c6110b3ea1893eb035d8c937116178fa86bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
