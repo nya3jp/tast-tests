@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5a14f5_9fe41d9a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-08T18:23:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae52f271_68ce0bd3",
+      "range": {
+        "startLine": 5,
+        "startChar": 40,
+        "endLine": 5,
+        "endChar": 64
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17b76f06_fac83487",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2e3d86a_956e5736",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-08T18:23:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17b76f06_fac83487",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 71
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb0cc832_052dc7eb",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-08-08T12:25:36Z",
       "side": 1,
       "message": "IMO it\u0027d be a good thing to mention here (maybe even in a Warning: ) that while this is active, the default set of trusted CAs is not active, so HTTPS communication to publicly-trusted web hosts will not be possible\n\n(unless we copy the default trust store into the tmp dir before remounting)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae0178f8_5235a8db",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-08T18:23:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb0cc832_052dc7eb",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -116,6 +188,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27cac0ac_8ead6c15",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-08T18:23:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7452b4f_a90072f9",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e426e229_51762dd4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-08T18:23:02Z",
+      "side": 1,
+      "message": "My only concern with that is that we also work with CA certs here, which is why I went with the generic name of just \u0027certs\u0027. Also, the current input is the whole certStore, which contains all three (CA, server, and client), although we don\u0027t use the client currently (I can be convinced to change that).\n\nIf we do want to change the name, I would prefer something that makes it more clear that it is using CA and server certs, while not using client certs. IMO, this is not trivial.",
+      "parentUuid": "f065fa1c_68f8030a",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 13
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c43c370b_cec55d7c",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47ae2244_9cd781a3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-08T18:23:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c43c370b_cec55d7c",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 55
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5796c982_30118b8e",
@@ -152,6 +296,30 @@
       "writtenOn": "2022-08-08T12:25:36Z",
       "side": 1,
       "message": "Out of interest: Could we mount our own tmpfs instance somewhere else instead of remounting the \"existing tmpfs /tmp\"?",
+      "range": {
+        "startLine": 59,
+        "startChar": 37,
+        "endLine": 59,
+        "endChar": 76
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25142cbb_10097cdc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-08T18:23:02Z",
+      "side": 1,
+      "message": "I believe that we could, but I am not sure where that would exist. I expect tmp to be the directory where I would put tmp files for tests, unless there is a better directory that anyone can think of.",
+      "parentUuid": "5796c982_30118b8e",
       "range": {
         "startLine": 59,
         "startChar": 37,
