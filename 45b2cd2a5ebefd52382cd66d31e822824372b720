@@ -69,6 +69,24 @@
       "parentUuid": "ffcfa173_7007dab3",
       "revId": "45b2cd2a5ebefd52382cd66d31e822824372b720",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8f4bf90_0b9a94e8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-08T09:56:37Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ll go ahead then with this CL. We are going to move pretty much all tests to use LacrosOnly mode soon.",
+      "parentUuid": "071fe388_329ffec6",
+      "revId": "45b2cd2a5ebefd52382cd66d31e822824372b720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
