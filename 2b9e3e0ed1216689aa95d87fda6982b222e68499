@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca9a4ed0_df4cdf6e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-08-08T08:29:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9da9c1ce_257f8f11",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 3
+      },
+      "revId": "2b9e3e0ed1216689aa95d87fda6982b222e68499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa307e56_eb30d9e3",
@@ -88,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1467ad6_fd85b467",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-08-08T08:29:35Z",
+      "side": 1,
+      "message": "Rename to |filePath|. Done",
+      "parentUuid": "aa307e56_eb30d9e3",
+      "revId": "2b9e3e0ed1216689aa95d87fda6982b222e68499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70c4acea_e06ab600",
@@ -101,6 +143,24 @@
       "writtenOn": "2022-08-08T07:12:53Z",
       "side": 1,
       "message": "nit:\n\nconst cfgSKUNumber \u003d \"...\"",
+      "revId": "2b9e3e0ed1216689aa95d87fda6982b222e68499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f61fa0a_a4db3de6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1537719
+      },
+      "writtenOn": "2022-08-08T08:29:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70c4acea_e06ab600",
       "revId": "2b9e3e0ed1216689aa95d87fda6982b222e68499",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
