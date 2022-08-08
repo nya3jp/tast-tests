@@ -1292,13 +1292,6 @@ func reportWebRTCInternals(pv *perf.Values, dump []byte, numBots int, present bo
 					delete(byStreamID, streamID)
 				}
 			}
-			for streamID, byStatName := range byStreamID {
-				for statName := range statMetric {
-					if _, ok := byStatName[statName]; !ok {
-						return errors.Errorf("%s missing %s statistic for %s video stream %s", errPrefix, statName, direction, streamID)
-					}
-				}
-			}
 		}
 
 		screenShareSuffix := ""
