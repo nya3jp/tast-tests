@@ -6,6 +6,8 @@ package bluetooth
 
 import (
 	"context"
+	"sort"
+	"time"
 
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/types/known/emptypb"
@@ -27,8 +29,10 @@ func init() {
 
 // BTTestService implements tast.cros.bluetooth.BTTestService.
 type BTTestService struct {
-	s  *testing.ServiceState
-	cr *chrome.Chrome
+	s                *testing.ServiceState
+	cr               *chrome.Chrome
+	bluezAdapter     *bluetooth.Adapter
+	connectedDevices map[string]*bluetooth.Device
 }
 
 // ChromeNew logs into chrome. ChromeClose must be called later.
@@ -61,10 +65,19 @@ func (bts *BTTestService) ChromeClose(ctx context.Context, empty *emptypb.Empty)
 	return &emptypb.Empty{}, nil
 }
 
-// EnableBluetoothAdapter powers on the bluetooth adapter.
+// EnableBluetoothAdapter powers on the bluetooth adapter and waits for it to
+// be enabled.
 func (bts *BTTestService) EnableBluetoothAdapter(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
 	if err := bluetooth.Enable(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to enable bluetooth adapter")
+	}
+	if err := bluetooth.PollForBTEnabled(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for bluetooth adapter to be enabled")
+	}
+	if adapters, err := bluetooth.Adapters(ctx); err == nil {
+		bts.bluezAdapter = adapters[0]
+	} else {
+		return nil, errors.Wrap(err, "failed to get bluetooth adapters")
 	}
 	return &emptypb.Empty{}, nil
 }
@@ -73,6 +86,105 @@ func (bts *BTTestService) EnableBluetoothAdapter(ctx context.Context, empty *emp
 func (bts *BTTestService) DisableBluetoothAdapter(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
 	if err := bluetooth.Disable(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to disable bluetooth adapter")
+	}
+	if err := bluetooth.PollForBTDisabled(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to wait for bluetooth adapter to be disabled")
+	}
+	bts.bluezAdapter = nil
+	return &emptypb.Empty{}, nil
+}
+
+// PairAndConnectDevice pairs and connects to the specified Device.
+func (bts *BTTestService) PairAndConnectDevice(ctx context.Context, request *pb.PairAndConnectDeviceRequest) (*emptypb.Empty, error) {
+	if bts.bluezAdapter == nil {
+		return nil, errors.New("bluetooth adapter not initialized, call EnableBluetoothAdapter first")
+	}
+	if request.Device == nil || request.Device.Alias == "" || request.Device.MacAddress == "" {
+		return nil, errors.New("device alias and mac address required")
+	}
+
+	adapter := bts.bluezAdapter
+
+	if err := adapter.StartDiscovery(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to start discovery")
+	}
+
+	// Wait for a specific BT device to be found.
+	var btDevice *bluetooth.Device
+	if pollErr := testing.Poll(ctx, func(ctx context.Context) error {
+		var err error
+		btDevice, err = bluetooth.DeviceByAlias(ctx, request.Device.Alias)
+		if err != nil {
+			return err
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 40 * time.Second, Interval: 250 * time.Millisecond}); pollErr != nil {
+		baseErr := errors.Wrapf(pollErr, "timeout waiting for discover device with alias %q", request.Device.Alias)
+		// Failed to find the specific device. Attempt to include a list of devices that were found in the error message.
+		foundDevices, err := bluetooth.Devices(ctx)
+		if err != nil {
+			return nil, baseErr
+		}
+		foundDeviceAliases := make([]string, len(foundDevices))
+		for i := 0; i < len(foundDevices); i++ {
+			alias, err := foundDevices[i].Alias(ctx)
+			if err != nil {
+				return nil, baseErr
+			}
+			foundDeviceAliases[i] = alias
+		}
+		sort.Strings(foundDeviceAliases)
+		return nil, errors.Wrapf(pollErr, "timeout waiting for discover device with alias %q but did find %d other devices (%v)", request.Device.Alias, len(foundDevices), foundDeviceAliases)
+	}
+
+	// Pair BT Device.
+	isPaired, err := btDevice.Paired(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check if device is paired")
+	}
+	if !isPaired {
+		if err := btDevice.Pair(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to pair bluetooth device")
+		}
+	}
+
+	// Get connected status of BT device and connect if not already connected.
+	isConnected, err := btDevice.Connected(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get device connected status")
+	}
+	if !isConnected {
+		if err := btDevice.Connect(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to connect bluetooth device")
+		}
+	}
+
+	// Validate connected device is intended device.
+	btDeviceAddr, err := btDevice.Address(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get address of connected device")
+	}
+	if btDeviceAddr != request.Device.MacAddress {
+		return nil, errors.Errorf("connected device address %q does not match expected address %q", btDeviceAddr, request.Device.MacAddress)
+	}
+	btDeviceAlias, err := btDevice.Alias(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get alias of connected device")
+	}
+	if btDeviceAlias != request.Device.Alias {
+		return nil, errors.Errorf("connected device alias %q does not match expected alias %q", btDeviceAlias, request.Device.Alias)
+	}
+
+	// Store device for later requests.
+	bts.connectedDevices[btDeviceAddr] = btDevice
+
+	return &emptypb.Empty{}, nil
+}
+
+// DisconnectAllDevices disconnects all connected bluetooth devices.
+func (bts *BTTestService) DisconnectAllDevices(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
+	if err := bluetooth.DisconnectAllDevices(ctx); err != nil {
+		return nil, errors.Wrap(err, "failed to disconnect all bluetooth devices")
 	}
 	return &emptypb.Empty{}, nil
 }
