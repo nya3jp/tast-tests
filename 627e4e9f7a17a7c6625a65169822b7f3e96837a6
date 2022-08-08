@@ -18,6 +18,92 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68922ab7_3e0b061c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-08T18:04:08Z",
+      "side": 1,
+      "message": "LGTM % nits",
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "895b811f_e711a361",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-08T18:04:08Z",
+      "side": 1,
+      "message": "very nitty: caInvalidErrorRegex to be inline with the others",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d0c031_6fea8781",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-08T18:04:08Z",
+      "side": 1,
+      "message": "defer kb.Close()\n\nsame for the other uses of input.Keyboard",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbd96a00_f87f7d47",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-08T18:04:08Z",
+      "side": 1,
+      "message": "Consider changing LeftClick to DoDefault as DoDefault is more stable as it doesn\u0027t rely on the position of ui elements.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 14
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc28c4a3_f461f5b1",
@@ -61,6 +147,52 @@
         "startChar": 56,
         "endLine": 273,
         "endChar": 65
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b6f7d5e_e621c3d4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-08T18:04:08Z",
+      "side": 1,
+      "message": "nit: expected",
+      "range": {
+        "startLine": 274,
+        "startChar": 57,
+        "endLine": 274,
+        "endChar": 63
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5850190_74650884",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-08T18:04:08Z",
+      "side": 1,
+      "message": "DoDefault might be able to solve that problem.",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 2
       },
       "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
