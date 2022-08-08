@@ -102,7 +102,7 @@ func init() {
 					Interval:            defaultInterval,
 					Loops:               defaultLoops,
 					Affinity:            defaultAff,
-					P99Threshold:        defaultP99Threshold,
+					P99Threshold:        4500 * time.Microsecond,
 					StressConfig:        nil,
 					StressOutOfVMConfig: nil,
 				},
@@ -118,7 +118,7 @@ func init() {
 					Interval:            defaultInterval,
 					Loops:               defaultLoops,
 					Affinity:            defaultAff,
-					P99Threshold:        defaultP99Threshold,
+					P99Threshold:        4500 * time.Microsecond,
 					StressConfig:        nil,
 					StressOutOfVMConfig: nil,
 				},
@@ -134,7 +134,7 @@ func init() {
 					Interval:     defaultInterval,
 					Loops:        defaultLoops,
 					Affinity:     defaultAff,
-					P99Threshold: defaultP99Threshold,
+					P99Threshold: 1500 * time.Microsecond,
 					StressConfig: &schedConfig{
 						Policy:   otherSched,
 						Priority: 0,
@@ -153,7 +153,7 @@ func init() {
 					Interval:            defaultInterval,
 					Loops:               defaultLoops,
 					Affinity:            defaultAff,
-					P99Threshold:        1800 * time.Microsecond,
+					P99Threshold:        4500 * time.Microsecond,
 					StressConfig:        nil,
 					StressOutOfVMConfig: nil,
 				},
@@ -169,7 +169,7 @@ func init() {
 					Interval:            defaultInterval,
 					Loops:               defaultLoops,
 					Affinity:            defaultAff,
-					P99Threshold:        1800 * time.Microsecond,
+					P99Threshold:        4500 * time.Microsecond,
 					StressConfig:        nil,
 					StressOutOfVMConfig: nil,
 				},
@@ -185,7 +185,7 @@ func init() {
 					Interval:            defaultInterval,
 					Loops:               defaultLoops,
 					Affinity:            defaultAff,
-					P99Threshold:        5000 * time.Microsecond,
+					P99Threshold:        4500 * time.Microsecond,
 					StressConfig:        nil,
 					StressOutOfVMConfig: nil,
 				},
@@ -201,7 +201,7 @@ func init() {
 					Interval:     defaultInterval,
 					Loops:        defaultLoops,
 					Affinity:     defaultAff,
-					P99Threshold: 30000 * time.Microsecond,
+					P99Threshold: 2000 * time.Microsecond,
 					StressConfig: &schedConfig{
 						Policy:   otherSched,
 						Priority: 0,
@@ -220,7 +220,7 @@ func init() {
 					Interval:     defaultInterval,
 					Loops:        defaultLoops,
 					Affinity:     defaultAff,
-					P99Threshold: defaultP99Threshold,
+					P99Threshold: 4500 * time.Microsecond,
 					StressConfig: nil,
 					StressOutOfVMConfig: &schedConfig{
 						Policy:   otherSched,
@@ -403,7 +403,7 @@ func AudioCyclicBench(ctx context.Context, s *testing.State) {
 		p.Set(maxLatency, stat.Max)
 
 		if stat.P99 > float64(param.P99Threshold/time.Microsecond) {
-			s.Log("p99 latency exceeds threshold: ", stat.P99,
+			s.Error("p99 latency exceeds threshold: ", stat.P99,
 				" > ", param.P99Threshold)
 		}
 	}
