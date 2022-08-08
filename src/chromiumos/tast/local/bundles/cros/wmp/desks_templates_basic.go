@@ -12,6 +12,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/arc/optin"
+	"chromiumos/tast/local/bundles/cros/wmp/wmputils"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -21,7 +22,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
-	"chromiumos/tast/local/input"
 	"chromiumos/tast/testing"
 )
 
@@ -108,63 +108,41 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Could not find the primary browser app info: ", err)
 	}
 	appsList := []apps.App{browserApp, apps.Files, apps.PlayStore}
-	for _, app := range appsList {
-		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
-			s.Fatalf("Failed to open %s: %v", app.Name, err)
-		}
-		if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
-			s.Fatalf("%s did not appear in shelf after launch: %s", app.Name, err)
-		}
-		if err := ash.WaitForAppWindow(ctx, tconn, app.ID); err != nil {
-			s.Fatalf("%s did not become visible: %s", app.Name, err)
-		}
-	}
 
-	// Define keyboard to perform keyboard shortcuts.
-	kb, err := input.Keyboard(ctx)
-	if err != nil {
-		s.Fatal("Cannot create keyboard: ", err)
+	if err := wmputils.OpenApps(ctx, tconn, ac, appsList); err != nil {
+		s.Fatal("Failed to open apps: ", err)
 	}
-	defer kb.Close()
 
 	// Enter overview mode.
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
 	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait for overview animation to be completed: ", err)
+		s.Fatal("Failed to wait for the animation to be completed: ", err)
 	}
 	defer ash.SetOverviewModeAndWait(cleanupCtx, tconn, false)
 
-	// Find the save desk buttons and the grid views.
-	saveDeskAsTemplateButton := nodewith.ClassName("SaveDeskTemplateButton").Nth(0)
-	savedTemplateGridView := nodewith.ClassName("SavedDeskGridView").Nth(0)
-	saveDeskForLaterButton := nodewith.ClassName("SaveDeskTemplateButton").Nth(1)
-	savedForLaterDeskGridView := nodewith.ClassName("SavedDeskGridView").Nth(1)
-
-	if err := uiauto.Combine(
-		"save a desk template",
-		ac.DoDefault(saveDeskAsTemplateButton),
-		// Wait for the template grid to show up.
-		ac.WaitUntilExists(savedTemplateGridView),
-	)(ctx); err != nil {
-		s.Fatal("Failed to save a desk template: ", err)
+	// Save current desk as `Template 1` of type `Template`.
+	if err := ash.SaveCurrentDesk(ctx, ac, ash.Template, "Template 1"); err != nil {
+		s.Fatal("Failed to save current desk as 'Template 1' of type 'Template': ", err)
 	}
 
-	// Type "Template 1" and press "Enter".
-	if err := kb.Type(ctx, "Template 1"); err != nil {
-		s.Fatal("Cannot type 'Template 1': ", err)
-	}
-	if err := kb.Accel(ctx, "Enter"); err != nil {
-		s.Fatal("Cannot press 'Enter': ", err)
+	// Verify saved desk.
+	if err := ash.VerifySavedDesk(ctx, ac, []string{"Template 1"}); err != nil {
+		s.Fatal("Failed to verify saved desk: ", err)
 	}
 
 	// Exit overview mode.
 	if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
-		s.Fatal("Failed to exit overview mode: ", err)
+		s.Fatal("Failed to set overview mode: ", err)
 	}
 	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait for overview animation to be completed: ", err)
+		s.Fatal("Failed to wait for the animation to be completed: ", err)
+	}
+
+	// Verify window count.
+	if err := wmputils.VerifyWindowCount(ctx, tconn, len(appsList)); err != nil {
+		s.Fatal("Failed to verify window count: ", err)
 	}
 
 	// Enter overview mode.
@@ -172,25 +150,35 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to set overview mode: ", err)
 	}
 	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
-		s.Fatal("Failed to wait for overview animation to be completed: ", err)
+		s.Fatal("Failed to wait for the animation to be completed: ", err)
 	}
 
-	// Save a desk for later.
-	if err := uiauto.Combine(
-		"save a desk for later",
-		ac.DoDefault(saveDeskForLaterButton),
-		// Wait for the saved for later grid to show up.
-		ac.WaitUntilExists(savedForLaterDeskGridView),
-	)(ctx); err != nil {
-		s.Fatal("Failed to save a desk for later: ", err)
+	// Save current desk as `Saved Desk 1` of type `SaveAndRecall`.
+	if err := ash.SaveCurrentDesk(ctx, ac, ash.SaveAndRecall, "Saved Desk 1"); err != nil {
+		s.Fatal("Failed to save current desk as 'Saved Desk 1' of type 'SaveAndRecall': ", err)
 	}
 
-	// Type "Saved Desk 1" and press "Enter".
-	if err := kb.Type(ctx, "Saved Desk 1"); err != nil {
-		s.Fatal("Cannot type 'Saved Desk 1': ", err)
+	// Exit and reenter library page.
+	if err := ash.ExitAndReenterLibrary(ctx, ac, tconn); err != nil {
+		s.Fatal("Failed to exit and reenter library page: ", err)
 	}
-	if err := kb.Accel(ctx, "Enter"); err != nil {
-		s.Fatal("Cannot press 'Enter': ", err)
+
+	// Verify saved desk.
+	if err := ash.VerifySavedDesk(ctx, ac, []string{"Template 1", "Saved Desk 1"}); err != nil {
+		s.Fatal("Failed to verify saved desk: ", err)
+	}
+
+	// Exit overview mode.
+	if err := ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
+		s.Fatal("Failed to set overview mode: ", err)
+	}
+	if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+		s.Fatal("Failed to wait for the animation to be completed: ", err)
+	}
+
+	// Verify window count.
+	if err := wmputils.VerifyWindowCount(ctx, tconn, 0); err != nil {
+		s.Fatal("Failed to verify window count: ", err)
 	}
 
 	// Exit and reenter library page.
