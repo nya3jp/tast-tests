@@ -89,7 +89,7 @@ func init() {
 			{
 				Name: "vhost_user_cras",
 				Val: audioAplayParams{
-					vhostUserArgs:            []string{"cras-snd", "--config", "capture=true,socket_type=legacy"},
+					vhostUserArgs:            []string{"snd", "--config", "capture=true,backend=cras,socket_type=legacy"},
 					expectedCardNames:        []string{"VirtIO SoundCard"},
 					expectedDeviceNames:      []string{"VirtIO PCM 0"},
 					expectedStreamsPerDevice: 1,
@@ -98,7 +98,7 @@ func init() {
 			{
 				Name: "vhost_user_cras_3_devices_4_streams",
 				Val: audioAplayParams{
-					vhostUserArgs:            []string{"cras-snd", "--config", "capture=true,socket_type=legacy,num_output_devices=3,num_output_streams=4"},
+					vhostUserArgs:            []string{"snd", "--config", "capture=true,backend=cras,socket_type=legacy,num_output_devices=3,num_output_streams=4"},
 					expectedCardNames:        []string{"VirtIO SoundCard", "VirtIO SoundCard", "VirtIO SoundCard"},
 					expectedDeviceNames:      []string{"VirtIO PCM 0", "VirtIO PCM 1", "VirtIO PCM 2"},
 					expectedStreamsPerDevice: 4,
@@ -107,7 +107,7 @@ func init() {
 			{
 				Name: "vhost_user_cras_1_device_3_streams",
 				Val: audioAplayParams{
-					vhostUserArgs:            []string{"cras-snd", "--config", "capture=true,socket_type=legacy,num_output_streams=3"},
+					vhostUserArgs:            []string{"snd", "--config", "capture=true,backend=cras,socket_type=legacy,num_output_streams=3"},
 					expectedCardNames:        []string{"VirtIO SoundCard"},
 					expectedDeviceNames:      []string{"VirtIO PCM 0"},
 					expectedStreamsPerDevice: 3,
@@ -116,7 +116,7 @@ func init() {
 			{
 				Name: "vhost_user_cras_3_devices_1_stream",
 				Val: audioAplayParams{
-					vhostUserArgs:            []string{"cras-snd", "--config", "capture=true,socket_type=legacy,num_output_devices=3"},
+					vhostUserArgs:            []string{"snd", "--config", "capture=true,backend=cras,socket_type=legacy,num_output_devices=3"},
 					expectedCardNames:        []string{"VirtIO SoundCard", "VirtIO SoundCard", "VirtIO SoundCard"},
 					expectedDeviceNames:      []string{"VirtIO PCM 0", "VirtIO PCM 1", "VirtIO PCM 2"},
 					expectedStreamsPerDevice: 1,

@@ -47,7 +47,7 @@ func init() {
 		}, {
 			Name: "vhost_user_cras",
 			Val: audioutils.Config{
-				VhostUserArgs: []string{"cras-snd", "--config", "capture=true,socket_type=legacy"},
+				VhostUserArgs: []string{"snd", "--config", "capture=true,backend=cras,socket_type=legacy"},
 			},
 		}, {
 			Name: "ac97",
