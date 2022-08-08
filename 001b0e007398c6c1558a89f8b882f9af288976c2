@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf2f6375_244b0e65",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-08T06:59:26Z",
+      "side": 1,
+      "message": "This CL introduces:\n\n\tcopiedExtraExtDirs, err :\u003d copy(cfg.ExtraExtDirs())\n\tif err !\u003d nil {\n\t\treturn nil, err\n\t}\n\tcopiedLacrosExtraExtDirs, err :\u003d copy(cfg.LacrosExtraExtDirs())\n\tif err !\u003d nil {\n\t\treturn nil, err\n\t}\n\nthat would cause the problem.",
+      "parentUuid": "3153a41d_e2b22fc2",
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "596881e4_a6c6005a",
         "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
         "patchSetId": 4
@@ -149,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3616013_2039fbae",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-08T06:59:26Z",
+      "side": 1,
+      "message": "I think we want --load-extension\u003d only.\nCan others be kept in lacros\u0027s default flag set?",
+      "parentUuid": "fe166d9f_297bff9d",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 111
+      },
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06cd8150_4a84cbf3",
         "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
         "patchSetId": 4
@@ -184,6 +226,30 @@
       "side": 1,
       "message": "Not sure how to do it in that each browser keeps its own arg lists or extensions.Files separate and if it is necessary here. Any code snippet would be very helpful.",
       "parentUuid": "06cd8150_4a84cbf3",
+      "range": {
+        "startLine": 32,
+        "startChar": 70,
+        "endLine": 32,
+        "endChar": 101
+      },
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f5d038d_d35b7d1a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/setup/restart.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-08T06:59:26Z",
+      "side": 1,
+      "message": "Ooops, sorry, I misread the code. Pls ignore this.",
+      "parentUuid": "60fc1e71_70f70884",
       "range": {
         "startLine": 32,
         "startChar": 70,
