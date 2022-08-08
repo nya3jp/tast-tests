@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb3aa54c_9df69c7e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/imports.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-08T23:16:06Z",
+      "side": 1,
+      "message": "What is the reasoning for creating the new intel package, instead of using the existing arc package?",
+      "revId": "c27258795ec898c9fece3bb766390e4a5f6e1f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f3d68d_6d4d1b9f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_install_uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-08T23:16:06Z",
+      "side": 1,
+      "message": "Since this is an ARC tast test, can you add an appropriate ARC fixture (e.g. `arcBootedWithPlayStore`)?",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 3
+      },
+      "revId": "c27258795ec898c9fece3bb766390e4a5f6e1f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "739dd235_792a4b35",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_install_uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-08T23:16:06Z",
+      "side": 1,
+      "message": "Space between \"Play\" and \"Store\"",
+      "range": {
+        "startLine": 103,
+        "startChar": 34,
+        "endLine": 103,
+        "endChar": 43
+      },
+      "revId": "c27258795ec898c9fece3bb766390e4a5f6e1f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f897f1_a648e78a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/arc_install_uninstall_app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1525085
+      },
+      "writtenOn": "2022-08-08T23:16:06Z",
+      "side": 1,
+      "message": "Use the table-driven format here instead:\n\nhttps://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#Table_driven-tests",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 2
+      },
+      "revId": "c27258795ec898c9fece3bb766390e4a5f6e1f8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
