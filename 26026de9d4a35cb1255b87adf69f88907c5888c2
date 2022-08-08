@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1f10393_a764b167",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprintertests/printtest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1541339
+      },
+      "writtenOn": "2022-08-08T16:49:19Z",
+      "side": 1,
+      "message": "Is there a reason to create an identical copy of this structure instead of just passing in the original?",
+      "range": {
+        "startLine": 75,
+        "startChar": 39,
+        "endLine": 78,
+        "endChar": 30
+      },
+      "revId": "26026de9d4a35cb1255b87adf69f88907c5888c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
