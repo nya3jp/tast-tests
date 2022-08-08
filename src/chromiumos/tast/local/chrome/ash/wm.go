@@ -237,9 +237,9 @@ func SetWindowState(ctx context.Context, tconn *chrome.TestConn, id int, et WMEv
 	return state, nil
 }
 
-// SetWindowStateAndWait requests a WMEvent to make the window for the id to be
-// in the targetState, and wait for the window animations when it happens. It
-// returns an error when it can't be in the target state. It will return nil
+// SetWindowStateAndWait changes the state of the window and waits until it
+// becomes visible in the given state and the animation is done. It returns
+// an error when it can't be in the target state. It will return nil
 // when the window is already in the target state.
 func SetWindowStateAndWait(ctx context.Context, tconn *chrome.TestConn, id int, targetState WindowStateType) error {
 	gotState, err := SetWindowState(ctx, tconn, id, stateToWmTypes[targetState], true /* waitForStateChange */)
@@ -417,10 +417,10 @@ func WaitForHidden(ctx context.Context, tconn *chrome.TestConn, pkgName string) 
 	}, defaultPollOptions)
 }
 
-// WaitWindowFinishAnimating waits for a window with a given ID to finish animating on the Chrome side.
+// WaitWindowFinishAnimating waits for a window with a given ID to become visible and finish animating on ash.
 func WaitWindowFinishAnimating(ctx context.Context, tconn *chrome.TestConn, windowID int) error {
 	return WaitForCondition(ctx, tconn, func(window *Window) bool {
-		return window.ID == windowID && !window.IsAnimating
+		return window.ID == windowID && window.IsVisible && !window.IsAnimating
 	}, defaultPollOptions)
 }
 
