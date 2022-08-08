@@ -33,6 +33,24 @@
       "message": "Note: I\u0027m removing the hard-coding of LacrosPrimary.",
       "revId": "45b2cd2a5ebefd52382cd66d31e822824372b720",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffcfa173_7007dab3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/conference_service.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1119597
+      },
+      "writtenOn": "2022-08-08T04:07:00Z",
+      "side": 1,
+      "message": "+jane.yang@cienet.com:\nDoes anything in this test setup depend on Lacros being in LacrosPrimary mode rather than in LacrosOnly mode? At least ui.GoogleMeetCUJ.* seems to run fine in LacrosOnly.",
+      "parentUuid": "1f7f4695_de6554b1",
+      "revId": "45b2cd2a5ebefd52382cd66d31e822824372b720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
