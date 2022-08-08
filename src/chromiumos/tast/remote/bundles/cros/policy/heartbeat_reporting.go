@@ -124,7 +124,7 @@ func HeartbeatReporting(ctx context.Context, s *testing.State) {
 		}
 		return nil
 	}, &testing.PollOptions{
-		Timeout:  1 * time.Minute,
+		Timeout:  2 * time.Minute,
 		Interval: 30 * time.Second,
 	}); err != nil {
 		s.Errorf("Failed to validate heartbeat event: %v:", err)
