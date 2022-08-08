@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c934cc47_9addf53a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-08T18:07:45Z",
+      "side": 1,
+      "message": "There\u0027s no consensus on how you specify the platform. \nWhat I usually do is put $volteer here to indicate the platform.",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 38
+      },
+      "revId": "d4a3f68a00246dfba5c59103a41fea7d58f44a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a2dbaf_3f0db18d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/video/platform_decoding.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2566,
+      "author": {
+        "id": 1197299
+      },
+      "writtenOn": "2022-08-08T18:07:45Z",
+      "side": 1,
+      "message": "Do we really need to keep these functions? Or we could make the callsite to call getVAAPIArgs directly?",
+      "range": {
+        "startLine": 2566,
+        "startChar": 5,
+        "endLine": 2566,
+        "endChar": 23
+      },
+      "revId": "d4a3f68a00246dfba5c59103a41fea7d58f44a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
