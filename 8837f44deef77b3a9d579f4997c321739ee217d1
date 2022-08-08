@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09e7c2ef_6e3af1b9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-08T20:53:50Z",
+      "side": 1,
+      "message": "Done. Using Poll now.",
+      "parentUuid": "facf1d43_d1dd37a3",
+      "revId": "8837f44deef77b3a9d579f4997c321739ee217d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87b77806_796f10dc",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6426595_d656ade9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/render_app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-08T20:53:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87b77806_796f10dc",
+      "revId": "8837f44deef77b3a9d579f4997c321739ee217d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00c61651_6aa6df17",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-08-08T16:57:33Z",
       "side": 1,
       "message": "minor nit: comments should end with `.` at the end.\nthe same for lines `45` and `70`",
+      "revId": "8837f44deef77b3a9d579f4997c321739ee217d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c8c6056_612505ff",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/routine_section.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-08T20:53:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00c61651_6aa6df17",
       "revId": "8837f44deef77b3a9d579f4997c321739ee217d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
