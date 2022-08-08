@@ -139,7 +139,7 @@ func unzipFile(ctx context.Context, tconn *chrome.TestConn, zipFile, folder, una
 		files.OpenPath("Files - "+folder, folder),
 		files.SelectFile(zipFile),
 		files.LeftClick(nodewith.Name("Open").Role(role.Button)),
-		files.LeftClick(nodewith.Name("Open with "+unarchiver).Role(role.StaticText)),
+		files.LeftClick(nodewith.Name(unarchiver).Role(role.StaticText)),
 	)(ctx)
 }
 
