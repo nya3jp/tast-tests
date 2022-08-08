@@ -16,6 +16,23 @@
       "message": "Please have a domain expert to review it and give you a +2. My +1 should be good for owner approval.",
       "revId": "d79cf4df5fdf0175f48c496f6e82deec52d8b169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0868f79_d3ac4c7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366764
+      },
+      "writtenOn": "2022-08-08T08:46:59Z",
+      "side": 1,
+      "message": "Hi Miguel/Andres,\n\nCan you please review this CL?",
+      "revId": "d79cf4df5fdf0175f48c496f6e82deec52d8b169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
