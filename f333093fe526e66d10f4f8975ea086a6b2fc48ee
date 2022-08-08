@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4e70fde_e2460db7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-08T16:59:18Z",
+      "side": 1,
+      "message": "just some small stuff, looks pretty good otherwise",
+      "revId": "f333093fe526e66d10f4f8975ea086a6b2fc48ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a504f70b_e581675b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/touch_basics_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-08T16:59:18Z",
+      "side": 1,
+      "message": "are there no methods on `bounds` for these?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 69
+      },
+      "revId": "f333093fe526e66d10f4f8975ea086a6b2fc48ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7450403e_b12848b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/intel/touch_basics_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1117055
+      },
+      "writtenOn": "2022-08-08T16:59:18Z",
+      "side": 1,
+      "message": "this should also account for `ctx` expiring, right?",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 2
+      },
+      "revId": "f333093fe526e66d10f4f8975ea086a6b2fc48ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
