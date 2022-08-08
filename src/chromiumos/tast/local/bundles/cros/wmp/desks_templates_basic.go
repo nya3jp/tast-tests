@@ -6,7 +6,6 @@ package wmp
 
 import (
 	"context"
-	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
@@ -15,6 +14,9 @@ import (
 	"chromiumos/tast/local/arc/optin"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/event"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
@@ -26,7 +28,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         DesksTemplatesBasic,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks desks can be saved as a desk template",
 		Contacts: []string{
 			"yzd@chromium.org",
@@ -38,6 +40,13 @@ func init() {
 		SoftwareDeps: []string{"chrome", "android_vm", "no_kernel_upstream"},
 		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 180*time.Second,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
+		Params: []testing.Param{{
+			Val: browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Val:               browser.TypeLacros,
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 	})
 }
 
@@ -48,7 +57,9 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr, err := chrome.New(ctx,
+	// Set up the browser.
+	bt := s.Param().(browser.Type)
+	cr, _, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(),
 		chrome.GAIALoginPool(s.RequiredVar("ui.gaiaPoolDefault")),
 		chrome.EnableFeatures("DesksTemplates", "EnableSavedDesks"),
 		chrome.DisableFeatures("DeskTemplateSync"),
@@ -58,6 +69,7 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to start Chrome: ", err)
 	}
 	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -90,8 +102,12 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to wait for ARC Intent Helper: ", err)
 	}
 
-	// Opens PlayStore, Chrome and Files.
-	appsList := []apps.App{apps.Chrome, apps.Files, apps.PlayStore}
+	// Opens PlayStore, Browser and Files.
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
+	if err != nil {
+		s.Fatal("Could not find the primary browser app info: ", err)
+	}
+	appsList := []apps.App{browserApp, apps.Files, apps.PlayStore}
 	for _, app := range appsList {
 		if err := apps.Launch(ctx, tconn, app.ID); err != nil {
 			s.Fatalf("Failed to open %s: %v", app.Name, err)
@@ -99,11 +115,8 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 		if err := ash.WaitForApp(ctx, tconn, app.ID, time.Minute); err != nil {
 			s.Fatalf("%s did not appear in shelf after launch: %s", app.Name, err)
 		}
-		// Wait for the launched app window to become visible.
-		if err := ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-			return w.IsVisible && strings.Contains(w.Title, app.Name)
-		}, &testing.PollOptions{Timeout: 30 * time.Second}); err != nil {
-			s.Fatalf("%v app window not visible after launching: %v", app.Name, err)
+		if err := ash.WaitForAppWindow(ctx, tconn, app.ID); err != nil {
+			s.Fatalf("%s did not become visible: %s", app.Name, err)
 		}
 	}
 
@@ -131,7 +144,7 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 
 	if err := uiauto.Combine(
 		"save a desk template",
-		ac.LeftClick(saveDeskAsTemplateButton),
+		ac.DoDefault(saveDeskAsTemplateButton),
 		// Wait for the template grid to show up.
 		ac.WaitUntilExists(savedTemplateGridView),
 	)(ctx); err != nil {
@@ -165,7 +178,7 @@ func DesksTemplatesBasic(ctx context.Context, s *testing.State) {
 	// Save a desk for later.
 	if err := uiauto.Combine(
 		"save a desk for later",
-		ac.LeftClick(saveDeskForLaterButton),
+		ac.DoDefault(saveDeskForLaterButton),
 		// Wait for the saved for later grid to show up.
 		ac.WaitUntilExists(savedForLaterDeskGridView),
 	)(ctx); err != nil {
