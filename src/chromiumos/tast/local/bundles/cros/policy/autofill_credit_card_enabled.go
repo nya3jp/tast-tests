@@ -232,11 +232,8 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 					}
 
 					if err := uiauto.Combine("trigger and handle the save prompt for the credit card",
-						ui.DoDefault(nodewith.Name("OK").Role(role.Button).ClassName("test-target-button")),
-						ui.WaitUntilExists(visaNode),
-						ui.LeftClick(nodewith.Role(role.Button).Name("Save").ClassName("MdTextButton")),
-						kb.AccelAction("Enter"),
-						ui.WaitUntilExists(nodewith.NameContaining("Card saved").Role(role.StaticText)),
+						ui.DoDefaultUntil(nodewith.Name("OK").Role(role.Button).ClassName("test-target-button"), ui.Exists(visaNode)),
+						ui.LeftClickUntil(nodewith.Role(role.Button).Name("Save").ClassName("MdTextButton"), ui.Exists(nodewith.NameContaining("Card saved").Role(role.StaticText))),
 					)(ctx); err != nil {
 						s.Fatal("Failed to save credit card: ", err)
 					}
@@ -253,10 +250,8 @@ func AutofillCreditCardEnabled(ctx context.Context, s *testing.State) {
 				// Trigger the autofill on the credit card form page.
 				autofillPopup := nodewith.Role(role.ListBoxOption).ClassName("AutofillPopupSuggestionView")
 				if err := uiauto.Combine("clicking the Name on card field and choosing the suggested credit card",
-					ui.LeftClick(nodewith.Role(role.InlineTextBox).Name("Name on card")),
-					ui.WithTimeout(45*time.Second).WaitUntilExists(autofillPopup),
-					ui.DoDefault(autofillPopup),
-					ui.WaitUntilExists(nodewith.Role(role.InlineTextBox).Name(creditCardFields[0].fieldValue)),
+					ui.DoDefaultUntil(nodewith.Role(role.InlineTextBox).Name("Name on card"), ui.Exists(autofillPopup)),
+					ui.DoDefaultUntil(autofillPopup, ui.Exists(nodewith.Role(role.InlineTextBox).Name(creditCardFields[0].fieldValue))),
 				)(ctx); err != nil {
 					s.Fatal("Failed to trigger and use credit card autofill: ", err)
 				}
