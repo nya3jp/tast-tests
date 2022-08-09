@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b1057f6_aac9b765",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-08-09T19:40:22Z",
+      "side": 1,
+      "message": "This flag is being deprecated so we can remove this parameterization",
+      "range": {
+        "startLine": 38,
+        "startChar": 50,
+        "endLine": 38,
+        "endChar": 95
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5add0ff9_a1086e81",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-08-09T19:40:22Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the notification still autohide? Can we verify that?",
+      "range": {
+        "startLine": 383,
+        "startChar": 1,
+        "endLine": 383,
+        "endChar": 116
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22c809e0_a524a1a1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-08-09T19:40:22Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the notification still be dismissable? Can we verify that?",
+      "range": {
+        "startLine": 400,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 119
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cfdde62_b17bbcd6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-08-09T19:40:22Z",
+      "side": 1,
+      "message": "Does the link not have an ancestor with unique user facing text?",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 44
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d380d1_3da4cc64",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-08-09T19:40:22Z",
+      "side": 1,
+      "message": "What is `notiString`?",
+      "range": {
+        "startLine": 492,
+        "startChar": 1,
+        "endLine": 492,
+        "endChar": 11
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "182c11e6_13f6335b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/notifications/web_page_download.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1210707
+      },
+      "writtenOn": "2022-08-09T19:40:22Z",
+      "side": 1,
+      "message": "This test suite shouldn\u0027t interact w/ holding space (Tote); cancellation should instead be performed via system UI notification or browser UI (e.g. chrome://downloads).",
+      "range": {
+        "startLine": 517,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 2
+      },
+      "revId": "63779669b11ef7327f16fd90c3cf545ff75ce5d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
