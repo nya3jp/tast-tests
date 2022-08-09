@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui/cujrecorder"
@@ -44,10 +45,12 @@ func init() {
 }
 
 func DesksCUJ(ctx context.Context, s *testing.State) {
-	const (
-		browserWindowsPerDesk = 8
-		docURL                = "https://docs.google.com/document/d/1MW7lAk9RZ-6zxpObNwF0r80nu-N1sXo5f7ORG4usrJQ/edit?disco=AAAAP6EbSF8"
-	)
+	const browserWindowsPerDesk = 8
+
+	docURL, err := cuj.GetTestDocCommentURL()
+	if err != nil {
+		s.Fatal("Failed to get test document URL: ", err)
+	}
 
 	// Reserve ten seconds for cleanup.
 	cleanupCtx := ctx
