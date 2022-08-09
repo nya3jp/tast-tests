@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d197bfd2_3c699a76",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-08-09T20:41:05Z",
+      "side": 1,
+      "message": "It\u0027s also weird how the second item there on the list has a name of \"TesterS\".\n\nI think it\u0027s because there is something racing on the type vs changing the input field on the form because it seems like the first letter of the second value on the list of addressValues (`fieldValue: \"Some address 123\", htmlFieldID: \"street-address\"`) has ended up as part of the name field\u0027s value (`fieldValue: \"Tester\", htmlFieldID: \"name\"`). If I remember correctly, I have seen a similar error in the AutofillCreditCardEnabled test where the first letter of the following value has ended up as part of the previous input field\u0027s value.",
+      "parentUuid": "3136f2c6_50cb3911",
+      "range": {
+        "startLine": 209,
+        "startChar": 97,
+        "endLine": 209,
+        "endChar": 105
+      },
+      "revId": "9087dd0e375f2e6343509e32983f051a149e20d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14d4ddf1_1946b7da",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
         "patchSetId": 1
