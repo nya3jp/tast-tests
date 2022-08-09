@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui/cujrecorder"
@@ -29,25 +30,26 @@ func init() {
 		Attr:         []string{"group:cuj"},
 		SoftwareDeps: []string{"chrome"},
 		Data:         []string{cujrecorder.SystemTraceConfigFile},
+		Timeout:      time.Hour,
 		Params: []testing.Param{{
 			Val:     browser.TypeAsh,
 			Fixture: "loggedInToCUJUser",
-			Timeout: 15 * time.Minute,
 		}, {
 			Name:              "lacros",
 			Val:               browser.TypeLacros,
 			ExtraSoftwareDeps: []string{"lacros"},
 			Fixture:           "loggedInToCUJUserLacros",
-			Timeout:           20 * time.Minute,
 		}},
 	})
 }
 
 func DesksCUJ(ctx context.Context, s *testing.State) {
-	const (
-		browserWindowsPerDesk = 8
-		docURL                = "https://docs.google.com/document/d/1MW7lAk9RZ-6zxpObNwF0r80nu-N1sXo5f7ORG4usrJQ/edit?disco=AAAAP6EbSF8"
-	)
+	const browserWindowsPerDesk = 8
+
+	docURL, err := cuj.GetTestDocURL()
+	if err != nil {
+		s.Fatal("Failed to get test document URL: ", err)
+	}
 
 	// Reserve ten seconds for cleanup.
 	cleanupCtx := ctx
