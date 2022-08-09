@@ -228,6 +228,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c1ba799_d98ff914",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1240396
+      },
+      "writtenOn": "2022-08-09T02:42:00Z",
+      "side": 1,
+      "message": "\u003e Return values like nil, \"\", 0, and -1 are fine when they are valid results for a function, that is, when the caller need not handle them differently from other values.\n\n\nBecause in this case nil is not and error, I think this is not in the scope by the above description.",
+      "parentUuid": "00514ca5_52d30277",
+      "range": {
+        "startLine": 160,
+        "startChar": 59,
+        "endLine": 160,
+        "endChar": 60
+      },
+      "revId": "2b9e3e0ed1216689aa95d87fda6982b222e68499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70c4acea_e06ab600",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
         "patchSetId": 10
