@@ -22,6 +22,30 @@
       },
       "revId": "193f439460dc5c15b08fc38df29b79082e7b5cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0bb810e_206c110e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-08-09T03:00:42Z",
+      "side": 0,
+      "message": "Previous value is set to let a selected SKUs(https://docs.google.com/document/d/1jaS1IbHMvlw0s-K5qAAnxB609tGwF9C6xn5Ydfi_qho/edit?resourcekey\u003d0-dcU1AUSda76GJaLzrm_Dfg#heading\u003dh.x8vy7riu8139) passing the tests which could have bias since we chose the SKUs by selecting one SKU per each CPU configuration.\n\nIf they perform better/worse on certain test, the threshold might be too tight/loose.",
+      "parentUuid": "947aafac_42ac1023",
+      "range": {
+        "startLine": 232,
+        "startChar": 19,
+        "endLine": 232,
+        "endChar": 24
+      },
+      "revId": "193f439460dc5c15b08fc38df29b79082e7b5cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
