@@ -252,6 +252,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b355a845_e3af0da1",
+        "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-09T13:59:02Z",
+      "side": 1,
+      "message": "\u003e The healthd part uses json package to parse a json result so the null field become nil string in go.\n\nok, so could you clarify that in the document?\n\n\u003e Because in this case nil is not and error, I think this is not in the scope by the above description.\n\nIt does not mean that pointer should be used to represent an optional value, right?\n\nLet\u0027s handle this as special handling to adapt json package.",
+      "parentUuid": "3c1ba799_d98ff914",
+      "range": {
+        "startLine": 160,
+        "startChar": 59,
+        "endLine": 160,
+        "endChar": 60
+      },
+      "revId": "2b9e3e0ed1216689aa95d87fda6982b222e68499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70c4acea_e06ab600",
         "filename": "src/chromiumos/tast/local/bundles/cros/health/probe_system_info.go",
         "patchSetId": 10
