@@ -88,7 +88,12 @@ func init() {
 			"xiyuan@chromium.org",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl:            &loggedInToCUJUserFixture{bt: browser.TypeAsh},
+		Impl: &loggedInToCUJUserFixture{
+			chromeExtraOpts: []chrome.Option{
+				chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration"),
+			},
+			bt: browser.TypeAsh,
+		},
 		Parent:          "prepareForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,

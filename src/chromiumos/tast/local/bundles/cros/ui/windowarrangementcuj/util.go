@@ -22,6 +22,7 @@ import (
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/cuj"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -117,19 +118,7 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 
 	connection.BrowserType = testParam.BrowserType
 	if testParam.BrowserType == browser.TypeAsh {
-		if testParam.Tablet {
-			var err error
-			if connection.Chrome, err = chrome.New(ctx, chrome.ARCEnabled(), chrome.EnableFeatures("WebUITabStrip", "WebUITabStripTabDragIntegration")); err != nil {
-				return nil, errors.Wrap(err, "failed to init chrome")
-			}
-			cleanupActionsInReverseOrder = append(cleanupActionsInReverseOrder, connection.Chrome.Close)
-			if connection.ARC, err = arc.New(ctx, s.OutDir()); err != nil {
-				return nil, errors.Wrap(err, "failed to init ARC")
-			}
-		} else {
-			connection.Chrome = s.FixtValue().(*arc.PreData).Chrome
-			connection.ARC = s.FixtValue().(*arc.PreData).ARC
-		}
+		connection.Chrome = s.FixtValue().(chrome.HasChrome).Chrome()
 		connection.Source = connection.Chrome
 
 		var err error
@@ -139,7 +128,7 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		}
 	} else {
 		var err error
-		connection.Chrome, l, connection.Source, err = lacros.Setup(ctx, s.FixtValue().(*arc.PreData).Chrome, browser.TypeLacros)
+		connection.Chrome, l, connection.Source, err = lacros.Setup(ctx, s.FixtValue(), browser.TypeLacros)
 		if err != nil {
 			return nil, errors.Wrap(err, "failed to setup lacros")
 		}
@@ -151,9 +140,9 @@ func SetupChrome(ctx, closeCtx context.Context, s *testing.State) (*Connections,
 		if connection.BrowserTestConn, err = l.TestAPIConn(ctx); err != nil {
 			return nil, errors.Wrap(err, "failed to get lacros TestAPIConn")
 		}
-
-		connection.ARC = s.FixtValue().(*arc.PreData).ARC
 	}
+
+	connection.ARC = s.FixtValue().(cuj.FixtureData).ARC
 
 	arcUI, err := connection.ARC.NewUIDevice(ctx)
 	if err != nil {
