@@ -13,6 +13,7 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -23,7 +24,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         VirtualDesksShortcuts,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks that virtual desks shortcuts works correctly",
 		Contacts: []string{
 			"dandersson@chromium.org",
@@ -33,7 +34,15 @@ func init() {
 		// Disabled due to <1% pass rate over 30 days. See b/241943747
 		//Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+			Val:     browser.TypeAsh,
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               browser.TypeLacros,
+		}},
 	})
 }
 
@@ -47,8 +56,8 @@ func deskMiniViewFinder(deskName string) *nodewith.Finder {
 	return nodewith.ClassName("DeskMiniView").Name(fmt.Sprintf("Desk: %s", deskName))
 }
 
-func findBrowserWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn) *ash.Window {
-	window, err := ash.FindWindow(ctx, tconn, func(w *ash.Window) bool { return w.WindowType == ash.WindowTypeBrowser })
+func findBrowserWindow(ctx context.Context, s *testing.State, tconn *chrome.TestConn, bt browser.Type) *ash.Window {
+	window, err := ash.FindWindow(ctx, tconn, ash.BrowserTypeMatch(bt))
 	if err != nil {
 		s.Fatal("Failed to find browser window: ", err)
 	}
@@ -61,7 +70,8 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	bt := s.Param().(browser.Type)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to create Test API connection: ", err)
@@ -74,6 +84,12 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 	defer cleanup(cleanupCtx)
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
+	// Ensure there is no window open before test starts.
+	// TODO(crbug.com/1311504): Ensure that chrome.ResetState can close lacros windows opened in the previous tests as well. Apply it to wmp test package.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to ensure no window is open: ", err)
+	}
 
 	ac := uiauto.New(tconn)
 
@@ -116,19 +132,27 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to switch to desk 2: ", err)
 	}
 
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
+	if err != nil {
+		s.Fatal("Could not find browser app info: ", err)
+	}
+
 	// We then move the currently active window between desks. We're going to use a browser window for
 	// these tests. We are on desk 2 when this sequence starts.
 	//   * Open a browser and use a keyboard shortcut to move it to desk 1.
 	//   * Verify that it no longer exists on desk 2.
 	//   * Switch to desk 1 and verify that the browser is there.
 	//   * Similar sequence to verify that the browser can be moved back to desk 2.
-	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
+	if err := apps.Launch(ctx, tconn, browserApp.ID); err != nil {
 		s.Fatal("Failed to open browser: ", err)
 	}
-	if err := ash.WaitForApp(ctx, tconn, apps.Chrome.ID, time.Minute); err != nil {
+	if err := ash.WaitForApp(ctx, tconn, browserApp.ID, time.Minute); err != nil {
 		s.Fatal("Browser did not appear in shelf after launch: ", err)
 	}
-	if !findBrowserWindow(ctx, s, tconn).OnActiveDesk {
+	if err := ash.WaitForAppWindow(ctx, tconn, browserApp.Name); err != nil {
+		s.Fatal("Browser did not become visible: ", err)
+	}
+	if !findBrowserWindow(ctx, s, tconn, bt).OnActiveDesk {
 		s.Fatal("Browser window is not on the current active desk (desk 2)")
 	}
 
@@ -136,9 +160,9 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to move the current active window to the desk on the left: ", err)
 	}
 	// Wait for the window to finish animating and verify that it is no longer on the active desk.
-	browserWindowID := findBrowserWindow(ctx, s, tconn).ID
+	browserWindowID := findBrowserWindow(ctx, s, tconn, bt).ID
 	ash.WaitWindowFinishAnimating(ctx, tconn, browserWindowID)
-	if findBrowserWindow(ctx, s, tconn).OnActiveDesk {
+	if findBrowserWindow(ctx, s, tconn, bt).OnActiveDesk {
 		s.Fatal("Browser window unexpectedly still on desk 2, expected it to be on desk 1")
 	}
 
@@ -146,7 +170,7 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 	if err := ash.ActivateDeskAtIndex(ctx, tconn, 0); err != nil {
 		s.Fatal("Failed to activate desk 1: ", err)
 	}
-	if !findBrowserWindow(ctx, s, tconn).OnActiveDesk {
+	if !findBrowserWindow(ctx, s, tconn, bt).OnActiveDesk {
 		s.Fatal("Browser window is not on desk 1")
 	}
 
@@ -156,7 +180,7 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 	}
 	// Wait for the window to finish animating and verify that it is no longer on the active desk.
 	ash.WaitWindowFinishAnimating(ctx, tconn, browserWindowID)
-	if findBrowserWindow(ctx, s, tconn).OnActiveDesk {
+	if findBrowserWindow(ctx, s, tconn, bt).OnActiveDesk {
 		s.Fatal("Browser window unexpectedly still on desk 1, expected it to be on desk 2")
 	}
 
@@ -164,7 +188,7 @@ func VirtualDesksShortcuts(ctx context.Context, s *testing.State) {
 	if err := ash.ActivateDeskAtIndex(ctx, tconn, 1); err != nil {
 		s.Fatal("Failed to activate desk 2: ", err)
 	}
-	if !findBrowserWindow(ctx, s, tconn).OnActiveDesk {
+	if !findBrowserWindow(ctx, s, tconn, bt).OnActiveDesk {
 		s.Fatal("Browser window is not on the currently active desk (desk 2)")
 	}
 
