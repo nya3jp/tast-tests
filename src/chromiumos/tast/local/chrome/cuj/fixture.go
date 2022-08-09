@@ -363,6 +363,7 @@ func (f *loggedInToCUJUserFixture) SetUp(ctx context.Context, s *testing.FixtSta
 			loginOption(s, f.useEnterprisePool),
 			chrome.ARCSupported(),
 			chrome.ExtraArgs(arc.DisableSyncFlags()...),
+			chrome.DisableFeatures("FirmwareUpdaterApp"),
 		}
 		if f.keepState {
 			opts = append(opts, chrome.KeepState())
