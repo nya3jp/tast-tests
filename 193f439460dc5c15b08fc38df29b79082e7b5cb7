@@ -94,6 +94,30 @@
       },
       "revId": "193f439460dc5c15b08fc38df29b79082e7b5cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7731cee0_8ffd6636",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1529437
+      },
+      "writtenOn": "2022-08-09T17:22:01Z",
+      "side": 0,
+      "message": "Thanks Jimmy for the review!\n\nBy setting 2.8 ms in this change, some SKU might fail mostly but overall 98% of this test are expected to pass.\n\nFor 1., I think some threshold being high should be okay since there is no audio use case with cras or cras client running with non-realtime scheduling. The purpose of collecting these data is more about comparison and non-audio benchmarking.\n\nFor 2., yes, it would need more insights and guidances from performance team.",
+      "parentUuid": "376e4319_f4211437",
+      "range": {
+        "startLine": 232,
+        "startChar": 19,
+        "endLine": 232,
+        "endChar": 24
+      },
+      "revId": "193f439460dc5c15b08fc38df29b79082e7b5cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
