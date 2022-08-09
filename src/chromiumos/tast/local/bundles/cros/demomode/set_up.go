@@ -26,7 +26,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantUnneeded,
 		Desc:         "Basic test that clicks through Demo Mode setup from OOBE",
 		Contacts:     []string{"cros-demo-mode-eng@google.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		// Disabled due to <1% pass rate over 30 days. See b/241943180
+		//Attr:         []string{"group:mainline", "informational"},
 		// Demo Mode uses Zero Touch Enrollment for enterprise enrollment, which
 		// requires a real TPM.
 		// We require "arc" and "chrome_internal" because the ARC TOS screen
