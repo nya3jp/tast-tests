@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a26c704_2b7e70f8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T18:10:27Z",
+      "side": 1,
+      "message": "Yup, that\u0027s one way to mitigate this with `uiauto` or we can also consider adding `WaitWindowFinishAnimating` that doesn\u0027t need the instance of `uiauto` to `SetOverviewModeAndWait`. Example: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/ash/wm.go?l\u003d252\nBtw, it probably needs to get https://crrev.com/c/3818763 in first.\n\nHidehiko, can you tell what you think works out best?",
+      "parentUuid": "b3d884b4_caad1d8c",
+      "revId": "841357aa0b7f1130bbff55841235a11421f31dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60bb6562_8228c1c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
         "patchSetId": 1
