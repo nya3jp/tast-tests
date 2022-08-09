@@ -33,6 +33,23 @@
       "message": "Hi Miguel/Andres,\n\nCan you please review this CL?",
       "revId": "d79cf4df5fdf0175f48c496f6e82deec52d8b169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2382161_e640a048",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-09T16:19:02Z",
+      "side": 1,
+      "message": "If no expert can give you a +2, have an expert to review and give you a +1. I will add +2 later. Thanks.",
+      "revId": "d79cf4df5fdf0175f48c496f6e82deec52d8b169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
