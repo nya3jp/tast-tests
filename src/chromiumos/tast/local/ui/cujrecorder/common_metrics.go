@@ -8,7 +8,7 @@ import (
 	"chromiumos/tast/common/perf"
 )
 
-// AshCommonMetricConfigs returns common metrics metrics which are required
+// AshCommonMetricConfigs returns common metrics which are required
 // to be collected by CUJ tests from the Ash process only.
 func AshCommonMetricConfigs() []MetricConfig {
 	return []MetricConfig{
@@ -105,7 +105,16 @@ func AshCommonMetricConfigs() []MetricConfig {
 	}
 }
 
-// BrowserCommonMetricConfigs returns common metrics metrics which are
+// LacrosCommonMetricConfigs returns common metrics which are required
+// to be collected by CUJ tests from the Lacros process only.
+func LacrosCommonMetricConfigs() []MetricConfig {
+	return []MetricConfig{
+		// Smoothness.
+		NewCustomMetricConfig("Chrome.Lacros.Smoothness.PercentDroppedFrames_1sWindow", "percent", perf.SmallerIsBetter),
+	}
+}
+
+// BrowserCommonMetricConfigs returns common metrics which are
 // required to be collected by CUJ tests from the browser process only (Ash or
 // Lacros).
 func BrowserCommonMetricConfigs() []MetricConfig {
@@ -151,7 +160,7 @@ func BrowserCommonMetricConfigs() []MetricConfig {
 	}
 }
 
-// AnyChromeCommonMetricConfigs returns common metrics metrics which are
+// AnyChromeCommonMetricConfigs returns common metrics which are
 // required to be collected by CUJ tests from any Chrome binary running (could
 // be from both Ash and Lacros in parallel).
 func AnyChromeCommonMetricConfigs() []MetricConfig {
