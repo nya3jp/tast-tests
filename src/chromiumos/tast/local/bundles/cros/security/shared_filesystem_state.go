@@ -132,7 +132,8 @@ func testBody(s *testing.State, testType string, ignoredAncestorNames, exclusion
 		// This is where USB drives get mounted.
 		"^/media$": true,
 		// This is used to mount downloaded disk images.
-		"^/run/imageloader$": true,
+		// Multiple components/DLCs are allowed to be mounted under this path.
+		"^/run/imageloader(/|$)": true,
 		// These are created implicitly by the ip netns command which is used
 		// for network namespaces for ARC and for the proxy DNS service.
 		"^/run/netns$": true,
