@@ -33,6 +33,46 @@
       "message": "+OWNER",
       "revId": "0c62b13b798b05aab1ce33acadd99e405d71b4be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de35d980_94bd3fec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-08-09T17:52:40Z",
+      "side": 1,
+      "message": "+2 % nit",
+      "revId": "0c62b13b798b05aab1ce33acadd99e405d71b4be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08c791d1_bb116c68",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2022-08-09T17:52:40Z",
+      "side": 1,
+      "message": "nit: add comment saying that it will abort after 2 minutes....",
+      "range": {
+        "startLine": 231,
+        "startChar": 60,
+        "endLine": 231,
+        "endChar": 76
+      },
+      "revId": "0c62b13b798b05aab1ce33acadd99e405d71b4be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
