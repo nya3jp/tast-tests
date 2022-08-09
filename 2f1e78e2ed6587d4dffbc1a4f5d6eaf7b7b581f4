@@ -80,6 +80,30 @@
       },
       "revId": "2f1e78e2ed6587d4dffbc1a4f5d6eaf7b7b581f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5b3029a_2b16e7ac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T18:36:15Z",
+      "side": 1,
+      "message": "will do. thanks for the quick review!",
+      "parentUuid": "85ec23b2_c8ad01b5",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 13
+      },
+      "revId": "2f1e78e2ed6587d4dffbc1a4f5d6eaf7b7b581f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
