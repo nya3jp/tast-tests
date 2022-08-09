@@ -16,6 +16,75 @@
       "message": "LGTM",
       "revId": "9087dd0e375f2e6343509e32983f051a149e20d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "572ea967_2dc86173",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-08-09T15:25:02Z",
+      "side": 1,
+      "message": "Why are there several suggestion popup views? Do these represent different suggestions? How do you know that the first one is always the right one? Could we instead make finder query more specific to find the right one?",
+      "range": {
+        "startLine": 209,
+        "startChar": 97,
+        "endLine": 209,
+        "endChar": 105
+      },
+      "revId": "9087dd0e375f2e6343509e32983f051a149e20d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14d4ddf1_1946b7da",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-08-09T15:25:02Z",
+      "side": 1,
+      "message": "Why is click replaced with default action here? Is doing a default action more universal somehow?",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 212,
+        "endChar": 22
+      },
+      "revId": "9087dd0e375f2e6343509e32983f051a149e20d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "079f4253_822be076",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-08-09T15:25:02Z",
+      "side": 1,
+      "message": "This will repeatedly click on Email field for suggestion popup to show up. I wouldn\u0027t expect normal users having to do the same. Why do we need to do that in the test?\n\nSame for accepting the suggestion below.",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 212,
+        "endChar": 22
+      },
+      "revId": "9087dd0e375f2e6343509e32983f051a149e20d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
