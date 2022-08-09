@@ -260,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dd9ca8b_9e8cdda2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-09T16:24:02Z",
+      "side": 1,
+      "message": "Ack. Going to leave as certs for now.",
+      "parentUuid": "4c9229fa_1d8d8b43",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 13
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c43c370b_cec55d7c",
@@ -368,6 +392,30 @@
       "side": 1,
       "message": "Looking around a bit, maybe we could try mounting tmpfs directly on certDirectory?\n\n( like https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crash/user.go;l\u003d226?q\u003dfile:tast%20tmpfs )\n\nIf not, then I also don\u0027t have a good idea, unless maybe mounting under /tmp/certsdir if that\u0027s possible :)\n\n( so no strong preference here )",
       "parentUuid": "25142cbb_10097cdc",
+      "range": {
+        "startLine": 59,
+        "startChar": 37,
+        "endLine": 59,
+        "endChar": 76
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39debe24_c1cb16ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1530382
+      },
+      "writtenOn": "2022-08-09T16:24:02Z",
+      "side": 1,
+      "message": "I updated the command for the remount to what was recommended in the /tmp change announcement: https://groups.google.com/a/google.com/g/chromeos-chatty-eng/c/22lZd-Nz8uM/m/MB3FVT7ZAAAJ\n\nGiven this was what was recommended in the announcement, I believe it\u0027s safe to stick with this.",
+      "parentUuid": "5c3b623d_7e422325",
       "range": {
         "startLine": 59,
         "startChar": 37,
