@@ -8,10 +8,12 @@ import (
 	"context"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -23,7 +25,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowCycle,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks Alt+Tab and Alt+Shift+Tab functionality for cycling windows",
 		Contacts: []string{
 			"chromeos-sw-engprod@google.com",
@@ -31,7 +33,14 @@ func init() {
 		},
 		Attr:         []string{"group:mainline"},
 		SoftwareDeps: []string{"chrome"},
-		Pre:          chrome.LoggedIn(),
+		Params: []testing.Param{{
+			Fixture: "chromeLoggedIn",
+		}, {
+			Name:              "lacros",
+			Fixture:           "lacros",
+			ExtraAttr:         []string{"informational"},
+			ExtraSoftwareDeps: []string{"lacros"},
+		}},
 	})
 }
 
@@ -39,16 +48,28 @@ func init() {
 // Checking that the window is active seems to be the best indicator that it is focused and on top.
 func waitForWindowActiveAndFinishAnimating(ctx context.Context, tconn *chrome.TestConn, windowID int) error {
 	return ash.WaitForCondition(ctx, tconn, func(w *ash.Window) bool {
-		return w.IsActive && w.IsAnimating == false && w.ID == windowID
+		return w.IsActive && w.IsVisible && !w.IsAnimating && w.ID == windowID
 	}, &testing.PollOptions{Timeout: 10 * time.Second})
 }
 
 // WindowCycle verifies that we can cycle through open windows using Alt+Tab and Alt+Shift+Tab.
 func WindowCycle(ctx context.Context, s *testing.State) {
-	cr := s.PreValue().(*chrome.Chrome)
+	// Reserve for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
+	defer cancel()
+
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
 		s.Fatal("Failed to connect to test API: ", err)
+	}
+
+	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
+	// Ensure there is no window open before test starts.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to ensure no window is open: ", err)
 	}
 
 	// Launch the apps for the test. Different launch functions are used for Settings and Files,
@@ -56,8 +77,15 @@ func WindowCycle(ctx context.Context, s *testing.State) {
 	// order from changing while cycling. If a window has not completely loaded, it may appear on
 	// top once it finishes loading. If this happens while cycling windows, the test will likely fail.
 	const numApps = 3
-	if err := apps.Launch(ctx, tconn, apps.Chrome.ID); err != nil {
-		s.Fatal("Failed to launch Chrome: ", err)
+	browserApp, err := apps.PrimaryBrowser(ctx, tconn)
+	if err != nil {
+		s.Fatal("Could not find browser app info: ", err)
+	}
+	if err := apps.Launch(ctx, tconn, browserApp.ID); err != nil {
+		s.Fatal("Failed to launch browser: ", err)
+	}
+	if err := ash.WaitForApp(ctx, tconn, browserApp.ID, time.Minute); err != nil {
+		s.Fatal("Browser did not appear in shelf after launch: ", err)
 	}
 
 	settings, err := ossettings.Launch(ctx, tconn)
