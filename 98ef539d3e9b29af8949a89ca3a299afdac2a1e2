@@ -16,6 +16,23 @@
       "message": "+conniekxu for test owner\u0027s review\n+hidehiko for lacros tast owner\u0027s review",
       "revId": "98ef539d3e9b29af8949a89ca3a299afdac2a1e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a61157b5_b91f76ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511637
+      },
+      "writtenOn": "2022-08-09T02:27:02Z",
+      "side": 1,
+      "message": "LGTM. Thank you!",
+      "revId": "98ef539d3e9b29af8949a89ca3a299afdac2a1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
