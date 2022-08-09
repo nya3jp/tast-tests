@@ -28,7 +28,8 @@ func init() {
 			"zubeil@google.com", // Test author
 			"chromeos-kiosk-eng+TAST@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// Disabled due to <1% pass rate over 30 days. See b/241944099
+		//Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "lacros"},
 		Fixture:      fixture.KioskAutoLaunchCleanup,
 	})
