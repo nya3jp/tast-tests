@@ -132,6 +132,10 @@ func init() {
 
 // captureOutputAndGetFrequencies captures audio data and get the frequency stat of each channel.
 func captureOutputAndGetFrequencies(ctx context.Context, output audio.TestRawData) ([]int, error) {
+	if _, err := crastestclient.WaitForStreams(ctx, 5*time.Second); err != nil {
+		return nil, errors.Wrap(err, "wait for streams")
+	}
+
 	testing.ContextLog(ctx, "Capture output to ", output.Path)
 	captureErr := crastestclient.CaptureFileCommand(
 		ctx, output.Path,
