@@ -6,7 +6,6 @@ package security
 
 import (
 	"context"
-	"runtime"
 
 	"chromiumos/tast/local/bundles/cros/security/userfiles"
 	"chromiumos/tast/local/chrome"
@@ -35,17 +34,10 @@ func UserFilesGuest(ctx context.Context, s *testing.State) {
 	}
 	defer cr.Close(ctx)
 
-	// Bind to the platform thread as mount namespace is effective
-	// per thread.
-	runtime.LockOSThread()
-	defer runtime.UnlockOSThread()
-
-	// Guest sessions can be mounted in a non-root mount namespace
-	// so the test needs to perform checks in that same namespace.
-	if err := mountns.EnterUserSessionMountNS(ctx); err != nil {
-		s.Fatal("Failed to enter user session namespace: ", err)
+	if err := mountns.WithUserSessionMountNS(ctx, func(ctx context.Context) error {
+		userfiles.Check(ctx, s, cr.NormalizedUser())
+		return nil
+	}); err != nil {
+		s.Fatal("Failed to check user files: ", err)
 	}
-	defer mountns.EnterInitMountNS(ctx)
-
-	userfiles.Check(ctx, s, cr.NormalizedUser())
 }
