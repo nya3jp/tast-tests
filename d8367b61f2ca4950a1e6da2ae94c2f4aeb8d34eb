@@ -33,6 +33,41 @@
       "message": "next time wait until 20 green builds passed:\nhttps://tastboard.corp.google.com/test/assistant.Hotkey.assistant_key",
       "revId": "d8367b61f2ca4950a1e6da2ae94c2f4aeb8d34eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "318fd71a_c9aaf8bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-09T16:00:14Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "0e592d87_03fa0f87",
+      "revId": "d8367b61f2ca4950a1e6da2ae94c2f4aeb8d34eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd92fd3a_d2d1f2cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121230
+      },
+      "writtenOn": "2022-08-09T16:00:14Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "d8367b61f2ca4950a1e6da2ae94c2f4aeb8d34eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
