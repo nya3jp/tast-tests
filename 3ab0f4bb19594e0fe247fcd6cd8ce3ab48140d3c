@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34fa8413_79b25927",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-09T00:23:06Z",
+      "side": 1,
+      "message": "Currently there is no test cases using this package. In order to test the remote runner, I might need to write a stub remote test and verify it locally.",
+      "parentUuid": "3d24a693_c3f662c3",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "3ab0f4bb19594e0fe247fcd6cd8ce3ab48140d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "417013d6_26d99872",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -85,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dac1ab65_e250e700",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-09T00:23:06Z",
+      "side": 1,
+      "message": "Thanks for bringing this to my attention. I will rebase and change iperf runner once it is landed.",
+      "parentUuid": "aee5e49d_5942f413",
+      "revId": "3ab0f4bb19594e0fe247fcd6cd8ce3ab48140d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fb17e4e3_33325f06",
         "filename": "src/chromiumos/tast/common/network/firewall/runner.go",
         "patchSetId": 1
@@ -108,6 +150,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05550f84_7379f3e3",
+        "filename": "src/chromiumos/tast/common/network/firewall/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-09T00:23:06Z",
+      "side": 1,
+      "message": "This is weird. The bin should be included in the $PATH. I did not see other packages like ip, wpa_cli, ping check the full path before running the command. I may need to run a remote test to check.",
+      "parentUuid": "fb17e4e3_33325f06",
+      "range": {
+        "startLine": 80,
+        "startChar": 24,
+        "endLine": 80,
+        "endChar": 32
+      },
+      "revId": "3ab0f4bb19594e0fe247fcd6cd8ce3ab48140d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26439521_838fdb6e",
         "filename": "src/chromiumos/tast/local/network/firewall/runner.go",
         "patchSetId": 1
@@ -119,6 +185,30 @@
       "writtenOn": "2022-08-08T19:05:02Z",
       "side": 1,
       "message": "remove \"n\"",
+      "range": {
+        "startLine": 17,
+        "startChar": 27,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "3ab0f4bb19594e0fe247fcd6cd8ce3ab48140d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58c20091_fe0f3c9d",
+        "filename": "src/chromiumos/tast/local/network/firewall/runner.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1405522
+      },
+      "writtenOn": "2022-08-09T00:23:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "26439521_838fdb6e",
       "range": {
         "startLine": 17,
         "startChar": 27,
