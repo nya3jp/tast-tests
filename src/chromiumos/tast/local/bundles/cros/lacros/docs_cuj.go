@@ -18,6 +18,7 @@ import (
 	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/lacros/lacrosperf"
+	"chromiumos/tast/local/perfutil"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
 )
@@ -85,10 +86,7 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 	}
 	defer cleanup(ctx)
 
-	pv := perf.NewValues()
-
-	// Collect single metric values from the same metric to be aggregated into the final result.
-	singleMetrics := make(map[perf.Metric][]float64)
+	vs := perfutil.NewValues()
 
 	iterationCount := defaultIterations
 	if iter, ok := s.Var("lacros.DocsCUJ.iterations"); ok {
@@ -113,7 +111,7 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 				}); err != nil {
 					s.Fatal("Failed to run lacros-chrome benchmark: ", err)
 				} else {
-					appendPerfValues(ctx, variantPv, "lacros", pv, singleMetrics)
+					vs.MergeWithSuffix(".lacros", variantPv.GetValues())
 				}
 			case browser.TypeAsh:
 				if variantPv, err = runDocsPageLoad(ctx, docsURLToComment, func(ctx context.Context, url string) (*chrome.Chrome, *chrome.Conn, lacrosperf.CleanupCallback, error) {
@@ -122,23 +120,15 @@ func DocsCUJ(ctx context.Context, s *testing.State) {
 				}); err != nil {
 					s.Fatal("Failed to run ash-chrome benchmark: ", err)
 				} else {
-					appendPerfValues(ctx, variantPv, "ash", pv, singleMetrics)
+					vs.MergeWithSuffix(".ash", variantPv.GetValues())
 				}
 			}
 		}
 	}
 
-	// TODO(tvignatti): It's often useful to record the Bessel corrected standard deviation, and
-	// also the first run value, e.g. ash.*.first, ash.*.stddev.
-	for k, values := range singleMetrics {
-		sum := 0.0
-		for _, v := range values {
-			sum += v
-		}
-		pv.Set(k, sum/float64(len(values)))
-	}
+	// TODO(tvignatti): It's often useful to record the Bessel corrected standard deviation.
 
-	if err := pv.Save(s.OutDir()); err != nil {
+	if err := vs.Save(ctx, s.OutDir()); err != nil {
 		s.Error("Cannot save perf data: ", err)
 	}
 }
@@ -241,21 +231,4 @@ func runDocsPageLoad(
 	}
 
 	return pv, nil
-}
-
-// appendPerfValues appends performance metrics depending whether they can accept multiple or non-multiple values at the time.
-func appendPerfValues(ctx context.Context, variantPv *perf.Values, suffix string, pv *perf.Values, singleMetrics map[perf.Metric][]float64) {
-	for _, m := range variantPv.Proto().GetValues() {
-		metric := perf.Metric{
-			Name:      m.Name + "." + suffix,
-			Unit:      m.Unit,
-			Direction: perf.Direction(m.Direction),
-			Multiple:  m.Multiple,
-		}
-		if m.Multiple {
-			pv.Append(metric, m.Value...)
-		} else {
-			singleMetrics[metric] = append(singleMetrics[metric], m.Value...)
-		}
-	}
 }
