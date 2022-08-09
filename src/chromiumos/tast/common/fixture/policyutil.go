@@ -56,6 +56,8 @@ const (
 	LacrosPolicyLoggedInFeatureChromeLabs = "lacrosPolicyLoggedInFeatureChromeLabs"
 	// LacrosPolicyLoggedInRealUser is a fixture name.
 	LacrosPolicyLoggedInRealUser = "lacrosPolicyLoggedInRealUser"
+	// LacrosAdminDeskTemplatesLoggedIn is a fixture name.
+	LacrosAdminDeskTemplatesLoggedIn = "lacrosAdminDeskTemplatesLoggedIn"
 )
 
 // Fixtures defined in chromiumos/tast/local/policyutil/fixtures/persistent.go.

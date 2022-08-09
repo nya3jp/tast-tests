@@ -79,6 +79,22 @@ func init() {
 		Parent:          fixture.PersistentLacros,
 		Vars:            []string{"policy.ManagedUser.accountPool"},
 	})
+
+	testing.AddFixture(&testing.Fixture{
+		Name:     fixture.LacrosAdminDeskTemplatesLoggedIn,
+		Desc:     "Logged into a user session with admin desk templates for lacros",
+		Contacts: []string{"zhumatthew@google.com", "chromeos-commercial-remote-management@google.com"},
+		Impl: &policyChromeFixture{
+			extraOptsFunc: func(ctx context.Context, s *testing.FixtState) ([]chrome.Option, error) {
+				return lacrosfixt.NewConfig(lacrosfixt.ChromeOptions(chrome.EnableFeatures("DesksTemplates"))).Opts()
+			},
+		},
+		SetUpTimeout:    chrome.ManagedUserLoginTimeout,
+		ResetTimeout:    chrome.ResetTimeout,
+		TearDownTimeout: chrome.ResetTimeout,
+		PostTestTimeout: 15 * time.Second,
+		Parent:          fixture.PersistentLacros,
+	})
 }
 
 type policyRealUserFixture struct {
