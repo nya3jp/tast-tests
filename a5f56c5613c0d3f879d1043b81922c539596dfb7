@@ -16,6 +16,23 @@
       "message": "Colin, this seems like a test in your area...",
       "revId": "a5f56c5613c0d3f879d1043b81922c539596dfb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a443f1_bbdd12ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511087
+      },
+      "writtenOn": "2022-08-09T00:24:54Z",
+      "side": 1,
+      "message": "Thanks for working on this!\n\nAt a high level, we already have a test that covers basic paste functionality: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/clipboardhistory/paste.go. Before I look at this CL more closely, it would be great if you could move the test into the `clipboardhistory` directory and remove the coverage that exists in paste.go. You could also try to find a way to combine the tests gracefully, but I think that opening clipboard history through various context menus and pasting in various ways should probably be separate.",
+      "revId": "a5f56c5613c0d3f879d1043b81922c539596dfb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
