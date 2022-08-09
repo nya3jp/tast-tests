@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "947aafac_42ac1023",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2022-08-09T02:50:09Z",
+      "side": 0,
+      "message": "Question on previous value: why did we set such tolerant value ?",
+      "range": {
+        "startLine": 232,
+        "startChar": 19,
+        "endLine": 232,
+        "endChar": 24
+      },
+      "revId": "193f439460dc5c15b08fc38df29b79082e7b5cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
