@@ -207,6 +207,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f81e026_c1b66619",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-09T09:01:03Z",
+      "side": 1,
+      "message": "I think we can add this in the same Change as the test that uses this, avoiding that having unused code in the repository transitively.",
+      "parentUuid": "c710fc30_212694b1",
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac6600ba_c116173d",
         "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
         "patchSetId": 10
@@ -236,6 +254,24 @@
       "side": 1,
       "message": "I am not sure what you mean about tast/local/*\nWith dimming backlight , there is not just testing under CCA but also apply to all the Camerabox testing.",
       "parentUuid": "ac6600ba_c116173d",
+      "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d72b4c_857db871",
+        "filename": "src/chromiumos/tast/common/camera/dut/dut_control.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1166720
+      },
+      "writtenOn": "2022-08-09T09:01:03Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/tast/+/HEAD/docs/writing_tests.md#code-location\n\nFor example, tast-tests/src/chromiumos/tast/local/camera is here:\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/camera/\n\n\nThe library under tast-tests is categorized as:\n\"local\": for local tests (run on DUT)\n\"remote\": for remote tests (run on host)\n\"common\": used by both local tests and remote tests\n\nI thought CCARestoreBacklight is used only by local test, and RestoreBacklight is for remote test. If so, I suggest moving to the respective package to limit the visibility.",
+      "parentUuid": "2446d55e_a5cb43a4",
       "revId": "570e185ba146799da219e136c3ed2890e687e9c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
