@@ -50,6 +50,23 @@
       "message": "tast-owners@: Please take a look.",
       "revId": "f791c0ebe5a1c552b6970b43ec605129de4326af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a0e8e58_c4cc1380",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-09T04:51:06Z",
+      "side": 1,
+      "message": "shadow reviewer lgtm for tast",
+      "revId": "f791c0ebe5a1c552b6970b43ec605129de4326af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
