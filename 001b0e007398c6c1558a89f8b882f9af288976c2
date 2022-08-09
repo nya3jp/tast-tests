@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d75a0c4a_dd4ee35a",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-09T14:02:37Z",
+      "side": 1,
+      "message": "\u003e My assumption is that users should technically be able to set extensions for both browsers based on  ExtraExtDirs  and  LacrosExtraExtDirs  passed in when necessary for test scenarios (although it is not common)\n\nUnder the assumption, the directory names will conflict.\n\nYou can move \"i\" out from the function, and increment on use.\n(I\u0027d suggest to rename, too, as it\u0027s more than just a counter on a for-loop.)\n\n\u003e Going off a bit, since this CL gets large and touches many places that are likely to be conflicted over time, I was wondering if we can get the core part of this in then fill up any gaps in a follow up. Please suggest.\n\nI\u0027d suggest fixing this issue in this CL. It\u0027s just a small change.",
+      "parentUuid": "6ebf5faf_e9288bf6",
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "596881e4_a6c6005a",
         "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
         "patchSetId": 4
