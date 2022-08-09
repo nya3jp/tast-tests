@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b42939c_f648d232",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T06:50:44Z",
+      "side": 1,
+      "message": "Can you help check if this makes sense here and atconn/btconn are set properly in the test?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "536fd084a48c5faa8ea45148b3b556091c72e56d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
