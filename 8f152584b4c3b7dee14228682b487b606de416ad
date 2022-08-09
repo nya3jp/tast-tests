@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba7eb711_90c3557b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_guest.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-08-09T06:26:27Z",
+      "side": 1,
+      "message": "From my testing this used to work in older image but not on 15018.0.0. Seems that something else implicitly unshare / unmount the namespace. Did some testing that if I do the EnterUserSessionMountNS in SetUp of camera/cca/fixture.go, although the namespace is mounted when the call returns, it becomes unmounted after the testutil.NewTestBridge is called.\n\nI\u0027ll investigate more to see what\u0027s the root cause to this.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 75
+      },
+      "revId": "8f152584b4c3b7dee14228682b487b606de416ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
