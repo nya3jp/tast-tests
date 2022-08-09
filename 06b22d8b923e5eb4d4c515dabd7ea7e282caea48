@@ -179,6 +179,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da6a62eb_8c1e98ea",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1485520
+      },
+      "writtenOn": "2022-08-09T19:11:08Z",
+      "side": 1,
+      "message": "Can you try adding an aria-label to the select option? \n\nhttps://crsrc.org/c/ash/webui/os_feedback_ui/resources/share_data_page.html;l\u003d187-191;drc\u003d300781855980972f404b8107b0346c4cfe2a2026\n\n```\n        \u003coption value$\u003d\"[[feedbackContext.email]]\"\n            aria-label\u003d\"user email\"\n            class\u003d\"email-dropdown\"\u003e\n          [[feedbackContext.email]]\n        \u003c/option\u003e\n        \u003coption value\u003d\"\" aria-label\u003d\"anonymous user\"\n          id\u003d\"anonymousUser\" class\u003d\"email-dropdown\"\u003e\n          [[i18n(\u0027anonymousUser\u0027)]]\n        \u003c/option\u003e\n\n```\n\nThen the options may appear in accessibility tree.",
+      "parentUuid": "5135468e_d2479956",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "06b22d8b923e5eb4d4c515dabd7ea7e282caea48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d81bcc95_1abdf16f",
         "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
         "patchSetId": 6
