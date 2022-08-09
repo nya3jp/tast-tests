@@ -27,7 +27,7 @@ func init() {
 			"benreich@chromium.org",
 			"chromeos-files-syd@google.com",
 		},
-		Attr: []string{"group:mainline", "informational"},
+		Attr: []string{"group:mainline"},
 	})
 }
 
