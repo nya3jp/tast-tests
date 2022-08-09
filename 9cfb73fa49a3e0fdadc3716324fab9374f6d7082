@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a154a047_916c0672",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-09T00:53:30Z",
+      "side": 1,
+      "message": "LGTM. I only have one nit comment. It is purely personal preference. Please have a domain expert to give you a CR+2. Thanks.",
+      "revId": "9cfb73fa49a3e0fdadc3716324fab9374f6d7082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8f94e5a_0a151880",
+        "filename": "src/chromiumos/tast/remote/bluetooth/fixture.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-09T00:53:30Z",
+      "side": 1,
+      "message": "nit:\n\nif !tf.features.BluetoothAdapterEnabled {\n    return tf.fv\n}",
+      "revId": "9cfb73fa49a3e0fdadc3716324fab9374f6d7082",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

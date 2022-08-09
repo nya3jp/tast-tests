@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c4a9188_f2b19577",
+        "filename": "src/chromiumos/tast/local/bundles/cros/bluetooth/bt_test_service.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-09T00:53:30Z",
+      "side": 1,
+      "message": "My mistake. Sorry. Please ignore this comment",
+      "parentUuid": "9824640e_6f7290b2",
+      "revId": "92a482374b0c3d66e0ad3c1468f9699302fe72e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2fc884d_8a80e49d",
