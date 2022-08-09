@@ -219,7 +219,35 @@ func init() {
 				},
 			},
 			ExtraSoftwareDeps: []string{"wireguard"},
-		}},
+		}, {
+			Name: "wireguard_ipv4",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:   vpn.TypeWireGuard,
+					WGIPv4: true,
+				},
+			},
+			ExtraSoftwareDeps: []string{"wireguard"},
+		}, {
+			Name: "wireguard_ipv6",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:   vpn.TypeWireGuard,
+					WGIPv6: true,
+				},
+			},
+			ExtraSoftwareDeps: []string{"wireguard"},
+		}, {
+			Name: "wireguard_ipv4_ipv6",
+			Val: vpnTestParams{
+				config: vpn.Config{
+					Type:          vpn.TypeWireGuard,
+					WGIPv4AndIPv6: true,
+				},
+			},
+			ExtraSoftwareDeps: []string{"wireguard"},
+		},
+		},
 	})
 }
 

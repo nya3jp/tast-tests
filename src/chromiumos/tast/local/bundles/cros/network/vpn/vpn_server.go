@@ -316,22 +316,26 @@ var (
 // Constants that used by WireGuard server. Keys are generated randomly using
 // wireguard-tools, only for test usages.
 const (
-	wgClientPrivateKey       = "8Ez9VkVl2JL+OhrLZvV2FXsRJTqtBpykhErNef5dzns="
-	wgClientPublicKey        = "dN8f5XplOXpNDP1m9b1V3/AVuOogbw+HckGisfEAphA="
-	wgClientOverlayIP        = "10.12.14.2"
-	wgClientOverlayIPPrefix  = "32"
-	wgServerPrivateKey       = "kKhUZZYELpnWFXZmHKvze5kMJ4UfViHo0aacwx9VSXo="
-	wgServerPublicKey        = "VL4pfwqKV4pWX1xJRmvceOZLTftNKi2PrFoBbJWNKXw="
-	wgServerOverlayIP        = "10.12.14.1"
-	wgServerAllowedIPs       = "10.12.0.0/16"
-	wgServerListenPort       = "12345"
-	wgSecondServerPrivateKey = "MKLi0UPHP09PwZDH0EPVd2mMTeGi98NDR8dfkzPuQHs="
-	wgSecondServerPublicKey  = "wJXMGS2jhLPy4x75yev7oh92OwjHFcSWio4U/pWLYzg="
-	wgSecondServerOverlayIP  = "10.14.16.1"
-	wgSecondServerAllowedIPs = "10.14.0.0/16"
-	wgSecondServerListenPort = "54321"
-	wgPresharedKey           = "LqgZ5/qyT8J8nr25n9IEcUi+vOBkd3sphGn1ClhkHw0="
-	wgConfigFile             = "tmp/wg.conf"
+	wgClientPrivateKey        = "8Ez9VkVl2JL+OhrLZvV2FXsRJTqtBpykhErNef5dzns="
+	wgClientPublicKey         = "dN8f5XplOXpNDP1m9b1V3/AVuOogbw+HckGisfEAphA="
+	wgClientOverlayIP         = "10.12.14.2"
+	wgClientOverlayIPPrefix   = "32"
+	wgClientOverlayIPv6       = "fc00:caab:0:1:2::"
+	wgClientOverlayIPv6Prefix = "128"
+	wgServerPrivateKey        = "kKhUZZYELpnWFXZmHKvze5kMJ4UfViHo0aacwx9VSXo="
+	wgServerPublicKey         = "VL4pfwqKV4pWX1xJRmvceOZLTftNKi2PrFoBbJWNKXw="
+	wgServerOverlayIP         = "10.12.14.1"
+	wgServerOverlayIPv6       = "fc00:caab:0:1:1::"
+	wgSecondServerOverlayIPv6 = "fc00:caab:0:1:3::"
+	wgServerAllowedIPs        = "10.12.0.0/16,::/0"
+	wgServerListenPort        = "12345"
+	wgSecondServerPrivateKey  = "MKLi0UPHP09PwZDH0EPVd2mMTeGi98NDR8dfkzPuQHs="
+	wgSecondServerPublicKey   = "wJXMGS2jhLPy4x75yev7oh92OwjHFcSWio4U/pWLYzg="
+	wgSecondServerOverlayIP   = "10.14.16.1"
+	wgSecondServerAllowedIPs  = "10.14.0.0/16,::/0"
+	wgSecondServerListenPort  = "54321"
+	wgPresharedKey            = "LqgZ5/qyT8J8nr25n9IEcUi+vOBkd3sphGn1ClhkHw0="
+	wgConfigFile              = "tmp/wg.conf"
 )
 
 var (
@@ -345,6 +349,10 @@ var (
 			"AllowedIPs = {{.client_ip}}/{{.client_ip_prefix}}\n" +
 			"{{if .preshared_key}}PresharedKey = {{.preshared_key}}{{end}}",
 	}
+
+	wgClientOverlayIPv4List        = [...]string{"10.12.14.2"}
+	wgClientOverlayIPv6List        = [...]string{"fc00:caab:0:1:2::"}
+	wgClientOverlayIPv4AndIPv6List = [...]string{"10.12.14.2", "fc00:caab:0:1:2::"}
 )
 
 // Server represents a VPN server that can be used in the test.
@@ -547,7 +555,7 @@ func StartOpenVPNServer(ctx context.Context, env *env.Env, useUserPassword, useT
 }
 
 // StartWireGuardServer starts a WireGuard server.
-func StartWireGuardServer(ctx context.Context, env *env.Env, clientPublicKey string, usePSK, isSecondServer bool) (*Server, error) {
+func StartWireGuardServer(ctx context.Context, env *env.Env, clientPublicKey string, usePSK, useIPv6, isSecondServer bool) (*Server, error) {
 	runner := newServerRunner(env)
 	server := &Server{
 		serverRunner: runner,
@@ -564,14 +572,27 @@ func StartWireGuardServer(ctx context.Context, env *env.Env, clientPublicKey str
 	if usePSK {
 		configValues["preshared_key"] = wgPresharedKey
 	}
+	if useIPv6 {
+		server.OverlayIP = wgServerOverlayIPv6
+		configValues["client_ip"] = wgClientOverlayIPv6
+		configValues["client_ip_prefix"] = wgClientOverlayIPv6Prefix
+
+	} else {
+		server.OverlayIP = wgServerOverlayIP
+	}
+
 	if isSecondServer {
 		configValues["server_private_key"] = wgSecondServerPrivateKey
 		configValues["server_listen_port"] = wgSecondServerListenPort
 		server.OverlayIP = wgSecondServerOverlayIP
-	} else {
+	}
+	if isSecondServer && useIPv6 {
+		server.OverlayIP = wgSecondServerOverlayIPv6
+	}
+	if !isSecondServer {
+
 		configValues["server_private_key"] = wgServerPrivateKey
 		configValues["server_listen_port"] = wgServerListenPort
-		server.OverlayIP = wgServerOverlayIP
 	}
 
 	runner.AddConfigTemplates(wgConfigs)
@@ -584,6 +605,9 @@ func StartWireGuardServer(ctx context.Context, env *env.Env, clientPublicKey str
 		runner.AddStartupCommand("ip route add " + wgClientOverlayIP + " dev wg1")
 	} else {
 		runner.AddStartupCommand("ip route add " + wgClientOverlayIP + " dev wg1")
+	}
+	if useIPv6 {
+		runner.AddStartupCommand("ip route add " + wgClientOverlayIPv6 + " dev wg1")
 	}
 
 	var err error
