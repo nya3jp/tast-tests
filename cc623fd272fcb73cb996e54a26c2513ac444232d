@@ -16,6 +16,24 @@
       "message": "I see two sources of failures:\n\n* The coral-kernelnext failures are a fixture failure starting the ui, which has nothing to do with these tests.\n* A bunch of failures to connect to debugd.  These have nothing to do with this test, but are caused by another test generating feedback reports that block the debugd event thread.  These should be addressed once crrev.com/c/3816685 lands.\n\nIMO we should wait for crrev.com/c/3816685 to land and then confirm that everything other than the coral-kernelnext failures goes back to green before we submit this.",
       "revId": "cc623fd272fcb73cb996e54a26c2513ac444232d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af1ef449_24e1aece",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-09T21:41:39Z",
+      "side": 1,
+      "message": "tastboard link for what I was looking at: https://tastboard.corp.google.com/test?contact\u0026testname\u003dprinter.Add",
+      "parentUuid": "f987c8ff_d08407b4",
+      "revId": "cc623fd272fcb73cb996e54a26c2513ac444232d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
