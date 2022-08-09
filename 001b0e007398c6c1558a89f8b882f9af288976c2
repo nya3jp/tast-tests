@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf8dde43_9812f7d2",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T15:39:26Z",
+      "side": 1,
+      "message": "I see. can you please take another look if I got this right now? Thanks,",
+      "parentUuid": "d75a0c4a_dd4ee35a",
+      "revId": "001b0e007398c6c1558a89f8b882f9af288976c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "596881e4_a6c6005a",
