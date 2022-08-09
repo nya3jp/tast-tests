@@ -31,11 +31,13 @@ func init() {
 		Desc:         "Verifies external display detection",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
 		SoftwareDeps: []string{"chrome"},
+		LacrosStatus: testing.LacrosVariantUnneeded,
 		Vars: []string{
 			"power.iterations",
 			"power.chameleon_addr",
 			"power.chameleon_display_port",
 		},
+
 		// To skip on duffy(Chromebox) with no internal display.
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Params: []testing.Param{{
