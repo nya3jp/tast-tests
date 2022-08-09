@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8aabd113_75a468a0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-08-09T16:34:07Z",
+      "side": 1,
+      "message": "I checked ~10 UI tree dumps from recent test failures and couldn\u0027t find a single example when we have more than one element with class AutofillPopupSuggestionView. Do you have an example run demoing this?",
+      "parentUuid": "89581fdf_d0fe058c",
+      "range": {
+        "startLine": 209,
+        "startChar": 97,
+        "endLine": 209,
+        "endChar": 105
+      },
+      "revId": "9087dd0e375f2e6343509e32983f051a149e20d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14d4ddf1_1946b7da",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
         "patchSetId": 1
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "more details are here: https://docs.google.com/document/d/1RRo30-R83YWabBFb-Y1zsyl2UcogjaZj0_JuOQ8anBk/edit?usp\u003dsharing\u0026resourcekey\u003d0-7ju-AaBFfUVgXjkm39TlTA",
       "parentUuid": "14d4ddf1_1946b7da",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 212,
+        "endChar": 22
+      },
+      "revId": "9087dd0e375f2e6343509e32983f051a149e20d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "012bd6b4_ee10ef1b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-08-09T16:34:07Z",
+      "side": 1,
+      "message": "IMHO we should be fixing for the suggestion to show up after the first click rather than simulating frustrated user experience in tests. In other words, this test is failing correctly and what needs to be fixed is how the feature works. Have you also tried increasing timeout? Could it be that suggestion pop does show up, but needs more time to do so?",
+      "parentUuid": "bd2c805c_2ce95d2b",
       "range": {
         "startLine": 212,
         "startChar": 8,
