@@ -31,7 +31,8 @@ func init() {
 		Contacts:     []string{"msta@google.com", "chrome-engprod@google.com"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.Model("eve")),
-		Attr:         []string{"group:mainline", "informational"},
+		// Disabled due to <1% pass rate over 30 days. See b/241943743
+		//Attr:         []string{"group:mainline", "informational"},
 		Vars:         screenshot.ScreenDiffVars,
 	})
 }
