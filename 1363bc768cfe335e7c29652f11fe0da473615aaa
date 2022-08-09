@@ -22,6 +22,30 @@
       },
       "revId": "1363bc768cfe335e7c29652f11fe0da473615aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b248d918_84ca2907",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nacl/pnacl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1527527
+      },
+      "writtenOn": "2022-08-09T15:55:36Z",
+      "side": 1,
+      "message": "They\u0027re not same, this one here uses `cr` and the other one uses `l`.",
+      "parentUuid": "b4d28c1b_c8848a06",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 68
+      },
+      "revId": "1363bc768cfe335e7c29652f11fe0da473615aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
