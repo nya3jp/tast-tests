@@ -41,7 +41,8 @@ func init() {
 			"chromeos-sw-engprod@google.com",
 			"cros-system-ui-eng@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// Disabled due to <1% pass rate over 30 days. See b/241942927
+		//Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome", "android_p"},
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
 		Timeout:      5 * time.Minute,
