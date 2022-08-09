@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c471ddf3_9bed4bfd",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T18:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e550cfb_162e5710",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "a3bb8c04a49d8576e97335e16c80694e92b98247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebd9a63d_8af39e2b",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-08-09T16:29:34Z",
       "side": 1,
       "message": "nit: could you use \"TODO(...): \" style TODO?",
+      "revId": "a3bb8c04a49d8576e97335e16c80694e92b98247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6538c4e_ac356f68",
+        "filename": "src/chromiumos/tast/local/chrome/internal/extension/files.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T18:33:35Z",
+      "side": 1,
+      "message": "Done filing a crbug to follow up.",
+      "parentUuid": "ebd9a63d_8af39e2b",
       "revId": "a3bb8c04a49d8576e97335e16c80694e92b98247",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a4b52fd_375f1546",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T18:33:35Z",
+      "side": 1,
+      "message": "That\u0027s possible. I was actually thinking about that, but ended up maintaining the arg list just for those that should be set for both browser in common and while keeping anything specific to either browser separate.\n\nI could have missed it, but they are not found in ash: http://cs/chromeos_public/src/platform/tast-tests/src/chromiumos/tast/local/chrome/internal/setup/restart.go?l\u003d52\n\nI\u0027m definitely open to merge them in a follow up if needed. Marking as resolved for this CL if you\u0027re okay.",
+      "parentUuid": "1dbd5882_3788c20a",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 59
+      },
+      "revId": "a3bb8c04a49d8576e97335e16c80694e92b98247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0acae855_bd0c7d34",
@@ -77,6 +143,24 @@
       "writtenOn": "2022-08-09T16:29:34Z",
       "side": 1,
       "message": "ditto",
+      "revId": "a3bb8c04a49d8576e97335e16c80694e92b98247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b30201f6_21581bfe",
+        "filename": "src/chromiumos/tast/local/chrome/lacros/lacrosfixt/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T18:33:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0acae855_bd0c7d34",
       "revId": "a3bb8c04a49d8576e97335e16c80694e92b98247",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
