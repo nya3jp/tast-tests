@@ -9,12 +9,15 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/notification"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/input"
@@ -23,10 +26,15 @@ import (
 	"chromiumos/tast/testing/hwdep"
 )
 
+type notificationScrollingPerfTestParam struct {
+	arc bool
+	bt  browser.Type
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NotificationScrollingPerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures input latency of scrolling through notification list",
 		Contacts:     []string{"leandre@chromium.org", "cros-status-area-eng@google.com", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
@@ -34,17 +42,31 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      3 * time.Minute,
 		Params: []testing.Param{{
-			Val: false,
+			Val: notificationScrollingPerfTestParam{false, browser.TypeAsh},
 		}, {
 			Name:              "arc",
 			ExtraSoftwareDeps: []string{"arc"},
-			Val:               true,
+			Val:               notificationScrollingPerfTestParam{true, browser.TypeAsh},
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               notificationScrollingPerfTestParam{false, browser.TypeLacros},
+		}, {
+			Name:              "arc_lacros",
+			ExtraSoftwareDeps: []string{"arc", "lacros"},
+			Val:               notificationScrollingPerfTestParam{true, browser.TypeLacros},
 		}},
 	})
 }
 
 func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
-	isArc := s.Param().(bool)
+	// Reserve a few seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	isArc := s.Param().(notificationScrollingPerfTestParam).arc
+	bt := s.Param().(notificationScrollingPerfTestParam).bt
 
 	// Ensure display on to record ui performance correctly.
 	if err := power.TurnOnDisplay(ctx); err != nil {
@@ -56,24 +78,38 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 		initArcOpt = []chrome.Option{chrome.ARCEnabled()}
 	}
 
-	cr, err := chrome.New(ctx, initArcOpt...)
+	// Set up the browser.
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), initArcOpt...)
 	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
+		s.Fatal("Failed to set up browser: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
-	tconn, err := cr.TestAPIConn(ctx)
+	atconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
+		s.Fatal("Failed to connect to test API from ash: ", err)
+	}
+	btconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API from browser: ", err)
+	}
+
+	// Minimize opened windows (if exists) to reduce background noise during the measurement.
+	if err := ash.ForEachWindow(ctx, atconn, func(w *ash.Window) error {
+		return ash.SetWindowStateAndWait(ctx, atconn, w.ID, ash.WindowStateMinimized)
+	}); err != nil {
+		s.Fatal("Failed to set window states: ", err)
 	}
 
 	var arcclient *notification.ARCClient
 	if isArc {
-		arcclient, err = notification.NewARCClient(ctx, tconn, cr, s.OutDir())
+		// Note that ARC uses the test API from ash-chrome to manage notifications.
+		arcclient, err = notification.NewARCClient(ctx, atconn, cr, s.OutDir())
 		if err != nil {
 			s.Fatal("Failed to start ARCClient: ", err)
 		}
-		defer arcclient.Close(ctx, tconn)
+		defer arcclient.Close(cleanupCtx, atconn)
 	}
 
 	// Add some notifications so that notification centre shows up when opening Quick Settings.
@@ -89,18 +125,18 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 	for i := 0; i <= n; i++ {
 		for _, t := range ts {
 			title := fmt.Sprintf("Test%sNotification%d", t, i)
-			if _, err := browser.CreateTestNotification(ctx, tconn, t, title, "test message"); err != nil {
+			if _, err := browser.CreateTestNotification(ctx, btconn, t, title, "test message"); err != nil {
 				s.Fatalf("Failed to create %d-th %s notification: %v", i, t, err)
 			}
 			// Wait for the notification to finish creating, making sure that it is created.
-			if _, err := ash.WaitForNotification(ctx, tconn, uiTimeout, ash.WaitTitle(title)); err != nil {
+			if _, err := ash.WaitForNotification(ctx, atconn, uiTimeout, ash.WaitTitle(title)); err != nil {
 				s.Fatalf("Failed to wait for %d-th %s notification: %v", i, t, err)
 			}
 		}
 
 		// Create an ARC notification.
 		if isArc {
-			if err := arcclient.CreateOrUpdateTestNotification(ctx, tconn, fmt.Sprintf("TestARCNotification%d", i), "test message", fmt.Sprintf("%d", i)); err != nil {
+			if err := arcclient.CreateOrUpdateTestNotification(ctx, atconn, fmt.Sprintf("TestARCNotification%d", i), "test message", fmt.Sprintf("%d", i)); err != nil {
 				s.Fatalf("Failed to create %d-th ARC notification: %v", i, err)
 			}
 		}
@@ -143,11 +179,12 @@ func NotificationScrollingPerf(ctx context.Context, s *testing.State) {
 		return nil
 	}
 
-	ac := uiauto.New(tconn)
+	ac := uiauto.New(atconn)
 	statusArea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
 	messageCenter := nodewith.ClassName("UnifiedMessageCenterView")
 
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	// Note that ash-chrome (cr and atconn) is passed in to take traces and metrics from ash-chrome.
+	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(atconn, func(ctx context.Context) error {
 		if err := uiauto.Combine(
 			"open the uber tray, scroll up and down the notification list, then close it",
 			ac.LeftClick(statusArea),
