@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e667d7_75380c37",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-08-09T10:56:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "895b811f_e711a361",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 20
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26d0c031_6fea8781",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b3928ec_06e3f63f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-08-09T10:56:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26d0c031_6fea8781",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbd96a00_f87f7d47",
@@ -94,6 +142,30 @@
       "writtenOn": "2022-08-08T18:04:08Z",
       "side": 1,
       "message": "Consider changing LeftClick to DoDefault as DoDefault is more stable as it doesn\u0027t rely on the position of ui elements.",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 14
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23294eb8_dda99d17",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-08-09T10:56:32Z",
+      "side": 1,
+      "message": "Replaced in some places, but in some cases it didn\u0027t work at all for some reason.",
+      "parentUuid": "bbd96a00_f87f7d47",
       "range": {
         "startLine": 121,
         "startChar": 5,
@@ -128,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d896c9b_fe8b67ee",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-08-09T10:56:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc28c4a3_f461f5b1",
+      "range": {
+        "startLine": 232,
+        "startChar": 32,
+        "endLine": 232,
+        "endChar": 39
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85a41739_1fb3ba96",
@@ -142,6 +238,30 @@
       "side": 1,
       "message": "\u003e \"propogate\" is a possible misspelling of \"propagate\".\n\nWill fix.",
       "parentUuid": "68bdb4db_86b79858",
+      "range": {
+        "startLine": 273,
+        "startChar": 56,
+        "endLine": 273,
+        "endChar": 65
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6231f43_ee1b910c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-08-09T10:56:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a41739_1fb3ba96",
       "range": {
         "startLine": 273,
         "startChar": 56,
@@ -175,6 +295,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "119e77c2_a4c0a6f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-08-09T10:56:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b6f7d5e_e621c3d4",
+      "range": {
+        "startLine": 274,
+        "startChar": 57,
+        "endLine": 274,
+        "endChar": 63
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5850190_74650884",
@@ -188,6 +332,30 @@
       "writtenOn": "2022-08-08T18:04:08Z",
       "side": 1,
       "message": "DoDefault might be able to solve that problem.",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 2
+      },
+      "revId": "627e4e9f7a17a7c6625a65169822b7f3e96837a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6929793_5b5c7d79",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/cert_settings_page.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1357438
+      },
+      "writtenOn": "2022-08-09T10:56:32Z",
+      "side": 1,
+      "message": "Thanks, I think it actually helped.",
+      "parentUuid": "d5850190_74650884",
       "range": {
         "startLine": 313,
         "startChar": 0,
