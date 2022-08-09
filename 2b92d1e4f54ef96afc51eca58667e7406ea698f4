@@ -16,6 +16,24 @@
       "message": "Sorry for missing the review, just tested that this works after resolving merge conflict (on import lines), and renaming the EnterUserSessionMountNs/EnterInitMountNs to EnterUserSessionMountNS/EnterInitMountNS.\n\nI can also take over the CL if you don\u0027t have enough cycle now for this, thanks for the CL.",
       "revId": "2b92d1e4f54ef96afc51eca58667e7406ea698f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c85239_0de86dad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-08-09T06:28:25Z",
+      "side": 1,
+      "message": "Oh, no problem at all! I had completely forgotten about it. \n\nLong story short, I made a number of CLs attempting to solve the issue of changing mount namespaces when logging in and out of guest user sessions and automating this process as part of the Guest Login fixture logic but I didn\u0027t really have enough expertise to get it working without causing flakes. I then passed the baton to Hidehiko who I think then coordinated with other folks to address this issue. I think the current implementation in `mountns.go` works just fine.\n\nI would really appreciate if you could take over this CL, please!\n\nOne nice improvement here would be move `mountns.EnterUserSessionMountNS(ctx)` into the Guest Login fixtures so we don\u0027t need to call it directly and can save ourselves some tast execution time by batch running current and future tests that require guest users to interact with the filesystem. \n\nYou should be able to combine these 2 small abandoned CLs to achieve this:\n\nhttps://crrev.com/c/3411092 security: Enter/leave user session namespace on guest login\n\nhttps://crrev.com/c/3449479 security: Make fixtures\u0027 mount namespaces explicit\n\nThanks!",
+      "parentUuid": "97d39fb5_2a29853c",
+      "revId": "2b92d1e4f54ef96afc51eca58667e7406ea698f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
