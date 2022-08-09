@@ -8,9 +8,11 @@ import (
 	"context"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"time"
 
 	"chromiumos/tast/ctxutil"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bundles/cros/ui/chromecrash"
 	"chromiumos/tast/local/crash"
@@ -45,6 +47,18 @@ func init() {
 		SoftwareDeps: []string{"chrome", "crashpad"},
 		Timeout:      upstart.UIRestartTimeout + chromeCrashEarlyCleanupTimeout + chromeCrashEarlyCrashFileTimeout + time.Minute,
 	})
+}
+
+// filterMetaFiles takes a list of filenames and returns all the files that end
+// in ".meta".
+func filterMetaFiles(files []string) []string {
+	var metaFiles []string
+	for _, file := range files {
+		if strings.HasSuffix(file, ".meta") {
+			metaFiles = append(metaFiles, file)
+		}
+	}
+	return metaFiles
 }
 
 // ChromeCrashEarly tests that the user collector can capture Chrome crashes that
@@ -121,6 +135,16 @@ func ChromeCrashEarly(ctx context.Context, s *testing.State) {
 		if err := fsutil.CopyFile("/var/lib/crash_reporter/lsb-release",
 			filepath.Join(s.OutDir(), "var-lib-crash_reporter-lsb-release")); err != nil {
 			s.Log("Failed to copy /var/lib/crash_reporter/ for forensic analysis: ", err)
+		}
+		// Often, the meta file exists but doesn't have match one of the crash.MetaString
+		// or crash.MetaRegExp requirements exists. Copy the meta files off so we can
+		// see which string is missing.
+		var regexesNotFoundError crash.RegexesNotFound
+		if errors.As(err, &regexesNotFoundError) {
+			filesToSave := filterMetaFiles(regexesNotFoundError.Files)
+			if err := crash.MoveFilesToOut(ctx, s.OutDir(), filesToSave...); err != nil {
+				s.Log("Failed to copy crash files for forensic analysis: ", err)
+			}
 		}
 
 		s.Fatal("Couldn't find early crash files: ", err)
