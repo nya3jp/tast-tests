@@ -50,6 +50,23 @@
       "message": "If no expert can give you a +2, have an expert to review and give you a +1. I will add +2 later. Thanks.",
       "revId": "d79cf4df5fdf0175f48c496f6e82deec52d8b169",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dfe6eeb_db5d9f3a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/vp9_video_decoder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273510
+      },
+      "writtenOn": "2022-08-09T20:35:59Z",
+      "side": 1,
+      "message": "Thanks for the CL!\n\nI have a few concerns:\n\n1) Is `https://www.youtube.com/watch?v\u003dLXb3EKWsInQ` guaranteed to remain VP9?\n\n2) What class of bugs do you expect this test to catch that are not caught by existing tests? For example, there\u0027s already `video.Play.vp9`.\n\nAlso adding ihf@ for possible additional feedback.",
+      "revId": "d79cf4df5fdf0175f48c496f6e82deec52d8b169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
