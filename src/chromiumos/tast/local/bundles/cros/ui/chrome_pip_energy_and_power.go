@@ -21,8 +21,8 @@ import (
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/chrome/uiauto/mouse"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
+	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
 	"chromiumos/tast/local/coords"
@@ -119,6 +119,9 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	}
 	defer kw.Close()
 
+	pc := pointer.NewMouse(tconn)
+	defer pc.Close()
+
 	timeline, err := perf.NewTimeline(ctx, power.TestMetrics())
 	if err != nil {
 		s.Fatal("Failed to build metrics: ", err)
@@ -165,18 +168,7 @@ func ChromePIPEnergyAndPower(ctx context.Context, s *testing.State) {
 	} else {
 		resizeEnd = info.WorkArea.BottomRight().Sub(coords.NewPoint(1, 1))
 	}
-
-	if err := action.Combine(
-		"resize the PIP window",
-		mouse.Move(tconn, pipWindowBounds.TopLeft(), 0),
-		mouse.Press(tconn, mouse.LeftButton),
-		mouse.Move(tconn, resizeEnd, time.Second),
-		mouse.Release(tconn, mouse.LeftButton),
-	)(ctx); err != nil {
-		// Ensure releasing the mouse button.
-		if err := mouse.Release(tconn, mouse.LeftButton)(cleanupCtx); err != nil {
-			s.Error("Failed to release the mouse button: ", err)
-		}
+	if err := pc.Drag(pipWindowBounds.TopLeft(), pc.DragTo(resizeEnd, time.Second))(ctx); err != nil {
 		s.Fatal("Failed to resize the PIP window: ", err)
 	}
 
