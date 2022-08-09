@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee9951e_058348de",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T00:27:00Z",
+      "side": 0,
+      "message": "For reviewer, I realized that checking that animation is done doesn\u0027t seem to be enough for the window that is just starting up and hasn\u0027t become visible yet.\nIt is because the animation is not likely happening until it becomes visible. It is safe to check that it is visible in the desired state AND not in the animation mode.",
+      "range": {
+        "startLine": 252,
+        "startChar": 10,
+        "endLine": 252,
+        "endChar": 35
+      },
+      "revId": "b9483d6d7ff1febca1f6fd8f5820b38d21d20b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
