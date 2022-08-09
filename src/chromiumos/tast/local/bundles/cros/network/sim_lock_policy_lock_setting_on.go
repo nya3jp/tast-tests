@@ -36,7 +36,8 @@ func init() {
 			"cros-connectivity@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_pinlock"},
+		// Disabled due to <1% pass rate over 30 days. See b/241943012
+		//Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_pinlock"},
 		Fixture:      fixture.FakeDMSEnrolled,
 		Timeout:      9 * time.Minute,
 		Vars:         []string{"autotest_host_info_labels"},

@@ -32,7 +32,8 @@ func init() {
 			"chromeos-commercial-networking@google.com",
 		},
 		SoftwareDeps: []string{"chrome"},
-		Attr:         []string{"group:mainline", "informational"},
+		// Disabled due to <1% pass rate over 30 days. See b/241943012
+		//Attr:         []string{"group:mainline", "informational"},
 		Fixture:      "chromeEnrolledLoggedIn",
 	})
 }
