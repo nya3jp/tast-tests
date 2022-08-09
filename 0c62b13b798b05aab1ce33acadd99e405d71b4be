@@ -73,6 +73,30 @@
       },
       "revId": "0c62b13b798b05aab1ce33acadd99e405d71b4be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "852a958b_1cfb4e2c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/scanapp/scanapp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002374
+      },
+      "writtenOn": "2022-08-09T18:12:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08c791d1_bb116c68",
+      "range": {
+        "startLine": 231,
+        "startChar": 60,
+        "endLine": 231,
+        "endChar": 76
+      },
+      "revId": "0c62b13b798b05aab1ce33acadd99e405d71b4be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
