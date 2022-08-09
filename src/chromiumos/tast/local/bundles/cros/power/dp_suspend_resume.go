@@ -23,7 +23,8 @@ func init() {
 		Func:         DpSuspendResume,
 		Desc:         "Verifies DP native port functionality with suspend-resume cycles",
 		Contacts:     []string{"pathan.jilani@intel.com", "intel-chrome-system-automation-team@intel.com"},
-		Attr:         []string{"group:mainline", "informational"},
+		// Disabled due to <1% pass rate over 30 days. See b/241943556
+		//Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Vars: []string{
 			"power.chameleon_addr",
