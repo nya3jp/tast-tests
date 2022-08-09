@@ -24,7 +24,6 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/pointer"
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/webutil"
-	"chromiumos/tast/local/cpu"
 	"chromiumos/tast/local/power"
 	"chromiumos/tast/local/ui/cujrecorder"
 	"chromiumos/tast/testing"
@@ -49,7 +48,7 @@ func init() {
 				Val: windowarrangementcuj.TestParam{
 					BrowserType: browser.TypeAsh,
 				},
-				Fixture:           "arcBootedInClamshellMode",
+				Fixture:           "loggedInToCUJUser",
 				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
@@ -58,6 +57,7 @@ func init() {
 					BrowserType: browser.TypeAsh,
 					Tablet:      true,
 				},
+				Fixture:           "loggedInToCUJUser",
 				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
@@ -67,6 +67,7 @@ func init() {
 					Tablet:      true,
 					Tracing:     true,
 				},
+				Fixture:           "loggedInToCUJUser",
 				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
@@ -76,6 +77,7 @@ func init() {
 					Tablet:      true,
 					Validation:  true,
 				},
+				Fixture:           "loggedInToCUJUser",
 				ExtraSoftwareDeps: []string{"android_p"},
 			},
 			{
@@ -83,7 +85,7 @@ func init() {
 				Val: windowarrangementcuj.TestParam{
 					BrowserType: browser.TypeLacros,
 				},
-				Fixture:           "lacrosWithArcBooted",
+				Fixture:           "loggedInToCUJUserLacros",
 				ExtraSoftwareDeps: []string{"android_p", "lacros"},
 			},
 			{
@@ -91,7 +93,7 @@ func init() {
 				Val: windowarrangementcuj.TestParam{
 					BrowserType: browser.TypeAsh,
 				},
-				Fixture:           "arcBootedInClamshellMode",
+				Fixture:           "loggedInToCUJUser",
 				ExtraSoftwareDeps: []string{"android_vm"},
 			},
 		},
@@ -128,13 +130,6 @@ func WindowArrangementCUJ(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure clamshell/tablet mode: ", err)
 	}
 	defer cleanup(closeCtx)
-
-	// Wait for CPU to stabilize before test.
-	if err := cpu.WaitUntilStabilized(ctx, cuj.CPUCoolDownConfig()); err != nil {
-		// Log the cpu stabilizing wait failure instead of make it fatal.
-		// TODO(b/213238698): Include the error as part of test data.
-		s.Log("Failed to wait for CPU to become idle: ", err)
-	}
 
 	tabChecker, err := cuj.NewTabCrashChecker(ctx, conns.TestConn)
 	if err != nil {
