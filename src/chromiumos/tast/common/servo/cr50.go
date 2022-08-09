@@ -1,4 +1,4 @@
-// Copyright 2021 The Chromium OS Authors. All rights reserved.
+// Copyright 2021 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -42,6 +42,45 @@ type TestlabState string
 const (
 	Enable  TestlabState = "on"
 	Disable TestlabState = "off"
+)
+
+// CCDCap contains possible CCD capabilities.
+type CCDCap string
+
+// CCD capabilities.
+const (
+	UartGscRxAPTx   CCDCap = "UartGscRxAPTx"
+	UartGscTxAPRx   CCDCap = "UartGscTxAPRx"
+	UartGscRxECTx   CCDCap = "UartGscRxECTx"
+	UartGscTxECRx   CCDCap = "UartGscTxECRx"
+	FlashAP         CCDCap = "FlashAP"
+	FlashEC         CCDCap = "FlashEC"
+	OverrideWP      CCDCap = "OverrideWP"
+	RebootECAP      CCDCap = "RebootECAP"
+	GscFullConsole  CCDCap = "GscFullConsole"
+	UnlockNoReboot  CCDCap = "UnlockNoReboot"
+	UnlockNoShortPP CCDCap = "UnlockNoShortPP"
+	OpenNoTPMWipe   CCDCap = "OpenNoTPMWipe"
+	OpenNoLongPP    CCDCap = "OpenNoLongPP"
+	BatteryBypassPP CCDCap = "BatteryBypassPP"
+	Unused          CCDCap = "Unused"
+	I2C             CCDCap = "I2C"
+	FlashRead       CCDCap = "FlashRead"
+	OpenNoDevMode   CCDCap = "OpenNoDevMode"
+	OpenFromUSB     CCDCap = "OpenFromUSB"
+	OverrideBatt    CCDCap = "OverrideBatt"
+	APROCheckVC     CCDCap = "APROCheckVC"
+)
+
+// CCDCapState contains possible states for a CCD capability.
+type CCDCapState string
+
+// CCD capability states
+const (
+	CapDefault      CCDCapState = "Default"
+	CapAlways       CCDCapState = "Always"
+	CapUnlessLocked CCDCapState = "UnlessLocked"
+	CapIfOpened     CCDCapState = "IfOpened"
 )
 
 // RunCR50Command runs the given command on the Cr50 on the device.
@@ -133,9 +172,10 @@ Possible states are:
 	1 = Always
 	2 = UnlessLocked
 	3 = IfOpened
+It will also return "Y" if the capability is accessible, and "-" otherwise.
 */
-func (s *Servo) GetCCDCapability(ctx context.Context, capability string) (int, error) {
-	re := `(` + capability + `)\s*(\w|\W)\s*\d`
+func (s *Servo) GetCCDCapability(ctx context.Context, capability CCDCap) (int, string, error) {
+	re := `(` + string(capability) + `)\s*(\w|\W)\s*\d`
 	var out [][]string
 	var err error
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
@@ -145,12 +185,53 @@ func (s *Servo) GetCCDCapability(ctx context.Context, capability string) (int, e
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 1 * time.Second}); err != nil {
-		return 0, err
+		return 0, "", err
 	}
 	splitout := strings.Split(out[0][0], " ")
 	state, err := strconv.Atoi(splitout[len(splitout)-1])
 	if err != nil {
-		return 0, errors.Wrapf(err, "unable to tell %s state", capability)
+		return 0, "", errors.Wrapf(err, "unable to tell %s state", capability)
 	}
-	return state, nil
+	return state, splitout[len(splitout)-2], nil
+}
+
+/*
+SetCCDCapability will try to set a CCD capability to a specific state.
+Possible states are:
+	Default
+	Always
+	UnlessLocked
+	IfOpened
+*/
+func (s *Servo) SetCCDCapability(ctx context.Context, capability CCDCap, state CCDCapState) error {
+	// Information about CCD states is usually returned in the form of
+	// '[CapabilityName|Y|1]'. Create a map to match each capability
+	// state with the corresponding integer value.
+	capMap := map[CCDCapState]int{
+		CapDefault:      0,
+		CapAlways:       1,
+		CapUnlessLocked: 2,
+		CapIfOpened:     3,
+	}
+
+	// Ensure the state we want is set.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		cmd := "ccd set " + string(capability) + " " + string(state)
+		if err := s.RunCR50Command(ctx, cmd); err != nil {
+			return errors.Wrapf(err, "failed to send command %q to cr50", cmd)
+		}
+
+		currState, _, err := s.GetCCDCapability(ctx, capability)
+		if err != nil {
+			return errors.Wrapf(err, "failed to get current %q state", capability)
+		}
+
+		if currState != capMap[state] {
+			return errors.Errorf("got state %v, but expected %v", currState, capMap[state])
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 1 * time.Second}); err != nil {
+		return errors.Wrapf(err, "failed to set %s to %s", capability, state)
+	}
+	return nil
 }
