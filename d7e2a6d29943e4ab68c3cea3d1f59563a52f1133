@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "497e1f12_cae97ed5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-09T08:36:06Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "d7e2a6d29943e4ab68c3cea3d1f59563a52f1133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82bd9f00_0ffdb3b3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/traffic_annotation_sample.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-09T08:36:06Z",
+      "side": 1,
+      "message": "Use DoDefault instead of LeftClick as it is more stable.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 1
+      },
+      "revId": "d7e2a6d29943e4ab68c3cea3d1f59563a52f1133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f90c303c_fd4b5854",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/traffic_annotation_sample.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1411065
+      },
+      "writtenOn": "2022-08-09T08:36:06Z",
+      "side": 1,
+      "message": "nit: remove empty line",
+      "revId": "d7e2a6d29943e4ab68c3cea3d1f59563a52f1133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
