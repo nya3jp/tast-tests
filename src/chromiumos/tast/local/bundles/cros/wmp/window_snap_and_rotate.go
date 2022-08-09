@@ -13,6 +13,8 @@ import (
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
+	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
 	"chromiumos/tast/local/chrome/display"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/mouse"
@@ -20,10 +22,17 @@ import (
 	"chromiumos/tast/testing"
 )
 
+var defaultPollOptions = &testing.PollOptions{Timeout: 20 * time.Second}
+
+type windowSnapAndRotateTestParam struct {
+	portrait bool
+	bt       browser.Type
+}
+
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         WindowSnapAndRotate,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "In clamshell mode, checks that snap in landscape and portrait works properly",
 		Contacts: []string{
 			"cattalyya@chromium.org",
@@ -32,24 +41,35 @@ func init() {
 		},
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
-		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{{
-			Name: "portrait",
-			Val:  true,
+			Name:    "portrait",
+			Fixture: "chromeLoggedIn",
+			Val:     windowSnapAndRotateTestParam{portrait: true, bt: browser.TypeAsh},
 		}, {
-			Name: "landscape",
-			Val:  false,
+			Name:    "landscape",
+			Fixture: "chromeLoggedIn",
+			Val:     windowSnapAndRotateTestParam{portrait: false, bt: browser.TypeAsh},
+		}, {
+			Name:              "portrait_lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               windowSnapAndRotateTestParam{portrait: true, bt: browser.TypeLacros},
+		}, {
+			Name:              "landscape_lacros",
+			Fixture:           "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               windowSnapAndRotateTestParam{portrait: false, bt: browser.TypeLacros},
 		}},
 	})
 }
 
 func WindowSnapAndRotate(ctx context.Context, s *testing.State) {
-	// Reserve ten seconds for various cleanup.
+	// Reserve a few seconds for various cleanup.
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
 	defer cancel()
 
-	cr := s.FixtValue().(*chrome.Chrome)
+	cr := s.FixtValue().(chrome.HasChrome).Chrome()
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
@@ -57,6 +77,11 @@ func WindowSnapAndRotate(ctx context.Context, s *testing.State) {
 	}
 
 	defer faillog.DumpUITreeOnError(cleanupCtx, s.OutDir(), s.HasError, tconn)
+
+	// Ensure there is no window open before test starts.
+	if err := ash.CloseAllWindows(ctx, tconn); err != nil {
+		s.Fatal("Failed to ensure no window is open: ", err)
+	}
 
 	info, err := display.GetInternalInfo(ctx, tconn)
 	if err != nil {
@@ -66,7 +91,7 @@ func WindowSnapAndRotate(ctx context.Context, s *testing.State) {
 	defer display.SetDisplayRotationSync(cleanupCtx, tconn, info.ID, display.Rotate0)
 
 	// Rotate the screen if it is a portrait test.
-	portrait := s.Param().(bool)
+	portrait := s.Param().(windowSnapAndRotateTestParam).portrait
 	portraitByDefault := info.Bounds.Height > info.Bounds.Width
 
 	rotations := []display.RotationAngle{display.Rotate0, display.Rotate90, display.Rotate180, display.Rotate270}
@@ -90,10 +115,14 @@ func WindowSnapAndRotate(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to obtain internal display info: ", err)
 	}
 
-	// Open two windows, a Chrome browser and a File app.
-	if err := ash.CreateWindows(ctx, tconn, cr, "", 1); err != nil {
-		s.Fatal("Failed to create new windows: ", err)
+	// Open two windows, a browser and a File app.
+	bt := s.Param().(windowSnapAndRotateTestParam).bt
+	conn, _, closeBrowser, err := browserfixt.SetUpWithURL(ctx, cr, bt, chrome.NewTabURL)
+	if err != nil {
+		s.Fatal("Failed to start browser: ", err)
 	}
+	defer closeBrowser(cleanupCtx)
+	defer conn.Close()
 
 	app := apps.Files
 	if err := apps.Launch(ctx, tconn, app.ID); err != nil {
@@ -108,6 +137,13 @@ func WindowSnapAndRotate(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ensure clamshell mode: ", err)
 	}
 	defer cleanup(cleanupCtx)
+
+	// Set the state of browser window and Files window to normal.
+	if err := ash.ForEachWindow(ctx, tconn, func(w *ash.Window) error {
+		return ash.SetWindowStateAndWait(ctx, tconn, w.ID, ash.WindowStateNormal)
+	}); err != nil {
+		s.Fatal("Failed to set window states: ", err)
+	}
 
 	windows, err := ash.GetAllWindows(ctx, tconn)
 	if err != nil {
@@ -223,8 +259,7 @@ func WindowSnapAndRotate(ctx context.Context, s *testing.State) {
 }
 
 // verifyState checks whether the state of the window with the given id |windowID| is |wantState| or not.
-func verifyState(ctx context.Context, tconn *chrome.TestConn,
-	windowID int, wantState ash.WindowStateType) error {
+func verifyState(ctx context.Context, tconn *chrome.TestConn, windowID int, wantState ash.WindowStateType) error {
 	window, err := ash.GetWindow(ctx, tconn, windowID)
 	if err != nil {
 		return errors.Wrapf(err, "failed to obtain window(id=%d)", windowID)
@@ -238,8 +273,7 @@ func verifyState(ctx context.Context, tconn *chrome.TestConn,
 
 // dragWindowTo drags the caption center of the window with the given id |windowID| to |targetPoint|
 // via a mouse and holds for |holdDuration| at the target point before releasing the mouse.
-func dragWindowTo(ctx context.Context, tconn *chrome.TestConn,
-	windowID int, targetPoint coords.Point, holdDuration time.Duration) error {
+func dragWindowTo(ctx context.Context, tconn *chrome.TestConn, windowID int, targetPoint coords.Point, holdDuration time.Duration) error {
 	window, err := ash.GetWindow(ctx, tconn, windowID)
 	if err != nil {
 		return errors.Wrapf(err, "failed to obtain window(id=%d)", windowID)
