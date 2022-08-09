@@ -22,6 +22,30 @@
       },
       "revId": "8f152584b4c3b7dee14228682b487b606de416ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ad710e6_690b1ba7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_guest.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1524909
+      },
+      "writtenOn": "2022-08-09T06:34:07Z",
+      "side": 1,
+      "message": "Oh, interesting. I wonder if it has anything to do at all with the comment at `line 30` of `mountns.go`.\n\nYou might find the additional discussion here helpful (or at least you can reach out to the people involved in it): https://crbug.com/1296437",
+      "parentUuid": "ba7eb711_90c3557b",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 75
+      },
+      "revId": "8f152584b4c3b7dee14228682b487b606de416ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
