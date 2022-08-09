@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8aeec68_2df00c64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1541513
+      },
+      "writtenOn": "2022-08-09T16:40:09Z",
+      "side": 1,
+      "message": "Fixed tasts failures on devices that don\u0027t have QWERTY layout, please take a look",
+      "revId": "9a68f688f7696aafa44f70caf398b89c61a11491",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
