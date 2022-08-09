@@ -22,7 +22,7 @@ import (
 var (
 	enableWPPrompt  = "Prompt for hardware WP able"
 	disableWPPrompt = "Prompt for hardware WP disable"
-	continuePrompt  = "Press any key to continue"
+	continuePrompt  = "Press enter to continue"
 
 	subtestResultPrefix = "<+>"
 	subtestPass         = "Pass"
