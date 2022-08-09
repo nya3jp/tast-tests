@@ -105,6 +105,15 @@ func AshCommonMetricConfigs() []MetricConfig {
 	}
 }
 
+// LacrosCommonMetricConfigs returns common metrics which are required
+// to be collected by CUJ tests from the Lacros process only.
+func LacrosCommonMetricConfigs() []MetricConfig {
+	return []MetricConfig{
+		// Smoothness.
+		NewCustomMetricConfig("Chrome.Lacros.Smoothness.PercentDroppedFrames_1sWindow", "percent", perf.SmallerIsBetter),
+	}
+}
+
 // BrowserCommonMetricConfigs returns common metrics metrics which are
 // required to be collected by CUJ tests from the browser process only (Ash or
 // Lacros).
