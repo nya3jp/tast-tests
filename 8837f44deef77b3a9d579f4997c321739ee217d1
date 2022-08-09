@@ -121,6 +121,24 @@
       "message": "lgtm + nit - the name makes it sound like its generic but we\u0027re only connecting to the SystemDataProvider here. Can we rename this to make it more clear \"ConnectToSystemDataProviderMojoAPI\" or something?",
       "revId": "8837f44deef77b3a9d579f4997c321739ee217d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c66b0def_78779480",
+        "filename": "src/chromiumos/tast/local/bundles/cros/diagnostics/utils/api.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-09T16:06:00Z",
+      "side": 1,
+      "message": "Done. Changed the name to be more specific.",
+      "parentUuid": "dc6136be_5f87ad84",
+      "revId": "8837f44deef77b3a9d579f4997c321739ee217d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
