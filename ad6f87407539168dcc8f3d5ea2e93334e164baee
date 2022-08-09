@@ -33,6 +33,24 @@
       "message": "do we need this? Should this be guaranteed by fixture?",
       "revId": "ad6f87407539168dcc8f3d5ea2e93334e164baee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "237c5fa6_f8814efd",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-09T14:16:34Z",
+      "side": 1,
+      "message": "ditto for all other CLs.",
+      "parentUuid": "96a83088_278647fb",
+      "revId": "ad6f87407539168dcc8f3d5ea2e93334e164baee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
