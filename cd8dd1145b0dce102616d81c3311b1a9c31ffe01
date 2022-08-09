@@ -34,6 +34,24 @@
       "parentUuid": "77f85fe7_4b3ca200",
       "revId": "cd8dd1145b0dce102616d81c3311b1a9c31ffe01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d924d06_3b109e46",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442238
+      },
+      "writtenOn": "2022-08-09T18:15:56Z",
+      "side": 1,
+      "message": "Thanks for the explanation. Yes, the tests of virtual desk basic involves windows.I agree with adding lacros variant.",
+      "parentUuid": "82335088_de5819d9",
+      "revId": "cd8dd1145b0dce102616d81c3311b1a9c31ffe01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
