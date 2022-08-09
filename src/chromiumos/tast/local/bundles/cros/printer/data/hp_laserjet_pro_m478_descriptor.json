@@ -1,0 +1,37 @@
+{
+    "Name": "HP Color LaserJet Pro M478f-9f [BFD680]",
+    "RegularSettings": {
+        "Dropdowns": {
+            "Layout": {
+                "Values": ["Portrait", "Landscape"]
+            },
+            "Color": {
+				"Values": ["Black and white", "Color"]
+            },
+            "Paper size": {
+                "Values": ["Small-Photo", "om 184x260mm", "om 195x270mm", "Index-4x6 (Postcard)", "Index-5x8", "A4", "A5", "A6", "JIS B5", "JIS B6", "Postcard)", "Comm-10 (Envelope)", "C5 (Envelope)", "Designated-Long", "na monarch", "na executive", "Foolscap", "B5 (Envelope)", "Legal", "Letter", "na oficio", "Hagaki (Postcard)", "Roc-16K"]
+            },
+            "Pages per sheet": {
+                "Values": ["1", "2", "4", "6", "9", "16"]
+            },
+            "Margins": {
+                "Values": ["Default", "None", "Minimum", "Custom"],
+                "Dependencies": {
+                    "Pages per sheet": "1"
+                }
+            }
+        },
+        "Checkboxes": {
+            "Print on both sides": {},
+            "Headers and footers": {},
+            "Background graphics": {}
+        }
+    },
+    "AdvancedSettings": {
+        "Input Tray": ["Tray 1", "Tray 2", "Auto"],
+        "Job sheets": ["None", "classified", "confidential", "form", "secret", "Standard", "topsecret", "unclassified"],
+        "Output bin": ["Face down"],
+        "Page delivery": ["reverse-order", "same-order"],
+        "Print quality": ["Draft", "Normal", "High"]
+    }
+}

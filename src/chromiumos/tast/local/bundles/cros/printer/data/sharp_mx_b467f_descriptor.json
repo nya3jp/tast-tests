@@ -1,0 +1,34 @@
+{
+    "Name": "SHARP MX-B467F",
+    "RegularSettings": {
+        "Dropdowns": {
+            "Layout": {
+                "Values": ["Portrait", "Landscape"]
+            },
+            "Paper size": {
+                "Values": ["A4", "A5", "A6", "JIS B5", "Comm-10 (Envelope)", "na number-9", "C5 (Envelope)", "Designated-Long", "na monarch", "na executive", "Foolscap", "B5 (Envelope)", "Legal", "Letter", "na oficio", "Hagaki (Postcard)", "Statement"]
+            },
+            "Pages per sheet": {
+                "Values": ["1", "2", "4", "6", "9", "16"]
+            },
+            "Margins": {
+                "Values": ["Default", "None", "Minimum", "Custom"],
+                "Dependencies": {
+                    "Pages per sheet": "1"
+                }
+            }
+        },
+        "Checkboxes": {
+            "Print on both sides": {},
+            "Headers and footers": {},
+            "Background graphics": {}
+        }
+    },
+    "AdvancedSettings": {
+        "Input Tray": ["Auto", "Alternate", "Envelope", "Manual Slot", "Tray 1"],
+        "Job sheets": ["None", "classified", "confidential", "form", "secret", "Standard", "topsecret", "unclassified"],
+        "Output bin": ["Face down"],
+        "Page delivery": ["reverse-order", "same-order"],
+        "Print quality": ["Normal", "High"]
+    }
+}
