@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b3d884b4_caad1d8c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1522762
+      },
+      "writtenOn": "2022-08-09T17:30:18Z",
+      "side": 1,
+      "message": "A lot of tests uses: \n\tif err :\u003d ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err !\u003d nil {\n\t\treturn errors.Wrap(err, \"failed to wait for overview animation to be completed\")\n\t}\nto address that waiting issue.",
+      "parentUuid": "d4b352bc_8aebac17",
+      "revId": "841357aa0b7f1130bbff55841235a11421f31dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60bb6562_8228c1c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
         "patchSetId": 1
