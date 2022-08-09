@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa0caa5_9c4f35a9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/overview_mode.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T04:07:12Z",
+      "side": 1,
+      "message": "Resolved this comment now that the test keeps the state where it ends (with no teardown added at the end).",
+      "parentUuid": "8a8c5ebd_237c5c18",
+      "revId": "4ade034de0ecdd0860240ec886bb3e95c43da568",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75507359_ae5232eb",
