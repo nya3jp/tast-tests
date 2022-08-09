@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a82d182d_04bc45e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-09T17:37:02Z",
+      "side": 1,
+      "message": "tast run -var\u003dutils.WWCBIP\u003d192.168.86.217 -var\u003dDockingID\u003d1912901 -var\u003d1stExtDispID\u003d2007901 -var\u003d2ndExtDispID\u003d2007902 -var\u003dEthernetID\u003dJ45SW01 192.168.86.34 wwcb.Dock1PersistentSettings\n...\n2022-08-09T17:32:53.014265Z wwcb.Dock1PersistentSettings [ PASS ] \n\nLocal tests passed.",
+      "revId": "268a200d591d50af397215e12f5290d60fbc773a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
