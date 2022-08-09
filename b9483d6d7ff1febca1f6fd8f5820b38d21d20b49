@@ -22,6 +22,30 @@
       },
       "revId": "b9483d6d7ff1febca1f6fd8f5820b38d21d20b49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd8b38ba_fc97ce2a",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T00:30:21Z",
+      "side": 0,
+      "message": "Another way is adding `w.IsVisible` to `WaitWindowFinishAnimating`. Please suggest.",
+      "parentUuid": "bee9951e_058348de",
+      "range": {
+        "startLine": 252,
+        "startChar": 10,
+        "endLine": 252,
+        "endChar": 35
+      },
+      "revId": "b9483d6d7ff1febca1f6fd8f5820b38d21d20b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
