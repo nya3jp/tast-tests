@@ -29,7 +29,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AdminTemplatesLaunch,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks admin templates can be launched",
 		Contacts: []string{
 			"zhumatthew@google.com",
@@ -41,8 +41,14 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
-		Fixture:      fixture.ChromeAdminDeskTemplatesLoggedIn,
 		Data:         []string{"admin_desk_template.json"},
+		Params: []testing.Param{{
+			Fixture: fixture.ChromeAdminDeskTemplatesLoggedIn,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosAdminDeskTemplatesLoggedIn,
+		}},
 	})
 }
 
@@ -105,7 +111,6 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 			if err := ash.SetOverviewModeAndWait(ctx, tconn, true); err != nil {
 				s.Fatal("Failed to set overview mode: ", err)
 			}
-
 			if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
 				s.Fatal("Failed to wait for overview animation to be completed: ", err)
 			}
@@ -146,9 +151,12 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 			)(ctx); err != nil {
 				s.Fatal("Failed to launch a admin template: ", err)
 			}
-			// Exits overview mode.
+			// Exit overview mode and wait.
 			if err = ash.SetOverviewModeAndWait(ctx, tconn, false); err != nil {
 				s.Fatal("Failed to exit overview mode: ", err)
+			}
+			if err := ac.WithInterval(2*time.Second).WaitUntilNoEvent(nodewith.Root(), event.LocationChanged)(ctx); err != nil {
+				s.Fatal("Failed to wait for overview animation to be completed: ", err)
 			}
 
 			// Verifies that there are the app windows.
@@ -156,7 +164,6 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 			if err != nil {
 				s.Fatal("Failed to get all open windows: ", err)
 			}
-
 			if len(ws) != 2 {
 				s.Fatalf("Got %v window(s), should have %v windows", len(ws), 2)
 			}
