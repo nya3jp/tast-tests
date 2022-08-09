@@ -141,11 +141,11 @@ func RunTablet(ctx, closeCtx context.Context, tconn *chrome.TestConn, ui *uiauto
 		},
 	), &retErr)
 
-	ws, err := ash.GetAllWindows(ctx, tconn)
-	if err != nil {
-		return errors.Wrap(err, "failed to obtain the window list")
-	}
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		ws, err := ash.GetAllWindows(ctx, tconn)
+		if err != nil {
+			return errors.Wrap(err, "failed to obtain the window list")
+		}
 		if len(ws) != 2 {
 			return errors.Errorf("should be 2 windows, got %v", len(ws))
 		}
