@@ -249,6 +249,9 @@ func (r *Recorder) AddCommonMetrics(tconn, bTconn *chrome.TestConn) error {
 		if err := r.AddCollectedMetrics(bTconn, browser.TypeLacros, AnyChromeCommonMetricConfigs()...); err != nil {
 			return errors.Wrap(err, "failed to add Lacros AnyChrome common metrics")
 		}
+		if err := r.AddCollectedMetrics(bTconn, browser.TypeLacros, LacrosCommonMetricConfigs()...); err != nil {
+			return errors.Wrap(err, "failed to add Lacros common metrics")
+		}
 	}
 	return nil
 }
