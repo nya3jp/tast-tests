@@ -94,6 +94,30 @@
       },
       "revId": "b9483d6d7ff1febca1f6fd8f5820b38d21d20b49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cebac4de_1201538e",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-09T01:05:39Z",
+      "side": 0,
+      "message": "I don\u0027t know much about WaitWindowFinishAnimating. Is a window always supposed to be visible after animation. I think we need the opinion on ui test expert.",
+      "parentUuid": "73417e9e_2a88b955",
+      "range": {
+        "startLine": 252,
+        "startChar": 10,
+        "endLine": 252,
+        "endChar": 35
+      },
+      "revId": "b9483d6d7ff1febca1f6fd8f5820b38d21d20b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
