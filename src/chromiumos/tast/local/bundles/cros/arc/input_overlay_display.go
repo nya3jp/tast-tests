@@ -70,7 +70,7 @@ func InputOverlayDisplay(ctx context.Context, s *testing.State) {
 			gio.MoveOverlayButton(kb, "w", &params),
 			// Poll edits can still be done.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
-			uda.Tap(uidetection.Word("Edit")),
+			ui.LeftClick(nodewith.Name("Edit").HasClass("LabelButtonLabel")),
 			ui.WaitUntilExists(nodewith.Name("m").HasClass("LabelButtonLabel")),
 			ui.WaitUntilExists(nodewith.Name("w").HasClass("LabelButtonLabel")),
 			// Exit out.
@@ -99,8 +99,8 @@ func InputOverlayDisplay(ctx context.Context, s *testing.State) {
 			not(gio.MoveOverlayButton(kb, "w", &params)),
 			// Check "Customize" button disabled.
 			uda.Tap(uidetection.CustomIcon(s.DataPath("input-overlay-menu.png"))),
-			uda.Tap(uidetection.Word("Edit")),
-			not(uda.Gone(uidetection.Word("Edit"))),
+			ui.LeftClick(nodewith.Name("Edit").HasClass("LabelButtonLabel")),
+			not(ui.Gone(nodewith.Name("Edit").HasClass("LabelButtonLabel"))),
 		)(ctx); err != nil {
 			s.Error("Failed to verify game overlay disabled: ", err)
 		}
