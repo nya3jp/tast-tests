@@ -16,6 +16,24 @@
       "message": "One question, virtual desk is just a chromeos system UI. Changing desk name does not involve lacros windows. Do we need to consider it?",
       "revId": "cd8dd1145b0dce102616d81c3311b1a9c31ffe01",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82335088_de5819d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T18:13:38Z",
+      "side": 1,
+      "message": "Yes, this test doesn\u0027t seem to need a browser for any verification, so I\u0027ll mark it as \u0027unneeded\u0027 for lacros migration.\n\nOn the other hand, here is a wmp test that requires a browser as a part of the verification steps, so we\u0027re migrating it: https://crrev.com/c/3818377. Hope this helps.",
+      "parentUuid": "77f85fe7_4b3ca200",
+      "revId": "cd8dd1145b0dce102616d81c3311b1a9c31ffe01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
