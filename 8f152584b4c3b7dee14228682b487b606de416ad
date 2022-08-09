@@ -46,6 +46,30 @@
       },
       "revId": "8f152584b4c3b7dee14228682b487b606de416ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50889b4e_2c536504",
+        "filename": "src/chromiumos/tast/local/bundles/cros/camera/cca_ui_guest.go",
+        "patchSetId": 20
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-08-09T09:05:00Z",
+      "side": 1,
+      "message": "Changed to use mountns.WithUserSessionMountNS as with the suggestion from hidehiko@ for now. Also I can\u0027t reproduce the behavior that the mount namespace becomes unmounted after the NewTestBridge is called now after flashing an official test image now, so it might just be a mistake on my side.\n\nSo this seems to be the same as the root cause in the crbug, that the SetUp/TearDown function might be run on a different thread with the test.",
+      "parentUuid": "1ad710e6_690b1ba7",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 75
+      },
+      "revId": "8f152584b4c3b7dee14228682b487b606de416ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
