@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89581fdf_d0fe058c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-09T15:59:44Z",
+      "side": 1,
+      "message": "I don\u0027t know why this is happening exactly, but I saw at one of the runs the same popup view repeated, so it\u0027s the same data for autofill, so I just selected the first, since they are the same anyway.",
+      "parentUuid": "572ea967_2dc86173",
+      "range": {
+        "startLine": 209,
+        "startChar": 97,
+        "endLine": 209,
+        "endChar": 105
+      },
+      "revId": "9087dd0e375f2e6343509e32983f051a149e20d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14d4ddf1_1946b7da",
@@ -77,6 +101,54 @@
       "writtenOn": "2022-08-09T15:25:02Z",
       "side": 1,
       "message": "This will repeatedly click on Email field for suggestion popup to show up. I wouldn\u0027t expect normal users having to do the same. Why do we need to do that in the test?\n\nSame for accepting the suggestion below.",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 212,
+        "endChar": 22
+      },
+      "revId": "9087dd0e375f2e6343509e32983f051a149e20d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd2c805c_2ce95d2b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-09T15:59:44Z",
+      "side": 1,
+      "message": "The problem is some times the popup is a bit slow to appear and the first click miss, so we need to do another click.\nI\u0027d argue that this is actually what the users will do, if they are clicking quickly and the first ones miss somehow, then they will click till the popup appears.",
+      "parentUuid": "079f4253_822be076",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 212,
+        "endChar": 22
+      },
+      "revId": "9087dd0e375f2e6343509e32983f051a149e20d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8b8f861_89510c6a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-09T15:59:44Z",
+      "side": 1,
+      "message": "more details are here: https://docs.google.com/document/d/1RRo30-R83YWabBFb-Y1zsyl2UcogjaZj0_JuOQ8anBk/edit?usp\u003dsharing\u0026resourcekey\u003d0-7ju-AaBFfUVgXjkm39TlTA",
+      "parentUuid": "14d4ddf1_1946b7da",
       "range": {
         "startLine": 212,
         "startChar": 8,
