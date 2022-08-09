@@ -8,6 +8,7 @@ package mountns
 import (
 	"context"
 	"fmt"
+	"runtime"
 
 	"golang.org/x/sys/unix"
 
@@ -78,4 +79,19 @@ func EnterInitMountNS(ctx context.Context) {
 	if err := unix.Close(initNsFd); err != nil {
 		testing.ContextLog(ctx, "Closing init mount namespace failed: ", err)
 	}
+}
+
+// WithUserSessionMountNS runs the given test function in the user session mount namespace.
+// This function must be called in the init mount namespace.
+func WithUserSessionMountNS(ctx context.Context, f func(ctx context.Context) error) error {
+	// Bind to the platform thread as mount namespace is effective per thread.
+	runtime.LockOSThread()
+	defer runtime.UnlockOSThread()
+
+	if err := EnterUserSessionMountNS(ctx); err != nil {
+		return err
+	}
+	defer EnterInitMountNS(ctx)
+
+	return f(ctx)
 }
