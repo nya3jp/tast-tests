@@ -31,7 +31,8 @@ func init() {
 			"cienet-development@googlegroups.com",
 			"chromeos-sw-engprod@google.com",
 		},
-		Attr:         []string{"group:mainline", "informational"},
+		// Disabled due to <1% pass rate over 30 days. See b/241943434
+		//Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedIn",
 		Timeout:      8 * time.Minute,
