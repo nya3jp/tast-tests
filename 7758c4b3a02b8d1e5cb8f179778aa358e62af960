@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70d5e2c_aecfe408",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-08-09T22:32:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4326896_6d83bd59",
+      "range": {
+        "startLine": 722,
+        "startChar": 0,
+        "endLine": 724,
+        "endChar": 2
+      },
+      "revId": "7758c4b3a02b8d1e5cb8f179778aa358e62af960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5063eb1_8dc4795c",
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "As above, looks fine to me as-is.",
       "parentUuid": "7b2c5b7d_28847c33",
+      "range": {
+        "startLine": 777,
+        "startChar": 1,
+        "endLine": 779,
+        "endChar": 2
+      },
+      "revId": "7758c4b3a02b8d1e5cb8f179778aa358e62af960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e2460e0_2f041b22",
+        "filename": "src/chromiumos/tast/remote/wificell/router/openwrt/router.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1432127
+      },
+      "writtenOn": "2022-08-09T22:32:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a358ded_8aa8d183",
       "range": {
         "startLine": 777,
         "startChar": 1,
