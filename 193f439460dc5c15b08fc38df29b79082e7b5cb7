@@ -46,6 +46,30 @@
       },
       "revId": "193f439460dc5c15b08fc38df29b79082e7b5cb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "841b792b_007515c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/audio/cyclic_bench.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1001485
+      },
+      "writtenOn": "2022-08-09T04:39:05Z",
+      "side": 0,
+      "message": "Thanks Eddy. Expecting 10ms and getting 30 ms does not look reasonable.\nIf we change the value to 28ms, some SKU would fail mostly right ?\n\nWe should do\n\n1. Make sure this test indeed cover audio\u0027s performance expectation.\n2. For usage outside of audio, make sure it is okay from general system performance point of view.\n\nI think for general value, it needs to be reviewed by performance team.\nThanks!",
+      "parentUuid": "a0bb810e_206c110e",
+      "range": {
+        "startLine": 232,
+        "startChar": 19,
+        "endLine": 232,
+        "endChar": 24
+      },
+      "revId": "193f439460dc5c15b08fc38df29b79082e7b5cb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
