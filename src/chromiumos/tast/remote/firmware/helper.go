@@ -804,11 +804,11 @@ func (h *Helper) SetDUTPower(ctx context.Context, powerOn bool) error {
 // 	 ensureTestlab: If true, this will ensure testlab enabled after CCD is open.
 //	 resetCCD: If true, reset ccd to factory mode after open.
 //	 ccdLevel: Should contain the current ccd level as returned by GetCCDLevel().
-func (h *Helper) OpenCCD(ctx context.Context, ensureTestlab, resetCCD bool, ccdLevel string) error {
-	// Check if there is micro-servo connected.
-	hasMicroOrC2D2, err := h.Servo.PreferDebugHeader(ctx)
+func (h *Helper) OpenCCD(ctx context.Context, ensureTestlab, resetCCD bool) error {
+	// Get CCD current status.
+	ccdLevel, err := h.GetCCDLevel(ctx)
 	if err != nil {
-		return errors.Wrap(err, "failed to verify the prefered debug header")
+		return errors.Wrap(err, "failed to get CCD level")
 	}
 
 	// Check testlab status.
@@ -823,29 +823,25 @@ func (h *Helper) OpenCCD(ctx context.Context, ensureTestlab, resetCCD bool, ccdL
 	case servo.Lock:
 		// Attempt to open CCD.
 		if testlab == "off" {
-			err = h.OpenCCDNoTestlab(ctx, hasMicroOrC2D2)
+			if err := h.OpenCCDNoTestlab(ctx); err != nil {
+				return errors.Wrap(err, "while opening CCD with no testlab")
+			}
 		} else {
-			err = h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open)
-		}
-		if err != nil {
-			return errors.Wrap(err, "failed to open CCD")
+			if err := h.Servo.SetString(ctx, servo.CR50Testlab, servo.Open); err != nil {
+				return errors.Wrap(err, "while opening CCD with testlab")
+			}
+
+			if err := h.VerifyCCDIsOpen(ctx); err != nil {
+				return errors.Wrap(err, "after attempting to open CCD with testlab")
+			}
 		}
 	default:
 		return errors.New("Unidentified ccd level: " + ccdLevel)
 	}
 
-	// Get CCD current status.
-	ccdLevel, err = h.GetCCDLevel(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to get CCD level")
-	}
-	if ccdLevel != servo.Open {
-		return errors.New("CCD remains closed after attempts to open it")
-	}
-
 	// By request, ensure testlab is enabled.
 	if ensureTestlab && testlab != string(servo.Enable) {
-		if err := h.Servo.SetTestlab(ctx, servo.Enable, ccdLevel, hasMicroOrC2D2); err != nil {
+		if err := h.Servo.SetTestlab(ctx, servo.Enable); err != nil {
 			return errors.Wrap(err, "failed to enable testlab")
 		}
 	}
@@ -906,10 +902,29 @@ func (h *Helper) GetCCDLevel(ctx context.Context) (string, error) {
 	return ccdLevel, nil
 }
 
+// VerifyCCDIsOpen verifies if the current ccd level is open.
+func (h *Helper) VerifyCCDIsOpen(ctx context.Context) error {
+	ccdLevel, err := h.GetCCDLevel(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to get CCD level")
+	}
+
+	if ccdLevel != servo.Open {
+		return errors.New("CCD is not open")
+	}
+	return nil
+}
+
 // OpenCCDNoTestlab opens CCD when it's locked and testlab disabled.
 // From observation, this process would generally take 8 minutes.
 // Servo micro is required in order to open CCD without testlab enabled.
-func (h *Helper) OpenCCDNoTestlab(ctx context.Context, hasMicroOrC2D2 bool) error {
+func (h *Helper) OpenCCDNoTestlab(ctx context.Context) error {
+	// Check if there is micro-servo connected.
+	hasMicroOrC2D2, err := h.Servo.PreferDebugHeader(ctx)
+	if err != nil {
+		return errors.Wrap(err, "failed to verify the prefered debug header")
+	}
+
 	// Record the initial DUT mode to reset it after opening ccd, if required.
 	initMode, err := h.Reporter.CurrentBootMode(ctx)
 	if err != nil {
@@ -1021,10 +1036,15 @@ func (h *Helper) OpenCCDNoTestlab(ctx context.Context, hasMicroOrC2D2 bool) erro
 	} else {
 		// Reboot was not required for opening CCD. Allow some delay here to ensure that
 		// DUT's CCD level has changed and settled.
-		testing.ContextLogf(ctx, "Sleeping for %s", 5*time.Second)
-		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+		testing.ContextLogf(ctx, "Sleeping for %s", 10*time.Second)
+		if err := testing.Sleep(ctx, 10*time.Second); err != nil {
 			return errors.Wrap(err, "failed to sleep")
 		}
+	}
+
+	// Verify CCD is open.
+	if err = h.VerifyCCDIsOpen(ctx); err != nil {
+		return errors.Wrap(err, "while verifying CCD level at the end of OpenCCDNoTestlab")
 	}
 	return nil
 }

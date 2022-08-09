@@ -6,6 +6,7 @@ package servo
 
 import (
 	"context"
+	"fmt"
 	"strconv"
 	"strings"
 	"time"
@@ -122,15 +123,24 @@ func (s *Servo) CheckGSCBootMode(ctx context.Context, expectedMode string) error
 }
 
 // SetTestlab will perform the required power button presses to disable or enable CCD testlab mode.
-func (s *Servo) SetTestlab(ctx context.Context, option TestlabState, ccdLevel string, hasMicroOrC2D2 bool) error {
-	// CCD needs to be open and a servo-micro available in order to set up testlab.
-	if ccdLevel != Open || !hasMicroOrC2D2 {
-		return errors.Errorf("testlab can not be modified, got openCCD: %s hasMicroOrC2D2: %v", ccdLevel, hasMicroOrC2D2)
+func (s *Servo) SetTestlab(ctx context.Context, option TestlabState) error {
+	// Verify CCD is open.
+	regExpCcdOpen := `State:\s*Opened`
+	if _, err := s.RunCR50CommandGetOutput(ctx, "ccd", []string{regExpCcdOpen}); err != nil {
+		return errors.Wrap(err, "ccd is not open")
+	}
+
+	// Verify there is a servo micro or C2D2 connected.
+	hasMicroOrC2D2, err := s.PreferDebugHeader(ctx)
+	if err != nil {
+		return errors.Wrap(err, "verifying the preferred debug header")
+	}
+	if !hasMicroOrC2D2 {
+		return errors.New("no micro-servo or C2D2 found: manual procedure is required to modify testlab state")
 	}
 
 	testing.ContextLogf(ctx, "Setting testlab to %q", option)
-	err := s.RunCR50Command(ctx, "ccd testlab "+string(option))
-	if err != nil {
+	if err := s.RunCR50Command(ctx, "ccd testlab "+string(option)); err != nil {
 		return errors.Wrapf(err, "failed setting testlab to %q", option)
 	}
 
@@ -184,7 +194,7 @@ func (s *Servo) GetCCDCapability(ctx context.Context, capability CCDCap) (int, s
 			return errors.Wrap(err, "failed to get capability state")
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 1 * time.Second}); err != nil {
+	}, &testing.PollOptions{Timeout: 15 * time.Second, Interval: 2 * time.Second}); err != nil {
 		return 0, "", err
 	}
 	splitout := strings.Split(out[0][0], " ")
@@ -203,7 +213,7 @@ Possible states are:
 	UnlessLocked
 	IfOpened
 */
-func (s *Servo) SetCCDCapability(ctx context.Context, capability CCDCap, state CCDCapState) error {
+func (s *Servo) SetCCDCapability(ctx context.Context, capabilities map[CCDCap]CCDCapState) error {
 	// Information about CCD states is usually returned in the form of
 	// '[CapabilityName|Y|1]'. Create a map to match each capability
 	// state with the corresponding integer value.
@@ -214,24 +224,26 @@ func (s *Servo) SetCCDCapability(ctx context.Context, capability CCDCap, state C
 		CapIfOpened:     3,
 	}
 
-	// Ensure the state we want is set.
-	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		cmd := "ccd set " + string(capability) + " " + string(state)
-		if err := s.RunCR50Command(ctx, cmd); err != nil {
-			return errors.Wrapf(err, "failed to send command %q to cr50", cmd)
-		}
+	for capability, state := range capabilities {
+		// Ensure the state we want is set.
+		if err := testing.Poll(ctx, func(ctx context.Context) error {
+			cmd := fmt.Sprintf("ccd set %s %s", capability, state)
+			if err := s.RunCR50Command(ctx, cmd); err != nil {
+				return errors.Wrapf(err, "failed to send command %q to cr50", cmd)
+			}
 
-		currState, _, err := s.GetCCDCapability(ctx, capability)
-		if err != nil {
-			return errors.Wrapf(err, "failed to get current %q state", capability)
-		}
+			currState, _, err := s.GetCCDCapability(ctx, capability)
+			if err != nil {
+				return errors.Wrapf(err, "failed to get current %q state", capability)
+			}
 
-		if currState != capMap[state] {
-			return errors.Errorf("got state %v, but expected %v", currState, capMap[state])
+			if currState != capMap[state] {
+				return errors.Errorf("got state %v, but expected %v", currState, capMap[state])
+			}
+			return nil
+		}, &testing.PollOptions{Timeout: 1 * time.Minute, Interval: 10 * time.Second}); err != nil {
+			return errors.Wrapf(err, "failed to set %s to %s", capability, state)
 		}
-		return nil
-	}, &testing.PollOptions{Timeout: 5 * time.Second, Interval: 1 * time.Second}); err != nil {
-		return errors.Wrapf(err, "failed to set %s to %s", capability, state)
 	}
 	return nil
 }
