@@ -1,4 +1,4 @@
-// Copyright 2020 The Chromium OS Authors. All rights reserved.
+// Copyright 2020 The ChromiumOS Authors
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
@@ -798,27 +798,29 @@ func (h *Helper) SetDUTPower(ctx context.Context, powerOn bool) error {
 // OpenCCD verifies if CCD is open, and if not, tries to use
 // ccd testlab open. If that fails, it will attempt regular ap
 // open via usb, or run the host command 'gsctool -a -o'.
+// When testlab is disabled, OpenCCDNoTestlab would be called,
+// which might take up to 8 minutes.
 // Args:
-// 	 enableTestlab: If true, enable testlab mode after cr50 is open.
+// 	 ensureTestlab: If true, this will ensure testlab enabled after CCD is open.
 //	 resetCCD: If true, reset ccd to factory mode after open.
 //	 ccdLevel: Should contain the current ccd level as returned by GetCCDLevel().
-func (h *Helper) OpenCCD(ctx context.Context, enableTestlab, resetCCD bool, ccdLevel string) error {
+func (h *Helper) OpenCCD(ctx context.Context, ensureTestlab, resetCCD bool, ccdLevel string) error {
 	// Check if there is micro-servo connected.
 	hasMicroOrC2D2, err := h.Servo.PreferDebugHeader(ctx)
 	if err != nil {
 		return errors.Wrap(err, "failed to verify the prefered debug header")
 	}
 
+	// Check testlab status.
+	testlab, err := h.Servo.GetString(ctx, servo.CR50Testlab)
+	if err != nil {
+		return errors.Wrap(err, "failed to get cr50_testlab")
+	}
+
 	switch ccdLevel {
 	case servo.Open:
 		testing.ContextLog(ctx, "CCD is ", ccdLevel)
 	case servo.Lock:
-		// Check testlab status.
-		testlab, err := h.Servo.GetString(ctx, servo.CR50Testlab)
-		if err != nil {
-			return errors.Wrap(err, "failed to get cr50_testlab")
-		}
-
 		// Attempt to open CCD.
 		if testlab == "off" {
 			err = h.OpenCCDNoTestlab(ctx, hasMicroOrC2D2)
@@ -837,9 +839,12 @@ func (h *Helper) OpenCCD(ctx context.Context, enableTestlab, resetCCD bool, ccdL
 	if err != nil {
 		return errors.Wrap(err, "failed to get CCD level")
 	}
+	if ccdLevel != servo.Open {
+		return errors.New("CCD remains closed after attempts to open it")
+	}
 
-	// By request, enable testlab.
-	if enableTestlab {
+	// By request, ensure testlab is enabled.
+	if ensureTestlab && testlab != string(servo.Enable) {
 		if err := h.Servo.SetTestlab(ctx, servo.Enable, ccdLevel, hasMicroOrC2D2); err != nil {
 			return errors.Wrap(err, "failed to enable testlab")
 		}
@@ -885,7 +890,7 @@ func (h *Helper) GetCCDLevel(ctx context.Context) (string, error) {
 		levelSplit := strings.Split(string(ccdLevel), " ")
 		ccdLevel = levelSplit[1]
 
-		// Matching the gsctool string output with the ones defined for servo.
+		// Match the gsctool string output with the ones defined for servo.
 		switch ccdLevel {
 		case "Locked":
 			ccdLevel = servo.Lock
@@ -938,18 +943,14 @@ func (h *Helper) OpenCCDNoTestlab(ctx context.Context, hasMicroOrC2D2 bool) erro
 	}(cleanupCtx, initMode)
 
 	// Verify OpenNoDevMode status.
-	openNoDevMode, err := h.Servo.GetCCDCapability(ctx, "OpenNoDevMode")
+	_, openNoDevMode, err := h.Servo.GetCCDCapability(ctx, servo.OpenNoDevMode)
 	if err != nil {
 		return errors.Wrap(err, "failed to get OpenNoDevMode capability")
 	}
 
-	// DUT needs to be in devMode to perform the CCD open procedure if OpenNoDevMode is not 1 (Always).
-	if openNoDevMode != 1 && initMode != fwCommon.BootModeDev {
-		// DUT will not be able to successfully change mode if CCD is locked and no micro-servo is present.
-		if !hasMicroOrC2D2 {
-			return errors.New("OpenNoDevMode is not set as Always and no micro-servo connected")
-		}
-
+	// DUT needs to be in devMode to perform the CCD open procedure
+	// if OpenNoDevMode is not accessible (i.e. !="Y").
+	if openNoDevMode != "Y" && initMode != fwCommon.BootModeDev {
 		testing.ContextLog(ctx, "Rebooting into DevMode to open CCD")
 		if err := ms.RebootToMode(ctx, fwCommon.BootModeDev); err != nil {
 			return errors.Wrap(err, "failed to reboot into dev mode to open CCD")
@@ -957,14 +958,26 @@ func (h *Helper) OpenCCDNoTestlab(ctx context.Context, hasMicroOrC2D2 bool) erro
 	}
 
 	// Verify OpenFromUSB status.
-	openFromUSB, err := h.Servo.GetCCDCapability(ctx, "OpenFromUSB")
+	_, openFromUSB, err := h.Servo.GetCCDCapability(ctx, servo.OpenFromUSB)
 	if err != nil {
 		return errors.Wrap(err, "failed to get OpenFromUSB capability")
 	}
 
-	// If OpenFromUSB is 1 (Always), we can send the request through USB.
+	// Verify OpenNoLongPP status.
+	_, openNoLongPP, err := h.Servo.GetCCDCapability(ctx, servo.OpenNoLongPP)
+	if err != nil {
+		return errors.Wrap(err, "failed to get OpenNoLongPP capability")
+	}
+
+	// Verify OpenNoTPMWipe status.
+	_, openNoTPMWipe, err := h.Servo.GetCCDCapability(ctx, servo.OpenNoTPMWipe)
+	if err != nil {
+		return errors.Wrap(err, "failed to get OpenNoTPMWipe capability")
+	}
+
+	// If OpenFromUSB is accessible (i.e. ="Y"), we can send the request through USB.
 	// Otherwise, we need to send the request through the AP.
-	if openFromUSB == 1 {
+	if openFromUSB == "Y" {
 		testing.ContextLog(ctx, "Opening CCD by USB")
 		err = h.Servo.RunCR50Command(ctx, "ccd open")
 	} else {
@@ -975,37 +988,29 @@ func (h *Helper) OpenCCDNoTestlab(ctx context.Context, hasMicroOrC2D2 bool) erro
 		return errors.Wrap(err, "failed to run the command to open CCD")
 	}
 
-	// Verify OpenNoLongPP status.
-	openNoLongPP, err := h.Servo.GetCCDCapability(ctx, "OpenNoLongPP")
-	if err != nil {
-		return errors.Wrap(err, "failed to get OpenNoLongPP capability")
-	}
-
-	// Verify OpenNoTPMWipe status.
-	openNoTPMWipe, err := h.Servo.GetCCDCapability(ctx, "OpenNoTPMWipe")
-	if err != nil {
-		return errors.Wrap(err, "failed to get OpenNoTPMWipe capability")
-	}
-
-	// If OpenNoLongPP is not 1 (Always), pressPowerSequence will be performed.
-	// When both openNoLongPP and openNoTPMWipe are set to always (i.e. =1),
-	// opening ccd would not require power presses or reboot DUT.
-	if openNoLongPP != 1 {
+	// If OpenNoLongPP is not accessible (i.e. !="Y"), pressPowerSequence will be performed.
+	// When both openNoLongPP and openNoTPMWipe are accessible (i.e. ="Y"),
+	// opening CCD would not require power presses or rebooting DUT.
+	if openNoLongPP != "Y" {
 		if err := h.pressPowerSequenceToOpenCCD(ctx, openNoTPMWipe, hasMicroOrC2D2); err != nil {
 			return errors.Wrap(err, "failed while pressing power button")
 		}
 	} else {
-		if openNoTPMWipe != 1 {
-			// Some DUTs might take time to initiate the rebooting process if OpenNoTPMWipe is not 1 (Always)
+		if openNoTPMWipe != "Y" {
+			// Some DUTs might take time to initiate the rebooting process
+			// if OpenNoTPMWipe is not accessible (i.e. !="Y").
 			testing.ContextLog(ctx, "Waiting for DUT to be unreachable")
-			if err := h.DUT.WaitUnreachable(ctx); err != nil {
+			waitDisconnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 2*time.Minute)
+			defer cancelWaitConnect()
+
+			if err := h.DUT.WaitUnreachable(waitDisconnectCtx); err != nil {
 				return errors.Wrap(err, "failed to wait for DUT to become unreachable")
 			}
 		}
 	}
 
-	if openNoTPMWipe != 1 {
-		// Waiting for DUT to reconnect if OpenNoTPMWipe is not 1 (Always)
+	if openNoTPMWipe != "Y" {
+		// Wait for DUT to reconnect if OpenNoTPMWipe is not accessible (i.e. !="Y").
 		testing.ContextLog(ctx, "Reconnecting to DUT")
 		waitConnectCtx, cancelWaitConnect := context.WithTimeout(ctx, 3*time.Minute)
 		defer cancelWaitConnect()
@@ -1013,12 +1018,19 @@ func (h *Helper) OpenCCDNoTestlab(ctx context.Context, hasMicroOrC2D2 bool) erro
 		if err := h.WaitConnect(waitConnectCtx); err != nil {
 			return errors.Wrap(err, "failed to reconnect to DUT")
 		}
+	} else {
+		// Reboot was not required for opening CCD. Allow some delay here to ensure that
+		// DUT's CCD level has changed and settled.
+		testing.ContextLogf(ctx, "Sleeping for %s", 5*time.Second)
+		if err := testing.Sleep(ctx, 5*time.Second); err != nil {
+			return errors.Wrap(err, "failed to sleep")
+		}
 	}
 	return nil
 }
 
 // pressPowerSequenceToOpenCCD will perform power presses for 5 minutes or until DUT disconnects.
-func (h *Helper) pressPowerSequenceToOpenCCD(ctx context.Context, openNoTPMWipe int, hasMicroOrC2D2 bool) error {
+func (h *Helper) pressPowerSequenceToOpenCCD(ctx context.Context, openNoTPMWipe string, hasMicroOrC2D2 bool) error {
 	if !hasMicroOrC2D2 {
 		return errors.New("micro-servo is required for valid power button presses")
 	}
@@ -1035,10 +1047,10 @@ func (h *Helper) pressPowerSequenceToOpenCCD(ctx context.Context, openNoTPMWipe 
 		}
 		return nil
 	}, &testing.PollOptions{Timeout: ppTimeout, Interval: 2 * time.Second}); err != nil {
-		// When openNoTPMWipe is set to always (i.e. =1), DUT would NOT
+		// When openNoTPMWipe is accessible (i.e. ="Y"), DUT would NOT
 		// reboot at the end of the power pressing sequence. As a result,
 		// DUT would still be connected.
-		if !(openNoTPMWipe == 1 && strings.Contains(err.Error(), "DUT still connected")) {
+		if !(openNoTPMWipe == "Y" && strings.Contains(err.Error(), "DUT still connected")) {
 			return errors.Wrapf(err, "failed while pressing power button for %s with OpenNoTPMWipe status %v", ppTimeout, openNoTPMWipe)
 		}
 	}
