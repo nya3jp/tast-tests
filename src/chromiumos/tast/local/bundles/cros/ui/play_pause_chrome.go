@@ -21,7 +21,8 @@ func init() {
 		LacrosStatus: testing.LacrosVariantNeeded,
 		Desc:         "Checks the play/pause accelerator will play/pause Chrome",
 		Contacts:     []string{"beccahughes@chromium.org", "media-dev@chromium.org"},
-		Attr:         []string{"group:mainline", "informational"},
+		// Disabled due to <1% pass rate over 30 days. See b/241943746
+		//Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Data: []string{
 			"media_session_60sec_test.ogg",
