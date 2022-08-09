@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/common/fixture"
 	"chromiumos/tast/common/policy"
 	"chromiumos/tast/common/policy/fakedms"
+	"chromiumos/tast/errors"
 	"chromiumos/tast/local/arc"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
@@ -29,7 +30,7 @@ import (
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         AdminTemplatesLaunch,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Checks admin templates can be launched",
 		Contacts: []string{
 			"zhumatthew@google.com",
@@ -41,8 +42,14 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		Timeout:      chrome.GAIALoginTimeout + arc.BootTimeout + 120*time.Second,
 		VarDeps:      []string{"ui.gaiaPoolDefault"},
-		Fixture:      fixture.ChromeAdminDeskTemplatesLoggedIn,
 		Data:         []string{"admin_desk_template.json"},
+		Params: []testing.Param{{
+			Fixture: fixture.ChromeAdminDeskTemplatesLoggedIn,
+		}, {
+			Name:              "lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Fixture:           fixture.LacrosAdminDeskTemplatesLoggedIn,
+		}},
 	})
 }
 
@@ -152,13 +159,18 @@ func AdminTemplatesLaunch(ctx context.Context, s *testing.State) {
 			}
 
 			// Verifies that there are the app windows.
-			ws, err := ash.GetAllWindows(ctx, tconn)
-			if err != nil {
-				s.Fatal("Failed to get all open windows: ", err)
-			}
-
-			if len(ws) != 2 {
-				s.Fatalf("Got %v window(s), should have %v windows", len(ws), 2)
+			// Note that it polls on counting windows as ash.SetOverviewModeAndWait doesn't seem to wait long enough for windows actions to be settled.
+			if err := testing.Poll(ctx, func(ctx context.Context) error {
+				ws, err := ash.GetAllWindows(ctx, tconn)
+				if err != nil {
+					testing.PollBreak(errors.Wrap(err, "failed to get all open windows"))
+				}
+				if len(ws) != 2 {
+					return errors.Errorf("got %v window(s), should have %v windows", len(ws), 2)
+				}
+				return nil
+			}, &testing.PollOptions{Timeout: 10 * time.Second}); err != nil {
+				s.Fatal("Failed to verify the app windows: ", err)
 			}
 		})
 	}
