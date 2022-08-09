@@ -14,6 +14,7 @@ import (
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/chrome"
+	"chromiumos/tast/local/chrome/ime"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -92,6 +93,11 @@ func ManualTicketEditConfiguration(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to get a keyboard")
 	}
 	defer keyboard.Close()
+
+	// Change the keyboard layout to English(US). See crbug.com/1351417.
+	// If layout is already English(US), which is true for most of the cases,
+	// nothing happens.
+	ime.EnglishUS.InstallAndActivate(tconn)(ctx)
 
 	ui := uiauto.New(tconn)
 
