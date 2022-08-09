@@ -88,7 +88,9 @@ func init() {
 			"xiyuan@chromium.org",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl:            &loggedInToCUJUserFixture{bt: browser.TypeAsh},
+		Impl: &loggedInToCUJUserFixture{
+			chromeExtraOpts: []chrome.Option{chrome.DisableFeatures("FirmwareUpdaterApp")},
+			bt:              browser.TypeAsh},
 		Parent:          "prepareForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -103,7 +105,9 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl: &loggedInToCUJUserFixture{
-			chromeExtraOpts:   []chrome.Option{chrome.ExtraArgs(webRTCEventLogCommandFlag)},
+			chromeExtraOpts: []chrome.Option{
+				chrome.ExtraArgs(webRTCEventLogCommandFlag),
+				chrome.DisableFeatures("FirmwareUpdaterApp")},
 			bt:                browser.TypeAsh,
 			useEnterprisePool: true,
 		},
@@ -121,9 +125,11 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl: &loggedInToCUJUserFixture{
-			keepState:       true,
-			chromeExtraOpts: []chrome.Option{chrome.EnableFeatures("WebUITabStrip")},
-			bt:              browser.TypeAsh,
+			keepState: true,
+			chromeExtraOpts: []chrome.Option{
+				chrome.EnableFeatures("WebUITabStrip"),
+				chrome.DisableFeatures("FirmwareUpdaterApp")},
+			bt: browser.TypeAsh,
 		},
 		Parent:          "cpuIdleForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
@@ -138,7 +144,9 @@ func init() {
 			"xiyuan@chromium.org",
 			"chromeos-perfmetrics-eng@google.com",
 		},
-		Impl:            &loggedInToCUJUserFixture{bt: browser.TypeLacros},
+		Impl: &loggedInToCUJUserFixture{
+			chromeExtraOpts: []chrome.Option{chrome.DisableFeatures("FirmwareUpdaterApp")},
+			bt:              browser.TypeLacros},
 		Parent:          "cpuIdleForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
 		ResetTimeout:    resetTimeout,
@@ -157,7 +165,7 @@ func init() {
 			chromeExtraOpts: []chrome.Option{
 				chrome.EnableFeatures("WebUITabStrip"),
 				chrome.LacrosEnableFeatures("WebUITabStrip"),
-			},
+				chrome.DisableFeatures("FirmwareUpdaterApp")},
 			bt: browser.TypeLacros,
 		},
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
@@ -173,7 +181,9 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl: &loggedInToCUJUserFixture{
-			chromeExtraOpts: []chrome.Option{chrome.EnableFeatures("WebUITabStrip")},
+			chromeExtraOpts: []chrome.Option{
+				chrome.EnableFeatures("WebUITabStrip"),
+				chrome.DisableFeatures("FirmwareUpdaterApp")},
 		},
 		Parent:          "cpuIdleForEnrolledCUJ",
 		SetUpTimeout:    chrome.EnrollmentAndLoginTimeout + chrome.GAIALoginTimeout + optin.OptinTimeout + 2*time.Minute,
@@ -194,7 +204,7 @@ func init() {
 			chromeExtraOpts: []chrome.Option{
 				chrome.EnableFeatures("WebUITabStrip"),
 				chrome.LacrosEnableFeatures("WebUITabStrip"),
-			},
+				chrome.DisableFeatures("FirmwareUpdaterApp")},
 			bt: browser.TypeLacros,
 		},
 		Parent:          "cpuIdleForEnrolledCUJ",
@@ -213,8 +223,10 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl: &loggedInToCUJUserFixture{
-			chromeExtraOpts: []chrome.Option{chrome.ExtraArgs(webRTCEventLogCommandFlag)},
-			bt:              browser.TypeAsh,
+			chromeExtraOpts: []chrome.Option{
+				chrome.ExtraArgs(webRTCEventLogCommandFlag),
+				chrome.DisableFeatures("FirmwareUpdaterApp")},
+			bt: browser.TypeAsh,
 		},
 		Parent:          "prepareForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
@@ -230,8 +242,10 @@ func init() {
 			"chromeos-perfmetrics-eng@google.com",
 		},
 		Impl: &loggedInToCUJUserFixture{
-			chromeExtraOpts: []chrome.Option{chrome.LacrosExtraArgs(webRTCEventLogCommandFlag)},
-			bt:              browser.TypeLacros,
+			chromeExtraOpts: []chrome.Option{
+				chrome.LacrosExtraArgs(webRTCEventLogCommandFlag),
+				chrome.DisableFeatures("FirmwareUpdaterApp")},
+			bt: browser.TypeLacros,
 		},
 		Parent:          "cpuIdleForCUJ",
 		SetUpTimeout:    chrome.GAIALoginTimeout + optin.OptinTimeout + arc.BootTimeout + 2*time.Minute,
