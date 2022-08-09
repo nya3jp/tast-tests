@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "027b4721_c5621e2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-08-09T18:18:42Z",
+      "side": 1,
+      "message": "lgtm, thanks!",
+      "revId": "2f1e78e2ed6587d4dffbc1a4f5d6eaf7b7b581f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b77df85_e66869af",
@@ -31,6 +48,30 @@
       "writtenOn": "2022-08-09T16:13:16Z",
       "side": 1,
       "message": "needs to find owner",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 13
+      },
+      "revId": "2f1e78e2ed6587d4dffbc1a4f5d6eaf7b7b581f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85ec23b2_c8ad01b5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/window_snap_and_rotate.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1118421
+      },
+      "writtenOn": "2022-08-09T18:18:42Z",
+      "side": 1,
+      "message": "can you change the owner to zxdan@ please? Thanks!",
+      "parentUuid": "2b77df85_e66869af",
       "range": {
         "startLine": 38,
         "startChar": 4,
