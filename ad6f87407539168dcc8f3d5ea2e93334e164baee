@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ba3eafa_2dc22ed6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T16:06:36Z",
+      "side": 1,
+      "message": "Can you also review https://crrev.com/c/3818763 that this change depends on? Thanks,",
+      "revId": "ad6f87407539168dcc8f3d5ea2e93334e164baee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96a83088_278647fb",
@@ -49,6 +66,24 @@
       "side": 1,
       "message": "ditto for all other CLs.",
       "parentUuid": "96a83088_278647fb",
+      "revId": "ad6f87407539168dcc8f3d5ea2e93334e164baee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a528aeeb_ff617889",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T16:06:36Z",
+      "side": 1,
+      "message": "Yes, not harmful just to make sure no window is open.\nI think that was a refactoring point that we chatted about quite a while back. \n\nCurrently the fixture `chrome.NewLoggedInFixture` closes all browser pages for ash-chrome between tests, but would not for lacros it seems. So, the windows opened in lacros tests using the same fixture are unlikely closed before next test starts.\n\nIt would be great if there is a way to guarantee that all lacros windows are closed in fixture. Any ideas? I can file a crbug for a follow up if there isn\u0027t.",
+      "parentUuid": "237c5fa6_f8814efd",
       "revId": "ad6f87407539168dcc8f3d5ea2e93334e164baee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
