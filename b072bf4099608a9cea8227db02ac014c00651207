@@ -16,6 +16,24 @@
       "message": "Have you observed this fixing anything? If this is for a new window, IIUC an animation is started after the window is set to visible.",
       "revId": "b072bf4099608a9cea8227db02ac014c00651207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d146f610_0a12ed05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T04:23:08Z",
+      "side": 1,
+      "message": "\u003e Have you observed this fixing anything?\n\nYes, there are two CLs depending on this (see the relation chain): https://crrev.com/c/3818372, https://crrev.com/c/3819062\n\n\u003e If this is for a new window, IIUC an animation is started after the window is set to visible.\n\nIf it holds true, it would be safe to add `w.IsVisible` to the condition. Does it sound okay?\nMy suspicion is that there might be a subtle timing issue between the time animation starts and the time the window becomes visible for lacros.",
+      "parentUuid": "6733f928_b5617b43",
+      "revId": "b072bf4099608a9cea8227db02ac014c00651207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
