@@ -70,6 +70,30 @@
       },
       "revId": "b9483d6d7ff1febca1f6fd8f5820b38d21d20b49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73417e9e_2a88b955",
+        "filename": "src/chromiumos/tast/local/chrome/ash/wm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-09T00:56:57Z",
+      "side": 0,
+      "message": "Looking at `ash.WaitForVisible` it is somehow only for ARC windows.\n\nI think adding w.IsVisible to WaitWindowFinishAnimating is just fine for the edge case when animation has not started for the window that is not fully open yet. WDYT?",
+      "parentUuid": "bf84d976_f705134a",
+      "range": {
+        "startLine": 252,
+        "startChar": 10,
+        "endLine": 252,
+        "endChar": 35
+      },
+      "revId": "b9483d6d7ff1febca1f6fd8f5820b38d21d20b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
