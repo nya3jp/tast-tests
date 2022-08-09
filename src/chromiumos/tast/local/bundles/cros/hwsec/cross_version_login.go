@@ -17,6 +17,7 @@ import (
 	"github.com/google/go-cmp/cmp/cmpopts"
 
 	"chromiumos/tast/common/hwsec"
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/hwsec/util"
 	"chromiumos/tast/local/chrome"
@@ -511,11 +512,16 @@ func CrossVersionLogin(ctx context.Context, s *testing.State) {
 	if err := hwseclocal.SaveLoginData(ctx, daemonController, backupPath, true /*includeTpm*/); err != nil {
 		s.Fatal("Failed to backup login data: ", err)
 	}
-	defer func() {
+
+	ctxForCleanUp := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+	defer func(ctx context.Context) {
+		// Login back the origin login data after the test.
 		if err := hwseclocal.LoadLoginData(ctx, daemonController, backupPath, true /*includeTpm*/); err != nil {
 			s.Fatal("Failed to load login data: ", err)
 		}
-	}()
+	}(ctxForCleanUp)
 
 	prefixs := s.Param().([]string)
 	if len(prefixs) == 0 {
