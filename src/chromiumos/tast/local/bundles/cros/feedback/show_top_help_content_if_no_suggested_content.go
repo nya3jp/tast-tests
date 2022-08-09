@@ -19,7 +19,7 @@ import (
 	"chromiumos/tast/testing"
 )
 
-const descriptionWithoutSuggestedContent = "$$$"
+const descriptionWithoutSuggestedContent = "$$$$$$$$$$$$$$$$$$$$$$$$$"
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -79,15 +79,20 @@ func ShowTopHelpContentIfNoSuggestedContent(ctx context.Context, s *testing.Stat
 		s.Fatal("Failed to find the issue description text input: ", err)
 	}
 
-	// Type issue description with no possible help content.
+	// Type issue description.
 	if err := kb.Type(ctx, descriptionWithoutSuggestedContent); err != nil {
-		s.Fatal("Failed to type issue description with no possible help content: ", err)
+		s.Fatal("Failed to type issue description: ", err)
 	}
 
-	// Verify top help content title exists.
-	title := nodewith.Name("No suggested content. See top help content.").Role(
-		role.StaticText).Ancestor(feedbackRootNode)
-	if err := ui.WaitUntilExists(title)(ctx); err != nil {
-		s.Fatal("Failed to find the help content title: ", err)
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		// Verify top help content title exists.
+		title := nodewith.Name("No suggested content. See top help content.").Role(
+			role.StaticText).Ancestor(feedbackRootNode)
+		if err := ui.WaitUntilExists(title)(ctx); err != nil {
+			s.Fatal("Failed to find the no suggested content title: ", err)
+		}
+		return nil
+	}, &testing.PollOptions{Timeout: time.Minute}); err != nil {
+		s.Fatal("Failed to show top help content: ", err)
 	}
 }
