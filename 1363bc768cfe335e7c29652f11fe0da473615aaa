@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "999cd93e_a6927b41",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nacl/pnacl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-09T16:13:55Z",
+      "side": 1,
+      "message": "Could we use `Launch()` if we don\u0027t use the URL here?",
+      "range": {
+        "startLine": 101,
+        "startChar": 19,
+        "endLine": 101,
+        "endChar": 59
+      },
+      "revId": "1363bc768cfe335e7c29652f11fe0da473615aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b4d28c1b_c8848a06",
         "filename": "src/chromiumos/tast/local/bundles/cros/nacl/pnacl.go",
         "patchSetId": 1
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "They\u0027re not same, this one here uses `cr` and the other one uses `l`.",
       "parentUuid": "b4d28c1b_c8848a06",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 68
+      },
+      "revId": "1363bc768cfe335e7c29652f11fe0da473615aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7264d4a8_cef32869",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nacl/pnacl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-09T16:13:55Z",
+      "side": 1,
+      "message": "Ack. Maybe Golang experts can suggest some alternative, but I don\u0027t see a good way to shorten it indeed.",
+      "parentUuid": "b248d918_84ca2907",
       "range": {
         "startLine": 110,
         "startChar": 0,
