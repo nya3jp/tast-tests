@@ -6,15 +6,11 @@ package nearbyshare
 
 import (
 	"context"
-	"encoding/hex"
-	"strings"
 
 	nearbycommon "chromiumos/tast/common/cros/nearbyshare"
-	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbyfixture"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
-	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )
 
@@ -112,31 +108,10 @@ func PhoneToCrosHighVisWifiCredentials(ctx context.Context, s *testing.State) {
 	}
 	shareCompleted = true
 
-	// Check CrOS Wi-Fi networks to see if the network was saved
-	s.Log("Searching for received Wi-Fi network")
-	props := map[string]interface{}{
-		shillconst.ServicePropertyType:        shillconst.TypeWifi,
-		shillconst.ServicePropertyWiFiHexSSID: strings.ToUpper(hex.EncodeToString([]byte(testWiFi))),
-		shillconst.ServicePropertyVisible:     true,
-	}
-
 	s.Log("Opening known Wi-Fi networks from notification")
-	if err := nearbyshare.OpenWiFiNetworkListNotification(ctx, tconn, androidDisplayName, testWiFi, nearbycommon.WiFiNotificationTimeout); err != nil {
+	if err := nearbyshare.OpenWiFiNetworkListNotification(ctx, tconn, andoidDisplayName, testWiFi, nearbycommon.WiFiNotificationTimeout); err != nil {
 		s.Fatal("Failed to open known Wi-Fi networks from notification")
 	}
 
-	manager, err := shill.NewManager(ctx)
-	if err != nil {
-		s.Fatal("Failed to create a shill manager: ", err)
-	}
-
-	service, err := manager.WaitForServiceProperties(ctx, props, testData.TransferTimeout)
-	if err != nil {
-		s.Fatal("Failed to find the Wi-Fi network: ", err)
-	}
-
-	s.Log("Wi-Fi network found, now removing Wi-Fi network for cleanup")
-	if err := service.Remove(ctx); err != nil {
-		s.Fatal("Failed to remove the service")
-	}
+	// TODO(b/239434458): Verify if the Wi-Fi network was configured properly
 }
