@@ -60,14 +60,15 @@ func getClient(ctx context.Context, opts ...ClientOption) (*client, error) {
 	return client, nil
 }
 
-type genericAccountManager struct {
+// GenericAccountManager holds the client and the generic accounts data.
+type GenericAccountManager struct {
 	client   *client
 	Accounts []*GenericAccount
 }
 
-// NewGenericAccountManager leases a generic account, stores it in a genericAccountManager struct and returns both. It requires
-// a credsJSON byte array with the credentials of a service account to create a tape client for the genericAccountManager.
-func NewGenericAccountManager(ctx context.Context, credsJSON []byte, opts ...RequestAccountOption) (*genericAccountManager, *GenericAccount, error) {
+// NewGenericAccountManager leases a generic account, stores it in a GenericAccountManager struct and returns both. It requires
+// a credsJSON byte array with the credentials of a service account to create a tape client for the GenericAccountManager.
+func NewGenericAccountManager(ctx context.Context, credsJSON []byte, opts ...RequestAccountOption) (*GenericAccountManager, *GenericAccount, error) {
 	client, err := NewClient(ctx, credsJSON)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to create tape client")
@@ -76,10 +77,10 @@ func NewGenericAccountManager(ctx context.Context, credsJSON []byte, opts ...Req
 	return NewGenericAccountManagerFromClient(ctx, client, opts...)
 }
 
-// NewGenericAccountManagerFromClient leases a generic account, stores it in a genericAccountManager struct and returns both. It requires
-// a tape client to assign it to the genericAccountManager.
-func NewGenericAccountManagerFromClient(ctx context.Context, client *client, opts ...RequestAccountOption) (*genericAccountManager, *GenericAccount, error) {
-	manager := &genericAccountManager{
+// NewGenericAccountManagerFromClient leases a generic account, stores it in a GenericAccountManager struct and returns both. It requires
+// a tape client to assign it to the GenericAccountManager.
+func NewGenericAccountManagerFromClient(ctx context.Context, client *client, opts ...RequestAccountOption) (*GenericAccountManager, *GenericAccount, error) {
+	manager := &GenericAccountManager{
 		client: client,
 	}
 
@@ -90,8 +91,8 @@ func NewGenericAccountManagerFromClient(ctx context.Context, client *client, opt
 	return manager, account, nil
 }
 
-// RequestAccount leases a generic account, stores it in the genericAccountManager and returns it.
-func (ah *genericAccountManager) RequestAccount(ctx context.Context, opts ...RequestAccountOption) (*GenericAccount, error) {
+// RequestAccount leases a generic account, stores it in the GenericAccountManager and returns it.
+func (ah *GenericAccountManager) RequestAccount(ctx context.Context, opts ...RequestAccountOption) (*GenericAccount, error) {
 	account, err := ah.client.RequestGenericAccount(ctx, opts...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to request owned test account")
@@ -102,8 +103,8 @@ func (ah *genericAccountManager) RequestAccount(ctx context.Context, opts ...Req
 	return account, nil
 }
 
-// CleanUp releases all generic accounts that are stored in the genericAccountManager.
-func (ah *genericAccountManager) CleanUp(ctx context.Context) error {
+// CleanUp releases all generic accounts that are stored in the GenericAccountManager.
+func (ah *GenericAccountManager) CleanUp(ctx context.Context) error {
 	var combinedErrors error
 	for _, account := range ah.Accounts {
 		err := ah.client.ReleaseGenericAccount(ctx, account)
@@ -119,14 +120,15 @@ func (ah *genericAccountManager) CleanUp(ctx context.Context) error {
 	return nil
 }
 
-type ownedTestAccountManager struct {
+// OwnedTestAccountManager holds the client and the Owned accounts data.
+type OwnedTestAccountManager struct {
 	client   *client
 	Accounts []*OwnedTestAccount
 }
 
-// NewOwnedTestAccountManager leases an owned test account, stores it in an ownedTestAccountManager struct and returns both. It requires
-// a credsJSON byte array with the credentials of a service account to create a tape client for the ownedTestAccountManager.
-func NewOwnedTestAccountManager(ctx context.Context, credsJSON []byte, lock bool, opts ...RequestAccountOption) (*ownedTestAccountManager, *OwnedTestAccount, error) {
+// NewOwnedTestAccountManager leases an owned test account, stores it in an OwnedTestAccountManager struct and returns both. It requires
+// a credsJSON byte array with the credentials of a service account to create a tape client for the OwnedTestAccountManager.
+func NewOwnedTestAccountManager(ctx context.Context, credsJSON []byte, lock bool, opts ...RequestAccountOption) (*OwnedTestAccountManager, *OwnedTestAccount, error) {
 	client, err := NewClient(ctx, credsJSON)
 	if err != nil {
 		return nil, nil, errors.Wrap(err, "failed to create tape client")
@@ -135,10 +137,10 @@ func NewOwnedTestAccountManager(ctx context.Context, credsJSON []byte, lock bool
 	return NewOwnedTestAccountManagerFromClient(ctx, client, lock, opts...)
 }
 
-// NewOwnedTestAccountManagerFromClient leases an owned test account, stores it in an ownedTestAccountManager struct and returns both.
-// It requires a tape client to assign it to the ownedTestAccountManager.
-func NewOwnedTestAccountManagerFromClient(ctx context.Context, client *client, lock bool, opts ...RequestAccountOption) (*ownedTestAccountManager, *OwnedTestAccount, error) {
-	manager := &ownedTestAccountManager{
+// NewOwnedTestAccountManagerFromClient leases an owned test account, stores it in an OwnedTestAccountManager struct and returns both.
+// It requires a tape client to assign it to the OwnedTestAccountManager.
+func NewOwnedTestAccountManagerFromClient(ctx context.Context, client *client, lock bool, opts ...RequestAccountOption) (*OwnedTestAccountManager, *OwnedTestAccount, error) {
+	manager := &OwnedTestAccountManager{
 		client: client,
 	}
 
@@ -149,8 +151,8 @@ func NewOwnedTestAccountManagerFromClient(ctx context.Context, client *client, l
 	return manager, account, nil
 }
 
-// RequestAccount leases an owned test account, stores it in the ownedTestAccountManager and returns it.
-func (ah *ownedTestAccountManager) RequestAccount(ctx context.Context, lock bool, opts ...RequestAccountOption) (*OwnedTestAccount, error) {
+// RequestAccount leases an owned test account, stores it in the OwnedTestAccountManager and returns it.
+func (ah *OwnedTestAccountManager) RequestAccount(ctx context.Context, lock bool, opts ...RequestAccountOption) (*OwnedTestAccount, error) {
 	account, err := ah.client.RequestOwnedTestAccount(ctx, lock, opts...)
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to request owned test account")
@@ -161,8 +163,8 @@ func (ah *ownedTestAccountManager) RequestAccount(ctx context.Context, lock bool
 	return account, nil
 }
 
-// CleanUp releases all owned test accounts that are stored in the ownedTestAccountManager.
-func (ah *ownedTestAccountManager) CleanUp(ctx context.Context) error {
+// CleanUp releases all owned test accounts that are stored in the OwnedTestAccountManager.
+func (ah *OwnedTestAccountManager) CleanUp(ctx context.Context) error {
 	var combinedErrors error
 	for _, account := range ah.Accounts {
 		err := ah.client.ReleaseOwnedTestAccount(ctx, account)
