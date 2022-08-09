@@ -238,6 +238,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c9229fa_1d8d8b43",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-09T11:08:45Z",
+      "side": 1,
+      "message": "Maybe trustedcerts ? :-) But I\u0027m also fine with certs.\n\n(BTW client certs would typically go somewhere else in Chrome OS, specifically into the chaps daemon, but that doesn\u0027t matter much here)",
+      "parentUuid": "e426e229_51762dd4",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 13
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c43c370b_cec55d7c",
         "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
         "patchSetId": 9
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "I believe that we could, but I am not sure where that would exist. I expect tmp to be the directory where I would put tmp files for tests, unless there is a better directory that anyone can think of.",
       "parentUuid": "5796c982_30118b8e",
+      "range": {
+        "startLine": 59,
+        "startChar": 37,
+        "endLine": 59,
+        "endChar": 76
+      },
+      "revId": "3a6faca60bf9a8ebb2dfe774a37c348b6a02857f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c3b623d_7e422325",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/certs/certs.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1175129
+      },
+      "writtenOn": "2022-08-09T11:08:45Z",
+      "side": 1,
+      "message": "Looking around a bit, maybe we could try mounting tmpfs directly on certDirectory?\n\n( like https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/crash/user.go;l\u003d226?q\u003dfile:tast%20tmpfs )\n\nIf not, then I also don\u0027t have a good idea, unless maybe mounting under /tmp/certsdir if that\u0027s possible :)\n\n( so no strong preference here )",
+      "parentUuid": "25142cbb_10097cdc",
       "range": {
         "startLine": 59,
         "startChar": 37,
