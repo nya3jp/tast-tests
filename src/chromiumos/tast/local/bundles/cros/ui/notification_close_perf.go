@@ -9,12 +9,15 @@ import (
 	"fmt"
 	"time"
 
+	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/bundles/cros/ui/notification"
 	"chromiumos/tast/local/bundles/cros/ui/perfutil"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
+	"chromiumos/tast/local/chrome/browser/browserfixt"
+	"chromiumos/tast/local/chrome/lacros/lacrosfixt"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/power"
@@ -32,44 +35,61 @@ const (
 )
 
 type notificationClearTestVal struct {
-	TestType notificationCloseTestType
+	testType notificationCloseTestType
+	bt       browser.Type
 }
 
 func init() {
 	testing.AddTest(&testing.Test{
 		Func:         NotificationClosePerf,
-		LacrosStatus: testing.LacrosVariantUnknown,
+		LacrosStatus: testing.LacrosVariantExists,
 		Desc:         "Measures animation performance of the clear all animation or individual notification deletion in the message center",
 		Contacts:     []string{"newcomer@chromium.org", "cros-status-area-eng@google.com", "chromeos-wmp@google.com", "chromeos-sw-engprod@google.com"},
 		Attr:         []string{"group:crosbolt", "crosbolt_perbuild"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.InternalDisplay()),
 		Timeout:      10 * time.Minute,
-		Params: []testing.Param{
-			{
-				Name: "one_at_a_time",
-				Val:  clearOneAtATime,
-			},
-			{
-				Name:              "one_at_a_time_arc",
-				ExtraSoftwareDeps: []string{"arc"},
-				Val:               clearOneAtATimeWithARC,
-			},
-			{
-				Name: "clear_all",
-				Val:  clearAll,
-			},
-			{
-				Name:              "clear_all_arc",
-				ExtraSoftwareDeps: []string{"arc"},
-				Val:               clearAllWithARC,
-			},
-		},
+		Params: []testing.Param{{
+			Name: "one_at_a_time",
+			Val:  notificationClearTestVal{clearOneAtATime, browser.TypeAsh},
+		}, {
+			Name:              "one_at_a_time_arc",
+			ExtraSoftwareDeps: []string{"arc"},
+			Val:               notificationClearTestVal{clearOneAtATimeWithARC, browser.TypeAsh},
+		}, {
+			Name: "clear_all",
+			Val:  notificationClearTestVal{clearAll, browser.TypeAsh},
+		}, {
+			Name:              "clear_all_arc",
+			ExtraSoftwareDeps: []string{"arc"},
+			Val:               notificationClearTestVal{clearAllWithARC, browser.TypeAsh},
+		}, {
+			Name:              "one_at_a_time_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               notificationClearTestVal{clearOneAtATime, browser.TypeLacros},
+		}, {
+			Name:              "one_at_a_time_arc_lacros",
+			ExtraSoftwareDeps: []string{"arc", "lacros"},
+			Val:               notificationClearTestVal{clearOneAtATimeWithARC, browser.TypeLacros},
+		}, {
+			Name:              "clear_all_lacros",
+			ExtraSoftwareDeps: []string{"lacros"},
+			Val:               notificationClearTestVal{clearAll, browser.TypeLacros},
+		}, {
+			Name:              "clear_all_arc_lacros",
+			ExtraSoftwareDeps: []string{"arc", "lacros"},
+			Val:               notificationClearTestVal{clearAllWithARC, browser.TypeLacros},
+		}},
 	})
 }
 
 func NotificationClosePerf(ctx context.Context, s *testing.State) {
-	testType := s.Param().(notificationCloseTestType)
+	// Reserve a few seconds for various cleanup.
+	cleanupCtx := ctx
+	ctx, cancel := ctxutil.Shorten(ctx, 10*time.Second)
+	defer cancel()
+
+	testType := s.Param().(notificationClearTestVal).testType
 	shouldClearOneAtATime := testType == clearOneAtATime || testType == clearOneAtATimeWithARC
 	isArc := testType == clearOneAtATimeWithARC || testType == clearAllWithARC
 
@@ -83,32 +103,46 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 		initArcOpt = []chrome.Option{chrome.ARCEnabled()}
 	}
 
-	cr, err := chrome.New(ctx, initArcOpt...)
+	bt := s.Param().(notificationClearTestVal).bt
+	cr, br, closeBrowser, err := browserfixt.SetUpWithNewChrome(ctx, bt, lacrosfixt.NewConfig(), initArcOpt...)
 	if err != nil {
-		s.Fatal("Chrome login failed: ", err)
+		s.Fatal("Failed to set up browser: ", err)
 	}
-	defer cr.Close(ctx)
+	defer cr.Close(cleanupCtx)
+	defer closeBrowser(cleanupCtx)
 
-	tconn, err := cr.TestAPIConn(ctx)
+	atconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
-		s.Fatal("Failed to connect to test API: ", err)
+		s.Fatal("Failed to connect to test API from ash: ", err)
+	}
+	btconn, err := br.TestAPIConn(ctx)
+	if err != nil {
+		s.Fatal("Failed to connect to test API from browser: ", err)
+	}
+
+	// Minimize opened windows (if exists) to reduce background noise during the measurement.
+	if err := ash.ForEachWindow(ctx, atconn, func(w *ash.Window) error {
+		return ash.SetWindowStateAndWait(ctx, atconn, w.ID, ash.WindowStateMinimized)
+	}); err != nil {
+		s.Fatal("Failed to set window states: ", err)
 	}
 
 	var arcclient *notification.ARCClient
 	if isArc {
-		arcclient, err = notification.NewARCClient(ctx, tconn, cr, s.OutDir())
+		// Note that ARC uses the test API from ash-chrome to manage notifications.
+		arcclient, err = notification.NewARCClient(ctx, atconn, cr, s.OutDir())
 		if err != nil {
 			s.Fatal("Failed to start ARCClient: ", err)
 		}
-		defer arcclient.Close(ctx, tconn)
+		defer arcclient.Close(cleanupCtx, atconn)
 	}
 
-	automationController := uiauto.New(tconn)
+	automationController := uiauto.New(atconn)
 	statusArea := nodewith.ClassName("ash/StatusAreaWidgetDelegate")
 	collapseButton := nodewith.ClassName("CollapseButton")
 
 	// Ensure no notifications currently exist.
-	if err := ash.CloseNotifications(ctx, tconn); err != nil {
+	if err := ash.CloseNotifications(ctx, atconn); err != nil {
 		s.Fatal("Failed to clear all notifications prior to adding notifications")
 	}
 
@@ -137,11 +171,12 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 
 	// Create 12 notifications (3 groups of 4 different notifications) with 3 ARC notifications if applicable,
 	// close them all via either the ClearAll button or one at a time, and record performance metrics.
-	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(tconn, func(ctx context.Context) error {
+	// Note that ash-chrome (cr and atconn) is passed in to take traces and metrics from ash-chrome.
+	pv := perfutil.RunMultiple(ctx, s, cr.Browser(), perfutil.RunAndWaitAll(atconn, func(ctx context.Context) error {
 		ids := make([]string, n*len(notificationTypes))
 		for i := 0; i <= n-1; i++ {
 			for idx, t := range notificationTypes {
-				if id, err := browser.CreateTestNotification(ctx, tconn, t, fmt.Sprintf("Test%sNotification%d", t, i), "test message"); err != nil {
+				if id, err := browser.CreateTestNotification(ctx, btconn, t, fmt.Sprintf("Test%sNotification%d", t, i), "test message"); err != nil {
 					s.Fatalf("Failed to create %d-th %s notification: %v", i, t, err)
 				} else {
 					var index = i*len(notificationTypes) + idx
@@ -149,7 +184,7 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 					// Wait for each notification to post. This is faster than waiting for
 					// the final notification at the end, because sometimes posting 12
 					// notifications at once can result in a very long wait.
-					if _, err := ash.WaitForNotification(ctx, tconn, uiTimeout, ash.WaitTitle(fmt.Sprintf("Test%sNotification%d", t, i))); err != nil {
+					if _, err := ash.WaitForNotification(ctx, atconn, uiTimeout, ash.WaitTitle(fmt.Sprintf("Test%sNotification%d", t, i))); err != nil {
 						s.Fatal("Failed waiting for notification: ", err)
 					}
 				}
@@ -157,7 +192,7 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 
 			// Create an ARC notification.
 			if isArc {
-				if err := arcclient.CreateOrUpdateTestNotification(ctx, tconn, fmt.Sprintf("TestARCNotification%d", i), "test message", fmt.Sprintf("%d", i)); err != nil {
+				if err := arcclient.CreateOrUpdateTestNotification(ctx, atconn, fmt.Sprintf("TestARCNotification%d", i), "test message", fmt.Sprintf("%d", i)); err != nil {
 					s.Fatalf("Failed to create %d-th ARC notification: %v", i, err)
 				}
 			}
@@ -186,7 +221,7 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 				// Clear the notifications one at a time.
 				for i := len(ids) - 1; i >= 0; i-- {
 					if err := testing.Poll(ctx, func(ctx context.Context) error {
-						if err := browser.ClearNotification(ctx, tconn, ids[i]); err != nil {
+						if err := browser.ClearNotification(ctx, btconn, ids[i]); err != nil {
 							return errors.Wrap(err, "failed to clear notification")
 						}
 						// Wait for stabilization / animation completion, otherwise all
@@ -206,7 +241,7 @@ func NotificationClosePerf(ctx context.Context, s *testing.State) {
 					// Clear ARC notifications.
 					for i := n - 1; i >= 0; i-- {
 						if err := testing.Poll(ctx, func(ctx context.Context) error {
-							if err := arcclient.RemoveNotification(ctx, tconn, fmt.Sprintf("%d", i)); err != nil {
+							if err := arcclient.RemoveNotification(ctx, atconn, fmt.Sprintf("%d", i)); err != nil {
 								return errors.Wrap(err, "failed to remove notification")
 							}
 							if err := testing.Sleep(ctx, time.Second); err != nil {
