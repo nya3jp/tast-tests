@@ -85,7 +85,7 @@ func AddAndRemoveLanguage(ctx context.Context, s *testing.State) {
 		// The full text is the language name if the endonym doesn't exists.
 		targetLanguage = targetLanguageFullName
 	}
-	targetLanguageBtn := nodewith.Name(targetLanguage).Role(role.Button)
+	targetLanguageBtn := nodewith.NameContaining(targetLanguage).Role(role.Button)
 
 	s.Logf("Verifying the new language %q is added", targetLanguage)
 	if err := ui.WaitUntilExists(targetLanguageBtn)(ctx); err != nil {
@@ -137,7 +137,7 @@ func addNewLanguage(ui *uiauto.Context, targetLanguageFullName string) uiauto.Ac
 // removeNewLanguage removes new language from language menu.
 func removeNewLanguage(ui *uiauto.Context, targetLanguage string) uiauto.Action {
 	return uiauto.Combine("remove language",
-		ui.LeftClick(nodewith.Name(targetLanguage).Role(role.Button)),
+		ui.LeftClick(nodewith.NameContaining(targetLanguage).Role(role.Button)),
 		ui.LeftClick(nodewith.Name("Remove").Role(role.MenuItem)),
 	)
 }
