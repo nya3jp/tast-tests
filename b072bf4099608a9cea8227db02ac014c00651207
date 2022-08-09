@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6733f928_b5617b43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-09T04:15:15Z",
+      "side": 1,
+      "message": "Have you observed this fixing anything? If this is for a new window, IIUC an animation is started after the window is set to visible.",
+      "revId": "b072bf4099608a9cea8227db02ac014c00651207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
