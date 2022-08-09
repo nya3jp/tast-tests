@@ -22,6 +22,30 @@
       },
       "revId": "26026de9d4a35cb1255b87adf69f88907c5888c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b702eba_901368f5",
+        "filename": "src/chromiumos/tast/local/bundles/cros/printer/usbprintertests/printtest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2022-08-09T15:06:12Z",
+      "side": 1,
+      "message": "Thanks, I had missed that when pulling the PrinterName field out.",
+      "parentUuid": "a1f10393_a764b167",
+      "range": {
+        "startLine": 75,
+        "startChar": 39,
+        "endLine": 78,
+        "endChar": 30
+      },
+      "revId": "26026de9d4a35cb1255b87adf69f88907c5888c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
