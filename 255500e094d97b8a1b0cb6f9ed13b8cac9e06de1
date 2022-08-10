@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9817e88_d982407c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-10T23:36:56Z",
+      "side": 1,
+      "message": "Thank you for sending this change my way! Overall this LGTM, just have a few nits/questions whenever you have a moment. Would it be possible to rebase on the latest changes as well? I think those helper methods have landed-- thank you :D",
+      "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2f2f20c_3eac359d",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-10T23:36:56Z",
+      "side": 1,
+      "message": "Nit: It might be worth omitting the Bluetooth part of this name and just mentioning this fixture is for the Network Quick Settings revamp, but then in the comment documentation below mentioning this builds on the Bluetooth revamp fixture.",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 59
+      },
+      "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c5308b7_92b7771b",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-10T23:36:56Z",
+      "side": 1,
+      "message": "Nit: Should this be `@google.com`?",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b937e678_be955c03",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/fixture.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-10T23:36:56Z",
+      "side": 1,
+      "message": "Not sure if this is needed as-is, but if we add `Parent:` here we could have this fixture build on the existing Bluetooth ones [1] and then you won\u0027t need to handle Bluetooth and it would be enabled by the time the test starts.\n\n[1] https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/local/bundles/cros/bluetooth/fixture.go",
+      "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86749109_87c3c51e",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/toggle_wifi_from_network_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-10T23:36:56Z",
+      "side": 1,
+      "message": "Could we add\n\n    // Reserve ten seconds for cleanup.\n    cleanupCtx :\u003d ctx\n    ctx, cancel :\u003d ctxutil.Shorten(ctx, 10*time.Second)\n    defer cancel()\n\nhere, and provide `cleanupCtx` to `faillog.DumpUITreeOnError` so that we have a little buffer time after failing to make sure we get the UI tree logs?",
+      "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62a8453b_d9b556be",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/toggle_wifi_from_network_quick_settings.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-10T23:36:56Z",
+      "side": 1,
+      "message": "Nit: Consider moving this line above the logic to enable WiFi.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 68
+      },
+      "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1acd64d_95002016",
+        "filename": "src/chromiumos/tast/local/shill/wifi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1310383
+      },
+      "writtenOn": "2022-08-10T23:36:56Z",
+      "side": 1,
+      "message": "Nit: Consider rewording to mention that we did check the status but it was unexpected,\n\n    \"WiFi has a different status than expected: got %t, want %t\"",
+      "range": {
+        "startLine": 114,
+        "startChar": 24,
+        "endLine": 114,
+        "endChar": 69
+      },
+      "revId": "255500e094d97b8a1b0cb6f9ed13b8cac9e06de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
