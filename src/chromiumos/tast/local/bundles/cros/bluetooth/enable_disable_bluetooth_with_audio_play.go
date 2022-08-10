@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -66,7 +66,7 @@ func EnableDisableBluetoothWithAudioPlay(ctx context.Context, s *testing.State) 
 
 	btHeadset := s.RequiredVar("bluetooth.btDeviceName")
 
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		s.Fatal("Failed to get bluetooth adapters: ", err)
 	}
@@ -89,9 +89,9 @@ func EnableDisableBluetoothWithAudioPlay(ctx context.Context, s *testing.State) 
 	}
 
 	// Waits for a specific BT device to be found.
-	var btDevice *bluetooth.Device
+	var btDevice *bluez.Device
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		btDevice, err = bluetooth.DeviceByAlias(ctx, btHeadset)
+		btDevice, err = bluez.DeviceByAlias(ctx, btHeadset)
 		if err != nil {
 			return errors.Wrap(err, "failed to find bluetooth device by alias name")
 		}
@@ -108,7 +108,7 @@ func EnableDisableBluetoothWithAudioPlay(ctx context.Context, s *testing.State) 
 		}
 	}
 
-	if err := bluetooth.DisconnectAllDevices(ctx); err != nil {
+	if err := bluez.DisconnectAllDevices(ctx); err != nil {
 		s.Fatal("Failed to disconnect the devices: ", err)
 	}
 
@@ -179,7 +179,7 @@ func EnableDisableBluetoothWithAudioPlay(ctx context.Context, s *testing.State) 
 		if err := uiauto.Combine("disable Bluetooth and confirm",
 			ui.LeftClick(bluetoothTurnOffButton),
 			// Confirm Bluetooth adapter is disabled.
-			bluetooth.PollForBTDisabled,
+			bluez.PollForBTDisabled,
 		)(ctx); err != nil {
 			s.Fatal("Failed to disable Bluetooth via toggle button: ", err)
 		}
@@ -193,7 +193,7 @@ func EnableDisableBluetoothWithAudioPlay(ctx context.Context, s *testing.State) 
 		if err := uiauto.Combine("enable Bluetooth and confirm",
 			ui.LeftClick(bluetoothTurnOnButton),
 			// Confirm Bluetooth adapter is enabled.
-			bluetooth.PollForBTEnabled,
+			bluez.PollForBTEnabled,
 			// Wait for bluetooth device in scanned device list.
 			ui.WaitForLocation(btDeviceNode),
 			// Left click on bluetooth device.

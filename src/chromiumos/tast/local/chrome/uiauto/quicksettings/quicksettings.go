@@ -13,7 +13,7 @@ import (
 
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/uiauto"
@@ -655,7 +655,7 @@ func RestrictedSettingsPods(ctx context.Context) ([]SettingPod, error) {
 
 	// First check for the bluetooth pod on devices with at least 1 bluetooth adapter.
 	// If bluetooth adapters exists, add the bluetooth settingPod in the restrictedPods list.
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get Bluetooth adapters")
 	}
@@ -730,7 +730,7 @@ func SignOut(ctx context.Context, tconn *chrome.TestConn) error {
 }
 
 // TriggerAddingVPNDialog clicks VPN setting button in quick settings page
-// then clicking `+`` button to trigger ADD dialog.
+// then clicking "+" button to trigger ADD dialog.
 // Note: VPN setting button is not shown in quick settings if no VPN added in OS setting.
 func TriggerAddingVPNDialog(tconn *chrome.TestConn) uiauto.Action {
 	ui := uiauto.New(tconn)

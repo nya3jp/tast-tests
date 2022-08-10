@@ -80,7 +80,9 @@ func HermesTestCI(ctx context.Context, s *testing.State) {
 		profiles[i] = installAndEnableProfile(ctx, s, euicc, activationCode)
 	}
 
-	hermes.CheckNumInstalledProfiles(ctx, s, euicc, numProfiles)
+	if err := hermes.CheckNumInstalledProfiles(ctx, euicc, numProfiles); err != nil {
+		s.Fatal("Failed num installed profiles check: ", err)
+	}
 	if testMode != hermesconst.HermesOnly {
 		m, err := modemmanager.NewModem(ctx)
 		if err != nil {
@@ -120,13 +122,19 @@ func HermesTestCI(ctx context.Context, s *testing.State) {
 
 	switchSlotIfMMTest(ctx, s, testMode)
 	s.Log("Reset ", euicc)
-	hermes.CheckNumInstalledProfiles(ctx, s, euicc, numProfiles-1)
+	if err := hermes.CheckNumInstalledProfiles(ctx, euicc, numProfiles-1); err != nil {
+		s.Fatal("Failed num installed profiles check: ", err)
+	}
+
 	if err := euicc.Call(ctx, hermesconst.EuiccMethodResetMemory, 1).Err; err != nil {
 		s.Fatal("Failed to reset test euicc: ", err)
 	}
 
 	switchSlotIfMMTest(ctx, s, testMode)
-	hermes.CheckNumInstalledProfiles(ctx, s, euicc, 0)
+	if err := hermes.CheckNumInstalledProfiles(ctx, euicc, 0); err != nil {
+		s.Fatal("Failed num installed profiles check: ", err)
+	}
+
 	s.Log("Reset test euicc completed")
 }
 
