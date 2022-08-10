@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35cac8b3_802bca53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-10T16:28:20Z",
+      "side": 1,
+      "message": "lgtm with optional nit",
+      "revId": "87fef75631211b2b2da0889d1f68b8ced2412a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9920ebbd_ef9c5e6d",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-10T16:28:20Z",
+      "side": 1,
+      "message": "optional nit: I would leave the repeated word `metrics` because I think that `git blame` is more helpful when it does not point to CLs fixing such minor typos.",
+      "range": {
+        "startLine": 117,
+        "startChar": 45,
+        "endLine": 117,
+        "endChar": 52
+      },
+      "revId": "87fef75631211b2b2da0889d1f68b8ced2412a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
