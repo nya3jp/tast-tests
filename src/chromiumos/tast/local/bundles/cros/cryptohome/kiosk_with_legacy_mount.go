@@ -33,10 +33,10 @@ func init() {
 
 // KioskWithLegacyMount tests the following case:
 // User Created with Legacy mountEx call (this will involve KEY_TYPE_PASSWORD):
-//	Ensure that the user can login with mountEx call
-//	Ensure that the user can login with Credential APIs
-//	Ensure that the user can login with AuthFactor APIs
-//	Ensure that the user can login with AuthFactor APIs with USS Enabled
+// Ensure that the user can login with mountEx call
+// Ensure that the user can login with Credential APIs
+// Ensure that the user can login with AuthFactor APIs
+// Ensure that the user can login with AuthFactor APIs with USS Enabled
 func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 	const (
 		testFile        = "file"
@@ -69,7 +69,7 @@ func KioskWithLegacyMount(ctx context.Context, s *testing.State) {
 	if err := cryptohome.MountKiosk(ctx); err != nil {
 		s.Fatal("Failed to mount kiosk: ", err)
 	}
-	defer cryptohome.RemoveVault(ctxForCleanUp, cryptohome.KioskUser);
+	defer cryptohome.RemoveVault(ctxForCleanUp, cryptohome.KioskUser)
 	defer cryptohome.UnmountAll(ctxForCleanUp)
 
 	// Write a test file to verify persistence.

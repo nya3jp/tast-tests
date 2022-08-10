@@ -68,7 +68,7 @@ func (tf *TestFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 	}
 	callboxManager, ok := s.Var("callboxManager")
 	if !ok {
-		testing.ContextLogf(ctx, "No callboxManager specified, defaulting to lookup.")
+		testing.ContextLog(ctx, "No callboxManager specified, defaulting to lookup")
 		callboxManager = ""
 		tf.Vars.CallboxManager = callboxManager
 	}
@@ -105,70 +105,71 @@ func (tf *TestFixture) SetUp(ctx context.Context, s *testing.FixtState) interfac
 }
 
 // ConnectToCallbox function handles initial test setup and wraps parameters.
+// TODO(b/242218149): Refactor this to not use testing.State as a parameter.
 func (tf *TestFixture) ConnectToCallbox(ctx context.Context, s *testing.State, dutConn *ssh.Conn, configureRequestBody *ConfigureCallboxRequestBody, cellularInterface string) interface{} {
-        // Connect to the gRPC server on the DUT.
-        ctxForCleanupcl := ctx
-        cl, err := rpc.Dial(ctxForCleanupcl, s.DUT(), s.RPCHint())
-        if err != nil {
-                s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
-        }
-        defer cl.Close(ctxForCleanupcl)
+	// Connect to the gRPC server on the DUT.
+	ctxForCleanupcl := ctx
+	cl, err := rpc.Dial(ctxForCleanupcl, s.DUT(), s.RPCHint())
+	if err != nil {
+		s.Fatal("Failed to connect to the RPC service on the DUT: ", err)
+	}
+	defer cl.Close(ctxForCleanupcl)
 
-        ctxForCleanupcr := ctx
-        cr := example.NewChromeServiceClient(cl.Conn)
+	ctxForCleanupcr := ctx
+	cr := example.NewChromeServiceClient(cl.Conn)
 
-        if _, err := cr.New(ctxForCleanupcr, &empty.Empty{}); err != nil {
-                s.Fatal("Failed to start Chrome: ", err)
-        }
-        defer cr.Close(ctxForCleanupcr, &empty.Empty{})
+	if _, err := cr.New(ctxForCleanupcr, &empty.Empty{}); err != nil {
+		s.Fatal("Failed to start Chrome: ", err)
+	}
+	defer cr.Close(ctxForCleanupcr, &empty.Empty{})
 
-        const expr = "chrome.i18n.getUILanguage()"
-        req := &example.EvalOnTestAPIConnRequest{Expr: expr}
-        res, err := cr.EvalOnTestAPIConn(ctx, req)
-        if err != nil {
-                s.Fatalf("Failed to eval %s: %v, %s", expr, err, res.ValueJson)
-        }
+	const expr = "chrome.i18n.getUILanguage()"
+	req := &example.EvalOnTestAPIConnRequest{Expr: expr}
+	res, err := cr.EvalOnTestAPIConn(ctx, req)
+	if err != nil {
+		s.Fatalf("Failed to eval %s: %v, %s", expr, err, res.ValueJson)
+	}
 
-        // Disable and then re-enable cellular on DUT.
-        if err := dutConn.CommandContext(ctx, "dbus-send", "--system", "--fixed", "--print-reply", "--dest=org.chromium.flimflam", "/", "org.chromium.flimflam.Manager.DisableTechnology", "string:cellular").Run(exec.DumpLogOnError); err != nil {
-                s.Fatal("Failed to disable DUT cellular: ", err)
-        }
+	// Disable and then re-enable cellular on DUT.
+	if err := dutConn.CommandContext(ctx, "dbus-send", "--system", "--fixed", "--print-reply", "--dest=org.chromium.flimflam", "/", "org.chromium.flimflam.Manager.DisableTechnology", "string:cellular").Run(exec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to disable DUT cellular: ", err)
+	}
 
 	// Preform callbox simulation.
-        if err := tf.CallboxManagerClient.ConfigureCallbox(ctx, configureRequestBody); err != nil {
-                s.Fatal("Failed to configure callbox: ", err)
-        }
+	if err := tf.CallboxManagerClient.ConfigureCallbox(ctx, configureRequestBody); err != nil {
+		s.Fatal("Failed to configure callbox: ", err)
+	}
 
 	// Allow for cellular simulation to start before turning on mobile data.
-        var wg sync.WaitGroup
-        wg.Add(1)
-        go func() {
-                defer wg.Done()
-                if err := tf.CallboxManagerClient.BeginSimulation(ctx, nil); err != nil {
-                        s.Fatal("Failed to begin callbox simulation: ", err)
-                }
-        }()
-        // TODO(b/229419538): Add functionality to callbox libraries to pull state
-        testing.Sleep(ctx, time.Second * 10)
-        // Turn on mobile data to force a connection.
-        if err := dutConn.CommandContext(ctx, "dbus-send", "--system", "--fixed", "--print-reply", "--dest=org.chromium.flimflam", "/", "org.chromium.flimflam.Manager.EnableTechnology", "string:cellular").Run(exec.DumpLogOnError); err != nil {
-                s.Fatal("Failed to enable DUT cellular: ", err)
-        }
-        // Required due to bug using esim as primary, see b/229421807.
-        if err := testing.Poll(ctx, func(ctx context.Context) error {
-                return dutConn.CommandContext(ctx, "mmcli", "-m", "any", "--set-primary-sim-slot=2").Run(exec.DumpLogOnError)
-        }, &testing.PollOptions{Interval: time.Second * 5, Timeout: time.Second * 15}); err != nil {
-                s.Fatal("Failed to switch primary sim: ", err)
-        }
+	var wg sync.WaitGroup
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		if err := tf.CallboxManagerClient.BeginSimulation(ctx, nil); err != nil {
+			s.Fatal("Failed to begin callbox simulation: ", err)
+		}
+	}()
+	// TODO(b/229419538): Add functionality to callbox libraries to pull state
+	testing.Sleep(ctx, time.Second*10)
+	// Turn on mobile data to force a connection.
+	if err := dutConn.CommandContext(ctx, "dbus-send", "--system", "--fixed", "--print-reply", "--dest=org.chromium.flimflam", "/", "org.chromium.flimflam.Manager.EnableTechnology", "string:cellular").Run(exec.DumpLogOnError); err != nil {
+		s.Fatal("Failed to enable DUT cellular: ", err)
+	}
+	// Required due to bug using esim as primary, see b/229421807.
+	if err := testing.Poll(ctx, func(ctx context.Context) error {
+		return dutConn.CommandContext(ctx, "mmcli", "-m", "any", "--set-primary-sim-slot=2").Run(exec.DumpLogOnError)
+	}, &testing.PollOptions{Interval: time.Second * 5, Timeout: time.Second * 15}); err != nil {
+		s.Fatal("Failed to switch primary sim: ", err)
+	}
 
-        wg.Wait()
+	wg.Wait()
 
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-                _, err := dutConn.CommandContext(ctx, "curl", "--interface", cellularInterface, "google.com").Output()
-                return err
-        }, &testing.PollOptions{Interval: time.Second * 10, Timeout: time.Second * 200}); err != nil {
-                s.Fatalf("Failed curl %q on DUT using cellular interface: %v", "google.com", err)
-        }
+		_, err := dutConn.CommandContext(ctx, "curl", "--interface", cellularInterface, "google.com").Output()
+		return err
+	}, &testing.PollOptions{Interval: time.Second * 10, Timeout: time.Second * 200}); err != nil {
+		s.Fatalf("Failed curl %q on DUT using cellular interface: %v", "google.com", err)
+	}
 
 	return tf
 }

@@ -33,7 +33,7 @@ func init() {
 		HardwareDeps: hwdep.D(hwdep.Model("eve")),
 		// Disabled due to <1% pass rate over 30 days. See b/241943743
 		//Attr:         []string{"group:mainline", "informational"},
-		Vars:         screenshot.ScreenDiffVars,
+		Vars: screenshot.ScreenDiffVars,
 	})
 }
 
