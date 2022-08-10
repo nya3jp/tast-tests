@@ -80,6 +80,46 @@ func TestALSACommand(ctx context.Context, s *testing.State, name string) {
 	}
 }
 
+// TestALSASoundCards tests ALSA command recognizes the given sound cards.
+func TestALSASoundCards(ctx context.Context, s *testing.State, name string, soundCards []string) {
+	out, err := testexec.CommandContext(ctx, name, "-l").CombinedOutput(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatalf("%s failed: %v", name, err)
+	}
+	for _, soundCard := range soundCards {
+		if !strings.Contains(string(out), soundCard) {
+			s.Errorf("%s doesn't recognize %s", name, soundCard)
+		}
+	}
+}
+
+// GetSoundCards obtains the internal sound cards that should exist for the device.
+// Use audio_card data from boxster configs, however, unsure where this is.
+// Use /etc/cras/${MODEL}/${CARD} files as a workaround.
+func GetSoundCards(ctx context.Context, s *testing.State) []string {
+	model, err := testexec.CommandContext(ctx, "cros_config", "/audio/main", "cras-config-dir").CombinedOutput(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatal("cros_config failed: ", err)
+	}
+
+	files, err := os.ReadDir("/etc/cras/" + string(model))
+	if err != nil {
+		s.Fatal("os.ReadDir failed: ", err)
+	}
+
+	var soundCards []string
+	for _, file := range files {
+		// There are multiple .ini files under the directory.
+		// Ignore them, since they are unrelated to sound cards.
+		if !strings.HasSuffix(file.Name(), ".ini") {
+			cardName, _, _ := strings.Cut(file.Name(), ".")
+			soundCards = append(soundCards, cardName)
+		}
+	}
+
+	return soundCards
+}
+
 func findRunningDevice(ctx context.Context, pathPattern string) error {
 	paths, err := filepath.Glob(pathPattern)
 	if err != nil {
