@@ -16,6 +16,24 @@
       "message": "You will want to move the type action inside the Poll, so every time it will type something new and check if the expected title exists. Otherwise, the search result won\u0027t change.",
       "revId": "bfd1bd791380e730fbc0c6b72e4529dc0dbdbaa0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36e21762_b53a269f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/show_top_help_content_if_no_suggested_content.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1538417
+      },
+      "writtenOn": "2022-08-10T18:47:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10634ce1_2be864f2",
+      "revId": "bfd1bd791380e730fbc0c6b72e4529dc0dbdbaa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
