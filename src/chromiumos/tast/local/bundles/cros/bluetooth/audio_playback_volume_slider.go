@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/audio"
 	"chromiumos/tast/local/audio/crastestclient"
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto/faillog"
 	"chromiumos/tast/local/chrome/uiauto/filesapp"
@@ -48,7 +48,7 @@ func AudioPlaybackVolumeSlider(ctx context.Context, s *testing.State) {
 	}
 	defer faillog.DumpUITreeOnError(ctx, s.OutDir(), s.HasError, tconn)
 
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		s.Fatal("Failed to get bluetooth adapters: ", err)
 	}
@@ -74,9 +74,9 @@ func AudioPlaybackVolumeSlider(ctx context.Context, s *testing.State) {
 	}
 
 	// Waits for a specific BT device to be found.
-	var btDevice *bluetooth.Device
+	var btDevice *bluez.Device
 	if err := testing.Poll(ctx, func(ctx context.Context) error {
-		btDevice, err = bluetooth.DeviceByAlias(ctx, Headset)
+		btDevice, err = bluez.DeviceByAlias(ctx, Headset)
 		if err != nil {
 			return errors.Wrap(err, "failed to find bluetooth device by alias name")
 		}
@@ -93,7 +93,7 @@ func AudioPlaybackVolumeSlider(ctx context.Context, s *testing.State) {
 		}
 	}
 
-	if err := bluetooth.DisconnectAllDevices(ctx); err != nil {
+	if err := bluez.DisconnectAllDevices(ctx); err != nil {
 		s.Fatal("Failed to disconnect the devices: ", err)
 	}
 
