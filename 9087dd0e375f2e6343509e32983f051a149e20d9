@@ -211,6 +211,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff77b6c8_96e37f3c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1447768
+      },
+      "writtenOn": "2022-08-10T12:56:21Z",
+      "side": 1,
+      "message": "Yeah the problem is with `Type` function in the keyboard, I\u0027m not sure why this behavior is happening, I even tried to close the keyboard and create a new one in the loop during entering the field values, but it\u0027s still the same issue.\n\nI did few trials and I think to make the clicking stable we need to make sure that the element is visible first, so the following is stable for the clicking issue:\n```\nsuggestionPopup :\u003d nodewith.Role(role.ListBoxOption).ClassName(\"AutofillPopupSuggestionView\")\nif err :\u003d uiauto.Combine(\"clicking the Email field and choosing the suggested address\",\n\tui.WaitUntilExists(nodewith.Name(\"OK\").Role(role.Button).ClassName(\"test-target-button\")),\n\tui.MakeVisible(nodewith.Role(role.InlineTextBox).Name(\"Email\")),\n\tui.DoDefault(nodewith.Role(role.InlineTextBox).Name(\"Email\")),\n\tui.WithTimeout(45*time.Second).WaitUntilExists(suggestionPopup),\n\tui.DoDefault(suggestionPopup),\n\tui.WaitUntilExists(nodewith.Role(role.InlineTextBox).Name(addressValues[1].fieldValue)),\n)(ctx); err !\u003d nil {\n\ts.Fatal(\"Failed to trigger and use address autofill: \", err)\n}\n```\n\nHowever the race condition for typing the fields is still persistent, and I don\u0027t understand why it\u0027s happening? Is there any threading here?",
+      "parentUuid": "894ffba3_ae1f059a",
+      "range": {
+        "startLine": 209,
+        "startChar": 97,
+        "endLine": 209,
+        "endChar": 105
+      },
+      "revId": "9087dd0e375f2e6343509e32983f051a149e20d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14d4ddf1_1946b7da",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
         "patchSetId": 1
