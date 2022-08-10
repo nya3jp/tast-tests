@@ -14,8 +14,24 @@ import (
 // RootDebugInfo returns the chrome.automation root as a string.
 // If the JavaScript fails to execute, an error is returned.
 func RootDebugInfo(ctx context.Context, tconn *chrome.TestConn) (string, error) {
+	// Desktop root node returned by chrome.automation.getDesktop may not be
+	// yet loaded. It can be checked by whether it holds children.
+	// If not, wait for its loadComplete event, so that nodes are ready.
 	var out string
-	err := tconn.Eval(ctx, "tast.promisify(chrome.automation.getDesktop)().then(root => root+'')", &out)
+	err := tconn.Call(ctx, &out, `async () => {
+		let root = await tast.promisify(chrome.automation.getDesktop)();
+		if (!root.children) {
+		  await new Promise((resolve) => {
+		    const eventType = "loadComplete";
+		    let callback = () => {
+		      root.removeEventListener(eventType, callback);
+		      resolve();
+		    };
+		    root.addEventListener(eventType, callback);
+		  });
+		}
+		return '' + root;
+	}`)
 	return out, err
 }
 
