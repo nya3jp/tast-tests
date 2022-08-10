@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcb8c621_2a7c792c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-08-10T21:20:35Z",
+      "side": 1,
+      "message": "One small comment nit, please fix before landing.",
+      "revId": "6eef52f979ca5de7ad2b9022f9cbe2a7e87c3d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9048dc8f_9ed81181",
+        "filename": "src/chromiumos/tast/local/mountns/mountns.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000985
+      },
+      "writtenOn": "2022-08-10T21:20:35Z",
+      "side": 1,
+      "message": "\"in the user session mount namespace.\"",
+      "range": {
+        "startLine": 84,
+        "startChar": 55,
+        "endLine": 84,
+        "endChar": 88
+      },
+      "revId": "6eef52f979ca5de7ad2b9022f9cbe2a7e87c3d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
