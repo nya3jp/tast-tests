@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "569ca331_788bac48",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-08-10T19:30:06Z",
+      "side": 1,
+      "message": "What\u0027s this?",
+      "revId": "b4976fd457fc7009e2d99f36262a9d214b2e4796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a5d940_9dd2ea64",
+        "filename": "src/chromiumos/tast/local/input/touch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1000623
+      },
+      "writtenOn": "2022-08-10T19:30:06Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "b4976fd457fc7009e2d99f36262a9d214b2e4796",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
