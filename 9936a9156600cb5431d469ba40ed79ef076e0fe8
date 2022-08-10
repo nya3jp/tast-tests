@@ -16,6 +16,23 @@
       "message": "Verified by running this test\n\n```\ntast -verbose run \u0027-var\u003dautotest_host_info_labels\u003d[\"label-modem_imei:015769000070824\",\"label-modem_sim_count:2\",\"label-modem_type:MODEM_TYPE_QUALCOMM_SC7180\",\"label-sim_1_0_carrier_name:NETWORK_TMOBILE\",\"label-sim_1_0_iccid:8901260570772575690\",\"label-sim_1_0_pin:1234\",\"label-sim_1_0_puk:82008300\",\"label-sim_1_num_profiles:2\",\"label-sim_1_type:SIM_DIGITAL\",\"label-sim_slot_id:1\"]\u0027 localhost:2233 network.SimLockPolicyLockSettingOff\n```",
       "revId": "9936a9156600cb5431d469ba40ed79ef076e0fe8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0671bb5_4eb27f5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-08-10T17:27:41Z",
+      "side": 1,
+      "message": "Verified by running this test\n\n```\ntast -verbose run \u0027-var\u003dautotest_host_info_labels\u003d[\"label-modem_imei:015769000070824\",\"label-modem_sim_count:2\",\"label-modem_type:MODEM_TYPE_QUALCOMM_SC7180\",\"label-sim_1_0_carrier_name:NETWORK_TMOBILE\",\"label-sim_1_0_iccid:8901260570772575690\",\"label-sim_1_0_pin:1234\",\"label-sim_1_0_puk:82008300\",\"label-sim_1_num_profiles:2\",\"label-sim_1_type:SIM_DIGITAL\",\"label-sim_slot_id:1\"]\u0027 localhost:2233 network.SimLockPolicyLockSettingOn\n```",
+      "revId": "9936a9156600cb5431d469ba40ed79ef076e0fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
