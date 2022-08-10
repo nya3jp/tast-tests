@@ -39,6 +39,30 @@
       },
       "revId": "87fef75631211b2b2da0889d1f68b8ced2412a8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cb055d1_98379bce",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000101
+      },
+      "writtenOn": "2022-08-10T16:34:32Z",
+      "side": 1,
+      "message": "Done. Restored all 3 lines that fixes the repeated `metrics`.",
+      "parentUuid": "9920ebbd_ef9c5e6d",
+      "range": {
+        "startLine": 117,
+        "startChar": 45,
+        "endLine": 117,
+        "endChar": 52
+      },
+      "revId": "87fef75631211b2b2da0889d1f68b8ced2412a8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
