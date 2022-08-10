@@ -415,6 +415,98 @@ func unpackValue(val value, out interface{}) error {
 			}
 			*o = append(*o, value)
 		}
+	case *[]interface{}:
+		values := val.Array.Values
+		*o = make([]interface{}, 0)
+		for _, eVal := range values {
+			if eVal.Array != nil {
+				var unpackedValue []interface{}
+				if err := unpackValue(eVal, &unpackedValue); err != nil {
+					return err
+				}
+				*o = append(*o, unpackedValue)
+			} else if eVal.Struct != nil {
+				var unpackedValue map[string]interface{}
+				if err := unpackValue(eVal, &unpackedValue); err != nil {
+					return err
+				}
+				*o = append(*o, unpackedValue)
+			} else if eVal.Str != nil {
+				var unpackedValue string
+				if err := unpackValue(eVal, &unpackedValue); err != nil {
+					return err
+				}
+				*o = append(*o, unpackedValue)
+			} else if eVal.Int != nil {
+				var unpackedValue int
+				if err := unpackValue(eVal, &unpackedValue); err != nil {
+					return err
+				}
+				*o = append(*o, unpackedValue)
+			} else if eVal.Double != nil {
+				var unpackedValue float64
+				if err := unpackValue(eVal, &unpackedValue); err != nil {
+					return err
+				}
+				*o = append(*o, unpackedValue)
+			} else if eVal.Boolean != nil {
+				var unpackedValue bool
+				if err := unpackValue(eVal, &unpackedValue); err != nil {
+					return err
+				}
+				*o = append(*o, unpackedValue)
+			} else {
+				return errors.Errorf("unable to deduce type of struct value %q", eVal.String())
+			}
+		}
+	case *map[string]interface{}:
+		if val.Struct == nil {
+			return errors.Errorf("value %s is not a map", val)
+		}
+		for _, e := range val.Struct.Members {
+			eVal := e.Value
+			if eVal.Array != nil {
+				var unpackedValue []interface{}
+				if err := unpackValue(eVal, &unpackedValue); err != nil {
+					return err
+				}
+				(*o)[e.Name] = unpackedValue
+			} else if eVal.Struct != nil {
+				var unpackedValue map[string]interface{}
+				if err := unpackValue(eVal, &unpackedValue); err != nil {
+					return err
+				}
+				(*o)[e.Name] = unpackedValue
+			} else if eVal.Str != nil {
+				var unpackedValue string
+				if err := unpackValue(eVal, &unpackedValue); err != nil {
+					return err
+				}
+				(*o)[e.Name] = unpackedValue
+			} else if eVal.Int != nil {
+				var unpackedValue int
+				if err := unpackValue(eVal, &unpackedValue); err != nil {
+					return err
+				}
+				(*o)[e.Name] = unpackedValue
+			} else if eVal.Double != nil {
+				var unpackedValue float64
+				if err := unpackValue(eVal, &unpackedValue); err != nil {
+					return err
+				}
+				(*o)[e.Name] = unpackedValue
+			} else if eVal.Boolean != nil {
+				var unpackedValue bool
+				if err := unpackValue(eVal, &unpackedValue); err != nil {
+					return err
+				}
+				(*o)[e.Name] = unpackedValue
+			} else {
+				return errors.Errorf("unable to deduce type of struct value %q", eVal.String())
+			}
+		}
+	case *interface{}:
+
 	default:
 		return errors.Errorf("%q is not a supported type for unpackValue", reflect.TypeOf(out))
 	}
