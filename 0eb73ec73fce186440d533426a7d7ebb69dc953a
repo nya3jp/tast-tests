@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa150185_ccbe515f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1536317
+      },
+      "writtenOn": "2022-08-10T17:41:51Z",
+      "side": 1,
+      "message": "LGTM with a question: Is it valuable to keep a tast test that ensures the Settings window can close via clicking the close button when not in tablet mode? ",
+      "revId": "0eb73ec73fce186440d533426a7d7ebb69dc953a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
