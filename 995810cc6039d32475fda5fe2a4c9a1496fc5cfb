@@ -231,6 +231,30 @@
       },
       "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2807b236_a010fb77",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock3_usb_charging.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1551077
+      },
+      "writtenOn": "2022-08-10T04:33:58Z",
+      "side": 1,
+      "message": "Just to confirm: is this the servo you are referring to? \n\nhttps://chromium.googlesource.com/chromiumos/third_party/hdctools/+/HEAD/docs/servo_v4.md \n\nIf this is, we do have 2 sets for WWCB testing now. We can try to leverage one for a trial but it\u0027d be great if we can have more from Google. Maybe @Suhas can help on that arrangement.",
+      "parentUuid": "9bb813da_2a057cc3",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
