@@ -7,7 +7,7 @@ package bluetooth
 import (
 	"context"
 
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
@@ -25,6 +25,7 @@ func init() {
 		Attr:         []string{"group:mainline", "informational"},
 		SoftwareDeps: []string{"chrome"},
 		Fixture:      "chromeLoggedInWithBluetoothEnabled",
+		LacrosStatus: testing.LacrosVariantUnknown,
 	})
 }
 
@@ -45,7 +46,7 @@ func ToggleBluetoothFromOSSettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to launch OS Settings: ", err)
 	}
 
-	if err := bluetooth.Enable(ctx); err != nil {
+	if err := bluez.Enable(ctx); err != nil {
 		s.Fatal("Failed to enable Bluetooth: ", err)
 	}
 
@@ -63,7 +64,7 @@ func ToggleBluetoothFromOSSettings(ctx context.Context, s *testing.State) {
 		if err := ui.LeftClick(ossettings.OsSettingsBluetoothToggleButton)(ctx); err != nil {
 			s.Fatal("Failed to click the Bluetooth toggle: ", err)
 		}
-		if err := bluetooth.PollForAdapterState(ctx, state); err != nil {
+		if err := bluez.PollForAdapterState(ctx, state); err != nil {
 			s.Fatal("Failed to toggle Bluetooth state: ", err)
 		}
 		state = !state

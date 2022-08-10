@@ -7,7 +7,7 @@ package bluetooth
 import (
 	"context"
 
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -52,7 +52,7 @@ func UIToggleFromQuicksettings(ctx context.Context, s *testing.State) {
 	bluetoothTurnOnButton := nodewith.NameContaining("Toggle Bluetooth. Bluetooth is off").Role(role.ToggleButton)
 
 	// Power on Bluetooth adapter
-	if err = bluetooth.Enable(ctx); err != nil {
+	if err = bluez.Enable(ctx); err != nil {
 		s.Fatal("Failed to power on Bluetooth adapter: ", err)
 	}
 
@@ -76,7 +76,7 @@ func UIToggleFromQuicksettings(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to left click the settings button: ", err)
 		}
 		// Confirm Bluetooth adapter is disabled.
-		status, err := bluetooth.IsEnabled(ctx)
+		status, err := bluez.IsEnabled(ctx)
 		if err != nil {
 			s.Fatal("Failed to check Bluetooth status: ", err)
 		}
@@ -92,7 +92,7 @@ func UIToggleFromQuicksettings(ctx context.Context, s *testing.State) {
 			s.Fatal("Failed to left click the settings button: ", err)
 		}
 		// Confirm Bluetooth adapter is disabled.
-		status, err = bluetooth.IsEnabled(ctx)
+		status, err = bluez.IsEnabled(ctx)
 		if err != nil {
 			s.Fatal("Failed to check Bluetooth status: ", err)
 		}

@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-package bluetooth
+package bluez
 
 import (
 	"context"
@@ -22,12 +22,10 @@ type Capabilities struct {
 	MinTxPower   int16
 }
 
-const advertisingsIface = service + ".LEAdvertisingManager1"
-
 // SupportedCapabilities returns the supportedCapabilities of the adapter.
 func (a *Adapter) SupportedCapabilities(ctx context.Context) (Capabilities, error) {
-	const prop = advertisingsIface + ".SupportedCapabilities"
-	value, err := dbusutil.Property(ctx, a.obj, prop)
+	prop := dbusutil.BuildIfacePath(bluezLEAdvertisingManagerIface, "SupportedCapabilities")
+	value, err := dbusutil.Property(ctx, a.dbus.Obj(), prop)
 	if err != nil {
 		return Capabilities{}, err
 	}
