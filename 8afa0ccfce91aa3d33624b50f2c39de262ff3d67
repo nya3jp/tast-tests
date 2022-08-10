@@ -86,6 +86,24 @@
       "parentUuid": "08de3c3e_c3ff6cbc",
       "revId": "8afa0ccfce91aa3d33624b50f2c39de262ff3d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de48d766_8fdf6990",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-10T03:01:07Z",
+      "side": 1,
+      "message": "https://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dbuild_version\u0026col\u003dtest\u0026first_date\u003d2022-07-28\u0026last_date\u003d2022-08-10\u0026test\u003dtast.typec.TbtHotplugUnplug.stress\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dfalse\u0026exclude_acts\u003dfalse\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse",
+      "parentUuid": "b68d0550_72e82033",
+      "revId": "8afa0ccfce91aa3d33624b50f2c39de262ff3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
