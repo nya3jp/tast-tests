@@ -122,6 +122,24 @@
       "parentUuid": "de48d766_8fdf6990",
       "revId": "8afa0ccfce91aa3d33624b50f2c39de262ff3d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d14740e8_7f7aff94",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-10T17:34:52Z",
+      "side": 1,
+      "message": "Yes, 41-42 should be the only change. Thanks.",
+      "parentUuid": "16e4dd22_f8d2c86d",
+      "revId": "8afa0ccfce91aa3d33624b50f2c39de262ff3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
