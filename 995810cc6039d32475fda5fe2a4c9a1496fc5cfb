@@ -159,6 +159,30 @@
       },
       "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a39318_0980be25",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock3_usb_charging.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1551077
+      },
+      "writtenOn": "2022-08-10T02:27:36Z",
+      "side": 1,
+      "message": "Hi Frank,\n\nIf servo board is an required hardware for what you meant here about \"turn off charging from servo rather than disconnect\", since servo board is not available at Allion and that\u0027s why we are using IP power on power on/off control, would it be possible to provide us the servo boards for development?",
+      "parentUuid": "888babcd_566a25a4",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
