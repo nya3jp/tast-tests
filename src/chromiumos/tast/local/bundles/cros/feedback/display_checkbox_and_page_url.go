@@ -22,9 +22,9 @@ import (
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:         DisplayPageURL,
+		Func:         DisplayCheckboxAndPageURL,
 		LacrosStatus: testing.LacrosVariantUnneeded,
-		Desc:         "Verify url matches the current website where Feedback app is opened",
+		Desc:         "Verify url matches the current website where Feedback app is opened and checkbox is checked by default",
 		Contacts: []string{
 			"zhangwenyu@google.com",
 			"xiangdongkong@google.com",
@@ -35,9 +35,9 @@ func init() {
 	})
 }
 
-// DisplayPageURL verifies the url matches the current website from where
-// user opens the Feedback app.
-func DisplayPageURL(ctx context.Context, s *testing.State) {
+// DisplayCheckboxAndPageURL verifies the url matches the current website from where
+// user opens the Feedback app and the checkbox should be checked by default.
+func DisplayCheckboxAndPageURL(ctx context.Context, s *testing.State) {
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
@@ -77,5 +77,13 @@ func DisplayPageURL(ctx context.Context, s *testing.State) {
 	urlText := nodewith.NameContaining("chrome://newtab/").Role(role.StaticText).Ancestor(feedbackRootNode)
 	if err := ui.WaitUntilExists(urlText)(ctx); err != nil {
 		s.Fatal("Failed to find element: ", err)
+	}
+
+	// Verify share url checkbox is checked by default
+	checkboxAncestor := nodewith.NameContaining("Share URL").Role(
+		role.GenericContainer).Ancestor(feedbackRootNode)
+	checkbox := nodewith.Role(role.CheckBox).Ancestor(checkboxAncestor)
+	if err := ui.WaitUntilExists(checkbox.Attribute("checked", "true"))(ctx); err != nil {
+		s.Fatal("Failed to find checked share url checkbox: ", err)
 	}
 }
