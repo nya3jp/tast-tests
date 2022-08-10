@@ -32,6 +32,9 @@ service BTTestService {
   // device. Fails if the device is not found or if the discovered matching
   // device's attributes do not match those provided.
   rpc DiscoverDevice(DiscoverDeviceRequest) returns (google.protobuf.Empty) {}
+
+  // PairAndConnectDevice pairs and connects to the specified Device.
+  rpc PairAndConnectDevice(PairAndConnectDeviceRequest) returns (google.protobuf.Empty) {}
 }
 
 message ChromeNewRequest {
@@ -43,9 +46,24 @@ message ChromeNewRequest {
 message Device {
   string macAddress = 1;
   string advertisedName = 2;
+  bool hasPinCode = 3;
+  string pinCode = 4;
 }
 
 message DiscoverDeviceRequest {
   // The device to discover.
   Device device = 1;
+}
+
+message PairAndConnectDeviceRequest {
+  // The device to pair and connect to.
+  Device device = 1;
+
+  // When true and the device is found to already be paired, the device is
+  // first removed and a new pairing is preformed.
+  bool forceNewPair = 2;
+
+  // When true and the device is found to already be connected, the device is
+  // first disconnected and then a new connection is established.
+  bool forceNewConnect = 3;
 }

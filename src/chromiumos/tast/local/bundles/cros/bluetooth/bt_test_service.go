@@ -30,9 +30,10 @@ func init() {
 
 // BTTestService implements tast.cros.bluetooth.BTTestService.
 type BTTestService struct {
-	s            *testing.ServiceState
-	cr           *chrome.Chrome
-	bluezAdapter *bluez.Adapter
+	s                *testing.ServiceState
+	cr               *chrome.Chrome
+	bluezAdapter     *bluez.Adapter
+	connectedDevices map[string]*bluez.Device
 }
 
 // ChromeNew logs into chrome. ChromeClose must be called later.
@@ -203,4 +204,127 @@ func (bts *BTTestService) discoverDevices(ctx context.Context) ([]*pb.Device, er
 		}
 	}
 	return devices, nil
+}
+
+// PairAndConnectDevice pairs and connects to the specified Device.
+func (bts *BTTestService) PairAndConnectDevice(ctx context.Context, request *pb.PairAndConnectDeviceRequest) (*emptypb.Empty, error) {
+	if request.Device == nil || request.Device.AdvertisedName == "" ||
+		request.Device.MacAddress == "" {
+		return nil, errors.New("incomplete PairAndConnectDevice request")
+	}
+
+	// Attempt to discover device.
+	btDevice, err := bts.discoverDeviceByAddress(ctx, request.Device.MacAddress, request.Device.AdvertisedName)
+	if err != nil {
+		return nil, err
+	}
+
+	// Pair BT Device.
+	isPaired, err := btDevice.Paired(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check if device is paired")
+	}
+	if isPaired {
+		if request.ForceNewPair {
+			testing.ContextLogf(ctx, "Removing and rediscovering already paired device at dbus path %q", btDevice.Path())
+			if err := bts.bluezAdapter.RemoveDevice(ctx, btDevice.Path()); err != nil {
+				return nil, errors.Wrapf(err, "failed to remove paired device at dbus path %q", btDevice.Path())
+			}
+			btDevice, err = bts.discoverDeviceByAddress(ctx, request.Device.MacAddress, request.Device.AdvertisedName)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed rediscover device after removal")
+			}
+			isPaired = false
+		} else {
+			testing.ContextLogf(ctx, "Skipping pairing step as device at dbus path %q is already paired", btDevice.Path())
+		}
+	}
+	if !isPaired {
+		if request.Device.HasPinCode {
+			// Prepare to handle pin authorization.
+			testing.ContextLogf(ctx, "Preparing to authorize paring with pin code %q", request.Device.PinCode)
+			testing.ContextLog(ctx, "Retrieving authentication AgentManager")
+			agentManagers, err := bluez.AgentManagers(ctx)
+			if err != nil || len(agentManagers) == 0 {
+				return nil, errors.Wrap(err, "failed to get AgentManager")
+			}
+			agentManager := agentManagers[0]
+			testing.ContextLogf(ctx, "Using authentication AgentManager at dbus path %q", agentManager.DBusObject().ObjectPath())
+			agents, err := bluez.Agents(ctx)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to get existing Agents")
+			}
+			testing.ContextLogf(ctx, "Found %d Agents", len(agents))
+
+			testing.ContextLog(ctx, "Creating new authentication Agent")
+			agent, err := bluez.NewAgent(ctx, "")
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to create new authentication Agent")
+			}
+			testing.ContextLogf(ctx, "Using authentication Agent at dbus path %q", agent.DBusObject().ObjectPath())
+			if err := agent.ExportAgentDelegate(bluez.NewSimplePinAgentDelegate(ctx, request.Device.PinCode)); err != nil {
+				return nil, errors.Wrap(err, "failed to export AgentDelegate")
+			}
+			if err := agentManager.RegisterAgent(ctx, agent.DBusObject().ObjectPath(), "KeyboardDisplay"); err != nil {
+				return nil, errors.Wrapf(err, "failed to register Agent %q with AgentManager %q", agent.DBusObject().ObjectPath(), agentManager.DBusObject().ObjectPath())
+			}
+			if err := agentManager.RequestDefaultAgent(ctx, agent.DBusObject().ObjectPath()); err != nil {
+				return nil, errors.Wrapf(err, "failed to register Agent %q with AgentManager %q as default", agent.DBusObject().ObjectPath(), agentManager.DBusObject().ObjectPath())
+			}
+
+			agents, err = bluez.Agents(ctx)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to get existing Agents")
+			}
+			testing.ContextLogf(ctx, "Found %d Agents", len(agents))
+
+			// Attempt paring.
+			testing.ContextLogf(ctx, "Pairing device at dbus path %q", btDevice.Path())
+			if err := btDevice.Pair(ctx); err != nil {
+				return nil, errors.Wrap(err, "failed to pair bluetooth device")
+			}
+
+			// Cleanup pin authentication handling.
+			if err := agent.ClearExportedAgentDelegate(); err != nil {
+				return nil, errors.Wrapf(err, "failed to clear exported AgentDelegate for Agent at %q", agent.DBusObject().ObjectPath())
+			}
+			if err := agentManager.UnregisterAgent(ctx, agent.DBusObject().ObjectPath()); err != nil {
+				return nil, errors.Wrapf(err, "failed to unregister Agent %q with AgentManager %q", agent.DBusObject().ObjectPath(), agentManager.DBusObject().ObjectPath())
+			}
+		} else {
+			testing.ContextLogf(ctx, "Pairing device at dbus path %q", btDevice.Path())
+			if err := btDevice.Pair(ctx); err != nil {
+				return nil, errors.Wrap(err, "failed to pair bluetooth device")
+			}
+		}
+	}
+
+	// Get connected status of BT device and connect if not already connected.
+	testing.ContextLogf(ctx, "Connecting to device at dbus path %q", btDevice.Path())
+	isConnected, err := btDevice.Connected(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get device connected status")
+	}
+	if isConnected {
+		if request.ForceNewConnect {
+			testing.ContextLogf(ctx, "Disconnecting already connected device at dbus path %q", btDevice.Path())
+			if err := btDevice.Disconnect(ctx); err != nil {
+				return nil, errors.Wrap(err, "failed to disconnect bluetooth device")
+			}
+			isConnected = false
+		} else {
+			testing.ContextLogf(ctx, "Skipping connect step as device at dbus path %q is already connected", btDevice.Path())
+		}
+	}
+	if !isConnected {
+		testing.ContextLogf(ctx, "Connecting to device at dbus path %q", btDevice.Path())
+		if err := btDevice.Connect(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to connect bluetooth device")
+		}
+	}
+
+	// Store device for later requests.
+	bts.connectedDevices[request.Device.MacAddress] = btDevice
+
+	return &emptypb.Empty{}, nil
 }
