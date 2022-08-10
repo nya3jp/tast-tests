@@ -227,6 +227,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "295aa1ee_54660ae9",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-10T00:33:47Z",
+      "side": 1,
+      "message": "emailDropdown :\u003d nodewith.Name(\"Select email\").Role(role.ListBox)\ndontIncludeEmailOption :\u003d nodewith.Name(\"Don\u0027t include email address\").Role(role.ListBoxOption)\n\n// Choose not to include email if needed.\nif !s.Param().(bool) {\n\tif err :\u003d uiauto.Combine(\"choose not to include Email\",\n\t\tui.LeftClickUntil(emailDropdown, ui.WithTimeout(2*time.Second).WaitUntilExists(dontIncludeEmailOption)),\n\t\tui.LeftClick(dontIncludeEmailOption),\n\t); err !\u003d nil {\n\t\ts.Fatal(\"Failed to choose not include Email: \", err)\n\t}\n}\n\n// 1. Using leftClickUntil here in case sometimes the page is not loading completely and not ready to receive click event.\n// 2. Usually I use s.Log(uiauto.RootDebugInfo(ctx, tconn)) to print out a11y tree to debug locator when developing Tast.",
+      "parentUuid": "55eb3a48_5b007845",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "06b22d8b923e5eb4d4c515dabd7ea7e282caea48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d81bcc95_1abdf16f",
         "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
         "patchSetId": 6

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba7eb2f_6830f807",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-10T00:33:47Z",
+      "side": 1,
+      "message": "nit: You can define a variable in the beginning of the test like:\n\nexpectedEmailInFeedback :\u003d s.Param().(bool)\n\nIt would be better for readability.",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "02b3e8218109ff54549c32abb3c5d58a5633a56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
