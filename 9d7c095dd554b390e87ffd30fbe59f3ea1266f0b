@@ -33,6 +33,24 @@
       "message": "LGTM. Since unit test was not run, no chump on this CL. Please make sure it went through the CQ procress.\n",
       "revId": "9d7c095dd554b390e87ffd30fbe59f3ea1266f0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4b907ad_bd4cb7de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429709
+      },
+      "writtenOn": "2022-08-10T17:08:38Z",
+      "side": 1,
+      "message": "I didn\u0027t want to move the listed bug out of its component so I filed b/242062075 in Personalization and marked it as blocking the original bug",
+      "parentUuid": "8b7a0d46_fa6e8bb4",
+      "revId": "9d7c095dd554b390e87ffd30fbe59f3ea1266f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
