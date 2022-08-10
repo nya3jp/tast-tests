@@ -24,17 +24,20 @@ type TouchCoord int32
 
 // TouchscreenEventWriter supports injecting touch events into a touchscreen device.
 // It supports multitouch as defined in "Protocol Example B" here:
-//  https://www.kernel.org/doc/Documentation/input/multi-touch-protocol.txt
-//  https://www.kernel.org/doc/Documentation/input/event-codes.txt
+//
+//	https://www.kernel.org/doc/Documentation/input/multi-touch-protocol.txt
+//	https://www.kernel.org/doc/Documentation/input/event-codes.txt
+//
 // This is partial implementation of the multi-touch specification. Each injected
 // touch event contains the following codes:
-//  - ABS_MT_TRACKING_ID
-//  - ABS_MT_POSITION_X & ABS_X
-//  - ABS_MT_POSITION_Y & ABS_Y
-//  - ABS_MT_PRESSURE & ABS_PRESSURE
-//  - ABS_MT_TOUCH_MAJOR
-//  - ABS_MT_TOUCH_MINOR
-//  - BTN_TOUCH
+//   - ABS_MT_TRACKING_ID
+//   - ABS_MT_POSITION_X & ABS_X
+//   - ABS_MT_POSITION_Y & ABS_Y
+//   - ABS_MT_PRESSURE & ABS_PRESSURE
+//   - ABS_MT_TOUCH_MAJOR
+//   - ABS_MT_TOUCH_MINOR
+//   - BTN_TOUCH
+//
 // Any other code, like MSC_TIMESTAMP, is not implemented.
 type TouchscreenEventWriter struct {
 	rw            *RawEventWriter
@@ -485,11 +488,11 @@ func (tw *TouchEventWriter) Close() {
 	}
 }
 
-// Swipe performs a swipe movement with an user defined number of touches. The touches are separated in the x
-// coordinates by d. So for a 3 touch swipe, the initial touches will be (x0, y0), (x0+d, y0) and (x0+2d, y0).
+// Swipe performs a swipe movement with a user defined number of touches. The touches are separated by (dx, dy). For
+// example, in a 3-touch swipe, the touches begin at (x0, y0), (x0+dx, y0+dy), (x0+2dx, y0+2dy).
 // t represents how long the swipe should last. If t is less than 5 milliseconds, 5 milliseconds will be used instead.
 // Swipe() does not call End(), allowing the user to concatenate multiple swipes together.
-func (tw *TouchEventWriter) Swipe(ctx context.Context, x0, y0, x1, y1, d TouchCoord, touches int, t time.Duration) error {
+func (tw *TouchEventWriter) Swipe(ctx context.Context, x0, y0, x1, y1, dx, dy TouchCoord, touches int, t time.Duration) error {
 	if len(tw.touches) < touches {
 		return errors.Errorf("requested %d touches for swipe; got %d", touches, len(tw.touches))
 	}
@@ -506,7 +509,8 @@ func (tw *TouchEventWriter) Swipe(ctx context.Context, x0, y0, x1, y1, d TouchCo
 		y := y0 + TouchCoord(math.Round(deltaY*float64(i)))
 
 		for j := 0; j < touches; j++ {
-			if err := tw.touches[j].SetPos(x+TouchCoord(j)*d, y); err != nil {
+			jTC := TouchCoord(j)
+			if err := tw.touches[j].SetPos(x+jTC*dx, y+jTC*dy); err != nil {
 				return err
 			}
 		}
@@ -673,7 +677,7 @@ func (tw *TouchEventWriter) ZoomRelativeToSize(ctx context.Context, t time.Durat
 // If t is less than 5 milliseconds, 5 milliseconds will be used instead.
 // DoubleSwipe() does not call End(), allowing the user to concatenate multiple swipes together.
 func (tw *TouchEventWriter) DoubleSwipe(ctx context.Context, x0, y0, x1, y1, d TouchCoord, t time.Duration) error {
-	return tw.Swipe(ctx, x0, y0, x1, y1, d, 2, t)
+	return tw.Swipe(ctx, x0, y0, x1, y1, d, 0, 2, t)
 }
 
 // SetSize sets the major/minor appropriately for all touches.
@@ -717,9 +721,10 @@ func (tw *TouchEventWriter) SetPressure(pressure int32) error {
 
 // Move injects a touch event at x and y touchscreen coordinates. This is applied
 // only to the first TouchState. Calling this function is equivalent to:
-//  ts := touchEventWriter.TouchState(0)
-//  ts.SetPos(x, y)
-//  ts.Send()
+//
+//	ts := touchEventWriter.TouchState(0)
+//	ts.SetPos(x, y)
+//	ts.Send()
 func (stw *SingleTouchEventWriter) Move(x, y TouchCoord) error {
 	if err := stw.touches[0].SetPos(x, y); err != nil {
 		return err

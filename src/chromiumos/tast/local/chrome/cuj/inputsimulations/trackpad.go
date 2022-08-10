@@ -14,7 +14,8 @@ import (
 // ScrollDownFor two-finger swipes on the trackpad to scroll down repeatedly until the
 // scrollDuration has passed, with a scrollDelay between each swipe.
 func ScrollDownFor(ctx context.Context, tpw *input.TrackpadEventWriter, tw *input.TouchEventWriter, scrollDelay, scrollDuration time.Duration) error {
-	fingerSpacing := tpw.Width() / 4
+	fingerHorizontalSpacing := tpw.Width() / 4
+	fingerVerticalSpacing := input.TouchCoord(0)
 	fingerNum := 2
 
 	var startX, startY, endX, endY input.TouchCoord
@@ -22,8 +23,8 @@ func ScrollDownFor(ctx context.Context, tpw *input.TrackpadEventWriter, tw *inpu
 
 	for endTime := time.Now().Add(scrollDuration); time.Now().Before(endTime); {
 		// Double swipe from the middle button to the middle top of the touchpad.
-		if err := tw.Swipe(ctx, startX, startY, endX, endY, fingerSpacing,
-			fingerNum, scrollDelay); err != nil {
+		if err := tw.Swipe(ctx, startX, startY, endX, endY, fingerHorizontalSpacing,
+			fingerVerticalSpacing, fingerNum, scrollDelay); err != nil {
 			return err
 		}
 	}
