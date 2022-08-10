@@ -1,0 +1,22 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d59c7ffe_c5889123",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-10T16:43:34Z",
+      "side": 1,
+      "message": "Yes, servo is now in version 4.1 v4.0 is still fine for most automation.",
+      "tag": "mailMessageId\u003d\u003cCAEQHstWdJxs2\u003dG27Yi8EY0w0ZNp\u003dizN-Gr1rOGmkToDqMrNO5w@mail.gmail.com\u003e",
+      "revId": "248376763fb0b2e00fba07e0574938db068996bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
