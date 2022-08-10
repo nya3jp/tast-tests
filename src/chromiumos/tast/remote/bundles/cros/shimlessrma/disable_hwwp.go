@@ -7,6 +7,7 @@ package shimlessrma
 
 import (
 	"context"
+	"strconv"
 	"time"
 
 	"chromiumos/tast/common/action"
@@ -36,11 +37,12 @@ func init() {
 		VarDeps: []string{
 			"ui.signinProfileTestExtensionManifestKey",
 		},
+		Vars:         []string{"firmware.skipFlashUSB"},
 		SoftwareDeps: []string{"chrome"},
 		HardwareDeps: hwdep.D(hwdep.ChromeEC()),
 		ServiceDeps:  []string{"tast.cros.browser.ChromeService", "tast.cros.shimlessrma.AppService"},
 		Fixture:      fixture.NormalMode,
-		Timeout:      10 * time.Minute,
+		Timeout:      30 * time.Minute,
 		Params: []testing.Param{{
 			ExtraAttr: []string{"shimless_rma_normal"},
 			Name:      "unenroll_sameuser_manual",
@@ -92,6 +94,24 @@ func DisableHWWP(ctx context.Context, s *testing.State) {
 
 	if err := firmwareHelper.RequireServo(ctx); err != nil {
 		s.Fatal("Fail to init servo: ", err)
+	}
+
+	s.Log("Setup USB Key")
+	skipFlashUSB := false
+	if skipFlashUSBStr, ok := s.Var("firmware.skipFlashUSB"); ok {
+		var err error
+		skipFlashUSB, err = strconv.ParseBool(skipFlashUSBStr)
+		if err != nil {
+			s.Fatalf("Invalid value for var firmware.skipFlashUSB: got %q, want true/false", skipFlashUSBStr)
+		}
+	}
+	s.Logf("skipFlashUSB is %t", skipFlashUSB)
+	cs := s.CloudStorage()
+	if skipFlashUSB {
+		cs = nil
+	}
+	if err := firmwareHelper.SetupUSBKey(ctx, cs); err != nil {
+		s.Fatal("USBKey not working: ", err)
 	}
 
 	uiHelper, err := rmaweb.NewUIHelper(ctx, dut, firmwareHelper, s.RPCHint(), key, false)
