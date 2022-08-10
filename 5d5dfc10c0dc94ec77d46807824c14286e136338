@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5168cd21_5ab1662f",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/show_top_help_content_if_no_suggested_content.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-10T22:24:36Z",
+      "side": 1,
+      "message": "The error statement inside Poll should be `return`, instead of `Fatal`. So that it won\u0027t exit the test.",
+      "revId": "5d5dfc10c0dc94ec77d46807824c14286e136338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c118ccb_d7d722b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/show_top_help_content_if_no_suggested_content.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-10T22:24:36Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "5d5dfc10c0dc94ec77d46807824c14286e136338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
