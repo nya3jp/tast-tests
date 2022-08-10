@@ -186,7 +186,7 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 					addressField := nodewith.Role(role.TextField).Name(address.fieldName)
 					if err := uiauto.Combine("fill in address text field",
 						ui.MakeVisible(addressField),
-						ui.DoDefault(addressField),
+						ui.FocusAndWait(addressField),
 					)(ctx); err != nil {
 						s.Fatal("Failed to click the text field: ", err)
 					}
@@ -206,10 +206,13 @@ func AutofillAddressEnabled(ctx context.Context, s *testing.State) {
 				defer conn.Close()
 
 				// Trigger the autofill by clicking the email field and choosing the suggested address (this could be any of the address fields).
-				suggestionPopup := nodewith.Role(role.ListBoxOption).ClassName("AutofillPopupSuggestionView").First()
+				suggestionPopup := nodewith.Role(role.ListBoxOption).ClassName("AutofillPopupSuggestionView")
+				emailTextBox := nodewith.Role(role.InlineTextBox).Name("Email")
 				if err := uiauto.Combine("clicking the Email field and choosing the suggested address",
 					ui.WaitUntilExists(nodewith.Name("OK").Role(role.Button).ClassName("test-target-button")),
-					ui.DoDefaultUntil(nodewith.Role(role.InlineTextBox).Name("Email"), ui.Exists(suggestionPopup)),
+					ui.MakeVisible(emailTextBox),
+					ui.DoDefault(emailTextBox),
+					ui.WithTimeout(45*time.Second).WaitUntilExists(suggestionPopup),
 					ui.DoDefaultUntil(suggestionPopup, ui.Exists(nodewith.Role(role.InlineTextBox).Name(addressValues[1].fieldValue))),
 				)(ctx); err != nil {
 					s.Fatal("Failed to trigger and use address autofill: ", err)
