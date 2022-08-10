@@ -7,7 +7,7 @@ package bluetooth
 import (
 	"context"
 
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
@@ -47,7 +47,7 @@ func PairNewDeviceFromBluetoothQuickSettings(ctx context.Context, s *testing.Sta
 		s.Fatal("Failed to navigate to the detailed Bluetooth view: ", err)
 	}
 
-	if err := bluetooth.PollForBTEnabled(ctx); err != nil {
+	if err := bluez.PollForBTEnabled(ctx); err != nil {
 		s.Fatal("Expected Bluetooth to be enabled: ", err)
 	}
 

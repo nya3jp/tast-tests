@@ -7,7 +7,7 @@ package bluetooth
 import (
 	"context"
 
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
@@ -59,7 +59,7 @@ func UIToggleFromBTQuicksettings(ctx context.Context, s *testing.State) {
 	bluetoothToggleButton := nodewith.Name("Bluetooth").HasClass("TrayToggleButton").Role(role.Switch)
 
 	// Power on Bluetooth adapter.
-	if err = bluetooth.Enable(ctx); err != nil {
+	if err = bluez.Enable(ctx); err != nil {
 		s.Fatal("Failed to power on Bluetooth adapter: ", err)
 	}
 
@@ -78,12 +78,12 @@ func UIToggleFromBTQuicksettings(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to bring up Bluetooth quick settings UI: ", err)
 	}
 
-	if err = bluetooth.PollForBTEnabled(ctx); err != nil {
+	if err = bluez.PollForBTEnabled(ctx); err != nil {
 		s.Fatal("Failed to verify Bluetooth status, got disabled, want enabled: ", err)
 	}
 
 	// Confirm Bluetooth adapter is enabled.
-	status, err := bluetooth.IsEnabled(ctx)
+	status, err := bluez.IsEnabled(ctx)
 	if err != nil {
 		s.Fatal("Failed to check Bluetooth status: ", err)
 	}
@@ -103,7 +103,7 @@ func UIToggleFromBTQuicksettings(ctx context.Context, s *testing.State) {
 		}
 
 		// Confirm Bluetooth adapter is disabled.
-		if err = bluetooth.PollForBTDisabled(ctx); err != nil {
+		if err = bluez.PollForBTDisabled(ctx); err != nil {
 			s.Fatal("Failed to verify Bluetooth status, got enabled, want disabled: ", err)
 		}
 
@@ -115,7 +115,7 @@ func UIToggleFromBTQuicksettings(ctx context.Context, s *testing.State) {
 		}
 
 		// Confirm Bluetooth adapter is disabled.
-		if err = bluetooth.PollForBTEnabled(ctx); err != nil {
+		if err = bluez.PollForBTEnabled(ctx); err != nil {
 			s.Fatal("Failed to verify Bluetooth status, got disabled, want enabled: ", err)
 		}
 	}

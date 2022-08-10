@@ -19,6 +19,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/fsutil"
 	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/nearbyshare"
 	"chromiumos/tast/local/chrome/nearbyshare/nearbytestutils"
@@ -411,10 +412,10 @@ func (n *NearbyService) CrOSAttributes(ctx context.Context, req *empty.Empty) (*
 
 // EnableBluetooth enables bluetooth on the chromebook.
 func (n *NearbyService) EnableBluetooth(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	if err := bluetooth.Enable(ctx); err != nil {
+	if err := bluez.Enable(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to enable bluetooth")
 	}
-	if err := bluetooth.PollForBTEnabled(ctx); err != nil {
+	if err := bluez.PollForBTEnabled(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed waiting for bluetooth to be enabled on the device")
 	}
 	return &empty.Empty{}, nil
@@ -422,10 +423,10 @@ func (n *NearbyService) EnableBluetooth(ctx context.Context, req *empty.Empty) (
 
 // DisableBluetooth disables bluetooth on the chromebook.
 func (n *NearbyService) DisableBluetooth(ctx context.Context, req *empty.Empty) (*empty.Empty, error) {
-	if err := bluetooth.Disable(ctx); err != nil {
+	if err := bluez.Disable(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to disable bluetooth")
 	}
-	if err := bluetooth.PollForBTDisabled(ctx); err != nil {
+	if err := bluez.PollForBTDisabled(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed waiting for bluetooth to be disabled on the device")
 	}
 	return &empty.Empty{}, nil

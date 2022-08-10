@@ -7,7 +7,7 @@ package bluetooth
 import (
 	"context"
 
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
@@ -48,7 +48,7 @@ func ToggleBluetoothFromQuickSettings(ctx context.Context, s *testing.State) {
 	}
 	defer quicksettings.Expand(ctx, tconn)
 
-	if err := bluetooth.Enable(ctx); err != nil {
+	if err := bluez.Enable(ctx); err != nil {
 		s.Fatal("Failed to enable Bluetooth: ", err)
 	}
 
@@ -62,7 +62,7 @@ func ToggleBluetoothFromQuickSettings(ctx context.Context, s *testing.State) {
 		if err := ui.LeftClick(quicksettings.PodIconButton(quicksettings.SettingPodBluetooth))(ctx); err != nil {
 			s.Fatal("Failed to click the Bluetooth feature pod icon button: ", err)
 		}
-		if err := bluetooth.PollForAdapterState(ctx, state); err != nil {
+		if err := bluez.PollForAdapterState(ctx, state); err != nil {
 			s.Fatal("Failed to toggle Bluetooth state: ", err)
 		}
 		state = !state

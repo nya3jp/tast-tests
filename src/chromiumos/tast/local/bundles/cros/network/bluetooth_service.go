@@ -13,7 +13,7 @@ import (
 	"google.golang.org/grpc"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/localstate"
@@ -86,7 +86,7 @@ func (s *BluetoothService) SetBluetoothPowered(ctx context.Context, req *network
 	}
 
 	// Poll until the adapter state has been changed to the correct value.
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get Bluetooth adapters")
 	}
@@ -141,7 +141,7 @@ func (s *BluetoothService) GetBluetoothBootPref(ctx context.Context, req *networ
 
 // SetBluetoothPoweredFast sets the Bluetooth adapter power status via D-Bus. This setting does not persist across boots.
 func (s *BluetoothService) SetBluetoothPoweredFast(ctx context.Context, req *network.SetBluetoothPoweredFastRequest) (*empty.Empty, error) {
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get Bluetooth adapters")
 	}
@@ -174,7 +174,7 @@ func (s *BluetoothService) SetBluetoothPoweredFast(ctx context.Context, req *net
 func (s *BluetoothService) GetBluetoothPoweredFast(ctx context.Context, _ *empty.Empty) (*network.GetBluetoothPoweredFastResponse, error) {
 	ctx, st := timing.Start(ctx, "GetBluetoothPoweredFast")
 	defer st.End()
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get Bluetooth adapters")
 	}
@@ -191,7 +191,7 @@ func (s *BluetoothService) GetBluetoothPoweredFast(ctx context.Context, _ *empty
 
 // ValidateBluetoothFunctional checks to see whether the Bluetooth device is usable.
 func (s *BluetoothService) ValidateBluetoothFunctional(ctx context.Context, _ *empty.Empty) (*empty.Empty, error) {
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get Bluetooth adapters")
 	}

@@ -9,7 +9,7 @@ import (
 	"context"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	dtcpb "chromiumos/wilco_dtc"
 )
 
@@ -32,7 +32,7 @@ func ExpectPowered(powered bool) option {
 // ValidateBluetoothData validates whether HandleBluetoothDataChangedRequest
 // contains correct Bluetooth data.
 func ValidateBluetoothData(ctx context.Context, msg *dtcpb.HandleBluetoothDataChangedRequest, opts ...option) error {
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		return errors.Wrap(err, "unable to get Bluetooth adapters")
 	}
