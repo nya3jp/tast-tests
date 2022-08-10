@@ -124,10 +124,18 @@ func BrowserCommonMetricConfigs() []MetricConfig {
 		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration.NoSavedFrames_Loaded", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Browser.Tabs.TotalSwitchDuration.WithSavedFrames", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Event.Latency.ScrollUpdate.Touch.TimeToScrollUpdateSwapBegin4", "microseconds", perf.SmallerIsBetter),
+		NewCustomMetricConfig("EventLatency.GestureScrollUpdate.Touchscreen.TotalLatency", "microseconds", perf.SmallerIsBetter),
+		NewCustomMetricConfig("EventLatency.GestureScrollUpdate.Wheel.TotalLatency", "microseconds", perf.SmallerIsBetter),
 		NewCustomMetricConfig("PageLoad.InteractiveTiming.InputDelay3", "ms", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Event.Latency.EndToEnd.KeyPress", "microseconds", perf.SmallerIsBetter),
+		NewCustomMetricConfig("EventLatency.KeyPressed.TotalLatency", "microseconds", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Event.Latency.EndToEnd.Mouse", "microseconds", perf.SmallerIsBetter),
+		NewCustomMetricConfig("EventLatency.MouseDragged.TotalLatency", "microseconds", perf.SmallerIsBetter),
+		NewCustomMetricConfig("EventLatency.MousePressed.TotalLatency", "microseconds", perf.SmallerIsBetter),
+		NewCustomMetricConfig("EventLatency.MouseReleased.TotalLatency", "microseconds", perf.SmallerIsBetter),
+		NewCustomMetricConfig("EventLatency.MouseWheel.TotalLatency", "microseconds", perf.SmallerIsBetter),
 		NewCustomMetricConfig("Event.Latency.EndToEnd.TouchpadPinch2", "microseconds", perf.SmallerIsBetter),
+		NewCustomMetricConfig("EventLatency.GesturePinchUpdate.Touchpad.TotalLatency", "microseconds", perf.SmallerIsBetter),
 
 		// Smoothness.
 		NewSmoothnessMetricConfig("Chrome.Tabs.AnimationSmoothness.TabLoading"),
