@@ -38,6 +38,7 @@ func init() {
 			"xiangdongkong@google.com",
 			"cros-feedback-app@google.com",
 		},
+		Fixture:      "chromeLoggedInWithOsFeedback",
 		Attr:         []string{"group:mainline", "informational"},
 		Data:         []string{pngFile, pdfFile},
 		SoftwareDeps: []string{"chrome"},
@@ -46,16 +47,11 @@ func init() {
 
 // AttachFile verifies user can attach a file.
 func AttachFile(ctx context.Context, s *testing.State) {
+	cr := s.FixtValue().(*chrome.Chrome)
+
 	cleanupCtx := ctx
 	ctx, cancel := ctxutil.Shorten(ctx, 5*time.Second)
 	defer cancel()
-
-	s.Log("Setting up chrome")
-	cr, err := chrome.New(ctx, chrome.EnableFeatures("OsFeedback"))
-	if err != nil {
-		s.Fatal("Failed to start Chrome: ", err)
-	}
-	defer cr.Close(cleanupCtx)
 
 	tconn, err := cr.TestAPIConn(ctx)
 	if err != nil {
