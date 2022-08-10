@@ -34,7 +34,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		// Disabled due to <1% pass rate over 30 days. See b/241943012
 		//Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromeEnrolledLoggedIn",
+		Fixture: "chromeEnrolledLoggedIn",
 	})
 }
 

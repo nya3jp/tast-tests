@@ -32,7 +32,7 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		// Disabled due to <1% pass rate over 30 days. See b/241943012
 		//Attr:         []string{"group:mainline", "informational"},
-		Fixture:      "chromeEnrolledLoggedInARC",
+		Fixture: "chromeEnrolledLoggedInARC",
 		Params: []testing.Param{{
 			ExtraSoftwareDeps: []string{"android_p"},
 		}},
