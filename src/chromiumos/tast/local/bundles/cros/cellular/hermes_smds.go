@@ -41,7 +41,7 @@ func HermesSMDS(ctx context.Context, s *testing.State) {
 
 	// Please ensure there is a stork profile for this EID already before running the test.
 	eid := ""
-	if err := euicc.Get(ctx, hermesconst.EuiccPropertyEid, &eid); err != nil {
+	if err := euicc.Property(ctx, hermesconst.EuiccPropertyEid, &eid); err != nil {
 		s.Fatal("Failed to read euicc EID")
 	}
 	s.Log("EID of the euicc: ", eid)

@@ -9,7 +9,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/croshealthd"
 	"chromiumos/tast/local/jsontypes"
 	"chromiumos/tast/local/set"
@@ -95,7 +95,7 @@ func initiateBluetoothAdapterData(ctx context.Context) error {
 
 func validateBluetoothAdapterData(ctx context.Context, info *bluetoothInfo) error {
 	// Get Bluetooth adapter values to compare to the output of cros_healthd.
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		return err
 	}
@@ -126,7 +126,7 @@ func validateBluetoothAdapterData(ctx context.Context, info *bluetoothInfo) erro
 }
 
 // validateAdapter validate the data from Adapter1 interface.
-func validateAdapter(ctx context.Context, info *bluetoothInfo, adapter *bluetooth.Adapter) error {
+func validateAdapter(ctx context.Context, info *bluetoothInfo, adapter *bluez.Adapter) error {
 	if name, err := adapter.Name(ctx); err != nil {
 		return err
 	} else if info.Adapters[0].Name != name {
@@ -173,7 +173,7 @@ func validateAdapter(ctx context.Context, info *bluetoothInfo, adapter *bluetoot
 }
 
 // validateAdminPolicy validate the data from AdminPolicyStatus1 interface.
-func validateAdminPolicy(ctx context.Context, info *bluetoothInfo, adapter *bluetooth.Adapter) error {
+func validateAdminPolicy(ctx context.Context, info *bluetoothInfo, adapter *bluez.Adapter) error {
 	if serviceAllowList, err := adapter.ServiceAllowList(ctx); err != nil {
 		return err
 	} else if len(serviceAllowList) != len(targetAllowedServices) {
@@ -186,7 +186,7 @@ func validateAdminPolicy(ctx context.Context, info *bluetoothInfo, adapter *blue
 }
 
 // validateAdvertising validate the data from LEAdvertisingManager1 interface.
-func validateAdvertising(ctx context.Context, info *bluetoothInfo, adapter *bluetooth.Adapter) error {
+func validateAdvertising(ctx context.Context, info *bluetoothInfo, adapter *bluez.Adapter) error {
 	if supportedCapabilities, err := adapter.SupportedCapabilities(ctx); err != nil {
 		// Pass if neither cros_healthd nor D-Bus has supportedCapabilities.
 		if info.Adapters[0].SupportedCapabilities == nil {

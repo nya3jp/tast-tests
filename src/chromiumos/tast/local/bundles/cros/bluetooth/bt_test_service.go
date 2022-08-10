@@ -11,7 +11,7 @@ import (
 	"google.golang.org/protobuf/types/known/emptypb"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
 	pb "chromiumos/tast/services/cros/bluetooth"
 	"chromiumos/tast/testing"
@@ -63,7 +63,7 @@ func (bts *BTTestService) ChromeClose(ctx context.Context, empty *emptypb.Empty)
 
 // EnableBluetoothAdapter powers on the bluetooth adapter.
 func (bts *BTTestService) EnableBluetoothAdapter(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
-	if err := bluetooth.Enable(ctx); err != nil {
+	if err := bluez.Enable(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to enable bluetooth adapter")
 	}
 	return &emptypb.Empty{}, nil
@@ -71,7 +71,7 @@ func (bts *BTTestService) EnableBluetoothAdapter(ctx context.Context, empty *emp
 
 // DisableBluetoothAdapter powers off the bluetooth adapter.
 func (bts *BTTestService) DisableBluetoothAdapter(ctx context.Context, empty *emptypb.Empty) (*emptypb.Empty, error) {
-	if err := bluetooth.Disable(ctx); err != nil {
+	if err := bluez.Disable(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to disable bluetooth adapter")
 	}
 	return &emptypb.Empty{}, nil

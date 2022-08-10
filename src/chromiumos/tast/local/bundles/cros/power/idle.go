@@ -14,7 +14,7 @@ import (
 	"chromiumos/tast/common/perf"
 	"chromiumos/tast/common/testexec"
 	cupstart "chromiumos/tast/common/upstart"
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome"
 	"chromiumos/tast/local/chrome/ash"
 	"chromiumos/tast/local/chrome/browser"
@@ -187,14 +187,14 @@ func Idle(ctx context.Context, s *testing.State) {
 		s.Fatal("Test set up failed: ", err)
 	}
 
-	bts, err := bluetooth.Adapters(ctx)
+	bts, err := bluez.Adapters(ctx)
 	if err != nil {
 		s.Fatal("Bluetooth adapters fail to be created: ", err)
 	}
 	setBluetoothPower := func(enabled bool) {
 		for _, bt := range bts {
 			if err := bt.SetPowered(ctx, enabled); err != nil {
-				s.Fatalf("Failed to set powered to bluetooth %s to %v: %v", bt.Path(), enabled, err)
+				s.Fatalf("Failed to set powered to bluetooth %s to %v: %v", bt.DBusObject().ObjectPath(), enabled, err)
 			}
 		}
 	}
