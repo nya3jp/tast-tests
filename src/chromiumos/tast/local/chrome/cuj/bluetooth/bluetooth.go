@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/testing"
 )
 
@@ -28,7 +28,7 @@ func Disable(ctx context.Context) error {
 
 // IsEnabled checks bluetooth is enabled.
 func IsEnabled(ctx context.Context) (bool, error) {
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "unable to get Bluetooth adapters")
 	}
@@ -57,7 +57,7 @@ func DisconnectDevice(ctx context.Context, deviceName string) error {
 }
 
 func setDevice(ctx context.Context, deviceName string, connect bool) error {
-	device, err := bluetooth.DeviceByAlias(ctx, deviceName)
+	device, err := bluez.DeviceByAlias(ctx, deviceName)
 	if err != nil {
 		return errors.Wrapf(err, "failed to get Bluetooth device(%q)", deviceName)
 	}
@@ -94,7 +94,7 @@ func setDevice(ctx context.Context, deviceName string, connect bool) error {
 }
 
 func setBluetoothPowered(ctx context.Context, powered bool) error {
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		return errors.Wrap(err, "unable to get Bluetooth adapters")
 	}

@@ -33,6 +33,16 @@ func NewDBusObject(ctx context.Context, service, iface string, path dbus.ObjectP
 	}, nil
 }
 
+// Obj returns the dbus.BusObject for this object.
+func (d *DBusObject) Obj() dbus.BusObject {
+	return d.obj
+}
+
+// Iface returns the D-Bus interface for this type of object.
+func (d *DBusObject) Iface() string {
+	return d.iface
+}
+
 // ObjectPath returns the path of the D-Bus object.
 func (d *DBusObject) ObjectPath() dbus.ObjectPath {
 	return d.obj.Path()
@@ -44,14 +54,46 @@ func (d *DBusObject) String() string {
 	return string(d.obj.Path())
 }
 
+// IfacePath builds a D-Bus path starting at this object's interface path.
+func (d *DBusObject) IfacePath(subPath string) string {
+	return BuildIfacePath(d.iface, subPath)
+}
+
 // Call calls the D-Bus method with argument against the designated D-Bus object.
 func (d *DBusObject) Call(ctx context.Context, method string, args ...interface{}) *dbus.Call {
-	return d.obj.CallWithContext(ctx, d.iface+"."+method, 0, args...)
+	return d.obj.CallWithContext(ctx, d.IfacePath(method), 0, args...)
 }
 
 // Get calls org.freedesktop.DBus.Properties.Get and stores the result into val.
 func (d *DBusObject) Get(ctx context.Context, propName string, val interface{}) error {
 	return d.obj.CallWithContext(ctx, dbusGetPropsMethod, 0, d.iface, propName).Store(val)
+}
+
+// GetBool calls Get for a bool value.
+func (d *DBusObject) GetBool(ctx context.Context, propName string) (bool, error) {
+	var value bool
+	if err := d.Get(ctx, propName, &value); err != nil {
+		return false, err
+	}
+	return value, nil
+}
+
+// GetString calls Get for a string value.
+func (d *DBusObject) GetString(ctx context.Context, propName string) (string, error) {
+	var value string
+	if err := d.Get(ctx, propName, &value); err != nil {
+		return "", err
+	}
+	return value, nil
+}
+
+// GetStrings calls Get for a []string value.
+func (d *DBusObject) GetStrings(ctx context.Context, propName string) ([]string, error) {
+	var value []string
+	if err := d.Get(ctx, propName, &value); err != nil {
+		return nil, err
+	}
+	return value, nil
 }
 
 // GetAll calls org.freedesktop.DBus.Properties.GetAll and stores the result into val.
@@ -61,6 +103,12 @@ func (d *DBusObject) GetAll(ctx context.Context) (map[string]interface{}, error)
 		return nil, err
 	}
 	return val, nil
+}
+
+// Set is a shortcut for calling SetProperty for this object.
+// The property name is prepended with the iface path.
+func (d *DBusObject) Set(ctx context.Context, name string, value interface{}) error {
+	return SetProperty(ctx, d.obj, d.IfacePath(name), value)
 }
 
 // CreateWatcher returns a SignalWatcher to observe the specified signals.
@@ -79,4 +127,9 @@ func (d *DBusObject) CreateWatcher(ctx context.Context, signalNames ...string) (
 		return nil, err
 	}
 	return watcher, nil
+}
+
+// BuildIfacePath builds a full D-Bus path starting at the given baseIface path.
+func BuildIfacePath(baseIface, subPath string) string {
+	return baseIface + "." + subPath
 }
