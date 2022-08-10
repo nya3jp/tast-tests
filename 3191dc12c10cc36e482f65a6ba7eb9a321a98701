@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd703e7b_c7761ec3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-10T04:33:20Z",
+      "side": 1,
+      "message": "maybe also the tast unit tests:\n../platform/tast/fast_build.sh -T",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "3191dc12c10cc36e482f65a6ba7eb9a321a98701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2bdade01_2e7e65d6",
@@ -14,6 +37,23 @@
       "writtenOn": "2022-08-10T04:24:28Z",
       "side": 1,
       "message": "This patch is ready for review. Thanks!",
+      "revId": "3191dc12c10cc36e482f65a6ba7eb9a321a98701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a403f79d_7a1dcd91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-10T04:33:20Z",
+      "side": 1,
+      "message": "Thanks for doing this!",
       "revId": "3191dc12c10cc36e482f65a6ba7eb9a321a98701",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
