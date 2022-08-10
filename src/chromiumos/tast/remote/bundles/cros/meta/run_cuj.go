@@ -261,8 +261,12 @@ func RunCUJ(ctx context.Context, s *testing.State) {
 	param := s.Param().(runCUJParam)
 	iteration := param.iteration
 	retry := param.retry
+	varsfile := ""
 
-	varsfile := s.RequiredVar("variablesfile")
+	if strVar, ok := s.Var("variablesfile"); ok {
+		varsfile = strVar
+	}
+
 	// Override default iteration and retry if runtime variables are provided.
 	if strVar, ok := s.Var("iteration"); ok {
 		if intVar, err := strconv.Atoi(strVar); err == nil {
@@ -288,7 +292,9 @@ func RunCUJ(ctx context.Context, s *testing.State) {
 		flags := []string{
 			"-resultsdir=" + resultsDir,
 			fmt.Sprintf("-retries=%d", retry),
-			fmt.Sprintf("-varsfile=%s", varsfile),
+		}
+		if varsfile != "" {
+			flags = append(flags, fmt.Sprintf("-varsfile=%s", varsfile))
 		}
 
 		if stdout, _, err := tastrun.Exec(ctx, s, "run", flags, param.tests); err != nil {
