@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a631af82_14e6152c",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/faillog/screenshot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-10T02:34:20Z",
+      "side": 1,
+      "message": "I am afraid this change will break screenshot on non-login screens.\n\nCan you make this optional and omit the error?\n\nif tconn \u0026\u0026 displayInfo then take screenshort for each.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 2
+      },
+      "revId": "979633744fdfbd4bc393af77963d264c2005064e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7e477e4_dbca7663",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/faillog/ui_tree.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-10T02:34:20Z",
+      "side": 1,
+      "message": "Any reason to remove the suffix? I would hope this is not changed since it is not clear who uses this public function.",
+      "range": {
+        "startLine": 26,
+        "startChar": 56,
+        "endLine": 26,
+        "endChar": 66
+      },
+      "revId": "979633744fdfbd4bc393af77963d264c2005064e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
