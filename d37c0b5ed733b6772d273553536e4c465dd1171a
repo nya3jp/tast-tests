@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03264e7d_3ed2a0ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-10T00:47:19Z",
+      "side": 1,
+      "message": "mostly lgtm from the Tast side",
+      "revId": "d37c0b5ed733b6772d273553536e4c465dd1171a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd8b3dcc_08fa44c1",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-10T00:47:19Z",
+      "side": 1,
+      "message": "nit: can push this into the if statement: if portType, ok :\u003d ...; ok {}",
+      "revId": "d37c0b5ed733b6772d273553536e4c465dd1171a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b38e2e_35dd2b5d",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-10T00:47:19Z",
+      "side": 1,
+      "message": "iirc append works on nil slices, so I think you don\u0027t need this conditional",
+      "revId": "d37c0b5ed733b6772d273553536e4c465dd1171a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3eff37b_28f24b4c",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-10T00:47:19Z",
+      "side": 1,
+      "message": "simpler to just call append IMO rather than use make and fill it out",
+      "revId": "d37c0b5ed733b6772d273553536e4c465dd1171a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7c6c3d4_6a03d66b",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-10T00:47:19Z",
+      "side": 1,
+      "message": "maybe simpler to iterate over the values of supportedPortTypes and break once one is found",
+      "revId": "d37c0b5ed733b6772d273553536e4c465dd1171a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b77d369_d6987f4f",
+        "filename": "src/chromiumos/tast/common/chameleon/chameleond.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1179631
+      },
+      "writtenOn": "2022-08-10T00:47:19Z",
+      "side": 1,
+      "message": "nit, optional: directly using len(portIDs) seems clearer",
+      "revId": "d37c0b5ed733b6772d273553536e4c465dd1171a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
