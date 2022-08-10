@@ -8,6 +8,7 @@ import (
 	"context"
 	"fmt"
 
+	"chromiumos/tast/common/chameleon"
 	cbt "chromiumos/tast/common/chameleon/devices/common/bluetooth"
 	"chromiumos/tast/errors"
 	bts "chromiumos/tast/services/cros/bluetooth"
@@ -44,50 +45,50 @@ type EmulatedBTPeerDevice struct {
 
 // NewEmulatedBTPeerDevice created a new EmulatedBTPeerDevice given the provided
 // RPC interface to the device. The device will be initialized and key data
-// about the device will be cached for later reference.
+// about the device will be cached for later reference. The device will be
+// discoverable afterwards as well.
+//
+// This assumes the btpeer has not yet used in a test to emulate a specific
+// device, or that BluezPeripheral.ResetStack has been called on it since.
 //
 // Note: A btpeer can only act as one device at a time. If you require multiple
 // devices at once, use different btpeers.
-func NewEmulatedBTPeerDevice(ctx context.Context, deviceRPC cbt.BluezPeripheral) (*EmulatedBTPeerDevice, error) {
-	d := &EmulatedBTPeerDevice{
-		rpc: deviceRPC,
+func NewEmulatedBTPeerDevice(ctx context.Context, btpeer chameleon.Chameleond, deviceType cbt.DeviceType) (*EmulatedBTPeerDevice, error) {
+	d := &EmulatedBTPeerDevice{}
+	var err error
+	d.rpc, err = btpeer.BluetoothPeripheralDevice(deviceType)
+	if err != nil {
+		return nil, err
 	}
-	if err := d.initializeEmulatedBTPeerDevice(ctx); err != nil {
+	if err := d.initializeEmulatedBTPeerDevice(ctx, deviceType); err != nil {
 		return nil, err
 	}
 	return d, nil
 }
 
-func (d *EmulatedBTPeerDevice) initializeEmulatedBTPeerDevice(ctx context.Context) error {
+func (d *EmulatedBTPeerDevice) initializeEmulatedBTPeerDevice(ctx context.Context, newDeviceType cbt.DeviceType) error {
 	testing.ContextLog(ctx, "Preparing device for use")
 
-	if err := d.rpc.Init(ctx, false); err != nil {
-		return errors.Wrap(err, "failed to initialize device")
+	// Make btpeer emulate newDeviceType.
+	if success, err := d.rpc.AdapterPowerOn(ctx); err != nil || !success {
+		if err == nil && !success {
+			err = errors.New("rpc method executed, but returned failure result")
+		}
+		return errors.Wrap(err, "failed to power on bluetooth adapter")
+	}
+	if err := d.rpc.SpecifyDeviceType(ctx, newDeviceType.String()); err != nil {
+		return errors.Wrapf(err, "failed to specify the btpeer to act as a %q device", d.cache.deviceType.String())
 	}
 
-	connected, err := d.rpc.CheckSerialConnection(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to check serial connection")
-	}
-	if !connected {
-		return errors.New("failed serial connection check")
-	}
-
-	success, err := d.rpc.EnterCommandMode(ctx)
-	if err != nil {
-		return errors.Wrap(err, "failed to enter command mode")
-	}
-	if !success {
-		return errors.New("failed to enter command mode")
-	}
-
+	// Cache key data for later use in tests.
 	testing.ContextLog(ctx, "Collecting device info")
 	if err := d.RefreshCache(ctx); err != nil {
 		return errors.Wrap(err, "failed to collect device info")
 	}
 
-	if err := d.rpc.SpecifyDeviceType(ctx, d.cache.deviceType.String()); err != nil {
-		return errors.Wrapf(err, "failed to specify the btpeer to act as a %q device", d.cache.deviceType.String())
+	// Validate emulation.
+	if d.DeviceType() != newDeviceType {
+		return errors.Errorf("attempted to emulate btpeer device as a %s, but the actual device type is %s", newDeviceType, d.DeviceType())
 	}
 
 	testing.ContextLogf(ctx, "Successfully initialized %s", d.String())
@@ -357,5 +358,7 @@ func (d *EmulatedBTPeerDevice) BTSDevice() *bts.Device {
 	return &bts.Device{
 		MacAddress:     d.cache.localBluetoothAddress,
 		AdvertisedName: d.cache.advertisedName,
+		HasPinCode:     d.cache.hasPinCode,
+		PinCode:        d.cache.pinCode,
 	}
 }

@@ -23,8 +23,12 @@ func init() {
 			"jaredbennett@google.com",
 			"cros-connectivity@google.com",
 		},
-		// TODO(b/245584709): Need to make new btpeer test attributes.
-		Attr:         []string{},
+		Attr: []string{
+			"group:bluetooth",
+			"bluetooth_core",
+			"bluetooth_btpeers_2",
+			"bluetooth_flaky",
+		},
 		SoftwareDeps: []string{"chrome"},
 		ServiceDeps:  []string{"tast.cros.bluetooth.BTTestService"},
 		Fixture:      "chromeLoggedInWith2BTPeers",
@@ -38,12 +42,9 @@ func DiscoverEmulatedBTPeerDevices(ctx context.Context, s *testing.State) {
 	fv := s.FixtValue().(*bluetooth.FixtValue)
 
 	// Discover btpeer1 as a keyboard.
-	keyboardDevice, err := bluetooth.NewEmulatedBTPeerDevice(ctx, fv.BTPeers[0].BluetoothKeyboardDevice())
+	keyboardDevice, err := bluetooth.NewEmulatedBTPeerDevice(ctx, fv.BTPeers[0], cbt.DeviceTypeKeyboard)
 	if err != nil {
 		s.Fatal("Failed to configure btpeer1 as a keyboard device: ", err)
-	}
-	if keyboardDevice.DeviceType() != cbt.DeviceTypeKeyboard {
-		s.Fatalf("Attempted to emulate btpeer device as a %s, but the actual device type is %s", cbt.DeviceTypeKeyboard, keyboardDevice.DeviceType())
 	}
 	if _, err := fv.BTS.DiscoverDevice(ctx, &bts.DiscoverDeviceRequest{
 		Device: keyboardDevice.BTSDevice(),
@@ -52,12 +53,9 @@ func DiscoverEmulatedBTPeerDevices(ctx context.Context, s *testing.State) {
 	}
 
 	// Discover btpeer2 as a mouse.
-	mouseDevice, err := bluetooth.NewEmulatedBTPeerDevice(ctx, fv.BTPeers[1].BluetoothMouseDevice())
+	mouseDevice, err := bluetooth.NewEmulatedBTPeerDevice(ctx, fv.BTPeers[1], cbt.DeviceTypeMouse)
 	if err != nil {
 		s.Fatal("Failed to configure btpeer2 as a mouse device: ", err)
-	}
-	if mouseDevice.DeviceType() != cbt.DeviceTypeMouse {
-		s.Fatalf("Attempted to emulate btpeer device as a %s, but the actual device type is %s", cbt.DeviceTypeMouse, mouseDevice.DeviceType())
 	}
 	if _, err := fv.BTS.DiscoverDevice(ctx, &bts.DiscoverDeviceRequest{
 		Device: mouseDevice.BTSDevice(),

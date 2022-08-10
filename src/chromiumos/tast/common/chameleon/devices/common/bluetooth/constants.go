@@ -52,11 +52,17 @@ const (
 	// DeviceTypeKeyboard is the DeviceType for keyboard devices.
 	DeviceTypeKeyboard DeviceType = "KEYBOARD"
 
+	// DeviceTypeLEKeyboard is the DeviceType for LE keyboard devices.
+	DeviceTypeLEKeyboard DeviceType = "BLE_KEYBOARD"
+
 	// DeviceTypeGamepad is the DeviceType for gamepad devices.
 	DeviceTypeGamepad DeviceType = "GAMEPAD"
 
 	// DeviceTypeMouse is the DeviceType for mouse devices.
 	DeviceTypeMouse DeviceType = "MOUSE"
+
+	// DeviceTypeLEMouse is the DeviceType for LE mouse devices.
+	DeviceTypeLEMouse DeviceType = "BLE_MOUSE"
 
 	// DeviceTypeCombo is the DeviceType for combo devices.
 	DeviceTypeCombo DeviceType = "COMBO"
@@ -70,11 +76,17 @@ const (
 	// DeviceTypePhone is the DeviceType for phone devices.
 	DeviceTypePhone DeviceType = "PHONE"
 
+	// DeviceTypeLEPhone is the DeviceType for LE phone devices.
+	DeviceTypeLEPhone DeviceType = "BLE_PHONE"
+
 	// DeviceTypeBluetoothAudio is the DeviceType for audio devices.
 	DeviceTypeBluetoothAudio DeviceType = "BLUETOOTH_AUDIO"
 
 	// DeviceTypeFastPair is the DeviceType for fast pair devices.
 	DeviceTypeFastPair DeviceType = "FAST_PAIR"
+
+	// DeviceTypeLEFastPair is the DeviceType for LE fast pair devices.
+	DeviceTypeLEFastPair DeviceType = "BLE_FAST_PAIR"
 )
 
 // String returns DeviceType as a string.
