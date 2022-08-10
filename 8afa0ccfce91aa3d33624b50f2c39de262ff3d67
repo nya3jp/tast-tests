@@ -50,6 +50,24 @@
       "message": "I don\u0027t see typec.TbtHotplugUnplug.stress being run at all. \n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-08-04\u0026last_date\u003d2022-08-10\u0026test\u003dTbtHotplugUnplug.stress\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\n\nhttps://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dTbtHotplugUnplug.stress\u0026dep\u003d\u0026attr\u003d\n\nI don\u0027t think we should make change for this test.",
       "revId": "8afa0ccfce91aa3d33624b50f2c39de262ff3d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08de3c3e_c3ff6cbc",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1313390
+      },
+      "writtenOn": "2022-08-10T02:57:41Z",
+      "side": 1,
+      "message": "It is here:\n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dbuild_version\u0026col\u003dtest\u0026test\u003dtast.typec.TbtHotplugUnplug\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dfalse\u0026exclude_au\u003dfalse\u0026exclude_acts\u003dfalse\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\u0026first_date\u003d2022-07-28\u0026last_date\u003d2022-08-10",
+      "parentUuid": "8e4ea3fd_5cf538ae",
+      "revId": "8afa0ccfce91aa3d33624b50f2c39de262ff3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
