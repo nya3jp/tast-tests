@@ -88,6 +88,8 @@ func (bts *BTTestService) discoverDeviceByAddress(ctx context.Context, targetDev
 	if bts.bluezAdapter == nil {
 		return nil, errors.New("bluetooth adapter not initialized, call EnableBluetoothAdapter first")
 	}
+
+	// Attempt to discover device with matching address.
 	if err := bts.bluezAdapter.StartDiscovery(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start discovery")
 	}
@@ -100,7 +102,10 @@ func (bts *BTTestService) discoverDeviceByAddress(ctx context.Context, targetDev
 			return err
 		}
 		return nil
-	}, &testing.PollOptions{Timeout: 40 * time.Second, Interval: 250 * time.Millisecond}); pollErr != nil {
+	}, &testing.PollOptions{
+		Timeout:  60 * time.Second,
+		Interval: 250 * time.Millisecond,
+	}); pollErr != nil {
 		baseErr := errors.Wrapf(pollErr, "timeout waiting for discover device with address %q", targetDeviceAddress)
 		// Failed to find the specific device. Attempt to include a list of devices that were found in the error message.
 		devices, err := bts.discoverDevices(ctx)
@@ -119,7 +124,6 @@ func (bts *BTTestService) discoverDeviceByAddress(ctx context.Context, targetDev
 			len(devices),
 			strings.Join(devicesStr, ", "))
 	}
-	testing.ContextLogf(ctx, "Discovered device with address %q at dbus path %q", targetDeviceAddress, btDevice.Path())
 	if err := bts.bluezAdapter.StopDiscovery(ctx); err != nil {
 		return nil, errors.Wrap(err, "failed to start discovery")
 	}
@@ -127,18 +131,20 @@ func (bts *BTTestService) discoverDeviceByAddress(ctx context.Context, targetDev
 	// Validate discovered device is intended device.
 	btDeviceAddr, err := btDevice.Address(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get address of connected device")
+		return nil, errors.Wrap(err, "failed to get address of discovered device")
 	}
 	if btDeviceAddr != targetDeviceAddress {
 		return nil, errors.Errorf("discovered device with address %q does not match expected address %q", btDeviceAddr, targetDeviceAddress)
 	}
 	btDeviceName, err := btDevice.Name(ctx)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to get name of connected device")
+		return nil, errors.Wrap(err, "failed to get name of discovered device")
 	}
 	if btDeviceName != expectedDeviceName {
-		return nil, errors.Errorf("discovered device with name %q does not match expected name %q", btDeviceName, expectedDeviceName)
+		return nil, errors.Errorf("discovered device with address %q and name %q does not match expected name %q", btDeviceAddr, btDeviceName, expectedDeviceName)
 	}
+
+	testing.ContextLogf(ctx, "Discovered device with address %q and name %q at dbus path %q", btDeviceAddr, btDeviceName, btDevice.Path())
 	return btDevice, nil
 }
 
@@ -176,5 +182,116 @@ func (bts *BTTestService) RemoveAllDevices(ctx context.Context, empty *emptypb.E
 			return nil, errors.Wrapf(err, "failed to remove device at dbus path %q", device.Path())
 		}
 	}
+	return &emptypb.Empty{}, nil
+}
+
+// PairAndConnectDevice pairs and connects to the specified Device.
+func (bts *BTTestService) PairAndConnectDevice(ctx context.Context, request *pb.PairAndConnectDeviceRequest) (*emptypb.Empty, error) {
+	if request.Device == nil || request.Device.AdvertisedName == "" ||
+		request.Device.MacAddress == "" {
+		return nil, errors.New("incomplete PairAndConnectDevice request")
+	}
+
+	// Attempt to discover device.
+	btDevice, err := bts.discoverDeviceByAddress(ctx, request.Device.MacAddress, request.Device.AdvertisedName)
+	if err != nil {
+		return nil, err
+	}
+
+	// Ensure bluetooth device is paired.
+	// Unpairs and pairs again if ForceNewPair is true and device was already
+	// paired.
+	isPaired, err := btDevice.Paired(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to check if device is paired")
+	}
+	if isPaired && request.ForceNewPair {
+		testing.ContextLogf(ctx, "Removing and rediscovering already paired device at dbus path %q", btDevice.Path())
+		if err := bts.bluezAdapter.RemoveDevice(ctx, btDevice.Path()); err != nil {
+			return nil, errors.Wrapf(err, "failed to remove paired device at dbus path %q", btDevice.Path())
+		}
+		btDevice, err = bts.discoverDeviceByAddress(ctx, request.Device.MacAddress, request.Device.AdvertisedName)
+		if err != nil {
+			return nil, errors.Wrap(err, "failed rediscover device after removal")
+		}
+		isPaired = false
+	}
+	if isPaired {
+		testing.ContextLogf(ctx, "Skipping pairing step as device at dbus path %q is already paired", btDevice.Path())
+	} else {
+		// Pair the device.
+		if request.Device.HasPinCode {
+			// Prepare to handle pin authorization, if requested by the btpeer.
+			testing.ContextLogf(ctx, "Preparing to authorize pairing with pin code %q", request.Device.PinCode)
+			agentManagers, err := bluez.AgentManagers(ctx)
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to get AgentManager")
+			}
+			if len(agentManagers) == 0 {
+				return nil, errors.New("no AgentManager found")
+			}
+			agentManager := agentManagers[0]
+			testing.ContextLogf(ctx, "Using authentication AgentManager at dbus path %q", agentManager.DBusObject().ObjectPath())
+			agent, err := bluez.NewAgent(ctx, "")
+			if err != nil {
+				return nil, errors.Wrap(err, "failed to create new authentication Agent")
+			}
+			if err := agent.ExportAgentDelegate(bluez.NewSimplePinAgentDelegate(ctx, request.Device.PinCode)); err != nil {
+				return nil, errors.Wrap(err, "failed to export AgentDelegate")
+			}
+			if err := agentManager.RegisterAgent(ctx, agent.DBusObject().ObjectPath(), "KeyboardDisplay"); err != nil {
+				return nil, errors.Wrapf(err, "failed to register Agent %q with AgentManager %q", agent.DBusObject().ObjectPath(), agentManager.DBusObject().ObjectPath())
+			}
+			if err := agentManager.RequestDefaultAgent(ctx, agent.DBusObject().ObjectPath()); err != nil {
+				return nil, errors.Wrapf(err, "failed to register Agent %q with AgentManager %q as default", agent.DBusObject().ObjectPath(), agentManager.DBusObject().ObjectPath())
+			}
+			testing.ContextLogf(ctx, "Using new authentication Agent to provide pin code %q at dbus path %q", request.Device.PinCode, agent.DBusObject().ObjectPath())
+
+			// Attempt paring.
+			testing.ContextLogf(ctx, "Pairing device at dbus path %q", btDevice.Path())
+			if err := btDevice.Pair(ctx); err != nil {
+				return nil, errors.Wrap(err, "failed to pair bluetooth device")
+			}
+
+			// Cleanup pin authentication handling.
+			testing.ContextLogf(ctx, "Removing authentication Agent at dbus path %q", agent.DBusObject().ObjectPath())
+			if err := agent.ClearExportedAgentDelegate(); err != nil {
+				return nil, errors.Wrapf(err, "failed to clear exported AgentDelegate for Agent at %q", agent.DBusObject().ObjectPath())
+			}
+			if err := agentManager.UnregisterAgent(ctx, agent.DBusObject().ObjectPath()); err != nil {
+				return nil, errors.Wrapf(err, "failed to unregister Agent %q with AgentManager %q", agent.DBusObject().ObjectPath(), agentManager.DBusObject().ObjectPath())
+			}
+		} else {
+			testing.ContextLogf(ctx, "Pairing device at dbus path %q", btDevice.Path())
+			if err := btDevice.Pair(ctx); err != nil {
+				return nil, errors.Wrap(err, "failed to pair bluetooth device")
+			}
+		}
+	}
+
+	// Get connected status of BT device and connect if not already connected.
+	testing.ContextLogf(ctx, "Connecting to device at dbus path %q", btDevice.Path())
+	isConnected, err := btDevice.Connected(ctx)
+	if err != nil {
+		return nil, errors.Wrap(err, "failed to get device connected status")
+	}
+	if isConnected {
+		if request.ForceNewConnect {
+			testing.ContextLogf(ctx, "Disconnecting already connected device at dbus path %q", btDevice.Path())
+			if err := btDevice.Disconnect(ctx); err != nil {
+				return nil, errors.Wrap(err, "failed to disconnect bluetooth device")
+			}
+			isConnected = false
+		} else {
+			testing.ContextLogf(ctx, "Skipping connect step as device at dbus path %q is already connected", btDevice.Path())
+		}
+	}
+	if !isConnected {
+		testing.ContextLogf(ctx, "Connecting to device at dbus path %q", btDevice.Path())
+		if err := btDevice.Connect(ctx); err != nil {
+			return nil, errors.Wrap(err, "failed to connect bluetooth device")
+		}
+	}
+
 	return &emptypb.Empty{}, nil
 }
