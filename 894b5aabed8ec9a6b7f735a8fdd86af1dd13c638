@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb88d521_3d5037f4",
+        "filename": "src/chromiumos/tast/local/bundles/cros/ui/chrome_crash_early.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1305461
+      },
+      "writtenOn": "2022-08-10T00:12:51Z",
+      "side": 1,
+      "message": "Should this be `*crash.RegexesNotFound`?\n\n(Basing this off the documentation at https://pkg.go.dev/errors#As)\n\nI\u0027m guessing it\u0027s fine, since you built and ran it successfully, but I\u0027m a bit confused as to why the difference from the documented example is there.",
+      "range": {
+        "startLine": 142,
+        "startChar": 26,
+        "endLine": 142,
+        "endChar": 48
+      },
+      "revId": "894b5aabed8ec9a6b7f735a8fdd86af1dd13c638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
