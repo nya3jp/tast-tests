@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"chromiumos/tast/ctxutil"
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/bundles/cros/wilco/bt"
 	"chromiumos/tast/local/bundles/cros/wilco/pre"
 	"chromiumos/tast/local/wilco"
@@ -36,7 +36,7 @@ func APIHandleBluetoothDataChanged(ctx context.Context, s *testing.State) {
 	ctx, cancel := ctxutil.Shorten(ctx, 15*time.Second)
 	defer cancel()
 
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		s.Fatal("Unable to get Bluetooth adapters: ", err)
 	}

@@ -59,7 +59,7 @@ func (iface *Interface) BSSs(ctx context.Context) ([]*BSS, error) {
 	defer st.End()
 
 	var bssPaths []dbus.ObjectPath
-	if err := iface.dbus.Get(ctx, dbusInterfacePropBSSs, &bssPaths); err != nil {
+	if err := iface.dbus.Property(ctx, dbusInterfacePropBSSs, &bssPaths); err != nil {
 		return nil, err
 	}
 	var ret []*BSS

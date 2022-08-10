@@ -13,7 +13,7 @@ import (
 	"chromiumos/tast/errors"
 	"chromiumos/tast/local/apps"
 	"chromiumos/tast/local/assistant"
-	"chromiumos/tast/local/bluetooth"
+	"chromiumos/tast/local/bluetooth/bluez"
 	"chromiumos/tast/local/chrome/uiauto"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/quicksettings"
@@ -117,7 +117,7 @@ func BluetoothQueries(ctx context.Context, s *testing.State) {
 
 // bluetoothEnabled checks if the bluetooth adapter is enabled using dbus
 func bluetoothEnabled(ctx context.Context) (bool, error) {
-	adapters, err := bluetooth.Adapters(ctx)
+	adapters, err := bluez.Adapters(ctx)
 	if err != nil {
 		return false, errors.Wrap(err, "failed to get bluetooth adapters")
 	}

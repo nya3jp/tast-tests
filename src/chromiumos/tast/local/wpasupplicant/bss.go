@@ -36,7 +36,7 @@ func NewBSS(ctx context.Context, path dbus.ObjectPath) (*BSS, error) {
 // BSSID returns the BSSID of this BSS.
 func (b *BSS) BSSID(ctx context.Context) ([]byte, error) {
 	var bssid []byte
-	if err := b.dbus.Get(ctx, dbusBSSPropBSSID, &bssid); err != nil {
+	if err := b.dbus.Property(ctx, dbusBSSPropBSSID, &bssid); err != nil {
 		return nil, err
 	}
 	return bssid, nil
@@ -45,7 +45,7 @@ func (b *BSS) BSSID(ctx context.Context) ([]byte, error) {
 // SSID returns the SSID of this BSS.
 func (b *BSS) SSID(ctx context.Context) ([]byte, error) {
 	var ssid []byte
-	if err := b.dbus.Get(ctx, dbusBSSPropSSID, &ssid); err != nil {
+	if err := b.dbus.Property(ctx, dbusBSSPropSSID, &ssid); err != nil {
 		return nil, err
 	}
 	return ssid, nil
