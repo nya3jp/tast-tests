@@ -8,24 +8,22 @@ import (
 	"context"
 	"time"
 
+	fwCommon "chromiumos/tast/common/firmware"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/remote/firmware"
 	"chromiumos/tast/remote/firmware/fixture"
-
-	fwCommon "chromiumos/tast/common/firmware"
 	pb "chromiumos/tast/services/cros/firmware"
-
 	"chromiumos/tast/ssh"
 	"chromiumos/tast/testing"
 )
 
 func init() {
 	testing.AddTest(&testing.Test{
-		Func:        FWCorruptRecoveryCache,
-		Desc:        "Corrupt recovery cache and then check it's rebuilt",
-		Contacts:    []string{"js@semihalf.com", "chromeos-firmware@google.com"},
+		Func:     FWCorruptRecoveryCache,
+		Desc:     "Corrupt recovery cache and then check it's rebuilt",
+		Contacts: []string{"js@semihalf.com", "chromeos-firmware@google.com"},
 		// TODO(b/194907751): Add back to firmware_unstable once this test actually works.
-		Attr:         []string{},
+		Attr:        []string{},
 		Fixture:     fixture.DevModeGBB,
 		Timeout:     20 * time.Minute,
 		ServiceDeps: []string{"tast.cros.firmware.BiosService"},
@@ -79,7 +77,7 @@ func FWCorruptRecoveryCache(ctx context.Context, s *testing.State) {
 		}
 
 		if err := h.EnsureDUTBooted(ctx); err != nil {
-			s.Fatal("Failed to ensure the DUT is booted!")
+			s.Fatal("Failed to ensure the DUT is booted: ", err)
 		}
 
 		s.Log("Restoring RECOVERY_MRC_CACHE image")
@@ -125,6 +123,6 @@ func FWCorruptRecoveryCache(ctx context.Context, s *testing.State) {
 	s.Log("Checking if recovery MRC cache has been rebuilt")
 	const cbmemCheckCommand = `cbmem -1 | grep "'RECOVERY_MRC_CACHE' needs update."`
 	if err := h.DUT.Conn().CommandContext(ctx, "bash", "-c", cbmemCheckCommand).Run(); err != nil {
-		s.Fatal("Recovery MRC cache rebuilt check failed:", err)
+		s.Fatal("Recovery MRC cache rebuilt check failed: ", err)
 	}
 }

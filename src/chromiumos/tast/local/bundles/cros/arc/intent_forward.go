@@ -35,7 +35,7 @@ func init() {
 			Val:               browser.TypeAsh,
 			Fixture:           "arcBooted",
 		}, {
-			Name:              "lacros",
+			Name: "lacros",
 			// TODO(b/239469085): Remove "informational" attribute.
 			ExtraAttr:         []string{"informational"},
 			ExtraSoftwareDeps: []string{"android_p", "lacros"},
