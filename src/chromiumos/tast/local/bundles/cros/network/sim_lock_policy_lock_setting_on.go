@@ -38,9 +38,9 @@ func init() {
 		SoftwareDeps: []string{"chrome"},
 		// Disabled due to <1% pass rate over 30 days. See b/241943012
 		//Attr:         []string{"group:cellular", "cellular_unstable", "cellular_sim_pinlock"},
-		Fixture:      fixture.FakeDMSEnrolled,
-		Timeout:      9 * time.Minute,
-		Vars:         []string{"autotest_host_info_labels"},
+		Fixture: fixture.FakeDMSEnrolled,
+		Timeout: 9 * time.Minute,
+		Vars:    []string{"autotest_host_info_labels"},
 	})
 }
 

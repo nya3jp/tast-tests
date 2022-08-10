@@ -111,7 +111,7 @@ func UnicornPaidAppParentPermission(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to click on KEYCODE_ENTER button: ", err)
 	}
 
-	searchResult := d.Object(ui.ClassName("android.view.View"), ui.DescriptionContains("$"),ui.Index(1))
+	searchResult := d.Object(ui.ClassName("android.view.View"), ui.DescriptionContains("$"), ui.Index(1))
 	if err := searchResult.WaitForExists(ctx, 30*time.Second); err != nil {
 		s.Fatal("Search Result doesn't exist: ", err)
 	}
