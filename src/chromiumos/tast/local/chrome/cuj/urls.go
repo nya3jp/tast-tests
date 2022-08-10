@@ -157,4 +157,11 @@ const (
 
 	// CrosVideoURL specifies the URL for cros video.
 	CrosVideoURL = "https://crosvideo.appspot.com/"
+
+	// URLs used by ClinicianWorkstationCUJ
+
+	// WebMDURL specifies the URL for web MD.
+	WebMDURL = "https://www.webmd.com/"
+	// GoogleKeepURL specifies the URL for Google Keep.
+	GoogleKeepURL = "https://keep.google.com/"
 )
