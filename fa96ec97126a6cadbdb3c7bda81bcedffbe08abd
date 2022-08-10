@@ -16,6 +16,24 @@
       "message": "If we are adding `chrome.DisableFeatures(\"FirmwareUpdaterApp\")` to all fixtures, maybe we should add it here.",
       "revId": "fa96ec97126a6cadbdb3c7bda81bcedffbe08abd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b830b1c8_3dd2dc61",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/fixture.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1412245
+      },
+      "writtenOn": "2022-08-10T06:55:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10c7f343_c00b5679",
+      "revId": "fa96ec97126a6cadbdb3c7bda81bcedffbe08abd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
