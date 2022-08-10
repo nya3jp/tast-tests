@@ -18,7 +18,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/network/virtualnet/env"
+	"chromiumos/tast/local/network/virtualnet/env"
 )
 
 const confTemplate = `
