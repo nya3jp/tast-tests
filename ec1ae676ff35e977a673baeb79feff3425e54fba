@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc8e86b2_330b250c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/user_files_guest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-08-10T07:07:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "982f459b_7dc8e819",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "ec1ae676ff35e977a673baeb79feff3425e54fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c53bf703_42e29e62",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-08-10T06:27:49Z",
       "side": 1,
       "message": "nit: just \"error\" should be fine here.",
+      "range": {
+        "startLine": 86,
+        "startChar": 84,
+        "endLine": 86,
+        "endChar": 98
+      },
+      "revId": "ec1ae676ff35e977a673baeb79feff3425e54fba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f2b864d_3e1078fb",
+        "filename": "src/chromiumos/tast/local/mountns/mountns.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-08-10T07:07:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c53bf703_42e29e62",
       "range": {
         "startLine": 86,
         "startChar": 84,
