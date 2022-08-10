@@ -137,7 +137,7 @@ func SimLockPolicyLockSettingOn(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to ServeAndRefresh ONC policy: ", err)
 	}
 
-	const notificationTitle = "Disable your SIM Lock setting"
+	const notificationTitle = "Turn off \"Lock SIM\" setting"
 	if _, err := ash.WaitForNotification(ctx, tconn, 30*time.Second, ash.WaitTitle(notificationTitle)); err != nil {
 		s.Fatalf("Failed waiting for %v: %v", notificationTitle, err)
 	}
