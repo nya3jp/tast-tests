@@ -39,6 +39,30 @@
       },
       "revId": "74bc55585272600dc2366a5191838f81a5ae34d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1693c476_575ed2a2",
+        "filename": "src/chromiumos/tast/local/bundles/cros/arc/audio_loopback_correctness.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1543263
+      },
+      "writtenOn": "2022-08-10T04:31:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c35a010_0d738bfb",
+      "range": {
+        "startLine": 136,
+        "startChar": 32,
+        "endLine": 136,
+        "endChar": 36
+      },
+      "revId": "74bc55585272600dc2366a5191838f81a5ae34d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
