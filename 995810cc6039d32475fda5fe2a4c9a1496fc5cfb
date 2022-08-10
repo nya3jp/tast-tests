@@ -183,6 +183,30 @@
       },
       "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7934aa17_90ac28f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wwcb/dock3_usb_charging.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1445085
+      },
+      "writtenOn": "2022-08-10T02:59:37Z",
+      "side": 1,
+      "message": "Servo has two purpose in automations:\n1) Charge the DUT\n2) Flash latest ChromeOS builds onto the DUT\n\nThe one that I shown is the feature that force Servo not charging the DUT.",
+      "parentUuid": "f6a39318_0980be25",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "995810cc6039d32475fda5fe2a4c9a1496fc5cfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
