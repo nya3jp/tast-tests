@@ -490,9 +490,10 @@ func NewStandardizedTouchscreen(ctx context.Context, tconn *chrome.TestConn) (*S
 // Due to different device settings, the actual swipe distance will be imprecise but aims to be near 50 pixels.
 func TouchscreenSwipe(ctx context.Context, testParameters TestFuncParams, selector *ui.Object, numTouches int, swipeDirection TouchscreenSwipeDirection) error {
 	const (
-		distanceBetweenTouches = input.TouchCoord(40)
-		swipeDuration          = 500 * time.Millisecond
-		swipeDistance          = input.TouchCoord(250)
+		distanceBetweenTouchesHorizontal = input.TouchCoord(40)
+		distanceBetweenTouchesVertical   = input.TouchCoord(0)
+		swipeDuration                    = 500 * time.Millisecond
+		swipeDistance                    = input.TouchCoord(250)
 	)
 
 	touchScreen, err := NewStandardizedTouchscreen(ctx, testParameters.TestConn)
@@ -538,7 +539,7 @@ func TouchscreenSwipe(ctx context.Context, testParameters TestFuncParams, select
 	}
 
 	// Perform the swipe.
-	return tsw.Swipe(ctx, *x, *y, endX, endY, distanceBetweenTouches, numTouches, swipeDuration)
+	return tsw.Swipe(ctx, *x, *y, endX, endY, distanceBetweenTouchesHorizontal, distanceBetweenTouchesVertical, numTouches, swipeDuration)
 }
 
 // getTouchEventCoordinatesForElement converts the points of an element to the corresponding Touchscreen coordinates.

@@ -78,20 +78,11 @@ func (tp *TouchpadService) TouchpadSwipe(ctx context.Context, req *empty.Empty) 
 	}
 	defer tpw.Close()
 
-	// Performs a four finger horizontal scroll on the trackpad. The vertical location is always vertically
-	// centered on the trackpad. The fingers are spaced horizontally on the trackpad by 1/16th of the trackpad
-	// width.
-	fingerSpacing := tpd.Width() / 16
-	doTrackpadFourFingerSwipeScroll := func(ctx context.Context, x0, x1 input.TouchCoord) error {
-		y := tpd.Height() / 2
-		const t = time.Second
-		return tpw.Swipe(ctx, x0, y, x1, y, fingerSpacing, 4, t)
-	}
-
-	fingerDistance := fingerSpacing * 4
-
-	// Do a big swipe going right.
-	if err := doTrackpadFourFingerSwipeScroll(ctx, 0, tpd.Width()-fingerDistance); err != nil {
+	// Do a horizontal four-finger swipe across the entire width of the trackpad.
+	// The fingers are positioned at 1/8, 3/8, 5/8, and 7/8 of the trackpad height.
+	w := tpd.Width()
+	h := tpd.Height()
+	if err := tpw.Swipe(ctx, 0, h/8, w-1, h/8, 0, h/4, 4, time.Second); err != nil {
 		return nil, errors.Wrap(err, "failed to perform four finger scroll")
 	}
 

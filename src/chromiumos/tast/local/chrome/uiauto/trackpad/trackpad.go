@@ -32,7 +32,8 @@ func Swipe(ctx context.Context, tconn *chrome.TestConn, tpw *input.TrackpadEvent
 	const (
 		swipeDistanceAsProportionOfPad = .4
 		swipeDuration                  = 250 * time.Millisecond
-		fingerSeparation               = 5
+		fingerSeparationHorizontal     = input.TouchCoord(5)
+		fingerSeparationVertical       = input.TouchCoord(0)
 	)
 
 	if err := trackpadValid(ctx, tconn); err != nil {
@@ -70,7 +71,7 @@ func Swipe(ctx context.Context, tconn *chrome.TestConn, tpw *input.TrackpadEvent
 	}
 
 	// Perform swiping.
-	return mtw.Swipe(ctx, x0, y0, x1, y1, input.TouchCoord(fingerSeparation), touches, swipeDuration)
+	return mtw.Swipe(ctx, x0, y0, x1, y1, fingerSeparationHorizontal, fingerSeparationVertical, touches, swipeDuration)
 
 }
 
