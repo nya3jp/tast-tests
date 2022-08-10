@@ -38,6 +38,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2de79e29_9de1f09b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-10T04:11:47Z",
+      "side": 1,
+      "message": "Hi Cienet, can you please wrap up a simple doc with metrics data and highlight the major difference? I can present this question to Tast Core team, seeking for support.",
+      "parentUuid": "a9e48286_b3f7dcf8",
+      "revId": "cef03beaa8670947ac36c78e864c6bdb38b7e76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f0eea23_afcd61c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395692
+      },
+      "writtenOn": "2022-08-10T04:11:47Z",
+      "side": 1,
+      "message": "Add Hidehiko to this CL since they proposed http://docs/document/d/1RRo30-R83YWabBFb-Y1zsyl2UcogjaZj0_JuOQ8anBk?resourcekey\u003d0-7ju-AaBFfUVgXjkm39TlTA",
+      "revId": "cef03beaa8670947ac36c78e864c6bdb38b7e76e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b110ee2_29af1651",
         "filename": "src/chromiumos/tast/local/bundles/cros/ui/videocuj/youtube_web.go",
         "patchSetId": 1
