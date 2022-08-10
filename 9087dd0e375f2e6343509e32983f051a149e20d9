@@ -187,6 +187,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "894ffba3_ae1f059a",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1521721
+      },
+      "writtenOn": "2022-08-10T12:21:20Z",
+      "side": 1,
+      "message": "\u003e As a temporary fix, I would recommend to match by  name\u003dTester  in additional to matching by  className\u003dAutofillPopupSuggestionView . Just picking the first has a risk of the order being non-deterministic and test failing flakily.\n\nThis has to do with the same racing (when moving to the next text field \u0026 typing to the field) as described in the bug you linked (b/239151610). Not sure if `name\u003dTester` will remove all the flakiness since due to the racing, it can be that there is only one suggestion having the name `TesterS` instead of the wanted `Tester` in which case the test would again fail. If choosing `First()` shouldn\u0027t the items on the list always be alphabetically ordered? So `Tester` should always be before `TesterS` on the list?",
+      "parentUuid": "fd74ebc8_b1618fc1",
+      "range": {
+        "startLine": 209,
+        "startChar": 97,
+        "endLine": 209,
+        "endChar": 105
+      },
+      "revId": "9087dd0e375f2e6343509e32983f051a149e20d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14d4ddf1_1946b7da",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
         "patchSetId": 1
