@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c27a92c5_a35a4d85",
+        "filename": "src/chromiumos/tast/local/bundles/cros/network/sim_lock_policy_lock_setting_off.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1547388
+      },
+      "writtenOn": "2022-08-10T00:29:13Z",
+      "side": 1,
+      "message": "Please add .First() as discussed offline.\n\nLGTM otherwise.",
+      "revId": "7e718ee3f91ac5ac3a1d11668d2498320b4c0a9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
