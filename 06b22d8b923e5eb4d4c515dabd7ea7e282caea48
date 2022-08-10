@@ -203,6 +203,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55eb3a48_5b007845",
+        "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1542652
+      },
+      "writtenOn": "2022-08-10T00:12:23Z",
+      "side": 1,
+      "message": "Added the `aria-label` and built to DUT, unfortunately, the two options are still ignored.\n\nI tried selecting the node with `ui.WaitUntilExists(nodewith.Attribute(\"aria-label\", \"anonymous user\").Ancestor(feedbackRootNode))`, but it doesn\u0027t work.",
+      "parentUuid": "da6a62eb_8c1e98ea",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "06b22d8b923e5eb4d4c515dabd7ea7e282caea48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d81bcc95_1abdf16f",
         "filename": "src/chromiumos/tast/local/bundles/cros/feedback/report_contains_email.go",
         "patchSetId": 6
