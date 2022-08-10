@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3acea465_9621c7e3",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1001380
+      },
+      "writtenOn": "2022-08-10T17:51:23Z",
+      "side": 1,
+      "message": "Isn\u0027t it just because creating lacros windows are async?",
+      "parentUuid": "305a851f_a1cc30b0",
+      "revId": "841357aa0b7f1130bbff55841235a11421f31dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60bb6562_8228c1c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
         "patchSetId": 1
