@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "382dd2a4_61bcbbac",
+        "filename": "src/chromiumos/tast/local/bundles/cros/nacl/pnacl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1126309
+      },
+      "writtenOn": "2022-08-10T12:46:45Z",
+      "side": 1,
+      "message": "As the new sub-test is failing currently, we need to mark it as \"informational\":\nhttp://cs/chromeos_public/src/platform/tast/docs/writing_tests.md;l\u003d112;rcl\u003df20f6151e9f36f600158deed52ab9ff77db060c2",
+      "revId": "1363bc768cfe335e7c29652f11fe0da473615aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "999cd93e_a6927b41",
         "filename": "src/chromiumos/tast/local/bundles/cros/nacl/pnacl.go",
         "patchSetId": 1
