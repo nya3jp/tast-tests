@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "305a851f_a1cc30b0",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1507611
+      },
+      "writtenOn": "2022-08-10T16:18:22Z",
+      "side": 1,
+      "message": "(FWIW I saw `setOverviewModeState` return false occasionally in Tast specifically when a lacros window is open. What is a situation this could happen? Is it safe to call it again until it returns true? Would it wait only for the animation to be done but not guarantee that all windows appear in the a11y tree by the time GetAllWindows at L164 is called?)\nAny clarification would be helpful to see whether an extra wait or polling should be added.",
+      "parentUuid": "4d24cf9b_1d745c37",
+      "revId": "841357aa0b7f1130bbff55841235a11421f31dec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60bb6562_8228c1c3",
         "filename": "src/chromiumos/tast/local/bundles/cros/wmp/admin_templates_launch.go",
         "patchSetId": 1
