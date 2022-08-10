@@ -139,6 +139,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1d18aaf_20a0912c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1153089
+      },
+      "writtenOn": "2022-08-10T11:26:52Z",
+      "side": 1,
+      "message": "Turns out I was looking at different kind of failures and for a different test (same name, but without \".lacros\" suffix). My screenshots show settings page with 2  configured addresses (https://screenshot.googleplex.com/6oj9QSd4tjjMDFs), not a web page where they are to be autocompleted. The bug associated with this CL is for \".lacros\" variant, which seems to fail because Lacros browser does not start at all: https://screenshot.googleplex.com/3v7wL8xHCNcFuWM. My suspicion is that relevant error message is in chrome.log:\n\n```\n2022-08-06T00:07:40.092279Z WARNING chrome[1265:1265]: [browser_manager.cc(1279)] Mojo to lacros-chrome is disconnected. Terminating lacros-chrome\n```\n\nHence, IMHO this CL either needs to be assigned to a different bug, e.g. http://b/239151610. It is still useful, but having current bug (https://crbug.com/1350107) on it is misleading.\n\n+1 to figuring out why we have two suggestions with different names, but as a temporary fix, I would recommend to match by `name\u003dTester` in additional to matching by `className\u003dAutofillPopupSuggestionView`. Just picking the first has a risk of the order being non-deterministic and test failing flakily.",
+      "parentUuid": "d197bfd2_3c699a76",
+      "range": {
+        "startLine": 209,
+        "startChar": 97,
+        "endLine": 209,
+        "endChar": 105
+      },
+      "revId": "9087dd0e375f2e6343509e32983f051a149e20d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "14d4ddf1_1946b7da",
         "filename": "src/chromiumos/tast/local/bundles/cros/policy/autofill_address_enabled.go",
         "patchSetId": 1
