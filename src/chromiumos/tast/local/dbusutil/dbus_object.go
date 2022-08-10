@@ -43,6 +43,11 @@ func (d *DBusObject) Iface() string {
 	return d.iface
 }
 
+// Conn returns the D-Bus connection to service.
+func (d *DBusObject) Conn() *dbus.Conn {
+	return d.conn
+}
+
 // ObjectPath returns the path of the D-Bus object.
 func (d *DBusObject) ObjectPath() dbus.ObjectPath {
 	return d.obj.Path()
