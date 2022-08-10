@@ -170,7 +170,7 @@ func (f *Finder) GenerateQueryForMultipleNodes() (string, error) {
 func (f *Finder) generateQuery(multipleNodes bool) (string, error) {
 	// Both node and nodes need to be generated now so they can be used in the subqueries.
 	out := `
-		let node = await tast.promisify(chrome.automation.getDesktop)();
+		let node = await tast.getDesktop();
 		let nodes = [];
 	`
 	if f.nameInTree() {

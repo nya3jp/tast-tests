@@ -492,15 +492,18 @@ func (c *Chrome) ResetState(ctx context.Context) error {
 		}
 
 		// Waiting until virtual keyboard disappears from a11y tree.
-		var isVKShown bool
 		if err := testing.Poll(ctx, func(ctx context.Context) error {
-			if err := tconn.Eval(ctx, `
-				tast.promisify(chrome.automation.getDesktop)().then(
-					root => {return !!(root.find({role: 'rootWebArea', name: 'Chrome OS Virtual Keyboard'}))}
-				)`, &isVKShown); err != nil {
+			var vkShown bool
+			if err := tconn.Call(ctx, &vkShown, `async () => {
+				let root = await tast.getDesktop();
+				return !!(root.find({
+				    role: 'rootWebArea',
+				    name: 'Chrome OS Virtual Keyboard'
+				}));
+			}`); err != nil {
 				return errors.Wrap(err, "failed to hide virtual keyboard")
 			}
-			if isVKShown {
+			if vkShown {
 				return errors.New("virtual keyboard is still visible")
 			}
 			return nil

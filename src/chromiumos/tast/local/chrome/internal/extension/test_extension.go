@@ -190,6 +190,11 @@ const (
 	//   expected context. tast.bind can help the situation:
 	//
 	//     tast.promisify(tast.bind(chrome.accessibilityFeatures.spokenFeedback, "set"))
+	// tast.getDesktop:
+	//   It is a wrapper of chrome.automation.getDesktop().
+	//   Desktop root node returned by chrome.automation.getDesktop may not be
+	//   yet loaded. It can be checked by whether it holds children.
+	//   If not, wait for its loadComplete event, so that nodes are ready.
 	TastLibraryJS = `
 tast = {};
 tast.promisify = function(f) {
@@ -205,6 +210,20 @@ tast.promisify = function(f) {
 };
 tast.bind = function(obj, name) {
   return obj[name].bind(obj);
+};
+tast.getDesktop = async function() {
+  let root = await tast.promisify(chrome.automation.getDesktop)();
+  if (!root.children) {
+    await new Promise((resolve) => {
+      const eventType = "loadComplete";
+      let callback = () => {
+        root.removeEventListener(eventType, callback);
+        resolve();
+      };
+      root.addEventListener(eventType, callback);
+    });
+  }
+  return root;
 };
 `
 )

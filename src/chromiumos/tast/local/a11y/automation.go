@@ -287,7 +287,7 @@ func (n *Node) ToString(ctx context.Context) (string, error) {
 // If the JavaScript fails to execute, an error is returned.
 func Root(ctx context.Context, tconn *chrome.TestConn) (*Node, error) {
 	obj := &chrome.JSObject{}
-	if err := tconn.Call(ctx, obj, "tast.promisify(chrome.automation.getDesktop)"); err != nil {
+	if err := tconn.Call(ctx, obj, "tast.getDesktop"); err != nil {
 		return nil, err
 	}
 	return NewNode(ctx, tconn, obj)
