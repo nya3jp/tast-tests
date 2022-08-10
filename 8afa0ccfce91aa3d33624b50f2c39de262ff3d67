@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03a57bf3_609148c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-10T00:33:04Z",
+      "side": 1,
+      "message": "I could see failures in tast.typec.TbtHotplugUnplug but I don\u0027t see any errors in tast.typec.TbtHotplugUnplug.stress. I think we could remove the attribute for tast.typec.TbtHotplugUnplug but not tast.typec.TbtHotplugUnplug.stress.",
+      "revId": "8afa0ccfce91aa3d33624b50f2c39de262ff3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e4ea3fd_5cf538ae",
+        "filename": "src/chromiumos/tast/local/bundles/cros/typec/tbt_hotplug_unplug.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-10T00:33:04Z",
+      "side": 1,
+      "message": "I don\u0027t see typec.TbtHotplugUnplug.stress being run at all. \n\nhttps://stainless.corp.google.com/search?view\u003dmatrix\u0026row\u003dboard_model\u0026col\u003dbuild\u0026first_date\u003d2022-08-04\u0026last_date\u003d2022-08-10\u0026test\u003dTbtHotplugUnplug.stress\u0026exclude_cts\u003dfalse\u0026exclude_not_run\u003dfalse\u0026exclude_non_release\u003dtrue\u0026exclude_au\u003dtrue\u0026exclude_acts\u003dtrue\u0026exclude_retried\u003dfalse\u0026exclude_non_production\u003dfalse\u0026exclude_non_critical\u003dfalse\n\nhttps://tastboard.corp.google.com/test?contact\u003d\u0026testname\u003dTbtHotplugUnplug.stress\u0026dep\u003d\u0026attr\u003d\n\nI don\u0027t think we should make change for this test.",
+      "revId": "8afa0ccfce91aa3d33624b50f2c39de262ff3d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
