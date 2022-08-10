@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79bf4b03_b01a3ac9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-10T06:29:13Z",
+      "side": 1,
+      "message": "tast lgtm with a request.",
+      "revId": "3935fb4318a352610f4d785722facb730e4a35dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e9855e8_2f676ae6",
+        "filename": "src/chromiumos/tast/local/bundles/cros/security/shared_filesystem_state.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-10T06:29:13Z",
+      "side": 1,
+      "message": "style: could you fix indent by two tabs?",
+      "revId": "3935fb4318a352610f4d785722facb730e4a35dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
