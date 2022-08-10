@@ -16,6 +16,24 @@
       "message": "Please explain the use case and add example switch how to use this new var.",
       "revId": "a4f274cdbd691707db8ac3fc6f912a654a09e540",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a51dfd3f_b4141abb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1531792
+      },
+      "writtenOn": "2022-08-10T23:56:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb213b6a_678d035a",
+      "revId": "a4f274cdbd691707db8ac3fc6f912a654a09e540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
