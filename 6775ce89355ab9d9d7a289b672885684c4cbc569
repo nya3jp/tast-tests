@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a23f754_45feaad4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-08-10T01:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55e82959_6c995484",
+      "range": {
+        "startLine": 11,
+        "startChar": 62,
+        "endLine": 11,
+        "endChar": 65
+      },
+      "revId": "6775ce89355ab9d9d7a289b672885684c4cbc569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c1cca1c_13dbada1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f0830ab_f37f300e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-08-10T01:31:16Z",
+      "side": 1,
+      "message": "The FAFT implies porting from autotest and was a sufficient explanation for every commit msg in ported testcase before.",
+      "parentUuid": "7c1cca1c_13dbada1",
+      "range": {
+        "startLine": 14,
+        "startChar": 19,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "6775ce89355ab9d9d7a289b672885684c4cbc569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eeeaa180_7ba025ba",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-07-28T21:24:16Z",
       "side": 1,
       "message": "The comment says 512 but here is 128. I\u0027m kind of confused.",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "6775ce89355ab9d9d7a289b672885684c4cbc569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f190caf0_56b977e0",
+        "filename": "src/chromiumos/tast/remote/bundles/cros/firmware/fw_romsize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1518072
+      },
+      "writtenOn": "2022-08-10T01:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeeaa180_7ba025ba",
       "range": {
         "startLine": 34,
         "startChar": 14,
