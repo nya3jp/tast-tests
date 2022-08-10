@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750599ee_bb5581bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-10T16:14:37Z",
+      "side": 1,
+      "message": "nit: Would you be ok if we removed the massive \"qqqqqqqqq\" comments from the top of the docs? I presume those only happened because of a disconnected test device that was pressing q at the time of disconnect. ",
+      "revId": "1f79397f665aa4d7b4047e9be2bd144d59da15d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b693648_3302c3ed",
+        "filename": "src/chromiumos/tast/local/chrome/cuj/get_test_doc_url.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1540282
+      },
+      "writtenOn": "2022-08-10T16:14:37Z",
+      "side": 1,
+      "message": "This is up to you, but I can see a lot of tests might want to be at the top of the document, and scroll down to the bottom on their own. For example, in TaskSwitchCUJ, I\u0027d prefer to be either near the top or middle of the doc, so when I do my scroll down + scroll up, I don\u0027t immediately hit the bottom of the document. \n\nOne idea could be to let users pass in a isBottom bool, and if so, concatenate `?disco\u003dAAAAP6EbSF8` to the end of the link?",
+      "revId": "1f79397f665aa4d7b4047e9be2bd144d59da15d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
