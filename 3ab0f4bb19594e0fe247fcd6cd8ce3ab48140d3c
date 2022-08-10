@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d68ee95c_2058899c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-10T21:20:47Z",
+      "side": 1,
+      "message": "fwiw I\u0027m happy with just including here that you tested with your softap simpleconnect tests. We don\u0027t need to spend too much time verifying that a dead/unused package works.",
+      "parentUuid": "34fa8413_79b25927",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "3ab0f4bb19594e0fe247fcd6cd8ce3ab48140d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "417013d6_26d99872",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -121,6 +145,23 @@
       "side": 1,
       "message": "Thanks for bringing this to my attention. I will rebase and change iperf runner once it is landed.",
       "parentUuid": "aee5e49d_5942f413",
+      "revId": "3ab0f4bb19594e0fe247fcd6cd8ce3ab48140d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3b2bd1a_be4dd386",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-10T21:20:47Z",
+      "side": 1,
+      "message": "lgtm % updating the TEST section",
       "revId": "3ab0f4bb19594e0fe247fcd6cd8ce3ab48140d3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
