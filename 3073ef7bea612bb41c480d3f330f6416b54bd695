@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f796f39a_5b091197",
+        "filename": "src/chromiumos/tast/common/shillconst/const.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-10T20:27:27Z",
+      "side": 1,
+      "message": "sorry for churn, \"wpa2+wpa3\" (https://source.corp.google.com/chromeos_public/src/platform2/system_api/dbus/shill/dbus-constants.h;rcl\u003dea3db5341f54be0a9feab2fd074a333c88af57fe;l\u003d637)",
+      "revId": "3073ef7bea612bb41c480d3f330f6416b54bd695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8695fbd1_f0f0c3c8",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2981,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-10T20:27:27Z",
+      "side": 1,
+      "message": "can we get the wifi interface name dynamically? Marvell uses mlan0.",
+      "range": {
+        "startLine": 2981,
+        "startChar": 27,
+        "endLine": 2981,
+        "endChar": 32
+      },
+      "revId": "3073ef7bea612bb41c480d3f330f6416b54bd695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf6f6ac_ca7401b7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2989,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-10T20:27:27Z",
+      "side": 1,
+      "message": "rm?",
+      "revId": "3073ef7bea612bb41c480d3f330f6416b54bd695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d69e8543_ea5f43f7",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wifi/shill_service.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 3011,
+      "author": {
+        "id": 1243287
+      },
+      "writtenOn": "2022-08-10T20:27:27Z",
+      "side": 1,
+      "message": "rm?",
+      "revId": "3073ef7bea612bb41c480d3f330f6416b54bd695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
