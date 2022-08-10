@@ -29,5 +29,6 @@ func init() {
 
 func DevicePlay(ctx context.Context, s *testing.State) {
 	device.TestDeviceFiles(ctx, s, `^pcmC\d+D\d+p$`)
-	device.TestALSACommand(ctx, s, "aplay")
+	soundCards := device.GetSoundCards(ctx, s)
+	device.TestALSASoundCards(ctx, s, "aplay", soundCards)
 }

@@ -80,6 +80,30 @@ func TestALSACommand(ctx context.Context, s *testing.State, name string) {
 	}
 }
 
+// TestALSASoundCards tests ALSA command recognizes the given sound cards.
+func TestALSASoundCards(ctx context.Context, s *testing.State, name string, soundCards []string) {
+	out, err := testexec.CommandContext(ctx, name, "-l").CombinedOutput(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatalf("%s failed: %v", name, err)
+	}
+	for _, soundCard := range soundCards {
+		if !strings.Contains(string(out), soundCard) {
+			s.Errorf("%s doesn't recognize %s", name, soundCard)
+		}
+	}
+}
+
+// GetSoundCards obtains the internal sound cards that should exist for the device.
+func GetSoundCards(ctx context.Context, s *testing.State) []string {
+	model, err := testexec.CommandContext(ctx, "cros_config", "/audio/main", "card-name").CombinedOutput(testexec.DumpLogOnError)
+	if err != nil {
+		s.Fatal("cros_config failed: ", err)
+	}
+	soundCards := strings.Split(string(model), "\n")
+
+	return soundCards
+}
+
 func findRunningDevice(ctx context.Context, pathPattern string) error {
 	paths, err := filepath.Glob(pathPattern)
 	if err != nil {
