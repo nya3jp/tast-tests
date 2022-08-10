@@ -14,8 +14,8 @@ import (
 	"chromiumos/tast/common/shillconst"
 	"chromiumos/tast/ctxutil"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/network/routing"
-	"chromiumos/tast/local/bundles/cros/network/virtualnet"
+	"chromiumos/tast/local/network/routing"
+	"chromiumos/tast/local/network/virtualnet"
 	"chromiumos/tast/local/shill"
 	"chromiumos/tast/testing"
 )

@@ -21,7 +21,7 @@ import (
 
 	"chromiumos/tast/common/testexec"
 	"chromiumos/tast/errors"
-	"chromiumos/tast/local/bundles/cros/network/virtualnet/subnet"
+	"chromiumos/tast/local/network/virtualnet/subnet"
 	"chromiumos/tast/testing"
 )
 
