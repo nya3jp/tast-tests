@@ -4,6 +4,8 @@
 
 package bluetooth
 
+import "strings"
+
 // DeviceCapability is a name of a device capability, matching keys of the
 // capabilities map returned from calling PeripheralKit.GetCapabilities().
 type DeviceCapability string
@@ -45,18 +47,25 @@ func (tm TransportMethod) String() string {
 }
 
 // DeviceType refers to the type of bluetooth device, as returned by
-// calling PeripheralKit.GetDeviceType().
+// Note that PeripheralKit.GetDeviceType() returns a device type without a
+// "BLE_" prefix, but you need the "BLE_" prefix when calling Preipherial
 type DeviceType string
 
 const (
 	// DeviceTypeKeyboard is the DeviceType for keyboard devices.
 	DeviceTypeKeyboard DeviceType = "KEYBOARD"
 
+	// DeviceTypeLEKeyboard is the DeviceType for LE keyboard devices.
+	DeviceTypeLEKeyboard DeviceType = "BLE_KEYBOARD"
+
 	// DeviceTypeGamepad is the DeviceType for gamepad devices.
 	DeviceTypeGamepad DeviceType = "GAMEPAD"
 
 	// DeviceTypeMouse is the DeviceType for mouse devices.
 	DeviceTypeMouse DeviceType = "MOUSE"
+
+	// DeviceTypeLEMouse is the DeviceType for LE mouse devices.
+	DeviceTypeLEMouse DeviceType = "BLE_MOUSE"
 
 	// DeviceTypeCombo is the DeviceType for combo devices.
 	DeviceTypeCombo DeviceType = "COMBO"
@@ -70,16 +79,32 @@ const (
 	// DeviceTypePhone is the DeviceType for phone devices.
 	DeviceTypePhone DeviceType = "PHONE"
 
+	// DeviceTypeLEPhone is the DeviceType for LE phone devices.
+	DeviceTypeLEPhone DeviceType = "BLE_PHONE"
+
 	// DeviceTypeBluetoothAudio is the DeviceType for audio devices.
 	DeviceTypeBluetoothAudio DeviceType = "BLUETOOTH_AUDIO"
 
 	// DeviceTypeFastPair is the DeviceType for fast pair devices.
 	DeviceTypeFastPair DeviceType = "FAST_PAIR"
+
+	// DeviceTypeLEFastPair is the DeviceType for LE fast pair devices.
+	DeviceTypeLEFastPair DeviceType = "BLE_FAST_PAIR"
 )
 
 // String returns DeviceType as a string.
 func (dt DeviceType) String() string {
 	return string(dt)
+}
+
+// IsLE returns true if the DeviceType is LE (low-energy).
+func (dt DeviceType) IsLE() bool {
+	return strings.HasPrefix("BLE_", dt.String())
+}
+
+// BaseDeviceType returns the base DeviceType without the LE prefix.
+func (dt DeviceType) BaseDeviceType() DeviceType {
+	return DeviceType(strings.TrimPrefix("BLE_", dt.String()))
 }
 
 // AuthenticationMode refers to the bluetooth authentication mode of a device, as
@@ -103,4 +128,37 @@ const (
 // String returns AuthenticationMode as a string.
 func (am AuthenticationMode) String() string {
 	return string(am)
+}
+
+// PairingAgentCapability refers to the capability options of the bluez pairing
+// agent that resides on the btpeer.
+//
+// Note: Not to be confused to with bluez agent on the DUT.
+type PairingAgentCapability string
+
+const (
+	// PairingAgentCapabilityDisplayOnly is the "DisplayOnly"
+	// PairingAgentCapability.
+	PairingAgentCapabilityDisplayOnly PairingAgentCapability = "DisplayOnly"
+
+	// PairingAgentCapabilityDisplayYesNo is the "DisplayYesNo"
+	// PairingAgentCapability.
+	PairingAgentCapabilityDisplayYesNo PairingAgentCapability = "DisplayYesNo"
+
+	// PairingAgentCapabilityKeyboardOnly is the "KeyboardOnly"
+	// PairingAgentCapability.
+	PairingAgentCapabilityKeyboardOnly PairingAgentCapability = "KeyboardOnly"
+
+	// PairingAgentCapabilityNoInputNoOutput is the "NoInputNoOutput"
+	// PairingAgentCapability.
+	PairingAgentCapabilityNoInputNoOutput PairingAgentCapability = "NoInputNoOutput"
+
+	// PairingAgentCapabilityKeyboardDisplay is the "KeyboardDisplay"
+	// PairingAgentCapability.
+	PairingAgentCapabilityKeyboardDisplay PairingAgentCapability = "KeyboardDisplay"
+)
+
+// String returns PairingAgentCapability as a string.
+func (pac PairingAgentCapability) String() string {
+	return string(pac)
 }
