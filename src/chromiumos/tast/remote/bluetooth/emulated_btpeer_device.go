@@ -357,5 +357,7 @@ func (d *EmulatedBTPeerDevice) BTSDevice() *bts.Device {
 	return &bts.Device{
 		MacAddress:     d.cache.localBluetoothAddress,
 		AdvertisedName: d.cache.advertisedName,
+		HasPinCode:     d.cache.hasPinCode,
+		PinCode:        d.cache.pinCode,
 	}
 }
