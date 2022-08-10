@@ -22,6 +22,52 @@
       },
       "revId": "a34d83408c654923c39b1d2177e981b5ef7d93f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5e043a3_0b9f411a",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-10T01:50:03Z",
+      "side": 1,
+      "message": "It\u0027s preferred to indent only error flow, i.e.,\n```\ninfo, err :\u003d ui.Info(...)\nif err !\u003d nil {\n  ...\n}\nif info.Checked \u003d\u003d targetState {\n  ...\n}\n...\n```\n\nhttps://github.com/golang/go/wiki/CodeReviewComments#indent-error-flow",
+      "range": {
+        "startLine": 271,
+        "startChar": 4,
+        "endLine": 271,
+        "endChar": 11
+      },
+      "revId": "a34d83408c654923c39b1d2177e981b5ef7d93f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c494cc9e_9e1d19f0",
+        "filename": "src/chromiumos/tast/local/chrome/uiauto/printpreview/printpreview.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1364246
+      },
+      "writtenOn": "2022-08-10T01:50:03Z",
+      "side": 1,
+      "message": "nit: maybe put this outside uiauto.Combine",
+      "range": {
+        "startLine": 273,
+        "startChar": 34,
+        "endLine": 273,
+        "endChar": 83
+      },
+      "revId": "a34d83408c654923c39b1d2177e981b5ef7d93f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
