@@ -24,14 +24,16 @@ import (
 	"chromiumos/tast/local/chrome/uiauto/role"
 	"chromiumos/tast/local/chrome/uiauto/state"
 	"chromiumos/tast/testing"
+	"chromiumos/tast/testing/hwdep"
 )
 
-type basicLayoutSubTests int
-
-const (
-	clamshell basicLayoutSubTests = iota
-	tablet
-)
+// basicLayoutTestParam is the parameter for BasicLayout tests.
+type basicLayoutTestParam struct {
+	// isTabletMode indicates whether the DUT should be in tablet mode.
+	isTabletMode bool
+	// hasBattery indicates if the DUT has builtin battery.
+	hasBattery bool
+}
 
 func init() {
 	testing.AddTest(&testing.Test{
@@ -50,10 +52,33 @@ func init() {
 		Fixture:      "chromeLoggedIn",
 		Params: []testing.Param{
 			{
-				Val: clamshell,
-			}, {
-				Name: "tablet",
-				Val:  tablet,
+				ExtraHardwareDeps: hwdep.D(hwdep.Battery()),
+				Val: basicLayoutTestParam{
+					isTabletMode: false,
+					hasBattery:   true,
+				},
+			},
+			{
+				Name: "no_battery",
+				Val: basicLayoutTestParam{
+					isTabletMode: false,
+					hasBattery:   false,
+				},
+			},
+			{
+				Name:              "tablet",
+				ExtraHardwareDeps: hwdep.D(hwdep.Battery()),
+				Val: basicLayoutTestParam{
+					isTabletMode: true,
+					hasBattery:   true,
+				},
+			},
+			{
+				Name: "tablet_no_battery",
+				Val: basicLayoutTestParam{
+					isTabletMode: true,
+					hasBattery:   false,
+				},
 			},
 		},
 	})
@@ -80,17 +105,15 @@ func BasicLayout(ctx context.Context, s *testing.State) {
 		s.Fatal("Failed to create Test API connection: ", err)
 	}
 
-	ui := uiauto.New(tconn)
-
-	isTablet := s.Param().(basicLayoutSubTests) == tablet
-	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, isTablet)
+	param := s.Param().(basicLayoutTestParam)
+	cleanup, err := ash.EnsureTabletModeEnabled(ctx, tconn, param.isTabletMode)
 	if err != nil {
 		s.Fatal("Failed to enable the tablet mode: ", err)
 	}
 	defer cleanup(cleanupCtx)
 
 	var pc pointer.Context
-	if isTablet {
+	if param.isTabletMode {
 		if pc, err = pointer.NewTouch(ctx, tconn); err != nil {
 			s.Fatal("Failed to create touch context: ", err)
 		}
@@ -108,7 +131,7 @@ func BasicLayout(ctx context.Context, s *testing.State) {
 	resources := &basicLayoutTestResources{
 		cr:     cr,
 		tconn:  tconn,
-		ui:     ui,
+		ui:     uiauto.New(tconn),
 		pc:     pc,
 		btn:    nodewith.Role(role.Button),
 		outDir: s.OutDir(),
@@ -148,13 +171,17 @@ func BasicLayout(ctx context.Context, s *testing.State) {
 	}
 
 	s.Log("Checking date in Quick Settings")
-	if err := ui.WaitUntilExists(quicksettings.DateView)(ctx); err != nil {
+	if err := resources.ui.WaitUntilExists(quicksettings.DateView)(ctx); err != nil {
 		s.Fatal("Failed to find Date info: ", err)
 	}
 
+	// If DUT does not have battery (e.g., Chromeboxes and Chromebits),
+	// skip battery icon verification.
 	s.Log("Checking battery in Quick Settings")
-	if err := ui.WaitUntilExists(quicksettings.BatteryView)(ctx); err != nil {
-		s.Fatal("Failed to find Battery info: ", err)
+	if param.hasBattery {
+		if err := resources.ui.WaitUntilExists(quicksettings.BatteryView)(ctx); err != nil {
+			s.Fatal("Failed to find Battery info: ", err)
+		}
 	}
 }
 
@@ -262,7 +289,9 @@ func checkSliders(ctx context.Context, res *basicLayoutTestResources) error {
 	}{
 		{nil, quicksettings.VolumeSlider},
 		{nil, quicksettings.BrightnessSlider},
-		{res.btn.Name("Audio settings"), quicksettings.MicGainSlider},
+		// TODO(b/225081940): Enable the audio settings checks when the issue is fixed.
+		// Audio details might be missing on some DUT models (e.g., kaisa, blacktip)
+		// {res.btn.Name("Audio settings"), quicksettings.MicGainSlider},
 	} {
 		if sliders.parentSection != nil {
 			if err := res.pc.Click(sliders.parentSection)(ctx); err != nil {
