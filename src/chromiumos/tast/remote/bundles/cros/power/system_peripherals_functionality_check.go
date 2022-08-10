@@ -214,8 +214,8 @@ func usbStorageDevicesDetection(ctx context.Context, dut *dut.DUT) error {
 // detected or not.
 func connectedPeripheralsDetection(ctx context.Context, dut *dut.DUT) error {
 	var (
-		nativeHDMIRe      = regexp.MustCompile(`\[CONNECTOR:\d+:HDMI.*status: connected`)
-		typeCHDMIRe = regexp.MustCompile(`Type: HDMI`)
+		nativeHDMIRe = regexp.MustCompile(`\[CONNECTOR:\d+:HDMI.*status: connected`)
+		typeCHDMIRe  = regexp.MustCompile(`Type: HDMI`)
 	)
 	if err := usbStorageDevicesDetection(ctx, dut); err != nil {
 		return errors.Wrap(err, "failed to detect connected USB storage devices")
