@@ -19,21 +19,23 @@ import (
 )
 
 const (
-	destinationShareFile        = "dst"
-	rsaPrivKeyFile              = "rsa_priv_key"
-	channelPubKeyFile           = "channel_pub"
-	channelPrivKeyFile          = "channel_priv"
-	hsmPayloadFile              = "hsm_payload"
-	recoverySecretCreatedFile   = "secr_crea"
-	ephemeralPubKeyFile         = "ephemeral_pub"
-	recoveryRequestFile         = "recovery_req"
-	recoveryResponseFile        = "response"
-	recoverySecretDecryptedFile = "secr_decr"
-	customRAPTFile              = "custom_rapt"
-	customEpochResponseFile     = "custom_epoch_response"
-	epochResponseFile           = "epoch_response"
-	mediatorPubKeyFile          = "mediator_pub_key"
-	customMediatorPubKeyFile    = "custom_mediator_pub_key"
+	destinationShareFile                 = "dst"
+	extendedPcrBoundDestinationShareFile = "dst_extended_pcr"
+	rsaPrivKeyFile                       = "rsa_priv_key"
+	channelPubKeyFile                    = "channel_pub"
+	channelPrivKeyFile                   = "channel_priv"
+	extendedPcrBoundChannelPrivKeyFile   = "channel_priv_extended_pcr"
+	hsmPayloadFile                       = "hsm_payload"
+	recoverySecretCreatedFile            = "secr_crea"
+	ephemeralPubKeyFile                  = "ephemeral_pub"
+	recoveryRequestFile                  = "recovery_req"
+	recoveryResponseFile                 = "response"
+	recoverySecretDecryptedFile          = "secr_decr"
+	customRAPTFile                       = "custom_rapt"
+	customEpochResponseFile              = "custom_epoch_response"
+	epochResponseFile                    = "epoch_response"
+	mediatorPubKeyFile                   = "mediator_pub_key"
+	customMediatorPubKeyFile             = "custom_mediator_pub_key"
 )
 
 // RecoveryTestTool is a command line test tool for cryptohome recovery testing.
@@ -157,9 +159,11 @@ func (c *RecoveryTestTool) CreateHsmPayload(ctx context.Context) error {
 	args := []string{
 		"--action=recovery_crypto_create_hsm_payload",
 		c.getFileParam("destination_share_out_file", destinationShareFile),
+		c.getFileParam("extended_pcr_bound_destination_share_out_file", extendedPcrBoundDestinationShareFile),
 		c.getFileParam("rsa_priv_key_out_file", rsaPrivKeyFile),
 		c.getFileParam("channel_pub_key_out_file", channelPubKeyFile),
 		c.getFileParam("channel_priv_key_out_file", channelPrivKeyFile),
+		c.getFileParam("extended_pcr_bound_channel_priv_key_out_file", extendedPcrBoundChannelPrivKeyFile),
 		c.getFileParam("serialized_hsm_payload_out_file", hsmPayloadFile),
 		c.getFileParam("recovery_secret_out_file", recoverySecretCreatedFile),
 	}
@@ -182,6 +186,7 @@ func (c *RecoveryTestTool) CreateRecoveryRequest(ctx context.Context) error {
 		c.getFileParam("rsa_priv_key_in_file", rsaPrivKeyFile),
 		c.getFileParam("channel_pub_key_in_file", channelPubKeyFile),
 		c.getFileParam("channel_priv_key_in_file", channelPrivKeyFile),
+		c.getFileParam("extended_pcr_bound_channel_priv_key_in_file", extendedPcrBoundChannelPrivKeyFile),
 		c.getFileParam("serialized_hsm_payload_in_file", hsmPayloadFile),
 		c.getFileParam("ephemeral_pub_key_out_file", ephemeralPubKeyFile),
 		c.getFileParam("recovery_request_out_file", recoveryRequestFile),
@@ -213,8 +218,10 @@ func (c *RecoveryTestTool) Decrypt(ctx context.Context) error {
 		"--action=recovery_crypto_decrypt",
 		c.getFileParam("recovery_response_in_file", recoveryResponseFile),
 		c.getFileParam("channel_priv_key_in_file", channelPrivKeyFile),
+		c.getFileParam("extended_pcr_bound_channel_priv_key_in_file", extendedPcrBoundChannelPrivKeyFile),
 		c.getFileParam("ephemeral_pub_key_in_file", ephemeralPubKeyFile),
 		c.getFileParam("destination_share_in_file", destinationShareFile),
+		c.getFileParam("extended_pcr_bound_destination_share_in_file", extendedPcrBoundDestinationShareFile),
 		c.getFileParam("recovery_secret_out_file", recoverySecretDecryptedFile),
 	}
 	if !c.useFakeMediator() {
