@@ -86,6 +86,24 @@
       "parentUuid": "237c5fa6_f8814efd",
       "revId": "ad6f87407539168dcc8f3d5ea2e93334e164baee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72bf34f8_a3961b13",
+        "filename": "src/chromiumos/tast/local/bundles/cros/wmp/virtual_desks_shortcuts.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115919
+      },
+      "writtenOn": "2022-08-10T14:00:44Z",
+      "side": 1,
+      "message": "follow up CL is fine, but could you add TODO then?\n\nDoesn\u0027t this work to close all windows?",
+      "parentUuid": "a528aeeb_ff617889",
+      "revId": "ad6f87407539168dcc8f3d5ea2e93334e164baee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
