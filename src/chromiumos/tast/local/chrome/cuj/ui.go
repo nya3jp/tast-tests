@@ -21,6 +21,7 @@ import (
 	"chromiumos/tast/local/chrome/browser"
 	"chromiumos/tast/local/chrome/lacros"
 	"chromiumos/tast/local/chrome/uiauto"
+	"chromiumos/tast/local/chrome/uiauto/launcher"
 	"chromiumos/tast/local/chrome/uiauto/nodewith"
 	"chromiumos/tast/local/chrome/uiauto/ossettings"
 	"chromiumos/tast/local/chrome/uiauto/role"
@@ -100,7 +101,17 @@ func GetBrowserStartTime(ctx context.Context, tconn *chrome.TestConn,
 	}
 	ui := uiauto.New(tconn)
 	if err := ui.Retry(3, launchChromeApp)(ctx); err != nil {
-		return nil, -1, errors.Wrap(err, "failed to launch the Chrome app after 3 retries")
+		testing.ContextLog(ctx, "Failed to launch the Chrome app after 3 retries")
+		// Browser launch time is calculated from opening the extension launcher.
+		// Expect to take longer than starting straight from the shelf.
+		startTime = time.Now()
+		if err := launcher.LaunchApp(tconn, chromeApp.Name)(ctx); err != nil {
+			return nil, -1, errors.Wrap(err, "failed to launch the Chrome app from launcher")
+		}
+		// Make sure app is launched.
+		if err := ash.WaitForApp(ctx, tconn, chromeApp.ID, 30*time.Second); err != nil {
+			return nil, -1, errors.Wrap(err, "failed to wait for the app to be launched")
+		}
 	}
 	browserStartTime := time.Since(startTime)
 
