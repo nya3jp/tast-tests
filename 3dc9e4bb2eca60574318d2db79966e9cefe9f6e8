@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "3dc9e4bb2eca60574318d2db79966e9cefe9f6e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "087fa784_8516698c",
+        "filename": "src/chromiumos/tast/local/bundles/cros/meta/local_poll.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1431492
+      },
+      "writtenOn": "2022-08-10T19:58:19Z",
+      "side": 1,
+      "message": "Instead of making the test fail, I think we should make test pass if it see an error.\n\n```\nhasError \u003d false\n...\n   s.Logf(\"Get expected error from poll: %s\", err)\n...\nif !hasError {\n    s.Fatal(\"Did not see expected poll error\")\n}\n\n```",
+      "revId": "3dc9e4bb2eca60574318d2db79966e9cefe9f6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
