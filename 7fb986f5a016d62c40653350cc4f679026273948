@@ -33,6 +33,75 @@
       "message": "Thanks for the review.\n\nOwners, please approve. Thanks.",
       "revId": "7fb986f5a016d62c40653350cc4f679026273948",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3e86582_acb7b006",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-10T00:53:12Z",
+      "side": 1,
+      "message": "nit: This should be capitalized as `Lacros` to be consistent with line 12.",
+      "range": {
+        "startLine": 165,
+        "startChar": 41,
+        "endLine": 165,
+        "endChar": 47
+      },
+      "revId": "7fb986f5a016d62c40653350cc4f679026273948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f989ed57_fd2bc132",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/common_metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-10T00:53:12Z",
+      "side": 1,
+      "message": "nit: I would put this immediately below `AshCommonMetricConfigs`.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 0
+      },
+      "revId": "7fb986f5a016d62c40653350cc4f679026273948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1819601_5c7c76f3",
+        "filename": "src/chromiumos/tast/local/ui/cujrecorder/recorder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1319142
+      },
+      "writtenOn": "2022-08-10T00:53:12Z",
+      "side": 1,
+      "message": "nit: These Lacros common metrics belong before the Lacros AnyChrome common metrics (lines 249-251), for consistency, because the Ash common metrics (lines 239-241) are before the Ash AnyChrome common metrics (lines 245-247).",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 3
+      },
+      "revId": "7fb986f5a016d62c40653350cc4f679026273948",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
